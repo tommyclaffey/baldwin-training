@@ -7,6 +7,8 @@ import { VideoEmbed } from '../components/VideoEmbed';
 import { Empty, ErrorNote, Loading, Text, when } from './ui';
 import { typeLabel, type Item, type ItemType } from './ItemEditor';
 import { PRODUCT_NAME } from '../lib/brand';
+import { BANK, QUIZZES as QUIZ_LIST } from '../quiz/store';
+const QUIZ_PASS = BANK.passMark;
 
 function useLoad<T>(path: string) {
   const [data, setData] = useState<T | null>(null);
@@ -355,7 +357,7 @@ export function Account() {
 
 /* ---------- activity ---------- */
 type Row = { id: number; name: string | null; action: string; detail: string | null; at: string };
-const ACTIONS: Record<string, string> = { edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail' };
+const ACTIONS: Record<string, string> = { edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'sign off': 'Signed off', 'undo sign off': 'Undid a sign-off for', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail' };
 export function Activity() {
   const { data, error, load } = useLoad<{ audit: Row[] }>('/api/audit');
   const { index } = useSession();
@@ -378,6 +380,71 @@ export function Activity() {
           <thead><tr><th>When</th><th>Who</th><th>What</th></tr></thead>
           <tbody>{data.audit.map((r) => <tr key={r.id}><td>{when(r.at)}</td><td>{r.name || '—'}</td><td>{what(r)}</td></tr>)}</tbody>
         </table>
+      )}
+    </div>
+  );
+}
+
+/* ---------- quiz results ---------- */
+type QuizPerson = { device: string; name: string; lastAt: string; quizzes: Record<string, { best: number; total: number; attempts: number; lastAt: string }>; signoffs: Record<string, { at: string; by: string | null }> };
+export function QuizResults() {
+  const { data, error, load } = useLoad<{ people: QuizPerson[] }>('/api/quiz/results');
+  const [open, setOpen] = useState<string | null>(null);
+  const [err, setErr] = useState('');
+  const toggle = async (p: QuizPerson, quiz: string, on: boolean) => {
+    setErr('');
+    try { await api('/api/quiz/signoff', { method: on ? 'POST' : 'DELETE', body: { device: p.device, quiz } }); load(); }
+    catch (e) { setErr((e as Error).message); }
+  };
+  return (
+    <div className="admin-page">
+      <h1>Quiz results</h1>
+      <p className="muted">Everyone who has taken a quiz. Sign someone off once they’ve passed and shown you they can plate it or describe it at the table.</p>
+      {(error || err) && <ErrorNote error={err || error} retry={error ? load : undefined} />}
+      {!data && !error && <Loading />}
+      {data && data.people.length === 0 && <Empty title="No quiz scores yet"><p className="muted">Scores show here once staff finish a quiz and add their name.</p></Empty>}
+      {data && data.people.length > 0 && (
+        <div className="list">
+          {data.people.map((p) => {
+            const passed = QUIZ_LIST.filter((q) => { const r = p.quizzes[q.id]; return r && r.best >= QUIZ_PASS; }).length;
+            const signed = Object.keys(p.signoffs).filter((k) => k !== 'pre-shift').length;
+            const isOpen = open === p.device;
+            return (
+              <div key={p.device} className="person">
+                <button className="list-row person-head" aria-expanded={isOpen} onClick={() => setOpen(isOpen ? null : p.device)}>
+                  <span className="avatar" aria-hidden="true">{p.name.split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase()}</span>
+                  <span className="grow"><strong>{p.name}</strong><small>{passed} of {QUIZ_LIST.length} passed · {signed} signed off</small></span>
+                  <small className="muted">Last quiz {when(p.lastAt)}</small>
+                  <span aria-hidden="true">{isOpen ? '▴' : '▾'}</span>
+                </button>
+                {isOpen && (
+                  <table className="table inner">
+                    <thead><tr><th>Quiz</th><th>Best</th><th>Tries</th><th>Status</th><th /></tr></thead>
+                    <tbody>
+                      {QUIZ_LIST.map((q) => {
+                        const r = p.quizzes[q.id];
+                        const s = p.signoffs[q.id];
+                        const ok = r && r.best >= QUIZ_PASS;
+                        return (
+                          <tr key={q.id}>
+                            <td>{q.title}</td>
+                            <td>{r ? `${r.best}/${r.total}` : '—'}</td>
+                            <td>{r?.attempts ?? 0}</td>
+                            <td>{s ? `Signed off${s.by ? ' by ' + s.by : ''}` : ok ? 'Passed, waiting for you' : r ? 'Not passed yet' : 'Not started'}</td>
+                            <td>{s
+                              ? <button className="link-btn danger" onClick={() => toggle(p, q.id, false)}>Undo</button>
+                              : ok ? <button className="btn small" onClick={() => toggle(p, q.id, true)}>Sign Off</button> : null}</td>
+                          </tr>
+                        );
+                      })}
+                      {p.quizzes['pre-shift'] && <tr><td>Pre-Shift Quiz</td><td>{p.quizzes['pre-shift'].best}/{p.quizzes['pre-shift'].total}</td><td>{p.quizzes['pre-shift'].attempts}</td><td>Practice</td><td /></tr>}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            );
+          })}
+        </div>
       )}
     </div>
   );

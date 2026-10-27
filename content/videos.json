@@ -1,0 +1,20 @@
+{
+  "note": "Videos placed in the designed pages at build time. Key = page slug. The admin can still change or remove them (its edits win). Source: Tommy, Oct 27, all from Anders Erickson's YouTube channel.",
+  "videos": {
+    "classic/old-fashioned": { "youtubeId": "pdcrJ5V7YKM", "title": "How I Make an Old Fashioned · Anders Erickson" },
+    "classic/mojito": { "youtubeId": "KMypSCazyRw", "title": "Two Ways To Make A Mojito · Anders Erickson" },
+    "classic/whiskey-sour": { "youtubeId": "bxTRtiS06W0", "title": "How to Make the Best Whiskey Sour · Anders Erickson" },
+    "classic/sazerac": { "youtubeId": "dJ-sAEzw9Jc", "title": "The Sazerac Cocktail · Anders Erickson" },
+    "classic/french-75": { "youtubeId": "Viz7yWfcmdo", "title": "How to make a French 75 · Anders Erickson" },
+    "classic/martini": { "youtubeId": "izZsjqnADAA", "title": "How to make a Martini · Anders Erickson" },
+    "classic/manhattan": { "youtubeId": "eWESf1b317Y", "title": "How to Make a Manhattan · Anders Erickson" },
+    "classic/negroni": { "youtubeId": "lgy6vEX_hQg", "title": "The Negroni and the Americano · Anders Erickson" },
+    "classic/sidecar": { "youtubeId": "re76GCUoiH4", "title": "How I Make a Sidecar · Anders Erickson" },
+    "classic/boulevardier": { "youtubeId": "VAK-A7laGuE", "title": "The Boulevardier · Anders Erickson" },
+    "classic/pisco-sour": { "youtubeId": "FdAQ96mYwNQ", "title": "The Pisco Sour · Anders Erickson" },
+    "classic/paloma": { "youtubeId": "yyVU7U-8WLc", "title": "The Paloma: Mexico's National Cocktail · Anders Erickson" },
+    "classic/last-word": { "youtubeId": "jRcApnG9Hck", "title": "How to Make a Last Word · Anders Erickson" },
+    "classic/margarita": { "youtubeId": "jxpT11WEtWQ", "title": "5 ways to make a Margarita · Anders Erickson" },
+    "classic/daiquiri": { "youtubeId": "71jQRf5UrpE", "title": "The Daiquiri · Anders Erickson" }
+  }
+}

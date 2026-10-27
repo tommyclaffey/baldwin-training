@@ -1,6 +1,13 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { CompactContext, EditContext, FigmaNode, NavContext, type FNode } from './FigmaNode';
+import { CompactContext, EditContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
+import { QuizCard, ProgressCard } from '../quiz/QuizCard';
+import { quizPage } from '../quiz/transform';
+import { useQuiz } from '../quiz/store';
+
+const QUIZ_PAGE = '18:2';
+const QUIZ_SLOTS: Record<string, Slot> = { 'Live quiz': (p) => <QuizCard {...p} />, Progress: (p) => <ProgressCard {...p} /> };
+const NO_SLOTS: Record<string, Slot> = {};
 import { PRODUCT_NAME } from '../lib/brand';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
@@ -54,6 +61,7 @@ function useFit() {
 export function PageView() {
   const entry = usePageEntry();
   const session = useSession();
+  const quiz = useQuiz();
   const { ref, zoom, compact } = useFit();
   const [page, setPage] = useState<Page | null>(entry ? cache.get(entry.file) ?? null : null);
   const [error, setError] = useState(false);
@@ -118,16 +126,19 @@ export function PageView() {
   }
   if (!page) return <main ref={ref} className="page page-loading" aria-busy="true"><div className="loader" /></main>;
 
-  const { x, y, ...main } = page.main;
+  const isQuiz = page.id === QUIZ_PAGE;
+  const { x, y, ...main } = isQuiz ? quizPage(page.main, quiz) : page.main;
   void x; void y;
   return (
     <NavContext.Provider value={entry.nav}>
       <CompactContext.Provider value={compact}>
         <EditContext.Provider value={editApi}>
+          <SlotContext.Provider value={isQuiz ? QUIZ_SLOTS : NO_SLOTS}>
           <main ref={ref} className={'page' + (compact ? ' compact' : '') + (editing ? ' is-editing' : '')} style={{ backgroundColor: page.bg }}>
             <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
           </main>
           {saveError && <div className="toast error" role="alert">{saveError} <button className="link-btn" onClick={() => setSaveError('')}>Dismiss</button></div>}
+          </SlotContext.Provider>
         </EditContext.Provider>
       </CompactContext.Provider>
     </NavContext.Provider>

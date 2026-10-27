@@ -2,7 +2,7 @@
 import { NavLink, Route, Routes, Link } from 'react-router-dom';
 import { useSession } from '../lib/session';
 import { ItemEditor } from './ItemEditor';
-import { AcceptInvite, Account, Activity, ItemList, MediaLibrary, Overview, People, SignIn } from './screens';
+import { AcceptInvite, Account, Activity, ItemList, MediaLibrary, Overview, People, QuizResults, SignIn } from './screens';
 import { Loading } from './ui';
 
 export default function AdminApp() {
@@ -28,6 +28,7 @@ function Shell() {
           <NavLink to="/admin/recipes">Recipes</NavLink>
           <NavLink to="/admin/cocktails">House Cocktails</NavLink>
           <NavLink to="/admin/media">Videos and Photos</NavLink>
+          <NavLink to="/admin/quizzes">Quiz Results</NavLink>
           {owner && <NavLink to="/admin/people">People</NavLink>}
           {owner && <NavLink to="/admin/activity">Activity</NavLink>}
           <NavLink to="/admin/account">Your Account</NavLink>
@@ -44,6 +45,7 @@ function Shell() {
           <Route path="cocktails/new" element={<ItemEditor key="new-cocktail" type="cocktail" />} />
           <Route path="cocktails/:id" element={<ItemEditor type="cocktail" />} />
           <Route path="media" element={<MediaLibrary />} />
+          <Route path="quizzes" element={<QuizResults />} />
           <Route path="people" element={<People />} />
           <Route path="activity" element={<Activity />} />
           <Route path="account" element={<Account />} />

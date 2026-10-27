@@ -39,6 +39,10 @@ function childPaths(node: FNode, path: string) {
 const isVideoSlot = (n: FNode) => !!n.n && (n.n.startsWith('Video slot') || n.n === 'Player');
 const isVideoCard = (n: FNode) => !!n.n && (n.n.startsWith('Video · ') || n.n.startsWith('Item · '));
 
+/** Live parts of a page: a layer with this name is replaced by the component (e.g. the quiz card). */
+export type Slot = (p: { style: CSSProperties; className: string }) => ReactNode;
+export const SlotContext = createContext<Record<string, Slot>>({});
+
 /** Which sidebar item is active, so the shared sidebar can highlight it. */
 export const NavContext = createContext<string>('Home');
 /** True on phones, where rows reflow instead of the page scaling. */
@@ -158,6 +162,7 @@ export function FigmaNode({ node, parentLm, rootStyle, path = '' }: { node: FNod
   const activeNav = useContext(NavContext);
   const compact = useContext(CompactContext);
   const edit = useContext(EditContext);
+  const slots = useContext(SlotContext);
   const [picker, setPicker] = useState<null | 'image' | 'video'>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -174,6 +179,14 @@ export function FigmaNode({ node, parentLm, rootStyle, path = '' }: { node: FNod
     st.width = node.w; st.height = node.h; st.display = 'inline-flex'; st.flexShrink = 0;
     const svg = node.svg ? SVGS[node.svg] : '';
     return <span aria-hidden="true" className={cls.concat('fsvg').join(' ')} style={st} dangerouslySetInnerHTML={{ __html: svg }} />;
+  }
+
+  // A live component replaces this layer (it keeps the layer's size and place in the layout).
+  const slot = node.n ? slots[node.n] : undefined;
+  if (slot) {
+    const style: CSSProperties = { ...st };
+    if (style.height !== undefined) { style.minHeight = style.height; style.height = undefined; style.alignSelf = 'stretch'; }
+    return <>{slot({ style, className: cls.join(' ') })}</>;
   }
 
   // The real search box replaces the drawn one.
