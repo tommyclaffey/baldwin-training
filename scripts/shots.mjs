@@ -2,7 +2,7 @@
 // Needs the app running (npm start) and Google Chrome.
 //   node scripts/shots.mjs [baseUrl] [outDir]
 //   SCREENS=/,/classic/old-fashioned WIDTHS=1440,1024,390 node scripts/shots.mjs
-//   COOKIE=<session> EDIT=1 … for signed-in screens
+//   COOKIE=<session> EDIT=1 … for signed-in screens · TYPE=old … to show search results
 import { spawn } from 'node:child_process';
 import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 
@@ -55,6 +55,12 @@ for (const screen of SCREENS) {
         if (r.right > W + 1 && r.width > 0 && !Array.from(el.children).some(c => c.getBoundingClientRect().right > W + 1)) bad.push((el.dataset.name||el.className).slice(0,40) + ' r=' + Math.round(r.right)); });
       return { W, scroll: document.documentElement.scrollWidth, h: document.documentElement.scrollHeight, bad: bad.slice(0, 12) }; })()` });
     const v = probe.result.result.value;
+    // TYPE=old types into the search box first, to check the results list.
+    if (process.env.TYPE) {
+      await send('Runtime.evaluate', { expression: `document.querySelector('.search input').focus()` });
+      await send('Input.insertText', { text: process.env.TYPE });
+      await sleep(500);
+    }
     const h = FULL ? Math.min(v.h, 8000) : (w < 800 ? 844 : 1000);
     await send('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: 1, mobile: w < 800 });
     await sleep(400);
