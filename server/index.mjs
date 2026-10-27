@@ -5,7 +5,7 @@ import path from 'node:path';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { hashPassword, verifyPassword, burnPasswordCheck, createSession, sessionUser, endSession, sessionCookie, SESSION_COOKIE, LoginLimiter, publicUser, sha256, newToken } from './auth.mjs';
 import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex } from './content.mjs';
-import { wineTargets, wineVideos, setWineVideo } from './wine.mjs';
+import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, publicSchemas, seed, listEntries, getEntry, createEntry, updateEntry, deleteEntry, moveEntry } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { score as scoreQuiz, results as quizResults, quizIds } from './quiz.mjs';
@@ -17,6 +17,7 @@ const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
 const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
 seed(db);
+seedWineVideos(db);
 const limiter = new LoginLimiter();
 const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address
 

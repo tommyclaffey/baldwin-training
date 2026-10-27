@@ -144,21 +144,25 @@ test('wine videos: every wine page has a Learn more section, and a video plays t
   const find = (n, pred) => (pred(n) ? n : (n.c || []).map((c) => find(c, pred)).find(Boolean));
   const page = async (slug) => (await call('/api/page/' + index.find((e) => e.slug === slug).file)).data;
   // no video yet: the section is there, ready for one
-  const merlot = await page('wine/red/merlot');
-  const sec = find(merlot.main, (n) => n.n === 'Learn more');
-  assert.ok(sec && JSON.stringify(sec).includes('MERLOT'));
+  const syrah = await page('wine/red/syrah');
+  const sec = find(syrah.main, (n) => n.n === 'Learn more');
+  assert.ok(sec && JSON.stringify(sec).includes('SYRAH'));
   assert.equal(find(sec, (n) => !!n.vid), undefined);
+  // the starting videos from the repo are in place
+  const cab = find((await page('wine/red/cabernet')).main, (n) => n.n === 'Learn more');
+  assert.equal(find(cab, (n) => !!n.vid).vid.youtubeId, '-w6gz4YVPyk');
+  assert.equal(items.filter((i) => i.video).length, 6);
   // anonymous can't set one, an unknown page is refused
-  assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/merlot', video: null }, auth: false })).status, 401);
+  assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/syrah', video: null }, auth: false })).status, 401);
   assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/nope', video: { kind: 'youtube', youtubeId: 'dQw4w9WgXcQ' } } })).status, 400);
   // add one to a grape and to a wine on the list
-  const v = { kind: 'youtube', youtubeId: 'dQw4w9WgXcQ', title: 'Merlot' };
-  assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/merlot', video: v, note: 'Our Merlot story.' } })).status, 200);
+  const v = { kind: 'youtube', youtubeId: 'dQw4w9WgXcQ', title: 'Syrah' };
+  assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/syrah', video: v, note: 'Our Syrah story.' } })).status, 200);
   assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine:Bolgheri Rosso', video: v } })).status, 200);
-  const after = await page('wine/red/merlot');
+  const after = await page('wine/red/syrah');
   const sec2 = find(after.main, (n) => n.n === 'Learn more');
   assert.equal(find(sec2, (n) => !!n.vid).vid.youtubeId, 'dQw4w9WgXcQ');
-  assert.ok(JSON.stringify(sec2).includes('Our Merlot story.'));
+  assert.ok(JSON.stringify(sec2).includes('Our Syrah story.'));
   const list = (await call('/api/page/25-2')).data;
   const card = find(list.main, (n) => n.n === 'Wine · Bolgheri Rosso');
   assert.equal(card.vid.youtubeId, 'dQw4w9WgXcQ');

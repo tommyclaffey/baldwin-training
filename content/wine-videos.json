@@ -1,0 +1,11 @@
+{
+  "_source": "Tommy, Oct 27: Wine Folly's Grapes 101 playlist (youtube.com/playlist?list=PLc_D-7JIibmR09YmVNiId_1_c8ZQ3ojhz). Cabernet Franc has no page yet.",
+  "videos": [
+    { "key": "wine/red/cabernet", "video": { "kind": "youtube", "youtubeId": "-w6gz4YVPyk", "title": "Cabernet Sauvignon (Everything You Need To Know) · Wine Folly" } },
+    { "key": "wine/red/merlot", "video": { "kind": "youtube", "youtubeId": "JJnJK8rpibQ", "title": "Merlot (Everything you need to know) · Wine Folly" } },
+    { "key": "wine/red/pinot-noir", "video": { "kind": "youtube", "youtubeId": "g04Jn78TwmE", "title": "Pinot Noir (Everything you need to know) · Wine Folly" } },
+    { "key": "wine/white/chardonnay", "video": { "kind": "youtube", "youtubeId": "aSpyylc5F20", "title": "Chardonnay (Everything you need to know) · Wine Folly" } },
+    { "key": "wine/white/sauvignon-blanc", "video": { "kind": "youtube", "youtubeId": "F0jDcA_Ujcc", "title": "Sauvignon Blanc (Everything you need to know) · Wine Folly" } },
+    { "key": "wine/white/riesling", "video": { "kind": "youtube", "youtubeId": "ZLXhBKJb01o", "title": "Riesling (Everything you need to know) · Wine Folly" } }
+  ]
+}
