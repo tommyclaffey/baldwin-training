@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
 import { QuizCard, ProgressCard } from '../quiz/QuizCard';
 import { quizPage } from '../quiz/transform';
@@ -24,7 +24,7 @@ export function usePageEntry() {
 }
 
 /** The assembled page from the server (recipes, cocktails and edits included). Falls back to the built-in copy. */
-async function loadPage(file: string): Promise<Page> {
+async function fetchPage(file: string): Promise<Page> {
   try {
     return await api<Page>(`/api/page/${file}`);
   } catch (e) {
@@ -34,6 +34,23 @@ async function loadPage(file: string): Promise<Page> {
     return r.json();
   }
 }
+const inflight = new Map<string, Promise<Page>>();
+/** One request per page at a time; the result is kept so going back is instant. */
+function loadPage(file: string): Promise<Page> {
+  let p = inflight.get(file);
+  if (!p) {
+    p = fetchPage(file).then((pg) => { cache.set(file, pg); return pg; }).finally(() => inflight.delete(file));
+    inflight.set(file, p);
+  }
+  return p;
+}
+/** Loads a page ahead of a click (hover, focus, touch, or links on screen once the page is idle). */
+function prefetch(file: string | undefined) {
+  if (file && !cache.has(file) && !inflight.has(file)) loadPage(file).catch(() => {});
+}
+
+/** Scroll positions per history entry, so Back returns to where you were. */
+const scrolls = new Map<string, number>();
 
 const DESIGN_W = 1176;
 const PHONE_MAX = 860;
@@ -62,28 +79,85 @@ export function PageView() {
   const entry = usePageEntry();
   const session = useSession();
   const quiz = useQuiz();
+  const location = useLocation();
+  const navType = useNavigationType();
   const { ref, zoom, compact } = useFit();
-  const [page, setPage] = useState<Page | null>(entry ? cache.get(entry.file) ?? null : null);
-  const [error, setError] = useState(false);
   const file = entry?.file;
+  // The page on screen. While the next one loads, the current one stays up (no blank screen).
+  const [shown, setShown] = useState<{ file: string; page: Page; key: string } | null>(() => (file && cache.has(file) ? { file, page: cache.get(file)!, key: location.key } : null));
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const bySlug = useMemo(() => new Map(session.index.map((e) => [e.slug, e.file])), [session.index]);
+  const fileFor = (href: string | null) => {
+    if (!href || !href.startsWith('/') || href.startsWith('/admin') || href.startsWith('/media')) return undefined;
+    return bySlug.get(decodeURIComponent(href.split(/[?#]/)[0]).replace(/^\/+|\/+$/g, ''));
+  };
 
   useEffect(() => {
     if (!entry) return;
     document.title = entry.slug ? `${entry.title} · ${PRODUCT_NAME}` : PRODUCT_NAME;
   }, [entry]);
-  useEffect(() => { window.scrollTo(0, 0); }, [file]);
+
+  // Remember where you were on each page.
+  useEffect(() => {
+    const key = location.key;
+    const save = () => scrolls.set(key, window.scrollY);
+    window.addEventListener('scroll', save, { passive: true });
+    return () => { save(); window.removeEventListener('scroll', save); };
+  }, [location.key]);
+
+  // A page already loaded swaps in before the browser paints.
+  useLayoutEffect(() => {
+    if (file && cache.has(file) && shown?.file !== file) setShown({ file, page: cache.get(file)!, key: location.key });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [file]);
 
   useEffect(() => {
     if (!file) return;
-    const hit = cache.get(file);
-    if (hit) setPage(hit); else setPage(null);
-    setError(false);
     let live = true;
-    loadPage(file)
-      .then((p) => { cache.set(file, p); if (live) setPage(p); })
-      .catch(() => { if (live && !hit) setError(true); });
+    setError(false);
+    const hit = cache.get(file);
+    if (!hit) setLoading(true);
+    // Always ask the server too, so edits show; a cached page stays up meanwhile.
+    (hit ? fetchPage(file).then((p) => { cache.set(file, p); return p; }) : loadPage(file))
+      .then((p) => { if (live) setShown({ file, page: p, key: location.key }); })
+      .catch(() => { if (live && !hit) setError(true); })
+      .finally(() => { if (live) setLoading(false); });
     return () => { live = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [file, session.version]);
+
+  // Scroll once the new page is on screen: back to where you were on Back, otherwise to the top.
+  const shownKey = shown?.key;
+  useLayoutEffect(() => {
+    if (!shownKey) return;
+    window.scrollTo(0, navType === 'POP' ? scrolls.get(shownKey) ?? 0 : 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shownKey, shown?.file]);
+
+  // Load pages ahead of a click: on hover, focus or touch, and the page's own links once it's idle.
+  useEffect(() => {
+    const on = (e: Event) => { const a = (e.target as Element | null)?.closest?.('a[href]'); if (a) prefetch(fileFor(a.getAttribute('href'))); };
+    document.addEventListener('pointerover', on, { passive: true });
+    document.addEventListener('touchstart', on, { passive: true });
+    document.addEventListener('focusin', on);
+    return () => { document.removeEventListener('pointerover', on); document.removeEventListener('touchstart', on); document.removeEventListener('focusin', on); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bySlug]);
+  useEffect(() => {
+    if (!shown) return;
+    const idle = (window as Window & { requestIdleCallback?: (cb: () => void) => number }).requestIdleCallback || ((cb: () => void) => window.setTimeout(cb, 600));
+    let stop = false;
+    idle(async () => {
+      const files = [...new Set([...(ref.current?.querySelectorAll('a[href]') || [])].map((a) => fileFor(a.getAttribute('href'))).filter(Boolean) as string[])];
+      for (const f of files.slice(0, 16)) {
+        if (stop) return;
+        if (!cache.has(f)) await loadPage(f).catch(() => {});
+      }
+    });
+    return () => { stop = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shown?.file]);
 
   if (!entry) {
     if (!session.indexLoaded && !session.index.some((e) => e.file.startsWith('i'))) {
@@ -106,7 +180,8 @@ export function PageView() {
       </main>
     );
   }
-  if (!page) return <main ref={ref} className="page page-loading" aria-busy="true"><div className="loader" /></main>;
+  if (!shown) return <main ref={ref} className="page page-loading" aria-busy="true"><div className="loader" /></main>;
+  const page = shown.page;
 
   const isQuiz = page.id === QUIZ_PAGE;
   const { x, y, ...main } = isQuiz ? quizPage(page.main, quiz) : page.main;
@@ -115,7 +190,8 @@ export function PageView() {
     <NavContext.Provider value={entry.nav}>
       <CompactContext.Provider value={compact}>
           <SlotContext.Provider value={isQuiz ? QUIZ_SLOTS : NO_SLOTS}>
-          <main ref={ref} className={'page' + (compact ? ' compact' : '')} style={{ backgroundColor: page.bg }}>
+          {loading && <div className="nav-progress" role="progressbar" aria-label="Loading page" />}
+          <main ref={ref} key={shown.file} aria-busy={loading || undefined} className={'page page-enter' + (compact ? ' compact' : '')} style={{ backgroundColor: page.bg }}>
             <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
           </main>
           </SlotContext.Provider>
