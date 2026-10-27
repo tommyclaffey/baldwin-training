@@ -1,0 +1,147 @@
+{
+  "note": "Sign-off quizzes. Every answer comes from a page in the book (Food Matrix, the Short Rib recipe, the wine and cocktail pages). Stations and allergens are sample data until the chef confirms them. 'answer' is the index of the right option (0 = A).",
+  "passMark": 4,
+  "preShift": { "id": "pre-shift", "title": "Pre-Shift Quiz", "focus": "short-rib", "fromFocus": 2, "total": 5 },
+  "quizzes": [
+    {
+      "id": "short-rib", "title": "Short Rib", "kind": "dish", "page": "/recipe/short-rib",
+      "questions": [
+        { "q": "How long is the Short Rib braised?", "options": ["2 hours", "4 hours", "8 hours", "Overnight"], "answer": 1, "why": "Four hours, lid on, in a 300°F oven until fork-tender." },
+        { "q": "Which wine do we suggest with the Short Rib?", "options": ["Tenuta Spinelli Pecorino", "Bolgheri Rosso", "Fuschia Satin", "Cozy Blankets"], "answer": 1, "why": "It was the best-rated pairing at the tasting (4.62)." },
+        { "q": "What goes on the plate first?", "options": ["The short rib", "Pan gravy", "Carrot ribbon", "Spinach"], "answer": 3, "why": "Spinach first, rib on top, gravy over, carrot ribbon last." },
+        { "q": "Why is the rib portioned cold?", "options": ["So each piece holds its shape", "So it reheats faster", "So the gravy sets", "To keep it moist"], "answer": 0, "why": "It cools in the braising liquid overnight, then gets portioned cold so each piece holds its shape." },
+        { "q": "Which station fires the Short Rib?", "options": ["Oven", "Broil", "Sauté", "Fry"], "answer": 2, "why": "Sauté reheats it in its gravy and wilts the spinach in the same pan." }
+      ]
+    },
+    {
+      "id": "mikes-vegas-pie", "title": "Mike's Vegas Pie", "kind": "dish", "page": "/food-matrix",
+      "questions": [
+        { "q": "Which course is Mike's Vegas Pie?", "options": ["Passed bite", "Plate", "Dessert", "Bar"], "answer": 0, "why": "It's one of the four passed bites." },
+        { "q": "Which station makes it?", "options": ["Fry", "Oven", "Pasta", "Pastry"], "answer": 1, "why": "It comes out of the oven. The Photo Library note says to watch the crust edges." },
+        { "q": "Which allergens are listed for Mike's Vegas Pie?", "options": ["Shellfish and dairy", "Tree nut", "Gluten and dairy", "None listed"], "answer": 2, "why": "Gluten and dairy (sample data, chef to confirm)." },
+        { "q": "What did it score at the tasting?", "options": ["4.13", "4.81", "3.54", "4.42"], "answer": 1, "why": "4.81, the best-rated passed bite." },
+        { "q": "A guest has a shellfish allergy. Can they have Mike's Vegas Pie?", "options": ["No, it has shellfish", "Only without the sauce", "Yes, no shellfish is listed, but confirm with the chef", "Only if it's made fresh"], "answer": 2, "why": "No shellfish is listed. Always confirm allergies with the chef before you promise anything." }
+      ]
+    },
+    {
+      "id": "date-cake", "title": "Date Cake", "kind": "dish", "page": "/food-matrix",
+      "questions": [
+        { "q": "What is the Date Cake served with?", "options": ["Whipped cream", "Caramel sauce", "Crème fraîche", "Ice cream"], "answer": 3, "why": "Date cake with ice cream." },
+        { "q": "Which station makes the Date Cake?", "options": ["Pastry", "Oven", "Garde Manger", "Sauté"], "answer": 0, "why": "Pastry." },
+        { "q": "Which allergens are listed for the Date Cake?", "options": ["Gluten and dairy", "Gluten, dairy and egg", "Tree nut and dairy", "None listed"], "answer": 1, "why": "Gluten, dairy and egg (sample data, chef to confirm)." },
+        { "q": "How many desserts are on the opening menu?", "options": ["One", "Two", "Three", "Four"], "answer": 0, "why": "The Date Cake is the only dessert." },
+        { "q": "What did the Date Cake score at the tasting?", "options": ["4.50", "4.10", "4.69", "4.87"], "answer": 2, "why": "4.69." }
+      ]
+    },
+    {
+      "id": "short-rib-arancini", "title": "Short Rib Arancini", "kind": "dish", "page": "/food-matrix",
+      "questions": [
+        { "q": "What's inside the arancini?", "options": ["Scallop and spinach", "Braised short rib and risotto", "Lemon and ricotta", "Squash and sweet potato"], "answer": 1, "why": "Braised short rib and risotto, in one bite." },
+        { "q": "Which station makes the arancini?", "options": ["Broil", "Oven", "Fry", "Sauté"], "answer": 2, "why": "Fry." },
+        { "q": "Which allergens are listed for the arancini?", "options": ["Dairy, gluten and egg", "Dairy and gluten", "Shellfish", "Tree nut"], "answer": 0, "why": "Dairy, gluten and egg (sample data, chef to confirm)." },
+        { "q": "Which course are the arancini?", "options": ["Plate", "Dessert", "Bar", "Passed bite"], "answer": 3, "why": "A passed bite." },
+        { "q": "What did the arancini score at the tasting?", "options": ["4.68", "4.87", "4.10", "3.54"], "answer": 0, "why": "4.68." }
+      ]
+    },
+    {
+      "id": "scallop-rockefeller", "title": "Scallop Rockefeller", "kind": "dish", "page": "/food-matrix",
+      "questions": [
+        { "q": "What's in the Scallop Rockefeller?", "options": ["Fried scallop and aioli", "Seared scallop, spinach, Rockefeller topping", "Scallop crudo and citrus", "Scallop, risotto and peas"], "answer": 1, "why": "Seared scallop, spinach and a Rockefeller topping." },
+        { "q": "Which station finishes it?", "options": ["Broil", "Fry", "Sauté", "Garde Manger"], "answer": 0, "why": "Broil." },
+        { "q": "Which allergens are listed?", "options": ["Fish and egg", "Dairy only", "Shellfish, dairy and gluten", "Tree nut and dairy"], "answer": 2, "why": "Shellfish, dairy and gluten (sample data, chef to confirm)." },
+        { "q": "A guest with a shellfish allergy wants passed bites. Which one do they skip?", "options": ["Short Rib Arancini", "Mini Lemon Ricotta Ravioli", "Mike's Vegas Pie", "Scallop Rockefeller"], "answer": 3, "why": "The Scallop Rockefeller is the only passed bite with shellfish listed." },
+        { "q": "What did it score at the tasting?", "options": ["4.42", "4.67", "4.81", "4.13"], "answer": 1, "why": "4.67." }
+      ]
+    },
+    {
+      "id": "cauliflower", "title": "Cauliflower", "kind": "dish", "page": "/food-matrix",
+      "questions": [
+        { "q": "Which nut is on the Cauliflower?", "options": ["Almonds", "Walnuts", "Pistachios", "Pine nuts"], "answer": 2, "why": "Roasted cauliflower with pistachios." },
+        { "q": "How does it go to the table?", "options": ["Hot", "Room temperature", "Chilled", "Warm, after resting"], "answer": 0, "why": "Serve hot. The Photo Library says it too." },
+        { "q": "Which station makes it?", "options": ["Garde Manger", "Sauté", "Pasta", "Oven"], "answer": 3, "why": "Oven. It's roasted." },
+        { "q": "Which allergens are listed?", "options": ["Tree nut and dairy", "Gluten and dairy", "Tree nut only", "None listed"], "answer": 0, "why": "Tree nut and dairy (sample data, chef to confirm)." },
+        { "q": "What did the Cauliflower score at the tasting?", "options": ["4.52", "4.64", "4.69", "3.54"], "answer": 1, "why": "4.64." }
+      ]
+    },
+    {
+      "id": "mini-lemon-ricotta-ravioli", "title": "Mini Lemon Ricotta Ravioli", "kind": "dish", "page": "/food-matrix",
+      "questions": [
+        { "q": "What's in the mini ravioli?", "options": ["Lemon and ricotta", "Squash and sweet potato", "Short rib and risotto", "Spinach and parmesan"], "answer": 0, "why": "Lemon and ricotta, one-bite ravioli." },
+        { "q": "Which station makes them?", "options": ["Sauté", "Pastry", "Pasta", "Fry"], "answer": 2, "why": "Pasta." },
+        { "q": "Which allergens are listed?", "options": ["Dairy only", "Gluten, egg and dairy", "Shellfish and gluten", "Tree nut"], "answer": 1, "why": "Gluten, egg and dairy (sample data, chef to confirm)." },
+        { "q": "A guest avoids egg. Which passed bites list egg?", "options": ["Mike's Vegas Pie and Scallop Rockefeller", "Scallop Rockefeller only", "None of them", "Short Rib Arancini and the ravioli"], "answer": 3, "why": "The arancini and the ravioli both list egg." },
+        { "q": "Which white would you suggest with the ravioli?", "options": ["Tenuta Spinelli Pecorino", "Bolgheri Rosso", "Cozy Blankets", "A big Cabernet"], "answer": 0, "why": "The Pecorino page pairs it with the ravioli: citrus and herbs with lemon and ricotta." }
+      ]
+    },
+    {
+      "id": "bolgheri-rosso", "title": "Bolgheri Rosso", "kind": "drink", "page": "/the-bar/wine",
+      "questions": [
+        { "q": "What kind of wine is the Bolgheri Rosso?", "options": ["A white", "A rosé", "A red blend", "A sparkling"], "answer": 2, "why": "A red blend." },
+        { "q": "Which dish do we always suggest it with?", "options": ["Walleye Milanese", "Short Rib", "Date Cake", "Cauliflower"], "answer": 1, "why": "Suggest it with every Short Rib. It was the best-rated pairing at the tasting." },
+        { "q": "Where in Italy is Bolgheri?", "options": ["Piedmont", "Veneto", "Sicily", "The Tuscan coast"], "answer": 3, "why": "Bolgheri is on the coast of Tuscany, where the Super Tuscans are made." },
+        { "q": "What did the pairing score at the tasting?", "options": ["4.62", "4.10", "4.87", "4.44"], "answer": 0, "why": "4.62, the best-rated pairing of the night." },
+        { "q": "When you pour for the table, who gets poured last?", "options": ["The oldest guest", "The host", "Whoever ordered it", "The guest of honor"], "answer": 1, "why": "Pour evenly around the table and finish with the host." }
+      ]
+    },
+    {
+      "id": "cozy-blankets", "title": "Cozy Blankets", "kind": "drink", "page": "/signature/cozy-blankets",
+      "questions": [
+        { "q": "What's the spirit in Cozy Blankets?", "options": ["G4 Tequila", "Bourbon", "DCD Rye", "Dark rum"], "answer": 2, "why": "DCD Rye. Its spice plays off the pear and the ginger." },
+        { "q": "What else goes in it?", "options": ["Spiced pear, lemon, ginger-honey", "Hibiscus, pineapple, lime", "Sweet vermouth and bitters", "Apple, cinnamon, maple"], "answer": 0, "why": "Spiced pear, lemon and ginger-honey." },
+        { "q": "How is it served?", "options": ["Up, in a coupe", "Over one large cube", "On crushed ice", "Topped with soda"], "answer": 1, "why": "Shaken, then strained over one large cube in a rocks glass." },
+        { "q": "Who is it a great pick for?", "options": ["Guests who want something tall and fizzy", "Guests who want zero-proof", "Guests who love tequila", "Guests who don't usually drink whiskey"], "answer": 3, "why": "It won over guests who don't drink whiskey or like ginger." },
+        { "q": "What did it score at the tasting?", "options": ["4.13", "4.44", "4.81", "3.54"], "answer": 1, "why": "4.44, and the status is Keep." }
+      ]
+    },
+    {
+      "id": "agnolotti", "title": "Agnolotti", "kind": "dish", "page": "/food-matrix",
+      "questions": [
+        { "q": "What's in the Agnolotti?", "options": ["Lemon and ricotta", "Short rib and risotto", "Michigan squash, sweet potato purée, blossoms", "Wild mushroom and truffle"], "answer": 2, "why": "Michigan squash, sweet potato purée and blossoms." },
+        { "q": "Which drink pairs with the Agnolotti?", "options": ["Fuschia Satin", "Bolgheri Rosso", "Cozy Blankets", "Tenuta Spinelli Pecorino"], "answer": 0, "why": "The Fuschia Satin." },
+        { "q": "Which station makes it?", "options": ["Sauté", "Pasta", "Oven", "Garde Manger"], "answer": 1, "why": "Pasta. The Photo Library note says roll it thin." },
+        { "q": "Which allergens are listed?", "options": ["Gluten, egg and dairy", "Dairy only", "Tree nut and dairy", "None listed"], "answer": 0, "why": "Gluten, egg and dairy (sample data, chef to confirm)." },
+        { "q": "What did it score at the tasting?", "options": ["4.87", "4.42", "3.54", "4.50"], "answer": 3, "why": "4.50." }
+      ]
+    },
+    {
+      "id": "fuschia-satin", "title": "Fuschia Satin", "kind": "drink", "page": "/signature/fuschia-satin",
+      "questions": [
+        { "q": "What's the spirit in the Fuschia Satin?", "options": ["DCD Rye", "Gin", "G4 Tequila", "Vodka"], "answer": 2, "why": "G4 Tequila. Bright agave holds its own against the hibiscus and pineapple." },
+        { "q": "What glass is it served in?", "options": ["Rocks", "Coupe", "Highball", "Wine glass"], "answer": 1, "why": "A chilled coupe, served up." },
+        { "q": "How is it made?", "options": ["Stirred", "Built in the glass", "Shaken, double strained", "Blended"], "answer": 2, "why": "Shaken hard with ice, then double strained." },
+        { "q": "Why is it being adjusted?", "options": ["Guests found it too sweet", "It was too strong", "It took too long to make", "The color was off"], "answer": 0, "why": "20 of 45 guests who commented called it too sweet. Next: less sugar and clove, keep the acid." },
+        { "q": "Which dish does it pair with?", "options": ["Short Rib", "Date Cake", "Beet Confit", "Agnolotti"], "answer": 3, "why": "The Agnolotti." }
+      ]
+    },
+    {
+      "id": "beet-confit", "title": "Beet Confit", "kind": "dish", "page": "/food-matrix",
+      "questions": [
+        { "q": "Which nut is on the Beet Confit?", "options": ["Pistachios", "Hatch chili almonds", "Candied pecans", "Walnuts"], "answer": 1, "why": "Hatch chili almonds." },
+        { "q": "What's the dairy on the plate?", "options": ["Goat cheese", "Burrata", "Crème fraîche", "Ricotta"], "answer": 2, "why": "Crème fraîche." },
+        { "q": "Which station makes it?", "options": ["Garde Manger", "Oven", "Sauté", "Pastry"], "answer": 0, "why": "Garde Manger." },
+        { "q": "Which allergens are listed?", "options": ["Gluten and dairy", "Shellfish", "Dairy and tree nut", "None listed"], "answer": 2, "why": "Dairy and tree nut (sample data, chef to confirm)." },
+        { "q": "What else is on the plate?", "options": ["Pickled shallots and orange", "Arugula and tomato", "Spinach and carrot ribbon", "Sweet potato and blossoms"], "answer": 0, "why": "Crème fraîche, pickled shallots, orange and hatch chili almonds." }
+      ]
+    },
+    {
+      "id": "tenuta-spinelli-pecorino", "title": "Tenuta Spinelli Pecorino", "kind": "drink", "page": "/wine/white/pecorino",
+      "questions": [
+        { "q": "What kind of wine is the Pecorino?", "options": ["A white", "A red", "A rosé", "An orange wine"], "answer": 0, "why": "A white, made from the Pecorino grape." },
+        { "q": "Which dish do we pair it with?", "options": ["Short Rib", "Walleye Milanese", "Date Cake", "Cauliflower"], "answer": 1, "why": "The Walleye Milanese. Its acidity cuts rich, crusted fish." },
+        { "q": "Where does the Pecorino grape grow?", "options": ["Tuscany and Piedmont", "Burgundy", "Abruzzo and Marche", "Sicily"], "answer": 2, "why": "The Marche and Abruzzo, in Italy." },
+        { "q": "Pecorino is also the name of…", "options": ["A pasta shape", "A town in France", "A cheese", "A cocktail"], "answer": 2, "why": "The grape shares its name with the cheese." },
+        { "q": "How would you describe it to a guest?", "options": ["Big, bold and oaky", "Crisp and a little herbal", "Sweet and fruity", "Smoky and spicy"], "answer": 1, "why": "“A Pecorino from Italy. Crisp and a little herbal. It's lovely with the walleye.”" }
+      ]
+    },
+    {
+      "id": "walleye-milanese", "title": "Walleye Milanese", "kind": "dish", "page": "/food-matrix",
+      "questions": [
+        { "q": "Why check the Walleye spec before every shift?", "options": ["It's being re-tested before opening night", "It's a new supplier", "It sells out early", "It has a new price"], "answer": 0, "why": "Seasoning, skin and where the salad sits may change." },
+        { "q": "What's the sauce on the Walleye Milanese?", "options": ["Pan gravy", "Lemon butter", "Onion soubise", "Romesco"], "answer": 2, "why": "Crusted fillet, onion soubise, arugula and tomato." },
+        { "q": "Which wine do we pair with it?", "options": ["Bolgheri Rosso", "Tenuta Spinelli Pecorino", "Prosecco", "Pinot Noir"], "answer": 1, "why": "The Tenuta Spinelli Pecorino." },
+        { "q": "Which allergens are listed?", "options": ["Fish only", "Fish and gluten", "Shellfish and dairy", "Fish, gluten, egg and dairy"], "answer": 3, "why": "Fish, gluten, egg and dairy (sample data, chef to confirm)." },
+        { "q": "Which station fires it?", "options": ["Sauté", "Broil", "Fry", "Oven"], "answer": 0, "why": "Sauté." }
+      ]
+    }
+  ]
+}

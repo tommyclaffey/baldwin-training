@@ -30,6 +30,16 @@ const MIGRATIONS = [
     title TEXT, file TEXT, mime TEXT, size INT, youtube_id TEXT, created_by INT, created_at TEXT);
   CREATE TABLE audit(id INTEGER PRIMARY KEY, user_id INT, action TEXT NOT NULL, detail TEXT, at TEXT);
   `,
+  `
+  -- Quiz attempts. Staff don't have accounts: a device id (random, stored on their phone) plus the name they type.
+  CREATE TABLE quiz_attempts(
+    id INTEGER PRIMARY KEY, device TEXT NOT NULL, name TEXT NOT NULL, quiz TEXT NOT NULL,
+    score INT NOT NULL, total INT NOT NULL, answers TEXT NOT NULL, at TEXT);
+  CREATE INDEX quiz_attempts_device ON quiz_attempts(device);
+  -- A manager confirms a sign-off after the person plates it or describes it at the table.
+  CREATE TABLE signoffs(
+    device TEXT NOT NULL, quiz TEXT NOT NULL, by_user INT, at TEXT, PRIMARY KEY(device, quiz));
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

@@ -106,3 +106,19 @@ test('invites: owner only, single use', async () => {
   assert.equal((await call(`/api/invite/${token}`, { method: 'POST', body: { name: 'Ed', password: 'long-enough-2' } })).status, 410);
   cookie = ownerCookie;
 });
+
+test('quiz scores are checked by the server, and a manager can sign off', async () => {
+  const device = 'testdevice0123456789';
+  const items = [0, 1, 2, 3, 4].map((i) => `short-rib#${i}`);
+  const r = await call('/api/quiz/attempt', { method: 'POST', body: { device, name: 'Test Server', quiz: 'short-rib', items, answers: [1, 1, 3, 0, 2] }, auth: false });
+  assert.equal(r.status, 200);
+  assert.deepEqual(r.data, { score: 5, total: 5, passed: true });
+  const wrong = await call('/api/quiz/attempt', { method: 'POST', body: { device, name: 'Test Server', quiz: 'short-rib', items: ['date-cake#0'], answers: [3] }, auth: false });
+  assert.equal(wrong.status, 400, 'questions from another quiz are refused');
+  assert.equal((await call('/api/quiz/results', { auth: false })).status, 401);
+  const people = (await call('/api/quiz/results')).data.people;
+  assert.equal(people.find((p) => p.device === device).quizzes['short-rib'].best, 5);
+  assert.equal((await call('/api/quiz/signoff', { method: 'POST', body: { device, quiz: 'short-rib' } })).status, 200);
+  const prog = (await call(`/api/quiz/progress/${device}`, { auth: false })).data;
+  assert.equal(prog.signoffs[0].quiz, 'short-rib');
+});

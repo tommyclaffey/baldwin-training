@@ -6,6 +6,7 @@ import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { hashPassword, verifyPassword, burnPasswordCheck, createSession, sessionUser, endSession, sessionCookie, SESSION_COOKIE, LoginLimiter, publicUser, sha256, newToken } from './auth.mjs';
 import { assemble, fullIndex, listItems, itemEntry } from './content.mjs';
 import { slugify } from './templates.mjs';
+import { score as scoreQuiz, results as quizResults, quizIds } from './quiz.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -14,6 +15,7 @@ const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
 const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
 const limiter = new LoginLimiter();
+const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address
 
 const SECURITY = { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'X-Frame-Options': 'SAMEORIGIN' };
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif', '.svg': 'image/svg+xml', '.mp4': 'video/mp4', '.mov': 'video/quicktime', '.webm': 'video/webm', '.m4v': 'video/mp4' };
@@ -222,6 +224,46 @@ async function api(req, res, url) {
       const token = createSession(db, Number(r.lastInsertRowid));
       return sendJson(res, 200, { user: publicUser(db.prepare('SELECT * FROM users WHERE id = ?').get(r.lastInsertRowid)) }, { 'Set-Cookie': sessionCookie(token, { secure: isSecure(req) }) });
     }
+  }
+
+  /* quizzes: public, so staff can save scores without an account */
+  const device = (v) => (/^[A-Za-z0-9_-]{16,64}$/.test(String(v || '')) ? String(v) : null);
+  if (p === '/api/quiz/attempt' && m === 'POST') {
+    if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
+    const ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0];
+    if (!quizLimiter.check(ip)) fail(429, 'Too many saves. Try again in an hour.');
+    const b = await readJson(req, 20_000);
+    const dev = device(b.device), name = str(b.name, 60);
+    if (!dev) fail(400, 'Missing device.');
+    if (!name) fail(400, 'Add your name so a manager can sign you off.');
+    const r = scoreQuiz(String(b.quiz || ''), b.items, b.answers);
+    if (!r) fail(400, 'That quiz didn’t match. Reload and try again.');
+    quizLimiter.record(ip);
+    db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at) VALUES (?,?,?,?,?,?,?)')
+      .run(dev, name, b.quiz, r.score, r.total, JSON.stringify({ items: b.items, answers: b.answers.map(Number) }), now());
+    return sendJson(res, 200, r);
+  }
+  if (parts[1] === 'quiz' && parts[2] === 'progress' && parts[3] && m === 'GET') {
+    const dev = device(parts[3]);
+    if (!dev) fail(400, 'Missing device.');
+    const signoffs = db.prepare('SELECT quiz, at FROM signoffs WHERE device = ?').all(dev);
+    return sendJson(res, 200, { signoffs });
+  }
+  if (p === '/api/quiz/results' && m === 'GET') {
+    needUser(c, req);
+    return sendJson(res, 200, { people: quizResults(db) });
+  }
+  if (p === '/api/quiz/signoff' && (m === 'POST' || m === 'DELETE')) {
+    const u = needUser(c, req);
+    const b = await readJson(req);
+    const dev = device(b.device), quiz = String(b.quiz || '');
+    if (!dev || !quizIds.has(quiz)) fail(400, 'Missing person or quiz.');
+    const who = db.prepare('SELECT name FROM quiz_attempts WHERE device = ? ORDER BY id DESC LIMIT 1').get(dev);
+    if (!who) fail(404, 'We couldn’t find that person.');
+    if (m === 'POST') db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at) VALUES (?,?,?,?)').run(dev, quiz, u.id, now());
+    else db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ?').run(dev, quiz);
+    audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${who.name} · ${quiz}`);
+    return sendJson(res, 200, { ok: true });
   }
 
   /* content */
