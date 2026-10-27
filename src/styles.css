@@ -424,3 +424,12 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .dot-status { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #CDBFAE; flex: none; }
 .dot-status.on { background: #3F6A39; border-color: #3F6A39; }
 .wine-editor { padding: 4px 0 6px 24px; max-width: 640px; }
+
+/* Moving between pages: the current page stays until the next is ready, then fades in. */
+.page-enter { animation: page-in 200ms cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes page-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.nav-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 90; overflow: hidden; pointer-events: none; animation: progress-show 0s 150ms both; }
+.nav-progress::after { content: ''; position: absolute; inset: 0; width: 40%; background: #C49A6C; animation: progress-run 1s ease-in-out infinite; }
+@keyframes progress-show { from { opacity: 0; } to { opacity: 1; } }
+@keyframes progress-run { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+@media (prefers-reduced-motion: reduce) { .page-enter { animation: none; } .nav-progress::after { animation: none; width: 100%; opacity: .6; } }
