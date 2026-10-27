@@ -276,10 +276,7 @@ function CarouselGroup({ children }: { children: ReactNode }) {
       const gap = step - kids[0].offsetWidth;
       const shown = Math.max(1, Math.floor((el.clientWidth + gap + 2) / step));
       setPos({ first, shown, total: kids.length, atStart: el.scrollLeft < 4, atEnd: el.scrollLeft + el.clientWidth >= el.scrollWidth - 4 });
-      // The row is as tall as the cards in view, so a long card further along doesn't leave a gap.
-      const inView = kids.slice(first, first + shown + 1).filter((k) => k.offsetLeft < el.scrollLeft + el.clientWidth);
-      const h = Math.max(...inView.map((k) => k.offsetHeight));
-      if (h > 0) el.style.height = h + 'px';
+
     };
     measure();
     el.addEventListener('scroll', measure, { passive: true });
