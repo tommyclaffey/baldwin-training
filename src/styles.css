@@ -440,7 +440,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 @media (prefers-reduced-motion: reduce) { .page-enter { animation: none; } .nav-progress::after { animation: none; width: 100%; opacity: .6; } }
 
 /* Carousels (Our signatures on Cocktails): swipe on touch, arrows on desktop. */
-.carousel { align-items: flex-start !important; transition: height .25s ease; flex-wrap: nowrap !important; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; overscroll-behavior-x: contain; }
+.carousel { align-items: stretch !important; flex-wrap: nowrap !important; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; overscroll-behavior-x: contain; }
 .carousel::-webkit-scrollbar { display: none; }
 .carousel > * { scroll-snap-align: start; flex-shrink: 0 !important; }
 .carousel-btn { cursor: pointer; font: inherit; color: inherit; padding: 0; }
@@ -451,3 +451,5 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   .carousel > * { width: 86vw !important; max-width: 520px; flex: 0 0 86vw !important; }
 }
 @media (prefers-reduced-motion: reduce) { .carousel { scroll-behavior: auto; } }
+/* Every card in a carousel is the same size: as tall as the tallest. */
+.carousel > * { align-self: stretch !important; }

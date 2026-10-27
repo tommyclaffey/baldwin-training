@@ -120,12 +120,35 @@ function houseRows(page, house) {
   matrix.c = [...rest.slice(0, at), ...made, ...rest.slice(at)];
 }
 
+/** A stand-in for a missing photo: the glass it's served in, drawn like the Glassware page, and "photo to come". */
+let shapes;
+function glassFiller(proto, glass) {
+  if (!shapes) {
+    shapes = new Map();
+    const gw = baseIndex().find((e) => e.slug === 'bar-basics/glassware');
+    for (const g of gw ? findAll(basePage(gw.file).main, startsWith('Glass · ')) : []) {
+      const sh = find(g, startsWith('Shape · '));
+      if (sh) shapes.set(g.n.slice(8).toLowerCase(), sh.svg);
+    }
+  }
+  const name = String(glass || '').split(/ · | or |\(/)[0].trim() || 'Coupe';
+  const f = clone(proto);
+  const shape = find(f, startsWith('Shape · '));
+  const svg = shapes.get(name.toLowerCase()) || [...shapes].find(([k]) => name.toLowerCase().startsWith(k))?.[1];
+  if (shape && svg) { shape.svg = svg; shape.n = 'Shape · ' + name; }
+  const cap = find(f, byName('Caption'));
+  if (cap) setText(cap, `${name.toUpperCase()} · PHOTO TO COME`);
+  f.n = 'Glass filler · ' + name;
+  return f;
+}
+
 /** Our signatures (Cocktails page): one spec card per drink on our menu, in menu order, each linking to its page. */
 const SECTION_NAME = { 'Specialty Cocktails': 'Specialty', 'BRG Staples': 'BRG staple', Martinis: 'Martini', 'Spiritless & Bubbles': 'Spiritless' };
 function signatureCards(page, house) {
   const row = find(page.main, startsWith('Carousel · '));
   if (!row || !house.length) return;
   const cards = row.c.filter(startsWith('Spec · '));
+  const filler = find(row, byName('Glass filler'));
   const adjusting = cards.find((c) => find(c, byName('Pill · Adjusting'))) || cards[0];
   const keep = cards.find((c) => find(c, byName('Pill · Keep'))) || cards[1] || cards[0];
   // Drinks with a photo lead (they're the ones guests have tasted); the rest follow in menu order.
@@ -135,7 +158,8 @@ function signatureCards(page, house) {
     const card = clone(d.status === 'Adjusting' ? adjusting : keep);
     card.n = 'Spec · ' + d.name; card.to = '/' + e.slug;
     const im = find(card, startsWith('IMG/'));
-    if (im) { im.f = img(d.photo); im.n = 'IMG/' + d.name; }
+    if (im && d.photo) { im.f = img(d.photo); im.n = 'IMG/' + d.name; }
+    else if (im && filler) Object.assign(im, glassFiller(filler, d.glass), { sh: im.sh, sv: im.sv });
     const pill = find(card, startsWith('Pill · '));
     const pillText = d.status || [SECTION_NAME[d.menuSection] || 'On the menu', d.price && '$' + d.price].filter(Boolean).join(' · ');
     if (pill) { pill.n = 'Pill · ' + pillText; setText(texts(pill)[0], pillText); }
@@ -146,11 +170,16 @@ function signatureCards(page, house) {
     const nt = texts(name);
     setText(nt[0], d.tagline || (SECTION_NAME[d.menuSection] ? SECTION_NAME[d.menuSection] + (d.menuSection === 'Martinis' ? '' : ' cocktail') : 'Our signature'));
     setText(nt[1], (d.name || '').toUpperCase());
+    // Long names and ingredients wrap inside the card instead of being cut off.
+    const spec = find(card, byName('Spec'));
+    const col = spec ? spec.w - (spec.pd ? spec.pd[1] + spec.pd[3] : 0) : name.w;
+    name.w = col; name.sh = 'F';
+    for (const t of nt) { t.ar = 'H'; t.w = col; t.sh = 'F'; }
     const build = (d.build || []).filter((b) => b && b.ingredient).slice(0, 8);
-    repeat(find(card, byName('Build')), startsWith('Line · '), build, (l, b) => { l.n = 'Line · ' + b.ingredient; const t = texts(l); setText(t[0], b.amount || ''); setText(t[1], b.ingredient); });
+    repeat(find(card, byName('Build')), startsWith('Line · '), build, (l, b) => { l.n = 'Line · ' + b.ingredient; const t = texts(l); setText(t[0], b.amount || ''); setText(t[1], b.ingredient); t[1].ar = 'H'; t[1].sh = 'L'; });
     const det = find(card, byName('Details'));
     for (const [label, v] of [['Glass', d.glass], ['Ice', d.ice], ['Method', d.method], ['Pairs with', d.pairs]]) {
-      const r = find(det, byName(label)); if (r) setText(texts(r)[1], v || (label === 'Pairs with' ? 'Ask the bar' : 'To confirm'));
+      const r = find(det, byName(label)); if (r) { const t = texts(r)[1]; setText(t, v || (label === 'Pairs with' ? 'Ask the bar' : 'To confirm')); t.ar = 'H'; t.sh = 'L'; r.sh = 'L'; }
     }
     const note = find(card, byName('Tasting note'));
     if (note) setText(texts(note)[0], d.note || d.description || '');
