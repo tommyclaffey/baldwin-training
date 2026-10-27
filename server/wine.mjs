@@ -1,7 +1,11 @@
 // Wine videos: the "Learn more about …" section on every wine page, and a play button on wines on the list.
 // The section is designed once in Figma (Cabernet page, layer "Learn more") and placed on every wine page.
 import { clone, find, byName, findAll, texts, setText, remove } from './templates.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
 import { now } from './db.mjs';
+
+const SEED_FILE = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'content', 'wine-videos.json');
 
 const STYLES = { red: 'Red', white: 'White', rose: 'Rosé', orange: 'Orange', sparkling: 'Sparkling' };
 const COUNTRIES = { italy: 'Italy', france: 'France', usa: 'USA' };
@@ -33,8 +37,23 @@ export function wineVideos(db) {
   for (const r of db.prepare('SELECT * FROM wine_videos').all()) out.set(r.key, { video: JSON.parse(r.video), note: r.note || '', updatedAt: r.updated_at });
   return out;
 }
+/** Starting videos from the repo. Added once; after that the admin owns them (a removed one stays removed). */
+export function seedWineVideos(db) {
+  if (!fs.existsSync(SEED_FILE)) return;
+  const { videos = [] } = JSON.parse(fs.readFileSync(SEED_FILE, 'utf8'));
+  const has = db.prepare('SELECT 1 FROM wine_videos WHERE key = ?');
+  const gone = db.prepare('SELECT 1 FROM seed_removed WHERE seed_key = ?');
+  for (const v of videos) {
+    if (has.get(v.key) || gone.get('wine-video:' + v.key)) continue;
+    db.prepare('INSERT INTO wine_videos(key,video,note,updated_by,updated_at) VALUES (?,?,?,?,?)').run(v.key, JSON.stringify(v.video), v.note || null, null, now());
+  }
+}
 export function setWineVideo(db, key, video, note, userId) {
-  if (!video) { db.prepare('DELETE FROM wine_videos WHERE key = ?').run(key); return; }
+  if (!video) {
+    db.prepare('DELETE FROM wine_videos WHERE key = ?').run(key);
+    db.prepare('INSERT OR IGNORE INTO seed_removed(seed_key) VALUES (?)').run('wine-video:' + key);
+    return;
+  }
   db.prepare('INSERT INTO wine_videos(key,video,note,updated_by,updated_at) VALUES (?,?,?,?,?) ON CONFLICT(key) DO UPDATE SET video=excluded.video, note=excluded.note, updated_by=excluded.updated_by, updated_at=excluded.updated_at')
     .run(key, JSON.stringify(video), note || null, userId ?? null, now());
 }
