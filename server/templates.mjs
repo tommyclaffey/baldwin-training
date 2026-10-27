@@ -189,7 +189,7 @@ export function cocktailPage(template, item, ctx) {
   setText(texts(pb)[1], prev.name); pb.to = '/' + prev.slug;
   setText(texts(nb)[1], next.name); nb.to = '/' + next.slug;
 
-  return { id: 'i' + item.id, name: 'Signature · ' + name, bg: template.bg, main };
+  return { id: 'e' + item.id, name: 'Signature · ' + name, bg: template.bg, main };
 }
 
 /* ------------------------------ dish ------------------------------ */
@@ -220,10 +220,10 @@ export function dishPage(template, item) {
   setText(info.c.find((c) => c.t === 'T'), d.description || '');
 
   const stats = find(header, byName('Stats'));
-  if (d.score) {
-    stats.c = stats.c.slice(0, 1);
-    const st = texts(stats.c[0]);
-    setText(st[0], d.score); setText(st[1], 'guest score');
+  const statList = (d.stats || []).filter((x) => x && x.value);
+  if (!statList.length && d.score) statList.push({ value: d.score, label: 'guest score' });
+  if (statList.length) {
+    repeat(stats, byName('Stat'), statList, (c, x) => { const st = texts(c); setText(st[0], x.value); setText(st[1], x.label || ''); });
   } else remove(main, stats);
 
   const allergens = find(header, byName('Allergens'));
@@ -231,9 +231,6 @@ export function dishPage(template, item) {
   if (!(d.allergens || []).length) {
     const note = allergens.c.filter((c) => c.t === 'T');
     setText(note[note.length - 1], 'None listed · chef to confirm');
-  } else {
-    const note = allergens.c.filter((c) => c.t === 'T');
-    setText(note[note.length - 1], 'Chef to confirm');
   }
 
   // Components table
@@ -257,8 +254,6 @@ export function dishPage(template, item) {
     setText(t[1], s.title || ''); setText(t[2], s.detail || '');
     if (s.time) setText(t[3], s.time); else remove(row, find(row, byName('Time')));
   });
-  const buildTag = find(main, byName('Tag · Sample'));
-  if (buildTag) setText(texts(buildTag)[0], 'Chef to confirm');
 
   // Plating
   const plating = find(main, byName('Plating guide'));
@@ -292,16 +287,20 @@ export function dishPage(template, item) {
   const watch = find(main, byName('Watch it made'));
   const player = find(watch, byName('Player'));
   const still = find(player, startsWith('IMG/'));
-  if (still) still.f = img(d.photo);
+  if (still) still.f = img(d.videoStill || d.photo);
   const pt = texts(player);
   setText(pt[0], d.videoTitle || `${name} · How it’s made`);
-  if (pt[1]) setText(pt[1], '');
+  if (pt[1]) setText(pt[1], d.videoDuration ? `0:00 / ${d.videoDuration}` : '');
   if (d.video) player.vid = d.video;
-  remove(watch, find(watch, byName('Chapters')));
+  const chapters = (d.chapters || []).filter((c) => c && c.label);
+  const chapBox = find(watch, byName('Chapters'));
   const wc = texts(find(watch, byName('Copy')));
+  if (chapters.length && chapBox) {
+    repeat(chapBox, startsWith('Chapter · '), chapters, (c, x) => { c.n = 'Chapter · ' + x.label; const t = texts(c); setText(t[0], x.time || ''); setText(t[1], x.label); });
+  } else { remove(watch, chapBox); remove(watch, wc[3]); }
+  if (!chapters.length) player.c = (player.c || []).filter((c) => c.n !== 'Chapter mark');
   setText(wc[1], d.videoHeading || 'HOW IT’S MADE');
   setText(wc[2], d.videoNote || `A walkthrough of the ${name} from prep to plate.`);
-  remove(watch, wc[3]);
   if (d.video) remove(watch, find(watch, byName('Video note')));
 
   // Photos
@@ -319,8 +318,12 @@ export function dishPage(template, item) {
 
   const signoff = find(main, byName('Sign-off'));
   setText(texts(signoff)[0], `Ready to sign off on the ${name}?`);
+  // Sign-off buttons go to this dish's quiz when there is one.
+  const quiz = item.quiz ? '/quizzes?quiz=' + item.quiz : '/quizzes';
+  for (const b of findAll(main, (n) => n.n === 'Button · Sign Off' || n.n === 'Button · Start')) b.to = quiz;
+  if (!d.signature) tags.c = tags.c.filter((c) => c.n !== 'Tag · Signature');
 
-  return { id: 'i' + item.id, name: `Recipe · ${name}`, bg: template.bg, main };
+  return { id: 'e' + item.id, name: `Recipe · ${name}`, bg: template.bg, main };
 }
 
 /* ------------------------------ lists ------------------------------ */

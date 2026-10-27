@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { CompactContext, EditContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
+import { CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
 import { QuizCard, ProgressCard } from '../quiz/QuizCard';
 import { quizPage } from '../quiz/transform';
 import { useQuiz } from '../quiz/store';
@@ -65,7 +65,6 @@ export function PageView() {
   const { ref, zoom, compact } = useFit();
   const [page, setPage] = useState<Page | null>(entry ? cache.get(entry.file) ?? null : null);
   const [error, setError] = useState(false);
-  const [saveError, setSaveError] = useState('');
   const file = entry?.file;
 
   useEffect(() => {
@@ -85,23 +84,6 @@ export function PageView() {
       .catch(() => { if (live && !hit) setError(true); });
     return () => { live = false; };
   }, [file, session.version]);
-
-  const save = useCallback(async (path: string, value: object) => {
-    if (!page) return;
-    setSaveError('');
-    try {
-      await api('/api/override', { method: 'PUT', body: { pageId: page.id, path, value } });
-      const fresh = await loadPage(file!);
-      cache.set(file!, fresh);
-      setPage(fresh);
-    } catch (e) {
-      setSaveError((e as Error).message);
-      throw e;
-    }
-  }, [page, file]);
-  // Recipe and cocktail pages added in the admin are edited in their form, so the page and the form never disagree.
-  const editing = session.editing && !!page && !page.id.startsWith('i');
-  const editApi = useMemo(() => ({ pageId: page?.id ?? '', editing, save }), [page, editing, save]);
 
   if (!entry) {
     if (!session.indexLoaded && !session.index.some((e) => e.file.startsWith('i'))) {
@@ -132,14 +114,11 @@ export function PageView() {
   return (
     <NavContext.Provider value={entry.nav}>
       <CompactContext.Provider value={compact}>
-        <EditContext.Provider value={editApi}>
           <SlotContext.Provider value={isQuiz ? QUIZ_SLOTS : NO_SLOTS}>
-          <main ref={ref} className={'page' + (compact ? ' compact' : '') + (editing ? ' is-editing' : '')} style={{ backgroundColor: page.bg }}>
+          <main ref={ref} className={'page' + (compact ? ' compact' : '')} style={{ backgroundColor: page.bg }}>
             <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
           </main>
-          {saveError && <div className="toast error" role="alert">{saveError} <button className="link-btn" onClick={() => setSaveError('')}>Dismiss</button></div>}
           </SlotContext.Provider>
-        </EditContext.Provider>
       </CompactContext.Provider>
     </NavContext.Provider>
   );

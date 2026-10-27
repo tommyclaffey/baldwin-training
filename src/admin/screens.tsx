@@ -5,7 +5,7 @@ import { api, uploadFile, type MediaItem, type User } from '../lib/api';
 import { useSession } from '../lib/session';
 import { VideoEmbed } from '../components/VideoEmbed';
 import { Empty, ErrorNote, Loading, Text, when } from './ui';
-import { typeLabel, type Item, type ItemType } from './ItemEditor';
+import { useCollections } from './cms';
 import { PRODUCT_NAME } from '../lib/brand';
 import { BANK, QUIZZES as QUIZ_LIST } from '../quiz/store';
 const QUIZ_PASS = BANK.passMark;
@@ -113,63 +113,21 @@ export function AcceptInvite() {
 
 /* ---------- overview ---------- */
 export function Overview() {
-  const { user, setEditing } = useSession();
-  const items = useLoad<{ items: Item[] }>('/api/items');
+  const { user } = useSession();
+  const { data } = useCollections();
   const media = useLoad<{ media: MediaItem[] }>('/api/media');
-  const nav = useNavigate();
-  const count = (t: ItemType) => items.data?.items.filter((i) => i.type === t).length ?? '–';
   return (
     <div className="admin-page">
       <h1>Hi, {user?.name.split(' ')[0]}</h1>
-      <p className="muted">Change anything in {PRODUCT_NAME}. Changes show for everyone as soon as you save.</p>
+      <p className="muted">Pick a page type, then add a page or edit one by filling in its template. Lists like the Cocktails table and the Food Matrix fill in on their own.</p>
       <div className="tiles">
-        <button className="tile" onClick={() => { setEditing(true); nav('/'); }}>
-          <strong>Edit the pages</strong>
-          <span>Turn on editing, then click any text, photo or video slot on any page.</span>
-        </button>
-        <Link className="tile" to="/admin/recipes"><strong>Recipes · {count('dish')}</strong><span>Add a dish. It gets its own page and a row in the Food Matrix.</span></Link>
-        <Link className="tile" to="/admin/cocktails"><strong>House cocktails · {count('cocktail')}</strong><span>Add one of our drinks. It gets its own page and a row on Cocktails.</span></Link>
-        <Link className="tile" to="/admin/media"><strong>Videos and photos · {media.data?.media.length ?? '–'}</strong><span>Upload files or add YouTube links, then use them on any page.</span></Link>
-      </div>
-    </div>
-  );
-}
-
-/* ---------- recipes / cocktails list ---------- */
-export function ItemList({ type }: { type: ItemType }) {
-  const { data, error, load } = useLoad<{ items: Item[] }>(`/api/items?type=${type}`);
-  const base = type === 'dish' ? '/admin/recipes' : '/admin/cocktails';
-  const builtIn = type === 'dish' ? [{ name: 'Short Rib', slug: 'recipe/short-rib' }] : [{ name: 'Fuschia Satin', slug: 'signature/fuschia-satin' }, { name: 'Cozy Blankets', slug: 'signature/cozy-blankets' }];
-  return (
-    <div className="admin-page">
-      <div className="editor-head">
-        <div>
-          <h1>{type === 'dish' ? 'Recipes' : 'House cocktails'}</h1>
-          <p className="muted">{type === 'dish' ? 'Each recipe becomes a page like Short Rib and a row in the Food Matrix.' : 'Each drink becomes a page like Fuschia Satin and a row on the Cocktails page.'}</p>
-        </div>
-        <Link className="btn" to={`${base}/new`}>Add {typeLabel(type)}</Link>
-      </div>
-      {error && <ErrorNote error={error} retry={load} />}
-      {!data && !error && <Loading />}
-      {data && (
-        <div className="list">
-          {data.items.map((it) => (
-            <Link key={it.id} className="list-row" to={`${base}/${it.id}`}>
-              {it.data.photo ? <img src={it.data.photo as string} alt="" /> : <span className="thumb-empty" />}
-              <span className="grow"><strong>{it.data.name}</strong><small>{(it.data.tagline as string) || '—'}</small></span>
-              <small className="muted">{it.data.video ? 'Has video · ' : ''}Edited {when(it.updated_at)}</small>
-            </Link>
-          ))}
-          {data.items.length === 0 && <Empty title={`No ${type === 'dish' ? 'recipes' : 'house cocktails'} added yet`}><p className="muted">Add the first one. It shows up in the book right away.</p></Empty>}
-        </div>
-      )}
-      <h2 className="sub">Built into the design</h2>
-      <p className="muted small">These pages came from the design. Edit them on the page itself: turn on editing and click what you want to change.</p>
-      <div className="list">
-        {builtIn.map((b) => (
-          <Link key={b.slug} className="list-row" to={'/' + b.slug}><span className="thumb-empty" /><span className="grow"><strong>{b.name}</strong><small>Edit on the page</small></span></Link>
+        {data && Object.values(data.collections).map((c) => (
+          <Link key={c.id} className="tile" to={`/admin/pages/${c.id}`}><strong>{c.label} · {data.counts[c.id]}</strong><span>{c.lists}</span></Link>
         ))}
+        <Link className="tile" to="/admin/media"><strong>Videos and photos · {media.data?.media.length ?? '–'}</strong><span>Upload files or add YouTube links, then pick them in any page’s form.</span></Link>
+        <Link className="tile" to="/admin/quizzes"><strong>Quiz results</strong><span>See who passed, and sign people off.</span></Link>
       </div>
+      <p className="muted small">Other pages (spirits, wine, beer, service) still come from the design. They move into the CMS next, one page type at a time.</p>
     </div>
   );
 }
@@ -205,7 +163,7 @@ export function MediaLibrary() {
   return (
     <div className="admin-page">
       <h1>Videos and photos</h1>
-      <p className="muted">Everything here can be used in any video or photo slot. To put one on a page, turn on editing and click the slot.</p>
+      <p className="muted">Everything here can be picked in any page’s form, wherever there’s a photo or video.</p>
       <div className="grid2 media-add">
         <label className="drop">
           <input type="file" multiple accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,video/webm" onChange={(e) => upload(e.target.files)} />

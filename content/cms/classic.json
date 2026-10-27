@@ -1,0 +1,2098 @@
+[
+ {
+  "key": "classic/old-fashioned",
+  "slug": "classic/old-fashioned",
+  "data": {
+   "name": "Old Fashioned",
+   "family": "Stirred",
+   "tagline": "The original cocktail",
+   "description": "Whiskey, a little sugar and bitters, stirred and poured over a big cube. The drink every bartender should nail.",
+   "photo": "/img/5e5d6ac14e27.jpg",
+   "photoCredit": "Jakub Dziubak · Unsplash (stand-in)",
+   "color": "#B46A28",
+   "glass": "Rocks",
+   "method": "Stirred",
+   "ice": "Large cube",
+   "garnish": "Orange peel",
+   "tableBase": "Bourbon or rye",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Bourbon or rye",
+     "spirit": true,
+     "link": "/spirit/bourbon"
+    },
+    {
+     "amount": "¼ oz",
+     "ingredient": "Simple syrup (or 1 sugar cube)",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "2–3 dashes",
+     "ingredient": "Angostura bitters",
+     "spirit": false,
+     "link": "/spirit/bitters/aromatic"
+    }
+   ],
+   "steps": [
+    "Add syrup and bitters to a mixing glass.",
+    "Add whiskey and ice. Stir 20–30 seconds.",
+    "Strain over a large cube.",
+    "Express an orange peel over the top and drop it in."
+   ],
+   "flavors": [
+    "Whiskey",
+    "Caramel",
+    "Orange",
+    "Spice"
+   ],
+   "tasteLine": "Strong and smooth. Basically whiskey, seasoned.",
+   "riffs": [
+    {
+     "name": "Oaxaca Old Fashioned",
+     "note": "Tequila and mezcal with agave.",
+     "link": ""
+    },
+    {
+     "name": "Rum Old Fashioned",
+     "note": "Aged rum instead of whiskey.",
+     "link": ""
+    },
+    {
+     "name": "Sazerac",
+     "note": "The New Orleans cousin.",
+     "link": "/classic/sazerac"
+    }
+   ],
+   "spiritName": "Bourbon",
+   "spiritLine": "The whiskey is the star. A higher-proof bourbon, or a spicy rye, stands up to the sugar and bitters.",
+   "spiritLinkLabel": "Learn about bourbon",
+   "spiritLink": "/spirit/bourbon",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Bourbon",
+     "link": "/spirit/bourbon"
+    },
+    {
+     "label": "Rye",
+     "link": "/spirit/rye"
+    },
+    {
+     "label": "Aromatic bitters",
+     "link": "/spirit/bitters/aromatic"
+    }
+   ],
+   "say": "“An Old Fashioned: whiskey, a little sugar and bitters, with an orange peel. Bourbon or rye?”",
+   "story": "One of the oldest cocktails. In the early 1800s a “cocktail” meant spirit, sugar, water and bitters. As drinks got fancier, guests asked for whiskey cocktails made “the old-fashioned way,” and the name stuck.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "pdcrJ5V7YKM",
+    "title": "How I Make an Old Fashioned · Anders Erickson"
+   },
+   "glassCard": "Rocks",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 0
+ },
+ {
+  "key": "classic/manhattan",
+  "slug": "classic/manhattan",
+  "data": {
+   "name": "Manhattan",
+   "family": "Stirred",
+   "tagline": "Rye, vermouth, bitters",
+   "description": "Rye whiskey and sweet vermouth with bitters, stirred and served up with a cherry. Rich and elegant.",
+   "photo": "/img/8130b0d82b8b.jpg",
+   "photoCredit": "David Valentine · Unsplash (stand-in)",
+   "color": "#7A2E1C",
+   "glass": "Coupe or Nick & Nora",
+   "method": "Stirred",
+   "ice": "None (served up)",
+   "garnish": "Brandied cherry",
+   "tableBase": "Rye whiskey",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Rye whiskey",
+     "spirit": true,
+     "link": "/spirit/rye"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Sweet vermouth",
+     "spirit": false,
+     "link": "/bottle/sweet-vermouth"
+    },
+    {
+     "amount": "2 dashes",
+     "ingredient": "Angostura bitters",
+     "spirit": false,
+     "link": "/spirit/bitters/aromatic"
+    }
+   ],
+   "steps": [
+    "Chill the glass.",
+    "Stir everything with ice for about 30 seconds.",
+    "Strain into the chilled glass.",
+    "Garnish with a brandied cherry."
+   ],
+   "flavors": [
+    "Rye spice",
+    "Cherry",
+    "Vermouth",
+    "Rich"
+   ],
+   "tasteLine": "Smooth, rich and a little sweet.",
+   "riffs": [
+    {
+     "name": "Perfect Manhattan",
+     "note": "Half sweet, half dry vermouth.",
+     "link": ""
+    },
+    {
+     "name": "Rob Roy",
+     "note": "Made with Scotch.",
+     "link": "/spirit/scotch"
+    },
+    {
+     "name": "Black Manhattan",
+     "note": "Averna instead of vermouth.",
+     "link": "/spirit/amaro/medium"
+    }
+   ],
+   "spiritName": "Rye",
+   "spiritLine": "Rye’s spice balances the sweet vermouth. That’s why it’s the classic choice.",
+   "spiritLinkLabel": "Learn about rye",
+   "spiritLink": "/spirit/rye",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Rye",
+     "link": "/spirit/rye"
+    },
+    {
+     "label": "Sweet Vermouth",
+     "link": "/bottle/sweet-vermouth"
+    },
+    {
+     "label": "Aromatic bitters",
+     "link": "/spirit/bitters/aromatic"
+    }
+   ],
+   "say": "“A Manhattan: rye, sweet vermouth and bitters, served up with a cherry.”",
+   "story": "Born in New York in the 1870s or 1880s. A popular story ties it to the Manhattan Club, but nobody knows for sure. It was one of the first cocktails made with vermouth.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "eWESf1b317Y",
+    "title": "How to Make a Manhattan · Anders Erickson"
+   },
+   "glassCard": "Coupe or Nick & Nora",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 1
+ },
+ {
+  "key": "classic/martini",
+  "slug": "classic/martini",
+  "data": {
+   "name": "Martini",
+   "family": "Stirred",
+   "tagline": "Gin and dry vermouth",
+   "description": "Gin and dry vermouth, stirred ice-cold and served up with a twist or olives. Simple, so every detail matters.",
+   "photo": "/img/98f69a7fb7fe.jpg",
+   "photoCredit": "Ambitious Studio · Unsplash (stand-in)",
+   "color": "#EEF0E6",
+   "glass": "Martini or Nick & Nora",
+   "method": "Stirred",
+   "ice": "None (served up)",
+   "garnish": "Lemon twist or olives",
+   "tableBase": "Gin (or vodka)",
+   "build": [
+    {
+     "amount": "2½ oz",
+     "ingredient": "Gin (or vodka)",
+     "spirit": true,
+     "link": "/spirit/vodka"
+    },
+    {
+     "amount": "½ oz",
+     "ingredient": "Dry vermouth",
+     "spirit": false,
+     "link": "/bottle/dry-vermouth"
+    },
+    {
+     "amount": "1 dash",
+     "ingredient": "Orange bitters (optional)",
+     "spirit": false,
+     "link": "/spirit/bitters/orange"
+    }
+   ],
+   "steps": [
+    "Chill the glass.",
+    "Stir with ice for about 30 seconds, until very cold.",
+    "Strain into the chilled glass.",
+    "Twist or olives, as the guest asked."
+   ],
+   "flavors": [
+    "Juniper",
+    "Dry",
+    "Citrus peel",
+    "Crisp"
+   ],
+   "tasteLine": "Clean, cold and bracing.",
+   "riffs": [
+    {
+     "name": "Dirty Martini",
+     "note": "Add olive brine.",
+     "link": ""
+    },
+    {
+     "name": "Gibson",
+     "note": "Garnished with cocktail onions.",
+     "link": ""
+    },
+    {
+     "name": "Vesper",
+     "note": "Gin, vodka and Lillet.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Gin",
+   "spiritLine": "A London Dry gin gives the classic crisp, juniper bite.",
+   "spiritLinkLabel": "Learn about gin",
+   "spiritLink": "/spirit/gin/london-dry",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Gin",
+     "link": "/spirit/gin"
+    },
+    {
+     "label": "Dry Vermouth",
+     "link": "/bottle/dry-vermouth"
+    },
+    {
+     "label": "Orange bitters",
+     "link": "/spirit/bitters/orange"
+    },
+    {
+     "label": "Vodka",
+     "link": "/spirit/vodka"
+    }
+   ],
+   "say": "“Gin or vodka? Olives or a twist?” Always ask both.",
+   "story": "The Martini grew out of sweeter gin-and-vermouth drinks in the late 1800s. Through the 1900s it got drier and drier, and James Bond made “shaken, not stirred” famous.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "izZsjqnADAA",
+    "title": "How to make a Martini · Anders Erickson"
+   },
+   "glassCard": "Martini or Nick & Nora",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 2
+ },
+ {
+  "key": "classic/negroni",
+  "slug": "classic/negroni",
+  "data": {
+   "name": "Negroni",
+   "family": "Stirred",
+   "tagline": "Equal parts, bittersweet",
+   "description": "Gin, Campari and sweet vermouth in equal parts, stirred over ice. Bitter, bold and a classic before dinner.",
+   "photo": "/img/c5340ce050c6.jpg",
+   "photoCredit": "Marvin Meyer · Unsplash (stand-in)",
+   "color": "#C2272D",
+   "glass": "Rocks",
+   "method": "Stirred",
+   "ice": "Large cube",
+   "garnish": "Orange peel",
+   "tableBase": "Gin",
+   "build": [
+    {
+     "amount": "1 oz",
+     "ingredient": "Gin",
+     "spirit": false,
+     "link": "/spirit/gin"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Campari",
+     "spirit": false,
+     "link": "/bottle/campari"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Sweet vermouth",
+     "spirit": false,
+     "link": "/bottle/sweet-vermouth"
+    }
+   ],
+   "steps": [
+    "Stir everything with ice for about 20 seconds.",
+    "Strain over a large cube.",
+    "Express an orange peel over the top."
+   ],
+   "flavors": [
+    "Bitter orange",
+    "Herbal",
+    "Juniper",
+    "Bittersweet"
+   ],
+   "tasteLine": "Bitter first, then sweet and herbal.",
+   "riffs": [
+    {
+     "name": "Boulevardier",
+     "note": "Whiskey instead of gin.",
+     "link": "/classic/boulevardier"
+    },
+    {
+     "name": "Negroni Sbagliato",
+     "note": "Prosecco instead of gin.",
+     "link": "/wine/sparkling/prosecco"
+    },
+    {
+     "name": "Mezcal Negroni",
+     "note": "Smoky mezcal instead of gin.",
+     "link": "/spirit/mezcal"
+    }
+   ],
+   "spiritName": "Campari",
+   "spiritLine": "Campari gives the Negroni its red color and its bitter backbone.",
+   "spiritLinkLabel": "Learn about Campari",
+   "spiritLink": "/bottle/campari",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Gin",
+     "link": "/spirit/gin"
+    },
+    {
+     "label": "Campari",
+     "link": "/bottle/campari"
+    },
+    {
+     "label": "Sweet Vermouth",
+     "link": "/bottle/sweet-vermouth"
+    }
+   ],
+   "say": "“A Negroni: gin, Campari and sweet vermouth. Bitter and bold.”",
+   "story": "Legend says Count Camillo Negroni asked for gin instead of soda in his Americano, in Florence around 1919. It became Italy’s classic before-dinner drink.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "lgy6vEX_hQg",
+    "title": "The Negroni and the Americano · Anders Erickson"
+   },
+   "glassCard": "Rocks",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 3
+ },
+ {
+  "key": "classic/boulevardier",
+  "slug": "classic/boulevardier",
+  "data": {
+   "name": "Boulevardier",
+   "family": "Stirred",
+   "tagline": "The whiskey Negroni",
+   "description": "A Negroni made with bourbon or rye instead of gin. Richer and warmer, great for fall and winter.",
+   "photo": "/img/ab7a01b811ce.jpg",
+   "photoCredit": "Collab Media · Unsplash (stand-in)",
+   "color": "#8E2A22",
+   "glass": "Rocks or coupe",
+   "method": "Stirred",
+   "ice": "Large cube, or up",
+   "garnish": "Orange peel",
+   "tableBase": "Bourbon or rye",
+   "build": [
+    {
+     "amount": "1¼ oz",
+     "ingredient": "Bourbon or rye",
+     "spirit": true,
+     "link": "/spirit/bourbon"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Campari",
+     "spirit": false,
+     "link": "/bottle/campari"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Sweet vermouth",
+     "spirit": false,
+     "link": "/bottle/sweet-vermouth"
+    }
+   ],
+   "steps": [
+    "Stir everything with ice for about 20 seconds.",
+    "Strain over a large cube, or up into a coupe.",
+    "Express an orange peel over the top."
+   ],
+   "flavors": [
+    "Whiskey",
+    "Bitter orange",
+    "Cherry",
+    "Warm"
+   ],
+   "tasteLine": "Bittersweet and warming.",
+   "riffs": [
+    {
+     "name": "Negroni",
+     "note": "The gin original.",
+     "link": "/classic/negroni"
+    },
+    {
+     "name": "Old Pal",
+     "note": "Rye, Campari and dry vermouth.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Bourbon",
+   "spiritLine": "Bourbon makes it rounder and sweeter than a Negroni.",
+   "spiritLinkLabel": "Learn about bourbon",
+   "spiritLink": "/spirit/bourbon",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Bourbon",
+     "link": "/spirit/bourbon"
+    },
+    {
+     "label": "Rye",
+     "link": "/spirit/rye"
+    },
+    {
+     "label": "Campari",
+     "link": "/bottle/campari"
+    },
+    {
+     "label": "Sweet Vermouth",
+     "link": "/bottle/sweet-vermouth"
+    }
+   ],
+   "say": "“A Boulevardier is a Negroni made with whiskey. Richer and warmer.”",
+   "story": "Named after Boulevardier, a magazine for Americans in Paris. It first appeared in a 1927 bar book from Harry’s New York Bar in Paris.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "VAK-A7laGuE",
+    "title": "The Boulevardier · Anders Erickson"
+   },
+   "glassCard": "Rocks or Coupe",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 4
+ },
+ {
+  "key": "classic/sazerac",
+  "slug": "classic/sazerac",
+  "data": {
+   "name": "Sazerac",
+   "family": "Stirred",
+   "tagline": "New Orleans in a glass",
+   "description": "Rye, sugar and Peychaud’s bitters in a glass rinsed with absinthe. Served cold with no ice.",
+   "photo": "/img/dd70055a21a1.jpg",
+   "photoCredit": "Wenhao Wang · Unsplash (stand-in)",
+   "color": "#A8452C",
+   "glass": "Rocks (no ice)",
+   "method": "Stirred",
+   "ice": "None (chilled glass)",
+   "garnish": "Lemon peel, discarded",
+   "tableBase": "Rye whiskey",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Rye whiskey",
+     "spirit": true,
+     "link": "/spirit/rye"
+    },
+    {
+     "amount": "¼ oz",
+     "ingredient": "Simple syrup",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "3 dashes",
+     "ingredient": "Peychaud’s bitters",
+     "spirit": false,
+     "link": "/spirit/bitters/creole"
+    },
+    {
+     "amount": "Rinse",
+     "ingredient": "Absinthe",
+     "spirit": false,
+     "link": "/spirit/liqueurs/herbal"
+    }
+   ],
+   "steps": [
+    "Rinse a chilled rocks glass with absinthe and dump the extra.",
+    "Stir rye, syrup and bitters with ice.",
+    "Strain into the glass, no ice.",
+    "Express a lemon peel over the top, then discard it."
+   ],
+   "flavors": [
+    "Anise",
+    "Rye spice",
+    "Cherry",
+    "Aromatic"
+   ],
+   "tasteLine": "Aromatic and strong, with a hint of licorice.",
+   "riffs": [
+    {
+     "name": "Cognac Sazerac",
+     "note": "The original base spirit.",
+     "link": "/spirit/cognac"
+    },
+    {
+     "name": "Vieux Carré",
+     "note": "Rye, cognac, vermouth and Bénédictine.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Rye",
+   "spiritLine": "Rye was the New Orleans standard: spicy and bold.",
+   "spiritLinkLabel": "Learn about rye",
+   "spiritLink": "/spirit/rye",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Rye",
+     "link": "/spirit/rye"
+    },
+    {
+     "label": "Creole bitters",
+     "link": "/spirit/bitters/creole"
+    },
+    {
+     "label": "Absinthe",
+     "link": "/spirit/liqueurs/herbal"
+    }
+   ],
+   "say": "“A Sazerac: rye, Peychaud’s bitters and an absinthe rinse. Strong and aromatic.”",
+   "story": "Named after Sazerac cognac, its original base in 1800s New Orleans. Rye took over later. Today it’s the official cocktail of New Orleans.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "dJ-sAEzw9Jc",
+    "title": "The Sazerac Cocktail · Anders Erickson"
+   },
+   "glassCard": "Rocks",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 5
+ },
+ {
+  "key": "classic/margarita",
+  "slug": "classic/margarita",
+  "data": {
+   "name": "Margarita",
+   "family": "Shaken",
+   "tagline": "Tequila, lime, orange",
+   "description": "Tequila, fresh lime and orange liqueur, shaken and served on the rocks or up, usually with salt.",
+   "photo": "/img/87b6a14d041a.jpg",
+   "photoCredit": "Brian Jones · Unsplash (stand-in)",
+   "color": "#E9E3B0",
+   "glass": "Rocks or coupe",
+   "method": "Shaken",
+   "ice": "Fresh ice, or up",
+   "garnish": "Salt rim, lime wheel",
+   "tableBase": "Blanco tequila",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Blanco tequila",
+     "spirit": true,
+     "link": "/spirit/tequila/blanco"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Fresh lime juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Orange liqueur",
+     "spirit": false,
+     "link": "/spirit/liqueurs/orange"
+    },
+    {
+     "amount": "¼ oz",
+     "ingredient": "Agave syrup (optional)",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Salt the rim if the guest wants it (half rim is a nice option).",
+    "Shake everything hard with ice.",
+    "Strain over fresh ice, or up.",
+    "Garnish with a lime wheel."
+   ],
+   "flavors": [
+    "Lime",
+    "Agave",
+    "Orange",
+    "Salt"
+   ],
+   "tasteLine": "Tart, bright and refreshing.",
+   "riffs": [
+    {
+     "name": "Tommy’s Margarita",
+     "note": "Agave syrup instead of orange liqueur.",
+     "link": ""
+    },
+    {
+     "name": "Spicy Margarita",
+     "note": "Muddled jalapeño.",
+     "link": ""
+    },
+    {
+     "name": "Mezcal Margarita",
+     "note": "Smoky mezcal instead of tequila.",
+     "link": "/spirit/mezcal"
+    }
+   ],
+   "spiritName": "Blanco tequila",
+   "spiritLine": "A 100% agave blanco keeps it bright and peppery.",
+   "spiritLinkLabel": "Learn about blanco tequila",
+   "spiritLink": "/spirit/tequila/blanco",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Blanco tequila",
+     "link": "/spirit/tequila/blanco"
+    },
+    {
+     "label": "Orange liqueur",
+     "link": "/spirit/liqueurs/orange"
+    },
+    {
+     "label": "Mezcal",
+     "link": "/spirit/mezcal"
+    }
+   ],
+   "say": "“Salt, no salt, or half? Rocks or up?”",
+   "story": "Several bartenders in Mexico and the US claimed to invent it in the 1930s and 40s. Nobody knows for sure. Today it’s one of the most popular cocktails in America.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "jxpT11WEtWQ",
+    "title": "5 ways to make a Margarita · Anders Erickson"
+   },
+   "glassCard": "Rocks or Coupe",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 6
+ },
+ {
+  "key": "classic/daiquiri",
+  "slug": "classic/daiquiri",
+  "data": {
+   "name": "Daiquiri",
+   "family": "Shaken",
+   "tagline": "Rum, lime, sugar",
+   "description": "Rum, fresh lime and sugar, shaken and served up. Not the frozen kind: the classic is three ingredients, perfectly balanced.",
+   "photo": "/img/257da726fdcb.jpg",
+   "photoCredit": "James McGraw · Unsplash (stand-in)",
+   "color": "#ECEBC8",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "ice": "None (served up)",
+   "garnish": "Lime wheel",
+   "tableBase": "White rum",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "White rum",
+     "spirit": true,
+     "link": "/spirit/rum/white"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Fresh lime juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Simple syrup",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Shake hard with ice for 10–12 seconds.",
+    "Double strain into a chilled coupe.",
+    "Garnish with a lime wheel."
+   ],
+   "flavors": [
+    "Lime",
+    "Rum",
+    "Bright",
+    "Tart"
+   ],
+   "tasteLine": "The perfect sour.",
+   "riffs": [
+    {
+     "name": "Hemingway Daiquiri",
+     "note": "Grapefruit and maraschino.",
+     "link": ""
+    },
+    {
+     "name": "Strawberry Daiquiri",
+     "note": "With fresh strawberries.",
+     "link": ""
+    }
+   ],
+   "spiritName": "White rum",
+   "spiritLine": "A clean white rum lets the lime shine.",
+   "spiritLinkLabel": "Learn about white rum",
+   "spiritLink": "/spirit/rum/white",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "White rum",
+     "link": "/spirit/rum/white"
+    }
+   ],
+   "say": "“A classic daiquiri: rum, lime and sugar, shaken and served up.”",
+   "story": "Named after a beach near Santiago de Cuba, where Americans mixed rum, lime and sugar around 1900. Hemingway helped make the Havana daiquiri famous.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "71jQRf5UrpE",
+    "title": "The Daiquiri · Anders Erickson"
+   },
+   "glassCard": "Coupe",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 7
+ },
+ {
+  "key": "classic/whiskey-sour",
+  "slug": "classic/whiskey-sour",
+  "data": {
+   "name": "Whiskey Sour",
+   "family": "Shaken",
+   "tagline": "Silky, with a foam",
+   "description": "Bourbon, lemon and sugar, often shaken with egg white for a silky foam topped with bitters.",
+   "photo": "/img/a1f57ac73f9c.jpg",
+   "photoCredit": "Poul Hoang · Unsplash (stand-in)",
+   "color": "#E7C98A",
+   "glass": "Rocks or coupe",
+   "method": "Dry shake, then shake",
+   "ice": "Fresh ice",
+   "garnish": "Bitters on the foam, cherry",
+   "tableBase": "Bourbon",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Bourbon",
+     "spirit": true,
+     "link": "/spirit/bourbon"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Fresh lemon juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Simple syrup",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Egg white (optional)",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Shake everything without ice first (dry shake) to build the foam.",
+    "Add ice and shake again.",
+    "Strain over fresh ice.",
+    "Add 3 drops of bitters on the foam and a cherry."
+   ],
+   "flavors": [
+    "Lemon",
+    "Vanilla",
+    "Silky foam",
+    "Bourbon"
+   ],
+   "tasteLine": "Tart, round and silky.",
+   "riffs": [
+    {
+     "name": "Pisco Sour",
+     "note": "Pisco, lime and egg white.",
+     "link": "/classic/pisco-sour"
+    },
+    {
+     "name": "New York Sour",
+     "note": "A red wine float on top.",
+     "link": ""
+    },
+    {
+     "name": "Amaretto Sour",
+     "note": "Amaretto instead of whiskey.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Bourbon",
+   "spiritLine": "Bourbon’s vanilla and caramel round out the lemon.",
+   "spiritLinkLabel": "Learn about bourbon",
+   "spiritLink": "/spirit/bourbon",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Bourbon",
+     "link": "/spirit/bourbon"
+    },
+    {
+     "label": "Aromatic bitters",
+     "link": "/spirit/bitters/aromatic"
+    },
+    {
+     "label": "Pisco",
+     "link": "/spirit/pisco"
+    }
+   ],
+   "say": "“A whiskey sour, made with egg white for a silky foam. With or without egg?”",
+   "story": "Sours go back to sailors mixing spirits with citrus. The Whiskey Sour was in print by the 1860s, and egg white foam is the classic option.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "bxTRtiS06W0",
+    "title": "How to Make the Best Whiskey Sour · Anders Erickson"
+   },
+   "glassCard": "Rocks or Coupe",
+   "allergyTag": "Contains egg white",
+   "allergyNote": "Egg white is raw and optional. Ask every guest, and note it on the ticket."
+  },
+  "sort": 8
+ },
+ {
+  "key": "classic/gimlet",
+  "slug": "classic/gimlet",
+  "data": {
+   "name": "Gimlet",
+   "family": "Shaken",
+   "tagline": "Gin and lime",
+   "description": "Gin, fresh lime and sugar, shaken and served up. Crisp and bright.",
+   "photo": "/img/6a016d00b295.jpg",
+   "photoCredit": "Laure Noverraz · Unsplash (stand-in)",
+   "color": "#E2E8C2",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "ice": "None (served up)",
+   "garnish": "Lime wheel",
+   "tableBase": "Gin",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Gin",
+     "spirit": true,
+     "link": "/spirit/gin"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Fresh lime juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Simple syrup",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Shake hard with ice.",
+    "Double strain into a chilled coupe.",
+    "Garnish with a lime wheel."
+   ],
+   "flavors": [
+    "Lime",
+    "Juniper",
+    "Crisp",
+    "Tart"
+   ],
+   "tasteLine": "Clean, tart and refreshing.",
+   "riffs": [
+    {
+     "name": "Vodka Gimlet",
+     "note": "Vodka instead of gin.",
+     "link": ""
+    },
+    {
+     "name": "Southside",
+     "note": "Add mint.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Gin",
+   "spiritLine": "Gin’s botanicals meet bright lime.",
+   "spiritLinkLabel": "Learn about gin",
+   "spiritLink": "/spirit/gin",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Gin",
+     "link": "/spirit/gin"
+    },
+    {
+     "label": "Vodka",
+     "link": "/spirit/vodka"
+    }
+   ],
+   "say": "“A gimlet: gin and lime, shaken and served up. Crisp and tart.”",
+   "story": "British sailors drank gin with lime cordial; the lime helped prevent scurvy. The Gimlet grew from that habit.",
+   "video": null,
+   "glassCard": "Coupe",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 9
+ },
+ {
+  "key": "classic/cosmopolitan",
+  "slug": "classic/cosmopolitan",
+  "data": {
+   "name": "Cosmopolitan",
+   "family": "Shaken",
+   "tagline": "Tart, pink, iconic",
+   "description": "Citrus vodka, orange liqueur, lime and a splash of cranberry, shaken and served up. Tart, not sweet.",
+   "photo": "/img/d8f322057f42.jpg",
+   "photoCredit": "Tai’s Captures · Unsplash (stand-in)",
+   "color": "#E05A78",
+   "glass": "Martini or coupe",
+   "method": "Shaken",
+   "ice": "None (served up)",
+   "garnish": "Orange peel or lime wheel",
+   "tableBase": "Citrus vodka",
+   "build": [
+    {
+     "amount": "1½ oz",
+     "ingredient": "Citrus vodka",
+     "spirit": true,
+     "link": "/spirit/vodka/flavored"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Orange liqueur",
+     "spirit": false,
+     "link": "/spirit/liqueurs/orange"
+    },
+    {
+     "amount": "½ oz",
+     "ingredient": "Fresh lime juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "½ oz",
+     "ingredient": "Cranberry juice",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Shake hard with ice.",
+    "Double strain into a chilled glass.",
+    "Garnish with an orange peel or lime wheel."
+   ],
+   "flavors": [
+    "Cranberry",
+    "Lime",
+    "Orange",
+    "Tart"
+   ],
+   "tasteLine": "Tart, bright and a little fruity.",
+   "riffs": [
+    {
+     "name": "Lemon Drop",
+     "note": "Vodka, lemon and sugar.",
+     "link": ""
+    },
+    {
+     "name": "Gimlet",
+     "note": "The gin-and-lime cousin.",
+     "link": "/classic/gimlet"
+    }
+   ],
+   "spiritName": "Citrus vodka",
+   "spiritLine": "Citrus vodka adds lemon zest under the cranberry.",
+   "spiritLinkLabel": "Learn about citrus vodka",
+   "spiritLink": "/spirit/vodka/flavored",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Citrus vodka",
+     "link": "/spirit/vodka/flavored"
+    },
+    {
+     "label": "Orange liqueur",
+     "link": "/spirit/liqueurs/orange"
+    }
+   ],
+   "say": "“A Cosmo: citrus vodka, orange liqueur, lime and a splash of cranberry. Tart, not sweet.”",
+   "story": "Bartender Toby Cecchini is credited with the modern Cosmo, in New York in 1988. Sex and the City made it famous in the late 1990s.",
+   "video": null,
+   "glassCard": "Martini or Coupe",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 10
+ },
+ {
+  "key": "classic/last-word",
+  "slug": "classic/last-word",
+  "data": {
+   "name": "Last Word",
+   "family": "Shaken",
+   "tagline": "A Detroit original",
+   "description": "Equal parts gin, Green Chartreuse, maraschino liqueur and lime. Herbal, tart and a little sweet.",
+   "photo": "/img/0839380a2aaf.jpg",
+   "photoCredit": "Isabella Kara · Unsplash (stand-in)",
+   "color": "#C9D27A",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "ice": "None (served up)",
+   "garnish": "None, or a cherry",
+   "tableBase": "Gin",
+   "build": [
+    {
+     "amount": "¾ oz",
+     "ingredient": "Gin",
+     "spirit": false,
+     "link": "/spirit/gin"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Green Chartreuse",
+     "spirit": false,
+     "link": "/bottle/green-chartreuse"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Maraschino liqueur",
+     "spirit": false,
+     "link": "/spirit/liqueurs/fruit-and-floral"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Fresh lime juice",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Shake hard with ice.",
+    "Double strain into a chilled coupe.",
+    "Serve without a garnish, or with a cherry."
+   ],
+   "flavors": [
+    "Herbal",
+    "Lime",
+    "Cherry",
+    "Sweet-tart"
+   ],
+   "tasteLine": "Herbal, bright and perfectly balanced.",
+   "riffs": [
+    {
+     "name": "Naked & Famous",
+     "note": "Mezcal, Aperol, Yellow Chartreuse and lime.",
+     "link": ""
+    },
+    {
+     "name": "Paper Plane",
+     "note": "Another equal-parts classic.",
+     "link": "/classic/paper-plane"
+    }
+   ],
+   "spiritName": "Green Chartreuse",
+   "spiritLine": "Chartreuse is the soul of the drink: 130 herbs in one bottle.",
+   "spiritLinkLabel": "Learn about Green Chartreuse",
+   "spiritLink": "/bottle/green-chartreuse",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Gin",
+     "link": "/spirit/gin"
+    },
+    {
+     "label": "Green Chartreuse",
+     "link": "/bottle/green-chartreuse"
+    },
+    {
+     "label": "Maraschino",
+     "link": "/spirit/liqueurs/fruit-and-floral"
+    }
+   ],
+   "say": "“A Last Word: equal parts gin, Green Chartreuse, maraschino and lime. It was created right here in Detroit.”",
+   "story": "Created at the Detroit Athletic Club around 1916. It was nearly forgotten until a Seattle bartender brought it back in the early 2000s. A Detroit original.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "jRcApnG9Hck",
+    "title": "How to Make a Last Word · Anders Erickson"
+   },
+   "glassCard": "Coupe",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 11
+ },
+ {
+  "key": "classic/paper-plane",
+  "slug": "classic/paper-plane",
+  "data": {
+   "name": "Paper Plane",
+   "family": "Shaken",
+   "tagline": "Equal parts, modern classic",
+   "description": "Equal parts bourbon, Aperol, Amaro Nonino and lemon. Bittersweet, bright and easy to love.",
+   "photo": "/img/384ca85ff456.jpg",
+   "photoCredit": "Maria Dempsey · Unsplash (stand-in)",
+   "color": "#E08A3C",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "ice": "None (served up)",
+   "garnish": "None",
+   "tableBase": "Bourbon",
+   "build": [
+    {
+     "amount": "¾ oz",
+     "ingredient": "Bourbon",
+     "spirit": false,
+     "link": "/spirit/bourbon"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Aperol",
+     "spirit": false,
+     "link": "/bottle/aperol"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Amaro Nonino",
+     "spirit": false,
+     "link": "/spirit/amaro/light"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Fresh lemon juice",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Shake hard with ice.",
+    "Double strain into a chilled coupe.",
+    "No garnish needed."
+   ],
+   "flavors": [
+    "Bittersweet",
+    "Orange",
+    "Bourbon",
+    "Bright"
+   ],
+   "tasteLine": "Bittersweet and balanced.",
+   "riffs": [
+    {
+     "name": "Last Word",
+     "note": "The equal-parts template.",
+     "link": "/classic/last-word"
+    },
+    {
+     "name": "Naked & Famous",
+     "note": "A smoky mezcal cousin.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Amaro Nonino",
+   "spiritLine": "Nonino adds orange and a gentle bittersweet depth.",
+   "spiritLinkLabel": "Learn about Amaro Nonino",
+   "spiritLink": "/spirit/amaro/light",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Bourbon",
+     "link": "/spirit/bourbon"
+    },
+    {
+     "label": "Aperol",
+     "link": "/bottle/aperol"
+    },
+    {
+     "label": "Amaro Nonino",
+     "link": "/spirit/amaro/light"
+    }
+   ],
+   "say": "“A Paper Plane: bourbon, Aperol, Amaro Nonino and lemon. Bittersweet and bright.”",
+   "story": "Bartender Sam Ross created it in 2007 and named it after the M.I.A. song Paper Planes. It’s a modern classic built on equal parts.",
+   "video": null,
+   "glassCard": "Coupe",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 12
+ },
+ {
+  "key": "classic/penicillin",
+  "slug": "classic/penicillin",
+  "data": {
+   "name": "Penicillin",
+   "family": "Shaken",
+   "tagline": "Honey, ginger, smoke",
+   "description": "Blended Scotch, lemon and honey-ginger syrup, with a float of smoky Islay Scotch on top.",
+   "photo": "/img/8e9c9fc66141.jpg",
+   "photoCredit": "No Revisions · Unsplash (stand-in)",
+   "color": "#E2B860",
+   "glass": "Rocks",
+   "method": "Shaken",
+   "ice": "Large cube",
+   "garnish": "Candied ginger",
+   "tableBase": "Blended Scotch",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Blended Scotch",
+     "spirit": false,
+     "link": "/spirit/scotch/blended-scotch"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Fresh lemon juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Honey-ginger syrup",
+     "spirit": false,
+     "link": "/spirit/gin"
+    },
+    {
+     "amount": "¼ oz",
+     "ingredient": "Islay Scotch (float)",
+     "spirit": false,
+     "link": "/spirit/scotch/islay"
+    }
+   ],
+   "steps": [
+    "Shake the Scotch, lemon and syrup with ice.",
+    "Strain over a large cube.",
+    "Gently float the Islay Scotch on top.",
+    "Garnish with candied ginger."
+   ],
+   "flavors": [
+    "Honey",
+    "Ginger",
+    "Lemon",
+    "Smoke"
+   ],
+   "tasteLine": "Sweet, spicy and smoky.",
+   "riffs": [
+    {
+     "name": "Gold Rush",
+     "note": "Bourbon, honey and lemon.",
+     "link": ""
+    },
+    {
+     "name": "Whiskey Sour",
+     "note": "The classic sour template.",
+     "link": "/classic/whiskey-sour"
+    }
+   ],
+   "spiritName": "Islay Scotch",
+   "spiritLine": "The smoky Islay float is the drink’s signature.",
+   "spiritLinkLabel": "Learn about Islay Scotch",
+   "spiritLink": "/spirit/scotch/islay",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Blended Scotch",
+     "link": "/spirit/scotch/blended-scotch"
+    },
+    {
+     "label": "Islay Scotch",
+     "link": "/spirit/scotch/islay"
+    }
+   ],
+   "say": "“A Penicillin: Scotch with honey, ginger and lemon, and a smoky float on top.”",
+   "story": "Sam Ross created it at Milk & Honey in New York in 2005. It became one of the most copied modern classics.",
+   "video": null,
+   "glassCard": "Rocks",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 13
+ },
+ {
+  "key": "classic/espresso-martini",
+  "slug": "classic/espresso-martini",
+  "data": {
+   "name": "Espresso Martini",
+   "family": "Shaken",
+   "tagline": "Coffee, shaken hard",
+   "description": "Vodka, fresh espresso and coffee liqueur, shaken hard for a thick, creamy foam.",
+   "photo": "/img/d757eed8b346.jpg",
+   "photoCredit": "Jarek Ceborski · Unsplash (stand-in)",
+   "color": "#3A2318",
+   "glass": "Coupe or Nick & Nora",
+   "method": "Shaken hard",
+   "ice": "None (served up)",
+   "garnish": "3 coffee beans",
+   "tableBase": "Vodka",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Vodka",
+     "spirit": true,
+     "link": "/spirit/vodka"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Fresh espresso",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "½ oz",
+     "ingredient": "Coffee liqueur",
+     "spirit": false,
+     "link": "/spirit/liqueurs/coffee"
+    },
+    {
+     "amount": "¼ oz",
+     "ingredient": "Simple syrup",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Pull a fresh shot of espresso.",
+    "Shake everything very hard with ice to build the foam.",
+    "Double strain into a chilled glass.",
+    "Float three coffee beans on top."
+   ],
+   "flavors": [
+    "Coffee",
+    "Chocolate",
+    "Velvety",
+    "Sweet"
+   ],
+   "tasteLine": "Rich, smooth and wide awake.",
+   "riffs": [
+    {
+     "name": "Tequila Espresso Martini",
+     "note": "Reposado instead of vodka.",
+     "link": ""
+    },
+    {
+     "name": "Rum Espresso Martini",
+     "note": "Aged rum instead of vodka.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Vodka",
+   "spiritLine": "Vodka stays out of the way so the coffee leads.",
+   "spiritLinkLabel": "Learn about vodka",
+   "spiritLink": "/spirit/vodka",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Vodka",
+     "link": "/spirit/vodka"
+    },
+    {
+     "label": "Coffee liqueur",
+     "link": "/spirit/liqueurs/coffee"
+    },
+    {
+     "label": "Reposado",
+     "link": "/spirit/tequila/reposado"
+    }
+   ],
+   "say": "“An Espresso Martini: vodka, fresh espresso and coffee liqueur, shaken to a creamy foam.”",
+   "story": "London bartender Dick Bradsell created it in the 1980s, when a guest asked for a drink to wake her up.",
+   "video": null,
+   "glassCard": "Coupe or Nick & Nora",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 14
+ },
+ {
+  "key": "classic/sidecar",
+  "slug": "classic/sidecar",
+  "data": {
+   "name": "Sidecar",
+   "family": "Shaken",
+   "tagline": "Cognac, orange, lemon",
+   "description": "Cognac, orange liqueur and fresh lemon, shaken and served up, often with a sugared rim. The brandy sour every bartender should know.",
+   "photo": "/img/72d347370fce.jpg",
+   "photoCredit": "Humphrey M · Unsplash (stand-in)",
+   "color": "#D6964A",
+   "glass": "Coupe",
+   "method": "Shaken",
+   "ice": "None (served up)",
+   "garnish": "Orange twist",
+   "tableBase": "Cognac",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Cognac",
+     "spirit": true,
+     "link": "/spirit/cognac"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Orange liqueur",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Fresh lemon juice",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Sugar half the rim of a chilled coupe, if the guest wants it.",
+    "Shake cognac, orange liqueur and lemon hard with ice for 10–12 seconds.",
+    "Double strain into the coupe and garnish with an orange twist."
+   ],
+   "flavors": [
+    "Orange",
+    "Lemon",
+    "Brandy",
+    "Tart"
+   ],
+   "tasteLine": "Bright and tart, with brandy warmth underneath.",
+   "riffs": [
+    {
+     "name": "Between the Sheets",
+     "note": "Splits the base with light rum.",
+     "link": ""
+    },
+    {
+     "name": "Brandy Crusta",
+     "note": "The older New Orleans cousin, with a full sugar rim.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Cognac",
+   "spiritLine": "A VS or VSOP cognac gives the drink body and a little oak against the lemon.",
+   "spiritLinkLabel": "Learn about cognac",
+   "spiritLink": "/spirit/cognac",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Cognac",
+     "link": "/spirit/cognac"
+    },
+    {
+     "label": "Orange liqueur",
+     "link": "/spirit/liqueurs/orange"
+    }
+   ],
+   "say": "“A Sidecar: cognac, orange liqueur and lemon, shaken and served up. Bright, with a little brandy warmth.”",
+   "story": "Usually traced to Paris or London just after World War I. The popular story says it was named for a customer who rode to the bar in a motorcycle sidecar. Nobody knows for sure.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "re76GCUoiH4",
+    "title": "How I Make a Sidecar · Anders Erickson"
+   },
+   "glassCard": "Coupe",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 15
+ },
+ {
+  "key": "classic/pisco-sour",
+  "slug": "classic/pisco-sour",
+  "data": {
+   "name": "Pisco Sour",
+   "family": "Shaken",
+   "tagline": "Pisco, lime, egg white",
+   "description": "Pisco, fresh lime, sugar and egg white, shaken into a silky foam and finished with drops of bitters. Peru calls it the national drink, and Chile claims it too.",
+   "photo": "/img/a48943778c20.jpg",
+   "photoCredit": "Iker Merodio · Unsplash (stand-in)",
+   "color": "#EEE8D0",
+   "glass": "Coupe",
+   "method": "Dry shaken",
+   "ice": "None (served up)",
+   "garnish": "Bitters drops",
+   "tableBase": "Pisco",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Pisco",
+     "spirit": true,
+     "link": "/spirit/pisco"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Fresh lime juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Simple syrup",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "1",
+     "ingredient": "Egg white",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Shake pisco, lime, syrup and egg white without ice first, to build the foam.",
+    "Add ice and shake hard again.",
+    "Double strain into a chilled coupe and dot the foam with 3 drops of bitters."
+   ],
+   "flavors": [
+    "Lime",
+    "Grape",
+    "Silky",
+    "Tart"
+   ],
+   "tasteLine": "Tart and bright, with a soft, creamy foam. Tell guests it has raw egg white.",
+   "riffs": [
+    {
+     "name": "Chilean Pisco Sour",
+     "note": "Chilean pisco, often with lemon and no bitters.",
+     "link": ""
+    },
+    {
+     "name": "Whiskey Sour",
+     "note": "The same build with whiskey.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Pisco",
+   "spiritLine": "A grape brandy from Peru and Chile. Its floral fruit is what makes this sour different.",
+   "spiritLinkLabel": "Learn about pisco",
+   "spiritLink": "/spirit/pisco",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Pisco",
+     "link": "/spirit/pisco"
+    },
+    {
+     "label": "Bitters",
+     "link": "/spirit/bitters/aromatic"
+    }
+   ],
+   "say": "“A Pisco Sour: pisco, lime and a silky egg-white foam with a few drops of bitters. It does have raw egg white.”",
+   "story": "Usually credited to Victor Morris, an American who ran a bar in Lima, Peru, around the 1920s. Peru and Chile both call the drink their own.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "FdAQ96mYwNQ",
+    "title": "The Pisco Sour · Anders Erickson"
+   },
+   "glassCard": "Coupe",
+   "allergyTag": "Contains egg white",
+   "allergyNote": "Egg white is raw. Ask every guest, and note it on the ticket."
+  },
+  "sort": 16
+ },
+ {
+  "key": "classic/paloma",
+  "slug": "classic/paloma",
+  "data": {
+   "name": "Paloma",
+   "family": "Tall",
+   "tagline": "Tequila and grapefruit",
+   "description": "Tequila, lime and grapefruit soda over ice, with a pinch of salt. Easy and refreshing.",
+   "photo": "/img/b793dada3776.jpg",
+   "photoCredit": "Timothé Durand · Unsplash (stand-in)",
+   "color": "#F4C6B8",
+   "glass": "Highball",
+   "method": "Built",
+   "ice": "Ice",
+   "garnish": "Salt rim, grapefruit wedge",
+   "tableBase": "Blanco tequila",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Blanco tequila",
+     "spirit": true,
+     "link": "/spirit/tequila/blanco"
+    },
+    {
+     "amount": "½ oz",
+     "ingredient": "Fresh lime juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "Pinch",
+     "ingredient": "Salt",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "Top",
+     "ingredient": "Grapefruit soda (about 4 oz)",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Salt the rim if the guest wants it.",
+    "Add tequila, lime and salt to a glass full of ice.",
+    "Top with grapefruit soda.",
+    "Stir gently and garnish."
+   ],
+   "flavors": [
+    "Grapefruit",
+    "Lime",
+    "Agave",
+    "Salty"
+   ],
+   "tasteLine": "Bright, bubbly and easy.",
+   "riffs": [
+    {
+     "name": "Fresh Paloma",
+     "note": "Fresh grapefruit, soda and agave.",
+     "link": ""
+    },
+    {
+     "name": "Mezcal Paloma",
+     "note": "Smoky mezcal instead of tequila.",
+     "link": "/spirit/mezcal"
+    }
+   ],
+   "spiritName": "Blanco tequila",
+   "spiritLine": "Blanco tequila keeps it light and bright.",
+   "spiritLinkLabel": "Learn about blanco tequila",
+   "spiritLink": "/spirit/tequila/blanco",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Blanco tequila",
+     "link": "/spirit/tequila/blanco"
+    },
+    {
+     "label": "Mezcal",
+     "link": "/spirit/mezcal"
+    }
+   ],
+   "say": "“A Paloma: tequila and grapefruit soda with lime. Light and refreshing.”",
+   "story": "Its origin is unclear, but it’s a favorite across Mexico, usually made with grapefruit soda.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "yyVU7U-8WLc",
+    "title": "The Paloma: Mexico's National Cocktail · Anders Erickson"
+   },
+   "glassCard": "Highball",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 17
+ },
+ {
+  "key": "classic/moscow-mule",
+  "slug": "classic/moscow-mule",
+  "data": {
+   "name": "Moscow Mule",
+   "family": "Tall",
+   "tagline": "Vodka and ginger beer",
+   "description": "Vodka, lime and spicy ginger beer, served in a copper mug over ice.",
+   "photo": "/img/0b6f2faea1e4.jpg",
+   "photoCredit": "Bon Vivant · Unsplash (stand-in)",
+   "color": "#E9DDB0",
+   "glass": "Copper mug",
+   "method": "Built",
+   "ice": "Ice",
+   "garnish": "Lime wedge",
+   "tableBase": "Vodka",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Vodka",
+     "spirit": true,
+     "link": "/spirit/vodka"
+    },
+    {
+     "amount": "½ oz",
+     "ingredient": "Fresh lime juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "Top",
+     "ingredient": "Ginger beer (about 4 oz)",
+     "spirit": false,
+     "link": "/spirit/gin"
+    }
+   ],
+   "steps": [
+    "Fill the mug with ice.",
+    "Add vodka and lime.",
+    "Top with ginger beer and stir gently.",
+    "Garnish with a lime wedge."
+   ],
+   "flavors": [
+    "Ginger",
+    "Lime",
+    "Spicy",
+    "Fizzy"
+   ],
+   "tasteLine": "Spicy, tart and fizzy.",
+   "riffs": [
+    {
+     "name": "Kentucky Mule",
+     "note": "Bourbon instead of vodka.",
+     "link": ""
+    },
+    {
+     "name": "Mexican Mule",
+     "note": "Tequila instead of vodka.",
+     "link": ""
+    },
+    {
+     "name": "Dark ’n Stormy",
+     "note": "Dark rum and ginger beer.",
+     "link": "/spirit/rum/dark"
+    }
+   ],
+   "spiritName": "Vodka",
+   "spiritLine": "Vodka lets the spicy ginger beer lead.",
+   "spiritLinkLabel": "Learn about vodka",
+   "spiritLink": "/spirit/vodka",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Vodka",
+     "link": "/spirit/vodka"
+    },
+    {
+     "label": "Dark rum",
+     "link": "/spirit/rum/dark"
+    }
+   ],
+   "say": "“A Moscow Mule: vodka, lime and ginger beer, in a copper mug.”",
+   "story": "Created in Los Angeles in the 1940s to help sell vodka and ginger beer to Americans. The copper mug was part of the pitch.",
+   "video": null,
+   "glassCard": "Copper mug",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 18
+ },
+ {
+  "key": "classic/mojito",
+  "slug": "classic/mojito",
+  "data": {
+   "name": "Mojito",
+   "family": "Tall",
+   "tagline": "Rum, mint, lime",
+   "description": "White rum, fresh mint, lime and sugar over crushed ice, topped with soda.",
+   "photo": "/img/639f21e4056b.jpg",
+   "photoCredit": "kimia kazemi · Unsplash (stand-in)",
+   "color": "#DDE8C0",
+   "glass": "Highball",
+   "method": "Muddled, then built",
+   "ice": "Crushed ice",
+   "garnish": "Mint sprig, lime",
+   "tableBase": "White rum",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "White rum",
+     "spirit": true,
+     "link": "/spirit/rum/white"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Fresh lime juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Simple syrup",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "8 leaves",
+     "ingredient": "Fresh mint",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "Top",
+     "ingredient": "Soda water",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Gently press the mint with syrup and lime. Don’t shred it.",
+    "Add rum and crushed ice.",
+    "Top with soda and stir up from the bottom.",
+    "Clap a mint sprig to wake it up and garnish."
+   ],
+   "flavors": [
+    "Mint",
+    "Lime",
+    "Rum",
+    "Fresh"
+   ],
+   "tasteLine": "Cool, minty and refreshing.",
+   "riffs": [
+    {
+     "name": "Mojito Royale",
+     "note": "Topped with Champagne.",
+     "link": ""
+    },
+    {
+     "name": "Southside",
+     "note": "Gin, mint and lime, served up.",
+     "link": ""
+    }
+   ],
+   "spiritName": "White rum",
+   "spiritLine": "A light white rum keeps it fresh and minty.",
+   "spiritLinkLabel": "Learn about white rum",
+   "spiritLink": "/spirit/rum/white",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "White rum",
+     "link": "/spirit/rum/white"
+    }
+   ],
+   "say": "“A Mojito: rum, fresh mint and lime with soda. Cool and refreshing.”",
+   "story": "From Cuba, where an older drink of rum, lime, sugar and mint was popular. Havana’s bars made the Mojito world famous.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "KMypSCazyRw",
+    "title": "Two Ways To Make A Mojito · Anders Erickson"
+   },
+   "glassCard": "Highball",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 19
+ },
+ {
+  "key": "classic/aperol-spritz",
+  "slug": "classic/aperol-spritz",
+  "data": {
+   "name": "Aperol Spritz",
+   "family": "Tall",
+   "tagline": "3-2-1, bubbly",
+   "description": "Prosecco, Aperol and a splash of soda over ice. Light, bittersweet and made for before dinner.",
+   "photo": "/img/acd5b80c6188.jpg",
+   "photoCredit": "Olena Bohovyk · Unsplash (stand-in)",
+   "color": "#F07A2A",
+   "glass": "Wine glass",
+   "method": "Built",
+   "ice": "Ice",
+   "garnish": "Orange slice",
+   "tableBase": "Prosecco",
+   "build": [
+    {
+     "amount": "3 oz",
+     "ingredient": "Prosecco",
+     "spirit": false,
+     "link": "/wine/sparkling/prosecco"
+    },
+    {
+     "amount": "2 oz",
+     "ingredient": "Aperol",
+     "spirit": false,
+     "link": "/bottle/aperol"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Soda water",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Fill a wine glass with ice.",
+    "Add prosecco first, then Aperol, so it mixes.",
+    "Add a splash of soda.",
+    "Garnish with an orange slice."
+   ],
+   "flavors": [
+    "Orange",
+    "Rhubarb",
+    "Bubbles",
+    "Bittersweet"
+   ],
+   "tasteLine": "Light, bubbly and bittersweet.",
+   "riffs": [
+    {
+     "name": "Campari Spritz",
+     "note": "More bitter, deeper red.",
+     "link": ""
+    },
+    {
+     "name": "Hugo Spritz",
+     "note": "Elderflower and mint.",
+     "link": ""
+    },
+    {
+     "name": "Negroni Sbagliato",
+     "note": "Campari, vermouth and prosecco.",
+     "link": "/wine/sparkling/prosecco"
+    }
+   ],
+   "spiritName": "Aperol",
+   "spiritLine": "Aperol brings the orange glow and gentle bitterness.",
+   "spiritLinkLabel": "Learn about Aperol",
+   "spiritLink": "/bottle/aperol",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Aperol",
+     "link": "/bottle/aperol"
+    },
+    {
+     "label": "Prosecco",
+     "link": "/wine/sparkling/prosecco"
+    },
+    {
+     "label": "Campari",
+     "link": "/bottle/campari"
+    }
+   ],
+   "say": "“An Aperol Spritz: prosecco and Aperol with soda. Light and bittersweet.”",
+   "story": "Spritzes go back to the 1800s, when Austrian soldiers in the Veneto added a splash of water to local wine. Aperol was created in Padua in 1919.",
+   "video": null,
+   "glassCard": "Wine glass",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 20
+ },
+ {
+  "key": "classic/french-75",
+  "slug": "classic/french-75",
+  "data": {
+   "name": "French 75",
+   "family": "Tall",
+   "tagline": "Gin, lemon, Champagne",
+   "description": "Gin, lemon and sugar, shaken and topped with Champagne. Bright, bubbly and elegant.",
+   "photo": "/img/10c10240ccc6.jpg",
+   "photoCredit": "Ambitious Studio · Unsplash (stand-in)",
+   "color": "#EFE2A8",
+   "glass": "Flute",
+   "method": "Shaken, then topped",
+   "ice": "None (served up)",
+   "garnish": "Lemon twist",
+   "tableBase": "Gin",
+   "build": [
+    {
+     "amount": "1 oz",
+     "ingredient": "Gin",
+     "spirit": false,
+     "link": "/spirit/gin"
+    },
+    {
+     "amount": "½ oz",
+     "ingredient": "Fresh lemon juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "½ oz",
+     "ingredient": "Simple syrup",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "Top",
+     "ingredient": "Champagne (about 3 oz)",
+     "spirit": false,
+     "link": "/wine/sparkling/champagne"
+    }
+   ],
+   "steps": [
+    "Shake gin, lemon and syrup with ice.",
+    "Strain into a flute.",
+    "Top slowly with Champagne.",
+    "Garnish with a lemon twist."
+   ],
+   "flavors": [
+    "Lemon",
+    "Bubbles",
+    "Juniper",
+    "Bright"
+   ],
+   "tasteLine": "Celebratory and crisp.",
+   "riffs": [
+    {
+     "name": "French 76",
+     "note": "Vodka instead of gin.",
+     "link": ""
+    },
+    {
+     "name": "French 95",
+     "note": "Bourbon instead of gin.",
+     "link": ""
+    },
+    {
+     "name": "Cognac 75",
+     "note": "Cognac instead of gin.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Champagne",
+   "spiritLine": "Dry Champagne gives it lift and bubbles.",
+   "spiritLinkLabel": "Learn about Champagne",
+   "spiritLink": "/wine/sparkling/champagne",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Gin",
+     "link": "/spirit/gin"
+    },
+    {
+     "label": "Champagne",
+     "link": "/wine/sparkling/champagne"
+    },
+    {
+     "label": "Cognac",
+     "link": "/spirit/cognac"
+    }
+   ],
+   "say": "“A French 75: gin, lemon and Champagne. Bright and bubbly.”",
+   "story": "Named after the French 75mm field gun from World War I, because the drink packs a punch.",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "Viz7yWfcmdo",
+    "title": "How to make a French 75 · Anders Erickson"
+   },
+   "glassCard": "Flute",
+   "allergyTag": "",
+   "allergyNote": ""
+  },
+  "sort": 21
+ }
+]

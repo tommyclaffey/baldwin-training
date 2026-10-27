@@ -2,30 +2,17 @@ import { Link } from 'react-router-dom';
 import { useSession } from '../lib/session';
 import { usePageEntry } from './PageView';
 
-/** Shown to signed-in managers: turn editing on and off, jump to the admin. */
+const COLLECTION_OF: Record<string, string> = { Classic: 'classic', Signature: 'house', Recipe: 'recipe' };
+
+/** For signed-in managers: a way into the admin, and straight to this page's template form. */
 export function EditBar() {
-  const { user, editing, setEditing } = useSession();
+  const { user } = useSession();
   const entry = usePageEntry();
   if (!user) return null;
-  const item = entry?.file.startsWith('i') ? entry : null;
-  const itemLink = item ? (item.slug.startsWith('recipe/') ? '/admin/recipes/' : '/admin/cocktails/') + item.file.slice(1) : null;
-  if (itemLink) {
-    return (
-      <div className="edit-bar" role="region" aria-label="Editing">
-        <span className="edit-hint show">This page is built from a form.</span>
-        <Link to={itemLink}>Edit in Form</Link>
-        <Link to="/admin">Admin</Link>
-      </div>
-    );
-  }
+  const col = entry && entry.file.startsWith('e') ? COLLECTION_OF[entry.section] : null;
   return (
-    <div className={'edit-bar' + (editing ? ' on' : '')} role="region" aria-label="Editing">
-      <label className="switch">
-        <input type="checkbox" checked={editing} onChange={(e) => setEditing(e.target.checked)} />
-        <span className="track" aria-hidden="true" />
-        {editing ? 'Editing on' : 'Edit this page'}
-      </label>
-      {editing && <span className="edit-hint">Click text to change it. Use the buttons on photos and videos.</span>}
+    <div className="edit-bar" role="region" aria-label="Manager tools">
+      {col && <Link to={`/admin/pages/${col}/${entry!.file.slice(1)}`}>Edit This Page</Link>}
       <Link to="/admin">Admin</Link>
     </div>
   );

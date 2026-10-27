@@ -4,7 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { hashPassword, verifyPassword, burnPasswordCheck, createSession, sessionUser, endSession, sessionCookie, SESSION_COOKIE, LoginLimiter, publicUser, sha256, newToken } from './auth.mjs';
-import { assemble, fullIndex, listItems, itemEntry } from './content.mjs';
+import { assemble, fullIndex, ordered, glassTitles } from './content.mjs';
+import { COLLECTIONS, publicSchemas, seed, listEntries, getEntry, createEntry, updateEntry, deleteEntry, moveEntry } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { score as scoreQuiz, results as quizResults, quizIds } from './quiz.mjs';
 
@@ -14,6 +15,7 @@ const PORT = Number(process.env.PORT) || 8080;
 const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
 const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
+seed(db);
 const limiter = new LoginLimiter();
 const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address
 
@@ -82,41 +84,6 @@ const media = (v) => {
   return null;
 };
 const imageUrl = (v) => { const s = str(v, 300); return s.startsWith('/media/') || s.startsWith('/img/') ? s : ''; };
-
-function cleanItem(type, d = {}) {
-  const base = { name: str(d.name, 120), tagline: str(d.tagline, 120), description: str(d.description, 800), photo: imageUrl(d.photo), say: str(d.say, 800), video: media(d.video) };
-  if (!base.name) fail(400, 'Give it a name.');
-  if (type === 'cocktail') {
-    return {
-      ...base,
-      glass: str(d.glass, 60), method: str(d.method, 60), ice: str(d.ice, 60), garnish: str(d.garnish, 80),
-      build: (Array.isArray(d.build) ? d.build : []).slice(0, 12).map((b) => ({ amount: str(b?.amount, 30), ingredient: str(b?.ingredient, 80), spirit: !!b?.spirit, link: link(b?.link) })).filter((b) => b.amount || b.ingredient),
-      spiritName: str(d.spiritName, 80), spiritLine: str(d.spiritLine, 300), spiritLink: link(d.spiritLink), spiritLinkLabel: str(d.spiritLinkLabel, 60),
-      steps: strList(d.steps, 12), tags: strList(d.tags, 8), tasteLine: str(d.tasteLine, 300),
-      score: str(d.score, 10), status: str(d.status, 30), pairs: str(d.pairs, 80), note: str(d.note, 600), story: str(d.story, 1500),
-    };
-  }
-  return {
-    ...base,
-    course: ['Passed Bites', 'Plates', 'Dessert'].includes(d.course) ? d.course : 'Plates',
-    station: str(d.station, 40), signature: !!d.signature, score: str(d.score, 10),
-    allergens: strList(d.allergens, 12),
-    components: (Array.isArray(d.components) ? d.components : []).slice(0, 12).map((r) => ({ component: str(r?.component, 80), portion: str(r?.portion, 80), hold: str(r?.hold, 80) })).filter((r) => r.component || r.portion || r.hold),
-    steps: (Array.isArray(d.steps) ? d.steps : []).slice(0, 12).map((s) => ({ title: str(s?.title, 80), detail: str(s?.detail, 500), time: str(s?.time, 30) })).filter((s) => s.title || s.detail),
-    plating: (Array.isArray(d.plating) ? d.plating : []).slice(0, 4).map((p) => ({ name: str(p?.name, 60), note: str(p?.note, 120) })).filter((p) => p.name),
-    platePhoto: imageUrl(d.platePhoto),
-    pairing: str(d.pairing, 80), pairingNote: str(d.pairingNote, 200),
-    videoTitle: str(d.videoTitle, 120), videoNote: str(d.videoNote, 500),
-    photos: (Array.isArray(d.photos) ? d.photos : []).slice(0, 8).map((p) => ({ img: imageUrl(p?.img), caption: str(p?.caption, 80) })).filter((p) => p.img),
-  };
-}
-function uniqueSlug(type, name, id) {
-  const base = (type === 'cocktail' ? 'signature/' : 'recipe/') + slugify(name);
-  let slug = base, n = 2;
-  const taken = new Set(fullIndex(db).filter((e) => e.id !== 'i' + id).map((e) => e.slug));
-  while (taken.has(slug)) slug = `${base}-${n++}`;
-  return slug;
-}
 
 /* ------------------------------ routes ------------------------------ */
 async function api(req, res, url) {
@@ -273,65 +240,51 @@ async function api(req, res, url) {
     if (!page) fail(404, 'We couldn’t find that page.');
     return sendJson(res, 200, page);
   }
-  if (p === '/api/override' && (m === 'PUT' || m === 'DELETE')) {
+  /* CMS: collections and their pages */
+  if (p === '/api/collections' && m === 'GET') {
+    needUser(c, req);
+    const counts = Object.fromEntries(Object.keys(COLLECTIONS).map((id) => [id, listEntries(db, id).length]));
+    const schemas = publicSchemas();
+    const gc = schemas.classic.fields.find((f) => f.key === 'glassCard');
+    if (gc) gc.options = glassTitles();
+    return sendJson(res, 200, { collections: schemas, counts });
+  }
+  if (p === '/api/entries' && m === 'GET') {
+    needUser(c, req);
+    const col = url.searchParams.get('collection');
+    if (!COLLECTIONS[col]) fail(400, 'Unknown collection.');
+    return sendJson(res, 200, { entries: ordered(db, col) });
+  }
+  if (p === '/api/entries' && m === 'POST') {
     const u = needUser(c, req);
     const b = await readJson(req);
-    const pageId = str(b.pageId, 20), nodeP = clean(b.path, 1000);
-    if (!pageId || !nodeP) fail(400, 'Missing page or element.');
+    if (!COLLECTIONS[b.collection]) fail(400, 'Unknown collection.');
+    if (!str(b.data?.name, 120)) fail(400, 'Give it a name.');
+    const e = createEntry(db, b.collection, b.data, u.id);
+    audit(db, u.id, 'add ' + b.collection, e.data.name);
+    return sendJson(res, 200, e);
+  }
+  if (parts[1] === 'entries' && parts[2]) {
+    const u = needUser(c, req);
+    const e = getEntry(db, Number(parts[2]));
+    if (!e) fail(404, 'We couldn’t find that page.');
+    if (m === 'GET') return sendJson(res, 200, e);
+    if (m === 'PUT') {
+      const b = await readJson(req);
+      if (!str(b.data?.name, 120)) fail(400, 'Give it a name.');
+      const out = updateEntry(db, e.id, b.data, u.id);
+      audit(db, u.id, 'edit ' + e.collection, out.data.name);
+      return sendJson(res, 200, out);
+    }
     if (m === 'DELETE') {
-      db.prepare('DELETE FROM overrides WHERE page_id = ? AND path = ?').run(pageId, nodeP);
-      audit(db, u.id, 'revert', `${pageId} ${nodeP}`);
+      deleteEntry(db, e.id);
+      audit(db, u.id, 'delete ' + e.collection, e.data.name);
       return sendJson(res, 200, { ok: true });
     }
-    const v = b.value || {};
-    let value;
-    if (typeof v.s === 'string') value = { s: clean(v.s, 4000) };
-    else if (v.img !== undefined) { const i = imageUrl(v.img); if (!i) fail(400, 'That photo isn’t one we uploaded.'); value = { img: i }; }
-    else if (v.video !== undefined) value = { video: v.video === null ? null : media(v.video) };
-    else fail(400, 'Nothing to save.');
-    if (value.video === null && v.video !== null) fail(400, 'That video link isn’t valid. Paste a YouTube link or upload a file.');
-    db.prepare('INSERT INTO overrides(page_id,path,value,updated_by,updated_at) VALUES (?,?,?,?,?) ON CONFLICT(page_id,path) DO UPDATE SET value=excluded.value, updated_by=excluded.updated_by, updated_at=excluded.updated_at')
-      .run(pageId, nodeP, JSON.stringify(value), u.id, now());
-    audit(db, u.id, 'edit', `${pageId} ${nodeP}`);
-    return sendJson(res, 200, { ok: true });
-  }
-
-  /* recipes + cocktails */
-  if (p === '/api/items' && m === 'GET') return sendJson(res, 200, { items: listItems(db, url.searchParams.get('type') || undefined) });
-  if (parts[1] === 'items' && parts[2] && m === 'GET') {
-    const row = db.prepare('SELECT * FROM items WHERE id = ?').get(Number(parts[2]));
-    if (!row) fail(404, 'We couldn’t find that item.');
-    return sendJson(res, 200, itemEntry(row));
-  }
-  if (p === '/api/items' && m === 'POST') {
-    const u = needUser(c, req);
-    const b = await readJson(req);
-    const type = b.type === 'cocktail' ? 'cocktail' : 'dish';
-    const data = cleanItem(type, b.data);
-    const slug = uniqueSlug(type, data.name);
-    const r = db.prepare('INSERT INTO items(type,slug,data,created_by,created_at,updated_by,updated_at) VALUES (?,?,?,?,?,?,?)').run(type, slug, JSON.stringify(data), u.id, now(), u.id, now());
-    audit(db, u.id, 'add ' + type, data.name);
-    return sendJson(res, 200, itemEntry(db.prepare('SELECT * FROM items WHERE id = ?').get(r.lastInsertRowid)));
-  }
-  if (parts[1] === 'items' && parts[2] && m === 'PUT') {
-    const u = needUser(c, req);
-    const row = db.prepare('SELECT * FROM items WHERE id = ?').get(Number(parts[2]));
-    if (!row) fail(404, 'We couldn’t find that item.');
-    const b = await readJson(req);
-    const data = cleanItem(row.type, b.data);
-    const slug = JSON.parse(row.data).name === data.name ? row.slug : uniqueSlug(row.type, data.name, row.id);
-    db.prepare('UPDATE items SET data = ?, slug = ?, updated_by = ?, updated_at = ? WHERE id = ?').run(JSON.stringify(data), slug, u.id, now(), row.id);
-    audit(db, u.id, 'edit ' + row.type, data.name);
-    return sendJson(res, 200, itemEntry(db.prepare('SELECT * FROM items WHERE id = ?').get(row.id)));
-  }
-  if (parts[1] === 'items' && parts[2] && m === 'DELETE') {
-    const u = needUser(c, req);
-    const row = db.prepare('SELECT * FROM items WHERE id = ?').get(Number(parts[2]));
-    if (!row) fail(404, 'We couldn’t find that item.');
-    db.prepare('DELETE FROM items WHERE id = ?').run(row.id);
-    db.prepare('DELETE FROM overrides WHERE page_id = ?').run('i' + row.id);
-    audit(db, u.id, 'delete ' + row.type, JSON.parse(row.data).name);
-    return sendJson(res, 200, { ok: true });
+    if (m === 'POST' && parts[3] === 'move') {
+      const b = await readJson(req);
+      return sendJson(res, 200, moveEntry(db, e.id, Number(b.dir) < 0 ? -1 : 1));
+    }
   }
 
   /* media */
