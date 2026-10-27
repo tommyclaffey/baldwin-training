@@ -44,10 +44,22 @@ const outDir = path.join(root, 'public/content/pages');
 fs.rmSync(outDir, { recursive: true, force: true });
 fs.mkdirSync(outDir, { recursive: true });
 
+// Search preview: the page's first big photo and its first real sentence.
+function preview(main) {
+  let thumb, blurb;
+  (function walk(n) {
+    if (!thumb && n.f && n.w >= 120 && n.h >= 90) { const f = n.f.find((x) => x.img); if (f) thumb = f.img; }
+    if (!blurb && n.t === 'T' && n.s && n.s.length >= 40 && /[a-z]/.test(n.s) && !/sample|confirm/i.test(n.s)) blurb = n.s.replace(/\s+/g, ' ');
+    (n.c || []).forEach(walk);
+  })(main);
+  return { thumb, blurb: blurb && (blurb.length > 110 ? blurb.slice(0, 107).replace(/\s+\S*$/, '') + '…' : blurb) };
+}
+
 const index = [];
 for (const p of pages) {
   const texts = [];
   prep(p.main, texts);
+  const { thumb, blurb } = preview(p.main);
   const bg = p.f && p.f[0] && p.f[0].c;
   fs.writeFileSync(path.join(outDir, fileOf(p.id) + '.json'), JSON.stringify({ id: p.id, name: p.name, bg, main: p.main }));
   const parts = p.name.split(' · ');
@@ -61,8 +73,18 @@ for (const p of pages) {
     title,
     section: parts.length > 1 ? parts[0] : '',
     nav: navById[p.id] || 'Home',
+    thumb,
+    blurb,
     text: texts.join(' ').replace(/\s+/g, ' ').slice(0, 1200),
   });
+}
+
+const ALIAS = { 'Spirit · Japanese': 'Spirit · Japanese Whisky', 'Spirit · Irish': 'Spirit · Irish Whiskey' };
+// Sub-pages without a photo borrow their parent's (Vodka · Wheat uses Vodka's).
+const byName = new Map(index.map((e) => [e.name, e]));
+for (const e of index) {
+  let parts = e.name.split(' · ');
+  while (!e.thumb && parts.length > 1) { parts = parts.slice(0, -1); const n = parts.join(' · '); e.thumb = (byName.get(n) || byName.get(ALIAS[n]))?.thumb; }
 }
 
 const home = pages.find((p) => p.id === '4:2');

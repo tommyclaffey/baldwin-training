@@ -159,6 +159,8 @@ export function fullIndex(db) {
     title: it.data.name,
     section: it.type === 'cocktail' ? 'Signature' : 'Recipe',
     nav: it.type === 'cocktail' ? 'The Bar' : 'Food Matrix',
+    thumb: it.data.photo || undefined,
+    blurb: it.data.tagline || it.data.description || undefined,
     text: [it.data.tagline, it.data.description, ...(it.data.build || []).map((b) => b.ingredient), ...(it.data.allergens || [])].filter(Boolean).join(' '),
   }));
   return [...base, ...items];

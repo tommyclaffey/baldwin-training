@@ -35,4 +35,4 @@ export function uploadFile(file: File, onProgress?: (pct: number) => void): Prom
 export type MediaItem = { id: number; kind: 'file' | 'youtube'; title: string; url: string | null; mime: string | null; size: number | null; youtubeId: string | null; createdAt: string };
 export type Video = { kind: 'youtube'; youtubeId: string; title?: string } | { kind: 'file'; url: string; mime?: string; title?: string };
 export type User = { id: number; name: string; email: string; role: 'owner' | 'editor' };
-export type IndexEntry = { id: string; file: string; slug: string; name: string; title: string; section: string; nav: string; text: string };
+export type IndexEntry = { id: string; file: string; slug: string; name: string; title: string; section: string; nav: string; text: string; thumb?: string; blurb?: string };
