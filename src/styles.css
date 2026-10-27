@@ -438,3 +438,16 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 @keyframes progress-show { from { opacity: 0; } to { opacity: 1; } }
 @keyframes progress-run { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
 @media (prefers-reduced-motion: reduce) { .page-enter { animation: none; } .nav-progress::after { animation: none; width: 100%; opacity: .6; } }
+
+/* Carousels (Our signatures on Cocktails): swipe on touch, arrows on desktop. */
+.carousel { align-items: flex-start !important; transition: height .25s ease; flex-wrap: nowrap !important; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; overscroll-behavior-x: contain; }
+.carousel::-webkit-scrollbar { display: none; }
+.carousel > * { scroll-snap-align: start; flex-shrink: 0 !important; }
+.carousel-btn { cursor: pointer; font: inherit; color: inherit; padding: 0; }
+.carousel-btn:hover:not(:disabled) { filter: brightness(1.25); }
+.carousel-btn:disabled { opacity: .35; cursor: default; }
+.carousel-btn:focus-visible, .carousel:focus-visible { outline: 2px solid #C49A6C; outline-offset: 3px; }
+@media (max-width: 859px) {
+  .carousel > * { width: 86vw !important; max-width: 520px; flex: 0 0 86vw !important; }
+}
+@media (prefers-reduced-motion: reduce) { .carousel { scroll-behavior: auto; } }

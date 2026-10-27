@@ -258,6 +258,45 @@ function Balanced({ node, parentLm, parentH }: { node: FNode; parentLm?: 'H' | '
   return <div ref={ref} style={{ display: 'contents' }}><FigmaNode node={{ ...shown, bal: undefined }} parentLm={parentLm} parentH={parentH} /></div>;
 }
 
+/* ---- Carousel: a row named "Carousel · …" scrolls sideways (swipe, or the arrows named "Carousel prev/next"). ---- */
+type Carousel = { setEl: (el: HTMLDivElement | null) => void; go: (dir: number) => void; label: string; atStart: boolean; atEnd: boolean };
+const CarouselContext = createContext<Carousel | null>(null);
+const isCarousel = (n: FNode) => !!n.n && n.n.startsWith('Carousel · ');
+
+function CarouselGroup({ children }: { children: ReactNode }) {
+  const [el, setEl] = useState<HTMLDivElement | null>(null);
+  const [pos, setPos] = useState({ first: 0, shown: 1, total: 0, atStart: true, atEnd: false });
+  useEffect(() => {
+    if (!el) return;
+    const measure = () => {
+      const kids = [...el.children] as HTMLElement[];
+      if (!kids.length) return;
+      const step = kids.length > 1 ? kids[1].offsetLeft - kids[0].offsetLeft : kids[0].offsetWidth;
+      const first = Math.round(el.scrollLeft / step);
+      const gap = step - kids[0].offsetWidth;
+      const shown = Math.max(1, Math.floor((el.clientWidth + gap + 2) / step));
+      setPos({ first, shown, total: kids.length, atStart: el.scrollLeft < 4, atEnd: el.scrollLeft + el.clientWidth >= el.scrollWidth - 4 });
+      // The row is as tall as the cards in view, so a long card further along doesn't leave a gap.
+      const inView = kids.slice(first, first + shown + 1).filter((k) => k.offsetLeft < el.scrollLeft + el.clientWidth);
+      const h = Math.max(...inView.map((k) => k.offsetHeight));
+      if (h > 0) el.style.height = h + 'px';
+    };
+    measure();
+    el.addEventListener('scroll', measure, { passive: true });
+    const ro = new ResizeObserver(measure); ro.observe(el);
+    return () => { el.removeEventListener('scroll', measure); ro.disconnect(); };
+  }, [el]);
+  const go = (dir: number) => {
+    if (!el) return;
+    const kids = [...el.children] as HTMLElement[];
+    const step = kids.length > 1 ? kids[1].offsetLeft - kids[0].offsetLeft : el.clientWidth;
+    el.scrollBy({ left: dir * step * pos.shown, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
+  const last = Math.min(pos.first + pos.shown, pos.total);
+  const label = pos.total ? (pos.shown > 1 && last > pos.first + 1 ? `${pos.first + 1}–${last} of ${pos.total}` : `${pos.first + 1} of ${pos.total}`) : '';
+  return <CarouselContext.Provider value={{ setEl, go, label, atStart: pos.atStart, atEnd: pos.atEnd }}>{children}</CarouselContext.Provider>;
+}
+
 export function FigmaNode({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 'H' | 'V'; parentH?: number; rootStyle?: CSSProperties }) {
   if (node.bal && !rootStyle) return <Balanced node={node} parentLm={parentLm} parentH={parentH} />;
   return <Node node={node} parentLm={parentLm} parentH={parentH} rootStyle={rootStyle} />;
@@ -267,10 +306,16 @@ function Node({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 
   const activeNav = useContext(NavContext);
   const compact = useContext(CompactContext);
   const slots = useContext(SlotContext);
+  const carousel = useContext(CarouselContext);
   const [playing, setPlaying] = useState(false);
 
+  if (node.c?.some(isCarousel) && !carousel) {
+    return <CarouselGroup><Node node={node} parentLm={parentLm} parentH={parentH} rootStyle={rootStyle} /></CarouselGroup>;
+  }
+
   if (node.t === 'T') {
-    const { st, cls, content } = textNode(node, parentLm);
+    const { st, cls, content: raw } = textNode(node, parentLm);
+    const content = node.n === 'Carousel count' && carousel ? <span aria-live="polite">{carousel.label}</span> : raw;
     return wrapLink(node, <div className={cls.join(' ')} style={st}>{content}</div>, st, cls);
   }
 
@@ -365,6 +410,17 @@ function Node({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 
     const box = <div className={cls.join(' ')} style={{ ...inner, position: 'relative', width: node.w, height: node.h, maxWidth: 'none' }} data-name={node.n}>{kids}</div>;
     const scaled = <Scaled w={node.w} h={node.h} outer={{ flex, alignSelf, minWidth, flexShrink }}>{box}</Scaled>;
     return node.to ? wrapLink(node, <div>{scaled}</div>, {}, ['fn']) : scaled;
+  }
+  if (carousel && (node.n === 'Carousel prev' || node.n === 'Carousel next')) {
+    const prev = node.n === 'Carousel prev';
+    const off = prev ? carousel.atStart : carousel.atEnd;
+    return (
+      <button type="button" className={cls.concat('carousel-btn').join(' ')} style={st} data-name={node.n} disabled={off}
+        aria-label={prev ? 'Previous cocktails' : 'Next cocktails'} onClick={() => carousel.go(prev ? -1 : 1)}>{kids}</button>
+    );
+  }
+  if (carousel && isCarousel(node)) {
+    return <div ref={carousel.setEl} className={cls.concat('carousel').join(' ')} style={{ ...st, overflowX: 'auto', overflowY: 'hidden' }} data-name={node.n} tabIndex={0} aria-label={node.n!.split(' · ')[1]} role="region">{kids}</div>;
   }
   const el = (
     <div className={cls.join(' ')} style={st} role={role} aria-label={label} data-name={node.n}>
