@@ -2,6 +2,7 @@
 // Needs the app running (npm start) and Google Chrome.
 //   node scripts/shots.mjs [baseUrl] [outDir]
 //   SCREENS=/,/classic/old-fashioned WIDTHS=1440,1024,390 node scripts/shots.mjs
+//   COOKIE=<session> EDIT=1 … for signed-in screens
 import { spawn } from 'node:child_process';
 import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 
@@ -34,6 +35,14 @@ const send = (method, params = {}) => new Promise((r) => { const i = ++id; pendi
 
 await send('Page.enable');
 await send('Runtime.enable');
+// Signed-in shots: COOKIE=<bt_session value>, EDIT=1 turns editing on.
+if (process.env.COOKIE) {
+  await send('Network.enable');
+  await send('Network.setCookie', { name: 'bt_session', value: process.env.COOKIE, url: BASE });
+  await send('Page.navigate', { url: BASE + '/admin' });
+  await sleep(800);
+  await send('Runtime.evaluate', { expression: `localStorage.setItem('bt-editing', '${process.env.EDIT === '1' ? 1 : 0}')` });
+}
 const report = [];
 for (const screen of SCREENS) {
   for (const w of WIDTHS) {
