@@ -41,9 +41,9 @@ test('every quiz question has 4 options and a valid answer', () => {
 
 test('the CMS seeds match the design', () => {
   const classic = JSON.parse(fs.readFileSync(path.join(root, 'content/cms/classic.json'), 'utf8'));
-  assert.equal(classic.length, 22);
+  assert.equal(classic.length, 23);
   const missing = classic.filter((c) => !slugs.has('/' + c.slug)).map((c) => c.slug);
-  assert.deepEqual(missing, []);
+  assert.deepEqual(missing, ['classic/lemon-drop'], 'only the Lemon Drop was added in the CMS, after the design');
   assert.ok(classic.filter((c) => c.data.video).length >= 15, 'the 15 videos are in the seed');
 });
 

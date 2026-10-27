@@ -9,6 +9,18 @@ import { slugify } from './templates.mjs';
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 
 const GLASSES = ['Rocks', 'Double rocks', 'Coupe', 'Nick & Nora', 'Martini', 'Highball', 'Collins', 'Copper mug', 'Wine glass', 'Flute', 'Julep cup'];
+const MENU_SECTIONS = ['Specialty Cocktails', 'BRG Staples', 'Martinis', 'Spiritless & Bubbles'];
+/** Where a bottle shows: its spirit page (and that page's style pages). */
+export const SHELF = [
+  { key: 'Vodka', page: 'spirit/vodka' }, { key: 'Gin', page: 'spirit/gin' }, { key: 'Tequila', page: 'spirit/tequila' },
+  { key: 'Mezcal', page: 'spirit/mezcal' }, { key: 'Rum', page: 'spirit/rum' },
+  { key: 'Bourbon', page: 'spirit/bourbon', whiskey: true }, { key: 'Rye', page: 'spirit/rye', whiskey: true },
+  { key: 'Scotch', page: 'spirit/scotch', whiskey: true }, { key: 'Irish whiskey', page: 'spirit/irish-whiskey', sub: 'spirit/irish/', whiskey: true },
+  { key: 'Japanese whisky', page: 'spirit/japanese-whisky', sub: 'spirit/japanese/', whiskey: true }, { key: 'Canadian whisky', page: null, whiskey: true },
+  { key: 'Cognac', page: 'spirit/cognac' }, { key: 'Pisco', page: 'spirit/pisco' }, { key: 'Amaro', page: 'spirit/amaro' },
+  { key: 'Liqueur', page: 'spirit/liqueurs' }, { key: 'Sparkling wine', page: 'wine/sparkling' },
+];
+export const BEER_STYLES = ['Light Lager', 'Pilsner', 'Amber and Red Ale', 'Pale Ale', 'IPA', 'Session IPA', 'Hazy IPA', 'Wheat Beer', 'Belgian Ale', 'Sour', 'Stout', 'Porter', 'Non-alcoholic', 'Rotating'];
 const ALLERGENS = ['Dairy', 'Egg', 'Fish', 'Shellfish', 'Tree Nut', 'Peanut', 'Gluten', 'Soy', 'Sesame'];
 
 /* Field types: text · textarea · photo · video · select · toggle · tags · chips · lines · list · link · color */
@@ -44,6 +56,7 @@ export const COLLECTIONS = {
       { key: 'garnish', label: 'Garnish', type: 'text', max: 80, section: 'Glass, method, ice' },
       { key: 'glassCard', label: 'Glass card', type: 'text', max: 60, options: [], section: 'Glass, method, ice', hint: 'Which glass drawing shows on the page. Leave empty to match the glass.' },
       { key: 'tableBase', label: 'Base, for the Cocktails table', type: 'text', max: 60, section: 'Glass, method, ice', placeholder: 'Bourbon or rye' },
+      { key: 'menuPrice', label: 'On our menu: price', type: 'text', max: 10, section: 'The basics', placeholder: '15', hint: 'Leave empty if it’s not on our menu. Shows as an “On our menu” tag.' },
       { key: 'allergyTag', label: 'Allergy tag', type: 'text', max: 40, section: 'Glass, method, ice', placeholder: 'Contains egg white', hint: 'Shows as a tag at the top and a note under the build.' },
       { key: 'allergyNote', label: 'Allergy note', type: 'textarea', max: 200, section: 'Glass, method, ice' },
       { ...build, section: 'The build' },
@@ -64,8 +77,11 @@ export const COLLECTIONS = {
   house: {
     label: 'House Cocktails', singular: 'house cocktail', prefix: 'signature/', template: '87-12', section: 'Signature', nav: 'The Bar',
     lists: 'Shows in the Our cocktails strip and the house table on the Cocktails page.',
+    group: { key: 'menuSection', values: MENU_SECTIONS },
     fields: [
       { key: 'name', label: 'Name', type: 'text', max: 80, required: true, section: 'The basics' },
+      { key: 'menuSection', label: 'Menu section', type: 'select', options: MENU_SECTIONS, section: 'The basics' },
+      { key: 'price', label: 'Price', type: 'text', max: 10, section: 'The basics', placeholder: '17' },
       { key: 'tagline', label: 'One line under the name', type: 'text', max: 80, section: 'The basics' },
       { key: 'description', label: 'Description', type: 'textarea', max: 400, section: 'The basics' },
       { key: 'photo', label: 'Main photo', type: 'photo', section: 'The basics' },
@@ -87,6 +103,35 @@ export const COLLECTIONS = {
       { key: 'say', label: 'Say it at the table', type: 'textarea', max: 400, section: 'At the table' },
       { key: 'story', label: 'How we made it', type: 'textarea', max: 800, section: 'The story' },
       { key: 'video', label: 'Video', type: 'video', section: 'The story' },
+    ],
+  },
+  shelf: {
+    label: 'Back Bar', singular: 'bottle', prefix: 'shelf/', template: null, section: 'Back bar', nav: 'The Bar', noPages: true,
+    group: { key: 'spirit', values: SHELF.map((x) => x.key) },
+    hasPage: () => false,
+    lists: 'Every bottle shows in “On our shelf” on its spirit page, under its style, and on that style’s page. Whiskeys also show on the Whiskey page.',
+    fields: [
+      { key: 'name', label: 'Bottle', type: 'text', max: 80, required: true, section: 'The bottle' },
+      { key: 'spirit', label: 'Spirit', type: 'select', options: SHELF.map((x) => x.key), section: 'The bottle' },
+      { key: 'styles', label: 'Style', type: 'tags', section: 'The bottle', placeholder: 'Wheated', hint: 'Match a style page under the spirit (e.g. Wheated, Small Batch, Reposado, Speyside). Leave empty if none fits.' },
+      { key: 'limited', label: 'Limited quantities', type: 'toggle', section: 'The bottle', hint: 'Shows a * next to it, like the menu.' },
+    ],
+  },
+  beer: {
+    label: 'Beer List', singular: 'beer', prefix: 'beer-list/', template: null, section: 'Beer list', nav: 'The Bar', noPages: true,
+    group: { key: 'serve', values: ['Draft', 'Bottle'] },
+    hasPage: () => false,
+    lists: 'Draft beers fill the tap wall and tap table on Beer & Draft. Bottles show under “In bottles”. Each shows on its style page.',
+    fields: [
+      { key: 'name', label: 'Beer', type: 'text', max: 80, required: true, section: 'The beer' },
+      { key: 'serve', label: 'How we serve it', type: 'select', options: ['Draft', 'Bottle'], section: 'The beer' },
+      { key: 'style', label: 'Style', type: 'select', options: BEER_STYLES, section: 'The beer' },
+      { key: 'tap', label: 'Tap number', type: 'text', max: 4, section: 'Draft only' },
+      { key: 'abv', label: 'ABV', type: 'text', max: 10, section: 'Draft only', placeholder: '5.0%' },
+      { key: 'glass', label: 'Glass', type: 'text', max: 40, section: 'Draft only' },
+      { key: 'pour', label: 'Pour', type: 'text', max: 20, section: 'Draft only', placeholder: '16 oz' },
+      { key: 'price', label: 'Price', type: 'text', max: 10, section: 'Draft only' },
+      { key: 'michigan', label: 'Michigan beer', type: 'toggle', section: 'Draft only' },
     ],
   },
   recipe: {
@@ -133,7 +178,7 @@ export const COLLECTIONS = {
 };
 
 /** Field lists for the admin form (no functions). */
-export const publicSchemas = () => Object.fromEntries(Object.entries(COLLECTIONS).map(([id, c]) => [id, { id, label: c.label, singular: c.singular, prefix: c.prefix, group: c.group, lists: c.lists, fields: c.fields }]));
+export const publicSchemas = () => Object.fromEntries(Object.entries(COLLECTIONS).map(([id, c]) => [id, { id, label: c.label, singular: c.singular, prefix: c.prefix, group: c.group, lists: c.lists, fields: c.fields, noPages: !!c.noPages }]));
 
 /* ------------------------------ validation ------------------------------ */
 const str = (v, max = 600) => String(v ?? '').slice(0, max).trim();

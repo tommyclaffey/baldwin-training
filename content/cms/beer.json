@@ -1,0 +1,182 @@
+[
+ {
+  "key": "beer-list/stella-artois",
+  "slug": "beer-list/stella-artois",
+  "sort": 0,
+  "data": {
+   "name": "Stella Artois",
+   "serve": "Draft",
+   "style": "Pilsner",
+   "tap": "1",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/yuengling",
+  "slug": "beer-list/yuengling",
+  "sort": 1,
+  "data": {
+   "name": "Yuengling",
+   "serve": "Draft",
+   "style": "Amber and Red Ale",
+   "tap": "2",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/rotating-tap",
+  "slug": "beer-list/rotating-tap",
+  "sort": 2,
+  "data": {
+   "name": "Rotating tap",
+   "serve": "Draft",
+   "style": "Rotating",
+   "tap": "3",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/bud-light",
+  "slug": "beer-list/bud-light",
+  "sort": 3,
+  "data": {
+   "name": "Bud Light",
+   "serve": "Bottle",
+   "style": "Light Lager",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/blue-moon",
+  "slug": "beer-list/blue-moon",
+  "sort": 4,
+  "data": {
+   "name": "Blue Moon",
+   "serve": "Bottle",
+   "style": "Wheat Beer",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/coors-light",
+  "slug": "beer-list/coors-light",
+  "sort": 5,
+  "data": {
+   "name": "Coors Light",
+   "serve": "Bottle",
+   "style": "Light Lager",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/corona-extra",
+  "slug": "beer-list/corona-extra",
+  "sort": 6,
+  "data": {
+   "name": "Corona Extra",
+   "serve": "Bottle",
+   "style": "Light Lager",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/corona-premier",
+  "slug": "beer-list/corona-premier",
+  "sort": 7,
+  "data": {
+   "name": "Corona Premier",
+   "serve": "Bottle",
+   "style": "Light Lager",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/miller-lite",
+  "slug": "beer-list/miller-lite",
+  "sort": 8,
+  "data": {
+   "name": "Miller Lite",
+   "serve": "Bottle",
+   "style": "Light Lager",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/labatt-blue",
+  "slug": "beer-list/labatt-blue",
+  "sort": 9,
+  "data": {
+   "name": "Labatt Blue",
+   "serve": "Bottle",
+   "style": "Pilsner",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/labatt-blue-light",
+  "slug": "beer-list/labatt-blue-light",
+  "sort": 10,
+  "data": {
+   "name": "Labatt Blue Light",
+   "serve": "Bottle",
+   "style": "Light Lager",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/heineken",
+  "slug": "beer-list/heineken",
+  "sort": 11,
+  "data": {
+   "name": "Heineken",
+   "serve": "Bottle",
+   "style": "Pilsner",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/heineken-0-0",
+  "slug": "beer-list/heineken-0-0",
+  "sort": 12,
+  "data": {
+   "name": "Heineken 0.0",
+   "serve": "Bottle",
+   "style": "Non-alcoholic",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/michelob-ultra",
+  "slug": "beer-list/michelob-ultra",
+  "sort": 13,
+  "data": {
+   "name": "Michelob Ultra",
+   "serve": "Bottle",
+   "style": "Light Lager",
+   "tap": "",
+   "michigan": false
+  }
+ },
+ {
+  "key": "beer-list/michelob-0-0",
+  "slug": "beer-list/michelob-0-0",
+  "sort": 14,
+  "data": {
+   "name": "Michelob 0.0",
+   "serve": "Bottle",
+   "style": "Non-alcoholic",
+   "tap": "",
+   "michigan": false
+  }
+ }
+]

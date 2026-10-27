@@ -150,53 +150,110 @@ function textNode(node: FNode, parentLm: 'H' | 'V' | undefined, key?: number) {
   return { st, cls, content, key };
 }
 
-/** A card at a new width: rows that spanned its full inner width keep spanning it. */
-function widen(n: FNode, w: number): FNode {
-  const pad = n.pd ? n.pd[1] + n.pd[3] : 0;
-  const inner = n.w - pad;
-  const grow = w - n.w;
-  return { ...n, w, c: n.lm ? n.c?.map((c) => ((c.t === 'F' || c.t === 'T') && c.sh === 'F' && !c.abs && inner - c.w >= 0 && inner - c.w <= 4 ? widen(c, c.w + grow) : c)) : n.c };
+const padX = (n: FNode) => (n.pd ? n.pd[1] + n.pd[3] : 0);
+const inFlow = (n: FNode) => (n.c || []).filter((c) => !c.abs);
+/** A row whose children fill it edge to edge (so they can share a change in width). */
+function packed(n: FNode) {
+  const kids = inFlow(n);
+  if (n.lm !== 'H' || n.wrap || !kids.length) return false;
+  const total = kids.reduce((s, c) => s + c.w, 0) + (n.gap || 0) * (kids.length - 1) + padX(n);
+  return Math.abs(total - n.w) <= 4;
+}
+/** In a packed row, the wider parts (text, columns, tiles) share the change; icons and badges keep their size. */
+const shares = (n: FNode, c: FNode) => packed(n) && !c.abs && (c.t === 'F' || c.t === 'T') && c.sh === 'F' && c.w >= 60;
+/** In a column, a part that spans its full inner width keeps spanning it. */
+function spans(parent: FNode, c: FNode) {
+  const inner = parent.w - padX(parent);
+  return parent.lm === 'V' && (c.t === 'F' || c.t === 'T') && c.sh === 'F' && !c.abs && inner - c.w >= 0 && inner - c.w <= 4;
 }
 
-/** Cards that read fine in either column. They only move from the right column to the end of the left. */
-const MOVABLE = ['What’s in it', 'Say it', 'Back to parent'];
+/** A card at a new width: full-width parts keep spanning it, packed rows share the change. */
+function widen(n: FNode, w: number): FNode {
+  const grow = w - n.w;
+  if (!n.lm || !n.c) return { ...n, w };
+  if (n.lm === 'H') {
+    const total = n.c.filter((c) => shares(n, c)).reduce((s, c) => s + c.w, 0);
+    return { ...n, w, c: n.c.map((c) => (total && shares(n, c) ? widen(c, c.w + (grow * c.w) / total) : c)) };
+  }
+  return { ...n, w, c: n.c.map((c) => (spans(n, c) ? widen(c, c.w + grow) : c)) };
+}
+
+/** The narrowest a card can go before something inside it overflows (fixed-size parts stay fixed). */
+function minWidth(n: FNode): number {
+  if (!n.lm || !n.c) return n.t === 'T' ? 80 : n.w;
+  const kids = inFlow(n);
+  if (!kids.length) return padX(n);
+  const need = kids.map((c) => (c.sh === 'L' || spans(n, c) || shares(n, c) ? minWidth(c) : c.w));
+  if (n.lm === 'H' && !n.wrap) return need.reduce((s, x) => s + x, 0) + (n.gap || 0) * (need.length - 1) + padX(n);
+  return Math.max(...need) + padX(n);
+}
+
+/** Right-hand cards that read fine full width in the left column. */
+const TO_LEFT = ['What’s in it', 'Say it', 'Back to parent', 'Good to know'];
+/** Where each original card sits: column (0 left, 1 right) and its original index in its home column. */
+type Card = { home: 0 | 1; i: number };
+type Layout = [Card[], Card[]];
+type Bal = { for: FNode; layout: Layout; best: { layout: Layout; gap: number }; pass: number; done: boolean };
+
+const start = (cols: FNode[]): Layout => [(cols[0].c || []).map((_, i) => ({ home: 0, i })), (cols[1].c || []).map((_, i) => ({ home: 1, i }))];
 
 /**
- * Renders a Left / Right row, then measures it: if the right column runs much longer, the mix of short cards
- * that leaves the smallest gap moves to the end of the left column (in their original order, at its width).
+ * A two-column row. After it renders, the columns are measured; if one runs much longer, the mix of its cards
+ * that should leave the smallest gap moves to the end of the other column (at that column's width). It then
+ * measures again, up to 3 passes, and keeps the best layout it saw. Cards only move if nothing inside them
+ * would overflow at the new width. The first card of each column stays put.
  */
 function Balanced({ node, parentLm, parentH }: { node: FNode; parentLm?: 'H' | 'V'; parentH?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const compact = useContext(CompactContext);
-  const [state, setState] = useState<{ for: FNode; moved: string[] } | null>(null);
-  const moved = !compact && state?.for === node ? state.moved : [];
-  const left = node.c?.find((c) => c.n === 'Left');
-  const right = node.c?.find((c) => c.n === 'Right');
+  const [st, setSt] = useState<Bal | null>(null);
+  const cols = node.c || [];
+  const layout = !compact && st?.for === node ? st.layout : null;
 
   useLayoutEffect(() => {
-    if (compact || !left || !right || state?.for === node) return;
+    if (compact || cols.length !== 2 || (st?.for === node && st.done)) return;
     const row = ref.current?.firstElementChild;
-    const L = row?.querySelector(':scope > [data-name="Left"]');
-    const R = row?.querySelector(':scope > [data-name="Right"]');
-    if (!L || !R || R.children.length !== (right.c || []).length) return;
-    const k = L.getBoundingClientRect().width / left.w;
+    const els = row ? [row.children[0], row.children[1]] : [];
+    if (!els[0] || !els[1]) return;
+    const cur = st?.for === node ? st.layout : start(cols);
     const bottom = (el: Element) => [...el.children].reduce((m, c) => Math.max(m, c.getBoundingClientRect().bottom), 0) - el.getBoundingClientRect().top;
-    const diff = bottom(R) - bottom(L);
-    const step = ((right.gap || 0) + (left.gap || 0)) * k;
-    const cards = (right.c || []).map((c, i) => ({ n: c.n || '', h: R.children[i].getBoundingClientRect().height })).filter((c) => MOVABLE.includes(c.n));
-    let best = { gap: Math.abs(diff), names: [] as string[] };
-    for (let mask = 1; mask < 1 << cards.length; mask++) {
-      const pick = cards.filter((_, i) => mask & (1 << i));
-      const gap = Math.abs(diff - pick.reduce((s, c) => s + 2 * c.h + step, 0));
-      if (gap < best.gap - 24 * k) best = { gap, names: pick.map((c) => c.n) };
+    const diff = bottom(els[1]) - bottom(els[0]); // > 0: the right column runs longer
+    const gap0 = Math.abs(diff);
+    const k = els[0].getBoundingClientRect().width / cols[0].w;
+    const best = !st || st.for !== node || gap0 < st.best.gap ? { layout: cur, gap: gap0 } : st.best;
+    const pass = st?.for === node ? st.pass + 1 : 1;
+    const finish = () => setSt({ for: node, layout: best.layout, best, pass, done: true });
+    if (gap0 <= 60 * k || pass > 3) return finish();
+
+    const from: 0 | 1 = diff > 0 ? 1 : 0;
+    const to = cols[1 - from];
+    const step = ((cols[0].gap || 0) + (cols[1].gap || 0)) * k;
+    const ratio = from === 0 ? (cols[0].w / cols[1].w) ** 0.6 : 0.85; // narrower = taller
+    const cards = cur[from].map((card, j) => ({ card, j, n: cols[card.home].c![card.i], h: els[from].children[j]?.getBoundingClientRect().height || 0 }))
+      .filter(({ j, n, card }) => j > 0 && (from === 1 ? card.home === 0 || TO_LEFT.includes(n.n || '') : minWidth(n) <= to.w));
+    let pick: typeof cards = [];
+    let bestEst = gap0;
+    for (let mask = 1; mask < 1 << cards.length && cards.length <= 8; mask++) {
+      const p = cards.filter((_, j) => mask & (1 << j));
+      const est = Math.abs(gap0 - p.reduce((s, c) => s + c.h * (1 + ratio) + step, 0));
+      if (est < bestEst - 24 * k || (est < bestEst && p.length < pick.length)) { bestEst = est; pick = p; }
     }
-    setState({ for: node, moved: best.names });
-  }, [node, compact, left, right, state]);
+    if (!pick.length) return finish();
+    const moved = new Set(pick.map((p) => p.card));
+    const next: Layout = [[...cur[0]], [...cur[1]]];
+    next[from] = cur[from].filter((c) => !moved.has(c));
+    const d = cur[1 - from];
+    // On the right, "Part of …" stays last.
+    const lastN = d.length ? cols[d[d.length - 1].home].c![d[d.length - 1].i].n : '';
+    const tail = from === 0 && lastN === 'Back to parent' ? d.length - 1 : d.length;
+    next[1 - from] = [...d.slice(0, tail), ...pick.map((p) => p.card), ...d.slice(tail)];
+    setSt({ for: node, layout: next, best, pass, done: false });
+  }, [node, compact, cols, st]);
 
   let shown = node;
-  if (left && right && moved.length) {
-    const across = (right.c || []).filter((c) => moved.includes(c.n || '')).map((c) => widen(c, left.w));
-    shown = { ...node, c: node.c!.map((c) => (c === left ? { ...left, c: [...(left.c || []), ...across] } : c === right ? { ...right, c: (right.c || []).filter((x) => !moved.includes(x.n || '')) } : c)) };
+  if (layout) {
+    const place = (side: 0 | 1) => ({ ...cols[side], c: layout[side].map((card) => (card.home === side ? cols[side].c![card.i] : widen(cols[card.home].c![card.i], cols[side].w))) });
+    shown = { ...node, c: [place(0), place(1)] };
   }
   return <div ref={ref} style={{ display: 'contents' }}><FigmaNode node={{ ...shown, bal: undefined }} parentLm={parentLm} parentH={parentH} /></div>;
 }

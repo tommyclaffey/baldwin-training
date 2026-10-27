@@ -9,7 +9,7 @@ export type FieldDef = {
   key: string; label: string; type: string; max?: number; hint?: string; placeholder?: string; options?: string[];
   required?: boolean; section?: string; fields?: FieldDef[];
 };
-export type Collection = { id: string; label: string; singular: string; prefix: string; group?: { key: string; values: string[] }; lists: string; fields: FieldDef[] };
+export type Collection = { id: string; label: string; singular: string; prefix: string; group?: { key: string; values: string[] }; lists: string; fields: FieldDef[]; noPages?: boolean };
 type Entry = { id: number; collection: string; slug: string; data: Record<string, unknown>; sort: number; seeded: boolean; updated_at: string; edited: boolean };
 
 let cache: { collections: Record<string, Collection>; counts: Record<string, number> } | null = null;
@@ -39,8 +39,11 @@ export function CollectionList() {
   if (colErr) return <ErrorNote error={colErr} />;
   if (!cols) return <Loading />;
   if (!c) return <Empty title="Nothing here" />;
-  const groups = c.group ? c.group.values.map((v) => ({ label: GROUP_LABEL[v] || v, items: (entries || []).filter((e) => e.data[c.group!.key] === v) })) : [{ label: '', items: entries || [] }];
-  const page = (e: Entry) => c.id !== 'recipe' || !!e.data.fullPage;
+  const groups = c.group
+    ? [...c.group.values.map((v) => ({ label: GROUP_LABEL[v] || v, items: (entries || []).filter((e) => e.data[c.group!.key] === v) })),
+      { label: 'Other', items: (entries || []).filter((e) => !c.group!.values.includes(e.data[c.group!.key] as string)) }]
+    : [{ label: '', items: entries || [] }];
+  const page = (e: Entry) => !c.noPages && (c.id !== 'recipe' || !!e.data.fullPage);
   return (
     <div className="admin-page">
       <div className="editor-head">
@@ -59,12 +62,12 @@ export function CollectionList() {
           <div className="list">
             {g.items.map((e, i) => (
               <div key={e.id} className="list-row cms-row">
-                {e.data.photo ? <img src={e.data.photo as string} alt="" /> : <span className="thumb-empty" />}
+                {c.noPages ? null : e.data.photo ? <img src={e.data.photo as string} alt="" /> : <span className="thumb-empty" />}
                 <Link className="grow" to={`/admin/pages/${c.id}/${e.id}`}>
                   <strong>{e.data.name as string}</strong>
-                  <small>{(e.data.tagline as string) || (e.data.description as string) || '—'}</small>
+                  <small>{(e.data.tagline as string) || (e.data.description as string) || subline(e.data) || '—'}</small>
                 </Link>
-                <small className="muted nowrap-sm">{!page(e) ? 'Food Matrix only' : e.edited ? `Edited ${when(e.updated_at)}` : 'From the design'}</small>
+                <small className="muted nowrap-sm">{c.noPages ? (e.edited ? `Edited ${when(e.updated_at)}` : 'From our menu') : !page(e) ? 'Food Matrix only' : e.edited ? `Edited ${when(e.updated_at)}` : 'From the design'}</small>
                 {page(e) && <Link className="link-btn" to={'/' + e.slug} target="_blank">View</Link>}
                 <div className="row-tools">
                   <button className="icon-btn" aria-label={`Move ${e.data.name} up`} disabled={i === 0} onClick={() => move(e, -1)}>↑</button>
@@ -79,6 +82,10 @@ export function CollectionList() {
   );
 }
 const cap = (s: string) => s.replace(/\b\w/g, (m) => m.toUpperCase());
+/** A line for records with no description: style, how it's served, price. */
+const subline = (d: Record<string, unknown>) => [
+  Array.isArray(d.styles) ? (d.styles as string[]).join(', ') : d.style, d.serve === 'Draft' && d.tap ? `Tap ${d.tap}` : d.serve, d.limited ? 'Limited' : '', d.price ? `$${d.price}` : '',
+].filter(Boolean).join(' · ');
 
 /* ---------- the template form ---------- */
 export function EntryEditor() {
