@@ -1,11 +1,21 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar';
 import { PageView, usePageEntry } from './components/PageView';
 import { NavContext } from './components/FigmaNode';
+import { EditBar } from './components/EditBar';
+import { useSession } from './lib/session';
+import AdminApp from './admin/AdminApp';
 
 export default function App() {
+  const { pathname } = useLocation();
+  if (pathname === '/admin' || pathname.startsWith('/admin/')) return <Routes><Route path="/admin/*" element={<AdminApp />} /></Routes>;
+  return <Book />;
+}
+
+function Book() {
   const entry = usePageEntry();
+  const { user } = useSession();
   const [menu, setMenu] = useState(false);
   const { pathname } = useLocation();
   useEffect(() => setMenu(false), [pathname]);
@@ -27,7 +37,7 @@ export default function App() {
           <PageView />
         </div>
       </div>
-      <div className="demo-flag" role="note">Demo · sample content, Baldwin team to confirm</div>
+      {user ? <EditBar /> : <div className="demo-flag" role="note">Demo · sample content, Baldwin team to confirm · <Link to="/admin">Manager Sign In</Link></div>}
     </NavContext.Provider>
   );
 }

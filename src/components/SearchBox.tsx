@@ -1,9 +1,7 @@
 import { useMemo, useRef, useState, type CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
-import index from '../content/index.json';
-
-type Entry = { slug: string; name: string; title: string; section: string; text: string };
-const ENTRIES = index as Entry[];
+import { useSession } from '../lib/session';
+import type { IndexEntry as Entry } from '../lib/api';
 
 /** Searches every page title and its text. */
 export function SearchBox({ style }: { style?: CSSProperties }) {
@@ -11,6 +9,7 @@ export function SearchBox({ style }: { style?: CSSProperties }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const nav = useNavigate();
+  const { index: ENTRIES } = useSession();
   const box = useRef<HTMLDivElement>(null);
 
   const results = useMemo(() => {
@@ -28,7 +27,7 @@ export function SearchBox({ style }: { style?: CSSProperties }) {
       if (s) scored.push({ e, s: s - e.name.split(' · ').length });
     }
     return scored.sort((a, b) => b.s - a.s).slice(0, 8).map((x) => x.e);
-  }, [q]);
+  }, [q, ENTRIES]);
 
   const go = (e: Entry) => { setOpen(false); setQ(''); nav('/' + e.slug); };
 

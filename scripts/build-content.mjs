@@ -71,6 +71,7 @@ const sidebar = home.side.map((n) => prep(n));
 const srcDir = path.join(root, 'src/content');
 fs.mkdirSync(srcDir, { recursive: true });
 fs.writeFileSync(path.join(srcDir, 'index.json'), JSON.stringify(index));
+fs.writeFileSync(path.join(root, 'public/content/index.json'), JSON.stringify(index));
 fs.writeFileSync(path.join(srcDir, 'svgs.json'), JSON.stringify(svgs));
 fs.writeFileSync(path.join(srcDir, 'sidebar.json'), JSON.stringify(sidebar));
 console.log(`content: ${index.length} pages, ${Object.keys(svgs).length} icons, ${Object.keys(imgFile).length} images`);

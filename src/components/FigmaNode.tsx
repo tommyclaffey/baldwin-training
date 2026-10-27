@@ -2,6 +2,9 @@ import { createContext, useContext, useEffect, useRef, useState, type CSSPropert
 import { Link } from 'react-router-dom';
 import svgs from '../content/svgs.json';
 import { SearchBox } from './SearchBox';
+import { VideoEmbed } from './VideoEmbed';
+import { MediaPicker } from './MediaPicker';
+import type { Video } from '../lib/api';
 
 // One node of the Figma layout export (see scripts/build-content.mjs).
 export type FNode = {
@@ -16,7 +19,25 @@ export type FNode = {
   segs?: [number, number, string, string | null][];
   clip?: 1; lm?: 'H' | 'V'; gap?: number; pd?: number[]; pa?: string; ca?: string; wrap?: 1; cg?: number;
   c?: FNode[];
+  vid?: Video;
 };
+
+/** Editing state for the page being shown. */
+export type EditApi = { pageId: string; editing: boolean; save: (path: string, value: object) => Promise<void> };
+export const EditContext = createContext<EditApi>({ pageId: '', editing: false, save: async () => {} });
+
+/** Child paths use layer names, matching server/content.mjs, so inserted rows don't shift edits. */
+function childPaths(node: FNode, path: string) {
+  const seen = new Map<string, number>();
+  return (node.c || []).map((c) => {
+    const name = c.n || '';
+    const k = seen.get(name) ?? 0;
+    seen.set(name, k + 1);
+    return `${path}/${name}#${k}`;
+  });
+}
+const isVideoSlot = (n: FNode) => !!n.n && (n.n.startsWith('Video slot') || n.n === 'Player');
+const isVideoCard = (n: FNode) => !!n.n && (n.n.startsWith('Video · ') || n.n.startsWith('Item · '));
 
 /** Which sidebar item is active, so the shared sidebar can highlight it. */
 export const NavContext = createContext<string>('Home');
@@ -133,13 +154,17 @@ function textNode(node: FNode, parentLm: 'H' | 'V' | undefined, key?: number) {
   return { st, cls, content, key };
 }
 
-export function FigmaNode({ node, parentLm, rootStyle }: { node: FNode; parentLm?: 'H' | 'V'; rootStyle?: CSSProperties }) {
+export function FigmaNode({ node, parentLm, rootStyle, path = '' }: { node: FNode; parentLm?: 'H' | 'V'; rootStyle?: CSSProperties; path?: string }) {
   const activeNav = useContext(NavContext);
   const compact = useContext(CompactContext);
+  const edit = useContext(EditContext);
+  const [picker, setPicker] = useState<null | 'image' | 'video'>(null);
+  const [playing, setPlaying] = useState(false);
 
   if (node.t === 'T') {
     const { st, cls, content } = textNode(node, parentLm);
-    return wrapLink(node, <div className={cls.join(' ')} style={st}>{content}</div>, st, cls);
+    if (edit.editing && path) return <EditableText key={node.s} text={node.s || ''} className={cls.concat('editable').join(' ')} style={st} onSave={(v) => edit.save(path, { s: v })} />;
+    return wrapLink(node, <div className={cls.join(' ')} style={st}>{content}</div>, st, cls, edit.editing);
   }
 
   const { st, cls } = boxStyle(node, parentLm);
@@ -195,27 +220,100 @@ export function FigmaNode({ node, parentLm, rootStyle }: { node: FNode; parentLm
   const role = img && node.t !== 'F' ? 'img' : undefined;
   const label = role ? (node.n || '').replace(/^IMG\//, '').split(' · ')[0] : undefined;
 
-  const kids = node.c?.map((c, i) => <FigmaNode key={i} node={c} parentLm={node.lm} />);
+  const paths = childPaths(node, path);
+  let kids: ReactNode = node.c?.map((c, i) => <FigmaNode key={i} node={c} parentLm={node.lm} path={paths[i]} />);
+
+  // Photos: a "Replace photo" button while editing.
+  const extras: ReactNode[] = [];
+  if (edit.editing && img && path) {
+    cls.push('edit-media');
+    extras.push(<button key="img" type="button" className="edit-chip" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setPicker('image'); }}>Replace photo</button>);
+  }
+  // Videos: slots play inline; library cards open a player.
+  if (isVideoSlot(node) && node.vid) {
+    kids = <div className="video-fill"><VideoEmbed video={node.vid} /></div>;
+  }
+  if (isVideoCard(node) && node.vid && !edit.editing) {
+    cls.push('has-video');
+    extras.push(<button key="play" type="button" className="play-overlay" aria-label={`Play ${node.n!.split(' · ').slice(1).join(' · ')}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); setPlaying(true); }} />);
+  }
+  if (edit.editing && path && (isVideoSlot(node) || node.n?.startsWith('Video · '))) {
+    cls.push('edit-media');
+    extras.push(<button key="vid" type="button" className="edit-chip video" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setPicker('video'); }}>{node.vid ? 'Change video' : 'Add video'}</button>);
+  }
+  const overlays = (
+    <>
+      {picker && (
+        <MediaPicker
+          kind={picker}
+          title={picker === 'image' ? 'Replace the photo' : node.vid ? 'Change the video' : 'Add a video'}
+          onClose={() => setPicker(null)}
+          onPick={async (v) => { setPicker(null); await edit.save(path, v); }}
+          onRemove={picker === 'video' && node.vid ? async () => { setPicker(null); await edit.save(path, { video: null }); } : undefined}
+        />
+      )}
+      {playing && node.vid && (
+        <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) setPlaying(false); }}>
+          <div className="modal video-modal" role="dialog" aria-modal="true" aria-label="Video">
+            <button className="icon-btn" onClick={() => setPlaying(false)} aria-label="Close">✕</button>
+            <div className="video-frame"><VideoEmbed video={node.vid} /></div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+  if (extras.length || picker || playing) kids = <>{kids}{extras}{overlays}</>;
+  if (cls.includes('edit-media') && !st.position) st.position = 'relative';
   if (compact && !node.lm && node.c && node.w > 200 && parentLm && !node.abs && !rootStyle) {
     const { flex, alignSelf, minWidth, flexShrink, ...inner } = st;
     const box = <div className={cls.join(' ')} style={{ ...inner, position: 'relative', width: node.w, height: node.h, maxWidth: 'none' }} data-name={node.n}>{kids}</div>;
     const scaled = <Scaled w={node.w} h={node.h} outer={{ flex, alignSelf, minWidth, flexShrink }}>{box}</Scaled>;
-    return node.to ? wrapLink(node, <div>{scaled}</div>, {}, ['fn']) : scaled;
+    return node.to && !edit.editing ? wrapLink(node, <div>{scaled}</div>, {}, ['fn']) : scaled;
   }
   const el = (
     <div className={cls.join(' ')} style={st} role={role} aria-label={label} data-name={node.n}>
       {kids}
     </div>
   );
-  return wrapLink(node, el, st, cls);
+  return wrapLink(node, el, st, cls, edit.editing);
 }
 
-function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[]) {
-  if (!node.to) return el;
+function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[], editing = false) {
+  if (!node.to || editing) return el;
   const label = node.n?.includes(' · ') ? node.n.split(' · ').slice(1).join(' · ') : undefined;
   return (
     <Link to={node.to} className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: 'inherit', textDecoration: 'none' }} aria-label={label}>
       {(el as { props: { children?: ReactNode } }).props.children}
     </Link>
+  );
+}
+
+/** Click to edit. Saves when you click away; Escape cancels. */
+function EditableText({ text, className, style, onSave }: { text: string; className: string; style: CSSProperties; onSave: (v: string) => Promise<void> }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [state, setState] = useState<'idle' | 'saving' | 'error'>('idle');
+  return (
+    <div
+      ref={ref}
+      className={className + (state === 'saving' ? ' saving' : state === 'error' ? ' save-error' : '')}
+      style={style}
+      contentEditable
+      suppressContentEditableWarning
+      role="textbox"
+      aria-label="Edit text"
+      spellCheck
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') { e.currentTarget.innerText = text; e.currentTarget.blur(); }
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); e.currentTarget.blur(); }
+      }}
+      onBlur={async (e) => {
+        const v = e.currentTarget.innerText.replace(/\u00a0/g, ' ').replace(/\n$/, '');
+        if (v === text) return;
+        setState('saving');
+        try { await onSave(v); setState('idle'); } catch { setState('error'); }
+      }}
+    >
+      {text}
+    </div>
   );
 }
