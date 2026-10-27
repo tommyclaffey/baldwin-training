@@ -175,8 +175,15 @@ function signatureCards(page, house) {
     const col = spec ? spec.w - (spec.pd ? spec.pd[1] + spec.pd[3] : 0) : name.w;
     name.w = col; name.sh = 'F';
     for (const t of nt) { t.ar = 'H'; t.w = col; t.sh = 'F'; }
-    const build = (d.build || []).filter((b) => b && b.ingredient).slice(0, 8);
-    repeat(find(card, byName('Build')), startsWith('Line · '), build, (l, b) => { l.n = 'Line · ' + b.ingredient; const t = texts(l); setText(t[0], b.amount || ''); setText(t[1], b.ingredient); t[1].ar = 'H'; t[1].sh = 'L'; });
+    if ((d.name || '').length > 13) nt[1].z = Math.round((nt[1].z || 28) * 0.86); // long names stay on one line
+    // Cards stay one size: up to 4 ingredients, then "+ N more" (the card opens the full spec).
+    const all = (d.build || []).filter((b) => b && b.ingredient);
+    const build = all.length > 4 ? [...all.slice(0, 3), { amount: '', ingredient: `+ ${all.length - 3} more on the full spec`, more: true }] : all;
+    repeat(find(card, byName('Build')), startsWith('Line · '), build, (l, b) => {
+      l.n = b.more ? 'Line · More' : 'Line · ' + b.ingredient;
+      const t = texts(l); setText(t[0], b.amount || ''); setText(t[1], b.ingredient); t[1].ar = 'H'; t[1].sh = 'L';
+      if (b.more) { t[1].f = [{ c: '#C49A6C' }]; t[1].fs = 'SemiBold'; t[1].z = Math.min(t[1].z || 15, 14); }
+    });
     const det = find(card, byName('Details'));
     for (const [label, v] of [['Glass', d.glass], ['Ice', d.ice], ['Method', d.method], ['Pairs with', d.pairs]]) {
       const r = find(det, byName(label)); if (r) { const t = texts(r)[1]; setText(t, v || (label === 'Pairs with' ? 'Ask the bar' : 'To confirm')); t.ar = 'H'; t.sh = 'L'; r.sh = 'L'; }

@@ -453,3 +453,26 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 @media (prefers-reduced-motion: reduce) { .carousel { scroll-behavior: auto; } }
 /* Every card in a carousel is the same size: as tall as the tallest. */
 .carousel > * { align-self: stretch !important; }
+/* Signature cards: the note sits at the bottom of every card and keeps to three lines, so cards line up. */
+.carousel [data-name="Spec"] { align-self: stretch !important; height: auto !important; min-height: 0 !important; }
+.carousel [data-name="Tasting note"] { margin-top: auto; }
+.carousel [data-name="Tasting note"] .ftext { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.carousel [data-name^="IMG/"], .carousel [data-name^="Glass filler"] { align-self: stretch !important; height: auto !important; min-height: 300px; }
+@media (max-width: 859px) {
+  .carousel [data-name^="IMG/"], .carousel [data-name^="Glass filler"] { width: 100% !important; flex: 1 1 100% !important; height: 220px !important; min-height: 220px; align-self: auto !important; }
+  .carousel [data-name^="Glass filler"] [data-name^="Shape · "] { width: 84px !important; height: 109px !important; }
+}
+@media (max-width: 859px) {
+  .carousel > * { flex-direction: column !important; flex-wrap: nowrap !important; align-items: stretch !important; }
+  .carousel [data-name="Spec"] { width: 100% !important; flex: 1 1 auto !important; align-self: stretch !important; justify-content: flex-start !important; }
+  .carousel [data-name="Spec"] > * { width: 100% !important; max-width: 100% !important; flex: 0 0 auto !important; }
+  .carousel [data-name="Spec"] > [data-name="Tasting note"] { margin-top: auto; }
+}
+@media (max-width: 859px) {
+  .carousel > * { width: 100% !important; max-width: none !important; flex: 0 0 100% !important; }
+  .carousel > * > [data-name^="IMG/"], .carousel > * > [data-name^="Glass filler"] { width: 100% !important; height: 220px !important; min-height: 220px !important; flex: 0 0 220px !important; align-self: stretch !important; }
+}
+@media (max-width: 859px) {
+  .carousel [data-name^="Line · "], .carousel [data-name="Details"] > *, .carousel [data-name="Top"] { flex-wrap: nowrap !important; }
+  .carousel [data-name^="Line · "] > .fill-h, .carousel [data-name="Details"] > * > .fill-h { flex: 1 1 0 !important; min-width: 0; }
+}
