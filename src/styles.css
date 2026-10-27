@@ -133,6 +133,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, .flink:focus-visible
   .fx-abs { max-width: 100%; overflow: hidden; }
   .fixh { height: auto !important; min-height: 0; }
   .demo-flag { left: 50%; right: auto; transform: translateX(-50%); bottom: 10px; }
+  /* Wine list rows: prices stay on the right, the name wraps instead. */
+  [data-name^="Pour · "] { flex-wrap: nowrap !important; }
+  [data-name^="Pour · "] > [data-name="Name"] { width: auto !important; flex: 1 1 auto !important; min-width: 0; }
+  [data-name^="Pour · "] > [data-name="Prices"] { flex: 0 0 auto !important; width: auto !important; }
+  [data-name="Head cells"] { margin-left: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {

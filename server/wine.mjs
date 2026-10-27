@@ -58,6 +58,9 @@ export function setWineVideo(db, key, video, note, userId) {
     .run(key, JSON.stringify(video), note || null, userId ?? null, now());
 }
 
+/** The wine cards with a photo (the tasting wines), not the rows of the wine list. */
+const isTastingCard = (n) => (n.n || '').startsWith('Wine · ') && !!find(n, (x) => (x.n || '').startsWith('IMG/'));
+
 /** Every place a wine video can go, grouped for the admin. */
 export function wineTargets(index, basePage) {
   const wine = index.filter((e) => wineKind(e.slug));
@@ -67,7 +70,7 @@ export function wineTargets(index, basePage) {
     ...Object.entries(STYLES).map(([k, v]) => ({ label: `${v} · ${k === 'red' || k === 'white' ? 'grapes' : 'styles'}`, items: wine.filter((e) => e.slug.startsWith(`wine/${k}/`)) })),
     ...Object.entries(COUNTRIES).map(([k, v]) => ({ label: `${v} · regions`, items: wine.filter((e) => e.slug.startsWith(`wine/${k}/`)) })),
   ].map((g) => ({ label: g.label, items: g.items.map((e) => ({ key: e.slug, name: e.title, slug: e.slug })) }));
-  const list = findAll(basePage(WINE_PAGE)?.main || {}, (n) => (n.n || '').startsWith('Wine · '));
+  const list = findAll(basePage(WINE_PAGE)?.main || {}, isTastingCard);
   groups.unshift({ label: 'Wines on our list', items: list.map((n) => ({ key: 'wine:' + n.n.slice(7), name: n.n.slice(7), slug: 'the-bar/wine' })) });
   return groups.filter((g) => g.items.length);
 }
@@ -109,7 +112,7 @@ export function learnMore(page, entry, rec, basePage) {
 
 /** Wines on the list: a play button on the photo when a video is attached (the badge is designed on one card). */
 export function wineCards(page, videos) {
-  const cards = findAll(page.main, (n) => (n.n || '').startsWith('Wine · '));
+  const cards = findAll(page.main, isTastingCard);
   const proto = cards.map((c) => find(c, byName('Play badge'))).find(Boolean);
   for (const card of cards) {
     const rec = videos.get('wine:' + card.n.slice(7));
