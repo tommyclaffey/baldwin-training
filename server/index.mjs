@@ -4,7 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { hashPassword, verifyPassword, burnPasswordCheck, createSession, sessionUser, endSession, sessionCookie, SESSION_COOKIE, LoginLimiter, publicUser, sha256, newToken } from './auth.mjs';
-import { assemble, fullIndex, ordered, glassTitles } from './content.mjs';
+import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex } from './content.mjs';
+import { wineTargets, wineVideos, setWineVideo } from './wine.mjs';
 import { COLLECTIONS, publicSchemas, seed, listEntries, getEntry, createEntry, updateEntry, deleteEntry, moveEntry } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { score as scoreQuiz, results as quizResults, quizIds } from './quiz.mjs';
@@ -285,6 +286,25 @@ async function api(req, res, url) {
       const b = await readJson(req);
       return sendJson(res, 200, moveEntry(db, e.id, Number(b.dir) < 0 ? -1 : 1));
     }
+  }
+
+  /* wine videos: "Learn more about …" on wine pages, and wines on the list */
+  if (p === '/api/wine-videos' && m === 'GET') {
+    needUser(c, req);
+    const vids = wineVideos(db);
+    const groups = wineTargets(baseIndex(), basePage).map((g) => ({ ...g, items: g.items.map((it) => ({ ...it, ...(vids.get(it.key) || { video: null, note: '' }) })) }));
+    return sendJson(res, 200, { groups });
+  }
+  if (p === '/api/wine-videos' && m === 'PUT') {
+    const u = needUser(c, req);
+    const b = await readJson(req);
+    const target = wineTargets(baseIndex(), basePage).flatMap((g) => g.items).find((it) => it.key === b.key);
+    if (!target) fail(400, 'We couldn’t find that wine page.');
+    const video = b.video ? media(b.video) : null;
+    if (b.video && !video) fail(400, 'That video can’t be used. Pick it again from the library.');
+    setWineVideo(db, target.key, video, str(b.note, 400), u.id);
+    audit(db, u.id, video ? 'set wine video' : 'remove wine video', target.name);
+    return sendJson(res, 200, { ok: true, video, note: video ? str(b.note, 400) : '' });
   }
 
   /* media */

@@ -134,3 +134,37 @@ test('quiz scores are checked by the server, and a manager can sign off', async 
   const prog = (await call(`/api/quiz/progress/${device}`, { auth: false })).data;
   assert.equal(prog.signoffs[0].quiz, 'short-rib');
 });
+
+test('wine videos: every wine page has a Learn more section, and a video plays there and on the wine list', async () => {
+  const groups = (await call('/api/wine-videos')).data.groups;
+  const items = groups.flatMap((g) => g.items);
+  assert.equal(items.filter((i) => !i.key.startsWith('wine:')).length, 54);
+  assert.ok(items.some((i) => i.key === 'wine:Tenuta Spinelli Pecorino'));
+  const index = (await call('/api/index')).data;
+  const find = (n, pred) => (pred(n) ? n : (n.c || []).map((c) => find(c, pred)).find(Boolean));
+  const page = async (slug) => (await call('/api/page/' + index.find((e) => e.slug === slug).file)).data;
+  // no video yet: the section is there, ready for one
+  const merlot = await page('wine/red/merlot');
+  const sec = find(merlot.main, (n) => n.n === 'Learn more');
+  assert.ok(sec && JSON.stringify(sec).includes('MERLOT'));
+  assert.equal(find(sec, (n) => !!n.vid), undefined);
+  // anonymous can't set one, an unknown page is refused
+  assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/merlot', video: null }, auth: false })).status, 401);
+  assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/nope', video: { kind: 'youtube', youtubeId: 'dQw4w9WgXcQ' } } })).status, 400);
+  // add one to a grape and to a wine on the list
+  const v = { kind: 'youtube', youtubeId: 'dQw4w9WgXcQ', title: 'Merlot' };
+  assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/merlot', video: v, note: 'Our Merlot story.' } })).status, 200);
+  assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine:Bolgheri Rosso', video: v } })).status, 200);
+  const after = await page('wine/red/merlot');
+  const sec2 = find(after.main, (n) => n.n === 'Learn more');
+  assert.equal(find(sec2, (n) => !!n.vid).vid.youtubeId, 'dQw4w9WgXcQ');
+  assert.ok(JSON.stringify(sec2).includes('Our Merlot story.'));
+  const list = (await call('/api/page/25-2')).data;
+  const card = find(list.main, (n) => n.n === 'Wine · Bolgheri Rosso');
+  assert.equal(card.vid.youtubeId, 'dQw4w9WgXcQ');
+  assert.ok(find(card, (n) => n.n === 'Play badge'));
+  assert.equal(find(find(list.main, (n) => n.n === 'Wine · Tenuta Spinelli Pecorino'), (n) => n.n === 'Play badge'), undefined);
+  // and remove it
+  await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine:Bolgheri Rosso', video: null } });
+  assert.equal(find((await call('/api/page/25-2')).data.main, (n) => n.n === 'Wine · Bolgheri Rosso').vid, undefined);
+});

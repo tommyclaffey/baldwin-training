@@ -414,3 +414,13 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 }
 @media (max-width: 900px) { .form-grid { grid-template-columns: 1fr; } .nowrap-sm { display: none; } }
 .cms-row .link-btn { align-self: center; }
+
+/* Wine Videos (admin) */
+.admin-pill { display: inline-flex; align-items: center; justify-content: center; padding: 6px 12px; border-radius: 999px; background: #EFE3D3; color: #8A5A3A; font-size: 13px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; align-self: center; }
+.wine-row { flex-direction: column; align-items: stretch; gap: 12px; }
+.wine-row:hover { background: transparent; }
+.wine-row-top { display: flex; align-items: center; gap: 14px; }
+.wine-row-top .link-btn { padding: 0; align-self: center; margin: 0; }
+.dot-status { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #CDBFAE; flex: none; }
+.dot-status.on { background: #3F6A39; border-color: #3F6A39; }
+.wine-editor { padding: 4px 0 6px 24px; max-width: 640px; }
