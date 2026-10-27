@@ -51,7 +51,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   const cols = (await call('/api/collections')).data;
   assert.equal(cols.counts.classic, 23);
   assert.equal(cols.counts.house, 17, 'every cocktail on our menu');
-  assert.equal(cols.counts.shelf, 93);
+  assert.equal(cols.counts.shelf, 92, "Mionetto moved to the wine list");
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 10);
   const index = (await call('/api/index')).data;
@@ -200,4 +200,24 @@ test('the back bar and beer list fill the shelves, the tap wall and the style pa
   await call(`/api/entries/${tito.id}`, { method: 'PUT', body: { data: { ...tito.data, name: "Tito's Handmade" } } });
   assert.ok((await page('spirit/vodka/corn')).includes("Bottle · Tito's Handmade"));
   assert.ok(index.find((e) => e.slug === 'spirit/bourbon').text.includes("Maker's Mark"), 'bottles are searchable');
+});
+
+test('the wine list fills the Wine page and every wine page it belongs on', async () => {
+  const index = (await call('/api/index')).data;
+  const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
+  const wine = await page('the-bar/wine');
+  assert.equal((wine.match(/"Pour · /g) || []).length, 106, 'every wine on the list');
+  assert.ok(wine.includes('Pour · Caymus') && wine.includes('Pour · Veuve Clicquot'));
+  const cab = await page('wine/red/cabernet');
+  assert.ok(cab.includes('Pour · Caymus') && cab.includes('Pour · Silver Oak') && !cab.includes('Pour · Emeritus'));
+  assert.ok(!cab.includes('Sommelier to add'), 'the placeholder is replaced');
+  const rose = await page('wine/rose');
+  assert.ok(rose.includes("Kettmeir 'Athesis'") && !rose.includes('Pour · Maschio'), 'Prosecco is not a rosé');
+  const cava = await page('wine/sparkling/cava');
+  assert.ok(!cava.includes('"Pour · '), 'nothing on the list, placeholder stays');
+  const italy = await page('wine/italy');
+  assert.ok(italy.includes('"Columns"'), 'a long list goes full width in two columns');
+  assert.ok(index.find((e) => e.slug === 'wine/red/cabernet').text.includes('Caymus'), 'wines are searchable');
+  const cols = (await call('/api/collections')).data;
+  assert.equal(cols.counts.wine, 106);
 });

@@ -1142,18 +1142,5 @@
    "styles": [],
    "limited": false
   }
- },
- {
-  "key": "shelf/mionetto-prosecco-split",
-  "slug": "shelf/mionetto-prosecco-split",
-  "sort": 92,
-  "data": {
-   "name": "Mionetto Prosecco (split)",
-   "spirit": "Sparkling wine",
-   "styles": [
-    "Prosecco"
-   ],
-   "limited": false
-  }
  }
 ]

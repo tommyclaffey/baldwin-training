@@ -18,7 +18,7 @@ export const SHELF = [
   { key: 'Scotch', page: 'spirit/scotch', whiskey: true }, { key: 'Irish whiskey', page: 'spirit/irish-whiskey', sub: 'spirit/irish/', whiskey: true },
   { key: 'Japanese whisky', page: 'spirit/japanese-whisky', sub: 'spirit/japanese/', whiskey: true }, { key: 'Canadian whisky', page: null, whiskey: true },
   { key: 'Cognac', page: 'spirit/cognac' }, { key: 'Pisco', page: 'spirit/pisco' }, { key: 'Amaro', page: 'spirit/amaro' },
-  { key: 'Liqueur', page: 'spirit/liqueurs' }, { key: 'Sparkling wine', page: 'wine/sparkling' },
+  { key: 'Liqueur', page: 'spirit/liqueurs' },
 ];
 export const BEER_STYLES = ['Light Lager', 'Pilsner', 'Amber and Red Ale', 'Pale Ale', 'IPA', 'Session IPA', 'Hazy IPA', 'Wheat Beer', 'Belgian Ale', 'Sour', 'Stout', 'Porter', 'Non-alcoholic', 'Rotating'];
 const ALLERGENS = ['Dairy', 'Egg', 'Fish', 'Shellfish', 'Tree Nut', 'Peanut', 'Gluten', 'Soy', 'Sesame'];
@@ -115,6 +115,25 @@ export const COLLECTIONS = {
       { key: 'spirit', label: 'Spirit', type: 'select', options: SHELF.map((x) => x.key), section: 'The bottle' },
       { key: 'styles', label: 'Style', type: 'tags', section: 'The bottle', placeholder: 'Wheated', hint: 'Match a style page under the spirit (e.g. Wheated, Small Batch, Reposado, Speyside). Leave empty if none fits.' },
       { key: 'limited', label: 'Limited quantities', type: 'toggle', section: 'The bottle', hint: 'Shows a * next to it, like the menu.' },
+    ],
+  },
+  wine: {
+    label: 'Wine List', singular: 'wine', prefix: 'wine-list/', template: null, section: 'Wine list', nav: 'The Bar', noPages: true,
+    group: { key: 'list', values: ['By the glass', 'Sommelier selection', 'By the bottle', 'Bubbles'] },
+    hasPage: () => false,
+    lists: 'Fills By the glass and By the bottle on the Wine page, and On our list on every wine style, country, grape and region page.',
+    fields: [
+      { key: 'name', label: 'Producer and label', type: 'text', max: 80, required: true, section: 'The wine', placeholder: "Orin Swift 'Mercury Head'" },
+      { key: 'grape', label: 'Grape or style (as on the menu)', type: 'text', max: 60, section: 'The wine', placeholder: 'Cabernet Sauvignon' },
+      { key: 'region', label: 'Region', type: 'text', max: 60, section: 'The wine', placeholder: 'Napa' },
+      { key: 'list', label: 'Where it sits on the menu', type: 'select', options: ['By the glass', 'Sommelier selection', 'By the bottle', 'Bubbles'], section: 'The wine' },
+      { key: 'country', label: 'Country column', type: 'select', options: ['USA', 'Italy', 'France', 'Around the world'], section: 'The wine' },
+      { key: 'color', label: 'Colour', type: 'select', options: ['White', 'Red', 'Bubbles', 'Sake'], section: 'The wine' },
+      { key: 'glass', label: 'Glass price', type: 'text', max: 10, section: 'Prices', hint: 'Only for wines by the glass.' },
+      { key: 'half', label: '½ bottle price', type: 'text', max: 10, section: 'Prices' },
+      { key: 'bottle', label: 'Bottle price', type: 'text', max: 10, section: 'Prices' },
+      { key: 'size', label: 'Size note', type: 'text', max: 20, section: 'Prices', placeholder: 'Split, 375 ml, 1 liter' },
+      { key: 'pages', label: 'Shows on these pages', type: 'tags', section: 'Where it shows', hint: 'Grape, style or region pages by name, e.g. Cabernet, Napa Valley, Prosecco. It also shows on its country and colour pages.' },
     ],
   },
   beer: {
@@ -224,7 +243,12 @@ export function seed(db) {
   for (const id of Object.keys(COLLECTIONS)) {
     const file = path.join(ROOT, 'content/cms', id + '.json');
     if (!fs.existsSync(file)) continue;
-    for (const s of JSON.parse(fs.readFileSync(file, 'utf8'))) {
+    const seeds = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const keys = new Set(seeds.map((s) => id + ':' + s.key));
+    for (const row of db.prepare('SELECT id, seed_key FROM entries WHERE collection = ? AND seed_key IS NOT NULL AND updated_by IS NULL').all(id)) {
+      if (!keys.has(row.seed_key)) db.prepare('DELETE FROM entries WHERE id = ?').run(row.id);
+    }
+    for (const s of seeds) {
       const data = cleanEntry(id, s.data);
       const h = hash(data);
       const row = db.prepare('SELECT * FROM entries WHERE seed_key = ?').get(id + ':' + s.key);

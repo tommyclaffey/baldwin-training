@@ -8,6 +8,7 @@ import { COLLECTIONS, listEntries, getEntry } from './cms.mjs';
 import { BANK } from './quiz.mjs';
 import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
 import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
+import { fillWinePage, fillWineShelf, wineSearchText } from './winelist.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -180,7 +181,9 @@ function assembleRaw(db, file) {
   const entry = baseIndex().find((x) => x.file === file);
   if (entry && wineKind(entry.slug)) learnMore(page, entry, wineVideos(db).get(entry.slug), basePage);
   if (file === '25-2') wineCards(page, wineVideos(db));
-  if (entry && (entry.slug.startsWith('spirit/') || entry.slug.startsWith('wine/sparkling'))) fillShelf(page, entry.slug, baseIndex(), ordered(db, 'shelf'), basePage);
+  if (entry && entry.slug.startsWith('spirit/')) fillShelf(page, entry.slug, baseIndex(), ordered(db, 'shelf'), basePage);
+  if (file === '25-2') fillWinePage(page, ordered(db, 'wine'), basePage);
+  if (entry && wineKind(entry.slug)) fillWineShelf(page, entry.slug, entry.title, ordered(db, 'wine'), basePage);
   if (file === '26-2') fillBeerPage(page, baseIndex(), ordered(db, 'beer'), basePage);
   if (entry && entry.slug.startsWith('beer/')) fillBeerStyle(page, entry.slug, baseIndex(), ordered(db, 'beer'), basePage);
   return page;
@@ -190,6 +193,7 @@ function assembleRaw(db, file) {
 const PREFIXES = Object.values(COLLECTIONS).map((c) => c.prefix);
 export function fullIndex(db) {
   const extra = shelfSearchText(baseIndex(), ordered(db, 'shelf'), ordered(db, 'beer'));
+  for (const [k, v] of wineSearchText(baseIndex(), ordered(db, 'wine'))) extra.set(k, ((extra.get(k) || '') + ' ' + v).trim());
   const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p))).map((e) => (extra.has(e.slug) ? { ...e, text: (extra.get(e.slug) + ' ' + (e.text || '')).slice(0, 2400) } : e));
   const entries = [];
   for (const [id, c] of Object.entries(COLLECTIONS)) {
