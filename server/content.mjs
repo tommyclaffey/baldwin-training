@@ -2,11 +2,12 @@
 // (tables, strips) filled from the CMS.
 import fs from 'node:fs';
 import path from 'node:path';
-import { clone, cocktailPage, dishPage, find, byName, startsWith, repeat, setText, texts } from './templates.mjs';
+import { clone, cocktailPage, dishPage, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
 import { COLLECTIONS, listEntries, getEntry } from './cms.mjs';
 import { BANK } from './quiz.mjs';
 import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
+import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -74,13 +75,13 @@ export function ordered(db, col) {
   if (col === 'classic') return classicOrder(list);
   const g = COLLECTIONS[col].group;
   if (!g) return list;
-  return g.values.flatMap((v) => list.filter((e) => e.data[g.key] === v));
+  return [...g.values.flatMap((v) => list.filter((e) => e.data[g.key] === v)), ...list.filter((e) => !g.values.includes(e.data[g.key]))];
 }
 
 /** A CMS page, or null if it has no page (e.g. a dish that only lives in the Food Matrix). */
 function entryPage(db, e) {
   const c = COLLECTIONS[e.collection];
-  if (c.hasPage && !c.hasPage(e.data)) return null;
+  if ((c.hasPage && !c.hasPage(e.data)) || !c.template) return null;
   const tpl = basePage(c.template);
   if (e.collection === 'classic') return classicPage(tpl, e, { all: ordered(db, 'classic'), glassCard, protos: classicProtos() });
   if (e.collection === 'house') {
@@ -107,12 +108,14 @@ function houseRows(page, house) {
     const build = (d.build || []).filter((b) => b && b.ingredient);
     const base = build.find((b) => b.spirit) || build[0];
     const rest = build.filter((b) => b !== base).map((b) => b.ingredient).join(', ');
-    [d.name, d.tableLine || rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.tableIce || d.ice || '—', d.garnish || 'To confirm', d.pairs || 'Ask the bar', d.status || 'New', d.score || '—']
+    [d.name, d.tableLine || rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.tableIce || d.ice || '—', d.garnish || 'To confirm', d.pairs || 'Ask the bar', d.status || (d.menuSection ? 'On the menu' : 'New'), d.score || '—']
       .forEach((v, i) => t[i] && setText(t[i], v));
     return r;
   });
-  const rest = matrix.c.filter((c) => !(startsWith('Row · ')(c)) || c === zero);
-  const at = zero ? rest.indexOf(zero) : rest.length - 1;
+  // Our own spiritless drinks replace the zero-proof placeholder row.
+  const hasZero = house.some((it) => it.data.menuSection === 'Spiritless & Bubbles');
+  const rest = matrix.c.filter((c) => !(startsWith('Row · ')(c)) || (c === zero && !hasZero));
+  const at = zero && !hasZero ? rest.indexOf(zero) : rest.length - 1;
   matrix.c = [...rest.slice(0, at), ...made, ...rest.slice(at)];
 }
 
@@ -154,7 +157,18 @@ function foodMatrix(page, dishes) {
   table.c = out;
 }
 
+/** Two-column bodies even out their columns in the browser (see Balanced in FigmaNode). */
+function balance(page) {
+  if (!page) return page;
+  for (const b of findAll(page.main, (n) => n.n === 'Body' && n.lm === 'H' && (n.c || []).length === 2 && n.c.every((c) => c.lm === 'V'))) b.bal = 1;
+  return page;
+}
+
 export function assemble(db, file) {
+  return balance(assembleRaw(db, file));
+}
+
+function assembleRaw(db, file) {
   if (/^e\d+$/.test(file)) {
     const e = getEntry(db, Number(file.slice(1)));
     return e ? entryPage(db, e) : null;
@@ -166,13 +180,17 @@ export function assemble(db, file) {
   const entry = baseIndex().find((x) => x.file === file);
   if (entry && wineKind(entry.slug)) learnMore(page, entry, wineVideos(db).get(entry.slug), basePage);
   if (file === '25-2') wineCards(page, wineVideos(db));
+  if (entry && (entry.slug.startsWith('spirit/') || entry.slug.startsWith('wine/sparkling'))) fillShelf(page, entry.slug, baseIndex(), ordered(db, 'shelf'), basePage);
+  if (file === '26-2') fillBeerPage(page, baseIndex(), ordered(db, 'beer'), basePage);
+  if (entry && entry.slug.startsWith('beer/')) fillBeerStyle(page, entry.slug, baseIndex(), ordered(db, 'beer'), basePage);
   return page;
 }
 
 /* ---- index: designed pages, minus the ones the CMS now owns, plus every CMS page ---- */
 const PREFIXES = Object.values(COLLECTIONS).map((c) => c.prefix);
 export function fullIndex(db) {
-  const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p)));
+  const extra = shelfSearchText(baseIndex(), ordered(db, 'shelf'), ordered(db, 'beer'));
+  const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p))).map((e) => (extra.has(e.slug) ? { ...e, text: (extra.get(e.slug) + ' ' + (e.text || '')).slice(0, 2400) } : e));
   const entries = [];
   for (const [id, c] of Object.entries(COLLECTIONS)) {
     for (const e of ordered(db, id)) {

@@ -49,11 +49,13 @@ test('writes need a session and the X-BT header', async () => {
 
 test('the CMS starts with every classic, house cocktail and dish from the design', async () => {
   const cols = (await call('/api/collections')).data;
-  assert.equal(cols.counts.classic, 22);
-  assert.equal(cols.counts.house, 2);
+  assert.equal(cols.counts.classic, 23);
+  assert.equal(cols.counts.house, 17, 'every cocktail on our menu');
+  assert.equal(cols.counts.shelf, 93);
+  assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 10);
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 224, 'same pages as the design');
+  assert.equal(index.length, 240, 'the design, plus 15 menu cocktails and the Lemon Drop');
   for (const slug of ['classic/old-fashioned', 'classic/pisco-sour', 'signature/fuschia-satin', 'recipe/short-rib']) assert.ok(index.some((e) => e.slug === slug), slug);
   const of = index.find((e) => e.slug === 'classic/old-fashioned');
   const page = (await call('/api/page/' + of.file)).data;
@@ -171,4 +173,31 @@ test('wine videos: every wine page has a Learn more section, and a video plays t
   // and remove it
   await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine:Bolgheri Rosso', video: null } });
   assert.equal(find((await call('/api/page/25-2')).data.main, (n) => n.n === 'Wine · Bolgheri Rosso').vid, undefined);
+});
+
+test('the back bar and beer list fill the shelves, the tap wall and the style pages', async () => {
+  const index = (await call('/api/index')).data;
+  const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
+  const bourbon = await page('spirit/bourbon');
+  assert.ok(bourbon.includes('Group · Wheated') && bourbon.includes("Bottle · Maker's Mark"));
+  assert.ok(!bourbon.includes('"Tiers"'), 'the empty tier boxes are gone');
+  const wheated = await page('spirit/bourbon/wheated');
+  assert.ok(wheated.includes('Bottle · Penelope Wheated') && !wheated.includes('Bottle · Woodford Reserve'));
+  const blanco = await page('spirit/tequila/blanco');
+  assert.ok(blanco.includes('Bottle · Lalo Blanco'));
+  const whiskey = await page('spirit/whiskey');
+  assert.ok(whiskey.includes('Group · Canadian') && whiskey.includes('Bottle · Crown Royal'));
+  const draft = await page('the-bar/beer-and-draft');
+  assert.ok(draft.includes('Row · Stella Artois') && !draft.includes("Row · Bell's Two Hearted"));
+  assert.ok(draft.includes('Bottle · Blue Moon'));
+  const stout = await page('beer/stout');
+  assert.ok(!stout.includes('On tap · Tap 4'), 'no stale tap number');
+  const pils = await page('beer/pilsner');
+  assert.ok(pils.includes('Draft · Stella Artois') && pils.includes('Bottle · Heineken'));
+  // an edit in the admin shows up
+  const bottles = (await call('/api/entries?collection=shelf')).data.entries;
+  const tito = bottles.find((b) => b.data.name === "Tito's");
+  await call(`/api/entries/${tito.id}`, { method: 'PUT', body: { data: { ...tito.data, name: "Tito's Handmade" } } });
+  assert.ok((await page('spirit/vodka/corn')).includes("Bottle · Tito's Handmade"));
+  assert.ok(index.find((e) => e.slug === 'spirit/bourbon').text.includes("Maker's Mark"), 'bottles are searchable');
 });

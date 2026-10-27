@@ -93,15 +93,16 @@ export function learnMore(page, entry, rec, basePage) {
     main.c.splice(last, 0, sec);
   }
   const title = entry.title;
+  const name = kind === 'style' ? title + ' wine' : title;
   const [line, body] = COPY[kind](title);
   const slot = find(sec, (n) => (n.n || '').startsWith('Video slot'));
-  slot.n = 'Video slot · Learn more about ' + title;
+  slot.n = 'Video slot · Learn more about ' + name;
   const st = texts(slot);
-  setText(st[1], 'Learn more about ' + title);
+  setText(st[1], 'Learn more about ' + name);
   setText(st[2], line);
   const copy = find(sec, byName('Copy'));
   const ct = copy.c.filter((c) => c.t === 'T');
-  setText(ct[1], (kind === 'style' ? title + ' wine' : title).toUpperCase());
+  setText(ct[1], name.toUpperCase());
   setText(ct[2], rec?.note || body);
   if (rec?.video) { slot.vid = rec.video; remove(sec, find(sec, byName('Add video'))); }
 }

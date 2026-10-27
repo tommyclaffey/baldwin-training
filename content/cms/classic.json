@@ -1149,7 +1149,8 @@
    },
    "glassCard": "Coupe",
    "allergyTag": "",
-   "allergyNote": ""
+   "allergyNote": "",
+   "menuPrice": "16"
   },
   "sort": 11
  },
@@ -1243,7 +1244,8 @@
    "video": null,
    "glassCard": "Coupe",
    "allergyTag": "",
-   "allergyNote": ""
+   "allergyNote": "",
+   "menuPrice": "15"
   },
   "sort": 12
  },
@@ -1429,7 +1431,8 @@
    "video": null,
    "glassCard": "Coupe or Nick & Nora",
    "allergyTag": "",
-   "allergyNote": ""
+   "allergyNote": "",
+   "menuPrice": "16"
   },
   "sort": 14
  },
@@ -1517,7 +1520,8 @@
    },
    "glassCard": "Coupe",
    "allergyTag": "",
-   "allergyNote": ""
+   "allergyNote": "",
+   "menuPrice": "15"
   },
   "sort": 15
  },
@@ -1706,7 +1710,8 @@
    },
    "glassCard": "Highball",
    "allergyTag": "",
-   "allergyNote": ""
+   "allergyNote": "",
+   "menuPrice": "14"
   },
   "sort": 17
  },
@@ -1987,7 +1992,8 @@
    "video": null,
    "glassCard": "Wine glass",
    "allergyTag": "",
-   "allergyNote": ""
+   "allergyNote": "",
+   "menuPrice": "13"
   },
   "sort": 20
  },
@@ -2094,5 +2100,96 @@
    "allergyNote": ""
   },
   "sort": 21
+ },
+ {
+  "key": "classic/lemon-drop",
+  "slug": "classic/lemon-drop",
+  "sort": 16.5,
+  "data": {
+   "name": "Lemon Drop",
+   "family": "Shaken",
+   "tagline": "Sweet, tart, sugared rim",
+   "description": "Vodka, fresh lemon and orange liqueur, shaken and served up in a sugar-rimmed glass. Sweet, tart and easy.",
+   "photo": "/img/ee821d775855.jpg",
+   "photoCredit": "Timur Garifov · Unsplash (stand-in)",
+   "color": "#F2D45C",
+   "glass": "Martini",
+   "method": "Shaken",
+   "ice": "None (served up)",
+   "garnish": "Sugar rim, lemon twist",
+   "tableBase": "Vodka",
+   "glassCard": "Martini or Coupe",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Vodka",
+     "spirit": true,
+     "link": "/spirit/vodka"
+    },
+    {
+     "amount": "¾ oz",
+     "ingredient": "Fresh lemon juice",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "½ oz",
+     "ingredient": "Orange liqueur",
+     "spirit": false,
+     "link": "/spirit/liqueurs/orange"
+    },
+    {
+     "amount": "½ oz",
+     "ingredient": "Simple syrup",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Rim a chilled glass with sugar.",
+    "Shake vodka, lemon, orange liqueur and syrup hard with ice.",
+    "Strain into the glass.",
+    "Garnish with a lemon twist."
+   ],
+   "flavors": [
+    "Lemon",
+    "Sweet",
+    "Tart",
+    "Bright"
+   ],
+   "tasteLine": "Sweet and tart, like a lemon candy.",
+   "riffs": [
+    {
+     "name": "Raspberry Lemon Drop",
+     "note": "Add raspberry liqueur or muddled raspberries.",
+     "link": ""
+    },
+    {
+     "name": "Lemon Drop Shot",
+     "note": "Same build, served as a shot with a sugared lemon wedge.",
+     "link": ""
+    }
+   ],
+   "spiritName": "Vodka",
+   "spiritLine": "A clean vodka lets the lemon lead.",
+   "spiritLinkLabel": "Learn about vodka",
+   "spiritLink": "/spirit/vodka",
+   "pour": "Bar lead to add our bottle",
+   "links": [
+    {
+     "label": "Vodka",
+     "link": "/spirit/vodka"
+    },
+    {
+     "label": "Orange liqueur",
+     "link": "/spirit/liqueurs/orange"
+    }
+   ],
+   "say": "“A Lemon Drop: vodka, lemon and orange liqueur, shaken and served in a sugar-rimmed glass. Sweet and tart.”",
+   "story": "Usually credited to Henry Africa’s, a San Francisco bar, in the 1970s. Bar lead to check the history.",
+   "video": null,
+   "allergyTag": "",
+   "allergyNote": ""
+  }
  }
 ]

@@ -69,7 +69,10 @@ export function cocktailPage(template, item, ctx) {
   const copy = find(hero, byName('Copy'));
   const all = ctx.signatures;
   const k = all.findIndex((s) => s.slug === item.slug) + 1;
-  setText(texts(find(copy, byName('Pill · Signature')))[0], `Our signature · ${k} of ${all.length}`);
+  const SECTION = { 'Specialty Cocktails': 'Specialty cocktail', 'BRG Staples': 'BRG staple', Martinis: 'Martini', 'Spiritless & Bubbles': 'Spiritless' };
+  setText(texts(find(copy, byName('Pill · Signature')))[0], d.menuSection
+    ? [SECTION[d.menuSection] || d.menuSection, d.price && '$' + d.price].filter(Boolean).join(' · ')
+    : `Our signature · ${k} of ${all.length}`);
   const status = find(copy, byName('Pill · Status'));
   if (d.score || d.status) setText(texts(status)[0], [d.status, d.score && `${d.score} at the tasting`].filter(Boolean).join(' · '));
   else remove(copy, status);
@@ -83,7 +86,8 @@ export function cocktailPage(template, item, ctx) {
   }
 
   // "Our cocktails" strip
-  const strip = find(main, byName('Our cocktails'));
+  const strip = find(main, (n) => (n.c || []).some(startsWith('Signature · ')));
+  if (all.length > 4) { strip.wrap = 1; strip.cg = 8; strip.c = strip.c.filter((c) => c.n !== 'More coming'); }
   repeat(strip, startsWith('Signature · '), all, (chip, s) => {
     chip.n = 'Signature · ' + s.name;
     const active = s.slug === item.slug;
@@ -115,7 +119,8 @@ export function cocktailPage(template, item, ctx) {
 
   // Steps
   const how = find(main, byName('How to make it'));
-  repeat(how, (n) => /^Step \d+$/.test(n.n || ''), lines(d.steps), (row, s, i) => {
+  const stepList = lines(d.steps).length ? lines(d.steps) : ['Bar lead to add the build and steps.'];
+  repeat(how, (n) => /^Step \d+$/.test(n.n || ''), stepList, (row, s, i) => {
     row.n = `Step ${i + 1}`;
     const t = texts(row);
     setText(t[0], i + 1);
