@@ -24,7 +24,7 @@ export type FNode = {
 };
 
 const isVideoSlot = (n: FNode) => !!n.n && (n.n.startsWith('Video slot') || n.n === 'Player');
-const isVideoCard = (n: FNode) => !!n.n && (n.n.startsWith('Video · ') || n.n.startsWith('Item · '));
+const isVideoCard = (n: FNode) => !!n.n && (n.n.startsWith('Video · ') || n.n.startsWith('Item · ') || n.n.startsWith('Wine · '));
 
 /** Live parts of a page: a layer with this name is replaced by the component (e.g. the quiz card). */
 export type Slot = (p: { style: CSSProperties; className: string }) => ReactNode;

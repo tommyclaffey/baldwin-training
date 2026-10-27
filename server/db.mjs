@@ -49,6 +49,10 @@ const MIGRATIONS = [
   -- Seed pages someone deleted in the admin stay deleted.
   CREATE TABLE seed_removed(seed_key TEXT PRIMARY KEY);
   `,
+  `
+  -- Videos attached to wine pages ("Learn more about …") and to wines on the list. key = page slug or 'wine:<name>'.
+  CREATE TABLE wine_videos(key TEXT PRIMARY KEY, video TEXT NOT NULL, note TEXT, updated_by INT, updated_at TEXT);
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

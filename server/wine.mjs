@@ -1,0 +1,101 @@
+// Wine videos: the "Learn more about …" section on every wine page, and a play button on wines on the list.
+// The section is designed once in Figma (Cabernet page, layer "Learn more") and placed on every wine page.
+import { clone, find, byName, findAll, texts, setText, remove } from './templates.mjs';
+import { now } from './db.mjs';
+
+const STYLES = { red: 'Red', white: 'White', rose: 'Rosé', orange: 'Orange', sparkling: 'Sparkling' };
+const COUNTRIES = { italy: 'Italy', france: 'France', usa: 'USA' };
+const WINE_PAGE = '25-2';
+const SECTION_SOURCE = '68-2';
+
+/** What kind of wine page a slug is: style, country, grape, wine (rosé, orange, sparkling styles) or region. */
+export function wineKind(slug) {
+  const [root, a, b] = String(slug).split('/');
+  if (root !== 'wine' || !a) return null;
+  if (!b) return STYLES[a] ? 'style' : COUNTRIES[a] ? 'country' : null;
+  if (a === 'red' || a === 'white') return 'grape';
+  if (STYLES[a]) return 'wine';
+  if (COUNTRIES[a]) return 'region';
+  return null;
+}
+
+const COPY = {
+  grape: (t) => [`A few minutes on the grape: how it tastes and where it grows`, `A short video on ${t}: how it tastes, where it grows, and how to talk about it with a guest.`],
+  wine: (t) => [`A few minutes on how it’s made and how it tastes`, `A short video on ${t}: how it’s made, how it tastes, and how to talk about it with a guest.`],
+  region: (t) => [`A few minutes on the region: its grapes and its wines`, `A short video on ${t}: where it is, what grows there, and how to talk about its wines with a guest.`],
+  style: (t) => [`A few minutes on ${t.toLowerCase()} wine: the grapes and the styles`, `A short video on ${t.toLowerCase()} wine: the main grapes, the styles, and how to talk about them with a guest.`],
+  country: (t) => [`A few minutes on ${t}: its regions and grapes`, `A short video on ${t}: the main regions, the grapes, and how to talk about them with a guest.`],
+};
+
+/* ---- storage ---- */
+export function wineVideos(db) {
+  const out = new Map();
+  for (const r of db.prepare('SELECT * FROM wine_videos').all()) out.set(r.key, { video: JSON.parse(r.video), note: r.note || '', updatedAt: r.updated_at });
+  return out;
+}
+export function setWineVideo(db, key, video, note, userId) {
+  if (!video) { db.prepare('DELETE FROM wine_videos WHERE key = ?').run(key); return; }
+  db.prepare('INSERT INTO wine_videos(key,video,note,updated_by,updated_at) VALUES (?,?,?,?,?) ON CONFLICT(key) DO UPDATE SET video=excluded.video, note=excluded.note, updated_by=excluded.updated_by, updated_at=excluded.updated_at')
+    .run(key, JSON.stringify(video), note || null, userId ?? null, now());
+}
+
+/** Every place a wine video can go, grouped for the admin. */
+export function wineTargets(index, basePage) {
+  const wine = index.filter((e) => wineKind(e.slug));
+  const groups = [
+    { label: 'Wine styles', items: wine.filter((e) => wineKind(e.slug) === 'style') },
+    { label: 'Countries', items: wine.filter((e) => wineKind(e.slug) === 'country') },
+    ...Object.entries(STYLES).map(([k, v]) => ({ label: `${v} · ${k === 'red' || k === 'white' ? 'grapes' : 'styles'}`, items: wine.filter((e) => e.slug.startsWith(`wine/${k}/`)) })),
+    ...Object.entries(COUNTRIES).map(([k, v]) => ({ label: `${v} · regions`, items: wine.filter((e) => e.slug.startsWith(`wine/${k}/`)) })),
+  ].map((g) => ({ label: g.label, items: g.items.map((e) => ({ key: e.slug, name: e.title, slug: e.slug })) }));
+  const list = findAll(basePage(WINE_PAGE)?.main || {}, (n) => (n.n || '').startsWith('Wine · '));
+  groups.unshift({ label: 'Wines on our list', items: list.map((n) => ({ key: 'wine:' + n.n.slice(7), name: n.n.slice(7), slug: 'the-bar/wine' })) });
+  return groups.filter((g) => g.items.length);
+}
+
+/* ---- pages ---- */
+let proto;
+function sectionProto(basePage) {
+  if (proto === undefined) proto = find(basePage(SECTION_SOURCE)?.main || {}, byName('Learn more')) || null;
+  return proto;
+}
+
+/** Adds (or fills in) the "Learn more about …" section on a wine page. */
+export function learnMore(page, entry, rec, basePage) {
+  const kind = wineKind(entry.slug);
+  if (!kind) return;
+  const main = page.main;
+  let sec = find(main, byName('Learn more'));
+  if (!sec) {
+    const p = sectionProto(basePage);
+    if (!p) return;
+    sec = clone(p);
+    const last = main.c.length - 1; // previous / next stays at the bottom
+    main.c.splice(last, 0, sec);
+  }
+  const title = entry.title;
+  const [line, body] = COPY[kind](title);
+  const slot = find(sec, (n) => (n.n || '').startsWith('Video slot'));
+  slot.n = 'Video slot · Learn more about ' + title;
+  const st = texts(slot);
+  setText(st[1], 'Learn more about ' + title);
+  setText(st[2], line);
+  const copy = find(sec, byName('Copy'));
+  const ct = copy.c.filter((c) => c.t === 'T');
+  setText(ct[1], (kind === 'style' ? title + ' wine' : title).toUpperCase());
+  setText(ct[2], rec?.note || body);
+  if (rec?.video) { slot.vid = rec.video; remove(sec, find(sec, byName('Add video'))); }
+}
+
+/** Wines on the list: a play button on the photo when a video is attached (the badge is designed on one card). */
+export function wineCards(page, videos) {
+  const cards = findAll(page.main, (n) => (n.n || '').startsWith('Wine · '));
+  const proto = cards.map((c) => find(c, byName('Play badge'))).find(Boolean);
+  for (const card of cards) {
+    const rec = videos.get('wine:' + card.n.slice(7));
+    let badge = find(card, byName('Play badge'));
+    if (!rec?.video) { if (badge) remove(card, badge); continue; }
+    card.vid = rec.video;
+    if (!badge && proto) { badge = clone(proto); badge.x = Math.round((card.w - badge.w) / 2); card.c.push(badge); }
+  }
+}

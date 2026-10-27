@@ -6,6 +6,7 @@ import { clone, cocktailPage, dishPage, find, byName, startsWith, repeat, setTex
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
 import { COLLECTIONS, listEntries, getEntry } from './cms.mjs';
 import { BANK } from './quiz.mjs';
+import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -162,6 +163,9 @@ export function assemble(db, file) {
   if (!page) return null;
   if (file === '14-2') { classicTable(page, ordered(db, 'classic')); houseRows(page, ordered(db, 'house')); }
   if (file === '13-2') foodMatrix(page, ordered(db, 'recipe'));
+  const entry = baseIndex().find((x) => x.file === file);
+  if (entry && wineKind(entry.slug)) learnMore(page, entry, wineVideos(db).get(entry.slug), basePage);
+  if (file === '25-2') wineCards(page, wineVideos(db));
   return page;
 }
 
