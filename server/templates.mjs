@@ -163,6 +163,10 @@ export function cocktailPage(template, item, ctx) {
   setText(texts(sayCard)[1], d.say || '');
   if (!d.say) remove(main, sayCard);
 
+  // Even out the two columns in the browser (short right-hand cards can move to the left).
+  const balBody = find(main, (x) => x.n === 'Body' && (x.c || []).some((c) => c.n === 'Left'));
+  if (balBody) balBody.bal = 1;
+
   // The glass
   const glass = find(main, byName('The glass'));
   const card = ctx.glassCard(d.glass);

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import svgs from '../content/svgs.json';
 import { SearchBox } from './SearchBox';
@@ -19,6 +19,8 @@ export type FNode = {
   clip?: 1; lm?: 'H' | 'V'; gap?: number; pd?: number[]; pa?: string; ca?: string; wrap?: 1; cg?: number;
   c?: FNode[];
   vid?: Video;
+  /** Two-column row (Left / Right) that moves short right-hand cards across to even out the columns. */
+  bal?: 1;
 };
 
 const isVideoSlot = (n: FNode) => !!n.n && (n.n.startsWith('Video slot') || n.n === 'Player');
@@ -148,7 +150,63 @@ function textNode(node: FNode, parentLm: 'H' | 'V' | undefined, key?: number) {
   return { st, cls, content, key };
 }
 
+/** A card at a new width: rows that spanned its full inner width keep spanning it. */
+function widen(n: FNode, w: number): FNode {
+  const pad = n.pd ? n.pd[1] + n.pd[3] : 0;
+  const inner = n.w - pad;
+  const grow = w - n.w;
+  return { ...n, w, c: n.lm ? n.c?.map((c) => ((c.t === 'F' || c.t === 'T') && c.sh === 'F' && !c.abs && inner - c.w >= 0 && inner - c.w <= 4 ? widen(c, c.w + grow) : c)) : n.c };
+}
+
+/** Cards that read fine in either column. They only move from the right column to the end of the left. */
+const MOVABLE = ['What’s in it', 'Say it', 'Back to parent'];
+
+/**
+ * Renders a Left / Right row, then measures it: if the right column runs much longer, the mix of short cards
+ * that leaves the smallest gap moves to the end of the left column (in their original order, at its width).
+ */
+function Balanced({ node, parentLm, parentH }: { node: FNode; parentLm?: 'H' | 'V'; parentH?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const compact = useContext(CompactContext);
+  const [state, setState] = useState<{ for: FNode; moved: string[] } | null>(null);
+  const moved = !compact && state?.for === node ? state.moved : [];
+  const left = node.c?.find((c) => c.n === 'Left');
+  const right = node.c?.find((c) => c.n === 'Right');
+
+  useLayoutEffect(() => {
+    if (compact || !left || !right || state?.for === node) return;
+    const row = ref.current?.firstElementChild;
+    const L = row?.querySelector(':scope > [data-name="Left"]');
+    const R = row?.querySelector(':scope > [data-name="Right"]');
+    if (!L || !R || R.children.length !== (right.c || []).length) return;
+    const k = L.getBoundingClientRect().width / left.w;
+    const bottom = (el: Element) => [...el.children].reduce((m, c) => Math.max(m, c.getBoundingClientRect().bottom), 0) - el.getBoundingClientRect().top;
+    const diff = bottom(R) - bottom(L);
+    const step = ((right.gap || 0) + (left.gap || 0)) * k;
+    const cards = (right.c || []).map((c, i) => ({ n: c.n || '', h: R.children[i].getBoundingClientRect().height })).filter((c) => MOVABLE.includes(c.n));
+    let best = { gap: Math.abs(diff), names: [] as string[] };
+    for (let mask = 1; mask < 1 << cards.length; mask++) {
+      const pick = cards.filter((_, i) => mask & (1 << i));
+      const gap = Math.abs(diff - pick.reduce((s, c) => s + 2 * c.h + step, 0));
+      if (gap < best.gap - 24 * k) best = { gap, names: pick.map((c) => c.n) };
+    }
+    setState({ for: node, moved: best.names });
+  }, [node, compact, left, right, state]);
+
+  let shown = node;
+  if (left && right && moved.length) {
+    const across = (right.c || []).filter((c) => moved.includes(c.n || '')).map((c) => widen(c, left.w));
+    shown = { ...node, c: node.c!.map((c) => (c === left ? { ...left, c: [...(left.c || []), ...across] } : c === right ? { ...right, c: (right.c || []).filter((x) => !moved.includes(x.n || '')) } : c)) };
+  }
+  return <div ref={ref} style={{ display: 'contents' }}><FigmaNode node={{ ...shown, bal: undefined }} parentLm={parentLm} parentH={parentH} /></div>;
+}
+
 export function FigmaNode({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 'H' | 'V'; parentH?: number; rootStyle?: CSSProperties }) {
+  if (node.bal && !rootStyle) return <Balanced node={node} parentLm={parentLm} parentH={parentH} />;
+  return <Node node={node} parentLm={parentLm} parentH={parentH} rootStyle={rootStyle} />;
+}
+
+function Node({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 'H' | 'V'; parentH?: number; rootStyle?: CSSProperties }) {
   const activeNav = useContext(NavContext);
   const compact = useContext(CompactContext);
   const slots = useContext(SlotContext);

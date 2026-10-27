@@ -155,6 +155,10 @@ export function classicPage(tpl, e, ctx) {
   setText(texts(say)[1], d.say || '');
   if (!d.say) remove(main, say);
 
+  // Even out the two columns in the browser (short right-hand cards can move to the left).
+  const body = find(main, (x) => x.n === 'Body' && (x.c || []).some((c) => c.n === 'Left'));
+  if (body) body.bal = 1;
+
   // The glass
   const glass = find(main, byName('The glass'));
   const card = ctx.glassCard(d.glassCard || d.glass, e.slug);
