@@ -12,7 +12,7 @@ const parts = fs.readdirSync(path.join(root, 'content/raw')).filter((f) => /^lay
 const pages = [];
 for (const part of parts) for (const pg of part.pages) {
   const i = pages.findIndex((x) => x.id === pg.id);
-  if (i >= 0) pages[i] = pg; else pages.push(pg);
+  if (i >= 0) { if (!pg.side && pages[i].side) pg.side = pages[i].side; pages[i] = pg; } else pages.push(pg);
 }
 const svgs = Object.assign({}, ...parts.map((p) => p.svgs));
 const navById = Object.fromEntries(raw('figma-content.json').pages.map((p) => [p.id, p.nav]));
@@ -60,17 +60,7 @@ function preview(main) {
   return { thumb, blurb: blurb && (blurb.length > 110 ? blurb.slice(0, 107).replace(/\s+\S*$/, '') + '…' : blurb) };
 }
 
-// Videos placed at build time (content/videos.json), and quiz buttons pointed at the right quiz.
-const VIDEOS = JSON.parse(fs.readFileSync(path.join(root, 'content/videos.json'), 'utf8')).videos;
-function placeVideo(main, v) {
-  let placed = false;
-  (function walk(n) {
-    if (!placed && n.n && n.n.startsWith('Video slot')) { n.vid = { kind: 'youtube', youtubeId: v.youtubeId, title: v.title }; placed = true; }
-    (n.c || []).forEach(walk);
-  })(main);
-  (function strip(n) { if (n.c) { n.c = n.c.filter((c) => c.n !== 'Add video'); n.c.forEach(strip); } })(main);
-  return placed;
-}
+// Quiz buttons point at the right quiz. (Videos and page content live in the CMS: content/cms/.)
 function quizLinks(main, slug) {
   (function walk(n) {
     if (n.n === 'Button · Pre-Shift Quiz') n.to = '/quizzes?quiz=pre-shift';
@@ -84,8 +74,7 @@ for (const p of pages) {
   const texts = [];
   prep(p.main, texts);
   quizLinks(p.main, slugById[p.id]);
-  const v = VIDEOS[slugById[p.id]];
-  if (v && !placeVideo(p.main, v)) console.warn('no video slot on', slugById[p.id]);
+
   const { thumb, blurb } = preview(p.main);
   const bg = p.f && p.f[0] && p.f[0].c;
   fs.writeFileSync(path.join(outDir, fileOf(p.id) + '.json'), JSON.stringify({ id: p.id, name: p.name, bg, main: p.main }));
@@ -117,8 +106,7 @@ for (const e of index) {
 const home = pages.find((p) => p.id === '4:2');
 const sidebar = home.side.map((n) => prep(n));
 for (const n of sidebar) quizLinks(n, '');
-const missing = Object.keys(VIDEOS).filter((k) => !Object.values(slugById).includes(k));
-if (missing.length) console.warn('videos waiting for a page:', missing.join(', '));
+
 
 const srcDir = path.join(root, 'src/content');
 fs.mkdirSync(srcDir, { recursive: true });

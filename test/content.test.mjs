@@ -39,18 +39,12 @@ test('every quiz question has 4 options and a valid answer', () => {
   assert.deepEqual(bad, []);
 });
 
-test('the classic cocktail videos are on their pages', () => {
-  const vids = JSON.parse(fs.readFileSync(path.join(root, 'content/videos.json'), 'utf8')).videos;
-  const bySlug = new Map(index.map((e, i) => [e.slug, pages[i]]));
-  const missing = [];
-  for (const [slug, v] of Object.entries(vids)) {
-    const page = bySlug.get(slug);
-    if (!page) { missing.push(slug + ' (no page)'); continue; }
-    let found = false;
-    walk(page.main, (n) => { if (n.vid?.youtubeId === v.youtubeId) found = true; });
-    if (!found) missing.push(slug);
-  }
+test('the CMS seeds match the design', () => {
+  const classic = JSON.parse(fs.readFileSync(path.join(root, 'content/cms/classic.json'), 'utf8'));
+  assert.equal(classic.length, 22);
+  const missing = classic.filter((c) => !slugs.has('/' + c.slug)).map((c) => c.slug);
   assert.deepEqual(missing, []);
+  assert.ok(classic.filter((c) => c.data.video).length >= 15, 'the 15 videos are in the seed');
 });
 
 test('every image file exists', () => {

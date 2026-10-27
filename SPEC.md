@@ -14,13 +14,13 @@
 - The Bar: cocktails (house + 20 classics), wine (5 styles, 3 countries, 46 grape/region pages, 6 service steps), beer (12 styles), spirits (15 categories, 79 sub-styles, liqueurs, bitters), bar basics (glassware, how guests order, shaken vs. stirred).
 - Service: 9 steps of service, floor plan, safety, cleanliness. Company: Our Story.
 - Search across every page. Phone, tablet and desktop layouts.
-- **Admin (`/admin`, Oct 27):** invite-only sign-in (owner + editors). Edit any page in place: click text to change it, replace any photo, add a video to any video slot. Every video is an uploaded file (MP4, MOV, WebM, up to 600 MB) or a YouTube link.
-- **Recipes and house cocktails from a form:** each one gets its own page (built from the Short Rib and Fuschia Satin layouts), a row in the Food Matrix or on Cocktails, and shows in search.
+- **Admin (`/admin`, Oct 27):** invite-only sign-in (owner + editors). Videos are an uploaded file (MP4, MOV, WebM, up to 600 MB) or a YouTube link.
+- **CMS (Oct 27):** pages are created and edited from a template form in the admin, never on the page itself. Collections so far: Classic Cocktails (22), House Cocktails (2), Recipes (every Food Matrix dish; a full recipe page is a toggle). Lists fill themselves: the classic strip on every classic page, the Classic cocktails and house tables on Cocktails, and the Food Matrix. Seeded from the design (`content/cms/*.json`, made by `scripts/cms/extract.mjs`); edits in the admin win over later seed changes.
 - Videos and photos library, people (invites, remove), password change, activity log.
 
 ## v1 demo: Out
 - Staff accounts, quizzes that score, sign-offs that save, progress tracking. Staff read without signing in.
-- Adding whole new pages other than recipes and house cocktails (new classics, spirits and wine pages still come from Figma).
+- Spirits, wine, beer, service and library pages still come from the design; they move into the CMS one page type at a time.
 - Undo for a single page edit from the screen (the API supports it; no button yet).
 - Real videos and dish photos until the Baldwin team uploads them (Unsplash stand-ins now).
 - Multiple restaurant groups.

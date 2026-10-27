@@ -57,7 +57,7 @@ for (const screen of SCREENS) {
     const v = probe.result.result.value;
     // TYPE=old types into the search box first, to check the results list.
     // EVAL='js' runs in the page first (click through a quiz, open a menu…).
-    if (process.env.EVAL) { await send('Runtime.evaluate', { expression: process.env.EVAL, awaitPromise: true }); await sleep(700); }
+    if (process.env.EVAL) { const r = await send('Runtime.evaluate', { expression: process.env.EVAL, awaitPromise: true, returnByValue: true }); if (r.result?.result?.value !== undefined) console.log(JSON.stringify(r.result.result.value, null, 1)); await sleep(700); }
     if (process.env.TYPE) {
       await send('Runtime.evaluate', { expression: `document.querySelector('.search input').focus()` });
       await send('Input.insertText', { text: process.env.TYPE });

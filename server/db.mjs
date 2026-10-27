@@ -40,6 +40,15 @@ const MIGRATIONS = [
   CREATE TABLE signoffs(
     device TEXT NOT NULL, quiz TEXT NOT NULL, by_user INT, at TEXT, PRIMARY KEY(device, quiz));
   `,
+  `
+  -- CMS pages: one row per page, built from its collection's template. data is JSON.
+  CREATE TABLE entries(
+    id INTEGER PRIMARY KEY, collection TEXT NOT NULL, slug TEXT UNIQUE NOT NULL, data TEXT NOT NULL, sort REAL DEFAULT 0,
+    seed_key TEXT UNIQUE, seed_hash TEXT, created_by INT, created_at TEXT, updated_by INT, updated_at TEXT);
+  CREATE INDEX entries_collection ON entries(collection, sort);
+  -- Seed pages someone deleted in the admin stay deleted.
+  CREATE TABLE seed_removed(seed_key TEXT PRIMARY KEY);
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

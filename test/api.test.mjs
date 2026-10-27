@@ -41,22 +41,24 @@ test('setup only works for the owner email, once', async () => {
 });
 
 test('writes need a session and the X-BT header', async () => {
-  const anon = await call('/api/override', { method: 'PUT', body: { pageId: '76:2', path: '/x#0', value: { s: 'hi' } }, auth: false });
+  const anon = await call('/api/entries', { method: 'POST', body: { collection: 'classic', data: { name: 'X' } }, auth: false });
   assert.equal(anon.status, 401);
-  const noHeader = await call('/api/override', { method: 'PUT', body: { pageId: '76:2', path: '/x#0', value: { s: 'hi' } }, headers: { 'X-BT': '' } });
+  const noHeader = await call('/api/entries', { method: 'POST', body: { collection: 'classic', data: { name: 'X' } }, headers: { 'X-BT': '' } });
   assert.equal(noHeader.status, 403);
 });
 
-test('a video added to a slot shows on the page', async () => {
-  const title = '/Hero#0';
-  const page = (await call('/api/page/76-2')).data;
-  const slot = '/The story#0/Video slot · History of the Old Fashioned#0';
-  assert.equal((await call('/api/override', { method: 'PUT', body: { pageId: page.id, path: slot, value: { video: { kind: 'youtube', youtubeId: 'https://youtu.be/dQw4w9WgXcQ' } } } })).status, 200);
-  const after = (await call('/api/page/76-2')).data;
+test('the CMS starts with every classic, house cocktail and dish from the design', async () => {
+  const cols = (await call('/api/collections')).data;
+  assert.equal(cols.counts.classic, 22);
+  assert.equal(cols.counts.house, 2);
+  assert.equal(cols.counts.recipe, 10);
+  const index = (await call('/api/index')).data;
+  assert.equal(index.length, 224, 'same pages as the design');
+  for (const slug of ['classic/old-fashioned', 'classic/pisco-sour', 'signature/fuschia-satin', 'recipe/short-rib']) assert.ok(index.some((e) => e.slug === slug), slug);
+  const of = index.find((e) => e.slug === 'classic/old-fashioned');
+  const page = (await call('/api/page/' + of.file)).data;
   const find = (n, name) => (n.n === name ? n : (n.c || []).map((c) => find(c, name)).find(Boolean));
-  assert.equal(find(after.main, 'Video slot · History of the Old Fashioned').vid.youtubeId, 'dQw4w9WgXcQ');
-  assert.equal(find(after.main, 'Add video'), undefined, 'the "Add video" note goes away');
-  assert.ok(title);
+  assert.equal(find(page.main, 'Video slot · History of the Old Fashioned').vid.youtubeId, 'pdcrJ5V7YKM');
 });
 
 test('a bad YouTube link is refused', async () => {
@@ -73,25 +75,35 @@ test('uploads take photos and videos only', async () => {
   assert.equal(file.status, 206);
 });
 
-test('a new cocktail gets a page and a row on Cocktails', async () => {
-  const r = await call('/api/items', { method: 'POST', body: { type: 'cocktail', data: { name: 'Test Drink', glass: 'Coupe', build: [{ amount: '2 oz', ingredient: 'Gin', spirit: true, link: '/spirits/gin' }], video: { kind: 'youtube', youtubeId: 'dQw4w9WgXcQ' } } } });
+test('a new classic gets a page, a chip on every classic page and a row in the table', async () => {
+  const r = await call('/api/entries', { method: 'POST', body: { collection: 'classic', data: { name: 'Test Drink', family: 'Shaken', glass: 'Coupe', build: [{ amount: '2 oz', ingredient: 'Gin', spirit: true, link: '/spirit/gin' }], video: { kind: 'youtube', youtubeId: 'dQw4w9WgXcQ' } } } });
   assert.equal(r.status, 200);
-  assert.equal(r.data.slug, 'signature/test-drink');
+  assert.equal(r.data.slug, 'classic/test-drink');
   const index = (await call('/api/index')).data;
-  assert.ok(index.some((e) => e.slug === 'signature/test-drink'));
-  const page = (await call(`/api/page/i${r.data.id}`)).data;
-  assert.match(JSON.stringify(page), /TEST DRINK|Test Drink/);
-  const cocktails = JSON.stringify((await call('/api/page/14-2')).data);
-  assert.match(cocktails, /signature\/test-drink/);
+  const e = index.find((x) => x.slug === 'classic/test-drink');
+  assert.ok(e);
+  assert.match(JSON.stringify((await call('/api/page/' + e.file)).data), /TEST DRINK/);
+  const daq = index.find((x) => x.slug === 'classic/daiquiri');
+  assert.match(JSON.stringify((await call('/api/page/' + daq.file)).data), /classic\/test-drink/);
+  const hub = JSON.stringify((await call('/api/page/14-2')).data);
+  assert.match(hub, /Classic row · Test Drink/);
+  // renaming keeps the address
+  const up = await call(`/api/entries/${r.data.id}`, { method: 'PUT', body: { data: { ...r.data.data, name: 'Renamed Drink' } } });
+  assert.equal(up.data.slug, 'classic/test-drink');
+  assert.equal((await call(`/api/entries/${r.data.id}`, { method: 'DELETE' })).status, 200);
+  assert.doesNotMatch(JSON.stringify((await call('/api/page/14-2')).data), /Renamed Drink/);
 });
 
-test('a new recipe gets a page and a Food Matrix row', async () => {
-  const r = await call('/api/items', { method: 'POST', body: { type: 'dish', data: { name: 'Test Plate', course: 'Plates', allergens: ['Dairy'], steps: [{ title: 'Sear', detail: 'Hot pan' }] } } });
+test('a dish shows in the Food Matrix, and gets a page only when it has one', async () => {
+  const r = await call('/api/entries', { method: 'POST', body: { collection: 'recipe', data: { name: 'Test Plate', course: 'Plates', allergens: ['Dairy'], fullPage: false } } });
   assert.equal(r.status, 200);
-  assert.equal(r.data.slug, 'recipe/test-plate');
+  const matrix = JSON.stringify((await call('/api/page/13-2')).data);
+  assert.match(matrix, /Row · Test Plate/);
+  assert.equal((await call(`/api/page/e${r.data.id}`)).status, 404);
+  await call(`/api/entries/${r.data.id}`, { method: 'PUT', body: { data: { ...r.data.data, fullPage: true, steps: [{ title: 'Sear', detail: 'Hot pan' }] } } });
+  assert.equal((await call(`/api/page/e${r.data.id}`)).status, 200);
   assert.match(JSON.stringify((await call('/api/page/13-2')).data), /recipe\/test-plate/);
-  assert.equal((await call(`/api/items/${r.data.id}`, { method: 'DELETE' })).status, 200);
-  assert.equal((await call(`/api/page/i${r.data.id}`)).status, 404);
+  await call(`/api/entries/${r.data.id}`, { method: 'DELETE' });
 });
 
 test('invites: owner only, single use', async () => {

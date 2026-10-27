@@ -1,0 +1,136 @@
+[
+ {
+  "key": "signature/fuschia-satin",
+  "slug": "signature/fuschia-satin",
+  "sort": 0,
+  "data": {
+   "name": "Fuschia Satin",
+   "tagline": "Bright, floral, pink",
+   "description": "Our tequila cocktail: hibiscus, pineapple and lime, shaken and served up. Bright, floral and pink.",
+   "photo": "/img/48ca851d7531.jpg",
+   "glass": "Coupe",
+   "method": "Shaken, double strained",
+   "ice": "None (served up)",
+   "garnish": "To confirm",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "G4 Tequila",
+     "spirit": true,
+     "link": "/spirit/tequila/blanco"
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Hibiscus syrup",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Pineapple",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "0.75 oz",
+     "ingredient": "Lime",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Add tequila, hibiscus syrup, pineapple and lime to a shaker.",
+    "Shake hard with ice.",
+    "Double strain into a chilled coupe.",
+    "Garnish (bar lead to confirm)."
+   ],
+   "tags": [
+    "Hibiscus",
+    "Pineapple",
+    "Lime",
+    "Floral"
+   ],
+   "tasteLine": "Bright and floral, with a little sweetness.",
+   "score": "4.13",
+   "status": "Adjusting",
+   "pairs": "Agnolotti",
+   "note": "20 of 45 guests who commented called it too sweet. Next: less sugar and clove, keep the acid, test a sparkling top.",
+   "spiritName": "G4 Tequila",
+   "spiritLine": "Our tequila for this drink. Bright agave holds its own against the hibiscus and pineapple.",
+   "spiritLinkLabel": "Learn about blanco tequila",
+   "spiritLink": "/spirit/tequila/blanco",
+   "say": "“The Fuschia Satin: tequila with hibiscus, pineapple and lime. Bright, floral and pink.”",
+   "story": "Created for the opening menu at The Baldwin. Bar lead to add who created it, the idea behind it, and what changed after the tasting.",
+   "video": null,
+   "tableLine": "Hibiscus, pineapple, lime",
+   "tableIce": "None, up"
+  }
+ },
+ {
+  "key": "signature/cozy-blankets",
+  "slug": "signature/cozy-blankets",
+  "sort": 1,
+  "data": {
+   "name": "Cozy Blankets",
+   "tagline": "Warm, spiced, easy",
+   "description": "Our rye cocktail: spiced pear, lemon and ginger-honey, shaken and poured over a big cube. Warm and easy.",
+   "photo": "/img/6a38e5b20321.jpg",
+   "glass": "Rocks",
+   "method": "Shaken, strained over ice",
+   "ice": "One large cube",
+   "garnish": "To confirm",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "DCD Rye",
+     "spirit": true,
+     "link": "/spirit/rye/straight-rye"
+    },
+    {
+     "amount": "0.75 oz",
+     "ingredient": "Spiced pear",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "0.75 oz",
+     "ingredient": "Lemon",
+     "spirit": false,
+     "link": ""
+    },
+    {
+     "amount": "0.5 oz",
+     "ingredient": "Ginger-honey",
+     "spirit": false,
+     "link": ""
+    }
+   ],
+   "steps": [
+    "Add rye, spiced pear, lemon and ginger-honey to a shaker.",
+    "Shake with ice.",
+    "Strain over one large cube.",
+    "Garnish (bar lead to confirm)."
+   ],
+   "tags": [
+    "Spiced pear",
+    "Ginger",
+    "Honey",
+    "Rye spice"
+   ],
+   "tasteLine": "Warm, spiced and easy to drink.",
+   "score": "4.44",
+   "status": "Keep",
+   "pairs": "",
+   "note": "Won over guests who don’t drink whiskey or like ginger. “From someone who hates ginger – I love this.”",
+   "spiritName": "DCD Rye",
+   "spiritLine": "Our rye for this drink. Its spice plays off the pear and the ginger.",
+   "spiritLinkLabel": "Learn about rye",
+   "spiritLink": "/spirit/rye/straight-rye",
+   "say": "“Cozy Blankets is rye with spiced pear, lemon and ginger-honey. Warm and easy, even if you don’t usually drink whiskey.”",
+   "story": "Created for the opening menu at The Baldwin. Bar lead to add who created it, the idea behind it, and what changed after the tasting.",
+   "video": null,
+   "tableLine": "Spiced pear, lemon, ginger-honey",
+   "tableIce": "Large cube"
+  }
+ }
+]

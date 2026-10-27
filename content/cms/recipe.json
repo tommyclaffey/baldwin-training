@@ -1,0 +1,342 @@
+[
+ {
+  "key": "recipe/mike-s-vegas-pie",
+  "slug": "recipe/mikes-vegas-pie",
+  "sort": 0,
+  "data": {
+   "name": "Mike's Vegas Pie",
+   "course": "Passed Bites",
+   "description": "",
+   "photo": "/img/4bc6d9652061.jpg",
+   "station": "Oven",
+   "allergens": [
+    "Gluten",
+    "Dairy"
+   ],
+   "pairing": "",
+   "score": "4.81",
+   "refining": false,
+   "fullPage": false
+  }
+ },
+ {
+  "key": "recipe/short-rib-arancini",
+  "slug": "recipe/short-rib-arancini",
+  "sort": 1,
+  "data": {
+   "name": "Short Rib Arancini",
+   "course": "Passed Bites",
+   "description": "Braised short rib, risotto, one-bite size",
+   "photo": "/img/4a4ffe91991e.jpg",
+   "station": "Fry",
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Egg"
+   ],
+   "pairing": "",
+   "score": "4.68",
+   "refining": false,
+   "fullPage": false
+  }
+ },
+ {
+  "key": "recipe/scallop-rockefeller",
+  "slug": "recipe/scallop-rockefeller",
+  "sort": 2,
+  "data": {
+   "name": "Scallop Rockefeller",
+   "course": "Passed Bites",
+   "description": "Seared scallop, spinach, Rockefeller topping",
+   "photo": "/img/07c4484df8fc.jpg",
+   "station": "Broil",
+   "allergens": [
+    "Shellfish",
+    "Dairy",
+    "Gluten"
+   ],
+   "pairing": "",
+   "score": "4.67",
+   "refining": false,
+   "fullPage": false
+  }
+ },
+ {
+  "key": "recipe/mini-lemon-ricotta-ravioli",
+  "slug": "recipe/mini-lemon-ricotta-ravioli",
+  "sort": 3,
+  "data": {
+   "name": "Mini Lemon Ricotta Ravioli",
+   "course": "Passed Bites",
+   "description": "Lemon, ricotta, one-bite ravioli",
+   "photo": "/img/1ebae403dfe3.jpg",
+   "station": "Pasta",
+   "allergens": [
+    "Gluten",
+    "Egg",
+    "Dairy"
+   ],
+   "pairing": "",
+   "score": "4.52",
+   "refining": false,
+   "fullPage": false
+  }
+ },
+ {
+  "key": "recipe/short-rib",
+  "slug": "recipe/short-rib",
+  "sort": 4,
+  "data": {
+   "name": "Short Rib",
+   "course": "Plates",
+   "description": "4-hr braised, spinach, pan gravy, carrot ribbon",
+   "photo": "/img/8394a9d84d8f.jpg",
+   "station": "Sauté",
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "pairing": "Bolgheri Rosso",
+   "score": "4.87",
+   "refining": false,
+   "fullPage": true,
+   "signature": true,
+   "tagline": "The signature dish",
+   "stats": [
+    {
+     "value": "4.87",
+     "label": "guest score"
+    },
+    {
+     "value": "88%",
+     "label": "rated it a 5"
+    },
+    {
+     "value": "95 of 104",
+     "label": "said portion is right"
+    }
+   ],
+   "components": [
+    {
+     "component": "Braised short rib",
+     "portion": "1 piece, about 8 oz",
+     "hold": "Hot, in its braise"
+    },
+    {
+     "component": "Pan gravy",
+     "portion": "3 oz ladle",
+     "hold": "Bain-marie, 165°F"
+    },
+    {
+     "component": "Spinach",
+     "portion": "2 oz",
+     "hold": "Wilt to order"
+    },
+    {
+     "component": "Carrot ribbon",
+     "portion": "5 ribbons",
+     "hold": "Ice water, cold"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Season and sear",
+     "detail": "Salt the ribs the day before. Sear hard on every side until deep brown.",
+     "time": "Prep"
+    },
+    {
+     "title": "Braise for 4 hours",
+     "detail": "Cover with the braising liquid, lid on, in a 300°F oven until fork-tender.",
+     "time": "4 hr"
+    },
+    {
+     "title": "Rest and portion",
+     "detail": "Cool in the liquid overnight. Portion cold so each piece holds its shape.",
+     "time": "Overnight"
+    },
+    {
+     "title": "Make the pan gravy",
+     "detail": "Skim the fat, then reduce the braising liquid until it coats a spoon.",
+     "time": "20 min"
+    },
+    {
+     "title": "Fire to order",
+     "detail": "Reheat a portion in its gravy. Wilt the spinach in the same pan.",
+     "time": "8 min"
+    },
+    {
+     "title": "Plate and pass",
+     "detail": "Spinach first, rib on top, gravy over, carrot ribbon last. Wipe the rim.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Spinach",
+     "note": "the base, centred"
+    },
+    {
+     "name": "Short rib",
+     "note": "on the spinach, best side up"
+    },
+    {
+     "name": "Pan gravy",
+     "note": "over the rib, pooling at the base"
+    },
+    {
+     "name": "Carrot ribbon",
+     "note": "last, loose curl on top"
+    }
+   ],
+   "platePhoto": "/img/8394a9d84d8f.jpg",
+   "say": "“Our short rib is braised for four hours until it falls apart, then finished with a pan gravy, spinach and a ribbon of carrot.”",
+   "pairingNote": "4.62 at the tasting, the best-rated pairing of the night",
+   "videoTitle": "Short Rib · Fire to Pass",
+   "videoStill": "/img/28f3fdd6175e.jpg",
+   "videoHeading": "FROM FIRE TO PASS",
+   "videoNote": "A short walkthrough with the chef: the sear, the braise, the gravy and the plate. Watch it before your first shift on sauté, and again before you sign off.",
+   "videoDuration": "2:40",
+   "chapters": [
+    {
+     "time": "0:00",
+     "label": "Sear"
+    },
+    {
+     "time": "0:35",
+     "label": "Braise"
+    },
+    {
+     "time": "1:20",
+     "label": "Pan Gravy"
+    },
+    {
+     "time": "1:55",
+     "label": "Plate"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/8394a9d84d8f.jpg",
+     "caption": "Final plate"
+    },
+    {
+     "img": "/img/82d6eadb2cc4.jpg",
+     "caption": "Trimmed and seasoned"
+    },
+    {
+     "img": "/img/f31e8ef5d3ca.jpg",
+     "caption": "Out of the braise"
+    },
+    {
+     "img": "/img/5aac019cce36.jpg",
+     "caption": "Portioned for service"
+    }
+   ],
+   "video": null
+  }
+ },
+ {
+  "key": "recipe/cauliflower",
+  "slug": "recipe/cauliflower",
+  "sort": 5,
+  "data": {
+   "name": "Cauliflower",
+   "course": "Plates",
+   "description": "Roasted, pistachios, serve hot",
+   "photo": "/img/7971541d5601.jpg",
+   "station": "Oven",
+   "allergens": [
+    "Tree Nut",
+    "Dairy"
+   ],
+   "pairing": "",
+   "score": "4.64",
+   "refining": false,
+   "fullPage": false
+  }
+ },
+ {
+  "key": "recipe/agnolotti",
+  "slug": "recipe/agnolotti",
+  "sort": 6,
+  "data": {
+   "name": "Agnolotti",
+   "course": "Plates",
+   "description": "Michigan squash, sweet potato purée, blossoms",
+   "photo": "/img/a6602894e763.jpg",
+   "station": "Pasta",
+   "allergens": [
+    "Gluten",
+    "Egg",
+    "Dairy"
+   ],
+   "pairing": "Fuschia Satin",
+   "score": "4.50",
+   "refining": false,
+   "fullPage": false
+  }
+ },
+ {
+  "key": "recipe/beet-confit",
+  "slug": "recipe/beet-confit",
+  "sort": 7,
+  "data": {
+   "name": "Beet Confit",
+   "course": "Plates",
+   "description": "Crème fraîche, pickled shallots, orange, hatch chili almonds",
+   "photo": "/img/97e87a4072ed.jpg",
+   "station": "Garde Manger",
+   "allergens": [
+    "Dairy",
+    "Tree Nut"
+   ],
+   "pairing": "",
+   "score": "4.42",
+   "refining": false,
+   "fullPage": false
+  }
+ },
+ {
+  "key": "recipe/walleye-milanese",
+  "slug": "recipe/walleye-milanese",
+  "sort": 8,
+  "data": {
+   "name": "Walleye Milanese",
+   "course": "Plates",
+   "description": "Crusted fillet, onion soubise, arugula and tomato",
+   "photo": "/img/913b2d2e8e31.jpg",
+   "station": "Sauté",
+   "allergens": [
+    "Fish",
+    "Gluten",
+    "Egg",
+    "Dairy"
+   ],
+   "pairing": "Tenuta Spinelli Pecorino",
+   "score": "3.54",
+   "refining": true,
+   "fullPage": false
+  }
+ },
+ {
+  "key": "recipe/date-cake",
+  "slug": "recipe/date-cake",
+  "sort": 9,
+  "data": {
+   "name": "Date Cake",
+   "course": "Dessert",
+   "description": "Date cake with ice cream",
+   "photo": "/img/8d4c7c07b438.jpg",
+   "station": "Pastry",
+   "allergens": [
+    "Gluten",
+    "Dairy",
+    "Egg"
+   ],
+   "pairing": "",
+   "score": "4.69",
+   "refining": false,
+   "fullPage": false
+  }
+ }
+]
