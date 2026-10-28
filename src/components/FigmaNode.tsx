@@ -4,6 +4,7 @@ import svgs from '../content/svgs.json';
 import { SearchBox } from './SearchBox';
 import { VideoEmbed } from './VideoEmbed';
 import type { Video } from '../lib/api';
+import { AssignName, TableFinder, TableMarker, controlProps, isActive, useInteract, visibleKids, type Meta } from './interact';
 
 // One node of the Figma layout export (see scripts/build-content.mjs).
 export type FNode = {
@@ -21,6 +22,8 @@ export type FNode = {
   vid?: Video;
   /** Two-column row (Left / Right) that moves short right-hand cards across to even out the columns. */
   bal?: 1;
+  /** A control or filtered layer (see server/interact.mjs). */
+  meta?: Meta;
 };
 
 const isVideoSlot = (n: FNode) => !!n.n && (n.n.startsWith('Video slot') || n.n === 'Player');
@@ -299,12 +302,17 @@ export function FigmaNode({ node, parentLm, parentH, rootStyle }: { node: FNode;
   return <Node node={node} parentLm={parentLm} parentH={parentH} rootStyle={rootStyle} />;
 }
 
-function Node({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 'H' | 'V'; parentH?: number; rootStyle?: CSSProperties }) {
+function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 'H' | 'V'; parentH?: number; rootStyle?: CSSProperties }) {
   const activeNav = useContext(NavContext);
   const compact = useContext(CompactContext);
   const slots = useContext(SlotContext);
   const carousel = useContext(CarouselContext);
+  const live = useInteract();
   const [playing, setPlaying] = useState(false);
+  // A control is drawn in its current state (ticked / empty, selected / plain).
+  const m = drawn.meta;
+  const node: FNode = m?.on && m.off && live ? { ...(isActive(m, live) ? m.on : m.off), meta: m } : drawn;
+  const ctl = controlProps(m, live);
 
   if (node.c?.some(isCarousel) && !carousel) {
     return <CarouselGroup><Node node={node} parentLm={parentLm} parentH={parentH} rootStyle={rootStyle} /></CarouselGroup>;
@@ -335,6 +343,8 @@ function Node({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 
 
   // The real search box replaces the drawn one.
   if (node.n === 'Search' && node.lm) return <SearchBox style={st} />;
+  // Floor Plan: the real table finder replaces the drawn box.
+  if (m?.finder) return <TableFinder style={st} className={cls.join(' ')} list={m.list || []} />;
 
   background(node, st);
   if (node.st) {
@@ -375,14 +385,29 @@ function Node({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 
 
   const img = node.f?.find((f) => f.img);
   const role = img && node.t !== 'F' ? 'img' : undefined;
+  // Photos keep their shape when a phone reflows them (see .fx-v > [role="img"].wide in styles.css).
+  if (role && node.w && node.h) st.aspectRatio = `${node.w} / ${node.h}`;
   const label = role ? (node.n || '').replace(/^IMG\//, '').split(' · ')[0] : undefined;
 
-  let kids: ReactNode = node.c?.map((c, i) => <FigmaNode key={i} node={c} parentLm={node.lm} parentH={node.lm === 'H' ? node.h : undefined} />);
+  if (m?.cls && live) { const c = m.cls[1][String(live.get(m.cls[0], ''))]; if (c) cls.push(c); }
+  if (ctl) cls.push('is-ctl');
+  // Floor Plan: the area card holding the table someone looked up.
+  const table = String(live?.get('table', '') || '');
+  if (m?.range && table && Number(table) >= m.range[0] && Number(table) <= m.range[1] && (m.range[0] < 100) === (Number(table) < 100)) cls.push('area-hit');
+  const child = (c: FNode) => <FigmaNode node={c} parentLm={node.lm} parentH={node.lm === 'H' ? node.h : undefined} />;
+  let kids: ReactNode = visibleKids(node.c, live)?.map((c, i) => (
+    // Tonight's sections: the name in each row is live (and editable for a signed-in manager).
+    m?.assign && c.t === 'T' && c.s === 'Unassigned'
+      ? <AssignName key={i} slot={m.assign} node={c} render={child} />
+      : <FigmaNode key={c.n ? c.n + i : i} node={c} parentLm={node.lm} parentH={node.lm === 'H' ? node.h : undefined} />
+  ));
 
   // Videos: slots play inline; library cards open a player.
   const extras: ReactNode[] = [];
   if (isVideoSlot(node) && node.vid) {
-    kids = <div className="video-fill"><VideoEmbed video={node.vid} /></div>;
+    // A chapter button (Sear, Braise…) restarts the video at that point.
+    const at = Number(live?.get('chapter', '') || 0);
+    kids = <div className="video-fill"><VideoEmbed key={at} video={node.vid} start={at} /></div>;
   }
   if (isVideoCard(node) && node.vid) {
     cls.push('has-video');
@@ -400,6 +425,7 @@ function Node({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 
       )}
     </>
   );
+  if (m?.tables && table && m.tables[table]) { extras.push(<TableMarker key="table" at={m.tables[table]} label={table} />); st.position = st.position || 'relative'; st.overflow = 'hidden'; }
   if (extras.length || playing) kids = <>{kids}{extras}{overlays}</>;
   if (extras.length && !st.position) st.position = 'relative';
   if (compact && !node.lm && node.c && node.w > 200 && parentLm && !node.abs && !rootStyle) {
@@ -419,7 +445,11 @@ function Node({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 
   if (carousel && isCarousel(node)) {
     return <div ref={carousel.setEl} className={cls.concat('carousel').join(' ')} style={{ ...st, overflowX: 'auto', overflowY: 'hidden' }} data-name={node.n} tabIndex={0} aria-label={node.n!.split(' · ')[1]} role="region">{kids}</div>;
   }
-  const el = (
+  const el = ctl && !node.to ? (
+    <div className={cls.join(' ')} style={st} data-name={node.n} aria-label={node.n?.split(' · ').slice(1).join(' · ') || undefined} {...ctl}>
+      {kids}
+    </div>
+  ) : (
     <div className={cls.join(' ')} style={st} role={role} aria-label={label} data-name={node.n}>
       {kids}
     </div>

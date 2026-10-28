@@ -9,6 +9,7 @@ import { BANK } from './quiz.mjs';
 import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
 import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
 import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './winelist.mjs';
+import { wire } from './interact.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -282,8 +283,15 @@ function balance(page) {
   return page;
 }
 
+/** The tick drawn in Figma (Food Matrix filters), reused by every checkbox. */
+let tick;
+const tickIcon = () => (tick ??= find(find(basePage('13-2')?.main || {}, (n) => n.n === 'Checkbox' && (n.c || []).length) || {}, (n) => n.t === 'S') || null);
+
 export function assemble(db, file) {
-  return balance(assembleRaw(db, file));
+  const entry = /^e\d+$/.test(file) ? getEntry(db, Number(file.slice(1))) : null;
+  const page = assembleRaw(db, file);
+  if (page) wire(page, { entry, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
+  return balance(page);
 }
 
 function assembleRaw(db, file) {
@@ -327,4 +335,15 @@ export function fullIndex(db) {
     }
   }
   return [...base, ...entries];
+}
+
+/** Sidebar badges, counted from the pages themselves (Food Matrix dishes, videos, photos). */
+export function sidebarCounts(db) {
+  const file = (slug) => baseIndex().find((x) => x.slug === slug)?.file;
+  const count = (slug, pred) => { const f = file(slug); const p = f && assemble(db, f); return p ? findAll(p.main, pred).length : 0; };
+  return {
+    'Food Matrix': count('food-matrix', (n) => n.meta?.inGroup),
+    'Video Library': count('video-library', (n) => (n.n || '').startsWith('Video · ')),
+    'Photo Library': count('photo-library', (n) => (n.n || '').startsWith('Photo · ')),
+  };
 }

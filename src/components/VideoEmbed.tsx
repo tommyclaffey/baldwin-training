@@ -1,13 +1,13 @@
 import type { Video } from '../lib/api';
 
 /** Plays an uploaded video or a YouTube link, filling its box. */
-export function VideoEmbed({ video, title }: { video: Video; title?: string }) {
+export function VideoEmbed({ video, title, start = 0 }: { video: Video; title?: string; start?: number }) {
   const label = video.title || title || 'Training video';
   if (video.kind === 'youtube') {
     return (
       <iframe
         className="video-embed"
-        src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?rel=0`}
+        src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?rel=0${start ? `&start=${start}&autoplay=1` : ''}`}
         title={label}
         allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
         allowFullScreen
@@ -15,5 +15,5 @@ export function VideoEmbed({ video, title }: { video: Video; title?: string }) {
       />
     );
   }
-  return <video className="video-embed" src={video.url} controls preload="metadata" playsInline aria-label={label} />;
+  return <video className="video-embed" src={start ? `${video.url}#t=${start}` : video.url} autoPlay={!!start} controls preload="metadata" playsInline aria-label={label} />;
 }

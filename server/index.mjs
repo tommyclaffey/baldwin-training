@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { hashPassword, verifyPassword, burnPasswordCheck, createSession, sessionUser, endSession, sessionCookie, SESSION_COOKIE, LoginLimiter, publicUser, sha256, newToken } from './auth.mjs';
-import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex } from './content.mjs';
+import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebarCounts } from './content.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, publicSchemas, seed, listEntries, getEntry, createEntry, updateEntry, deleteEntry, moveEntry } from './cms.mjs';
 import { slugify } from './templates.mjs';
@@ -57,6 +57,9 @@ const ctx = (req) => {
   if (user) db.prepare('UPDATE users SET last_seen_at = ? WHERE id = ?').run(now(), user.id);
   return { token, user };
 };
+/** Tonight, in the restaurant's time zone (Metro Detroit). */
+const restaurantDay = () => new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
+
 function needUser(c, req) {
   if (!c.user) fail(401, 'Sign in to make changes.');
   if (req.method !== 'GET' && req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
@@ -237,6 +240,7 @@ async function api(req, res, url) {
 
   /* content */
   if (p === '/api/index' && m === 'GET') return sendJson(res, 200, fullIndex(db));
+  if (p === '/api/counts' && m === 'GET') return sendJson(res, 200, sidebarCounts(db));
   if (parts[1] === 'page' && parts[2] && m === 'GET') {
     const page = assemble(db, parts[2]);
     if (!page) fail(404, 'We couldn’t find that page.');
@@ -290,6 +294,23 @@ async function api(req, res, url) {
   }
 
   /* wine videos: "Learn more about …" on wine pages, and wines on the list */
+  /* Floor Plan: tonight's sections. Everyone reads them; a signed-in manager fills them in before line-up. */
+  if (p === '/api/sections' && m === 'GET') {
+    const day = restaurantDay();
+    const rows = db.prepare('SELECT slot, name FROM sections WHERE day = ?').all(day);
+    return sendJson(res, 200, { day, names: Object.fromEntries(rows.map((r) => [r.slot, r.name])) });
+  }
+  if (p === '/api/sections' && m === 'PUT') {
+    const u = needUser(c, req);
+    const b = await readJson(req);
+    const slot = str(b.slot, 40), name = str(b.name, 60).trim();
+    if (!/^(Servers|Bar|Support) \d$/.test(slot)) fail(400, 'We couldn’t find that section.');
+    const day = restaurantDay();
+    if (name) db.prepare('INSERT OR REPLACE INTO sections(day,slot,name,by_user,at) VALUES (?,?,?,?,?)').run(day, slot, name, u.id, now());
+    else db.prepare('DELETE FROM sections WHERE day = ? AND slot = ?').run(day, slot);
+    audit(db, u.id, 'set section', `${day} · ${slot} · ${name || 'Unassigned'}`);
+    return sendJson(res, 200, { ok: true, day, slot, name });
+  }
   if (p === '/api/wine-videos' && m === 'GET') {
     needUser(c, req);
     const vids = wineVideos(db);

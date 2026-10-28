@@ -226,3 +226,32 @@ test('the wine list fills the Wine page and every wine page it belongs on', asyn
   const cols = (await call('/api/collections')).data;
   assert.equal(cols.counts.wine, 106);
 });
+
+test('working controls: Food Matrix filters, photo chips, cleaning checklist, sidebar counts', async () => {
+  const index = (await call('/api/index')).data;
+  const page = async (slug) => (await call('/api/page/' + index.find((e) => e.slug === slug).file)).data;
+  const all = (n, f, out = []) => { if (f(n)) out.push(n); (n.c || []).forEach((c) => all(c, f, out)); return out; };
+  const fm = await page('food-matrix');
+  const opts = all(fm.main, (n) => (n.n || '').startsWith('Option · ') && n.meta?.k);
+  assert.ok(opts.some((o) => o.meta.k === 'hide:Finfish') && opts.some((o) => o.meta.k === 'hide:Nightshade'), 'every allergen can be hidden');
+  assert.ok(opts.some((o) => o.meta.k === 'course:Plates'), 'courses come from the dishes');
+  assert.ok(all(fm.main, (n) => n.meta?.show?.req?.includes('course:Plates')).length >= 5, 'plates rows know their course');
+  assert.equal(all(fm.main, (n) => n.n === 'Button · Reset')[0].meta.act, 'reset');
+  const clean = await page('cleanliness');
+  const tasks = all(clean.main, (n) => n.meta?.save);
+  assert.ok(tasks.length >= 20 && new Set(tasks.map((t) => t.meta.k)).size === tasks.length, 'every task has its own tick');
+  const photos = await page('photo-library');
+  assert.ok(all(photos.main, (n) => n.meta?.act === 'zoom').length >= 10, 'photos open large');
+  assert.ok(!all(photos.main, (n) => n.n === 'Load more').length, 'no dead Load more');
+  const counts = (await call('/api/counts')).data;
+  assert.equal(counts['Photo Library'], all(photos.main, (n) => (n.n || '').startsWith('Photo · ')).length);
+});
+
+test('tonight’s sections: anyone reads them, only a signed-in manager sets them', async () => {
+  assert.equal((await call('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Ana' }, auth: false })).status, 401);
+  assert.equal((await call('/api/sections', { method: 'PUT', body: { slot: 'Kitchen 9', name: 'Ana' } })).status, 400);
+  assert.equal((await call('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Ana' } })).status, 200);
+  assert.equal((await call('/api/sections', { auth: false })).data.names['Servers 1'], 'Ana');
+  await call('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: '' } });
+  assert.equal((await call('/api/sections', { auth: false })).data.names['Servers 1'], undefined);
+});

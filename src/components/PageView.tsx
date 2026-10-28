@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
+import { InteractProvider } from './interact';
 import { QuizCard, ProgressCard } from '../quiz/QuizCard';
 import { quizPage } from '../quiz/transform';
 import { useQuiz } from '../quiz/store';
@@ -190,10 +191,12 @@ export function PageView() {
     <NavContext.Provider value={entry.nav}>
       <CompactContext.Provider value={compact}>
           <SlotContext.Provider value={isQuiz ? QUIZ_SLOTS : NO_SLOTS}>
+          <InteractProvider key={shown.file}>
           {loading && <div className="nav-progress" role="progressbar" aria-label="Loading page" />}
           <main ref={ref} key={shown.file} aria-busy={loading || undefined} className={'page page-enter' + (compact ? ' compact' : '')} style={{ backgroundColor: page.bg }}>
             <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
           </main>
+          </InteractProvider>
           </SlotContext.Provider>
       </CompactContext.Provider>
     </NavContext.Provider>
