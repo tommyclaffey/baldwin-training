@@ -53,6 +53,10 @@ const MIGRATIONS = [
   -- Videos attached to wine pages ("Learn more about …") and to wines on the list. key = page slug or 'wine:<name>'.
   CREATE TABLE wine_videos(key TEXT PRIMARY KEY, video TEXT NOT NULL, note TEXT, updated_by INT, updated_at TEXT);
   `,
+  `
+  -- Floor Plan → Tonight's sections: who works which section, per night (restaurant's date). slot = 'Servers 1', 'Bar 2'…
+  CREATE TABLE sections(day TEXT NOT NULL, slot TEXT NOT NULL, name TEXT NOT NULL, by_user INT, at TEXT, PRIMARY KEY(day, slot));
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
