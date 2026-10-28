@@ -12,7 +12,7 @@ const pages = index.map((e) => JSON.parse(fs.readFileSync(path.join(root, 'publi
 function walk(n, fn) { fn(n); (n.c || []).forEach((c) => walk(c, fn)); }
 
 test('there is one page per Figma screen', () => {
-  assert.equal(index.length, 224);
+  assert.equal(index.length, 225); // incl. the Wine List · Caymus template (the CMS builds one page per wine from it)
   assert.equal(new Set(index.map((e) => e.slug)).size, index.length, 'slugs are unique');
 });
 
@@ -63,6 +63,7 @@ test('every page can be reached from Home', () => {
     const p = bySlug.get(queue.shift());
     if (p) walk(p.main, (n) => { if (n.to && !seen.has(n.to)) { seen.add(n.to); queue.push(n.to); } });
   }
-  const orphans = [...slugs].filter((s) => !seen.has(s));
+  // CMS templates that only exist to build CMS pages (wine-list/caymus) aren't linked on purpose.
+  const orphans = [...slugs].filter((s) => !seen.has(s) && !s.startsWith('/wine-list/'));
   assert.deepEqual(orphans, []);
 });

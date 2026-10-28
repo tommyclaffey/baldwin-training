@@ -55,7 +55,12 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 10);
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 240, 'the design, plus 15 menu cocktails and the Lemon Drop');
+  assert.equal(index.length, 346, 'the design, plus 15 menu cocktails, the Lemon Drop and 106 wine pages');
+  const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
+  const wp = (await call('/api/page/' + caymus.file)).data;
+  const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
+  assert.equal(findN(wp.main, 'Title').s, 'CAYMUS');
+  assert.equal(findN(wp.main, 'Dots · 5 of 5').c.length, 5);
   for (const slug of ['classic/old-fashioned', 'classic/pisco-sour', 'signature/fuschia-satin', 'recipe/short-rib']) assert.ok(index.some((e) => e.slug === slug), slug);
   const of = index.find((e) => e.slug === 'classic/old-fashioned');
   const page = (await call('/api/page/' + of.file)).data;

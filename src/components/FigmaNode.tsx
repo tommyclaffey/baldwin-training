@@ -430,6 +430,14 @@ function Node({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 
 function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[]) {
   if (!node.to) return el;
   const label = node.n?.includes(' · ') ? node.n.split(' · ').slice(1).join(' · ') : undefined;
+  // Outside sources (Wine Folly, Vivino, producer sites) open in a new tab.
+  if (/^https?:\/\//.test(node.to)) {
+    return (
+      <a href={node.to} target="_blank" rel="noopener noreferrer" className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: 'inherit', textDecoration: 'none' }} aria-label={label}>
+        {(el as { props: { children?: ReactNode } }).props.children}
+      </a>
+    );
+  }
   return (
     <Link to={node.to} className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: 'inherit', textDecoration: 'none' }} aria-label={label}>
       {(el as { props: { children?: ReactNode } }).props.children}

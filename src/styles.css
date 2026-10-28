@@ -138,6 +138,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, .flink:focus-visible
   [data-name^="Pour · "] > [data-name="Name"] { width: auto !important; flex: 1 1 auto !important; min-width: 0; }
   [data-name^="Pour · "] > [data-name="Prices"] { flex: 0 0 auto !important; width: auto !important; }
   [data-name="Head cells"] { margin-left: auto; }
+  /* Wine heroes: the stat strip becomes a 2-up grid instead of clipping, and the copy column loses its desktop height. */
+  [data-name="Hero"] > [data-name="Copy"] { height: auto !important; min-height: 0 !important; }
+  [data-name="Hero"] > [data-name="Copy"] > :nth-child(3) { font-size: min(49px, 10.5vw) !important; overflow-wrap: anywhere; }
+  [data-name="Stats"] { display: grid !important; grid-template-columns: 1fr 1fr; height: auto !important; }
+  [data-name="Stats"] > * { width: auto !important; min-width: 0; flex: none !important; min-height: 56px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

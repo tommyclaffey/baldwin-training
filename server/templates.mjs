@@ -117,6 +117,10 @@ export function cocktailPage(template, item, ctx) {
     return c;
   });
 
+  // The note by the build: where the amounts come from (Drink Book specs since Oct 28), or what's still to confirm.
+  const amountNote = find(main, (n) => n.t === 'T' && /^Sample amounts/.test(n.s || ''));
+  if (amountNote && build.some((b) => b.amount)) setText(amountNote, d.specNote || 'From the Drink Book');
+
   // Steps
   const how = find(main, byName('How to make it'));
   const stepList = lines(d.steps).length ? lines(d.steps) : ['Bar lead to add the build and steps.'];

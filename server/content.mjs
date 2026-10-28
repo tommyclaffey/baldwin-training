@@ -8,7 +8,7 @@ import { COLLECTIONS, listEntries, getEntry } from './cms.mjs';
 import { BANK } from './quiz.mjs';
 import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
 import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
-import { fillWinePage, fillWineShelf, wineSearchText } from './winelist.mjs';
+import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './winelist.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -90,7 +90,46 @@ function entryPage(db, e) {
     return cocktailPage(tpl, e, { signatures, glassCard });
   }
   if (e.collection === 'recipe') return dishPage(tpl, { ...e, quiz: quizFor(e.data.name) });
+  if (e.collection === 'wine') return wineEntryPage(tpl, e, { all: ordered(db, 'wine'), index: baseIndex(), recipes: ordered(db, 'recipe') });
   return null;
+}
+
+/** Allergen Guide grid: one row per dish from the Recipes collection, a mark in every column the dish is tagged with. */
+const MAJOR = new Set(['Finfish', 'Shellfish', 'Tree Nut', 'Peanut']);
+function allergenGrid(page, recipes) {
+  const grid = find(page.main, byName('Allergen grid'));
+  if (!grid || !recipes.length) return;
+  const rows = grid.c.filter(startsWith('Row · '));
+  const cells = rows.flatMap((r) => r.c);
+  const mark = cells.find((c) => find(c, byName('Contains'))?.f?.[0]?.c === '#1E1C1A');
+  const major = cells.find((c) => { const k = find(c, byName('Contains')); return k && k.f?.[0]?.c !== '#1E1C1A'; });
+  const none = cells.find((c) => find(c, byName('None')));
+  const proto = rows.find((r) => !find(r, startsWith('Pill · '))) || rows[0];
+  const groups = grid.c.filter(startsWith('Group · '));
+  const head = grid.c.filter((c) => c.n === 'Header');
+  const tail = grid.c.filter((c) => c.n === 'Legend' || c.n === 'Definitions');
+  const out = [...head];
+  for (const g of groups) {
+    const course = g.n.slice(8).toLowerCase();
+    const list = recipes.filter((e) => String(e.data.course || '').toLowerCase() === course);
+    if (!list.length) continue;
+    out.push(g);
+    for (const e of list) {
+      const d = e.data;
+      const r = clone(proto);
+      r.n = 'Row · ' + d.name;
+      if (d.fullPage) r.to = '/' + e.slug;
+      const tags = new Set(d.allergens || []);
+      r.c = r.c.map((c) => {
+        if (c.n === 'Dish') { const t = clone(c); setText(texts(t)[0], d.name); return t; }
+        const src = tags.has(c.n) ? (MAJOR.has(c.n) ? major || mark : mark) : none;
+        const cell = clone(src || c); cell.n = c.n; cell.w = c.w;
+        return cell;
+      });
+      out.push(r);
+    }
+  }
+  grid.c = [...out, ...tail];
 }
 
 /* ---- lists on designed pages ---- */
@@ -131,10 +170,12 @@ function glassFiller(proto, glass) {
       if (sh) shapes.set(g.n.slice(8).toLowerCase(), sh.svg);
     }
   }
-  const name = String(glass || '').split(/ · | or |\(/)[0].trim() || 'Coupe';
+  const name = String(glass || '').split(/ · | or |\(|,/)[0].trim() || 'Coupe';
   const f = clone(proto);
   const shape = find(f, startsWith('Shape · '));
-  const svg = shapes.get(name.toLowerCase()) || [...shapes].find(([k]) => name.toLowerCase().startsWith(k))?.[1];
+  // Book wording ("Short rocks", "Small Nick and Nora", "Fancy highball") finds the longest glass name inside it.
+  const low = name.toLowerCase().replace(/ and /g, ' & ').replace(/mule mug/, 'copper mug');
+  const svg = shapes.get(low) || [...shapes].filter(([k]) => low.includes(k)).sort((a, b) => b[0].length - a[0].length)[0]?.[1];
   if (shape && svg) { shape.svg = svg; shape.n = 'Shape · ' + name; }
   const cap = find(f, byName('Caption'));
   if (cap) setText(cap, `${name.toUpperCase()} · PHOTO TO COME`);
@@ -254,6 +295,7 @@ function assembleRaw(db, file) {
   if (!page) return null;
   if (file === '14-2') { classicTable(page, ordered(db, 'classic')); houseRows(page, ordered(db, 'house')); signatureCards(page, ordered(db, 'house')); }
   if (file === '13-2') foodMatrix(page, ordered(db, 'recipe'));
+  if (file === '17-2') allergenGrid(page, ordered(db, 'recipe'));
   const entry = baseIndex().find((x) => x.file === file);
   if (entry && wineKind(entry.slug)) learnMore(page, entry, wineVideos(db).get(entry.slug), basePage);
   if (file === '25-2') wineCards(page, wineVideos(db));
@@ -279,8 +321,8 @@ export function fullIndex(db) {
       entries.push({
         id: 'e' + e.id, file: 'e' + e.id, slug: e.slug,
         name: `${c.section} · ${d.name}`, title: d.name, section: c.section, nav: c.nav,
-        text: [d.tagline, d.description, ...(d.build || []).map((b) => b.ingredient), ...(d.flavors || []), ...(d.allergens || []), d.spiritName, d.story].filter(Boolean).join(' ').slice(0, 1200),
-        thumb: d.photo || undefined, blurb: d.description || d.tagline || undefined,
+        text: [d.tagline, d.description, ...(d.build || []).map((b) => b.ingredient), ...(d.flavors || []), ...(d.allergens || []), d.spiritName, d.story, d.grape, d.region, d.notes, d.pairs].filter(Boolean).join(' ').slice(0, 1200),
+        thumb: d.photo || d.bottle_img || undefined, blurb: d.description || d.tagline || d.notes || undefined,
       });
     }
   }
