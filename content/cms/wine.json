@@ -17,7 +17,17 @@
    "pages": [
     "Prosecco",
     "Veneto"
-   ]
+   ],
+   "bottle_img": "/img/82b9c5e903ce.jpg",
+   "style": "Sparkling",
+   "notes": "Green apple, pear and white flowers, with light, lively bubbles.",
+   "pairs": "Spicy Bar Nutz, Burrata & Artichoke, Prosciutto Fondue",
+   "say": "Bright and easy; the perfect way to start.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 4"
   }
  },
  {
@@ -37,7 +47,17 @@
    "size": "",
    "pages": [
     "Piedmont"
-   ]
+   ],
+   "bottle_img": "/img/08b162a36bca.jpg",
+   "style": "Lightly Sweet",
+   "notes": "Ripe peach, orange blossom and honey, with a gentle fizz and low alcohol.",
+   "pairs": "Mike's Vegas Winner, Hot Honey Eggplant",
+   "say": "Softly sweet and a little fizzy; made for dessert.",
+   "body": "1",
+   "sweet": "4",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 5"
   }
  },
  {
@@ -57,7 +77,17 @@
    "size": "",
    "pages": [
     "Riesling"
-   ]
+   ],
+   "bottle_img": "/img/21600bb2a81f.jpg",
+   "style": "Off-Dry",
+   "notes": "Lime, green apple and wet stone; a touch of sweetness balanced by bright acid.",
+   "pairs": "Spicy Bar Nutz, Roasted Cauliflower, Harissa Carrots",
+   "say": "Crisp and refreshing with a hint of sweetness.",
+   "body": "2",
+   "sweet": "3",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Wine Book p. 6"
   }
  },
  {
@@ -75,7 +105,17 @@
    "half": "23",
    "bottle": "44",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/d50e9aff6fc0.jpg",
+   "style": "Aromatic",
+   "notes": "Lychee, citrus blossom and a little spice; aromatic, dry to off-dry.",
+   "pairs": "Hot Honey Eggplant, Shrimp & Eggplant",
+   "say": "A fragrant Alsace blend; floral, fresh and easy.",
+   "body": "2",
+   "sweet": "2",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 7"
   }
  },
  {
@@ -95,7 +135,17 @@
    "size": "",
    "pages": [
     "Pinot Grigio"
-   ]
+   ],
+   "bottle_img": "/img/a5ae46941658.jpg",
+   "style": "Crisp",
+   "notes": "Pear, lemon peel and almond, with clean mountain freshness.",
+   "pairs": "Burrata & Artichoke, Prosciutto Fondue, Romaine",
+   "say": "An alpine Pinot Grigio with more depth than most.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 8"
   }
  },
  {
@@ -103,7 +153,7 @@
   "slug": "wine-list/by-the-glass-white-sauvignon-blanc-st-sulpice-bordeaux",
   "sort": 5,
   "data": {
-   "name": "St. Sulpice",
+   "name": "Château St. Sulpice",
    "list": "By the glass",
    "country": "France",
    "color": "White",
@@ -116,7 +166,17 @@
    "pages": [
     "Sauvignon Blanc",
     "Bordeaux"
-   ]
+   ],
+   "bottle_img": "/img/1bce1a30e82c.jpg",
+   "style": "Zesty",
+   "notes": "Grapefruit, lemon and fresh-cut grass; zesty and dry.",
+   "pairs": "JB Calamari, Second Ave. Salad, Beet Salad",
+   "say": "Zesty and citrusy; a great match for the walleye.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 9"
   }
  },
  {
@@ -136,7 +196,17 @@
    "size": "",
    "pages": [
     "Chenin Blanc"
-   ]
+   ],
+   "bottle_img": "/img/ed0c18ebeb8f.jpg",
+   "style": "Fresh",
+   "notes": "Yellow apple, quince and a honeyed edge; fresh but round.",
+   "pairs": "Harissa Carrots, Second Ave. Salad, Walleye Milanese",
+   "say": "Like a crisp apple with a little honey.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 10"
   }
  },
  {
@@ -156,7 +226,17 @@
    "size": "",
    "pages": [
     "Piedmont"
-   ]
+   ],
+   "bottle_img": "/img/36a34fff997f.jpg",
+   "style": "Mineral",
+   "notes": "Lemon, green almond and minerals; light and elegant.",
+   "pairs": "Shrimp & Eggplant, Mushroom Brie Soup, Cacio Ravioli",
+   "say": "Piedmont's classic white; lean, mineral, elegant.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 11"
   }
  },
  {
@@ -177,7 +257,17 @@
    "pages": [
     "Chardonnay",
     "Burgundy"
-   ]
+   ],
+   "bottle_img": "/img/8d89ddb90981.jpg",
+   "style": "Unoaked",
+   "notes": "Apple, citrus and a soft, creamy texture; Burgundy without heavy oak.",
+   "pairs": "Mushroom Brie Soup, Squash Agnolotti, Romaine",
+   "say": "White Burgundy style; fresh, not oaky.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 12"
   }
  },
  {
@@ -198,7 +288,17 @@
    "pages": [
     "Chardonnay",
     "Santa Barbara"
-   ]
+   ],
+   "bottle_img": "/img/7904091666c6.jpg",
+   "style": "Balanced",
+   "notes": "Ripe apple, citrus and gentle toast; California fruit with balance.",
+   "pairs": "Roasted Cauliflower, Cacio Ravioli, Scallops Rockefeller",
+   "say": "A balanced California Chardonnay.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 13"
   }
  },
  {
@@ -219,7 +319,17 @@
    "pages": [
     "Chardonnay",
     "Sonoma"
-   ]
+   ],
+   "bottle_img": "/img/b1c9167ebbd8.jpg",
+   "style": "Rich",
+   "notes": "Baked apple, pear, vanilla and toasted oak; rich and creamy.",
+   "pairs": "Lobster & Crab Tortellini",
+   "say": "Our richest white; creamy and full.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 15"
   }
  },
  {
@@ -237,7 +347,17 @@
    "half": "35",
    "bottle": "68",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/d34802c16405.jpg",
+   "style": "Aged",
+   "notes": "Red cherry, plum, vanilla and leather from years in oak.",
+   "pairs": "Braised Short Rib",
+   "say": "A classic aged Rioja; savory and smooth.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 16"
   }
  },
  {
@@ -258,7 +378,17 @@
    "pages": [
     "Cabernet",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/af1e4a9cd6a7.jpg",
+   "style": "Bold",
+   "notes": "Blackberry, cassis, cocoa and vanilla; ripe and velvety.",
+   "pairs": "Espresso Filet, Braised Short Rib",
+   "say": "Napa's famous plush Cabernet; our bottle is a full liter.",
+   "body": "5",
+   "sweet": "1",
+   "acid": "2",
+   "tannin": "3",
+   "source": "Wine Book p. 17"
   }
  },
  {
@@ -278,7 +408,17 @@
    "size": "",
    "pages": [
     "Piedmont"
-   ]
+   ],
+   "bottle_img": "/img/a3f1091b8c55.jpg",
+   "style": "Sweet",
+   "notes": "Strawberry, raspberry and rose petals, lightly sparkling and sweet.",
+   "pairs": "Double Pepperoni",
+   "say": "A sweet, fizzy red; like berries and roses.",
+   "body": "1",
+   "sweet": "4",
+   "acid": "3",
+   "tannin": "1",
+   "source": "Wine Book p. 19"
   }
  },
  {
@@ -298,7 +438,17 @@
    "size": "",
    "pages": [
     "Santa Barbara"
-   ]
+   ],
+   "bottle_img": "/img/98560ebdf84b.jpg",
+   "style": "Light",
+   "notes": "Cranberry and cherry with a juicy, bright finish; best with a light chill.",
+   "pairs": "Beet Salad, Rigatoni Ragu, Smash Burger",
+   "say": "Light, juicy and fun; a red for white wine drinkers.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "1",
+   "source": "Wine Book p. 20"
   }
  },
  {
@@ -319,7 +469,17 @@
    "pages": [
     "Pinot Noir",
     "Willamette Valley"
-   ]
+   ],
+   "bottle_img": "/img/9bfb053b7bd9.jpg",
+   "style": "Silky",
+   "notes": "Cherry, raspberry, baking spice and a touch of forest floor.",
+   "pairs": "Seasonal Veggie Pie, Duck Gnocchetti, Sun-Dried Tomato Salmon",
+   "say": "Silky Oregon Pinot; bright fruit and a little earth.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "2",
+   "source": "Wine Book p. 21"
   }
  },
  {
@@ -340,7 +500,17 @@
    "pages": [
     "Sangiovese",
     "Tuscany"
-   ]
+   ],
+   "bottle_img": "/img/b185e4069de4.jpg",
+   "style": "Savory",
+   "notes": "Sour cherry and dried herbs with a savory finish.",
+   "pairs": "Short Rib Arancini, Cali Margherita, Sunday Sauce Pasta",
+   "say": "Tuscany's food wine; bright and savory.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "3",
+   "source": "Wine Book p. 22"
   }
  },
  {
@@ -360,7 +530,17 @@
    "size": "",
    "pages": [
     "Zinfandel"
-   ]
+   ],
+   "bottle_img": "/img/4e1b87c61b22.jpg",
+   "style": "Bold",
+   "notes": "Blackberry jam, black pepper and warm spice.",
+   "pairs": "Double Pepperoni, 2 A.M. Pie, Smash Burger",
+   "say": "Big, jammy and peppery; from Zinfandel's top name.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "2",
+   "source": "Wine Book p. 23"
   }
  },
  {
@@ -380,7 +560,17 @@
    "size": "",
    "pages": [
     "Bordeaux"
-   ]
+   ],
+   "bottle_img": "/img/d8dedb11d4f2.jpg",
+   "style": "Classic",
+   "notes": "Plum, blackcurrant and cedar; classic and dry.",
+   "pairs": "Lamb Chops, Braised Short Rib",
+   "say": "An everyday Bordeaux; plum and cedar.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 24"
   }
  },
  {
@@ -400,7 +590,17 @@
    "size": "",
    "pages": [
     "Tuscany"
-   ]
+   ],
+   "bottle_img": "/img/d714cae3c93a.jpg",
+   "style": "Rich",
+   "notes": "Dark cherry, cassis and Mediterranean herbs.",
+   "pairs": "Rigatoni Ragu, Lamb Chops",
+   "say": "From the coast that made Super Tuscans famous.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 25"
   }
  },
  {
@@ -420,7 +620,17 @@
    "size": "",
    "pages": [
     "Malbec"
-   ]
+   ],
+   "bottle_img": "/img/b67f17fd17c3.jpg",
+   "style": "Rich",
+   "notes": "Plum, blackberry and violet with a touch of cocoa.",
+   "pairs": "Baldwin Burger, Braised Short Rib",
+   "say": "Rich, smooth Malbec from high in the Andes.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 26"
   }
  },
  {
@@ -441,7 +651,17 @@
    "pages": [
     "Cabernet",
     "Paso Robles"
-   ]
+   ],
+   "bottle_img": "/img/8735db94aab8.jpg",
+   "style": "Bold",
+   "notes": "Black cherry and mocha with ripe, round tannins.",
+   "pairs": "Baldwin Burger, Espresso Filet",
+   "say": "Sunny Paso Robles Cab; ripe and smooth.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 27"
   }
  },
  {
@@ -462,7 +682,17 @@
    "pages": [
     "Cabernet",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/df91bf918d89.jpg",
+   "style": "Bold",
+   "notes": "Blackberry, cassis and vanilla; polished Napa style.",
+   "pairs": "Espresso Filet",
+   "say": "Classic Napa Cabernet at a friendly price.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 28"
   }
  },
  {
@@ -483,7 +713,17 @@
    "pages": [
     "Riesling",
     "Michigan"
-   ]
+   ],
+   "bottle_img": "/img/f35a756755df.jpg",
+   "style": "",
+   "notes": "Local, crisp and lightly off-dry; green apple and lime.",
+   "pairs": "Roasted Cauliflower",
+   "say": "",
+   "body": "2",
+   "sweet": "3",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 30"
   }
  },
  {
@@ -503,7 +743,17 @@
    "size": "",
    "pages": [
     "Willamette Valley"
-   ]
+   ],
+   "bottle_img": "/img/34dbf8fc6779.jpg",
+   "style": "",
+   "notes": "Apricot and honeysuckle with a round, silky texture.",
+   "pairs": "Squash Agnolotti",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "2",
+   "tannin": "—",
+   "source": "Wine Book p. 30"
   }
  },
  {
@@ -524,7 +774,17 @@
    "pages": [
     "Sauvignon Blanc",
     "Sonoma"
-   ]
+   ],
+   "bottle_img": "/img/0f4859d733fe.jpg",
+   "style": "",
+   "notes": "Richer style; citrus, melon and a creamy finish.",
+   "pairs": "Walleye Milanese",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 30"
   }
  },
  {
@@ -544,7 +804,17 @@
    "size": "",
    "pages": [
     "Chardonnay"
-   ]
+   ],
+   "bottle_img": "/img/4b4bc8e4b908.jpg",
+   "style": "",
+   "notes": "Cool-climate; pear, citrus and light oak.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 31"
   }
  },
  {
@@ -565,7 +835,17 @@
    "pages": [
     "Chardonnay",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/adaad1480a46.jpg",
+   "style": "",
+   "notes": "Rich; baked apple, vanilla and toasted oak.",
+   "pairs": "Squash Agnolotti",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "2",
+   "tannin": "—",
+   "source": "Wine Book p. 31"
   }
  },
  {
@@ -586,7 +866,17 @@
    "pages": [
     "Chardonnay",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/e9bbe7e43640.jpg",
+   "style": "",
+   "notes": "Polished icon; melon, citrus and creamy oak.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 31"
   }
  },
  {
@@ -607,7 +897,17 @@
    "pages": [
     "Pinot Noir",
     "Willamette Valley"
-   ]
+   ],
+   "bottle_img": "/img/bf0949964122.jpg",
+   "style": "",
+   "notes": "Wild-yeast Pinot; cherry, earth and spice.",
+   "pairs": "Beet Salad",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "2",
+   "source": "Wine Book p. 32"
   }
  },
  {
@@ -628,7 +928,17 @@
    "pages": [
     "Pinot Noir",
     "Sonoma"
-   ]
+   ],
+   "bottle_img": "/img/0882a06e808d.jpg",
+   "style": "",
+   "notes": "Dark cherry, cola and a silky texture.",
+   "pairs": "Beet Salad",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "2",
+   "source": "Wine Book p. 32"
   }
  },
  {
@@ -649,7 +959,17 @@
    "pages": [
     "Merlot",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/e23f2ac45978.jpg",
+   "style": "",
+   "notes": "Plush plum and mocha.",
+   "pairs": "Short Rib Arancini",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "2",
+   "tannin": "3",
+   "source": "Wine Book p. 32"
   }
  },
  {
@@ -670,7 +990,17 @@
    "pages": [
     "Merlot",
     "Washington"
-   ]
+   ],
+   "bottle_img": "/img/99c314642f06.jpg",
+   "style": "",
+   "notes": "Structured Washington Merlot; black cherry and cocoa.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 33"
   }
  },
  {
@@ -688,7 +1018,17 @@
    "half": "",
    "bottle": "60",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/a8120bd08814.jpg",
+   "style": "",
+   "notes": "Light to medium; red berry, pepper and herbs.",
+   "pairs": "Beet Salad",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "2",
+   "source": "Wine Book p. 33"
   }
  },
  {
@@ -708,7 +1048,17 @@
    "size": "",
    "pages": [
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/95282f184b46.jpg",
+   "style": "",
+   "notes": "Bordeaux-style blend; dark fruit, smooth.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 33"
   }
  },
  {
@@ -728,7 +1078,17 @@
    "size": "",
    "pages": [
     "Paso Robles"
-   ]
+   ],
+   "bottle_img": "/img/bbf357124f47.jpg",
+   "style": "",
+   "notes": "Cabernet-led flagship; cassis, mocha, firm.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "5",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 34"
   }
  },
  {
@@ -748,7 +1108,17 @@
    "size": "",
    "pages": [
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/d5e6c795db43.jpg",
+   "style": "",
+   "notes": "Bold Bordeaux blend; blackberry and espresso.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "5",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 34"
   }
  },
  {
@@ -768,7 +1138,17 @@
    "size": "",
    "pages": [
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/507fce009a35.jpg",
+   "style": "",
+   "notes": "Opus One's second wine; cassis, cedar, elegant.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 34"
   }
  },
  {
@@ -789,7 +1169,17 @@
    "pages": [
     "Cabernet",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/bbc471e6ac61.jpg",
+   "style": "",
+   "notes": "Ripe and layered; blackberry and vanilla.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "5",
+   "sweet": "1",
+   "acid": "2",
+   "tannin": "4",
+   "source": "Wine Book p. 35"
   }
  },
  {
@@ -810,7 +1200,17 @@
    "pages": [
     "Cabernet",
     "Paso Robles"
-   ]
+   ],
+   "bottle_img": "/img/f67819304fd1.jpg",
+   "style": "",
+   "notes": "Dense; black fruit and dark chocolate.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "5",
+   "sweet": "1",
+   "acid": "2",
+   "tannin": "4",
+   "source": "Wine Book p. 35"
   }
  },
  {
@@ -831,7 +1231,17 @@
    "pages": [
     "Cabernet",
     "Sonoma"
-   ]
+   ],
+   "bottle_img": "/img/48321f023c5d.jpg",
+   "style": "",
+   "notes": "Sonoma Cabernet; red and black currant, herbs.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 35"
   }
  },
  {
@@ -839,7 +1249,7 @@
   "slug": "wine-list/by-the-bottle-red-cabernet-sauvignon-stags-leap-artemis-napa",
   "sort": 41,
   "data": {
-   "name": "Stags' Leap 'Artemis'",
+   "name": "Stag's Leap 'Artemis'",
    "list": "By the bottle",
    "country": "USA",
    "color": "Red",
@@ -852,7 +1262,17 @@
    "pages": [
     "Cabernet",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/2491a1ed1c13.jpg",
+   "style": "",
+   "notes": "Elegant; cherry, cassis and fine tannins.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 36"
   }
  },
  {
@@ -873,7 +1293,17 @@
    "pages": [
     "Cabernet",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/a23c192203c4.jpg",
+   "style": "",
+   "notes": "Plush Oakville fruit; blackberry and cocoa.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "5",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 36"
   }
  },
  {
@@ -894,7 +1324,17 @@
    "pages": [
     "Cabernet",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/d0d1eabe6cb9.jpg",
+   "style": "",
+   "notes": "Big and opulent; black fruit and vanilla.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "5",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 36"
   }
  },
  {
@@ -915,7 +1355,17 @@
    "pages": [
     "Cabernet",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/91c92e70f641.jpg",
+   "style": "",
+   "notes": "American oak; blackcurrant, vanilla and dill.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 37"
   }
  },
  {
@@ -936,7 +1386,17 @@
    "pages": [
     "Cabernet",
     "Napa Valley"
-   ]
+   ],
+   "bottle_img": "/img/578a1d24767c.jpg",
+   "style": "",
+   "notes": "Oakville estate; cassis, graphite and a long finish.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "5",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 37"
   }
  },
  {
@@ -956,7 +1416,17 @@
    "size": "",
    "pages": [
     "Pinot Grigio"
-   ]
+   ],
+   "bottle_img": "/img/0795cd8f592f.jpg",
+   "style": "",
+   "notes": "The famous name; crisp, clean and citrusy.",
+   "pairs": "Walleye Milanese",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 38"
   }
  },
  {
@@ -976,7 +1446,17 @@
    "size": "",
    "pages": [
     "Pecorino"
-   ]
+   ],
+   "bottle_img": "/img/8278470c1731.jpg",
+   "style": "",
+   "notes": "Herbal and citrusy with a little salinity.",
+   "pairs": "Cacio Ravioli",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 38"
   }
  },
  {
@@ -996,7 +1476,17 @@
    "size": "",
    "pages": [
     "Tuscany"
-   ]
+   ],
+   "bottle_img": "/img/de466fde986c.jpg",
+   "style": "",
+   "notes": "Coastal; lemon, herbs and sea breeze.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 38"
   }
  },
  {
@@ -1014,7 +1504,17 @@
    "half": "",
    "bottle": "49",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/09663f1413f6.jpg",
+   "style": "",
+   "notes": "Lemon and almond with a bitter- almond finish.",
+   "pairs": "Walleye Milanese",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 39"
   }
  },
  {
@@ -1034,7 +1534,17 @@
    "size": "",
    "pages": [
     "Veneto"
-   ]
+   ],
+   "bottle_img": "/img/8730d78697c0.jpg",
+   "style": "",
+   "notes": "Partly dried grapes; round, with peach and honey.",
+   "pairs": "Squash Agnolotti",
+   "say": "",
+   "body": "3",
+   "sweet": "2",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 39"
   }
  },
  {
@@ -1054,7 +1564,17 @@
    "size": "",
    "pages": [
     "Sicily"
-   ]
+   ],
+   "bottle_img": "/img/fd94a71ab606.jpg",
+   "style": "",
+   "notes": "Dark cherry and plum; soft and sunny.",
+   "pairs": "Short Rib Arancini",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 40"
   }
  },
  {
@@ -1074,7 +1594,17 @@
    "size": "",
    "pages": [
     "Sicily"
-   ]
+   ],
+   "bottle_img": "/img/67727866b178.jpg",
+   "style": "",
+   "notes": "Light, red berry and herbs; fresh and bright.",
+   "pairs": "Beet Salad",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "2",
+   "source": "Wine Book p. 40"
   }
  },
  {
@@ -1095,7 +1625,17 @@
    "pages": [
     "Sangiovese",
     "Tuscany"
-   ]
+   ],
+   "bottle_img": "/img/611c3902ae6d.jpg",
+   "style": "",
+   "notes": "Riserva; cherry, leather and savory notes.",
+   "pairs": "Short Rib Arancini",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "3",
+   "source": "Wine Book p. 40"
   }
  },
  {
@@ -1116,7 +1656,17 @@
    "pages": [
     "Sangiovese",
     "Tuscany"
-   ]
+   ],
+   "bottle_img": "/img/ceaeaaa392a5.jpg",
+   "style": "",
+   "notes": "Top tier of Chianti; deep cherry, firm.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "4",
+   "source": "Wine Book p. 41"
   }
  },
  {
@@ -1136,7 +1686,17 @@
    "size": "",
    "pages": [
     "Piedmont"
-   ]
+   ],
+   "bottle_img": "/img/67adf07dfd2e.jpg",
+   "style": "",
+   "notes": "Juicy, with bright acid and soft tannin.",
+   "pairs": "Short Rib Arancini",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "2",
+   "source": "Wine Book p. 41"
   }
  },
  {
@@ -1154,7 +1714,17 @@
    "half": "",
    "bottle": "55",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/f50d93f032d5.jpg",
+   "style": "",
+   "notes": "Plummy, easygoing and rustic.",
+   "pairs": "Short Rib Arancini",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 41"
   }
  },
  {
@@ -1172,7 +1742,17 @@
    "half": "",
    "bottle": "65",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/9f0515ffdec4.jpg",
+   "style": "",
+   "notes": "Central Italian blend; cherry and spice.",
+   "pairs": "Short Rib Arancini",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 42"
   }
  },
  {
@@ -1192,7 +1772,17 @@
    "size": "",
    "pages": [
     "Tuscany"
-   ]
+   ],
+   "bottle_img": "/img/60c34b77fac6.jpg",
+   "style": "",
+   "notes": "Ornellaia's entry wine; ripe and polished.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 42"
   }
  },
  {
@@ -1200,7 +1790,7 @@
   "slug": "wine-list/by-the-bottle-red-barbaresco-la-ca-nova-bric-mentina-piedmont",
   "sort": 59,
   "data": {
-   "name": "La Ca'Nova 'Bric Mentina'",
+   "name": "La Ca' Nova 'Bric Mentina'",
    "list": "By the bottle",
    "country": "Italy",
    "color": "Red",
@@ -1213,7 +1803,17 @@
    "pages": [
     "Nebbiolo",
     "Piedmont"
-   ]
+   ],
+   "bottle_img": "/img/46cb7e754554.jpg",
+   "style": "",
+   "notes": "Nebbiolo; rose, cherry, tar and firm tannin.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "5",
+   "source": "Wine Book p. 42"
   }
  },
  {
@@ -1234,7 +1834,17 @@
    "pages": [
     "Nebbiolo",
     "Piedmont"
-   ]
+   ],
+   "bottle_img": "/img/b6a9f0f2cff9.jpg",
+   "style": "",
+   "notes": "Gaja's Barolo; perfumed, powerful and long.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "5",
+   "source": "Wine Book p. 43"
   }
  },
  {
@@ -1242,7 +1852,7 @@
   "slug": "wine-list/by-the-bottle-red-barolo-marchesi-di-barolo-cannubi",
   "sort": 61,
   "data": {
-   "name": "Marchesi di Barolo",
+   "name": "Marchesi di Barolo 'Cannubi'",
    "list": "By the bottle",
    "country": "Italy",
    "color": "Red",
@@ -1255,7 +1865,17 @@
    "pages": [
     "Nebbiolo",
     "Piedmont"
-   ]
+   ],
+   "bottle_img": "/img/ed5ffca45366.jpg",
+   "style": "",
+   "notes": "Famous Cannubi vineyard; rose, cherry, structure.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "5",
+   "source": "Wine Book p. 43"
   }
  },
  {
@@ -1276,7 +1896,17 @@
    "pages": [
     "Sangiovese",
     "Tuscany"
-   ]
+   ],
+   "bottle_img": "/img/ad37383e85ab.jpg",
+   "style": "",
+   "notes": "Sangiovese at its fullest; cherry and earth.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "4",
+   "source": "Wine Book p. 43"
   }
  },
  {
@@ -1297,7 +1927,17 @@
    "pages": [
     "Sangiovese",
     "Tuscany"
-   ]
+   ],
+   "bottle_img": "/img/3a54c76ce4d4.jpg",
+   "style": "",
+   "notes": "Classic Brunello; dark cherry and leather.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "4",
+   "source": "Wine Book p. 44"
   }
  },
  {
@@ -1317,7 +1957,17 @@
    "size": "",
    "pages": [
     "Veneto"
-   ]
+   ],
+   "bottle_img": "/img/9d84786404a6.jpg",
+   "style": "",
+   "notes": "“Baby Amarone”; cherry, raisin and spice.",
+   "pairs": "Short Rib Arancini",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 44"
   }
  },
  {
@@ -1337,7 +1987,17 @@
    "size": "",
    "pages": [
     "Veneto"
-   ]
+   ],
+   "bottle_img": "/img/2ce0a82b6985.jpg",
+   "style": "",
+   "notes": "From dried grapes; rich raisin and chocolate.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "5",
+   "sweet": "2",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 44"
   }
  },
  {
@@ -1345,7 +2005,7 @@
   "slug": "wine-list/by-the-bottle-white-riesling-weinbach-alsace",
   "sort": 66,
   "data": {
-   "name": "Weinbach",
+   "name": "Domaine Weinbach",
    "list": "By the bottle",
    "country": "France",
    "color": "White",
@@ -1357,7 +2017,17 @@
    "size": "",
    "pages": [
     "Riesling"
-   ]
+   ],
+   "bottle_img": "/img/bbc1eba13efc.jpg",
+   "style": "",
+   "notes": "Dry Alsace Riesling; citrus, stone and precise acidity.",
+   "pairs": "Roasted Cauliflower",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Wine Book p. 45"
   }
  },
  {
@@ -1365,7 +2035,7 @@
   "slug": "wine-list/by-the-bottle-white-chenin-blanc-aubuisieres-cuvee-silex-vouvray",
   "sort": 67,
   "data": {
-   "name": "Aubuisières 'Cuvée Silex'",
+   "name": "Aubuisières 'Cuvée de Silex'",
    "list": "By the bottle",
    "country": "France",
    "color": "White",
@@ -1378,7 +2048,17 @@
    "pages": [
     "Chenin Blanc",
     "Loire"
-   ]
+   ],
+   "bottle_img": "/img/51881393db6f.jpg",
+   "style": "",
+   "notes": "Dry Vouvray; apple, quince and a flinty edge.",
+   "pairs": "Squash Agnolotti",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 45"
   }
  },
  {
@@ -1386,7 +2066,7 @@
   "slug": "wine-list/by-the-bottle-white-sauvignon-blanc-daulny-sancerre",
   "sort": 68,
   "data": {
-   "name": "Daulny",
+   "name": "Domaine Daulny",
    "list": "By the bottle",
    "country": "France",
    "color": "White",
@@ -1399,7 +2079,17 @@
    "pages": [
     "Sauvignon Blanc",
     "Loire"
-   ]
+   ],
+   "bottle_img": "/img/090fb6198fd9.jpg",
+   "style": "",
+   "notes": "Classic Sancerre; grapefruit, flint and crisp acidity.",
+   "pairs": "Walleye Milanese",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Wine Book p. 45"
   }
  },
  {
@@ -1407,7 +2097,7 @@
   "slug": "wine-list/by-the-bottle-white-chardonnay-fourrey-chablis",
   "sort": 69,
   "data": {
-   "name": "Fourrey",
+   "name": "Domaine Fourrey",
    "list": "By the bottle",
    "country": "France",
    "color": "White",
@@ -1420,7 +2110,17 @@
    "pages": [
     "Chardonnay",
     "Burgundy"
-   ]
+   ],
+   "bottle_img": "/img/91c389ac56eb.jpg",
+   "style": "",
+   "notes": "Unoaked Chablis; lemon, oyster shell and crisp acidity.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Wine Book p. 46"
   }
  },
  {
@@ -1428,7 +2128,7 @@
   "slug": "wine-list/by-the-bottle-white-chardonnay-louis-michel-sechet-1er-cru-chablis",
   "sort": 70,
   "data": {
-   "name": "Louis Michel 'Séchet' 1er Cru",
+   "name": "Louis Michel 'Séchets' 1er Cru",
    "list": "By the bottle",
    "country": "France",
    "color": "White",
@@ -1441,7 +2141,17 @@
    "pages": [
     "Chardonnay",
     "Burgundy"
-   ]
+   ],
+   "bottle_img": "/img/499de6806fd9.jpg",
+   "style": "",
+   "notes": "Premier Cru Chablis; mineral, citrus and real tension.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Wine Book p. 46"
   }
  },
  {
@@ -1462,7 +2172,17 @@
    "pages": [
     "Chardonnay",
     "Burgundy"
-   ]
+   ],
+   "bottle_img": "/img/f62121b6f5c6.jpg",
+   "style": "",
+   "notes": "Bourgogne blanc; apple, hazelnut and light oak.",
+   "pairs": "Squash Agnolotti",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 46"
   }
  },
  {
@@ -1483,7 +2203,17 @@
    "pages": [
     "Chardonnay",
     "Burgundy"
-   ]
+   ],
+   "bottle_img": "/img/94e1ec172a0e.jpg",
+   "style": "",
+   "notes": "Côte de Beaune white; pear, citrus and a mineral finish.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 47"
   }
  },
  {
@@ -1503,7 +2233,17 @@
    "size": "",
    "pages": [
     "Rhône"
-   ]
+   ],
+   "bottle_img": "/img/85c208c9abed.jpg",
+   "style": "",
+   "notes": "Rhône white; stone fruit, white flowers and a round texture.",
+   "pairs": "Roasted Cauliflower",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Wine Book p. 47"
   }
  },
  {
@@ -1521,7 +2261,17 @@
    "half": "",
    "bottle": "65",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/520779d67692.jpg",
+   "style": "",
+   "notes": "Juicy and bright with red berry; serve slightly cool.",
+   "pairs": "Beet Salad",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "2",
+   "source": "Wine Book p. 48"
   }
  },
  {
@@ -1542,7 +2292,17 @@
    "pages": [
     "Pinot Noir",
     "Burgundy"
-   ]
+   ],
+   "bottle_img": "/img/6bdb32d2ff44.jpg",
+   "style": "",
+   "notes": "Red cherry and earth; light and fresh red Burgundy.",
+   "pairs": "Beet Salad",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "2",
+   "source": "Wine Book p. 48"
   }
  },
  {
@@ -1563,7 +2323,17 @@
    "pages": [
     "Pinot Noir",
     "Burgundy"
-   ]
+   ],
+   "bottle_img": "/img/e0927d098ff0.jpg",
+   "style": "",
+   "notes": "Old vines; cherry, spice and a silky texture.",
+   "pairs": "Beet Salad",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "3",
+   "source": "Wine Book p. 48"
   }
  },
  {
@@ -1583,7 +2353,17 @@
    "size": "",
    "pages": [
     "Loire"
-   ]
+   ],
+   "bottle_img": "/img/91fb44b2b0fb.jpg",
+   "style": "",
+   "notes": "Loire red; raspberry, pencil shavings and herbs.",
+   "pairs": "Short Rib Arancini",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "3",
+   "source": "Wine Book p. 49"
   }
  },
  {
@@ -1604,7 +2384,17 @@
    "pages": [
     "Syrah",
     "Rhône"
-   ]
+   ],
+   "bottle_img": "/img/2f2679680e00.jpg",
+   "style": "",
+   "notes": "Northern Rhône; blackberry, black pepper and olive.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "3",
+   "source": "Wine Book p. 49"
   }
  },
  {
@@ -1624,7 +2414,17 @@
    "size": "",
    "pages": [
     "Rhône"
-   ]
+   ],
+   "bottle_img": "/img/083c38bf20d6.jpg",
+   "style": "",
+   "notes": "Grenache-led; red fruit, spice and easy drinking.",
+   "pairs": "Short Rib Arancini",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 49"
   }
  },
  {
@@ -1632,7 +2432,7 @@
   "slug": "wine-list/by-the-bottle-red-blend-st-damien-vacqueyras",
   "sort": 80,
   "data": {
-   "name": "St. Damien",
+   "name": "Saint-Damien",
    "list": "By the bottle",
    "country": "France",
    "color": "Red",
@@ -1644,7 +2444,17 @@
    "size": "",
    "pages": [
     "Rhône"
-   ]
+   ],
+   "bottle_img": "/img/27692cb596c9.jpg",
+   "style": "",
+   "notes": "Southern Rhône; dark fruit and wild herbs.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 50"
   }
  },
  {
@@ -1664,7 +2474,17 @@
    "size": "",
    "pages": [
     "Rhône"
-   ]
+   ],
+   "bottle_img": "/img/0c94382afa30.jpg",
+   "style": "",
+   "notes": "Elegant Grenache; kirsch, herbs and spice.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 50"
   }
  },
  {
@@ -1672,7 +2492,7 @@
   "slug": "wine-list/by-the-bottle-red-blend-le-petit-smith-haut-lafitte-pessac-leognan",
   "sort": 82,
   "data": {
-   "name": "Le Petit Smith Haut Lafitte",
+   "name": "Le Petit Haut Lafitte",
    "list": "By the bottle",
    "country": "France",
    "color": "Red",
@@ -1684,7 +2504,17 @@
    "size": "",
    "pages": [
     "Bordeaux"
-   ]
+   ],
+   "bottle_img": "/img/6c1949b3d0e7.jpg",
+   "style": "",
+   "notes": "Second wine of a top Graves estate; cassis and smoke.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "4",
+   "source": "Wine Book p. 50"
   }
  },
  {
@@ -1692,7 +2522,7 @@
   "slug": "wine-list/by-the-bottle-red-blend-grand-mayan-st-emilion-grand-cru",
   "sort": 83,
   "data": {
-   "name": "Grand Mayan",
+   "name": "Château Grand Mayne",
    "list": "By the bottle",
    "country": "France",
    "color": "Red",
@@ -1704,7 +2534,17 @@
    "size": "",
    "pages": [
     "Bordeaux"
-   ]
+   ],
+   "bottle_img": "/img/09881070ba40.jpg",
+   "style": "",
+   "notes": "Merlot-led Right Bank; plum and cedar.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 51"
   }
  },
  {
@@ -1724,7 +2564,17 @@
    "size": "",
    "pages": [
     "Bordeaux"
-   ]
+   ],
+   "bottle_img": "/img/0c15582bc79f.jpg",
+   "style": "",
+   "notes": "From Château Valandraud; ripe, plush and polished.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 51"
   }
  },
  {
@@ -1742,7 +2592,17 @@
    "half": "",
    "bottle": "65",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/1d4f7a56615c.jpg",
+   "style": "",
+   "notes": "Zippy and lightly spritzy; citrus and a salty edge.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "1",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Wine Book p. 52"
   }
  },
  {
@@ -1762,7 +2622,17 @@
    "size": "",
    "pages": [
     "Sauvignon Blanc"
-   ]
+   ],
+   "bottle_img": "/img/1ba9a435e87e.jpg",
+   "style": "",
+   "notes": "Passion fruit, lime and fresh-cut grass.",
+   "pairs": "Walleye Milanese",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Wine Book p. 52"
   }
  },
  {
@@ -1770,7 +2640,7 @@
   "slug": "wine-list/by-the-bottle-white-sauvignon-blanc-waipisa-patagonia",
   "sort": 87,
   "data": {
-   "name": "Waipisa",
+   "name": "Wapisa",
    "list": "By the bottle",
    "country": "Around the world",
    "color": "White",
@@ -1782,7 +2652,17 @@
    "size": "",
    "pages": [
     "Sauvignon Blanc"
-   ]
+   ],
+   "bottle_img": "/img/1406253d8ced.jpg",
+   "style": "",
+   "notes": "Cool Patagonian style; citrus, herbs and crisp acidity.",
+   "pairs": "Walleye Milanese",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 52"
   }
  },
  {
@@ -1800,7 +2680,17 @@
    "half": "",
    "bottle": "55",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/1cd8fc0c1b12.jpg",
+   "style": "",
+   "notes": "Peach, citrus and a touch of sea salt.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 53"
   }
  },
  {
@@ -1818,7 +2708,17 @@
    "half": "",
    "bottle": "55",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/079147231696.jpg",
+   "style": "",
+   "notes": "The same grape as Albariño, from Portugal; vivid and floral.",
+   "pairs": "Walleye Milanese",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Wine Book p. 53"
   }
  },
  {
@@ -1836,7 +2736,17 @@
    "half": "",
    "bottle": "40",
    "size": "300 ml",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/e0a9bd4fae1f.jpg",
+   "style": "",
+   "notes": "Fragrant ginjo sake; melon, pear and blossom. Serve chilled.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "2",
+   "sweet": "2",
+   "acid": "2",
+   "tannin": "—",
+   "source": "Wine Book p. 53"
   }
  },
  {
@@ -1856,7 +2766,17 @@
    "size": "",
    "pages": [
     "Pinot Noir"
-   ]
+   ],
+   "bottle_img": "/img/8ce0fec7b95c.jpg",
+   "style": "",
+   "notes": "New Zealand Pinot; cherry, herbs and bright acidity.",
+   "pairs": "Beet Salad",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "2",
+   "source": "Wine Book p. 54"
   }
  },
  {
@@ -1874,7 +2794,17 @@
    "half": "",
    "bottle": "75",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/e733a901812b.jpg",
+   "style": "",
+   "notes": "Bordeaux-style blend; dark fruit and firm structure.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 54"
   }
  },
  {
@@ -1892,7 +2822,17 @@
    "half": "",
    "bottle": "79",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/8a587cc7c03d.jpg",
+   "style": "",
+   "notes": "Long-aged; dried cherry, leather and vanilla.",
+   "pairs": "Short Rib Arancini",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "3",
+   "source": "Wine Book p. 54"
   }
  },
  {
@@ -1910,7 +2850,17 @@
    "half": "",
    "bottle": "149",
    "size": "",
-   "pages": []
+   "pages": [],
+   "bottle_img": "/img/ecf068fc06f9.jpg",
+   "style": "",
+   "notes": "From slate soils; dark fruit, minerals and intensity.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "5",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Wine Book p. 55"
   }
  },
  {
@@ -1930,7 +2880,17 @@
    "size": "",
    "pages": [
     "Malbec"
-   ]
+   ],
+   "bottle_img": "/img/01d768194a38.jpg",
+   "style": "",
+   "notes": "High-altitude Malbec; violet, plum and a polished finish.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 55"
   }
  },
  {
@@ -1950,7 +2910,17 @@
    "size": "",
    "pages": [
     "Syrah"
-   ]
+   ],
+   "bottle_img": "/img/8d0ce64f5270.jpg",
+   "style": "",
+   "notes": "Juicy Barossa Shiraz; blackberry and black pepper.",
+   "pairs": "Braised Short Rib",
+   "say": "",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Wine Book p. 55"
   }
  },
  {
@@ -1971,7 +2941,17 @@
    "pages": [
     "Prosecco",
     "Veneto"
-   ]
+   ],
+   "bottle_img": "/img/2c2a47ad655e.jpg",
+   "style": "",
+   "notes": "Fresh apple and pear in a single- serve split.",
+   "pairs": "A toast",
+   "say": "",
+   "body": "1",
+   "sweet": "2",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 56"
   }
  },
  {
@@ -1993,7 +2973,17 @@
     "Sparkling Rosé",
     "American",
     "Willamette Valley"
-   ]
+   ],
+   "bottle_img": "/img/6321ccb70428.jpg",
+   "style": "",
+   "notes": "Oregon rosé bubbles; strawberry and crisp.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 56"
   }
  },
  {
@@ -2014,7 +3004,17 @@
    "pages": [
     "Crémant",
     "Loire"
-   ]
+   ],
+   "bottle_img": "/img/075d94563ae6.jpg",
+   "style": "",
+   "notes": "Champagne method from the Loire; apple and brioche.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 56"
   }
  },
  {
@@ -2036,7 +3036,17 @@
     "Sparkling Rosé",
     "American",
     "Michigan"
-   ]
+   ],
+   "bottle_img": "/img/ef73521acef5.jpg",
+   "style": "",
+   "notes": "Local favorite; red berry and lively bubbles.",
+   "pairs": "A toast",
+   "say": "",
+   "body": "2",
+   "sweet": "2",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 57"
   }
  },
  {
@@ -2056,7 +3066,17 @@
    "size": "",
    "pages": [
     "Franciacorta"
-   ]
+   ],
+   "bottle_img": "/img/195613682f08.jpg",
+   "style": "",
+   "notes": "Italy's Champagne-method sparkler; creamy, gentle bubbles.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 57"
   }
  },
  {
@@ -2076,7 +3096,17 @@
    "size": "",
    "pages": [
     "Sparkling Rosé"
-   ]
+   ],
+   "bottle_img": "/img/efb51d0953df.jpg",
+   "style": "",
+   "notes": "Alpine rosé bubbles; raspberry and a fine mousse.",
+   "pairs": "Beet Salad",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 57"
   }
  },
  {
@@ -2096,7 +3126,17 @@
    "size": "375 ml",
    "pages": [
     "Champagne"
-   ]
+   ],
+   "bottle_img": "/img/2f21b365338d.jpg",
+   "style": "",
+   "notes": "Chardonnay-rich Champagne; citrus and brioche.",
+   "pairs": "Scallops Rockefeller",
+   "say": "",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 58"
   }
  },
  {
@@ -2116,7 +3156,17 @@
    "size": "",
    "pages": [
     "Champagne"
-   ]
+   ],
+   "bottle_img": "/img/e805cd077072.jpg",
+   "style": "",
+   "notes": "The classic; apple, toast and a full, round style.",
+   "pairs": "A celebration",
+   "say": "",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Wine Book p. 58"
   }
  },
  {

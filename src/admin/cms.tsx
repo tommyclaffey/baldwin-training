@@ -62,7 +62,7 @@ export function CollectionList() {
           <div className="list">
             {g.items.map((e, i) => (
               <div key={e.id} className="list-row cms-row">
-                {c.noPages ? null : e.data.photo ? <img src={e.data.photo as string} alt="" /> : <span className="thumb-empty" />}
+                {c.noPages ? null : (e.data.photo || e.data.bottle_img) ? <img src={(e.data.photo || e.data.bottle_img) as string} alt="" /> : <span className="thumb-empty" />}
                 <Link className="grow" to={`/admin/pages/${c.id}/${e.id}`}>
                   <strong>{e.data.name as string}</strong>
                   <small>{(e.data.tagline as string) || (e.data.description as string) || subline(e.data) || '—'}</small>

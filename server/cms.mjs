@@ -21,7 +21,8 @@ export const SHELF = [
   { key: 'Liqueur', page: 'spirit/liqueurs' },
 ];
 export const BEER_STYLES = ['Light Lager', 'Pilsner', 'Amber and Red Ale', 'Pale Ale', 'IPA', 'Session IPA', 'Hazy IPA', 'Wheat Beer', 'Belgian Ale', 'Sour', 'Stout', 'Porter', 'Non-alcoholic', 'Rotating'];
-const ALLERGENS = ['Dairy', 'Egg', 'Fish', 'Shellfish', 'Tree Nut', 'Peanut', 'Gluten', 'Soy', 'Sesame'];
+export const ALLERGENS = ['Dairy', 'Egg', 'Finfish', 'Shellfish', 'Tree Nut', 'Peanut', 'Gluten', 'Soy', 'Sesame', 'Allium', 'Nightshade'];
+const PROFILE = ['—', '1', '2', '3', '4', '5'];
 
 /* Field types: text · textarea · photo · video · select · toggle · tags · chips · lines · list · link · color */
 const build = { key: 'build', label: 'Ingredients', type: 'list', max: 8, hint: 'Tick the main spirit so it’s highlighted.', fields: [
@@ -93,6 +94,7 @@ export const COLLECTIONS = {
       { key: 'tableIce', label: 'Ice, for the Cocktails table', type: 'text', max: 30, section: 'Glass, method, ice', placeholder: 'None, up' },
       { ...build, section: 'Our build' },
       { key: 'steps', label: 'Steps', type: 'lines', max: 8, section: 'Our build' },
+      { key: 'specNote', label: 'Spec status (managers only)', type: 'text', max: 160, section: 'Our build', hint: 'What the bar lead still needs to confirm.' },
       { key: 'tags', label: 'Taste words', type: 'tags', section: 'Taste' },
       { key: 'tasteLine', label: 'How it tastes', type: 'textarea', max: 300, section: 'Taste' },
       { key: 'score', label: 'Tasting score', type: 'text', max: 10, section: 'From the tasting', hint: 'Out of 5.' },
@@ -118,10 +120,9 @@ export const COLLECTIONS = {
     ],
   },
   wine: {
-    label: 'Wine List', singular: 'wine', prefix: 'wine-list/', template: null, section: 'Wine list', nav: 'The Bar', noPages: true,
+    label: 'Wine List', singular: 'wine', prefix: 'wine-list/', template: '176-50', section: 'Wine list', nav: 'The Bar',
     group: { key: 'list', values: ['By the glass', 'Sommelier selection', 'By the bottle', 'Bubbles'] },
-    hasPage: () => false,
-    lists: 'Fills By the glass and By the bottle on the Wine page, and On our list on every wine style, country, grape and region page.',
+    lists: 'Every wine has its own page (bottle, tasting notes, profile, pairings). It also fills By the glass and By the bottle on the Wine page, and On our list on every wine style, country, grape and region page.',
     fields: [
       { key: 'name', label: 'Producer and label', type: 'text', max: 80, required: true, section: 'The wine', placeholder: "Orin Swift 'Mercury Head'" },
       { key: 'grape', label: 'Grape or style (as on the menu)', type: 'text', max: 60, section: 'The wine', placeholder: 'Cabernet Sauvignon' },
@@ -134,6 +135,15 @@ export const COLLECTIONS = {
       { key: 'bottle', label: 'Bottle price', type: 'text', max: 10, section: 'Prices' },
       { key: 'size', label: 'Size note', type: 'text', max: 20, section: 'Prices', placeholder: 'Split, 375 ml, 1 liter' },
       { key: 'pages', label: 'Shows on these pages', type: 'tags', section: 'Where it shows', hint: 'Grape, style or region pages by name, e.g. Cabernet, Napa Valley, Prosecco. It also shows on its country and colour pages.' },
+      { key: 'bottle_img', label: 'Bottle photo', type: 'photo', section: 'Tasting', hint: 'From the Wine Book unless replaced.' },
+      { key: 'style', label: 'Style tag', type: 'text', max: 30, section: 'Tasting', placeholder: 'Crisp, Off-dry, Big and bold' },
+      { key: 'notes', label: 'Tasting notes', type: 'textarea', max: 300, section: 'Tasting' },
+      { key: 'pairs', label: 'Pairs with', type: 'text', max: 160, section: 'Tasting', hint: 'Dishes from our menu, separated by commas.' },
+      { key: 'say', label: 'Say it at the table', type: 'text', max: 160, section: 'Tasting' },
+      ...[['body', 'Body'], ['sweet', 'Sweetness'], ['acid', 'Acidity'], ['tannin', 'Tannin']].map(([key, label]) => ({ key, label, type: 'select', options: PROFILE, section: 'Profile (1 to 5)', hint: key === 'tannin' ? '— for whites and sparkling.' : undefined })),
+      { key: 'source', label: 'Source', type: 'text', max: 60, section: 'Profile (1 to 5)', hint: 'Where the notes came from.' },
+      { key: 'producerUrl', label: 'Producer website (optional)', type: 'text', max: 200, section: 'Read more', placeholder: 'https://…', hint: 'Shows under Read more. Wine Folly and Vivino links are added for you.' },
+      { key: 'producerLabel', label: 'Producer link label', type: 'text', max: 60, section: 'Read more', placeholder: 'Caymus Vineyards' },
     ],
   },
   beer: {
@@ -261,6 +271,12 @@ export function seed(db) {
         db.prepare('UPDATE entries SET data = ?, seed_hash = ?, updated_at = ? WHERE id = ?').run(JSON.stringify(data), h, now(), row.id);
       }
     }
+  }
+  // Oct 28: "Fish" became "Finfish" (Tommy: "Specify shellfish or finfish"). Edited recipes keep their tag.
+  for (const r of db.prepare(`SELECT id, data FROM entries WHERE collection = 'recipe' AND data LIKE '%"Fish"%'`).all()) {
+    const d = JSON.parse(r.data);
+    if (Array.isArray(d.allergens)) d.allergens = d.allergens.map((a) => (a === 'Fish' ? 'Finfish' : a));
+    db.prepare('UPDATE entries SET data = ? WHERE id = ?').run(JSON.stringify(d), r.id);
   }
   // Recipes and cocktails added before the CMS (items table) move over once.
   for (const it of db.prepare('SELECT * FROM items').all()) {

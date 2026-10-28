@@ -10,50 +10,52 @@
    "tagline": "",
    "description": "From our menu: Barbol Pisco, Yellow Chartreuse, Lime juice, Agave, Fee Foam and Mole bitters.",
    "photo": "",
-   "glass": "Coupe · to confirm",
-   "method": "",
+   "glass": "Coupe",
+   "method": "Dry shake, shake",
    "ice": "",
-   "garnish": "",
+   "garnish": "Mole bitters, flowers",
    "build": [
     {
-     "amount": "",
-     "ingredient": "Barbol Pisco",
+     "amount": "1.5 oz",
+     "ingredient": "Pisco",
      "link": "/spirit/pisco",
      "spirit": true
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Yellow Chartreuse",
      "link": "/spirit/liqueurs/herbal",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Lime juice",
+     "amount": "1 oz",
+     "ingredient": "Lime Juice",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": "1 oz",
      "ingredient": "Agave",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": "2 dashes",
      "ingredient": "Fee Foam",
      "link": "",
      "spirit": false
-    },
-    {
-     "amount": "",
-     "ingredient": "Mole bitters",
-     "link": "/spirit/bitters/chocolate-and-mole",
-     "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Dry shake, shake.",
+    "Serve in a coupe glass.",
+    "Garnish: mole bitters, flowers."
+   ],
+   "tags": [
+    "Sour",
+    "Herbal",
+    "Bright"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -77,44 +79,52 @@
    "tagline": "",
    "description": "From our menu: Willett Family Estate Rye, Grand Marnier Louis-Cuvée, Amaretto, Sweet vermouth and Angostura bitters.",
    "photo": "",
-   "glass": "Coupe · to confirm",
-   "method": "",
+   "glass": "Short rocks, large ice",
+   "method": "Stir",
    "ice": "",
-   "garnish": "",
+   "garnish": "Orange peel",
    "build": [
     {
-     "amount": "",
+     "amount": "1.25 oz",
      "ingredient": "Willett Family Estate Rye",
      "link": "/spirit/rye/straight-rye",
      "spirit": true
     },
     {
-     "amount": "",
-     "ingredient": "Grand Marnier Louis-Cuvée",
+     "amount": ".5 oz",
+     "ingredient": "Grand Marnier Cuvée Louis-Alexandre",
      "link": "/spirit/liqueurs/orange",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".25 oz",
      "ingredient": "Amaretto",
      "link": "/spirit/liqueurs/nut",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Sweet vermouth",
+     "amount": ".25 oz",
+     "ingredient": "Sweet Vermouth",
      "link": "/bottle/sweet-vermouth",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Angostura bitters",
+     "amount": "2 dashes",
+     "ingredient": "Bitters",
      "link": "/spirit/bitters/aromatic",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Stir.",
+    "Serve in a short rocks glass, large ice.",
+    "Garnish: orange peel."
+   ],
+   "tags": [
+    "Spirit-Forward",
+    "Rich",
+    "Bittersweet"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -138,38 +148,46 @@
    "tagline": "",
    "description": "From our menu: Hard Head gin, Yellow Chartreuse, Lemon-lime cordial and Mint foam.",
    "photo": "",
-   "glass": "Coupe · to confirm",
-   "method": "",
+   "glass": "Coupe",
+   "method": "Shake, top with foam",
    "ice": "",
-   "garnish": "",
+   "garnish": "Mint leaf",
    "build": [
     {
-     "amount": "",
-     "ingredient": "Hard Head gin",
+     "amount": "1.5 oz",
+     "ingredient": "Hard Head Gin",
      "link": "/spirit/gin",
      "spirit": true
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Yellow Chartreuse",
      "link": "/spirit/liqueurs/herbal",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Lemon-lime cordial",
+     "amount": ".75 oz",
+     "ingredient": "Lemon-Lime Cordial",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Mint foam",
+     "amount": "Top",
+     "ingredient": "Mint Foam",
      "link": "",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Shake, top with foam.",
+    "Serve in a coupe glass.",
+    "Garnish: mint leaf."
+   ],
+   "tags": [
+    "Herbal",
+    "Bright",
+    "Sour"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -179,7 +197,8 @@
    "spiritLinkLabel": "Learn about it",
    "say": "",
    "story": "",
-   "video": null
+   "video": null,
+   "specNote": "Filler spec in the Drink Book. Bar lead to confirm."
   }
  },
  {
@@ -193,62 +212,64 @@
    "tagline": "",
    "description": "From our menu: Aquavit, Génépy de Chamois, Végétal de la Grande-Chartreuse, Lemon juice, Simple syrup, Basil, Saline and Olive oil.",
    "photo": "",
-   "glass": "Coupe · to confirm",
-   "method": "",
+   "glass": "Small Nick and Nora",
+   "method": "Shake, double strain",
    "ice": "",
-   "garnish": "",
+   "garnish": "Olive oil, pepper, basil",
    "build": [
     {
-     "amount": "",
+     "amount": "1.25 oz",
      "ingredient": "Aquavit",
      "link": "",
      "spirit": true
     },
     {
-     "amount": "",
-     "ingredient": "Génépy de Chamois",
+     "amount": ".5 oz",
+     "ingredient": "Dolin Génépy de Chamois",
      "link": "/spirit/liqueurs/herbal",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Végétal de la Grande-Chartreuse",
+     "amount": "2 dashes",
+     "ingredient": "Vegetal de la Grande Chartreuse",
      "link": "/spirit/liqueurs/herbal",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Lemon juice",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": "",
-     "ingredient": "Simple syrup",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": "",
+     "amount": "2 leaves",
      "ingredient": "Basil",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Saline",
+     "amount": "1 oz",
+     "ingredient": "Simple Syrup",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Olive oil",
+     "amount": ".75 oz",
+     "ingredient": "Lemon Juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "1 ml",
+     "ingredient": "Saline",
      "link": "",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Shake, double strain.",
+    "Serve in a small Nick and Nora glass.",
+    "Garnish: olive oil, pepper, basil."
+   ],
+   "tags": [
+    "Herbal",
+    "Vegetal",
+    "Bright"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -271,46 +292,45 @@
    "description": "Our tequila cocktail: hibiscus, pineapple and lime, shaken and served up. Bright, floral and pink.",
    "photo": "/img/48ca851d7531.jpg",
    "glass": "Coupe",
-   "method": "Shaken, double strained",
+   "method": "Shake",
    "ice": "None (served up)",
-   "garnish": "To confirm",
+   "garnish": "Dried hibiscus flower",
    "build": [
     {
      "amount": "2 oz",
-     "ingredient": "G4 Blanco tequila",
-     "spirit": true,
-     "link": "/spirit/tequila/blanco"
+     "ingredient": "Blanco Tequila",
+     "link": "/spirit/tequila/blanco",
+     "spirit": true
     },
     {
      "amount": "1 oz",
-     "ingredient": "Spiced hibiscus syrup",
-     "spirit": false,
-     "link": ""
+     "ingredient": "Spiced Hibiscus Syrup",
+     "link": "",
+     "spirit": false
     },
     {
-     "amount": "1 oz",
-     "ingredient": "Pineapple",
-     "spirit": false,
-     "link": ""
+     "amount": ".75 oz",
+     "ingredient": "Lime Juice",
+     "link": "",
+     "spirit": false
     },
     {
-     "amount": "0.75 oz",
-     "ingredient": "Lime",
-     "spirit": false,
-     "link": ""
+     "amount": ".5 oz",
+     "ingredient": "Pineapple Juice",
+     "link": "",
+     "spirit": false
     }
    ],
    "steps": [
     "Add tequila, hibiscus syrup, pineapple and lime to a shaker.",
     "Shake hard with ice.",
     "Double strain into a chilled coupe.",
-    "Garnish (bar lead to confirm)."
+    "Garnish with a dried hibiscus flower."
    ],
    "tags": [
-    "Hibiscus",
-    "Pineapple",
-    "Lime",
-    "Floral"
+    "Fruity",
+    "Spicy",
+    "Sour"
    ],
    "tasteLine": "Bright and floral, with a little sweetness.",
    "score": "4.13",
@@ -341,32 +361,40 @@
    "tagline": "",
    "description": "From our menu: Végétal de la Grande-Chartreuse, Bubbles and Sugar cube.",
    "photo": "",
-   "glass": "Flute · to confirm",
-   "method": "",
+   "glass": "Flute",
+   "method": "Build in glass",
    "ice": "",
-   "garnish": "",
+   "garnish": "Lemon twist",
    "build": [
     {
-     "amount": "",
-     "ingredient": "Végétal de la Grande-Chartreuse",
-     "link": "/spirit/liqueurs/herbal",
+     "amount": "1",
+     "ingredient": "Sugar Cube",
+     "link": "",
      "spirit": true
     },
     {
-     "amount": "",
-     "ingredient": "Bubbles",
-     "link": "/wine/sparkling",
+     "amount": "1 oz",
+     "ingredient": "Vegetal De La Grand Chartreuse",
+     "link": "/spirit/liqueurs/herbal",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Sugar cube",
-     "link": "",
+     "amount": "4 oz",
+     "ingredient": "Bubbles",
+     "link": "/wine/sparkling",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Build in glass.",
+    "Serve in a flute glass.",
+    "Garnish: lemon twist."
+   ],
+   "tags": [
+    "Vegetal",
+    "Herbal",
+    "Bubbly"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -376,7 +404,8 @@
    "spiritLinkLabel": "Learn about it",
    "say": "",
    "story": "",
-   "video": null
+   "video": null,
+   "specNote": "Filler spec in the Drink Book. Bar lead to confirm."
   }
  },
  {
@@ -388,47 +417,46 @@
    "tagline": "Warm, spiced, easy",
    "description": "Our rye cocktail: spiced pear, lemon and ginger-honey, shaken and poured over a big cube. Warm and easy.",
    "photo": "/img/6a38e5b20321.jpg",
-   "glass": "Rocks",
-   "method": "Shaken, strained over ice",
+   "glass": "Short rocks",
+   "method": "Shake",
    "ice": "One large cube",
-   "garnish": "To confirm",
+   "garnish": "Thyme, lemon twist",
    "build": [
     {
-     "amount": "2 oz",
+     "amount": "1.5 oz",
      "ingredient": "DCD Homegrown Rye",
-     "spirit": true,
-     "link": "/spirit/rye/straight-rye"
+     "link": "/spirit/rye/straight-rye",
+     "spirit": true
     },
     {
-     "amount": "0.75 oz",
-     "ingredient": "Pear liqueur",
-     "spirit": false,
-     "link": ""
+     "amount": ".5 oz",
+     "ingredient": "Spiced Pear Liqueur",
+     "link": "",
+     "spirit": false
     },
     {
-     "amount": "0.75 oz",
-     "ingredient": "Lemon",
-     "spirit": false,
-     "link": ""
+     "amount": "1 oz",
+     "ingredient": "Lemon Juice",
+     "link": "",
+     "spirit": false
     },
     {
-     "amount": "0.5 oz",
-     "ingredient": "Ginger honey syrup",
-     "spirit": false,
-     "link": ""
+     "amount": "1 oz",
+     "ingredient": "Ginger Honey Syrup",
+     "link": "",
+     "spirit": false
     }
    ],
    "steps": [
     "Add rye, spiced pear, lemon and ginger-honey to a shaker.",
     "Shake with ice.",
     "Strain over one large cube.",
-    "Garnish (bar lead to confirm)."
+    "Garnish with thyme and a lemon twist."
    ],
    "tags": [
-    "Spiced pear",
-    "Ginger",
-    "Honey",
-    "Rye spice"
+    "Spicy",
+    "Sour",
+    "Rich"
    ],
    "tasteLine": "Warm, spiced and easy to drink.",
    "score": "4.44",
@@ -459,38 +487,38 @@
    "tagline": "",
    "description": "From our menu: DCD Butcher's Cut Bourbon, Orange oleo saccharum, Angostura bitters and Luxardo cherry.",
    "photo": "",
-   "glass": "Rocks · to confirm",
+   "glass": "Crystal rocks",
    "method": "",
    "ice": "",
-   "garnish": "",
+   "garnish": "1 Luxardo cherry",
    "build": [
     {
-     "amount": "",
-     "ingredient": "DCD Butcher's Cut Bourbon",
+     "amount": "2 oz",
+     "ingredient": "DCD Butcher’s Cut Bourbon",
      "link": "/spirit/bourbon",
      "spirit": true
     },
     {
-     "amount": "",
-     "ingredient": "Orange oleo saccharum",
+     "amount": ".25 oz",
+     "ingredient": "Orange Oleo Saccharum",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Angostura bitters",
+     "amount": "3 dashes",
+     "ingredient": "Angostura Bitters",
      "link": "/spirit/bitters/aromatic",
-     "spirit": false
-    },
-    {
-     "amount": "",
-     "ingredient": "Luxardo cherry",
-     "link": "",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Serve in a crystal rocks glass.",
+    "Garnish: 1 Luxardo cherry."
+   ],
+   "tags": [
+    "Spirit-Forward",
+    "Rich"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -515,49 +543,50 @@
    "description": "From our menu: Ghost Blanco tequila, Lime, Agave, Pineapple, Serrano pepper and Noir float.",
    "photo": "",
    "glass": "Rocks · to confirm",
-   "method": "",
+   "method": "Shake, strain, float",
    "ice": "",
-   "garnish": "",
+   "garnish": "Pepper ice cube",
    "build": [
     {
-     "amount": "",
-     "ingredient": "Ghost Blanco tequila",
+     "amount": "2 oz",
+     "ingredient": "Ghost Blanco Tequila",
      "link": "/spirit/tequila/blanco",
      "spirit": true
     },
     {
-     "amount": "",
+     "amount": ".75 oz",
      "ingredient": "Lime",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Agave",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": "1 oz",
      "ingredient": "Pineapple",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Serrano pepper",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": "",
-     "ingredient": "Noir float",
+     "amount": "1 oz",
+     "ingredient": "Noir Float (red wine)",
      "link": "",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Shake, strain, float.",
+    "Garnish: pepper ice cube."
+   ],
+   "tags": [
+    "Spicy",
+    "Fruity",
+    "Sour"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -581,50 +610,52 @@
    "tagline": "",
    "description": "From our menu: Hard Head gin, Campari, Elderflower, Lemon, Agave and Rose petal.",
    "photo": "",
-   "glass": "Coupe · to confirm",
-   "method": "",
+   "glass": "Coupe",
+   "method": "Shake",
    "ice": "",
-   "garnish": "",
+   "garnish": "Rose petal",
    "build": [
     {
-     "amount": "",
-     "ingredient": "Hard Head gin",
+     "amount": "1.5 oz",
+     "ingredient": "Hard Head Gin",
      "link": "/spirit/gin",
      "spirit": true
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Campari",
      "link": "/bottle/campari",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Elderflower",
      "link": "/spirit/liqueurs/fruit-and-floral",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".75 oz",
      "ingredient": "Lemon",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".25 oz",
      "ingredient": "Agave",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": "",
-     "ingredient": "Rose petal",
      "link": "",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Shake.",
+    "Serve in a coupe glass.",
+    "Garnish: rose petal."
+   ],
+   "tags": [
+    "Bittersweet",
+    "Bright",
+    "Sour"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -634,7 +665,8 @@
    "spiritLinkLabel": "Learn about it",
    "say": "",
    "story": "",
-   "video": null
+   "video": null,
+   "specNote": "Filler spec in the Drink Book. Bar lead to confirm."
   }
  },
  {
@@ -648,50 +680,58 @@
    "tagline": "",
    "description": "From our menu: Hard Head gin, infused with charred rosemary, St-Germain, Lemon, Lime, Agave and Peychaud's bitters.",
    "photo": "",
-   "glass": "Coupe · to confirm",
-   "method": "",
+   "glass": "Rocks",
+   "method": "Shake, strain",
    "ice": "",
-   "garnish": "",
+   "garnish": "Torched rosemary, lemon twist",
    "build": [
     {
-     "amount": "",
-     "ingredient": "Hard Head gin, infused with charred rosemary",
+     "amount": "1.25 oz",
+     "ingredient": "Charred Rosemary Hard Head Gin",
      "link": "/spirit/gin",
      "spirit": true
     },
     {
-     "amount": "",
-     "ingredient": "St-Germain",
+     "amount": ".75 oz",
+     "ingredient": "St. Germain",
      "link": "/spirit/liqueurs/fruit-and-floral",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Lemon",
+     "amount": ".5 oz",
+     "ingredient": "Lemon Juice",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Lime",
+     "amount": ".5 oz",
+     "ingredient": "Lime Juice",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Agave",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Peychaud's bitters",
+     "amount": "3 dashes",
+     "ingredient": "Peychaud’s Bitters",
      "link": "/spirit/bitters/creole",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Shake, strain.",
+    "Serve in a rocks glass.",
+    "Garnish: torched rosemary, lemon twist."
+   ],
+   "tags": [
+    "Herbal",
+    "Sour",
+    "Bright"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -715,38 +755,45 @@
    "tagline": "",
    "description": "From our menu: Espero Blanco tequila, Agave, Lime and Orange peel.",
    "photo": "",
-   "glass": "Rocks · to confirm",
-   "method": "",
+   "glass": "Rocks",
+   "method": "Shake",
    "ice": "",
-   "garnish": "",
+   "garnish": "Orange peel",
    "build": [
     {
-     "amount": "",
-     "ingredient": "Espero Blanco tequila",
+     "amount": "2 oz",
+     "ingredient": "Espero Blanco Tequila",
      "link": "/spirit/tequila/blanco",
      "spirit": true
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Agave",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".75 oz",
      "ingredient": "Lime",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Orange peel",
+     "amount": "1",
+     "ingredient": "Orange Peel",
      "link": "",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Shake.",
+    "Serve in a rocks glass.",
+    "Garnish: orange peel."
+   ],
+   "tags": [
+    "Bright",
+    "Sour"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -756,7 +803,8 @@
    "spiritLinkLabel": "Learn about it",
    "say": "",
    "story": "",
-   "video": null
+   "video": null,
+   "specNote": "Filler spec in the Drink Book. Bar lead to confirm."
   }
  },
  {
@@ -770,50 +818,57 @@
    "tagline": "",
    "description": "From our menu: Blueberry vodka, Elderflower, Pomegranate, Lemon, Agave and Lavender bitters.",
    "photo": "",
-   "glass": "Martini · to confirm",
-   "method": "",
+   "glass": "Coupe",
+   "method": "Shake, strain",
    "ice": "",
    "garnish": "",
    "build": [
     {
-     "amount": "",
-     "ingredient": "Blueberry vodka",
+     "amount": "1.5 oz",
+     "ingredient": "Blueberry Vodka",
      "link": "/spirit/vodka/flavored",
      "spirit": true
     },
     {
-     "amount": "",
-     "ingredient": "Elderflower",
-     "link": "/spirit/liqueurs/fruit-and-floral",
-     "spirit": false
-    },
-    {
-     "amount": "",
-     "ingredient": "Pomegranate",
+     "amount": ".75 oz",
+     "ingredient": "Pomegranate (POM Wonderful)",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
+     "ingredient": "Elderflower (St. Germain)",
+     "link": "/spirit/liqueurs/fruit-and-floral",
+     "spirit": false
+    },
+    {
+     "amount": ".5 oz",
      "ingredient": "Lemon",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Agave",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
-     "ingredient": "Lavender bitters",
+     "amount": "2 dashes",
+     "ingredient": "Lavender Bitters",
      "link": "",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Shake, strain.",
+    "Serve in a coupe glass."
+   ],
+   "tags": [
+    "Fruity",
+    "Herbal",
+    "Bright"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -823,7 +878,8 @@
    "spiritLinkLabel": "Learn about it",
    "say": "",
    "story": "",
-   "video": null
+   "video": null,
+   "specNote": "Adapted from Luminous in the Drink Book. Bar lead to confirm."
   }
  },
  {
@@ -838,37 +894,42 @@
    "description": "From our menu: Vanilla vodka, Kahlúa, Agave and Espresso.",
    "photo": "",
    "glass": "Martini · to confirm",
-   "method": "",
+   "method": "Hard shake",
    "ice": "",
-   "garnish": "",
+   "garnish": "3 coffee beans",
    "build": [
     {
-     "amount": "",
-     "ingredient": "Vanilla vodka",
+     "amount": "2 oz",
+     "ingredient": "Vanilla Vodka",
      "link": "/spirit/vodka/flavored",
      "spirit": true
     },
     {
-     "amount": "",
-     "ingredient": "Kahlúa",
-     "link": "/spirit/liqueurs/coffee",
+     "amount": ".5 oz",
+     "ingredient": "Kahlua",
+     "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Agave",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": "Double shot",
      "ingredient": "Espresso",
      "link": "",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Shake vigorously, then draw chocolate across the foam."
+   ],
+   "tags": [
+    "Rich",
+    "Sweet"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -892,38 +953,33 @@
    "tagline": "",
    "description": "From our menu: DCD Gilded Age vodka, Cocchi Vermouth di Torino Extra Dry, Lemon twist and Olives.",
    "photo": "",
-   "glass": "Martini · to confirm",
-   "method": "",
+   "glass": "Martini, chilled",
+   "method": "Stir",
    "ice": "",
-   "garnish": "",
+   "garnish": "Lemon twist or olives",
    "build": [
     {
-     "amount": "",
-     "ingredient": "DCD Gilded Age vodka",
+     "amount": "2.5 oz",
+     "ingredient": "DCD Gilded Age Vodka",
      "link": "/spirit/vodka",
      "spirit": true
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Cocchi Vermouth di Torino Extra Dry",
      "link": "/bottle/dry-vermouth",
      "spirit": false
-    },
-    {
-     "amount": "",
-     "ingredient": "Lemon twist",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": "",
-     "ingredient": "Olives",
-     "link": "",
-     "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Stir.",
+    "Serve in a martini glass, chilled.",
+    "Garnish: lemon twist or olives."
+   ],
+   "tags": [
+    "Spirit-Forward",
+    "Dry"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -947,44 +1003,52 @@
    "tagline": "No alcohol",
    "description": "From our menu: Lyre's Agave Blanco, Lime, Agave, Orange and Salt.",
    "photo": "",
-   "glass": "Rocks · to confirm",
-   "method": "",
+   "glass": "Rocks",
+   "method": "Shake",
    "ice": "",
-   "garnish": "",
+   "garnish": "Orange peel",
    "build": [
     {
-     "amount": "",
+     "amount": "2 oz",
      "ingredient": "Lyre's Agave Blanco",
      "link": "",
-     "spirit": false
+     "spirit": true
     },
     {
-     "amount": "",
+     "amount": ".75 oz",
      "ingredient": "Lime",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Agave",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": "1 peel",
      "ingredient": "Orange",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": "Pinch",
      "ingredient": "Salt",
      "link": "",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Shake.",
+    "Serve in a rocks glass.",
+    "Garnish: orange peel."
+   ],
+   "tags": [
+    "Zero Proof",
+    "Bright",
+    "Sour"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -994,7 +1058,8 @@
    "spiritLinkLabel": "",
    "say": "",
    "story": "",
-   "video": null
+   "video": null,
+   "specNote": "Price still to confirm (the menu reads PRICE?)."
   }
  },
  {
@@ -1008,38 +1073,46 @@
    "tagline": "No alcohol",
    "description": "From our menu: Lyre's Pink London, Lime, Cranberry and Orange.",
    "photo": "",
-   "glass": "Martini · to confirm",
-   "method": "",
+   "glass": "Martini",
+   "method": "Shake",
    "ice": "",
-   "garnish": "",
+   "garnish": "Orange twist",
    "build": [
     {
-     "amount": "",
-     "ingredient": "Lyre's Pink London",
+     "amount": "2 oz",
+     "ingredient": "Lyre’s Pink London",
      "link": "",
-     "spirit": false
+     "spirit": true
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Lime",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": "1 oz",
      "ingredient": "Cranberry",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "",
+     "amount": ".5 oz",
      "ingredient": "Orange",
      "link": "",
      "spirit": false
     }
    ],
-   "steps": [],
-   "tags": [],
+   "steps": [
+    "Shake.",
+    "Serve in a martini glass.",
+    "Garnish: orange twist."
+   ],
+   "tags": [
+    "Zero Proof",
+    "Fruity",
+    "Sour"
+   ],
    "tasteLine": "",
    "pairs": "",
    "note": "",
@@ -1049,7 +1122,8 @@
    "spiritLinkLabel": "",
    "say": "",
    "story": "",
-   "video": null
+   "video": null,
+   "specNote": "Filler spec in the Drink Book. Bar lead to confirm."
   }
  }
 ]
