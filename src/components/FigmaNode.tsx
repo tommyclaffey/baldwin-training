@@ -48,12 +48,12 @@ function Scaled({ w, h, outer, children }: { w: number; h: number; outer: CSSPro
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const ro = new ResizeObserver(() => setK(Math.min(1, el.clientWidth / w)));
+    const ro = new ResizeObserver(() => setK(Math.min(w >= 300 ? 1.25 : 1, el.clientWidth / w)));
     ro.observe(el);
     return () => ro.disconnect();
   }, [w]);
   return (
-    <div ref={ref} style={{ ...outer, width: '100%', maxWidth: w, height: h * k, position: 'relative' }}>
+    <div ref={ref} style={{ ...outer, width: '100%', maxWidth: w >= 300 ? w * 1.25 : w, height: h * k, position: 'relative' }}>
       <div style={{ width: w, height: h, transform: `scale(${k})`, transformOrigin: 'top left' }}><ScaleContext.Provider value={k}>{children}</ScaleContext.Provider></div>
     </div>
   );
@@ -127,7 +127,7 @@ function boxStyle(node: FNode, parentLm: 'H' | 'V' | undefined, parentH?: number
   // Phone helpers: mid-width tiles pair up; small leading markers stay beside their text.
   if (inFlow && parentLm === 'H' && node.t !== 'T' && node.sh === 'F' && node.w >= 150 && node.w <= 300) cls.push('mid');
   // (a narrow rail, e.g. a timeline dot and line, counts too)
-  if (inFlow && parentLm === 'H' && node.t !== 'T' && node.w <= 48 && (node.h <= 48 || node.w <= 24)) cls.push('marker');
+  if (inFlow && parentLm === 'H' && ((node.t !== 'T' && node.w <= 48 && (node.h <= 48 || node.w <= 24)) || (node.t === 'T' && node.w <= 20 && node.h <= 24))) cls.push('marker');
   if (node.op !== undefined) st.opacity = node.op;
   if (node.rot) { st.transform = `rotate(${-node.rot}deg)`; st.transformOrigin = 'top left'; }
   return { st, cls };
@@ -332,7 +332,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     const { st, cls, content: raw } = textNode(node, parentLm);
     if (shrink < 1 && node.z && node.z * shrink < 11) st.fontSize = 11 / shrink;
     const content = node.n === 'Carousel count' && carousel ? <span aria-live="polite">{carousel.label}</span> : raw;
-    return wrapLink(node, <div className={cls.join(' ')} style={st}>{content}</div>, st, cls);
+    return wrapLink(node, <div className={cls.join(' ')} style={st} data-label={node.lab} data-empty={node.empty}>{content}</div>, st, cls);
   }
 
   const { st, cls } = boxStyle(node, parentLm, parentH);
@@ -379,6 +379,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     if (node.gap) st.gap = node.gap;
     if (node.pd) st.padding = node.pd.map((v) => `${v}px`).join(' ');
     if (node.pa) st.justifyContent = JUSTIFY[node.pa];
+    if (node.pa === 'S' && !node.gap) st.columnGap = 8;
     if (node.ca) st.alignItems = ALIGN[node.ca];
     else st.alignItems = 'flex-start';
     if (node.wrap) { st.flexWrap = 'wrap'; if (node.cg) st.rowGap = node.cg; st.columnGap = node.gap; }
