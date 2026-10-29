@@ -7,7 +7,10 @@
 //   manager     Edits the book, signs people off, manages staff and the join code.
 //   staff       Reads the book and takes quizzes. Signs in with the company's join code, their name and a PIN.
 //
-// Every query about people is scoped to the signed-in person's company (super admins: the company they're working in).
+// Stores: a company oversees one or more stores (Baldwin Restaurant Group: The Baldwin, J.Baldwin's, Testa Barra).
+// Each store has its own book, staff, quiz records, sign-offs and sections. Staff belong to one store; a manager to one store
+// or all of them; owners and super admins work in one store at a time and can switch.
+// Every query about people is scoped to the signed-in person's company, and store-level records to their store.
 import { audit, now } from './db.mjs';
 import {
   hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionDays, LoginLimiter, publicUser,
@@ -26,6 +29,10 @@ const tickets = new Map(); // two-step sign-in: ticket → { userId, at }
 /** Startup: Baldwin has a join code, the super admin email is a super admin, and 30-day-old deletions are gone for good. */
 export function bootAccounts(db) {
   for (const c of db.prepare('SELECT id FROM companies WHERE join_code IS NULL').all()) setJoinCode(db, c.id);
+  // Every company has at least one store; staff and store-level records without a store go to the company's first store.
+  for (const c of db.prepare('SELECT * FROM companies c WHERE NOT EXISTS (SELECT 1 FROM stores s WHERE s.company_id = c.id)').all()) addStore(db, c.id, c.name);
+  for (const t of ['quiz_attempts', 'signoffs', 'media']) db.prepare(`UPDATE ${t} SET store_id = (SELECT id FROM stores s WHERE s.company_id = ${t}.company_id ORDER BY sort, id LIMIT 1) WHERE store_id IS NULL`).run();
+  db.prepare("UPDATE users SET store_id = (SELECT id FROM stores s WHERE s.company_id = users.company_id ORDER BY sort, id LIMIT 1) WHERE role = 'staff' AND store_id IS NULL").run();
   if (SUPERADMIN_EMAIL) {
     const u = db.prepare('SELECT * FROM users WHERE email = ?').get(SUPERADMIN_EMAIL);
     const primary = db.prepare("SELECT 1 FROM users WHERE role = 'superadmin' AND super_primary = 1 AND deleted_at IS NULL").get();
@@ -43,6 +50,25 @@ function setJoinCode(db, companyId) {
   }
   throw new Error('Could not make a join code');
 }
+export function addStore(db, companyId, name) {
+  let slug = String(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'store';
+  while (db.prepare('SELECT 1 FROM stores WHERE company_id = ? AND slug = ?').get(companyId, slug)) slug += '-2';
+  const sort = db.prepare('SELECT COUNT(*) n FROM stores WHERE company_id = ?').get(companyId).n;
+  return Number(db.prepare('INSERT INTO stores(company_id, name, slug, sort, created_at) VALUES (?,?,?,?,?)').run(companyId, name, slug, sort, now()).lastInsertRowid);
+}
+export const storesOf = (db, companyId) => db.prepare('SELECT * FROM stores WHERE company_id = ? AND deleted_at IS NULL ORDER BY sort, id').all(companyId);
+/** The store a person works in: their own (staff, store managers), or the one they switched to (owners, all-store managers, super admins). */
+export function storeOf(db, u) {
+  if (!u) return null;
+  const company = companyOf(u);
+  const stores = storesOf(db, company);
+  const pick = (id) => stores.find((x) => x.id === id);
+  return pick(u.store_id) || pick(u.acting_store_id) || stores[0] || null;
+}
+/** Can this person switch between their company's stores? */
+export const switchesStores = (u) => !!u && (u.role === 'owner' || u.role === 'superadmin' || (u.role === 'manager' && !u.store_id));
+const storeOut = (x) => x && { id: x.id, name: x.name, slug: x.slug, bookReady: !!x.book_ready };
+
 /** Soft deletes are kept 30 days, then removed. */
 export function purgeDeleted(db) {
   const cutoff = new Date(Date.now() - 30 * 864e5).toISOString();
@@ -69,16 +95,27 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const validPassword = (p) => String(p || '').length >= 10;
   const validPin = (p) => /^\d{4,6}$/.test(String(p || ''));
   const byId = (id) => db.prepare('SELECT u.*, c.name company_name FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.id = ?').get(id);
+  /** The signed-in person as the app sees them: role, company, and the store they're working in. */
+  const meOut = (u) => ({
+    ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null,
+    store: storeOut(storeOf(db, u)), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
+  });
   const signIn = (res, req, user, opts = {}) => {
     const days = sessionDays(user.role);
     const token = createSession(db, user.id, { days, ...opts });
     db.prepare('UPDATE users SET last_seen_at = ? WHERE id = ?').run(now(), user.id);
-    return sendJson(res, 200, { user: publicUser(byId(user.id)) }, { 'Set-Cookie': sessionCookie(token, { secure: isSecure(req), days }) });
+    return sendJson(res, 200, { user: meOut({ ...byId(user.id), acting_company_id: opts.acting ?? null, impersonator_id: opts.impersonator ?? null }) }, { 'Set-Cookie': sessionCookie(token, { secure: isSecure(req), days }) });
   };
   const need = (c, req) => {
     if (!c.user) fail(401, 'Sign in first.');
     if (req.method !== 'GET' && req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
     return c.user;
+  };
+  /** A store manager only reaches their own store's people; owners, all-store managers and super admins reach the company. */
+  const inScope = (actor, target) => {
+    if (actor.company_id !== null && actor.company_id !== target.company_id) return false;
+    if (actor.role === 'manager' && actor.store_id) return target.store_id === actor.store_id && target.role !== 'owner';
+    return true;
   };
   const needManager = (c, req) => { const u = need(c, req); if (!canEdit(u)) fail(403, 'Only managers can do that.'); return u; };
   const needOwner = (c, req) => { const u = need(c, req); if (u.role !== 'owner' && u.role !== 'superadmin') fail(403, 'Only an owner can do that.'); return u; };
@@ -106,7 +143,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     if (p === '/api/me' && m === 'GET') {
       const users = db.prepare('SELECT COUNT(*) n FROM users').get().n;
       const superNeeded = !!SUPERADMIN_EMAIL && !db.prepare("SELECT 1 FROM users WHERE role = 'superadmin' AND deleted_at IS NULL").get();
-      const me = c.user ? { ...publicUser(c.user), workingIn: companyOf(c.user), workingInName: companyRow(companyOf(c.user))?.name || null } : null;
+      const me = c.user ? meOut(c.user) : null;
       return sendJson(res, 200, { user: me, setupNeeded: users === 0, superSetupNeeded: superNeeded });
     }
 
@@ -176,13 +213,25 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       return sendJson(res, 200, { ok: true });
     }
 
-    /* ---- staff: join code → name → PIN ---- */
+    /* ---- owners, all-store managers and super admins switch the store they're working in ---- */
+    if (p === '/api/store' && m === 'POST') {
+      const u = need(c, req);
+      if (!switchesStores(u)) fail(403, 'You work in one store.');
+      const b = await readJson(req);
+      const st = db.prepare('SELECT * FROM stores WHERE id = ? AND deleted_at IS NULL').get(Number(b.storeId));
+      if (!st || (u.role !== 'superadmin' && st.company_id !== u.company_id)) fail(404, 'We couldn’t find that store.');
+      db.prepare('UPDATE sessions SET acting_store_id = ?, acting_company_id = CASE WHEN ? THEN ? ELSE acting_company_id END WHERE token_hash = ?')
+        .run(st.id, u.role === 'superadmin' ? 1 : 0, st.company_id, sha256(c.token));
+      return sendJson(res, 200, { store: storeOut(st) });
+    }
+
+    /* ---- staff: join code → store → name → PIN ---- */
     if (parts[1] === 'join' && parts[2] && m === 'GET') {
       if (!codeLimiter.check(ip(req))) fail(429, 'Too many tries. Wait 15 minutes, then try again.');
       const co = staffByCode(parts[2]);
       if (!co) { codeLimiter.record(ip(req)); fail(404, 'That join code isn’t right. Ask a manager for it.'); }
-      const staff = db.prepare("SELECT id, name, pin_hash FROM users WHERE company_id = ? AND role = 'staff' AND deleted_at IS NULL ORDER BY name COLLATE NOCASE").all(co.id);
-      return sendJson(res, 200, { company: co.name, staff: staff.map((s) => ({ id: s.id, name: s.name, needsPin: !s.pin_hash })) });
+      const staff = db.prepare("SELECT id, name, pin_hash, store_id FROM users WHERE company_id = ? AND role = 'staff' AND deleted_at IS NULL ORDER BY name COLLATE NOCASE").all(co.id);
+      return sendJson(res, 200, { company: co.name, stores: storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name })), staff: staff.map((s) => ({ id: s.id, name: s.name, storeId: s.store_id, needsPin: !s.pin_hash })) });
     }
     if (p === '/api/join' && m === 'POST') {
       if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
@@ -193,9 +242,12 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const name = str(b.name, 60).replace(/\s+/g, ' ');
       if (name.length < 2) fail(400, 'Add your first and last name.');
       if (!validPin(b.pin)) fail(400, 'Pick a PIN of 4 to 6 numbers.');
+      const stores = storesOf(db, co.id);
+      const store = stores.length === 1 ? stores[0] : stores.find((x) => x.id === Number(b.storeId));
+      if (!store) fail(400, 'Pick the restaurant you work at.');
       if (db.prepare("SELECT 1 FROM users WHERE company_id = ? AND role = 'staff' AND name = ? COLLATE NOCASE AND deleted_at IS NULL").get(co.id, name)) fail(409, 'Someone with that name already joined. Pick your name from the list, or add your last initial.');
-      const r = db.prepare("INSERT INTO users(company_id,name,role,pin_hash,created_at) VALUES (?,?,'staff',?,?)").run(co.id, name, await hashPassword(b.pin), now());
-      audit(db, Number(r.lastInsertRowid), 'joined with the code', name, co.id);
+      const r = db.prepare("INSERT INTO users(company_id,store_id,name,role,pin_hash,created_at) VALUES (?,?,?,'staff',?,?)").run(co.id, store.id, name, await hashPassword(b.pin), now());
+      audit(db, Number(r.lastInsertRowid), 'joined with the code', `${name} · ${store.name}`, co.id);
       return signIn(res, req, byId(Number(r.lastInsertRowid)));
     }
     if (p === '/api/staff-login' && m === 'POST') {
@@ -234,7 +286,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     /* ---- invites (owners and managers for a company; super admins for super admins) ---- */
     if (parts[1] === 'invite' && parts[2]) {
       const inv = db.prepare('SELECT i.*, c.name company_name FROM invites i LEFT JOIN companies c ON c.id = i.company_id WHERE token_hash = ? AND used_at IS NULL AND expires_at > ?').get(sha256(parts[2]), now());
-      if (m === 'GET') return sendJson(res, 200, inv ? { valid: true, email: inv.email, role: inv.role, company: inv.company_name } : { valid: false });
+      if (m === 'GET') return sendJson(res, 200, inv ? { valid: true, email: inv.email, role: inv.role, company: inv.company_name, store: inv.store_id ? db.prepare('SELECT name FROM stores WHERE id = ?').get(inv.store_id)?.name : null } : { valid: false });
       if (m === 'POST') {
         if (!inv) fail(410, 'This invite has expired or was already used. Ask for a new one.');
         const b = await readJson(req);
@@ -242,17 +294,17 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         if (!validPassword(b.password)) fail(400, 'Use at least 10 characters for the password.');
         if (db.prepare('SELECT 1 FROM users WHERE email = ? AND deleted_at IS NULL').get(inv.email)) fail(409, 'That person already has an account.');
         db.prepare('DELETE FROM users WHERE email = ? AND deleted_at IS NOT NULL').run(inv.email);
-        const r = db.prepare('INSERT INTO users(company_id,email,name,role,password_hash,created_at) VALUES (?,?,?,?,?,?)')
-          .run(inv.role === 'superadmin' ? null : inv.company_id, inv.email, str(b.name, 80), inv.role, await hashPassword(b.password), now());
+        const r = db.prepare('INSERT INTO users(company_id,store_id,email,name,role,password_hash,created_at) VALUES (?,?,?,?,?,?,?)')
+          .run(inv.role === 'superadmin' ? null : inv.company_id, inv.role === 'manager' ? inv.store_id ?? null : null, inv.email, str(b.name, 80), inv.role, await hashPassword(b.password), now());
         db.prepare('UPDATE invites SET used_at = ? WHERE token_hash = ?').run(now(), inv.token_hash);
         audit(db, Number(r.lastInsertRowid), inv.role === 'superadmin' ? 'super: joined as super admin' : 'joined', inv.email, inv.company_id);
         return signIn(res, req, byId(Number(r.lastInsertRowid)));
       }
     }
-    const makeInvite = (u, email, role, companyId) => {
+    const makeInvite = (u, email, role, companyId, storeId = null) => {
       const token = newToken();
-      db.prepare('INSERT INTO invites(token_hash,company_id,email,role,created_by,created_at,expires_at) VALUES (?,?,?,?,?,?,?)')
-        .run(sha256(token), companyId, email, role, u.id, now(), new Date(Date.now() + 14 * 864e5).toISOString());
+      db.prepare('INSERT INTO invites(token_hash,company_id,email,role,created_by,created_at,expires_at,store_id) VALUES (?,?,?,?,?,?,?,?)')
+        .run(sha256(token), companyId, email, role, u.id, now(), new Date(Date.now() + 14 * 864e5).toISOString(), storeId);
       return `/admin/invite/${token}`;
     };
 
@@ -262,10 +314,18 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const cid = companyOf(u);
       const co = companyRow(cid);
       if (!co) fail(404, 'We couldn’t find that company.');
-      const people = db.prepare('SELECT u.*, c.name company_name FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.company_id = ? AND u.deleted_at IS NULL ORDER BY CASE u.role WHEN \'owner\' THEN 0 WHEN \'manager\' THEN 1 ELSE 2 END, u.name COLLATE NOCASE').all(cid);
+      const all = db.prepare("SELECT u.*, c.name company_name FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.company_id = ? AND u.deleted_at IS NULL ORDER BY CASE u.role WHEN 'owner' THEN 0 WHEN 'manager' THEN 1 ELSE 2 END, u.name COLLATE NOCASE").all(cid);
+      // A store manager sees their store's people (and the owners); everyone else sees the whole company.
+      const people = all.filter((x) => inScope(u, x) || x.role === 'owner');
       const passed = new Map(db.prepare('SELECT device, COUNT(*) n FROM signoffs WHERE company_id = ? GROUP BY device').all(cid).map((r) => [r.device, r.n]));
-      const invites = db.prepare('SELECT substr(token_hash,1,16) id, email, role, created_at, expires_at FROM invites WHERE company_id = ? AND used_at IS NULL AND expires_at > ? ORDER BY created_at DESC').all(cid, now());
-      return sendJson(res, 200, { company: { id: co.id, name: co.name, joinCode: co.join_code }, people: people.map((x) => ({ ...personOut(x), signedOff: passed.get('u' + x.id) || 0 })), invites, you: u.id, youRole: u.role });
+      const invites = db.prepare('SELECT substr(token_hash,1,16) id, email, role, store_id, created_at, expires_at FROM invites WHERE company_id = ? AND used_at IS NULL AND expires_at > ? ORDER BY created_at DESC').all(cid, now());
+      const stores = storesOf(db, cid);
+      const storeName = new Map(stores.map((x) => [x.id, x.name]));
+      return sendJson(res, 200, {
+        company: { id: co.id, name: co.name, joinCode: co.join_code }, stores: stores.map(storeOut), yourStore: u.store_id ?? null,
+        people: people.map((x) => ({ ...personOut(x), storeId: x.store_id ?? null, storeName: x.store_id ? storeName.get(x.store_id) || null : null, signedOff: passed.get('u' + x.id) || 0, canManage: x.id !== u.id && inScope(u, x) && (x.role === 'staff' || u.role === 'owner' || u.role === 'superadmin') })),
+        invites: invites.map((i) => ({ ...i, storeName: i.store_id ? storeName.get(i.store_id) || null : null })), you: u.id, youRole: u.role,
+      });
     }
     if (p === '/api/team/invite' && m === 'POST') {
       const u = needOwner(c, req);
@@ -274,7 +334,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (!validEmail(email)) fail(400, 'Enter a valid email address.');
       if (db.prepare('SELECT 1 FROM users WHERE email = ? AND deleted_at IS NULL').get(email)) fail(409, 'That person already has an account.');
       const role = b.role === 'owner' ? 'owner' : 'manager';
-      const link = makeInvite(u, email, role, companyOf(u));
+      const store = role === 'manager' && b.storeId ? storesOf(db, companyOf(u)).find((x) => x.id === Number(b.storeId)) : null;
+      if (role === 'manager' && b.storeId && !store) fail(404, 'We couldn’t find that store.');
+      const link = makeInvite(u, email, role, companyOf(u), store?.id ?? null);
       audit(db, u.id, 'invite', `${email} · ${role}`, companyOf(u));
       return sendJson(res, 200, { link, email, role });
     }
@@ -294,7 +356,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const u = needManager(c, req);
       const cid = companyOf(u);
       const t = db.prepare('SELECT * FROM users WHERE id = ? AND company_id = ? AND deleted_at IS NULL').get(Number(parts[2]), cid);
-      if (!t) fail(404, 'We couldn’t find that person.');
+      if (!t || !inScope(u, t)) fail(404, 'We couldn’t find that person.');
       if (parts[3] === 'reset-pin' && m === 'POST') {
         if (t.role !== 'staff') fail(400, 'Only staff have a PIN.');
         db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id);
@@ -308,8 +370,19 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
           if (u.role !== 'owner' && u.role !== 'superadmin') fail(403, 'Only an owner can change roles.');
           if (t.role === 'staff' || !['owner', 'manager'].includes(b.role)) fail(400, 'Owners and managers can switch between those two roles.');
           if (t.id === u.id) fail(400, 'Ask another owner to change your role.');
-          db.prepare('UPDATE users SET role = ? WHERE id = ?').run(b.role, t.id);
+          db.prepare("UPDATE users SET role = ?, store_id = CASE WHEN ? = 'owner' THEN NULL ELSE store_id END WHERE id = ?").run(b.role, b.role, t.id);
           audit(db, u.id, 'change role', `${t.name} → ${b.role}`, cid);
+        }
+        if (b.storeId !== undefined) {
+          if (!switchesStores(u)) fail(403, 'Only an owner or an all-store manager can move people between stores.');
+          if (t.role === 'owner') fail(400, 'Owners oversee every store.');
+          const st = b.storeId === null ? null : storesOf(db, cid).find((x) => x.id === Number(b.storeId));
+          if (b.storeId !== null && !st) fail(404, 'We couldn’t find that store.');
+          if (t.role === 'staff' && !st) fail(400, 'Staff work at one store. Pick it.');
+          if (t.role === 'manager' && u.role !== 'owner' && u.role !== 'superadmin') fail(403, 'Only an owner can change a manager’s stores.');
+          db.prepare('UPDATE users SET store_id = ? WHERE id = ?').run(st?.id ?? null, t.id);
+          db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
+          audit(db, u.id, 'move store', `${t.name} → ${st?.name || 'every store'}`, cid);
         }
         if (b.name !== undefined && t.role === 'staff') {
           const name = str(b.name, 60);
@@ -384,7 +457,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         FROM companies c ORDER BY c.deleted_at IS NOT NULL, c.name`).all();
       const admins = db.prepare("SELECT u.*, NULL company_name FROM users u WHERE role = 'superadmin' ORDER BY super_primary DESC, name").all();
       return sendJson(res, 200, {
-        companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.leads, staff: x.staff, lastSeenAt: x.last_seen })),
+        companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.leads, staff: x.staff, lastSeenAt: x.last_seen,
+          stores: storesOf(db, x.id).map((st) => ({ ...storeOut(st), staff: db.prepare("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'staff' AND deleted_at IS NULL").get(st.id).n })) })),
         admins: admins.map(personOut), you: s.id, youPrimary: !!s.super_primary, workingIn: companyOf(s),
       });
     }
@@ -397,6 +471,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const r = db.prepare('INSERT INTO companies(name, slug, created_at) VALUES (?,?,?)').run(name, slug, now());
       const id = Number(r.lastInsertRowid);
       setJoinCode(db, id);
+      const storeNames = (Array.isArray(b.stores) ? b.stores : []).map((x) => str(x, 80)).filter((x) => x.length > 1).slice(0, 20);
+      for (const n of storeNames.length ? storeNames : [name]) addStore(db, id, n);
       let link = null;
       const email = String(b.ownerEmail || '').trim().toLowerCase();
       if (email) {
@@ -428,6 +504,14 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         superLog(s, 'invite', `${email} → ${co.name}`, co.id);
         return sendJson(res, 200, { link });
       }
+      if (parts[4] === 'stores' && m === 'POST') {
+        const b = await readJson(req);
+        const n = str(b.name, 80);
+        if (n.length < 2) fail(400, 'Add the store’s name.');
+        const sid = addStore(db, co.id, n);
+        superLog(s, 'add store', `${co.name} · ${n}`, co.id);
+        return sendJson(res, 200, { id: sid });
+      }
       if (parts[4] === 'restore' && m === 'POST') { db.prepare('UPDATE companies SET deleted_at = NULL WHERE id = ?').run(co.id); superLog(s, 'restore company', co.name, co.id); return sendJson(res, 200, { ok: true }); }
       if (m === 'DELETE') {
         const b = await readJson(req);
@@ -438,11 +522,20 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         return sendJson(res, 200, { ok: true });
       }
     }
+    if (parts[2] === 'stores' && /^\d+$/.test(parts[3] || '') && m === 'PATCH') {
+      const st = db.prepare('SELECT * FROM stores WHERE id = ?').get(Number(parts[3]));
+      if (!st) fail(404, 'We couldn’t find that store.');
+      const b = await readJson(req);
+      if (b.name !== undefined) { const n = str(b.name, 80); if (n.length < 2) fail(400, 'Add the store’s name.'); db.prepare('UPDATE stores SET name = ? WHERE id = ?').run(n, st.id); }
+      // A store's book opens when its own content is built (the content isn't split by store yet), so there's no switch for it here.
+      superLog(s, 'edit store', `${st.name}${b.name ? ` → ${b.name}` : ''}`, st.company_id);
+      return sendJson(res, 200, { ok: true });
+    }
     if (p === '/api/super/act' && m === 'POST') {
       const b = await readJson(req);
       const co = companyRow(Number(b.companyId));
       if (!co) fail(404, 'We couldn’t find that company.');
-      db.prepare('UPDATE sessions SET acting_company_id = ? WHERE token_hash = ?').run(co.id, sha256(c.token));
+      db.prepare('UPDATE sessions SET acting_company_id = ?, acting_store_id = NULL WHERE token_hash = ?').run(co.id, sha256(c.token));
       superLog(s, 'work in company', co.name, co.id);
       return sendJson(res, 200, { ok: true, workingIn: co.id, workingInName: co.name });
     }
@@ -478,6 +571,12 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         if (b.companyId !== undefined && t.role !== 'superadmin') {
           const co = companyRow(Number(b.companyId)); if (!co) fail(404, 'We couldn’t find that company.');
           db.prepare('UPDATE users SET company_id = ? WHERE id = ?').run(co.id, t.id); changes.push(`company → ${co.name}`);
+        }
+        // Keep the store right for the new role or company: staff need one, owners have none.
+        const after = byId(t.id);
+        if (after.role === 'owner') db.prepare('UPDATE users SET store_id = NULL WHERE id = ?').run(t.id);
+        else if (after.company_id && (!after.store_id || !storesOf(db, after.company_id).some((x) => x.id === after.store_id))) {
+          db.prepare('UPDATE users SET store_id = ? WHERE id = ?').run(after.role === 'staff' ? storesOf(db, after.company_id)[0]?.id ?? null : null, t.id);
         }
         db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
         superLog(s, 'edit person', `${t.name}: ${changes.join(', ') || 'no change'}`, t.company_id);

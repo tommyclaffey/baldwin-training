@@ -98,6 +98,38 @@ const MIGRATIONS = [
   ALTER TABLE media ADD COLUMN company_id INT NOT NULL DEFAULT 1;
   ALTER TABLE wine_videos ADD COLUMN company_id INT NOT NULL DEFAULT 1;
   `,
+  `
+  -- Stores (Oct 28): a company oversees one or more stores; each store has its own book (menu, cocktails, theme),
+  -- staff, quiz records, sign-offs and sections. Baldwin Restaurant Group: The Baldwin (book ready), J.Baldwin's, Testa Barra.
+  CREATE TABLE stores(id INTEGER PRIMARY KEY, company_id INT NOT NULL REFERENCES companies(id), name TEXT NOT NULL, slug TEXT NOT NULL,
+    theme TEXT, book_ready INT NOT NULL DEFAULT 0, sort INT NOT NULL DEFAULT 0, created_at TEXT, deleted_at TEXT, UNIQUE(company_id, slug));
+  INSERT INTO stores(id, company_id, name, slug, book_ready, sort, created_at) VALUES
+    (1, 1, 'The Baldwin', 'the-baldwin', 1, 0, strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    (2, 1, 'J.Baldwin''s', 'j-baldwins', 0, 1, strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    (3, 1, 'Testa Barra', 'testa-barra', 0, 2, strftime('%Y-%m-%dT%H:%M:%fZ','now'));
+  -- Staff belong to one store. Managers: one store, or NULL for every store. Owners: NULL (every store).
+  ALTER TABLE users ADD COLUMN store_id INT;
+  UPDATE users SET store_id = 1 WHERE role = 'staff' AND company_id = 1;
+  ALTER TABLE invites ADD COLUMN store_id INT;
+  ALTER TABLE sessions ADD COLUMN acting_store_id INT;
+  ALTER TABLE quiz_attempts ADD COLUMN store_id INT;
+  UPDATE quiz_attempts SET store_id = 1 WHERE company_id = 1;
+  ALTER TABLE signoffs ADD COLUMN store_id INT;
+  UPDATE signoffs SET store_id = 1 WHERE company_id = 1;
+  CREATE TABLE sections_new(company_id INT NOT NULL DEFAULT 1, store_id INT NOT NULL DEFAULT 1, day TEXT NOT NULL, slot TEXT NOT NULL,
+    name TEXT NOT NULL, by_user INT, at TEXT, PRIMARY KEY(store_id, day, slot));
+  INSERT INTO sections_new SELECT company_id, 1, day, slot, name, by_user, at FROM sections WHERE company_id = 1;
+  DROP TABLE sections;
+  ALTER TABLE sections_new RENAME TO sections;
+  ALTER TABLE media ADD COLUMN store_id INT;
+  UPDATE media SET store_id = 1 WHERE company_id = 1;
+  ALTER TABLE audit ADD COLUMN store_id INT;
+  -- The book's content belongs to a store. Everything so far is The Baldwin's.
+  ALTER TABLE entries ADD COLUMN store_id INT NOT NULL DEFAULT 1;
+  ALTER TABLE overrides ADD COLUMN store_id INT NOT NULL DEFAULT 1;
+  ALTER TABLE items ADD COLUMN store_id INT NOT NULL DEFAULT 1;
+  ALTER TABLE wine_videos ADD COLUMN store_id INT NOT NULL DEFAULT 1;
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

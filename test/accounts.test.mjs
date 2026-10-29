@@ -80,7 +80,7 @@ test('companies are kept apart', async () => {
   code1 = (await owner('/api/team')).data.company.joinCode;
   code2 = (await owner2('/api/team')).data.company.joinCode;
   assert.notEqual(code1, code2);
-  await staff1('/api/join', { method: 'POST', body: { code: code1, name: 'Bea Baldwin', pin: '1111' } });
+  await staff1('/api/join', { method: 'POST', body: { code: code1, name: 'Bea Baldwin', pin: '1111', storeId: 1 } });
   await staff2('/api/join', { method: 'POST', body: { code: code2, name: 'Sid Second', pin: '2222' } });
   const t1 = (await owner('/api/team')).data.people.map((p) => p.name);
   const t2 = (await owner2('/api/team')).data.people.map((p) => p.name);
@@ -109,7 +109,7 @@ test('staff: read and take quizzes, never edit', async () => {
   assert.equal((await staff1('/api/media')).status, 403);
   assert.equal((await staff1('/api/collections')).status, 403);
   assert.equal((await staff1('/api/login', { method: 'POST', body: { email: '', password: '1111' } })).status, 401);
-  assert.equal((await person()('/api/join', { method: 'POST', body: { code: code1, name: 'bea baldwin', pin: '9999' } })).status, 409, 'names are unique in a company');
+  assert.equal((await person()('/api/join', { method: 'POST', body: { code: code1, name: 'bea baldwin', pin: '9999', storeId: 1 } })).status, 409, 'names are unique in a company');
 });
 
 test('PINs: wrong ones lock for 15 minutes, a manager reset lets the person pick a new one', async () => {
@@ -162,4 +162,49 @@ test('only the primary super admin adds or removes super admins', async () => {
   const me = (await tommy('/api/me')).data.user;
   assert.equal((await mate(`/api/super/users/${me.id}`, { method: 'DELETE' })).status, 403, 'a teammate can’t remove the primary');
   assert.equal((await mate(`/api/super/users/${me.id}`, { method: 'PATCH', body: { name: 'Nope' } })).status, 403);
+});
+
+test('stores: staff pick their store; each store has its own book, records and sections', async () => {
+  const j = (await person()(`/api/join/${code1}`)).data;
+  assert.deepEqual(j.stores.map((s) => s.name), ['The Baldwin', 'J.Baldwin’s'.replace('’', "'"), 'Testa Barra']);
+  assert.equal((await person()('/api/join', { method: 'POST', body: { code: code1, name: 'No Store', pin: '1234' } })).status, 400, 'a store is required');
+  const jb = j.stores[1].id;
+  const jay = person();
+  assert.equal((await jay('/api/join', { method: 'POST', body: { code: code1, name: 'Jay Jbs', pin: '5555', storeId: jb } })).status, 200);
+  const me = (await jay('/api/me')).data.user;
+  assert.equal(me.store.name, "J.Baldwin's");
+  assert.equal(me.canSwitchStore, false);
+  const r = await jay('/api/index');
+  assert.equal(r.status, 404, 'J.Baldwin’s book isn’t built yet');
+  assert.match(r.data.error, /J\.Baldwin's/);
+  // Quiz records and sections stay in their store.
+  await jay('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items: ['short-rib#0'], answers: [1] } });
+  const baldwin = (await owner('/api/quiz/results')).data;
+  assert.equal(baldwin.store, 'The Baldwin');
+  assert.ok(!baldwin.people.some((p) => p.name === 'Jay Jbs'));
+  assert.equal((await owner('/api/store', { method: 'POST', body: { storeId: jb } })).status, 200, 'owners switch stores');
+  assert.ok((await owner('/api/quiz/results')).data.people.some((p) => p.name === 'Jay Jbs'));
+  assert.equal((await owner('/api/collections')).status, 404, 'nothing to edit in a store without a book');
+  await owner('/api/sections', { method: 'PUT', body: { slot: 'Bar 1', name: 'Jay' } });
+  assert.equal((await jay('/api/sections')).data.names['Bar 1'], 'Jay');
+  const bo = person();
+  await bo('/api/join', { method: 'POST', body: { code: code1, name: 'Bo Baldwin', pin: '7777', storeId: 1 } });
+  assert.equal((await bo('/api/sections')).data.names['Bar 1'], undefined, 'The Baldwin has its own sections');
+  assert.equal((await jay('/api/store', { method: 'POST', body: { storeId: 1 } })).status, 403, 'staff can’t switch stores');
+  await owner('/api/store', { method: 'POST', body: { storeId: 1 } });
+});
+
+test('stores: a store manager manages only their store; the owner moves people between stores', async () => {
+  const jb = (await person()(`/api/join/${code1}`)).data.stores[1].id;
+  const inv = await owner('/api/team/invite', { method: 'POST', body: { email: 'gm@jbaldwins.test', role: 'manager', storeId: jb } });
+  const gm = person();
+  assert.equal((await gm(`/api/invite/${inv.data.link.split('/').pop()}`, { method: 'POST', body: { name: 'Gina GM', password: 'long-enough-5' } })).status, 200);
+  const team = (await gm('/api/team')).data;
+  const names = team.people.map((p) => p.name);
+  assert.ok(names.includes('Jay Jbs') && !names.includes('Bea Baldwin'), 'only their store’s staff (plus the owners)');
+  const bea = (await owner('/api/team')).data.people.find((p) => p.name === 'Bea Baldwin');
+  assert.equal((await gm(`/api/team/${bea.id}/reset-pin`, { method: 'POST' })).status, 404, 'another store’s staff are out of reach');
+  assert.equal((await gm('/api/store', { method: 'POST', body: { storeId: 1 } })).status, 403, 'a store manager stays in their store');
+  assert.equal((await owner(`/api/team/${bea.id}`, { method: 'PATCH', body: { storeId: jb } })).status, 200, 'the owner moves Bea to J.Baldwin’s');
+  assert.ok((await gm('/api/team')).data.people.some((p) => p.name === 'Bea Baldwin'));
 });

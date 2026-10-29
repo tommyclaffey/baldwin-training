@@ -46,17 +46,26 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
   const owner = user.role === 'owner' || user.role === 'superadmin';
   const isSuper = user.role === 'superadmin' && !user.impersonatedBy;
   const back = async () => { await api('/api/super/return', { method: 'POST' }).catch(() => {}); await refresh(); location.assign('/admin/super'); };
+  // Owners, all-store managers and super admins pick the store they're working in; the page reloads for that store.
+  const switchStore = async (id: number) => { await api('/api/store', { method: 'POST', body: { storeId: id } }); location.reload(); };
+  const hasBook = !!user.store?.bookReady;
   return (
     <div className="admin">
       <aside className="admin-side">
         <Link to="/" className="admin-logo"><img src="/img/logo-white.png" alt="The Baldwin" /></Link>
         <span className="admin-tag">{isSuper ? 'Super Admin' : 'Admin'}</span>
         {isSuper && <span className="admin-working">Working in <strong>{user.workingInName || '—'}</strong> · <NavLink to="/admin/super">Switch</NavLink></span>}
+        {user.canSwitchStore && (user.stores || []).length > 1
+          ? <label className="store-switch"><span>Store</span>
+              <select value={user.store?.id ?? ''} onChange={(e) => void switchStore(Number(e.target.value))}>
+                {(user.stores || []).map((x) => <option key={x.id} value={x.id}>{x.name}{x.bookReady ? '' : ' · book coming'}</option>)}
+              </select></label>
+          : user.store && <span className="admin-working">Store: <strong>{user.store.name}</strong></span>}
         <nav aria-label="Admin">
           <NavLink end to="/admin">Overview</NavLink>
-          {cols?.collections && Object.values(cols.collections).map((c) => <NavLink key={c.id} to={`/admin/pages/${c.id}`}>{c.label}</NavLink>)}
-          <NavLink to="/admin/wine-videos">Wine Videos</NavLink>
-          <NavLink to="/admin/bottle-scanner">Bottle Scanner</NavLink>
+          {hasBook && cols?.collections && Object.values(cols.collections).map((c) => <NavLink key={c.id} to={`/admin/pages/${c.id}`}>{c.label}</NavLink>)}
+          {hasBook && <NavLink to="/admin/wine-videos">Wine Videos</NavLink>}
+          {hasBook && <NavLink to="/admin/bottle-scanner">Bottle Scanner</NavLink>}
           <NavLink to="/admin/media">Videos and Photos</NavLink>
           <NavLink to="/admin/quizzes">Quiz Results</NavLink>
           <NavLink to="/admin/team">Team</NavLink>
