@@ -43,7 +43,7 @@ export function CollectionList() {
     ? [...c.group.values.map((v) => ({ label: GROUP_LABEL[v] || v, items: (entries || []).filter((e) => e.data[c.group!.key] === v) })),
       { label: 'Other', items: (entries || []).filter((e) => !c.group!.values.includes(e.data[c.group!.key] as string)) }]
     : [{ label: '', items: entries || [] }];
-  const page = (e: Entry) => !c.noPages && (c.id !== 'recipe' || !!e.data.fullPage);
+  const page = (e: Entry) => !c.noPages;
   return (
     <div className="admin-page">
       <div className="editor-head">
@@ -149,7 +149,6 @@ export function EntryEditor() {
       nav(`/admin/pages/${c.id}`);
     } catch (e) { setError((e as Error).message); }
   };
-  const hasPage = c.id !== 'recipe' || !!data.fullPage;
 
   return (
     <form className="editor" onSubmit={(e) => { e.preventDefault(); save(); }}>
@@ -157,10 +156,10 @@ export function EntryEditor() {
         <div>
           <Link className="crumb" to={`/admin/pages/${c.id}`}>← {c.label}</Link>
           <h1>{isNew ? `New ${c.singular}` : (data.name as string) || 'Untitled'}</h1>
-          {entry && <p className="muted small">Address: /{entry.slug}{hasPage ? '' : ' · no page yet, shows in the Food Matrix'}</p>}
+          {entry && <p className="muted small">Address: /{entry.slug}</p>}
         </div>
         <div className="row">
-          {entry && hasPage && <Link className="btn ghost" to={'/' + entry.slug} target="_blank">View Page</Link>}
+          {entry && <Link className="btn ghost" to={'/' + entry.slug} target="_blank">View Page</Link>}
           <button className="btn" disabled={saving}>{saving ? 'Saving…' : isNew ? 'Create Page' : 'Save Changes'}</button>
         </div>
       </div>

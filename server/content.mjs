@@ -2,9 +2,9 @@
 // (tables, strips) filled from the CMS.
 import fs from 'node:fs';
 import path from 'node:path';
-import { clone, cocktailPage, dishPage, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
+import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
-import { COLLECTIONS, SHARED, listEntries, getEntry } from './cms.mjs';
+import { COLLECTIONS, COURSES, SHARED, listEntries, getEntry } from './cms.mjs';
 import { classify, emptyPage, baldwinTerms, snapshotShelves, genericize, indexText } from './generic.mjs';
 import { BANK } from './quiz.mjs';
 import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
@@ -104,9 +104,24 @@ function entryPage(db, e) {
     const signatures = ordered(db, 'house').map((x) => ({ name: x.data.name, slug: x.slug, photo: x.data.photo }));
     return cocktailPage(tpl, e, { signatures, glassCard });
   }
-  if (e.collection === 'recipe') return dishPage(tpl, { ...e, quiz: quizFor(e.data.name) });
+  if (e.collection === 'recipe') return dishPage(tpl, { ...e, quiz: quizFor(e.data.name) }, pairingLinks(db));
   if (e.collection === 'wine') return wineEntryPage(tpl, e, { all: ordered(db, 'wine'), index: baseIndex(), recipes: ordered(db, 'recipe') });
   return null;
+}
+
+/** Food Book pairings name a wine ("Thomas Schmitt Riesling") or a cocktail ("Side Car"); find its page in the book. */
+const squash = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/^the\s+/, '').replace(/[^a-z0-9]/g, '');
+function pairingLinks(db) {
+  const wines = ordered(db, 'wine').map((w) => {
+    const name = w.data.name || '';
+    const nick = (name.match(/['‘’]([^'‘’]+)['‘’]/) || [])[1];
+    return { slug: w.slug, photo: w.data.bottle_img, keys: [squash(name.replace(/['‘’][^'‘’]*['‘’]/g, '')), squash(name.replace(/['‘’][^'‘’]*['‘’]/g, '').replace(/^(ch[aâ]teau|domaine)\s+/i, '')), nick && squash(nick)].filter((k) => k && k.length >= 4) };
+  });
+  const drinks = [...ordered(db, 'classic'), ...ordered(db, 'house')].map((c) => ({ slug: c.slug, photo: c.data.photo, key: squash(c.data.name) }));
+  return {
+    wine: (nm) => { const q = squash(nm); return wines.find((w) => w.keys.some((k) => q.includes(k))) || null; },
+    cocktail: (nm) => { const q = squash(nm); return drinks.find((c) => c.key === q) || drinks.find((c) => q.length >= 5 && c.key.length >= 5 && (c.key.includes(q) || q.includes(c.key))) || null; },
+  };
 }
 
 /** Allergen Guide grid: one row per dish from the Recipes collection, a mark in every column the dish is tagged with. */
@@ -122,30 +137,23 @@ function allergenGrid(page, recipes, clear = false) {
   const major = cells.find((c) => { const k = find(c, byName('Contains')); return k && k.f?.[0]?.c !== '#1E1C1A'; });
   const none = cells.find((c) => find(c, byName('None')));
   const proto = rows.find((r) => !find(r, startsWith('Pill · '))) || rows[0];
-  const groups = grid.c.filter(startsWith('Group · '));
+  const groupProto = grid.c.find(startsWith('Group · '));
   const head = grid.c.filter((c) => c.n === 'Header');
   const tail = grid.c.filter((c) => c.n === 'Legend' || c.n === 'Definitions');
-  const out = [...head];
-  for (const g of groups) {
-    const course = g.n.slice(8).toLowerCase();
-    const list = recipes.filter((e) => String(e.data.course || '').toLowerCase() === course);
-    if (!list.length) continue;
-    out.push(g);
-    for (const e of list) {
-      const d = e.data;
-      const r = clone(proto);
-      r.n = 'Row · ' + d.name;
-      if (d.fullPage) r.to = '/' + e.slug;
-      const tags = new Set(d.allergens || []);
-      r.c = r.c.map((c) => {
-        if (c.n === 'Dish') { const t = clone(c); setText(texts(t)[0], d.name); return t; }
-        const src = tags.has(c.n) ? (MAJOR.has(c.n) ? major || mark : mark) : none;
-        const cell = clone(src || c); cell.n = c.n; cell.w = c.w;
-        return cell;
-      });
-      out.push(r);
-    }
-  }
+  const out = [...head, ...courseGroups(groupProto, recipes, (e) => {
+    const d = e.data;
+    const r = clone(proto);
+    r.n = 'Row · ' + d.name;
+    r.to = '/' + e.slug;
+    const tags = new Set(d.allergens || []);
+    r.c = r.c.map((c) => {
+      if (c.n === 'Dish') { const t = clone(c); setText(texts(t)[0], d.name); return t; }
+      const src = tags.has(c.n) ? (MAJOR.has(c.n) ? major || mark : mark) : none;
+      const cell = clone(src || c); cell.n = c.n; cell.w = c.w;
+      return cell;
+    });
+    return r;
+  })];
   grid.c = [...out, ...tail];
 }
 
@@ -248,39 +256,58 @@ function signatureCards(page, house) {
   if (count) setText(count, `1–2 of ${house.length}`);
 }
 
-const GROUP = { 'Passed Bites': 'Group · PASSED BITES', Plates: 'Group · PLATES', Dessert: 'Group · DESSERT' };
+/** Group headers for the courses with dishes, cloned from the drawn one ("SNACKS & SMALL PLATES  12"). */
+function courseGroups(proto, dishes, fill) {
+  const out = [];
+  for (const course of COURSES) {
+    const list = dishes.filter((e) => e.data.course === course);
+    if (!list.length) continue;
+    const g = clone(proto);
+    g.n = 'Group · ' + course.toUpperCase();
+    const t = texts(g);
+    setText(t[0], course.toUpperCase());
+    if (t[1]) setText(t[1], list.length);
+    out.push(g, ...list.map(fill));
+  }
+  return out;
+}
+const FOOD_GROUPS = new Set(['Group · PASSED BITES', 'Group · PLATES', 'Group · DESSERT']);
 function foodMatrix(page, dishes) {
   const table = find(page.main, byName('Matrix table'));
   if (!table) return;
   const rows = table.c.filter(startsWith('Row · '));
   const normal = rows.find((r) => r.n === 'Row · Short Rib') || rows[0];
-  const refining = rows.find((r) => texts(r).some((t) => t.s === 'Being refined'));
+  const proto = table.c.find(startsWith('Group · '));
+  const fill = (e) => {
+    const d = e.data;
+    const r = clone(normal);
+    r.n = 'Row · ' + d.name;
+    r.to = '/' + e.slug; // every dish opens its full page
+    const im = find(r, startsWith('IMG/'));
+    if (im) { if (d.photo) im.f = img(d.photo); else photoToCome(im, false); }
+    const dish = find(r, byName('Dish'));
+    const dt = texts(dish);
+    setText(dt[0], d.name); if (dt[1]) setText(dt[1], d.description || 'Chef to add description');
+    // Long names wrap instead of being cut off.
+    const tr = find(dish, byName('Title row'));
+    if (tr) tr.sh = 'L';
+    dt[0].sh = 'L'; dt[0].ar = 'H';
+    const st = find(r, byName('Station')); if (st) setText(texts(st)[0], d.station || '—');
+    repeat(find(r, byName('Allergens')), startsWith('Pill · '), d.allergens?.length ? d.allergens : ['None listed'], (p, a) => { p.n = 'Pill · ' + a; setText(texts(p)[0], a); });
+    const pr = find(r, byName('Pairing')); if (pr) setText(texts(pr)[0], d.pairing || '—');
+    return r;
+  };
+  // The drawn course groups (and their rows) give way to the menu's courses; the Bar group stays as drawn.
   const out = [];
-  let skip = false;
+  let skip = false, placed = false;
   for (const c of table.c) {
-    const course = Object.keys(GROUP).find((k) => GROUP[k] === c.n);
-    if ((c.n || '').startsWith('Group · ')) skip = !!course;
-    if (startsWith('Row · ')(c) && skip) continue;
+    if (startsWith('Group · ')(c)) {
+      skip = FOOD_GROUPS.has(c.n);
+      if (skip && !placed) { out.push(...courseGroups(proto, dishes, fill)); placed = true; }
+      if (skip) continue;
+    } else if (skip && startsWith('Row · ')(c)) continue;
+    else if (!startsWith('Row · ')(c)) skip = false;
     out.push(c);
-    if (!course) continue;
-    const list = dishes.filter((d) => d.data.course === course);
-    const count = texts(c)[1];
-    if (count) setText(count, list.length);
-    for (const e of list) {
-      const d = e.data;
-      const r = clone(d.refining && refining ? refining : normal);
-      r.n = 'Row · ' + d.name;
-      r.to = d.fullPage ? '/' + e.slug : undefined;
-      const im = find(r, startsWith('IMG/'));
-      if (im) im.f = img(d.photo);
-      const dish = find(r, byName('Dish'));
-      const dt = texts(dish).filter((t) => t.s !== 'Being refined');
-      setText(dt[0], d.name); if (dt[1]) setText(dt[1], d.description || 'Chef to add description');
-      const st = find(r, byName('Station')); if (st) setText(texts(st)[0], d.station || '—');
-      repeat(find(r, byName('Allergens')), startsWith('Pill · '), d.allergens?.length ? d.allergens : ['None listed'], (p, a) => { p.n = 'Pill · ' + a; setText(texts(p)[0], a); });
-      const pr = find(r, byName('Pairing')); if (pr) setText(texts(pr)[0], d.pairing || '—');
-      out.push(r);
-    }
   }
   table.c = out;
 }

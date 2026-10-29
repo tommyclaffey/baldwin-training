@@ -35,7 +35,9 @@ export function emptyPage(file, slug, store) {
 // Names that are also classics or plain words stay (the Sidecar's history mentions the Ritz Hotel, for one).
 const KEEP = new Set(['The Ritz', 'Espresso Martini', 'Perfect Martini', 'Lemon Drop', 'Martini']);
 export function baldwinTerms(names, classics = []) {
-  const fixed = ['The Baldwin', 'Baldwin family', 'J.Baldwin', 'Testa Barra', 'Macomb', 'Shelby', 'Bolgheri Rosso', 'Tenuta Spinelli', 'G4 Tequila', 'DCD Rye'];
+  // Plus the dish names written into the design before the Food Book renamed them (Oct 28).
+  const fixed = ['The Baldwin', 'Baldwin family', 'J.Baldwin', 'Testa Barra', 'Macomb', 'Shelby', 'Bolgheri Rosso', 'Tenuta Spinelli', 'G4 Tequila', 'DCD Rye',
+    'Short Rib', 'Scallop Rockefeller', 'Beet Confit', 'Mike’s Vegas Pie', "Mike's Vegas Pie", 'Agnolotti'];
   const skip = new Set([...KEEP, ...classics]);
   const all = [...new Set([...fixed, ...names.filter((n) => n && n.length > 3 && !skip.has(n))])].sort((a, b) => b.length - a.length);
   return new RegExp('\\b(' + all.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/'/g, "['’]")).join('|') + ')');
