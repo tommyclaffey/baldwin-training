@@ -666,9 +666,10 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   /* Mid-width tiles (photo cards, bottle cards, browse tiles) pair up instead of sitting in one narrow column. */
   .fx-h > .mid { flex: 1 1 150px !important; width: auto !important; max-width: 100% !important; }
   /* A small marker (number, dot, icon, thumbnail) stays beside its text. */
-  .fx-h:has(> .marker:first-child) { flex-wrap: nowrap !important; }
-  .fx-h:has(> .marker:first-child) > :not(.marker) { flex: 0 1 auto !important; min-width: 0; }
-  .fx-h:has(> .marker:first-child) > .marker + * { flex: 1 1 0 !important; width: auto !important; }
+  /* (only rows that also hold something else: a row of dots or a circle with its number is left alone) */
+  .fx-h:has(> .marker:first-child):has(> :not(.marker)) { flex-wrap: nowrap !important; }
+  .fx-h:has(> .marker:first-child):has(> :not(.marker)) > :not(.marker) { flex: 0 1 auto !important; min-width: 0; }
+  .fx-h:has(> .marker:first-child):has(> :not(.marker)) > .marker + :not(.marker) { flex: 1 1 0 !important; width: auto !important; }
   /* A trailing arrow stays at the end of its line. */
   .fx-h:has(> .fsvg:last-child):not(:has(> .marker:first-child)):not(:has(> [data-label])) { flex-wrap: nowrap !important; }
   .fx-h:has(> .fsvg:last-child):not(:has(> .marker:first-child)):not(:has(> [data-label])) > .ftext { flex: 0 1 auto !important; min-width: 0; width: auto !important; }
@@ -691,7 +692,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 }
 @media (max-width: 859px) {
   /* Markers keep their own size (a number circle doesn't stretch into a pill). */
-  .fx-h > .marker { flex: none !important; align-self: flex-start !important; }
+  .fx-h:has(> :not(.marker)) > .marker:not(.ftext) { flex: none !important; align-self: flex-start !important; }
   /* Stat boxes never squeeze below their content. */
   [data-name="Stats"] { flex-shrink: 0 !important; height: auto !important; overflow: visible !important; }
   /* Allergen Guide: each dish lists the allergens it has as small chips (name + mark). */
@@ -754,3 +755,14 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   /* Header rows of stacked tables stay hidden whatever layout rule the row also matches. */
   [data-head][data-head][data-head][data-head] { display: none !important; }
 }
+
+@media (max-width: 859px) {
+  .fx-h > .big { flex: 1 1 100% !important; width: auto !important; max-width: 100% !important; }
+  /* Photo strips: an even 2-up grid. */
+  .fx-h:has(> [data-name^="Photo · "]) { display: grid !important; grid-template-columns: 1fr 1fr; }
+  .fx-h:has(> [data-name^="Photo · "]) > [data-name^="Photo · "] { width: auto !important; }
+  .fx-h:has(> [data-name^="Photo · "]) > [data-name^="Photo · "] [role="img"] { width: 100% !important; height: auto !important; }
+  /* Beer taps: three across. */
+  [data-name="Handles"] { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 859px) { .fx-h > .fsvg { flex-shrink: 0 !important; } }

@@ -249,7 +249,9 @@ function labelTables(page) {
         head.hdr = 1;
         const labels = head.c.map(label);
         for (const r of rows) (r.c || []).forEach((c, i) => {
-          if (i > 0 && labels[i]) c.lab = labels[i];
+          // An empty cell gets no label (it hides on a phone).
+          if (i > 0 && labels[i] && c.t !== 'S' && !texts(c).every((t) => !String(t.s || '').trim() || t.s.trim() === '—')) c.lab = labels[i];
+          else if (i > 0 && labels[i] && c.t !== 'S') c.empty = 1;
           if (n.n === 'Allergen grid' && i > 0 && find(c, byName('None'))) c.empty = 1;
         });
       }
