@@ -3,7 +3,7 @@ import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
 import { InteractProvider } from './interact';
 import { QuizCard, ProgressCard } from '../quiz/QuizCard';
-import { quizPage } from '../quiz/transform';
+import { quizPage, trainingCard } from '../quiz/transform';
 import { useQuiz } from '../quiz/store';
 
 const QUIZ_PAGE = '18:2';
@@ -223,7 +223,8 @@ export function PageView() {
   if (page.empty) return <EmptyPage e={page.empty} mainRef={ref} />;
 
   const isQuiz = page.id === QUIZ_PAGE;
-  const { x, y, ...main } = isQuiz ? quizPage(page.main, quiz) : page.main;
+  const isHome = page.id === '4:2';
+  const { x, y, ...main } = isQuiz ? quizPage(page.main, quiz) : isHome ? trainingCard([page.main], quiz)[0] : page.main;
   void x; void y;
   return (
     <NavContext.Provider value={entry.nav}>

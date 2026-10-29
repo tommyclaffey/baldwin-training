@@ -11,6 +11,7 @@ import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
 import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
 import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './winelist.mjs';
 import { wire } from './interact.mjs';
+import { fillHome } from './home.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -74,11 +75,11 @@ function classicProtos() {
 }
 
 /* ---- Which store a request is for. Assembly is synchronous, so the scope is set around each call. ---- */
-let SCOPE = { store: 1, row: null, generic: false };
+let SCOPE = { store: 1, row: null, user: null, generic: false };
 /** Run `fn` for one store: its own entries, and The Baldwin's full book or the shared library. */
-export function withStore(row, fn) {
+export function withStore(row, fn, user = null) {
   const prev = SCOPE;
-  SCOPE = { store: row?.id ?? 1, row, generic: !!row && !row.book_ready };
+  SCOPE = { store: row?.id ?? 1, row, user, generic: !!row && !row.book_ready };
   try { return fn(); } finally { SCOPE = prev; }
 }
 const isGeneric = () => SCOPE.generic;
@@ -107,6 +108,26 @@ function entryPage(db, e) {
   if (e.collection === 'recipe') return dishPage(tpl, { ...e, quiz: quizFor(e.data.name) }, pairingLinks(db));
   if (e.collection === 'wine') return wineEntryPage(tpl, e, { all: ordered(db, 'wine'), index: baseIndex(), recipes: ordered(db, 'recipe') });
   return null;
+}
+
+/** Dish names written into the design before the Food Book (Oct 28) renamed them. */
+const OLD_DISH = { 'Short Rib': 'Braised Short Rib', Cauliflower: 'Roasted Cauliflower', Agnolotti: 'Squash Agnolotti', 'Beet Confit': 'Beet Salad', 'Scallop Rockefeller': 'Scallops Rockefeller', 'Mike’s Vegas Pie': 'Mike’s Vegas Winner', "Mike's Vegas Pie": 'Mike’s Vegas Winner' };
+/** "Pairs with" cards on wine, beer and spirit pages: each dish opens its own page, under its menu name.
+ *  A dish that's no longer on the menu (archived) leaves the card; an empty card goes. */
+function linkDishPairs(page, recipes) {
+  const byName = new Map(recipes.map((e) => [squash(e.data.name), e]));
+  for (const card of findAll(page.main, (n) => n.n === 'Pairs with' && (n.c || []).some(startsWith('Pair · ')))) {
+    card.c = card.c.filter((c) => {
+      if (!startsWith('Pair · ')(c)) return true;
+      const old = c.n.slice(7);
+      const e = byName.get(squash(OLD_DISH[old] || old));
+      if (!e) return false;
+      c.to = '/' + e.slug; c.n = 'Pair · ' + e.data.name;
+      const t = texts(c)[0]; if (t && t.s === old) setText(t, e.data.name);
+      return true;
+    });
+    if (!card.c.some(startsWith('Pair · '))) { const p = parentOf(page.main, card); if (p) p.c = p.c.filter((x) => x !== card); }
+  }
 }
 
 /** Food Book pairings name a wine ("Thomas Schmitt Riesling") or a cocktail ("Side Car"); find its page in the book. */
@@ -361,6 +382,8 @@ function assembleRaw(db, file) {
     const SITES = { 'Restaurant · J.Baldwin’s': 'https://www.jbaldwins.com', 'Restaurant · Testa Barra': 'https://www.testabarra.com', 'Restaurant · The Baldwin': 'https://thebaldwinshelby.com' };
     for (const [n, url] of Object.entries(SITES)) { const card = find(page.main, byName(n)); if (card) card.to = url; }
   }
+  linkDishPairs(page, ordered(db, 'recipe'));
+  if (file === '4-2') fillHome(db, page, { store: SCOPE.row, user: SCOPE.user, recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine'), bowl: bowlSvg() });
   if (file === '14-2') { classicTable(page, ordered(db, 'classic')); houseRows(page, ordered(db, 'house')); signatureCards(page, ordered(db, 'house')); }
   if (file === '13-2') foodMatrix(page, ordered(db, 'recipe'));
   if (file === '17-2') allergenGrid(page, ordered(db, 'recipe'));
