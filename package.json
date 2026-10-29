@@ -2,7 +2,7 @@
   "name": "baldwin-training",
   "private": true,
   "version": "0.1.0",
-  "description": "The Baldwin Training Book: menu, bar and service training for Baldwin Restaurant Group.",
+  "description": "Lineup: menu, bar and service training for restaurant teams. First customer: Baldwin Restaurant Group.",
   "type": "module",
   "scripts": {
     "content": "node scripts/build-content.mjs",

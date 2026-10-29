@@ -1,4 +1,6 @@
-# The Baldwin Training Book
+# Lineup
+
+The training app for restaurant teams. First customer: The Baldwin (Baldwin Restaurant Group). Was “The Baldwin Training Book” until Oct 28, 2026.
 
 Menu, bar and service training for Baldwin Restaurant Group. This repo is the **live demo**: a clickable build of the Figma design, with every screen, every link and search, plus an admin at `/admin` where managers edit pages, upload videos (or paste YouTube links) and add recipes and house cocktails.
 

@@ -1,4 +1,4 @@
-// The Baldwin Training Book server: the built app, the content API, sign-in and uploads. No dependencies.
+// Lineup server (The Baldwin's training book): the built app, the content API, sign-in and uploads. No dependencies.
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -410,4 +410,4 @@ http.createServer(async (req, res) => {
     if (!res.headersSent) sendJson(res, status, { error: status === 500 ? 'Something went wrong on our side. Try again.' : e.message });
     else res.end();
   }
-}).listen(PORT, () => { console.log(`The Baldwin Training Book on http://localhost:${PORT}`); if (process.env.RAILWAY_VOLUME_MOUNT_PATH || process.env.SCANNER_WARM === '1') warmOnStart(); });
+}).listen(PORT, () => { console.log(`Lineup on http://localhost:${PORT}`); if (process.env.RAILWAY_VOLUME_MOUNT_PATH || process.env.SCANNER_WARM === '1') warmOnStart(); });

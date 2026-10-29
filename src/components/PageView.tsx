@@ -35,7 +35,7 @@ function EmptyPage({ e, mainRef }: { e: Empty; mainRef: React.RefObject<HTMLElem
   const manager = canEdit(user);
   if (e.kind === 'home') return (
     <main ref={mainRef} className="page page-message store-home">
-      <p className="eyebrow">Training Book</p>
+      <p className="eyebrow">Lineup</p>
       <h1>{e.store}</h1>
       <p>The library below is ready now. Your menu, story and floor plan fill in as your managers add them.</p>
       {manager && <Link className="btn" to="/admin">Add Your Menu</Link>}

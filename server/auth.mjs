@@ -94,7 +94,7 @@ export function verifyTotp(secret, code) {
   const step = Math.floor(Date.now() / 30000);
   return [-1, 0, 1].some((d) => timingSafeEqual(Buffer.from(totpAt(secret, step + d)), Buffer.from(c)));
 }
-export const otpauthUrl = (secret, email) => `otpauth://totp/${encodeURIComponent('Baldwin Training Book:' + email)}?secret=${secret}&issuer=${encodeURIComponent('Baldwin Training Book')}&digits=6&period=30`;
+export const otpauthUrl = (secret, email) => `otpauth://totp/${encodeURIComponent('Lineup:' + email)}?secret=${secret}&issuer=${encodeURIComponent('Lineup')}&digits=6&period=30`;
 
 /** Join codes: 8 letters and digits, no look-alikes (0/O, 1/I/L). */
 export const newJoinCode = () => { const A = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; const b = randomBytes(8); return [...b].map((x) => A[x % A.length]).join(''); };
