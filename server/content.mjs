@@ -110,6 +110,31 @@ function entryPage(db, e) {
   return null;
 }
 
+/** Only show what this person can use (Tommy, Oct 29: "if it's not an account that's supposed to add, don't give them
+ *  the option"). Links into the admin go unless the person can open that screen: shared-library screens (classics,
+ *  grape and region videos) are for super admins, the rest for managers and owners. Staff see none. */
+const MANAGERS = new Set(['manager', 'owner', 'superadmin']);
+export function canOpen(user, to) {
+  if (!user || !MANAGERS.has(user.role)) return false;
+  if (/^\/admin\/(wine-videos|pages\/classic)/.test(to)) return user.role === 'superadmin';
+  return true;
+}
+function forViewer(page, user) {
+  if (!page?.main) return page;
+  const words = (n) => (n.t === 'T' ? 1 : (n.c || []).reduce((k, c) => k + words(c), 0));
+  // Returns true when the node lost something and is left as a bare label (a column heading, a tier name): it goes too.
+  const prune = (n) => {
+    if (!n.c) return false;
+    const before = n.c.length;
+    n.c = n.c.filter((c) => !(c.to && c.to.startsWith('/admin') && !canOpen(user, c.to)));
+    let lost = n.c.length < before;
+    n.c = n.c.filter((c) => { const empty = prune(c); if (empty) lost = true; return !empty; });
+    return lost && n !== page.main && words(n) <= 1;
+  };
+  prune(page.main);
+  return page;
+}
+
 /** Dish names written into the design before the Food Book (Oct 28) renamed them. */
 const OLD_DISH = { 'Short Rib': 'Braised Short Rib', Cauliflower: 'Roasted Cauliflower', Agnolotti: 'Squash Agnolotti', 'Beet Confit': 'Beet Salad', 'Scallop Rockefeller': 'Scallops Rockefeller', 'Mike’s Vegas Pie': 'Mike’s Vegas Winner', "Mike's Vegas Pie": 'Mike’s Vegas Winner' };
 /** "Pairs with" cards on wine, beer and spirit pages: each dish opens its own page, under its menu name.
@@ -372,7 +397,7 @@ export function assemble(db, file) {
   const page = assembleRaw(db, file);
   if (page?.empty) return page;
   if (page) wire(page, { entry, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
-  return balance(page);
+  return balance(forViewer(page, SCOPE.user));
 }
 
 function assembleRaw(db, file) {

@@ -162,6 +162,8 @@ function photoLibrary(page, ctx) {
   if (more) { const parent = parentOf(page.main, more); parent.c = parent.c.filter((c) => c !== more); }
   const up = find(page.main, byName('Button · Upload'));
   if (up) up.to = '/admin/media';
+  // The drawn "•••" on each photo has no menu behind it.
+  for (const p of photos) { const meta = find(p, byName('Meta')); if (meta) meta.c = (meta.c || []).filter((c) => c.t !== 'S'); }
 }
 
 /** Photos anywhere open large when tapped. */
