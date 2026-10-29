@@ -1,4 +1,4 @@
-# The Baldwin Training Book: spec
+# Lineup: spec (was The Baldwin Training Book)
 
 **Version:** 💼 an app to sell · **Client zero:** Baldwin Restaurant Group (The Baldwin, J.Baldwin's, Testa Barra)
 **Stage:** 9 · Public demo (a clickable build of the Figma design, with an admin for managers)
