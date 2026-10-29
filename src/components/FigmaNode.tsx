@@ -126,8 +126,10 @@ function boxStyle(node: FNode, parentLm: 'H' | 'V' | undefined, parentH?: number
   }
   // Phone helpers: mid-width tiles pair up; small leading markers stay beside their text.
   if (inFlow && parentLm === 'H' && node.t !== 'T' && node.sh === 'F' && node.w >= 150 && node.w <= 300) cls.push('mid');
+  // A big hug-width card (e.g. a video card) takes the full width once a phone wraps its row.
+  if (inFlow && parentLm === 'H' && node.t !== 'T' && node.sh !== 'F' && node.w >= 300) cls.push('big');
   // (a narrow rail, e.g. a timeline dot and line, counts too)
-  if (inFlow && parentLm === 'H' && ((node.t !== 'T' && node.w <= 48 && (node.h <= 48 || node.w <= 24)) || (node.t === 'T' && node.w <= 20 && node.h <= 24))) cls.push('marker');
+  if (inFlow && parentLm === 'H' && ((node.t !== 'T' && node.w <= 48 && node.h >= 6 && (node.h <= 48 || node.w <= 24)) || (node.t === 'T' && node.w <= 20 && node.h <= 24))) cls.push('marker');
   if (node.op !== undefined) st.opacity = node.op;
   if (node.rot) { st.transform = `rotate(${-node.rot}deg)`; st.transformOrigin = 'top left'; }
   return { st, cls };
