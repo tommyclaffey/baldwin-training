@@ -7,7 +7,7 @@ import { sessionUser, SESSION_COOKIE, LoginLimiter } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
 import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore } from './content.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
-import { COLLECTIONS, SHARED, publicSchemas, seed, listEntries, getEntry, createEntry, updateEntry, deleteEntry, moveEntry } from './cms.mjs';
+import { COLLECTIONS, SHARED, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart } from './scanner.mjs';
 import { score as scoreQuiz, results as quizResults, quizIds } from './quiz.mjs';
@@ -174,6 +174,7 @@ async function api(req, res, url) {
     needEditor(c, req);
     const col = url.searchParams.get('collection');
     if (!COLLECTIONS[col]) fail(400, 'Unknown collection.');
+    if (url.searchParams.get('archived')) return sendJson(res, 200, { entries: listArchived(db, col, SHARED.has(col) ? null : c.store) });
     return sendJson(res, 200, { entries: inStore(c, () => ordered(db, col)) });
   }
   if (p === '/api/entries' && m === 'POST') {
@@ -201,10 +202,16 @@ async function api(req, res, url) {
       audit(db, u.id, 'edit ' + e.collection, out.data.name);
       return sendJson(res, 200, out);
     }
+    // "Delete" archives: the page leaves the book and every list, and can be restored (Tommy, Oct 28).
     if (m === 'DELETE') {
-      deleteEntry(db, e.id);
-      audit(db, u.id, 'delete ' + e.collection, e.data.name);
-      return sendJson(res, 200, { ok: true });
+      archiveEntry(db, e.id, u.id);
+      audit(db, u.id, 'archive ' + e.collection, e.data.name, c.company);
+      return sendJson(res, 200, { ok: true, archived: true });
+    }
+    if (m === 'POST' && parts[3] === 'restore') {
+      const out = restoreEntry(db, e.id);
+      audit(db, u.id, 'restore ' + e.collection, e.data.name, c.company);
+      return sendJson(res, 200, out);
     }
     if (m === 'POST' && parts[3] === 'move') {
       const b = await readJson(req);
@@ -292,7 +299,8 @@ async function api(req, res, url) {
   /* media */
   if (p === '/api/media' && m === 'GET') {
     needUser(c, req);
-    return sendJson(res, 200, { media: db.prepare('SELECT * FROM media WHERE store_id = ? ORDER BY id DESC').all(c.store).map(mediaOut) });
+    const archived = url.searchParams.get('archived') ? 'IS NOT NULL' : 'IS NULL';
+    return sendJson(res, 200, { media: db.prepare(`SELECT * FROM media WHERE store_id = ? AND archived_at ${archived} ORDER BY id DESC`).all(c.store).map(mediaOut) });
   }
   if (p === '/api/media/youtube' && m === 'POST') {
     const u = needUser(c, req);
@@ -331,10 +339,18 @@ async function api(req, res, url) {
     const u = needUser(c, req);
     const row = db.prepare('SELECT * FROM media WHERE id = ? AND store_id = ?').get(Number(parts[2]), c.store);
     if (!row) fail(404, 'We couldn’t find that file.');
-    if (row.file) fs.rmSync(path.join(MEDIA_DIR, row.file), { force: true });
-    db.prepare('DELETE FROM media WHERE id = ?').run(row.id);
-    audit(db, u.id, 'delete media', row.file || row.youtube_id);
-    return sendJson(res, 200, { ok: true });
+    // Archived, not deleted: the file stays, so a page that used it still works and it can be restored.
+    db.prepare('UPDATE media SET archived_at = ?, archived_by = ? WHERE id = ?').run(now(), u.id, row.id);
+    audit(db, u.id, 'archive media', row.title || row.file || row.youtube_id, c.company);
+    return sendJson(res, 200, { ok: true, archived: true });
+  }
+  if (parts[1] === 'media' && parts[2] && parts[3] === 'restore' && m === 'POST') {
+    const u = needUser(c, req);
+    const row = db.prepare('SELECT * FROM media WHERE id = ? AND store_id = ?').get(Number(parts[2]), c.store);
+    if (!row) fail(404, 'We couldn’t find that file.');
+    db.prepare('UPDATE media SET archived_at = NULL, archived_by = NULL WHERE id = ?').run(row.id);
+    audit(db, u.id, 'restore media', row.title || row.file || row.youtube_id, c.company);
+    return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(row.id)));
   }
 
   if (p === '/api/audit' && m === 'GET') {

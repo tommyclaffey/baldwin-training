@@ -327,6 +327,7 @@ export function assemble(db, file) {
   const entry = /^e\d+$/.test(file) ? getEntry(db, Number(file.slice(1))) : null;
   // A page from another store's entries doesn't exist here (shared collections are everyone's).
   if (entry && !SHARED.has(entry.collection) && entry.storeId !== SCOPE.store) return null;
+  if (entry?.archivedAt) return null; // archived: out of the book until restored
   const page = assembleRaw(db, file);
   if (page?.empty) return page;
   if (page) wire(page, { entry, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });

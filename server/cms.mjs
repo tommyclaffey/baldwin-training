@@ -246,7 +246,7 @@ export function cleanEntry(collection, d = {}) {
 
 /* ------------------------------ storage ------------------------------ */
 const hash = (o) => crypto.createHash('sha1').update(JSON.stringify(o)).digest('hex').slice(0, 16);
-const rowOut = (r) => r && { id: r.id, collection: r.collection, slug: r.slug, data: JSON.parse(r.data), sort: r.sort, seeded: !!r.seed_key, updated_at: r.updated_at, edited: r.updated_by != null, storeId: r.store_id };
+const rowOut = (r) => r && { id: r.id, collection: r.collection, slug: r.slug, data: JSON.parse(r.data), sort: r.sort, seeded: !!r.seed_key, updated_at: r.updated_at, edited: r.updated_by != null, storeId: r.store_id, archivedAt: r.archived_at || null };
 
 /**
  * Seeds each collection from content/cms/<id>.json. A seed entry is added once; later seed changes
@@ -258,8 +258,11 @@ export function seed(db) {
     if (!fs.existsSync(file)) continue;
     const seeds = JSON.parse(fs.readFileSync(file, 'utf8'));
     const keys = new Set(seeds.map((s) => id + ':' + s.key));
-    for (const row of db.prepare('SELECT id, seed_key FROM entries WHERE collection = ? AND seed_key IS NOT NULL AND updated_by IS NULL').all(id)) {
-      if (!keys.has(row.seed_key)) db.prepare('DELETE FROM entries WHERE id = ?').run(row.id);
+    // Gone from the seed file (e.g. dropped from the Food Book): archived, never deleted. Back in the file: back in the book,
+    // unless a person archived it (archived_by is set).
+    for (const row of db.prepare('SELECT id, seed_key, archived_at, archived_by FROM entries WHERE collection = ? AND seed_key IS NOT NULL AND updated_by IS NULL').all(id)) {
+      if (!keys.has(row.seed_key) && !row.archived_at) db.prepare('UPDATE entries SET archived_at = ?, archived_by = NULL WHERE id = ?').run(now(), row.id);
+      else if (keys.has(row.seed_key) && row.archived_at && row.archived_by == null) db.prepare('UPDATE entries SET archived_at = NULL WHERE id = ?').run(row.id);
     }
     for (const s of seeds) {
       const data = cleanEntry(id, s.data);
@@ -305,10 +308,16 @@ export const SHARED = new Set(['classic']);
 export function listEntries(db, collection, store = null) {
   const own = store != null && !SHARED.has(collection);
   const rows = collection
-    ? (own ? db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id = ? ORDER BY sort, id').all(collection, store)
-      : db.prepare('SELECT * FROM entries WHERE collection = ? ORDER BY sort, id').all(collection))
-    : db.prepare('SELECT * FROM entries ORDER BY collection, sort, id').all();
+    ? (own ? db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id = ? AND archived_at IS NULL ORDER BY sort, id').all(collection, store)
+      : db.prepare('SELECT * FROM entries WHERE collection = ? AND archived_at IS NULL ORDER BY sort, id').all(collection))
+    : db.prepare('SELECT * FROM entries WHERE archived_at IS NULL ORDER BY collection, sort, id').all();
   return rows.map(rowOut);
+}
+/** The archive: entries taken out of the book, newest first, ready to restore. */
+export function listArchived(db, collection, store = null) {
+  const own = store != null && !SHARED.has(collection);
+  return (own ? db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id = ? AND archived_at IS NOT NULL ORDER BY archived_at DESC').all(collection, store)
+    : db.prepare('SELECT * FROM entries WHERE collection = ? AND archived_at IS NOT NULL ORDER BY archived_at DESC').all(collection)).map(rowOut);
 }
 export const getEntry = (db, id) => rowOut(db.prepare('SELECT * FROM entries WHERE id = ?').get(id));
 
@@ -341,12 +350,16 @@ export function updateEntry(db, id, data, userId) {
   return getEntry(db, id);
 }
 
-export function deleteEntry(db, id) {
+/** Takes an entry out of the book without losing it (Tommy, Oct 28: archive, don't delete). */
+export function archiveEntry(db, id, userId) {
   const r = db.prepare('SELECT * FROM entries WHERE id = ?').get(id);
   if (!r) return false;
-  if (r.seed_key) db.prepare('INSERT OR IGNORE INTO seed_removed(seed_key) VALUES (?)').run(r.seed_key);
-  db.prepare('DELETE FROM entries WHERE id = ?').run(id);
+  db.prepare('UPDATE entries SET archived_at = ?, archived_by = ? WHERE id = ?').run(now(), userId ?? 0, id);
   return true;
+}
+export function restoreEntry(db, id) {
+  db.prepare('UPDATE entries SET archived_at = NULL, archived_by = NULL WHERE id = ?').run(id);
+  return getEntry(db, id);
 }
 
 /** Moves an entry up or down within its group (family / course). */

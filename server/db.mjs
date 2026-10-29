@@ -143,6 +143,13 @@ const MIGRATIONS = [
   ALTER TABLE entries_new RENAME TO entries;
   CREATE INDEX entries_collection ON entries(store_id, collection, sort);
   `,
+  // 9 (Oct 28, Tommy: "archive instead of delete moving forward"): pages and media are archived, never deleted.
+  `
+  ALTER TABLE entries ADD COLUMN archived_at TEXT;
+  ALTER TABLE entries ADD COLUMN archived_by INT;
+  ALTER TABLE media ADD COLUMN archived_at TEXT;
+  ALTER TABLE media ADD COLUMN archived_by INT;
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

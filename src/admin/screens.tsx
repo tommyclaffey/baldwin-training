@@ -159,6 +159,8 @@ export function Overview() {
 /* ---------- media ---------- */
 export function MediaLibrary() {
   const { data, error, load, setData } = useLoad<{ media: MediaItem[] }>('/api/media');
+  const archive = useLoad<{ media: MediaItem[] }>('/api/media?archived=1');
+  const [showArchive, setShowArchive] = useState(false);
   const [link, setLink] = useState('');
   const [title, setTitle] = useState('');
   const [progress, setProgress] = useState<number | null>(null);
@@ -178,9 +180,14 @@ export function MediaLibrary() {
     try { add(await api<MediaItem>('/api/media/youtube', { method: 'POST', body: { url: link, title } })); setLink(''); setTitle(''); }
     catch (e2) { setErr((e2 as Error).message); }
   };
+  // Archive, never delete (Tommy, Oct 28): it leaves the library and the pickers, and can be restored.
   const remove = async (m: MediaItem) => {
-    if (!confirm(`Delete “${m.title}”? Any page using it will show an empty slot.`)) return;
-    try { await api(`/api/media/${m.id}`, { method: 'DELETE' }); setData({ media: (data?.media || []).filter((x) => x.id !== m.id) }); }
+    if (!confirm(`Archive “${m.title}”? It leaves the library and the pickers. Pages already using it keep it, and you can restore it from the Archive below.`)) return;
+    try { await api(`/api/media/${m.id}`, { method: 'DELETE' }); setData({ media: (data?.media || []).filter((x) => x.id !== m.id) }); archive.load(); }
+    catch (e) { setErr((e as Error).message); }
+  };
+  const restore = async (m: MediaItem) => {
+    try { add(await api<MediaItem>(`/api/media/${m.id}/restore`, { method: 'POST' })); archive.load(); }
     catch (e) { setErr((e as Error).message); }
   };
 
@@ -216,10 +223,28 @@ export function MediaLibrary() {
                 <strong title={m.title}>{m.title}</strong>
                 <small className="muted">{m.kind === 'youtube' ? 'YouTube' : m.mime?.startsWith('video/') ? `Video · ${mb(m.size)}` : `Photo · ${mb(m.size)}`}</small>
               </div>
-              <button className="link-btn danger" onClick={() => remove(m)}>Delete</button>
+              <button className="link-btn danger" onClick={() => remove(m)}>Archive</button>
             </div>
           ))}
         </div>
+      )}
+      {(archive.data?.media.length || 0) > 0 && (
+        <section className="stack-sm">
+          <button type="button" className="link-btn" aria-expanded={showArchive} onClick={() => setShowArchive((v) => !v)}>
+            {showArchive ? 'Hide' : 'Show'} the Archive ({archive.data!.media.length})
+          </button>
+          {showArchive && (
+            <div className="media-grid">
+              {archive.data!.media.map((m) => (
+                <div key={m.id} className="media-card archived">
+                  <span className="media-thumb">{m.mime?.startsWith('image/') && m.url ? <img src={m.url} alt="" /> : m.kind === 'youtube' ? <img src={`https://i.ytimg.com/vi/${m.youtubeId}/mqdefault.jpg`} alt="" /> : <span className="vid-icon">▶</span>}</span>
+                  <div className="media-meta"><strong title={m.title}>{m.title}</strong></div>
+                  <button className="link-btn" onClick={() => void restore(m)}>Restore</button>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
       )}
       {play && (
         <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) setPlay(null); }}>
@@ -435,7 +460,7 @@ export function Account() {
 
 /* ---------- activity ---------- */
 type Row = { id: number; name: string | null; action: string; detail: string | null; at: string };
-const ACTIONS: Record<string, string> = { 'joined with the code': 'Joined with the code:', 'reset PIN': 'Reset the PIN for', 'set a new PIN': 'Picked a new PIN', 'changed PIN': 'Changed their PIN', 'new join code': 'Made a new join code', 'change role': 'Changed a role:', 'remove person': 'Removed', rename: 'Renamed', 'two-step on': 'Turned on two-step sign-in', 'two-step off': 'Turned off two-step sign-in', 'set section': 'Set a section:', edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'sign off': 'Signed off', 'undo sign off': 'Undid a sign-off for', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail' };
+const ACTIONS: Record<string, string> = { 'joined with the code': 'Joined with the code:', 'reset PIN': 'Reset the PIN for', 'set a new PIN': 'Picked a new PIN', 'changed PIN': 'Changed their PIN', 'new join code': 'Made a new join code', 'change role': 'Changed a role:', 'remove person': 'Removed', rename: 'Renamed', 'two-step on': 'Turned on two-step sign-in', 'two-step off': 'Turned off two-step sign-in', 'set section': 'Set a section:', edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'archive media': 'Archived', 'restore media': 'Restored', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'sign off': 'Signed off', 'undo sign off': 'Undid a sign-off for', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail' };
 export function Activity() {
   const { data, error, load } = useLoad<{ audit: Row[] }>('/api/audit');
   const { index } = useSession();
