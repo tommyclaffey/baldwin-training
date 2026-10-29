@@ -226,7 +226,7 @@ export function BottleScannerPage() {
       {error && <p className="error" role="alert">{error}</p>}
       {wines && (
         <div className="row chip-row" role="tablist" aria-label="Show">
-          {([['all', `All ${wines.length}`], ['book', `Wine Book photo ${count('book')}`], ['scanned', `Scanned ${count('scanned')}`], ['none', `No photo ${count('none')}`]] as const).map(([k, l]) => (
+          {([['all', `All ${wines.length}`], ['scanned', `Scanned ${count('scanned')}`], ['none', `No photo ${count('none')}`]] as const).map(([k, l]) => (
             <button key={k} role="tab" aria-selected={show === k} className={'chip' + (show === k ? ' on' : '')} onClick={() => setShow(k)}>{l}</button>
           ))}
         </div>
@@ -238,7 +238,7 @@ export function BottleScannerPage() {
             <span className="scan-thumb">{w.data.bottle_img ? <img src={w.data.bottle_img} alt="" loading="lazy" /> : <span className="muted small">No photo</span>}</span>
             <strong>{w.data.name}</strong>
             <small className="muted">{[w.data.grape, w.data.region].filter(Boolean).join(' · ')}</small>
-            <small className={'scan-src ' + kind(w)}>{kind(w) === 'scanned' ? w.data.source : kind(w) === 'book' ? 'Wine Book photo' : 'No photo yet'}</small>
+            <small className={'scan-src ' + kind(w)}>{kind(w) === 'scanned' ? w.data.source : 'No photo yet'}</small>
           </button>
         ))}
       </div>

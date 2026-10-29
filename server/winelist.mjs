@@ -201,7 +201,7 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
     bottle.n = 'IMG/Bottle · ' + d.name;
   }
   const src = find(main, byName('Source'));
-  if (src && !/wine book/i.test(d.source || '')) { if (d.bottle_img) setText(src, ''); else setText(src, 'PHOTO TO COME'); }
+  if (src) setText(src, d.bottle_img ? '' : 'PHOTO TO COME');
   const tags = find(main, byName('Tags'));
   if (tags) {
     const [p1, p2] = tags.c;
