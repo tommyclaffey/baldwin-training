@@ -91,7 +91,7 @@ export function SearchBox({ style }: { style?: CSSProperties }) {
         aria-controls={listId}
         aria-autocomplete="list"
         aria-activedescendant={show && results[active] ? `${listId}-${active}` : undefined}
-        aria-label="Search the training book"
+        aria-label="Search the training app"
         placeholder="Search dishes, drinks, wine, service…"
         value={q}
         onChange={(e) => { setQ(e.target.value); setOpen(true); setActive(0); }}
