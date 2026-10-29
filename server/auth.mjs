@@ -46,7 +46,7 @@ export function createSession(db, userId, { days = SESSION_DAYS, impersonator = 
 /** The signed-in person, with their session's support and acting-company details. Deleted people and companies are out. */
 export function sessionUser(db, token) {
   if (!token) return null;
-  return db.prepare(`SELECT u.*, s.impersonator_id, s.acting_company_id, c.name company_name
+  return db.prepare(`SELECT u.*, s.impersonator_id, s.acting_company_id, s.acting_store_id, c.name company_name
       FROM sessions s JOIN users u ON u.id = s.user_id LEFT JOIN companies c ON c.id = u.company_id
       WHERE s.token_hash = ? AND s.expires_at > ? AND u.deleted_at IS NULL AND (u.company_id IS NULL OR c.deleted_at IS NULL)`)
     .get(sha256(token), now()) || null;
@@ -74,7 +74,7 @@ export class LoginLimiter {
 /** Public shape of a user. Never includes password, PIN or two-step secrets. */
 export const publicUser = (u) => u && {
   id: u.id, name: u.name, email: u.email, role: u.role, companyId: u.company_id ?? null, companyName: u.company_name ?? null,
-  totpOn: !!u.totp_on, superPrimary: !!u.super_primary, impersonatedBy: u.impersonator_id ?? null,
+  totpOn: !!u.totp_on, superPrimary: !!u.super_primary, impersonatedBy: u.impersonator_id ?? null, storeId: u.store_id ?? null,
 };
 
 /* ---- Two-step sign-in (TOTP, RFC 6238: 6 digits, 30 s steps, SHA-1, the usual authenticator apps) ---- */

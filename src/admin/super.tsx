@@ -6,7 +6,7 @@ import { api, ROLE_LABEL, type Role } from '../lib/api';
 import { useSession } from '../lib/session';
 import { ErrorNote, Loading, Text, when } from './ui';
 
-type Company = { id: number; name: string; slug: string; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null };
+type Company = { id: number; name: string; slug: string; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number }[] };
 type Person = { id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null; createdAt: string; lastSeenAt: string | null; deletedAt: string | null; hasPin: boolean; totpOn: boolean; superPrimary: boolean };
 type Overview = { companies: Company[]; admins: Person[]; you: number; youPrimary: boolean; workingIn: number };
 
@@ -78,7 +78,12 @@ function Companies() {
         <thead><tr><th>Company</th><th>Owners and managers</th><th>Staff</th><th>Join code</th><th>Last active</th><th /></tr></thead>
         <tbody>{data.companies.map((c) => (
           <tr key={c.id} className={c.deletedAt ? 'is-deleted' : ''}>
-            <td><strong>{c.name}</strong>{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <small className="error"> · deleted, {daysLeft(c.deletedAt)} days to restore</small>}</td>
+            <td><strong>{c.name}</strong>{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <small className="error"> · deleted, {daysLeft(c.deletedAt)} days to restore</small>}
+              <ul className="store-list">{c.stores.map((st) => (
+                <li key={st.id}>{st.name} <small className="muted">· {st.staff} staff · {st.bookReady ? 'book built' : 'book coming'}</small>{' '}
+                  {!c.deletedAt && <button className="link-btn" onClick={() => { const n = prompt('Store name', st.name); if (n && n !== st.name) void run(() => api(`/api/super/stores/${st.id}`, { method: 'PATCH', body: { name: n } })); }}>Rename</button>}</li>
+              ))}
+              {!c.deletedAt && <li><button className="link-btn" onClick={() => { const n = prompt(`New store for ${c.name}`); if (n) void run(() => api(`/api/super/companies/${c.id}/stores`, { method: 'POST', body: { name: n } })); }}>+ Add Store</button></li>}</ul></td>
             <td>{c.leads}</td><td>{c.staff}</td><td><code>{c.joinCode}</code></td><td>{when(c.lastSeenAt)}</td>
             <td className="row-actions">
               {c.deletedAt

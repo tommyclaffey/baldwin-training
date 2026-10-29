@@ -139,6 +139,16 @@ export function AcceptInvite() {
 export function Overview() {
   const { user } = useSession();
   const { data } = useCollections();
+  if (user?.store && !user.store.bookReady) return (
+    <div className="admin-page">
+      <h1>{user.store.name}</h1>
+      <p className="muted">The book for {user.store.name} isn’t built yet, so there’s nothing to edit here. Its own menu, cocktails and look come next. In the meantime its people can join (they pick {user.store.name} with the join code), and you can see them on the Team page.</p>
+      <div className="tiles">
+        <Link className="tile" to="/admin/team"><strong>Team</strong><span>People at {user.store.name}, the join code, invites.</span></Link>
+        <Link className="tile" to="/admin/quizzes"><strong>Quiz results</strong><span>Scores and sign-offs for {user.store.name}.</span></Link>
+      </div>
+    </div>
+  );
   const media = useLoad<{ media: MediaItem[] }>('/api/media');
   return (
     <div className="admin-page">
@@ -237,13 +247,16 @@ export function MediaLibrary() {
 const mb = (n: number | null) => (n ? (n > 1e6 ? `${(n / 1e6).toFixed(1)} MB` : `${Math.round(n / 1e3)} KB`) : '');
 
 /* ---------- team ---------- */
-type Member = { id: number; name: string; email: string | null; role: Role; createdAt: string; lastSeenAt: string | null; hasPin: boolean; signedOff: number };
-type Invite = { id: string; email: string; role: string; created_at: string; expires_at: string };
-type TeamData = { company: { id: number; name: string; joinCode: string }; people: Member[]; invites: Invite[]; you: number; youRole: Role };
+type Member = { id: number; name: string; email: string | null; role: Role; createdAt: string; lastSeenAt: string | null; hasPin: boolean; signedOff: number; storeId: number | null; storeName: string | null; canManage: boolean };
+type Invite = { id: string; email: string; role: string; created_at: string; expires_at: string; storeName: string | null };
+type StoreRow = { id: number; name: string; bookReady: boolean };
+type TeamData = { company: { id: number; name: string; joinCode: string }; stores: StoreRow[]; yourStore: number | null; people: Member[]; invites: Invite[]; you: number; youRole: Role };
 export function People() {
   const { data, error, load } = useLoad<TeamData>('/api/team');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('manager');
+  const [inviteStore, setInviteStore] = useState('');
+  const [show, setShow] = useState<number | 'all'>('all');
   const [made, setMade] = useState<{ link: string; email: string } | null>(null);
   const [err, setErr] = useState('');
   const [note, setNote] = useState('');
@@ -254,26 +267,29 @@ export function People() {
 
   const invite = async (e: FormEvent) => {
     e.preventDefault(); setErr(''); setCopied('');
-    try { const r = await api<{ link: string; email: string }>('/api/team/invite', { method: 'POST', body: { email, role } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); load(); }
+    try { const r = await api<{ link: string; email: string }>('/api/team/invite', { method: 'POST', body: { email, role, storeId: role === 'manager' && inviteStore ? Number(inviteStore) : null } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); load(); }
     catch (e2) { setErr((e2 as Error).message); }
   };
   if (error) return <div className="admin-page"><ErrorNote error={error} retry={load} /></div>;
   if (!data) return <div className="admin-page"><Loading /></div>;
+  const switcher = !data.yourStore && data.youRole !== 'staff';
+  const multi = data.stores.length > 1;
   const leads = data.people.filter((p) => p.role !== 'staff');
-  const staff = data.people.filter((p) => p.role === 'staff');
+  const staff = data.people.filter((p) => p.role === 'staff' && (show === 'all' || p.storeId === show));
+  const move = (p: Member, storeId: number | null) => void run(() => api(`/api/team/${p.id}`, { method: 'PATCH', body: { storeId } }), `${p.name} moved to ${storeId ? data.stores.find((x) => x.id === storeId)?.name : 'every store'}.`);
   const joinUrl = location.origin + '/';
 
   return (
     <div className="admin-page">
       <h1>Team</h1>
-      <p className="muted">{data.company.name}. Owners and managers sign in with email; staff join with the code below and a PIN.</p>
+      <p className="muted">{data.company.name}{multi ? ` · ${data.stores.map((x) => x.name).join(', ')}` : ''}. Owners and managers sign in with email; staff join with the code below, pick their restaurant, and use a PIN.</p>
       {err && <ErrorNote error={err} />}
       {note && <p className="ok" role="status">{note}</p>}
 
       <section className="card stack">
         <h2>Staff join code</h2>
         <div className="join-code" aria-label="Join code">{data.company.joinCode}</div>
-        <p className="muted small">Staff open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong>, type this code, pick their name (or “I’m New Here”) and a PIN. Share it at line-up or post it in the back of house.</p>
+        <p className="muted small">Staff open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong>, type this code, {multi ? 'pick their restaurant, ' : ''}pick their name (or “I’m New Here”) and a PIN. One code for {multi ? 'every restaurant in the group' : 'the whole team'}. Share it at line-up or post it in the back of house.</p>
         <div className="row">
           <button className="btn ghost" onClick={() => copy(`Join the Baldwin training book: ${joinUrl}  Join code: ${data.company.joinCode}`, 'code')}>{copied === 'code' ? 'Copied' : 'Copy Code and Link'}</button>
           <button className="link-btn danger" onClick={() => { if (confirm('Make a new join code? The old one stops working. People already signed in stay signed in.')) void run(() => api('/api/team/join-code', { method: 'POST' }), 'New join code made.'); }}>New Code</button>
@@ -281,18 +297,26 @@ export function People() {
       </section>
 
       <h2 className="sub">Staff · {staff.length}</h2>
+      {switcher && multi && (
+        <div className="row chip-row" role="tablist" aria-label="Show staff from">
+          {[{ id: 'all' as const, name: 'All stores' }, ...data.stores].map((x) => <button key={x.id} role="tab" aria-selected={show === x.id} className={'chip' + (show === x.id ? ' on' : '')} onClick={() => setShow(x.id)}>{x.name}</button>)}
+        </div>
+      )}
       {staff.length === 0 && <p className="muted small">No one has joined yet. Share the join code.</p>}
       {staff.length > 0 && (
         <table className="table">
-          <thead><tr><th>Name</th><th>Signed off</th><th>Joined</th><th>Last seen</th><th /></tr></thead>
+          <thead><tr><th>Name</th>{multi && <th>Store</th>}<th>Signed off</th><th>Joined</th><th>Last seen</th><th /></tr></thead>
           <tbody>{staff.map((p) => (
             <tr key={p.id}>
               <td>{p.name}{!p.hasPin && <small className="muted"> · picking a new PIN</small>}</td>
+              {multi && <td>{switcher && p.canManage
+                ? <select aria-label={`${p.name}’s store`} value={p.storeId ?? ''} onChange={(e) => move(p, Number(e.target.value))}>{data.stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select>
+                : p.storeName}</td>}
               <td>{p.signedOff}</td><td>{when(p.createdAt)}</td><td>{when(p.lastSeenAt)}</td>
-              <td className="row-actions">
+              <td className="row-actions">{p.canManage && <>
                 <button className="link-btn" onClick={() => { if (confirm(`Reset ${p.name}’s PIN? They’re signed out and pick a new PIN next time.`)) void run(() => api(`/api/team/${p.id}/reset-pin`, { method: 'POST' }), `${p.name} picks a new PIN next time they sign in.`); }}>Reset PIN</button>
                 <button className="link-btn danger" onClick={() => { if (confirm(`Remove ${p.name}? They’re signed out right away.`)) void run(() => api(`/api/team/${p.id}`, { method: 'DELETE' })); }}>Remove</button>
-              </td>
+              </>}</td>
             </tr>
           ))}</tbody>
         </table>
@@ -300,13 +324,17 @@ export function People() {
 
       <h2 className="sub">Owners and managers · {leads.length}</h2>
       <table className="table">
-        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Last seen</th><th /></tr></thead>
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th>{multi && <th>Store</th>}<th>Last seen</th><th /></tr></thead>
         <tbody>{leads.map((p) => (
           <tr key={p.id}>
             <td>{p.name}{p.id === data.you && <small className="muted"> · you</small>}</td><td>{p.email}</td>
             <td>{owner && p.id !== data.you
               ? <select aria-label={`${p.name}’s role`} value={p.role} onChange={(e) => void run(() => api(`/api/team/${p.id}`, { method: 'PATCH', body: { role: e.target.value } }))}><option value="owner">Owner</option><option value="manager">Manager</option></select>
               : ROLE_LABEL[p.role]}</td>
+            {multi && <td>{p.role === 'owner' ? 'Every store'
+              : owner && p.id !== data.you
+                ? <select aria-label={`${p.name}’s stores`} value={p.storeId ?? ''} onChange={(e) => move(p, e.target.value ? Number(e.target.value) : null)}><option value="">Every store</option>{data.stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select>
+                : p.storeName || 'Every store'}</td>}
             <td>{when(p.lastSeenAt)}</td>
             <td>{owner && p.id !== data.you && <button className="link-btn danger" onClick={() => { if (confirm(`Remove ${p.name}? They’re signed out and can’t edit anymore.`)) void run(() => api(`/api/team/${p.id}`, { method: 'DELETE' })); }}>Remove</button>}</td>
           </tr>
@@ -318,8 +346,11 @@ export function People() {
           <form className="card invite-form" onSubmit={invite}>
             <Text label="Invite an owner or manager by email" value={email} placeholder="manager@thebaldwinshelby.com" onChange={setEmail} />
             <label className="field"><span>Role</span>
-              <select value={role} onChange={(e) => setRole(e.target.value)}><option value="manager">Manager: edits the book, signs people off, manages staff</option><option value="owner">Owner: also manages owners and managers</option></select>
+              <select value={role} onChange={(e) => setRole(e.target.value)}><option value="manager">Manager: edits the book, signs people off, manages staff</option><option value="owner">Owner: every store, plus owners and managers</option></select>
             </label>
+            {multi && role === 'manager' && <label className="field"><span>Store</span>
+              <select value={inviteStore} onChange={(e) => setInviteStore(e.target.value)}><option value="">Every store</option>{data.stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select>
+            </label>}
             <button className="btn" disabled={!email.trim()}>Create Invite Link</button>
           </form>
           {made && (
@@ -334,7 +365,7 @@ export function People() {
               <table className="table">
                 <thead><tr><th>Email</th><th>Role</th><th>Expires</th><th /></tr></thead>
                 <tbody>{data.invites.map((i) => (
-                  <tr key={i.id}><td>{i.email}</td><td>{ROLE_LABEL[i.role as Role] || i.role}</td><td>{when(i.expires_at)}</td><td><button className="link-btn danger" onClick={() => void run(() => api(`/api/team/invites/${i.id}`, { method: 'DELETE' }))}>Cancel</button></td></tr>
+                  <tr key={i.id}><td>{i.email}</td><td>{ROLE_LABEL[i.role as Role] || i.role}{i.storeName ? ` · ${i.storeName}` : ''}</td><td>{when(i.expires_at)}</td><td><button className="link-btn danger" onClick={() => void run(() => api(`/api/team/invites/${i.id}`, { method: 'DELETE' }))}>Cancel</button></td></tr>
                 ))}</tbody>
               </table>
             </>
@@ -445,7 +476,7 @@ export function Activity() {
 /* ---------- quiz results ---------- */
 type QuizPerson = { device: string; name: string; lastAt: string; quizzes: Record<string, { best: number; total: number; attempts: number; lastAt: string }>; signoffs: Record<string, { at: string; by: string | null }> };
 export function QuizResults() {
-  const { data, error, load } = useLoad<{ people: QuizPerson[] }>('/api/quiz/results');
+  const { data, error, load } = useLoad<{ people: QuizPerson[]; store: string | null }>('/api/quiz/results');
   const [open, setOpen] = useState<string | null>(null);
   const [err, setErr] = useState('');
   const toggle = async (p: QuizPerson, quiz: string, on: boolean) => {
@@ -455,7 +486,7 @@ export function QuizResults() {
   };
   return (
     <div className="admin-page">
-      <h1>Quiz results</h1>
+      <h1>Quiz results{data?.store ? ` · ${data.store}` : ''}</h1>
       <p className="muted">Everyone who has taken a quiz. Sign someone off once they’ve passed and shown you they can plate it or describe it at the table.</p>
       {(error || err) && <ErrorNote error={err || error} retry={error ? load : undefined} />}
       {!data && !error && <Loading />}

@@ -138,7 +138,7 @@ test('invites: owners invite managers, links work once, managers can’t invite'
 test('quiz scores are checked by the server, and a manager can sign off', async () => {
   const code = (await call('/api/team')).data.company.joinCode;
   const sam = person();
-  assert.equal((await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Server', pin: '4321' } })).status, 200);
+  assert.equal((await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Server', pin: '4321', storeId: 1 } })).status, 200);
   const items = [0, 1, 2, 3, 4].map((i) => `short-rib#${i}`);
   const r = await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items, answers: [1, 1, 3, 0, 2] } });
   assert.equal(r.status, 200);
@@ -264,7 +264,7 @@ test('working controls: Food Matrix filters, photo chips, cleaning checklist, si
 test('tonight’s sections: the team reads them, only a manager sets them', async () => {
   const code = (await call('/api/team')).data.company.joinCode;
   const ana = person();
-  await ana('/api/join', { method: 'POST', body: { code, name: 'Ana Host', pin: '2468' } });
+  await ana('/api/join', { method: 'POST', body: { code, name: 'Ana Host', pin: '2468', storeId: 1 } });
   assert.equal((await call('/api/sections', { auth: false })).status, 401);
   assert.equal((await ana('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Ana' } })).status, 403, 'staff can’t set sections');
   assert.equal((await call('/api/sections', { method: 'PUT', body: { slot: 'Kitchen 9', name: 'Ana' } })).status, 400);

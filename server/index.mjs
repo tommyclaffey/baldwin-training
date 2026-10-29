@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { sessionUser, SESSION_COOKIE, LoginLimiter } from './auth.mjs';
-import { accountRoutes, bootAccounts, companyOf, canEdit } from './accounts.mjs';
+import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
 import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebarCounts } from './content.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, publicSchemas, seed, listEntries, getEntry, createEntry, updateEntry, deleteEntry, moveEntry } from './cms.mjs';
@@ -56,7 +56,8 @@ const ctx = (req) => {
   const token = cookies(req)[SESSION_COOKIE];
   const user = sessionUser(db, token);
   if (user) db.prepare('UPDATE users SET last_seen_at = ? WHERE id = ?').run(now(), user.id);
-  return { token, user, company: companyOf(user) };
+  const store = user ? storeOf(db, user) : null;
+  return { token, user, company: companyOf(user), store: store?.id ?? null, storeRow: store };
 };
 /** Tonight, in the restaurant's time zone (Metro Detroit). */
 const restaurantDay = () => new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
@@ -76,7 +77,14 @@ function needUser(c, req) {
 }
 const needOwner = (c, req) => { const u = needUser(c, req); if (u.role !== 'owner' && u.role !== 'superadmin') fail(403, 'Only an owner can do that.'); return u; };
 /** The book's content is Baldwin's for now; another company's book is set up when the app opens to more companies. */
-const needBook = (c, req) => { const u = needReader(c, req); if (c.company !== 1) fail(404, 'Your company’s book isn’t set up yet. We’ll let you know when it’s ready.'); return u; };
+/** Each store has its own book. The Baldwin's is built; a store whose book isn't ready says so. */
+const needBook = (c, req) => {
+  const u = needReader(c, req);
+  if (!c.storeRow?.book_ready) fail(404, `The book for ${c.storeRow?.name || 'your store'} isn’t set up yet. We’ll let you know when it’s ready.`);
+  return u;
+};
+/** Editing the book: a manager, in a store whose book is built (the content belongs to that store). */
+const needEditor = (c, req) => { const u = needUser(c, req); if (!c.storeRow?.book_ready) fail(404, `The book for ${c.storeRow?.name || 'this store'} isn’t set up yet, so there’s nothing to edit here. Switch to The Baldwin.`); return u; };
 
 const clean = (s, max = 4000) => String(s ?? '').slice(0, max);
 const validEmail = (e) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(e || ''));
@@ -119,8 +127,8 @@ async function api(req, res, url) {
     const r = scoreQuiz(String(b.quiz || ''), b.items, b.answers);
     if (!r) fail(400, 'That quiz didn’t match. Reload and try again.');
     quizLimiter.record('u' + u.id);
-    db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id) VALUES (?,?,?,?,?,?,?,?,?)')
-      .run('u' + u.id, u.name, b.quiz, r.score, r.total, JSON.stringify({ items: b.items, answers: b.answers.map(Number) }), now(), c.company, u.id);
+    db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
+      .run('u' + u.id, u.name, b.quiz, r.score, r.total, JSON.stringify({ items: b.items, answers: b.answers.map(Number) }), now(), c.company, u.id, c.store);
     return sendJson(res, 200, r);
   }
   if (p === '/api/quiz/mine' && m === 'GET') {
@@ -131,17 +139,17 @@ async function api(req, res, url) {
   }
   if (p === '/api/quiz/results' && m === 'GET') {
     needUser(c, req);
-    return sendJson(res, 200, { people: quizResults(db, c.company) });
+    return sendJson(res, 200, { people: quizResults(db, c.store), store: c.storeRow?.name || null });
   }
   if (p === '/api/quiz/signoff' && (m === 'POST' || m === 'DELETE')) {
     const u = needUser(c, req);
     const b = await readJson(req);
     const dev = String(b.device || ''), quiz = String(b.quiz || '');
     if (!/^[A-Za-z0-9_-]{2,64}$/.test(dev) || !quizIds.has(quiz)) fail(400, 'Missing person or quiz.');
-    const who = db.prepare('SELECT name FROM quiz_attempts WHERE device = ? AND company_id = ? ORDER BY id DESC LIMIT 1').get(dev, c.company);
+    const who = db.prepare('SELECT name FROM quiz_attempts WHERE device = ? AND store_id = ? ORDER BY id DESC LIMIT 1').get(dev, c.store);
     if (!who) fail(404, 'We couldn’t find that person.');
-    if (m === 'POST') db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at,company_id) VALUES (?,?,?,?,?)').run(dev, quiz, u.id, now(), c.company);
-    else db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ? AND company_id = ?').run(dev, quiz, c.company);
+    if (m === 'POST') db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at,company_id,store_id) VALUES (?,?,?,?,?,?)').run(dev, quiz, u.id, now(), c.company, c.store);
+    else db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').run(dev, quiz, c.store);
     audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${who.name} · ${quiz}`, c.company);
     return sendJson(res, 200, { ok: true });
   }
@@ -157,7 +165,7 @@ async function api(req, res, url) {
   }
   /* CMS: collections and their pages */
   if (p === '/api/collections' && m === 'GET') {
-    needUser(c, req);
+    needEditor(c, req);
     const counts = Object.fromEntries(Object.keys(COLLECTIONS).map((id) => [id, listEntries(db, id).length]));
     const schemas = publicSchemas();
     const gc = schemas.classic.fields.find((f) => f.key === 'glassCard');
@@ -165,13 +173,13 @@ async function api(req, res, url) {
     return sendJson(res, 200, { collections: schemas, counts });
   }
   if (p === '/api/entries' && m === 'GET') {
-    needUser(c, req);
+    needEditor(c, req);
     const col = url.searchParams.get('collection');
     if (!COLLECTIONS[col]) fail(400, 'Unknown collection.');
     return sendJson(res, 200, { entries: ordered(db, col) });
   }
   if (p === '/api/entries' && m === 'POST') {
-    const u = needUser(c, req);
+    const u = needEditor(c, req);
     const b = await readJson(req);
     if (!COLLECTIONS[b.collection]) fail(400, 'Unknown collection.');
     if (!str(b.data?.name, 120)) fail(400, 'Give it a name.');
@@ -180,7 +188,7 @@ async function api(req, res, url) {
     return sendJson(res, 200, e);
   }
   if (parts[1] === 'entries' && parts[2]) {
-    const u = needUser(c, req);
+    const u = needEditor(c, req);
     const e = getEntry(db, Number(parts[2]));
     if (!e) fail(404, 'We couldn’t find that page.');
     if (m === 'GET') return sendJson(res, 200, e);
@@ -207,7 +215,7 @@ async function api(req, res, url) {
   if (p === '/api/sections' && m === 'GET') {
     needReader(c, req);
     const day = restaurantDay();
-    const rows = db.prepare('SELECT slot, name FROM sections WHERE day = ? AND company_id = ?').all(day, c.company);
+    const rows = db.prepare('SELECT slot, name FROM sections WHERE day = ? AND store_id = ?').all(day, c.store);
     return sendJson(res, 200, { day, names: Object.fromEntries(rows.map((r) => [r.slot, r.name])) });
   }
   if (p === '/api/sections' && m === 'PUT') {
@@ -216,19 +224,19 @@ async function api(req, res, url) {
     const slot = str(b.slot, 40), name = str(b.name, 60).trim();
     if (!/^(Servers|Bar|Support) \d$/.test(slot)) fail(400, 'We couldn’t find that section.');
     const day = restaurantDay();
-    if (name) db.prepare('INSERT OR REPLACE INTO sections(company_id,day,slot,name,by_user,at) VALUES (?,?,?,?,?,?)').run(c.company, day, slot, name, u.id, now());
-    else db.prepare('DELETE FROM sections WHERE company_id = ? AND day = ? AND slot = ?').run(c.company, day, slot);
+    if (name) db.prepare('INSERT OR REPLACE INTO sections(company_id,store_id,day,slot,name,by_user,at) VALUES (?,?,?,?,?,?,?)').run(c.company, c.store, day, slot, name, u.id, now());
+    else db.prepare('DELETE FROM sections WHERE store_id = ? AND day = ? AND slot = ?').run(c.store, day, slot);
     audit(db, u.id, 'set section', `${day} · ${slot} · ${name || 'Unassigned'}`, c.company);
     return sendJson(res, 200, { ok: true, day, slot, name });
   }
   if (p === '/api/wine-videos' && m === 'GET') {
-    needUser(c, req);
+    needEditor(c, req);
     const vids = wineVideos(db);
     const groups = wineTargets(baseIndex(), basePage).map((g) => ({ ...g, items: g.items.map((it) => ({ ...it, ...(vids.get(it.key) || { video: null, note: '' }) })) }));
     return sendJson(res, 200, { groups });
   }
   if (p === '/api/wine-videos' && m === 'PUT') {
-    const u = needUser(c, req);
+    const u = needEditor(c, req);
     const b = await readJson(req);
     const target = wineTargets(baseIndex(), basePage).flatMap((g) => g.items).find((it) => it.key === b.key);
     if (!target) fail(400, 'We couldn’t find that wine page.');
@@ -241,12 +249,12 @@ async function api(req, res, url) {
 
   /* Bottle scanner (admin): photo → just the bottle, on the Wine Book beige → a media file. */
   if (p === '/api/scan/ready' && m === 'POST') {
-    needUser(c, req);
+    needEditor(c, req);
     warmScanner();
     return sendJson(res, 200, { ok: true });
   }
   if (p === '/api/scan' && m === 'POST') {
-    needUser(c, req);
+    needEditor(c, req);
     const mime = String(req.headers['content-type'] || '').split(';')[0].trim();
     if (!/^image\/(jpeg|png|webp|heic|heif)$/.test(mime)) fail(415, 'Take a photo, or upload a JPG, PNG or WebP.');
     const chunks = []; let size = 0;
@@ -255,21 +263,21 @@ async function api(req, res, url) {
     catch (e) { console.error('scan', e); fail(e.status || 500, e.status ? e.message : 'The scanner couldn’t read that photo. Try another.'); }
   }
   if (p === '/api/scan/cut' && m === 'POST') {
-    needUser(c, req);
+    needEditor(c, req);
     const b = await readJson(req);
     if (!Array.isArray(b.box) || b.box.length !== 4) fail(400, 'Draw a box around the bottle.');
     try { const jpg = await cutScan(String(b.token || ''), b.box); return sendJson(res, 200, { preview: 'data:image/jpeg;base64,' + jpg.toString('base64') }); }
     catch (e) { if (!e.status) console.error('cut', e); fail(e.status || 500, e.status ? e.message : 'The scanner couldn’t cut that out. Try a new box.'); }
   }
   if (p === '/api/scan/keep' && m === 'POST') {
-    const u = needUser(c, req);
+    const u = needEditor(c, req);
     const b = await readJson(req);
     const jpg = lastCut(String(b.token || ''));
     if (!jpg) fail(410, 'That photo has expired. Take it again.');
     const name = str(b.name, 80) || 'Bottle';
     const file = `${Date.now().toString(36)}-bottle-${slugify(name).slice(0, 40) || 'scan'}.jpg`;
     fs.writeFileSync(path.join(MEDIA_DIR, file), jpg);
-    const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id) VALUES (?,?,?,?,?,?,?,?)').run('file', `Bottle · ${name}`, file, 'image/jpeg', jpg.length, u.id, now(), c.company);
+    const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)').run('file', `Bottle · ${name}`, file, 'image/jpeg', jpg.length, u.id, now(), c.company, c.store);
     audit(db, u.id, 'scan bottle', name);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
   }
@@ -277,14 +285,14 @@ async function api(req, res, url) {
   /* media */
   if (p === '/api/media' && m === 'GET') {
     needUser(c, req);
-    return sendJson(res, 200, { media: db.prepare('SELECT * FROM media WHERE company_id = ? ORDER BY id DESC').all(c.company).map(mediaOut) });
+    return sendJson(res, 200, { media: db.prepare('SELECT * FROM media WHERE store_id = ? ORDER BY id DESC').all(c.store).map(mediaOut) });
   }
   if (p === '/api/media/youtube' && m === 'POST') {
     const u = needUser(c, req);
     const b = await readJson(req);
     const id = youtubeId(b.url);
     if (!id) fail(400, 'That doesn’t look like a YouTube link. Copy the link from the Share button.');
-    const r = db.prepare('INSERT INTO media(kind,title,youtube_id,created_by,created_at,company_id) VALUES (?,?,?,?,?,?)').run('youtube', str(b.title, 200) || 'YouTube video', id, u.id, now(), c.company);
+    const r = db.prepare('INSERT INTO media(kind,title,youtube_id,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?)').run('youtube', str(b.title, 200) || 'YouTube video', id, u.id, now(), c.company, c.store);
     audit(db, u.id, 'add youtube', id);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
   }
@@ -308,13 +316,13 @@ async function api(req, res, url) {
       req.on('error', reject);
     });
     const size = fs.statSync(dest).size;
-    const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id) VALUES (?,?,?,?,?,?,?,?)').run('file', original, file, mime, size, u.id, now(), c.company);
+    const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)').run('file', original, file, mime, size, u.id, now(), c.company, c.store);
     audit(db, u.id, 'upload', file);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
   }
   if (parts[1] === 'media' && parts[2] && m === 'DELETE') {
     const u = needUser(c, req);
-    const row = db.prepare('SELECT * FROM media WHERE id = ? AND company_id = ?').get(Number(parts[2]), c.company);
+    const row = db.prepare('SELECT * FROM media WHERE id = ? AND store_id = ?').get(Number(parts[2]), c.store);
     if (!row) fail(404, 'We couldn’t find that file.');
     if (row.file) fs.rmSync(path.join(MEDIA_DIR, row.file), { force: true });
     db.prepare('DELETE FROM media WHERE id = ?').run(row.id);
