@@ -35,8 +35,11 @@ export function wineStructure(d) {
   return head ? head + (tail ? ' with ' + tail : '') : '';
 }
 export function wineDescription(d) {
+  // The Wine Book's own wording comes first (Tommy, Oct 29: "do the book version"); the built sentence
+  // is only for a wine with no tasting notes.
+  if ((d.notes || '').trim()) return d.notes.trim();
   const s = (d.structure || wineStructure(d)).trim(), m = (d.mouthfeel || '').trim(), f = (d.fruit || '').trim();
-  if (!m && !f) return d.notes || '';
+  if (!m && !f) return '';
   const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
   // "Light-bodied and dry with bright acidity; lively and light, with green apple, pear and white flowers."
   const feel = [m, f && `with ${f}`].filter(Boolean).join(', ');
@@ -155,10 +158,10 @@ export const COLLECTIONS = {
       { key: 'pages', label: 'Shows on these pages', type: 'tags', section: 'Where it shows', hint: 'Grape, style or region pages by name, e.g. Cabernet, Napa Valley, Prosecco. It also shows on its country and colour pages.' },
       { key: 'bottle_img', label: 'Bottle photo', type: 'photo', scan: true, section: 'Tasting', hint: 'Scan Bottle: take a photo of your own bottle and it cuts out just the bottle. Never use photos from a winery’s or shop’s website.' },
       { key: 'style', label: 'Style tag', type: 'text', max: 30, section: 'Tasting', placeholder: 'Crisp, Off-dry, Big and bold' },
-      { key: 'structure', label: 'Description · structure', type: 'text', max: 120, section: 'Tasting', hint: 'Leave empty to build it from the body, sweetness, acidity and tannin ratings.' },
-      { key: 'mouthfeel', label: 'Description · mouthfeel', type: 'text', max: 120, section: 'Tasting', placeholder: 'silky and round' },
-      { key: 'fruit', label: 'Description · fruit', type: 'text', max: 160, section: 'Tasting', placeholder: 'black cherry, plum and vanilla' },
-      { key: 'notes', label: 'Old tasting notes (shown only when mouthfeel and fruit are empty)', type: 'textarea', max: 300, section: 'Tasting' },
+      { key: 'notes', label: 'Tasting notes (from the Wine Book)', type: 'textarea', max: 300, section: 'Tasting', hint: 'Shown on the wine’s page as written.' },
+      { key: 'structure', label: 'No notes? Structure', type: 'text', max: 120, section: 'Tasting', hint: 'Only used when Tasting notes is empty. Leave empty to build it from the ratings.' },
+      { key: 'mouthfeel', label: 'No notes? Mouthfeel', type: 'text', max: 120, section: 'Tasting', placeholder: 'silky and round' },
+      { key: 'fruit', label: 'No notes? Fruit', type: 'text', max: 160, section: 'Tasting', placeholder: 'black cherry, plum and vanilla' },
       { key: 'pairs', label: 'Pairs with', type: 'text', max: 160, section: 'Tasting', hint: 'Dishes from our menu, separated by commas.' },
       { key: 'say', label: 'Say it at the table', type: 'text', max: 160, section: 'Tasting' },
       ...[['body', 'Body'], ['sweet', 'Sweetness'], ['acid', 'Acidity'], ['tannin', 'Tannin']].map(([key, label]) => ({ key, label, type: 'select', options: PROFILE, section: 'Profile (1 to 5)', hint: key === 'tannin' ? '— for whites and sparkling.' : undefined })),
