@@ -621,3 +621,6 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 /* Bottom-right corner: manager tools and the signed-in pill sit side by side instead of on top of each other. */
 .corner { position: fixed; right: 14px; bottom: 14px; z-index: 60; display: flex; flex-wrap: wrap-reverse; justify-content: flex-end; align-items: center; gap: 8px; max-width: calc(100vw - 28px); pointer-events: none; }
 .corner > * { position: static !important; transform: none !important; pointer-events: auto; }
+
+/* The Archive: restorable pages and media, shown quieter than the live ones. */
+.list-row.archived, .media-card.archived { opacity: .85; }

@@ -64,9 +64,9 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.house, 17, 'every cocktail on our menu');
   assert.equal(cols.counts.shelf, 92, "Mionetto moved to the wine list");
   assert.equal(cols.counts.beer, 15);
-  assert.equal(cols.counts.recipe, 37, 'the Food Book’s 35 dishes, plus the Mini Lemon Ricotta Ravioli and the Date Cake');
+  assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 382, 'the design, plus 15 menu cocktails, the Lemon Drop, 106 wine pages and a page for every dish');
+  assert.equal(index.length, 380, 'the design, plus 15 menu cocktails, the Lemon Drop, 106 wine pages and a page for every dish');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -132,6 +132,31 @@ test('every dish shows in the Food Matrix and opens its own page; empty sections
   await call(`/api/entries/${r.data.id}`, { method: 'PUT', body: { data: { ...r.data.data, video, hasVideo: true } } });
   assert.ok(JSON.stringify((await call(`/api/page/e${r.data.id}`)).data).includes('"Watch it made"'), 'Add a video on: the section shows');
   await call(`/api/entries/${r.data.id}`, { method: 'DELETE' });
+});
+
+test('archive, never delete: pages and media leave the book and come back on restore', async () => {
+  // A dish that leaves the Food Book (the seed file) is archived, not deleted; back in the book, it's back.
+  const { openDb } = await import('../server/db.mjs');
+  const { seed, listEntries, listArchived } = await import('../server/cms.mjs');
+  const db = openDb(path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'bt-seed-')), 'seed.db'));
+  seed(db);
+  db.prepare("INSERT INTO entries(collection,slug,data,sort,seed_key,seed_hash) VALUES ('recipe','recipe/old-dish','{\"name\":\"Old Dish\"}',99,'recipe:recipe/old-dish','x')").run();
+  seed(db);
+  assert.ok(!listEntries(db, 'recipe', 1).some((e) => e.slug === 'recipe/old-dish'), 'out of the book');
+  assert.ok(listArchived(db, 'recipe', 1).some((e) => e.slug === 'recipe/old-dish'), 'in the Archive, not deleted');
+  const r = await call('/api/entries', { method: 'POST', body: { collection: 'recipe', data: { name: 'Archive Me', course: 'Mains' } } });
+  assert.equal((await call(`/api/entries/${r.data.id}`, { method: 'DELETE' })).data.archived, true);
+  assert.equal((await call(`/api/page/e${r.data.id}`)).status, 404, 'archived: no page');
+  assert.doesNotMatch(JSON.stringify((await call('/api/page/13-2')).data), /Archive Me/);
+  assert.ok((await call('/api/entries?collection=recipe&archived=1')).data.entries.some((e) => e.id === r.data.id));
+  assert.equal((await call(`/api/entries/${r.data.id}/restore`, { method: 'POST' })).status, 200);
+  assert.equal((await call(`/api/page/e${r.data.id}`)).status, 200, 'restored: back in the book');
+  const yt = await call('/api/media/youtube', { method: 'POST', body: { url: 'https://youtu.be/dQw4w9WgXcQ', title: 'Keep me' } });
+  await call(`/api/media/${yt.data.id}`, { method: 'DELETE' });
+  assert.ok(!(await call('/api/media')).data.media.some((m) => m.id === yt.data.id));
+  assert.ok((await call('/api/media?archived=1')).data.media.some((m) => m.id === yt.data.id), 'media is archived too');
+  assert.equal((await call(`/api/media/${yt.data.id}/restore`, { method: 'POST' })).status, 200);
+  assert.ok((await call('/api/media')).data.media.some((m) => m.id === yt.data.id));
 });
 
 test('invites: owners invite managers, links work once, managers can’t invite', async () => {

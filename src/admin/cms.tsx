@@ -10,7 +10,7 @@ export type FieldDef = {
   required?: boolean; section?: string; fields?: FieldDef[]; scan?: boolean;
 };
 export type Collection = { id: string; label: string; singular: string; prefix: string; group?: { key: string; values: string[] }; lists: string; fields: FieldDef[]; noPages?: boolean };
-type Entry = { id: number; collection: string; slug: string; data: Record<string, unknown>; sort: number; seeded: boolean; updated_at: string; edited: boolean };
+type Entry = { id: number; collection: string; slug: string; data: Record<string, unknown>; sort: number; seeded: boolean; updated_at: string; edited: boolean; archivedAt?: string | null };
 
 let cache: { collections: Record<string, Collection>; counts: Record<string, number> } | null = null;
 export function useCollections() {
@@ -30,8 +30,18 @@ export function CollectionList() {
   const c = cols?.collections[col];
   const [entries, setEntries] = useState<Entry[] | null>(null);
   const [error, setError] = useState('');
-  const load = () => { setError(''); api<{ entries: Entry[] }>(`/api/entries?collection=${col}`).then((r) => setEntries(r.entries)).catch((e) => setError(e.message)); };
-  useEffect(() => { setEntries(null); load(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [col]);
+  const session = useSession();
+  const [archived, setArchived] = useState<Entry[] | null>(null);
+  const [showArchive, setShowArchive] = useState(false);
+  const load = () => {
+    setError('');
+    api<{ entries: Entry[] }>(`/api/entries?collection=${col}`).then((r) => setEntries(r.entries)).catch((e) => setError(e.message));
+    api<{ entries: Entry[] }>(`/api/entries?collection=${col}&archived=1`).then((r) => setArchived(r.entries)).catch(() => setArchived([]));
+  };
+  useEffect(() => { setEntries(null); setShowArchive(false); load(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [col]);
+  const restore = async (e: Entry) => {
+    try { await api(`/api/entries/${e.id}/restore`, { method: 'POST' }); await session.reloadIndex(); session.bump(); load(); } catch (err) { setError((err as Error).message); }
+  };
   const move = async (e: Entry, dir: number) => {
     try { await api(`/api/entries/${e.id}/move`, { method: 'POST', body: { dir } }); load(); } catch (err) { setError((err as Error).message); }
   };
@@ -67,7 +77,7 @@ export function CollectionList() {
                   <strong>{e.data.name as string}</strong>
                   <small>{(e.data.tagline as string) || (e.data.description as string) || subline(e.data) || '—'}</small>
                 </Link>
-                <small className="muted nowrap-sm">{c.noPages ? (e.edited ? `Edited ${when(e.updated_at)}` : 'From our menu') : !page(e) ? 'Food Matrix only' : e.edited ? `Edited ${when(e.updated_at)}` : 'From the design'}</small>
+                <small className="muted nowrap-sm">{c.noPages ? (e.edited ? `Edited ${when(e.updated_at)}` : 'From our menu') : !page(e) ? 'Food Matrix only' : e.edited ? `Edited ${when(e.updated_at)}` : c.id === 'recipe' ? 'From the Food Book' : 'From the design'}</small>
                 {page(e) && <Link className="link-btn" to={'/' + e.slug} target="_blank">View</Link>}
                 <div className="row-tools">
                   <button className="icon-btn" aria-label={`Move ${e.data.name} up`} disabled={i === 0} onClick={() => move(e, -1)}>↑</button>
@@ -78,6 +88,24 @@ export function CollectionList() {
           </div>
         </section>
       ))}
+      {archived && archived.length > 0 && (
+        <section className="stack-sm">
+          <button type="button" className="link-btn" aria-expanded={showArchive} onClick={() => setShowArchive((v) => !v)}>
+            {showArchive ? 'Hide' : 'Show'} the Archive ({archived.length})
+          </button>
+          {showArchive && (
+            <div className="list">
+              {archived.map((e) => (
+                <div key={e.id} className="list-row cms-row archived">
+                  {c.noPages ? null : e.data.photo ? <img src={e.data.photo as string} alt="" /> : <span className="thumb-empty" />}
+                  <span className="grow"><strong>{e.data.name as string}</strong><small>Archived {when(e.archivedAt || '')}</small></span>
+                  <button type="button" className="btn ghost" onClick={() => void restore(e)}>Restore</button>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
     </div>
   );
 }
@@ -142,7 +170,7 @@ export function EntryEditor() {
     setSaving(false);
   };
   const remove = async () => {
-    if (!entry || !confirm(`Delete “${data.name}”? Its page and its place in every list go away for everyone.`)) return;
+    if (!entry || !confirm(`Archive “${data.name}”? It leaves the book and every list. You can restore it from the Archive at the bottom of the list.`)) return;
     try {
       await api(`/api/entries/${entry.id}`, { method: 'DELETE' });
       setDirty(false); await session.reloadIndex(); session.bump();
@@ -177,7 +205,7 @@ export function EntryEditor() {
       ))}
 
       <div className="editor-foot">
-        {entry ? <button type="button" className="link-btn danger" onClick={remove}>Delete This Page</button> : <span />}
+        {entry ? <button type="button" className="link-btn danger" onClick={remove}>Archive This Page</button> : <span />}
         <button className="btn" disabled={saving}>{saving ? 'Saving…' : isNew ? 'Create Page' : 'Save Changes'}</button>
       </div>
     </form>

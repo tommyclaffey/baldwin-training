@@ -1070,43 +1070,5 @@
    "cocktailRef": "Drink Book p. 31",
    "confirm": true
   }
- },
- {
-  "key": "recipe/mini-lemon-ricotta-ravioli",
-  "slug": "recipe/mini-lemon-ricotta-ravioli",
-  "sort": 35,
-  "data": {
-   "name": "Mini Lemon Ricotta Ravioli",
-   "course": "Snacks & Small Plates",
-   "description": "Lemon, ricotta, one-bite ravioli",
-   "photo": "/img/1ebae403dfe3.jpg",
-   "station": "Pasta",
-   "allergens": [
-    "Gluten",
-    "Egg",
-    "Dairy"
-   ],
-   "pairing": "",
-   "confirm": true
-  }
- },
- {
-  "key": "recipe/date-cake",
-  "slug": "recipe/date-cake",
-  "sort": 36,
-  "data": {
-   "name": "Date Cake",
-   "course": "Dessert",
-   "description": "Date cake with ice cream",
-   "photo": "/img/8d4c7c07b438.jpg",
-   "station": "Pastry",
-   "allergens": [
-    "Gluten",
-    "Dairy",
-    "Egg"
-   ],
-   "pairing": "",
-   "confirm": true
-  }
  }
 ]
