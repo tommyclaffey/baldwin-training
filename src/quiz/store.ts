@@ -1,4 +1,5 @@
-// Quiz progress, kept on this device. Scores also go to the server (with the person's name) so a manager can sign them off.
+// Quiz progress for the signed-in person: kept on this device (per person, so a shared tablet doesn't mix people up)
+// and on the server, so it follows them to another phone and a manager can sign them off.
 import { useSyncExternalStore } from 'react';
 import bank from '../../content/quizzes.json';
 import { api } from '../lib/api';
@@ -24,24 +25,41 @@ export type Record = { current?: Attempt; best?: number; total?: number; last?: 
 type State = { device: string; name: string; quizzes: { [id: string]: Record }; signoffs: string[] };
 
 const KEY = 'bt-quiz';
-function load(): State {
+const keyFor = (userId: number | null) => (userId ? `${KEY}:u${userId}` : KEY);
+let userId: number | null = null;
+function load(id: number | null = null, name = ''): State {
   let s: Partial<State> = {};
-  try { s = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { /* start fresh */ }
-  const device = s.device || (crypto.randomUUID?.() || Math.random().toString(36).slice(2) + Date.now().toString(36)).replace(/[^A-Za-z0-9]/g, '');
-  return { device, name: s.name || '', quizzes: s.quizzes || {}, signoffs: s.signoffs || [] };
+  try { s = JSON.parse(localStorage.getItem(keyFor(id)) || '{}'); } catch { /* start fresh */ }
+  return { device: id ? `u${id}` : 'anon', name: name || s.name || '', quizzes: s.quizzes || {}, signoffs: s.signoffs || [] };
 }
 let state = load();
 const subs = new Set<() => void>();
-function set(next: State) { state = next; localStorage.setItem(KEY, JSON.stringify(state)); subs.forEach((f) => f()); }
+function set(next: State) { state = next; if (userId) localStorage.setItem(keyFor(userId), JSON.stringify(state)); subs.forEach((f) => f()); }
 export const useQuiz = () => useSyncExternalStore((f) => { subs.add(f); return () => subs.delete(f); }, () => state);
 
-/** Signed-off quizzes come from the server (a manager confirms them). */
-let fetched = false;
+/** Switch to the signed-in person's progress, then bring in what the server has (other phones, sign-offs). */
+export function setQuizUser(u: { id: number; name: string } | null) {
+  if ((u?.id ?? null) === userId && (!u || state.name === u.name)) return;
+  userId = u?.id ?? null;
+  set(load(userId, u?.name));
+  if (u) refreshSignoffs(true);
+}
+
+/** Best scores and sign-offs from the server, merged into this device's progress. */
 export function refreshSignoffs(force = false) {
-  if (fetched && !force) return;
-  fetched = true;
-  api<{ signoffs: { quiz: string }[] }>(`/api/quiz/progress/${state.device}`)
-    .then((r) => set({ ...state, signoffs: r.signoffs.map((s) => s.quiz) }))
+  if (!userId) return;
+  void force;
+  const id = userId;
+  api<{ best: { quiz: string; best: number; total: number; at: string }[]; signoffs: { quiz: string }[] }>('/api/quiz/mine')
+    .then((r) => {
+      if (id !== userId) return;
+      const quizzes = { ...state.quizzes };
+      for (const b of r.best) {
+        const rec = quizzes[b.quiz] || {};
+        if (rec.best === undefined || b.best > rec.best) quizzes[b.quiz] = { ...rec, best: b.best, total: b.total, at: rec.at || b.at };
+      }
+      set({ ...state, quizzes, signoffs: r.signoffs.map((x) => x.quiz) });
+    })
     .catch(() => { /* offline: keep what we have */ });
 }
 
@@ -87,8 +105,8 @@ export function answer(id: string, choice: number) {
 export async function save(id: string) {
   const rec = state.quizzes[id];
   const cur = rec?.current;
-  if (!cur?.finished || cur.saved || !state.name) return;
-  await api('/api/quiz/attempt', { method: 'POST', body: { device: state.device, name: state.name, quiz: id, items: cur.items, answers: cur.answers } });
+  if (!cur?.finished || cur.saved || !userId) return;
+  await api('/api/quiz/attempt', { method: 'POST', body: { quiz: id, items: cur.items, answers: cur.answers } });
   const now = state.quizzes[id];
   if (now?.current === cur) set({ ...state, quizzes: { ...state.quizzes, [id]: { ...now, current: { ...cur, saved: true } } } });
 }

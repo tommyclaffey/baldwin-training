@@ -19,21 +19,19 @@
 - Videos and photos library, people (invites, remove), password change, activity log.
 
 ## v1 demo: Out
-- Staff accounts, quizzes that score, sign-offs that save, progress tracking. Staff read without signing in.
 - Spirits, wine, beer, service and library pages still come from the design; they move into the CMS one page type at a time.
 - Undo for a single page edit from the screen (the API supports it; no button yet).
 - Real videos and dish photos until the Baldwin team uploads them (Unsplash stand-ins now).
-- Multiple restaurant groups.
+- Sign-up page for new companies, and per-company books (the account structure is ready).
+- Email sending: invite links are copied by hand; no forgot-password yet (an owner or super admin re-invites).
 
-## Roles
-Built: **Owner** (everything, plus people and activity) · **Editor** (edits content). Set up with `OWNER_EMAIL`; the owner invites the rest.
-
-For the full product, not built yet:
-- **New hire:** reads, watches, takes quizzes.
-- **Manager:** assigns training, signs off dishes and steps.
-- **Owner/admin:** edits content, menus and bar program.
-- **Super admin:** Tommy only (see App Buildout Standard, stage 7).
-
+## Roles (Oct 28)
+- **Super admin:** Tommy (primary, set by `SUPERADMIN_EMAIL`) plus teammates he invites. Belongs to no company; sees and changes every company and person, signs in as someone for support (logged, banner shown), soft-deletes with 30 days to restore. Two-step sign-in (authenticator app) is required before the super admin opens. Only the primary adds or removes super admins. Hidden: everyone else gets “not found”.
+- **Owner:** runs a company. Everything a manager does, plus inviting and removing owners and managers.
+- **Manager:** edits the book (CMS, media, wine videos, bottle scanner), signs people off, manages staff (reset PIN, remove) and the join code.
+- **Staff:** reads the book and takes quizzes. Joins with the company’s join code, their name and a 4–6 digit PIN (5 wrong PINs locks that name for 15 minutes; a manager reset lets them pick a new one). Signed in for 90 days on their phone.
+- **The book needs a sign-in.** Page files and the page index aren’t public anymore.
+- **Companies:** Baldwin is company 1. People, quiz scores, sign-offs, sections, media and the activity log are per company, and a test proves companies can’t see each other. The book’s content is Baldwin’s for now: another company’s people see “your book isn’t set up yet”. Opening to more companies later means: a sign-up page (Tommy chose open self-serve sign-up, Oct 28) and a decision on how a new company’s book starts.
 ## How the content gets here
 `content/raw/` holds a full export of the Figma layout (auto-layout, text, colours, icons) and `public/img/` the original images.
 `npm run content` turns it into one JSON file per screen; `src/components/FigmaNode.tsx` renders it.

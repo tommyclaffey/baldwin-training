@@ -29,9 +29,9 @@ export function score(quiz, items, answers) {
 }
 
 /** Everyone who has taken a quiz, with their best score per quiz and their sign-offs. */
-export function results(db) {
-  const rows = db.prepare('SELECT device, name, quiz, score, total, at FROM quiz_attempts ORDER BY at').all();
-  const signs = db.prepare('SELECT s.device, s.quiz, s.at, u.name by_name FROM signoffs s LEFT JOIN users u ON u.id = s.by_user').all();
+export function results(db, companyId = 1) {
+  const rows = db.prepare('SELECT device, name, quiz, score, total, at FROM quiz_attempts WHERE company_id = ? ORDER BY at').all(companyId);
+  const signs = db.prepare('SELECT s.device, s.quiz, s.at, u.name by_name FROM signoffs s LEFT JOIN users u ON u.id = s.by_user WHERE s.company_id = ?').all(companyId);
   const people = new Map();
   for (const r of rows) {
     const p = people.get(r.device) || { device: r.device, name: r.name, lastAt: r.at, quizzes: {}, signoffs: {} };

@@ -34,5 +34,11 @@ export function uploadFile(file: File, onProgress?: (pct: number) => void): Prom
 
 export type MediaItem = { id: number; kind: 'file' | 'youtube'; title: string; url: string | null; mime: string | null; size: number | null; youtubeId: string | null; createdAt: string };
 export type Video = { kind: 'youtube'; youtubeId: string; title?: string } | { kind: 'file'; url: string; mime?: string; title?: string };
-export type User = { id: number; name: string; email: string; role: 'owner' | 'editor' };
+export type Role = 'superadmin' | 'owner' | 'manager' | 'staff';
+export type User = {
+  id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null;
+  totpOn: boolean; superPrimary: boolean; impersonatedBy: number | null; workingIn?: number; workingInName?: string | null;
+};
+export const ROLE_LABEL: Record<Role, string> = { superadmin: 'Super admin', owner: 'Owner', manager: 'Manager', staff: 'Staff' };
+export const canEdit = (u: User | null | undefined) => !!u && u.role !== 'staff';
 export type IndexEntry = { id: string; file: string; slug: string; name: string; title: string; section: string; nav: string; text: string; thumb?: string; blurb?: string };

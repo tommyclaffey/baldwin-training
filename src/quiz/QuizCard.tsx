@@ -1,7 +1,7 @@
 // The live quiz card and the progress ring on the Quizzes page. Built to match the Figma design (Quizzes · Desktop).
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { BANK, PRE_SHIFT, QUIZZES, answer, lookup, nextQuiz, quizById, refreshSignoffs, save, setName, start, statusOf, useQuiz } from './store';
+import { BANK, PRE_SHIFT, QUIZZES, answer, lookup, nextQuiz, quizById, refreshSignoffs, save, start, statusOf, useQuiz } from './store';
 
 const titleOf = (id: string) => (id === PRE_SHIFT ? BANK.preShift.title : quizById(id)?.title || '');
 
@@ -145,26 +145,16 @@ export function QuizCard({ style, className }: { style: CSSProperties; className
   );
 }
 
-/** Asks for a name once, so a manager can find the score. */
+/** Saves a finished quiz under the signed-in person, so a manager can sign them off. */
 function NameSave({ id }: { id: string }) {
   const s = useQuiz();
-  const [name, setLocal] = useState(s.name);
   const [error, setError] = useState('');
   const cur = s.quizzes[id]?.current;
-  useEffect(() => { if (cur?.finished && !cur.saved && s.name) save(id).catch((e) => setError(e.message)); }, [cur, s.name, id]);
+  useEffect(() => { if (cur?.finished && !cur.saved) save(id).catch((e) => setError(e.message)); }, [cur, id]);
   if (!cur?.finished) return null;
-  if (cur.saved) return <p className="quiz-saved">Saved for a manager as {s.name}. <button className="quiz-link" onClick={() => setName('')}>Not you?</button></p>;
-  if (s.name && !error) return <p className="quiz-saved">Saving…</p>;
-  return (
-    <form className="quiz-name" onSubmit={(e) => { e.preventDefault(); setError(''); setName(name); }}>
-      <label>
-        <span>Your name, so a manager can sign you off</span>
-        <input value={name} onChange={(e) => setLocal(e.target.value)} placeholder="First and last name" autoComplete="name" />
-      </label>
-      <button className="quiz-btn" disabled={!name.trim()}>Save Score</button>
-      {error && <p className="quiz-error" role="alert">{error}</p>}
-    </form>
-  );
+  if (error) return <p className="quiz-error" role="alert">{error} <button className="quiz-link" onClick={() => { setError(''); save(id).catch((e) => setError(e.message)); }}>Try Again</button></p>;
+  if (cur.saved) return <p className="quiz-saved">Saved for a manager as {s.name}.</p>;
+  return <p className="quiz-saved">Saving…</p>;
 }
 
 /** The ring: quizzes passed out of all of them, plus the breakdown. */

@@ -5,6 +5,10 @@ import { PageView, usePageEntry } from './components/PageView';
 import { NavContext } from './components/FigmaNode';
 import { EditBar } from './components/EditBar';
 import { useSession } from './lib/session';
+import { BookSignIn } from './components/BookSignIn';
+import { clearPages } from './components/PageView';
+import { setQuizUser } from './quiz/store';
+import { api, canEdit } from './lib/api';
 import AdminApp from './admin/AdminApp';
 
 export default function App() {
@@ -15,10 +19,17 @@ export default function App() {
 
 function Book() {
   const entry = usePageEntry();
-  const { user } = useSession();
+  const { user, loaded, setUser, refresh } = useSession();
   const [menu, setMenu] = useState(false);
   const { pathname } = useLocation();
   useEffect(() => setMenu(false), [pathname]);
+  // A new person on this device: their own quiz progress, and no pages kept from the last person.
+  useEffect(() => { clearPages(); setQuizUser(user ? { id: user.id, name: user.name } : null); }, [user?.id, user?.name, user?.workingIn]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!loaded) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
+  if (!user) return <BookSignIn />;
+  const signOut = async () => { await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); };
+  const back = async () => { await api('/api/super/return', { method: 'POST' }).catch(() => {}); await refresh(); location.assign('/admin/super'); };
 
   return (
     <NavContext.Provider value={entry?.nav ?? ''}>
@@ -37,7 +48,12 @@ function Book() {
           <PageView />
         </div>
       </div>
-      {user ? <EditBar /> : <div className="demo-flag" role="note">Demo · sample content, Baldwin team to confirm · <Link to="/admin">Manager Sign In</Link></div>}
+      {canEdit(user) && !user.impersonatedBy && <EditBar />}
+      <div className={'demo-flag' + (user.impersonatedBy ? ' support' : '')} role="note">
+        {user.impersonatedBy
+          ? <>Support view: signed in as <strong>{user.name}</strong> · <button className="link-btn" onClick={() => void back()}>Back to Your Account</button></>
+          : <>Signed in as <strong>{user.name}</strong> · <button className="link-btn" onClick={() => void signOut()}>Sign Out</button></>}
+      </div>
     </NavContext.Provider>
   );
 }
