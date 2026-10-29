@@ -186,7 +186,12 @@ export const COLLECTIONS = {
       { key: 'platePhoto', label: 'Plate photo', type: 'photo', section: 'Plating' },
       { key: 'plating', label: 'Where things go (up to 4)', type: 'list', max: 4, section: 'Plating', fields: [
         { key: 'name', label: 'Item', type: 'text', max: 60 }, { key: 'note', label: 'Note', type: 'text', max: 120 }] },
-      { key: 'say', label: 'Say it at the table (three-line drop)', type: 'textarea', max: 400, section: 'At the table' },
+      { key: 'inspiration', label: 'Inspiration', type: 'textarea', max: 800, section: 'The story', hint: 'Where the dish comes from and why it’s on the menu.' },
+      { key: 'sellingPoints', label: 'Selling points', type: 'lines', max: 5, section: 'The story', hint: 'One per line. What makes it worth ordering.' },
+      { key: 'dropMain', label: 'Three-line drop · main', type: 'text', max: 120, section: 'At the table', placeholder: 'Braised short rib' },
+      { key: 'dropSide', label: 'Three-line drop · side', type: 'text', max: 120, section: 'At the table', placeholder: 'Spinach and a carrot ribbon' },
+      { key: 'dropSauce', label: 'Three-line drop · sauce', type: 'text', max: 120, section: 'At the table', placeholder: 'Pan gravy' },
+      { key: 'say', label: 'The drop as one sentence', type: 'textarea', max: 400, section: 'At the table', hint: 'How it sounds at the table.' },
       { key: 'pairing', label: 'Wine · similar', type: 'text', max: 80, section: 'At the table', hint: 'Also the pairing in the Food Matrix.' },
       { key: 'pairingRef', label: 'Wine · similar: where it’s from', type: 'text', max: 60, section: 'At the table', placeholder: 'Wine Book p. 26' },
       { key: 'pairingOpposite', label: 'Wine · opposite', type: 'text', max: 80, section: 'At the table' },

@@ -231,24 +231,26 @@ export function dishPage(template, item, links = {}) {
   const info = find(header, byName('Info'));
   setText(info.c.find((c) => c.t === 'T'), d.description || '');
 
-  // Ingredients and allergens; "chef to confirm" only while the chef hasn't signed them off.
+  // Ingredients as one line of text; allergens as dark-red pills; "confirm with chef" notes while the chef hasn't signed off.
   const ingRow = find(header, byName('Ingredients'));
   if (ingRow) {
     const list = (d.ingredients || []).filter(Boolean);
-    const note = ingRow.c.filter((c) => c.t === 'T').pop();
+    const line = find(ingRow, byName('Ingredient list'));
+    const note = find(ingRow, byName('Note · Full list'));
     if (!list.length && !d.confirm) remove(info, ingRow);
     else {
-      repeat(ingRow, startsWith('Ingredient · '), list, (p, a) => { p.n = 'Ingredient · ' + a; setText(texts(p)[0], a); });
-      if (d.confirm) setText(note, list.length ? 'Full list from chef' : 'Chef to add'); else ingRow.c = ingRow.c.filter((c) => c !== note);
+      setText(line, list.length ? list.join(' · ') : 'Chef to add');
+      if (!d.confirm) remove(ingRow, note);
     }
   }
   const allergens = find(header, byName('Allergens'));
-  repeat(allergens, startsWith('Allergen · '), d.allergens || [], (p, a) => { p.n = 'Allergen · ' + a; setText(texts(p)[0], a); });
+  repeat(allergens, startsWith('Allergen · '), d.allergens || [], (p, a) => { p.n = 'Allergen · ' + a; setText(texts(p)[0], a.toUpperCase()); });
   {
-    const note = allergens.c.filter((c) => c.t === 'T').pop();
-    if (!(d.allergens || []).length) setText(note, 'None listed · chef to confirm');
-    else if (d.confirm) setText(note, 'Chef to confirm');
-    else allergens.c = allergens.c.filter((c) => c !== note);
+    const note = find(allergens, byName('Note · Confirm'));
+    if (note) {
+      if (!(d.allergens || []).length) setText(texts(note)[0], d.confirm ? 'NONE LISTED · CONFIRM WITH CHEF' : 'NONE');
+      else if (!d.confirm) remove(allergens, note);
+    }
   }
 
   // Components table
@@ -274,11 +276,31 @@ export function dishPage(template, item, links = {}) {
     if (s.time) setText(t[3], s.time); else remove(row, find(row, byName('Time')));
   });
 
-  // No components and no steps: the build card goes, and the right-hand cards take the width.
-  if (!rows.length && !stepList.length && buildCard) {
-    remove(main, buildCard);
-    const right = find(main, byName('Right column'));
-    if (right) { right.sh = 'L'; for (const c of right.c || []) c.sh = 'L'; }
+  // The story: inspiration and selling points.
+  const story = find(main, byName('The story'));
+  const points = (d.sellingPoints || []).filter(Boolean);
+  if (story) {
+    const insp = find(story, byName('Inspiration'));
+    if (d.inspiration) { setText(insp, d.inspiration); insp.sh = 'L'; insp.ar = 'H'; } else remove(story, insp);
+    const box = find(story, byName('Selling points'));
+    if (points.length) repeat(box, startsWith('Point '), points, (row, t, i) => { row.n = 'Point ' + (i + 1); const tx = texts(row)[0]; setText(tx, t); tx.sh = 'L'; tx.ar = 'H'; });
+    else remove(story, box);
+    if (!d.inspiration && !points.length) remove(main, story);
+  }
+  const hasStory = !!(d.inspiration || points.length);
+  // No components and no steps: the build card goes. The story takes its place on the left;
+  // with no story either, the right-hand cards take the width.
+  const noBuild = !rows.length && !stepList.length;
+  if (noBuild && buildCard) {
+    const body = find(main, byName('Body'));
+    if (hasStory && story && body) {
+      remove(main, story);
+      body.c = body.c.map((c) => (c === buildCard ? { ...story, sh: 'L' } : c));
+    } else {
+      remove(main, buildCard);
+      const right = find(main, byName('Right column'));
+      if (right) { right.sh = 'L'; for (const c of right.c || []) c.sh = 'L'; }
+    }
   }
 
   // Plating
@@ -302,7 +324,12 @@ export function dishPage(template, item, links = {}) {
 
   // At the table: the three-line drop, then the similar wine, the opposite wine and the cocktail.
   const table = find(main, byName('At the table'));
-  if (d.say) setText(texts(table)[1], d.say); else remove(table, texts(table)[1]);
+  const drop = find(table, byName('Drop'));
+  const lines = [['Drop · Main', d.dropMain], ['Drop · Side', d.dropSide], ['Drop · Sauce', d.dropSauce]];
+  for (const [n, v] of lines) { const row = find(drop, byName(n)); if (v) setText(texts(row)[1], v); else remove(drop, row); }
+  if (!lines.some(([, v]) => v)) remove(table, drop);
+  const sayNode = find(table, byName('Say it'));
+  if (d.say) setText(sayNode, d.say); else remove(table, sayNode);
   for (const [node, nm, ref, note, kind] of [['Pairing', d.pairing, d.pairingRef, d.pairingNote, 'wine'], ['Pairing · Opposite', d.pairingOpposite, d.pairingOppositeRef, '', 'wine'], ['Pairing · Cocktail', d.cocktail, d.cocktailRef, '', 'cocktail']]) {
     const box = find(table, byName(node));
     if (!box) continue;
@@ -315,9 +342,9 @@ export function dishPage(template, item, links = {}) {
     if (hit) { box.to = '/' + hit.slug; if (thumb && hit.photo) thumb.f = img(hit.photo); }
   }
   if (!d.say && !table.c.some((c) => c.t !== 'T')) remove(main, table);
-  // Full width (no build card): the script on the left, the pairings beside it. On a phone they stack.
-  else if (!rows.length && !stepList.length) {
-    const words = table.c.filter((c) => c.t === 'T').map((t) => ({ ...t, sh: 'L', ar: 'H' }));
+  // Full width (no build card and no story): the drop on the left, the pairings beside it. On a phone they stack.
+  else if (noBuild && !hasStory) {
+    const words = table.c.filter((c) => !(c.n || '').startsWith('Pairing')).map((t) => ({ ...t, sh: 'L', ...(t.t === 'T' ? { ar: 'H' } : {}) }));
     const pairs = table.c.filter((c) => (c.n || '').startsWith('Pairing')).map((p) => ({ ...p, sh: 'L' }));
     table.c = [{ t: 'F', n: 'Table row', w: table.w, h: 0, sh: 'L', sv: 'H', lm: 'H', gap: 32, c: [
       { t: 'F', n: 'Say', w: 400, h: 0, sh: 'L', sv: 'H', lm: 'V', gap: 16, c: words },
