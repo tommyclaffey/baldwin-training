@@ -10,6 +10,7 @@ import { AssignName, TableFinder, TableMarker, controlProps, isActive, useIntera
 export type FNode = {
   t: 'F' | 'T' | 'R' | 'E' | 'S';
   n?: string; w: number; h: number; x?: number; y?: number; abs?: 1;
+  lab?: string; empty?: 1; hdr?: 1; // table cells: column label, an empty allergen cell, the header row (phones stack rows)
   sh?: 'F' | 'H' | 'L'; sv?: 'F' | 'H' | 'L';
   op?: number; rot?: number; to?: string; svg?: string;
   f?: { c?: string; o?: number; img?: string; m?: string; g?: [string, number, number][]; gt?: string; ga?: number }[];
@@ -37,6 +38,8 @@ export const SlotContext = createContext<Record<string, Slot>>({});
 export const NavContext = createContext<string>('Home');
 /** True on phones, where rows reflow instead of the page scaling. */
 export const CompactContext = createContext(false);
+/** How much a phone has shrunk the frame we're inside (1 = not shrunk). Text never drops below 11px on screen. */
+const ScaleContext = createContext(1);
 
 /** Scales a fixed-layout frame (absolute children) down to fit a narrow column. */
 function Scaled({ w, h, outer, children }: { w: number; h: number; outer: CSSProperties; children: ReactNode }) {
@@ -51,7 +54,7 @@ function Scaled({ w, h, outer, children }: { w: number; h: number; outer: CSSPro
   }, [w]);
   return (
     <div ref={ref} style={{ ...outer, width: '100%', maxWidth: w, height: h * k, position: 'relative' }}>
-      <div style={{ width: w, height: h, transform: `scale(${k})`, transformOrigin: 'top left' }}>{children}</div>
+      <div style={{ width: w, height: h, transform: `scale(${k})`, transformOrigin: 'top left' }}><ScaleContext.Provider value={k}>{children}</ScaleContext.Provider></div>
     </div>
   );
 }
@@ -121,6 +124,10 @@ function boxStyle(node: FNode, parentLm: 'H' | 'V' | undefined, parentH?: number
     // Hug-height boxes never shrink below their content (clipped boxes otherwise lose their minimum height).
     else st.flexShrink = 0;
   }
+  // Phone helpers: mid-width tiles pair up; small leading markers stay beside their text.
+  if (inFlow && parentLm === 'H' && node.t !== 'T' && node.sh === 'F' && node.w >= 150 && node.w <= 300) cls.push('mid');
+  // (a narrow rail, e.g. a timeline dot and line, counts too)
+  if (inFlow && parentLm === 'H' && node.t !== 'T' && node.w <= 48 && (node.h <= 48 || node.w <= 24)) cls.push('marker');
   if (node.op !== undefined) st.opacity = node.op;
   if (node.rot) { st.transform = `rotate(${-node.rot}deg)`; st.transformOrigin = 'top left'; }
   return { st, cls };
@@ -133,6 +140,8 @@ function textNode(node: FNode, parentLm: 'H' | 'V' | undefined, key?: number) {
   st.fontWeight = WEIGHT[node.fs || 'Regular'] ?? 400;
   if ((node.fs || '').includes('Italic')) st.fontStyle = 'italic';
   st.fontSize = node.z;
+  // Big titles shrink to fit a phone (see .ftext.display in styles.css).
+  if ((node.z || 0) >= 36) { cls.push('display'); (st as Record<string, unknown>)['--z'] = `${node.z}px`; }
   if (node.lh !== undefined) st.lineHeight = typeof node.lh === 'string' ? Number(node.lh.replace('%', '')) / 100 : `${node.lh}px`;
   else st.lineHeight = node.ff === 'Pinyon Script' ? 1.25 : 1.22;
   if (node.ls !== undefined) st.letterSpacing = typeof node.ls === 'string' ? `${Number(node.ls.replace('%', '')) / 100}em` : `${node.ls}px`;
@@ -307,6 +316,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   const compact = useContext(CompactContext);
   const slots = useContext(SlotContext);
   const carousel = useContext(CarouselContext);
+  const shrink = useContext(ScaleContext);
   const live = useInteract();
   const [playing, setPlaying] = useState(false);
   // A control is drawn in its current state (ticked / empty, selected / plain).
@@ -320,6 +330,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
 
   if (node.t === 'T') {
     const { st, cls, content: raw } = textNode(node, parentLm);
+    if (shrink < 1 && node.z && node.z * shrink < 11) st.fontSize = 11 / shrink;
     const content = node.n === 'Carousel count' && carousel ? <span aria-live="polite">{carousel.label}</span> : raw;
     return wrapLink(node, <div className={cls.join(' ')} style={st}>{content}</div>, st, cls);
   }
@@ -430,6 +441,23 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   if (extras.length && !st.position) st.position = 'relative';
   if (compact && !node.lm && node.c && node.w > 200 && parentLm && !node.abs && !rootStyle) {
     const { flex, alignSelf, minWidth, flexShrink, ...inner } = st;
+    // A photo banner with a text block (Our Story): the photo fills behind, the text flows at its own size.
+    const copy = node.c.find((c) => c.n === 'Copy' && c.lm);
+    const bgs = node.c.filter((c) => c !== copy && c.w >= node.w - 2 && c.h >= node.h - 2);
+    if (copy && bgs.length) {
+      const { width, height, ...rest } = inner; void width; void height;
+      return (
+        <div className={cls.concat('hero-flow').join(' ')} style={{ ...rest, flex, alignSelf, position: 'relative', overflow: 'hidden', width: '100%' }} data-name={node.n}>
+          {bgs.map((c, i) => <FigmaNode key={i} node={{ ...c, x: 0, y: 0 }} rootStyle={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />)}
+          <div style={{ position: 'relative', padding: '32px 20px' }}><FigmaNode node={{ ...copy, abs: undefined, x: undefined, y: undefined }} parentLm="V" /></div>
+        </div>
+      );
+    }
+    // A wide diagram (the service timeline, the thermometer): full size, swipe sideways.
+    if (node.w >= 900) {
+      const box = <div className={cls.join(' ')} style={{ ...inner, position: 'relative', width: node.w, height: node.h, maxWidth: 'none' }} data-name={node.n}>{kids}</div>;
+      return <div className="swipe-x" style={{ flex, alignSelf, width: '100%', overflowX: 'auto', overflowY: 'hidden' }} role="region" aria-label={node.n} tabIndex={0}>{box}</div>;
+    }
     const box = <div className={cls.join(' ')} style={{ ...inner, position: 'relative', width: node.w, height: node.h, maxWidth: 'none' }} data-name={node.n}>{kids}</div>;
     const scaled = <Scaled w={node.w} h={node.h} outer={{ flex, alignSelf, minWidth, flexShrink }}>{box}</Scaled>;
     return node.to ? wrapLink(node, <div>{scaled}</div>, {}, ['fn']) : scaled;
@@ -446,11 +474,11 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     return <div ref={carousel.setEl} className={cls.concat('carousel').join(' ')} style={{ ...st, overflowX: 'auto', overflowY: 'hidden' }} data-name={node.n} tabIndex={0} aria-label={node.n!.split(' · ')[1]} role="region">{kids}</div>;
   }
   const el = ctl && !node.to ? (
-    <div className={cls.join(' ')} style={st} data-name={node.n} aria-label={node.n?.split(' · ').slice(1).join(' · ') || undefined} {...ctl}>
+    <div className={cls.join(' ')} style={st} data-name={node.n} data-label={node.lab} data-empty={node.empty} data-head={node.hdr} aria-label={node.n?.split(' · ').slice(1).join(' · ') || undefined} {...ctl}>
       {kids}
     </div>
   ) : (
-    <div className={cls.join(' ')} style={st} role={role} aria-label={label} data-name={node.n}>
+    <div className={cls.join(' ')} style={st} role={role} aria-label={label} data-name={node.n} data-label={node.lab} data-empty={node.empty} data-head={node.hdr}>
       {kids}
     </div>
   );
@@ -463,13 +491,13 @@ function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[]) 
   // Outside sources (Wine Folly, Vivino, producer sites) open in a new tab.
   if (/^https?:\/\//.test(node.to)) {
     return (
-      <a href={node.to} target="_blank" rel="noopener noreferrer" className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: 'inherit', textDecoration: 'none' }} aria-label={label}>
+      <a href={node.to} target="_blank" rel="noopener noreferrer" className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: 'inherit', textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
         {(el as { props: { children?: ReactNode } }).props.children}
       </a>
     );
   }
   return (
-    <Link to={node.to} className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: 'inherit', textDecoration: 'none' }} aria-label={label}>
+    <Link to={node.to} className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: 'inherit', textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
       {(el as { props: { children?: ReactNode } }).props.children}
     </Link>
   );

@@ -192,7 +192,13 @@ function houseRows(page, house) {
     const r = clone(proto);
     r.n = 'Row · ' + d.name; r.to = '/' + it.slug;
     const im = find(r, startsWith('IMG/'));
-    if (im) im.f = img(d.photo);
+    if (im && d.photo) im.f = img(d.photo);
+    else if (im) {
+      // No photo yet: a beige thumbnail with the drink's glass drawn in it.
+      const g = glassShape(d.glass);
+      photoToCome(im, false);
+      if (g.svg) im.c = [{ t: 'S', n: 'Shape · ' + g.name, w: Math.round(im.w * 0.5), h: Math.round(im.h * 0.62), sh: 'F', sv: 'F', svg: g.svg }];
+    }
     const t = texts(r);
     const build = (d.build || []).filter((b) => b && b.ingredient);
     const base = build.find((b) => b.spirit) || build[0];

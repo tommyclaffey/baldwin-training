@@ -234,9 +234,35 @@ function chapters(page) {
  * @param page   assembled page
  * @param ctx    { slug, entry (CMS entry or null), icon (the Figma tick), recipes, house, wines }
  */
+/** Tables: each cell learns its column's label, and the header row is marked, so a phone can stack rows
+ *  and still say what each value is (the header row hides there). Allergen cells with no allergen are marked empty. */
+function labelTables(page) {
+  const isRow = (c) => /^(Row|Classic row) · /.test(c.n || '');
+  const label = (h) => texts(h).map((t) => t.s).join(' ').trim();
+  const walk = (n) => {
+    const kids = n.c || [];
+    const rows = kids.filter(isRow);
+    if (rows.length >= 2) {
+      const cells = (rows[0].c || []).length;
+      const head = kids.find((c) => /^(Column headers|Header|Headers|Head cells|Table head)$/.test(c.n || '') && (c.c || []).length === cells);
+      if (head && n.n !== 'Matrix table') {
+        head.hdr = 1;
+        const labels = head.c.map(label);
+        for (const r of rows) (r.c || []).forEach((c, i) => {
+          if (i > 0 && labels[i]) c.lab = labels[i];
+          if (n.n === 'Allergen grid' && i > 0 && find(c, byName('None'))) c.empty = 1;
+        });
+      }
+    }
+    kids.forEach(walk);
+  };
+  walk(page.main);
+}
+
 export function wire(page, ctx) {
   if (!page) return page;
   const m = page.main;
+  labelTables(page);
   for (const chip of findAll(m, byName('Menu chip'))) chip.to = '/food-matrix';
   for (const b of findAll(m, byName('Button · Print'))) b.meta = { act: 'print' };
   foodMatrix(page, ctx.icon);
