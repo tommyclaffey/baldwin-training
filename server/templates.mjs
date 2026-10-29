@@ -73,9 +73,6 @@ export function cocktailPage(template, item, ctx) {
   setText(texts(find(copy, byName('Pill · Signature')))[0], d.menuSection
     ? [SECTION[d.menuSection] || d.menuSection, d.price && '$' + d.price].filter(Boolean).join(' · ')
     : `Our signature · ${k} of ${all.length}`);
-  const status = find(copy, byName('Pill · Status'));
-  if (d.score || d.status) setText(texts(status)[0], [d.status, d.score && `${d.score} at the tasting`].filter(Boolean).join(' · '));
-  else remove(copy, status);
   const ct = copy.c.filter((c) => c.t === 'T');
   setText(ct[0], d.tagline || 'Our signature cocktail');
   setText(ct[1], name.toUpperCase());
@@ -138,12 +135,6 @@ export function cocktailPage(template, item, ctx) {
   setText(tl[tl.length - 1], d.tasteLine || '');
   if (!d.tasteLine && !lines(d.tags).length) remove(main, taste);
 
-  // From the tasting
-  const tasting = find(main, byName('From the tasting'));
-  setText(texts(find(tasting, byName('Score')))[0], d.score || '—');
-  setText(texts(find(tasting, byName('Score')))[2], `Status: ${d.status || 'New'} · Pairs with: ${d.pairs || 'Ask the bar'}`);
-  setText(texts(find(tasting, byName('Note')))[0], d.note || 'Not tasted by guests yet.');
-
   // The spirit
   const fs = find(main, byName('Featured spirit'));
   if (d.spiritName) {
@@ -191,7 +182,7 @@ export function cocktailPage(template, item, ctx) {
   if (d.video) slot.vid = d.video;
   const sc = texts(find(story, byName('Copy')));
   setText(sc[0], 'How we made it');
-  setText(sc[2], d.story || 'Bar lead to add who created it, the idea behind it, and what changed after the tasting.');
+  setText(sc[2], d.story || 'Bar lead to add who created it and the idea behind it.');
   if (d.video) remove(story, find(story, byName('Add video')));
 
   // Previous / next among our cocktails
@@ -231,13 +222,6 @@ export function dishPage(template, item) {
   setText(tt[1], name.toUpperCase());
   const info = find(header, byName('Info'));
   setText(info.c.find((c) => c.t === 'T'), d.description || '');
-
-  const stats = find(header, byName('Stats'));
-  const statList = (d.stats || []).filter((x) => x && x.value);
-  if (!statList.length && d.score) statList.push({ value: d.score, label: 'guest score' });
-  if (statList.length) {
-    repeat(stats, byName('Stat'), statList, (c, x) => { const st = texts(c); setText(st[0], x.value); setText(st[1], x.label || ''); });
-  } else remove(main, stats);
 
   const allergens = find(header, byName('Allergens'));
   repeat(allergens, startsWith('Allergen · '), d.allergens || [], (p, a) => { p.n = 'Allergen · ' + a; setText(texts(p)[0], a); });
@@ -358,7 +342,7 @@ export function injectCocktailRows(page, cocktails) {
     const build = (d.build || []).filter((b) => b && b.ingredient);
     const base = build.find((b) => b.spirit) || build[0];
     const rest = build.filter((b) => b !== base).map((b) => b.ingredient).join(', ');
-    const vals = [d.name, rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.ice || '—', d.garnish || 'To confirm', d.pairs || '—', d.status || 'New', d.score || '—'];
+    const vals = [d.name, rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.ice || '—', d.garnish || 'To confirm', d.pairs || '—'];
     vals.forEach((v, i) => t[i] && setText(t[i], v));
     return r;
   });
@@ -385,8 +369,6 @@ export function injectDishRows(page, dishes) {
     setText(texts(find(r, byName('Station')))[0], d.station || '—');
     repeat(find(r, byName('Allergens')), startsWith('Pill · '), d.allergens || [], (p, a) => { p.n = 'Pill · ' + a; setText(texts(p)[0], a); });
     setText(texts(find(r, byName('Pairing')))[0], d.pairing || '—');
-    const tp = find(r, byName('Tasting'));
-    if (tp) setText(texts(tp)[0], d.score || '—');
     // after the last row of its course group
     const group = { 'Passed Bites': 'Group · PASSED BITES', Plates: 'Group · PLATES', Dessert: 'Group · DESSERT' }[d.course || 'Plates'];
     const gi = table.c.findIndex((c) => c.n === group);

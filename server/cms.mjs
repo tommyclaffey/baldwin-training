@@ -97,10 +97,7 @@ export const COLLECTIONS = {
       { key: 'specNote', label: 'Spec status (managers only)', type: 'text', max: 160, section: 'Our build', hint: 'What the bar lead still needs to confirm.' },
       { key: 'tags', label: 'Taste words', type: 'tags', section: 'Taste' },
       { key: 'tasteLine', label: 'How it tastes', type: 'textarea', max: 300, section: 'Taste' },
-      { key: 'score', label: 'Tasting score', type: 'text', max: 10, section: 'From the tasting', hint: 'Out of 5.' },
-      { key: 'status', label: 'Status', type: 'text', max: 30, section: 'From the tasting', placeholder: 'Keep, Adjusting, New' },
-      { key: 'pairs', label: 'Pairs with', type: 'text', max: 80, section: 'From the tasting' },
-      { key: 'note', label: 'What guests said', type: 'textarea', max: 600, section: 'From the tasting' },
+      { key: 'pairs', label: 'Pairs with', type: 'text', max: 80, section: 'At the table' },
       ...spirit,
       { key: 'say', label: 'Say it at the table', type: 'textarea', max: 400, section: 'At the table' },
       { key: 'story', label: 'How we made it', type: 'textarea', max: 800, section: 'The story' },
@@ -176,13 +173,10 @@ export const COLLECTIONS = {
       { key: 'photo', label: 'Main photo', type: 'photo', section: 'The basics' },
       { key: 'allergens', label: 'Allergens', type: 'chips', options: ALLERGENS, section: 'The basics' },
       { key: 'pairing', label: 'Pairs with', type: 'text', max: 80, section: 'The basics' },
-      { key: 'score', label: 'Tasting score', type: 'text', max: 10, section: 'The basics', hint: 'Out of 5.' },
       { key: 'signature', label: 'Signature dish', type: 'toggle', section: 'The basics' },
       { key: 'refining', label: 'Being refined (shows a tag in the matrix)', type: 'toggle', section: 'The basics' },
       { key: 'fullPage', label: 'Full recipe page', type: 'toggle', section: 'Recipe page', hint: 'Turn on once the chef has the build, steps and plating.' },
       { key: 'tagline', label: 'Line above the name', type: 'text', max: 80, section: 'Recipe page', placeholder: 'The signature dish' },
-      { key: 'stats', label: 'Stats', type: 'list', max: 3, section: 'Recipe page', fields: [
-        { key: 'value', label: 'Number', type: 'text', max: 20 }, { key: 'label', label: 'Label', type: 'text', max: 60 }] },
       { key: 'components', label: 'Components', type: 'list', max: 10, section: 'The build', fields: [
         { key: 'component', label: 'Component', type: 'text', max: 80 }, { key: 'portion', label: 'Portion', type: 'text', max: 80 }, { key: 'hold', label: 'Hold', type: 'text', max: 80 }] },
       { key: 'steps', label: 'Steps', type: 'list', max: 10, section: 'The build', fields: [

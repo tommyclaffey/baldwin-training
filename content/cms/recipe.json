@@ -14,7 +14,6 @@
     "Dairy"
    ],
    "pairing": "",
-   "score": "4.81",
    "refining": false,
    "fullPage": false
   }
@@ -35,7 +34,6 @@
     "Egg"
    ],
    "pairing": "",
-   "score": "4.68",
    "refining": false,
    "fullPage": false
   }
@@ -56,7 +54,6 @@
     "Gluten"
    ],
    "pairing": "",
-   "score": "4.67",
    "refining": false,
    "fullPage": false
   }
@@ -77,7 +74,6 @@
     "Dairy"
    ],
    "pairing": "",
-   "score": "4.52",
    "refining": false,
    "fullPage": false
   }
@@ -97,25 +93,10 @@
     "Gluten"
    ],
    "pairing": "Bolgheri Rosso",
-   "score": "4.87",
    "refining": false,
    "fullPage": true,
    "signature": true,
    "tagline": "The signature dish",
-   "stats": [
-    {
-     "value": "4.87",
-     "label": "guest score"
-    },
-    {
-     "value": "88%",
-     "label": "rated it a 5"
-    },
-    {
-     "value": "95 of 104",
-     "label": "said portion is right"
-    }
-   ],
    "components": [
     {
      "component": "Braised short rib",
@@ -190,7 +171,7 @@
    ],
    "platePhoto": "/img/8394a9d84d8f.jpg",
    "say": "“Our short rib is braised for four hours until it falls apart, then finished with a pan gravy, spinach and a ribbon of carrot.”",
-   "pairingNote": "4.62 at the tasting, the best-rated pairing of the night",
+   "pairingNote": "The pairing to suggest with every Short Rib.",
    "videoTitle": "Short Rib · Fire to Pass",
    "videoStill": "/img/28f3fdd6175e.jpg",
    "videoHeading": "FROM FIRE TO PASS",
@@ -250,7 +231,6 @@
     "Dairy"
    ],
    "pairing": "",
-   "score": "4.64",
    "refining": false,
    "fullPage": false
   }
@@ -271,7 +251,6 @@
     "Dairy"
    ],
    "pairing": "Fuschia Satin",
-   "score": "4.50",
    "refining": false,
    "fullPage": false
   }
@@ -291,7 +270,6 @@
     "Tree Nut"
    ],
    "pairing": "",
-   "score": "4.42",
    "refining": false,
    "fullPage": false
   }
@@ -313,7 +291,6 @@
     "Dairy"
    ],
    "pairing": "Tenuta Spinelli Pecorino",
-   "score": "3.54",
    "refining": true,
    "fullPage": false
   }
@@ -334,7 +311,6 @@
     "Egg"
    ],
    "pairing": "",
-   "score": "4.69",
    "refining": false,
    "fullPage": false
   }
