@@ -64,9 +64,9 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.house, 17, 'every cocktail on our menu');
   assert.equal(cols.counts.shelf, 92, "Mionetto moved to the wine list");
   assert.equal(cols.counts.beer, 15);
-  assert.equal(cols.counts.recipe, 10);
+  assert.equal(cols.counts.recipe, 37, 'the Food Book’s 35 dishes, plus the Mini Lemon Ricotta Ravioli and the Date Cake');
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 346, 'the design, plus 15 menu cocktails, the Lemon Drop and 106 wine pages');
+  assert.equal(index.length, 382, 'the design, plus 15 menu cocktails, the Lemon Drop, 106 wine pages and a page for every dish');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -112,15 +112,25 @@ test('a new classic gets a page, a chip on every classic page and a row in the t
   assert.doesNotMatch(JSON.stringify((await call('/api/page/14-2')).data), /Renamed Drink/);
 });
 
-test('a dish shows in the Food Matrix, and gets a page only when it has one', async () => {
-  const r = await call('/api/entries', { method: 'POST', body: { collection: 'recipe', data: { name: 'Test Plate', course: 'Plates', allergens: ['Dairy'], fullPage: false } } });
+test('every dish shows in the Food Matrix and opens its own page; empty sections stay off', async () => {
+  const r = await call('/api/entries', { method: 'POST', body: { collection: 'recipe', data: { name: 'Test Plate', course: 'Mains', price: '30', allergens: ['Dairy'], pairing: 'Altocedro Malbec', cocktail: 'Paper Plane' } } });
   assert.equal(r.status, 200);
-  const matrix = JSON.stringify((await call('/api/page/13-2')).data);
-  assert.match(matrix, /Row · Test Plate/);
-  assert.equal((await call(`/api/page/e${r.data.id}`)).status, 404);
-  await call(`/api/entries/${r.data.id}`, { method: 'PUT', body: { data: { ...r.data.data, fullPage: true, steps: [{ title: 'Sear', detail: 'Hot pan' }] } } });
-  assert.equal((await call(`/api/page/e${r.data.id}`)).status, 200);
-  assert.match(JSON.stringify((await call('/api/page/13-2')).data), /recipe\/test-plate/);
+  const matrix = (await call('/api/page/13-2')).data;
+  const all = (n, f, out = []) => { if (f(n)) out.push(n); (n.c || []).forEach((c) => all(c, f, out)); return out; };
+  const row = all(matrix.main, (n) => n.n === 'Row · Test Plate')[0];
+  assert.equal(row.to, '/recipe/test-plate', 'the card opens the dish');
+  const page = (await call(`/api/page/e${r.data.id}`)).data;
+  const names = new Set(all(page.main, () => true).map((n) => n.n));
+  assert.ok(!names.has('The Build') && !names.has('Plating guide') && !names.has('Section · Photos'), 'nothing to show, no section');
+  assert.ok(!names.has('Watch it made'), 'no video, no video section');
+  assert.ok(names.has('Tag · $30'), 'the price shows');
+  assert.equal(all(page.main, (n) => n.n === 'Pairing · Cocktail')[0].to, '/classic/paper-plane', 'the cocktail links to its page');
+  assert.ok(!names.has('Pairing · Opposite'), 'no opposite wine, no row');
+  const video = { kind: 'youtube', youtubeId: 'dQw4w9WgXcQ', title: 'Test' };
+  await call(`/api/entries/${r.data.id}`, { method: 'PUT', body: { data: { ...r.data.data, video } } });
+  assert.ok(!JSON.stringify((await call(`/api/page/e${r.data.id}`)).data).includes('"Watch it made"'), 'a video alone isn’t enough: Add a video is off');
+  await call(`/api/entries/${r.data.id}`, { method: 'PUT', body: { data: { ...r.data.data, video, hasVideo: true } } });
+  assert.ok(JSON.stringify((await call(`/api/page/e${r.data.id}`)).data).includes('"Watch it made"'), 'Add a video on: the section shows');
   await call(`/api/entries/${r.data.id}`, { method: 'DELETE' });
 });
 
@@ -248,8 +258,8 @@ test('working controls: Food Matrix filters, photo chips, cleaning checklist, si
   const fm = await page('food-matrix');
   const opts = all(fm.main, (n) => (n.n || '').startsWith('Option · ') && n.meta?.k);
   assert.ok(opts.some((o) => o.meta.k === 'hide:Finfish') && opts.some((o) => o.meta.k === 'hide:Nightshade'), 'every allergen can be hidden');
-  assert.ok(opts.some((o) => o.meta.k === 'course:Plates'), 'courses come from the dishes');
-  assert.ok(all(fm.main, (n) => n.meta?.show?.req?.includes('course:Plates')).length >= 5, 'plates rows know their course');
+  assert.ok(opts.some((o) => o.meta.k === 'course:Mains'), 'courses come from the dishes');
+  assert.ok(all(fm.main, (n) => n.meta?.show?.req?.includes('course:Mains')).length >= 10, 'main rows know their course');
   assert.equal(all(fm.main, (n) => n.n === 'Button · Reset')[0].meta.act, 'reset');
   const clean = await page('cleanliness');
   const tasks = all(clean.main, (n) => n.meta?.save);

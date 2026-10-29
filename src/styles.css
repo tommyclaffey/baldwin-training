@@ -510,6 +510,9 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   gap: 8px !important; padding: 14px !important; border: 1px solid #E4DCCF !important; border-radius: 14px; background: #FBF9F5;
 }
 .matrix-cards > :not([data-name^="Group · "]):not([data-name="Column headers"]):not(.ftext) > * { width: auto !important; flex: none !important; max-width: 100%; }
+/* Dish names use the card's full width and wrap, never cut off. */
+.matrix-cards [data-name="Name"], .matrix-cards [data-name="Title row"] { width: 100% !important; flex: 1 1 auto !important; min-width: 0; }
+.matrix-cards [data-name="Title row"] > .ftext { width: auto !important; flex: 1 1 auto !important; min-width: 0; white-space: normal !important; }
 
 @media (max-width: 859px) {
   /* Checklists and filter options: the box stays beside its label. */

@@ -53,9 +53,11 @@ function foodMatrix(page, icon) {
     if (!startsWith('Row · ')(c)) continue;
     const station = texts(find(c, byName('Station')) || { c: [] })[0]?.s || '—';
     const allergens = (find(c, byName('Allergens'))?.c || []).filter(startsWith('Pill · ')).map((p) => p.n.slice(7)).filter((a) => a !== 'None listed');
-    c.meta = { inGroup: course, show: { req: ['course:' + course, 'station:' + station], forbid: allergens.map((a) => 'hide:' + a) } };
+    // A dish without a station yet only answers to the course filter (no "—" option).
+    const hasStation = station !== '—';
+    c.meta = { inGroup: course, show: { req: ['course:' + course, ...(hasStation ? ['station:' + station] : [])], forbid: allergens.map((a) => 'hide:' + a) } };
     courses.set(course, (courses.get(course) || 0) + 1);
-    stations.set(station, (stations.get(station) || 0) + 1);
+    if (hasStation) stations.set(station, (stations.get(station) || 0) + 1);
   }
   // Options are rebuilt from the dishes, so the counts and the allergen list stay true.
   const groups = filters.c.filter(startsWith('Filter · '));

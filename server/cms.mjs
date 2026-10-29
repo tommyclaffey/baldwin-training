@@ -21,7 +21,9 @@ export const SHELF = [
   { key: 'Liqueur', page: 'spirit/liqueurs' },
 ];
 export const BEER_STYLES = ['Light Lager', 'Pilsner', 'Amber and Red Ale', 'Pale Ale', 'IPA', 'Session IPA', 'Hazy IPA', 'Wheat Beer', 'Belgian Ale', 'Sour', 'Stout', 'Porter', 'Non-alcoholic', 'Rotating'];
-export const ALLERGENS = ['Dairy', 'Egg', 'Finfish', 'Shellfish', 'Tree Nut', 'Peanut', 'Gluten', 'Soy', 'Sesame', 'Allium', 'Nightshade'];
+export const ALLERGENS = ['Dairy', 'Egg', 'Finfish', 'Shellfish', 'Tree Nut', 'Peanut', 'Gluten', 'Soy', 'Sesame', 'Allium', 'Nightshade', 'Pork'];
+/** Courses, in menu order (the Food Book, Oct 28). */
+export const COURSES = ['Snacks & Small Plates', 'Salads', 'Pizza', 'Pasta', 'Mains', 'Dessert'];
 const PROFILE = ['—', '1', '2', '3', '4', '5'];
 
 /* Field types: text · textarea · photo · video · select · toggle · tags · chips · lines · list · link · color */
@@ -162,19 +164,20 @@ export const COLLECTIONS = {
   },
   recipe: {
     label: 'Recipes', singular: 'dish', prefix: 'recipe/', template: '9-2', section: 'Recipe', nav: 'Food Matrix',
-    group: { key: 'course', values: ['Passed Bites', 'Plates', 'Dessert'] },
-    hasPage: (d) => !!d.fullPage,
-    lists: 'Every dish shows in the Food Matrix. Turn on “Full recipe page” to give it its own page.',
+    group: { key: 'course', values: COURSES },
+    hasPage: () => true,
+    lists: 'Every dish has its own page and a row in the Food Matrix. Sections with nothing in them stay off the page.',
     fields: [
       { key: 'name', label: 'Name', type: 'text', max: 80, required: true, section: 'The basics' },
-      { key: 'course', label: 'Course', type: 'select', options: ['Passed Bites', 'Plates', 'Dessert'], section: 'The basics' },
+      { key: 'course', label: 'Course', type: 'select', options: COURSES, section: 'The basics' },
+      { key: 'price', label: 'Price', type: 'text', max: 10, section: 'The basics', placeholder: '38' },
       { key: 'station', label: 'Station', type: 'text', max: 40, section: 'The basics', placeholder: 'Sauté' },
       { key: 'description', label: 'Short description', type: 'text', max: 120, section: 'The basics', hint: 'One line. Shows in the Food Matrix.' },
       { key: 'photo', label: 'Main photo', type: 'photo', section: 'The basics' },
+      { key: 'ingredients', label: 'Ingredients', type: 'tags', max: 20, section: 'The basics', hint: 'One per line.' },
       { key: 'allergens', label: 'Allergens', type: 'chips', options: ALLERGENS, section: 'The basics' },
-      { key: 'pairing', label: 'Pairs with', type: 'text', max: 80, section: 'The basics' },
+      { key: 'confirm', label: 'Chef still to confirm', type: 'toggle', section: 'The basics', hint: 'Shows “chef to confirm” next to the ingredients and allergens.' },
       { key: 'signature', label: 'Signature dish', type: 'toggle', section: 'The basics' },
-      { key: 'fullPage', label: 'Full recipe page', type: 'toggle', section: 'Recipe page', hint: 'Turn on once the chef has the build, steps and plating.' },
       { key: 'tagline', label: 'Line above the name', type: 'text', max: 80, section: 'Recipe page', placeholder: 'The signature dish' },
       { key: 'components', label: 'Components', type: 'list', max: 10, section: 'The build', fields: [
         { key: 'component', label: 'Component', type: 'text', max: 80 }, { key: 'portion', label: 'Portion', type: 'text', max: 80 }, { key: 'hold', label: 'Hold', type: 'text', max: 80 }] },
@@ -183,8 +186,15 @@ export const COLLECTIONS = {
       { key: 'platePhoto', label: 'Plate photo', type: 'photo', section: 'Plating' },
       { key: 'plating', label: 'Where things go (up to 4)', type: 'list', max: 4, section: 'Plating', fields: [
         { key: 'name', label: 'Item', type: 'text', max: 60 }, { key: 'note', label: 'Note', type: 'text', max: 120 }] },
-      { key: 'say', label: 'Say it at the table', type: 'textarea', max: 400, section: 'At the table' },
-      { key: 'pairingNote', label: 'Why the pairing works', type: 'text', max: 200, section: 'At the table' },
+      { key: 'say', label: 'Say it at the table (three-line drop)', type: 'textarea', max: 400, section: 'At the table' },
+      { key: 'pairing', label: 'Wine · similar', type: 'text', max: 80, section: 'At the table', hint: 'Also the pairing in the Food Matrix.' },
+      { key: 'pairingRef', label: 'Wine · similar: where it’s from', type: 'text', max: 60, section: 'At the table', placeholder: 'Wine Book p. 26' },
+      { key: 'pairingOpposite', label: 'Wine · opposite', type: 'text', max: 80, section: 'At the table' },
+      { key: 'pairingOppositeRef', label: 'Wine · opposite: where it’s from', type: 'text', max: 60, section: 'At the table' },
+      { key: 'cocktail', label: 'Cocktail', type: 'text', max: 80, section: 'At the table' },
+      { key: 'cocktailRef', label: 'Cocktail: where it’s from', type: 'text', max: 60, section: 'At the table', placeholder: 'Drink Book p. 5' },
+      { key: 'pairingNote', label: 'Why the wine works (optional)', type: 'text', max: 200, section: 'At the table' },
+      { key: 'hasVideo', label: 'Add a video', type: 'toggle', section: 'Watch it made', hint: 'Off, or no video picked: the page leaves “Watch it made” out.' },
       { key: 'video', label: 'Video', type: 'video', section: 'Watch it made' },
       { key: 'videoStill', label: 'Still photo (before it plays)', type: 'photo', section: 'Watch it made' },
       { key: 'videoTitle', label: 'Video title', type: 'text', max: 120, section: 'Watch it made' },
@@ -281,7 +291,6 @@ export function seed(db) {
   for (const it of db.prepare('SELECT * FROM items').all()) {
     const col = it.type === 'dish' ? 'recipe' : 'house';
     const d = JSON.parse(it.data);
-    if (col === 'recipe') d.fullPage = true;
     if (!db.prepare('SELECT 1 FROM entries WHERE slug = ?').get(it.slug)) {
       db.prepare('INSERT INTO entries(collection,slug,data,sort,created_by,created_at,updated_by,updated_at) VALUES (?,?,?,?,?,?,?,?)')
         .run(col, it.slug, JSON.stringify(cleanEntry(col, d)), 1000 + it.id, it.created_by, it.created_at, it.updated_by, it.updated_at);

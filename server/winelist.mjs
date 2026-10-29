@@ -270,7 +270,7 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
     const proto = wrap.c[0];
     wrap.c = dishes.map((name) => {
       const p = clone(proto); p.n = 'Dish · ' + name; setText(texts(p)[0], name);
-      const r = recipes.find((x) => norm(x.data.name) === norm(name) && x.data.fullPage);
+      const r = recipes.find((x) => norm(x.data.name) === norm(name));
       p.to = r ? '/' + r.slug : undefined;
       return p;
     });

@@ -1,100 +1,907 @@
 [
  {
-  "key": "recipe/mike-s-vegas-pie",
-  "slug": "recipe/mikes-vegas-pie",
+  "key": "recipe/spicy-bar-nutz",
+  "slug": "recipe/spicy-bar-nutz",
   "sort": 0,
   "data": {
-   "name": "Mike's Vegas Pie",
-   "course": "Passed Bites",
-   "description": "",
-   "photo": "/img/4bc6d9652061.jpg",
-   "station": "Oven",
-   "allergens": [
-    "Gluten",
-    "Dairy"
+   "name": "Spicy Bar Nutz",
+   "course": "Snacks & Small Plates",
+   "price": "4",
+   "description": "Warm house-spiced mixed nuts, sweet and a little hot.",
+   "ingredients": [
+    "Mixed nuts"
    ],
-   "pairing": "",
-   "refining": false,
-   "fullPage": false
+   "allergens": [
+    "Tree Nut",
+    "Peanut"
+   ],
+   "say": "“We have our spicy bar nuts, warm mixed nuts tossed in our [seasoning].”",
+   "pairing": "Thomas Schmitt Riesling",
+   "pairingRef": "Wine Book p. 6",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "pairingOppositeRef": "Wine Book p. 4",
+   "cocktail": "Paper Plane",
+   "cocktailRef": "Drink Book p. 14",
+   "confirm": true
   }
  },
  {
-  "key": "recipe/short-rib-arancini",
-  "slug": "recipe/short-rib-arancini",
+  "key": "recipe/mushroom-brie-soup",
+  "slug": "recipe/mushroom-brie-soup",
   "sort": 1,
   "data": {
-   "name": "Short Rib Arancini",
-   "course": "Passed Bites",
-   "description": "Braised short rib, risotto, one-bite size",
-   "photo": "/img/4a4ffe91991e.jpg",
-   "station": "Fry",
+   "name": "Mushroom Brie Soup",
+   "course": "Snacks & Small Plates",
+   "price": "9",
+   "description": "Creamy mushroom soup finished with melted brie.",
+   "ingredients": [
+    "Mushrooms",
+    "Brie"
+   ],
+   "allergens": [
+    "Dairy"
+   ],
+   "say": "“We have our mushroom soup with brie, finished with [garnish].”",
+   "pairing": "Deux Roches Chardonnay",
+   "pairingRef": "Wine Book p. 12",
+   "pairingOpposite": "Broglia Gavi di Gavi",
+   "pairingOppositeRef": "Wine Book p. 11",
+   "cocktail": "Cozy Blankets",
+   "cocktailRef": "Drink Book p. 10",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/cauliflower",
+  "slug": "recipe/cauliflower",
+  "sort": 2,
+  "data": {
+   "name": "Roasted Cauliflower",
+   "course": "Snacks & Small Plates",
+   "price": "13",
+   "description": "Oven-roasted cauliflower with a bright sauce and crunchy topping.",
+   "ingredients": [
+    "Cauliflower"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have our roasted cauliflower with [topping] in our [sauce].”",
+   "pairing": "Acolytes Chardonnay",
+   "pairingRef": "Wine Book p. 13",
+   "pairingOpposite": "Thomas Schmitt Riesling",
+   "pairingOppositeRef": "Wine Book p. 6",
+   "cocktail": "Fuschia Satin",
+   "cocktailRef": "Drink Book p. 8",
+   "confirm": true,
+   "photo": "/img/7971541d5601.jpg",
+   "station": "Oven"
+  }
+ },
+ {
+  "key": "recipe/hot-honey-eggplant",
+  "slug": "recipe/hot-honey-eggplant",
+  "sort": 3,
+  "data": {
+   "name": "Hot Honey Eggplant",
+   "course": "Snacks & Small Plates",
+   "price": "15",
+   "description": "Crispy eggplant drizzled with hot honey.",
+   "ingredients": [
+    "Eggplant",
+    "Hot honey"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have our eggplant with [garnish], finished with hot honey.”",
+   "pairing": "Hugel ‘Gentil’ White Blend",
+   "pairingRef": "Wine Book p. 7",
+   "pairingOpposite": "Batasiolo Moscato d’Asti",
+   "pairingOppositeRef": "Wine Book p. 5",
+   "cocktail": "Spicy Ghost",
+   "cocktailRef": "Drink Book p. 32",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/brown-butter-cacio-ravioli",
+  "slug": "recipe/brown-butter-cacio-ravioli",
+  "sort": 4,
+  "data": {
+   "name": "Brown Butter Cacio Ravioli",
+   "course": "Snacks & Small Plates",
+   "price": "16",
+   "description": "Cheese ravioli in brown butter with pecorino and cracked black pepper.",
+   "ingredients": [
+    "Ravioli",
+    "Brown butter",
+    "Pecorino",
+    "Black pepper"
+   ],
    "allergens": [
     "Dairy",
     "Gluten",
     "Egg"
    ],
-   "pairing": "",
-   "refining": false,
-   "fullPage": false
+   "say": "“We have our ravioli with pecorino and black pepper in a brown butter sauce.”",
+   "pairing": "Acolytes Chardonnay",
+   "pairingRef": "Wine Book p. 13",
+   "pairingOpposite": "Broglia Gavi di Gavi",
+   "pairingOppositeRef": "Wine Book p. 11",
+   "cocktail": "Spritz",
+   "cocktailRef": "Drink Book p. 17",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/burrata-and-artichoke",
+  "slug": "recipe/burrata-and-artichoke",
+  "sort": 5,
+  "data": {
+   "name": "Burrata & Artichoke",
+   "course": "Snacks & Small Plates",
+   "price": "16",
+   "description": "Creamy burrata with marinated artichokes and grilled bread.",
+   "ingredients": [
+    "Burrata",
+    "Artichoke"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have our burrata with artichoke and [side], finished with [finish].”",
+   "pairing": "St. Michael-Eppan Pinot Grigio",
+   "pairingRef": "Wine Book p. 8",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "pairingOppositeRef": "Wine Book p. 4",
+   "cocktail": "Fjordside Garden",
+   "cocktailRef": "Drink Book p. 7",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/harissa-carrots",
+  "slug": "recipe/harissa-carrots",
+  "sort": 6,
+  "data": {
+   "name": "Harissa Carrots",
+   "course": "Snacks & Small Plates",
+   "price": "16",
+   "description": "Roasted carrots glazed with harissa for gentle North African heat.",
+   "ingredients": [
+    "Carrots",
+    "Harissa"
+   ],
+   "allergens": [
+    "Dairy"
+   ],
+   "say": "“We have our carrots with [garnish] in a harissa [sauce].”",
+   "pairing": "Babylonstoren Chenin Blanc",
+   "pairingRef": "Wine Book p. 10",
+   "pairingOpposite": "Thomas Schmitt Riesling",
+   "pairingOppositeRef": "Wine Book p. 6",
+   "cocktail": "Paloma",
+   "cocktailRef": "Drink Book p. 16",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/prosciutto-fondue",
+  "slug": "recipe/prosciutto-fondue",
+  "sort": 7,
+  "data": {
+   "name": "Prosciutto Fondue",
+   "course": "Snacks & Small Plates",
+   "price": "17",
+   "description": "Warm cheese fondue served with prosciutto and bread for dipping.",
+   "ingredients": [
+    "Cheese fondue",
+    "Prosciutto"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Pork"
+   ],
+   "say": "“We have our cheese fondue with prosciutto and [dippers].”",
+   "pairing": "St. Michael-Eppan Pinot Grigio",
+   "pairingRef": "Wine Book p. 8",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "pairingOppositeRef": "Wine Book p. 4",
+   "cocktail": "Guilty Rose",
+   "cocktailRef": "Drink Book p. 33",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/jb-calamari",
+  "slug": "recipe/jb-calamari",
+  "sort": 8,
+  "data": {
+   "name": "JB Calamari",
+   "course": "Snacks & Small Plates",
+   "price": "18",
+   "description": "Crispy fried calamari, the J. Baldwin’s way.",
+   "ingredients": [
+    "Calamari"
+   ],
+   "allergens": [
+    "Shellfish",
+    "Gluten"
+   ],
+   "say": "“We have our calamari with [garnish] and our [dipping sauce].”",
+   "pairing": "St. Sulpice Sauvignon Blanc",
+   "pairingRef": "Wine Book p. 9",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "pairingOppositeRef": "Wine Book p. 4",
+   "cocktail": "Paloma",
+   "cocktailRef": "Drink Book p. 16",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/short-rib-arancini",
+  "slug": "recipe/short-rib-arancini",
+  "sort": 9,
+  "data": {
+   "name": "Short Rib Arancini",
+   "course": "Snacks & Small Plates",
+   "price": "19",
+   "description": "Crispy risotto balls filled with braised short rib.",
+   "ingredients": [
+    "Risotto",
+    "Short rib"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Egg"
+   ],
+   "say": "“We have our risotto arancini filled with short rib, over our [sauce].”",
+   "pairing": "Cappone Chianti",
+   "pairingRef": "Wine Book p. 22",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "pairingOppositeRef": "Wine Book p. 4",
+   "cocktail": "Paper Plane",
+   "cocktailRef": "Drink Book p. 14",
+   "confirm": true,
+   "photo": "/img/4a4ffe91991e.jpg",
+   "station": "Fry"
   }
  },
  {
   "key": "recipe/scallop-rockefeller",
   "slug": "recipe/scallop-rockefeller",
-  "sort": 2,
+  "sort": 10,
   "data": {
-   "name": "Scallop Rockefeller",
-   "course": "Passed Bites",
-   "description": "Seared scallop, spinach, Rockefeller topping",
-   "photo": "/img/07c4484df8fc.jpg",
-   "station": "Broil",
+   "name": "Scallops Rockefeller",
+   "course": "Snacks & Small Plates",
+   "price": "24",
+   "description": "Scallops baked Rockefeller style with spinach, herbs and buttery crumbs.",
+   "ingredients": [
+    "Scallops"
+   ],
    "allergens": [
     "Shellfish",
     "Dairy",
     "Gluten"
    ],
-   "pairing": "",
-   "refining": false,
-   "fullPage": false
+   "say": "“We have our scallops Rockefeller with [topping] in a [sauce].”",
+   "pairing": "Acolytes Chardonnay",
+   "pairingRef": "Wine Book p. 13",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "pairingOppositeRef": "Wine Book p. 4",
+   "cocktail": "The Last Word",
+   "cocktailRef": "Drink Book p. 15",
+   "confirm": true,
+   "photo": "/img/07c4484df8fc.jpg",
+   "station": "Broil"
   }
  },
  {
-  "key": "recipe/mini-lemon-ricotta-ravioli",
-  "slug": "recipe/mini-lemon-ricotta-ravioli",
-  "sort": 3,
+  "key": "recipe/tot-oscar",
+  "slug": "recipe/tot-oscar",
+  "sort": 11,
   "data": {
-   "name": "Mini Lemon Ricotta Ravioli",
-   "course": "Passed Bites",
-   "description": "Lemon, ricotta, one-bite ravioli",
-   "photo": "/img/1ebae403dfe3.jpg",
-   "station": "Pasta",
+   "name": "Tot Oscar",
+   "course": "Snacks & Small Plates",
+   "price": "24",
+   "description": "Crispy tots topped Oscar style with crab, asparagus and béarnaise.",
+   "ingredients": [
+    "Tots"
+   ],
+   "allergens": [
+    "Shellfish",
+    "Dairy",
+    "Egg"
+   ],
+   "say": "“We have our tots Oscar with [topping] in a [sauce].”",
+   "pairing": "Acolytes Chardonnay",
+   "pairingRef": "Wine Book p. 13",
+   "pairingOpposite": "Broglia Gavi di Gavi",
+   "pairingOppositeRef": "Wine Book p. 11",
+   "cocktail": "Side Car",
+   "cocktailRef": "Drink Book p. 13",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/second-ave-salad",
+  "slug": "recipe/second-ave-salad",
+  "sort": 12,
+  "data": {
+   "name": "Second Ave. Salad",
+   "course": "Salads",
+   "price": "16",
+   "description": "The house signature salad; confirm the build with the chef.",
+   "ingredients": [],
+   "allergens": [
+    "Tree Nut",
+    "Dairy"
+   ],
+   "say": "“We have our Second Ave. salad, [greens] with [toppings] in our [dressing].”",
+   "pairing": "St. Sulpice Sauvignon Blanc",
+   "pairingRef": "Wine Book p. 9",
+   "pairingOpposite": "Babylonstoren Chenin Blanc",
+   "pairingOppositeRef": "Wine Book p. 10",
+   "cocktail": "Veggie Spritz",
+   "cocktailRef": "Drink Book p. 9",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/romaine",
+  "slug": "recipe/romaine",
+  "sort": 13,
+  "data": {
+   "name": "Romaine",
+   "course": "Salads",
+   "price": "17",
+   "description": "Crisp romaine with a creamy, Caesar-style dressing.",
+   "ingredients": [
+    "Romaine"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Egg",
+    "Finfish"
+   ],
+   "say": "“We have our romaine with [toppings] in our [dressing].”",
+   "pairing": "St. Michael-Eppan Pinot Grigio",
+   "pairingRef": "Wine Book p. 8",
+   "pairingOpposite": "Deux Roches Chardonnay",
+   "pairingOppositeRef": "Wine Book p. 12",
+   "cocktail": "Andean Alchemy",
+   "cocktailRef": "Drink Book p. 4",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/beet-confit",
+  "slug": "recipe/beet-confit",
+  "sort": 14,
+  "data": {
+   "name": "Beet Salad",
+   "course": "Salads",
+   "price": "18",
+   "description": "Roasted beets with creamy cheese, greens and a bright vinaigrette.",
+   "ingredients": [
+    "Beets"
+   ],
+   "allergens": [
+    "Dairy"
+   ],
+   "say": "“We have our beets with [cheese] and [greens] in our [dressing].”",
+   "pairing": "Guero Gamay-Pinot",
+   "pairingRef": "Wine Book p. 20",
+   "pairingOpposite": "St. Sulpice Sauvignon Blanc",
+   "pairingOppositeRef": "Wine Book p. 9",
+   "cocktail": "Fuschia Satin",
+   "cocktailRef": "Drink Book p. 8",
+   "confirm": true,
+   "photo": "/img/97e87a4072ed.jpg",
+   "station": "Garde Manger"
+  }
+ },
+ {
+  "key": "recipe/cali-margherita-pizza",
+  "slug": "recipe/cali-margherita-pizza",
+  "sort": 15,
+  "data": {
+   "name": "Cali Margherita Pizza",
+   "course": "Pizza",
+   "price": "18",
+   "description": "A stone-fired margherita with a California twist.",
+   "ingredients": [
+    "Pizza dough",
+    "Tomato",
+    "Mozzarella",
+    "Basil"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have our Cali margherita with fresh mozzarella and basil over tomato sauce.”",
+   "pairing": "Cappone Chianti",
+   "pairingRef": "Wine Book p. 22",
+   "pairingOpposite": "St. Michael-Eppan Pinot Grigio",
+   "pairingOppositeRef": "Wine Book p. 8",
+   "cocktail": "Spritz",
+   "cocktailRef": "Drink Book p. 17",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/double-pepperoni-pizza",
+  "slug": "recipe/double-pepperoni-pizza",
+  "sort": 16,
+  "data": {
+   "name": "Double Pepperoni Pizza",
+   "course": "Pizza",
+   "price": "18",
+   "description": "Two layers of pepperoni over tomato and mozzarella.",
+   "ingredients": [
+    "Pizza dough",
+    "Pepperoni"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Pork"
+   ],
+   "say": "“We have our double pepperoni pie with [cheese] over our [sauce].”",
+   "pairing": "Turley Zinfandel",
+   "pairingRef": "Wine Book p. 23",
+   "pairingOpposite": "Ca’ Bianca Brachetto",
+   "pairingOppositeRef": "Wine Book p. 19",
+   "cocktail": "Guilty Rose",
+   "cocktailRef": "Drink Book p. 33",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/seasonal-veggie-pie",
+  "slug": "recipe/seasonal-veggie-pie",
+  "sort": 17,
+  "data": {
+   "name": "Seasonal Veggie Pie",
+   "course": "Pizza",
+   "price": "18",
+   "description": "A rotating pie built on the season’s vegetables.",
+   "ingredients": [
+    "Pizza dough",
+    "Seasonal vegetables"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have our seasonal veggie pie with this week’s vegetables over our [sauce].”",
+   "pairing": "Adelsheim Pinot Noir",
+   "pairingRef": "Wine Book p. 21",
+   "pairingOpposite": "St. Sulpice Sauvignon Blanc",
+   "pairingOppositeRef": "Wine Book p. 9",
+   "cocktail": "Veggie Spritz",
+   "cocktailRef": "Drink Book p. 9",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/2-a-m-pie",
+  "slug": "recipe/2-a-m-pie",
+  "sort": 18,
+  "data": {
+   "name": "2 A.M. Pie",
+   "course": "Pizza",
+   "price": "19",
+   "description": "The late-night craving pie; confirm the toppings with the chef.",
+   "ingredients": [],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have our 2 A.M. Pie with [main topping] and [second topping] over our [sauce].”",
+   "pairing": "Turley Zinfandel",
+   "pairingRef": "Wine Book p. 23",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "pairingOppositeRef": "Wine Book p. 4",
+   "cocktail": "BRG Old Fashion",
+   "cocktailRef": "Drink Book p. 31",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/mike-s-vegas-pie",
+  "slug": "recipe/mike-s-vegas-pie",
+  "sort": 19,
+  "data": {
+   "name": "Mike’s Vegas Winner",
+   "course": "Pizza",
+   "price": "24",
+   "description": "Mike’s signature pie; confirm the build with the chef.",
+   "ingredients": [],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have Mike’s Vegas Winner with [main topping] and [second topping] over our [sauce].”",
+   "pairing": "Batasiolo Moscato d’Asti",
+   "pairingRef": "Wine Book p. 5",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "pairingOppositeRef": "Wine Book p. 4",
+   "cocktail": "Espresso Martini",
+   "cocktailRef": "Drink Book p. 76",
+   "confirm": true,
+   "photo": "/img/4bc6d9652061.jpg",
+   "station": "Oven"
+  }
+ },
+ {
+  "key": "recipe/sunday-sauce-pasta",
+  "slug": "recipe/sunday-sauce-pasta",
+  "sort": 20,
+  "data": {
+   "name": "Sunday Sauce Pasta",
+   "course": "Pasta",
+   "price": "22",
+   "description": "Pasta in a slow-simmered Sunday red sauce.",
+   "ingredients": [
+    "Pasta",
+    "Sunday sauce"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have our pasta with [garnish] in our Sunday sauce.”",
+   "pairing": "Cappone Chianti",
+   "pairingRef": "Wine Book p. 22",
+   "pairingOpposite": "Turley Zinfandel",
+   "pairingOppositeRef": "Wine Book p. 23",
+   "cocktail": "Testa Dura",
+   "cocktailRef": "Drink Book p. 34",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/rigatoni-ragu",
+  "slug": "recipe/rigatoni-ragu",
+  "sort": 21,
+  "data": {
+   "name": "Rigatoni Ragu",
+   "course": "Pasta",
+   "price": "28",
+   "description": "Rigatoni in a rich, slow-braised meat ragu.",
+   "ingredients": [
+    "Rigatoni",
+    "Meat ragu"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have our rigatoni in a slow-braised meat ragu, finished with [garnish].”",
+   "pairing": "Micheletti Bolgheri",
+   "pairingRef": "Wine Book p. 25",
+   "pairingOpposite": "Guero Gamay-Pinot",
+   "pairingOppositeRef": "Wine Book p. 20",
+   "cocktail": "The Furest",
+   "cocktailRef": "Drink Book p. 5",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/agnolotti",
+  "slug": "recipe/agnolotti",
+  "sort": 22,
+  "data": {
+   "name": "Squash Agnolotti",
+   "course": "Pasta",
+   "price": "28",
+   "description": "Squash-filled pasta pillows in a brown butter sauce.",
+   "ingredients": [
+    "Agnolotti",
+    "Squash"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Egg"
+   ],
+   "say": "“We have our squash agnolotti with [garnish] in our [sauce].”",
+   "pairing": "Deux Roches Chardonnay",
+   "pairingRef": "Wine Book p. 12",
+   "pairingOpposite": "Broglia Gavi di Gavi",
+   "pairingOppositeRef": "Wine Book p. 11",
+   "cocktail": "Cozy Blankets",
+   "cocktailRef": "Drink Book p. 10",
+   "confirm": true,
+   "photo": "/img/a6602894e763.jpg",
+   "station": "Pasta"
+  }
+ },
+ {
+  "key": "recipe/duck-gnocchetti",
+  "slug": "recipe/duck-gnocchetti",
+  "sort": 23,
+  "data": {
+   "name": "Duck Gnocchetti",
+   "course": "Pasta",
+   "price": "34",
+   "description": "Small gnocchetti tossed with braised duck.",
+   "ingredients": [
+    "Gnocchetti",
+    "Duck"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Egg"
+   ],
+   "say": "“We have our gnocchetti with duck and [garnish] in our [sauce].”",
+   "pairing": "Adelsheim Pinot Noir",
+   "pairingRef": "Wine Book p. 21",
+   "pairingOpposite": "Thomas Schmitt Riesling",
+   "pairingOppositeRef": "Wine Book p. 6",
+   "cocktail": "Cozy Blankets",
+   "cocktailRef": "Drink Book p. 10",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/lobster-and-crab-tortellini",
+  "slug": "recipe/lobster-and-crab-tortellini",
+  "sort": 24,
+  "data": {
+   "name": "Lobster & Crab Tortellini",
+   "course": "Pasta",
+   "price": "38",
+   "description": "Tortellini filled with lobster and crab in a light cream sauce.",
+   "ingredients": [
+    "Tortellini",
+    "Lobster",
+    "Crab"
+   ],
+   "allergens": [
+    "Shellfish",
+    "Dairy",
+    "Gluten",
+    "Egg"
+   ],
+   "say": "“We have our lobster and crab tortellini with [garnish] in our [sauce].”",
+   "pairing": "Taub Chardonnay",
+   "pairingRef": "Wine Book p. 15",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "pairingOppositeRef": "Wine Book p. 4",
+   "cocktail": "Lavender Haze",
+   "cocktailRef": "Drink Book p. 11",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/baldwin-burger",
+  "slug": "recipe/baldwin-burger",
+  "sort": 25,
+  "data": {
+   "name": "Baldwin Burger",
+   "course": "Mains",
+   "price": "17",
+   "description": "The house burger; confirm toppings with the chef.",
+   "ingredients": [
+    "Beef patty",
+    "Bun"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have our Baldwin Burger with [toppings] on a [bun].”",
+   "pairing": "Altocedro Malbec",
+   "pairingRef": "Wine Book p. 26",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "pairingOppositeRef": "Wine Book p. 4",
+   "cocktail": "BRG Old Fashion",
+   "cocktailRef": "Drink Book p. 31",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/smash-burger",
+  "slug": "recipe/smash-burger",
+  "sort": 26,
+  "data": {
+   "name": "Smash Burger",
+   "course": "Mains",
+   "price": "19",
+   "description": "Crispy-edged smash patties with melted cheese.",
+   "ingredients": [
+    "Smashed beef patties",
+    "Bun"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "say": "“We have our smash burger with [cheese] and [sauce] on a [bun].”",
+   "pairing": "Turley Zinfandel",
+   "pairingRef": "Wine Book p. 23",
+   "pairingOpposite": "Guero Gamay-Pinot",
+   "pairingOppositeRef": "Wine Book p. 20",
+   "cocktail": "Paloma",
+   "cocktailRef": "Drink Book p. 16",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/walleye-milanese",
+  "slug": "recipe/walleye-milanese",
+  "sort": 27,
+  "data": {
+   "name": "Walleye Milanese",
+   "course": "Mains",
+   "price": "26",
+   "description": "Breaded Great Lakes walleye, pan-fried until golden.",
+   "ingredients": [
+    "Walleye",
+    "Breading"
+   ],
    "allergens": [
     "Gluten",
     "Egg",
+    "Finfish"
+   ],
+   "say": "“We have our walleye Milanese, breaded and pan-fried, with [side] and [sauce].”",
+   "pairing": "St. Michael-Eppan Pinot Grigio",
+   "pairingRef": "Wine Book p. 8",
+   "pairingOpposite": "Babylonstoren Chenin Blanc",
+   "pairingOppositeRef": "Wine Book p. 10",
+   "cocktail": "The Ritz",
+   "cocktailRef": "Drink Book p. 6",
+   "confirm": true,
+   "photo": "/img/913b2d2e8e31.jpg",
+   "station": "Sauté"
+  }
+ },
+ {
+  "key": "recipe/chicken-saltimbocca",
+  "slug": "recipe/chicken-saltimbocca",
+  "sort": 28,
+  "data": {
+   "name": "Chicken Saltimbocca",
+   "course": "Mains",
+   "price": "28",
+   "description": "Chicken layered with prosciutto and sage in a white wine pan sauce.",
+   "ingredients": [
+    "Chicken",
+    "Prosciutto",
+    "Sage"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Pork"
+   ],
+   "say": "“We have our chicken saltimbocca with prosciutto and sage in a [sauce].”",
+   "pairing": "Cappone Chianti",
+   "pairingRef": "Wine Book p. 22",
+   "pairingOpposite": "Broglia Gavi di Gavi",
+   "pairingOppositeRef": "Wine Book p. 11",
+   "cocktail": "Spritz",
+   "cocktailRef": "Drink Book p. 17",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/roasted-chicken",
+  "slug": "recipe/roasted-chicken",
+  "sort": 29,
+  "data": {
+   "name": "Roasted Chicken",
+   "course": "Mains",
+   "price": "32",
+   "description": "Roasted chicken with crisp skin and pan jus.",
+   "ingredients": [
+    "Roasted chicken"
+   ],
+   "allergens": [
     "Dairy"
    ],
-   "pairing": "",
-   "refining": false,
-   "fullPage": false
+   "say": "“We have our roasted chicken with [side] in our [sauce].”",
+   "pairing": "Acolytes Chardonnay",
+   "pairingRef": "Wine Book p. 13",
+   "pairingOpposite": "Guero Gamay-Pinot",
+   "pairingOppositeRef": "Wine Book p. 20",
+   "cocktail": "Spritz",
+   "cocktailRef": "Drink Book p. 17",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/shrimp-and-eggplant",
+  "slug": "recipe/shrimp-and-eggplant",
+  "sort": 30,
+  "data": {
+   "name": "Shrimp & Eggplant",
+   "course": "Mains",
+   "price": "34",
+   "description": "Shrimp and eggplant together in a bright sauce.",
+   "ingredients": [
+    "Shrimp",
+    "Eggplant"
+   ],
+   "allergens": [
+    "Shellfish",
+    "Gluten"
+   ],
+   "say": "“We have our shrimp with eggplant in our [sauce].”",
+   "pairing": "Broglia Gavi di Gavi",
+   "pairingRef": "Wine Book p. 11",
+   "pairingOpposite": "Hugel ‘Gentil’ White Blend",
+   "pairingOppositeRef": "Wine Book p. 7",
+   "cocktail": "Clean Getaway",
+   "cocktailRef": "Drink Book p. 35",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/sun-dried-tomato-salmon",
+  "slug": "recipe/sun-dried-tomato-salmon",
+  "sort": 31,
+  "data": {
+   "name": "Sun-Dried Tomato Salmon",
+   "course": "Mains",
+   "price": "37",
+   "description": "Salmon with a sun-dried tomato sauce.",
+   "ingredients": [
+    "Salmon",
+    "Sun-dried tomato"
+   ],
+   "allergens": [
+    "Dairy",
+    "Finfish"
+   ],
+   "say": "“We have our salmon with [side] in a sun-dried tomato [sauce].”",
+   "pairing": "Adelsheim Pinot Noir",
+   "pairingRef": "Wine Book p. 21",
+   "pairingOpposite": "St. Sulpice Sauvignon Blanc",
+   "pairingOppositeRef": "Wine Book p. 9",
+   "cocktail": "Fjordside Garden",
+   "cocktailRef": "Drink Book p. 7",
+   "confirm": true
   }
  },
  {
   "key": "recipe/short-rib",
   "slug": "recipe/short-rib",
-  "sort": 4,
+  "sort": 32,
   "data": {
-   "name": "Short Rib",
-   "course": "Plates",
-   "description": "4-hr braised, spinach, pan gravy, carrot ribbon",
-   "photo": "/img/8394a9d84d8f.jpg",
-   "station": "Sauté",
+   "name": "Braised Short Rib",
+   "course": "Mains",
+   "price": "38",
+   "description": "Slow-braised beef short rib, fork tender.",
+   "ingredients": [
+    "Braised short rib"
+   ],
    "allergens": [
     "Dairy",
     "Gluten"
    ],
-   "pairing": "Bolgheri Rosso",
-   "refining": false,
-   "fullPage": true,
+   "say": "“We have our braised short rib with [side] in our [sauce].”",
+   "pairing": "Altocedro Malbec",
+   "pairingRef": "Wine Book p. 26",
+   "pairingOpposite": "Marqués de Riscal Rioja",
+   "pairingOppositeRef": "Wine Book p. 16",
+   "cocktail": "The Furest",
+   "cocktailRef": "Drink Book p. 5",
+   "confirm": true,
+   "photo": "/img/8394a9d84d8f.jpg",
+   "station": "Sauté",
    "signature": true,
    "tagline": "The signature dish",
    "components": [
@@ -170,31 +977,6 @@
     }
    ],
    "platePhoto": "/img/8394a9d84d8f.jpg",
-   "say": "“Our short rib is braised for four hours until it falls apart, then finished with a pan gravy, spinach and a ribbon of carrot.”",
-   "pairingNote": "The pairing to suggest with every Short Rib.",
-   "videoTitle": "Short Rib · Fire to Pass",
-   "videoStill": "/img/28f3fdd6175e.jpg",
-   "videoHeading": "FROM FIRE TO PASS",
-   "videoNote": "A short walkthrough with the chef: the sear, the braise, the gravy and the plate. Watch it before your first shift on sauté, and again before you sign off.",
-   "videoDuration": "2:40",
-   "chapters": [
-    {
-     "time": "0:00",
-     "label": "Sear"
-    },
-    {
-     "time": "0:35",
-     "label": "Braise"
-    },
-    {
-     "time": "1:20",
-     "label": "Pan Gravy"
-    },
-    {
-     "time": "1:55",
-     "label": "Plate"
-    }
-   ],
    "photos": [
     {
      "img": "/img/8394a9d84d8f.jpg",
@@ -213,92 +995,105 @@
      "caption": "Portioned for service"
     }
    ],
-   "video": null
+   "videoStill": "/img/28f3fdd6175e.jpg",
+   "videoTitle": "Short Rib · Fire to Pass",
+   "videoDuration": "2:40",
+   "videoHeading": "FROM FIRE TO PASS",
+   "videoNote": "A short walkthrough with the chef: the sear, the braise, the gravy and the plate. Watch it before your first shift on sauté, and again before you sign off.",
+   "chapters": [
+    {
+     "time": "0:00",
+     "label": "Sear"
+    },
+    {
+     "time": "0:35",
+     "label": "Braise"
+    },
+    {
+     "time": "1:20",
+     "label": "Pan Gravy"
+    },
+    {
+     "time": "1:55",
+     "label": "Plate"
+    }
+   ]
   }
  },
  {
-  "key": "recipe/cauliflower",
-  "slug": "recipe/cauliflower",
-  "sort": 5,
+  "key": "recipe/lamb-chops",
+  "slug": "recipe/lamb-chops",
+  "sort": 33,
   "data": {
-   "name": "Cauliflower",
-   "course": "Plates",
-   "description": "Roasted, pistachios, serve hot",
-   "photo": "/img/7971541d5601.jpg",
-   "station": "Oven",
+   "name": "Lamb Chops",
+   "course": "Mains",
+   "price": "54",
+   "description": "Grilled lamb chops with seasonal sides.",
+   "ingredients": [
+    "Lamb chops"
+   ],
    "allergens": [
-    "Tree Nut",
     "Dairy"
    ],
-   "pairing": "",
-   "refining": false,
-   "fullPage": false
+   "say": "“We have our lamb chops with [side] in our [sauce].”",
+   "pairing": "Micheletti Bolgheri",
+   "pairingRef": "Wine Book p. 25",
+   "pairingOpposite": "Adelsheim Pinot Noir",
+   "pairingOppositeRef": "Wine Book p. 21",
+   "cocktail": "Paper Plane",
+   "cocktailRef": "Drink Book p. 14",
+   "confirm": true
   }
  },
  {
-  "key": "recipe/agnolotti",
-  "slug": "recipe/agnolotti",
-  "sort": 6,
+  "key": "recipe/espresso-encrusted-filet",
+  "slug": "recipe/espresso-encrusted-filet",
+  "sort": 34,
   "data": {
-   "name": "Agnolotti",
-   "course": "Plates",
-   "description": "Michigan squash, sweet potato purée, blossoms",
-   "photo": "/img/a6602894e763.jpg",
+   "name": "Espresso Encrusted Filet",
+   "course": "Mains",
+   "price": "56",
+   "description": "Filet mignon with an espresso crust.",
+   "ingredients": [
+    "Filet mignon",
+    "Espresso crust"
+   ],
+   "allergens": [
+    "Dairy"
+   ],
+   "say": "“We have our espresso-crusted filet mignon with [side] in our [sauce].”",
+   "pairing": "Vinekeeper Cabernet",
+   "pairingRef": "Wine Book p. 28",
+   "pairingOpposite": "Cappone Chianti",
+   "pairingOppositeRef": "Wine Book p. 22",
+   "cocktail": "BRG Old Fashion",
+   "cocktailRef": "Drink Book p. 31",
+   "confirm": true
+  }
+ },
+ {
+  "key": "recipe/mini-lemon-ricotta-ravioli",
+  "slug": "recipe/mini-lemon-ricotta-ravioli",
+  "sort": 35,
+  "data": {
+   "name": "Mini Lemon Ricotta Ravioli",
+   "course": "Snacks & Small Plates",
+   "description": "Lemon, ricotta, one-bite ravioli",
+   "photo": "/img/1ebae403dfe3.jpg",
    "station": "Pasta",
    "allergens": [
     "Gluten",
     "Egg",
     "Dairy"
    ],
-   "pairing": "Fuschia Satin",
-   "refining": false,
-   "fullPage": false
-  }
- },
- {
-  "key": "recipe/beet-confit",
-  "slug": "recipe/beet-confit",
-  "sort": 7,
-  "data": {
-   "name": "Beet Confit",
-   "course": "Plates",
-   "description": "Crème fraîche, pickled shallots, orange, hatch chili almonds",
-   "photo": "/img/97e87a4072ed.jpg",
-   "station": "Garde Manger",
-   "allergens": [
-    "Dairy",
-    "Tree Nut"
-   ],
    "pairing": "",
-   "refining": false,
-   "fullPage": false
-  }
- },
- {
-  "key": "recipe/walleye-milanese",
-  "slug": "recipe/walleye-milanese",
-  "sort": 8,
-  "data": {
-   "name": "Walleye Milanese",
-   "course": "Plates",
-   "description": "Crusted fillet, onion soubise, arugula and tomato",
-   "photo": "/img/913b2d2e8e31.jpg",
-   "station": "Sauté",
-   "allergens": [
-    "Finfish",
-    "Gluten",
-    "Egg",
-    "Dairy"
-   ],
-   "pairing": "Tenuta Spinelli Pecorino",
-   "refining": false,
-   "fullPage": false
+   "confirm": true
   }
  },
  {
   "key": "recipe/date-cake",
   "slug": "recipe/date-cake",
-  "sort": 9,
+  "sort": 36,
   "data": {
    "name": "Date Cake",
    "course": "Dessert",
@@ -311,8 +1106,7 @@
     "Egg"
    ],
    "pairing": "",
-   "refining": false,
-   "fullPage": false
+   "confirm": true
   }
  }
 ]

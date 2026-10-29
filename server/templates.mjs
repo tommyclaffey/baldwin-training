@@ -50,8 +50,13 @@ export function repeat(container, pred, items, fill, proto) {
 }
 
 const img = (url) => (url ? [{ img: url, m: 'FILL' }] : [{ c: '#2A2724' }]);
+/** No photo yet: the beige panel the wine pages use, labelled PHOTO TO COME. */
+export function photoToCome(node, label = true) {
+  node.t = 'F'; node.f = [{ c: '#E7DECF' }]; node.lm = 'V'; node.pa = 'C'; node.ca = 'C';
+  node.c = label ? [{ t: 'T', n: 'Photo to come', s: 'PHOTO TO COME', ff: 'Archivo', fs: 'SemiBold', z: 11, ls: '14%', f: [{ c: '#5E574F' }], ar: 'W', sh: 'H', sv: 'H' }] : [];
+}
 const lines = (v) => (Array.isArray(v) ? v : String(v || '').split('\n')).map((s) => String(s).trim()).filter(Boolean);
-const COURSE_SHORT = { 'Passed Bites': 'Passed', Plates: 'Plate', Dessert: 'Dessert' };
+const COURSE_SHORT = { 'Passed Bites': 'Passed', Plates: 'Plate', Dessert: 'Dessert', 'Snacks & Small Plates': 'Small Plate', Salads: 'Salad', Pizza: 'Pizza', Pasta: 'Pasta', Mains: 'Main' };
 
 /* ------------------------------ cocktail ------------------------------ */
 
@@ -198,7 +203,7 @@ export function cocktailPage(template, item, ctx) {
 
 /* ------------------------------ dish ------------------------------ */
 
-export function dishPage(template, item) {
+export function dishPage(template, item, links = {}) {
   const d = item.data;
   const main = clone(template.main);
   const name = d.name || 'New dish';
@@ -211,23 +216,39 @@ export function dishPage(template, item) {
 
   const header = find(main, byName('Header'));
   const photo = find(header, startsWith('IMG/'));
-  photo.f = img(d.photo); photo.n = 'IMG/' + name;
+  photo.n = 'IMG/' + name;
+  if (d.photo) photo.f = img(d.photo); else photoToCome(photo);
   const tags = find(header, byName('Tags'));
   const tagProto = find(tags, startsWith('Tag · '));
   const sig = find(tags, byName('Tag · Signature'));
-  const tagList = [COURSE_SHORT[course] || course, d.station && `${d.station} Station`].filter(Boolean);
+  const tagList = [COURSE_SHORT[course] || course, d.station && `${d.station} Station`, d.price && `$${d.price}`].filter(Boolean);
   tags.c = [...tagList.map((t) => { const c = clone(tagProto); c.n = 'Tag · ' + t; setText(texts(c)[0], t); return c; }), ...(d.signature && sig ? [sig] : [])];
   const tt = texts(find(header, byName('Titles')));
   setText(tt[0], d.tagline || 'On our menu');
   setText(tt[1], name.toUpperCase());
+  // Long names wrap onto a second line instead of running off the edge.
+  find(header, byName('Titles')).sh = 'L'; tt[1].sh = 'L'; tt[1].ar = 'H';
   const info = find(header, byName('Info'));
   setText(info.c.find((c) => c.t === 'T'), d.description || '');
 
+  // Ingredients and allergens; "chef to confirm" only while the chef hasn't signed them off.
+  const ingRow = find(header, byName('Ingredients'));
+  if (ingRow) {
+    const list = (d.ingredients || []).filter(Boolean);
+    const note = ingRow.c.filter((c) => c.t === 'T').pop();
+    if (!list.length && !d.confirm) remove(info, ingRow);
+    else {
+      repeat(ingRow, startsWith('Ingredient · '), list, (p, a) => { p.n = 'Ingredient · ' + a; setText(texts(p)[0], a); });
+      if (d.confirm) setText(note, list.length ? 'Full list from chef' : 'Chef to add'); else ingRow.c = ingRow.c.filter((c) => c !== note);
+    }
+  }
   const allergens = find(header, byName('Allergens'));
   repeat(allergens, startsWith('Allergen · '), d.allergens || [], (p, a) => { p.n = 'Allergen · ' + a; setText(texts(p)[0], a); });
-  if (!(d.allergens || []).length) {
-    const note = allergens.c.filter((c) => c.t === 'T');
-    setText(note[note.length - 1], 'None listed · chef to confirm');
+  {
+    const note = allergens.c.filter((c) => c.t === 'T').pop();
+    if (!(d.allergens || []).length) setText(note, 'None listed · chef to confirm');
+    else if (d.confirm) setText(note, 'Chef to confirm');
+    else allergens.c = allergens.c.filter((c) => c !== note);
   }
 
   // Components table
@@ -240,6 +261,7 @@ export function dishPage(template, item) {
       setText(t[0], r.component); setText(t[1], r.portion || '—'); setText(t[2], r.hold || '—');
     });
   } else remove(main, comps);
+  const buildCard = find(main, byName('The Build'));
 
   // Steps
   const steps = find(main, byName('Steps'));
@@ -251,6 +273,13 @@ export function dishPage(template, item) {
     setText(t[1], s.title || ''); setText(t[2], s.detail || '');
     if (s.time) setText(t[3], s.time); else remove(row, find(row, byName('Time')));
   });
+
+  // No components and no steps: the build card goes, and the right-hand cards take the width.
+  if (!rows.length && !stepList.length && buildCard) {
+    remove(main, buildCard);
+    const right = find(main, byName('Right column'));
+    if (right) { right.sh = 'L'; for (const c of right.c || []) c.sh = 'L'; }
+  }
 
   // Plating
   const plating = find(main, byName('Plating guide'));
@@ -271,17 +300,34 @@ export function dishPage(template, item) {
     });
   } else remove(main, plating);
 
-  // At the table
+  // At the table: the three-line drop, then the similar wine, the opposite wine and the cocktail.
   const table = find(main, byName('At the table'));
-  setText(texts(table)[1], d.say || '');
-  const pairing = find(table, byName('Pairing'));
-  if (d.pairing) {
-    const t = texts(pairing);
-    setText(t[1], d.pairing); setText(t[2], d.pairingNote || '');
-  } else remove(table, pairing);
+  if (d.say) setText(texts(table)[1], d.say); else remove(table, texts(table)[1]);
+  for (const [node, nm, ref, note, kind] of [['Pairing', d.pairing, d.pairingRef, d.pairingNote, 'wine'], ['Pairing · Opposite', d.pairingOpposite, d.pairingOppositeRef, '', 'wine'], ['Pairing · Cocktail', d.cocktail, d.cocktailRef, '', 'cocktail']]) {
+    const box = find(table, byName(node));
+    if (!box) continue;
+    if (!nm) { remove(table, box); continue; }
+    const t = texts(box);
+    setText(t[1], nm); setText(t[2], note || ref || '');
+    // Link to the wine or cocktail page when it's in the book; its photo replaces the stand-in.
+    const hit = links[kind]?.(nm);
+    const thumb = find(box, startsWith('IMG/'));
+    if (hit) { box.to = '/' + hit.slug; if (thumb && hit.photo) thumb.f = img(hit.photo); }
+  }
+  if (!d.say && !table.c.some((c) => c.t !== 'T')) remove(main, table);
+  // Full width (no build card): the script on the left, the pairings beside it. On a phone they stack.
+  else if (!rows.length && !stepList.length) {
+    const words = table.c.filter((c) => c.t === 'T').map((t) => ({ ...t, sh: 'L', ar: 'H' }));
+    const pairs = table.c.filter((c) => (c.n || '').startsWith('Pairing')).map((p) => ({ ...p, sh: 'L' }));
+    table.c = [{ t: 'F', n: 'Table row', w: table.w, h: 0, sh: 'L', sv: 'H', lm: 'H', gap: 32, c: [
+      { t: 'F', n: 'Say', w: 400, h: 0, sh: 'L', sv: 'H', lm: 'V', gap: 16, c: words },
+      ...(pairs.length ? [{ t: 'F', n: 'Pairings', w: 400, h: 0, sh: 'L', sv: 'H', lm: 'V', gap: 12, c: pairs }] : []),
+    ] }];
+  }
 
-  // Watch it made
+  // Watch it made: only when "Add a video" is on and a video is picked.
   const watch = find(main, byName('Watch it made'));
+  if (!(d.hasVideo && d.video)) remove(main, watch);
   const player = find(watch, byName('Player'));
   const still = find(player, startsWith('IMG/'));
   if (still) still.f = img(d.videoStill || d.photo);
@@ -315,6 +361,8 @@ export function dishPage(template, item) {
 
   const signoff = find(main, byName('Sign-off'));
   setText(texts(signoff)[0], `Ready to sign off on the ${name}?`);
+  // No quiz for this dish yet: a manager signs it off by hand.
+  if (!item.quiz && texts(signoff)[1]) setText(texts(signoff)[1], 'A manager signs you off once you can describe it at the table and answer guests’ questions.');
   // Sign-off buttons go to this dish's quiz when there is one.
   const quiz = item.quiz ? '/quizzes?quiz=' + item.quiz : '/quizzes';
   for (const b of findAll(main, (n) => n.n === 'Button · Sign Off' || n.n === 'Button · Start')) b.to = quiz;
