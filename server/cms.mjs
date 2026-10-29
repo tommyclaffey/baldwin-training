@@ -23,6 +23,25 @@ export const SHELF = [
 export const BEER_STYLES = ['Light Lager', 'Pilsner', 'Amber and Red Ale', 'Pale Ale', 'IPA', 'Session IPA', 'Hazy IPA', 'Wheat Beer', 'Belgian Ale', 'Sour', 'Stout', 'Porter', 'Non-alcoholic', 'Rotating'];
 export const ALLERGENS = ['Dairy', 'Egg', 'Finfish', 'Shellfish', 'Tree Nut', 'Peanut', 'Gluten', 'Soy', 'Sesame', 'Allium', 'Nightshade', 'Pork'];
 /** Courses, in menu order (the Food Book, Oct 28). */
+/** A wine's description as one sentence: structure (from the profile ratings unless written), mouthfeel, then fruit. */
+export function wineStructure(d) {
+  const n = (k) => Number(d[k]) || 0;
+  const body = ['', 'Very light-bodied', 'Light-bodied', 'Medium-bodied', 'Full-bodied', 'Very full-bodied'][n('body')] || '';
+  const sweet = ['', 'dry', 'off-dry', 'lightly sweet', 'sweet', 'sweet'][n('sweet')] || '';
+  const acid = n('acid') >= 5 ? 'racy acidity' : n('acid') === 4 ? 'bright acidity' : n('acid') && n('acid') <= 2 ? 'soft acidity' : '';
+  const tan = n('tannin') >= 5 ? 'big, grippy tannins' : n('tannin') === 4 ? 'firm tannins' : n('tannin') === 3 ? 'medium tannins' : n('tannin') ? 'soft tannins' : '';
+  const head = [body, sweet].filter(Boolean).join(' and ');
+  const tail = [acid, tan].filter(Boolean).join(' and ');
+  return head ? head + (tail ? ' with ' + tail : '') : '';
+}
+export function wineDescription(d) {
+  const s = (d.structure || wineStructure(d)).trim(), m = (d.mouthfeel || '').trim(), f = (d.fruit || '').trim();
+  if (!m && !f) return d.notes || '';
+  const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
+  // "Light-bodied and dry with bright acidity; lively and light, with green apple, pear and white flowers."
+  const feel = [m, f && `with ${f}`].filter(Boolean).join(', ');
+  return cap([s, feel].filter(Boolean).join('; ')) + '.';
+}
 export const COURSES = ['Snacks & Small Plates', 'Salads', 'Pizza', 'Pasta', 'Mains', 'Dessert'];
 const PROFILE = ['—', '1', '2', '3', '4', '5'];
 
@@ -136,7 +155,10 @@ export const COLLECTIONS = {
       { key: 'pages', label: 'Shows on these pages', type: 'tags', section: 'Where it shows', hint: 'Grape, style or region pages by name, e.g. Cabernet, Napa Valley, Prosecco. It also shows on its country and colour pages.' },
       { key: 'bottle_img', label: 'Bottle photo', type: 'photo', scan: true, section: 'Tasting', hint: 'Scan Bottle: take a photo of your own bottle and it cuts out just the bottle. Never use photos from a winery’s or shop’s website.' },
       { key: 'style', label: 'Style tag', type: 'text', max: 30, section: 'Tasting', placeholder: 'Crisp, Off-dry, Big and bold' },
-      { key: 'notes', label: 'Tasting notes', type: 'textarea', max: 300, section: 'Tasting' },
+      { key: 'structure', label: 'Description · structure', type: 'text', max: 120, section: 'Tasting', hint: 'Leave empty to build it from the body, sweetness, acidity and tannin ratings.' },
+      { key: 'mouthfeel', label: 'Description · mouthfeel', type: 'text', max: 120, section: 'Tasting', placeholder: 'silky and round' },
+      { key: 'fruit', label: 'Description · fruit', type: 'text', max: 160, section: 'Tasting', placeholder: 'black cherry, plum and vanilla' },
+      { key: 'notes', label: 'Old tasting notes (shown only when mouthfeel and fruit are empty)', type: 'textarea', max: 300, section: 'Tasting' },
       { key: 'pairs', label: 'Pairs with', type: 'text', max: 160, section: 'Tasting', hint: 'Dishes from our menu, separated by commas.' },
       { key: 'say', label: 'Say it at the table', type: 'text', max: 160, section: 'Tasting' },
       ...[['body', 'Body'], ['sweet', 'Sweetness'], ['acid', 'Acidity'], ['tannin', 'Tannin']].map(([key, label]) => ({ key, label, type: 'select', options: PROFILE, section: 'Profile (1 to 5)', hint: key === 'tannin' ? '— for whites and sparkling.' : undefined })),
@@ -188,10 +210,11 @@ export const COLLECTIONS = {
         { key: 'name', label: 'Item', type: 'text', max: 60 }, { key: 'note', label: 'Note', type: 'text', max: 120 }] },
       { key: 'inspiration', label: 'Inspiration', type: 'textarea', max: 800, section: 'The story', hint: 'Where the dish comes from and why it’s on the menu.' },
       { key: 'sellingPoints', label: 'Selling points', type: 'lines', max: 5, section: 'The story', hint: 'One per line. What makes it worth ordering.' },
+      { key: 'sellingLine', label: 'Selling line', type: 'textarea', max: 300, section: 'At the table', hint: 'What you say at the table to sell the dish, before it’s ordered.' },
       { key: 'dropMain', label: 'Three-line drop · main', type: 'text', max: 120, section: 'At the table', placeholder: 'Braised short rib' },
       { key: 'dropSide', label: 'Three-line drop · side', type: 'text', max: 120, section: 'At the table', placeholder: 'Spinach and a carrot ribbon' },
       { key: 'dropSauce', label: 'Three-line drop · sauce', type: 'text', max: 120, section: 'At the table', placeholder: 'Pan gravy' },
-      { key: 'say', label: 'The drop as one sentence', type: 'textarea', max: 400, section: 'At the table', hint: 'How it sounds at the table.' },
+      { key: 'say', label: 'The drop as one sentence', type: 'textarea', max: 400, section: 'At the table', hint: 'What you say when you set the dish down.' },
       { key: 'talkingPoints', label: 'Talking points', type: 'lines', max: 3, section: 'At the table', hint: 'Up to 3 short lines a server can say. One per line.' },
       { key: 'pairing', label: 'Wine · similar', type: 'text', max: 80, section: 'At the table', hint: 'Also the pairing in the Food Matrix.' },
       { key: 'pairingRef', label: 'Wine · similar: where it’s from', type: 'text', max: 60, section: 'At the table', placeholder: 'Wine Book p. 26' },

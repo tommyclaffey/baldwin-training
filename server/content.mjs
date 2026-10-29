@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
-import { COLLECTIONS, COURSES, SHARED, listEntries, getEntry } from './cms.mjs';
+import { COLLECTIONS, COURSES, SHARED, listEntries, getEntry, wineDescription } from './cms.mjs';
 import { classify, emptyPage, baldwinTerms, snapshotShelves, genericize, indexText } from './generic.mjs';
 import { BANK } from './quiz.mjs';
 import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
@@ -473,8 +473,8 @@ export function fullIndex(db) {
       entries.push({
         id: 'e' + e.id, file: 'e' + e.id, slug: e.slug,
         name: `${c.section} · ${d.name}`, title: d.name, section: c.section, nav: c.nav,
-        text: [d.tagline, d.description, ...(d.build || []).map((b) => b.ingredient), ...(d.flavors || []), ...(d.allergens || []), d.spiritName, d.story, d.grape, d.region, d.notes, d.pairs].filter(Boolean).join(' ').slice(0, 1200),
-        thumb: d.photo || d.bottle_img || undefined, blurb: d.description || d.tagline || d.notes || undefined,
+        text: [d.tagline, d.description, ...(d.build || []).map((b) => b.ingredient), ...(d.flavors || []), ...(d.allergens || []), d.spiritName, d.story, d.grape, d.region, e.collection === 'wine' ? wineDescription(d) : d.notes, d.pairs].filter(Boolean).join(' ').slice(0, 1200),
+        thumb: d.photo || d.bottle_img || undefined, blurb: d.description || d.tagline || (e.collection === 'wine' ? wineDescription(d) : d.notes) || undefined,
       });
     }
   }

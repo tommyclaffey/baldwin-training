@@ -1,3 +1,4 @@
+import { wineDescription } from './cms.mjs';
 // The wine list (CMS records, no pages of their own). It fills:
 //   • By the glass and By the bottle on the Wine page (designed on the Wine page in Figma)
 //   • "On our list" on every wine style, country, grape and region page (designed on Cabernet)
@@ -128,7 +129,7 @@ export function wineSearchText(index, wines) {
   const add = (slug, s) => out.set(slug, ((out.get(slug) || '') + ' ' + s).trim());
   for (const e of wines) {
     const d = e.data;
-    const words = [d.name, d.grape, d.region, d.notes].filter(Boolean).join(' ');
+    const words = [d.name, d.grape, d.region, wineDescription(d)].filter(Boolean).join(' ');
     add('the-bar/wine', words);
     for (const x of index) if (wineKind(x.slug) && winesFor(x.slug, x.title, [d]).length) add(x.slug, words);
   }
@@ -248,7 +249,8 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
   const left = find(body, byName('Left'));
   const drop = (root, n) => { if (root && n) root.c = root.c.filter((c) => c !== n); };
   const notes = find(main, byName('Tasting notes'));
-  if (d.notes) setText(find(notes, byName('Notes')), d.notes); else drop(left, notes);
+  const desc = wineDescription(d);
+  if (desc) setText(find(notes, byName('Notes')), desc); else drop(left, notes);
   const prof = find(main, byName('Profile'));
   if (prof) {
     const rows = find(prof, byName('Rows'));

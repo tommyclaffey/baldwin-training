@@ -343,6 +343,10 @@ export function dishPage(template, item, links = {}) {
 
   tidyBody();
 
+  // The selling line: what you say at the table, before it's ordered.
+  const sellBand = find(main, byName('Selling line'));
+  if (sellBand) { if (d.sellingLine) setText(find(sellBand, byName('Line')), `“${d.sellingLine.replace(/^[“"]|[”"]$/g, '')}”`); else remove(main, sellBand); }
+
   // The three-line drop: Main, Side and Sauce tiles (the first one dark), then the sentence.
   const dropBand = find(main, byName('Drop band'));
   if (dropBand) {
