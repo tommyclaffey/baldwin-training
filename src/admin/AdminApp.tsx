@@ -49,6 +49,8 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
   // Owners, all-store managers and super admins pick the store they're working in; the page reloads for that store.
   const switchStore = async (id: number) => { await api('/api/store', { method: 'POST', body: { storeId: id } }); location.reload(); };
   const hasBook = !!user.store?.bookReady;
+  // The shared library (classics, grape and region videos) is kept by super admins; everything else is the store's own.
+  const library = user.role === 'superadmin';
   return (
     <div className="admin">
       <aside className="admin-side">
@@ -58,14 +60,14 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
         {user.canSwitchStore && (user.stores || []).length > 1
           ? <label className="store-switch"><span>Store</span>
               <select value={user.store?.id ?? ''} onChange={(e) => void switchStore(Number(e.target.value))}>
-                {(user.stores || []).map((x) => <option key={x.id} value={x.id}>{x.name}{x.bookReady ? '' : ' · book coming'}</option>)}
+                {(user.stores || []).map((x) => <option key={x.id} value={x.id}>{x.name}{x.bookReady ? '' : ' · shared library'}</option>)}
               </select></label>
           : user.store && <span className="admin-working">Store: <strong>{user.store.name}</strong></span>}
         <nav aria-label="Admin">
           <NavLink end to="/admin">Overview</NavLink>
-          {hasBook && cols?.collections && Object.values(cols.collections).map((c) => <NavLink key={c.id} to={`/admin/pages/${c.id}`}>{c.label}</NavLink>)}
-          {hasBook && <NavLink to="/admin/wine-videos">Wine Videos</NavLink>}
-          {hasBook && <NavLink to="/admin/bottle-scanner">Bottle Scanner</NavLink>}
+          {cols?.collections && Object.values(cols.collections).filter((c) => library || c.id !== 'classic').map((c) => <NavLink key={c.id} to={`/admin/pages/${c.id}`}>{c.label}</NavLink>)}
+          {(hasBook || library) && <NavLink to="/admin/wine-videos">Wine Videos</NavLink>}
+          <NavLink to="/admin/bottle-scanner">Bottle Scanner</NavLink>
           <NavLink to="/admin/media">Videos and Photos</NavLink>
           <NavLink to="/admin/quizzes">Quiz Results</NavLink>
           <NavLink to="/admin/team">Team</NavLink>

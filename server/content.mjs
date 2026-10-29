@@ -4,7 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { clone, cocktailPage, dishPage, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
-import { COLLECTIONS, listEntries, getEntry } from './cms.mjs';
+import { COLLECTIONS, SHARED, listEntries, getEntry } from './cms.mjs';
+import { classify, emptyPage, baldwinTerms, snapshotShelves, genericize, indexText } from './generic.mjs';
 import { BANK } from './quiz.mjs';
 import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
 import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
@@ -72,8 +73,20 @@ function classicProtos() {
   return protos;
 }
 
+/* ---- Which store a request is for. Assembly is synchronous, so the scope is set around each call. ---- */
+let SCOPE = { store: 1, row: null, generic: false };
+/** Run `fn` for one store: its own entries, and The Baldwin's full book or the shared library. */
+export function withStore(row, fn) {
+  const prev = SCOPE;
+  SCOPE = { store: row?.id ?? 1, row, generic: !!row && !row.book_ready };
+  try { return fn(); } finally { SCOPE = prev; }
+}
+const isGeneric = () => SCOPE.generic;
+
 export function ordered(db, col) {
-  const list = listEntries(db, col);
+  let list = listEntries(db, col, SHARED.has(col) ? null : SCOPE.store);
+  // Classics are shared; "On our menu" prices are The Baldwin's.
+  if (col === 'classic' && isGeneric()) list = list.map((e) => ({ ...e, data: { ...e.data, menuPrice: '' } }));
   if (col === 'classic') return classicOrder(list);
   const g = COLLECTIONS[col].group;
   if (!g) return list;
@@ -85,6 +98,7 @@ function entryPage(db, e) {
   const c = COLLECTIONS[e.collection];
   if ((c.hasPage && !c.hasPage(e.data)) || !c.template) return null;
   const tpl = basePage(c.template);
+  if (e.collection === 'classic' && isGeneric()) e = { ...e, data: { ...e.data, menuPrice: '' } };
   if (e.collection === 'classic') return classicPage(tpl, e, { all: ordered(db, 'classic'), glassCard, protos: classicProtos() });
   if (e.collection === 'house') {
     const signatures = ordered(db, 'house').map((x) => ({ name: x.data.name, slug: x.slug, photo: x.data.photo }));
@@ -97,9 +111,11 @@ function entryPage(db, e) {
 
 /** Allergen Guide grid: one row per dish from the Recipes collection, a mark in every column the dish is tagged with. */
 const MAJOR = new Set(['Finfish', 'Shellfish', 'Tree Nut', 'Peanut']);
-function allergenGrid(page, recipes) {
+function allergenGrid(page, recipes, clear = false) {
   const grid = find(page.main, byName('Allergen grid'));
-  if (!grid || !recipes.length) return;
+  if (!grid) return;
+  // A store with no dishes yet: headers and legend only, none of The Baldwin's rows.
+  if (!recipes.length) { if (clear) grid.c = grid.c.filter((c) => !startsWith('Row · ')(c) && !startsWith('Group · ')(c)); return; }
   const rows = grid.c.filter(startsWith('Row · '));
   const cells = rows.flatMap((r) => r.c);
   const mark = cells.find((c) => find(c, byName('Contains'))?.f?.[0]?.c === '#1E1C1A');
@@ -282,7 +298,10 @@ const tickIcon = () => (tick ??= find(find(basePage('13-2')?.main || {}, (n) => 
 
 export function assemble(db, file) {
   const entry = /^e\d+$/.test(file) ? getEntry(db, Number(file.slice(1))) : null;
+  // A page from another store's entries doesn't exist here (shared collections are everyone's).
+  if (entry && !SHARED.has(entry.collection) && entry.storeId !== SCOPE.store) return null;
   const page = assembleRaw(db, file);
+  if (page?.empty) return page;
   if (page) wire(page, { entry, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
   return balance(page);
 }
@@ -294,6 +313,8 @@ function assembleRaw(db, file) {
   }
   const page = basePage(file);
   if (!page) return null;
+  const slug = baseIndex().find((x) => x.file === file)?.slug ?? '';
+  if (isGeneric()) return genericPage(db, file, slug, page);
   if (file === '14-2') { classicTable(page, ordered(db, 'classic')); houseRows(page, ordered(db, 'house')); signatureCards(page, ordered(db, 'house')); }
   if (file === '13-2') foodMatrix(page, ordered(db, 'recipe'));
   if (file === '17-2') allergenGrid(page, ordered(db, 'recipe'));
@@ -308,12 +329,67 @@ function assembleRaw(db, file) {
   return page;
 }
 
+/** A store without its own designed book: the shared library, its own lists, and empty states for its own pages. */
+function genericPage(db, file, slug, page) {
+  const kind = classify(slug);
+  const recipes = ordered(db, 'recipe'), house = ordered(db, 'house'), wines = ordered(db, 'wine'), shelf = ordered(db, 'shelf'), beers = ordered(db, 'beer');
+  if (kind === 'own' || (slug === 'food-matrix' && !recipes.length)) return emptyPage(file, slug, SCOPE.row);
+  const statics = snapshotShelves(page);
+  if (file === '14-2') { classicTable(page, ordered(db, 'classic')); if (house.length) { houseRows(page, house); signatureCards(page, house); } }
+  if (file === '13-2') {
+    foodMatrix(page, recipes);
+    // Only this store's dishes, and no group left without one.
+    const table = find(page.main, byName('Matrix table')), mine = new Set(recipes.map((e) => 'Row · ' + e.data.name));
+    if (table) {
+      table.c = table.c.filter((c) => !startsWith('Row · ')(c) || mine.has(c.n));
+      table.c = table.c.filter((c, i, a) => !startsWith('Group · ')(c) || startsWith('Row · ')(a[i + 1] || {}));
+    }
+  }
+  if (file === '17-2') allergenGrid(page, recipes, true);
+  const entry = baseIndex().find((x) => x.file === file);
+  if (entry && wineKind(entry.slug)) learnMore(page, entry, wineVideos(db).get(entry.slug), basePage);
+  if (entry && entry.slug.startsWith('spirit/') && shelf.length) fillShelf(page, entry.slug, baseIndex(), shelf, basePage);
+  if (file === '25-2' && wines.length) fillWinePage(page, wines, basePage);
+  if (entry && wineKind(entry.slug) && wines.length) fillWineShelf(page, entry.slug, entry.title, wines, basePage);
+  if (file === '26-2' && beers.length) fillBeerPage(page, baseIndex(), beers, basePage);
+  if (entry && entry.slug.startsWith('beer/') && beers.length) fillBeerStyle(page, entry.slug, baseIndex(), beers, basePage);
+  return genericize(page, slug, { store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: wines.length, beer: beers.length } });
+}
+/** Baldwin's own dish and drink names, so they're written out of the shared pages. */
+function baldwinNames(db, ours = []) {
+  // A store that names a dish or drink the same as one of Baldwin's keeps its own.
+  const mine = new Set(ours);
+  const names = ['recipe', 'house'].flatMap((col) => listEntries(db, col, 1).map((e) => e.data.name)).filter((n) => !mine.has(n));
+  return baldwinTerms(names, listEntries(db, 'classic').map((e) => e.data.name));
+}
+
+/** Search text for the shared library, read from the pages as other stores see them. Rebuilt when Baldwin's names change. */
+let lib = { key: null, text: null };
+function libraryEntry(db, e) {
+  if (classify(e.slug) === 'own') return indexText(e);
+  const terms = baldwinNames(db);
+  if (lib.key !== terms.source) {
+    const text = new Map();
+    withStore({ id: -1, name: '', book_ready: 0 }, () => {
+      for (const x of baseIndex()) {
+        if (classify(x.slug) === 'own') continue;
+        const p = assemble(db, x.file);
+        if (p?.main) text.set(x.slug, texts(p.main).map((t) => t.s).join(' ').replace(/\s+/g, ' ').slice(0, 1200));
+      }
+    });
+    lib = { key: terms.source, text };
+  }
+  return { ...e, text: lib.text.get(e.slug) || '', blurb: terms.test(e.blurb || '') ? undefined : e.blurb };
+}
+
 /* ---- index: designed pages, minus the ones the CMS now owns, plus every CMS page ---- */
 const PREFIXES = Object.values(COLLECTIONS).map((c) => c.prefix);
 export function fullIndex(db) {
   const extra = shelfSearchText(baseIndex(), ordered(db, 'shelf'), ordered(db, 'beer'));
   for (const [k, v] of wineSearchText(baseIndex(), ordered(db, 'wine'))) extra.set(k, ((extra.get(k) || '') + ' ' + v).trim());
-  const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p))).map((e) => (extra.has(e.slug) ? { ...e, text: (extra.get(e.slug) + ' ' + (e.text || '')).slice(0, 2400) } : e));
+  const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p)))
+    .map((e) => (isGeneric() ? libraryEntry(db, e) : e))
+    .map((e) => (extra.has(e.slug) ? { ...e, text: (extra.get(e.slug) + ' ' + (e.text || '')).slice(0, 2400) } : e));
   const entries = [];
   for (const [id, c] of Object.entries(COLLECTIONS)) {
     for (const e of ordered(db, id)) {
@@ -333,7 +409,7 @@ export function fullIndex(db) {
 /** Sidebar badges, counted from the pages themselves (Food Matrix dishes, videos, photos). */
 export function sidebarCounts(db) {
   const file = (slug) => baseIndex().find((x) => x.slug === slug)?.file;
-  const count = (slug, pred) => { const f = file(slug); const p = f && assemble(db, f); return p ? findAll(p.main, pred).length : 0; };
+  const count = (slug, pred) => { const f = file(slug); const p = f && assemble(db, f); return p?.main ? findAll(p.main, pred).length : 0; };
   return {
     'Food Matrix': count('food-matrix', (n) => n.meta?.inGroup),
     'Video Library': count('video-library', (n) => (n.n || '').startsWith('Video · ')),

@@ -237,7 +237,7 @@ export function cleanEntry(collection, d = {}) {
 
 /* ------------------------------ storage ------------------------------ */
 const hash = (o) => crypto.createHash('sha1').update(JSON.stringify(o)).digest('hex').slice(0, 16);
-const rowOut = (r) => r && { id: r.id, collection: r.collection, slug: r.slug, data: JSON.parse(r.data), sort: r.sort, seeded: !!r.seed_key, updated_at: r.updated_at, edited: r.updated_by != null };
+const rowOut = (r) => r && { id: r.id, collection: r.collection, slug: r.slug, data: JSON.parse(r.data), sort: r.sort, seeded: !!r.seed_key, updated_at: r.updated_at, edited: r.updated_by != null, storeId: r.store_id };
 
 /**
  * Seeds each collection from content/cms/<id>.json. A seed entry is added once; later seed changes
@@ -258,7 +258,7 @@ export function seed(db) {
       const row = db.prepare('SELECT * FROM entries WHERE seed_key = ?').get(id + ':' + s.key);
       if (!row) {
         if (db.prepare('SELECT 1 FROM seed_removed WHERE seed_key = ?').get(id + ':' + s.key)) continue;
-        if (db.prepare('SELECT 1 FROM entries WHERE slug = ?').get(s.slug)) continue;
+        if (db.prepare('SELECT 1 FROM entries WHERE slug = ? AND store_id = 1').get(s.slug)) continue;
         db.prepare('INSERT INTO entries(collection,slug,data,sort,seed_key,seed_hash,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)')
           .run(id, s.slug, JSON.stringify(data), s.sort ?? 0, id + ':' + s.key, h, now(), now());
       } else if (row.updated_by == null && row.seed_hash !== h) {
@@ -285,28 +285,36 @@ export function seed(db) {
   }
 }
 
-export function listEntries(db, collection) {
+/** Collections every store shares (the library). Everything else belongs to one store. */
+export const SHARED = new Set(['classic']);
+/** A collection's entries: shared ones for everyone, the rest for one store (`store` null = all stores). */
+export function listEntries(db, collection, store = null) {
+  const own = store != null && !SHARED.has(collection);
   const rows = collection
-    ? db.prepare('SELECT * FROM entries WHERE collection = ? ORDER BY sort, id').all(collection)
+    ? (own ? db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id = ? ORDER BY sort, id').all(collection, store)
+      : db.prepare('SELECT * FROM entries WHERE collection = ? ORDER BY sort, id').all(collection))
     : db.prepare('SELECT * FROM entries ORDER BY collection, sort, id').all();
   return rows.map(rowOut);
 }
 export const getEntry = (db, id) => rowOut(db.prepare('SELECT * FROM entries WHERE id = ?').get(id));
 
-export function uniqueSlug(db, collection, name, exceptId) {
+/** Addresses are unique within a store (shared collections live on store 1). */
+export function uniqueSlug(db, collection, name, exceptId, store = 1) {
   const base = COLLECTIONS[collection].prefix + slugify(name);
+  const st = SHARED.has(collection) ? 1 : store;
   let slug = base, n = 2;
-  while (db.prepare('SELECT 1 FROM entries WHERE slug = ? AND id != ?').get(slug, exceptId ?? -1)) slug = `${base}-${n++}`;
+  while (db.prepare('SELECT 1 FROM entries WHERE slug = ? AND store_id = ? AND id != ?').get(slug, st, exceptId ?? -1)) slug = `${base}-${n++}`;
   return slug;
 }
 
-export function createEntry(db, collection, data, userId) {
+export function createEntry(db, collection, data, userId, store = 1, company = 1) {
   const d = cleanEntry(collection, data);
-  const slug = uniqueSlug(db, collection, d.name);
+  const st = SHARED.has(collection) ? 1 : store;
+  const slug = uniqueSlug(db, collection, d.name, null, st);
   const g = COLLECTIONS[collection].group;
-  const max = db.prepare('SELECT MAX(sort) m FROM entries WHERE collection = ?').get(collection).m ?? 0;
-  const r = db.prepare('INSERT INTO entries(collection,slug,data,sort,created_by,created_at,updated_by,updated_at) VALUES (?,?,?,?,?,?,?,?)')
-    .run(collection, slug, JSON.stringify(d), max + 1, userId, now(), userId, now());
+  const max = db.prepare('SELECT MAX(sort) m FROM entries WHERE collection = ? AND store_id = ?').get(collection, st).m ?? 0;
+  const r = db.prepare('INSERT INTO entries(collection,slug,data,sort,created_by,created_at,updated_by,updated_at,store_id,company_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
+    .run(collection, slug, JSON.stringify(d), max + 1, userId, now(), userId, now(), st, SHARED.has(collection) ? 1 : company);
   void g;
   return getEntry(db, Number(r.lastInsertRowid));
 }
@@ -331,7 +339,7 @@ export function deleteEntry(db, id) {
 export function moveEntry(db, id, dir) {
   const e = getEntry(db, id);
   const g = COLLECTIONS[e.collection].group;
-  const peers = listEntries(db, e.collection).filter((x) => !g || x.data[g.key] === e.data[g.key]);
+  const peers = listEntries(db, e.collection, e.storeId).filter((x) => !g || x.data[g.key] === e.data[g.key]);
   const i = peers.findIndex((x) => x.id === id);
   const j = i + (dir < 0 ? -1 : 1);
   if (j < 0 || j >= peers.length) return e;

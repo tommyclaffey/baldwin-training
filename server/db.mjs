@@ -130,6 +130,19 @@ const MIGRATIONS = [
   ALTER TABLE items ADD COLUMN store_id INT NOT NULL DEFAULT 1;
   ALTER TABLE wine_videos ADD COLUMN store_id INT NOT NULL DEFAULT 1;
   `,
+  `
+  -- Shared library (Oct 28): each store has its own entries, so a page address only has to be unique within a store.
+  -- Classic cocktails are shared by every store (they stay on store 1, The Baldwin, which seeds them).
+  CREATE TABLE entries_new(
+    id INTEGER PRIMARY KEY, collection TEXT NOT NULL, slug TEXT NOT NULL, data TEXT NOT NULL, sort REAL DEFAULT 0,
+    seed_key TEXT UNIQUE, seed_hash TEXT, created_by INT, created_at TEXT, updated_by INT, updated_at TEXT,
+    company_id INT NOT NULL DEFAULT 1, store_id INT NOT NULL DEFAULT 1, UNIQUE(store_id, slug));
+  INSERT INTO entries_new(id, collection, slug, data, sort, seed_key, seed_hash, created_by, created_at, updated_by, updated_at, company_id, store_id)
+    SELECT id, collection, slug, data, sort, seed_key, seed_hash, created_by, created_at, updated_by, updated_at, company_id, store_id FROM entries;
+  DROP TABLE entries;
+  ALTER TABLE entries_new RENAME TO entries;
+  CREATE INDEX entries_collection ON entries(store_id, collection, sort);
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

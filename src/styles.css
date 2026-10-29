@@ -90,6 +90,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, .flink:focus-visible
 .page-message { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 80px 48px; }
 .page-message h1 { font-size: 34px; font-weight: 800; margin: 0; }
 .page-message p { color: var(--muted); margin: 0 0 8px; }
+.page-message .eyebrow { font: 600 11px 'Archivo', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--copper-dk); margin: 0; }
+.store-home h2 { font-size: 20px; font-weight: 800; margin: 32px 0 4px; }
+.library-tiles { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; width: 100%; max-width: 1040px; }
+.library-tiles a { display: flex; flex-direction: column; gap: 4px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: #FBF9F5; color: var(--ink); text-decoration: none; height: 100%; }
+.library-tiles a:hover, .library-tiles a:focus-visible { border-color: var(--copper); }
+.library-tiles span { color: var(--muted); font-size: 14px; }
+.mobile-name { color: var(--cream); font: 800 18px 'Archivo', sans-serif; }
+@media (max-width: 860px) { .page-message { padding: 40px 20px; } }
 .btn { background: var(--ink); color: var(--cream); border: 0; border-radius: 12px; padding: 12px 18px; font: 700 14px 'Archivo', sans-serif; text-decoration: none; cursor: pointer; }
 .page-loading { display: grid; place-items: center; }
 .loader { width: 34px; height: 34px; border-radius: 50%; border: 3px solid var(--line); border-top-color: var(--copper); animation: spin .8s linear infinite; }

@@ -80,7 +80,7 @@ function Companies() {
           <tr key={c.id} className={c.deletedAt ? 'is-deleted' : ''}>
             <td><strong>{c.name}</strong>{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <small className="error"> · deleted, {daysLeft(c.deletedAt)} days to restore</small>}
               <ul className="store-list">{c.stores.map((st) => (
-                <li key={st.id}>{st.name} <small className="muted">· {st.staff} staff · {st.bookReady ? 'book built' : 'book coming'}</small>{' '}
+                <li key={st.id}>{st.name} <small className="muted">· {st.staff} staff · {st.bookReady ? 'designed book' : 'shared library'}</small>{' '}
                   {!c.deletedAt && <button className="link-btn" onClick={() => { const n = prompt('Store name', st.name); if (n && n !== st.name) void run(() => api(`/api/super/stores/${st.id}`, { method: 'PATCH', body: { name: n } })); }}>Rename</button>}</li>
               ))}
               {!c.deletedAt && <li><button className="link-btn" onClick={() => { const n = prompt(`New store for ${c.name}`); if (n) void run(() => api(`/api/super/companies/${c.id}/stores`, { method: 'POST', body: { name: n } })); }}>+ Add Store</button></li>}</ul></td>
@@ -104,7 +104,7 @@ function Companies() {
         <Text label="Owner’s email (optional)" value={ownerEmail} placeholder="owner@theirgroup.com" onChange={setOwnerEmail} />
         <button className="btn" disabled={name.trim().length < 2}>Add Company</button>
       </form>
-      <p className="muted small">A new company gets its own team, join code and quiz records. The book itself is Baldwin’s for now, so a new company’s people see “your book isn’t set up yet” until the app opens to more companies.</p>
+      <p className="muted small">A new company gets its own team, join code and quiz records. Its book starts with the shared library (classics, spirits, wine, beer, service, safety), with nothing of The Baldwin’s in it. Its managers add their own menu, drinks and story.</p>
     </div>
   );
 }
