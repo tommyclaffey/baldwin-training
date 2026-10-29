@@ -1,4 +1,4 @@
-// Lineup server (The Baldwin's training book): the built app, the content API, sign-in and uploads. No dependencies.
+// Lineup server (The Baldwin's training app): the built app, the content API, sign-in and uploads. No dependencies.
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';

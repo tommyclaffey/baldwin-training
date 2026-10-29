@@ -73,7 +73,7 @@ export function BookSignIn() {
   const managers = <p className="muted small">Owner or manager? <Link to="/admin">Sign in with your email</Link>.</p>;
 
   if (step === 'code') return (
-    <AuthCard title="Sign in to the training book" sub="Ask a manager for your restaurant’s join code. You only type it once on this phone.">
+    <AuthCard title="Sign in to the training app" sub="Ask a manager for your restaurant’s join code. You only type it once on this phone.">
       <form className="stack" onSubmit={(e) => { e.preventDefault(); void lookUp(code); }}>
         <label className="field"><span>Join code</span>
           <input value={code} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12))} autoCapitalize="characters" autoComplete="off" spellCheck={false} placeholder="8 letters and numbers" />
