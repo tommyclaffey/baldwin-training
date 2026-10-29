@@ -5,9 +5,9 @@ import path from 'node:path';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { sessionUser, SESSION_COOKIE, LoginLimiter } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
-import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebarCounts } from './content.mjs';
+import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore } from './content.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
-import { COLLECTIONS, publicSchemas, seed, listEntries, getEntry, createEntry, updateEntry, deleteEntry, moveEntry } from './cms.mjs';
+import { COLLECTIONS, SHARED, publicSchemas, seed, listEntries, getEntry, createEntry, updateEntry, deleteEntry, moveEntry } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart } from './scanner.mjs';
 import { score as scoreQuiz, results as quizResults, quizIds } from './quiz.mjs';
@@ -76,15 +76,13 @@ function needUser(c, req) {
   return c.user;
 }
 const needOwner = (c, req) => { const u = needUser(c, req); if (u.role !== 'owner' && u.role !== 'superadmin') fail(403, 'Only an owner can do that.'); return u; };
-/** The book's content is Baldwin's for now; another company's book is set up when the app opens to more companies. */
-/** Each store has its own book. The Baldwin's is built; a store whose book isn't ready says so. */
-const needBook = (c, req) => {
-  const u = needReader(c, req);
-  if (!c.storeRow?.book_ready) fail(404, `The book for ${c.storeRow?.name || 'your store'} isn’t set up yet. We’ll let you know when it’s ready.`);
-  return u;
-};
-/** Editing the book: a manager, in a store whose book is built (the content belongs to that store). */
-const needEditor = (c, req) => { const u = needUser(c, req); if (!c.storeRow?.book_ready) fail(404, `The book for ${c.storeRow?.name || 'this store'} isn’t set up yet, so there’s nothing to edit here. Switch to The Baldwin.`); return u; };
+/** Every store reads a book: The Baldwin's designed one, or the shared library plus the store's own content. */
+const needBook = needReader;
+/** Editing a store's own content: a manager of that store. */
+const needEditor = needUser;
+/** The shared library (classics, wine videos) is every company's, so only a super admin changes it. */
+const needLibrary = (c, req) => { const u = needUser(c, req); if (u.role !== 'superadmin') fail(403, 'The shared library is kept by the app’s team. Ask us if something needs changing.'); return u; };
+const inStore = (c, fn) => withStore(c.storeRow, fn);
 
 const clean = (s, max = 4000) => String(s ?? '').slice(0, max);
 const validEmail = (e) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(e || ''));
@@ -155,18 +153,18 @@ async function api(req, res, url) {
   }
 
   /* content */
-  if (p === '/api/index' && m === 'GET') { needBook(c, req); return sendJson(res, 200, fullIndex(db)); }
-  if (p === '/api/counts' && m === 'GET') { needBook(c, req); return sendJson(res, 200, sidebarCounts(db)); }
+  if (p === '/api/index' && m === 'GET') { needBook(c, req); return sendJson(res, 200, inStore(c, () => fullIndex(db))); }
+  if (p === '/api/counts' && m === 'GET') { needBook(c, req); return sendJson(res, 200, inStore(c, () => sidebarCounts(db))); }
   if (parts[1] === 'page' && parts[2] && m === 'GET') {
     needBook(c, req);
-    const page = assemble(db, parts[2]);
+    const page = inStore(c, () => assemble(db, parts[2]));
     if (!page) fail(404, 'We couldn’t find that page.');
     return sendJson(res, 200, page);
   }
   /* CMS: collections and their pages */
   if (p === '/api/collections' && m === 'GET') {
     needEditor(c, req);
-    const counts = Object.fromEntries(Object.keys(COLLECTIONS).map((id) => [id, listEntries(db, id).length]));
+    const counts = Object.fromEntries(Object.keys(COLLECTIONS).map((id) => [id, listEntries(db, id, SHARED.has(id) ? null : c.store).length]));
     const schemas = publicSchemas();
     const gc = schemas.classic.fields.find((f) => f.key === 'glassCard');
     if (gc) gc.options = glassTitles();
@@ -176,22 +174,26 @@ async function api(req, res, url) {
     needEditor(c, req);
     const col = url.searchParams.get('collection');
     if (!COLLECTIONS[col]) fail(400, 'Unknown collection.');
-    return sendJson(res, 200, { entries: ordered(db, col) });
+    return sendJson(res, 200, { entries: inStore(c, () => ordered(db, col)) });
   }
   if (p === '/api/entries' && m === 'POST') {
-    const u = needEditor(c, req);
     const b = await readJson(req);
     if (!COLLECTIONS[b.collection]) fail(400, 'Unknown collection.');
+    const u = SHARED.has(b.collection) ? needLibrary(c, req) : needEditor(c, req);
     if (!str(b.data?.name, 120)) fail(400, 'Give it a name.');
-    const e = createEntry(db, b.collection, b.data, u.id);
-    audit(db, u.id, 'add ' + b.collection, e.data.name);
+    // Shared entries live under store 1; a store's own entries live under that store.
+    const e = SHARED.has(b.collection) ? createEntry(db, b.collection, b.data, u.id) : createEntry(db, b.collection, b.data, u.id, c.store, c.company);
+    audit(db, u.id, 'add ' + b.collection, e.data.name, c.company);
     return sendJson(res, 200, e);
   }
   if (parts[1] === 'entries' && parts[2]) {
-    const u = needEditor(c, req);
+    needEditor(c, req);
     const e = getEntry(db, Number(parts[2]));
-    if (!e) fail(404, 'We couldn’t find that page.');
+    const shared = e && SHARED.has(e.collection);
+    // Another store's entry doesn't exist here.
+    if (!e || (!shared && e.storeId !== c.store)) fail(404, 'We couldn’t find that page.');
     if (m === 'GET') return sendJson(res, 200, e);
+    const u = shared ? needLibrary(c, req) : needEditor(c, req);
     if (m === 'PUT') {
       const b = await readJson(req);
       if (!str(b.data?.name, 120)) fail(400, 'Give it a name.');
@@ -230,14 +232,19 @@ async function api(req, res, url) {
     return sendJson(res, 200, { ok: true, day, slot, name });
   }
   if (p === '/api/wine-videos' && m === 'GET') {
-    needEditor(c, req);
+    const u = needEditor(c, req);
     const vids = wineVideos(db);
-    const groups = wineTargets(baseIndex(), basePage).map((g) => ({ ...g, items: g.items.map((it) => ({ ...it, ...(vids.get(it.key) || { video: null, note: '' }) })) }));
+    // Managers see the wines on their own list; the grape and region pages are the shared library (super admins).
+    const shows = (g) => (g.label === 'Wines on our list' ? !!c.storeRow?.book_ready : u.role === 'superadmin');
+    const groups = wineTargets(baseIndex(), basePage).filter(shows).map((g) => ({ ...g, items: g.items.map((it) => ({ ...it, ...(vids.get(it.key) || { video: null, note: '' }) })) }));
     return sendJson(res, 200, { groups });
   }
   if (p === '/api/wine-videos' && m === 'PUT') {
-    const u = needEditor(c, req);
     const b = await readJson(req);
+    // Grape and region pages are the shared library; "Wines on our list" are The Baldwin's own.
+    const own = String(b.key || '').startsWith('wine:');
+    const u = own ? needEditor(c, req) : needLibrary(c, req);
+    if (own && !c.storeRow?.book_ready) fail(400, 'We couldn’t find that wine page.');
     const target = wineTargets(baseIndex(), basePage).flatMap((g) => g.items).find((it) => it.key === b.key);
     if (!target) fail(400, 'We couldn’t find that wine page.');
     const video = b.video ? media(b.video) : null;

@@ -139,23 +139,13 @@ export function AcceptInvite() {
 export function Overview() {
   const { user } = useSession();
   const { data } = useCollections();
-  if (user?.store && !user.store.bookReady) return (
-    <div className="admin-page">
-      <h1>{user.store.name}</h1>
-      <p className="muted">The book for {user.store.name} isn’t built yet, so there’s nothing to edit here. Its own menu, cocktails and look come next. In the meantime its people can join (they pick {user.store.name} with the join code), and you can see them on the Team page.</p>
-      <div className="tiles">
-        <Link className="tile" to="/admin/team"><strong>Team</strong><span>People at {user.store.name}, the join code, invites.</span></Link>
-        <Link className="tile" to="/admin/quizzes"><strong>Quiz results</strong><span>Scores and sign-offs for {user.store.name}.</span></Link>
-      </div>
-    </div>
-  );
   const media = useLoad<{ media: MediaItem[] }>('/api/media');
   return (
     <div className="admin-page">
       <h1>Hi, {user?.name.split(' ')[0]}</h1>
       <p className="muted">Pick a page type, then add a page or edit one by filling in its template. Lists like the Cocktails table and the Food Matrix fill in on their own.</p>
       <div className="tiles">
-        {data && Object.values(data.collections).map((c) => (
+        {data && Object.values(data.collections).filter((c) => user?.role === 'superadmin' || c.id !== 'classic').map((c) => (
           <Link key={c.id} className="tile" to={`/admin/pages/${c.id}`}><strong>{c.label} · {data.counts[c.id]}</strong><span>{c.lists}</span></Link>
         ))}
         <Link className="tile" to="/admin/media"><strong>Videos and photos · {media.data?.media.length ?? '–'}</strong><span>Upload files or add YouTube links, then pick them in any page’s form.</span></Link>

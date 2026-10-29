@@ -97,9 +97,11 @@ test('companies are kept apart', async () => {
   assert.ok(!(await owner2('/api/quiz/results')).data.people.some((p) => p.name === 'Bea Baldwin'));
   await owner('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Bea' } });
   assert.equal((await owner2('/api/sections')).data.names['Servers 1'], undefined);
-  // The book is Baldwin's for now: another company's people don't see it.
+  // Another company reads the shared library, with nothing of The Baldwin's in it.
   assert.equal((await staff1('/api/index')).status, 200);
-  assert.equal((await staff2('/api/index')).status, 404);
+  const idx2 = await staff2('/api/index');
+  assert.equal(idx2.status, 200);
+  assert.ok(!/Short Rib|Cozy Blankets|The Baldwin/.test(JSON.stringify(idx2.data)), 'no Baldwin names in their search');
   assert.equal((await owner2('/api/media')).data.media.length, 0);
 });
 
@@ -174,9 +176,22 @@ test('stores: staff pick their store; each store has its own book, records and s
   const me = (await jay('/api/me')).data.user;
   assert.equal(me.store.name, "J.Baldwin's");
   assert.equal(me.canSwitchStore, false);
+  // J.Baldwin's reads the shared library. Baldwin's own pages are empty for them; its names are written out.
   const r = await jay('/api/index');
-  assert.equal(r.status, 404, 'J.Baldwin’s book isn’t built yet');
-  assert.match(r.data.error, /J\.Baldwin's/);
+  assert.equal(r.status, 200);
+  const file = (slug) => r.data.find((e) => e.slug === slug)?.file;
+  const pg = async (slug) => (await jay('/api/page/' + file(slug))).data;
+  const BALDWIN = /Short Rib|Cozy Blankets|Date Cake|Bolgheri Rosso|DCD Rye|G4 Tequila|Testa Barra|The Baldwin\b/;
+  for (const slug of ['steps-of-service', 'the-bar/cocktails', 'the-bar/wine', 'the-bar/spirits', 'the-bar/beer-and-draft', 'allergen-guide', 'safety']) {
+    const page = await pg(slug);
+    assert.ok(page.main, slug + ' renders');
+    assert.ok(!BALDWIN.test(JSON.stringify(page.main)), slug + ' has nothing of The Baldwin’s');
+  }
+  assert.ok(JSON.stringify((await pg('steps-of-service')).main).includes("J.Baldwin's"), 'the greeting uses their name');
+  for (const slug of ['', 'our-story', 'floor-plan', 'food-matrix']) assert.ok((await pg(slug)).empty, (slug || 'home') + ' is theirs, empty for now');
+  const classic = r.data.find((e) => e.slug.startsWith('classic/'));
+  assert.ok(classic, 'classics are shared');
+  assert.equal((await jay('/api/page/' + classic.file)).status, 200);
   // Quiz records and sections stay in their store.
   await jay('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items: ['short-rib#0'], answers: [1] } });
   const baldwin = (await owner('/api/quiz/results')).data;
@@ -184,7 +199,23 @@ test('stores: staff pick their store; each store has its own book, records and s
   assert.ok(!baldwin.people.some((p) => p.name === 'Jay Jbs'));
   assert.equal((await owner('/api/store', { method: 'POST', body: { storeId: jb } })).status, 200, 'owners switch stores');
   assert.ok((await owner('/api/quiz/results')).data.people.some((p) => p.name === 'Jay Jbs'));
-  assert.equal((await owner('/api/collections')).status, 404, 'nothing to edit in a store without a book');
+  // Their own content: same names as The Baldwin's are fine, and neither store can see the other's.
+  const col = await owner('/api/collections');
+  assert.equal(col.status, 200);
+  assert.equal(col.data.counts.house, 0);
+  const mine = await owner('/api/entries', { method: 'POST', body: { collection: 'house', data: { name: 'Cozy Blankets' } } });
+  assert.equal(mine.status, 200);
+  assert.equal(mine.data.slug, (await owner('/api/entries?collection=house')).data.entries[0].slug);
+  assert.equal((await owner('/api/entries', { method: 'POST', body: { collection: 'classic', data: { name: 'Our Own Classic' } } })).status, 403, 'the shared library is the app team’s');
+  assert.ok(JSON.stringify((await pg('the-bar/cocktails')).main).includes('Cozy Blankets'), 'their own signature shows on their Cocktails page');
+  await owner('/api/store', { method: 'POST', body: { storeId: 1 } });
+  const theirs = (await owner('/api/entries?collection=house')).data.entries;
+  assert.ok(!theirs.some((e) => e.id === mine.data.id), 'The Baldwin doesn’t see J.Baldwin’s entries');
+  assert.equal((await owner('/api/entries/' + mine.data.id)).status, 404);
+  assert.equal((await owner('/api/page/e' + mine.data.id)).status, 404);
+  const baldwinOwn = theirs[0];
+  await owner('/api/store', { method: 'POST', body: { storeId: jb } });
+  assert.equal((await jay('/api/page/e' + baldwinOwn.id)).status, 404, 'and J.Baldwin’s can’t open The Baldwin’s');
   await owner('/api/sections', { method: 'PUT', body: { slot: 'Bar 1', name: 'Jay' } });
   assert.equal((await jay('/api/sections')).data.names['Bar 1'], 'Jay');
   const bo = person();

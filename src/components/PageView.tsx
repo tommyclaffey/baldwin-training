@@ -10,10 +10,52 @@ const QUIZ_PAGE = '18:2';
 const QUIZ_SLOTS: Record<string, Slot> = { 'Live quiz': (p) => <QuizCard {...p} />, Progress: (p) => <ProgressCard {...p} /> };
 const NO_SLOTS: Record<string, Slot> = {};
 import { PRODUCT_NAME } from '../lib/brand';
-import { api } from '../lib/api';
+import { api, canEdit } from '../lib/api';
 import { useSession } from '../lib/session';
 
-type Page = { id: string; name: string; bg?: string; main: FNode; edited?: number };
+type Empty = { kind: 'home' | 'page'; title: string; body: string; admin: string | null; store: string | null };
+type Page = { id: string; name: string; bg?: string; main: FNode; edited?: number; empty?: Empty };
+
+/** The shared library every store has from day one. */
+const LIBRARY = [
+  ['steps-of-service', 'Steps of Service', 'The nine steps, what to say and what to do.'],
+  ['the-bar/cocktails', 'Cocktails', 'The classics: specs, glassware and history.'],
+  ['the-bar/spirits', 'Spirits', 'Every spirit, how it’s made and what to pour.'],
+  ['the-bar/wine', 'Wine', 'Grapes, regions and how to talk about wine.'],
+  ['the-bar/beer-and-draft', 'Beer & Draft', 'Styles, glassware and pouring.'],
+  ['allergen-guide', 'Allergen Guide', 'The major allergens and how to handle them.'],
+  ['safety', 'Safety', 'Food safety, temperatures and alcohol service.'],
+  ['cleanliness', 'Cleanliness', 'Opening, running and closing checklists.'],
+] as const;
+
+/** A store's own page with nothing in it yet, or its home page while its book fills in. */
+function EmptyPage({ e, mainRef }: { e: Empty; mainRef: React.RefObject<HTMLElement | null> }) {
+  const { user, index } = useSession();
+  const has = new Set(index.map((x) => x.slug));
+  const manager = canEdit(user);
+  if (e.kind === 'home') return (
+    <main ref={mainRef} className="page page-message store-home">
+      <p className="eyebrow">Training Book</p>
+      <h1>{e.store}</h1>
+      <p>The library below is ready now. Your menu, story and floor plan fill in as your managers add them.</p>
+      {manager && <Link className="btn" to="/admin">Add Your Menu</Link>}
+      <h2>The Library</h2>
+      <ul className="library-tiles">
+        {LIBRARY.filter(([slug]) => has.has(slug)).map(([slug, title, sub]) => (
+          <li key={slug}><Link to={'/' + slug}><strong>{title}</strong><span>{sub}</span></Link></li>
+        ))}
+      </ul>
+    </main>
+  );
+  return (
+    <main ref={mainRef} className="page page-message">
+      <h1>{e.title}</h1>
+      <p>{e.body}</p>
+      {manager && e.admin && <Link className="btn" to={e.admin}>Add It in the Admin</Link>}
+      <Link className={manager && e.admin ? 'link-btn' : 'btn'} to="/">Go to Home</Link>
+    </main>
+  );
+}
 const cache = new Map<string, Page>();
 
 export function usePageEntry() {
@@ -178,6 +220,7 @@ export function PageView() {
   }
   if (!shown) return <main ref={ref} className="page page-loading" aria-busy="true"><div className="loader" /></main>;
   const page = shown.page;
+  if (page.empty) return <EmptyPage e={page.empty} mainRef={ref} />;
 
   const isQuiz = page.id === QUIZ_PAGE;
   const { x, y, ...main } = isQuiz ? quizPage(page.main, quiz) : page.main;

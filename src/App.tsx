@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar';
 import { PageView, usePageEntry } from './components/PageView';
 import { NavContext } from './components/FigmaNode';
@@ -30,26 +30,13 @@ function Book() {
   if (!user) return <BookSignIn />;
   const signOut = async () => { await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); };
   const back = async () => { await api('/api/super/return', { method: 'POST' }).catch(() => {}); await refresh(); location.assign('/admin/super'); };
-  const switchTo = async (id: number) => { await api('/api/store', { method: 'POST', body: { storeId: id } }).catch(() => {}); await refresh(); };
-  // A store whose book isn't built yet: say so plainly (owners and all-store managers can switch store here).
-  if (user.store && !user.store.bookReady) return (
-    <div className="auth"><div className="auth-card">
-      <img src="/img/logo-white.png" alt="The Baldwin" className="auth-logo" />
-      <h1>The book for {user.store.name} is on its way</h1>
-      <p className="muted">You’re all set up{user.role === 'staff' ? ` as part of ${user.store.name}` : ''}. The training book for {user.store.name} is being built; we’ll open it here when it’s ready.</p>
-      {user.canSwitchStore && (user.stores || []).filter((x) => x.bookReady).map((x) => <button key={x.id} className="btn" onClick={() => void switchTo(x.id)}>Open {x.name}’s Book</button>)}
-      {canEdit(user) && <Link className="btn ghost" to="/admin">Go to the Admin</Link>}
-      {user.impersonatedBy
-        ? <button className="link-btn" onClick={() => void back()}>Back to Your Account</button>
-        : <button className="link-btn" onClick={() => void signOut()}>Sign Out</button>}
-    </div></div>
-  );
-
   return (
     <NavContext.Provider value={entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
-        <img src="/img/logo-white.png" alt="The Baldwin" height="28" />
+        {user.store && !user.store.bookReady
+          ? <strong className="mobile-name">{user.store.name}</strong>
+          : <img src="/img/logo-white.png" alt="The Baldwin" height="28" />}
         <button className="menu-btn" aria-expanded={menu} aria-controls="side" onClick={() => setMenu((m) => !m)}>
           {menu ? 'Close' : 'Menu'}
         </button>
