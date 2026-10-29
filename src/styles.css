@@ -667,10 +667,11 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   .fx-h > .mid { flex: 1 1 150px !important; width: auto !important; max-width: 100% !important; }
   /* A small marker (number, dot, icon, thumbnail) stays beside its text. */
   .fx-h:has(> .marker:first-child) { flex-wrap: nowrap !important; }
-  .fx-h:has(> .marker:first-child) > :not(.marker) { flex: 1 1 0 !important; min-width: 0; width: auto !important; }
+  .fx-h:has(> .marker:first-child) > :not(.marker) { flex: 0 1 auto !important; min-width: 0; }
+  .fx-h:has(> .marker:first-child) > .marker + * { flex: 1 1 0 !important; width: auto !important; }
   /* A trailing arrow stays at the end of its line. */
-  .fx-h:has(> .fsvg:last-child):not(:has(> .marker:first-child)) { flex-wrap: nowrap !important; }
-  .fx-h:has(> .fsvg:last-child):not(:has(> .marker:first-child)) > .ftext { flex: 0 1 auto !important; min-width: 0; width: auto !important; }
+  .fx-h:has(> .fsvg:last-child):not(:has(> .marker:first-child)):not(:has(> [data-label])) { flex-wrap: nowrap !important; }
+  .fx-h:has(> .fsvg:last-child):not(:has(> .marker:first-child)):not(:has(> [data-label])) > .ftext { flex: 0 1 auto !important; min-width: 0; width: auto !important; }
   /* Big titles fit the screen. */
   .ftext.display { font-size: min(var(--z), 11.5vw) !important; overflow-wrap: anywhere; }
   /* Stat boxes: rows grow with their text instead of clipping it. */
@@ -718,4 +719,38 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   .fx-v > .fx-h:has(> .mid) { align-self: stretch !important; width: auto !important; }
   /* Home's Food Matrix preview: the media counts aren't needed on a phone. */
   [data-name="Section · Food Matrix"] [data-label="MEDIA"] { display: none !important; }
+}
+
+@media (max-width: 859px) {
+  /* Table rows on a phone: the first cell (name) takes the full width; an end arrow sits top-right. */
+  [data-name^="Classic row · "], [data-name^="Row · "]:has(> [data-label]) { position: relative; }
+  [data-name^="Classic row · "] > :first-child, [data-name^="Row · "]:has(> [data-label]) > :first-child { flex: 1 1 100% !important; width: auto !important; padding-right: 26px; }
+  [data-name^="Classic row · "] > .fsvg:last-child { position: absolute; top: 14px; right: 0; }
+  [data-label].ftext { white-space: normal !important; }
+  /* Food Matrix: no header row on a phone; the dish takes its own line. */
+  [data-name="Matrix table"] > [data-name="Column headers"] { display: none !important; }
+  [data-name="Matrix table"] [data-name^="Row · "] > [data-name="Dish"] { flex: 1 1 100% !important; width: auto !important; }
+  /* A row made only of tiles is a 2-up grid (a lone last tile stays half width). */
+  .fx-h:has(> .mid):not(:has(> :not(.mid))) { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .fx-h:has(> .mid):not(:has(> :not(.mid))) > .mid { width: auto !important; }
+  /* A stat strip with one stat doesn't split into a half-width column. */
+  [data-name="Stats"]:has(> :only-child) { display: block !important; }
+  /* Breadcrumb's last part trims on one line. */
+  [data-name="Breadcrumb"] > .ftext:last-child { white-space: nowrap !important; }
+  /* Text in a column uses the column's width. */
+  .fx-v > .ftext:not(.nowrap) { width: auto !important; max-width: 100%; }
+  /* Pills don't squeeze their words onto two lines. */
+  [data-name^="Pill · "] { flex-shrink: 0 !important; max-width: 100%; }
+  [data-name^="Pill · "] .ftext { white-space: normal !important; }
+  /* Swipe diagrams: a little room so nothing is cut at the bottom; their card grows to fit. */
+  .swipe-x { padding-bottom: 12px; }
+  .swipe-x > .fn { overflow: visible !important; }
+  :has(> .swipe-x) { height: auto !important; min-height: 0 !important; }
+  /* Reflowed photo banners: a soft dark backing behind the words. */
+  .hero-flow > div:last-child { background: linear-gradient(180deg, rgba(30,28,26,.72), rgba(30,28,26,.45)); }
+}
+
+@media (max-width: 859px) {
+  /* Header rows of stacked tables stay hidden whatever layout rule the row also matches. */
+  [data-head][data-head][data-head][data-head] { display: none !important; }
 }
