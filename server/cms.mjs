@@ -132,7 +132,7 @@ export const COLLECTIONS = {
       { key: 'bottle', label: 'Bottle price', type: 'text', max: 10, section: 'Prices' },
       { key: 'size', label: 'Size note', type: 'text', max: 20, section: 'Prices', placeholder: 'Split, 375 ml, 1 liter' },
       { key: 'pages', label: 'Shows on these pages', type: 'tags', section: 'Where it shows', hint: 'Grape, style or region pages by name, e.g. Cabernet, Napa Valley, Prosecco. It also shows on its country and colour pages.' },
-      { key: 'bottle_img', label: 'Bottle photo', type: 'photo', scan: true, section: 'Tasting', hint: 'Scan Bottle: take a photo and it cuts out just the bottle. Until then, the Wine Book photo.' },
+      { key: 'bottle_img', label: 'Bottle photo', type: 'photo', scan: true, section: 'Tasting', hint: 'Scan Bottle: take a photo of your own bottle and it cuts out just the bottle. Never use photos from a winery’s or shop’s website.' },
       { key: 'style', label: 'Style tag', type: 'text', max: 30, section: 'Tasting', placeholder: 'Crisp, Off-dry, Big and bold' },
       { key: 'notes', label: 'Tasting notes', type: 'textarea', max: 300, section: 'Tasting' },
       { key: 'pairs', label: 'Pairs with', type: 'text', max: 160, section: 'Tasting', hint: 'Dishes from our menu, separated by commas.' },
@@ -265,6 +265,12 @@ export function seed(db) {
         db.prepare('UPDATE entries SET data = ?, seed_hash = ?, updated_at = ? WHERE id = ?').run(JSON.stringify(data), h, now(), row.id);
       }
     }
+  }
+  // Oct 28: the Wine Book's bottle photos came out (copyright: the photos are the wineries' and shops'). Scanned ones (/media/) stay.
+  for (const r of db.prepare(`SELECT id, data FROM entries WHERE collection = 'wine' AND data LIKE '%"bottle_img":"/img/%'`).all()) {
+    const d = JSON.parse(r.data);
+    delete d.bottle_img;
+    db.prepare('UPDATE entries SET data = ? WHERE id = ?').run(JSON.stringify(d), r.id);
   }
   // Oct 28: "Fish" became "Finfish" (Tommy: "Specify shellfish or finfish"). Edited recipes keep their tag.
   for (const r of db.prepare(`SELECT id, data FROM entries WHERE collection = 'recipe' AND data LIKE '%"Fish"%'`).all()) {
