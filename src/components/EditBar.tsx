@@ -9,7 +9,9 @@ export function EditBar() {
   const { user } = useSession();
   const entry = usePageEntry();
   if (!user) return null;
-  const col = entry && entry.file.startsWith('e') ? COLLECTION_OF[entry.section] : null;
+  const found = entry && entry.file.startsWith('e') ? COLLECTION_OF[entry.section] : null;
+  // Classics are the shared library: only a super admin edits them.
+  const col = found === 'classic' && user.role !== 'superadmin' ? null : found;
   return (
     <div className="edit-bar" role="region" aria-label="Manager tools">
       {col && <Link to={`/admin/pages/${col}/${entry!.file.slice(1)}`}>Edit This Page</Link>}

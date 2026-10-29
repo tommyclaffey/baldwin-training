@@ -171,7 +171,8 @@ export function useSections(): Sections {
 
 /** One section row's name: plain text for staff, a box a signed-in manager types into. */
 export function AssignName({ slot, node, render }: { slot: string; node: FNode; render: (n: FNode) => ReactNode }) {
-  const canEdit = !!useSession().user;
+  const role = useSession().user?.role;
+  const canEdit = role === 'manager' || role === 'owner' || role === 'superadmin';
   const sections = useSections();
   const name = sections.names[slot] || '';
   const [draft, setDraft] = useState(name);

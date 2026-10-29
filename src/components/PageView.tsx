@@ -50,7 +50,7 @@ function EmptyPage({ e, mainRef }: { e: Empty; mainRef: React.RefObject<HTMLElem
   return (
     <main ref={mainRef} className="page page-message">
       <h1>{e.title}</h1>
-      <p>{e.body}</p>
+      <p>{manager ? e.body : e.body.replace(/\s*Managers? [^.]*\.\s*/g, ' ').trim()}</p>
       {manager && e.admin && <Link className="btn" to={e.admin}>Add It in the Admin</Link>}
       <Link className={manager && e.admin ? 'link-btn' : 'btn'} to="/">Go to Home</Link>
     </main>

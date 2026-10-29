@@ -112,6 +112,12 @@ test('staff: read and take quizzes, never edit', async () => {
   assert.equal((await staff1('/api/collections')).status, 403);
   assert.equal((await staff1('/api/login', { method: 'POST', body: { email: '', password: '1111' } })).status, 401);
   assert.equal((await person()('/api/join', { method: 'POST', body: { code: code1, name: 'bea baldwin', pin: '9999', storeId: 1 } })).status, 409, 'names are unique in a company');
+  // Nothing to add or edit is even shown to staff; managers don't see the shared library's admin screens.
+  const index = (await staff1('/api/index')).data;
+  const links = async (who, slug) => { const p = (await who('/api/page/' + index.find((e) => e.slug === slug).file)).data; const out = []; const w = (n) => { if (n.to && n.to.startsWith('/admin')) out.push(n.to); (n.c || []).forEach(w); }; w(p.main); return out; };
+  for (const slug of ['the-bar/wine', 'the-bar/spirits', 'photo-library', 'classic/sidecar', 'wine/red/cabernet']) assert.deepEqual(await links(staff1, slug), [], slug + ': no admin links for staff');
+  assert.ok((await links(owner, 'the-bar/spirits')).length > 0, 'an owner can still add bottles');
+  assert.ok(!(await links(owner, 'classic/sidecar')).some((t) => t.includes('classic')) && !(await links(owner, 'wine/red/cabernet')).some((t) => t.includes('wine-videos')), 'shared library screens are super-admin only');
 });
 
 test('PINs: wrong ones lock for 15 minutes, a manager reset lets the person pick a new one', async () => {
