@@ -192,6 +192,7 @@ export const COLLECTIONS = {
       { key: 'dropSide', label: 'Three-line drop · side', type: 'text', max: 120, section: 'At the table', placeholder: 'Spinach and a carrot ribbon' },
       { key: 'dropSauce', label: 'Three-line drop · sauce', type: 'text', max: 120, section: 'At the table', placeholder: 'Pan gravy' },
       { key: 'say', label: 'The drop as one sentence', type: 'textarea', max: 400, section: 'At the table', hint: 'How it sounds at the table.' },
+      { key: 'talkingPoints', label: 'Talking points', type: 'lines', max: 3, section: 'At the table', hint: 'Up to 3 short lines a server can say. One per line.' },
       { key: 'pairing', label: 'Wine · similar', type: 'text', max: 80, section: 'At the table', hint: 'Also the pairing in the Food Matrix.' },
       { key: 'pairingRef', label: 'Wine · similar: where it’s from', type: 'text', max: 60, section: 'At the table', placeholder: 'Wine Book p. 26' },
       { key: 'pairingOpposite', label: 'Wine · opposite', type: 'text', max: 80, section: 'At the table' },

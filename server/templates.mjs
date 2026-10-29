@@ -315,6 +315,12 @@ export function dishPage(template, item, links = {}) {
       if (right) { right.sh = 'L'; for (const c of right.c || []) c.sh = 'L'; }
     }
   }
+  const tidyBody = () => {
+    const body = find(main, byName('Body')); if (!body) return;
+    const right = find(body, byName('Right column'));
+    if (right && !(right.c || []).length) remove(main, right);
+    if (!(body.c || []).length) remove(main, body);
+  };
 
   // Plating
   const plating = find(main, byName('Plating guide'));
@@ -335,34 +341,45 @@ export function dishPage(template, item, links = {}) {
     });
   } else remove(main, plating);
 
-  // At the table: the three-line drop, then the similar wine, the opposite wine and the cocktail.
-  const table = find(main, byName('At the table'));
-  const drop = find(table, byName('Drop'));
-  const lines = [['Drop · Main', d.dropMain], ['Drop · Side', d.dropSide], ['Drop · Sauce', d.dropSauce]];
-  for (const [n, v] of lines) { const row = find(drop, byName(n)); if (v) setText(texts(row)[1], v); else remove(drop, row); }
-  if (!lines.some(([, v]) => v)) remove(table, drop);
-  const sayNode = find(table, byName('Say it'));
-  if (d.say) setText(sayNode, d.say); else remove(table, sayNode);
-  for (const [node, nm, ref, note, kind] of [['Pairing', d.pairing, d.pairingRef, d.pairingNote, 'wine'], ['Pairing · Opposite', d.pairingOpposite, d.pairingOppositeRef, '', 'wine'], ['Pairing · Cocktail', d.cocktail, d.cocktailRef, '', 'cocktail']]) {
-    const box = find(table, byName(node));
-    if (!box) continue;
-    if (!nm) { remove(table, box); continue; }
-    const t = texts(box);
-    setText(t[1], nm); setText(t[2], note || ref || '');
-    // Link to the wine or cocktail page when it's in the book; its photo replaces the stand-in.
-    const hit = links[kind]?.(nm);
-    const thumb = find(box, startsWith('IMG/'));
-    if (hit) { box.to = '/' + hit.slug; if (thumb && hit.photo) thumb.f = img(hit.photo); }
+  tidyBody();
+
+  // The three-line drop: Main, Side and Sauce tiles (the first one dark), then the sentence.
+  const dropBand = find(main, byName('Drop band'));
+  if (dropBand) {
+    const tiles = find(dropBand, byName('Tiles'));
+    const lines = [['Drop · Main', d.dropMain], ['Drop · Side', d.dropSide], ['Drop · Sauce', d.dropSauce]];
+    for (const [n, v] of lines) { const tile = find(tiles, byName(n)); if (v) setText(texts(tile)[1], v); else remove(dropBand, tile); }
+    if (!lines.some(([, v]) => v)) remove(dropBand, tiles);
+    const sayNode = find(dropBand, byName('Say it'));
+    if (d.say) setText(sayNode, d.say); else remove(dropBand, sayNode);
+    if (!d.say && !lines.some(([, v]) => v)) remove(main, dropBand);
   }
-  if (!d.say && !table.c.some((c) => c.t !== 'T')) remove(main, table);
-  // Full width (no build card and no story): the drop on the left, the pairings beside it. On a phone they stack.
-  else if (noBuild && !hasStory) {
-    const words = table.c.filter((c) => !(c.n || '').startsWith('Pairing')).map((t) => ({ ...t, sh: 'L', ...(t.t === 'T' ? { ar: 'H' } : {}) }));
-    const pairs = table.c.filter((c) => (c.n || '').startsWith('Pairing')).map((p) => ({ ...p, sh: 'L' }));
-    table.c = [{ t: 'F', n: 'Table row', w: table.w, h: 0, sh: 'L', sv: 'H', lm: 'H', gap: 32, c: [
-      { t: 'F', n: 'Say', w: 400, h: 0, sh: 'L', sv: 'H', lm: 'V', gap: 16, c: words },
-      ...(pairs.length ? [{ t: 'F', n: 'Pairings', w: 400, h: 0, sh: 'L', sv: 'H', lm: 'V', gap: 12, c: pairs }] : []),
-    ] }];
+
+  // Talking points: up to three short lines a server can say.
+  const tp = find(main, byName('Talking points'));
+  const points3 = (d.talkingPoints || []).filter(Boolean).slice(0, 3);
+  if (tp) {
+    if (points3.length) repeat(find(tp, byName('Points')), startsWith('Point '), points3, (row, t, i) => { row.n = 'Point ' + (i + 1); const tx = texts(row); setText(tx[0], String(i + 1).padStart(2, '0')); setText(tx[1], t); });
+    else remove(main, tp);
+  }
+
+  // Pairings: the similar wine, the opposite wine and the cocktail, each opening its page.
+  const pairBand = find(main, byName('Pairings band'));
+  if (pairBand) {
+    const tiles = find(pairBand, byName('Tiles'));
+    let any = false;
+    for (const [node, nm, ref, kind] of [['Pairing', d.pairing, d.pairingRef, 'wine'], ['Pairing · Opposite', d.pairingOpposite, d.pairingOppositeRef, 'wine'], ['Pairing · Cocktail', d.cocktail, d.cocktailRef, 'cocktail']]) {
+      const tile = find(tiles, byName(node));
+      if (!tile) continue;
+      if (!nm) { remove(pairBand, tile); continue; }
+      any = true;
+      const t = texts(tile);
+      setText(t[1], nm);
+      if (ref) setText(t[2], ref.toUpperCase()); else remove(tile, t[2]);
+      const hit = links[kind]?.(nm);
+      if (hit) tile.to = '/' + hit.slug; else remove(tile, find(tile, byName('Learn')));
+    }
+    if (!any) remove(main, pairBand);
   }
 
   // Watch it made: only when "Add a video" is on and a video is picked.
