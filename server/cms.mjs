@@ -174,7 +174,6 @@ export const COLLECTIONS = {
       { key: 'allergens', label: 'Allergens', type: 'chips', options: ALLERGENS, section: 'The basics' },
       { key: 'pairing', label: 'Pairs with', type: 'text', max: 80, section: 'The basics' },
       { key: 'signature', label: 'Signature dish', type: 'toggle', section: 'The basics' },
-      { key: 'refining', label: 'Being refined (shows a tag in the matrix)', type: 'toggle', section: 'The basics' },
       { key: 'fullPage', label: 'Full recipe page', type: 'toggle', section: 'Recipe page', hint: 'Turn on once the chef has the build, steps and plating.' },
       { key: 'tagline', label: 'Line above the name', type: 'text', max: 80, section: 'Recipe page', placeholder: 'The signature dish' },
       { key: 'components', label: 'Components', type: 'list', max: 10, section: 'The build', fields: [

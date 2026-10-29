@@ -136,7 +136,7 @@
     {
       "id": "walleye-milanese", "title": "Walleye Milanese", "kind": "dish", "page": "/food-matrix",
       "questions": [
-        { "q": "Why check the Walleye spec before every shift?", "options": ["It's being re-tested before opening night", "It's a new supplier", "It sells out early", "It has a new price"], "answer": 0, "why": "Seasoning, skin and where the salad sits may change." },
+        { "q": "What's on the plate with the crusted fillet?", "options": ["Spinach and a carrot ribbon", "Arugula and tomato", "Squash and blossoms", "Pickled shallots"], "answer": 1, "why": "Crusted fillet, onion soubise, arugula and tomato." },
         { "q": "What's the sauce on the Walleye Milanese?", "options": ["Pan gravy", "Lemon butter", "Onion soubise", "Romesco"], "answer": 2, "why": "Crusted fillet, onion soubise, arugula and tomato." },
         { "q": "Which wine do we pair with it?", "options": ["Bolgheri Rosso", "Tenuta Spinelli Pecorino", "Prosecco", "Pinot Noir"], "answer": 1, "why": "The Tenuta Spinelli Pecorino." },
         { "q": "Which allergens are listed?", "options": ["Fish only", "Fish and gluten", "Shellfish and dairy", "Fish, gluten, egg and dairy"], "answer": 3, "why": "Fish, gluten, egg and dairy (sample data, chef to confirm)." },
