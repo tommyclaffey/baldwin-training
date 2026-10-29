@@ -542,3 +542,40 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .assign-input:focus { border-bottom-color: #C49A6C; }
 .assign-input::placeholder { color: #8F877C; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---- Bottle scanner (admin) ---- */
+.scanner { width: min(980px, 100%); padding: 16px; gap: 12px; }
+.scanner-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.scanner-head small { display: block; color: #5E574F; }
+.scanner-stage { background: #111; border-radius: 14px; overflow: hidden; display: grid; place-items: center; min-height: 260px; }
+.scanner-cam { position: relative; width: 100%; max-height: 68vh; aspect-ratio: auto; }
+.scanner-cam video { display: block; width: 100%; max-height: 68vh; object-fit: contain; background: #111; }
+.scanner-guide { position: absolute; border: 2px dashed rgba(242,238,231,.9); border-radius: 40% 40% 14px 14px / 12% 12% 14px 14px; box-shadow: 0 0 0 999px rgba(17,17,17,.45); pointer-events: none; }
+.scanner-note { color: #F2EEE7; padding: 40px 24px; text-align: center; max-width: 420px; }
+.scanner-tip { margin: 0; font-size: 13px; }
+.scanner-actions { justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
+.scanner-review { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; align-items: start; }
+.scanner-pane { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.scanner-result { background: #E7DECF; border-radius: 12px; min-height: 320px; max-height: 62vh; display: grid; place-items: center; padding: 12px; }
+.scanner-result img { max-width: 100%; max-height: calc(62vh - 24px); object-fit: contain; }
+.box-editor { position: relative; width: 100%; max-height: 62vh; border-radius: 12px; overflow: hidden; background: #111; touch-action: none; user-select: none; }
+.box-editor img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
+.box-shade { position: absolute; border: 2px solid #C49A6C; box-shadow: 0 0 0 999px rgba(17,17,17,.45); cursor: move; border-radius: 6px; }
+.box-shade:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.box-handle { position: absolute; width: 22px; height: 22px; background: #F2EEE7; border: 2px solid #C49A6C; border-radius: 50%; touch-action: none; }
+.box-handle.tl { left: -12px; top: -12px; cursor: nwse-resize; } .box-handle.br { right: -12px; bottom: -12px; cursor: nwse-resize; }
+.box-handle.tr { right: -12px; top: -12px; cursor: nesw-resize; } .box-handle.bl { left: -12px; bottom: -12px; cursor: nesw-resize; }
+.scan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.scan-card { display: flex; flex-direction: column; gap: 4px; text-align: left; background: #fff; border: 1px solid #E4DCCF; border-radius: 14px; padding: 10px; font: inherit; cursor: pointer; }
+.scan-card:hover { border-color: #C49A6C; }
+.scan-card:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px; }
+.scan-thumb { background: #E7DECF; border-radius: 10px; height: 170px; display: grid; place-items: center; overflow: hidden; }
+.scan-thumb img { max-height: 160px; max-width: 100%; object-fit: contain; }
+.scan-src { font-size: 12px; }
+.scan-src.scanned { color: #3E7B4F; } .scan-src.none { color: #A4432B; }
+.chip-row { flex-wrap: wrap; gap: 8px; }
+@media (max-width: 720px) {
+  .scanner { padding: 12px; }
+  .scanner-review { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .scanner-result { min-height: 220px; }
+}

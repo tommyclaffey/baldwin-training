@@ -255,3 +255,11 @@ test('tonight’s sections: anyone reads them, only a signed-in manager sets the
   await call('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: '' } });
   assert.equal((await call('/api/sections', { auth: false })).data.names['Servers 1'], undefined);
 });
+
+test('the bottle scanner is for signed-in managers only', async () => {
+  for (const [p, body] of [['/api/scan/ready', {}], ['/api/scan/cut', { token: 'x', box: [0, 0, 1, 1] }], ['/api/scan/keep', { token: 'x' }]]) {
+    assert.equal((await call(p, { method: 'POST', body, auth: false })).status, 401, p);
+  }
+  assert.equal((await call('/api/scan', { method: 'POST', body: 'not a photo', headers: { 'Content-Type': 'text/plain' } })).status, 415);
+  assert.equal((await call('/api/scan/cut', { method: 'POST', body: { token: 'expired', box: [0.2, 0.1, 0.8, 0.9] } })).status, 410);
+});
