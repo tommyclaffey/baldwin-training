@@ -198,6 +198,8 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
   if (bottle) {
     if (d.bottle_img) { bottle.f = [{ img: d.bottle_img, m: 'FIT' }]; bottle.w = 220; bottle.x = 70; }
     else bottle.f = [];
+    // The drawn bottle shows only until there's a photo.
+    if (d.bottle_img) { const panel = find(main, byName('Bottle')); if (panel) panel.c = panel.c.filter((c) => c.n !== 'Shape · Wine bottle'); }
     bottle.n = 'IMG/Bottle · ' + d.name;
   }
   const src = find(main, byName('Source'));
