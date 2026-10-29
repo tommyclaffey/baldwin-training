@@ -57,6 +57,47 @@ const MIGRATIONS = [
   -- Floor Plan → Tonight's sections: who works which section, per night (restaurant's date). slot = 'Servers 1', 'Bar 2'…
   CREATE TABLE sections(day TEXT NOT NULL, slot TEXT NOT NULL, name TEXT NOT NULL, by_user INT, at TEXT, PRIMARY KEY(day, slot));
   `,
+  `
+  -- Accounts (Oct 28): companies; roles superadmin · owner · manager · staff. Baldwin is company 1.
+  -- Super admins belong to no company. Staff sign in with their company's join code, their name and a PIN.
+  CREATE TABLE companies(id INTEGER PRIMARY KEY, name TEXT NOT NULL, slug TEXT UNIQUE NOT NULL, join_code TEXT UNIQUE,
+    created_at TEXT, deleted_at TEXT);
+  INSERT INTO companies(id, name, slug, created_at) VALUES (1, 'Baldwin Restaurant Group', 'baldwin', strftime('%Y-%m-%dT%H:%M:%fZ','now'));
+  CREATE TABLE users_new(
+    id INTEGER PRIMARY KEY, company_id INT REFERENCES companies(id), email TEXT UNIQUE COLLATE NOCASE, name TEXT NOT NULL,
+    role TEXT NOT NULL CHECK(role IN ('superadmin','owner','manager','staff')),
+    password_hash TEXT, pin_hash TEXT, totp_secret TEXT, totp_on INT NOT NULL DEFAULT 0, super_primary INT NOT NULL DEFAULT 0,
+    created_at TEXT, last_seen_at TEXT, deleted_at TEXT);
+  INSERT INTO users_new(id, company_id, email, name, role, password_hash, created_at, last_seen_at)
+    SELECT id, 1, email, name, CASE role WHEN 'editor' THEN 'manager' ELSE role END, password_hash, created_at, last_seen_at FROM users;
+  DROP TABLE users;
+  ALTER TABLE users_new RENAME TO users;
+  CREATE UNIQUE INDEX users_staff_name ON users(company_id, name COLLATE NOCASE) WHERE role = 'staff' AND deleted_at IS NULL;
+  CREATE INDEX users_company ON users(company_id);
+  CREATE TABLE invites_new(
+    token_hash TEXT PRIMARY KEY, company_id INT, email TEXT NOT NULL COLLATE NOCASE,
+    role TEXT NOT NULL CHECK(role IN ('superadmin','owner','manager')), created_by INT, created_at TEXT, expires_at TEXT, used_at TEXT);
+  INSERT INTO invites_new SELECT token_hash, 1, email, CASE role WHEN 'editor' THEN 'manager' ELSE role END, created_by, created_at, expires_at, used_at FROM invites;
+  DROP TABLE invites;
+  ALTER TABLE invites_new RENAME TO invites;
+  ALTER TABLE sessions ADD COLUMN impersonator_id INT;
+  ALTER TABLE sessions ADD COLUMN acting_company_id INT;
+  ALTER TABLE quiz_attempts ADD COLUMN company_id INT NOT NULL DEFAULT 1;
+  ALTER TABLE quiz_attempts ADD COLUMN user_id INT;
+  ALTER TABLE signoffs ADD COLUMN company_id INT NOT NULL DEFAULT 1;
+  CREATE TABLE sections_new(company_id INT NOT NULL DEFAULT 1, day TEXT NOT NULL, slot TEXT NOT NULL, name TEXT NOT NULL, by_user INT, at TEXT,
+    PRIMARY KEY(company_id, day, slot));
+  INSERT INTO sections_new SELECT 1, day, slot, name, by_user, at FROM sections;
+  DROP TABLE sections;
+  ALTER TABLE sections_new RENAME TO sections;
+  ALTER TABLE audit ADD COLUMN company_id INT;
+  -- Content stays Baldwin's for now; the column is here so each company can get its own book later.
+  ALTER TABLE entries ADD COLUMN company_id INT NOT NULL DEFAULT 1;
+  ALTER TABLE overrides ADD COLUMN company_id INT NOT NULL DEFAULT 1;
+  ALTER TABLE items ADD COLUMN company_id INT NOT NULL DEFAULT 1;
+  ALTER TABLE media ADD COLUMN company_id INT NOT NULL DEFAULT 1;
+  ALTER TABLE wine_videos ADD COLUMN company_id INT NOT NULL DEFAULT 1;
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
@@ -75,6 +116,6 @@ export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
   return db;
 }
 
-export function audit(db, userId, action, detail) {
-  db.prepare('INSERT INTO audit(user_id,action,detail,at) VALUES (?,?,?,?)').run(userId ?? null, action, detail ? String(detail).slice(0, 500) : null, now());
+export function audit(db, userId, action, detail, companyId = null) {
+  db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id) VALUES (?,?,?,?,?)').run(userId ?? null, action, detail ? String(detail).slice(0, 500) : null, now(), companyId);
 }

@@ -579,3 +579,26 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   .scanner-review { grid-template-columns: 1fr 1fr; gap: 8px; }
   .scanner-result { min-height: 220px; }
 }
+
+/* ---- Accounts: staff sign-in, team, super admin ---- */
+.demo-flag .link-btn { color: var(--copper); font-weight: 700; pointer-events: auto; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-decoration: underline; }
+.demo-flag { pointer-events: auto; }
+.demo-flag.support { background: #7A2E1C; }
+.name-list { display: flex; flex-direction: column; gap: 6px; max-height: 50vh; overflow: auto; }
+.name-btn { text-align: left; font: 600 16px 'Archivo', sans-serif; padding: 12px 14px; border: 1px solid #E4DCCF; border-radius: 12px; background: #FBF9F5; cursor: pointer; min-height: 48px; }
+.name-btn:hover, .name-btn:focus-visible { border-color: #C49A6C; outline: none; box-shadow: 0 0 0 3px rgba(196,154,108,.2); }
+.join-code { font: 800 32px/1 'Archivo', sans-serif; letter-spacing: .12em; color: var(--ink); background: #F3EEE6; border-radius: 12px; padding: 14px 18px; width: fit-content; }
+.row-actions { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: flex-end; }
+.tabs-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 14px; border-bottom: 1px solid #E4DCCF; }
+.tabs-row a { padding: 10px 14px; font: 600 14px 'Archivo', sans-serif; color: #5E574F; text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tabs-row a.active { color: var(--ink); border-bottom-color: #C49A6C; }
+.filters-row { gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+.is-deleted td { color: #8F877C; }
+.support-bar { background: #FBEDE7; border: 1px solid #E8B9A8; color: #7A2E1C; padding: 10px 14px; border-radius: 12px; margin-bottom: 14px; }
+.admin-working { display: block; color: #D9D1C6; font-size: 12.5px; margin: -4px 0 12px; }
+.admin-working a { color: #C49A6C; }
+.nav-super { margin-top: 10px; border-top: 1px solid #34302C; padding-top: 12px !important; color: #C49A6C !important; }
+.qr { width: 200px; height: 200px; background: #fff; padding: 8px; border: 1px solid #E4DCCF; border-radius: 12px; }
+.qr svg { width: 100%; height: 100%; display: block; }
+.secret { font-size: 13px; word-break: break-all; }
+.steps-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }

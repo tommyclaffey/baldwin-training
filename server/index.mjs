@@ -3,7 +3,8 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
-import { hashPassword, verifyPassword, burnPasswordCheck, createSession, sessionUser, endSession, sessionCookie, SESSION_COOKIE, LoginLimiter, publicUser, sha256, newToken } from './auth.mjs';
+import { sessionUser, SESSION_COOKIE, LoginLimiter } from './auth.mjs';
+import { accountRoutes, bootAccounts, companyOf, canEdit } from './accounts.mjs';
 import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebarCounts } from './content.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, publicSchemas, seed, listEntries, getEntry, createEntry, updateEntry, deleteEntry, moveEntry } from './cms.mjs';
@@ -14,12 +15,11 @@ import { score as scoreQuiz, results as quizResults, quizIds } from './quiz.mjs'
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
 const PORT = Number(process.env.PORT) || 8080;
-const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
 const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
 seed(db);
 seedWineVideos(db);
-const limiter = new LoginLimiter();
+bootAccounts(db);
 const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address
 
 const SECURITY = { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'X-Frame-Options': 'SAMEORIGIN' };
@@ -56,17 +56,27 @@ const ctx = (req) => {
   const token = cookies(req)[SESSION_COOKIE];
   const user = sessionUser(db, token);
   if (user) db.prepare('UPDATE users SET last_seen_at = ? WHERE id = ?').run(now(), user.id);
-  return { token, user };
+  return { token, user, company: companyOf(user) };
 };
 /** Tonight, in the restaurant's time zone (Metro Detroit). */
 const restaurantDay = () => new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
 
-function needUser(c, req) {
-  if (!c.user) fail(401, 'Sign in to make changes.');
+/** Anyone signed in (staff included): reading the book, taking quizzes. */
+function needReader(c, req) {
+  if (!c.user) fail(401, 'Sign in to read the book.');
   if (req.method !== 'GET' && req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
   return c.user;
 }
-const needOwner = (c, req) => { const u = needUser(c, req); if (u.role !== 'owner') fail(403, 'Only the owner can do that.'); return u; };
+/** Owners, managers and super admins: editing, sign-offs, uploads. */
+function needUser(c, req) {
+  if (!c.user) fail(401, 'Sign in to make changes.');
+  if (req.method !== 'GET' && req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
+  if (!canEdit(c.user)) fail(403, 'Only managers can do that.');
+  return c.user;
+}
+const needOwner = (c, req) => { const u = needUser(c, req); if (u.role !== 'owner' && u.role !== 'superadmin') fail(403, 'Only an owner can do that.'); return u; };
+/** The book's content is Baldwin's for now; another company's book is set up when the app opens to more companies. */
+const needBook = (c, req) => { const u = needReader(c, req); if (c.company !== 1) fail(404, 'Your company’s book isn’t set up yet. We’ll let you know when it’s ready.'); return u; };
 
 const clean = (s, max = 4000) => String(s ?? '').slice(0, max);
 const validEmail = (e) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(e || ''));
@@ -92,157 +102,55 @@ const media = (v) => {
 const imageUrl = (v) => { const s = str(v, 300); return s.startsWith('/media/') || s.startsWith('/img/') ? s : ''; };
 
 /* ------------------------------ routes ------------------------------ */
+const accounts = accountRoutes({ db, fail, sendJson, readJson, str, isSecure });
 async function api(req, res, url) {
   const c = ctx(req);
   const m = req.method;
   const p = url.pathname;
   const parts = p.split('/').filter(Boolean); // ['api', ...]
 
-  if (p === '/api/me' && m === 'GET') {
-    const users = db.prepare('SELECT COUNT(*) n FROM users').get().n;
-    return sendJson(res, 200, { user: publicUser(c.user), setupNeeded: users === 0 });
-  }
+  if ((await accounts(req, res, url, c)) !== false) return;
 
-  if (p === '/api/setup' && m === 'POST') {
-    const b = await readJson(req);
-    if (db.prepare('SELECT COUNT(*) n FROM users').get().n > 0) fail(409, 'The owner account already exists. Sign in instead.');
-    if (!OWNER_EMAIL) fail(503, 'Setup is off: OWNER_EMAIL isn’t set on the server.');
-    if (String(b.email || '').trim().toLowerCase() !== OWNER_EMAIL) fail(403, 'That email can’t set up this app. Use the owner’s email.');
-    if (!str(b.name, 80)) fail(400, 'Add your name.');
-    if (!validPassword(b.password)) fail(400, 'Use at least 10 characters for the password.');
-    const r = db.prepare('INSERT INTO users(email,name,role,password_hash,created_at) VALUES (?,?,?,?,?)').run(OWNER_EMAIL, str(b.name, 80), 'owner', await hashPassword(b.password), now());
-    audit(db, Number(r.lastInsertRowid), 'setup', OWNER_EMAIL);
-    const token = createSession(db, Number(r.lastInsertRowid));
-    return sendJson(res, 200, { user: publicUser(db.prepare('SELECT * FROM users WHERE id = ?').get(r.lastInsertRowid)) }, { 'Set-Cookie': sessionCookie(token, { secure: isSecure(req) }) });
-  }
-
-  if (p === '/api/login' && m === 'POST') {
-    const b = await readJson(req);
-    const email = String(b.email || '').trim().toLowerCase();
-    const key = email + '|' + (req.headers['x-forwarded-for'] || req.socket.remoteAddress);
-    if (!limiter.check(key)) fail(429, 'Too many tries. Wait 15 minutes, then try again.');
-    const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
-    const ok = user ? await verifyPassword(b.password, user.password_hash) : (await burnPasswordCheck(b.password), false);
-    if (!ok) { limiter.record(key); fail(401, 'That email and password don’t match.'); }
-    limiter.reset(key);
-    const token = createSession(db, user.id);
-    audit(db, user.id, 'login');
-    return sendJson(res, 200, { user: publicUser(user) }, { 'Set-Cookie': sessionCookie(token, { secure: isSecure(req) }) });
-  }
-
-  if (p === '/api/logout' && m === 'POST') {
-    endSession(db, c.token);
-    return sendJson(res, 200, { ok: true }, { 'Set-Cookie': sessionCookie('', { clear: true, secure: isSecure(req) }) });
-  }
-
-  if (p === '/api/password' && m === 'POST') {
-    const u = needUser(c, req);
-    const b = await readJson(req);
-    if (!(await verifyPassword(b.current, u.password_hash))) fail(400, 'Your current password isn’t right.');
-    if (!validPassword(b.next)) fail(400, 'Use at least 10 characters for the new password.');
-    db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(await hashPassword(b.next), u.id);
-    db.prepare('DELETE FROM sessions WHERE user_id = ? AND token_hash != ?').run(u.id, sha256(c.token));
-    audit(db, u.id, 'password');
-    return sendJson(res, 200, { ok: true });
-  }
-
-  /* people */
-  if (p === '/api/users' && m === 'GET') {
-    needOwner(c, req);
-    return sendJson(res, 200, { users: db.prepare('SELECT id,name,email,role,created_at,last_seen_at FROM users ORDER BY id').all() });
-  }
-  if (parts[1] === 'users' && parts[2] && m === 'DELETE') {
-    const u = needOwner(c, req);
-    const id = Number(parts[2]);
-    if (id === u.id) fail(400, 'You can’t remove your own account.');
-    db.prepare('DELETE FROM sessions WHERE user_id = ?').run(id);
-    db.prepare('DELETE FROM users WHERE id = ?').run(id);
-    audit(db, u.id, 'remove user', id);
-    return sendJson(res, 200, { ok: true });
-  }
-  if (p === '/api/invites' && m === 'GET') {
-    needOwner(c, req);
-    return sendJson(res, 200, { invites: db.prepare('SELECT substr(token_hash,1,16) id,email,role,created_at,expires_at FROM invites WHERE used_at IS NULL AND expires_at > ? ORDER BY created_at DESC').all(now()) });
-  }
-  if (p === '/api/invites' && m === 'POST') {
-    const u = needOwner(c, req);
-    const b = await readJson(req);
-    const email = String(b.email || '').trim().toLowerCase();
-    if (!validEmail(email)) fail(400, 'Enter a valid email address.');
-    if (db.prepare('SELECT 1 FROM users WHERE email = ?').get(email)) fail(409, 'That person already has an account.');
-    const role = b.role === 'owner' ? 'owner' : 'editor';
-    const token = newToken();
-    db.prepare('INSERT INTO invites(token_hash,email,role,created_by,created_at,expires_at) VALUES (?,?,?,?,?,?)').run(sha256(token), email, role, u.id, now(), new Date(Date.now() + 14 * 864e5).toISOString());
-    audit(db, u.id, 'invite', email);
-    return sendJson(res, 200, { link: `/admin/invite/${token}`, email, role });
-  }
-  if (parts[1] === 'invites' && parts[2] && m === 'DELETE') {
-    const u = needOwner(c, req);
-    db.prepare('DELETE FROM invites WHERE substr(token_hash,1,16) = ? AND used_at IS NULL').run(parts[2]);
-    audit(db, u.id, 'cancel invite', parts[2]);
-    return sendJson(res, 200, { ok: true });
-  }
-  if (parts[1] === 'invite' && parts[2]) {
-    const inv = db.prepare('SELECT * FROM invites WHERE token_hash = ? AND used_at IS NULL AND expires_at > ?').get(sha256(parts[2]), now());
-    if (m === 'GET') return sendJson(res, 200, inv ? { valid: true, email: inv.email, role: inv.role } : { valid: false });
-    if (m === 'POST') {
-      if (!inv) fail(410, 'This invite has expired or was already used. Ask for a new one.');
-      const b = await readJson(req);
-      if (!str(b.name, 80)) fail(400, 'Add your name.');
-      if (!validPassword(b.password)) fail(400, 'Use at least 10 characters for the password.');
-      if (db.prepare('SELECT 1 FROM users WHERE email = ?').get(inv.email)) fail(409, 'That person already has an account.');
-      const r = db.prepare('INSERT INTO users(email,name,role,password_hash,created_at) VALUES (?,?,?,?,?)').run(inv.email, str(b.name, 80), inv.role, await hashPassword(b.password), now());
-      db.prepare('UPDATE invites SET used_at = ? WHERE token_hash = ?').run(now(), inv.token_hash);
-      audit(db, Number(r.lastInsertRowid), 'joined', inv.email);
-      const token = createSession(db, Number(r.lastInsertRowid));
-      return sendJson(res, 200, { user: publicUser(db.prepare('SELECT * FROM users WHERE id = ?').get(r.lastInsertRowid)) }, { 'Set-Cookie': sessionCookie(token, { secure: isSecure(req) }) });
-    }
-  }
-
-  /* quizzes: public, so staff can save scores without an account */
-  const device = (v) => (/^[A-Za-z0-9_-]{16,64}$/.test(String(v || '')) ? String(v) : null);
+  /* quizzes: everyone signed in. A person's records are keyed 'u<id>' (older phone-only records keep their device id). */
   if (p === '/api/quiz/attempt' && m === 'POST') {
-    if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
-    const ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0];
-    if (!quizLimiter.check(ip)) fail(429, 'Too many saves. Try again in an hour.');
+    const u = needReader(c, req);
+    if (!quizLimiter.check('u' + u.id)) fail(429, 'Too many saves. Try again in an hour.');
     const b = await readJson(req, 20_000);
-    const dev = device(b.device), name = str(b.name, 60);
-    if (!dev) fail(400, 'Missing device.');
-    if (!name) fail(400, 'Add your name so a manager can sign you off.');
     const r = scoreQuiz(String(b.quiz || ''), b.items, b.answers);
     if (!r) fail(400, 'That quiz didn’t match. Reload and try again.');
-    quizLimiter.record(ip);
-    db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at) VALUES (?,?,?,?,?,?,?)')
-      .run(dev, name, b.quiz, r.score, r.total, JSON.stringify({ items: b.items, answers: b.answers.map(Number) }), now());
+    quizLimiter.record('u' + u.id);
+    db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id) VALUES (?,?,?,?,?,?,?,?,?)')
+      .run('u' + u.id, u.name, b.quiz, r.score, r.total, JSON.stringify({ items: b.items, answers: b.answers.map(Number) }), now(), c.company, u.id);
     return sendJson(res, 200, r);
   }
-  if (parts[1] === 'quiz' && parts[2] === 'progress' && parts[3] && m === 'GET') {
-    const dev = device(parts[3]);
-    if (!dev) fail(400, 'Missing device.');
-    const signoffs = db.prepare('SELECT quiz, at FROM signoffs WHERE device = ?').all(dev);
-    return sendJson(res, 200, { signoffs });
+  if (p === '/api/quiz/mine' && m === 'GET') {
+    const u = needReader(c, req);
+    const best = db.prepare('SELECT quiz, MAX(score * 1.0 / total) ratio, MAX(score) best, total, MAX(at) at FROM quiz_attempts WHERE device = ? GROUP BY quiz').all('u' + u.id);
+    const signoffs = db.prepare('SELECT quiz, at FROM signoffs WHERE device = ?').all('u' + u.id);
+    return sendJson(res, 200, { best: best.map((r) => ({ quiz: r.quiz, best: r.best, total: r.total, at: r.at })), signoffs });
   }
   if (p === '/api/quiz/results' && m === 'GET') {
     needUser(c, req);
-    return sendJson(res, 200, { people: quizResults(db) });
+    return sendJson(res, 200, { people: quizResults(db, c.company) });
   }
   if (p === '/api/quiz/signoff' && (m === 'POST' || m === 'DELETE')) {
     const u = needUser(c, req);
     const b = await readJson(req);
-    const dev = device(b.device), quiz = String(b.quiz || '');
-    if (!dev || !quizIds.has(quiz)) fail(400, 'Missing person or quiz.');
-    const who = db.prepare('SELECT name FROM quiz_attempts WHERE device = ? ORDER BY id DESC LIMIT 1').get(dev);
+    const dev = String(b.device || ''), quiz = String(b.quiz || '');
+    if (!/^[A-Za-z0-9_-]{2,64}$/.test(dev) || !quizIds.has(quiz)) fail(400, 'Missing person or quiz.');
+    const who = db.prepare('SELECT name FROM quiz_attempts WHERE device = ? AND company_id = ? ORDER BY id DESC LIMIT 1').get(dev, c.company);
     if (!who) fail(404, 'We couldn’t find that person.');
-    if (m === 'POST') db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at) VALUES (?,?,?,?)').run(dev, quiz, u.id, now());
-    else db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ?').run(dev, quiz);
-    audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${who.name} · ${quiz}`);
+    if (m === 'POST') db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at,company_id) VALUES (?,?,?,?,?)').run(dev, quiz, u.id, now(), c.company);
+    else db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ? AND company_id = ?').run(dev, quiz, c.company);
+    audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${who.name} · ${quiz}`, c.company);
     return sendJson(res, 200, { ok: true });
   }
 
   /* content */
-  if (p === '/api/index' && m === 'GET') return sendJson(res, 200, fullIndex(db));
-  if (p === '/api/counts' && m === 'GET') return sendJson(res, 200, sidebarCounts(db));
+  if (p === '/api/index' && m === 'GET') { needBook(c, req); return sendJson(res, 200, fullIndex(db)); }
+  if (p === '/api/counts' && m === 'GET') { needBook(c, req); return sendJson(res, 200, sidebarCounts(db)); }
   if (parts[1] === 'page' && parts[2] && m === 'GET') {
+    needBook(c, req);
     const page = assemble(db, parts[2]);
     if (!page) fail(404, 'We couldn’t find that page.');
     return sendJson(res, 200, page);
@@ -297,8 +205,9 @@ async function api(req, res, url) {
   /* wine videos: "Learn more about …" on wine pages, and wines on the list */
   /* Floor Plan: tonight's sections. Everyone reads them; a signed-in manager fills them in before line-up. */
   if (p === '/api/sections' && m === 'GET') {
+    needReader(c, req);
     const day = restaurantDay();
-    const rows = db.prepare('SELECT slot, name FROM sections WHERE day = ?').all(day);
+    const rows = db.prepare('SELECT slot, name FROM sections WHERE day = ? AND company_id = ?').all(day, c.company);
     return sendJson(res, 200, { day, names: Object.fromEntries(rows.map((r) => [r.slot, r.name])) });
   }
   if (p === '/api/sections' && m === 'PUT') {
@@ -307,9 +216,9 @@ async function api(req, res, url) {
     const slot = str(b.slot, 40), name = str(b.name, 60).trim();
     if (!/^(Servers|Bar|Support) \d$/.test(slot)) fail(400, 'We couldn’t find that section.');
     const day = restaurantDay();
-    if (name) db.prepare('INSERT OR REPLACE INTO sections(day,slot,name,by_user,at) VALUES (?,?,?,?,?)').run(day, slot, name, u.id, now());
-    else db.prepare('DELETE FROM sections WHERE day = ? AND slot = ?').run(day, slot);
-    audit(db, u.id, 'set section', `${day} · ${slot} · ${name || 'Unassigned'}`);
+    if (name) db.prepare('INSERT OR REPLACE INTO sections(company_id,day,slot,name,by_user,at) VALUES (?,?,?,?,?,?)').run(c.company, day, slot, name, u.id, now());
+    else db.prepare('DELETE FROM sections WHERE company_id = ? AND day = ? AND slot = ?').run(c.company, day, slot);
+    audit(db, u.id, 'set section', `${day} · ${slot} · ${name || 'Unassigned'}`, c.company);
     return sendJson(res, 200, { ok: true, day, slot, name });
   }
   if (p === '/api/wine-videos' && m === 'GET') {
@@ -360,7 +269,7 @@ async function api(req, res, url) {
     const name = str(b.name, 80) || 'Bottle';
     const file = `${Date.now().toString(36)}-bottle-${slugify(name).slice(0, 40) || 'scan'}.jpg`;
     fs.writeFileSync(path.join(MEDIA_DIR, file), jpg);
-    const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at) VALUES (?,?,?,?,?,?,?)').run('file', `Bottle · ${name}`, file, 'image/jpeg', jpg.length, u.id, now());
+    const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id) VALUES (?,?,?,?,?,?,?,?)').run('file', `Bottle · ${name}`, file, 'image/jpeg', jpg.length, u.id, now(), c.company);
     audit(db, u.id, 'scan bottle', name);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
   }
@@ -368,14 +277,14 @@ async function api(req, res, url) {
   /* media */
   if (p === '/api/media' && m === 'GET') {
     needUser(c, req);
-    return sendJson(res, 200, { media: db.prepare('SELECT * FROM media ORDER BY id DESC').all().map(mediaOut) });
+    return sendJson(res, 200, { media: db.prepare('SELECT * FROM media WHERE company_id = ? ORDER BY id DESC').all(c.company).map(mediaOut) });
   }
   if (p === '/api/media/youtube' && m === 'POST') {
     const u = needUser(c, req);
     const b = await readJson(req);
     const id = youtubeId(b.url);
     if (!id) fail(400, 'That doesn’t look like a YouTube link. Copy the link from the Share button.');
-    const r = db.prepare('INSERT INTO media(kind,title,youtube_id,created_by,created_at) VALUES (?,?,?,?,?)').run('youtube', str(b.title, 200) || 'YouTube video', id, u.id, now());
+    const r = db.prepare('INSERT INTO media(kind,title,youtube_id,created_by,created_at,company_id) VALUES (?,?,?,?,?,?)').run('youtube', str(b.title, 200) || 'YouTube video', id, u.id, now(), c.company);
     audit(db, u.id, 'add youtube', id);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
   }
@@ -399,13 +308,13 @@ async function api(req, res, url) {
       req.on('error', reject);
     });
     const size = fs.statSync(dest).size;
-    const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at) VALUES (?,?,?,?,?,?,?)').run('file', original, file, mime, size, u.id, now());
+    const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id) VALUES (?,?,?,?,?,?,?,?)').run('file', original, file, mime, size, u.id, now(), c.company);
     audit(db, u.id, 'upload', file);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
   }
   if (parts[1] === 'media' && parts[2] && m === 'DELETE') {
     const u = needUser(c, req);
-    const row = db.prepare('SELECT * FROM media WHERE id = ?').get(Number(parts[2]));
+    const row = db.prepare('SELECT * FROM media WHERE id = ? AND company_id = ?').get(Number(parts[2]), c.company);
     if (!row) fail(404, 'We couldn’t find that file.');
     if (row.file) fs.rmSync(path.join(MEDIA_DIR, row.file), { force: true });
     db.prepare('DELETE FROM media WHERE id = ?').run(row.id);
@@ -415,7 +324,7 @@ async function api(req, res, url) {
 
   if (p === '/api/audit' && m === 'GET') {
     needOwner(c, req);
-    return sendJson(res, 200, { audit: db.prepare('SELECT a.*, u.name FROM audit a LEFT JOIN users u ON u.id = a.user_id ORDER BY a.id DESC LIMIT 200').all() });
+    return sendJson(res, 200, { audit: db.prepare("SELECT a.*, u.name FROM audit a LEFT JOIN users u ON u.id = a.user_id WHERE IFNULL(a.company_id, 1) = ? AND a.action NOT LIKE 'super:%' ORDER BY a.id DESC LIMIT 200").all(c.company) });
   }
 
   fail(404, 'Not found.');
@@ -446,6 +355,8 @@ function staticFile(req, res, url) {
     if (!fs.existsSync(f)) { res.writeHead(404); return res.end('Not found'); }
     return sendFile(req, res, f, 'public, max-age=31536000, immutable');
   }
+  // The book's page files are served through the API, to signed-in people only.
+  if (p.startsWith('/content/')) { res.writeHead(404); return res.end('Not found'); }
   let f = path.join(DIST, path.normalize(p).replace(/^(\.\.[/\\])+/, ''));
   if (!f.startsWith(DIST)) { res.writeHead(403); return res.end(); }
   if (!fs.existsSync(f) || fs.statSync(f).isDirectory()) {

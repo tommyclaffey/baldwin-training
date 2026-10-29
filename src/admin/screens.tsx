@@ -1,7 +1,7 @@
 // Admin screens: sign in, first-time setup, invites, lists, media, people, account, activity.
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { api, uploadFile, type MediaItem, type User } from '../lib/api';
+import { api, uploadFile, ROLE_LABEL, type MediaItem, type Role, type User } from '../lib/api';
 import { useSession } from '../lib/session';
 import { VideoEmbed } from '../components/VideoEmbed';
 import { Empty, ErrorNote, Loading, Text, when } from './ui';
@@ -33,32 +33,54 @@ export function AuthCard({ title, sub, children }: { title: string; sub?: ReactN
 }
 
 export function SignIn() {
-  const { setUser, setupNeeded } = useSession();
+  const { setUser, setupNeeded, superSetupNeeded } = useSession();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [ticket, setTicket] = useState('');
+  const [code, setCode] = useState('');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
-  if (setupNeeded) return <Setup />;
+  const [setup, setSetup] = useState(false);
+  if (setupNeeded || setup) return <Setup superAdmin={!setupNeeded && superSetupNeeded} />;
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');
-    try { setUser((await api<{ user: User }>('/api/login', { method: 'POST', body: { email, password } })).user); }
-    catch (err) { setError((err as Error).message); }
+    try {
+      const r = await api<{ user?: User; needCode?: boolean; ticket?: string }>('/api/login', { method: 'POST', body: { email, password } });
+      if (r.needCode) setTicket(r.ticket!); else setUser(r.user!);
+    } catch (err) { setError((err as Error).message); }
     setBusy(false);
   };
+  const submitCode = async (e: FormEvent) => {
+    e.preventDefault(); setBusy(true); setError('');
+    try { setUser((await api<{ user: User }>('/api/login/code', { method: 'POST', body: { ticket, code } })).user); }
+    catch (err) { setError((err as Error).message); if (/timed out/.test((err as Error).message)) { setTicket(''); setCode(''); } }
+    setBusy(false);
+  };
+  if (ticket) return (
+    <AuthCard title="Two-step sign-in" sub="Open your authenticator app and type the 6-digit code for the Baldwin Training Book.">
+      <form className="stack" onSubmit={submitCode}>
+        <label className="field"><span>Code</span><input inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} autoFocus /></label>
+        {error && <ErrorNote error={error} />}
+        <button className="btn" disabled={busy || code.length !== 6}>{busy ? 'Checking…' : 'Sign In'}</button>
+        <button type="button" className="link-btn" onClick={() => { setTicket(''); setCode(''); setError(''); }}>Start over</button>
+      </form>
+    </AuthCard>
+  );
   return (
-    <AuthCard title="Sign in to edit" sub={<>Managers only. Staff can read the book without signing in. <Link to="/">Back to the book</Link></>}>
+    <AuthCard title="Sign in" sub={<>Owners, managers and super admins. Staff sign in on <Link to="/">the book</Link> with the join code.</>}>
       <form className="stack" onSubmit={submit}>
         <Text label="Email" value={email} onChange={setEmail} />
         <label className="field"><span>Password</span><input type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
         {error && <ErrorNote error={error} />}
         <button className="btn" disabled={busy || !email || !password}>{busy ? 'Signing In…' : 'Sign In'}</button>
-        <p className="muted small">No account? Ask the owner for an invite link.</p>
+        <p className="muted small">No account? Ask your owner for an invite link.</p>
+        {superSetupNeeded && <button type="button" className="link-btn" onClick={() => setSetup(true)}>Set up the super admin account</button>}
       </form>
     </AuthCard>
   );
 }
 
-function Setup() {
+function Setup({ superAdmin }: { superAdmin: boolean }) {
   const { setUser, refresh } = useSession();
   const [f, setF] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
@@ -70,7 +92,8 @@ function Setup() {
     setBusy(false);
   };
   return (
-    <AuthCard title="Create the owner account" sub="This only works once, with the owner’s email. After this you invite everyone else.">
+    <AuthCard title={superAdmin ? 'Create the super admin account' : 'Create the owner account'}
+      sub={superAdmin ? 'This only works once, with the super admin email set on the server. You’ll turn on two-step sign-in next.' : 'This only works once, with the owner’s email. After this you invite everyone else.'}>
       <form className="stack" onSubmit={submit}>
         <Text label="Your name" value={f.name} onChange={(name) => setF({ ...f, name })} />
         <Text label="Email" value={f.email} onChange={(email) => setF({ ...f, email })} />
@@ -86,21 +109,22 @@ export function AcceptInvite() {
   const { token } = useParams();
   const { setUser } = useSession();
   const nav = useNavigate();
-  const [inv, setInv] = useState<{ valid: boolean; email?: string; role?: string } | null>(null);
+  const [inv, setInv] = useState<{ valid: boolean; email?: string; role?: Role; company?: string | null } | null>(null);
   const [f, setF] = useState({ name: '', password: '' });
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   useEffect(() => { api<typeof inv>(`/api/invite/${token}`).then(setInv).catch(() => setInv({ valid: false })); }, [token]);
   if (!inv) return <AuthCard title="Checking your invite…"><Loading /></AuthCard>;
-  if (!inv.valid) return <AuthCard title="This invite doesn’t work" sub="It expired or was already used. Ask the owner for a new link."><Link className="btn" to="/">Go to the Book</Link></AuthCard>;
+  if (!inv.valid) return <AuthCard title="This invite doesn’t work" sub="It expired or was already used. Ask for a new link."><Link className="btn" to="/">Go to the Book</Link></AuthCard>;
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');
-    try { setUser((await api<{ user: User }>(`/api/invite/${token}`, { method: 'POST', body: f })).user); nav('/admin'); }
+    try { setUser((await api<{ user: User }>(`/api/invite/${token}`, { method: 'POST', body: f })).user); nav(inv.role === 'superadmin' ? '/admin/account' : '/admin'); }
     catch (err) { setError((err as Error).message); }
     setBusy(false);
   };
+  const what = inv.role === 'superadmin' ? 'a super admin' : `${inv.role === 'owner' ? 'an owner' : 'a manager'}${inv.company ? ` at ${inv.company}` : ''}`;
   return (
-    <AuthCard title="Join the training book" sub={<>You’re invited as <strong>{inv.email}</strong>.</>}>
+    <AuthCard title="Join the training book" sub={<>You’re invited as <strong>{what}</strong>, with <strong>{inv.email}</strong>.</>}>
       <form className="stack" onSubmit={submit}>
         <Text label="Your name" value={f.name} onChange={(name) => setF({ ...f, name })} />
         <label className="field"><span>Choose a password</span><input type="password" autoComplete="new-password" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} /><small>At least 10 characters.</small></label>
@@ -212,72 +236,110 @@ export function MediaLibrary() {
 }
 const mb = (n: number | null) => (n ? (n > 1e6 ? `${(n / 1e6).toFixed(1)} MB` : `${Math.round(n / 1e3)} KB`) : '');
 
-/* ---------- people ---------- */
-type Person = { id: number; name: string; email: string; role: string; created_at: string; last_seen_at: string | null };
+/* ---------- team ---------- */
+type Member = { id: number; name: string; email: string | null; role: Role; createdAt: string; lastSeenAt: string | null; hasPin: boolean; signedOff: number };
 type Invite = { id: string; email: string; role: string; created_at: string; expires_at: string };
+type TeamData = { company: { id: number; name: string; joinCode: string }; people: Member[]; invites: Invite[]; you: number; youRole: Role };
 export function People() {
-  const { user } = useSession();
-  const users = useLoad<{ users: Person[] }>('/api/users');
-  const invites = useLoad<{ invites: Invite[] }>('/api/invites');
+  const { data, error, load } = useLoad<TeamData>('/api/team');
   const [email, setEmail] = useState('');
-  const [role, setRole] = useState('editor');
+  const [role, setRole] = useState('manager');
   const [made, setMade] = useState<{ link: string; email: string } | null>(null);
   const [err, setErr] = useState('');
-  const [copied, setCopied] = useState(false);
-  if (user?.role !== 'owner') return <Empty title="Only the owner can manage people" />;
+  const [note, setNote] = useState('');
+  const [copied, setCopied] = useState('');
+  const owner = data?.youRole === 'owner' || data?.youRole === 'superadmin';
+  const run = async (fn: () => Promise<unknown>, ok?: string) => { setErr(''); setNote(''); try { await fn(); if (ok) setNote(ok); load(); } catch (e) { setErr((e as Error).message); } };
+  const copy = (text: string, what: string) => { void navigator.clipboard.writeText(text); setCopied(what); };
 
   const invite = async (e: FormEvent) => {
-    e.preventDefault(); setErr(''); setCopied(false);
-    try { const r = await api<{ link: string; email: string }>('/api/invites', { method: 'POST', body: { email, role } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); invites.load(); }
+    e.preventDefault(); setErr(''); setCopied('');
+    try { const r = await api<{ link: string; email: string }>('/api/team/invite', { method: 'POST', body: { email, role } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); load(); }
     catch (e2) { setErr((e2 as Error).message); }
   };
-  const cancel = async (i: Invite) => { try { await api(`/api/invites/${i.id}`, { method: 'DELETE' }); invites.load(); } catch (e) { setErr((e as Error).message); } };
-  const remove = async (p: Person) => {
-    if (!confirm(`Remove ${p.name}? They’re signed out and can’t edit anymore.`)) return;
-    try { await api(`/api/users/${p.id}`, { method: 'DELETE' }); users.load(); } catch (e) { setErr((e as Error).message); }
-  };
+  if (error) return <div className="admin-page"><ErrorNote error={error} retry={load} /></div>;
+  if (!data) return <div className="admin-page"><Loading /></div>;
+  const leads = data.people.filter((p) => p.role !== 'staff');
+  const staff = data.people.filter((p) => p.role === 'staff');
+  const joinUrl = location.origin + '/';
 
   return (
     <div className="admin-page">
-      <h1>People</h1>
-      <p className="muted">Who can edit the book. Staff read it without an account.</p>
-      <form className="card invite-form" onSubmit={invite}>
-        <Text label="Invite by email" value={email} placeholder="manager@thebaldwinshelby.com" onChange={setEmail} />
-        <label className="field"><span>Role</span>
-          <select value={role} onChange={(e) => setRole(e.target.value)}><option value="editor">Editor: edits content</option><option value="owner">Owner: also manages people</option></select>
-        </label>
-        <button className="btn" disabled={!email.trim()}>Create Invite Link</button>
-      </form>
-      {made && (
-        <div className="card ok-card" role="status">
-          <p>Send this link to <strong>{made.email}</strong>. It works once and expires in 14 days.</p>
-          <div className="row"><input readOnly value={made.link} onFocus={(e) => e.target.select()} aria-label="Invite link" /><button className="btn ghost" onClick={() => { navigator.clipboard.writeText(made.link); setCopied(true); }}>{copied ? 'Copied' : 'Copy'}</button></div>
-        </div>
-      )}
+      <h1>Team</h1>
+      <p className="muted">{data.company.name}. Owners and managers sign in with email; staff join with the code below and a PIN.</p>
       {err && <ErrorNote error={err} />}
-      <h2 className="sub">Accounts</h2>
-      {users.error && <ErrorNote error={users.error} retry={users.load} />}
-      {!users.data && !users.error && <Loading />}
-      {users.data && (
+      {note && <p className="ok" role="status">{note}</p>}
+
+      <section className="card stack">
+        <h2>Staff join code</h2>
+        <div className="join-code" aria-label="Join code">{data.company.joinCode}</div>
+        <p className="muted small">Staff open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong>, type this code, pick their name (or “I’m New Here”) and a PIN. Share it at line-up or post it in the back of house.</p>
+        <div className="row">
+          <button className="btn ghost" onClick={() => copy(`Join the Baldwin training book: ${joinUrl}  Join code: ${data.company.joinCode}`, 'code')}>{copied === 'code' ? 'Copied' : 'Copy Code and Link'}</button>
+          <button className="link-btn danger" onClick={() => { if (confirm('Make a new join code? The old one stops working. People already signed in stay signed in.')) void run(() => api('/api/team/join-code', { method: 'POST' }), 'New join code made.'); }}>New Code</button>
+        </div>
+      </section>
+
+      <h2 className="sub">Staff · {staff.length}</h2>
+      {staff.length === 0 && <p className="muted small">No one has joined yet. Share the join code.</p>}
+      {staff.length > 0 && (
         <table className="table">
-          <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Last seen</th><th /></tr></thead>
-          <tbody>
-            {users.data.users.map((p) => (
-              <tr key={p.id}><td>{p.name}</td><td>{p.email}</td><td>{p.role === 'owner' ? 'Owner' : 'Editor'}</td><td>{when(p.last_seen_at)}</td>
-                <td>{p.id !== user.id && <button className="link-btn danger" onClick={() => remove(p)}>Remove</button>}</td></tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-      <h2 className="sub">Open invites</h2>
-      {invites.data && invites.data.invites.length === 0 && <p className="muted small">None.</p>}
-      {invites.data && invites.data.invites.length > 0 && (
-        <table className="table">
-          <thead><tr><th>Email</th><th>Role</th><th>Expires</th><th /></tr></thead>
-          <tbody>{invites.data.invites.map((i) => (
-            <tr key={i.id}><td>{i.email}</td><td>{i.role === 'owner' ? 'Owner' : 'Editor'}</td><td>{when(i.expires_at)}</td><td><button className="link-btn danger" onClick={() => cancel(i)}>Cancel</button></td></tr>
+          <thead><tr><th>Name</th><th>Signed off</th><th>Joined</th><th>Last seen</th><th /></tr></thead>
+          <tbody>{staff.map((p) => (
+            <tr key={p.id}>
+              <td>{p.name}{!p.hasPin && <small className="muted"> · picking a new PIN</small>}</td>
+              <td>{p.signedOff}</td><td>{when(p.createdAt)}</td><td>{when(p.lastSeenAt)}</td>
+              <td className="row-actions">
+                <button className="link-btn" onClick={() => { if (confirm(`Reset ${p.name}’s PIN? They’re signed out and pick a new PIN next time.`)) void run(() => api(`/api/team/${p.id}/reset-pin`, { method: 'POST' }), `${p.name} picks a new PIN next time they sign in.`); }}>Reset PIN</button>
+                <button className="link-btn danger" onClick={() => { if (confirm(`Remove ${p.name}? They’re signed out right away.`)) void run(() => api(`/api/team/${p.id}`, { method: 'DELETE' })); }}>Remove</button>
+              </td>
+            </tr>
           ))}</tbody>
         </table>
+      )}
+
+      <h2 className="sub">Owners and managers · {leads.length}</h2>
+      <table className="table">
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Last seen</th><th /></tr></thead>
+        <tbody>{leads.map((p) => (
+          <tr key={p.id}>
+            <td>{p.name}{p.id === data.you && <small className="muted"> · you</small>}</td><td>{p.email}</td>
+            <td>{owner && p.id !== data.you
+              ? <select aria-label={`${p.name}’s role`} value={p.role} onChange={(e) => void run(() => api(`/api/team/${p.id}`, { method: 'PATCH', body: { role: e.target.value } }))}><option value="owner">Owner</option><option value="manager">Manager</option></select>
+              : ROLE_LABEL[p.role]}</td>
+            <td>{when(p.lastSeenAt)}</td>
+            <td>{owner && p.id !== data.you && <button className="link-btn danger" onClick={() => { if (confirm(`Remove ${p.name}? They’re signed out and can’t edit anymore.`)) void run(() => api(`/api/team/${p.id}`, { method: 'DELETE' })); }}>Remove</button>}</td>
+          </tr>
+        ))}</tbody>
+      </table>
+
+      {owner && (
+        <>
+          <form className="card invite-form" onSubmit={invite}>
+            <Text label="Invite an owner or manager by email" value={email} placeholder="manager@thebaldwinshelby.com" onChange={setEmail} />
+            <label className="field"><span>Role</span>
+              <select value={role} onChange={(e) => setRole(e.target.value)}><option value="manager">Manager: edits the book, signs people off, manages staff</option><option value="owner">Owner: also manages owners and managers</option></select>
+            </label>
+            <button className="btn" disabled={!email.trim()}>Create Invite Link</button>
+          </form>
+          {made && (
+            <div className="card ok-card" role="status">
+              <p>Send this link to <strong>{made.email}</strong>. It works once and expires in 14 days.</p>
+              <div className="row"><input readOnly value={made.link} onFocus={(e) => e.target.select()} aria-label="Invite link" /><button className="btn ghost" onClick={() => copy(made.link, 'link')}>{copied === 'link' ? 'Copied' : 'Copy'}</button></div>
+            </div>
+          )}
+          {data.invites.length > 0 && (
+            <>
+              <h2 className="sub">Open invites</h2>
+              <table className="table">
+                <thead><tr><th>Email</th><th>Role</th><th>Expires</th><th /></tr></thead>
+                <tbody>{data.invites.map((i) => (
+                  <tr key={i.id}><td>{i.email}</td><td>{ROLE_LABEL[i.role as Role] || i.role}</td><td>{when(i.expires_at)}</td><td><button className="link-btn danger" onClick={() => void run(() => api(`/api/team/invites/${i.id}`, { method: 'DELETE' }))}>Cancel</button></td></tr>
+                ))}</tbody>
+              </table>
+            </>
+          )}
+        </>
       )}
     </div>
   );
@@ -285,21 +347,58 @@ export function People() {
 
 /* ---------- account ---------- */
 export function Account() {
-  const { user, setUser } = useSession();
+  const { user, setUser, refresh } = useSession();
   const nav = useNavigate();
   const [f, setF] = useState({ current: '', next: '' });
   const [msg, setMsg] = useState('');
   const [err, setErr] = useState('');
+  const [setup, setSetup] = useState<{ secret: string; qr: string } | null>(null);
+  const [code, setCode] = useState('');
+  const [twoMsg, setTwoMsg] = useState('');
+  const [twoErr, setTwoErr] = useState('');
   const change = async (e: FormEvent) => {
     e.preventDefault(); setErr(''); setMsg('');
     try { await api('/api/password', { method: 'POST', body: f }); setMsg('Password changed. Other devices were signed out.'); setF({ current: '', next: '' }); }
     catch (e2) { setErr((e2 as Error).message); }
   };
+  const start2 = async () => { setTwoErr(''); try { setSetup(await api('/api/2fa/start', { method: 'POST' })); } catch (e) { setTwoErr((e as Error).message); } };
+  const enable2 = async (e: FormEvent) => {
+    e.preventDefault(); setTwoErr('');
+    try { await api('/api/2fa/enable', { method: 'POST', body: { code } }); setSetup(null); setCode(''); setTwoMsg('Two-step sign-in is on. Next time you sign in, you’ll type a code from the app.'); await refresh(); }
+    catch (e2) { setTwoErr((e2 as Error).message); }
+  };
+  const off2 = async () => {
+    const password = prompt('Type your password to turn off two-step sign-in.');
+    if (!password) return;
+    try { await api('/api/2fa/disable', { method: 'POST', body: { password } }); setTwoMsg('Two-step sign-in is off.'); await refresh(); } catch (e) { setTwoErr((e as Error).message); }
+  };
   const signOut = async () => { await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); nav('/'); };
+  const isSuper = user?.role === 'superadmin';
   return (
     <div className="admin-page narrow">
       <h1>Your account</h1>
-      <p className="muted">{user?.name} · {user?.email} · {user?.role === 'owner' ? 'Owner' : 'Editor'}</p>
+      <p className="muted">{user?.name} · {user?.email} · {user ? ROLE_LABEL[user.role] : ''}{user?.companyName ? ` · ${user.companyName}` : ''}</p>
+      <section className="card stack">
+        <h2>Two-step sign-in</h2>
+        {isSuper && !user?.totpOn && <p className="error" role="alert">Super admins need two-step sign-in before the super admin opens.</p>}
+        <p className="muted small">After your password, you type a 6-digit code from an authenticator app on your phone (Google Authenticator, Microsoft Authenticator, 1Password or Authy).</p>
+        {user?.totpOn && <p className="ok">On.{!isSuper && <> <button className="link-btn danger" onClick={() => void off2()}>Turn Off</button></>}</p>}
+        {!user?.totpOn && !setup && <button className="btn" onClick={() => void start2()}>Turn On Two-Step Sign-In</button>}
+        {setup && (
+          <form className="stack" onSubmit={enable2}>
+            <ol className="steps-list">
+              <li>In your authenticator app, add an account and scan this code.</li>
+              <li>Type the 6-digit code the app shows.</li>
+            </ol>
+            <div className="qr" dangerouslySetInnerHTML={{ __html: setup.qr }} aria-label="QR code for your authenticator app" role="img" />
+            <p className="muted small">Can’t scan? Enter this key instead: <code className="secret">{setup.secret.match(/.{1,4}/g)?.join(' ')}</code></p>
+            <label className="field"><span>Code from the app</span><input inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} /></label>
+            <button className="btn" disabled={code.length !== 6}>Turn On</button>
+          </form>
+        )}
+        {twoErr && <ErrorNote error={twoErr} />}
+        {twoMsg && <p className="ok" role="status">{twoMsg}</p>}
+      </section>
       <form className="card stack" onSubmit={change}>
         <h2>Change password</h2>
         <label className="field"><span>Current password</span><input type="password" autoComplete="current-password" value={f.current} onChange={(e) => setF({ ...f, current: e.target.value })} /></label>
@@ -315,7 +414,7 @@ export function Account() {
 
 /* ---------- activity ---------- */
 type Row = { id: number; name: string | null; action: string; detail: string | null; at: string };
-const ACTIONS: Record<string, string> = { edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'sign off': 'Signed off', 'undo sign off': 'Undid a sign-off for', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail' };
+const ACTIONS: Record<string, string> = { 'joined with the code': 'Joined with the code:', 'reset PIN': 'Reset the PIN for', 'set a new PIN': 'Picked a new PIN', 'changed PIN': 'Changed their PIN', 'new join code': 'Made a new join code', 'change role': 'Changed a role:', 'remove person': 'Removed', rename: 'Renamed', 'two-step on': 'Turned on two-step sign-in', 'two-step off': 'Turned off two-step sign-in', 'set section': 'Set a section:', edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'sign off': 'Signed off', 'undo sign off': 'Undid a sign-off for', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail' };
 export function Activity() {
   const { data, error, load } = useLoad<{ audit: Row[] }>('/api/audit');
   const { index } = useSession();
@@ -323,7 +422,7 @@ export function Activity() {
   const what = (r: Row) => {
     const verb = ACTIONS[r.action] || r.action;
     if ((r.action === 'edit' || r.action === 'revert') && r.detail) return `${verb} ${pageName(r.detail.split(' ')[0])}`;
-    if (['upload', 'add youtube', 'delete media', 'remove user', 'cancel invite', 'login', 'password', 'setup'].includes(r.action)) return verb;
+    if (['upload', 'add youtube', 'delete media', 'remove user', 'cancel invite', 'login', 'password', 'setup', 'set a new PIN', 'changed PIN', 'new join code', 'two-step on', 'two-step off'].includes(r.action)) return verb;
     return r.detail ? `${verb} ${r.detail}` : verb;
   };
   return (

@@ -20,7 +20,7 @@ npm run build && npm start   # production server on $PORT (default 8080)
 ## Server
 - `server/index.mjs`: no dependencies. Sign-in (scrypt, HttpOnly cookie), invites, page edits, recipes and cocktails, uploads (streamed, Range support for video).
 - `server/content.mjs` assembles each page: the design + added recipes/cocktails + saved edits. `server/templates.mjs` builds item pages from the Short Rib and Fuschia Satin layouts.
-- Env: `PORT`, `DATA_DIR` (database + uploads), `OWNER_EMAIL` (the only email that can create the first account).
+- Env: `PORT`, `DATA_DIR` (database + uploads), `OWNER_EMAIL` (the only email that can create the first company owner account), `SUPERADMIN_EMAIL` (that account becomes the primary super admin; on Railway it’s the same as `OWNER_EMAIL`).
 
 ## Checks
 - `node scripts/shots.mjs` (with the app running) screenshots screens at set widths and reports sideways overflow. `SCREENS=/,/classic/old-fashioned WIDTHS=1440,1024,390`.

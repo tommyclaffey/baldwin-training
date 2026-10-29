@@ -24,17 +24,12 @@ export function usePageEntry() {
   return bySlug.get(slug);
 }
 
-/** The assembled page from the server (recipes, cocktails and edits included). Falls back to the built-in copy. */
+/** The assembled page from the server (recipes, cocktails and edits included), for signed-in people only. */
 async function fetchPage(file: string): Promise<Page> {
-  try {
-    return await api<Page>(`/api/page/${file}`);
-  } catch (e) {
-    if (file.startsWith('i')) throw e;
-    const r = await fetch(`/content/pages/${file}.json`);
-    if (!r.ok) throw new Error(String(r.status));
-    return r.json();
-  }
+  return api<Page>(`/api/page/${file}`);
 }
+/** Someone else signed in on this device: drop the pages kept for the last person. */
+export function clearPages() { cache.clear(); inflight.clear(); }
 const inflight = new Map<string, Promise<Page>>();
 /** One request per page at a time; the result is kept so going back is instant. */
 function loadPage(file: string): Promise<Page> {

@@ -24,6 +24,17 @@ async function call(p, { method = 'GET', body, headers = {}, auth = true } = {})
   return { status: res.status, data: await res.json().catch(() => null) };
 }
 
+/** Another person with their own cookie jar. */
+function person() {
+  let jar = '';
+  return async (p, { method = 'GET', body, headers = {} } = {}) => {
+    const res = await fetch(BASE + p, { method, headers: { 'Content-Type': 'application/json', 'X-BT': '1', ...(jar ? { Cookie: jar } : {}), ...headers }, body: body === undefined ? undefined : JSON.stringify(body) });
+    const set = res.headers.get('set-cookie');
+    if (set) jar = set.split(';')[0];
+    return { status: res.status, data: await res.json().catch(() => null) };
+  };
+}
+
 before(async () => {
   server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test' }, stdio: 'ignore' });
   for (let i = 0; i < 50; i++) {
@@ -113,33 +124,36 @@ test('a dish shows in the Food Matrix, and gets a page only when it has one', as
   await call(`/api/entries/${r.data.id}`, { method: 'DELETE' });
 });
 
-test('invites: owner only, single use', async () => {
-  const inv = await call('/api/invites', { method: 'POST', body: { email: 'editor@example.test' } });
+test('invites: owners invite managers, links work once, managers can’t invite', async () => {
+  const inv = await call('/api/team/invite', { method: 'POST', body: { email: 'editor@example.test', role: 'manager' } });
   assert.equal(inv.status, 200);
   const token = inv.data.link.split('/').pop();
-  const ownerCookie = cookie;
-  cookie = '';
-  assert.equal((await call(`/api/invite/${token}`, { method: 'POST', body: { name: 'Ed', password: 'long-enough-2' } })).status, 200);
-  assert.equal((await call('/api/users')).status, 403, 'editors can’t manage people');
-  cookie = '';
-  assert.equal((await call(`/api/invite/${token}`, { method: 'POST', body: { name: 'Ed', password: 'long-enough-2' } })).status, 410);
-  cookie = ownerCookie;
+  const ed = person();
+  assert.equal((await ed(`/api/invite/${token}`, { method: 'POST', body: { name: 'Ed', password: 'long-enough-2' } })).status, 200);
+  assert.equal((await ed('/api/team')).status, 200, 'managers see the team');
+  assert.equal((await ed('/api/team/invite', { method: 'POST', body: { email: 'x@example.test' } })).status, 403, 'managers can’t invite');
+  assert.equal((await person()(`/api/invite/${token}`, { method: 'POST', body: { name: 'Ed', password: 'long-enough-2' } })).status, 410);
 });
 
 test('quiz scores are checked by the server, and a manager can sign off', async () => {
-  const device = 'testdevice0123456789';
+  const code = (await call('/api/team')).data.company.joinCode;
+  const sam = person();
+  assert.equal((await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Server', pin: '4321' } })).status, 200);
   const items = [0, 1, 2, 3, 4].map((i) => `short-rib#${i}`);
-  const r = await call('/api/quiz/attempt', { method: 'POST', body: { device, name: 'Test Server', quiz: 'short-rib', items, answers: [1, 1, 3, 0, 2] }, auth: false });
+  const r = await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items, answers: [1, 1, 3, 0, 2] } });
   assert.equal(r.status, 200);
   assert.deepEqual(r.data, { score: 5, total: 5, passed: true });
-  const wrong = await call('/api/quiz/attempt', { method: 'POST', body: { device, name: 'Test Server', quiz: 'short-rib', items: ['date-cake#0'], answers: [3] }, auth: false });
+  const wrong = await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items: ['date-cake#0'], answers: [3] } });
   assert.equal(wrong.status, 400, 'questions from another quiz are refused');
-  assert.equal((await call('/api/quiz/results', { auth: false })).status, 401);
+  assert.equal((await call('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items, answers: [1, 1, 3, 0, 2] }, auth: false })).status, 401, 'no account, no score');
+  assert.equal((await sam('/api/quiz/results')).status, 403, 'staff can’t see everyone’s scores');
   const people = (await call('/api/quiz/results')).data.people;
-  assert.equal(people.find((p) => p.device === device).quizzes['short-rib'].best, 5);
-  assert.equal((await call('/api/quiz/signoff', { method: 'POST', body: { device, quiz: 'short-rib' } })).status, 200);
-  const prog = (await call(`/api/quiz/progress/${device}`, { auth: false })).data;
-  assert.equal(prog.signoffs[0].quiz, 'short-rib');
+  const me = people.find((p) => p.name === 'Sam Server');
+  assert.equal(me.quizzes['short-rib'].best, 5);
+  assert.equal((await call('/api/quiz/signoff', { method: 'POST', body: { device: me.device, quiz: 'short-rib' } })).status, 200);
+  const mine = (await sam('/api/quiz/mine')).data;
+  assert.equal(mine.signoffs[0].quiz, 'short-rib');
+  assert.equal(mine.best[0].best, 5);
 });
 
 test('wine videos: every wine page has a Learn more section, and a video plays there and on the wine list', async () => {
@@ -247,13 +261,17 @@ test('working controls: Food Matrix filters, photo chips, cleaning checklist, si
   assert.equal(counts['Photo Library'], all(photos.main, (n) => (n.n || '').startsWith('Photo · ')).length);
 });
 
-test('tonight’s sections: anyone reads them, only a signed-in manager sets them', async () => {
-  assert.equal((await call('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Ana' }, auth: false })).status, 401);
+test('tonight’s sections: the team reads them, only a manager sets them', async () => {
+  const code = (await call('/api/team')).data.company.joinCode;
+  const ana = person();
+  await ana('/api/join', { method: 'POST', body: { code, name: 'Ana Host', pin: '2468' } });
+  assert.equal((await call('/api/sections', { auth: false })).status, 401);
+  assert.equal((await ana('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Ana' } })).status, 403, 'staff can’t set sections');
   assert.equal((await call('/api/sections', { method: 'PUT', body: { slot: 'Kitchen 9', name: 'Ana' } })).status, 400);
   assert.equal((await call('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Ana' } })).status, 200);
-  assert.equal((await call('/api/sections', { auth: false })).data.names['Servers 1'], 'Ana');
+  assert.equal((await ana('/api/sections')).data.names['Servers 1'], 'Ana');
   await call('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: '' } });
-  assert.equal((await call('/api/sections', { auth: false })).data.names['Servers 1'], undefined);
+  assert.equal((await ana('/api/sections')).data.names['Servers 1'], undefined);
 });
 
 test('the bottle scanner is for signed-in managers only', async () => {
