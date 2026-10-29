@@ -149,7 +149,7 @@ function houseRows(page, house) {
     const build = (d.build || []).filter((b) => b && b.ingredient);
     const base = build.find((b) => b.spirit) || build[0];
     const rest = build.filter((b) => b !== base).map((b) => b.ingredient).join(', ');
-    [d.name, d.tableLine || rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.tableIce || d.ice || '—', d.garnish || 'To confirm', d.pairs || 'Ask the bar', d.status || (d.menuSection ? 'On the menu' : 'New'), d.score || '—']
+    [d.name, d.tableLine || rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.tableIce || d.ice || '—', d.garnish || 'To confirm', d.pairs || 'Ask the bar']
       .forEach((v, i) => t[i] && setText(t[i], v));
     return r;
   });
@@ -191,23 +191,19 @@ function signatureCards(page, house) {
   if (!row || !house.length) return;
   const cards = row.c.filter(startsWith('Spec · '));
   const filler = find(row, byName('Glass filler'));
-  const adjusting = cards.find((c) => find(c, byName('Pill · Adjusting'))) || cards[0];
-  const keep = cards.find((c) => find(c, byName('Pill · Keep'))) || cards[1] || cards[0];
-  // Drinks with a photo lead (they're the ones guests have tasted); the rest follow in menu order.
+  const proto = cards[0];
+  // Drinks with a photo lead; the rest follow in menu order.
   const lead = [...house.filter((e) => e.data.photo), ...house.filter((e) => !e.data.photo)];
   row.c = lead.map((e) => {
     const d = e.data;
-    const card = clone(d.status === 'Adjusting' ? adjusting : keep);
+    const card = clone(proto);
     card.n = 'Spec · ' + d.name; card.to = '/' + e.slug;
     const im = find(card, startsWith('IMG/'));
     if (im && d.photo) { im.f = img(d.photo); im.n = 'IMG/' + d.name; }
     else if (im && filler) Object.assign(im, glassFiller(filler, d.glass), { sh: im.sh, sv: im.sv });
     const pill = find(card, startsWith('Pill · '));
-    const pillText = d.status || [SECTION_NAME[d.menuSection] || 'On the menu', d.price && '$' + d.price].filter(Boolean).join(' · ');
+    const pillText = [SECTION_NAME[d.menuSection] || 'On the menu', d.price && '$' + d.price].filter(Boolean).join(' · ');
     if (pill) { pill.n = 'Pill · ' + pillText; setText(texts(pill)[0], pillText); }
-    const score = find(card, byName('Score'));
-    if (score && d.score) setText(texts(score)[0], d.score);
-    else if (score) score.c = [{ ...texts(score)[0], s: d.status && d.price ? '$' + d.price : '', n: 'Price' }];
     const name = find(card, byName('Name'));
     const nt = texts(name);
     setText(nt[0], d.tagline || (SECTION_NAME[d.menuSection] ? SECTION_NAME[d.menuSection] + (d.menuSection === 'Martinis' ? '' : ' cocktail') : 'Our signature'));
@@ -230,8 +226,6 @@ function signatureCards(page, house) {
     for (const [label, v] of [['Glass', d.glass], ['Ice', d.ice], ['Method', d.method], ['Pairs with', d.pairs]]) {
       const r = find(det, byName(label)); if (r) { const t = texts(r)[1]; setText(t, v || (label === 'Pairs with' ? 'Ask the bar' : 'To confirm')); t.ar = 'H'; t.sh = 'L'; r.sh = 'L'; }
     }
-    const note = find(card, byName('Tasting note'));
-    if (note) setText(texts(note)[0], d.note || d.description || '');
     return card;
   });
   const count = find(page.main, byName('Carousel count'));
@@ -269,7 +263,6 @@ function foodMatrix(page, dishes) {
       const st = find(r, byName('Station')); if (st) setText(texts(st)[0], d.station || '—');
       repeat(find(r, byName('Allergens')), startsWith('Pill · '), d.allergens?.length ? d.allergens : ['None listed'], (p, a) => { p.n = 'Pill · ' + a; setText(texts(p)[0], a); });
       const pr = find(r, byName('Pairing')); if (pr) setText(texts(pr)[0], d.pairing || '—');
-      const tp = find(r, byName('Tasting')); if (tp) setText(texts(tp)[0], d.score || '—');
       out.push(r);
     }
   }

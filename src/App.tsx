@@ -62,11 +62,13 @@ function Book() {
           <PageView />
         </div>
       </div>
+      <div className="corner">
       {canEdit(user) && !user.impersonatedBy && <EditBar />}
       <div className={'demo-flag' + (user.impersonatedBy ? ' support' : '')} role="note">
         {user.impersonatedBy
           ? <>Support view: signed in as <strong>{user.name}</strong> · <button className="link-btn" onClick={() => void back()}>Back to Your Account</button></>
           : <>Signed in as <strong>{user.name}</strong> · <button className="link-btn" onClick={() => void signOut()}>Sign Out</button></>}
+      </div>
       </div>
     </NavContext.Provider>
   );
