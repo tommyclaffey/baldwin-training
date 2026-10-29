@@ -159,6 +159,21 @@ test('archive, never delete: pages and media leave the book and come back on res
   assert.ok((await call('/api/media')).data.media.some((m) => m.id === yt.data.id));
 });
 
+test('home: a dashboard with a greeting, tonight’s sections, what’s new; pairs-with dishes open their pages', async () => {
+  await call('/api/sections', { method: 'PUT', body: { slot: 'Servers 3', name: 'Odette' } });
+  const home = JSON.stringify((await call('/api/page/4-2')).data);
+  assert.match(home, /Good (morning|afternoon|evening)/);
+  assert.match(home, /Odette/, 'tonight’s sections');
+  assert.match(home, /Update · 1/, 'what’s new');
+  assert.match(home, /BRAISED SHORT RIB/, 'tonight’s focus is the signature dish');
+  const index = (await call('/api/index')).data;
+  const pros = (await call('/api/page/' + index.find((e) => e.slug === 'wine/sparkling/prosecco').file)).data;
+  const all = (n, f, out = []) => { if (f(n)) out.push(n); (n.c || []).forEach((c) => all(c, f, out)); return out; };
+  const pairs = all(pros.main, (n) => (n.n || '').startsWith('Pair · '));
+  assert.ok(pairs.length && pairs.every((p) => p.to && p.to.startsWith('/recipe/')), 'each dish opens its page');
+  assert.ok(!pairs.some((p) => p.n.includes('Mini Lemon Ricotta')), 'archived dishes leave the card');
+});
+
 test('invites: owners invite managers, links work once, managers can’t invite', async () => {
   const inv = await call('/api/team/invite', { method: 'POST', body: { email: 'editor@example.test', role: 'manager' } });
   assert.equal(inv.status, 200);

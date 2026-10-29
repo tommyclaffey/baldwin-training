@@ -130,7 +130,8 @@ function videoLibrary(page) {
 function photoLibrary(page, ctx) {
   const chips = find(page.main, (n) => n.n === 'Filters' && (n.c || []).some(startsWith('Chip · ')));
   const photos = findAll(page.main, startsWith('Photo · '));
-  if (!chips || !photos.length) return;
+  // Only the Photo Library page (Home has a photo strip and its own chips).
+  if (!chips || !photos.length || !find(page.main, byName('Masonry'))) return;
   const house = new Set(ctx.house.map((e) => norm(e.data.name)));
   const wines = new Set([...ctx.wines.map((e) => norm(e.data.name)), 'bolgherirosso', 'tenutaspinellipecorino']);
   const courseOf = new Map(ctx.recipes.map((e) => [norm(e.data.name), e.data.course]));
@@ -180,7 +181,7 @@ function homeMatrix(page) {
   const sec = find(page.main, byName('Section · Food Matrix'));
   const chips = sec && find(sec, byName('Filters'));
   if (!chips) return;
-  const COURSE = { Plate: 'Plates', Passed: 'Passed Bites', Dessert: 'Dessert', Bar: 'Bar' };
+  const COURSE = { 'Small Plate': 'Snacks & Small Plates', Salad: 'Salads', Pizza: 'Pizza', Pasta: 'Pasta', Main: 'Mains', Dessert: 'Dessert', Bar: 'Bar' };
   const rows = findAll(sec, startsWith('Row · '));
   const counts = new Map();
   for (const r of rows) {
@@ -190,7 +191,7 @@ function homeMatrix(page) {
   }
   const list = chips.c.filter(startsWith('Chip · '));
   const selected = list[0], plain = list[1] || list[0];
-  const order = ['Passed Bites', 'Plates', 'Dessert', 'Bar'].filter((c) => counts.get(c));
+  const order = ['Snacks & Small Plates', 'Salads', 'Pizza', 'Pasta', 'Mains', 'Dessert', 'Bar'].filter((c) => counts.get(c));
   chips.c = [['All', `All ${rows.length}`], ...order.map((c) => [c, c])].map(([val, label]) => {
     const t = clone(val === 'All' ? selected : plain); t.n = 'Chip · ' + val;
     t.meta = { k: 'hchip', mode: 'pick', val, def: 'All', ...pickStates(t, selected, plain, label) };

@@ -82,7 +82,7 @@ const needBook = needReader;
 const needEditor = needUser;
 /** The shared library (classics, wine videos) is every company's, so only a super admin changes it. */
 const needLibrary = (c, req) => { const u = needUser(c, req); if (u.role !== 'superadmin') fail(403, 'The shared library is kept by the app’s team. Ask us if something needs changing.'); return u; };
-const inStore = (c, fn) => withStore(c.storeRow, fn);
+const inStore = (c, fn) => withStore(c.storeRow, fn, c.user);
 
 const clean = (s, max = 4000) => String(s ?? '').slice(0, max);
 const validEmail = (e) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(e || ''));

@@ -651,3 +651,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 }
 /* Placeholder drawings keep a fine line at any size. */
 .fsvg svg * { vector-effect: non-scaling-stroke; }
+
+/* Home dashboard: cards size to their content; on desktop the row makes them one height. */
+@media (min-width: 860px) { [data-name="Section · Dashboard"] [data-name="Cards"] { align-items: stretch !important; } }
+@media (max-width: 859px) { [data-name="Section · Dashboard"] [data-name="Cards"] > * > * { flex: none !important; } }
