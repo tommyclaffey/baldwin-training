@@ -8,6 +8,7 @@ import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebar
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, publicSchemas, seed, listEntries, getEntry, createEntry, updateEntry, deleteEntry, moveEntry } from './cms.mjs';
 import { slugify } from './templates.mjs';
+import { startScan, cutScan, lastCut, warmScanner, warmOnStart } from './scanner.mjs';
 import { score as scoreQuiz, results as quizResults, quizIds } from './quiz.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -329,6 +330,41 @@ async function api(req, res, url) {
     return sendJson(res, 200, { ok: true, video, note: video ? str(b.note, 400) : '' });
   }
 
+  /* Bottle scanner (admin): photo → just the bottle, on the Wine Book beige → a media file. */
+  if (p === '/api/scan/ready' && m === 'POST') {
+    needUser(c, req);
+    warmScanner();
+    return sendJson(res, 200, { ok: true });
+  }
+  if (p === '/api/scan' && m === 'POST') {
+    needUser(c, req);
+    const mime = String(req.headers['content-type'] || '').split(';')[0].trim();
+    if (!/^image\/(jpeg|png|webp|heic|heif)$/.test(mime)) fail(415, 'Take a photo, or upload a JPG, PNG or WebP.');
+    const chunks = []; let size = 0;
+    for await (const ch of req) { size += ch.length; if (size > 25e6) fail(413, 'That photo is over 25 MB.'); chunks.push(ch); }
+    try { return sendJson(res, 200, await startScan(Buffer.concat(chunks))); }
+    catch (e) { console.error('scan', e); fail(e.status || 500, e.status ? e.message : 'The scanner couldn’t read that photo. Try another.'); }
+  }
+  if (p === '/api/scan/cut' && m === 'POST') {
+    needUser(c, req);
+    const b = await readJson(req);
+    if (!Array.isArray(b.box) || b.box.length !== 4) fail(400, 'Draw a box around the bottle.');
+    try { const jpg = await cutScan(String(b.token || ''), b.box); return sendJson(res, 200, { preview: 'data:image/jpeg;base64,' + jpg.toString('base64') }); }
+    catch (e) { if (!e.status) console.error('cut', e); fail(e.status || 500, e.status ? e.message : 'The scanner couldn’t cut that out. Try a new box.'); }
+  }
+  if (p === '/api/scan/keep' && m === 'POST') {
+    const u = needUser(c, req);
+    const b = await readJson(req);
+    const jpg = lastCut(String(b.token || ''));
+    if (!jpg) fail(410, 'That photo has expired. Take it again.');
+    const name = str(b.name, 80) || 'Bottle';
+    const file = `${Date.now().toString(36)}-bottle-${slugify(name).slice(0, 40) || 'scan'}.jpg`;
+    fs.writeFileSync(path.join(MEDIA_DIR, file), jpg);
+    const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at) VALUES (?,?,?,?,?,?,?)').run('file', `Bottle · ${name}`, file, 'image/jpeg', jpg.length, u.id, now());
+    audit(db, u.id, 'scan bottle', name);
+    return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
+  }
+
   /* media */
   if (p === '/api/media' && m === 'GET') {
     needUser(c, req);
@@ -432,4 +468,4 @@ http.createServer(async (req, res) => {
     if (!res.headersSent) sendJson(res, status, { error: status === 500 ? 'Something went wrong on our side. Try again.' : e.message });
     else res.end();
   }
-}).listen(PORT, () => console.log(`The Baldwin Training Book on http://localhost:${PORT}`));
+}).listen(PORT, () => { console.log(`The Baldwin Training Book on http://localhost:${PORT}`); if (process.env.RAILWAY_VOLUME_MOUNT_PATH || process.env.SCANNER_WARM === '1') warmOnStart(); });

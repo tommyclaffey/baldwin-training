@@ -5,6 +5,7 @@ import { AcceptInvite, Account, Activity, MediaLibrary, Overview, People, QuizRe
 import { CollectionList, EntryEditor, PageOptions, useCollections } from './cms';
 import { Loading } from './ui';
 import { WineVideos } from './wine';
+import { BottleScannerPage } from './scanner';
 
 export default function AdminApp() {
   const { user, loaded } = useSession();
@@ -29,6 +30,7 @@ function Shell() {
           <NavLink end to="/admin">Overview</NavLink>
           {cols?.collections && Object.values(cols.collections).map((c) => <NavLink key={c.id} to={`/admin/pages/${c.id}`}>{c.label}</NavLink>)}
           <NavLink to="/admin/wine-videos">Wine Videos</NavLink>
+          <NavLink to="/admin/bottle-scanner">Bottle Scanner</NavLink>
           <NavLink to="/admin/media">Videos and Photos</NavLink>
           <NavLink to="/admin/quizzes">Quiz Results</NavLink>
           {owner && <NavLink to="/admin/people">People</NavLink>}
@@ -44,6 +46,7 @@ function Shell() {
           <Route path="pages/:col" element={<CollectionList />} />
           <Route path="pages/:col/:id" element={<EntryEditor />} />
           <Route path="wine-videos" element={<WineVideos />} />
+          <Route path="bottle-scanner" element={<BottleScannerPage />} />
           <Route path="media" element={<MediaLibrary />} />
           <Route path="quizzes" element={<QuizResults />} />
           <Route path="people" element={<People />} />

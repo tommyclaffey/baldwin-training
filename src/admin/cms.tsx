@@ -7,7 +7,7 @@ import { Empty, ErrorNote, Field, Loading, PhotoField, Rows, Text, VideoField, w
 
 export type FieldDef = {
   key: string; label: string; type: string; max?: number; hint?: string; placeholder?: string; options?: string[];
-  required?: boolean; section?: string; fields?: FieldDef[];
+  required?: boolean; section?: string; fields?: FieldDef[]; scan?: boolean;
 };
 export type Collection = { id: string; label: string; singular: string; prefix: string; group?: { key: string; values: string[] }; lists: string; fields: FieldDef[]; noPages?: boolean };
 type Entry = { id: number; collection: string; slug: string; data: Record<string, unknown>; sort: number; seeded: boolean; updated_at: string; edited: boolean };
@@ -172,7 +172,7 @@ export function EntryEditor() {
         <section key={s.name} className="card">
           <h2>{s.name}</h2>
           <div className="form-grid">
-            {s.fields.map((f) => <div key={f.key} className={wide(f) ? 'span-2' : ''}>{renderField(f, data[f.key], (v) => set(f.key, v))}</div>)}
+            {s.fields.map((f) => <div key={f.key} className={wide(f) ? 'span-2' : ''}>{renderField(f, data[f.key], (v) => set(f.key, v), { name: String(data.name || '') })}</div>)}
           </div>
         </section>
       ))}
@@ -187,7 +187,7 @@ export function EntryEditor() {
 
 const wide = (f: FieldDef) => ['textarea', 'list', 'lines', 'photo', 'video', 'chips', 'tags'].includes(f.type);
 
-function renderField(f: FieldDef, value: unknown, onChange: (v: unknown) => void): ReactNode {
+function renderField(f: FieldDef, value: unknown, onChange: (v: unknown) => void, ctx: { name?: string } = {}): ReactNode {
   const listId = f.options?.length && f.type === 'text' ? `opts-${f.key}` : undefined;
   switch (f.type) {
     case 'text':
@@ -215,7 +215,7 @@ function renderField(f: FieldDef, value: unknown, onChange: (v: unknown) => void
     case 'toggle':
       return <label className="check toggle-field"><input type="checkbox" checked={!!value} onChange={(e) => onChange(e.target.checked)} /> <span>{f.label}{f.hint && <small> · {f.hint}</small>}</span></label>;
     case 'photo':
-      return <PhotoField label={f.label} hint={f.hint} value={(value as string) || ''} onChange={onChange} />;
+      return <PhotoField label={f.label} hint={f.hint} value={(value as string) || ''} onChange={onChange} scanName={f.scan ? ctx.name || '' : undefined} />;
     case 'video':
       return <VideoField label={f.label} hint={f.hint} value={(value as Video) || null} onChange={onChange} />;
     case 'tags':

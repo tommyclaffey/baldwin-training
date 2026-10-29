@@ -135,7 +135,7 @@ export const COLLECTIONS = {
       { key: 'bottle', label: 'Bottle price', type: 'text', max: 10, section: 'Prices' },
       { key: 'size', label: 'Size note', type: 'text', max: 20, section: 'Prices', placeholder: 'Split, 375 ml, 1 liter' },
       { key: 'pages', label: 'Shows on these pages', type: 'tags', section: 'Where it shows', hint: 'Grape, style or region pages by name, e.g. Cabernet, Napa Valley, Prosecco. It also shows on its country and colour pages.' },
-      { key: 'bottle_img', label: 'Bottle photo', type: 'photo', section: 'Tasting', hint: 'From the Wine Book unless replaced.' },
+      { key: 'bottle_img', label: 'Bottle photo', type: 'photo', scan: true, section: 'Tasting', hint: 'Scan Bottle: take a photo and it cuts out just the bottle. Until then, the Wine Book photo.' },
       { key: 'style', label: 'Style tag', type: 'text', max: 30, section: 'Tasting', placeholder: 'Crisp, Off-dry, Big and bold' },
       { key: 'notes', label: 'Tasting notes', type: 'textarea', max: 300, section: 'Tasting' },
       { key: 'pairs', label: 'Pairs with', type: 'text', max: 160, section: 'Tasting', hint: 'Dishes from our menu, separated by commas.' },

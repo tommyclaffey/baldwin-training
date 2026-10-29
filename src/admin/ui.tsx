@@ -1,3 +1,4 @@
+import { BottleScanner } from './scanner';
 // Small form pieces shared by the admin screens.
 import { useState, type ReactNode } from 'react';
 import { MediaPicker } from '../components/MediaPicker';
@@ -27,14 +28,16 @@ export function Text({ label, hint, value, onChange, max, placeholder, area, lis
 }
 
 /** A photo slot: shows the photo, opens the picker to upload or reuse one. */
-export function PhotoField({ label, hint, value, onChange }: { label: string; hint?: string; value?: string; onChange: (v: string) => void }) {
+export function PhotoField({ label, hint, value, onChange, scanName }: { label: string; hint?: string; value?: string; onChange: (v: string) => void; scanName?: string }) {
   const [open, setOpen] = useState(false);
+  const [scan, setScan] = useState(false);
   return (
     <div className="field">
       <span>{label}</span>
       <div className="photo-field">
         {value ? <img src={value} alt="" /> : <div className="photo-empty">No photo yet</div>}
         <div className="row">
+          {scanName !== undefined && <button type="button" className="btn" onClick={() => setScan(true)}>Scan Bottle</button>}
           <button type="button" className="btn ghost" onClick={() => setOpen(true)}>{value ? 'Replace Photo' : 'Add Photo'}</button>
           {value && <button type="button" className="link-btn danger" onClick={() => onChange('')}>Remove</button>}
         </div>
@@ -44,6 +47,7 @@ export function PhotoField({ label, hint, value, onChange }: { label: string; hi
         <MediaPicker kind="image" title={label} onClose={() => setOpen(false)}
           onPick={(v) => { if ('img' in v) onChange(v.img); setOpen(false); }} />
       )}
+      {scan && <BottleScanner name={scanName || label} onClose={() => setScan(false)} onDone={(url) => { onChange(url); setScan(false); }} />}
     </div>
   );
 }
