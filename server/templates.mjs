@@ -51,9 +51,12 @@ export function repeat(container, pred, items, fill, proto) {
 
 const img = (url) => (url ? [{ img: url, m: 'FILL' }] : [{ c: '#2A2724' }]);
 /** No photo yet: the beige panel the wine pages use, labelled PHOTO TO COME. */
-export function photoToCome(node, label = true) {
-  node.t = 'F'; node.f = [{ c: '#E7DECF' }]; node.lm = 'V'; node.pa = 'C'; node.ca = 'C';
-  node.c = label ? [{ t: 'T', n: 'Photo to come', s: 'PHOTO TO COME', ff: 'Archivo', fs: 'SemiBold', z: 11, ls: '14%', f: [{ c: '#5E574F' }], ar: 'W', sh: 'H', sv: 'H' }] : [];
+export function photoToCome(node, label = true, bowl = null) {
+  node.t = 'F'; node.f = [{ c: '#E7DECF' }]; node.lm = 'V'; node.pa = 'C'; node.ca = 'C'; node.gap = 18;
+  node.c = [
+    ...(bowl ? [{ t: 'S', n: 'Shape · Bowl', w: 150, h: 102, sh: 'F', sv: 'F', svg: bowl }] : []),
+    ...(label ? [{ t: 'T', n: 'Photo to come', s: 'PHOTO TO COME', ff: 'Archivo', fs: 'SemiBold', z: 12, ls: '18%', f: [{ c: '#8A5A3A' }], ar: 'W', sh: 'H', sv: 'H' }] : []),
+  ];
 }
 const lines = (v) => (Array.isArray(v) ? v : String(v || '').split('\n')).map((s) => String(s).trim()).filter(Boolean);
 const COURSE_SHORT = { 'Passed Bites': 'Passed', Plates: 'Plate', Dessert: 'Dessert', 'Snacks & Small Plates': 'Small Plate', Salads: 'Salad', Pizza: 'Pizza', Pasta: 'Pasta', Mains: 'Main' };
@@ -70,7 +73,17 @@ export function cocktailPage(template, item, ctx) {
 
   const hero = find(main, byName('Hero'));
   const photo = find(hero, startsWith('IMG/'));
-  photo.f = img(d.photo); photo.n = 'IMG/' + name;
+  photo.n = 'IMG/' + name;
+  if (d.photo) photo.f = img(d.photo);
+  else {
+    // No photo yet: the beige panel with the drawn glass, like the signature cards.
+    const g = ctx.glassShape?.(d.glass);
+    photoToCome(photo, false);
+    photo.c = [
+      ...(g?.svg ? [{ t: 'S', n: 'Shape · ' + g.name, w: 120, h: 156, sh: 'F', sv: 'F', svg: g.svg }] : []),
+      { t: 'T', n: 'Caption', s: `${(g?.name || 'Glass').toUpperCase()}\nPHOTO TO COME`, ff: 'Archivo', fs: 'SemiBold', z: 11, ls: '14%', lh: '160%', ta: 'C', f: [{ c: '#8A5A3A' }], ar: 'W', sh: 'H', sv: 'H' },
+    ];
+  }
   const copy = find(hero, byName('Copy'));
   const all = ctx.signatures;
   const k = all.findIndex((s) => s.slug === item.slug) + 1;
@@ -217,7 +230,7 @@ export function dishPage(template, item, links = {}) {
   const header = find(main, byName('Header'));
   const photo = find(header, startsWith('IMG/'));
   photo.n = 'IMG/' + name;
-  if (d.photo) photo.f = img(d.photo); else photoToCome(photo);
+  if (d.photo) photo.f = img(d.photo); else photoToCome(photo, true, links.bowl);
   const tags = find(header, byName('Tags'));
   const tagProto = find(tags, startsWith('Tag · '));
   const sig = find(tags, byName('Tag · Signature'));

@@ -624,3 +624,30 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 
 /* The Archive: restorable pages and media, shown quieter than the live ones. */
 .list-row.archived, .media-card.archived { opacity: .85; }
+
+/* Drawn shapes (glasses, the bowl, the bottle) scale to the size they're placed at. */
+.fsvg > svg { width: 100%; height: 100%; }
+/* Our Story: restaurant website links read as links. */
+[data-name="Link · Website"] .ftext { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Food Matrix as cards (Cards view, and every phone): station and pairing get labels, since there are no column headers; empty ones stay out. */
+.matrix-cards [data-name="Station · none"], .matrix-cards [data-name="Pairing · none"] { display: none !important; }
+.matrix-cards [data-name="Station"] .ftext { font-size: 11px !important; font-weight: 600 !important; letter-spacing: .12em; text-transform: uppercase; color: #5E574F !important; }
+.matrix-cards [data-name="Station"] .ftext::before { content: 'Station · '; }
+.matrix-cards [data-name="Pairing"] { border-top: 1px solid #E4DCCF; padding-top: 10px !important; }
+.matrix-cards [data-name="Station"], .matrix-cards [data-name="Pairing"] { width: 100% !important; max-width: none !important; }
+.matrix-cards [data-name="Station"] .ftext, .matrix-cards [data-name="Pairing"] .ftext { width: auto !important; white-space: normal !important; }
+.matrix-cards [data-name="Pairing"] .ftext { font-weight: 600 !important; color: #1E1C1A !important; }
+.matrix-cards [data-name="Pairing"] .ftext::before { content: 'Pair with'; display: block; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #8A5A3A; margin-bottom: 3px; }
+@media (max-width: 859px) {
+  [data-name="Matrix table"] [data-name="Station · none"], [data-name="Matrix table"] [data-name="Pairing · none"] { display: none !important; }
+  [data-name="Matrix table"] [data-name="Station"] .ftext { font-size: 11px !important; font-weight: 600 !important; letter-spacing: .12em; text-transform: uppercase; color: #5E574F !important; }
+  [data-name="Matrix table"] [data-name="Station"] .ftext::before { content: 'Station · '; }
+  [data-name="Matrix table"] [data-name="Pairing"] { border-top: 1px solid #E4DCCF; padding-top: 10px !important; }
+  [data-name="Matrix table"] [data-name="Station"], [data-name="Matrix table"] [data-name="Pairing"] { width: 100% !important; max-width: none !important; flex: 1 1 100% !important; }
+  [data-name="Matrix table"] [data-name="Station"] .ftext, [data-name="Matrix table"] [data-name="Pairing"] .ftext { width: auto !important; white-space: normal !important; }
+  [data-name="Matrix table"] [data-name="Pairing"] .ftext { font-weight: 600 !important; color: #1E1C1A !important; }
+  [data-name="Matrix table"] [data-name="Pairing"] .ftext::before { content: 'Pair with'; display: block; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #8A5A3A; margin-bottom: 3px; }
+}
+/* Placeholder drawings keep a fine line at any size. */
+.fsvg svg * { vector-effect: non-scaling-stroke; }

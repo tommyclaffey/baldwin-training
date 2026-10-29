@@ -102,7 +102,7 @@ function entryPage(db, e) {
   if (e.collection === 'classic') return classicPage(tpl, e, { all: ordered(db, 'classic'), glassCard, protos: classicProtos() });
   if (e.collection === 'house') {
     const signatures = ordered(db, 'house').map((x) => ({ name: x.data.name, slug: x.slug, photo: x.data.photo }));
-    return cocktailPage(tpl, e, { signatures, glassCard });
+    return cocktailPage(tpl, e, { signatures, glassCard, glassShape });
   }
   if (e.collection === 'recipe') return dishPage(tpl, { ...e, quiz: quizFor(e.data.name) }, pairingLinks(db));
   if (e.collection === 'wine') return wineEntryPage(tpl, e, { all: ordered(db, 'wine'), index: baseIndex(), recipes: ordered(db, 'recipe') });
@@ -111,6 +111,8 @@ function entryPage(db, e) {
 
 /** Food Book pairings name a wine ("Thomas Schmitt Riesling") or a cocktail ("Side Car"); find its page in the book. */
 const squash = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/^the\s+/, '').replace(/[^a-z0-9]/g, '');
+/** The drawn bowl from the Food Matrix design (no photo yet). */
+const bowlSvg = () => find(basePage('13-2')?.main || {}, byName('Shape · Bowl'))?.svg || null;
 function pairingLinks(db) {
   const wines = ordered(db, 'wine').map((w) => {
     const name = w.data.name || '';
@@ -119,6 +121,7 @@ function pairingLinks(db) {
   });
   const drinks = [...ordered(db, 'classic'), ...ordered(db, 'house')].map((c) => ({ slug: c.slug, photo: c.data.photo, key: squash(c.data.name) }));
   return {
+    bowl: bowlSvg(),
     wine: (nm) => { const q = squash(nm); return wines.find((w) => w.keys.some((k) => q.includes(k))) || null; },
     cocktail: (nm) => { const q = squash(nm); return drinks.find((c) => c.key === q) || drinks.find((c) => q.length >= 5 && c.key.length >= 5 && (c.key.includes(q) || q.includes(c.key))) || null; },
   };
@@ -186,6 +189,13 @@ function houseRows(page, house) {
 
 /** A stand-in for a missing photo: the glass it's served in, drawn like the Glassware page, and "photo to come". */
 let shapes;
+/** The drawn glass for a glass name ("Short rocks, large ice" → the Rocks drawing), from the Glassware page. */
+function glassShape(glass) {
+  glassFiller({ c: [] }, glass); // loads the drawings
+  const name = String(glass || '').split(/ · | or |\(|,/)[0].trim() || 'Coupe';
+  const low = name.toLowerCase().replace(/ and /g, ' & ').replace(/mule mug/, 'copper mug');
+  return { name, svg: shapes.get(low) || [...shapes].filter(([k]) => low.includes(k)).sort((a, b) => b[0].length - a[0].length)[0]?.[1] || null };
+}
 function glassFiller(proto, glass) {
   if (!shapes) {
     shapes = new Map();
@@ -203,7 +213,8 @@ function glassFiller(proto, glass) {
   const svg = shapes.get(low) || [...shapes].filter(([k]) => low.includes(k)).sort((a, b) => b[0].length - a[0].length)[0]?.[1];
   if (shape && svg) { shape.svg = svg; shape.n = 'Shape · ' + name; }
   const cap = find(f, byName('Caption'));
-  if (cap) setText(cap, `${name.toUpperCase()} · PHOTO TO COME`);
+  // Two short lines, centred, never wider than the panel.
+  if (cap) { setText(cap, `${name.toUpperCase()}\nPHOTO TO COME`); cap.ar = 'H'; cap.ta = 'C'; cap.w = Math.max(120, f.w - 24); cap.lh = '160%'; }
   f.n = 'Glass filler · ' + name;
   return f;
 }
@@ -256,6 +267,7 @@ function signatureCards(page, house) {
   if (count) setText(count, `1–2 of ${house.length}`);
 }
 
+const parentOf = (root, node) => (root.c || []).includes(node) ? root : (root.c || []).reduce((hit, c) => hit || parentOf(c, node), null);
 /** Group headers for the courses with dishes, cloned from the drawn one ("SNACKS & SMALL PLATES  12"). */
 function courseGroups(proto, dishes, fill) {
   const out = [];
@@ -278,13 +290,15 @@ function foodMatrix(page, dishes) {
   const rows = table.c.filter(startsWith('Row · '));
   const normal = rows.find((r) => r.n === 'Row · Short Rib') || rows[0];
   const proto = table.c.find(startsWith('Group · '));
+  const noPhoto = find(table, byName('Thumb · Photo to come')); // the drawn bowl, for dishes without a photo
   const fill = (e) => {
     const d = e.data;
     const r = clone(normal);
     r.n = 'Row · ' + d.name;
     r.to = '/' + e.slug; // every dish opens its full page
     const im = find(r, startsWith('IMG/'));
-    if (im) { if (d.photo) im.f = img(d.photo); else photoToCome(im, false); }
+    if (im && d.photo) im.f = img(d.photo);
+    else if (im && noPhoto) { const p = parentOf(r, im); p.c = p.c.map((c) => (c === im ? clone(noPhoto) : c)); }
     const dish = find(r, byName('Dish'));
     const dt = texts(dish);
     setText(dt[0], d.name); if (dt[1]) setText(dt[1], d.description || 'Chef to add description');
@@ -292,9 +306,9 @@ function foodMatrix(page, dishes) {
     const tr = find(dish, byName('Title row'));
     if (tr) tr.sh = 'L';
     dt[0].sh = 'L'; dt[0].ar = 'H';
-    const st = find(r, byName('Station')); if (st) setText(texts(st)[0], d.station || '—');
-    repeat(find(r, byName('Allergens')), startsWith('Pill · '), d.allergens?.length ? d.allergens : ['None listed'], (p, a) => { p.n = 'Pill · ' + a; setText(texts(p)[0], a); });
-    const pr = find(r, byName('Pairing')); if (pr) setText(texts(pr)[0], d.pairing || '—');
+    const st = find(r, byName('Station')); if (st) { setText(texts(st)[0], d.station || '—'); if (!d.station) st.n = 'Station · none'; }
+    repeat(find(r, byName('Allergens')), startsWith('Pill · '), d.allergens?.length ? d.allergens : ['None listed'], (p, a) => { p.n = 'Pill · ' + a; setText(texts(p)[0], a.toUpperCase()); });
+    const pr = find(r, byName('Pairing')); if (pr) { setText(texts(pr)[0], d.pairing || '—'); if (!d.pairing) pr.n = 'Pairing · none'; }
     return r;
   };
   // The drawn course groups (and their rows) give way to the menu's courses; the Bar group stays as drawn.
@@ -343,6 +357,10 @@ function assembleRaw(db, file) {
   if (!page) return null;
   const slug = baseIndex().find((x) => x.file === file)?.slug ?? '';
   if (isGeneric()) return genericPage(db, file, slug, page);
+  if (file === '23-2') {
+    const SITES = { 'Restaurant · J.Baldwin’s': 'https://www.jbaldwins.com', 'Restaurant · Testa Barra': 'https://www.testabarra.com', 'Restaurant · The Baldwin': 'https://thebaldwinshelby.com' };
+    for (const [n, url] of Object.entries(SITES)) { const card = find(page.main, byName(n)); if (card) card.to = url; }
+  }
   if (file === '14-2') { classicTable(page, ordered(db, 'classic')); houseRows(page, ordered(db, 'house')); signatureCards(page, ordered(db, 'house')); }
   if (file === '13-2') foodMatrix(page, ordered(db, 'recipe'));
   if (file === '17-2') allergenGrid(page, ordered(db, 'recipe'));
