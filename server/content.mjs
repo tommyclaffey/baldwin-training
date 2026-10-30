@@ -511,7 +511,7 @@ export function sidebarCounts(db) {
   const file = (slug) => baseIndex().find((x) => x.slug === slug)?.file;
   const count = (slug, pred) => { const f = file(slug); const p = f && assemble(db, f); return p?.main ? findAll(p.main, pred).length : 0; };
   return {
-    'Food Matrix': count('food-matrix', (n) => n.meta?.inGroup),
+    'Food Matrix': count('food-matrix', (n) => n.meta?.inGroup && n.meta.inGroup !== 'Bar'),
     'Video Library': count('video-library', (n) => (n.n || '').startsWith('Video · ')),
     'Photo Library': count('photo-library', (n) => (n.n || '').startsWith('Photo · ')),
   };
