@@ -1,34 +1,89 @@
-// Quizzes: the bank lives in content/quizzes.json. The server scores every attempt itself.
+// Quizzes. Questions are written from the book (quizgen.mjs); the server scores every attempt itself.
+// The old hand-written bank (content/quizzes.json) only names old results now.
 import fs from 'node:fs';
 import path from 'node:path';
+import { questionPool, topicList, forTopics, pick, passFor, PASS_PCT, BUILT_IN } from './quizgen.mjs';
+import { listEntries, COURSES } from './cms.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 export const BANK = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/quizzes.json'), 'utf8'));
-const byId = new Map(BANK.quizzes.map((q) => [q.id, q]));
-export const quizIds = new Set([...byId.keys(), BANK.preShift.id]);
+const LEGACY = new Map(BANK.quizzes.map((q) => [q.id, q.title]));
+export const PRE_SHIFT = 'pre-shift';
+const BUILT_IN_LEN = 10, PRE_SHIFT_LEN = 5;
 
-/** "short-rib#2" → the question. */
-export function questionFor(ref) {
-  const m = /^([a-z0-9-]+)#(\d+)$/.exec(String(ref || ''));
-  if (!m) return null;
-  return byId.get(m[1])?.questions[Number(m[2])] || null;
+/** Team quizzes a manager saved: a name, its topics and its length. */
+export function teamSets(db, store) {
+  return db.prepare('SELECT * FROM quiz_sets WHERE store_id = ? AND archived_at IS NULL ORDER BY id').all(store)
+    .map((r) => ({ id: 's:' + r.id, title: r.name, kind: 'team', topics: JSON.parse(r.topics), count: r.count }));
 }
 
-/** Scores an attempt. Items must belong to the quiz (any quiz for the pre-shift mix). */
-export function score(quiz, items, answers) {
-  if (!quizIds.has(quiz)) return null;
-  if (!Array.isArray(items) || !Array.isArray(answers) || !items.length || items.length > 10 || answers.length !== items.length) return null;
+/** Everything the Quizzes page needs: topics to pick from, built-in and team quizzes. */
+export function catalog(db, store) {
+  const pool = questionPool(db, store);
+  const topics = topicList(pool);
+  const photoFor = (key) => {
+    const col = key.startsWith('course:') ? 'recipe' : key === 'house' ? 'house' : key === 'classic' ? 'classic' : null;
+    if (!col) return null;
+    const list = listEntries(db, col, col === 'classic' ? null : store).filter((e) => e.data.photo && (!key.startsWith('course:') || e.data.course === key.slice(7)));
+    return list[0]?.data.photo || null;
+  };
+  const builtins = topics.filter((t) => BUILT_IN(t.key)).map((t) => ({ id: 't:' + t.key, title: t.label, kind: 'builtin', topics: [t.key], count: Math.min(BUILT_IN_LEN, t.count), photo: photoFor(t.key) }));
+  const team = teamSets(db, store).map((q) => ({ ...q, count: Math.min(q.count, forTopics(pool, q.topics).length), photo: photoFor(q.topics[0]) }));
+  return { passPct: PASS_PCT, topics, quizzes: [...builtins, ...team], preShift: { id: PRE_SHIFT, title: 'Pre-Shift Quiz', count: PRE_SHIFT_LEN } };
+}
+
+/** What a quiz id asks about: a built-in topic, a team quiz's topics, or a custom mix. null = not a quiz. */
+function topicsOf(db, store, id) {
+  if (id === PRE_SHIFT) return { title: 'Pre-Shift Quiz', topics: null, count: PRE_SHIFT_LEN };
+  let m;
+  if ((m = /^t:(.+)$/.exec(id))) { const t = m[1]; return BUILT_IN(t) ? { title: labelOf(t), topics: [t], count: BUILT_IN_LEN } : null; }
+  if ((m = /^s:(\d+)$/.exec(id))) { const r = db.prepare('SELECT * FROM quiz_sets WHERE id = ? AND store_id = ?').get(Number(m[1]), store); return r ? { title: r.name, topics: JSON.parse(r.topics), count: r.count } : null; }
+  if ((m = /^c:([^:]+):(\d+)$/.exec(id))) { const topics = m[1].split('+'); return { title: 'Custom quiz', topics, count: Math.min(20, Number(m[2])) }; }
+  return null;
+}
+export function labelOf(key) {
+  const L = { house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings', prices: 'Prices' };
+  return key.startsWith('course:') ? key.slice(7) : L[key] || key;
+}
+export const customId = (topics, count) => `c:${[...new Set(topics)].sort().join('+')}:${count}`;
+
+/** A fresh attempt: the questions, with answers (the phone shows feedback right away; the server re-scores). */
+export function startQuiz(db, store, id) {
+  const def = topicsOf(db, store, id);
+  if (!def) return null;
+  const pool = questionPool(db, store);
+  let qs;
+  if (id === PRE_SHIFT) {
+    // Tonight's focus (the signature dish) twice, then anything.
+    const recipes = listEntries(db, 'recipe', store);
+    const focus = recipes.find((e) => e.data.signature) || recipes.find((e) => e.data.course === 'Mains') || recipes[0];
+    const mine = focus ? pick(pool.filter((q) => q.ref.endsWith(':' + focus.id) && q.topics.some((t) => t.startsWith('course:'))), 2) : [];
+    qs = [...mine, ...pick(pool.filter((q) => !mine.includes(q)), PRE_SHIFT_LEN - mine.length)];
+    qs = pick(qs, qs.length);
+  } else qs = pick(forTopics(pool, def.topics), def.count);
+  if (!qs.length) return null;
+  return { id, title: def.title, items: qs.map((q) => q.ref), questions: Object.fromEntries(qs.map((q) => [q.ref, { q: q.q, options: q.options, answer: q.answer, why: q.why, page: q.page, label: q.label }])) };
+}
+
+/** Scores an attempt from scratch: every question must exist and belong to the quiz. */
+export function score(db, store, quiz, items, answers) {
+  const def = topicsOf(db, store, quiz);
+  if (!def || !Array.isArray(items) || !Array.isArray(answers) || !items.length || items.length > 20 || answers.length !== items.length) return null;
+  const pool = new Map(questionPool(db, store).map((q) => [q.ref, q]));
   let right = 0;
   for (let i = 0; i < items.length; i++) {
-    const q = questionFor(items[i]);
+    const q = pool.get(String(items[i]));
     if (!q) return null;
-    if (quiz !== BANK.preShift.id && !String(items[i]).startsWith(quiz + '#')) return null;
+    if (def.topics && !q.topics.some((t) => def.topics.includes(t))) return null;
     if (Number(answers[i]) === q.answer) right++;
   }
-  return { score: right, total: items.length, passed: right >= Math.min(BANK.passMark, items.length) };
+  return { score: right, total: items.length, passed: right >= passFor(items.length) };
 }
 
-/** Everyone who has taken a quiz, with their best score per quiz and their sign-offs. */
+/** A quiz id a manager can sign someone off on (built-in, team, or an old hand-written one). */
+export const signable = (db, store, id) => LEGACY.has(id) || (/^(t:|s:)/.test(id) && !!topicsOf(db, store, id));
+export const titleFor = (db, store, id) => LEGACY.get(id) || topicsOf(db, store, id)?.title || 'Custom quiz';
+
 /** Everyone in a store who has taken a quiz. */
 export function results(db, storeId = 1) {
   const rows = db.prepare('SELECT device, name, quiz, score, total, at FROM quiz_attempts WHERE store_id = ? ORDER BY at').all(storeId);
@@ -37,7 +92,7 @@ export function results(db, storeId = 1) {
   for (const r of rows) {
     const p = people.get(r.device) || { device: r.device, name: r.name, lastAt: r.at, quizzes: {}, signoffs: {} };
     p.name = r.name; p.lastAt = r.at;
-    const q = p.quizzes[r.quiz] || { best: 0, total: r.total, attempts: 0, lastAt: r.at };
+    const q = p.quizzes[r.quiz] || { best: 0, total: r.total, attempts: 0, lastAt: r.at, title: titleFor(db, storeId, r.quiz) };
     q.attempts++; q.lastAt = r.at;
     if (r.score / r.total >= q.best / q.total) { q.best = r.score; q.total = r.total; }
     p.quizzes[r.quiz] = q;
@@ -46,3 +101,4 @@ export function results(db, storeId = 1) {
   for (const s of signs) { const p = people.get(s.device); if (p) p.signoffs[s.quiz] = { at: s.at, by: s.by_name }; }
   return [...people.values()].sort((a, b) => (a.lastAt < b.lastAt ? 1 : -1));
 }
+void COURSES;

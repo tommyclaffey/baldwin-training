@@ -6,7 +6,6 @@ import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, star
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
 import { COLLECTIONS, COURSES, SHARED, listEntries, getEntry, wineDescription } from './cms.mjs';
 import { classify, emptyPage, baldwinTerms, snapshotShelves, genericize, indexText } from './generic.mjs';
-import { BANK } from './quiz.mjs';
 import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
 import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
 import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './winelist.mjs';
@@ -30,7 +29,8 @@ let baseIdx;
 export const baseIndex = () => (baseIdx ||= JSON.parse(fs.readFileSync(path.join(CONTENT, 'index.json'), 'utf8')));
 
 const img = (url) => (url ? [{ img: url, m: 'FILL' }] : [{ c: '#2A2724' }]);
-const quizFor = (name) => BANK.quizzes.find((q) => q.title === name)?.id;
+/** A dish's sign-off quiz: its course's built-in quiz. */
+const quizFor = (course) => (course ? 't:course:' + course : null);
 
 /* ---- glass cards, taken from the designed classic pages ---- */
 let glassCards;
@@ -105,7 +105,7 @@ function entryPage(db, e) {
     const signatures = ordered(db, 'house').map((x) => ({ name: x.data.name, slug: x.slug, photo: x.data.photo }));
     return cocktailPage(tpl, e, { signatures, glassCard, glassShape });
   }
-  if (e.collection === 'recipe') return dishPage(tpl, { ...e, quiz: quizFor(e.data.name) }, pairingLinks(db));
+  if (e.collection === 'recipe') return dishPage(tpl, { ...e, quiz: quizFor(e.data.course) }, pairingLinks(db));
   if (e.collection === 'wine') return wineEntryPage(tpl, e, { all: ordered(db, 'wine'), index: baseIndex(), recipes: ordered(db, 'recipe') });
   return null;
 }
