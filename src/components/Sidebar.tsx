@@ -16,6 +16,11 @@ const NODES = sidebar as FNode[];
 // The drawn sidebar is the second node ("Sidebar"); the first is the dark rail behind it.
 const SIDEBAR = NODES.find((n) => n.n === 'Sidebar') as FNode;
 
+/** Home (and the logo) open the home page; the design leaves Home unlinked because it was the page drawn. */
+function linkHome(n: FNode): FNode {
+  const to = n.n === 'Nav · Home' || n.n === 'Logo' ? '/' : n.to;
+  return { ...n, to, c: n.c?.map(linkHome) };
+}
 function withCounts(n: FNode, live: Record<string, number>): FNode {
   if (n.n?.startsWith('Nav · ') && n.n.slice(6) in live) {
     const v = live[n.n.slice(6)];
@@ -34,7 +39,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const node = useMemo(() => {
     // Badges: what's really on each page; Quizzes = quizzes still to pass on this phone.
     const live: Record<string, number> = { ...counts, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
-    const drawn = withCounts(trainingCard([SIDEBAR], quiz)[0], live);
+    const drawn = linkHome(withCounts(trainingCard([SIDEBAR], quiz)[0], live));
     return generic ? forStore(drawn, user!.store!.name) : drawn;
   }, [quiz, counts, generic, user]);
   return (

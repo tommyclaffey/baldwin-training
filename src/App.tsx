@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar';
 import { PageView, usePageEntry } from './components/PageView';
 import { NavContext } from './components/FigmaNode';
@@ -23,6 +23,14 @@ function Book() {
   const [menu, setMenu] = useState(false);
   const { pathname } = useLocation();
   useEffect(() => setMenu(false), [pathname]);
+  // Phone menu: Escape closes it, and the page behind doesn't scroll while it's open.
+  useEffect(() => {
+    if (!menu) return;
+    const esc = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenu(false); };
+    document.addEventListener('keydown', esc);
+    document.body.classList.add('menu-lock');
+    return () => { document.removeEventListener('keydown', esc); document.body.classList.remove('menu-lock'); };
+  }, [menu]);
   // A new person on this device: their own quiz progress, and no pages kept from the last person.
   useEffect(() => { clearPages(); setQuizUser(user ? { id: user.id, name: user.name } : null); }, [user?.id, user?.name, user?.workingIn]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -36,12 +44,13 @@ function Book() {
       <header className="mobile-bar">
         {user.store && !user.store.bookReady
           ? <strong className="mobile-name">{user.store.name}</strong>
-          : <img src="/img/logo-white.png" alt="The Baldwin" height="28" />}
+          : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
         <button className="menu-btn" aria-expanded={menu} aria-controls="side" onClick={() => setMenu((m) => !m)}>
           {menu ? 'Close' : 'Menu'}
         </button>
       </header>
       <div className={'shell' + (menu ? ' menu-open' : '')}>
+        {menu && <button type="button" className="menu-backdrop" aria-label="Close menu" onClick={() => setMenu(false)} />}
         <aside id="side" className="side">
           <Sidebar onNavigate={() => setMenu(false)} />
         </aside>

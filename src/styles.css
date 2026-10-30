@@ -766,3 +766,19 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   [data-name="Handles"] { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
 }
 @media (max-width: 859px) { .fx-h > .fsvg { flex-shrink: 0 !important; } }
+
+/* ---- phone and tablet menu (Oct 29: a working menu on phones) ---- */
+@media (max-width: 1239px) {
+  .side { z-index: 70; height: auto !important; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding-bottom: 24px; }
+  /* The bar above already shows the logo. */
+  .side [data-name="Logo"] { display: none !important; }
+  .menu-backdrop { position: fixed; inset: 56px 0 0 0; z-index: 65; border: 0; padding: 0; background: rgba(20,18,16,.45); cursor: pointer; }
+  body.menu-lock { overflow: hidden; }
+  body.menu-lock .corner { display: none; }
+  .mobile-bar a { display: flex; align-items: center; }
+}
+@media (max-width: 1239px) {
+  .shell > .side.side { top: 56px !important; bottom: 0 !important; height: auto !important; max-height: calc(100dvh - 56px); }
+  .shell .side [data-name="Logo"][data-name] { display: none !important; }
+}
+@media (max-width: 1239px) { .shell > .side.side { min-height: calc(100dvh - 56px); } }
