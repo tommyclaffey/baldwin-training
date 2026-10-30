@@ -150,6 +150,11 @@ const MIGRATIONS = [
   ALTER TABLE media ADD COLUMN archived_at TEXT;
   ALTER TABLE media ADD COLUMN archived_by INT;
   `,
+  // 10 (Oct 30, Tommy: custom quizzes): a manager saves a quiz for the team: a name, its topics, how many questions.
+  `
+  CREATE TABLE quiz_sets(id INTEGER PRIMARY KEY, company_id INT NOT NULL, store_id INT NOT NULL, name TEXT NOT NULL, topics TEXT NOT NULL,
+    count INT NOT NULL, created_by INT, created_at TEXT, archived_at TEXT);
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

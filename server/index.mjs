@@ -10,7 +10,8 @@ import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mj
 import { COLLECTIONS, SHARED, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart } from './scanner.mjs';
-import { score as scoreQuiz, results as quizResults, quizIds } from './quiz.mjs';
+import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor } from './quiz.mjs';
+import { topicList, questionPool } from './quizgen.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -122,12 +123,50 @@ async function api(req, res, url) {
     const u = needReader(c, req);
     if (!quizLimiter.check('u' + u.id)) fail(429, 'Too many saves. Try again in an hour.');
     const b = await readJson(req, 20_000);
-    const r = scoreQuiz(String(b.quiz || ''), b.items, b.answers);
+    const r = scoreQuiz(db, c.store, String(b.quiz || ''), b.items, b.answers);
     if (!r) fail(400, 'That quiz didn’t match. Reload and try again.');
     quizLimiter.record('u' + u.id);
     db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
       .run('u' + u.id, u.name, b.quiz, r.score, r.total, JSON.stringify({ items: b.items, answers: b.answers.map(Number) }), now(), c.company, u.id, c.store);
     return sendJson(res, 200, r);
+  }
+  // The quizzes for this store: topics to pick from, built-in and team quizzes.
+  if (p === '/api/quiz/catalog' && m === 'GET') { needReader(c, req); return sendJson(res, 200, quizCatalog(db, c.store)); }
+  // A fresh attempt: a built-in, team or pre-shift quiz by id, or a custom mix of topics.
+  if (p === '/api/quiz/start' && m === 'POST') {
+    needReader(c, req);
+    const b = await readJson(req);
+    let id = String(b.quiz || '');
+    if (!id && Array.isArray(b.topics)) {
+      const known = new Set(topicList(questionPool(db, c.store)).map((t) => t.key));
+      const topics = b.topics.map(String).filter((t) => known.has(t));
+      if (!topics.length) fail(400, 'Pick at least one topic.');
+      id = customId(topics, [5, 10, 20].includes(Number(b.count)) ? Number(b.count) : 10);
+    }
+    const q = startQuiz(db, c.store, id);
+    if (!q) fail(404, 'We couldn’t find that quiz.');
+    return sendJson(res, 200, q);
+  }
+  // Managers save a mix as a quiz for the whole team (it gets sign-offs like the built-in ones).
+  if (p === '/api/quiz/sets' && m === 'POST') {
+    const u = needUser(c, req);
+    const b = await readJson(req);
+    const name = str(b.name, 60).trim();
+    const known = new Set(topicList(questionPool(db, c.store)).map((t) => t.key));
+    const topics = (Array.isArray(b.topics) ? b.topics : []).map(String).filter((t) => known.has(t));
+    if (!name) fail(400, 'Give the quiz a name.');
+    if (!topics.length) fail(400, 'Pick at least one topic.');
+    const count = [5, 10, 20].includes(Number(b.count)) ? Number(b.count) : 10;
+    const r = db.prepare('INSERT INTO quiz_sets(company_id,store_id,name,topics,count,created_by,created_at) VALUES (?,?,?,?,?,?,?)').run(c.company, c.store, name, JSON.stringify(topics), count, u.id, now());
+    audit(db, u.id, 'add quiz', name, c.company);
+    return sendJson(res, 200, { id: 's:' + r.lastInsertRowid });
+  }
+  if (parts[1] === 'quiz' && parts[2] === 'sets' && parts[3] && m === 'DELETE') {
+    const u = needUser(c, req);
+    const r = db.prepare('UPDATE quiz_sets SET archived_at = ? WHERE id = ? AND store_id = ? AND archived_at IS NULL').run(now(), Number(parts[3]), c.store);
+    if (!r.changes) fail(404, 'We couldn’t find that quiz.');
+    audit(db, u.id, 'archive quiz', parts[3], c.company);
+    return sendJson(res, 200, { ok: true, archived: true });
   }
   if (p === '/api/quiz/mine' && m === 'GET') {
     const u = needReader(c, req);
@@ -143,12 +182,12 @@ async function api(req, res, url) {
     const u = needUser(c, req);
     const b = await readJson(req);
     const dev = String(b.device || ''), quiz = String(b.quiz || '');
-    if (!/^[A-Za-z0-9_-]{2,64}$/.test(dev) || !quizIds.has(quiz)) fail(400, 'Missing person or quiz.');
+    if (!/^[A-Za-z0-9_-]{2,64}$/.test(dev) || !signable(db, c.store, quiz)) fail(400, 'Missing person or quiz.');
     const who = db.prepare('SELECT name FROM quiz_attempts WHERE device = ? AND store_id = ? ORDER BY id DESC LIMIT 1').get(dev, c.store);
     if (!who) fail(404, 'We couldn’t find that person.');
     if (m === 'POST') db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at,company_id,store_id) VALUES (?,?,?,?,?,?)').run(dev, quiz, u.id, now(), c.company, c.store);
     else db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').run(dev, quiz, c.store);
-    audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${who.name} · ${quiz}`, c.company);
+    audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${who.name} · ${titleFor(db, c.store, quiz)}`, c.company);
     return sendJson(res, 200, { ok: true });
   }
 

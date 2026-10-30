@@ -1,16 +1,19 @@
 // The live quiz card and the progress ring on the Quizzes page. Built to match the Figma design (Quizzes · Desktop).
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { BANK, PRE_SHIFT, QUIZZES, answer, lookup, nextQuiz, quizById, refreshSignoffs, save, start, statusOf, useQuiz } from './store';
+import { PRE_SHIFT, QUIZZES, answer, lookup, nextQuiz, passFor, quizById, refreshSignoffs, save, start, statusOf, titleOf, useQuiz } from './store';
 
-const titleOf = (id: string) => (id === PRE_SHIFT ? BANK.preShift.title : quizById(id)?.title || '');
+/** A custom quiz id ("c:house+wine-glass:10") back into what to ask for. */
+const customOf = (id: string) => { const m = /^c:([^:]+):(\d+)$/.exec(id); return m ? { topics: m[1].split('+'), count: Number(m[2]) } : undefined; };
+const enc = encodeURIComponent;
 
 export function QuizCard({ style, className }: { style: CSSProperties; className: string }) {
   const s = useQuiz();
   const [params, setParams] = useSearchParams();
   const nav = useNavigate();
   const id = params.get('quiz') || '';
-  const valid = id === PRE_SHIFT || !!quizById(id);
+  const valid = id === PRE_SHIFT || !!quizById(id) || !!customOf(id) || /^(t|s):/.test(id);
+  const [error, setError] = useState('');
   const [reveal, setReveal] = useState<number | null>(null);
   const card = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
@@ -22,7 +25,8 @@ export function QuizCard({ style, className }: { style: CSSProperties; className
     if (!valid) return;
     const cur = s.quizzes[id]?.current;
     const retake = params.get('retake') === '1';
-    if (retake || !cur || (id === PRE_SHIFT && cur.finished)) start(id);
+    // Attempts saved before the quizzes were written from the book have no questions with them: start fresh.
+    if (retake || !cur || !cur.questions || (id === PRE_SHIFT && cur.finished)) { setError(''); start(id, customOf(id)).catch((e) => setError((e as Error).message)); }
     if (retake) { params.delete('retake'); setParams(params, { replace: true }); }
     setReveal(null);
     const el = card.current;
@@ -30,27 +34,37 @@ export function QuizCard({ style, className }: { style: CSSProperties; className
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, params.get('retake')]);
 
-  const cur = valid ? s.quizzes[id]?.current : undefined;
+  const found = valid ? s.quizzes[id]?.current : undefined;
+  const cur = found?.questions ? found : undefined;
+  const name = cur?.title || titleOf(id);
+  const kicker = id === PRE_SHIFT ? 'Pre-shift quiz' : id.startsWith('c:') ? 'Your quiz' : 'Sign-off quiz';
 
-  /* ---- intro: no quiz picked ---- */
+  /* ---- intro: no quiz picked (or it's loading) ---- */
   if (!valid || !cur) {
     const next = nextQuiz(s);
+    if (valid && !error) return (
+      <div ref={card} className={className + ' quiz-card'} style={style}>
+        <div className="quiz-head"><span className="quiz-kicker">{kicker}</span><span className="quiz-count" /></div>
+        <h2 className="quiz-q">Writing your questions…</h2>
+      </div>
+    );
     return (
       <div ref={card} className={className + ' quiz-card'} style={style}>
         <div className="quiz-head">
           <span className="quiz-kicker">{next ? `Next up · ${next.title}` : 'All quizzes passed'}</span>
-          <span className="quiz-count">{next ? `${next.questions.length} questions` : ''}</span>
+          <span className="quiz-count">{next ? `${next.count} questions` : ''}</span>
         </div>
         <div className="quiz-steps" aria-hidden="true">{Array.from({ length: 5 }, (_, i) => <span key={i} />)}</div>
-        <h2 className="quiz-q">{next ? `Ready for the ${next.title}?` : 'Nice work. Every quiz is passed.'}</h2>
+        {error && <p className="quiz-error" role="alert">{error}</p>}
+        <h2 className="quiz-q">{next ? `Ready for ${next.title}?` : QUIZZES.length ? 'Nice work. Every quiz is passed.' : 'Quizzes show up once the menu is in.'}</h2>
         <p className="quiz-text">
           {next
-            ? `${next.questions.length} questions, about 2 minutes. Get ${BANK.passMark} right to pass, then a manager signs you off once you can plate it or describe it at the table.`
-            : 'Ask a manager to sign off anything still waiting. You can retake any quiz from the list below.'}
+            ? `${next.count} questions from the book, about ${Math.max(2, Math.round(next.count / 3))} minutes. Get ${passFor(next.count)} right to pass, then a manager signs you off.`
+            : QUIZZES.length ? 'Ask a manager to sign off anything still waiting, or build your own quiz below.' : 'Every quiz is written from your dishes, drinks and wines.'}
         </p>
         <div className="quiz-actions">
           <button className="quiz-btn ghost" onClick={() => nav('/quizzes?quiz=' + PRE_SHIFT)}>Pre-Shift Quiz</button>
-          {next && <button className="quiz-btn" onClick={() => nav('/quizzes?quiz=' + next.id)}>{statusOf(s, next.id) === 'progress' ? 'Continue' : 'Start'} Quiz <Arrow /></button>}
+          {next && <button className="quiz-btn" onClick={() => nav('/quizzes?quiz=' + enc(next.id))}>{statusOf(s, next.id) === 'progress' ? 'Continue' : 'Start'} Quiz <Arrow /></button>}
         </div>
       </div>
     );
@@ -61,23 +75,24 @@ export function QuizCard({ style, className }: { style: CSSProperties; className
 
   /* ---- results ---- */
   if (showing === null) {
-    const passed = (cur.score ?? 0) >= Math.min(BANK.passMark, total);
-    const missed = cur.items.map((ref, i) => ({ ref, i, ...lookup(ref)! })).filter((x) => x.question.answer !== cur.answers[x.i]);
-    const following = id === PRE_SHIFT ? null : nextQuiz(s);
+    const passed = (cur.score ?? 0) >= passFor(total);
+    const missed = cur.items.map((ref, i) => ({ ref, i, ...lookup(ref, cur)! })).filter((x) => x.question && x.question.answer !== cur.answers[x.i]);
+    const following = id === PRE_SHIFT || id.startsWith('c:') ? null : nextQuiz(s);
+    const signable = !!quizById(id);
     return (
       <div ref={card} className={className + ' quiz-card'} style={style}>
         <div className="quiz-head">
-          <span className="quiz-kicker">{id === PRE_SHIFT ? 'Pre-shift quiz' : `Sign-off quiz · ${titleOf(id)}`}</span>
+          <span className="quiz-kicker">{id === PRE_SHIFT ? kicker : `${kicker} · ${name}`}</span>
           <span className="quiz-count">Done</span>
         </div>
         <div className="quiz-steps" aria-hidden="true">
-          {cur.items.map((ref, i) => <span key={i} className={lookup(ref)?.question.answer === cur.answers[i] ? 'right' : 'wrong'} />)}
+          {cur.items.map((ref, i) => <span key={i} className={lookup(ref, cur)?.question.answer === cur.answers[i] ? 'right' : 'wrong'} />)}
         </div>
         <h2 className="quiz-q" ref={heading} tabIndex={-1}>{cur.score} of {total}. {passed ? 'You passed.' : 'Not yet.'}</h2>
         <p className="quiz-text">
-          {id === PRE_SHIFT
-            ? passed ? 'You’re ready for tonight.' : 'Read up on the ones you missed before the shift starts.'
-            : passed ? 'Next: show a manager you can plate it or describe it at the table. They sign you off.' : `You need ${BANK.passMark} to pass. Review the page, then try again.`}
+          {id === PRE_SHIFT || !signable
+            ? passed ? 'You know it.' : 'Read up on the ones you missed, then try again.'
+            : passed ? 'Next: show a manager you know it at the table. They sign you off.' : `You need ${passFor(total)} to pass. Review the pages, then try again.`}
         </p>
         {missed.length > 0 && (
           <ul className="quiz-missed">
@@ -85,16 +100,16 @@ export function QuizCard({ style, className }: { style: CSSProperties; className
               <li key={m.ref}>
                 <strong>{m.question.q}</strong>
                 <span>Answer: {m.question.options[m.question.answer]}. {m.question.why}</span>
-                <Link to={m.quiz.page}>Review {m.quiz.page === '/food-matrix' ? 'the Food Matrix' : m.quiz.title}</Link>
+                <Link to={m.quiz.page}>Review {m.quiz.title}</Link>
               </li>
             ))}
           </ul>
         )}
         <NameSave id={id} />
         <div className="quiz-actions">
-          <button className="quiz-btn ghost" onClick={() => nav(`/quizzes?quiz=${id}&retake=1`)}>Retake</button>
+          <button className="quiz-btn ghost" onClick={() => nav(`/quizzes?quiz=${enc(id)}&retake=1`)}>New Questions</button>
           {following
-            ? <button className="quiz-btn" onClick={() => nav('/quizzes?quiz=' + following.id)}>Next: {following.title} <Arrow /></button>
+            ? <button className="quiz-btn" onClick={() => nav('/quizzes?quiz=' + enc(following.id))}>Next: {following.title} <Arrow /></button>
             : <button className="quiz-btn" onClick={() => nav('/quizzes')}>Back to Quizzes</button>}
         </div>
       </div>
@@ -103,7 +118,7 @@ export function QuizCard({ style, className }: { style: CSSProperties; className
 
   /* ---- a question ---- */
   const ref = cur.items[showing];
-  const item = lookup(ref)!;
+  const item = lookup(ref, cur)!;
   const chosen = cur.answers[showing];
   const answered = chosen !== undefined;
   const right = answered && chosen === item.question.answer;
@@ -111,7 +126,7 @@ export function QuizCard({ style, className }: { style: CSSProperties; className
   return (
     <div ref={card} className={className + ' quiz-card'} style={style}>
       <div className="quiz-head">
-        <span className="quiz-kicker">{id === PRE_SHIFT ? `Pre-shift quiz · ${item.quiz.title}` : `Sign-off quiz · ${item.quiz.title}`}</span>
+        <span className="quiz-kicker">{`${id === PRE_SHIFT ? kicker : name} · ${item.quiz.title}`}</span>
         <span className="quiz-count">Question {showing + 1} of {total}</span>
       </div>
       <div className="quiz-steps" aria-hidden="true">{cur.items.map((_, i) => <span key={i} className={i < cur.answers.length ? 'done' : ''} />)}</div>
@@ -166,7 +181,7 @@ export function ProgressCard({ style, className }: { style: CSSProperties; class
   const passed = statuses.filter((x) => x === 'signed' || x === 'passed').length;
   const progress = statuses.filter((x) => x === 'progress' || x === 'retry').length;
   const toGo = QUIZZES.length - passed - progress;
-  const r = 80, c = 2 * Math.PI * r, frac = passed / QUIZZES.length;
+  const r = 80, c = 2 * Math.PI * r, frac = QUIZZES.length ? passed / QUIZZES.length : 0;
   return (
     <div className={className + ' quiz-progress'} style={style}>
       <span className="quiz-kicker light">Your sign-offs</span>

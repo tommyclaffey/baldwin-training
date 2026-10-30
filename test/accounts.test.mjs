@@ -92,7 +92,8 @@ test('companies are kept apart', async () => {
   assert.equal((await owner2(`/api/team/${bea.id}`, { method: 'DELETE' })).status, 404);
   assert.equal((await owner2(`/api/team/${bea.id}/reset-pin`, { method: 'POST' })).status, 404);
   // Quiz scores and sections stay in their company.
-  await staff1('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items: ['short-rib#0'], answers: [1] } });
+  const take = async (who, quiz) => { const q = (await who('/api/quiz/start', { method: 'POST', body: { quiz } })).data; return who('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: q.items.map((r) => q.questions[r].answer) } }); };
+  await take(staff1, 't:course:Mains');
   assert.ok((await owner('/api/quiz/results')).data.people.some((p) => p.name === 'Bea Baldwin'));
   assert.ok(!(await owner2('/api/quiz/results')).data.people.some((p) => p.name === 'Bea Baldwin'));
   await owner('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Bea' } });
@@ -199,7 +200,8 @@ test('stores: staff pick their store; each store has its own book, records and s
   assert.ok(classic, 'classics are shared');
   assert.equal((await jay('/api/page/' + classic.file)).status, 200);
   // Quiz records and sections stay in their store.
-  await jay('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items: ['short-rib#0'], answers: [1] } });
+  const take = async (who, quiz) => { const q = (await who('/api/quiz/start', { method: 'POST', body: { quiz } })).data; return who('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: q.items.map((r) => q.questions[r].answer) } }); };
+  assert.equal((await take(jay, 't:classic')).status, 200, 'classic cocktail quizzes work in every store');
   const baldwin = (await owner('/api/quiz/results')).data;
   assert.equal(baldwin.store, 'The Baldwin');
   assert.ok(!baldwin.people.some((p) => p.name === 'Jay Jbs'));

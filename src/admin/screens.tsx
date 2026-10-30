@@ -7,8 +7,7 @@ import { VideoEmbed } from '../components/VideoEmbed';
 import { Empty, ErrorNote, Loading, Text, when } from './ui';
 import { useCollections } from './cms';
 import { PRODUCT_NAME } from '../lib/brand';
-import { BANK, QUIZZES as QUIZ_LIST } from '../quiz/store';
-const QUIZ_PASS = BANK.passMark;
+import { QUIZZES, loadCatalog, passFor, useQuiz } from '../quiz/store';
 
 function useLoad<T>(path: string) {
   const [data, setData] = useState<T | null>(null);
@@ -494,6 +493,14 @@ export function QuizResults() {
   const { data, error, load } = useLoad<{ people: QuizPerson[]; store: string | null }>('/api/quiz/results');
   const [open, setOpen] = useState<string | null>(null);
   const [err, setErr] = useState('');
+  useQuiz(); useEffect(() => { void loadCatalog(); }, []);
+  const QUIZ_LIST = QUIZZES;
+  const passedOf = (r?: { best: number; total: number }) => !!r && r.best >= passFor(r.total);
+  // Team quizzes a manager saved: they can be archived (never deleted).
+  const archiveSet = async (id: string) => {
+    if (!confirm('Archive this team quiz? It leaves everyone’s list. Scores already taken stay.')) return;
+    try { await api('/api/quiz/sets/' + id.slice(2), { method: 'DELETE' }); await loadCatalog(); } catch (e) { setErr((e as Error).message); }
+  };
   const toggle = async (p: QuizPerson, quiz: string, on: boolean) => {
     setErr('');
     try { await api('/api/quiz/signoff', { method: on ? 'POST' : 'DELETE', body: { device: p.device, quiz } }); load(); }
@@ -502,14 +509,25 @@ export function QuizResults() {
   return (
     <div className="admin-page">
       <h1>Quiz results{data?.store ? ` · ${data.store}` : ''}</h1>
-      <p className="muted">Everyone who has taken a quiz. Sign someone off once they’ve passed and shown you they can plate it or describe it at the table.</p>
+      <p className="muted">Everyone who has taken a quiz. Sign someone off once they’ve passed and shown you they know it at the table. Quizzes are written from the book; build a team quiz on the Quizzes page.</p>
+      {QUIZ_LIST.some((q) => q.kind === 'team') && (
+        <section className="stack-sm">
+          <h2 className="sub">Team quizzes</h2>
+          <div className="list">
+            {QUIZ_LIST.filter((q) => q.kind === 'team').map((q) => (
+              <div key={q.id} className="list-row"><span className="grow"><strong>{q.title}</strong><small>{q.count} questions</small></span>
+                <button className="link-btn danger" onClick={() => void archiveSet(q.id)}>Archive</button></div>
+            ))}
+          </div>
+        </section>
+      )}
       {(error || err) && <ErrorNote error={err || error} retry={error ? load : undefined} />}
       {!data && !error && <Loading />}
       {data && data.people.length === 0 && <Empty title="No quiz scores yet"><p className="muted">Scores show here once staff finish a quiz and add their name.</p></Empty>}
       {data && data.people.length > 0 && (
         <div className="list">
           {data.people.map((p) => {
-            const passed = QUIZ_LIST.filter((q) => { const r = p.quizzes[q.id]; return r && r.best >= QUIZ_PASS; }).length;
+            const passed = QUIZ_LIST.filter((q) => passedOf(p.quizzes[q.id])).length;
             const signed = Object.keys(p.signoffs).filter((k) => k !== 'pre-shift').length;
             const isOpen = open === p.device;
             return (
@@ -527,7 +545,7 @@ export function QuizResults() {
                       {QUIZ_LIST.map((q) => {
                         const r = p.quizzes[q.id];
                         const s = p.signoffs[q.id];
-                        const ok = r && r.best >= QUIZ_PASS;
+                        const ok = passedOf(r);
                         return (
                           <tr key={q.id}>
                             <td>{q.title}</td>

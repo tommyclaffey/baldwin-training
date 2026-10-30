@@ -185,25 +185,41 @@ test('invites: owners invite managers, links work once, managers can’t invite'
   assert.equal((await person()(`/api/invite/${token}`, { method: 'POST', body: { name: 'Ed', password: 'long-enough-2' } })).status, 410);
 });
 
-test('quiz scores are checked by the server, and a manager can sign off', async () => {
+test('quizzes are written from the book, scored by the server; custom and team quizzes; a manager signs off', async () => {
   const code = (await call('/api/team')).data.company.joinCode;
   const sam = person();
   assert.equal((await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Server', pin: '4321', storeId: 1 } })).status, 200);
-  const items = [0, 1, 2, 3, 4].map((i) => `short-rib#${i}`);
-  const r = await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items, answers: [1, 1, 3, 0, 2] } });
-  assert.equal(r.status, 200);
-  assert.deepEqual(r.data, { score: 5, total: 5, passed: true });
-  const wrong = await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items: ['date-cake#0'], answers: [3] } });
-  assert.equal(wrong.status, 400, 'questions from another quiz are refused');
-  assert.equal((await call('/api/quiz/attempt', { method: 'POST', body: { quiz: 'short-rib', items, answers: [1, 1, 3, 0, 2] }, auth: false })).status, 401, 'no account, no score');
+  const cat = (await sam('/api/quiz/catalog')).data;
+  assert.ok(cat.topics.some((t) => t.key === 'course:Mains') && cat.topics.some((t) => t.key === 'house'), 'topics come from the menu');
+  assert.ok(cat.quizzes.some((q) => q.id === 't:course:Mains'), 'a built-in quiz per course');
+  // A built-in quiz: every answer right.
+  const q = (await sam('/api/quiz/start', { method: 'POST', body: { quiz: 't:course:Mains' } })).data;
+  assert.equal(q.items.length, 10);
+  const right = q.items.map((ref) => q.questions[ref].answer);
+  const r = await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: right } });
+  assert.deepEqual(r.data, { score: 10, total: 10, passed: true });
+  // A question from another topic is refused; no account, no score.
+  const other = (await sam('/api/quiz/start', { method: 'POST', body: { quiz: 't:house' } })).data;
+  assert.equal((await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: [other.items[0]], answers: [0] } })).status, 400);
+  assert.equal((await call('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: right }, auth: false })).status, 401);
+  // A custom mix.
+  const c = (await sam('/api/quiz/start', { method: 'POST', body: { topics: ['house', 'wine-glass'], count: 5 } })).data;
+  assert.equal(c.id, 'c:house+wine-glass:5');
+  assert.equal(c.items.length, 5);
+  assert.equal((await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: c.id, items: c.items, answers: c.items.map((ref) => c.questions[ref].answer) } })).data.score, 5);
+  // Staff can't save a team quiz; a manager can, and it joins the list.
+  assert.equal((await sam('/api/quiz/sets', { method: 'POST', body: { name: 'X', topics: ['house'], count: 5 } })).status, 403);
+  const set = (await call('/api/quiz/sets', { method: 'POST', body: { name: 'Bar week 2', topics: ['house', 'classic'], count: 10 } })).data;
+  assert.ok((await sam('/api/quiz/catalog')).data.quizzes.some((x) => x.id === set.id && x.title === 'Bar week 2'));
+  // Results and sign-off.
   assert.equal((await sam('/api/quiz/results')).status, 403, 'staff can’t see everyone’s scores');
-  const people = (await call('/api/quiz/results')).data.people;
-  const me = people.find((p) => p.name === 'Sam Server');
-  assert.equal(me.quizzes['short-rib'].best, 5);
-  assert.equal((await call('/api/quiz/signoff', { method: 'POST', body: { device: me.device, quiz: 'short-rib' } })).status, 200);
+  const me = (await call('/api/quiz/results')).data.people.find((p) => p.name === 'Sam Server');
+  assert.equal(me.quizzes['t:course:Mains'].best, 10);
+  assert.equal((await call('/api/quiz/signoff', { method: 'POST', body: { device: me.device, quiz: 't:course:Mains' } })).status, 200);
+  assert.equal((await call('/api/quiz/signoff', { method: 'POST', body: { device: me.device, quiz: c.id } })).status, 400, 'custom quizzes are practice, not sign-offs');
   const mine = (await sam('/api/quiz/mine')).data;
-  assert.equal(mine.signoffs[0].quiz, 'short-rib');
-  assert.equal(mine.best[0].best, 5);
+  assert.equal(mine.signoffs[0].quiz, 't:course:Mains');
+  assert.equal((await call('/api/quiz/sets/' + set.id.slice(2), { method: 'DELETE' })).data.archived, true);
 });
 
 test('wine videos: every wine page has a Learn more section, and a video plays there and on the wine list', async () => {

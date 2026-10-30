@@ -3,11 +3,12 @@ import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
 import { InteractProvider } from './interact';
 import { QuizCard, ProgressCard } from '../quiz/QuizCard';
+import { QuizBuilder } from '../quiz/QuizBuilder';
 import { quizPage, trainingCard } from '../quiz/transform';
 import { useQuiz } from '../quiz/store';
 
 const QUIZ_PAGE = '18:2';
-const QUIZ_SLOTS: Record<string, Slot> = { 'Live quiz': (p) => <QuizCard {...p} />, Progress: (p) => <ProgressCard {...p} /> };
+const QUIZ_SLOTS: Record<string, Slot> = { 'Live quiz': (p) => <QuizCard {...p} />, Progress: (p) => <ProgressCard {...p} />, Builder: (p) => <QuizBuilder {...p} /> };
 const NO_SLOTS: Record<string, Slot> = {};
 import { PRODUCT_NAME } from '../lib/brand';
 import { api, canEdit } from '../lib/api';

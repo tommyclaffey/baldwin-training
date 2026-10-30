@@ -425,7 +425,7 @@ export function dishPage(template, item, links = {}) {
   // No quiz for this dish yet: a manager signs it off by hand.
   if (!item.quiz && texts(signoff)[1]) setText(texts(signoff)[1], 'A manager signs you off once you can describe it at the table and answer guests’ questions.');
   // Sign-off buttons go to this dish's quiz when there is one.
-  const quiz = item.quiz ? '/quizzes?quiz=' + item.quiz : '/quizzes';
+  const quiz = item.quiz ? '/quizzes?quiz=' + encodeURIComponent(item.quiz) : '/quizzes';
   for (const b of findAll(main, (n) => n.n === 'Button · Sign Off' || n.n === 'Button · Start')) b.to = quiz;
   if (!d.signature) tags.c = tags.c.filter((c) => c.n !== 'Tag · Signature');
 
