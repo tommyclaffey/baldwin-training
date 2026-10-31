@@ -1,8 +1,11 @@
 // Adds the new region page names to each wine's "Shows on these pages" tags. Usage: node tagwines.mjs <db> [seedJson]
 import { DatabaseSync } from 'node:sqlite';
 import fs from 'node:fs';
-const MAP = { 'Alsace': 'Alsace', 'Beaujolais': 'Beaujolais', 'Abruzzo': 'Abruzzo', 'Marche': 'Marche', 'Umbria': 'Umbria', 'Alto Adige': 'Trentino-Alto Adige', 'Trentino-Alto Adige': 'Trentino-Alto Adige', 'Lombardy': 'Lombardy', 'Finger Lakes': 'Finger Lakes' };
-const fix = (d) => { const t = MAP[d.region]; if (!t) return false; const pages = d.pages || []; if (pages.includes(t)) return false; d.pages = [...pages, t]; return true; };
+// Region on the wine list → the region and state pages it belongs on.
+const MAP = { 'Alsace': ['Alsace'], 'Beaujolais': ['Beaujolais'], 'Abruzzo': ['Abruzzo'], 'Marche': ['Marche'], 'Umbria': ['Umbria'], 'Alto Adige': ['Trentino-Alto Adige'], 'Trentino-Alto Adige': ['Trentino-Alto Adige'], 'Lombardy': ['Lombardy'], 'Finger Lakes': ['Finger Lakes', 'New York'],
+  'Oakville': ['Oakville', 'Napa Valley', 'California'], 'Carneros': ['Carneros', 'California'], 'Russian River': ['Russian River Valley', 'California'], 'Alexander Valley': ['Alexander Valley', 'California'],
+  'Napa': ['California'], 'Paso Robles': ['California'], 'Santa Barbara': ['California'], 'California': ['California'], 'Columbia Valley': ['Columbia Valley'], 'Willamette': ['Oregon'] };
+const fix = (d) => { const add = (MAP[d.region] || []).filter((t) => !(d.pages || []).includes(t)); if (!add.length) return false; d.pages = [...(d.pages || []), ...add]; return true; };
 const db = new DatabaseSync(process.argv[2]);
 let n = 0;
 for (const r of db.prepare("SELECT id, data FROM entries WHERE collection = 'wine'").all()) {

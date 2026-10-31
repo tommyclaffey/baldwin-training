@@ -66,7 +66,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 495, 'the design (incl. 40 wine regions), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
+  assert.equal(index.length, 534, 'the design (incl. 79 wine regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -225,7 +225,7 @@ test('quizzes are written from the book, scored by the server; custom and team q
 test('wine videos: every wine page has a Learn more section, and a video plays there and on the wine list', async () => {
   const groups = (await call('/api/wine-videos')).data.groups;
   const items = groups.flatMap((g) => g.items);
-  assert.equal(items.filter((i) => !i.key.startsWith('wine:')).length, 76, '8 styles, 3 countries, 40 regions, 25 grapes and styles');
+  assert.equal(items.filter((i) => !i.key.startsWith('wine:')).length, 115, '8 styles, 3 countries, 79 regions and states, 25 grapes and styles');
   assert.ok(items.some((i) => i.key === 'wine:Tenuta Spinelli Pecorino'));
   const index = (await call('/api/index')).data;
   const find = (n, pred) => (pred(n) ? n : (n.c || []).map((c) => find(c, pred)).find(Boolean));
@@ -238,7 +238,7 @@ test('wine videos: every wine page has a Learn more section, and a video plays t
   // the starting videos from the repo are in place
   const cab = find((await page('wine/red/cabernet')).main, (n) => n.n === 'Learn more');
   assert.equal(find(cab, (n) => !!n.vid).vid.youtubeId, '-w6gz4YVPyk');
-  assert.equal(items.filter((i) => i.video).length, 41, 'Wine Folly: 6 grape videos and 35 country and region videos');
+  assert.equal(items.filter((i) => i.video).length, 46, 'Wine Folly: 6 grape videos and 40 country, state and region videos');
   assert.ok(items.find((i) => i.key === 'wine/italy/tuscany')?.video?.youtubeId === 'ixXOoWN8LGg');
   // anonymous can't set one, an unknown page is refused
   assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/syrah', video: null }, auth: false })).status, 401);
@@ -329,6 +329,20 @@ test('review queue: mark each answer; red and yellow come back until they are gr
   assert.equal(after.total, 1);
   assert.deepEqual(after.counts, { red: 1, yellow: 0, green: 2 });
   assert.equal((await call('/api/quiz/review')).data.total, 0, 'each person has their own queue');
+});
+
+test('US wine by state: breadcrumbs, the regions inside, Wine Folly links and our wines', async () => {
+  const index = (await call('/api/index')).data;
+  const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
+  const oak = await page('wine/usa/oakville');
+  assert.ok(oak.includes('Crumb · California') && oak.includes('Crumb · Napa Valley'), 'Wine / USA / California / Napa Valley / Oakville');
+  assert.ok(oak.includes('WHERE IT SITS IN NAPA VALLEY') && oak.includes('Sibling · Rutherford'));
+  assert.ok(oak.includes('"https://winefolly.com/deep-dive/napa-wine-map/"'), 'Read more on Wine Folly');
+  assert.ok(oak.includes('ON OUR LIST'), 'our Oakville wines show');
+  const ca = await page('wine/usa/california');
+  assert.ok(ca.includes('REGIONS IN CALIFORNIA') && ca.includes('Sibling · Sierra Foothills'));
+  const usa = await page('wine/usa');
+  assert.ok(usa.includes('Sub · California') && usa.includes('Sub · Snake River Valley') && !usa.includes('Sub · Napa Valley'), 'the USA page lists states');
 });
 
 test('the wine list fills the Wine page and every wine page it belongs on', async () => {

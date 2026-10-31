@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { now } from './db.mjs';
 
+const LINKS_FILE = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'content', 'wine-folly-links.json');
 const SEED_FILE = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'content', 'wine-videos.json');
 
 const STYLES = { red: 'Red', white: 'White', rose: 'Rosé', orange: 'Orange', sparkling: 'Sparkling' };
@@ -121,4 +122,24 @@ export function wineCards(page, videos) {
     card.vid = rec.video;
     if (!badge && proto) { badge = clone(proto); badge.x = Math.round((card.w - badge.w) / 2); card.c.push(badge); }
   }
+}
+
+/* ---- "Read more on Wine Folly" (Tommy, Oct 31: "if there is a page in Wine Folly then add them") ---- */
+let LINKS;
+const folly = () => (LINKS ??= fs.existsSync(LINKS_FILE) ? JSON.parse(fs.readFileSync(LINKS_FILE, 'utf8')).links || {} : {});
+/** A card under "Part of" that opens the region's Wine Folly page. */
+export function wineFollyLink(page, slug) {
+  const url = folly()[slug];
+  if (!url || !page?.main) return;
+  const parentOf = (n, t) => (n.c || []).includes(t) ? n : (n.c || []).reduce((h, c) => h || parentOf(c, t), null);
+  const find = (n, pred) => pred(n) ? n : (n.c || []).reduce((h, c) => h || find(c, pred), null);
+  const part = find(page.main, (n) => n.n === 'Back to parent');
+  if (!part || find(page.main, (n) => n.n === 'Read more · Wine Folly')) return;
+  const card = structuredClone(part);
+  card.n = 'Read more · Wine Folly'; card.to = url;
+  const texts = []; (function walk(n) { if (n.t === 'T') texts.push(n); (n.c || []).forEach(walk); })(card);
+  if (texts[0]) { texts[0].s = 'READ MORE'; delete texts[0].segs; }
+  if (texts[1]) { texts[1].s = 'On Wine Folly'; delete texts[1].segs; }
+  const host = parentOf(page.main, part);
+  host.c.splice(host.c.indexOf(part) + 1, 0, card);
 }
