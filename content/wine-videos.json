@@ -350,6 +350,50 @@
     "title": "New York Region Guide: Everything you need to know · Wine Folly"
    },
    "note": "Wine Folly’s guide to New York wine, including Long Island and the North Fork."
+  },
+  {
+   "key": "wine/usa/california",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "FXhzt6CHMGA",
+    "title": "California vs Oregon Pinot Noir · Wine Folly"
+   },
+   "note": "Wine Folly tastes California Pinot Noir against Oregon’s. Wine Folly has no California overview video yet."
+  },
+  {
+   "key": "wine/usa/oregon",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "VyYS1uMv_eA",
+    "title": "Oregon vs Burgundy Pinot Noir · Wine Folly"
+   },
+   "note": "Wine Folly tastes Oregon Pinot Noir against Burgundy."
+  },
+  {
+   "key": "wine/usa/new-york",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "67fJ_D6bdmo",
+    "title": "New York Region Guide: Everything you need to know · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/usa/snake-river-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "q2sogCVuRD4",
+    "title": "All About Idaho Wine · Wine Folly"
+   },
+   "note": "Wine Folly on Idaho wine. The Snake River Valley is Idaho’s biggest region."
+  },
+  {
+   "key": "wine/usa/dry-creek-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "M3aFaqoGjiw",
+    "title": "Italy vs California Zinfandel Showdown! · Wine Folly"
+   },
+   "note": "Wine Folly tastes Zinfandel against Primitivo. The California Zin is from Dry Creek Valley."
   }
  ]
 }
