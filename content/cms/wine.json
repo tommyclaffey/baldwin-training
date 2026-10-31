@@ -108,7 +108,9 @@
    "half": "23",
    "bottle": "44",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Alsace"
+   ],
    "style": "Aromatic",
    "notes": "Lychee, citrus blossom and a little spice; aromatic, dry to off-dry.",
    "mouthfeel": "aromatic and fresh",
@@ -138,7 +140,8 @@
    "bottle": "60",
    "size": "",
    "pages": [
-    "Pinot Grigio"
+    "Pinot Grigio",
+    "Trentino-Alto Adige"
    ],
    "style": "Crisp",
    "notes": "Pear, lemon peel and almond, with clean mountain freshness.",
@@ -1051,7 +1054,9 @@
    "half": "",
    "bottle": "60",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Finger Lakes"
+   ],
    "style": "",
    "notes": "Light to medium; red berry, pepper and herbs.",
    "mouthfeel": "light and fresh",
@@ -1461,7 +1466,8 @@
    "bottle": "69",
    "size": "",
    "pages": [
-    "Pinot Grigio"
+    "Pinot Grigio",
+    "Trentino-Alto Adige"
    ],
    "style": "",
    "notes": "The famous name; crisp, clean and citrusy.",
@@ -1492,7 +1498,8 @@
    "bottle": "55",
    "size": "",
    "pages": [
-    "Pecorino"
+    "Pecorino",
+    "Marche"
    ],
    "style": "",
    "notes": "Herbal and citrusy with a little salinity.",
@@ -1553,7 +1560,9 @@
    "half": "",
    "bottle": "49",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Marche"
+   ],
    "style": "",
    "notes": "Lemon and almond with a bitter- almond finish.",
    "mouthfeel": "crisp",
@@ -1770,7 +1779,9 @@
    "half": "",
    "bottle": "55",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Abruzzo"
+   ],
    "style": "",
    "notes": "Plummy, easygoing and rustic.",
    "mouthfeel": "easygoing and rustic",
@@ -1799,7 +1810,9 @@
    "half": "",
    "bottle": "65",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Umbria"
+   ],
    "style": "",
    "notes": "Central Italian blend; cherry and spice.",
    "mouthfeel": "smooth",
@@ -2082,7 +2095,8 @@
    "bottle": "79",
    "size": "",
    "pages": [
-    "Riesling"
+    "Riesling",
+    "Alsace"
    ],
    "style": "",
    "notes": "Dry Alsace Riesling; citrus, stone and precise acidity.",
@@ -2335,7 +2349,9 @@
    "half": "",
    "bottle": "65",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Beaujolais"
+   ],
    "style": "",
    "notes": "Juicy and bright with red berry; serve slightly cool.",
    "mouthfeel": "juicy and bright",
@@ -3166,7 +3182,8 @@
    "bottle": "69",
    "size": "",
    "pages": [
-    "Franciacorta"
+    "Franciacorta",
+    "Lombardy"
    ],
    "style": "",
    "notes": "Italy's Champagne-method sparkler; creamy, gentle bubbles.",
@@ -3197,7 +3214,8 @@
    "bottle": "79",
    "size": "",
    "pages": [
-    "Sparkling Rosé"
+    "Sparkling Rosé",
+    "Trentino-Alto Adige"
    ],
    "style": "",
    "notes": "Alpine rosé bubbles; raspberry and a fine mousse.",

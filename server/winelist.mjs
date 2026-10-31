@@ -85,6 +85,8 @@ export function fillWineShelf(page, slug, title, wines, basePage) {
   const order = { 'Sommelier selection': 0, 'By the glass': 1, 'By the bottle': 2, Bubbles: 3 };
   const list = winesFor(slug, title, wines.map((e) => ({ ...e.data, _slug: e.slug }))).sort((a, b) => (order[a.list] ?? 9) - (order[b.list] ?? 9));
   const target = find(page.main, byName('On our shelf')) || find(page.main, byName('On our list'));
+  // None of our wines from here: the design's sample line ("On our list · Bolgheri Rosso") goes rather than mislead.
+  if (!list.length && target && ['region', 'grape', 'wine'].includes(wineKind(slug))) { remove(page.main, target); return; }
   if (!list.length || !target) return;
   const parentOf = (root, node) => (root.c || []).includes(node) ? root : (root.c || []).reduce((hit, c) => hit || parentOf(c, node), null);
   const body = page.main.c.find((c) => c.n === 'Body');
