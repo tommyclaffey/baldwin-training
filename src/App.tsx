@@ -3,12 +3,10 @@ import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar';
 import { PageView, usePageEntry } from './components/PageView';
 import { NavContext } from './components/FigmaNode';
-import { EditBar } from './components/EditBar';
 import { useSession } from './lib/session';
 import { BookSignIn } from './components/BookSignIn';
 import { clearPages } from './components/PageView';
 import { setQuizUser } from './quiz/store';
-import { api, canEdit } from './lib/api';
 import AdminApp from './admin/AdminApp';
 
 export default function App() {
@@ -19,7 +17,7 @@ export default function App() {
 
 function Book() {
   const entry = usePageEntry();
-  const { user, loaded, setUser, refresh } = useSession();
+  const { user, loaded } = useSession();
   const [menu, setMenu] = useState(false);
   const { pathname } = useLocation();
   useEffect(() => setMenu(false), [pathname]);
@@ -36,8 +34,6 @@ function Book() {
 
   if (!loaded) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
   if (!user) return <BookSignIn />;
-  const signOut = async () => { await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); };
-  const back = async () => { await api('/api/super/return', { method: 'POST' }).catch(() => {}); await refresh(); location.assign('/admin/super'); };
   return (
     <NavContext.Provider value={entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
@@ -59,14 +55,6 @@ function Book() {
         <div id="content" className="content">
           <PageView />
         </div>
-      </div>
-      <div className="corner">
-      {canEdit(user) && !user.impersonatedBy && <EditBar />}
-      <div className={'demo-flag' + (user.impersonatedBy ? ' support' : '')} role="note">
-        {user.impersonatedBy
-          ? <>Support view: signed in as <strong>{user.name}</strong> · <button className="link-btn" onClick={() => void back()}>Back to Your Account</button></>
-          : <>Signed in as <strong>{user.name}</strong> · <button className="link-btn" onClick={() => void signOut()}>Sign Out</button></>}
-      </div>
       </div>
     </NavContext.Provider>
   );

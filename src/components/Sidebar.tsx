@@ -2,7 +2,8 @@ import sidebar from '../content/sidebar.json';
 import { useEffect, useMemo, useState } from 'react';
 import { FigmaNode, type FNode } from './FigmaNode';
 import { QUIZZES, statusOf, useQuiz } from '../quiz/store';
-import { api } from '../lib/api';
+import { api, canEdit } from '../lib/api';
+import { ManagerLinks } from './EditBar';
 import { trainingCard } from '../quiz/transform';
 import { useSession } from '../lib/session';
 
@@ -44,7 +45,34 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   }, [quiz, counts, generic, user]);
   return (
     <nav className="sidebar" aria-label="Main" onClick={(e) => { if ((e.target as HTMLElement).closest('a')) onNavigate?.(); }}>
-      <FigmaNode node={{ ...node, x: undefined, y: undefined }} rootStyle={{ position: 'relative', width: '100%', height: '100%', minHeight: '100%' }} />
+      <FigmaNode node={{ ...node, x: undefined, y: undefined }} rootStyle={{ position: 'relative', width: '100%', height: 'auto', flex: '1 0 auto' }} />
+      <Account />
     </nav>
+  );
+}
+
+const ROLE: Record<string, string> = { staff: 'Team', manager: 'Manager', owner: 'Owner', superadmin: 'Super admin' };
+/** Who's signed in, at the foot of the sidebar (Tommy, Oct 31: the floating name pill sat on top of the page). */
+function Account() {
+  const { user, setUser, refresh } = useSession();
+  if (!user) return null;
+  const initials = user.name.split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
+  const signOut = async () => { await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); };
+  const back = async () => { await api('/api/super/return', { method: 'POST' }).catch(() => {}); await refresh(); location.assign('/admin/super'); };
+  const where = user.workingInName || user.store?.name || user.companyName || '';
+  return (
+    <div className={'account' + (user.impersonatedBy ? ' support' : '')}>
+      {canEdit(user) && !user.impersonatedBy && <ManagerLinks className="account-tools" />}
+      <div className="account-row">
+        <span className="account-avatar" aria-hidden="true">{initials}</span>
+        <span className="account-who">
+          <strong>{user.name}</strong>
+          <span>{user.impersonatedBy ? 'Support view' : [ROLE[user.role] || '', where].filter(Boolean).join(' · ')}</span>
+        </span>
+        {user.impersonatedBy
+          ? <button type="button" className="account-out" onClick={() => void back()}>Back</button>
+          : <button type="button" className="account-out" onClick={() => void signOut()}>Sign Out</button>}
+      </div>
+    </div>
   );
 }
