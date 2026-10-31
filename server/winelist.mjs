@@ -2,7 +2,7 @@ import { wineDescription } from './cms.mjs';
 // The wine list (CMS records, no pages of their own). It fills:
 //   • By the glass and By the bottle on the Wine page (designed on the Wine page in Figma)
 //   • "On our list" on every wine style, country, grape and region page (designed on Cabernet)
-import { clone, find, byName, startsWith, texts, setText } from './templates.mjs';
+import { clone, find, byName, startsWith, texts, setText, remove } from './templates.mjs';
 import { wineKind } from './wine.mjs';
 
 const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
@@ -215,7 +215,18 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
     if (style && p2) { setText(texts(p2)[0], style); p2.n = 'Pill · ' + style; } else tags.c = [p1];
   }
   setText(find(main, byName('Title')), d.name.toUpperCase());
-  setText(find(main, byName('Line')), line(d.grape, d.region, d.size));
+  // Varietal and region in their own labelled boxes (Tommy, Oct 31); the line under the name keeps only a size note.
+  const origin = find(main, byName('Origin'));
+  if (origin) {
+    const cell = (n) => origin.c.find((c) => c.n === n);
+    if (d.grape) setText(texts(cell('Varietal'))[1], d.grape);
+    if (d.region) setText(texts(cell('Region'))[1], d.region);
+    origin.c = origin.c.filter((c) => (c.n === 'Varietal' ? !!d.grape : c.n === 'Region' ? !!d.region : true));
+    if (!origin.c.length) remove(main, origin);
+  }
+  const lineNode = find(main, byName('Line'));
+  if (origin && lineNode) { if (d.size) setText(lineNode, /bottle|split/i.test(d.size) ? d.size : `${d.size} bottle`); else remove(main, lineNode); }
+  else if (lineNode) setText(lineNode, line(d.grape, d.region, d.size));
   const stats = find(main, byName('Stats'));
   if (stats) {
     const serve = serveAt(d);
