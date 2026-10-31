@@ -9,7 +9,9 @@ import { api, canEdit } from '../lib/api';
 import { useSession } from '../lib/session';
 import { PageOptions, blank, renderField, useCollections, wide, type Entry, type FieldDef } from '../admin/cms';
 
-type Target = { col: string; id: number | null; preset: Record<string, string>; jump?: string };
+type Target = { col: string; id: number | null; preset: Record<string, string>; jump?: string; notice?: string; fresh?: boolean };
+type LibDish = { id: number; data: Record<string, unknown>; stores: string[]; onMine: boolean };
+type Shared = { library?: { id: number }; sharedWith?: string[]; storeName?: string };
 type Ctx = { open: (t: Target) => void; canOpen: (col: string) => boolean };
 const EditCtx = createContext<Ctx>({ open: () => {}, canOpen: () => false });
 export const useEditInPlace = () => useContext(EditCtx);
@@ -55,13 +57,13 @@ export function EditInPlaceProvider({ children }: { children: ReactNode }) {
   return (
     <EditCtx.Provider value={{ open, canOpen }}>
       {children}
-      {target && <EditSheet key={`${target.col}:${target.id}`} target={target} onClose={() => setTarget(null)} onSaved={(msg) => { setTarget(null); setToast(msg); }} />}
+      {target && <EditSheet key={`${target.col}:${target.id}:${target.fresh ? 'new' : ''}`} target={target} onClose={() => setTarget(null)} onSwitch={setTarget} onSaved={(msg) => { setTarget(null); setToast(msg); }} />}
       {toast && createPortal(<div className="eip-toast" role="status"><span className="dot" aria-hidden="true" />{toast}</div>, document.body)}
     </EditCtx.Provider>
   );
 }
 
-function EditSheet({ target, onClose, onSaved }: { target: Target; onClose: () => void; onSaved: (msg: string) => void }) {
+function EditSheet({ target, onClose, onSaved, onSwitch }: { target: Target; onClose: () => void; onSaved: (msg: string) => void; onSwitch: (t: Target) => void }) {
   const { data: cols, error: colErr } = useCollections();
   const session = useSession();
   const nav = useNavigate();
@@ -73,6 +75,14 @@ function EditSheet({ target, onClose, onSaved }: { target: Target; onClose: () =
   const [saving, setSaving] = useState(false);
   const [dirty, setDirty] = useState(false);
   const [active, setActive] = useState('');
+  // The group's kitchen (dishes): adding starts by picking one the group already has; editing one asks who sees the change.
+  const usesLibrary = target.col === 'recipe';
+  const [lib, setLib] = useState<LibDish[] | null>(null);
+  const [mode, setMode] = useState<'pick' | 'form'>(isNew && usesLibrary && !target.fresh ? 'pick' : 'form');
+  const [find, setFind] = useState('');
+  const [share, setShare] = useState(true);
+  const [scope, setScope] = useState<'group' | 'store'>('group');
+  const [adding, setAdding] = useState(0);
   const panel = useRef<HTMLDivElement>(null);
   const body = useRef<HTMLDivElement>(null);
 
@@ -80,6 +90,23 @@ function EditSheet({ target, onClose, onSaved }: { target: Target; onClose: () =
     if (isNew) return;
     api<Entry>(`/api/entries/${target.id}`).then((e) => { setEntry(e); setData(e.data); }).catch((e) => setError(e.message));
   }, [isNew, target.id]);
+  useEffect(() => {
+    if (mode !== 'pick') return;
+    api<{ entries: LibDish[] }>(`/api/library?collection=${target.col}`).then((r) => {
+      const open = r.entries.filter((x) => !x.onMine);
+      setLib(open);
+      if (!open.length) setMode('form');
+    }).catch(() => setMode('form'));
+  }, [mode, target.col]);
+  const addFromLibrary = async (d: LibDish) => {
+    setAdding(d.id); setError('');
+    try {
+      const out = await api<Entry>('/api/entries', { method: 'POST', body: { collection: target.col, libraryId: d.id, data: { course: target.preset.course } } });
+      await session.reloadIndex(); session.bump();
+      nav('/' + out.slug);
+      onSwitch({ col: target.col, id: out.id, preset: {}, jump: 'The basics', notice: `${String(d.data.name)} is on your menu. Set its price and station.` });
+    } catch (e) { setError((e as Error).message); setAdding(0); }
+  };
   useEffect(() => {
     if (!isNew || !c || data) return;
     const d = blank(c);
@@ -137,6 +164,8 @@ function EditSheet({ target, onClose, onSaved }: { target: Target; onClose: () =
     if (cur) setActive(cur.dataset.section || '');
   };
 
+  const sh = entry as (Entry & Shared) | null;
+  const list = (a: string[]) => (a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]);
   if (!c && colErr) return null;
   const kind = KIND[target.col] || c?.singular || 'Page';
   const group = c?.group && data ? String(data[c.group.key] || '') : '';
@@ -149,8 +178,8 @@ function EditSheet({ target, onClose, onSaved }: { target: Target; onClose: () =
     setSaving(true); setError('');
     try {
       const out = isNew
-        ? await api<Entry>('/api/entries', { method: 'POST', body: { collection: c.id, data } })
-        : await api<Entry>(`/api/entries/${entry!.id}`, { method: 'PUT', body: { data } });
+        ? await api<Entry>('/api/entries', { method: 'POST', body: { collection: c.id, data, share: usesLibrary ? share : undefined } })
+        : await api<Entry>(`/api/entries/${entry!.id}`, { method: 'PUT', body: { data, scope } });
       setDirty(false);
       await session.reloadIndex(); session.bump();
       if (isNew && !c.noPages) nav('/' + out.slug);
@@ -158,12 +187,13 @@ function EditSheet({ target, onClose, onSaved }: { target: Target; onClose: () =
     } catch (e) { setError((e as Error).message); setSaving(false); }
   };
   const archive = async () => {
-    if (!entry || !confirm(`Archive “${name}”? It leaves the book and every list. You can restore it from the Archive in the admin.`)) return;
+    const libDish = !!(entry as (Entry & Shared) | null)?.library;
+    if (!entry || !confirm(libDish ? `Take “${name}” off our menu? It stays in the group’s kitchen, so it can come back any time.` : `Archive “${name}”? It leaves the book and every list. You can restore it from the Archive in the admin.`)) return;
     try {
       await api(`/api/entries/${entry.id}`, { method: 'DELETE' });
       setDirty(false); await session.reloadIndex(); session.bump();
       if (window.location.pathname === '/' + entry.slug) nav(LIST_OF[target.col] || '/', { replace: true });
-      onSaved(`${name} is archived.`);
+      onSaved(libDish ? `${name} is off our menu.` : `${name} is archived.`);
     } catch (e) { setError((e as Error).message); }
   };
 
@@ -176,13 +206,19 @@ function EditSheet({ target, onClose, onSaved }: { target: Target; onClose: () =
           <div className="eip-top">
             <div>
               <p className="eip-eyebrow">{isNew ? 'Adding' : 'Editing'} · {kind}{group ? ` · ${group}` : ''}</p>
-              <h2 id="eip-title">{isNew ? (name || `New ${kind.toLowerCase()}`) : name || 'Untitled'}</h2>
+              <h2 id="eip-title">{mode === 'pick' ? `Add a ${kind.toLowerCase()}` : isNew ? (name || `New ${kind.toLowerCase()}`) : name || 'Untitled'}</h2>
             </div>
             <button type="button" className="eip-close" aria-label="Close" onClick={close}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
             </button>
           </div>
-          {sections.length > 1 && (
+          {target.notice && <p className="eip-notice" role="status"><i className="dot" aria-hidden="true" />{target.notice}</p>}
+          {mode === 'form' && sh?.library && (
+            <p className="eip-shared"><i className="dot" aria-hidden="true" />
+              {sh.sharedWith?.length ? `Shared with ${list(sh.sharedWith)}.` : 'In our group’s kitchen. No other restaurant has it on its menu yet.'} Price, station and pairings are {sh.storeName || 'this restaurant'}’s own.
+            </p>
+          )}
+          {mode === 'form' && sections.length > 1 && (
             <nav className="eip-jump" aria-label="Jump to a section">
               {sections.map((s, i) => (
                 <button type="button" key={s.name} className={(active || sections[0].name) === s.name || (!active && i === 0) ? 'on' : ''} onClick={() => jumpTo(s.name)}>{s.name}</button>
@@ -191,9 +227,34 @@ function EditSheet({ target, onClose, onSaved }: { target: Target; onClose: () =
           )}
         </header>
         <div ref={body} className="eip-body" onScroll={onScroll}>
-          {!data && !error && <div className="loader" aria-label="Loading" />}
-          {error && <p className="eip-error" role="alert">{error}</p>}
-          {data && c && sections.map((s) => (
+          {mode === 'pick' && (
+            <div className="eip-pick">
+              <p className="eip-pick-head">From our group’s kitchen</p>
+              <p className="eip-pick-sub">Dishes our other restaurants already have. Add one and it comes with its photo, recipe, allergens and talking points. You set the price and station.</p>
+              {error && <p className="eip-error" role="alert">{error}</p>}
+              {!lib && <div className="loader" aria-label="Loading" />}
+              {lib && lib.length > 5 && <label className="field"><span className="sr-only">Search our group’s dishes</span><input placeholder="Search our group’s dishes…" value={find} onChange={(e) => setFind(e.target.value)} /></label>}
+              {lib && lib.filter((d) => String(d.data.name).toLowerCase().includes(find.toLowerCase())).map((d) => (
+                <div key={d.id} className="eip-lib">
+                  {d.data.photo ? <img src={String(d.data.photo)} alt="" /> : <span className="thumb-empty" aria-hidden="true" />}
+                  <div className="grow">
+                    <strong>{String(d.data.name)}</strong>
+                    {d.data.description ? <small>{String(d.data.description)}</small> : null}
+                    <em>{d.stores.length ? `On the menu at ${d.stores.join(' · ')}` : 'Not on a menu yet'}</em>
+                  </div>
+                  <button type="button" className="btn" disabled={!!adding} onClick={() => void addFromLibrary(d)}>{adding === d.id ? 'Adding…' : 'Add to Our Menu'}</button>
+                </div>
+              ))}
+              <div className="eip-or"><span>or</span></div>
+              <button type="button" className="eip-add eip-new" onClick={() => setMode('form')}>
+                <span className="plus" aria-hidden="true">+</span>
+                <span>Start a New Dish<small>For something only we serve, or something new for the whole group.</small></span>
+              </button>
+            </div>
+          )}
+          {mode === 'form' && !data && !error && <div className="loader" aria-label="Loading" />}
+          {mode === 'form' && error && <p className="eip-error" role="alert">{error}</p>}
+          {mode === 'form' && data && c && sections.map((s) => (
             <section key={s.name} data-section={s.name} className="eip-section">
               <h3>{s.name}</h3>
               <div className="form-grid">
@@ -203,14 +264,24 @@ function EditSheet({ target, onClose, onSaved }: { target: Target; onClose: () =
           ))}
           <PageOptions />
         </div>
-        <footer className="eip-foot">
+        <footer className={'eip-foot' + (mode === 'pick' ? ' pick' : '')}>
+          {mode === 'form' && !isNew && sh?.library && !!sh.sharedWith?.length && (
+            <div className="eip-scope" role="radiogroup" aria-label="Who sees this change">
+              <span>Save for</span>
+              <button type="button" role="radio" aria-checked={scope === 'group'} className={scope === 'group' ? 'on' : ''} onClick={() => setScope('group')}>All {sh.sharedWith.length + 1} restaurants</button>
+              <button type="button" role="radio" aria-checked={scope === 'store'} className={scope === 'store' ? 'on' : ''} onClick={() => setScope('store')}>Only {sh.storeName || 'us'}</button>
+            </div>
+          )}
+          {mode === 'form' && isNew && usesLibrary && (
+            <label className="check eip-share"><input type="checkbox" checked={share} onChange={(e) => setShare(e.target.checked)} /> <span>Share with all our restaurants <small>They can add it to their menus.</small></span></label>
+          )}
           <div className="eip-left">
-            <span className="eip-status">{saving ? 'Saving…' : dirty ? <><i className="dot" aria-hidden="true" />Unsaved changes</> : isNew ? 'New · not in the book yet' : 'No changes'}</span>
-            {entry && <button type="button" className="link-btn danger" onClick={() => void archive()}>Archive This {kind}</button>}
+            <span className="eip-status">{mode === 'pick' ? (lib ? `${lib.length} dish${lib.length === 1 ? '' : 'es'} you can add` : '') : saving ? 'Saving…' : dirty ? <><i className="dot" aria-hidden="true" />Unsaved changes</> : isNew ? 'New · not in the book yet' : 'No changes'}</span>
+            {entry && <button type="button" className="link-btn danger" onClick={() => void archive()}>{sh?.library ? 'Take Off Our Menu' : `Archive This ${kind}`}</button>}
           </div>
           <div className="eip-right">
             <button type="button" className="btn ghost" onClick={close}>Cancel</button>
-            <button type="button" className="btn" disabled={saving || !data} onClick={() => void save()}>{saving ? 'Saving…' : isNew ? (c?.noPages ? 'Add It' : 'Add to the Book') : 'Save Changes'}</button>
+            {mode === 'form' && <button type="button" className="btn" disabled={saving || !data} onClick={() => void save()}>{saving ? 'Saving…' : isNew ? (c?.noPages ? 'Add It' : 'Add to the Book') : 'Save Changes'}</button>}
           </div>
         </footer>
       </div>
