@@ -992,3 +992,8 @@ body.quiz-lock .corner { display: none; }
 .account-out:focus-visible, .account-tools a:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px; }
 .account.support { background: #7A2E1C; margin: 0 12px 12px; padding: 12px; border: 0; border-radius: 12px; }
 .account.support .account-who span { color: #F2D9CF; }
+/* Sidebar: nav at the top; the training card and the account sit together at the foot, with set gaps. */
+.sidebar > [data-name="Sidebar"] { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; padding-bottom: 16px !important; }
+.sidebar > [data-name="Sidebar"] > [data-name="Top"] { margin-bottom: 24px; }
+.sidebar > [data-name="Sidebar"] > [data-name="Your Training"] { margin-top: auto !important; }
+.account { margin-top: 0; }
