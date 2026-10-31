@@ -2,6 +2,7 @@
 // Every question comes from a store's own dishes, cocktails, wines and beers, so a new restaurant gets quizzes the moment
 // its menu is in. A question's id ("price:123") is enough to write it again on the server, so scoring never trusts the phone.
 import { listEntries, COURSES } from './cms.mjs';
+import { chapters, chapterSlug, shuffleSeeded } from './manual.mjs';
 
 export const PASS_PCT = 80;
 export const passFor = (total) => Math.ceil((total * PASS_PCT) / 100);
@@ -31,11 +32,12 @@ export function topicList(pool) {
     { key: 'allergens', label: 'Allergens', group: 'Know it cold' },
     { key: 'pairings', label: 'Pairings', group: 'Know it cold' },
     { key: 'prices', label: 'Prices', group: 'Know it cold' },
+    ...chapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: 'Sommelier Study Guide' })),
   ];
   return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= 3);
 }
 /** Topics that are also sign-off quizzes on their own. */
-export const BUILT_IN = (key) => key.startsWith('course:') || ['house', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
+export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || ['house', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
 
 /** Every question this store's book can ask. */
 export function questionPool(db, store) {
@@ -115,6 +117,14 @@ export function questionPool(db, store) {
   for (const e of beers) {
     const d = e.data, base = { page: '/the-bar/beer-and-draft', label: d.name };
     ask('style:' + e.id, { ...base, q: `What style of beer is ${d.name}?`, right: d.style, pool: beers.map((x) => x.data.style), why: `${d.style}.`, topics: ['beer'] });
+  }
+  /* the Study Guide's cards: the chapter's own three wrong answers, in a fixed order per card */
+  for (const ch of chapters()) {
+    ch.cards.forEach((c, i) => {
+      const ref = `study:${ch.slug}:${i}`;
+      const options = shuffleSeeded([c.answer, ...c.wrong.slice(0, 3)], ref);
+      out.push({ ref, q: c.q, options, answer: options.indexOf(c.answer), why: `${c.answer}.`, page: '/' + chapterSlug(ch), label: ch.title, topics: ['study:' + ch.slug] });
+    });
   }
   return out;
 }

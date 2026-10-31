@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { questionPool, topicList, forTopics, pick, passFor, PASS_PCT, BUILT_IN } from './quizgen.mjs';
 import { listEntries, COURSES } from './cms.mjs';
+import { chapterBySlug } from './manual.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 export const BANK = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/quizzes.json'), 'utf8'));
@@ -41,13 +42,14 @@ function topicsOf(db, store, id) {
   if (id === PRE_SHIFT) return { title: 'Pre-Shift Quiz', topics: null, count: PRE_SHIFT_LEN };
   if (id === REVIEW) return { title: 'Review Queue', topics: null, count: REVIEW_LEN };
   let m;
-  if ((m = /^t:(.+)$/.exec(id))) { const t = m[1]; return BUILT_IN(t) ? { title: labelOf(t), topics: [t], count: BUILT_IN_LEN } : null; }
+  if ((m = /^t:(.+)$/.exec(id))) { const t = m[1]; return BUILT_IN(t) ? { title: labelOf(t), topics: [t], count: t.startsWith('study:') ? 100 : BUILT_IN_LEN } : null; }
   if ((m = /^s:(\d+)$/.exec(id))) { const r = db.prepare('SELECT * FROM quiz_sets WHERE id = ? AND store_id = ?').get(Number(m[1]), store); return r ? { title: r.name, topics: JSON.parse(r.topics), count: r.count } : null; }
   if ((m = /^c:([^:]+):(\d+)$/.exec(id))) { const topics = m[1].split('+'); return { title: 'Custom quiz', topics, count: Math.min(20, Number(m[2])) }; }
   return null;
 }
 export function labelOf(key) {
   const L = { house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings', prices: 'Prices' };
+  if (key.startsWith('study:')) { const ch = chapterBySlug(key.slice(6)); return ch ? `Study Guide · ${ch.title}` : key; }
   return key.startsWith('course:') ? key.slice(7) : L[key] || key;
 }
 export const customId = (topics, count) => `c:${[...new Set(topics)].sort().join('+')}:${count}`;

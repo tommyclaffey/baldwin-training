@@ -160,6 +160,10 @@ const MIGRATIONS = [
   CREATE TABLE quiz_marks(user_id INT NOT NULL, store_id INT NOT NULL, ref TEXT NOT NULL, mark TEXT NOT NULL, at TEXT NOT NULL,
     PRIMARY KEY(user_id, store_id, ref));
   `,
+  // 12 (Oct 31, the Study Guide): which chapters each person has opened.
+  `
+  CREATE TABLE manual_reads(user_id INT NOT NULL, slug TEXT NOT NULL, at TEXT NOT NULL, PRIMARY KEY(user_id, slug));
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

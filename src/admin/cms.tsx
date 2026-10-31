@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api, type Video } from '../lib/api';
 import { useSession } from '../lib/session';
-import { Empty, ErrorNote, Field, Loading, PhotoField, Rows, Text, VideoField, when } from './ui';
+import { Empty, ErrorNote, Field, Loading, PhotoField, Rows, SpinField, Text, VideoField, when } from './ui';
 
 export type FieldDef = {
   key: string; label: string; type: string; max?: number; hint?: string; placeholder?: string; options?: string[];
@@ -212,7 +212,7 @@ export function EntryEditor() {
   );
 }
 
-export const wide = (f: FieldDef) => ['textarea', 'list', 'lines', 'photo', 'video', 'chips', 'tags'].includes(f.type);
+export const wide = (f: FieldDef) => ['textarea', 'list', 'lines', 'photo', 'video', 'chips', 'tags', 'spin'].includes(f.type);
 
 export function renderField(f: FieldDef, value: unknown, onChange: (v: unknown) => void, ctx: { name?: string } = {}): ReactNode {
   const listId = f.options?.length && f.type === 'text' ? `opts-${f.key}` : undefined;
@@ -243,6 +243,8 @@ export function renderField(f: FieldDef, value: unknown, onChange: (v: unknown) 
       return <label className="check toggle-field"><input type="checkbox" checked={!!value} onChange={(e) => onChange(e.target.checked)} /> <span>{f.label}{f.hint && <small> · {f.hint}</small>}</span></label>;
     case 'photo':
       return <PhotoField label={f.label} hint={f.hint} value={(value as string) || ''} onChange={onChange} scanName={f.scan ? ctx.name || '' : undefined} />;
+    case 'spin':
+      return <SpinField label={f.label} hint={f.hint} value={(value as string[]) || []} onChange={onChange} name={ctx.name || ''} />;
     case 'video':
       return <VideoField label={f.label} hint={f.hint} value={(value as Video) || null} onChange={onChange} />;
     case 'tags':
@@ -290,7 +292,7 @@ function TagsField({ f, value, onChange }: { f: FieldDef; value: string[]; onCha
 
 export function blank(c: Collection) {
   const d: Record<string, unknown> = {};
-  for (const f of c.fields) d[f.key] = f.type === 'select' ? f.options![0] : ['list', 'lines', 'tags', 'chips'].includes(f.type) ? [] : f.type === 'toggle' ? false : f.type === 'video' ? null : '';
+  for (const f of c.fields) d[f.key] = f.type === 'select' ? f.options![0] : ['list', 'lines', 'tags', 'chips', 'spin'].includes(f.type) ? [] : f.type === 'toggle' ? false : f.type === 'video' ? null : '';
   return d;
 }
 

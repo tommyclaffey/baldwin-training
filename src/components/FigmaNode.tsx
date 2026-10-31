@@ -5,6 +5,7 @@ import { SearchBox } from './SearchBox';
 import { VideoEmbed } from './VideoEmbed';
 import type { Video } from '../lib/api';
 import { AddRow } from './EditSheet';
+import { SpinViewer } from './SpinViewer';
 import { AssignName, FindBox, TableFinder, TableMarker, controlProps, isActive, useInteract, visibleKids, type Meta } from './interact';
 
 // One node of the Figma layout export (see scripts/build-content.mjs).
@@ -378,6 +379,8 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   if (node.n === 'Search' && node.lm) return <SearchBox style={st} />;
   // The Back Bar: a real "Find a bottle" box replaces the drawn one.
   if (m?.find) return <FindBox k={m.find} label={m.label || 'Find'} style={st} className={cls.join(' ')} />;
+  // A bottle from the spin scanner: drag to turn it.
+  if (m?.spin?.length) return <SpinViewer frames={m.spin} alt={(node.n || '').replace(/^IMG\//, '')} style={st} className={cls.join(' ')} />;
   // Edit in place: a manager's "+ Add" row or tile (staff never get these nodes).
   if (m?.add && node.to) return <AddRow href={node.to} label={m.add.label} tile={m.add.tile} inset={m.add.inset} style={st} className={cls.join(' ')} />;
   // Floor Plan: the real table finder replaces the drawn box.

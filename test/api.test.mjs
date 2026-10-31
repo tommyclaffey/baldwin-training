@@ -66,7 +66,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 627, 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
+  assert.equal(index.length, 628 + fs.readdirSync(path.join(root, 'content/manual')).filter((f) => f.endsWith('.json')).length, 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -497,4 +497,20 @@ test('the group’s kitchen: a dish is entered once, every store puts it on its 
   assert.equal(mine.data.tagline, 'Shared tagline', 'a group change reaches every store');
   assert.notEqual(mine.data.price, '19', 'prices stay each store’s own');
   assert.notEqual(mine.data.sellingLine, 'Testa only line', 'a store-only change stays there');
+});
+
+test('the Study Guide: chapters from content/manual, each a 30-card quiz that feeds progress', async () => {
+  const index = (await call('/api/index')).data;
+  const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
+  const fr = await page('sommelier-program/study-guide/france');
+  assert.ok(fr.includes('CHAMPAGNE') && fr.includes('Brut Nature') && fr.includes('/quizzes?quiz=t:study:france'));
+  assert.ok(!index.some((e) => e.file === '362-2'), 'the design template is not a page of its own');
+  const q = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:study:france' } })).data;
+  assert.equal(q.items.length, 30);
+  const ref = q.items[0];
+  assert.equal(q.questions[ref].options.length, 4);
+  await call('/api/quiz/mark', { method: 'POST', body: { ref, mark: 'green' } });
+  const guide = await page('sommelier-program/study-guide');
+  assert.ok(guide.includes('1 of 12') || guide.includes('"1"'), 'progress shows');
+  assert.ok(guide.includes('/sommelier-program/study-guide/france'));
 });

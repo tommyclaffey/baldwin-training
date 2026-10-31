@@ -137,6 +137,7 @@ export const COLLECTIONS = {
       { key: 'spirit', label: 'Spirit', type: 'select', options: SHELF.map((x) => x.key), section: 'The bottle' },
       { key: 'styles', label: 'Style', type: 'tags', section: 'The bottle', placeholder: 'Wheated', hint: 'Match a style page under the spirit (e.g. Wheated, Small Batch, Reposado, Speyside). Leave empty if none fits.' },
       { key: 'limited', label: 'Limited quantities', type: 'toggle', section: 'The bottle', hint: 'Shows a * next to it, like the menu.' },
+      { key: 'spin', label: 'Spin (360°)', type: 'spin', section: 'The bottle', hint: 'Record our own bottle turning on a lazy Susan. It replaces the drawn bottle, and staff drag it to spin it.' },
       { key: 'price', label: 'Pour price', type: 'text', max: 10, section: 'Behind the bar', placeholder: '14' },
       { key: 'tier', label: 'Tier', type: 'select', options: ['', 'Well', 'Call', 'Premium', 'Top shelf'], section: 'Behind the bar' },
       { key: 'notes', label: 'About this bottle', type: 'textarea', max: 300, section: 'Behind the bar', hint: 'Shown under the name. Leave empty and the page writes one line from the spirit, style and drinks.' },
@@ -160,6 +161,7 @@ export const COLLECTIONS = {
       { key: 'size', label: 'Size note', type: 'text', max: 20, section: 'Prices', placeholder: 'Split, 375 ml, 1 liter' },
       { key: 'pages', label: 'Shows on these pages', type: 'tags', section: 'Where it shows', hint: 'Grape, style or region pages by name, e.g. Cabernet, Napa Valley, Prosecco. It also shows on its country and colour pages.' },
       { key: 'bottle_img', label: 'Bottle photo', type: 'photo', scan: true, section: 'Tasting', hint: 'Scan Bottle: take a photo of your own bottle and it cuts out just the bottle. Never use photos from a winery’s or shop’s website.' },
+      { key: 'spin', label: 'Spin (360°)', type: 'spin', section: 'Tasting', hint: 'Record the bottle turning on a lazy Susan. On the wine’s page, staff drag it to spin it.' },
       { key: 'style', label: 'Style tag', type: 'text', max: 30, section: 'Tasting', placeholder: 'Crisp, Off-dry, Big and bold' },
       { key: 'notes', label: 'Tasting notes (from the Wine Book)', type: 'textarea', max: 300, section: 'Tasting', hint: 'Shown on the wine’s page as written.' },
       { key: 'structure', label: 'No notes? Structure', type: 'text', max: 120, section: 'Tasting', hint: 'Only used when Tasting notes is empty. Leave empty to build it from the ratings.' },
@@ -261,6 +263,7 @@ function cleanField(f, v) {
     case 'select': return f.options.includes(v) ? v : f.options[0];
     case 'tags': case 'lines': return (Array.isArray(v) ? v : []).map((x) => str(x, 300)).filter(Boolean).slice(0, f.max || 12);
     case 'chips': return (Array.isArray(v) ? v : []).filter((x) => f.options.includes(x));
+    case 'spin': return (Array.isArray(v) ? v : []).map((x) => str(x, 300)).filter((x) => x.startsWith('/media/')).slice(0, 48);
     case 'video': {
       if (!v || typeof v !== 'object') return null;
       if (v.kind === 'youtube' && ytId(v.youtubeId || v.url)) return { kind: 'youtube', youtubeId: ytId(v.youtubeId || v.url), title: str(v.title, 200) };

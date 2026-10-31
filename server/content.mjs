@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { addRows } from './editinplace.mjs';
+import { chapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE } from './manual.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
 import { COLLECTIONS, COURSES, SHARED, listEntries, getEntry, wineDescription } from './cms.mjs';
@@ -427,6 +428,13 @@ export function assemble(db, file) {
 }
 
 function assembleRaw(db, file) {
+  // Study Guide chapters: drawn from the France chapter's design (Figma 362:2), one per content/manual/<slug>.json
+  if (/^m-/.test(file)) {
+    const ch = chapterBySlug(file.slice(2)); const tpl = basePage('362-2');
+    if (!ch || !tpl) return null;
+    if (SCOPE.user) markRead(db, SCOPE.user.id, ch.slug);
+    return chapterPage(tpl, ch, { all: chapters(), prog: progress(db, SCOPE.user?.id, SCOPE.store), slugs: new Set(baseIndex().map((x) => x.slug)) });
+  }
   if (/^e\d+$/.test(file)) {
     const e = getEntry(db, Number(file.slice(1)));
     return e ? entryPage(db, e) : null;
@@ -434,6 +442,7 @@ function assembleRaw(db, file) {
   const page = basePage(file);
   if (!page) return null;
   const slug = baseIndex().find((x) => x.file === file)?.slug ?? '';
+  if (slug === GUIDE) return guideIndex(page, { prog: progress(db, SCOPE.user?.id, SCOPE.store) });
   if (isGeneric()) return genericPage(db, file, slug, page);
   if (file === '23-2') {
     const SITES = { 'Restaurant · J.Baldwin’s': 'https://www.jbaldwins.com', 'Restaurant · Testa Barra': 'https://www.testabarra.com', 'Restaurant · The Baldwin': 'https://thebaldwinshelby.com' };
@@ -513,7 +522,7 @@ function libraryEntry(db, e) {
 }
 
 /* ---- index: designed pages, minus the ones the CMS now owns, plus every CMS page ---- */
-const PREFIXES = Object.values(COLLECTIONS).map((c) => c.prefix);
+const PREFIXES = [...Object.values(COLLECTIONS).map((c) => c.prefix), GUIDE + '/'];
 export function fullIndex(db) {
   const extra = shelfSearchText(baseIndex(), ordered(db, 'shelf'), ordered(db, 'beer'));
   for (const [k, v] of wineSearchText(baseIndex(), ordered(db, 'wine'))) extra.set(k, ((extra.get(k) || '') + ' ' + v).trim());
@@ -532,6 +541,11 @@ export function fullIndex(db) {
         thumb: d.photo || d.bottle_img || (e.collection === 'wine' ? WINE_FILLER : e.collection === 'shelf' ? SPIRIT_FILLER : undefined), blurb: d.description || d.tagline || (e.collection === 'wine' ? wineDescription(d) : d.notes) || undefined,
       });
     }
+  }
+  // Study Guide chapters (content/manual), searchable like any page
+  for (const ch of chapters()) {
+    entries.push({ id: 'm-' + ch.slug, file: 'm-' + ch.slug, slug: chapterSlug(ch), name: 'Study Guide · ' + ch.title, title: ch.title, section: 'Study Guide', nav: 'Sommelier Program',
+      text: [ch.lead, ...ch.sections.flatMap((x) => [x.name, ...(x.know || []), ...(x.chips?.items || [])])].filter(Boolean).join(' ').slice(0, 1200), blurb: ch.lead });
   }
   return [...base, ...entries];
 }
