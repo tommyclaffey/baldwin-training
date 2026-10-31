@@ -997,3 +997,8 @@ body.quiz-lock .corner { display: none; }
 .sidebar > [data-name="Sidebar"] > [data-name="Top"] { margin-bottom: 24px; }
 .sidebar > [data-name="Sidebar"] > [data-name="Your Training"] { margin-top: auto !important; }
 .account { margin-top: 0; }
+@media (max-width: 859px) {
+  /* Hero fact boxes (wine, bottle pages): two across, not one tall stack. */
+  [data-name="Hero"] [data-name="Copy"] > [data-name="Stats"], [data-name="Hero"] [data-name="Copy"] > [data-name="Origin"] { display: grid !important; grid-template-columns: 1fr 1fr; height: auto !important; }
+  [data-name="Hero"] [data-name="Copy"] > [data-name="Stats"] > *, [data-name="Hero"] [data-name="Copy"] > [data-name="Origin"] > * { width: auto !important; height: auto !important; min-height: 0 !important; min-width: 0; padding: 12px 14px !important; border-width: 0 !important; box-shadow: inset 0 0 0 .5px #3A3632; }
+}
