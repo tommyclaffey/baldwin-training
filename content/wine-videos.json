@@ -394,6 +394,325 @@
     "title": "Italy vs California Zinfandel Showdown! · Wine Folly"
    },
    "note": "Wine Folly tastes Zinfandel against Primitivo. The California Zin is from Dry Creek Valley."
+  },
+  {
+   "key": "wine/spain",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "d-S6Mg5cAUg",
+    "title": "5 Spanish Red Wines You Must Try · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/germany",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "ZLXhBKJb01o",
+    "title": "Riesling (Everything you need to know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Riesling, Germany’s grape."
+  },
+  {
+   "key": "wine/hungary",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "4bXuYPIUaMM",
+    "title": "The Region That Changed History (Learn Hungarian Wine) · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/argentina",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "-ZxTpXEhlXM",
+    "title": "Get To Know Argentina Wine · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/chile",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "nwVlvezUSRo",
+    "title": "How Well Do You Know Sauvignon Blanc From Chile? · Wine Folly"
+   },
+   "note": "Wine Folly tastes Chilean Sauvignon Blanc."
+  },
+  {
+   "key": "wine/australia",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "o9BM4foIZWI",
+    "title": "Are you curious about Australian Shiraz? | Wine Unpacked · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/new-zealand",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "wC22JA8Pd50",
+    "title": "Pinot Noir… From New Zealand? · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/south-africa",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "jz7xkyplcuo",
+    "title": "Hunting Syrah in South Africa · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/spain/ribera-del-duero",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "my78HJ-TgA8",
+    "title": "Ribera del Duero: Serious Tempranillo · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/spain/rias-baixas",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "wDa9OVLaq4U",
+    "title": "Albariño (Everything you need to know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Albariño, the grape of Rías Baixas."
+  },
+  {
+   "key": "wine/spain/penedes",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "vzNu85y4FRY",
+    "title": "Spain’s Hugely Underrated Sparkling Wine (Cava) · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/portugal/douro",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "wa3uPeCmb6Q",
+    "title": "Port Wine and the Douro Valley · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/portugal/vinho-verde",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "wDa9OVLaq4U",
+    "title": "Albariño (Everything you need to know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Albariño, called Alvarinho in Vinho Verde."
+  },
+  {
+   "key": "wine/portugal/alentejo",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "jMIjPD8SyY8",
+    "title": "Europe's Last Wild Wine Frontier Is in Portugal | MAPPED Alentejo (Part 1) · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/germany/mosel",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "EnKYWchzjyI",
+    "title": "The German Wine That’s Worth Collecting · Wine Folly"
+   },
+   "note": "A short Wine Folly clip on Mosel Riesling."
+  },
+  {
+   "key": "wine/hungary/tokaj",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "v4HhKwZto08",
+    "title": "Learn by Tasting (ep. 7) · Wine Folly"
+   },
+   "note": "Wine Folly tastes a Tokaji Furmint."
+  },
+  {
+   "key": "wine/argentina/mendoza",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "C9-hS3nASjo",
+    "title": "Argentina Malbec History and Producers Part 1 · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/argentina/uco-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "z-8MHuNNo9E",
+    "title": "France vs Argentina Malbec Wine · Wine Folly"
+   },
+   "note": "Wine Folly tastes Argentine Malbec against French."
+  },
+  {
+   "key": "wine/argentina/lujan-de-cuyo",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "DAWvucB2A1s",
+    "title": "Argentina Malbec History and Producers Part 2 · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/argentina/patagonia",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "g04Jn78TwmE",
+    "title": "Pinot Noir (Everything you need to know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Pinot Noir, Patagonia’s grape."
+  },
+  {
+   "key": "wine/chile/maipo-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "-w6gz4YVPyk",
+    "title": "Cabernet Sauvignon (Everything You Need To Know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Cabernet Sauvignon, Maipo’s grape."
+  },
+  {
+   "key": "wine/chile/colchagua-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "Nwz5i2pvXnY",
+    "title": "Carménère: Bordeaux's Lost Grape · Wine Folly"
+   },
+   "note": "Wine Folly on Carménère, Colchagua’s grape."
+  },
+  {
+   "key": "wine/chile/aconcagua",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "-w6gz4YVPyk",
+    "title": "Cabernet Sauvignon (Everything You Need To Know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Cabernet Sauvignon, Aconcagua’s main grape."
+  },
+  {
+   "key": "wine/australia/barossa-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "o9BM4foIZWI",
+    "title": "Are you curious about Australian Shiraz? | Wine Unpacked · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/australia/eden-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "ZLXhBKJb01o",
+    "title": "Riesling (Everything you need to know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Riesling, Eden Valley’s white."
+  },
+  {
+   "key": "wine/australia/mclaren-vale",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "o9BM4foIZWI",
+    "title": "Are you curious about Australian Shiraz? | Wine Unpacked · Wine Folly"
+   },
+   "note": "Wine Folly on Australian Shiraz."
+  },
+  {
+   "key": "wine/australia/coonawarra",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "-w6gz4YVPyk",
+    "title": "Cabernet Sauvignon (Everything You Need To Know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Cabernet Sauvignon, Coonawarra’s grape."
+  },
+  {
+   "key": "wine/australia/margaret-river",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "yyqlCqcs868",
+    "title": "Margaret River Region Guide: Everything you need to know · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/australia/yarra-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "aSpyylc5F20",
+    "title": "Chardonnay (everything you need to know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Chardonnay, a Yarra Valley grape."
+  },
+  {
+   "key": "wine/australia/clare-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "ZLXhBKJb01o",
+    "title": "Riesling (Everything you need to know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Riesling, Clare Valley’s grape."
+  },
+  {
+   "key": "wine/australia/tasmania",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "00aml1rum5U",
+    "title": "Learn by Tasting (ep. 6) · Wine Folly"
+   },
+   "note": "Wine Folly tastes a Tasmanian wine."
+  },
+  {
+   "key": "wine/new-zealand/marlborough",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "F0jDcA_Ujcc",
+    "title": "Sauvignon Blanc (Everything you need to know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Sauvignon Blanc, Marlborough’s grape."
+  },
+  {
+   "key": "wine/new-zealand/central-otago",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "wC22JA8Pd50",
+    "title": "Pinot Noir… From New Zealand? · Wine Folly"
+   },
+   "note": "Wine Folly on New Zealand Pinot Noir."
+  },
+  {
+   "key": "wine/new-zealand/hawkes-bay",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "JJnJK8rpibQ",
+    "title": "Merlot (Everything you need to know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Merlot, a Hawke’s Bay grape."
+  },
+  {
+   "key": "wine/new-zealand/martinborough",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "R2Q11oF_eyg",
+    "title": "Whoa! New Zealand Chardonnay · Wine Folly"
+   },
+   "note": "Wine Folly on New Zealand Chardonnay."
+  },
+  {
+   "key": "wine/new-zealand/north-canterbury",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "R2Q11oF_eyg",
+    "title": "Whoa! New Zealand Chardonnay · Wine Folly"
+   },
+   "note": "Wine Folly on New Zealand Chardonnay."
+  },
+  {
+   "key": "wine/south-africa/stellenbosch",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "-w6gz4YVPyk",
+    "title": "Cabernet Sauvignon (Everything You Need To Know) | Grapes 101 · Wine Folly"
+   },
+   "note": "Wine Folly on Cabernet Sauvignon, a Stellenbosch grape."
   }
  ]
 }

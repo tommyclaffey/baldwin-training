@@ -69,7 +69,8 @@ export function fillWinePage(page, wines, basePage) {
 /** Which wines belong on a wine page. */
 function winesFor(slug, title, data) {
   const kind = wineKind(slug);
-  if (kind === 'country') return data.filter((d) => norm(d.country) === norm(title));
+  // Wines in the menu's "Around the world" column belong to their country through their page tags.
+  if (kind === 'country') return data.filter((d) => norm(d.country) === norm(title) || (d.pages || []).some((x) => norm(x) === norm(title)));
   if (kind === 'style') {
     const color = { red: 'Red', white: 'White', sparkling: 'Bubbles' }[slug.split('/')[1]];
     if (color) return data.filter((d) => d.color === color);
@@ -86,7 +87,7 @@ export function fillWineShelf(page, slug, title, wines, basePage) {
   const list = winesFor(slug, title, wines.map((e) => ({ ...e.data, _slug: e.slug }))).sort((a, b) => (order[a.list] ?? 9) - (order[b.list] ?? 9));
   const target = find(page.main, byName('On our shelf')) || find(page.main, byName('On our list'));
   // None of our wines from here: the design's sample line ("On our list · Bolgheri Rosso") goes rather than mislead.
-  if (!list.length && target && ['region', 'grape', 'wine'].includes(wineKind(slug))) { remove(page.main, target); return; }
+  if (!list.length && target && ['region', 'grape', 'wine', 'country'].includes(wineKind(slug))) { remove(page.main, target); return; }
   if (!list.length || !target) return;
   const parentOf = (root, node) => (root.c || []).includes(node) ? root : (root.c || []).reduce((hit, c) => hit || parentOf(c, node), null);
   const body = page.main.c.find((c) => c.n === 'Body');

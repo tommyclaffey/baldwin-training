@@ -66,7 +66,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 534, 'the design (incl. 79 wine regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
+  assert.equal(index.length, 588, 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -225,7 +225,7 @@ test('quizzes are written from the book, scored by the server; custom and team q
 test('wine videos: every wine page has a Learn more section, and a video plays there and on the wine list', async () => {
   const groups = (await call('/api/wine-videos')).data.groups;
   const items = groups.flatMap((g) => g.items);
-  assert.equal(items.filter((i) => !i.key.startsWith('wine:')).length, 115, '8 styles, 3 countries, 79 regions and states, 25 grapes and styles');
+  assert.equal(items.filter((i) => !i.key.startsWith('wine:')).length, 169, '8 styles, 15 countries, 121 regions and states, 25 grapes and styles');
   assert.ok(items.some((i) => i.key === 'wine:Tenuta Spinelli Pecorino'));
   const index = (await call('/api/index')).data;
   const find = (n, pred) => (pred(n) ? n : (n.c || []).map((c) => find(c, pred)).find(Boolean));
@@ -238,7 +238,7 @@ test('wine videos: every wine page has a Learn more section, and a video plays t
   // the starting videos from the repo are in place
   const cab = find((await page('wine/red/cabernet')).main, (n) => n.n === 'Learn more');
   assert.equal(find(cab, (n) => !!n.vid).vid.youtubeId, '-w6gz4YVPyk');
-  assert.equal(items.filter((i) => i.video).length, 46, 'Wine Folly: 6 grape videos and 40 country, state and region videos');
+  assert.equal(items.filter((i) => i.video).length, 83, 'Wine Folly: 6 grape videos and 77 country, state and region videos');
   assert.ok(items.find((i) => i.key === 'wine/italy/tuscany')?.video?.youtubeId === 'ixXOoWN8LGg');
   // anonymous can't set one, an unknown page is refused
   assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/syrah', video: null }, auth: false })).status, 401);
@@ -343,6 +343,19 @@ test('US wine by state: breadcrumbs, the regions inside, Wine Folly links and ou
   assert.ok(ca.includes('REGIONS IN CALIFORNIA') && ca.includes('Sibling · Sierra Foothills'));
   const usa = await page('wine/usa');
   assert.ok(usa.includes('Sub · California') && usa.includes('Sub · Snake River Valley') && !usa.includes('Sub · Napa Valley'), 'the USA page lists states');
+});
+
+test('wine around the world: 12 more countries, their regions, our wines on them', async () => {
+  const index = (await call('/api/index')).data;
+  const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
+  const spain = await page('wine/spain');
+  assert.ok(spain.includes('Sub · Rioja') && spain.includes('Sub · Toro') && spain.includes('ON OUR LIST'), 'Spain lists its regions and our Spanish wines');
+  assert.ok(spain.includes('"https://winefolly.com/wine-regions/spain/"'));
+  const uco = await page('wine/argentina/uco-valley');
+  assert.ok(uco.includes('Crumb · Mendoza') && uco.includes('Bramare'), 'Uco Valley sits under Mendoza, with our Bramare');
+  assert.ok(!(await page('wine/georgia')).includes('Add bottle'), 'no empty shelf placeholder');
+  const wine = await page('the-bar/wine');
+  assert.ok(wine.includes('Wine country · South Africa') && wine.includes('Wine country · Georgia'));
 });
 
 test('the wine list fills the Wine page and every wine page it belongs on', async () => {

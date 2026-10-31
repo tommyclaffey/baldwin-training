@@ -78,7 +78,9 @@
    "bottle": "55",
    "size": "",
    "pages": [
-    "Riesling"
+    "Riesling",
+    "Mosel",
+    "Germany"
    ],
    "style": "Off-Dry",
    "notes": "Lime, green apple and wet stone; a touch of sweetness balanced by bright acid.",
@@ -204,7 +206,8 @@
    "bottle": "40",
    "size": "",
    "pages": [
-    "Chenin Blanc"
+    "Chenin Blanc",
+    "South Africa"
    ],
    "style": "Fresh",
    "notes": "Yellow apple, quince and a honeyed edge; fresh but round.",
@@ -364,7 +367,9 @@
    "half": "35",
    "bottle": "68",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Spain"
+   ],
    "style": "Aged",
    "notes": "Red cherry, plum, vanilla and leather from years in oak.",
    "mouthfeel": "smooth",
@@ -649,7 +654,9 @@
    "bottle": "48",
    "size": "",
    "pages": [
-    "Malbec"
+    "Malbec",
+    "Mendoza",
+    "Argentina"
    ],
    "style": "Rich",
    "notes": "Plum, blackberry and violet with a touch of cocoa.",
@@ -2730,7 +2737,9 @@
    "half": "",
    "bottle": "65",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Spain"
+   ],
    "style": "",
    "notes": "Zippy and lightly spritzy; citrus and a salty edge.",
    "mouthfeel": "zippy and lightly spritzy",
@@ -2760,7 +2769,9 @@
    "bottle": "49",
    "size": "",
    "pages": [
-    "Sauvignon Blanc"
+    "Sauvignon Blanc",
+    "Marlborough",
+    "New Zealand"
    ],
    "style": "",
    "notes": "Passion fruit, lime and fresh-cut grass.",
@@ -2791,7 +2802,9 @@
    "bottle": "49",
    "size": "",
    "pages": [
-    "Sauvignon Blanc"
+    "Sauvignon Blanc",
+    "Patagonia",
+    "Argentina"
    ],
    "style": "",
    "notes": "Cool Patagonian style; citrus, herbs and crisp acidity.",
@@ -2821,7 +2834,10 @@
    "half": "",
    "bottle": "55",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Rías Baixas",
+    "Spain"
+   ],
    "style": "",
    "notes": "Peach, citrus and a touch of sea salt.",
    "mouthfeel": "fresh",
@@ -2850,7 +2866,10 @@
    "half": "",
    "bottle": "55",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Portugal",
+    "Vinho Verde"
+   ],
    "style": "",
    "notes": "The same grape as Albariño, from Portugal; vivid and floral.",
    "mouthfeel": "vivid and floral",
@@ -2909,7 +2928,9 @@
    "bottle": "69",
    "size": "",
    "pages": [
-    "Pinot Noir"
+    "Pinot Noir",
+    "North Canterbury",
+    "New Zealand"
    ],
    "style": "",
    "notes": "New Zealand Pinot; cherry, herbs and bright acidity.",
@@ -2939,7 +2960,9 @@
    "half": "",
    "bottle": "75",
    "size": "",
-   "pages": [],
+   "pages": [
+    "South Africa"
+   ],
    "style": "",
    "notes": "Bordeaux-style blend; dark fruit and firm structure.",
    "mouthfeel": "firm",
@@ -2968,7 +2991,10 @@
    "half": "",
    "bottle": "79",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Spain",
+    "Rioja"
+   ],
    "style": "",
    "notes": "Long-aged; dried cherry, leather and vanilla.",
    "mouthfeel": "smooth",
@@ -2997,7 +3023,10 @@
    "half": "",
    "bottle": "149",
    "size": "",
-   "pages": [],
+   "pages": [
+    "Spain",
+    "Priorat"
+   ],
    "style": "",
    "notes": "From slate soils; dark fruit, minerals and intensity.",
    "mouthfeel": "intense",
@@ -3027,7 +3056,10 @@
    "bottle": "79",
    "size": "",
    "pages": [
-    "Malbec"
+    "Malbec",
+    "Uco Valley",
+    "Mendoza",
+    "Argentina"
    ],
    "style": "",
    "notes": "High-altitude Malbec; violet, plum and a polished finish.",
@@ -3058,7 +3090,9 @@
    "bottle": "59",
    "size": "",
    "pages": [
-    "Syrah"
+    "Syrah",
+    "Barossa Valley",
+    "Australia"
    ],
    "style": "",
    "notes": "Juicy Barossa Shiraz; blackberry and black pepper.",

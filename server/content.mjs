@@ -442,7 +442,7 @@ function assembleRaw(db, file) {
   if (file === '13-2') foodMatrix(page, ordered(db, 'recipe'));
   if (file === '17-2') allergenGrid(page, ordered(db, 'recipe'));
   const entry = baseIndex().find((x) => x.file === file);
-  if (entry && wineKind(entry.slug)) { learnMore(page, entry, wineVideos(db).get(entry.slug), basePage); wineFollyLink(page, entry.slug); }
+  if (entry && wineKind(entry.slug)) { learnMore(page, entry, wineVideos(db).get(entry.slug), basePage); wineFollyLink(page, entry.slug, basePage); }
   if (file === '25-2') wineCards(page, wineVideos(db));
   if (entry && entry.slug.startsWith('spirit/')) fillShelf(page, entry.slug, baseIndex(), ordered(db, 'shelf'), basePage);
   if (file === '25-2') fillWinePage(page, ordered(db, 'wine'), basePage);
@@ -472,7 +472,7 @@ function genericPage(db, file, slug, page) {
   }
   if (file === '17-2') allergenGrid(page, recipes, true);
   const entry = baseIndex().find((x) => x.file === file);
-  if (entry && wineKind(entry.slug)) { learnMore(page, entry, wineVideos(db).get(entry.slug), basePage); wineFollyLink(page, entry.slug); }
+  if (entry && wineKind(entry.slug)) { learnMore(page, entry, wineVideos(db).get(entry.slug), basePage); wineFollyLink(page, entry.slug, basePage); }
   if (entry && entry.slug.startsWith('spirit/') && shelf.length) fillShelf(page, entry.slug, baseIndex(), shelf, basePage);
   if (file === '25-2' && wines.length) fillWinePage(page, wines, basePage);
   if (entry && wineKind(entry.slug) && wines.length) fillWineShelf(page, entry.slug, entry.title, wines, basePage);
