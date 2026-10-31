@@ -6,6 +6,11 @@ const COLLECTION_OF: Record<string, string> = { Classic: 'classic', Signature: '
 
 /** For signed-in managers: a way into the admin, and straight to this page's template form. */
 export function EditBar() {
+  return <ManagerLinks className="edit-bar" />;
+}
+
+/** "Edit This Page" (when there's a form for it) and "Admin". Lives in the sidebar's account card. */
+export function ManagerLinks({ className }: { className: string }) {
   const { user } = useSession();
   const entry = usePageEntry();
   if (!user) return null;
@@ -13,7 +18,7 @@ export function EditBar() {
   // Classics are the shared library: only a super admin edits them.
   const col = found === 'classic' && user.role !== 'superadmin' ? null : found;
   return (
-    <div className="edit-bar" role="region" aria-label="Manager tools">
+    <div className={className} role="group" aria-label="Manager tools">
       {col && <Link to={`/admin/pages/${col}/${entry!.file.slice(1)}`}>Edit This Page</Link>}
       <Link to="/admin">Admin</Link>
     </div>

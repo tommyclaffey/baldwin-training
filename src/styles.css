@@ -853,8 +853,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   [data-name="Values"] > * > * { width: auto !important; max-width: 100%; align-self: stretch !important; }
 }
 @media (max-width: 859px) {
-  /* The signed-in pill floats bottom-right: leave room under the last section so it never covers Back / Next. */
-  .shell .content { padding-bottom: 76px; }
+
 }
 
 /* ---- Quizzes v2 (Oct 31, Figma section 11). The quiz opens in a box; the page behind dims and locks. ---- */
@@ -976,3 +975,20 @@ body.quiz-lock { overflow: hidden; }
 @media (max-width: 859px) { .fx-h[data-name^="Bottle · "]:has(> [data-name="Drawing"]) > .marker.fsvg { align-self: center !important; } }
 /* While a quiz is open, the corner pills step aside too. */
 body.quiz-lock .corner { display: none; }
+
+/* Who's signed in: the foot of the sidebar, not a pill floating over the page (Oct 31). */
+.sidebar { display: flex; flex-direction: column; min-height: 100%; }
+.account { display: flex; flex-direction: column; gap: 10px; margin: 0 20px 20px; padding-top: 14px; border-top: 1px solid #3A3632; font-family: 'Archivo', sans-serif; }
+.account-tools { display: flex; gap: 8px; }
+.account-tools a { flex: 1; text-align: center; color: var(--cream); text-decoration: none; background: #34302C; padding: 9px 10px; border-radius: 10px; font-size: 13.5px; font-weight: 600; white-space: nowrap; }
+.account-tools a:hover { background: #45403A; }
+.account-row { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.account-avatar { width: 34px; height: 34px; flex: none; border-radius: 50%; display: grid; place-items: center; background: #C49A6C; color: #1E1C1A; font-size: 12.5px; font-weight: 800; letter-spacing: .02em; }
+.account-who { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1; }
+.account-who strong { color: #F2EEE7; font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.account-who span { color: #B8AFA3; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.account-out { flex: none; border: 0; background: none; padding: 6px 0; color: #C49A6C; font: 600 13px 'Archivo', sans-serif; text-decoration: underline; cursor: pointer; }
+.account-out:hover { color: #F2EEE7; }
+.account-out:focus-visible, .account-tools a:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px; }
+.account.support { background: #7A2E1C; margin: 0 12px 12px; padding: 12px; border: 0; border-radius: 12px; }
+.account.support .account-who span { color: #F2D9CF; }
