@@ -167,6 +167,8 @@ export function serveAt(d) {
 // Sibling dot colours by wine colour (Red is the template's).
 const DOT = { Red: '#4A0D1E', White: '#D8B861', Bubbles: '#E6D29A', 'Rosé': '#E3A0A0', Sake: '#E9E1CF' };
 const money = (v) => (v && /^\d/.test(v) ? '$' + v : v || '—');
+/** Tommy's drawn wine bottle, used wherever a wine has no photo yet. */
+export const WINE_FILLER = '/img/wine-bottle-filler.jpg';
 const LIST_LABEL = { 'By the glass': 'By the glass', 'Sommelier selection': 'Sommelier selection', 'By the bottle': 'By the bottle', Bubbles: 'Bubbles' };
 
 /** The grape or region page a wine belongs to (first match in "Shows on these pages"), else its colour page. */
@@ -195,16 +197,16 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
     if (last) setText(last, d.name);
   }
   // Hero: bottle, list and style pills, name, line, prices, serving temperature
+  // No photo yet: Tommy's drawn bottle fills the panel (Oct 31: "the filler if there isn't a picture available").
   const bottle = find(main, startsWith('IMG/Bottle'));
+  const panel = find(main, byName('Bottle'));
   if (bottle) {
-    if (d.bottle_img) { bottle.f = [{ img: d.bottle_img, m: 'FIT' }]; bottle.w = 220; bottle.x = 70; }
-    else bottle.f = [];
-    // The drawn bottle shows only until there's a photo.
-    if (d.bottle_img) { const panel = find(main, byName('Bottle')); if (panel) panel.c = panel.c.filter((c) => c.n !== 'Shape · Wine bottle'); }
+    bottle.f = [{ img: d.bottle_img || WINE_FILLER, m: 'FIT' }];
+    if (d.bottle_img) { bottle.w = 220; bottle.x = 70; }
+    else if (panel) { bottle.x = 0; bottle.y = 0; bottle.w = panel.w; bottle.h = panel.h; }
     bottle.n = 'IMG/Bottle · ' + d.name;
   }
-  const src = find(main, byName('Source'));
-  if (src) setText(src, d.bottle_img ? '' : 'PHOTO TO COME');
+  if (panel) panel.c = panel.c.filter((c) => c.n !== 'Shape · Wine bottle' && c.n !== 'Source');
   const tags = find(main, byName('Tags'));
   if (tags) {
     const [p1, p2] = tags.c;
