@@ -24,13 +24,13 @@ export function QuizBuilder({ style, className }: { style: CSSProperties; classN
   const chosen = topics.filter((t) => picked.includes(t.key));
   const pool = chosen.reduce((n, t) => n + t.count, 0);
   const toggle = (k: string) => { setSaved(''); setPicked((p) => (p.includes(k) ? p.filter((x) => x !== k) : [...p, k])); };
+  const toggleGroup = (keys: string[]) => { setSaved(''); setPicked((p) => (keys.every((k) => p.includes(k)) ? p.filter((x) => !keys.includes(x)) : [...new Set([...p, ...keys])])); };
 
   const go = async () => {
     setBusy(true); setError('');
     try {
       const id = await start('', { topics: picked, count });
       nav('/quizzes?quiz=' + encodeURIComponent(id));
-      requestAnimationFrame(() => document.querySelector('.quiz-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
     } catch (e) { setError((e as Error).message); }
     setBusy(false);
   };
@@ -47,23 +47,31 @@ export function QuizBuilder({ style, className }: { style: CSSProperties; classN
   if (!topics.length) return <div className={className + ' qb'} style={{ ...style, height: 'auto' }}><p className="qb-summary">Quizzes show up once the menu is in.</p></div>;
   return (
     <div className={className + ' qb'} style={{ ...style, height: 'auto', minHeight: 0 }} role="group" aria-label="Build a quiz">
-      {groups.map(({ g, items }) => (
-        <div key={g} className="qb-group">
-          <span className="qb-label">{g}</span>
-          <div className="qb-topics">
-            {items.map((t) => {
-              const on = picked.includes(t.key);
-              return (
-                <button key={t.key} type="button" className={'qb-chip' + (on ? ' on' : '')} aria-pressed={on} onClick={() => toggle(t.key)}>
-                  <span className="qb-check" aria-hidden="true">{on && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1E1C1A" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>}</span>
-                  <span>{t.label}</span>
-                  <span className="qb-count">{t.count}</span>
-                </button>
-              );
-            })}
+      {groups.map(({ g, items }) => {
+        const keys = items.map((t) => t.key), all = keys.every((k) => picked.includes(k));
+        return (
+          <div key={g} className="qb-group">
+            <div className="qb-ghead">
+              <span className="qb-label">{g}</span>
+              <button type="button" className="qb-all" onClick={() => toggleGroup(keys)}>{all ? 'Clear' : 'Select All'}<span className="sr-only"> {g}</span></button>
+            </div>
+            <div className="qb-tiles">
+              {items.map((t) => {
+                const on = picked.includes(t.key);
+                return (
+                  <button key={t.key} type="button" className={'qb-tile' + (on ? ' on' : '')} aria-pressed={on} onClick={() => toggle(t.key)}>
+                    <span className="qb-tile-name">{t.label}</span>
+                    <span className="qb-tile-foot">
+                      <span className="qb-tile-count">{t.count} questions</span>
+                      <span className="qb-check" aria-hidden="true">{on && <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1E1C1A" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>}</span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
       <hr className="qb-divider" />
       <div className="qb-footer">
         <div className="qb-length">
@@ -72,7 +80,7 @@ export function QuizBuilder({ style, className }: { style: CSSProperties; classN
             {LENGTHS.map((n) => <button key={n} type="button" role="radio" aria-checked={count === n} className={count === n ? 'on' : ''} onClick={() => setCount(n)}>{n}</button>)}
           </div>
           <span className="qb-summary">
-            {chosen.length ? `${chosen.map((t) => t.label).join(', ')} · ${pool} to pick from` : 'Pick one or more topics.'}
+            {chosen.length ? `${chosen.length} subject${chosen.length === 1 ? '' : 's'} · ${pool} questions to pick from` : 'Pick one or more subjects.'}
           </span>
         </div>
         <div className="qb-buttons">

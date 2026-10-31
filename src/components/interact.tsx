@@ -8,7 +8,8 @@ import type { FNode } from './FigmaNode';
 export type Meta = {
   k?: string; mode?: 'toggle' | 'pick'; val?: string; def?: boolean | string;
   on?: FNode; off?: FNode; save?: 'day' | 'week';
-  show?: { req?: string[]; forbid?: string[]; pick?: [string, string[], string] };
+  show?: { req?: string[]; forbid?: string[]; pick?: [string, string[], string]; text?: [string, string] };
+  find?: string; label?: string;
   group?: string; inGroup?: string;
   act?: 'print' | 'reset' | 'zoom'; reset?: string[]; img?: string; caption?: string;
   cls?: [string, Record<string, string>];
@@ -94,6 +95,10 @@ export function isShown(m: Meta | undefined, s: Store | null) {
   if (req.some((k) => !s.get(k, true))) return false;
   if (forbid.some((k) => !!s.get(k, false))) return false;
   if (pick && !pick[1].includes(String(s.get(pick[0], pick[2])))) return false;
+  if (m.show.text) {
+    const q = String(s.get(m.show.text[0], '')).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
+    if (q && !q.split(' ').every((w) => m.show!.text![1].includes(w))) return false;
+  }
   return true;
 }
 
@@ -183,5 +188,18 @@ export function AssignName({ slot, node, render }: { slot: string; node: FNode; 
       value={draft} maxLength={60} onChange={(e) => setDraft(e.target.value)}
       onBlur={() => { if (draft.trim() !== name) void sections.save(slot, draft.trim()); }}
       onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }} />
+  );
+}
+
+/** A drawn "find" box that filters the list as you type (the Back Bar). */
+export function FindBox({ k, label, style, className }: { k: string; label: string; style: CSSProperties; className: string }) {
+  const s = useInteract();
+  const v = String(s?.get(k, '') ?? '');
+  return (
+    <label className={className + ' find-box'} style={style}>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B645B" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
+      <input type="search" value={v} placeholder={label} aria-label={label.replace(/…$/, '')} onChange={(e) => s?.set(k, e.target.value)} />
+      {v && <button type="button" className="find-clear" onClick={() => s?.set(k, '')} aria-label="Clear">✕</button>}
+    </label>
   );
 }

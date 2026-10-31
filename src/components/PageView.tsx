@@ -2,13 +2,13 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
 import { InteractProvider } from './interact';
-import { QuizCard, ProgressCard } from '../quiz/QuizCard';
+import { QuizModal, ReviewCard, ProgressCard } from '../quiz/QuizCard';
 import { QuizBuilder } from '../quiz/QuizBuilder';
 import { quizPage, trainingCard } from '../quiz/transform';
 import { useQuiz } from '../quiz/store';
 
 const QUIZ_PAGE = '18:2';
-const QUIZ_SLOTS: Record<string, Slot> = { 'Live quiz': (p) => <QuizCard {...p} />, Progress: (p) => <ProgressCard {...p} />, Builder: (p) => <QuizBuilder {...p} /> };
+const QUIZ_SLOTS: Record<string, Slot> = { 'Review queue': (p) => <ReviewCard {...p} />, 'Live quiz': (p) => <ReviewCard {...p} />, Progress: (p) => <ProgressCard {...p} />, Builder: (p) => <QuizBuilder {...p} /> };
 const NO_SLOTS: Record<string, Slot> = {};
 import { PRODUCT_NAME } from '../lib/brand';
 import { api, canEdit } from '../lib/api';
@@ -236,6 +236,7 @@ export function PageView() {
           <main ref={ref} key={shown.file} aria-busy={loading || undefined} className={'page page-enter' + (compact ? ' compact' : '')} style={{ backgroundColor: page.bg }}>
             <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
           </main>
+          {isQuiz && <QuizModal />}
           </InteractProvider>
           </SlotContext.Provider>
       </CompactContext.Provider>

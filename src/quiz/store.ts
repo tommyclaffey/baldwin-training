@@ -10,15 +10,21 @@ export type Quiz = { id: string; title: string; kind: 'builtin' | 'team'; topics
 export type Catalog = { passPct: number; topics: Topic[]; quizzes: Quiz[]; preShift: { id: string; title: string; count: number } };
 
 export const PRE_SHIFT = 'pre-shift';
+/** The review queue: questions marked red or yellow, asked again until they're green. */
+export const REVIEW = 'review';
+export type Mark = 'red' | 'yellow' | 'green';
+export type Review = { counts: Record<Mark, number>; total: number; practice: number; next: { ref: string; mark: Mark; q: string; topic: string }[] };
+let review: Review = { counts: { red: 0, yellow: 0, green: 0 }, total: 0, practice: 0, next: [] };
+export const getReview = () => review;
 let catalog: Catalog = { passPct: 80, topics: [], quizzes: [], preShift: { id: PRE_SHIFT, title: 'Pre-Shift Quiz', count: 5 } };
 /** Built-in and team quizzes (the ones that count toward sign-offs). */
 export let QUIZZES: Quiz[] = [];
 export const passFor = (total: number) => Math.ceil((total * catalog.passPct) / 100);
 export const quizById = (id: string) => QUIZZES.find((q) => q.id === id);
 export const getCatalog = () => catalog;
-export const titleOf = (id: string) => (id === PRE_SHIFT ? catalog.preShift.title : quizById(id)?.title || (id.startsWith('c:') ? 'Custom quiz' : ''));
+export const titleOf = (id: string) => (id === PRE_SHIFT ? catalog.preShift.title : id === REVIEW ? 'Review Queue' : quizById(id)?.title || (id.startsWith('c:') ? 'Custom quiz' : ''));
 
-export type Attempt = { items: string[]; questions: Record<string, Question>; answers: number[]; title?: string; finished?: boolean; score?: number; saved?: boolean; at: string };
+export type Attempt = { items: string[]; questions: Record<string, Question>; answers: number[]; marks?: Record<string, Mark>; title?: string; finished?: boolean; score?: number; saved?: boolean; at: string };
 export type Record_ = { current?: Attempt; best?: number; total?: number; last?: number; at?: string };
 type State = { device: string; name: string; quizzes: { [id: string]: Record_ }; signoffs: string[]; version: number };
 
@@ -44,12 +50,23 @@ export async function loadCatalog() {
   } catch { /* offline: keep what we have */ }
 }
 
+/** This person's review queue: counts per colour and the next questions. */
+export async function loadReview() {
+  try { review = await api<Review>('/api/quiz/review'); set({ ...state }); } catch { /* offline: keep what we have */ }
+}
+/** After an answer: how well they know it. Red and yellow go into the review queue; green takes it out. */
+export async function markAnswer(id: string, ref: string, mark: Mark) {
+  const rec = state.quizzes[id];
+  if (rec?.current) set({ ...state, quizzes: { ...state.quizzes, [id]: { ...rec, current: { ...rec.current, marks: { ...(rec.current.marks || {}), [ref]: mark } } } } });
+  try { review = await api<Review>('/api/quiz/mark', { method: 'POST', body: { ref, mark } }); set({ ...state }); } catch { /* the quiz keeps going */ }
+}
+
 /** Switch to the signed-in person's progress, then bring in what the server has (other phones, sign-offs). */
 export function setQuizUser(u: { id: number; name: string } | null) {
   if ((u?.id ?? null) === userId && (!u || state.name === u.name)) return;
   userId = u?.id ?? null;
   set(load(userId, u?.name));
-  if (u) { refreshSignoffs(true); void loadCatalog(); }
+  if (u) { refreshSignoffs(true); void loadCatalog(); void loadReview(); }
 }
 
 /** Best scores and sign-offs from the server, merged into this device's progress. */
@@ -108,7 +125,7 @@ export function answer(id: string, choice: number) {
 export async function save(id: string) {
   const rec = state.quizzes[id];
   const cur = rec?.current;
-  if (!cur?.finished || cur.saved || !userId) return;
+  if (!cur?.finished || cur.saved || !userId || id === REVIEW) return;
   await api('/api/quiz/attempt', { method: 'POST', body: { quiz: id, items: cur.items, answers: cur.answers } });
   const now = state.quizzes[id];
   if (now?.current === cur) set({ ...state, quizzes: { ...state.quizzes, [id]: { ...now, current: { ...cur, saved: true } } } });

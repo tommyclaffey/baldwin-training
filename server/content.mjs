@@ -8,6 +8,7 @@ import { COLLECTIONS, COURSES, SHARED, listEntries, getEntry, wineDescription } 
 import { classify, emptyPage, baldwinTerms, snapshotShelves, genericize, indexText } from './generic.mjs';
 import { wineKind, wineVideos, learnMore, wineCards } from './wine.mjs';
 import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
+import { fillBackBar, bottlePage } from './backbar.mjs';
 import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './winelist.mjs';
 import { wire } from './interact.mjs';
 import { fillHome } from './home.mjs';
@@ -106,6 +107,7 @@ function entryPage(db, e) {
     return cocktailPage(tpl, e, { signatures, glassCard, glassShape });
   }
   if (e.collection === 'recipe') return dishPage(tpl, { ...e, quiz: quizFor(e.data.course) }, pairingLinks(db));
+  if (e.collection === 'shelf') return bottlePage(tpl, e, { shelf: ordered(db, 'shelf'), house: ordered(db, 'house'), index: baseIndex(), basePage });
   if (e.collection === 'wine') return wineEntryPage(tpl, e, { all: ordered(db, 'wine'), index: baseIndex(), recipes: ordered(db, 'recipe') });
   return null;
 }
@@ -446,6 +448,7 @@ function assembleRaw(db, file) {
   if (entry && wineKind(entry.slug)) fillWineShelf(page, entry.slug, entry.title, ordered(db, 'wine'), basePage);
   if (file === '26-2') fillBeerPage(page, baseIndex(), ordered(db, 'beer'), basePage);
   if (entry && entry.slug.startsWith('beer/')) fillBeerStyle(page, entry.slug, baseIndex(), ordered(db, 'beer'), basePage);
+  if (file === '294-2') fillBackBar(page, ordered(db, 'shelf'), ordered(db, 'house'));
   return page;
 }
 
@@ -453,7 +456,7 @@ function assembleRaw(db, file) {
 function genericPage(db, file, slug, page) {
   const kind = classify(slug);
   const recipes = ordered(db, 'recipe'), house = ordered(db, 'house'), wines = ordered(db, 'wine'), shelf = ordered(db, 'shelf'), beers = ordered(db, 'beer');
-  if (kind === 'own' || (slug === 'food-matrix' && !recipes.length)) return emptyPage(file, slug, SCOPE.row);
+  if (kind === 'own' || (slug === 'food-matrix' && !recipes.length) || (slug === 'the-bar/back-bar' && !shelf.length)) return emptyPage(file, slug, SCOPE.row);
   const statics = snapshotShelves(page);
   if (file === '14-2') { classicTable(page, ordered(db, 'classic')); if (house.length) { houseRows(page, house); signatureCards(page, house); } }
   linkClassicLists(page, ordered(db, 'classic'));
@@ -474,6 +477,7 @@ function genericPage(db, file, slug, page) {
   if (entry && wineKind(entry.slug) && wines.length) fillWineShelf(page, entry.slug, entry.title, wines, basePage);
   if (file === '26-2' && beers.length) fillBeerPage(page, baseIndex(), beers, basePage);
   if (entry && entry.slug.startsWith('beer/') && beers.length) fillBeerStyle(page, entry.slug, baseIndex(), beers, basePage);
+  if (file === '294-2' && shelf.length) fillBackBar(page, shelf, house);
   return genericize(page, slug, { store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: wines.length, beer: beers.length } });
 }
 /** Baldwin's own dish and drink names, so they're written out of the shared pages. */

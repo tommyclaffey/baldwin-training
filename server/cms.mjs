@@ -129,15 +129,18 @@ export const COLLECTIONS = {
     ],
   },
   shelf: {
-    label: 'Back Bar', singular: 'bottle', prefix: 'shelf/', template: null, section: 'Back bar', nav: 'The Bar', noPages: true,
+    label: 'Back Bar', singular: 'bottle', prefix: 'shelf/', template: '295-2', section: 'Back bar', nav: 'The Bar',
     group: { key: 'spirit', values: SHELF.map((x) => x.key) },
-    hasPage: () => false,
-    lists: 'Every bottle shows in “On our shelf” on its spirit page, under its style, and on that style’s page. Whiskeys also show on the Whiskey page.',
+    lists: 'Every bottle has its own page and a row on the Back Bar page. It also shows in “On our shelf” on its spirit page, under its style, and on that style’s page. Whiskeys also show on the Whiskey page.',
     fields: [
       { key: 'name', label: 'Bottle', type: 'text', max: 80, required: true, section: 'The bottle' },
       { key: 'spirit', label: 'Spirit', type: 'select', options: SHELF.map((x) => x.key), section: 'The bottle' },
       { key: 'styles', label: 'Style', type: 'tags', section: 'The bottle', placeholder: 'Wheated', hint: 'Match a style page under the spirit (e.g. Wheated, Small Batch, Reposado, Speyside). Leave empty if none fits.' },
       { key: 'limited', label: 'Limited quantities', type: 'toggle', section: 'The bottle', hint: 'Shows a * next to it, like the menu.' },
+      { key: 'price', label: 'Pour price', type: 'text', max: 10, section: 'Behind the bar', placeholder: '14' },
+      { key: 'tier', label: 'Tier', type: 'select', options: ['', 'Well', 'Call', 'Premium', 'Top shelf'], section: 'Behind the bar' },
+      { key: 'notes', label: 'About this bottle', type: 'textarea', max: 300, section: 'Behind the bar', hint: 'Shown under the name. Leave empty and the page writes one line from the spirit, style and drinks.' },
+      { key: 'say', label: 'Say it at the table', type: 'text', max: 160, section: 'Behind the bar', hint: 'Only shows once it’s filled in.' },
     ],
   },
   wine: {
