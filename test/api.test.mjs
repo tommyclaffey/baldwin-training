@@ -60,13 +60,13 @@ test('writes need a session and the X-BT header', async () => {
 
 test('the CMS starts with every classic, house cocktail and dish from the design', async () => {
   const cols = (await call('/api/collections')).data;
-  assert.equal(cols.counts.classic, 23);
+  assert.equal(cols.counts.classic, 58);
   assert.equal(cols.counts.house, 17, 'every cocktail on our menu');
   assert.equal(cols.counts.shelf, 92, "Mionetto moved to the wine list");
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 588, 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
+  assert.equal(index.length, 624, 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -417,4 +417,24 @@ test('the bottle scanner is for signed-in managers only', async () => {
   }
   assert.equal((await call('/api/scan', { method: 'POST', body: 'not a photo', headers: { 'Content-Type': 'text/plain' } })).status, 415);
   assert.equal((await call('/api/scan/cut', { method: 'POST', body: { token: 'expired', box: [0.2, 0.1, 0.8, 0.9] } })).status, 410);
+});
+
+test('classic cocktails: 58 in six families, each with its own glass, plus the Highballs page', async () => {
+  const index = (await call('/api/index')).data;
+  const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
+  assert.equal(index.filter((e) => e.slug.startsWith('classic/')).length, 58);
+  assert.ok(!index.some((e) => e.slug === 'classic/glass-cards'), 'the glass-card sheet is not a page');
+  const mai = await page('classic/mai-tai');
+  assert.ok(mai.includes('TROPICAL AND TIKI') && mai.includes('Glass · Double rocks') && mai.includes('Contains almond'));
+  assert.ok((await page('classic/mint-julep')).includes('Glass · Julep cup'));
+  assert.ok((await page('classic/pina-colada')).includes('Glass · Hurricane'));
+  assert.ok((await page('classic/irish-coffee')).includes('Glass · Irish coffee'));
+  const bloody = await page('classic/bloody-mary');
+  assert.ok(bloody.includes('Contains fish') && bloody.includes('"youtubeId"'), 'allergy tag and a video');
+  const cocktails = await page('the-bar/cocktails');
+  for (const f of ['TROPICAL AND TIKI', 'BRUNCH', 'HOT AND AFTER DINNER']) assert.ok(cocktails.includes(f), f);
+  assert.ok(cocktails.includes('Classic row · Brandy Alexander') && cocktails.includes('58 every server'));
+  const hb = await page('bar-basics/highballs');
+  assert.ok(hb.includes('Term · Cuba Libre') && hb.includes('Twin · Greyhound · Salty Dog'));
+  assert.ok((await page('classic/old-fashioned')).includes('"/classic/oaxaca-old-fashioned"'), 'riffs link to the new pages');
 });

@@ -1,0 +1,574 @@
+{
+  "drinks": [
+    {
+      "name": "Gold Rush",
+      "spec": {
+        "source": "https://www.diffordsguide.com/cocktails/recipe/3629/gold-rush",
+        "build": [
+          {
+            "amount": "2 oz",
+            "ingredient": "Bourbon whiskey"
+          },
+          {
+            "amount": "¾ oz",
+            "ingredient": "Lemon juice (freshly squeezed)"
+          },
+          {
+            "amount": "¾ oz",
+            "ingredient": "Honey syrup (3 parts honey to 1 water, by weight)"
+          },
+          {
+            "amount": "1 swath (optional)",
+            "ingredient": "Grapefruit peel/zest, shaken with the drink"
+          },
+          {
+            "amount": "3 drops (optional)",
+            "ingredient": "Saline solution (20 g sea salt to 80 g water) or a pinch of salt"
+          }
+        ],
+        "method": "Shaken. Hard (\"regal\") shake all ingredients with ice, including the grapefruit zest, then fine strain.",
+        "glass": "Old-fashioned glass, pre-chilled",
+        "ice": "Fresh ice in the glass",
+        "garnish": "Express a lemon zest twist over the drink and discard it; garnish with a lemon wedge",
+        "notes": "Not an IBA official cocktail (no IBA page exists). Difford's describes it as a Whiskey Sour made with honey syrup in place of sugar."
+      },
+      "origin": {
+        "text": "Envisaged by T. J. Siegel one night in 2001 at Milk & Honey in New York City, where it was first made by Sasha Petraske.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/3629/gold-rush"
+      },
+      "video": {
+        "youtubeId": "cw1auKW__v4",
+        "title": "Gold Rush 2 Ways Plus An Easy Hack For Your Sours",
+        "author": "The Educated Barfly"
+      }
+    },
+    {
+      "name": "Bramble",
+      "spec": {
+        "source": "https://iba-world.com/iba-cocktail/bramble/",
+        "build": [
+          {
+            "amount": "1⅔ oz (50 ml)",
+            "ingredient": "Gin"
+          },
+          {
+            "amount": "⅚ oz (25 ml)",
+            "ingredient": "Fresh lemon juice"
+          },
+          {
+            "amount": "about ⅜ oz (12.5 ml)",
+            "ingredient": "Sugar syrup"
+          },
+          {
+            "amount": "½ oz (15 ml)",
+            "ingredient": "Crème de mûre (blackberry liqueur)"
+          }
+        ],
+        "method": "Shaken. Shake everything except the crème de mûre with ice, strain into the glass over crushed ice, then pour the crème de mûre over the top in a circular motion.",
+        "glass": "Old fashioned glass, chilled",
+        "ice": "Crushed ice",
+        "garnish": "Optional: lemon slice and blackberries",
+        "notes": "IBA New Era cocktail. Difford's version (https://www.diffordsguide.com/cocktails/recipe/305/bramble): 1½ oz gin, 1 oz lemon, 5/12 oz rich 2:1 syrup, 5/12 oz crème de mûre; double old-fashioned glass, crushed ice packed into a 'volcano' mound with the liqueur drizzled over it for a 'bleeding' effect; garnish blackberry and lemon slice dusted with icing sugar; served with a straw."
+      },
+      "origin": {
+        "text": "Created in the mid-1980s by Dick Bradsell at Fred's Club in Soho, London.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/305/bramble"
+      },
+      "video": {
+        "youtubeId": "fgE5H8W5K6M",
+        "title": "How to make the Bramble - an easy gin drink!",
+        "author": "Anders Erickson"
+      }
+    },
+    {
+      "name": "Hemingway Daiquiri",
+      "spec": {
+        "source": "https://iba-world.com/iba-cocktail/hemingway-special/",
+        "build": [
+          {
+            "amount": "2 oz (60 ml)",
+            "ingredient": "Rum"
+          },
+          {
+            "amount": "1⅓ oz (40 ml)",
+            "ingredient": "Grapefruit juice"
+          },
+          {
+            "amount": "½ oz (15 ml)",
+            "ingredient": "Maraschino Luxardo"
+          },
+          {
+            "amount": "½ oz (15 ml)",
+            "ingredient": "Fresh lime juice"
+          }
+        ],
+        "method": "Shaken. Shake well with ice and strain.",
+        "glass": "Large cocktail glass",
+        "ice": "None in the glass (served up)",
+        "garnish": "None listed by IBA (N/A)",
+        "notes": "IBA lists it as 'Hemingway Special' (Contemporary Classics). No sugar in the IBA spec. Difford's (https://www.diffordsguide.com/cocktails/recipe/954/hemingway-special-daiquiri-papa-doble) makes a double-size 'Papa Doble': 3½ oz light gold rum, 1 oz pink grapefruit, ¾ oz Luxardo Maraschino, 1 oz lime, ½ oz rich 2:1 syrup, shaken and fine strained into a large 10 oz Martini glass, garnished with a maraschino cherry and/or lime wedge. Difford's also notes El Floridita in Havana blends (not shakes) its version with crushed ice: 90 ml light Cuban rum, 5 ml maraschino, 30 ml grapefruit, 15 ml lime, served in a hurricane glass with a straw."
+      },
+      "origin": {
+        "text": "Created at El Floridita in Havana by head bartender Constantino Ribalaigua Vert for Ernest Hemingway, who wanted his Daiquiri without sugar and with double rum. A later head bartender, Antonio Meilan, added maraschino and grapefruit juice, and the drink went from 'Papa Doble' to the Hemingway Special.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/954/hemingway-special-daiquiri-papa-doble"
+      },
+      "video": {
+        "youtubeId": "mILAxazthY4",
+        "title": "The one and only HEMINGWAY daiquiri",
+        "author": "Anders Erickson"
+      }
+    },
+    {
+      "name": "Vesper",
+      "spec": {
+        "source": "https://iba-world.com/iba-cocktail/vesper/",
+        "build": [
+          {
+            "amount": "1½ oz (45 ml)",
+            "ingredient": "Gin"
+          },
+          {
+            "amount": "½ oz (15 ml)",
+            "ingredient": "Vodka"
+          },
+          {
+            "amount": "¼ oz (7.5 ml)",
+            "ingredient": "Lillet Blanc"
+          }
+        ],
+        "method": "Shaken. Shake with ice cubes and strain.",
+        "glass": "Cocktail glass, chilled",
+        "ice": "None in the glass (served up)",
+        "garnish": "Lemon zest",
+        "notes": "IBA Contemporary Classic. Fleming's original called for Gordon's gin and Kina Lillet, a product no longer made (per Difford's). Difford's version (https://www.diffordsguide.com/cocktails/recipe/2597/vesper-dry-martini): 2 oz London dry gin, ⅔ oz vodka, ⅓ oz blanc quinquina/kina (e.g. Mattei Cap Corse, Bonal, Kina L'Aéro), shaken and fine strained into a chilled Martini glass, lemon zest twist expressed and used as garnish."
+      },
+      "origin": {
+        "text": "Created by author Ian Fleming and made famous in his first James Bond novel, Casino Royale (1953), where Bond orders 'three measures of Gordon's, one of vodka, half a measure of Kina Lillet', shaken, with a large slice of lemon peel, and names it after Vesper Lynd.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/2597/vesper-dry-martini"
+      },
+      "video": {
+        "youtubeId": "PIen6ladAjI",
+        "title": "How to make a better VESPER than James Bond himself",
+        "author": "Anders Erickson"
+      }
+    },
+    {
+      "name": "Ramos Gin Fizz",
+      "spec": {
+        "source": "https://iba-world.com/iba-cocktail/ramos-fizz/",
+        "build": [
+          {
+            "amount": "1½ oz (45 ml)",
+            "ingredient": "Gin"
+          },
+          {
+            "amount": "½ oz (15 ml)",
+            "ingredient": "Fresh lime juice"
+          },
+          {
+            "amount": "½ oz (15 ml)",
+            "ingredient": "Fresh lemon juice"
+          },
+          {
+            "amount": "1 oz (30 ml)",
+            "ingredient": "Sugar syrup"
+          },
+          {
+            "amount": "2 oz (60 ml)",
+            "ingredient": "Cream"
+          },
+          {
+            "amount": "1 oz (30 ml)",
+            "ingredient": "Egg white"
+          },
+          {
+            "amount": "3 dashes",
+            "ingredient": "Orange flower water"
+          },
+          {
+            "amount": "2 drops",
+            "ingredient": "Vanilla extract"
+          },
+          {
+            "amount": "Top",
+            "ingredient": "Soda water"
+          }
+        ],
+        "method": "Shaken (wet then dry). Shake everything except soda with ice for two minutes, double strain, pour back into the shaker and hard shake without ice for one minute. Strain into the glass and top with soda.",
+        "glass": "Highball glass",
+        "ice": "None in the glass",
+        "garnish": "None listed by IBA (N/A)",
+        "notes": "IBA lists it as 'Ramos Fizz' (The Unforgettables). IBA does not mention ice in the glass; Difford's explicitly pours into a chilled empty glass with no ice. Difford's version (https://www.diffordsguide.com/cocktails/recipe/1628/ramos-gin-fizz): 2 oz Old Tom gin, ½ oz lemon, ½ oz lime, ¾ oz rich 2:1 syrup, 1/24 oz orange flower water, 3 drops vanilla (optional), ¾ oz egg white, ¾ oz whipping cream, soda; Collins glass; shake with ice, dry shake, pour two-thirds into the glass while pouring soda at the same time, let it settle for a minute, then pour the rest so the head rises; garnish quarter orange wheel (optional mint sprig). Contains egg and dairy."
+      },
+      "origin": {
+        "text": "Created in 1888 by Henry C. Ramos in New Orleans. Sources disagree on the bar: IBA says Meyer's Table d'Hôtel Internationale, Difford's says the Imperial Cabinet Saloon at Gravier and Carondelet Streets. IBA adds that it was originally shaken for 12 minutes by a relay of bartenders.",
+        "source": "https://iba-world.com/iba-cocktail/ramos-fizz/ ; https://www.diffordsguide.com/cocktails/recipe/1628/ramos-gin-fizz"
+      },
+      "video": {
+        "youtubeId": "rMRf3858Yrg",
+        "title": "Easy and perfect Ramos Gin Fizz",
+        "author": "The Educated Barfly"
+      }
+    },
+    {
+      "name": "Southside",
+      "spec": {
+        "source": "https://iba-world.com/iba-cocktail/south-side/",
+        "build": [
+          {
+            "amount": "2 oz (60 ml)",
+            "ingredient": "London dry gin"
+          },
+          {
+            "amount": "1 oz (30 ml)",
+            "ingredient": "Fresh lemon juice"
+          },
+          {
+            "amount": "½ oz (15 ml)",
+            "ingredient": "Simple syrup"
+          },
+          {
+            "amount": "5–6",
+            "ingredient": "Mint leaves"
+          },
+          {
+            "amount": "A few drops (optional)",
+            "ingredient": "Egg white"
+          }
+        ],
+        "method": "Shaken. Shake well with ice (shake vigorously if using egg white) and double strain.",
+        "glass": "Cocktail glass, chilled",
+        "ice": "None in the glass (served up)",
+        "garnish": "Mint sprigs",
+        "notes": "IBA lists it as 'South Side' (New Era). Citrus differs by source: IBA and Wikipedia use lemon; Difford's (https://www.diffordsguide.com/cocktails/recipe/2200/southside) uses lime: 7 mint leaves gently muddled, 2 oz London dry gin, ¾ oz lime, ½ oz rich 2:1 syrup, 2 drops saline (optional), shaken and fine strained into a chilled coupe, topped with about ⅓ oz soda (optional), garnished with a mint leaf. Adding soda and serving long makes it a South Side Fizz."
+      },
+      "origin": {
+        "text": "Its origins are uncertain. Wikipedia says the name may come from Chicago's South Side (with a story linking it to Al Capone's gang) or from the Southside Sportsmen's Club on Long Island. Difford's calls it the straight-up version of the vintage South Side Fizz.",
+        "source": "https://en.wikipedia.org/wiki/South_Side_(cocktail) ; https://www.diffordsguide.com/cocktails/recipe/2200/southside"
+      },
+      "video": {
+        "youtubeId": "-yxFAGMuM2I",
+        "title": "How to Make a Southside Cocktail | Classic Gin Drink",
+        "author": "Anders Erickson"
+      }
+    },
+    {
+      "name": "Old Cuban",
+      "spec": {
+        "source": "https://iba-world.com/iba-cocktail/old-cuban/",
+        "build": [
+          {
+            "amount": "6–8",
+            "ingredient": "Mint leaves"
+          },
+          {
+            "amount": "1½ oz (45 ml)",
+            "ingredient": "Aged rum"
+          },
+          {
+            "amount": "¾ oz (22.5 ml)",
+            "ingredient": "Fresh lime juice"
+          },
+          {
+            "amount": "1 oz (30 ml)",
+            "ingredient": "Simple syrup"
+          },
+          {
+            "amount": "2 dashes",
+            "ingredient": "Angostura bitters"
+          },
+          {
+            "amount": "2 oz (60 ml)",
+            "ingredient": "Brut Champagne or Prosecco"
+          }
+        ],
+        "method": "Shaken, then topped. Shake everything except the sparkling wine with ice, strain into the glass, top with the sparkling wine.",
+        "glass": "Chilled 'elegant' cocktail glass",
+        "ice": "None in the glass (served up)",
+        "garnish": "Mint sprigs",
+        "notes": "IBA New Era cocktail. Difford's version (https://www.diffordsguide.com/cocktails/recipe/2529/old-cuban): 6 mint leaves, 1½ oz Caribbean blended rum aged 6–10 years, ¾ oz lime, ½ oz rich 2:1 syrup, 2 dashes Angostura, ¾ oz brut champagne; shaken and fine strained into a chilled coupe, topped with the wine; mint leaf floated or stuck to the rim. Difford's calls it a luxurious, minty Daiquiri topped with fizz."
+      },
+      "origin": {
+        "text": "Created by Audrey Saunders in New York. Sources disagree on the year: Difford's says 2004, Wikipedia says 2001.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/2529/old-cuban ; https://en.wikipedia.org/wiki/Old_Cuban"
+      },
+      "video": {
+        "youtubeId": "P0bmpXfKnyE",
+        "title": "What if the Mojito became a Champagne Cocktail...? The Old Cuban",
+        "author": "The Educated Barfly"
+      }
+    },
+    {
+      "name": "Oaxaca Old Fashioned",
+      "spec": {
+        "source": "https://www.diffordsguide.com/cocktails/recipe/3003/oaxaca-old-fashioned",
+        "build": [
+          {
+            "amount": "1½ oz",
+            "ingredient": "Reposado tequila (100% agave)"
+          },
+          {
+            "amount": "½ oz",
+            "ingredient": "Mezcal (Difford's names Del Maguey Vida Clásico)"
+          },
+          {
+            "amount": "¼ oz",
+            "ingredient": "Agave syrup"
+          },
+          {
+            "amount": "4 drops",
+            "ingredient": "Angostura Cocoa Bitters"
+          }
+        ],
+        "method": "Stirred. Stir all ingredients with ice and strain.",
+        "glass": "Old-fashioned glass, pre-chilled",
+        "ice": "Ice-filled glass, preferably one large cube or chunk of block ice",
+        "garnish": "Flamed citrus zest twist, expressed over the drink and used as garnish. Unverified which citrus: Difford's 'Prepare' step says orange zest (flamed) but its 'Garnish' step says lemon zest.",
+        "notes": "Not an IBA official cocktail (no IBA page exists). Difford's says Phil Ward's original was 45 ml reposado tequila, 15 ml mezcal (Del Maguey Chichicapa or San Luis del Rio), 7.5 ml agave syrup and 1 dash Angostura Aromatic Bitters (1½ oz / ½ oz / ¼ oz / 1 dash); chocolate or cocoa bitters are now often used instead."
+      },
+      "origin": {
+        "text": "Created in 2007 by Philip (Phil) Ward at Death & Co. in Manhattan, New York City.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/3003/oaxaca-old-fashioned"
+      },
+      "video": {
+        "youtubeId": "LkXW1diKOvs",
+        "title": "The Oaxaca Old Fashioned - as if the old fashioned couldn't get any cooler",
+        "author": "Anders Erickson"
+      }
+    }
+  ],
+  "highballs": [
+    {
+      "name": "Gin & Tonic",
+      "spec": {
+        "source": "https://www.diffordsguide.com/cocktails/recipe/835/gin-and-tonic",
+        "build": [
+          {
+            "amount": "1⅔ oz",
+            "ingredient": "London dry gin"
+          },
+          {
+            "amount": "4 oz",
+            "ingredient": "Tonic water"
+          }
+        ],
+        "method": "Built. Pour into the chilled glass, then fill with ice.",
+        "glass": "Collins glass, pre-chilled",
+        "ice": "Filled with ice",
+        "garnish": "Lime wedge",
+        "notes": "Difford's: to serve in a smaller 10 oz highball glass, use 1½ oz gin and 3 oz tonic with plenty of ice."
+      },
+      "origin": {
+        "text": "Its exact origin is unknown. Difford's says it emerged in British India in the second half of the 19th century, partly drunk to ward off malaria; Schweppes launched its first carbonated quinine tonic, Indian Tonic Water, in 1870.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/835/gin-and-tonic"
+      }
+    },
+    {
+      "name": "Vodka Soda",
+      "spec": {
+        "source": "https://www.diffordsguide.com/cocktails/recipe/4280/vodka-soda",
+        "build": [
+          {
+            "amount": "2 oz",
+            "ingredient": "Vodka"
+          },
+          {
+            "amount": "5 oz",
+            "ingredient": "Soda water"
+          }
+        ],
+        "method": "Built. Pour into an ice-filled glass and stir lightly so it keeps its fizz. No straws.",
+        "glass": "Collins glass (Difford's suggests a 14 oz Collins or a Spanish-style copa for the ideal ~50% ice)",
+        "ice": "Ice-filled glass",
+        "garnish": "Lemon slice",
+        "notes": "Difford's ratio is 2.5 parts soda to 1 part vodka. Wikipedia says lemon or lime are both common garnishes and gives a 2:1 soda-to-vodka rule of thumb."
+      },
+      "origin": {
+        "text": "Wikipedia says it rose to particular prominence in the late 2010s, alongside hard seltzers, as drinkers grew more health conscious.",
+        "source": "https://en.wikipedia.org/wiki/Vodka_soda"
+      }
+    },
+    {
+      "name": "Rum & Coke / Cuba Libre",
+      "spec": {
+        "source": "https://iba-world.com/iba-cocktail/cuba-libre/",
+        "build": [
+          {
+            "amount": "1⅔ oz (50 ml)",
+            "ingredient": "White rum"
+          },
+          {
+            "amount": "4 oz (120 ml)",
+            "ingredient": "Cola"
+          },
+          {
+            "amount": "⅓ oz (10 ml)",
+            "ingredient": "Fresh lime juice"
+          }
+        ],
+        "method": "Built in the glass over ice.",
+        "glass": "Highball glass",
+        "ice": "Glass filled with ice",
+        "garnish": "Lime wedge",
+        "notes": "The lime is the difference: a Cuba Libre has lime, a plain Rum & Coke is just rum and cola (Wikipedia: lime juice 'may or may not be included'). This is the IBA Cuba Libre spec; drop the lime juice for a Rum & Coke. Difford's Cuba Libre (https://www.diffordsguide.com/cocktails/recipe/495/cuba-libre) goes further: muddle 2 lime wedges in a Collins glass, add 2 oz light gold rum, 1 dash Angostura and 4 oz cola, fill with ice, stir briefly, garnish lime wedge."
+      },
+      "origin": {
+        "text": "Following Bacardi's account, Difford's says it was named in a Havana bar in August 1900, when American soldiers tried a Captain Russell's Bacardi rum and Coca-Cola and toasted 'Por Cuba libre!'. Difford's notes there is more than one version of the story.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/495/cuba-libre"
+      }
+    },
+    {
+      "name": "Screwdriver",
+      "spec": {
+        "source": "https://www.diffordsguide.com/cocktails/recipe/1762/screwdriver-diffords-recipe",
+        "build": [
+          {
+            "amount": "1⅔ oz",
+            "ingredient": "Vodka (from the freezer)"
+          },
+          {
+            "amount": "2 oz",
+            "ingredient": "Orange juice (freshly squeezed, chilled)"
+          },
+          {
+            "amount": "⅙ oz",
+            "ingredient": "Rich sugar syrup (2:1)"
+          },
+          {
+            "amount": "2 dashes",
+            "ingredient": "Orange bitters"
+          }
+        ],
+        "method": "Stirred briefly with ice, then strained into an ice-filled glass.",
+        "glass": "Highball glass (max 10 oz / 300 ml), pre-chilled",
+        "ice": "Ice-filled glass",
+        "garnish": "Orange slice",
+        "notes": "This is Difford's own house recipe, which adds syrup and bitters. Wikipedia: the basic drink is simply vodka and orange juice (called a 'vodka and orange' in the UK). Unverified: a standard vodka-to-OJ pour for a bar build; no fetched source gave one."
+      },
+      "origin": {
+        "text": "Legend has it the drink appeared in the late 1940s among American oil engineers in Iran who stirred vodka and orange juice with a screwdriver. Difford's points to a 24 October 1949 Time Magazine mention of the 'Yankee concoction of vodka and orange juice, called a screwdriver'.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/1762/screwdriver-diffords-recipe"
+      }
+    },
+    {
+      "name": "Greyhound / Salty Dog",
+      "spec": {
+        "source": "https://www.diffordsguide.com/cocktails/recipe/919/greyhound ; https://www.diffordsguide.com/cocktails/recipe/1735/salty-dog",
+        "build": [
+          {
+            "amount": "1½ oz",
+            "ingredient": "Vodka"
+          },
+          {
+            "amount": "Fill",
+            "ingredient": "Grapefruit juice"
+          }
+        ],
+        "method": "Built in the glass over ice.",
+        "glass": "Highball glass",
+        "ice": "Glass filled with ice",
+        "garnish": "Lime wheel (per Mark Torre's 1987 Bartenders' Bible, quoted on Difford's)",
+        "notes": "The salt rim is the difference: a Greyhound has no salt; a Salty Dog is the same drink in a glass rimmed with salt. Build above is the classic one quoted on both Difford's pages (Brian F. Rea 1976; Stanley M. Jones 1977 calls the Greyhound 'a SALTY DOG with no salt'). Wikipedia notes it can be made with gin or vodka. Difford's own modern versions are shaken: Greyhound 1½ oz vodka, 1½ oz pink grapefruit, ⅙ oz rich syrup, 4 drops grapefruit bitters, strained into an ice-filled old-fashioned glass, grapefruit slice; Salty Dog 1⅔ oz vodka, 1⅔ oz pink grapefruit, ⅙ oz rich syrup, optional grapefruit bitters, 4 drops saline, strained into a salt-rimmed ice-filled highball, grapefruit wheel."
+      },
+      "origin": {
+        "text": "Difford's dates the Salty Dog to the late 1950s/early 1960s, with its first recipe-book appearance in Ted Saucier's 1962 Bottoms Up (new and revised edition). The earliest Greyhound recipe Difford's found is in Stanley M. Jones' 1977 Complete Barguide.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/1735/salty-dog ; https://www.diffordsguide.com/cocktails/recipe/919/greyhound"
+      }
+    },
+    {
+      "name": "Cape Codder",
+      "spec": {
+        "source": "https://www.diffordsguide.com/cocktails/recipe/368/cape-codder",
+        "build": [
+          {
+            "amount": "1⅔ oz",
+            "ingredient": "Vodka (from the freezer)"
+          },
+          {
+            "amount": "¼ oz",
+            "ingredient": "Fresh lime juice"
+          },
+          {
+            "amount": "3½ oz",
+            "ingredient": "Cranberry juice (sweetened, chilled)"
+          }
+        ],
+        "method": "Built. Pour all ingredients into the chilled glass, then fill with ice.",
+        "glass": "Collins glass, pre-chilled",
+        "ice": "Filled with ice",
+        "garnish": "Lime wedge",
+        "notes": "Basically a vodka cranberry with a splash of lime."
+      },
+      "origin": {
+        "text": "Named after Cape Cod on the Massachusetts coast, where early European settlers found cranberries. The same mix was earlier called a 'Red Devil', and the Cape Codder peaked in popularity in the early 1980s.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/368/cape-codder"
+      }
+    },
+    {
+      "name": "Ranch Water",
+      "spec": {
+        "source": "https://www.diffordsguide.com/cocktails/recipe/10034/ranch-water",
+        "build": [
+          {
+            "amount": "1½ oz",
+            "ingredient": "Blanco tequila"
+          },
+          {
+            "amount": "¾ oz",
+            "ingredient": "Fresh lime juice"
+          },
+          {
+            "amount": "⅓ oz",
+            "ingredient": "Cointreau (triple sec)"
+          },
+          {
+            "amount": "⅓ oz",
+            "ingredient": "Agave syrup"
+          },
+          {
+            "amount": "4 drops",
+            "ingredient": "Saline solution, or a pinch of salt"
+          },
+          {
+            "amount": "2½ oz",
+            "ingredient": "Soda water (or sparkling mineral water)"
+          }
+        ],
+        "method": "Built. Pour the first 5 ingredients into the glass and stir, add the soda, then fill with ice.",
+        "glass": "Collins glass, pre-chilled",
+        "ice": "Filled with ice",
+        "garnish": "Lime wedge or lime wheel",
+        "notes": "Difford's says the original is made with a slightly salty sparkling mineral water such as Topo Chico; the saline is there to imitate it when using plain soda. Wikipedia: typically just tequila, lime juice and Topo Chico; some recipes add orange liqueur. Difford's also gives a popular Texas version: 1½ oz blanco tequila, 1 oz lime, ½ oz triple sec, ½ oz agave syrup, 3 oz sparkling mineral water, in a larger Collins glass."
+      },
+      "origin": {
+        "text": "Kevin Williamson is widely credited; he says it has been on the menu at his Ranch 616 restaurant in Austin, Texas since it opened in 1998. The Gage Hotel's White Buffalo Bar in Marathon, Texas is also associated with it.",
+        "source": "https://www.diffordsguide.com/cocktails/recipe/10034/ranch-water ; https://en.wikipedia.org/wiki/Ranch_water"
+      }
+    },
+    {
+      "name": "Whisky Highball (Japanese style)",
+      "spec": {
+        "source": "https://punchdrink.com/recipes/engawas-japanese-highball/",
+        "build": [
+          {
+            "amount": "1½ oz",
+            "ingredient": "Japanese whisky, chilled in the freezer (Engawa uses Suntory Kakubin)"
+          },
+          {
+            "amount": "3–4 oz",
+            "ingredient": "Cold seltzer"
+          }
+        ],
+        "method": "Built. Stack large chunks of cracked ice in the glass, leaving room for a barspoon. Pour the whisky so it doesn't touch the top of the ice, then the soda the same way, to ¼ in from the rim. Slide the barspoon down the side and under the ice, lift it up and down to mix, stir in a circle a few times, then swizzle the spoon up and out so the soda froths.",
+        "glass": "Tall glass. Unverified: the Punch recipe does not name the glass.",
+        "ice": "Clear cracked ice, stacked in large chunks",
+        "garnish": "None at Engawa; Punch notes a lemon garnish is common in Japan and elsewhere",
+        "notes": "Recipe from Washu Bar Engawa in Kaga, Japan (via Punch). Punch notes each Japanese bar has its own codified way to make it. For comparison, Difford's Scotch Whisky Highball (https://www.diffordsguide.com/cocktails/recipe/4794/scotch-whisky-highball) is 1½ oz blended Scotch and 3 oz soda in an ice-filled highball glass (max 10 oz), lemon wheel."
+      },
+      "origin": {
+        "text": "Wikipedia says the highball came to Japan during the American occupation and 'highball' (haibōru) came to mean Japanese whisky and soda in particular. It regained popularity after a 2008 Suntory ad campaign, and 'highball bars' appeared in the early 2010s.",
+        "source": "https://en.wikipedia.org/wiki/Highball"
+      }
+    }
+  ]
+}

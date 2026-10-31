@@ -1,0 +1,254 @@
+{
+  "bloody-mary": {
+    "file": "/img/classic-bloody-mary.jpg",
+    "credit": "Charlie Wollborg · Unsplash (stand-in)",
+    "unsplashId": "T2vRyZuebog",
+    "fit": "close",
+    "what": "Red-brown highball with salted rim and lime on bar"
+  },
+  "mimosa": {
+    "file": "/img/classic-mimosa.jpg",
+    "credit": "Briona Baker · Unsplash (stand-in)",
+    "unsplashId": "mbMWnzUuWUs",
+    "fit": "exact",
+    "what": "Two orange mimosas in champagne flutes on wood"
+  },
+  "long-island-iced-tea": {
+    "file": "/img/classic-long-island-iced-tea.jpg",
+    "credit": "Blake Wisz · Unsplash (stand-in)",
+    "unsplashId": "X6aY_j6JD_Y",
+    "fit": "generic",
+    "what": "Dark amber iced drink with citrus in glass"
+  },
+  "pina-colada": {
+    "file": "/img/classic-pina-colada.jpg",
+    "credit": "Angelo Moleele · Unsplash (stand-in)",
+    "unsplashId": "KCrZ22ecSB4",
+    "fit": "exact",
+    "what": "Creamy white drink, hurricane glass, pineapple slice, beach"
+  },
+  "mai-tai": {
+    "file": "/img/classic-mai-tai.jpg",
+    "credit": "Wasim A. Elburawi · Unsplash (stand-in)",
+    "unsplashId": "dnRtpcsHBtA",
+    "fit": "close",
+    "what": "Amber rum cocktail, crushed ice, mint sprig, rocks glass"
+  },
+  "tom-collins": {
+    "file": "/img/classic-tom-collins.jpg",
+    "credit": "The Matter of Food · Unsplash (stand-in)",
+    "unsplashId": "coZ-TTV-zw4",
+    "fit": "close",
+    "what": "Pale lemony highballs with lemon wheels and straws"
+  },
+  "white-russian": {
+    "file": "/img/classic-white-russian.jpg",
+    "credit": "Demi DeHerrera · Unsplash (stand-in)",
+    "unsplashId": "L-sm1B4L1Ns",
+    "fit": "close",
+    "what": "Cream swirling into dark coffee drink over ice"
+  },
+  "irish-coffee": {
+    "file": "/img/classic-irish-coffee.jpg",
+    "credit": "Cecilia O'Reilly · Unsplash (stand-in)",
+    "unsplashId": "mYkdNnpwN14",
+    "fit": "exact",
+    "what": "Footed cut-glass Irish coffee mug with cream layer"
+  },
+  "mint-julep": {
+    "file": "/img/classic-mint-julep.jpg",
+    "credit": "Marc Schulte · Unsplash (stand-in)",
+    "unsplashId": "A3EfEbpcWiM",
+    "fit": "close",
+    "what": "Crushed-ice glass with fresh mint sprig, close-up"
+  },
+  "dark-n-stormy": {
+    "file": "/img/classic-dark-n-stormy.jpg",
+    "credit": "Thomas Park · Unsplash (stand-in)",
+    "unsplashId": "GLid4foELrQ",
+    "fit": "generic",
+    "what": "Ginger-coloured rum highball with lime wheel, no dark float"
+  },
+  "bellini": {
+    "file": "/img/classic-bellini.jpg",
+    "credit": "Laura Chouette · Unsplash (stand-in)",
+    "unsplashId": "1hK4cGjopGc",
+    "fit": "generic",
+    "what": "Peach-orange drink over ice in stemmed glass"
+  },
+  "kir-royale": {
+    "file": "/img/classic-kir-royale.jpg",
+    "credit": "Douglas Barbosa · Unsplash (stand-in)",
+    "unsplashId": "pErBq8nZl5A",
+    "fit": "close",
+    "what": "Two deep red sparkling flutes with blackberries"
+  },
+  "americano": {
+    "file": "/img/classic-americano.jpg",
+    "credit": "Nicholas Tsalikis · Unsplash (stand-in)",
+    "unsplashId": "IqtR9Hg0pIk",
+    "fit": "close",
+    "what": "Red Campari-style highball with ice and citrus"
+  },
+  "rob-roy": {
+    "file": "/img/classic-rob-roy.jpg",
+    "credit": "Drew Beamer · Unsplash (stand-in)",
+    "unsplashId": "KOrhUJUVIyI",
+    "fit": "close",
+    "what": "Amber stirred drink in martini glass with cherry"
+  },
+  "caipirinha": {
+    "file": "/img/classic-caipirinha.jpg",
+    "credit": "Anil Sharma · Unsplash (stand-in)",
+    "unsplashId": "qwAl49ERSeg",
+    "fit": "close",
+    "what": "Rocks glass, crushed ice, lime pieces, lime wheel"
+  },
+  "hot-toddy": {
+    "file": "/img/classic-hot-toddy.jpg",
+    "credit": "Julia Topp · Unsplash (stand-in)",
+    "unsplashId": "kuIiEew8V-A",
+    "fit": "close",
+    "what": "Warm golden drink in glass mug, cinnamon sticks, ginger"
+  },
+  "bees-knees": {
+    "file": "/img/classic-bees-knees.jpg",
+    "credit": "Taylor Friehl · Unsplash (stand-in)",
+    "unsplashId": "RiyKsCqeakU",
+    "fit": "close",
+    "what": "Pale yellow drink in coupe with dried lemon wheel"
+  },
+  "tequila-sunrise": {
+    "file": "/img/classic-tequila-sunrise.jpg",
+    "credit": "Kristina Gegeshidze · Unsplash (stand-in)",
+    "unsplashId": "3gEn3tc3vTc",
+    "fit": "exact",
+    "what": "Orange-to-red tall glass with orange, unlabeled decanter"
+  },
+  "brandy-alexander": {
+    "file": "/img/classic-brandy-alexander.jpg",
+    "credit": "Jeppe Mønster · Unsplash (stand-in)",
+    "unsplashId": "3bXV_kGrc-0",
+    "fit": "close",
+    "what": "Creamy tan drink in coupe with grated garnish"
+  },
+  "rusty-nail": {
+    "file": "/img/classic-rusty-nail.jpg",
+    "credit": "Adam Jaime · Unsplash (stand-in)",
+    "unsplashId": "dmkmrNptMpw",
+    "fit": "close",
+    "what": "Amber drink strained over big ice cube, lowball"
+  },
+  "gin-fizz": {
+    "file": "/img/classic-gin-fizz.jpg",
+    "credit": "Francesca Hotchin · Unsplash (stand-in)",
+    "unsplashId": "p5EiqkBYIEE",
+    "fit": "generic",
+    "what": "Cloudy white drink in highball, lemons, mint sprig"
+  },
+  "vieux-carre": {
+    "file": "/img/classic-vieux-carre.jpg",
+    "credit": "Pylyp Sukhenko · Unsplash (stand-in)",
+    "unsplashId": "ibh9J-fIgZU",
+    "fit": "close",
+    "what": "Dark amber stirred drink in rocks glass, citrus twist"
+  },
+  "corpse-reviver-no-2": {
+    "file": "/img/classic-corpse-reviver-no-2.jpg",
+    "credit": "Ambitious Studio* | Rick Barrett · Unsplash (stand-in)",
+    "unsplashId": "0DgZCy1hi5o",
+    "fit": "close",
+    "what": "Pale yellow cocktail with light foam in coupe"
+  },
+  "aviation": {
+    "file": "/img/classic-aviation.jpg",
+    "credit": "Nikita Rashnii · Unsplash (stand-in)",
+    "unsplashId": "8Hlhdz3hqhI",
+    "fit": "close",
+    "what": "Pale lavender-grey cocktail in coupe on dark bar"
+  },
+  "clover-club": {
+    "file": "/img/classic-clover-club.jpg",
+    "credit": "Alex 0101 · Unsplash (stand-in)",
+    "unsplashId": "YhBjvbeXHBA",
+    "fit": "exact",
+    "what": "Two pink-red foamy coupes topped with raspberry skewers"
+  },
+  "jungle-bird": {
+    "file": "/img/classic-jungle-bird.jpg",
+    "credit": "Emily Andreeva · Unsplash (stand-in)",
+    "unsplashId": "L4Ndz5Fx_Tk",
+    "fit": "close",
+    "what": "Orange tiki drink on ice, dried pineapple garnish"
+  },
+  "naked-and-famous": {
+    "file": "/img/classic-naked-and-famous.jpg",
+    "credit": "Michael Kahn · Unsplash (stand-in)",
+    "unsplashId": "MSTeu0llb8w",
+    "fit": "close",
+    "what": "Orange cocktail served up in coupe, no garnish"
+  },
+  "gold-rush": {
+    "file": "/img/classic-gold-rush.jpg",
+    "credit": "Wenhao Wang · Unsplash (stand-in)",
+    "unsplashId": "EcrQTq27HPU",
+    "fit": "close",
+    "what": "Golden cocktail in rocks glass with lemon twist"
+  },
+  "bramble": {
+    "file": "/img/classic-bramble.jpg",
+    "credit": "Luke Thornton · Unsplash (stand-in)",
+    "unsplashId": "1lGj7nnXLsw",
+    "fit": "close",
+    "what": "Crushed-ice berry-red drink in rocks glass, blackberries around"
+  },
+  "hemingway-daiquiri": {
+    "file": "/img/classic-hemingway-daiquiri.jpg",
+    "credit": "Timothé Durand · Unsplash (stand-in)",
+    "unsplashId": "GNe9dj8m9g0",
+    "fit": "close",
+    "what": "Pale white daiquiri in a coupe, citrus peel garnish"
+  },
+  "vesper": {
+    "file": "/img/classic-vesper.jpg",
+    "credit": "Gary Bendig · Unsplash (stand-in)",
+    "unsplashId": "dGS5ztcHkXA",
+    "fit": "close",
+    "what": "Clear martini in martini glass with lemon twist"
+  },
+  "ramos-gin-fizz": {
+    "file": "/img/classic-ramos-gin-fizz.jpg",
+    "credit": "Dannie Sorum · Unsplash (stand-in)",
+    "unsplashId": "-of0dCOhP7E",
+    "fit": "exact",
+    "what": "Tall white Ramos Gin Fizz with foam head (portrait)"
+  },
+  "southside": {
+    "file": "/img/classic-southside.jpg",
+    "credit": "Timothé Durand · Unsplash (stand-in)",
+    "unsplashId": "Djo1ngmt658",
+    "fit": "close",
+    "what": "Pale green drink in stemmed coupe with mint sprig"
+  },
+  "old-cuban": {
+    "file": "/img/classic-old-cuban.jpg",
+    "credit": "Timothé Durand · Unsplash (stand-in)",
+    "unsplashId": "vPb-taG0l38",
+    "fit": "generic",
+    "what": "Pale gold cocktail in a coupe on a bar, no mint"
+  },
+  "oaxaca-old-fashioned": {
+    "file": "/img/classic-oaxaca-old-fashioned.jpg",
+    "credit": "Silviya Nenova · Unsplash (stand-in)",
+    "unsplashId": "hNl3gFZPRsg",
+    "fit": "close",
+    "what": "Smoky amber drink in rocks glass, orange peel, smoking cinnamon stick"
+  },
+  "highballs": {
+    "file": "/img/classic-highballs.jpg",
+    "credit": "INHYEOK PARK · Unsplash (stand-in)",
+    "unsplashId": "RrredJbvpIk",
+    "fit": "close",
+    "what": "Tall highball with ice, lemon slice and straw"
+  }
+}
