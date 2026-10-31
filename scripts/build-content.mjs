@@ -38,7 +38,8 @@ const fileOf = (id) => id.replace(':', '-');
 
 // rewrite links + image refs, collect text for search
 function prep(node, texts) {
-  if (node.to) node.to = slugById[node.to] !== undefined ? '/' + slugById[node.to] : undefined;
+  // a link to another screen becomes its address; a web link (Figma "Open URL") stays as it is
+  if (node.to && !/^https?:\/\//.test(node.to)) node.to = slugById[node.to] !== undefined ? '/' + slugById[node.to] : undefined;
   if (node.f) for (const f of node.f) if (f.img) f.img = imgFile[f.img] ? '/img/' + imgFile[f.img] : undefined;
   if (node.t === 'T' && texts) texts.push(node.s);
   if (node.c) node.c.forEach((c) => prep(c, texts));

@@ -1,0 +1,553 @@
+{
+  "_meta": {
+    "compiled": "2026-10-31",
+    "scope": "Court of Master Sommeliers, Americas (CMS-A). Facts taken only from pages and PDFs fetched on 2026-10-31. Anything not found is marked source: \"unverified\".",
+    "notes": [
+      "PDF dates matter: the Certified exam guide is dated 7.2024, the Introductory course guide 1.2024, the Hospitality & Service Standards 1.2023, the Certified tasting grid 1-2025, the cancellation policy January 2021 and the examination site policy 1/1/2021. They were the versions linked from the live site on 2026-10-31.",
+      "Prices for the Certified exam come from CMS-A's own course booking system (Arlo public event feed), not from a CMS-A web page."
+    ]
+  },
+  "organisation": [
+    {
+      "fact": "The Court of Master Sommeliers, Americas (CMS-A) runs a four-level education and examination programme for sommeliers. It calls itself 'the premier examining body for sommeliers and beverage professionals worldwide'.",
+      "source": "https://www.mastersommeliers.org/about-us/"
+    },
+    {
+      "fact": "The Master Sommelier title began in 1969, when the first Master Sommelier exam was held in London. The Court of Master Sommeliers was set up in 1977 'to formalize and standardize the training and certification of sommeliers, to improve the quality of wine service in the restaurant industry.'",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/"
+    },
+    {
+      "fact": "The first Master Sommelier exam outside the UK took place in Monterey, California, in 1987, which the site calls the start of the Court's expansion into the United States.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/"
+    },
+    {
+      "fact": "CMS-A press text: the Court was 'Established in England in 1977', and its Americas chapter was founded in 1987.",
+      "source": "https://www.mastersommeliers.org/blog/latest-happenings/court-of-master-sommeliers-americas-announces-new-master-sommeliers-for-2026/"
+    },
+    {
+      "fact": "The international Court site says the first Master Sommelier exam was held in London in 1969 and that 'By 1977 the Court Of Master Sommeliers was established'.",
+      "source": "https://www.courtofmastersommeliers.org/"
+    },
+    {
+      "fact": "Mission: 'We advance the beverage profession through education, mentorship, and credentialing, elevating the beverage and hospitality experience for all.'",
+      "source": "https://www.mastersommeliers.org/about-us/"
+    },
+    {
+      "fact": "Purpose: 'We set the global standard of excellence for beverage service with integrity, exemplary knowledge, and humility.' Vision: 'We create opportunity and community for beverage professionals.'",
+      "source": "https://www.mastersommeliers.org/about-us/"
+    },
+    {
+      "fact": "Core values: Hospitality, Integrity, Humility, Self-care, Inclusion.",
+      "source": "https://www.mastersommeliers.org/about-us/"
+    },
+    {
+      "fact": "The Court worldwide has two chapters: CMS-Americas and CMS-Europe. CMS-A runs courses and exams in North America, South America and Asia (including South Korea, Japan, Taiwan and the Philippines).",
+      "source": "https://www.mastersommeliers.org/about-us/"
+    },
+    {
+      "fact": "CMS-A is a non-profit based in the United States, with a sister chapter in the United Kingdom.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "CMS-A is headquartered at 315 Meigs Road, Suite A-302, Santa Barbara, CA 93109. Phone 707.255.5056, email info@mastersommeliers.org.",
+      "source": "https://www.mastersommeliers.org/"
+    },
+    {
+      "fact": "The four levels, in order (must be passed in sequence): 1) Introductory Sommelier Course & Examination, 2) Certified Sommelier Examination, 3) Advanced Sommelier Course & Examination, 4) Master Sommelier Diploma Examination. The programme is '4 exams and 2 courses'.",
+      "source": "https://www.mastersommeliers.org/certification/"
+    },
+    {
+      "fact": "Everyone must start with the Introductory Sommelier Course and Examination. The Introductory and Advanced courses must be completed before their exams. The Deductive Tasting Workshop is optional.",
+      "source": "https://www.mastersommeliers.org/certification/"
+    },
+    {
+      "fact": "Number of Master Sommeliers, as of the CMS-A news release dated September 14, 2026: '305 Master Sommeliers globally and 176 in the Americas'. Four new Master Sommeliers passed in 2026 (30 candidates sat the exam).",
+      "source": "https://www.mastersommeliers.org/blog/latest-happenings/court-of-master-sommeliers-americas-announces-new-master-sommeliers-for-2026/"
+    },
+    {
+      "fact": "Conflicting counts on other CMS-A pages (undated): the About Master Sommeliers page says 299 worldwide and 176 in the Americas; the FAQ says 279 worldwide and 170 in the Americas (145 men, 25 women). Use the dated Sept 14, 2026 figure.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/"
+    },
+    {
+      "fact": "CMS-A is an organisational member of the Institute of Credentialing Excellence and earned the 2025 Platinum Seal of Transparency from Candid's GuideStar.",
+      "source": "https://www.mastersommeliers.org/about-us/"
+    },
+    {
+      "fact": "The four pillars of CMS-A education and examination: Theory, Tasting, Hospitality and Service, Business of the Sommelier.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    }
+  ],
+  "level1": [
+    {
+      "fact": "Official name: Introductory Sommelier Course & Examination. It is the required first step.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/introductory-sommelier-course-and-exam/"
+    },
+    {
+      "fact": "Formats: in person over two days, or online over up to six months (180 days). All courses are taught by Master Sommeliers.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/introductory-sommelier-course-and-exam/"
+    },
+    {
+      "fact": "In-person schedule: 8:00 AM to 6:00 PM over two days. Check-in 7:45 AM both days, photo ID required. Lunch 12:30-1:30 PM is not provided. The exam is at about 4:00 PM on day two, followed by a results and sparkling wine reception (5:30 PM).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "The in-person course is 'intense and fast-paced' and covers wine and other beverages, 'several tasting exercises, and wine service demonstrations'. It is a review of the workbook, 'not a comprehensive class', so students should study the workbook before attending.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/introductory-sommelier-course-and-exam/"
+    },
+    {
+      "fact": "Note: one CMS-A page describes the in-person course as 'approximately a day and a half'; the main course page and course guide say two days.",
+      "source": "https://www.mastersommeliers.org/certification/online-courses/online-introductory-sommelier-course/"
+    },
+    {
+      "fact": "Online format: on-demand video lectures (about 15-45 minutes each) by Master Sommeliers, 18 wines in guided tastings, and an introduction to service, hospitality and the business of the sommelier. Course access and the exam must be completed within 180 days; it cannot be extended.",
+      "source": "https://www.mastersommeliers.org/certification/online-courses/online-introductory-sommelier-course/"
+    },
+    {
+      "fact": "Online students can schedule the exam on any Monday, Wednesday or Saturday within the 180-day window, and should order the wine kit or buy wines from the suggested list for tasting practice.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/introductory-sommelier-course-and-exam/introductory-sommelier-course-and-exam-in-person-versus-online/"
+    },
+    {
+      "fact": "Learning objectives include: identify important wine regions and their grapes and styles; evaluate and describe 20 classic wines; understand the Deductive Tasting Method; explain climate and winemaking effects on style; observe formal still and sparkling wine service by the bottle; basic food and beverage pairing; fundamentals of beer, sake, spirits and liqueurs.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Course outline: grape growing and winemaking; CMS wine evaluation technique; wine law; France (Champagne, Burgundy, Bordeaux, Loire, Alsace, Rhône); Italy; Germany and Austria; Spain and Portugal; North America; Argentina, Chile, Australia, New Zealand, South Africa; sparkling, fortified and sweet wines; beer, sake, spirits and liqueurs; sommelier skills (Deductive Tasting Method intro, food and beverage pairing, business of the sommelier intro, hospitality and service).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Exam: closed book, 70 multiple-choice questions with four options each, 45 minutes, answered on a Scantron sheet (#2 pencil). Each correct answer is one point.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Pass mark: 60%, which is 42 of 70 correct.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Exam topics: wine law, production methods, historical figures, food and wine pairing, map identification, reading labels, basic service questions, how wines look/smell/taste, producer recognition, soil types, beer, sake and spirits basics.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Not tested at Level 1: wine tasting, performance of service, and vintage memorisation. Service temperatures do not need to be memorised at this level. The Deductive Tasting Method and Business of the Sommelier are introduced but 'Not tested at this level'.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Online exam: same 70 questions in 45 minutes, 60% to pass, live-proctored by webcam, taken on a Mac or Windows computer in the Guardian Browser, government photo ID required.",
+      "source": "https://www.mastersommeliers.org/certification/online-courses/online-introductory-sommelier-course/"
+    },
+    {
+      "fact": "Prerequisites: must be 21 or over, without exception (including in Canada, Central and South America). Open to hospitality, wholesale and retail staff, anyone considering a sommelier career, or anyone interested in wine.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Students are expected to have studied the Introductory workbook (PDF provided on enrolment) before the in-person course, plus a general wine guide and basics of beer and spirits production.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/introductory-sommelier-course-and-exam/"
+    },
+    {
+      "fact": "Cost: in person $949 (wines included); online $649 (wines sold separately).",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/introductory-sommelier-course-and-exam/"
+    },
+    {
+      "fact": "Online wine kit: 18 wines of 100 ml from Small Lot Bottles, $250 with a discount code given on registration. It cannot ship internationally, outside the continental US (except AK and HI), or to several US states (the page lists them slightly differently in two places).",
+      "source": "https://www.mastersommeliers.org/certification/online-courses/online-introductory-sommelier-course/"
+    },
+    {
+      "fact": "On passing: a certificate and lapel pin, and eligibility to sit the Certified Sommelier Examination.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Results: in-person students get results at the reception after the exam and a numerical score with feedback within one week. Online students get scores immediately.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Retake: below 60% can retake online for $150, after waiting at least 14 days. Contact info@mastersommeliers.org.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Validity / time limit: 'The CMS-A no longer requires that students take the Certified Sommelier Examination within three years of the Introductory Sommelier Course and Examination.'",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/introductory-sommelier-course-and-exam/"
+    },
+    {
+      "fact": "No electronics in the Introductory exam room, and lectures may not be recorded.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "A GuildSomm one-month trial membership is included on registration.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "A title such as 'Introductory Sommelier' after passing: CMS-A pages fetched only mention a certificate and lapel pin; no title or post-nominal is stated.",
+      "source": "unverified"
+    }
+  ],
+  "level2": [
+    {
+      "fact": "Official name: Certified Sommelier Examination. It tests deductive tasting, wine and beverage theory, and technical and salesmanship skills in tableside service.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/certified-sommelier-examination/"
+    },
+    {
+      "fact": "Prerequisite: must have passed the Introductory Course & Examination before the registration deadline, nine days before the exam. There is no rule to sit it within three years of Level 1.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/certified-sommelier-examination/"
+    },
+    {
+      "fact": "Recommended: at least three years in the industry ('strongly suggested'); with no industry background the exam is 'extremely challenging'. About one year of study between Introductory and Certified is suggested, not required.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/certified-sommelier-examination/"
+    },
+    {
+      "fact": "You cannot take the in-person Introductory course and the Certified exam back to back. Scores must be in your profile first (up to a week) and Examplify registration closes 8 days before the exam. Online Introductory candidates must finish their exam at least 10 business days before the Certified exam.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Format: one day, three sections: Deductive Tasting, Theory/Business of the Sommelier, and a Hospitality and Service Practical.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Sample day: check-in 7:45 AM; tasting 8:15-9:00 AM; theory 9:10-9:45 AM; service exam 10:30 AM-4:00 PM at assigned times; lunch not provided; results reception about 5:00-6:00 PM.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Tasting: four wines (two white, two red) to describe and identify in 45 minutes using the CMS-A Deductive Tasting Method. It is written: notes on a paper grid, answers entered in the Examplify app; it auto-submits at 45 minutes. No top-ups of wine.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Tasting scoring: no deductions; every line on the grid earns points; you must tick 'No' where a descriptor is absent; six grape options are listed for the conclusion; you must name the country of origin. About 11 minutes per wine.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Examinable wines include: whites - Albariño (Rías Baixas), Chardonnay (Burgundy, California), Chenin Blanc (Vouvray), Gewurztraminer (Alsace), Pinot Grigio (Friuli/Trentino-Alto Adige), Riesling (Mosel/Rheingau), Sauvignon Blanc (Loire, Marlborough), Torrontés (Argentina); reds - Cabernet Franc (Chinon/Bourgueil), Cabernet Sauvignon (Bordeaux, California), Gamay (Beaujolais), Grenache (Châteauneuf-du-Pape/Gigondas), Malbec (Mendoza), Merlot (Pomerol/Saint-Émilion, California), Nebbiolo (Barolo/Barbaresco), Pinot Noir (Côte d'Or, California, Oregon), Sangiovese (Brunello/Chianti Classico), Syrah (Northern Rhône, Australia), Tempranillo (Rioja Reserva/Gran Reserva), Zinfandel (California).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Theory: 45 questions in 38 minutes on Examplify; multiple choice, short answer, simple math and matching. Question types also include map identification, label recognition, style recognition and wine-list mistake correction. No deductions for wrong answers.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Business of the Sommelier is tested in the theory section: cost percentage, bottle sizes and pours per bottle, COGS = (Beginning Inventory + Purchases) - Ending Inventory, cost % = COGS / wine sales, inventory and margin scenarios, and wine-list corrections (spelling, mis-categorised wines, wrong prices).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Hospitality & Service: a practical exam that 'approximates a real restaurant environment'. Candidates may open still or sparkling wine, recommend cocktails or spirits, discuss food and wine pairing, and show their ability as a restaurant sommelier. Candidates must arrive dressed and equipped for professional restaurant wine service.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/certified-sommelier-examination/"
+    },
+    {
+      "fact": "Service exam length: approximately 16 minutes; the Master Sommelier keeps time. A local Advanced Sommelier acts as maître d'; exam conditions start as soon as the maître d' begins speaking.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Pass mark: 'A candidate must achieve a minimum of 60% on all sections within one exam sitting.'",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/certified-sommelier-examination/"
+    },
+    {
+      "fact": "Results: a Pass/No Pass slip for each section (Tasting, Theory, Hospitality & Service) at the reception, and a digital Results & Feedback Report with scores within 10 business days.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Whether a passed section can be carried forward to a later sitting: the CMS-A pages fetched only state all sections must reach 60% 'within one exam sitting'; no carry-over rule is described.",
+      "source": "unverified"
+    },
+    {
+      "fact": "Retake: wait at least 90 days after the last attempt. No discounted retake rate.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Cost: $849 USD per sitting, as listed for every Certified Sommelier Examination in CMS-A's booking system (Nov 2026 - Mar 2027 dates). Not listed on the Certified exam web page.",
+      "source": "https://courtofmastersommeliersamericas.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,Name,StartDateTime,EndDateTime,Location,AdvertisedOffers,Summary&top=200&format=json"
+    },
+    {
+      "fact": "What to bring: own device (Windows/Mac laptop or iPad; not Chromebook, Android, iPhone or Linux) with at least a two-hour charge, pen or pencil, notepad (no phones for notes), two corkscrews. Underliners, serviettes and other service items are provided. No wine list is provided at the service exam.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "On passing: a certificate and lapel pin signifying certification as a sommelier by the Court of Master Sommeliers.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/certified-sommelier-examination/"
+    },
+    {
+      "fact": "Title: you may call yourself a Certified Sommelier (certified through the Court of Master Sommeliers) on a resume and to guests, but there is no 'CS' post-nominal like 'MS'.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Expected skill set of a Certified Sommelier: theory knowledge of principal beverage alcohol; still and sparkling bottle and glass-pour service; food and wine pairing salesmanship; cocktail, beer, apéritif, digestif and fortified wine knowledge; benchmark producers and vintages for iconic regions; Deductive Tasting for core classic varieties; basic financial programme management.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/careers-for-sommeliers/career-opportunities/"
+    }
+  ],
+  "tastingGrid": [
+    {
+      "fact": "Certified Sommelier exam grid (CMS-A 1-2025), white and red versions. Sections: COLOR, FRUIT, NON-FRUIT, STRUCTURE, CONCLUSION, then 'Sell this wine to a guest in two sentences or less.'",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf"
+    },
+    {
+      "fact": "Official Certified grid PDF (public): https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf"
+    },
+    {
+      "fact": "Color: white = Straw / Yellow / Gold; red = Purple / Ruby / Garnet.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf"
+    },
+    {
+      "fact": "Fruit (Yes/No, and name one specific fruit if Yes, write 'None' if No): white = Apple/Pear, Citrus, Stone Fruit, Tropical; red = Red, Black, Blue. Fruit condition on nose and palate (pick one or two): Tart, Ripe, Overripe, Jammy, Candied, Baked, Dried, Bruised.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf"
+    },
+    {
+      "fact": "Non-fruit (Yes/No per line, nose and palate combined; Yes only if an important character): white lines include flowers, fresh herbs, green/pyrazine notes, grape spice, botrytis, oxidation, lees, malolactic, petrol, earth, mineral, new oak. Red lines include flowers, fresh herbs/tomato leaf, dried herbs, green notes, mint/eucalyptus, black peppercorn, coffee/cocoa, meat/leather, balsamic/tar, carbonic maceration, earth, mineral, new oak.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf"
+    },
+    {
+      "fact": "Structure: white = phenolic bitterness (Yes/No), sweetness (Dry/Off-Dry), acidity and alcohol (Low to Medium-, Medium, Medium+, High); red = tannin, acidity, alcohol on the same scale.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf"
+    },
+    {
+      "fact": "Conclusion: primary grape variety (choose from six listed) with reasons, climate (Cool/Moderate/Warm) with reasons, country of origin, age range (white 1-2 / 3-4 / 5+ years; red 1-3 / 4-6 / 7+ years).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf"
+    },
+    {
+      "fact": "The full Deductive Tasting format used at Advanced and Master level (2024) has these sections: SIGHT, NOSE, PALATE STRUCTURE, PALATE, INITIAL CONCLUSION, FINAL CONCLUSION.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "fact": "Official Advanced/Master Deductive Tasting format PDF (public): https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "fact": "Sight: clarity/visible sediment, intensity of colour, primary colour, secondary colour(s), rim variation and staining (reds), tearing, gas evidence.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "fact": "Nose: minor faults, aromatic intensity, age assessment (youthful/developing/vinous), fruit, fruit condition, non-fruit (from grape and from winemaking), earth, mineral, oak (new oak yes/no, intensity, descriptors, type).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "fact": "Palate structure: sweetness, acidity, alcohol, body, phenolic bitterness (whites), tannin volume and texture (reds), texture. Palate: confirm fruit, fruit condition, non-fruit, earth, mineral and oak from the nose; balance; length of finish; complexity.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "fact": "Initial conclusion: possible grape varieties, climate (cool/moderate/warm), possible countries, age range (1-3, 3-5, 5-10, 10+ years). Final conclusion: grape variety or blend, country, region and appellation, official quality level, official style category, vintage.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "fact": "CMS-A conclusion guide: for each conclusion give specific reasons from your description. Climate is judged from fruit condition and structure (acidity, alcohol); age from fruit condition, colour, fruit vs savoury character and sediment.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf"
+    },
+    {
+      "fact": "The Certified page also asks candidates to download the 'CMS-A Deductive Tasting Format' along with the Certified grids.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/certified-sommelier-examination/"
+    },
+    {
+      "fact": "Optional Deductive Tasting Method Workshop: one day (8:00 am-4:30 pm), 24 classic wines, $599, for students who have passed the Introductory course and are preparing for Certified.",
+      "source": "https://www.mastersommeliers.org/certification/courses/the-deductive-tasting-method-workshop/"
+    }
+  ],
+  "service": [
+    {
+      "fact": "CMS-A Hospitality & Service Standards are the basis candidates are measured against in CMS-A exams. CMS-A says they are formal and 'not appropriate for many restaurants', but candidates must show mastery of formal dining-room skills to pass.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "Required sommelier tools: 2 wine bottle openers, 2 pens, 1 pad of paper, 2 odourless lighters or matches. Appearance: pressed, clean attire with safe shoes; clean nails; no strong perfume.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "Mise en place: clean, correct wine lists; spotless glassware polished with linen and steam; serviettes folded before service; only stemware touches the tablecloth (bottles, decanters and corks go on an underliner); glassware brought on a napkin-lined tray; wines stored and served at the right temperature.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "Standard service: always serve from the guest's right; take the order from the host's right and repeat it; present the bottle and repeat name and vintage; cut the foil below the second lip; wipe the cork top and bottle lip; remove the cork quietly; present the cork on an underliner to the host's right; pour the host a 1-1.5 oz taste; after approval, serve clockwise (guest of honour first), wiping the bottle after each pour; ask before removing the cork.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "Glassware: placed to the guest's right, keyed off the knife, consistent for every guest; new-wine glasses go to the right of earlier ones; a second bottle of the same wine gets a fresh tasting glass for the host.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "Sparkling wine: present, cut foil at the bottom of the cage, keep a serviette and hand over cage and cork at all times, never remove the cage before the cork, twist the bottle (not the cork) at 45 degrees pointing away from guests, release quietly, pour a 1-1.5 oz taste, fill glasses evenly up to 3/4 in a maximum of two pours each.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "White and young red wine: four (white) and three (young red) accepted opening methods; glasses filled up to 1/2 depending on stemware size.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "Decanting old red wine: use a gueridon with clean decanter, candle or flashlight, three serviettes, three underliners and a decanting basket; present the bottle; pour in one smooth movement above the flame; stop when sediment reaches the shoulder; pour the host a taste from the decanter, then serve.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "Screwcaps are not presented; synthetic corks are treated like natural corks. Cordials, port and brandy are served from a gueridon or lined tray with jiggers.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "Storage: constant 50-60°F (10-15°C) for long-term storage; cork-finished wines on their side; spirits and fortified wines standing up; away from light, vibration, odours and pests.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "Exam serving temperatures include: sparkling, light whites and sweet whites 42-50°F; dry rosé 45-55°F; full-bodied white and light red 50-59°F; medium red 55-62°F; full-bodied red 58-65°F; lagers 40-45°F.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf"
+    },
+    {
+      "fact": "Certified service exam scenarios may include: opening and serving sparkling wine; opening and pouring wines by the glass; serving a wine flight; discussing food and wine pairings and why they work; recommending a wine for a dish with region, producer and vintage; recognising top producers; describing classic cocktails (e.g. Negroni, Manhattan, Margarita, Old Fashioned); naming producers of beer styles, sake, apéritifs, spirits and liqueurs; recognising apéritif brands (e.g. Aperol, Lillet, Dolin).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Service exam may also test producer knowledge (top producers, top Champagne cuvées, 1855 First and Second Growths) and top vintages of the last 10-15 years in classic regions. For full marks on a pairing, name producer, vintage and full appellation.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Service exam tips from CMS-A: listen to the maître d' and the Master Sommelier; write down, repeat and confirm orders; watch reaching over a guest's space; stay professional if something goes wrong.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "At Level 1, service is introduced by observing formal still and sparkling service; performance of service is not tested.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    }
+  ],
+  "resources": [
+    {
+      "fact": "CMS-A Resource Library hosts level-by-level documents: Introductory course guide, syllabus, practice exam, tasting journal, grape variety profiles, curriculum guide; Certified exam guide, syllabus, examinable wines, tasting grids, example feedback report; Hospitality & Service Standards; dress guidelines.",
+      "source": "https://www.mastersommeliers.org/resources/resource-library/"
+    },
+    {
+      "fact": "For the Certified exam CMS-A recommends downloading: the Certified exam guide, syllabus, tasting grid, examinable wines list, Introductory/Certified Theory Curriculum Guide, and the CMS Hospitality and Service Standards.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "CMS-A materials: Introductory Sommelier Course Workbook (PDF on enrolment; print copy optional on Amazon, https://www.amazon.com/dp/1733571906) and CMS-A service and hospitality videos (YouTube @courtofmastersommeliers).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Recommended books listed by CMS-A: The Wine Bible 3rd ed. (Karen McNeil, as spelled by CMS-A); The World Atlas of Wine 8th ed. (Hugh Johnson, Jancis Robinson); The Oxford Companion to Wine (Harding, Robinson, Thomas); Sotheby's Wine Encyclopedia (Tom Stevenson); Tasting Beer 2nd ed. (Randy Mosher); Sake World website (John Gauntner); Setting the Table (Danny Meyer).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "GuildSomm.com is recommended for study guides, videos, podcasts, quizzes and study groups. CMS-A describes GuildSomm as a separate US non-profit whose content 'will benefit anyone pursuing certification through the Court'.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Free virtual mentoring: 30-minute Master Sommelier office hours for any CMS-A student, and free Certified exam prep sessions (five one-hour sessions over 10 weeks).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "No workbook is provided for the Certified exam; use the Resource Library's recommended resources.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Optional Deductive Tasting Method Workshop ($599, one day, 24 wines) for Certified candidates.",
+      "source": "https://www.mastersommeliers.org/certification/courses/the-deductive-tasting-method-workshop/"
+    }
+  ],
+  "register": [
+    {
+      "fact": "Candidates create an account on the CMS-A website ('Create an Account').",
+      "source": "https://www.mastersommeliers.org/register/"
+    },
+    {
+      "fact": "Courses and exams are listed on the Course & Exam Calendar and booked through CMS-A's self-service portal (Arlo), which has My Courses, My Waiting List, My Orders and My Profile.",
+      "source": "https://www.mastersommeliers.org/certification/exams/course-exam-calendar/"
+    },
+    {
+      "fact": "The booking portal is at courtofmastersommeliersamericas.arlo.co (self-service: courses, waiting list, orders, profile).",
+      "source": "https://courtofmastersommeliersamericas.arlo.co/w/portal"
+    },
+    {
+      "fact": "New Introductory dates are posted on Mondays, generally about three months before the programme.",
+      "source": "https://www.mastersommeliers.org/certification/courses/"
+    },
+    {
+      "fact": "Introductory in person: choose a course on the calendar. Online: register through the online course page. Certified: 'Register for Exam' on the Certified page; the deadline is nine days before the exam, and Level 1 must already be passed.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/introductory-sommelier-course-and-exam/"
+    },
+    {
+      "fact": "After registering for Certified, candidates get instructions about three weeks before the exam to download Examplify and the exam and to take unlimited mock exams. Failing to set up the account means the candidate cannot sit the exam; no refunds for missed deadlines.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf"
+    },
+    {
+      "fact": "Waitlists: you can be enrolled and on several waitlists; seats usually open from cancellations at least 30 days out and are offered by email. No fee to leave a waitlist.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Cancellation (in-person Introductory, Certified, Deductive Tasting Workshop): 30+ days before start = refund minus $50; under 30 days = no refund or transfer (medical/bereavement may be considered with a doctor's note). One transfer per registration, requested more than 30 days ahead. Online courses are non-refundable except within 24 hours of ordering.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Cancellation_Transfer_Policies.pdf"
+    },
+    {
+      "fact": "Where to sit: Introductory candidates may sit anywhere a course is offered; Certified candidates anywhere an exam is offered. The online Introductory counts as a Certified prerequisite in the Americas chapter only.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/ES-Examination-Site-Policy-Jan2021_0.pdf"
+    },
+    {
+      "fact": "Example: CMS-A's booking system lists restaurants as venues for Introductory and Certified programmes, e.g. The Orange Hill Restaurant (Orange County, CA), Rye Street Tavern (Baltimore), Grill 23 & Bar (Boston) and Testa Barra Restaurant (Detroit suburb, Macomb, MI), each with the Introductory course ($949) followed two days later by a Certified exam ($849) in Feb 2027.",
+      "source": "https://courtofmastersommeliersamericas.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,Name,StartDateTime,EndDateTime,Location,AdvertisedOffers,Summary&top=200&format=json"
+    },
+    {
+      "fact": "Staff training: CMS-A offers private courses and group discounts for an establishment's staff; contact klewis@mastersommeliers.org. Online Introductory group discounts start at 10 people.",
+      "source": "https://www.mastersommeliers.org/resources/employer-info/"
+    },
+    {
+      "fact": "Employers can verify a candidate's certification with CMS-A's Sommelier Credential Lookup.",
+      "source": "https://www.mastersommeliers.org/resources/employer-info/"
+    },
+    {
+      "fact": "Attendees arrange their own travel and hotels; CMS-A programmes are approved for the GI Bill.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Rules or requirements for a restaurant that hosts a course or exam (space, glassware, wine supply, staffing, fees): not published on any CMS-A page fetched. Contact CMS-A (info@mastersommeliers.org / 707.255.5056).",
+      "source": "unverified"
+    }
+  ],
+  "benefits": [
+    {
+      "fact": "CMS-A: the Certified Sommelier title 'is well recognized in the hospitality sector globally'. The lapel pin 'assures an employer and the dining public' that you have tested skills in salesmanship, beverage programme management and wine tasting.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/certified-sommelier-examination/"
+    },
+    {
+      "fact": "Potential roles by level (CMS-A): Introductory - server, bartender, support staff, entry-level retail or distribution. Certified - lead server, captain, assistant floor sommelier, bartender, manager; winery tasting room, lead retail floor salesperson, distributor rep, hotel F&B leadership.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/careers-for-sommeliers/career-opportunities/"
+    },
+    {
+      "fact": "CMS-A says its certification mainly covers restaurant and hotel floor service skills, and that roles listed 'require real practical and program-specific experience'.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/careers-for-sommeliers/career-opportunities/"
+    },
+    {
+      "fact": "CMS-A pitch to employers: sommeliers boost wine sales and service, help profitability (inventory, waste, purchasing), improve guest satisfaction and set a venue apart.",
+      "source": "https://www.mastersommeliers.org/resources/employer-info/"
+    },
+    {
+      "fact": "CMS-A careers page lists salary ranges (e.g. restaurant sommelier $45,000-$75,000; wine and beverage director $85,000-$125,000). CMS-A notes these are 'sourced from Indeed, Glassdoor, and LinkedIn', so they are third-party estimates, not CMS-A data.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/careers-for-sommeliers/"
+    },
+    {
+      "fact": "Master Sommelier Diploma: 'an internationally recognized credential'.",
+      "source": "https://www.mastersommeliers.org/certification/exams/exam-faqs/"
+    },
+    {
+      "fact": "Any independent evidence of pay rises or hiring outcomes from CMS-A certification: none checked. No third-party articles (GuildSomm, SevenFifty) were used.",
+      "source": "unverified"
+    }
+  ],
+  "sources": [
+    "https://courtofmastersommeliersamericas.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,Name,StartDateTime,EndDateTime,Location,AdvertisedOffers,Summary&top=200&format=json",
+    "https://courtofmastersommeliersamericas.arlo.co/w/portal",
+    "https://www.courtofmastersommeliers.org/",
+    "https://www.mastersommeliers.org/",
+    "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/",
+    "https://www.mastersommeliers.org/about-sommeliers/careers-for-sommeliers/",
+    "https://www.mastersommeliers.org/about-sommeliers/careers-for-sommeliers/career-opportunities/",
+    "https://www.mastersommeliers.org/about-us/",
+    "https://www.mastersommeliers.org/blog/latest-happenings/court-of-master-sommeliers-americas-announces-new-master-sommeliers-for-2026/",
+    "https://www.mastersommeliers.org/certification/",
+    "https://www.mastersommeliers.org/certification/certification-levels/certified-sommelier-examination/",
+    "https://www.mastersommeliers.org/certification/certification-levels/introductory-sommelier-course-and-exam/",
+    "https://www.mastersommeliers.org/certification/certification-levels/introductory-sommelier-course-and-exam/introductory-sommelier-course-and-exam-in-person-versus-online/",
+    "https://www.mastersommeliers.org/certification/courses/",
+    "https://www.mastersommeliers.org/certification/courses/the-deductive-tasting-method-workshop/",
+    "https://www.mastersommeliers.org/certification/exams/course-exam-calendar/",
+    "https://www.mastersommeliers.org/certification/exams/exam-faqs/",
+    "https://www.mastersommeliers.org/certification/online-courses/online-introductory-sommelier-course/",
+    "https://www.mastersommeliers.org/register/",
+    "https://www.mastersommeliers.org/resources/employer-info/",
+    "https://www.mastersommeliers.org/resources/resource-library/",
+    "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf",
+    "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf",
+    "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf",
+    "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Cancellation_Transfer_Policies.pdf",
+    "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf",
+    "https://www.mastersommeliers.org/wp-content/uploads/2023/12/ES-Examination-Site-Policy-Jan2021_0.pdf",
+    "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf",
+    "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf"
+  ]
+}

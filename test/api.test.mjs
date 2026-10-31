@@ -66,7 +66,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 624, 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
+  assert.equal(index.length, 627, 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -459,4 +459,18 @@ test('edit in place: list pages get Add rows with the group filled in, for manag
     const s = JSON.stringify((await sam('/api/page/' + file(slug))).data);
     assert.ok(!s.includes('/admin/') && !s.includes('"add":'), 'no admin links for staff on ' + slug);
   }
+});
+
+test('sommelier program: a hub and a guide per level, in the sidebar, with the Court’s register links', async () => {
+  const index = (await call('/api/index')).data;
+  const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
+  const hub = await page('sommelier-program');
+  assert.ok(hub.includes('THE SOMMELIER PROGRAM') && hub.includes('"/sommelier-program/level-1"') && hub.includes('Feb 22–23, 2027'));
+  assert.ok(hub.includes('https://portal.mastersommeliers.org/register'), 'register with the Court');
+  const l1 = await page('sommelier-program/level-1');
+  assert.ok(l1.includes('42 of 70') && l1.includes('"/wine/france"'), 'Level 1 links its regions to our wine pages');
+  const l2 = await page('sommelier-program/level-2');
+  assert.ok(l2.includes('THE TASTING GRID') && l2.includes('Deductive-Tasting-Grid.pdf'));
+  const side = JSON.stringify((await import('../src/content/sidebar.json', { with: { type: 'json' } })).default);
+  assert.ok(side.includes('Nav · Sommelier Program') && side.includes('"/sommelier-program"'));
 });
