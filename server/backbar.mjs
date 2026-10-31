@@ -35,6 +35,9 @@ export function shelfGroups(shelf) {
   const order = (g) => (g.key === 'Other whiskey' ? 1 : 0);
   return groups.sort((a, b) => order(a) - order(b) || b.items.length - a.items.length || SHELF.findIndex((x) => x.key === a.key) - SHELF.findIndex((x) => x.key === b.key));
 }
+/** The drawn spirit bottle (Figma: Filler · Spirit bottle), shown for every bottle until there's a photo of our own. */
+export const SPIRIT_FILLER = '/img/spirit-bottle-filler.jpg';
+const art = (w, h) => ({ t: 'R', n: 'IMG/Spirit bottle · drawn', w, h, sh: 'L', sv: 'L', f: [{ img: SPIRIT_FILLER, m: 'FIT' }] });
 const label = (key) => (key === 'Liqueur' ? 'Liqueurs' : key);
 
 /** The Back Bar page. */
@@ -60,6 +63,8 @@ export function fillBackBar(page, shelf, house) {
       const r = clone(uses.length ? usedRow : plainRow);
       r.n = 'Bottle · ' + d.name;
       r.to = '/' + e.slug;
+      const tile = find(r, byName('Drawing'));
+      if (tile) { tile.f = [{ c: '#E7DECF' }]; tile.c = [art(tile.w, tile.h)]; tile.clip = 1; }
       setText(find(r, byName('Name')), d.name + (d.limited ? '\u00a0*' : ''));
       const styles = (d.styles || []).join(', ');
       setText(find(r, byName('Style')), [styles || d.spirit, d.price ? `$${String(d.price).replace(/^\$/, '')}` : ''].filter(Boolean).join(' · '));
@@ -117,8 +122,10 @@ export function bottlePage(tpl, e, { shelf, house, index, basePage }) {
     const bar = tx.find((t) => t.s === 'Back Bar'); if (bar) bar.to = '/the-bar/back-bar';
     setText(tx[tx.length - 1], d.name);
   }
-  // Hero
+  // Hero: the drawn spirit bottle on cream, like a wine with no photo.
   const hero = find(m, byName('Hero')), copy = find(hero, byName('Copy'));
+  const panel = find(hero, startsWith('Bottle art'));
+  if (panel) { panel.f = [{ c: '#E7DECF' }]; panel.c = [art(panel.w, panel.h)]; }
   const tags = find(copy, byName('Tags'));
   const pills = tags.c;
   setText(texts(pills[0])[0], spirit);
@@ -128,7 +135,8 @@ export function bottlePage(tpl, e, { shelf, house, index, basePage }) {
   const [script, title, line] = copy.c.filter((c) => c.t === 'T');
   setText(script, uses.length ? `The ${word} in ${uses[0].data.name}` : d.tier ? `${d.tier} on our back bar` : 'From our back bar');
   setText(title, d.name.toUpperCase());
-  const kind = styles[0] ? `${lower(styles[0])} ${word}` : word;
+  // "Straight Rye" is already a rye: no "straight rye rye".
+  const kind = !styles[0] ? word : lower(styles[0]).includes(lower(word)) ? lower(styles[0]) : `${lower(styles[0])} ${word}`;
   setText(line, d.notes || `${an(kind)}${kind} on our back bar${uses.length ? `, and the ${word} we pour in ${list(uses.map((h) => h.data.name))}` : ''}.${d.limited ? ' Limited quantities.' : ''}`);
   const stats = find(copy, byName('Stats'));
   const vals = [spirit, styles.join(', ') || '—', d.price ? `$${String(d.price).replace(/^\$/, '')}` : 'Bar lead to add', d.tier || String(uses.length)];
