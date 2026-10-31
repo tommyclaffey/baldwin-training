@@ -408,7 +408,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     if (node.pa === 'S' && !node.gap) st.columnGap = 8;
     if (node.ca) st.alignItems = ALIGN[node.ca];
     else st.alignItems = 'flex-start';
-    if (node.wrap) { st.flexWrap = 'wrap'; if (node.cg) st.rowGap = node.cg; st.columnGap = node.gap; }
+    if (node.wrap) { st.flexWrap = 'wrap'; st.rowGap = node.cg || 0; st.columnGap = node.gap; }
     if (st.height !== undefined) cls.push('fixh');
   } else if (node.c) {
     st.position = st.position || 'relative';
