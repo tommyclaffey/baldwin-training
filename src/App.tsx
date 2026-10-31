@@ -45,8 +45,10 @@ function Book() {
         {user.store && !user.store.bookReady
           ? <strong className="mobile-name">{user.store.name}</strong>
           : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
-        <button className="menu-btn" aria-expanded={menu} aria-controls="side" onClick={() => setMenu((m) => !m)}>
-          {menu ? 'Close' : 'Menu'}
+        <button className="menu-btn" aria-expanded={menu} aria-controls="side" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu((m) => !m)}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+            {menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </svg>
         </button>
       </header>
       <div className={'shell' + (menu ? ' menu-open' : '')}>

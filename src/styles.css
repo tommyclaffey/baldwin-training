@@ -118,8 +118,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, .flink:focus-visible
     background: var(--ink);
   }
   .menu-btn {
-    background: #34302C; color: var(--cream); border: 0; border-radius: 10px;
-    padding: 10px 14px; min-height: 44px; font: 700 14px 'Archivo', sans-serif;
+    background: #34302C; color: var(--cream); border: 0; border-radius: 12px;
+    width: 44px; height: 44px; display: grid; place-items: center; padding: 0; cursor: pointer;
   }
   .side {
     position: fixed; top: 56px; left: 0; bottom: 0; height: auto;
@@ -815,4 +815,44 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   .qb { padding: 18px 16px; }
   .qb-footer, .qb-buttons { flex-direction: column; align-items: stretch; }
   .qb-btn { width: 100%; }
+}
+
+/* ---- phone pass 4 (Oct 31, Tommy's screenshots) ---- */
+@media (max-width: 859px) {
+  .page > .fn { gap: 28px !important; }
+  /* Signature cocktail cards: the photo spans the card. */
+  [data-name^="Spec · "] { flex-direction: column !important; }
+  [data-name^="Spec · "] > [role="img"] { width: 100% !important; height: auto !important; aspect-ratio: 4 / 3 !important; flex: none !important; }
+  [data-name^="Spec · "] > [data-name="Spec"] { width: 100% !important; }
+  /* Carousel head: the note on its own line, then the count and both arrows together on the right. */
+  [data-name="Band head"] { flex-direction: column !important; align-items: stretch !important; gap: 10px !important; }
+  [data-name="Carousel controls"] { display: grid !important; grid-template-columns: 1fr auto auto auto; align-items: center; column-gap: 10px !important; width: 100% !important; }
+  [data-name="Carousel controls"] > :first-child { grid-column: 1 / -1; width: auto !important; white-space: normal !important; }
+  [data-name="Carousel controls"] > :nth-child(2) { justify-self: start; }
+  /* Styles and brands (liqueurs and spirits): the style takes a fixed column, the brands line up beside it. */
+  [data-name^="Sub · "] { flex-wrap: nowrap !important; align-items: flex-start !important; gap: 14px !important; }
+  [data-name^="Sub · "] > [data-name="Name"] { flex: 0 0 34% !important; width: auto !important; }
+  [data-name^="Sub · "] > .ftext { flex: 1 1 0 !important; width: auto !important; min-width: 0; white-space: normal !important; }
+  [data-name^="Sub · "] > .fsvg { margin-top: 2px; }
+  /* Hospitality (Our Story): tight cards, label over the line. */
+  [data-name="In and out"] { gap: 10px !important; }
+  [data-name="In and out"] > * { flex-direction: column !important; align-items: flex-start !important; height: auto !important; min-height: 0 !important; gap: 6px !important; padding: 16px 18px !important; }
+  [data-name="In and out"] > * > * { width: auto !important; flex: none !important; }
+  [data-name="Promise"] { padding: 22px 20px !important; height: auto !important; }
+  /* Script headings stay a script size on a phone. */
+  .ftext.display[style*="Pinyon"] { font-size: min(var(--z), 8.5vw) !important; }
+  .hero-flow .ftext[style*="Pinyon"] { font-size: min(var(--z, 30px), 7.5vw) !important; line-height: 1.2 !important; }
+}
+@media (max-width: 859px) {
+  /* Stacked table rows: a 2-column grid, so the labels on each line sit level. */
+  .fx-h:has(> [data-label]):not([data-name^="Row · "][data-name] [data-name="Allergen grid"] *) { display: grid !important; grid-template-columns: 1fr 1fr; column-gap: 16px !important; row-gap: 12px !important; align-items: start !important; }
+  .fx-h:has(> [data-label]) > :not([data-label]):not(.fsvg) { grid-column: 1 / -1; }
+  [data-name="Allergen grid"] .fx-h:has(> [data-label]) { display: flex !important; }
+  /* Values (Our Story): every part of a card uses the card's width; cards size to their words. */
+  [data-name="Values"] > * { height: auto !important; min-height: 0 !important; }
+  [data-name="Values"] > * > * { width: auto !important; max-width: 100%; align-self: stretch !important; }
+}
+@media (max-width: 859px) {
+  /* The signed-in pill floats bottom-right: leave room under the last section so it never covers Back / Next. */
+  .shell .content { padding-bottom: 76px; }
 }

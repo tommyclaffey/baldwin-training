@@ -155,6 +155,25 @@ function linkDishPairs(page, recipes) {
   }
 }
 
+/** "Classic cocktails" lists on spirit pages: each drink is a row with its photo and an arrow, and opens its page. */
+let arrowSvg;
+function linkClassicLists(page, classics) {
+  arrowSvg ??= (() => { const f = baseIndex().find((x) => x.slug === 'spirit/liqueurs')?.file; const row = f && find(basePage(f).main, startsWith('Sub · ')); return row ? find(row, (n) => n.t === 'S')?.svg : null; })();
+  const bySq = new Map(classics.map((e) => [squash(e.data.name), e]));
+  for (const card of findAll(page.main, (n) => n.n === 'Classic cocktails' && (n.c || []).some(startsWith('Classic · ')))) {
+    card.c = card.c.map((c) => {
+      if (!startsWith('Classic · ')(c)) return c;
+      const e = bySq.get(squash(c.n.slice(10)));
+      if (!e) return c;
+      const [name, desc] = texts(c);
+      const thumb = { t: 'R', n: 'IMG/' + e.data.name, w: 48, h: 48, sh: 'F', sv: 'F', r: 10, f: e.data.photo ? [{ img: e.data.photo, m: 'FILL' }] : [{ c: '#E7DECF' }] };
+      const copy = { t: 'F', n: 'Copy', w: c.w - 90, h: c.h, sh: 'L', sv: 'H', lm: 'V', gap: 3, c: [name, desc].filter(Boolean).map((t) => ({ ...t, sh: 'L', ar: 'H' })) };
+      const arrow = arrowSvg ? [{ t: 'S', n: 'icon', w: 18, h: 18, sh: 'F', sv: 'F', svg: arrowSvg }] : [];
+      return { ...c, to: '/' + e.slug, lm: 'H', gap: 14, ca: 'C', c: [thumb, copy, ...arrow] };
+    });
+  }
+}
+
 /** Food Book pairings name a wine ("Thomas Schmitt Riesling") or a cocktail ("Side Car"); find its page in the book. */
 const squash = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/^the\s+/, '').replace(/[^a-z0-9]/g, '');
 /** The drawn bowl from the Food Matrix design (no photo yet). */
@@ -414,6 +433,7 @@ function assembleRaw(db, file) {
     for (const [n, url] of Object.entries(SITES)) { const card = find(page.main, byName(n)); if (card) card.to = url; }
   }
   linkDishPairs(page, ordered(db, 'recipe'));
+  linkClassicLists(page, ordered(db, 'classic'));
   if (file === '4-2') fillHome(db, page, { store: SCOPE.row, user: SCOPE.user, recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine'), bowl: bowlSvg() });
   if (file === '14-2') { classicTable(page, ordered(db, 'classic')); houseRows(page, ordered(db, 'house')); signatureCards(page, ordered(db, 'house')); }
   if (file === '13-2') foodMatrix(page, ordered(db, 'recipe'));
@@ -436,6 +456,7 @@ function genericPage(db, file, slug, page) {
   if (kind === 'own' || (slug === 'food-matrix' && !recipes.length)) return emptyPage(file, slug, SCOPE.row);
   const statics = snapshotShelves(page);
   if (file === '14-2') { classicTable(page, ordered(db, 'classic')); if (house.length) { houseRows(page, house); signatureCards(page, house); } }
+  linkClassicLists(page, ordered(db, 'classic'));
   if (file === '13-2') {
     foodMatrix(page, recipes);
     // Only this store's dishes, and no group left without one.
