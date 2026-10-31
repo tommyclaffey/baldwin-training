@@ -208,6 +208,8 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
     if (d.bottle_img) { bottle.w = 220; bottle.x = 70; }
     else if (panel) { bottle.x = 0; bottle.y = 0; bottle.w = panel.w; bottle.h = panel.h; }
     bottle.n = 'IMG/Bottle · ' + d.name;
+    // A spin from the spin scanner: the same place, but staff can drag it round (Oct 31).
+    if (d.spin?.length > 1) { bottle.f = [{ img: d.spin[0], m: 'FIT' }]; bottle.meta = { ...(bottle.meta || {}), spin: d.spin }; if (!d.bottle_img && panel) { bottle.w = 220; bottle.x = Math.round((panel.w - 220) / 2); } }
   }
   if (panel) panel.c = panel.c.filter((c) => c.n !== 'Shape · Wine bottle' && c.n !== 'Source');
   const tags = find(main, byName('Tags'));

@@ -1,0 +1,1210 @@
+{
+  "number": 5,
+  "slug": "italy",
+  "title": "Italy",
+  "script": "Chapter five",
+  "lead": "How Italian wine labels are tiered, and the regions the Court covers at Level 1: Piedmont, Lombardy, the northeast, Veneto, Tuscany, central and southern Italy, and the islands.",
+  "minutes": 25,
+  "intro": {
+    "script": "Start here",
+    "title": "THE LABEL TIERS",
+    "text": "Italian law puts DOCG above DOC; both are Italy's names for the EU's DOP. A wine must be DOC for at least seven years before it can become DOCG.",
+    "tiers": [
+      {
+        "name": "DOCG",
+        "note": "Top tier. Numbered State seal on every bottle"
+      },
+      {
+        "name": "DOC",
+        "note": "Named place with set rules"
+      },
+      {
+        "name": "IGT",
+        "note": "Italy's name for IGP. Usually larger areas"
+      },
+      {
+        "name": "Vino",
+        "note": "No DOP or IGP. May still show grape and vintage"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "Piedmont",
+      "book": "wine/italy/piedmont",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "On the border of France and Switzerland. The name means the foothills of the Alps. The climate is continental, and the Alps and Apennines make a rain shadow."
+        },
+        {
+          "label": "Style",
+          "text": "Every style is made here: dry, sweet, sparkling, red and white. Traditional reds age in large barrels. The fog that rolls off the Alpine foothills is called nebbia."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Nebbiolo",
+          "Barbera",
+          "Dolcetto",
+          "Brachetto",
+          "Moscato",
+          "Arneis",
+          "Cortese"
+        ]
+      },
+      "know": [
+        "Barolo and Barbaresco are dry reds from 100% Nebbiolo.",
+        "Barolo: at least 38 months of aging, 18 in oak. Barbaresco: at least 26 months, 9 in oak.",
+        "Moscato d'Asti is off-dry and semi-sparkling. Its fermentation stops at about 5% alcohol.",
+        "Gavi is a dry white from Cortese. Barbera d'Asti is a dry red from Barbera.",
+        "Nebbiolo has high tannin and high acidity, with color from medium ruby to garnet."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "BAROLO DOCG",
+              "title": "Nebbiolo, aged longer",
+              "text": "100% Nebbiolo\n11 villages, incl. Barolo and La Morra\nAt least 38 months, 18 in oak\nRiserva after 5 years"
+            },
+            {
+              "label": "BARBARESCO DOCG",
+              "title": "Nebbiolo, shorter minimum aging",
+              "text": "100% Nebbiolo\nBarbaresco, Treiso, Neive, part of Alba\nAt least 26 months, 9 in oak\nRiserva after 4 years"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Five Piedmont DOCGs to know",
+          "rows": [
+            {
+              "name": "Barolo",
+              "meta": "Nebbiolo · dry red"
+            },
+            {
+              "name": "Barbaresco",
+              "meta": "Nebbiolo · dry red"
+            },
+            {
+              "name": "Barbera d'Asti",
+              "meta": "Barbera · dry red"
+            },
+            {
+              "name": "Gavi",
+              "meta": "Cortese · dry white"
+            },
+            {
+              "name": "Moscato d'Asti",
+              "meta": "Moscato · off-dry, semi-sparkling"
+            }
+          ],
+          "note": "These are the five the Court lists at the Introductory level."
+        }
+      ]
+    },
+    {
+      "name": "Lombardy",
+      "book": "wine/italy/lombardy",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "Northern Italy, on the Swiss border, in the foothills of the Alps. The climate is cool continental, and many lakes shape it."
+        },
+        {
+          "label": "Franciacorta",
+          "text": "Franciacorta DOCG is Metodo Classico sparkling wine: the second fermentation happens in the bottle. It comes from the province of Brescia, by Lake Iseo. The Court asks you to compare it with Champagne."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Chardonnay",
+          "Pinot Nero",
+          "Pinot Bianco"
+        ]
+      },
+      "know": [
+        "Franciacorta is Metodo Classico: second fermentation in the bottle, then disgorging.",
+        "Grapes are Chardonnay and Pinot Nero, with up to 50% Pinot Bianco.",
+        "Non-vintage Franciacorta spends at least 18 months on the lees.",
+        "Millesimato on the label means a vintage wine.",
+        "Satèn is at least 50% Chardonnay."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "Franciacorta · minimum months on the lees",
+          "rows": [
+            {
+              "name": "Franciacorta",
+              "value": "18 months",
+              "pct": 0.3
+            },
+            {
+              "name": "Rosé",
+              "value": "24 months",
+              "pct": 0.4
+            },
+            {
+              "name": "Satèn",
+              "value": "24 months",
+              "pct": 0.4
+            },
+            {
+              "name": "Millesimato",
+              "value": "30 months",
+              "pct": 0.5
+            },
+            {
+              "name": "Riserva",
+              "value": "60 months",
+              "pct": 1.0
+            }
+          ],
+          "note": "Riserva is always a vintage wine."
+        }
+      ]
+    },
+    {
+      "name": "Trentino-Alto Adige and Friuli",
+      "book": "wine/italy/trentino-alto-adige",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "Northeast Italy, in the Alps. Trentino-Alto Adige borders Austria and Switzerland. Friuli borders Slovenia. Both are cool continental."
+        },
+        {
+          "label": "Labels",
+          "text": "Both regions mostly make single-grape wines, with the grape named on the label. Most Trentino-Alto Adige wine is DOC."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Pinot Grigio",
+          "Pinot Bianco",
+          "Chardonnay",
+          "Sauvignon Blanc",
+          "Pinot Nero",
+          "Merlot"
+        ]
+      },
+      "know": [
+        "The grape is usually on the label in both regions.",
+        "Over 96% of Alto Adige vineyards are DOC. Alto Adige DOC can also be labeled Südtirol.",
+        "In Friuli, Sauvignon Blanc is often just called Sauvignon.",
+        "Delle Venezie DOC covers Veneto, Friuli and Trentino, and is for Pinot Grigio."
+      ],
+      "visuals": [
+        {
+          "type": "tiles",
+          "title": "The northeast at a glance",
+          "dark": true,
+          "items": [
+            {
+              "name": "Trentino-Alto Adige",
+              "text": "Borders Austria and Switzerland. Pinot Grigio, Pinot Bianco, Pinot Nero"
+            },
+            {
+              "name": "Friuli",
+              "text": "Borders Slovenia. Pinot Grigio, Sauvignon, Merlot"
+            },
+            {
+              "name": "Delle Venezie DOC",
+              "text": "Pinot Grigio from Veneto, Friuli and Trentino"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "85%",
+          "title": "of Italy's Pinot Grigio",
+          "text": "The Delle Venezie consortium says its DOC makes around 85% of Italy's Pinot Grigio."
+        }
+      ]
+    },
+    {
+      "name": "Veneto",
+      "book": "wine/italy/veneto",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "Northeast Italy, home to Venice and Verona. The climate is cool Mediterranean. Valpolicella and Soave are both in the province of Verona."
+        },
+        {
+          "label": "Appassimento",
+          "text": "Grapes are dried before fermenting. This concentrates the sugar and makes Amarone rich and strong."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Glera",
+          "Garganega",
+          "Corvina",
+          "Rondinella"
+        ]
+      },
+      "know": [
+        "Prosecco is made from Glera. Its bubbles come from a second fermentation in big tanks (the Charmat or Martinotti method).",
+        "Soave is a dry white, at least 70% Garganega. Soave Superiore is a DOCG.",
+        "Valpolicella is a dry red, mainly Corvina and Rondinella.",
+        "Amarone della Valpolicella DOCG is made from dried grapes and has at least 14% alcohol.",
+        "Conegliano Valdobbiadene Prosecco Superiore is the DOCG. Prosecco DOC is the larger area."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "How Amarone is made",
+          "items": [
+            {
+              "name": "Pick",
+              "text": "Choose healthy bunches",
+              "meta": "Corvina, Rondinella"
+            },
+            {
+              "name": "Dry",
+              "text": "Lay on racks in airy rooms",
+              "meta": "about 3 months"
+            },
+            {
+              "name": "Shrink",
+              "text": "Grapes lose weight; sugar concentrates",
+              "meta": "30-50% lighter"
+            },
+            {
+              "name": "Ferment",
+              "text": "A strong red, often with some sweetness",
+              "meta": "at least 14% abv"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Veneto wines to know",
+          "rows": [
+            {
+              "name": "Prosecco DOC",
+              "meta": "Glera · sparkling"
+            },
+            {
+              "name": "Conegliano Valdobbiadene Prosecco Superiore DOCG",
+              "meta": "Glera · sparkling"
+            },
+            {
+              "name": "Soave DOC · Soave Superiore DOCG",
+              "meta": "Garganega · dry white"
+            },
+            {
+              "name": "Valpolicella DOC",
+              "meta": "Corvina, Rondinella · dry red"
+            },
+            {
+              "name": "Amarone della Valpolicella DOCG",
+              "meta": "Dried grapes · rich red"
+            }
+          ],
+          "note": "Classico on a label means the historic center of the zone."
+        }
+      ]
+    },
+    {
+      "name": "Tuscany",
+      "book": "wine/italy/tuscany",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "From the Ligurian Sea in the west to the Apennine foothills in the east. Continental inland, more maritime near the coast. Galestro is the key soil."
+        },
+        {
+          "label": "Style",
+          "text": "Mostly dry reds from Sangiovese, plus dry whites and sweet Vin Santo. Super Tuscans can be Bordeaux-grape blends, Bordeaux grapes with Sangiovese, or pure Sangiovese."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Sangiovese",
+          "Brunello (Sangiovese Grosso)",
+          "Cabernet Sauvignon",
+          "Merlot"
+        ]
+      },
+      "know": [
+        "Chianti is at least 70% Sangiovese. Chianti Classico is at least 80%.",
+        "The black rooster (Gallo Nero) marks every bottle of Chianti Classico.",
+        "Brunello di Montalcino is 100% Sangiovese, with at least 2 years in oak. It is released about five years after harvest.",
+        "Vino Nobile di Montepulciano is Sangiovese, from the town of Montepulciano.",
+        "Riserva means longer aging. Superiore means higher alcohol."
+      ],
+      "visuals": [
+        {
+          "type": "pyramid",
+          "title": "Chianti Classico, top to bottom",
+          "rows": [
+            {
+              "name": "Gran Selezione",
+              "note": "90% Sangiovese, estate grapes, 30 months"
+            },
+            {
+              "name": "Riserva",
+              "note": "80% Sangiovese, 24 months"
+            },
+            {
+              "name": "Annata",
+              "note": "80% Sangiovese, 12 months"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Key Tuscan wines and their Sangiovese",
+          "rows": [
+            {
+              "name": "Brunello di Montalcino DOCG",
+              "meta": "100% Sangiovese"
+            },
+            {
+              "name": "Chianti Classico DOCG",
+              "meta": "80% minimum"
+            },
+            {
+              "name": "Chianti DOCG",
+              "meta": "70% minimum"
+            },
+            {
+              "name": "Vino Nobile di Montepulciano DOCG",
+              "meta": "70% minimum"
+            },
+            {
+              "name": "Bolgheri DOC",
+              "meta": "Cabernet, Merlot; Sangiovese up to 50%"
+            }
+          ],
+          "note": "Rosso di Montalcino is Brunello's younger DOC sibling, released the year after harvest."
+        }
+      ]
+    },
+    {
+      "name": "Central and Southern Italy",
+      "book": "wine/italy/campania",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "Central Italy is maritime on the coast and continental inland, with the Apennine Mountains. The south is Mediterranean."
+        },
+        {
+          "label": "Regions",
+          "text": "Know Marche, Umbria and Abruzzo in the center, and Campania, Puglia, Basilicata and Calabria in the south. Match each wine to its grape."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Aglianico",
+          "Montepulciano",
+          "Sagrantino",
+          "Primitivo",
+          "Fiano",
+          "Greco",
+          "Verdicchio"
+        ]
+      },
+      "know": [
+        "Taurasi DOCG (Campania) is Aglianico.",
+        "Greco di Tufo and Fiano di Avellino are Campania's white DOCGs.",
+        "Montepulciano d'Abruzzo is made from the Montepulciano grape.",
+        "Verdicchio is the white grape of Marche.",
+        "Sagrantino is Umbria's red, from Montefalco."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "Match the wine to its region",
+          "rows": [
+            {
+              "name": "Taurasi DOCG",
+              "meta": "Campania · Aglianico"
+            },
+            {
+              "name": "Greco di Tufo DOCG",
+              "meta": "Campania · Greco"
+            },
+            {
+              "name": "Fiano di Avellino DOCG",
+              "meta": "Campania · Fiano"
+            },
+            {
+              "name": "Montefalco Sagrantino DOCG",
+              "meta": "Umbria · Sagrantino"
+            },
+            {
+              "name": "Montepulciano d'Abruzzo DOC",
+              "meta": "Abruzzo · Montepulciano"
+            },
+            {
+              "name": "Verdicchio dei Castelli di Jesi DOC",
+              "meta": "Marche · Verdicchio"
+            },
+            {
+              "name": "Primitivo di Manduria DOC",
+              "meta": "Puglia · Primitivo"
+            }
+          ],
+          "note": "Each wine is at least 85% of the grape shown."
+        }
+      ]
+    },
+    {
+      "name": "Sicily and Sardinia",
+      "book": "wine/italy/sicily",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "Sicily lies off the southern tip of Italy. Sardinia lies south of France and west of Italy. Both are Mediterranean."
+        },
+        {
+          "label": "Etna",
+          "text": "Mount Etna gives Sicily volcanic soils. Etna DOC makes reds from Nerello Mascalese and whites from Carricante."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Nero d'Avola",
+          "Nerello Mascalese",
+          "Frappato",
+          "Carricante",
+          "Cannonau",
+          "Vermentino"
+        ]
+      },
+      "know": [
+        "Sicily's reds: Nero d'Avola, Nerello Mascalese and Frappato. Its key white: Carricante.",
+        "Sardinia's red is Cannonau. Its white is Vermentino.",
+        "Sicilia DOC covers the whole island.",
+        "Cerasuolo di Vittoria DOCG blends Nero d'Avola and Frappato."
+      ],
+      "visuals": [
+        {
+          "type": "tiles",
+          "title": "Island grapes",
+          "dark": true,
+          "items": [
+            {
+              "name": "Sicily · red",
+              "text": "Nero d'Avola, Nerello Mascalese, Frappato"
+            },
+            {
+              "name": "Sicily · white",
+              "text": "Carricante (Etna)"
+            },
+            {
+              "name": "Sardinia",
+              "text": "Cannonau (red), Vermentino (white)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "Montepulciano d'Abruzzo",
+      "b": "Vino Nobile di Montepulciano",
+      "why": "The first is the Montepulciano grape from Abruzzo. The second is Sangiovese from the Tuscan town of Montepulciano."
+    },
+    {
+      "a": "Chianti",
+      "b": "Chianti Classico",
+      "why": "Chianti is at least 70% Sangiovese from a wide area. Chianti Classico is at least 80%, from the heart between Florence and Siena, with the black rooster."
+    },
+    {
+      "a": "Moscato d'Asti",
+      "b": "Asti",
+      "why": "Moscato d'Asti is semi-sparkling and stops at about 5% alcohol. Asti is fully sparkling."
+    },
+    {
+      "a": "Brunello di Montalcino",
+      "b": "Rosso di Montalcino",
+      "why": "Same grape and town. Brunello (DOCG) waits about five years for release; Rosso (DOC) is released the year after harvest."
+    }
+  ],
+  "sources": "Court of Master Sommeliers, Americas Curriculum Guide, Course Guide and Grape Variety Profiles; Italian Law 238/2016; Regione Veneto; Federdoc; and the consortia for Barolo and Barbaresco (Langhe), Asti, Franciacorta, Alto Adige, Delle Venezie, Valpolicella, Soave, Prosecco DOC, Conegliano Valdobbiadene, Chianti Classico, Chianti, Brunello di Montalcino, Vino Nobile di Montepulciano and Bolgheri; Wine Folly as a labeled secondary source. Checked Oct 31, 2026.",
+  "cards": [
+    {
+      "q": "What is the top tier of Italian wine law?",
+      "answer": "DOCG",
+      "wrong": [
+        "DOC",
+        "IGT",
+        "Vino"
+      ],
+      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=15"
+    },
+    {
+      "q": "Under Italian law, how long must a wine be DOC before it can become DOCG?",
+      "answer": "At least seven years",
+      "wrong": [
+        "At least two years",
+        "At least five years",
+        "At least ten years"
+      ],
+      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=19"
+    },
+    {
+      "q": "On an Italian label, what does 'Classico' mean?",
+      "answer": "The wine comes from the classic, historic center of the region",
+      "wrong": [
+        "The wine has higher alcohol",
+        "The wine had longer aging",
+        "The wine is made in a traditional sparkling style"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=33"
+    },
+    {
+      "q": "Which grape makes Barolo?",
+      "answer": "Nebbiolo",
+      "wrong": [
+        "Barbera",
+        "Dolcetto",
+        "Sangiovese"
+      ],
+      "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+    },
+    {
+      "q": "What is the minimum aging for Barolo, per the Court's curriculum?",
+      "answer": "38 months, at least 18 in oak",
+      "wrong": [
+        "26 months, at least 9 in oak",
+        "24 months, at least 12 in oak",
+        "60 months, at least 24 in oak"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "q": "What is the minimum aging for Barbaresco, per the Court's curriculum?",
+      "answer": "26 months, at least 9 in oak",
+      "wrong": [
+        "38 months, at least 18 in oak",
+        "12 months, no oak required",
+        "50 months, at least 24 in oak"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "q": "What style is Moscato d'Asti DOCG?",
+      "answer": "Off-dry, semi-sparkling white",
+      "wrong": [
+        "Dry, still white",
+        "Fully sparkling, bone-dry white",
+        "Sweet fortified red"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "q": "Gavi DOCG is made from which grape?",
+      "answer": "Cortese",
+      "wrong": [
+        "Arneis",
+        "Moscato",
+        "Garganega"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "q": "In Piedmont, what is 'nebbia'?",
+      "answer": "Fog that rolls off the Alpine foothills",
+      "wrong": [
+        "The best vineyard site",
+        "A Riserva aging term",
+        "The local name for Nebbiolo in Valtellina"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=27"
+    },
+    {
+      "q": "What is the minimum time on the lees for non-vintage Franciacorta?",
+      "answer": "18 months",
+      "wrong": [
+        "9 months",
+        "15 months",
+        "36 months"
+      ],
+      "source": "https://franciacorta.wine/en/consortium/regulations/"
+    },
+    {
+      "q": "How does Franciacorta get its bubbles?",
+      "answer": "Second fermentation in the bottle",
+      "wrong": [
+        "Second fermentation in a pressurized tank",
+        "Carbon dioxide is added",
+        "Fermentation is stopped early in a sealed tank"
+      ],
+      "source": "https://franciacorta.wine/en/consortium/regulations/"
+    },
+    {
+      "q": "Delle Venezie DOC was created to protect which grape?",
+      "answer": "Pinot Grigio",
+      "wrong": [
+        "Glera",
+        "Garganega",
+        "Friulano"
+      ],
+      "source": "https://www.dellevenezie.it/en/"
+    },
+    {
+      "q": "Which grape is Prosecco made from?",
+      "answer": "Glera",
+      "wrong": [
+        "Garganega",
+        "Trebbiano",
+        "Cortese"
+      ],
+      "source": "https://www.prosecco.wine/en/prosecco/discover/types/"
+    },
+    {
+      "q": "Where does Prosecco DOC's second fermentation take place?",
+      "answer": "In large pressurized tanks (autoclaves)",
+      "wrong": [
+        "In the bottle",
+        "In oak barrels",
+        "There is no second fermentation"
+      ],
+      "source": "https://www.prosecco.wine/en/prosecco/discover/winemaking/"
+    },
+    {
+      "q": "What is the main grape of Soave?",
+      "answer": "Garganega",
+      "wrong": [
+        "Glera",
+        "Corvina",
+        "Pinot Grigio"
+      ],
+      "source": "https://www.ilsoave.com/en/regulations/"
+    },
+    {
+      "q": "What are the main grapes of Valpolicella?",
+      "answer": "Corvina and Rondinella",
+      "wrong": [
+        "Nebbiolo and Barbera",
+        "Sangiovese and Canaiolo",
+        "Aglianico and Piedirosso"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=31"
+    },
+    {
+      "q": "Amarone della Valpolicella is made using which process?",
+      "answer": "Appassimento: drying the grapes before fermentation",
+      "wrong": [
+        "Carbonic maceration",
+        "Fortification with grape spirit",
+        "Botrytis (noble rot)"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=31"
+    },
+    {
+      "q": "What is the minimum Sangiovese in Chianti Classico Annata and Riserva?",
+      "answer": "80%",
+      "wrong": [
+        "70%",
+        "50%",
+        "100%"
+      ],
+      "source": "https://www.chianticlassico.com/en/wine/types/"
+    },
+    {
+      "q": "What is the minimum Sangiovese in Chianti DOCG?",
+      "answer": "70%",
+      "wrong": [
+        "80%",
+        "90%",
+        "100%"
+      ],
+      "source": "https://www.consorziovinochianti.it/wp-content/uploads/2024/04/Brochure-pocket-inglese-nuovo-OCM-WEB.pdf"
+    },
+    {
+      "q": "The black rooster (Gallo Nero) appears on bottles of which wine?",
+      "answer": "Chianti Classico",
+      "wrong": [
+        "Brunello di Montalcino",
+        "Vino Nobile di Montepulciano",
+        "Chianti Rufina"
+      ],
+      "source": "https://www.chianticlassico.com/en/trademark/history-of-the-black-rooster/"
+    },
+    {
+      "q": "Brunello di Montalcino is made from which grape?",
+      "answer": "Sangiovese",
+      "wrong": [
+        "Nebbiolo",
+        "Montepulciano",
+        "Cabernet Sauvignon"
+      ],
+      "source": "https://consorziobrunellodimontalcino.it/en/583/vini"
+    },
+    {
+      "q": "How long must Brunello di Montalcino spend in oak, at minimum?",
+      "answer": "2 years",
+      "wrong": [
+        "6 months",
+        "1 year",
+        "4 years"
+      ],
+      "source": "https://consorziobrunellodimontalcino.it/en/583/vini"
+    },
+    {
+      "q": "Vino Nobile di Montepulciano is mainly made from which grape?",
+      "answer": "Sangiovese (Prugnolo Gentile)",
+      "wrong": [
+        "Montepulciano",
+        "Nebbiolo",
+        "Merlot"
+      ],
+      "source": "https://www.consorziovinonobile.it/disciplinaries/"
+    },
+    {
+      "q": "According to the Court, which wines can be called Super Tuscans?",
+      "answer": "Bordeaux-grape blends, Bordeaux grapes with Sangiovese, or pure Sangiovese",
+      "wrong": [
+        "Only wines with at least 80% Sangiovese",
+        "Only sweet Vin Santo",
+        "Only wines labeled DOCG"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=33"
+    },
+    {
+      "q": "Sassicaia comes from which Tuscan area?",
+      "answer": "Bolgheri",
+      "wrong": [
+        "Chianti Classico",
+        "Montalcino",
+        "Montepulciano"
+      ],
+      "source": "https://www.bolgheridoc.com/en/wines/"
+    },
+    {
+      "q": "Taurasi DOCG is made from which grape?",
+      "answer": "Aglianico",
+      "wrong": [
+        "Fiano",
+        "Greco",
+        "Primitivo"
+      ],
+      "source": "https://www.federdoc.com/new/regioni/en/Campania.pdf"
+    },
+    {
+      "q": "Taurasi, Greco di Tufo and Fiano di Avellino are DOCGs of which region?",
+      "answer": "Campania",
+      "wrong": [
+        "Sicily",
+        "Puglia",
+        "Tuscany"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=34"
+    },
+    {
+      "q": "Montepulciano d'Abruzzo is made from which grape?",
+      "answer": "Montepulciano",
+      "wrong": [
+        "Sangiovese",
+        "Aglianico",
+        "Sagrantino"
+      ],
+      "source": "https://www.federdoc.com/new/regioni/en/Abruzzo.pdf"
+    },
+    {
+      "q": "What is the main red grape of Etna DOC?",
+      "answer": "Nerello Mascalese",
+      "wrong": [
+        "Nero d'Avola",
+        "Frappato",
+        "Cannonau"
+      ],
+      "source": "https://www.federdoc.com/new/regioni/en/Sicily.pdf"
+    },
+    {
+      "q": "Cannonau is the signature red grape of which island?",
+      "answer": "Sardinia",
+      "wrong": [
+        "Sicily",
+        "Capri",
+        "Elba"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=36"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "CMS-A Introductory Sommelier Course outline, Section 5 Italy: Piedmont, Lombardy, Trentino-Alto Adige, Veneto, Friuli-Venezia-Giulia, Tuscany, Marche, Campania, Sicily.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=4"
+    },
+    {
+      "fact": "Curriculum Guide Italy subjects: Piedmont (p26); Lombardy & Emilia-Romagna (p28); Trentino-Alto Adige / Friuli / Veneto (p30); Tuscany (p32); Central & Southern Italy (p34); Sicily & Sardinia (p36). Each page has an 'Introductory Level' column and a 'Certified Sommelier Exam' column.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "fact": "Curriculum Guide, every Italy page, Introductory column, Classification row: IGP, DOC, DOCG.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "fact": "Law 238/2016 Art. 28 (translated from Italian): DOP wines are classified as DOCG (denominazioni di origine controllata e garantita) and DOC (denominazioni di origine controllata). DOCG and DOC are Italy's traditional terms for DOP wines.",
+      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=15"
+    },
+    {
+      "fact": "Law 238/2016 Art. 28 (translated from Italian): IGP includes the IGT (indicazioni geografiche tipiche); IGT is the traditional term Italy uses for IGP wines. The Italian terms may appear on labels alone or with the EU terms DOP and IGP.",
+      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=15"
+    },
+    {
+      "fact": "Law 238/2016 Art. 28 (translated from Italian): in the Province of Bolzano, DOC and DOCG wines may use the German terms 'Kontrollierte Ursprungsbezeichnung' and 'Kontrollierte und garantierte Ursprungsbezeichnung'; IGT wines may use 'Landwein'.",
+      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=15"
+    },
+    {
+      "fact": "Law 238/2016 Art. 33 (translated from Italian): DOCG recognition is reserved for wines already recognized as DOC for at least seven years, judged of particular worth for their quality and commercial renown.",
+      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=19"
+    },
+    {
+      "fact": "Law 238/2016 Art. 33 (translated from Italian): DOC recognition is reserved for wines from areas already recognized as IGT for at least five years.",
+      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=19"
+    },
+    {
+      "fact": "Law 238/2016 Art. 48 (translated from Italian): DOCG wines must be sold in bottles or containers of no more than six liters (unless the rules say otherwise) fitted with a special State seal (contrassegno) carrying a series and an identification number.",
+      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=32"
+    },
+    {
+      "fact": "Law 238/2016 Art. 66 (translated from Italian): wines without DOP or IGP may be labeled with the vintage and the grape variety name, under controls set by ministerial decree.",
+      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=43"
+    },
+    {
+      "fact": "Regione Veneto: Veneto has 53 DOCG, DOC and IGT wines: 14 DOCG, 29 DOC and 10 IGT. (Translated from Italian.)",
+      "source": "https://www.regione.veneto.it/web/agricoltura-e-foreste/docg-doc-igt"
+    },
+    {
+      "fact": "Conegliano Valdobbiadene consortium: every DOCG bottle bears a Government Quality Label with a unique number; its golden color identifies all of Italy's DOCGs.",
+      "source": "https://www.prosecco.it/en/conegliano-valdobbiadene-prosecco-superiore-docg/"
+    },
+    {
+      "fact": "Wine Folly (secondary): most IGP wines come from larger geographical areas, and some are regional wines made with non-Italian grapes.",
+      "source": "https://winefolly.com/wine-regions/italy/"
+    },
+    {
+      "fact": "Wine Folly (secondary): IGT was created in 1992, giving winemakers more freedom.",
+      "source": "https://winefolly.com/tips/super-tuscan-wines/"
+    },
+    {
+      "fact": "Curriculum Guide, Piedmont, Introductory: location on the border of Switzerland and France; climate continental; Apennine Mountains and Alps provide a rain shadow; 'Piedmont' refers to the foothills of the Alps; Po River (Po River Valley).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "fact": "Curriculum Guide, Piedmont, Introductory: white grapes Moscato, Arneis, Cortese; red grapes Nebbiolo, Barbera, Dolcetto, Brachetto.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "fact": "Curriculum Guide, Piedmont, Introductory: traditional aging in large barrels; aging requirements (law) exist for Barolo and Barbaresco.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "fact": "Curriculum Guide, Piedmont, Certified column: Barolo 38 months total aging with a minimum of 18 months in oak; Barbaresco 26 months total with a minimum of 9 months in oak.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "fact": "Curriculum Guide, Piedmont, Introductory: Barolo DOCG and Barbaresco DOCG are dry red wines from Nebbiolo; Moscato d'Asti DOCG is an off-dry, semi-sparkling white from Moscato; Gavi DOCG is dry white from Cortese; Barbera d'Asti DOCG is dry red from Barbera.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "fact": "Curriculum Guide, Piedmont, Introductory: Nebbia is the local name for fog rolling off the foothills of the Alps. Style: all of dry, sweet, sparkling, red, white.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=27"
+    },
+    {
+      "fact": "Barolo consortium: Barolo is made from 100% Nebbiolo in 11 municipalities: Barolo, Serralunga d'Alba, Castiglione Falletto, La Morra, Monforte, Verduno, Novello, Grinzane Cavour, Diano d'Alba, Cherasco and Roddi.",
+      "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+    },
+    {
+      "fact": "Barolo consortium: Barolo ages at least three years beyond the two months after harvest, one and a half of them in oak; only after five years may it be called Riserva.",
+      "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+    },
+    {
+      "fact": "Barolo consortium: Barolo has a full, intense garnet color and elegant, complex tannins.",
+      "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+    },
+    {
+      "fact": "Barbaresco consortium: 100% Nebbiolo from Barbaresco, Treiso, Neive and part of Alba; ages at least two years, nine months in oak; after four years it may be called Riserva.",
+      "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barbaresco-docg/"
+    },
+    {
+      "fact": "Barbaresco consortium: one of the first Italian DOCs (1966) and one of the first DOCGs (1980).",
+      "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barbaresco-docg/"
+    },
+    {
+      "fact": "Asti consortium: Asti DOCG comes from Moscato Bianco grown in 51 townships in the provinces of Asti, Alessandria and Cuneo; its wines are Asti Spumante, Asti Rosé and Moscato d'Asti.",
+      "source": "https://astidocg.it/en/asti-docg-designation/"
+    },
+    {
+      "fact": "Curriculum Guide, Piedmont, Certified column: Asti DOCG is fully sparkling Moscato.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+    },
+    {
+      "fact": "Asti consortium: Moscato d'Asti (DOCG 1993, Moscato Bianco) differs from Asti Spumante because fermentation is halted at about 5% alcohol, with lower pressure.",
+      "source": "https://astidocg.it/en/wines/moscato-dasti-docg/"
+    },
+    {
+      "fact": "Asti consortium: Asti Spumante is made by the Martinotti method in pressurized tanks or by the Metodo Classico, with second fermentation in bottle.",
+      "source": "https://astidocg.it/en/wines/asti-spumante-docg/"
+    },
+    {
+      "fact": "CMS Grape Variety Profiles (GuildSomm), Nebbiolo: high tannin and high acidity; color medium ruby to garnet; possible steps large barrel and extended skin maceration; top regions Piedmont (Barolo, Barbaresco) and Lombardy (Valtellina; Chiavennasca is a synonym).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=12"
+    },
+    {
+      "fact": "Curriculum Guide, Lombardy, Introductory learning outcome: understand the style of Franciacorta, its grapes, aging requirements and how it compares to Champagne.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=28"
+    },
+    {
+      "fact": "Curriculum Guide, Lombardy, Introductory: northern Italy on the border of Switzerland; cool continental; foothills of the Alps; many lakes influence the region; Metodo Classico sparkling wines; grapes Chardonnay, Pinot Bianco, Pinot Nero.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=28"
+    },
+    {
+      "fact": "Curriculum Guide, Lombardy, Introductory: Franciacorta DOCG, Pinot Nero, Chardonnay, Pinot Bianco; spumante, metodo classico; minimum 18 months on the lees, 25 months total aging from harvest. Label terms: Metodo Classico, Spumante, Millesimato, Frizzante.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=29"
+    },
+    {
+      "fact": "Franciacorta regulations: Franciacorta DOCG is made only by second fermentation in bottle and removal of lees by disgorging; types are Franciacorta, Satèn and Rosé. DOC 1967, DOCG 1995.",
+      "source": "https://franciacorta.wine/en/consortium/regulations/"
+    },
+    {
+      "fact": "Franciacorta regulations: grapes Chardonnay and/or Pinot Nero; Pinot Bianco up to 50%; Erbamat up to 10%. Satèn is at least 50% Chardonnay.",
+      "source": "https://franciacorta.wine/en/consortium/regulations/"
+    },
+    {
+      "fact": "Franciacorta regulations: production area entirely in the Province of Brescia, bordered by Lake Iseo.",
+      "source": "https://franciacorta.wine/en/consortium/regulations/"
+    },
+    {
+      "fact": "Franciacorta regulations: minimum time on lees: Franciacorta 18 months; Rosé 24; Satèn 24; Millesimato (vintage) 30; Riserva is a vintage wine aged at least 60 months on the lees.",
+      "source": "https://franciacorta.wine/en/consortium/regulations/"
+    },
+    {
+      "fact": "Curriculum Guide, NE Italy, Introductory: Trentino-Alto Adige is in northeastern Italy bordering Austria and Switzerland; Friuli is in northeastern Italy bordering Slovenia; Veneto is in northeastern Italy and includes Venice and Verona.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=30"
+    },
+    {
+      "fact": "Curriculum Guide, NE Italy, Introductory: Trentino-Alto Adige and Friuli are cool continental with the Alps; Veneto is cool Mediterranean.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=30"
+    },
+    {
+      "fact": "Curriculum Guide, NE Italy, Introductory: Trentino-Alto Adige and Friuli make single-variety wines, with the grape on the label.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=30"
+    },
+    {
+      "fact": "Curriculum Guide, NE Italy, Introductory: Trentino-Alto Adige whites Pinot Grigio, Chardonnay, Sauvignon Blanc, Pinot Bianco; red Pinot Nero. Friuli whites Pinot Bianco, Chardonnay, Pinot Grigio, Sauvignon Blanc (called Sauvignon); red Merlot. Veneto whites Garganega, Glera; reds Corvina, Rondinella.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=30"
+    },
+    {
+      "fact": "Curriculum Guide, NE Italy, Introductory: Delle Venezie DOC / Trevenezie IGP includes all of Veneto, Friuli and the Trentino part of Trentino-Alto Adige. Most Trentino-Alto Adige production is DOC, single-variety wine.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=30"
+    },
+    {
+      "fact": "Delle Venezie consortium: Pinot Grigio DOC Delle Venezie protects Pinot Grigio in the Triveneto (Veneto, Friuli Venezia Giulia, Trentino) and accounts for around 85% of Italy's Pinot Grigio production.",
+      "source": "https://www.dellevenezie.it/en/"
+    },
+    {
+      "fact": "Alto Adige Wines: over 96% of Alto Adige's vineyards are under DOC protection, the highest share in Italy; 1975 marked the start of its quality-first approach.",
+      "source": "https://www.altoadigewines.com/en/our-wine/origin-doc"
+    },
+    {
+      "fact": "Federdoc, Trentino-Alto Adige: DOC list includes 'Alto Adige or dell'Alto Adige or Südtirol or Südtiroler', Trentino, Trento, Teroldego Rotaliano and Valdadige; no DOCG is listed.",
+      "source": "https://www.federdoc.com/new/regioni/en/Trentino-Alto-Adige.pdf"
+    },
+    {
+      "fact": "Federdoc, Friuli Venezia Giulia: DOCs include Collio Goriziano or Collio, Friuli Colli Orientali, Friuli Grave, Friuli Isonzo, delle Venezie and Prosecco.",
+      "source": "https://www.federdoc.com/new/regioni/en/Friuli-Venezia-Giulia.pdf"
+    },
+    {
+      "fact": "Curriculum Guide, Veneto, Introductory: Prosecco DOC is spumante made by the Charmat method from Glera. Soave DOC / Soave Superiore DOCG are dry whites mostly from Garganega; Superiore has higher alcohol and longer minimum aging. Valpolicella DOC is dry red mainly from Corvina and Rondinella.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=31"
+    },
+    {
+      "fact": "Curriculum Guide, Veneto, Introductory: Amarone della Valpolicella DOCG is red, mainly Corvina with Rondinella, made by appassimento (drying grapes to concentrate sugar); minimum 14% abv; residual sugar is often perceptible.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=31"
+    },
+    {
+      "fact": "Curriculum Guide, Veneto, Introductory general terms: Classico, Superiore, Secco, Amabile, Charmat, Appassimento.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=31"
+    },
+    {
+      "fact": "Valpolicella consortium: the four wines are Valpolicella DOC, Valpolicella Ripasso DOC, Amarone della Valpolicella DOCG and Recioto della Valpolicella DOCG, from native grapes such as Corvina, Corvinone and Rondinella.",
+      "source": "https://www.consorziovalpolicella.it/en/types-of-wines/"
+    },
+    {
+      "fact": "Valpolicella consortium: for appassimento, grapes are laid on racks ('arele') or crates in airy drying rooms ('fruttai') for about three months and lose 30-50% of their weight.",
+      "source": "https://www.consorziovalpolicella.it/en/types-of-wines/"
+    },
+    {
+      "fact": "Valpolicella consortium: the area covers 19 municipalities in the province of Verona, split into three zones: Classica, Valpantena and the DOC Valpolicella zone. (Translated from Italian.)",
+      "source": "https://www.consorziovalpolicella.it/"
+    },
+    {
+      "fact": "Federdoc, Veneto: Amarone, Recioto and Valpolicella: Corvina Veronese 45-95%, Rondinella 5-30%. Soave and Soave Superiore: Garganega minimum 70%. Prosecco DOC: Glera minimum 85%.",
+      "source": "https://www.federdoc.com/new/regioni/en/Veneto.pdf"
+    },
+    {
+      "fact": "Soave consortium: Soave DOC (1968) is in the eastern hills of the province of Verona; at least 70% Garganega, up to 30% Trebbiano di Soave or Chardonnay; volcanic soils with limestone outcrops. 'Classico' is reserved for Soave and Monteforte d'Alpone. Recioto di Soave was the first DOCG in Veneto, from air-dried Garganega.",
+      "source": "https://www.ilsoave.com/en/regulations/"
+    },
+    {
+      "fact": "Prosecco DOC consortium: Prosecco DOC is mainly Glera; second fermentation (Martinotti method) takes place in large pressurized tanks called autoclaves and lasts at least 30 days (60 for Rosé). Rosé adds 10-15% Pinot Noir.",
+      "source": "https://www.prosecco.wine/en/prosecco/discover/winemaking/"
+    },
+    {
+      "fact": "Prosecco DOC consortium: Spumante sweetness: Brut Nature 0-3 g/L; Extra Brut 0-6; Brut under 12; Extra Dry 12-17; Dry 17-32; Demi-sec 32-50.",
+      "source": "https://www.prosecco.wine/en/prosecco/discover/types/"
+    },
+    {
+      "fact": "Conegliano Valdobbiadene consortium: DOCG since 2009, 15 communes, about 50 km from Venice; Prosecco DOC covers 9 provinces in Veneto and Friuli Venezia Giulia; Asolo is also a DOCG.",
+      "source": "https://www.prosecco.it/en/conegliano-valdobbiadene-prosecco-superiore-docg/"
+    },
+    {
+      "fact": "Conegliano Valdobbiadene consortium: there are 43 'Rive' (steep-slope single-commune wines, hand-picked, vintage on the label) and the Cartizze sub-zone of 107 hectares.",
+      "source": "https://www.prosecco.it/en/conegliano-valdobbiadene-prosecco-superiore-docg/types-of-wine/"
+    },
+    {
+      "fact": "Curriculum Guide, Tuscany, Introductory: Tuscany extends from the Ligurian Sea in the west to the foothills of the Apennines in the east; continental/maritime climate, more maritime near the coast; soil galestro.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=32"
+    },
+    {
+      "fact": "Curriculum Guide, Tuscany, Introductory: red grapes Sangiovese, Brunello/Sangiovese Grosso; styles dry red, dry white, sweet Vin Santo; DOCGs Chianti, Chianti Classico, Brunello di Montalcino, Rosso di Montalcino (listed as DOCG), Vin Santo; Brunello law requires a minimum amount of aging.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=32"
+    },
+    {
+      "fact": "Curriculum Guide, Tuscany, Certified column: Brunello 100% Brunello; Chianti Classico min 80% Sangiovese; Chianti min 70% Sangiovese; Vino Nobile di Montepulciano DOCG; Bolgheri DOC; Prugnolo Gentile listed as a red grape.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=32"
+    },
+    {
+      "fact": "Curriculum Guide, Tuscany, Introductory label terms: Superiore = higher alcohol required; Classico = classic center of a region; Riserva = longer aging required.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=33"
+    },
+    {
+      "fact": "Curriculum Guide, Tuscany, Introductory: a Super Tuscan can be a blend of Bordeaux grapes, Bordeaux grapes with Sangiovese, or pure Sangiovese. Producers: Antinori, Ruffino, Sassicaia. History: Super Tuscan history; Gallo Nero on Chianti Classico bottles.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=33"
+    },
+    {
+      "fact": "CMS Grape Variety Profiles (GuildSomm), Sangiovese: warm to hot climates; top region Tuscany (Chianti; Brunello di Montalcino); color pale ruby to garnet; large barrel, neutral oak, blending.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=13"
+    },
+    {
+      "fact": "Chianti Classico consortium: Annata min 80% Sangiovese, min 12 months aging; Riserva min 80% Sangiovese, min 24 months (3 in bottle); Gran Selezione min 90% Sangiovese, estate grapes only, min 30 months (3 in bottle).",
+      "source": "https://www.chianticlassico.com/en/wine/types/"
+    },
+    {
+      "fact": "Chianti Classico consortium: production takes place between Florence and Siena; every bottle carries the Black Rooster on the neck or back label; up to 20% other red grapes, native or international (Cabernet Sauvignon, Merlot, Syrah).",
+      "source": "https://www.chianticlassico.com/en/wine/characteristics/"
+    },
+    {
+      "fact": "Chianti Classico consortium: the Black Rooster was the emblem of the Lega del Chianti; consortium founded 1924; 'Classico' allowed from 1932; DOCG 1984; separate DOCG from Chianti in 1996.",
+      "source": "https://www.chianticlassico.com/en/trademark/history-of-the-black-rooster/"
+    },
+    {
+      "fact": "Chianti consortium: Chianti is minimum 70% Sangiovese, from the provinces of Arezzo, Florence, Pisa, Pistoia, Prato and Siena; sub-zones Colli Aretini, Colli Fiorentini, Colli Senesi, Colline Pisane, Montalbano, Rufina and Montespertoli; separate rules for Chianti and Chianti Classico since a 1996 decree.",
+      "source": "https://www.consorziovinochianti.it/wp-content/uploads/2024/04/Brochure-pocket-inglese-nuovo-OCM-WEB.pdf"
+    },
+    {
+      "fact": "Brunello consortium: Brunello di Montalcino DOCG (1980) is Sangiovese ('Brunello' in Montalcino) from the Municipality of Montalcino; 2 years in oak and 4 months in bottle (6 for Riserva); released no earlier than 1 January of the year after the fifth year from harvest (sixth for Riserva); Bordelaise bottles only.",
+      "source": "https://consorziobrunellodimontalcino.it/en/583/vini"
+    },
+    {
+      "fact": "Brunello consortium: Rosso di Montalcino is a DOC (1983), also Sangiovese, released from 1 September of the year after harvest.",
+      "source": "https://consorziobrunellodimontalcino.it/en/583/vini"
+    },
+    {
+      "fact": "Vino Nobile consortium: Vino Nobile di Montepulciano became DOCG in 1980, the first wine released with that status; min 70% Sangiovese from the commune of Montepulciano at 250-600 m; at least two years of aging; Riserva at least three years. The consortium also writes 'Sangiovese (Prugnolo Gentile)'.",
+      "source": "https://www.consorziovinonobile.it/disciplinaries/"
+    },
+    {
+      "fact": "Bolgheri consortium: Bolgheri DOC rules date from 1983 (white and rosé only); 1994 added Bolgheri Rosso and Superiore and a Sassicaia sub-zone; Bolgheri Sassicaia became its own DOC in 2013. Bolgheri is in the province of Livorno.",
+      "source": "https://www.bolgheridoc.com/en/wines/"
+    },
+    {
+      "fact": "Bolgheri consortium: Bolgheri reds may use Cabernet Sauvignon, Merlot and Cabernet Franc (0-100%), Syrah and Sangiovese up to 50%; Bolgheri Sassicaia is at least 80% Cabernet Sauvignon.",
+      "source": "https://www.bolgheridoc.com/en/wines/"
+    },
+    {
+      "fact": "Bolgheri consortium: Marchese Mario Incisa della Rocchetta planted Cabernet cuttings in 1942 and 1944, inspired by French wines.",
+      "source": "https://www.bolgheridoc.com/en/history/"
+    },
+    {
+      "fact": "Wine Folly (secondary): the term Super Tuscan was coined in the early 1980s; Tignanello, created by Antinori in 1971, is called the most famous Super Tuscan; Toscana IGT is the classification that ties them together.",
+      "source": "https://winefolly.com/tips/super-tuscan-wines/"
+    },
+    {
+      "fact": "Curriculum Guide, Central & Southern Italy, Introductory: Umbria: Sagrantino di Montefalco DOCG; Marche; Abruzzo: Montepulciano d'Abruzzo DOC; Campania: Taurasi DOCG, Greco di Tufo DOCG, Fiano di Avellino DOCG; Puglia; Basilicata; Calabria.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=34"
+    },
+    {
+      "fact": "Curriculum Guide, Central & Southern Italy, Introductory: central Italy is maritime on the coast and continental inland; the south is Mediterranean; white grapes Fiano, Greco, Verdicchio; red grapes Aglianico, Montepulciano, Sagrantino, Primitivo.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=34"
+    },
+    {
+      "fact": "Curriculum Guide, Central & Southern Italy, Certified column: Marche: Verdicchio di Matelica DOC, Verdicchio dei Castelli di Jesi DOC; Campania soil volcanic; Mt. Vesuvius.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=34"
+    },
+    {
+      "fact": "Curriculum Guide, Central & Southern Italy, Introductory label terms: Superiore = higher alcohol; Riserva = longer aging.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=35"
+    },
+    {
+      "fact": "Federdoc, Campania: Taurasi DOCG Aglianico min 85%; Fiano di Avellino DOCG Fiano min 85%; Greco di Tufo DOCG Greco min 85%.",
+      "source": "https://www.federdoc.com/new/regioni/en/Campania.pdf"
+    },
+    {
+      "fact": "Federdoc, Umbria: Montefalco Sagrantino DOCG is 100% Sagrantino.",
+      "source": "https://www.federdoc.com/new/regioni/en/Umbria.pdf"
+    },
+    {
+      "fact": "Federdoc, Abruzzo: Montepulciano d'Abruzzo DOC is min 85% Montepulciano.",
+      "source": "https://www.federdoc.com/new/regioni/en/Abruzzo.pdf"
+    },
+    {
+      "fact": "Federdoc, Marche: Verdicchio dei Castelli di Jesi DOC and Verdicchio di Matelica DOC are min 85% Verdicchio.",
+      "source": "https://www.federdoc.com/new/regioni/en/Marches.pdf"
+    },
+    {
+      "fact": "Federdoc, Apulia: Primitivo di Manduria DOC is min 85% Primitivo.",
+      "source": "https://www.federdoc.com/new/regioni/en/Apulia.pdf"
+    },
+    {
+      "fact": "Curriculum Guide, Sicily & Sardinia, Introductory: Sardinia is an island south of France and west of Italy; Sicily is off the southern tip of Italy; Mediterranean climate; Mt. Etna; volcanic soil on Etna.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=36"
+    },
+    {
+      "fact": "Curriculum Guide, Sicily & Sardinia, Introductory: Sicily white Carricante; Sardinia white Vermentino; Sicily reds Nerello Mascalese, Nero d'Avola, Frappato; Sardinia red Cannonau; Sicily DOC. Certified column adds Etna DOC, Cerasuolo di Vittoria DOCG, Marsala DOC, Cannonau di Sardegna DOC, Vermentino di Sardegna DOC.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=36"
+    },
+    {
+      "fact": "Federdoc, Sicily: Cerasuolo di Vittoria is the DOCG listed (Nero d'Avola 50-70%, Frappato 30-50%); Etna DOC white is Carricante 60-80%, red is Nerello Mascalese min 80%; Sicilia DOC covers the whole region.",
+      "source": "https://www.federdoc.com/new/regioni/en/Sicily.pdf"
+    },
+    {
+      "fact": "Federdoc, Sardinia: Cannonau di Sardegna DOC is min 85% Cannonau; Vermentino di Sardegna DOC min 85% Vermentino; Vermentino di Gallura DOCG min 95% Vermentino.",
+      "source": "https://www.federdoc.com/new/regioni/en/Sardinia.pdf"
+    }
+  ],
+  "unverified": [
+    "The label word 'Vino' and the old name 'Vino da Tavola' for the bottom tier: Law 238/2016 only says 'wines without DOP or IGP'. No official page fetched names the tier 'Vino' or says when 'Vino da Tavola' was retired.",
+    "Rosso di Montalcino: the CMS Curriculum Guide lists it as a DOCG; the Brunello consortium says DOC (1983). The chapter uses DOC.",
+    "Umbria's DOCG name: CMS writes 'Sagrantino di Montefalco DOCG'; Federdoc writes 'Montefalco Sagrantino'. The chapter uses Federdoc's name.",
+    "Barolo and Barbaresco month counts (38/18 and 26/9) are from the CMS guide (Certified column). The Langhe consortium pages state them as 'three years beyond the two months after harvest, one and a half in oak' and 'two years, nine months in oak'.",
+    "Year Barolo became DOC and DOCG: not stated on the Langhe consortium page fetched.",
+    "Barbera d'Asti and Gavi rules: CMS only; their consortium pages were not fetched.",
+    "Etna DOCG: search results said the Etna consortium voted in 2023 to seek DOCG status. No official page confirmed it, so Etna is treated as DOC.",
+    "Friuli: no Friuli consortium page was fetched; Friuli facts come from the CMS guide and Federdoc only.",
+    "Valpolicella consortium English wine pages returned server errors (HTTP 500). Amarone aging rules were not confirmed; the 14% minimum alcohol is from the CMS guide only.",
+    "Prosecco DOC covering 9 provinces in Veneto and Friuli Venezia Giulia comes from the Conegliano Valdobbiadene consortium, not from a Prosecco DOC consortium page.",
+    "Delle Venezie DOC creation year: not stated on the consortium page fetched.",
+    "Wine Folly says Toscana IGT 'will always be on the label' of a Super Tuscan. That conflicts with Bolgheri DOC and Bolgheri Sassicaia DOC wines, so the chapter does not repeat it.",
+    "Chianti Classico Gran Selezione at 90% Sangiovese is from the consortium's current page. The CMS guide only asks students to know Gran Selezione exists. Search snippets mentioned further rule changes from 2027, not confirmed.",
+    "Federdoc's Piedmont regional sheet could not be found (404), so Piedmont grape rules rest on the CMS guide and the Langhe and Asti consortia."
+  ]
+}

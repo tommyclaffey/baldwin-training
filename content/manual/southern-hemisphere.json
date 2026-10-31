@@ -1,0 +1,1271 @@
+{
+  "number": 9,
+  "slug": "southern-hemisphere",
+  "title": "The Southern Hemisphere",
+  "script": "Chapter nine",
+  "lead": "Argentina, Chile, Australia, New Zealand and South Africa: where the vines grow, which grapes matter, and what the labels promise. This is the Court's Section 9.",
+  "minutes": 26,
+  "intro": {
+    "script": "Start here",
+    "title": "WHAT THE GRAPE NAME PROMISES",
+    "text": "Most of these countries use an 85% rule: name a grape, and at least 85% of the wine is that grape.",
+    "tiers": [
+      {
+        "name": "Australia",
+        "note": "85% for grape, vintage and region"
+      },
+      {
+        "name": "South Africa",
+        "note": "85% grape and vintage · 100% for W.O. origin"
+      },
+      {
+        "name": "New Zealand",
+        "note": "85% for the grape"
+      },
+      {
+        "name": "Argentina",
+        "note": "85% for the grape"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "Argentina · Mendoza",
+      "book": "wine/argentina/mendoza",
+      "lines": [
+        {
+          "label": "Climate",
+          "text": "Continental to arid desert, in the Andes rain shadow. Big day-night temperature swings."
+        },
+        {
+          "label": "Water",
+          "text": "Irrigation is essential. Melted Andes snow feeds flood or drip irrigation."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Malbec",
+          "Cabernet Sauvignon",
+          "Chardonnay",
+          "Bonarda"
+        ]
+      },
+      "know": [
+        "Mendoza has 75% of Argentina's vineyards.",
+        "Luján de Cuyo and Uco Valley are the Mendoza subregions known for Malbec.",
+        "Argentina is the world's leading Malbec producer.",
+        "Malbec World Day is April 17.",
+        "Producer to know: Catena."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "LUJÁN DE CUYO",
+              "title": "Black fruit and spice",
+              "text": "Malbec with black fruit and Asian spice\nMany modern wineries"
+            },
+            {
+              "label": "UCO VALLEY",
+              "title": "Up high",
+              "text": "Some of Mendoza's highest vines\nElegant, age-worthy wines"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "22.4%",
+          "title": "of Argentina's vineyards are Malbec",
+          "text": "Malbec is also 38.6% of the country's red grapes, per the Argentine government."
+        }
+      ]
+    },
+    {
+      "name": "Argentina · Salta and Patagonia",
+      "book": "wine/argentina",
+      "lines": [
+        {
+          "label": "Salta",
+          "text": "Its subregion Cafayate is known for Torrontés. The Court calls Salta the highest wine area in Argentina."
+        },
+        {
+          "label": "Patagonia",
+          "text": "Cool because it lies so far south. Malbec, Cabernet Sauvignon and Pinot Noir."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Torrontés",
+          "Malbec",
+          "Pinot Noir",
+          "Cabernet Sauvignon"
+        ]
+      },
+      "know": [
+        "Torrontés is highly aromatic: soapy, floral and fruity, with medium-plus to high acidity.",
+        "Torrontés usually sees no oak, and often smells sweet but tastes dry.",
+        "High vineyards have cool nights that help keep acidity.",
+        "Patagonian Pinot Noir comes from Neuquén and Río Negro."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "How high the vines grow",
+          "rows": [
+            {
+              "name": "Mendoza",
+              "value": "2,000–4,000 ft",
+              "pct": 0.53
+            },
+            {
+              "name": "Uco Valley (Tupungato)",
+              "value": "up to about 5,250 ft",
+              "pct": 0.7
+            },
+            {
+              "name": "Salta",
+              "value": "5,000–6,000 ft",
+              "pct": 0.8
+            },
+            {
+              "name": "Highest vineyards",
+              "value": "upwards of 7,500 ft",
+              "pct": 1.0
+            }
+          ],
+          "note": "Mendoza and Salta from the Court; the rest from Wine Folly."
+        }
+      ]
+    },
+    {
+      "name": "Chile",
+      "book": "wine/chile",
+      "lines": [
+        {
+          "label": "Shape",
+          "text": "A strip 2,670 miles long between the Andes and the Pacific. Hot desert in the north, cold in the south."
+        },
+        {
+          "label": "Cooling",
+          "text": "The cold Humboldt Current and Pacific fog cool the coast. The Coastal Range creates a rain shadow from the cold Pacific."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Cabernet Sauvignon",
+          "Carménère",
+          "Merlot",
+          "Sauvignon Blanc",
+          "Chardonnay"
+        ]
+      },
+      "know": [
+        "Chile has no phylloxera; most vines are ungrafted.",
+        "Carménère vanished from Europe and was found growing among Merlot vines in Chile.",
+        "Valle Central makes 80% of Chile's wine; Maipo, around Santiago, is known for Cabernet.",
+        "Casablanca (in Aconcagua) is the pioneering cool-climate area for Sauvignon Blanc and Chardonnay.",
+        "Chile's DO names a place only; it sets no other rules."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "COASTAL",
+              "title": "Casablanca",
+              "text": "Cool, maritime, Pacific fog\nWest of the Coastal Range\nSauvignon Blanc, Chardonnay, Pinot Noir"
+            },
+            {
+              "label": "INLAND",
+              "title": "Valle Central",
+              "text": "Warm to hot\nBetween the Coastal Range and Andes\nCabernet, Carménère, Merlot"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "80%",
+          "title": "of Chilean wine",
+          "text": "comes from the Valle Central, between the Coastal Range and the Andes."
+        }
+      ]
+    },
+    {
+      "name": "Australia · the big picture",
+      "book": "wine/australia",
+      "lines": [
+        {
+          "label": "Climate",
+          "text": "About the size of the continental U.S. Hot, dry interior; cooler near the coast, where the best vineyards are."
+        },
+        {
+          "label": "Labels",
+          "text": "A GI (Geographical Indication) names a place only. Grape, vintage and region claims each need 85%."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Shiraz",
+          "Cabernet Sauvignon",
+          "Grenache",
+          "Chardonnay",
+          "Riesling",
+          "Semillon"
+        ]
+      },
+      "know": [
+        "Shiraz is Australia's most popular grape, about a quarter of all production.",
+        "South Eastern Australia is a high-volume super GI for blending across regions.",
+        "First vines were planted in 1788 near Sydney.",
+        "Nearly all Australian wine is sealed with screw caps.",
+        "Traditional style: blends across regions, American oak. Modern style: single site, French oak."
+      ],
+      "visuals": [
+        {
+          "type": "pyramid",
+          "title": "Australian GIs, biggest to smallest",
+          "rows": [
+            {
+              "name": "Australia",
+              "note": "The whole country"
+            },
+            {
+              "name": "State",
+              "note": "e.g. South Australia"
+            },
+            {
+              "name": "Zone",
+              "note": "Know it exists"
+            },
+            {
+              "name": "Region",
+              "note": "e.g. Barossa Valley"
+            },
+            {
+              "name": "Sub-Region",
+              "note": "The most specific"
+            }
+          ]
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "TRADITIONAL",
+              "title": "Blend for volume",
+              "text": "Grapes from many regions\nAmerican oak"
+            },
+            {
+              "label": "MODERN",
+              "title": "Show the place",
+              "text": "A single GI or site\nFrench oak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "South Australia",
+      "book": "wine/australia/barossa-valley",
+      "lines": [
+        {
+          "label": "Barossa",
+          "text": "Less than an hour from Adelaide. Shiraz is half the plantings, and some vines date to 1843."
+        },
+        {
+          "label": "Coonawarra",
+          "text": "A strip of red terra rossa among limestone-based soils. The Cabernet is powerful, with blackberry and mint."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Shiraz",
+          "Riesling",
+          "Cabernet Sauvignon",
+          "Grenache"
+        ]
+      },
+      "know": [
+        "Barossa Valley: full-flavored Shiraz, often 14-15% alcohol.",
+        "Clare Valley and Eden Valley are the Riesling regions.",
+        "Eden Valley sits higher and cooler than Barossa Valley.",
+        "Coonawarra's soil is terra rossa; its grape is Cabernet Sauvignon.",
+        "McLaren Vale was South Australia's first wine region (1838)."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "Match the region to its grape",
+          "rows": [
+            {
+              "name": "Barossa Valley",
+              "meta": "Shiraz"
+            },
+            {
+              "name": "McLaren Vale",
+              "meta": "Shiraz"
+            },
+            {
+              "name": "Eden Valley",
+              "meta": "Riesling"
+            },
+            {
+              "name": "Clare Valley",
+              "meta": "Riesling"
+            },
+            {
+              "name": "Coonawarra",
+              "meta": "Cabernet Sauvignon · terra rossa"
+            }
+          ],
+          "note": "All five are in South Australia."
+        },
+        {
+          "type": "stat",
+          "number": "1843",
+          "title": "Barossa's oldest Shiraz",
+          "text": "Wine Australia says the Barossa has some of the oldest Shiraz vines in the world, dating back to 1843."
+        }
+      ]
+    },
+    {
+      "name": "New South Wales, Victoria and Western Australia",
+      "lines": [
+        {
+          "label": "Hunter Valley",
+          "text": "In New South Wales. Home to Australia's first commercial vineyards and age-worthy dry Semillon."
+        },
+        {
+          "label": "Yarra and Margaret River",
+          "text": "The Yarra Valley (Victoria) is cool-climate Pinot Noir and Chardonnay. Margaret River (Western Australia) is age-worthy Chardonnay and Cabernet."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Semillon",
+          "Pinot Noir",
+          "Chardonnay",
+          "Cabernet Sauvignon"
+        ]
+      },
+      "know": [
+        "Hunter Valley Semillon is lean and minerally, with lime notes, and ages well.",
+        "Margaret River is about three hours south of Perth.",
+        "Margaret River is phylloxera-free; most vines grow on their own roots.",
+        "Riverina and Murray Darling sit inside the high-volume South Eastern Australia GI."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "One region per state",
+          "rows": [
+            {
+              "name": "Hunter Valley",
+              "meta": "New South Wales · Semillon"
+            },
+            {
+              "name": "Yarra Valley",
+              "meta": "Victoria · Pinot Noir, Chardonnay"
+            },
+            {
+              "name": "Margaret River",
+              "meta": "Western Australia · Cabernet, Chardonnay"
+            },
+            {
+              "name": "Riverina, Murray Darling",
+              "meta": "South Eastern Australia · volume"
+            }
+          ],
+          "note": "The Court names these states in its Section 9 outline."
+        }
+      ]
+    },
+    {
+      "name": "New Zealand",
+      "book": "wine/new-zealand",
+      "lines": [
+        {
+          "label": "Where",
+          "text": "Two islands, about 2,500 miles southeast of Australia. The South Island is cool with long sunlight hours; the North Island is warmer and humid."
+        },
+        {
+          "label": "Style",
+          "text": "Clean, modern winemaking and screwcaps. Whites are usually unoaked and intense with high acidity; reds are lightly oaked."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Sauvignon Blanc",
+          "Pinot Noir",
+          "Chardonnay",
+          "Merlot",
+          "Syrah"
+        ]
+      },
+      "know": [
+        "Marlborough has about two-thirds of New Zealand's vines and is famous for Sauvignon Blanc.",
+        "Sauvignon Blanc is New Zealand's most planted grape: capsicum, gooseberry, passionfruit.",
+        "Central Otago is the southernmost region; Pinot Noir is its flagship.",
+        "Gimblett Gravels is in Hawke's Bay, known for red blends and Chardonnay.",
+        "High-acid, unoaked whites go with seafood and salads."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "NORTH ISLAND",
+              "title": "Warmer, humid",
+              "text": "Hawke's Bay: moderate maritime\nGimblett Gravels\nRed blends, Chardonnay"
+            },
+            {
+              "label": "SOUTH ISLAND",
+              "title": "Cool, long sun",
+              "text": "Marlborough: Sauvignon Blanc\nCentral Otago: Pinot Noir\nSouthernmost region"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "2/3",
+          "title": "of New Zealand's vines",
+          "text": "grow in Marlborough, almost 31,000 hectares. Its first Sauvignon Blanc vines went in in 1975."
+        }
+      ]
+    },
+    {
+      "name": "South Africa",
+      "book": "wine/south-africa",
+      "lines": [
+        {
+          "label": "Climate",
+          "text": "Mediterranean in the Western Cape. Two oceans, the cold Benguela Current and the 'Cape Doctor' wind keep it cooler and help prevent disease."
+        },
+        {
+          "label": "History",
+          "text": "Wine was first made from Cape grapes in 1659. The Wine of Origin scheme began in 1973."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Chenin Blanc",
+          "Pinotage",
+          "Cabernet Sauvignon",
+          "Syrah/Shiraz",
+          "Sauvignon Blanc",
+          "Chardonnay"
+        ]
+      },
+      "know": [
+        "Chenin Blanc (called Steen) is the Cape's most planted grape.",
+        "Pinotage is South Africa's own cross of Pinot Noir and Cinsaut, made in 1925.",
+        "'W.O.' plus a place name means 100% of the grapes are from that place.",
+        "Stellenbosch is known for its blended reds; Constantia is the cradle of Cape wine.",
+        "Elgin and Walker Bay are cool areas for Chardonnay and Pinot Noir."
+      ],
+      "visuals": [
+        {
+          "type": "pyramid",
+          "title": "Wine of Origin, biggest to smallest",
+          "rows": [
+            {
+              "name": "Geographical Unit",
+              "note": "e.g. Western Cape"
+            },
+            {
+              "name": "Region",
+              "note": "e.g. Coastal Region"
+            },
+            {
+              "name": "District",
+              "note": "e.g. Stellenbosch, Paarl"
+            },
+            {
+              "name": "Ward",
+              "note": "e.g. Constantia"
+            }
+          ]
+        },
+        {
+          "type": "tiles",
+          "title": "On a South African label",
+          "dark": true,
+          "items": [
+            {
+              "name": "W.O. + place",
+              "text": "100% of the grapes from that area."
+            },
+            {
+              "name": "Grape name",
+              "text": "At least 85% of that grape."
+            },
+            {
+              "name": "Vintage",
+              "text": "At least 85% from that year."
+            },
+            {
+              "name": "Cape blend",
+              "text": "Usually 30 to 70% Pinotage."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "Pinotage",
+      "b": "Pinot Noir",
+      "why": "Pinotage is South Africa's cross of Pinot Noir and Cinsaut. Pinot Noir is the parent grape."
+    },
+    {
+      "a": "Carménère",
+      "b": "Merlot",
+      "why": "Chile's Carménère grew for years mixed in with Merlot vines before it was identified."
+    },
+    {
+      "a": "Barossa Valley",
+      "b": "Eden Valley",
+      "why": "Neighbors in South Australia. Barossa is warm Shiraz country; Eden is higher and cooler, known for Riesling."
+    },
+    {
+      "a": "Humboldt Current",
+      "b": "Benguela Current",
+      "why": "Both are cold currents from Antarctica. Humboldt cools Chile; Benguela cools South Africa."
+    }
+  ],
+  "sources": "Built from the Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide, the Argentine Foreign Ministry (Malbec World Day), Wines of Chile, Wine Australia (wineaustralia.com and australianwine.com), New Zealand Winegrowers, Wines of South Africa (WOSA), and Wine Folly as a secondary source. Checked Oct 31, 2026.",
+  "cards": [
+    {
+      "q": "On what date is Malbec World Day?",
+      "answer": "April 17",
+      "wrong": [
+        "May 1",
+        "November 11",
+        "June 21"
+      ],
+      "source": "https://esing.cancilleria.gob.ar/en/node/84435"
+    },
+    {
+      "q": "Which Argentine province has about 75% of the country's vineyards?",
+      "answer": "Mendoza",
+      "wrong": [
+        "Salta",
+        "San Juan",
+        "Neuquén"
+      ],
+      "source": "https://winefolly.com/wine-regions/argentina/"
+    },
+    {
+      "q": "Where does irrigation water for Argentina's vineyards come from?",
+      "answer": "Melted snow from the Andes",
+      "wrong": [
+        "Atlantic Ocean rainfall",
+        "Desalinated seawater",
+        "Lake Titicaca"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "q": "Which two Mendoza subregions does the Court name for Malbec?",
+      "answer": "Luján de Cuyo and Uco Valley",
+      "wrong": [
+        "Cafayate and Neuquén",
+        "Maipo and Colchagua",
+        "Casablanca and Aconcagua"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "q": "Which Salta subregion is known for Torrontés?",
+      "answer": "Cafayate",
+      "wrong": [
+        "Uco Valley",
+        "Río Negro",
+        "Maipo"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "q": "How does the Court describe Torrontés?",
+      "answer": "Highly aromatic, floral, with medium-plus to high acidity",
+      "wrong": [
+        "Neutral and low in acid",
+        "Deep red with heavy tannin",
+        "A sweet fortified wine"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=70"
+    },
+    {
+      "q": "Why is Argentina's Patagonia region cool?",
+      "answer": "Its southern latitude",
+      "wrong": [
+        "Its very high altitude",
+        "Fog from the Humboldt Current",
+        "The Cape Doctor wind"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "q": "Carménère was found growing among which vines in Chile?",
+      "answer": "Merlot",
+      "wrong": [
+        "Cabernet Sauvignon",
+        "País",
+        "Malbec"
+      ],
+      "source": "https://www.winesofchile.org/winegrowing-regions/"
+    },
+    {
+      "q": "Which Chilean valley has the largest area of Carménère?",
+      "answer": "Colchagua",
+      "wrong": [
+        "Casablanca",
+        "Elqui",
+        "Limarí"
+      ],
+      "source": "https://www.winesofchile.org/winegrowing-regions/"
+    },
+    {
+      "q": "Which is Chile's pioneering cool-climate region, known for Sauvignon Blanc?",
+      "answer": "Casablanca",
+      "wrong": [
+        "Maipo",
+        "Colchagua",
+        "Maule"
+      ],
+      "source": "https://www.winesofchile.org/winegrowing-regions/"
+    },
+    {
+      "q": "About what share of Chile's wine comes from the Valle Central?",
+      "answer": "80%",
+      "wrong": [
+        "20%",
+        "50%",
+        "95%"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+    },
+    {
+      "q": "Which cold ocean current cools Chile's coast?",
+      "answer": "Humboldt Current",
+      "wrong": [
+        "Benguela Current",
+        "Gulf Stream",
+        "Agulhas Current"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+    },
+    {
+      "q": "Why does the Court say Chile has no phylloxera?",
+      "answer": "Its sandy soil",
+      "wrong": [
+        "All vines are grafted",
+        "Its high altitude",
+        "Its cold winters"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+    },
+    {
+      "q": "The Maipo Valley surrounds which city?",
+      "answer": "Santiago",
+      "wrong": [
+        "Mendoza",
+        "Valparaíso",
+        "Concepción"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+    },
+    {
+      "q": "What minimum does Australia set for a named grape, vintage or region?",
+      "answer": "85%",
+      "wrong": [
+        "75%",
+        "95%",
+        "100%"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+    },
+    {
+      "q": "Which Australian GI is the high-volume 'super GI' for blending?",
+      "answer": "South Eastern Australia",
+      "wrong": [
+        "South Australia",
+        "Barossa Zone",
+        "Western Australia"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+    },
+    {
+      "q": "Barossa's oldest Shiraz vines date back to which year?",
+      "answer": "1843",
+      "wrong": [
+        "1788",
+        "1901",
+        "1960"
+      ],
+      "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/south-australia-wines/barossa"
+    },
+    {
+      "q": "What is Coonawarra's famous soil?",
+      "answer": "Terra rossa",
+      "wrong": [
+        "Volcanic basalt",
+        "Schist",
+        "Chalk"
+      ],
+      "source": "https://www.australianwine.com/our-places/south-australia/coonawarra-wine-region"
+    },
+    {
+      "q": "Coonawarra is best known for which grape?",
+      "answer": "Cabernet Sauvignon",
+      "wrong": [
+        "Riesling",
+        "Semillon",
+        "Grenache"
+      ],
+      "source": "https://www.australianwine.com/experience/articles/the-ultimate-guide-to-south-australia-s-wine-regions"
+    },
+    {
+      "q": "Which two South Australian regions are known for Riesling?",
+      "answer": "Clare Valley and Eden Valley",
+      "wrong": [
+        "Barossa Valley and McLaren Vale",
+        "Coonawarra and Padthaway",
+        "Hunter Valley and Yarra Valley"
+      ],
+      "source": "https://www.australianwine.com/experience/articles/the-ultimate-guide-to-south-australia-s-wine-regions"
+    },
+    {
+      "q": "The Hunter Valley is in which Australian state?",
+      "answer": "New South Wales",
+      "wrong": [
+        "Victoria",
+        "Western Australia",
+        "South Australia"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+    },
+    {
+      "q": "Margaret River is best known for which grapes?",
+      "answer": "Chardonnay and Cabernet Sauvignon",
+      "wrong": [
+        "Shiraz and Grenache",
+        "Riesling and Semillon",
+        "Pinot Noir and Pinot Gris"
+      ],
+      "source": "https://www.australianwine.com/experience/articles/australia-s-8-most-popular-wine-regions"
+    },
+    {
+      "q": "About how much of New Zealand's vineyard area is in Marlborough?",
+      "answer": "About two-thirds",
+      "wrong": [
+        "About one-third",
+        "About one-tenth",
+        "About 90%"
+      ],
+      "source": "https://www.nzwine.com/en/regions/marlborough/"
+    },
+    {
+      "q": "Which notes are classic in New Zealand Sauvignon Blanc?",
+      "answer": "Red capsicum, gooseberry, passionfruit",
+      "wrong": [
+        "Petrol, honey, lime",
+        "Black cherry, leather, tar",
+        "Butter, vanilla, toast"
+      ],
+      "source": "https://www.nzwine.com/en/winestyles/sauvignonblanc/"
+    },
+    {
+      "q": "Which is New Zealand's southernmost wine region, with Pinot Noir as its flagship?",
+      "answer": "Central Otago",
+      "wrong": [
+        "Marlborough",
+        "Hawke's Bay",
+        "Gisborne"
+      ],
+      "source": "https://www.nzwine.com/en/regions/centralotago/"
+    },
+    {
+      "q": "The Gimblett Gravels are in which New Zealand region?",
+      "answer": "Hawke's Bay",
+      "wrong": [
+        "Marlborough",
+        "Central Otago",
+        "Nelson"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+    },
+    {
+      "q": "Pinotage is a cross of which two grapes?",
+      "answer": "Pinot Noir and Cinsaut",
+      "wrong": [
+        "Pinot Noir and Syrah",
+        "Cabernet Sauvignon and Cinsaut",
+        "Pinot Noir and Pinot Gris"
+      ],
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/The-Role-Of-Cultivar/"
+    },
+    {
+      "q": "What is the Cape's most widely planted grape, also called Steen?",
+      "answer": "Chenin Blanc",
+      "wrong": [
+        "Sauvignon Blanc",
+        "Chardonnay",
+        "Colombard"
+      ],
+      "source": "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/White-Wine-Varieties/"
+    },
+    {
+      "q": "'Wine of Origin Stellenbosch' on a label means what share of grapes came from Stellenbosch?",
+      "answer": "100%",
+      "wrong": [
+        "85%",
+        "75%",
+        "51%"
+      ],
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Wine-Of-Origin-Scheme/"
+    },
+    {
+      "q": "What is the 'Cape Doctor'?",
+      "answer": "A southeasterly wind that helps keep vineyards free of disease",
+      "wrong": [
+        "A cold ocean current",
+        "A grape cross from 1925",
+        "A Stellenbosch wine school"
+      ],
+      "source": "https://www.wosa.co.za/The-Industry/Terroir/Climate/"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "Course Guide Section 9 lists: Argentina - Salta, Mendoza, Patagonia; Chile - Aconcagua Valley, Valle Central; Australia - Southeastern Australia, New South Wales, Victoria, South Australia, Western Australia; New Zealand - North Island, South Island; South Africa - Cape Town, Stellenbosch, Paarl, Elgin, Walker Bay.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=5"
+    },
+    {
+      "fact": "The Course Guide lists soil types for major regions as exam content, naming Coonawarra among its examples.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=10"
+    },
+    {
+      "fact": "Court: Argentina lies east of the Andes and west of the Atlantic; climate continental to arid desert; the Andes create a rain shadow.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "fact": "Court: irrigation is essential, by flood or modern drip; melted snow from the Andes is the water source; major day-night temperature swings.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "fact": "Court: Torrontés commonly has no oak; new or used, French or American oak are all common for Malbec and Cabernet Sauvignon.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "fact": "Court (Introductory) grapes: Torrontés, Chardonnay; Malbec, Cabernet Sauvignon. Certified adds Bonarda, Tempranillo, Syrah.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "fact": "Court: Argentina requires 85% minimum to list the grape variety on a label.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "fact": "Court: Salta - subregion Cafayate known for Torrontés; Mendoza - subregions Luján de Cuyo and Uco Valley known for Malbec; Patagonia - cool due to southern latitude, Malbec, Cabernet Sauvignon, Pinot Noir.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "fact": "Court (Certified column): Salta is 1,500-2,000 m (5,000-6,000 ft), the highest in Argentina; Mendoza is 600-1,200 m (2,000-4,000 ft).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "fact": "Court (Certified column): Malbec can have an electric purple color from more sun at higher elevations.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    },
+    {
+      "fact": "Court: Torrontés is highly aromatic with soapy, floral and fruity flavors and medium-plus to high acidity.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=70"
+    },
+    {
+      "fact": "Court: Argentina's vineyards were revitalized by Italian and Spanish immigrants; producer to know: Catena.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=70"
+    },
+    {
+      "fact": "Court (Certified column): Malbec and Cabernet Sauvignon pair well with steak and chimichurri; some high-end bottles benefit from decanting.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=70"
+    },
+    {
+      "fact": "Argentine Foreign Ministry: Malbec World Day, every April 17, was created by Wines of Argentina; on April 17, 1853, Michel Aimé Pouget, commissioned by Domingo Faustino Sarmiento, presented his plan for an agricultural school in Mendoza.",
+      "source": "https://esing.cancilleria.gob.ar/en/node/84435"
+    },
+    {
+      "fact": "Argentine Foreign Ministry: Argentina is the world's leading producer of Malbec; Malbec is 38.6% of red varieties and 22.4% of the country's total vineyard area.",
+      "source": "https://esing.cancilleria.gob.ar/en/node/84435"
+    },
+    {
+      "fact": "Argentine Foreign Ministry: Malbec Luján de Cuyo is described as the first Denomination of Origin of the Americas.",
+      "source": "https://esing.cancilleria.gob.ar/en/node/84435"
+    },
+    {
+      "fact": "Wine Folly (secondary): Mendoza is the largest, most important region, with 75% of Argentina's vineyards.",
+      "source": "https://winefolly.com/wine-regions/argentina/"
+    },
+    {
+      "fact": "Wine Folly (secondary): high-elevation vineyards (upwards of 7,500 ft) have cool nights that help keep acidity.",
+      "source": "https://winefolly.com/wine-regions/argentina/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Torrontés smells sweet but usually tastes dry; look for Salta and its sub-region Cafayate.",
+      "source": "https://winefolly.com/wine-regions/argentina/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Patagonia makes Pinot Noir from Neuquén and Río Negro.",
+      "source": "https://winefolly.com/wine-regions/argentina/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Uco Valley has some of Mendoza's highest vineyards (up to about 5,250 ft in Tupungato) and elegant, age-worthy wines.",
+      "source": "https://argentina.guides.winefolly.com/regions/mendoza"
+    },
+    {
+      "fact": "Wine Folly (secondary): Luján de Cuyo Malbec leans to black fruit and Asian spice; many modern wineries are there.",
+      "source": "https://argentina.guides.winefolly.com/regions/mendoza"
+    },
+    {
+      "fact": "Wine Folly (secondary): more Malbec is planted in Mendoza than anywhere else in the world.",
+      "source": "https://argentina.guides.winefolly.com/regions/mendoza"
+    },
+    {
+      "fact": "Court: Chile is on the west coast of South America, 2,670 miles (4,300 km) north to south and 217 miles (350 km) wide, spanning 17-53°S.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+    },
+    {
+      "fact": "Court: Chile's climate runs from hot desert to cool to cold, north to south; the Atacama Desert lies north.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+    },
+    {
+      "fact": "Court: the Pacific Ocean brings cool breezes and fog; the Andes add elevation and day-night swings; the Coastal Range creates a rain shadow from the cold Pacific.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+    },
+    {
+      "fact": "Court: Chile has no phylloxera (because of sandy soil); irrigation from the Andes is essential; mostly ungrafted vines.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+    },
+    {
+      "fact": "Court (Introductory) grapes: Sauvignon Blanc, Chardonnay; Cabernet Sauvignon, Merlot, Carménère. Certified adds Syrah and País.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+    },
+    {
+      "fact": "Court: Chile's Denominación de Origen (DO) system refers to place of origin only, with no other laws; levels are Region, Subregion, Zone, Area.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+    },
+    {
+      "fact": "Court (Certified column): Chile's minimum for variety, vintage and origin labeling is 75%; in practice EU rules require 85%.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+    },
+    {
+      "fact": "Court: Aconcagua DO with subregion Casablanca DO - cool maritime, west of the Coastal Range, Chardonnay, Sauvignon Blanc, Pinot Noir. Valle Central DO - warm to hot, between the Coastal Range and Andes, 80% of Chilean production, Cabernet Sauvignon, Carménère, Merlot.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+    },
+    {
+      "fact": "Court: Valle de Maipo surrounds Santiago; most major historical wineries are there; Cabernet Sauvignon.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+    },
+    {
+      "fact": "Court: the Humboldt Current is a cold current from Antarctica running along South America's west coast.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+    },
+    {
+      "fact": "Court: Chilean wines are often big, intense, fruit-driven and high in alcohol.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+    },
+    {
+      "fact": "Court history: grapes grown in Spanish colonies in the 1500s; Spanish laws restricted production in the 1600s; independence and European immigrants in the 1800s; foreign investment in the 1970s-80s.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+    },
+    {
+      "fact": "Wines of Chile: Carménère disappeared from European vineyards in the mid-19th century and reappeared among the Merlot vines in Chile; Colchagua has the largest area planted with it.",
+      "source": "https://www.winesofchile.org/winegrowing-regions/"
+    },
+    {
+      "fact": "Wines of Chile: Casablanca is Chile's pioneering cool-climate region, with Pacific fog; Sauvignon Blanc and Chardonnay are its most iconic grapes.",
+      "source": "https://www.winesofchile.org/winegrowing-regions/"
+    },
+    {
+      "fact": "Wines of Chile: Maipo is a mild Mediterranean climate; its main grape is Cabernet Sauvignon.",
+      "source": "https://www.winesofchile.org/winegrowing-regions/"
+    },
+    {
+      "fact": "Wines of Chile: in Aconcagua, reds have a long tradition inland near the Andes, while Chardonnay, Sauvignon Blanc and Pinot Noir thrive in the coastal zone.",
+      "source": "https://www.winesofchile.org/winegrowing-regions/"
+    },
+    {
+      "fact": "Wines of Chile: Maule is Chile's largest winegrowing region.",
+      "source": "https://www.winesofchile.org/winegrowing-regions/"
+    },
+    {
+      "fact": "Wine Folly (secondary): in the 1990s much of Chile's 'Merlot' turned out to be Carménère.",
+      "source": "https://winefolly.com/wine-regions/chile/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Chile's vineyards have not been affected by phylloxera.",
+      "source": "https://winefolly.com/wine-regions/chile/"
+    },
+    {
+      "fact": "Court: Australia is in the Southern Hemisphere and is the size of the continental United States; hot, dry interior, cooler near the coast.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+    },
+    {
+      "fact": "Court: blending across regions for volume; 100+ year old vines exist; irrigation is necessary in the interior; the best vineyards are near the cooler coast.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+    },
+    {
+      "fact": "Court: traditional winemaking blends across regions and uses American oak; modern winemaking uses a single GI or site and French oak.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+    },
+    {
+      "fact": "Court (Introductory) grapes: Riesling, Chardonnay, Sauvignon Blanc/Semillon blend; Shiraz, Grenache, Cabernet Sauvignon. Certified adds Semillon (Hunter) and Muscat.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+    },
+    {
+      "fact": "Court: a GI refers to geographic place of origin only; 85% is required for grape variety, vintage and origin.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+    },
+    {
+      "fact": "Court (Certified column): Coonawarra soil is terra rossa.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+    },
+    {
+      "fact": "Court: GI hierarchy is Australia, State, Zone, Region, Sub-Region; know the system exists, no need to memorize which are Zones vs Regions.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+    },
+    {
+      "fact": "Court: South Eastern Australia is a high-volume super GI (superzone), which includes Riverina and Murray Darling.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+    },
+    {
+      "fact": "Court GIs: Victoria - Yarra Valley; South Australia - Barossa Valley, McLaren Vale, Clare Valley, Eden Valley; Western Australia - Margaret River. Certified adds Hunter Valley (New South Wales), Coonawarra (South Australia), Tasmania.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+    },
+    {
+      "fact": "Court history: first vines planted in 1788 near Sydney; the industry moved west after phylloxera (quarantine); sweet and fortified wines dominated until the late 20th century; Australians bought the French company that invented the Stelvin closure; Yellow Tail business model.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+    },
+    {
+      "fact": "Court (Certified column): producer Penfolds Grange; screw cap service; ripe Shiraz with grilled or barbecued meat.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+    },
+    {
+      "fact": "Wine Australia: blending rules require at least 85% of the named variety and at least 85% from the named geographical indication for label claims.",
+      "source": "https://wineaustralia.com/labelling/further-information/the-blending-rules"
+    },
+    {
+      "fact": "Wine Australia: the Barossa has some of the oldest Shiraz vines in the world, dating back to 1843; Shiraz is 50% of its plantings.",
+      "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/south-australia-wines/barossa"
+    },
+    {
+      "fact": "Wine Australia (australianwine.com): Barossa is famous for full-flavored Shiraz; Eden Valley is a cool-climate region for Riesling; Clare Valley is famous for world-class Riesling; Coonawarra is known for terra rossa soil and age-worthy Cabernet Sauvignon; McLaren Vale was South Australia's first wine region, established 1838.",
+      "source": "https://www.australianwine.com/experience/articles/the-ultimate-guide-to-south-australia-s-wine-regions"
+    },
+    {
+      "fact": "Wine Australia (australianwine.com): the Hunter Valley is home to Australia's first commercial vineyards (1860s) and age-worthy Semillon; Margaret River, about three hours south of Perth, is best known for age-worthy Chardonnay and Cabernet Sauvignon; the Yarra Valley is a top cool-climate region for Pinot Noir and Chardonnay.",
+      "source": "https://www.australianwine.com/experience/articles/australia-s-8-most-popular-wine-regions"
+    },
+    {
+      "fact": "Wine Australia (australianwine.com): Shiraz is Australia's most popular variety, about one-quarter of total production; Hunter Valley Semillon is considered the best, most age-worthy dry Semillon; Chardonnay is the most planted white.",
+      "source": "https://www.australianwine.com/experience/articles/6-top-grape-varieties-you-need-to-know"
+    },
+    {
+      "fact": "Wine Australia (australianwine.com): Coonawarra has a strip of terra rossa ('red soil') among limestone-based soils, and a moderate climate influenced by the ocean; its Cabernet shows blackberry, dark cherry and mint.",
+      "source": "https://www.australianwine.com/our-places/south-australia/coonawarra-wine-region"
+    },
+    {
+      "fact": "Wine Folly (secondary): nearly all Australian wines, even super-premium ones, are sealed with screw caps.",
+      "source": "https://winefolly.com/wine-regions/australia/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Hunter Valley Sémillon is lean and minerally - lime, lilac, Asian pear, green pineapple, candle wax.",
+      "source": "https://winefolly.com/wine-regions/australia/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Barossa Shiraz is among the most powerful in the world, often 14-15% alcohol.",
+      "source": "https://winefolly.com/deep-dive/barossa-valley-and-the-wines-of-south-australia/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Eden Valley sits higher in the Mount Lofty Ranges, cooler than Barossa Valley; home of Henschke's Hill of Grace.",
+      "source": "https://winefolly.com/deep-dive/barossa-valley-and-the-wines-of-south-australia/"
+    },
+    {
+      "fact": "Wine Folly (secondary): famous Clare Valley Riesling sites include Watervale and Polish Hill River.",
+      "source": "https://winefolly.com/deep-dive/barossa-valley-and-the-wines-of-south-australia/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Margaret River is phylloxera-free and most vines grow on their own roots.",
+      "source": "https://margaretriver.guides.winefolly.com/"
+    },
+    {
+      "fact": "Court: New Zealand is two islands, North and South, 4,100 km (2,500 miles) southeast of Australia; the Southern Alps are a key feature.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+    },
+    {
+      "fact": "Court: South Island is cool (Marlborough cool maritime with protection; Central Otago cool continental); North Island is warmer and humid (Hawke's Bay moderate maritime).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+    },
+    {
+      "fact": "Court: NZ GIs include Hawke's Bay (with Gimblett Gravels), Marlborough and Central Otago; Gimblett Gravels soil is gravel.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+    },
+    {
+      "fact": "Court: South Island has long sunlight hours; North Island has humidity; winemaking is clean and modern with screwcaps.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+    },
+    {
+      "fact": "Court (Introductory) grapes: Sauvignon Blanc, Chardonnay; Pinot Noir, Cabernet Sauvignon, Syrah, Merlot.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+    },
+    {
+      "fact": "Court: New Zealand requires 85% minimum to list the grape variety on a label.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+    },
+    {
+      "fact": "Court: NZ whites are typically unoaked with high flavor intensity and high natural acidity; reds are lightly oaked.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=74"
+    },
+    {
+      "fact": "Court history: young industry, temperance movement, innovation, screwcap initiative; know Scott Henry and VSP trellis systems.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=74"
+    },
+    {
+      "fact": "Court: high-acid, unoaked wines go with seafood, starters and salads; intense flavors can overpower very delicate dishes.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=74"
+    },
+    {
+      "fact": "Court (Certified column) producers: Cloudy Bay, Felton Road, Villa Maria; Marlborough labels require 100% fruit from the region; subregions Awatere Valley and Wairau Valley.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Marlborough has almost 31,000 ha of vines, around two-thirds of the national total, making it the largest region; cool yet high-sunshine climate, low rainfall; subregions Southern Valleys, Wairau Valley, Awatere Valley.",
+      "source": "https://www.nzwine.com/en/regions/marlborough/"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Marlborough's first Sauvignon Blanc vines were planted in 1975; Sauvignon Blanc is now New Zealand's most widely planted variety, with red capsicum, gooseberry and passionfruit notes.",
+      "source": "https://www.nzwine.com/en/winestyles/sauvignonblanc/"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Awatere Valley gives more herbaceous, mineral Sauvignon Blanc; the main Wairau Valley gives a riper, tropical, more pungent style.",
+      "source": "https://www.nzwine.com/en/winestyles/sauvignonblanc/"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Central Otago is New Zealand's southernmost wine region; Pinot Noir is its flagship variety.",
+      "source": "https://www.nzwine.com/en/regions/centralotago/"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Pinot Noir is grown mainly in the cooler southerly regions: Wairarapa, Marlborough, Nelson, North Canterbury and Central Otago.",
+      "source": "https://www.nzwine.com/en/winestyles/pinot-noir/"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Hawke's Bay vines were first planted in 1851; it is best known for red blends and Chardonnay; the Gimblett Gravels sit on its alluvial plains.",
+      "source": "https://www.nzwine.com/en/regions/hawkesbay/"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Hawke's Bay is New Zealand's second largest wine region.",
+      "source": "https://www.nzwine.com/en/regions/"
+    },
+    {
+      "fact": "Court: the Western Cape is the heart of South African viticulture; maritime on the coast, Mediterranean to hot inland; cooled by the Atlantic and Indian Oceans; Table Mountain is a key feature.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+    },
+    {
+      "fact": "Court: strong onshore winds help limit pests; cold Atlantic currents from Antarctica cool parts of the coast.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+    },
+    {
+      "fact": "Court: South Africa has a history of distillation and brandy, plus sweet, oxidative and fortified wines.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+    },
+    {
+      "fact": "Court grapes: Chenin Blanc, Chardonnay, Sauvignon Blanc; Syrah/Shiraz, Pinot Noir, Pinotage. Pinotage is a crossing of Cinsault x Pinot Noir.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+    },
+    {
+      "fact": "Court: under the Wine of Origin system, a single-appellation wine must be 100% from that appellation; units from largest to smallest are Geographical Unit, Region, District, Ward.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+    },
+    {
+      "fact": "Court: Western Cape - Coastal Region: Swartland, Cape Town, Stellenbosch, Paarl, Constantia; Cape South Coast Region: Elgin, Walker Bay.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=72"
+    },
+    {
+      "fact": "Court: KWV, the Co-operative Winemakers Union of South Africa, was important in creating laws and regulation.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=72"
+    },
+    {
+      "fact": "Court history: 1600s Dutch settlement and Simon van der Stel; phylloxera and the Anglo-Boer War; KWV; apartheid and its effect on exports; a move from oxidative and fortified wine to world-class wines.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=72"
+    },
+    {
+      "fact": "Court (Certified column): the Cape Doctor is a strong, dry southeasterly wind in spring and summer that helps limit pests; the Benguela Current is a frigid Atlantic current from Antarctica; Cap Classique is traditional-method sparkling wine.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+    },
+    {
+      "fact": "WOSA: a grape cultivar name may be used on the label if 85% or more of the wine is from that cultivar; Pinotage is a cross between Pinot Noir and Cinsaut.",
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/The-Role-Of-Cultivar/"
+    },
+    {
+      "fact": "WOSA: a vintage on the label confirms at least 85% of the wine is from that year.",
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Vintage-as-Character-Of-Wine/"
+    },
+    {
+      "fact": "WOSA: 'Wine of Origin' (W.O.) with a production area name confirms 100% of the grapes come from that area; the origin system was enforced by law in 1973.",
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Wine-Of-Origin-Scheme/"
+    },
+    {
+      "fact": "WOSA: the first Cape vineyard was planted in 1655, and wine was first made from Cape grapes on 2 February 1659; the Wine of Origin scheme was instituted in 1973.",
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Introduction/"
+    },
+    {
+      "fact": "WOSA: vineyards are mostly in the Western Cape near the coast; areas are divided into geographical units, regions, districts and wards; Constantia is called the cradle of winemaking in the Cape.",
+      "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+    },
+    {
+      "fact": "WOSA: Stellenbosch has more than 200 producers and is known for the quality of its blended reds; Stellenbosch University offers a degree in viticulture and oenology.",
+      "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+    },
+    {
+      "fact": "WOSA: Elgin is a high-lying, cool-climate district once known for apples, good for Chardonnay, Riesling, Sauvignon Blanc, Pinot Noir and Shiraz; Walker Bay (Hemel-en-Aarde) is known for Chardonnay and Pinot Noir.",
+      "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+    },
+    {
+      "fact": "WOSA: Paarl lies north of Stellenbosch; Cabernet Sauvignon, Pinotage, Shiraz, Chardonnay and Chenin Blanc have the best potential there.",
+      "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+    },
+    {
+      "fact": "WOSA: Pinotage was created by Professor Abraham Perold in 1925 and is unique to South Africa; a 'Cape blend' generally has 30 to 70 percent Pinotage.",
+      "source": "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/Red-Wine-Varieties/"
+    },
+    {
+      "fact": "WOSA: Chenin Blanc (Steen) is the most widely cultivated variety in the Cape, made from sweet to dry, plus sparkling and brandy.",
+      "source": "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/White-Wine-Varieties/"
+    },
+    {
+      "fact": "WOSA: the Cape Doctor is a southeasterly wind in spring and summer that inhibits vineyard disease; the cold Benguela current runs up the west coast from Antarctica; vines grow at 27-34° south in a Mediterranean climate.",
+      "source": "https://www.wosa.co.za/The-Industry/Terroir/Climate/"
+    }
+  ],
+  "unverified": [
+    "No Wines of Argentina page could be read (the site is a JavaScript app); Argentina facts come from the Court, the Argentine Foreign Ministry page on Malbec World Day, and Wine Folly (secondary).",
+    "'Malbec Luján de Cuyo, the first Denomination of Origin of the Americas' is the Argentine government's wording; it was not checked against another source and is not used in cards.",
+    "Altitude figures mix sources: Mendoza and Salta ranges are from the Court's Certified column; Uco Valley (about 5,250 ft) and 'upwards of 7,500 ft' are from Wine Folly.",
+    "The Court prints Chile as 217 miles (350 km) wide; that width was not checked against Wines of Chile.",
+    "Chile's 75% labeling minimum (with 85% in practice for the EU) comes only from the Court's Certified column; no Chilean government source was fetched.",
+    "Hunter Valley Semillon's low-alcohol, unoaked style was only found on retailer and blog pages, so the chapter uses Wine Australia ('age-worthy dry Semillon') and Wine Folly's flavor notes instead.",
+    "The size of Coonawarra's terra rossa strip was not confirmed (the Wine Australia Coonawarra story returned 404).",
+    "New Zealand's exact Sauvignon Blanc share of plantings or exports was not found; New Zealand Winegrowers only says it is the most widely planted variety.",
+    "Hunter Valley GI, Coonawarra GI, Semillon (Hunter), the Cape Doctor and the Benguela Current sit in the Court's Certified column, not its Introductory column. They are included because the Course Guide names Coonawarra soil as exam content and WOSA covers the Cape climate.",
+    "The Court Curriculum Guide is dated 8.2023; trade-body figures (Malbec 22.4% of vineyard area, Marlborough 31,000 ha, Barossa 50% Shiraz) may change year to year."
+  ]
+}

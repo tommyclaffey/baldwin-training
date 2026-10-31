@@ -1,0 +1,962 @@
+{
+  "number": 7,
+  "slug": "spain-and-portugal",
+  "title": "Spain and Portugal",
+  "script": "Chapter seven",
+  "lead": "Spain's classic regions, its aging words (Crianza, Reserva, Gran Reserva) and Cava. Then Portugal's Vinho Verde and Douro.",
+  "minutes": 22,
+  "intro": {
+    "script": "Start here",
+    "title": "THE SPANISH LABEL",
+    "text": "Spain ranks regions by appellation, then ranks wines by how long they aged.",
+    "tiers": [
+      {
+        "name": "DOCa",
+        "note": "Top tier. Only Rioja and Priorat (DOQ in Catalan)."
+      },
+      {
+        "name": "DO",
+        "note": "Rías Baixas, Ribera del Duero, Toro, Rueda, Cava."
+      },
+      {
+        "name": "Aging terms",
+        "note": "Crianza, Reserva, Gran Reserva: longer aging, in order."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "Spain: law and aging words",
+      "book": "wine/spain",
+      "lines": [
+        {
+          "label": "Appellations",
+          "text": "DOCa is the top tier. Only Rioja and Priorat hold it. Most other quality regions are DO."
+        },
+        {
+          "label": "Aging",
+          "text": "Crianza, Reserva and Gran Reserva rise in order of minimum time in oak and bottle. The Court says exact times aren't needed at this level."
+        }
+      ],
+      "know": [
+        "Rioja was Spain's first DOCa, in 1991.",
+        "Crianza < Reserva < Gran Reserva, by minimum aging time.",
+        "Gran Reserva is typically made only in the best vintages.",
+        "Rioja's youngest category is Generic: 1-2 year wines. The Court calls young styles Joven.",
+        "Sherry belongs to the fortified-wine chapter."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "Rioja red aging · minimum years",
+          "rows": [
+            {
+              "name": "Generic (Joven)",
+              "value": "1-2 years, fresh fruit",
+              "pct": 0.3
+            },
+            {
+              "name": "Crianza",
+              "value": "2 years, 1 in oak",
+              "pct": 0.4
+            },
+            {
+              "name": "Reserva",
+              "value": "3 years, 1 in oak",
+              "pct": 0.6
+            },
+            {
+              "name": "Gran Reserva",
+              "value": "5 years, 2 in oak",
+              "pct": 1.0
+            }
+          ],
+          "note": "Rioja's rules for red wine. The Court lists the same minimums for Ribera del Duero."
+        }
+      ]
+    },
+    {
+      "name": "Rioja",
+      "book": "wine/spain/rioja",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "North central Spain, on the Ebro River. The Cantabrian Mountains block rain, so the climate is continental."
+        },
+        {
+          "label": "Style",
+          "text": "Dry reds from Tempranillo and whites from Viura, traditionally aged in American oak. Styles run from young and fresh to ageable."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Tempranillo",
+          "Garnacha",
+          "Viura"
+        ]
+      },
+      "know": [
+        "Rioja is a DOCa.",
+        "Red Rioja is based on Tempranillo. White Rioja is based on Viura.",
+        "Traditional Rioja is aged in American oak.",
+        "The three zones are Rioja Alta, Rioja Alavesa and Rioja Oriental.",
+        "Some modern producers use French oak and skip the Crianza and Reserva labels."
+      ],
+      "visuals": [
+        {
+          "type": "tiles",
+          "title": "Rioja's three zones",
+          "dark": true,
+          "items": [
+            {
+              "name": "Rioja Alta",
+              "text": "Continental"
+            },
+            {
+              "name": "Rioja Alavesa",
+              "text": "Coolest and wettest"
+            },
+            {
+              "name": "Rioja Oriental",
+              "text": "Mediterranean"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ribera del Duero, Toro, Rueda",
+      "book": "wine/spain/ribera-del-duero",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "Castilla y León, on a high plateau (the meseta) along the Duero River. Hot days, cold nights, harsh winters."
+        },
+        {
+          "label": "Style",
+          "text": "Tempranillo reds in Ribera del Duero and Toro. Fresh whites in Rueda."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Tempranillo",
+          "Verdejo",
+          "Sauvignon Blanc"
+        ]
+      },
+      "know": [
+        "In Ribera del Duero, Tempranillo is also called Tinto Fino or Tinta del País.",
+        "Ribera del Duero reds must be at least 75% Tempranillo.",
+        "Ribera vineyards sit at about 720 to over 1,000 meters.",
+        "Toro makes ripe, concentrated Tempranillo reds.",
+        "Rueda makes fresh whites from Verdejo and Sauvignon Blanc."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "Three DOs on the Duero",
+          "rows": [
+            {
+              "name": "Ribera del Duero",
+              "meta": "Tempranillo reds, young to long-aged in American or French oak"
+            },
+            {
+              "name": "Toro",
+              "meta": "Tempranillo reds, ripe and concentrated"
+            },
+            {
+              "name": "Rueda",
+              "meta": "Fresh whites: Verdejo, Sauvignon Blanc"
+            }
+          ],
+          "note": "The Duero River becomes the Douro in Portugal."
+        }
+      ]
+    },
+    {
+      "name": "Rías Baixas",
+      "book": "wine/spain/rias-baixas",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "Galicia, in northwest 'Green Spain' on the Atlantic. Maritime, humid and cooler than the rest of Spain."
+        },
+        {
+          "label": "Style",
+          "text": "Dry, crisp, aromatic whites from Albariño, made in stainless steel, often aged on the lees."
+        }
+      ],
+      "chips": {
+        "label": "Grape",
+        "items": [
+          "Albariño"
+        ]
+      },
+      "know": [
+        "Rías Baixas means 'low estuaries'.",
+        "A wine labelled Albariño must be 100% Albariño.",
+        "Albariño is about 96% of the grapes grown here.",
+        "Albariño is a classic match for simply prepared shellfish."
+      ],
+      "visuals": [
+        {
+          "type": "stat",
+          "number": "100%",
+          "title": "Albariño on the label",
+          "text": "A Rías Baixas wine labelled Albariño must be made only from Albariño."
+        }
+      ]
+    },
+    {
+      "name": "Priorat",
+      "book": "wine/spain/priorat",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "Catalonia, near Barcelona. Hot, dry Mediterranean climate on steep, terraced slate slopes."
+        },
+        {
+          "label": "Style",
+          "text": "Powerful, intense, spicy reds based on Garnacha, often aged in French oak and blended with international grapes."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Garnacha",
+          "Cariñena"
+        ]
+      },
+      "know": [
+        "Priorat is one of only two DOCa regions (DOQ in Catalan).",
+        "Llicorella soil lets vines dig deep for water.",
+        "Priorat is a modern style that made a big impact fast. Its revival began in the late 1980s.",
+        "Slopes are too steep for machines, and yields are very low."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "RIOJA",
+              "title": "Traditional",
+              "text": "Tempranillo\nAmerican oak\nEbro River, continental"
+            },
+            {
+              "label": "PRIORAT",
+              "title": "Modern",
+              "text": "Garnacha and Cariñena\nFrench oak\nSlate slopes, hot and dry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cava",
+      "book": "wine/sparkling/cava",
+      "lines": [
+        {
+          "label": "Method",
+          "text": "Traditional-method sparkling wine: the second fermentation happens in the bottle."
+        },
+        {
+          "label": "Place",
+          "text": "Cava can be made in several parts of Spain, but most comes from Penedès in Catalonia."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Xarel-lo",
+          "Parellada",
+          "Macabeo"
+        ]
+      },
+      "know": [
+        "The gyropalette, a Spanish invention, is used instead of riddling by hand.",
+        "Cava de Guarda ages at least 9 months on the lees.",
+        "Cava Reserva ages at least 18 months; Gran Reserva 30 months.",
+        "Sant Sadurní d'Anoia is called the Cava capital."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "Cava aging · minimum months",
+          "rows": [
+            {
+              "name": "Cava de Guarda",
+              "value": "9 months",
+              "pct": 0.25
+            },
+            {
+              "name": "Reserva",
+              "value": "18 months",
+              "pct": 0.5
+            },
+            {
+              "name": "Gran Reserva",
+              "value": "30 months",
+              "pct": 0.83
+            },
+            {
+              "name": "Paraje Calificado",
+              "value": "36 months",
+              "pct": 1.0
+            }
+          ],
+          "note": "Reserva, Gran Reserva and Paraje are grouped as Cava de Guarda Superior."
+        }
+      ]
+    },
+    {
+      "name": "Vinho Verde",
+      "book": "wine/portugal/vinho-verde",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "Northwest Portugal, from the Minho River south to the Vouga. Cool, green, rainy and Atlantic."
+        },
+        {
+          "label": "Style",
+          "text": "Low alcohol with a slight fizz. Mostly white."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Alvarinho",
+          "Loureiro",
+          "Arinto"
+        ]
+      },
+      "know": [
+        "Alvarinho is the same grape as Spain's Albariño.",
+        "Vinho Verde is Portugal's largest denomination.",
+        "Monção e Melgaço is shielded from the Atlantic and makes fuller wines.",
+        "Soils are mostly granite."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "SPAIN",
+              "title": "Rías Baixas",
+              "text": "Grape: Albariño\nGalicia, Atlantic\nDry, crisp, aromatic"
+            },
+            {
+              "label": "PORTUGAL",
+              "title": "Vinho Verde",
+              "text": "Grape: Alvarinho\nNorthwest Portugal, Atlantic\nLow alcohol, slight fizz"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Douro, and Port in brief",
+      "book": "wine/portugal/douro",
+      "lines": [
+        {
+          "label": "Place",
+          "text": "Northeast Portugal, steep terraces of schist along the Douro River. Mountains block Atlantic winds: cold winters, hot dry summers."
+        },
+        {
+          "label": "Style",
+          "text": "Bold, dry red wines, and Port, a sweet fortified red. Port is covered in the fortified chapter."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Touriga Nacional",
+          "Touriga Franca",
+          "Tinta Roriz"
+        ]
+      },
+      "know": [
+        "Douro soil is schist.",
+        "Touriga Nacional is the key red grape for Douro and Port.",
+        "The Douro was demarcated in 1756, the oldest demarcated region in the world.",
+        "Port is fortified during fermentation with grape brandy, which leaves it sweet.",
+        "Subregions west to east: Baixo Corgo, Cima Corgo, Douro Superior."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "Douro subregions, west to east",
+          "items": [
+            {
+              "name": "Baixo Corgo",
+              "text": "Coolest and rainiest",
+              "meta": "Lower Corgo"
+            },
+            {
+              "name": "Cima Corgo",
+              "text": "The heart of the Douro",
+              "meta": "Upper Corgo"
+            },
+            {
+              "name": "Douro Superior",
+              "text": "Largest, hottest, driest",
+              "meta": "Upper Douro"
+            }
+          ]
+        },
+        {
+          "type": "tiles",
+          "title": "Certified level: two more DOPs",
+          "dark": true,
+          "items": [
+            {
+              "name": "Dão",
+              "text": "Granite, ringed by mountains. Touriga Nacional, Encruzado"
+            },
+            {
+              "name": "Alentejo",
+              "text": "Hot, dry plains. Antão Vaz, Aragonez, Trincadeira"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "Albariño",
+      "b": "Alvarinho",
+      "why": "Same grape. Albariño in Spain's Rías Baixas, Alvarinho in Portugal's Vinho Verde."
+    },
+    {
+      "a": "Duero",
+      "b": "Douro",
+      "why": "Same river. Duero in Spain (Ribera del Duero, Toro, Rueda), Douro in Portugal (Douro, Port)."
+    },
+    {
+      "a": "Crianza",
+      "b": "Reserva",
+      "why": "Both age a year in oak in Rioja. Reserva needs 3 years in total; Crianza needs 2."
+    },
+    {
+      "a": "Tinto Fino / Tinta del País",
+      "b": "Tempranillo",
+      "why": "Not different grapes: local names for Tempranillo in Ribera del Duero."
+    }
+  ],
+  "sources": "Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide; Consejo Regulador DOCa Rioja; Consejo Regulador Ribera del Duero; DOQ Priorat; D.O. Rías Baixas; D.O. Cava; IVDP (Port and Douro Wines Institute); Vinho Verde commission (CVRVV); Wines of Portugal; Wine Folly as a labelled secondary source. Checked Oct 31, 2026.",
+  "cards": [
+    {
+      "q": "Which two Spanish regions hold the top DOCa status?",
+      "answer": "Rioja and Priorat",
+      "wrong": [
+        "Rioja and Ribera del Duero",
+        "Priorat and Cava",
+        "Ribera del Duero and Toro"
+      ],
+      "source": "https://riojawine.com/en-gb/the-designation/"
+    },
+    {
+      "q": "Rank Spain's aging terms from shortest to longest.",
+      "answer": "Crianza, Reserva, Gran Reserva",
+      "wrong": [
+        "Reserva, Crianza, Gran Reserva",
+        "Gran Reserva, Reserva, Crianza",
+        "Crianza, Gran Reserva, Reserva"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+    },
+    {
+      "q": "What is the minimum aging for a red Rioja Crianza?",
+      "answer": "2 years, including 1 in oak",
+      "wrong": [
+        "1 year, all in oak",
+        "3 years, including 1 in oak",
+        "5 years, including 2 in oak"
+      ],
+      "source": "https://riojawine.com/en-gb/the-designation/classification/"
+    },
+    {
+      "q": "What is the minimum aging for a red Rioja Gran Reserva?",
+      "answer": "5 years, including 2 in oak",
+      "wrong": [
+        "3 years, including 1 in oak",
+        "2 years, including 1 in oak",
+        "4 years, including 6 months in oak"
+      ],
+      "source": "https://riojawine.com/en-gb/the-designation/classification/"
+    },
+    {
+      "q": "Per the Court, Gran Reserva is typically made when?",
+      "answer": "Only in the best vintages",
+      "wrong": [
+        "Every vintage",
+        "Only in cool vintages",
+        "Only from white grapes"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=39"
+    },
+    {
+      "q": "Which river runs through Rioja?",
+      "answer": "Ebro",
+      "wrong": [
+        "Duero",
+        "Miño",
+        "Douro"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+    },
+    {
+      "q": "Traditional Rioja is aged mostly in which oak?",
+      "answer": "American oak",
+      "wrong": [
+        "French oak",
+        "Hungarian oak",
+        "Chestnut"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+    },
+    {
+      "q": "What is the main white grape of Rioja?",
+      "answer": "Viura",
+      "wrong": [
+        "Verdejo",
+        "Albariño",
+        "Xarel-lo"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+    },
+    {
+      "q": "Ribera del Duero reds must be at least what share Tempranillo?",
+      "answer": "75%",
+      "wrong": [
+        "50%",
+        "85%",
+        "100%"
+      ],
+      "source": "https://www.riberadelduero.es/la-do-ribera-del-duero/nuestros-vinos"
+    },
+    {
+      "q": "In Ribera del Duero, Tempranillo is also called what?",
+      "answer": "Tinto Fino or Tinta del País",
+      "wrong": [
+        "Garnacha",
+        "Mencía",
+        "Monastrell"
+      ],
+      "source": "https://www.riberadelduero.es/la-do-ribera-del-duero/variedades-de-uva"
+    },
+    {
+      "q": "Which DO makes fresh whites from Verdejo and Sauvignon Blanc?",
+      "answer": "Rueda",
+      "wrong": [
+        "Toro",
+        "Ribera del Duero",
+        "Priorat"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=40"
+    },
+    {
+      "q": "What climate does the Court give Rías Baixas?",
+      "answer": "Maritime, humid, cooler than the rest of Spain",
+      "wrong": [
+        "Hot, dry Mediterranean",
+        "Continental with a rain shadow",
+        "Desert"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+    },
+    {
+      "q": "What does 'Rías Baixas' mean?",
+      "answer": "Low estuaries",
+      "wrong": [
+        "High valleys",
+        "Green coast",
+        "Old vines"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+    },
+    {
+      "q": "A Rías Baixas wine labelled Albariño must contain how much Albariño?",
+      "answer": "100%",
+      "wrong": [
+        "75%",
+        "85%",
+        "51%"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+    },
+    {
+      "q": "Which food is a classic match for Rías Baixas Albariño?",
+      "answer": "Simply prepared shellfish",
+      "wrong": [
+        "Braised beef",
+        "Chocolate dessert",
+        "Roast lamb"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+    },
+    {
+      "q": "What is Priorat's famous soil, which lets vines dig deep for water?",
+      "answer": "Llicorella",
+      "wrong": [
+        "Albariza",
+        "Tuffeau",
+        "Galets"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+    },
+    {
+      "q": "Priorat reds are based mainly on which grapes?",
+      "answer": "Garnacha and Cariñena",
+      "wrong": [
+        "Tempranillo and Graciano",
+        "Touriga Nacional and Baga",
+        "Monastrell and Bobal"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+    },
+    {
+      "q": "How does the Court describe Priorat's style?",
+      "answer": "Powerful, spicy Garnacha blends, often in French oak",
+      "wrong": [
+        "Light, fizzy, low-alcohol whites",
+        "Traditional reds aged in American oak",
+        "Sweet fortified reds"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=43"
+    },
+    {
+      "q": "Cava is made by which method?",
+      "answer": "Traditional method (second fermentation in bottle)",
+      "wrong": [
+        "Tank (Charmat) method",
+        "Carbonation",
+        "Ancestral method only"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+    },
+    {
+      "q": "Which three grapes are the classic Cava trio?",
+      "answer": "Xarel-lo, Parellada, Macabeo",
+      "wrong": [
+        "Viura, Verdejo, Albariño",
+        "Chardonnay, Pinot Noir, Meunier",
+        "Glera, Verdiso, Perera"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+    },
+    {
+      "q": "Which riddling machine, a Spanish invention, is typical in Cava?",
+      "answer": "The gyropalette",
+      "wrong": [
+        "The pupitre",
+        "The solera",
+        "The lagar"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+    },
+    {
+      "q": "What is the minimum lees aging for Cava de Guarda?",
+      "answer": "9 months",
+      "wrong": [
+        "15 months",
+        "18 months",
+        "30 months"
+      ],
+      "source": "https://www.cava.wine/en/categories-types/"
+    },
+    {
+      "q": "Where is most Cava made?",
+      "answer": "Penedès, in Catalonia",
+      "wrong": [
+        "Rioja",
+        "Galicia",
+        "Jerez"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+    },
+    {
+      "q": "Vinho Verde is known for which style?",
+      "answer": "Low alcohol with slight effervescence",
+      "wrong": [
+        "Fortified and sweet",
+        "Bold, oaky reds",
+        "High-alcohol dessert whites"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+    },
+    {
+      "q": "Alvarinho, the key Vinho Verde grape, is the same as which Spanish grape?",
+      "answer": "Albariño",
+      "wrong": [
+        "Verdejo",
+        "Viura",
+        "Godello"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+    },
+    {
+      "q": "What soil does the Court give for the Douro?",
+      "answer": "Schist",
+      "wrong": [
+        "Chalk",
+        "Volcanic",
+        "Sand"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+    },
+    {
+      "q": "Which red grape does the Court name for Douro and Port?",
+      "answer": "Touriga Nacional",
+      "wrong": [
+        "Tempranillo",
+        "Baga",
+        "Castelão"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+    },
+    {
+      "q": "In what year was the Douro demarcated, the world's oldest demarcated region?",
+      "answer": "1756",
+      "wrong": [
+        "1855",
+        "1908",
+        "1925"
+      ],
+      "source": "https://www.ivdp.pt/en/"
+    },
+    {
+      "q": "How is Port made sweet?",
+      "answer": "Grape brandy is added during fermentation",
+      "wrong": [
+        "Sugar is added after fermentation",
+        "Grapes are frozen before pressing",
+        "Grapes are dried on straw mats"
+      ],
+      "source": "https://www.ivdp.pt/en/wines/port-wines/introduction/"
+    },
+    {
+      "q": "Which Vinho Verde subregion is shielded from the Atlantic and makes fuller wines?",
+      "answer": "Monção e Melgaço",
+      "wrong": [
+        "Basto",
+        "Lima",
+        "Cávado"
+      ],
+      "source": "https://www.winesofportugal.com/en/discover/wine-regions/vinho-verde/"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "Court Course Guide Section 7: Spain (Rías Baixas, Rioja, Ribera del Duero, Toro, Rueda, Cava, Priorat) and Portugal (Vinho Verde, Douro).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=5"
+    },
+    {
+      "fact": "Court Course Guide Section 10 covers fortified wines: Sherry, Port, Madeira, Vins Doux Naturels.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=6"
+    },
+    {
+      "fact": "Sherry is in the Court's Fortified Wines subject: southwest Spain, Jerez-Xérès-Sherry; albariza (chalk) soil; Palomino, Moscatel, Pedro Ximénez; fortified after fermentation.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+    },
+    {
+      "fact": "Rías Baixas (Intro): northwest Iberian Peninsula, 'Green Spain'; maritime, humid, cooler than the rest of Spain; Atlantic Ocean and Miño/Minho River; Rías Baixas means 'low estuaries'.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+    },
+    {
+      "fact": "Rías Baixas winemaking (Intro): modern technology, stainless steel; lees aging common. Grape: Albariño. Wines labelled Albariño must be 100% Albariño. Style: dry, crisp, aromatic whites.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+    },
+    {
+      "fact": "Rías Baixas: high canopy trellising because of humidity and granite soil are in the Certified column; Albariño is a classic match for simply prepared shellfish (Certified column).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+    },
+    {
+      "fact": "D.O. Rías Baixas: Galicia, mostly Pontevedra; regulating council set up 1988; five sub-zones Val do Salnés, O Rosal, Ribeira do Ulla, Condado do Tea, Soutomaior; 4,184 ha in over 22,500 plots.",
+      "source": "https://doriasbaixas.com/en/about-us/"
+    },
+    {
+      "fact": "Rías Baixas: Albariño is 96% of grape production and 95% of wine production; traditional pergola training.",
+      "source": "https://doriasbaixas.com/en/our-wines/"
+    },
+    {
+      "fact": "Rioja (Intro): north central Spain; Cantabrian Mountains create a rain shadow; continental; foothills of Cantabrian and Pyrenees; Ebro River. Traditionally aged in American oak. Grapes: Viura (white), Tempranillo and Garnacha (red); Mazuelo, Graciano, Malvasia, Garnacha Blanca in the Certified column.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+    },
+    {
+      "fact": "La Rioja DOCa (Intro): dry red (tinto) wines from Tempranillo and white (blanco) wines from Viura. Crianza, Reserva, Gran Reserva are aging tiers, in ascending order, by minimum time in oak and bottle; actual times are not necessary at Intro level.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+    },
+    {
+      "fact": "Certified column: Rioja subzones Rioja Alta, Rioja Oriental, Rioja Alavesa; Joven; Viñedo Singular; carbonic maceration common on Joven. Rioja tinto: Crianza min 2 years incl. 1 in oak; Reserva min 3 years incl. 1 in oak; Gran Reserva min 5 years incl. 2 in oak.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+    },
+    {
+      "fact": "Certified column: Gran Reserva is typically only made in the best vintages; some modern producers use French oak and skip Crianza/Reserva/Gran Reserva labels; Bordeaux and Rioja relationship during phylloxera.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=39"
+    },
+    {
+      "fact": "Rioja has been a DO since 1925 and a Qualified Designation of Origin (DOCa) since 1991, the first in Spain; only two meet the standard nationally.",
+      "source": "https://riojawine.com/en-gb/the-designation/"
+    },
+    {
+      "fact": "Rioja aging: Generic = 1-2 year wines keeping fresh fruit. Crianza = minimum 2 years, at least 1 year in 225-litre oak barrels (whites and rosés 6 months in barrel). Reserva = minimum 3 years, at least 1 in barrel plus at least 6 months in bottle. Gran Reserva = minimum 5 years, 2 in barrel plus 2 in bottle.",
+      "source": "https://riojawine.com/en-gb/the-designation/classification/"
+    },
+    {
+      "fact": "Rioja origin labels: Viñedo Singular (since 2017), Vino de Zona (Rioja Alta, Rioja Alavesa, Rioja Oriental), Vino de Municipio (144 municipalities).",
+      "source": "https://riojawine.com/en-gb/the-designation/classification/"
+    },
+    {
+      "fact": "Rioja is divided into Rioja Alta, Rioja Alavesa and Rioja Oriental, on both sides of the Ebro; about 100 km west to east; Atlantic and Mediterranean climates; more than 66,000 ha.",
+      "source": "https://riojawine.com/en-gb/production-areas/"
+    },
+    {
+      "fact": "Rioja grows 14 grape varieties; Tempranillo occupies most plantings; Viura has been the main white since the 1970s.",
+      "source": "https://riojawine.com/en-gb/the-designation/grape-varieties/"
+    },
+    {
+      "fact": "Rioja red: lighter, fruitier young reds may be fermented whole-bunch (carbonic maceration); aging mentions require 225-litre oak barrels.",
+      "source": "https://riojawine.com/en-gb/the-designation/types-of-wine/red-wines/"
+    },
+    {
+      "fact": "Castilla y León (Intro): north central Spain; Cantabrian rain shadow; continental with extreme seasonal and day-night shifts; high-altitude meseta; Duero River (Douro in Portugal). Grapes: Verdejo, Sauvignon Blanc, Tempranillo. Toro DO: mainly Tempranillo reds, ripe and concentrated. Ribera del Duero DO: Tempranillo-based, young to long-aged in American or French oak. Rueda DO: fresh whites from Verdejo and Sauvignon Blanc.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=40"
+    },
+    {
+      "fact": "Certified column: Tempranillo synonyms Tinta del País and Tinta de Toro; Bierzo DO (Mencía); Ribera tinto Crianza 2 yrs (1 oak), Reserva 3 yrs (1 oak), Gran Reserva 5 yrs (2 oak). Producers: Vega Sicilia, Pesquera, Pingus.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=41"
+    },
+    {
+      "fact": "Ribera del Duero: vineyards from 720 to over 1,000 m on the northern meseta; 115 km along the Duero; 25,035 ha; over 300 wineries.",
+      "source": "https://www.riberadelduero.es/la-do-ribera-del-duero/altitud"
+    },
+    {
+      "fact": "Ribera del Duero climate: Mediterranean with strong continentality: dry summers, long harsh winters, under 400 mm rain a year, range -20°C to 42°C.",
+      "source": "https://www.riberadelduero.es/la-do-ribera-del-duero/clima"
+    },
+    {
+      "fact": "Ribera del Duero: Tempranillo, also called Tinta del País or Tinto Fino, is the main grape; main white is Albillo Mayor.",
+      "source": "https://www.riberadelduero.es/la-do-ribera-del-duero/variedades-de-uva"
+    },
+    {
+      "fact": "Ribera del Duero reds: at least 95% red grapes and at least 75% Tempranillo (Tinto Fino/Tinta del País); categories young, Roble, Crianza, Reserva, Gran Reserva.",
+      "source": "https://www.riberadelduero.es/la-do-ribera-del-duero/nuestros-vinos"
+    },
+    {
+      "fact": "Catalonia (Intro): northeastern Spain, Pyrenees foothills, near Barcelona. Priorat: hot, dry Mediterranean; steep terraced slopes; llicorella soil lets vines dig deep for water; modern winemaking with French oak. Cava: moderate due to altitude; traditional method; the gyropalette (a Spanish invention) replaces hand riddling. Cava grapes Xarel-lo, Parellada, Macabeo. Priorat grapes Garnacha, Cariñena, international varieties.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+    },
+    {
+      "fact": "Cava DO (Intro): traditional-method sparkling, white and rosado, from native grapes. Priorat DOCa: mainly still dry reds from Garnacha, Cariñena and international grapes. Certified: Cava covers all of Spain but most is made in Penedès; Cava de Guarda min 9 months on lees; Reserva min 18 months. Priorat: no mechanization, bush-vine (Gobelet) training, low yields.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+    },
+    {
+      "fact": "Priorat (Intro): powerful, intense, spicy Garnacha-based blend, often French oak, with international grapes; a modern, not traditional, style that made a big impact quickly. Certified: Gratallops project; producers Clos Mogador, Álvaro Palacios, Clos Erasmus.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=43"
+    },
+    {
+      "fact": "DOQ Priorat: small mountainous region in Tarragona; Montsant massif to the north; Siurana river; 17,629 ha area with 2,196.8 ha of vines; villages include Gratallops and la Morera de Montsant (Scala Dei).",
+      "source": "https://www.doqpriorat.org/en/doq-priorat/"
+    },
+    {
+      "fact": "Priorat: vines from 100 to 750 m; steep slopes (costers) and narrow terraces that machines can't work; yields under 1 kg per vine; Cariñena (Carinyena) and Garnacha (Garnatxa) are the key native grapes.",
+      "source": "https://www.doqpriorat.org/en/varietals/"
+    },
+    {
+      "fact": "Priorat is 'the territory of slate'.",
+      "source": "https://www.doqpriorat.org/en/territory/"
+    },
+    {
+      "fact": "Carthusian monks of Scala Dei brought winemaking to Priorat in the 12th century; a new cycle of prosperity began at the end of the 1980s.",
+      "source": "https://www.doqpriorat.org/en/history/"
+    },
+    {
+      "fact": "Cava aging: Cava de Guarda minimum 9 months; Cava de Guarda Superior: Reserva over 18 months, Gran Reserva 30 months, Cava de Paraje Calificado over 36 months. Gran Reserva and Paraje come only in Brut Nature, Extra Brut and Brut.",
+      "source": "https://www.cava.wine/en/categories-types/"
+    },
+    {
+      "fact": "Cava de Guarda name approved in July 2020; second fermentation in the bottle (traditional method).",
+      "source": "https://www.cava.wine/en/categories-types/cava-de-guarda/"
+    },
+    {
+      "fact": "Cava de Guarda Superior grapes must come from specific vineyards and be organically grown; Reserva minimum raised to 18 months in 2020.",
+      "source": "https://www.cava.wine/en/categories-types/cava-reserva/"
+    },
+    {
+      "fact": "Cava's origins are in Penedès, especially Sant Sadurní d'Anoia, the 'Cava capital'; Cava can also be made in some other regions; four main areas; sub-zones approved 2020.",
+      "source": "https://www.cava.wine/en/origin-cava/4-zones/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Spain's DOP tiers include Vino de Pago, DOCa and DO; Rioja and Priorat are the only DOCa; IGP/Vino de la Tierra is the next tier down.",
+      "source": "https://winefolly.com/wine-regions/spain/"
+    },
+    {
+      "fact": "Portugal (Intro): western border of Spain; maritime north on the Atlantic, warm continental interior; Douro River (Duero in Spain); very mountainous interior. Douro and Porto DOP soil: schist. Vinho Verde: low alcohol, slight effervescence. Porto and Madeira: fortified. Grapes: Alvarinho (Vinho Verde), Touriga Nacional (Douro and Porto). DOPs: Vinho Verde, Douro, Porto, Madeira. Styles: Douro bold dry reds; Porto fortified sweet red.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+    },
+    {
+      "fact": "Portugal Certified column: Douro subregions Cima Corgo, Baixo Corgo, Douro Superior; Dão, Alentejo, Bairrada DOPs; terraces on mountainsides; Single Quinta; lagares (stone fermenters).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+    },
+    {
+      "fact": "Port (Intro, fortified chapter): same area as Douro DOP; fortified during fermentation; Touriga Nacional; Ruby (Ruby, LBV, Single Quinta, Vintage) and Aged Tawny (10, 20, 30, 40 year).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+    },
+    {
+      "fact": "Douro: Northeast Portugal, about 250,000 ha region, three sub-regions (Lower Corgo, Upper Corgo, Upper Douro); mostly schist; Marão and Montemuro mountains block Atlantic winds; very cold winters, hot dry summers.",
+      "source": "https://www.ivdp.pt/en/viticulture/region/characteristics-of-the-region/"
+    },
+    {
+      "fact": "Douro reds come from native grapes such as Touriga Nacional, Touriga Franca, Tinta Roriz (Aragonez), Tinta Barroca and Tinto Cão, mostly blends.",
+      "source": "https://www.ivdp.pt/en/wines/douro-wines/wines/"
+    },
+    {
+      "fact": "Port is fortified by stopping fermentation with grape brandy (benefício); usually 19-22% alcohol.",
+      "source": "https://www.ivdp.pt/en/wines/port-wines/introduction/"
+    },
+    {
+      "fact": "The Douro Demarcated Region is the oldest demarcated and regulated region in the world (1756) and a UNESCO World Heritage Site.",
+      "source": "https://www.ivdp.pt/en/"
+    },
+    {
+      "fact": "Douro: thousands of terraces on steep slopes; UNESCO World Heritage; Baixo Corgo coolest and rainiest; Cima Corgo the heart; Douro Superior largest, hottest, driest. 1756: Companhia Geral da Agricultura das Vinhas do Alto Douro created; Port aged in Vila Nova de Gaia.",
+      "source": "https://www.winesofportugal.com/en/discover/wine-regions/porto-e-douro/"
+    },
+    {
+      "fact": "Vinho Verde: Demarcated Region since 1908; nine subregions including Monção e Melgaço; DO covers still and sparkling white, red and rosé.",
+      "source": "https://www.vinhoverde.pt/en/region/designation-of-origin-vinho-verde/"
+    },
+    {
+      "fact": "Vinho Verde: largest Portuguese denomination, about 24,000 ha, northwest Portugal, bounded north by the Minho; mostly granite soils; Monção e Melgaço is the only subregion protected from direct Atlantic influence, giving fuller wines; white grapes Alvarinho, Arinto, Avesso, Azal, Loureiro, Trajadura.",
+      "source": "https://www.winesofportugal.com/en/discover/wine-regions/vinho-verde/"
+    },
+    {
+      "fact": "Dão: surrounded by mountains, poor granite soils, vineyards from 200 to 1,000 m; Encruzado white; Touriga Nacional, Alfrocheiro, Jaen, Tinta Roriz red.",
+      "source": "https://www.winesofportugal.com/en/discover/wine-regions/dao-e-lafoes/"
+    },
+    {
+      "fact": "Wine Folly (secondary): the vast majority of Vinho Verde wines are white; six grapes form the backbone of the whites: Alvarinho, Arinto, Azal, Avesso, Loureiro, Trajadura.",
+      "source": "https://winefolly.com/deep-dive/vinho-verde-the-perfect-poolside-wine-from-portugal/"
+    },
+    {
+      "fact": "Alentejo: rolling plains covering almost a third of mainland Portugal; hot, dry Mediterranean climate with continental influence; eight sub-regions; whites Antão Vaz, Arinto, Roupeiro; reds Alicante Bouschet, Aragonez, Castelão, Trincadeira.",
+      "source": "https://www.winesofportugal.com/en/discover/wine-regions/alentejo/"
+    }
+  ],
+  "unverified": [
+    "Spain's national aging minimums (outside Rioja and Ribera del Duero) were not confirmed from Spanish law or the Ministry; only Rioja's regulator and the Court were used.",
+    "Wine Folly's Spain page gives Rioja Reserva as '1 year in oak/2 in bottle' and Gran Reserva as '2 years in oak/3 in bottle', which conflicts with the Rioja regulator (Reserva 3 years total incl. 1 in oak and 6 months in bottle; Gran Reserva 5 years incl. 2 in oak and 2 in bottle). The regulator's figures are used.",
+    "Rioja's regulator now names its youngest category 'Generic'; the word Joven comes from the Court (Certified column). No official definition of Joven was fetched.",
+    "Toro DO and Rueda DO regulator sites were not fetched; their facts come from the Court only.",
+    "Ribera del Duero's 'Nuestros vinos' page shows '36 months, 12 in barrel' under an unlabelled image near the rosé section; it was not used. The Court's Ribera minimums (Certified column) match Rioja's.",
+    "The Rías Baixas statistics page is age-gated and could not be read; Albariño share (96% of grapes) comes from the D.O. 'Our wines' page.",
+    "Counts of Spanish DOs and Vinos de Pago were not confirmed from an official source and are left out.",
+    "Rioja soils (calcareous clay, ferrous clay, alluvial) could not be placed in the Court's Introductory or Certified column from the PDF text, so they are left out.",
+    "Sherry styles (Fino, Manzanilla, Amontillado, Oloroso, PX) were not researched here: the Court puts Sherry in the Fortified Wines subject (course Section 10), so this chapter only points to it.",
+    "Dão and Alentejo appear in the Court's Certified column for Portugal; they are included as context only. Port details beyond the basics are left to the fortified chapter.",
+    "Court column split (Introductory vs Certified) was read from the PDF's text positions."
+  ]
+}

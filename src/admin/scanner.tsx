@@ -18,7 +18,7 @@ async function post(path: string, blob: Blob) {
   return data;
 }
 
-export function BottleScanner({ name, onDone, onClose }: { name: string; onDone: (url: string) => void; onClose: () => void }) {
+export function BottleScanner({ name, onDone, onClose, spin = false, onSpin }: { name: string; onDone: (url: string) => void; onClose: () => void; spin?: boolean; onSpin?: (frames: string[]) => void }) {
   const [step, setStep] = useState<'camera' | 'working' | 'review'>('camera');
   const [camErr, setCamErr] = useState('');
   const [error, setError] = useState('');
@@ -28,6 +28,9 @@ export function BottleScanner({ name, onDone, onClose }: { name: string; onDone:
   const [cutBox, setCutBox] = useState<Box | null>(null);
   const [preview, setPreview] = useState('');
   const [busy, setBusy] = useState('');
+  // Spin: frames recorded while the bottle turns; the first is cut like a photo, the rest reuse its outline.
+  const [frames, setFrames] = useState<Blob[]>([]);
+  const [recording, setRecording] = useState(0);
   const video = useRef<HTMLVideoElement>(null);
   const stream = useRef<MediaStream | null>(null);
 
@@ -81,6 +84,49 @@ export function BottleScanner({ name, onDone, onClose }: { name: string; onDone:
     c.getContext('2d')!.drawImage(v, 0, 0);
     c.toBlob((b) => b && void use(b, c.width, c.height, guideFor(c.width, c.height)), 'image/jpeg', 0.92);
   };
+  const FRAMES = 24;
+  const grab = (src: HTMLVideoElement) => new Promise<Blob>((ok) => {
+    const k = Math.min(1, 1280 / Math.max(src.videoWidth, src.videoHeight));
+    const c = document.createElement('canvas'); c.width = Math.round(src.videoWidth * k); c.height = Math.round(src.videoHeight * k);
+    c.getContext('2d')!.drawImage(src, 0, 0, c.width, c.height);
+    c.toBlob((b) => ok(b!), 'image/jpeg', 0.9);
+  });
+  const startSpin = (all: Blob[], w: number, h: number) => { setFrames(all); void use(all[0], w, h, guideFor(w, h)); };
+  /** Record about five seconds while the bottle turns on a lazy Susan. */
+  const recordSpin = async () => {
+    const v = video.current; if (!v || !v.videoWidth) return;
+    const all: Blob[] = [];
+    for (let k = 0; k < FRAMES; k++) { setRecording(k + 1); all.push(await grab(v)); await new Promise((r) => setTimeout(r, 200)); }
+    setRecording(0);
+    const k = Math.min(1, 1280 / Math.max(v.videoWidth, v.videoHeight));
+    startSpin(all, Math.round(v.videoWidth * k), Math.round(v.videoHeight * k));
+  };
+  /** Or a short video of the turn, from the camera roll. */
+  const uploadSpin = async (f: File | undefined) => {
+    if (!f) return;
+    setBusy('Reading the video…'); setError('');
+    const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.src = URL.createObjectURL(f);
+    try {
+      await new Promise<void>((ok, bad) => { v.onloadedmetadata = () => ok(); v.onerror = () => bad(new Error('That video didn’t open. Try an MP4 or MOV.')); });
+      const all: Blob[] = [];
+      for (let k = 0; k < FRAMES; k++) { v.currentTime = (v.duration * k) / FRAMES; await new Promise((r) => { v.onseeked = r; }); all.push(await grab(v)); }
+      const s2 = Math.min(1, 1280 / Math.max(v.videoWidth, v.videoHeight));
+      setBusy(''); stop(); startSpin(all, Math.round(v.videoWidth * s2), Math.round(v.videoHeight * s2));
+    } catch (e) { setBusy(''); setError((e as Error).message); }
+  };
+  const keepSpin = async () => {
+    setError('');
+    try {
+      for (let k = 1; k < frames.length; k++) {
+        setBusy(`Cutting out frame ${k + 1} of ${frames.length}…`);
+        const res = await fetch(`/api/scan/spin?token=${encodeURIComponent(token)}`, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'image/jpeg', 'X-BT': '1' }, body: frames[k] });
+        if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || 'A frame didn’t cut out. Try the spin again.');
+      }
+      setBusy('Saving the spin…');
+      const r = await api<{ frames: string[] }>('/api/scan/spin/keep', { method: 'POST', body: { token, name } });
+      onSpin?.(r.frames);
+    } catch (e) { setError((e as Error).message); setBusy(''); }
+  };
   const upload = (f: File | undefined) => {
     if (!f) return;
     const img = new Image();
@@ -93,7 +139,7 @@ export function BottleScanner({ name, onDone, onClose }: { name: string; onDone:
     try { const m = await api<MediaItem>('/api/scan/keep', { method: 'POST', body: { token, name } }); if (m.url) onDone(m.url); }
     catch (e) { setError((e as Error).message); setBusy(''); }
   };
-  const retake = () => { setPhoto(null); setPreview(''); setToken(''); setError(''); setCamErr(''); setStep('camera'); };
+  const retake = () => { setPhoto(null); setPreview(''); setToken(''); setError(''); setCamErr(''); setFrames([]); setStep('camera'); };
   const changed = !cutBox || cutBox.some((v, i) => Math.abs(v - box[i]) > 0.002);
   const guide = video.current?.videoWidth ? guideFor(video.current.videoWidth, video.current.videoHeight) : guideFor(1080, 1440);
 
@@ -101,7 +147,7 @@ export function BottleScanner({ name, onDone, onClose }: { name: string; onDone:
     <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="modal scanner" role="dialog" aria-modal="true" aria-label={`Scan the bottle · ${name}`}>
         <header className="scanner-head">
-          <div><strong>Scan the Bottle</strong><small>{name}</small></div>
+          <div><strong>{spin ? 'Spin the Bottle' : 'Scan the Bottle'}</strong><small>{name}</small></div>
           <button className="icon-btn" onClick={onClose} aria-label="Close">✕</button>
         </header>
 
@@ -115,10 +161,20 @@ export function BottleScanner({ name, onDone, onClose }: { name: string; onDone:
                 </div>
               ) : <p className="scanner-note">{camErr}</p>}
             </div>
-            <p className="muted scanner-tip">Stand the bottle up, label facing you, and fill the outline top to bottom. Plain background is best, but it works on the back bar too.</p>
+            {spin
+              ? <p className="muted scanner-tip">Stand the bottle on a lazy Susan, fill the outline, then tap Record and turn it slowly all the way round (about five seconds). Keep the phone still.</p>
+              : <p className="muted scanner-tip">Stand the bottle up, label facing you, and fill the outline top to bottom. Plain background is best, but it works on the back bar too.</p>}
+            {error && <p className="error" role="alert">{error}</p>}
             <div className="row scanner-actions">
-              {!camErr && <button className="btn" onClick={snap}>Take Photo</button>}
-              <label className="btn ghost">Upload a Photo<input type="file" accept="image/*" hidden onChange={(e) => upload(e.target.files?.[0])} /></label>
+              {spin
+                ? <>
+                    {!camErr && <button className="btn" disabled={!!recording || !!busy} onClick={() => void recordSpin()}>{recording ? `Recording… ${recording} of ${FRAMES}` : 'Record the Spin'}</button>}
+                    <label className="btn ghost">{busy || 'Upload a Spin Video'}<input type="file" accept="video/*" hidden onChange={(e) => void uploadSpin(e.target.files?.[0])} /></label>
+                  </>
+                : <>
+                    {!camErr && <button className="btn" onClick={snap}>Take Photo</button>}
+                    <label className="btn ghost">Upload a Photo<input type="file" accept="image/*" hidden onChange={(e) => upload(e.target.files?.[0])} /></label>
+                  </>}
             </div>
           </>
         )}
@@ -142,7 +198,9 @@ export function BottleScanner({ name, onDone, onClose }: { name: string; onDone:
             <div className="row scanner-actions">
               <button className="btn ghost" onClick={retake}>Retake</button>
               <button className="btn ghost" disabled={!token || !!busy || !changed} onClick={() => void cut(token, box)}>Cut Again</button>
-              <button className="btn" disabled={!preview || !!busy || changed} onClick={() => void keep()}>Use This Photo</button>
+              {spin && frames.length > 1
+                ? <button className="btn" disabled={!preview || !!busy || changed} onClick={() => void keepSpin()}>Cut Out All {frames.length} Frames</button>
+                : <button className="btn" disabled={!preview || !!busy || changed} onClick={() => void keep()}>Use This Photo</button>}
             </div>
           </>
         )}

@@ -1,0 +1,1265 @@
+{
+  "number": 8,
+  "slug": "north-america",
+  "title": "North America",
+  "script": "Chapter eight",
+  "lead": "The U.S. label rules, then California, Oregon, Washington and New York, plus Canada and its Icewine. This is the Court's Section 8.",
+  "minutes": 24,
+  "intro": {
+    "script": "Start here",
+    "title": "WHERE THE GRAPES CAME FROM",
+    "text": "A U.S. place name on a label is an appellation of origin. The smaller the place, the stricter the rule.",
+    "tiers": [
+      {
+        "name": "AVA",
+        "note": "85% from the named area"
+      },
+      {
+        "name": "County",
+        "note": "75% from the named county"
+      },
+      {
+        "name": "State",
+        "note": "75% from the named state"
+      },
+      {
+        "name": "United States",
+        "note": "75% from the U.S."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "U.S. wine law and labels",
+      "book": "wine/usa",
+      "lines": [
+        {
+          "label": "The rule book",
+          "text": "U.S. label rules are federal TTB regulations (27 CFR part 4). An AVA (American Viticultural Area) is a grape-growing region with its own features and a legal boundary, listed in 27 CFR part 9."
+        },
+        {
+          "label": "Grape names",
+          "text": "A grape name on the front needs at least 75% of that grape. A grape name also needs a place of origin on the label."
+        }
+      ],
+      "know": [
+        "Variety 75%, AVA 85%, vintage 95% (with an AVA), vineyard name 95%.",
+        "With a state or county instead of an AVA, the vintage rule drops to 85%.",
+        "'Estate bottled' means the winery grew every grape in the AVA on land it owns or controls, and made and bottled the wine there.",
+        "'Reserve' has no legal meaning on a U.S. label.",
+        "'Meritage' is a trademark, not a legal grape rule."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "How much must match the label",
+          "rows": [
+            {
+              "name": "Grape variety",
+              "value": "75%",
+              "pct": 0.75
+            },
+            {
+              "name": "AVA",
+              "value": "85%",
+              "pct": 0.85
+            },
+            {
+              "name": "Vintage, with an AVA",
+              "value": "95%",
+              "pct": 0.95
+            },
+            {
+              "name": "Vineyard name",
+              "value": "95%",
+              "pct": 0.95
+            },
+            {
+              "name": "Estate bottled",
+              "value": "all grapes",
+              "pct": 1.0
+            }
+          ],
+          "note": "Federal minimums. Oregon is stricter (see Oregon)."
+        },
+        {
+          "type": "tiles",
+          "title": "Words on a U.S. label",
+          "dark": true,
+          "items": [
+            {
+              "name": "Estate Bottled",
+              "text": "Legal term. Grown, made and bottled by the winery in its AVA."
+            },
+            {
+              "name": "Reserve",
+              "text": "No legal meaning."
+            },
+            {
+              "name": "Meritage",
+              "text": "A trademark, not a legal category."
+            },
+            {
+              "name": "Vineyard name",
+              "text": "95% from that vineyard."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "California · Napa Valley",
+      "book": "wine/usa/napa-valley",
+      "lines": [
+        {
+          "label": "Climate",
+          "text": "Dry Mediterranean. The North Coast is moderate to warm, depending on how close it is to the Pacific or San Pablo Bay."
+        },
+        {
+          "label": "Winemaking",
+          "text": "Often lots of new French oak, sometimes American, for reds and whites. Chardonnay often goes through malolactic fermentation."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Cabernet Sauvignon",
+          "Merlot",
+          "Chardonnay",
+          "Sauvignon Blanc",
+          "Zinfandel",
+          "Pinot Noir"
+        ]
+      },
+      "know": [
+        "Napa was California's first AVA, in 1981.",
+        "Napa is only 4% of California's grape harvest.",
+        "Carneros is shared by Napa and Sonoma and is cooled by San Pablo Bay. It is known for Pinot Noir, Chardonnay and sparkling wine.",
+        "Rutherford is Cabernet country; its grainy tannins are called 'Rutherford Dust'.",
+        "Producers to know: Opus One, Robert Mondavi, Beringer."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "Napa AVAs the Court names",
+          "rows": [
+            {
+              "name": "Carneros",
+              "meta": "Cool, by the bay · shared with Sonoma"
+            },
+            {
+              "name": "Stags Leap District",
+              "meta": "Napa County"
+            },
+            {
+              "name": "Oakville",
+              "meta": "Napa County"
+            },
+            {
+              "name": "Rutherford",
+              "meta": "Widest, sunniest valley floor · Cabernet"
+            },
+            {
+              "name": "Howell Mountain",
+              "meta": "1,400–2,600 ft · volcanic · above the fog"
+            }
+          ],
+          "note": "Know which county each AVA sits in."
+        },
+        {
+          "type": "stat",
+          "number": "4%",
+          "title": "of California's grape harvest",
+          "text": "Napa Valley is 30 miles long and a few miles wide, yet it was California's first AVA (1981)."
+        }
+      ]
+    },
+    {
+      "name": "California · Sonoma and Mendocino",
+      "book": "wine/usa/sonoma",
+      "lines": [
+        {
+          "label": "Where",
+          "text": "Sonoma, Mendocino and Lake counties sit in the North Coast, north of San Pablo Bay. Physical features to know: the Petaluma Wind Gap and the Mayacamas and Sonoma mountain ranges."
+        },
+        {
+          "label": "Sparkling",
+          "text": "Cool spots such as Carneros and Mendocino's Anderson Valley make sparkling wine."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Pinot Noir",
+          "Chardonnay",
+          "Zinfandel",
+          "Cabernet Sauvignon"
+        ]
+      },
+      "know": [
+        "Russian River Valley: Pinot Noir and Chardonnay.",
+        "Dry Creek Valley: Zinfandel (and Cabernet).",
+        "Alexander Valley: Cabernet Sauvignon.",
+        "Sonoma Coast is Sonoma County's largest AVA.",
+        "Anderson Valley is in Mendocino County, not Sonoma."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "Match the AVA to its county",
+          "rows": [
+            {
+              "name": "Russian River Valley",
+              "meta": "Sonoma · Pinot Noir, Chardonnay"
+            },
+            {
+              "name": "Dry Creek Valley",
+              "meta": "Sonoma · Zinfandel"
+            },
+            {
+              "name": "Alexander Valley",
+              "meta": "Sonoma · Cabernet Sauvignon"
+            },
+            {
+              "name": "Sonoma Coast",
+              "meta": "Sonoma · Chardonnay, Pinot Noir"
+            },
+            {
+              "name": "Carneros",
+              "meta": "Sonoma and Napa · sparkling"
+            },
+            {
+              "name": "Anderson Valley",
+              "meta": "Mendocino · sparkling"
+            }
+          ],
+          "note": "Grape notes from Wine Folly; counties from the Court."
+        }
+      ]
+    },
+    {
+      "name": "California · Central Coast",
+      "book": "wine/usa/california",
+      "lines": [
+        {
+          "label": "Where",
+          "text": "Coastal counties south of San Francisco Bay and north of the city of Santa Barbara: Monterey, San Luis Obispo and Santa Barbara."
+        },
+        {
+          "label": "Wind tunnels",
+          "text": "Monterey's mountains run northwest to southeast and Santa Barbara's run east to west. Both make cool wind tunnels; Santa Barbara's also brings fog."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Chardonnay",
+          "Pinot Noir",
+          "Syrah",
+          "Zinfandel",
+          "Cabernet Sauvignon"
+        ]
+      },
+      "know": [
+        "Monterey and Santa Barbara are cool maritime; closer to the coast is cooler.",
+        "Paso Robles (San Luis Obispo County) is warm continental with big day-night swings.",
+        "Mountains block Paso Robles from the sea, with only a small gap.",
+        "California makes about 81% of U.S. wine."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "COOL",
+              "title": "Monterey and Santa Barbara",
+              "text": "Cool maritime\nWind tunnels bring fog\nPinot Noir, Chardonnay"
+            },
+            {
+              "label": "WARM",
+              "title": "Paso Robles",
+              "text": "Warm continental\nBig day-night swings\nMountains block the sea"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "81%",
+          "title": "of U.S. wine is Californian",
+          "text": "The Wine Institute's average share of total U.S. wine production."
+        }
+      ]
+    },
+    {
+      "name": "Oregon · Willamette Valley",
+      "book": "wine/usa/willamette-valley",
+      "lines": [
+        {
+          "label": "Climate",
+          "text": "Cool Mediterranean with maritime influence. The Coast Range to the west makes a rain shadow; the Cascades are to the east."
+        },
+        {
+          "label": "Soils",
+          "text": "Marine sedimentary, volcanic and loess."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Pinot Noir",
+          "Pinot Gris",
+          "Chardonnay",
+          "Riesling"
+        ]
+      },
+      "know": [
+        "Pinot Noir is 59% of Oregon's planted acres; Pinot Gris is next at 14%.",
+        "David Lett planted the Willamette Valley's first Pinot Noir in 1965 (The Eyrie Vineyards).",
+        "Oregon labels need 90% of the named grape (with 18 exceptions) and 95% from the named appellation.",
+        "Willamette Valley has two-thirds of Oregon's wineries and vineyards.",
+        "Willamette Pinot Noir pairs with salmon."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "FEDERAL",
+              "title": "Most U.S. wine",
+              "text": "75% named grape\n85% from the AVA"
+            },
+            {
+              "label": "OREGON",
+              "title": "Stricter",
+              "text": "90% named grape\n95% from the appellation\n100% Oregon grapes"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "59%",
+          "title": "of Oregon's vines are Pinot Noir",
+          "text": "Pinot Gris follows at 14% and Chardonnay at 7%."
+        }
+      ]
+    },
+    {
+      "name": "Washington · Columbia Valley",
+      "book": "wine/usa/columbia-valley",
+      "lines": [
+        {
+          "label": "Climate",
+          "text": "Warm desert. The Cascades block the rain, so the Columbia Valley gets only 6-8 inches a year and needs irrigation."
+        },
+        {
+          "label": "Soils",
+          "text": "Loess over gravel and flood sediment on basalt, laid down by the Missoula Floods."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Cabernet Sauvignon",
+          "Merlot",
+          "Syrah",
+          "Chardonnay",
+          "Riesling"
+        ]
+      },
+      "know": [
+        "Over 99% of Washington's vineyard acreage is in the Columbia Valley.",
+        "Washington is the 2nd largest wine producer in the U.S.",
+        "The Court's Washington AVAs: Columbia Valley, Yakima Valley, Walla Walla Valley.",
+        "Columbia Valley, Walla Walla Valley and Columbia Gorge cross into Oregon.",
+        "Washington Cabernet or Merlot pairs with beef or lamb."
+      ],
+      "visuals": [
+        {
+          "type": "stat",
+          "number": "99%",
+          "title": "of Washington's vines",
+          "text": "grow in the Columbia Valley, east of the Cascades, designated in 1984."
+        },
+        {
+          "type": "list",
+          "title": "Washington AVAs to know",
+          "rows": [
+            {
+              "name": "Columbia Valley",
+              "meta": "The big one · shared with Oregon"
+            },
+            {
+              "name": "Yakima Valley",
+              "meta": "Washington"
+            },
+            {
+              "name": "Walla Walla Valley",
+              "meta": "Shared with Oregon"
+            },
+            {
+              "name": "Red Mountain",
+              "meta": "Certified level"
+            },
+            {
+              "name": "Horse Heaven Hills",
+              "meta": "Certified level"
+            }
+          ],
+          "note": "The Court names the first three at the Introductory level."
+        }
+      ]
+    },
+    {
+      "name": "New York · Finger Lakes",
+      "book": "wine/usa/finger-lakes",
+      "lines": [
+        {
+          "label": "Climate",
+          "text": "Continental. Lakes and rivers soften it inland; the Atlantic softens it on the coast. Growers fight deep winter freezes and summer mold."
+        },
+        {
+          "label": "The lakes",
+          "text": "The Finger Lakes are 11 glacial lakes, some of the deepest freshwater lakes in the U.S."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Riesling",
+          "Gewürztraminer",
+          "Chardonnay",
+          "Pinot Noir",
+          "Merlot",
+          "Cabernet Franc"
+        ]
+      },
+      "know": [
+        "The Finger Lakes is best known for Riesling.",
+        "Dr. Konstantin Frank planted the first vinifera vines in the modern Eastern U.S. in 1957.",
+        "Finger Lakes AVA dates from 1982.",
+        "Hybrids (Seyval Blanc, Aurore) and native Concord also grow in New York.",
+        "Long Island, Hudson River and Lake Erie are other New York AVAs."
+      ],
+      "visuals": [
+        {
+          "type": "tiles",
+          "title": "Three kinds of grapes in the East",
+          "items": [
+            {
+              "name": "Vitis vinifera",
+              "text": "Classic wine grapes: Riesling, Chardonnay, Cabernet Franc."
+            },
+            {
+              "name": "Hybrids",
+              "text": "French-American crosses: Seyval Blanc, Aurore, Vidal."
+            },
+            {
+              "name": "Vitis labrusca",
+              "text": "A native North American species: Concord."
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "1957",
+          "title": "Vinifera comes east",
+          "text": "Dr. Konstantin Frank planted the first vinifera vines in the modern Eastern U.S., then opened Vinifera Wine Cellars in 1962."
+        }
+      ]
+    },
+    {
+      "name": "Canada",
+      "lines": [
+        {
+          "label": "Where",
+          "text": "Wine is made in at least nine provinces, mostly British Columbia and Ontario. The deep Great Lakes rarely freeze and soften the winters."
+        },
+        {
+          "label": "The law",
+          "text": "Canada has no national wine law; each province sets its own. VQA (Vintners Quality Alliance) regulates premium wine."
+        }
+      ],
+      "chips": {
+        "label": "Grapes",
+        "items": [
+          "Riesling",
+          "Chardonnay",
+          "Vidal",
+          "Cabernet Franc",
+          "Pinot Noir",
+          "Merlot"
+        ]
+      },
+      "know": [
+        "Canada is a leading Icewine producer, and Ontario makes 90% of it.",
+        "Icewine grapes freeze naturally on the vine and are picked below -8 °C.",
+        "Icewine grapes: Riesling, Cabernet Franc and Vidal.",
+        "Every VQA Ontario wine is 100% Ontario grapes.",
+        "Main areas: Niagara Peninsula (Ontario) and Okanagan Valley (British Columbia)."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "How Icewine is made",
+          "items": [
+            {
+              "name": "Wait",
+              "text": "Grapes stay on the vine and freeze naturally",
+              "meta": "Frozen naturally"
+            },
+            {
+              "name": "Pick",
+              "text": "Harvest below -8 °C, often at night",
+              "meta": "VQA Ontario"
+            },
+            {
+              "name": "Press",
+              "text": "Frozen grapes give sweet juice",
+              "meta": "At least 35° Brix"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "90%",
+          "title": "of Canadian Icewine is from Ontario",
+          "text": "The Court calls Canada a leading global Icewine producer."
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "Willamette Valley",
+      "b": "Columbia Valley",
+      "why": "Willamette (Oregon) is cool and maritime, for Pinot Noir. Columbia Valley (Washington) is warm desert, for Cabernet and Merlot."
+    },
+    {
+      "a": "Estate Bottled",
+      "b": "Reserve",
+      "why": "Estate Bottled is a legal term with strict rules. Reserve has no legal meaning in the U.S."
+    },
+    {
+      "a": "75% (variety)",
+      "b": "85% (AVA)",
+      "why": "75% is the minimum for the grape name; 85% is the minimum from the named AVA."
+    },
+    {
+      "a": "Paso Robles",
+      "b": "Santa Barbara",
+      "why": "Both Central Coast. Paso Robles is warm continental; Santa Barbara is cool maritime with fog."
+    }
+  ],
+  "sources": "Built from the Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide, TTB rules in 27 CFR part 4 (eCFR), Napa Valley Vintners, Wine Institute, Oregon Wine Board, Washington State Wine Commission, New York Wine & Grape Foundation, VQA Ontario, and Wine Folly as a secondary source. Checked Oct 31, 2026.",
+  "cards": [
+    {
+      "q": "Under federal rules, how much of a U.S. wine must be the named grape to put that grape on the label?",
+      "answer": "75%",
+      "wrong": [
+        "85%",
+        "95%",
+        "51%"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.23"
+    },
+    {
+      "q": "What share of the wine must come from inside an AVA to put the AVA on the label?",
+      "answer": "85%",
+      "wrong": [
+        "75%",
+        "95%",
+        "100%"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "q": "A wine labeled with an AVA and a vintage must be at least what share from that year?",
+      "answer": "95%",
+      "wrong": [
+        "85%",
+        "75%",
+        "100%"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.27"
+    },
+    {
+      "q": "A wine labeled with a state (not an AVA) and a vintage must be at least what share from that year?",
+      "answer": "85%",
+      "wrong": [
+        "95%",
+        "75%",
+        "100%"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.27"
+    },
+    {
+      "q": "How much of the wine must come from a named vineyard to print the vineyard name?",
+      "answer": "95%",
+      "wrong": [
+        "75%",
+        "85%",
+        "51%"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.39"
+    },
+    {
+      "q": "What does 'Estate bottled' require?",
+      "answer": "The winery grew all the grapes in its AVA and made and bottled the wine there",
+      "wrong": [
+        "At least 75% of the grapes came from the winery's own vines",
+        "The wine was aged at least two years before release",
+        "The wine came from a single vineyard in any state"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.26"
+    },
+    {
+      "q": "What does 'Reserve' legally mean on a U.S. wine label?",
+      "answer": "Nothing; it has no legal meaning",
+      "wrong": [
+        "At least two years in oak",
+        "The top 10% of a winery's production",
+        "95% from one vineyard"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+    },
+    {
+      "q": "According to the Court, what is 'Meritage'?",
+      "answer": "A trademark",
+      "wrong": [
+        "An AVA in Napa",
+        "A legal minimum for Bordeaux grapes",
+        "A sparkling wine method"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+    },
+    {
+      "q": "Which was the first AVA designated in California, in 1981?",
+      "answer": "Napa Valley",
+      "wrong": [
+        "Sonoma Coast",
+        "Paso Robles",
+        "Russian River Valley"
+      ],
+      "source": "https://www.napavintners.com/napa_valley/"
+    },
+    {
+      "q": "About how much of California's grape harvest comes from Napa Valley?",
+      "answer": "4%",
+      "wrong": [
+        "20%",
+        "40%",
+        "1%"
+      ],
+      "source": "https://www.napavintners.com/napa_valley/"
+    },
+    {
+      "q": "Which AVA is shared by Napa and Sonoma counties?",
+      "answer": "Carneros",
+      "wrong": [
+        "Stags Leap District",
+        "Alexander Valley",
+        "Howell Mountain"
+      ],
+      "source": "https://www.napavintners.com/napa_valley/los-carneros-ava"
+    },
+    {
+      "q": "Which Napa AVA is known for 'Rutherford Dust' tannins in its Cabernet?",
+      "answer": "Rutherford",
+      "wrong": [
+        "Oakville",
+        "Carneros",
+        "Howell Mountain"
+      ],
+      "source": "https://www.napavintners.com/napa_valley/rutherford-ava/"
+    },
+    {
+      "q": "Which Napa AVA is a mountain area at 1,400–2,600 ft, above the fog?",
+      "answer": "Howell Mountain",
+      "wrong": [
+        "Rutherford",
+        "Oakville",
+        "Carneros"
+      ],
+      "source": "https://www.napavintners.com/napa_valley/howell-mountain-ava/"
+    },
+    {
+      "q": "Which Sonoma AVA is famous for Pinot Noir and Chardonnay?",
+      "answer": "Russian River Valley",
+      "wrong": [
+        "Dry Creek Valley",
+        "Alexander Valley",
+        "Paso Robles"
+      ],
+      "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+    },
+    {
+      "q": "Dry Creek Valley is best known for which grape?",
+      "answer": "Zinfandel",
+      "wrong": [
+        "Pinot Noir",
+        "Riesling",
+        "Sauvignon Blanc"
+      ],
+      "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+    },
+    {
+      "q": "Anderson Valley AVA is in which county?",
+      "answer": "Mendocino",
+      "wrong": [
+        "Sonoma",
+        "Napa",
+        "Lake"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+    },
+    {
+      "q": "How does the Court describe the Paso Robles climate?",
+      "answer": "Warm continental with large day-night swings",
+      "wrong": [
+        "Cool maritime with fog",
+        "Cool continental",
+        "Humid subtropical"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+    },
+    {
+      "q": "Paso Robles AVA is in which county?",
+      "answer": "San Luis Obispo",
+      "wrong": [
+        "Monterey",
+        "Santa Barbara",
+        "Sonoma"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+    },
+    {
+      "q": "About what share of U.S. wine does California make?",
+      "answer": "81%",
+      "wrong": [
+        "50%",
+        "95%",
+        "65%"
+      ],
+      "source": "https://wineinstitute.org/our-industry/statistics/california-us-wine-production/"
+    },
+    {
+      "q": "What is the most planted grape in Oregon?",
+      "answer": "Pinot Noir",
+      "wrong": [
+        "Pinot Gris",
+        "Chardonnay",
+        "Riesling"
+      ],
+      "source": "https://www.oregonwine.org/discover/oregon-wine-varieties/"
+    },
+    {
+      "q": "Under Oregon's rules, a wine named for most grapes must be at least how much of that grape?",
+      "answer": "90%",
+      "wrong": [
+        "75%",
+        "85%",
+        "100%"
+      ],
+      "source": "https://trade.oregonwine.org/wine/labeling-regulations/"
+    },
+    {
+      "q": "Who planted the first Pinot Noir in Oregon's Willamette Valley, in 1965?",
+      "answer": "David Lett",
+      "wrong": [
+        "Dr. Konstantin Frank",
+        "André Tchelistcheff",
+        "Robert Mondavi"
+      ],
+      "source": "https://www.oregonwine.org/discover/oregon-wine-history/"
+    },
+    {
+      "q": "How does the Court describe the Willamette Valley climate?",
+      "answer": "Cool Mediterranean with maritime influence",
+      "wrong": [
+        "Warm desert",
+        "Hot continental",
+        "Humid subtropical"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+    },
+    {
+      "q": "What share of Washington's vineyard acreage is in the Columbia Valley?",
+      "answer": "Over 99%",
+      "wrong": [
+        "About 50%",
+        "About 75%",
+        "About 25%"
+      ],
+      "source": "https://www.washingtonwine.org/region/columbia-valley/"
+    },
+    {
+      "q": "Why is the Columbia Valley so dry?",
+      "answer": "It sits in the rain shadow of the Cascade Mountains",
+      "wrong": [
+        "It sits in the rain shadow of the Coast Range",
+        "A cold ocean current blocks rain",
+        "Lake effect pulls rain away"
+      ],
+      "source": "https://www.washingtonwine.org/region/columbia-valley/"
+    },
+    {
+      "q": "Where does Washington rank among U.S. wine-producing states?",
+      "answer": "2nd",
+      "wrong": [
+        "1st",
+        "3rd",
+        "5th"
+      ],
+      "source": "https://www.washingtonwine.org/wp-content/uploads/2021/05/2025-PRESS-KIT_smaller.pdf"
+    },
+    {
+      "q": "Which grape is the Finger Lakes best known for?",
+      "answer": "Riesling",
+      "wrong": [
+        "Zinfandel",
+        "Cabernet Sauvignon",
+        "Malbec"
+      ],
+      "source": "https://newyorkwines.org/avas/finger-lakes/"
+    },
+    {
+      "q": "What did Dr. Konstantin Frank do in 1957?",
+      "answer": "Planted the first vinifera vines in the modern Eastern U.S.",
+      "wrong": [
+        "Founded the first AVA",
+        "Bred the Seyval Blanc grape",
+        "Opened Long Island's first winery"
+      ],
+      "source": "https://newyorkwines.org/the-pioneering-dr-konstantin-frank-wins-best-white-for-reserve-riesling/"
+    },
+    {
+      "q": "Ontario Icewine grapes must be picked below what temperature?",
+      "answer": "-8 °C",
+      "wrong": [
+        "0 °C",
+        "-2 °C",
+        "-15 °C"
+      ],
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "q": "According to the Court, what share of Canadian ice wine is made in Ontario?",
+      "answer": "90%",
+      "wrong": [
+        "50%",
+        "25%",
+        "75%"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "Course Guide Section 8, North America, lists: United States: California, Oregon, Washington, New York State.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=5"
+    },
+    {
+      "fact": "The Course Guide names important historical figures as exam content, giving as examples Agoston Haraszthy, Robert Mondavi, André Tchelistcheff, David Lett and Dr. Konstantin Frank.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=9"
+    },
+    {
+      "fact": "The Curriculum Guide's Introductory column for Canada: know the general location, climate and style of wine produced in Canada.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=63"
+    },
+    {
+      "fact": "27 CFR 4.23(b): a single grape variety may be the type designation if not less than 75 percent of the wine is from that variety, all of it grown in the labeled appellation area.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.23"
+    },
+    {
+      "fact": "27 CFR 4.23(a): grape variety names may be used only if the wine is also labeled with an appellation of origin.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.23"
+    },
+    {
+      "fact": "27 CFR 4.23(c): wine from a Vitis labrusca variety (such as Concord-type native grapes) may carry the variety name at not less than 51 percent of that variety.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.23"
+    },
+    {
+      "fact": "27 CFR 4.25(a): an American appellation of origin is the United States, a State, two or three contiguous States, a county, two or three counties in the same State, or a viticultural area.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "fact": "27 CFR 4.25(b): a country, State or county appellation needs at least 75 percent of the wine from the named area.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "fact": "27 CFR 4.25(e)(3): a wine may carry a viticultural area appellation if not less than 85 percent of the wine is from grapes grown inside the viticultural area.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "fact": "27 CFR 4.25(e)(1): an American viticultural area is a delimited grape-growing region with distinguishing features and a name and boundary set in part 9 of the regulations.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "fact": "TTB: the names and boundary descriptions of all established AVAs are in TTB regulations, 27 CFR part 9.",
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/american-viticultural-area-ava"
+    },
+    {
+      "fact": "TTB: an American Viticultural Area, or AVA, is a specific type of appellation of origin used on wine labels; it lets vintners describe the origin of their wines more accurately.",
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/american-viticultural-area-ava"
+    },
+    {
+      "fact": "27 CFR 4.27(a)(1): a vintage-dated wine with a viticultural area appellation needs at least 95 percent of the wine from grapes harvested in the labeled year.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.27"
+    },
+    {
+      "fact": "27 CFR 4.27(a)(2): with any other appellation (such as a State or county), at least 85 percent must be from the labeled year.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.27"
+    },
+    {
+      "fact": "27 CFR 4.27(a): a vintage wine must be labeled with an appellation of origin.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.27"
+    },
+    {
+      "fact": "27 CFR 4.39(m): a vineyard, orchard, farm or ranch name may not be used unless 95 percent of the wine came from that named vineyard.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.39"
+    },
+    {
+      "fact": "27 CFR 4.26: 'Estate bottled' needs a viticultural area appellation; the winery must be in that area, grow all the grapes on land it owns or controls there, and crush, ferment, finish, age and bottle the wine in a continuous process on its premises.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.26"
+    },
+    {
+      "fact": "Court Curriculum Guide (California, Introductory column): 75% minimum grape variety, 85% minimum for AVA, 95% minimum for vintage, 95% minimum for single vineyard.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+    },
+    {
+      "fact": "Court Curriculum Guide (California): 'Reserve' has no legal meaning.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+    },
+    {
+      "fact": "Court Curriculum Guide (California) label terms: Estate Bottled, Meritage (trademark only), Claret.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+    },
+    {
+      "fact": "Court Curriculum Guide (California): style point - American vs. French oak flavor differences.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+    },
+    {
+      "fact": "Court: the North Coast is the coastal counties north of the San Pablo Bay; climate moderate to warm depending on proximity to the Pacific Ocean or San Pablo Bay.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+    },
+    {
+      "fact": "Court (Introductory): Lake County; Mendocino County: Anderson Valley AVA; Sonoma County: Carneros, Sonoma Coast, Alexander Valley, Russian River Valley, Dry Creek Valley AVAs; Napa County: Carneros, Stags Leap District, Oakville, Rutherford, Howell Mountain AVAs. Match AVAs to counties.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+    },
+    {
+      "fact": "Court physical features: Sonoma Mountain Range, Mayacamas Mountain Range, San Pablo Bay, Vaca Mountain Range, Napa River, Petaluma Wind Gap. Soils: very diverse.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+    },
+    {
+      "fact": "Court winemaking: often extensive use of new French and sometimes American oak for red and white wines; malolactic fermentation often used for white wines, especially Chardonnay.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+    },
+    {
+      "fact": "Court: sparkling wines are produced in cooler areas such as Carneros and Anderson Valley.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+    },
+    {
+      "fact": "Court grapes (North and Central Coast): whites Chardonnay, Sauvignon Blanc; reds Pinot Noir, Merlot, Cabernet Sauvignon, Zinfandel, Syrah.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+    },
+    {
+      "fact": "Court (Certified column): north Napa is warmer; mountain areas have lower yields and bigger day-night temperature swings.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+    },
+    {
+      "fact": "Court producers (Introductory): Opus One, Robert Mondavi, Beringer.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+    },
+    {
+      "fact": "Court history (California): Agoston Haraszthy, Robert Mondavi, André Tchelistcheff.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+    },
+    {
+      "fact": "Court service: young Cabernet Sauvignon often benefits from decanting; old Cabernet Sauvignon needs decanting for sediment.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+    },
+    {
+      "fact": "Court pairing: match full-bodied wines with food richness and intensity.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+    },
+    {
+      "fact": "Napa Valley Vintners: Napa Valley is just 30 miles long and a few miles wide, and is only 4% of California's wine grape harvest.",
+      "source": "https://www.napavintners.com/napa_valley/"
+    },
+    {
+      "fact": "Napa Valley Vintners: Napa Valley was the first American Viticultural Area designated in California, in 1981.",
+      "source": "https://www.napavintners.com/napa_valley/"
+    },
+    {
+      "fact": "Napa Valley Vintners: Napa has a dry Mediterranean climate, which only 2% of the world enjoys.",
+      "source": "https://www.napavintners.com/napa_valley/"
+    },
+    {
+      "fact": "Napa Valley Vintners: Napa created the first Agricultural Preserve in America, in 1968.",
+      "source": "https://www.napavintners.com/napa_valley/"
+    },
+    {
+      "fact": "Napa Valley Vintners lists Cabernet Sauvignon, Merlot, Pinot Noir, Chardonnay, Sauvignon Blanc, Zinfandel and Cabernet Franc among its wines.",
+      "source": "https://www.napavintners.com/napa_valley/"
+    },
+    {
+      "fact": "Napa Valley Vintners: Los Carneros spans parts of Sonoma and Napa counties above the San Pablo Bay; it is cool, with marine winds off the bay; main grapes Chardonnay, Merlot and Pinot Noir; several sparkling houses are based there.",
+      "source": "https://www.napavintners.com/napa_valley/los-carneros-ava"
+    },
+    {
+      "fact": "Napa Valley Vintners: Cabernet Sauvignon dominates Rutherford, at the widest part of the valley with the most sun of the valley-floor AVAs; its benchland gives grainy tannins some call 'Rutherford Dust'.",
+      "source": "https://www.napavintners.com/napa_valley/rutherford-ava/"
+    },
+    {
+      "fact": "Napa Valley Vintners: Howell Mountain sits at 1,400 to 2,600 ft on the valley's northeast side, above the fog line, on shallow volcanic soils; Cabernet Sauvignon is a principal grape.",
+      "source": "https://www.napavintners.com/napa_valley/howell-mountain-ava/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Russian River Valley is famous for Pinot Noir and Chardonnay.",
+      "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Dry Creek Valley is known for Zinfandel and Cabernet Sauvignon.",
+      "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Alexander Valley is known for Cabernet, richly flavored Chardonnay and hillside Merlot.",
+      "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Sonoma Coast is Sonoma County's largest AVA, running along the coast, known for Chardonnay and Pinot Noir.",
+      "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Carneros spans Napa and Sonoma and is famous for Chardonnay, Pinot Noir and sparkling wine.",
+      "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+    },
+    {
+      "fact": "Court: the Central Coast is the coastal counties south of San Francisco Bay and north of the city of Santa Barbara: Monterey County, San Luis Obispo (Paso Robles AVA) and Santa Barbara County.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+    },
+    {
+      "fact": "Court: Monterey and Santa Barbara are generally cool maritime, cooler closer to the coast; Paso Robles is warm continental with large day-night swings.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+    },
+    {
+      "fact": "Court: Monterey has a northwest-to-southeast mountain range creating a cool wind tunnel; Paso Robles is blocked by mountains to the west with only a small gap; Santa Barbara has an east-to-west range creating a cool wind tunnel and fog.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+    },
+    {
+      "fact": "Court (Certified column): Santa Lucia Highlands (Monterey) and Sta. Rita Hills, Santa Maria Valley, Santa Ynez Valley (Santa Barbara) are cool Pinot Noir and Chardonnay areas; Paso Robles and Happy Canyon are warm.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+    },
+    {
+      "fact": "Wine Institute: California produces an average of 81 percent of total U.S. wine production.",
+      "source": "https://wineinstitute.org/our-industry/statistics/california-us-wine-production/"
+    },
+    {
+      "fact": "Court: identify the Willamette Valley in relation to Portland, Oregon, and the Columbia Valley in relation to Seattle, Washington, on a map.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+    },
+    {
+      "fact": "Court (Introductory) AVAs: Oregon - Willamette Valley; Washington - Columbia Valley, Yakima Valley, Walla Walla Valley.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+    },
+    {
+      "fact": "Court: Willamette Valley is cool Mediterranean with maritime influence; the Coast Range to the west creates a rain shadow, the Cascades lie to the east.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+    },
+    {
+      "fact": "Court: Willamette Valley grapes - Pinot Noir and Pinot Gris (most widely planted red and white), Chardonnay, Riesling.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+    },
+    {
+      "fact": "Court: Oregon requires 90% minimum for the stated variety (except Cabernet Sauvignon, Merlot and others) and 95% minimum for the AVA.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+    },
+    {
+      "fact": "Court style: Oregon - dry whites, dry reds, sparkling wines; Washington - dry white and dry red wines.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+    },
+    {
+      "fact": "Court history: David Lett of Eyrie Vineyards.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+    },
+    {
+      "fact": "Court (Certified column) pairings: Willamette Valley Pinot Noir with salmon or butternut squash; Washington Cabernet Sauvignon or Merlot with beef or lamb.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+    },
+    {
+      "fact": "Oregon Wine Board: for an Oregon appellation, 100% of the grapes must be from Oregon and 95% from that appellation; 90% or more must be the named variety.",
+      "source": "https://trade.oregonwine.org/wine/labeling-regulations/"
+    },
+    {
+      "fact": "Oregon Wine Board: 18 grape varieties are exempt from the 90% rule and may be blended with up to 25% other varieties.",
+      "source": "https://trade.oregonwine.org/wine/labeling-regulations/"
+    },
+    {
+      "fact": "Oregon Wine Board: Willamette Valley is Oregon's oldest wine region, with two-thirds of the state's wineries and vineyards and more than 700 wineries.",
+      "source": "https://www.oregonwine.org/regions/willamette-valley/"
+    },
+    {
+      "fact": "Oregon Wine Board: Willamette Valley soils are marine sedimentary, volcanic and loess; main grapes Pinot Noir, Pinot Gris, Chardonnay, Riesling.",
+      "source": "https://www.oregonwine.org/regions/willamette-valley/"
+    },
+    {
+      "fact": "Oregon Wine Board lists eleven nested AVAs in the Willamette Valley, including Dundee Hills, Eola-Amity Hills, Chehalem Mountains, Ribbon Ridge, McMinnville, Yamhill-Carlton and Van Duzer Corridor.",
+      "source": "https://www.oregonwine.org/regions/willamette-valley/"
+    },
+    {
+      "fact": "Oregon Wine Board: in 1965 David Lett rooted Pinot Noir cuttings near Corvallis, the first plantings in the Willamette Valley; the vines went to The Eyrie Vineyards in the Dundee Hills.",
+      "source": "https://www.oregonwine.org/discover/oregon-wine-history/"
+    },
+    {
+      "fact": "Oregon Wine Board: in 1979 The Eyrie Vineyards 1975 South Block Reserve Pinot Noir placed in the top 10 at the Gault-Millau Wine Olympiad in Paris.",
+      "source": "https://www.oregonwine.org/discover/oregon-wine-history/"
+    },
+    {
+      "fact": "Oregon Wine Board: in 1988 Burgundy-born Véronique Drouhin made her first vintage for Domaine Drouhin Oregon, putting an international spotlight on Oregon.",
+      "source": "https://www.oregonwine.org/discover/oregon-wine-history/"
+    },
+    {
+      "fact": "Oregon Wine Board: Pinot Noir is 59% of Oregon's planted acres, Pinot Gris 14%, Chardonnay 7%.",
+      "source": "https://www.oregonwine.org/discover/oregon-wine-varieties/"
+    },
+    {
+      "fact": "Court: Columbia Valley is warm desert; the Cascade Range to the west creates a rain shadow; irrigation is needed.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+    },
+    {
+      "fact": "Court: Columbia Valley grapes - Chardonnay, Riesling, Merlot, Cabernet Sauvignon, Syrah.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+    },
+    {
+      "fact": "Court (Certified column): Columbia Valley, Walla Walla Valley and Columbia Gorge are AVAs shared by Washington and Oregon; Washington also has Yakima Valley, Horse Heaven Hills and Red Mountain.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+    },
+    {
+      "fact": "Court (Certified column) history: Missoula Floods; phylloxera is absent in the Columbia Valley because of desert conditions.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+    },
+    {
+      "fact": "Washington State Wine Commission: Columbia Valley was designated in 1984; over 99% of Washington's acreage is planted there; it lies in the rain shadow of the Cascades with 6-8 inches of rain a year.",
+      "source": "https://www.washingtonwine.org/region/columbia-valley/"
+    },
+    {
+      "fact": "Washington State Wine Commission: Columbia Valley soils are loess over gravel and slackwater sediment on basalt, shaped by the Missoula Floods over 15,000 years ago.",
+      "source": "https://www.washingtonwine.org/region/columbia-valley/"
+    },
+    {
+      "fact": "Washington State Wine Commission: Columbia Valley top varieties are Cabernet Sauvignon, Chardonnay, Merlot, Riesling and Syrah.",
+      "source": "https://www.washingtonwine.org/region/columbia-valley/"
+    },
+    {
+      "fact": "Washington State Wine Commission press kit: Washington is the 2nd largest wine producer in the United States, with about 1,000 licensed wineries and 21 AVAs.",
+      "source": "https://www.washingtonwine.org/wp-content/uploads/2021/05/2025-PRESS-KIT_smaller.pdf"
+    },
+    {
+      "fact": "Washington State Wine Commission press kit: the growing season sees up to 17 hours of sunlight a day; warm days and cool nights keep natural acidity.",
+      "source": "https://www.washingtonwine.org/wp-content/uploads/2021/05/2025-PRESS-KIT_smaller.pdf"
+    },
+    {
+      "fact": "Court: New York State climate is continental, moderated by lakes and rivers inland and the Atlantic Ocean on the coast; Finger Lakes have deep glacial lakes.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=60"
+    },
+    {
+      "fact": "Court: New York growers must protect vines from deep freezes in harsh winters and from mold in summer.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=60"
+    },
+    {
+      "fact": "Court: New York grapes - Riesling, Gewürztraminer, Chardonnay; Pinot Noir, Merlot, Cabernet Franc. Certified column adds hybrids Aurore and Seyval Blanc and Vitis labrusca Concord.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=60"
+    },
+    {
+      "fact": "Court: Introductory AVA is the Finger Lakes; the Certified column adds Hudson River, Lake Erie and Long Island.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=60"
+    },
+    {
+      "fact": "Court history (New York): Dr. Konstantin Frank.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=60"
+    },
+    {
+      "fact": "New York Wine & Grape Foundation: Finger Lakes AVA established September 1, 1982; 11 glacial lakes, some of the deepest freshwater lakes in the United States; known especially for Riesling as one of North America's finest cool-climate regions.",
+      "source": "https://newyorkwines.org/avas/finger-lakes/"
+    },
+    {
+      "fact": "New York Wine & Grape Foundation: the Finger Lakes has 144 wineries and 10,709 acres of vineyard, growing native, hybrid and vinifera grapes.",
+      "source": "https://newyorkwines.org/avas/finger-lakes/"
+    },
+    {
+      "fact": "New York Wine & Grape Foundation: Dr. Konstantin Frank planted the first vinifera vines in the Eastern United States in modern history in 1957, and opened Vinifera Wine Cellars in 1962.",
+      "source": "https://newyorkwines.org/the-pioneering-dr-konstantin-frank-wins-best-white-for-reserve-riesling/"
+    },
+    {
+      "fact": "Court: Canada's main wine areas sit within the 30-50° latitude lines; climates range from cool to continental to desert; the deep Great Lakes rarely freeze and moderate winter.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=63"
+    },
+    {
+      "fact": "Court: Canada needs winter-hardy varieties able to survive deep freezes; it makes still wine, sparkling wine and ice wine.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=63"
+    },
+    {
+      "fact": "Court (Introductory) grapes for Canada: Chardonnay, Riesling; Pinot Noir, Merlot, Cabernet Franc. The Certified column adds Vidal, Pinot Gris, Gewürztraminer.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=63"
+    },
+    {
+      "fact": "Court (Certified column): vines grown in Canada are Vitis vinifera, native North American species (Vitis labrusca, Vitis riparia), and French-American hybrids such as Vidal.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=63"
+    },
+    {
+      "fact": "Court: Canada has no national wine law; each province has its own laws. VQA (Vintners Quality Alliance) is the primary regulatory body for premium wine.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+    },
+    {
+      "fact": "Court: wine is made in at least nine provinces, with the largest concentrations in British Columbia and Ontario.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+    },
+    {
+      "fact": "Court: Canada is a leading global ice wine producer; 90% is made in Ontario; grapes must be frozen on the vine and are often picked in the middle of the night; Riesling and Cabernet Franc are used (Vidal too, per the Certified column).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+    },
+    {
+      "fact": "Court: commercial wine in Canada since the mid-1800s; Prohibition 1916-1927; the first winery license in Ontario issued in the 1970s.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+    },
+    {
+      "fact": "Court (Certified column): Okanagan Valley is British Columbia's main area, on the 50-degree line, continental with very hot summers and very cold winters, moderated by Lake Okanagan; Niagara Peninsula is Ontario's main area.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+    },
+    {
+      "fact": "Court (Certified column): sweet and savory pairings with Icewine; producer Inniskillin (printed 'Inniskillen').",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+    },
+    {
+      "fact": "VQA Ontario: Icewine is made from grapes frozen naturally on the vine, harvested when the temperature falls below -8 °C, giving juice of at least 35 degrees Brix; Vidal is the flagship Icewine grape.",
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "fact": "VQA Ontario: every VQA wine is 100% grown and crafted in Ontario.",
+      "source": "https://vqaontario.ca/"
+    },
+    {
+      "fact": "VQA Ontario: a 'VQA Niagara Peninsula' wine is at least 85% Niagara grapes; a vintage date needs 85% or more from that year.",
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "fact": "VQA Ontario: the Niagara Peninsula is bordered by Lake Ontario to the north; the Niagara Escarpment runs through it, and breezes between the lake and escarpment moderate temperatures; Riesling, Chardonnay, Gamay Noir, Pinot Noir and Cabernet Franc do well.",
+      "source": "https://vqaontario.ca/ontario-appellations/niagara-peninsula/"
+    },
+    {
+      "fact": "Wine Folly (secondary): Okanagan Valley's climate is dry, sunny, hot with a short season, moderated by lakes; best wines are dry reds and whites.",
+      "source": "https://winefolly.com/lifestyle/okanagan-wine-country-guide/"
+    }
+  ],
+  "unverified": [
+    "The Court lists 'Estate Bottled: 100%, must be in the same county' (Certified column). The eCFR text (27 CFR 4.26) instead requires a viticultural area appellation with all grapes grown by the winery in that area; no 'same county' wording was found. The chapter uses the eCFR wording.",
+    "The Court gives a single '95% minimum for vintage'. eCFR 27 CFR 4.27 says 95% only with an AVA and 85% with other appellations; the chapter uses the eCFR split.",
+    "Napa Valley's number of nested AVAs was not stated on the Napa Valley Vintners page fetched (it links to 17 AVA pages), so no count is given.",
+    "Willamette Valley AVA year: the Oregon Wine Board page says 'Established: 1983'; a non-official search snippet said 1984. Not used in cards.",
+    "No bios were fetched for Agoston Haraszthy, Robert Mondavi or André Tchelistcheff; they appear only as names the Court lists. Stags Leap District and Oakville have no fetched details beyond their county.",
+    "Sonoma AVA grape notes (Russian River, Dry Creek, Alexander Valley, Sonoma Coast) come from Wine Folly (secondary); the Sonoma County Vintners site was not fetched.",
+    "Okanagan Valley details come from the Court's Certified column and Wine Folly only; no British Columbia Wine Authority page was fetched. Canada is in the Court Curriculum Guide (Introductory column) but not in the Course Guide's Section 8 list, which names only U.S. states.",
+    "Oregon's 18 exempt varieties are not listed by name here; the Court names Cabernet Sauvignon and Merlot as examples.",
+    "The Court Curriculum Guide is dated 8.2023; figures from trade bodies (Oregon 59% Pinot Noir, Washington 21 AVAs, California 81%) may change year to year."
+  ]
+}

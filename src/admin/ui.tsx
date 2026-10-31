@@ -1,4 +1,5 @@
 import { BottleScanner } from './scanner';
+import { SpinViewer } from '../components/SpinViewer';
 // Small form pieces shared by the admin screens.
 import { useState, type ReactNode } from 'react';
 import { MediaPicker } from '../components/MediaPicker';
@@ -133,3 +134,22 @@ export const when = (iso?: string | null) => {
   const d = new Date(iso);
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) + ', ' + d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
 };
+
+/** A 360° spin of the bottle: frames from the spin scanner (Oct 31). */
+export function SpinField({ label, hint, value, onChange, name }: { label: string; hint?: string; value: string[]; onChange: (v: string[]) => void; name: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="field">
+      <span>{label}</span>
+      <div className="photo-field">
+        {value.length > 1 ? <SpinViewer frames={value} alt={name} className="spin-field" /> : <div className="photo-empty">No spin yet</div>}
+        <div className="row">
+          <button type="button" className="btn" onClick={() => setOpen(true)}>{value.length ? 'Record Again' : 'Record a Spin'}</button>
+          {value.length > 0 && <button type="button" className="link-btn danger" onClick={() => onChange([])}>Remove</button>}
+        </div>
+      </div>
+      {hint && <small>{hint}</small>}
+      {open && <BottleScanner spin name={name || label} onClose={() => setOpen(false)} onDone={() => setOpen(false)} onSpin={(f) => { onChange(f); setOpen(false); }} />}
+    </div>
+  );
+}

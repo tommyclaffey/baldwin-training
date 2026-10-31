@@ -148,11 +148,22 @@ export async function cutScan(token, box) {
   // Smooth edge, at the photo's own size and orientation.
   let mask = await sharp(m8, { raw: { width: sw, height: sh, channels: 1 } }).blur(0.7).resize(ww, wh, { kernel: 'cubic' }).extractChannel(0).raw().toBuffer();
   if (portrait) mask = await sharp(mask, { raw: { width: ww, height: wh, channels: 1 } }).rotate(-90).extractChannel(0).raw().toBuffer();
-  // Tight crop around the bottle with a little air, on the beige.
-  let x0 = W, y0 = H, x1 = -1, y1 = -1;
-  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (mask[y * W + x] > 127) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
-  const rgb = await sharp(sc.base).removeAlpha().raw().toBuffer();
-  const pad = Math.round((y1 - y0 + 1) * 0.05);
+  sc.mask = mask;
+  const jpg = await compose(sc, await sharp(sc.base).removeAlpha().raw().toBuffer(), 1400);
+  sc.result = jpg;
+  return jpg;
+}
+
+/** The bottle on the beige, tightly cropped: the photo's pixels where the mask is, beige elsewhere. */
+async function compose(sc, rgb, height) {
+  const { sharp } = libs;
+  const { W, H, mask } = sc;
+  if (!sc.crop) {
+    let x0 = W, y0 = H, x1 = -1, y1 = -1;
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (mask[y * W + x] > 127) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    sc.crop = { x0, y0, x1, y1, pad: Math.round((y1 - y0 + 1) * 0.05) };
+  }
+  const { x0, y0, x1, y1, pad } = sc.crop;
   const cw = x1 - x0 + 1 + pad * 2, ch = y1 - y0 + 1 + pad * 2;
   const o = Buffer.alloc(cw * ch * 3);
   for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {
@@ -161,9 +172,30 @@ export async function cutScan(token, box) {
     const si = (sy * W + sx) * 3, di = (y * cw + x) * 3;
     for (let c = 0; c < 3; c++) o[di + c] = Math.round((a ? rgb[si + c] : 0) * a + BEIGE[c] * (1 - a));
   }
-  const jpg = await sharp(o, { raw: { width: cw, height: ch, channels: 3 } }).resize({ height: 1400, withoutEnlargement: true }).jpeg({ quality: 88, mozjpeg: true }).toBuffer();
-  sc.result = jpg;
-  return jpg;
+  return sharp(o, { raw: { width: cw, height: ch, channels: 3 } }).resize({ height, withoutEnlargement: true }).jpeg({ quality: 86, mozjpeg: true }).toBuffer();
+}
+
+/* ---- Spin scan (Oct 31, Tommy: "a 3D digital scanner for the wine bottles") ----
+ * A bottle turning on a lazy Susan keeps the same outline, so the cut from the first frame (cutScan) is reused for every
+ * other frame: no model run per frame. The frames play back as a drag-to-spin bottle. */
+export async function spinFrame(token, buffer) {
+  const sc = scans.get(token);
+  if (!sc || !sc.mask) { const e = new Error('Cut out the first frame first.'); e.status = 410; throw e; }
+  sc.at = Date.now();
+  await load();
+  const { sharp } = libs;
+  const rgb = await sharp(buffer).rotate().resize(sc.W, sc.H, { fit: 'fill' }).removeAlpha().raw().toBuffer();
+  sc.spin = sc.spin || [];
+  if (sc.spin.length >= 48) { const e = new Error('That’s enough frames.'); e.status = 400; throw e; }
+  sc.spin.push(await compose(sc, rgb, 900));
+  return sc.spin.length;
+}
+/** The first cut plus every spin frame, ready to keep. */
+export async function spinFrames(token) {
+  const sc = scans.get(token);
+  if (!sc?.result || !sc.spin?.length) return null;
+  const first = await libs.sharp(sc.result).resize({ height: 900, withoutEnlargement: true }).jpeg({ quality: 86, mozjpeg: true }).toBuffer();
+  return [first, ...sc.spin];
 }
 
 /** The last cut for this photo (to keep it). */

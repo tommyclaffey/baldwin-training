@@ -12,7 +12,7 @@ const pages = index.map((e) => JSON.parse(fs.readFileSync(path.join(root, 'publi
 function walk(n, fn) { fn(n); (n.c || []).forEach((c) => walk(c, fn)); }
 
 test('there is one page per Figma screen', () => {
-  assert.equal(index.length, 347); // incl. the Wine List · Caymus and Shelf · Willett templates, and Classic · Glass cards (extra glass drawings) (the CMS builds one page per wine and per bottle from them)
+  assert.equal(index.length, 349); // incl. the Wine List · Caymus and Shelf · Willett templates, and Classic · Glass cards (extra glass drawings) (the CMS builds one page per wine and per bottle from them)
   assert.equal(new Set(index.map((e) => e.slug)).size, index.length, 'slugs are unique');
 });
 

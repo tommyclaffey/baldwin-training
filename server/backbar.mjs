@@ -125,7 +125,11 @@ export function bottlePage(tpl, e, { shelf, house, index, basePage }) {
   // Hero: the drawn spirit bottle on cream, like a wine with no photo.
   const hero = find(m, byName('Hero')), copy = find(hero, byName('Copy'));
   const panel = find(hero, startsWith('Bottle art'));
-  if (panel) { panel.f = [{ c: '#E7DECF' }]; panel.c = [art(panel.w, panel.h)]; }
+  if (panel) {
+    panel.f = [{ c: '#E7DECF' }]; panel.c = [art(panel.w, panel.h)];
+    // Our own bottle, spun on the spin scanner, replaces the drawing (Oct 31).
+    if (d.spin?.length > 1) { const a = panel.c[0]; a.f = [{ img: d.spin[0], m: 'FIT' }]; a.n = 'IMG/Bottle · ' + d.name; a.meta = { ...(a.meta || {}), spin: d.spin }; }
+  }
   const tags = find(copy, byName('Tags'));
   const pills = tags.c;
   setText(texts(pills[0])[0], spirit);

@@ -9,7 +9,7 @@ import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebar
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, SHARED, LOCAL_KEYS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
 import { slugify } from './templates.mjs';
-import { startScan, cutScan, lastCut, warmScanner, warmOnStart } from './scanner.mjs';
+import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames } from './scanner.mjs';
 import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
 import { topicList, questionPool } from './quizgen.mjs';
 
@@ -341,6 +341,28 @@ async function api(req, res, url) {
     if (!Array.isArray(b.box) || b.box.length !== 4) fail(400, 'Draw a box around the bottle.');
     try { const jpg = await cutScan(String(b.token || ''), b.box); return sendJson(res, 200, { preview: 'data:image/jpeg;base64,' + jpg.toString('base64') }); }
     catch (e) { if (!e.status) console.error('cut', e); fail(e.status || 500, e.status ? e.message : 'The scanner couldn’t cut that out. Try a new box.'); }
+  }
+  // Spin scan: after the first frame is cut, each later frame is posted here, then all of them are kept together.
+  if (p === '/api/scan/spin' && m === 'POST') {
+    needEditor(c, req);
+    const token = url.searchParams.get('token') || '';
+    const chunks = []; let size = 0;
+    for await (const ch of req) { size += ch.length; if (size > 8e6) fail(413, 'That frame is too big.'); chunks.push(ch); }
+    try { return sendJson(res, 200, { frames: await spinFrame(token, Buffer.concat(chunks)) }); }
+    catch (e) { if (!e.status) console.error('spin', e); fail(e.status || 500, e.status ? e.message : 'That frame didn’t work. Try the spin again.'); }
+  }
+  if (p === '/api/scan/spin/keep' && m === 'POST') {
+    const u = needEditor(c, req);
+    const b = await readJson(req);
+    const frames = await spinFrames(String(b.token || ''));
+    if (!frames) fail(410, 'That spin has expired. Record it again.');
+    const name = str(b.name, 80) || 'Bottle';
+    const stem = `${Date.now().toString(36)}-spin-${slugify(name).slice(0, 40) || 'bottle'}`;
+    const urls = frames.map((jpg, i) => { const file = `${stem}-${String(i).padStart(2, '0')}.jpg`; fs.writeFileSync(path.join(MEDIA_DIR, file), jpg); return '/media/' + file; });
+    db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)')
+      .run('file', `Bottle spin · ${name}`, urls[0].slice(7), 'image/jpeg', frames[0].length, u.id, now(), c.company, c.store);
+    audit(db, u.id, 'spin scan bottle', name);
+    return sendJson(res, 200, { frames: urls });
   }
   if (p === '/api/scan/keep' && m === 'POST') {
     const u = needEditor(c, req);
