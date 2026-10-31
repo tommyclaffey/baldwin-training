@@ -438,3 +438,25 @@ test('classic cocktails: 58 in six families, each with its own glass, plus the H
   assert.ok(hb.includes('Term · Cuba Libre') && hb.includes('Twin · Greyhound · Salty Dog'));
   assert.ok((await page('classic/old-fashioned')).includes('"/classic/oaxaca-old-fashioned"'), 'riffs link to the new pages');
 });
+
+test('edit in place: list pages get Add rows with the group filled in, for managers only', async () => {
+  const index = (await call('/api/index')).data;
+  const file = (slug) => index.find((e) => e.slug === slug).file;
+  const fm = JSON.stringify((await call('/api/page/' + file('food-matrix'))).data);
+  assert.ok(fm.includes('"to":"/admin/pages/recipe/new?course=Salads"') && fm.includes('Add a Dish to Salads'));
+  const wine = JSON.stringify((await call('/api/page/' + file('the-bar/wine'))).data);
+  assert.ok(wine.includes('/admin/pages/wine/new?color=Red"'), 'Add a Red opens a new red wine');
+  assert.ok(wine.includes('/admin/pages/wine/new?list=By+the+glass'), 'the glass lists add to By the glass');
+  const bar = JSON.stringify((await call('/api/page/' + file('the-bar/cocktails'))).data);
+  assert.ok(bar.includes('Add a House Cocktail') && bar.includes('/admin/pages/classic/new?family=Hot'), 'super admins add classics too');
+  const beer = JSON.stringify((await call('/api/page/' + file('the-bar/beer-and-draft'))).data);
+  assert.ok(beer.includes('/admin/pages/beer/new?serve=Draft') && beer.includes('/admin/pages/beer/new?serve=Bottle'));
+  // Staff see the same pages with none of it.
+  const code = (await call('/api/team')).data.company.joinCode;
+  const sam = person();
+  await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Runner', pin: '1357', storeId: 1 } });
+  for (const slug of ['food-matrix', 'the-bar/wine', 'the-bar/cocktails', 'the-bar/beer-and-draft']) {
+    const s = JSON.stringify((await sam('/api/page/' + file(slug))).data);
+    assert.ok(!s.includes('/admin/') && !s.includes('"add":'), 'no admin links for staff on ' + slug);
+  }
+});

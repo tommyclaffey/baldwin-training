@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { useSession } from '../lib/session';
 import { usePageEntry } from './PageView';
 
-const COLLECTION_OF: Record<string, string> = { Classic: 'classic', Signature: 'house', Recipe: 'recipe' };
+/** Index section → collection, for pages made from an admin entry. */
+export const COLLECTION_OF: Record<string, string> = { Classic: 'classic', Signature: 'house', Recipe: 'recipe', 'Wine list': 'wine', 'Back bar': 'shelf' };
 
 /** For signed-in managers: a way into the admin, and straight to this page's template form. */
 export function EditBar() {

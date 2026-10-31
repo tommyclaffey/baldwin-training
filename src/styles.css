@@ -1012,3 +1012,73 @@ body.quiz-lock .corner { display: none; }
   [data-name="Breadcrumb"] { flex-wrap: wrap !important; row-gap: 4px !important; width: auto !important; max-width: 100%; height: auto !important; }
   [data-name="Breadcrumb"] > * { flex: none !important; }
 }
+
+/* ---- Edit in place (Oct 31, Figma section 14): managers add and edit from the page ---- */
+.page { position: relative; }
+.eip-edit-wrap { position: absolute; top: 0; left: 0; right: 0; margin: 0 auto; height: 0; pointer-events: none; z-index: 5; }
+.eip-edit { position: absolute; top: 96px; right: 48px; pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; min-height: 36px;
+  border-radius: 10px; border: 1px solid #D9CDBB; background: #FBF9F5; color: var(--ink); font: 700 13px 'Archivo', sans-serif; cursor: pointer; box-shadow: 0 2px 8px rgba(30,28,26,.08); }
+.eip-edit:hover { border-color: var(--copper); }
+.eip-edit:focus-visible { outline: 3px solid rgba(196,154,108,.5); outline-offset: 2px; }
+.eip-edit.floating { top: auto; bottom: calc(20px + env(safe-area-inset-bottom)); right: 16px; position: fixed; z-index: 60; min-height: 44px; padding: 10px 16px; box-shadow: 0 6px 20px rgba(30,28,26,.25); }
+body.eip-lock .eip-edit.floating, body.menu-lock .eip-edit.floating { display: none; }
+
+.eip-add { display: flex; align-items: center; gap: 10px; padding: 12px 18px; margin-top: 12px; margin-bottom: 12px; align-self: stretch; flex: none; border: 1.5px dashed #C49A6C; border-radius: 12px; color: #8A5A3A;
+  font: 700 15px 'Archivo', sans-serif; text-decoration: none; cursor: pointer; background: transparent; box-sizing: border-box; min-height: 52px; height: auto !important; }
+.eip-add:hover { background: rgba(196,154,108,.08); }
+.eip-add:focus-visible { outline: 3px solid rgba(196,154,108,.5); outline-offset: 2px; }
+.eip-add .plus { width: 26px; height: 26px; border-radius: 8px; background: #C49A6C; color: var(--ink); display: grid; place-items: center; font: 800 17px/1 'Archivo', sans-serif; flex: none; }
+.eip-add.tile { flex-direction: column; justify-content: center; text-align: center; margin: 0; min-width: 220px; align-self: stretch; }
+[class*="dark"] .eip-add, .eip-add.on-dark { color: #E3C7A3; }
+
+body.eip-lock { overflow: hidden; }
+.eip { position: fixed; inset: 0; z-index: 200; }
+.eip-scrim { position: fixed; inset: 0; background: rgba(20,18,16,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); cursor: default; animation: eip-fade 180ms ease both; }
+.eip-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(600px, 100vw); display: flex; flex-direction: column; background: #FBF9F5;
+  border-radius: 24px 0 0 24px; box-shadow: -12px 0 60px rgba(0,0,0,.25); font-family: 'Archivo', sans-serif; animation: eip-in 240ms cubic-bezier(.2,.7,.2,1) both; }
+.eip-handle { display: none; }
+.eip-head { padding: 28px 32px 16px; border-bottom: 1px solid #E4DCCF; display: flex; flex-direction: column; gap: 16px; }
+.eip-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.eip-eyebrow { margin: 0 0 6px; font: 700 12px 'Archivo', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #8A5A3A; }
+.eip-head h2 { margin: 0; font: 800 28px/1.15 'Archivo', sans-serif; color: var(--ink); overflow-wrap: anywhere; }
+.eip-close { width: 40px; height: 40px; flex: none; border-radius: 50%; border: 1px solid #E4DCCF; background: transparent; display: grid; place-items: center; cursor: pointer; color: var(--ink); }
+.eip-close:hover { border-color: var(--copper); }
+.eip-jump { display: flex; flex-wrap: wrap; gap: 6px; }
+.eip-jump button { border: 0; border-radius: 999px; padding: 6px 12px; background: #F2EEE7; color: #5E574F; font: 700 13px 'Archivo', sans-serif; cursor: pointer; white-space: nowrap; }
+.eip-jump button.on { background: var(--ink); color: #F2EEE7; }
+.eip-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 8px 32px 32px; position: relative; }
+.eip-section { padding-top: 18px; }
+.eip-section h3 { margin: 0 0 14px; font: 700 12px 'Archivo', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #5E574F; }
+.eip-section + .eip-section { border-top: 1px solid #EFE8DD; margin-top: 22px; }
+.eip-body .field input, .eip-body .field textarea, .eip-body .field select { background: #FFFFFF; }
+.eip-body .span-2 { grid-column: 1 / -1; }
+.eip-error { background: #F7E1DB; color: #7D2416; border-radius: 12px; padding: 12px 14px; margin: 16px 0 0; font-weight: 600; }
+.eip-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 32px 20px; border-top: 1px solid #E4DCCF; background: #FBF9F5; border-radius: 0 0 0 24px; }
+.eip-left { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; min-width: 0; }
+.eip-status { font-size: 13px; color: #5E574F; display: inline-flex; align-items: center; gap: 6px; }
+.eip-status .dot, .eip-toast .dot { width: 7px; height: 7px; border-radius: 50%; background: #C49A6C; display: inline-block; }
+.eip-right { display: flex; gap: 10px; flex: none; }
+.eip-right .btn.ghost { background: #FBF9F5; color: var(--ink); border: 1px solid #D9CDBB; }
+.eip-toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 210; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px;
+  background: var(--ink); color: #F2EEE7; border-radius: 12px; font: 600 14px 'Archivo', sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,.25); animation: eip-up 220ms ease both; }
+.eip-toast .dot { background: #8FB98A; width: 8px; height: 8px; }
+@keyframes eip-in { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes eip-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes eip-up { from { transform: translate(-50%, 12px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+@media (max-width: 700px) {
+  .eip-panel { top: 56px; left: 0; width: 100vw; border-radius: 24px 24px 0 0; animation-name: eip-sheet; }
+  .eip-handle { display: block; width: 40px; height: 5px; border-radius: 3px; background: #D9CDBB; margin: 10px auto 0; flex: none; }
+  .eip-head { padding: 10px 20px 14px; gap: 14px; }
+  .eip-head h2 { font-size: 24px; }
+  .eip-jump { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 0 20px; }
+  .eip-jump::-webkit-scrollbar { display: none; }
+  .eip-body { padding: 4px 20px 24px; }
+  .eip-body .form-grid { grid-template-columns: 1fr; }
+  .eip-foot { padding: 14px 20px calc(14px + env(safe-area-inset-bottom)); border-radius: 0; flex-wrap: wrap; }
+  .eip-left { flex-direction: row; gap: 12px; width: 100%; justify-content: space-between; }
+  .eip-right { width: 100%; }
+  .eip-right .btn:last-child { flex: 1; }
+  .eip-body .field input, .eip-body .field textarea, .eip-body .field select { font-size: 16px; }
+}
+@keyframes eip-sheet { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .eip-panel, .eip-scrim, .eip-toast { animation: none; } }
