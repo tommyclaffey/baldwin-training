@@ -1082,3 +1082,31 @@ body.eip-lock { overflow: hidden; }
 }
 @keyframes eip-sheet { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .eip-panel, .eip-scrim, .eip-toast { animation: none; } }
+/* The group's kitchen in the edit panel (Oct 31, Figma section 14: 370:2, 370:578) */
+.eip-notice, .eip-shared { margin: 0; display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; border-radius: 12px; background: #F2EEE7; font: 500 13px/1.45 'Archivo', sans-serif; color: var(--ink); }
+.eip-notice { background: #E3ECDD; color: #2F5A2B; }
+.eip-notice .dot, .eip-shared .dot { width: 8px; height: 8px; border-radius: 50%; background: #C49A6C; flex: none; margin-top: 5px; display: inline-block; }
+.eip-notice .dot { background: #4F7A4A; }
+.eip-pick { display: flex; flex-direction: column; gap: 12px; padding-top: 18px; }
+.eip-pick-head { margin: 0; font: 700 12px 'Archivo', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #5E574F; }
+.eip-pick-sub { margin: 0 0 4px; font: 400 14px/1.45 'Archivo', sans-serif; color: #5E574F; }
+.eip-lib { display: flex; align-items: center; gap: 14px; padding: 12px 14px 12px 12px; border: 1px solid #E4DCCF; border-radius: 14px; background: #fff; }
+.eip-lib img, .eip-lib .thumb-empty { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; flex: none; background: #EFE6D6; display: block; }
+.eip-lib .grow { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.eip-lib strong { font: 700 15.5px 'Archivo', sans-serif; }
+.eip-lib small { font: 400 13px/1.4 'Archivo', sans-serif; color: #5E574F; }
+.eip-lib em { font: 600 12px 'Archivo', sans-serif; font-style: normal; color: #8A5A3A; }
+.eip-lib .btn { flex: none; min-height: 38px; padding: 8px 14px; font-size: 13px; }
+.eip-or { display: flex; align-items: center; gap: 12px; color: #857C71; font: 500 13px 'Archivo', sans-serif; margin: 4px 0; }
+.eip-or::before, .eip-or::after { content: ''; flex: 1; height: 1px; background: #E4DCCF; }
+.eip-new { margin: 0; width: 100%; text-align: left; background: #FBF9F5; }
+.eip-new small { display: block; font: 400 13px 'Archivo', sans-serif; color: #5E574F; margin-top: 2px; }
+.eip-foot { flex-wrap: wrap; }
+.eip-foot.pick { justify-content: space-between; }
+.eip-scope { width: 100%; display: flex; align-items: center; gap: 8px; font: 600 13px 'Archivo', sans-serif; color: #5E574F; }
+.eip-scope button { border: 0; border-radius: 999px; padding: 8px 14px; background: #F2EEE7; color: #5E574F; font: 600 13px 'Archivo', sans-serif; cursor: pointer; }
+.eip-scope button.on { background: var(--ink); color: #F2EEE7; }
+.eip-share { width: 100%; font: 600 13px 'Archivo', sans-serif; }
+.eip-share small { font-weight: 400; color: #5E574F; margin-left: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 700px) { .eip-lib { flex-wrap: wrap; } .eip-lib .btn { width: 100%; } .eip-scope { flex-wrap: wrap; } }

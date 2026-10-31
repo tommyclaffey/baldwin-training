@@ -288,6 +288,7 @@ const rowOut = (r) => r && { id: r.id, collection: r.collection, slug: r.slug, d
  * update it only while nobody has edited it in the admin. Deleted seed entries stay deleted.
  */
 export function seed(db) {
+  moveDishesToLibrary(db);
   for (const id of Object.keys(COLLECTIONS)) {
     const file = path.join(ROOT, 'content/cms', id + '.json');
     if (!fs.existsSync(file)) continue;
@@ -303,13 +304,24 @@ export function seed(db) {
       const data = cleanEntry(id, s.data);
       const h = hash(data);
       const row = db.prepare('SELECT * FROM entries WHERE seed_key = ?').get(id + ':' + s.key);
+      const lib = id === 'recipe'; // dishes: the seed is the group's dish; The Baldwin's menu entry holds its price, course, pairings
+      const shared = lib ? pick(data, (k) => !isLocal(id, k)) : data;
+      const own = lib ? pick(data, (k) => isLocal(id, k)) : null;
       if (!row) {
         if (db.prepare('SELECT 1 FROM seed_removed WHERE seed_key = ?').get(id + ':' + s.key)) continue;
-        if (db.prepare('SELECT 1 FROM entries WHERE slug = ? AND store_id = 1').get(s.slug)) continue;
-        db.prepare('INSERT INTO entries(collection,slug,data,sort,seed_key,seed_hash,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)')
-          .run(id, s.slug, JSON.stringify(data), s.sort ?? 0, id + ':' + s.key, h, now(), now());
+        if (db.prepare('SELECT 1 FROM entries WHERE slug = ? AND store_id = ?').get(s.slug, lib ? 0 : 1)) continue;
+        const r = db.prepare('INSERT INTO entries(collection,slug,data,sort,seed_key,seed_hash,created_at,updated_at,store_id) VALUES (?,?,?,?,?,?,?,?,?)')
+          .run(id, s.slug, JSON.stringify(shared), s.sort ?? 0, id + ':' + s.key, h, now(), now(), lib ? 0 : 1);
+        if (lib && !db.prepare('SELECT 1 FROM entries WHERE slug = ? AND store_id = 1').get(s.slug)) {
+          db.prepare('INSERT INTO entries(collection,slug,data,sort,created_at,updated_at,store_id) VALUES (?,?,?,?,?,?,1)')
+            .run(id, s.slug, JSON.stringify({ libraryId: Number(r.lastInsertRowid), ...own }), s.sort ?? 0, now(), now());
+        }
       } else if (row.updated_by == null && row.seed_hash !== h) {
-        db.prepare('UPDATE entries SET data = ?, seed_hash = ?, updated_at = ? WHERE id = ?').run(JSON.stringify(data), h, now(), row.id);
+        db.prepare('UPDATE entries SET data = ?, seed_hash = ?, updated_at = ? WHERE id = ?').run(JSON.stringify(shared), h, now(), row.id);
+        if (lib) {
+          const mine = db.prepare("SELECT * FROM entries WHERE collection = ? AND store_id = 1 AND json_extract(data, '$.libraryId') = ?").get(id, row.id);
+          if (mine && mine.updated_by == null) db.prepare('UPDATE entries SET data = ? WHERE id = ?').run(JSON.stringify({ ...JSON.parse(mine.data), ...own }), mine.id);
+        }
       }
     }
   }
@@ -339,22 +351,83 @@ export function seed(db) {
 
 /** Collections every store shares (the library). Everything else belongs to one store. */
 export const SHARED = new Set(['classic']);
+
+/* ---- The group's kitchen (Oct 31, Tommy: "a database of dishes shared across the board at all the stores") ----
+ * A dish lives once in the group library (store_id 0, the company's) and each store puts it on its menu with an entry that
+ * holds only what's its own: course, price, station, signature, and pairings (they depend on that store's list).
+ * Reading a store's dish merges the two; anything else a store changed "just for us" is kept as an override. */
+export const LIBRARY_STORE = 0;
+export const LOCAL_KEYS = { recipe: ['course', 'price', 'station', 'signature', 'pairing', 'pairingRef', 'pairingOpposite', 'pairingOppositeRef', 'cocktail', 'cocktailRef', 'pairingNote'] };
+const isLocal = (col, k) => (LOCAL_KEYS[col] || []).includes(k);
+const pick = (d, keys) => Object.fromEntries(Object.entries(d).filter(([k]) => keys(k)));
+/** Cleans only the fields given (a store entry stores just its own fields). */
+function cleanPartial(collection, d) {
+  const out = {};
+  for (const f of COLLECTIONS[collection].fields) if (f.key in d) out[f.key] = cleanField(f, d[f.key]);
+  return out;
+}
+function withLibrary(db, e) {
+  if (!e || !e.data.libraryId) return e;
+  const lib = db.prepare('SELECT * FROM entries WHERE id = ?').get(e.data.libraryId);
+  if (!lib) return e;
+  const { libraryId, ...own } = e.data;
+  e.data = { ...JSON.parse(lib.data), ...own };
+  e.library = { id: lib.id, archived: !!lib.archived_at, overrides: Object.keys(own).filter((k) => !isLocal(e.collection, k)) };
+  return e;
+}
+const readRow = (db, r) => withLibrary(db, rowOut(r));
+
 /** A collection's entries: shared ones for everyone, the rest for one store (`store` null = all stores). */
 export function listEntries(db, collection, store = null) {
   const own = store != null && !SHARED.has(collection);
   const rows = collection
     ? (own ? db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id = ? AND archived_at IS NULL ORDER BY sort, id').all(collection, store)
-      : db.prepare('SELECT * FROM entries WHERE collection = ? AND archived_at IS NULL ORDER BY sort, id').all(collection))
-    : db.prepare('SELECT * FROM entries WHERE archived_at IS NULL ORDER BY collection, sort, id').all();
-  return rows.map(rowOut);
+      : db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id != 0 AND archived_at IS NULL ORDER BY sort, id').all(collection))
+    : db.prepare('SELECT * FROM entries WHERE store_id != 0 AND archived_at IS NULL ORDER BY collection, sort, id').all();
+  return rows.map((r) => readRow(db, r)).filter((e) => !e.library?.archived);
 }
 /** The archive: entries taken out of the book, newest first, ready to restore. */
 export function listArchived(db, collection, store = null) {
   const own = store != null && !SHARED.has(collection);
   return (own ? db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id = ? AND archived_at IS NOT NULL ORDER BY archived_at DESC').all(collection, store)
-    : db.prepare('SELECT * FROM entries WHERE collection = ? AND archived_at IS NOT NULL ORDER BY archived_at DESC').all(collection)).map(rowOut);
+    : db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id != 0 AND archived_at IS NOT NULL ORDER BY archived_at DESC').all(collection)).map((r) => readRow(db, r));
 }
-export const getEntry = (db, id) => rowOut(db.prepare('SELECT * FROM entries WHERE id = ?').get(id));
+export const getEntry = (db, id) => readRow(db, db.prepare('SELECT * FROM entries WHERE id = ?').get(id));
+
+/** The group's dishes, with the stores that have each on their menu. */
+export function libraryList(db, collection, company, store) {
+  const rows = db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id = 0 AND company_id = ? AND archived_at IS NULL ORDER BY sort, id').all(collection, company);
+  const uses = db.prepare(`SELECT e.store_id, s.name FROM entries e JOIN stores s ON s.id = e.store_id
+    WHERE e.collection = ? AND e.archived_at IS NULL AND json_extract(e.data, '$.libraryId') = ? AND s.deleted_at IS NULL ORDER BY s.sort, s.id`);
+  return rows.map((r) => { const e = rowOut(r); const st = uses.all(collection, e.id); return { id: e.id, data: e.data, stores: st.map((x) => x.name), onMine: st.some((x) => x.store_id === store) }; });
+}
+/** Names of the other stores that have this library dish on their menu. */
+export function sharedWith(db, e) {
+  if (!e?.library) return [];
+  return db.prepare(`SELECT s.name FROM entries e JOIN stores s ON s.id = e.store_id WHERE e.collection = ? AND e.archived_at IS NULL
+    AND json_extract(e.data, '$.libraryId') = ? AND e.store_id != ? AND s.deleted_at IS NULL ORDER BY s.sort, s.id`).all(e.collection, e.library.id, e.storeId).map((x) => x.name);
+}
+
+/** One-time move (Oct 31): every store's dishes become library dishes plus a menu entry. Seed keys move to the library. */
+function moveDishesToLibrary(db) {
+  if (db.prepare("SELECT 1 FROM entries WHERE collection = 'recipe' AND store_id = 0 LIMIT 1").get()) return;
+  const rows = db.prepare("SELECT * FROM entries WHERE collection = 'recipe' AND store_id != 0 ORDER BY store_id, sort, id").all();
+  for (const r of rows) {
+    const d = JSON.parse(r.data);
+    if (d.libraryId) continue;
+    const shared = pick(d, (k) => !isLocal('recipe', k));
+    const own = pick(d, (k) => isLocal('recipe', k));
+    const lib = db.prepare(`INSERT INTO entries(collection,slug,data,sort,seed_key,seed_hash,created_by,created_at,updated_by,updated_at,company_id,store_id,archived_at,archived_by)
+      VALUES ('recipe',?,?,?,NULL,NULL,?,?,?,?,?,0,?,?)`).run(r.slug, JSON.stringify(shared), r.sort, r.created_by, r.created_at, r.updated_by, r.updated_at, r.company_id, r.seed_key && r.archived_at && r.archived_by == null ? r.archived_at : null, null);
+    const libId = Number(lib.lastInsertRowid);
+    if (r.seed_key) {
+      const key = r.seed_key, h = r.seed_hash;
+      db.prepare('UPDATE entries SET seed_key = NULL, seed_hash = NULL WHERE id = ?').run(r.id);
+      db.prepare('UPDATE entries SET seed_key = ?, seed_hash = ? WHERE id = ?').run(key, h, libId);
+    }
+    db.prepare('UPDATE entries SET data = ? WHERE id = ?').run(JSON.stringify({ libraryId: libId, ...own }), r.id);
+  }
+}
 
 /** Addresses are unique within a store (shared collections live on store 1). */
 export function uniqueSlug(db, collection, name, exceptId, store = 1) {
@@ -365,22 +438,59 @@ export function uniqueSlug(db, collection, name, exceptId, store = 1) {
   return slug;
 }
 
-export function createEntry(db, collection, data, userId, store = 1, company = 1) {
-  const d = cleanEntry(collection, data);
+export function createEntry(db, collection, data, userId, store = 1, company = 1, opts = {}) {
   const st = SHARED.has(collection) ? 1 : store;
-  const slug = uniqueSlug(db, collection, d.name, null, st);
-  const g = COLLECTIONS[collection].group;
-  const max = db.prepare('SELECT MAX(sort) m FROM entries WHERE collection = ? AND store_id = ?').get(collection, st).m ?? 0;
-  const r = db.prepare('INSERT INTO entries(collection,slug,data,sort,created_by,created_at,updated_by,updated_at,store_id,company_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
-    .run(collection, slug, JSON.stringify(d), max + 1, userId, now(), userId, now(), st, SHARED.has(collection) ? 1 : company);
-  void g;
-  return getEntry(db, Number(r.lastInsertRowid));
+  const insert = (slugName, d, at = st, co = SHARED.has(collection) ? 1 : company) => {
+    const slug = uniqueSlug(db, collection, slugName, null, at);
+    const max = db.prepare('SELECT MAX(sort) m FROM entries WHERE collection = ? AND store_id = ?').get(collection, at).m ?? 0;
+    const r = db.prepare('INSERT INTO entries(collection,slug,data,sort,created_by,created_at,updated_by,updated_at,store_id,company_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
+      .run(collection, slug, JSON.stringify(d), max + 1, userId, now(), userId, now(), at, co);
+    return Number(r.lastInsertRowid);
+  };
+  if (LOCAL_KEYS[collection] && opts.libraryId) {
+    // From the group's kitchen: this store's menu entry points at the group's dish.
+    const lib = db.prepare('SELECT * FROM entries WHERE id = ? AND collection = ? AND store_id = 0 AND company_id = ?').get(opts.libraryId, collection, company);
+    if (!lib) throw Object.assign(new Error('That dish isn’t in your group’s kitchen.'), { status: 404 });
+    const ld = JSON.parse(lib.data);
+    // Taken off this menu before? Bring that entry back (same address, its price and station kept).
+    const was = db.prepare("SELECT id FROM entries WHERE collection = ? AND store_id = ? AND archived_at IS NOT NULL AND json_extract(data, '$.libraryId') = ? ORDER BY archived_at DESC").get(collection, st, lib.id);
+    if (was) { db.prepare('UPDATE entries SET archived_at = NULL, archived_by = NULL, updated_by = ?, updated_at = ? WHERE id = ?').run(userId, now(), was.id); return getEntry(db, was.id); }
+    const own = cleanPartial(collection, { course: data.course || ld.course, ...pick(data || {}, (k) => isLocal(collection, k)) });
+    return getEntry(db, insert(ld.name, { libraryId: lib.id, ...own }));
+  }
+  const d = cleanEntry(collection, data);
+  if (LOCAL_KEYS[collection] && opts.share) {
+    // A new dish for the whole group: the dish goes in the library, this store gets it on its menu.
+    const libId = insert(d.name, pick(d, (k) => !isLocal(collection, k)), 0, company);
+    return getEntry(db, insert(d.name, { libraryId: libId, ...pick(d, (k) => isLocal(collection, k)) }));
+  }
+  return getEntry(db, insert(d.name, d));
 }
 
-/** Saving keeps the address (slug) the same, so links to the page never break. */
-export function updateEntry(db, id, data, userId) {
+/** Saving keeps the address (slug) the same, so links to the page never break.
+ *  A group dish: scope "group" changes it for every store; scope "store" keeps the change as this store's own. */
+export function updateEntry(db, id, data, userId, scope = 'group') {
+  const raw = db.prepare('SELECT * FROM entries WHERE id = ?').get(id);
   const e = getEntry(db, id);
   const d = cleanEntry(e.collection, data);
+  if (e.library) {
+    const own = pick(d, (k) => isLocal(e.collection, k));
+    const shared = pick(d, (k) => !isLocal(e.collection, k));
+    if (scope === 'store') {
+      const lib = JSON.parse(db.prepare('SELECT data FROM entries WHERE id = ?').get(e.library.id).data);
+      const diff = pick(shared, (k) => JSON.stringify(shared[k]) !== JSON.stringify(lib[k] ?? cleanEntry(e.collection, {})[k]));
+      db.prepare('UPDATE entries SET data = ?, updated_by = ?, updated_at = ? WHERE id = ?').run(JSON.stringify({ libraryId: e.library.id, ...own, ...diff }), userId, now(), id);
+    } else {
+      // For every store. A field this store had changed just for itself stays its own unless it was edited now.
+      const mine = JSON.parse(raw.data);
+      const lib = JSON.parse(db.prepare('SELECT data FROM entries WHERE id = ?').get(e.library.id).data);
+      const keep = {};
+      for (const k of e.library.overrides) if (JSON.stringify(shared[k]) === JSON.stringify(mine[k])) { keep[k] = mine[k]; shared[k] = lib[k]; }
+      db.prepare('UPDATE entries SET data = ?, updated_by = ?, updated_at = ? WHERE id = ?').run(JSON.stringify({ ...lib, ...shared }), userId, now(), e.library.id);
+      db.prepare('UPDATE entries SET data = ?, updated_by = ?, updated_at = ? WHERE id = ?').run(JSON.stringify({ libraryId: e.library.id, ...own, ...keep }), userId, now(), id);
+    }
+    return getEntry(db, id);
+  }
   db.prepare('UPDATE entries SET data = ?, updated_by = ?, updated_at = ? WHERE id = ?').run(JSON.stringify(d), userId, now(), id);
   return getEntry(db, id);
 }

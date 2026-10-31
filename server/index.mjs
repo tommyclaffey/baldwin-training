@@ -7,7 +7,7 @@ import { sessionUser, SESSION_COOKIE, LoginLimiter } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
 import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore } from './content.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
-import { COLLECTIONS, SHARED, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry } from './cms.mjs';
+import { COLLECTIONS, SHARED, LOCAL_KEYS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart } from './scanner.mjs';
 import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
@@ -225,13 +225,24 @@ async function api(req, res, url) {
     if (url.searchParams.get('archived')) return sendJson(res, 200, { entries: listArchived(db, col, SHARED.has(col) ? null : c.store) });
     return sendJson(res, 200, { entries: inStore(c, () => ordered(db, col)) });
   }
+  // The group's kitchen: dishes every store in the company can put on its menu.
+  if (p === '/api/library' && m === 'GET') {
+    needEditor(c, req);
+    const col = url.searchParams.get('collection');
+    if (!LOCAL_KEYS[col]) fail(400, 'Unknown collection.');
+    return sendJson(res, 200, { entries: libraryList(db, col, c.company, c.store) });
+  }
   if (p === '/api/entries' && m === 'POST') {
     const b = await readJson(req);
     if (!COLLECTIONS[b.collection]) fail(400, 'Unknown collection.');
     const u = SHARED.has(b.collection) ? needLibrary(c, req) : needEditor(c, req);
-    if (!str(b.data?.name, 120)) fail(400, 'Give it a name.');
+    const libraryId = Number(b.libraryId) || null;
+    if (!libraryId && !str(b.data?.name, 120)) fail(400, 'Give it a name.');
+    if (libraryId && db.prepare("SELECT 1 FROM entries WHERE collection = ? AND store_id = ? AND archived_at IS NULL AND json_extract(data, '$.libraryId') = ?").get(b.collection, c.store, libraryId)) fail(409, 'That dish is already on your menu.');
     // Shared entries live under store 1; a store's own entries live under that store.
-    const e = SHARED.has(b.collection) ? createEntry(db, b.collection, b.data, u.id) : createEntry(db, b.collection, b.data, u.id, c.store, c.company);
+    let e;
+    try { e = SHARED.has(b.collection) ? createEntry(db, b.collection, b.data, u.id) : createEntry(db, b.collection, b.data || {}, u.id, c.store, c.company, { libraryId, share: b.share !== false }); }
+    catch (err) { fail(err.status || 400, err.message); }
     audit(db, u.id, 'add ' + b.collection, e.data.name, c.company);
     return sendJson(res, 200, e);
   }
@@ -241,12 +252,12 @@ async function api(req, res, url) {
     const shared = e && SHARED.has(e.collection);
     // Another store's entry doesn't exist here.
     if (!e || (!shared && e.storeId !== c.store)) fail(404, 'We couldn’t find that page.');
-    if (m === 'GET') return sendJson(res, 200, e);
+    if (m === 'GET') return sendJson(res, 200, e.library ? { ...e, sharedWith: sharedWith(db, e), storeName: db.prepare('SELECT name FROM stores WHERE id = ?').get(c.store)?.name } : e);
     const u = shared ? needLibrary(c, req) : needEditor(c, req);
     if (m === 'PUT') {
       const b = await readJson(req);
       if (!str(b.data?.name, 120)) fail(400, 'Give it a name.');
-      const out = updateEntry(db, e.id, b.data, u.id);
+      const out = updateEntry(db, e.id, b.data, u.id, b.scope === 'store' ? 'store' : 'group');
       audit(db, u.id, 'edit ' + e.collection, out.data.name);
       return sendJson(res, 200, out);
     }

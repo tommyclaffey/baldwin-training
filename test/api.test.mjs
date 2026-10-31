@@ -474,3 +474,27 @@ test('sommelier program: a hub and a guide per level, in the sidebar, with the C
   const side = JSON.stringify((await import('../src/content/sidebar.json', { with: { type: 'json' } })).default);
   assert.ok(side.includes('Nav · Sommelier Program') && side.includes('"/sommelier-program"'));
 });
+
+test('the group’s kitchen: a dish is entered once, every store puts it on its menu with its own price', async () => {
+  const lib = (await call('/api/library?collection=recipe')).data.entries;
+  const cal = lib.find((d) => /calamari/i.test(d.data.name));
+  assert.ok(cal && cal.onMine && cal.stores.includes('The Baldwin'), 'The Baldwin’s dishes are the group’s dishes');
+  await call('/api/store', { method: 'POST', body: { storeId: 3 } }); // Testa Barra
+  const there = (await call('/api/library?collection=recipe')).data.entries.find((d) => d.id === cal.id);
+  assert.equal(there.onMine, false);
+  const added = (await call('/api/entries', { method: 'POST', body: { collection: 'recipe', libraryId: cal.id, data: { course: cal.data.course } } })).data;
+  assert.equal(added.data.description, cal.data.description, 'comes with the shared description');
+  assert.equal((await call('/api/entries', { method: 'POST', body: { collection: 'recipe', libraryId: cal.id, data: {} } })).status, 409, 'not twice');
+  // Testa Barra's own price; a store-only change; then a change for every store.
+  await call('/api/entries/' + added.id, { method: 'PUT', body: { data: { ...added.data, price: '19', sellingLine: 'Testa only line' }, scope: 'store' } });
+  const tb = (await call('/api/entries/' + added.id)).data;
+  assert.equal(tb.data.price, '19'); assert.equal(tb.data.sellingLine, 'Testa only line');
+  assert.deepEqual(tb.sharedWith, ['The Baldwin']);
+  await call('/api/entries/' + added.id, { method: 'PUT', body: { data: { ...tb.data, tagline: 'Shared tagline' }, scope: 'group' } });
+  await call('/api/store', { method: 'POST', body: { storeId: 1 } });
+  const mine = (await call('/api/entries?collection=recipe')).data.entries.find((e) => e.data.libraryId === undefined && /calamari/i.test(e.data.name));
+  assert.ok(mine, 'The Baldwin still has it');
+  assert.equal(mine.data.tagline, 'Shared tagline', 'a group change reaches every store');
+  assert.notEqual(mine.data.price, '19', 'prices stay each store’s own');
+  assert.notEqual(mine.data.sellingLine, 'Testa only line', 'a store-only change stays there');
+});
