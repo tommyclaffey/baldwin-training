@@ -4,7 +4,7 @@ import svgs from '../content/svgs.json';
 import { SearchBox } from './SearchBox';
 import { VideoEmbed } from './VideoEmbed';
 import type { Video } from '../lib/api';
-import { AssignName, TableFinder, TableMarker, controlProps, isActive, useInteract, visibleKids, type Meta } from './interact';
+import { AssignName, FindBox, TableFinder, TableMarker, controlProps, isActive, useInteract, visibleKids, type Meta } from './interact';
 
 // One node of the Figma layout export (see scripts/build-content.mjs).
 export type FNode = {
@@ -375,6 +375,8 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
 
   // The real search box replaces the drawn one.
   if (node.n === 'Search' && node.lm) return <SearchBox style={st} />;
+  // The Back Bar: a real "Find a bottle" box replaces the drawn one.
+  if (m?.find) return <FindBox k={m.find} label={m.label || 'Find'} style={st} className={cls.join(' ')} />;
   // Floor Plan: the real table finder replaces the drawn box.
   if (m?.finder) return <TableFinder style={st} className={cls.join(' ')} list={m.list || []} />;
 

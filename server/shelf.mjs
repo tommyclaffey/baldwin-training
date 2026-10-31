@@ -34,6 +34,7 @@ function protos(basePage) {
 function chip(p, it) {
   const c = clone(it.limited ? p.limited : p.chip);
   c.n = 'Bottle · ' + it.name;
+  if (it.slug) c.to = '/' + it.slug;
   setText(texts(c)[0], it.name);
   return c;
 }
@@ -68,7 +69,7 @@ function place(target, card) {
   Object.assign(target, card, keep);
 }
 
-const bottleOf = (e) => ({ name: e.data.name, limited: !!e.data.limited, styles: (e.data.styles || []).map(norm), spirit: e.data.spirit });
+const bottleOf = (e) => ({ slug: e.slug, name: e.data.name, limited: !!e.data.limited, styles: (e.data.styles || []).map(norm), spirit: e.data.spirit });
 
 /** Spirit pages, their style pages, the Whiskey page. */
 export function fillShelf(page, slug, index, bottles, basePage) {

@@ -856,3 +856,123 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   /* The signed-in pill floats bottom-right: leave room under the last section so it never covers Back / Next. */
   .shell .content { padding-bottom: 76px; }
 }
+
+/* ---- Quizzes v2 (Oct 31, Figma section 11). The quiz opens in a box; the page behind dims and locks. ---- */
+body.quiz-lock { overflow: hidden; }
+.qm-scrim { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; padding: 24px; background: rgba(20,18,16,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow-y: auto; animation: qm-fade .18s ease-out; }
+.qm { width: min(680px, 100%); border: 0; border-radius: 24px; padding: 30px 32px; gap: 20px; box-shadow: 0 24px 60px rgba(0,0,0,.28); margin: auto; animation: qm-rise .22s ease-out; }
+@keyframes qm-fade { from { opacity: 0; } }
+@keyframes qm-rise { from { opacity: 0; transform: translateY(10px) scale(.985); } }
+@media (prefers-reduced-motion: reduce) { .qm-scrim, .qm { animation: none; } }
+.qm .quiz-option { background: #fff; }
+.qm .quiz-option.right { background: #E3ECDD; }
+.qm .quiz-option.wrong { background: #F7E1DB; }
+.qm .quiz-option.dim { background: #FBF9F5; }
+.qm-why { margin: 0; padding: 12px 14px; border-radius: 12px; font-size: 15px; font-weight: 500; line-height: 1.45; }
+.qm-why.right { background: #E3ECDD; color: #2F5A2A; }
+.qm-why.wrong { background: #F7E1DB; color: #7D2416; }
+.qm-rate { display: flex; flex-direction: column; gap: 10px; }
+.qm-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.qm-level { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 14px; border-radius: 12px; border: 1px solid; font-family: 'Archivo', sans-serif; text-align: left; cursor: pointer; transition: transform .1s, box-shadow .12s; }
+.qm-level:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(30,28,26,.08); }
+.qm-level:focus-visible, .qb-tile:focus-visible, .qb-all:focus-visible, .quiz-btn:focus-visible, .quiz-link:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }
+.qm-level-label { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; }
+.qm-level-sub { font-size: 12.5px; }
+.qm-level i, .qm-pill i, .rq-label i, .rq-next li > i { width: 10px; height: 10px; border-radius: 50%; flex: none; display: inline-block; }
+.qm-level.red, .qm-pill.red, .rq-level.red { background: #F7E1DB; border-color: #E2A596; color: #7D2416; }
+.qm-level.yellow, .qm-pill.yellow, .rq-level.yellow { background: #F6E9C4; border-color: #DDBF6E; color: #5F4307; }
+.qm-level.green, .qm-pill.green, .rq-level.green { background: #E3ECDD; border-color: #A9C3A0; color: #2F5A2A; }
+.qm-level.red i, .qm-pill.red i, .rq-level.red i, .rq-next i.red { background: #B23A26; }
+.qm-level.yellow i, .qm-pill.yellow i, .rq-level.yellow i, .rq-next i.yellow { background: #C9962B; }
+.qm-level.green i, .qm-pill.green i, .rq-level.green i, .rq-next i.green { background: #4F7A4A; }
+.qm-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: #5E574F; }
+.quiz-link.plain { color: #5E574F; font-size: 13px; text-decoration: none; }
+.quiz-link.plain:hover { color: #1E1C1A; text-decoration: underline; }
+.qm-score { display: flex; align-items: center; gap: 24px; }
+.qm-ring { position: relative; width: 132px; height: 132px; flex: none; }
+.qm-ring svg { display: block; }
+.qm-ring strong { position: absolute; inset: 0; display: grid; place-items: center; font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.qm-score-copy { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.qm-title { margin: 0; font-size: 30px; font-weight: 700; line-height: 1.15; outline: none; }
+.qm-marked { display: flex; flex-direction: column; gap: 12px; padding: 16px 18px; border-radius: 14px; background: #F2EEE7; }
+.qm-marked p { margin: 0; font-size: 14px; line-height: 1.45; }
+.qm-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.qm-pill { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.qm-pill i { width: 8px; height: 8px; }
+
+/* The review queue card */
+.rq { display: flex; flex-direction: column; gap: 18px; background: #FBF9F5; border-radius: 20px; padding: 26px 28px; font-family: 'Archivo', sans-serif; color: var(--ink); box-sizing: border-box; min-width: 0; }
+.rq-title { margin: 0; font-size: 28px; font-weight: 700; line-height: 1.2; }
+.rq-intro { margin: 0; font-size: 15px; line-height: 1.47; color: #5E574F; max-width: 600px; }
+.rq-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.rq-level { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border-radius: 14px; }
+.rq-label { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.rq-level strong { font-size: 34px; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.rq-bar { display: flex; gap: 3px; height: 8px; }
+.rq-bar span { flex: 1 1 0; border-radius: 4px; min-width: 6px; }
+.rq-bar .red { background: #B23A26; } .rq-bar .yellow { background: #C9962B; } .rq-bar .green { background: #4F7A4A; } .rq-bar .none { background: #E4DCCF; }
+.rq-next { display: flex; flex-direction: column; }
+.rq-next ul { list-style: none; margin: 4px 0 0; padding: 0; }
+.rq-next li { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid #E4DCCF; font-size: 15px; font-weight: 500; }
+.rq-next li span { flex: 1; min-width: 0; }
+.rq-next li em { font-style: normal; font-size: 13px; color: #5E574F; white-space: nowrap; }
+.rq-empty { margin: 0; padding: 14px 16px; border-radius: 12px; background: #F2EEE7; font-size: 14px; color: #5E574F; }
+
+/* Build a quiz: subjects as tiles you check off */
+.qb-ghead { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.qb-all { border: 0; background: none; padding: 4px 0; color: #8A5A3A; font: 600 13px 'Archivo', sans-serif; cursor: pointer; }
+.qb-all:hover { text-decoration: underline; }
+.qb-tiles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.qb-tile { display: flex; flex-direction: column; justify-content: space-between; gap: 10px; min-height: 84px; padding: 14px 16px; border-radius: 14px; border: 1px solid #E4DCCF; background: #fff; color: #1E1C1A; font-family: 'Archivo', sans-serif; text-align: left; cursor: pointer; transition: border-color .12s, background-color .12s; }
+.qb-tile:hover { border-color: #8A5A3A; }
+.qb-tile.on { background: #1E1C1A; border-color: #1E1C1A; color: #F2EEE7; }
+.qb-tile-name { font-size: 15px; font-weight: 600; line-height: 1.25; }
+.qb-tile-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.qb-tile-count { font-size: 13px; color: #5E574F; font-variant-numeric: tabular-nums; }
+.qb-tile.on .qb-tile-count { color: #C9BFB2; }
+.qb-tile .qb-check { width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid #B8AB98; background: #fff; }
+.qb-tile.on .qb-check { background: #C49A6C; border-color: #C49A6C; }
+
+@media (max-width: 859px) {
+  .qm-scrim { padding: 12px; place-items: start center; }
+  .qm { padding: 20px 18px; gap: 16px; border-radius: 20px; }
+  .qm-levels { grid-template-columns: 1fr; }
+  .qm-level { flex-direction: row; justify-content: space-between; align-items: center; }
+  .qm-score { gap: 16px; }
+  .qm-ring { width: 96px; height: 96px; }
+  .qm-ring svg { width: 96px; height: 96px; }
+  .qm-ring strong { font-size: 22px; }
+  .qm-title { font-size: 24px; }
+  .qm-foot span { display: none; }
+  .rq { padding: 20px 18px; }
+  .rq-title { font-size: 22px; }
+  .rq-levels { gap: 8px; }
+  .rq-level { padding: 12px; }
+  .rq-label { font-size: 12px; white-space: normal; }
+  .rq-level strong { font-size: 26px; }
+  .rq-next li { flex-wrap: wrap; }
+  .rq-next li em { flex-basis: 100%; padding-left: 22px; }
+  .qb-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+}
+@media (min-width: 860px) and (max-width: 1180px) { .qb-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* The Back Bar: three bottles a row (one on a phone), and the real find box. */
+[data-name="Bottles"]:has(> [data-name^="Bottle · "] [data-name="Drawing"]) { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px !important; row-gap: 0 !important; height: auto !important; align-content: start; }
+[data-name="Bottles"]:has(> [data-name^="Bottle · "] [data-name="Drawing"]) > * { width: auto !important; min-width: 0; }
+.find-box { display: flex !important; align-items: center; gap: 10px; background: #fff; border: 1px solid #E4DCCF; border-radius: 12px; padding: 0 14px; min-height: 46px; box-sizing: border-box; cursor: text; }
+.find-box:focus-within { border-color: #C49A6C; box-shadow: 0 0 0 3px rgba(196,154,108,.25); }
+.find-box input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: 400 15px 'Archivo', sans-serif; color: #1E1C1A; padding: 12px 0; }
+.find-box input::placeholder { color: #6B645B; }
+.find-box input::-webkit-search-cancel-button { display: none; }
+.find-clear { border: 0; background: #F2EEE7; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; color: #5E574F; cursor: pointer; }
+@media (max-width: 1180px) { [data-name="Bottles"]:has(> [data-name^="Bottle · "] [data-name="Drawing"]) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 859px) { [data-name="Bottles"]:has(> [data-name^="Bottle · "] [data-name="Drawing"]) { grid-template-columns: 1fr; } }
+@media (max-width: 859px) {
+  [data-name="Stats"]:has(> [data-name^="Stat · "]) { display: flex !important; flex-wrap: wrap; gap: 8px !important; height: auto !important; }
+  [data-name="Stats"] > [data-name^="Stat · "] { flex: none !important; width: auto !important; height: auto !important; min-height: 0 !important; }
+  [data-name^="Bottle · "]:has(> [data-name="Drawing"]) { align-items: center !important; }
+}
+@media (max-width: 859px) { [data-name^="Bottle · "]:has(> [data-name="Drawing"]) > .fsvg { align-self: center !important; margin-top: 0 !important; } }
+@media (max-width: 859px) { .fx-h[data-name^="Bottle · "]:has(> [data-name="Drawing"]) > .marker.fsvg { align-self: center !important; } }
+/* While a quiz is open, the corner pills step aside too. */
+body.quiz-lock .corner { display: none; }

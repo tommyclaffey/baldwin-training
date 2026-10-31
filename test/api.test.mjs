@@ -66,7 +66,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 380, 'the design, plus 15 menu cocktails, the Lemon Drop, 106 wine pages and a page for every dish');
+  assert.equal(index.length, 473, 'the design, plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -285,6 +285,49 @@ test('the back bar and beer list fill the shelves, the tap wall and the style pa
   await call(`/api/entries/${tito.id}`, { method: 'PUT', body: { data: { ...tito.data, name: "Tito's Handmade" } } });
   assert.ok((await page('spirit/vodka/corn')).includes("Bottle · Tito's Handmade"));
   assert.ok(index.find((e) => e.slug === 'spirit/bourbon').text.includes("Maker's Mark"), 'bottles are searchable');
+});
+
+test('the Back Bar lists every bottle, and every bottle has its own page', async () => {
+  const index = (await call('/api/index')).data;
+  const page = async (slug) => (await call('/api/page/' + index.find((e) => e.slug === slug).file)).data;
+  const str = async (slug) => JSON.stringify(await page(slug));
+  const bar = await str('the-bar/back-bar');
+  assert.ok(bar.includes('Spirit · Bourbon') && bar.includes('Spirit · Other whiskey'), 'grouped by spirit');
+  assert.ok(bar.includes('"/shelf/willett-family-estate-rye"') && bar.includes('In The Furest'), 'rows link to bottle pages and name the drinks');
+  assert.ok(bar.includes('"k":"bbar"') && bar.includes('"find":"bfind"'), 'chips and the find box work');
+  assert.ok(!bar.includes('More spirits'));
+  const willett = await str('shelf/willett-family-estate-rye');
+  assert.ok(willett.includes('The rye in The Furest') && willett.includes('Drink · The Furest') && willett.includes('STRAIGHT RYE'));
+  assert.ok(!willett.includes('"Say it"'), 'no empty "say it" card');
+  assert.ok(!/unsplash/i.test(willett), 'no brand or stock photos of the bottle');
+  const crown = await str('shelf/crown-royal');
+  assert.ok(!crown.includes('Drink · '), 'no drinks card when no house cocktail uses it');
+  assert.ok((await str('spirit/rye')).includes('"/shelf/willett-family-estate-rye"'), 'shelf chips on spirit pages open the bottle');
+  assert.ok((await str('the-bar/spirits')).includes('"/the-bar/back-bar"'), 'Spirits links to the Back Bar');
+});
+
+test('review queue: mark each answer; red and yellow come back until they are green', async () => {
+  const code = (await call('/api/team')).data.company.joinCode;
+  const kit = person();
+  assert.equal((await kit('/api/join', { method: 'POST', body: { code, name: 'Odette Vale', pin: '2468', storeId: 1 } })).status, 200);
+  assert.equal((await kit('/api/quiz/start', { method: 'POST', body: { quiz: 'review' } })).status, 404, 'empty queue');
+  const q = (await kit('/api/quiz/start', { method: 'POST', body: { quiz: 't:house' } })).data;
+  const [a, b, c] = q.items;
+  assert.equal((await kit('/api/quiz/mark', { method: 'POST', body: { ref: a, mark: 'purple' } })).status, 400);
+  assert.equal((await kit('/api/quiz/mark', { method: 'POST', body: { ref: 'price:999999', mark: 'red' } })).status, 400);
+  await kit('/api/quiz/mark', { method: 'POST', body: { ref: a, mark: 'yellow' } });
+  await kit('/api/quiz/mark', { method: 'POST', body: { ref: b, mark: 'red' } });
+  const r = (await kit('/api/quiz/mark', { method: 'POST', body: { ref: c, mark: 'green' } })).data;
+  assert.deepEqual(r.counts, { red: 1, yellow: 1, green: 1 });
+  assert.equal(r.total, 2);
+  assert.equal(r.next[0].ref, b, 'red first');
+  const review = (await kit('/api/quiz/start', { method: 'POST', body: { quiz: 'review' } })).data;
+  assert.deepEqual(new Set(review.items), new Set([a, b]));
+  await kit('/api/quiz/mark', { method: 'POST', body: { ref: a, mark: 'green' } });
+  const after = (await kit('/api/quiz/review')).data;
+  assert.equal(after.total, 1);
+  assert.deepEqual(after.counts, { red: 1, yellow: 0, green: 2 });
+  assert.equal((await call('/api/quiz/review')).data.total, 0, 'each person has their own queue');
 });
 
 test('the wine list fills the Wine page and every wine page it belongs on', async () => {

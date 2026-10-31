@@ -1,160 +1,223 @@
-// The live quiz card and the progress ring on the Quizzes page. Built to match the Figma design (Quizzes · Desktop).
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { PRE_SHIFT, QUIZZES, answer, lookup, nextQuiz, passFor, quizById, refreshSignoffs, save, start, statusOf, titleOf, useQuiz } from './store';
+// The Quizzes page (Figma: Quizzes · Desktop, and Quiz · 1–3 in section 11).
+// A quiz opens in a box over the page: the page behind dims and locks until the quiz is done or saved for later.
+// After each answer the person marks how well they know it; red and yellow go into their review queue.
+import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react';
+import { createPortal } from 'react-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { PRE_SHIFT, REVIEW, QUIZZES, answer, getReview, loadReview, lookup, markAnswer, passFor, quizById, refreshSignoffs, save, start, statusOf, titleOf, useQuiz, type Mark } from './store';
 
 /** A custom quiz id ("c:house+wine-glass:10") back into what to ask for. */
 const customOf = (id: string) => { const m = /^c:([^:]+):(\d+)$/.exec(id); return m ? { topics: m[1].split('+'), count: Number(m[2]) } : undefined; };
 const enc = encodeURIComponent;
+export const LEVELS: { key: Mark; label: string; sub: string }[] = [
+  { key: 'red', label: 'Don’t know', sub: 'Back in your queue' },
+  { key: 'yellow', label: 'Getting there', sub: 'Back in your queue' },
+  { key: 'green', label: 'Know it cold', sub: 'Off your queue' },
+];
+const plural = (n: number, w: string) => `${n} ${w}${n === 1 ? '' : 's'}`;
 
-export function QuizCard({ style, className }: { style: CSSProperties; className: string }) {
+/** The quiz box. Shown on the Quizzes page whenever the address has ?quiz=… */
+export function QuizModal() {
   const s = useQuiz();
   const [params, setParams] = useSearchParams();
   const nav = useNavigate();
   const id = params.get('quiz') || '';
-  const valid = id === PRE_SHIFT || !!quizById(id) || !!customOf(id) || /^(t|s):/.test(id);
+  const valid = id === PRE_SHIFT || id === REVIEW || !!quizById(id) || !!customOf(id) || /^(t|s):/.test(id);
   const [error, setError] = useState('');
   const [reveal, setReveal] = useState<number | null>(null);
-  const card = useRef<HTMLDivElement>(null);
+  const box = useRef<HTMLDivElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
 
-  useEffect(() => { refreshSignoffs(); }, []);
-
-  // Opening a quiz: resume one in progress, start a new one, or restart on "Retake".
+  // Opening a quiz: resume one in progress, start a new one, or restart ("New Questions", the review queue).
   useEffect(() => {
     if (!valid) return;
     const cur = s.quizzes[id]?.current;
     const retake = params.get('retake') === '1';
-    // Attempts saved before the quizzes were written from the book have no questions with them: start fresh.
-    if (retake || !cur || !cur.questions || (id === PRE_SHIFT && cur.finished)) { setError(''); start(id, customOf(id)).catch((e) => setError((e as Error).message)); }
+    if (retake || !cur || !cur.questions || ((id === PRE_SHIFT || id === REVIEW) && cur.finished)) { setError(''); start(id, customOf(id)).catch((e) => setError((e as Error).message)); }
     if (retake) { params.delete('retake'); setParams(params, { replace: true }); }
     setReveal(null);
-    const el = card.current;
-    if (el && el.getBoundingClientRect().top < 0 || (el && el.getBoundingClientRect().top > window.innerHeight * 0.6)) el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, params.get('retake')]);
 
+  // The page behind can't be scrolled, clicked or tabbed into while the quiz is open.
+  useEffect(() => {
+    if (!valid) return;
+    const root = document.getElementById('root');
+    document.body.classList.add('quiz-lock');
+    root?.setAttribute('inert', '');
+    return () => { document.body.classList.remove('quiz-lock'); root?.removeAttribute('inert'); };
+  }, [valid]);
+
   const found = valid ? s.quizzes[id]?.current : undefined;
   const cur = found?.questions ? found : undefined;
+  const total = cur?.items.length ?? 0;
+  const showing = !cur ? -1 : reveal ?? (cur.finished ? null : cur.answers.length);
+  useEffect(() => { requestAnimationFrame(() => heading.current?.focus()); }, [showing, !!cur]);
+  if (!valid) return null;
+
   const name = cur?.title || titleOf(id);
-  const kicker = id === PRE_SHIFT ? 'Pre-shift quiz' : id.startsWith('c:') ? 'Your quiz' : 'Sign-off quiz';
+  const kicker = id === PRE_SHIFT ? 'Pre-shift quiz' : id === REVIEW ? 'Review queue' : name;
+  const leave = () => { nav('/quizzes'); window.scrollTo({ top: 0 }); };
+  // Keep Tab inside the box.
+  const trap = (e: KeyboardEvent) => {
+    if (e.key !== 'Tab' || !box.current) return;
+    const f = [...box.current.querySelectorAll<HTMLElement>('button:not(:disabled), [href], [tabindex="0"]')];
+    if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  };
 
-  /* ---- intro: no quiz picked (or it's loading) ---- */
-  if (!valid || !cur) {
-    const next = nextQuiz(s);
-    if (valid && !error) return (
-      <div ref={card} className={className + ' quiz-card'} style={style}>
+  let body;
+  if (!cur || showing === -1) {
+    body = (
+      <>
         <div className="quiz-head"><span className="quiz-kicker">{kicker}</span><span className="quiz-count" /></div>
-        <h2 className="quiz-q">Writing your questions…</h2>
-      </div>
-    );
-    return (
-      <div ref={card} className={className + ' quiz-card'} style={style}>
-        <div className="quiz-head">
-          <span className="quiz-kicker">{next ? `Next up · ${next.title}` : 'All quizzes passed'}</span>
-          <span className="quiz-count">{next ? `${next.count} questions` : ''}</span>
-        </div>
-        <div className="quiz-steps" aria-hidden="true">{Array.from({ length: 5 }, (_, i) => <span key={i} />)}</div>
+        <h2 className="quiz-q" id="qm-title" ref={heading} tabIndex={-1}>{error ? 'That quiz didn’t open.' : 'Writing your questions…'}</h2>
         {error && <p className="quiz-error" role="alert">{error}</p>}
-        <h2 className="quiz-q">{next ? `Ready for ${next.title}?` : QUIZZES.length ? 'Nice work. Every quiz is passed.' : 'Quizzes show up once the menu is in.'}</h2>
-        <p className="quiz-text">
-          {next
-            ? `${next.count} questions from the book, about ${Math.max(2, Math.round(next.count / 3))} minutes. Get ${passFor(next.count)} right to pass, then a manager signs you off.`
-            : QUIZZES.length ? 'Ask a manager to sign off anything still waiting, or build your own quiz below.' : 'Every quiz is written from your dishes, drinks and wines.'}
-        </p>
-        <div className="quiz-actions">
-          <button className="quiz-btn ghost" onClick={() => nav('/quizzes?quiz=' + PRE_SHIFT)}>Pre-Shift Quiz</button>
-          {next && <button className="quiz-btn" onClick={() => nav('/quizzes?quiz=' + enc(next.id))}>{statusOf(s, next.id) === 'progress' ? 'Continue' : 'Start'} Quiz <Arrow /></button>}
-        </div>
-      </div>
+        {error && <div className="quiz-actions"><button className="quiz-btn" onClick={leave}>Back to Quizzes</button></div>}
+      </>
     );
-  }
-
-  const total = cur.items.length;
-  const showing = reveal ?? (cur.finished ? null : cur.answers.length);
-
-  /* ---- results ---- */
-  if (showing === null) {
-    const passed = (cur.score ?? 0) >= passFor(total);
-    const missed = cur.items.map((ref, i) => ({ ref, i, ...lookup(ref, cur)! })).filter((x) => x.question && x.question.answer !== cur.answers[x.i]);
-    const following = id === PRE_SHIFT || id.startsWith('c:') ? null : nextQuiz(s);
+  } else if (showing === null) {
+    /* ---- results ---- */
+    const marks = cur.marks || {};
+    const n = { red: 0, yellow: 0, green: 0 } as Record<Mark, number>;
+    for (const ref of cur.items) if (marks[ref]) n[marks[ref]]++;
+    const queued = n.red + n.yellow;
+    const scoreN = cur.score ?? 0;
+    const passed = scoreN >= passFor(total);
     const signable = !!quizById(id);
-    return (
-      <div ref={card} className={className + ' quiz-card'} style={style}>
-        <div className="quiz-head">
-          <span className="quiz-kicker">{id === PRE_SHIFT ? kicker : `${kicker} · ${name}`}</span>
-          <span className="quiz-count">Done</span>
-        </div>
+    const review = getReview();
+    const r = 56, c = 2 * Math.PI * r, frac = total ? scoreN / total : 0;
+    const title = id === REVIEW ? `${scoreN} of ${total} right.` : passed ? 'You passed.' : 'Not yet.';
+    const text = id === REVIEW ? (review.total ? `${plural(review.total, 'question')} still in your queue.` : 'Your queue is clear. You know it all cold.')
+      : id === PRE_SHIFT || !signable ? (passed ? 'You know it.' : 'Drill the ones you missed from your review queue, then try again.')
+      : passed ? 'Next: show a manager you know it at the table. They sign you off.' : `You need ${passFor(total)} to pass. Drill your review queue, then try again.`;
+    body = (
+      <>
+        <div className="quiz-head"><span className="quiz-kicker">{kicker} · Done</span><span className="quiz-count">{total} of {total}</span></div>
         <div className="quiz-steps" aria-hidden="true">
           {cur.items.map((ref, i) => <span key={i} className={lookup(ref, cur)?.question.answer === cur.answers[i] ? 'right' : 'wrong'} />)}
         </div>
-        <h2 className="quiz-q" ref={heading} tabIndex={-1}>{cur.score} of {total}. {passed ? 'You passed.' : 'Not yet.'}</h2>
-        <p className="quiz-text">
-          {id === PRE_SHIFT || !signable
-            ? passed ? 'You know it.' : 'Read up on the ones you missed, then try again.'
-            : passed ? 'Next: show a manager you know it at the table. They sign you off.' : `You need ${passFor(total)} to pass. Review the pages, then try again.`}
-        </p>
-        {missed.length > 0 && (
-          <ul className="quiz-missed">
-            {missed.map((m) => (
-              <li key={m.ref}>
-                <strong>{m.question.q}</strong>
-                <span>Answer: {m.question.options[m.question.answer]}. {m.question.why}</span>
-                <Link to={m.quiz.page}>Review {m.quiz.title}</Link>
-              </li>
-            ))}
-          </ul>
-        )}
-        <NameSave id={id} />
-        <div className="quiz-actions">
-          <button className="quiz-btn ghost" onClick={() => nav(`/quizzes?quiz=${enc(id)}&retake=1`)}>New Questions</button>
-          {following
-            ? <button className="quiz-btn" onClick={() => nav('/quizzes?quiz=' + enc(following.id))}>Next: {following.title} <Arrow /></button>
-            : <button className="quiz-btn" onClick={() => nav('/quizzes')}>Back to Quizzes</button>}
+        <div className="qm-score">
+          <div className="qm-ring" aria-hidden="true">
+            <svg width="132" height="132" viewBox="0 0 132 132">
+              <circle cx="66" cy="66" r={r} fill="none" stroke="#E4DCCF" strokeWidth="14" />
+              <circle cx="66" cy="66" r={r} fill="none" stroke={passed || id === REVIEW ? '#4F7A4A' : '#8A5A3A'} strokeWidth="14" strokeLinecap="round"
+                strokeDasharray={`${c * frac} ${c}`} transform="rotate(-90 66 66)" opacity={scoreN ? 1 : 0} />
+            </svg>
+            <strong>{scoreN}/{total}</strong>
+          </div>
+          <div className="qm-score-copy">
+            <h2 className="qm-title" id="qm-title" ref={heading} tabIndex={-1}><span className="sr-only">{scoreN} of {total}. </span>{title}</h2>
+            <p className="quiz-text">{text}</p>
+          </div>
         </div>
-      </div>
+        <div className="qm-marked">
+          <span className="qb-label">How you marked it</span>
+          <div className="qm-pills">{LEVELS.map((l) => <span key={l.key} className={'qm-pill ' + l.key}><i />{n[l.key]} {l.label}</span>)}</div>
+          <p>{id === REVIEW
+            ? `${plural(n.green, 'question')} came off your queue.${queued ? ` ${queued} stay${queued === 1 ? 's' : ''} for next time.` : ''}`
+            : queued ? `${plural(queued, 'question')} went into your review queue. Drill them from the Quizzes page until they’re green.` : 'Nothing new for your review queue.'}</p>
+        </div>
+        {id !== REVIEW && <NameSave id={id} />}
+        <div className="quiz-actions">
+          {review.total > 0
+            ? <button className="quiz-btn ghost" onClick={() => nav(`/quizzes?quiz=${REVIEW}&retake=1`)}>{id === REVIEW ? 'Practice Again' : 'Practice Review Queue'}</button>
+            : <button className="quiz-btn ghost" onClick={() => nav(`/quizzes?quiz=${enc(id)}&retake=1`)}>New Questions</button>}
+          <button className="quiz-btn" onClick={leave}>Back to Quizzes</button>
+        </div>
+      </>
+    );
+  } else {
+    /* ---- a question, then how well you know it ---- */
+    const ref = cur.items[showing];
+    const item = lookup(ref, cur)!;
+    const chosen = cur.answers[showing];
+    const answered = chosen !== undefined;
+    const right = answered && chosen === item.question.answer;
+    const mark = (m: Mark) => { void markAnswer(id, ref, m); setReveal(null); };
+    body = (
+      <>
+        <div className="quiz-head">
+          <span className="quiz-kicker">{id === PRE_SHIFT || id === REVIEW ? `${kicker} · ${item.quiz.title}` : `${name} · ${item.quiz.title}`}</span>
+          <span className="quiz-count">Question {showing + 1} of {total}</span>
+        </div>
+        <div className="quiz-steps" aria-hidden="true">{cur.items.map((_, i) => <span key={i} className={i < cur.answers.length ? 'done' : ''} />)}</div>
+        <h2 className="quiz-q" id="qm-title" ref={heading} tabIndex={-1}>{item.question.q}</h2>
+        <div className="quiz-options" role="group" aria-label="Answers">
+          {item.question.options.map((o, i) => {
+            const state = !answered ? '' : i === item.question.answer ? 'right' : i === chosen ? 'wrong' : 'dim';
+            return (
+              <button key={i} className={'quiz-option ' + state} disabled={answered} aria-pressed={answered ? i === chosen : undefined}
+                onClick={() => { answer(id, i); setReveal(showing); }}>
+                <span className="quiz-letter">{'ABCD'[i]}</span>
+                <span className="quiz-option-text">{o}</span>
+                {state === 'right' && <Check />}
+                {state === 'wrong' && <Cross />}
+              </button>
+            );
+          })}
+        </div>
+        {answered ? (
+          <>
+            <p className={'qm-why ' + (right ? 'right' : 'wrong')} aria-live="polite">{right ? 'Correct.' : 'Not quite.'} {item.question.why}</p>
+            <div className="qm-rate" role="group" aria-labelledby="qm-rate">
+              <span className="qb-label" id="qm-rate">How well do you know this?</span>
+              <div className="qm-levels">
+                {LEVELS.map((l) => (
+                  <button key={l.key} className={'qm-level ' + l.key} onClick={() => mark(l.key)}>
+                    <span className="qm-level-label"><i />{l.label}</span>
+                    <span className="qm-level-sub">{l.sub}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="qm-foot">
+            <button className="quiz-link plain" onClick={leave}>Save and Exit</button>
+            <span>Pick an answer to keep going</span>
+          </div>
+        )}
+      </>
     );
   }
 
-  /* ---- a question ---- */
-  const ref = cur.items[showing];
-  const item = lookup(ref, cur)!;
-  const chosen = cur.answers[showing];
-  const answered = chosen !== undefined;
-  const right = answered && chosen === item.question.answer;
-  const last = showing === total - 1;
+  return createPortal(
+    <div className="qm-scrim">
+      <div className="qm quiz-card" role="dialog" aria-modal="true" aria-labelledby="qm-title" ref={box} onKeyDown={trap}>{body}</div>
+    </div>,
+    document.body,
+  );
+}
+
+/** The review queue card: how many questions are red, yellow and green, and the next ones to drill. */
+export function ReviewCard({ style, className }: { style: CSSProperties; className: string }) {
+  useQuiz();
+  const nav = useNavigate();
+  const r = getReview();
+  useEffect(() => { void loadReview(); }, []);
+  const all = r.counts.red + r.counts.yellow + r.counts.green;
   return (
-    <div ref={card} className={className + ' quiz-card'} style={style}>
-      <div className="quiz-head">
-        <span className="quiz-kicker">{`${id === PRE_SHIFT ? kicker : name} · ${item.quiz.title}`}</span>
-        <span className="quiz-count">Question {showing + 1} of {total}</span>
+    <div className={className + ' rq'} style={style}>
+      <div className="quiz-head"><span className="quiz-kicker">Your review queue</span><span className="quiz-count">{r.total} to work on</span></div>
+      <h2 className="rq-title">{r.total ? 'Drill what you don’t know yet' : all ? 'You know it all cold' : 'Mark it, then drill it'}</h2>
+      <p className="rq-intro">After every answer, mark how well you know it. Red and yellow come back here until you know them cold.</p>
+      <div className="rq-levels">
+        {LEVELS.map((l) => <div key={l.key} className={'rq-level ' + l.key}><span className="rq-label"><i />{l.label}</span><strong>{r.counts[l.key]}</strong></div>)}
       </div>
-      <div className="quiz-steps" aria-hidden="true">{cur.items.map((_, i) => <span key={i} className={i < cur.answers.length ? 'done' : ''} />)}</div>
-      <h2 className="quiz-q" ref={heading} tabIndex={-1}>{item.question.q}</h2>
-      <div className="quiz-options" role="group" aria-label="Answers">
-        {item.question.options.map((o, i) => {
-          const state = !answered ? '' : i === item.question.answer ? 'right' : i === chosen ? 'wrong' : 'dim';
-          return (
-            <button key={i} className={'quiz-option ' + state} disabled={answered}
-              aria-pressed={answered ? i === chosen : undefined}
-              onClick={() => { answer(id, i); setReveal(showing); }}>
-              <span className="quiz-letter">{'ABCD'[i]}</span>
-              <span className="quiz-option-text">{o}</span>
-              {state === 'right' && <Check />}
-              {state === 'wrong' && <Cross />}
-            </button>
-          );
-        })}
-      </div>
-      <div className="quiz-feedback" aria-live="polite">
-        <span className={'quiz-why ' + (answered ? (right ? 'right' : 'wrong') : '')}>
-          {answered ? `${right ? 'Correct.' : 'Not quite.'} ${item.question.why}` : ''}
-        </span>
-        {answered && (
-          <button className="quiz-btn" onClick={() => { setReveal(null); requestAnimationFrame(() => heading.current?.focus()); }}>
-            {last ? 'See Results' : 'Next Question'} <Arrow />
-          </button>
-        )}
+      <div className="rq-bar" aria-hidden="true">{all ? LEVELS.map((l) => (r.counts[l.key] ? <span key={l.key} className={l.key} style={{ flexGrow: r.counts[l.key] }} /> : null)) : <span className="none" />}</div>
+      {r.next.length ? (
+        <div className="rq-next">
+          <span className="qb-label">Up next</span>
+          <ul>{r.next.map((q) => <li key={q.ref}><i className={q.mark} aria-label={LEVELS.find((l) => l.key === q.mark)?.label} /><span>{q.q}</span><em>{q.topic}</em></li>)}</ul>
+        </div>
+      ) : (
+        <p className="rq-empty">{all ? 'Nothing red or yellow right now.' : 'Take any quiz and mark each answer. Anything red or yellow lands here.'}</p>
+      )}
+      <div className="quiz-actions">
+        <button className={'quiz-btn' + (r.practice ? ' ghost' : '')} onClick={() => nav('/quizzes?quiz=' + PRE_SHIFT + '&retake=1')}>Pre-Shift Quiz</button>
+        {r.practice > 0 && <button className="quiz-btn" onClick={() => nav(`/quizzes?quiz=${REVIEW}&retake=1`)}>Practice {plural(r.practice, 'Question')}</button>}
       </div>
     </div>
   );
@@ -203,6 +266,6 @@ export function ProgressCard({ style, className }: { style: CSSProperties; class
   );
 }
 
-const Arrow = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
+
 const Check = () => <svg className="quiz-mark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3F6A39" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-label="Right answer"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>;
 const Cross = () => <svg className="quiz-mark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A1271F" strokeWidth="2.4" strokeLinecap="round" aria-label="Your answer"><path d="M6 6l12 12M18 6L6 18" /></svg>;

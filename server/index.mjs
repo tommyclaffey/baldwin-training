@@ -10,7 +10,7 @@ import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mj
 import { COLLECTIONS, SHARED, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart } from './scanner.mjs';
-import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor } from './quiz.mjs';
+import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
 import { topicList, questionPool } from './quizgen.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -134,7 +134,7 @@ async function api(req, res, url) {
   if (p === '/api/quiz/catalog' && m === 'GET') { needReader(c, req); return sendJson(res, 200, quizCatalog(db, c.store)); }
   // A fresh attempt: a built-in, team or pre-shift quiz by id, or a custom mix of topics.
   if (p === '/api/quiz/start' && m === 'POST') {
-    needReader(c, req);
+    const reader = needReader(c, req);
     const b = await readJson(req);
     let id = String(b.quiz || '');
     if (!id && Array.isArray(b.topics)) {
@@ -143,9 +143,18 @@ async function api(req, res, url) {
       if (!topics.length) fail(400, 'Pick at least one topic.');
       id = customId(topics, [5, 10, 20].includes(Number(b.count)) ? Number(b.count) : 10);
     }
-    const q = startQuiz(db, c.store, id);
+    const q = startQuiz(db, c.store, id, reader.id);
+    if (!q && id === REVIEW) fail(404, 'Your review queue is empty.');
     if (!q) fail(404, 'We couldn’t find that quiz.');
     return sendJson(res, 200, q);
+  }
+  // The review queue: what this person marked red or yellow, and saving a mark after each answer.
+  if (p === '/api/quiz/review' && m === 'GET') { const u = needReader(c, req); return sendJson(res, 200, reviewQueue(db, c.store, u.id)); }
+  if (p === '/api/quiz/mark' && m === 'POST') {
+    const u = needReader(c, req);
+    const b = await readJson(req);
+    if (!setMark(db, c.store, u.id, String(b.ref || ''), String(b.mark || ''))) fail(400, 'That mark didn’t save. Reload and try again.');
+    return sendJson(res, 200, reviewQueue(db, c.store, u.id));
   }
   // Managers save a mix as a quiz for the whole team (it gets sign-offs like the built-in ones).
   if (p === '/api/quiz/sets' && m === 'POST') {

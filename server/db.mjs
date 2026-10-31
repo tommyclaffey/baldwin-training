@@ -155,6 +155,11 @@ const MIGRATIONS = [
   CREATE TABLE quiz_sets(id INTEGER PRIMARY KEY, company_id INT NOT NULL, store_id INT NOT NULL, name TEXT NOT NULL, topics TEXT NOT NULL,
     count INT NOT NULL, created_by INT, created_at TEXT, archived_at TEXT);
   `,
+  // 11 (Oct 31, Tommy: "mark it red, yellow, green … a review queue"): how well each person knows each question.
+  `
+  CREATE TABLE quiz_marks(user_id INT NOT NULL, store_id INT NOT NULL, ref TEXT NOT NULL, mark TEXT NOT NULL, at TEXT NOT NULL,
+    PRIMARY KEY(user_id, store_id, ref));
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

@@ -178,6 +178,24 @@ function zoomPhotos(page) {
 }
 
 
+/* ---- The Back Bar: spirit chips and the "Find a bottle" box filter the shelf ---- */
+function backBar(page) {
+  const filter = find(page.main, byName('Filter'));
+  if (!filter?._protos) return;
+  const { on, off } = filter._protos; delete filter._protos;
+  for (const c of filter.c) {
+    const [l, n] = texts(c).map((t) => t.s);
+    const st = pickStates(c, on, off, l);
+    setText(texts(st.on)[1], n); setText(texts(st.off)[1], n);
+    c.meta = { k: 'bbar', mode: 'pick', val: c._val, def: 'All', ...st };
+    delete c._val;
+  }
+  for (const card of findAll(page.main, (n) => n._g)) { card.meta = { show: { pick: ['bbar', ['All', card._g], 'All'], text: ['bfind', card._find] } }; delete card._g; delete card._find; }
+  for (const r of findAll(page.main, (n) => typeof n._find === 'string')) { r.meta = { ...(r.meta || {}), show: { text: ['bfind', r._find] } }; delete r._find; }
+  const box = find(page.main, byName('Find a bottle'));
+  if (box) box.meta = { find: 'bfind', label: texts(box)[0]?.s || 'Find a bottle' };
+}
+
 /* ---- Home: the Food Matrix preview's course chips ---- */
 function homeMatrix(page) {
   const sec = find(page.main, byName('Section · Food Matrix'));
@@ -275,6 +293,7 @@ export function wire(page, ctx) {
   photoLibrary(page, ctx);
   zoomPhotos(page);
   homeMatrix(page);
+  backBar(page);
   floorPlan(page);
   chapters(page);
   // Home: "Watch Plating Video" → the dish page with its video; "View Changes" → the Food Matrix.

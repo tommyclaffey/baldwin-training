@@ -12,7 +12,7 @@ import { find, findAll, startsWith, texts, setText } from './templates.mjs';
 export function classify(slug) {
   if (/^(classic|spirit|bottle|wine|wine-service|beer|bar-basics)\//.test(slug)) return 'shared';
   if (['the-bar/spirits', 'safety', 'cleanliness', 'steps-of-service'].includes(slug) || /^step-\d/.test(slug)) return 'shared';
-  if (['the-bar/cocktails', 'the-bar/wine', 'the-bar/beer-and-draft', 'food-matrix', 'allergen-guide'].includes(slug)) return 'mixed';
+  if (['the-bar/cocktails', 'the-bar/wine', 'the-bar/beer-and-draft', 'the-bar/back-bar', 'food-matrix', 'allergen-guide'].includes(slug)) return 'mixed';
   return 'own';
 }
 
@@ -23,6 +23,7 @@ const OWN = {
   'video-library': { title: 'Video Library', body: 'Your training videos go here. Managers add them in Admin → Videos and Photos.', admin: '/admin/media' },
   'photo-library': { title: 'Photo Library', body: 'Your plating references and photos go here. Managers add them in Admin → Videos and Photos.', admin: '/admin/media' },
   quizzes: { title: 'Quizzes & Sign-Offs', body: 'Quizzes come from your own menu. They show up here once your dishes and drinks are in.' },
+  'the-bar/back-bar': { title: 'The Back Bar', body: 'Every bottle on your shelf goes here, each with its own page. Managers add them in Admin → Back Bar.', admin: '/admin/pages/shelf' },
   'food-matrix': { title: 'The Food Matrix', body: 'Your menu goes here: every dish, its station, allergens and pairing. Managers add dishes in Admin → Recipes.', admin: '/admin/pages/recipe' },
 };
 /** A page that's the store's own and has nothing in it yet. The app shows it as an empty state. */
