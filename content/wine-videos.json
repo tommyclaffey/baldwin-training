@@ -332,6 +332,24 @@
     "youtubeId": "WPqueLmQbmQ",
     "title": "The Next Up-And-Coming Wine Region? · Wine Folly"
    }
+  },
+  {
+   "key": "wine/usa/southern-oregon",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "B438Um-Q7wE",
+    "title": "Unexpected turn in Oregon wines · Wine Folly"
+   },
+   "note": "Wine Folly heads south of the Willamette to the Umpqua Valley, in Southern Oregon."
+  },
+  {
+   "key": "wine/usa/long-island",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "67fJ_D6bdmo",
+    "title": "New York Region Guide: Everything you need to know · Wine Folly"
+   },
+   "note": "Wine Folly’s guide to New York wine, including Long Island and the North Fork."
   }
  ]
 }
