@@ -6,6 +6,7 @@
 //   group / inGroup        a group header hides when every row in its group is hidden
 //   act                    'print' | 'reset' (keys starting with `reset`) | 'zoom' (photo viewer)
 //   cls                    [key, { value: className }] adds a class while the key has that value
+import { addHref } from './editinplace.mjs';
 import { clone, find, findAll, byName, startsWith, texts, setText } from './templates.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -304,8 +305,9 @@ export function wire(page, ctx) {
   for (const l of findAll(m, (n) => n.n === 'Link' && texts(n).some((t) => /^All \d+ Photos$/.test(t.s || '')))) l.to = '/photo-library';
   // Empty slots a manager fills in: straight to the right admin screen.
   const admin = ctx.entry ? `/admin/pages/${ctx.entry.collection}/${ctx.entry.id}` : null;
-  for (const a of findAll(m, byName('Add video'))) a.to = admin || '/admin/wine-videos';
-  for (const a of findAll(m, byName('Add bottle'))) a.to = '/admin/pages/shelf';
-  for (const a of findAll(m, (n) => /^Add (Sparkling|White|Rosé|Red)$/.test(n.n || ''))) a.to = '/admin/pages/wine';
+  for (const a of findAll(m, byName('Add video'))) a.to = admin ? admin + '#video' : '/admin/wine-videos';
+  for (const a of findAll(m, byName('Add bottle'))) a.to = addHref('shelf');
+  const COLOR = { Sparkling: 'Bubbles', White: 'White', Red: 'Red' };
+  for (const a of findAll(m, (n) => /^Add (Sparkling|White|Rosé|Red)$/.test(n.n || ''))) a.to = addHref('wine', { color: COLOR[a.n.slice(4)] });
   return page;
 }

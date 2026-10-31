@@ -2,6 +2,7 @@
 // (tables, strips) filled from the CMS.
 import fs from 'node:fs';
 import path from 'node:path';
+import { addRows } from './editinplace.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
 import { COLLECTIONS, COURSES, SHARED, listEntries, getEntry, wineDescription } from './cms.mjs';
@@ -420,6 +421,8 @@ export function assemble(db, file) {
   const page = assembleRaw(db, file);
   if (page?.empty) return page;
   if (page) wire(page, { entry, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
+  // Managers get an Add row after every list of dishes, cocktails, wines and bottles (staff never see them).
+  if (page && !entry && canOpen(SCOPE.user, '/admin/pages/recipe/new')) addRows(page, baseIndex().find((x) => x.file === file)?.slug, db, SCOPE.store);
   return balance(forViewer(page, SCOPE.user));
 }
 

@@ -10,7 +10,7 @@ export type FieldDef = {
   required?: boolean; section?: string; fields?: FieldDef[]; scan?: boolean;
 };
 export type Collection = { id: string; label: string; singular: string; prefix: string; group?: { key: string; values: string[] }; lists: string; fields: FieldDef[]; noPages?: boolean };
-type Entry = { id: number; collection: string; slug: string; data: Record<string, unknown>; sort: number; seeded: boolean; updated_at: string; edited: boolean; archivedAt?: string | null };
+export type Entry = { id: number; collection: string; slug: string; data: Record<string, unknown>; sort: number; seeded: boolean; updated_at: string; edited: boolean; archivedAt?: string | null };
 
 let cache: { collections: Record<string, Collection>; counts: Record<string, number> } | null = null;
 export function useCollections() {
@@ -21,7 +21,7 @@ export function useCollections() {
   return { data, error, reload: load };
 }
 
-const GROUP_LABEL: Record<string, string> = { Stirred: 'Stirred · spirit-forward', Shaken: 'Shaken · sours and more', Tall: 'Tall and bubbly' };
+const GROUP_LABEL: Record<string, string> = { Stirred: 'Stirred · spirit-forward', Shaken: 'Shaken · sours and more', Tall: 'Tall and bubbly', Tropical: 'Tropical and tiki', Brunch: 'Brunch', Hot: 'Hot and after dinner' };
 
 /* ---------- list of pages ---------- */
 export function CollectionList() {
@@ -212,9 +212,9 @@ export function EntryEditor() {
   );
 }
 
-const wide = (f: FieldDef) => ['textarea', 'list', 'lines', 'photo', 'video', 'chips', 'tags'].includes(f.type);
+export const wide = (f: FieldDef) => ['textarea', 'list', 'lines', 'photo', 'video', 'chips', 'tags'].includes(f.type);
 
-function renderField(f: FieldDef, value: unknown, onChange: (v: unknown) => void, ctx: { name?: string } = {}): ReactNode {
+export function renderField(f: FieldDef, value: unknown, onChange: (v: unknown) => void, ctx: { name?: string } = {}): ReactNode {
   const listId = f.options?.length && f.type === 'text' ? `opts-${f.key}` : undefined;
   switch (f.type) {
     case 'text':
@@ -288,7 +288,7 @@ function TagsField({ f, value, onChange }: { f: FieldDef; value: string[]; onCha
   return <Text label={f.label} hint={f.hint || 'Separate with commas.'} placeholder={f.placeholder} value={text} onChange={(t) => { setText(t); onChange(parse(t)); }} />;
 }
 
-function blank(c: Collection) {
+export function blank(c: Collection) {
   const d: Record<string, unknown> = {};
   for (const f of c.fields) d[f.key] = f.type === 'select' ? f.options![0] : ['list', 'lines', 'tags', 'chips'].includes(f.type) ? [] : f.type === 'toggle' ? false : f.type === 'video' ? null : '';
   return d;

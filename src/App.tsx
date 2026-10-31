@@ -8,6 +8,7 @@ import { BookSignIn } from './components/BookSignIn';
 import { clearPages } from './components/PageView';
 import { setQuizUser } from './quiz/store';
 import AdminApp from './admin/AdminApp';
+import { EditInPlaceProvider } from './components/EditSheet';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ function Book() {
   if (!loaded) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
   if (!user) return <BookSignIn />;
   return (
+    <EditInPlaceProvider>
     <NavContext.Provider value={entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
@@ -57,5 +59,6 @@ function Book() {
         </div>
       </div>
     </NavContext.Provider>
+    </EditInPlaceProvider>
   );
 }
