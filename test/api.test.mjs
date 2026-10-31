@@ -66,7 +66,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 473, 'the design, plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
+  assert.equal(index.length, 492, 'the design (incl. 37 wine regions), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -225,7 +225,7 @@ test('quizzes are written from the book, scored by the server; custom and team q
 test('wine videos: every wine page has a Learn more section, and a video plays there and on the wine list', async () => {
   const groups = (await call('/api/wine-videos')).data.groups;
   const items = groups.flatMap((g) => g.items);
-  assert.equal(items.filter((i) => !i.key.startsWith('wine:')).length, 54);
+  assert.equal(items.filter((i) => !i.key.startsWith('wine:')).length, 73, '8 styles, 3 countries, 37 regions, 25 grapes and styles');
   assert.ok(items.some((i) => i.key === 'wine:Tenuta Spinelli Pecorino'));
   const index = (await call('/api/index')).data;
   const find = (n, pred) => (pred(n) ? n : (n.c || []).map((c) => find(c, pred)).find(Boolean));
@@ -238,7 +238,8 @@ test('wine videos: every wine page has a Learn more section, and a video plays t
   // the starting videos from the repo are in place
   const cab = find((await page('wine/red/cabernet')).main, (n) => n.n === 'Learn more');
   assert.equal(find(cab, (n) => !!n.vid).vid.youtubeId, '-w6gz4YVPyk');
-  assert.equal(items.filter((i) => i.video).length, 6);
+  assert.equal(items.filter((i) => i.video).length, 39, 'Wine Folly: 6 grape videos and 33 country and region videos');
+  assert.ok(items.find((i) => i.key === 'wine/italy/tuscany')?.video?.youtubeId === 'ixXOoWN8LGg');
   // anonymous can't set one, an unknown page is refused
   assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/syrah', video: null }, auth: false })).status, 401);
   assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/nope', video: { kind: 'youtube', youtubeId: 'dQw4w9WgXcQ' } } })).status, 400);

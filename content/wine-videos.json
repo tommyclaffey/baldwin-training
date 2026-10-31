@@ -1,11 +1,337 @@
 {
-  "_source": "Tommy, Oct 27: Wine Folly's Grapes 101 playlist (youtube.com/playlist?list=PLc_D-7JIibmR09YmVNiId_1_c8ZQ3ojhz). Cabernet Franc has no page yet.",
-  "videos": [
-    { "key": "wine/red/cabernet", "video": { "kind": "youtube", "youtubeId": "-w6gz4YVPyk", "title": "Cabernet Sauvignon (Everything You Need To Know) · Wine Folly" } },
-    { "key": "wine/red/merlot", "video": { "kind": "youtube", "youtubeId": "JJnJK8rpibQ", "title": "Merlot (Everything you need to know) · Wine Folly" } },
-    { "key": "wine/red/pinot-noir", "video": { "kind": "youtube", "youtubeId": "g04Jn78TwmE", "title": "Pinot Noir (Everything you need to know) · Wine Folly" } },
-    { "key": "wine/white/chardonnay", "video": { "kind": "youtube", "youtubeId": "aSpyylc5F20", "title": "Chardonnay (Everything you need to know) · Wine Folly" } },
-    { "key": "wine/white/sauvignon-blanc", "video": { "kind": "youtube", "youtubeId": "F0jDcA_Ujcc", "title": "Sauvignon Blanc (Everything you need to know) · Wine Folly" } },
-    { "key": "wine/white/riesling", "video": { "kind": "youtube", "youtubeId": "ZLXhBKJb01o", "title": "Riesling (Everything you need to know) · Wine Folly" } }
-  ]
+ "_source": "Tommy, Oct 27: Wine Folly's Grapes 101 playlist (youtube.com/playlist?list=PLc_D-7JIibmR09YmVNiId_1_c8ZQ3ojhz). Cabernet Franc has no page yet. Oct 31: region and country videos from the Wine Folly channel, each checked by YouTube oEmbed (author: Wine Folly). Notes say when a video is an overview or about the region’s grape.",
+ "videos": [
+  {
+   "key": "wine/red/cabernet",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "-w6gz4YVPyk",
+    "title": "Cabernet Sauvignon (Everything You Need To Know) · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/red/merlot",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "JJnJK8rpibQ",
+    "title": "Merlot (Everything you need to know) · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/red/pinot-noir",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "g04Jn78TwmE",
+    "title": "Pinot Noir (Everything you need to know) · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/white/chardonnay",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "aSpyylc5F20",
+    "title": "Chardonnay (Everything you need to know) · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/white/sauvignon-blanc",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "F0jDcA_Ujcc",
+    "title": "Sauvignon Blanc (Everything you need to know) · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/white/riesling",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "ZLXhBKJb01o",
+    "title": "Riesling (Everything you need to know) · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/italy",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "y2gEbL2bxaE",
+    "title": "Italian Wine Makes No Sense (Until You See the Map) · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/france",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "jn_XB6gfp3Q",
+    "title": "Getting Started With French Wine · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/italy/tuscany",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "ixXOoWN8LGg",
+    "title": "Tuscany 101 Introduction · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/italy/piedmont",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "bj_DCAR54cg",
+    "title": "Not Prosecco: Asti (and Moscato) Was Italy’s First · Wine Folly"
+   },
+   "note": "Wine Folly on Asti and Moscato d’Asti, Piedmont’s sweet sparkling wines."
+  },
+  {
+   "key": "wine/italy/veneto",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "HXtl3F6Fs0k",
+    "title": "Prosecco DOC: The Place Behind the Bubbles · Wine Folly"
+   },
+   "note": "Wine Folly on Prosecco, the Veneto’s best-known wine."
+  },
+  {
+   "key": "wine/italy/sicily",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "AMvoAKXLA6g",
+    "title": "6 Sicilian Wines You Must Know · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/italy/friuli",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "HXtl3F6Fs0k",
+    "title": "Prosecco DOC: The Place Behind the Bubbles · Wine Folly"
+   },
+   "note": "Prosecco DOC covers both the Veneto and Friuli. Wine Folly has no Friuli video of its own yet."
+  },
+  {
+   "key": "wine/italy/trentino-alto-adige",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "h6v1hmzUsH0",
+    "title": "The 4 Wines You Must Know: Alto Adige · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/italy/lombardy",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "y2gEbL2bxaE",
+    "title": "Italian Wine Makes No Sense (Until You See the Map) · Wine Folly"
+   },
+   "note": "Wine Folly’s map of Italian wine. Franciacorta, Lombardy’s sparkling, comes up along the way."
+  },
+  {
+   "key": "wine/italy/emilia-romagna",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "y2gEbL2bxaE",
+    "title": "Italian Wine Makes No Sense (Until You See the Map) · Wine Folly"
+   },
+   "note": "Wine Folly’s map of Italian wine. Lambrusco, from Emilia-Romagna, comes up along the way."
+  },
+  {
+   "key": "wine/italy/abruzzo",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "y2gEbL2bxaE",
+    "title": "Italian Wine Makes No Sense (Until You See the Map) · Wine Folly"
+   },
+   "note": "Wine Folly’s map of Italian wine, with a Montepulciano d’Abruzzo tasted along the way."
+  },
+  {
+   "key": "wine/italy/campania",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "y2gEbL2bxaE",
+    "title": "Italian Wine Makes No Sense (Until You See the Map) · Wine Folly"
+   },
+   "note": "Wine Folly’s map of Italian wine. Campania and Aglianico come up along the way."
+  },
+  {
+   "key": "wine/italy/puglia",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "y2gEbL2bxaE",
+    "title": "Italian Wine Makes No Sense (Until You See the Map) · Wine Folly"
+   },
+   "note": "Wine Folly’s map of Italian wine, with a Primitivo from Manduria tasted along the way."
+  },
+  {
+   "key": "wine/italy/sardinia",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "y2gEbL2bxaE",
+    "title": "Italian Wine Makes No Sense (Until You See the Map) · Wine Folly"
+   },
+   "note": "Wine Folly’s map of Italian wine. Sardinia’s Cannonau comes up along the way."
+  },
+  {
+   "key": "wine/france/bordeaux",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "aUXnZdeZ00o",
+    "title": "Intro to Bordeaux Wine · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/france/burgundy",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "4kK_ox_FqAk",
+    "title": "Wine Folly Guide to Burgundy · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/france/champagne",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "-RSB6ve6B0c",
+    "title": "How to choose Champagne · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/france/rhone",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "aLCocZki2tA",
+    "title": "Everything You Ever Wanted to Know About Châteauneuf-du-Pape · Wine Folly"
+   },
+   "note": "Wine Folly on Châteauneuf-du-Pape, the Southern Rhône’s most famous wine."
+  },
+  {
+   "key": "wine/france/loire",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "jn_XB6gfp3Q",
+    "title": "Getting Started With French Wine · Wine Folly"
+   },
+   "note": "Wine Folly’s guide to French wine. The Loire comes up along the way."
+  },
+  {
+   "key": "wine/france/provence",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "jn_XB6gfp3Q",
+    "title": "Getting Started With French Wine · Wine Folly"
+   },
+   "note": "Wine Folly’s guide to French wine. Provence comes up along the way."
+  },
+  {
+   "key": "wine/france/alsace",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "jn_XB6gfp3Q",
+    "title": "Getting Started With French Wine · Wine Folly"
+   },
+   "note": "Wine Folly’s guide to French wine. Alsace comes up along the way."
+  },
+  {
+   "key": "wine/france/beaujolais",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "-YcoX4EEmcE",
+    "title": "The Secret to Great Beaujolais Wine · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/france/languedoc-roussillon",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "jn_XB6gfp3Q",
+    "title": "Getting Started With French Wine · Wine Folly"
+   },
+   "note": "Wine Folly’s guide to French wine. The Languedoc comes up along the way."
+  },
+  {
+   "key": "wine/france/south-west",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "gRA0lx7xwbU",
+    "title": "9 Top French Wines That Shaped the World · Wine Folly"
+   },
+   "note": "Wine Folly on nine famous French wines. Cahors Malbec starts at 5:58."
+  },
+  {
+   "key": "wine/usa/napa-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "dplrw7R1JKc",
+    "title": "Get to Know Napa Valley Wine · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/usa/sonoma",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "M3aFaqoGjiw",
+    "title": "Italy vs California Zinfandel Showdown! · Wine Folly"
+   },
+   "note": "Wine Folly tastes Zinfandel against Primitivo. The California Zin is from Dry Creek Valley, in Sonoma."
+  },
+  {
+   "key": "wine/usa/paso-robles",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "EhU3_7LF6AQ",
+    "title": "Paso Robles Wine: Everything You Need to Know · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/usa/willamette-valley",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "VyYS1uMv_eA",
+    "title": "Oregon vs Burgundy Pinot Noir · Wine Folly"
+   },
+   "note": "Wine Folly tastes Oregon Pinot Noir against Burgundy."
+  },
+  {
+   "key": "wine/usa/washington",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "s3N0I_ojbZE",
+    "title": "Syrah Wine 101: Australia vs Washington! · Wine Folly"
+   },
+   "note": "Wine Folly tastes Washington Syrah against Australian Shiraz."
+  },
+  {
+   "key": "wine/usa/michigan",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "zjayH3FlfYs",
+    "title": "Fresher, lighter, and lower alcohol | Michigan 101 · Wine Folly"
+   }
+  },
+  {
+   "key": "wine/usa/finger-lakes",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "67fJ_D6bdmo",
+    "title": "New York Region Guide: Everything you need to know · Wine Folly"
+   },
+   "note": "Wine Folly’s guide to New York wine, with the Finger Lakes front and centre."
+  },
+  {
+   "key": "wine/usa/lodi",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "M3aFaqoGjiw",
+    "title": "Italy vs California Zinfandel Showdown! · Wine Folly"
+   },
+   "note": "Wine Folly on Zinfandel, Lodi’s grape. (The Zin they taste is from Sonoma, not Lodi.)"
+  },
+  {
+   "key": "wine/usa/texas-hill-country",
+   "video": {
+    "kind": "youtube",
+    "youtubeId": "WPqueLmQbmQ",
+    "title": "The Next Up-And-Coming Wine Region? · Wine Folly"
+   }
+  }
+ ]
 }
