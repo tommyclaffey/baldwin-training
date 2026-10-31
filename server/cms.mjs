@@ -65,11 +65,11 @@ const spirit = [
 export const COLLECTIONS = {
   classic: {
     label: 'Classic Cocktails', singular: 'classic cocktail', prefix: 'classic/', template: '76-3930', section: 'Classic', nav: 'The Bar',
-    group: { key: 'family', values: ['Stirred', 'Shaken', 'Tall'] },
+    group: { key: 'family', values: ['Stirred', 'Shaken', 'Tall', 'Tropical', 'Brunch', 'Hot'] },
     lists: 'Shows in every classic page’s cocktail strip and the Classic cocktails table on the Cocktails page.',
     fields: [
       { key: 'name', label: 'Name', type: 'text', max: 80, required: true, section: 'The basics' },
-      { key: 'family', label: 'Family', type: 'select', options: ['Stirred', 'Shaken', 'Tall'], section: 'The basics', hint: 'Which group it sits in on the Cocktails page.' },
+      { key: 'family', label: 'Family', type: 'select', options: ['Stirred', 'Shaken', 'Tall', 'Tropical', 'Brunch', 'Hot'], section: 'The basics', hint: 'Which group it sits in on the Cocktails page.' },
       { key: 'tagline', label: 'One line under the name', type: 'text', max: 80, section: 'The basics' },
       { key: 'description', label: 'Description', type: 'textarea', max: 400, section: 'The basics' },
       { key: 'photo', label: 'Main photo', type: 'photo', section: 'The basics', hint: 'The first thing people see. Landscape works best.' },

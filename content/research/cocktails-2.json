@@ -1,0 +1,312 @@
+[
+  {
+    "name": "Dark 'n' Stormy",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/dark-n-stormy/",
+      "build": [
+        {
+          "amount": "2 oz",
+          "ingredient": "Goslings Rum"
+        },
+        {
+          "amount": "3⅓ oz",
+          "ingredient": "Ginger beer"
+        }
+      ],
+      "method": "Built: pour the ginger beer into an ice-filled highball, then float the rum on top",
+      "glass": "Highball",
+      "ice": "Filled with ice",
+      "garnish": "Lime wedge or slice",
+      "notes": "IBA amounts are 60 ml rum and 100 ml ginger beer. IBA names Goslings Rum. Per Wikipedia, 'Dark 'n Stormy' is a US registered trademark of Gosling Brothers (since 1991). Difford's house recipe differs: shaken with lime juice, rich syrup and Angostura, topped with ginger beer in a Collins glass (https://www.diffordsguide.com/cocktails/recipe/619/dark-n-stormy-diffords-recipe)."
+    },
+    "origin": {
+      "text": "Called the national drink of Bermuda, where Gosling's rum is made. Who first made it is unknown; legend says British sailors on shore leave in Bermuda drank it after World War I (Gosling Brothers also claims a post-WWI Bermuda origin, per Wikipedia).",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/619/dark-n-stormy-diffords-recipe"
+    },
+    "video": {
+      "youtubeId": "2EZBGowe0ho",
+      "title": "How to Make the Dark 'N Stormy - get it right",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Bellini",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/bellini/",
+      "build": [
+        {
+          "amount": "3⅓ oz",
+          "ingredient": "Prosecco"
+        },
+        {
+          "amount": "1⅔ oz",
+          "ingredient": "White peach purée"
+        }
+      ],
+      "method": "Stirred: peach purée into a mixing glass with ice, add the Prosecco, stir gently, pour into the glass",
+      "glass": "Chilled flute",
+      "ice": "Stirred with ice in the mixing glass; served without ice",
+      "garnish": "None (IBA: N/A)",
+      "notes": "IBA amounts are 100 ml Prosecco and 50 ml white peach purée. IBA variations: Puccini (fresh mandarin juice), Rossini (fresh strawberry purée), Tintoretto (fresh pomegranate juice). Difford's house version adds peach schnapps and lemon juice. Cipriani's own 1978 note (quoted on Difford's) gives one-third juice to two-thirds Prosecco."
+    },
+    "origin": {
+      "text": "Created by Giuseppe Cipriani at Harry's Bar in Venice in 1945, and named after the 15th-century Venetian painter Giovanni Bellini for its pink colour.",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/202/bellini-diffords-recipe"
+    },
+    "video": {
+      "youtubeId": "j5bH7dKWZLo",
+      "title": "There's Nothing Better Than A Fresh Fruit Bellini",
+      "author": "The Educated Barfly"
+    }
+  },
+  {
+    "name": "Kir Royale",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/kir/",
+      "build": [
+        {
+          "amount": "⅓ oz",
+          "ingredient": "Crème de cassis"
+        },
+        {
+          "amount": "3 oz",
+          "ingredient": "Champagne"
+        }
+      ],
+      "method": "Built: pour the crème de cassis into the glass, top up with Champagne",
+      "glass": "Flute (from Difford's; the IBA page names no glass)",
+      "ice": "None",
+      "garnish": "None (IBA: N/A). Difford's garnishes with a seasonal berry such as a blackcurrant",
+      "notes": "IBA has no separate Kir Royale page. Its Kir spec is 90 ml dry white wine + 10 ml crème de cassis, with the note 'Kir Royal – use Champagne instead of white wine'; amounts above apply that note. Difford's Kir Royale uses ½ oz cassis + 4 oz brut champagne/sparkling wine (https://www.diffordsguide.com/cocktails/recipe/1109/kir-royale). Made with a sparkling wine other than champagne, Difford's calls it a Kir Pétillant."
+    },
+    "origin": {
+      "text": "A sparkling version of the Kir apéritif, which Difford's says was thought to be first mixed in 1904 at Café George in Dijon, France, and named after Canon Félix Kir, who promoted it as Mayor of Dijon. Wikipedia says the white-wine drink was formerly called blanc-cassis and that Kir popularised it after World War II.",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/1109/kir-royale"
+    },
+    "video": {
+      "youtubeId": "OENS0GZx_eQ",
+      "title": "Kir Royale Champagne Cocktail | Joel Fraser",
+      "author": "Jamie Oliver - Drinks"
+    }
+  },
+  {
+    "name": "Americano",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/americano/",
+      "build": [
+        {
+          "amount": "1 oz",
+          "ingredient": "Campari (bitter)"
+        },
+        {
+          "amount": "1 oz",
+          "ingredient": "Sweet red vermouth"
+        },
+        {
+          "amount": "Splash",
+          "ingredient": "Soda water"
+        }
+      ],
+      "method": "Built: mix the Campari and vermouth in the glass over ice, add a splash of soda, stir gently",
+      "glass": "Old fashioned",
+      "ice": "Filled with ice cubes",
+      "garnish": "Half orange slice and a lemon zest",
+      "notes": "IBA amounts are 30 ml each. Difford's serves it long instead: 1½ oz red bitter, 1½ oz rosso vermouth, 2½ oz soda in an ice-filled Collins glass, orange wheel (https://www.diffordsguide.com/cocktails/recipe/61/americano)."
+    },
+    "origin": {
+      "text": "Wikipedia says it was first served at Gaspare Campari's bar, Caffè Campari in Milan, in the 1860s, and descends from the Milano-Torino (Campari and vermouth, no soda). Difford's gives a different account of the name: 'Americano' means 'American-style', from Italian 'vermouth Americano' (vermouth with bitters added), with Campari replacing other bitters later.",
+      "source": "https://en.wikipedia.org/wiki/Americano_(cocktail)"
+    },
+    "video": {
+      "youtubeId": "lgy6vEX_hQg",
+      "title": "The Negroni and the Americano | easy cocktails with Campari!",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Rob Roy",
+    "spec": {
+      "source": "https://www.diffordsguide.com/cocktails/recipe/1681/rob-roy-cocktail",
+      "build": [
+        {
+          "amount": "2 oz",
+          "ingredient": "Blended Scotch whisky"
+        },
+        {
+          "amount": "1 oz",
+          "ingredient": "Sweet (rosso) vermouth"
+        },
+        {
+          "amount": "8 drops",
+          "ingredient": "Abbott's bitters"
+        }
+      ],
+      "method": "Stirred with ice, strained",
+      "glass": "Chilled coupe",
+      "ice": "Stirred with ice; served up (no ice)",
+      "garnish": "Express an orange zest twist and discard; skewered maraschino cherry",
+      "notes": "No IBA spec (not on the IBA cocktail list). Difford's says the Rob Roy is classically made with Angostura bitters and recommends Abbott's, or one dash of Angostura-style aromatic bitters if Abbott's isn't on hand. Wikipedia: standard Rob Roy is sweet; 'dry' uses dry vermouth, 'perfect' uses half sweet and half dry."
+    },
+    "origin": {
+      "text": "Named after the Rob Roy operetta, which opened on Broadway on 29 October 1894; it was thought to be created at the nearby Waldorf Astoria as a Scotch version of the Manhattan. Difford's notes a Scotch 'Manhattan' was already printed in London in 1884, and an unrelated 1873 'Rob Roy' existed.",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/1681/rob-roy-cocktail"
+    },
+    "video": {
+      "youtubeId": "LfASKHFzBCg",
+      "title": "Master The Classics: Rob Roy",
+      "author": "The Educated Barfly"
+    }
+  },
+  {
+    "name": "Caipirinha",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/caipirinha/",
+      "build": [
+        {
+          "amount": "2 oz",
+          "ingredient": "Cachaça"
+        },
+        {
+          "amount": "1",
+          "ingredient": "Lime, cut into small wedges"
+        },
+        {
+          "amount": "4 tsp",
+          "ingredient": "White cane sugar"
+        }
+      ],
+      "method": "Muddled and built: muddle lime and sugar gently in the glass, fill with cracked ice, add cachaça, stir gently",
+      "glass": "Double old fashioned",
+      "ice": "Cracked ice",
+      "garnish": "None (IBA: N/A)",
+      "notes": "IBA amount is 60 ml cachaça. IBA variations: Caipiroska (vodka), Caipirissima (rum), Caipirão (Licor Beirão). Difford's uses ½ lime, 3 barspoons powdered sugar, ¾ oz chilled water and 2 oz unaged cachaça in a highball, and recommends small cubes or cracked ice over crushed ice (https://www.diffordsguide.com/cocktails/recipe/354/caipirinha)."
+    },
+    "origin": {
+      "text": "The name means 'country little girl', and the drink came from the countryside of São Paulo state, Brazil. Origin stories vary; one says an early-20th-century Spanish flu remedy of cachaça, lime, honey and garlic became the Caipirinha.",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/354/caipirinha"
+    },
+    "video": {
+      "youtubeId": "i1UHUyWerhg",
+      "title": "The Caipirinha - what to drink when it's hot!",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Hot Toddy",
+    "spec": {
+      "source": "https://www.diffordsguide.com/cocktails/recipe/987/hot-toddy-hot-scotch-and-lemon",
+      "build": [
+        {
+          "amount": "1½ oz",
+          "ingredient": "Blended Scotch whisky"
+        },
+        {
+          "amount": "¼ oz",
+          "ingredient": "Fresh lemon juice"
+        },
+        {
+          "amount": "¼ oz",
+          "ingredient": "Honey syrup (3 parts honey to 1 water, by weight)"
+        },
+        {
+          "amount": "⅙ oz",
+          "ingredient": "Rich sugar syrup (2 sugar to 1 water)"
+        },
+        {
+          "amount": "3",
+          "ingredient": "Dried cloves"
+        },
+        {
+          "amount": "2 oz",
+          "ingredient": "Boiling water"
+        }
+      ],
+      "method": "Built hot: pour the first 4 ingredients into a pre-warmed glass, add cloves, top with boiling water",
+      "glass": "Pre-heated toddy glass",
+      "ice": "None (served hot)",
+      "garnish": "Lemon slice on the rim and a cinnamon stick in the glass",
+      "notes": "No IBA spec (not on the IBA cocktail list). This is Difford's 'Hot Scotch & Lemon' version; Difford's also lists tea, brandy and gin versions."
+    },
+    "origin": {
+      "text": "Difford's says the earliest known reference to a toddy was published in England in 1741, and a Whisky Toddy appears in Jerry Thomas' 1862 Bar-tenders Guide. Wikipedia says the word comes from the Indian toddy (fermented palm sap) and dates its first use for a hot spirit drink to 1786, so the sources disagree on the date.",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/987/hot-toddy-hot-scotch-and-lemon"
+    },
+    "video": {
+      "youtubeId": "DJtBN6yBnsA",
+      "title": "3 Hot Toddy Recipes - Scotch, Rum, & Mezcal!",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Bee's Knees",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/bees-knees/",
+      "build": [
+        {
+          "amount": "1¾ oz",
+          "ingredient": "Dry gin"
+        },
+        {
+          "amount": "2 tsp",
+          "ingredient": "Honey syrup"
+        },
+        {
+          "amount": "¾ oz",
+          "ingredient": "Fresh lemon juice"
+        },
+        {
+          "amount": "¾ oz",
+          "ingredient": "Fresh orange juice"
+        }
+      ],
+      "method": "Shaken: stir the honey into the lemon and orange juices until dissolved, add gin, shake with ice, strain",
+      "glass": "Chilled cocktail glass",
+      "ice": "Shaken with ice; served up (no ice)",
+      "garnish": "Optional lemon or orange zest",
+      "notes": "IBA amounts are 52.5 ml gin, 22.5 ml lemon, 22.5 ml orange. Difford's says the classic is just gin, lemon and honey; the orange juice comes from David Embury's 1948 book."
+    },
+    "origin": {
+      "text": "Long thought to be an American Prohibition drink, but it came from Paris: the 1929 book Cocktails de Paris credits Frank Meier, head bartender at the Hôtel Ritz Paris, while a 1929 Brooklyn newspaper credited Margaret 'Molly' Brown.",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/2144/bees-knees"
+    },
+    "video": {
+      "youtubeId": "hveWIAcYVkE",
+      "title": "Master The Classics: Bee's Knees",
+      "author": "The Educated Barfly"
+    }
+  },
+  {
+    "name": "Tequila Sunrise",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/tequila-sunrise/",
+      "build": [
+        {
+          "amount": "1½ oz",
+          "ingredient": "Tequila"
+        },
+        {
+          "amount": "3 oz",
+          "ingredient": "Fresh orange juice"
+        },
+        {
+          "amount": "½ oz",
+          "ingredient": "Grenadine syrup"
+        }
+      ],
+      "method": "Built: pour tequila and orange juice into an ice-filled highball, then add grenadine to sink for the sunrise effect. Do not stir",
+      "glass": "Highball",
+      "ice": "Filled with ice cubes",
+      "garnish": "Half orange slice or an orange zest",
+      "notes": "IBA amounts are 45 ml tequila, 90 ml orange juice, 15 ml grenadine."
+    },
+    "origin": {
+      "text": "The modern orange juice and grenadine version was created around 1970 by bartender Bobby Lozoff at the Trident in Sausalito, California, and spread after the Rolling Stones drank it on their 1972 US tour. An earlier 1930s Tequila Sunrise existed; Wikipedia credits it to Gene Sulit at the Arizona Biltmore (tequila, crème de cassis, lime, soda) and names Billy Rice as Lozoff's co-creator.",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/1935/tequila-sunrise"
+    },
+    "video": {
+      "youtubeId": "VNaSpZ3YOoM",
+      "title": "The Tequila Sunrise - which one is better?",
+      "author": "Anders Erickson"
+    }
+  }
+]

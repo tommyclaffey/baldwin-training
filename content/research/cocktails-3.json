@@ -1,0 +1,344 @@
+[
+  {
+    "name": "Brandy Alexander",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/alexander/",
+      "build": [
+        {
+          "amount": "1 oz",
+          "ingredient": "Cognac"
+        },
+        {
+          "amount": "1 oz",
+          "ingredient": "Crème de cacao (brown)"
+        },
+        {
+          "amount": "1 oz",
+          "ingredient": "Fresh cream"
+        }
+      ],
+      "method": "Shaken: pour all ingredients into a shaker filled with ice cubes, shake and strain",
+      "glass": "Chilled cocktail glass",
+      "ice": "None (strained, served up)",
+      "garnish": "Freshly ground nutmeg sprinkled on top",
+      "notes": "IBA lists this drink as the 'Alexander' (The Unforgettables); its recipe uses cognac, which is the Brandy Alexander. IBA amounts are 30 ml each."
+    },
+    "origin": {
+      "text": "The original Alexander was made with gin. In the early 1920s Harry MacElhone, then a bartender at Ciro's in London, is credited with switching to brandy, and the first brandy recipe appears in his 1923 book Harry of Ciro's ABC of Mixing Cocktails.",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/307/brandy-alexander"
+    },
+    "video": {
+      "youtubeId": "5LEgIoddxY4",
+      "title": "The Brandy Alexander - a simple holiday drink",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Rusty Nail",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/rusty-nail/",
+      "build": [
+        {
+          "amount": "1½ oz",
+          "ingredient": "Scotch whisky"
+        },
+        {
+          "amount": "¾ oz",
+          "ingredient": "Drambuie"
+        }
+      ],
+      "method": "Built: pour directly into the glass over ice and stir gently",
+      "glass": "Old fashioned glass",
+      "ice": "Filled with ice cubes",
+      "garnish": "Lemon zest",
+      "notes": "IBA calls for 25 ml Drambuie, a little more than ¾ oz (about 0.85 oz). Wikipedia notes the Scotch-to-Drambuie ratio ranges from 1:1 to 2:1."
+    },
+    "origin": {
+      "text": "Scotch and Drambuie first appear together in 1937 as the B.I.F., named after the British Industries Fair. It took its 'Rusty Nail' name later: the 21 Club in New York made it popular, the name was cemented by a 1963 New York Times endorsement from Drambuie's chairwoman, and the Rat Pack made it their drink.",
+      "source": "https://en.wikipedia.org/wiki/Rusty_nail_(cocktail)"
+    },
+    "video": {
+      "youtubeId": "nTyrz70_OPA",
+      "title": "How to Make a Rusty Nail - strong and sweet",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Gin Fizz",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/gin-fizz/",
+      "build": [
+        {
+          "amount": "1½ oz",
+          "ingredient": "Gin"
+        },
+        {
+          "amount": "1 oz",
+          "ingredient": "Fresh lemon juice"
+        },
+        {
+          "amount": "⅓ oz",
+          "ingredient": "Simple syrup"
+        },
+        {
+          "amount": "Splash",
+          "ingredient": "Soda water"
+        }
+      ],
+      "method": "Shaken: shake everything except the soda with ice, pour into the glass, top with a splash of soda",
+      "glass": "Thin tall tumbler",
+      "ice": "None (IBA: serve without ice)",
+      "garnish": "Lemon slice, optional lemon zest",
+      "notes": "IBA calls for 10 ml simple syrup, about ⅓ oz."
+    },
+    "origin": {
+      "text": "A mid-19th-century classic that appears in Jerry Thomas' 1876 Bar-tenders Guide, written as 'the same as Whiskey Fiz, substituting gin for whiskey.' Wikipedia adds that fizzes were hugely popular in America from 1900 to the 1940s, especially in New Orleans.",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/840/gin-fizz"
+    },
+    "video": {
+      "youtubeId": "obGhGNUKx30",
+      "title": "Gin Fizz classic recipe",
+      "author": "The Educated Barfly"
+    }
+  },
+  {
+    "name": "Vieux Carré",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/vieux-carre/",
+      "build": [
+        {
+          "amount": "1 oz",
+          "ingredient": "Rye whiskey"
+        },
+        {
+          "amount": "1 oz",
+          "ingredient": "Cognac"
+        },
+        {
+          "amount": "1 oz",
+          "ingredient": "Sweet vermouth"
+        },
+        {
+          "amount": "1 bar spoon",
+          "ingredient": "Bénédictine"
+        },
+        {
+          "amount": "2 dashes",
+          "ingredient": "Peychaud's bitters"
+        }
+      ],
+      "method": "Stirred: stir well in a mixing glass with ice cubes, strain",
+      "glass": "Chilled cocktail glass",
+      "ice": "None (strained, served up)",
+      "garnish": "Orange zest and maraschino cherry",
+      "notes": ""
+    },
+    "origin": {
+      "text": "Created in 1938 by Walter Bergeron, head bartender at what is now the Carousel Bar in the Hotel Monteleone, New Orleans. The name is French for the French Quarter ('old square'). Wikipedia also credits Bergeron at the Monteleone but gives no date and flags the claim as needing a citation.",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/2048/vieux-carre"
+    },
+    "video": {
+      "youtubeId": "cDCdcwuM8yA",
+      "title": "How to Make a Vieux Carré AKA the \"Old Square\"",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Corpse Reviver No. 2",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/corpse-reviver-2/",
+      "build": [
+        {
+          "amount": "1 oz",
+          "ingredient": "Gin"
+        },
+        {
+          "amount": "1 oz",
+          "ingredient": "Cointreau"
+        },
+        {
+          "amount": "1 oz",
+          "ingredient": "Lillet Blanc"
+        },
+        {
+          "amount": "1 oz",
+          "ingredient": "Fresh lemon juice"
+        },
+        {
+          "amount": "1 dash",
+          "ingredient": "Absinthe"
+        }
+      ],
+      "method": "Shaken: shake well with ice, strain",
+      "glass": "Chilled cocktail glass",
+      "ice": "None (strained, served up)",
+      "garnish": "Orange zest",
+      "notes": "IBA lists it as 'Corpse Reviver #2' (Contemporary Classics). Wikipedia notes the original called for Kina Lillet, now often replaced with Cocchi Americano or Lillet Blanc."
+    },
+    "origin": {
+      "text": "The Corpse Reviver #2 comes from Harry Craddock's Savoy Cocktail Book (1930), from the American Bar at the Savoy Hotel in London. Craddock warned that 'four of these taken in swift succession will unrevive the corpse again.'",
+      "source": "https://en.wikipedia.org/wiki/Corpse_Reviver"
+    },
+    "video": {
+      "youtubeId": "bGxOcLRCBWk",
+      "title": "Gin Cocktail Recipe - The Corpse Reviver #2",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Aviation",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/aviation/",
+      "build": [
+        {
+          "amount": "1½ oz",
+          "ingredient": "Gin"
+        },
+        {
+          "amount": "½ oz",
+          "ingredient": "Maraschino liqueur (Luxardo)"
+        },
+        {
+          "amount": "½ oz",
+          "ingredient": "Fresh lemon juice"
+        },
+        {
+          "amount": "1 bar spoon",
+          "ingredient": "Crème de violette"
+        }
+      ],
+      "method": "Shaken: shake with cracked ice, strain",
+      "glass": "Chilled cocktail glass",
+      "ice": "None (strained, served up)",
+      "garnish": "Maraschino cherry (optional)",
+      "notes": ""
+    },
+    "origin": {
+      "text": "Created by Hugo Ensslin, head bartender at the Hotel Wallick in New York, and first published in his 1916 book Recipes for Mixed Drinks. The 1930 Savoy Cocktail Book left out the crème de violette, and many later bartenders followed that.",
+      "source": "https://en.wikipedia.org/wiki/Aviation_(cocktail)"
+    },
+    "video": {
+      "youtubeId": "Kmw5D32W8sM",
+      "title": "How to Make the Best Aviation Cocktail - shaken or stirred?",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Clover Club",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/clover-club/",
+      "build": [
+        {
+          "amount": "1½ oz",
+          "ingredient": "Gin"
+        },
+        {
+          "amount": "½ oz",
+          "ingredient": "Raspberry syrup"
+        },
+        {
+          "amount": "½ oz",
+          "ingredient": "Fresh lemon juice"
+        },
+        {
+          "amount": "Few drops",
+          "ingredient": "Egg white"
+        }
+      ],
+      "method": "Shaken: shake well with ice, strain",
+      "glass": "Chilled cocktail glass",
+      "ice": "None (strained, served up)",
+      "garnish": "Fresh raspberries",
+      "notes": "IBA does not mention a dry shake."
+    },
+    "origin": {
+      "text": "A pre-Prohibition drink named for the Clover Club, a Philadelphia men's club (chartered 1882) that met at the Bellevue-Stratford Hotel. It first appears in a cocktail book under this name in 1910, in Raymond E. Sullivan's The Barkeeper's Manual.",
+      "source": "https://en.wikipedia.org/wiki/Clover_Club_Cocktail"
+    },
+    "video": {
+      "youtubeId": "j1v-1QchxcY",
+      "title": "Clover Club Gin Cocktail Recipe",
+      "author": "Steve the Bartender"
+    }
+  },
+  {
+    "name": "Jungle Bird",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/jungle-bird/",
+      "build": [
+        {
+          "amount": "1½ oz",
+          "ingredient": "Blackstrap rum"
+        },
+        {
+          "amount": "¾ oz",
+          "ingredient": "Campari"
+        },
+        {
+          "amount": "1½ oz",
+          "ingredient": "Pineapple juice"
+        },
+        {
+          "amount": "½ oz",
+          "ingredient": "Fresh lime juice"
+        },
+        {
+          "amount": "½ oz",
+          "ingredient": "Demerara sugar syrup"
+        }
+      ],
+      "method": "Shaken: shake with ice, strain",
+      "glass": "Rocks glass",
+      "ice": "Filled with ice",
+      "garnish": "Pineapple wedge",
+      "notes": "IBA lists it under New Era."
+    },
+    "origin": {
+      "text": "Invented by beverage manager Jeffrey Ong at the Aviary Bar of the Kuala Lumpur Hilton, where it debuted on 6 July 1973 as the welcome drink. Its modern form (blackstrap rum, less pineapple) came from Giuseppe González at Painkiller in New York in 2010.",
+      "source": "https://en.wikipedia.org/wiki/Jungle_Bird"
+    },
+    "video": {
+      "youtubeId": "cup9PY32Sd4",
+      "title": "The JUNGLE BIRD - history & recipe of this juicy tropical classic!",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Naked and Famous",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/naked-and-famous/",
+      "build": [
+        {
+          "amount": "¾ oz",
+          "ingredient": "Mezcal"
+        },
+        {
+          "amount": "¾ oz",
+          "ingredient": "Yellow Chartreuse"
+        },
+        {
+          "amount": "¾ oz",
+          "ingredient": "Aperol"
+        },
+        {
+          "amount": "¾ oz",
+          "ingredient": "Fresh lime juice"
+        }
+      ],
+      "method": "Shaken: shake well with ice, strain",
+      "glass": "Chilled cocktail glass",
+      "ice": "None (strained, served up)",
+      "garnish": "None (IBA lists N/A)",
+      "notes": "IBA lists it under New Era. Equal parts, 22.5 ml each."
+    },
+    "origin": {
+      "text": "Created by Joaquín Simó at Death & Co in New York City in 2011, combining ideas from the Last Word and the Paper Plane. The IBA added it to its official list in 2020.",
+      "source": "https://en.wikipedia.org/wiki/Naked_and_Famous_(cocktail)"
+    },
+    "video": {
+      "youtubeId": "N3b_X7xuHA8",
+      "title": "Let's get Naked and Famous",
+      "author": "The Educated Barfly"
+    }
+  }
+]

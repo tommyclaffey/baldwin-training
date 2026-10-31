@@ -1,0 +1,356 @@
+[
+  {
+    "name": "Bloody Mary",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/bloody-mary/",
+      "build": [
+        {
+          "amount": "1½ oz (45 ml)",
+          "ingredient": "Vodka"
+        },
+        {
+          "amount": "3 oz (90 ml)",
+          "ingredient": "Tomato juice"
+        },
+        {
+          "amount": "½ oz (15 ml)",
+          "ingredient": "Fresh lemon juice"
+        },
+        {
+          "amount": "2 dashes",
+          "ingredient": "Worcestershire sauce"
+        },
+        {
+          "amount": "To taste",
+          "ingredient": "Tabasco, celery salt, pepper"
+        }
+      ],
+      "method": "Stirred: stir gently with ice in a mixing glass, pour into the glass",
+      "glass": "Rocks glass (highball if served with ice)",
+      "ice": "None by default; if the guest asks for ice, pour into a highball glass with ice",
+      "garnish": "Celery, lemon wedge (optional)",
+      "notes": "IBA: 'If requested served with ice, pour into highball glass.'"
+    },
+    "origin": {
+      "text": "Fernand Petiot is said to have created it at Harry's New York Bar in Paris in 1921, then refined it at the St. Regis Hotel's King Cole Bar in New York in 1934. Sources disagree: New York's 21 Club credits comedian George Jessel (or bartender Henry Zbikiewicz) in the 1930s, and a 1939 newspaper column called it 'George Jessel's newest pick-me-up'.",
+      "source": "https://en.wikipedia.org/wiki/Bloody_Mary_(cocktail)"
+    },
+    "video": {
+      "youtubeId": "V_LkOGZGDyo",
+      "title": "How to make a Bloody Mary (from scratch)",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Mimosa",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/mimosa/",
+      "build": [
+        {
+          "amount": "2½ oz (75 ml)",
+          "ingredient": "Freshly squeezed orange juice"
+        },
+        {
+          "amount": "2½ oz (75 ml)",
+          "ingredient": "Prosecco"
+        }
+      ],
+      "method": "Built: pour orange juice into the flute, gently top with sparkling wine, stir gently",
+      "glass": "Flute",
+      "ice": "None",
+      "garnish": "Orange twist (optional)",
+      "notes": "IBA: 'Also known as Buck's Fizz.' IBA specifies Prosecco as the sparkling wine."
+    },
+    "origin": {
+      "text": "Its origin is unclear; it was originally called a 'champagne orange.' Paris Ritz bartender Frank Meier is sometimes credited, but his own 1934 book doesn't mark it as his invention, and it is closely related to the Buck's Fizz, which dates from about 1921.",
+      "source": "https://en.wikipedia.org/wiki/Mimosa_(cocktail)"
+    },
+    "video": {
+      "youtubeId": "1x6Ae0D5IcY",
+      "title": "How to Make the Best Mimosa | Julia At Home (S5 E2)",
+      "author": "America's Test Kitchen"
+    }
+  },
+  {
+    "name": "Long Island Iced Tea",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/long-island-iced-tea/",
+      "build": [
+        {
+          "amount": "½ oz (15 ml)",
+          "ingredient": "Vodka"
+        },
+        {
+          "amount": "½ oz (15 ml)",
+          "ingredient": "Tequila"
+        },
+        {
+          "amount": "½ oz (15 ml)",
+          "ingredient": "White rum"
+        },
+        {
+          "amount": "½ oz (15 ml)",
+          "ingredient": "Gin"
+        },
+        {
+          "amount": "½ oz (15 ml)",
+          "ingredient": "Cointreau"
+        },
+        {
+          "amount": "about ¾ oz (25 ml)",
+          "ingredient": "Lemon juice"
+        },
+        {
+          "amount": "1 oz (30 ml)",
+          "ingredient": "Simple syrup"
+        },
+        {
+          "amount": "Top",
+          "ingredient": "Cola"
+        }
+      ],
+      "method": "Built: add all ingredients to a highball glass filled with ice, stir gently",
+      "glass": "Highball",
+      "ice": "Highball filled with ice",
+      "garnish": "Lemon slice (optional)",
+      "notes": "IBA lists lemon as 25 ml (0.85 oz); ¾ oz is the nearest bar measure."
+    },
+    "origin": {
+      "text": "Robert 'Rosebud' Butt says he invented it in 1972 as a contest entry at the Oak Beach Inn on Long Island, New York. A competing claim credits 'Old Man Bishop' in Long Island, a community in Kingsport, Tennessee, during 1920s Prohibition, but that version's details are unknown.",
+      "source": "https://en.wikipedia.org/wiki/Long_Island_iced_tea"
+    },
+    "video": {
+      "youtubeId": "jLTLBQqWzq8",
+      "title": "Make the Best EVER Long Island Iced Tea",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Piña Colada",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/pina-colada/",
+      "build": [
+        {
+          "amount": "1⅔ oz (50 ml)",
+          "ingredient": "White rum"
+        },
+        {
+          "amount": "1 oz (30 ml)",
+          "ingredient": "Coconut cream"
+        },
+        {
+          "amount": "1⅔ oz (50 ml)",
+          "ingredient": "Fresh pineapple juice"
+        }
+      ],
+      "method": "Blended: blend all ingredients with ice in an electric blender, pour into the glass, serve with straws",
+      "glass": "Large glass (IBA doesn't name a specific glass)",
+      "ice": "Blended with ice",
+      "garnish": "Pineapple slice with a cocktail cherry",
+      "notes": "IBA: historically a few drops of fresh lime juice were added to taste; 4 slices of fresh pineapple can be used instead of juice. 50 ml is about 1⅔ oz."
+    },
+    "origin": {
+      "text": "The Caribe Hilton in San Juan, Puerto Rico credits bartender Ramón 'Monchito' Marrero with creating it in 1954. Sources disagree: Ricardo García at the same hotel claimed 1953, and Barrachina restaurant credits Ramón Portas Mingot in 1963. Puerto Rico made it the official drink in 1978.",
+      "source": "https://en.wikipedia.org/wiki/Pi%C3%B1a_colada"
+    },
+    "video": {
+      "youtubeId": "eH9yt9JpXXk",
+      "title": "PIÑA COLADA - the ultimate vacation drink!",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Mai Tai",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/mai-tai/",
+      "build": [
+        {
+          "amount": "1 oz (30 ml)",
+          "ingredient": "Amber Jamaican rum"
+        },
+        {
+          "amount": "1 oz (30 ml)",
+          "ingredient": "Martinique molasses rhum"
+        },
+        {
+          "amount": "½ oz (15 ml)",
+          "ingredient": "Orange curaçao"
+        },
+        {
+          "amount": "½ oz (15 ml)",
+          "ingredient": "Orgeat (almond) syrup"
+        },
+        {
+          "amount": "1 oz (30 ml)",
+          "ingredient": "Fresh lime juice"
+        },
+        {
+          "amount": "¼ oz (7.5 ml)",
+          "ingredient": "Simple syrup"
+        }
+      ],
+      "method": "Shaken: shake all ingredients with ice and pour into the glass",
+      "glass": "Double rocks or highball",
+      "ice": "Shaken with ice and poured; IBA doesn't say whether to use fresh ice in the glass (unverified)",
+      "garnish": "Pineapple spear, mint leaves and lime peel",
+      "notes": "IBA: 'The Martinique molasses rum used by Trader Vic was not an Agricole Rhum but a type of rummy from molasses.'"
+    },
+    "origin": {
+      "text": "Victor J. Bergeron (Trader Vic) said he invented it in 1944 at Trader Vic's in Oakland, California, and brought it to Hawaii's hotels in 1953. Donn Beach (Don the Beachcomber) claimed he made it first in 1933, though a longtime colleague said Beach was only claiming it was based on his Q.B. Cooler.",
+      "source": "https://en.wikipedia.org/wiki/Mai_Tai"
+    },
+    "video": {
+      "youtubeId": "gYJsPE1demY",
+      "title": "How to Make a Mai Tai | a very tasty tiki recipe!",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Tom Collins",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/john-collins/",
+      "build": [
+        {
+          "amount": "1½ oz (45 ml)",
+          "ingredient": "Old Tom gin"
+        },
+        {
+          "amount": "1 oz (30 ml)",
+          "ingredient": "Fresh lemon juice"
+        },
+        {
+          "amount": "½ oz (15 ml)",
+          "ingredient": "Simple syrup"
+        },
+        {
+          "amount": "2 oz (60 ml)",
+          "ingredient": "Soda water"
+        }
+      ],
+      "method": "Built: pour all ingredients into a highball filled with ice, stir gently",
+      "glass": "Highball",
+      "ice": "Highball filled with ice",
+      "garnish": "Lemon slice and maraschino cherry",
+      "notes": "IBA has no separate Tom Collins page. This is the IBA John Collins, whose page says: 'Use Old Tom Gin for Tom Collins.'"
+    },
+    "origin": {
+      "text": "The earliest published Tom Collins recipe appeared in Harry Johnson's 1882 bar manual, and Jerry Thomas's 1887 edition also included one. The name is disputed: historians link it to the 1874 'Have you seen Tom Collins?' hoax in New York, or to the earlier John Collins, said to be named after a headwaiter at Limmer's in London and later made with Old Tom gin.",
+      "source": "https://en.wikipedia.org/wiki/Tom_Collins"
+    },
+    "video": {
+      "youtubeId": "DKkHTEozo7o",
+      "title": "Beat the heat with the TOM COLLINS - an easy gin drink!",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "White Russian",
+    "spec": {
+      "source": "https://www.diffordsguide.com/cocktails/recipe/2093/white-russian-cocktail",
+      "build": [
+        {
+          "amount": "2 oz (60 ml)",
+          "ingredient": "Vodka"
+        },
+        {
+          "amount": "1 oz (30 ml)",
+          "ingredient": "Coffee liqueur"
+        },
+        {
+          "amount": "1 oz (30 ml)",
+          "ingredient": "Whipping cream"
+        }
+      ],
+      "method": "Stirred: stir vodka and coffee liqueur with ice, strain into the ice-filled glass, then carefully float the cream on top (lightly whip or shake the cream first)",
+      "glass": "Old-fashioned",
+      "ice": "Ice-filled old-fashioned glass",
+      "garnish": "Freshly grated nutmeg",
+      "notes": "IBA has no full White Russian spec; its Black Russian page (https://iba-world.com/iba-cocktail/black-russian/: 50 ml vodka, 20 ml coffee liqueur, old fashioned glass with ice) adds 'WHITE RUSSIAN – Float fresh cream on the top and stir in slowly', with no cream amount. Difford's spec used instead (it names Ketel One and Galliano Espresso as brands)."
+    },
+    "origin": {
+      "text": "It's the Black Russian (first seen in 1949) with cream added; who first added the cream is unknown. It first appeared in print in 1965 (Oakland Tribune, Nov 21, 1965) and became hugely popular after The Big Lebowski (1998).",
+      "source": "https://www.diffordsguide.com/cocktails/recipe/2093/white-russian-cocktail ; https://en.wikipedia.org/wiki/White_Russian_(cocktail)"
+    },
+    "video": {
+      "youtubeId": "z2lAXggbDDY",
+      "title": "The White Russian - history, recipe, & taste off!",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Irish Coffee",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/irish-coffee/",
+      "build": [
+        {
+          "amount": "1⅔ oz (50 ml)",
+          "ingredient": "Irish whiskey"
+        },
+        {
+          "amount": "4 oz (120 ml)",
+          "ingredient": "Hot coffee"
+        },
+        {
+          "amount": "1⅔ oz (50 ml)",
+          "ingredient": "Fresh cream, chilled"
+        },
+        {
+          "amount": "1 tsp",
+          "ingredient": "Sugar"
+        }
+      ],
+      "method": "Built: pour warm black coffee into a preheated glass, add whiskey and at least 1 tsp sugar, stir until dissolved, then pour thick chilled cream over the back of a spoon held just above the surface so it floats",
+      "glass": "Irish coffee glass (preheated)",
+      "ice": "None (served hot)",
+      "garnish": "None",
+      "notes": "IBA: plain sugar can be replaced with sugar syrup. 50 ml is about 1⅔ oz."
+    },
+    "origin": {
+      "text": "Joe Sheridan, head chef at the Foynes air base near today's Shannon Airport in Ireland, is credited with adding whiskey to the coffee of arriving passengers in 1942 or 1943. San Francisco Chronicle writer Stanton Delaplane brought it to the Buena Vista Cafe in San Francisco, which began serving it on November 10, 1952.",
+      "source": "https://en.wikipedia.org/wiki/Irish_coffee"
+    },
+    "video": {
+      "youtubeId": "sJsY1LokABA",
+      "title": "Irish Coffee - hot AND cold 🔥🧊",
+      "author": "Anders Erickson"
+    }
+  },
+  {
+    "name": "Mint Julep",
+    "spec": {
+      "source": "https://iba-world.com/iba-cocktail/mint-julep/",
+      "build": [
+        {
+          "amount": "2 oz (60 ml)",
+          "ingredient": "Bourbon whiskey"
+        },
+        {
+          "amount": "4 sprigs",
+          "ingredient": "Fresh mint"
+        },
+        {
+          "amount": "1 tsp",
+          "ingredient": "Powdered sugar"
+        },
+        {
+          "amount": "2 tsp",
+          "ingredient": "Water"
+        }
+      ],
+      "method": "Muddled and stirred: gently muddle mint with sugar and water in the cup, fill with cracked ice, add bourbon, stir until the cup frosts",
+      "glass": "Julep cup (stainless steel)",
+      "ice": "Cracked ice",
+      "garnish": "Mint sprig",
+      "notes": ""
+    },
+    "origin": {
+      "text": "It began in the American South, probably in the 18th century; the earliest known mentions are from 1770 in Virginia. Churchill Downs has promoted it with the Kentucky Derby since 1938.",
+      "source": "https://en.wikipedia.org/wiki/Mint_julep"
+    },
+    "video": {
+      "youtubeId": "xfLW5Na9QpM",
+      "title": "TWO Mint Juleps! - the bourbon & prescription julep",
+      "author": "Anders Erickson"
+    }
+  }
+]

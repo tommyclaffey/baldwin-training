@@ -40,10 +40,11 @@ function cards() {
   if (!glassCards) {
     glassCards = [];
     for (const e of baseIndex().filter((x) => x.slug.startsWith('classic/'))) {
-      const card = find(basePage(e.file).main, byName('The glass'));
-      if (!card) continue;
-      const names = (find(card, byName('Art'))?.c || []).map((c) => (c.n || '').replace('Glass · ', '').toLowerCase());
-      glassCards.push({ slug: e.slug, title: texts(find(card, byName('Top')))[0]?.s || '', names, card });
+      // a classic page has one glass card; "Classic · Glass cards" in Figma holds the extra ones (Julep cup, Hurricane…)
+      for (const card of findAll(basePage(e.file).main, byName('The glass'))) {
+        const names = (find(card, byName('Art'))?.c || []).map((c) => (c.n || '').replace('Glass · ', '').toLowerCase());
+        glassCards.push({ slug: e.slug, title: texts(find(card, byName('Top')))[0]?.s || '', names, card });
+      }
     }
     glassCards.sort((a, b) => a.names.length - b.names.length);
   }

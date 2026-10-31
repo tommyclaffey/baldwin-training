@@ -5,6 +5,9 @@ export const FAMILIES = [
   { key: 'Stirred', pill: 'Stirred · spirit-forward', head: 'STIRRED · SPIRIT-FORWARD' },
   { key: 'Shaken', pill: 'Shaken · sours and more', head: 'SHAKEN · SOURS AND MORE' },
   { key: 'Tall', pill: 'Tall and bubbly', head: 'TALL AND BUBBLY' },
+  { key: 'Tropical', pill: 'Tropical and tiki', head: 'TROPICAL AND TIKI' },
+  { key: 'Brunch', pill: 'Brunch', head: 'BRUNCH' },
+  { key: 'Hot', pill: 'Hot and after dinner', head: 'HOT AND AFTER DINNER' },
 ];
 const img = (url) => (url ? [{ img: url, m: 'FILL' }] : [{ c: '#2A2724' }]);
 
