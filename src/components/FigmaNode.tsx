@@ -60,6 +60,23 @@ function Scaled({ w, h, outer, children }: { w: number; h: number; outer: CSSPro
 }
 
 const SVGS = svgs as Record<string, string>;
+
+/** An illustration whose viewBox is fitted to its drawn lines, so it sits in the middle of its box. */
+function Drawing({ svg, style, className }: { svg: string; style: CSSProperties; className: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  useLayoutEffect(() => {
+    const el = ref.current?.querySelector('svg');
+    if (!el) return;
+    try {
+      const b = (el as SVGSVGElement).getBBox();
+      if (!b.width || !b.height) return;
+      const pad = Math.max(b.width, b.height) * 0.06 + 2;
+      el.setAttribute('viewBox', `${b.x - pad} ${b.y - pad} ${b.width + pad * 2} ${b.height + pad * 2}`);
+      el.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    } catch { /* not rendered yet */ }
+  }, [svg]);
+  return <span ref={ref} aria-hidden="true" className={className} style={{ ...style, alignItems: 'center', justifyContent: 'center' }} dangerouslySetInnerHTML={{ __html: svg }} />;
+}
 const WEIGHT: Record<string, number> = { Regular: 400, Italic: 400, Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800 };
 const JUSTIFY: Record<string, string> = { C: 'center', M: 'flex-end', S: 'space-between' };
 const ALIGN: Record<string, string> = { C: 'center', M: 'flex-end', B: 'baseline' };
@@ -343,6 +360,8 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   if (node.t === 'S') {
     st.width = node.w; st.height = node.h; st.display = 'inline-flex'; st.flexShrink = 0;
     const svg = node.svg ? SVGS[node.svg] : '';
+    // Drawings (glasses, the bowl, the bottle) are centred on what's drawn, not on their canvas.
+    if (node.n?.startsWith('Shape · ')) return <Drawing svg={svg} style={st} className={cls.concat('fsvg', 'drawing').join(' ')} />;
     return <span aria-hidden="true" className={cls.concat('fsvg').join(' ')} style={st} dangerouslySetInnerHTML={{ __html: svg }} />;
   }
 
