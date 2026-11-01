@@ -675,6 +675,8 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   .fx-h:has(> .fsvg:last-child):not(:has(> .marker:first-child)):not(:has(> [data-label])) > .ftext { flex: 0 1 auto !important; min-width: 0; width: auto !important; }
   /* Big titles fit the screen. */
   .ftext.display { font-size: min(var(--z), 11.5vw) !important; overflow-wrap: anywhere; }
+  /* Wine and bottle names: small enough that the longest word fits on one line (Oct 31). */
+  .ftext.display.fit { font-size: min(var(--z), 10.5vw, calc((100vw - 120px) / (var(--lw) * 0.74))) !important; overflow-wrap: normal; }
   /* Stat boxes: rows grow with their text instead of clipping it. */
   [data-name="Stats"] > *, [data-name="Stats"] > * > * { height: auto !important; overflow: visible !important; }
   /* Tab bars: a 2-up grid, no orphan tab on its own row. */

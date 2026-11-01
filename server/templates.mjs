@@ -27,6 +27,20 @@ export function setText(node, s) {
   node.s = String(s ?? '');
   delete node.segs;
 }
+/**
+ * A big uppercase title that has to fit its column (Oct 31, Tommy: "Virginie de Valandraud" ran off the card).
+ * Shrinks long names toward `min`, and lets anything still too long wrap instead of being cut off.
+ * `width` is the column's inner width in the Figma design; `em` is Archivo ExtraBold's average uppercase advance.
+ */
+export function fitTitle(node, s, width, { em = 0.72, min = 34 } = {}) {
+  if (!node) return;
+  setText(node, s);
+  const z = node.z || 52, len = String(s).length || 1;
+  if (len * em * z > width) node.z = Math.max(min, Math.floor(width / (len * em)));
+  node.ar = 'H'; node.sh = 'F'; node.w = width;
+  // Phones size it by its longest word, so a word never breaks in the middle (see .ftext.display.fit).
+  node.lw = Math.max(...String(s).split(/[\s-]+/).map((x) => x.length), 1);
+}
 function parentOf(root, target) {
   return find(root, (n) => (n.c || []).includes(target));
 }

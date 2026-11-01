@@ -2,7 +2,7 @@
 //   • The Back Bar page (Figma 294:2): every bottle on the shelf, by spirit, each one linked to its own page.
 //   • A page for every bottle (template: Shelf · Willett Family Estate Rye, 295:2). No brand photos: the bottle is drawn.
 // Everything here comes from the shelf list in the admin, the house cocktail builds and the spirit and style pages.
-import { clone, find, findAll, byName, startsWith, texts, setText } from './templates.mjs';
+import { clone, find, findAll, byName, startsWith, texts, setText, fitTitle } from './templates.mjs';
 import { SHELF } from './cms.mjs';
 
 const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
@@ -138,7 +138,7 @@ export function bottlePage(tpl, e, { shelf, house, index, basePage }) {
   tags.c = styles[0] ? pills : [pills[0], pills[2]];
   const [script, title, line] = copy.c.filter((c) => c.t === 'T');
   setText(script, uses.length ? `The ${word} in ${uses[0].data.name}` : d.tier ? `${d.tier} on our back bar` : 'From our back bar');
-  setText(title, d.name.toUpperCase());
+  fitTitle(title, d.name.toUpperCase(), copy.w - (copy.pd ? copy.pd[1] + copy.pd[3] : 0));
   // "Straight Rye" is already a rye: no "straight rye rye".
   const kind = !styles[0] ? word : lower(styles[0]).includes(lower(word)) ? lower(styles[0]) : `${lower(styles[0])} ${word}`;
   setText(line, d.notes || `${an(kind)}${kind} on our back bar${uses.length ? `, and the ${word} we pour in ${list(uses.map((h) => h.data.name))}` : ''}.${d.limited ? ' Limited quantities.' : ''}`);

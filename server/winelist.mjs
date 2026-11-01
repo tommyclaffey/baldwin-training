@@ -2,7 +2,7 @@ import { wineDescription } from './cms.mjs';
 // The wine list (CMS records, no pages of their own). It fills:
 //   • By the glass and By the bottle on the Wine page (designed on the Wine page in Figma)
 //   • "On our list" on every wine style, country, grape and region page (designed on Cabernet)
-import { clone, find, byName, startsWith, texts, setText, remove } from './templates.mjs';
+import { clone, find, byName, startsWith, texts, setText, remove, fitTitle } from './templates.mjs';
 import { wineKind } from './wine.mjs';
 
 const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
@@ -219,7 +219,7 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
     const style = d.style || d.color;
     if (style && p2) { setText(texts(p2)[0], style); p2.n = 'Pill · ' + style; } else tags.c = [p1];
   }
-  setText(find(main, byName('Title')), d.name.toUpperCase());
+  { const title = find(main, byName('Title')); const copy = find(main, byName('Copy')); fitTitle(title, d.name.toUpperCase(), copy ? copy.w - (copy.pd ? copy.pd[1] + copy.pd[3] : 0) : 648); }
   // Varietal and region in their own labelled boxes (Tommy, Oct 31); the line under the name keeps only a size note.
   const origin = find(main, byName('Origin'));
   if (origin) {

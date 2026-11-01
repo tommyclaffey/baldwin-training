@@ -18,7 +18,7 @@ export type FNode = {
   f?: { c?: string; o?: number; img?: string; m?: string; g?: [string, number, number][]; gt?: string; ga?: number }[];
   st?: string; sto?: number; sw?: number; sws?: number[]; dash?: 1; sa?: string;
   r?: number; rs?: number[];
-  s?: string; ff?: string; fs?: string; z?: number; lh?: string | number; ls?: string | number; ta?: string; ar?: string;
+  s?: string; ff?: string; fs?: string; z?: number; lh?: string | number; ls?: string | number; ta?: string; ar?: string; lw?: number;
   segs?: [number, number, string, string | null][];
   clip?: 1; lm?: 'H' | 'V'; gap?: number; pd?: number[]; pa?: string; ca?: string; wrap?: 1; cg?: number;
   c?: FNode[];
@@ -162,7 +162,7 @@ function textNode(node: FNode, parentLm: 'H' | 'V' | undefined, key?: number) {
   if ((node.fs || '').includes('Italic')) st.fontStyle = 'italic';
   st.fontSize = node.z;
   // Big titles shrink to fit a phone (see .ftext.display in styles.css).
-  if ((node.z || 0) >= 36) { cls.push('display'); (st as Record<string, unknown>)['--z'] = `${node.z}px`; }
+  if ((node.z || 0) >= 36 || node.lw) { cls.push('display'); (st as Record<string, unknown>)['--z'] = `${node.z}px`; if (node.lw) { cls.push('fit'); (st as Record<string, unknown>)['--lw'] = node.lw; } }
   if (node.lh !== undefined) st.lineHeight = typeof node.lh === 'string' ? Number(node.lh.replace('%', '')) / 100 : `${node.lh}px`;
   else st.lineHeight = node.ff === 'Pinyon Script' ? 1.25 : 1.22;
   if (node.ls !== undefined) st.letterSpacing = typeof node.ls === 'string' ? `${Number(node.ls.replace('%', '')) / 100}em` : `${node.ls}px`;
