@@ -1,964 +1,1442 @@
 {
-  "number": 3,
-  "slug": "wine-law-and-labels",
-  "title": "Wine law and labels",
-  "script": "Chapter three",
-  "lead": "How the big wine countries rank and protect their wines, the US labeling percentages, and how to read what a label is telling you.",
-  "minutes": 25,
-  "intro": {
-    "script": "Start here",
-    "title": "TWO EU TIERS, MANY NAMES",
-    "text": "In Europe, protected wine sits in two EU tiers. Each country uses its own words for them.",
-    "tiers": [
+ "number": 3,
+ "slug": "wine-law-and-labels",
+ "title": "Wine law and labels",
+ "script": "Chapter three",
+ "lead": "How the big wine countries rank and protect their wines, the US labeling percentages, and how to read what a label is telling you.",
+ "minutes": 25,
+ "intro": {
+  "script": "Start here",
+  "title": "TWO EU TIERS, MANY NAMES",
+  "text": "In Europe, protected wine sits in two EU tiers. Each country uses its own words for them.",
+  "tiers": [
+   {
+    "name": "PDO / DOP / AOP",
+    "note": "France AOC/AOP, Italy DOCG and DOC, Spain DO and DOCa, Germany Qualitätswein and Prädikatswein"
+   },
+   {
+    "name": "PGI / IGP",
+    "note": "France IGP, Italy IGT, Spain Vino de la Tierra"
+   },
+   {
+    "name": "No geographic indication",
+    "note": "Germany: Deutscher Wein"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Old World, New World",
+   "lines": [
+    {
+     "label": "Three label styles",
+     "text": "Wines are labeled by grape, by region, or by a made-up name. Old World countries mostly label by region. The region's law decides which grapes go in."
+    },
+    {
+     "label": "What the terms mean",
+     "text": "Old World means the countries where modern winemaking traditions began, like France and Italy. New World means countries that borrowed them, like the US, Australia and Chile."
+    }
+   ],
+   "know": [
+    "A Chablis label says Chablis, not Chardonnay.",
+    "Made-up names are often blends that break a region's rules, like the first Super Tuscans.",
+    "Old World style tends to be lighter, lower in alcohol and higher in acid; this is typical, not a rule.",
+    "The exam asks you to read grape, color and style from a label."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Three ways a wine is labeled",
+     "dark": true,
+     "items": [
       {
-        "name": "PDO / DOP / AOP",
-        "note": "France AOC/AOP, Italy DOCG and DOC, Spain DO and DOCa, Germany Qualitätswein and Prädikatswein"
+       "name": "By grape",
+       "text": "Cabernet Sauvignon, Albariño"
       },
       {
-        "name": "PGI / IGP",
-        "note": "France IGP, Italy IGT, Spain Vino de la Tierra"
+       "name": "By region",
+       "text": "Chablis, Chianti, Rioja"
       },
       {
-        "name": "No geographic indication",
-        "note": "Germany: Deutscher Wein"
+       "name": "By name",
+       "text": "A made-up name, often a blend"
       }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "France: AOC, AOP and IGP",
+   "lines": [
+    {
+     "label": "AOP",
+     "text": "Every production step happens in one defined area, by known methods. The rules sit in a 'cahier des charges' approved by the EU."
+    },
+    {
+     "label": "AOC and IGP",
+     "text": "AOC is the national step before EU registration as AOP; wines may still print AOC. IGP links a wine to its origin; for wine, harvest to finished wine happens in the zone."
+    }
+   ],
+   "know": [
+    "AOP is the EU sign; AOC is the French national equivalent.",
+    "Only wine may keep using the term AOC.",
+    "INAO has run France's origin system since 1935.",
+    "IGP wines are also checked by state-certified bodies."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "AOP / AOC",
+       "title": "Protected origin",
+       "text": "All steps in one area\nKnown local know-how\nEU-approved rules"
+      },
+      {
+       "label": "IGP",
+       "title": "Geographic indication",
+       "text": "Quality tied to origin\nFor wine: harvest to bottle-ready in the zone\nEU-approved rules"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Italy: DOCG, DOC and IGT",
+   "book": "wine/italy",
+   "lines": [
+    {
+     "label": "The tiers",
+     "text": "Italy splits its DOP wines into DOCG and DOC. IGT is Italy's word for IGP. A DOCG must have been a DOC for at least seven years."
+    },
+    {
+     "label": "Label words",
+     "text": "Classico means the oldest zone. Riserva means extra aging. Superiore means lower yields and more alcohol."
+    }
+   ],
+   "chips": {
+    "label": "Label terms",
+    "items": [
+     "Classico",
+     "Riserva",
+     "Superiore",
+     "Gran Selezione"
     ]
+   },
+   "know": [
+    "DOCG rules must be stricter than the DOC they came from.",
+    "Riserva: at least two years for reds, one year for whites.",
+    "Gran Selezione is only for DOCG wines from the estate's own grapes.",
+    "DO wines must show a vintage, except fortified, non-vintage sparkling and frizzante."
+   ],
+   "visuals": [
+    {
+     "type": "pyramid",
+     "title": "Italy, top to bottom",
+     "rows": [
+      {
+       "name": "DOCG",
+       "note": "DOC for 7+ years, stricter rules"
+      },
+      {
+       "name": "DOC",
+       "note": "from zones IGT for 5+ years"
+      },
+      {
+       "name": "IGT",
+       "note": "Italy's IGP"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Spain: DO, DOCa and Pago",
+   "book": "wine/spain",
+   "lines": [
+    {
+     "label": "The tiers",
+     "text": "Vino de la Tierra is Spain's IGP. DO needs prestige and five years as a quality region. DOCa needs ten years as a DO and bottling inside the zone."
+    },
+    {
+     "label": "Aging words",
+     "text": "Crianza, Reserva and Gran Reserva climb in minimum aging. Level 1 needs the order, not the exact times."
+    }
+   ],
+   "know": [
+    "Rioja is a DOCa.",
+    "Vino de Pago is a DOP from one site with its own soil and microclimate.",
+    "Under Spanish law, red Crianza needs 24 months, 6 in oak.",
+    "Rioja's own rules are longer: Crianza 2 years with 1 in oak."
+   ],
+   "visuals": [
+    {
+     "type": "pyramid",
+     "title": "Spain, top to bottom",
+     "rows": [
+      {
+       "name": "Vino de Pago",
+       "note": "one named site"
+      },
+      {
+       "name": "DOCa",
+       "note": "10+ years as DO, bottled in zone"
+      },
+      {
+       "name": "DO",
+       "note": "prestige, 5+ years as quality region"
+      },
+      {
+       "name": "Vino de la Tierra",
+       "note": "Spain's IGP"
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "title": "Red aging tiers in Rioja",
+     "items": [
+      {
+       "name": "Crianza",
+       "text": "2 years, 1 in oak"
+      },
+      {
+       "name": "Reserva",
+       "text": "3 years, 1 in oak, 6 months in bottle"
+      },
+      {
+       "name": "Gran Reserva",
+       "text": "5 years, 2 in oak, 2 in bottle"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Germany: the Prädikat levels",
+   "book": "wine/germany",
+   "lines": [
+    {
+     "label": "The tiers",
+     "text": "Deutscher Wein has no named origin. Landwein is regional. Qualitätswein comes from one of 13 regions. Prädikatswein is Qualitätswein graded by ripeness at harvest."
+    },
+    {
+     "label": "Ripeness, not sweetness",
+     "text": "Riper grapes earn a higher Prädikat. The winemaker still decides how sweet the wine ends up, so Kabinett and Spätlese can be dry."
+    }
+   ],
+   "chips": {
+    "label": "Label words",
+    "items": [
+     "Trocken = dry",
+     "Halbtrocken = half-dry",
+     "Erzeugerabfüllung = estate bottled"
+    ]
+   },
+   "know": [
+    "Prädikatswein may not be chaptalized.",
+    "Eiswein: as ripe as Beerenauslese, picked frozen at minus 7°C or colder.",
+    "The 1971 law made ripeness at harvest the main quality measure.",
+    "Grosses Gewächs is a dry single-vineyard top wine (a VDP term, now also in the 2021 law)."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "The six Prädikate, least to most ripe",
+     "rows": [
+      {
+       "name": "Kabinett",
+       "meta": "off-dry, can be trocken"
+      },
+      {
+       "name": "Spätlese",
+       "meta": "off-dry, can be trocken"
+      },
+      {
+       "name": "Auslese",
+       "meta": "often off-dry"
+      },
+      {
+       "name": "Beerenauslese",
+       "meta": "very sweet, often botrytis"
+      },
+      {
+       "name": "Eiswein",
+       "meta": "very sweet, frozen grapes"
+      },
+      {
+       "name": "Trockenbeerenauslese",
+       "meta": "very sweet"
+      }
+     ],
+     "note": "Eiswein matches Beerenauslese in ripeness."
+    },
+    {
+     "type": "pyramid",
+     "title": "Germany, top to bottom",
+     "rows": [
+      {
+       "name": "Prädikatswein",
+       "note": "graded by ripeness"
+      },
+      {
+       "name": "Qualitätswein",
+       "note": "one of 13 regions"
+      },
+      {
+       "name": "Landwein",
+       "note": "regional"
+      },
+      {
+       "name": "Deutscher Wein",
+       "note": "no geographic indication"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "United States: AVAs and percentages",
+   "book": "wine/usa",
+   "lines": [
+    {
+     "label": "AVA",
+     "text": "An American Viticultural Area is a defined growing region with a name, its own features and a set boundary."
+    },
+    {
+     "label": "The numbers",
+     "text": "Name a grape: 75%. Name a state or county: 75%. Name an AVA: 85%. Name a vineyard: 95%. A vintage with an AVA: 95%."
+    }
+   ],
+   "chips": {
+    "label": "Label terms",
+    "items": [
+     "Estate Bottled",
+     "Meritage",
+     "Reserve (no legal meaning)"
+    ]
+   },
+   "know": [
+    "A vintage with a state or county appellation needs 85%; with an AVA, 95%.",
+    "'Estate bottled' needs an AVA and grapes grown on the winery's own or controlled land.",
+    "Naming two or more grapes means listing each percentage.",
+    "Showing a vintage or grape name means the label must show an appellation.",
+    "The Court lists Oregon at 90% for most varietals and 95% for AVAs."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "US federal minimums",
+     "rows": [
+      {
+       "name": "Grape variety",
+       "value": "75%",
+       "pct": 0.75
+      },
+      {
+       "name": "State or county",
+       "value": "75%",
+       "pct": 0.75
+      },
+      {
+       "name": "AVA",
+       "value": "85%",
+       "pct": 0.85
+      },
+      {
+       "name": "Vintage, with AVA",
+       "value": "95%",
+       "pct": 0.95
+      },
+      {
+       "name": "Vineyard name",
+       "value": "95%",
+       "pct": 0.95
+      }
+     ],
+     "note": "TTB rules, 27 CFR part 4. Vintage with a non-AVA appellation: 85%."
+    }
+   ]
+  },
+  {
+   "name": "Reading a label",
+   "lines": [
+    {
+     "label": "Five parts",
+     "text": "Producer, region, grape or appellation, vintage, and alcohol. If no grape is named, the appellation's rules tell you what's inside."
+    },
+    {
+     "label": "Watch for",
+     "text": "Estate bottling has its own phrase in each language. 'Reserve' and 'Old Vines' have no official meaning in many places."
+    }
+   ],
+   "know": [
+    "Chablis = Chardonnay, Chianti = Sangiovese, even though the label won't say so.",
+    "NV means non-vintage, a blend of years.",
+    "Mis en bouteille au château/domaine is French for estate bottled.",
+    "Imbottigliato all'origine is the Italian equivalent."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "What to find on any label",
+     "rows": [
+      {
+       "name": "Producer or name",
+       "meta": "who made it"
+      },
+      {
+       "name": "Region",
+       "meta": "where the grapes grew"
+      },
+      {
+       "name": "Grape or appellation",
+       "meta": "what's inside"
+      },
+      {
+       "name": "Vintage or NV",
+       "meta": "harvest year"
+      },
+      {
+       "name": "Alcohol by volume",
+       "meta": "a hint of richness"
+      }
+     ],
+     "note": "Wine Folly's five basic parts."
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "AOC",
+   "b": "AOP",
+   "why": "AOP is the EU-wide protection; AOC is France's national step before it, still allowed on wine labels."
+  },
+  {
+   "a": "DOC",
+   "b": "DOCG",
+   "why": "DOCG sits above DOC, needs 7+ years as a DOC and stricter rules."
+  },
+  {
+   "a": "DO",
+   "b": "DOCa",
+   "why": "DOCa needs 10+ years as a DO and bottling inside the zone; Rioja and Priorat are DOCa."
+  },
+  {
+   "a": "85% (AVA)",
+   "b": "95% (vintage with AVA)",
+   "why": "85% of the grapes must come from the AVA; 95% must come from the stated year."
+  }
+ ],
+ "sources": "INAO, Italian Law 238/2016, Spain's Ley 6/2015 (BOE), Consejo Regulador DOCa Rioja, Wines of Germany (DWI), TTB and 27 CFR part 4 (eCFR), and the Court of Master Sommeliers Americas curriculum guide, with Wine Folly as a labelled secondary source. Checked Oct 31, 2026.",
+ "cards": [
+  {
+   "q": "What does AOP stand for?",
+   "answer": "Appellation d'origine protégée",
+   "wrong": [
+    "Appellation d'origine préférée",
+    "Association des origines protégées",
+    "Appellation officielle de production"
+   ],
+   "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
+  },
+  {
+   "q": "What is the AOC in France today?",
+   "answer": "The national step before EU AOP registration",
+   "wrong": [
+    "A tier above AOP",
+    "A table wine category",
+    "A private producer label"
+   ],
+   "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
+  },
+  {
+   "q": "Which products may still carry the term AOC?",
+   "answer": "Only wine products",
+   "wrong": [
+    "Only cheeses",
+    "All French foods",
+    "No products, it was abolished"
+   ],
+   "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
+  },
+  {
+   "q": "For an IGP wine, what must happen inside the zone?",
+   "answer": "Every step from harvest to finished wine",
+   "wrong": [
+    "Only bottling",
+    "Only the grape growing",
+    "Nothing, it's a style label"
+   ],
+   "source": "https://www.inao.gouv.fr/igp-indication-geographique-protegee"
+  },
+  {
+   "q": "Since what year has INAO run French origin policy?",
+   "answer": "1935",
+   "wrong": [
+    "1855",
+    "1971",
+    "2009"
+   ],
+   "source": "https://www.inao.gouv.fr/histoire"
+  },
+  {
+   "q": "Italian DOP wines are classified into which two tiers?",
+   "answer": "DOCG and DOC",
+   "wrong": [
+    "DOC and IGT",
+    "IGT and Vino",
+    "DOCG and IGP"
+   ],
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=15"
+  },
+  {
+   "q": "IGT is Italy's term for which EU category?",
+   "answer": "IGP",
+   "wrong": [
+    "DOP",
+    "AOC",
+    "DOCa"
+   ],
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=15"
+  },
+  {
+   "q": "A wine must have been DOC for how long before it can become DOCG?",
+   "answer": "At least seven years",
+   "wrong": [
+    "At least two years",
+    "At least 25 years",
+    "No minimum"
+   ],
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=19"
+  },
+  {
+   "q": "Under Italian law, Riserva reds need at least how much aging?",
+   "answer": "Two years",
+   "wrong": [
+    "Six months",
+    "One year",
+    "Five years"
+   ],
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=17"
+  },
+  {
+   "q": "In Italy, 'Classico' marks what?",
+   "answer": "The oldest zone of origin",
+   "wrong": [
+    "A sweeter style",
+    "A longer-aged wine",
+    "A sparkling version"
+   ],
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=17"
+  },
+  {
+   "q": "Gran Selezione can only be used by which wines?",
+   "answer": "DOCG wines",
+   "wrong": [
+    "IGT wines",
+    "Any DOC wine",
+    "Sparkling wines only"
+   ],
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=17"
+  },
+  {
+   "q": "In Spain, 'Vino de la Tierra' marks which category?",
+   "answer": "IGP",
+   "wrong": [
+    "DOP",
+    "DOCa",
+    "Vino de Pago"
+   ],
+   "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
+  },
+  {
+   "q": "To be a DOCa, a Spanish DO must have used the DO term for how long?",
+   "answer": "At least 10 years",
+   "wrong": [
+    "At least 2 years",
+    "At least 5 years",
+    "At least 50 years"
+   ],
+   "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
+  },
+  {
+   "q": "What is a Spanish 'Vino de Pago'?",
+   "answer": "A DOP from a single site with its own soil and microclimate",
+   "wrong": [
+    "A wine aged five years",
+    "A cheap table wine",
+    "A Cava aged 30 months"
+   ],
+   "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
+  },
+  {
+   "q": "Put Spain's aging terms in order, least to most aging.",
+   "answer": "Crianza, Reserva, Gran Reserva",
+   "wrong": [
+    "Reserva, Crianza, Gran Reserva",
+    "Gran Reserva, Reserva, Crianza",
+    "Joven, Gran Reserva, Reserva"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+  },
+  {
+   "q": "A red Rioja Gran Reserva needs at least how long?",
+   "answer": "Five years, two in oak",
+   "wrong": [
+    "Two years, one in oak",
+    "Three years, one in oak",
+    "Ten years, five in oak"
+   ],
+   "source": "https://riojawine.com/en-gb/the-designation/classification/"
+  },
+  {
+   "q": "Which German category has no geographic indication?",
+   "answer": "Deutscher Wein",
+   "wrong": [
+    "Landwein",
+    "Qualitätswein",
+    "Prädikatswein"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
+  },
+  {
+   "q": "How many German wine regions (Anbaugebiete) are there?",
+   "answer": "13",
+   "wrong": [
+    "7",
+    "10",
+    "21"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
+  },
+  {
+   "q": "What sets a German wine's Prädikat level?",
+   "answer": "Grape ripeness at harvest",
+   "wrong": [
+    "Years in barrel",
+    "Final sweetness",
+    "Vineyard size"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
+  },
+  {
+   "q": "Is chaptalization allowed for Prädikatswein?",
+   "answer": "No",
+   "wrong": [
+    "Yes, always",
+    "Only for Kabinett",
+    "Only in cool vintages"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
+  },
+  {
+   "q": "Which is the lowest Prädikat level?",
+   "answer": "Kabinett",
+   "wrong": [
+    "Spätlese",
+    "Auslese",
+    "Beerenauslese"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
+  },
+  {
+   "q": "Eiswein is at the same ripeness level as which Prädikat?",
+   "answer": "Beerenauslese",
+   "wrong": [
+    "Kabinett",
+    "Spätlese",
+    "Trockenbeerenauslese"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
+  },
+  {
+   "q": "What does 'Trocken' mean on a German label?",
+   "answer": "Dry",
+   "wrong": [
+    "Sweet",
+    "Half-dry",
+    "Late harvest"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=49"
+  },
+  {
+   "q": "A US wine labeled with a state or county must be at least what percent from that place?",
+   "answer": "75%",
+   "wrong": [
+    "51%",
+    "85%",
+    "95%"
+   ],
+   "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/labeling-wine/wine-labeling-appellation-of-origin"
+  },
+  {
+   "q": "A US wine labeled with an AVA must be at least what percent from that AVA?",
+   "answer": "85%",
+   "wrong": [
+    "75%",
+    "95%",
+    "100%"
+   ],
+   "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/labeling-wine/wine-labeling-appellation-of-origin"
+  },
+  {
+   "q": "A US varietal wine must be at least what percent of the named grape?",
+   "answer": "75%",
+   "wrong": [
+    "51%",
+    "85%",
+    "100%"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.23"
+  },
+  {
+   "q": "A vintage-dated US wine with an AVA must be at least what percent from that year?",
+   "answer": "95%",
+   "wrong": [
+    "75%",
+    "85%",
+    "100%"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.27"
+  },
+  {
+   "q": "A US label naming a vineyard needs at least what percent from it?",
+   "answer": "95%",
+   "wrong": [
+    "75%",
+    "85%",
+    "51%"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-D/section-4.39"
+  },
+  {
+   "q": "What does 'Reserve' legally mean on a California label?",
+   "answer": "Nothing; it has no legal meaning",
+   "wrong": [
+    "Aged at least two years",
+    "Estate grown",
+    "From an AVA"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+  },
+  {
+   "q": "Which label style is most common in Old World countries?",
+   "answer": "Labeled by region",
+   "wrong": [
+    "Labeled by grape",
+    "Labeled by brand",
+    "Labeled by alcohol level"
+   ],
+   "source": "https://winefolly.com/tips/reading-wine-labels/"
+  },
+  {
+   "q": "Wines with made-up names are often what?",
+   "answer": "Blends that don't fit a region's wine law",
+   "wrong": [
+    "Wines with no alcohol",
+    "Single-vineyard Grand Crus",
+    "Wines made from one grape only"
+   ],
+   "source": "https://winefolly.com/tips/reading-wine-labels/"
+  },
+  {
+   "q": "Which of these is a New World wine country?",
+   "answer": "Australia",
+   "wrong": [
+    "France",
+    "Italy",
+    "Portugal"
+   ],
+   "source": "https://winefolly.com/deep-dive/new-world-vs-old-world-wine/"
+  },
+  {
+   "q": "What does 'NV' mean on a wine label?",
+   "answer": "Non-vintage: the wine can blend several years",
+   "wrong": [
+    "No vineyard is named",
+    "New vines under five years old",
+    "Not meant for aging"
+   ],
+   "source": "https://winefolly.com/tips/how-to-read-a-wine-label/"
+  },
+  {
+   "q": "What does 'Mis en bouteille au domaine' mean on a French label?",
+   "answer": "Estate bottled",
+   "wrong": [
+    "Aged in new oak",
+    "From a Grand Cru vineyard",
+    "Bottled unfiltered"
+   ],
+   "source": "https://winefolly.com/tips/how-to-read-a-wine-label/"
+  },
+  {
+   "q": "A Chablis label doesn't name the grape. Which grape is it?",
+   "answer": "Chardonnay",
+   "wrong": [
+    "Sauvignon Blanc",
+    "Pinot Noir",
+    "Chenin Blanc"
+   ],
+   "source": "https://winefolly.com/tips/reading-wine-labels/"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Introductory exam content: wine law of important regions (connecting grapes with places or appellations, and appellations with styles) and reading a wine label (determining grape variety, color and style from the label).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=9"
+  },
+  {
+   "fact": "Section 3 of the Introductory course outline is 'Understanding Wine Law'.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=4"
+  },
+  {
+   "fact": "Regional wine laws dictate which grape varieties can be grown and how they are grown in many wine regions.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=6"
+  },
+  {
+   "fact": "Wines are labeled in one of three ways: by grape variety, by region, or by a made-up name.",
+   "source": "https://winefolly.com/tips/reading-wine-labels/"
+  },
+  {
+   "fact": "Labeling by region is used mostly in Old World countries such as France, Italy, Spain and Portugal; each region dictates which grapes may be used (e.g. Chablis is Chardonnay, Chianti is Sangiovese).",
+   "source": "https://winefolly.com/tips/reading-wine-labels/"
+  },
+  {
+   "fact": "Named (made-up) wines are often blends that don't fit a region's wine law; Tuscan wines with French grapes such as Merlot, Syrah and Cabernet gave rise to the first Super Tuscans.",
+   "source": "https://winefolly.com/tips/reading-wine-labels/"
+  },
+  {
+   "fact": "Wine Folly's varietal minimums: 75% USA (Oregon 90%), 80% Argentina, 85% for Italy, France, Germany, Austria, Portugal, New Zealand, South Africa, Australia and the UK.",
+   "source": "https://winefolly.com/tips/reading-wine-labels/"
+  },
+  {
+   "fact": "'Old World' refers to traditional winemaking countries such as France, Italy, Spain, Portugal and Germany; 'New World' refers to countries that borrowed those traditions, e.g. North and South America, South Africa, Australia, New Zealand.",
+   "source": "https://winefolly.com/deep-dive/new-world-vs-old-world-wine/"
+  },
+  {
+   "fact": "Old World wine tends to have lighter body, lower alcohol, higher acidity and less fruit; New World wine tends toward fuller body, higher alcohol, lower acidity and pronounced fruit. These are typical, not rules.",
+   "source": "https://winefolly.com/deep-dive/new-world-vs-old-world-wine/"
+  },
+  {
+   "fact": "Five basic parts of a label: producer or name, region, variety or appellation, vintage or non-vintage (NV), alcohol by volume. NV wines can pull wine from multiple vintages. 'Old Vines' has no rule for how old the vines must be.",
+   "source": "https://winefolly.com/tips/how-to-read-a-wine-label/"
+  },
+  {
+   "fact": "A Chablis label does not mention Chardonnay; an appellation wine relies on the appellation's rules to tell you what's in the bottle.",
+   "source": "https://winefolly.com/tips/how-to-read-a-wine-label/"
+  },
+  {
+   "fact": "Estate-bottled terms: Mis en bouteille au château / au domaine (France), Imbottigliato all'origine (Italy), Erzeugerabfüllung (Germany).",
+   "source": "https://winefolly.com/tips/how-to-read-a-wine-label/"
+  },
+  {
+   "fact": "'Reserve' on a label has no official meaning (Wine Folly); the Court's guide says 'Reserve has no legal meaning' for California.",
+   "source": "https://winefolly.com/tips/how-to-read-a-wine-label/"
+  },
+  {
+   "fact": "AOP (Appellation d'origine protégée) is a product whose production steps are all carried out according to recognized know-how in one geographic area. It is a European sign that protects the name across the EU.",
+   "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
+  },
+  {
+   "fact": "AOC (appellation d'origine contrôlée) is the mandatory national recognition step before a name is registered as an AOP. Only wine products keep the right to use the AOC term if they wish.",
+   "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
+  },
+  {
+   "fact": "AOP rules are written in a cahier des charges defined by producers and approved by the EU, and checked by an independent body approved by INAO.",
+   "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
+  },
+  {
+   "fact": "IGP identifies a product whose quality, reputation or other traits are linked to its geographic origin. At least one step of production must happen in the area; for wine, every operation from grape harvest to the end of winemaking happens in the zone.",
+   "source": "https://www.inao.gouv.fr/igp-indication-geographique-protegee"
+  },
+  {
+   "fact": "INAO has been at the heart of French origin policy since 1935.",
+   "source": "https://www.inao.gouv.fr/histoire"
+  },
+  {
+   "fact": "Italian law 238/2016, art. 28: DOP wines are classified as DOCG and DOC; IGP wines use the Italian term IGT. The Italian and EU terms may appear alone or together on the label.",
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=15"
+  },
+  {
+   "fact": "Art. 33: DOCG is reserved for wines already DOC for at least seven years, judged of particular merit; DOC is reserved for wines from zones recognized as IGT for at least five years. A DOCG must have stricter rules than its DOC.",
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=19"
+  },
+  {
+   "fact": "Art. 31: 'Classico' is for the oldest zone of origin (e.g. Chianti Classico). 'Riserva' needs at least two years of aging for reds and one year for whites.",
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=17"
+  },
+  {
+   "fact": "Art. 31: 'Superiore' needs at least 10% lower yield per hectare and at least 0.5% more alcohol than the base wine. 'Gran Selezione' is only for DOCG wines made from the bottling estate's own grapes.",
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=17"
+  },
+  {
+   "fact": "Art. 31: DO wines must show the vintage on the label, except fortified (liquorosi), non-vintage sparkling and frizzante wines.",
+   "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=18"
+  },
+  {
+   "fact": "Court guide for Piedmont lists the classification as IGP, DOC, DOCG, and label terms Normale and Riserva.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+  },
+  {
+   "fact": "Spain (Ley 6/2015): 'Vino de la Tierra' marks an IGP wine; 'Vino de calidad de' marks a DOP wine.",
+   "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
+  },
+  {
+   "fact": "'Denominación de origen' needs high commercial prestige and a region recognized as a quality wine with geographical indication for at least five years.",
+   "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
+  },
+  {
+   "fact": "'Denominación de origen calificada' needs, on top of DO rules, at least 10 years using the term DO, and sale only in bottle from registered wineries inside the zone.",
+   "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
+  },
+  {
+   "fact": "'Vino de pago' is a DOP from a 'pago': a rural site with its own soil and microclimate, known by a name tied to vine growing. All grapes must come from vineyards in the pago.",
+   "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
+  },
+  {
+   "fact": "National aging terms for red DOP wines: Crianza at least 24 months with at least 6 in oak barrels of up to 330 liters; Reserva 36 months with at least 12 in oak; Gran Reserva 60 months with at least 18 in oak.",
+   "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
+  },
+  {
+   "fact": "Rioja red: Crianza at least two years with at least one year in 225-liter oak barrels; Reserva at least three years with at least one in oak and six months in bottle; Gran Reserva at least five years with two in oak and two in bottle.",
+   "source": "https://riojawine.com/en-gb/the-designation/classification/"
+  },
+  {
+   "fact": "Court guide: Rioja is a DOCa. Crianza, Reserva and Gran Reserva are aging tiers in ascending order of minimum time; knowing the actual times is not necessary at the Introductory level.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+  },
+  {
+   "fact": "Court guide, Germany: wine without geographic indication is Deutscher Wein; with GI: Landwein (regional), Qualitätswein (from one of the 13 Anbaugebiete) and Prädikatswein (a subset of Qualitätswein graded by ripeness at harvest). Chaptalization is not allowed for Prädikatswein.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
+  },
+  {
+   "fact": "The six Prädikate in order of ripeness: Kabinett, Spätlese, Auslese, Beerenauslese, Eiswein (same ripeness level as Beerenauslese), Trockenbeerenauslese. Kabinett and Spätlese are off-dry in style and can be made trocken; Beerenauslese and TBA are very sweet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
+  },
+  {
+   "fact": "Ripeness at harvest sets the Prädikat, but choices in the winery decide how sweet the finished wine is.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
+  },
+  {
+   "fact": "VDP is a German producers' association with its own Burgundy-style vineyard classification. Grosses Gewächs: single-vineyard grand cru wines; Erstes Gewächs: premier cru. Label terms: Trocken = dry, Halbtrocken = half-dry.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=49"
+  },
+  {
+   "fact": "The 1971 German Wine Law made ripeness at harvest the main measure of quality.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=51"
+  },
+  {
+   "fact": "Eiswein is made from grapes as ripe as BA, harvested at minus 7°C or colder and pressed while frozen. Prädikat wines may not be enriched (chaptalized); Qualitätswein may.",
+   "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/449/pr%C3%A4dikate"
+  },
+  {
+   "fact": "Prädikatswein and Qualitätswein must come 100% from one of the 13 German growing regions and pass the quality test.",
+   "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/449/pr%C3%A4dikate"
+  },
+  {
+   "fact": "Since 1971 every Qualität and Prädikat wine has been lab-tested and sensory-tested and gets an official approval number shown on the label.",
+   "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/180/proven-qualitiy"
+  },
+  {
+   "fact": "From 2021 Germany has an origin pyramid for Qualität and Prädikat wines, 'the smaller the origin, the higher the quality': single-vineyard wines (Großes Gewächs, Erstes Gewächs, other sites) at the top, then village wines (Ortswein), region wines, then the wine-growing area.",
+   "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/462/new-origin-pyramid-for-qualit%C3%A4t-and-pr%C3%A4dikat-wines"
+  },
+  {
+   "fact": "Under the 2021 rules, the term Qualitätswein can be replaced on all Qualität and Prädikat wines by 'wine with a protected designation of origin' plus the region name.",
+   "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/462/new-origin-pyramid-for-qualit%C3%A4t-and-pr%C3%A4dikat-wines"
+  },
+  {
+   "fact": "Großes Gewächs must be dry (trocken), hand-harvested, from a single vineyard, with the vintage on the label.",
+   "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/462/new-origin-pyramid-for-qualit%C3%A4t-and-pr%C3%A4dikat-wines"
+  },
+  {
+   "fact": "An American viticultural area (AVA) is a defined grape-growing region with a name, distinguishing features and a delineated boundary set in 27 CFR part 9.",
+   "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/labeling-wine/wine-labeling-appellation-of-origin"
+  },
+  {
+   "fact": "US appellation rules: at least 75% from the named country, state or county; at least 85% from grapes grown in a named viticultural area. Imported wines follow the same 75% and 85% thresholds.",
+   "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/labeling-wine/wine-labeling-appellation-of-origin"
+  },
+  {
+   "fact": "An appellation is required on the label when the wine shows a vintage date, a varietal name, a semi-generic name, 'estate bottled' and some other designations.",
+   "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/labeling-wine/wine-labeling-appellation-of-origin"
+  },
+  {
+   "fact": "A single grape variety may be named if at least 75% of the wine is that variety, all grown in the labeled appellation. Vitis labrusca varieties may use 51% with a 'contains not less than 51%' statement.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.23"
+  },
+  {
+   "fact": "Two or more varieties may be named only if all the grapes are those varieties and each percentage is shown on the label.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.23"
+  },
+  {
+   "fact": "A wine may use a viticultural area name if at least 85% comes from grapes grown inside the AVA and, for US wine, it is fully finished in the state where the AVA lies.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+  },
+  {
+   "fact": "Vintage: with an AVA appellation at least 95% of the wine must come from grapes harvested that year; with any other appellation, at least 85%.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.27"
+  },
+  {
+   "fact": "'Estate bottled' requires an AVA appellation; the winery must be in the AVA, grow all the grapes on land it owns or controls there, and crush, ferment, age and bottle in a continuous process.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.26"
+  },
+  {
+   "fact": "A vineyard, orchard, farm or ranch name may not appear unless 95% of the wine comes from that named place.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-D/section-4.39"
+  },
+  {
+   "fact": "Court guide, California: 75% minimum grape variety, 85% minimum for AVA, 95% minimum for vintage, 95% for single vineyard, 100% for estate bottling. Reserve has no legal meaning; Meritage is a trademark.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+  },
+  {
+   "fact": "Court guide, Catalonia: Priorat is a DOCa; Cava is a DO.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+  },
+  {
+   "fact": "Court guide, Oregon: 90% minimum for stated variety (with exceptions such as Cabernet Sauvignon and Merlot) and 95% minimum for AVA.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+  }
+ ],
+ "unverified": [
+  "EU varietal and vintage minimums (Wine Folly gives 85% for France, Italy, Germany and others): the EU regulation (2019/33, art. 50) could not be fetched, so no European percentage is stated as fact.",
+  "Vin de France (France's wine without geographic indication) and Italy's equivalent tier were not confirmed on an official page fetched, so the intro band only lists Germany's Deutscher Wein for that tier.",
+  "Court guide says '95% minimum for vintage' for California without the federal split; TTB rule (27 CFR 4.27) is 95% only with an AVA and 85% with other appellations. The chapter follows TTB.",
+  "Court guide says '100% for Estate Bottling; must be in the same county'. The federal rule fetched (27 CFR 4.26) ties estate bottling to an AVA, not a county; the county wording was not confirmed.",
+  "Oregon's 90%/95% rules come from the Court guide and Wine Folly only; Oregon's own regulations were not fetched.",
+  "German minimum must weights conflict between Wines of Germany pages (one says Eiswein and BA need 120°Oe; another gives 110–128°Oe by region), so no Oechsle figures are used.",
+  "The 2021 German origin pyramid allowed a transition for older labeling through the 2025 harvest; how labels look from the 2026 vintage was not checked.",
+  "The Italian law text used is the Lazio agency (ARSIAL) copy of Law 238/2016 as published in the Gazzetta Ufficiale (Vigente al 12-1-2017); later amendments were not checked.",
+  "Germany's Landwein is listed by the Court as a wine 'with geographic indication', but no official page fetched confirms it as the EU PGI tier, so it is left out of the PGI row."
+ ],
+ "v3": {
+  "video": {
+   "youtubeId": "1DSTNnSDNfE",
+   "title": "How To Read a Wine Label",
+   "by": "Wine Folly",
+   "length": "4:59"
   },
   "sections": [
-    {
-      "name": "Old World, New World",
-      "lines": [
-        {
-          "label": "Three label styles",
-          "text": "Wines are labeled by grape, by region, or by a made-up name. Old World countries mostly label by region. The region's law decides which grapes go in."
-        },
-        {
-          "label": "What the terms mean",
-          "text": "Old World means the countries where modern winemaking traditions began, like France and Italy. New World means countries that borrowed them, like the US, Australia and Chile."
-        }
-      ],
-      "know": [
-        "A Chablis label says Chablis, not Chardonnay.",
-        "Made-up names are often blends that break a region's rules, like the first Super Tuscans.",
-        "Old World style tends to be lighter, lower in alcohol and higher in acid; this is typical, not a rule.",
-        "The exam asks you to read grape, color and style from a label."
-      ],
-      "visuals": [
-        {
-          "type": "tiles",
-          "title": "Three ways a wine is labeled",
-          "dark": true,
-          "items": [
-            {
-              "name": "By grape",
-              "text": "Cabernet Sauvignon, Albariño"
-            },
-            {
-              "name": "By region",
-              "text": "Chablis, Chianti, Rioja"
-            },
-            {
-              "name": "By name",
-              "text": "A made-up name, often a blend"
-            }
-          ]
-        }
-      ]
+   {
+    "name": "Old World, New World",
+    "video": {
+     "youtubeId": "kKZ3ptGNKWY",
+     "title": "New World vs Old World Cabernet Franc",
+     "by": "Wine Folly",
+     "length": "6:32"
     },
-    {
-      "name": "France: AOC, AOP and IGP",
-      "lines": [
-        {
-          "label": "AOP",
-          "text": "Every production step happens in one defined area, by known methods. The rules sit in a 'cahier des charges' approved by the EU."
-        },
-        {
-          "label": "AOC and IGP",
-          "text": "AOC is the national step before EU registration as AOP; wines may still print AOC. IGP links a wine to its origin; for wine, harvest to finished wine happens in the zone."
-        }
-      ],
-      "know": [
-        "AOP is the EU sign; AOC is the French national equivalent.",
-        "Only wine may keep using the term AOC.",
-        "INAO has run France's origin system since 1935.",
-        "IGP wines are also checked by state-certified bodies."
-      ],
-      "visuals": [
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "AOP / AOC",
-              "title": "Protected origin",
-              "text": "All steps in one area\nKnown local know-how\nEU-approved rules"
-            },
-            {
-              "label": "IGP",
-              "title": "Geographic indication",
-              "text": "Quality tied to origin\nFor wine: harvest to bottle-ready in the zone\nEU-approved rules"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Italy: DOCG, DOC and IGT",
-      "book": "wine/italy",
-      "lines": [
-        {
-          "label": "The tiers",
-          "text": "Italy splits its DOP wines into DOCG and DOC. IGT is Italy's word for IGP. A DOCG must have been a DOC for at least seven years."
-        },
-        {
-          "label": "Label words",
-          "text": "Classico means the oldest zone. Riserva means extra aging. Superiore means lower yields and more alcohol."
-        }
-      ],
-      "chips": {
-        "label": "Label terms",
-        "items": [
-          "Classico",
-          "Riserva",
-          "Superiore",
-          "Gran Selezione"
-        ]
+    "keyPoints": [
+     {
+      "big": "THREE WAYS",
+      "line": "a wine is labeled: by grape, by region or by a made-up name."
+     },
+     {
+      "big": "OLD WORLD",
+      "line": "countries like France and Italy mostly label by region."
+     },
+     {
+      "big": "CHABLIS",
+      "line": "on a label means Chardonnay, though the grape isn’t named."
+     },
+     {
+      "big": "MADE-UP NAMES",
+      "line": "are often blends that break a region’s rules."
+     },
+     {
+      "big": "NEW WORLD",
+      "line": "means countries that borrowed the traditions, like the US."
+     }
+    ],
+    "read": {
+     "bigIdea": "A label names a grape, a place or a made-up name.",
+     "where": "**Old World** means the countries where winemaking traditions began, like France, Italy, Spain, Portugal and Germany. **New World** means the countries that borrowed them, like the Americas, Australia and South Africa. Old World wines tend to be lighter, lower in alcohol and higher in acid. That’s typical, not a rule.",
+     "stopsTitle": "Three ways to label a wine",
+     "stops": [
+      {
+       "name": "By grape",
+       "note": "a grape name",
+       "text": "The label names the grape. In the US, a named grape must be at least **75%** of the wine."
       },
-      "know": [
-        "DOCG rules must be stricter than the DOC they came from.",
-        "Riserva: at least two years for reds, one year for whites.",
-        "Gran Selezione is only for DOCG wines from the estate's own grapes.",
-        "DO wines must show a vintage, except fortified, non-vintage sparkling and frizzante."
-      ],
-      "visuals": [
-        {
-          "type": "pyramid",
-          "title": "Italy, top to bottom",
-          "rows": [
-            {
-              "name": "DOCG",
-              "note": "DOC for 7+ years, stricter rules"
-            },
-            {
-              "name": "DOC",
-              "note": "from zones IGT for 5+ years"
-            },
-            {
-              "name": "IGT",
-              "note": "Italy's IGP"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Spain: DO, DOCa and Pago",
-      "book": "wine/spain",
-      "lines": [
-        {
-          "label": "The tiers",
-          "text": "Vino de la Tierra is Spain's IGP. DO needs prestige and five years as a quality region. DOCa needs ten years as a DO and bottling inside the zone."
-        },
-        {
-          "label": "Aging words",
-          "text": "Crianza, Reserva and Gran Reserva climb in minimum aging. Level 1 needs the order, not the exact times."
-        }
-      ],
-      "know": [
-        "Rioja is a DOCa.",
-        "Vino de Pago is a DOP from one site with its own soil and microclimate.",
-        "Under Spanish law, red Crianza needs 24 months, 6 in oak.",
-        "Rioja's own rules are longer: Crianza 2 years with 1 in oak."
-      ],
-      "visuals": [
-        {
-          "type": "pyramid",
-          "title": "Spain, top to bottom",
-          "rows": [
-            {
-              "name": "Vino de Pago",
-              "note": "one named site"
-            },
-            {
-              "name": "DOCa",
-              "note": "10+ years as DO, bottled in zone"
-            },
-            {
-              "name": "DO",
-              "note": "prestige, 5+ years as quality region"
-            },
-            {
-              "name": "Vino de la Tierra",
-              "note": "Spain's IGP"
-            }
-          ]
-        },
-        {
-          "type": "steps",
-          "title": "Red aging tiers in Rioja",
-          "items": [
-            {
-              "name": "Crianza",
-              "text": "2 years, 1 in oak"
-            },
-            {
-              "name": "Reserva",
-              "text": "3 years, 1 in oak, 6 months in bottle"
-            },
-            {
-              "name": "Gran Reserva",
-              "text": "5 years, 2 in oak, 2 in bottle"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Germany: the Prädikat levels",
-      "book": "wine/germany",
-      "lines": [
-        {
-          "label": "The tiers",
-          "text": "Deutscher Wein has no named origin. Landwein is regional. Qualitätswein comes from one of 13 regions. Prädikatswein is Qualitätswein graded by ripeness at harvest."
-        },
-        {
-          "label": "Ripeness, not sweetness",
-          "text": "Riper grapes earn a higher Prädikat. The winemaker still decides how sweet the wine ends up, so Kabinett and Spätlese can be dry."
-        }
-      ],
-      "chips": {
-        "label": "Label words",
-        "items": [
-          "Trocken = dry",
-          "Halbtrocken = half-dry",
-          "Erzeugerabfüllung = estate bottled"
-        ]
+      {
+       "name": "By region",
+       "note": "mostly Old World",
+       "text": "The label names the place, and the region’s law decides the grapes. **Chablis** is Chardonnay and **Chianti** is Sangiovese, but neither label says so."
       },
-      "know": [
-        "Prädikatswein may not be chaptalized.",
-        "Eiswein: as ripe as Beerenauslese, picked frozen at minus 7°C or colder.",
-        "The 1971 law made ripeness at harvest the main quality measure.",
-        "Grosses Gewächs is a dry single-vineyard top wine (a VDP term, now also in the 2021 law)."
-      ],
-      "visuals": [
-        {
-          "type": "list",
-          "title": "The six Prädikate, least to most ripe",
-          "rows": [
-            {
-              "name": "Kabinett",
-              "meta": "off-dry, can be trocken"
-            },
-            {
-              "name": "Spätlese",
-              "meta": "off-dry, can be trocken"
-            },
-            {
-              "name": "Auslese",
-              "meta": "often off-dry"
-            },
-            {
-              "name": "Beerenauslese",
-              "meta": "very sweet, often botrytis"
-            },
-            {
-              "name": "Eiswein",
-              "meta": "very sweet, frozen grapes"
-            },
-            {
-              "name": "Trockenbeerenauslese",
-              "meta": "very sweet"
-            }
-          ],
-          "note": "Eiswein matches Beerenauslese in ripeness."
-        },
-        {
-          "type": "pyramid",
-          "title": "Germany, top to bottom",
-          "rows": [
-            {
-              "name": "Prädikatswein",
-              "note": "graded by ripeness"
-            },
-            {
-              "name": "Qualitätswein",
-              "note": "one of 13 regions"
-            },
-            {
-              "name": "Landwein",
-              "note": "regional"
-            },
-            {
-              "name": "Deutscher Wein",
-              "note": "no geographic indication"
-            }
-          ]
-        }
-      ]
+      {
+       "name": "By a made-up name",
+       "note": "often a blend",
+       "text": "The winery invents a name. These are often blends that don’t fit a region’s rules, like the first **Super Tuscans**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The three label styles at a glance:"
     },
-    {
-      "name": "United States: AVAs and percentages",
-      "book": "wine/usa",
-      "lines": [
-        {
-          "label": "AVA",
-          "text": "An American Viticultural Area is a defined growing region with a name, its own features and a set boundary."
-        },
-        {
-          "label": "The numbers",
-          "text": "Name a grape: 75%. Name a state or county: 75%. Name an AVA: 85%. Name a vineyard: 95%. A vintage with an AVA: 95%."
-        }
-      ],
-      "chips": {
-        "label": "Label terms",
-        "items": [
-          "Estate Bottled",
-          "Meritage",
-          "Reserve (no legal meaning)"
-        ]
+    "check": [
+     29,
+     30,
+     31
+    ]
+   },
+   {
+    "name": "France: AOC, AOP and IGP",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AOP",
+      "line": "is the EU sign: every step happens in one area."
+     },
+     {
+      "big": "AOC",
+      "line": "is France’s national step before AOP; wine may still use it."
+     },
+     {
+      "big": "IGP",
+      "line": "ties a wine to its origin: harvest to finished wine in the zone."
+     },
+     {
+      "big": "INAO",
+      "line": "has led French origin policy since 1935."
+     }
+    ],
+    "read": {
+     "bigIdea": "In France, the place on the label is protected by law.",
+     "where": "French protected wine uses two EU terms, **AOP** and **IGP**. AOP is the stricter one: every production step happens in one area. The body behind it all, **INAO**, has been at the heart of French origin policy since **1935**.",
+     "stopsTitle": "Three terms on a French label",
+     "stops": [
+      {
+       "name": "AOP",
+       "note": "the EU sign",
+       "text": "**Appellation d’origine protégée.** Every production step happens in one defined area, by known local methods. The rules sit in a **cahier des charges** approved by the EU."
       },
-      "know": [
-        "A vintage with a state or county appellation needs 85%; with an AVA, 95%.",
-        "'Estate bottled' needs an AVA and grapes grown on the winery's own or controlled land.",
-        "Naming two or more grapes means listing each percentage.",
-        "Showing a vintage or grape name means the label must show an appellation.",
-        "The Court lists Oregon at 90% for most varietals and 95% for AVAs."
-      ],
-      "visuals": [
-        {
-          "type": "scale",
-          "title": "US federal minimums",
-          "rows": [
-            {
-              "name": "Grape variety",
-              "value": "75%",
-              "pct": 0.75
-            },
-            {
-              "name": "State or county",
-              "value": "75%",
-              "pct": 0.75
-            },
-            {
-              "name": "AVA",
-              "value": "85%",
-              "pct": 0.85
-            },
-            {
-              "name": "Vintage, with AVA",
-              "value": "95%",
-              "pct": 0.95
-            },
-            {
-              "name": "Vineyard name",
-              "value": "95%",
-              "pct": 0.95
-            }
-          ],
-          "note": "TTB rules, 27 CFR part 4. Vintage with a non-AVA appellation: 85%."
-        }
-      ]
-    },
-    {
-      "name": "Reading a label",
-      "lines": [
-        {
-          "label": "Five parts",
-          "text": "Producer, region, grape or appellation, vintage, and alcohol. If no grape is named, the appellation's rules tell you what's inside."
-        },
-        {
-          "label": "Watch for",
-          "text": "Estate bottling has its own phrase in each language. 'Reserve' and 'Old Vines' have no official meaning in many places."
-        }
-      ],
-      "know": [
-        "Chablis = Chardonnay, Chianti = Sangiovese, even though the label won't say so.",
-        "NV means non-vintage, a blend of years.",
-        "Mis en bouteille au château/domaine is French for estate bottled.",
-        "Imbottigliato all'origine is the Italian equivalent."
-      ],
-      "visuals": [
-        {
-          "type": "list",
-          "title": "What to find on any label",
-          "rows": [
-            {
-              "name": "Producer or name",
-              "meta": "who made it"
-            },
-            {
-              "name": "Region",
-              "meta": "where the grapes grew"
-            },
-            {
-              "name": "Grape or appellation",
-              "meta": "what's inside"
-            },
-            {
-              "name": "Vintage or NV",
-              "meta": "harvest year"
-            },
-            {
-              "name": "Alcohol by volume",
-              "meta": "a hint of richness"
-            }
-          ],
-          "note": "Wine Folly's five basic parts."
-        }
-      ]
-    }
-  ],
-  "mixups": [
-    {
-      "a": "AOC",
-      "b": "AOP",
-      "why": "AOP is the EU-wide protection; AOC is France's national step before it, still allowed on wine labels."
-    },
-    {
-      "a": "DOC",
-      "b": "DOCG",
-      "why": "DOCG sits above DOC, needs 7+ years as a DOC and stricter rules."
-    },
-    {
-      "a": "DO",
-      "b": "DOCa",
-      "why": "DOCa needs 10+ years as a DO and bottling inside the zone; Rioja and Priorat are DOCa."
-    },
-    {
-      "a": "85% (AVA)",
-      "b": "95% (vintage with AVA)",
-      "why": "85% of the grapes must come from the AVA; 95% must come from the stated year."
-    }
-  ],
-  "sources": "INAO, Italian Law 238/2016, Spain's Ley 6/2015 (BOE), Consejo Regulador DOCa Rioja, Wines of Germany (DWI), TTB and 27 CFR part 4 (eCFR), and the Court of Master Sommeliers Americas curriculum guide, with Wine Folly as a labelled secondary source. Checked Oct 31, 2026.",
-  "cards": [
-    {
-      "q": "What does AOP stand for?",
-      "answer": "Appellation d'origine protégée",
-      "wrong": [
-        "Appellation d'origine préférée",
-        "Association des origines protégées",
-        "Appellation officielle de production"
-      ],
-      "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
-    },
-    {
-      "q": "What is the AOC in France today?",
-      "answer": "The national step before EU AOP registration",
-      "wrong": [
-        "A tier above AOP",
-        "A table wine category",
-        "A private producer label"
-      ],
-      "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
-    },
-    {
-      "q": "Which products may still carry the term AOC?",
-      "answer": "Only wine products",
-      "wrong": [
-        "Only cheeses",
-        "All French foods",
-        "No products, it was abolished"
-      ],
-      "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
-    },
-    {
-      "q": "For an IGP wine, what must happen inside the zone?",
-      "answer": "Every step from harvest to finished wine",
-      "wrong": [
-        "Only bottling",
-        "Only the grape growing",
-        "Nothing, it's a style label"
-      ],
-      "source": "https://www.inao.gouv.fr/igp-indication-geographique-protegee"
-    },
-    {
-      "q": "Since what year has INAO run French origin policy?",
-      "answer": "1935",
-      "wrong": [
-        "1855",
-        "1971",
-        "2009"
-      ],
-      "source": "https://www.inao.gouv.fr/histoire"
-    },
-    {
-      "q": "Italian DOP wines are classified into which two tiers?",
-      "answer": "DOCG and DOC",
-      "wrong": [
-        "DOC and IGT",
-        "IGT and Vino",
-        "DOCG and IGP"
-      ],
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=15"
-    },
-    {
-      "q": "IGT is Italy's term for which EU category?",
-      "answer": "IGP",
-      "wrong": [
-        "DOP",
-        "AOC",
-        "DOCa"
-      ],
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=15"
-    },
-    {
-      "q": "A wine must have been DOC for how long before it can become DOCG?",
-      "answer": "At least seven years",
-      "wrong": [
-        "At least two years",
-        "At least 25 years",
-        "No minimum"
-      ],
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=19"
-    },
-    {
-      "q": "Under Italian law, Riserva reds need at least how much aging?",
-      "answer": "Two years",
-      "wrong": [
-        "Six months",
-        "One year",
-        "Five years"
-      ],
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=17"
-    },
-    {
-      "q": "In Italy, 'Classico' marks what?",
-      "answer": "The oldest zone of origin",
-      "wrong": [
-        "A sweeter style",
-        "A longer-aged wine",
-        "A sparkling version"
-      ],
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=17"
-    },
-    {
-      "q": "Gran Selezione can only be used by which wines?",
-      "answer": "DOCG wines",
-      "wrong": [
-        "IGT wines",
-        "Any DOC wine",
-        "Sparkling wines only"
-      ],
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=17"
-    },
-    {
-      "q": "In Spain, 'Vino de la Tierra' marks which category?",
-      "answer": "IGP",
-      "wrong": [
-        "DOP",
-        "DOCa",
-        "Vino de Pago"
-      ],
-      "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
-    },
-    {
-      "q": "To be a DOCa, a Spanish DO must have used the DO term for how long?",
-      "answer": "At least 10 years",
-      "wrong": [
-        "At least 2 years",
-        "At least 5 years",
-        "At least 50 years"
-      ],
-      "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
-    },
-    {
-      "q": "What is a Spanish 'Vino de Pago'?",
-      "answer": "A DOP from a single site with its own soil and microclimate",
-      "wrong": [
-        "A wine aged five years",
-        "A cheap table wine",
-        "A Cava aged 30 months"
-      ],
-      "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
-    },
-    {
-      "q": "Put Spain's aging terms in order, least to most aging.",
-      "answer": "Crianza, Reserva, Gran Reserva",
-      "wrong": [
-        "Reserva, Crianza, Gran Reserva",
-        "Gran Reserva, Reserva, Crianza",
-        "Joven, Gran Reserva, Reserva"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
-    },
-    {
-      "q": "A red Rioja Gran Reserva needs at least how long?",
-      "answer": "Five years, two in oak",
-      "wrong": [
-        "Two years, one in oak",
-        "Three years, one in oak",
-        "Ten years, five in oak"
-      ],
-      "source": "https://riojawine.com/en-gb/the-designation/classification/"
-    },
-    {
-      "q": "Which German category has no geographic indication?",
-      "answer": "Deutscher Wein",
-      "wrong": [
-        "Landwein",
-        "Qualitätswein",
-        "Prädikatswein"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
-    },
-    {
-      "q": "How many German wine regions (Anbaugebiete) are there?",
-      "answer": "13",
-      "wrong": [
-        "7",
-        "10",
-        "21"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
-    },
-    {
-      "q": "What sets a German wine's Prädikat level?",
-      "answer": "Grape ripeness at harvest",
-      "wrong": [
-        "Years in barrel",
-        "Final sweetness",
-        "Vineyard size"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
-    },
-    {
-      "q": "Is chaptalization allowed for Prädikatswein?",
-      "answer": "No",
-      "wrong": [
-        "Yes, always",
-        "Only for Kabinett",
-        "Only in cool vintages"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
-    },
-    {
-      "q": "Which is the lowest Prädikat level?",
-      "answer": "Kabinett",
-      "wrong": [
-        "Spätlese",
-        "Auslese",
-        "Beerenauslese"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
-    },
-    {
-      "q": "Eiswein is at the same ripeness level as which Prädikat?",
-      "answer": "Beerenauslese",
-      "wrong": [
-        "Kabinett",
-        "Spätlese",
-        "Trockenbeerenauslese"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
-    },
-    {
-      "q": "What does 'Trocken' mean on a German label?",
-      "answer": "Dry",
-      "wrong": [
-        "Sweet",
-        "Half-dry",
-        "Late harvest"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=49"
-    },
-    {
-      "q": "A US wine labeled with a state or county must be at least what percent from that place?",
-      "answer": "75%",
-      "wrong": [
-        "51%",
-        "85%",
-        "95%"
-      ],
-      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/labeling-wine/wine-labeling-appellation-of-origin"
-    },
-    {
-      "q": "A US wine labeled with an AVA must be at least what percent from that AVA?",
-      "answer": "85%",
-      "wrong": [
-        "75%",
-        "95%",
-        "100%"
-      ],
-      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/labeling-wine/wine-labeling-appellation-of-origin"
-    },
-    {
-      "q": "A US varietal wine must be at least what percent of the named grape?",
-      "answer": "75%",
-      "wrong": [
-        "51%",
-        "85%",
-        "100%"
-      ],
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.23"
-    },
-    {
-      "q": "A vintage-dated US wine with an AVA must be at least what percent from that year?",
-      "answer": "95%",
-      "wrong": [
-        "75%",
-        "85%",
-        "100%"
-      ],
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.27"
-    },
-    {
-      "q": "A US label naming a vineyard needs at least what percent from it?",
-      "answer": "95%",
-      "wrong": [
-        "75%",
-        "85%",
-        "51%"
-      ],
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-D/section-4.39"
-    },
-    {
-      "q": "What does 'Reserve' legally mean on a California label?",
-      "answer": "Nothing; it has no legal meaning",
-      "wrong": [
-        "Aged at least two years",
-        "Estate grown",
-        "From an AVA"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
-    },
-    {
-      "q": "Which label style is most common in Old World countries?",
-      "answer": "Labeled by region",
-      "wrong": [
-        "Labeled by grape",
-        "Labeled by brand",
-        "Labeled by alcohol level"
-      ],
-      "source": "https://winefolly.com/tips/reading-wine-labels/"
-    }
-  ],
-  "facts": [
-    {
-      "fact": "Introductory exam content: wine law of important regions (connecting grapes with places or appellations, and appellations with styles) and reading a wine label (determining grape variety, color and style from the label).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=9"
-    },
-    {
-      "fact": "Section 3 of the Introductory course outline is 'Understanding Wine Law'.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=4"
-    },
-    {
-      "fact": "Regional wine laws dictate which grape varieties can be grown and how they are grown in many wine regions.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=6"
-    },
-    {
-      "fact": "Wines are labeled in one of three ways: by grape variety, by region, or by a made-up name.",
-      "source": "https://winefolly.com/tips/reading-wine-labels/"
-    },
-    {
-      "fact": "Labeling by region is used mostly in Old World countries such as France, Italy, Spain and Portugal; each region dictates which grapes may be used (e.g. Chablis is Chardonnay, Chianti is Sangiovese).",
-      "source": "https://winefolly.com/tips/reading-wine-labels/"
-    },
-    {
-      "fact": "Named (made-up) wines are often blends that don't fit a region's wine law; Tuscan wines with French grapes such as Merlot, Syrah and Cabernet gave rise to the first Super Tuscans.",
-      "source": "https://winefolly.com/tips/reading-wine-labels/"
-    },
-    {
-      "fact": "Wine Folly's varietal minimums: 75% USA (Oregon 90%), 80% Argentina, 85% for Italy, France, Germany, Austria, Portugal, New Zealand, South Africa, Australia and the UK.",
-      "source": "https://winefolly.com/tips/reading-wine-labels/"
-    },
-    {
-      "fact": "'Old World' refers to traditional winemaking countries such as France, Italy, Spain, Portugal and Germany; 'New World' refers to countries that borrowed those traditions, e.g. North and South America, South Africa, Australia, New Zealand.",
-      "source": "https://winefolly.com/deep-dive/new-world-vs-old-world-wine/"
-    },
-    {
-      "fact": "Old World wine tends to have lighter body, lower alcohol, higher acidity and less fruit; New World wine tends toward fuller body, higher alcohol, lower acidity and pronounced fruit. These are typical, not rules.",
-      "source": "https://winefolly.com/deep-dive/new-world-vs-old-world-wine/"
-    },
-    {
-      "fact": "Five basic parts of a label: producer or name, region, variety or appellation, vintage or non-vintage (NV), alcohol by volume. NV wines can pull wine from multiple vintages. 'Old Vines' has no rule for how old the vines must be.",
-      "source": "https://winefolly.com/tips/how-to-read-a-wine-label/"
-    },
-    {
-      "fact": "A Chablis label does not mention Chardonnay; an appellation wine relies on the appellation's rules to tell you what's in the bottle.",
-      "source": "https://winefolly.com/tips/how-to-read-a-wine-label/"
-    },
-    {
-      "fact": "Estate-bottled terms: Mis en bouteille au château / au domaine (France), Imbottigliato all'origine (Italy), Erzeugerabfüllung (Germany).",
-      "source": "https://winefolly.com/tips/how-to-read-a-wine-label/"
-    },
-    {
-      "fact": "'Reserve' on a label has no official meaning (Wine Folly); the Court's guide says 'Reserve has no legal meaning' for California.",
-      "source": "https://winefolly.com/tips/how-to-read-a-wine-label/"
-    },
-    {
-      "fact": "AOP (Appellation d'origine protégée) is a product whose production steps are all carried out according to recognized know-how in one geographic area. It is a European sign that protects the name across the EU.",
-      "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
-    },
-    {
-      "fact": "AOC (appellation d'origine contrôlée) is the mandatory national recognition step before a name is registered as an AOP. Only wine products keep the right to use the AOC term if they wish.",
-      "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
-    },
-    {
-      "fact": "AOP rules are written in a cahier des charges defined by producers and approved by the EU, and checked by an independent body approved by INAO.",
-      "source": "https://www.inao.gouv.fr/aop-appellation-origine-protegee"
-    },
-    {
-      "fact": "IGP identifies a product whose quality, reputation or other traits are linked to its geographic origin. At least one step of production must happen in the area; for wine, every operation from grape harvest to the end of winemaking happens in the zone.",
-      "source": "https://www.inao.gouv.fr/igp-indication-geographique-protegee"
-    },
-    {
-      "fact": "INAO has been at the heart of French origin policy since 1935.",
-      "source": "https://www.inao.gouv.fr/histoire"
-    },
-    {
-      "fact": "Italian law 238/2016, art. 28: DOP wines are classified as DOCG and DOC; IGP wines use the Italian term IGT. The Italian and EU terms may appear alone or together on the label.",
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=15"
-    },
-    {
-      "fact": "Art. 33: DOCG is reserved for wines already DOC for at least seven years, judged of particular merit; DOC is reserved for wines from zones recognized as IGT for at least five years. A DOCG must have stricter rules than its DOC.",
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=19"
-    },
-    {
-      "fact": "Art. 31: 'Classico' is for the oldest zone of origin (e.g. Chianti Classico). 'Riserva' needs at least two years of aging for reds and one year for whites.",
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=17"
-    },
-    {
-      "fact": "Art. 31: 'Superiore' needs at least 10% lower yield per hectare and at least 0.5% more alcohol than the base wine. 'Gran Selezione' is only for DOCG wines made from the bottling estate's own grapes.",
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=17"
-    },
-    {
-      "fact": "Art. 31: DO wines must show the vintage on the label, except fortified (liquorosi), non-vintage sparkling and frizzante wines.",
-      "source": "https://www.arsial.it/wp-content/uploads/2025/06/LEGGE-12-dicembre-2016.pdf#page=18"
-    },
-    {
-      "fact": "Court guide for Piedmont lists the classification as IGP, DOC, DOCG, and label terms Normale and Riserva.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
-    },
-    {
-      "fact": "Spain (Ley 6/2015): 'Vino de la Tierra' marks an IGP wine; 'Vino de calidad de' marks a DOP wine.",
-      "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
-    },
-    {
-      "fact": "'Denominación de origen' needs high commercial prestige and a region recognized as a quality wine with geographical indication for at least five years.",
-      "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
-    },
-    {
-      "fact": "'Denominación de origen calificada' needs, on top of DO rules, at least 10 years using the term DO, and sale only in bottle from registered wineries inside the zone.",
-      "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
-    },
-    {
-      "fact": "'Vino de pago' is a DOP from a 'pago': a rural site with its own soil and microclimate, known by a name tied to vine growing. All grapes must come from vineyards in the pago.",
-      "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
-    },
-    {
-      "fact": "National aging terms for red DOP wines: Crianza at least 24 months with at least 6 in oak barrels of up to 330 liters; Reserva 36 months with at least 12 in oak; Gran Reserva 60 months with at least 18 in oak.",
-      "source": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-5288"
-    },
-    {
-      "fact": "Rioja red: Crianza at least two years with at least one year in 225-liter oak barrels; Reserva at least three years with at least one in oak and six months in bottle; Gran Reserva at least five years with two in oak and two in bottle.",
-      "source": "https://riojawine.com/en-gb/the-designation/classification/"
-    },
-    {
-      "fact": "Court guide: Rioja is a DOCa. Crianza, Reserva and Gran Reserva are aging tiers in ascending order of minimum time; knowing the actual times is not necessary at the Introductory level.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
-    },
-    {
-      "fact": "Court guide, Germany: wine without geographic indication is Deutscher Wein; with GI: Landwein (regional), Qualitätswein (from one of the 13 Anbaugebiete) and Prädikatswein (a subset of Qualitätswein graded by ripeness at harvest). Chaptalization is not allowed for Prädikatswein.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
-    },
-    {
-      "fact": "The six Prädikate in order of ripeness: Kabinett, Spätlese, Auslese, Beerenauslese, Eiswein (same ripeness level as Beerenauslese), Trockenbeerenauslese. Kabinett and Spätlese are off-dry in style and can be made trocken; Beerenauslese and TBA are very sweet.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
-    },
-    {
-      "fact": "Ripeness at harvest sets the Prädikat, but choices in the winery decide how sweet the finished wine is.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
-    },
-    {
-      "fact": "VDP is a German producers' association with its own Burgundy-style vineyard classification. Grosses Gewächs: single-vineyard grand cru wines; Erstes Gewächs: premier cru. Label terms: Trocken = dry, Halbtrocken = half-dry.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=49"
-    },
-    {
-      "fact": "The 1971 German Wine Law made ripeness at harvest the main measure of quality.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=51"
-    },
-    {
-      "fact": "Eiswein is made from grapes as ripe as BA, harvested at minus 7°C or colder and pressed while frozen. Prädikat wines may not be enriched (chaptalized); Qualitätswein may.",
-      "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/449/pr%C3%A4dikate"
-    },
-    {
-      "fact": "Prädikatswein and Qualitätswein must come 100% from one of the 13 German growing regions and pass the quality test.",
-      "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/449/pr%C3%A4dikate"
-    },
-    {
-      "fact": "Since 1971 every Qualität and Prädikat wine has been lab-tested and sensory-tested and gets an official approval number shown on the label.",
-      "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/180/proven-qualitiy"
-    },
-    {
-      "fact": "From 2021 Germany has an origin pyramid for Qualität and Prädikat wines, 'the smaller the origin, the higher the quality': single-vineyard wines (Großes Gewächs, Erstes Gewächs, other sites) at the top, then village wines (Ortswein), region wines, then the wine-growing area.",
-      "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/462/new-origin-pyramid-for-qualit%C3%A4t-and-pr%C3%A4dikat-wines"
-    },
-    {
-      "fact": "Under the 2021 rules, the term Qualitätswein can be replaced on all Qualität and Prädikat wines by 'wine with a protected designation of origin' plus the region name.",
-      "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/462/new-origin-pyramid-for-qualit%C3%A4t-and-pr%C3%A4dikat-wines"
-    },
-    {
-      "fact": "Großes Gewächs must be dry (trocken), hand-harvested, from a single vineyard, with the vintage on the label.",
-      "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/462/new-origin-pyramid-for-qualit%C3%A4t-and-pr%C3%A4dikat-wines"
-    },
-    {
-      "fact": "An American viticultural area (AVA) is a defined grape-growing region with a name, distinguishing features and a delineated boundary set in 27 CFR part 9.",
-      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/labeling-wine/wine-labeling-appellation-of-origin"
-    },
-    {
-      "fact": "US appellation rules: at least 75% from the named country, state or county; at least 85% from grapes grown in a named viticultural area. Imported wines follow the same 75% and 85% thresholds.",
-      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/labeling-wine/wine-labeling-appellation-of-origin"
-    },
-    {
-      "fact": "An appellation is required on the label when the wine shows a vintage date, a varietal name, a semi-generic name, 'estate bottled' and some other designations.",
-      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/labeling-wine/wine-labeling-appellation-of-origin"
-    },
-    {
-      "fact": "A single grape variety may be named if at least 75% of the wine is that variety, all grown in the labeled appellation. Vitis labrusca varieties may use 51% with a 'contains not less than 51%' statement.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.23"
-    },
-    {
-      "fact": "Two or more varieties may be named only if all the grapes are those varieties and each percentage is shown on the label.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.23"
-    },
-    {
-      "fact": "A wine may use a viticultural area name if at least 85% comes from grapes grown inside the AVA and, for US wine, it is fully finished in the state where the AVA lies.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
-    },
-    {
-      "fact": "Vintage: with an AVA appellation at least 95% of the wine must come from grapes harvested that year; with any other appellation, at least 85%.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.27"
-    },
-    {
-      "fact": "'Estate bottled' requires an AVA appellation; the winery must be in the AVA, grow all the grapes on land it owns or controls there, and crush, ferment, age and bottle in a continuous process.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.26"
-    },
-    {
-      "fact": "A vineyard, orchard, farm or ranch name may not appear unless 95% of the wine comes from that named place.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-D/section-4.39"
-    },
-    {
-      "fact": "Court guide, California: 75% minimum grape variety, 85% minimum for AVA, 95% minimum for vintage, 95% for single vineyard, 100% for estate bottling. Reserve has no legal meaning; Meritage is a trademark.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
-    },
-    {
-      "fact": "Court guide, Catalonia: Priorat is a DOCa; Cava is a DO.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
-    },
-    {
-      "fact": "Court guide, Oregon: 90% minimum for stated variety (with exceptions such as Cabernet Sauvignon and Merlot) and 95% minimum for AVA.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
-    }
-  ],
-  "unverified": [
-    "EU varietal and vintage minimums (Wine Folly gives 85% for France, Italy, Germany and others): the EU regulation (2019/33, art. 50) could not be fetched, so no European percentage is stated as fact.",
-    "Vin de France (France's wine without geographic indication) and Italy's equivalent tier were not confirmed on an official page fetched, so the intro band only lists Germany's Deutscher Wein for that tier.",
-    "Court guide says '95% minimum for vintage' for California without the federal split; TTB rule (27 CFR 4.27) is 95% only with an AVA and 85% with other appellations. The chapter follows TTB.",
-    "Court guide says '100% for Estate Bottling; must be in the same county'. The federal rule fetched (27 CFR 4.26) ties estate bottling to an AVA, not a county; the county wording was not confirmed.",
-    "Oregon's 90%/95% rules come from the Court guide and Wine Folly only; Oregon's own regulations were not fetched.",
-    "German minimum must weights conflict between Wines of Germany pages (one says Eiswein and BA need 120°Oe; another gives 110–128°Oe by region), so no Oechsle figures are used.",
-    "The 2021 German origin pyramid allowed a transition for older labeling through the 2025 harvest; how labels look from the 2026 vintage was not checked.",
-    "The Italian law text used is the Lazio agency (ARSIAL) copy of Law 238/2016 as published in the Gazzetta Ufficiale (Vigente al 12-1-2017); later amendments were not checked.",
-    "Germany's Landwein is listed by the Court as a wine 'with geographic indication', but no official page fetched confirms it as the EU PGI tier, so it is left out of the PGI row."
+      {
+       "name": "AOC",
+       "note": "the French term",
+       "text": "**Appellation d’origine contrôlée** is France’s national step before a name becomes AOP. Only wine may still use the term **AOC**, if the producer wishes."
+      },
+      {
+       "name": "IGP",
+       "note": "geographic indication",
+       "text": "The wine’s quality or reputation is linked to where it’s from. For wine, every step from **harvest to finished wine** happens in the zone."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "AOP and IGP side by side:",
+     "mixup": "**AOP** is the EU-wide name. **AOC** is France’s own step before it."
+    },
+    "check": [
+     0,
+     1,
+     3
+    ]
+   },
+   {
+    "name": "Italy: DOCG, DOC and IGT",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DOCG",
+      "line": "must have been a DOC for at least seven years."
+     },
+     {
+      "big": "IGT",
+      "line": "is Italy’s word for the EU’s IGP."
+     },
+     {
+      "big": "CLASSICO",
+      "line": "marks the oldest zone, like Chianti Classico."
+     },
+     {
+      "big": "RISERVA",
+      "line": "means extra aging: two years for reds, one for whites."
+     },
+     {
+      "big": "GRAN SELEZIONE",
+      "line": "is only for DOCG wines from the estate’s own grapes."
+     }
+    ],
+    "read": {
+     "bigIdea": "Italy’s protected wines come in two tiers: DOCG and DOC.",
+     "where": "Under Italian law, protected-origin (**DOP**) wines are either **DOCG** or **DOC**, and **IGT** is Italy’s word for IGP. A DOC zone must have been IGT for at least **five years**. A DOCG must have been a DOC for at least **seven years**, with stricter rules.",
+     "stopsTitle": "Four words on the label",
+     "stops": [
+      {
+       "name": "Classico",
+       "note": "where",
+       "text": "From the **oldest zone** of origin, like **Chianti Classico**."
+      },
+      {
+       "name": "Riserva",
+       "note": "how long",
+       "text": "Extra aging: at least **two years** for reds and **one year** for whites."
+      },
+      {
+       "name": "Superiore",
+       "note": "lower yields",
+       "text": "At least 10% lower yields and at least 0.5% more alcohol than the base wine."
+      },
+      {
+       "name": "Gran Selezione",
+       "note": "DOCG only",
+       "text": "Only for **DOCG** wines made from the estate’s **own grapes**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Italy’s tiers, top to bottom:",
+     "mixup": "**DOCG** sits above **DOC**: it needs seven years as a DOC and stricter rules."
+    },
+    "check": [
+     5,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Spain: DO, DOCa and Pago",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DO",
+      "line": "needs prestige and five years as a quality region."
+     },
+     {
+      "big": "DOCa",
+      "line": "needs 10+ years as a DO and bottling in the zone."
+     },
+     {
+      "big": "RIOJA",
+      "line": "is a DOCa, and so is Priorat."
+     },
+     {
+      "big": "VINO DE PAGO",
+      "line": "is a DOP from one site with its own soil and microclimate."
+     },
+     {
+      "big": "CRIANZA",
+      "line": "then Reserva, then Gran Reserva: more aging at each step."
+     }
+    ],
+    "read": {
+     "bigIdea": "Spain’s labels tell you where, and how long it aged.",
+     "where": "Spanish law sets the place terms, from **Vino de la Tierra** (Spain’s IGP) up to **DOCa**. Aging words like **Crianza** and **Gran Reserva** tell you the minimum time the wine aged.",
+     "stopsTitle": "Four place terms",
+     "stops": [
+      {
+       "name": "Vino de la Tierra",
+       "note": "Spain’s IGP",
+       "text": "Spanish law uses this term for **IGP** wines."
+      },
+      {
+       "name": "DO",
+       "note": "Denominación de origen",
+       "text": "Needs **high prestige** and at least **five years** as a recognized quality region."
+      },
+      {
+       "name": "DOCa",
+       "note": "Denominación de origen calificada",
+       "text": "Needs at least **10 years as a DO**, and the wine must be bottled by wineries inside the zone. **Rioja** and **Priorat** are DOCa."
+      },
+      {
+       "name": "Vino de Pago",
+       "note": "one site",
+       "text": "A protected-origin wine from one named site (a **pago**) with its own soil and microclimate. All the grapes must grow there."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Rioja’s red aging words, shortest to longest:",
+     "mixup": "**Spanish law** and **Rioja** set different minimum times. For Level 1, just know the order: **Crianza**, **Reserva**, **Gran Reserva**."
+    },
+    "check": [
+     11,
+     12,
+     14
+    ]
+   },
+   {
+    "name": "Germany: the Prädikat levels",
+    "video": {
+     "youtubeId": "ZLXhBKJb01o",
+     "title": "Riesling (Everything you need to know)",
+     "by": "Wine Folly",
+     "length": "4:59"
+    },
+    "keyPoints": [
+     {
+      "big": "PRÄDIKAT",
+      "line": "is set by how ripe the grapes are at harvest."
+     },
+     {
+      "big": "KABINETT",
+      "line": "is the least ripe Prädikat; Trockenbeerenauslese the ripest."
+     },
+     {
+      "big": "EISWEIN",
+      "line": "is as ripe as Beerenauslese, picked frozen."
+     },
+     {
+      "big": "TROCKEN",
+      "line": "means dry; halbtrocken means half-dry."
+     },
+     {
+      "big": "13 REGIONS",
+      "line": "make Germany’s Qualitätswein and Prädikatswein."
+     }
+    ],
+    "read": {
+     "bigIdea": "German law grades wine by how ripe the grapes are.",
+     "where": "The **1971 wine law** made ripeness at harvest the main measure of quality. **Qualitätswein** comes from one of **13 regions**. **Prädikatswein** is Qualitätswein graded by ripeness, and it may not be enriched (**chaptalized**).",
+     "stopsTitle": "The six Prädikate, least to most ripe",
+     "stops": [
+      {
+       "name": "Kabinett and Spätlese",
+       "note": "least ripe",
+       "text": "Off-dry in style, and both can be made **trocken** (dry)."
+      },
+      {
+       "name": "Auslese",
+       "note": "riper",
+       "text": "The next step up in ripeness at harvest."
+      },
+      {
+       "name": "Beerenauslese and Eiswein",
+       "note": "same ripeness",
+       "text": "**Beerenauslese** is very sweet. **Eiswein** is just as ripe, but picked at **minus 7°C** or colder and pressed while frozen."
+      },
+      {
+       "name": "Trockenbeerenauslese",
+       "note": "ripest",
+       "text": "The top of the ladder, and very sweet."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Germany’s four tiers, top to bottom:",
+     "mixup": "**Ripeness is not sweetness.** A Kabinett or Spätlese can be dry: the winemaker decides how sweet it ends up.",
+     "sayIt": "Trocken on the label means this one is dry."
+    },
+    "check": [
+     18,
+     20,
+     21
+    ]
+   },
+   {
+    "name": "United States: AVAs and percentages",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AVA",
+      "line": "is a US growing region with its own features and border."
+     },
+     {
+      "big": "75%",
+      "line": "is the minimum for a named grape, state or county."
+     },
+     {
+      "big": "85%",
+      "line": "is the minimum from a named AVA."
+     },
+     {
+      "big": "95%",
+      "line": "for a named vineyard, or a vintage with an AVA."
+     },
+     {
+      "big": "RESERVE",
+      "line": "has no legal meaning on a California label."
+     }
+    ],
+    "read": {
+     "bigIdea": "US label rules come down to a few percentages.",
+     "where": "An **AVA** (American Viticultural Area) is a defined growing region with a name, its own features and a set boundary. Showing a **vintage** or a **grape name** means the label must also show an appellation.",
+     "stopsTitle": "The numbers to know",
+     "stops": [
+      {
+       "name": "Grape variety",
+       "note": "75%",
+       "text": "Name one grape and at least **75%** of the wine must be that grape. Name two or more and the label must show each percentage."
+      },
+      {
+       "name": "State or county",
+       "note": "75%",
+       "text": "At least **75%** must come from the named state or county."
+      },
+      {
+       "name": "AVA",
+       "note": "85%",
+       "text": "At least **85%** must come from grapes grown in the AVA."
+      },
+      {
+       "name": "Vineyard or vintage",
+       "note": "95%",
+       "text": "A **vineyard name** needs **95%** from that vineyard. A **vintage** with an AVA needs **95%** from that year; with a state or county, **85%**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The federal minimums on one chart:",
+     "mixup": "**Estate Bottled** has legal rules: an AVA, and grapes the winery owns or controls. **Reserve** has no legal meaning."
+    },
+    "check": [
+     25,
+     24,
+     26
+    ]
+   },
+   {
+    "name": "Reading a label",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FIVE PARTS",
+      "line": "producer, region, grape or appellation, vintage, alcohol."
+     },
+     {
+      "big": "NO GRAPE?",
+      "line": "Then the appellation’s rules tell you what’s inside."
+     },
+     {
+      "big": "NV",
+      "line": "means non-vintage: it can blend wine from several years."
+     },
+     {
+      "big": "ESTATE BOTTLED",
+      "line": "is mis en bouteille au château or au domaine in French."
+     },
+     {
+      "big": "OLD VINES",
+      "line": "has no rule for how old the vines must be."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every label answers who, where, what and when.",
+     "where": "Look for five things: the producer, the region, the grape or appellation, the vintage, and the alcohol. If no grape is named, the **appellation’s rules** tell you what’s in the bottle.",
+     "stopsTitle": "Words worth knowing",
+     "stops": [
+      {
+       "name": "NV",
+       "note": "non-vintage",
+       "text": "No single year on the label. The wine can blend several **vintages**."
+      },
+      {
+       "name": "Estate bottled",
+       "note": "three languages",
+       "text": "**Mis en bouteille au château** or **au domaine** in France, **Imbottigliato all’origine** in Italy, **Erzeugerabfüllung** in Germany."
+      },
+      {
+       "name": "Reserve and Old Vines",
+       "note": "no fixed meaning",
+       "text": "**Reserve** has no official meaning, and **Old Vines** has no rule for how old the vines are."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The five parts to find on any label:",
+     "sayIt": "It says Chablis, so it’s Chardonnay."
+    },
+    "check": [
+     34,
+     32,
+     33
+    ]
+   }
   ]
+ }
 }

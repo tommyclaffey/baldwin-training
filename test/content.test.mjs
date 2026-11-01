@@ -12,7 +12,7 @@ const pages = index.map((e) => JSON.parse(fs.readFileSync(path.join(root, 'publi
 function walk(n, fn) { fn(n); (n.c || []).forEach((c) => walk(c, fn)); }
 
 test('there is one page per Figma screen', () => {
-  assert.equal(index.length, 349); // incl. the Wine List · Caymus and Shelf · Willett templates, and Classic · Glass cards (extra glass drawings) (the CMS builds one page per wine and per bottle from them)
+  assert.equal(index.length, 352); // + the video-first hub, Level 1 and Level 2 (Nov 1) // incl. the Wine List · Caymus and Shelf · Willett templates, and Classic · Glass cards (extra glass drawings) (the CMS builds one page per wine and per bottle from them)
   assert.equal(new Set(index.map((e) => e.slug)).size, index.length, 'slugs are unique');
 });
 
@@ -69,6 +69,6 @@ test('every page can be reached from Home', () => {
     if (p) walk(p.main, (n) => { if (n.to && !seen.has(n.to)) { seen.add(n.to); queue.push(n.to); } });
   }
   // CMS templates that only exist to build CMS pages (wine-list/caymus) aren't linked on purpose.
-  const orphans = [...slugs].filter((s) => !seen.has(s) && !s.startsWith('/wine-list/') && !s.startsWith('/shelf/') && s !== '/classic/glass-cards');
+  const orphans = [...slugs].filter((s) => !seen.has(s) && !s.startsWith('/wine-list/') && !s.startsWith('/shelf/') && s !== '/classic/glass-cards' && !s.startsWith('/sommelier-program/')); // the Sommelier Program's links are wired by the server (server/study.mjs, tested in api.test)
   assert.deepEqual(orphans, []);
 });

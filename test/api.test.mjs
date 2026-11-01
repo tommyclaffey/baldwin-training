@@ -66,7 +66,9 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
   const index = (await call('/api/index')).data;
-  assert.equal(index.length, 628 + fs.readdirSync(path.join(root, 'content/manual')).filter((f) => f.endsWith('.json')).length, 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
+  // each Study Guide chapter: its whole-chapter page plus one lesson per section (Nov 1)
+  const manual = fs.readdirSync(path.join(root, 'content/manual')).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(fs.readFileSync(path.join(root, 'content/manual', f), 'utf8')));
+  assert.equal(index.length, 631 + manual.reduce((a, c) => a + 1 + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -461,18 +463,38 @@ test('edit in place: list pages get Add rows with the group filled in, for manag
   }
 });
 
-test('sommelier program: a hub and a guide per level, in the sidebar, with the Court’s register links', async () => {
+test('sommelier program: video-first hub, Level 1 course and Level 2, with the old pages kept as exam details', async () => {
   const index = (await call('/api/index')).data;
   const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
   const hub = await page('sommelier-program');
-  assert.ok(hub.includes('THE SOMMELIER PROGRAM') && hub.includes('"/sommelier-program/level-1"') && hub.includes('Feb 22–23, 2027'));
+  assert.ok(hub.includes('PROGRAM') && hub.includes('"/sommelier-program/level-1"') && hub.includes('"youtubeId":"vHo_OsDWfpE"'));
   assert.ok(hub.includes('https://portal.mastersommeliers.org/register'), 'register with the Court');
   const l1 = await page('sommelier-program/level-1');
-  assert.ok(l1.includes('42 of 70') && l1.includes('"/wine/france"'), 'Level 1 links its regions to our wine pages');
+  assert.ok(l1.includes('"/sommelier-program/study-guide/france"') && l1.includes('"/sommelier-program/level-1/exam-details"'), 'twelve lessons and the exam details');
+  assert.equal((await page('sommelier-program/study-guide')).includes('12 LESSONS'), true, 'the old Study Guide address shows the course');
   const l2 = await page('sommelier-program/level-2');
-  assert.ok(l2.includes('THE TASTING GRID') && l2.includes('Deductive-Tasting-Grid.pdf'));
+  assert.ok(l2.includes('"youtubeId":"XFiWNb9GMNE"') && l2.includes('c6f9912b50984cdf8aaf65b76099975a'));
+  assert.ok((await page('sommelier-program/level-1/exam-details')).includes('42 of 70'), 'the old Level 1 page is still there');
+  assert.ok((await page('sommelier-program/level-2/exam-details')).includes('THE TASTING GRID'));
   const side = JSON.stringify((await import('../src/content/sidebar.json', { with: { type: 'json' } })).default);
   assert.ok(side.includes('Nav · Sommelier Program') && side.includes('"/sommelier-program"'));
+});
+
+test('a Study Guide lesson: video, key points, reading flow, and 3 cards that finish the section', async () => {
+  const index = (await call('/api/index')).data;
+  const e = index.find((x) => x.slug === 'sommelier-program/study-guide/france/loire');
+  assert.ok(e, 'each section has its own address');
+  const loire = (await call('/api/page/' + e.file)).data;
+  const json = JSON.stringify(loire);
+  assert.ok(json.includes('"youtubeId":"F0jDcA_Ujcc"') && json.includes('Pays Nantais') && json.includes('MUSCADET'));
+  let check; (function walk(n) { if (n.meta?.check) check = n.meta.check; (n.c || []).forEach(walk); })(loire.main);
+  assert.equal(check.items.length, 3); assert.equal(check.key, 'france#3'); assert.equal(check.done, false);
+  assert.equal((await call('/api/study/done', { method: 'POST', body: { key: 'nope#1' } })).status, 400);
+  assert.equal((await call('/api/study/done', { method: 'POST', body: { key: 'france#3' } })).status, 200);
+  const again = (await call('/api/page/' + e.file)).data;
+  let c2; (function walk(n) { if (n.meta?.check) c2 = n.meta.check; (n.c || []).forEach(walk); })(again.main);
+  assert.equal(c2.done, true, 'three right marks the section done');
+  assert.ok(JSON.stringify(again).includes('6 sections · 1 done'));
 });
 
 test('the group’s kitchen: a dish is entered once, every store puts it on its menu with its own price', async () => {

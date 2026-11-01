@@ -12,6 +12,7 @@ import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames } from './scanner.mjs';
 import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
 import { topicList, questionPool } from './quizgen.mjs';
+import { chapterBySlug, markRead } from './manual.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -150,6 +151,17 @@ async function api(req, res, url) {
   }
   // The review queue: what this person marked red or yellow, and saving a mark after each answer.
   if (p === '/api/quiz/review' && m === 'GET') { const u = needReader(c, req); return sendJson(res, 200, reviewQueue(db, c.store, u.id)); }
+  // A Study Guide lesson is done when its 3 quick-check cards are answered right (Nov 1).
+  if (p === '/api/study/done' && m === 'POST') {
+    const u = needReader(c, req);
+    const b = await readJson(req);
+    const key = String(b.key || '');
+    const mm = /^([a-z0-9-]+)#(\d+)$/.exec(key);
+    const ch = mm && chapterBySlug(mm[1]);
+    if (!ch || !ch.sections[Number(mm[2])]) fail(400, 'That lesson wasn’t found. Reload and try again.');
+    markRead(db, u.id, key);
+    return sendJson(res, 200, { ok: true });
+  }
   if (p === '/api/quiz/mark' && m === 'POST') {
     const u = needReader(c, req);
     const b = await readJson(req);

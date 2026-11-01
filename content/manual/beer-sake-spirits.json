@@ -1,1009 +1,1565 @@
 {
-  "number": 11,
-  "slug": "beer-sake-spirits",
-  "title": "Beer, sake and spirits",
-  "script": "Chapter eleven",
-  "lead": "The basics the Court tests outside wine: what beer and sake are made from, ale versus lager, sake grades, how distillation works, and the base ingredient and key rules of each common spirit and liqueur.",
-  "minutes": 25,
-  "intro": {
-    "script": "Start here",
-    "title": "WHAT THE COURT TESTS",
-    "text": "The Introductory exam content list asks for these basics of each drink.",
-    "tiers": [
-      {
-        "name": "Beer",
-        "note": "main ingredients, common styles"
-      },
-      {
-        "name": "Sake",
-        "note": "ingredients, quality scale"
-      },
-      {
-        "name": "Spirits",
-        "note": "base ingredients, common styles"
-      }
-    ]
-  },
-  "sections": [
-    {
-      "name": "Beer: what goes in",
-      "lines": [
-        {
-          "label": "Definition",
-          "text": "Beer is a fermented drink made from cereal grains (mainly barley), water, hops and yeast."
-        },
-        {
-          "label": "Process",
-          "text": "The grain's starch must become sugar before it can ferment. The Court's steps are germination, malting and fermentation."
-        }
-      ],
-      "chips": {
-        "label": "Grains",
-        "items": [
-          "Barley",
-          "Wheat",
-          "Rice",
-          "Corn",
-          "Oats"
-        ]
-      },
-      "know": [
-        "Malt gives sugar for fermentation, plus color, flavor, body, texture and mouthfeel.",
-        "Hops give aroma, flavor and bitterness to balance malt sweetness, and act as a natural preservative.",
-        "Yeast eats the malt sugars and makes alcohol. The type of yeast decides ale or lager.",
-        "Water is 90% or more of a beer."
-      ],
-      "visuals": [
-        {
-          "type": "tiles",
-          "title": "The four ingredients",
-          "dark": true,
-          "items": [
-            {
-              "name": "Malt",
-              "text": "Sugar, color, flavor, body"
-            },
-            {
-              "name": "Hops",
-              "text": "Aroma, bitterness, preservative"
-            },
-            {
-              "name": "Yeast",
-              "text": "Makes alcohol; ale or lager"
-            },
-            {
-              "name": "Water",
-              "text": "90%+ of the beer"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Ales and lagers",
-      "lines": [
-        {
-          "label": "Ale",
-          "text": "Top-fermenting yeast makes ales, with more fruit and spice aromas."
-        },
-        {
-          "label": "Lager",
-          "text": "Bottom-fermenting yeast makes lagers: clean and crisp, with less yeast effect on aroma and flavor."
-        }
-      ],
-      "know": [
-        "Pilsner started in the Czech Republic; Pilsner Urquell was first brewed in Plzeň in 1842.",
-        "Irish Dry Stout is black and roasty, often like coffee; draught versions are creamy from a nitro pour.",
-        "Hefeweizen (Weissbier) is a German wheat ale with banana-and-clove yeast character.",
-        "Lambic is a sour Belgian wheat beer, fermented by wild yeast and bacteria.",
-        "Witbier is a hazy Belgian wheat ale, traditionally spiced with coriander and dried orange peel."
-      ],
-      "visuals": [
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "ALE",
-              "title": "Top-fermenting yeast",
-              "text": "More fruit and spice aromas\nHefeweizen, Pale Ale, IPA\nPorter, Irish Dry Stout\nLambic, Witbier"
-            },
-            {
-              "label": "LAGER",
-              "title": "Bottom-fermenting yeast",
-              "text": "Clean and crisp\nAmerican and European Lager\nPilsner\nBock, Doppelbock, Oktoberfest"
-            }
-          ]
-        },
-        {
-          "type": "list",
-          "title": "The Court's examples, by country",
-          "rows": [
-            {
-              "name": "Hefeweizen",
-              "meta": "Ale · Germany"
-            },
-            {
-              "name": "Pale Ale, IPA, Porter",
-              "meta": "Ale · Britain"
-            },
-            {
-              "name": "Irish Dry Stout",
-              "meta": "Ale · Ireland"
-            },
-            {
-              "name": "Lambic, Witbier",
-              "meta": "Ale · Belgium"
-            },
-            {
-              "name": "Pilsner",
-              "meta": "Lager · Czech Republic (origin), Germany"
-            },
-            {
-              "name": "Bock, Doppelbock, Oktoberfest",
-              "meta": "Lager · Germany"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Sake",
-      "lines": [
-        {
-          "label": "What it is",
-          "text": "Sake is a fermented drink made from rice, mostly in Japan. It uses special sake rice, koji, yeast and water; some styles also get brewer's alcohol."
-        },
-        {
-          "label": "How it ferments",
-          "text": "Koji-kin is a mold grown on steamed rice that turns starch into sugar. Yeast turns that sugar into alcohol at the same time (parallel fermentation)."
-        }
-      ],
-      "chips": {
-        "label": "Grades to recognize",
-        "items": [
-          "Junmai",
-          "Honjozo",
-          "Ginjo",
-          "Daiginjo"
-        ]
-      },
-      "know": [
-        "Junmai means no alcohol added.",
-        "The polishing rate is how much of the grain is left: 70% means 30% was milled away.",
-        "Ginjo and Daiginjo use low-temperature fermentation and have a fruity aroma.",
-        "Nigori is cloudy sake. Namazake is unpasteurized.",
-        "The Court gives sake as typically 15-22% ABV."
-      ],
-      "visuals": [
-        {
-          "type": "scale",
-          "title": "Rice left after polishing (maximum)",
-          "rows": [
-            {
-              "name": "Honjozo",
-              "value": "70% or less",
-              "pct": 0.7
-            },
-            {
-              "name": "Ginjo · Junmai Ginjo",
-              "value": "60% or less",
-              "pct": 0.6
-            },
-            {
-              "name": "Daiginjo · Junmai Daiginjo",
-              "value": "50% or less",
-              "pct": 0.5
-            }
-          ],
-          "note": "Lower number = more polished rice. Junmai grades have no added alcohol."
-        }
-      ]
-    },
-    {
-      "name": "Distillation",
-      "lines": [
-        {
-          "label": "What it does",
-          "text": "Distilling boils a fermented liquid and condenses the vapor into a stronger alcoholic liquid."
-        },
-        {
-          "label": "Pot or column",
-          "text": "Pot stills work in batches; single malt Scotch must use copper pot stills. Column (patent or Coffey) stills run continuously; Aeneas Coffey's 1831 still led to grain whisky."
-        }
-      ],
-      "know": [
-        "US vodka is neutral spirit distilled at 95% ABV (190 proof) or higher and never aged in wood.",
-        "US whisky, brandy, rum and agave spirits are distilled below 95% ABV and bottled at 40% or more.",
-        "The Court lists Irish whiskey as distilled three times in a pot still, and Scotch two times.",
-        "Cognac is double distilled in batches; Armagnac is distilled once in a continuous still."
-      ],
-      "visuals": [
-        {
-          "type": "list",
-          "title": "Base ingredient of common spirits",
-          "rows": [
-            {
-              "name": "Vodka",
-              "meta": "commonly grain, but can be anything"
-            },
-            {
-              "name": "Gin",
-              "meta": "neutral grain spirit + juniper"
-            },
-            {
-              "name": "Rum",
-              "meta": "sugarcane and molasses"
-            },
-            {
-              "name": "Tequila",
-              "meta": "blue agave"
-            },
-            {
-              "name": "Mezcal",
-              "meta": "agave, many varieties"
-            },
-            {
-              "name": "Whisk(e)y",
-              "meta": "grain"
-            },
-            {
-              "name": "Brandy",
-              "meta": "fruit; Cognac uses white grapes"
-            }
-          ],
-          "note": "The Court tests the base ingredient of each common spirit."
-        },
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "POT STILL",
-              "title": "One batch at a time",
-              "text": "Copper pot\nSingle malt Scotch\nIrish whiskey, Cognac"
-            },
-            {
-              "label": "COLUMN STILL",
-              "title": "Runs continuously",
-              "text": "Patent or Coffey still\nGrain whisky\nVodka, gin (Court: commonly continuous)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Whisk(e)y",
-      "book": "spirit/whiskey",
-      "lines": [
-        {
-          "label": "Bourbon (US law)",
-          "text": "At least 51% corn, distilled at 160 proof or less, stored in charred new oak barrels at 125 proof or less, with no added coloring or flavoring. It must be made in the US; Kentucky is not required."
-        },
-        {
-          "label": "Scotch (UK law)",
-          "text": "Made in Scotland from water and malted barley, distilled below 94.8% ABV, then matured in Scotland in oak casks of 700 liters or less for at least three years. Bottled at 40% or more."
-        }
-      ],
-      "chips": {
-        "label": "Scotch regions",
-        "items": [
-          "Highland",
-          "Lowland",
-          "Speyside",
-          "Islay",
-          "Campbeltown"
-        ]
-      },
-      "know": [
-        "Straight bourbon must age at least 2 years in charred new oak.",
-        "Tennessee whiskey is also at least 51% corn; the Court lists filtering through maple charcoal as its distinct process.",
-        "Islay is the Court's smokiest region; peat fires that dry the barley give the smoke.",
-        "A Scotch age statement refers to the youngest whisky in the bottle.",
-        "Irish whiskey is barley, distilled three times in a pot still. Canadian whisky uses corn, wheat, rye or barley, typically in a continuous still."
-      ],
-      "visuals": [
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "BOURBON",
-              "title": "United States",
-              "text": "At least 51% corn\nCharred new oak\nNo added color or flavor\nStraight: 2+ years"
-            },
-            {
-              "label": "SCOTCH",
-              "title": "Scotland",
-              "text": "Malted barley (other grains allowed)\nOak casks, 700 L max\n3+ years in Scotland\nOnly water and caramel may be added"
-            }
-          ]
-        },
-        {
-          "type": "list",
-          "title": "The five Scotch categories",
-          "rows": [
-            {
-              "name": "Single Malt",
-              "meta": "one distillery, malted barley only, pot stills"
-            },
-            {
-              "name": "Single Grain",
-              "meta": "one distillery, not single malt"
-            },
-            {
-              "name": "Blended Malt",
-              "meta": "single malts from more than one distillery"
-            },
-            {
-              "name": "Blended Grain",
-              "meta": "single grains from more than one distillery"
-            },
-            {
-              "name": "Blended Scotch",
-              "meta": "single malt(s) + single grain(s)"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Cognac and other brandy",
-      "book": "spirit/cognac",
-      "lines": [
-        {
-          "label": "Cognac",
-          "text": "Grape brandy distilled only in France's Cognac region, mainly from Ugni Blanc. It is double distilled in a pot still and aged in French oak; distillation must end by March 31 after the harvest."
-        },
-        {
-          "label": "Age labels",
-          "text": "The age on the label is the youngest brandy in the blend. Cognac can't be sold before two years in oak."
-        }
-      ],
-      "chips": {
-        "label": "Brandies the Court lists",
-        "items": [
-          "Cognac",
-          "Armagnac",
-          "Calvados",
-          "Grappa",
-          "Marc"
-        ]
-      },
-      "know": [
-        "VS: at least 2 years. VSOP: at least 4. XO: at least 10. XXO: 14 or more.",
-        "Napoléon means at least 6 years.",
-        "Fine Champagne Cognac is Grande Champagne (at least 50%) plus Petite Champagne.",
-        "Armagnac is distilled once in a continuous still. Calvados is made from apples and pears.",
-        "Grappa (Italy) and Marc (France) are pomace brandies."
-      ],
-      "visuals": [
-        {
-          "type": "scale",
-          "title": "Cognac: youngest brandy, minimum age",
-          "rows": [
-            {
-              "name": "VS",
-              "value": "2 years",
-              "pct": 0.14
-            },
-            {
-              "name": "VSOP",
-              "value": "4 years",
-              "pct": 0.29
-            },
-            {
-              "name": "Napoléon",
-              "value": "6 years",
-              "pct": 0.43
-            },
-            {
-              "name": "XO",
-              "value": "10 years",
-              "pct": 0.71
-            },
-            {
-              "name": "XXO",
-              "value": "14 years",
-              "pct": 1.0
-            }
-          ],
-          "note": "Ages are for the youngest brandy in the blend."
-        }
-      ]
-    },
-    {
-      "name": "Tequila and mezcal",
-      "book": "spirit/tequila",
-      "lines": [
-        {
-          "label": "Tequila",
-          "text": "Only blue agave (Agave tequilana Weber) may be used. The appellation covers 181 municipalities in five states: Jalisco, Michoacán, Guanajuato, Nayarit and Tamaulipas."
-        },
-        {
-          "label": "Categories",
-          "text": "Tequila 100% Agave uses only blue agave sugars and is bottled in the appellation. Plain Tequila needs at least 51% blue agave sugars."
-        }
-      ],
-      "know": [
-        "Blanco comes straight from the still. Joven (Gold) blends Blanco with aged Tequila.",
-        "Reposado: at least 2 months in oak. Añejo: at least 1 year. Extra Añejo: at least 3 years.",
-        "The Court places mezcal in Oaxaca, made from many agave varieties.",
-        "Cooking the agave over fire in pits gives mezcal its smoky character.",
-        "Under US rules, Tequila and Mezcal must be made in Mexico."
-      ],
-      "visuals": [
-        {
-          "type": "steps",
-          "title": "Tequila classes, youngest to oldest",
-          "items": [
-            {
-              "name": "Blanco",
-              "text": "Straight from the still",
-              "meta": "unaged"
-            },
-            {
-              "name": "Reposado",
-              "text": "Rested in oak",
-              "meta": "2+ months"
-            },
-            {
-              "name": "Añejo",
-              "text": "Aged in barrels of 600 L max",
-              "meta": "1+ year"
-            },
-            {
-              "name": "Extra Añejo",
-              "text": "Aged in barrels of 600 L max",
-              "meta": "3+ years"
-            }
-          ]
-        },
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "TEQUILA",
-              "title": "Jalisco and four other states",
-              "text": "Blue agave only\n100% Agave or 51%+\nContinuous or pot still"
-            },
-            {
-              "label": "MEZCAL",
-              "title": "Oaxaca",
-              "text": "Many agave varieties\nAgave cooked over fire in pits\nSmoky character"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Vodka, gin, rum and liqueurs",
-      "book": "spirit/liqueurs",
-      "lines": [
-        {
-          "label": "Clear spirits",
-          "text": "Vodka is neutral spirit with no wood aging. Gin gets its main flavor from juniper. Rum is distilled from sugar cane juice, syrup or molasses."
-        },
-        {
-          "label": "Liqueurs",
-          "text": "Liqueurs are spirits flavored with fruits, flowers, plants or other natural flavors, with at least 2.5% sugar by weight (US rule)."
-        }
-      ],
-      "know": [
-        "Gin made only by distillation may be labeled Distilled, Dry, London or Old Tom (US).",
-        "The Court's rum styles are light, dark, aged and spiced; rum is traditionally Caribbean but can be made anywhere.",
-        "Orange liqueurs: Triple Sec, Cointreau, Grand Marnier.",
-        "Coffee liqueurs: Kahlúa, Tia Maria. Whiskey liqueurs: Drambuie, Glayva, Irish Mist."
-      ],
-      "visuals": [
-        {
-          "type": "tiles",
-          "title": "Clear spirits at a glance",
-          "dark": true,
-          "items": [
-            {
-              "name": "Vodka",
-              "text": "Neutral spirit, 95%+ ABV off the still, no wood"
-            },
-            {
-              "name": "Gin",
-              "text": "Juniper is the main flavor"
-            },
-            {
-              "name": "Rum",
-              "text": "Sugar cane juice, syrup or molasses"
-            }
-          ]
-        },
-        {
-          "type": "names",
-          "items": [
-            {
-              "title": "HERB, NUT AND ANISE",
-              "text": "Benedictine, B&B, Chartreuse, Crème de Menthe, Pimm's, Frangelico, Anisette, Galliano, Ouzo, Sambuca"
-            },
-            {
-              "title": "FRUIT, CREAM, WHISKEY AND OTHER",
-              "text": "Triple Sec, Cointreau, Grand Marnier, Southern Comfort, Baileys Irish Cream, Drambuie, Glayva, Irish Mist, St. Germain, Kahlúa, Tia Maria"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "mixups": [
-    {
-      "a": "Ale",
-      "b": "Lager",
-      "why": "Ale uses top-fermenting yeast and is fruitier; lager uses bottom-fermenting yeast and is cleaner."
-    },
-    {
-      "a": "Junmai",
-      "b": "Honjozo",
-      "why": "Junmai has no added alcohol; Honjozo adds a little neutral spirit and is polished to 70% or less."
-    },
-    {
-      "a": "Bourbon",
-      "b": "Tennessee whiskey",
-      "why": "Both are at least 51% corn; the Court lists maple charcoal filtering as Tennessee's distinct step."
-    },
-    {
-      "a": "Reposado",
-      "b": "Añejo",
-      "why": "Reposado rests at least 2 months in oak; Añejo ages at least 1 year."
-    }
-  ],
-  "sources": "Court of Master Sommeliers Americas Introductory Course Guide (1.2024) and Curriculum Guide (8.2023); BJCP 2021 Style Guidelines; Japan Sake and Shochu Makers Association glossary; US TTB standards of identity (27 CFR Part 5, eCFR); Scotch Whisky Regulations 2009 and the Scotch Whisky Association; BNIC (cognac.fr); Consejo Regulador del Tequila. Checked Oct 31, 2026.",
-  "cards": [
-    {
-      "q": "What are the four main ingredients of beer in the Court's definition?",
-      "answer": "Cereal grains (mainly barley), water, hops and yeast",
-      "wrong": [
-        "Barley, water, sugar and yeast",
-        "Rice, koji, water and yeast",
-        "Wheat, hops, fruit and yeast"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
-    },
-    {
-      "q": "What kind of yeast makes ales?",
-      "answer": "Top-fermenting yeast",
-      "wrong": [
-        "Bottom-fermenting yeast",
-        "Wild yeast only",
-        "Koji mold"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
-    },
-    {
-      "q": "What do hops give beer?",
-      "answer": "Aroma, flavor and bitterness, and they act as a preservative",
-      "wrong": [
-        "Sugar for fermentation",
-        "Color and body",
-        "Most of the alcohol"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
-    },
-    {
-      "q": "Where does Pilsner come from?",
-      "answer": "The Czech Republic (Plzeň)",
-      "wrong": [
-        "Bavaria, Germany",
-        "Belgium",
-        "Austria"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=84"
-    },
-    {
-      "q": "Hefeweizen is:",
-      "answer": "A German wheat ale",
-      "wrong": [
-        "A German lager",
-        "A Belgian sour ale",
-        "A Czech lager"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=84"
-    },
-    {
-      "q": "Which of these is a lager?",
-      "answer": "Doppelbock",
-      "wrong": [
-        "Porter",
-        "Irish Dry Stout",
-        "Witbier"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=84"
-    },
-    {
-      "q": "How is Lambic fermented?",
-      "answer": "Spontaneously, by wild yeast and bacteria",
-      "wrong": [
-        "With cold bottom-fermenting yeast",
-        "With koji and sake yeast",
-        "In pressurized tanks for 4-5 days"
-      ],
-      "source": "https://www.bjcp.org/style/2021/23/23D/lambic/"
-    },
-    {
-      "q": "What does Irish Dry Stout taste of, per the BJCP?",
-      "answer": "Pronounced roast, often like coffee",
-      "wrong": [
-        "Banana and clove",
-        "Sour and funky",
-        "Citrus hops and pine"
-      ],
-      "source": "https://www.bjcp.org/style/2021/15/15B/irish-stout/"
-    },
-    {
-      "q": "What does koji-kin do in sake making?",
-      "answer": "Its enzymes turn rice starch into sugar",
-      "wrong": [
-        "It turns sugar into alcohol",
-        "It adds sourness like lactic bacteria",
-        "It clarifies the finished sake"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=86"
-    },
-    {
-      "q": "What does Junmai on a sake label mean?",
-      "answer": "No alcohol added",
-      "wrong": [
-        "Rice polished to 50%",
-        "Unpasteurized",
-        "Cloudy"
-      ],
-      "source": "https://japansake.or.jp/sake/en/basic/glossary/"
-    },
-    {
-      "q": "Daiginjo rice is polished so that what is left?",
-      "answer": "50% or less of the grain",
-      "wrong": [
-        "60% or less",
-        "70% or less",
-        "90% or less"
-      ],
-      "source": "https://japansake.or.jp/sake/en/basic/glossary/"
-    },
-    {
-      "q": "Ginjo rice is polished so that what is left?",
-      "answer": "60% or less of the grain",
-      "wrong": [
-        "50% or less",
-        "70% or less",
-        "80% or less"
-      ],
-      "source": "https://japansake.or.jp/sake/en/basic/glossary/"
-    },
-    {
-      "q": "Honjozo is defined as:",
-      "answer": "Rice polished to 70% or less, with a little neutral spirit added",
-      "wrong": [
-        "Rice polished to 50% with no alcohol added",
-        "Unpasteurized sake",
-        "Sake aged more than two years"
-      ],
-      "source": "https://japansake.or.jp/sake/en/basic/glossary/"
-    },
-    {
-      "q": "A rice polishing rate of 60% means:",
-      "answer": "40% of the outer grain was milled away",
-      "wrong": [
-        "60% of the grain was milled away",
-        "The sake is 60 proof",
-        "60% of the rice is koji rice"
-      ],
-      "source": "https://japansake.or.jp/sake/en/basic/glossary/"
-    },
-    {
-      "q": "What is nigori sake?",
-      "answer": "Cloudy sake filtered with a coarse mesh",
-      "wrong": [
-        "Unpasteurized sake",
-        "Aged sake",
-        "Sake with added alcohol"
-      ],
-      "source": "https://japansake.or.jp/sake/en/basic/glossary/"
-    },
-    {
-      "q": "Single malt Scotch must be distilled in which still?",
-      "answer": "Copper pot stills, in batches",
-      "wrong": [
-        "Column stills",
-        "Coffey (patent) stills",
-        "Any continuous still"
-      ],
-      "source": "https://www.scotch-whisky.org.uk/discover-scotch/enjoying-scotch/scotch-whisky-categories/single-malt-scotch-whisky/"
-    },
-    {
-      "q": "What did Aeneas Coffey's 1831 patent still make possible?",
-      "answer": "Continuous distillation, which led to grain whisky",
-      "wrong": [
-        "Double distillation of Cognac",
-        "Peat-smoked malt",
-        "Aging in charred new oak"
-      ],
-      "source": "https://www.scotch-whisky.org.uk/discover-scotch/story-of-scotch/"
-    },
-    {
-      "q": "In the US, vodka is neutral spirits distilled at or above what strength?",
-      "answer": "95% ABV (190 proof)",
-      "wrong": [
-        "40% ABV (80 proof)",
-        "80% ABV (160 proof)",
-        "62.5% ABV (125 proof)"
-      ],
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.142"
-    },
-    {
-      "q": "Gin must take its main flavor from:",
-      "answer": "Juniper berries",
-      "wrong": [
-        "Coriander",
-        "Citrus peel",
-        "Anise"
-      ],
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.144"
-    },
-    {
-      "q": "US rum is distilled from:",
-      "answer": "Sugar cane juice, syrup or molasses",
-      "wrong": [
-        "Grain",
-        "Agave",
-        "Grapes"
-      ],
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.147"
-    },
-    {
-      "q": "Bourbon's mash must be at least what?",
-      "answer": "51% corn",
-      "wrong": [
-        "51% rye",
-        "80% corn",
-        "100% corn"
-      ],
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.143"
-    },
-    {
-      "q": "What barrels must bourbon be stored in?",
-      "answer": "Charred new oak",
-      "wrong": [
-        "Used bourbon barrels",
-        "Uncharred French oak",
-        "Any wood barrel"
-      ],
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.143"
-    },
-    {
-      "q": "Straight bourbon must age at least how long?",
-      "answer": "2 years",
-      "wrong": [
-        "6 months",
-        "3 years",
-        "4 years"
-      ],
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.143"
-    },
-    {
-      "q": "What does the Court list as Tennessee whiskey's distinct process?",
-      "answer": "Filtering through maple charcoal",
-      "wrong": [
-        "Triple distillation in pot stills",
-        "Drying the barley over peat",
-        "Aging in used sherry casks"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=89"
-    },
-    {
-      "q": "Scotch must mature in Scotland in oak for at least how long?",
-      "answer": "3 years",
-      "wrong": [
-        "2 years",
-        "4 years",
-        "10 years"
-      ],
-      "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/3/made"
-    },
-    {
-      "q": "Which Scotch region does the Court call the smokiest?",
-      "answer": "Islay",
-      "wrong": [
-        "Speyside",
-        "Lowland",
-        "Campbeltown"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=89"
-    },
-    {
-      "q": "A Cognac labelled VSOP must be at least how old?",
-      "answer": "4 years",
-      "wrong": [
-        "2 years",
-        "6 years",
-        "10 years"
-      ],
-      "source": "https://www.cognac.fr/en/discover/a-unique-spirit/a-protected-origin/"
-    },
-    {
-      "q": "A Cognac labelled XO must be at least how old?",
-      "answer": "10 years",
-      "wrong": [
-        "4 years",
-        "6 years",
-        "14 years"
-      ],
-      "source": "https://www.cognac.fr/en/discover/a-unique-spirit/a-protected-origin/"
-    },
-    {
-      "q": "Which agave may be used for Tequila?",
-      "answer": "Blue agave (Agave tequilana Weber)",
-      "wrong": [
-        "Any agave species",
-        "Espadín",
-        "Tobalá"
-      ],
-      "source": "https://www.crt.org.mx/en/appellation-of-origin/"
-    },
-    {
-      "q": "Tequila Reposado must rest in oak for at least:",
-      "answer": "2 months",
-      "wrong": [
-        "2 weeks",
-        "1 year",
-        "3 years"
-      ],
-      "source": "https://www.crt.org.mx/en/our-tequila/"
-    }
-  ],
-  "facts": [
-    {
-      "fact": "Exam content (Introductory): beer basics (main ingredients, common styles); sake basics (ingredients, quality scale); spirits basics (base ingredients, common styles).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=10"
-    },
-    {
-      "fact": "Course Section 11 'Important World Beverages': Beer (ingredients; ale and lager differences; examples of ales and lagers); Sake (ingredients; production basics; quality grades); Spirits and Liqueurs (basics of distillation; base ingredient of common spirits; basics of common spirits).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=6"
-    },
-    {
-      "fact": "Beer definition: a fermented beverage from cereal grains (mainly barley), water, hops, and yeast. Grains: mainly barley plus rice, corn, wheat and oats; starch must be converted to sugar for fermentation. Malt provides sugar for fermentation plus color, flavor, body, texture and mouthfeel. Yeast consumes malt sugars to create alcohol and can add aromas and flavors; yeast type determines ale or lager. Ales: top-fermenting yeasts, more aromas such as fruit and spices. Lagers: bottom-fermenting yeasts, clean and crisp, less effect on aroma and flavor. Hops: flowering cone of the hop vine; aroma, flavor and bitterness to balance malt sweetness; natural preservative with antibacterial properties. Water: 90%+ of beer content.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
-    },
-    {
-      "fact": "Certified column: ales use Saccharomyces cerevisiae, warm fast fermentation (68-72°F / 20-22°C); lagers use Saccharomyces pastorianus, cool slow fermentation (48-55°F / 9-13°C).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
-    },
-    {
-      "fact": "Beer process (Intro): germination, malting, fermentation. Ale examples: Germany - Hefeweizen; Britain - Pale Ale, India Pale Ale (IPA), Porter; Ireland - Irish Dry Stout; Belgium - Lambic, Wit or White Ale. Lager examples: American Lager, European Lager; Czech Republic - Pilsner (origin of the Pilsner beer); Germany - Pilsner (Pils), Bock, Doppelbock, Oktoberfest.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=84"
-    },
-    {
-      "fact": "Czech Premium Pale Lager is commonly associated with Pilsner Urquell, first brewed in 1842 in Plzeň.",
-      "source": "https://www.bjcp.org/style/2021/3/3B/czech-premium-pale-lager/"
-    },
-    {
-      "fact": "Irish Stout: a black beer with a pronounced roasted flavor, often similar to coffee; draught versions are typically creamy from a nitro pour. It evolved from London porters.",
-      "source": "https://www.bjcp.org/style/2021/15/15B/irish-stout/"
-    },
-    {
-      "fact": "Weissbier (also known as hefeweizen): pale, refreshing German wheat beer with high carbonation and a distinctive banana-and-clove yeast profile; malted wheat at least half the grist.",
-      "source": "https://www.bjcp.org/style/2021/10/10A/weissbier/"
-    },
-    {
-      "fact": "Witbier: pale, hazy Belgian wheat ale; traditionally uses coriander seed and dried Curaçao orange peel; revived in 1966 by Pierre Celis at what became Hoegaarden.",
-      "source": "https://www.bjcp.org/style/2021/24/24A/witbier/"
-    },
-    {
-      "fact": "Lambic: a fairly sour, wild Belgian wheat beer from in and around Brussels, spontaneously fermented with naturally occurring yeast and bacteria; aged hops used more as preservative than for bitterness.",
-      "source": "https://www.bjcp.org/style/2021/23/23D/lambic/"
-    },
-    {
-      "fact": "American IPA: a decidedly hoppy and bitter, moderately strong, pale American ale.",
-      "source": "https://www.bjcp.org/style/2021/21/21A/american-ipa/"
-    },
-    {
-      "fact": "Sake (Intro): a fermented beverage made from rice; the majority of production is in Japan. Rice: special varieties (not table rice). Koji-kin: a mold that converts rice starch to sugar, sprinkled over steamed rice. Yeast converts sugar into alcohol after koji converts starch; sake is typically 15-22% abv. Water: each brewery has its own source. Brewer's alcohol: added to some styles and not others. Certified: Koji-kin = Aspergillus oryzae; parallel fermentation; Nigori = cloudy sake; Namazake = unpasteurized.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=86"
-    },
-    {
-      "fact": "Sake classification (Intro): recognize Junmai, Honjozo, Ginjo, Daiginjo as part of the premium classification; Junmai = no alcohol added. Certified: minimum % of rice grain remaining - Daiginjo 50%, Ginjo 60%, Honjozo 70%; Junmai Daiginjo 50%, Junmai Ginjo 60%. Ginjo and Daiginjo best served chilled.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=87"
-    },
-    {
-      "fact": "JSS glossary: Junmai - sake made without the addition of neutral spirits. Honjozo - rice polished to 70% or less plus neutral spirits up to 10% of polished rice weight. Ginjo - rice polished to 60% or less with low-temperature fermentation; fruity aroma, light flavor. Daiginjo - rice polished to 50% or less with low-temperature fermentation. Rice polishing rate is the percentage of the grain left after polishing; if 30% is polished away, the rate is 70%. Specially designated sake has 8 categories. Koji-kin is Aspergillus oryzae. Parallel fermentation: saccharification by koji and fermentation by yeast happen at the same time. Nigori: cloudy sake filtered with a coarse mesh. Namazake: unpasteurized sake. Sake is usually diluted to around 15% alcohol.",
-      "source": "https://japansake.or.jp/sake/en/basic/glossary/"
-    },
-    {
-      "fact": "Tequila distillation: the fermented liquid is boiled and, on condensing the vapor, a concentrated alcoholic liquid is obtained; done in two phases, generally in stills, though distillation towers also exist.",
-      "source": "https://www.crt.org.mx/en/our-tequila/"
-    },
-    {
-      "fact": "In 1831 Aeneas Coffey invented the Patent Still, which enabled continuous distillation and led to grain whisky, a lighter spirit than malt whisky.",
-      "source": "https://www.scotch-whisky.org.uk/discover-scotch/story-of-scotch/"
-    },
-    {
-      "fact": "Single Malt Scotch Whisky is distilled at a single distillery from water and malted barley without other cereals, by batch distillation in copper pot stills.",
-      "source": "https://www.scotch-whisky.org.uk/discover-scotch/enjoying-scotch/scotch-whisky-categories/single-malt-scotch-whisky/"
-    },
-    {
-      "fact": "Court spirits table (Intro): Vodka - anywhere in the world, commonly cereal grain but can be anything, commonly continuous still, distilled multiple times in continuous still to remove any flavors. Rum - can be anywhere but traditionally Caribbean, sugarcane and molasses, continuous or pot still. Gin - anywhere, neutral grain, continuous, flavored with botanicals and juniper berries. Tequila - Jalisco, Mexico, blue agave, continuous or pot still. Mezcal - Oaxaca, Mexico, agave (many varieties), continuous or pot still, agave cooked over fire in pits gives a smoky character. Certified (red): rum styles Light, Dark, Aged, Spiced; gin style London Dry.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=88"
-    },
-    {
-      "fact": "Court whisk(e)y table: Bourbon - USA (most made in Kentucky but not required), 51% corn, new charred American white oak. Tennessee - 51% corn, filtered through maple charcoal. Canadian - corn, wheat, rye or barley, typically continuous. Irish - barley, three times in pot still. Scotch - barley, subregions Highland, Lowland, Islay (smokiest), Speyside, Campbeltown; min 3 years in oak; single malt / blended; two times in pot still (Lowlands three, Certified); peat fires dry the barley giving a smoky character.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=89"
-    },
-    {
-      "fact": "Court brandy table: Cognac - VS/Three Star 2 years, VSOP 4 years, XO 10 years (Certified); white grapes, mainly Ugni Blanc (Certified); two times in a pot still; aged in French oak. Armagnac - one time in a unique continuous still; aged in French oak. Calvados - apples, pears; aged in French oak. Pomace brandy: Grappa (Italy), Marc (France).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=90"
-    },
-    {
-      "fact": "Court liqueurs and cordials table: Herb & Nut - Benedictine, B&B, Pimm's, Chartreuse, Crème de Menthe, Frangelico; Anise - Anisette, Galliano, Ouzo, Sambuca. Fruit - Orange: Triple Sec, Cointreau, Grand Marnier; Peaches: Southern Comfort. Cream - Baileys Irish Cream. Whiskey - Drambuie, Glayva, Irish Mist. Other - Elderflower: St. Germain; Ginger: Canton; Coffee: Kahlúa, Tia Maria.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=91"
-    },
-    {
-      "fact": "Neutral spirits are distilled at or above 95% ABV (190 proof) and bottled at not less than 40% ABV; vodka is a type of neutral spirits and may not be aged or stored in wood barrels (except paraffin-lined barrels for bottled in bond).",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.142"
-    },
-    {
-      "fact": "Whisky: distilled from a fermented mash of grain at less than 95% ABV, stored in oak barrels (except corn whisky), bottled at not less than 40% ABV. Bourbon: mash of not less than 51% corn, distilled at 160 proof or less, stored in charred new oak barrels at 125 proof or less; no added coloring, flavoring or blending materials. Straight bourbon: charred new oak for a minimum of 2 years. 'Bourbon' may not be used for whisky not distilled and aged in the United States. Rye whisky: not less than 51% rye.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.143"
-    },
-    {
-      "fact": "Gin: made by distillation or redistillation, or by mixing neutral spirits, with or over juniper berries and optionally other aromatics; must derive its main characteristic flavor from juniper berries; bottled at not less than 40% ABV. Gin made only by original distillation or redistillation may be called 'distilled', 'Dry', 'London' or 'Old Tom'.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.144"
-    },
-    {
-      "fact": "Brandy: distilled from the fermented juice, mash or wine of fruit, or its residue, at less than 95% ABV, bottled at not less than 40% ABV. Cognac: grape brandy distilled exclusively in the Cognac region of France. Armagnac: grape brandy distilled in France under French Armagnac rules.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.145"
-    },
-    {
-      "fact": "Rum: distilled from the fermented juice of sugar cane, sugar cane syrup, sugar cane molasses or other sugar cane by-products at less than 95% ABV; bottled at not less than 40% ABV. Cachaça is rum that is a distinctive product of Brazil.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.147"
-    },
-    {
-      "fact": "Agave spirits: at least 51% from Agave; Tequila and Mezcal are agave spirits that are distinctive products of Mexico, made in Mexico under Mexican law.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.148"
-    },
-    {
-      "fact": "Cordials and liqueurs: flavored distilled spirits made by mixing or redistilling spirits with or over fruits, flowers, plants, juices or other natural flavors, containing at least 2.5% sugar by weight.",
-      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.150"
-    },
-    {
-      "fact": "Scotch Whisky: produced in Scotland from water and malted barley (only whole grains of other cereals may be added); distilled at less than 94.8% ABV; matured only in oak casks of no more than 700 litres, only in Scotland, for at least three years; only water and plain caramel coloring may be added; minimum 40% ABV. Categories: Single Malt, Single Grain, Blended Malt, Blended Grain, Blended Scotch (single malt(s) blended with single grain(s)). Single Malt: one distillery, water and malted barley only, pot stills.",
-      "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/3/made"
-    },
-    {
-      "fact": "Protected Scotch localities: Campbeltown and Islay; protected regions: Highland, Lowland and Speyside.",
-      "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/10/made"
-    },
-    {
-      "fact": "Any maturation period or age on a spirit drink label refers to the youngest alcoholic component; Scotch age statements must be in years.",
-      "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/12/made"
-    },
-    {
-      "fact": "Cognac aging: the age is the youngest component of the blend. Cognac cannot be sold before at least two years of aging, without interruption, exclusively in oak. At least 2 years: VS ('3 Etoiles', 'Sélection', 'De Luxe', 'Very Special'); at least 4 years: VSOP ('Réserve', 'Vieux', 'Rare', 'Royal', 'Very Superior Old Pale'); at least 10 years: XO ('Hors d'âge', 'Extra', 'Extra Old' and others); 14 years or more: 'XXO', 'Extra Extra Old'; 6 years: 'Napoléon', 'Très Vieille Réserve' and others. Minimum 40% ABV. 'Fine Champagne' = Grande Champagne (minimum 50%) and Petite Champagne.",
-      "source": "https://www.cognac.fr/en/discover/a-unique-spirit/a-protected-origin/"
-    },
-    {
-      "fact": "Cognac uses batch double distillation in two 'chauffes', completed no later than March 31 of the year after the harvest; no sugar or sulphites may be added during fermentation.",
-      "source": "https://www.cognac.fr/en/discover/expertise/production/"
-    },
-    {
-      "fact": "Only blue agave (Agave tequilana Weber) is permitted for Tequila. The Appellation of Origin covers 181 municipalities in five states: Jalisco, Michoacán, Guanajuato, Nayarit and Tamaulipas.",
-      "source": "https://www.crt.org.mx/en/appellation-of-origin/"
-    },
-    {
-      "fact": "Tequila 100% Agave: made from 100% blue agave sugars and bottled at origin. Tequila: at least 51% blue agave sugars, up to 49% other sugars, may be bottled outside the territory. Blanco: direct from the still, only adjusted with water. Joven/Oro: blend of white Tequila with rested, aged or extra-aged Tequila. Reposado must mature in oak or holm oak for at least 2 months, añejo at least one year, extra añejo at least 3 years; añejo and extra añejo in barrels of max 600 liters.",
-      "source": "https://www.crt.org.mx/en/our-tequila/"
-    }
-  ],
-  "unverified": [
-    "Whether Junmai has any minimum polishing requirement was not confirmed on an official page; a search snippet said the requirement was dropped in 2004, but no JSS or National Tax Agency text was read to confirm it.",
-    "The Court gives sake as 'typically 15-22% abv', while the JSS glossary says sake is usually diluted to around 15%. Both are cited as written.",
-    "The CRT 'Our Tequila' page states Reposado needs at least 2 months in oak in its maturation paragraph, but its class list says Reposado is matured 'a minimum of 1 year'. The 2-month figure (which matches the Court) is used; the class list looks like an error.",
-    "No official mezcal body page (CRM) was read; mezcal facts come from the Court Curriculum Guide and US eCFR only.",
-    "No Brewers Association page was used; beer styles come from the Court and BJCP 2021.",
-    "Court Curriculum spirits tables mark Certified-level information in red; color was read from the PDF programmatically. Cognac age statements, Ugni Blanc, rum styles, London Dry and producer names are in red (Certified), though age statements are also confirmed on cognac.fr.",
-    "Bourbon distillation still type and Tennessee whiskey's legal definition were not confirmed from an official source; only the Court's 'filtered through maple charcoal' is used.",
-    "The Court lists Amaretto under 'Apricot' in its liqueur table; it is left out here because no other source was checked.",
-    "General physics of distillation (boiling points of alcohol vs water) was not confirmed from an official source, so it is not stated."
+ "number": 11,
+ "slug": "beer-sake-spirits",
+ "title": "Beer, sake and spirits",
+ "script": "Chapter eleven",
+ "lead": "The basics the Court tests outside wine: what beer and sake are made from, ale versus lager, sake grades, how distillation works, and the base ingredient and key rules of each common spirit and liqueur.",
+ "minutes": 25,
+ "intro": {
+  "script": "Start here",
+  "title": "WHAT THE COURT TESTS",
+  "text": "The Introductory exam content list asks for these basics of each drink.",
+  "tiers": [
+   {
+    "name": "Beer",
+    "note": "main ingredients, common styles"
+   },
+   {
+    "name": "Sake",
+    "note": "ingredients, quality scale"
+   },
+   {
+    "name": "Spirits",
+    "note": "base ingredients, common styles"
+   }
   ]
+ },
+ "sections": [
+  {
+   "name": "Beer: what goes in",
+   "lines": [
+    {
+     "label": "Definition",
+     "text": "Beer is a fermented drink made from cereal grains (mainly barley), water, hops and yeast."
+    },
+    {
+     "label": "Process",
+     "text": "The grain's starch must become sugar before it can ferment. The Court's steps are germination, malting and fermentation."
+    }
+   ],
+   "chips": {
+    "label": "Grains",
+    "items": [
+     "Barley",
+     "Wheat",
+     "Rice",
+     "Corn",
+     "Oats"
+    ]
+   },
+   "know": [
+    "Malt gives sugar for fermentation, plus color, flavor, body, texture and mouthfeel.",
+    "Hops give aroma, flavor and bitterness to balance malt sweetness, and act as a natural preservative.",
+    "Yeast eats the malt sugars and makes alcohol. The type of yeast decides ale or lager.",
+    "Water is 90% or more of a beer."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "The four ingredients",
+     "dark": true,
+     "items": [
+      {
+       "name": "Malt",
+       "text": "Sugar, color, flavor, body"
+      },
+      {
+       "name": "Hops",
+       "text": "Aroma, bitterness, preservative"
+      },
+      {
+       "name": "Yeast",
+       "text": "Makes alcohol; ale or lager"
+      },
+      {
+       "name": "Water",
+       "text": "90%+ of the beer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Ales and lagers",
+   "lines": [
+    {
+     "label": "Ale",
+     "text": "Top-fermenting yeast makes ales, with more fruit and spice aromas."
+    },
+    {
+     "label": "Lager",
+     "text": "Bottom-fermenting yeast makes lagers: clean and crisp, with less yeast effect on aroma and flavor."
+    }
+   ],
+   "know": [
+    "Pilsner started in the Czech Republic; Pilsner Urquell was first brewed in Plzeň in 1842.",
+    "Irish Dry Stout is black and roasty, often like coffee; draught versions are creamy from a nitro pour.",
+    "Hefeweizen (Weissbier) is a German wheat ale with banana-and-clove yeast character.",
+    "Lambic is a sour Belgian wheat beer, fermented by wild yeast and bacteria.",
+    "Witbier is a hazy Belgian wheat ale, traditionally spiced with coriander and dried orange peel."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "ALE",
+       "title": "Top-fermenting yeast",
+       "text": "More fruit and spice aromas\nHefeweizen, Pale Ale, IPA\nPorter, Irish Dry Stout\nLambic, Witbier"
+      },
+      {
+       "label": "LAGER",
+       "title": "Bottom-fermenting yeast",
+       "text": "Clean and crisp\nAmerican and European Lager\nPilsner\nBock, Doppelbock, Oktoberfest"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "The Court's examples, by country",
+     "rows": [
+      {
+       "name": "Hefeweizen",
+       "meta": "Ale · Germany"
+      },
+      {
+       "name": "Pale Ale, IPA, Porter",
+       "meta": "Ale · Britain"
+      },
+      {
+       "name": "Irish Dry Stout",
+       "meta": "Ale · Ireland"
+      },
+      {
+       "name": "Lambic, Witbier",
+       "meta": "Ale · Belgium"
+      },
+      {
+       "name": "Pilsner",
+       "meta": "Lager · Czech Republic (origin), Germany"
+      },
+      {
+       "name": "Bock, Doppelbock, Oktoberfest",
+       "meta": "Lager · Germany"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sake",
+   "lines": [
+    {
+     "label": "What it is",
+     "text": "Sake is a fermented drink made from rice, mostly in Japan. It uses special sake rice, koji, yeast and water; some styles also get brewer's alcohol."
+    },
+    {
+     "label": "How it ferments",
+     "text": "Koji-kin is a mold grown on steamed rice that turns starch into sugar. Yeast turns that sugar into alcohol at the same time (parallel fermentation)."
+    }
+   ],
+   "chips": {
+    "label": "Grades to recognize",
+    "items": [
+     "Junmai",
+     "Honjozo",
+     "Ginjo",
+     "Daiginjo"
+    ]
+   },
+   "know": [
+    "Junmai means no alcohol added.",
+    "The polishing rate is how much of the grain is left: 70% means 30% was milled away.",
+    "Ginjo and Daiginjo use low-temperature fermentation and have a fruity aroma.",
+    "Nigori is cloudy sake. Namazake is unpasteurized.",
+    "The Court gives sake as typically 15-22% ABV."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Rice left after polishing (maximum)",
+     "rows": [
+      {
+       "name": "Honjozo",
+       "value": "70% or less",
+       "pct": 0.7
+      },
+      {
+       "name": "Ginjo · Junmai Ginjo",
+       "value": "60% or less",
+       "pct": 0.6
+      },
+      {
+       "name": "Daiginjo · Junmai Daiginjo",
+       "value": "50% or less",
+       "pct": 0.5
+      }
+     ],
+     "note": "Lower number = more polished rice. Junmai grades have no added alcohol."
+    }
+   ]
+  },
+  {
+   "name": "Distillation",
+   "lines": [
+    {
+     "label": "What it does",
+     "text": "Distilling boils a fermented liquid and condenses the vapor into a stronger alcoholic liquid."
+    },
+    {
+     "label": "Pot or column",
+     "text": "Pot stills work in batches; single malt Scotch must use copper pot stills. Column (patent or Coffey) stills run continuously; Aeneas Coffey's 1831 still led to grain whisky."
+    }
+   ],
+   "know": [
+    "US vodka is neutral spirit distilled at 95% ABV (190 proof) or higher and never aged in wood.",
+    "US whisky, brandy, rum and agave spirits are distilled below 95% ABV and bottled at 40% or more.",
+    "The Court lists Irish whiskey as distilled three times in a pot still, and Scotch two times.",
+    "Cognac is double distilled in batches; Armagnac is distilled once in a continuous still."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Base ingredient of common spirits",
+     "rows": [
+      {
+       "name": "Vodka",
+       "meta": "commonly grain, but can be anything"
+      },
+      {
+       "name": "Gin",
+       "meta": "neutral grain spirit + juniper"
+      },
+      {
+       "name": "Rum",
+       "meta": "sugarcane and molasses"
+      },
+      {
+       "name": "Tequila",
+       "meta": "blue agave"
+      },
+      {
+       "name": "Mezcal",
+       "meta": "agave, many varieties"
+      },
+      {
+       "name": "Whisk(e)y",
+       "meta": "grain"
+      },
+      {
+       "name": "Brandy",
+       "meta": "fruit; Cognac uses white grapes"
+      }
+     ],
+     "note": "The Court tests the base ingredient of each common spirit."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "POT STILL",
+       "title": "One batch at a time",
+       "text": "Copper pot\nSingle malt Scotch\nIrish whiskey, Cognac"
+      },
+      {
+       "label": "COLUMN STILL",
+       "title": "Runs continuously",
+       "text": "Patent or Coffey still\nGrain whisky\nVodka, gin (Court: commonly continuous)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Whisk(e)y",
+   "book": "spirit/whiskey",
+   "lines": [
+    {
+     "label": "Bourbon (US law)",
+     "text": "At least 51% corn, distilled at 160 proof or less, stored in charred new oak barrels at 125 proof or less, with no added coloring or flavoring. It must be made in the US; Kentucky is not required."
+    },
+    {
+     "label": "Scotch (UK law)",
+     "text": "Made in Scotland from water and malted barley, distilled below 94.8% ABV, then matured in Scotland in oak casks of 700 liters or less for at least three years. Bottled at 40% or more."
+    }
+   ],
+   "chips": {
+    "label": "Scotch regions",
+    "items": [
+     "Highland",
+     "Lowland",
+     "Speyside",
+     "Islay",
+     "Campbeltown"
+    ]
+   },
+   "know": [
+    "Straight bourbon must age at least 2 years in charred new oak.",
+    "Tennessee whiskey is also at least 51% corn; the Court lists filtering through maple charcoal as its distinct process.",
+    "Islay is the Court's smokiest region; peat fires that dry the barley give the smoke.",
+    "A Scotch age statement refers to the youngest whisky in the bottle.",
+    "Irish whiskey is barley, distilled three times in a pot still. Canadian whisky uses corn, wheat, rye or barley, typically in a continuous still."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "BOURBON",
+       "title": "United States",
+       "text": "At least 51% corn\nCharred new oak\nNo added color or flavor\nStraight: 2+ years"
+      },
+      {
+       "label": "SCOTCH",
+       "title": "Scotland",
+       "text": "Malted barley (other grains allowed)\nOak casks, 700 L max\n3+ years in Scotland\nOnly water and caramel may be added"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "The five Scotch categories",
+     "rows": [
+      {
+       "name": "Single Malt",
+       "meta": "one distillery, malted barley only, pot stills"
+      },
+      {
+       "name": "Single Grain",
+       "meta": "one distillery, not single malt"
+      },
+      {
+       "name": "Blended Malt",
+       "meta": "single malts from more than one distillery"
+      },
+      {
+       "name": "Blended Grain",
+       "meta": "single grains from more than one distillery"
+      },
+      {
+       "name": "Blended Scotch",
+       "meta": "single malt(s) + single grain(s)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cognac and other brandy",
+   "book": "spirit/cognac",
+   "lines": [
+    {
+     "label": "Cognac",
+     "text": "Grape brandy distilled only in France's Cognac region, mainly from Ugni Blanc. It is double distilled in a pot still and aged in French oak; distillation must end by March 31 after the harvest."
+    },
+    {
+     "label": "Age labels",
+     "text": "The age on the label is the youngest brandy in the blend. Cognac can't be sold before two years in oak."
+    }
+   ],
+   "chips": {
+    "label": "Brandies the Court lists",
+    "items": [
+     "Cognac",
+     "Armagnac",
+     "Calvados",
+     "Grappa",
+     "Marc"
+    ]
+   },
+   "know": [
+    "VS: at least 2 years. VSOP: at least 4. XO: at least 10. XXO: 14 or more.",
+    "Napoléon means at least 6 years.",
+    "Fine Champagne Cognac is Grande Champagne (at least 50%) plus Petite Champagne.",
+    "Armagnac is distilled once in a continuous still. Calvados is made from apples and pears.",
+    "Grappa (Italy) and Marc (France) are pomace brandies."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Cognac: youngest brandy, minimum age",
+     "rows": [
+      {
+       "name": "VS",
+       "value": "2 years",
+       "pct": 0.14
+      },
+      {
+       "name": "VSOP",
+       "value": "4 years",
+       "pct": 0.29
+      },
+      {
+       "name": "Napoléon",
+       "value": "6 years",
+       "pct": 0.43
+      },
+      {
+       "name": "XO",
+       "value": "10 years",
+       "pct": 0.71
+      },
+      {
+       "name": "XXO",
+       "value": "14 years",
+       "pct": 1
+      }
+     ],
+     "note": "Ages are for the youngest brandy in the blend."
+    }
+   ]
+  },
+  {
+   "name": "Tequila and mezcal",
+   "book": "spirit/tequila",
+   "lines": [
+    {
+     "label": "Tequila",
+     "text": "Only blue agave (Agave tequilana Weber) may be used. The appellation covers 181 municipalities in five states: Jalisco, Michoacán, Guanajuato, Nayarit and Tamaulipas."
+    },
+    {
+     "label": "Categories",
+     "text": "Tequila 100% Agave uses only blue agave sugars and is bottled in the appellation. Plain Tequila needs at least 51% blue agave sugars."
+    }
+   ],
+   "know": [
+    "Blanco comes straight from the still. Joven (Gold) blends Blanco with aged Tequila.",
+    "Reposado: at least 2 months in oak. Añejo: at least 1 year. Extra Añejo: at least 3 years.",
+    "The Court places mezcal in Oaxaca, made from many agave varieties.",
+    "Cooking the agave over fire in pits gives mezcal its smoky character.",
+    "Under US rules, Tequila and Mezcal must be made in Mexico."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Tequila classes, youngest to oldest",
+     "items": [
+      {
+       "name": "Blanco",
+       "text": "Straight from the still",
+       "meta": "unaged"
+      },
+      {
+       "name": "Reposado",
+       "text": "Rested in oak",
+       "meta": "2+ months"
+      },
+      {
+       "name": "Añejo",
+       "text": "Aged in barrels of 600 L max",
+       "meta": "1+ year"
+      },
+      {
+       "name": "Extra Añejo",
+       "text": "Aged in barrels of 600 L max",
+       "meta": "3+ years"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "TEQUILA",
+       "title": "Jalisco and four other states",
+       "text": "Blue agave only\n100% Agave or 51%+\nContinuous or pot still"
+      },
+      {
+       "label": "MEZCAL",
+       "title": "Oaxaca",
+       "text": "Many agave varieties\nAgave cooked over fire in pits\nSmoky character"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Vodka, gin, rum and liqueurs",
+   "book": "spirit/liqueurs",
+   "lines": [
+    {
+     "label": "Clear spirits",
+     "text": "Vodka is neutral spirit with no wood aging. Gin gets its main flavor from juniper. Rum is distilled from sugar cane juice, syrup or molasses."
+    },
+    {
+     "label": "Liqueurs",
+     "text": "Liqueurs are spirits flavored with fruits, flowers, plants or other natural flavors, with at least 2.5% sugar by weight (US rule)."
+    }
+   ],
+   "know": [
+    "Gin made only by distillation may be labeled Distilled, Dry, London or Old Tom (US).",
+    "The Court's rum styles are light, dark, aged and spiced; rum is traditionally Caribbean but can be made anywhere.",
+    "Orange liqueurs: Triple Sec, Cointreau, Grand Marnier.",
+    "Coffee liqueurs: Kahlúa, Tia Maria. Whiskey liqueurs: Drambuie, Glayva, Irish Mist."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Clear spirits at a glance",
+     "dark": true,
+     "items": [
+      {
+       "name": "Vodka",
+       "text": "Neutral spirit, 95%+ ABV off the still, no wood"
+      },
+      {
+       "name": "Gin",
+       "text": "Juniper is the main flavor"
+      },
+      {
+       "name": "Rum",
+       "text": "Sugar cane juice, syrup or molasses"
+      }
+     ]
+    },
+    {
+     "type": "names",
+     "items": [
+      {
+       "title": "HERB, NUT AND ANISE",
+       "text": "Benedictine, B&B, Chartreuse, Crème de Menthe, Pimm's, Frangelico, Anisette, Galliano, Ouzo, Sambuca"
+      },
+      {
+       "title": "FRUIT, CREAM, WHISKEY AND OTHER",
+       "text": "Triple Sec, Cointreau, Grand Marnier, Southern Comfort, Baileys Irish Cream, Drambuie, Glayva, Irish Mist, St. Germain, Kahlúa, Tia Maria"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Ale",
+   "b": "Lager",
+   "why": "Ale uses top-fermenting yeast and is fruitier; lager uses bottom-fermenting yeast and is cleaner."
+  },
+  {
+   "a": "Junmai",
+   "b": "Honjozo",
+   "why": "Junmai has no added alcohol; Honjozo adds a little neutral spirit and is polished to 70% or less."
+  },
+  {
+   "a": "Bourbon",
+   "b": "Tennessee whiskey",
+   "why": "Both are at least 51% corn; the Court lists maple charcoal filtering as Tennessee's distinct step."
+  },
+  {
+   "a": "Reposado",
+   "b": "Añejo",
+   "why": "Reposado rests at least 2 months in oak; Añejo ages at least 1 year."
+  }
+ ],
+ "sources": "Court of Master Sommeliers Americas Introductory Course Guide (1.2024) and Curriculum Guide (8.2023); BJCP 2021 Style Guidelines; Japan Sake and Shochu Makers Association glossary; US TTB standards of identity (27 CFR Part 5, eCFR); Scotch Whisky Regulations 2009 and the Scotch Whisky Association; BNIC (cognac.fr); Consejo Regulador del Tequila. Checked Oct 31, 2026.",
+ "cards": [
+  {
+   "q": "What are the four main ingredients of beer in the Court's definition?",
+   "answer": "Cereal grains (mainly barley), water, hops and yeast",
+   "wrong": [
+    "Barley, water, sugar and yeast",
+    "Rice, koji, water and yeast",
+    "Wheat, hops, fruit and yeast"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "q": "What kind of yeast makes ales?",
+   "answer": "Top-fermenting yeast",
+   "wrong": [
+    "Bottom-fermenting yeast",
+    "Wild yeast only",
+    "Koji mold"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "q": "What do hops give beer?",
+   "answer": "Aroma, flavor and bitterness, and they act as a preservative",
+   "wrong": [
+    "Sugar for fermentation",
+    "Color and body",
+    "Most of the alcohol"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "q": "Where does Pilsner come from?",
+   "answer": "The Czech Republic (Plzeň)",
+   "wrong": [
+    "Bavaria, Germany",
+    "Belgium",
+    "Austria"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=84"
+  },
+  {
+   "q": "Hefeweizen is:",
+   "answer": "A German wheat ale",
+   "wrong": [
+    "A German lager",
+    "A Belgian sour ale",
+    "A Czech lager"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=84"
+  },
+  {
+   "q": "Which of these is a lager?",
+   "answer": "Doppelbock",
+   "wrong": [
+    "Porter",
+    "Irish Dry Stout",
+    "Witbier"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=84"
+  },
+  {
+   "q": "How is Lambic fermented?",
+   "answer": "Spontaneously, by wild yeast and bacteria",
+   "wrong": [
+    "With cold bottom-fermenting yeast",
+    "With koji and sake yeast",
+    "In pressurized tanks for 4-5 days"
+   ],
+   "source": "https://www.bjcp.org/style/2021/23/23D/lambic/"
+  },
+  {
+   "q": "What does Irish Dry Stout taste of, per the BJCP?",
+   "answer": "Pronounced roast, often like coffee",
+   "wrong": [
+    "Banana and clove",
+    "Sour and funky",
+    "Citrus hops and pine"
+   ],
+   "source": "https://www.bjcp.org/style/2021/15/15B/irish-stout/"
+  },
+  {
+   "q": "What does koji-kin do in sake making?",
+   "answer": "Its enzymes turn rice starch into sugar",
+   "wrong": [
+    "It turns sugar into alcohol",
+    "It adds sourness like lactic bacteria",
+    "It clarifies the finished sake"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=86"
+  },
+  {
+   "q": "What does Junmai on a sake label mean?",
+   "answer": "No alcohol added",
+   "wrong": [
+    "Rice polished to 50%",
+    "Unpasteurized",
+    "Cloudy"
+   ],
+   "source": "https://japansake.or.jp/sake/en/basic/glossary/"
+  },
+  {
+   "q": "Daiginjo rice is polished so that what is left?",
+   "answer": "50% or less of the grain",
+   "wrong": [
+    "60% or less",
+    "70% or less",
+    "90% or less"
+   ],
+   "source": "https://japansake.or.jp/sake/en/basic/glossary/"
+  },
+  {
+   "q": "Ginjo rice is polished so that what is left?",
+   "answer": "60% or less of the grain",
+   "wrong": [
+    "50% or less",
+    "70% or less",
+    "80% or less"
+   ],
+   "source": "https://japansake.or.jp/sake/en/basic/glossary/"
+  },
+  {
+   "q": "Honjozo is defined as:",
+   "answer": "Rice polished to 70% or less, with a little neutral spirit added",
+   "wrong": [
+    "Rice polished to 50% with no alcohol added",
+    "Unpasteurized sake",
+    "Sake aged more than two years"
+   ],
+   "source": "https://japansake.or.jp/sake/en/basic/glossary/"
+  },
+  {
+   "q": "A rice polishing rate of 60% means:",
+   "answer": "40% of the outer grain was milled away",
+   "wrong": [
+    "60% of the grain was milled away",
+    "The sake is 60 proof",
+    "60% of the rice is koji rice"
+   ],
+   "source": "https://japansake.or.jp/sake/en/basic/glossary/"
+  },
+  {
+   "q": "What is nigori sake?",
+   "answer": "Cloudy sake filtered with a coarse mesh",
+   "wrong": [
+    "Unpasteurized sake",
+    "Aged sake",
+    "Sake with added alcohol"
+   ],
+   "source": "https://japansake.or.jp/sake/en/basic/glossary/"
+  },
+  {
+   "q": "Single malt Scotch must be distilled in which still?",
+   "answer": "Copper pot stills, in batches",
+   "wrong": [
+    "Column stills",
+    "Coffey (patent) stills",
+    "Any continuous still"
+   ],
+   "source": "https://www.scotch-whisky.org.uk/discover-scotch/enjoying-scotch/scotch-whisky-categories/single-malt-scotch-whisky/"
+  },
+  {
+   "q": "What did Aeneas Coffey's 1831 patent still make possible?",
+   "answer": "Continuous distillation, which led to grain whisky",
+   "wrong": [
+    "Double distillation of Cognac",
+    "Peat-smoked malt",
+    "Aging in charred new oak"
+   ],
+   "source": "https://www.scotch-whisky.org.uk/discover-scotch/story-of-scotch/"
+  },
+  {
+   "q": "In the US, vodka is neutral spirits distilled at or above what strength?",
+   "answer": "95% ABV (190 proof)",
+   "wrong": [
+    "40% ABV (80 proof)",
+    "80% ABV (160 proof)",
+    "62.5% ABV (125 proof)"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.142"
+  },
+  {
+   "q": "Gin must take its main flavor from:",
+   "answer": "Juniper berries",
+   "wrong": [
+    "Coriander",
+    "Citrus peel",
+    "Anise"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.144"
+  },
+  {
+   "q": "US rum is distilled from:",
+   "answer": "Sugar cane juice, syrup or molasses",
+   "wrong": [
+    "Grain",
+    "Agave",
+    "Grapes"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.147"
+  },
+  {
+   "q": "Bourbon's mash must be at least what?",
+   "answer": "51% corn",
+   "wrong": [
+    "51% rye",
+    "80% corn",
+    "100% corn"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.143"
+  },
+  {
+   "q": "What barrels must bourbon be stored in?",
+   "answer": "Charred new oak",
+   "wrong": [
+    "Used bourbon barrels",
+    "Uncharred French oak",
+    "Any wood barrel"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.143"
+  },
+  {
+   "q": "Straight bourbon must age at least how long?",
+   "answer": "2 years",
+   "wrong": [
+    "6 months",
+    "3 years",
+    "4 years"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.143"
+  },
+  {
+   "q": "What does the Court list as Tennessee whiskey's distinct process?",
+   "answer": "Filtering through maple charcoal",
+   "wrong": [
+    "Triple distillation in pot stills",
+    "Drying the barley over peat",
+    "Aging in used sherry casks"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=89"
+  },
+  {
+   "q": "Scotch must mature in Scotland in oak for at least how long?",
+   "answer": "3 years",
+   "wrong": [
+    "2 years",
+    "4 years",
+    "10 years"
+   ],
+   "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/3/made"
+  },
+  {
+   "q": "Which Scotch region does the Court call the smokiest?",
+   "answer": "Islay",
+   "wrong": [
+    "Speyside",
+    "Lowland",
+    "Campbeltown"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=89"
+  },
+  {
+   "q": "A Cognac labelled VSOP must be at least how old?",
+   "answer": "4 years",
+   "wrong": [
+    "2 years",
+    "6 years",
+    "10 years"
+   ],
+   "source": "https://www.cognac.fr/en/discover/a-unique-spirit/a-protected-origin/"
+  },
+  {
+   "q": "A Cognac labelled XO must be at least how old?",
+   "answer": "10 years",
+   "wrong": [
+    "4 years",
+    "6 years",
+    "14 years"
+   ],
+   "source": "https://www.cognac.fr/en/discover/a-unique-spirit/a-protected-origin/"
+  },
+  {
+   "q": "Which agave may be used for Tequila?",
+   "answer": "Blue agave (Agave tequilana Weber)",
+   "wrong": [
+    "Any agave species",
+    "Espadín",
+    "Tobalá"
+   ],
+   "source": "https://www.crt.org.mx/en/appellation-of-origin/"
+  },
+  {
+   "q": "Tequila Reposado must rest in oak for at least:",
+   "answer": "2 months",
+   "wrong": [
+    "2 weeks",
+    "1 year",
+    "3 years"
+   ],
+   "source": "https://www.crt.org.mx/en/our-tequila/"
+  },
+  {
+   "q": "About how much of a beer is water?",
+   "answer": "90% or more",
+   "wrong": [
+    "About half",
+    "About 70%",
+    "Less than 60%"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "q": "What is Calvados made from?",
+   "answer": "Apples and pears",
+   "wrong": [
+    "White grapes",
+    "Plums",
+    "Grape pomace"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=90"
+  },
+  {
+   "q": "What gives mezcal its smoky character, per the Court?",
+   "answer": "Agave cooked over fire in pits",
+   "wrong": [
+    "Barley dried over peat fires",
+    "Charred new oak barrels",
+    "Filtering through maple charcoal"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=88"
+  },
+  {
+   "q": "Which of these is an orange liqueur?",
+   "answer": "Cointreau",
+   "wrong": [
+    "Frangelico",
+    "Kahlúa",
+    "Drambuie"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=91"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Exam content (Introductory): beer basics (main ingredients, common styles); sake basics (ingredients, quality scale); spirits basics (base ingredients, common styles).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=10"
+  },
+  {
+   "fact": "Course Section 11 'Important World Beverages': Beer (ingredients; ale and lager differences; examples of ales and lagers); Sake (ingredients; production basics; quality grades); Spirits and Liqueurs (basics of distillation; base ingredient of common spirits; basics of common spirits).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=6"
+  },
+  {
+   "fact": "Beer definition: a fermented beverage from cereal grains (mainly barley), water, hops, and yeast. Grains: mainly barley plus rice, corn, wheat and oats; starch must be converted to sugar for fermentation. Malt provides sugar for fermentation plus color, flavor, body, texture and mouthfeel. Yeast consumes malt sugars to create alcohol and can add aromas and flavors; yeast type determines ale or lager. Ales: top-fermenting yeasts, more aromas such as fruit and spices. Lagers: bottom-fermenting yeasts, clean and crisp, less effect on aroma and flavor. Hops: flowering cone of the hop vine; aroma, flavor and bitterness to balance malt sweetness; natural preservative with antibacterial properties. Water: 90%+ of beer content.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "fact": "Certified column: ales use Saccharomyces cerevisiae, warm fast fermentation (68-72°F / 20-22°C); lagers use Saccharomyces pastorianus, cool slow fermentation (48-55°F / 9-13°C).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "fact": "Beer process (Intro): germination, malting, fermentation. Ale examples: Germany - Hefeweizen; Britain - Pale Ale, India Pale Ale (IPA), Porter; Ireland - Irish Dry Stout; Belgium - Lambic, Wit or White Ale. Lager examples: American Lager, European Lager; Czech Republic - Pilsner (origin of the Pilsner beer); Germany - Pilsner (Pils), Bock, Doppelbock, Oktoberfest.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=84"
+  },
+  {
+   "fact": "Czech Premium Pale Lager is commonly associated with Pilsner Urquell, first brewed in 1842 in Plzeň.",
+   "source": "https://www.bjcp.org/style/2021/3/3B/czech-premium-pale-lager/"
+  },
+  {
+   "fact": "Irish Stout: a black beer with a pronounced roasted flavor, often similar to coffee; draught versions are typically creamy from a nitro pour. It evolved from London porters.",
+   "source": "https://www.bjcp.org/style/2021/15/15B/irish-stout/"
+  },
+  {
+   "fact": "Weissbier (also known as hefeweizen): pale, refreshing German wheat beer with high carbonation and a distinctive banana-and-clove yeast profile; malted wheat at least half the grist.",
+   "source": "https://www.bjcp.org/style/2021/10/10A/weissbier/"
+  },
+  {
+   "fact": "Witbier: pale, hazy Belgian wheat ale; traditionally uses coriander seed and dried Curaçao orange peel; revived in 1966 by Pierre Celis at what became Hoegaarden.",
+   "source": "https://www.bjcp.org/style/2021/24/24A/witbier/"
+  },
+  {
+   "fact": "Lambic: a fairly sour, wild Belgian wheat beer from in and around Brussels, spontaneously fermented with naturally occurring yeast and bacteria; aged hops used more as preservative than for bitterness.",
+   "source": "https://www.bjcp.org/style/2021/23/23D/lambic/"
+  },
+  {
+   "fact": "American IPA: a decidedly hoppy and bitter, moderately strong, pale American ale.",
+   "source": "https://www.bjcp.org/style/2021/21/21A/american-ipa/"
+  },
+  {
+   "fact": "Sake (Intro): a fermented beverage made from rice; the majority of production is in Japan. Rice: special varieties (not table rice). Koji-kin: a mold that converts rice starch to sugar, sprinkled over steamed rice. Yeast converts sugar into alcohol after koji converts starch; sake is typically 15-22% abv. Water: each brewery has its own source. Brewer's alcohol: added to some styles and not others. Certified: Koji-kin = Aspergillus oryzae; parallel fermentation; Nigori = cloudy sake; Namazake = unpasteurized.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=86"
+  },
+  {
+   "fact": "Sake classification (Intro): recognize Junmai, Honjozo, Ginjo, Daiginjo as part of the premium classification; Junmai = no alcohol added. Certified: minimum % of rice grain remaining - Daiginjo 50%, Ginjo 60%, Honjozo 70%; Junmai Daiginjo 50%, Junmai Ginjo 60%. Ginjo and Daiginjo best served chilled.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=87"
+  },
+  {
+   "fact": "JSS glossary: Junmai - sake made without the addition of neutral spirits. Honjozo - rice polished to 70% or less plus neutral spirits up to 10% of polished rice weight. Ginjo - rice polished to 60% or less with low-temperature fermentation; fruity aroma, light flavor. Daiginjo - rice polished to 50% or less with low-temperature fermentation. Rice polishing rate is the percentage of the grain left after polishing; if 30% is polished away, the rate is 70%. Specially designated sake has 8 categories. Koji-kin is Aspergillus oryzae. Parallel fermentation: saccharification by koji and fermentation by yeast happen at the same time. Nigori: cloudy sake filtered with a coarse mesh. Namazake: unpasteurized sake. Sake is usually diluted to around 15% alcohol.",
+   "source": "https://japansake.or.jp/sake/en/basic/glossary/"
+  },
+  {
+   "fact": "Tequila distillation: the fermented liquid is boiled and, on condensing the vapor, a concentrated alcoholic liquid is obtained; done in two phases, generally in stills, though distillation towers also exist.",
+   "source": "https://www.crt.org.mx/en/our-tequila/"
+  },
+  {
+   "fact": "In 1831 Aeneas Coffey invented the Patent Still, which enabled continuous distillation and led to grain whisky, a lighter spirit than malt whisky.",
+   "source": "https://www.scotch-whisky.org.uk/discover-scotch/story-of-scotch/"
+  },
+  {
+   "fact": "Single Malt Scotch Whisky is distilled at a single distillery from water and malted barley without other cereals, by batch distillation in copper pot stills.",
+   "source": "https://www.scotch-whisky.org.uk/discover-scotch/enjoying-scotch/scotch-whisky-categories/single-malt-scotch-whisky/"
+  },
+  {
+   "fact": "Court spirits table (Intro): Vodka - anywhere in the world, commonly cereal grain but can be anything, commonly continuous still, distilled multiple times in continuous still to remove any flavors. Rum - can be anywhere but traditionally Caribbean, sugarcane and molasses, continuous or pot still. Gin - anywhere, neutral grain, continuous, flavored with botanicals and juniper berries. Tequila - Jalisco, Mexico, blue agave, continuous or pot still. Mezcal - Oaxaca, Mexico, agave (many varieties), continuous or pot still, agave cooked over fire in pits gives a smoky character. Certified (red): rum styles Light, Dark, Aged, Spiced; gin style London Dry.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=88"
+  },
+  {
+   "fact": "Court whisk(e)y table: Bourbon - USA (most made in Kentucky but not required), 51% corn, new charred American white oak. Tennessee - 51% corn, filtered through maple charcoal. Canadian - corn, wheat, rye or barley, typically continuous. Irish - barley, three times in pot still. Scotch - barley, subregions Highland, Lowland, Islay (smokiest), Speyside, Campbeltown; min 3 years in oak; single malt / blended; two times in pot still (Lowlands three, Certified); peat fires dry the barley giving a smoky character.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=89"
+  },
+  {
+   "fact": "Court brandy table: Cognac - VS/Three Star 2 years, VSOP 4 years, XO 10 years (Certified); white grapes, mainly Ugni Blanc (Certified); two times in a pot still; aged in French oak. Armagnac - one time in a unique continuous still; aged in French oak. Calvados - apples, pears; aged in French oak. Pomace brandy: Grappa (Italy), Marc (France).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=90"
+  },
+  {
+   "fact": "Court liqueurs and cordials table: Herb & Nut - Benedictine, B&B, Pimm's, Chartreuse, Crème de Menthe, Frangelico; Anise - Anisette, Galliano, Ouzo, Sambuca. Fruit - Orange: Triple Sec, Cointreau, Grand Marnier; Peaches: Southern Comfort. Cream - Baileys Irish Cream. Whiskey - Drambuie, Glayva, Irish Mist. Other - Elderflower: St. Germain; Ginger: Canton; Coffee: Kahlúa, Tia Maria.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=91"
+  },
+  {
+   "fact": "Neutral spirits are distilled at or above 95% ABV (190 proof) and bottled at not less than 40% ABV; vodka is a type of neutral spirits and may not be aged or stored in wood barrels (except paraffin-lined barrels for bottled in bond).",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.142"
+  },
+  {
+   "fact": "Whisky: distilled from a fermented mash of grain at less than 95% ABV, stored in oak barrels (except corn whisky), bottled at not less than 40% ABV. Bourbon: mash of not less than 51% corn, distilled at 160 proof or less, stored in charred new oak barrels at 125 proof or less; no added coloring, flavoring or blending materials. Straight bourbon: charred new oak for a minimum of 2 years. 'Bourbon' may not be used for whisky not distilled and aged in the United States. Rye whisky: not less than 51% rye.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.143"
+  },
+  {
+   "fact": "Gin: made by distillation or redistillation, or by mixing neutral spirits, with or over juniper berries and optionally other aromatics; must derive its main characteristic flavor from juniper berries; bottled at not less than 40% ABV. Gin made only by original distillation or redistillation may be called 'distilled', 'Dry', 'London' or 'Old Tom'.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.144"
+  },
+  {
+   "fact": "Brandy: distilled from the fermented juice, mash or wine of fruit, or its residue, at less than 95% ABV, bottled at not less than 40% ABV. Cognac: grape brandy distilled exclusively in the Cognac region of France. Armagnac: grape brandy distilled in France under French Armagnac rules.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.145"
+  },
+  {
+   "fact": "Rum: distilled from the fermented juice of sugar cane, sugar cane syrup, sugar cane molasses or other sugar cane by-products at less than 95% ABV; bottled at not less than 40% ABV. Cachaça is rum that is a distinctive product of Brazil.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.147"
+  },
+  {
+   "fact": "Agave spirits: at least 51% from Agave; Tequila and Mezcal are agave spirits that are distinctive products of Mexico, made in Mexico under Mexican law.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.148"
+  },
+  {
+   "fact": "Cordials and liqueurs: flavored distilled spirits made by mixing or redistilling spirits with or over fruits, flowers, plants, juices or other natural flavors, containing at least 2.5% sugar by weight.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.150"
+  },
+  {
+   "fact": "Scotch Whisky: produced in Scotland from water and malted barley (only whole grains of other cereals may be added); distilled at less than 94.8% ABV; matured only in oak casks of no more than 700 litres, only in Scotland, for at least three years; only water and plain caramel coloring may be added; minimum 40% ABV. Categories: Single Malt, Single Grain, Blended Malt, Blended Grain, Blended Scotch (single malt(s) blended with single grain(s)). Single Malt: one distillery, water and malted barley only, pot stills.",
+   "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/3/made"
+  },
+  {
+   "fact": "Protected Scotch localities: Campbeltown and Islay; protected regions: Highland, Lowland and Speyside.",
+   "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/10/made"
+  },
+  {
+   "fact": "Any maturation period or age on a spirit drink label refers to the youngest alcoholic component; Scotch age statements must be in years.",
+   "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/12/made"
+  },
+  {
+   "fact": "Cognac aging: the age is the youngest component of the blend. Cognac cannot be sold before at least two years of aging, without interruption, exclusively in oak. At least 2 years: VS ('3 Etoiles', 'Sélection', 'De Luxe', 'Very Special'); at least 4 years: VSOP ('Réserve', 'Vieux', 'Rare', 'Royal', 'Very Superior Old Pale'); at least 10 years: XO ('Hors d'âge', 'Extra', 'Extra Old' and others); 14 years or more: 'XXO', 'Extra Extra Old'; 6 years: 'Napoléon', 'Très Vieille Réserve' and others. Minimum 40% ABV. 'Fine Champagne' = Grande Champagne (minimum 50%) and Petite Champagne.",
+   "source": "https://www.cognac.fr/en/discover/a-unique-spirit/a-protected-origin/"
+  },
+  {
+   "fact": "Cognac uses batch double distillation in two 'chauffes', completed no later than March 31 of the year after the harvest; no sugar or sulphites may be added during fermentation.",
+   "source": "https://www.cognac.fr/en/discover/expertise/production/"
+  },
+  {
+   "fact": "Only blue agave (Agave tequilana Weber) is permitted for Tequila. The Appellation of Origin covers 181 municipalities in five states: Jalisco, Michoacán, Guanajuato, Nayarit and Tamaulipas.",
+   "source": "https://www.crt.org.mx/en/appellation-of-origin/"
+  },
+  {
+   "fact": "Tequila 100% Agave: made from 100% blue agave sugars and bottled at origin. Tequila: at least 51% blue agave sugars, up to 49% other sugars, may be bottled outside the territory. Blanco: direct from the still, only adjusted with water. Joven/Oro: blend of white Tequila with rested, aged or extra-aged Tequila. Reposado must mature in oak or holm oak for at least 2 months, añejo at least one year, extra añejo at least 3 years; añejo and extra añejo in barrels of max 600 liters.",
+   "source": "https://www.crt.org.mx/en/our-tequila/"
+  },
+  {
+   "fact": "Pomace brandy or Marc brandy: brandy distilled from the skin and pulp of sound, ripe grapes or other fruit, after the withdrawal of the juice or wine. Grape pomace brandy may alternatively be designated 'grappa' or 'grappa brandy'.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.145"
+  }
+ ],
+ "unverified": [
+  "Whether Junmai has any minimum polishing requirement was not confirmed on an official page; a search snippet said the requirement was dropped in 2004, but no JSS or National Tax Agency text was read to confirm it.",
+  "The Court gives sake as 'typically 15-22% abv', while the JSS glossary says sake is usually diluted to around 15%. Both are cited as written.",
+  "The CRT 'Our Tequila' page states Reposado needs at least 2 months in oak in its maturation paragraph, but its class list says Reposado is matured 'a minimum of 1 year'. The 2-month figure (which matches the Court) is used; the class list looks like an error.",
+  "No official mezcal body page (CRM) was read; mezcal facts come from the Court Curriculum Guide and US eCFR only.",
+  "No Brewers Association page was used; beer styles come from the Court and BJCP 2021.",
+  "Court Curriculum spirits tables mark Certified-level information in red; color was read from the PDF programmatically. Cognac age statements, Ugni Blanc, rum styles, London Dry and producer names are in red (Certified), though age statements are also confirmed on cognac.fr.",
+  "Bourbon distillation still type and Tennessee whiskey's legal definition were not confirmed from an official source; only the Court's 'filtered through maple charcoal' is used.",
+  "The Court lists Amaretto under 'Apricot' in its liqueur table; it is left out here because no other source was checked.",
+  "General physics of distillation (boiling points of alcohol vs water) was not confirmed from an official source, so it is not stated."
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Beer: what goes in",
+    "video": {
+     "youtubeId": "KqW802kr9N0",
+     "title": "CraftBeer.com: Deconstructing Craft Beer",
+     "by": "Brewers Association",
+     "length": "2:33"
+    },
+    "keyPoints": [
+     {
+      "big": "MALT",
+      "line": "gives the sugar, plus color, flavor and body."
+     },
+     {
+      "big": "HOPS",
+      "line": "add aroma and bitterness, and act as a preservative."
+     },
+     {
+      "big": "YEAST",
+      "line": "turns the sugar into alcohol and decides ale or lager."
+     },
+     {
+      "big": "WATER",
+      "line": "is 90% or more of every beer."
+     }
+    ],
+    "read": {
+     "bigIdea": "Beer is grain, water, hops and yeast.",
+     "where": "Beer is a fermented drink made from cereal grains, mainly **barley**. Rice, corn, wheat and oats are used too.\n\nThe grain’s starch has to become sugar before it can ferment. The Court names the steps as **germination**, **malting** and **fermentation**.",
+     "stopsTitle": "The four ingredients",
+     "stops": [
+      {
+       "name": "Malt",
+       "note": "the grain",
+       "text": "**Malt** gives the sugar for fermentation. It also brings color, flavor, body and mouthfeel."
+      },
+      {
+       "name": "Hops",
+       "note": "the flower",
+       "text": "**Hops** are the flowering cone of the hop vine. They add aroma, flavor and bitterness to balance the malt’s sweetness, and they are a natural preservative."
+      },
+      {
+       "name": "Yeast",
+       "note": "the engine",
+       "text": "**Yeast** eats the malt sugars and makes alcohol. The type of yeast decides whether the beer is an **ale** or a **lager**."
+      },
+      {
+       "name": "Water",
+       "note": "most of the glass",
+       "text": "Water makes up **90% or more** of a beer."
+      }
+     ]
+    },
+    "check": [
+     0,
+     2,
+     30
+    ]
+   },
+   {
+    "name": "Ales and lagers",
+    "video": {
+     "youtubeId": "hiiJLtrsO4Y",
+     "title": "CraftBeer.com: Craft Beer Styles",
+     "by": "Brewers Association",
+     "length": "2:15"
+    },
+    "keyPoints": [
+     {
+      "big": "ALES",
+      "line": "use top-fermenting yeast: more fruit and spice."
+     },
+     {
+      "big": "LAGERS",
+      "line": "use bottom-fermenting yeast: clean and crisp."
+     },
+     {
+      "big": "PILSNER",
+      "line": "is a lager that started in the Czech Republic."
+     },
+     {
+      "big": "HEFEWEIZEN",
+      "line": "is a German wheat ale with banana and clove notes."
+     },
+     {
+      "big": "LAMBIC",
+      "line": "is a sour Belgian wheat beer made with wild yeast."
+     }
+    ],
+    "read": {
+     "bigIdea": "The yeast decides: ale or lager.",
+     "where": "**Ales** use **top-fermenting** yeast. They ferment warm and fast, and show more fruit and spice.\n\n**Lagers** use **bottom-fermenting** yeast. They ferment cool and slow, and taste clean and crisp.",
+     "stopsTitle": "The Court’s examples, by country",
+     "stops": [
+      {
+       "name": "Britain and Ireland",
+       "note": "ales",
+       "text": "Britain gives **Pale Ale**, **IPA** and **Porter**. Ireland gives **Irish Dry Stout**: black and roasty, often like coffee, and creamy on a nitro pour."
+      },
+      {
+       "name": "Belgium",
+       "note": "ales",
+       "text": "**Lambic** is sour and fermented by wild yeast and bacteria. **Witbier** is a hazy wheat ale spiced with coriander and dried orange peel."
+      },
+      {
+       "name": "Germany",
+       "note": "ales and lagers",
+       "text": "**Hefeweizen** is a wheat ale with banana and clove. **Pilsner**, **Bock**, **Doppelbock** and **Oktoberfest** are German lagers."
+      },
+      {
+       "name": "Czech Republic",
+       "note": "lager",
+       "text": "**Pilsner** started here. Pilsner Urquell was first brewed in **Plzeň** in 1842."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Every style lands on one side:",
+     "mixup": "**Hefeweizen** is a German wheat ale. **Witbier** is a Belgian wheat ale, spiced with coriander and orange peel.",
+     "sayIt": "It’s a German wheat beer, with banana and clove notes."
+    },
+    "check": [
+     1,
+     5,
+     3
+    ]
+   },
+   {
+    "name": "Sake",
+    "video": {
+     "youtubeId": "-79SB-sxOos",
+     "title": "Sake Basic Course Part 2: How to Read Sake Labels",
+     "by": "Japan Sake and Shochu Makers Association",
+     "length": "13:07"
+    },
+    "keyPoints": [
+     {
+      "big": "SAKE",
+      "line": "is fermented from rice, mostly in Japan."
+     },
+     {
+      "big": "KOJI-KIN",
+      "line": "is a mold that turns the rice starch into sugar."
+     },
+     {
+      "big": "JUNMAI",
+      "line": "means no alcohol was added."
+     },
+     {
+      "big": "POLISHING RATE",
+      "line": "is the grain left: 70% means 30% was milled away."
+     },
+     {
+      "big": "DAIGINJO",
+      "line": "rice is polished to 50% or less."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sake is brewed from polished rice.",
+     "where": "Sake is a fermented drink made from rice, and most of it is made in Japan. It uses special **sake rice** (not table rice), **koji**, yeast and water. Some styles also get **brewer’s alcohol**.\n\n**Koji-kin** is a mold sprinkled over steamed rice. It turns starch into sugar while yeast turns that sugar into alcohol, at the same time: **parallel fermentation**. The Court gives sake as typically **15-22% ABV**.",
+     "stopsTitle": "The grades, from the label",
+     "stops": [
+      {
+       "name": "Junmai",
+       "note": "pure rice",
+       "text": "**Junmai** means no alcohol was added."
+      },
+      {
+       "name": "Honjozo",
+       "note": "70% or less",
+       "text": "Rice polished to **70% or less**, with a little neutral spirit added."
+      },
+      {
+       "name": "Ginjo",
+       "note": "60% or less",
+       "text": "Rice polished to **60% or less** and fermented at low temperature. Fruity aroma, light flavor."
+      },
+      {
+       "name": "Daiginjo",
+       "note": "50% or less",
+       "text": "Rice polished to **50% or less**, also fermented at low temperature. Add **Junmai** to either name and no alcohol was added."
+      },
+      {
+       "name": "Two more words",
+       "note": "on the label",
+       "text": "**Nigori** is cloudy sake. **Namazake** is unpasteurized."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Lower number, more of the grain milled away:",
+     "mixup": "**Junmai** has no added alcohol. **Honjozo** adds a little neutral spirit.",
+     "sayIt": "This is a Ginjo. It’s best served chilled."
+    },
+    "check": [
+     9,
+     10,
+     8
+    ]
+   },
+   {
+    "name": "Distillation",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DISTILLING",
+      "line": "boils a fermented liquid and condenses the vapor."
+     },
+     {
+      "big": "POT STILLS",
+      "line": "work one batch at a time."
+     },
+     {
+      "big": "COLUMN STILLS",
+      "line": "run nonstop. Coffey’s 1831 still led to grain whisky."
+     },
+     {
+      "big": "VODKA",
+      "line": "(US) comes off the still at 95% ABV or higher."
+     }
+    ],
+    "read": {
+     "bigIdea": "Distilling makes a fermented drink stronger.",
+     "where": "A spirit starts as a fermented liquid. It is boiled, and the vapor is condensed back into a **concentrated alcoholic liquid**.\n\nThe Court tests the basics of distillation and the **base ingredient** of each common spirit.",
+     "stopsTitle": "Two kinds of still",
+     "stops": [
+      {
+       "name": "Pot still",
+       "note": "in batches",
+       "text": "**Single malt Scotch** must be distilled in batches in **copper pot stills**. The Court lists **Irish whiskey** as distilled three times in a pot still, and Scotch two times. **Cognac** is double distilled in batches."
+      },
+      {
+       "name": "Column still",
+       "note": "continuous",
+       "text": "In 1831 **Aeneas Coffey** invented the **Patent Still**. It made continuous distillation possible and led to **grain whisky**. The Court says vodka and gin are commonly made in continuous stills."
+      },
+      {
+       "name": "US strength rules",
+       "note": "off the still",
+       "text": "**Vodka** is neutral spirit distilled at **95% ABV (190 proof)** or higher, and is not aged in wood. Whisky, brandy and rum are distilled below 95% and bottled at **40% ABV** or more."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "What each spirit is made from:",
+     "mixup": "**Cognac** is distilled twice in a pot still. **Armagnac** is distilled once in a continuous still."
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   },
+   {
+    "name": "Whisk(e)y",
+    "video": {
+     "youtubeId": "kSsBRQqhXcw",
+     "title": "From Grain to Glass: How Scotch Whisky is Made",
+     "by": "Scotch Whisky Association",
+     "length": "4:58"
+    },
+    "keyPoints": [
+     {
+      "big": "BOURBON",
+      "line": "is at least 51% corn, aged in charred new oak."
+     },
+     {
+      "big": "KENTUCKY",
+      "line": "isn’t required: bourbon can be made anywhere in the US."
+     },
+     {
+      "big": "STRAIGHT",
+      "line": "bourbon ages at least 2 years in charred new oak."
+     },
+     {
+      "big": "SCOTCH",
+      "line": "ages at least 3 years in oak, in Scotland."
+     },
+     {
+      "big": "ISLAY",
+      "line": "is the Court’s smokiest Scotch region."
+     }
+    ],
+    "read": {
+     "bigIdea": "Whisky is distilled from grain, then aged in oak.",
+     "where": "Under US law, **whisky** is distilled from a fermented mash of grain and stored in oak barrels. The Court’s table covers **bourbon**, **Tennessee**, **Canadian**, **Irish** and **Scotch**.",
+     "stopsTitle": "Four countries",
+     "stops": [
+      {
+       "name": "Bourbon",
+       "note": "USA",
+       "text": "At least **51% corn**, distilled at 160 proof or less, and stored in **charred new oak**. No added color or flavor. It must be made in the US; Kentucky is not required. **Straight bourbon** ages at least **2 years**."
+      },
+      {
+       "name": "Tennessee",
+       "note": "USA",
+       "text": "Also at least 51% corn. The Court lists **filtering through maple charcoal** as its distinct step."
+      },
+      {
+       "name": "Scotch",
+       "note": "Scotland",
+       "text": "Made from water and **malted barley**, then aged in oak casks of 700 liters or less, in Scotland, for at least **3 years**. Peat fires that dry the barley give the smoke. The age on the label is the **youngest** whisky in the bottle."
+      },
+      {
+       "name": "Irish and Canadian",
+       "note": "the other two",
+       "text": "**Irish** whiskey is barley, distilled three times in a pot still. **Canadian** whisky uses corn, wheat, rye or barley, typically in a continuous still."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Scotch comes in five categories:",
+     "mixup": "**Bourbon** and **Tennessee whiskey** are both at least 51% corn. Tennessee adds maple charcoal filtering.",
+     "sayIt": "If you like smoke, try an Islay Scotch."
+    },
+    "check": [
+     20,
+     21,
+     25
+    ]
+   },
+   {
+    "name": "Cognac and other brandy",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "COGNAC",
+      "line": "is grape brandy from France’s Cognac region."
+     },
+     {
+      "big": "VS · VSOP · XO",
+      "line": "mean at least 2, 4 and 10 years in oak."
+     },
+     {
+      "big": "THE AGE",
+      "line": "on the label is the youngest brandy in the blend."
+     },
+     {
+      "big": "ARMAGNAC",
+      "line": "is distilled once, in a continuous still."
+     },
+     {
+      "big": "GRAPPA",
+      "line": "(Italy) and Marc (France) are pomace brandies."
+     }
+    ],
+    "read": {
+     "bigIdea": "Brandy is distilled from fruit.",
+     "where": "Under US law, **brandy** is distilled from the fermented juice, mash or wine of fruit, or from what’s left of it (the residue).\n\n**Cognac** is grape brandy distilled only in France’s Cognac region, mainly from **Ugni Blanc**. It is double distilled in a **pot still** and aged in French oak. Distilling must end by **March 31** after the harvest.",
+     "stopsTitle": "The brandies the Court lists",
+     "stops": [
+      {
+       "name": "Cognac",
+       "note": "France",
+       "text": "It can’t be sold before **2 years** in oak. **VS** means at least 2 years, **VSOP** 4, **Napoléon** 6, **XO** 10 and **XXO** 14 or more."
+      },
+      {
+       "name": "Armagnac",
+       "note": "France",
+       "text": "Grape brandy distilled **once** in a unique **continuous still**, then aged in French oak."
+      },
+      {
+       "name": "Calvados",
+       "note": "France",
+       "text": "Made from **apples and pears**, and aged in French oak."
+      },
+      {
+       "name": "Grappa and Marc",
+       "note": "Italy and France",
+       "text": "**Pomace brandies**, distilled from the grape skins and pulp left after the juice or wine is drawn off. Grappa is Italian; Marc is French."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The label tells you the youngest brandy’s age:",
+     "mixup": "**Fine Champagne** on a Cognac label means Grande Champagne (at least 50%) plus Petite Champagne. It’s a Cognac term, not a sparkling wine.",
+     "sayIt": "This is a VSOP, so the youngest brandy in it is at least four years old."
+    },
+    "check": [
+     26,
+     27,
+     31
+    ]
+   },
+   {
+    "name": "Tequila and mezcal",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "TEQUILA",
+      "line": "may only use blue agave (Agave tequilana Weber)."
+     },
+     {
+      "big": "100% AGAVE",
+      "line": "means only blue agave sugars. Plain Tequila needs 51%."
+     },
+     {
+      "big": "REPOSADO",
+      "line": "rests at least 2 months in oak."
+     },
+     {
+      "big": "AÑEJO",
+      "line": "ages at least 1 year; Extra Añejo at least 3."
+     },
+     {
+      "big": "MEZCAL",
+      "line": "gets its smoke from agave cooked over fire in pits."
+     }
+    ],
+    "read": {
+     "bigIdea": "Tequila and mezcal are agave spirits from Mexico.",
+     "where": "Under US rules, **Tequila** and **Mezcal** must be made in Mexico. Tequila may only use **blue agave**. Its appellation covers 181 municipalities in five states: **Jalisco**, Michoacán, Guanajuato, Nayarit and Tamaulipas.\n\n**Tequila 100% Agave** uses only blue agave sugars and is bottled in the appellation. Plain **Tequila** needs at least **51%** blue agave sugars.",
+     "stopsTitle": "Tequila classes, youngest to oldest",
+     "stops": [
+      {
+       "name": "Blanco",
+       "note": "unaged",
+       "text": "Straight from the still, only adjusted with water."
+      },
+      {
+       "name": "Joven",
+       "note": "also called Oro (gold)",
+       "text": "Blanco blended with aged Tequila."
+      },
+      {
+       "name": "Reposado",
+       "note": "2+ months",
+       "text": "Rested in oak for at least **2 months**."
+      },
+      {
+       "name": "Añejo",
+       "note": "1+ year",
+       "text": "Aged at least **1 year**, in barrels of 600 liters or less."
+      },
+      {
+       "name": "Extra Añejo",
+       "note": "3+ years",
+       "text": "Aged at least **3 years**, in barrels of 600 liters or less."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Tequila and mezcal side by side:",
+     "mixup": "**Reposado** rests at least 2 months in oak. **Añejo** ages at least 1 year.",
+     "sayIt": "A Reposado has rested in oak for at least two months."
+    },
+    "check": [
+     28,
+     29,
+     32
+    ]
+   },
+   {
+    "name": "Vodka, gin, rum and liqueurs",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "VODKA",
+      "line": "is neutral spirit, not aged in wood (US rule)."
+     },
+     {
+      "big": "GIN",
+      "line": "takes its main flavor from juniper berries."
+     },
+     {
+      "big": "RUM",
+      "line": "is distilled from sugar cane juice, syrup or molasses."
+     },
+     {
+      "big": "LIQUEURS",
+      "line": "are flavored spirits with at least 2.5% sugar (US)."
+     },
+     {
+      "big": "COINTREAU",
+      "line": "Triple Sec and Grand Marnier are orange liqueurs."
+     }
+    ],
+    "read": {
+     "bigIdea": "Know what each spirit is made from.",
+     "where": "The Court tests what each common spirit is made from. Vodka, gin and rum can be made anywhere in the world.",
+     "stopsTitle": "Three spirits, then the liqueurs",
+     "stops": [
+      {
+       "name": "Vodka",
+       "note": "neutral",
+       "text": "Commonly made from grain, but it **can be anything**. In the US it is distilled at 95% ABV or higher and never aged in wood."
+      },
+      {
+       "name": "Gin",
+       "note": "juniper",
+       "text": "Neutral grain spirit flavored with botanicals. **Juniper berries** must give the main flavor. In the US, gin made only by distillation may be labeled **Distilled**, **Dry**, **London** or **Old Tom**."
+      },
+      {
+       "name": "Rum",
+       "note": "sugar cane",
+       "text": "Distilled from **sugar cane** juice, syrup or **molasses**. Traditionally Caribbean, but it can be made anywhere. The Court’s styles are light, dark, aged and spiced. **Cachaça** is rum from Brazil."
+      },
+      {
+       "name": "Liqueurs",
+       "note": "sweet and flavored",
+       "text": "Spirits flavored with fruits, flowers, plants or other natural flavors, with at least **2.5% sugar** under US rules. Orange: **Triple Sec**, **Cointreau**, **Grand Marnier**. Coffee: **Kahlúa**, **Tia Maria**. Whiskey: **Drambuie**, Glayva, Irish Mist."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The Court’s liqueur list, by flavor:",
+     "mixup": "**Drambuie** is a whiskey liqueur. **Kahlúa** is a coffee liqueur."
+    },
+    "check": [
+     18,
+     19,
+     33
+    ]
+   }
+  ]
+ }
 }

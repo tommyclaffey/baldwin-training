@@ -26,6 +26,12 @@ const slugify = (s) =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     .replace(/&/g, 'and').replace(/[’'.]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
+// Pages renamed after the export (Nov 1): the video-first Sommelier Program took these addresses; the old pages stay as details.
+const RENAME = { '353:2': 'Sommelier Program · About', '354:2': 'Sommelier Program · Level 1 · Exam Details', '355:2': 'Sommelier Program · Level 2 · Exam Details' };
+for (const p of pages) if (RENAME[p.id]) p.name = RENAME[p.id];
+// links to the old pages (sidebar, breadcrumbs) go to the new ones
+const LINK_TO = { '353:2': '391:32', '354:2': '392:31', '355:2': '394:31', '360:2': '392:31' };
+
 const slugById = {};
 const used = new Set();
 for (const p of pages) {
@@ -39,6 +45,7 @@ const fileOf = (id) => id.replace(':', '-');
 // rewrite links + image refs, collect text for search
 function prep(node, texts) {
   // a link to another screen becomes its address; a web link (Figma "Open URL") stays as it is
+  if (node.to && LINK_TO[node.to]) node.to = LINK_TO[node.to];
   if (node.to && !/^https?:\/\//.test(node.to)) node.to = slugById[node.to] !== undefined ? '/' + slugById[node.to] : undefined;
   if (node.f) for (const f of node.f) if (f.img) f.img = imgFile[f.img] ? '/img/' + imgFile[f.img] : undefined;
   if (node.t === 'T' && texts) texts.push(node.s);
@@ -82,6 +89,8 @@ for (const p of pages) {
   const parts = p.name.split(' · ');
   // the big display title on the page, for search results
   const title = parts[parts.length - 1];
+  // templates the server fills (e.g. the lesson) have a file but no address of their own
+  if (p.name.startsWith('Template · ')) continue;
   index.push({
     id: p.id,
     file: fileOf(p.id),

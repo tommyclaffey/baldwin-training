@@ -1120,3 +1120,43 @@ body.eip-lock { overflow: hidden; }
 .spin-hint { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px;
   background: rgba(30,28,26,.82); color: #F2EEE7; font: 600 12px 'Archivo', sans-serif; white-space: nowrap; pointer-events: none; }
 .spin-field { width: 220px; height: 300px; background: #E7DECF; border-radius: 12px; }
+
+/* ---- Study Guide lessons, video first (Nov 1, Figma 403:45) ---- */
+.quick-check { background: var(--ink); color: var(--cream); border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; width: 100%; }
+.qc-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.qc-label { font: 700 11px/1.2 'Archivo', sans-serif; letter-spacing: .12em; color: var(--copper); }
+.qc-note { font: 400 12.5px/1.3 'Archivo', sans-serif; color: #B8AFA3; }
+.qc-q { margin: 0; font: 800 20px/1.25 'Archivo', sans-serif; color: var(--cream); }
+.qc-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.qc-option { background: #2A2724; border: 1px solid #3A3632; color: var(--cream); border-radius: 12px; padding: 12px 14px; font: 700 14px/1.25 'Archivo', sans-serif; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 48px; }
+.qc-option:hover:not(:disabled) { border-color: var(--copper); }
+.qc-option.right { background: #2F4A33; border-color: #6FAF7A; }
+.qc-option.wrong { background: #4A2A2A; border-color: #C2706A; }
+.qc-option.dim { opacity: .55; }
+.qc-option:disabled { cursor: default; }
+.qc-foot, .qc-end { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.qc-good { color: #9FD4A8; font: 700 14px/1.3 'Archivo', sans-serif; }
+.qc-bad { color: #F0B3AD; font: 700 14px/1.3 'Archivo', sans-serif; }
+.qc-btn { background: var(--copper); color: var(--ink); border: 0; border-radius: 999px; padding: 11px 20px; font: 700 14px/1 'Archivo', sans-serif; cursor: pointer; }
+/* key points scroll sideways when there are more than fit */
+[data-name="Key points"] > [data-name="Cards"] { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-bottom: 4px; }
+[data-name="Key points"] > [data-name="Cards"] > * { scroll-snap-align: start; flex-shrink: 0 !important; }
+/* the section list stays in view while you read */
+[data-name="Player"] { align-items: flex-start !important; }
+[data-name="Playlist"] { position: sticky; top: 16px; }
+@media (max-width: 859px) {
+  .qc-options { grid-template-columns: 1fr 1fr; }
+  [data-name="Player"] > [data-name="Playlist"] { position: static; width: 100% !important; }
+  [data-name="Key points"] > [data-name="Cards"] { flex-wrap: nowrap !important; }
+  [data-name="Key points"] > [data-name="Cards"] > * { width: 78vw !important; max-width: 320px; }
+  /* phones: the video stays under the app bar while you scroll */
+  [data-name="Video slot · Lesson"] { position: sticky; top: 56px; z-index: 5; }
+}
+/* photo cards (the four levels, the three Level 2 parts): the words sit on the bottom edge whatever their height */
+[data-name^="Level "] > [data-name="Copy"], [data-name^="Part "] > [data-name="Copy"] { top: auto !important; bottom: 22px; }
+@media (max-width: 859px) {
+  /* lesson stops: the number and its line stay beside the text */
+  [data-name^="Stop "] { flex-direction: row !important; flex-wrap: nowrap !important; gap: 14px !important; }
+  [data-name^="Stop "] > [data-name="Rail"] { flex: 0 0 34px !important; width: 34px !important; align-self: stretch !important; }
+  [data-name^="Stop "] > [data-name="Body"] { flex: 1 1 0 !important; min-width: 0; width: auto !important; }
+}

@@ -1,1072 +1,1665 @@
 {
-  "number": 10,
-  "slug": "sparkling-fortified-sweet",
-  "title": "Sparkling, fortified and sweet",
-  "script": "Chapter ten",
-  "lead": "How bubbles, added spirit and concentrated sugar change a wine. Sparkling methods, Port, Sherry, Madeira, and the noble-rot, frozen and dried-grape sweet wines.",
-  "minutes": 25,
-  "intro": {
-    "script": "Start here",
-    "title": "OTHER WAYS TO MAKE WINE",
-    "text": "The Court groups these under Section 10, Other Methods of Making Wine: sparkling, fortified and sweet.",
-    "tiers": [
-      {
-        "name": "Sparkling",
-        "note": "a second fermentation makes the bubbles"
-      },
-      {
-        "name": "Fortified",
-        "note": "grape spirit is added during or after fermentation"
-      },
-      {
-        "name": "Sweet",
-        "note": "noble rot, drying or freezing concentrates the sugar"
-      }
+ "number": 10,
+ "slug": "sparkling-fortified-sweet",
+ "title": "Sparkling, fortified and sweet",
+ "script": "Chapter ten",
+ "lead": "How bubbles, added spirit and concentrated sugar change a wine. Sparkling methods, Port, Sherry, Madeira, and the noble-rot, frozen and dried-grape sweet wines.",
+ "minutes": 25,
+ "intro": {
+  "script": "Start here",
+  "title": "OTHER WAYS TO MAKE WINE",
+  "text": "The Court groups these under Section 10, Other Methods of Making Wine: sparkling, fortified and sweet.",
+  "tiers": [
+   {
+    "name": "Sparkling",
+    "note": "a second fermentation makes the bubbles"
+   },
+   {
+    "name": "Fortified",
+    "note": "grape spirit is added during or after fermentation"
+   },
+   {
+    "name": "Sweet",
+    "note": "noble rot, drying or freezing concentrates the sugar"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Sparkling methods",
+   "book": "wine/sparkling",
+   "lines": [
+    {
+     "label": "Two fermentations",
+     "text": "Sparkling wine needs two fermentations: one makes the wine, the second makes the bubbles. Each method gives its own style."
+    },
+    {
+     "label": "The Court's list",
+     "text": "The classic (traditional) method, the transfer method, the Charmat (tank) method and the méthode ancestrale."
+    }
+   ],
+   "chips": {
+    "label": "Traditional-method examples",
+    "items": [
+     "Champagne",
+     "Crémant",
+     "Cava",
+     "Franciacorta"
     ]
+   },
+   "know": [
+    "The traditional method is also called the Champagne method, méthode traditionnelle or metodo classico.",
+    "Traditional method: the second fermentation happens in the bottle, and dosage uses liqueur d'expédition.",
+    "Transfer method: same as traditional until the second fermentation ends, then the wine is emptied into tanks under pressure, filtered and rebottled. No riddling. Used for very large and very small bottles.",
+    "Charmat (tank) method: the second fermentation happens in pressurized tanks in 4-5 days. Examples: Prosecco, Moscato d'Asti.",
+    "Méthode ancestrale: the first fermentation is paused, the wine is bottled and finishes fermenting in the bottle. No disgorging needed."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "The traditional method, step by step",
+     "rows": [
+      {
+       "name": "Still wine and cuvée",
+       "meta": "make base wine, then blend (assemblage)"
+      },
+      {
+       "name": "Liqueur de tirage",
+       "meta": "base wine, yeast and sugar"
+      },
+      {
+       "name": "Second fermentation",
+       "meta": "in the bottle"
+      },
+      {
+       "name": "Aging on the lees",
+       "meta": "sur lie; autolysis"
+      },
+      {
+       "name": "Riddling (remuage)",
+       "meta": "pupitre or gyropalette"
+      },
+      {
+       "name": "Disgorging (dégorgement)",
+       "meta": "sediment removed"
+      },
+      {
+       "name": "Dosage",
+       "meta": "liqueur d'expédition"
+      }
+     ],
+     "note": "The Court's examples: Champagne, Crémant, Cava, Franciacorta."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "TRADITIONAL",
+       "title": "Bubbles made in the bottle",
+       "text": "Second fermentation in the bottle\nAged on the lees\nRiddled and disgorged\nChampagne, Cava, Franciacorta"
+      },
+      {
+       "label": "CHARMAT",
+       "title": "Bubbles made in a tank",
+       "text": "Second fermentation in pressurized tanks\nDone in 4-5 days\nFiltered, then bottled\nProsecco, Moscato d'Asti"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Champagne, Crémant, Cava and Franciacorta",
+   "book": "wine/sparkling/cava",
+   "lines": [
+    {
+     "label": "Champagne",
+     "text": "Chapter 4 covers Champagne. Every Champagne matures at least 15 months in the cellar before release; vintage cuvées at least three years."
+    },
+    {
+     "label": "The others",
+     "text": "Crémant is French traditional-method sparkling wine made outside Champagne. Cava and Franciacorta also use the traditional method."
+    }
+   ],
+   "chips": {
+    "label": "Crémant examples",
+    "items": [
+     "Crémant de Bourgogne",
+     "Crémant d'Alsace",
+     "Crémant de Loire"
+    ]
+   },
+   "know": [
+    "Cava ages at least 9 months; Reserva more than 18 months; Gran Reserva 30 months; Cava de Paraje Calificado more than 36 months.",
+    "Cava's liqueur de tirage (licor de tiraje) is base wine, yeast and sugar.",
+    "Franciacorta needs at least 18 months on the lees: 24 for Rosé and Satèn, 30 for vintage, 60 for riserva.",
+    "Franciacorta is Chardonnay and/or Pinot Nero, with Pinot Bianco up to 50%, from the Province of Brescia by Lake Iseo.",
+    "In 1995 Franciacorta became the first Italian bottle-fermented wine to reach DOCG."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Minimum aging, in months",
+     "rows": [
+      {
+       "name": "Cava",
+       "value": "9 months",
+       "pct": 0.15
+      },
+      {
+       "name": "Champagne (non-vintage)",
+       "value": "15 months",
+       "pct": 0.25
+      },
+      {
+       "name": "Franciacorta",
+       "value": "18 months",
+       "pct": 0.3
+      },
+      {
+       "name": "Cava Gran Reserva",
+       "value": "30 months",
+       "pct": 0.5
+      },
+      {
+       "name": "Champagne (vintage)",
+       "value": "3 years",
+       "pct": 0.6
+      },
+      {
+       "name": "Franciacorta Riserva",
+       "value": "60 months",
+       "pct": 1
+      }
+     ],
+     "note": "Champagne counts time in the cellar before release; Franciacorta counts time on the lees."
+    }
+   ]
+  },
+  {
+   "name": "Prosecco",
+   "book": "wine/sparkling/prosecco",
+   "lines": [
+    {
+     "label": "Grapes",
+     "text": "Glera is the traditional Prosecco grape. Others, such as Chardonnay and Pinot Bianco, may make up to 15% in total."
+    },
+    {
+     "label": "Method",
+     "text": "The second fermentation happens in large pressure tanks called autoclaves (the Martinotti method). It lasts at least 30 days, or 60 days for Rosé."
+    }
+   ],
+   "chips": {
+    "label": "Types",
+    "items": [
+     "Spumante",
+     "Frizzante",
+     "Rosé",
+     "Tranquillo"
+    ]
+   },
+   "know": [
+    "The Court lists Prosecco as a Charmat (tank) method wine.",
+    "Prosecco DOC covers nine provinces: Treviso, Venice, Vicenza, Padua, Belluno, Gorizia, Pordenone, Trieste and Udine.",
+    "Prosecco DOC Rosé blends 10-15% Pinot Noir with Glera.",
+    "Spumante is the most widespread type. Frizzante has a lighter, less persistent bubble."
+   ],
+   "visuals": [
+    {
+     "type": "stat",
+     "number": "30",
+     "title": "days, minimum",
+     "text": "Prosecco DOC's second fermentation in pressure tanks lasts at least 30 days. Rosé needs at least 60."
+    }
+   ]
+  },
+  {
+   "name": "Port",
+   "book": "wine/portugal/douro",
+   "lines": [
+    {
+     "label": "Where",
+     "text": "Port comes from the same area as the Douro DOP in Portugal, on schist soils. The Court's grape to know is Touriga Nacional."
+    },
+    {
+     "label": "How",
+     "text": "Grape brandy (benefício) is added to stop the fermentation, so Port is fortified during fermentation. It is usually 19-22% alcohol."
+    }
+   ],
+   "chips": {
+    "label": "Label terms",
+    "items": [
+     "Ruby",
+     "Tawny",
+     "LBV",
+     "Vintage",
+     "Single Quinta",
+     "Colheita"
+    ]
+   },
+   "know": [
+    "Ruby-style categories, in rising order of quality: Ruby, Reserve, LBV, Vintage.",
+    "LBV is a single-year Ruby Port bottled after four to six years in wood.",
+    "Vintage Port is bottled two to three years after harvest and is the only Port that ages in bottle. It is only made in the best vintages.",
+    "Aged Tawny is labelled 10, 20, 30 or 40 years old. Colheita is a single-year Tawny aged at least seven years in cask.",
+    "Old Vintage and Single Quinta Ports need decanting for sediment."
+   ],
+   "visuals": [
+    {
+     "type": "pyramid",
+     "title": "Ruby style, top quality first",
+     "rows": [
+      {
+       "name": "Vintage",
+       "note": "one harvest, bottled after 2-3 years, ages in bottle"
+      },
+      {
+       "name": "LBV",
+       "note": "one year, 4-6 years in wood"
+      },
+      {
+       "name": "Reserve",
+       "note": "a blend of the year's best Port"
+      },
+      {
+       "name": "Ruby",
+       "note": "young, deep red and fruity"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "RUBY",
+       "title": "Kept young and red",
+       "text": "Fruit and strength of a young wine\nRuby, Reserve, LBV, Vintage\nBest ones age in bottle"
+      },
+      {
+       "label": "TAWNY",
+       "title": "Aged in cask",
+       "text": "Blends aged in casks or vats\nDried fruit and wood aromas\n10, 20, 30, 40 years; Colheita\nReady to drink when bottled"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sherry",
+   "book": "wine/spain/jerez",
+   "lines": [
+    {
+     "label": "Where",
+     "text": "Southwest Spain, near the Atlantic. Albariza, a white soil of chalk and clay, is the best soil for Palomino. Grapes: Palomino, Pedro Ximénez and Moscatel."
+    },
+    {
+     "label": "How",
+     "text": "Sherry is fortified after fermentation. Wines for Fino and Manzanilla go to 15% and age under flor. Wines for Oloroso go to at least 17%, which stops the flor, and age in contact with air."
+    }
+   ],
+   "chips": {
+    "label": "Styles",
+    "items": [
+     "Manzanilla",
+     "Fino",
+     "Amontillado",
+     "Oloroso",
+     "Pedro Ximénez"
+    ]
+   },
+   "know": [
+    "Flor is a film of yeast that protects the wine from oxygen. Aging under it is called biological aging.",
+    "Manzanilla must be aged entirely in Sanlúcar de Barrameda.",
+    "Amontillado ages under flor first, then oxidatively once the flor disappears.",
+    "Pedro Ximénez is made from sun-dried grapes; its fermentation is stopped with wine alcohol and it ages oxidatively.",
+    "Sherry ages at least two years, traditionally in the criaderas and solera system."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "BIOLOGICAL",
+       "title": "Aged under flor",
+       "text": "Fortified to 15%\nFlor blocks the air\nPale and dry\nManzanilla, Fino"
+      },
+      {
+       "label": "OXIDATIVE",
+       "title": "Aged in contact with air",
+       "text": "Oloroso fortified to at least 17%\nNo flor\nDarker and concentrated\nOloroso, Pedro Ximénez"
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "title": "Running the scales (correr escalas)",
+     "items": [
+      {
+       "name": "Saca",
+       "text": "Wine is drawn from the solera, the oldest tier",
+       "meta": "for bottling"
+      },
+      {
+       "name": "Rocío",
+       "text": "The solera is topped up from the 1st criadera",
+       "meta": "next oldest"
+      },
+      {
+       "name": "And so on",
+       "text": "Each criadera is topped up from the next younger one",
+       "meta": "up the scales"
+      },
+      {
+       "name": "Youngest tier",
+       "text": "Topped up with new wine",
+       "meta": "the start"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Madeira and Vins Doux Naturels",
+   "book": "wine/portugal/madeira",
+   "lines": [
+    {
+     "label": "Madeira",
+     "text": "An island near North Africa; Funchal is the main city. The wine is fortified during fermentation, then oxidized and exposed to heat."
+    },
+    {
+     "label": "Vins Doux Naturels",
+     "text": "France's fortified wines include Banyuls (Roussillon, Grenache) and Muscat de Beaumes-de-Venise (Southern Rhône, Muscat)."
+    }
+   ],
+   "chips": {
+    "label": "Madeira grapes",
+    "items": [
+     "Sercial",
+     "Verdelho",
+     "Bual (Boal)",
+     "Malmsey (Malvasia)",
+     "Tinta Negra"
+    ]
+   },
+   "know": [
+    "Driest to sweetest: Sercial, Verdelho, Bual, Malmsey.",
+    "Fortification with 96% wine alcohol stops the fermentation; the timing sets the sweetness.",
+    "Estufagem heats the wine in stainless steel tanks at 45-50°C for at least 3 months.",
+    "Canteiro ages the wine in casks, usually on the warmer upper floors, for at least 2 years.",
+    "Madeira cannot be bottled before it is 3 years old."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Madeira, driest to sweetest",
+     "items": [
+      {
+       "name": "Sercial",
+       "text": "Dry",
+       "meta": "1"
+      },
+      {
+       "name": "Verdelho",
+       "text": "Medium dry",
+       "meta": "2"
+      },
+      {
+       "name": "Bual (Boal)",
+       "text": "Medium sweet",
+       "meta": "3"
+      },
+      {
+       "name": "Malmsey (Malvasia)",
+       "text": "Sweet",
+       "meta": "4"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "ESTUFAGEM",
+       "title": "Heated in tanks",
+       "text": "Stainless steel estufas\n45-50°C\nAt least 3 months"
+      },
+      {
+       "label": "CANTEIRO",
+       "title": "Aged in warm lofts",
+       "text": "Wooden casks\nUpper, warmer floors\nAt least 2 years"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Noble rot",
+   "lines": [
+    {
+     "label": "What it is",
+     "text": "Noble rot is Botrytis cinerea. It needs ripe, healthy grapes, humid mornings and dry, warm afternoons. The berries shrivel and the juice concentrates."
+    },
+    {
+     "label": "Stopping the yeast",
+     "text": "Sweet-wine makers stop the yeast by chilling and filtering, or by chilling and adding SO2."
+    }
+   ],
+   "chips": {
+    "label": "Court's noble-rot wines",
+    "items": [
+     "Sauternes",
+     "Alsace VT and SGN",
+     "Auslese, BA, TBA",
+     "Quarts de Chaume",
+     "Bonnezeaux",
+     "Vouvray Moelleux",
+     "Tokaji Aszú"
+    ]
+   },
+   "know": [
+    "Sauternes is mainly Sémillon. Château d'Yquem is its Superior First Growth (1855).",
+    "Tokaji Aszú's grape is Furmint. Since 2013 an Aszú needs at least 120 g/l of sugar; 6 puttonyos means 150 g/l or more.",
+    "Trockenbeerenauslese (TBA) is made from single berries dried almost to raisins, usually by noble rot.",
+    "Loire noble-rot wines (Quarts de Chaume, Bonnezeaux) are Chenin Blanc."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Noble-rot wines and their grapes",
+     "rows": [
+      {
+       "name": "Sauternes",
+       "meta": "Bordeaux · Sémillon"
+      },
+      {
+       "name": "Tokaji Aszú",
+       "meta": "Hungary · Furmint"
+      },
+      {
+       "name": "Quarts de Chaume, Bonnezeaux",
+       "meta": "Loire · Chenin Blanc"
+      },
+      {
+       "name": "Vendange Tardive, SGN",
+       "meta": "Alsace · Riesling, Pinot Gris, Gewürztraminer, Muscat"
+      },
+      {
+       "name": "Auslese, BA, TBA",
+       "meta": "Germany"
+      }
+     ],
+     "note": "Match each wine to its region and grape."
+    },
+    {
+     "type": "stat",
+     "number": "120",
+     "title": "grams of sugar per liter",
+     "text": "Since 2013, a Tokaji needs at least 120 g/l of residual sugar to be called Aszú."
+    }
+   ]
+  },
+  {
+   "name": "Ice, late harvest and dried grapes",
+   "lines": [
+    {
+     "label": "Freezing",
+     "text": "Eiswein (Germany, Austria) and Icewine (Canada) are pressed from grapes frozen on the vine. Both must be free of noble rot."
+    },
+    {
+     "label": "Drying",
+     "text": "Recioto di Soave, Recioto della Valpolicella and Vin Santo use dried grapes. So does Pedro Ximénez Sherry."
+    }
+   ],
+   "chips": {
+    "label": "Canadian Icewine grapes",
+    "items": [
+     "Riesling",
+     "Vidal",
+     "Cabernet Franc"
+    ]
+   },
+   "know": [
+    "Ontario Icewine grapes are picked at -8°C or colder, and the juice must reach at least 35° Brix.",
+    "German Eiswein uses grapes as ripe as Beerenauslese, harvested and pressed while frozen.",
+    "Spätlese means 'late harvest': riper grapes picked later in the harvest.",
+    "Recioto di Soave is Garganega; Recioto della Valpolicella is Corvina; Vin Santo is Trebbiano."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "EISWEIN",
+       "title": "Germany and Austria",
+       "text": "Frozen on the vine\nPressed while frozen\nAs ripe as Beerenauslese\nRiesling"
+      },
+      {
+       "label": "ICEWINE",
+       "title": "Canada (Ontario VQA)",
+       "text": "Picked at -8°C or colder\nJuice at least 35° Brix\nNo noble rot\nRiesling, Vidal, Cabernet Franc"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Dried-grape wines",
+     "rows": [
+      {
+       "name": "Recioto di Soave",
+       "meta": "Italy · Garganega"
+      },
+      {
+       "name": "Recioto della Valpolicella",
+       "meta": "Italy · Corvina"
+      },
+      {
+       "name": "Vin Santo",
+       "meta": "Italy · Trebbiano"
+      },
+      {
+       "name": "Pedro Ximénez",
+       "meta": "Sherry · sun-dried Pedro Ximénez"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Fino",
+   "b": "Manzanilla",
+   "why": "Both are Palomino aged under flor; Manzanilla must be aged in Sanlúcar de Barrameda."
+  },
+  {
+   "a": "LBV Port",
+   "b": "Vintage Port",
+   "why": "Both are single-year rubies; LBV spends 4-6 years in wood, Vintage is bottled after 2-3 and ages in bottle."
+  },
+  {
+   "a": "Estufagem",
+   "b": "Canteiro",
+   "why": "Estufagem heats Madeira in tanks for 3+ months; canteiro ages it in casks in warm lofts for 2+ years."
+  },
+  {
+   "a": "Eiswein",
+   "b": "Trockenbeerenauslese",
+   "why": "Eiswein grapes are frozen and free of noble rot; TBA grapes are shriveled, usually by noble rot."
+  }
+ ],
+ "sources": "Court of Master Sommeliers Americas Introductory Course Guide (1.2024) and Curriculum Guide (8.2023); Comité Champagne; Consejo Regulador DO Cava; Consorzio Franciacorta; Consorzio Prosecco DOC; IVDP (Port); Consejo Regulador Jerez-Xérès-Sherry; IVBAM (Madeira); Magyar Bor (Tokaj); Wines of Germany USA; VQA Ontario and Wine Country Ontario; Wine Folly as a secondary source. Checked Oct 31, 2026.",
+ "cards": [
+  {
+   "q": "In the traditional method, where does the second fermentation happen?",
+   "answer": "In the bottle the wine is sold in",
+   "wrong": [
+    "In a pressurized tank",
+    "In an oak barrel",
+    "In a concrete vat before bottling"
+   ],
+   "source": "https://www.cava.wine/en/origin-cava/winemaking/"
+  },
+  {
+   "q": "The Court lists riddling (remuage) by pupitre or by what?",
+   "answer": "Gyropalette",
+   "wrong": [
+    "Autoclave",
+    "Solera",
+    "Estufa"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "q": "What is added at dosage in the traditional method?",
+   "answer": "Liqueur d'expédition",
+   "wrong": [
+    "Liqueur de tirage",
+    "Grape brandy (benefício)",
+    "Flor yeast"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "q": "Which method makes Prosecco?",
+   "answer": "Tank method (Charmat / Martinotti)",
+   "wrong": [
+    "Traditional method",
+    "Transfer method",
+    "Méthode ancestrale"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "q": "Which method does the Court call best for sparkling wine from aromatic grapes?",
+   "answer": "Charmat (tank) method",
+   "wrong": [
+    "Traditional method",
+    "Transfer method",
+    "Méthode ancestrale"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "q": "What step does the transfer method eliminate?",
+   "answer": "Riddling",
+   "wrong": [
+    "Second fermentation",
+    "Lees contact",
+    "Blending the cuvée"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "q": "Which method pauses the first fermentation, finishes it in the bottle and does not require disgorging?",
+   "answer": "Méthode ancestrale (pét-nat)",
+   "wrong": [
+    "Charmat method",
+    "Transfer method",
+    "Traditional method"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "q": "What is Crémant?",
+   "answer": "French traditional-method sparkling wine made outside Champagne",
+   "wrong": [
+    "Champagne with lower pressure",
+    "Italian tank-method sparkling wine",
+    "Spanish sparkling wine from Penedès"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=78"
+  },
+  {
+   "q": "Minimum time a Champagne must mature in the cellar before release?",
+   "answer": "15 months",
+   "wrong": [
+    "9 months",
+    "12 months",
+    "36 months"
+   ],
+   "source": "https://www.champagne.fr/en/about-champagne/how-champagne-is-made/maturation"
+  },
+  {
+   "q": "Minimum aging for a wine to be called Cava?",
+   "answer": "9 months",
+   "wrong": [
+    "15 months",
+    "18 months",
+    "30 months"
+   ],
+   "source": "https://www.cava.wine/en/categories-types/"
+  },
+  {
+   "q": "Minimum time on the lees for non-vintage Franciacorta?",
+   "answer": "18 months",
+   "wrong": [
+    "9 months",
+    "15 months",
+    "36 months"
+   ],
+   "source": "https://franciacorta.wine/en/consortium/regulations/"
+  },
+  {
+   "q": "What is the traditional grape of Prosecco?",
+   "answer": "Glera",
+   "wrong": [
+    "Garganega",
+    "Trebbiano",
+    "Moscato"
+   ],
+   "source": "https://www.prosecco.wine/en/prosecco/"
+  },
+  {
+   "q": "Which grapes make Franciacorta?",
+   "answer": "Chardonnay and/or Pinot Nero (plus some Pinot Bianco)",
+   "wrong": [
+    "Glera",
+    "Macabeo, Xarel·lo and Parellada",
+    "Chenin Blanc"
+   ],
+   "source": "https://franciacorta.wine/en/consortium/regulations/"
+  },
+  {
+   "q": "When is Port fortified?",
+   "answer": "During fermentation",
+   "wrong": [
+    "After fermentation is complete",
+    "Before fermentation starts",
+    "After barrel aging"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "q": "How long does LBV Port age in wood before bottling?",
+   "answer": "Four to six years",
+   "wrong": [
+    "Two to three years",
+    "At least ten years",
+    "Six months"
+   ],
+   "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
+  },
+  {
+   "q": "Which Port is bottled two to three years after harvest and then ages in bottle?",
+   "answer": "Vintage Port",
+   "wrong": [
+    "LBV Port",
+    "10-year Tawny",
+    "Colheita"
+   ],
+   "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
+  },
+  {
+   "q": "What is a Colheita Port?",
+   "answer": "A single-vintage Tawny aged at least seven years in cask",
+   "wrong": [
+    "A blend of years with an age indication",
+    "A Ruby from a single estate",
+    "A Port aged only in bottle"
+   ],
+   "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
+  },
+  {
+   "q": "Which Ports does the Court say need decanting for sediment?",
+   "answer": "Old Vintage and Single Quinta Ports",
+   "wrong": [
+    "Basic Ruby",
+    "10-year Tawny",
+    "White Port"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "q": "Fino, Manzanilla, Amontillado and Oloroso are made from which grape?",
+   "answer": "Palomino",
+   "wrong": [
+    "Pedro Ximénez",
+    "Moscatel",
+    "Tempranillo"
+   ],
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/fino"
+  },
+  {
+   "q": "What is flor?",
+   "answer": "A film of yeast on the wine that protects it from oxygen",
+   "wrong": [
+    "Grape brandy added to stop fermentation",
+    "Sherry's white chalky soil",
+    "The oldest tier of a solera"
+   ],
+   "source": "https://www.sherry.wine/sherry-wine/production/ageing"
+  },
+  {
+   "q": "Manzanilla must be aged where?",
+   "answer": "Sanlúcar de Barrameda",
+   "wrong": [
+    "Jerez de la Frontera",
+    "El Puerto de Santa María",
+    "Funchal"
+   ],
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/manzanilla"
+  },
+  {
+   "q": "Oloroso is fortified to at least what strength, which stops flor?",
+   "answer": "17%",
+   "wrong": [
+    "12%",
+    "15%",
+    "22%"
+   ],
+   "source": "https://www.sherry.wine/sherry-wine/production/fortification"
+  },
+  {
+   "q": "In a solera system, what is the solera?",
+   "answer": "The oldest tier, where wine is drawn for bottling",
+   "wrong": [
+    "The youngest tier of new wine",
+    "The film of yeast on the wine",
+    "The sun-drying of grapes"
+   ],
+   "source": "https://www.sherry.wine/sherry-wine/production/ageing"
+  },
+  {
+   "q": "How are Pedro Ximénez grapes treated before pressing?",
+   "answer": "Dried in the sun",
+   "wrong": [
+    "Frozen on the vine",
+    "Left for noble rot",
+    "Heated in an estufa"
+   ],
+   "source": "https://www.sherry.wine/sherry-wine/naturally-sweet-sherry-wine/pedro-ximenez"
+  },
+  {
+   "q": "Madeira styles from driest to sweetest?",
+   "answer": "Sercial, Verdelho, Bual, Malmsey",
+   "wrong": [
+    "Malmsey, Bual, Verdelho, Sercial",
+    "Verdelho, Sercial, Malmsey, Bual",
+    "Bual, Sercial, Verdelho, Malmsey"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "q": "What is estufagem?",
+   "answer": "Heating the wine at 45-50°C for at least 3 months",
+   "wrong": [
+    "Aging in casks in warm lofts for 2+ years",
+    "Drying grapes in the sun",
+    "Aging under a film of flor"
+   ],
+   "source": "https://vinhomadeira.com/o-vinho-madeira/vinificacao-e-envelhecimento"
+  },
+  {
+   "q": "Which grape does the Court list for Tokaji Aszú?",
+   "answer": "Furmint",
+   "wrong": [
+    "Sémillon",
+    "Riesling",
+    "Chenin Blanc"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  },
+  {
+   "q": "Since 2013, the minimum residual sugar for Tokaji Aszú is:",
+   "answer": "120 g/l",
+   "wrong": [
+    "45 g/l",
+    "60 g/l",
+    "212 g/l"
+   ],
+   "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
+  },
+  {
+   "q": "Ontario Icewine grapes are picked at what air temperature or colder?",
+   "answer": "-8°C",
+   "wrong": [
+    "-2°C",
+    "-5°C",
+    "-15°C"
+   ],
+   "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+  },
+  {
+   "q": "Which grape makes Banyuls?",
+   "answer": "Grenache",
+   "wrong": [
+    "Muscat",
+    "Touriga Nacional",
+    "Palomino"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "q": "What are the big pressure tanks used for Prosecco DOC's second fermentation called?",
+   "answer": "Autoclaves",
+   "wrong": [
+    "Pupitres",
+    "Gyropalettes",
+    "Estufas"
+   ],
+   "source": "https://www.prosecco.wine/en/prosecco/discover/winemaking/"
+  },
+  {
+   "q": "Sauternes is made mainly from which grape?",
+   "answer": "Sémillon",
+   "wrong": [
+    "Chenin Blanc",
+    "Furmint",
+    "Riesling"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  },
+  {
+   "q": "Eiswein and Icewine must be free of what?",
+   "answer": "Noble rot (Botrytis)",
+   "wrong": [
+    "Frozen grapes",
+    "Riesling",
+    "Sulfur dioxide (SO2)"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  },
+  {
+   "q": "How do Vin Santo, Recioto di Soave and Recioto della Valpolicella get their sweetness?",
+   "answer": "The grapes are dried",
+   "wrong": [
+    "Noble rot",
+    "The grapes freeze on the vine",
+    "Grape spirit is added"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Court Introductory Course Guide, Section 10 'Other Methods of Making Wine': Sparkling Wine (review of methods; Champagne), Fortified Wine (review of methods; Sherry; Port; Madeira; Vins Doux Naturels), Sweet Wines (review of methods; Tokaji Aszú).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=6"
+  },
+  {
+   "fact": "Sparkling wines need two fermentations: one to make wine and the other to make bubbles; each production method creates a distinct style.",
+   "source": "https://winefolly.com/deep-dive/how-sparkling-wine-is-made/"
+  },
+  {
+   "fact": "Classic / Traditional Method is also called Champagne Method, Méthode Traditionnelle, Metodo Classico. Steps: making still wine, assemblage of cuvée, creating bubbles using liqueur de tirage, sur lie aging, riddling (rémuage) using pupitre or gyropalette, disgorging (dégorgement), dosage using liqueur d'expédition. Autolysis. Aging in lees. Examples: Champagne, Crémant, Cava, Franciacorta.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "fact": "Transfer Method: identical to the classic method up to completion of second fermentation, which occurs in bottle. Bottles are disgorged under pressure into large tanks; the wine is filtered and rebottled. Advantages: lees contact for flavor is obtained and riddling is eliminated. Used for extra large and extra small format bottles.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "fact": "Charmat Method (Cuve Close): secondary fermentation occurs in pressurized tanks and is complete in 4-5 days; the wine is filtered and then bottled. Saves time and cost with no riddling or disgorging; can be as little as 90 days from harvest to bottling. The best process for sparkling wine from aromatic grape varieties. Examples: Prosecco, Moscato d'Asti.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "fact": "Méthode Ancestrale: primary fermentation is paused mid-way, wines are bottled and fermentation finishes in the bottle, trapping the CO2. No requirement to remove the sediment by disgorging. (Certified column: also called Ancestral Method / Méthode Rurale / Pétillant Naturel, 'Pet-nat'; bottled at much lower pressure.)",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "fact": "Crémant: French sparkling wine produced by méthode traditionnelle made outside the Champagne region. Examples: Crémant de Bourgogne, Crémant d'Alsace, Crémant de Loire.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=78"
+  },
+  {
+   "fact": "Cava: second fermentation happens in the same bottle the consumer buys (traditional method). Licor de tiraje is a blend of base wine, yeast and sugar. Licor de expedición (dosage) is added after disgorging and sets the sweetness type.",
+   "source": "https://www.cava.wine/en/origin-cava/winemaking/"
+  },
+  {
+   "fact": "All genuine Champagnes must spend at least 15 months maturing in the winemaker's cellars before release; vintage cuvées at least three years.",
+   "source": "https://www.champagne.fr/en/about-champagne/how-champagne-is-made/maturation"
+  },
+  {
+   "fact": "Cava categories by aging: Cava de Guarda minimum 9 months; Cava de Guarda Superior: Reserva more than 18 months, Gran Reserva 30 months, Cava de Paraje Calificado more than 36 months.",
+   "source": "https://www.cava.wine/en/categories-types/"
+  },
+  {
+   "fact": "Franciacorta minimum time on the lees from tirage to disgorging: Franciacorta 18 months; Rosé 24; Satèn 24; millesimato (vintage) 30; riserva 60.",
+   "source": "https://franciacorta.wine/en/consortium/regulations/"
+  },
+  {
+   "fact": "Franciacorta DOCG is made from Chardonnay and/or Pinot nero; Pinot bianco up to 50%, Erbamat up to 10%. The production area is in the Province of Brescia, bordered by Lake Iseo.",
+   "source": "https://franciacorta.wine/en/consortium/regulations/"
+  },
+  {
+   "fact": "In 1995 Franciacorta became the first Italian wine made with a second fermentation in the bottle to achieve DOCG status.",
+   "source": "https://franciacorta.wine/en/region/origins-history/"
+  },
+  {
+   "fact": "Glera is the traditional Prosecco grape; Verdiso, Bianchetta Trevigiana, Perera, Glera lunga, Chardonnay, Pinot Bianco, Pinot Grigio and Pinot nero may be used up to 15% overall. Production area: the provinces of Treviso, Venice, Vicenza, Padua, Belluno, Gorizia, Pordenone, Trieste and Udine.",
+   "source": "https://www.prosecco.wine/en/prosecco/"
+  },
+  {
+   "fact": "Prosecco DOC Frizzante and Spumante get their second fermentation with the Martinotti method in big tanks called autoclaves; it lasts at least 30 days (at least 60 days for Rosé). Prosecco DOC Rosé blends 10-15% Pinot Noir with Glera.",
+   "source": "https://www.prosecco.wine/en/prosecco/discover/winemaking/"
+  },
+  {
+   "fact": "Prosecco DOC comes in four types: Spumante (the most widespread, fine persistent perlage), Rosé, Frizzante (lighter, less persistent perlage) and Tranquillo.",
+   "source": "https://www.prosecco.wine/en/prosecco/discover/types/"
+  },
+  {
+   "fact": "Port: same geographical area as the Douro DOP, Portugal. Soil: schist. Fortified during fermentation. Grape (Intro): Touriga Nacional. Styles: Ruby (basic Ruby, LBV, Single Quinta, Vintage); Aged Tawny 10, 20, 30, 40 year.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "fact": "Port winemaking stops the fermentation of the must by adding grape brandy (benefício). Port usually has 19-22% alcohol. Sweetness depends on when the brandy is added.",
+   "source": "https://www.ivdp.pt/en/wines/port-wines/introduction/"
+  },
+  {
+   "fact": "Ruby Style Ports keep their deep red color and the fruit of a young wine; categories in ascending order of quality: Ruby, Reserve, Late Bottled Vintage (LBV), Vintage. Tawny Style Ports are blends of wines aged for different lengths of time in casks or vats, turning tawny with dried-fruit and wood aromas; categories: Tawny, Tawny Reserve, Tawny with an Indication of Age (10, 20, 30, 40 years) and Colheita.",
+   "source": "https://www.ivdp.pt/en/wines/port-wines/introduction/"
+  },
+  {
+   "fact": "LBV is a Ruby Port from a single year bottled after ageing four to six years in wood. Vintage Port is from a single year, bottled two to three years after the vintage, the only Port that ages in bottle, and develops for 10 to 50 years. Single Quinta Vintage Port comes from a single harvest and a single estate. Reserve Ruby is frequently a blend of a selection of the best Port of the year. Colheita: single-vintage Tawnies aged in cask a minimum of seven years.",
+   "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
+  },
+  {
+   "fact": "Old Vintage and Single Quinta Ports require decanting for sediment. Vintage Port is only made in the best vintages.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "fact": "Sherry: southwest Spain; soil albariza (chalk); hot maritime climate near the Atlantic (Certified column). Fortified after fermentation, oxidized. Grapes: Palomino, Moscatel, Pedro Ximénez. Style: biological aging vs oxidative aging.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "fact": "Albariza is a white soil of chalk and clay; it is the best soil for Palomino. The suitable varieties are Palomino, Pedro Ximénez and Moscatel, all white grapes.",
+   "source": "https://www.sherry.wine/sherry-wine/production/viticulture"
+  },
+  {
+   "fact": "Wines classified for fino and manzanilla are fortified to 15% ABV; wines for oloroso are fortified to at least 17%.",
+   "source": "https://www.sherry.wine/sherry-wine/production/fortification"
+  },
+  {
+   "fact": "Biological ageing happens under a film of yeasts called velo de flor, which protects the wine from oxidation; oxidative ageing exposes the wine to oxygen and darkens and concentrates it. Sherry must age at least two years. The criaderas and solera system: wine for bottling is drawn (saca) from the solera, the oldest tier; it is topped up (rocío) from the 1st criadera, and so on up to the youngest tier, which is topped up with new wine; the whole process is called correr escalas (running the scales).",
+   "source": "https://www.sherry.wine/sherry-wine/production/ageing"
+  },
+  {
+   "fact": "Fino: dry white wine from Palomino, aged under flor in American oak butts using criaderas and solera in Jerez de la Frontera and El Puerto de Santa María; fortified to 15%; biological ageing at least two years; serve chilled 6-8°C.",
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/fino"
+  },
+  {
+   "fact": "Manzanilla: dry Palomino wine aged under flor; its biological ageing must be carried out entirely in bodegas in Sanlúcar de Barrameda, at the mouth of the Guadalquivir.",
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/manzanilla"
+  },
+  {
+   "fact": "Amontillado ages first under flor, then the flor disappears and the wine ages oxidatively.",
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/amontillado"
+  },
+  {
+   "fact": "Oloroso is fortified to 17%, which prevents flor, so it ages in contact with oxygen.",
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/oloroso"
+  },
+  {
+   "fact": "Pedro Ximénez is made from overripe grapes dried in the sun (asoleo); fermentation is stopped with wine alcohol; ageing is exclusively oxidative; sugar more than 212 g/l.",
+   "source": "https://www.sherry.wine/sherry-wine/naturally-sweet-sherry-wine/pedro-ximenez"
+  },
+  {
+   "fact": "Madeira: island located near North Africa; Funchal is the main city. Soil: volcanic. Fortified during fermentation, oxidized, exposed to heat. Grapes: Sercial, Verdelho, Bual, Malmsey, Tinta Negra. Style in order of driest to sweetest: Sercial, Verdelho, Bual, Malmsey. (Certified column: know estufagem and canteiro; sweeter styles are fortified closer to the beginning of fermentation.)",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "fact": "Madeira fortification stops fermentation with wine alcohol at 96% vol; timing gives dry, medium dry, medium sweet or sweet. Estufagem: wine heated in stainless steel estufas by hot-water coils for at least 3 months at 45-50°C. Canteiro: wine aged in casks, usually on the upper, warmer floors of the lodges, for at least 2 years.",
+   "source": "https://vinhomadeira.com/o-vinho-madeira/vinificacao-e-envelhecimento"
+  },
+  {
+   "fact": "Madeira cannot be bottled with less than 3 years; age indications allowed are 5, 10, 15, 20, 30, 40, 50 and over 50 years.",
+   "source": "https://vinhomadeira.com/o-vinho-madeira/tipos-categorias"
+  },
+  {
+   "fact": "French fortified wines (Court): Banyuls AOP (Roussillon), grape Grenache; Muscat de Beaumes-de-Venise AOP (Southern Rhône), grape Muscat.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "fact": "Vins Doux Naturels is an Introductory label term; example Muscat de Beaumes-de-Venise.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=18"
+  },
+  {
+   "fact": "Sweet wines, noble rot (Botrytis) appellations: Bordeaux - Sauternes; Alsace - Vendange Tardive (VT) and Sélection de Grains Nobles (SGN); Germany - Auslese, Beerenauslese (BA), Trockenbeerenauslese (TBA); Loire - Quarts de Chaume, Bonnezeaux, Vouvray Moelleux; Hungary - Tokaji Aszú. Drying: Italy - Vin Santo DOC, Recioto di Soave DOC, Recioto della Valpolicella DOC. Freezing: Germany & Austria - Eiswein; Canada - Icewine (Ontario VQA).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  },
+  {
+   "fact": "Sweet wine winemaking: stop the action of yeast by chilling and filtering, or chilling and adding SO2. Grapes: Sauternes - Sémillon; Alsace - Riesling, Pinot Gris, Gewürztraminer, Muscat; Loire - Chenin Blanc; Tokaji - Furmint; Germany (freezing) - Riesling; Canada - Riesling, Cabernet Franc (Certified adds Vidal). Certified column: Vin Santo - Trebbiano; Recioto di Soave - Garganega; Recioto della Valpolicella - Corvina; Eiswein and Icewine must be free of noble rot.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  },
+  {
+   "fact": "Noble rot = Botrytis cinerea. Classification of Sauternes (1855): Château d'Yquem is the Superior First Growth (Premier Cru Supérieur).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=80"
+  },
+  {
+   "fact": "In Tokaj, Botrytis cinerea becomes noble rot when it attacks perfectly ripe, healthy grapes, with humid early mornings followed by dry, warm afternoons; aszú berries shrivel and concentrate. Since 2013, 120 g/l is the minimum residual sugar for a wine to be called Aszú (equivalent to the old 5 puttony); 6 puttony means upwards of 150 g/l. Aszú must age at least 18 months in wooden casks.",
+   "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
+  },
+  {
+   "fact": "German Prädikatswein ripeness levels: Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese, Eiswein. Spätlese means 'late harvest' (riper grapes picked later). BA: individually selected overripe berries usually infected by noble rot. TBA: individually selected grapes overripe and dried up almost to raisins, usually infected by noble rot. Eiswein: grapes as ripe as Beerenauslese that froze on the vine, harvested and pressed while frozen.",
+   "source": "https://germanwineusa.com/basics/classifications/"
+  },
+  {
+   "fact": "Ontario VQA Icewine: grapes frozen naturally on the vine, harvested when the temperature falls below -8°C, juice at least 35 degrees Brix. Late Harvest wines come from grapes picked near the end of or after the normal harvest, which desiccate and become sweeter. Appassimento/Vin de Cure: wine from grapes dried after harvest.",
+   "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+  },
+  {
+   "fact": "Ontario Icewine grapes must be naturally frozen on the vine and harvested and pressed continuously at or below -8°C; most Icewine is made from Riesling and Vidal.",
+   "source": "https://winecountryontario.ca/icewine/"
+  },
+  {
+   "fact": "Cava D.O. Regulatory Board: Cava is a quality Spanish sparkling wine made by the traditional method; it is the most widely exported sparkling wine with a Spanish Designation of Origin.",
+   "source": "https://www.cava.wine/en/"
+  },
+  {
+   "fact": "Prosecco DOC Consortium (Treviso, Italy): Prosecco DOC closed 2025 with 667 million bottles, the best-selling Italian sparkling wine in the world.",
+   "source": "https://www.prosecco.wine/en/prosecco/"
+  }
+ ],
+ "unverified": [
+  "Grape lists for Cava (Macabeo, Xarel·lo, Parellada) were not confirmed on a fetched Cava DO page, so they are left out.",
+  "No official Champagne or Crémant body page was used for Crémant rules; the definition comes from the Court Curriculum Guide only.",
+  "Vins Doux Naturels production method (how and when spirit is added) was not confirmed from an official source; only the Court's examples and grapes are used.",
+  "Sauternes, Alsace VT/SGN and Loire sweet-wine details come from the Court Curriculum Guide only; no Bordeaux, Alsace or Loire body page was fetched.",
+  "Grapes for Vin Santo (Trebbiano), Recioto di Soave (Garganega) and Recioto della Valpolicella (Corvina) are in the Court's Certified column, not the Introductory column.",
+  "The Court's Curriculum Guide gives a fortified by-the-glass pour as '2 oz (51.9 ml)' and a sweet-wine pour as '2 oz (59.1ml)'; the two ml figures disagree, so neither is used.",
+  "The Madeira page used (vinhomadeira.com, IVBAM) is in Portuguese; facts were translated.",
+  "Tokaj facts come from bor.hu (Magyar Bor, Hungarian wine promotion site), not from the Tokaj product specification itself."
+ ],
+ "v3": {
+  "video": {
+   "youtubeId": "AYt_Ge2Tv_k",
+   "title": "What Else is Beyond Champagne?",
+   "by": "Wine Folly",
+   "length": "10:02"
   },
   "sections": [
-    {
-      "name": "Sparkling methods",
-      "book": "wine/sparkling",
-      "lines": [
-        {
-          "label": "Two fermentations",
-          "text": "Sparkling wine needs two fermentations: one makes the wine, the second makes the bubbles. Each method gives its own style."
-        },
-        {
-          "label": "The Court's list",
-          "text": "The classic (traditional) method, the transfer method, the Charmat (tank) method and the méthode ancestrale."
-        }
-      ],
-      "chips": {
-        "label": "Traditional-method examples",
-        "items": [
-          "Champagne",
-          "Crémant",
-          "Cava",
-          "Franciacorta"
-        ]
+   {
+    "name": "Sparkling methods",
+    "video": {
+     "youtubeId": "62YO1c8eLqY",
+     "title": "Champagne Production",
+     "by": "Champagne",
+     "length": "3:55"
+    },
+    "keyPoints": [
+     {
+      "big": "TWO FERMENTATIONS",
+      "line": "one makes the wine, the second makes the bubbles."
+     },
+     {
+      "big": "TRADITIONAL",
+      "line": "method makes the bubbles in the bottle itself."
+     },
+     {
+      "big": "TRANSFER",
+      "line": "is bottle-fermented, then emptied into tanks: no riddling."
+     },
+     {
+      "big": "CHARMAT",
+      "line": "makes the bubbles in a pressurized tank, like Prosecco."
+     },
+     {
+      "big": "MÉTHODE ANCESTRALE",
+      "line": "pauses the first fermentation and finishes it in bottle."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every sparkling wine ferments twice.",
+     "where": "One fermentation makes the wine; the second makes the **bubbles**. Each method handles that second step its own way, and each gives its own style.",
+     "stopsTitle": "Four methods to know",
+     "stops": [
+      {
+       "name": "Traditional method",
+       "note": "Champagne, Cava, Franciacorta",
+       "text": "Also called the **Champagne method** or **méthode traditionnelle**. The second fermentation happens **in the bottle**. The wine ages on its **lees**, then it is **riddled**, **disgorged** and finished with the **dosage**."
       },
-      "know": [
-        "The traditional method is also called the Champagne method, méthode traditionnelle or metodo classico.",
-        "Traditional method: the second fermentation happens in the bottle, and dosage uses liqueur d'expédition.",
-        "Transfer method: same as traditional until the second fermentation ends, then the wine is emptied into tanks under pressure, filtered and rebottled. No riddling. Used for very large and very small bottles.",
-        "Charmat (tank) method: the second fermentation happens in pressurized tanks in 4-5 days. Examples: Prosecco, Moscato d'Asti.",
-        "Méthode ancestrale: the first fermentation is paused, the wine is bottled and finishes fermenting in the bottle. No disgorging needed."
-      ],
-      "visuals": [
-        {
-          "type": "list",
-          "title": "The traditional method, step by step",
-          "rows": [
-            {
-              "name": "Still wine and cuvée",
-              "meta": "make base wine, then blend (assemblage)"
-            },
-            {
-              "name": "Liqueur de tirage",
-              "meta": "base wine, yeast and sugar"
-            },
-            {
-              "name": "Second fermentation",
-              "meta": "in the bottle"
-            },
-            {
-              "name": "Aging on the lees",
-              "meta": "sur lie; autolysis"
-            },
-            {
-              "name": "Riddling (remuage)",
-              "meta": "pupitre or gyropalette"
-            },
-            {
-              "name": "Disgorging (dégorgement)",
-              "meta": "sediment removed"
-            },
-            {
-              "name": "Dosage",
-              "meta": "liqueur d'expédition"
-            }
-          ],
-          "note": "The Court's examples: Champagne, Crémant, Cava, Franciacorta."
-        },
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "TRADITIONAL",
-              "title": "Bubbles made in the bottle",
-              "text": "Second fermentation in the bottle\nAged on the lees\nRiddled and disgorged\nChampagne, Cava, Franciacorta"
-            },
-            {
-              "label": "CHARMAT",
-              "title": "Bubbles made in a tank",
-              "text": "Second fermentation in pressurized tanks\nDone in 4-5 days\nFiltered, then bottled\nProsecco, Moscato d'Asti"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Champagne, Crémant, Cava and Franciacorta",
-      "book": "wine/sparkling/cava",
-      "lines": [
-        {
-          "label": "Champagne",
-          "text": "Chapter 4 covers Champagne. Every Champagne matures at least 15 months in the cellar before release; vintage cuvées at least three years."
-        },
-        {
-          "label": "The others",
-          "text": "Crémant is French traditional-method sparkling wine made outside Champagne. Cava and Franciacorta also use the traditional method."
-        }
-      ],
-      "chips": {
-        "label": "Crémant examples",
-        "items": [
-          "Crémant de Bourgogne",
-          "Crémant d'Alsace",
-          "Crémant de Loire"
-        ]
+      {
+       "name": "Transfer method",
+       "note": "very big and very small bottles",
+       "text": "Same as traditional until the second fermentation ends. Then the wine is emptied into tanks under pressure, filtered and rebottled, so there is **no riddling**."
       },
-      "know": [
-        "Cava ages at least 9 months; Reserva more than 18 months; Gran Reserva 30 months; Cava de Paraje Calificado more than 36 months.",
-        "Cava's liqueur de tirage (licor de tiraje) is base wine, yeast and sugar.",
-        "Franciacorta needs at least 18 months on the lees: 24 for Rosé and Satèn, 30 for vintage, 60 for riserva.",
-        "Franciacorta is Chardonnay and/or Pinot Nero, with Pinot Bianco up to 50%, from the Province of Brescia by Lake Iseo.",
-        "In 1995 Franciacorta became the first Italian bottle-fermented wine to reach DOCG."
-      ],
-      "visuals": [
-        {
-          "type": "scale",
-          "title": "Minimum aging, in months",
-          "rows": [
-            {
-              "name": "Cava",
-              "value": "9 months",
-              "pct": 0.15
-            },
-            {
-              "name": "Champagne (non-vintage)",
-              "value": "15 months",
-              "pct": 0.25
-            },
-            {
-              "name": "Franciacorta",
-              "value": "18 months",
-              "pct": 0.3
-            },
-            {
-              "name": "Cava Gran Reserva",
-              "value": "30 months",
-              "pct": 0.5
-            },
-            {
-              "name": "Champagne (vintage)",
-              "value": "3 years",
-              "pct": 0.6
-            },
-            {
-              "name": "Franciacorta Riserva",
-              "value": "60 months",
-              "pct": 1.0
-            }
-          ],
-          "note": "Champagne counts time in the cellar before release; Franciacorta counts time on the lees."
-        }
-      ]
-    },
-    {
-      "name": "Prosecco",
-      "book": "wine/sparkling/prosecco",
-      "lines": [
-        {
-          "label": "Grapes",
-          "text": "Glera is the traditional Prosecco grape. Others, such as Chardonnay and Pinot Bianco, may make up to 15% in total."
-        },
-        {
-          "label": "Method",
-          "text": "The second fermentation happens in large pressure tanks called autoclaves (the Martinotti method). It lasts at least 30 days, or 60 days for Rosé."
-        }
-      ],
-      "chips": {
-        "label": "Types",
-        "items": [
-          "Spumante",
-          "Frizzante",
-          "Rosé",
-          "Tranquillo"
-        ]
+      {
+       "name": "Charmat (tank) method",
+       "note": "Prosecco, Moscato d'Asti",
+       "text": "The second fermentation happens in **pressurized tanks** and takes 4 to 5 days. No riddling or disgorging saves time and money. The Court calls it the best method for **aromatic grapes**."
       },
-      "know": [
-        "The Court lists Prosecco as a Charmat (tank) method wine.",
-        "Prosecco DOC covers nine provinces: Treviso, Venice, Vicenza, Padua, Belluno, Gorizia, Pordenone, Trieste and Udine.",
-        "Prosecco DOC Rosé blends 10-15% Pinot Noir with Glera.",
-        "Spumante is the most widespread type. Frizzante has a lighter, less persistent bubble."
-      ],
-      "visuals": [
-        {
-          "type": "stat",
-          "number": "30",
-          "title": "days, minimum",
-          "text": "Prosecco DOC's second fermentation in pressure tanks lasts at least 30 days. Rosé needs at least 60."
-        }
-      ]
+      {
+       "name": "Méthode ancestrale",
+       "note": "pét-nat",
+       "text": "The first fermentation is paused, the wine is bottled, and it finishes fermenting in the bottle. **No disgorging** is required."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The traditional method, in seven steps:",
+     "mixup": "**Transfer** method wines ferment in the bottle but skip riddling. **Charmat** wines make their bubbles in a tank.",
+     "sayIt": "It's made the traditional way, with the bubbles made in the bottle."
     },
-    {
-      "name": "Port",
-      "book": "wine/portugal/douro",
-      "lines": [
-        {
-          "label": "Where",
-          "text": "Port comes from the same area as the Douro DOP in Portugal, on schist soils. The Court's grape to know is Touriga Nacional."
-        },
-        {
-          "label": "How",
-          "text": "Grape brandy (benefício) is added to stop the fermentation, so Port is fortified during fermentation. It is usually 19-22% alcohol."
-        }
-      ],
-      "chips": {
-        "label": "Label terms",
-        "items": [
-          "Ruby",
-          "Tawny",
-          "LBV",
-          "Vintage",
-          "Single Quinta",
-          "Colheita"
-        ]
+    "check": [
+     0,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Champagne, Crémant, Cava and Franciacorta",
+    "video": {
+     "youtubeId": "RWQGd8Qj1BQ",
+     "title": "Cava vs. Champagne (Save $ Drink Smart!)",
+     "by": "Wine Folly",
+     "length": "8:29"
+    },
+    "keyPoints": [
+     {
+      "big": "CHAMPAGNE",
+      "line": "matures at least 15 months in the cellar before release."
+     },
+     {
+      "big": "CRÉMANT",
+      "line": "is French traditional-method sparkling made outside Champagne."
+     },
+     {
+      "big": "CAVA",
+      "line": "ages at least 9 months; Gran Reserva 30 months."
+     },
+     {
+      "big": "FRANCIACORTA",
+      "line": "needs at least 18 months on its lees."
+     },
+     {
+      "big": "1995",
+      "line": "Franciacorta became Italy's first bottle-fermented DOCG."
+     }
+    ],
+    "read": {
+     "bigIdea": "Four wines, one method: bubbles made in the bottle.",
+     "where": "Champagne, Crémant, Cava and Franciacorta all use the **traditional method**. What changes is the place and how long each must age. **Champagne** gets its full story in Chapter 4.",
+     "stopsTitle": "Four bottles to know",
+     "stops": [
+      {
+       "name": "Champagne",
+       "note": "France",
+       "text": "Every Champagne matures at least **15 months** in the cellar before release. Vintage cuvées need at least **three years**."
       },
-      "know": [
-        "Ruby-style categories, in rising order of quality: Ruby, Reserve, LBV, Vintage.",
-        "LBV is a single-year Ruby Port bottled after four to six years in wood.",
-        "Vintage Port is bottled two to three years after harvest and is the only Port that ages in bottle. It is only made in the best vintages.",
-        "Aged Tawny is labelled 10, 20, 30 or 40 years old. Colheita is a single-year Tawny aged at least seven years in cask.",
-        "Old Vintage and Single Quinta Ports need decanting for sediment."
-      ],
-      "visuals": [
-        {
-          "type": "pyramid",
-          "title": "Ruby style, top quality first",
-          "rows": [
-            {
-              "name": "Vintage",
-              "note": "one harvest, bottled after 2-3 years, ages in bottle"
-            },
-            {
-              "name": "LBV",
-              "note": "one year, 4-6 years in wood"
-            },
-            {
-              "name": "Reserve",
-              "note": "a blend of the year's best Port"
-            },
-            {
-              "name": "Ruby",
-              "note": "young, deep red and fruity"
-            }
-          ]
-        },
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "RUBY",
-              "title": "Kept young and red",
-              "text": "Fruit and strength of a young wine\nRuby, Reserve, LBV, Vintage\nBest ones age in bottle"
-            },
-            {
-              "label": "TAWNY",
-              "title": "Aged in cask",
-              "text": "Blends aged in casks or vats\nDried fruit and wood aromas\n10, 20, 30, 40 years; Colheita\nReady to drink when bottled"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Sherry",
-      "book": "wine/spain/jerez",
-      "lines": [
-        {
-          "label": "Where",
-          "text": "Southwest Spain, near the Atlantic. Albariza, a white soil of chalk and clay, is the best soil for Palomino. Grapes: Palomino, Pedro Ximénez and Moscatel."
-        },
-        {
-          "label": "How",
-          "text": "Sherry is fortified after fermentation. Wines for Fino and Manzanilla go to 15% and age under flor. Wines for Oloroso go to at least 17%, which stops the flor, and age in contact with air."
-        }
-      ],
-      "chips": {
-        "label": "Styles",
-        "items": [
-          "Manzanilla",
-          "Fino",
-          "Amontillado",
-          "Oloroso",
-          "Pedro Ximénez"
-        ]
+      {
+       "name": "Crémant",
+       "note": "France, outside Champagne",
+       "text": "French **traditional-method** sparkling wine made outside the Champagne region: **Crémant de Bourgogne**, **Crémant d'Alsace**, **Crémant de Loire**."
       },
-      "know": [
-        "Flor is a film of yeast that protects the wine from oxygen. Aging under it is called biological aging.",
-        "Manzanilla must be aged entirely in Sanlúcar de Barrameda.",
-        "Amontillado ages under flor first, then oxidatively once the flor disappears.",
-        "Pedro Ximénez is made from sun-dried grapes; its fermentation is stopped with wine alcohol and it ages oxidatively.",
-        "Sherry ages at least two years, traditionally in the criaderas and solera system."
-      ],
-      "visuals": [
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "BIOLOGICAL",
-              "title": "Aged under flor",
-              "text": "Fortified to 15%\nFlor blocks the air\nPale and dry\nManzanilla, Fino"
-            },
-            {
-              "label": "OXIDATIVE",
-              "title": "Aged in contact with air",
-              "text": "Oloroso fortified to at least 17%\nNo flor\nDarker and concentrated\nOloroso, Pedro Ximénez"
-            }
-          ]
-        },
-        {
-          "type": "steps",
-          "title": "Running the scales (correr escalas)",
-          "items": [
-            {
-              "name": "Saca",
-              "text": "Wine is drawn from the solera, the oldest tier",
-              "meta": "for bottling"
-            },
-            {
-              "name": "Rocío",
-              "text": "The solera is topped up from the 1st criadera",
-              "meta": "next oldest"
-            },
-            {
-              "name": "And so on",
-              "text": "Each criadera is topped up from the next younger one",
-              "meta": "up the scales"
-            },
-            {
-              "name": "Youngest tier",
-              "text": "Topped up with new wine",
-              "meta": "the start"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Madeira and Vins Doux Naturels",
-      "book": "wine/portugal/madeira",
-      "lines": [
-        {
-          "label": "Madeira",
-          "text": "An island near North Africa; Funchal is the main city. The wine is fortified during fermentation, then oxidized and exposed to heat."
-        },
-        {
-          "label": "Vins Doux Naturels",
-          "text": "France's fortified wines include Banyuls (Roussillon, Grenache) and Muscat de Beaumes-de-Venise (Southern Rhône, Muscat)."
-        }
-      ],
-      "chips": {
-        "label": "Madeira grapes",
-        "items": [
-          "Sercial",
-          "Verdelho",
-          "Bual (Boal)",
-          "Malmsey (Malvasia)",
-          "Tinta Negra"
-        ]
+      {
+       "name": "Cava",
+       "note": "Spain",
+       "text": "Spanish sparkling wine made by the traditional method. It ages at least **9 months**: **Reserva** more than 18, **Gran Reserva** 30, and **Cava de Paraje Calificado** more than 36."
       },
-      "know": [
-        "Driest to sweetest: Sercial, Verdelho, Bual, Malmsey.",
-        "Fortification with 96% wine alcohol stops the fermentation; the timing sets the sweetness.",
-        "Estufagem heats the wine in stainless steel tanks at 45-50°C for at least 3 months.",
-        "Canteiro ages the wine in casks, usually on the warmer upper floors, for at least 2 years.",
-        "Madeira cannot be bottled before it is 3 years old."
-      ],
-      "visuals": [
-        {
-          "type": "steps",
-          "title": "Madeira, driest to sweetest",
-          "items": [
-            {
-              "name": "Sercial",
-              "text": "Dry",
-              "meta": "1"
-            },
-            {
-              "name": "Verdelho",
-              "text": "Medium dry",
-              "meta": "2"
-            },
-            {
-              "name": "Bual (Boal)",
-              "text": "Medium sweet",
-              "meta": "3"
-            },
-            {
-              "name": "Malmsey (Malvasia)",
-              "text": "Sweet",
-              "meta": "4"
-            }
-          ]
-        },
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "ESTUFAGEM",
-              "title": "Heated in tanks",
-              "text": "Stainless steel estufas\n45-50°C\nAt least 3 months"
-            },
-            {
-              "label": "CANTEIRO",
-              "title": "Aged in warm lofts",
-              "text": "Wooden casks\nUpper, warmer floors\nAt least 2 years"
-            }
-          ]
-        }
-      ]
+      {
+       "name": "Franciacorta",
+       "note": "Italy, by Lake Iseo",
+       "text": "**Chardonnay** and/or **Pinot Nero**, with Pinot Bianco up to 50%. At least **18 months** on the lees, 60 for **riserva**. In 1995 it became Italy's first bottle-fermented **DOCG**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "How long each one must age, at least:",
+     "mixup": "**Franciacorta** makes its bubbles in the bottle, like Champagne. **Prosecco** makes them in a tank.",
+     "sayIt": "If you like Champagne, try a Crémant: same method, from elsewhere in France."
     },
-    {
-      "name": "Noble rot",
-      "lines": [
-        {
-          "label": "What it is",
-          "text": "Noble rot is Botrytis cinerea. It needs ripe, healthy grapes, humid mornings and dry, warm afternoons. The berries shrivel and the juice concentrates."
-        },
-        {
-          "label": "Stopping the yeast",
-          "text": "Sweet-wine makers stop the yeast by chilling and filtering, or by chilling and adding SO2."
-        }
-      ],
-      "chips": {
-        "label": "Court's noble-rot wines",
-        "items": [
-          "Sauternes",
-          "Alsace VT and SGN",
-          "Auslese, BA, TBA",
-          "Quarts de Chaume",
-          "Bonnezeaux",
-          "Vouvray Moelleux",
-          "Tokaji Aszú"
-        ]
+    "check": [
+     7,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "Prosecco",
+    "video": {
+     "youtubeId": "HXtl3F6Fs0k",
+     "title": "Prosecco DOC: The Place Behind the Bubbles",
+     "by": "Wine Folly",
+     "length": "5:34"
+    },
+    "keyPoints": [
+     {
+      "big": "GLERA",
+      "line": "is the traditional Prosecco grape."
+     },
+     {
+      "big": "AUTOCLAVES",
+      "line": "are the big pressure tanks for the second fermentation."
+     },
+     {
+      "big": "30 DAYS",
+      "line": "is the shortest second fermentation; Rosé needs 60."
+     },
+     {
+      "big": "SPUMANTE",
+      "line": "is the most common type; Frizzante has a lighter bubble."
+     },
+     {
+      "big": "ROSÉ",
+      "line": "blends 10 to 15% Pinot Noir with Glera."
+     }
+    ],
+    "read": {
+     "bigIdea": "Prosecco is Glera with its bubbles made in a tank.",
+     "where": "**Prosecco DOC** is the world's best-selling Italian sparkling wine. It comes from nine provinces, including **Treviso** and **Venice**. Its second fermentation happens in big pressure tanks called **autoclaves** (the **Martinotti** method), which the Court files under the **Charmat** (tank) method.",
+     "stopsTitle": "Grape, method, label",
+     "stops": [
+      {
+       "name": "The grape",
+       "note": "mostly Glera",
+       "text": "**Glera** is the traditional grape. Others, like Chardonnay and Pinot Bianco, may make up to **15%** in total."
       },
-      "know": [
-        "Sauternes is mainly Sémillon. Château d'Yquem is its Superior First Growth (1855).",
-        "Tokaji Aszú's grape is Furmint. Since 2013 an Aszú needs at least 120 g/l of sugar; 6 puttonyos means 150 g/l or more.",
-        "Trockenbeerenauslese (TBA) is made from single berries dried almost to raisins, usually by noble rot.",
-        "Loire noble-rot wines (Quarts de Chaume, Bonnezeaux) are Chenin Blanc."
-      ],
-      "visuals": [
-        {
-          "type": "list",
-          "title": "Noble-rot wines and their grapes",
-          "rows": [
-            {
-              "name": "Sauternes",
-              "meta": "Bordeaux · Sémillon"
-            },
-            {
-              "name": "Tokaji Aszú",
-              "meta": "Hungary · Furmint"
-            },
-            {
-              "name": "Quarts de Chaume, Bonnezeaux",
-              "meta": "Loire · Chenin Blanc"
-            },
-            {
-              "name": "Vendange Tardive, SGN",
-              "meta": "Alsace · Riesling, Pinot Gris, Gewürztraminer, Muscat"
-            },
-            {
-              "name": "Auslese, BA, TBA",
-              "meta": "Germany"
-            }
-          ],
-          "note": "Match each wine to its region and grape."
-        },
-        {
-          "type": "stat",
-          "number": "120",
-          "title": "grams of sugar per liter",
-          "text": "Since 2013, a Tokaji needs at least 120 g/l of residual sugar to be called Aszú."
-        }
-      ]
-    },
-    {
-      "name": "Ice, late harvest and dried grapes",
-      "lines": [
-        {
-          "label": "Freezing",
-          "text": "Eiswein (Germany, Austria) and Icewine (Canada) are pressed from grapes frozen on the vine. Both must be free of noble rot."
-        },
-        {
-          "label": "Drying",
-          "text": "Recioto di Soave, Recioto della Valpolicella and Vin Santo use dried grapes. So does Pedro Ximénez Sherry."
-        }
-      ],
-      "chips": {
-        "label": "Canadian Icewine grapes",
-        "items": [
-          "Riesling",
-          "Vidal",
-          "Cabernet Franc"
-        ]
+      {
+       "name": "The method",
+       "note": "in tanks",
+       "text": "The second fermentation in **autoclaves** lasts at least **30 days**, or **60 days** for Rosé."
       },
-      "know": [
-        "Ontario Icewine grapes are picked at -8°C or colder, and the juice must reach at least 35° Brix.",
-        "German Eiswein uses grapes as ripe as Beerenauslese, harvested and pressed while frozen.",
-        "Spätlese means 'late harvest': riper grapes picked later in the harvest.",
-        "Recioto di Soave is Garganega; Recioto della Valpolicella is Corvina; Vin Santo is Trebbiano."
-      ],
-      "visuals": [
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "EISWEIN",
-              "title": "Germany and Austria",
-              "text": "Frozen on the vine\nPressed while frozen\nAs ripe as Beerenauslese\nRiesling"
-            },
-            {
-              "label": "ICEWINE",
-              "title": "Canada (Ontario VQA)",
-              "text": "Picked at -8°C or colder\nJuice at least 35° Brix\nNo noble rot\nRiesling, Vidal, Cabernet Franc"
-            }
-          ]
-        },
-        {
-          "type": "list",
-          "title": "Dried-grape wines",
-          "rows": [
-            {
-              "name": "Recioto di Soave",
-              "meta": "Italy · Garganega"
-            },
-            {
-              "name": "Recioto della Valpolicella",
-              "meta": "Italy · Corvina"
-            },
-            {
-              "name": "Vin Santo",
-              "meta": "Italy · Trebbiano"
-            },
-            {
-              "name": "Pedro Ximénez",
-              "meta": "Sherry · sun-dried Pedro Ximénez"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "mixups": [
-    {
-      "a": "Fino",
-      "b": "Manzanilla",
-      "why": "Both are Palomino aged under flor; Manzanilla must be aged in Sanlúcar de Barrameda."
-    },
-    {
-      "a": "LBV Port",
-      "b": "Vintage Port",
-      "why": "Both are single-year rubies; LBV spends 4-6 years in wood, Vintage is bottled after 2-3 and ages in bottle."
-    },
-    {
-      "a": "Estufagem",
-      "b": "Canteiro",
-      "why": "Estufagem heats Madeira in tanks for 3+ months; canteiro ages it in casks in warm lofts for 2+ years."
-    },
-    {
-      "a": "Eiswein",
-      "b": "Trockenbeerenauslese",
-      "why": "Eiswein grapes are frozen and free of noble rot; TBA grapes are shriveled, usually by noble rot."
-    }
-  ],
-  "sources": "Court of Master Sommeliers Americas Introductory Course Guide (1.2024) and Curriculum Guide (8.2023); Comité Champagne; Consejo Regulador DO Cava; Consorzio Franciacorta; Consorzio Prosecco DOC; IVDP (Port); Consejo Regulador Jerez-Xérès-Sherry; IVBAM (Madeira); Magyar Bor (Tokaj); Wines of Germany USA; VQA Ontario and Wine Country Ontario; Wine Folly as a secondary source. Checked Oct 31, 2026.",
-  "cards": [
-    {
-      "q": "In the traditional method, where does the second fermentation happen?",
-      "answer": "In the bottle the wine is sold in",
-      "wrong": [
-        "In a pressurized tank",
-        "In an oak barrel",
-        "In a concrete vat before bottling"
-      ],
-      "source": "https://www.cava.wine/en/origin-cava/winemaking/"
-    },
-    {
-      "q": "The Court lists riddling (remuage) by pupitre or by what?",
-      "answer": "Gyropalette",
-      "wrong": [
-        "Autoclave",
-        "Solera",
-        "Estufa"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
-    },
-    {
-      "q": "What is added at dosage in the traditional method?",
-      "answer": "Liqueur d'expédition",
-      "wrong": [
-        "Liqueur de tirage",
-        "Grape brandy (benefício)",
-        "Flor yeast"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
-    },
-    {
-      "q": "Which method makes Prosecco?",
-      "answer": "Tank method (Charmat / Martinotti)",
-      "wrong": [
-        "Traditional method",
-        "Transfer method",
-        "Méthode ancestrale"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
-    },
-    {
-      "q": "Which method does the Court call best for sparkling wine from aromatic grapes?",
-      "answer": "Charmat (tank) method",
-      "wrong": [
-        "Traditional method",
-        "Transfer method",
-        "Méthode ancestrale"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
-    },
-    {
-      "q": "What step does the transfer method eliminate?",
-      "answer": "Riddling",
-      "wrong": [
-        "Second fermentation",
-        "Lees contact",
-        "Blending the cuvée"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
-    },
-    {
-      "q": "Which method pauses the first fermentation, finishes it in the bottle and does not require disgorging?",
-      "answer": "Méthode ancestrale (pét-nat)",
-      "wrong": [
-        "Charmat method",
-        "Transfer method",
-        "Traditional method"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
-    },
-    {
-      "q": "What is Crémant?",
-      "answer": "French traditional-method sparkling wine made outside Champagne",
-      "wrong": [
-        "Champagne with lower pressure",
-        "Italian tank-method sparkling wine",
-        "Spanish sparkling wine from Penedès"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=78"
-    },
-    {
-      "q": "Minimum time a Champagne must mature in the cellar before release?",
-      "answer": "15 months",
-      "wrong": [
-        "9 months",
-        "12 months",
-        "36 months"
-      ],
-      "source": "https://www.champagne.fr/en/about-champagne/how-champagne-is-made/maturation"
-    },
-    {
-      "q": "Minimum aging for a wine to be called Cava?",
-      "answer": "9 months",
-      "wrong": [
-        "15 months",
-        "18 months",
-        "30 months"
-      ],
-      "source": "https://www.cava.wine/en/categories-types/"
-    },
-    {
-      "q": "Minimum time on the lees for non-vintage Franciacorta?",
-      "answer": "18 months",
-      "wrong": [
-        "9 months",
-        "15 months",
-        "36 months"
-      ],
-      "source": "https://franciacorta.wine/en/consortium/regulations/"
-    },
-    {
-      "q": "What is the traditional grape of Prosecco?",
-      "answer": "Glera",
-      "wrong": [
-        "Garganega",
-        "Trebbiano",
-        "Moscato"
-      ],
-      "source": "https://www.prosecco.wine/en/prosecco/"
-    },
-    {
-      "q": "Which grapes make Franciacorta?",
-      "answer": "Chardonnay and/or Pinot Nero (plus some Pinot Bianco)",
-      "wrong": [
-        "Glera",
-        "Macabeo, Xarel·lo and Parellada",
-        "Chenin Blanc"
-      ],
-      "source": "https://franciacorta.wine/en/consortium/regulations/"
-    },
-    {
-      "q": "When is Port fortified?",
-      "answer": "During fermentation",
-      "wrong": [
-        "After fermentation is complete",
-        "Before fermentation starts",
-        "After barrel aging"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
-    },
-    {
-      "q": "How long does LBV Port age in wood before bottling?",
-      "answer": "Four to six years",
-      "wrong": [
-        "Two to three years",
-        "At least ten years",
-        "Six months"
-      ],
-      "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
-    },
-    {
-      "q": "Which Port is bottled two to three years after harvest and then ages in bottle?",
-      "answer": "Vintage Port",
-      "wrong": [
-        "LBV Port",
-        "10-year Tawny",
-        "Colheita"
-      ],
-      "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
-    },
-    {
-      "q": "What is a Colheita Port?",
-      "answer": "A single-vintage Tawny aged at least seven years in cask",
-      "wrong": [
-        "A blend of years with an age indication",
-        "A Ruby from a single estate",
-        "A Port aged only in bottle"
-      ],
-      "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
-    },
-    {
-      "q": "Which Ports does the Court say need decanting for sediment?",
-      "answer": "Old Vintage and Single Quinta Ports",
-      "wrong": [
-        "Basic Ruby",
-        "10-year Tawny",
-        "White Port"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
-    },
-    {
-      "q": "Fino, Manzanilla, Amontillado and Oloroso are made from which grape?",
-      "answer": "Palomino",
-      "wrong": [
-        "Pedro Ximénez",
-        "Moscatel",
-        "Tempranillo"
-      ],
-      "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/fino"
-    },
-    {
-      "q": "What is flor?",
-      "answer": "A film of yeast on the wine that protects it from oxygen",
-      "wrong": [
-        "Grape brandy added to stop fermentation",
-        "Sherry's white chalky soil",
-        "The oldest tier of a solera"
-      ],
-      "source": "https://www.sherry.wine/sherry-wine/production/ageing"
-    },
-    {
-      "q": "Manzanilla must be aged where?",
-      "answer": "Sanlúcar de Barrameda",
-      "wrong": [
-        "Jerez de la Frontera",
-        "El Puerto de Santa María",
-        "Funchal"
-      ],
-      "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/manzanilla"
-    },
-    {
-      "q": "Oloroso is fortified to at least what strength, which stops flor?",
-      "answer": "17%",
-      "wrong": [
-        "12%",
-        "15%",
-        "22%"
-      ],
-      "source": "https://www.sherry.wine/sherry-wine/production/fortification"
-    },
-    {
-      "q": "In a solera system, what is the solera?",
-      "answer": "The oldest tier, where wine is drawn for bottling",
-      "wrong": [
-        "The youngest tier of new wine",
-        "The film of yeast on the wine",
-        "The sun-drying of grapes"
-      ],
-      "source": "https://www.sherry.wine/sherry-wine/production/ageing"
-    },
-    {
-      "q": "How are Pedro Ximénez grapes treated before pressing?",
-      "answer": "Dried in the sun",
-      "wrong": [
-        "Frozen on the vine",
-        "Left for noble rot",
-        "Heated in an estufa"
-      ],
-      "source": "https://www.sherry.wine/sherry-wine/naturally-sweet-sherry-wine/pedro-ximenez"
-    },
-    {
-      "q": "Madeira styles from driest to sweetest?",
-      "answer": "Sercial, Verdelho, Bual, Malmsey",
-      "wrong": [
-        "Malmsey, Bual, Verdelho, Sercial",
-        "Verdelho, Sercial, Malmsey, Bual",
-        "Bual, Sercial, Verdelho, Malmsey"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
-    },
-    {
-      "q": "What is estufagem?",
-      "answer": "Heating the wine at 45-50°C for at least 3 months",
-      "wrong": [
-        "Aging in casks in warm lofts for 2+ years",
-        "Drying grapes in the sun",
-        "Aging under a film of flor"
-      ],
-      "source": "https://vinhomadeira.com/o-vinho-madeira/vinificacao-e-envelhecimento"
-    },
-    {
-      "q": "Which grape does the Court list for Tokaji Aszú?",
-      "answer": "Furmint",
-      "wrong": [
-        "Sémillon",
-        "Riesling",
-        "Chenin Blanc"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
-    },
-    {
-      "q": "Since 2013, the minimum residual sugar for Tokaji Aszú is:",
-      "answer": "120 g/l",
-      "wrong": [
-        "45 g/l",
-        "60 g/l",
-        "212 g/l"
-      ],
-      "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
-    },
-    {
-      "q": "Ontario Icewine grapes are picked at what air temperature or colder?",
-      "answer": "-8°C",
-      "wrong": [
-        "-2°C",
-        "-5°C",
-        "-15°C"
-      ],
-      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
-    },
-    {
-      "q": "Which grape makes Banyuls?",
-      "answer": "Grenache",
-      "wrong": [
-        "Muscat",
-        "Touriga Nacional",
-        "Palomino"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
-    }
-  ],
-  "facts": [
-    {
-      "fact": "Court Introductory Course Guide, Section 10 'Other Methods of Making Wine': Sparkling Wine (review of methods; Champagne), Fortified Wine (review of methods; Sherry; Port; Madeira; Vins Doux Naturels), Sweet Wines (review of methods; Tokaji Aszú).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=6"
-    },
-    {
-      "fact": "Sparkling wines need two fermentations: one to make wine and the other to make bubbles; each production method creates a distinct style.",
-      "source": "https://winefolly.com/deep-dive/how-sparkling-wine-is-made/"
-    },
-    {
-      "fact": "Classic / Traditional Method is also called Champagne Method, Méthode Traditionnelle, Metodo Classico. Steps: making still wine, assemblage of cuvée, creating bubbles using liqueur de tirage, sur lie aging, riddling (rémuage) using pupitre or gyropalette, disgorging (dégorgement), dosage using liqueur d'expédition. Autolysis. Aging in lees. Examples: Champagne, Crémant, Cava, Franciacorta.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
-    },
-    {
-      "fact": "Transfer Method: identical to the classic method up to completion of second fermentation, which occurs in bottle. Bottles are disgorged under pressure into large tanks; the wine is filtered and rebottled. Advantages: lees contact for flavor is obtained and riddling is eliminated. Used for extra large and extra small format bottles.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
-    },
-    {
-      "fact": "Charmat Method (Cuve Close): secondary fermentation occurs in pressurized tanks and is complete in 4-5 days; the wine is filtered and then bottled. Saves time and cost with no riddling or disgorging; can be as little as 90 days from harvest to bottling. The best process for sparkling wine from aromatic grape varieties. Examples: Prosecco, Moscato d'Asti.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
-    },
-    {
-      "fact": "Méthode Ancestrale: primary fermentation is paused mid-way, wines are bottled and fermentation finishes in the bottle, trapping the CO2. No requirement to remove the sediment by disgorging. (Certified column: also called Ancestral Method / Méthode Rurale / Pétillant Naturel, 'Pet-nat'; bottled at much lower pressure.)",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
-    },
-    {
-      "fact": "Crémant: French sparkling wine produced by méthode traditionnelle made outside the Champagne region. Examples: Crémant de Bourgogne, Crémant d'Alsace, Crémant de Loire.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=78"
-    },
-    {
-      "fact": "Cava: second fermentation happens in the same bottle the consumer buys (traditional method). Licor de tiraje is a blend of base wine, yeast and sugar. Licor de expedición (dosage) is added after disgorging and sets the sweetness type.",
-      "source": "https://www.cava.wine/en/origin-cava/winemaking/"
-    },
-    {
-      "fact": "All genuine Champagnes must spend at least 15 months maturing in the winemaker's cellars before release; vintage cuvées at least three years.",
-      "source": "https://www.champagne.fr/en/about-champagne/how-champagne-is-made/maturation"
-    },
-    {
-      "fact": "Cava categories by aging: Cava de Guarda minimum 9 months; Cava de Guarda Superior: Reserva more than 18 months, Gran Reserva 30 months, Cava de Paraje Calificado more than 36 months.",
-      "source": "https://www.cava.wine/en/categories-types/"
-    },
-    {
-      "fact": "Franciacorta minimum time on the lees from tirage to disgorging: Franciacorta 18 months; Rosé 24; Satèn 24; millesimato (vintage) 30; riserva 60.",
-      "source": "https://franciacorta.wine/en/consortium/regulations/"
-    },
-    {
-      "fact": "Franciacorta DOCG is made from Chardonnay and/or Pinot nero; Pinot bianco up to 50%, Erbamat up to 10%. The production area is in the Province of Brescia, bordered by Lake Iseo.",
-      "source": "https://franciacorta.wine/en/consortium/regulations/"
-    },
-    {
-      "fact": "In 1995 Franciacorta became the first Italian wine made with a second fermentation in the bottle to achieve DOCG status.",
-      "source": "https://franciacorta.wine/en/region/origins-history/"
-    },
-    {
-      "fact": "Glera is the traditional Prosecco grape; Verdiso, Bianchetta Trevigiana, Perera, Glera lunga, Chardonnay, Pinot Bianco, Pinot Grigio and Pinot nero may be used up to 15% overall. Production area: the provinces of Treviso, Venice, Vicenza, Padua, Belluno, Gorizia, Pordenone, Trieste and Udine.",
-      "source": "https://www.prosecco.wine/en/prosecco/"
-    },
-    {
-      "fact": "Prosecco DOC Frizzante and Spumante get their second fermentation with the Martinotti method in big tanks called autoclaves; it lasts at least 30 days (at least 60 days for Rosé). Prosecco DOC Rosé blends 10-15% Pinot Noir with Glera.",
-      "source": "https://www.prosecco.wine/en/prosecco/discover/winemaking/"
-    },
-    {
-      "fact": "Prosecco DOC comes in four types: Spumante (the most widespread, fine persistent perlage), Rosé, Frizzante (lighter, less persistent perlage) and Tranquillo.",
-      "source": "https://www.prosecco.wine/en/prosecco/discover/types/"
-    },
-    {
-      "fact": "Port: same geographical area as the Douro DOP, Portugal. Soil: schist. Fortified during fermentation. Grape (Intro): Touriga Nacional. Styles: Ruby (basic Ruby, LBV, Single Quinta, Vintage); Aged Tawny 10, 20, 30, 40 year.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
-    },
-    {
-      "fact": "Port winemaking stops the fermentation of the must by adding grape brandy (benefício). Port usually has 19-22% alcohol. Sweetness depends on when the brandy is added.",
-      "source": "https://www.ivdp.pt/en/wines/port-wines/introduction/"
-    },
-    {
-      "fact": "Ruby Style Ports keep their deep red color and the fruit of a young wine; categories in ascending order of quality: Ruby, Reserve, Late Bottled Vintage (LBV), Vintage. Tawny Style Ports are blends of wines aged for different lengths of time in casks or vats, turning tawny with dried-fruit and wood aromas; categories: Tawny, Tawny Reserve, Tawny with an Indication of Age (10, 20, 30, 40 years) and Colheita.",
-      "source": "https://www.ivdp.pt/en/wines/port-wines/introduction/"
-    },
-    {
-      "fact": "LBV is a Ruby Port from a single year bottled after ageing four to six years in wood. Vintage Port is from a single year, bottled two to three years after the vintage, the only Port that ages in bottle, and develops for 10 to 50 years. Single Quinta Vintage Port comes from a single harvest and a single estate. Reserve Ruby is frequently a blend of a selection of the best Port of the year. Colheita: single-vintage Tawnies aged in cask a minimum of seven years.",
-      "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
-    },
-    {
-      "fact": "Old Vintage and Single Quinta Ports require decanting for sediment. Vintage Port is only made in the best vintages.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
-    },
-    {
-      "fact": "Sherry: southwest Spain; soil albariza (chalk); hot maritime climate near the Atlantic (Certified column). Fortified after fermentation, oxidized. Grapes: Palomino, Moscatel, Pedro Ximénez. Style: biological aging vs oxidative aging.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
-    },
-    {
-      "fact": "Albariza is a white soil of chalk and clay; it is the best soil for Palomino. The suitable varieties are Palomino, Pedro Ximénez and Moscatel, all white grapes.",
-      "source": "https://www.sherry.wine/sherry-wine/production/viticulture"
-    },
-    {
-      "fact": "Wines classified for fino and manzanilla are fortified to 15% ABV; wines for oloroso are fortified to at least 17%.",
-      "source": "https://www.sherry.wine/sherry-wine/production/fortification"
-    },
-    {
-      "fact": "Biological ageing happens under a film of yeasts called velo de flor, which protects the wine from oxidation; oxidative ageing exposes the wine to oxygen and darkens and concentrates it. Sherry must age at least two years. The criaderas and solera system: wine for bottling is drawn (saca) from the solera, the oldest tier; it is topped up (rocío) from the 1st criadera, and so on up to the youngest tier, which is topped up with new wine; the whole process is called correr escalas (running the scales).",
-      "source": "https://www.sherry.wine/sherry-wine/production/ageing"
-    },
-    {
-      "fact": "Fino: dry white wine from Palomino, aged under flor in American oak butts using criaderas and solera in Jerez de la Frontera and El Puerto de Santa María; fortified to 15%; biological ageing at least two years; serve chilled 6-8°C.",
-      "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/fino"
-    },
-    {
-      "fact": "Manzanilla: dry Palomino wine aged under flor; its biological ageing must be carried out entirely in bodegas in Sanlúcar de Barrameda, at the mouth of the Guadalquivir.",
-      "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/manzanilla"
-    },
-    {
-      "fact": "Amontillado ages first under flor, then the flor disappears and the wine ages oxidatively.",
-      "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/amontillado"
-    },
-    {
-      "fact": "Oloroso is fortified to 17%, which prevents flor, so it ages in contact with oxygen.",
-      "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/oloroso"
-    },
-    {
-      "fact": "Pedro Ximénez is made from overripe grapes dried in the sun (asoleo); fermentation is stopped with wine alcohol; ageing is exclusively oxidative; sugar more than 212 g/l.",
-      "source": "https://www.sherry.wine/sherry-wine/naturally-sweet-sherry-wine/pedro-ximenez"
-    },
-    {
-      "fact": "Madeira: island located near North Africa; Funchal is the main city. Soil: volcanic. Fortified during fermentation, oxidized, exposed to heat. Grapes: Sercial, Verdelho, Bual, Malmsey, Tinta Negra. Style in order of driest to sweetest: Sercial, Verdelho, Bual, Malmsey. (Certified column: know estufagem and canteiro; sweeter styles are fortified closer to the beginning of fermentation.)",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
-    },
-    {
-      "fact": "Madeira fortification stops fermentation with wine alcohol at 96% vol; timing gives dry, medium dry, medium sweet or sweet. Estufagem: wine heated in stainless steel estufas by hot-water coils for at least 3 months at 45-50°C. Canteiro: wine aged in casks, usually on the upper, warmer floors of the lodges, for at least 2 years.",
-      "source": "https://vinhomadeira.com/o-vinho-madeira/vinificacao-e-envelhecimento"
-    },
-    {
-      "fact": "Madeira cannot be bottled with less than 3 years; age indications allowed are 5, 10, 15, 20, 30, 40, 50 and over 50 years.",
-      "source": "https://vinhomadeira.com/o-vinho-madeira/tipos-categorias"
-    },
-    {
-      "fact": "French fortified wines (Court): Banyuls AOP (Roussillon), grape Grenache; Muscat de Beaumes-de-Venise AOP (Southern Rhône), grape Muscat.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
-    },
-    {
-      "fact": "Vins Doux Naturels is an Introductory label term; example Muscat de Beaumes-de-Venise.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=18"
-    },
-    {
-      "fact": "Sweet wines, noble rot (Botrytis) appellations: Bordeaux - Sauternes; Alsace - Vendange Tardive (VT) and Sélection de Grains Nobles (SGN); Germany - Auslese, Beerenauslese (BA), Trockenbeerenauslese (TBA); Loire - Quarts de Chaume, Bonnezeaux, Vouvray Moelleux; Hungary - Tokaji Aszú. Drying: Italy - Vin Santo DOC, Recioto di Soave DOC, Recioto della Valpolicella DOC. Freezing: Germany & Austria - Eiswein; Canada - Icewine (Ontario VQA).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
-    },
-    {
-      "fact": "Sweet wine winemaking: stop the action of yeast by chilling and filtering, or chilling and adding SO2. Grapes: Sauternes - Sémillon; Alsace - Riesling, Pinot Gris, Gewürztraminer, Muscat; Loire - Chenin Blanc; Tokaji - Furmint; Germany (freezing) - Riesling; Canada - Riesling, Cabernet Franc (Certified adds Vidal). Certified column: Vin Santo - Trebbiano; Recioto di Soave - Garganega; Recioto della Valpolicella - Corvina; Eiswein and Icewine must be free of noble rot.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
-    },
-    {
-      "fact": "Noble rot = Botrytis cinerea. Classification of Sauternes (1855): Château d'Yquem is the Superior First Growth (Premier Cru Supérieur).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=80"
-    },
-    {
-      "fact": "In Tokaj, Botrytis cinerea becomes noble rot when it attacks perfectly ripe, healthy grapes, with humid early mornings followed by dry, warm afternoons; aszú berries shrivel and concentrate. Since 2013, 120 g/l is the minimum residual sugar for a wine to be called Aszú (equivalent to the old 5 puttony); 6 puttony means upwards of 150 g/l. Aszú must age at least 18 months in wooden casks.",
-      "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
-    },
-    {
-      "fact": "German Prädikatswein ripeness levels: Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese, Eiswein. Spätlese means 'late harvest' (riper grapes picked later). BA: individually selected overripe berries usually infected by noble rot. TBA: individually selected grapes overripe and dried up almost to raisins, usually infected by noble rot. Eiswein: grapes as ripe as Beerenauslese that froze on the vine, harvested and pressed while frozen.",
-      "source": "https://germanwineusa.com/basics/classifications/"
-    },
-    {
-      "fact": "Ontario VQA Icewine: grapes frozen naturally on the vine, harvested when the temperature falls below -8°C, juice at least 35 degrees Brix. Late Harvest wines come from grapes picked near the end of or after the normal harvest, which desiccate and become sweeter. Appassimento/Vin de Cure: wine from grapes dried after harvest.",
-      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
-    },
-    {
-      "fact": "Ontario Icewine grapes must be naturally frozen on the vine and harvested and pressed continuously at or below -8°C; most Icewine is made from Riesling and Vidal.",
-      "source": "https://winecountryontario.ca/icewine/"
-    }
-  ],
-  "unverified": [
-    "Grape lists for Cava (Macabeo, Xarel·lo, Parellada) were not confirmed on a fetched Cava DO page, so they are left out.",
-    "No official Champagne or Crémant body page was used for Crémant rules; the definition comes from the Court Curriculum Guide only.",
-    "Vins Doux Naturels production method (how and when spirit is added) was not confirmed from an official source; only the Court's examples and grapes are used.",
-    "Sauternes, Alsace VT/SGN and Loire sweet-wine details come from the Court Curriculum Guide only; no Bordeaux, Alsace or Loire body page was fetched.",
-    "Grapes for Vin Santo (Trebbiano), Recioto di Soave (Garganega) and Recioto della Valpolicella (Corvina) are in the Court's Certified column, not the Introductory column.",
-    "The Court's Curriculum Guide gives a fortified by-the-glass pour as '2 oz (51.9 ml)' and a sweet-wine pour as '2 oz (59.1ml)'; the two ml figures disagree, so neither is used.",
-    "The Madeira page used (vinhomadeira.com, IVBAM) is in Portuguese; facts were translated.",
-    "Tokaj facts come from bor.hu (Magyar Bor, Hungarian wine promotion site), not from the Tokaj product specification itself."
+      {
+       "name": "The label",
+       "note": "four types",
+       "text": "**Spumante** is the most widespread, with a fine, lasting bubble. **Frizzante** has a lighter, less lasting bubble. There is also **Rosé** (10 to 15% Pinot Noir) and **Tranquillo**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The minimum time in the tank:",
+     "mixup": "**Prosecco** makes its bubbles in a tank. **Champagne** makes them in the bottle.",
+     "sayIt": "A Prosecco: light, fresh and easy to drink."
+    },
+    "check": [
+     3,
+     11,
+     30
+    ]
+   },
+   {
+    "name": "Port",
+    "video": {
+     "youtubeId": "wa3uPeCmb6Q",
+     "title": "Port Wine and the Douro Valley",
+     "by": "Wine Folly",
+     "length": "2:32"
+    },
+    "keyPoints": [
+     {
+      "big": "PORT",
+      "line": "is fortified during fermentation with grape brandy."
+     },
+     {
+      "big": "19–22%",
+      "line": "alcohol is usual for Port."
+     },
+     {
+      "big": "RUBY",
+      "line": "styles stay red and fruity: Ruby, Reserve, LBV, Vintage."
+     },
+     {
+      "big": "TAWNY",
+      "line": "ages in cask: 10, 20, 30 or 40 years, or Colheita."
+     },
+     {
+      "big": "VINTAGE PORT",
+      "line": "is the only Port that ages in bottle."
+     }
+    ],
+    "read": {
+     "bigIdea": "Port is wine stopped mid-ferment by grape brandy.",
+     "where": "Port comes from the **Douro** in Portugal, on **schist** soil, and the grape to know is **Touriga Nacional**. Grape brandy (**benefício**) is added to stop the fermentation; when it goes in sets the sweetness. Port is usually **19 to 22%** alcohol.",
+     "stopsTitle": "Two families: Ruby and Tawny",
+     "stops": [
+      {
+       "name": "Ruby style",
+       "note": "kept young and red",
+       "text": "Keeps the deep red color and fruit of a young wine. In rising order of quality: **Ruby**, **Reserve**, **LBV**, **Vintage**."
+      },
+      {
+       "name": "LBV",
+       "note": "Late Bottled Vintage",
+       "text": "One year's wine, bottled after **four to six years** in wood."
+      },
+      {
+       "name": "Vintage",
+       "note": "the best years only",
+       "text": "One harvest, bottled **two to three years** after it, and only made in the best vintages. It is the only Port that ages in bottle, and old bottles need **decanting**."
+      },
+      {
+       "name": "Tawny style",
+       "note": "aged in cask",
+       "text": "Blends aged in casks or vats, turning tawny with dried-fruit and wood aromas. Look for **10, 20, 30 or 40 years** on the label. A **Colheita** is a single-year Tawny aged at least seven years in cask."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Ruby styles, best at the top:",
+     "mixup": "**LBV** spends 4 to 6 years in wood before bottling. **Vintage Port** is bottled after 2 to 3 years and ages in the bottle.",
+     "sayIt": "A 20-year Tawny: dried fruit and a little wood. Lovely with dessert."
+    },
+    "check": [
+     13,
+     14,
+     15
+    ]
+   },
+   {
+    "name": "Sherry",
+    "video": {
+     "youtubeId": "v0HbOzAPfHw",
+     "title": "Online Sherry Wine Tasting",
+     "by": "vinosdejereztv",
+     "length": "9:22"
+    },
+    "keyPoints": [
+     {
+      "big": "ALBARIZA",
+      "line": "is white chalk-and-clay soil, the best for Palomino."
+     },
+     {
+      "big": "FLOR",
+      "line": "is a film of yeast that keeps air off the wine."
+     },
+     {
+      "big": "FINO",
+      "line": "and Manzanilla age under flor, fortified to 15%."
+     },
+     {
+      "big": "OLOROSO",
+      "line": "is fortified to 17% or more, so no flor: it ages with air."
+     },
+     {
+      "big": "SOLERA",
+      "line": "is the oldest tier; wine for bottling is drawn from it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sherry ages two ways: under yeast, or with air.",
+     "where": "Sherry comes from southwest **Spain**, near the Atlantic. Its best soil is **albariza**, and its grapes are **Palomino**, **Pedro Ximénez** and **Moscatel**. It is fortified **after** fermentation and ages at least **two years**.",
+     "stopsTitle": "Pale to dark",
+     "stops": [
+      {
+       "name": "Manzanilla and Fino",
+       "note": "under flor",
+       "text": "Dry Palomino, fortified to **15%** and aged under **flor**, a film of yeast that blocks the air (**biological aging**). **Manzanilla** must be aged in **Sanlúcar de Barrameda**."
+      },
+      {
+       "name": "Amontillado",
+       "note": "both ways",
+       "text": "Starts under flor. When the flor disappears, it keeps aging in contact with air."
+      },
+      {
+       "name": "Oloroso",
+       "note": "with air",
+       "text": "Fortified to at least **17%**, which stops flor from growing. It ages in contact with air (**oxidative aging**), which darkens and concentrates it."
+      },
+      {
+       "name": "Pedro Ximénez",
+       "note": "sweet",
+       "text": "Made from grapes **dried in the sun**. Fermentation is stopped with wine alcohol, and it ages only with air. It holds more than 212 grams of sugar per liter."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "How the solera works:",
+     "mixup": "**Fino** and **Manzanilla** are both Palomino aged under flor. Manzanilla must be aged in Sanlúcar de Barrameda.",
+     "sayIt": "A Fino Sherry: dry, and best served chilled."
+    },
+    "check": [
+     19,
+     20,
+     21
+    ]
+   },
+   {
+    "name": "Madeira and Vins Doux Naturels",
+    "video": {
+     "youtubeId": "XMAdZTLh3a0",
+     "title": "Novo vídeo promocional Vinho Madeira, versão longa INGLÊS",
+     "by": "Vinho Madeira Wine",
+     "length": "3:44"
+    },
+    "keyPoints": [
+     {
+      "big": "MADEIRA",
+      "line": "is fortified, then oxidized and exposed to heat."
+     },
+     {
+      "big": "SERCIAL",
+      "line": "is the driest style; Malmsey is the sweetest."
+     },
+     {
+      "big": "ESTUFAGEM",
+      "line": "heats the wine in tanks at 45–50°C for 3+ months."
+     },
+     {
+      "big": "CANTEIRO",
+      "line": "ages it in casks on warm upper floors for 2+ years."
+     },
+     {
+      "big": "BANYULS",
+      "line": "is a French fortified wine made from Grenache."
+     }
+    ],
+    "read": {
+     "bigIdea": "Madeira is fortified wine aged with heat and air.",
+     "where": "Madeira is an island near **North Africa**; its main city is **Funchal**. The wine is fortified **during** fermentation with 96% wine alcohol, and the timing sets the sweetness. Then it is **oxidized** and exposed to **heat**.",
+     "stopsTitle": "Two ways to heat it, then France",
+     "stops": [
+      {
+       "name": "Estufagem",
+       "note": "heated in tanks",
+       "text": "The wine is heated in stainless steel tanks (**estufas**) at 45–50°C for at least **3 months**."
+      },
+      {
+       "name": "Canteiro",
+       "note": "aged in warm lofts",
+       "text": "The wine ages in casks, usually on the warmer upper floors, for at least **2 years**."
+      },
+      {
+       "name": "Bottling",
+       "note": "3 years minimum",
+       "text": "Madeira cannot be bottled before it is **3 years** old."
+      },
+      {
+       "name": "Vins Doux Naturels",
+       "note": "France",
+       "text": "Two French fortified wines to know. **Banyuls** (Roussillon) is **Grenache**. **Muscat de Beaumes-de-Venise** (Southern Rhône) is **Muscat**, and is labeled **Vin Doux Naturel**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The grape name tells you the sweetness:",
+     "sayIt": "This is Malmsey, the sweetest style of Madeira."
+    },
+    "check": [
+     24,
+     25,
+     29
+    ]
+   },
+   {
+    "name": "Noble rot",
+    "video": {
+     "youtubeId": "4bXuYPIUaMM",
+     "title": "The Region That Changed History (Learn Hungarian Wine)",
+     "by": "Wine Folly",
+     "length": "9:11"
+    },
+    "keyPoints": [
+     {
+      "big": "NOBLE ROT",
+      "line": "is Botrytis cinerea; it shrivels and concentrates the grapes."
+     },
+     {
+      "big": "SAUTERNES",
+      "line": "is mainly Sémillon. Château d'Yquem is its Superior First Growth."
+     },
+     {
+      "big": "TOKAJI ASZÚ",
+      "line": "is Furmint, with at least 120 g/l of sugar since 2013."
+     },
+     {
+      "big": "TBA",
+      "line": "is made from single berries dried almost to raisins."
+     },
+     {
+      "big": "QUARTS DE CHAUME",
+      "line": "and Bonnezeaux are noble-rot Chenin Blanc."
+     }
+    ],
+    "read": {
+     "bigIdea": "Noble rot shrivels the grapes and concentrates the juice.",
+     "where": "Noble rot is **Botrytis cinerea**. It needs ripe, healthy grapes, humid mornings and dry, warm afternoons. To keep the wine sweet, winemakers stop the yeast by **chilling and filtering**, or by chilling and adding **SO2**.",
+     "stopsTitle": "Five places, five names",
+     "stops": [
+      {
+       "name": "Sauternes",
+       "note": "Bordeaux",
+       "text": "Mainly **Sémillon**. **Château d'Yquem** is its **Superior First Growth** in the 1855 classification."
+      },
+      {
+       "name": "Tokaji Aszú",
+       "note": "Hungary",
+       "text": "The grape is **Furmint**. Since 2013 an Aszú needs at least **120 g/l** of sugar; **6 puttonyos** means 150 g/l or more."
+      },
+      {
+       "name": "Germany",
+       "note": "ripeness levels",
+       "text": "**Auslese**, **Beerenauslese (BA)** and **Trockenbeerenauslese (TBA)**. TBA is made from single berries dried almost to raisins, usually by noble rot."
+      },
+      {
+       "name": "Alsace",
+       "note": "VT and SGN",
+       "text": "**Vendange Tardive** and **Sélection de Grains Nobles**, from Riesling, Pinot Gris, Gewürztraminer and Muscat."
+      },
+      {
+       "name": "Loire",
+       "note": "Chenin Blanc",
+       "text": "**Quarts de Chaume**, **Bonnezeaux** and **Vouvray Moelleux**, all **Chenin Blanc**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Match each wine to its region and grape:",
+     "mixup": "**Sauternes** is Bordeaux Sémillon. **Tokaji Aszú** is Hungarian Furmint.",
+     "sayIt": "A Sauternes: a sweet wine from Bordeaux, made with noble rot."
+    },
+    "check": [
+     26,
+     27,
+     31
+    ]
+   },
+   {
+    "name": "Ice, late harvest and dried grapes",
+    "video": {
+     "youtubeId": "s8awGTgZvo8",
+     "title": "7 Amazing Sweet Wines You Must Try",
+     "by": "Wine Folly",
+     "length": "12:23"
+    },
+    "keyPoints": [
+     {
+      "big": "EISWEIN",
+      "line": "is pressed from grapes frozen on the vine."
+     },
+     {
+      "big": "ICEWINE",
+      "line": "(Ontario) grapes are picked at -8°C or colder."
+     },
+     {
+      "big": "NO NOBLE ROT",
+      "line": "allowed: Eiswein and Icewine must be free of it."
+     },
+     {
+      "big": "SPÄTLESE",
+      "line": "means “late harvest”: riper grapes picked later."
+     },
+     {
+      "big": "VIN SANTO",
+      "line": "and the Reciotos are made from dried grapes."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sweet wine from frozen, late or dried grapes.",
+     "where": "Noble rot is not the only road to a sweet wine. Grapes can be left to **freeze** on the vine, picked **late**, or **dried** after harvest.",
+     "stopsTitle": "Frozen, late, dried",
+     "stops": [
+      {
+       "name": "Eiswein",
+       "note": "Germany and Austria",
+       "text": "Grapes as ripe as **Beerenauslese** that froze on the vine, harvested and pressed while frozen. It must be free of **noble rot**."
+      },
+      {
+       "name": "Icewine",
+       "note": "Canada (Ontario VQA)",
+       "text": "Grapes freeze naturally on the vine and are picked at **-8°C** or colder. The juice must reach at least **35° Brix**. Most Icewine is **Riesling** or **Vidal**."
+      },
+      {
+       "name": "Late harvest",
+       "note": "picked later",
+       "text": "**Spätlese** means late harvest: riper grapes picked later. In Ontario, late-harvest grapes are picked near or after the end of harvest, drying out and getting sweeter."
+      },
+      {
+       "name": "Dried grapes",
+       "note": "Italy and Sherry",
+       "text": "**Vin Santo** (Trebbiano), **Recioto di Soave** (Garganega) and **Recioto della Valpolicella** (Corvina). **Pedro Ximénez** Sherry also uses sun-dried grapes."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Eiswein and Icewine, side by side:",
+     "mixup": "**Eiswein** grapes are frozen and free of noble rot. **TBA** grapes are shriveled, usually by noble rot.",
+     "sayIt": "An Icewine, from grapes picked frozen on the vine."
+    },
+    "check": [
+     28,
+     32,
+     33
+    ]
+   }
   ]
+ }
 }
