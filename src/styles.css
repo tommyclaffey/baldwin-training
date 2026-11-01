@@ -1160,3 +1160,18 @@ body.eip-lock { overflow: hidden; }
   [data-name^="Stop "] > [data-name="Rail"] { flex: 0 0 34px !important; width: 34px !important; align-self: stretch !important; }
   [data-name^="Stop "] > [data-name="Body"] { flex: 1 1 0 !important; min-width: 0; width: auto !important; }
 }
+/* YouTube thumbnails carry thin black edges: crop them off (Nov 1, Tommy: "the videos seem like they have this black line around them") */
+[style*="i.ytimg.com"] { background-size: 106% auto !important; background-position: center !important; }
+/* play buttons and lengths stay centred / in the corner however tall the thumbnail draws */
+[data-name^="IMG/"] > [data-name="Play"], [data-name^="Video slot"] > [data-name="Play"] { top: 50% !important; left: 50% !important; transform: translate(-50%, -50%); }
+[data-name^="IMG/"] > [data-name="Duration"] { top: auto !important; left: auto !important; right: 8px; bottom: 8px; }
+/* photo cards and the hero buttons size to their words, so nothing is clipped */
+[data-name^="Level "] > [data-name="Copy"], [data-name^="Part "] > [data-name="Copy"] { height: auto !important; }
+[data-name="Hero"] [data-name="Buttons"] > *, [data-name="Hero"] [data-name="Buttons"] > [data-name^="Video · "] { height: auto !important; min-height: 0 !important; overflow: visible !important; }
+/* lesson visuals: steps and tiles as an even grid in the reading column (5 steps = 3 + 2) */
+[data-name^="Grid · "] { display: grid !important; gap: 8px !important; width: 100% !important; }
+[data-name="Grid · 2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+[data-name="Grid · 3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+[data-name="Grid · 4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+[data-name^="Grid · "] > * { width: auto !important; min-width: 0; height: auto !important; }
+@media (max-width: 600px) { [data-name^="Grid · "] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }

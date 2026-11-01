@@ -564,7 +564,7 @@ export function fullIndex(db) {
       const v = (ch.v3?.sections || []).find((x) => x.name === sec.name) || {};
       entries.push({ id: lessonFile(ch, i), file: lessonFile(ch, i), slug: lessonSlug(ch, i), name: `Study Guide · ${ch.title} · ${sec.name}`, title: i === 0 ? ch.title : sec.name, section: 'Study Guide', nav: 'Sommelier Program',
         text: [sec.name, v.read?.bigIdea, v.read?.where, ...(v.read?.stops || []).map((x) => x.name + ' ' + x.text), ...(v.keyPoints || []).map((k) => k.big + ' ' + k.line)].filter(Boolean).join(' ').replace(/\*\*/g, '').slice(0, 1200),
-        thumb: v.video?.youtubeId ? `https://i.ytimg.com/vi/${v.video.youtubeId}/hqdefault.jpg` : undefined, blurb: v.read?.bigIdea || ch.lead });
+        thumb: v.video?.youtubeId ? `https://i.ytimg.com/vi/${v.video.youtubeId}/mqdefault.jpg` : undefined, blurb: v.read?.bigIdea || ch.lead });
     });
   }
   return [...base, ...entries];
