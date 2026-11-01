@@ -1,1020 +1,1503 @@
 {
-  "number": 1,
-  "slug": "how-wine-is-made",
-  "title": "How wine is made",
-  "script": "Chapter one",
-  "lead": "From vine to bottle: what shapes grapes in the vineyard, and the steps that turn them into white, red and rosé wine.",
-  "minutes": 20,
-  "intro": {
-    "script": "Start here",
-    "title": "ONE GRAPE, THREE COLORS",
-    "text": "The big difference between white, rosé and red is how long the juice touches the skins. In most red grapes the color is in the skins, not the juice.",
-    "tiers": [
-      {
-        "name": "Red",
-        "note": "ferments with the skins"
-      },
-      {
-        "name": "Rosé",
-        "note": "short skin contact, then pressed"
-      },
-      {
-        "name": "White",
-        "note": "pressed before fermentation"
-      }
+ "number": 1,
+ "slug": "how-wine-is-made",
+ "title": "How wine is made",
+ "script": "Chapter one",
+ "lead": "From vine to bottle: what shapes grapes in the vineyard, and the steps that turn them into white, red and rosé wine.",
+ "minutes": 20,
+ "intro": {
+  "script": "Start here",
+  "title": "ONE GRAPE, THREE COLORS",
+  "text": "The big difference between white, rosé and red is how long the juice touches the skins. In most red grapes the color is in the skins, not the juice.",
+  "tiers": [
+   {
+    "name": "Red",
+    "note": "ferments with the skins"
+   },
+   {
+    "name": "Rosé",
+    "note": "short skin contact, then pressed"
+   },
+   {
+    "name": "White",
+    "note": "pressed before fermentation"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "The vine",
+   "lines": [
+    {
+     "label": "The plant",
+     "text": "Wine grapes grow on vines of the genus Vitis. Vitis vinifera is the species behind most quality wine, with about 10,000 varieties."
+    },
+    {
+     "label": "The pest",
+     "text": "Phylloxera is a tiny vine louse. It wiped out many French vineyards in the mid-1800s. Vines are now grafted onto resistant American rootstock."
+    }
+   ],
+   "chips": {
+    "label": "Vine parts",
+    "items": [
+     "Rootstock",
+     "Trunk",
+     "Cordons",
+     "Shoots/canes",
+     "Clusters",
+     "Canopy"
     ]
+   },
+   "know": [
+    "Vitis vinifera is native to the Mediterranean, Europe and Southwestern Asia.",
+    "Concord and Catawba are Vitis labrusca, not vinifera.",
+    "Phylloxera is fought with resistant American rootstock.",
+    "Varieties are chosen by wine law, climate, soil and marketability."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "VITIS VINIFERA",
+       "title": "The quality species",
+       "text": "Mediterranean, Europe, SW Asia\nAbout 10,000 varieties\nCabernet, Chardonnay, Riesling"
+      },
+      {
+       "label": "VITIS LABRUSCA",
+       "title": "An American species",
+       "text": "Concord\nCatawba\nA different species from vinifera"
+      }
+     ]
+    },
+    {
+     "type": "stat",
+     "number": "10,000",
+     "title": "Vinifera varieties",
+     "text": "The Court's count of Vitis vinifera grape varieties."
+    }
+   ]
+  },
+  {
+   "name": "Climate, soil and terroir",
+   "lines": [
+    {
+     "label": "Climate",
+     "text": "Climate is the long-run weather of a place, not one year's weather. Most regions sit between 30 and 50 degrees latitude. Water, altitude and wind act as climate moderators."
+    },
+    {
+     "label": "Soil",
+     "text": "Soil controls drainage, heat and nutrients. Growers match each grape to the soil that suits it. Terroir means every environmental effect on the vine."
+    }
+   ],
+   "chips": {
+    "label": "Climate types",
+    "items": [
+     "Continental",
+     "Maritime",
+     "Mediterranean",
+     "Desert/Arid"
+    ]
+   },
+   "know": [
+    "Cool climates give tart fruit and more acidity; warm climates give riper fruit and less acidity.",
+    "Warmer grapes build more sugar, so the wine has more alcohol.",
+    "Macroclimate = region; mesoclimate = vineyard; microclimate = one vine.",
+    "Growing degree-days count days averaging above 50°F."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Climate, big to small",
+     "items": [
+      {
+       "name": "Macroclimate",
+       "text": "A whole wine region"
+      },
+      {
+       "name": "Mesoclimate",
+       "text": "One vineyard"
+      },
+      {
+       "name": "Microclimate",
+       "text": "Around a single vine"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Soils the exam links to places",
+     "rows": [
+      {
+       "name": "Gravel (Cabernet) and clay (Merlot)",
+       "meta": "Bordeaux"
+      },
+      {
+       "name": "Limestone, clay",
+       "meta": "Chablis, Côte d'Or"
+      },
+      {
+       "name": "Granite",
+       "meta": "Beaujolais"
+      },
+      {
+       "name": "Limestone, chalk",
+       "meta": "Champagne"
+      },
+      {
+       "name": "Slate",
+       "meta": "Mosel"
+      },
+      {
+       "name": "Terra rossa",
+       "meta": "Coonawarra"
+      }
+     ],
+     "note": "From the Court's curriculum guide."
+    }
+   ]
+  },
+  {
+   "name": "The vineyard year",
+   "lines": [
+    {
+     "label": "The cycle",
+     "text": "The vine sleeps in winter, buds in spring, flowers, sets fruit and ripens. Veraison is when the berries change color. Harvest comes when the grapes are ripe."
+    },
+    {
+     "label": "The work",
+     "text": "Growers prune in winter, manage leaves and water, and control yield. A green harvest drops unripe clusters so the rest ripen better."
+    }
+   ],
+   "chips": {
+    "label": "Vine cycle",
+    "items": [
+     "Dormancy",
+     "Bud break",
+     "Flowering",
+     "Fruit set",
+     "Veraison",
+     "Harvest",
+     "Pruning"
+    ]
+   },
+   "know": [
+    "Grapes do not keep ripening after they are picked.",
+    "Botrytis cinerea is a fungus that can be a good thing (noble rot).",
+    "Head training (gobelet/bush) and cordon training are the two main systems.",
+    "Yield is measured in tons per acre or hectoliters per hectare.",
+    "Brix measures sugar in the grapes."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Northern Hemisphere year",
+     "items": [
+      {
+       "name": "Bud break",
+       "text": "Sap rises, buds open",
+       "meta": "Apr–May"
+      },
+      {
+       "name": "Clusters",
+       "text": "Young clusters form",
+       "meta": "Jun–Jul"
+      },
+      {
+       "name": "Veraison",
+       "text": "Berries change color",
+       "meta": "Mid–late summer"
+      },
+      {
+       "name": "Harvest",
+       "text": "Grapes picked ripe",
+       "meta": "Sep–Nov"
+      },
+      {
+       "name": "Pruning",
+       "text": "Last year's canes cut back",
+       "meta": "Winter"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Making white wine",
+   "book": "wine/white",
+   "lines": [
+    {
+     "label": "The steps",
+     "text": "Harvest, sort, crush and press. The juice ferments without the skins. Then the wine is fined or filtered and bottled."
+    },
+    {
+     "label": "Keeping it fresh",
+     "text": "Whites are often picked cool and ferment cooler than reds to keep delicate aromas. Fermentation takes about two weeks."
+    }
+   ],
+   "know": [
+    "White wine can be made from red grapes because the skins are left out.",
+    "Pressing comes before fermentation for whites.",
+    "Stopping fermentation early leaves residual sugar for an off-dry wine.",
+    "Fining agents such as egg white or bentonite clear out haze."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "White wine, step by step",
+     "items": [
+      {
+       "name": "Harvest",
+       "text": "Often picked in the cool of morning or night"
+      },
+      {
+       "name": "Press",
+       "text": "Juice goes straight off the skins"
+      },
+      {
+       "name": "Ferment",
+       "text": "Cool, about 14 days"
+      },
+      {
+       "name": "Fine and filter",
+       "text": "Removes cloudiness"
+      },
+      {
+       "name": "Bottle",
+       "text": "Little air exposure"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Making red wine",
+   "book": "wine/red",
+   "lines": [
+    {
+     "label": "The steps",
+     "text": "Crush, then ferment the juice on its skins. Press, age, fine or filter, bottle, and sometimes age in bottle."
+    },
+    {
+     "label": "Extraction",
+     "text": "Skins float to the top as a cap. Winemakers pump over or punch down to pull out color, flavor and tannin."
+    }
+   ],
+   "know": [
+    "Red color comes from anthocyanin in black grape skins.",
+    "Pressing comes after fermentation for reds.",
+    "Pump-overs extract more; punch-downs are gentler.",
+    "Whole-cluster fermentation keeps stems and adds tannin (common with Pinot Noir)."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "WHITE",
+       "title": "Press first",
+       "text": "Crush\nPress\nFerment juice only\nFine/filter\nBottle"
+      },
+      {
+       "label": "RED",
+       "title": "Ferment on skins",
+       "text": "Crush\nMacerate and ferment with skins\nPress\nAge\nFine/filter, bottle"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Making rosé",
+   "lines": [
+    {
+     "label": "How",
+     "text": "Red grapes are crushed and left on their skins for a short time. The juice is then pressed off the skins and fermented."
+    },
+    {
+     "label": "Color",
+     "text": "Contact time and pressing set the shade, from pale salmon to vivid pink."
+    }
+   ],
+   "know": [
+    "Rosé color comes from brief contact with red grape skins.",
+    "The Court lists three methods: maceration time, blending and saignée.",
+    "Blending is often used for sparkling rosé.",
+    "The Court says saignée essentially doesn't exist anymore."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Three ways to make rosé",
+     "dark": true,
+     "items": [
+      {
+       "name": "Maceration",
+       "text": "Short skin contact, then press"
+      },
+      {
+       "name": "Blending",
+       "text": "Often used for sparkling wine"
+      },
+      {
+       "name": "Saignée",
+       "text": "'Bleeding' juice off a red; rare today"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Oak, malolactic and lees",
+   "lines": [
+    {
+     "label": "Oak",
+     "text": "Oak adds vanilla, clove, smoke and coconut. It also lets in a little oxygen, which softens the wine. New barrels give more flavor than used ones."
+    },
+    {
+     "label": "Malo and lees",
+     "text": "Malolactic fermentation turns sharp malic acid into soft lactic acid and can taste buttery. Lees are dead yeast; stirring them adds bready flavor and a creamy feel."
+    }
+   ],
+   "chips": {
+    "label": "Other barrel woods",
+    "items": [
+     "Acacia",
+     "Cherry",
+     "Chestnut"
+    ]
+   },
+   "know": [
+    "MLF is done by bacteria, not yeast, and lowers acidity.",
+    "Nearly all reds and some whites (Chardonnay, Viognier) go through MLF.",
+    "Bigger barrels give less oak flavor and oxygen.",
+    "American oak is Quercus alba; European oak is Quercus petraea.",
+    "Chaptalization is adding sugar to must to raise alcohol."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Barrel sizes",
+     "rows": [
+      {
+       "name": "Barrique",
+       "meta": "225 L"
+      },
+      {
+       "name": "Puncheon",
+       "meta": "300 L"
+      },
+      {
+       "name": "Demi-muid",
+       "meta": "600 L"
+      },
+      {
+       "name": "Foudre / Botti",
+       "meta": "1,000+ L"
+      }
+     ],
+     "note": "Bigger barrel, less oak flavor."
+    },
+    {
+     "type": "tiles",
+     "title": "What it tastes like",
+     "items": [
+      {
+       "name": "New oak",
+       "text": "Vanilla, clove, smoke, coconut"
+      },
+      {
+       "name": "Malolactic",
+       "text": "Butter, cream"
+      },
+      {
+       "name": "Lees",
+       "text": "Bread, beer-like, creamy texture"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Malolactic fermentation",
+   "b": "Alcoholic fermentation",
+   "why": "Alcoholic uses yeast to turn sugar into alcohol; malolactic uses bacteria to turn malic acid into lactic acid."
+  },
+  {
+   "a": "Mesoclimate",
+   "b": "Microclimate",
+   "why": "Mesoclimate is one vineyard; microclimate is the space around a single vine."
+  },
+  {
+   "a": "Vitis vinifera",
+   "b": "Vitis labrusca",
+   "why": "Vinifera is the quality European species; labrusca is American (Concord, Catawba)."
+  },
+  {
+   "a": "Lees",
+   "b": "Must",
+   "why": "Must is unfermented grape juice; lees are dead yeast left after fermentation."
+  }
+ ],
+ "sources": "Court of Master Sommeliers Americas curriculum guide (8.2023), with Wine Folly as a labelled secondary source. Checked Oct 31, 2026.",
+ "cards": [
+  {
+   "q": "Wine grapes come from vines of which genus?",
+   "answer": "Vitis",
+   "wrong": [
+    "Quercus",
+    "Saccharomyces",
+    "Oenococcus"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "q": "Which vine species is the most common for quality wine?",
+   "answer": "Vitis vinifera",
+   "wrong": [
+    "Vitis labrusca",
+    "Vitis riparia",
+    "Vitis rupestris"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "q": "Concord and Catawba belong to which vine species?",
+   "answer": "Vitis labrusca",
+   "wrong": [
+    "Vitis vinifera",
+    "Quercus alba",
+    "Botrytis cinerea"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "q": "About how many varieties of Vitis vinifera does the Court cite?",
+   "answer": "10,000",
+   "wrong": [
+    "100",
+    "1,000",
+    "1,000,000"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "q": "What is phylloxera?",
+   "answer": "A microscopic vine louse",
+   "wrong": [
+    "A fungus that causes noble rot",
+    "A bacteria that softens acidity",
+    "A spring frost"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "q": "How is phylloxera kept in check?",
+   "answer": "Grafting onto resistant American rootstock",
+   "wrong": [
+    "Spraying the canopy with sulfur",
+    "Green harvesting",
+    "Picking at night"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "q": "Most wine regions sit between which latitudes?",
+   "answer": "30 and 50 degrees",
+   "wrong": [
+    "10 and 30 degrees",
+    "50 and 70 degrees",
+    "0 and 20 degrees"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "q": "What is the climate of a single vineyard called?",
+   "answer": "Mesoclimate",
+   "wrong": [
+    "Macroclimate",
+    "Microclimate",
+    "Terroir"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "q": "Growing degree-days count days averaging above what temperature?",
+   "answer": "50°F",
+   "wrong": [
+    "32°F",
+    "60°F",
+    "70°F"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "q": "Which is NOT one of the Court's climate types?",
+   "answer": "Tropical",
+   "wrong": [
+    "Continental",
+    "Maritime",
+    "Mediterranean"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "q": "Cool-climate wines generally show what?",
+   "answer": "Tart fruit and more acidity",
+   "wrong": [
+    "Ripe fruit and less acidity",
+    "Higher alcohol and lower acidity",
+    "Jammy fruit and soft acidity"
+   ],
+   "source": "https://winefolly.com/tips/warm-climate-vs-cool-climate-wine/"
+  },
+  {
+   "q": "Why do warm-climate wines tend to have more alcohol?",
+   "answer": "The grapes build more sugar",
+   "wrong": [
+    "They spend longer in oak",
+    "They use more yeast",
+    "They are picked earlier"
+   ],
+   "source": "https://winefolly.com/tips/terroir-definition-for-wine/"
+  },
+  {
+   "q": "What is the soil of the Mosel?",
+   "answer": "Slate",
+   "wrong": [
+    "Chalk",
+    "Granite",
+    "Terra rossa"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
+  },
+  {
+   "q": "Which soil is Beaujolais known for?",
+   "answer": "Granite",
+   "wrong": [
+    "Slate",
+    "Gravel",
+    "Chalk"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=12"
+  },
+  {
+   "q": "In Bordeaux, Cabernet Sauvignon is matched to which soil?",
+   "answer": "Gravel",
+   "wrong": [
+    "Clay",
+    "Slate",
+    "Chalk"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=9"
+  },
+  {
+   "q": "Coonawarra is known for which soil?",
+   "answer": "Terra rossa",
+   "wrong": [
+    "Slate",
+    "Galets",
+    "Kimmeridgian chalk"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+  },
+  {
+   "q": "What is veraison?",
+   "answer": "When berries change color and ripen",
+   "wrong": [
+    "When the buds first open",
+    "When the vine is pruned",
+    "When flowers self-pollinate"
+   ],
+   "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
+  },
+  {
+   "q": "What is a green harvest?",
+   "answer": "Dropping unripe grapes or clusters for quality",
+   "wrong": [
+    "Picking white grapes before red",
+    "Harvesting at night",
+    "Picking only green-skinned grapes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "q": "Which fungus does the Court say 'can be a good thing'?",
+   "answer": "Botrytis cinerea",
+   "wrong": [
+    "Phylloxera",
+    "Oenococcus oeni",
+    "Saccharomyces cerevisiae"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "q": "Gobelet (bush vine) is an example of what?",
+   "answer": "Head training",
+   "wrong": [
+    "Cordon training",
+    "Canopy management",
+    "Green harvest"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "q": "Which unit measures vineyard yield?",
+   "answer": "Hectoliters per hectare",
+   "wrong": [
+    "Degrees Brix",
+    "Degree-days",
+    "Grams per liter"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "q": "Do grapes keep ripening after they are picked?",
+   "answer": "No",
+   "wrong": [
+    "Yes, for about a week",
+    "Only red grapes do",
+    "Only if kept cold"
+   ],
+   "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
+  },
+  {
+   "q": "Alcoholic fermentation turns sugar into alcohol plus what?",
+   "answer": "CO2 and heat",
+   "wrong": [
+    "Malic acid and tannin",
+    "Oxygen and water",
+    "Lactic acid and sugar"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "q": "Which yeast species ferments wine?",
+   "answer": "Saccharomyces cerevisiae",
+   "wrong": [
+    "Oenococcus oeni",
+    "Botrytis cinerea",
+    "Quercus petraea"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "q": "Where does red wine get its color?",
+   "answer": "Pigment in black grape skins",
+   "wrong": [
+    "The grape juice",
+    "Oak barrels",
+    "The stems"
+   ],
+   "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
+  },
+  {
+   "q": "In white winemaking, when are the grapes pressed?",
+   "answer": "Before fermentation",
+   "wrong": [
+    "After fermentation",
+    "After barrel aging",
+    "Only for sparkling wine"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "q": "Which rosé method does the Court say is often used for sparkling wine?",
+   "answer": "Blending",
+   "wrong": [
+    "Saignée",
+    "Carbonic maceration",
+    "Whole-cluster pressing"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "q": "Malolactic fermentation converts malic acid into what?",
+   "answer": "Lactic acid",
+   "wrong": [
+    "Tartaric acid",
+    "Alcohol",
+    "Citric acid"
+   ],
+   "source": "https://winefolly.com/deep-dive/what-is-malolactic-fermentation-the-buttery-taste-in-wine/"
+  },
+  {
+   "q": "What are lees?",
+   "answer": "Dead yeast particles",
+   "wrong": [
+    "Grape skins after pressing",
+    "Tartrate crystals",
+    "Oak shavings"
+   ],
+   "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
+  },
+  {
+   "q": "How big is a barrique?",
+   "answer": "225 liters",
+   "wrong": [
+    "300 liters",
+    "600 liters",
+    "1,000 liters"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "q": "In red winemaking, when are the grapes pressed?",
+   "answer": "After fermentation",
+   "wrong": [
+    "Before crushing",
+    "Before fermentation",
+    "They are never pressed"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "q": "Which way of working the cap gives gentler extraction?",
+   "answer": "Punching down",
+   "wrong": [
+    "Pumping over",
+    "Chaptalization",
+    "Adding the stems"
+   ],
+   "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
+  },
+  {
+   "q": "Where does rosé get its color?",
+   "answer": "Brief contact with red grape skins",
+   "wrong": [
+    "Aging in new oak",
+    "Malolactic fermentation",
+    "Long contact with white grape skins"
+   ],
+   "source": "https://winefolly.com/tips/how-one-red-grape-makes-red-rose-white-and-sparkling-wine/"
+  },
+  {
+   "q": "Which rosé method does the Court say essentially doesn't exist anymore?",
+   "answer": "Saignée",
+   "wrong": [
+    "Maceration",
+    "Blending",
+    "Carbonic maceration"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Viticulture is the factors of production that influence grape growing: factors from nature plus man-made decisions in the vineyard that affect wine quality.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "fact": "Common types of viticulture listed by the Court: organic, biodynamic, sustainable, dry farming.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "fact": "Climate is the weather of an area in general or over a long period (temperature, humidity, rainfall, sunshine, wind and more). The Court stresses that climate and weather are different.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "fact": "Climate types: continental, maritime, Mediterranean, desert/arid. Climate descriptors: cool, moderate, warm, hot.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "fact": "Macroclimate is the climate of an area such as a wine region; mesoclimate is the climate of a vineyard; microclimate is the climate around a single vine.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "fact": "Growing degree-days are counted for days in the growing season when the average temperature is over 50°F.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "fact": "Most wine-growing regions lie between 30 and 50 degrees latitude; regions outside this band exist mainly because of climate moderators.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "fact": "Climate moderators: altitude, diurnal shifts, sunshine hours, bodies of water, wind, rain shadow effect. Examples named include San Pablo Bay, the Benguela Current and the Humboldt Current.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "fact": "Topography is the surface features of the land: elevation, mountains, hills, valleys and bodies of water.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "fact": "Soil properties that matter to the vine: drainage or water retention, sun reflection, nutrient content, temperature regulation, pest resistance. Soil examples: clay, slate, limestone, granite, chalk, sand, schist.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "fact": "Soils are matched to grape varieties based on climate and the needs of the variety.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "fact": "Bordeaux soils: gravel, clay, limestone, sand. Varieties are matched to soil, for example Cabernet Sauvignon in gravel and Merlot in clay.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=9"
+  },
+  {
+   "fact": "Chablis and Côte d'Or soils: limestone, clay. Beaujolais: granite.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=12"
+  },
+  {
+   "fact": "Champagne soils: limestone, chalk. Grapes are picked earlier to preserve natural acidity.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "Mosel soil: slate. Steep, south-facing hillsides maximize sun exposure and warmth.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
+  },
+  {
+   "fact": "Coonawarra soil: terra rossa.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+  },
+  {
+   "fact": "Grapes are the fruit of a vining plant of the genus Vitis. Vitis vinifera is native to the Mediterranean, Europe and Southwestern Asia, is the most common for quality grape production, and has about 10,000 varieties (e.g. Cabernet Sauvignon, Merlot, Chardonnay, Riesling, Syrah).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "fact": "Vitis labrusca examples: Catawba, Concord.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "fact": "Parts of the grape vine: rootstock, trunk, cordons, shoots/canes, grape clusters/bunches, canopy.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "fact": "Grape varieties are chosen by regional wine law, climate compatibility, soil compatibility and marketability.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "fact": "Every year produces a different crop called the vintage; each vintage can indicate style, quality and price potential. Introductory students do not need to memorize vintage differences.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "fact": "Vineyard management covers canopy management (managing leaf growth), irrigation, pests and disease, and managing yield.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "fact": "Botrytis cinerea is a fungus/mold that 'can be a good thing!'. Phylloxera is a pest.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "fact": "Green harvest: a quality measure of removing or dropping unripe grapes or clusters.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "fact": "Vine cycle: dormancy, bud break, flowering, fruit set, ripening (veraison, hang time), maturity, harvest, pruning.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "fact": "Two main vine training systems: head training (e.g. gobelet/bush) and cordon training (using support for growth).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "fact": "Phylloxera is a microscopic vine louse that destroyed many of France's vineyards in the mid-19th century. Resistant American vine rootstock is used to stop the spread; most wine regions of the world are affected.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "fact": "Yield is how much fruit a vine produces, measured in tons per acre or hectoliters per hectare.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "fact": "Harvest timing depends on weather, wine style, producer goals, regional wine law and number of picking passes. Grapes are picked by hand or by machine. Sugar is measured with scales such as Brix.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=6"
+  },
+  {
+   "fact": "Terroir ('goût de terroir', taste of earth) covers all of the environmental impacts on a grapevine.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=6"
+  },
+  {
+   "fact": "Bud break happens in April/May (Sept/Oct in the Southern Hemisphere); hail can destroy the delicate buds.",
+   "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
+  },
+  {
+   "fact": "Young clusters appear in June and July (Nov/Dec in the Southern Hemisphere). In mid to late summer the berries change color and ripen: veraison.",
+   "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
+  },
+  {
+   "fact": "Harvest usually falls between September and November, or February to May in the Southern Hemisphere. Grapes do not continue to ripen once picked.",
+   "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
+  },
+  {
+   "fact": "Winter pruning, when the pruner cuts back the prior year's canes, is one of the most expensive and important vineyard jobs.",
+   "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
+  },
+  {
+   "fact": "Most of the world's quality wine comes from Vitis vinifera; by about the third year a vine can produce fruit of proper quality for winemaking. 'Old vines' has no official definition.",
+   "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
+  },
+  {
+   "fact": "Warm climates generally give riper fruit flavors and less acidity; cool climates give tart fruit flavors and more acidity.",
+   "source": "https://winefolly.com/tips/warm-climate-vs-cool-climate-wine/"
+  },
+  {
+   "fact": "White wine grapes are picked earlier in the season than red wine grapes.",
+   "source": "https://winefolly.com/tips/warm-climate-vs-cool-climate-wine/"
+  },
+  {
+   "fact": "Warmer-climate grapes build higher sugar levels, which make higher-alcohol wines; cooler-climate grapes have lower sugar and keep more acidity.",
+   "source": "https://winefolly.com/tips/terroir-definition-for-wine/"
+  },
+  {
+   "fact": "Vinification: decisions and practices made in the winery from harvest to bottling.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "fact": "Winemaking starts with harvest, sort, destem. White: crush, press, fermentation, fining/filtering, bottling. Red: crush, maceration, fermentation with skin contact, pressing, aging, fining/filtration, bottling, bottle aging. Rosé: crush red grapes, short skin contact, pressing, fermentation, fining/filtration, bottling.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "fact": "Three types of rosé production: maceration time, blending (often used for sparkling wine), and saignée. The Court says saignée ('bleeding') essentially doesn't exist anymore; it was a red-wine concentration technique with rosé as the byproduct.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "fact": "Alcoholic fermentation: sugar + yeast gives alcohol, CO2, heat, aromas and flavors. Saccharomyces cerevisiae is the yeast species for wine fermentation.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "fact": "Aging can be on the lees or without, in concrete, stainless steel or oak. Fermentation vessels: wood, stainless steel, concrete.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "fact": "Barrel sizes: barrique 225 liters, puncheon 300 liters, demi-muid 600 liters, foudre/botti 1,000+ liters. Other woods used for barrels include acacia, cherry and chestnut.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "fact": "Winemaking terms listed: grape must, chaptalization, acidification, water addition, lees, autolysis, malolactic fermentation, carbonic maceration.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=8"
+  },
+  {
+   "fact": "Chaptalization: adding sugar to unfermented grape must to increase alcohol after fermentation; used when grapes do not reach enough sugar ripeness.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
+  },
+  {
+   "fact": "Closures listed: cork, composites, screw cap (Stelvin), glass top (Vinolok).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=8"
+  },
+  {
+   "fact": "White wine can be made from red or white grapes because the skins are not used in fermentation; most white wines use green and yellow grapes.",
+   "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
+  },
+  {
+   "fact": "Picking in the morning or at night gives fresher-tasting white wines. Grapes go straight to the press, and the juice settles before fermentation.",
+   "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
+  },
+  {
+   "fact": "A white wine takes about 14 days to ferment; whites ferment cooler than reds to keep delicate floral aromas.",
+   "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
+  },
+  {
+   "fact": "Stopping the yeast before all the sugar is eaten (usually by chilling) leaves 'residual sugar' for an off-dry wine.",
+   "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
+  },
+  {
+   "fact": "Fining agents (casein, egg whites, bentonite clay) remove proteins that make wine cloudy; filtering follows.",
+   "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
+  },
+  {
+   "fact": "Red winemaking differs in one important way: the juice ferments with the grape skins. All red color comes from anthocyanin in black grape skins.",
+   "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
+  },
+  {
+   "fact": "Whole-cluster fermentation keeps the stems, which adds tannin. Pinot Noir often ferments with whole clusters, Cabernet Sauvignon does not.",
+   "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
+  },
+  {
+   "fact": "Floating skins (the 'cap') are kept in contact by pumping over (stronger extraction, rich reds) or punching down (gentler, more subtle reds).",
+   "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
+  },
+  {
+   "fact": "Most wines take 5 to 21 days to ferment. After fermentation the skins are pressed, giving about 15% more wine.",
+   "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
+  },
+  {
+   "fact": "Red wines age in barrels, concrete, glass, clay or steel; wooden barrels affect wine most noticeably.",
+   "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
+  },
+  {
+   "fact": "In most red grape varieties, the pigments that give red wine its color come from the skins, not the juice.",
+   "source": "https://winefolly.com/tips/how-one-red-grape-makes-red-rose-white-and-sparkling-wine/"
+  },
+  {
+   "fact": "Rosé gets its color from brief contact with red grape skins; contact time and pressing set the shade from pale salmon to vivid pink.",
+   "source": "https://winefolly.com/tips/how-one-red-grape-makes-red-rose-white-and-sparkling-wine/"
+  },
+  {
+   "fact": "Malolactic fermentation (MLF) converts tart malic acid into softer lactic acid. It is done by bacteria (Oenococcus oeni), not yeast, and lowers acidity.",
+   "source": "https://winefolly.com/deep-dive/what-is-malolactic-fermentation-the-buttery-taste-in-wine/"
+  },
+  {
+   "fact": "The bacteria release diacetyl, which gives buttery or creamy aromas.",
+   "source": "https://winefolly.com/deep-dive/what-is-malolactic-fermentation-the-buttery-taste-in-wine/"
+  },
+  {
+   "fact": "Nearly all red wines and some white wines (such as Chardonnay and Viognier) go through MLF.",
+   "source": "https://winefolly.com/deep-dive/what-is-malolactic-fermentation-the-buttery-taste-in-wine/"
+  },
+  {
+   "fact": "Lees are dead yeast particles. Stirring them adds bread- or beer-like flavor and a creamier texture.",
+   "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
+  },
+  {
+   "fact": "Oak adds flavors such as vanilla, clove, smoke and coconut; lets in oxygen slowly, making wine smoother and less astringent; and gives a home for MLF.",
+   "source": "https://winefolly.com/tips/how-wine-barrels-affect-the-taste-of-wine/"
+  },
+  {
+   "fact": "Oak flavor extraction drops each time a barrel is reused. Larger barrels give less oak lactone and oxygen; barriques are 225 liters, botti and foudres about 1,000 to 20,000 liters.",
+   "source": "https://winefolly.com/tips/how-wine-barrels-affect-the-taste-of-wine/"
+  },
+  {
+   "fact": "The two main oak species are Quercus alba (American white oak) and Quercus petraea (European white oak). American oak suits bolder wines; European oak suits lighter wines.",
+   "source": "https://winefolly.com/tips/how-wine-barrels-affect-the-taste-of-wine/"
+  }
+ ],
+ "unverified": [
+  "Must and grape must: the Court lists 'grape must' as a term but the fetched pages give no definition. The mix-up line calls must 'unfermented grape juice', which follows from the Court's chaptalization definition ('adding sugar to unfermented grape must') rather than a stated definition.",
+  "Definitions of hybrid, crossing, clone and mutation: listed as terms in the Court's curriculum guide, but no definitions were found in the sources fetched, so they are left out.",
+  "Puncheon and demi-muid sizes come only from the Court's guide; no second source was checked.",
+  "The Court's guide prints Introductory and Certified columns side by side; the PDF text did not always show which column a term sits in, so some terms here may be Certified-level detail.",
+  "Wine Folly timings (14 days for whites, 5–21 days for reds, 15% more wine from pressing, harvest months) are secondary-source generalizations, not Court figures."
+ ],
+ "v3": {
+  "video": {
+   "youtubeId": "n1l_xjou-3E",
+   "title": "Getting Into Wine: A Beginner's Crash Course",
+   "by": "Wine Folly",
+   "length": "17:52"
   },
   "sections": [
-    {
-      "name": "The vine",
-      "lines": [
-        {
-          "label": "The plant",
-          "text": "Wine grapes grow on vines of the genus Vitis. Vitis vinifera is the species behind most quality wine, with about 10,000 varieties."
-        },
-        {
-          "label": "The pest",
-          "text": "Phylloxera is a tiny vine louse. It wiped out many French vineyards in the mid-1800s. Vines are now grafted onto resistant American rootstock."
-        }
-      ],
-      "chips": {
-        "label": "Vine parts",
-        "items": [
-          "Rootstock",
-          "Trunk",
-          "Cordons",
-          "Shoots/canes",
-          "Clusters",
-          "Canopy"
-        ]
+   {
+    "name": "The vine",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "VITIS VINIFERA",
+      "line": "is the vine species behind most quality wine."
+     },
+     {
+      "big": "10,000",
+      "line": "is about how many vinifera varieties the Court counts."
+     },
+     {
+      "big": "LABRUSCA",
+      "line": "is a different species: think Concord and Catawba."
+     },
+     {
+      "big": "PHYLLOXERA",
+      "line": "is a tiny vine louse, stopped by American rootstock."
+     }
+    ],
+    "read": {
+     "bigIdea": "Most quality wine comes from one vine species.",
+     "where": "Wine grapes grow on vines of the genus **Vitis**. The species behind most quality wine is **Vitis vinifera**, native to the Mediterranean, Europe and Southwestern Asia. It has about **10,000 varieties**.",
+     "stopsTitle": "Four things to know",
+     "stops": [
+      {
+       "name": "Vitis vinifera",
+       "note": "the quality species",
+       "text": "Cabernet Sauvignon, Merlot, Chardonnay, Riesling and Syrah are all **vinifera**. A vine can grow fruit good enough for wine by about its third year."
       },
-      "know": [
-        "Vitis vinifera is native to the Mediterranean, Europe and Southwestern Asia.",
-        "Concord and Catawba are Vitis labrusca, not vinifera.",
-        "Phylloxera is fought with resistant American rootstock.",
-        "Varieties are chosen by wine law, climate, soil and marketability."
-      ],
-      "visuals": [
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "VITIS VINIFERA",
-              "title": "The quality species",
-              "text": "Mediterranean, Europe, SW Asia\nAbout 10,000 varieties\nCabernet, Chardonnay, Riesling"
-            },
-            {
-              "label": "VITIS LABRUSCA",
-              "title": "An American species",
-              "text": "Concord\nCatawba\nA different species from vinifera"
-            }
-          ]
-        },
-        {
-          "type": "stat",
-          "number": "10,000",
-          "title": "Vinifera varieties",
-          "text": "The Court's count of Vitis vinifera grape varieties."
-        }
-      ]
-    },
-    {
-      "name": "Climate, soil and terroir",
-      "lines": [
-        {
-          "label": "Climate",
-          "text": "Climate is the long-run weather of a place, not one year's weather. Most regions sit between 30 and 50 degrees latitude. Water, altitude and wind act as climate moderators."
-        },
-        {
-          "label": "Soil",
-          "text": "Soil controls drainage, heat and nutrients. Growers match each grape to the soil that suits it. Terroir means every environmental effect on the vine."
-        }
-      ],
-      "chips": {
-        "label": "Climate types",
-        "items": [
-          "Continental",
-          "Maritime",
-          "Mediterranean",
-          "Desert/Arid"
-        ]
+      {
+       "name": "Vitis labrusca",
+       "note": "a different species",
+       "text": "**Concord** and **Catawba** are **Vitis labrusca**, not vinifera."
       },
-      "know": [
-        "Cool climates give tart fruit and more acidity; warm climates give riper fruit and less acidity.",
-        "Warmer grapes build more sugar, so the wine has more alcohol.",
-        "Macroclimate = region; mesoclimate = vineyard; microclimate = one vine.",
-        "Growing degree-days count days averaging above 50°F."
-      ],
-      "visuals": [
-        {
-          "type": "steps",
-          "title": "Climate, big to small",
-          "items": [
-            {
-              "name": "Macroclimate",
-              "text": "A whole wine region"
-            },
-            {
-              "name": "Mesoclimate",
-              "text": "One vineyard"
-            },
-            {
-              "name": "Microclimate",
-              "text": "Around a single vine"
-            }
-          ]
-        },
-        {
-          "type": "list",
-          "title": "Soils the exam links to places",
-          "rows": [
-            {
-              "name": "Gravel (Cabernet) and clay (Merlot)",
-              "meta": "Bordeaux"
-            },
-            {
-              "name": "Limestone, clay",
-              "meta": "Chablis, Côte d'Or"
-            },
-            {
-              "name": "Granite",
-              "meta": "Beaujolais"
-            },
-            {
-              "name": "Limestone, chalk",
-              "meta": "Champagne"
-            },
-            {
-              "name": "Slate",
-              "meta": "Mosel"
-            },
-            {
-              "name": "Terra rossa",
-              "meta": "Coonawarra"
-            }
-          ],
-          "note": "From the Court's curriculum guide."
-        }
-      ]
-    },
-    {
-      "name": "The vineyard year",
-      "lines": [
-        {
-          "label": "The cycle",
-          "text": "The vine sleeps in winter, buds in spring, flowers, sets fruit and ripens. Veraison is when the berries change color. Harvest comes when the grapes are ripe."
-        },
-        {
-          "label": "The work",
-          "text": "Growers prune in winter, manage leaves and water, and control yield. A green harvest drops unripe clusters so the rest ripen better."
-        }
-      ],
-      "chips": {
-        "label": "Vine cycle",
-        "items": [
-          "Dormancy",
-          "Bud break",
-          "Flowering",
-          "Fruit set",
-          "Veraison",
-          "Harvest",
-          "Pruning"
-        ]
+      {
+       "name": "Phylloxera",
+       "note": "the pest",
+       "text": "**Phylloxera** is a microscopic vine louse. It destroyed many of France’s vineyards in the mid-1800s. Resistant **American rootstock** is used to stop it."
       },
-      "know": [
-        "Grapes do not keep ripening after they are picked.",
-        "Botrytis cinerea is a fungus that can be a good thing (noble rot).",
-        "Head training (gobelet/bush) and cordon training are the two main systems.",
-        "Yield is measured in tons per acre or hectoliters per hectare.",
-        "Brix measures sugar in the grapes."
-      ],
-      "visuals": [
-        {
-          "type": "steps",
-          "title": "Northern Hemisphere year",
-          "items": [
-            {
-              "name": "Bud break",
-              "text": "Sap rises, buds open",
-              "meta": "Apr–May"
-            },
-            {
-              "name": "Clusters",
-              "text": "Young clusters form",
-              "meta": "Jun–Jul"
-            },
-            {
-              "name": "Veraison",
-              "text": "Berries change color",
-              "meta": "Mid–late summer"
-            },
-            {
-              "name": "Harvest",
-              "text": "Grapes picked ripe",
-              "meta": "Sep–Nov"
-            },
-            {
-              "name": "Pruning",
-              "text": "Last year's canes cut back",
-              "meta": "Winter"
-            }
-          ]
-        }
-      ]
+      {
+       "name": "Choosing a grape",
+       "note": "why it’s planted",
+       "text": "Growers pick varieties by **regional wine law**, climate, soil and what will sell."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The two species, side by side:",
+     "mixup": "**Vitis vinifera** makes most quality wine. **Vitis labrusca** is a different species (Concord, Catawba)."
     },
-    {
-      "name": "Making white wine",
-      "book": "wine/white",
-      "lines": [
-        {
-          "label": "The steps",
-          "text": "Harvest, sort, crush and press. The juice ferments without the skins. Then the wine is fined or filtered and bottled."
-        },
-        {
-          "label": "Keeping it fresh",
-          "text": "Whites are often picked cool and ferment cooler than reds to keep delicate aromas. Fermentation takes about two weeks."
-        }
-      ],
-      "know": [
-        "White wine can be made from red grapes because the skins are left out.",
-        "Pressing comes before fermentation for whites.",
-        "Stopping fermentation early leaves residual sugar for an off-dry wine.",
-        "Fining agents such as egg white or bentonite clear out haze."
-      ],
-      "visuals": [
-        {
-          "type": "steps",
-          "title": "White wine, step by step",
-          "items": [
-            {
-              "name": "Harvest",
-              "text": "Often picked in the cool of morning or night"
-            },
-            {
-              "name": "Press",
-              "text": "Juice goes straight off the skins"
-            },
-            {
-              "name": "Ferment",
-              "text": "Cool, about 14 days"
-            },
-            {
-              "name": "Fine and filter",
-              "text": "Removes cloudiness"
-            },
-            {
-              "name": "Bottle",
-              "text": "Little air exposure"
-            }
-          ]
-        }
-      ]
+    "check": [
+     1,
+     2,
+     5
+    ]
+   },
+   {
+    "name": "Climate, soil and terroir",
+    "video": {
+     "youtubeId": "FBWrnla7ka0",
+     "title": "How Elevation Affects Grape Varieties",
+     "by": "Wine Folly",
+     "length": "5:59"
     },
-    {
-      "name": "Making red wine",
-      "book": "wine/red",
-      "lines": [
-        {
-          "label": "The steps",
-          "text": "Crush, then ferment the juice on its skins. Press, age, fine or filter, bottle, and sometimes age in bottle."
-        },
-        {
-          "label": "Extraction",
-          "text": "Skins float to the top as a cap. Winemakers pump over or punch down to pull out color, flavor and tannin."
-        }
-      ],
-      "know": [
-        "Red color comes from anthocyanin in black grape skins.",
-        "Pressing comes after fermentation for reds.",
-        "Pump-overs extract more; punch-downs are gentler.",
-        "Whole-cluster fermentation keeps stems and adds tannin (common with Pinot Noir)."
-      ],
-      "visuals": [
-        {
-          "type": "compare",
-          "items": [
-            {
-              "label": "WHITE",
-              "title": "Press first",
-              "text": "Crush\nPress\nFerment juice only\nFine/filter\nBottle"
-            },
-            {
-              "label": "RED",
-              "title": "Ferment on skins",
-              "text": "Crush\nMacerate and ferment with skins\nPress\nAge\nFine/filter, bottle"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Making rosé",
-      "lines": [
-        {
-          "label": "How",
-          "text": "Red grapes are crushed and left on their skins for a short time. The juice is then pressed off the skins and fermented."
-        },
-        {
-          "label": "Color",
-          "text": "Contact time and pressing set the shade, from pale salmon to vivid pink."
-        }
-      ],
-      "know": [
-        "Rosé color comes from brief contact with red grape skins.",
-        "The Court lists three methods: maceration time, blending and saignée.",
-        "Blending is often used for sparkling rosé.",
-        "The Court says saignée essentially doesn't exist anymore."
-      ],
-      "visuals": [
-        {
-          "type": "tiles",
-          "title": "Three ways to make rosé",
-          "dark": true,
-          "items": [
-            {
-              "name": "Maceration",
-              "text": "Short skin contact, then press"
-            },
-            {
-              "name": "Blending",
-              "text": "Often used for sparkling wine"
-            },
-            {
-              "name": "Saignée",
-              "text": "'Bleeding' juice off a red; rare today"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Oak, malolactic and lees",
-      "lines": [
-        {
-          "label": "Oak",
-          "text": "Oak adds vanilla, clove, smoke and coconut. It also lets in a little oxygen, which softens the wine. New barrels give more flavor than used ones."
-        },
-        {
-          "label": "Malo and lees",
-          "text": "Malolactic fermentation turns sharp malic acid into soft lactic acid and can taste buttery. Lees are dead yeast; stirring them adds bready flavor and a creamy feel."
-        }
-      ],
-      "chips": {
-        "label": "Other barrel woods",
-        "items": [
-          "Acacia",
-          "Cherry",
-          "Chestnut"
-        ]
+    "keyPoints": [
+     {
+      "big": "30–50°",
+      "line": "latitude is where most wine regions sit."
+     },
+     {
+      "big": "COOL CLIMATE",
+      "line": "gives tart fruit and more acidity."
+     },
+     {
+      "big": "WARM CLIMATE",
+      "line": "gives riper fruit, less acidity and more alcohol."
+     },
+     {
+      "big": "MESOCLIMATE",
+      "line": "is one vineyard; microclimate is one vine."
+     },
+     {
+      "big": "TERROIR",
+      "line": "is every environmental effect on the vine."
+     }
+    ],
+    "read": {
+     "bigIdea": "Where a vine grows shapes how the wine tastes.",
+     "where": "**Climate** is the weather of a place over a long time, not one year’s weather. Most wine regions sit between **30 and 50 degrees latitude**. Places outside that band mostly rely on **climate moderators** like altitude, water and wind. The Court names four climate types: **continental**, **maritime**, **Mediterranean** and **desert/arid**.",
+     "stopsTitle": "Four ideas to know",
+     "stops": [
+      {
+       "name": "Cool vs. warm",
+       "note": "the big split",
+       "text": "Cool climates give **tart fruit** and **more acidity**. Warm climates give riper fruit and less acidity. Warmer grapes build more sugar, so the wine has **more alcohol**."
       },
-      "know": [
-        "MLF is done by bacteria, not yeast, and lowers acidity.",
-        "Nearly all reds and some whites (Chardonnay, Viognier) go through MLF.",
-        "Bigger barrels give less oak flavor and oxygen.",
-        "American oak is Quercus alba; European oak is Quercus petraea.",
-        "Chaptalization is adding sugar to must to raise alcohol."
-      ],
-      "visuals": [
-        {
-          "type": "list",
-          "title": "Barrel sizes",
-          "rows": [
-            {
-              "name": "Barrique",
-              "meta": "225 L"
-            },
-            {
-              "name": "Puncheon",
-              "meta": "300 L"
-            },
-            {
-              "name": "Demi-muid",
-              "meta": "600 L"
-            },
-            {
-              "name": "Foudre / Botti",
-              "meta": "1,000+ L"
-            }
-          ],
-          "note": "Bigger barrel, less oak flavor."
-        },
-        {
-          "type": "tiles",
-          "title": "What it tastes like",
-          "items": [
-            {
-              "name": "New oak",
-              "text": "Vanilla, clove, smoke, coconut"
-            },
-            {
-              "name": "Malolactic",
-              "text": "Butter, cream"
-            },
-            {
-              "name": "Lees",
-              "text": "Bread, beer-like, creamy texture"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "mixups": [
-    {
-      "a": "Malolactic fermentation",
-      "b": "Alcoholic fermentation",
-      "why": "Alcoholic uses yeast to turn sugar into alcohol; malolactic uses bacteria to turn malic acid into lactic acid."
-    },
-    {
-      "a": "Mesoclimate",
-      "b": "Microclimate",
-      "why": "Mesoclimate is one vineyard; microclimate is the space around a single vine."
-    },
-    {
-      "a": "Vitis vinifera",
-      "b": "Vitis labrusca",
-      "why": "Vinifera is the quality European species; labrusca is American (Concord, Catawba)."
-    },
-    {
-      "a": "Lees",
-      "b": "Must",
-      "why": "Must is unfermented grape juice; lees are dead yeast left after fermentation."
-    }
-  ],
-  "sources": "Court of Master Sommeliers Americas curriculum guide (8.2023), with Wine Folly as a labelled secondary source. Checked Oct 31, 2026.",
-  "cards": [
-    {
-      "q": "Wine grapes come from vines of which genus?",
-      "answer": "Vitis",
-      "wrong": [
-        "Quercus",
-        "Saccharomyces",
-        "Oenococcus"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "q": "Which vine species is the most common for quality wine?",
-      "answer": "Vitis vinifera",
-      "wrong": [
-        "Vitis labrusca",
-        "Vitis riparia",
-        "Vitis rupestris"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "q": "Concord and Catawba belong to which vine species?",
-      "answer": "Vitis labrusca",
-      "wrong": [
-        "Vitis vinifera",
-        "Quercus alba",
-        "Botrytis cinerea"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "q": "About how many varieties of Vitis vinifera does the Court cite?",
-      "answer": "10,000",
-      "wrong": [
-        "100",
-        "1,000",
-        "1,000,000"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "q": "What is phylloxera?",
-      "answer": "A microscopic vine louse",
-      "wrong": [
-        "A fungus that causes noble rot",
-        "A bacteria that softens acidity",
-        "A spring frost"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "q": "How is phylloxera kept in check?",
-      "answer": "Grafting onto resistant American rootstock",
-      "wrong": [
-        "Spraying the canopy with sulfur",
-        "Green harvesting",
-        "Picking at night"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "q": "Most wine regions sit between which latitudes?",
-      "answer": "30 and 50 degrees",
-      "wrong": [
-        "10 and 30 degrees",
-        "50 and 70 degrees",
-        "0 and 20 degrees"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "q": "What is the climate of a single vineyard called?",
-      "answer": "Mesoclimate",
-      "wrong": [
-        "Macroclimate",
-        "Microclimate",
-        "Terroir"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "q": "Growing degree-days count days averaging above what temperature?",
-      "answer": "50°F",
-      "wrong": [
-        "32°F",
-        "60°F",
-        "70°F"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "q": "Which is NOT one of the Court's climate types?",
-      "answer": "Tropical",
-      "wrong": [
-        "Continental",
-        "Maritime",
-        "Mediterranean"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "q": "Cool-climate wines generally show what?",
-      "answer": "Tart fruit and more acidity",
-      "wrong": [
-        "Ripe fruit and less acidity",
-        "Higher alcohol and lower acidity",
-        "Jammy fruit and soft acidity"
-      ],
-      "source": "https://winefolly.com/tips/warm-climate-vs-cool-climate-wine/"
-    },
-    {
-      "q": "Why do warm-climate wines tend to have more alcohol?",
-      "answer": "The grapes build more sugar",
-      "wrong": [
-        "They spend longer in oak",
-        "They use more yeast",
-        "They are picked earlier"
-      ],
-      "source": "https://winefolly.com/tips/terroir-definition-for-wine/"
-    },
-    {
-      "q": "What is the soil of the Mosel?",
-      "answer": "Slate",
-      "wrong": [
-        "Chalk",
-        "Granite",
-        "Terra rossa"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
-    },
-    {
-      "q": "Which soil is Beaujolais known for?",
-      "answer": "Granite",
-      "wrong": [
-        "Slate",
-        "Gravel",
-        "Chalk"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=12"
-    },
-    {
-      "q": "In Bordeaux, Cabernet Sauvignon is matched to which soil?",
-      "answer": "Gravel",
-      "wrong": [
-        "Clay",
-        "Slate",
-        "Chalk"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=9"
-    },
-    {
-      "q": "Coonawarra is known for which soil?",
-      "answer": "Terra rossa",
-      "wrong": [
-        "Slate",
-        "Galets",
-        "Kimmeridgian chalk"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
-    },
-    {
-      "q": "What is veraison?",
-      "answer": "When berries change color and ripen",
-      "wrong": [
-        "When the buds first open",
-        "When the vine is pruned",
-        "When flowers self-pollinate"
-      ],
-      "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
-    },
-    {
-      "q": "What is a green harvest?",
-      "answer": "Dropping unripe grapes or clusters for quality",
-      "wrong": [
-        "Picking white grapes before red",
-        "Harvesting at night",
-        "Picking only green-skinned grapes"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "q": "Which fungus does the Court say 'can be a good thing'?",
-      "answer": "Botrytis cinerea",
-      "wrong": [
-        "Phylloxera",
-        "Oenococcus oeni",
-        "Saccharomyces cerevisiae"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "q": "Gobelet (bush vine) is an example of what?",
-      "answer": "Head training",
-      "wrong": [
-        "Cordon training",
-        "Canopy management",
-        "Green harvest"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "q": "Which unit measures vineyard yield?",
-      "answer": "Hectoliters per hectare",
-      "wrong": [
-        "Degrees Brix",
-        "Degree-days",
-        "Grams per liter"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "q": "Do grapes keep ripening after they are picked?",
-      "answer": "No",
-      "wrong": [
-        "Yes, for about a week",
-        "Only red grapes do",
-        "Only if kept cold"
-      ],
-      "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
-    },
-    {
-      "q": "Alcoholic fermentation turns sugar into alcohol plus what?",
-      "answer": "CO2 and heat",
-      "wrong": [
-        "Malic acid and tannin",
-        "Oxygen and water",
-        "Lactic acid and sugar"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    },
-    {
-      "q": "Which yeast species ferments wine?",
-      "answer": "Saccharomyces cerevisiae",
-      "wrong": [
-        "Oenococcus oeni",
-        "Botrytis cinerea",
-        "Quercus petraea"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    },
-    {
-      "q": "Where does red wine get its color?",
-      "answer": "Pigment in black grape skins",
-      "wrong": [
-        "The grape juice",
-        "Oak barrels",
-        "The stems"
-      ],
-      "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
-    },
-    {
-      "q": "In white winemaking, when are the grapes pressed?",
-      "answer": "Before fermentation",
-      "wrong": [
-        "After fermentation",
-        "After barrel aging",
-        "Only for sparkling wine"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    },
-    {
-      "q": "Which rosé method does the Court say is often used for sparkling wine?",
-      "answer": "Blending",
-      "wrong": [
-        "Saignée",
-        "Carbonic maceration",
-        "Whole-cluster pressing"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    },
-    {
-      "q": "Malolactic fermentation converts malic acid into what?",
-      "answer": "Lactic acid",
-      "wrong": [
-        "Tartaric acid",
-        "Alcohol",
-        "Citric acid"
-      ],
-      "source": "https://winefolly.com/deep-dive/what-is-malolactic-fermentation-the-buttery-taste-in-wine/"
-    },
-    {
-      "q": "What are lees?",
-      "answer": "Dead yeast particles",
-      "wrong": [
-        "Grape skins after pressing",
-        "Tartrate crystals",
-        "Oak shavings"
-      ],
-      "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
-    },
-    {
-      "q": "How big is a barrique?",
-      "answer": "225 liters",
-      "wrong": [
-        "300 liters",
-        "600 liters",
-        "1,000 liters"
-      ],
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    }
-  ],
-  "facts": [
-    {
-      "fact": "Viticulture is the factors of production that influence grape growing: factors from nature plus man-made decisions in the vineyard that affect wine quality.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "fact": "Common types of viticulture listed by the Court: organic, biodynamic, sustainable, dry farming.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "fact": "Climate is the weather of an area in general or over a long period (temperature, humidity, rainfall, sunshine, wind and more). The Court stresses that climate and weather are different.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "fact": "Climate types: continental, maritime, Mediterranean, desert/arid. Climate descriptors: cool, moderate, warm, hot.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "fact": "Macroclimate is the climate of an area such as a wine region; mesoclimate is the climate of a vineyard; microclimate is the climate around a single vine.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "fact": "Growing degree-days are counted for days in the growing season when the average temperature is over 50°F.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "fact": "Most wine-growing regions lie between 30 and 50 degrees latitude; regions outside this band exist mainly because of climate moderators.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "fact": "Climate moderators: altitude, diurnal shifts, sunshine hours, bodies of water, wind, rain shadow effect. Examples named include San Pablo Bay, the Benguela Current and the Humboldt Current.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
-    },
-    {
-      "fact": "Topography is the surface features of the land: elevation, mountains, hills, valleys and bodies of water.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "fact": "Soil properties that matter to the vine: drainage or water retention, sun reflection, nutrient content, temperature regulation, pest resistance. Soil examples: clay, slate, limestone, granite, chalk, sand, schist.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "fact": "Soils are matched to grape varieties based on climate and the needs of the variety.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "fact": "Bordeaux soils: gravel, clay, limestone, sand. Varieties are matched to soil, for example Cabernet Sauvignon in gravel and Merlot in clay.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=9"
-    },
-    {
-      "fact": "Chablis and Côte d'Or soils: limestone, clay. Beaujolais: granite.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=12"
-    },
-    {
-      "fact": "Champagne soils: limestone, chalk. Grapes are picked earlier to preserve natural acidity.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
-    },
-    {
-      "fact": "Mosel soil: slate. Steep, south-facing hillsides maximize sun exposure and warmth.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
-    },
-    {
-      "fact": "Coonawarra soil: terra rossa.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
-    },
-    {
-      "fact": "Grapes are the fruit of a vining plant of the genus Vitis. Vitis vinifera is native to the Mediterranean, Europe and Southwestern Asia, is the most common for quality grape production, and has about 10,000 varieties (e.g. Cabernet Sauvignon, Merlot, Chardonnay, Riesling, Syrah).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "fact": "Vitis labrusca examples: Catawba, Concord.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "fact": "Parts of the grape vine: rootstock, trunk, cordons, shoots/canes, grape clusters/bunches, canopy.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "fact": "Grape varieties are chosen by regional wine law, climate compatibility, soil compatibility and marketability.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "fact": "Every year produces a different crop called the vintage; each vintage can indicate style, quality and price potential. Introductory students do not need to memorize vintage differences.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
-    },
-    {
-      "fact": "Vineyard management covers canopy management (managing leaf growth), irrigation, pests and disease, and managing yield.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "fact": "Botrytis cinerea is a fungus/mold that 'can be a good thing!'. Phylloxera is a pest.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "fact": "Green harvest: a quality measure of removing or dropping unripe grapes or clusters.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "fact": "Vine cycle: dormancy, bud break, flowering, fruit set, ripening (veraison, hang time), maturity, harvest, pruning.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "fact": "Two main vine training systems: head training (e.g. gobelet/bush) and cordon training (using support for growth).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "fact": "Phylloxera is a microscopic vine louse that destroyed many of France's vineyards in the mid-19th century. Resistant American vine rootstock is used to stop the spread; most wine regions of the world are affected.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "fact": "Yield is how much fruit a vine produces, measured in tons per acre or hectoliters per hectare.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
-    },
-    {
-      "fact": "Harvest timing depends on weather, wine style, producer goals, regional wine law and number of picking passes. Grapes are picked by hand or by machine. Sugar is measured with scales such as Brix.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=6"
-    },
-    {
-      "fact": "Terroir ('goût de terroir', taste of earth) covers all of the environmental impacts on a grapevine.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=6"
-    },
-    {
-      "fact": "Bud break happens in April/May (Sept/Oct in the Southern Hemisphere); hail can destroy the delicate buds.",
-      "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
-    },
-    {
-      "fact": "Young clusters appear in June and July (Nov/Dec in the Southern Hemisphere). In mid to late summer the berries change color and ripen: veraison.",
-      "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
-    },
-    {
-      "fact": "Harvest usually falls between September and November, or February to May in the Southern Hemisphere. Grapes do not continue to ripen once picked.",
-      "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
-    },
-    {
-      "fact": "Winter pruning, when the pruner cuts back the prior year's canes, is one of the most expensive and important vineyard jobs.",
-      "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
-    },
-    {
-      "fact": "Most of the world's quality wine comes from Vitis vinifera; by about the third year a vine can produce fruit of proper quality for winemaking. 'Old vines' has no official definition.",
-      "source": "https://winefolly.com/deep-dive/lifecycle-of-a-wine-grapevine/"
-    },
-    {
-      "fact": "Warm climates generally give riper fruit flavors and less acidity; cool climates give tart fruit flavors and more acidity.",
-      "source": "https://winefolly.com/tips/warm-climate-vs-cool-climate-wine/"
-    },
-    {
-      "fact": "White wine grapes are picked earlier in the season than red wine grapes.",
-      "source": "https://winefolly.com/tips/warm-climate-vs-cool-climate-wine/"
-    },
-    {
-      "fact": "Warmer-climate grapes build higher sugar levels, which make higher-alcohol wines; cooler-climate grapes have lower sugar and keep more acidity.",
-      "source": "https://winefolly.com/tips/terroir-definition-for-wine/"
-    },
-    {
-      "fact": "Vinification: decisions and practices made in the winery from harvest to bottling.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    },
-    {
-      "fact": "Winemaking starts with harvest, sort, destem. White: crush, press, fermentation, fining/filtering, bottling. Red: crush, maceration, fermentation with skin contact, pressing, aging, fining/filtration, bottling, bottle aging. Rosé: crush red grapes, short skin contact, pressing, fermentation, fining/filtration, bottling.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    },
-    {
-      "fact": "Three types of rosé production: maceration time, blending (often used for sparkling wine), and saignée. The Court says saignée ('bleeding') essentially doesn't exist anymore; it was a red-wine concentration technique with rosé as the byproduct.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    },
-    {
-      "fact": "Alcoholic fermentation: sugar + yeast gives alcohol, CO2, heat, aromas and flavors. Saccharomyces cerevisiae is the yeast species for wine fermentation.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    },
-    {
-      "fact": "Aging can be on the lees or without, in concrete, stainless steel or oak. Fermentation vessels: wood, stainless steel, concrete.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    },
-    {
-      "fact": "Barrel sizes: barrique 225 liters, puncheon 300 liters, demi-muid 600 liters, foudre/botti 1,000+ liters. Other woods used for barrels include acacia, cherry and chestnut.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
-    },
-    {
-      "fact": "Winemaking terms listed: grape must, chaptalization, acidification, water addition, lees, autolysis, malolactic fermentation, carbonic maceration.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=8"
-    },
-    {
-      "fact": "Chaptalization: adding sugar to unfermented grape must to increase alcohol after fermentation; used when grapes do not reach enough sugar ripeness.",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
-    },
-    {
-      "fact": "Closures listed: cork, composites, screw cap (Stelvin), glass top (Vinolok).",
-      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=8"
-    },
-    {
-      "fact": "White wine can be made from red or white grapes because the skins are not used in fermentation; most white wines use green and yellow grapes.",
-      "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
-    },
-    {
-      "fact": "Picking in the morning or at night gives fresher-tasting white wines. Grapes go straight to the press, and the juice settles before fermentation.",
-      "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
-    },
-    {
-      "fact": "A white wine takes about 14 days to ferment; whites ferment cooler than reds to keep delicate floral aromas.",
-      "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
-    },
-    {
-      "fact": "Stopping the yeast before all the sugar is eaten (usually by chilling) leaves 'residual sugar' for an off-dry wine.",
-      "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
-    },
-    {
-      "fact": "Fining agents (casein, egg whites, bentonite clay) remove proteins that make wine cloudy; filtering follows.",
-      "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
-    },
-    {
-      "fact": "Red winemaking differs in one important way: the juice ferments with the grape skins. All red color comes from anthocyanin in black grape skins.",
-      "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
-    },
-    {
-      "fact": "Whole-cluster fermentation keeps the stems, which adds tannin. Pinot Noir often ferments with whole clusters, Cabernet Sauvignon does not.",
-      "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
-    },
-    {
-      "fact": "Floating skins (the 'cap') are kept in contact by pumping over (stronger extraction, rich reds) or punching down (gentler, more subtle reds).",
-      "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
-    },
-    {
-      "fact": "Most wines take 5 to 21 days to ferment. After fermentation the skins are pressed, giving about 15% more wine.",
-      "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
-    },
-    {
-      "fact": "Red wines age in barrels, concrete, glass, clay or steel; wooden barrels affect wine most noticeably.",
-      "source": "https://winefolly.com/deep-dive/how-is-red-wine-made/"
-    },
-    {
-      "fact": "In most red grape varieties, the pigments that give red wine its color come from the skins, not the juice.",
-      "source": "https://winefolly.com/tips/how-one-red-grape-makes-red-rose-white-and-sparkling-wine/"
-    },
-    {
-      "fact": "Rosé gets its color from brief contact with red grape skins; contact time and pressing set the shade from pale salmon to vivid pink.",
-      "source": "https://winefolly.com/tips/how-one-red-grape-makes-red-rose-white-and-sparkling-wine/"
-    },
-    {
-      "fact": "Malolactic fermentation (MLF) converts tart malic acid into softer lactic acid. It is done by bacteria (Oenococcus oeni), not yeast, and lowers acidity.",
-      "source": "https://winefolly.com/deep-dive/what-is-malolactic-fermentation-the-buttery-taste-in-wine/"
-    },
-    {
-      "fact": "The bacteria release diacetyl, which gives buttery or creamy aromas.",
-      "source": "https://winefolly.com/deep-dive/what-is-malolactic-fermentation-the-buttery-taste-in-wine/"
-    },
-    {
-      "fact": "Nearly all red wines and some white wines (such as Chardonnay and Viognier) go through MLF.",
-      "source": "https://winefolly.com/deep-dive/what-is-malolactic-fermentation-the-buttery-taste-in-wine/"
-    },
-    {
-      "fact": "Lees are dead yeast particles. Stirring them adds bread- or beer-like flavor and a creamier texture.",
-      "source": "https://winefolly.com/deep-dive/how-is-white-wine-made/"
-    },
-    {
-      "fact": "Oak adds flavors such as vanilla, clove, smoke and coconut; lets in oxygen slowly, making wine smoother and less astringent; and gives a home for MLF.",
-      "source": "https://winefolly.com/tips/how-wine-barrels-affect-the-taste-of-wine/"
-    },
-    {
-      "fact": "Oak flavor extraction drops each time a barrel is reused. Larger barrels give less oak lactone and oxygen; barriques are 225 liters, botti and foudres about 1,000 to 20,000 liters.",
-      "source": "https://winefolly.com/tips/how-wine-barrels-affect-the-taste-of-wine/"
-    },
-    {
-      "fact": "The two main oak species are Quercus alba (American white oak) and Quercus petraea (European white oak). American oak suits bolder wines; European oak suits lighter wines.",
-      "source": "https://winefolly.com/tips/how-wine-barrels-affect-the-taste-of-wine/"
-    }
-  ],
-  "unverified": [
-    "Must and grape must: the Court lists 'grape must' as a term but the fetched pages give no definition. The mix-up line calls must 'unfermented grape juice', which follows from the Court's chaptalization definition ('adding sugar to unfermented grape must') rather than a stated definition.",
-    "Definitions of hybrid, crossing, clone and mutation: listed as terms in the Court's curriculum guide, but no definitions were found in the sources fetched, so they are left out.",
-    "Puncheon and demi-muid sizes come only from the Court's guide; no second source was checked.",
-    "The Court's guide prints Introductory and Certified columns side by side; the PDF text did not always show which column a term sits in, so some terms here may be Certified-level detail.",
-    "Wine Folly timings (14 days for whites, 5–21 days for reds, 15% more wine from pressing, harvest months) are secondary-source generalizations, not Court figures."
+      {
+       "name": "Big to small",
+       "note": "macro, meso, micro",
+       "text": "**Macroclimate** is a whole wine region. **Mesoclimate** is one vineyard. **Microclimate** is the space around a single vine."
+      },
+      {
+       "name": "Soil",
+       "note": "drainage, heat, nutrients",
+       "text": "Soil affects drainage, temperature and nutrients, so growers match each grape to a soil. In Bordeaux, **Cabernet Sauvignon** goes in **gravel** and **Merlot** in **clay**."
+      },
+      {
+       "name": "Terroir",
+       "note": "“taste of earth”",
+       "text": "**Terroir** covers every environmental effect on the vine. The French phrase is **goût de terroir**, the taste of earth."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Soils the exam ties to famous places:",
+     "mixup": "**Mesoclimate** is one vineyard. **Microclimate** is the space around a single vine."
+    },
+    "check": [
+     7,
+     10,
+     14
+    ]
+   },
+   {
+    "name": "The vineyard year",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BUD BREAK",
+      "line": "comes in April or May in the Northern Hemisphere."
+     },
+     {
+      "big": "VERAISON",
+      "line": "is when the berries change color and ripen."
+     },
+     {
+      "big": "HARVEST",
+      "line": "runs September to November. Picked grapes stop ripening."
+     },
+     {
+      "big": "GREEN HARVEST",
+      "line": "drops unripe clusters for quality."
+     },
+     {
+      "big": "BOTRYTIS",
+      "line": "is a fungus the Court says “can be a good thing.”"
+     }
+    ],
+    "read": {
+     "bigIdea": "Every year, the vine runs through the same cycle.",
+     "where": "The vine rests through winter, then buds in spring. It flowers, sets fruit, ripens and is picked. Each year’s crop is called the **vintage**.",
+     "stopsTitle": "The year, in the Northern Hemisphere",
+     "stops": [
+      {
+       "name": "Bud break",
+       "note": "April–May",
+       "text": "The buds open. **Hail** can destroy these delicate buds."
+      },
+      {
+       "name": "Veraison",
+       "note": "mid to late summer",
+       "text": "Young clusters form in June and July. Then the berries **change color** and ripen: that’s **veraison**."
+      },
+      {
+       "name": "The grower’s work",
+       "note": "all season",
+       "text": "Growers manage the **canopy** (the leaves), water, pests and **yield**. A **green harvest** drops unripe clusters for quality."
+      },
+      {
+       "name": "Harvest",
+       "note": "September–November",
+       "text": "Timing depends on weather, wine style and local wine law. Sugar is measured with scales like **Brix**. Grapes don’t keep ripening once they’re picked."
+      },
+      {
+       "name": "Pruning",
+       "note": "winter",
+       "text": "The pruner cuts back last year’s canes. It’s one of the most expensive and important jobs in the vineyard."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The whole year at a glance:"
+    },
+    "check": [
+     16,
+     17,
+     21
+    ]
+   },
+   {
+    "name": "Making white wine",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PRESSING",
+      "line": "comes before fermentation for white wine."
+     },
+     {
+      "big": "RED GRAPES",
+      "line": "can make white wine, because the skins are left out."
+     },
+     {
+      "big": "YEAST",
+      "line": "turns sugar into alcohol, CO2 and heat."
+     },
+     {
+      "big": "FERMENTATION",
+      "line": "takes about 14 days, cooler than for reds."
+     },
+     {
+      "big": "RESIDUAL SUGAR",
+      "line": "is left when the yeast is stopped early."
+     }
+    ],
+    "read": {
+     "bigIdea": "White wine is juice fermented without the skins.",
+     "where": "Every wine starts with **harvest**, **sort** and **destem**. For whites, the grapes are crushed and **pressed**, and the juice ferments without the skins. That’s why white wine can be made from red or white grapes.",
+     "stopsTitle": "White wine, step by step",
+     "stops": [
+      {
+       "name": "Harvest",
+       "note": "cool hours",
+       "text": "Picking in the morning or at night gives fresher-tasting whites."
+      },
+      {
+       "name": "Press",
+       "note": "before fermentation",
+       "text": "The grapes go straight to the press. The juice settles before it ferments."
+      },
+      {
+       "name": "Ferment",
+       "note": "about 14 days",
+       "text": "Yeast (**Saccharomyces cerevisiae**) turns sugar into alcohol, CO2 and heat: **alcoholic fermentation**. Whites ferment cooler than reds to keep delicate floral aromas. Stop the yeast early, usually by chilling, and some **residual sugar** stays for an off-dry wine."
+      },
+      {
+       "name": "Fine and filter",
+       "note": "clear it up",
+       "text": "**Fining** agents like egg whites or bentonite clay remove the proteins that make wine cloudy. Then the wine is filtered and bottled."
+      }
+     ]
+    },
+    "check": [
+     25,
+     22,
+     23
+    ]
+   },
+   {
+    "name": "Making red wine",
+    "video": {
+     "youtubeId": "qH5f6vqDDXk",
+     "title": "Are Tannins Wine's Little Miracle?",
+     "by": "Wine Folly",
+     "length": "5:06"
+    },
+    "keyPoints": [
+     {
+      "big": "SKINS",
+      "line": "give red wine its color, from a pigment called anthocyanin."
+     },
+     {
+      "big": "PRESSING",
+      "line": "comes after fermentation for red wine."
+     },
+     {
+      "big": "THE CAP",
+      "line": "is the layer of skins floating on top."
+     },
+     {
+      "big": "PUNCHING DOWN",
+      "line": "is gentler; pumping over extracts more."
+     },
+     {
+      "big": "WHOLE CLUSTER",
+      "line": "keeps the stems and adds tannin (often Pinot Noir)."
+     }
+    ],
+    "read": {
+     "bigIdea": "Red wine ferments with its skins.",
+     "where": "In most red grapes the color is in the skins, not the juice. So the juice ferments on its skins, which give color from a pigment called **anthocyanin**. **Pressing comes after fermentation**, the reverse of white wine.",
+     "stopsTitle": "Red wine, step by step",
+     "stops": [
+      {
+       "name": "Crush and macerate",
+       "note": "juice meets skins",
+       "text": "The grapes are crushed and soak with their skins (**maceration**), then ferment together. Keeping the stems in (**whole-cluster**) adds tannin. Pinot Noir often ferments this way; Cabernet Sauvignon does not."
+      },
+      {
+       "name": "Work the cap",
+       "note": "during fermentation",
+       "text": "The skins float up and form a **cap**. **Pumping over** gives stronger extraction for rich reds. **Punching down** is gentler, for more subtle reds."
+      },
+      {
+       "name": "Press",
+       "note": "after fermentation",
+       "text": "Most wines take 5 to 21 days to ferment. Then the skins are pressed, which gives about 15% more wine."
+      },
+      {
+       "name": "Age and bottle",
+       "note": "barrel, steel, concrete",
+       "text": "Reds age in barrels, concrete, glass, clay or steel. Wooden barrels change the wine the most. Then the wine is fined or filtered and bottled."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Same steps, different order:"
+    },
+    "check": [
+     24,
+     30,
+     31
+    ]
+   },
+   {
+    "name": "Making rosé",
+    "video": {
+     "youtubeId": "PFAaRqlYH2o",
+     "title": "Let's Explore Rosé!",
+     "by": "Wine Folly",
+     "length": "5:44"
+    },
+    "keyPoints": [
+     {
+      "big": "RED GRAPES",
+      "line": "make rosé, with only a short time on the skins."
+     },
+     {
+      "big": "SKIN CONTACT",
+      "line": "sets the shade, from pale salmon to vivid pink."
+     },
+     {
+      "big": "BLENDING",
+      "line": "is a rosé method often used for sparkling wine."
+     },
+     {
+      "big": "SAIGNÉE",
+      "line": "means “bleeding.” The Court says it’s essentially gone."
+     }
+    ],
+    "read": {
+     "bigIdea": "Rosé is red grapes with a short time on the skins.",
+     "where": "Red grapes are crushed and left on their skins for a short time. Then the juice is pressed off the skins and fermented. Contact time and pressing set the color, from **pale salmon** to **vivid pink**.",
+     "stopsTitle": "Three ways the Court lists",
+     "stops": [
+      {
+       "name": "Maceration",
+       "note": "short skin contact",
+       "text": "The juice sits on red skins for a short time, then it’s pressed and fermented."
+      },
+      {
+       "name": "Blending",
+       "note": "often for sparkling",
+       "text": "The Court says **blending** is often used for **sparkling wine**."
+      },
+      {
+       "name": "Saignée",
+       "note": "“bleeding”",
+       "text": "**Saignée** was a way to concentrate a red wine, with rosé as the byproduct. The Court says it essentially doesn’t exist anymore."
+      }
+     ],
+     "sayIt": "It’s made from red grapes, with just a little time on the skins."
+    },
+    "check": [
+     26,
+     32,
+     33
+    ]
+   },
+   {
+    "name": "Oak, malolactic and lees",
+    "video": {
+     "youtubeId": "rdwFOhp9FdI",
+     "title": "Oaky White Wines",
+     "by": "Wine Folly",
+     "length": "5:13"
+    },
+    "keyPoints": [
+     {
+      "big": "NEW OAK",
+      "line": "adds vanilla, clove, smoke and coconut."
+     },
+     {
+      "big": "MALOLACTIC",
+      "line": "turns tart malic acid into softer lactic acid."
+     },
+     {
+      "big": "BUTTER",
+      "line": "aromas come from diacetyl, made by MLF bacteria."
+     },
+     {
+      "big": "LEES",
+      "line": "are dead yeast; stirring them adds a creamy feel."
+     },
+     {
+      "big": "BARRIQUE",
+      "line": "is a 225-liter barrel."
+     }
+    ],
+    "read": {
+     "bigIdea": "Oak, malo and lees add flavor and texture.",
+     "where": "Wine can age **on its lees** or without them, in **oak**, **stainless steel** or **concrete**. Oak, malolactic fermentation and lees each leave their own mark on the wine.",
+     "stopsTitle": "Four choices in the cellar",
+     "stops": [
+      {
+       "name": "Oak",
+       "note": "flavor and air",
+       "text": "New oak adds **vanilla**, **clove**, **smoke** and **coconut**. It lets in oxygen slowly, so the wine gets smoother. Oak flavor drops each time a barrel is reused, and **bigger barrels** give less."
+      },
+      {
+       "name": "Two oaks",
+       "note": "American vs. European",
+       "text": "**American oak** (Quercus alba) suits bolder wines. **European oak** (Quercus petraea) suits lighter wines."
+      },
+      {
+       "name": "Malolactic",
+       "note": "MLF",
+       "text": "**Bacteria**, not yeast, turn tart **malic acid** into softer **lactic acid**. It lowers acidity and can smell **buttery** or creamy. Nearly all reds and some whites, like **Chardonnay** and Viognier, go through it."
+      },
+      {
+       "name": "Lees",
+       "note": "dead yeast",
+       "text": "**Lees** are dead yeast particles. Stirring them adds bread- or beer-like flavor and a **creamier** texture."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The barrel sizes to know:",
+     "mixup": "**Alcoholic fermentation** uses yeast to turn sugar into alcohol. **Malolactic** uses bacteria to turn malic acid into lactic acid.",
+     "sayIt": "It sees some oak, so expect a little vanilla and spice."
+    },
+    "check": [
+     27,
+     28,
+     29
+    ]
+   }
   ]
+ }
 }

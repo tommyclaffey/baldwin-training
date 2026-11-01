@@ -50,36 +50,8 @@ export function shuffleSeeded(arr, key) {
 const T = (n) => (n.c || []).filter((c) => c.t === 'T');
 const pad2 = (n) => String(n).padStart(2, '0');
 
-/** A chapter page, drawn from the France design. */
-export function chapterPage(tpl, ch, ctx) {
-  const main = clone(tpl.main);
-  const n = ch.cards.length;
-  const known = ctx.prog.known[ch.slug] || 0;
-  const bc = find(main, byName('Breadcrumb'));
-  const bt = T(bc); setText(bt[1], `Chapter ${ch.number}`); setText(bt[3], ch.title);
-  const copy = find(find(main, byName('Header')), byName('Copy'));
-  const ct = T(copy); setText(ct[0], ch.script || `Chapter ${ch.number}`); setText(ct[1], ch.title.toUpperCase()); setText(ct[2], ch.lead || '');
-  ct[1].ar = 'H'; ct[1].sh = 'F'; if (ch.title.length > 18) ct[1].z = Math.min(ct[1].z || 44, 38);
-  const side = find(main, byName('Side'));
-  const st = T(side); setText(st[1], `About ${ch.minutes || 20} minutes · ${n} cards`);
-  setText(st[2], known ? `Your cards: ${known} known cold, ${n - known} to go` : 'You haven’t practised these yet');
-  for (const b of findAll(main, (x) => (x.n || '').startsWith('Button · Practise'))) { b.to = quizHref(ch); setText(T(b)[0] || texts(b)[0], `Practise ${n} Cards`); }
-
-  // Start here
-  const intro = find(main, byName('Start here · the label tiers'));
-  if (ch.intro && (ch.intro.tiers || []).length) {
-    const ic = T(find(intro, byName('Copy')));
-    setText(ic[0], ch.intro.script || 'Start here'); setText(ic[1], (ch.intro.title || '').toUpperCase()); setText(ic[2], ch.intro.text || '');
-    const py = find(intro, byName('Pyramid')); const protos = py.c; const k = ch.intro.tiers.length;
-    py.c = ch.intro.tiers.map((t, i) => {
-      const r = clone(protos[i === 0 ? 0 : i === k - 1 ? protos.length - 1 : 1]);
-      r.n = 'Tier · ' + t.name; const tt = texts(r); setText(tt[0], t.name); setText(tt[1], t.note || '');
-      r.w = k > 1 ? Math.round(300 + (280 * i) / (k - 1)) : 440;
-      return r;
-    });
-  } else remove(main, intro);
-
-  // the visual building blocks, taken from the France sections
+/** The visual building blocks (scale, tiles, pyramid…), drawn from the France chapter's design (Figma 362:2). */
+export function blockBuilder(main) {
   const V = {
     scale: find(main, byName('Sweetness scale')), tiles: find(main, byName('Producer codes')), pyramid: find(main, byName('Burgundy pyramid')),
     names: find(main, byName('Chablis and Beaujolais')), compare: find(main, byName('Banks')), list: find(main, byName('First Growths')),
@@ -87,7 +59,7 @@ export function chapterPage(tpl, ch, ctx) {
   };
   const loireVisual = find(find(main, byName('Region · Loire')), byName('Visual'));
   V.stepsLabel = loireVisual && T(loireVisual)[0];
-  const block = (b) => {
+  return (b) => {
     if (!b || !b.type) return [];
     if (b.type === 'scale' && V.scale) {
       const p = clone(V.scale); const pt = T(p); setText(pt[0], (b.title || '').toUpperCase());
@@ -135,7 +107,7 @@ export function chapterPage(tpl, ch, ctx) {
       const out = [];
       if (V.stepsLabel && b.title) { const l = clone(V.stepsLabel); setText(l, b.title.toUpperCase()); out.push(l); }
       const river = clone(V.river); const plain = river.c[0], last = river.c[river.c.length - 1]; const k = (b.items || []).length;
-      river.c = (b.items || []).slice(0, 5).map((it, i) => { const c = clone(i === k - 1 ? last : plain); c.n = 'Step · ' + it.name; const t = texts(c); setText(t[0], String(i + 1)); setText(t[1], it.name); setText(t[2], it.text || ''); setText(t[3], it.meta || ''); if (!it.meta) c.c = c.c.filter((x) => x !== t[3]); return c; });
+      river.c = (b.items || []).slice(0, 5).map((it, i) => { const c = clone(i === k - 1 ? last : plain); c.n = 'Step · ' + it.name; const t = texts(c); setText(t[0], String(i + 1)); setText(t[1], it.name); setText(t[2], it.text || ''); setText(t[3], it.meta || ''); if (!it.meta) c.c = c.c.filter((x) => x !== t[3]); else if (i === k - 1) t[3].f = [{ c: '#C49A6C' }]; return c; });
       out.push(river); return out;
     }
     if (b.type === 'stat' && V.stat) {
@@ -145,6 +117,38 @@ export function chapterPage(tpl, ch, ctx) {
     }
     return [];
   };
+}
+
+/** A chapter page, drawn from the France design. */
+export function chapterPage(tpl, ch, ctx) {
+  const main = clone(tpl.main);
+  const n = ch.cards.length;
+  const known = ctx.prog.known[ch.slug] || 0;
+  const bc = find(main, byName('Breadcrumb'));
+  const bt = T(bc); setText(bt[1], `Chapter ${ch.number}`); setText(bt[3], ch.title);
+  const copy = find(find(main, byName('Header')), byName('Copy'));
+  const ct = T(copy); setText(ct[0], ch.script || `Chapter ${ch.number}`); setText(ct[1], ch.title.toUpperCase()); setText(ct[2], ch.lead || '');
+  ct[1].ar = 'H'; ct[1].sh = 'F'; if (ch.title.length > 18) ct[1].z = Math.min(ct[1].z || 44, 38);
+  const side = find(main, byName('Side'));
+  const st = T(side); setText(st[1], `About ${ch.minutes || 20} minutes · ${n} cards`);
+  setText(st[2], known ? `Your cards: ${known} known cold, ${n - known} to go` : 'You haven’t practised these yet');
+  for (const b of findAll(main, (x) => (x.n || '').startsWith('Button · Practise'))) { b.to = quizHref(ch); setText(T(b)[0] || texts(b)[0], `Practise ${n} Cards`); }
+
+  // Start here
+  const intro = find(main, byName('Start here · the label tiers'));
+  if (ch.intro && (ch.intro.tiers || []).length) {
+    const ic = T(find(intro, byName('Copy')));
+    setText(ic[0], ch.intro.script || 'Start here'); setText(ic[1], (ch.intro.title || '').toUpperCase()); setText(ic[2], ch.intro.text || '');
+    const py = find(intro, byName('Pyramid')); const protos = py.c; const k = ch.intro.tiers.length;
+    py.c = ch.intro.tiers.map((t, i) => {
+      const r = clone(protos[i === 0 ? 0 : i === k - 1 ? protos.length - 1 : 1]);
+      r.n = 'Tier · ' + t.name; const tt = texts(r); setText(tt[0], t.name); setText(tt[1], t.note || '');
+      r.w = k > 1 ? Math.round(300 + (280 * i) / (k - 1)) : 440;
+      return r;
+    });
+  } else remove(main, intro);
+
+  const block = blockBuilder(main);
 
   // sections: the France regions become this chapter's sections
   const regions = (main.c || []).filter(startsWith('Region · '));

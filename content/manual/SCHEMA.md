@@ -44,3 +44,43 @@ BLOCK types (pick what fits the content; never invent numbers):
 Chapters (Court of Master Sommeliers Introductory outline order):
 1 How wine is made · 2 Tasting like a sommelier · 3 Wine law and labels · 4 France (done) · 5 Italy · 6 Germany and Austria ·
 7 Spain and Portugal · 8 North America · 9 The Southern Hemisphere · 10 Sparkling, fortified and sweet · 11 Beer, sake and spirits · 12 On the floor
+
+## v3 · video first + reading flow (Nov 1, 2026)
+
+Tommy: "the written stuff seems like it's not very easy to read. The flow doesn't feel good." The v3 lesson is
+watch → swipe the key points → read → answer 3 cards. Add a top-level `"v3"` object. **Do not change or remove any
+existing key**: the live app still reads them until v3 ships.
+
+"v3": {
+  "video": VIDEO,                         // the chapter's intro video (shown on the Level 1 lesson grid), or null
+  "sections": [                           // same order and same "name" as the top-level "sections"
+    {
+      "name": "Loire",
+      "video": VIDEO | null,              // a video about THIS section; null if none is good enough
+      "keyPoints": [ { "big": "MUSCADET", "line": "is Melon B, often aged on its yeast (“sur lie”)." } ],  // 3-5 cards; big = 1-3 words, CAPS; line ≤ 70 chars and finishes the sentence
+      "read": {
+        "bigIdea": "The Loire is France’s white-wine river.",          // one sentence, ≤ 60 characters
+        "where": "2-4 short sentences. **Bold** the words that are on the exam.",
+        "stopsTitle": "Four stops, west to east",                       // optional script heading for the list below
+        "stops": [ { "name": "Pays Nantais", "note": "by the Atlantic", "text": "1-3 sentences with **bold** terms." } ],  // 2-5, in teaching order
+        "visual": 1,                       // optional: index into this section's "visuals" to show after the stops
+        "visualIntro": "Two words tell you how sweet a Chenin is:",     // optional one line before the visual
+        "mixup": "**Pouilly-Fumé** is Loire Sauvignon Blanc. **Pouilly-Fuissé** is Burgundy Chardonnay.",  // optional
+        "sayIt": "A Loire white. Crisp and mineral."                    // optional; a line a server could say at the table
+      },
+      "check": [12, 13, 14]               // exactly 3 indexes into "cards" that test this section (add cards if needed)
+    }
+  ]
+}
+
+VIDEO = { "youtubeId": "F0jDcA_Ujcc", "title": "Sauvignon Blanc (Everything you need to know)", "by": "Wine Folly", "length": "5:04" }
+- Only these channels: **Wine Folly**, **Court of Master Sommeliers, Americas** (@courtofmastersommeliers), or a wine region's
+  own official body (e.g. Wines of Germany, Champagne's CIVC). Check every video: YouTube oEmbed must return it (title and
+  author_name), and the length comes from the watch page. Never guess an ID.
+
+Writing rules for "read":
+- One column, story order: the big idea → where/what → the stops (one wine, grape or step at a time) → what's on the label →
+  don't mix up → say it at the table.
+- Short paragraphs (2-3 sentences). Plain words a server would use. US spelling (color, liter), French/Italian terms as written.
+- Every sentence must be backed by a fact in "facts". If a new fact is needed, add it to "facts" with its source URL first.
+- "sayIt" lines are ours (not sourced); keep them modest and true.
