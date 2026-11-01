@@ -1175,3 +1175,6 @@ body.eip-lock { overflow: hidden; }
 [data-name="Grid · 4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 [data-name^="Grid · "] > * { width: auto !important; min-width: 0; height: auto !important; }
 @media (max-width: 600px) { [data-name^="Grid · "] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+/* play buttons: the triangle's centre of mass sits in the middle of the circle (Nov 1, Tommy: "Play buttons are off") */
+[data-name="Play"] > [data-name="Play icon"] { left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; overflow: visible !important; }
+[data-name="Play"] > [data-name="Play icon"] > .fsvg { left: 50% !important; top: 50% !important; transform: translate(-33.3%, -50%); }
