@@ -2,6 +2,8 @@
 // Figma section 17: hub 391:32, Level 1 course 392:31, lesson 403:45 (watch → swipe → read → check), Level 2 394:31.
 // Lessons are one per chapter section (content/manual/<slug>.json → "v3", format in SCHEMA.md). The old long chapter
 // page stays at <chapter>/whole-chapter, and the old hub / Level 1 / Level 2 pages stay as "Exam Details".
+import fs from 'node:fs';
+import path from 'node:path';
 import { clone, find, findAll, byName, texts, setText, remove } from './templates.mjs';
 import { chapters, GUIDE, quizHref, shuffleSeeded, blockBuilder } from './manual.mjs';
 
@@ -21,10 +23,36 @@ export const wholeChapterSlug = (ch) => `${GUIDE}/${ch.slug}/whole-chapter`;
 export const doneKey = (ch, i) => `${ch.slug}#${i}`;
 export const lessonFile = (ch, i) => `l-${ch.slug}~${i}`;
 const v3Of = (ch, i) => (ch.v3?.sections || []).find((x) => x.name === ch.sections[i].name) || {};
-const thumb = (v) => (v?.youtubeId ? `https://i.ytimg.com/vi/${v.youtubeId}/hqdefault.jpg` : null);
+const thumb = (v) => (v?.youtubeId ? `https://i.ytimg.com/vi/${v.youtubeId}/mqdefault.jpg` : null);
 const asVid = (v) => (v?.youtubeId ? { kind: 'youtube', youtubeId: v.youtubeId, title: v.title } : null);
 const T = (n) => (n?.c || []).filter((c) => c.t === 'T');
 const setImg = (node, url) => { if (node && url) node.f = [{ img: url, m: 'FILL' }]; };
+
+// Progress (Nov 1, Tommy: "show a completed section, like a percentage of the course … check it off, gray it out … with a green check mark")
+const GREEN = '#2E7D45';
+export function courseProgress(done) {
+  const all = chapters(); const total = all.reduce((a, c) => a + c.sections.length, 0);
+  const k = all.reduce((a, c) => a + c.sections.filter((_, i) => done.has(doneKey(c, i))).length, 0);
+  return { k, total, pct: total ? Math.round((100 * k) / total) : 0 };
+}
+const txt = (s, o = {}) => ({ t: 'T', n: s.slice(0, 40), s, ff: 'Archivo', fs: o.fs || 'Bold', z: o.z || 12, f: [{ c: o.c || '#C49A6C' }], ar: 'W', ...(o.ls ? { ls: o.ls } : {}), sh: 'H', sv: 'H' });
+/** "34% DONE · 31 of 90 sections" over a copper bar. */
+function progressBlock(p, w, dark = true) {
+  const bar = { t: 'F', n: 'Bar', w, h: 6, r: 3, f: [{ c: dark ? '#3A3632' : '#E4DCCF' }], sh: 'F', sv: 'F', c: [{ t: 'R', n: 'Done', x: 0, y: 0, w: Math.max(p.k ? 6 : 0, Math.round((w * p.pct) / 100)), h: 6, r: 3, f: [{ c: p.pct === 100 ? GREEN : '#C49A6C' }] }] };
+  return { t: 'F', n: 'Course progress', lm: 'V', gap: 8, w, h: 30, sh: 'F', sv: 'H', c: [txt(`${p.pct}% DONE · ${p.k} OF ${p.total} SECTIONS`, { ls: '12%', c: p.pct === 100 ? '#7FCB93' : '#C49A6C' }), bar] };
+}
+/** Gray a finished thumbnail and put a green check on it. */
+function markDone(th, check = true) {
+  if (!th) return;
+  th.c = [...(th.c || []).filter((x) => x.n !== 'Play'), { t: 'R', n: 'Done shade', x: 0, y: 0, w: th.w, h: th.h, abs: 1, f: [{ c: '#F2EEE7', o: 0.55 }] },
+    ...(check ? [{ t: 'F', n: 'Done check', x: th.w - 34, y: 8, w: 26, h: 26, r: 13, abs: 1, f: [{ c: GREEN }], lm: 'H', pa: 'C', ca: 'C', c: [txt('✓', { z: 14, c: '#FFFFFF', fs: 'ExtraBold' })] }] : [])];
+}
+// photos for lessons without a video (Unsplash stand-ins, content/research/study-photos.json)
+let PHOTOS;
+const photoOf = (ch, sec) => {
+  if (!PHOTOS) { try { PHOTOS = JSON.parse(fs.readFileSync(path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/research/study-photos.json'), 'utf8')).photos || []; } catch { PHOTOS = []; } }
+  return PHOTOS.find((p) => p.chapter === ch.slug && p.section === sec.name)?.file || null;
+};
 
 /** Text with **bold** words: plain text plus style runs (Figma segments) covering the whole string. */
 function setMd(node, md) {
@@ -73,10 +101,12 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
   if (v.video?.youtubeId) {
     slot.vid = asVid(v.video);
     setImg(slot, thumb(v.video));
+  } else if (photoOf(ch, sec)) {
+    slot.n = 'IMG/Section photo'; slot.f = [{ img: photoOf(ch, sec), m: 'FILL' }]; slot.c = [];
   } else remove(main, slot);
   if (under) {
     const tt = T(find(under, byName('Titles')));
-    setText(tt[0], `SECTION ${si + 1} OF ${n} · ${ch.title.toUpperCase()}`);
+    setText(tt[0], `SECTION ${si + 1} OF ${n} · ${ch.title.toUpperCase()}${ctx.done.has(doneKey(ch, si)) ? ' · DONE ✓' : ''}`);
     setText(tt[1], sec.name.toUpperCase()); tt[1].ar = 'H'; tt[1].sh = 'L'; if (sec.name.length > 22) tt[1].z = 26;
     find(under, byName('Titles')).c = [tt[0], tt[1]];
     find(under, byName('Titles')).sh = 'L';
@@ -129,7 +159,12 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
     if (built.length) {
       vis.lm = 'V'; vis.gap = 12; vis.c = built.map((x) => { x.sh = 'L'; return x; });
       for (const t of findAll(vis, (x) => x.t === 'T' && x.ar === 'W' && (x.s || '').length > 18)) { t.ar = 'H'; t.sh = 'F'; }
-      for (const c of findAll(vis, (x) => /^(Tile|Step) · /.test(x.n || ''))) for (const t of texts(c)) { t.ar = 'H'; t.sh = 'F'; }
+      for (const c of findAll(vis, (x) => /^(Tile|Step) · /.test(x.n || ''))) for (const t of texts(c)) { t.ar = 'H'; t.sh = 'L'; }
+      // rows of steps or tiles share the reading column (628 wide); five or more wrap three to a row instead of running off
+      for (const row of findAll(vis, (x) => x.lm === 'H' && (x.c || []).length >= 2 && x.c.every((c) => /^(Tile|Step) · /.test(c.n || '')))) {
+        const k = row.c.length; const per = k <= 4 ? k : 3; const gap = row.gap || 8; const w = Math.floor((628 - gap * (per - 1)) / per);
+        row.wrap = 1; row.cg = gap; row.sh = 'L'; row.n = `Grid · ${per}`; for (const c of row.c) { c.sh = 'F'; c.w = w; }
+      }
       if (r.visualIntro) setText(introT, r.visualIntro); else read.c = read.c.filter((x) => x !== introT);
     } else read.c = read.c.filter((x) => x !== vis && x !== introT);
     const mix = find(read, byName('Easy to mix up'));
@@ -165,13 +200,18 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
     const th = c.c.find((x) => (x.n || '').startsWith('IMG/'));
     if (th) {
       th.n = 'IMG/Section thumbnail';
-      if (sv?.youtubeId) setImg(th, thumb(sv)); else th.f = [{ c: state === 'here' ? '#3A3632' : '#2A2724' }];
+      if (sv?.youtubeId) setImg(th, thumb(sv)); else if (photoOf(ch, s)) setImg(th, photoOf(ch, s)); else th.f = [{ c: state === 'here' ? '#3A3632' : '#2A2724' }];
       const d = find(th, byName('Duration'));
       // no video: the section is read, not watched
       if (d) { if (sv?.youtubeId && sv.length) setText(T(d)[0], sv.length); else if (sv?.youtubeId) th.c = (th.c || []).filter((x) => x !== d); else setText(T(d)[0], 'Read'); }
     }
+    if (state === 'done') {
+      markDone(th, false);
+      const ck = find(c, byName('Done')); if (ck) { ck.f = [{ c: GREEN }]; for (const t of texts(ck)) t.f = [{ c: '#FFFFFF' }]; }
+    }
     const copy = find(c, byName('Copy')); const cp = T(copy);
-    setText(cp[0], state === 'here' ? 'NOW PLAYING' : `SECTION ${i + 1}`); setText(cp[1], s.name);
+    if (state === 'done') { cp[0].s = 'DONE'; cp[0].f = [{ c: GREEN }]; cp[1].f = [{ c: '#5E574F' }]; }
+    if (state !== 'done') setText(cp[0], state === 'here' ? 'NOW PLAYING' : `SECTION ${i + 1}`); setText(cp[1], s.name);
     copy.sh = 'F'; copy.w = 172; cp[1].ar = 'H'; cp[1].sh = 'F'; cp[1].w = 172;
     return c;
   });
@@ -210,6 +250,9 @@ export function level1Page(page, ctx) {
   const lead = find(find(main, byName('Hero')), (x) => x.t === 'T' && /video lessons/.test(x.s || ''));
   if (lead) setText(lead, 'Twelve video lessons with practice cards, then two days with us.');
   for (const t of findAll(find(main, byName('How it works')) || { c: [] }, (x) => x.t === 'T' && (x.s || '').length > 2)) { t.ar = 'H'; t.sh = 'L'; }
+  const prog = courseProgress(ctx.done);
+  const heroCopy = find(find(main, byName('Hero')), byName('Copy'));
+  if (heroCopy) { const at = heroCopy.c.findIndex((x) => x.n === 'At a glance'); heroCopy.c.splice(at + 1, 0, progressBlock(prog, 398)); }
   // twelve lessons
   const grid = find(main, byName('Lessons')); const tiles = grid.c;
   const P = { done: tiles[0], half: tiles[3], todo: tiles[4] };
@@ -221,15 +264,18 @@ export function level1Page(page, ctx) {
     const vid = ch.v3?.video || v3Of(ch, 0).video;
     if (th) {
       th.n = 'IMG/Lesson thumbnail';
-      if (vid?.youtubeId) setImg(th, thumb(vid)); else th.f = [{ c: '#2A2724' }];
+      const ph = !vid?.youtubeId && ch.sections.map((x) => photoOf(ch, x)).find(Boolean);
+      if (vid?.youtubeId) setImg(th, thumb(vid)); else if (ph) setImg(th, ph); else th.f = [{ c: '#2A2724' }];
       const d = find(th, byName('Duration')); if (d) { if (vid?.length) setText(T(d)[0], vid.length); else th.c = th.c.filter((x) => x !== d); }
       const num = find(th, byName('Number')); if (num) setText(T(num)[0], (s.state === 'done' ? '✓ ' : '') + String(ch.number).padStart(2, '0'));
       const w = find(th, byName('Watched')); if (w) w.w = Math.round((th.w || 250) * (s.k / s.n));
       if (!vid?.youtubeId) th.c = (th.c || []).filter((x) => x.n !== 'Play');
     }
+    if (s.state === 'done' && th) markDone(th);
     const t = T(c); setText(t[0], ch.title);
+    if (s.state === 'done') { setText(t[1], `✓ Done · ${s.n} sections`); t[1].f = [{ c: GREEN }]; t[1].fs = 'Bold'; }
     const videos = ch.sections.filter((_, i) => v3Of(ch, i).video?.youtubeId).length;
-    setText(t[1], s.state === 'half' ? `${s.k} of ${s.n} sections · ${ch.cards.length} cards` : `${s.n} sections · ${videos} videos · ${ch.cards.length} cards`);
+    if (s.state !== 'done') setText(t[1], s.state === 'half' ? `${s.k} of ${s.n} sections done · ${ch.cards.length} cards` : `${s.n} sections · ${videos} videos · ${ch.cards.length} cards`);
     return c;
   });
   const head = find(find(main, byName('The course')), byName('Head'));
@@ -257,6 +303,7 @@ export function hubPage(page, ctx) {
   if (cont && nx?.started) {
     cont.to = '/' + lessonSlug(nx.ch, nx.i);
     const cc = T(find(cont, byName('Copy'))); setText(cc[1], `${nx.ch.title} · ${nx.ch.sections[nx.i].name}`);
+    setText(cc[0], `PICK UP WHERE YOU LEFT OFF · ${courseProgress(ctx.done).pct}% OF LEVEL 1 DONE`);
     const s = chapterState(nx.ch, ctx.done); const pb = find(cont, byName('Progress')); if (pb?.c?.[0]) pb.c[0].w = Math.round((pb.w || 320) * (s.k / s.n));
     const th = cont.c.find((x) => (x.n || '').startsWith('IMG/')); const vv = v3Of(nx.ch, nx.i).video || nx.ch.v3?.video; if (th && vv) setImg(th, thumb(vv));
     const rb = find(cont, byName('Button · Resume')); if (rb) rb.to = cont.to;
