@@ -148,7 +148,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .flink:focus-visible
   [data-name="Head cells"] { margin-left: auto; }
   /* Wine heroes: the stat strip becomes a 2-up grid instead of clipping, and the copy column loses its desktop height. */
   [data-name="Hero"] > [data-name="Copy"] { height: auto !important; min-height: 0 !important; }
-  [data-name="Hero"] > [data-name="Copy"] > :nth-child(3) { font-size: min(49px, 10.5vw) !important; overflow-wrap: anywhere; }
+  [data-name="Hero"] > [data-name="Copy"] > :nth-child(3).display { font-size: min(49px, 10.5vw) !important; overflow-wrap: anywhere; }
   [data-name="Stats"] { display: grid !important; grid-template-columns: 1fr 1fr; height: auto !important; }
   [data-name="Stats"] > * { width: auto !important; min-width: 0; flex: none !important; min-height: 56px; }
 }
@@ -1178,3 +1178,32 @@ body.eip-lock { overflow: hidden; }
 /* play buttons: the triangle's centre of mass sits in the middle of the circle (Nov 1, Tommy: "Play buttons are off") */
 [data-name="Play"] > [data-name="Play icon"] { left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; overflow: visible !important; }
 [data-name="Play"] > [data-name="Play icon"] > .fsvg { left: 50% !important; top: 50% !important; transform: translate(-33.3%, -50%); }
+@media (max-width: 859px) {
+  /* Sommelier heroes: the lead stays body size (the wine-hero rule above is for wine names) */
+  [data-name="Hero"] > [data-name="Copy"] > [data-name="Lead"] { font-size: 16px !important; overflow-wrap: normal; }
+  /* video thumbnails keep their 16:9 shape when the layout reflows */
+  [data-name^="IMG/Video"], [data-name="IMG/Lesson thumbnail"], [data-name="IMG/Section thumbnail"], [data-name="IMG/Section photo"],
+  [data-name="Video · Your Study Schedule"], [data-name="Continue"] > [data-name^="IMG/"] { height: auto !important; min-height: 0 !important; aspect-ratio: 16 / 9; }
+  [data-name="Continue"] > [data-name^="IMG/"] { width: 100% !important; }
+  /* level and part titles on photo cards fit their card */
+  [data-name^="Level "] > [data-name="Copy"], [data-name^="Part "] > [data-name="Copy"] { left: 16px !important; right: 16px; width: auto !important; }
+}
+@media (max-width: 859px) {
+  [data-name^="Level "] .ftext.fit, [data-name^="Part "] .ftext.fit { font-size: min(var(--z), calc((50vw - 64px) / (var(--lw) * 0.66))) !important; }
+}
+@media (max-width: 859px) {
+  /* lesson tiles and section rows: thumbnails fill their tile, so the length badge stays in the corner */
+  [data-name^="Lesson "], [data-name^="Video · "] { min-width: 0; }
+  [data-name="IMG/Lesson thumbnail"], [data-name^="Video · "] > [data-name^="IMG/"] { width: 100% !important; max-width: 100% !important; }
+}
+/* length badges size to their text and sit in the corner (they clipped to "17:5" on phones) */
+[data-name="Duration"] { width: auto !important; height: auto !important; overflow: visible !important; white-space: nowrap; }
+[data-name^="Video · "] > [data-name="Duration"] { top: auto !important; left: auto !important; right: 8px; bottom: 8px; }
+@media (max-width: 859px) {
+  [data-name="Levels"] > [data-name^="Level "], [data-name="Parts"] > [data-name^="Part "] { display: flex !important; flex-direction: column; justify-content: flex-end; }
+  [data-name="Levels"] > [data-name^="Level "] > [data-name="Copy"], [data-name="Parts"] > [data-name^="Part "] > [data-name="Copy"] { position: relative !important; top: auto !important; bottom: auto !important; left: auto !important; padding: 0 16px 18px; z-index: 1; }
+}
+/* photo cards: the shade always covers the whole card */
+[data-name^="Level "] > [data-name="Shade"], [data-name^="Part "] > [data-name="Shade"], [data-name="Hero"] > [data-name="Shade"] { inset: 0 !important; width: 100% !important; height: 100% !important; top: 0 !important; left: 0 !important; position: absolute !important; }
+/* photo cards on phones: no second gradient behind the words (the card's own shade already darkens the photo) */
+.hero-flow[data-name^="Level "] > div:not([data-name]), .hero-flow[data-name^="Part "] > div:not([data-name]) { background: none !important; }
