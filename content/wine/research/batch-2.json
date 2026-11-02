@@ -1,0 +1,654 @@
+{
+ "regions": [
+  {
+   "slug": "wine/italy/emilia-romagna",
+   "styles": [
+    {
+     "style": "Sparkling",
+     "examples": "Lambrusco di Sorbara, Lambrusco Grasparossa di Castelvetro, Lambrusco Salamino di Santa Croce",
+     "source": "https://lambrusco.net/denominazioni-2/"
+    },
+    {
+     "style": "Red",
+     "examples": "Romagna Sangiovese",
+     "source": "https://www.consorziovinidiromagna.it/vini/sangiovese/"
+    },
+    {
+     "style": "White",
+     "examples": "Romagna Albana (secco), Romagna Trebbiano",
+     "source": "https://www.consorziovinidiromagna.it/vini/albana/"
+    },
+    {
+     "style": "Sweet",
+     "examples": "Romagna Albana Passito, Romagna Albana Dolce",
+     "source": "https://www.consorziovinidiromagna.it/vini/albana/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--italy--emilia-romagna.jpg",
+    "unsplashId": "C1E5YVELNM0",
+    "photographer": "Paolo Bendandi",
+    "description": "Autumn view over the clay hills and vineyards of the Romagna Apennines; location confirmed on Unsplash as Parco del Carnè, Brisighella (Ravenna)"
+   },
+   "notes": "Lambrusco is listed under Sparkling: the Lambrusco consortium describes all its DOCs as foaming ('spuma') red wines ('bollicine rosse emiliane'), from secco to dolce, red or rosato. It is also a red wine, so cross-list under Red if the app wants that; Red here uses Romagna Sangiovese to avoid counting Lambrusco twice. Romagna Trebbiano as a white also on https://www.consorziovinidiromagna.it/vini/trebbiano/. No source gives a main style or share (Wine Folly gives only ~9% of Italy's DOC production for the region)."
+  },
+  {
+   "slug": "wine/italy/marche",
+   "styles": [
+    {
+     "style": "White",
+     "examples": "Verdicchio dei Castelli di Jesi, Castelli di Jesi Verdicchio Riserva, Verdicchio di Matelica",
+     "source": "https://imtdoc.it/vino/castelli-jesi-verdicchio-riserva/"
+    },
+    {
+     "style": "Red",
+     "examples": "Rosso Conero, Conero Riserva, Lacrima di Morro d'Alba",
+     "source": "https://imtdoc.it/vino/rosso-conero/"
+    },
+    {
+     "style": "Sparkling",
+     "examples": "Vernaccia di Serrapetrona",
+     "source": "https://imtdoc.it/vino/vernaccia-serrapetrona/"
+    },
+    {
+     "style": "Sweet",
+     "examples": "Vernaccia di Serrapetrona (dolce), Lacrima di Morro d'Alba Passito",
+     "source": "https://imtdoc.it/vino/vernaccia-serrapetrona/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--italy--marche.jpg",
+    "unsplashId": "Q6dxsdPwjwY",
+    "photographer": "Ernesto Scarponi",
+    "description": "Curving vine rows in late autumn, seen from above; location confirmed on Unsplash as Grottammare (Ascoli Piceno), Le Marche"
+   },
+   "notes": "IMT calls Verdicchio 'l'emblema dell'enologia marchigiana' and Wine Folly (https://winefolly.com/deep-dive/italian-wine-regions-map/) says Marche is 'famous for its aromatic white wines', but neither says white is the majority, so main is not set. Pecorino is a good white example but only Wine Folly supports it. Lacrima di Morro d'Alba confirmed at https://imtdoc.it/vino/lacrima-morro-dalba/. Vernaccia di Serrapetrona is a red sparkling DOCG made both sweet and dry, so it appears under Sparkling and Sweet. Rosé (new Conero Rosato) too thin to list."
+  },
+  {
+   "slug": "wine/italy/umbria",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "Montefalco Sagrantino DOCG, Montefalco Rosso",
+     "source": "https://www.consorziomontefalco.it/"
+    },
+    {
+     "style": "White",
+     "examples": "Orvieto, Orvieto Classico",
+     "source": "https://www.orvietodoc.it/vitigni-orvietodoc/"
+    },
+    {
+     "style": "Sweet",
+     "examples": "Montefalco Sagrantino Passito, Orvieto Muffa Nobile",
+     "source": "https://www.consorziomontefalco.it/montefalco-sagrantino-docg/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--italy--umbria.jpg",
+    "unsplashId": "TPDfnKAKbVc",
+    "photographer": "Gabriel Tovar",
+    "description": "Orvieto's old town on its tufa cliff above the green Umbrian countryside; location confirmed on Unsplash as Orvieto, Province of Terni"
+   },
+   "notes": "Order follows Wine Folly (reds first, Orvieto white second); no source states a main style or share. Orvieto Muffa Nobile (and dolce / vendemmia tardiva Orvieto) are on the orvietodoc.it page. The Orvieto consortium's own domain (consorziovinidiorvieto.it) refused https and redirects to orvietodoc.it. No Umbrian rosé or sparkling sourced."
+  },
+  {
+   "slug": "wine/italy/abruzzo",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "over 80%",
+     "examples": "Montepulciano d'Abruzzo, Montepulciano d'Abruzzo Colline Teramane DOCG",
+     "source": "https://www.vinidabruzzo.it/consorzio/"
+    },
+    {
+     "style": "Rosé",
+     "examples": "Cerasuolo d'Abruzzo",
+     "source": "https://www.vinidabruzzo.it/consorzio/"
+    },
+    {
+     "style": "White",
+     "examples": "Trebbiano d'Abruzzo, Abruzzo Pecorino, Abruzzo Passerina",
+     "source": "https://www.vinidabruzzo.it/consorzio/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--italy--abruzzo.jpg",
+    "unsplashId": "R9qJcIvHxDc",
+    "photographer": "Sue Winston",
+    "description": "Vines and a green valley with distant hills framed by two umbrella pines; location confirmed on Unsplash as Abruzzo (exact town not stated)"
+   },
+   "notes": "Share: the consortium says Montepulciano d'Abruzzo DOC 'da solo, rappresenta oltre l'80% del totale dei vini a denominazione prodotti in Abruzzo'. That is a share of DO wines, not all wine, and treating it as 'red' is an inference: the page doesn't use the word rosso, but Cerasuolo is now a separate rosé DOC, so Montepulciano d'Abruzzo DOC is red only. Wine Folly also says 'Look for red wines'. Drop main/share if that inference isn't acceptable. Controguerra passito and spumante exist but are minor, so Sweet and Sparkling are left out."
+  },
+  {
+   "slug": "wine/italy/campania",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "Taurasi DOCG, Irpinia Campi Taurasini",
+     "source": "https://consorziovinidirpinia.it/guide/vini-dirpinia/"
+    },
+    {
+     "style": "White",
+     "examples": "Fiano di Avellino DOCG, Greco di Tufo DOCG, Irpinia Falanghina",
+     "source": "https://consorziovinidirpinia.it/guide/vini-dirpinia/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--italy--campania.jpg",
+    "unsplashId": "9vAgqp8Ub1g",
+    "photographer": "Pieter Biesemans",
+    "description": "Autumn vine rows inside the Pompeii ruins with Mount Vesuvius behind; place stated in the photo caption (Pompeii, near Naples)"
+   },
+   "notes": "Only consortium source is Irpinia's (part of Campania); Wine Folly agrees (Aglianico/Taurasi red, Greco white). No main or share sourced. The Irpinia guide also lists Greco di Tufo Spumante, Irpinia Rosato and Irpinia Passito, all minor, so not listed. Sannio (Falanghina) and Vesuvio consortia not checked."
+  },
+  {
+   "slug": "wine/italy/puglia",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "Primitivo di Manduria, Primitivo di Manduria Riserva, Salice Salentino Rosso",
+     "source": "https://www.consorziotutelaprimitivo.com/disciplinare-doc/"
+    },
+    {
+     "style": "Rosé",
+     "examples": "Salice Salentino Rosato",
+     "source": "https://www.consorziosalicesalentino.it/salice-salentino/"
+    },
+    {
+     "style": "Sweet",
+     "examples": "Primitivo di Manduria Dolce Naturale DOCG",
+     "source": "https://www.consorziotutelaprimitivo.com/disciplinare-di-manduria-docg/"
+    },
+    {
+     "style": "White",
+     "examples": "Puglia Chardonnay",
+     "source": "https://winefolly.com/deep-dive/italian-wine-regions-map/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--italy--puglia.jpg",
+    "unsplashId": "WrTmDE7Su0I",
+    "photographer": "Gabriella Clare Marino",
+    "description": "Two crates of freshly picked white grapes on the vineyard soil at harvest; caption says a vineyard in Puglia"
+   },
+   "notes": "The Primitivo di Manduria DOC rules say the DOC 'è riservata ai vini rossi'. The Salice Salentino consortium calls its Rosato 'la varietà più antica'. White rests only on Wine Folly ('value-driven Chardonnay'), which names no appellation, so 'Puglia Chardonnay' is a generic label. No main or share sourced. Photo: a sister shot from the same harvest set (vJbkA08lWzY) is already used on the study pages, so this is a different frame; there was no confirmed Puglia vineyard landscape on Unsplash."
+  },
+  {
+   "slug": "wine/italy/sardinia",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "Cannonau di Sardegna, Carignano del Sulcis, Mandrolisai",
+     "source": "https://winefolly.com/update/introduction-to-sardinian-wine/"
+    },
+    {
+     "style": "White",
+     "examples": "Vermentino di Gallura DOCG, Vernaccia di Oristano",
+     "source": "https://www.vermentinogallura.wine/"
+    },
+    {
+     "style": "Sweet",
+     "examples": "Malvasia di Bosa (sweet), Moscato",
+     "source": "https://winefolly.com/update/introduction-to-sardinian-wine/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--italy--sardinia.jpg",
+    "unsplashId": "ofqmr6NnJlI",
+    "photographer": "Oscar Scannell",
+    "description": "A young vineyard in the foreground, with a fortified hill town on a headland above the sea; location confirmed on Unsplash only as Sardinia (the town looks like Castelsardo, unconfirmed)"
+   },
+   "notes": "Wine Folly calls Cannonau 'the #1 wine of Sardinia' and the most planted grape (~30% of vineyard area): a vineyard share, not a style share, so main is not set. The Cannonau consortium domain is parked, so Red rests on Wine Folly. Vernaccia di Oristano (flor-aged white) comes from the Wine Folly page; it also has a fortified type, unsourced. Sweet rests on Wine Folly. Vermentino sparkling versions are sourced but minor. No rosé sourced."
+  },
+  {
+   "slug": "wine/france/alsace",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": "over 90%",
+     "examples": "Alsace Riesling, Alsace Gewurztraminer, Alsace Grand Cru",
+     "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=21"
+    },
+    {
+     "style": "Sparkling",
+     "share": "about a quarter",
+     "examples": "Crémant d'Alsace",
+     "source": "https://www.vinsalsace.com/en/tastes-and-colours/aoc/"
+    },
+    {
+     "style": "Sweet",
+     "examples": "Vendanges Tardives, Sélection de Grains Nobles",
+     "source": "https://www.vinsalsace.com/en/tastes-and-colours/aoc/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--france--alsace.jpg",
+    "unsplashId": "J4OTRwFnLu4",
+    "photographer": "Michiel Mulder",
+    "description": "Golden autumn vines in front of a half-timbered village and church tower, with wooded Vosges slopes behind; caption: Riquewihr, seen through the vineyards"
+   },
+   "notes": "'Over 90%' is the Court's figure for wine from white grapes, so it overlaps with Crémant (mostly made from white grapes). 'About a quarter of production' for Crémant d'Alsace is from vinsalsace.com. VT is late harvest and not always fully sweet (Court guide p.22). Pinot Noir red and rosé exist (vinsalsace.com grape page) but are small, so not listed."
+  },
+  {
+   "slug": "wine/france/beaujolais",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "94%",
+     "examples": "Morgon, Fleurie, Moulin-à-Vent",
+     "source": "https://www.beaujolais.com/wp-content/uploads/sites/2/2023/10/Dossier-de-presse-Beaujolais-Nouveaux-Millesime-2023.pdf#page=16"
+    },
+    {
+     "style": "White",
+     "share": "4%",
+     "examples": "Beaujolais Blanc, Beaujolais-Villages Blanc",
+     "source": "https://www.beaujolais.com/wp-content/uploads/sites/2/2023/10/Dossier-de-presse-Beaujolais-Nouveaux-Millesime-2023.pdf#page=16"
+    },
+    {
+     "style": "Rosé",
+     "share": "2%",
+     "examples": "Beaujolais Rosé, Beaujolais-Villages Rosé",
+     "source": "https://www.beaujolais.com/wp-content/uploads/sites/2/2023/10/Dossier-de-presse-Beaujolais-Nouveaux-Millesime-2023.pdf#page=16"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--france--beaujolais.jpg",
+    "unsplashId": "rfoTvf8KdmM",
+    "photographer": "Carnet de Voyage d'Alex",
+    "description": "Patchwork of vineyards and a village in a valley below wooded hills; location confirmed on Unsplash as Brouilly, Odenas"
+   },
+   "notes": "Shares are 'répartition par couleur en volume' on p.16 of Inter Beaujolais' 2023 Beaujolais Nouveaux press kit (all Beaujolais AOCs, all colours). The same page says the 10 crus are 100% red; Beaujolais and Beaujolais-Villages come in all three colours, which is why white/rosé examples use those two names."
+  },
+  {
+   "slug": "wine/france/languedoc-roussillon",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "65%",
+     "examples": "Pic Saint-Loup, Minervois, Corbières",
+     "source": "https://languedoc-wines.com/Telecharger/134/dossier-de-presse/223173/dossier-de-presse-2022-2023.pdf#page=20"
+    },
+    {
+     "style": "White",
+     "share": "23%",
+     "examples": "Picpoul de Pinet, Limoux",
+     "source": "https://languedoc-wines.com/Telecharger/134/dossier-de-presse/223173/dossier-de-presse-2022-2023.pdf#page=24"
+    },
+    {
+     "style": "Rosé",
+     "examples": "AOP Languedoc rosé",
+     "source": "https://winefolly.com/deep-dive/languedoc-roussillon-wine-region/"
+    },
+    {
+     "style": "Sparkling",
+     "examples": "Crémant de Limoux, Blanquette de Limoux",
+     "source": "https://winefolly.com/deep-dive/languedoc-roussillon-wine-region/"
+    },
+    {
+     "style": "Sweet",
+     "examples": "Maury, Languedoc Muscats",
+     "source": "https://winefolly.com/deep-dive/languedoc-roussillon-wine-region/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--france--languedoc-roussillon.jpg",
+    "unsplashId": "SqwDSpNrT7Q",
+    "photographer": "Morgane Le Breton",
+    "description": "The limestone peak of Pic Saint-Loup above wooded garrigue with vineyard plots in the valley; caption: Pic Saint-Loup in fall"
+   },
+   "notes": "65% and 23% come from the CIVL (Languedoc AOP wine body) 2022-2023 press kit and cover the Languedoc appellations ('notre production', 'nos appellations'), not the Roussillon AOPs; red is called 'connus pour nos rouges'. Rosé, sparkling and sweet are from the Wine Folly Languedoc-Roussillon page (Maury is a Roussillon fortified red; Muscat whites are vins doux naturels). Examples Pic Saint-Loup/Minervois/Corbières and Picpoul de Pinet/Limoux are named in the same press kit."
+  },
+  {
+   "slug": "wine/france/south-west",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "Cahors, Madiran",
+     "source": "https://winefolly.com/deep-dive/wines-of-southwest-france/"
+    },
+    {
+     "style": "White",
+     "examples": "Jurançon Sec, Gaillac Premières Côtes, Côtes de Gascogne",
+     "source": "https://winefolly.com/deep-dive/wines-of-southwest-france/"
+    },
+    {
+     "style": "Rosé",
+     "examples": "Marcillac, Coteaux du Quercy, Côtes de Gascogne",
+     "source": "https://winefolly.com/deep-dive/wines-of-southwest-france/"
+    },
+    {
+     "style": "Sweet",
+     "examples": "Jurançon, Monbazillac, Saussignac",
+     "source": "https://winefolly.com/deep-dive/wines-of-southwest-france/"
+    },
+    {
+     "style": "Sparkling",
+     "examples": "Gaillac",
+     "source": "https://winefolly.com/deep-dive/wines-of-southwest-france/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--france--south-west.jpg",
+    "unsplashId": "ulWzP4eWVss",
+    "photographer": "Didier VEILLON",
+    "description": "Summer vineyard rows under a bright, cloudy sky; location confirmed on Unsplash as Monbazillac"
+   },
+   "notes": "No share data; order follows the Wine Folly page (reds Cahors/Madiran are its 'most famous' AOPs). Côtes de Gascogne IGP 'exports about 75% of its whites, reds and rosés' per Wine Folly; that is an export figure, not a style share."
+  },
+  {
+   "slug": "wine/france/jura",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": "42%",
+     "examples": "Côtes du Jura blanc, Arbois blanc, Vin Jaune (Château-Chalon)",
+     "source": "https://jura-vins.com/medias/Infographie_Vignoble_Jura_2024_VF.pdf"
+    },
+    {
+     "style": "Sparkling",
+     "share": "29%",
+     "examples": "Crémant du Jura",
+     "source": "https://jura-vins.com/medias/Infographie_Vignoble_Jura_2024_VF.pdf"
+    },
+    {
+     "style": "Red",
+     "share": "19%",
+     "examples": "Arbois Poulsard, Arbois Trousseau, Côtes du Jura rouge",
+     "source": "https://jura-vins.com/medias/Infographie_Vignoble_Jura_2024_VF.pdf"
+    },
+    {
+     "style": "Sweet",
+     "share": "about 7%",
+     "examples": "Macvin du Jura, Vin de Paille",
+     "source": "https://jura-vins.com/medias/Infographie_Vignoble_Jura_2024_VF.pdf"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--france--jura.jpg",
+    "unsplashId": "8Uc3FtfBx6M",
+    "photographer": "Arnaud Schildknecht",
+    "description": "Limestone cliffs and autumn woods of the Baume-les-Messieurs reculée, with the village on the valley floor; caption: Baume-les-Messieurs, Jura, autumn 2019 (no vines in frame; the village sits in the Côtes du Jura area)"
+   },
+   "notes": "Shares are 'répartition des ventes par produit' in hectolitres, Aug 2022 to Jul 2023 (CIVJ 2024 key-figures infographic, p.2): rouge 19%, blanc 42%, vin jaune 4%, crémant 29%, macvin 6%, vin de paille 1%. Vin Jaune (4%) is a dry flor-aged white listed separately from 'blanc', so white is 42% (46% with vin jaune). Sweet = Macvin (fortified) 6% + vin de paille 1%. main is set because white is the largest share stated. No confirmed Jura vineyard photo on Unsplash."
+  },
+  {
+   "slug": "wine/usa/finger-lakes",
+   "styles": [
+    {
+     "style": "White",
+     "examples": "Seneca Lake dry Riesling, Cayuga Lake Riesling, unoaked Finger Lakes Chardonnay",
+     "source": "https://newyork.guides.winefolly.com/regions/finger-lakes"
+    },
+    {
+     "style": "Red",
+     "examples": "Finger Lakes Cabernet Franc, Baco Noir (hybrid)",
+     "source": "https://newyork.guides.winefolly.com/regions/finger-lakes"
+    },
+    {
+     "style": "Sparkling",
+     "examples": "Traditional-method Finger Lakes sparkling (Chardonnay/Pinot Noir), Sparkling Riesling",
+     "source": "https://newyork.guides.winefolly.com/regions/finger-lakes"
+    },
+    {
+     "style": "Sweet",
+     "examples": "Finger Lakes Riesling ice wine",
+     "source": "https://newyork.guides.winefolly.com/regions/finger-lakes"
+    },
+    {
+     "style": "Rosé",
+     "examples": "Dry Cabernet Franc rosé",
+     "source": "https://newyork.guides.winefolly.com/regions/finger-lakes"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--finger-lakes.jpg",
+    "unsplashId": "LYk5eN-vCos",
+    "photographer": "Rob Garay",
+    "description": "Sunset over open water and a low far shore; caption: Sunset at Seneca Lake (no vines in frame)"
+   },
+   "notes": "Wine Folly says the flagship is dry Riesling and that Riesling is the most planted vinifera grape. It doesn't say white is the majority style, so main is omitted. It calls ice wine 'quite rare', and it doesn't mention late harvest. fingerlakeswine.com refused connections. Photo: Luke Hodde's Boundary Breaks vineyard shot (M-l-Y4R7hRk) was the first pick but is already used for the New York page, so this is a different one."
+  },
+  {
+   "slug": "wine/usa/mendocino",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "Anderson Valley Pinot Noir, Mendocino Ridge Pinot Noir, Mendocino Carignan/Barbera",
+     "source": "https://winefolly.com/deep-dive/beyond-napa-the-lessor-known-north-coast-wine-regions/"
+    },
+    {
+     "style": "White",
+     "examples": "Anderson Valley Chardonnay, Anderson Valley Gewürztraminer, Anderson Valley Riesling/Pinot Gris",
+     "source": "https://avwines.com/grapes/"
+    },
+    {
+     "style": "Sparkling",
+     "examples": "Anderson Valley traditional-method sparkling (Chardonnay/Pinot Noir)",
+     "source": "https://www.visitmendocino.com/wineries-producing-sparkling-wine/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--mendocino.jpg",
+    "unsplashId": "KegXq5KnAz4",
+    "photographer": "Spencer DeMera",
+    "description": "Hillside vineyard below a forested ridge on a sunny autumn day; Unsplash location is Sonoma, CA, not Mendocino"
+   },
+   "notes": "Wine Folly says 'the majority of the region is planted with Chardonnay and Pinot Noir'. That is combined, so main is omitted and the Red-before-White order isn't sourced. Anderson Valley Winegrowers (avwines.com/about-anderson-valley-wine-region/) also lists Pinot Noir, Chardonnay, sparkling and Alsatian wines as its focus. The Mendocino Winegrowers site (mendowine.com) is being rebuilt and its fact sheet PDF is gone. Search snippets put Chardonnay at about 38% of the 2022 harvest, but I couldn't fetch that, so it isn't used. Zinfandel couldn't be sourced as a current signature. Photo is not place-specific: no Mendocino or Anderson Valley vineyard photo exists on Unsplash; this is a similar forested north-coast hillside vineyard in neighbouring Sonoma County."
+  },
+  {
+   "slug": "wine/usa/lodi",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "Lodi old-vine Zinfandel, Mokelumne River Zinfandel, old-vine Cinsault",
+     "source": "https://www.lodiwine.com/about-lodi/old-vines/"
+    },
+    {
+     "style": "White",
+     "examples": "Lodi Chardonnay, Lodi Sauvignon Blanc, Lodi Albariño/Vermentino",
+     "source": "https://www.lodiwine.com/about-lodi/grape-varieties/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--lodi.jpg",
+    "unsplashId": "ntkg_rbRhpg",
+    "photographer": "Spencer DeMera",
+    "description": "Flat green vineyard rows with dry golden hills behind; Unsplash location is the San Francisco Bay Area, CA, not Lodi"
+   },
+   "notes": "Wine Folly (https://winefolly.com/deep-dive/guide-lodi-wine-ca/) says 'Zinfandel is the most widely planted grape in the region'. Lodi Wine says Lodi makes 'nearly 40 percent of California's premium Zinfandel'. Neither gives the red style's share of Lodi itself, so main and share are omitted. No source found for rosé, sparkling or port-style sweet wines, even though Portuguese grapes are planted. Photo is not place-specific: nothing on Unsplash is confirmed as Lodi (California). The \"Lodi\" search hits are Lodi, New York."
+  },
+  {
+   "slug": "wine/usa/virginia",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "58%",
+     "examples": "Virginia Cabernet Franc, Petit Verdot, Bordeaux-style (Meritage) blends",
+     "source": "https://winefolly.com/wine-regions/united-states/virginia/"
+    },
+    {
+     "style": "White",
+     "share": "42%",
+     "examples": "Virginia Viognier, Chardonnay, Petit Manseng",
+     "source": "https://winefolly.com/wine-regions/united-states/virginia/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--virginia.jpg",
+    "unsplashId": "1Rv6dZML1LY",
+    "photographer": "Meg von Haartman",
+    "description": "Dormant vine rows on a grassy slope with the Blue Ridge foothills behind under a dramatic sky; location confirmed on Unsplash as Pippin Hill Farm & Vineyards, North Garden, VA (Monticello area)"
+   },
+   "notes": "Wine Folly states '58% Reds 42% Whites'. Petit Manseng comes from the virginia.org Governor's Cup page (13 gold medals). virginiawine.org is behind a Cloudflare check and couldn't be fetched. Rosé and dessert wines weren't sourced. Sparkling was dropped from the list: the only fetched support was one sparkling wine in the 2026 Governor's Cup Case (https://www.virginia.org/blog/post/best-virginia-wines/), not a 'known for' statement."
+  },
+  {
+   "slug": "wine/usa/texas-hill-country",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "Texas Hill Country Tempranillo, Tannat/Mourvèdre, Fredericksburg Sangiovese",
+     "source": "https://texashillcountry.guides.winefolly.com/"
+    },
+    {
+     "style": "White",
+     "examples": "Texas Hill Country Viognier, Vermentino, Albariño",
+     "source": "https://texashillcountry.guides.winefolly.com/regions/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--texas-hill-country.jpg",
+    "unsplashId": "xgaaWJt7xEw",
+    "photographer": "Thomas Schimonsky",
+    "description": "A field of bluebonnets in front of an old stone farmhouse; caption: Texas Bluebonnet Field in Burnet, Texas (Hill Country; no vines in frame)"
+   },
+   "notes": "Rosé is not sourced. Wine Folly's wines page only says Black Spanish (Lenoir) is 'often used in blends, rosés, or fortified styles', which isn't enough to call it a regional style. Sparkling is only an 'occasional sparkling experiment' plus Heath Sparkling Wines, so it's left out. texaswinecountry.org returned no content. txwines.org confirms Bordeaux blends and Italian reds for the AVA. Photo: the only Hill Country vineyard shot found showed a readable winery name on a glass, so it was rejected."
+  },
+  {
+   "slug": "wine/usa/southern-oregon",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "Rogue Valley Cabernet Sauvignon/Syrah, Umpqua Valley Pinot Noir (Elkton), Umpqua/Applegate Tempranillo",
+     "source": "https://www.oregonwine.org/regions/umpqua-valley/"
+    },
+    {
+     "style": "White",
+     "examples": "Rogue Valley Viognier, Umpqua Valley Pinot Gris, Umpqua Valley Albariño",
+     "source": "https://www.oregonwine.org/regions/rogue-valley/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--southern-oregon.jpg",
+    "unsplashId": "raBtFn1pXSo",
+    "photographer": "Spencer DeMera",
+    "description": "A green, forested river valley under a cloudy sky; location confirmed on Unsplash as Rogue River, OR (no vines in frame)"
+   },
+   "notes": "Both oregonwine.org pages list 'Predominant Varieties' with no shares (Rogue: Cabernet Sauvignon, Syrah, Viognier, Pinot noir, Chardonnay, Pinot gris; Umpqua: Pinot noir, Pinot gris, Syrah, Tempranillo, Merlot, Albarino). Applegate Tempranillo comes from an oregonwine.org Applegate Valley page I saw only in search results, so it's unconfirmed. Rosé and sparkling weren't sourced. southernoregonwine.org refused connections. Photo shows the Rogue River landscape, not a vineyard; no Southern Oregon vineyard photo found on Unsplash."
+  },
+  {
+   "slug": "wine/usa/long-island",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "North Fork Merlot, Long Island Bordeaux blends (Meritage), Cabernet Franc",
+     "source": "https://newyork.guides.winefolly.com/regions/long-island"
+    },
+    {
+     "style": "White",
+     "examples": "North Fork Chardonnay, Long Island Sauvignon Blanc/Albariño",
+     "source": "https://newyork.guides.winefolly.com/regions/long-island"
+    },
+    {
+     "style": "Rosé",
+     "examples": "The Hamptons dry Cabernet Franc rosé",
+     "source": "https://newyork.guides.winefolly.com/regions/long-island"
+    },
+    {
+     "style": "Sparkling",
+     "examples": "Traditional-method brut (Chardonnay/Pinot Noir), North Fork pét-nat",
+     "source": "https://newyork.guides.winefolly.com/regions/long-island"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--long-island.jpg",
+    "unsplashId": "TrQzO5b8ZxE",
+    "photographer": "Neil Daftary",
+    "description": "Dormant vine rows under bird netting with dandelions between the rows; location confirmed on Unsplash as Long Island, New York (vineyard/winery tags)"
+   },
+   "notes": "The source says the flagship is Bordeaux varieties and that 'Merlot is the most planted grape variety'. It doesn't say red is the majority style, so main is omitted. liwines.com loaded but I didn't use it."
+  },
+  {
+   "slug": "wine/usa/arizona",
+   "styles": [],
+   "photo": {
+    "file": "/img/regions/wine--usa--arizona.jpg",
+    "unsplashId": "KePB4oNfSn8",
+    "photographer": "Larry Waters",
+    "description": "High-desert grassland and oaks below rocky peaks; caption: Santa Rita Mountains, Southern Arizona (the range beside the Sonoita AVA; no vines in frame)"
+   },
+   "notes": "No style could be sourced from a fetched page. arizonawine.org and the Arizona Wine Growers sites refused connections, visitarizona.com returned 403, and Wine Folly has no Arizona page. A visitarizona.com search snippet (not fetched, so not used) mentioned Willcox Grenache/Tempranillo/Mourvèdre, Sonoita Sangiovese/Cabernet Franc/Petit Verdot, and Verde Valley Syrah/Zinfandel plus Malvasia Bianca/Viognier, with Willcox at 74% of state grape production. Re-check before using. Also tried: azwinegrowersassociation.com/wine-regions (fetched; describes AVA geography and soils only, no grapes or styles). Leaving styles empty rather than guessing; needs a manual source (e.g. arizonawine.org once reachable). Photo shows the southern Arizona high-desert landscape, not a vineyard."
+  },
+  {
+   "slug": "wine/usa/howell-mountain",
+   "styles": [
+    {
+     "style": "Red",
+     "examples": "Howell Mountain Cabernet Sauvignon, Howell Mountain Merlot/Cabernet Franc, Howell Mountain Zinfandel",
+     "source": "https://howellmountain.org/media-trade/facts-and-faqs/"
+    },
+    {
+     "style": "White",
+     "examples": "Howell Mountain Sauvignon Blanc",
+     "source": "https://howellmountain.org/media-trade/facts-and-faqs/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--howell-mountain.jpg",
+    "unsplashId": "MF2KORFe1OE",
+    "photographer": "Daniel Salgado",
+    "description": "Looking down a row between leafy vines toward wooded hills; location confirmed on Unsplash only as Napa, CA"
+   },
+   "notes": "The Howell Mountain association's facts page lists the varieties as Cabernet Sauvignon, Cabernet Franc, Merlot, Zinfandel and Sauvignon Blanc, with no shares, so main is omitted. Wine Folly (https://winefolly.com/deep-dive/howell-mountain-cabernet-napa/) also lists Petite Sirah. Viognier was not found in any fetched source. napavintners.com returned 403. Photo is Napa but not confirmed as Howell Mountain itself."
+  },
+  {
+   "slug": "wine/usa/carneros",
+   "styles": [
+    {
+     "style": "White",
+     "examples": "Carneros Chardonnay",
+     "source": "https://www.carneros.com/technical-info"
+    },
+    {
+     "style": "Red",
+     "examples": "Carneros Pinot Noir, Carneros Merlot",
+     "source": "https://www.carneros.com/technical-info"
+    },
+    {
+     "style": "Sparkling",
+     "examples": "Carneros traditional-method sparkling (Chardonnay/Pinot Noir)",
+     "source": "https://www.carneros.com/appellation"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--carneros.jpg",
+    "unsplashId": "DfUfyhGHqQ4",
+    "photographer": "roy zeigerman",
+    "description": "A French-style château above formal hedges and vineyards; location confirmed on Unsplash as Domaine Carneros, Carneros (no readable signage)"
+   },
+   "notes": "The Carneros Wine Alliance says Chardonnay and Pinot Noir 'make up the majority of the varietals grown here'. That is combined, and the acreage chart is an image, so main is omitted and White-before-Red is my ordering, not sourced. The appellation page says the AVA produces 'crisp, balanced sparkling wines'. Domaine Carneros is given only as a producer example. Photo shows a winery building (Domaine Carneros), recognisable but with no readable name."
+  },
+  {
+   "slug": "wine/usa/russian-river-valley",
+   "styles": [
+    {
+     "style": "White",
+     "examples": "Russian River Valley Chardonnay, Green Valley Chardonnay",
+     "source": "https://russianrivervalley.org/about/varietals/"
+    },
+    {
+     "style": "Red",
+     "examples": "Russian River Valley Pinot Noir, Green Valley Pinot Noir, Santa Rosa Plain old-vine Zinfandel",
+     "source": "https://russianrivervalley.org/about/varietals/"
+    },
+    {
+     "style": "Sparkling",
+     "examples": "Green Valley of Russian River Valley sparkling",
+     "source": "https://sonomawinegrape.org/the-importance-of-green-valley-of-russian-river-valley/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--russian-river-valley.jpg",
+    "unsplashId": "4ie4K0ESdNE",
+    "photographer": "Spencer DeMera",
+    "description": "Sunny hillside of vine rows with a redwood-lined ridge behind; Unsplash location is Sonoma, CA (exact AVA not stated)"
+   },
+   "notes": "The Russian River Valley Winegrowers say Chardonnay is 'about 42%' and Pinot Noir 'approximately 29%' of grapes harvested, and over 70% together. Those are grape shares, not style shares (Zinfandel, Merlot and Cabernet are also red), so share and main are omitted. The Green Valley sparkling claim is also backed by sonomacounty.com ('this cool-climate region made famous for sparkling wine'). The Zinfandel example comes from the association's neighborhoods page. Photo is Sonoma County; not confirmed as Russian River Valley itself."
+  }
+ ]
+}

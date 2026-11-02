@@ -1,0 +1,215 @@
+[
+ {
+  "slug": "wine/usa/finger-lakes",
+  "styles": [
+   {
+    "style": "White",
+    "examples": "Seneca Lake dry Riesling, Cayuga Lake Riesling, unoaked Finger Lakes Chardonnay",
+    "source": "https://newyork.guides.winefolly.com/regions/finger-lakes"
+   },
+   {
+    "style": "Red",
+    "examples": "Finger Lakes Cabernet Franc, Baco Noir (hybrid)",
+    "source": "https://newyork.guides.winefolly.com/regions/finger-lakes"
+   },
+   {
+    "style": "Sparkling",
+    "examples": "Traditional-method Chardonnay/Pinot Noir sparkling, Sparkling Riesling",
+    "source": "https://newyork.guides.winefolly.com/regions/finger-lakes"
+   },
+   {
+    "style": "Sweet",
+    "examples": "Finger Lakes Riesling ice wine (e.g. Sheldrake Point)",
+    "source": "https://newyork.guides.winefolly.com/regions/finger-lakes"
+   },
+   {
+    "style": "RosÃ©",
+    "examples": "Dry Cabernet Franc rosÃ©",
+    "source": "https://newyork.guides.winefolly.com/regions/finger-lakes"
+   }
+  ],
+  "notes": "Wine Folly says the flagship is dry Riesling and that Riesling is the most planted vinifera grape. It doesn't say white is the majority style, so main is omitted. It calls ice wine 'quite rare', and it doesn't mention late harvest. fingerlakeswine.com refused connections."
+ },
+ {
+  "slug": "wine/usa/mendocino",
+  "styles": [
+   {
+    "style": "Red",
+    "examples": "Anderson Valley Pinot Noir, Mendocino Ridge Pinot Noir, Mendocino Carignan/Barbera",
+    "source": "https://winefolly.com/deep-dive/beyond-napa-the-lessor-known-north-coast-wine-regions/"
+   },
+   {
+    "style": "White",
+    "examples": "Anderson Valley Chardonnay, Anderson Valley GewÃ¼rztraminer, Anderson Valley Riesling/Pinot Gris",
+    "source": "https://avwines.com/grapes/"
+   },
+   {
+    "style": "Sparkling",
+    "examples": "Roederer Estate (Anderson Valley), Scharffenberger Cellars",
+    "source": "https://www.visitmendocino.com/wineries-producing-sparkling-wine/"
+   }
+  ],
+  "notes": "Wine Folly says 'the majority of the region is planted with Chardonnay and Pinot Noir'. That is combined, so main is omitted and the Red-before-White order isn't sourced. Anderson Valley Winegrowers (avwines.com/about-anderson-valley-wine-region/) also lists Pinot Noir, Chardonnay, sparkling and Alsatian wines as its focus. The Mendocino Winegrowers site (mendowine.com) is being rebuilt and its fact sheet PDF is gone. Search snippets put Chardonnay at about 38% of the 2022 harvest, but I couldn't fetch that, so it isn't used. Zinfandel couldn't be sourced as a current signature."
+ },
+ {
+  "slug": "wine/usa/lodi",
+  "styles": [
+   {
+    "style": "Red",
+    "examples": "Lodi old-vine Zinfandel, Mokelumne River Zinfandel, old-vine Cinsault",
+    "source": "https://www.lodiwine.com/about-lodi/old-vines/"
+   },
+   {
+    "style": "White",
+    "examples": "Lodi Chardonnay, Lodi Sauvignon Blanc, Lodi AlbariÃ±o/Vermentino",
+    "source": "https://www.lodiwine.com/about-lodi/grape-varieties/"
+   }
+  ],
+  "notes": "Wine Folly (https://winefolly.com/deep-dive/guide-lodi-wine-ca/) says 'Zinfandel is the most widely planted grape in the region'. Lodi Wine says Lodi makes 'nearly 40 percent of California's premium Zinfandel'. Neither gives the red style's share of Lodi itself, so main and share are omitted. No source found for rosÃ©, sparkling or port-style sweet wines, even though Portuguese grapes are planted."
+ },
+ {
+  "slug": "wine/usa/virginia",
+  "styles": [
+   {
+    "style": "Red",
+    "main": true,
+    "share": "58%",
+    "examples": "Virginia Cabernet Franc, Petit Verdot, Bordeaux-style (Meritage) blends",
+    "source": "https://winefolly.com/wine-regions/united-states/virginia/"
+   },
+   {
+    "style": "White",
+    "share": "42%",
+    "examples": "Virginia Viognier, Chardonnay, Petit Manseng",
+    "source": "https://winefolly.com/wine-regions/united-states/virginia/"
+   },
+   {
+    "style": "Sparkling",
+    "examples": "Trump Winery Blanc de Noir (Monticello area), 2026 Governor's Cup Case",
+    "source": "https://www.virginia.org/blog/post/best-virginia-wines/"
+   }
+  ],
+  "notes": "Wine Folly states '58% Reds 42% Whites'. Petit Manseng comes from the virginia.org Governor's Cup page (13 gold medals). Sparkling is supported only by one sparkling wine in the 2026 Governor's Cup Case, on the state tourism site (virginia.org), which is weaker than 'known for'. virginiawine.org is behind a Cloudflare check and couldn't be fetched. RosÃ© and dessert wines weren't sourced."
+ },
+ {
+  "slug": "wine/usa/texas-hill-country",
+  "styles": [
+   {
+    "style": "Red",
+    "examples": "Texas Hill Country Tempranillo, Tannat/MourvÃ¨dre, Fredericksburg Sangiovese",
+    "source": "https://texashillcountry.guides.winefolly.com/"
+   },
+   {
+    "style": "White",
+    "examples": "Texas Hill Country Viognier, Vermentino, AlbariÃ±o",
+    "source": "https://texashillcountry.guides.winefolly.com/regions/"
+   }
+  ],
+  "notes": "RosÃ© is not sourced. Wine Folly's wines page only says Black Spanish (Lenoir) is 'often used in blends, rosÃ©s, or fortified styles', which isn't enough to call it a regional style. Sparkling is only an 'occasional sparkling experiment' plus Heath Sparkling Wines, so it's left out. texaswinecountry.org returned no content. txwines.org confirms Bordeaux blends and Italian reds for the AVA."
+ },
+ {
+  "slug": "wine/usa/southern-oregon",
+  "styles": [
+   {
+    "style": "Red",
+    "examples": "Rogue Valley Cabernet Sauvignon/Syrah, Umpqua Valley Pinot Noir (Elkton), Umpqua/Applegate Tempranillo",
+    "source": "https://www.oregonwine.org/regions/umpqua-valley/"
+   },
+   {
+    "style": "White",
+    "examples": "Rogue Valley Viognier, Umpqua Valley Pinot Gris, Umpqua Valley AlbariÃ±o",
+    "source": "https://www.oregonwine.org/regions/rogue-valley/"
+   }
+  ],
+  "notes": "Both oregonwine.org pages list 'Predominant Varieties' with no shares (Rogue: Cabernet Sauvignon, Syrah, Viognier, Pinot noir, Chardonnay, Pinot gris; Umpqua: Pinot noir, Pinot gris, Syrah, Tempranillo, Merlot, Albarino). Applegate Tempranillo comes from an oregonwine.org Applegate Valley page I saw only in search results, so it's unconfirmed. RosÃ© and sparkling weren't sourced. southernoregonwine.org refused connections."
+ },
+ {
+  "slug": "wine/usa/long-island",
+  "styles": [
+   {
+    "style": "Red",
+    "examples": "North Fork Merlot, Long Island Bordeaux blends (Meritage), Cabernet Franc",
+    "source": "https://newyork.guides.winefolly.com/regions/long-island"
+   },
+   {
+    "style": "White",
+    "examples": "North Fork Chardonnay, Long Island Sauvignon Blanc/AlbariÃ±o",
+    "source": "https://newyork.guides.winefolly.com/regions/long-island"
+   },
+   {
+    "style": "RosÃ©",
+    "examples": "The Hamptons dry Cabernet Franc rosÃ©",
+    "source": "https://newyork.guides.winefolly.com/regions/long-island"
+   },
+   {
+    "style": "Sparkling",
+    "examples": "Traditional-method brut (Chardonnay/Pinot Noir), North Fork pÃ©t-nat",
+    "source": "https://newyork.guides.winefolly.com/regions/long-island"
+   }
+  ],
+  "notes": "The source says the flagship is Bordeaux varieties and that 'Merlot is the most planted grape variety'. It doesn't say red is the majority style, so main is omitted. liwines.com loaded but I didn't use it."
+ },
+ {
+  "slug": "wine/usa/arizona",
+  "styles": [],
+  "notes": "No style could be sourced from a fetched page. arizonawine.org and the Arizona Wine Growers sites refused connections, visitarizona.com returned 403, and Wine Folly has no Arizona page. A visitarizona.com search snippet (not fetched, so not used) mentioned Willcox Grenache/Tempranillo/MourvÃ¨dre, Sonoita Sangiovese/Cabernet Franc/Petit Verdot, and Verde Valley Syrah/Zinfandel plus Malvasia Bianca/Viognier, with Willcox at 74% of state grape production. Re-check before using."
+ },
+ {
+  "slug": "wine/usa/howell-mountain",
+  "styles": [
+   {
+    "style": "Red",
+    "examples": "Howell Mountain Cabernet Sauvignon (e.g. Dunn, La Jota), Howell Mountain Merlot/Cabernet Franc, Howell Mountain Zinfandel",
+    "source": "https://howellmountain.org/media-trade/facts-and-faqs/"
+   },
+   {
+    "style": "White",
+    "examples": "Howell Mountain Sauvignon Blanc",
+    "source": "https://howellmountain.org/media-trade/facts-and-faqs/"
+   }
+  ],
+  "notes": "The Howell Mountain association's facts page lists the varieties as Cabernet Sauvignon, Cabernet Franc, Merlot, Zinfandel and Sauvignon Blanc, with no shares, so main is omitted. Wine Folly (https://winefolly.com/deep-dive/howell-mountain-cabernet-napa/) also lists Petite Sirah. Viognier was not found in any fetched source. napavintners.com returned 403."
+ },
+ {
+  "slug": "wine/usa/carneros",
+  "styles": [
+   {
+    "style": "White",
+    "examples": "Carneros Chardonnay",
+    "source": "https://www.carneros.com/technical-info"
+   },
+   {
+    "style": "Red",
+    "examples": "Carneros Pinot Noir, Carneros Merlot",
+    "source": "https://www.carneros.com/technical-info"
+   },
+   {
+    "style": "Sparkling",
+    "examples": "Carneros traditional-method sparkling (Chardonnay/Pinot Noir), e.g. Domaine Carneros",
+    "source": "https://www.carneros.com/appellation"
+   }
+  ],
+  "notes": "The Carneros Wine Alliance says Chardonnay and Pinot Noir 'make up the majority of the varietals grown here'. That is combined, and the acreage chart is an image, so main is omitted and White-before-Red is my ordering, not sourced. The appellation page says the AVA produces 'crisp, balanced sparkling wines'. Domaine Carneros is given only as a producer example."
+ },
+ {
+  "slug": "wine/usa/russian-river-valley",
+  "styles": [
+   {
+    "style": "White",
+    "examples": "Russian River Valley Chardonnay, Green Valley Chardonnay",
+    "source": "https://russianrivervalley.org/about/varietals/"
+   },
+   {
+    "style": "Red",
+    "examples": "Russian River Valley Pinot Noir, Green Valley Pinot Noir, Santa Rosa Plain old-vine Zinfandel",
+    "source": "https://russianrivervalley.org/about/varietals/"
+   },
+   {
+    "style": "Sparkling",
+    "examples": "Green Valley of Russian River Valley sparkling (Iron Horse)",
+    "source": "https://sonomawinegrape.org/the-importance-of-green-valley-of-russian-river-valley/"
+   }
+  ],
+  "notes": "The Russian River Valley Winegrowers say Chardonnay is 'about 42%' and Pinot Noir 'approximately 29%' of grapes harvested, and over 70% together. Those are grape shares, not style shares (Zinfandel, Merlot and Cabernet are also red), so share and main are omitted. The Green Valley sparkling claim is also backed by sonomacounty.com ('this cool-climate region made famous for sparkling wine'). The Zinfandel example comes from the association's neighborhoods page."
+ }
+]

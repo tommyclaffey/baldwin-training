@@ -234,11 +234,11 @@ test('wine videos: every wine page has a Learn more section, and a video plays t
   const page = async (slug) => (await call('/api/page/' + index.find((e) => e.slug === slug).file)).data;
   // no video yet: the section is there, ready for one
   const syrah = await page('wine/red/syrah');
-  const sec = find(syrah.main, (n) => n.n === 'Learn more');
+  const sec = find(syrah.main, (n) => n.n === 'Learn more' || n.n === 'The story');
   assert.ok(sec && JSON.stringify(sec).includes('SYRAH'));
   assert.equal(find(sec, (n) => !!n.vid), undefined);
   // the starting videos from the repo are in place
-  const cab = find((await page('wine/red/cabernet')).main, (n) => n.n === 'Learn more');
+  const cab = find((await page('wine/red/cabernet')).main, (n) => n.n === 'Learn more' || n.n === 'The story');
   assert.equal(find(cab, (n) => !!n.vid).vid.youtubeId, '-w6gz4YVPyk');
   assert.equal(items.filter((i) => i.video).length, 83, 'Wine Folly: 6 grape videos and 77 country, state and region videos');
   assert.ok(items.find((i) => i.key === 'wine/italy/tuscany')?.video?.youtubeId === 'ixXOoWN8LGg');
@@ -250,7 +250,7 @@ test('wine videos: every wine page has a Learn more section, and a video plays t
   assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine/red/syrah', video: v, note: 'Our Syrah story.' } })).status, 200);
   assert.equal((await call('/api/wine-videos', { method: 'PUT', body: { key: 'wine:Bolgheri Rosso', video: v } })).status, 200);
   const after = await page('wine/red/syrah');
-  const sec2 = find(after.main, (n) => n.n === 'Learn more');
+  const sec2 = find(after.main, (n) => n.n === 'Learn more' || n.n === 'The story');
   assert.equal(find(sec2, (n) => !!n.vid).vid.youtubeId, 'dQw4w9WgXcQ');
   assert.ok(JSON.stringify(sec2).includes('Our Syrah story.'));
   const list = (await call('/api/page/25-2')).data;

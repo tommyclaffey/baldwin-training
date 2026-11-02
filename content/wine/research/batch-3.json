@@ -1,0 +1,609 @@
+{
+  "regions": [
+    {
+      "slug": "wine/usa/sonoma-coast",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Noir",
+          "source": "https://sonomawinegrape.org/sonoma-county-terroir"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chardonnay",
+          "source": "https://sonomawine.com/appellations/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--sonoma-coast.jpg",
+        "unsplashId": "ZmpKqPLkvv0",
+        "photographer": "fred tromp",
+        "description": "Stand-in, location not confirmed: vineyard rows under morning fog with trees and hazy mountains behind; chosen for the foggy, cool-coast look."
+      },
+      "notes": "sonomawinegrape.org also names cool-climate Syrah. Sparkling not listed: none of the fetched Sonoma Coast sources name it (Wine Folly credits Sonoma County/Carneros generally). Acreage differs by source (4,725 vs 5,055 vs 2,000 vineyard acres)."
+    },
+    {
+      "slug": "wine/usa/dry-creek-valley",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Zinfandel, Cabernet Sauvignon",
+          "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Sauvignon Blanc",
+          "source": "https://sonomawinegrape.org/sonoma-county-terroir"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--dry-creek-valley.jpg",
+        "unsplashId": "AcM6GROmvGU",
+        "photographer": "Spencer DeMera",
+        "description": "Stand-in, location not confirmed: leafy vineyard rows in summer sun with a mountain on the horizon (SF Bay Area photographer)."
+      },
+      "notes": "sonomawinegrape.org calls Zinfandel and Sauvignon Blanc 'the region's signature wines'. Zinfandel as most planted (about 2,400 of ~9,000 acres) appears in secondary sources only, so main is not set."
+    },
+    {
+      "slug": "wine/usa/california",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Cabernet Sauvignon, Pinot Noir, Zinfandel",
+          "source": "https://wineinstitute.org/our-industry/statistics/wine-fact-sheets/cabernet-sauvignon/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chardonnay",
+          "source": "https://wineinstitute.org/our-industry/statistics/wine-fact-sheets/chardonnay/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Sonoma and Carneros sparkling",
+          "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--california.jpg",
+        "unsplashId": "-t30E6T9DAU",
+        "photographer": "Linda Pomerantz Zhang",
+        "description": "Rolling vineyard rows below oak-covered hills; captioned 'California grape vines' (exact place not given)."
+      },
+      "notes": "Wine Institute: Cabernet Sauvignon is the most planted red (90,040 acres, 2025) and Chardonnay the most planted white (83,262 acres). Neither page says red outweighs white overall, so main is not set. Sparkling source is Wine Folly's Sonoma page (Sonoma 'responsible for some of the biggest names for ... Sparkling Wine'; Carneros 'famous for ... Sparkling Wine')."
+    },
+    {
+      "slug": "wine/usa/alexander-valley",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": null,
+          "examples": "Cabernet Sauvignon, Merlot",
+          "source": "https://www.alexandervalley.org/varietals-grown"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chardonnay, Sauvignon Blanc",
+          "source": "https://www.alexandervalley.org/varietals-grown"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--alexander-valley.jpg",
+        "unsplashId": "Q79ceIELU-g",
+        "photographer": "Spencer DeMera",
+        "description": "Stand-in, location not confirmed: autumn vineyard in the foreground looking across a green valley to rolling hills and a distant mountain (SF Bay Area photographer). Replaced KegXq5KnAz4, which was already used on the Mendocino page."
+      },
+      "notes": "alexandervalley.org: Cabernet Sauvignon is 'the most widely grown varietal'; Merlot 'a predominant varietal'. Wine Folly adds hillside Merlot and 'richly flavored Chardonnays'."
+    },
+    {
+      "slug": "wine/usa/lake-county",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Cabernet Sauvignon",
+          "source": "https://www.lakecountywinegrape.org/region/lake-county-rising/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Sauvignon Blanc",
+          "source": "https://winefolly.com/lifestyle/8-alternative-wine-trails-california/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--lake-county.jpg",
+        "unsplashId": "rXmWHobDof8",
+        "photographer": "David Trinks",
+        "description": "Stand-in, location not confirmed: vineyard in the foreground with rolling hills and a distant mountain ridge."
+      },
+      "notes": "Lake County Winegrape Commission and Wine Folly both name Cabernet Sauvignon and Sauvignon Blanc. Cabernet as 'by far the most planted' (CDFA 2025 acreage) was only found on Wikipedia, so main/share not set."
+    },
+    {
+      "slug": "wine/usa/oakville",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Cabernet Sauvignon, Merlot, Cabernet Franc",
+          "source": "https://napavintners.com/napa_valley/ava/oakville"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Sauvignon Blanc",
+          "source": "https://napavintners.com/napa_valley/ava/oakville"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--oakville.jpg",
+        "unsplashId": "TQsZ6FDd2jI",
+        "photographer": "Carlos Wolters",
+        "description": "Stand-in, location not confirmed: early-morning view of a Napa Valley road running through autumn vineyards; captioned 'Napa Valley', exact spot not given."
+      },
+      "notes": "Napa Valley Vintners calls Oakville 'Cabernet-centric' but gives no planting share; main left false. A 75% Cabernet figure exists only in secondary sources."
+    },
+    {
+      "slug": "wine/usa/santa-cruz-mountains",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Noir, Cabernet Sauvignon",
+          "source": "https://winesofthesantacruzmountains.com/about"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chardonnay",
+          "source": "https://winesofthesantacruzmountains.com/about"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--santa-cruz-mountains.jpg",
+        "unsplashId": "OuLMSSSJ_To",
+        "photographer": "Spencer DeMera",
+        "description": "Stand-in, location not confirmed: hillside vineyard rows with blue mountains on the horizon (Bay Area photographer)."
+      },
+      "notes": "Santa Cruz Mountains Winegrowers: about 1,600 acres split 'evenly among Pinot Noir, Cabernet Sauvignon, Chardonnay and other varietals' (no single main grape). Photo is a generic Bay Area vineyard, not the forested mountain sites."
+    },
+    {
+      "slug": "wine/usa/santa-lucia-highlands",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": "Pinot Noir 3,400 of ~5,900 planted acres (~58%)",
+          "examples": "Pinot Noir, Syrah",
+          "source": "https://www.santaluciahighlands.com/press/californias-hidden-gem-santa-lucia-highlands-ava"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": "Chardonnay 2,100 of ~5,900 acres (~36%)",
+          "examples": "Chardonnay, Riesling",
+          "source": "https://www.santaluciahighlands.com/press/californias-hidden-gem-santa-lucia-highlands-ava"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--santa-lucia-highlands.jpg",
+        "unsplashId": "NJ3yxYBa2W8",
+        "photographer": "Spencer DeMera",
+        "description": "Stand-in, location not confirmed: close view of vineyard rows with dry golden hills behind."
+      },
+      "notes": "Percentages are worked out from the association's acre figures (3,400 Pinot Noir + 2,100 Chardonnay of 5,900 planted acres). Rest is Syrah, Riesling, Pinot Gris and others."
+    },
+    {
+      "slug": "wine/usa/edna-valley",
+      "styles": [
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chardonnay",
+          "source": "https://slocoastwine.com/news/chardonnay-trail-on-the-slo-coast/"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Noir, Syrah",
+          "source": "https://slocoastwine.com/news/chardonnay-trail-on-the-slo-coast/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--edna-valley.jpg",
+        "unsplashId": "E_LNnIYawEU",
+        "photographer": "Tim Mossholder",
+        "description": "Stand-in, location not confirmed: winter vineyard with bare vines before green rolling hills and dramatic clouds (Santa Maria-based photographer)."
+      },
+      "notes": "SLO Coast Wine: 'cool climate Chardonnay and Pinot Noir ... are the epitome' of Edna Valley. No acreage split found; Chardonnay placed first to match the page's key grape. The sparkling producer named on that page (Laetitia) is in Arroyo Grande Valley, so sparkling is not listed."
+    },
+    {
+      "slug": "wine/usa/sierra-foothills",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Zinfandel, Barbera, Syrah",
+          "source": "https://winefolly.com/lifestyle/8-alternative-wine-trails-california/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--sierra-foothills.jpg",
+        "unsplashId": "vRT5fX27Y58",
+        "photographer": "Tim Mossholder",
+        "description": "Stand-in, location not confirmed: vineyard on rolling hills dotted with oaks under a stormy sky."
+      },
+      "notes": "Wine Folly (two pages) only names reds: Zinfandel, Syrah, Barbera, plus Grenache and Petite Sirah in El Dorado. Zinfandel ~38% of plantings appears only in secondary sources. No official association page with variety data found."
+    },
+    {
+      "slug": "wine/usa/sta-rita-hills",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Noir, Syrah",
+          "source": "https://www.staritahills.com/a-unique-region"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chardonnay",
+          "source": "https://sbcountywines.com/portfolio_page/sta-rita-hills-2/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--sta-rita-hills.jpg",
+        "unsplashId": "KDlLiCL7XPk",
+        "photographer": "Tim Mossholder",
+        "description": "Stand-in, location not confirmed: vineyard rows in front of a bare brown hill (Santa Maria-based photographer)."
+      },
+      "notes": "Sta. Rita Hills Wine Alliance: Pinot Noir, Chardonnay and 18 other cool-climate varieties on ~2,700-3,000 acres; Syrah named on its homepage. 'Over 75% Pinot Noir' is a Wikipedia figure only, so no share."
+    },
+    {
+      "slug": "wine/usa/santa-maria-valley",
+      "styles": [
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chardonnay, Pinot Blanc",
+          "source": "https://sbcountywines.com/portfolio_page/santa-maria-valley-2/"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Noir, Syrah",
+          "source": "https://santamariavalley.com/wine-country/santa-maria-valley-ava/varietals/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--santa-maria-valley.jpg",
+        "unsplashId": "-r3ARWNHekk",
+        "photographer": "Tim Mossholder",
+        "description": "Stand-in, location not confirmed: wide view of vineyard rows below rolling hills at sunset (Santa Maria-based photographer)."
+      },
+      "notes": "Santa Barbara Vintners: Chardonnay and Pinot Noir are 'this AVA's flagship wines'; santamariavalley.com names Chardonnay, Pinot Noir, Syrah as the 'three flagship varietals'. No planting split, so White/Red order follows the page's key grape (Chardonnay)."
+    },
+    {
+      "slug": "wine/usa/santa-ynez-valley",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Syrah, Cabernet Sauvignon, Pinot Noir",
+          "source": "https://sbcountywines.com/portfolio_page/santa-ynez-valley-2/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Sauvignon Blanc, Viognier",
+          "source": "https://sbcountywines.com/portfolio_page/santa-ynez-valley-2/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--santa-ynez-valley.jpg",
+        "unsplashId": "7IwlGkL7yPs",
+        "photographer": "Tim Mossholder",
+        "description": "Vineyard rows on rolling hills with oaks under a cloudy sky; captioned 'California Vineyard' by a Santa Maria-based photographer. Exact place not given."
+      },
+      "notes": "Santa Barbara Vintners: 'From Pinot Noir in the west to Cabernet and Merlot in the east'; Rhône grapes (Syrah, Grenache, Mourvèdre, Roussanne, Viognier) and Sauvignon Blanc also named. No acreage split found."
+    },
+    {
+      "slug": "wine/usa/rutherford",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": null,
+          "examples": "Cabernet Sauvignon, Merlot",
+          "source": "https://napavintners.com/napa_valley/ava/rutherford"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Sauvignon Blanc",
+          "source": "https://napavintners.com/napa_valley/ava/rutherford"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--rutherford.jpg",
+        "unsplashId": "dgLugFrHPkY",
+        "photographer": "Steve Gribble",
+        "description": "Aerial view across the Napa Valley floor in autumn, taken in Yountville (caption). Stand-in for Rutherford, a few miles north."
+      },
+      "notes": "Napa Valley Vintners: Cabernet Sauvignon is 'the dominant grape here'. A ~45% Cabernet share appears only in secondary sources."
+    },
+    {
+      "slug": "wine/usa/stags-leap-district",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": "Cabernet Sauvignon + Merlot = 80% of plantings",
+          "examples": "Cabernet Sauvignon, Merlot",
+          "source": "https://napa.guides.winefolly.com/region/stags-leap-district"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Sauvignon Blanc",
+          "source": "https://napavintners.com/napa_valley/stags-leap-district-ava"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--stags-leap-district.jpg",
+        "unsplashId": "IrjlXxlqGhg",
+        "photographer": "Carlos Wolters",
+        "description": "Autumn vineyards of Napa's Oak Knoll District with the Stags Leap hills rising behind (caption)."
+      },
+      "notes": "Napa Valley Vintners: Cabernet Sauvignon 'is the dominant grape here'. Wine Folly: Cabernet and Merlot make up 80% of the 1,200 planted acres."
+    },
+    {
+      "slug": "wine/usa/yamhill-carlton",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": "Pinot Noir 80%",
+          "examples": "Pinot Noir",
+          "source": "https://willamettewines.com/about-the-valley/ava-overviews/yamhill-carlton/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": "Chardonnay 6%, Pinot Gris 5%",
+          "examples": "Chardonnay, Pinot Gris",
+          "source": "https://willamettewines.com/about-the-valley/ava-overviews/yamhill-carlton/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--yamhill-carlton.jpg",
+        "unsplashId": "2SBlPFMPyco",
+        "photographer": "Dan Meyers",
+        "description": "Stand-in, location not confirmed: drone view of a Willamette Valley vineyard in early summer; caption says Polk County (Eola-Amity side), not Yamhill-Carlton."
+      },
+      "notes": "Willamette Valley Wineries Association figures, 2,844 planted acres."
+    },
+    {
+      "slug": "wine/usa/ribbon-ridge",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": "Pinot Noir 68.3%",
+          "examples": "Pinot Noir",
+          "source": "https://willamettewines.com/about-the-valley/ava-overviews/ribbon-ridge/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--ribbon-ridge.jpg",
+        "unsplashId": "EYnLjmjCViM",
+        "photographer": "Dan Meyers",
+        "description": "Stand-in, location not confirmed: Willamette Valley vineyard rows by a small pond, early summer; caption says Polk County, not Ribbon Ridge."
+      },
+      "notes": "Willamette Valley Wineries Association: Pinot Noir 68.3%, Chardonnay 1.11%, Gamay 0.7% of ~650 acres. White left out as too small to call a style it's known for."
+    },
+    {
+      "slug": "wine/usa/mcminnville",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": "Pinot Noir 83.8%",
+          "examples": "Pinot Noir",
+          "source": "https://willamettewines.com/about-the-valley/ava-overviews/mcminnville/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--mcminnville.jpg",
+        "unsplashId": "R4ns94kbpAg",
+        "photographer": "Dan Meyers",
+        "description": "Stand-in, location not confirmed: Willamette Valley vineyard rows under big summer clouds; caption says Polk County, not McMinnville."
+      },
+      "notes": "Willamette Valley Wineries Association: Pinot Noir 83.8%, Chardonnay 3.35%, Pinot Blanc 2.21% of ~750 acres. Whites left out as minor."
+    },
+    {
+      "slug": "wine/usa/oregon",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": "Pinot Noir 59% of planted acres",
+          "examples": "Pinot Noir, Syrah",
+          "source": "https://www.oregonwine.org/discover-oregon-wine/wine/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": "Pinot Gris 14%, Chardonnay 7%",
+          "examples": "Pinot Gris, Chardonnay",
+          "source": "https://www.oregonwine.org/discover-oregon-wine/wine/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Sparkling wine",
+          "source": "https://www.oregonwine.org/discover-oregon-wine/wine/"
+        },
+        {
+          "style": "Rosé",
+          "main": false,
+          "share": null,
+          "examples": "Rosé",
+          "source": "https://www.oregonwine.org/discover-oregon-wine/wine/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--oregon.jpg",
+        "unsplashId": "jnnPubvXbsM",
+        "photographer": "Brett Wharton",
+        "description": "Hillside view over the Willamette Valley: vineyards, farmland and forest toward distant hills (caption)."
+      },
+      "notes": "Oregon Wine Board: Pinot Noir 59%, Pinot Gris 14%, Chardonnay 7%, Syrah 4%, Cabernet Sauvignon 4%, Riesling 1%. Sparkling and rosé are named but without grapes or shares."
+    },
+    {
+      "slug": "wine/usa/columbia-gorge",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Syrah, Grenache, Mourvèdre",
+          "source": "https://winefolly.com/lifestyle/4-us-wine-travel-trips-for-adventurers/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Klickitat-area whites",
+          "source": "https://winefolly.com/lifestyle/4-us-wine-travel-trips-for-adventurers/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--columbia-gorge.jpg",
+        "unsplashId": "ERpSOhmALdI",
+        "photographer": "Charlie Fair",
+        "description": "Mount Hood above forested ridges with crop rows in the foreground. Found under 'Hood River vineyard'; the mountain is recognisable but the exact spot isn't captioned."
+      },
+      "notes": "Oregon Wine Board's AVA page only says 'many different varieties thrive, varies by geography and elevation' (925 planted acres). Wine Folly names Rhône reds and 'white wines from the Klickitat river area' without naming the white grapes. A 64% white share and Chardonnay/Gewürztraminer/Riesling/Pinot Gris as main grapes appear only on Wikipedia, so they're left out."
+    },
+    {
+      "slug": "wine/usa/columbia-valley",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": "Red grapes ~60% of vineyards",
+          "examples": "Cabernet Sauvignon, Merlot, Syrah",
+          "source": "https://plus.winefolly.com/review/columbia-valley-washingtons-biggest-wine-region/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chardonnay, Riesling",
+          "source": "https://www.washingtonwine.org/resource/columbia-valley-ava/"
+        },
+        {
+          "style": "Rosé",
+          "main": false,
+          "share": null,
+          "examples": "Sangiovese, Cabernet Franc, Grenache",
+          "source": "https://plus.winefolly.com/review/columbia-valley-washingtons-biggest-wine-region/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--columbia-valley.jpg",
+        "unsplashId": "SsZC_WqEKe8",
+        "photographer": "Tim Mossholder",
+        "description": "Stand-in, location not confirmed: vineyard rows on golden rolling hills under storm clouds; chosen for the dry, open look of eastern Washington. Photographer is California-based."
+      },
+      "notes": "Washington State Wine: top varieties Cabernet Sauvignon, Chardonnay, Merlot, Riesling, Syrah; over 99% of the state's acreage. The 60% red figure comes from Wine Folly (plus.winefolly.com). A near-identical Columbia River vineyard photo is already used on the Washington page, so a stand-in was used here."
+    },
+    {
+      "slug": "wine/usa/walla-walla-valley",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": null,
+          "examples": "Cabernet Sauvignon, Syrah, Merlot",
+          "source": "https://www.washingtonwine.org/resource/walla-walla-valley-ava/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Viognier, Marsanne, Roussanne",
+          "source": "https://plus.winefolly.com/review/columbia-valley-washingtons-biggest-wine-region/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--walla-walla-valley.jpg",
+        "unsplashId": "YZ7frTV9pYA",
+        "photographer": "Spencer DeMera",
+        "description": "Stand-in, location not confirmed: wooden fence beside vineyard rows with dry golden hills behind (Bay Area photographer)."
+      },
+      "notes": "Washington State Wine: 'Grape production is dominated by red varieties'; top varieties Cabernet Sauvignon, Merlot, Syrah. The white grapes come from Wine Folly's Columbia Valley page (Walla Walla section). A 95% red / 36% Cabernet split exists in a Walla Walla Valley Wine Alliance press figure, but the page couldn't be loaded, so no share."
+    },
+    {
+      "slug": "wine/usa/yakima-valley",
+      "styles": [
+        {
+          "style": "White",
+          "main": true,
+          "share": null,
+          "examples": "Chardonnay, Riesling",
+          "source": "https://www.washingtonwine.org/resource/yakima-valley-ava/"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Merlot, Cabernet Sauvignon, Syrah",
+          "source": "https://www.washingtonwine.org/resource/yakima-valley-ava/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--yakima-valley.jpg",
+        "unsplashId": "i0Nw0N363DA",
+        "photographer": "Spencer DeMera",
+        "description": "Stand-in, location not confirmed: vineyard on a dry grassy hillside with a split-rail fence (Bay Area photographer)."
+      },
+      "notes": "Washington State Wine: Yakima is 'one of the few appellations in the state where white varieties are more planted than red', growing almost half the state's Chardonnay and Riesling. No percentage given."
+    }
+  ]
+}

@@ -1,0 +1,718 @@
+{
+ "regions": [
+  {
+   "slug": "wine/germany",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": "about 2/3 of vineyards are white (winesofgermany.com: 'two-thirds white, one-third red')",
+     "examples": "Riesling, Müller-Thurgau, Silvaner",
+     "source": "https://www.winesofgermany.com/our-wine/grape-varieties"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Auslese, Beerenauslese, Trockenbeerenauslese, Eiswein",
+     "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/449/pr%C3%A4dikat-categories"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": "about 1/3 of vineyards are red",
+     "examples": "Spätburgunder (Pinot Noir), Dornfelder",
+     "source": "https://www.winesofgermany.com/our-wine/grape-varieties"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Sekt, Winzersekt, Riesling Sekt",
+     "source": "https://germanwineusa.com/basics/german-wine-types/sparkling-wine/"
+    }
+   ],
+   "photo": null,
+   "notes": "Share is by vineyard area, not bottles. Red examples: Spätburgunder from the Court guide (p.47), Dornfelder from winesofgermany.com Mosel page. Sparkling source is Wines of Germany USA (German Wine Institute's US site); it says Germany made 368.8 million bottles of Sekt in 2017. Half of German Qualität/Prädikat wine was marketed dry in 2022 (winesofgermany.com), so 'Sweet' here means the Prädikat dessert wines, not every off-dry Riesling. Photo skipped: page already has one."
+  },
+  {
+   "slug": "wine/austria",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": "1.86 of 2.56 million hl in the 2025 harvest (about 73%); Grüner Veltliner alone is 32.3% of vineyard area",
+     "examples": "Grüner Veltliner, Riesling, Welschriesling",
+     "source": "https://www.advantageaustria.org/bt/zentral/branchen/wein_bier_spirituosen/zahlen-und-fakten/Zahlen_und_Fakten.en.html"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": "0.70 of 2.56 million hl in the 2025 harvest (about 27%)",
+     "examples": "Zweigelt, Blaufränkisch",
+     "source": "https://www.advantageaustria.org/bt/zentral/branchen/wein_bier_spirituosen/zahlen-und-fakten/Zahlen_und_Fakten.en.html"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Eiswein, Prädikatswein (rarely made)",
+     "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=52"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Sekt g.U.",
+     "source": "https://winefolly.com/wine-regions/austria/"
+    }
+   ],
+   "photo": null,
+   "notes": "austrianwine.com (Austrian Wine Marketing Board) returned 403 to every fetch. Harvest figures come from Advantage Austria (Austrian Economic Chamber), which cites the Agriculture Ministry and Österreich Wein Marketing GmbH; the 73% / 27% split is computed from its hl figures. Sweet: the Court says Austria makes 'very dry or very sweet white wine' (p.52) and Eiswein is made in Germany and Austria (p.79). Rosé (Styrian Schilcher) is on Wine Folly but left out as minor. Photo skipped: page already has one."
+  },
+  {
+   "slug": "wine/spain/jerez",
+   "styles": [
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Fortified: Fino, Oloroso, PX (also Manzanilla, Amontillado, Palo Cortado, Cream)",
+     "source": "https://www.sherry.wine/sherry-wine"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--spain--jerez.jpg",
+    "unsplashId": "Xs3yjZwepic",
+    "photographer": "M. C.",
+    "description": "View over the rooftops of Jerez and a street lined with orange trees: the town, not the albariza vineyards (no captioned Jerez/Sanlúcar vineyard photo found). Place confirmed by caption: 'View over the rooftops and an avenue lined with orange trees in Jerez de La Frontera'."
+   },
+   "notes": "All Sherry is fortified, so it sits under Sweet per the brief, but most of it is dry: the regulator's groups are Dry (Vinos Generosos: Manzanilla, Fino, Amontillado, Oloroso, Palo Cortado, max 5 g/l sugar), Blended sweet (Generosos de Licor: Pale Cream, Medium, Cream) and Naturally sweet (Moscatel, Pedro Ximénez). The DO covers only these wines, but no source says 'main' in those words, so main is false. Manzanilla legally comes from Sanlúcar under its own DO. Photo shows the town, not vineyards."
+  },
+  {
+   "slug": "wine/spain/penedes",
+   "styles": [
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Cava (Xarel·lo, Macabeo, Parellada), Clàssic Penedès",
+     "source": "https://www.cava.wine/en/origin-cava/4-zones/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Xarel·lo, Parellada, Malvasia de Sitges, Chardonnay",
+     "source": "https://dopenedes.cat/en/dopenedes/"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": "35% of bottles sold under the DO Penedès brand",
+     "examples": "Cabernet Sauvignon, Merlot, Syrah, Garnatxa",
+     "source": "https://dopenedes.cat/en/dopenedes/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "DO Penedès rosat",
+     "source": "https://dopenedes.cat/en/dopenedes/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--spain--penedes.jpg",
+    "unsplashId": "2h5JUTvJrEg",
+    "photographer": "Jordi Vich Navarro",
+    "description": "A bunch of white grapes in front of vineyard rows on dry soil, with a jagged ridge behind that looks like Montserrat (only result for 'Montserrat vineyard'). Place not confirmed: no caption."
+   },
+   "notes": "Cava is its own DO (it can be made elsewhere in Spain), but its origins are in Penedès, especially Sant Sadurní d'Anoia (cava.wine), and the Court says most Cava is made in Penedès. Sparkling is listed first because the page is about Cava; no source gives Penedès' total split between Cava and still DO Penedès wine, so no main flag. Clàssic Penedès is the DO Penedès traditional-method sparkling (min 18 months aging; all DO Penedès wine organic from 2025). Red examples come from dopenedes.cat home page."
+  },
+  {
+   "slug": "wine/spain/rueda",
+   "styles": [
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Verdejo, Sauvignon Blanc",
+     "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=40"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Rueda Espumoso (traditional method, min 9 months in bottle)",
+     "source": "https://dorueda.com/vinos/"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Rueda Tinto: Joven, Crianza, Reserva",
+     "source": "https://dorueda.com/vinos/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Rueda Rosado",
+     "source": "https://dorueda.com/vinos/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--spain--rueda.jpg",
+    "unsplashId": "SJ6ch9uVRQU",
+    "photographer": "Hayffield L",
+    "description": "Close-up of vine leaves over low bush vines on pale, stony, flat ground (meseta style). Caption: 'Viñedos. Cepas centenarias.' Same photographer and upload batch as a photo captioned at a winery in the Rueda area (Segovia). Place not confirmed."
+   },
+   "notes": "White is clearly the core (the Court lists Rueda only as 'fresh whites from Verdejo and Sauvignon Blanc'), but no fetched page gave a share: a search snippet credited dorueda.com with 'Verdejo over 80% of plantings', and the dorueda.com PDFs it pointed to returned 404, so main is false and share null. Rueda also makes Dorado and Pálido (oxidative/biological-aged whites, min 15% abv); they are not listed as a style here."
+  },
+  {
+   "slug": "wine/spain/rioja",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "59,485 of 65,608 registered vineyard hectares are red grapes (2023), about 91%",
+     "examples": "Tempranillo, Garnacha; Crianza, Reserva, Gran Reserva",
+     "source": "https://riojawine.com/wp-content/uploads/2024/06/estadisticas-2023-eng.pdf"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Viura, Garnacha Blanca, Tempranillo Blanco",
+     "source": "https://riojawine.com/en-gb/the-designation/types-of-wine/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Rioja Rosado, traditional Clarete",
+     "source": "https://riojawine.com/en-gb/the-designation/types-of-wine/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Rioja Espumoso de Calidad",
+     "source": "https://riojawine.com/en-gb/the-designation/types-of-wine/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--spain--rioja.jpg",
+    "unsplashId": "sVWA1zvMD3E",
+    "photographer": "Mario La Pergola",
+    "description": "A hilltop castle above vineyards, in front of limestone cliffs that look like the Sierra de Cantabria. Same upload series as the photographer's captioned Laguardia and Haro (Rioja) photos. Place not confirmed: this photo has no caption."
+   },
+   "notes": "Share is from the Rioja Control Board's 2023 statistics (table 5B, registered vineyards, red vs white grape varieties). The same report shows 2023 vinification of 334.3 million litres red vs 49.8 million white. Garnacha Blanca and Tempranillo Blanco are not on the fetched types page; Viura as the main white is from riojawine.com grape-varieties page."
+  },
+  {
+   "slug": "wine/spain/toro",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": null,
+     "examples": "Tinta de Toro (Tempranillo), Garnacha",
+     "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=40"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Verdejo, Malvasía Castellana",
+     "source": "https://www.dotoro.com/vinos/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Toro Rosado",
+     "source": "https://www.dotoro.com/vinos/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--spain--toro.jpg",
+    "unsplashId": "S-pJQkKo8u4",
+    "photographer": "Clemente Corona",
+    "description": "The Duero river and a stone bridge below a hilltop town on the Castilian meseta. This is Tordesillas, upstream of Toro, not Toro itself (no Toro/Zamora vineyard photo found). Place confirmed by caption: 'Duero river crossing the historical village of Tordesillas, Valladolid (Spain)'."
+   },
+   "notes": "Main: the Court calls Toro DO 'mainly Tempranillo reds, ripe and concentrated'. dotoro.com lists tintos, blancos and rosados and says reds are made 'principalmente' from Tinta de Toro; no volume share found. Photo is a nearby Duero town, not Toro."
+  },
+  {
+   "slug": "wine/spain/ribera-del-duero",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Tempranillo (Tinto Fino / Tinta del País); Joven, Roble, Crianza, Reserva, Gran Reserva",
+     "source": "https://www.riberadelduero.es/la-do-ribera-del-duero/nuestros-vinos"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Ribera del Duero Rosado",
+     "source": "https://www.riberadelduero.es/la-do-ribera-del-duero/nuestros-vinos"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Albillo Mayor (min 75%)",
+     "source": "https://www.riberadelduero.es/la-do-ribera-del-duero/nuestros-vinos"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--spain--ribera-del-duero.jpg",
+    "unsplashId": "fouXeTTqSiM",
+    "photographer": "Hayffield L",
+    "description": "View from the battlements of Peñafiel castle over green fields, flat-topped hills and the edge of the town. Place confirmed by caption: 'Vistas desde el castillo de Peñafiel'."
+   },
+   "notes": "Reds must be at least 95% red grapes and 75% Tempranillo. Red is obviously the core, but no official page fetched gives a volume share, so main is false. A search snippet (not an official source) put whites at about 3% of production; whites were only added to the DO recently (the regulator's 2020 press note on its first white back labels). Order of rosé vs white is a judgment call."
+  },
+  {
+   "slug": "wine/portugal/douro",
+   "styles": [
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Fortified: Ruby, Tawny, LBV, Vintage Port; Moscatel do Douro",
+     "source": "https://www.ivdp.pt/en/wines/port-wines/introduction/"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Touriga Nacional, Touriga Franca, Tinta Roriz",
+     "source": "https://www.ivdp.pt/en/wines/douro-wines/wines/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Malvasia Fina, Viosinho, Gouveio, Rabigato",
+     "source": "https://www.ivdp.pt/en/wines/douro-wines/wines/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Douro rosé; Rosé Port",
+     "source": "https://www.ivdp.pt/en/wines/douro-wines/wines/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Espumante do Douro",
+     "source": "https://www.ivdp.pt/en/wines/douro-wines/wines/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--portugal--douro.jpg",
+    "unsplashId": "5ZmAyIG_OrI",
+    "photographer": "Maksym Kaharlytskyi",
+    "description": "Vine rows in front of terraced hillsides and the Douro river winding through the valley. Place confirmed by caption: 'The vineyards in Douro Valley, Portugal. The UNESCO World Heritage region where the Porto Wine is produced.'"
+   },
+   "notes": "Port is listed first because the page is about Port; no fetched source compares Port and Douro DOC volumes, so no main flag. IVDP says red is 'the great majority' of Douro DOC (unfortified) wine. Port comes in red, white and rosé, from very sweet to extra dry (white Port), so Sweet is the closest fit. The Court sums up the region as 'Douro bold dry reds; Porto fortified sweet red' (p.46)."
+  },
+  {
+   "slug": "wine/portugal/vinho-verde",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": null,
+     "examples": "Alvarinho, Loureiro, Arinto",
+     "source": "https://winefolly.com/deep-dive/vinho-verde-the-perfect-poolside-wine-from-portugal/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Vinho Verde rosé",
+     "source": "https://www.vinhoverde.pt/en/region/designation-of-origin-vinho-verde/"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Vinho Verde tinto",
+     "source": "https://www.vinhoverde.pt/en/region/designation-of-origin-vinho-verde/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Vinho Verde espumante",
+     "source": "https://www.vinhoverde.pt/en/region/designation-of-origin-vinho-verde/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--portugal--vinho-verde.jpg",
+    "unsplashId": "Vj0Nj86xtg4",
+    "photographer": "Jesus David Gomez",
+    "description": "Medieval stone bridge over the Lima river, a rowing boat and the town behind it. No vineyards in the shot (Unsplash had no Minho vineyard photos). The boat carries a small registration number, not a brand. Place confirmed by caption: 'Ponte de lima, portugal'."
+   },
+   "notes": "Main from Wine Folly ('the vast majority of Vinho Verde wines are white'); the regulator page (CVRVV) confirms the DO covers still and sparkling white, red and rosé but gives no shares. Order of rosé, red and sparkling is a judgment call. No red grape was sourced, so the red example is just the style name. Photo has no vines."
+  },
+  {
+   "slug": "wine/portugal/alentejo",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "66.8 of 92.2 million litres sold in 2024 (about 72%)",
+     "examples": "Alicante Bouschet, Aragonez, Trincadeira, Castelão",
+     "source": "https://vinhosdoalentejo.pt//media/press/2025/Vinhos-do-Alentejo-registam-um-crescimento-de-8-nas-vendas-em-2024.pdf"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": "white and rosé together were 27% of 2024 sales volume",
+     "examples": "Antão Vaz, Arinto, Roupeiro",
+     "source": "https://www.winesofportugal.com/en/discover/wine-regions/alentejo/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Alentejo rosé",
+     "source": "https://vinhosdoalentejo.pt//media/press/2025/Vinhos-do-Alentejo-registam-um-crescimento-de-8-nas-vendas-em-2024.pdf"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--portugal--alentejo.jpg",
+    "unsplashId": "GcBKr7Nk60w",
+    "photographer": "Bernardo Lorena Ponte",
+    "description": "A single oak (likely cork or holm) on a rolling golden plain under a deep blue sky: typical Alentejo country, but no vines. Place not confirmed: no caption; it came up for 'Alentejo' and the photographer is Portuguese."
+   },
+   "notes": "Shares are from the CVRA (Alentejo regulator) press release of 25 Feb 2025; the 72% is computed from its litre figures. Grape examples are from Wines of Portugal. The CVRA site also lists sparkling, fortified and Talha (amphora) wine; not included as styles. Photo has no vines."
+  },
+  {
+   "slug": "wine/portugal/dao",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Touriga Nacional, Jaen, Alfrocheiro, Tinta Roriz",
+     "source": "https://www.winesofportugal.com/en/discover/wine-regions/dao-e-lafoes/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Encruzado, Bical, Malvasia Fina",
+     "source": "https://www.winesofportugal.com/en/discover/wine-regions/dao-e-lafoes/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--portugal--dao.jpg",
+    "unsplashId": "DDMoja-dXqo",
+    "photographer": "Johannes Mändle",
+    "description": "Rocky granite hills with a wide plain and clouds beyond. No vineyards. Place not confirmed: no caption; it came up for 'Serra da Estrela', so probably Serra da Estrela, next to the Dão."
+   },
+   "notes": "CVR Dão (cvrdao.pt) home and facts pages had no colour split (stats are in a downloadable PDF not fetched), so no main flag and no share; red first is a judgment that matches the page ('elegant reds'). Rosé and sparkling not sourced. Photo has no vines."
+  },
+  {
+   "slug": "wine/portugal/madeira",
+   "styles": [
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Fortified: Sercial (driest), Verdelho, Boal, Malmsey (sweetest); Tinta Negra",
+     "source": "https://vinhomadeira.com/o-vinho-madeira/tipos-categorias"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--portugal--madeira.jpg",
+    "unsplashId": "t3hiAaJ0vns",
+    "photographer": "François Saint-Léger",
+    "description": "A green valley with terraced slopes and villages under cloud-covered mountains. Terraces are typical of Madeira's vineyards, but vines can't be made out. Island confirmed by caption: 'madère' (French for Madeira); exact valley not confirmed."
+   },
+   "notes": "Madeira is fortified, so it sits under Sweet per the brief, but it runs from Extra Seco (max 49 g/l) and Seco to Doce (min 96 g/l) per IVBAM. Classic order driest to sweetest: Sercial, Verdelho, Boal, Malmsey. IVBAM also regulates still DOP Madeirense wines, so main is false. Categories: age blends (5 to 50+ years), Colheita, Frasqueira."
+  },
+  {
+   "slug": "wine/portugal/bairrada",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Baga, Alfrocheiro, Touriga Nacional",
+     "source": "https://www.winesofportugal.com/en/discover/wine-regions/bairrada/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Bairrada espumante",
+     "source": "https://www.winesofportugal.com/en/discover/wine-regions/bairrada/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Fernão Pires (Maria Gomes), Arinto, Bical",
+     "source": "https://www.winesofportugal.com/en/discover/wine-regions/bairrada/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--portugal--bairrada.jpg",
+    "unsplashId": "-AdkyzIzm4M",
+    "photographer": "Antonio Vivace",
+    "description": "Winter-pruned vine rows on low, green, gently rolling land, with a town and a viaduct in the distance. Place not confirmed and may not be Portugal: no caption; it came up for 'Portugal vineyard'. Unsplash had nothing for Bairrada, Anadia, Mealhada or Curia."
+   },
+   "notes": "Wines of Portugal says reds are 'dominated by the Baga grape' and Bairrada was 'one of the first national regions to adopt and explore sparkling wines'. No share figures found and the Bairrada regulator site was not fetched, so no main flag; order is a judgment call. Photo location unconfirmed."
+  },
+  {
+   "slug": "wine/germany/mosel",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": "90% of plantings are white; Riesling 5,156 ha",
+     "examples": "Riesling, Müller-Thurgau, Elbling",
+     "source": "https://www.winesofgermany.com/our-regions/growing-area/72/mosel"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Noble-sweet Riesling: Auslese, Beerenauslese, Trockenbeerenauslese",
+     "source": "https://www.winesofgermany.com/our-regions/growing-area/72/mosel"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Elbling sparkling, Riesling Sekt",
+     "source": "https://www.winesofgermany.com/our-regions/growing-area/72/mosel"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": "10% of plantings",
+     "examples": "Spätburgunder (Pinot Noir), Dornfelder",
+     "source": "https://www.winesofgermany.com/our-regions/growing-area/72/mosel"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--germany--mosel.jpg",
+    "unsplashId": "2ExH2WpDpSQ",
+    "photographer": "Matthew",
+    "description": "Aerial view of a tight Mosel river bend wrapped around autumn vineyards, with a riverboat and a village. Place confirmed by caption: 'The lovely Mosel near Bremm (Germany) during autumn'."
+   },
+   "notes": "All from the Wines of Germany Mosel page: Elbling makes 'fresh, fruity and uncomplicated dry and sparkling wines'; noble-sweet wines set auction records. 'Riesling Sekt' and the Prädikat names are general German terms, not stated on the Mosel page. Riesling ranges from dry to dessert styles here."
+  },
+  {
+   "slug": "wine/austria/wachau",
+   "styles": [
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Grüner Veltliner, Riesling; Steinfeder, Federspiel, Smaragd",
+     "source": "https://www.vinea-wachau.at/en/vinea-wachau/the-brandnames"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--austria--wachau.jpg",
+    "unsplashId": "N36TSJUaszQ",
+    "photographer": "Roman Vasylovskyi",
+    "description": "Golden autumn vineyard slopes running down to a village church and the Danube, with forested hills behind. Place confirmed by caption: 'Misty morning light over the Danube River and vineyard slopes of the Wachau Valley'."
+   },
+   "notes": "Vinea Wachau's three styles are all dry, unoaked whites, and Wachau DAC single-vineyard (Ried) wines may only be Grüner Veltliner or Riesling (vinea-wachau.at). These rules cover Vinea members and the DAC, so no region-wide 'main' statement; main left false. No red, sweet or sparkling Wachau wine was sourced."
+  },
+  {
+   "slug": "wine/greece/santorini",
+   "styles": [
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Assyrtiko (min 85% in dry PDO), Athiri, Aidani; Nykteri",
+     "source": "https://winesofgreece.org/pdo/pdo-santorini/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Vinsanto (sun-dried grapes, min 51% Assyrtiko)",
+     "source": "https://winesofgreece.org/pdo/pdo-santorini/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--greece--santorini.jpg",
+    "unsplashId": "L92eZmRPx0o",
+    "photographer": "Cynthia Andres",
+    "description": "Daytime view over the Santorini caldera: volcanic cliffs, the switchback port road and two distant cruise ships, with lavender in front. No basket-trained vines visible. Place confirmed by caption: 'Santorini… This was taken on a vineyard on a mountain'."
+   },
+   "notes": "PDO Santorini covers dry white, sweet wine from dried grapes and sweet fortified wine from dried grapes (Wines of Greece). No production split, so no main flag. Nykteri = dry PDO wine with at least 13.5% abv and 3 months in oak. Photo shows the caldera, not vines."
+  },
+  {
+   "slug": "wine/greece/naoussa",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "PDO Naoussa is red only",
+     "examples": "Xinomavro (100%): dry, semi-dry and semi-sweet reds",
+     "source": "https://winesofgreece.org/pdo/pdo-naoussa/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--greece--naoussa.jpg",
+    "unsplashId": "q8k4Mny9M4E",
+    "photographer": "Elpis Vardaka",
+    "description": "Autumn-gold vineyard rows on rolling hills with forested mountains behind; an old blue tractor with no visible brand in front. Place not confirmed: no caption; came up for 'Greece vineyard'. A generic Greek vineyard stand-in."
+   },
+   "notes": "Wines of Greece: 'PDO Naoussa applies exclusively to red wines, produced from 100% Xinomavro'; types are red dry, semi-dry and semi-sweet. Main is set because the PDO is red only. Photo location unconfirmed."
+  },
+  {
+   "slug": "wine/greece/nemea",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "PDO Nemea is red only",
+     "examples": "Agiorgitiko (100%)",
+     "source": "https://winesofgreece.org/pdo/pdo-nemea/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Red semi-sweet, sweet fortified, sweet from dried grapes",
+     "source": "https://winesofgreece.org/pdo/pdo-nemea/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--greece--nemea.jpg",
+    "unsplashId": "DoMs9rpuNXs",
+    "photographer": "Jeff Kats",
+    "description": "Drone view of a red-roofed winery building surrounded by vineyard blocks and olive trees; no readable sign. Place confirmed by caption: 'Great Days Of Nemea 2025'."
+   },
+   "notes": "Wines of Greece: 'PDO Nemea designation applies exclusively to red wines, made from 100% Agiorgitiko' and is Greece's largest PDO zone for reds. Sweet versions exist 'however there is a limited number of wines in the market'. Main is set because the PDO is red only."
+  },
+  {
+   "slug": "wine/hungary/tokaj",
+   "styles": [
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Tokaji Aszú (5 and 6 puttony), Eszencia, sweet Szamorodni",
+     "source": "https://www.tokaj-turizmus.hu/Wines"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Dry Furmint, Hárslevelű, dry Szamorodni",
+     "source": "https://winefolly.com/grapes/furmint/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--hungary--tokaj.jpg",
+    "unsplashId": "u7TvImSAVDc",
+    "photographer": "Richard Stachmann",
+    "description": "A small whitewashed vineyard hut with a green door next to vine rows on a hillside, in warm summer light (shot on film). Place not confirmed: caption is 'Kodak gold 200'; it was the only Unsplash result for 'Tarcal' (a Tokaj village) and the photographer is from Budapest."
+   },
+   "notes": "No official Tokaj regulator page was found or fetched. Categories come from tokaj-turizmus.hu (the region's tourism site: varietal wines incl. Furmint, Hárslevelű, Yellow Muscat; 'specialties' incl. dry and sweet Szamorodni; Aszú wines incl. 5/6 puttony, Aszú essence, máslás, fordítás, Eszencia). Wine Folly: Furmint is 'famously used in Tokaji Aszú dessert wines, but also available as a dry wine'. No production split, so no main flag; Tokaj sparkling not sourced. Photo location unconfirmed."
+  },
+  {
+   "slug": "wine/spain/priorat",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": null,
+     "examples": "Garnacha, Cariñena, Cabernet Sauvignon, Syrah",
+     "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Garnatxa Blanca, Macabeu",
+     "source": "https://winefolly.com/deep-dive/in-search-of-the-best-wines-from-priorat/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Vi ranci, vi de licor dolç, vi dolç natural",
+     "source": "https://media.winefolly.com/Texto-consolidado-PC-Priorat-Julio-2013.pdf"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Priorat rosat",
+     "source": "https://media.winefolly.com/Texto-consolidado-PC-Priorat-Julio-2013.pdf"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--spain--priorat.jpg",
+    "unsplashId": "zZcvA-y90bY",
+    "photographer": "Ben Steele",
+    "description": "Dry, steep hills with terraced plots and a winding road, with the cliff wall of the Montsant range behind. A plain white mug with no logo sits at the bottom edge. Place confirmed by caption: taken 'in the village of Torroja' (Torroja del Priorat)."
+   },
+   "notes": "Main: the Court calls Priorat DOCa 'mainly still dry reds from Garnacha, Cariñena and international grapes'; Wine Folly says 'reds remain dominant'. Sweet and rosé come from the official DOP Priorat specification (pliego de condiciones, consolidated July 2013), which lists blanco, tinto, rosado and vinos de licor (rancio, dulce, mistela, dulce natural). That PDF is hosted on media.winefolly.com, not the regulator's site; doqpriorat.org pages would not load. Sweet/rancio are traditional and small."
+  },
+  {
+   "slug": "wine/spain/rias-baixas",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": "Albariño is 95% of wine production (96% of grapes)",
+     "examples": "Albariño, Rías Baixas blends (Condado do Tea, O Rosal)",
+     "source": "https://doriasbaixas.com/en/our-wines/"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Native red grapes (small volumes)",
+     "source": "https://doriasbaixas.com/en/our-wines/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--spain--rias-baixas.jpg",
+    "unsplashId": "YZa4eopXQzE",
+    "photographer": "Simon Wiedensohler",
+    "description": "A medieval stone bridge over calm water, with a village on a green wooded hillside. No vineyards in shot (no Albariño pergola or Cambados photo found). Place confirmed by caption: 'Ponte Medieval de Pontesampaio' (Pontevedra, at the head of the Ría de Vigo)."
+   },
+   "notes": "White main inferred from Albariño (a white grape) being 95% of wine production. The regulator page mentions '13 other indigenous white and red varieties' and 9 wine types but does not list them; no red grape name or red share was sourced, so the red example is generic. Sparkling not sourced. Photo has no vines."
+  },
+  {
+   "slug": "wine/chile/maipo-valley",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Cabernet Sauvignon, Carménère, Merlot, Syrah",
+     "source": "https://www.winesofchile.org/winegrowing-regions/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--chile--maipo-valley.jpg",
+    "unsplashId": "4z9eDFOevAc",
+    "photographer": "Jorge Fernández Salas",
+    "description": "Trellised vines in autumn orange and red under a clear sky, with mountains behind. The winery is named only in the caption; no sign or logo is visible. Place confirmed by caption: 'Concha y toro, pirque' (Pirque, Maipo Valley, near Santiago)."
+   },
+   "notes": "Wines of Chile: 'The main variety planted is Cabernet Sauvignon… Other red varieties that thrive in the valley are Merlot, Syrah and Carménère.' That says main grape, not main style, so main is false. Wine Folly also covers only Maipo reds (Cabernet, Bordeaux blends). No white Maipo style was sourced."
+  }
+ ]
+}
