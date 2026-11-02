@@ -120,10 +120,16 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
   if (pts.length) {
     const head = find(kp, byName('Head'));
     head.c = head.c.filter((x) => !(x.n || '').startsWith('Arrow'));
-    setText(T(head)[0], 'KEY POINTS'); setText(T(head)[1], pts.length > 3 ? `${pts.length} cards · swipe` : `${pts.length} cards`);
+    setText(T(head)[0], 'KEY POINTS');
     const cards = find(kp, byName('Cards')); const protos = cards.c;
     cards.c = pts.map((p, i) => { const c = clone(protos[i % protos.length]); c.n = 'Point · ' + p.big; const t = texts(c); setText(t[0], p.big); setText(t[1], p.line); t[0].ar = 'H'; t[0].sh = 'F'; if (pts.length > 3) { c.sh = 'F'; c.w = 220; } return c; });
-    cards.n = 'Cards';
+    if (pts.length > 3) {
+      // Nov 2, Tommy: "swipe is not working". The cards become a carousel: arrows, a count, and drag / swipe.
+      cards.n = 'Carousel · Key points'; delete cards.clip; cards.wrap = 0;
+      const btn = (name, glyph) => ({ t: 'F', n: name, w: 40, h: 40, sh: 'F', sv: 'F', f: [{ c: '#1E1C1A' }], r: 20, lm: 'H', pa: 'C', ca: 'C', c: [{ t: 'T', n: glyph, s: glyph, ff: 'Archivo', fs: 'SemiBold', z: 17, ar: 'W', sh: 'H', sv: 'H', f: [{ c: '#F2EEE7' }] }] });
+      const count = { t: 'T', n: 'Carousel count', s: `1 of ${pts.length}`, ff: 'Archivo', fs: 'SemiBold', z: 14, ar: 'W', sh: 'H', sv: 'H', f: [{ c: '#5E574F' }] };
+      head.c = [T(head)[0], { t: 'F', n: 'Carousel controls', lm: 'H', gap: 10, ca: 'C', sh: 'H', sv: 'H', c: [count, btn('Carousel prev', '←'), btn('Carousel next', '→')] }];
+    } else { setText(T(head)[1], `${pts.length} cards`); cards.n = 'Cards'; }
   } else remove(main, kp);
 
   // read it: big idea → where → stops → the visual → don't mix up → say it
@@ -205,10 +211,12 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
       // no video: the section is read, not watched
       if (d) { if (sv?.youtubeId && sv.length) setText(T(d)[0], sv.length); else if (sv?.youtubeId) th.c = (th.c || []).filter((x) => x !== d); else setText(T(d)[0], 'Read'); }
     }
-    if (state === 'done') {
-      markDone(th, false);
-      const ck = find(c, byName('Done')); if (ck) { ck.f = [{ c: GREEN }]; for (const t of texts(ck)) t.f = [{ c: '#FFFFFF' }]; }
-    }
+    // Nov 2, Tommy: "There is no completed checkbox over the sections." Every row gets one: a ring, then a green tick.
+    c.c = c.c.filter((x) => x.n !== 'Done');
+    c.c.push(state === 'done'
+      ? { t: 'F', n: 'Done', w: 24, h: 24, r: 12, sh: 'F', sv: 'F', f: [{ c: GREEN }], lm: 'H', pa: 'C', ca: 'C', c: [txt('✓', { z: 13, c: '#FFFFFF', fs: 'ExtraBold' })] }
+      : { t: 'F', n: 'Not done', w: 24, h: 24, r: 12, sh: 'F', sv: 'F', st: state === 'here' ? '#8A8178' : '#B8AFA3', sw: 2, lm: 'H', pa: 'C', ca: 'C' });
+    if (state === 'done') markDone(th, false);
     const copy = find(c, byName('Copy')); const cp = T(copy);
     if (state === 'done') { cp[0].s = 'DONE'; cp[0].f = [{ c: GREEN }]; cp[1].f = [{ c: '#5E574F' }]; }
     if (state !== 'done') setText(cp[0], state === 'here' ? 'NOW PLAYING' : `SECTION ${i + 1}`); setText(cp[1], s.name);
@@ -221,6 +229,25 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
   if (whole) { whole.n = 'Row · Read Whole Chapter'; whole.to = '/' + wholeChapterSlug(ch); const t = T(whole); setText(t[0], 'Read Whole Chapter'); setText(t[1], `${ch.minutes || 20} min`); }
   const chk = find(pl, byName('Item · Check Yourself'));
   if (chk) { chk.n = 'Row · Check Yourself'; chk.to = quizHref(ch); setText(T(chk)[1], `${ch.cards.length} cards`); }
+  {
+    const nc = all[all.indexOf(ch) + 1];
+    const to = si < n - 1 ? href(ch, si + 1) : nc ? href(nc, 0) : '/' + L1;
+    const label = si < n - 1 ? 'Next Section' : nc ? 'Next Lesson' : 'Back to Level 1';
+    const what = si < n - 1 ? ch.sections[si + 1].name : nc ? nc.title : 'Level 1';
+    const eyebrow = si < n - 1 ? `UP NEXT · SECTION ${si + 2} OF ${n}` : nc ? `UP NEXT · LESSON ${nc.number}` : 'YOU’VE FINISHED THE LAST LESSON';
+    const doneHere = ctx.done.has(doneKey(ch, si));
+    const prevBtn = si > 0 ? [{ t: 'F', n: 'Button · Previous section', to: href(ch, si - 1), lm: 'H', gap: 8, pd: [14, 18, 14, 18], r: 999, st: '#4A4540', sw: 1, pa: 'C', ca: 'C', sh: 'H', sv: 'H', c: [txt('←  Previous', { z: 15, c: '#F2EEE7', fs: 'SemiBold' })] }] : [];
+    const nextBtn = { t: 'F', n: 'Button · Next section', to, lm: 'H', gap: 10, pd: [16, 28, 16, 28], r: 999, f: [{ c: '#C49A6C' }], pa: 'C', ca: 'C', sh: 'H', sv: 'H', c: [txt(label + '  →', { z: 17, c: '#1E1C1A', fs: 'Bold' })] };
+    const up = { t: 'F', n: 'Up next', lm: 'V', gap: 18, pd: [24, 24, 24, 24], r: 20, f: [{ c: '#1E1C1A' }], sh: 'L', sv: 'H', c: [
+      { t: 'F', n: 'Up next copy', lm: 'V', gap: 6, sh: 'L', sv: 'H', c: [txt(eyebrow, { z: 11, ls: '12%', c: '#C49A6C' }), { ...txt(what, { z: 22, c: '#F2EEE7', fs: 'Bold' }), ar: 'H', sh: 'L' }] },
+      { t: 'F', n: 'Up next actions', lm: 'H', gap: 12, pa: 'S', ca: 'C', sh: 'L', sv: 'H', c: [
+        { t: 'F', n: 'Mark complete', w: 196, h: 48, sh: 'F', sv: 'F', meta: { complete: { key: doneKey(ch, si), done: doneHere } } },
+        { t: 'F', n: 'Up next buttons', lm: 'H', gap: 10, ca: 'C', sh: 'H', sv: 'H', c: [...prevBtn, nextBtn] },
+      ] },
+    ] };
+    const host = find(main, byName('Lesson')) || main;
+    host.c.push(up);
+  }
   const next = find(pl, byName('Button · Next: Alsace'));
   if (next) {
     const nc = all[all.indexOf(ch) + 1];

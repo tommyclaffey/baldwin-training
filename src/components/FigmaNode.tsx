@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { createPortal } from 'react-dom';
 import svgs from '../content/svgs.json';
 import { SearchBox } from './SearchBox';
 import { VideoEmbed } from './VideoEmbed';
@@ -7,6 +8,8 @@ import type { Video } from '../lib/api';
 import { AddRow } from './EditSheet';
 import { SpinViewer } from './SpinViewer';
 import { QuickCheck } from './QuickCheck';
+import { AddVideoButton } from './AddVideo';
+import { CompleteToggle } from './CompleteToggle';
 import { AssignName, FindBox, TableFinder, TableMarker, controlProps, isActive, useInteract, visibleKids, type Meta } from './interact';
 
 // One node of the Figma layout export (see scripts/build-content.mjs).
@@ -315,7 +318,19 @@ function CarouselGroup({ children }: { children: ReactNode }) {
     measure();
     el.addEventListener('scroll', measure, { passive: true });
     const ro = new ResizeObserver(measure); ro.observe(el);
-    return () => { el.removeEventListener('scroll', measure); ro.disconnect(); };
+    // Drag with a mouse to swipe (touch and trackpads scroll on their own). Snaps to the nearest card on release.
+    let drag: { x: number; left: number; moved: boolean } | null = null;
+    const down = (e: PointerEvent) => { if (e.pointerType !== 'mouse' || e.button !== 0) return; drag = { x: e.clientX, left: el.scrollLeft, moved: false }; el.style.scrollSnapType = 'none'; el.style.scrollBehavior = 'auto'; };
+    const move = (e: PointerEvent) => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 4) { drag.moved = true; el.classList.add('dragging'); } el.scrollLeft = drag.left - dx; };
+    const up = () => {
+      if (!drag) return; const moved = drag.moved; drag = null; el.classList.remove('dragging'); el.style.scrollBehavior = 'smooth';
+      const kids = [...el.children] as HTMLElement[]; const step = kids.length > 1 ? kids[1].offsetLeft - kids[0].offsetLeft : el.clientWidth;
+      el.scrollTo({ left: Math.round(el.scrollLeft / step) * step, behavior: 'smooth' });
+      setTimeout(() => { el.style.scrollSnapType = ''; el.style.scrollBehavior = ''; }, 350);
+      if (moved) { const stop = (ev: Event) => { ev.preventDefault(); ev.stopPropagation(); }; el.addEventListener('click', stop, { capture: true, once: true }); setTimeout(() => el.removeEventListener('click', stop, { capture: true }), 50); }
+    };
+    el.addEventListener('pointerdown', down); window.addEventListener('pointermove', move); window.addEventListener('pointerup', up);
+    return () => { el.removeEventListener('scroll', measure); ro.disconnect(); el.removeEventListener('pointerdown', down); window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
   }, [el]);
   const go = (dir: number) => {
     if (!el) return;
@@ -382,6 +397,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   if (m?.find) return <FindBox k={m.find} label={m.label || 'Find'} style={st} className={cls.join(' ')} />;
   // A bottle from the spin scanner: drag to turn it.
   if (m?.check?.items?.length) return <QuickCheck data={m.check} style={{ ...st, height: undefined, minHeight: undefined }} className={cls.join(' ')} />;
+  if ((m as { complete?: { key: string; done: boolean } } | undefined)?.complete) return <CompleteToggle data={(m as { complete: { key: string; done: boolean } }).complete} />;
   if (m?.spin?.length) return <SpinViewer frames={m.spin} alt={(node.n || '').replace(/^IMG\//, '')} style={st} className={cls.join(' ')} />;
   // Edit in place: a manager's "+ Add" row or tile (staff never get these nodes).
   if (m?.add && node.to) return <AddRow href={node.to} label={m.add.label} tile={m.add.tile} inset={m.add.inset} style={st} className={cls.join(' ')} />;
@@ -458,14 +474,13 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   }
   const overlays = (
     <>
-      {playing && node.vid && (
-        <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) setPlaying(false); }}>
+      {playing && node.vid && createPortal(
+        <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) setPlaying(false); }} onClick={(e) => e.stopPropagation()}>
           <div className="modal video-modal" role="dialog" aria-modal="true" aria-label="Video">
             <button className="icon-btn" onClick={() => setPlaying(false)} aria-label="Close">✕</button>
             <div className="video-frame"><VideoEmbed video={node.vid} /></div>
           </div>
-        </div>
-      )}
+        </div>, document.body)}
     </>
   );
   if (m?.tables && table && m.tables[table]) { extras.push(<TableMarker key="table" at={m.tables[table]} label={table} />); st.position = st.position || 'relative'; st.overflow = 'hidden'; }
@@ -499,7 +514,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     const off = prev ? carousel.atStart : carousel.atEnd;
     return (
       <button type="button" className={cls.concat('carousel-btn').join(' ')} style={st} data-name={node.n} disabled={off}
-        aria-label={prev ? 'Previous cocktails' : 'Next cocktails'} onClick={() => carousel.go(prev ? -1 : 1)}>{kids}</button>
+        aria-label={prev ? 'Previous' : 'Next'} onClick={() => carousel.go(prev ? -1 : 1)}>{kids}</button>
     );
   }
   if (carousel && isCarousel(node)) {
@@ -519,6 +534,8 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
 
 function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[]) {
   if (!node.to) return el;
+  const av = (node.meta as { addVideo?: { key: string; title: string } } | undefined)?.addVideo;
+  if (av) return <AddVideoButton pageKey={av.key} title={av.title} style={st} className={cls.join(' ')}>{(el as { props: { children?: ReactNode } }).props.children}</AddVideoButton>;
   const label = node.n?.includes(' · ') ? node.n.split(' · ').slice(1).join(' · ') : undefined;
   // Outside sources (Wine Folly, Vivino, producer sites) open in a new tab.
   if (/^https?:\/\//.test(node.to)) {

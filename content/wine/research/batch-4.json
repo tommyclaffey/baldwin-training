@@ -1,0 +1,776 @@
+{
+ "regions": [
+  {
+   "slug": "wine/usa/dundee-hills",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "69.5% of plantings are Pinot Noir",
+     "examples": "Pinot Noir",
+     "source": "https://willamettewines.com/about-the-valley/ava-overviews/dundee-hills/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Pinot Gris, Pinot Blanc",
+     "source": "https://www.oregonwine.org/regions/willamette-valley/dundee-hills-ava/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Sparkling wine (no grape named by source)",
+     "source": "https://www.oregonwine.org/regions/willamette-valley/dundee-hills-ava/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--dundee-hills.jpg",
+    "unsplashId": "xZKItBvNTfY",
+    "photographer": "Molly Bailey",
+    "description": "Aerial view of vineyard rows on a hillside with forest, golden light. Photographer is based in Dundee, OR; exact vineyard not stated in caption."
+   },
+   "notes": "Willamette Valley Wineries Association: Pinot noir 69.5%, Chardonnay 5.75%, Pinot gris 2.23% of plantings. Share is Pinot Noir alone (red total is higher). Oregon Wine Board: 'Best known for world class Pinot noir... Chardonnay, Pinot gris, Pinot blanc and sparkling wines.'"
+  },
+  {
+   "slug": "wine/usa/red-mountain",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "60% of plantings are Cabernet Sauvignon",
+     "examples": "Cabernet Sauvignon, Merlot, Syrah",
+     "source": "https://www.washingtonwine.org/resource/red-mountain/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chenin Blanc, Chardonnay",
+     "source": "https://winefolly.com/deep-dive/columbia-valley-washingtons-biggest-wine-region/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--red-mountain.jpg",
+    "unsplashId": "N1c4X5csoTg",
+    "photographer": "Tim Mossholder",
+    "description": "Vineyard on dry, brown hills at golden hour. Location not confirmed (photographer is California-based); chosen for the arid hillside look."
+   },
+   "notes": "WA Wine Commission: 'dominated by red varieties, particularly Cabernet Sauvignon, which makes up 60% of plantings'. White is minor (Wine Folly: Chenin Blanc and 'a little Chardonnay')."
+  },
+  {
+   "slug": "wine/usa/horse-heaven-hills",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Cabernet Sauvignon, Merlot, Syrah",
+     "source": "https://www.washingtonwine.org/resource/horse-heaven-hills/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Riesling",
+     "source": "https://www.washingtonwine.org/resource/horse-heaven-hills/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--horse-heaven-hills.jpg",
+    "unsplashId": "GVXVOYdQ_m4",
+    "photographer": "Theo Bickel",
+    "description": "Bare brown hills above the Columbia River with sagebrush in front. Caption says only 'Columbia River'; exact spot not confirmed."
+   },
+   "notes": "WA Wine Commission top varieties: Chardonnay, Riesling, Merlot, Cabernet Sauvignon; Cabernet 'makes up a large percentage of plantings' (no number, so main false). Syrah from Wine Folly. The AVA's '25% of Washington's grape output' is a share of the state, not a style share. A 66/34 red/white split appeared in a search summary but wasn't confirmed."
+  },
+  {
+   "slug": "wine/usa/wahluke-slope",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": null,
+     "examples": "Cabernet Sauvignon, Merlot, Syrah",
+     "source": "https://www.washingtonwine.org/resource/wahluke-slope/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay",
+     "source": "https://www.washingtonwine.org/resource/wahluke-slope/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--wahluke-slope.jpg",
+    "unsplashId": "gX3cZD3MLw8",
+    "photographer": "Sofia Tang",
+    "description": "Columbia River running between dry brown hills and basalt cliffs, central Washington. Exact location not in caption (looks like the Vantage area just north of the AVA); unconfirmed."
+   },
+   "notes": "WA Wine Commission: 'one of the warmest appellations in the state, dominated by red varieties', 'known primarily for red grape varieties, particularly Cabernet Sauvignon, Merlot, and Syrah'. No percentages."
+  },
+  {
+   "slug": "wine/usa/lake-chelan",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Syrah, Pinot Noir, Malbec",
+     "source": "https://www.washingtonwine.org/resource/lake-chelan/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Pinot Gris, Riesling",
+     "source": "https://www.washingtonwine.org/resource/lake-chelan/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Sparkling wine (no grape named by source)",
+     "source": "https://winefolly.com/deep-dive/columbia-valley-washingtons-biggest-wine-region/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--lake-chelan.jpg",
+    "unsplashId": "cVfJ62cBZX4",
+    "photographer": "Taylor Beach",
+    "description": "Lake Chelan seen from a high, pine-framed viewpoint, long blue lake between mountains. Caption confirms Lake Chelan."
+   },
+   "notes": "WA Wine Commission top varieties: Syrah, Pinot Noir, Chardonnay, Pinot Gris, Merlot, Riesling (no percentages). Wine Folly: 'seek out its Malbec, Pinot Noir, Gewürztraminer, and sparkling wines.' Malbec from Wine Folly. No majority stated."
+  },
+  {
+   "slug": "wine/usa/new-york",
+   "styles": [
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Riesling, Chardonnay",
+     "source": "https://newyorkwines.org/grapes/"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Cabernet Franc, Merlot",
+     "source": "https://newyorkwines.org/grapes/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Finger Lakes and Long Island traditional method (Chardonnay, Pinot Noir)",
+     "source": "https://newyorkwines.org/event/the-sparkling-wines-of-new-york/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Riesling ice wine and late harvest",
+     "source": "https://newyorkwines.org/grapes/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Cabernet Franc, Pinot Noir, Merlot",
+     "source": "https://newyorkwines.org/grapes/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--new-york.jpg",
+    "unsplashId": "M-l-Y4R7hRk",
+    "photographer": "Luke Hodde",
+    "description": "Rows of grapevines beside a grass lane on an overcast day. Photographer is Ithaca-based and the photo surfaces for 'Finger Lakes vineyard', but the caption gives no location."
+   },
+   "notes": "NY Wine & Grape Foundation grapes page: Riesling 1,034 ac, Chardonnay 865, Merlot 763, Cabernet Franc 495; Riesling makes noble-rot and late-harvest dessert wines; Pinot Noir for sparkling and rosé. Sparkling page: 'produced in all the state's major AVAs'. Wine Folly NY: 'Riesling is the most planted wine grape' and only 15% of NY vines are vinifera (Concord dominates overall acreage), so main false."
+  },
+  {
+   "slug": "wine/usa/hudson-river-region",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Cabernet Franc, Pinot Noir, Baco Noir",
+     "source": "https://newyork.guides.winefolly.com/regions/hudson-river"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Seyval Blanc, Riesling, Chardonnay",
+     "source": "https://newyorkwines.org/wp-content/uploads/2021/07/NYWCR-JUNE-2018.pdf"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--hudson-river-region.jpg",
+    "unsplashId": "I_3ihw9nj8w",
+    "photographer": "Clay Banks",
+    "description": "Leafy hilltop view through trees to the Hudson River and hills beyond. Caption confirms 'Views of the Hudson River'."
+   },
+   "notes": "Ordered Red first because the region's current signature is Cabernet Franc (Wine Folly; Cabernet Franc Coalition). The NY Wine & Grape Foundation 2018 course says 'The mainstay wines of the region have been mostly white French-American varietals, particularly the popular Seyval Blanc', past tense, so main is left false. Swap order if you prefer the historic view."
+  },
+  {
+   "slug": "wine/usa/old-mission-peninsula",
+   "styles": [
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Riesling, Chardonnay, Pinot Grigio",
+     "source": "https://michigan.guides.winefolly.com/regions/old-mission-peninsula"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Riesling ice wine, late harvest Riesling",
+     "source": "https://michigan.guides.winefolly.com/regions/old-mission-peninsula"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Sparkling Riesling, Blanc de Blancs",
+     "source": "https://michigan.guides.winefolly.com/regions/old-mission-peninsula"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Pinot Noir, Cabernet Franc",
+     "source": "https://michigan.guides.winefolly.com/regions/old-mission-peninsula"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--old-mission-peninsula.jpg",
+    "unsplashId": "XolWhXsdQt0",
+    "photographer": "Nick Perez",
+    "description": "Aerial sunset over Bowers Harbor and Power Island with Old Mission Peninsula along West Grand Traverse Bay. Caption confirms place."
+   },
+   "notes": "Wine Folly: Riesling 'made in all different styles; from bone dry to luscious Ice Wine, and even sparkling Riesling too'. michiganwines.com now redirects to the Michigan Craft Beverage Council, which has no style detail. No percentages, so main false."
+  },
+  {
+   "slug": "wine/usa/leelanau-peninsula",
+   "styles": [
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Riesling, Chardonnay, Pinot Grigio",
+     "source": "https://michigan.guides.winefolly.com/regions/leelanau-peninsula"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Pinot Noir, Gamay",
+     "source": "https://michigan.guides.winefolly.com/regions/leelanau-peninsula"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Brut sparkling (no grape named by source)",
+     "source": "https://michigan.guides.winefolly.com/regions/leelanau-peninsula"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Rosé (no grape named by source)",
+     "source": "https://michigan.guides.winefolly.com/regions/leelanau-peninsula"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Sweet wines (no grape named by source)",
+     "source": "https://michigan.guides.winefolly.com/regions/leelanau-peninsula"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--leelanau-peninsula.jpg",
+    "unsplashId": "KFirIveXzsY",
+    "photographer": "Brad Switzer",
+    "description": "Fishtown in Leland at sunset: fishing boats in the harbor channel between weathered shanties. Caption confirms Leland, Michigan (on the Leelanau Peninsula)."
+   },
+   "notes": "Wine Folly: 'a broad spectrum of wines, from dry to sweet, still to sparkling, rosé, red, and white'; major varieties Riesling, Chardonnay, Pinot Grigio, Pinot Noir; Gamay 'a rising star'. No percentages. PHOTO FLAG: a small gift-shop sign reading 'DIVERSIONS' and the boat names 'JOY' and 'JANICE SUE' are readable. None is a wine brand, but swap the photo if shop signs should be excluded too."
+  },
+  {
+   "slug": "wine/usa/texas-high-plains",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Tempranillo, Cabernet Sauvignon, Sangiovese",
+     "source": "https://texaswinegrowers.com/texas-wine-regions-avas/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Viognier, Roussanne, Chenin Blanc",
+     "source": "https://texaswinegrowers.com/texas-wine-regions-avas/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--texas-high-plains.jpg",
+    "unsplashId": "Jval-6cDC_U",
+    "photographer": "Raychel Sanner",
+    "description": "Storm cloud building over flat plains and a straight road at dusk. Caption says only 'A building storm in Texas'; exact location not confirmed."
+   },
+   "notes": "Texas Wine & Grape Growers Association: 'grows both white and red grapes... Tempranillo, Sangiovese, Cabernet Sauvignon, Viognier and Roussanne'. High Plains Winegrowers lists 75+ varieties incl. Chenin Blanc. The 'over 80% of Texas wine grapes' (txwines.org) is the region's share of the state crop, not a style share, so share null and main false."
+  },
+  {
+   "slug": "wine/usa/snake-river-valley",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Syrah, Cabernet Sauvignon, Merlot",
+     "source": "https://www.oregonwine.org/regions/avas/snake-river-valley-ava/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Riesling, Chardonnay, Viognier",
+     "source": "https://www.oregonwine.org/regions/avas/snake-river-valley-ava/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Riesling ice wine",
+     "source": "https://blog.idahowines.org/2024-idaho-wine-cider-competition-results"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--snake-river-valley.jpg",
+    "unsplashId": "nCSNYpmnVHo",
+    "photographer": "Laura Seaman",
+    "description": "Snake River winding through a green canyon floor between basalt walls. Caption: 'Snake River Canyon' (photographer's matching shot names Twin Falls/Jerome, ID). Not checked whether that exact stretch is inside the AVA boundary."
+   },
+   "notes": "Oregon Wine Board AVA page: predominant varieties 'Syrah, Cabernet Sauvignon, Riesling, Merlot, Gewürztraminer, Chardonnay'; 'known for producing wonderful Syrah, Viognier, and Riesling'. Sweet rests on an Idaho Wine Commission competition page (Koenig 2022 Riesling Ice Wine, Snake River Valley, Best Sweet Wine) and its varietals page ('some late harvest Rieslings are turned into... ice wines'); thin. No red/white share."
+  },
+  {
+   "slug": "wine/usa/eola-amity-hills",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "79.83% of plantings are Pinot Noir",
+     "examples": "Pinot Noir, Gamay Noir",
+     "source": "https://www.willamettewines.com/about-the-valley/ava-overviews/eola-amity-hills/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Riesling, Pinot Gris",
+     "source": "https://www.oregonwine.org/regions/willamette-valley/eola-amity-hills-ava/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--eola-amity-hills.jpg",
+    "unsplashId": "0AgtPoAARtE",
+    "photographer": "Dan Meyers",
+    "description": "Rows of vines climbing a hill under a low sun, forest behind. Caption: Zenith Vineyards outside Salem, which sits inside the Eola-Amity Hills AVA (wildairecellars.com)."
+   },
+   "notes": "Willamette Valley Wineries Association: Pinot noir 79.83%, Chardonnay 8.29%, Pinot gris 3.32%. Oregon Wine Board predominant varieties: Pinot noir, Chardonnay, Riesling, Gamay noir. No sparkling/rosé/sweet in sources."
+  },
+  {
+   "slug": "wine/usa/chehalem-mountains",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "69.89% of plantings are Pinot Noir",
+     "examples": "Pinot Noir, Gamay Noir",
+     "source": "https://willamettewines.com/about-the-valley/ava-overviews/chehalem-mountains/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Pinot Gris, Riesling",
+     "source": "https://www.oregonwine.org/regions/willamette-valley/chehalem-mountains-ava/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--usa--chehalem-mountains.jpg",
+    "unsplashId": "HWbcEH2CCEQ",
+    "photographer": "Emma Swoboda",
+    "description": "Vineyard in the foreground with rolling farmland and hills beyond at golden hour. Oregon photographer; exact location not in caption."
+   },
+   "notes": "Willamette Valley Wineries Association: Pinot noir 69.89%, Pinot gris 3.79%, Chardonnay 3.75%. Oregon Wine Board predominant varieties: Pinot noir, Chardonnay, Pinot gris, Riesling, Pinot blanc, Gamay noir."
+  },
+  {
+   "slug": "wine/greece",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": "about 2/3 of production",
+     "examples": "Assyrtiko (Santorini), Moschofilero (Mantinia), Retsina",
+     "source": "https://winesofgreece.org/?p=366"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": "about 1/3 of production",
+     "examples": "Xinomavro (Naoussa), Agiorgitiko (Nemea)",
+     "source": "https://winefolly.com/deep-dive/the-beginners-guide-to-greek-wines/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Vinsanto (Santorini), Muscat of Samos, Mavrodaphne",
+     "source": "https://winefolly.com/deep-dive/the-beginners-guide-to-greek-wines/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Agiorgitiko rosé",
+     "source": "https://winefolly.com/deep-dive/the-beginners-guide-to-greek-wines/"
+    }
+   ],
+   "photo": null,
+   "notes": "Wines of Greece: 'Greece produces more white than red wine, with the latter accounting for just a third of total production.' Red share number is from that same page. Grape examples from Wine Folly. No sparkling source found."
+  },
+  {
+   "slug": "wine/hungary",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": "about 70% of vineyard area",
+     "examples": "Furmint, Olaszrizling, Hárslevelű",
+     "source": "https://bor.hu/en/grape-varieties/white-grape-varieties-white-wine-styles"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Tokaji Aszú, Tokaji Szamorodni, Tokaji Eszencia",
+     "source": "https://bor.hu/en/magazine/beginners-guide-to-hungarian-wine"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Egri Bikavér (Bull's Blood), Kékfrankos, Villányi Franc",
+     "source": "https://bor.hu/en/magazine/beginners-guide-to-hungarian-wine"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Sparkling Furmint",
+     "source": "https://bor.hu/en/magazine/beginners-guide-to-hungarian-wine"
+    }
+   ],
+   "photo": null,
+   "notes": "bor.hu is the official Wines of Hungary site: 'white grapes make up 70% of Hungary's vineyard area'. That's vineyard area, not output. Sparkling evidence is thin (brief mention). Rosé left out (guide says Siller is 'neither a rosé nor a red')."
+  },
+  {
+   "slug": "wine/georgia",
+   "styles": [
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Rkatsiteli, Tsinandali, Amber (qvevri) wines",
+     "source": "https://winefolly.com/lifestyle/10-wine-varieties-birthplace-wine/"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Saperavi, Mukuzani",
+     "source": "https://winefolly.com/lifestyle/10-wine-varieties-birthplace-wine/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Kindzmarauli (semi-sweet red Saperavi)",
+     "source": "https://www.winesgeorgia.uk/wine-styles"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Classic-method and tank-method sparkling",
+     "source": "https://www.winesgeorgia.uk/wine-styles"
+    }
+   ],
+   "photo": null,
+   "notes": "Amber/orange (qvevri) wine is filed under White as instructed: white grapes fermented on skins in qvevri. Wine Folly: Rkatsiteli is 'a ubiquitous white wine variety comprising nearly half of Georgia's vineyard plantings' ('nearly half' is not a majority, so main false) and Saperavi is 'the most widely planted red'. Wines of Georgia UK (Swirl Wine Group, not the government agency): 'White, red, sweet, sparkling and orange wines are made in Georgia.' Kindzmarauli is naturally semi-sweet, not a dessert or fortified wine. The National Wine Agency (wine.gov.ge) lists Kindzmarauli (registered 30/03/2006), Mukuzani and Tsinandali as PDOs, but its descriptions are in PDFs I couldn't extract, so it isn't cited."
+  },
+  {
+   "slug": "wine/argentina",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Malbec, Cabernet Sauvignon, Bonarda",
+     "source": "https://winefolly.com/wine-regions/argentina/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Torrontés, Chardonnay",
+     "source": "https://winefolly.com/wine-regions/argentina/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Sparkling Malbec rosé",
+     "source": "https://winefolly.com/wine-regions/argentina/"
+    }
+   ],
+   "photo": null,
+   "notes": "winesofargentina.org returned only an empty app shell. Malbec is 23.9% of all vineyard area (INV 2026 report, via La Capital), a grape share, not a style share, so share null. A '59% red' figure in search snippets wasn't confirmed. No rosé (still) or sweet source found."
+  },
+  {
+   "slug": "wine/chile",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "73.7% of vineyard area",
+     "examples": "Cabernet Sauvignon, Carménère, Syrah",
+     "source": "https://www.sag.gob.cl/noticias/sag-presenta-catastro-viticola-nacional-2020"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": "26.3% of vineyard area",
+     "examples": "Sauvignon Blanc (Casablanca), Chardonnay",
+     "source": "https://www.sag.gob.cl/noticias/sag-presenta-catastro-viticola-nacional-2020"
+    }
+   ],
+   "photo": null,
+   "notes": "SAG (Chilean government agriculture service), 2020 vineyard census: 'el 73,7% de la superficie plantada corresponde a cepajes tintos y el 26,3% a cepajes blancos'; Cabernet Sauvignon 29.4%. Grape examples confirmed by Wine Folly Chile and Wines of Chile. Wines of Chile only says sparkling is 'being developed' (Osorno), not enough to list. No sweet or rosé source."
+  },
+  {
+   "slug": "wine/australia",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Shiraz (Barossa), Cabernet Sauvignon (Coonawarra), GSM blends",
+     "source": "https://winefolly.com/wine-regions/australia/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay (Margaret River), Riesling (Clare Valley), Sémillon (Hunter Valley)",
+     "source": "https://winefolly.com/wine-regions/australia/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Rutherglen Muscat, Australian Tawny",
+     "source": "https://winefolly.com/wine-regions/australia/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Tasmanian sparkling",
+     "source": "https://winefolly.com/wine-regions/australia/"
+    }
+   ],
+   "photo": null,
+   "notes": "Wine Australia (australian-wine-sector-at-a-glance): 'top two varieties were Shiraz (23 per cent) and Chardonnay (18 per cent)' of the 2025 crush. No total red/white split, so main false. Rosé and sparkling Shiraz not covered by fetched sources."
+  },
+  {
+   "slug": "wine/spain",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Rioja, Ribera del Duero, Priorat",
+     "source": "https://winefolly.com/wine-regions/spain/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Cava",
+     "source": "https://www.cava.wine/en/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Sherry (Pedro Ximénez, Cream), Moscatel",
+     "source": "https://www.sherry.wine/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Albariño (Rías Baixas), Verdejo (Rueda)",
+     "source": "https://winefolly.com/wine-regions/spain/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Garnacha rosado (Navarra)",
+     "source": "https://winefolly.com/wine-regions/spain/"
+    }
+   ],
+   "photo": null,
+   "notes": "Sherry is listed under Sweet because it's fortified; most fine Sherry (Fino, Manzanilla, Amontillado, Oloroso) is dry, so the examples are the sweet styles. Cava regulator: 'the most widely exported sparkling wine with a Spanish Designation of Origin'. No red/white production share found, so main false."
+  },
+  {
+   "slug": "wine/new-zealand",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": "72% of production is Sauvignon Blanc",
+     "examples": "Marlborough Sauvignon Blanc, Chardonnay, Pinot Gris",
+     "source": "https://www.nzwine.com/en/media/story/sauv-blanc-fast-facts/"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Pinot Noir (Central Otago, Marlborough, Wairarapa)",
+     "source": "https://www.nzwine.com/en/winestyles/pinot-noir/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Pinot Noir rosé",
+     "source": "https://www.nzwine.com/en/winestyles/rose/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Méthode Traditionnelle (Marlborough)",
+     "source": "https://www.nzwine.com/en/regions/marlborough/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Late-harvest and botrytised Riesling",
+     "source": "https://www.nzwine.com/en/regions/marlborough/"
+    }
+   ],
+   "photo": null,
+   "notes": "NZ Wine: 'Sauvignon Blanc comprises 72% of New Zealand's overall wine production — and it's 86% of what we export'; 'Three-quarters of all Sauvignon Blanc is planted in Marlborough'. Another NZ Wine page gives 71% and 'White wine makes up 93% of New Zealand wine exported.' Marlborough page calls Méthode Traditionnelle 'small but critically renowned'."
+  },
+  {
+   "slug": "wine/portugal",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Douro, Dão, Alentejo",
+     "source": "https://www.winesofportugal.com/en/portuguese-wines/wine-styles/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Port, Madeira, Moscatel de Setúbal",
+     "source": "https://www.ivdp.pt/en"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Vinho Verde, Alvarinho",
+     "source": "https://www.winesofportugal.com/en/portuguese-wines/wine-styles/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Rosé from native red grapes",
+     "source": "https://www.winesofportugal.com/en/portuguese-wines/wine-styles/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Bairrada espumante, Távora-Varosa",
+     "source": "https://www.winesofportugal.com/en/portuguese-wines/wine-styles/"
+    }
+   ],
+   "photo": null,
+   "notes": "IVDP covers Port (Douro Demarcated Region, 1756); Madeira and Moscatel de Setúbal are on the Wines of Portugal styles page and Wine Folly Portugal. No red/white share found, so main false. Sweet could arguably go first since Port is the most famous; Red is first as the bigger everyday category (not quantified)."
+  },
+  {
+   "slug": "wine/south-africa",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": "55.8% of vineyard area",
+     "examples": "Chenin Blanc, Sauvignon Blanc, Chenin-led white blends",
+     "source": "https://topwinesa.com/industry/sa-wine-industry-stats/"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": "44.2% of vineyard area",
+     "examples": "Pinotage, Cabernet Sauvignon, Cape Blend",
+     "source": "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/Wine-Styles/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Méthode Cap Classique",
+     "source": "https://winefolly.com/wine-regions/south-africa/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Constantia dessert wines, Hanepoot/Muscadel, Noble Late Harvest",
+     "source": "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/Wine-Styles/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Pinotage rosé",
+     "source": "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/Wine-Styles/"
+    }
+   ],
+   "photo": null,
+   "notes": "Shares are SAWIS 2025 figures (white 55.8%, red 44.2%, Chenin 18.4%) as quoted by topwinesa.com, not an official body; WOSA shows them only as chart images. WOSA: Chenin is 'the most widely cultivated variety in the Cape'; Constantia dessert wines 'remain consistently strong'; 'rosé wines are also made from Pinotage'."
+  }
+ ]
+}

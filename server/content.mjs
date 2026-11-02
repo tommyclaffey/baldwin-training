@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { addRows } from './editinplace.mjs';
 import { chapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE } from './manual.mjs';
+import { regionPage, regionData } from './region.mjs';
 import { lessonPage, level1Page, level2Page, hubPage, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
@@ -422,7 +423,7 @@ export function assemble(db, file) {
   if (entry?.archivedAt) return null; // archived: out of the book until restored
   const page = assembleRaw(db, file);
   if (page?.empty) return page;
-  if (page) wire(page, { entry, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
+  if (page) wire(page, { entry, slug: baseIndex().find((x) => x.file === file)?.slug, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
   // Managers get an Add row after every list of dishes, cocktails, wines and bottles (staff never see them).
   if (page && !entry && canOpen(SCOPE.user, '/admin/pages/recipe/new')) addRows(page, baseIndex().find((x) => x.file === file)?.slug, db, SCOPE.store);
   return balance(forViewer(page, SCOPE.user));
@@ -448,9 +449,12 @@ function assembleRaw(db, file) {
     const e = getEntry(db, Number(file.slice(1)));
     return e ? entryPage(db, e) : null;
   }
-  const page = basePage(file);
+  let page = basePage(file);
   if (!page) return null;
   const slug = baseIndex().find((x) => x.file === file)?.slug ?? '';
+  // wine regions and countries in the approved layout (Nov 1, Figma 377:2): photo, what they make, style dots, profile
+  // REGION_V2: off until the region research is back (Nov 2). Turn on with REGION_V2=1.
+  if (process.env.REGION_V2 === '1' && regionData(slug) && wineKind(slug)) { const v2 = regionPage(basePage(regionData(slug).isGrape ? '111-4' : '377-2'), page, slug, { video: wineVideos(db).get(slug) }); if (v2) page = v2; }
   // the Sommelier Program, video first (Nov 1): the Study Guide index is now the Level 1 course
   if (slug === HUB) return hubPage(page, { done: sectionsDone(db, SCOPE.user?.id) });
   if (slug === L1) return level1Page(page, { done: sectionsDone(db, SCOPE.user?.id) });
@@ -468,7 +472,7 @@ function assembleRaw(db, file) {
   if (file === '13-2') foodMatrix(page, ordered(db, 'recipe'));
   if (file === '17-2') allergenGrid(page, ordered(db, 'recipe'));
   const entry = baseIndex().find((x) => x.file === file);
-  if (entry && wineKind(entry.slug)) { learnMore(page, entry, wineVideos(db).get(entry.slug), basePage); wineFollyLink(page, entry.slug, basePage); }
+  if (entry && wineKind(entry.slug)) { if (!page.v2) learnMore(page, entry, wineVideos(db).get(entry.slug), basePage); wineFollyLink(page, entry.slug, basePage); }
   if (file === '25-2') wineCards(page, wineVideos(db));
   if (entry && entry.slug.startsWith('spirit/')) fillShelf(page, entry.slug, baseIndex(), ordered(db, 'shelf'), basePage);
   if (file === '25-2') fillWinePage(page, ordered(db, 'wine'), basePage);
