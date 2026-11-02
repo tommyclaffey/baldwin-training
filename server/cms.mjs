@@ -375,7 +375,7 @@ function withLibrary(db, e) {
   if (!lib) return e;
   const { libraryId, ...own } = e.data;
   e.data = { ...JSON.parse(lib.data), ...own };
-  e.library = { id: lib.id, archived: !!lib.archived_at, overrides: Object.keys(own).filter((k) => !isLocal(e.collection, k)) };
+  e.library = { id: lib.id, seeded: !!lib.seed_key, archived: !!lib.archived_at, overrides: Object.keys(own).filter((k) => !isLocal(e.collection, k)) };
   return e;
 }
 const readRow = (db, r) => withLibrary(db, rowOut(r));

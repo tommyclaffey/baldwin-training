@@ -5,6 +5,7 @@ import { PageView, usePageEntry } from './components/PageView';
 import { NavContext } from './components/FigmaNode';
 import { useSession } from './lib/session';
 import { BookSignIn } from './components/BookSignIn';
+import { DemoPicker } from './components/DemoPicker';
 import { clearPages } from './components/PageView';
 import { setQuizUser } from './quiz/store';
 import AdminApp from './admin/AdminApp';
@@ -13,6 +14,7 @@ import { EditInPlaceProvider } from './components/EditSheet';
 export default function App() {
   const { pathname } = useLocation();
   if (pathname === '/admin' || pathname.startsWith('/admin/')) return <Routes><Route path="/admin/*" element={<AdminApp />} /></Routes>;
+  if (pathname === '/demo') return <DemoPicker />;
   return <Book />;
 }
 
@@ -55,6 +57,7 @@ function Book() {
           <Sidebar onNavigate={() => setMenu(false)} />
         </aside>
         <div id="content" className="content">
+          {user.demo && <div className="demo-tag" role="note">Demo · sample menu · <Link to="/demo">Switch role</Link></div>}
           <PageView />
         </div>
       </div>

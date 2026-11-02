@@ -97,7 +97,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const byId = (id) => db.prepare('SELECT u.*, c.name company_name FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.id = ?').get(id);
   /** The signed-in person as the app sees them: role, company, and the store they're working in. */
   const meOut = (u) => ({
-    ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null,
+    ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo,
     store: storeOut(storeOf(db, u)), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
   });
   const signIn = (res, req, user, opts = {}) => {

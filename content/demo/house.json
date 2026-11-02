@@ -1,0 +1,506 @@
+[
+ {
+  "key": "demo/Smoked Maple Old Fashioned",
+  "slug": "signature/smoked-maple-old-fashioned",
+  "sort": 0,
+  "data": {
+   "name": "Smoked Maple Old Fashioned",
+   "menuSection": "Specialty Cocktails",
+   "price": "16",
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo/smoked-maple-old-fashioned.jpg",
+   "glass": "Rocks",
+   "method": "Stir",
+   "ice": "Large cube",
+   "garnish": "Orange peel",
+   "tableLine": "",
+   "tableIce": "",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Bourbon",
+     "link": "/spirit/bourbon",
+     "spirit": true
+    },
+    {
+     "amount": ".25 oz",
+     "ingredient": "Maple syrup",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "2 dashes",
+     "ingredient": "Angostura bitters",
+     "link": "/spirit/bitters",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Stir.",
+    "Serve in a rocks.",
+    "Garnish: orange peel."
+   ],
+   "specNote": "",
+   "tags": [
+    "Stirred",
+    "Smoky",
+    "Rich"
+   ],
+   "tasteLine": "Warm maple and oak, smoked at the table.",
+   "pairs": "",
+   "spiritName": "Bourbon",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/bourbon",
+   "spiritLinkLabel": "Learn about it",
+   "say": "",
+   "story": "Our house twist: the glass is smoked with applewood before it's poured.",
+   "video": null,
+   "photoCredit": "Pylyp Sukhenko · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Garden Spritz",
+  "slug": "signature/garden-spritz",
+  "sort": 1,
+  "data": {
+   "name": "Garden Spritz",
+   "menuSection": "Specialty Cocktails",
+   "price": "14",
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo/garden-spritz.jpg",
+   "glass": "Wine glass",
+   "method": "Build",
+   "ice": "Cubes",
+   "garnish": "Cucumber ribbon",
+   "tableLine": "",
+   "tableIce": "",
+   "build": [
+    {
+     "amount": "1.5 oz",
+     "ingredient": "Elderflower liqueur",
+     "link": "/spirit/liqueurs",
+     "spirit": true
+    },
+    {
+     "amount": "3 oz",
+     "ingredient": "Prosecco",
+     "link": "/wine/sparkling/prosecco",
+     "spirit": false
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Soda",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Build.",
+    "Serve in a wine glass.",
+    "Garnish: cucumber ribbon."
+   ],
+   "specNote": "",
+   "tags": [
+    "Light",
+    "Floral",
+    "Bubbly"
+   ],
+   "tasteLine": "Bright, floral and low in alcohol.",
+   "pairs": "",
+   "spiritName": "Elderflower liqueur",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/liqueurs",
+   "spiritLinkLabel": "Learn about it",
+   "say": "",
+   "story": "A lighter spritz for long dinners.",
+   "video": null,
+   "photoCredit": "Julie Sd · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Paloma Verde",
+  "slug": "signature/paloma-verde",
+  "sort": 2,
+  "data": {
+   "name": "Paloma Verde",
+   "menuSection": "Specialty Cocktails",
+   "price": "15",
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo/paloma-verde.jpg",
+   "glass": "Highball",
+   "method": "Shake, top with soda",
+   "ice": "Cubes",
+   "garnish": "Lime wheel, salt rim",
+   "tableLine": "",
+   "tableIce": "",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Blanco tequila",
+     "link": "/spirit/tequila",
+     "spirit": true
+    },
+    {
+     "amount": ".75 oz",
+     "ingredient": "Lime juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".75 oz",
+     "ingredient": "Jalapeño syrup",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "Top",
+     "ingredient": "Grapefruit soda",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Shake, top with soda.",
+    "Serve in a highball.",
+    "Garnish: lime wheel, salt rim."
+   ],
+   "specNote": "",
+   "tags": [
+    "Citrus",
+    "Spicy",
+    "Tall"
+   ],
+   "tasteLine": "Grapefruit and lime with a little green heat.",
+   "pairs": "",
+   "spiritName": "Blanco tequila",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/tequila",
+   "spiritLinkLabel": "Learn about it",
+   "say": "",
+   "story": "A spicy take on the Paloma.",
+   "video": null,
+   "photoCredit": "Sara Cervera · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Espresso Negroni",
+  "slug": "signature/espresso-negroni",
+  "sort": 3,
+  "data": {
+   "name": "Espresso Negroni",
+   "menuSection": "Specialty Cocktails",
+   "price": "16",
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo/espresso-negroni.jpg",
+   "glass": "Rocks",
+   "method": "Stir",
+   "ice": "Large cube",
+   "garnish": "Orange peel",
+   "tableLine": "",
+   "tableIce": "",
+   "build": [
+    {
+     "amount": "1 oz",
+     "ingredient": "Gin",
+     "link": "/spirit/gin",
+     "spirit": true
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Campari",
+     "link": "/bottle/campari",
+     "spirit": false
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Sweet vermouth",
+     "link": "/bottle/sweet-vermouth",
+     "spirit": false
+    },
+    {
+     "amount": ".25 oz",
+     "ingredient": "Cold brew",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Stir.",
+    "Serve in a rocks.",
+    "Garnish: orange peel."
+   ],
+   "specNote": "",
+   "tags": [
+    "Bitter",
+    "Stirred",
+    "Coffee"
+   ],
+   "tasteLine": "Bittersweet, with a coffee finish.",
+   "pairs": "",
+   "spiritName": "Gin",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/gin",
+   "spiritLinkLabel": "Learn about it",
+   "say": "",
+   "story": "The Negroni meets after-dinner coffee.",
+   "video": null,
+   "photoCredit": "Aurela Redenica · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Blackberry Bramble",
+  "slug": "signature/blackberry-bramble",
+  "sort": 4,
+  "data": {
+   "name": "Blackberry Bramble",
+   "menuSection": "Specialty Cocktails",
+   "price": "15",
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo/blackberry-bramble.jpg",
+   "glass": "Rocks",
+   "method": "Shake, drizzle",
+   "ice": "Crushed ice",
+   "garnish": "Blackberry, lemon wheel",
+   "tableLine": "",
+   "tableIce": "",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Gin",
+     "link": "/spirit/gin",
+     "spirit": true
+    },
+    {
+     "amount": ".75 oz",
+     "ingredient": "Lemon juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "Simple syrup",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "Blackberry liqueur",
+     "link": "/spirit/liqueurs",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Shake, drizzle.",
+    "Serve in a rocks.",
+    "Garnish: blackberry, lemon wheel."
+   ],
+   "specNote": "",
+   "tags": [
+    "Fruity",
+    "Tart",
+    "Shaken"
+   ],
+   "tasteLine": "Tart lemon and ripe blackberry.",
+   "pairs": "",
+   "spiritName": "Gin",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/gin",
+   "spiritLinkLabel": "Learn about it",
+   "say": "",
+   "story": "A house riff on the 1980s Bramble.",
+   "video": null,
+   "photoCredit": "Kim Daniels · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/House Martini",
+  "slug": "signature/house-martini",
+  "sort": 5,
+  "data": {
+   "name": "House Martini",
+   "menuSection": "Martinis",
+   "price": "15",
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo/house-martini.jpg",
+   "glass": "Martini",
+   "method": "Stir",
+   "ice": "Up",
+   "garnish": "Lemon twist or olives",
+   "tableLine": "",
+   "tableIce": "",
+   "build": [
+    {
+     "amount": "2.5 oz",
+     "ingredient": "Gin or vodka",
+     "link": "/spirit/gin",
+     "spirit": true
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "Dry vermouth",
+     "link": "/bottle/dry-vermouth",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Stir.",
+    "Serve in a martini.",
+    "Garnish: lemon twist or olives."
+   ],
+   "specNote": "",
+   "tags": [
+    "Stirred",
+    "Dry",
+    "Classic"
+   ],
+   "tasteLine": "Crisp, cold and clean.",
+   "pairs": "",
+   "spiritName": "Gin",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/gin",
+   "spiritLinkLabel": "Learn about it",
+   "say": "",
+   "story": "Ask: gin or vodka, twist or olives.",
+   "video": null,
+   "photoCredit": "Stanislav Ivanitskiy · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Pear Ginger Mule",
+  "slug": "signature/pear-ginger-mule",
+  "sort": 6,
+  "data": {
+   "name": "Pear Ginger Mule",
+   "menuSection": "BRG Staples",
+   "price": "14",
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo/pear-ginger-mule.jpg",
+   "glass": "Copper mug",
+   "method": "Build",
+   "ice": "Cubes",
+   "garnish": "Candied ginger",
+   "tableLine": "",
+   "tableIce": "",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Vodka",
+     "link": "/spirit/vodka",
+     "spirit": true
+    },
+    {
+     "amount": ".75 oz",
+     "ingredient": "Pear purée",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "Lime juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "Top",
+     "ingredient": "Ginger beer",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Build.",
+    "Serve in a copper mug.",
+    "Garnish: candied ginger."
+   ],
+   "specNote": "",
+   "tags": [
+    "Spicy",
+    "Fruity",
+    "Tall"
+   ],
+   "tasteLine": "Ginger spice with soft pear.",
+   "pairs": "",
+   "spiritName": "Vodka",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/vodka",
+   "spiritLinkLabel": "Learn about it",
+   "say": "",
+   "story": "A fall favorite that stayed on the menu.",
+   "video": null,
+   "photoCredit": "Bon Vivant · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Citrus Fizz (Spiritless)",
+  "slug": "signature/citrus-fizz-spiritless",
+  "sort": 7,
+  "data": {
+   "name": "Citrus Fizz (Spiritless)",
+   "menuSection": "Spiritless & Bubbles",
+   "price": "9",
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo/citrus-fizz-spiritless.jpg",
+   "glass": "Highball",
+   "method": "Shake, top with soda",
+   "ice": "Cubes",
+   "garnish": "Orange wheel",
+   "tableLine": "",
+   "tableIce": "",
+   "build": [
+    {
+     "amount": "1 oz",
+     "ingredient": "Orange juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".75 oz",
+     "ingredient": "Lemon juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "Honey syrup",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "Top",
+     "ingredient": "Soda",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Shake, top with soda.",
+    "Serve in a highball.",
+    "Garnish: orange wheel."
+   ],
+   "specNote": "",
+   "tags": [
+    "Zero proof",
+    "Citrus",
+    "Bubbly"
+   ],
+   "tasteLine": "Bright and fizzy, with no alcohol.",
+   "pairs": "",
+   "spiritName": "",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "",
+   "spiritLinkLabel": "Learn about it",
+   "say": "",
+   "story": "Our zero-proof option, made with the same care.",
+   "video": null,
+   "photoCredit": "ABHISHEK HAJARE · Unsplash (stand-in)"
+  }
+ }
+]

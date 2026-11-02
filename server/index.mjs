@@ -1,9 +1,10 @@
 // Lineup server (The Baldwin's training app): the built app, the content API, sign-in and uploads. No dependencies.
+import { migrateDemo, purgeDemos, startDemo, demoBlocks, isDemoCompany } from './demo.mjs';
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
-import { sessionUser, SESSION_COOKIE, LoginLimiter } from './auth.mjs';
+import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
 import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore } from './content.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
@@ -22,6 +23,9 @@ const db = openDb();
 seed(db);
 seedWineVideos(db);
 bootAccounts(db);
+migrateDemo(db); purgeDemos(db);
+setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
+const demoLimiter = new LoginLimiter(30, 60 * 60_000); // 30 demo starts an hour per address
 const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address
 
 const SECURITY = { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'X-Frame-Options': 'SAMEORIGIN' };
@@ -117,6 +121,18 @@ async function api(req, res, url) {
   const p = url.pathname;
   const parts = p.split('/').filter(Boolean); // ['api', ...]
 
+  // The public demo (Nov 2): /demo starts a private copy; a demo visitor can't change accounts or upload.
+  if (p === '/api/demo/start' && m === 'POST') {
+    if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
+    const ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
+    if (!demoLimiter.check(ip)) fail(429, 'Too many demos from here. Try again in an hour.');
+    const b = await readJson(req, 2000);
+    const r = startDemo(db, String(b.role || ''));
+    if (!r) fail(400, 'Pick a role to start.');
+    demoLimiter.record(ip);
+    return sendJson(res, 200, { ok: true }, { 'Set-Cookie': sessionCookie(r.token, { secure: isSecure(req), days: 1 }) });
+  }
+  if (c.user && isDemoCompany(db, c.user.company_id) && demoBlocks(p, m)) fail(403, 'That’s switched off in the demo.');
   if ((await accounts(req, res, url, c)) !== false) return;
 
   /* quizzes: everyone signed in. A person's records are keyed 'u<id>' (older phone-only records keep their device id). */
