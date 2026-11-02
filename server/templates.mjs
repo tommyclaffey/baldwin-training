@@ -368,6 +368,8 @@ export function dishPage(template, item, links = {}) {
     const lines = [['Drop · Main', d.dropMain], ['Drop · Side', d.dropSide], ['Drop · Sauce', d.dropSauce]];
     for (const [n, v] of lines) { const tile = find(tiles, byName(n)); if (v) setText(texts(tile)[1], v); else remove(dropBand, tile); }
     if (!lines.some(([, v]) => v)) remove(dropBand, tiles);
+    // "From the Food Book" / "From the Wine Book…" only when the dish came from the Food Book (not added or demo dishes).
+    if (!item.seeded && !item.library?.seeded) for (const t of findAll(main, (x) => x.t === 'T' && /^From the (Food|Wine) Book/.test(x.s || ''))) t.s = '';
     const sayNode = find(dropBand, byName('Say it'));
     if (d.say) setText(sayNode, d.say); else remove(dropBand, sayNode);
     if (!d.say && !lines.some(([, v]) => v)) remove(main, dropBand);

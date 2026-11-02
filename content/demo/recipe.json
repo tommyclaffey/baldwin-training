@@ -1,0 +1,797 @@
+[
+ {
+  "key": "demo/Whipped Ricotta Toast",
+  "slug": "recipe/whipped-ricotta-toast",
+  "sort": 0,
+  "data": {
+   "name": "Whipped Ricotta Toast",
+   "course": "Snacks & Small Plates",
+   "price": "12",
+   "station": "Pantry",
+   "description": "Whipped ricotta on grilled sourdough with hot honey and cracked black pepper.",
+   "photo": "/img/demo/whipped-ricotta-toast.jpg",
+   "ingredients": [
+    "Ricotta",
+    "Sourdough",
+    "Hot honey",
+    "Black pepper"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Something to share while you look at the menu: warm toast, cool ricotta, a little heat from the honey.",
+   "dropMain": "Whipped ricotta",
+   "dropSide": "Grilled sourdough",
+   "dropSauce": "Hot honey",
+   "talkingPoints": [
+    "Ricotta is whipped to order so it stays light.",
+    "The honey is infused with Calabrian chili.",
+    "Easy to share for two to four guests."
+   ],
+   "pairing": "Poggio Costa Prosecco",
+   "pairingOpposite": "Adelsheim Pinot Noir",
+   "cocktail": "Garden Spritz",
+   "say": "“Something to share while you look at the menu: warm toast, cool ricotta, a little heat from the honey.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Gaelle Marcel · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Crispy Calamari",
+  "slug": "recipe/crispy-calamari",
+  "sort": 1,
+  "data": {
+   "name": "Crispy Calamari",
+   "course": "Snacks & Small Plates",
+   "price": "16",
+   "station": "Fry",
+   "description": "Lightly fried calamari with lemon aioli and Calabrian chili.",
+   "photo": "/img/demo/crispy-calamari.jpg",
+   "ingredients": [
+    "Calamari",
+    "Rice flour",
+    "Lemon aioli",
+    "Calabrian chili"
+   ],
+   "allergens": [
+    "Shellfish",
+    "Egg",
+    "Gluten"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Crisp and light, with a squeeze of lemon. A great start with a glass of white.",
+   "dropMain": "Fried calamari",
+   "dropSide": "Lemon wedge",
+   "dropSauce": "Lemon aioli",
+   "talkingPoints": [
+    "Dredged in rice flour for a lighter crunch.",
+    "Calamari is a mollusc: flag it for shellfish allergies.",
+    "The aioli has egg."
+   ],
+   "pairing": "Broglia Gavi di Gavi",
+   "pairingOpposite": "Cappone Chianti Classico",
+   "cocktail": "Paloma Verde",
+   "say": "“Crisp and light, with a squeeze of lemon. A great start with a glass of white.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Joanie Simon · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Meatballs al Forno",
+  "slug": "recipe/meatballs-al-forno",
+  "sort": 2,
+  "data": {
+   "name": "Meatballs al Forno",
+   "course": "Snacks & Small Plates",
+   "price": "15",
+   "station": "Oven",
+   "description": "Beef and pork meatballs baked in San Marzano tomato with parmesan and basil.",
+   "photo": "/img/demo/meatballs-al-forno.jpg",
+   "ingredients": [
+    "Beef",
+    "Pork",
+    "San Marzano tomato",
+    "Parmesan",
+    "Basil",
+    "Breadcrumb"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Egg",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Three meatballs, baked to order in tomato. Perfect with a glass of Chianti.",
+   "dropMain": "Beef and pork meatballs",
+   "dropSide": "Basil and parmesan",
+   "dropSauce": "San Marzano tomato",
+   "talkingPoints": [
+    "Baked in the oven, never fried.",
+    "The sauce simmers for four hours.",
+    "Contains egg and breadcrumb."
+   ],
+   "pairing": "Cappone Chianti Classico",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "cocktail": "Smoked Maple Old Fashioned",
+   "say": "“Three meatballs, baked to order in tomato. Perfect with a glass of Chianti.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Kris Tian · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Burrata & Heirloom Tomato",
+  "slug": "recipe/burrata-heirloom-tomato",
+  "sort": 3,
+  "data": {
+   "name": "Burrata & Heirloom Tomato",
+   "course": "Snacks & Small Plates",
+   "price": "17",
+   "station": "Pantry",
+   "description": "Fresh burrata with heirloom tomatoes, basil oil and flaky salt.",
+   "photo": "/img/demo/burrata-heirloom-tomato.jpg",
+   "ingredients": [
+    "Burrata",
+    "Heirloom tomato",
+    "Basil oil",
+    "Flaky salt"
+   ],
+   "allergens": [
+    "Dairy",
+    "Nightshade"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Creamy burrata with the best tomatoes of the week. Light and bright.",
+   "dropMain": "Burrata",
+   "dropSide": "Heirloom tomato",
+   "dropSauce": "Basil oil",
+   "talkingPoints": [
+    "Tomatoes change with the season.",
+    "Burrata is cut at the table.",
+    "Vegetarian."
+   ],
+   "pairing": "Thomas Schmitt Riesling",
+   "pairingOpposite": "Adelsheim Pinot Noir",
+   "cocktail": "Garden Spritz",
+   "say": "“Creamy burrata with the best tomatoes of the week. Light and bright.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Paras Kapoor · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Little Gem Caesar",
+  "slug": "recipe/little-gem-caesar",
+  "sort": 4,
+  "data": {
+   "name": "Little Gem Caesar",
+   "course": "Salads",
+   "price": "14",
+   "station": "Pantry",
+   "description": "Little gem lettuce, anchovy dressing, parmesan and garlic crumbs.",
+   "photo": "/img/demo/little-gem-caesar.jpg",
+   "ingredients": [
+    "Little gem",
+    "Anchovy dressing",
+    "Parmesan",
+    "Garlic crumbs"
+   ],
+   "allergens": [
+    "Finfish",
+    "Dairy",
+    "Egg",
+    "Gluten",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Our take on the classic: crisp little gems and a punchy anchovy dressing.",
+   "dropMain": "Little gem lettuce",
+   "dropSide": "Garlic crumbs",
+   "dropSauce": "Anchovy dressing",
+   "talkingPoints": [
+    "The dressing has anchovy: not vegetarian.",
+    "Add chicken or salmon on request.",
+    "Crumbs are made in house."
+   ],
+   "pairing": "Broglia Gavi di Gavi",
+   "pairingOpposite": "Adelsheim Pinot Noir",
+   "cocktail": "Paloma Verde",
+   "say": "“Our take on the classic: crisp little gems and a punchy anchovy dressing.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Chris Tweten · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Farro & Arugula Salad",
+  "slug": "recipe/farro-arugula-salad",
+  "sort": 5,
+  "data": {
+   "name": "Farro & Arugula Salad",
+   "course": "Salads",
+   "price": "13",
+   "station": "Pantry",
+   "description": "Warm farro, arugula, roasted squash, pecorino and toasted pepitas.",
+   "photo": "/img/demo/farro-arugula-salad.jpg",
+   "ingredients": [
+    "Farro",
+    "Arugula",
+    "Roasted squash",
+    "Pecorino",
+    "Pepitas",
+    "Lemon vinaigrette"
+   ],
+   "allergens": [
+    "Gluten",
+    "Dairy"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Hearty but fresh: warm farro and squash with bright lemon.",
+   "dropMain": "Warm farro",
+   "dropSide": "Roasted squash and pepitas",
+   "dropSauce": "Lemon vinaigrette",
+   "talkingPoints": [
+    "Farro is an ancient wheat: contains gluten.",
+    "Vegetarian; ask to hold the pecorino for vegan.",
+    "A good lunch-size salad."
+   ],
+   "pairing": "Château St. Sulpice Sauvignon Blanc",
+   "pairingOpposite": "Cappone Chianti Classico",
+   "cocktail": "Garden Spritz",
+   "say": "“Hearty but fresh: warm farro and squash with bright lemon.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Adalia Botha · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Margherita",
+  "slug": "recipe/margherita",
+  "sort": 6,
+  "data": {
+   "name": "Margherita",
+   "course": "Pizza",
+   "price": "18",
+   "station": "Oven",
+   "description": "San Marzano tomato, fresh mozzarella and basil on our naturally leavened dough.",
+   "photo": "/img/demo/margherita.jpg",
+   "ingredients": [
+    "Dough",
+    "San Marzano tomato",
+    "Fresh mozzarella",
+    "Basil",
+    "Olive oil"
+   ],
+   "allergens": [
+    "Gluten",
+    "Dairy",
+    "Nightshade"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "The classic, done right: our dough rests for 48 hours before it hits the oven.",
+   "dropMain": "Fresh mozzarella",
+   "dropSide": "Basil",
+   "dropSauce": "San Marzano tomato",
+   "talkingPoints": [
+    "Dough rests 48 hours.",
+    "Baked at about 800°F in under two minutes.",
+    "Gluten-free dough isn't available."
+   ],
+   "pairing": "Cappone Chianti Classico",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "cocktail": "Smoked Maple Old Fashioned",
+   "say": "“The classic, done right: our dough rests for 48 hours before it hits the oven.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Aurélien Lemasson-Théobald · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Hot Honey Soppressata",
+  "slug": "recipe/hot-honey-soppressata",
+  "sort": 7,
+  "data": {
+   "name": "Hot Honey Soppressata",
+   "course": "Pizza",
+   "price": "21",
+   "station": "Oven",
+   "description": "Spicy soppressata, mozzarella, tomato and a drizzle of hot honey.",
+   "photo": "/img/demo/hot-honey-soppressata.jpg",
+   "ingredients": [
+    "Dough",
+    "Soppressata",
+    "Mozzarella",
+    "Tomato",
+    "Hot honey"
+   ],
+   "allergens": [
+    "Gluten",
+    "Dairy",
+    "Nightshade"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Sweet heat: crisp soppressata cups with hot honey over the top.",
+   "dropMain": "Soppressata",
+   "dropSide": "Mozzarella",
+   "dropSauce": "Hot honey",
+   "talkingPoints": [
+    "Our most ordered pizza.",
+    "Medium spicy.",
+    "Pairs well with an off-dry white."
+   ],
+   "pairing": "Adelsheim Pinot Noir",
+   "pairingOpposite": "Thomas Schmitt Riesling",
+   "cocktail": "Paloma Verde",
+   "say": "“Sweet heat: crisp soppressata cups with hot honey over the top.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Wesual Click · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Cacio e Pepe",
+  "slug": "recipe/cacio-e-pepe",
+  "sort": 8,
+  "data": {
+   "name": "Cacio e Pepe",
+   "course": "Pasta",
+   "price": "19",
+   "station": "Sauté",
+   "description": "Tonnarelli with pecorino romano and toasted black pepper.",
+   "photo": "/img/demo/cacio-e-pepe.jpg",
+   "ingredients": [
+    "Tonnarelli",
+    "Pecorino romano",
+    "Black pepper"
+   ],
+   "allergens": [
+    "Gluten",
+    "Dairy",
+    "Egg"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Three ingredients, done perfectly: pecorino, pepper and fresh pasta.",
+   "dropMain": "Fresh tonnarelli",
+   "dropSide": "Toasted black pepper",
+   "dropSauce": "Pecorino sauce",
+   "talkingPoints": [
+    "Pasta is made fresh daily with egg.",
+    "Finished in the pan, so it takes about 8 minutes.",
+    "Vegetarian."
+   ],
+   "pairing": "Broglia Gavi di Gavi",
+   "pairingOpposite": "Cappone Chianti Classico",
+   "cocktail": "Espresso Negroni",
+   "say": "“Three ingredients, done perfectly: pecorino, pepper and fresh pasta.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Sole D'Alessandro G. · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Rigatoni alla Vodka",
+  "slug": "recipe/rigatoni-alla-vodka",
+  "sort": 9,
+  "data": {
+   "name": "Rigatoni alla Vodka",
+   "course": "Pasta",
+   "price": "22",
+   "station": "Sauté",
+   "description": "Rigatoni in a creamy tomato vodka sauce with Calabrian chili and parmesan.",
+   "photo": "/img/demo/rigatoni-alla-vodka.jpg",
+   "ingredients": [
+    "Rigatoni",
+    "Tomato",
+    "Cream",
+    "Vodka",
+    "Calabrian chili",
+    "Parmesan"
+   ],
+   "allergens": [
+    "Gluten",
+    "Dairy",
+    "Allium",
+    "Nightshade"
+   ],
+   "confirm": false,
+   "signature": true,
+   "sellingLine": "Our signature pasta: creamy, a little spicy, and big enough to share.",
+   "dropMain": "Rigatoni",
+   "dropSide": "Parmesan",
+   "dropSauce": "Tomato vodka cream",
+   "talkingPoints": [
+    "The vodka cooks off; no alcohol remains.",
+    "Mild heat from Calabrian chili.",
+    "Add chicken on request."
+   ],
+   "pairing": "Cappone Chianti Classico",
+   "pairingOpposite": "Château St. Sulpice Sauvignon Blanc",
+   "cocktail": "Smoked Maple Old Fashioned",
+   "say": "“Our signature pasta: creamy, a little spicy, and big enough to share.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Zoshua Colah · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Lobster Tagliatelle",
+  "slug": "recipe/lobster-tagliatelle",
+  "sort": 10,
+  "data": {
+   "name": "Lobster Tagliatelle",
+   "course": "Pasta",
+   "price": "34",
+   "station": "Sauté",
+   "description": "Fresh tagliatelle with Maine lobster, cherry tomato and brown butter.",
+   "photo": "/img/demo/lobster-tagliatelle.jpg",
+   "ingredients": [
+    "Tagliatelle",
+    "Maine lobster",
+    "Cherry tomato",
+    "Brown butter",
+    "Chive"
+   ],
+   "allergens": [
+    "Shellfish",
+    "Gluten",
+    "Dairy",
+    "Egg",
+    "Nightshade"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Sweet lobster with brown butter. Our special-occasion pasta.",
+   "dropMain": "Maine lobster",
+   "dropSide": "Cherry tomato",
+   "dropSauce": "Brown butter",
+   "talkingPoints": [
+    "About 4 oz of lobster per plate.",
+    "Shellfish: always ask about allergies.",
+    "Pairs with a rich Chardonnay."
+   ],
+   "pairing": "Deux Roches Chardonnay",
+   "pairingOpposite": "Adelsheim Pinot Noir",
+   "cocktail": "Garden Spritz",
+   "say": "“Sweet lobster with brown butter. Our special-occasion pasta.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Alessandro Rossi · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Chicken Parmesan",
+  "slug": "recipe/chicken-parmesan",
+  "sort": 11,
+  "data": {
+   "name": "Chicken Parmesan",
+   "course": "Mains",
+   "price": "26",
+   "station": "Fry",
+   "description": "A crisp breaded chicken cutlet with tomato, mozzarella and a side of spaghetti.",
+   "photo": "/img/demo/chicken-parmesan.jpg",
+   "ingredients": [
+    "Chicken",
+    "Breadcrumb",
+    "Tomato",
+    "Mozzarella",
+    "Spaghetti"
+   ],
+   "allergens": [
+    "Gluten",
+    "Dairy",
+    "Egg",
+    "Nightshade"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "The comfort classic: a big crispy cutlet with melted mozzarella.",
+   "dropMain": "Chicken cutlet",
+   "dropSide": "Spaghetti",
+   "dropSauce": "Tomato sauce",
+   "talkingPoints": [
+    "Pounded thin and fried to order.",
+    "Comes with spaghetti pomodoro.",
+    "Our most popular main."
+   ],
+   "pairing": "Cappone Chianti Classico",
+   "pairingOpposite": "Thomas Schmitt Riesling",
+   "cocktail": "Smoked Maple Old Fashioned",
+   "say": "“The comfort classic: a big crispy cutlet with melted mozzarella.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Clark Douglas · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Seared Salmon",
+  "slug": "recipe/seared-salmon",
+  "sort": 12,
+  "data": {
+   "name": "Seared Salmon",
+   "course": "Mains",
+   "price": "29",
+   "station": "Sauté",
+   "description": "Crispy-skin salmon with lemon caper butter and charred broccolini.",
+   "photo": "/img/demo/seared-salmon.jpg",
+   "ingredients": [
+    "Salmon",
+    "Lemon",
+    "Capers",
+    "Butter",
+    "Broccolini"
+   ],
+   "allergens": [
+    "Finfish",
+    "Dairy"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Crispy skin and a bright lemon caper butter. Light, and full of flavor.",
+   "dropMain": "Crispy-skin salmon",
+   "dropSide": "Charred broccolini",
+   "dropSauce": "Lemon caper butter",
+   "talkingPoints": [
+    "Cooked medium unless the guest asks.",
+    "Gluten-free as served.",
+    "Pinot Noir works with salmon."
+   ],
+   "pairing": "Adelsheim Pinot Noir",
+   "pairingOpposite": "Deux Roches Chardonnay",
+   "cocktail": "Garden Spritz",
+   "say": "“Crispy skin and a bright lemon caper butter. Light, and full of flavor.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "jeff ahmadi · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/12 oz NY Strip",
+  "slug": "recipe/12-oz-ny-strip",
+  "sort": 13,
+  "data": {
+   "name": "12 oz NY Strip",
+   "course": "Mains",
+   "price": "42",
+   "station": "Grill",
+   "description": "Grilled New York strip with roasted garlic butter and rosemary potatoes.",
+   "photo": "/img/demo/12-oz-ny-strip.jpg",
+   "ingredients": [
+    "NY strip",
+    "Garlic butter",
+    "Rosemary potatoes"
+   ],
+   "allergens": [
+    "Dairy",
+    "Allium",
+    "Nightshade"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "A 12-ounce strip off the grill with garlic butter. Ask how they like it cooked.",
+   "dropMain": "NY strip steak",
+   "dropSide": "Rosemary potatoes",
+   "dropSauce": "Roasted garlic butter",
+   "talkingPoints": [
+    "Always ask the temperature.",
+    "Rested five minutes before slicing.",
+    "Gluten-free as served."
+   ],
+   "pairing": "Cappone Chianti Classico",
+   "pairingOpposite": "Thomas Schmitt Riesling",
+   "cocktail": "Smoked Maple Old Fashioned",
+   "say": "“A 12-ounce strip off the grill with garlic butter. Ask how they like it cooked.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Bobbi Wu · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Bone-In Pork Chop",
+  "slug": "recipe/bone-in-pork-chop",
+  "sort": 14,
+  "data": {
+   "name": "Bone-In Pork Chop",
+   "course": "Mains",
+   "price": "34",
+   "station": "Grill",
+   "description": "A thick-cut pork chop with apple mostarda and creamy polenta.",
+   "photo": "/img/demo/bone-in-pork-chop.jpg",
+   "ingredients": [
+    "Pork chop",
+    "Apple mostarda",
+    "Polenta",
+    "Parmesan"
+   ],
+   "allergens": [
+    "Dairy",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "A thick, juicy chop with sweet-tart apple mostarda.",
+   "dropMain": "Bone-in pork chop",
+   "dropSide": "Creamy polenta",
+   "dropSauce": "Apple mostarda",
+   "talkingPoints": [
+    "Cooked to medium.",
+    "The mostarda has mustard seed.",
+    "Gluten-free as served."
+   ],
+   "pairing": "Thomas Schmitt Riesling",
+   "pairingOpposite": "Cappone Chianti Classico",
+   "cocktail": "Smoked Maple Old Fashioned",
+   "say": "“A thick, juicy chop with sweet-tart apple mostarda.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Alex Munsell · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo/Tiramisu",
+  "slug": "recipe/tiramisu",
+  "sort": 15,
+  "data": {
+   "name": "Tiramisu",
+   "course": "Dessert",
+   "price": "11",
+   "station": "Pantry",
+   "description": "Espresso-soaked ladyfingers, mascarpone cream and cocoa.",
+   "photo": "/img/demo/tiramisu.jpg",
+   "ingredients": [
+    "Ladyfingers",
+    "Espresso",
+    "Mascarpone",
+    "Cocoa"
+   ],
+   "allergens": [
+    "Dairy",
+    "Egg",
+    "Gluten"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Made in house every morning: espresso, mascarpone and cocoa.",
+   "dropMain": "Mascarpone cream",
+   "dropSide": "Espresso-soaked ladyfingers",
+   "dropSauce": "Cocoa",
+   "talkingPoints": [
+    "Contains raw egg and a splash of liqueur.",
+    "Made fresh daily.",
+    "Great with an espresso."
+   ],
+   "pairing": "Batasiolo Moscato d’Asti",
+   "pairingOpposite": "Poggio Costa Prosecco",
+   "cocktail": "Espresso Negroni",
+   "say": "“Made in house every morning: espresso, mascarpone and cocoa.”",
+   "inspiration": "",
+   "sellingPoints": [],
+   "components": [],
+   "steps": [],
+   "plating": [],
+   "photos": [],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Gina's Auckland · Unsplash (stand-in)"
+  }
+ }
+]

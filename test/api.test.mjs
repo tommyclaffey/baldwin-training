@@ -536,3 +536,20 @@ test('the Study Guide: chapters from content/manual, each a 30-card quiz that fe
   assert.ok(guide.includes('1 of 12') || guide.includes('"1"'), 'progress shows');
   assert.ok(guide.includes('/sommelier-program/study-guide/france'));
 });
+
+test('demo: /demo starts a private copy with a sample menu; risky actions are off', async () => {
+  const r = await fetch(BASE + '/api/demo/start', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ role: 'manager' }) });
+  assert.equal(r.status, 200);
+  const cookie = r.headers.get('set-cookie').split(';')[0];
+  const get = async (p) => (await fetch(BASE + p, { headers: { cookie } })).json();
+  const me = (await get('/api/me')).user;
+  assert.equal(me.demo, true);
+  assert.equal(me.store.name, 'The Baldwin');
+  const index = await get('/api/index');
+  assert.ok(index.some((e) => e.slug === 'recipe/crispy-calamari'), 'made-up dishes');
+  assert.ok(!index.some((e) => e.slug === 'recipe/short-rib'), 'none of The Baldwin’s dishes');
+  assert.ok(index.some((e) => e.slug.startsWith('wine-list/')), 'the real wine list');
+  const pw = await fetch(BASE + '/api/password', { method: 'POST', headers: { cookie, 'content-type': 'application/json', 'x-bt': '1' }, body: '{}' });
+  assert.equal(pw.status, 403);
+  assert.equal((await fetch(BASE + '/api/demo/start', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: '{"role":"nope"}' })).status, 400);
+});
