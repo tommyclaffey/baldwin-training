@@ -305,7 +305,15 @@ export function wire(page, ctx) {
   for (const l of findAll(m, (n) => n.n === 'Link' && texts(n).some((t) => /^All \d+ Photos$/.test(t.s || '')))) l.to = '/photo-library';
   // Empty slots a manager fills in: straight to the right admin screen.
   const admin = ctx.entry ? `/admin/pages/${ctx.entry.collection}/${ctx.entry.id}` : null;
-  for (const a of findAll(m, byName('Add video'))) a.to = admin ? admin + '#video' : '/admin/wine-videos';
+  for (const a of findAll(m, byName('Add video'))) {
+    a.to = admin ? admin + '#video' : '/admin/wine-videos';
+    // Wine pages: the chip opens the video picker on the page (upload, YouTube link, or the library).
+    if (!admin && /^wine\//.test(ctx.slug || '')) {
+      const name = (texts(find(m, byName('Hero')) || { c: [] }).find((t) => (t.z || 0) >= 36)?.s || '').toLowerCase().replace(/(^|\s)\S/g, (x) => x.toUpperCase());
+      a.meta = { addVideo: { key: ctx.slug, title: name ? `A video for ${name}` : 'Add a video' } };
+      const t = texts(a); if (t[1]) { t[1].s = 'Upload a file or paste a YouTube link'; delete t[1].segs; }
+    }
+  }
   for (const a of findAll(m, byName('Add bottle'))) a.to = addHref('shelf');
   const COLOR = { Sparkling: 'Bubbles', White: 'White', Red: 'Red' };
   for (const a of findAll(m, (n) => /^Add (Sparkling|White|Rosé|Red)$/.test(n.n || ''))) a.to = addHref('wine', { color: COLOR[a.n.slice(4)] });

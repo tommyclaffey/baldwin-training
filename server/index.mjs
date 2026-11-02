@@ -159,7 +159,9 @@ async function api(req, res, url) {
     const mm = /^([a-z0-9-]+)#(\d+)$/.exec(key);
     const ch = mm && chapterBySlug(mm[1]);
     if (!ch || !ch.sections[Number(mm[2])]) fail(400, 'That lesson wasn’t found. Reload and try again.');
-    markRead(db, u.id, key);
+    // Nov 2: the Mark Complete box can be unticked too.
+    if (b.done === false) db.prepare('DELETE FROM manual_reads WHERE user_id = ? AND slug = ?').run(u.id, key);
+    else markRead(db, u.id, key);
     return sendJson(res, 200, { ok: true });
   }
   if (p === '/api/quiz/mark' && m === 'POST') {

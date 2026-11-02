@@ -1163,7 +1163,7 @@ body.eip-lock { overflow: hidden; }
 /* YouTube thumbnails carry thin black edges: crop them off (Nov 1, Tommy: "the videos seem like they have this black line around them") */
 [style*="i.ytimg.com"] { background-size: 106% auto !important; background-position: center !important; }
 /* play buttons and lengths stay centred / in the corner however tall the thumbnail draws */
-[data-name^="IMG/"] > [data-name="Play"], [data-name^="Video slot"] > [data-name="Play"] { top: 50% !important; left: 50% !important; transform: translate(-50%, -50%); }
+[data-name^="IMG/"]:not(:has(> [data-name="Play icon"])) > [data-name="Play"], [data-name^="Video slot"]:not(:has(> [data-name="Play icon"])) > [data-name="Play"] { top: 50% !important; left: 50% !important; transform: translate(-50%, -50%); }
 [data-name^="IMG/"] > [data-name="Duration"] { top: auto !important; left: auto !important; right: 8px; bottom: 8px; }
 /* photo cards and the hero buttons size to their words, so nothing is clipped */
 [data-name^="Level "] > [data-name="Copy"], [data-name^="Part "] > [data-name="Copy"] { height: auto !important; }
@@ -1207,3 +1207,28 @@ body.eip-lock { overflow: hidden; }
 [data-name^="Level "] > [data-name="Shade"], [data-name^="Part "] > [data-name="Shade"], [data-name="Hero"] > [data-name="Shade"] { inset: 0 !important; width: 100% !important; height: 100% !important; top: 0 !important; left: 0 !important; position: absolute !important; }
 /* photo cards on phones: no second gradient behind the words (the card's own shade already darkens the photo) */
 .hero-flow[data-name^="Level "] > div:not([data-name]), .hero-flow[data-name^="Part "] > div:not([data-name]) { background: none !important; }
+/* key point cards as a carousel (Nov 2) */
+[data-name="Carousel · Key points"] { flex-wrap: nowrap !important; scroll-snap-type: x mandatory; scrollbar-width: none; cursor: grab; }
+[data-name="Carousel · Key points"]::-webkit-scrollbar { display: none; }
+[data-name="Carousel · Key points"] > * { scroll-snap-align: start; flex-shrink: 0 !important; }
+.carousel.dragging { cursor: grabbing; user-select: none; }
+.carousel.dragging * { pointer-events: none; }
+@media (max-width: 859px) { [data-name="Carousel · Key points"] > * { width: 78vw !important; max-width: 320px; } }
+/* lesson: Mark Complete + Up next (Nov 2) */
+.complete-toggle { display: inline-flex; align-items: center; gap: 12px; height: 48px; padding: 0 18px 0 12px; border-radius: 999px; border: 1px solid #4A4540; background: transparent; color: #F2EEE7; font: 600 15px 'Archivo', sans-serif; cursor: pointer; flex: none; white-space: nowrap; }
+.complete-toggle .ct-box { width: 24px; height: 24px; border-radius: 7px; border: 2px solid #B8AFA3; display: grid; place-items: center; font: 800 14px 'Archivo', sans-serif; color: #fff; }
+.complete-toggle.on { border-color: #2E7D45; background: rgba(46,125,69,.18); }
+.complete-toggle.on .ct-box { background: #2E7D45; border-color: #2E7D45; }
+.complete-toggle:hover:not(:disabled) { border-color: #8A8178; }
+[data-name="Button · Next section"] { box-shadow: 0 6px 18px rgba(196,154,108,.35); }
+[data-name="Button · Next section"]:hover, a[data-name="Button · Next section"]:hover { filter: brightness(1.08); }
+@media (max-width: 859px) {
+  [data-name="Up next"] { flex-direction: column !important; align-items: stretch !important; }
+  [data-name="Up next"] > * { width: 100% !important; justify-content: center; }
+  .complete-toggle { width: 100%; justify-content: center; }
+}
+@media (max-width: 859px) {
+  [data-name="Up next actions"] { flex-direction: column !important; align-items: stretch !important; }
+  [data-name="Up next buttons"] { flex-direction: column-reverse !important; width: 100% !important; }
+  [data-name="Up next buttons"] > * { width: 100% !important; justify-content: center; }
+}

@@ -1,0 +1,1678 @@
+{
+ "_source": "Wine Folly grape pages, fetched Nov 1 2026",
+ "_notes": "words = the page's Taste Profile labels with the trailing 'Body'/'Acidity'/'Tannins'/'ABV' removed and 'No Tannins' written as 'None'; capitalisation kept as the page has it. pageLabels = the five labels verbatim (sweetness, body, tannins, acidity, alcohol). Scale positions use the fixed word-to-number table (body Light .15 to Full .85; sweetness Bone-Dry .02 to Very Sweet .92; acidity Low .2 to High .86; tannin None .03 to High .86). Glera = Wine Folly's Prosecco page; Muscat = its Muscat Blanc page; Trebbiano = Trebbiano Toscano; Melon de Bourgogne = Melon; Mourvèdre = Monastrell (Mourvèdre). Flavors are copied as listed, including the page's spelling 'Orange Blossum' on Muscat Blanc.",
+ "grapes": [
+  {
+   "name": "Cabernet Sauvignon",
+   "aka": [],
+   "pageTitle": "Cabernet Sauvignon",
+   "url": "https://winefolly.com/grapes/cabernet-sauvignon/",
+   "words": {
+    "body": "Full",
+    "sweetness": "Dry",
+    "acidity": "Medium-High",
+    "tannin": "Medium-High",
+    "abv": "13.5-15%"
+   },
+   "scale": {
+    "body": 0.85,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Black Cherry",
+    "Black Currant",
+    "Cedar",
+    "Baking Spices",
+    "Graphite"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Full Body",
+    "Medium-High Tannins",
+    "Medium-High Acidity",
+    "13.5-15% ABV"
+   ]
+  },
+  {
+   "name": "Merlot",
+   "aka": [],
+   "pageTitle": "Merlot",
+   "url": "https://winefolly.com/grapes/merlot/",
+   "words": {
+    "body": "Medium-Full",
+    "sweetness": "Bone Dry",
+    "acidity": "Medium",
+    "tannin": "Medium-High",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.02,
+    "acidity": 0.5,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Cherry",
+    "Chocolate",
+    "Plum",
+    "Bay Leaf",
+    "Vanilla"
+   ],
+   "pageLabels": [
+    "Bone Dry",
+    "Medium-Full Body",
+    "Medium-High Tannins",
+    "Medium Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Pinot Noir",
+   "aka": [],
+   "pageTitle": "Pinot Noir",
+   "url": "https://winefolly.com/grapes/pinot-noir/",
+   "words": {
+    "body": "Medium",
+    "sweetness": "Dry",
+    "acidity": "Medium-High",
+    "tannin": "Low",
+    "abv": "12–14%"
+   },
+   "scale": {
+    "body": 0.5,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.2
+   },
+   "flavors": [
+    "Raspberry",
+    "Cherry",
+    "Mushroom",
+    "Vanilla",
+    "Hibiscus"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium Body",
+    "Low Tannins",
+    "Medium-High Acidity",
+    "12–14% ABV"
+   ]
+  },
+  {
+   "name": "Syrah",
+   "aka": [
+    "Shiraz"
+   ],
+   "pageTitle": "Syrah",
+   "url": "https://winefolly.com/grapes/syrah/",
+   "words": {
+    "body": "Full",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "Medium-High",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.85,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Blueberry",
+    "Black Plum",
+    "Milk Chocolate",
+    "Tobacco",
+    "Green Peppercorn"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Full Body",
+    "Medium-High Tannins",
+    "Medium Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Grenache",
+   "aka": [
+    "Garnacha"
+   ],
+   "pageTitle": "Grenache",
+   "url": "https://winefolly.com/grapes/grenache/",
+   "words": {
+    "body": "Medium-Full",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "Medium",
+    "abv": "Over 15%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.5
+   },
+   "flavors": [
+    "Stewed Strawberry",
+    "Grilled Plum",
+    "Leather",
+    "Dried Herbs",
+    "Blood Orange"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Full Body",
+    "Medium Tannins",
+    "Medium Acidity",
+    "Over 15% ABV"
+   ]
+  },
+  {
+   "name": "Malbec",
+   "aka": [],
+   "pageTitle": "Malbec",
+   "url": "https://winefolly.com/grapes/malbec/",
+   "words": {
+    "body": "Full",
+    "sweetness": "Dry",
+    "acidity": "Medium-Low",
+    "tannin": "Medium",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.85,
+    "sweetness": 0.06,
+    "acidity": 0.35,
+    "tannin": 0.5
+   },
+   "flavors": [
+    "Red Plum",
+    "Blackberry",
+    "Vanilla",
+    "Sweet Tobacco",
+    "Cocoa"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Full Body",
+    "Medium Tannins",
+    "Medium-Low Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Sangiovese",
+   "aka": [],
+   "pageTitle": "Sangiovese",
+   "url": "https://winefolly.com/grapes/sangiovese/",
+   "words": {
+    "body": "Medium-Full",
+    "sweetness": "Bone-Dry",
+    "acidity": "Medium-High",
+    "tannin": "Medium-High",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.02,
+    "acidity": 0.68,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Cherry",
+    "Roasted Tomato",
+    "Sweet Balsamic",
+    "Oregano",
+    "Espresso"
+   ],
+   "pageLabels": [
+    "Bone-Dry",
+    "Medium-Full Body",
+    "Medium-High Tannins",
+    "Medium-High Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Nebbiolo",
+   "aka": [],
+   "pageTitle": "Nebbiolo",
+   "url": "https://winefolly.com/grapes/nebbiolo/",
+   "words": {
+    "body": "Medium-Full",
+    "sweetness": "Bone-Dry",
+    "acidity": "Medium-High",
+    "tannin": "High",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.02,
+    "acidity": 0.68,
+    "tannin": 0.86
+   },
+   "flavors": [
+    "Cherry",
+    "Rose",
+    "Leather",
+    "Anise",
+    "Clay Pot"
+   ],
+   "pageLabels": [
+    "Bone-Dry",
+    "Medium-Full Body",
+    "High Tannins",
+    "Medium-High Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Tempranillo",
+   "aka": [],
+   "pageTitle": "Tempranillo",
+   "url": "https://winefolly.com/grapes/tempranillo/",
+   "words": {
+    "body": "Medium-Full",
+    "sweetness": "Dry",
+    "acidity": "Medium-High",
+    "tannin": "Medium-High",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Cherry",
+    "Dried Fig",
+    "Cedar",
+    "Tobacco",
+    "Dill"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Full Body",
+    "Medium-High Tannins",
+    "Medium-High Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Zinfandel",
+   "aka": [
+    "Primitivo"
+   ],
+   "pageTitle": "Zinfandel (Primitivo)",
+   "url": "https://winefolly.com/grapes/zinfandel/",
+   "words": {
+    "body": "Medium-Full",
+    "sweetness": "Dry",
+    "acidity": "Medium-Low",
+    "tannin": "Medium-High",
+    "abv": "Over 15%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.06,
+    "acidity": 0.35,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Blackberry",
+    "Strawberry",
+    "Peach Preserves",
+    "Cinnamon",
+    "Sweet Tobacco"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Full Body",
+    "Medium-High Tannins",
+    "Medium-Low Acidity",
+    "Over 15% ABV"
+   ]
+  },
+  {
+   "name": "Cabernet Franc",
+   "aka": [],
+   "pageTitle": "Cabernet Franc",
+   "url": "https://winefolly.com/grapes/cabernet-franc/",
+   "words": {
+    "body": "Medium",
+    "sweetness": "Dry",
+    "acidity": "High",
+    "tannin": "Medium-High",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.5,
+    "sweetness": 0.06,
+    "acidity": 0.86,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Strawberry",
+    "Raspberry",
+    "Bell Pepper",
+    "Crushed Gravel",
+    "Chili Pepper"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium Body",
+    "Medium-High Tannins",
+    "High Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Gamay",
+   "aka": [],
+   "pageTitle": "Gamay",
+   "url": "https://winefolly.com/grapes/gamay/",
+   "words": {
+    "body": "Medium-Light",
+    "sweetness": "Dry",
+    "acidity": "Medium-High",
+    "tannin": "None",
+    "abv": "10–11.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Pomegranate",
+    "Blackberry Bramble",
+    "Violet",
+    "Potting Soil",
+    "Peony"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Light Body",
+    "No Tannins",
+    "Medium-High Acidity",
+    "10–11.5% ABV"
+   ]
+  },
+  {
+   "name": "Barbera",
+   "aka": [],
+   "pageTitle": "Barbera",
+   "url": "https://winefolly.com/grapes/barbera/",
+   "words": {
+    "body": "Medium-full",
+    "sweetness": "Bone-dry",
+    "acidity": "High",
+    "tannin": "Low",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.02,
+    "acidity": 0.86,
+    "tannin": 0.2
+   },
+   "flavors": [
+    "Tart Cherry",
+    "Licorice",
+    "Blackberry",
+    "Dried Herbs",
+    "Black Pepper"
+   ],
+   "pageLabels": [
+    "Bone-dry",
+    "Medium-full Body",
+    "Low Tannins",
+    "High Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Carménère",
+   "aka": [],
+   "pageTitle": "Carménère",
+   "url": "https://winefolly.com/grapes/carmenere/",
+   "words": {
+    "body": "Medium",
+    "sweetness": "Dry",
+    "acidity": "Medium-high",
+    "tannin": "Medium",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.5,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.5
+   },
+   "flavors": [
+    "Raspberry",
+    "Bell Pepper",
+    "Black Plum",
+    "Vanilla",
+    "Paprika"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium Body",
+    "Medium Tannins",
+    "Medium-high Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Mourvèdre",
+   "aka": [
+    "Monastrell"
+   ],
+   "pageTitle": "Monastrell (Mourvèdre)",
+   "url": "https://winefolly.com/grapes/monastrell-mourvedre/",
+   "words": {
+    "body": "Full",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "High",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.85,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.86
+   },
+   "flavors": [
+    "Blackberry",
+    "Black Pepper",
+    "Cocoa",
+    "Tobacco",
+    "Roasted Meat"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Full Body",
+    "High Tannins",
+    "Medium Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Tannat",
+   "aka": [],
+   "pageTitle": "Tannat",
+   "url": "https://winefolly.com/grapes/tannat/",
+   "words": {
+    "body": "Full",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "High",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.85,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.86
+   },
+   "flavors": [
+    "Black Currant",
+    "Plum",
+    "Licorice",
+    "Smoke",
+    "Cardamom"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Full Body",
+    "High Tannins",
+    "Medium Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Montepulciano",
+   "aka": [],
+   "pageTitle": "Montepulciano",
+   "url": "https://winefolly.com/grapes/montepulciano/",
+   "words": {
+    "body": "Medium-Full",
+    "sweetness": "Dry",
+    "acidity": "Medium-High",
+    "tannin": "Medium-High",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Red Plum",
+    "Blackberry",
+    "Dried Thyme",
+    "Baking Spices",
+    "Mesquite"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Full Body",
+    "Medium-High Tannins",
+    "Medium-High Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Aglianico",
+   "aka": [],
+   "pageTitle": "Aglianico",
+   "url": "https://winefolly.com/grapes/aglianico/",
+   "words": {
+    "body": "Full",
+    "sweetness": "Bone-Dry",
+    "acidity": "Medium-High",
+    "tannin": "High",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.85,
+    "sweetness": 0.02,
+    "acidity": 0.68,
+    "tannin": 0.86
+   },
+   "flavors": [
+    "White Pepper",
+    "Black Cherry",
+    "Smoke",
+    "Game",
+    "Spiced Plum"
+   ],
+   "pageLabels": [
+    "Bone-Dry",
+    "Full Body",
+    "High Tannins",
+    "Medium-High Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Nero d'Avola",
+   "aka": [],
+   "pageTitle": "Nero d’Avola",
+   "url": "https://winefolly.com/grapes/nero-davola/",
+   "words": {
+    "body": "Medium-Full",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "Medium-High",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Black Cherry",
+    "Black Plum",
+    "Licorice",
+    "Tobacco",
+    "Chili Pepper"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Full Body",
+    "Medium-High Tannins",
+    "Medium Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Touriga Nacional",
+   "aka": [],
+   "pageTitle": "Touriga Nacional",
+   "url": "https://winefolly.com/grapes/touriga-nacional/",
+   "words": {
+    "body": "Full",
+    "sweetness": "Dry",
+    "acidity": "Medium-High",
+    "tannin": "High",
+    "abv": "Over 15%"
+   },
+   "scale": {
+    "body": 0.85,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.86
+   },
+   "flavors": [
+    "Blueberry",
+    "Violet",
+    "Plum",
+    "Mint",
+    "Wet Slate"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Full Body",
+    "High Tannins",
+    "Medium-High Acidity",
+    "Over 15% ABV"
+   ]
+  },
+  {
+   "name": "Petite Sirah",
+   "aka": [],
+   "pageTitle": "Petite Sirah",
+   "url": "https://winefolly.com/grapes/petite-sirah/",
+   "words": {
+    "body": "Full",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "High",
+    "abv": "Over 15%"
+   },
+   "scale": {
+    "body": 0.85,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.86
+   },
+   "flavors": [
+    "Sugarplum",
+    "Blueberry",
+    "Dark Chocolate",
+    "Black Pepper",
+    "Black Tea"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Full Body",
+    "High Tannins",
+    "Medium Acidity",
+    "Over 15% ABV"
+   ]
+  },
+  {
+   "name": "Pinotage",
+   "aka": [],
+   "pageTitle": "Pinotage",
+   "url": "https://winefolly.com/grapes/pinotage/",
+   "words": {
+    "body": "Full",
+    "sweetness": "Dry",
+    "acidity": "Medium-High",
+    "tannin": "Medium-High",
+    "abv": "Over 15%"
+   },
+   "scale": {
+    "body": 0.85,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Black Cherry",
+    "Blackberry",
+    "Fig",
+    "Mint",
+    "Game"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Full Body",
+    "Medium-High Tannins",
+    "Medium-High Acidity",
+    "Over 15% ABV"
+   ]
+  },
+  {
+   "name": "Xinomavro",
+   "aka": [],
+   "pageTitle": "Xinomavro",
+   "url": "https://winefolly.com/grapes/xinomavro/",
+   "words": {
+    "body": "Medium-Full",
+    "sweetness": "Dry",
+    "acidity": "High",
+    "tannin": "High",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.06,
+    "acidity": 0.86,
+    "tannin": 0.86
+   },
+   "flavors": [
+    "Raspberry",
+    "Plum Sauce",
+    "Anise",
+    "Allspice",
+    "Tobacco"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Full Body",
+    "High Tannins",
+    "High Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Agiorgitiko",
+   "aka": [],
+   "pageTitle": "Agiorgitiko",
+   "url": "https://winefolly.com/grapes/agiorgitiko/",
+   "words": {
+    "body": "Medium-Full",
+    "sweetness": "Bone-Dry",
+    "acidity": "Medium",
+    "tannin": "Medium-High",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.7,
+    "sweetness": 0.02,
+    "acidity": 0.5,
+    "tannin": 0.68
+   },
+   "flavors": [
+    "Raspberry",
+    "Blackberry",
+    "Plum Sauce",
+    "Black Pepper",
+    "Nutmeg"
+   ],
+   "pageLabels": [
+    "Bone-Dry",
+    "Medium-Full Body",
+    "Medium-High Tannins",
+    "Medium Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Corvina",
+   "aka": [],
+   "pageTitle": "Corvina",
+   "url": "https://winefolly.com/grapes/corvina/",
+   "words": {
+    "body": "Medium",
+    "sweetness": "Dry",
+    "acidity": "Medium-high",
+    "tannin": "Low",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.5,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.2
+   },
+   "flavors": [
+    "Tart Cherry",
+    "Cinnamon",
+    "Chocolate",
+    "White Pepper",
+    "Green Almond"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium Body",
+    "Low Tannins",
+    "Medium-high Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Chardonnay",
+   "aka": [],
+   "pageTitle": "Chardonnay",
+   "url": "https://winefolly.com/grapes/chardonnay/",
+   "words": {
+    "body": "Medium",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "None",
+    "abv": "12–15%"
+   },
+   "scale": {
+    "body": 0.5,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Lemon",
+    "Yellow Apple",
+    "Butter",
+    "Vanilla",
+    "Pineapple"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium Body",
+    "No Tannins",
+    "Medium Acidity",
+    "12–15% ABV"
+   ]
+  },
+  {
+   "name": "Sauvignon Blanc",
+   "aka": [],
+   "pageTitle": "Sauvignon Blanc",
+   "url": "https://winefolly.com/grapes/sauvignon-blanc/",
+   "words": {
+    "body": "Medium-Light",
+    "sweetness": "Dry",
+    "acidity": "High",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.86,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Gooseberry",
+    "Honeydew",
+    "Grapefruit",
+    "White Peach",
+    "Passion Fruit"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Light Body",
+    "No Tannins",
+    "High Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Riesling",
+   "aka": [],
+   "pageTitle": "Riesling",
+   "url": "https://winefolly.com/grapes/riesling/",
+   "words": {
+    "body": "Light",
+    "sweetness": "Off-Dry",
+    "acidity": "High",
+    "tannin": "None",
+    "abv": "Under 10%"
+   },
+   "scale": {
+    "body": 0.15,
+    "sweetness": 0.3,
+    "acidity": 0.86,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Lime",
+    "Green Apple",
+    "Beeswax",
+    "Jasmine",
+    "Petroleum"
+   ],
+   "pageLabels": [
+    "Off-Dry",
+    "Light Body",
+    "No Tannins",
+    "High Acidity",
+    "Under 10% ABV"
+   ]
+  },
+  {
+   "name": "Pinot Gris",
+   "aka": [
+    "Pinot Grigio"
+   ],
+   "pageTitle": "Pinot Gris",
+   "url": "https://winefolly.com/grapes/pinot-gris/",
+   "words": {
+    "body": "Medium-Light",
+    "sweetness": "Dry",
+    "acidity": "Medium-High",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "White Peach",
+    "Lemon Zest",
+    "Cantaloupe",
+    "Green Almond",
+    "Crushed Gravel"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Light Body",
+    "No Tannins",
+    "Medium-High Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Chenin Blanc",
+   "aka": [],
+   "pageTitle": "Chenin Blanc",
+   "url": "https://winefolly.com/grapes/chenin-blanc/",
+   "words": {
+    "body": "Medium-Light",
+    "sweetness": "Dry",
+    "acidity": "High",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.86,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Quince",
+    "Yellow Apple",
+    "Pear",
+    "Chamomile",
+    "Honey"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Light Body",
+    "No Tannins",
+    "High Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Gewürztraminer",
+   "aka": [],
+   "pageTitle": "Gewürztraminer",
+   "url": "https://winefolly.com/grapes/gewurztraminer/",
+   "words": {
+    "body": "Medium",
+    "sweetness": "Off-Dry",
+    "acidity": "Low",
+    "tannin": "None",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.5,
+    "sweetness": 0.3,
+    "acidity": 0.2,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Lychee",
+    "Rose",
+    "Grapefruit",
+    "Tangerine",
+    "Ginger"
+   ],
+   "pageLabels": [
+    "Off-Dry",
+    "Medium Body",
+    "No Tannins",
+    "Low Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Viognier",
+   "aka": [],
+   "pageTitle": "Viognier",
+   "url": "https://winefolly.com/grapes/viognier/",
+   "words": {
+    "body": "Full",
+    "sweetness": "Dry",
+    "acidity": "Medium-Low",
+    "tannin": "None",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.85,
+    "sweetness": 0.06,
+    "acidity": 0.35,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Tangerine",
+    "Peach",
+    "Mango",
+    "Honeysuckle",
+    "Rose"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Full Body",
+    "No Tannins",
+    "Medium-Low Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Albariño",
+   "aka": [
+    "Alvarinho"
+   ],
+   "pageTitle": "Albariño (Alvarinho)",
+   "url": "https://winefolly.com/grapes/albarino/",
+   "words": {
+    "body": "Light",
+    "sweetness": "Dry",
+    "acidity": "High",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.15,
+    "sweetness": 0.06,
+    "acidity": 0.86,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Lemon Zest",
+    "Grapefruit",
+    "Honeydew",
+    "Nectarine",
+    "Saline"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Light Body",
+    "No Tannins",
+    "High Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Grüner Veltliner",
+   "aka": [],
+   "pageTitle": "Grüner Veltliner",
+   "url": "https://winefolly.com/grapes/gruner-veltliner/",
+   "words": {
+    "body": "Medium-Light",
+    "sweetness": "Dry",
+    "acidity": "High",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.86,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Starfruit",
+    "Gooseberry",
+    "Green Bean",
+    "White Pepper",
+    "Crushed Gravel"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Light Body",
+    "No Tannins",
+    "High Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Sémillon",
+   "aka": [],
+   "pageTitle": "Sémillon",
+   "url": "https://winefolly.com/grapes/semillon/",
+   "words": {
+    "body": "Medium",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "None",
+    "abv": "11%–14%"
+   },
+   "scale": {
+    "body": 0.5,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Lemon",
+    "Beeswax",
+    "Peach",
+    "Chamomile",
+    "Saline"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium Body",
+    "No Tannins",
+    "Medium Acidity",
+    "11%–14% ABV"
+   ]
+  },
+  {
+   "name": "Verdejo",
+   "aka": [],
+   "pageTitle": "Verdejo",
+   "url": "https://winefolly.com/grapes/verdejo/",
+   "words": {
+    "body": "Light",
+    "sweetness": "Dry",
+    "acidity": "Medium-high",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.15,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Lime",
+    "Honeydew",
+    "Grapefruit Pith",
+    "Fennel",
+    "White Peach"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Light Body",
+    "No Tannins",
+    "Medium-high Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Vermentino",
+   "aka": [],
+   "pageTitle": "Vermentino",
+   "url": "https://winefolly.com/grapes/vermentino/",
+   "words": {
+    "body": "Medium-Light",
+    "sweetness": "Dry",
+    "acidity": "Medium-High",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Lime",
+    "Grapefruit",
+    "Green Apple",
+    "Almond",
+    "Daffodil"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Light Body",
+    "No Tannins",
+    "Medium-High Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Assyrtiko",
+   "aka": [],
+   "pageTitle": "Assyrtiko",
+   "url": "https://winefolly.com/grapes/assyrtiko/",
+   "words": {
+    "body": "Light",
+    "sweetness": "Bone-dry",
+    "acidity": "High",
+    "tannin": "None",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.15,
+    "sweetness": 0.02,
+    "acidity": 0.86,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Lime",
+    "Passion Fruit",
+    "Beeswax",
+    "Flint",
+    "Saline"
+   ],
+   "pageLabels": [
+    "Bone-dry",
+    "Light Body",
+    "No Tannins",
+    "High Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Furmint",
+   "aka": [],
+   "pageTitle": "Furmint",
+   "url": "https://winefolly.com/grapes/furmint/",
+   "words": {
+    "body": "Light",
+    "sweetness": "Dry",
+    "acidity": "High",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.15,
+    "sweetness": 0.06,
+    "acidity": 0.86,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Meyer Lemon",
+    "Green Apple",
+    "Ginger",
+    "Smoke",
+    "Green Pepper"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Light Body",
+    "No Tannins",
+    "High Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Torrontés",
+   "aka": [],
+   "pageTitle": "Torrontés",
+   "url": "https://winefolly.com/grapes/torrontes/",
+   "words": {
+    "body": "Medium-Light",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Meyer Lemon",
+    "Peach",
+    "Rose Petal",
+    "Geranium",
+    "Citrus Zest"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-Light Body",
+    "No Tannins",
+    "Medium Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Muscat",
+   "aka": [
+    "Muscat Blanc",
+    "Moscato"
+   ],
+   "pageTitle": "Muscat Blanc",
+   "url": "https://winefolly.com/grapes/muscat-blanc/",
+   "words": {
+    "body": "Light",
+    "sweetness": "Off-dry",
+    "acidity": "Medium-High",
+    "tannin": "None",
+    "abv": "Under 10%"
+   },
+   "scale": {
+    "body": 0.15,
+    "sweetness": 0.3,
+    "acidity": 0.68,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Orange Blossum",
+    "Meyer Lemon",
+    "Mandarin Orange",
+    "Pear",
+    "Honeysuckle"
+   ],
+   "pageLabels": [
+    "Off-dry",
+    "Light Body",
+    "No Tannins",
+    "Medium-High Acidity",
+    "Under 10% ABV"
+   ]
+  },
+  {
+   "name": "Glera",
+   "aka": [
+    "Prosecco"
+   ],
+   "pageTitle": "Prosecco",
+   "url": "https://winefolly.com/grapes/prosecco/",
+   "words": {
+    "body": "Light",
+    "sweetness": "Dry",
+    "acidity": "Medium-high",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.15,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Green Apple",
+    "Honeydew",
+    "Pear",
+    "Lager",
+    "Cream"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Light Body",
+    "None Tannins",
+    "Medium-high Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Garganega",
+   "aka": [],
+   "pageTitle": "Garganega",
+   "url": "https://winefolly.com/grapes/garganega/",
+   "words": {
+    "body": "Medium-light",
+    "sweetness": "Dry",
+    "acidity": "Medium-high",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Peach",
+    "Honeydew",
+    "Tangerine",
+    "Marjoram",
+    "Saline"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-light Body",
+    "None Tannins",
+    "Medium-high Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Fiano",
+   "aka": [],
+   "pageTitle": "Fiano",
+   "url": "https://winefolly.com/grapes/fiano/",
+   "words": {
+    "body": "Medium-light",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Honeydew",
+    "Asian Pear",
+    "Hazelnut",
+    "Orange Peel",
+    "Pine"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-light Body",
+    "None Tannins",
+    "Medium Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Falanghina",
+   "aka": [],
+   "pageTitle": "Falanghina",
+   "url": "https://winefolly.com/grapes/falanghina/",
+   "words": {
+    "body": "Medium-light",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Lemon",
+    "Citrus Blossom",
+    "Peach",
+    "Honey",
+    "Almond"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-light Body",
+    "No Tannins",
+    "Medium Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Verdicchio",
+   "aka": [],
+   "pageTitle": "Verdicchio",
+   "url": "https://winefolly.com/grapes/verdicchio/",
+   "words": {
+    "body": "Light",
+    "sweetness": "Dry",
+    "acidity": "Medium-high",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.15,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Peach",
+    "Lemon Curd",
+    "Almond Skin",
+    "Oily",
+    "Saline"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Light Body",
+    "None Tannins",
+    "Medium-high Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Trebbiano",
+   "aka": [
+    "Trebbiano Toscano",
+    "Ugni Blanc"
+   ],
+   "pageTitle": "Trebbiano Toscano",
+   "url": "https://winefolly.com/grapes/trebbiano-toscano/",
+   "words": {
+    "body": "Medium-light",
+    "sweetness": "Dry",
+    "acidity": "Medium-high",
+    "tannin": "None",
+    "abv": "11.5–13.5%"
+   },
+   "scale": {
+    "body": 0.35,
+    "sweetness": 0.06,
+    "acidity": 0.68,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "White Peach",
+    "Lemon",
+    "Green Apple",
+    "Seashell",
+    "Basil"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium-light Body",
+    "None Tannins",
+    "Medium-high Acidity",
+    "11.5–13.5% ABV"
+   ]
+  },
+  {
+   "name": "Marsanne",
+   "aka": [],
+   "pageTitle": "Marsanne",
+   "url": "https://winefolly.com/grapes/marsanne/",
+   "words": {
+    "body": "Medium",
+    "sweetness": "Dry",
+    "acidity": "Medium-low",
+    "tannin": "None",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.5,
+    "sweetness": 0.06,
+    "acidity": 0.35,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Quince",
+    "Mandarin Orange",
+    "Apricot",
+    "Acacia",
+    "Beeswax"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium Body",
+    "None Tannins",
+    "Medium-low Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Roussanne",
+   "aka": [],
+   "pageTitle": "Roussanne",
+   "url": "https://winefolly.com/grapes/roussanne/",
+   "words": {
+    "body": "Medium",
+    "sweetness": "Dry",
+    "acidity": "Medium",
+    "tannin": "None",
+    "abv": "13.5–15%"
+   },
+   "scale": {
+    "body": 0.5,
+    "sweetness": 0.06,
+    "acidity": 0.5,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Meyer Lemon",
+    "Apricot",
+    "Beeswax",
+    "Chamomile",
+    "Brioche"
+   ],
+   "pageLabels": [
+    "Dry",
+    "Medium Body",
+    "None Tannins",
+    "Medium Acidity",
+    "13.5–15% ABV"
+   ]
+  },
+  {
+   "name": "Melon de Bourgogne",
+   "aka": [
+    "Melon"
+   ],
+   "pageTitle": "Melon",
+   "url": "https://winefolly.com/grapes/melon/",
+   "words": {
+    "body": "Light",
+    "sweetness": "Bone-dry",
+    "acidity": "High",
+    "tannin": "None",
+    "abv": "10–11.5%"
+   },
+   "scale": {
+    "body": 0.15,
+    "sweetness": 0.02,
+    "acidity": 0.86,
+    "tannin": 0.03
+   },
+   "flavors": [
+    "Lime",
+    "Seashell",
+    "Green Apple",
+    "Pear",
+    "Bread Dough"
+   ],
+   "pageLabels": [
+    "Bone-dry",
+    "Light Body",
+    "None Tannins",
+    "High Acidity",
+    "10–11.5% ABV"
+   ]
+  }
+ ]
+}

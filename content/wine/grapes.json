@@ -1,0 +1,3698 @@
+{
+ "_source": "Extracted Nov 1 2026 from the Figma grape and style pages (scripts/extract-regions.mjs). Written from memory Oct 27 (Jeffrey to check).",
+ "grapes": [
+  {
+   "slug": "wine/red/cabernet",
+   "file": "68-2",
+   "name": "CABERNET",
+   "pills": [
+    "Red · 1 of 8",
+    "Bold and structured"
+   ],
+   "script": "Red wine grapes",
+   "description": "Cabernet Sauvignon, the world’s most famous red grape. Thick skins give it deep color, firm tannin and dark fruit.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Deep ruby",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Full"
+    },
+    {
+     "label": "COLOR",
+     "value": "Deep ruby"
+    },
+    {
+     "label": "TANNIN",
+     "value": "High"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "60–65°F"
+    }
+   ],
+   "glass": "DEEP RUBY",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN RED WINE",
+   "siblings": [
+    {
+     "name": "Cabernet",
+     "note": "Bold and structured",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Merlot",
+     "note": "Soft and plush",
+     "to": "/wine/red/merlot",
+     "here": false
+    },
+    {
+     "name": "Pinot Noir",
+     "note": "Light and silky",
+     "to": "/wine/red/pinot-noir",
+     "here": false
+    },
+    {
+     "name": "Sangiovese",
+     "note": "Cherry and herbs",
+     "to": "/wine/red/sangiovese",
+     "here": false
+    },
+    {
+     "name": "Nebbiolo",
+     "note": "Light color, big grip",
+     "to": "/wine/red/nebbiolo",
+     "here": false
+    },
+    {
+     "name": "Syrah",
+     "note": "Dark and peppery",
+     "to": "/wine/red/syrah",
+     "here": false
+    },
+    {
+     "name": "Zinfandel",
+     "note": "Jammy and spicy",
+     "to": "/wine/red/zinfandel",
+     "here": false
+    },
+    {
+     "name": "Malbec",
+     "note": "Plush and dark",
+     "to": "/wine/red/malbec",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Black currant",
+     "Cedar",
+     "Mint",
+     "Vanilla"
+    ],
+    "line": "Big and bold. Built to age and to stand up to rich meat."
+   },
+   "pairs": [
+    {
+     "name": "Short Rib",
+     "why": "Bold tannin meets rich, braised beef.",
+     "to": "/recipe/short-rib"
+    },
+    {
+     "name": "Short Rib Arancini",
+     "why": "A smaller bite, the same match.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Bordeaux",
+     "to": "/wine/france/bordeaux"
+    },
+    {
+     "name": "Napa Valley",
+     "to": "/wine/usa/napa-valley"
+    },
+    {
+     "name": "Washington",
+     "to": "/wine/usa/washington"
+    },
+    {
+     "name": "Tuscany",
+     "to": "/wine/italy/tuscany"
+    },
+    {
+     "name": "Paso Robles",
+     "to": "/wine/usa/paso-robles"
+    }
+   ],
+   "producers": [
+    "Caymus",
+    "Silver Oak",
+    "Jordan",
+    "Joseph Phelps"
+   ],
+   "sayIt": "“A Cabernet. Full-bodied, with dark fruit and a firm finish.”",
+   "goodToKnow": "Cabernet Sauvignon is a natural cross of Cabernet Franc and Sauvignon Blanc.",
+   "partOf": {
+    "name": "Red wine",
+    "to": "/wine/red"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Malbec",
+     "to": "/wine/red/malbec"
+    },
+    {
+     "label": "NEXT",
+     "name": "Merlot",
+     "to": "/wine/red/merlot"
+    }
+   ]
+  },
+  {
+   "slug": "wine/red/merlot",
+   "file": "68-518",
+   "name": "MERLOT",
+   "pills": [
+    "Red · 2 of 8",
+    "Soft and plush"
+   ],
+   "script": "Red wine grapes",
+   "description": "A softer, rounder red than Cabernet, with plum and chocolate. Easy to like.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Ruby",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Medium to full"
+    },
+    {
+     "label": "COLOR",
+     "value": "Ruby"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Medium"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "60–65°F"
+    }
+   ],
+   "glass": "RUBY",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN RED WINE",
+   "siblings": [
+    {
+     "name": "Cabernet",
+     "note": "Bold and structured",
+     "to": "/wine/red/cabernet",
+     "here": false
+    },
+    {
+     "name": "Merlot",
+     "note": "Soft and plush",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Pinot Noir",
+     "note": "Light and silky",
+     "to": "/wine/red/pinot-noir",
+     "here": false
+    },
+    {
+     "name": "Sangiovese",
+     "note": "Cherry and herbs",
+     "to": "/wine/red/sangiovese",
+     "here": false
+    },
+    {
+     "name": "Nebbiolo",
+     "note": "Light color, big grip",
+     "to": "/wine/red/nebbiolo",
+     "here": false
+    },
+    {
+     "name": "Syrah",
+     "note": "Dark and peppery",
+     "to": "/wine/red/syrah",
+     "here": false
+    },
+    {
+     "name": "Zinfandel",
+     "note": "Jammy and spicy",
+     "to": "/wine/red/zinfandel",
+     "here": false
+    },
+    {
+     "name": "Malbec",
+     "note": "Plush and dark",
+     "to": "/wine/red/malbec",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Plum",
+     "Cherry",
+     "Chocolate",
+     "Soft"
+    ],
+    "line": "Smooth and plush. A safe pick for most red drinkers."
+   },
+   "pairs": [
+    {
+     "name": "Short Rib",
+     "why": "Soft tannin, rich fruit.",
+     "to": "/recipe/short-rib"
+    },
+    {
+     "name": "Mike’s Vegas Pie",
+     "why": "Plush enough for cheese and sauce.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Bordeaux",
+     "to": "/wine/france/bordeaux"
+    },
+    {
+     "name": "Washington",
+     "to": "/wine/usa/washington"
+    },
+    {
+     "name": "Napa Valley",
+     "to": "/wine/usa/napa-valley"
+    }
+   ],
+   "producers": [
+    "Duckhorn",
+    "Château Pétrus"
+   ],
+   "sayIt": "“A Merlot. Soft and smooth, with plum and a little chocolate.”",
+   "goodToKnow": "Merlot is the most planted grape in Bordeaux.",
+   "partOf": {
+    "name": "Red wine",
+    "to": "/wine/red"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Cabernet",
+     "to": "/wine/red/cabernet"
+    },
+    {
+     "label": "NEXT",
+     "name": "Pinot Noir",
+     "to": "/wine/red/pinot-noir"
+    }
+   ]
+  },
+  {
+   "slug": "wine/red/pinot-noir",
+   "file": "68-1028",
+   "name": "PINOT NOIR",
+   "pills": [
+    "Red · 3 of 8",
+    "Light and silky"
+   ],
+   "script": "Red wine grapes",
+   "description": "A light, silky red with red fruit and earth. Thin skins make it delicate and hard to grow.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Light ruby",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light to medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Light ruby"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Low"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "58–62°F"
+    }
+   ],
+   "glass": "LIGHT RUBY",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN RED WINE",
+   "siblings": [
+    {
+     "name": "Cabernet",
+     "note": "Bold and structured",
+     "to": "/wine/red/cabernet",
+     "here": false
+    },
+    {
+     "name": "Merlot",
+     "note": "Soft and plush",
+     "to": "/wine/red/merlot",
+     "here": false
+    },
+    {
+     "name": "Pinot Noir",
+     "note": "Light and silky",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Sangiovese",
+     "note": "Cherry and herbs",
+     "to": "/wine/red/sangiovese",
+     "here": false
+    },
+    {
+     "name": "Nebbiolo",
+     "note": "Light color, big grip",
+     "to": "/wine/red/nebbiolo",
+     "here": false
+    },
+    {
+     "name": "Syrah",
+     "note": "Dark and peppery",
+     "to": "/wine/red/syrah",
+     "here": false
+    },
+    {
+     "name": "Zinfandel",
+     "note": "Jammy and spicy",
+     "to": "/wine/red/zinfandel",
+     "here": false
+    },
+    {
+     "name": "Malbec",
+     "note": "Plush and dark",
+     "to": "/wine/red/malbec",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Cherry",
+     "Raspberry",
+     "Mushroom",
+     "Earth"
+    ],
+    "line": "Elegant and food-friendly. Great for guests who want a lighter red."
+   },
+   "pairs": [
+    {
+     "name": "Agnolotti",
+     "why": "Earthy and light enough for squash.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Beet Confit",
+     "why": "Red fruit with earthy beets.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Burgundy",
+     "to": "/wine/france/burgundy"
+    },
+    {
+     "name": "Willamette Valley",
+     "to": "/wine/usa/willamette-valley"
+    },
+    {
+     "name": "Sonoma",
+     "to": "/wine/usa/sonoma"
+    },
+    {
+     "name": "Champagne",
+     "to": "/wine/france/champagne"
+    },
+    {
+     "name": "Santa Barbara",
+     "to": "/wine/usa/santa-barbara"
+    }
+   ],
+   "producers": [
+    "Domaine Drouhin",
+    "Louis Jadot",
+    "Meiomi",
+    "Belle Glos"
+   ],
+   "sayIt": "“A Pinot Noir. Light and silky, with cherry and a little earth.”",
+   "goodToKnow": "Pinot Noir’s thin skins make it hard to grow, which is why good bottles cost more.",
+   "partOf": {
+    "name": "Red wine",
+    "to": "/wine/red"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Merlot",
+     "to": "/wine/red/merlot"
+    },
+    {
+     "label": "NEXT",
+     "name": "Sangiovese",
+     "to": "/wine/red/sangiovese"
+    }
+   ]
+  },
+  {
+   "slug": "wine/red/sangiovese",
+   "file": "68-1544",
+   "name": "SANGIOVESE",
+   "pills": [
+    "Red · 4 of 8",
+    "Cherry and herbs"
+   ],
+   "script": "Red wine grapes",
+   "description": "Italy’s most planted red grape. Tart cherry, tomato leaf and herbs, with bright acid.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Ruby",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Ruby"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Medium to high"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "60–65°F"
+    }
+   ],
+   "glass": "RUBY",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN RED WINE",
+   "siblings": [
+    {
+     "name": "Cabernet",
+     "note": "Bold and structured",
+     "to": "/wine/red/cabernet",
+     "here": false
+    },
+    {
+     "name": "Merlot",
+     "note": "Soft and plush",
+     "to": "/wine/red/merlot",
+     "here": false
+    },
+    {
+     "name": "Pinot Noir",
+     "note": "Light and silky",
+     "to": "/wine/red/pinot-noir",
+     "here": false
+    },
+    {
+     "name": "Sangiovese",
+     "note": "Cherry and herbs",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Nebbiolo",
+     "note": "Light color, big grip",
+     "to": "/wine/red/nebbiolo",
+     "here": false
+    },
+    {
+     "name": "Syrah",
+     "note": "Dark and peppery",
+     "to": "/wine/red/syrah",
+     "here": false
+    },
+    {
+     "name": "Zinfandel",
+     "note": "Jammy and spicy",
+     "to": "/wine/red/zinfandel",
+     "here": false
+    },
+    {
+     "name": "Malbec",
+     "note": "Plush and dark",
+     "to": "/wine/red/malbec",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Tart cherry",
+     "Tomato leaf",
+     "Herbs",
+     "Leather"
+    ],
+    "line": "Bright and savory. Made for tomato sauce and pizza."
+   },
+   "pairs": [
+    {
+     "name": "Mike’s Vegas Pie",
+     "why": "Bright acid cuts through cheese.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Short Rib Arancini",
+     "why": "Savory and fried, with cherry fruit.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Tuscany",
+     "to": "/wine/italy/tuscany"
+    }
+   ],
+   "producers": [
+    "Antinori",
+    "Castello Banfi",
+    "Biondi-Santi"
+   ],
+   "sayIt": "“A Sangiovese, the grape of Chianti. Cherry, herbs and bright acid.”",
+   "goodToKnow": "Sangiovese is the main grape in Chianti and Brunello di Montalcino.",
+   "partOf": {
+    "name": "Red wine",
+    "to": "/wine/red"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Pinot Noir",
+     "to": "/wine/red/pinot-noir"
+    },
+    {
+     "label": "NEXT",
+     "name": "Nebbiolo",
+     "to": "/wine/red/nebbiolo"
+    }
+   ]
+  },
+  {
+   "slug": "wine/red/nebbiolo",
+   "file": "68-2052",
+   "name": "NEBBIOLO",
+   "pills": [
+    "Red · 5 of 8",
+    "Light color, big grip"
+   ],
+   "script": "Red wine grapes",
+   "description": "The grape of Barolo and Barbaresco. Pale in color but powerful, with roses, tar and strong tannin.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale brick",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Full"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale brick"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Very high"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "62–65°F"
+    }
+   ],
+   "glass": "BRICK RED",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN RED WINE",
+   "siblings": [
+    {
+     "name": "Cabernet",
+     "note": "Bold and structured",
+     "to": "/wine/red/cabernet",
+     "here": false
+    },
+    {
+     "name": "Merlot",
+     "note": "Soft and plush",
+     "to": "/wine/red/merlot",
+     "here": false
+    },
+    {
+     "name": "Pinot Noir",
+     "note": "Light and silky",
+     "to": "/wine/red/pinot-noir",
+     "here": false
+    },
+    {
+     "name": "Sangiovese",
+     "note": "Cherry and herbs",
+     "to": "/wine/red/sangiovese",
+     "here": false
+    },
+    {
+     "name": "Nebbiolo",
+     "note": "Light color, big grip",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Syrah",
+     "note": "Dark and peppery",
+     "to": "/wine/red/syrah",
+     "here": false
+    },
+    {
+     "name": "Zinfandel",
+     "note": "Jammy and spicy",
+     "to": "/wine/red/zinfandel",
+     "here": false
+    },
+    {
+     "name": "Malbec",
+     "note": "Plush and dark",
+     "to": "/wine/red/malbec",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Rose",
+     "Tar",
+     "Cherry",
+     "Licorice"
+    ],
+    "line": "Looks light, drinks big. Best with rich food."
+   },
+   "pairs": [
+    {
+     "name": "Short Rib",
+     "why": "Big tannin for a big braise.",
+     "to": "/recipe/short-rib"
+    },
+    {
+     "name": "Agnolotti",
+     "why": "A classic Piedmont pairing with pasta.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Piedmont",
+     "to": "/wine/italy/piedmont"
+    }
+   ],
+   "producers": [
+    "Gaja",
+    "Vietti",
+    "Pio Cesare",
+    "Produttori del Barbaresco"
+   ],
+   "sayIt": "“A Nebbiolo, from Barolo country. Roses and cherry, with a strong finish.”",
+   "goodToKnow": "Nebbiolo is named after nebbia, the fog that covers Piedmont’s hills at harvest.",
+   "partOf": {
+    "name": "Red wine",
+    "to": "/wine/red"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Sangiovese",
+     "to": "/wine/red/sangiovese"
+    },
+    {
+     "label": "NEXT",
+     "name": "Syrah",
+     "to": "/wine/red/syrah"
+    }
+   ]
+  },
+  {
+   "slug": "wine/red/syrah",
+   "file": "68-2562",
+   "name": "SYRAH",
+   "pills": [
+    "Red · 6 of 8",
+    "Dark and peppery"
+   ],
+   "script": "Red wine grapes",
+   "description": "A dark, full red with blackberry, black pepper and smoky, meaty notes.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Inky purple",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Full"
+    },
+    {
+     "label": "COLOR",
+     "value": "Inky purple"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Medium to high"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "60–65°F"
+    }
+   ],
+   "glass": "INKY PURPLE",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN RED WINE",
+   "siblings": [
+    {
+     "name": "Cabernet",
+     "note": "Bold and structured",
+     "to": "/wine/red/cabernet",
+     "here": false
+    },
+    {
+     "name": "Merlot",
+     "note": "Soft and plush",
+     "to": "/wine/red/merlot",
+     "here": false
+    },
+    {
+     "name": "Pinot Noir",
+     "note": "Light and silky",
+     "to": "/wine/red/pinot-noir",
+     "here": false
+    },
+    {
+     "name": "Sangiovese",
+     "note": "Cherry and herbs",
+     "to": "/wine/red/sangiovese",
+     "here": false
+    },
+    {
+     "name": "Nebbiolo",
+     "note": "Light color, big grip",
+     "to": "/wine/red/nebbiolo",
+     "here": false
+    },
+    {
+     "name": "Syrah",
+     "note": "Dark and peppery",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Zinfandel",
+     "note": "Jammy and spicy",
+     "to": "/wine/red/zinfandel",
+     "here": false
+    },
+    {
+     "name": "Malbec",
+     "note": "Plush and dark",
+     "to": "/wine/red/malbec",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Blackberry",
+     "Black pepper",
+     "Smoke",
+     "Olive"
+    ],
+    "line": "Savory and spicy. Loves grilled and braised meat."
+   },
+   "pairs": [
+    {
+     "name": "Short Rib",
+     "why": "Peppery and meaty, like the braise.",
+     "to": "/recipe/short-rib"
+    },
+    {
+     "name": "Mike’s Vegas Pie",
+     "why": "Bold enough for a hearty pie.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Rhône",
+     "to": "/wine/france/rhone"
+    },
+    {
+     "name": "Washington",
+     "to": "/wine/usa/washington"
+    },
+    {
+     "name": "Australia",
+     "to": null
+    },
+    {
+     "name": "Paso Robles",
+     "to": "/wine/usa/paso-robles"
+    },
+    {
+     "name": "Santa Barbara",
+     "to": "/wine/usa/santa-barbara"
+    }
+   ],
+   "producers": [
+    "E. Guigal",
+    "M. Chapoutier",
+    "Penfolds"
+   ],
+   "sayIt": "“A Syrah. Dark fruit with black pepper and a little smoke.”",
+   "goodToKnow": "Syrah and Shiraz are the same grape. Australia calls it Shiraz.",
+   "partOf": {
+    "name": "Red wine",
+    "to": "/wine/red"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Nebbiolo",
+     "to": "/wine/red/nebbiolo"
+    },
+    {
+     "label": "NEXT",
+     "name": "Zinfandel",
+     "to": "/wine/red/zinfandel"
+    }
+   ]
+  },
+  {
+   "slug": "wine/red/zinfandel",
+   "file": "68-3074",
+   "name": "ZINFANDEL",
+   "pills": [
+    "Red · 7 of 8",
+    "Jammy and spicy"
+   ],
+   "script": "Red wine grapes",
+   "description": "California’s heritage grape. Ripe and jammy, with spice and often higher alcohol.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Deep ruby",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Full"
+    },
+    {
+     "label": "COLOR",
+     "value": "Deep ruby"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Medium"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "60–65°F"
+    }
+   ],
+   "glass": "DEEP RUBY",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN RED WINE",
+   "siblings": [
+    {
+     "name": "Cabernet",
+     "note": "Bold and structured",
+     "to": "/wine/red/cabernet",
+     "here": false
+    },
+    {
+     "name": "Merlot",
+     "note": "Soft and plush",
+     "to": "/wine/red/merlot",
+     "here": false
+    },
+    {
+     "name": "Pinot Noir",
+     "note": "Light and silky",
+     "to": "/wine/red/pinot-noir",
+     "here": false
+    },
+    {
+     "name": "Sangiovese",
+     "note": "Cherry and herbs",
+     "to": "/wine/red/sangiovese",
+     "here": false
+    },
+    {
+     "name": "Nebbiolo",
+     "note": "Light color, big grip",
+     "to": "/wine/red/nebbiolo",
+     "here": false
+    },
+    {
+     "name": "Syrah",
+     "note": "Dark and peppery",
+     "to": "/wine/red/syrah",
+     "here": false
+    },
+    {
+     "name": "Zinfandel",
+     "note": "Jammy and spicy",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Malbec",
+     "note": "Plush and dark",
+     "to": "/wine/red/malbec",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Blackberry jam",
+     "Pepper",
+     "Cinnamon",
+     "Ripe"
+    ],
+    "line": "Bold, fruity and a little sweet-seeming."
+   },
+   "pairs": [
+    {
+     "name": "Mike’s Vegas Pie",
+     "why": "Jammy fruit with a hearty pie.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Short Rib",
+     "why": "Ripe fruit with rich braise.",
+     "to": "/recipe/short-rib"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Sonoma",
+     "to": "/wine/usa/sonoma"
+    },
+    {
+     "name": "Napa Valley",
+     "to": "/wine/usa/napa-valley"
+    },
+    {
+     "name": "Paso Robles",
+     "to": "/wine/usa/paso-robles"
+    }
+   ],
+   "producers": [
+    "Ridge",
+    "Turley",
+    "Seghesio"
+   ],
+   "sayIt": "“A Zinfandel. Big, ripe and jammy, with spice.”",
+   "goodToKnow": "Zinfandel is genetically the same grape as Italy’s Primitivo.",
+   "partOf": {
+    "name": "Red wine",
+    "to": "/wine/red"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Syrah",
+     "to": "/wine/red/syrah"
+    },
+    {
+     "label": "NEXT",
+     "name": "Malbec",
+     "to": "/wine/red/malbec"
+    }
+   ]
+  },
+  {
+   "slug": "wine/red/malbec",
+   "file": "68-3584",
+   "name": "MALBEC",
+   "pills": [
+    "Red · 8 of 8",
+    "Plush and dark"
+   ],
+   "script": "Red wine grapes",
+   "description": "A dark, plush red with blackberry, plum and cocoa. Argentina’s signature grape.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Inky violet",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Full"
+    },
+    {
+     "label": "COLOR",
+     "value": "Inky violet"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Medium"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "60–65°F"
+    }
+   ],
+   "glass": "INKY VIOLET",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN RED WINE",
+   "siblings": [
+    {
+     "name": "Cabernet",
+     "note": "Bold and structured",
+     "to": "/wine/red/cabernet",
+     "here": false
+    },
+    {
+     "name": "Merlot",
+     "note": "Soft and plush",
+     "to": "/wine/red/merlot",
+     "here": false
+    },
+    {
+     "name": "Pinot Noir",
+     "note": "Light and silky",
+     "to": "/wine/red/pinot-noir",
+     "here": false
+    },
+    {
+     "name": "Sangiovese",
+     "note": "Cherry and herbs",
+     "to": "/wine/red/sangiovese",
+     "here": false
+    },
+    {
+     "name": "Nebbiolo",
+     "note": "Light color, big grip",
+     "to": "/wine/red/nebbiolo",
+     "here": false
+    },
+    {
+     "name": "Syrah",
+     "note": "Dark and peppery",
+     "to": "/wine/red/syrah",
+     "here": false
+    },
+    {
+     "name": "Zinfandel",
+     "note": "Jammy and spicy",
+     "to": "/wine/red/zinfandel",
+     "here": false
+    },
+    {
+     "name": "Malbec",
+     "note": "Plush and dark",
+     "to": null,
+     "here": true
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Plum",
+     "Blackberry",
+     "Cocoa",
+     "Violet"
+    ],
+    "line": "Smooth and full. Great value for a big red."
+   },
+   "pairs": [
+    {
+     "name": "Short Rib",
+     "why": "Plush fruit with rich beef.",
+     "to": "/recipe/short-rib"
+    },
+    {
+     "name": "Short Rib Arancini",
+     "why": "Dark fruit with a savory bite.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Argentina",
+     "to": null
+    },
+    {
+     "name": "Cahors, France",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Catena Zapata",
+    "Zuccardi"
+   ],
+   "sayIt": "“A Malbec. Dark, plush and smooth.”",
+   "goodToKnow": "Malbec came from southwest France, but Argentina made it famous.",
+   "partOf": {
+    "name": "Red wine",
+    "to": "/wine/red"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Zinfandel",
+     "to": "/wine/red/zinfandel"
+    },
+    {
+     "label": "NEXT",
+     "name": "Cabernet",
+     "to": "/wine/red/cabernet"
+    }
+   ]
+  },
+  {
+   "slug": "wine/white/chardonnay",
+   "file": "68-4092",
+   "name": "CHARDONNAY",
+   "pills": [
+    "White · 1 of 6",
+    "Crisp or creamy"
+   ],
+   "script": "White wine grapes",
+   "description": "The world’s most popular white grape. Crisp and appley without oak, or rich, buttery and toasty with oak.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Gold",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Medium to full"
+    },
+    {
+     "label": "COLOR",
+     "value": "Gold"
+    },
+    {
+     "label": "ACIDITY",
+     "value": "Medium"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "48–52°F"
+    }
+   ],
+   "glass": "GOLD",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN WHITE WINE",
+   "siblings": [
+    {
+     "name": "Chardonnay",
+     "note": "Crisp or creamy",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Sauvignon Blanc",
+     "note": "Zesty and green",
+     "to": "/wine/white/sauvignon-blanc",
+     "here": false
+    },
+    {
+     "name": "Pinot Grigio",
+     "note": "Light and easy",
+     "to": "/wine/white/pinot-grigio",
+     "here": false
+    },
+    {
+     "name": "Riesling",
+     "note": "Bone dry to sweet",
+     "to": "/wine/white/riesling",
+     "here": false
+    },
+    {
+     "name": "Pecorino",
+     "note": "Crisp and savory",
+     "to": "/wine/white/pecorino",
+     "here": false
+    },
+    {
+     "name": "Chenin Blanc",
+     "note": "Dry to sweet",
+     "to": "/wine/white/chenin-blanc",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Apple",
+     "Lemon",
+     "Butter",
+     "Vanilla"
+    ],
+    "line": "Ask: crisp, or rich and buttery? Chardonnay can be either."
+   },
+   "pairs": [
+    {
+     "name": "Scallop Rockefeller",
+     "why": "Rich wine with a rich, buttery topping.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Agnolotti",
+     "why": "Round enough for squash and sweet potato.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Burgundy",
+     "to": "/wine/france/burgundy"
+    },
+    {
+     "name": "Champagne",
+     "to": "/wine/france/champagne"
+    },
+    {
+     "name": "Sonoma",
+     "to": "/wine/usa/sonoma"
+    },
+    {
+     "name": "Napa Valley",
+     "to": "/wine/usa/napa-valley"
+    },
+    {
+     "name": "Santa Barbara",
+     "to": "/wine/usa/santa-barbara"
+    }
+   ],
+   "producers": [
+    "Kistler",
+    "Rombauer",
+    "Louis Latour",
+    "Kendall-Jackson"
+   ],
+   "sayIt": "“A Chardonnay. This one is [crisp / rich and buttery].”",
+   "goodToKnow": "Chablis is 100% Chardonnay, usually made with little or no oak.",
+   "partOf": {
+    "name": "White wine",
+    "to": "/wine/white"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Chenin Blanc",
+     "to": "/wine/white/chenin-blanc"
+    },
+    {
+     "label": "NEXT",
+     "name": "Sauvignon Blanc",
+     "to": "/wine/white/sauvignon-blanc"
+    }
+   ]
+  },
+  {
+   "slug": "wine/white/sauvignon-blanc",
+   "file": "68-4598",
+   "name": "SAUVIGNON BLANC",
+   "pills": [
+    "White · 2 of 6",
+    "Zesty and green"
+   ],
+   "script": "White wine grapes",
+   "description": "A zesty, refreshing white with citrus, green apple and fresh-cut grass.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale straw",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale straw"
+    },
+    {
+     "label": "ACIDITY",
+     "value": "High"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "45–48°F"
+    }
+   ],
+   "glass": "PALE STRAW",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN WHITE WINE",
+   "siblings": [
+    {
+     "name": "Chardonnay",
+     "note": "Crisp or creamy",
+     "to": "/wine/white/chardonnay",
+     "here": false
+    },
+    {
+     "name": "Sauvignon Blanc",
+     "note": "Zesty and green",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Pinot Grigio",
+     "note": "Light and easy",
+     "to": "/wine/white/pinot-grigio",
+     "here": false
+    },
+    {
+     "name": "Riesling",
+     "note": "Bone dry to sweet",
+     "to": "/wine/white/riesling",
+     "here": false
+    },
+    {
+     "name": "Pecorino",
+     "note": "Crisp and savory",
+     "to": "/wine/white/pecorino",
+     "here": false
+    },
+    {
+     "name": "Chenin Blanc",
+     "note": "Dry to sweet",
+     "to": "/wine/white/chenin-blanc",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Grapefruit",
+     "Lime",
+     "Grass",
+     "Green apple"
+    ],
+    "line": "Bright and tangy. A great first glass."
+   },
+   "pairs": [
+    {
+     "name": "Beet Confit",
+     "why": "Tangy wine with crème fraîche and orange.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Walleye Milanese",
+     "why": "Zesty acid cuts the crispy crust.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Loire",
+     "to": "/wine/france/loire"
+    },
+    {
+     "name": "Bordeaux",
+     "to": "/wine/france/bordeaux"
+    },
+    {
+     "name": "Friuli",
+     "to": "/wine/italy/friuli"
+    },
+    {
+     "name": "Napa Valley",
+     "to": "/wine/usa/napa-valley"
+    },
+    {
+     "name": "New Zealand",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Cloudy Bay",
+    "Kim Crawford",
+    "Pascal Jolivet"
+   ],
+   "sayIt": "“A Sauvignon Blanc. Zesty and bright, with grapefruit and lime.”",
+   "goodToKnow": "White Sancerre, from France’s Loire Valley, is 100% Sauvignon Blanc.",
+   "partOf": {
+    "name": "White wine",
+    "to": "/wine/white"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Chardonnay",
+     "to": "/wine/white/chardonnay"
+    },
+    {
+     "label": "NEXT",
+     "name": "Pinot Grigio",
+     "to": "/wine/white/pinot-grigio"
+    }
+   ]
+  },
+  {
+   "slug": "wine/white/pinot-grigio",
+   "file": "68-5104",
+   "name": "PINOT GRIGIO",
+   "pills": [
+    "White · 3 of 6",
+    "Light and easy"
+   ],
+   "script": "White wine grapes",
+   "description": "A light, clean white with pear, lemon and a mineral finish. Easy to drink.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale straw",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale straw"
+    },
+    {
+     "label": "ACIDITY",
+     "value": "Medium to high"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "45–48°F"
+    }
+   ],
+   "glass": "PALE STRAW",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN WHITE WINE",
+   "siblings": [
+    {
+     "name": "Chardonnay",
+     "note": "Crisp or creamy",
+     "to": "/wine/white/chardonnay",
+     "here": false
+    },
+    {
+     "name": "Sauvignon Blanc",
+     "note": "Zesty and green",
+     "to": "/wine/white/sauvignon-blanc",
+     "here": false
+    },
+    {
+     "name": "Pinot Grigio",
+     "note": "Light and easy",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Riesling",
+     "note": "Bone dry to sweet",
+     "to": "/wine/white/riesling",
+     "here": false
+    },
+    {
+     "name": "Pecorino",
+     "note": "Crisp and savory",
+     "to": "/wine/white/pecorino",
+     "here": false
+    },
+    {
+     "name": "Chenin Blanc",
+     "note": "Dry to sweet",
+     "to": "/wine/white/chenin-blanc",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Pear",
+     "Lemon",
+     "Almond",
+     "Mineral"
+    ],
+    "line": "Light and crisp. Goes with almost anything."
+   },
+   "pairs": [
+    {
+     "name": "Walleye Milanese",
+     "why": "Light fish, light wine.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Mini Lemon Ricotta Ravioli",
+     "why": "Lemon meets lemon.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Veneto",
+     "to": "/wine/italy/veneto"
+    },
+    {
+     "name": "Friuli",
+     "to": "/wine/italy/friuli"
+    },
+    {
+     "name": "Willamette Valley",
+     "to": "/wine/usa/willamette-valley"
+    }
+   ],
+   "producers": [
+    "Santa Margherita",
+    "Livio Felluga",
+    "Jermann"
+   ],
+   "sayIt": "“A Pinot Grigio. Light and crisp, with pear and lemon.”",
+   "goodToKnow": "Pinot Grigio and Pinot Gris are the same grape. Gris means gray, for its pinkish skin.",
+   "partOf": {
+    "name": "White wine",
+    "to": "/wine/white"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Sauvignon Blanc",
+     "to": "/wine/white/sauvignon-blanc"
+    },
+    {
+     "label": "NEXT",
+     "name": "Riesling",
+     "to": "/wine/white/riesling"
+    }
+   ]
+  },
+  {
+   "slug": "wine/white/riesling",
+   "file": "68-5606",
+   "name": "RIESLING",
+   "pills": [
+    "White · 4 of 6",
+    "Bone dry to sweet"
+   ],
+   "script": "White wine grapes",
+   "description": "An aromatic white with lime, peach and a mineral edge. It can be bone dry or sweet, always with bright acid.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale gold",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale gold"
+    },
+    {
+     "label": "ACIDITY",
+     "value": "Very high"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "45–48°F"
+    }
+   ],
+   "glass": "PALE GOLD",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN WHITE WINE",
+   "siblings": [
+    {
+     "name": "Chardonnay",
+     "note": "Crisp or creamy",
+     "to": "/wine/white/chardonnay",
+     "here": false
+    },
+    {
+     "name": "Sauvignon Blanc",
+     "note": "Zesty and green",
+     "to": "/wine/white/sauvignon-blanc",
+     "here": false
+    },
+    {
+     "name": "Pinot Grigio",
+     "note": "Light and easy",
+     "to": "/wine/white/pinot-grigio",
+     "here": false
+    },
+    {
+     "name": "Riesling",
+     "note": "Bone dry to sweet",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Pecorino",
+     "note": "Crisp and savory",
+     "to": "/wine/white/pecorino",
+     "here": false
+    },
+    {
+     "name": "Chenin Blanc",
+     "note": "Dry to sweet",
+     "to": "/wine/white/chenin-blanc",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Lime",
+     "Peach",
+     "Honey",
+     "Mineral"
+    ],
+    "line": "Bright and aromatic. Great with spice."
+   },
+   "pairs": [
+    {
+     "name": "Cauliflower",
+     "why": "Bright acid lifts the roasted flavor.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Beet Confit",
+     "why": "Handles the hatch chili almonds.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Michigan",
+     "to": "/wine/usa/michigan"
+    },
+    {
+     "name": "Washington",
+     "to": "/wine/usa/washington"
+    },
+    {
+     "name": "Germany",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Dr. Loosen",
+    "Trimbach",
+    "Chateau Grand Traverse",
+    "Left Foot Charley"
+   ],
+   "sayIt": "“A Riesling. This one is [dry / off-dry], with lime and peach.”",
+   "goodToKnow": "Northern Michigan is known for Riesling. Ask the guest if they want dry or sweet.",
+   "partOf": {
+    "name": "White wine",
+    "to": "/wine/white"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Pinot Grigio",
+     "to": "/wine/white/pinot-grigio"
+    },
+    {
+     "label": "NEXT",
+     "name": "Pecorino",
+     "to": "/wine/white/pecorino"
+    }
+   ]
+  },
+  {
+   "slug": "wine/white/pecorino",
+   "file": "68-6110",
+   "name": "PECORINO",
+   "pills": [
+    "White · 5 of 6"
+   ],
+   "script": "White wine grapes",
+   "description": "An Italian white grape from the Marche and Abruzzo. Crisp and herbal, with citrus and a little salinity.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Straw gold",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Straw gold"
+    },
+    {
+     "label": "ACIDITY",
+     "value": "High"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "48–50°F"
+    }
+   ],
+   "glass": "STRAW GOLD",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN WHITE WINE",
+   "siblings": [
+    {
+     "name": "Chardonnay",
+     "note": "Crisp or creamy",
+     "to": "/wine/white/chardonnay",
+     "here": false
+    },
+    {
+     "name": "Sauvignon Blanc",
+     "note": "Zesty and green",
+     "to": "/wine/white/sauvignon-blanc",
+     "here": false
+    },
+    {
+     "name": "Pinot Grigio",
+     "note": "Light and easy",
+     "to": "/wine/white/pinot-grigio",
+     "here": false
+    },
+    {
+     "name": "Riesling",
+     "note": "Bone dry to sweet",
+     "to": "/wine/white/riesling",
+     "here": false
+    },
+    {
+     "name": "Pecorino",
+     "note": "Crisp and savory",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Chenin Blanc",
+     "note": "Dry to sweet",
+     "to": "/wine/white/chenin-blanc",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Lemon",
+     "Herbs",
+     "Pear",
+     "Salty"
+    ],
+    "line": "Crisp and savory."
+   },
+   "pairs": [
+    {
+     "name": "Walleye Milanese",
+     "why": "The pairing we suggest.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Mini Lemon Ricotta Ravioli",
+     "why": "Citrus and herbs with lemon and ricotta.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Abruzzo",
+     "to": null
+    },
+    {
+     "name": "Marche",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Tenuta Spinelli",
+    "Velenosi"
+   ],
+   "sayIt": "“A Pecorino from Italy. Crisp and a little herbal. It’s lovely with the walleye.”",
+   "goodToKnow": "The grape shares its name with the cheese. It nearly disappeared before growers revived it in the 1980s.",
+   "partOf": {
+    "name": "White wine",
+    "to": "/wine/white"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Riesling",
+     "to": "/wine/white/riesling"
+    },
+    {
+     "label": "NEXT",
+     "name": "Chenin Blanc",
+     "to": "/wine/white/chenin-blanc"
+    }
+   ]
+  },
+  {
+   "slug": "wine/white/chenin-blanc",
+   "file": "68-6608",
+   "name": "CHENIN BLANC",
+   "pills": [
+    "White · 6 of 6",
+    "Dry to sweet"
+   ],
+   "script": "White wine grapes",
+   "description": "A versatile white with apple, quince and honey. Made dry, sweet or sparkling.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Gold",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Gold"
+    },
+    {
+     "label": "ACIDITY",
+     "value": "High"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "48–50°F"
+    }
+   ],
+   "glass": "GOLD",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN WHITE WINE",
+   "siblings": [
+    {
+     "name": "Chardonnay",
+     "note": "Crisp or creamy",
+     "to": "/wine/white/chardonnay",
+     "here": false
+    },
+    {
+     "name": "Sauvignon Blanc",
+     "note": "Zesty and green",
+     "to": "/wine/white/sauvignon-blanc",
+     "here": false
+    },
+    {
+     "name": "Pinot Grigio",
+     "note": "Light and easy",
+     "to": "/wine/white/pinot-grigio",
+     "here": false
+    },
+    {
+     "name": "Riesling",
+     "note": "Bone dry to sweet",
+     "to": "/wine/white/riesling",
+     "here": false
+    },
+    {
+     "name": "Pecorino",
+     "note": "Crisp and savory",
+     "to": "/wine/white/pecorino",
+     "here": false
+    },
+    {
+     "name": "Chenin Blanc",
+     "note": "Dry to sweet",
+     "to": null,
+     "here": true
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Apple",
+     "Quince",
+     "Honey",
+     "Chamomile"
+    ],
+    "line": "Rich but bright. Sweet versions are great with dessert."
+   },
+   "pairs": [
+    {
+     "name": "Scallop Rockefeller",
+     "why": "Bright acid with a rich topping.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Date Cake",
+     "why": "A sweet Chenin with dessert.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Loire",
+     "to": "/wine/france/loire"
+    },
+    {
+     "name": "South Africa",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Domaine Huet",
+    "Ken Forrester"
+   ],
+   "sayIt": "“A Chenin Blanc. Apple and honey, with bright acid.”",
+   "goodToKnow": "Vouvray, in France’s Loire Valley, is made from Chenin Blanc.",
+   "partOf": {
+    "name": "White wine",
+    "to": "/wine/white"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Pecorino",
+     "to": "/wine/white/pecorino"
+    },
+    {
+     "label": "NEXT",
+     "name": "Chardonnay",
+     "to": "/wine/white/chardonnay"
+    }
+   ]
+  },
+  {
+   "slug": "wine/rose/provence",
+   "file": "69-2",
+   "name": "PROVENCE",
+   "pills": [
+    "Rosé · 1 of 4",
+    "Pale and dry"
+   ],
+   "script": "Pink, dry and bright",
+   "description": "The classic pale pink rosé from the south of France. Usually a blend of Grenache, Cinsault and Syrah.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale salmon",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale salmon"
+    },
+    {
+     "label": "ACIDITY",
+     "value": "High"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "45–50°F"
+    }
+   ],
+   "glass": "PALE SALMON",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN ROSÉ WINE",
+   "siblings": [
+    {
+     "name": "Provence",
+     "note": "Pale and dry",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Rosato",
+     "note": "Italy’s rosé",
+     "to": "/wine/rose/rosato",
+     "here": false
+    },
+    {
+     "name": "Pinot Noir Rosé",
+     "note": "Very pale, bright",
+     "to": "/wine/rose/pinot-noir-rose",
+     "here": false
+    },
+    {
+     "name": "Sparkling Rosé",
+     "note": "Pink bubbles",
+     "to": "/wine/rose/sparkling-rose",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Strawberry",
+     "Peach",
+     "Herbs",
+     "Mineral"
+    ],
+    "line": "Dry, crisp and delicate. The style most guests picture."
+   },
+   "pairs": [
+    {
+     "name": "Beet Confit",
+     "why": "Bright fruit with earthy beets.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Walleye Milanese",
+     "why": "Light and crisp with fried fish.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Provence",
+     "to": "/wine/france/provence"
+    }
+   ],
+   "producers": [
+    "Whispering Angel",
+    "Miraval",
+    "Domaines Ott"
+   ],
+   "sayIt": "“A Provence rosé. Pale, dry and crisp.”",
+   "goodToKnow": "Most of the wine made in Provence is rosé.",
+   "partOf": {
+    "name": "Rosé wine",
+    "to": "/wine/rose"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Sparkling Rosé",
+     "to": "/wine/rose/sparkling-rose"
+    },
+    {
+     "label": "NEXT",
+     "name": "Rosato",
+     "to": "/wine/rose/rosato"
+    }
+   ]
+  },
+  {
+   "slug": "wine/rose/rosato",
+   "file": "69-490",
+   "name": "ROSATO",
+   "pills": [
+    "Rosé · 2 of 4",
+    "Italy’s rosé"
+   ],
+   "script": "Pink, dry and bright",
+   "description": "Rosato is Italian for rosé. Often a little deeper in color and fruitier than Provence.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Coral pink",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light to medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Coral pink"
+    },
+    {
+     "label": "ACIDITY",
+     "value": "Medium to high"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "48–52°F"
+    }
+   ],
+   "glass": "CORAL PINK",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN ROSÉ WINE",
+   "siblings": [
+    {
+     "name": "Provence",
+     "note": "Pale and dry",
+     "to": "/wine/rose/provence",
+     "here": false
+    },
+    {
+     "name": "Rosato",
+     "note": "Italy’s rosé",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Pinot Noir Rosé",
+     "note": "Very pale, bright",
+     "to": "/wine/rose/pinot-noir-rose",
+     "here": false
+    },
+    {
+     "name": "Sparkling Rosé",
+     "note": "Pink bubbles",
+     "to": "/wine/rose/sparkling-rose",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Cherry",
+     "Watermelon",
+     "Orange peel",
+     "Herbs"
+    ],
+    "line": "Fruity, dry and food-friendly."
+   },
+   "pairs": [
+    {
+     "name": "Mike’s Vegas Pie",
+     "why": "Enough fruit for cheese and sauce.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Short Rib Arancini",
+     "why": "Fresh with a fried bite.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Sicily",
+     "to": "/wine/italy/sicily"
+    },
+    {
+     "name": "Puglia",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Tormaresca Calafuria"
+   ],
+   "sayIt": "“An Italian rosato. Dry, with cherry and watermelon.”",
+   "goodToKnow": "Many Italian rosatos come from the south, like Puglia and Sicily.",
+   "partOf": {
+    "name": "Rosé wine",
+    "to": "/wine/rose"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Provence",
+     "to": "/wine/rose/provence"
+    },
+    {
+     "label": "NEXT",
+     "name": "Pinot Noir Rosé",
+     "to": "/wine/rose/pinot-noir-rose"
+    }
+   ]
+  },
+  {
+   "slug": "wine/rose/pinot-noir-rose",
+   "file": "69-976",
+   "name": "PINOT NOIR ROSÉ",
+   "pills": [
+    "Rosé · 3 of 4",
+    "Very pale, bright"
+   ],
+   "script": "Pink, dry and bright",
+   "description": "Rosé made from Pinot Noir. Delicate, with red berries and bright acid.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale pink",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale pink"
+    },
+    {
+     "label": "ACIDITY",
+     "value": "High"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "45–50°F"
+    }
+   ],
+   "glass": "PALE PINK",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN ROSÉ WINE",
+   "siblings": [
+    {
+     "name": "Provence",
+     "note": "Pale and dry",
+     "to": "/wine/rose/provence",
+     "here": false
+    },
+    {
+     "name": "Rosato",
+     "note": "Italy’s rosé",
+     "to": "/wine/rose/rosato",
+     "here": false
+    },
+    {
+     "name": "Pinot Noir Rosé",
+     "note": "Very pale, bright",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Sparkling Rosé",
+     "note": "Pink bubbles",
+     "to": "/wine/rose/sparkling-rose",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Raspberry",
+     "Cranberry",
+     "Citrus",
+     "Crisp"
+    ],
+    "line": "Light and refreshing. Great as a first glass."
+   },
+   "pairs": [
+    {
+     "name": "Cauliflower",
+     "why": "Light enough to let it shine.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Scallop Rockefeller",
+     "why": "Bright acid with a rich topping.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Willamette Valley",
+     "to": "/wine/usa/willamette-valley"
+    },
+    {
+     "name": "Sonoma",
+     "to": "/wine/usa/sonoma"
+    }
+   ],
+   "producers": [
+    "Elk Cove",
+    "Sokol Blosser"
+   ],
+   "sayIt": "“A rosé of Pinot Noir. Pale and bright, with raspberry.”",
+   "goodToKnow": "Rosé of Pinot Noir is usually very pale, because Pinot has thin skins.",
+   "partOf": {
+    "name": "Rosé wine",
+    "to": "/wine/rose"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Rosato",
+     "to": "/wine/rose/rosato"
+    },
+    {
+     "label": "NEXT",
+     "name": "Sparkling Rosé",
+     "to": "/wine/rose/sparkling-rose"
+    }
+   ]
+  },
+  {
+   "slug": "wine/rose/sparkling-rose",
+   "file": "69-1464",
+   "name": "SPARKLING ROSÉ",
+   "pills": [
+    "Rosé · 4 of 4",
+    "Pink bubbles"
+   ],
+   "script": "Pink, dry and bright",
+   "description": "Pink sparkling wine, from rosé Champagne to Prosecco Rosé. Red berries and bubbles.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Salmon pink",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light"
+    },
+    {
+     "label": "COLOR",
+     "value": "Salmon pink"
+    },
+    {
+     "label": "SWEETNESS",
+     "value": "Usually dry"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "40–45°F"
+    }
+   ],
+   "glass": "SALMON PINK",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN ROSÉ WINE",
+   "siblings": [
+    {
+     "name": "Provence",
+     "note": "Pale and dry",
+     "to": "/wine/rose/provence",
+     "here": false
+    },
+    {
+     "name": "Rosato",
+     "note": "Italy’s rosé",
+     "to": "/wine/rose/rosato",
+     "here": false
+    },
+    {
+     "name": "Pinot Noir Rosé",
+     "note": "Very pale, bright",
+     "to": "/wine/rose/pinot-noir-rose",
+     "here": false
+    },
+    {
+     "name": "Sparkling Rosé",
+     "note": "Pink bubbles",
+     "to": null,
+     "here": true
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Strawberry",
+     "Cherry",
+     "Brioche",
+     "Bubbles"
+    ],
+    "line": "Festive and food-friendly. Great for celebrations."
+   },
+   "pairs": [
+    {
+     "name": "Date Cake",
+     "why": "Berry and bubbles with dessert.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Short Rib Arancini",
+     "why": "Bubbles love fried food.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Champagne",
+     "to": "/wine/france/champagne"
+    },
+    {
+     "name": "Veneto",
+     "to": "/wine/italy/veneto"
+    },
+    {
+     "name": "Napa Valley",
+     "to": "/wine/usa/napa-valley"
+    }
+   ],
+   "producers": [
+    "Veuve Clicquot Rosé",
+    "Moët Rosé Impérial",
+    "Mumm Napa Brut Rosé"
+   ],
+   "sayIt": "“A sparkling rosé. Red berries and bubbles. Great for a celebration.”",
+   "goodToKnow": "Most rosé Champagne is made by blending a little red wine into white before the bubbles.",
+   "partOf": {
+    "name": "Rosé wine",
+    "to": "/wine/rose"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Pinot Noir Rosé",
+     "to": "/wine/rose/pinot-noir-rose"
+    },
+    {
+     "label": "NEXT",
+     "name": "Provence",
+     "to": "/wine/rose/provence"
+    }
+   ]
+  },
+  {
+   "slug": "wine/orange/qvevri",
+   "file": "69-1956",
+   "name": "QVEVRI",
+   "pills": [
+    "Orange · 1 of 4",
+    "Georgia, in clay"
+   ],
+   "script": "White wine made like a red",
+   "description": "Georgia’s ancient method: white grapes fermented and aged with their skins in clay jars called qvevri, buried in the ground.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Deep amber",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Medium to full"
+    },
+    {
+     "label": "COLOR",
+     "value": "Deep amber"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Medium"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "52–55°F"
+    }
+   ],
+   "glass": "DEEP AMBER",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN ORANGE WINE",
+   "siblings": [
+    {
+     "name": "Qvevri",
+     "note": "Georgia, in clay",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Ribolla Gialla",
+     "note": "Friuli, northeast Italy",
+     "to": "/wine/orange/ribolla-gialla",
+     "here": false
+    },
+    {
+     "name": "Ramato",
+     "note": "Copper Pinot Grigio",
+     "to": "/wine/orange/ramato",
+     "here": false
+    },
+    {
+     "name": "American Orange",
+     "note": "New wave, skin contact",
+     "to": "/wine/orange/american-orange",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Dried apricot",
+     "Tea",
+     "Walnut",
+     "Earthy"
+    ],
+    "line": "Bold and textured. The original orange wine."
+   },
+   "pairs": [
+    {
+     "name": "Cauliflower",
+     "why": "Nutty wine for roasted, nutty food.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Agnolotti",
+     "why": "Earthy with squash.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Georgia",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Pheasant’s Tears",
+    "Orgo"
+   ],
+   "sayIt": "“An orange wine from Georgia, made in clay. Dry, nutty and bold.”",
+   "goodToKnow": "Georgia has made wine in qvevri for about 8,000 years. UNESCO lists the method as cultural heritage.",
+   "partOf": {
+    "name": "Orange wine",
+    "to": "/wine/orange"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "American Orange",
+     "to": "/wine/orange/american-orange"
+    },
+    {
+     "label": "NEXT",
+     "name": "Ribolla Gialla",
+     "to": "/wine/orange/ribolla-gialla"
+    }
+   ]
+  },
+  {
+   "slug": "wine/orange/ribolla-gialla",
+   "file": "69-2442",
+   "name": "RIBOLLA GIALLA",
+   "pills": [
+    "Orange · 2 of 4",
+    "Friuli, northeast Italy"
+   ],
+   "script": "White wine made like a red",
+   "description": "A white grape from Friuli that’s often made with long skin contact. Savory, with stone fruit and a gentle grip.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Amber",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Amber"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Medium"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "50–55°F"
+    }
+   ],
+   "glass": "AMBER",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN ORANGE WINE",
+   "siblings": [
+    {
+     "name": "Qvevri",
+     "note": "Georgia, in clay",
+     "to": "/wine/orange/qvevri",
+     "here": false
+    },
+    {
+     "name": "Ribolla Gialla",
+     "note": "Friuli, northeast Italy",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Ramato",
+     "note": "Copper Pinot Grigio",
+     "to": "/wine/orange/ramato",
+     "here": false
+    },
+    {
+     "name": "American Orange",
+     "note": "New wave, skin contact",
+     "to": "/wine/orange/american-orange",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Apricot",
+     "Orange peel",
+     "Herbs",
+     "Savory"
+    ],
+    "line": "Savory and structured. A favorite of orange wine fans."
+   },
+   "pairs": [
+    {
+     "name": "Walleye Milanese",
+     "why": "Enough texture for the crust.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Cauliflower",
+     "why": "Savory with roasted veg.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Friuli",
+     "to": "/wine/italy/friuli"
+    },
+    {
+     "name": "Slovenia",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Gravner",
+    "Radikon"
+   ],
+   "sayIt": "“A Ribolla Gialla, an orange wine from northeast Italy. Savory and textured.”",
+   "goodToKnow": "Ribolla Gialla grows on both sides of the Italy–Slovenia border.",
+   "partOf": {
+    "name": "Orange wine",
+    "to": "/wine/orange"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Qvevri",
+     "to": "/wine/orange/qvevri"
+    },
+    {
+     "label": "NEXT",
+     "name": "Ramato",
+     "to": "/wine/orange/ramato"
+    }
+   ]
+  },
+  {
+   "slug": "wine/orange/ramato",
+   "file": "69-2930",
+   "name": "RAMATO",
+   "pills": [
+    "Orange · 3 of 4",
+    "Copper Pinot Grigio"
+   ],
+   "script": "White wine made like a red",
+   "description": "Pinot Grigio left on its pinkish skins for a short time, giving a copper color. Lighter than most orange wines.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Copper",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light to medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Copper"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Low"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "50–52°F"
+    }
+   ],
+   "glass": "COPPER",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN ORANGE WINE",
+   "siblings": [
+    {
+     "name": "Qvevri",
+     "note": "Georgia, in clay",
+     "to": "/wine/orange/qvevri",
+     "here": false
+    },
+    {
+     "name": "Ribolla Gialla",
+     "note": "Friuli, northeast Italy",
+     "to": "/wine/orange/ribolla-gialla",
+     "here": false
+    },
+    {
+     "name": "Ramato",
+     "note": "Copper Pinot Grigio",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "American Orange",
+     "note": "New wave, skin contact",
+     "to": "/wine/orange/american-orange",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Pear",
+     "Peach",
+     "Rose",
+     "Spice"
+    ],
+    "line": "An easy first step into orange wine."
+   },
+   "pairs": [
+    {
+     "name": "Beet Confit",
+     "why": "Fruity with sweet and earthy.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Mini Lemon Ricotta Ravioli",
+     "why": "Gentle enough for delicate pasta.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Friuli",
+     "to": "/wine/italy/friuli"
+    },
+    {
+     "name": "Veneto",
+     "to": "/wine/italy/veneto"
+    }
+   ],
+   "producers": [
+    "Attems"
+   ],
+   "sayIt": "“A ramato, a copper Pinot Grigio. Light, with pear and a little spice.”",
+   "goodToKnow": "Ramato means “copper” in Italian.",
+   "partOf": {
+    "name": "Orange wine",
+    "to": "/wine/orange"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Ribolla Gialla",
+     "to": "/wine/orange/ribolla-gialla"
+    },
+    {
+     "label": "NEXT",
+     "name": "American Orange",
+     "to": "/wine/orange/american-orange"
+    }
+   ]
+  },
+  {
+   "slug": "wine/orange/american-orange",
+   "file": "69-3416",
+   "name": "AMERICAN ORANGE",
+   "pills": [
+    "Orange · 4 of 4",
+    "New wave, skin contact"
+   ],
+   "script": "White wine made like a red",
+   "description": "American winemakers making skin-contact whites, often from aromatic grapes. Fresh, fruity and a little funky.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Gold-amber",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light to medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Gold-amber"
+    },
+    {
+     "label": "TANNIN",
+     "value": "Low to medium"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "50–55°F"
+    }
+   ],
+   "glass": "GOLD-AMBER",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN ORANGE WINE",
+   "siblings": [
+    {
+     "name": "Qvevri",
+     "note": "Georgia, in clay",
+     "to": "/wine/orange/qvevri",
+     "here": false
+    },
+    {
+     "name": "Ribolla Gialla",
+     "note": "Friuli, northeast Italy",
+     "to": "/wine/orange/ribolla-gialla",
+     "here": false
+    },
+    {
+     "name": "Ramato",
+     "note": "Copper Pinot Grigio",
+     "to": "/wine/orange/ramato",
+     "here": false
+    },
+    {
+     "name": "American Orange",
+     "note": "New wave, skin contact",
+     "to": null,
+     "here": true
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Peach",
+     "Citrus",
+     "Tea",
+     "Funky"
+    ],
+    "line": "Brighter and fruitier than the Old World styles."
+   },
+   "pairs": [
+    {
+     "name": "Cauliflower",
+     "why": "Fruity and textured.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Beet Confit",
+     "why": "Bright with earthy and sweet.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Sonoma",
+     "to": "/wine/usa/sonoma"
+    },
+    {
+     "name": "Willamette Valley",
+     "to": "/wine/usa/willamette-valley"
+    }
+   ],
+   "producers": [
+    "Channing Daughters",
+    "Field Recordings"
+   ],
+   "sayIt": "“An American orange wine. Fresh, fruity and a little funky.”",
+   "goodToKnow": "Many American orange wines are also natural wines, made with very little intervention.",
+   "partOf": {
+    "name": "Orange wine",
+    "to": "/wine/orange"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Ramato",
+     "to": "/wine/orange/ramato"
+    },
+    {
+     "label": "NEXT",
+     "name": "Qvevri",
+     "to": "/wine/orange/qvevri"
+    }
+   ]
+  },
+  {
+   "slug": "wine/sparkling/champagne",
+   "file": "69-3904",
+   "name": "CHAMPAGNE",
+   "pills": [
+    "Sparkling · 1 of 6",
+    "France, the original"
+   ],
+   "script": "Bubbles",
+   "description": "Sparkling wine from the Champagne region of France, with bubbles made in the bottle. Toasty, fine and elegant.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale gold",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light to medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale gold"
+    },
+    {
+     "label": "SWEETNESS",
+     "value": "Usually brut (dry)"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "40–45°F"
+    }
+   ],
+   "glass": "PALE GOLD",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN SPARKLING WINE",
+   "siblings": [
+    {
+     "name": "Champagne",
+     "note": "France, the original",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Prosecco",
+     "note": "Italy, light and fruity",
+     "to": "/wine/sparkling/prosecco",
+     "here": false
+    },
+    {
+     "name": "Cava",
+     "note": "Spain, dry and crisp",
+     "to": "/wine/sparkling/cava",
+     "here": false
+    },
+    {
+     "name": "Crémant",
+     "note": "France, outside Champagne",
+     "to": "/wine/sparkling/cremant",
+     "here": false
+    },
+    {
+     "name": "Franciacorta",
+     "note": "Italy, made like Champagne",
+     "to": "/wine/sparkling/franciacorta",
+     "here": false
+    },
+    {
+     "name": "American",
+     "note": "California and beyond",
+     "to": "/wine/sparkling/american",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Brioche",
+     "Lemon",
+     "Green apple",
+     "Almond"
+    ],
+    "line": "The benchmark. Fine bubbles and toasty, bready notes."
+   },
+   "pairs": [
+    {
+     "name": "Scallop Rockefeller",
+     "why": "A classic with shellfish.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Short Rib Arancini",
+     "why": "Bubbles cut fried food.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Champagne",
+     "to": "/wine/france/champagne"
+    }
+   ],
+   "producers": [
+    "Moët & Chandon",
+    "Veuve Clicquot",
+    "Billecart-Salmon",
+    "Krug"
+   ],
+   "sayIt": "“A Champagne. Fine bubbles, with toast and green apple.”",
+   "goodToKnow": "Non-vintage Champagne must age at least 15 months before release. Vintage needs 3 years.",
+   "partOf": {
+    "name": "Sparkling wine",
+    "to": "/wine/sparkling"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "American",
+     "to": "/wine/sparkling/american"
+    },
+    {
+     "label": "NEXT",
+     "name": "Prosecco",
+     "to": "/wine/sparkling/prosecco"
+    }
+   ]
+  },
+  {
+   "slug": "wine/sparkling/prosecco",
+   "file": "69-4404",
+   "name": "PROSECCO",
+   "pills": [
+    "Sparkling · 2 of 6",
+    "Italy, light and fruity"
+   ],
+   "script": "Bubbles",
+   "description": "Italy’s popular sparkling wine, from the Glera grape in the Veneto. Light, fruity and easy.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale straw",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale straw"
+    },
+    {
+     "label": "SWEETNESS",
+     "value": "Dry to off-dry"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "40–45°F"
+    }
+   ],
+   "glass": "PALE STRAW",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN SPARKLING WINE",
+   "siblings": [
+    {
+     "name": "Champagne",
+     "note": "France, the original",
+     "to": "/wine/sparkling/champagne",
+     "here": false
+    },
+    {
+     "name": "Prosecco",
+     "note": "Italy, light and fruity",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Cava",
+     "note": "Spain, dry and crisp",
+     "to": "/wine/sparkling/cava",
+     "here": false
+    },
+    {
+     "name": "Crémant",
+     "note": "France, outside Champagne",
+     "to": "/wine/sparkling/cremant",
+     "here": false
+    },
+    {
+     "name": "Franciacorta",
+     "note": "Italy, made like Champagne",
+     "to": "/wine/sparkling/franciacorta",
+     "here": false
+    },
+    {
+     "name": "American",
+     "note": "California and beyond",
+     "to": "/wine/sparkling/american",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Pear",
+     "Green apple",
+     "Honeysuckle",
+     "Light"
+    ],
+    "line": "Fresh and fun. The base of the Aperol Spritz."
+   },
+   "pairs": [
+    {
+     "name": "Short Rib Arancini",
+     "why": "Light bubbles with a fried bite.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Mini Lemon Ricotta Ravioli",
+     "why": "Fresh fruit with lemon.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Veneto",
+     "to": "/wine/italy/veneto"
+    }
+   ],
+   "producers": [
+    "La Marca",
+    "Mionetto",
+    "Nino Franco"
+   ],
+   "sayIt": "“A Prosecco. Light and fruity, with pear and green apple.”",
+   "goodToKnow": "Prosecco gets its bubbles in a large tank, which keeps it fresh and fruity.",
+   "partOf": {
+    "name": "Sparkling wine",
+    "to": "/wine/sparkling"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Champagne",
+     "to": "/wine/sparkling/champagne"
+    },
+    {
+     "label": "NEXT",
+     "name": "Cava",
+     "to": "/wine/sparkling/cava"
+    }
+   ]
+  },
+  {
+   "slug": "wine/sparkling/cava",
+   "file": "69-4902",
+   "name": "CAVA",
+   "pills": [
+    "Sparkling · 3 of 6",
+    "Spain, dry and crisp"
+   ],
+   "script": "Bubbles",
+   "description": "Spain’s sparkling wine, made the same way as Champagne. Dry, crisp and great value.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale gold",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale gold"
+    },
+    {
+     "label": "SWEETNESS",
+     "value": "Usually brut (dry)"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "40–45°F"
+    }
+   ],
+   "glass": "PALE GOLD",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN SPARKLING WINE",
+   "siblings": [
+    {
+     "name": "Champagne",
+     "note": "France, the original",
+     "to": "/wine/sparkling/champagne",
+     "here": false
+    },
+    {
+     "name": "Prosecco",
+     "note": "Italy, light and fruity",
+     "to": "/wine/sparkling/prosecco",
+     "here": false
+    },
+    {
+     "name": "Cava",
+     "note": "Spain, dry and crisp",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Crémant",
+     "note": "France, outside Champagne",
+     "to": "/wine/sparkling/cremant",
+     "here": false
+    },
+    {
+     "name": "Franciacorta",
+     "note": "Italy, made like Champagne",
+     "to": "/wine/sparkling/franciacorta",
+     "here": false
+    },
+    {
+     "name": "American",
+     "note": "California and beyond",
+     "to": "/wine/sparkling/american",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Lemon",
+     "Apple",
+     "Almond",
+     "Toast"
+    ],
+    "line": "Champagne-style bubbles at a friendlier price."
+   },
+   "pairs": [
+    {
+     "name": "Mike’s Vegas Pie",
+     "why": "Salty and cheesy loves bubbles.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Walleye Milanese",
+     "why": "Crisp with fried fish.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Spain",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Freixenet",
+    "Segura Viudas",
+    "Codorníu"
+   ],
+   "sayIt": "“A Cava from Spain. Dry and crisp, made like Champagne.”",
+   "goodToKnow": "Cava is made the same way as Champagne, with bubbles made in the bottle.",
+   "partOf": {
+    "name": "Sparkling wine",
+    "to": "/wine/sparkling"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Prosecco",
+     "to": "/wine/sparkling/prosecco"
+    },
+    {
+     "label": "NEXT",
+     "name": "Crémant",
+     "to": "/wine/sparkling/cremant"
+    }
+   ]
+  },
+  {
+   "slug": "wine/sparkling/cremant",
+   "file": "69-5400",
+   "name": "CRÉMANT",
+   "pills": [
+    "Sparkling · 4 of 6",
+    "France, outside Champagne"
+   ],
+   "script": "Bubbles",
+   "description": "French sparkling wine made the Champagne way, but in other regions like the Loire, Burgundy and Alsace.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale gold",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light to medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale gold"
+    },
+    {
+     "label": "SWEETNESS",
+     "value": "Usually brut (dry)"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "40–45°F"
+    }
+   ],
+   "glass": "PALE GOLD",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN SPARKLING WINE",
+   "siblings": [
+    {
+     "name": "Champagne",
+     "note": "France, the original",
+     "to": "/wine/sparkling/champagne",
+     "here": false
+    },
+    {
+     "name": "Prosecco",
+     "note": "Italy, light and fruity",
+     "to": "/wine/sparkling/prosecco",
+     "here": false
+    },
+    {
+     "name": "Cava",
+     "note": "Spain, dry and crisp",
+     "to": "/wine/sparkling/cava",
+     "here": false
+    },
+    {
+     "name": "Crémant",
+     "note": "France, outside Champagne",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "Franciacorta",
+     "note": "Italy, made like Champagne",
+     "to": "/wine/sparkling/franciacorta",
+     "here": false
+    },
+    {
+     "name": "American",
+     "note": "California and beyond",
+     "to": "/wine/sparkling/american",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Apple",
+     "Lemon",
+     "Brioche",
+     "Floral"
+    ],
+    "line": "Champagne quality without the Champagne price."
+   },
+   "pairs": [
+    {
+     "name": "Scallop Rockefeller",
+     "why": "Fine bubbles with shellfish.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Cauliflower",
+     "why": "Crisp with roasted veg.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Loire",
+     "to": "/wine/france/loire"
+    },
+    {
+     "name": "Burgundy",
+     "to": "/wine/france/burgundy"
+    },
+    {
+     "name": "Alsace",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Lucien Albrecht",
+    "Bouvet"
+   ],
+   "sayIt": "“A Crémant. French bubbles made like Champagne, from another region.”",
+   "goodToKnow": "Crémant is French sparkling wine made the Champagne way, outside Champagne.",
+   "partOf": {
+    "name": "Sparkling wine",
+    "to": "/wine/sparkling"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Cava",
+     "to": "/wine/sparkling/cava"
+    },
+    {
+     "label": "NEXT",
+     "name": "Franciacorta",
+     "to": "/wine/sparkling/franciacorta"
+    }
+   ]
+  },
+  {
+   "slug": "wine/sparkling/franciacorta",
+   "file": "69-5900",
+   "name": "FRANCIACORTA",
+   "pills": [
+    "Sparkling · 5 of 6",
+    "Italy, made like Champagne"
+   ],
+   "script": "Bubbles",
+   "description": "Italy’s answer to Champagne, from Lombardy. Bottle-fermented, rich and creamy.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Straw gold",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Straw gold"
+    },
+    {
+     "label": "SWEETNESS",
+     "value": "Usually brut (dry)"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "40–45°F"
+    }
+   ],
+   "glass": "STRAW GOLD",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN SPARKLING WINE",
+   "siblings": [
+    {
+     "name": "Champagne",
+     "note": "France, the original",
+     "to": "/wine/sparkling/champagne",
+     "here": false
+    },
+    {
+     "name": "Prosecco",
+     "note": "Italy, light and fruity",
+     "to": "/wine/sparkling/prosecco",
+     "here": false
+    },
+    {
+     "name": "Cava",
+     "note": "Spain, dry and crisp",
+     "to": "/wine/sparkling/cava",
+     "here": false
+    },
+    {
+     "name": "Crémant",
+     "note": "France, outside Champagne",
+     "to": "/wine/sparkling/cremant",
+     "here": false
+    },
+    {
+     "name": "Franciacorta",
+     "note": "Italy, made like Champagne",
+     "to": null,
+     "here": true
+    },
+    {
+     "name": "American",
+     "note": "California and beyond",
+     "to": "/wine/sparkling/american",
+     "here": false
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Brioche",
+     "Citrus",
+     "Nuts",
+     "Creamy"
+    ],
+    "line": "Rich and elegant. A step up from Prosecco."
+   },
+   "pairs": [
+    {
+     "name": "Agnolotti",
+     "why": "Creamy bubbles with pasta.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Short Rib Arancini",
+     "why": "Rich with fried rice balls.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Lombardy",
+     "to": null
+    }
+   ],
+   "producers": [
+    "Ca’ del Bosco",
+    "Bellavista",
+    "Berlucchi"
+   ],
+   "sayIt": "“A Franciacorta. Italian, made like Champagne. Creamy and elegant.”",
+   "goodToKnow": "Franciacorta is made the Champagne way, in Lombardy, northern Italy.",
+   "partOf": {
+    "name": "Sparkling wine",
+    "to": "/wine/sparkling"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Crémant",
+     "to": "/wine/sparkling/cremant"
+    },
+    {
+     "label": "NEXT",
+     "name": "American",
+     "to": "/wine/sparkling/american"
+    }
+   ]
+  },
+  {
+   "slug": "wine/sparkling/american",
+   "file": "69-6398",
+   "name": "AMERICAN",
+   "pills": [
+    "Sparkling · 6 of 6",
+    "California and beyond"
+   ],
+   "script": "Bubbles",
+   "description": "American sparkling wine, often made the Champagne way with Chardonnay and Pinot Noir. Riper and fruitier.",
+   "stats": {
+    "keyGrape": "",
+    "color": "Pale gold",
+    "climate": "",
+    "lookFor": ""
+   },
+   "facts": [
+    {
+     "label": "BODY",
+     "value": "Light to medium"
+    },
+    {
+     "label": "COLOR",
+     "value": "Pale gold"
+    },
+    {
+     "label": "SWEETNESS",
+     "value": "Usually brut (dry)"
+    },
+    {
+     "label": "SERVE AT",
+     "value": "40–45°F"
+    }
+   ],
+   "glass": "PALE GOLD",
+   "photo": null,
+   "siblingsTitle": "WHERE IT SITS IN SPARKLING WINE",
+   "siblings": [
+    {
+     "name": "Champagne",
+     "note": "France, the original",
+     "to": "/wine/sparkling/champagne",
+     "here": false
+    },
+    {
+     "name": "Prosecco",
+     "note": "Italy, light and fruity",
+     "to": "/wine/sparkling/prosecco",
+     "here": false
+    },
+    {
+     "name": "Cava",
+     "note": "Spain, dry and crisp",
+     "to": "/wine/sparkling/cava",
+     "here": false
+    },
+    {
+     "name": "Crémant",
+     "note": "France, outside Champagne",
+     "to": "/wine/sparkling/cremant",
+     "here": false
+    },
+    {
+     "name": "Franciacorta",
+     "note": "Italy, made like Champagne",
+     "to": "/wine/sparkling/franciacorta",
+     "here": false
+    },
+    {
+     "name": "American",
+     "note": "California and beyond",
+     "to": null,
+     "here": true
+    }
+   ],
+   "taste": {
+    "flavors": [
+     "Apple",
+     "Pear",
+     "Brioche",
+     "Citrus"
+    ],
+    "line": "Champagne style with sunny California fruit."
+   },
+   "pairs": [
+    {
+     "name": "Scallop Rockefeller",
+     "why": "Bright bubbles with shellfish.",
+     "to": "/food-matrix"
+    },
+    {
+     "name": "Walleye Milanese",
+     "why": "Crisp with a crispy crust.",
+     "to": "/food-matrix"
+    }
+   ],
+   "grapes": [
+    {
+     "name": "Napa Valley",
+     "to": "/wine/usa/napa-valley"
+    },
+    {
+     "name": "Sonoma",
+     "to": "/wine/usa/sonoma"
+    },
+    {
+     "name": "Willamette Valley",
+     "to": "/wine/usa/willamette-valley"
+    },
+    {
+     "name": "Michigan",
+     "to": "/wine/usa/michigan"
+    }
+   ],
+   "producers": [
+    "Schramsberg",
+    "Roederer Estate",
+    "Domaine Carneros",
+    "L. Mawby"
+   ],
+   "sayIt": "“An American sparkling wine. Made like Champagne, with riper fruit.”",
+   "goodToKnow": "Several Champagne houses own California wineries, like Roederer Estate and Domaine Carneros.",
+   "partOf": {
+    "name": "Sparkling wine",
+    "to": "/wine/sparkling"
+   },
+   "nav": [
+    {
+     "label": "PREVIOUS",
+     "name": "Franciacorta",
+     "to": "/wine/sparkling/franciacorta"
+    },
+    {
+     "label": "NEXT",
+     "name": "Champagne",
+     "to": "/wine/sparkling/champagne"
+    }
+   ]
+  }
+ ]
+}
