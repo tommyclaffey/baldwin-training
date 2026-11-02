@@ -1,0 +1,790 @@
+{
+  "regions": [
+    {
+      "slug": "wine/italy",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Chianti Classico, Barolo, Valpolicella Ripasso",
+          "source": "https://winefolly.com/wine-regions/italy/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Grigio, Soave, Vermentino",
+          "source": "https://winefolly.com/wine-regions/italy/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Prosecco Superiore, Asti",
+          "source": "https://winefolly.com/wine-regions/italy/"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Moscato d'Asti",
+          "source": "https://winefolly.com/wine-regions/italy/"
+        }
+      ],
+      "photo": null,
+      "notes": "Existing page photo kept (photo not null in regions.json). No source states a majority colour for Italy, so no main flag."
+    },
+    {
+      "slug": "wine/france",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Bordeaux, Red Burgundy, Côtes du Rhône",
+          "source": "https://winefolly.com/wine-regions/france/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chablis, Sancerre, White Burgundy",
+          "source": "https://winefolly.com/wine-regions/france/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Champagne, Sparkling Vouvray, Crémant de Limoux",
+          "source": "https://winefolly.com/wine-regions/france/"
+        },
+        {
+          "style": "Rosé",
+          "main": false,
+          "share": null,
+          "examples": "Côtes de Provence",
+          "source": "https://winefolly.com/wine-regions/france/"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Sauternes",
+          "source": "https://winefolly.com/tips/9-serious-sweet-wines-you-must-try/"
+        }
+      ],
+      "photo": null,
+      "notes": "Existing page photo kept. No main flag: no source gives France's colour split."
+    },
+    {
+      "slug": "wine/usa",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Napa Cabernet Sauvignon, California Zinfandel, Oregon Pinot Noir",
+          "source": "https://winefolly.com/wine-regions/united-states/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "California Chardonnay, Oregon Pinot Gris, New York Riesling",
+          "source": "https://winefolly.com/wine-regions/united-states/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "US traditional-method sparkling wine",
+          "source": "https://winefolly.com/wine-regions/united-states/"
+        }
+      ],
+      "photo": null,
+      "notes": "Existing page photo kept. Wine Folly's US page also says New York is 'becoming known for' rosé; left out as too thin. No main flag."
+    },
+    {
+      "slug": "wine/italy/tuscany",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Chianti Classico, Brunello di Montalcino, Vino Nobile di Montepulciano",
+          "source": "https://winefolly.com/deep-dive/italian-wine-exploration-map/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Vernaccia di San Gimignano",
+          "source": "https://vernaccia.it/en/vernaccia-di-san-gimignano/"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Vin Santo del Chianti, Moscadello di Montalcino",
+          "source": "https://www.consorziovinochianti.it/wp-content/uploads/2024/04/Brochure-pocket-inglese-nuovo-OCM-WEB.pdf"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--italy--tuscany.jpg",
+        "unsplashId": "pnigODapPek",
+        "photographer": "Johny Goerend",
+        "description": "Vineyard rows on a Tuscan hillside at sunset (caption: 'In Tuscany')"
+      },
+      "notes": "No source found stating red is the majority colour, so no main flag. Moscadello di Montalcino (white dessert DOC) is also confirmed on consorziobrunellodimontalcino.it/en/583/vini."
+    },
+    {
+      "slug": "wine/italy/piedmont",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Barolo, Barbaresco, Barbera d'Asti",
+          "source": "https://winefolly.com/deep-dive/piedmont-wine-guide/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Gavi",
+          "source": "https://winefolly.com/deep-dive/italian-wine-exploration-map/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Asti",
+          "source": "https://winefolly.com/wine-regions/italy/"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Moscato d'Asti",
+          "source": "https://winefolly.com/wine-regions/italy/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--italy--piedmont.jpg",
+        "unsplashId": "qp-Wz2DKaKg",
+        "photographer": "Mario La Pergola",
+        "description": "Winter Nebbiolo vineyards near Barbaresco, with Monviso behind (place confirmed in caption)"
+      },
+      "notes": "Wine Folly notes Barolo + Barbaresco are only 3% of Piedmont's production; Barbera is the most planted red. No colour-share source, so no main flag."
+    },
+    {
+      "slug": "wine/italy/veneto",
+      "styles": [
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Prosecco DOC, Conegliano Valdobbiadene Prosecco Superiore, Asolo Prosecco",
+          "source": "https://www.prosecco.wine/en/prosecco/"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Valpolicella, Valpolicella Ripasso, Amarone della Valpolicella",
+          "source": "https://www.consorziovalpolicella.it/en/types-of-wines/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Soave Classico",
+          "source": "https://winefolly.com/deep-dive/how-to-find-great-soave-wine/"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Recioto della Valpolicella",
+          "source": "https://www.consorziovalpolicella.it/en/types-of-wines/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--italy--veneto.jpg",
+        "unsplashId": "5MR7izglfZ8",
+        "photographer": "Edoardo Bortoli",
+        "description": "Terraced vineyards and stone farmhouses in the hills of Asolo, Veneto, Prosecco country (place confirmed in caption)"
+      },
+      "notes": "Sparkling placed first as Prosecco is the region's best-known wine; no source gives Veneto's colour split, so no main flag. (Wine Folly's Valdobbiadene guide says 97% of that DOCG's wine is sparkling, but that is one DOCG, not all of Veneto.)"
+    },
+    {
+      "slug": "wine/italy/sicily",
+      "styles": [
+        {
+          "style": "White",
+          "main": true,
+          "share": "64% of vineyards",
+          "examples": "Grillo, Catarratto, Inzolia",
+          "source": "https://sicily.guides.winefolly.com/"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Nero d'Avola",
+          "source": "https://sicily.guides.winefolly.com/"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Marsala",
+          "source": "https://sicily.guides.winefolly.com/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--italy--sicily.jpg",
+        "unsplashId": "vn9HrzaORdY",
+        "photographer": "Jan Gemerle",
+        "description": "Young vineyard rows below a rocky hill (caption: 'Sicily')"
+      },
+      "notes": "Main = White because Wine Folly's Sicily guide says 'most vineyards in Sicily grow white wine grapes' and white varieties are 64% of plantings (a planting share, not a production share). Catarratto and Inzolia are named on Wine Folly's Italian wine map page, Grillo on the Sicily guide. Etna not used: no fetched source."
+    },
+    {
+      "slug": "wine/italy/friuli",
+      "styles": [
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Grigio, Friulano, Collio Bianco",
+          "source": "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Refosco, Merlot",
+          "source": "https://winefolly.com/deep-dive/italian-wine-exploration-map/"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Picolit, Ramandolo",
+          "source": "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Ribolla Gialla",
+          "source": "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--italy--friuli.jpg",
+        "unsplashId": "xvkqgpVGDvI",
+        "photographer": "Jerusha",
+        "description": "Vineyard rows leading to a villa with mountains behind (no location in caption)"
+      },
+      "notes": "Wine Folly calls Friuli 'Italian white wine heaven' but gives no colour share, so no main flag. PHOTO NOT PLACE-SPECIFIC: no Unsplash photo confirmed as Friuli could be found; this is an uncaptioned northern-Italian-looking vineyard. Worth replacing if a Friuli photo turns up."
+    },
+    {
+      "slug": "wine/italy/trentino-alto-adige",
+      "styles": [
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Grigio, Alto Adige Terlano",
+          "source": "https://www.altoadigewines.com/en/our-wine/origin-doc"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Lagrein, Teroldego, Santa Maddalena (Schiava)",
+          "source": "https://winefolly.com/deep-dive/italian-wine-exploration-map/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Trento DOC",
+          "source": "https://winefolly.com/deep-dive/italian-wine-exploration-map/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--italy--trentino-alto-adige.jpg",
+        "unsplashId": "QYP62GuBCmU",
+        "photographer": "Patrick Federi",
+        "description": "Aerial view of a hilltop castle above vineyards and the Adige valley (matched 'South Tyrol vineyard'; caption gives no place, looks like Hocheppan near Bolzano, unconfirmed)"
+      },
+      "notes": "Wine Folly's Alto Adige guide says 65% of Alto Adige wine is white (https://altoadige.guides.winefolly.com/), but that covers only the Alto Adige half of the region, so no main flag or share for Trentino-Alto Adige as a whole. Pinot Grigio named on Wine Folly's Italian map page."
+    },
+    {
+      "slug": "wine/italy/lombardy",
+      "styles": [
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Franciacorta, Franciacorta Satèn",
+          "source": "https://franciacorta.wine/en/region/origins-history/"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Oltrepò Pavese Bonarda, Oltrepò Pavese Pinot Nero",
+          "source": "https://winefolly.com/deep-dive/italian-wine-exploration-map/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Oltrepò Pavese Riesling (Riesling Italico)",
+          "source": "https://winefolly.com/deep-dive/italian-wine-exploration-map/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--italy--lombardy.jpg",
+        "unsplashId": "QS9X9a-7Mfs",
+        "photographer": "Edoardo Bortoli",
+        "description": "Pergola vineyard with autumn leaves at sunrise in Botticino, Lombardy (place confirmed in caption)"
+      },
+      "notes": "No colour-share source, so no main flag. Valtellina and Lugana not included: no fetched source."
+    },
+    {
+      "slug": "wine/france/bordeaux",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": null,
+          "examples": "Médoc, Saint-Émilion, Pomerol",
+          "source": "https://www.bordeaux.com/en/designations/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Entre-Deux-Mers, Pessac-Léognan, Graves",
+          "source": "https://www.bordeaux.com/en/designations/"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Sauternes, Barsac",
+          "source": "https://www.bordeaux.com/en/designations/graves-sauternes/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--france--bordeaux.jpg",
+        "unsplashId": "ARpgBcN7IDg",
+        "photographer": "Grant Van Cleemput",
+        "description": "Aerial view of Saint-Émilion vineyards (caption: 'Bordeaux Region St-Emilion Vineyards')"
+      },
+      "notes": "Main = Red based on Wine Folly's France page: 'The vast majority of Bordeaux produces the eponymous red blend' (https://winefolly.com/wine-regions/france/). No % share. bordeaux.com also lists rosé/clairet and Crémant de Bordeaux ('all four colours'); left out to match the agreed styles."
+    },
+    {
+      "slug": "wine/france/burgundy",
+      "styles": [
+        {
+          "style": "White",
+          "main": true,
+          "share": "62%",
+          "examples": "Chablis, Mâconnais, Côte de Beaune",
+          "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir-and-chardonnay-the-bourgogne-region-s-two-noble-grape-varietals,2475,9265.html"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": "29%",
+          "examples": "Côte de Nuits, Irancy, Coteaux Bourguignons",
+          "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir-and-chardonnay-the-bourgogne-region-s-two-noble-grape-varietals,2475,9265.html"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": "8%",
+          "examples": "Crémant de Bourgogne",
+          "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir-and-chardonnay-the-bourgogne-region-s-two-noble-grape-varietals,2475,9265.html"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--france--burgundy.jpg",
+        "unsplashId": "qTi9IB1tJwQ",
+        "photographer": "Bennett Jefferson",
+        "description": "Small stone tower standing in a vineyard south of Dijon, Côte d'Or (caption)"
+      },
+      "notes": "Same page lists rosé at 1%; left out. Other bourgogne-wines.com documents give slightly different splits (e.g. 61/27/12)."
+    },
+    {
+      "slug": "wine/france/rhone",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": "75%",
+          "examples": "Côtes du Rhône, Châteauneuf-du-Pape, Côte-Rôtie",
+          "source": "https://www.vins-rhone.com/sites/vignoble/files/documentation/2025-04/INTER-RHONE-CHIFFRES-CLES-2025-EN-BAT.pdf"
+        },
+        {
+          "style": "Rosé",
+          "main": false,
+          "share": "13%",
+          "examples": "Tavel, Côtes du Rhône rosé",
+          "source": "https://www.vins-rhone.com/sites/vignoble/files/documentation/2025-04/INTER-RHONE-CHIFFRES-CLES-2025-EN-BAT.pdf"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": "12%",
+          "examples": "Condrieu, Saint-Péray, Côtes du Rhône blanc",
+          "source": "https://www.vins-rhone.com/sites/vignoble/files/documentation/2025-04/INTER-RHONE-CHIFFRES-CLES-2025-EN-BAT.pdf"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--france--rhone.jpg",
+        "unsplashId": "EZsptGZBsHQ",
+        "photographer": "le Sixième Rêve",
+        "description": "Vineyards below the limestone peaks of the Dentelles de Montmirail, southern Rhône (matched place search; no caption)"
+      },
+      "notes": "Shares are the 2024 harvest by colour (Inter Rhône Key Figures 2024). The same PDF shows Tavel 100% rosé and Condrieu/Saint-Péray 100% white. Muscat de Beaumes-de-Venise and Rasteau VDN (sweet) also appear but are tiny; left out."
+    },
+    {
+      "slug": "wine/france/loire",
+      "styles": [
+        {
+          "style": "White",
+          "main": true,
+          "share": null,
+          "examples": "Sancerre, Vouvray, Muscadet",
+          "source": "https://www.vinsvaldeloire.fr/en/loire-wines-colours"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Chinon, Saumur-Champigny, Bourgueil",
+          "source": "https://winefolly.com/deep-dive/loire-valley-wine-guide/"
+        },
+        {
+          "style": "Rosé",
+          "main": false,
+          "share": null,
+          "examples": "Rosé d'Anjou, Cabernet d'Anjou, Rosé de Loire",
+          "source": "https://winefolly.com/deep-dive/loire-valley-wine-guide/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Crémant de Loire, Saumur Mousseux, Anjou Mousseux",
+          "source": "https://winefolly.com/deep-dive/loire-valley-wine-guide/"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Quarts de Chaume, Bonnezeaux, Coteaux du Layon",
+          "source": "https://winefolly.com/deep-dive/loire-valley-wine-guide/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--france--loire.jpg",
+        "unsplashId": "3JQr856DEzM",
+        "photographer": "Sue Winston",
+        "description": "Hilltop town of Sancerre behind rows of autumn vines (place confirmed in caption)"
+      },
+      "notes": "vinsvaldeloire.fr: 'White is the dominant colour' (no %). Its fine-bubbles page also calls the Loire France's second-largest sparkling region. White examples are named on the Wine Folly Loire guide."
+    },
+    {
+      "slug": "wine/france/provence",
+      "styles": [
+        {
+          "style": "Rosé",
+          "main": true,
+          "share": "89%",
+          "examples": "Côtes de Provence, Coteaux d'Aix-en-Provence, Coteaux Varois en Provence",
+          "source": "https://www.vinsdeprovence.com/files/1a76240e/civp_rapport_dactivite_2024_interieur_complet_en.pdf"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": "6%",
+          "examples": "Côtes de Provence blanc, Coteaux d'Aix-en-Provence blanc",
+          "source": "https://www.vinsdeprovence.com/files/1a76240e/civp_rapport_dactivite_2024_interieur_complet_en.pdf"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": "5%",
+          "examples": "Côtes de Provence rouge, Coteaux d'Aix-en-Provence rouge",
+          "source": "https://www.vinsdeprovence.com/files/1a76240e/civp_rapport_dactivite_2024_interieur_complet_en.pdf"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--france--provence.jpg",
+        "unsplashId": "eyqzXh5unoc",
+        "photographer": "Gwyn Hay",
+        "description": "Rows of vines running to a farmhouse (caption: 'Provence winery')"
+      },
+      "notes": "CIVP 2024 annual report gives the 2024 harvest in hl: rosé 1,001,589, white 70,180, red 58,370 of 1,130,139. The % figures are computed from those (88.6 / 6.2 / 5.2) and match the agreed 89/6/5."
+    },
+    {
+      "slug": "wine/france/champagne",
+      "styles": [
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Brut NV Champagne, Blanc de Blancs, Vintage Champagne",
+          "source": "https://www.champagne.fr/en/champagne-frequently-asked-questions"
+        },
+        {
+          "style": "Rosé",
+          "main": false,
+          "share": null,
+          "examples": "Champagne Rosé",
+          "source": "https://www.champagne.fr/en/champagne-frequently-asked-questions"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Champagne Demi-Sec, Champagne Doux",
+          "source": "https://www.champagne.fr/en/champagne-frequently-asked-questions"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--france--champagne.jpg",
+        "unsplashId": "cMBKBtCfpS4",
+        "photographer": "Adlan",
+        "description": "Golden autumn vine rows leading to the village of Verzenay, Champagne (place confirmed in caption)"
+      },
+      "notes": "No main flag: the source doesn't state a share for sparkling vs. still wine (it says non-vintage Brut is the most common Champagne). Still wines (Coteaux Champenois, Rosé des Riceys) not on the fetched page, so left out. Rosé and Sweet here are sparkling styles."
+    },
+    {
+      "slug": "wine/usa/napa-valley",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Cabernet Sauvignon, Merlot, Zinfandel",
+          "source": "https://winefolly.com/deep-dive/napa-wine-map/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chardonnay, Sauvignon Blanc",
+          "source": "https://www.napavintners.com/napa_valley/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Los Carneros sparkling wine",
+          "source": "https://www.napavintners.com/napa_valley/los-carneros-ava"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--napa-valley.jpg",
+        "unsplashId": "__EeLCGc_po",
+        "photographer": "Bel R",
+        "description": "Hot air balloon over autumn vines and oak-covered hills (matched 'Napa Valley'; photographer is SF Bay Area; place not in caption)"
+      },
+      "notes": "Wine Folly: Napa is 'most recognized for Cabernet Sauvignon'; no colour share found, so no main flag. Napa Vintners: Napa is 4% of California's harvest. Photo location unconfirmed."
+    },
+    {
+      "slug": "wine/usa/sonoma",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Russian River Valley Pinot Noir, Dry Creek Valley Zinfandel, Alexander Valley Cabernet",
+          "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Russian River Valley Chardonnay, Alexander Valley Chardonnay",
+          "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Sonoma sparkling wine (Russian River Valley, Carneros)",
+          "source": "https://winefolly.com/deep-dive/sonoma-wine-map/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--sonoma.jpg",
+        "unsplashId": "NNUyE2wddwI",
+        "photographer": "Tyke Jones",
+        "description": "Yellow mustard flowers between dormant vine rows with green hills (caption: 'Sonoma Vineyard')"
+      },
+      "notes": "Wine Folly: Sonoma makes almost 2x Napa's volume and is behind 'some of the biggest names for Pinot Noir and Sparkling Wine in the United States'. No colour share, so no main flag. Sonoma County Winegrowers site not fetched."
+    },
+    {
+      "slug": "wine/usa/paso-robles",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Cabernet Sauvignon, Rhône blends",
+          "source": "https://paso.guides.winefolly.com/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Sauvignon Blanc, Viognier",
+          "source": "https://paso.guides.winefolly.com/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--paso-robles.jpg",
+        "unsplashId": "cP1dce__FeY",
+        "photographer": "Venti Views",
+        "description": "Aerial view of hillside vineyard blocks at sunrise (matched 'Paso Robles vineyard'; caption gives no place)"
+      },
+      "notes": "Wine Folly: Cabernet Sauvignon is almost 50% of plantings. That implies red leads but isn't a stated colour share, so no main flag. pasowine.com not fetched. Photo location unconfirmed."
+    },
+    {
+      "slug": "wine/usa/santa-barbara",
+      "styles": [
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Chardonnay, Sauvignon Blanc",
+          "source": "https://winefolly.com/deep-dive/an-intro-to-santa-barbara-wine-country/"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Noir, Syrah",
+          "source": "https://winefolly.com/deep-dive/an-intro-to-santa-barbara-wine-country/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--santa-barbara.jpg",
+        "unsplashId": "bRw46I773E4",
+        "photographer": "Tim Mossholder",
+        "description": "Vines at golden hour with bare hills behind (photographer based in Santa Maria, Santa Barbara County; place not in caption)"
+      },
+      "notes": "White listed first because Chardonnay is the most planted variety (7,529 acres vs Pinot Noir 5,561, per Wine Folly), but no colour share, so no main flag. Swapped the first photo choice (N1c4X5csoTg) because another batch already used it for Red Mountain."
+    },
+    {
+      "slug": "wine/usa/willamette-valley",
+      "styles": [
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Noir",
+          "source": "https://www.oregonwine.org/regions/willamette-valley/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Gris, Chardonnay",
+          "source": "https://www.oregonwine.org/regions/willamette-valley/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Willamette Valley sparkling wine",
+          "source": "https://www.oregonwine.org/regions/willamette-valley/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--willamette-valley.jpg",
+        "unsplashId": "IHOSOqpm3b8",
+        "photographer": "Dan Meyers",
+        "description": "Vineyard in early summer in Polk County, Oregon, part of the Willamette Valley (caption)"
+      },
+      "notes": "Pinot Noir is 59% of Oregon's planted acres (oregonwine.org/discover/oregon-wine-varieties/), but that's statewide, so no main flag for Willamette."
+    },
+    {
+      "slug": "wine/usa/washington",
+      "styles": [
+        {
+          "style": "Red",
+          "main": true,
+          "share": "55%",
+          "examples": "Cabernet Sauvignon, Merlot, Syrah",
+          "source": "https://www.washingtonwine.org/press_release/washington-wine-reports-high-quality-for-2024-harvest/"
+        },
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Riesling, Chardonnay, Sauvignon Blanc",
+          "source": "https://www.washingtonwine.org/press_release/washington-wine-reports-high-quality-for-2024-harvest/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--washington.jpg",
+        "unsplashId": "dpl8PGlX0Zg",
+        "photographer": "Alia Vela",
+        "description": "Columbia River valley with farmland and vines below basalt bluffs (matched 'Washington state vineyard'; no caption)"
+      },
+      "notes": "Washington Wine Commission, 2024 harvest: red varieties 55% of production (59% in 2023). White share not quoted on the page (it would be 45%), so left null. Photo location unconfirmed."
+    },
+    {
+      "slug": "wine/usa/michigan",
+      "styles": [
+        {
+          "style": "White",
+          "main": false,
+          "share": null,
+          "examples": "Riesling, Chardonnay",
+          "source": "https://michigan.guides.winefolly.com/"
+        },
+        {
+          "style": "Red",
+          "main": false,
+          "share": null,
+          "examples": "Pinot Noir, Cabernet Franc",
+          "source": "https://michigan.guides.winefolly.com/"
+        },
+        {
+          "style": "Sparkling",
+          "main": false,
+          "share": null,
+          "examples": "Sparkling Riesling, Blanc de Blancs",
+          "source": "https://michigan.guides.winefolly.com/regions/old-mission-peninsula/"
+        },
+        {
+          "style": "Sweet",
+          "main": false,
+          "share": null,
+          "examples": "Riesling Ice Wine",
+          "source": "https://michigan.guides.winefolly.com/regions/old-mission-peninsula/"
+        }
+      ],
+      "photo": {
+        "file": "/img/regions/wine--usa--michigan.jpg",
+        "unsplashId": "VJbQdjdc3GE",
+        "photographer": "Jacek Chmielewski",
+        "description": "Close-up of flowering grapevines with vine rows behind (no location)"
+      },
+      "notes": "Riesling is Michigan's most planted grape (Wine Folly), but no colour share, so no main flag. michiganwines.com blocked automated fetches (403). PHOTO NOT PLACE-SPECIFIC: no Michigan vineyard photo found on Unsplash; generic cool-climate vines."
+    }
+  ]
+}

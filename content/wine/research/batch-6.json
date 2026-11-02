@@ -1,0 +1,578 @@
+{
+ "regions": [
+  {
+   "slug": "wine/chile/colchagua-valley",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": null,
+     "examples": "Carménère, Cabernet Sauvignon, Merlot",
+     "source": "https://www.winesofchile.org/winegrowing-regions/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--chile--colchagua-valley.jpg",
+    "unsplashId": "46oseDnYihM",
+    "photographer": "Nicole Almendrada",
+    "description": "Close-up of ripe black grapes hanging under a vine canopy. Place not confirmed (matched a 'Chilean vineyard' search; no location in the caption)."
+   },
+   "notes": "Wines of Chile: 'the vast majority of the wine produced here is red, with a particular propensity for Carménère, Cabernet Sauvignon and Merlot' (basis for main: true; no % given). It also says coastal plantings show 'great potential for cool-climate white wines' but names no white grape, so White is left out. Photo is generic, not confirmed as Colchagua."
+  },
+  {
+   "slug": "wine/chile/aconcagua",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Cabernet Sauvignon, Merlot, Carménère",
+     "source": "https://winefolly.com/deep-dive/chilean-cabernet-regions-wines-and-more/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Sauvignon Blanc",
+     "source": "https://www.winesofchile.org/winegrowing-regions/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--chile--aconcagua.jpg",
+    "unsplashId": "k6cV4IwIHKE",
+    "photographer": "Nicolás Gutiérrez Cervetto",
+    "description": "Young green vine rows on a valley floor with forested coastal hills behind. Tagged 'Casablanca Chile' on Unsplash (Casablanca is a zone of the Aconcagua region); caption gives no place, so unconfirmed."
+   },
+   "notes": "Wines of Chile: red varieties have a long tradition in the inland valley near the Andes; Chardonnay, Sauvignon Blanc and Pinot Noir thrive in the coastal zone (Pinot Noir is a red, already covered by Red). Red grape names come from Wine Folly (secondary) because Wines of Chile doesn't name the inland reds. No main style or share stated."
+  },
+  {
+   "slug": "wine/argentina/mendoza",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": "63%",
+     "examples": "Malbec, Cabernet Sauvignon, Bonarda",
+     "source": "https://argentina.guides.winefolly.com/regions/mendoza"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Sauvignon Blanc",
+     "source": "https://argentina.guides.winefolly.com/regions/mendoza"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--argentina--mendoza.jpg",
+    "unsplashId": "xrGNCxNkI-k",
+    "photographer": "celso costa",
+    "description": "Green vineyard in front of the snow-capped Andes. Matched an Unsplash 'Mendoza' search; caption gives no place, so the exact spot is unconfirmed."
+   },
+   "notes": "Wine Folly (secondary): '63% of all wine made in Mendoza is Red Wine' and 'Malbec is 26% of Mendoza production'; whites named are Chardonnay and Sauvignon Blanc (high-elevation Tupungato). No Wines of Argentina page could be read (JavaScript site). Bonarda is from Wine Folly's list of Mendoza reds. Wine Folly mentions sparkling Malbec rosé for Argentina generally, not Mendoza specifically, so Sparkling/Rosé are left out."
+  },
+  {
+   "slug": "wine/argentina/uco-valley",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Malbec, Cabernet Franc, Pinot Noir",
+     "source": "https://argentina.guides.winefolly.com/regions/mendoza"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Sauvignon Blanc",
+     "source": "https://argentina.guides.winefolly.com/regions/mendoza"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--argentina--uco-valley.jpg",
+    "unsplashId": "AAIYYN7lq6s",
+    "photographer": "Murilo Gomes",
+    "description": "Bare winter vines in front of a snow-capped Andes range under a deep blue sky. Matched an Unsplash 'Mendoza' search; the Uco Valley location is not confirmed."
+   },
+   "notes": "Wine Folly (secondary): Tupungato makes 'fresher styles of Malbec, Chardonnay, and Cabernet Franc'; Tunuyán has Malbec, 'some Cabernet Franc and even Pinot Noir'; Chardonnay, Sauvignon Blanc and Pinot Noir grow in high-elevation Tupungato. Court confirms Uco Valley is known for Malbec. No main style or share stated for Uco itself."
+  },
+  {
+   "slug": "wine/argentina/lujan-de-cuyo",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Malbec",
+     "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--argentina--lujan-de-cuyo.jpg",
+    "unsplashId": "p_rMkkAFbaI",
+    "photographer": "Paul Lucyk",
+    "description": "Bunches of Malbec-coloured black grapes on a pergola-trained vineyard. Photographer's caption names a winery in Mendoza (Kaiken); no readable logos in the frame. The Luján de Cuyo location is not confirmed from the caption."
+   },
+   "notes": "Court: Luján de Cuyo and Uco Valley are the Mendoza subregions known for Malbec. Wine Folly (secondary, https://argentina.guides.winefolly.com/regions/mendoza) describes Luján de Cuyo Malbec only. No sourced white, rosé or sparkling for Luján de Cuyo, so only Red is listed. No share found."
+  },
+  {
+   "slug": "wine/argentina/patagonia",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Pinot Noir, Malbec, Cabernet Sauvignon",
+     "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--argentina--patagonia.jpg",
+    "unsplashId": "4O9QoZQxPzs",
+    "photographer": "LILY MERELES",
+    "description": "Wide Patagonian valley with grey-striped hills under a clear sky; caption 'NEUQUÉN'. Landscape only, no vines in frame."
+   },
+   "notes": "Court: Patagonia is cool due to its southern latitude; Malbec, Cabernet Sauvignon, Pinot Noir. Wine Folly (secondary) calls Patagonian Pinot Noir 'an up-and-coming frontier'. Web results mention Sauvignon Blanc and Chardonnay there, but only from non-preferred sources, so White is left out. Photo shows Neuquén province scenery, not a vineyard."
+  },
+  {
+   "slug": "wine/australia/barossa-valley",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": null,
+     "examples": "Shiraz, Grenache, Cabernet Sauvignon",
+     "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/south-australia-wines/barossa"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Riesling",
+     "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/south-australia-wines/barossa"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Fortified wines",
+     "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/south-australia-wines/barossa"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--australia--barossa-valley.jpg",
+    "unsplashId": "9p48__cerdU",
+    "photographer": "Kelli McClintock",
+    "description": "Weathered wooden post in front of rows of low, bush-trained vines on dry red soil. Matched an Unsplash 'Barossa' search; the caption only says 'Wooden post on a vineyard', so the place is unconfirmed."
+   },
+   "notes": "Wine Australia: Shiraz 'occupies 50% of the vineyard plantings' (basis for main: true; that 50% is Shiraz alone, not all reds, so share left null); Riesling is 'the most important white variety of the region'; the climate is 'ideal for full-bodied red wines, excellent fortified wines and generally robust white wines' (no fortified grape named, so the Sweet example is just 'Fortified wines'). australianwine.com lists Shiraz, Grenache, Cabernet Sauvignon as top varieties."
+  },
+  {
+   "slug": "wine/australia/eden-valley",
+   "styles": [
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Riesling, Chardonnay",
+     "source": "https://www.australianwine.com/our-places/south-australia/eden-valley-wine-region"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Shiraz, Cabernet Sauvignon",
+     "source": "https://www.australianwine.com/our-places/south-australia/eden-valley-wine-region"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--australia--eden-valley.jpg",
+    "unsplashId": "tRTTn7mWwiU",
+    "photographer": "Andrew Bunnell",
+    "description": "Hillside of trellised vine rows under a dark, moody sky, with bare winter vines in the foreground. Place not confirmed (matched an 'Australia vineyard' search)."
+   },
+   "notes": "australianwine.com lists Riesling, Chardonnay, Shiraz as top varieties and calls Eden Valley Riesling world-class. Wine Australia market insights: Riesling is 'the most important white grape of the region' and Shiraz 'the most important red grape'. Neither says which colour is the majority, so no main. Photo is generic."
+  },
+  {
+   "slug": "wine/australia/mclaren-vale",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Shiraz, Grenache, Cabernet Sauvignon",
+     "source": "https://www.australianwine.com/our-places/south-australia/mclaren-vale-wine-region"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Vermentino",
+     "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/south-australia-wines/mclaren-vale"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--australia--mclaren-vale.jpg",
+    "unsplashId": "_KNnCoiXZZ0",
+    "photographer": "Paul Tune",
+    "description": "Rows of bare winter vines on wire trellises at golden hour, green grass between rows. Caption: 'A wine tour at McLaren Vale, South Australia'."
+   },
+   "notes": "australianwine.com: Shiraz is the region's signature wine (matches the manual). Wine Australia: Shiraz 'accounts for almost 50% of the total crush each year'; Chardonnay is 'the most planted white variety'. Red is clearly the focus, but no source says red is the majority, so main is left false. The '50% of crush' figure is for Shiraz alone, so no style share."
+  },
+  {
+   "slug": "wine/australia/coonawarra",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": null,
+     "examples": "Cabernet Sauvignon, Shiraz, Merlot",
+     "source": "https://www.australianwine.com/our-places/south-australia/coonawarra-wine-region"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--australia--coonawarra.jpg",
+    "unsplashId": "Fm4sWxjp1Wc",
+    "photographer": "Athithan Vignakaran",
+    "description": "Flat Limestone Coast farmland, including rows of vines, seen from a summit. Caption: farmland seen from Mount Schank near Mount Gambier, South Australia. This is the same Limestone Coast zone as Coonawarra, not Coonawarra itself."
+   },
+   "notes": "australianwine.com: Coonawarra is 'famed for its age-worthy red wines'; 'Up until the 1950s when Cabernet took over, Shiraz was the main grape variety grown here' (read as Cabernet now being the main grape, so Red main: true; no % given). Wine Australia calls Coonawarra 'the pre-eminent producer of Cabernet Sauvignon in Australia'. No white is listed by either official page, so Red only. No Coonawarra-specific Unsplash photo was found."
+  },
+  {
+   "slug": "wine/australia/margaret-river",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Cabernet Sauvignon",
+     "source": "https://www.australianwine.com/our-places/western-australia/margaret-river-wine-region"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Semillon-Sauvignon Blanc blends",
+     "source": "https://www.australianwine.com/our-places/western-australia/margaret-river-wine-region"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--australia--margaret-river.jpg",
+    "unsplashId": "fPHqz46unBc",
+    "photographer": "Joshua Leong",
+    "description": "Coastal heath and bush around the Margaret River inlet, with the Indian Ocean behind. Caption: 'View of the Margaret River, Western Australia'. Landscape only, no vines."
+   },
+   "notes": "australianwine.com: 'renowned for its elegant Cabernet Sauvignon and full-flavoured white wines'; Cabernet is 'the hero variety'; Chardonnay and Semillon-Sauvignon Blanc blends are signature styles. No main style or share stated. Photo is place-confirmed but shows the river and coast, not vineyards (no place-confirmed vineyard photo found)."
+  },
+  {
+   "slug": "wine/australia/hunter-valley",
+   "styles": [
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Semillon, Chardonnay",
+     "source": "https://www.australianwine.com/our-places/new-south-wales/hunter-valley-wine-region"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Shiraz",
+     "source": "https://www.australianwine.com/our-places/new-south-wales/hunter-valley-wine-region"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--australia--hunter-valley.jpg",
+    "unsplashId": "YbyDZH29kXA",
+    "photographer": "Steven Watson",
+    "description": "Vineyards, gum trees and a dirt road under a bright summer sky, with the Brokenback Range behind. Caption: Pokolbin, Hunter Valley, New South Wales."
+   },
+   "notes": "australianwine.com lists Semillon, Chardonnay, Shiraz; calls Shiraz 'the region's flagship red'. Wine Australia: Hunter Valley Semillon is 'a world benchmark wine'. Semillon is listed first as the region's signature, but no source says white is the majority, so no main."
+  },
+  {
+   "slug": "wine/australia/yarra-valley",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Pinot Noir, Shiraz, Cabernet Sauvignon",
+     "source": "https://www.australianwine.com/our-places/victoria/yarra-valley-wine-region"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay",
+     "source": "https://www.australianwine.com/our-places/victoria/yarra-valley-wine-region"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Pinot Noir",
+     "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/victoria-wines/yarra-valley"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--australia--yarra-valley.jpg",
+    "unsplashId": "YCXvEPoLtfg",
+    "photographer": "Neroli Wesley",
+    "description": "Golden rolling hills dotted with gum trees and a small dam, framed by an overhanging branch. Caption: 'a perfect vista in the Yarra Valley'. Landscape only, no vines."
+   },
+   "notes": "australianwine.com: 'top-quality Pinot Noir and Chardonnay'. Wine Australia: fruit from the coolest Chardonnay and Pinot Noir sites goes into 'top quality sparkling wine'. No main style or share stated. Photo is place-confirmed but shows farmland, not vines."
+  },
+  {
+   "slug": "wine/australia/clare-valley",
+   "styles": [
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Riesling",
+     "source": "https://www.australianwine.com/our-places/south-australia/clare-valley-wine-region"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Shiraz, Cabernet Sauvignon",
+     "source": "https://www.australianwine.com/our-places/south-australia/clare-valley-wine-region"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--australia--clare-valley.jpg",
+    "unsplashId": "kPUnNhIvaSo",
+    "photographer": "Rachel Kucera",
+    "description": "Bare winter vines in front of gum trees and a grassy slope under an overcast sky. Place not confirmed (matched an 'Australia vineyard' search)."
+   },
+   "notes": "australianwine.com: Riesling is 'Clare Valley's signature wine'. Wine Australia: 'Clare Riesling represents 20% of total Riesling crushed each year in Australia' (a share of Australian Riesling, not of Clare's output, so not used as share). No main style stated. Photo is generic."
+  },
+  {
+   "slug": "wine/australia/tasmania",
+   "styles": [
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": "More than 40%",
+     "examples": "Pinot Noir, Chardonnay",
+     "source": "https://www.australianwine.com/our-places/tasmania/tasmania-wine-region"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Pinot Noir",
+     "source": "https://www.australianwine.com/our-places/tasmania/tasmania-wine-region"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Riesling",
+     "source": "https://www.australianwine.com/our-places/tasmania/tasmania-wine-region"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--australia--tasmania.jpg",
+    "unsplashId": "Tpt1yipU4Js",
+    "photographer": "Deb Brooks",
+    "description": "Golden autumn vineyards rolling over hills under a dark storm sky, with a dirt track and gum trees. Caption: 'Autumn vineyard in Northern Tasmania'."
+   },
+   "notes": "australianwine.com: 'More than 40% of the wines here are sparkling' (share as stated; not a majority, so main left false). Wine Australia: traditional-method sparkling 'made primarily with Pinot Noir and Chardonnay. Considered to be the best in Australia'; also Riesling, Sauvignon Blanc, Pinot Gris. Order (Sparkling, Red, White) is my call from the sources' emphasis."
+  },
+  {
+   "slug": "wine/new-zealand/marlborough",
+   "styles": [
+    {
+     "style": "White",
+     "main": true,
+     "share": null,
+     "examples": "Sauvignon Blanc, Chardonnay, Pinot Gris",
+     "source": "https://www.nzwine.com/en/regions/marlborough/"
+    },
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Pinot Noir",
+     "source": "https://www.nzwine.com/en/regions/marlborough/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Méthode Traditionnelle",
+     "source": "https://www.nzwine.com/en/regions/marlborough/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Late-harvest and botrytised Riesling",
+     "source": "https://www.nzwine.com/en/regions/marlborough/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--new-zealand--marlborough.jpg",
+    "unsplashId": "RFRmE-HQStA",
+    "photographer": "Kris Gerhard",
+    "description": "Close view down a vine row hung with ripening white grapes, hills in the distance. Caption: 'Blenheim, New Zealand' (Blenheim is Marlborough's main town)."
+   },
+   "notes": "main: true is based on NZ Winegrowers Vineyard Report 2026 (https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf): of 32,042 planted ha in Marlborough (2025), Sauvignon Blanc is 27,166 ha (most planted; about 85%) and white varieties total about 93%. Those %s are my arithmetic from the hectare table, not a stated share, so share is null. nzwine.com: Méthode Traditionnelle production is 'small but critically renowned'; aromatics range 'dry to sweet ... including late harvest and botrytised wines'."
+  },
+  {
+   "slug": "wine/new-zealand/central-otago",
+   "styles": [
+    {
+     "style": "Red",
+     "main": true,
+     "share": null,
+     "examples": "Pinot Noir",
+     "source": "https://www.nzwine.com/en/regions/centralotago/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Riesling, Chardonnay, Pinot Gris",
+     "source": "https://www.nzwine.com/en/regions/centralotago/"
+    },
+    {
+     "style": "Rosé",
+     "main": false,
+     "share": null,
+     "examples": "Saignée-method rosé",
+     "source": "https://www.nzwine.com/en/regions/centralotago/"
+    },
+    {
+     "style": "Sparkling",
+     "main": false,
+     "share": null,
+     "examples": "Méthode Traditionnelle",
+     "source": "https://www.nzwine.com/en/regions/centralotago/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--new-zealand--central-otago.jpg",
+    "unsplashId": "FX8nLGJvg38",
+    "photographer": "Tonia Kraakman",
+    "description": "Dry tussock hills, rocky outcrops and winding gravel tracks below misty mountains. Matched an Unsplash 'Central Otago vineyard' search and the photographer is based in Alexandra (Central Otago), but the caption gives no place. No vines in frame."
+   },
+   "notes": "nzwine.com: Pinot Noir is the 'Flagship variety'. main: true is based on the NZ Winegrowers Vineyard Report 2026 (https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf): Pinot Noir is 1,694 of 2,099 planted ha (most planted; about 81%, my arithmetic). nzwine.com also lists rosé 'frequently made by saignée method' (grape not named) and 'Méthode Traditionelle'. Riesling aromatics range 'austerely dry to decadently sweet', but Sweet was not added as a separate style."
+  },
+  {
+   "slug": "wine/new-zealand/hawkes-bay",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Merlot and Cabernet Sauvignon blends, Syrah",
+     "source": "https://www.nzwine.com/en/regions/hawkesbay/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chardonnay, Sauvignon Blanc, Pinot Gris",
+     "source": "https://www.nzwine.com/en/regions/hawkesbay/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--new-zealand--hawkes-bay.jpg",
+    "unsplashId": "X4DNeepJnAQ",
+    "photographer": "Zach Kirby",
+    "description": "Autumn-yellow vine rows sweeping past an old red-brick cottage. Caption describes a New Zealand vineyard but doesn't name the region, so Hawke's Bay is unconfirmed."
+   },
+   "notes": "nzwine.com: Hawke's Bay 'is best known for its Red Blends and Chardonnay but aromatic whites are consistently good and Syrah is incredibly impressive'. Red is listed first because the page leads with red blends. But the NZ Winegrowers Vineyard Report 2026 hectares show whites are the majority of plantings (about 65% vs 35% red by my arithmetic; Sauvignon Blanc 1,209 ha and Chardonnay 1,014 ha are the largest, Merlot 757 ha the largest red). So no main. The coordinator may prefer White first."
+  },
+  {
+   "slug": "wine/new-zealand/martinborough",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Pinot Noir",
+     "source": "https://www.nzwine.com/en/regions/wairarapa/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Sauvignon Blanc, Chardonnay",
+     "source": "https://www.nzwine.com/en/regions/wairarapa/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--new-zealand--martinborough.jpg",
+    "unsplashId": "hs1fknODa-M",
+    "photographer": "Mike Coker",
+    "description": "Rows of green vines on a flat valley floor running toward forested hills under a blue sky. New Zealand photographer; matched a 'New Zealand vineyard' search; place not confirmed."
+   },
+   "notes": "Source is the Wairarapa page (Martinborough is its subregion): 'Acclaimed Pinot Noir, vivid Sauvignon Blanc, and elegant aromatics and Syrah' in Martinborough; Pinot Noir is 'the region's flagship red'; Chardonnay is listed for Wairarapa. The Vineyard Report gives Wairarapa-wide hectares only (Sauvignon Blanc 531 ha, Pinot Noir 495 ha), not Martinborough, so no main. Wairarapa also makes late-harvest/botrytised Pinot Gris and dessert wines, but not stated for Martinborough, so Sweet is left out."
+  },
+  {
+   "slug": "wine/new-zealand/north-canterbury",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Pinot Noir",
+     "source": "https://www.nzwine.com/en/regions/northcanterbury/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Riesling, Chardonnay, Sauvignon Blanc",
+     "source": "https://www.nzwine.com/en/regions/northcanterbury/"
+    },
+    {
+     "style": "Sweet",
+     "main": false,
+     "share": null,
+     "examples": "Dessert-style Riesling",
+     "source": "https://www.nzwine.com/en/regions/northcanterbury/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--new-zealand--north-canterbury.jpg",
+    "unsplashId": "tgbrX_N39bg",
+    "photographer": "Jackson Currie",
+    "description": "Vine rows under white bird netting beside dry golden hills dotted with trees. Place not confirmed (matched a 'New Zealand vineyard' search)."
+   },
+   "notes": "nzwine.com: 'outstanding Pinot Noir, Chardonnay and fine aromatic wines'; Riesling spans 'dry to dessert styles'. Red is first because the page leads with Pinot Noir, but the Vineyard Report 2026 shows whites are the majority of plantings (Sauvignon Blanc 503 ha, Pinot Noir 402 ha, Riesling 254 ha; whites about 72% by my arithmetic). So no main."
+  },
+  {
+   "slug": "wine/south-africa/stellenbosch",
+   "styles": [
+    {
+     "style": "Red",
+     "main": false,
+     "share": null,
+     "examples": "Cabernet Sauvignon, Merlot, Pinotage",
+     "source": "https://wineroute.co.za/wineries-page/red-cultivars/"
+    },
+    {
+     "style": "White",
+     "main": false,
+     "share": null,
+     "examples": "Chenin Blanc, Chardonnay, Sauvignon Blanc",
+     "source": "https://wineroute.co.za/wineries-page/white-cultivars/"
+    }
+   ],
+   "photo": {
+    "file": "/img/regions/wine--south-africa--stellenbosch.jpg",
+    "unsplashId": "IOjs8WutjtM",
+    "photographer": "Ben",
+    "description": "Golden evening light over fields and vineyards running to a lone conical hill, under a wide, streaky sky. Caption: 'Stellenbosch vineyard'."
+   },
+   "notes": "WOSA (https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa): Stellenbosch 'is known for the quality of its blended reds' (basis for Red first; it doesn't say red is the majority, so no main). Grape names are from Stellenbosch Wine Routes' cultivar pages ('varieties grown in Stellenbosch include...'). Cap Classique sparkling is mentioned only for South Africa generally, so Sparkling is left out. Stellenbosch Wine Routes says ~18% of South Africa's vineyard area is in the Stellenbosch WO, which is a share of the country, not a style share."
+  }
+ ]
+}

@@ -453,8 +453,8 @@ function assembleRaw(db, file) {
   if (!page) return null;
   const slug = baseIndex().find((x) => x.file === file)?.slug ?? '';
   // wine regions and countries in the approved layout (Nov 1, Figma 377:2): photo, what they make, style dots, profile
-  // REGION_V2: off until the region research is back (Nov 2). Turn on with REGION_V2=1.
-  if (process.env.REGION_V2 === '1' && regionData(slug) && wineKind(slug)) { const v2 = regionPage(basePage(regionData(slug).isGrape ? '111-4' : '377-2'), page, slug, { video: wineVideos(db).get(slug) }); if (v2) page = v2; }
+  // REGION_V2: on (Nov 2, research in). REGION_V2=0 switches back to the old layout.
+  if (process.env.REGION_V2 !== '0' && regionData(slug) && wineKind(slug)) { const v2 = regionPage(basePage(regionData(slug).isGrape ? '111-4' : '377-2'), page, slug, { video: wineVideos(db).get(slug) }); if (v2) page = v2; }
   // the Sommelier Program, video first (Nov 1): the Study Guide index is now the Level 1 course
   if (slug === HUB) return hubPage(page, { done: sectionsDone(db, SCOPE.user?.id) });
   if (slug === L1) return level1Page(page, { done: sectionsDone(db, SCOPE.user?.id) });

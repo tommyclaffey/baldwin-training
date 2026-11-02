@@ -106,6 +106,11 @@ export function regionPage(tpl, base, slug, ctx) {
       const c = clone(s.here ? here : other); c.n = 'Sibling · ' + s.name; if (s.to) c.to = s.to; else delete c.to;
       c.w = width;
       setText(T(find(c, byName('Top')))[0], s.name); setText(T(c)[0], s.note || '');
+      // grape pages: the single dot in each card takes the colour of the wine (white, rosé, sparkling, orange)
+      if (d.isGrape) {
+        const kind = slug.split('/')[1]; const col = { red: '#6B1F2E', white: '#E6DCA0', rose: '#EEBFAE', sparkling: '#F6EFD6', orange: '#D9893A' }[kind] || '#6B1F2E';
+        for (const e of findAll(c, (x) => x.t === 'E')) { e.f = [{ c: col }]; if (kind === 'white' || kind === 'sparkling') { e.st = '#B8A76A'; e.sw = 1; } else if (!s.here) { delete e.st; delete e.sw; } }
+      }
       const dots = c.c.find((x) => (x.n || '').startsWith('Styles · '));
       const sst = (regionResearch(slugOf(s.to) || slug)?.styles || []).map((x) => styleName(x.style)).filter(Boolean);
       const own = s.here ? styles.map((x) => x.style) : sst;
@@ -134,6 +139,17 @@ export function regionPage(tpl, base, slug, ctx) {
 
   // the page's own taste, pairings, grapes and producers
   const body = main.c.find((c) => c.n === 'Body');
+  // Country pages keep their own "Styles to know" and "Regions and producers" cards from the old layout (the list of
+  // every region or state that country has).
+  {
+    const oldBody = base?.main?.c?.find((c) => c.n === 'Body');
+    const left = find(body, byName('Left'));
+    const keep = ['Styles to know', 'Styles and brands'].map((nm) => oldBody && find(oldBody, byName(nm))).filter(Boolean);
+    if (left && keep.length) {
+      const at = Math.max(0, left.c.findIndex((x) => x.n === 'Taste') + 1);
+      left.c.splice(at, 0, ...keep.map((k) => { const c = clone(k); c.sh = 'L'; delete c.w; return c; }));
+    }
+  }
   const taste = find(body, byName('Taste'));
   if (taste && (d.taste?.flavors || []).length) {
     const fl = find(taste, byName('Flavors')); const pp = fl.c[0];
@@ -172,11 +188,29 @@ export function regionPage(tpl, base, slug, ctx) {
     const slot = find(story, (n) => (n.n || '').startsWith('Video slot')); slot.vid = rec.video;
     if (rec.video.youtubeId) slot.f = [{ img: `https://i.ytimg.com/vi/${rec.video.youtubeId}/mqdefault.jpg`, m: 'FILL' }];
     const sc = find(story, byName('Copy')); const t = T(sc);
-    setText(t[1], 'WATCH IT');
+    setText(t[0], 'Learn more about'); setText(t[1], d.name.toUpperCase());
     const nm = d.name.charAt(0) + d.name.slice(1).toLowerCase();
     setText(t[2], rec.note || (d.isGrape ? `A short video on ${nm}: how it tastes, where it grows, and how to talk about it with a guest.` : `A short video on ${nm}: where it is, what grows there, and how to talk about its wines with a guest.`));
     const cr = find(sc, byName('Video credit')); if (cr) { const ctx2 = texts(cr); setText(ctx2[0], 'VIDEO · ' + (rec.video.by || 'WINE FOLLY').toUpperCase()); setText(ctx2[1], (rec.video.title || '').replace(/ · Wine Folly$/, '')); }
-  } else if (story) remove(main, story);
+  } else if (story) {
+    // No video yet: an empty slot, and (for accounts that can) an Add video chip that opens the picker on the page.
+    const slot = find(story, (n) => (n.n || '').startsWith('Video slot'));
+    slot.f = [{ c: '#2A2724' }]; slot.st = '#C49A6C'; slot.sto = 0.5; slot.sw = 1.5; slot.dash = 1;
+    const nm = d.name.charAt(0) + d.name.slice(1).toLowerCase();
+    const play = (slot.c || []).find((x) => x.n === 'Play'); const py = play ? play.y + play.h + 14 : slot.h / 2 + 40;
+    const line = (str, y, z, c, fs, ls) => ({ t: 'T', n: str.slice(0, 40), s: str, ff: 'Archivo', fs, z, ...(ls ? { ls } : {}), ar: 'H', ta: 'C', x: 24, y, w: slot.w - 48, h: z + 6, f: [{ c }] });
+    slot.c = [...(slot.c || []).filter((x) => x.t !== 'T'),
+      line('VIDEO · TO ADD', py, 12, '#C49A6C', 'Bold', '14%'),
+      line(`Learn more about ${nm}`, py + 22, 19, '#F2EEE7', 'Bold'),
+      line(d.isGrape ? 'A few minutes on the grape: how it tastes and where it grows' : 'A few minutes on the region: its grapes and its wines', py + 50, 13, '#B8AFA3', 'Regular')];
+    const sc = find(story, byName('Copy')); const t = T(sc);
+    setText(t[0], 'Learn more about'); setText(t[1], d.name.toUpperCase());
+    setText(t[2], d.isGrape ? `A short video on ${nm}: how it tastes, where it grows, and how to talk about it with a guest.` : `A short video on ${nm}: where it is, what grows there, and how to talk about its wines with a guest.`);
+    sc.c = sc.c.filter((x) => x.n !== 'Video credit');
+    sc.c.push({ t: 'F', n: 'Add video', lm: 'H', gap: 10, pd: [10, 14, 10, 14], r: 10, st: '#B8AFA3', sw: 1, dash: 1, ca: 'C', sh: 'H', sv: 'H', c: [
+      { t: 'T', n: 'ADD VIDEO', s: 'ADD VIDEO', ff: 'Archivo', fs: 'Bold', z: 12, ls: '10%', ar: 'W', sh: 'H', sv: 'H', f: [{ c: '#5E574F' }] },
+      { t: 'T', n: 'note', s: 'Add it in Admin → Wine Videos', ff: 'Archivo', fs: 'Regular', z: 14, ar: 'W', sh: 'H', sv: 'H', f: [{ c: '#5E574F' }] }] });
+  }
 
   // previous / next
   const sub = find(main, byName('Sub nav'));

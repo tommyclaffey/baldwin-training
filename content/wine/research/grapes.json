@@ -1,0 +1,256 @@
+{
+  "pages": [
+    {
+      "slug": "wine/red/cabernet",
+      "photo": {
+        "file": "/img/grapes/wine--red--cabernet.jpg",
+        "unsplashId": "_Hu5LlIseOk",
+        "photographer": "April Klein",
+        "description": "Close-up of ripe dark Cabernet Sauvignon clusters hanging on the vine among leaves. Variety named by the photographer (\"Cabernet Sauvignon grapes\")."
+      }
+    },
+    {
+      "slug": "wine/red/merlot",
+      "photo": {
+        "file": "/img/grapes/wine--red--merlot.jpg",
+        "unsplashId": "LnmgRTR7otc",
+        "photographer": "Mauro Lima",
+        "description": "Tight dark-blue grape cluster hanging on the vine, dark moody background. Stand-in: variety not named by the photographer."
+      }
+    },
+    {
+      "slug": "wine/red/pinot-noir",
+      "photo": {
+        "file": "/img/grapes/wine--red--pinot-noir.jpg",
+        "unsplashId": "fBXlh3GGUOg",
+        "photographer": "Pix Tresa",
+        "description": "Small, compact dark Pinot Noir bunches on the vine among green leaves and trellis wire. Variety named by the photographer (\"Pinot noire - ready for the harvest\")."
+      }
+    },
+    {
+      "slug": "wine/red/sangiovese",
+      "photo": {
+        "file": "/img/grapes/wine--red--sangiovese.jpg",
+        "unsplashId": "TCPr7YT7Qns",
+        "photographer": "Sue Winston",
+        "description": "Vineyard row with ripening dark bunches hanging along the cordon under blue sky, near Montepulciano, Tuscany. Variety named by the photographer (\"Bunches of Sangiovese grapes ripening on the vine\"). Landscape shot; bunches are small in the frame."
+      }
+    },
+    {
+      "slug": "wine/red/nebbiolo",
+      "photo": {
+        "file": "/img/grapes/wine--red--nebbiolo.jpg",
+        "unsplashId": "DuMK5QQ7eyE",
+        "photographer": "Jens Meyers",
+        "description": "Large dark red-grape cluster on an old vine with blue sky behind. Stand-in: photographer says only \"red grapes in an old vineyard\"; no Nebbiolo grape photo found on Unsplash."
+      }
+    },
+    {
+      "slug": "wine/red/syrah",
+      "photo": {
+        "file": "/img/grapes/wine--red--syrah.jpg",
+        "unsplashId": "gBdG886bLDY",
+        "photographer": "David Köhler",
+        "description": "Several dark purple clusters hanging on the vine, back-lit by golden afternoon sun. Stand-in: variety not named (\"Sunny afternoon in the vineyards\")."
+      }
+    },
+    {
+      "slug": "wine/red/zinfandel",
+      "photo": {
+        "file": "/img/grapes/wine--red--zinfandel.jpg",
+        "unsplashId": "d-lFA2EXqKA",
+        "photographer": "Brian Gouwy",
+        "description": "Dark grape clusters hanging among bright green leaves in a vineyard row. Stand-in: variety not named."
+      }
+    },
+    {
+      "slug": "wine/red/malbec",
+      "photo": {
+        "file": "/img/grapes/wine--red--malbec.jpg",
+        "unsplashId": "Ls5oWV9e764",
+        "photographer": "Mauro Lima",
+        "description": "Two heavy dark-blue clusters hanging on the vine, close-up. Stand-in: variety not named."
+      }
+    },
+    {
+      "slug": "wine/white/chardonnay",
+      "photo": {
+        "file": "/img/grapes/wine--white--chardonnay.jpg",
+        "unsplashId": "LDUM5rO7zXw",
+        "photographer": "bourgognecellar.com",
+        "description": "Small green-gold Chardonnay bunches on the vine in Burgundy. Variety named by the photographer (\"Ripe Chardonnay grapes in Bourgogne vineyard\")."
+      }
+    },
+    {
+      "slug": "wine/white/sauvignon-blanc",
+      "photo": {
+        "file": "/img/grapes/wine--white--sauvignon-blanc.jpg",
+        "unsplashId": "EtDtYU07mjE",
+        "photographer": "Sophie Backes",
+        "description": "Tight green white-grape clusters hanging among vine leaves. Stand-in: variety not named (\"Weinrebe\")."
+      }
+    },
+    {
+      "slug": "wine/white/pinot-grigio",
+      "photo": {
+        "file": "/img/grapes/wine--white--pinot-grigio.jpg",
+        "unsplashId": "q-ZdZteTDs0",
+        "photographer": "Brian Gouwy",
+        "description": "Pale white-grape clusters on the vine, back-lit by the sun through leaves. Stand-in: variety not named."
+      }
+    },
+    {
+      "slug": "wine/white/riesling",
+      "photo": {
+        "file": "/img/grapes/wine--white--riesling.jpg",
+        "unsplashId": "3pyjQdnjfn8",
+        "photographer": "Moritz Knöringer",
+        "description": "Green white-grape cluster hanging beside a gnarled old vine trunk, Heppenheim (Hessische Bergstraße, Germany). Stand-in: variety not named (\"grapes in the vineyard\")."
+      }
+    },
+    {
+      "slug": "wine/white/pecorino",
+      "photo": {
+        "file": "/img/grapes/wine--white--pecorino.jpg",
+        "unsplashId": "7vI67t_PyNk",
+        "photographer": "Jens Meyers",
+        "description": "Golden-green white grapes growing from an old gnarled vine. Stand-in: photographer says only \"golden grapes in an old vineyard\"; no Pecorino grape photo on Unsplash."
+      }
+    },
+    {
+      "slug": "wine/white/chenin-blanc",
+      "photo": {
+        "file": "/img/grapes/wine--white--chenin-blanc.jpg",
+        "unsplashId": "pON945TGSQ0",
+        "photographer": "Martin Baron",
+        "description": "Hand picking white-grape bunches from the vine at harvest; photographer is based in Saumur (Loire). Stand-in: variety not named."
+      }
+    },
+    {
+      "slug": "wine/rose/provence",
+      "photo": {
+        "file": "/img/grapes/wine--rose--provence.jpg",
+        "unsplashId": "Sv-eBEGLYhM",
+        "photographer": "Corina Rainer",
+        "description": "Overhead view of glasses of pale salmon-pink rosé casting shadows in bright sunlight. Rosé named in the caption (\"Rosé wine in sunlight\"); not identified as Provence."
+      }
+    },
+    {
+      "slug": "wine/rose/rosato",
+      "photo": {
+        "file": "/img/grapes/wine--rose--rosato.jpg",
+        "unsplashId": "EfUwk0C3RE8",
+        "photographer": "Mona Miller",
+        "description": "Single wine glass of deep cherry-pink wine on a dark table by a window. Stand-in: caption does not name the wine; colour matches a darker Italian rosato."
+      }
+    },
+    {
+      "slug": "wine/rose/pinot-noir-rose",
+      "photo": {
+        "file": "/img/grapes/wine--rose--pinot-noir-rose.jpg",
+        "unsplashId": "EqzvP323xeg",
+        "photographer": "Elizaveta Matchenko",
+        "description": "Round glass of pale salmon-copper wine on a dark wooden table against a black background. Stand-in: wine not named."
+      }
+    },
+    {
+      "slug": "wine/rose/sparkling-rose",
+      "photo": {
+        "file": "/img/grapes/wine--rose--sparkling-rose.jpg",
+        "unsplashId": "yT8dwLAiSmY",
+        "photographer": "Tijana Drndarski",
+        "description": "Flute of pink sparkling wine with a fig slice on the rim, white background. Named in the caption (\"Pink champagne\")."
+      }
+    },
+    {
+      "slug": "wine/orange/qvevri",
+      "photo": {
+        "file": "/img/grapes/wine--orange--qvevri.jpg",
+        "unsplashId": "TY1BlfGYtoU",
+        "photographer": "Yoav Aziz",
+        "description": "Long row of large clay qvevri lying on their sides along a roadside wall. Found via a Kakheti (Georgia) search; caption does not name them."
+      }
+    },
+    {
+      "slug": "wine/orange/ribolla-gialla",
+      "photo": {
+        "file": "/img/grapes/wine--orange--ribolla-gialla.jpg",
+        "unsplashId": "q6UH_RPnb4I",
+        "photographer": "Luca J",
+        "description": "Golden-yellow white-grape clusters on the vine beside a wooden stake. Stand-in: variety not named; colour matches Ribolla Gialla's golden skins."
+      }
+    },
+    {
+      "slug": "wine/orange/ramato",
+      "photo": {
+        "file": "/img/grapes/wine--orange--ramato.jpg",
+        "unsplashId": "42JkSFvnnFI",
+        "photographer": "Valentin",
+        "description": "Wine glass of pale copper/onion-skin wine on a ledge in soft light. Stand-in: photographer calls it rosé; used for its copper colour."
+      }
+    },
+    {
+      "slug": "wine/orange/american-orange",
+      "photo": {
+        "file": "/img/grapes/wine--orange--american-orange.jpg",
+        "unsplashId": "H3QLXBmmgtA",
+        "photographer": "Christine Isakzhanova",
+        "description": "Amber-gold wine being poured from an unlabelled bottle into a glass on burlap, outdoors. Stand-in: caption says white wine; amber colour reads as orange wine."
+      }
+    },
+    {
+      "slug": "wine/sparkling/champagne",
+      "photo": {
+        "file": "/img/grapes/wine--sparkling--champagne.jpg",
+        "unsplashId": "cMBKBtCfpS4",
+        "photographer": "Adlan",
+        "description": "Golden autumn vineyard rows running to a distant village under blue sky, Verzenay (Champagne, France). Location named by the photographer."
+      }
+    },
+    {
+      "slug": "wine/sparkling/prosecco",
+      "photo": {
+        "file": "/img/grapes/wine--sparkling--prosecco.jpg",
+        "unsplashId": "5MR7izglfZ8",
+        "photographer": "Edoardo Bortoli",
+        "description": "Terraced vineyards and stone farmhouses on rolling green hills of Asolo, Veneto. Named by the photographer as \"the heart of the Prosecco wine region\"."
+      }
+    },
+    {
+      "slug": "wine/sparkling/cava",
+      "photo": {
+        "file": "/img/grapes/wine--sparkling--cava.jpg",
+        "unsplashId": "D4mdad3HiOY",
+        "photographer": "Niels Baars",
+        "description": "Three glasses of sparkling wine on a marble bar counter, wine shelves blurred behind (labels not readable). Named by the photographer (\"Three glasses of cava\" at Mercado de San Miguel, Madrid)."
+      }
+    },
+    {
+      "slug": "wine/sparkling/cremant",
+      "photo": {
+        "file": "/img/grapes/wine--sparkling--cremant.jpg",
+        "unsplashId": "0-ed27HFpcg",
+        "photographer": "Sergei Tokarev",
+        "description": "Sparkling wine being poured into two tulip flutes from a foil-topped bottle neck (no label in frame). Stand-in: wine not named."
+      }
+    },
+    {
+      "slug": "wine/sparkling/franciacorta",
+      "photo": {
+        "file": "/img/grapes/wine--sparkling--franciacorta.jpg",
+        "unsplashId": "ZrMY8aNfjYU",
+        "photographer": "paola capelletto",
+        "description": "Golden white-grape cluster on the vine, back-lit by warm sunlight. Stand-in: tagged Franciacorta on Unsplash but caption only says \"Dreaming of wine\"; variety not named."
+      }
+    },
+    {
+      "slug": "wine/sparkling/american",
+      "photo": {
+        "file": "/img/grapes/wine--sparkling--american.jpg",
+        "unsplashId": "f54dnkSRSMc",
+        "photographer": "Oliver Sherwin",
+        "description": "Two flutes of bubbly sparkling wine on a table, warm blurred background. Stand-in: wine and origin not named."
+      }
+    }
+  ]
+}
