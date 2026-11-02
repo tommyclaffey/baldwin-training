@@ -248,7 +248,8 @@ export function level1Page(page, ctx) {
   const book = btns && btns.c.find((x) => (x.n || '').startsWith('Button · Book'));
   if (book) { const d = clone(book); d.n = 'Button · Exam Details'; d.to = '/' + DETAILS[1]; setText(texts(d)[0], 'Exam Details'); btns.c.push(d); btns.wrap = 1; btns.cg = 8; btns.sh = 'L'; }
   const lead = find(find(main, byName('Hero')), (x) => x.t === 'T' && /video lessons/.test(x.s || ''));
-  if (lead) setText(lead, 'Twelve video lessons with practice cards, then two days with us.');
+  if (lead) { setText(lead, 'Twelve video lessons with practice cards, then two days with us.'); lead.n = 'Lead'; }
+  for (const t of findAll(find(main, byName('Hero')) || { c: [] }, (x) => x.t === 'T' && (x.z || 0) >= 36)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
   for (const t of findAll(find(main, byName('How it works')) || { c: [] }, (x) => x.t === 'T' && (x.s || '').length > 2)) { t.ar = 'H'; t.sh = 'L'; }
   const prog = courseProgress(ctx.done);
   const heroCopy = find(find(main, byName('Hero')), byName('Copy'));
@@ -298,6 +299,9 @@ export function hubPage(page, ctx) {
   const main = page.main;
   wireVideos(main);
   for (const b of findAll(main, (x) => x.n === 'Button · Start Level 1')) b.to = '/' + L1;
+  const hc = find(find(main, byName('Hero')), byName('Copy'));
+  if (hc) { const line = hc.c.filter((x) => x.t === 'T')[2]; if (line) line.n = 'Lead'; }
+  for (const t of findAll(main, (x) => x.t === 'T' && (x.z || 0) >= 22)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
   const cont = find(main, byName('Continue'));
   const nx = nextLesson(ctx.done);
   if (cont && nx?.started) {
@@ -321,13 +325,22 @@ export function hubPage(page, ctx) {
 /* ---------------- Level 2 ---------------- */
 export function level2Page(page) {
   const main = page.main;
+  const hc = find(find(main, byName('Hero')), byName('Copy'));
+  if (hc) {
+    const line = hc.c.filter((x) => x.t === 'T')[2];
+    // Level 2 lessons are next (Nov 1, Tommy: "have level two say 'coming soon'")
+    if (line) { line.n = 'Lead'; setText(line, 'Lessons are coming soon. Watch the Court’s videos and read the exam details now.'); line.ar = 'H'; line.sh = 'F'; line.w = 520; }
+    const pill = { t: 'F', n: 'Pill · Coming Soon', lm: 'H', pd: [6, 12, 6, 12], r: 999, f: [{ c: '#C49A6C' }], sh: 'H', sv: 'H', c: [txt('COMING SOON', { z: 11, c: '#1E1C1A', ls: '14%', fs: 'ExtraBold' })] };
+    hc.c.splice(1, 0, pill);
+  }
+  for (const t of findAll(main, (x) => x.t === 'T' && (x.z || 0) >= 22)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
   wireVideos(main);
   for (const b of findAll(main, (x) => (x.n || '').startsWith('Button · Book'))) b.to = REGISTER[2];
   // Level 2 lessons and the two practice tools are still being built: the parts open the exam details for now
   for (const b of findAll(main, (x) => x.n === 'Button · Start Part 1')) { b.to = '/' + DETAILS[2]; setText(texts(b)[0], 'Exam Details'); }
   for (const c of findAll(main, (x) => /^Part \d · /.test(x.n || ''))) {
     c.to = '/' + DETAILS[2];
-    const pill = find(c, byName('Pill')); if (pill) setText(texts(pill)[0], 'What’s on it');
+    const pill = find(c, byName('Pill')); if (pill) setText(texts(pill)[0], 'Lessons Coming Soon');
   }
   for (const t of findAll(main, (x) => (x.n || '').startsWith('Tool · '))) {
     const b = t.c.find((x) => (x.n || '').startsWith('Button · ')); if (b) { setText(texts(b)[0], 'Coming Soon'); b.f = [{ c: '#3A3632' }]; for (const x of texts(b)) x.f = [{ c: '#B8AFA3' }]; delete b.to; }

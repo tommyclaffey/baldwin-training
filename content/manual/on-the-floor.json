@@ -959,10 +959,10 @@
  ],
  "v3": {
   "video": {
-   "youtubeId": "SRB5dITG63s",
-   "title": "Hospitality & Service",
+   "youtubeId": "9R3JBuXcNjQ",
+   "title": "How to Open A Bottle of Wine",
    "by": "Court of Master Sommeliers, Americas",
-   "length": "11:03"
+   "length": "2:14"
   },
   "sections": [
    {
@@ -1435,6 +1435,12 @@
      28
     ]
    }
-  ]
+  ],
+  "videoAlt": {
+   "youtubeId": "SRB5dITG63s",
+   "title": "Hospitality & Service",
+   "by": "Court of Master Sommeliers, Americas",
+   "length": "11:03"
+  }
  }
 }
