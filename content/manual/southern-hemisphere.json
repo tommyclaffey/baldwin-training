@@ -4,7 +4,7 @@
  "title": "The Southern Hemisphere",
  "script": "Chapter nine",
  "lead": "Argentina, Chile, Australia, New Zealand and South Africa: where the vines grow, which grapes matter, and what the labels promise. This is the Court's Section 9.",
- "minutes": 26,
+ "minutes": 30,
  "intro": {
   "script": "Start here",
   "title": "WHAT THE GRAPE NAME PROMISES",
@@ -28,6 +28,325 @@
    }
   ]
  },
+ "court": {
+  "section": 9,
+  "outline": [
+   "Argentina: Salta, Mendoza, Patagonia",
+   "Chile: Aconcagua Valley, Valle Central",
+   "Australia: Southeastern Australia, New South Wales, Victoria, South Australia, Western Australia",
+   "New Zealand: North Island, South Island",
+   "South Africa: Cape Town, Stellenbosch, Paarl, Elgin, Walker Bay"
+  ],
+  "outcome": "After studying this section, a student will learn where Chilean wine regions are located, understand the unique climate, and recognize the primary grape varieties planted. After studying this section, a student will learn the history, general climate, major wine regions, and grape varieties of Argentina. After studying this section, a student will be able to locate the general area where South African wines are made, recognize important grape varieties and important wine regions. After studying this section, a student will know the general location, climate, and style of wine produced in New Zealand's most important wine regions. After studying this section, a student will know the general location, climate, and styles of wine produced in Australia's most important wine regions.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "Argentina · Geography: Location",
+    "guide": "East of the Andes, west of the Atlantic Ocean.",
+    "where": "Argentina · Mendoza"
+   },
+   {
+    "topic": "Argentina · Geography: Climate Categories",
+    "guide": "Continental to arid desert.",
+    "where": "Argentina · Mendoza"
+   },
+   {
+    "topic": "Argentina · Geography: Physical Feature",
+    "guide": "The Andes create a rain shadow.",
+    "where": "Argentina · Mendoza"
+   },
+   {
+    "topic": "Argentina · Grape Growing",
+    "guide": "Irrigation is essential, fed by Andes snowmelt; big day-night swings.",
+    "where": "Argentina · Mendoza"
+   },
+   {
+    "topic": "Argentina · Winemaking",
+    "guide": "Torrontés usually unoaked; Malbec and Cabernet see new or used, French or American oak.",
+    "where": "Argentina · Salta and Patagonia; added: Argentina · Mendoza (In the cellar)"
+   },
+   {
+    "topic": "Argentina · Wine: White Grape Variety Names",
+    "guide": "Torrontés, Chardonnay.",
+    "where": "Argentina · Salta and Patagonia; Argentina · Mendoza"
+   },
+   {
+    "topic": "Argentina · Wine: Red Grape Variety Names",
+    "guide": "Malbec, Cabernet Sauvignon.",
+    "where": "Argentina · Mendoza"
+   },
+   {
+    "topic": "Argentina · Wine Law",
+    "guide": "85% minimum to name a grape on the label.",
+    "where": "intro (Start here)"
+   },
+   {
+    "topic": "Argentina · Wine Law / Appellations",
+    "guide": "Salta (Cafayate, Torrontés); Mendoza (Luján de Cuyo, Uco Valley, Malbec); Patagonia, cool from latitude.",
+    "where": "Argentina · Mendoza; Argentina · Salta and Patagonia"
+   },
+   {
+    "topic": "Argentina · Style",
+    "guide": "Torrontés: very aromatic, soapy, floral, fruity, medium-plus to high acidity.",
+    "where": "Argentina · Salta and Patagonia"
+   },
+   {
+    "topic": "Argentina · Producer/Proprietary Brand",
+    "guide": "Catena.",
+    "where": "Argentina · Mendoza"
+   },
+   {
+    "topic": "Argentina · History & Lore",
+    "guide": "Italian and Spanish immigrants revitalized the vineyards.",
+    "where": "added: Argentina · Mendoza"
+   },
+   {
+    "topic": "Chile · Geography: Location",
+    "guide": "West coast of South America; 2,670 miles long, 217 wide, 17-53° S.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Geography: Climate Categories",
+    "guide": "Hot desert to cool to cold, north to south.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Geography: Physical Features and Moderators",
+    "guide": "Atacama Desert; Pacific breezes and fog; Andes elevation and day-night shifts; Coastal Range rain shadow.",
+    "where": "Chile (Atacama and Andes added)"
+   },
+   {
+    "topic": "Chile · Soil",
+    "guide": "Sand.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Grape Growing",
+    "guide": "No phylloxera thanks to sand; Andes irrigation essential; mostly ungrafted vines.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Wine: White Grape Variety Names",
+    "guide": "Sauvignon Blanc, Chardonnay.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Wine: Red Grape Variety Names",
+    "guide": "Cabernet Sauvignon, Merlot, Carménère.",
+    "where": "added: Chile · Valle Central"
+   },
+   {
+    "topic": "Chile · Wine Law",
+    "guide": "DO names a place only; levels Region, Subregion, Zone, Area.",
+    "where": "Chile (levels added)"
+   },
+   {
+    "topic": "Chile · Wine Law / Appellations",
+    "guide": "Aconcagua DO with Casablanca (cool, maritime); Valle Central DO (warm, 80%); Maipo around Santiago.",
+    "where": "Chile; added: Chile · Valle Central"
+   },
+   {
+    "topic": "Chile · General Terms",
+    "guide": "Humboldt Current: cold current from Antarctica along the coast.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Style",
+    "guide": "Often big, intense, fruit-driven, high-alcohol wines.",
+    "where": "added: Chile · Valle Central"
+   },
+   {
+    "topic": "Chile · History & Lore",
+    "guide": "1500s colonial vines, 1600s Spanish limits, 1800s immigrants, 1970s-80s foreign investment.",
+    "where": "added: Chile (History stop)"
+   },
+   {
+    "topic": "South Africa · Geography: Location",
+    "guide": "Western Cape is the heart of the industry.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Geography: Climate Categories",
+    "guide": "Maritime on the coast, Mediterranean to hot inland; cooled by two oceans.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Geography: Physical Feature",
+    "guide": "Indian Ocean, Atlantic Ocean, Table Mountain.",
+    "where": "South Africa (Table Mountain added)"
+   },
+   {
+    "topic": "South Africa · Grape Growing",
+    "guide": "Onshore winds limit pests; cold Atlantic currents cool the coast.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Winemaking",
+    "guide": "History of brandy plus sweet, oxidative and fortified wines.",
+    "where": "added: South Africa (History stop)"
+   },
+   {
+    "topic": "South Africa · Wine: White Grape Variety Names",
+    "guide": "Chenin Blanc, Chardonnay, Sauvignon Blanc.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Wine: Red Grape Variety Names",
+    "guide": "Syrah/Shiraz, Pinot Noir, Pinotage.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Wine Law",
+    "guide": "Wine of Origin: 100% from a named area, rigorous certification; Geographical Unit, Region, District, Ward.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Wine Law / Appellation",
+    "guide": "Coastal Region: Swartland, Cape Town, Stellenbosch, Paarl, Constantia; Cape South Coast: Elgin, Walker Bay.",
+    "where": "added: South Africa · Cape Town to Walker Bay"
+   },
+   {
+    "topic": "South Africa · General Terms",
+    "guide": "KWV, the co-operative winemakers' union, shaped laws and regulation.",
+    "where": "added: South Africa"
+   },
+   {
+    "topic": "South Africa · History & Lore",
+    "guide": "Dutch settlement and van der Stel; phylloxera and Anglo-Boer War; KWV; apartheid; shift to world-class wine.",
+    "where": "added: South Africa (History stop)"
+   },
+   {
+    "topic": "New Zealand · Geography: Location",
+    "guide": "Two islands, 2,500 miles southeast of Australia.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Geography: Climate Categories",
+    "guide": "South Island cool (Marlborough cool maritime, Central Otago cool continental); North Island warmer, humid (Hawke's Bay moderate maritime).",
+    "where": "New Zealand (region climates added)"
+   },
+   {
+    "topic": "New Zealand · Geography: Physical Feature",
+    "guide": "Southern Alps.",
+    "where": "added: New Zealand"
+   },
+   {
+    "topic": "New Zealand · Soil",
+    "guide": "Gimblett Gravels: gravel.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Geography: Appellation",
+    "guide": "GIs are trademark-only, no minimums or rules; NZ, North Island (Hawke's Bay), South Island (Marlborough, Central Otago).",
+    "where": "added: New Zealand (The label stop)"
+   },
+   {
+    "topic": "New Zealand · Grape Growing",
+    "guide": "South Island: long sunlight hours; North Island: humidity.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Winemaking",
+    "guide": "Clean, modern winemaking; screwcaps.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Wine: White Grape Variety Names",
+    "guide": "Sauvignon Blanc, Chardonnay.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Wine: Red Grape Variety Names",
+    "guide": "Pinot Noir, Cabernet Sauvignon, Syrah, Merlot.",
+    "where": "New Zealand (Cabernet added to chips)"
+   },
+   {
+    "topic": "New Zealand · Wine Law",
+    "guide": "85% minimum to name a grape.",
+    "where": "New Zealand; intro (Start here)"
+   },
+   {
+    "topic": "New Zealand · Style",
+    "guide": "Whites unoaked, intense, high acid; reds lightly oaked.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · History & Lore",
+    "guide": "Young industry, temperance movement, innovation, screwcap initiative.",
+    "where": "added: New Zealand (History stop)"
+   },
+   {
+    "topic": "New Zealand · Food and Beverage Pairing",
+    "guide": "High-acid unoaked wines with seafood, starters, salads; can overpower delicate dishes.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "Australia · Geography: Location",
+    "guide": "Southern Hemisphere, the size of the continental U.S.",
+    "where": "Australia · the big picture"
+   },
+   {
+    "topic": "Australia · Geography: Climate Categories",
+    "guide": "Hot dry interior, cooler coast; cool maritime to warm Mediterranean to hot, arid.",
+    "where": "Australia · the big picture (categories added)"
+   },
+   {
+    "topic": "Australia · Geography: Physical Feature",
+    "guide": "Elevation in South Australia; currents from Antarctica.",
+    "where": "added: Australia · the big picture"
+   },
+   {
+    "topic": "Australia · Grape Growing",
+    "guide": "Blending across regions; 100+ year-old vines; interior irrigation; best vineyards near the coast.",
+    "where": "Australia · the big picture; South Australia"
+   },
+   {
+    "topic": "Australia · Winemaking",
+    "guide": "Traditional: cross-region blends, American oak. Modern: single GI or site, French oak.",
+    "where": "Australia · the big picture"
+   },
+   {
+    "topic": "Australia · Wine: White Grape Variety Names",
+    "guide": "Riesling, Chardonnay, Sauvignon Blanc/Semillon blend.",
+    "where": "Australia · the big picture (blend added)"
+   },
+   {
+    "topic": "Australia · Wine: Red Grape Variety Names",
+    "guide": "Shiraz, Grenache, Cabernet Sauvignon.",
+    "where": "Australia · the big picture"
+   },
+   {
+    "topic": "Australia · Wine Law",
+    "guide": "GI names a place only; 85% for grape, vintage and origin.",
+    "where": "Australia · the big picture"
+   },
+   {
+    "topic": "Australia · Wine Law / Appellation (system)",
+    "guide": "Australia, State, Zone, Region, Sub-Region; know it exists. South Eastern Australia is a high-volume super GI.",
+    "where": "Australia · the big picture"
+   },
+   {
+    "topic": "Australia · Wine Law / Appellation (states)",
+    "guide": "New South Wales, Victoria, South Australia and Western Australia GIs.",
+    "where": "Australia · the big picture; New South Wales, Victoria and Western Australia"
+   },
+   {
+    "topic": "Australia · Wine Law / Appellation (regions)",
+    "guide": "Riverina, Murray Darling; Yarra Valley; Barossa, McLaren Vale, Clare, Eden; Margaret River.",
+    "where": "South Australia; New South Wales, Victoria and Western Australia"
+   },
+   {
+    "topic": "Australia · General Terms",
+    "guide": "Superzone (South Eastern Australia).",
+    "where": "Australia · the big picture"
+   },
+   {
+    "topic": "Australia · History & Lore",
+    "guide": "1788 near Sydney; moved west after phylloxera; sweet and fortified era; Stelvin; Yellow Tail.",
+    "where": "added: Australia · the big picture (History stop)"
+   }
+  ]
+ },
  "sections": [
   {
    "name": "Argentina · Mendoza",
@@ -40,6 +359,10 @@
     {
      "label": "Water",
      "text": "Irrigation is essential. Melted Andes snow feeds flood or drip irrigation."
+    },
+    {
+     "label": "Cellar and history",
+     "text": "New or used, French or American oak is common for Malbec and Cabernet. Italian and Spanish immigrants revitalized the vineyards."
     }
    ],
    "chips": {
@@ -146,11 +469,15 @@
    "lines": [
     {
      "label": "Shape",
-     "text": "A strip 2,670 miles long between the Andes and the Pacific. Hot desert in the north, cold in the south."
+     "text": "A strip 2,670 miles long between the Andes and the Pacific. Hot desert in the north, cold in the south. It spans 17-53° S, with the Atacama Desert in the north."
     },
     {
      "label": "Cooling",
      "text": "The cold Humboldt Current and Pacific fog cool the coast. The Coastal Range creates a rain shadow from the cold Pacific."
+    },
+    {
+     "label": "Law and history",
+     "text": "A DO names a place only; the levels are Region, Subregion, Zone, Area. Grapes grew here by the 1500s; immigrants in the 1800s and foreign money in the 1970s-80s grew the industry."
     }
    ],
    "chips": {
@@ -195,16 +522,70 @@
    ]
   },
   {
+   "name": "Chile · Valle Central",
+   "book": "wine/chile",
+   "lines": [
+    {
+     "label": "Climate",
+     "text": "Warm to hot, between the Coastal Range and the Andes. About 80% of Chile's wine comes from here."
+    },
+    {
+     "label": "Maipo",
+     "text": "The Valle de Maipo surrounds Santiago; most of the big historic wineries are here. Its grape is Cabernet Sauvignon."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Cabernet Sauvignon",
+     "Carménère",
+     "Merlot"
+    ]
+   },
+   "know": [
+    "Valle Central is warm to hot and lies between the Coastal Range and the Andes.",
+    "About 80% of Chilean wine comes from the Valle Central.",
+    "Its grapes: Cabernet Sauvignon, Carménère and Merlot.",
+    "Maipo surrounds Santiago and holds most of Chile's big historic wineries.",
+    "Chilean reds are often big, intense, fruit-driven and high in alcohol."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Valle Central's three reds",
+     "dark": true,
+     "items": [
+      {
+       "name": "Cabernet Sauvignon",
+       "text": "Maipo's grape, around Santiago."
+      },
+      {
+       "name": "Carménère",
+       "text": "Lost in Europe, found among Chile's Merlot. Most planted in Colchagua."
+      },
+      {
+       "name": "Merlot",
+       "text": "The vine Carménère hid among for years."
+      }
+     ]
+    }
+   ]
+  },
+  {
    "name": "Australia · the big picture",
    "book": "wine/australia",
    "lines": [
     {
      "label": "Climate",
-     "text": "About the size of the continental U.S. Hot, dry interior; cooler near the coast, where the best vineyards are."
+     "text": "About the size of the continental U.S. Hot, dry interior; cooler near the coast, where the best vineyards are. Climates run from cool maritime to warm Mediterranean to hot and arid; the interior needs irrigation."
     },
     {
      "label": "Labels",
      "text": "A GI (Geographical Indication) names a place only. Grape, vintage and region claims each need 85%."
+    },
+    {
+     "label": "History",
+     "text": "Sweet and fortified wines led until the late 20th century. Australians bought the French company that invented the Stelvin screw cap."
     }
    ],
    "chips": {
@@ -215,7 +596,8 @@
      "Grenache",
      "Chardonnay",
      "Riesling",
-     "Semillon"
+     "Semillon",
+     "Sauvignon Blanc"
     ]
    },
    "know": [
@@ -393,11 +775,11 @@
    "lines": [
     {
      "label": "Where",
-     "text": "Two islands, about 2,500 miles southeast of Australia. The South Island is cool with long sunlight hours; the North Island is warmer and humid."
+     "text": "Two islands, about 2,500 miles southeast of Australia. The South Island is cool with long sunlight hours; the North Island is warmer and humid. The Southern Alps are its key physical feature."
     },
     {
      "label": "Style",
-     "text": "Clean, modern winemaking and screwcaps. Whites are usually unoaked and intense with high acidity; reds are lightly oaked."
+     "text": "Clean, modern winemaking and screwcaps. Whites are usually unoaked and intense with high acidity; reds are lightly oaked. A GI is a registered place name with no minimums or rules; a named grape needs 85%."
     }
    ],
    "chips": {
@@ -407,7 +789,8 @@
      "Pinot Noir",
      "Chardonnay",
      "Merlot",
-     "Syrah"
+     "Syrah",
+     "Cabernet Sauvignon"
     ]
    },
    "know": [
@@ -447,11 +830,11 @@
    "lines": [
     {
      "label": "Climate",
-     "text": "Mediterranean in the Western Cape. Two oceans, the cold Benguela Current and the 'Cape Doctor' wind keep it cooler and help prevent disease."
+     "text": "Mediterranean in the Western Cape. Two oceans, the cold Benguela Current and the 'Cape Doctor' wind keep it cooler and help prevent disease. Maritime on the coast, Mediterranean to hot inland. Table Mountain rises over Cape Town."
     },
     {
      "label": "History",
-     "text": "Wine was first made from Cape grapes in 1659. The Wine of Origin scheme began in 1973."
+     "text": "Wine was first made from Cape grapes in 1659. The Wine of Origin scheme began in 1973. The KWV, the winemakers' co-operative, shaped the laws; apartheid hurt exports."
     }
    ],
    "chips": {
@@ -519,6 +902,72 @@
      ]
     }
    ]
+  },
+  {
+   "name": "South Africa · Cape Town to Walker Bay",
+   "book": "wine/south-africa",
+   "lines": [
+    {
+     "label": "Coastal Region",
+     "text": "Cape Town (with the Constantia ward), Stellenbosch, Paarl and Swartland are districts of the Western Cape's Coastal Region."
+    },
+    {
+     "label": "Cape South Coast",
+     "text": "Elgin and Walker Bay are in the Cape South Coast Region, cooled by the ocean."
+    }
+   ],
+   "chips": {
+    "label": "Places",
+    "items": [
+     "Cape Town",
+     "Constantia",
+     "Stellenbosch",
+     "Paarl",
+     "Swartland",
+     "Elgin",
+     "Walker Bay"
+    ]
+   },
+   "know": [
+    "Constantia is a ward in the Cape Town district; breezes off False Bay keep it cool, and Sauvignon Blanc stands out.",
+    "Stellenbosch is known for its blended reds; Simon van der Stel founded the town in 1678.",
+    "Paarl's best grapes, per WOSA: Cabernet Sauvignon, Pinotage, Shiraz, Chardonnay and Chenin Blanc.",
+    "Swartland was long a source of robust reds and fortified wines.",
+    "Elgin is high and cool; Walker Bay is known for Chardonnay and Pinot Noir."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Seven names, two regions",
+     "rows": [
+      {
+       "name": "Cape Town · Constantia",
+       "meta": "Coastal · cool, Sauvignon Blanc"
+      },
+      {
+       "name": "Stellenbosch",
+       "meta": "Coastal · blended reds"
+      },
+      {
+       "name": "Paarl",
+       "meta": "Coastal · Cabernet, Pinotage, Shiraz, Chenin"
+      },
+      {
+       "name": "Swartland",
+       "meta": "Coastal · robust reds, fortified"
+      },
+      {
+       "name": "Elgin",
+       "meta": "Cape South Coast · high and cool"
+      },
+      {
+       "name": "Walker Bay",
+       "meta": "Cape South Coast · Chardonnay, Pinot Noir"
+      }
+     ],
+     "note": "The Court's Introductory list, by region."
+    }
+   ]
   }
  ],
  "mixups": [
@@ -543,7 +992,7 @@
    "why": "Both are cold currents from Antarctica. Humboldt cools Chile; Benguela cools South Africa."
   }
  ],
- "sources": "Built from the Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide, the Argentine Foreign Ministry (Malbec World Day), Wines of Chile, Wine Australia (wineaustralia.com and australianwine.com), New Zealand Winegrowers, Wines of South Africa (WOSA), and Wine Folly as a secondary source. Checked Oct 31, 2026.",
+ "sources": "Built from the Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide, the Argentine Foreign Ministry (Malbec World Day), Wines of Chile, Wine Australia (wineaustralia.com and australianwine.com), New Zealand Winegrowers, Wines of South Africa (WOSA), and Wine Folly as a secondary source. Checked Oct 31, 2026. Aligned with the Court's Introductory column and Wines of South Africa's industry background (Jul 2023), Nov 2, 2026.",
  "cards": [
   {
    "q": "On what date is Malbec World Day?",
@@ -864,6 +1313,136 @@
     "Margaret River"
    ],
    "source": "https://www.australianwine.com/experience/articles/australia-s-8-most-popular-wine-regions"
+  },
+  {
+   "q": "Chile's DO system names places from biggest to smallest. Which order is right?",
+   "answer": "Region, Subregion, Zone, Area",
+   "wrong": [
+    "Area, Zone, Subregion, Region",
+    "Region, District, Ward, Area",
+    "Zone, Region, Area, Subregion"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "q": "Which desert lies in Chile's hot north?",
+   "answer": "Atacama",
+   "wrong": [
+    "Patagonian",
+    "Sonoran",
+    "Namib"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "q": "How does the Court describe the climate of Chile's Valle Central?",
+   "answer": "Warm to hot",
+   "wrong": [
+    "Cool and maritime",
+    "Cold continental",
+    "Cool, with Pacific fog"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+  },
+  {
+   "q": "Who does the Court credit with revitalizing Argentina's vineyards?",
+   "answer": "Italian and Spanish immigrants",
+   "wrong": [
+    "French Huguenots",
+    "German monks",
+    "British merchants"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=70"
+  },
+  {
+   "q": "Which is true of oak for Argentine Malbec and Cabernet Sauvignon?",
+   "answer": "New or used, French or American oak are all common",
+   "wrong": [
+    "Only new French oak is allowed",
+    "Oak is not allowed",
+    "Only used American oak is allowed"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "q": "Which wines dominated Australia until the late 20th century?",
+   "answer": "Sweet and fortified wines",
+   "wrong": [
+    "Dry Riesling",
+    "Sparkling wines",
+    "Light rosé"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+  },
+  {
+   "q": "What does the Court say a New Zealand GI sets?",
+   "answer": "A registered place name, with no minimums or rules",
+   "wrong": [
+    "A quality ranking like Grand Cru",
+    "That the wine is 100% from one vineyard",
+    "Which grapes may be planted"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+  },
+  {
+   "q": "Which mountains does the Court name as New Zealand's key physical feature?",
+   "answer": "The Southern Alps",
+   "wrong": [
+    "The Andes",
+    "The Coastal Range",
+    "The Great Dividing Range"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+  },
+  {
+   "q": "How does the Court describe Central Otago's climate?",
+   "answer": "Cool continental",
+   "wrong": [
+    "Warm and humid",
+    "Moderate maritime",
+    "Hot Mediterranean"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+  },
+  {
+   "q": "What was the KWV?",
+   "answer": "South Africa's co-operative winemakers' union, key in making the wine laws",
+   "wrong": [
+    "The Wine of Origin tasting panel",
+    "A Stellenbosch wine estate",
+    "A brandy brand from the Klein Karoo"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=72"
+  },
+  {
+   "q": "Paarl, Stellenbosch and Swartland belong to which South African region?",
+   "answer": "Coastal Region",
+   "wrong": [
+    "Cape South Coast",
+    "Klein Karoo",
+    "Breede River Valley"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=72"
+  },
+  {
+   "q": "Elgin and Walker Bay belong to which South African region?",
+   "answer": "Cape South Coast",
+   "wrong": [
+    "Coastal Region",
+    "Klein Karoo",
+    "Olifants River"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=72"
+  },
+  {
+   "q": "Who founded the town of Stellenbosch in 1678?",
+   "answer": "Simon van der Stel",
+   "wrong": [
+    "Jan van Riebeeck",
+    "Abraham Perold",
+    "Charles Kohler"
+   ],
+   "source": "https://www.wosa.co.za/wosadocs/82023/Background%20information%20on%20the%20South%20African%20Wine%20Industry%20Jul%202023.pdf"
   }
  ],
  "facts": [
@@ -1278,6 +1857,66 @@
   {
    "fact": "Wine Australia (australianwine.com): Shiraz is McLaren Vale's signature wine.",
    "source": "https://www.australianwine.com/our-places/south-australia/mclaren-vale-wine-region"
+  },
+  {
+   "fact": "Court (Introductory, Chile): the Andes Mountains bring elevation and diurnal (day-night) shifts; the Atacama Desert is Chile's desert; Chile spans 17-53° S latitude.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "fact": "Court (Introductory, New Zealand): Geographical Indications (GIs) are trademark only, with no minimums and no rules; GIs listed: New Zealand GI; North Island GI with Hawke's Bay GI and Gimblett Gravels; South Island GI with Marlborough GI and Central Otago GI.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+  },
+  {
+   "fact": "Court (Introductory, New Zealand): physical feature - Southern Alps.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+  },
+  {
+   "fact": "New Zealand Winegrowers: the Southern Alps lie to the west of the Waitaki Valley and tumble down to the lowlands of North Canterbury, both South Island regions; New Zealand's wine industry is one of the youngest in the world.",
+   "source": "https://www.nzwine.com/en/regions/"
+  },
+  {
+   "fact": "Court (Introductory, Australia): climate categories run from cool maritime to warm Mediterranean to hot and arid; physical features: elevation in South Australia and currents from Antarctica.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+  },
+  {
+   "fact": "Court (Introductory, Australia) history: purchased the French company that invented the Stelvin closure; the Yellow Tail business model.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+  },
+  {
+   "fact": "Court (Introductory, South Africa): Table Mountain is listed as a physical feature, with the Indian and Atlantic Oceans.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+  },
+  {
+   "fact": "Court (Introductory, South Africa): Wine of Origin certification is a rigorous process.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+  },
+  {
+   "fact": "WOSA background (Jul 2023): 1678 - the town of Stellenbosch is established by Simon van der Stel; 1685 - some 10,000 vines are planted on Simon van der Stel's farm on the slopes of what is now the Constantiaberg, in today's ward of Constantia.",
+   "source": "https://www.wosa.co.za/wosadocs/82023/Background%20information%20on%20the%20South%20African%20Wine%20Industry%20Jul%202023.pdf"
+  },
+  {
+   "fact": "WOSA background (Jul 2023): 1886 - phylloxera is first found at the Cape and leads to the uprooting of millions of vines; 1918 - the KWV (Ko-operatiewe Wijnbouwers Vereeniging van Zuid-Afrika) is formed; 1994 - South Africa becomes a democracy and wine exports, under 50 million litres, start to take off.",
+   "source": "https://www.wosa.co.za/wosadocs/82023/Background%20information%20on%20the%20South%20African%20Wine%20Industry%20Jul%202023.pdf"
+  },
+  {
+   "fact": "WOSA background (Jul 2023) appellation table: Constantia and Durbanville are wards in the Cape Town district; Cape Town, Stellenbosch, Paarl and Swartland are districts of the Coastal Region.",
+   "source": "https://www.wosa.co.za/wosadocs/82023/Background%20information%20on%20the%20South%20African%20Wine%20Industry%20Jul%202023.pdf"
+  },
+  {
+   "fact": "WOSA winelands: in Constantia the vines benefit from cool sea breezes off False Bay; the cool climate suits white wines, notably Sauvignon Blanc.",
+   "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+  },
+  {
+   "fact": "WOSA winelands: Swartland was traditionally a source of robust, full-bodied red wines and high-quality fortified wines.",
+   "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+  },
+  {
+   "fact": "WOSA winelands: Paarl's valley vineyards often need extra irrigation in the hot growing season.",
+   "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+  },
+  {
+   "fact": "WOSA winelands: Elgin is about an hour east of Cape Town; Walker Bay is known for Chardonnay and Pinot Noir from the Hemel-en-Aarde Valley, with cooling ocean winds.",
+   "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
   }
  ],
  "unverified": [
@@ -1290,7 +1929,11 @@
   "The size of Coonawarra's terra rossa strip was not confirmed (the Wine Australia Coonawarra story returned 404).",
   "New Zealand's exact Sauvignon Blanc share of plantings or exports was not found; New Zealand Winegrowers only says it is the most widely planted variety.",
   "Hunter Valley GI, Coonawarra GI, Semillon (Hunter), the Cape Doctor and the Benguela Current sit in the Court's Certified column, not its Introductory column. They are included because the Course Guide names Coonawarra soil as exam content and WOSA covers the Cape climate.",
-  "The Court Curriculum Guide is dated 8.2023; trade-body figures (Malbec 22.4% of vineyard area, Marlborough 31,000 ha, Barossa 50% Shiraz) may change year to year."
+  "The Court Curriculum Guide is dated 8.2023; trade-body figures (Malbec 22.4% of vineyard area, Marlborough 31,000 ha, Barossa 50% Shiraz) may change year to year.",
+  "The Court's Introductory column says the Andes 'are an average of 900 meters / 3,000 feet above sea level' (Argentina). That reads like a vineyard-elevation figure, not the range's height, so it is not taught.",
+  "New Zealand's temperance movement is listed by the Court without detail; how much it held back the industry was not checked (Te Ara pages returned 403), so the chapter only names it.",
+  "The Court lists 'purchased French company that invented Stelvin closure' and 'Yellow Tail business model' for Australia without detail; the buyer's name and what the Yellow Tail model is were not checked, so neither is explained.",
+  "WOSA's timeline dates Stellenbosch's founding by Simon van der Stel to 1678; some other sources say 1679."
  ],
  "v3": {
   "video": {
@@ -1332,7 +1975,7 @@
     ],
     "read": {
      "bigIdea": "Mendoza is Malbec country, watered by the Andes.",
-     "where": "Argentina sits east of the **Andes**, which block the rain (a **rain shadow**). The climate is **continental** to **arid desert**, with big swings between day and night temperatures. **Mendoza** holds about **75%** of the country's vineyards.",
+     "where": "Argentina sits east of the **Andes** and west of the **Atlantic**. The Andes block the rain (a **rain shadow**), so the climate is **continental** to **arid desert**, with big swings between day and night temperatures. **Mendoza** holds about **75%** of the country's vineyards, revitalized by **Italian** and **Spanish** immigrants.",
      "stopsTitle": "Water first, then two subregions",
      "stops": [
       {
@@ -1349,6 +1992,11 @@
        "name": "Uco Valley",
        "note": "up high",
        "text": "Some of Mendoza's **highest** vineyards, up to about 5,250 feet. The wines are elegant and age-worthy."
+      },
+      {
+       "name": "In the cellar",
+       "note": "oak",
+       "text": "New or used, **French** or **American** oak is common for **Malbec** and **Cabernet Sauvignon**. **Catena** is the producer the Court names."
       }
      ],
      "visual": 1,
@@ -1428,40 +2076,45 @@
      },
      {
       "big": "CASABLANCA",
-      "line": "is the cool pioneer for Sauvignon Blanc and Chardonnay."
+      "line": "in the Aconcagua DO is the cool pioneer for Sauvignon Blanc."
      },
      {
-      "big": "VALLE CENTRAL",
-      "line": "makes about 80% of Chile's wine."
-     },
-     {
-      "big": "MAIPO",
-      "line": "surrounds Santiago and is known for Cabernet Sauvignon."
+      "big": "HUMBOLDT",
+      "line": "is the cold current from Antarctica that cools the coast."
      },
      {
       "big": "NO PHYLLOXERA",
-      "line": "so most of Chile's vines grow ungrafted."
+      "line": "thanks to sandy soil, so most vines grow ungrafted."
+     },
+     {
+      "big": "DO",
+      "line": "names a place only: Region, Subregion, Zone, Area."
      }
     ],
     "read": {
      "bigIdea": "Chile is a long, thin strip cooled by the Pacific.",
-     "where": "Chile runs **2,670 miles** north to south, from hot desert to cold. The **Andes** rise on one side and the Pacific on the other. The cold **Humboldt Current** and Pacific fog cool the coast.",
-     "stopsTitle": "Cool coast, warm middle",
+     "where": "Chile runs **2,670 miles** down the west coast of South America, from the **Atacama Desert** in the hot north to the cold south. The **Andes** add height and big day-night swings, and the **Coastal Range** makes a rain shadow. The cold **Humboldt Current** and Pacific fog cool the coast.",
+     "stopsTitle": "Coast, soil, law and history",
      "stops": [
       {
-       "name": "Casablanca",
-       "note": "coastal, in Aconcagua",
-       "text": "Cool and **maritime**, west of the **Coastal Range**, with Pacific fog. It is Chile's pioneering cool-climate area for **Sauvignon Blanc** and **Chardonnay**."
+       "name": "Aconcagua · Casablanca",
+       "note": "coastal",
+       "text": "**Casablanca** is a subregion of the **Aconcagua DO**. It is cool and **maritime**, west of the **Coastal Range**, with Pacific fog: Chile's pioneering cool-climate area for **Sauvignon Blanc**, **Chardonnay** and **Pinot Noir**."
       },
       {
-       "name": "Valle Central",
-       "note": "inland",
-       "text": "Warm to hot, between the Coastal Range and the Andes. It makes about **80%** of Chile's wine: **Cabernet Sauvignon**, **Carménère** and **Merlot**."
+       "name": "Sand and snowmelt",
+       "note": "how vines grow",
+       "text": "Chile has **no phylloxera**, which the Court puts down to its **sandy soil**, so most vines are **ungrafted**. **Irrigation** from the Andes is essential."
       },
       {
-       "name": "Maipo",
-       "note": "around Santiago",
-       "text": "Surrounds **Santiago**, where most of the big historic wineries are. Its grape is **Cabernet Sauvignon**."
+       "name": "The DO",
+       "note": "on the label",
+       "text": "A **Denominación de Origen (DO)** names a place only, with no other rules. From biggest to smallest: **Region**, **Subregion**, **Zone**, **Area**."
+      },
+      {
+       "name": "History",
+       "note": "500 years",
+       "text": "Grapes grew in the Spanish colonies by the **1500s**, and Spanish laws restricted wine in the 1600s. After independence in the **1800s**, European immigrants grew the vineyards, and foreign investment followed in the **1970s-80s**."
       }
      ],
      "visual": 0,
@@ -1473,6 +2126,63 @@
      7,
      9,
      11
+    ]
+   },
+   {
+    "name": "Chile · Valle Central",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "VALLE CENTRAL",
+      "line": "makes about 80% of Chile's wine."
+     },
+     {
+      "big": "WARM TO HOT",
+      "line": "inland, between the Coastal Range and the Andes."
+     },
+     {
+      "big": "MAIPO",
+      "line": "surrounds Santiago; most historic wineries are here."
+     },
+     {
+      "big": "THREE REDS",
+      "line": "Cabernet Sauvignon, Carménère and Merlot."
+     },
+     {
+      "big": "BIG AND RIPE",
+      "line": "Chilean reds are often intense, fruity and high in alcohol."
+     }
+    ],
+    "read": {
+     "bigIdea": "Chile's warm middle makes most of its wine.",
+     "where": "The **Valle Central** lies between the **Coastal Range** and the **Andes**, so it is **warm to hot**. It makes about **80%** of Chile's wine. The wines are often **big, intense and fruit-driven**, with high alcohol.",
+     "stopsTitle": "The grapes, then two valleys",
+     "stops": [
+      {
+       "name": "Three reds",
+       "note": "the Court's list",
+       "text": "**Cabernet Sauvignon**, **Carménère** and **Merlot** are the grapes the Court names for the Valle Central."
+      },
+      {
+       "name": "Maipo",
+       "note": "around Santiago",
+       "text": "The **Valle de Maipo** surrounds **Santiago** in the Maipo River Valley. Most of Chile's big historic wineries are here, and its grape is **Cabernet Sauvignon**."
+      },
+      {
+       "name": "Colchagua",
+       "note": "Carménère",
+       "text": "**Carménère** vanished from Europe and turned up among Chile's Merlot vines. **Colchagua** has the largest area of it."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The three reds to know:",
+     "mixup": "**Valle Central** is warm and inland. **Casablanca** is cool and coastal, in the Aconcagua DO.",
+     "sayIt": "A Maipo Cabernet: ripe, full and fruit-forward."
+    },
+    "check": [
+     10,
+     13,
+     34
     ]
    },
    {
@@ -1507,9 +2217,14 @@
     ],
     "read": {
      "bigIdea": "Australia is huge and hot; the best vines hug the coast.",
-     "where": "Australia is about the size of the **continental U.S.** The interior is hot and dry, so the best vineyards sit near the cooler **coast**. The first vines were planted in **1788**, near Sydney.",
+     "where": "Australia is about the size of the **continental U.S.** Climates run from **cool maritime** to **warm Mediterranean** to **hot and arid**. The dry interior needs **irrigation**, so the best vineyards sit near the cooler **coast**, helped by **elevation** in South Australia and **currents from Antarctica**.",
      "stopsTitle": "Read the label",
      "stops": [
+      {
+       "name": "The grapes",
+       "note": "the Court's list",
+       "text": "Reds: **Shiraz**, **Grenache** and **Cabernet Sauvignon**. Whites: **Riesling**, **Chardonnay** and the **Sauvignon Blanc/Semillon** blend."
+      },
       {
        "name": "GI",
        "note": "where it's from",
@@ -1523,7 +2238,12 @@
       {
        "name": "South Eastern Australia",
        "note": "the big blend",
-       "text": "A high-volume **super GI** for blending across regions. It includes **Riverina** and **Murray Darling**."
+       "text": "A high-volume **super GI** (a **superzone**) for blending across regions. It includes **Riverina** and **Murray Darling**."
+      },
+      {
+       "name": "History",
+       "note": "1788 to today",
+       "text": "The first vines went in near **Sydney** in **1788**. After **phylloxera**, the industry moved west, helped by quarantine. **Sweet and fortified** wines led until the late 20th century. Australians bought the French company that invented the **Stelvin** screw cap, and the Court also lists **Yellow Tail**'s business model."
       }
      ],
      "visual": 1,
@@ -1706,23 +2426,33 @@
     ],
     "read": {
      "bigIdea": "Two islands, a cool climate, high-acid wines.",
-     "where": "New Zealand is two islands about **2,500 miles** southeast of Australia. The **South Island** is cool, with long hours of sunlight. The **North Island** is warmer and more humid.",
+     "where": "New Zealand is two islands about **2,500 miles** southeast of Australia, with the **Southern Alps** as their key feature. The **South Island** is cool, with long hours of sunlight. The **North Island** is warmer and more humid.",
      "stopsTitle": "Three regions to know",
      "stops": [
       {
        "name": "Marlborough",
        "note": "South Island",
-       "text": "About two-thirds of the country's vines. Famous for **Sauvignon Blanc**: red capsicum, gooseberry and passionfruit."
+       "text": "About two-thirds of the country's vines, in a **cool maritime** climate with some protection. Famous for **Sauvignon Blanc**: red capsicum, gooseberry and passionfruit. Pair these high-acid, unoaked whites with seafood, starters and salads; they can overpower very delicate dishes."
       },
       {
        "name": "Central Otago",
        "note": "South Island, furthest south",
-       "text": "The **southernmost** wine region. **Pinot Noir** is its flagship."
+       "text": "The **southernmost** wine region, with a **cool continental** climate. **Pinot Noir** is its flagship."
       },
       {
        "name": "Hawke's Bay",
        "note": "North Island",
-       "text": "The second-largest region, best known for **red blends** and **Chardonnay**. The **Gimblett Gravels** sit on its plains."
+       "text": "The second-largest region, with a **moderate maritime** climate. Best known for **red blends** and **Chardonnay**; the **Gimblett Gravels** sit on its plains."
+      },
+      {
+       "name": "The label",
+       "note": "GIs and 85%",
+       "text": "A New Zealand **GI** is a registered place name only: the Court notes **no minimums and no rules**. GIs run from **New Zealand** to **North Island** and **South Island**, down to regions like Marlborough. To name a grape, the wine must be at least **85%** that grape."
+      },
+      {
+       "name": "History",
+       "note": "young and inventive",
+       "text": "New Zealand's wine industry is one of the **youngest** in the world. The Court's history list: the **temperance movement**, **innovation**, and the **screwcap initiative**."
       }
      ],
      "visual": 0,
@@ -1761,14 +2491,14 @@
       "line": "is a southeast wind that helps keep vineyard disease down."
      },
      {
-      "big": "STELLENBOSCH",
-      "line": "is known for its blended reds."
+      "big": "KWV",
+      "line": "the co-operative winemakers' union, helped write the wine laws."
      }
     ],
     "read": {
      "bigIdea": "The Cape: cooled by two oceans and a wind.",
-     "where": "Most vineyards are in the **Western Cape**, near the coast. The climate is **Mediterranean**, cooled by the Atlantic and Indian Oceans, the cold **Benguela Current** and a wind called the **Cape Doctor**. Wine was first made from Cape grapes in **1659**.",
-     "stopsTitle": "Two grapes, then the places",
+     "where": "The **Western Cape** is the heart of South African wine. The climate is **maritime** on the coast and **Mediterranean** to hot inland, cooled by the **Atlantic** and **Indian** Oceans, the cold **Benguela Current** and a wind called the **Cape Doctor**. **Table Mountain** rises over Cape Town.",
+     "stopsTitle": "Two grapes, the label, then history",
      "stops": [
       {
        "name": "Chenin Blanc",
@@ -1781,19 +2511,14 @@
        "text": "A cross of **Pinot Noir** and **Cinsaut**, created in **1925**. A **Cape blend** is usually 30 to 70% Pinotage."
       },
       {
-       "name": "Stellenbosch",
-       "note": "blended reds",
-       "text": "More than 200 producers, known for the quality of its **blended reds**."
+       "name": "Wine of Origin",
+       "note": "the label law",
+       "text": "**W.O.** plus a place means **100%** of the grapes came from there, after a rigorous certification. The units run from **Geographical Unit** to **Region**, **District** and **Ward**."
       },
       {
-       "name": "Constantia",
-       "note": "where it began",
-       "text": "Called the **cradle** of winemaking in the Cape."
-      },
-      {
-       "name": "Elgin and Walker Bay",
-       "note": "cooler spots",
-       "text": "**Elgin** is high and cool, once known for apples. **Walker Bay** is known for **Chardonnay** and **Pinot Noir**."
+       "name": "History",
+       "note": "from fortified to fine",
+       "text": "Wine was first made from Cape grapes in **1659**, in the Dutch settlement, and **Simon van der Stel** planted Constantia in **1685**. **Phylloxera** and the **Anglo-Boer War** hit hard, and the **KWV** co-operative came to shape the laws. **Apartheid** hurt exports. The Cape has moved from **brandy**, sweet, oxidative and **fortified** wines to world-class table wines."
       }
      ],
      "visual": 1,
@@ -1805,6 +2530,73 @@
      26,
      27,
      28
+    ]
+   },
+   {
+    "name": "South Africa · Cape Town to Walker Bay",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "COASTAL REGION",
+      "line": "holds Cape Town, Stellenbosch, Paarl and Swartland."
+     },
+     {
+      "big": "CONSTANTIA",
+      "line": "is a Cape Town ward, called the cradle of Cape wine."
+     },
+     {
+      "big": "STELLENBOSCH",
+      "line": "is known for its blended reds."
+     },
+     {
+      "big": "CAPE SOUTH COAST",
+      "line": "holds Elgin and Walker Bay."
+     },
+     {
+      "big": "WALKER BAY",
+      "line": "is known for Chardonnay and Pinot Noir."
+     }
+    ],
+    "read": {
+     "bigIdea": "Seven names, two regions, one Western Cape.",
+     "where": "The Court lists places in two regions of the **Western Cape**. The **Coastal Region** holds **Cape Town**, **Stellenbosch**, **Paarl** and **Swartland**. The **Cape South Coast** holds **Elgin** and **Walker Bay**.",
+     "stopsTitle": "Coastal Region first, then the south coast",
+     "stops": [
+      {
+       "name": "Cape Town · Constantia",
+       "note": "where it began",
+       "text": "**Constantia** is a ward in the **Cape Town** district, called the **cradle** of Cape winemaking. Simon van der Stel planted some **10,000** vines here in **1685**. Breezes off **False Bay** keep it cool, and **Sauvignon Blanc** stands out."
+      },
+      {
+       "name": "Stellenbosch",
+       "note": "blended reds",
+       "text": "More than 200 producers, known for the quality of its **blended reds**. **Simon van der Stel** founded the town in **1678**."
+      },
+      {
+       "name": "Paarl",
+       "note": "north of Stellenbosch",
+       "text": "WOSA names **Cabernet Sauvignon**, **Pinotage**, **Shiraz**, **Chardonnay** and **Chenin Blanc** as its best grapes. The valley floor is hot and often needs extra water."
+      },
+      {
+       "name": "Swartland",
+       "note": "robust reds",
+       "text": "Long a source of **robust, full-bodied reds** and high-quality **fortified** wines."
+      },
+      {
+       "name": "Elgin and Walker Bay",
+       "note": "Cape South Coast",
+       "text": "**Elgin** is high and cool, about an hour east of Cape Town, and was once known for apples. **Walker Bay** is known for **Chardonnay** and **Pinot Noir** from the **Hemel-en-Aarde Valley**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "All seven on one card:",
+     "mixup": "**Stellenbosch** and **Paarl** are Coastal Region districts. **Elgin** and **Walker Bay** are on the **Cape South Coast**.",
+     "sayIt": "A Walker Bay Pinot Noir, from the cool south coast of the Cape."
+    },
+    "check": [
+     42,
+     43,
+     44
     ]
    }
   ]

@@ -3,8 +3,8 @@
  "slug": "italy",
  "title": "Italy",
  "script": "Chapter five",
- "lead": "How Italian wine labels are tiered, and the regions the Court covers at Level 1: Piedmont, Lombardy, the northeast, Veneto, Tuscany, central and southern Italy, and the islands.",
- "minutes": 25,
+ "lead": "How Italian wine labels are tiered, and the regions the Court covers at Level 1: Piedmont, Lombardy, the northeast, Veneto, Tuscany, Marche, Campania, the rest of central and southern Italy, and the islands.",
+ "minutes": 30,
  "intro": {
   "script": "Start here",
   "title": "THE LABEL TIERS",
@@ -28,6 +28,314 @@
    }
   ]
  },
+ "court": {
+  "section": 5,
+  "outline": [
+   "Piedmont",
+   "Lombardy",
+   "Trentino-Alto Adige",
+   "Veneto",
+   "Friuli-Venezia-Giulia",
+   "Tuscany",
+   "Marche",
+   "Campania",
+   "Sicily"
+  ],
+  "outcome": "Piedmont: After studying this section, a student will know the grape varieties, appellations, and styles of important Piedmont wines. | Lombardy & Emilia-Romagna: After studying this section, a student will understand the style of Franciacorta, its grape varieties, aging requirements, and how it compares to Champagne. | Trentino-Alto Adige / Friuli / Veneto: After studying this section, a student will know the major DOC/DOCGs in Northeast Italy, be able to match grape varieties with their regions, and understand general labeling terms. | Tuscany: After studying this section, a student will know the grape varieties, appellations, and styles of important Tuscan wines. | Central & Southern Italy: After studying this section, a student will understand and recognize the regions of Central and Southern Italy and be able to match grape varieties to major DOC/DOCGs. | Sicily & Sardinia: After studying this section, a student will be able to locate Sicily and Sardinia on a map, understand the climate of the regions, and know the major grape varieties grown.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "Piedmont · Geography: Location",
+    "guide": "On the border of Switzerland and France.",
+    "where": "Piedmont"
+   },
+   {
+    "topic": "Piedmont · Climate",
+    "guide": "Continental.",
+    "where": "Piedmont"
+   },
+   {
+    "topic": "Piedmont · Physical feature",
+    "guide": "Alps and Apennines make a rain shadow; Piedmont means Alpine foothills; Po River valley.",
+    "where": "Piedmont"
+   },
+   {
+    "topic": "Piedmont · White grapes",
+    "guide": "Moscato, Arneis, Cortese.",
+    "where": "Piedmont"
+   },
+   {
+    "topic": "Piedmont · Red grapes",
+    "guide": "Nebbiolo, Barbera, Dolcetto, Brachetto.",
+    "where": "Piedmont"
+   },
+   {
+    "topic": "Piedmont · Winemaking",
+    "guide": "Traditional aging in large barrels; Barolo and Barbaresco have legal aging minimums.",
+    "where": "Piedmont"
+   },
+   {
+    "topic": "Piedmont · Classification",
+    "guide": "IGP, DOC, DOCG.",
+    "where": "intro: The label tiers"
+   },
+   {
+    "topic": "Piedmont · DOCGs",
+    "guide": "Barolo, Barbaresco (Nebbiolo), Moscato d'Asti, Gavi (Cortese), Barbera d'Asti.",
+    "where": "Piedmont"
+   },
+   {
+    "topic": "Piedmont · General terms",
+    "guide": "Nebbia: the fog off the Alpine foothills.",
+    "where": "Piedmont"
+   },
+   {
+    "topic": "Piedmont · Style",
+    "guide": "Every style: dry, sweet, sparkling, red, white.",
+    "where": "Piedmont"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Location",
+    "guide": "Lombardy on the Swiss border; Emilia-Romagna straddles north and central Italy.",
+    "where": "Lombardy"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Climate",
+    "guide": "Cool continental.",
+    "where": "Lombardy"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Physical feature",
+    "guide": "Lombardy: Alpine foothills and many lakes. Emilia-Romagna: Apennines.",
+    "where": "Lombardy"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Winemaking",
+    "guide": "Metodo Classico sparkling wines.",
+    "where": "Lombardy"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Grapes",
+    "guide": "Chardonnay, Pinot Bianco; red Pinot Nero.",
+    "where": "Lombardy"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Classification",
+    "guide": "IGP, DOC, DOCG.",
+    "where": "intro: The label tiers"
+   },
+   {
+    "topic": "Lombardy · Franciacorta DOCG",
+    "guide": "Pinot Nero, Chardonnay, Pinot Bianco; Metodo Classico spumante; 18 months on lees, 25 total.",
+    "where": "Lombardy"
+   },
+   {
+    "topic": "Lombardy · Label terms",
+    "guide": "Metodo Classico, Spumante, Millesimato, Frizzante.",
+    "where": "Lombardy"
+   },
+   {
+    "topic": "Lombardy · Learning outcome",
+    "guide": "Compare Franciacorta with Champagne.",
+    "where": "Lombardy"
+   },
+   {
+    "topic": "Northeast · Location",
+    "guide": "Trentino-Alto Adige borders Austria and Switzerland; Friuli borders Slovenia; Veneto holds Venice and Verona.",
+    "where": "Trentino-Alto Adige and Friuli; Veneto"
+   },
+   {
+    "topic": "Northeast · Climate",
+    "guide": "Trentino-Alto Adige and Friuli cool continental; Veneto cool Mediterranean.",
+    "where": "Trentino-Alto Adige and Friuli; Veneto"
+   },
+   {
+    "topic": "Northeast · Physical feature",
+    "guide": "The Alps (Trentino-Alto Adige, Friuli).",
+    "where": "Trentino-Alto Adige and Friuli"
+   },
+   {
+    "topic": "Northeast · Winemaking",
+    "guide": "Single-grape wines, grape named on the label.",
+    "where": "Trentino-Alto Adige and Friuli"
+   },
+   {
+    "topic": "Northeast · White grapes",
+    "guide": "Pinot Grigio, Chardonnay, Sauvignon, Pinot Bianco; Veneto Garganega, Glera.",
+    "where": "Trentino-Alto Adige and Friuli; Veneto"
+   },
+   {
+    "topic": "Northeast · Red grapes",
+    "guide": "Pinot Nero (T-AA), Merlot (Friuli), Corvina and Rondinella (Veneto).",
+    "where": "Trentino-Alto Adige and Friuli; Veneto"
+   },
+   {
+    "topic": "Northeast · Classification",
+    "guide": "IGP, DOC, DOCG.",
+    "where": "intro: The label tiers"
+   },
+   {
+    "topic": "Northeast · Delle Venezie DOC / Trevenezie IGP",
+    "guide": "Covers Veneto, Friuli and Trentino; most T-AA wine is DOC.",
+    "where": "Trentino-Alto Adige and Friuli"
+   },
+   {
+    "topic": "Veneto · DOCs and DOCGs",
+    "guide": "Prosecco DOC (Charmat, Glera), Soave/Soave Superiore, Valpolicella, Amarone (appassimento, 14%+).",
+    "where": "Veneto"
+   },
+   {
+    "topic": "Veneto · General terms",
+    "guide": "Classico, Superiore, Secco, Amabile, Charmat, Appassimento.",
+    "where": "Veneto"
+   },
+   {
+    "topic": "Tuscany · Location",
+    "guide": "From the Ligurian Sea west to the Apennine foothills east.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · Climate",
+    "guide": "Continental/maritime, more maritime near the coast.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · Physical feature",
+    "guide": "Apennine Mountains.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · White grapes",
+    "guide": "Trebbiano, Vermentino, Vernaccia.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · Red grapes",
+    "guide": "Sangiovese; Brunello (Sangiovese Grosso).",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · Soil",
+    "guide": "Galestro.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · Winemaking",
+    "guide": "Brunello's wine law sets minimum aging.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · Style",
+    "guide": "Dry reds, dry whites, sweet Vin Santo.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · Classification",
+    "guide": "IGP, DOC, DOCG.",
+    "where": "intro: The label tiers"
+   },
+   {
+    "topic": "Tuscany · DOCGs",
+    "guide": "Chianti, Chianti Classico, Brunello and Rosso di Montalcino, Vin Santo.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · Label terms",
+    "guide": "Superiore (more alcohol), Classico (historic center), Riserva (longer aging).",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · General terms",
+    "guide": "Super Tuscan: Bordeaux blends, Bordeaux with Sangiovese, or pure Sangiovese.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · Producers",
+    "guide": "Antinori, Ruffino, Sassicaia.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Tuscany · History & lore",
+    "guide": "Super Tuscan history; Gallo Nero on Chianti Classico.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Central & Southern · Location",
+    "guide": "Row repeats Tuscany's text (likely a guide error).",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Central & Southern · Appellations",
+    "guide": "Umbria, Marche, Abruzzo; Campania's Taurasi, Greco di Tufo, Fiano di Avellino; Puglia, Basilicata, Calabria.",
+    "where": "Central and Southern Italy; added: Marche; added: Campania"
+   },
+   {
+    "topic": "Central & Southern · Climate",
+    "guide": "Center maritime on the coast, continental inland; south Mediterranean.",
+    "where": "Central and Southern Italy; Marche; Campania"
+   },
+   {
+    "topic": "Central & Southern · Physical feature",
+    "guide": "Central: Apennine Mountains.",
+    "where": "Central and Southern Italy; Marche"
+   },
+   {
+    "topic": "Central & Southern · White grapes",
+    "guide": "Fiano, Greco, Verdicchio.",
+    "where": "Central and Southern Italy; Marche; Campania"
+   },
+   {
+    "topic": "Central & Southern · Red grapes",
+    "guide": "Aglianico, Montepulciano, Sagrantino, Primitivo.",
+    "where": "Central and Southern Italy; Campania"
+   },
+   {
+    "topic": "Central & Southern · Classification",
+    "guide": "IGP, DOC, DOCG.",
+    "where": "intro: The label tiers"
+   },
+   {
+    "topic": "Central & Southern · Label terms",
+    "guide": "Superiore: higher alcohol; Riserva: longer aging.",
+    "where": "Tuscany"
+   },
+   {
+    "topic": "Sicily & Sardinia · Location",
+    "guide": "Sicily off Italy's southern tip; Sardinia south of France, west of Italy; locate on a map.",
+    "where": "Sicily and Sardinia"
+   },
+   {
+    "topic": "Sicily & Sardinia · Climate",
+    "guide": "Mediterranean.",
+    "where": "Sicily and Sardinia"
+   },
+   {
+    "topic": "Sicily & Sardinia · Physical feature",
+    "guide": "Mount Etna.",
+    "where": "Sicily and Sardinia"
+   },
+   {
+    "topic": "Sicily & Sardinia · Soil",
+    "guide": "Volcanic on Etna.",
+    "where": "Sicily and Sardinia"
+   },
+   {
+    "topic": "Sicily & Sardinia · White grapes",
+    "guide": "Sicily Carricante; Sardinia Vermentino.",
+    "where": "Sicily and Sardinia"
+   },
+   {
+    "topic": "Sicily & Sardinia · Red grapes",
+    "guide": "Nerello Mascalese, Nero d'Avola, Frappato; Sardinia Cannonau.",
+    "where": "Sicily and Sardinia"
+   },
+   {
+    "topic": "Sicily & Sardinia · Classification",
+    "guide": "IGP, DOC, DOCG; Sicily (Sicilia) DOC.",
+    "where": "Sicily and Sardinia"
+   }
+  ]
+ },
  "sections": [
   {
    "name": "Piedmont",
@@ -35,7 +343,7 @@
    "lines": [
     {
      "label": "Place",
-     "text": "On the border of France and Switzerland. The name means the foothills of the Alps. The climate is continental, and the Alps and Apennines make a rain shadow."
+     "text": "On the border of France and Switzerland. The name means the foothills of the Alps. The climate is continental, and the Alps and Apennines make a rain shadow. The Po River valley is here too."
     },
     {
      "label": "Style",
@@ -112,11 +420,11 @@
    "lines": [
     {
      "label": "Place",
-     "text": "Northern Italy, on the Swiss border, in the foothills of the Alps. The climate is cool continental, and many lakes shape it."
+     "text": "Northern Italy, on the Swiss border, in the foothills of the Alps. The climate is cool continental, and many lakes shape it. The Court pairs it with Emilia-Romagna, which straddles north and central Italy, with the Apennines."
     },
     {
      "label": "Franciacorta",
-     "text": "Franciacorta DOCG is Metodo Classico sparkling wine: the second fermentation happens in the bottle. It comes from the province of Brescia, by Lake Iseo. The Court asks you to compare it with Champagne."
+     "text": "Franciacorta DOCG is Metodo Classico sparkling wine: the second fermentation happens in the bottle. It comes from the province of Brescia, by Lake Iseo. The Court asks you to compare it with Champagne. Like Champagne, it ferments in the bottle; it must age at least 25 months from harvest, 18 on the lees. Labels may say Spumante (fully sparkling) or Frizzante (lighter bubbles)."
     }
    ],
    "chips": {
@@ -166,6 +474,21 @@
       }
      ],
      "note": "Riserva is always a vintage wine."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "FRANCIACORTA",
+       "title": "Metodo Classico, Lombardy",
+       "text": "Chardonnay, Pinot Nero, Pinot Bianco\nAt least 18 months on the lees\nAt least 25 months from harvest"
+      },
+      {
+       "label": "CHAMPAGNE",
+       "title": "The same method, in France",
+       "text": "Chardonnay, Pinot Noir, Meunier\nAt least 12 months on the lees\nAt least 15 months in all (non-vintage)"
+      }
+     ]
     }
    ]
   },
@@ -197,7 +520,8 @@
     "The grape is usually on the label in both regions.",
     "Over 96% of Alto Adige vineyards are DOC. Alto Adige DOC can also be labeled Südtirol.",
     "In Friuli, Sauvignon Blanc is often just called Sauvignon.",
-    "Delle Venezie DOC covers Veneto, Friuli and Trentino, and is for Pinot Grigio."
+    "Delle Venezie DOC covers Veneto, Friuli and Trentino, and is for Pinot Grigio.",
+    "Trevenezie IGP covers the same area as Delle Venezie DOC: Veneto, Friuli and Trentino."
    ],
    "visuals": [
     {
@@ -308,7 +632,7 @@
        "meta": "Dried grapes · rich red"
       }
      ],
-     "note": "Classico on a label means the historic center of the zone."
+     "note": "Classico on a label means the historic center of the zone. Secco, amabile and dolce run from driest to sweetest."
     }
    ]
   },
@@ -322,7 +646,7 @@
     },
     {
      "label": "Style",
-     "text": "Mostly dry reds from Sangiovese, plus dry whites and sweet Vin Santo. Super Tuscans can be Bordeaux-grape blends, Bordeaux grapes with Sangiovese, or pure Sangiovese."
+     "text": "Mostly dry reds from Sangiovese, plus dry whites and sweet Vin Santo. Super Tuscans can be Bordeaux-grape blends, Bordeaux grapes with Sangiovese, or pure Sangiovese. Whites come from Trebbiano, Vermentino and Vernaccia. Producers to know: Antinori, Ruffino, Sassicaia."
     }
    ],
    "chips": {
@@ -331,7 +655,10 @@
      "Sangiovese",
      "Brunello (Sangiovese Grosso)",
      "Cabernet Sauvignon",
-     "Merlot"
+     "Merlot",
+     "Trebbiano",
+     "Vermentino",
+     "Vernaccia"
     ]
    },
    "know": [
@@ -386,6 +713,131 @@
       }
      ],
      "note": "Rosso di Montalcino is Brunello's younger DOC sibling, released the year after harvest."
+    }
+   ]
+  },
+  {
+   "name": "Marche",
+   "lines": [
+    {
+     "label": "Place",
+     "text": "Central Italy, on the Adriatic coast. Like the rest of the center, it is maritime near the sea and continental inland, with the Apennines. Vines grow only on sunny hill slopes."
+    },
+    {
+     "label": "Wines",
+     "text": "Verdicchio is the flagship white, from two zones: Castelli di Jesi and Matelica. The red to know is Montepulciano, in Rosso Conero and Conero DOCG."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Verdicchio",
+     "Montepulciano"
+    ]
+   },
+   "know": [
+    "Verdicchio is the Marche's flagship white grape.",
+    "Verdicchio dei Castelli di Jesi and Verdicchio di Matelica are DOCs of at least 85% Verdicchio. Each has a Riserva DOCG.",
+    "Matelica's vineyards sit higher, with a more continental climate than Castelli di Jesi.",
+    "Verdicchio is dry and light-bodied, with lively acidity and a note of almond.",
+    "Rosso Conero DOC and Conero DOCG are at least 85% Montepulciano."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "CASTELLI DI JESI",
+       "title": "Verdicchio near the coast",
+       "text": "Hills inland from Ancona\nAt least 85% Verdicchio\nRiserva is a DOCG"
+      },
+      {
+       "label": "MATELICA",
+       "title": "Verdicchio up high",
+       "text": "Higher vineyards, further inland\nMore continental, sheltered from the sea\nRiserva is a DOCG"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "The Marche's five DOCGs",
+     "rows": [
+      {
+       "name": "Castelli di Jesi Verdicchio Riserva",
+       "meta": "Verdicchio · white"
+      },
+      {
+       "name": "Verdicchio di Matelica Riserva",
+       "meta": "Verdicchio · white"
+      },
+      {
+       "name": "Cònero",
+       "meta": "Montepulciano · red"
+      },
+      {
+       "name": "Offida",
+       "meta": "Pecorino or Passerina · white; Montepulciano · red"
+      },
+      {
+       "name": "Vernaccia di Serrapetrona",
+       "meta": "Vernaccia Nera · red"
+      }
+     ],
+     "note": "Each is at least 85% of the grape shown."
+    }
+   ]
+  },
+  {
+   "name": "Campania",
+   "book": "wine/italy/campania",
+   "lines": [
+    {
+     "label": "Place",
+     "text": "Southern Italy, with a Mediterranean climate. Taurasi, Fiano di Avellino and Greco di Tufo all come from Irpinia, in the province of Avellino."
+    },
+    {
+     "label": "Grapes",
+     "text": "Aglianico is the red: full-bodied and tannic, and best with age. Fiano and Greco are the whites."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Aglianico",
+     "Fiano",
+     "Greco"
+    ]
+   },
+   "know": [
+    "Taurasi DOCG is a red of at least 85% Aglianico.",
+    "Fiano di Avellino and Greco di Tufo are white DOCGs, at least 85% Fiano and Greco.",
+    "All three come from Irpinia, in the province of Avellino.",
+    "Aglianico del Taburno is Campania's fourth DOCG, also from Aglianico.",
+    "Aglianico has high tannin and medium-high acidity."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Campania's four DOCGs",
+     "rows": [
+      {
+       "name": "Taurasi",
+       "meta": "Aglianico · red"
+      },
+      {
+       "name": "Aglianico del Taburno",
+       "meta": "Aglianico · red"
+      },
+      {
+       "name": "Fiano di Avellino",
+       "meta": "Fiano · white"
+      },
+      {
+       "name": "Greco di Tufo",
+       "meta": "Greco · white"
+      }
+     ],
+     "note": "Each is at least 85% of the grape shown."
     }
    ]
   },
@@ -534,7 +986,7 @@
    "why": "Same grape and town. Brunello (DOCG) waits about five years for release; Rosso (DOC) is released the year after harvest."
   }
  ],
- "sources": "Court of Master Sommeliers, Americas Curriculum Guide, Course Guide and Grape Variety Profiles; Italian Law 238/2016; Regione Veneto; Federdoc; and the consortia for Barolo and Barbaresco (Langhe), Asti, Franciacorta, Alto Adige, Delle Venezie, Valpolicella, Soave, Prosecco DOC, Conegliano Valdobbiadene, Chianti Classico, Chianti, Brunello di Montalcino, Vino Nobile di Montepulciano and Bolgheri; Wine Folly as a labeled secondary source. Checked Oct 31, 2026.",
+ "sources": "Court of Master Sommeliers, Americas Curriculum Guide, Course Guide and Grape Variety Profiles; Italian Law 238/2016; Regione Veneto; Federdoc; and the consortia for Barolo and Barbaresco (Langhe), Asti, Franciacorta, Alto Adige, Delle Venezie, Valpolicella, Soave, Prosecco DOC, Conegliano Valdobbiadene, Chianti Classico, Chianti, Brunello di Montalcino, Vino Nobile di Montepulciano and Bolgheri; Wine Folly as a labeled secondary source. Checked Oct 31, 2026. Court alignment pass Nov 2, 2026: added Istituto Marchigiano di Tutela Vini (IMT), Regione Campania, Gazzetta Ufficiale, Comité Champagne, and GuildSomm as a labeled secondary source.",
  "cards": [
   {
    "q": "What is the top tier of Italian wine law?",
@@ -875,6 +1327,116 @@
     "Aglianico and Fiano"
    ],
    "source": "https://www.federdoc.com/new/regioni/en/Sicily.pdf"
+  },
+  {
+   "q": "Per the Court, what is Franciacorta's minimum total aging, counted from harvest?",
+   "answer": "25 months",
+   "wrong": [
+    "15 months",
+    "18 months",
+    "36 months"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=29"
+  },
+  {
+   "q": "On an Italian sparkling wine label, what does 'frizzante' mean?",
+   "answer": "Lightly sparkling, with softer bubbles than spumante",
+   "wrong": [
+    "Fully sparkling, fermented in the bottle",
+    "Still, with no bubbles",
+    "Sweet, made from dried grapes"
+   ],
+   "source": "https://www.prosecco.wine/en/prosecco/discover/types/"
+  },
+  {
+   "q": "Which IGP covers the same three-region area as Delle Venezie DOC?",
+   "answer": "Trevenezie IGP",
+   "wrong": [
+    "Toscana IGT",
+    "Terre Siciliane IGT",
+    "Puglia IGT"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=30"
+  },
+  {
+   "q": "Which order runs from driest to sweetest on an Italian label?",
+   "answer": "Secco, amabile, dolce",
+   "wrong": [
+    "Dolce, amabile, secco",
+    "Amabile, secco, dolce",
+    "Secco, dolce, amabile"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=29"
+  },
+  {
+   "q": "Which white grapes does the Court list for Tuscany?",
+   "answer": "Trebbiano, Vermentino, Vernaccia",
+   "wrong": [
+    "Garganega, Glera, Cortese",
+    "Fiano, Greco, Verdicchio",
+    "Arneis, Moscato, Cortese"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=32"
+  },
+  {
+   "q": "What is the Marche's flagship white grape?",
+   "answer": "Verdicchio",
+   "wrong": [
+    "Vermentino",
+    "Garganega",
+    "Fiano"
+   ],
+   "source": "https://imtdoc.it/en/imt-wine-in-the-plural/"
+  },
+  {
+   "q": "Which Verdicchio zone has higher vineyards and a more continental climate?",
+   "answer": "Verdicchio di Matelica",
+   "wrong": [
+    "Verdicchio dei Castelli di Jesi",
+    "Soave Classico",
+    "Gavi"
+   ],
+   "source": "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/italy-39-s-adriatic-coast-part-2-marche-and-abruzzo"
+  },
+  {
+   "q": "Rosso Conero DOC and Conero DOCG are made mainly from which grape?",
+   "answer": "Montepulciano",
+   "wrong": [
+    "Sangiovese",
+    "Verdicchio",
+    "Aglianico"
+   ],
+   "source": "https://www.federdoc.com/new/regioni/en/Marches.pdf"
+  },
+  {
+   "q": "Greco di Tufo DOCG is a white wine made mainly from which grape?",
+   "answer": "Greco",
+   "wrong": [
+    "Fiano",
+    "Falanghina",
+    "Verdicchio"
+   ],
+   "source": "https://www.federdoc.com/new/regioni/en/Campania.pdf"
+  },
+  {
+   "q": "Taurasi, Fiano di Avellino and Greco di Tufo all come from which part of Campania?",
+   "answer": "Irpinia, in the province of Avellino",
+   "wrong": [
+    "The Amalfi Coast",
+    "The island of Ischia",
+    "The slopes of Mount Vesuvius"
+   ],
+   "source": "https://agricoltura.regione.campania.it/pubblicazioni/pdf/DOCGGRE1.PDF"
+  },
+  {
+   "q": "Besides Taurasi, which Campania DOCG is made from Aglianico?",
+   "answer": "Aglianico del Taburno",
+   "wrong": [
+    "Greco di Tufo",
+    "Fiano di Avellino",
+    "Cerasuolo di Vittoria"
+   ],
+   "source": "https://www.federdoc.com/new/regioni/en/Campania.pdf"
   }
  ],
  "facts": [
@@ -1229,6 +1791,78 @@
   {
    "fact": "Federdoc, Sardinia: Cannonau di Sardegna DOC is min 85% Cannonau; Vermentino di Sardegna DOC min 85% Vermentino; Vermentino di Gallura DOCG min 95% Vermentino.",
    "source": "https://www.federdoc.com/new/regioni/en/Sardinia.pdf"
+  },
+  {
+   "fact": "Curriculum Guide, Lombardy & Emilia-Romagna, Introductory: Emilia-Romagna straddles north and central Italy; its mountains are the Apennines. Winemaking (Intro): Metodo Classico sparkling wines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=28"
+  },
+  {
+   "fact": "Curriculum Guide, Classic Method: the Classic / Traditional Method is also called the Champagne Method, Méthode Traditionnelle and Metodo Classico.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "fact": "Curriculum Guide, Champagne, Introductory aging: non-vintage 12 months on the lees, minimum 15 months total aging; vintage minimum 36 months total.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "Comité Champagne: the main Champagne grapes are Pinot Noir, Meunier (black) and Chardonnay (white).",
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties"
+  },
+  {
+   "fact": "Prosecco DOC consortium: Prosecco DOC comes as Spumante (the most widespread, with a fine, persistent perlage), Rosé, Frizzante (lighter, with a less persistent perlage) and Tranquillo (still).",
+   "source": "https://www.prosecco.wine/en/prosecco/discover/types/"
+  },
+  {
+   "fact": "Curriculum Guide, Certified column: Lambrusco sweetness levels are Secco, Amabile, Dolce (p29); Marsala label terms are Secco, Semi-Secco, Dolce (p36). Secco and Amabile are Introductory general terms for Veneto (p31).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=29"
+  },
+  {
+   "fact": "Curriculum Guide, Tuscany, Introductory: white grapes Trebbiano, Vermentino, Vernaccia.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=32"
+  },
+  {
+   "fact": "Curriculum Guide, Central & Southern Italy, Introductory: the Location row repeats Tuscany's text ('Extends from the Ligurian Sea in the west to the foothills of the Apennine Mountains in the east').",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=34"
+  },
+  {
+   "fact": "Istituto Marchigiano di Tutela Vini (IMT): the Marche's flagship wine is Verdicchio, with two appellations, one in Jesi and one in Matelica; IMT calls Verdicchio 'the most prized and most discreet white wine in Italy'. Other wines include Conero Riserva DOCG, Lacrima di Morro d'Alba, Vernaccia di Serrapetrona, Bianchello del Metauro, Pergola and Colli Maceratesi. Member wineries are in the provinces of Ancona, Macerata and Pesaro-Urbino.",
+   "source": "https://imtdoc.it/en/imt-wine-in-the-plural/"
+  },
+  {
+   "fact": "IMT: in the Marche, vines are only planted on hilly slopes that get sun in the first half of the day.",
+   "source": "https://imtdoc.it/en/marches-wines/"
+  },
+  {
+   "fact": "Federdoc, Marche: DOCGs are Castelli di Jesi Verdicchio Riserva (Verdicchio min 85%), Cònero (Montepulciano min 85%, Sangiovese max 15%), Offida (white: Passerina or Pecorino min 85%; red: Montepulciano min 85%), Verdicchio di Matelica Riserva (Verdicchio min 85%) and Vernaccia di Serrapetrona (Vernaccia Nera min 85%). DOCs include Verdicchio dei Castelli di Jesi and Verdicchio di Matelica (Verdicchio min 85%), Rosso Cònero (Montepulciano min 85%) and Rosso Piceno (Montepulciano 35-85%, Sangiovese 15-50%).",
+   "source": "https://www.federdoc.com/new/regioni/en/Marches.pdf"
+  },
+  {
+   "fact": "GuildSomm (secondary), 'Italy's Adriatic Coast, Part 2: Marche and Abruzzo': the Castelli di Jesi are a 30-minute drive south and inland from Ancona; Matelica's vineyards are generally higher, with a more continental climate than the Castelli di Jesi, protected from maritime influence; Verdicchio has razor-sharp acidity and bitter-almond notes, and good Verdicchio from both appellations can age; Monte Conero is a limestone promontory rising above the coast.",
+   "source": "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/italy-39-s-adriatic-coast-part-2-marche-and-abruzzo"
+  },
+  {
+   "fact": "Wine Folly (secondary): Verdicchio is primarily found in the Marche; dry, light-bodied, medium-high acidity, with almond-skin flavor.",
+   "source": "https://winefolly.com/grapes/verdicchio/"
+  },
+  {
+   "fact": "Regione Campania (Assessorato all'Agricoltura, Greco di Tufo publication, translated from Italian): Taurasi, Fiano di Avellino and Greco di Tufo are the three DOCG wines of Irpinia, in the province of Avellino; the town of Tufo is the epicenter of Greco di Tufo; Greco di Tufo was recognized as a DOC by presidential decree of 26 March 1970.",
+   "source": "https://agricoltura.regione.campania.it/pubblicazioni/pdf/DOCGGRE1.PDF"
+  },
+  {
+   "fact": "Federdoc, Campania: DOCGs are Aglianico del Taburno (Aglianico min 85%), Fiano di Avellino (Fiano min 85%), Greco di Tufo (Greco min 85%) and Taurasi (Aglianico min 85%). DOCs include Vesuvio, Costa d'Amalfi, Ischia, Falanghina del Sannio and Irpinia.",
+   "source": "https://www.federdoc.com/new/regioni/en/Campania.pdf"
+  },
+  {
+   "fact": "Gazzetta Ufficiale (decree of 27 Sept 2017): the Consorzio tutela vini d'Irpinia is recognized for the DOCGs Fiano di Avellino, Greco di Tufo and Taurasi and the DOC Irpinia.",
+   "source": "https://www.gazzettaufficiale.it/eli/id/2017/10/17/17A06967/sg"
+  },
+  {
+   "fact": "Wine Folly (secondary): Aglianico is a red grape of southern Italy ('the king of the south'); bone-dry, full body, high tannins, medium-high acidity; best enjoyed aged (10+ years).",
+   "source": "https://winefolly.com/grapes/aglianico/"
+  },
+  {
+   "fact": "Curriculum Guide, Central & Southern Italy, Certified column: young Taurasi and Sagrantino di Montefalco should be decanted.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=35"
   }
  ],
  "unverified": [
@@ -1245,7 +1879,12 @@
   "Delle Venezie DOC creation year: not stated on the consortium page fetched.",
   "Wine Folly says Toscana IGT 'will always be on the label' of a Super Tuscan. That conflicts with Bolgheri DOC and Bolgheri Sassicaia DOC wines, so the chapter does not repeat it.",
   "Chianti Classico Gran Selezione at 90% Sangiovese is from the consortium's current page. The CMS guide only asks students to know Gran Selezione exists. Search snippets mentioned further rule changes from 2027, not confirmed.",
-  "Federdoc's Piedmont regional sheet could not be found (404), so Piedmont grape rules rest on the CMS guide and the Langhe and Asti consortia."
+  "Federdoc's Piedmont regional sheet could not be found (404), so Piedmont grape rules rest on the CMS guide and the Langhe and Asti consortia.",
+  "The Court's Central & Southern Italy 'Location' row repeats Tuscany's text word for word; it looks like a copy error in the guide, so the chapter does not use it for central and southern Italy.",
+  "Marche on the Adriatic coast and the Jesi/Matelica contrast come from GuildSomm (secondary); the IMT pages fetched do not describe the geography.",
+  "Secco, amabile and dolce are given only as an order (driest to sweetest), from the Court's Lambrusco row. No official sugar limits were confirmed (EUR-Lex blocked automated access); retail sources disagree.",
+  "No Wine Folly, Court or official-body video was found for the Marche or Campania, so both new sections have video: null.",
+  "Producers Bellavista and Ca' del Bosco (Franciacorta) sit to the right of the column split in the PDF, so they are treated as Certified and not added."
  ],
  "v3": {
   "video": {
@@ -1287,13 +1926,13 @@
     ],
     "read": {
      "bigIdea": "Piedmont is Nebbiolo country: Barolo and Barbaresco.",
-     "where": "The name means **foothills of the Alps**, and it sits on the border with France and Switzerland. The climate is **continental**, and the Alps and Apennines make a **rain shadow**. Fog rolls off the foothills; locals call it **nebbia**. Every style is made here: dry, sweet, sparkling, red and white.",
+     "where": "The name means **foothills of the Alps**, and it sits on the border with France and Switzerland. The climate is **continental**, and the Alps and Apennines make a **rain shadow**. Fog rolls off the foothills; locals call it **nebbia**. Every style is made here: dry, sweet, sparkling, red and white. The **Po River** valley runs through it. Other grapes to know: **Dolcetto** and **Brachetto** (red) and **Arneis** (white).",
      "stopsTitle": "Four wines to know",
      "stops": [
       {
        "name": "Barolo",
        "note": "Nebbiolo, aged longer",
-       "text": "**Barolo DOCG** is a dry red from **100% Nebbiolo**, high in tannin and acidity. It comes from 11 villages, including Barolo and La Morra. The Court asks for at least **38 months** of aging, 18 of them in oak."
+       "text": "**Barolo DOCG** is a dry red from **100% Nebbiolo**, high in tannin and acidity. It comes from 11 villages, including Barolo and La Morra. The Court asks for at least **38 months** of aging, 18 of them in oak. Traditional producers age it in **large barrels**."
       },
       {
        "name": "Barbaresco",
@@ -1355,7 +1994,7 @@
     ],
     "read": {
      "bigIdea": "In Lombardy, the wine to know is Franciacorta.",
-     "where": "Lombardy is in northern Italy, on the **Swiss border**, in the foothills of the Alps. The climate is **cool continental**, and many lakes shape it. Franciacorta comes from the province of **Brescia**, next to **Lake Iseo**.",
+     "where": "Lombardy is in northern Italy, on the **Swiss border**, in the foothills of the Alps. The climate is **cool continental**, and many lakes shape it. Franciacorta comes from the province of **Brescia**, next to **Lake Iseo**. The Court studies it with **Emilia-Romagna**, which straddles north and central Italy, with the **Apennines**.",
      "stopsTitle": "How to read a Franciacorta",
      "stops": [
       {
@@ -1371,7 +2010,17 @@
       {
        "name": "The aging",
        "note": "time on the lees",
-       "text": "Non-vintage Franciacorta rests at least **18 months** on the lees. **Millesimato** means a vintage wine, with at least 30 months on the lees. **Riserva** is a vintage wine with at least 60."
+       "text": "Non-vintage Franciacorta rests at least **18 months** on the lees. **Millesimato** means a vintage wine, with at least 30 months on the lees. **Riserva** is a vintage wine with at least 60. Counting from harvest, the Court’s minimum is **25 months**."
+      },
+      {
+       "name": "Next to Champagne",
+       "note": "same method",
+       "text": "**Metodo Classico** is Italian for the **Champagne method**. Both use Chardonnay and Pinot Noir (Pinot Nero); Champagne adds **Meunier**, Franciacorta adds **Pinot Bianco**. Franciacorta rests longer: at least 18 months on the lees, against 12 for non-vintage Champagne."
+      },
+      {
+       "name": "On the label",
+       "note": "how fizzy",
+       "text": "**Spumante** means fully sparkling, with fine, lasting bubbles. **Frizzante** is lighter, with softer bubbles."
       }
      ],
      "visual": 0,
@@ -1433,7 +2082,7 @@
       {
        "name": "Delle Venezie",
        "note": "the Pinot Grigio DOC",
-       "text": "**Delle Venezie DOC** covers Veneto, Friuli and Trentino, and it protects **Pinot Grigio**."
+       "text": "**Delle Venezie DOC** covers Veneto, Friuli and Trentino, and it protects **Pinot Grigio**. **Trevenezie IGP** covers the same three-region area one tier lower."
       }
      ],
      "visual": 1,
@@ -1500,6 +2149,11 @@
        "name": "Amarone",
        "note": "dried grapes",
        "text": "**Amarone della Valpolicella DOCG** uses the same grapes, dried for about three months first: **appassimento**. They lose 30-50% of their weight. The wine has at least **14%** alcohol, often with some sweetness you can taste."
+      },
+      {
+       "name": "Label words",
+       "note": "what they mean",
+       "text": "**Classico** is the historic center of a zone. **Superiore** means higher alcohol. **Secco**, **amabile** and **dolce** run from driest to sweetest. **Charmat** is the tank method, and **appassimento** is grape drying."
       }
      ],
      "visual": 0,
@@ -1545,7 +2199,7 @@
     ],
     "read": {
      "bigIdea": "Tuscany runs on Sangiovese.",
-     "where": "Tuscany stretches from the **Ligurian Sea** to the foothills of the **Apennines**. It is continental inland and more maritime near the coast, and the key soil is **galestro**. Most wines are dry reds from **Sangiovese**, plus dry whites and sweet **Vin Santo**.",
+     "where": "Tuscany stretches from the **Ligurian Sea** to the foothills of the **Apennines**. It is continental inland and more maritime near the coast, and the key soil is **galestro**. Most wines are dry reds from **Sangiovese**, plus dry whites and sweet **Vin Santo**. The whites to know are **Trebbiano**, **Vermentino** and **Vernaccia**.",
      "stopsTitle": "Five wines to know",
      "stops": [
       {
@@ -1571,7 +2225,7 @@
       {
        "name": "Super Tuscans",
        "note": "Antinori, Sassicaia",
-       "text": "A **Super Tuscan** can be a Bordeaux-grape blend, Bordeaux grapes with Sangiovese, or pure Sangiovese. **Sassicaia** comes from **Bolgheri**, in the province of Livorno."
+       "text": "A **Super Tuscan** can be a Bordeaux-grape blend, Bordeaux grapes with Sangiovese, or pure Sangiovese. **Sassicaia** comes from **Bolgheri**, in the province of Livorno. The story starts in Bolgheri, where Cabernet was planted in the 1940s; **Antinori** made **Tignanello** in 1971. The Court’s producers to know: **Antinori**, **Ruffino** and **Sassicaia**."
       }
      ],
      "visual": 0,
@@ -1583,6 +2237,130 @@
      17,
      19,
      20
+    ]
+   },
+   {
+    "name": "Marche",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "VERDICCHIO",
+      "line": "is the Marche’s flagship white grape."
+     },
+     {
+      "big": "JESI",
+      "line": "and Matelica are the two Verdicchio zones to know."
+     },
+     {
+      "big": "85%",
+      "line": "Verdicchio at least, in both DOCs. Each has a Riserva DOCG."
+     },
+     {
+      "big": "MATELICA",
+      "line": "sits higher and inland, with a more continental climate."
+     },
+     {
+      "big": "CONERO",
+      "line": "is the Marche’s red: at least 85% Montepulciano."
+     }
+    ],
+    "read": {
+     "bigIdea": "The Marche is Verdicchio country, on the Adriatic.",
+     "where": "The Marche is in **central Italy**, on the **Adriatic** coast. Like the rest of the center, it is **maritime** near the sea and **continental** inland, with the **Apennines**. Vines grow only on hill slopes that catch the morning sun. Its flagship grape is the white **Verdicchio**.",
+     "stopsTitle": "Three wines to know",
+     "stops": [
+      {
+       "name": "Verdicchio dei Castelli di Jesi",
+       "note": "near the coast",
+       "text": "From the hills inland from **Ancona**. The DOC is at least **85% Verdicchio**, and its Riserva is a DOCG: **Castelli di Jesi Verdicchio Riserva**."
+      },
+      {
+       "name": "Verdicchio di Matelica",
+       "note": "higher, inland",
+       "text": "**Matelica** sits higher, with a more **continental** climate, sheltered from the sea. It is also at least 85% Verdicchio, with a Riserva DOCG."
+      },
+      {
+       "name": "The taste",
+       "note": "dry, crisp",
+       "text": "Verdicchio is a **dry**, light-bodied white with lively **acidity** and a note of **almond**. Good ones can age."
+      },
+      {
+       "name": "Conero",
+       "note": "the red",
+       "text": "**Rosso Conero DOC** and **Conero DOCG** are at least 85% **Montepulciano**. They take their name from **Monte Conero**, a limestone headland on the coast."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Two Verdicchio zones, side by side:",
+     "mixup": "**Rosso Conero** is the Montepulciano grape, in the Marche. **Vino Nobile di Montepulciano** is Sangiovese, from a Tuscan town.",
+     "sayIt": "A Verdicchio from the Marche. Dry and crisp, with a little almond."
+    },
+    "check": [
+     39,
+     40,
+     41
+    ]
+   },
+   {
+    "name": "Campania",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AGLIANICO",
+      "line": "is Campania’s red grape, behind Taurasi DOCG."
+     },
+     {
+      "big": "FIANO",
+      "line": "di Avellino is a white DOCG, at least 85% Fiano."
+     },
+     {
+      "big": "GRECO DI TUFO",
+      "line": "is a white DOCG, at least 85% Greco."
+     },
+     {
+      "big": "IRPINIA",
+      "line": "in the province of Avellino, is home to all three."
+     },
+     {
+      "big": "AGLIANICO DEL TABURNO",
+      "line": "is the fourth DOCG, also from Aglianico."
+     }
+    ],
+    "read": {
+     "bigIdea": "Campania: Aglianico red, Fiano and Greco whites.",
+     "where": "Campania is in **southern Italy**, where the climate is **Mediterranean**. Its three famous DOCGs all come from **Irpinia**, in the province of **Avellino**. The Court’s Certified column adds **volcanic** soils and **Mount Vesuvius**.",
+     "stopsTitle": "Four DOCGs, red first",
+     "stops": [
+      {
+       "name": "Taurasi",
+       "note": "the red",
+       "text": "At least 85% **Aglianico**. Aglianico is **full-bodied**, with **high tannin** and medium-high acidity, and it is best with age."
+      },
+      {
+       "name": "Aglianico del Taburno",
+       "note": "the other red",
+       "text": "Campania’s fourth DOCG, also at least 85% **Aglianico**."
+      },
+      {
+       "name": "Fiano di Avellino",
+       "note": "white",
+       "text": "A white DOCG of at least 85% **Fiano**."
+      },
+      {
+       "name": "Greco di Tufo",
+       "note": "white",
+       "text": "A white DOCG of at least 85% **Greco**. The town of **Tufo** is the heart of the zone, and it first became a DOC in 1970."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Campania’s four DOCGs:",
+     "mixup": "**Fiano di Avellino** is made from Fiano. **Greco di Tufo** is made from Greco. Both are white, and both come from Irpinia.",
+     "sayIt": "A Taurasi, from Campania. Aglianico, with firm tannin."
+    },
+    "check": [
+     42,
+     43,
+     44
     ]
    },
    {

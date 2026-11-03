@@ -7,23 +7,40 @@ import path from 'node:path';
 import { clone, find, findAll, byName, startsWith, texts, setText, remove } from './templates.mjs';
 
 const DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/manual');
+// Level 2 (Certified) chapters, Nov 2: same format plus "level": 2 and "part", written from the Court's resource library
+const DIR2 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/manual-l2');
 export const GUIDE = 'sommelier-program/study-guide';
-export const chapterSlug = (c) => `${GUIDE}/${c.slug}`;
+export const L2_BASE = 'sommelier-program/level-2';
+/** Where a chapter's lessons live: Level 1 under the Study Guide, Level 2 under the Level 2 page. */
+export const chapterBase = (c) => (c?.level === 2 ? L2_BASE : GUIDE);
+export const chapterSlug = (c) => `${chapterBase(c)}/${c.slug}`;
 export const quizHref = (c) => `/quizzes?quiz=t:study:${c.slug}`;
 
-let cache;
-/** The chapters that exist, in order. */
+function load(dir, level) {
+  let files = [];
+  try { files = fs.readdirSync(dir).filter((f) => f.endsWith('.json')); } catch { return []; }
+  return files.map((f) => {
+    try { return JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')); } catch { return null; }
+  }).filter((c) => c && c.slug && c.title && Array.isArray(c.sections) && c.sections.length && Array.isArray(c.cards))
+    .map((c) => ({ ...c, level, cards: c.cards.filter((k) => k && k.q && k.answer && Array.isArray(k.wrong) && k.wrong.length >= 3) }))
+    .sort((a, b) => a.number - b.number);
+}
+let cache, cache2;
+/** The Level 1 chapters that exist, in order. */
 export function chapters() {
-  if (!cache) {
-    cache = fs.readdirSync(DIR).filter((f) => f.endsWith('.json')).map((f) => {
-      try { return JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8')); } catch { return null; }
-    }).filter((c) => c && c.slug && c.title && Array.isArray(c.sections) && c.sections.length && Array.isArray(c.cards))
-      .map((c) => ({ ...c, cards: c.cards.filter((k) => k && k.q && k.answer && Array.isArray(k.wrong) && k.wrong.length >= 3) }))
-      .sort((a, b) => a.number - b.number);
-  }
+  if (!cache) cache = load(DIR, 1);
   return cache;
 }
-export const chapterBySlug = (slug) => chapters().find((c) => c.slug === slug);
+/** The Level 2 chapters, in order (Part 1 → 3). */
+export function chapters2() {
+  if (!cache2) cache2 = load(DIR2, 2);
+  return cache2;
+}
+/** Every chapter, both levels. */
+export const allChapters = () => [...chapters(), ...chapters2()];
+/** The chapters in the same level as this one. */
+export const levelChapters = (c) => (c?.level === 2 ? chapters2() : chapters());
+export const chapterBySlug = (slug) => allChapters().find((c) => c.slug === slug);
 
 /** One person's progress: chapters opened, cards known cold, cards to review (from their quiz marks). */
 export function progress(db, userId, store) {
@@ -97,9 +114,10 @@ export function blockBuilder(main) {
       list.c = (b.rows || []).map((r, i) => {
         const c = clone(i ? rest : first); c.n = 'Row · ' + r.name; const t = texts(c); setText(t[0], r.name); setText(t[1], r.meta || '');
         // long notes go under the name, full width, instead of a narrow right-hand column
-        if (long) { c.lm = 'V'; c.pa = undefined; c.gap = 2; for (const x of t) { x.ar = 'H'; x.sh = 'F'; x.ta = undefined; } }
+        if (long) { c.lm = 'V'; c.pa = undefined; c.gap = 2; c.sh = 'L'; for (const x of t) { x.ar = 'H'; x.sh = 'L'; x.ta = undefined; } }
         return c;
       });
+      if (long) { list.sh = 'L'; p.sh = 'L'; }
       if (b.note) setText(pt[1], b.note); else p.c = p.c.filter((x) => x !== pt[1]);
       return [p];
     }

@@ -28,6 +28,163 @@
    }
   ]
  },
+ "court": {
+  "section": 6,
+  "outline": [
+   "Germany: Mosel",
+   "Germany: Rheingau",
+   "Germany: Rheinhessen",
+   "Germany: Pfalz",
+   "Austria: Niederösterreich",
+   "Austria: Kremstal",
+   "Austria: Kamptal",
+   "Austria: Wachau"
+  ],
+  "outcome": "Germany: After studying this section, a student will understand Germany's climate, the importance of rivers, soil types, grape varieties, and learn about selected wine regions. Students will recognize the hierarchy of German wine law (Wein, Qualitätswein, Prädikatswein), and the progression of Prädikat levels. | Austria: After studying this section, a student will be able to identify and locate major Austrian wine regions and appellations. A student will understand important geographic features, major grape varieties, and how Austrian wines differ from German wines.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "Germany · Geography: Location",
+    "guide": "Southwest corner, near France and Switzerland; vineyards at 49°N and above.",
+    "where": "Germany: cool climate, river slopes"
+   },
+   {
+    "topic": "Germany · Climate",
+    "guide": "Cool continental.",
+    "where": "Germany: cool climate, river slopes"
+   },
+   {
+    "topic": "Germany · Physical feature",
+    "guide": "Rhine and tributaries moderate and reflect light; mountains block north winds, make rain shadows.",
+    "where": "Germany: cool climate, river slopes"
+   },
+   {
+    "topic": "Germany · Soil",
+    "guide": "Mosel slate; various soils elsewhere.",
+    "where": "Germany: cool climate, river slopes; Mosel"
+   },
+   {
+    "topic": "Germany · Grape growing",
+    "guide": "Steep south-facing slopes, carefully chosen sites, cool growing seasons.",
+    "where": "Germany: cool climate, river slopes"
+   },
+   {
+    "topic": "Germany · Winemaking",
+    "guide": "Fuder/Stück casks or steel; sugar balances acid; low alcohol off-dry; chaptalization defined.",
+    "where": "Germany: cool climate, river slopes"
+   },
+   {
+    "topic": "Germany · White grapes",
+    "guide": "Riesling, the most planted and most important.",
+    "where": "Germany: cool climate, river slopes"
+   },
+   {
+    "topic": "Germany · Red grapes",
+    "guide": "Spätburgunder (Pinot Noir).",
+    "where": "Germany: cool climate, river slopes"
+   },
+   {
+    "topic": "Germany · Wine law",
+    "guide": "Deutscher Wein, Landwein, Qualitätswein (13 Anbaugebiete), Prädikatswein (ripeness, no chaptalization).",
+    "where": "intro: The German ladder; The Prädikat ladder"
+   },
+   {
+    "topic": "Germany · Six Prädikate",
+    "guide": "Kabinett to TBA in ripeness order, typical sweetness; winery sets final sweetness.",
+    "where": "The Prädikat ladder"
+   },
+   {
+    "topic": "Germany · General terms",
+    "guide": "Anbaugebiete: the 13 regions. Prädikate: ripeness levels.",
+    "where": "Germany: cool climate, river slopes; The Prädikat ladder"
+   },
+   {
+    "topic": "Germany · Label terms",
+    "guide": "Trocken: dry.",
+    "where": "Dry or sweet? Label words"
+   },
+   {
+    "topic": "Germany · Mosel",
+    "guide": "Mosel River, porous heat-holding slate, south-facing, Riesling; villages Erden, Ürzig, Wehlen, Bernkastel-Kues, Piesport.",
+    "where": "Mosel"
+   },
+   {
+    "topic": "Germany · Pfalz",
+    "guide": "Continues Alsace, mountain shelter, Rhine; among the warmest, dry focus; Riesling, Spätburgunder.",
+    "where": "Rheingau, Rheinhessen, Pfalz"
+   },
+   {
+    "topic": "Germany · Rheinhessen",
+    "guide": "Largest region by size and volume; Rhine; Riesling.",
+    "where": "Rheingau, Rheinhessen, Pfalz"
+   },
+   {
+    "topic": "Germany · Rheingau",
+    "guide": "Mountain shelter, long south slope on the Rhine, continental; Riesling, Spätburgunder; Johannisberg.",
+    "where": "Rheingau, Rheinhessen, Pfalz"
+   },
+   {
+    "topic": "Austria · Location",
+    "guide": "Eastern Austria.",
+    "where": "Austria"
+   },
+   {
+    "topic": "Austria · Climate",
+    "guide": "Continental.",
+    "where": "Austria"
+   },
+   {
+    "topic": "Austria · Physical features",
+    "guide": "Alpine foothills; the Danube.",
+    "where": "Austria"
+   },
+   {
+    "topic": "Austria · Grape growing",
+    "guide": "Steep hillsides above the Danube and its tributaries.",
+    "where": "Austria"
+   },
+   {
+    "topic": "Austria · Winemaking",
+    "guide": "Very dry or very sweet whites, no off-dry; new oak rare for whites.",
+    "where": "Austria"
+   },
+   {
+    "topic": "Austria · White grapes",
+    "guide": "Grüner Veltliner.",
+    "where": "Austria"
+   },
+   {
+    "topic": "Austria · Red grapes",
+    "guide": "Zweigelt, Blaufränkisch.",
+    "where": "Austria"
+   },
+   {
+    "topic": "Austria · Wine law",
+    "guide": "Wein, Landwein (rarely exported), Qualitätswein, DAC (like AOC/DOC, dry focus), Prädikatswein (rare).",
+    "where": "Austria"
+   },
+   {
+    "topic": "Austria · Wachau classification",
+    "guide": "Its own ripeness system; Smaragd is ripest, named for green lizards.",
+    "where": "Wachau, Kremstal, Kamptal"
+   },
+   {
+    "topic": "Austria · Appellations",
+    "guide": "Niederösterreich (Lower Austria) with Kamptal, Kremstal and Wachau DACs.",
+    "where": "Wachau, Kremstal, Kamptal"
+   },
+   {
+    "topic": "Austria · Label terms",
+    "guide": "Recognize the Austrian wine capsule.",
+    "where": "Austria"
+   },
+   {
+    "topic": "Austria · Learning outcome",
+    "guide": "How Austrian wines differ from German wines.",
+    "where": "Austria"
+   }
+  ]
+ },
  "sections": [
   {
    "name": "Germany: cool climate, river slopes",
@@ -35,7 +192,7 @@
    "lines": [
     {
      "label": "Climate",
-     "text": "Cool continental. Vineyards sit at 49°N and above, mostly in the southwest of the country."
+     "text": "Cool continental. Vineyards sit at 49°N and above, mostly in the southwest of the country. Mountains block cold north winds and create rain shadows."
     },
     {
      "label": "Rivers",
@@ -62,6 +219,24 @@
      "number": "13",
      "title": "Anbaugebiete",
      "text": "Germany's official wine regions. Qualitätswein and Prädikatswein must come 100% from one of them."
+    },
+    {
+     "type": "tiles",
+     "title": "In the German cellar",
+     "items": [
+      {
+       "name": "Fuder · Stück",
+       "text": "Large traditional wooden casks for fermenting"
+      },
+      {
+       "name": "Stainless steel",
+       "text": "The other common choice"
+      },
+      {
+       "name": "Dry to sweet",
+       "text": "Fermented dry, left off-dry, or lusciously sweet"
+      }
+     ]
     }
    ]
   },
@@ -417,7 +592,7 @@
    "why": "Both are Wachau styles. Smaragd is the ripest (12.5%+); Steinfeder is the lightest (up to 11.5%)."
   }
  ],
- "sources": "Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide; German Wine Institute (winesofgermany.com, where germanwines.de now redirects); VDP; Vinea Wachau; Weinviertel DAC; Wine Folly as a labelled secondary source. Checked Oct 31, 2026.",
+ "sources": "Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide; German Wine Institute (winesofgermany.com, where germanwines.de now redirects); VDP; Vinea Wachau; Weinviertel DAC; Wine Folly as a labelled secondary source. Checked Oct 31, 2026. Court alignment pass Nov 2, 2026 (Curriculum Guide Introductory column, read from the PDF's column positions).",
  "cards": [
   {
    "q": "What climate does the Court give for Germany?",
@@ -748,6 +923,36 @@
     "Danube and Kamp"
    ],
    "source": "https://www.winesofgermany.com/our-regions/growing-area/72/mosel"
+  },
+  {
+   "q": "In German winemaking, what are a Fuder and a Stück?",
+   "answer": "Large traditional wooden casks used for fermentation",
+   "wrong": [
+    "Two Prädikat ripeness levels",
+    "Ranks of single vineyards",
+    "Flattened bottle shapes from Franken"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
+  },
+  {
+   "q": "Besides the rivers, what shields German vineyards from cold north winds?",
+   "answer": "Mountains, which also create rain shadows",
+   "wrong": [
+    "The North Sea",
+    "Large forests planted by monks",
+    "Lake Constance"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
+  },
+  {
+   "q": "Which two grapes does the Court list for both the Rheingau and the Pfalz?",
+   "answer": "Riesling and Spätburgunder",
+   "wrong": [
+    "Müller-Thurgau and Silvaner",
+    "Grüner Veltliner and Zweigelt",
+    "Riesling and Blaufränkisch"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=50"
   }
  ],
  "facts": [
@@ -954,6 +1159,10 @@
   {
    "fact": "Wine Folly (secondary): Vinea Wachau Nobilis Districtus was founded in 1983; it is not part of Austrian wine law and plays a role similar to Germany's VDP.",
    "source": "https://winefolly.com/deep-dive/in-depth-guide-to-the-wachau-valley-wine-region/"
+  },
+  {
+   "fact": "Curriculum Guide, Germany, Introductory soil row: Mosel: slate; other regions: various soil types.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
   }
  ],
  "unverified": [
@@ -963,7 +1172,8 @@
   "germanwines.de now redirects to winesofgermany.com (the German Wine Institute's international site); all DWI facts cite winesofgermany.com.",
   "The Court's Germany location line names borders with 'France, Belgium and Switzerland'; this was not repeated because it could not be checked against DWI.",
   "Bar lengths in the sweetness scale are drawn from the legal maximums (9, 18, 45 g/l) for display only.",
-  "Court column split (Introductory vs Certified) was read from the PDF's text positions; VDP, Halbtrocken, Steinfeder, Federspiel, Austrian Riesling and the Banderole sit in the Certified column and are included as context."
+  "Court column split (Introductory vs Certified) was read from the PDF's text positions; VDP, Halbtrocken, Steinfeder, Federspiel, Austrian Riesling and the Banderole sit in the Certified column and are included as context.",
+  "The Court places German vineyards 'at 49°N and above'. The chapter repeats it as the Court's line; it was not checked against DWI, and southern Baden may lie below 49°N."
  ],
  "v3": {
   "video": {
@@ -1005,7 +1215,7 @@
     ],
     "read": {
      "bigIdea": "Germany is cool, so vines need sunny river slopes.",
-     "where": "Germany is far north: vineyards sit at **49°N** and above, mostly in the southwest. The climate is **cool continental**. The **Rhine** and its tributaries soften the climate, and the water reflects sunlight up onto steep, **south-facing** slopes.",
+     "where": "Germany is far north: vineyards sit at **49°N** and above, mostly in the southwest. The climate is **cool continental**. The **Rhine** and its tributaries soften the climate, and the water reflects sunlight up onto steep, **south-facing** slopes. **Mountains** block cold north winds and create **rain shadows**. Soils vary by region; the Mosel’s is **slate**.",
      "stopsTitle": "What to know first",
      "stops": [
       {
@@ -1027,6 +1237,11 @@
        "name": "Chaptalization",
        "note": "when grapes fall short",
        "text": "**Chaptalization** means adding sugar to the juice before fermentation to raise the alcohol. It is used when the grapes don’t get ripe enough."
+      },
+      {
+       "name": "In the cellar",
+       "note": "casks or steel",
+       "text": "Wine ferments in large wooden casks called **Fuder** or **Stück**, or in **stainless steel**. It can be fermented **dry**, left **off-dry**, or made **lusciously sweet**."
       }
      ],
      "visual": 0,
@@ -1329,7 +1544,7 @@
       {
        "name": "Rheingau",
        "note": "the Riesling slope",
-       "text": "One long **south-facing slope** above the Rhine, with mountains sheltering it from the cold north. It has the **highest share of Riesling** of any German region. **Johannisberg** is the village to know: **Spätlese** was born there in 1775."
+       "text": "One long **south-facing slope** above the Rhine, with mountains sheltering it from the cold north. It has the **highest share of Riesling** of any German region. **Johannisberg** is the village to know: **Spätlese** was born there in 1775. The climate is **continental**."
       },
       {
        "name": "Rheinhessen",

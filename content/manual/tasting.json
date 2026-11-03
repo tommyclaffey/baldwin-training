@@ -4,7 +4,87 @@
  "title": "Tasting like a sommelier",
  "script": "Chapter two",
  "lead": "The Court's Deductive Tasting Method: look, smell, taste, then reason to a conclusion, and what climate and age look like in the glass.",
- "minutes": 20,
+ "minutes": 25,
+ "court": {
+  "section": 2,
+  "outline": [
+   "CMS Wine Evaluation Technique"
+  ],
+  "outcome": "Evaluate and describe 20 classic wines of the world. Understand the Deductive Tasting Method to build vocabulary and skills for objective evaluation and description of classic wines and major grape varieties. Recognize and explain climatic and winemaking effects on wine style.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf",
+  "coverage": [
+   {
+    "topic": "Exam content: how wines and grape varieties look, smell and taste",
+    "guide": "Know how classic grapes and wines tasted in class look, smell and taste; no tasting on the exam.",
+    "where": "How the Court tastes"
+   },
+   {
+    "topic": "Learning objective: evaluate and describe 20 classic wines",
+    "guide": "Describe 20 classic wines; the journal gives each one a page.",
+    "where": "How the Court tastes"
+   },
+   {
+    "topic": "Journal: Aroma and flavor lexicon",
+    "guide": "Fault check, then fruit and non-fruit words for whites and reds.",
+    "where": "Nose: fruit; Nose: non-fruit clues"
+   },
+   {
+    "topic": "Journal: Sight / Appearance",
+    "guide": "Color intensity, primary color, tearing; staining on reds.",
+    "where": "Sight"
+   },
+   {
+    "topic": "Journal: Nose - condition, intensity, age",
+    "guide": "Sound or faulty; delicate to powerful; youthful, developing or vinous.",
+    "where": "Nose: fruit"
+   },
+   {
+    "topic": "Journal: Nose - fruit and fruit condition",
+    "guide": "Name the category and fruit; condition from tart to liqueur.",
+    "where": "Nose: fruit"
+   },
+   {
+    "topic": "Journal: Nose - non-fruit, new oak, earth, mineral",
+    "guide": "Grape/vineyard vs. winemaking notes; yes or no for oak, earth, mineral.",
+    "where": "Nose: non-fruit clues"
+   },
+   {
+    "topic": "Journal: Palate / Flavors",
+    "guide": "Recheck fruit and non-fruit; note any change from the nose.",
+    "where": "Palate and structure"
+   },
+   {
+    "topic": "Journal: Palate / Structure",
+    "guide": "Sweetness, acidity, alcohol, body; bitterness on whites, tannin on reds.",
+    "where": "Palate and structure"
+   },
+   {
+    "topic": "Journal: Wine Information Review",
+    "guide": "Link the wine to grape, climate, country, region, quality level, vintage.",
+    "where": "added: Wine information review"
+   },
+   {
+    "topic": "Learning objective: climatic and winemaking effects on style",
+    "guide": "Read climate from fruit, acidity and alcohol; winemaking from non-fruit notes.",
+    "where": "Climate and age in the glass; Nose: non-fruit clues"
+   },
+   {
+    "topic": "Journal: Introduction to Deductive Tasting (initial and final conclusion)",
+    "guide": "Initial then final conclusion, each backed by reasons; ages 1-3 to 10+.",
+    "where": "Conclusions"
+   },
+   {
+    "topic": "Grape Variety Profiles: white grapes",
+    "guide": "Chardonnay, Sauvignon Blanc, Riesling, Chenin Blanc: climates, regions, styles, structure, color.",
+    "where": "added: Grape profiles: whites"
+   },
+   {
+    "topic": "Grape Variety Profiles: red grapes",
+    "guide": "Eight reds, Pinot Noir to Tempranillo: climates, regions, styles, structure, color.",
+    "where": "added: Grape profiles: reds"
+   }
+  ]
+ },
  "intro": {
   "script": "Start here",
   "title": "THE FOUR STEPS",
@@ -45,7 +125,8 @@
     "Introductory exam: no tasting, no service performance, no vintage memorizing.",
     "Questions focus on wines tasted in class.",
     "The Certified grid has five parts: color, fruit, non-fruit, structure, conclusion.",
-    "Advanced and Master use a longer format: sight, nose, palate structure, palate, initial and final conclusion."
+    "Advanced and Master use a longer format: sight, nose, palate structure, palate, initial and final conclusion.",
+    "Level 1 uses a Tasting Journal with pages for 20 classic wines."
    ],
    "visuals": [
     {
@@ -95,7 +176,8 @@
     "White main colors on the Certified grid: straw, yellow, gold.",
     "Red main colors: purple, ruby, garnet.",
     "Rim variation and staining are checked on reds only.",
-    "Nebbiolo and Grenache can show an orange or garnet rim even young."
+    "Nebbiolo and Grenache can show an orange or garnet rim even young.",
+    "Level 1 journal: intensity pale, medium or deep; tearing light, medium or heavy."
    ],
    "visuals": [
     {
@@ -137,14 +219,19 @@
      "Candied",
      "Baked",
      "Dried",
-     "Bruised"
+     "Bruised",
+     "Fresh",
+     "Stewed",
+     "Juicy",
+     "Liqueur"
     ]
    },
    "know": [
     "White fruit groups on the grid: apple/pear, citrus, stone fruit, tropical.",
     "Red fruit groups: red, black, blue.",
     "Pick one or two fruit-condition words for nose and palate.",
-    "If a fruit group is absent, mark 'No' and write 'None'."
+    "If a fruit group is absent, mark 'No' and write 'None'.",
+    "First ask: is the wine in good condition? Corked (TCA) smells of wet cardboard."
    ],
    "visuals": [
     {
@@ -165,6 +252,41 @@
        "text": "From aging: vanilla, nuts, savory notes"
       }
      ]
+    },
+    {
+     "type": "list",
+     "title": "Fruit words in the Level 1 lexicon",
+     "rows": [
+      {
+       "name": "Apple/pear",
+       "meta": "green, red, yellow"
+      },
+      {
+       "name": "Citrus",
+       "meta": "lemon, lime, grapefruit, orange"
+      },
+      {
+       "name": "Stone fruit",
+       "meta": "peach, nectarine, apricot"
+      },
+      {
+       "name": "Tropical",
+       "meta": "pineapple, mango, passion fruit, banana, lychee"
+      },
+      {
+       "name": "Red fruit",
+       "meta": "cherry, raspberry, cranberry, strawberry, pomegranate"
+      },
+      {
+       "name": "Black fruit",
+       "meta": "blackberry, black cherry, black plum, black currant"
+      },
+      {
+       "name": "Blue fruit",
+       "meta": "blueberry"
+      }
+     ],
+     "note": "The first four are white-wine groups; the last three are red."
     }
    ]
   },
@@ -184,7 +306,8 @@
     "Butter, cream, yogurt = malolactic fermentation.",
     "Dough, bread, yeast, cheese rind = lees.",
     "Vanilla, toast, smoke = new oak; on reds also coconut and dill.",
-    "Ginger, honey, saffron, wax = noble rot."
+    "Ginger, honey, saffron, wax = noble rot.",
+    "Earth = wet leaves, forest floor, mushroom; mineral = wet stone, sulfur, saline."
    ],
    "visuals": [
     {
@@ -249,7 +372,8 @@
     "White grid sweetness choices: dry or off-dry.",
     "Phenolic bitterness is a white-wine line; tannin is a red-wine line.",
     "Tannin is the drying, sandpaper feel on the tongue.",
-    "Finish length runs short to long; complexity runs simple to high."
+    "Finish length runs short to long; complexity runs simple to high.",
+    "Level 1 journal: sweetness dry, off-dry or sweet; body light, medium or full."
    ],
    "visuals": [
     {
@@ -283,6 +407,66 @@
    ]
   },
   {
+   "name": "Wine information review",
+   "lines": [
+    {
+     "label": "What it is",
+     "text": "After describing a wine, the Level 1 journal asks you to connect it to theory. You list five things that make the wine unique."
+    },
+    {
+     "label": "What you fill in",
+     "text": "Grape, climate, country, region and appellation, official quality level where one exists, and vintage."
+    }
+   ],
+   "chips": {
+    "label": "Climate",
+    "items": [
+     "Cool",
+     "Moderate",
+     "Warm"
+    ]
+   },
+   "know": [
+    "List the wine's five most distinctive aromas and flavors.",
+    "Pick one climate: cool, moderate or warm, using acidity and alcohol.",
+    "Name the countries and regions that classically grow the grape.",
+    "Give a quality level only where the law has one, like Rioja Reserva."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Quality levels the journal lists",
+     "rows": [
+      {
+       "name": "Village, Premier Cru, Grand Cru",
+       "meta": "Burgundy"
+      },
+      {
+       "name": "Village, Cru",
+       "meta": "Beaujolais"
+      },
+      {
+       "name": "Village, Grand Cru",
+       "meta": "Alsace"
+      },
+      {
+       "name": "Reserva, Gran Reserva",
+       "meta": "Rioja"
+      },
+      {
+       "name": "Classico, Riserva",
+       "meta": "Chianti"
+      },
+      {
+       "name": "Kabinett, Spätlese",
+       "meta": "Germany"
+      }
+     ],
+     "note": "Only where the law has quality levels."
+    }
+   ]
+  },
+  {
    "name": "Climate and age in the glass",
    "lines": [
     {
@@ -298,7 +482,8 @@
     "Warmer grapes make more sugar, so wines carry more alcohol.",
     "Cool-climate reds: higher acidity, lower alcohol, lighter body.",
     "Cool-climate whites: higher acidity, citrus, green orchard fruit.",
-    "Age words on the nose: youthful, developing, vinous."
+    "Age words on the nose: youthful, developing, vinous.",
+    "The Level 1 journal ties climate to structure: look at acidity and alcohol."
    ],
    "visuals": [
     {
@@ -334,7 +519,8 @@
     "Climate choices: cool, moderate, warm.",
     "White age ranges: 1-2, 3-4, 5+ years. Red: 1-3, 4-6, 7+ years.",
     "Every conclusion needs specific reasons from your description.",
-    "Check your notes match your answer: off-dry plus Sauvignon Blanc is a warning sign."
+    "Check your notes match your answer: off-dry plus Sauvignon Blanc is a warning sign.",
+    "Level 1's intro to deductive tasting uses ages 1-3, 3-5, 5-10 and 10+ years."
    ],
    "visuals": [
     {
@@ -364,6 +550,156 @@
      ]
     }
    ]
+  },
+  {
+   "name": "Grape profiles: whites",
+   "lines": [
+    {
+     "label": "The profiles",
+     "text": "The Court’s Grape Variety Profiles show each grape’s climates, top regions, styles, structure and color. Four of them are white."
+    },
+    {
+     "label": "Region names",
+     "text": "Some regions imply the grape: Sancerre means Sauvignon Blanc, Vouvray means Chenin Blanc."
+    }
+   ],
+   "chips": {
+    "label": "White grapes",
+    "items": [
+     "Chardonnay",
+     "Sauvignon Blanc",
+     "Riesling",
+     "Chenin Blanc"
+    ]
+   },
+   "know": [
+    "Chardonnay: Burgundy, Champagne (Blanc de Blancs), California, Oregon, Victoria.",
+    "Sauvignon Blanc: Sancerre, Pouilly-Fumé, Bordeaux, Marlborough; Fumé Blanc in California.",
+    "Riesling: high acidity, dry to sweet; Germany, Alsace, Clare Valley.",
+    "Chenin Blanc: Vouvray and Savennières in the Loire; Steen in South Africa."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Four whites and their classic homes",
+     "rows": [
+      {
+       "name": "Chardonnay",
+       "meta": "Burgundy, Champagne, California, Oregon, Victoria"
+      },
+      {
+       "name": "Sauvignon Blanc",
+       "meta": "Loire, Bordeaux, Marlborough, Casablanca, California"
+      },
+      {
+       "name": "Riesling",
+       "meta": "Southwest Germany, Alsace, Clare Valley"
+      },
+      {
+       "name": "Chenin Blanc",
+       "meta": "Loire, South Africa"
+      }
+     ],
+     "note": "From the Court’s Grape Variety Profiles."
+    }
+   ]
+  },
+  {
+   "name": "Grape profiles: reds",
+   "lines": [
+    {
+     "label": "Eight reds",
+     "text": "The profiles cover Pinot Noir, Cabernet Sauvignon, Merlot, Syrah, Grenache, Nebbiolo, Sangiovese and Tempranillo."
+    },
+    {
+     "label": "Climate",
+     "text": "Pinot Noir grows cool to warm. Grenache, Sangiovese and Tempranillo are marked warm to hot. Nebbiolo is marked high for both tannin and acidity."
+    }
+   ],
+   "chips": {
+    "label": "Red grapes",
+    "items": [
+     "Pinot Noir",
+     "Cabernet Sauvignon",
+     "Merlot",
+     "Syrah",
+     "Grenache",
+     "Nebbiolo",
+     "Sangiovese",
+     "Tempranillo"
+    ]
+   },
+   "know": [
+    "Pinot Noir: Burgundy, California, Oregon, New Zealand; whole cluster is an option.",
+    "Syrah is Shiraz in Australia; Northern Rhône: Hermitage, Côte-Rôtie, Saint-Joseph.",
+    "Grenache is Garnacha Tinta or Garnatxa in Spain.",
+    "Nebbiolo is Barolo and Barbaresco, and Chiavennasca in Valtellina.",
+    "Tempranillo: Rioja, Ribera del Duero (Tinta del País), Toro (Tinta de Toro)."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Eight reds and their classic homes",
+     "rows": [
+      {
+       "name": "Pinot Noir",
+       "meta": "Burgundy, California, Oregon, New Zealand"
+      },
+      {
+       "name": "Cabernet Sauvignon",
+       "meta": "Bordeaux, California, Washington, Chile, Australia"
+      },
+      {
+       "name": "Merlot",
+       "meta": "Bordeaux, California, Chile"
+      },
+      {
+       "name": "Syrah",
+       "meta": "Northern Rhône, Barossa"
+      },
+      {
+       "name": "Grenache",
+       "meta": "Southern Rhône, Spain, Australia"
+      },
+      {
+       "name": "Nebbiolo",
+       "meta": "Piedmont, Lombardy"
+      },
+      {
+       "name": "Sangiovese",
+       "meta": "Tuscany"
+      },
+      {
+       "name": "Tempranillo",
+       "meta": "Rioja, Ribera del Duero, Toro"
+      }
+     ],
+     "note": "From the Court’s Grape Variety Profiles."
+    },
+    {
+     "type": "tiles",
+     "title": "Same grape, another name",
+     "dark": true,
+     "items": [
+      {
+       "name": "Shiraz",
+       "text": "Syrah, in Australia"
+      },
+      {
+       "name": "Garnacha / Garnatxa",
+       "text": "Grenache, in Spain"
+      },
+      {
+       "name": "Chiavennasca",
+       "text": "Nebbiolo, in Valtellina"
+      },
+      {
+       "name": "Tinta del País / de Toro",
+       "text": "Tempranillo, in Ribera and Toro"
+      }
+     ]
+    }
+   ]
   }
  ],
  "mixups": [
@@ -388,7 +724,7 @@
    "why": "Certified has five boxes and asks country; the longer format adds region, appellation, quality level and vintage."
   }
  ],
- "sources": "Court of Master Sommeliers Americas Certified tasting grid (1-2025), Advanced and Master tasting format (2024), conclusions guide (3.2024), course and exam guides, with Wine Folly as a labelled secondary source. Checked Oct 31, 2026.",
+ "sources": "Court of Master Sommeliers Americas Certified tasting grid (1-2025), Advanced and Master tasting format (2024), conclusions guide (3.2024), course and exam guides, with Wine Folly as a labelled secondary source. Checked Oct 31, 2026. Court coverage pass Nov 2, 2026 adds the Introductory Tasting Journal (2024) and the Introductory Grape Variety Profiles (2024).",
  "cards": [
   {
    "q": "What does DTM stand for in Court study?",
@@ -699,6 +1035,146 @@
     "Hot, like an alcohol burn"
    ],
    "source": "https://winefolly.com/deep-dive/how-to-taste-wine-develop-palate/"
+  },
+  {
+   "q": "The Introductory course asks students to evaluate and describe how many classic wines?",
+   "answer": "20",
+   "wrong": [
+    "6",
+    "12",
+    "50"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=3"
+  },
+  {
+   "q": "On the Level 1 Tasting Journal, color intensity is described as what?",
+   "answer": "Pale, Medium, Deep",
+   "wrong": [
+    "Straw, Yellow, Gold",
+    "Light, Medium, Heavy",
+    "Delicate, Medium, Powerful"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=3"
+  },
+  {
+   "q": "A corked wine (TCA) smells like what?",
+   "answer": "Wet cardboard and mildew",
+   "wrong": [
+    "Butter and cream",
+    "Vanilla and toast",
+    "Gasoline and rubber"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=2"
+  },
+  {
+   "q": "Bubble gum and red fruit candy on a red wine point to what?",
+   "answer": "Carbonic maceration",
+   "wrong": [
+    "New oak",
+    "Botrytis",
+    "Lees contact"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=2"
+  },
+  {
+   "q": "What age ranges does the Level 1 journal's initial conclusion offer?",
+   "answer": "1-3, 3-5, 5-10, 10+ years",
+   "wrong": [
+    "1-2, 3-4, 5+ years",
+    "1-3, 4-6, 7+ years",
+    "Young, Mature, Old"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=66"
+  },
+  {
+   "q": "The Level 1 journal says to judge climate mainly from which structure elements?",
+   "answer": "Acidity and alcohol",
+   "wrong": [
+    "Color and clarity",
+    "Tannin and body",
+    "Sweetness and bitterness"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=5"
+  },
+  {
+   "q": "Which quality levels does the Level 1 journal list for Rioja?",
+   "answer": "Reserva, Gran Reserva",
+   "wrong": [
+    "Classico, Riserva",
+    "Kabinett, Spätlese",
+    "Premier Cru, Grand Cru"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=5"
+  },
+  {
+   "q": "How many unique aromas and flavors does the journal's review ask you to list?",
+   "answer": "Five",
+   "wrong": [
+    "One",
+    "Three",
+    "Ten"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=5"
+  },
+  {
+   "q": "In South Africa, Chenin Blanc is also called what?",
+   "answer": "Steen",
+   "wrong": [
+    "Fumé Blanc",
+    "Chiavennasca",
+    "Garnatxa"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=6"
+  },
+  {
+   "q": "Which region name implies Sauvignon Blanc?",
+   "answer": "Sancerre",
+   "wrong": [
+    "Vouvray",
+    "Savennières",
+    "Barbaresco"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=4"
+  },
+  {
+   "q": "On the Court's profile, where does Riesling's acidity sit?",
+   "answer": "High",
+   "wrong": [
+    "Low",
+    "Low to medium",
+    "It isn't shown"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=5"
+  },
+  {
+   "q": "Which red grape does the Court's profile mark high for both tannin and acidity?",
+   "answer": "Nebbiolo",
+   "wrong": [
+    "Merlot",
+    "Grenache",
+    "Pinot Noir"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=12"
+  },
+  {
+   "q": "In Lombardy's Valtellina, Nebbiolo is called what?",
+   "answer": "Chiavennasca",
+   "wrong": [
+    "Steen",
+    "Garnatxa",
+    "Tinta del País"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=12"
+  },
+  {
+   "q": "Shiraz is another name for which grape?",
+   "answer": "Syrah",
+   "wrong": [
+    "Grenache",
+    "Tempranillo",
+    "Merlot"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=10"
   }
  ],
  "facts": [
@@ -841,14 +1317,112 @@
   {
    "fact": "Warmer-climate grapes build higher sugar, giving higher-alcohol wines; cooler-climate grapes keep more acidity.",
    "source": "https://winefolly.com/tips/terroir-definition-for-wine/"
+  },
+  {
+   "fact": "The Court's Introductory Sommelier Course 'Wine Evaluation Technique' Tasting Journal (CMS-A 2024) has pages for Wine #1 to Wine #20, then an 'Introduction to Deductive Tasting' part with pages for two wines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=1"
+  },
+  {
+   "fact": "Course learning objective: 'Evaluate and describe 20 classic wines of the world.'",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=3"
+  },
+  {
+   "fact": "Journal lexicon: Presence of fault: corked wine, TCA (trichloroanisole): cardboard, wet paper, chlorine, mildew.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=2"
+  },
+  {
+   "fact": "Journal lexicon, white fruit: apple/pear (green, red, yellow); citrus, tart (lemon, lime, grapefruit) and sweet (orange); stone fruit (peach, nectarine, apricot); tropical (pineapple, mango, passion fruit, banana, lychee). Red fruit: red (cherry, raspberry, cranberry, strawberry, pomegranate); black (blackberry, black cherry, black plum, black currant); blue (blueberry).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=2"
+  },
+  {
+   "fact": "Journal lexicon, white non-fruit from the grape or grape growing: flowers; fresh herbs; green bell pepper, jalapeño, grass, asparagus; grape variety spice; botrytis/noble rot (ginger, saffron, honey, wax); petrol (gasoline, rubber). From winemaking: lees contact (dough, baked bread, yeast, beer, cheese rind); malolactic (butter, cream, yogurt); oxidation (nuts, dried fruit); new oak (vanilla, toast, smoke, cinnamon, nutmeg, clove, caramel).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=2"
+  },
+  {
+   "fact": "Journal lexicon, red non-fruit from the grape or grape growing: flowers (lilac, violet, lavender, rose, potpourri); fresh herbs; green bell pepper; dried herbs; black peppercorn; coffee, cocoa, mocha; raw meat, cured meat, leather. From winemaking: vinegar, nail polish, barnyard; carbonic maceration (bubble gum, red fruit candy, banana, stemmy); oxidation; new oak (adds coconut and dill on reds). Earth: wet leaves, forest floor, mushrooms, compost. Mineral: mineral, wet stone, sulfur, saline.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=2"
+  },
+  {
+   "fact": "Journal sight: intensity of color (pale, medium, deep); primary color (white: straw, yellow, gold; red: purple, ruby, garnet); tearing (light, medium, heavy); staining yes or no, red wines only. Nose: is the wine in good condition (yes or no); aromatic intensity (delicate, medium, powerful); age assessment (youthful, developing, vinous); fruit category and description; fruit condition (tart, ripe, overripe; fresh, baked, dried, stewed, bruised; juicy, jammy, candied, liqueur); non-fruit from the grape or grape growing and from winemaking; new oak, earth, mineral each yes or no.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=3"
+  },
+  {
+   "fact": "Journal palate: for all categories, are there differences from the nose to the palate? Structure: sweetness (dry, off-dry, sweet); acidity and alcohol (low to medium minus, medium, medium plus, high); body (light, medium, full); phenolic bitterness yes or no, white wines only; tannin (low to medium minus to high), red wines only.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=4"
+  },
+  {
+   "fact": "Journal Wine Information Review: grape variety (or dominant grape); list five of the wine's unique aromas and flavors; climate cool, moderate or warm, using structure such as acidity and alcohol; which countries, regions and appellations classically grow the grape; official quality level where appropriate (Burgundy: Village, Premier Cru, Grand Cru; Beaujolais: Village, Cru; Alsace: Village, Grand Cru; Rioja: Reserva, Gran Reserva; Chianti: Classico, Riserva; Germany: Kabinett, Spätlese); vintage; and the wine tasted.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=5"
+  },
+  {
+   "fact": "Journal Introduction to Deductive Tasting: initial conclusion (possible grapes, climate cool/moderate/warm, possible countries, age range 1-3, 3-5, 5-10 or 10+ years), each with specific reasons from the description; then final conclusion (grape, country of origin, region and appellation, official quality level, vintage).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/Introductory-Tasting-Journal-2024.pdf#page=66"
+  },
+  {
+   "fact": "Grape Variety Profiles (CMS-A, courtesy of GuildSomm) help new students learn grape names, where grapes grow, regions and growing conditions, winemaking, and typical aromas, flavors and structure. Marks: * = region that implies the grape; ** = grape synonym.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=2"
+  },
+  {
+   "fact": "Chardonnay profile: still and sparkling; climates cool, moderate, warm; dry; styles tart, decadent, oaked, unoaked, fruity; possible winemaking: lees contact, malolactic fermentation, new oak; top regions Burgundy*, Champagne* (Blanc de Blancs**), California, Oregon, Victoria (Australia); color straw, lemon, gold.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=3"
+  },
+  {
+   "fact": "Sauvignon Blanc profile: dry and sweet; climates cool, moderate; styles unoaked, oaked, tart, juicy, savory; possible winemaking: lees contact, new oak; body bar light to medium; acidity bar toward high; top regions Loire (Sancerre*, Pouilly-Fumé*), Bordeaux (Sauternes*), Marlborough (New Zealand), Casablanca (Chile), California (Fumé Blanc**); color lemon to gold.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=4"
+  },
+  {
+   "fact": "Riesling profile: dry, sweet and sparkling; climates cool, moderate; sweetness bar dry to sweet; body bar light to medium; acidity at high; styles tart, juicy, sweet, fruity, unoaked; top regions Southwest Germany, Alsace (France), Clare Valley (Australia); color pale straw to deep gold.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=5"
+  },
+  {
+   "fact": "Chenin Blanc profile: dry, sweet and sparkling; climates cool, moderate, warm; sweetness bar dry to sweet; acidity bar toward high; styles tart, textural, sweet, decadent, unoaked; possible winemaking: lees contact, malolactic; top regions Loire (Bonnezeaux*, Quarts de Chaume*, Vouvray*, Savennières*) and South Africa (Steen**); color lemon to gold.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=6"
+  },
+  {
+   "fact": "Pinot Noir profile: Burgundy bottle and glass; climates cool, moderate, warm; styles fruity, tart, juicy, savory, textural; possible winemaking: whole cluster, neutral oak, new oak; top regions Burgundy*, California, Oregon, New Zealand; color pale ruby to deep ruby.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=7"
+  },
+  {
+   "fact": "Cabernet Sauvignon profile: Bordeaux bottle and glass; climates moderate, warm, hot; styles fruity, oaked, tannic, savory, decadent; possible winemaking: destemming, blending, new oak; top regions Bordeaux*, California, Washington, Chile, Australia; color deep ruby, ruby, purple, dark purple.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=8"
+  },
+  {
+   "fact": "Merlot profile: Bordeaux bottle and glass; climates moderate, warm; styles fruity, oaked, ripe, textural, decadent; possible winemaking: destemming, blending, new oak; top regions Bordeaux*, California, Chile; color medium ruby, deep ruby, purple.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=9"
+  },
+  {
+   "fact": "Syrah profile: Burgundy bottle, Bordeaux glass; climates moderate, warm, hot; styles spicy, tart, juicy, savory, textural; possible winemaking: blending, large barrel, whole cluster; top regions Northern Rhône (Hermitage*, Côte-Rôtie*, Saint-Joseph*) and Barossa, Australia (Shiraz**); color deep ruby to deep purple/violet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=10"
+  },
+  {
+   "fact": "Grenache profile: Burgundy bottle and glass; climates warm, hot; styles fruity, unoaked, ripe, spicy, decadent; possible winemaking: large barrel, blending, whole cluster; top regions Southern Rhône, Spain (Garnacha Tinta**, Garnatxa**), Australia; color medium to deep ruby.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=11"
+  },
+  {
+   "fact": "Nebbiolo profile: Burgundy bottle and glass; climates moderate, warm; tannin and acidity both marked at high; styles tart, textural, tannic, savory, juicy; possible winemaking: large barrel, extended skin maceration; top regions Piedmont (Barolo*, Barbaresco*) and Lombardy (Valtellina*, Chiavennasca**); color medium ruby, deep ruby, garnet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=12"
+  },
+  {
+   "fact": "Sangiovese profile: Bordeaux bottle and glass; climates warm, hot; styles oaked, tart, juicy, savory, tannic; possible winemaking: large barrel, neutral oak, blending; top region Tuscany (Chianti*, Brunello di Montalcino**); color pale ruby, deep ruby, garnet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=13"
+  },
+  {
+   "fact": "Tempranillo profile: Bordeaux or Burgundy bottle, Burgundy glass; climates warm, hot; styles fruity, tart, ripe, savory, oaked; possible winemaking: blending, large barrel, neutral oak, new oak; top regions Rioja*, Ribera del Duero* (Tinta del País**), Toro* (printed 'Tinto del Toro'); color moderate ruby, deep ruby, garnet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=14"
+  },
+  {
+   "fact": "Certified column, Castilla y León: Tempranillo synonyms Tinta del País and Tinta de Toro.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=41"
   }
  ],
  "unverified": [
-  "No public Introductory-level tasting grid was found; the Introductory Tasting Journal and Workbook were not fetched. This chapter uses the public Certified grid and the Advanced/Master format, which go beyond Level 1.",
+  "Partly resolved Nov 2, 2026: the Introductory Tasting Journal (2024) was fetched and is now used. The Introductory Workbook is still not public, and the Curriculum Guide has no tasting subject, so the outcome above quotes the Course Guide's learning objectives.",
   "Wine Folly says the Court stopped using 'Old World' and 'New World' in blind tasting. The current Court grids ask for country of origin and have no Old/New World line, but no Court announcement was fetched to confirm the change.",
   "The Certified exam guide's prep page still says 'Why is it from a particular world of origin?' while the grid asks for country; wording may lag behind the grid.",
   "Color and leg hints (aging color changes, rim colors by grape, legs and alcohol) come from Wine Folly, not the Court.",
-  "The cool-vs-warm compare block's 'fuller texture' for warm wines rests on Wine Folly's note that riper, higher-alcohol wines have more texture."
+  "The cool-vs-warm compare block's 'fuller texture' for warm wines rests on Wine Folly's note that riper, higher-alcohol wines have more texture.",
+  "Structure words for the grape profiles (e.g. 'acidity toward high', 'light to medium body') are read off unlabeled bars in the Court's Grape Variety Profiles; only Nebbiolo's tannin and acidity, and Riesling's acidity, sit clearly at 'High'.",
+  "The Toro profile prints 'Tinto del Toro'; this chapter uses 'Tinta de Toro', the spelling in the Court's Curriculum Guide (Certified column)."
  ],
  "v3": {
   "video": {
@@ -882,11 +1456,15 @@
      {
       "big": "FOUR WINES",
       "line": "in 45 minutes: the Certified (Level 2) tasting."
+     },
+     {
+      "big": "20 WINES",
+      "line": "get a page each in the Level 1 Tasting Journal."
      }
     ],
     "read": {
      "bigIdea": "Describe the wine first, then reason to an answer.",
-     "where": "The Court teaches the **Deductive Tasting Method**. At Level 1 it builds the words and skills to describe classic wines and major grapes. You won’t taste on the exam, but you will be asked how classic wines **look, smell and taste**.",
+     "where": "The Court teaches the **Deductive Tasting Method**. At Level 1 it builds the words and skills to describe classic wines and major grapes. You won’t taste on the exam, but you will be asked how classic wines **look, smell and taste**. In class you fill in the Court’s **Tasting Journal**, which has pages for **20 classic wines**.",
      "stopsTitle": "The four steps",
      "stops": [
       {
@@ -955,6 +1533,11 @@
      "stopsTitle": "What to look for",
      "stops": [
       {
+       "name": "The Level 1 journal",
+       "note": "four checks",
+       "text": "Note color **intensity** (pale, medium or deep), the **primary color**, and **tearing** (light, medium or heavy). On reds, also mark **staining**: yes or no."
+      },
+      {
        "name": "White wine",
        "note": "straw, yellow, gold",
        "text": "As white wines age, they turn more **yellow** and then **brown**."
@@ -1013,6 +1596,11 @@
      "stopsTitle": "Fruit on the grid",
      "stops": [
       {
+       "name": "Condition and intensity",
+       "note": "before the fruit",
+       "text": "First, is the wine sound? A **corked** wine (**TCA**) smells like cardboard, wet paper, chlorine or mildew. Then rate **aromatic intensity** (delicate, medium or powerful) and age (**youthful**, **developing** or **vinous**)."
+      },
+      {
        "name": "White wines",
        "note": "four families",
        "text": "**Apple/pear**, **citrus**, **stone fruit** and **tropical**."
@@ -1025,7 +1613,7 @@
       {
        "name": "Fruit condition",
        "note": "pick one or two",
-       "text": "Say what state the fruit is in: **tart**, **ripe**, **overripe**, **jammy**, **candied**, **baked**, **dried** or **bruised**."
+       "text": "Say what state the fruit is in: **tart**, **ripe**, **overripe**, **jammy**, **candied**, **baked**, **dried** or **bruised**. The Level 1 journal adds **fresh**, **stewed**, **juicy** and **liqueur**."
       }
      ],
      "visual": 0,
@@ -1070,7 +1658,7 @@
     ],
     "read": {
      "bigIdea": "Non-fruit smells often show how a wine was made.",
-     "where": "Every non-fruit line on the grid gets a **Yes** or **No**. Say Yes only when it’s a key part of the wine, and never leave a line blank. You must tick No to earn the point.",
+     "where": "Every non-fruit line on the grid gets a **Yes** or **No**. Say Yes only when it’s a key part of the wine, and never leave a line blank. You must tick No to earn the point. The Level 1 lexicon sorts non-fruit notes in two: from the **grape or vineyard**, and from **winemaking**.",
      "stopsTitle": "Marker words to learn",
      "stops": [
       {
@@ -1092,6 +1680,11 @@
        "name": "Noble rot",
        "note": "ginger, honey",
        "text": "**Ginger**, **honey**, **saffron** and **wax** point to **botrytis** (noble rot)."
+      },
+      {
+       "name": "Earth and mineral",
+       "note": "yes or no",
+       "text": "**Earth** means wet leaves, forest floor, mushrooms or compost. **Mineral** means wet stone, sulfur or saline. On reds, **bubble gum** and **red fruit candy** point to **carbonic maceration**."
       }
      ],
      "visual": 0,
@@ -1136,13 +1729,13 @@
     ],
     "read": {
      "bigIdea": "The palate checks the nose, then measures structure.",
-     "where": "First, confirm the fruit and non-fruit you found on the nose. Then judge the **structure**: sweetness, acidity, alcohol and body, plus **tannin** on reds or **phenolic bitterness** on whites. The Court’s advice: **trust structure**.",
+     "where": "First, confirm the fruit and non-fruit you found on the nose. Then judge the **structure**: sweetness, acidity, alcohol and body, plus **tannin** on reds or **phenolic bitterness** on whites. The Court’s advice: **trust structure**. The Level 1 journal asks the same thing: is anything **different from the nose**?",
      "stopsTitle": "The structure lines",
      "stops": [
       {
        "name": "Sweetness",
        "note": "dry to sweet",
-       "text": "The Certified white grid asks **Dry** or **Off-Dry**. The longer Advanced format runs from **bone dry** to **lusciously sweet**."
+       "text": "The Certified white grid asks **Dry** or **Off-Dry**. The longer Advanced format runs from **bone dry** to **lusciously sweet**. The Level 1 journal uses **Dry**, **Off-Dry** or **Sweet**, and body is **light**, **medium** or **full**."
       },
       {
        "name": "Acidity and alcohol",
@@ -1168,6 +1761,63 @@
      19,
      20,
      30
+    ]
+   },
+   {
+    "name": "Wine information review",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FIVE MARKERS",
+      "line": "list the wine’s most distinctive aromas and flavors."
+     },
+     {
+      "big": "CLIMATE",
+      "line": "is cool, moderate or warm. Read it from acid and alcohol."
+     },
+     {
+      "big": "COUNTRY",
+      "line": "and region: where is this grape classically grown?"
+     },
+     {
+      "big": "QUALITY LEVEL",
+      "line": "only where the law has one, like Chianti Classico."
+     }
+    ],
+    "read": {
+     "bigIdea": "Tie what’s in the glass to what you’ve studied.",
+     "where": "Each wine in the Level 1 **Tasting Journal** ends with a **Wine Information Review**. You write down the wine tasted, then connect your notes to **theory**: grape, climate, place, quality level and **vintage**.",
+     "stopsTitle": "The review, line by line",
+     "stops": [
+      {
+       "name": "Grape",
+       "note": "or the main one in a blend",
+       "text": "Name the grape. Then list **five** aromas and flavors that make this wine unique."
+      },
+      {
+       "name": "Climate",
+       "note": "pick one",
+       "text": "Choose **cool**, **moderate** or **warm**. Look at structure, mainly **acidity** and **alcohol**, to decide."
+      },
+      {
+       "name": "Country, region, appellation",
+       "note": "where it’s classic",
+       "text": "Which **countries** classically grow this grape? Which **regions and appellations**?"
+      },
+      {
+       "name": "Quality level",
+       "note": "only where it exists",
+       "text": "Use the region’s own levels. The journal lists **Burgundy**, **Beaujolais**, **Alsace**, **Rioja**, **Chianti** and **Germany**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Quality levels the journal lists:",
+     "mixup": "**Chianti Classico** is a place and quality level. **Sangiovese** is the grape."
+    },
+    "check": [
+     36,
+     37,
+     38
     ]
    },
    {
@@ -1260,7 +1910,7 @@
     ],
     "read": {
      "bigIdea": "Every answer needs a reason from your notes.",
-     "where": "On the Certified grid you name the grape, climate, country and an age range. Give specific reasons from what you described. Then sell the wine to a guest in **two sentences or less**.",
+     "where": "On the Certified grid you name the grape, climate, country and an age range. Give specific reasons from what you described. Then sell the wine to a guest in **two sentences or less**. At Level 1, the journal’s **Introduction to Deductive Tasting** pages make an **initial** conclusion (possible grapes, climate, possible countries, an age range of 1-3, 3-5, 5-10 or 10+ years), then a **final** one (grape, country, region and appellation, quality level, vintage).",
      "stopsTitle": "Certified conclusion, in order",
      "stops": [
       {
@@ -1295,6 +1945,141 @@
      22,
      23,
      26
+    ]
+   },
+   {
+    "name": "Grape profiles: whites",
+    "video": {
+     "youtubeId": "aSpyylc5F20",
+     "title": "Chardonnay (everything you need to know) | Grapes 101",
+     "by": "Wine Folly",
+     "length": "5:44"
+    },
+    "keyPoints": [
+     {
+      "big": "CHARDONNAY",
+      "line": "grows cool to warm; lees, malo and new oak are options."
+     },
+     {
+      "big": "SAUVIGNON BLANC",
+      "line": "is Sancerre and Pouilly-Fumé; Fumé Blanc in California."
+     },
+     {
+      "big": "RIESLING",
+      "line": "has high acidity and runs from dry to sweet."
+     },
+     {
+      "big": "STEEN",
+      "line": "is South Africa’s name for Chenin Blanc."
+     }
+    ],
+    "read": {
+     "bigIdea": "Four white grapes, each with its classic homes.",
+     "where": "The Court’s **Grape Variety Profiles** show each grape’s **climates**, **top regions**, **styles**, **structure** and **color range**. Some region names **imply the grape**, and some grapes go by **other names**.",
+     "stopsTitle": "The four whites",
+     "stops": [
+      {
+       "name": "Chardonnay",
+       "note": "cool, moderate, warm",
+       "text": "Still or **sparkling**, and dry. It can be tart, fruity or decadent, oaked or unoaked. Possible steps: **lees contact**, **malolactic** and **new oak**. Top regions: **Burgundy**, **Champagne** (Blanc de Blancs), California, Oregon and Victoria."
+      },
+      {
+       "name": "Sauvignon Blanc",
+       "note": "cool, moderate",
+       "text": "Dry or sweet, light to medium body, acidity toward high. Top regions: the **Loire** (**Sancerre**, **Pouilly-Fumé**), **Bordeaux** (Sauternes), **Marlborough**, Casablanca in Chile, and California, where it’s also **Fumé Blanc**."
+      },
+      {
+       "name": "Riesling",
+       "note": "cool, moderate",
+       "text": "Dry, sweet or sparkling, with **high acidity** and light to medium body. Unoaked. Color runs from pale straw to deep gold. Top regions: **Southwest Germany**, **Alsace** and **Clare Valley** in Australia."
+      },
+      {
+       "name": "Chenin Blanc",
+       "note": "cool, moderate, warm",
+       "text": "Dry, sweet or sparkling, with acidity toward high. Top regions: the **Loire** (**Vouvray**, **Savennières**, **Bonnezeaux**, **Quarts de Chaume**) and **South Africa**, where it’s called **Steen**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Where each white is classic:",
+     "mixup": "**Steen** is Chenin Blanc in South Africa. **Fumé Blanc** is Sauvignon Blanc in California.",
+     "sayIt": "It’s a Riesling, so it’s bright and crisp, even when it’s a little sweet."
+    },
+    "check": [
+     39,
+     40,
+     41
+    ]
+   },
+   {
+    "name": "Grape profiles: reds",
+    "video": {
+     "youtubeId": "g04Jn78TwmE",
+     "title": "Pinot Noir (Everything you need to know) | Grapes 101",
+     "by": "Wine Folly",
+     "length": "6:22"
+    },
+    "keyPoints": [
+     {
+      "big": "PINOT NOIR",
+      "line": "is Burgundy’s red; whole cluster is a possible step."
+     },
+     {
+      "big": "NEBBIOLO",
+      "line": "is marked high for both tannin and acidity."
+     },
+     {
+      "big": "SHIRAZ",
+      "line": "is Syrah’s name in Australia (Barossa)."
+     },
+     {
+      "big": "SANGIOVESE",
+      "line": "is Tuscany’s grape: Chianti and Brunello di Montalcino."
+     },
+     {
+      "big": "TEMPRANILLO",
+      "line": "leads in Rioja, Ribera del Duero and Toro."
+     }
+    ],
+    "read": {
+     "bigIdea": "Eight red grapes, each with a classic home.",
+     "where": "The red profiles add **tannin** to the structure bars. They also show each grape’s classic **bottle** and **glass**, and possible winemaking steps such as **blending**, **whole cluster** or **large barrels**.",
+     "stopsTitle": "Five groups to remember",
+     "stops": [
+      {
+       "name": "Pinot Noir",
+       "note": "cool, moderate, warm",
+       "text": "Burgundy bottle and glass. Top regions: **Burgundy**, California, Oregon and **New Zealand**. Possible steps: **whole cluster**, neutral oak, new oak. Color: pale to deep ruby."
+      },
+      {
+       "name": "Cabernet Sauvignon and Merlot",
+       "note": "the Bordeaux pair",
+       "text": "Both use the **Bordeaux bottle**, with destemming, **blending** and new oak as possible steps. **Cabernet** grows moderate to hot (Bordeaux, California, Washington, Chile, Australia). **Merlot** grows moderate to warm (Bordeaux, California, Chile)."
+      },
+      {
+       "name": "Syrah and Grenache",
+       "note": "the Rhône pair",
+       "text": "**Syrah** is **Shiraz** in Australia; its top regions are the **Northern Rhône** (Hermitage, Côte-Rôtie, Saint-Joseph) and **Barossa**. **Grenache** grows warm to hot in the **Southern Rhône**, Spain (**Garnacha Tinta**, **Garnatxa**) and Australia."
+      },
+      {
+       "name": "Nebbiolo and Sangiovese",
+       "note": "the Italian pair",
+       "text": "**Nebbiolo** is marked **high** for tannin and acidity, and its color runs to garnet. It makes **Barolo** and **Barbaresco** in Piedmont, and **Valtellina** in Lombardy, where it’s called **Chiavennasca**. **Sangiovese** is Tuscany: **Chianti** and **Brunello di Montalcino**."
+      },
+      {
+       "name": "Tempranillo",
+       "note": "warm, hot",
+       "text": "Top regions: **Rioja**, **Ribera del Duero** (**Tinta del País**) and **Toro** (**Tinta de Toro**). Blending, large barrels, neutral oak and new oak are all possible steps."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Same grape, another name:",
+     "mixup": "**Barolo** and **Barbaresco** are Nebbiolo. **Chianti** and **Brunello** are Sangiovese.",
+     "sayIt": "It’s Nebbiolo, so expect firm tannin and bright acidity."
+    },
+    "check": [
+     42,
+     43,
+     44
     ]
    }
   ]

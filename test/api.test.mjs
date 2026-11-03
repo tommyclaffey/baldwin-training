@@ -67,7 +67,9 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
   const index = (await call('/api/index')).data;
   // each Study Guide chapter: its whole-chapter page plus one lesson per section (Nov 1)
-  const manual = fs.readdirSync(path.join(root, 'content/manual')).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(fs.readFileSync(path.join(root, 'content/manual', f), 'utf8')));
+  // Level 1 (content/manual) and Level 2 (content/manual-l2, Nov 2) chapters
+  const readDir = (d) => (fs.existsSync(path.join(root, d)) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'))) : []);
+  const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
   assert.equal(index.length, 631 + manual.reduce((a, c) => a + 1 + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
@@ -528,13 +530,37 @@ test('the Study Guide: chapters from content/manual, each a 30-card quiz that fe
   assert.ok(fr.includes('CHAMPAGNE') && fr.includes('Brut Nature') && fr.includes('/quizzes?quiz=t:study:france'));
   assert.ok(!index.some((e) => e.file === '362-2'), 'the design template is not a page of its own');
   const q = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:study:france' } })).data;
-  assert.equal(q.items.length, 30);
+  // every card in the chapter (30 to 45 after the Court alignment, Nov 2)
+  const frCards = JSON.parse(fs.readFileSync(path.join(root, 'content/manual/france.json'), 'utf8')).cards.length;
+  assert.equal(q.items.length, frCards);
   const ref = q.items[0];
   assert.equal(q.questions[ref].options.length, 4);
   await call('/api/quiz/mark', { method: 'POST', body: { ref, mark: 'green' } });
   const guide = await page('sommelier-program/study-guide');
   assert.ok(guide.includes('1 of 12') || guide.includes('"1"'), 'progress shows');
   assert.ok(guide.includes('/sommelier-program/study-guide/france'));
+});
+
+test('Court alignment: Level 2 lessons, the Court’s outcome on lessons, and its documents on the hub', async () => {
+  const index = (await call('/api/index')).data;
+  const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
+  // the Court's learning outcome, quoted, on a Level 1 lesson, with a link to its PDF
+  const loire = await page('sommelier-program/study-guide/france/loire');
+  assert.ok(loire.includes('WHAT THE COURT EXPECTS') && loire.includes('identify the Loire Valley') && loire.includes('mastersommeliers.org/wp-content/uploads/'));
+  // the hub links the Court's own PDFs
+  const hub = await page('sommelier-program');
+  assert.ok(hub.includes('FROM THE COURT') && hub.includes('Certified-Sommelier-Exam-Syllabus.pdf') && hub.includes('Grape-Variety-Profiles-Introductory-Level.pdf'));
+  // Level 2: lessons from content/manual-l2, reachable from the Level 2 page, no "coming soon" on the lessons
+  const l2 = fs.existsSync(path.join(root, 'content/manual-l2')) ? fs.readdirSync(path.join(root, 'content/manual-l2')).filter((f) => f.endsWith('.json')) : [];
+  if (l2.length) {
+    const ch = JSON.parse(fs.readFileSync(path.join(root, 'content/manual-l2', l2[0]), 'utf8'));
+    const lvl2 = await page('sommelier-program/level-2');
+    assert.ok(lvl2.includes('/sommelier-program/level-2/' + ch.slug) && !lvl2.includes('COMING SOON'));
+    const lesson = await page('sommelier-program/level-2/' + ch.slug);
+    assert.ok(lesson.includes('Level 2') && lesson.includes('Certified level'));
+    const q = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:study:' + ch.slug } })).data;
+    assert.equal(q.items.length, ch.cards.length);
+  }
 });
 
 test('demo: /demo starts a private copy with a sample menu; risky actions are off', async () => {

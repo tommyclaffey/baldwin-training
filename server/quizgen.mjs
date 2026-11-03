@@ -2,7 +2,7 @@
 // Every question comes from a store's own dishes, cocktails, wines and beers, so a new restaurant gets quizzes the moment
 // its menu is in. A question's id ("price:123") is enough to write it again on the server, so scoring never trusts the phone.
 import { listEntries, COURSES } from './cms.mjs';
-import { chapters, chapterSlug, shuffleSeeded } from './manual.mjs';
+import { allChapters, chapterSlug, shuffleSeeded } from './manual.mjs';
 
 export const PASS_PCT = 80;
 export const passFor = (total) => Math.ceil((total * PASS_PCT) / 100);
@@ -32,7 +32,7 @@ export function topicList(pool) {
     { key: 'allergens', label: 'Allergens', group: 'Know it cold' },
     { key: 'pairings', label: 'Pairings', group: 'Know it cold' },
     { key: 'prices', label: 'Prices', group: 'Know it cold' },
-    ...chapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: 'Sommelier Study Guide' })),
+    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Study Guide' })),
   ];
   return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= 3);
 }
@@ -119,7 +119,7 @@ export function questionPool(db, store) {
     ask('style:' + e.id, { ...base, q: `What style of beer is ${d.name}?`, right: d.style, pool: beers.map((x) => x.data.style), why: `${d.style}.`, topics: ['beer'] });
   }
   /* the Study Guide's cards: the chapter's own three wrong answers, in a fixed order per card */
-  for (const ch of chapters()) {
+  for (const ch of allChapters()) {
     ch.cards.forEach((c, i) => {
       const ref = `study:${ch.slug}:${i}`;
       const options = shuffleSeeded([c.answer, ...c.wrong.slice(0, 3)], ref);

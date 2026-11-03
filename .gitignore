@@ -7,3 +7,8 @@ dist
 content/raw/*.png
 CLAUDE.md
 data/
+
+# Court of Master Sommeliers PDF text, for research only (we link to the PDFs; we do not ship copies)
+content/research/court/*
+!content/research/court/BRIEF-L1.md
+!content/research/court/BRIEF-L2.md

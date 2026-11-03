@@ -1,0 +1,1521 @@
+{
+ "number": 1,
+ "slug": "certified-tasting-grid",
+ "title": "The tasting grid, line by line",
+ "script": "Chapter one",
+ "level": 2,
+ "part": 1,
+ "lead": "How the Certified tasting exam runs, what each line of the grid asks, and how to reason from your notes to a grape, a climate, a country and an age.",
+ "minutes": 25,
+ "intro": {
+  "script": "Start here",
+  "title": "EVERY LINE IS A POINT",
+  "text": "Four wines, 45 minutes, one grid per wine. There are no deductions, so the only way to lose points is to leave a line empty.",
+  "tiers": [
+   {
+    "name": "Color + fruit",
+    "note": "one color, fruit families, condition twice"
+   },
+   {
+    "name": "Non-fruit",
+    "note": "Yes only if key; No on purpose"
+   },
+   {
+    "name": "Structure",
+    "note": "trust it"
+   },
+   {
+    "name": "Conclusion",
+    "note": "grape, climate, country, age, pitch"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "The exam at a glance",
+   "lines": [
+    {
+     "label": "The format",
+     "text": "Four wines, two whites and two reds, in 45 minutes. You can work on paper, but only answers typed into Examplify count."
+    },
+    {
+     "label": "The bar",
+     "text": "You need 60% on each of the three exam sections, all passed at the same sitting."
+    }
+   ],
+   "know": [
+    "Four wines: two whites and two reds, 45 minutes in all.",
+    "About 11 minutes per wine; finish the whites by halfway.",
+    "Paper first, then Examplify; at 45 minutes it submits itself.",
+    "No topping up: the wine poured is all you get.",
+    "Pass mark: 60% in tasting, theory and service, at one sitting."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "One wine, three moves",
+     "items": [
+      {
+       "name": "Paper",
+       "text": "Color, fruit, non-fruit, structure",
+       "meta": "sensory notes"
+      },
+      {
+       "name": "Examplify",
+       "text": "Copy the notes across",
+       "meta": "where points count"
+      },
+      {
+       "name": "Conclusion",
+       "text": "Grape, climate, country, age, sales pitch",
+       "meta": "typed in Examplify"
+      }
+     ]
+    },
+    {
+     "type": "stat",
+     "number": "11",
+     "title": "minutes per wine",
+     "text": "45 minutes for four wines. The Court says to be done with the whites by the halfway point."
+    }
+   ]
+  },
+  {
+   "name": "Every line scores",
+   "lines": [
+    {
+     "label": "No deductions",
+     "text": "Points only add up, and every line has one. A blank line is a lost point."
+    },
+    {
+     "label": "Yes means key",
+     "text": "Tick Yes only when a note is very apparent and key to the wine. Otherwise tick No, and write None on an empty fruit line."
+    }
+   ],
+   "know": [
+    "No deductions: there are points on every single line.",
+    "A blank line scores nothing; examiners won't assume you meant No.",
+    "Yes only if very apparent and key to the wine's identity.",
+    "Fruit condition takes up to two answers; every other line takes one.",
+    "Write descriptors or reasons only where prompted, and keep them short."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "TICK YES",
+       "title": "Very apparent and key",
+       "text": "Gewurztraminer: tropical\nWrite pineapple,\nmango or banana"
+      },
+      {
+       "label": "TICK NO",
+       "title": "There, but not key",
+       "text": "Gewurztraminer: apple/pear\nTick No\nWrite None"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Color and fruit",
+   "lines": [
+    {
+     "label": "Color",
+     "text": "One primary color. Whites: straw, yellow or gold. Reds: purple, ruby or garnet."
+    },
+    {
+     "label": "Fruit",
+     "text": "Tick Yes or No for each fruit family and name one fruit on Yes. Then pick one or two condition words for the nose, and again for the palate."
+    }
+   ],
+   "know": [
+    "White colors: straw, yellow, gold. Red colors: purple, ruby, garnet.",
+    "White fruit families: apple/pear, citrus, stone fruit, tropical.",
+    "Red fruit families: red, black, blue.",
+    "Fruit condition is scored twice: on the nose and on the palate.",
+    "A change in fruit condition from nose to palate is a climate clue."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "The choices on the page",
+     "dark": true,
+     "items": [
+      {
+       "name": "WHITE COLOR",
+       "text": "Straw · Yellow · Gold"
+      },
+      {
+       "name": "RED COLOR",
+       "text": "Purple · Ruby · Garnet"
+      },
+      {
+       "name": "WHITE FRUIT",
+       "text": "Apple/pear · Citrus · Stone fruit · Tropical"
+      },
+      {
+       "name": "RED FRUIT",
+       "text": "Red · Black · Blue"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "WHITES WITH AGE",
+       "title": "Deeper",
+       "text": "More yellow,\nthen toward brown"
+      },
+      {
+       "label": "REDS WITH AGE",
+       "title": "Paler",
+       "text": "Lose color and\nturn more transparent"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Non-fruit: the clue lines",
+   "lines": [
+    {
+     "label": "How it works",
+     "text": "Every non-fruit line is Yes or No, judged on nose and palate together. The white grid has 12 lines and the red grid 13."
+    },
+    {
+     "label": "Why they matter",
+     "text": "Several lines appear on one grid only, and many point at a grape or a cellar choice: petrol, pyrazines, carbonic maceration, new oak."
+    }
+   ],
+   "know": [
+    "Non-fruit lines judge the nose and palate together.",
+    "White grid only: grape variety spice, noble rot, oxidation, lees, malolactic, petrol.",
+    "Red grid only: dried herbs, mint/eucalyptus, black peppercorn, coffee, meat, balsamic, carbonic.",
+    "Red new oak adds coconut and dill, notes of oak lactone.",
+    "Green bell pepper and grass come from pyrazines (Sauvignon Blanc, the Cabernets)."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Which grid has which line",
+     "dark": true,
+     "items": [
+      {
+       "name": "WHITE ONLY",
+       "text": "Grape variety spice · Noble rot · Oxidation · Lees · Malolactic · Petrol"
+      },
+      {
+       "name": "RED ONLY",
+       "text": "Dried herbs · Mint, eucalyptus · Black peppercorn · Coffee, cocoa · Meat, leather · Balsamic, tar · Carbonic maceration"
+      },
+      {
+       "name": "BOTH GRIDS",
+       "text": "Flowers · Fresh herbs · Green bell pepper, grass · Earth · Mineral · New oak"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Lines that point somewhere",
+     "rows": [
+      {
+       "name": "Petrol, gasoline, rubber",
+       "meta": "Riesling (TDN)"
+      },
+      {
+       "name": "Green bell pepper, grass",
+       "meta": "pyrazines: Sauvignon Blanc, Cabernets"
+      },
+      {
+       "name": "Carbonic maceration",
+       "meta": "Beaujolais"
+      },
+      {
+       "name": "Coconut, dill",
+       "meta": "oak lactone, more in American oak"
+      },
+      {
+       "name": "Ginger, honey, saffron, wax",
+       "meta": "noble rot"
+      }
+     ],
+     "note": "Grape links are from Wine Folly and the Court's examinable list."
+    }
+   ]
+  },
+  {
+   "name": "Structure: trust it",
+   "lines": [
+    {
+     "label": "Whites",
+     "text": "Phenolic bitterness (Yes or No), sweetness (dry or off-dry), acidity and alcohol."
+    },
+    {
+     "label": "Reds",
+     "text": "Tannin, acidity and alcohol. Each is called low to medium-minus, medium, medium-plus or high."
+    }
+   ],
+   "know": [
+    "White structure: phenolic bitterness, sweetness, acidity, alcohol.",
+    "Red structure: tannin, acidity, alcohol; no sweetness line.",
+    "Scale: low to medium-minus, medium, medium-plus, high.",
+    "White sweetness has two choices only: dry or off-dry.",
+    "The Court: look at structure and trust structure."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "WHITE GRID",
+       "title": "Four structure lines",
+       "text": "Phenolic bitterness: Yes/No\nSweetness: Dry / Off-Dry\nAcidity: 4 steps\nAlcohol: 4 steps"
+      },
+      {
+       "label": "RED GRID",
+       "title": "Three structure lines",
+       "text": "Tannin: 4 steps\nAcidity: 4 steps\nAlcohol: 4 steps"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Structure that points to a grape",
+     "rows": [
+      {
+       "name": "Riesling",
+       "meta": "high acid, under 10% alcohol"
+      },
+      {
+       "name": "Gewurztraminer",
+       "meta": "low acid, 13.5-15% alcohol"
+      },
+      {
+       "name": "Nebbiolo",
+       "meta": "high tannin"
+      },
+      {
+       "name": "Pinot Noir",
+       "meta": "low tannin"
+      },
+      {
+       "name": "Zinfandel",
+       "meta": "over 15% alcohol"
+      }
+     ],
+     "note": "Typical profiles from Wine Folly; producers vary."
+    }
+   ]
+  },
+  {
+   "name": "Conclusions and the sales pitch",
+   "lines": [
+    {
+     "label": "The answers",
+     "text": "A primary grape (from six listed), climate, country of origin and age range. Your reasoning for grape and climate is scored too."
+    },
+    {
+     "label": "The pitch",
+     "text": "Finish by selling the wine to a guest in two sentences or less."
+    }
+   ],
+   "know": [
+    "Six grapes are listed on the exam; the list changes each time.",
+    "You must name the country of origin yourself.",
+    "Climate: cool, moderate or warm, read from fruit condition, acidity, alcohol.",
+    "Age: whites 1-2, 3-4, 5+ years; reds 1-3, 4-6, 7+ years.",
+    "Also scored: grape reasoning, climate reasoning and the sales pitch."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Where each answer comes from",
+     "dark": true,
+     "items": [
+      {
+       "name": "GRAPE",
+       "text": "What stands out and makes the wine unique, matched to structure"
+      },
+      {
+       "name": "CLIMATE",
+       "text": "Fruit condition, acidity, alcohol; a change from nose to palate"
+      },
+      {
+       "name": "COUNTRY",
+       "text": "Does the grape fit there? Wine law and where grapes grow"
+      },
+      {
+       "name": "AGE",
+       "text": "Fruit condition, color, fruit or savory focus, sediment"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "WHITE AGE RANGES",
+       "title": "Three boxes",
+       "text": "1-2 years\n3-4 years\n5+ years"
+      },
+      {
+       "label": "RED AGE RANGES",
+       "title": "Three boxes",
+       "text": "1-3 years\n4-6 years\n7+ years"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "What makes a wine classic",
+   "lines": [
+    {
+     "label": "The idea",
+     "text": "The tasting exam uses classic wines: the benchmark that other wines of the grape are judged against."
+    },
+    {
+     "label": "How to practice",
+     "text": "Taste every examinable grape and region, write full grids, taste a range of producers, and compare look-alikes."
+    }
+   ],
+   "know": [
+    "A classic is the benchmark other wines of the grape are judged against.",
+    "Three tests: a distinctive profile, established quality, global market presence.",
+    "A wine must tick every box to qualify for deductive tasting.",
+    "New classics happen: Marlborough Sauvignon Blanc, Argentine Malbec, Aussie Shiraz.",
+    "Taste many producers per region, not one house style."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Look-alikes the Court says to compare",
+     "rows": [
+      {
+       "name": "Chablis / Sancerre",
+       "meta": "white"
+      },
+      {
+       "name": "Vouvray / German Riesling",
+       "meta": "white"
+      },
+      {
+       "name": "Gewurztraminer / Torrontés",
+       "meta": "white"
+      },
+      {
+       "name": "Albariño / Pinot Grigio",
+       "meta": "white"
+      },
+      {
+       "name": "Burgundy / US Pinot Noir",
+       "meta": "red"
+      },
+      {
+       "name": "Sangiovese / Nebbiolo",
+       "meta": "red"
+      },
+      {
+       "name": "French Grenache / Rioja",
+       "meta": "red"
+      },
+      {
+       "name": "Bordeaux / California Cabernet",
+       "meta": "red"
+      }
+     ],
+     "note": "From the Certified exam guide's practice list."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "ORIGINAL NAPA CABERNET",
+       "title": "Just ripe",
+       "text": "Pyrazines\nModerate-plus alcohol\nAstringent tannins\nOak less forward"
+      },
+      {
+       "label": "MODERN NAPA CABERNET",
+       "title": "Riper and bigger",
+       "text": "Subtler pyrazines\nHigh alcohol\nRounder tannins\nOak more forward"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Paper grid",
+   "b": "Examplify",
+   "why": "Paper is for working; only answers typed into Examplify earn credit."
+  },
+  {
+   "a": "Present",
+   "b": "Key",
+   "why": "Tick Yes only when a note is very apparent and key to the wine, not just detectable."
+  },
+  {
+   "a": "Fruit type",
+   "b": "Fruit condition",
+   "why": "Type is the fruit you name; condition (tart, ripe, jammy, dried) is scored on nose and palate separately."
+  },
+  {
+   "a": "Certified grid",
+   "b": "Advanced and Master format",
+   "why": "Certified stops at grape, climate, country and age; the upper levels add region, appellation, quality level and vintage."
+  }
+ ],
+ "sources": "Court of Master Sommeliers Americas: Certified Sommelier Exam Tasting Grid (1-2025), Certified exam guide and syllabus, Initial and Final Conclusions guide (3.2024), 'What Makes a Wine Classic?' session, example feedback report and the Advanced/Master tasting format, with Wine Folly as a labelled secondary source. Checked Nov 2, 2026.",
+ "cards": [
+  {
+   "q": "How many wines are on the Certified tasting exam, and how long do you get?",
+   "answer": "Four wines (two white, two red) in 45 minutes",
+   "wrong": [
+    "Six wines in 60 minutes",
+    "Four reds in 30 minutes",
+    "Two wines in 25 minutes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=10"
+  },
+  {
+   "q": "Where must your tasting answers be entered to earn credit?",
+   "answer": "In Examplify, on your own device",
+   "wrong": [
+    "On the paper grid only",
+    "Read aloud to the examiner",
+    "On a Court tablet"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=10"
+  },
+  {
+   "q": "What score do you need on the tasting section to pass it?",
+   "answer": "60% or higher",
+   "wrong": [
+    "50% or higher",
+    "70% or higher",
+    "75% or higher"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Syllabus.pdf#page=7"
+  },
+  {
+   "q": "On the Certified grid, what happens to a line you leave blank?",
+   "answer": "It earns no point; there are no deductions, but every line carries a point",
+   "wrong": [
+    "It counts as 'No'",
+    "It loses two points",
+    "It's ignored and not scored"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=14"
+  },
+  {
+   "q": "When should you tick 'Yes' on a descriptor line?",
+   "answer": "Only when it is very apparent and key to the wine's identity",
+   "wrong": [
+    "Whenever you can detect it at all",
+    "Only on the palate, never the nose",
+    "Only for fruit lines"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "q": "Which grid line allows up to two answers?",
+   "answer": "Fruit condition",
+   "wrong": [
+    "Primary color",
+    "Sweetness",
+    "Climate"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "q": "Which three primary colors does the red grid offer?",
+   "answer": "Purple, ruby, garnet",
+   "wrong": [
+    "Ruby, garnet, tawny",
+    "Purple, ruby, brick",
+    "Pink, ruby, garnet"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=2"
+  },
+  {
+   "q": "What do you write on a fruit line you mark 'No'?",
+   "answer": "None",
+   "wrong": [
+    "Nothing; leave it blank",
+    "N/A",
+    "The closest fruit anyway"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "q": "Which white fruit families appear on the Certified grid?",
+   "answer": "Apple/pear, citrus, stone fruit, tropical",
+   "wrong": [
+    "Citrus, stone fruit, red fruit, dried fruit",
+    "Apple/pear, melon, citrus, berry",
+    "Green fruit, yellow fruit, tropical"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "q": "Non-fruit lines on the Certified grid are judged on…",
+   "answer": "The nose and palate combined",
+   "wrong": [
+    "The nose only",
+    "The palate only",
+    "The finish only"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "q": "Which non-fruit line appears only on the red grid?",
+   "answer": "Carbonic maceration",
+   "wrong": [
+    "Malolactic fermentation",
+    "Lees",
+    "Petrol, gasoline, rubber"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=2"
+  },
+  {
+   "q": "On the red grid, coconut and dill sit on which line?",
+   "answer": "New oak",
+   "wrong": [
+    "Dried herbs",
+    "Balsamic, tar",
+    "Carbonic maceration"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=2"
+  },
+  {
+   "q": "What sweetness choices does the white grid give?",
+   "answer": "Dry or off-dry",
+   "wrong": [
+    "Bone dry, dry, off-dry, sweet",
+    "Dry, medium, sweet",
+    "There is no sweetness line"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "q": "Which structure line is on the white grid but not the red?",
+   "answer": "Phenolic bitterness",
+   "wrong": [
+    "Alcohol",
+    "Acidity",
+    "Tannin"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "q": "Your notes say off-dry, and your answer is Sauvignon Blanc. What does the Court suggest?",
+   "answer": "Look back for where things went off-track",
+   "wrong": [
+    "Change the sweetness to dry",
+    "Keep both; they always match",
+    "Pick Torrontés instead"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "q": "How many grape varieties are listed to choose from on the actual exam?",
+   "answer": "Six",
+   "wrong": [
+    "Three",
+    "Twelve",
+    "All 20 examinable grapes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=14"
+  },
+  {
+   "q": "What are the red-wine age ranges on the Certified grid?",
+   "answer": "1-3, 4-6, 7+ years",
+   "wrong": [
+    "1-2, 3-4, 5+ years",
+    "1-3, 3-5, 5-10 years",
+    "Under 5, 5-10, 10+ years"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=2"
+  },
+  {
+   "q": "For the climate call, the Court says to look at…",
+   "answer": "Fruit condition and structure, such as acidity and alcohol",
+   "wrong": [
+    "Color and legs only",
+    "The label's vintage",
+    "Tannin and oak only"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf#page=2"
+  },
+  {
+   "q": "Which is one of the three classic criteria in the Court's 'What Makes a Wine Classic?' session?",
+   "answer": "Global market presence",
+   "wrong": [
+    "A Grand Cru rating",
+    "Over 100 years of history",
+    "A price above $50"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "q": "What happens if a wine doesn't tick 'yes' on every classic qualification box?",
+   "answer": "It doesn't qualify for the deductive tasting exam",
+   "wrong": [
+    "It's used only for red flights",
+    "It's scored at half points",
+    "It moves to the theory exam"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "q": "Which wine is named as becoming a classic in just a few decades?",
+   "answer": "Marlborough Sauvignon Blanc",
+   "wrong": [
+    "Barolo",
+    "Côte-Rôtie",
+    "Rioja Gran Reserva"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "q": "About how many minutes per wine does the 45-minute tasting exam allow?",
+   "answer": "About 11",
+   "wrong": [
+    "About 5",
+    "About 15",
+    "About 20"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "q": "By when should you have finished the two white wines?",
+   "answer": "The halfway point",
+   "wrong": [
+    "The 5-minute warning",
+    "Before you touch the reds",
+    "There is no guidance"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "q": "The red grid's 'Mint, Eucalyptus' line appears in the Court's sample grid that concluded with which country?",
+   "answer": "Australia",
+   "wrong": [
+    "France",
+    "Italy",
+    "Argentina"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=18"
+  },
+  {
+   "q": "Which white non-fruit line covers ginger, honey, saffron and wax?",
+   "answer": "Noble rot/botrytis",
+   "wrong": [
+    "Oxidation",
+    "Lees",
+    "Grape variety spice"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "q": "The Court's feedback report scores grape and climate answers and also…",
+   "answer": "Your reasoning for each, plus the guest sales pitch",
+   "wrong": [
+    "Your handwriting",
+    "How fast you finish",
+    "How much wine you drink"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2026/04/Certified_Sommelier_Example_Feedback_Report_2026322.pdf"
+  },
+  {
+   "q": "How long can the sales pitch at the end of the grid be?",
+   "answer": "Two sentences or less",
+   "wrong": [
+    "One word",
+    "Five sentences",
+    "As long as you like"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "q": "Which part of the conclusion do you write in yourself, with no list to choose from?",
+   "answer": "Country of origin",
+   "wrong": [
+    "Primary grape variety",
+    "Climate",
+    "Age range"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=14"
+  },
+  {
+   "q": "In the Court's session, a 'modern' Napa Cabernet shows what, compared with the original style?",
+   "answer": "Higher alcohol, riper fruit and more forward oak",
+   "wrong": [
+    "More pyrazines and less oak",
+    "Lower alcohol and tart fruit",
+    "No oak at all"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "q": "What does the Advanced and Master final conclusion add beyond the Certified grid?",
+   "answer": "Region and appellation, quality level and vintage",
+   "wrong": [
+    "Price and producer",
+    "Food pairing only",
+    "Nothing; it's the same grid"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Certified exam: one day, three separate sections: Deductive Tasting, Theory/Business of the Sommelier, and a Hospitality and Service Practical. Expected skill set includes 'Deductive Tasting Method ability for core classic red and white varieties'.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=1"
+  },
+  {
+   "fact": "Exam-day schedule lists the Tasting Examination first (8:15 AM), before Theory (8:50 AM) and Service (from 10:00 AM).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Syllabus.pdf#page=2"
+  },
+  {
+   "fact": "A candidate must achieve 60 percent or higher on EACH exam section; all three portions must be passed at the same exam.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Syllabus.pdf#page=7"
+  },
+  {
+   "fact": "Tasting exam: four wines, two whites and two reds, to identify in 45 minutes using the CMS-A Deductive Tasting Method. Candidates may not touch the glasses until given permission.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=10"
+  },
+  {
+   "fact": "Candidates get a blank paper copy of the Certified grid for each wine, but the exam must be completed on Examplify on the candidate's own device. Suggested system: enter color, fruit, non-fruit and structure on paper; transfer to Examplify; enter the Conclusion and Sales Pitch into Examplify.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=10"
+  },
+  {
+   "fact": "Candidates track their own time; an approximate 'Half Time' and '5 minutes' notice is given; there is no extra time to input; at 45 minutes the exam submits automatically; answers must be in Examplify to receive credit.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=10"
+  },
+  {
+   "fact": "The wine in your glass is what you have for the exam; there is no topping up.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=10"
+  },
+  {
+   "fact": "The 45 minutes allows about 11 minutes per wine; you should be done with the white wines by the halfway point; leave a few moments to review that every question is answered.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "fact": "There are no deductions on the tasting exam, only points accumulated, and there are points for every single line on the grid. For yes/no descriptors you must check yes or no; examiners cannot assume 'no' when a descriptor is not apparent.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=14"
+  },
+  {
+   "fact": "Six grape varieties are listed to choose from on the actual exam; the list changes depending on the exam. Candidates are responsible for naming the country of origin.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=14"
+  },
+  {
+   "fact": "Pitfall: candidates often fail even when they get the wines correct because they do not fill in all the boxes. Fill out every line, even if it is a No. Only write descriptors or a reason where prompted; keep answers short.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "fact": "Answer YES only if very apparent and key to a wine's identity, otherwise NO. Example: a Gewurztraminer may have some apple/pear, but tropical is very apparent and key, so 'No' for apple/pear and 'Yes' for tropical with descriptors such as pineapple, mango, banana.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "fact": "Choose one answer per line for every line, except Fruit Condition, where you may choose up to two.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "fact": "Review before choosing a grape: does the description match the conclusion? If you called the wine off-dry and chose Sauvignon Blanc, look back for where things went off-track. Look at structure and trust structure; it is a significant indicator of certain grape varieties.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "fact": "Prep advice: practice explaining why it is the grape you chose with specific fruit, non-fruit and structure reasons; for climate, look at fruit condition and structure.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=15"
+  },
+  {
+   "fact": "Prep advice: taste examples of all Certified examinable grapes and regions and practice writing out full grids; compare wines, paying attention to fruit condition and structure (sweetness, tannin, acidity, alcohol).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=14"
+  },
+  {
+   "fact": "Suggested comparisons, whites: Vouvray and German Riesling; Chablis and Sancerre; California Chardonnay, Chablis and oaked Cote d'Or Chardonnay; Pinot Grigio and Chablis; Gewurztraminer and Torrontes; New Zealand Sauvignon Blanc and Sancerre; Albarino and Pinot Grigio.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=15"
+  },
+  {
+   "fact": "Suggested comparisons, reds: Burgundy and US Pinot Noir; Burgundy Pinot Noir and Nebbiolo; Sangiovese and Nebbiolo; Sangiovese and Rioja; French Grenache and Rioja; Bordeaux and California Cabernet Sauvignon; Australian Shiraz, Argentine Malbec and California Zinfandel.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=15"
+  },
+  {
+   "fact": "White grid color line: Straw, Yellow, Gold. Red grid: Purple, Ruby, Garnet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "fact": "White grid fruit lines: Apple/Pear, Citrus, Stone Fruit, Tropical; red grid: Red, Black, Blue. Each is Yes/No; if Yes, provide one specific fruit; if No, write 'None'.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "fact": "Fruit condition is asked separately for the nose and the palate; choices Tart, Ripe, Overripe, Jammy, Candied, Baked, Dried, Bruised; select one or two.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "fact": "Non-fruit descriptors combine nose and palate; select Yes only if it is an important character of the wine, No if not; one answer per line, no blank lines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "fact": "White non-fruit lines (12): Flowers; Fresh Herbs, Hay; Green Bell Pepper, Grass, Jalapeno, Asparagus; Grape Variety Spice: Allspice, Pepper, Cardamom; Noble Rot/Botrytis: Ginger, Honey, Saffron, Wax; Oxidation: Nuts, Dried Fruit; Lees: Dough, Baked Bread, Yeast, Beer, Cheese Rind; Malolactic Fermentation: Butter, Cream, Yogurt; Petrol, Gasoline, Rubber; Earth: Wet Leaves, Mushroom, Compost; Mineral: Mineral, Wet Rock, Sulfur; New Oak: Vanilla, Toast, Smoke, Cinnamon, Nutmeg, Clove.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "fact": "Red non-fruit lines (13): Flowers; Fresh Herbs, Tomato Leaf; Dried Herbs; Green Bell Pepper, Grass, Jalapeno, Asparagus; Mint, Eucalyptus; Black Peppercorn; Coffee, Cocoa, Mocha; Meat, Blood, Leather; Balsamic, Tar; Carbonic Maceration; Earth: Forest Floor, Wet Leaves, Mushrooms, Compost; Mineral: Mineral, Wet Rock, Sulfur; New Oak: Vanilla, Smoke, Toast, Coconut, Dill.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=2"
+  },
+  {
+   "fact": "White structure: Phenolic Bitterness (Yes/No); Sweetness (Dry, Off-Dry); Acidity and Alcohol (Low to Medium-, Medium, Medium+, High). Red structure: Tannin, Acidity, Alcohol on the same scale.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "fact": "Conclusion: Primary Grape Variety (select from examinable varieties); Climate (Cool, Moderate, Warm); Country of Origin; Age Range (white 1-2, 3-4, 5+ years; red 1-3, 4-6, 7+ years); 'Sell this wine to a guest in two sentences or less.'",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "fact": "Feedback report categories for each color: Visual (Primary Color); Nose & Palate (Fruit: Type; Fruit Condition: Nose; Fruit Condition: Palate; Non-Fruit); Structure (whites: Alcohol, Acid, Phenolics, Sweetness; reds: Acidity, Alcohol, Tannin); Conclusion (Country of Origin, Climate, Climate Reasoning, Grape Variety, Grape Variety Reasoning, Vintage, Guest Sales Pitch).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2026/04/Certified_Sommelier_Example_Feedback_Report_2026322.pdf"
+  },
+  {
+   "fact": "Conclusions guide, grape: give specific reasons from your description; review what stands out most and what makes the wine unique; apply grape variety markers, structure matches, grape growing and winemaking.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf#page=2"
+  },
+  {
+   "fact": "Conclusions guide, climate (cool, moderate, warm): look at fruit condition and structural elements such as acidity and alcohol; do your structure calls match the grape and where it is grown; is there a change from the nose to the palate?",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf#page=2"
+  },
+  {
+   "fact": "Conclusions guide, country: do the structure calls match the grape, and do the grapes match these countries? Connect wine law and where grapes are typically grown.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf#page=2"
+  },
+  {
+   "fact": "Conclusions guide, age: look at fruit condition, color or lack of it, focus on fruit or savory elements, and any sediment.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf#page=2"
+  },
+  {
+   "fact": "Advanced and Master final conclusion adds region and appellation, official quality level and vintage to grape and country.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "fact": "Example filled-out red grid in the exam guide: reasons 'Black fruit, black pepper, eucalyptus' and 'High alcohol, very ripe fruit'; country Australia; red fruit lines filled with blueberry, blackberry and black cherry.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=18"
+  },
+  {
+   "fact": "'What Makes a Wine Classic?' by Shayn Bjornholm, MS, Examination Director, CMS-A (mentoring session). Quoted definition (Steve Poe, MS): a classic wine sets a distinctive offering against which all other wines from the same variety are judged.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "Classic criteria questions: is its flavor profile unique and distinctive; does it have an established quality level; does it have global market presence?",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "If a wine does not check 'yes' for all of the qualification boxes, it does not qualify for the CMS deductive tasting examination. One box asks whether the region's wine shows unique and similar characteristics in all but the most idiosyncratic vintages.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "Wayne Belding, MS (quoted): Marlborough Sauvignon Blanc, Argentine Malbec and Torrontes, and Aussie Shiraz have risen from non-existent to classic in a few decades.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "Mia Van de Water, MS (quoted): taste a range of producers in every region; tasting only one producer teaches you that producer, not the region.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "Original vs modern: original Napa Valley Cabernet Sauvignon: pyrazines, moderate-plus alcohol and astringent tannins, fruit just ripe, oak not as forward. Modern: pyrazines more subtle, high alcohol and rounder tannins, fruit overripe/liqueur-like, oak more forward.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "As white wines age they become more yellow and brown; red wines lose color and become more transparent.",
+   "source": "https://winefolly.com/deep-dive/how-to-taste-wine-develop-palate/"
+  },
+  {
+   "fact": "Nebbiolo and Grenache often show a garnet or orange rim even when young; Malbec often has a magenta rim.",
+   "source": "https://winefolly.com/deep-dive/how-to-taste-wine-develop-palate/"
+  },
+  {
+   "fact": "Tannin is the drying, sandpaper-like feel on the tongue in red wines.",
+   "source": "https://winefolly.com/deep-dive/how-to-taste-wine-develop-palate/"
+  },
+  {
+   "fact": "Riesling often shows a striking aroma similar to petrol or petroleum wax, from a natural compound called TDN.",
+   "source": "https://winefolly.com/deep-dive/the-tasters-guide-to-riesling-wine/"
+  },
+  {
+   "fact": "Methoxypyrazines (IBMP) cause the herbaceous bell-pepper character of Cabernet Franc and are also found in Sauvignon Blanc; Cabernet Sauvignon shares the trait.",
+   "source": "https://winefolly.com/grapes/cabernet-franc/"
+  },
+  {
+   "fact": "Carbonic maceration: uncrushed grapes are placed in a sealed vat and topped with carbon dioxide; such wines have low tannin and color, juicy fruit and bold yeast aromas; common with entry-level Beaujolais.",
+   "source": "https://winefolly.com/wine-glossary/carbonic-maceration/"
+  },
+  {
+   "fact": "The Court's examinable list gives Gamay from Beaujolais 'with carbonic maceration' and no oak, and Rioja Reserva or Gran Reserva with American oak.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=2"
+  },
+  {
+   "fact": "Oak lactone gives woody, dill and coconut notes; European oak is denser and has been suggested to impart less oak lactone than American oak.",
+   "source": "https://winefolly.com/tips/how-wine-barrels-affect-the-taste-of-wine/"
+  },
+  {
+   "fact": "Wine Folly taste profile, Riesling: off-dry, light body, high acidity, under 10% ABV.",
+   "source": "https://winefolly.com/grapes/riesling/"
+  },
+  {
+   "fact": "Wine Folly taste profile, Gewurztraminer: low acidity, 13.5-15% ABV.",
+   "source": "https://winefolly.com/grapes/gewurztraminer/"
+  },
+  {
+   "fact": "Wine Folly taste profile, Nebbiolo: high tannins, medium-high acidity.",
+   "source": "https://winefolly.com/grapes/nebbiolo/"
+  },
+  {
+   "fact": "Wine Folly taste profile, Pinot Noir: low tannins.",
+   "source": "https://winefolly.com/grapes/pinot-noir/"
+  },
+  {
+   "fact": "Wine Folly taste profile, Zinfandel: over 15% ABV.",
+   "source": "https://winefolly.com/grapes/zinfandel/"
+  }
+ ],
+ "unverified": [
+  "The syllabus schedule shows the tasting exam as 8:15-8:45 AM (30 minutes), while the exam guide gives 45 minutes for four wines. This chapter uses the exam guide's 45 minutes.",
+  "The exam guide's prep page still asks 'Why is it from a particular world of origin?' while the grid asks for a country. This chapter follows the grid.",
+  "The feedback report lists a 'Vintage' item under Conclusion; the grid itself calls the line 'Age Range'. We treat them as the same line.",
+  "Links from grid lines to grapes (petrol to Riesling, pyrazines to Sauvignon Blanc and the Cabernets, oak lactone to American oak) come from Wine Folly, not the Court.",
+  "The 'What Makes a Wine Classic?' slides are from an Advanced Sommelier Course mentoring session; the Court does not say every criterion is applied the same way at Certified level.",
+  "The four section videos from the Court are short advice clips; their content was not transcribed, only their titles and channel verified."
+ ],
+ "court": {
+  "outcome": "Deductive Tasting Method ability for core classic red and white varieties",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=1",
+  "coverage": [
+   {
+    "topic": "Tasting exam format and timing",
+    "guide": "Four wines, two white and two red, in 45 minutes; paper grid, answers in Examplify",
+    "where": "The exam at a glance"
+   },
+   {
+    "topic": "Passing score",
+    "guide": "60% or higher on each of the three sections at one sitting",
+    "where": "The exam at a glance"
+   },
+   {
+    "topic": "Scoring every line",
+    "guide": "No deductions; a point on every line; tick No rather than leave blanks",
+    "where": "Every line scores"
+   },
+   {
+    "topic": "Yes only if key",
+    "guide": "Answer Yes only if very apparent and key to identity",
+    "where": "Every line scores"
+   },
+   {
+    "topic": "Primary color",
+    "guide": "Straw, yellow, gold for whites; purple, ruby, garnet for reds",
+    "where": "Color and fruit"
+   },
+   {
+    "topic": "Fruit type and condition",
+    "guide": "Fruit families with one specific fruit; one or two condition words for nose and palate",
+    "where": "Color and fruit"
+   },
+   {
+    "topic": "Non-fruit",
+    "guide": "Yes/No lines judged on nose and palate together; separate white and red lists",
+    "where": "Non-fruit: the clue lines"
+   },
+   {
+    "topic": "Structure",
+    "guide": "Bitterness, sweetness, acid, alcohol for whites; tannin, acid, alcohol for reds; trust structure",
+    "where": "Structure: trust it"
+   },
+   {
+    "topic": "Grape variety and reasoning",
+    "guide": "Choose from six listed grapes and give specific reasons from your notes",
+    "where": "Conclusions and the sales pitch"
+   },
+   {
+    "topic": "Climate and reasoning",
+    "guide": "Cool, moderate or warm, from fruit condition, acidity and alcohol",
+    "where": "Conclusions and the sales pitch"
+   },
+   {
+    "topic": "Country of origin",
+    "guide": "Name a country yourself; match grape and structure to it",
+    "where": "Conclusions and the sales pitch"
+   },
+   {
+    "topic": "Age range",
+    "guide": "White 1-2/3-4/5+, red 1-3/4-6/7+, from fruit, color, savory notes, sediment",
+    "where": "Conclusions and the sales pitch"
+   },
+   {
+    "topic": "Guest sales pitch",
+    "guide": "Sell the wine in two sentences or less",
+    "where": "Conclusions and the sales pitch"
+   },
+   {
+    "topic": "Classic wines",
+    "guide": "Distinctive profile, established quality, global presence; must meet every criterion",
+    "where": "What makes a wine classic"
+   },
+   {
+    "topic": "Practice and comparisons",
+    "guide": "Taste every examinable wine, write full grids, compare look-alike pairs, time yourself",
+    "where": "What makes a wine classic"
+   }
+  ]
+ },
+ "v3": {
+  "video": {
+   "youtubeId": "u2skqZChWyU",
+   "title": "The Tasting Grid with Sabato Sagaria, MS: Court of Master Sommeliers, Americas",
+   "by": "Court of Master Sommeliers, Americas",
+   "length": "0:38"
+  },
+  "sections": [
+   {
+    "name": "The exam at a glance",
+    "video": {
+     "youtubeId": "f9xReSSxQQM",
+     "title": "Tasting Examination Advice with John Ragan, MS: Court of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "0:49"
+    },
+    "keyPoints": [
+     {
+      "big": "FOUR WINES",
+      "line": "two whites and two reds, 45 minutes in all."
+     },
+     {
+      "big": "11 MINUTES",
+      "line": "per wine; finish the whites by the halfway point."
+     },
+     {
+      "big": "EXAMPLIFY",
+      "line": "is where answers count; the paper grid is for working."
+     },
+     {
+      "big": "NO TOP-UPS",
+      "line": "the wine poured is all you get."
+     },
+     {
+      "big": "60%",
+      "line": "is the pass mark in tasting, theory and service alike."
+     }
+    ],
+    "read": {
+     "bigIdea": "Four wines, 45 minutes, and nothing left blank.",
+     "where": "The tasting exam comes **first** on exam day. You get **four wines** (two whites, two reds) and **45 minutes**. Each wine comes with a paper copy of the **Certified Sommelier Exam Tasting Grid**, but only answers typed into **Examplify** on your own device earn credit.",
+     "stopsTitle": "How to spend the 45 minutes",
+     "stops": [
+      {
+       "name": "Paper",
+       "note": "the sensory part",
+       "text": "Write **color, fruit, non-fruit and structure** on the paper grid. Don't touch the glasses until you're told to."
+      },
+      {
+       "name": "Examplify",
+       "note": "where points count",
+       "text": "Copy your notes across, then add the **conclusion** and the **sales pitch**. There's no extra time to type."
+      },
+      {
+       "name": "The clock",
+       "note": "about 11 minutes a wine",
+       "text": "You keep your own time. A **half-time** and a **5-minute** call are given, and at **45 minutes** the exam submits itself."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The math the Court gives you:",
+     "mixup": "The **paper grid** is for working. Only answers in **Examplify** are scored."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Every line scores",
+    "video": {
+     "youtubeId": "rn1lSfuY3a4",
+     "title": "Common Tasting Exam Mistake with David Keck, MS: Court of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "0:58"
+    },
+    "keyPoints": [
+     {
+      "big": "NO DEDUCTIONS",
+      "line": "only points, and every line carries one."
+     },
+     {
+      "big": "TICK NO",
+      "line": "on purpose; a blank line earns nothing."
+     },
+     {
+      "big": "YES",
+      "line": "only when a note is very apparent and key."
+     },
+     {
+      "big": "NONE",
+      "line": "is what you write on a fruit line you mark No."
+     },
+     {
+      "big": "TWO WORDS",
+      "line": "max for fruit condition; one answer on every other line."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every line is a point, so answer every line.",
+     "where": "From Level 1: the grid's five boxes are color, fruit, non-fruit, structure and conclusion. At Certified level, how you fill them matters as much as your palate. There are **no deductions**, only points, and **every single line** has one. The Court says candidates often fail with the right wines because they **didn't fill in all the boxes**.",
+     "stopsTitle": "Three habits that protect your score",
+     "stops": [
+      {
+       "name": "Tick No",
+       "note": "never skip",
+       "text": "If a note isn't there, tick **No** (and write **None** on a fruit line). Examiners can't assume a blank means No."
+      },
+      {
+       "name": "Yes means key",
+       "note": "not just present",
+       "text": "Tick **Yes** only if the note is **very apparent and key** to the wine's identity. A Gewurztraminer may hint at apple, but **tropical** fruit is what defines it."
+      },
+      {
+       "name": "Keep it short",
+       "note": "one answer a line",
+       "text": "Choose **one** answer per line, except **fruit condition**, where up to **two** are allowed. Write descriptors or reasons only where the grid asks."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The Court's own example of Yes versus No:",
+     "mixup": "**Present** isn't the test for Yes. **Key to the wine's identity** is."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Color and fruit",
+    "video": {
+     "youtubeId": "rtnAwAp6C4c",
+     "title": "Decoding The Color of Wine!",
+     "by": "Wine Folly",
+     "length": "1:23"
+    },
+    "keyPoints": [
+     {
+      "big": "ONE COLOR",
+      "line": "straw, yellow or gold; purple, ruby or garnet."
+     },
+     {
+      "big": "FAMILY FIRST",
+      "line": "tick Yes, then name one specific fruit."
+     },
+     {
+      "big": "NONE",
+      "line": "goes on any fruit line you tick No."
+     },
+     {
+      "big": "TWICE",
+      "line": "fruit condition is scored on the nose and on the palate."
+     },
+     {
+      "big": "NOSE TO PALATE",
+      "line": "a shift in fruit condition is a climate clue."
+     }
+    ],
+    "read": {
+     "bigIdea": "One color, then fruit family by family.",
+     "where": "From Level 1: the color and fruit choices. At Certified level, the Court's feedback scores **primary color**, **fruit type**, and **fruit condition** on the **nose** and on the **palate** as separate items. Treat each one as its own answer.",
+     "stopsTitle": "Down the first two boxes",
+     "stops": [
+      {
+       "name": "Primary color",
+       "note": "one word",
+       "text": "Whites: **straw**, **yellow** or **gold**. Reds: **purple**, **ruby** or **garnet**. Whites deepen toward yellow and brown with age; reds lose color."
+      },
+      {
+       "name": "Fruit families",
+       "note": "Yes or No, every line",
+       "text": "Whites: **apple/pear**, **citrus**, **stone fruit**, **tropical**. Reds: **red**, **black**, **blue**. On Yes, name **one specific fruit**; on No, write **None**."
+      },
+      {
+       "name": "Fruit condition",
+       "note": "nose, then palate",
+       "text": "Pick one or two of **tart, ripe, overripe, jammy, candied, baked, dried, bruised**. The Court asks whether the condition **changes from nose to palate**; that feeds your climate call."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The choices on the page:",
+     "mixup": "**Fruit type** is the fruit you name. **Fruit condition** is its state: tart, ripe, jammy, dried."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Non-fruit: the clue lines",
+    "video": {
+     "youtubeId": "sJh0WOCRRXY",
+     "title": "Blind Tasting Wine Secrets: Impact Compounds",
+     "by": "Wine Folly",
+     "length": "7:22"
+    },
+    "keyPoints": [
+     {
+      "big": "NOSE + PALATE",
+      "line": "non-fruit lines judge both together."
+     },
+     {
+      "big": "PETROL",
+      "line": "is a white-grid line; Wine Folly ties it to Riesling."
+     },
+     {
+      "big": "PYRAZINES",
+      "line": "give green pepper and grass: Sauvignon Blanc, the Cabernets."
+     },
+     {
+      "big": "CARBONIC",
+      "line": "is a red-grid line; Beaujolais is listed with it."
+     },
+     {
+      "big": "COCONUT, DILL",
+      "line": "on the red new-oak line come from oak lactone."
+     }
+    ],
+    "read": {
+     "bigIdea": "Non-fruit lines are where grapes give themselves away.",
+     "where": "Every non-fruit line is **Yes** or **No**, judged on **nose and palate together**. The white grid has **12** of these lines and the red grid **13**. Several exist on one grid only, and many point at a grape or a cellar choice.",
+     "stopsTitle": "Lines with a story",
+     "stops": [
+      {
+       "name": "Petrol",
+       "note": "white grid",
+       "text": "**Petrol, gasoline, rubber** has its own line. Wine Folly ties a petrol-like aroma, from the compound **TDN**, to Riesling."
+      },
+      {
+       "name": "Green bell pepper",
+       "note": "both grids",
+       "text": "**Methoxypyrazines** give the green, herbal notes of **Sauvignon Blanc**, **Cabernet Franc** and **Cabernet Sauvignon**."
+      },
+      {
+       "name": "Carbonic maceration",
+       "note": "red grid",
+       "text": "Whole, uncrushed grapes ferment in a sealed vat filled with CO2, giving juicy fruit and low tannin. The Court lists Beaujolais **with carbonic maceration**."
+      },
+      {
+       "name": "New oak",
+       "note": "both grids",
+       "text": "Vanilla, toast and smoke on both. The red line adds **coconut** and **dill**, notes of oak lactone, which American oak tends to give more of."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Which grid has which line:",
+     "mixup": "**Lees** smell like dough and bread. **Malolactic** smells like butter, cream and yogurt."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Structure: trust it",
+    "video": {
+     "youtubeId": "Cml_7diJmxc",
+     "title": "Blind Tasting Advice with Rob Bigelow, MS: Court of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "1:05"
+    },
+    "keyPoints": [
+     {
+      "big": "TRUST STRUCTURE",
+      "line": "the Court calls it a significant grape clue."
+     },
+     {
+      "big": "BITTERNESS",
+      "line": "is a white-grid line; tannin is a red-grid line."
+     },
+     {
+      "big": "DRY OR OFF-DRY",
+      "line": "are the only white sweetness choices."
+     },
+     {
+      "big": "FOUR STEPS",
+      "line": "low to medium-minus, medium, medium-plus, high."
+     },
+     {
+      "big": "CROSS-CHECK",
+      "line": "off-dry plus Sauvignon Blanc means look again."
+     }
+    ],
+    "read": {
+     "bigIdea": "Trust structure: it points to the grape.",
+     "where": "From Level 1: tannin is the drying feel on your tongue. At Certified level you place acidity, alcohol and tannin on a **four-step scale**: low to medium-minus, medium, medium-plus, high. The Court's advice is short: **look at structure and trust structure**.",
+     "stopsTitle": "What the grid asks",
+     "stops": [
+      {
+       "name": "White wines",
+       "note": "four lines",
+       "text": "**Phenolic bitterness** (Yes or No), **sweetness** (**dry** or **off-dry** only), **acidity** and **alcohol**."
+      },
+      {
+       "name": "Red wines",
+       "note": "three lines",
+       "text": "**Tannin**, **acidity** and **alcohol**. There's no sweetness line on the red grid."
+      },
+      {
+       "name": "The cross-check",
+       "note": "before you conclude",
+       "text": "If your notes say **off-dry** and your answer says **Sauvignon Blanc**, the Court suggests looking back for where things went off-track."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Structure markers from typical grape profiles:",
+     "mixup": "**Phenolic bitterness** is scored on whites. **Tannin** is scored on reds."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "Conclusions and the sales pitch",
+    "video": {
+     "youtubeId": "Xi6Hu_nBUaA",
+     "title": "Tasting Examination Advice with David Yoshida, MS: Court of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "0:38"
+    },
+    "keyPoints": [
+     {
+      "big": "SIX GRAPES",
+      "line": "are listed on the exam; the list changes each time."
+     },
+     {
+      "big": "COUNTRY",
+      "line": "is yours to name; no list is given."
+     },
+     {
+      "big": "CLIMATE",
+      "line": "comes from fruit condition, acidity and alcohol."
+     },
+     {
+      "big": "AGE",
+      "line": "from fruit condition, color, fruit or savory focus, sediment."
+     },
+     {
+      "big": "THE PITCH",
+      "line": "two sentences or less, and it's scored."
+     }
+    ],
+    "read": {
+     "bigIdea": "Reason from your notes, then sell the wine.",
+     "where": "The conclusion asks for a **primary grape**, **climate**, **country of origin** and **age range**, then a **sales pitch**. The Court's feedback scores **grape reasoning** and **climate reasoning** apart from the answers, so the why earns points too.",
+     "stopsTitle": "How the Court says to reason",
+     "stops": [
+      {
+       "name": "Grape",
+       "note": "what stands out?",
+       "text": "Name the markers that make the wine unique and check the structure fits. You choose from **six grapes** listed on the exam."
+      },
+      {
+       "name": "Climate",
+       "note": "cool, moderate, warm",
+       "text": "Read **fruit condition**, **acidity** and **alcohol**. Does the fruit change from nose to palate?"
+      },
+      {
+       "name": "Country",
+       "note": "name it yourself",
+       "text": "Ask whether the grape fits the country and the structure fits both. Wine law and where grapes grow are your tools."
+      },
+      {
+       "name": "Age",
+       "note": "look for the signs",
+       "text": "Weigh **fruit condition**, **color**, a **fruit or savory** focus, and any **sediment**."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The age boxes differ by color:",
+     "mixup": "**Climate reasoning** uses fruit condition and structure. **Grape reasoning** uses the markers that make the wine unique.",
+     "sayIt": "Bright and crisp, with lemon and green apple. Lovely with oysters."
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   },
+   {
+    "name": "What makes a wine classic",
+    "video": {
+     "youtubeId": "b6dVof765uk",
+     "title": "Blind Tasting Advice with Keith Goldston, MS: Court of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "1:16"
+    },
+    "keyPoints": [
+     {
+      "big": "CLASSIC",
+      "line": "the benchmark other wines of that grape are judged against."
+     },
+     {
+      "big": "THREE TESTS",
+      "line": "a distinctive profile, established quality, global presence."
+     },
+     {
+      "big": "ALL YES",
+      "line": "or a wine doesn't qualify for the tasting exam."
+     },
+     {
+      "big": "NEW CLASSICS",
+      "line": "Marlborough Sauvignon Blanc and Argentine Malbec rose fast."
+     },
+     {
+      "big": "MANY PRODUCERS",
+      "line": "taste a range, not one house style."
+     }
+    ],
+    "read": {
+     "bigIdea": "Classic wines are the benchmarks you're tested on.",
+     "where": "In a Court mentoring session, the Court's Examination Director asks three questions of any wine: is its profile **unique and distinctive**, does it have an **established quality level**, and does it have **global market presence**? A wine has to tick **every** qualification box to be used in deductive tasting.",
+     "stopsTitle": "Three ideas from the session",
+     "stops": [
+      {
+       "name": "Original vs modern",
+       "note": "one region, two styles",
+       "text": "Some classic regions have a second style. The session contrasts an original Napa Cabernet (**pyrazines**, fruit just ripe) with a modern one (**higher alcohol**, riper fruit, more oak)."
+      },
+      {
+       "name": "New classics",
+       "note": "decades, not centuries",
+       "text": "**Marlborough Sauvignon Blanc**, **Argentine Malbec and Torrontés** and **Australian Shiraz** became classics in a few decades."
+      },
+      {
+       "name": "How to practice",
+       "note": "the Court's advice",
+       "text": "Taste every examinable grape and region, and write full grids. Taste a **range of producers**, then compare look-alikes like **Chablis and Sancerre**."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Two Napa Cabernet styles, as the session describes them:",
+     "mixup": "A **classic** isn't just famous. It should taste **recognizably of its grape and place** in all but the oddest vintages."
+    },
+    "check": [
+     18,
+     19,
+     20
+    ]
+   }
+  ]
+ }
+}

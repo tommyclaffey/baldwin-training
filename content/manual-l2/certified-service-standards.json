@@ -1,0 +1,1379 @@
+{
+ "level": 2,
+ "part": 3,
+ "number": 7,
+ "slug": "certified-service-standards",
+ "title": "Hospitality and service standards",
+ "script": "Chapter seven",
+ "lead": "What the Certified service practical looks like, how it's scored, and the Court's standards for demeanor, solving problems and dress.",
+ "minutes": 20,
+ "intro": {
+  "script": "Start here",
+  "title": "THE THIRD EXAM",
+  "text": "From Level 1: you watched formal service. At Certified you perform it, in a mock restaurant, and it's one of three parts you must pass the same day.",
+  "tiers": [
+   {
+    "name": "Tasting",
+    "note": "4 wines in 45 minutes"
+   },
+   {
+    "name": "Theory",
+    "note": "45 questions in 38 minutes"
+   },
+   {
+    "name": "Service",
+    "note": "About 16 minutes at the table"
+   },
+   {
+    "name": "Pass",
+    "note": "60% on each part, same sitting"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "The service exam, start to finish",
+   "lines": [
+    {
+     "label": "The day",
+     "text": "The Certified exam is one day with three parts: tasting, theory and a hospitality and service practical. You need 60% on each part, all at the same sitting."
+    },
+    {
+     "label": "The practical",
+     "text": "It runs about 16 minutes and is set up like a real restaurant. The Master Sommeliers keep the time."
+    }
+   ],
+   "know": [
+    "Arrive 10 to 15 minutes before your assigned time.",
+    "An Advanced Sommelier plays the Maître d': checks your opener, pen and notepad, then walks you in.",
+    "The exam starts when the Maître d' starts talking. The instructions are part of the test.",
+    "No phones or devices for notes. Underliners, serviettes and other tools are provided.",
+    "Usually one Master Sommelier sits at the table and plays a full table of guests."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "The practical, in order",
+     "items": [
+      {
+       "name": "Check in",
+       "text": "Maître d' checks your opener, pen and notepad",
+       "meta": "10-15 min early"
+      },
+      {
+       "name": "Listen",
+       "text": "Instructions count; write them down"
+      },
+      {
+       "name": "The table",
+       "text": "One Master Sommelier plays every guest"
+      },
+      {
+       "name": "Serve and answer",
+       "text": "Tasks plus theory questions",
+       "meta": "about 16 min"
+      }
+     ]
+    },
+    {
+     "type": "stat",
+     "number": "60%",
+     "title": "On each part",
+     "text": "Tasting, theory and service must each reach 60%, at the same exam."
+    }
+   ]
+  },
+  {
+   "name": "How the practical is scored",
+   "lines": [
+    {
+     "label": "The standard",
+     "text": "The Court's Hospitality and Service Standards are what candidates are measured against. They are formal on purpose."
+    },
+    {
+     "label": "Three groups",
+     "text": "The Court's example feedback report scores hospitality and salesmanship, mechanics, and theory."
+    }
+   ],
+   "know": [
+    "Hospitality is scored on confidence, gracious carriage and hospitality.",
+    "Salesmanship is scored on appetizing description and salesmanship.",
+    "Opening is scored on a confident, quiet, safe opening, the presentation and wiping the bottle lip.",
+    "Pouring is scored on correct glassware, clockwise service, no drips, the host taste, pace and pour height.",
+    "Order taking (repeat it, track it) and traywork (pace, carrying stemware) are scored too."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "What the examiners mark",
+     "dark": true,
+     "items": [
+      {
+       "name": "HOSPITALITY",
+       "text": "Confidence, gracious carriage, hospitality"
+      },
+      {
+       "name": "SALESMANSHIP",
+       "text": "Appetizing description, selling"
+      },
+      {
+       "name": "MECHANICS",
+       "text": "Mise en place, opening, order taking, pouring, traywork"
+      },
+      {
+       "name": "THEORY",
+       "text": "Wine and non-wine questions at the table"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Mechanics, line by line",
+     "rows": [
+      {
+       "name": "Mise en place",
+       "meta": "Stemware, other equipment and tools"
+      },
+      {
+       "name": "Opening",
+       "meta": "Confident, quiet, safe, presentation, wipes lip"
+      },
+      {
+       "name": "Order taking",
+       "meta": "Repeats it, tracks it correctly"
+      },
+      {
+       "name": "Pouring",
+       "meta": "Glassware, clockwise, no drips, host taste, pace, height"
+      },
+      {
+       "name": "Traywork",
+       "meta": "Pace, carrying stemware on a tray"
+      }
+     ],
+     "note": "From the Court's example Certified feedback report."
+    }
+   ]
+  },
+  {
+   "name": "The questions at the table",
+   "lines": [
+    {
+     "label": "Tasks",
+     "text": "You might open sparkling wine, pour by the glass, serve a flight, or choose a pairing from several dishes."
+    },
+    {
+     "label": "Questions",
+     "text": "Examiners ask theory while you work: producers, vintages, classified growths, cocktails and other drinks."
+    }
+   ],
+   "know": [
+    "A recommendation needs producer, vintage and full appellation for full marks.",
+    "Say why a pairing works, in words a guest would enjoy.",
+    "Know the top cuvées of top Champagne houses and the First and Second Growths of 1855.",
+    "Know top vintages of the last 10 to 15 years for regions like Champagne, Barolo, Brunello and Left Bank Bordeaux.",
+    "Be ready to give a classic cocktail's ingredients, mixers and garnish."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "What you might be asked",
+     "rows": [
+      {
+       "name": "Open and serve sparkling",
+       "meta": "Mechanics"
+      },
+      {
+       "name": "Pour wines by the glass or a flight",
+       "meta": "Mechanics"
+      },
+      {
+       "name": "Recommend a wine for a dish",
+       "meta": "Producer, vintage, appellation"
+      },
+      {
+       "name": "Name producers like a guest's favorite",
+       "meta": "Producers"
+      },
+      {
+       "name": "Describe a classic cocktail",
+       "meta": "Ingredients, mixers, garnish"
+      },
+      {
+       "name": "Name producers of beer, sake, spirits, liqueurs",
+       "meta": "Non-wine"
+      },
+      {
+       "name": "Place an apéritif brand",
+       "meta": "Country and flavor"
+      }
+     ],
+     "note": "From the Court's Certified exam guide."
+    }
+   ]
+  },
+  {
+   "name": "The right attitude",
+   "lines": [
+    {
+     "label": "Attitude",
+     "text": "Quietly confident, never arrogant. No job on the floor is beneath a sommelier."
+    },
+    {
+     "label": "Team",
+     "text": "The sommelier leads by example and sets the tone of service in the room."
+    }
+   ],
+   "know": [
+    "Hospitality comes first, whether or not the guests are drinking.",
+    "A good team member never lets another team member fail.",
+    "Treat vendors with respect: honor appointments and return calls and emails.",
+    "Teach the team with an inclusive spirit. Simplify without dumbing it down.",
+    "Don't intimidate guests or co-workers with obscure wine facts."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Who you serve",
+     "items": [
+      {
+       "name": "GUESTS",
+       "text": "Welcome and comfortable, drinking or not"
+      },
+      {
+       "name": "TEAM",
+       "text": "Help wherever needed; set the tone"
+      },
+      {
+       "name": "VENDORS",
+       "text": "Respect their time; return calls"
+      },
+      {
+       "name": "TRAINING",
+       "text": "Simplify, don't dumb down"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Reading the guest",
+   "lines": [
+    {
+     "label": "At the table",
+     "text": "Smile, be genuine, and keep the attention on the guest, never on yourself."
+    },
+    {
+     "label": "Rapport",
+     "text": "Watch how a guest answers, speaks and sits, and adjust. Work out how much help they want."
+    }
+   ],
+   "know": [
+    "Answer compliments with brief thanks.",
+    "Describe a wine briefly and accurately: aroma, flavor, structure.",
+    "Don't make things up. Offer to find the answer.",
+    "Listen actively and confirm the order back to the guest.",
+    "Learn and remember guests' preferences."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "DO",
+       "title": "Keep it on the guest",
+       "text": "Smile and make eye contact\nListen, then confirm the order\nBrief descriptors: aroma, flavor, structure\n'Let me find out for you'"
+      },
+      {
+       "label": "DON'T",
+       "title": "Make it about you",
+       "text": "Lecture with obscure facts\nOverwhelm with detail\nGuess an answer\nDraw attention to yourself"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "When something goes wrong",
+   "lines": [
+    {
+     "label": "The rule",
+     "text": "The guest is always right, and their perception is your reality. Fairness doesn't matter; fixing it in the guest's mind does."
+    },
+    {
+     "label": "The steps",
+     "text": "Acknowledge it, let the guest explain, listen, ask how to make it right, decide, and bring in help when needed."
+    }
+   ],
+   "know": [
+    "A rejected bottle comes off the table at once, with an apology. Check it away from the table.",
+    "Flawed wine: offer another bottle of the same. Sound wine: offer the list again.",
+    "Never put the guest in the position of being wrong.",
+    "A spill: apologize, act fast, offer to pay for dry cleaning, and reseat the guest.",
+    "A wrong bottle or price on the check: bring in a manager and stay diplomatic."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Six steps to fix a problem",
+     "rows": [
+      {
+       "name": "1 · Acknowledge",
+       "meta": "Recognize there's a problem"
+      },
+      {
+       "name": "2 · Engage",
+       "meta": "Ask the guest to explain"
+      },
+      {
+       "name": "3 · Listen",
+       "meta": "Actively and completely"
+      },
+      {
+       "name": "4 · Ask",
+       "meta": "'How can I make this right?'"
+      },
+      {
+       "name": "5 · Decide",
+       "meta": "Within the house's policies"
+      },
+      {
+       "name": "6 · Get help",
+       "meta": "Bring in key staff when needed"
+      }
+     ],
+     "note": "From the Court's Demeanor of the Professional Sommelier."
+    },
+    {
+     "type": "tiles",
+     "title": "Four problems, four fixes",
+     "dark": true,
+     "items": [
+      {
+       "name": "REJECTED WINE",
+       "text": "Remove it; check it away from the table"
+      },
+      {
+       "name": "SPILL",
+       "text": "Act fast; offer dry cleaning; reseat"
+      },
+      {
+       "name": "WRONG BILL",
+       "text": "Bring in a manager; be diplomatic"
+      },
+      {
+       "name": "PRICE COMPLAINT",
+       "text": "Acknowledge; state the policy tactfully"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Dress and appearance",
+   "lines": [
+    {
+     "label": "The rule",
+     "text": "The Court awards and deducts no points for appearance. Dress for safety, the guest and efficient service."
+    },
+    {
+     "label": "Inclusive",
+     "text": "No clothing is gender-specific. Religious and cultural dress and all hairstyles are welcome, and disability accommodations are supported."
+    }
+   ],
+   "know": [
+    "Any safe, workplace-appropriate mix of pants, dress, suit, blazer, shirt, blouse and shoes works.",
+    "Avoid large earrings and loose hair: they snag, and hair can land in food or drink.",
+    "Avoid short skirts (they limit movement) and open-toed shoes (slips and dropped objects).",
+    "No strong perfume: it gets in the way of the guest's meal and your own tasting.",
+    "The Service Standards add: pressed, clean clothes, safe shoes and clean fingernails."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Avoid, and why",
+     "rows": [
+      {
+       "name": "Large earrings, loose hair",
+       "meta": "Snag on things; hair in food or drink"
+      },
+      {
+       "name": "Short skirts",
+       "meta": "Restrict movement"
+      },
+      {
+       "name": "Open-toed shoes",
+       "meta": "Less protection; slips and trips"
+      },
+      {
+       "name": "Strong perfume",
+       "meta": "Masks the wine for guest and you"
+      }
+     ],
+     "note": "The Court cites Department of Health guidelines."
+    },
+    {
+     "type": "stat",
+     "number": "0",
+     "title": "Points for appearance",
+     "text": "The Court neither awards nor deducts points on any exam for how you look."
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Maître d'",
+   "b": "Master Sommelier at the table",
+   "why": "The Maître d' (an Advanced Sommelier) checks you in and gives instructions. The Master Sommelier at the table plays your guests."
+  },
+  {
+   "a": "Flawed wine sent back",
+   "b": "Sound wine sent back",
+   "why": "Flawed: offer another bottle of the same wine. Sound: offer the list again. Either way, the guest is never wrong."
+  },
+  {
+   "a": "Appearance",
+   "b": "Safety",
+   "why": "No points for appearance. But the Court still asks you to avoid loose hair, big earrings, short skirts and open toes for safety."
+  },
+  {
+   "a": "A good recommendation",
+   "b": "A full-marks recommendation",
+   "why": "Full marks need producer, vintage and full appellation, plus why the pairing works."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas: Certified Sommelier Exam Guide (7.2024), Certified Sommelier Exam Syllabus (7.2023), Hospitality & Service Standards (1.2023), Demeanor of the Professional Sommelier (4.2023), Dress Guidelines (4.2023) and the example Certified feedback report (2026). Checked Nov 2, 2026.",
+ "cards": [
+  {
+   "q": "About how long is the Certified hospitality and service practical?",
+   "answer": "About 16 minutes",
+   "wrong": [
+    "About 5 minutes",
+    "About 45 minutes",
+    "About 2 hours"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=28"
+  },
+  {
+   "q": "Who plays the Maître d' at the Certified service exam?",
+   "answer": "A local Advanced Sommelier",
+   "wrong": [
+    "A Master Sommelier examiner",
+    "Another candidate",
+    "The restaurant's manager"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=28"
+  },
+  {
+   "q": "When do exam conditions begin in the service practical?",
+   "answer": "As soon as the Maître d' starts speaking",
+   "wrong": [
+    "When you reach the table",
+    "When you open the first bottle",
+    "When the examiner starts a timer you can see"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=28"
+  },
+  {
+   "q": "What score do you need on each part of the Certified exam?",
+   "answer": "60% or higher, all at the same sitting",
+   "wrong": [
+    "70% average across the three parts",
+    "60% on two of the three parts",
+    "75% on service only"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Syllabus.pdf#page=7"
+  },
+  {
+   "q": "How many corkscrews does the Court suggest bringing to the Certified exam?",
+   "answer": "Two, in case one breaks",
+   "wrong": [
+    "One",
+    "Three",
+    "None; they are provided"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=8"
+  },
+  {
+   "q": "Which is a scored line under 'Opening' in the Court's example feedback report?",
+   "answer": "Quiet opening",
+   "wrong": [
+    "Fast opening",
+    "Opening at the bar",
+    "Opening with the tab"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2026/04/Certified_Sommelier_Example_Feedback_Report_2026322.pdf"
+  },
+  {
+   "q": "Under 'Pouring', which of these is scored?",
+   "answer": "Clockwise service",
+   "wrong": [
+    "Pouring from the left",
+    "Filling every glass to the brim",
+    "Pouring the host first and last"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2026/04/Certified_Sommelier_Example_Feedback_Report_2026322.pdf"
+  },
+  {
+   "q": "What do the Court's service exam marks for hospitality include?",
+   "answer": "Confidence and gracious carriage",
+   "wrong": [
+    "Uniform and haircut",
+    "Speed of pour only",
+    "Number of bottles sold"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2026/04/Certified_Sommelier_Example_Feedback_Report_2026322.pdf"
+  },
+  {
+   "q": "What are candidates measured against in the CMS-A service exam?",
+   "answer": "The CMS-A Hospitality and Service Standards",
+   "wrong": [
+    "Each restaurant's house rules",
+    "The examiner's personal style",
+    "The Wine Bible's service chapter"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "q": "To earn full marks for a pairing recommendation, what must you name?",
+   "answer": "Producer, vintage and full appellation",
+   "wrong": [
+    "Grape variety only",
+    "Country and color",
+    "Price and glass size"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  },
+  {
+   "q": "Which Bordeaux classification can come up during the Certified service practical?",
+   "answer": "The First and Second Growths of 1855",
+   "wrong": [
+    "The Saint-Émilion Grands Crus only",
+    "The Cru Bourgeois list only",
+    "None; Bordeaux is theory-only"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  },
+  {
+   "q": "If a guest names a wine you don't know, what does the Court suggest?",
+   "answer": "Write it down, repeat it and confirm it",
+   "wrong": [
+    "Describe it anyway from a guess",
+    "Change the subject",
+    "Ask the next guest to order instead"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=29"
+  },
+  {
+   "q": "How far back should you know top vintages for classic regions like Barolo?",
+   "answer": "The last 10 to 15 years",
+   "wrong": [
+    "The last 2 years",
+    "Every vintage since 1900",
+    "Vintages aren't asked at service"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  },
+  {
+   "q": "What does the Court want you to know about an apéritif brand like Lillet?",
+   "answer": "Its country of origin and general flavor",
+   "wrong": [
+    "Its alcohol percentage to the decimal",
+    "Its bottle price",
+    "The year it was founded"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=29"
+  },
+  {
+   "q": "How does the Court describe the right attitude for a sommelier?",
+   "answer": "Quietly confident but not arrogant",
+   "wrong": [
+    "Formal and distant",
+    "Loud and entertaining",
+    "Strictly focused on wine sales"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "q": "According to the Court, which job on the floor is beneath a sommelier?",
+   "answer": "None of them",
+   "wrong": [
+    "Clearing plates",
+    "Pouring water",
+    "Polishing glasses"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "q": "How should a sommelier teach the team, per the Court?",
+   "answer": "Simplify without dumbing it down",
+   "wrong": [
+    "Use the most technical terms possible",
+    "Leave training to the chef",
+    "Only teach other sommeliers"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "q": "Why does the Court say to treat vendors well?",
+   "answer": "They support the guest experience, and today's vendor could be tomorrow's employer",
+   "wrong": [
+    "They set the restaurant's wine prices",
+    "They grade the service exam",
+    "They choose the wine list"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "q": "If a guest asks something you don't know, what does the Court say to do?",
+   "answer": "Offer to get the answer as soon as possible",
+   "wrong": [
+    "Give your best guess confidently",
+    "Tell them it doesn't matter",
+    "Recommend a different wine instead"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "Which three things should a brief wine description cover, per the Court?",
+   "answer": "Aroma, flavor and structure",
+   "wrong": [
+    "Price, rating and vintage",
+    "Soil, clone and yeast",
+    "Color, bottle and closure"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "q": "How should a sommelier respond to a guest's compliment?",
+   "answer": "With brief thanks and appreciation",
+   "wrong": [
+    "With a long story about the wine",
+    "By offering a free glass",
+    "By ignoring it to stay formal"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "q": "Where should the attention be during tableside service?",
+   "answer": "Always on the guest",
+   "wrong": [
+    "On the sommelier's knowledge",
+    "On the bottle's label",
+    "On the examiner's notes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "q": "A guest sends back a bottle and you find it is sound. What do you offer?",
+   "answer": "The wine list, to make another choice",
+   "wrong": [
+    "Another bottle of the same wine",
+    "Nothing; the wine is fine",
+    "A lecture on why the wine is correct"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "A guest rejects a bottle that turns out to be flawed. What do you offer?",
+   "answer": "Another bottle of the same wine",
+   "wrong": [
+    "The wine list only",
+    "A glass of house wine",
+    "A discount on the flawed bottle"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "What is step 4 of the Court's problem-resolution steps?",
+   "answer": "Ask the guest how it can be made right",
+   "wrong": [
+    "Call the police",
+    "Offer a refund before listening",
+    "Explain the house policy in detail"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "You spill wine on a guest. What does the Court say to assure them of?",
+   "answer": "The restaurant will pay for any dry cleaning",
+   "wrong": [
+    "The stain will wash out",
+    "Wine stains are not the restaurant's fault",
+    "They will get a free dessert"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "Where should you check whether a rejected wine is flawed?",
+   "answer": "Away from the table, discreetly",
+   "wrong": [
+    "At the table, in front of the guest",
+    "In the kitchen with the chef",
+    "You shouldn't check it at all"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "How many points does the Court award or deduct for appearance?",
+   "answer": "None",
+   "wrong": [
+    "Up to 5%",
+    "Up to 10%",
+    "It depends on the examiner"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Dress-Guidelines.pdf#page=1"
+  },
+  {
+   "q": "Why does the Court say to avoid open-toed shoes?",
+   "answer": "Less protection from heavy objects and more risk of slipping",
+   "wrong": [
+    "They look too casual",
+    "They are not gender-neutral",
+    "They squeak on the floor"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Dress-Guidelines.pdf#page=1"
+  },
+  {
+   "q": "Why does the Court ask you to skip strong perfume?",
+   "answer": "It can interfere with the guest's experience and your ability to assess wine",
+   "wrong": [
+    "Examiners deduct points for it",
+    "It stains linen",
+    "It's a fire risk near candles"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Dress-Guidelines.pdf#page=1"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "The Certified Sommelier Examination is a one-day exam with three sections: Deductive Tasting, Theory/Business of the Sommelier, and a Hospitality and Service Practical.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=1"
+  },
+  {
+   "fact": "A candidate must score 60 percent or higher on each exam section; all three must be passed at the same time at the same exam.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Syllabus.pdf#page=7"
+  },
+  {
+   "fact": "Tasting exam: four wines (two whites, two reds) in 45 minutes. Theory exam: 45 questions in 38 minutes.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=10"
+  },
+  {
+   "fact": "Theory exam: 45 questions to be completed within 38 minutes.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=20"
+  },
+  {
+   "fact": "The practical service exam approximates a real restaurant; candidates show salesmanship and knowledge while doing tableside tasks, and may be asked to open still or sparkling wine, recommend cocktails, spirits or beer, and discuss food and wine pairing.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=28"
+  },
+  {
+   "fact": "Arrive 10 to 15 minutes before your assigned time. A local Advanced Sommelier acts as Maître d', checks you have a wine opener, pen and notepad, and escorts you in. Exam conditions start as soon as the Maître d' begins speaking; their instructions are part of the test and may be written down. No electronic devices for notes; all other tools are provided.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=28"
+  },
+  {
+   "fact": "The Service and Hospitality exam is about 16 minutes long; Master Sommeliers keep the time, not the candidate. A group of candidates takes it at the same time.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=28"
+  },
+  {
+   "fact": "Supplies to bring: pen or pencil, a notepad for the service exam (no phones for notes), and a corkscrew (bring two in case one breaks). Underliners, serviettes and other service items are provided.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=8"
+  },
+  {
+   "fact": "Generally one Master Sommelier sits at the table and pretends it is a real restaurant with a guest at every seat. Watch reaching over a guest's space.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  },
+  {
+   "fact": "Adjudicators are there to help candidates succeed; the service exam evaluates knowledge and skill and is not meant to stump you. If things go wrong or you don't know an answer, stay professional and keep the focus on excellent service.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=29"
+  },
+  {
+   "fact": "The CMS-A Service Standards are the basis for measuring candidates in CMS-A exams. They are formal and not appropriate for many restaurants, but candidates must display mastery of demanding formal dining room skills.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "fact": "The Court's example Certified feedback report scores Hospitality & Service in groups: Hospitality & Salesmanship (Confidence, Gracious Carriage, Hospitality; Appetizing Description, Salesmanship), Mechanics (Mise en Place: Other Equipment & Tools, Stemware; Opening: Confident, Quiet, Presentation, Safe, Wipes Bottle Lip; Order Taking: Repeat Order, Tracks Order Correctly; Pouring: Correct Glassware, Clockwise Service, No Drips, Offers Host Approval Taste, Pace, Pour Height; Traywork: Pace, Tray Carry with Stemware) and Theory (Wine and Non-Wine).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2026/04/Certified_Sommelier_Example_Feedback_Report_2026322.pdf"
+  },
+  {
+   "fact": "In the example report, the Theory part of the service exam covers Wine (Climate, Fortified & Sweet Wines, Grape Growing & Vintage, Label Terms, Appellation-Region, Producer & Proprietary Blends, Grape Variety-to-Region) and Non-Wine (Food & Beverage Pairing, Producers, Cocktails, Flavor-Origin, Food Knowledge, Other: Apéritifs, Digestifs, Liqueurs, Sake, Spirits).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2026/04/Certified_Sommelier_Example_Feedback_Report_2026322.pdf"
+  },
+  {
+   "fact": "Possible service scenarios: open sparkling wine and serve; open and pour wines by the glass; serve a wine flight; discuss pairings and why they work; choose a pairing from several dishes; recommend a wine for a dish including region, producer and vintage; recognize producers of top regions; recommend similar producers; describe ingredients, mixers and garnishes of classic cocktails; name producers of major beer styles, sake, apéritifs, spirits and liqueurs; recognize apéritif brands, their country and general flavor.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=29"
+  },
+  {
+   "fact": "Classic cocktails the guide lists as examples include the Negroni, Manhattan, Old Fashioned, Margarita, Paloma, Mojito, Sidecar, Moscow Mule and others.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=29"
+  },
+  {
+   "fact": "Theory knowledge asked during the service practical can include top producers in major regions, top cuvées of top Champagne producers, First and Second Growths of the 1855 Bordeaux Classification, and top vintages of the last 10 to 15 years for classic regions such as Champagne, Barolo, Brunello di Montalcino and Left Bank Bordeaux.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  },
+  {
+   "fact": "For full marks on a pairing, mention producer, vintage and full appellation, and say why the pairing works in a guest-friendly way.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  },
+  {
+   "fact": "You may not know every producer or wine asked; write it down, repeat, and confirm any orders given.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=29"
+  },
+  {
+   "fact": "Attitude: a sommelier should be quietly confident but not arrogant; no job on the floor is beneath the sommelier; hospitality comes first whether or not guests are drinking; the sommelier is part of a team and aware of all service in the room.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "fact": "Vendors (distributors, importers, brokers, winemakers) are treated respectfully; no profanity or abuse; use their time efficiently, honor appointments, return emails and calls; today's colleague or vendor could be tomorrow's employer.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "fact": "Colleagues: a good service team member does not let another team member fail. The sommelier is a high-visibility service leader who sets the tone in the dining room.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "fact": "Team education: share knowledge with an inclusive spirit; avoid intimidating guests and co-workers with esoteric wine information; simplify without dumbing it down.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "fact": "Tableside demeanor: smile; be friendly, respectful, engaging and genuine; attention is always on the guest, never drawn to the sommelier; answer compliments with brief thanks.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "fact": "Guest rapport: understand the guest's priorities, wants and needs; watch their response, speaking manner and body language and adjust; assess how much help is wanted.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "fact": "Know the restaurant's beverage program, food menu and policies. Give brief but accurate descriptors (aroma, flavor, structure) without overwhelming the guest.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "fact": "Do not make things up: if you don't know an answer, offer to get it as soon as possible.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "fact": "Communication: eye contact as appropriate; be an active listener; clarify what the guest says, especially when confirming the order; learn and remember guests' preferences; relationships are built over time.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "fact": "Dealing with problems: the guest is always right; guest perception is your reality; the only 'justice' is the problem resolved in the guest's mind, and 'fairness' does not matter.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "fact": "Problem resolution steps: 1 recognize and acknowledge the problem; 2 engage the guest and ask them to express themselves; 3 listen actively and completely; 4 ask how it can be made right; 5 decide what can be done within the guest's expectation and the house's policies; 6 rely on other key staff when appropriate.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "fact": "Rejected wine: apologize and remove glass and bottle at once. Away from the table, check the wine. If flawed, offer another bottle of the same wine; if sound, offer the list to choose again. Never put the guest in the position of being wrong.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "fact": "Spilled wine: apologize, act at once to limit staining, assure the guest the restaurant pays for dry cleaning, and reseat them, or move them to the bar while the table is reset.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "fact": "Wrong bottle or price on a check: bring in upper management; apologize and politely suggest the guest pays for the bottle they believed they ordered; if they refuse, bring in the maître d' or manager; be diplomatic. Pricing complaints: acknowledge the opinion and tactfully state the restaurant's pricing policy.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "fact": "Dress guidelines: the Court does not award or deduct points on any exam based on appearance; no clothing is gender-specific; religious and cultural dress and all hairstyles are honored; reasonable accommodations for disabilities are supported.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Dress-Guidelines.pdf#page=1"
+  },
+  {
+   "fact": "Exam dress: professional appearance prioritizing guest safety, your safety and efficient service. Suggested: any safe, workplace-appropriate combination of pants, dress, suit, blazer, shirt, blouse and shoes. No excessive perfumes or odors that interfere with the guest or your ability to assess wines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Dress-Guidelines.pdf#page=1"
+  },
+  {
+   "fact": "Per Department of Health guidelines, avoid large earrings and loose hair (snagging, hair in food or drink), short skirts (restrict mobility) and open-toed footwear (less protection, more risk of slipping and tripping).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Dress-Guidelines.pdf#page=1"
+  },
+  {
+   "fact": "Service Standards appearance: pressed and cleaned attire with comfortable, safe shoes; clean fingernails; no excessive perfumes or odors.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  }
+ ],
+ "unverified": [
+  "The 16-minute length, the Maître d' role and the one-Master-Sommelier table come from the Court's exam guide (7.2024); details can vary by exam.",
+  "Scoring categories come from the Court's example Certified feedback report (fictional candidate 'Neville Nebbiolo', 2026). The Court does not publish the points per category.",
+  "The exam guide says the results reception is about 5:30 pm on one page and 5:00-6:00 pm on another; not used.",
+  "Videos 3pOGgbYbTEQ, 1CUGIluxxak and 3BnTuVl-ueA are short Master Sommelier clips; their descriptions don't say which exam level they mean. 1Qmd9KEwTOY is about why service matters, not exam mechanics."
+ ],
+ "court": {
+  "outcome": "The practical service examination approximates a real restaurant environment. Candidates are expected to demonstrate salesmanship and knowledge while performing various tableside tasks. Candidates may be asked to open still or sparkling wines, recommend cocktails, spirits, or beer, discuss food and wine paring options, and generally show ability as a restaurant sommelier.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=28",
+  "coverage": [
+   {
+    "topic": "Exam description and passing scores",
+    "guide": "One day, three sections; 60% on each, passed at the same exam.",
+    "where": "The service exam, start to finish"
+   },
+   {
+    "topic": "How the Hospitality and Service exam works",
+    "guide": "Arrive early; Maître d' checks tools; instructions are part of the test; about 16 minutes.",
+    "where": "The service exam, start to finish"
+   },
+   {
+    "topic": "Supplies needed for the exam",
+    "guide": "Corkscrew (two), pen, notepad; no electronic notes; other service items provided.",
+    "where": "The service exam, start to finish"
+   },
+   {
+    "topic": "Feedback categories: Hospitality & Salesmanship, Mechanics, Theory",
+    "guide": "Confidence, carriage, description, selling, opening, order taking, pouring, traywork, theory.",
+    "where": "How the practical is scored"
+   },
+   {
+    "topic": "Possible scenarios",
+    "guide": "Sparkling, BTG, flights, pairings, producers, cocktails, beer, sake, spirits, apéritif brands.",
+    "where": "The questions at the table"
+   },
+   {
+    "topic": "Using and applying theory knowledge",
+    "guide": "Top producers, Champagne cuvées, 1855 First and Second Growths, top vintages of 10-15 years.",
+    "where": "The questions at the table"
+   },
+   {
+    "topic": "Wine recommendations",
+    "guide": "Say why the pairing works; name producer, vintage and full appellation.",
+    "where": "The questions at the table"
+   },
+   {
+    "topic": "Demeanor: attitude, vendors, colleagues, team education",
+    "guide": "Quietly confident, team first, respect vendors, teach simply.",
+    "where": "The right attitude"
+   },
+   {
+    "topic": "Demeanor: tableside, rapport, general points, communication",
+    "guide": "Guest-focused, read body language, brief descriptors, don't make things up, confirm order.",
+    "where": "Reading the guest"
+   },
+   {
+    "topic": "Demeanor: dealing with problems and specific problems",
+    "guide": "Six resolution steps; rejected wine, spills, wrong bill, price complaints.",
+    "where": "When something goes wrong"
+   },
+   {
+    "topic": "Dress guidelines for CMS-A examinations",
+    "guide": "No points for appearance; safety items to avoid; no strong scent; inclusive.",
+    "where": "Dress and appearance"
+   },
+   {
+    "topic": "Service Standards: appearance and the standard's purpose",
+    "guide": "Pressed, clean attire, safe shoes, clean nails; formal standard used to measure candidates.",
+    "where": "How the practical is scored; Dress and appearance"
+   },
+   {
+    "topic": "Service Standards: tools, mise en place and service mechanics",
+    "guide": "Covered in the next chapter.",
+    "where": "Chapter 8 (certified-at-the-table)"
+   }
+  ]
+ },
+ "v3": {
+  "video": {
+   "youtubeId": "XlPAFfudZA4",
+   "title": "Service Examination Advice with Patrick Okubo, MS",
+   "by": "Court of Master Sommeliers, Americas",
+   "length": "1:06"
+  },
+  "sections": [
+   {
+    "name": "The service exam, start to finish",
+    "video": {
+     "youtubeId": "3pOGgbYbTEQ",
+     "title": "Service Examination Expectations with Vincent Morrow, MS",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "0:45"
+    },
+    "keyPoints": [
+     {
+      "big": "16 MINUTES",
+      "line": "is about how long the service practical runs."
+     },
+     {
+      "big": "60%",
+      "line": "is the pass mark on each of the three parts, same day."
+     },
+     {
+      "big": "THE MAÎTRE D’",
+      "line": "is an Advanced Sommelier. Their instructions are the test."
+     },
+     {
+      "big": "ONE MS",
+      "line": "usually plays every guest at the table."
+     }
+    ],
+    "read": {
+     "bigIdea": "A 16-minute shift in a mock restaurant.",
+     "where": "The Certified exam has three parts: **tasting**, **theory** and the **hospitality and service practical**. You need **60%** on each, all at the same exam. The practical runs about **16 minutes** and is set up like a real dining room.",
+     "stopsTitle": "How it runs",
+     "stops": [
+      {
+       "name": "Check in",
+       "note": "10-15 minutes early",
+       "text": "An **Advanced Sommelier** plays the **Maître d’**. They check you have a **wine opener, pen and notepad**. No phones for notes; everything else is provided."
+      },
+      {
+       "name": "Listen",
+       "text": "The exam starts the moment the Maître d’ starts talking. **Their instructions are part of the test**, so write them down."
+      },
+      {
+       "name": "The table",
+       "text": "Usually **one Master Sommelier** sits down and plays a full table, with a guest at every seat. Don’t reach over a guest’s space."
+      },
+      {
+       "name": "Serve",
+       "text": "You do tableside tasks and answer questions as you go. The examiners keep the time, not you."
+      }
+     ],
+     "mixup": "The **Maître d’** (an Advanced Sommelier) checks you in and gives instructions. The **Master Sommelier** at the table is your guest.",
+     "sayIt": "Good evening. I’ll be taking care of your wine tonight."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "How the practical is scored",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "HOSPITALITY",
+      "line": "is scored: confidence, gracious carriage, hospitality."
+     },
+     {
+      "big": "SALESMANSHIP",
+      "line": "is scored: an appetizing description that sells."
+     },
+     {
+      "big": "MECHANICS",
+      "line": "are scored: opening, order taking, pouring, traywork."
+     },
+     {
+      "big": "THEORY",
+      "line": "is asked at the table: wine and non-wine."
+     }
+    ],
+    "read": {
+     "bigIdea": "Hospitality, selling, mechanics and theory.",
+     "where": "The Court’s **Hospitality and Service Standards** are what you’re measured against. They are formal, more formal than most restaurants, and the exam expects you to master them. The Court’s example feedback report shows how the marks are grouped.",
+     "stopsTitle": "The four groups",
+     "stops": [
+      {
+       "name": "Hospitality",
+       "text": "**Confidence**, **gracious carriage** and **hospitality**."
+      },
+      {
+       "name": "Salesmanship",
+       "text": "An **appetizing description** and real selling."
+      },
+      {
+       "name": "Mechanics",
+       "text": "**Mise en place** (stemware, tools), **opening** (confident, quiet, safe, presentation, wiping the lip), **order taking** (repeat and track it), **pouring** (glassware, clockwise, no drips, host taste, pace, pour height) and **traywork**."
+      },
+      {
+       "name": "Theory",
+       "text": "**Wine** questions (regions, producers, label terms, vintages, fortified and sweet) and **non-wine** (pairing, cocktails, spirits, sake, apéritifs)."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The mechanics the report breaks out:",
+     "sayIt": "May I repeat that back to you? One bottle of the 2019, for the table."
+    },
+    "check": [
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "name": "The questions at the table",
+    "video": {
+     "youtubeId": "1CUGIluxxak",
+     "title": "Service Examination Expectations with Melissa Monosoff, MS",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "0:41"
+    },
+    "keyPoints": [
+     {
+      "big": "PRODUCER",
+      "line": "vintage and full appellation, every time you recommend."
+     },
+     {
+      "big": "WHY",
+      "line": "a pairing works, said the way a guest would enjoy it."
+     },
+     {
+      "big": "1855",
+      "line": "First and Second Growths can come up at the table."
+     },
+     {
+      "big": "COCKTAILS",
+      "line": "Know the ingredients, mixers and garnish of the classics."
+     },
+     {
+      "big": "WRITE IT DOWN",
+      "line": "then repeat and confirm, if you don’t know a name."
+     }
+    ],
+    "read": {
+     "bigIdea": "You serve and answer theory at the same time.",
+     "where": "The examiners follow a script. While you work, they ask about **producers, vintages, pairings, cocktails** and other drinks. Nothing is meant to trick you.",
+     "stopsTitle": "What comes up",
+     "stops": [
+      {
+       "name": "Pairings",
+       "text": "Recommend a wine for a dish, or pick the best dish for a wine. For full marks name the **producer, vintage and full appellation**, and say **why** it works."
+      },
+      {
+       "name": "Producers and vintages",
+       "text": "Top producers of the big regions, **top cuvées of the top Champagne houses**, the **First and Second Growths of 1855**, and **top vintages of the last 10 to 15 years** for regions like Barolo, Brunello and Left Bank Bordeaux."
+      },
+      {
+       "name": "Beyond wine",
+       "text": "A classic **cocktail’s ingredients, mixers and garnish**. Producers of beer styles, sake, spirits and liqueurs. An **apéritif brand’s** country and flavor."
+      },
+      {
+       "name": "When you don't know",
+       "text": "**Write it down, repeat it and confirm it.** Stay professional and keep serving."
+      }
+     ],
+     "visual": 0,
+     "sayIt": "For the lamb, I’d suggest a Left Bank Bordeaux. Let me tell you why."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "The right attitude",
+    "video": {
+     "youtubeId": "1Qmd9KEwTOY",
+     "title": "Why Service? with June Rodil, MS",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "1:18"
+    },
+    "keyPoints": [
+     {
+      "big": "QUIETLY",
+      "line": "confident, but never arrogant."
+     },
+     {
+      "big": "NO JOB",
+      "line": "on the floor is beneath a sommelier."
+     },
+     {
+      "big": "HOSPITALITY",
+      "line": "first, whether or not the guests are drinking."
+     },
+     {
+      "big": "THE TEAM",
+      "line": "A good teammate never lets another one fail."
+     },
+     {
+      "big": "SIMPLIFY",
+      "line": "what you know, without dumbing it down."
+     }
+    ],
+    "read": {
+     "bigIdea": "Confident, humble, part of the team.",
+     "where": "The Court’s **Demeanor of the Professional Sommelier** sets the tone. A sommelier is **quietly confident but not arrogant**, and does whatever the guest needs in the moment.",
+     "stopsTitle": "Four relationships",
+     "stops": [
+      {
+       "name": "Guests",
+       "text": "Make every guest feel welcome and comfortable, **whether they drink or not**."
+      },
+      {
+       "name": "The team",
+       "text": "You’re a **high-visibility service leader**. Help wherever you’re needed. A good teammate **never lets another fail**."
+      },
+      {
+       "name": "Vendors",
+       "text": "Distributors, importers, brokers and winemakers get **respect**: honor appointments, return calls and emails. Today’s vendor could be tomorrow’s employer."
+      },
+      {
+       "name": "Training",
+       "text": "Share what you know. **Simplify without dumbing it down**, and never intimidate people with obscure facts."
+      }
+     ],
+     "sayIt": "I’ll grab that for you right away."
+    },
+    "check": [
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "name": "Reading the guest",
+    "video": {
+     "youtubeId": "3BnTuVl-ueA",
+     "title": "Service Exam Challenges with Melissa Monosoff, MS",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "1:05"
+    },
+    "keyPoints": [
+     {
+      "big": "THE GUEST",
+      "line": "gets the attention, never the sommelier."
+     },
+     {
+      "big": "READ",
+      "line": "their words and body language, then adjust."
+     },
+     {
+      "big": "BRIEF",
+      "line": "descriptors: aroma, flavor and structure."
+     },
+     {
+      "big": "DON’T GUESS",
+      "line": "Offer to find the answer instead."
+     },
+     {
+      "big": "CONFIRM",
+      "line": "the order back. Listen actively."
+     }
+    ],
+    "read": {
+     "bigIdea": "Watch, listen, then give just enough.",
+     "where": "At the table, **smile** and be genuine. The attention is **always on the guest**. Take a compliment with brief thanks and move on.",
+     "stopsTitle": "How to read a table",
+     "stops": [
+      {
+       "name": "Watch",
+       "text": "Notice how a guest responds, how they speak and their **body language**. Adjust your manner to match."
+      },
+      {
+       "name": "Ask",
+       "text": "Find out their priorities and **how much help they want**. Some want a guide, some want a quick answer."
+      },
+      {
+       "name": "Describe",
+       "text": "Give **brief, accurate descriptors**: aroma, flavor and structure. Read the guest and give the right amount."
+      },
+      {
+       "name": "Confirm",
+       "text": "Listen actively and **repeat the order back**. If you don’t know something, **don’t make it up**: offer to find out."
+      }
+     ],
+     "visual": 0,
+     "sayIt": "That’s a great question. Let me check with the kitchen and come right back."
+    },
+    "check": [
+     18,
+     19,
+     20
+    ]
+   },
+   {
+    "name": "When something goes wrong",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PERCEPTION",
+      "line": "is your reality. The guest is always right."
+     },
+     {
+      "big": "FAIRNESS",
+      "line": "doesn’t matter. Solving it in the guest’s mind does."
+     },
+     {
+      "big": "FLAWED?",
+      "line": "Offer another bottle of the same wine."
+     },
+     {
+      "big": "SOUND?",
+      "line": "Offer the list again. Never make the guest wrong."
+     }
+    ],
+    "read": {
+     "bigIdea": "Fix it in the guest’s mind, not on paper.",
+     "where": "The Court’s rule is plain: **the guest is always right** and **their perception is your reality**. The only justice is the problem solved in the guest’s mind.",
+     "stopsTitle": "Four common problems",
+     "stops": [
+      {
+       "name": "A rejected wine",
+       "text": "Apologize and **remove the glass and bottle** at once. Check it **away from the table**. If it’s **flawed**, offer another bottle of the **same wine**. If it’s **sound**, offer the list. Never make the guest wrong."
+      },
+      {
+       "name": "A spill",
+       "text": "Apologize and act fast to limit stains. Tell the guest the restaurant will **pay for dry cleaning**, and reseat them if you can."
+      },
+      {
+       "name": "A wrong bottle or price",
+       "text": "Bring in **upper management**. Politely suggest the guest pays for the bottle they thought they ordered, and stay diplomatic."
+      },
+      {
+       "name": "A price complaint",
+       "text": "**Acknowledge** the guest’s view and **tactfully state the house policy**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The Court’s six steps for any problem:",
+     "sayIt": "I’m so sorry about that. Let me take care of it right away."
+    },
+    "check": [
+     22,
+     23,
+     24
+    ]
+   },
+   {
+    "name": "Dress and appearance",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NO POINTS",
+      "line": "are given or taken away for appearance."
+     },
+     {
+      "big": "SAFETY",
+      "line": "first: no loose hair, big earrings or open toes."
+     },
+     {
+      "big": "NO PERFUME",
+      "line": "It masks the wine for guests and for you."
+     },
+     {
+      "big": "YOUR OWN",
+      "line": "style is welcome. Nothing is gender-specific."
+     }
+    ],
+    "read": {
+     "bigIdea": "Dress safe, clean and like a pro.",
+     "where": "The Court **does not award or deduct points for appearance**. Dress the way you understand professional hospitality, putting the **guest’s safety, your safety and efficient service** first.",
+     "stopsTitle": "What it means in practice",
+     "stops": [
+      {
+       "name": "Wear",
+       "text": "Any safe, workplace-appropriate mix of **pants, dress, suit, blazer, shirt, blouse and shoes**. The Service Standards add pressed, clean clothes and **clean fingernails**."
+      },
+      {
+       "name": "Avoid",
+       "text": "**Large earrings and loose hair** (they snag; hair can land in a glass), **short skirts** (they limit movement) and **open-toed shoes** (slips, dropped bottles)."
+      },
+      {
+       "name": "Scent",
+       "text": "**No strong perfume.** It gets in the way of the guest’s meal and of your own tasting."
+      },
+      {
+       "name": "Welcome",
+       "text": "No clothing is gender-specific. **Religious and cultural dress and all hairstyles** are honored, and accommodations are supported."
+      }
+     ],
+     "visual": 0
+    },
+    "check": [
+     27,
+     28,
+     29
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,1568 @@
+{
+ "number": 2,
+ "slug": "certified-white-wines",
+ "title": "The white wines on the exam",
+ "script": "Chapter two",
+ "level": 2,
+ "part": 1,
+ "lead": "The eight white grapes the Court can pour at Certified level, with their exam regions and how each one shows up on the grid.",
+ "minutes": 25,
+ "intro": {
+  "script": "Start here",
+  "title": "READ THE FINE PRINT",
+  "text": "The Court's list fixes more than the grape. For several whites it also sets the sweetness or the oak, which is a clue in itself.",
+  "tiers": [
+   {
+    "name": "Off-dry only",
+    "note": "German Riesling (Kabinett, Spätlese), Vouvray demi-sec, Alsace Gewurztraminer"
+   },
+   {
+    "name": "New oak",
+    "note": "Côte de Beaune, Mâconnais, California Chardonnay"
+   },
+   {
+    "name": "No new oak",
+    "note": "Chablis; Albariño has no oak at all"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Albariño",
+   "book": "wine/spain/rias-baixas",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Unoaked Albariño from Rías Baixas, in Spain's cool, humid, Atlantic northwest."
+    },
+    {
+     "label": "On the grid",
+     "text": "Citrus and stone fruit, high acidity, a salty finish, and often a light bitter note from its thick skins."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Spain",
+     "Rías Baixas",
+     "No oak"
+    ]
+   },
+   "know": [
+    "The exam's Albariño is Rías Baixas, with no oak.",
+    "Fruit: grapefruit, lime, nectarine; honeysuckle in the background.",
+    "Structure: high acidity, light body, 11.5-13.5% alcohol.",
+    "Thick skins can leave a pith or almond bitterness (phenolic bitterness).",
+    "Compare it with Pinot Grigio, as the Court suggests."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Albariño on the grid",
+     "dark": true,
+     "items": [
+      {
+       "name": "FRUIT",
+       "text": "Citrus: grapefruit, lime · Stone: nectarine"
+      },
+      {
+       "name": "NON-FRUIT",
+       "text": "Flowers can show (honeysuckle) · no new oak"
+      },
+      {
+       "name": "STRUCTURE",
+       "text": "Dry · high acid · possible phenolic bitterness"
+      },
+      {
+       "name": "CONCLUSION",
+       "text": "Spain · cool to moderate · young"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Chardonnay",
+   "book": "wine/white/chardonnay",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Burgundy at Village or Premier Cru level: Chablis (no new oak), Côte de Beaune and Mâconnais (new oak). California: Napa, Sonoma, Central Coast, new oak."
+    },
+    {
+     "label": "On the grid",
+     "text": "Apple or citrus runs through every style. Oak, malolactic and lees decide the rest."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Chablis",
+     "Côte de Beaune",
+     "Mâconnais",
+     "California"
+    ]
+   },
+   "know": [
+    "Burgundy entries are Village or Premier Cru only.",
+    "Chablis: no new oak; tart green apple, lemon, chalky mineral, high acid.",
+    "Côte de Beaune and Mâconnais: new oak; riper fruit, butter, toast.",
+    "California: new oak; riper stone and tropical fruit, fuller body.",
+    "Gold color often means oak: oxygen in the barrel deepens it."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Three Chardonnays to tell apart",
+     "dark": true,
+     "items": [
+      {
+       "name": "CHABLIS",
+       "text": "Green apple, lemon, oyster shell · no new oak · high acid · cool"
+      },
+      {
+       "name": "CÔTE DE BEAUNE · MÂCON",
+       "text": "Riper fruit, vanilla, butter, toast · new oak · medium acid"
+      },
+      {
+       "name": "CALIFORNIA",
+       "text": "Stone and tropical fruit · generous new oak · full body · warm"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "LEES",
+       "title": "Bread and dough",
+       "text": "Dough, baked bread,\nyeast, cheese rind"
+      },
+      {
+       "label": "MALOLACTIC",
+       "title": "Dairy",
+       "text": "Butter, cream,\nyogurt"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Chenin Blanc",
+   "book": "wine/white/chenin-blanc",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Vouvray, in the Loire, and only the demi-sec (off-dry) style."
+    },
+    {
+     "label": "On the grid",
+     "text": "Quince, apple and pear, sometimes honey, with high acidity under the sweetness."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Loire Valley",
+     "Vouvray",
+     "Demi-sec only"
+    ]
+   },
+   "know": [
+    "The exam's Chenin is Vouvray, demi-sec (off-dry) only.",
+    "Markers: quince, yellow apple, pear, chamomile, honey.",
+    "High acidity in every style: Riesling's acid with Chardonnay's body.",
+    "Noble rot can add honey and ginger; tick it only if it's key.",
+    "Compare it with German Riesling, as the Court suggests."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "VOUVRAY DEMI-SEC",
+       "title": "Chenin Blanc",
+       "text": "Quince, yellow apple, pear\nHoney, chamomile\nFuller body\nHigh acidity"
+      },
+      {
+       "label": "MOSEL KABINETT",
+       "title": "Riesling",
+       "text": "Lime, green apple\nPetrol, jasmine\nLight body, low alcohol\nHigh acidity"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Gewurztraminer",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Alsace Gewurztraminer, off-dry only."
+    },
+    {
+     "label": "On the grid",
+     "text": "Lychee and rose on a big, round, low-acid body with high alcohol."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "France",
+     "Alsace",
+     "Off-dry only"
+    ]
+   },
+   "know": [
+    "The exam's Gewurztraminer is Alsace, off-dry only.",
+    "Signature: lychee and rose, with ginger and spice.",
+    "Tropical fruit is the key fruit line; apple/pear is a No.",
+    "Low to moderate acidity, fuller body, 13.5-15% alcohol.",
+    "Pink skins can give the wine a golden tinge."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Gewurztraminer on the grid",
+     "dark": true,
+     "items": [
+      {
+       "name": "FRUIT",
+       "text": "Tropical: lychee · Citrus: grapefruit, tangerine"
+      },
+      {
+       "name": "NON-FRUIT",
+       "text": "Flowers: rose · spice and ginger"
+      },
+      {
+       "name": "STRUCTURE",
+       "text": "Off-dry · low to moderate acid · high alcohol"
+      },
+      {
+       "name": "CONCLUSION",
+       "text": "France · Alsace's dry, sunny climate"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pinot Grigio",
+   "book": "wine/white/pinot-grigio",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Pinot Grigio from Friuli or Trentino-Alto Adige, in Italy's cool Alpine northeast."
+    },
+    {
+     "label": "On the grid",
+     "text": "Light and fresh: white peach and lemon, bright acidity, a bitter almond note."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Italy",
+     "Friuli",
+     "Trentino-Alto Adige"
+    ]
+   },
+   "know": [
+    "The exam's Pinot Grigio is Friuli or Trentino-Alto Adige.",
+    "Markers: white peach, lemon zest, melon, green almond.",
+    "Usually fully dry, light, with bright acidity.",
+    "A bitter almond finish can point to phenolic bitterness.",
+    "Compare it with Chablis and with Albariño."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "PINOT GRIGIO",
+       "title": "Friuli · Alto Adige",
+       "text": "White peach, lemon zest\nGreen almond\nLight, dry, bright acid\nNo oak"
+      },
+      {
+       "label": "ALBARIÑO",
+       "title": "Rías Baixas",
+       "text": "Grapefruit, nectarine\nSaline finish\nHigh acid, citrus pith\nNo oak"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Riesling",
+   "book": "wine/white/riesling",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "German Riesling from the Mosel or Rheingau, at Kabinett or Spätlese level, off-dry only."
+    },
+    {
+     "label": "On the grid",
+     "text": "Lime and green apple, petrol with time, piercing acidity, a touch of sweetness and low alcohol."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Germany",
+     "Mosel",
+     "Rheingau",
+     "Kabinett · Spätlese"
+    ]
+   },
+   "know": [
+    "The exam's Riesling is Mosel or Rheingau, Kabinett or Spätlese, off-dry.",
+    "Markers: lime, green apple, jasmine; petrol (TDN), more with age.",
+    "Structure: high acidity, off-dry, under 10% alcohol (Wine Folly).",
+    "Kabinett is light and low in alcohol; Spätlese is picked later.",
+    "Mosel: steep, south-facing slate slopes in a cool climate."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Riesling on the grid",
+     "dark": true,
+     "items": [
+      {
+       "name": "FRUIT",
+       "text": "Citrus: lime · Apple: green apple · Stone: apricot with age"
+      },
+      {
+       "name": "NON-FRUIT",
+       "text": "Flowers: jasmine · Petrol · Mineral"
+      },
+      {
+       "name": "STRUCTURE",
+       "text": "Off-dry · high acid · low alcohol"
+      },
+      {
+       "name": "CONCLUSION",
+       "text": "Germany · cool · Kabinett or Spätlese"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sauvignon Blanc",
+   "book": "wine/white/sauvignon-blanc",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Loire (Sancerre or Pouilly-Fumé) and New Zealand (Marlborough)."
+    },
+    {
+     "label": "On the grid",
+     "text": "Green notes from pyrazines and high acidity in both; the Loire leans flinty, Marlborough leans tropical."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Sancerre",
+     "Pouilly-Fumé",
+     "Marlborough"
+    ]
+   },
+   "know": [
+    "Exam regions: Sancerre, Pouilly-Fumé, and Marlborough.",
+    "Pyrazines give grass, green bell pepper and asparagus.",
+    "Structure: dry, high acidity, medium-light body.",
+    "Loire: citrus, gooseberry, flint and smoke.",
+    "Marlborough: passion fruit, gooseberry, cut grass; sharp acid."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "SANCERRE · POUILLY-FUMÉ",
+       "title": "Loire",
+       "text": "Lime, grapefruit, gooseberry\nFlint, smoke, mineral\nGrassy\nCool climate"
+      },
+      {
+       "label": "MARLBOROUGH",
+       "title": "New Zealand",
+       "text": "Passion fruit, lime, gooseberry\nBell pepper, cut grass\nRazor-sharp acid\nCool, sunny"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Torrontés",
+   "book": "wine/argentina",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Argentine Torrontés from Salta or Mendoza."
+    },
+    {
+     "label": "On the grid",
+     "text": "Smells sweet and floral, tastes dry; peach and citrus with lively acidity and no oak."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Argentina",
+     "Salta",
+     "Mendoza"
+    ]
+   },
+   "know": [
+    "The exam's Torrontés is from Salta or Mendoza, Argentina.",
+    "Smells sweet (rose, geranium, peach) but is usually dry.",
+    "Court: highly aromatic, medium-plus to high acidity, usually no oak.",
+    "A Muscat of Alexandria offspring, which explains the perfume.",
+    "Compare it with Gewurztraminer, as the Court suggests."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "TORRONTÉS",
+       "title": "Argentina",
+       "text": "Peach, Meyer lemon\nRose, geranium\nDry\nMedium-plus to high acid"
+      },
+      {
+       "label": "GEWURZTRAMINER",
+       "title": "Alsace",
+       "text": "Lychee, grapefruit\nRose, ginger, spice\nOff-dry\nLow to moderate acid"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Chablis",
+   "b": "Sancerre",
+   "why": "Both cool and mineral: Chablis is Chardonnay (apple, lemon, no pyrazines); Sancerre is Sauvignon Blanc (grass, gooseberry, flint)."
+  },
+  {
+   "a": "Vouvray",
+   "b": "German Riesling",
+   "why": "Both off-dry with high acid: Vouvray shows quince and a fuller body; Riesling shows lime, petrol and low alcohol."
+  },
+  {
+   "a": "Gewurztraminer",
+   "b": "Torrontés",
+   "why": "Both perfumed: Gewurztraminer is lychee, low acid and off-dry; Torrontés is peach and geranium, dry, with lively acid."
+  },
+  {
+   "a": "Pouilly-Fumé",
+   "b": "Pouilly-Fuissé",
+   "why": "Pouilly-Fumé is Loire Sauvignon Blanc; Pouilly-Fuissé is a Mâconnais Chardonnay."
+  }
+ ],
+ "sources": "Court of Master Sommeliers Americas: Certified-Level examinable wines list (9.2025), Certified exam guide, Certified tasting grid and the Curriculum Guide; official bodies (BIVB, Chablis, Vins de Loire, Centre-Loire, Vins d'Alsace, Wines of Germany, New Zealand Winegrowers); grape profiles from Wine Folly. Checked Nov 2, 2026.",
+ "cards": [
+  {
+   "q": "On the Certified exam, Albariño comes from which region, made how?",
+   "answer": "Rías Baixas, Spain, with no oak",
+   "wrong": [
+    "Vinho Verde, Portugal, with new oak",
+    "Rueda, Spain, with American oak",
+    "Rías Baixas, Spain, with new French oak"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "q": "Which structure line might an Albariño's thick skins push toward 'Yes'?",
+   "answer": "Phenolic bitterness",
+   "wrong": [
+    "Tannin",
+    "Sweetness: off-dry",
+    "Alcohol: high"
+   ],
+   "source": "https://winefolly.com/grapes/albarino/"
+  },
+  {
+   "q": "Which white does the Court suggest comparing with Albariño?",
+   "answer": "Pinot Grigio",
+   "wrong": [
+    "Gewurztraminer",
+    "Oaked California Chardonnay",
+    "Vouvray"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=15"
+  },
+  {
+   "q": "Which Burgundy Chardonnay on the exam list has no new oak?",
+   "answer": "Chablis",
+   "wrong": [
+    "Côte de Beaune",
+    "Mâconnais",
+    "None; all have new oak"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "q": "Burgundy Chardonnay on the Certified exam is limited to which quality levels?",
+   "answer": "Village or Premier Cru",
+   "wrong": [
+    "Grand Cru only",
+    "Regional Bourgogne only",
+    "Any level"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "q": "Butter, cream or yogurt on a white points to which grid line?",
+   "answer": "Malolactic fermentation",
+   "wrong": [
+    "Lees",
+    "Oxidation",
+    "Noble rot"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "q": "What sweetness is the Vouvray on the Certified exam?",
+   "answer": "Demi-sec (off-dry)",
+   "wrong": [
+    "Bone dry",
+    "Fully sweet (moelleux)",
+    "Sparkling brut"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "q": "Which fruit is a classic Chenin Blanc marker?",
+   "answer": "Quince",
+   "wrong": [
+    "Lychee",
+    "Gooseberry",
+    "Passion fruit"
+   ],
+   "source": "https://winefolly.com/grapes/chenin-blanc/"
+  },
+  {
+   "q": "The Court suggests comparing Vouvray with which wine?",
+   "answer": "German Riesling",
+   "wrong": [
+    "Sancerre",
+    "Albariño",
+    "California Chardonnay"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=15"
+  },
+  {
+   "q": "Which two aromas are Gewurztraminer's signature?",
+   "answer": "Lychee and rose",
+   "wrong": [
+    "Gooseberry and grass",
+    "Green apple and slate",
+    "Quince and honey"
+   ],
+   "source": "https://winefolly.com/grapes/gewurztraminer/"
+  },
+  {
+   "q": "Gewurztraminer's acidity is typically…",
+   "answer": "Low to moderate",
+   "wrong": [
+    "High",
+    "Very high, like Riesling",
+    "Absent"
+   ],
+   "source": "https://winefolly.com/grapes/gewurztraminer/"
+  },
+  {
+   "q": "In the Court's example, a Gewurztraminer gets 'Yes' on which fruit line?",
+   "answer": "Tropical",
+   "wrong": [
+    "Apple/pear",
+    "Citrus",
+    "Stone fruit"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "q": "The Certified exam's Pinot Grigio comes from which regions?",
+   "answer": "Friuli and Trentino-Alto Adige",
+   "wrong": [
+    "Veneto and Sicily",
+    "Alsace and Oregon",
+    "Piedmont and Tuscany"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "q": "Which note does Wine Folly give for Italian Pinot Grigio's finish?",
+   "answer": "Bitter almond",
+   "wrong": [
+    "Petrol",
+    "Butter",
+    "Lychee"
+   ],
+   "source": "https://winefolly.com/grapes/pinot-gris/"
+  },
+  {
+   "q": "Pinot Gris/Grigio is a color mutation of which grape?",
+   "answer": "Pinot Noir",
+   "wrong": [
+    "Chardonnay",
+    "Sauvignon Blanc",
+    "Riesling"
+   ],
+   "source": "https://winefolly.com/grapes/pinot-gris/"
+  },
+  {
+   "q": "Which German Riesling levels are on the Certified exam?",
+   "answer": "Kabinett or Spätlese, off-dry",
+   "wrong": [
+    "Trocken only",
+    "Auslese and Beerenauslese",
+    "Eiswein only"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "q": "Which grid line covers Riesling's TDN aroma?",
+   "answer": "Petrol, gasoline, rubber",
+   "wrong": [
+    "Mineral",
+    "Noble rot",
+    "New oak"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "q": "Typical alcohol for an off-dry German Riesling, per Wine Folly?",
+   "answer": "Under 10%",
+   "wrong": [
+    "13.5-15%",
+    "Over 15%",
+    "About 14%"
+   ],
+   "source": "https://winefolly.com/grapes/riesling/"
+  },
+  {
+   "q": "Which two Loire appellations represent Sauvignon Blanc on the exam?",
+   "answer": "Sancerre and Pouilly-Fumé",
+   "wrong": [
+    "Vouvray and Chinon",
+    "Muscadet and Savennières",
+    "Pouilly-Fuissé and Mâcon"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "q": "Sauvignon Blanc's green, grassy notes come from…",
+   "answer": "Methoxypyrazines",
+   "wrong": [
+    "TDN",
+    "Malolactic fermentation",
+    "Oak lactone"
+   ],
+   "source": "https://winefolly.com/grapes/sauvignon-blanc/"
+  },
+  {
+   "q": "Which notes does Wine Folly list for Marlborough Sauvignon Blanc?",
+   "answer": "Passion fruit, gooseberry and bell pepper",
+   "wrong": [
+    "Butter, vanilla and toast",
+    "Petrol, honey and apricot",
+    "Lychee, rose and ginger"
+   ],
+   "source": "https://winefolly.com/grapes/sauvignon-blanc/"
+  },
+  {
+   "q": "Which two Argentine regions are listed for Torrontés on the exam?",
+   "answer": "Salta and Mendoza",
+   "wrong": [
+    "Patagonia and San Juan",
+    "Mendoza and Patagonia",
+    "Salta and Rioja"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "q": "Torrontés smells sweet, but it is usually…",
+   "answer": "Dry",
+   "wrong": [
+    "Off-dry",
+    "Lusciously sweet",
+    "Sparkling"
+   ],
+   "source": "https://winefolly.com/grapes/torrontes/"
+  },
+  {
+   "q": "Which grape is a parent of Torrontés Riojano?",
+   "answer": "Muscat of Alexandria",
+   "wrong": [
+    "Riesling",
+    "Chenin Blanc",
+    "Albariño"
+   ],
+   "source": "https://winefolly.com/grapes/torrontes/"
+  },
+  {
+   "q": "Which three exam whites are 'off-dry only'?",
+   "answer": "German Riesling, Vouvray, Alsace Gewurztraminer",
+   "wrong": [
+    "Chablis, Sancerre, Albariño",
+    "Pinot Grigio, Torrontés, Albariño",
+    "Marlborough Sauvignon Blanc, Riesling, Chablis"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "q": "Chablis and Sancerre share which kind of soil?",
+   "answer": "Kimmeridgian limestone",
+   "wrong": [
+    "Slate",
+    "Granite",
+    "Volcanic basalt"
+   ],
+   "source": "https://winefolly.com/grapes/sauvignon-blanc/"
+  },
+  {
+   "q": "Which pair does the Court suggest tasting side by side?",
+   "answer": "Gewurztraminer and Torrontés",
+   "wrong": [
+    "Riesling and Chardonnay",
+    "Albariño and Vouvray",
+    "Sancerre and Gewurztraminer"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=15"
+  },
+  {
+   "q": "Why does oaked Chardonnay often look gold?",
+   "answer": "Oxygen in the barrel deepens the color",
+   "wrong": [
+    "Botrytis",
+    "Added sugar",
+    "Skin contact"
+   ],
+   "source": "https://winefolly.com/grapes/chardonnay/"
+  },
+  {
+   "q": "Which California Chardonnay areas are on the exam list?",
+   "answer": "Napa Valley, Sonoma County, Central Coast",
+   "wrong": [
+    "Lodi, Paso Robles, Mendocino",
+    "Napa only",
+    "Sierra Foothills, Lodi, Temecula"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "q": "Pouilly-Fumé is made from which grape?",
+   "answer": "Sauvignon Blanc",
+   "wrong": [
+    "Chardonnay",
+    "Chenin Blanc",
+    "Melon"
+   ],
+   "source": "https://www.vins-centre-loire.com/en/les-vins-de-pouilly-fume-et-pouilly-sur-loire/"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Certified white examinable wines: Albarino (Spain, Rias Baixas, no oak); Chardonnay (France, Burgundy: Chablis no new oak, Cote de Beaune new oak, Maconnais new oak, Village or Premier Cru only; United States, California: Napa Valley, Sonoma County, Central Coast, new oak); Chenin Blanc (Loire, Vouvray, demi-sec/off-dry only); Gewurztraminer (France, Alsace, off-dry only); Pinot Grigio (Italy, Friuli / Trentino-Alto Adige); Riesling (Germany, Mosel / Rheingau, Kabinett or Spatlese, off-dry only); Sauvignon Blanc (Loire: Sancerre / Pouilly-Fume; New Zealand: Marlborough); Torrontes (Argentina, Salta / Mendoza).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=1"
+  },
+  {
+   "fact": "Expected skill set of a Certified Sommelier: 'Deductive Tasting Method ability for core classic red and white varieties'.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=1"
+  },
+  {
+   "fact": "Prep: taste examples of all Certified examinable grapes and regions and practice writing out grids for each.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=14"
+  },
+  {
+   "fact": "White comparisons the Court suggests: Vouvray and German Riesling; Chablis and Sancerre; California Chardonnay, Chablis and oaked Cote d'Or Chardonnay; Pinot Grigio and Chablis; Gewurztraminer and Torrontes; New Zealand Sauvignon Blanc and Sancerre; Albarino and Pinot Grigio.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=15"
+  },
+  {
+   "fact": "White grid: color Straw, Yellow, Gold; fruit lines Apple/Pear, Citrus, Stone Fruit, Tropical; non-fruit lines include Flowers, Green Bell Pepper/Grass, Grape Variety Spice, Noble Rot, Lees, Malolactic, Petrol, Mineral, New Oak; structure: Phenolic Bitterness, Sweetness (Dry, Off-Dry), Acidity, Alcohol; white age ranges 1-2, 3-4, 5+ years.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "fact": "Exam guide example: a Gewurztraminer may have some apple/pear, but tropical is very apparent and key, so No for apple/pear and Yes for tropical with descriptors such as pineapple, mango, banana.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "fact": "If you called the wine off-dry and chose Sauvignon Blanc, look back for where things went off-track.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=16"
+  },
+  {
+   "fact": "Wayne Belding, MS (quoted): Marlborough Sauvignon Blanc and Argentine Torrontes rose from non-existent to classic in a few decades.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "Albarino: primary flavors lemon zest, grapefruit, honeydew, nectarine, saline; dry, light body, high acidity, 11.5-13.5% ABV.",
+   "source": "https://winefolly.com/grapes/albarino/"
+  },
+  {
+   "fact": "Albarino nose: nectarine, lime, grapefruit, subtle honeysuckle. Palate: weighty mid-palate, mouthwatering acidity, finishing with salinity and sometimes a subtle bitter note (green almond or citrus pith).",
+   "source": "https://winefolly.com/grapes/albarino/"
+  },
+  {
+   "fact": "Albarino grapes are tiny with thick skins, giving a raw-almond or citrus-pith bitterness from the skin's phenols. Albarino performs well in cool and intermediate climates such as Galicia.",
+   "source": "https://winefolly.com/grapes/albarino/"
+  },
+  {
+   "fact": "Rias Baixas (Court, Introductory): northwest Iberian Peninsula; maritime, humid, cooler than the rest of Spain; Atlantic Ocean.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+  },
+  {
+   "fact": "Rias Baixas winemaking (Court): modern technology, stainless steel, lees aging common; dry, crisp, aromatic whites; Albarino-labelled wines must be 100% Albarino.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+  },
+  {
+   "fact": "Court (Certified column): Albarino is a classic match for simply prepared shellfish; high canopy trellising because of humidity; granite soil.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+  },
+  {
+   "fact": "Chardonnay: unoaked or Chablis shows green apple, pear, citrus, with chalky or mineral aromas; unoaked styles are lean and crisp with high acidity.",
+   "source": "https://winefolly.com/grapes/chardonnay/"
+  },
+  {
+   "fact": "Oaked, Burgundian-style Chardonnay: peach, mango, lemon with vanilla and butter; oak, malolactic fermentation and lees contact add nutty character and toasted bread; fuller body, creamy, moderate acidity, baking spices over stone fruit. Both styles share apple or citrus.",
+   "source": "https://winefolly.com/grapes/chardonnay/"
+  },
+  {
+   "fact": "Chablis: lean, steely, flinty-mineral edge, cooler climate and minimal oak; tart green apple, lemon and oyster shell; a yogurt aroma from malolactic fermentation.",
+   "source": "https://winefolly.com/grapes/chardonnay/"
+  },
+  {
+   "fact": "Cote d'Or Chardonnay: most wines undergo oak aging, malolactic fermentation and lees stirring; warmer, fuller wines than Chablis. Napa Chardonnay: richer stone fruit and tropical tones, full-bodied, generous oak aging, buttery and toasty.",
+   "source": "https://winefolly.com/grapes/chardonnay/"
+  },
+  {
+   "fact": "Oaked Chardonnay wines are often gold in color due to oxygen during oak aging. With age, Chardonnay tends to develop hazelnut aromas.",
+   "source": "https://winefolly.com/grapes/chardonnay/"
+  },
+  {
+   "fact": "Chablis soils: Kimmeridgian limestone and marl with small oyster fossils.",
+   "source": "https://www.chablis-wines.com/explore/the-terroir/special-soil/special-soil,1824,7666.html"
+  },
+  {
+   "fact": "Chablis is mainly semi-continental and prone to spring frost; the Maconnais is hotter and drier, with Mediterranean influence.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-natural-assets/climatology/an-ideal-climate-for-producing-great-wines,2483,9268.html"
+  },
+  {
+   "fact": "Cote de Beaune: from Meursault south, Chardonnay dominates; Grands Crus include Montrachet and Corton-Charlemagne.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-vineyards/cote-de-beaune-and-hautes-cotes-de-beaune/cote-de-beaune-and-the-hautes-cotes-de-beaune-a-winegrowing-region-renowned-for-its-legendary-wines,2471,9314.html"
+  },
+  {
+   "fact": "Maconnais: Chardonnay is 80% of vines; village appellations include Pouilly-Fuisse and Saint-Veran.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-vineyards/the-maconnais/the-maconnais-the-southernmost-entry-point-to-the-bourgogne-region,2473,9317.html"
+  },
+  {
+   "fact": "California (Court): often extensive use of new French and sometimes American oak; malolactic fermentation often used for white wines, especially Chardonnay.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+  },
+  {
+   "fact": "Chenin Blanc: primary flavors quince, yellow apple, pear, chamomile, honey; dry (profile), medium-light body, high acidity, 11.5-13.5% ABV.",
+   "source": "https://winefolly.com/grapes/chenin-blanc/"
+  },
+  {
+   "fact": "Chenin Blanc nose: quince, apple or apple-skin aromas; later picking or noble rot brings ripe pineapple, orange peel, honey, dried chamomile. Palate: high acidity no matter the style; 'Riesling's acidity meets Chardonnay's body and texture'.",
+   "source": "https://winefolly.com/grapes/chenin-blanc/"
+  },
+  {
+   "fact": "Vouvray produces off-dry (demi-sec) to sweet Chenin Blanc with quince, honey and ripe pear, a fuller body and balanced acidity. Chenin ripens unevenly, which allows dry, off-dry and (with noble rot) sweet wines.",
+   "source": "https://winefolly.com/grapes/chenin-blanc/"
+  },
+  {
+   "fact": "Vouvray: grape Chenin; still white and sparkling; styles dry, sweet and sparkling; 7 communes on the right bank of the Loire.",
+   "source": "https://www.vinsvaldeloire.fr/en/loire-wines/vouvray"
+  },
+  {
+   "fact": "Loire sweet whites come from botrytis (noble rot) or passerillage on late-picked Chenin; Vouvray moelleux is among them.",
+   "source": "https://www.vinsvaldeloire.fr/en/styles-vins-loire/vins-blancs-moelleux-et-liquoreux"
+  },
+  {
+   "fact": "The Loire Valley, in northern France, is a cool-climate growing region.",
+   "source": "https://winefolly.com/grapes/cabernet-franc/"
+  },
+  {
+   "fact": "Gewurztraminer: primary flavors lychee, rose, grapefruit, tangerine, ginger; off-dry (profile), medium body, low acidity, 13.5-15% ABV.",
+   "source": "https://winefolly.com/grapes/gewurztraminer/"
+  },
+  {
+   "fact": "Gewurztraminer nose: distinctive lychee and rose, with ginger, orange blossom and delicate spice. Palate: medium to full body, sometimes slightly oily, higher alcohol as it ripens quickly; acidity moderate to low.",
+   "source": "https://winefolly.com/grapes/gewurztraminer/"
+  },
+  {
+   "fact": "Gewurztraminer's name comes from the German 'Gewurz', meaning spice; its spice-driven character comes largely from terpenes; lychee comes from linalool. Its pink skins can give the wine a golden tinge.",
+   "source": "https://winefolly.com/grapes/gewurztraminer/"
+  },
+  {
+   "fact": "Alsace is the adopted homeland of Gewurztraminer, with over a quarter of plantings; Alsace AOC Gewurztraminer ranges from dry to off-dry.",
+   "source": "https://winefolly.com/grapes/gewurztraminer/"
+  },
+  {
+   "fact": "Sheltered by the Vosges, Alsace has one of France's lowest rainfalls and a sunny, warm, dry semi-continental climate.",
+   "source": "https://www.vinsalsace.com/en/terroirs/terroir-genius/"
+  },
+  {
+   "fact": "Pinot Gris/Grigio: primary flavors white peach, lemon zest, cantaloupe, green almond, crushed gravel; dry, medium-light body, medium-high acidity, 11.5-13.5% ABV. It is a color mutation of Pinot Noir with pinkish-gray skins.",
+   "source": "https://winefolly.com/grapes/pinot-gris/"
+  },
+  {
+   "fact": "Italian Pinot Grigio is usually totally dry with brilliant acidity and a bitter almond note, normally the lightest and freshest style; the best examples come from the Alpine foothills rather than the flat Venetian plain.",
+   "source": "https://winefolly.com/grapes/pinot-gris/"
+  },
+  {
+   "fact": "Court: Trentino-Alto Adige and Friuli are cool continental with the Alps; both make single-variety wines with the grape on the label.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=30"
+  },
+  {
+   "fact": "Riesling: primary flavors lime, green apple, beeswax, jasmine, petroleum; off-dry, light body, high acidity, under 10% ABV.",
+   "source": "https://winefolly.com/grapes/riesling/"
+  },
+  {
+   "fact": "Riesling often shows a petrol or petroleum-wax aroma from the natural compound TDN.",
+   "source": "https://winefolly.com/deep-dive/the-tasters-guide-to-riesling-wine/"
+  },
+  {
+   "fact": "Mosel Riesling: pale straw, deepening to yellow with age; young wines show lime and honeydew, sometimes mineral notes; with age, honey, apricot, Meyer lemon and petrol. Intensely high acidity, usually balanced with some sweetness. The Mosel is a cool-climate region with slate soils.",
+   "source": "https://winefolly.com/deep-dive/mosel-valley-wine-guide/"
+  },
+  {
+   "fact": "Kabinett: fine, light wines from ripe grapes with low alcohol. Spatlese: harvested a little later, more intense, not necessarily sweet.",
+   "source": "https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/449/pr%C3%A4dikat-categories"
+  },
+  {
+   "fact": "Mosel (Court): porous, heat-retaining slate; south-facing vineyards. Rheingau (Court): a long south-facing slope facing the Rhine, mountains protect it from the cold north.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=50"
+  },
+  {
+   "fact": "Rheingau has the highest percentage of Riesling of any German region; Johannisberg is the birthplace of Spatlese (1775).",
+   "source": "https://www.winesofgermany.com/our-regions/growing-area/69/rheingau"
+  },
+  {
+   "fact": "Sauvignon Blanc: primary flavors gooseberry, honeydew, grapefruit, white peach, passion fruit; dry, medium-light body, high acidity, 11.5-13.5% ABV. Green aromatics come from methoxypyrazines; nose ranges from cut grass, peas and asparagus to passion fruit and grapefruit.",
+   "source": "https://winefolly.com/grapes/sauvignon-blanc/"
+  },
+  {
+   "fact": "Loire Sauvignon Blanc: lime, gooseberry, grapefruit, flint, smoke; mineral-driven, often slightly smoky, citrus and grassy. Sancerre: vibrant, mineral and citrus. Pouilly-Fume: similar weight, often slightly softer, with gunflint.",
+   "source": "https://winefolly.com/grapes/sauvignon-blanc/"
+  },
+  {
+   "fact": "Marlborough Sauvignon Blanc: passion fruit, lime, gooseberry, pea shoot; vibrant fruit and razor-sharp acidity; a gram or two of residual sugar is normal because acids are so high; bell pepper, tomato stalk and cut grass.",
+   "source": "https://winefolly.com/grapes/sauvignon-blanc/"
+  },
+  {
+   "fact": "New Zealand Sauvignon Blanc shows red capsicum, gooseberry and passionfruit; Marlborough's first Sauvignon Blanc vines were planted in 1975.",
+   "source": "https://www.nzwine.com/en/winestyles/sauvignonblanc/"
+  },
+  {
+   "fact": "Sauvignon Blanc on the palate: light-bodied with racy acidity and moderate alcohol. The Loire's cool climate produces a fruity, tart wine. A vein of Kimmeridgian soil runs through the Loire as well as Champagne and Chablis; Sancerre's terres blanches mix clay, Kimmeridgian limestone and oyster shells.",
+   "source": "https://winefolly.com/grapes/sauvignon-blanc/"
+  },
+  {
+   "fact": "Marlborough has a cool yet high-sunshine climate with low rainfall; it is New Zealand's largest region.",
+   "source": "https://www.nzwine.com/en/regions/marlborough/"
+  },
+  {
+   "fact": "Alsace Pinot Gris: a rich, full-bodied style with ripe orchard and tropical fruit and refreshing acidity.",
+   "source": "https://winefolly.com/grapes/pinot-gris/"
+  },
+  {
+   "fact": "Sancerre: white from Sauvignon Blanc on the left bank of the Loire; soils terres blanches, caillottes and siliceous clay.",
+   "source": "https://www.vins-centre-loire.com/en/les-vins-de-sancerre/"
+  },
+  {
+   "fact": "Pouilly-Fume is Sauvignon Blanc (Centre-Loire), not Pouilly-Fuisse (Burgundy Chardonnay).",
+   "source": "https://www.vins-centre-loire.com/en/les-vins-de-pouilly-fume-et-pouilly-sur-loire/"
+  },
+  {
+   "fact": "Torrontes: primary flavors Meyer lemon, peach, rose petal, geranium, citrus zest; dry, medium-light body; smells sweet but usually made dry. Torrontes Riojano is an offspring of Muscat of Alexandria and the most widely planted and highest-quality type.",
+   "source": "https://winefolly.com/grapes/torrontes/"
+  },
+  {
+   "fact": "Some of the most distinctive Torrontes comes from high-elevation vineyards in Salta, particularly the Calchaqui Valleys around Cafayate.",
+   "source": "https://winefolly.com/grapes/torrontes/"
+  },
+  {
+   "fact": "Court: Torrontes is highly aromatic with soapy, floral and fruity flavors and medium-plus to high acidity; commonly no oak.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=70"
+  },
+  {
+   "fact": "Court: Salta (subregion Cafayate) is known for Torrontes; Salta is 1,500-2,000 m, the highest in Argentina; Mendoza is 600-1,200 m.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  }
+ ],
+ "unverified": [
+  "Typical grape profiles (fruit, acidity, alcohol) come from Wine Folly, not the Court, and vary by producer.",
+  "Wine Folly gives Torrontés medium acidity; the Court's Curriculum Guide says medium-plus to high. The chapter uses the Court's call.",
+  "The climate calls in the grid tiles (e.g. Albariño cool to moderate) are drawn from region descriptions, not from a Court answer key.",
+  "The Court's Grape Variety Profiles PDF (GuildSomm) could not be read as text, so its white-grape details were not used here.",
+  "No Wine Folly, Court or official video focused on Chenin Blanc was found; the Torrontés section uses Wine Folly's general Argentina video."
+ ],
+ "court": {
+  "outcome": "Deductive Tasting Method ability for core classic red and white varieties",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=1",
+  "coverage": [
+   {
+    "topic": "Albariño · Rías Baixas",
+    "guide": "Spanish Albariño from Rías Baixas, no oak",
+    "where": "Albariño"
+   },
+   {
+    "topic": "Chardonnay · Chablis",
+    "guide": "Burgundy, Village or Premier Cru, no new oak",
+    "where": "Chardonnay"
+   },
+   {
+    "topic": "Chardonnay · Côte de Beaune, Mâconnais",
+    "guide": "Burgundy, Village or Premier Cru, new oak",
+    "where": "Chardonnay"
+   },
+   {
+    "topic": "Chardonnay · California",
+    "guide": "Napa Valley, Sonoma County, Central Coast, new oak",
+    "where": "Chardonnay"
+   },
+   {
+    "topic": "Chenin Blanc · Vouvray",
+    "guide": "Loire Vouvray, demi-sec/off-dry only",
+    "where": "Chenin Blanc"
+   },
+   {
+    "topic": "Gewurztraminer · Alsace",
+    "guide": "Alsace, off-dry only",
+    "where": "Gewurztraminer"
+   },
+   {
+    "topic": "Pinot Grigio · Friuli, Trentino-Alto Adige",
+    "guide": "Northeast Italian Pinot Grigio",
+    "where": "Pinot Grigio"
+   },
+   {
+    "topic": "Riesling · Mosel, Rheingau",
+    "guide": "Kabinett or Spätlese, off-dry only",
+    "where": "Riesling"
+   },
+   {
+    "topic": "Sauvignon Blanc · Sancerre, Pouilly-Fumé",
+    "guide": "Loire Valley Sauvignon Blanc",
+    "where": "Sauvignon Blanc"
+   },
+   {
+    "topic": "Sauvignon Blanc · Marlborough",
+    "guide": "New Zealand Sauvignon Blanc",
+    "where": "Sauvignon Blanc"
+   },
+   {
+    "topic": "Torrontés · Salta, Mendoza",
+    "guide": "Argentine Torrontés",
+    "where": "Torrontés"
+   },
+   {
+    "topic": "White comparisons",
+    "guide": "Compare look-alike whites: Vouvray/Riesling, Chablis/Sancerre, Gewurztraminer/Torrontés and more",
+    "where": "Chardonnay, Chenin Blanc, Sauvignon Blanc, Torrontés"
+   }
+  ]
+ },
+ "v3": {
+  "video": {
+   "youtubeId": "HQ3oVjsMQWQ",
+   "title": "Find Your Type of White Wine | Wine Folly",
+   "by": "Wine Folly",
+   "length": "10:02"
+  },
+  "sections": [
+   {
+    "name": "Albariño",
+    "video": {
+     "youtubeId": "wDa9OVLaq4U",
+     "title": "Albariño (Everything you need to know) | Grapes 101",
+     "by": "Wine Folly",
+     "length": "6:31"
+    },
+    "keyPoints": [
+     {
+      "big": "NO OAK",
+      "line": "the exam's Albariño is unoaked Rías Baixas."
+     },
+     {
+      "big": "CITRUS + STONE",
+      "line": "grapefruit, lime and nectarine, with a salty finish."
+     },
+     {
+      "big": "BITTER NOTE",
+      "line": "thick skins can leave a pith or almond bitterness."
+     },
+     {
+      "big": "HIGH ACID",
+      "line": "with a light body and 11.5-13.5% alcohol."
+     },
+     {
+      "big": "COMPARE",
+      "line": "it with Pinot Grigio, as the Court suggests."
+     }
+    ],
+    "read": {
+     "bigIdea": "Albariño: Atlantic citrus with a salty, bitter edge.",
+     "where": "The Court's Albariño comes from **Rías Baixas**, in Spain's northwest. It's maritime and humid, cooler than the rest of Spain, and the exam wine has **no oak**. Stainless steel and lees aging are common there.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Nose",
+       "note": "fruit first",
+       "text": "**Citrus** (grapefruit, lime) and **stone fruit** (nectarine), with a hint of honeysuckle."
+      },
+      {
+       "name": "Palate",
+       "note": "structure",
+       "text": "Dry, light-bodied, with mouthwatering **high acidity** and a salty finish. Its thick skins can leave a **citrus-pith or almond bitterness**: think **phenolic bitterness**."
+      },
+      {
+       "name": "Conclusion",
+       "note": "where and how old",
+       "text": "**Spain**. Wine Folly says Albariño does well in **cool and intermediate** climates like Galicia, so cool or moderate."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "How it fills the grid:",
+     "mixup": "**Albariño** shows grapefruit, nectarine and salinity. **Pinot Grigio** shows white peach, lemon zest and green almond.",
+     "sayIt": "A crisp coastal white from Spain. Perfect with shellfish."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Chardonnay",
+    "video": {
+     "youtubeId": "E7GqBB4w1Nc",
+     "title": "France vs USA Chardonnay",
+     "by": "Wine Folly",
+     "length": "4:59"
+    },
+    "keyPoints": [
+     {
+      "big": "CHABLIS",
+      "line": "no new oak: green apple, lemon, chalky mineral, high acid."
+     },
+     {
+      "big": "CÔTE DE BEAUNE",
+      "line": "and Mâconnais: new oak, riper fruit, butter and toast."
+     },
+     {
+      "big": "CALIFORNIA",
+      "line": "new oak, stone and tropical fruit, full body."
+     },
+     {
+      "big": "VILLAGE OR 1ER",
+      "line": "is the only Burgundy level on the exam."
+     },
+     {
+      "big": "GOLD",
+      "line": "color often means oak; oxygen in barrel deepens it."
+     }
+    ],
+    "read": {
+     "bigIdea": "One grape, three styles: tell them apart by oak and fruit.",
+     "where": "The Court lists **Burgundy** at **Village or Premier Cru** level (**Chablis** with no new oak, **Côte de Beaune** and **Mâconnais** with new oak) and **California** (Napa, Sonoma, Central Coast) with **new oak**. Every style shares apple or citrus; the winemaking tells you which one you have.",
+     "stopsTitle": "Three Chardonnays",
+     "stops": [
+      {
+       "name": "Chablis",
+       "note": "cool, no new oak",
+       "text": "Tart **green apple**, **lemon**, oyster shell and a chalky, mineral edge from **Kimmeridgian** soils. Lean, with **high acidity**. A yogurt note from malolactic can show."
+      },
+      {
+       "name": "Côte de Beaune · Mâconnais",
+       "note": "new oak",
+       "text": "Most Côte d'Or Chardonnay sees **oak**, **malolactic** and **lees stirring**: riper fruit, **vanilla**, **butter**, **toast** and nutty notes. The Mâconnais is hotter and drier than Chablis."
+      },
+      {
+       "name": "California",
+       "note": "warm, new oak",
+       "text": "Napa leans to **stone and tropical fruit**, a **full body** and generous **new oak**, with buttery, toasty notes from malolactic."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The three side by side:",
+     "mixup": "**Lees** smell like bread and dough. **Malolactic** smells like butter, cream and yogurt.",
+     "sayIt": "Chablis is the crisp, unoaked Chardonnay. Meursault-style and California are rounder and toastier."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Chenin Blanc",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "VOUVRAY",
+      "line": "is the exam's Chenin, and only the demi-sec style."
+     },
+     {
+      "big": "QUINCE",
+      "line": "plus yellow apple, pear, chamomile and honey."
+     },
+     {
+      "big": "HIGH ACID",
+      "line": "in every style; it carries the sweetness."
+     },
+     {
+      "big": "OFF-DRY",
+      "line": "is the sweetness call on the grid."
+     },
+     {
+      "big": "COMPARE",
+      "line": "it with German Riesling, as the Court suggests."
+     }
+    ],
+    "read": {
+     "bigIdea": "Chenin Blanc: quince and honey over bright acidity.",
+     "where": "The exam's Chenin is **Vouvray**, from Touraine in the **Loire**, and only the **demi-sec (off-dry)** style. Chenin ripens unevenly, which is how one grape can make dry, off-dry and sweet wines.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Nose",
+       "note": "orchard fruit",
+       "text": "**Quince**, **yellow apple** and **pear**, with **chamomile** and **honey**. Riper or botrytised grapes add pineapple, orange peel and more honey."
+      },
+      {
+       "name": "Palate",
+       "note": "structure",
+       "text": "**Off-dry**, with **high acidity** in every style. Wine Folly puts it as Riesling's acidity with Chardonnay's body."
+      },
+      {
+       "name": "Conclusion",
+       "note": "where",
+       "text": "**France**, from the **cool** Loire Valley. If honey and ginger are key, the **noble rot** line may be a Yes."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The Court's suggested pair:",
+     "mixup": "**Vouvray** is Chenin Blanc with quince and a fuller body. **German Riesling** is lighter, with lime and petrol."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Gewurztraminer",
+    "video": {
+     "youtubeId": "xaLcs4gMkEU",
+     "title": "Gewürztraminer 101 (Everything You Need to Know)",
+     "by": "Wine Folly",
+     "length": "6:56"
+    },
+    "keyPoints": [
+     {
+      "big": "LYCHEE + ROSE",
+      "line": "are the signature, with ginger and spice."
+     },
+     {
+      "big": "TROPICAL",
+      "line": "is the key fruit line; apple/pear is a No."
+     },
+     {
+      "big": "LOW ACID",
+      "line": "low to moderate, on a round, sometimes oily body."
+     },
+     {
+      "big": "HIGH ALCOHOL",
+      "line": "it ripens quickly: often 13.5-15%."
+     },
+     {
+      "big": "OFF-DRY",
+      "line": "is the only Alsace style on the exam."
+     }
+    ],
+    "read": {
+     "bigIdea": "Gewurztraminer: lychee, rose and a soft, rich body.",
+     "where": "The exam's Gewurztraminer comes from **Alsace**, and only **off-dry**. Alsace sits in the rain shadow of the Vosges: one of France's driest, sunniest regions. The grape's name comes from **Gewürz**, German for spice.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Look",
+       "note": "color",
+       "text": "Pink skins can give the wine a **golden** tinge."
+      },
+      {
+       "name": "Nose",
+       "note": "perfume",
+       "text": "**Lychee** and **rose**, plus grapefruit, tangerine, **ginger** and spice. The Court's own example ticks **tropical** Yes and **apple/pear** No."
+      },
+      {
+       "name": "Palate",
+       "note": "structure",
+       "text": "**Off-dry**, medium to full body, **low to moderate acidity** and **high alcohol**, because it ripens quickly."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "How it fills the grid:",
+     "mixup": "**Gewurztraminer** is lychee and spice with low acid. **Torrontés** is peach and geranium with lively acid.",
+     "sayIt": "Exotic and perfumed, lychee and rose. Great with spiced dishes."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Pinot Grigio",
+    "video": {
+     "youtubeId": "27ptrOArPd0",
+     "title": "Love Pinot Grigio? Try These White Wines",
+     "by": "Wine Folly",
+     "length": "5:44"
+    },
+    "keyPoints": [
+     {
+      "big": "ALPINE ITALY",
+      "line": "Friuli or Trentino-Alto Adige, cool continental."
+     },
+     {
+      "big": "WHITE PEACH",
+      "line": "lemon zest and melon, gently fruity."
+     },
+     {
+      "big": "BITTER ALMOND",
+      "line": "on the finish: think phenolic bitterness."
+     },
+     {
+      "big": "LIGHT + DRY",
+      "line": "usually fully dry, with bright acidity."
+     },
+     {
+      "big": "COMPARE",
+      "line": "it with Chablis and with Albariño."
+     }
+    ],
+    "read": {
+     "bigIdea": "Pinot Grigio: light, dry, peachy, with a bitter twist.",
+     "where": "The exam's Pinot Grigio comes from **Friuli** or **Trentino-Alto Adige**, both **cool continental**, shaped by the Alps. Both make single-variety wines with the grape on the label. Pinot Grigio is a **color mutation of Pinot Noir**.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Nose",
+       "note": "quiet fruit",
+       "text": "**White peach**, **lemon zest** and **melon**, with a stony, crushed-gravel note."
+      },
+      {
+       "name": "Palate",
+       "note": "structure",
+       "text": "Usually fully **dry**, light, with **bright acidity** and a **bitter almond** finish."
+      },
+      {
+       "name": "Conclusion",
+       "note": "where",
+       "text": "**Italy**, cool climate. Wine Folly says the best come from the **Alpine foothills**, not the flat Venetian plain."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The Court's suggested pair:",
+     "mixup": "**Pinot Grigio** is the Italian name and style: light and dry. **Pinot Gris** in Alsace is richer and fuller."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "Riesling",
+    "video": {
+     "youtubeId": "ZLXhBKJb01o",
+     "title": "Riesling (Everything you need to know) | Grapes 101",
+     "by": "Wine Folly",
+     "length": "4:59"
+    },
+    "keyPoints": [
+     {
+      "big": "MOSEL · RHEINGAU",
+      "line": "Kabinett or Spätlese, off-dry only."
+     },
+     {
+      "big": "LIME",
+      "line": "green apple and jasmine; apricot and honey with age."
+     },
+     {
+      "big": "PETROL",
+      "line": "from TDN: a Yes when it's key."
+     },
+     {
+      "big": "HIGH ACID",
+      "line": "balanced by a touch of sweetness."
+     },
+     {
+      "big": "LOW ALCOHOL",
+      "line": "often under 10%."
+     }
+    ],
+    "read": {
+     "bigIdea": "Riesling: lime, petrol and acidity you can't miss.",
+     "where": "The exam's Riesling is German, from the **Mosel** or **Rheingau**, at **Kabinett** or **Spätlese** level, **off-dry** only. The Mosel's steep, south-facing **slate** slopes and the Rheingau's long south-facing slope above the Rhine help grapes ripen in a cool climate.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Look",
+       "note": "color",
+       "text": "Pale **straw** when young, deepening to yellow with age."
+      },
+      {
+       "name": "Nose",
+       "note": "fruit and petrol",
+       "text": "**Lime**, **green apple**, **jasmine**; with age, honey, apricot and **petrol** (the compound **TDN**)."
+      },
+      {
+       "name": "Palate",
+       "note": "structure",
+       "text": "**Off-dry**, **high acidity**, light body and **low alcohol**. Kabinett is the lightest; Spätlese is picked later and is more intense."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "How it fills the grid:",
+     "mixup": "**Spätlese** means late harvest, not necessarily sweet. **Kabinett** is lighter and lower in alcohol.",
+     "sayIt": "Light and bright, with a touch of sweetness. Great with spicy food."
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "video": {
+     "youtubeId": "F0jDcA_Ujcc",
+     "title": "Sauvignon Blanc (Everything you need to know) | Grapes 101",
+     "by": "Wine Folly",
+     "length": "5:04"
+    },
+    "keyPoints": [
+     {
+      "big": "PYRAZINES",
+      "line": "give grass, green bell pepper and asparagus."
+     },
+     {
+      "big": "LOIRE",
+      "line": "Sancerre and Pouilly-Fumé: citrus, flint, smoke."
+     },
+     {
+      "big": "MARLBOROUGH",
+      "line": "passion fruit, gooseberry, cut grass."
+     },
+     {
+      "big": "HIGH ACID",
+      "line": "dry and light-bodied, with moderate alcohol."
+     },
+     {
+      "big": "NOT OFF-DRY",
+      "line": "if your notes say off-dry, look again."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sauvignon Blanc: green, zesty, and two very different homes.",
+     "where": "The Court lists two homes: the **Loire** (**Sancerre**, **Pouilly-Fumé**) and **New Zealand** (**Marlborough**). Both are cool, and both show the grape's **pyrazine** green notes and **high acidity**. The Court pairs them as a must-compare.",
+     "stopsTitle": "Two classics",
+     "stops": [
+      {
+       "name": "Sancerre · Pouilly-Fumé",
+       "note": "Loire, France",
+       "text": "**Lime**, **grapefruit**, **gooseberry**, with **flint**, **smoke** and mineral notes. Pouilly-Fumé is often a bit softer, with gunflint."
+      },
+      {
+       "name": "Marlborough",
+       "note": "New Zealand",
+       "text": "Pungent **passion fruit**, **gooseberry**, **bell pepper** and cut grass, with **razor-sharp acidity**. A gram or two of sugar is normal because the acidity is so high."
+      },
+      {
+       "name": "The cross-check",
+       "note": "from the Court",
+       "text": "If your notes say **off-dry** and you're about to write Sauvignon Blanc, the Court says to look back for where things went off-track."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The Court's must-compare pair:",
+     "mixup": "**Pouilly-Fumé** is Loire Sauvignon Blanc. **Pouilly-Fuissé** is Burgundy Chardonnay."
+    },
+    "check": [
+     18,
+     19,
+     20
+    ]
+   },
+   {
+    "name": "Torrontés",
+    "video": {
+     "youtubeId": "-ZxTpXEhlXM",
+     "title": "Get To Know Argentina Wine | Wine Folly",
+     "by": "Wine Folly",
+     "length": "7:54"
+    },
+    "keyPoints": [
+     {
+      "big": "SMELLS SWEET",
+      "line": "rose, geranium and peach, but it's usually dry."
+     },
+     {
+      "big": "SALTA",
+      "line": "high-altitude vineyards, 1,500-2,000 m."
+     },
+     {
+      "big": "LIVELY ACID",
+      "line": "the Court says medium-plus to high."
+     },
+     {
+      "big": "NO OAK",
+      "line": "is the usual way it's made."
+     },
+     {
+      "big": "COMPARE",
+      "line": "it with Gewurztraminer, as the Court suggests."
+     }
+    ],
+    "read": {
+     "bigIdea": "Torrontés: a perfumed nose and a dry, lively palate.",
+     "where": "The exam's Torrontés comes from **Salta** or **Mendoza**, Argentina. Salta's vineyards sit at **1,500-2,000 m**, the highest in the country, and Cafayate is known for it. Torrontés Riojano is an offspring of **Muscat of Alexandria**.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Nose",
+       "note": "perfume",
+       "text": "**Rose petal**, **geranium**, **peach**, Meyer lemon and citrus zest. The Court calls it highly aromatic, even soapy."
+      },
+      {
+       "name": "Palate",
+       "note": "structure",
+       "text": "Usually **dry**, despite the sweet smell, with **medium-plus to high acidity** (the Court's call) and commonly **no oak**."
+      },
+      {
+       "name": "Conclusion",
+       "note": "where",
+       "text": "**Argentina**. It's one of the wines the Court names as becoming a classic within a few decades."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The Court's suggested pair:",
+     "mixup": "**Torrontés** is dry, with lively acid. **Gewurztraminer** on the exam is off-dry, with low acid."
+    },
+    "check": [
+     21,
+     22,
+     23
+    ]
+   }
+  ]
+ }
+}
