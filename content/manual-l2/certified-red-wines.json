@@ -1,0 +1,1762 @@
+{
+ "number": 3,
+ "slug": "certified-red-wines",
+ "title": "The red wines on the exam",
+ "script": "Chapter three",
+ "level": 2,
+ "part": 1,
+ "lead": "The twelve red grapes the Court can pour at Certified level, grouped where they're related, with their exam regions and how each one shows up on the grid.",
+ "minutes": 30,
+ "intro": {
+  "script": "Start here",
+  "title": "OAK IS PART OF THE ANSWER",
+  "text": "The Court's red list sets oak and quality level for many wines. Read it as a set of clues before you taste.",
+  "tiers": [
+   {
+    "name": "New oak",
+    "note": "Bordeaux and California Cabernet, California Merlot and Zinfandel, Australian Shiraz"
+   },
+   {
+    "name": "American oak",
+    "note": "Rioja Reserva or Gran Reserva"
+   },
+   {
+    "name": "No oak, carbonic",
+    "note": "Beaujolais (Gamay)"
+   },
+   {
+    "name": "Village or 1er",
+    "note": "red Burgundy from the Côte d'Or"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Pinot Noir and Gamay",
+   "book": "wine/red/pinot-noir",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Pinot Noir from the Côte d'Or (Village or Premier Cru), California (Carneros, Sonoma, Central Coast) and Oregon's Willamette Valley. Gamay from Beaujolais, with carbonic maceration and no oak."
+    },
+    {
+     "label": "On the grid",
+     "text": "Both are paler reds with red fruit, low tannin and bright acidity. Gamay brings the carbonic line; Burgundy brings earth."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Côte d'Or",
+     "California",
+     "Willamette Valley",
+     "Beaujolais"
+    ]
+   },
+   "know": [
+    "Pinot Noir: Côte d'Or (Village or 1er), California, Willamette Valley.",
+    "Pinot: pale to medium ruby, red fruit, low tannin, high acidity.",
+    "Burgundy is earthy and floral; California riper; Oregon tarter.",
+    "Gamay: Beaujolais with carbonic maceration, no oak.",
+    "Carbonic: juicy fruit, low tannin, banana and candied notes."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Four light reds to tell apart",
+     "dark": true,
+     "items": [
+      {
+       "name": "BURGUNDY",
+       "text": "Red fruit · earthy, floral · France"
+      },
+      {
+       "name": "CALIFORNIA",
+       "text": "Black cherry, cola, vanilla · lush, riper"
+      },
+      {
+       "name": "OREGON",
+       "text": "Cranberry, Bing cherry · tart · cool"
+      },
+      {
+       "name": "BEAUJOLAIS",
+       "text": "Raspberry, banana · carbonic · no oak"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "When Burgundy looks like California",
+     "rows": [
+      {
+       "name": "Warm vintage",
+       "meta": "riper fruit"
+      },
+      {
+       "name": "Alcohol",
+       "meta": "medium-plus"
+      },
+      {
+       "name": "Oak",
+       "meta": "more forward"
+      },
+      {
+       "name": "Earth",
+       "meta": "too young to show"
+      }
+     ],
+     "note": "The Court's 'pumped-up red Burgundy' example."
+    }
+   ]
+  },
+  {
+   "name": "Nebbiolo and Sangiovese",
+   "book": "wine/red/nebbiolo",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Nebbiolo from Barolo or Barbaresco; Sangiovese from Brunello di Montalcino or Chianti Classico."
+    },
+    {
+     "label": "On the grid",
+     "text": "Both: red fruit, high acidity, firm tannin, color heading to garnet. Nebbiolo has more tannin; Sangiovese adds tomato, herbs and balsamic."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Barolo",
+     "Barbaresco",
+     "Brunello",
+     "Chianti Classico"
+    ]
+   },
+   "know": [
+    "Nebbiolo: Barolo, Barbaresco. Sangiovese: Brunello, Chianti Classico.",
+    "Nebbiolo: high tannin and acid; garnet rim even young.",
+    "Nebbiolo markers: cherry, rose, leather, anise.",
+    "Sangiovese markers: cherry, roasted tomato, balsamic, oregano.",
+    "Barolo ages 38 months (18 in oak); Barbaresco 26 (9 in oak)."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "NEBBIOLO",
+       "title": "Barolo · Barbaresco",
+       "text": "Cherry, rose, leather, anise\nHigh tannin, high acid\nMedium ruby to garnet\nModerate to warm"
+      },
+      {
+       "label": "SANGIOVESE",
+       "title": "Brunello · Chianti Classico",
+       "text": "Cherry, roasted tomato\nOregano, sweet balsamic\nMedium-high tannin and acid\nWarm"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Aging rules that shape the glass",
+     "rows": [
+      {
+       "name": "Barolo",
+       "meta": "38 months, 18 in oak"
+      },
+      {
+       "name": "Barbaresco",
+       "meta": "26 months, 9 in oak"
+      },
+      {
+       "name": "Brunello di Montalcino",
+       "meta": "2 years oak, released year 5"
+      },
+      {
+       "name": "Chianti Classico",
+       "meta": "12 months; Riserva 24"
+      }
+     ],
+     "note": "Barolo and Barbaresco from the Court's Certified column; Tuscany from the consortia."
+    }
+   ]
+  },
+  {
+   "name": "Grenache",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Grenache from Châteauneuf-du-Pape or Gigondas, in the Southern Rhône."
+    },
+    {
+     "label": "On the grid",
+     "text": "Ripe, even stewed red fruit, dried herbs and leather, high alcohol, medium tannin and acidity."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Southern Rhône",
+     "Châteauneuf-du-Pape",
+     "Gigondas"
+    ]
+   },
+   "know": [
+    "Exam: Châteauneuf-du-Pape or Gigondas, Southern Rhône.",
+    "Markers: stewed strawberry, grilled plum, leather, dried herbs.",
+    "Over 15% alcohol is typical; medium tannin and acidity.",
+    "Color: medium to deep ruby, often a garnet rim even young.",
+    "Châteauneuf: Mediterranean, the Mistral, about 2,800 hours of sun."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Grenache on the grid",
+     "dark": true,
+     "items": [
+      {
+       "name": "FRUIT",
+       "text": "Red: strawberry, plum · ripe to stewed"
+      },
+      {
+       "name": "NON-FRUIT",
+       "text": "Dried herbs · Meat, leather"
+      },
+      {
+       "name": "STRUCTURE",
+       "text": "Medium tannin · medium acid · high alcohol"
+      },
+      {
+       "name": "CONCLUSION",
+       "text": "France · warm"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "GRENACHE",
+       "title": "Châteauneuf · Gigondas",
+       "text": "Stewed strawberry, plum\nDried herbs, leather\nMedium tannin and acid\nOver 15% alcohol"
+      },
+      {
+       "label": "TEMPRANILLO",
+       "title": "Rioja Reserva",
+       "text": "Cherry, dried fig\nDill, coconut, cedar\nMedium-high tannin and acid\nAmerican oak"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tempranillo",
+   "book": "wine/spain/rioja",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Rioja Reserva or Gran Reserva, aged in American oak."
+    },
+    {
+     "label": "On the grid",
+     "text": "Red fruit with dill, coconut and vanilla from American oak, savory notes from age, firm tannin and acidity."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Spain",
+     "Rioja",
+     "Reserva · Gran Reserva",
+     "American oak"
+    ]
+   },
+   "know": [
+    "Exam: Rioja Reserva or Gran Reserva, American oak.",
+    "Reserva: 3 years, 1 in oak. Gran Reserva: 5 years, 2 in oak.",
+    "Markers: cherry, dried fig, cedar, tobacco, dill.",
+    "American oak: coconut and dill on the red new-oak line.",
+    "Medium-high tannin and acid; medium ruby to garnet."
+   ],
+   "visuals": [
+    {
+     "type": "pyramid",
+     "title": "Rioja's aging tiers, top to bottom",
+     "rows": [
+      {
+       "name": "Gran Reserva",
+       "note": "5 years, 2 in oak (on the exam)"
+      },
+      {
+       "name": "Reserva",
+       "note": "3 years, 1 in oak (on the exam)"
+      },
+      {
+       "name": "Crianza",
+       "note": "2 years, 1 in oak"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cabernet Franc and Merlot",
+   "book": "wine/red/merlot",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Cabernet Franc from Chinon or Bourgueil, in the Loire. Merlot from Pomerol or Saint-Émilion, and from Napa or Sonoma with new oak."
+    },
+    {
+     "label": "On the grid",
+     "text": "Loire Cabernet Franc: red fruit, green pepper, high acid, lighter body. Merlot: plum, cherry and chocolate, softer tannin, fuller body."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Chinon",
+     "Bourgueil",
+     "Pomerol",
+     "Saint-Émilion",
+     "Napa",
+     "Sonoma"
+    ]
+   },
+   "know": [
+    "Cab Franc: Chinon, Bourgueil. Merlot: Pomerol, St-Émilion, Napa, Sonoma.",
+    "Loire Cab Franc: raspberry, red pepper, jalapeño, gravel; high acid.",
+    "Merlot: plum, cherry, chocolate; softer than Cabernet Sauvignon.",
+    "Pomerol is about 80% Merlot, on clay-rich soils.",
+    "Cab Franc is a parent of both Merlot and Cabernet Sauvignon."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "CABERNET FRANC",
+       "title": "Chinon · Bourgueil",
+       "text": "Raspberry, red pepper, jalapeño\nWet gravel\nHigh acid, lower tannin\nCool climate"
+      },
+      {
+       "label": "MERLOT",
+       "title": "Pomerol · St-Émilion",
+       "text": "Black cherry, plum\nChocolate, truffle\nVelvety, softer tannin\nModerate to warm"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cabernet Sauvignon",
+   "book": "wine/red/cabernet",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Bordeaux (Haut-Médoc, Graves) and California (Napa, Sonoma, Paso Robles), all with new oak."
+    },
+    {
+     "label": "On the grid",
+     "text": "Black currant and black cherry, cedar and graphite, a green pyrazine edge, full body, firm tannin and acidity."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Haut-Médoc",
+     "Graves",
+     "Napa",
+     "Sonoma",
+     "Paso Robles"
+    ]
+   },
+   "know": [
+    "Exam: Haut-Médoc or Graves; Napa, Sonoma or Paso Robles; new oak.",
+    "Markers: black currant, black cherry, cedar, graphite, baking spice.",
+    "Pyrazines can add green peppercorn or bell pepper.",
+    "Full body, medium-high tannin and acidity, deep color.",
+    "Bordeaux is the most savory style; California can show mint."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "BORDEAUX",
+       "title": "Haut-Médoc · Graves",
+       "text": "Black currant, tobacco leaf\nPencil lead, anise\nSavory, blended\nGravel soils"
+      },
+      {
+       "label": "CALIFORNIA",
+       "title": "Napa · Sonoma · Paso",
+       "text": "Black currant, blackberry\nPencil lead, tobacco\nMint\nNew oak"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "ORIGINAL NAPA",
+       "title": "Just ripe",
+       "text": "Pyrazines\nModerate-plus alcohol\nAstringent tannins\nLess oak"
+      },
+      {
+       "label": "MODERN NAPA",
+       "title": "Riper, bigger",
+       "text": "Subtler pyrazines\nHigh alcohol\nRounder tannins\nMore oak"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Syrah",
+   "book": "wine/red/syrah",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Northern Rhône (Côte-Rôtie, Saint-Joseph, Crozes-Hermitage) and Australia (South Australia, Western Australia, Victoria) with new oak."
+    },
+    {
+     "label": "On the grid",
+     "text": "Deep color, blue and black fruit, black pepper. France leans earthy and fresh; Australia leans ripe, spicy and high in alcohol."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Côte-Rôtie",
+     "Saint-Joseph",
+     "Crozes-Hermitage",
+     "South Australia",
+     "Western Australia",
+     "Victoria"
+    ]
+   },
+   "know": [
+    "Exam: Côte-Rôtie, Saint-Joseph, Crozes-Hermitage; Australia with new oak.",
+    "Markers: blueberry, black plum, a peppery finish, savory notes.",
+    "Color: deep ruby to deep purple; one of the darkest reds.",
+    "France: more acid, earthy and herbal. Australia: riper, more spice.",
+    "The Court's sample Australian red: black fruit, pepper, eucalyptus."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "NORTHERN RHÔNE",
+       "title": "Syrah",
+       "text": "Black plum, blueberry\nPepper, earthy, herbal\nMore acidity\nFrance"
+      },
+      {
+       "label": "AUSTRALIA",
+       "title": "Shiraz",
+       "text": "Very ripe black fruit\nPepper, eucalyptus, spice\nHigh alcohol\nNew oak"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Malbec",
+   "book": "wine/red/malbec",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "Malbec from Mendoza, Argentina."
+    },
+    {
+     "label": "On the grid",
+     "text": "Opaque purple with a magenta rim, plum and blackberry, cocoa, soft acidity and a full body."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "Argentina",
+     "Mendoza"
+    ]
+   },
+   "know": [
+    "Exam: Malbec from Mendoza, Argentina.",
+    "Color tell: opaque purple with a bright magenta rim.",
+    "Markers: red plum, blackberry, cocoa, sweet tobacco, vanilla.",
+    "Full body, medium tannin, medium-low acidity.",
+    "High vineyards (600-1,200 m in Mendoza) help it keep acidity."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "The Court's warm-climate trio",
+     "dark": true,
+     "items": [
+      {
+       "name": "AUSTRALIAN SHIRAZ",
+       "text": "Blue and black fruit · pepper, eucalyptus · deep color"
+      },
+      {
+       "name": "ARGENTINE MALBEC",
+       "text": "Plum, blackberry, cocoa · magenta rim · softer acid"
+      },
+      {
+       "name": "CALIFORNIA ZINFANDEL",
+       "text": "Jammy blackberry, strawberry · cinnamon · over 15% alcohol"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Zinfandel",
+   "book": "wine/red/zinfandel",
+   "lines": [
+    {
+     "label": "On the exam",
+     "text": "California Zinfandel from Napa or Sonoma, with new oak."
+    },
+    {
+     "label": "On the grid",
+     "text": "Jammy black and red fruit, sweet spice, very high alcohol, medium-high tannin and softer acidity."
+    }
+   ],
+   "chips": {
+    "label": "On the exam",
+    "items": [
+     "California",
+     "Napa Valley",
+     "Sonoma County",
+     "New oak"
+    ]
+   },
+   "know": [
+    "Exam: Napa or Sonoma Zinfandel, with new oak.",
+    "Markers: blackberry, strawberry, jam, cinnamon, sweet tobacco.",
+    "Over 15% alcohol is common; raisined berries add sugar.",
+    "Medium-high tannin, medium-low acidity.",
+    "Same grape as Italy's Primitivo and Croatia's Tribidrag."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Zinfandel on the grid",
+     "dark": true,
+     "items": [
+      {
+       "name": "FRUIT",
+       "text": "Black: blackberry · Red: strawberry · jammy, even dried"
+      },
+      {
+       "name": "NON-FRUIT",
+       "text": "Black peppercorn · New oak: vanilla"
+      },
+      {
+       "name": "STRUCTURE",
+       "text": "Medium-high tannin · medium-low acid · high alcohol"
+      },
+      {
+       "name": "CONCLUSION",
+       "text": "United States · warm"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Burgundy Pinot Noir",
+   "b": "US Pinot Noir",
+   "why": "Burgundy shows earth and floral notes; California is riper and lusher; Oregon sits closer to Burgundy."
+  },
+  {
+   "a": "Nebbiolo",
+   "b": "Sangiovese",
+   "why": "Both tart and firm: Nebbiolo has rose and the higher tannin; Sangiovese has tomato, oregano and balsamic."
+  },
+  {
+   "a": "Châteauneuf-du-Pape",
+   "b": "Rioja Reserva",
+   "why": "Grenache shows stewed strawberry, dried herbs and over 15% alcohol; Rioja shows dill and coconut from American oak."
+  },
+  {
+   "a": "Australian Shiraz",
+   "b": "Argentine Malbec",
+   "why": "Shiraz shows black pepper and sometimes eucalyptus; Malbec shows a magenta rim, plum, cocoa and softer acidity."
+  }
+ ],
+ "sources": "Court of Master Sommeliers Americas: Certified-Level examinable wines list (9.2025), Certified exam guide and sample grid, Certified tasting grid, Grape Variety Profiles (GuildSomm), Curriculum Guide and the 'What Makes a Wine Classic?' session; official bodies (Inter Rhône, bordeaux.com, Vins de Loire, Beaujolais, Langhe, Brunello and Chianti Classico consortia); grape profiles from Wine Folly. Checked Nov 2, 2026.",
+ "cards": [
+  {
+   "q": "Which Pinot Noir regions are on the Certified exam?",
+   "answer": "Côte d'Or, California, and Oregon's Willamette Valley",
+   "wrong": [
+    "Côte d'Or and New Zealand only",
+    "Burgundy Grand Crus and Germany",
+    "Oregon and Central Otago"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=3"
+  },
+  {
+   "q": "The exam's Beaujolais is made how?",
+   "answer": "With carbonic maceration and no oak",
+   "wrong": [
+    "With new French oak",
+    "With extended skin maceration",
+    "From dried grapes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=2"
+  },
+  {
+   "q": "Per Wine Folly, which US Pinot Noir is usually tarter and closest in style to Burgundy?",
+   "answer": "Oregon",
+   "wrong": [
+    "Napa Valley",
+    "Paso Robles",
+    "Central Coast"
+   ],
+   "source": "https://winefolly.com/grapes/pinot-noir/"
+  },
+  {
+   "q": "Delicate cherry and rose aromas, but high tannin and high acidity. Which grape?",
+   "answer": "Nebbiolo",
+   "wrong": [
+    "Pinot Noir",
+    "Grenache",
+    "Merlot"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=12"
+  },
+  {
+   "q": "Which Sangiovese wines are on the Certified exam?",
+   "answer": "Brunello di Montalcino and Chianti Classico",
+   "wrong": [
+    "Vino Nobile and Morellino di Scansano",
+    "Chianti Rufina and Bolgheri",
+    "Montefalco and Rosso Piceno"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=3"
+  },
+  {
+   "q": "Minimum aging for Barolo, in the Court's Certified column?",
+   "answer": "38 months, at least 18 in oak",
+   "wrong": [
+    "26 months, at least 9 in oak",
+    "12 months, at least 6 in oak",
+    "5 years, at least 2 in oak"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+  },
+  {
+   "q": "Which appellations represent Grenache on the exam?",
+   "answer": "Châteauneuf-du-Pape and Gigondas",
+   "wrong": [
+    "Côte-Rôtie and Cornas",
+    "Priorat and Calatayud",
+    "Tavel and Lirac"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=2"
+  },
+  {
+   "q": "Typical Grenache alcohol, per Wine Folly?",
+   "answer": "Over 15%",
+   "wrong": [
+    "Under 12%",
+    "12-13%",
+    "Under 10%"
+   ],
+   "source": "https://winefolly.com/grapes/grenache/"
+  },
+  {
+   "q": "Which red does the Court suggest comparing with French Grenache?",
+   "answer": "Rioja",
+   "wrong": [
+    "Barolo",
+    "Chinon",
+    "Beaujolais"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=15"
+  },
+  {
+   "q": "Which Rioja is on the exam, and in what oak?",
+   "answer": "Reserva or Gran Reserva, American oak",
+   "wrong": [
+    "Crianza only, French oak",
+    "Joven, no oak",
+    "Gran Reserva only, Hungarian oak"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=3"
+  },
+  {
+   "q": "Coconut and dill in a Rioja point to…",
+   "answer": "American oak (oak lactone)",
+   "wrong": [
+    "Carbonic maceration",
+    "Pyrazines",
+    "Noble rot"
+   ],
+   "source": "https://winefolly.com/tips/how-wine-barrels-affect-the-taste-of-wine/"
+  },
+  {
+   "q": "Minimum aging for Rioja Gran Reserva, per the Court?",
+   "answer": "5 years, including 2 in oak",
+   "wrong": [
+    "3 years, including 1 in oak",
+    "2 years, including 1 in oak",
+    "10 years, including 5 in oak"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+  },
+  {
+   "q": "Which Loire appellations represent Cabernet Franc on the exam?",
+   "answer": "Chinon and Bourgueil",
+   "wrong": [
+    "Sancerre and Pouilly-Fumé",
+    "Vouvray and Savennières",
+    "Muscadet and Anjou"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=2"
+  },
+  {
+   "q": "Why is Merlot usually softer than Cabernet Sauvignon?",
+   "answer": "Thinner skins and fewer seeds",
+   "wrong": [
+    "It's always made by carbonic maceration",
+    "It ages in larger barrels",
+    "It keeps more residual sugar"
+   ],
+   "source": "https://winefolly.com/grapes/merlot/"
+  },
+  {
+   "q": "Merlot makes up about how much of Pomerol's vineyards?",
+   "answer": "About 80%",
+   "wrong": [
+    "About 20%",
+    "About 50%",
+    "100% by law"
+   ],
+   "source": "https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/pomerol/"
+  },
+  {
+   "q": "Which Bordeaux areas represent Cabernet Sauvignon on the exam?",
+   "answer": "Haut-Médoc and Graves",
+   "wrong": [
+    "Pomerol and Saint-Émilion",
+    "Entre-Deux-Mers and Sauternes",
+    "Fronsac and Blaye"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=2"
+  },
+  {
+   "q": "Green peppercorn or bell pepper in a Cabernet comes from…",
+   "answer": "Pyrazines",
+   "wrong": [
+    "New oak",
+    "Malolactic fermentation",
+    "Carbonic maceration"
+   ],
+   "source": "https://winefolly.com/grapes/cabernet-sauvignon/"
+  },
+  {
+   "q": "Which California Cabernet area on the list is warm continental with big day-night swings?",
+   "answer": "Paso Robles",
+   "wrong": [
+    "Carneros",
+    "Santa Barbara",
+    "Sonoma Coast"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+  },
+  {
+   "q": "Which Northern Rhône wines represent Syrah on the exam?",
+   "answer": "Côte-Rôtie, Saint-Joseph, Crozes-Hermitage",
+   "wrong": [
+    "Châteauneuf-du-Pape, Gigondas, Vacqueyras",
+    "Condrieu, Château-Grillet, Saint-Péray",
+    "Tavel, Lirac, Rasteau"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=3"
+  },
+  {
+   "q": "In the Court's sample red grid that concluded Australia, which non-fruit note was a reason?",
+   "answer": "Eucalyptus",
+   "wrong": [
+    "Petrol",
+    "Carbonic maceration",
+    "Dill"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=18"
+  },
+  {
+   "q": "Compared with Australian Shiraz, French Syrah tends to show…",
+   "answer": "More acidity and earthy, herbal notes",
+   "wrong": [
+    "More jammy fruit and spice",
+    "Lower tannin and pale color",
+    "Noticeable sweetness"
+   ],
+   "source": "https://winefolly.com/grapes/syrah/"
+  },
+  {
+   "q": "Malbec's classic blind-tasting color tell?",
+   "answer": "Opaque purple with a bright magenta rim",
+   "wrong": [
+    "Pale ruby with an orange rim",
+    "Garnet with a brick rim",
+    "Light ruby, almost see-through"
+   ],
+   "source": "https://winefolly.com/grapes/malbec/"
+  },
+  {
+   "q": "Malbec on the Certified exam comes from…",
+   "answer": "Mendoza, Argentina",
+   "wrong": [
+    "Cahors, France",
+    "Salta, Argentina",
+    "Colchagua, Chile"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=2"
+  },
+  {
+   "q": "Typical Malbec acidity, per Wine Folly?",
+   "answer": "Medium-low",
+   "wrong": [
+    "High",
+    "Very high",
+    "Medium-plus to high"
+   ],
+   "source": "https://winefolly.com/grapes/malbec/"
+  },
+  {
+   "q": "Zinfandel on the exam comes from…",
+   "answer": "Napa Valley or Sonoma County, with new oak",
+   "wrong": [
+    "Lodi only, no oak",
+    "Puglia, Italy",
+    "Paso Robles, American oak"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=3"
+  },
+  {
+   "q": "Why can Zinfandel run so high in alcohol?",
+   "answer": "Uneven ripening leaves raisined berries that concentrate sugar",
+   "wrong": [
+    "It's fortified with brandy",
+    "Carbonic maceration",
+    "Long aging in oak"
+   ],
+   "source": "https://winefolly.com/grapes/zinfandel/"
+  },
+  {
+   "q": "Zinfandel is genetically the same grape as…",
+   "answer": "Primitivo (and Croatia's Tribidrag)",
+   "wrong": [
+    "Petite Sirah",
+    "Grenache",
+    "Malbec"
+   ],
+   "source": "https://winefolly.com/grapes/zinfandel/"
+  },
+  {
+   "q": "Which three reds does the Court suggest comparing together?",
+   "answer": "Australian Shiraz, Argentine Malbec, California Zinfandel",
+   "wrong": [
+    "Barolo, Brunello, Rioja",
+    "Chinon, Beaujolais, Burgundy",
+    "Pomerol, Napa Merlot, Chilean Merlot"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=15"
+  },
+  {
+   "q": "Which red on the Court's exam list is specified as having no oak?",
+   "answer": "Beaujolais (Gamay)",
+   "wrong": [
+    "Rioja Reserva",
+    "Napa Zinfandel",
+    "Australian Shiraz"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=2"
+  },
+  {
+   "q": "In the Court's session, a 'pumped-up' red Burgundy from a warm vintage shows…",
+   "answer": "Riper fruit, medium-plus alcohol, more forward oak",
+   "wrong": [
+    "More earth and tart fruit",
+    "Lower alcohol and no oak",
+    "Garnet color and dried fruit"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Certified red examinable wines: Cabernet Franc (Loire: Chinon / Bourgueil); Cabernet Sauvignon (Bordeaux: Haut-Medoc / Graves, new oak; California: Napa Valley / Sonoma County / Paso Robles, new oak); Gamay (Burgundy, Beaujolais, with carbonic maceration, no oak); Grenache (Rhone: Chateauneuf-du-Pape / Gigondas); Malbec (Argentina, Mendoza); Merlot (Bordeaux: Pomerol / Saint-Emilion; California: Napa Valley / Sonoma County, new oak); Nebbiolo (Piedmont: Barolo / Barbaresco).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=2"
+  },
+  {
+   "fact": "Certified red examinable wines (continued): Pinot Noir (France, Cote d'Or, Village or Premier Cru only; California: Napa Valley (Carneros) / Sonoma County / Central Coast; Oregon: Willamette Valley); Sangiovese (Tuscany: Brunello di Montalcino / Chianti Classico); Syrah (Northern Rhone: Cote-Rotie / Saint-Joseph / Crozes-Hermitage; Australia: South Australia / Western Australia / Victoria, new oak); Tempranillo (Spain, Rioja, Reserva or Gran Reserva, American oak); Zinfandel (California: Napa Valley / Sonoma County, new oak).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Level-Wines.pdf#page=3"
+  },
+  {
+   "fact": "Expected skill set of a Certified Sommelier: 'Deductive Tasting Method ability for core classic red and white varieties'.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=1"
+  },
+  {
+   "fact": "Red comparisons the Court suggests: Burgundy and US Pinot Noir; Burgundy Pinot Noir and Nebbiolo; Sangiovese and Nebbiolo; Sangiovese and Rioja; French Grenache and Rioja; Bordeaux and California Cabernet Sauvignon; Australian Shiraz, Argentine Malbec and California Zinfandel.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=15"
+  },
+  {
+   "fact": "Red grid: color Purple, Ruby, Garnet; fruit lines Red, Black, Blue; non-fruit lines include Dried Herbs, Mint/Eucalyptus, Black Peppercorn, Coffee/Cocoa, Meat/Leather, Balsamic/Tar, Carbonic Maceration, Earth, Mineral, New Oak (Vanilla, Smoke, Toast, Coconut, Dill); structure Tannin, Acidity, Alcohol; red age ranges 1-3, 4-6, 7+ years.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=2"
+  },
+  {
+   "fact": "Example red grid in the exam guide: fruit lines filled with blueberry, blackberry and black cherry; grape reasons 'black fruit, black pepper, eucalyptus'; climate reasons 'high alcohol, very ripe fruit'; country Australia; sales pitch mentions black cherry and black pepper with grilled beef or lamb.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=18"
+  },
+  {
+   "fact": "Some regions classically blur the line of Old v. New World. 'Pumped up' red Burgundy: warm vintage gives riper fruit, medium-plus alcohol, oak more forward, too youthful for earth to show.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "Original Napa Cabernet: pyrazines, moderate-plus alcohol and astringent tannins, fruit just ripe, oak not as forward. Modern: pyrazines more subtle, high alcohol, rounder tannins, overripe/liqueur-like fruit, oak more forward.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "Wayne Belding, MS (quoted): Argentine Malbec and Aussie Shiraz rose from non-existent to classic in a few decades.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "Nebbiolo and Grenache often show a garnet or orange rim even when young; Malbec often has a magenta rim.",
+   "source": "https://winefolly.com/deep-dive/how-to-taste-wine-develop-palate/"
+  },
+  {
+   "fact": "Oak lactone gives woody, dill and coconut notes; European oak has been suggested to impart less oak lactone than American oak.",
+   "source": "https://winefolly.com/tips/how-wine-barrels-affect-the-taste-of-wine/"
+  },
+  {
+   "fact": "Court grape profile, Pinot Noir: climates cool, moderate, warm; possible whole cluster, neutral or new oak; top regions Burgundy, California, Oregon, New Zealand; color pale ruby to deep ruby.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=7"
+  },
+  {
+   "fact": "Pinot Noir: primary flavors raspberry, cherry, mushroom, vanilla, hibiscus; pale to medium color from thin skins; red fruits with earthiness and spice; mushroom and leather with age; light to medium body, low tannins, high (medium-high) acidity, 12-14% ABV.",
+   "source": "https://winefolly.com/grapes/pinot-noir/"
+  },
+  {
+   "fact": "Burgundian Pinot Noir is more earthy and floral. California Pinot Noir is bigger, lusher and more fruit-forward: black cherry, black raspberry, vanilla, clove, cola. Oregon Pinot Noir is usually lighter and more tart (cranberry, Bing cherry, sometimes truffle) and often closest in style to Burgundy.",
+   "source": "https://winefolly.com/grapes/pinot-noir/"
+  },
+  {
+   "fact": "Court: Willamette Valley is cool Mediterranean with maritime influence; the Coast Range to the west creates a rain shadow.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+  },
+  {
+   "fact": "Gamay: primary flavors pomegranate, blackberry bramble, violet, potting soil, peony; dry, medium-light body, very low tannin, medium-high acidity, 10-11.5% ABV.",
+   "source": "https://winefolly.com/grapes/gamay/"
+  },
+  {
+   "fact": "Beaujolais is mostly made by semi-carbonic maceration, responsible for banana, candied fruit, pear, raspberry and cranberry aromas; Beaujolais has high acidity and low tannin; the 10 crus are all in the north, on mostly granite and schist.",
+   "source": "https://winefolly.com/deep-dive/beaujolais-wine-region-map/"
+  },
+  {
+   "fact": "Carbonic maceration: uncrushed grapes in a sealed vat topped with CO2; wines have low tannin and color, juicy fruit and bold yeast aromas.",
+   "source": "https://winefolly.com/wine-glossary/carbonic-maceration/"
+  },
+  {
+   "fact": "Beaujolais: 13,500 ha in 12 AOCs, almost all Gamay (97%); the 10 crus include Morgon, Fleurie and Moulin-a-Vent.",
+   "source": "https://www.beaujolais.com/en/discover/nos-12-appellations/"
+  },
+  {
+   "fact": "Court grape profile, Nebbiolo: climates moderate, warm; tannin and acidity both high; possible large barrel and extended skin maceration; color medium ruby, deep ruby, garnet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=12"
+  },
+  {
+   "fact": "Nebbiolo: primary flavors cherry, rose, leather, anise, clay pot; bone-dry, medium-full body, high tannins, medium-high acidity, 13.5-15% ABV; delicate aromas with strong tannins.",
+   "source": "https://winefolly.com/grapes/nebbiolo/"
+  },
+  {
+   "fact": "Court (Certified column): Barolo 38 months total aging with at least 18 months in oak; Barbaresco 26 months with at least 9 in oak.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+  },
+  {
+   "fact": "Barolo has a full, intense garnet color and elegant, complex tannins.",
+   "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+  },
+  {
+   "fact": "Court grape profile, Sangiovese: climates warm, hot; large barrel, neutral oak, blending; top region Tuscany (Chianti, Brunello di Montalcino); color pale ruby, deep ruby, garnet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=13"
+  },
+  {
+   "fact": "Sangiovese: primary flavors cherry, roasted tomato, sweet balsamic, oregano, espresso; bone-dry, medium-full body, medium-high tannins, medium-high acidity, 13.5-15% ABV.",
+   "source": "https://winefolly.com/grapes/sangiovese/"
+  },
+  {
+   "fact": "Court (Certified column): Brunello is 100% Brunello (Sangiovese); Chianti Classico at least 80% Sangiovese.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=32"
+  },
+  {
+   "fact": "Brunello di Montalcino: 2 years in oak and 4 months in bottle; released no earlier than 1 January of the fifth year after harvest.",
+   "source": "https://consorziobrunellodimontalcino.it/en/583/vini"
+  },
+  {
+   "fact": "Chianti Classico Annata: at least 80% Sangiovese, at least 12 months aging; Riserva at least 24 months.",
+   "source": "https://www.chianticlassico.com/en/wine/types/"
+  },
+  {
+   "fact": "Court grape profile, Grenache: climates warm, hot; styles fruity, unoaked, ripe, spicy; large barrel, blending, whole cluster; top regions Southern Rhone, Spain, Australia; color medium to deep ruby.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=11"
+  },
+  {
+   "fact": "Grenache: primary flavors stewed strawberry, grilled plum, leather, dried herbs, blood orange; dry, medium-full body, medium tannins, medium acidity, over 15% ABV; championed in the Southern Rhone, roots in northeastern Spain.",
+   "source": "https://winefolly.com/grapes/grenache/"
+  },
+  {
+   "fact": "Northern Rhone reds are Syrah; the Southern Rhone makes Grenache-based blends such as Chateauneuf-du-Pape.",
+   "source": "https://www.vins-rhone.com/en/rhone-valley-vineyards/grape-varieties"
+  },
+  {
+   "fact": "Chateauneuf-du-Pape: Mediterranean climate with the Mistral, under 650 mm of rain and about 2,800 hours of sunshine; soils of rolled pebbles with red clay, sand and sandstone.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-chateauneuf-du-pape"
+  },
+  {
+   "fact": "Court grape profile, Tempranillo: climates warm, hot; blending, large barrel, neutral and new oak; top regions Rioja, Ribera del Duero, Toro; color moderate ruby, deep ruby, garnet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=14"
+  },
+  {
+   "fact": "Tempranillo: primary flavors cherry, dried fig, cedar, tobacco, dill; dry, medium-full body, medium-high tannins, medium-high acidity, 13.5-15% ABV; thin skins, medium ruby to garnet color. Rioja tasting notes: cherry, dill, cigar box, sun-dried tomato, vanilla. With 10-20 years, dried fruit, nut and spice aromas develop.",
+   "source": "https://winefolly.com/grapes/tempranillo/"
+  },
+  {
+   "fact": "Court: Rioja is continental, in a Cantabrian rain shadow along the Ebro, and traditionally aged in American oak. Certified column: Rioja Reserva at least 3 years with 1 in oak; Gran Reserva at least 5 years with 2 in oak; Crianza 2 years with 1 in oak.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+  },
+  {
+   "fact": "Cabernet Franc: primary flavors strawberry, raspberry, bell pepper, crushed gravel, chili pepper; dry, medium body, medium-high tannins, high acidity, 11.5-13.5% ABV; herbaceous bell-pepper aroma from methoxypyrazines; parent of Cabernet Sauvignon and Merlot.",
+   "source": "https://winefolly.com/grapes/cabernet-franc/"
+  },
+  {
+   "fact": "Loire Cabernet Franc: cool climate, lighter body and tannins, red fruit, floral and herbal notes. Chinon: roasted red pepper, raspberry, jalapeno, wet gravel; high acidity, moderately low tannin.",
+   "source": "https://winefolly.com/grapes/cabernet-franc/"
+  },
+  {
+   "fact": "Touraine: Chinon and Bourgueil are famous for reds; Bourgueil is listed as Cabernet Franc.",
+   "source": "https://www.vinsvaldeloire.fr/en/loire-wines/touraine-vineyard"
+  },
+  {
+   "fact": "Court grape profile, Merlot: climates moderate, warm; destemming, blending, new oak; top regions Bordeaux, California, Chile; color medium ruby, deep ruby, purple.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=9"
+  },
+  {
+   "fact": "Merlot: primary flavors cherry, chocolate, plum, bay leaf, vanilla; medium-full body, medium-high tannins, medium acidity, 13.5-15% ABV; softer and less astringent than Cabernet Sauvignon because of thinner skins and fewer seeds; red plum and cherry in cooler climates, baked blackberry and fruitcake in warmer ones.",
+   "source": "https://winefolly.com/grapes/merlot/"
+  },
+  {
+   "fact": "US Merlot is generally riper and more fruit-forward than French and Italian; Merlot and Cabernet Sauvignon share Cabernet Franc as a parent, so they are half-siblings. Pomerol Merlot: clay-rich soils; concentrated black cherry and plum, subtle truffle, velvety texture. Napa Merlot: full-bodied, velvety, sometimes slightly minty.",
+   "source": "https://winefolly.com/grapes/merlot/"
+  },
+  {
+   "fact": "Pomerol: red only; Merlot about 80%, Cabernet Franc 15%, Cabernet Sauvignon 5%.",
+   "source": "https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/pomerol/"
+  },
+  {
+   "fact": "Saint-Emilion, Pomerol and Fronsac (the Right Bank) are shaped by Merlot on limestone plateaus, molasse and clay.",
+   "source": "https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/"
+  },
+  {
+   "fact": "Court grape profile, Cabernet Sauvignon: climates moderate, warm, hot; destemming, blending, new oak; color deep ruby, ruby, purple, dark purple.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=8"
+  },
+  {
+   "fact": "Cabernet Sauvignon: primary flavors black cherry, black currant, cedar, baking spices, graphite; dry, full body, medium-high tannins, medium-high acidity, 13.5-15% ABV. Bordeaux: black currant, anise, tobacco leaf, pencil lead, the most savory expressions, mostly blended, best on gravel in the Medoc and Graves. North Coast California: black currant, blackberry, pencil lead, tobacco, mint.",
+   "source": "https://winefolly.com/grapes/cabernet-sauvignon/"
+  },
+  {
+   "fact": "Cabernet Sauvignon shares pyrazines with the other Bordeaux varieties: green peppercorn, graphite or bell pepper notes.",
+   "source": "https://winefolly.com/grapes/cabernet-sauvignon/"
+  },
+  {
+   "fact": "Medoc appellations include Haut-Medoc, Margaux, Pauillac, Saint-Julien and Saint-Estephe; the Medoc makes only red wines.",
+   "source": "https://www.bordeaux.com/en/designations/medoc/"
+  },
+  {
+   "fact": "Court: Paso Robles is warm continental with large day-night temperature swings.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+  },
+  {
+   "fact": "Court grape profile, Syrah: climates moderate, warm, hot; styles spicy, savory; blending, large barrel, whole cluster; top regions Northern Rhone (Hermitage, Cote-Rotie, Saint-Joseph) and Barossa (Shiraz); color deep ruby to deep purple/violet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/10/Grape-Variety-Profiles-Introductory-Level.pdf#page=10"
+  },
+  {
+   "fact": "Syrah: primary flavors blueberry, black plum, milk chocolate, tobacco, green peppercorn; full body, medium-high tannins, medium acidity, 13.5-15% ABV; among the most intensely colored reds; dark fruit, savory notes, a lingering peppery finish. French versions have more acidity and earthy, herbaceous aromas; Australian versions are more fruit-driven with lots of spice.",
+   "source": "https://winefolly.com/grapes/syrah/"
+  },
+  {
+   "fact": "Barossa Shiraz is among the most powerful in the world, often 14-15% alcohol.",
+   "source": "https://winefolly.com/deep-dive/barossa-valley-and-the-wines-of-south-australia/"
+  },
+  {
+   "fact": "Cornas reds are single-varietal Syrah; Cote-Rotie, Saint-Joseph, Hermitage and Crozes-Hermitage allow single-varietal or blends.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-chateauneuf-du-pape"
+  },
+  {
+   "fact": "Malbec: primary flavors red plum, blackberry, vanilla, sweet tobacco, cocoa; dry, full body, medium tannins, medium-low acidity, 13.5-15% ABV. Thick skins high in color pigment; a classic blind-tasting tell is a bright magenta rim and opaque purple color; it keeps acidity best at high elevations with cold nights.",
+   "source": "https://winefolly.com/grapes/malbec/"
+  },
+  {
+   "fact": "Court (Certified column): Malbec can have an electric purple color from more sun at higher elevations; Mendoza vineyards are 600-1,200 m.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "fact": "Court: new or used, French or American oak are all common for Malbec; Malbec and Cabernet Sauvignon pair with steak and chimichurri.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "fact": "Zinfandel: primary flavors blackberry, strawberry, peach preserves, cinnamon, sweet tobacco; dry, medium-full body, medium-high tannins, medium-low acidity, over 15% ABV; jammy fruit and smoky spice; uneven ripening leaves raisined berries that raise alcohol; genetically identical to Croatia's Tribidrag, and called Primitivo in Italy. North Coast: blackberry, black cherry, bramble, vanilla, black pepper. It performs well in warm, sunny regions. White Zinfandel is a sweet rosé from the same grape.",
+   "source": "https://winefolly.com/grapes/zinfandel/"
+  }
+ ],
+ "unverified": [
+  "Typical grape profiles (fruit, tannin, acidity, alcohol) come from Wine Folly, not the Court, and vary by producer and vintage.",
+  "The Court's Grape Variety Profiles PDF is image-based. Its colors and climates here come from the Level 1 audit of that PDF (tasting.json, italy.json), not from a fresh read.",
+  "Climate and country calls in the grid tiles (e.g. Grenache: warm) are drawn from the Court's profiles and region descriptions, not from a Court answer key.",
+  "The Court's sample Australian red grid doesn't name its grape in the text we have; we present it as an Australian example only.",
+  "The Gigondas section rests on Inter Rhône's general Southern Rhône facts; no Gigondas-specific source was fetched.",
+  "No Wine Folly, Court or official video focused on Gamay or Beaujolais was found, so that grape has no video of its own."
+ ],
+ "court": {
+  "outcome": "Deductive Tasting Method ability for core classic red and white varieties",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=1",
+  "coverage": [
+   {
+    "topic": "Pinot Noir · Côte d'Or",
+    "guide": "Burgundy Pinot Noir, Village or Premier Cru only",
+    "where": "Pinot Noir and Gamay"
+   },
+   {
+    "topic": "Pinot Noir · California, Oregon",
+    "guide": "Carneros, Sonoma, Central Coast; Willamette Valley",
+    "where": "Pinot Noir and Gamay"
+   },
+   {
+    "topic": "Gamay · Beaujolais",
+    "guide": "With carbonic maceration, no oak",
+    "where": "Pinot Noir and Gamay"
+   },
+   {
+    "topic": "Nebbiolo · Barolo, Barbaresco",
+    "guide": "Piedmont Nebbiolo",
+    "where": "Nebbiolo and Sangiovese"
+   },
+   {
+    "topic": "Sangiovese · Brunello, Chianti Classico",
+    "guide": "Tuscan Sangiovese",
+    "where": "Nebbiolo and Sangiovese"
+   },
+   {
+    "topic": "Grenache · Châteauneuf-du-Pape, Gigondas",
+    "guide": "Rhône Valley Grenache",
+    "where": "Grenache"
+   },
+   {
+    "topic": "Tempranillo · Rioja",
+    "guide": "Reserva or Gran Reserva, American oak",
+    "where": "Tempranillo"
+   },
+   {
+    "topic": "Cabernet Franc · Chinon, Bourgueil",
+    "guide": "Loire Valley Cabernet Franc",
+    "where": "Cabernet Franc and Merlot"
+   },
+   {
+    "topic": "Merlot · Pomerol, Saint-Émilion, California",
+    "guide": "Right Bank Bordeaux; Napa and Sonoma with new oak",
+    "where": "Cabernet Franc and Merlot"
+   },
+   {
+    "topic": "Cabernet Sauvignon · Bordeaux, California",
+    "guide": "Haut-Médoc, Graves; Napa, Sonoma, Paso Robles; new oak",
+    "where": "Cabernet Sauvignon"
+   },
+   {
+    "topic": "Syrah · Northern Rhône, Australia",
+    "guide": "Côte-Rôtie, Saint-Joseph, Crozes-Hermitage; SA, WA, Victoria with new oak",
+    "where": "Syrah"
+   },
+   {
+    "topic": "Malbec · Mendoza",
+    "guide": "Argentine Malbec",
+    "where": "Malbec"
+   },
+   {
+    "topic": "Zinfandel · Napa, Sonoma",
+    "guide": "California Zinfandel with new oak",
+    "where": "Zinfandel"
+   },
+   {
+    "topic": "Red comparisons",
+    "guide": "Compare look-alike reds: Pinot regions, Sangiovese/Nebbiolo, Grenache/Rioja, Shiraz/Malbec/Zinfandel",
+    "where": "Pinot Noir and Gamay, Nebbiolo and Sangiovese, Grenache, Malbec"
+   }
+  ]
+ },
+ "v3": {
+  "video": {
+   "youtubeId": "orSPRayciCI",
+   "title": "Secret Wine Tasting - Blind!",
+   "by": "Wine Folly",
+   "length": "4:47"
+  },
+  "sections": [
+   {
+    "name": "Pinot Noir and Gamay",
+    "video": {
+     "youtubeId": "VyYS1uMv_eA",
+     "title": "Oregon vs Burgundy Pinot Noir",
+     "by": "Wine Folly",
+     "length": "7:56"
+    },
+    "keyPoints": [
+     {
+      "big": "PALE + RED",
+      "line": "pale to medium ruby, red fruit, low tannin."
+     },
+     {
+      "big": "BURGUNDY",
+      "line": "earthy and floral; Village or Premier Cru only."
+     },
+     {
+      "big": "CALIFORNIA",
+      "line": "riper and lusher: black cherry, cola, vanilla."
+     },
+     {
+      "big": "OREGON",
+      "line": "tarter, often closest in style to Burgundy."
+     },
+     {
+      "big": "BEAUJOLAIS",
+      "line": "carbonic maceration, no oak, banana and candied fruit."
+     }
+    ],
+    "read": {
+     "bigIdea": "Light reds: tell them apart by earth, ripeness and carbonic.",
+     "where": "The Court lists **Pinot Noir** from the **Côte d'Or** (Village or Premier Cru), **California** (Carneros, Sonoma, Central Coast) and Oregon's **Willamette Valley**, and **Gamay** from **Beaujolais**, made **with carbonic maceration** and **no oak**. All four are paler reds with red fruit, low tannin and bright acidity.",
+     "stopsTitle": "Four wines, side by side",
+     "stops": [
+      {
+       "name": "Burgundy",
+       "note": "Côte d'Or",
+       "text": "Red fruit with **earthy** and **floral** notes; mushroom and leather come with age. Watch for warm vintages: riper fruit, more oak and **no earth yet** can blur the line between Old and New World."
+      },
+      {
+       "name": "California and Oregon",
+       "note": "United States",
+       "text": "California is **bigger and lusher**: black cherry, cola, vanilla. Oregon is **lighter and tarter** (cranberry, Bing cherry) and often closest to Burgundy. The Willamette Valley is cool, with maritime influence."
+      },
+      {
+       "name": "Beaujolais",
+       "note": "Gamay",
+       "text": "**Carbonic maceration** gives juicy raspberry and cranberry, **banana** and candied notes, **low tannin** and **high acidity**. Tick the red grid's **carbonic maceration** line."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "How the four look on the grid:",
+     "mixup": "**Beaujolais** is Gamay, made carbonic. **Red Burgundy** is Pinot Noir, with earth and oak.",
+     "sayIt": "Light and silky, with red cherry and a little earth. Great with salmon or mushrooms."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Nebbiolo and Sangiovese",
+    "video": {
+     "youtubeId": "cRcZi9gEMe4",
+     "title": "5 Italian Red Wines You Must Try!",
+     "by": "Wine Folly",
+     "length": "8:18"
+    },
+    "keyPoints": [
+     {
+      "big": "NEBBIOLO",
+      "line": "Barolo and Barbaresco: high tannin, high acid."
+     },
+     {
+      "big": "GARNET RIM",
+      "line": "Nebbiolo shows it even when young."
+     },
+     {
+      "big": "ROSE + CHERRY",
+      "line": "delicate aromas over strong tannins."
+     },
+     {
+      "big": "SANGIOVESE",
+      "line": "Brunello and Chianti Classico: cherry, tomato, herbs."
+     },
+     {
+      "big": "COMPARE",
+      "line": "the Court pairs them; also Nebbiolo with Burgundy."
+     }
+    ],
+    "read": {
+     "bigIdea": "Italy's two: both tart and firm, but Nebbiolo grips harder.",
+     "where": "The exam's **Nebbiolo** is **Barolo** or **Barbaresco**, in Piedmont. Its **Sangiovese** is **Brunello di Montalcino** (100% Sangiovese) or **Chianti Classico** (at least 80%). Both can show **garnet** in the glass.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Nebbiolo",
+       "note": "Barolo · Barbaresco",
+       "text": "**Cherry**, **rose**, leather and anise, with **high tannin** and **high acidity**. Color runs medium ruby to **garnet**, often with a garnet or orange rim even young. Barolo ages **38 months** (18 in oak); Barbaresco **26** (9 in oak)."
+      },
+      {
+       "name": "Sangiovese",
+       "note": "Brunello · Chianti Classico",
+       "text": "**Cherry**, **roasted tomato**, **oregano** and **sweet balsamic**, with medium-high tannin and acidity. The **dried herbs** and **balsamic** lines can both come into play."
+      },
+      {
+       "name": "Conclusion",
+       "note": "Italy",
+       "text": "The Court's profiles put Nebbiolo in **moderate to warm** climates and Sangiovese in **warm to hot** ones."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The Court's suggested pair:",
+     "mixup": "**Barbaresco** has the shorter minimum aging (26 months). **Barolo** needs 38."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Grenache",
+    "video": {
+     "youtubeId": "aLCocZki2tA",
+     "title": "Everything You Ever Wanted to Know About Châteauneuf-du-Pape | Wine Folly",
+     "by": "Wine Folly",
+     "length": "8:51"
+    },
+    "keyPoints": [
+     {
+      "big": "CHÂTEAUNEUF",
+      "line": "and Gigondas: Southern Rhône Grenache."
+     },
+     {
+      "big": "STEWED STRAWBERRY",
+      "line": "grilled plum, leather and dried herbs."
+     },
+     {
+      "big": "HIGH ALCOHOL",
+      "line": "often over 15%, with medium tannin and acid."
+     },
+     {
+      "big": "GARNET RIM",
+      "line": "can show even in a young wine."
+     },
+     {
+      "big": "COMPARE",
+      "line": "it with Rioja, as the Court suggests."
+     }
+    ],
+    "read": {
+     "bigIdea": "Grenache: ripe red fruit, dried herbs and warmth.",
+     "where": "The exam's Grenache is **Châteauneuf-du-Pape** or **Gigondas**, in the **Southern Rhône**, where reds are Grenache-based blends. Châteauneuf has a **Mediterranean** climate, the **Mistral** wind and about **2,800 hours** of sunshine a year.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Look",
+       "note": "color",
+       "text": "**Medium to deep ruby**, and often a **garnet or orange rim** even when young."
+      },
+      {
+       "name": "Nose",
+       "note": "fruit and herbs",
+       "text": "**Stewed strawberry**, **grilled plum** and blood orange, with **leather** and **dried herbs**."
+      },
+      {
+       "name": "Palate",
+       "note": "structure",
+       "text": "**Medium tannin**, **medium acidity** and **high alcohol**, often over 15%. The Court's profile puts it in **warm to hot** climates."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The Court's suggested pair:",
+     "mixup": "**Southern Rhône** reds are Grenache-based. **Northern Rhône** reds are Syrah."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Tempranillo",
+    "video": {
+     "youtubeId": "d-S6Mg5cAUg",
+     "title": "5 Spanish Red Wines You Must Try",
+     "by": "Wine Folly",
+     "length": "19:37"
+    },
+    "keyPoints": [
+     {
+      "big": "RIOJA",
+      "line": "Reserva or Gran Reserva only, in American oak."
+     },
+     {
+      "big": "DILL + COCONUT",
+      "line": "oak lactone, which American oak gives more of."
+     },
+     {
+      "big": "RED FRUIT",
+      "line": "cherry and dried fig, with cedar and tobacco."
+     },
+     {
+      "big": "AGED",
+      "line": "Reserva 3 years (1 in oak); Gran Reserva 5 (2 in oak)."
+     },
+     {
+      "big": "FIRM",
+      "line": "medium-high tannin and acidity."
+     }
+    ],
+    "read": {
+     "bigIdea": "Rioja: red fruit, dill and the marks of time.",
+     "where": "The exam's Tempranillo is **Rioja Reserva** or **Gran Reserva**, aged in **American oak**. Rioja is continental, in the rain shadow of the Cantabrian Mountains along the Ebro. Reserva needs **3 years** of aging (1 in oak); Gran Reserva **5 years** (2 in oak).",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Look",
+       "note": "color",
+       "text": "**Medium ruby to garnet**: Tempranillo's skins are thin."
+      },
+      {
+       "name": "Nose",
+       "note": "fruit, oak, age",
+       "text": "**Cherry** and **dried fig**, with **cedar**, **tobacco**, **dill** and vanilla. Dill and coconut sit on the red grid's **new oak** line. With 10 to 20 years, dried fruit, nuts and spice take over."
+      },
+      {
+       "name": "Palate",
+       "note": "structure",
+       "text": "**Medium-high tannin** and **medium-high acidity**, medium-full body. The Court's profile puts it in **warm to hot** climates."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Rioja's aging tiers:",
+     "mixup": "**Crianza** is the youngest aged tier and isn't on the exam. **Reserva** and **Gran Reserva** are."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Cabernet Franc and Merlot",
+    "video": {
+     "youtubeId": "JJnJK8rpibQ",
+     "title": "Merlot (Everything you need to know) | Grapes 101",
+     "by": "Wine Folly",
+     "length": "4:37"
+    },
+    "keyPoints": [
+     {
+      "big": "CHINON",
+      "line": "and Bourgueil: Loire Cabernet Franc, cool and herbal."
+     },
+     {
+      "big": "RED PEPPER",
+      "line": "jalapeño and raspberry: pyrazines at work."
+     },
+     {
+      "big": "POMEROL",
+      "line": "about 80% Merlot, on clay-rich soils."
+     },
+     {
+      "big": "SOFTER",
+      "line": "Merlot has thinner skins and fewer seeds than Cabernet."
+     },
+     {
+      "big": "FAMILY",
+      "line": "Cab Franc is a parent of Merlot and Cab Sauvignon."
+     }
+    ],
+    "read": {
+     "bigIdea": "Same family: Loire Cab Franc is crisp, Merlot is plush.",
+     "where": "The Court lists **Cabernet Franc** from **Chinon** or **Bourgueil** in the Loire, and **Merlot** from **Pomerol** or **Saint-Émilion** on Bordeaux's Right Bank, plus **Napa** and **Sonoma** with new oak. Cabernet Franc is a **parent** of both Merlot and Cabernet Sauvignon.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Loire Cabernet Franc",
+       "note": "cool climate",
+       "text": "**Raspberry**, **roasted red pepper**, **jalapeño** and wet gravel. **High acidity**, moderately **low tannin**, lighter body. The green notes come from **pyrazines**: tick the green bell pepper line."
+      },
+      {
+       "name": "Right Bank Merlot",
+       "note": "Pomerol · Saint-Émilion",
+       "text": "**Black cherry**, **plum**, chocolate and a hint of truffle, with a **velvety** feel. Pomerol is about **80% Merlot**, on clay-rich soils."
+      },
+      {
+       "name": "California Merlot",
+       "note": "Napa · Sonoma",
+       "text": "**Full-bodied** and velvety, riper, with new oak and sometimes a **minty** note. Cooler Merlot leans to red plum and cherry; warmer Merlot to baked blackberry."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Two family members, side by side:",
+     "mixup": "**Cabernet Franc** is the parent. **Merlot** and **Cabernet Sauvignon** are its offspring (half-siblings)."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "video": {
+     "youtubeId": "21SHxYyRcBQ",
+     "title": "Explore The Styles of Cabernet Sauvignon | Wine Folly",
+     "by": "Wine Folly",
+     "length": "6:00"
+    },
+    "keyPoints": [
+     {
+      "big": "NEW OAK",
+      "line": "on every exam Cabernet, Bordeaux and California."
+     },
+     {
+      "big": "BLACK CURRANT",
+      "line": "black cherry, cedar, graphite, baking spice."
+     },
+     {
+      "big": "PYRAZINES",
+      "line": "can add green peppercorn or bell pepper."
+     },
+     {
+      "big": "FULL BODY",
+      "line": "with medium-high tannin and acidity."
+     },
+     {
+      "big": "COMPARE",
+      "line": "Bordeaux with California, as the Court suggests."
+     }
+    ],
+    "read": {
+     "bigIdea": "Cabernet: black currant, cedar, and a firm frame.",
+     "where": "The exam's Cabernet Sauvignon is **Bordeaux** (**Haut-Médoc**, **Graves**) or **California** (**Napa**, **Sonoma**, **Paso Robles**), all with **new oak**. In Bordeaux it does best on **gravel** and is mostly **blended**.",
+     "stopsTitle": "Two classics",
+     "stops": [
+      {
+       "name": "Bordeaux",
+       "note": "Haut-Médoc · Graves",
+       "text": "**Black currant**, **tobacco leaf**, anise and **pencil lead**: Wine Folly calls these the most **savory** Cabernets."
+      },
+      {
+       "name": "California",
+       "note": "Napa · Sonoma · Paso Robles",
+       "text": "**Black currant**, **blackberry**, pencil lead, tobacco and sometimes **mint**. Paso Robles is warm continental, with big day-night swings."
+      },
+      {
+       "name": "Original vs modern Napa",
+       "note": "from the Court",
+       "text": "The original style shows **pyrazines** and just-ripe fruit. The modern one has **high alcohol**, rounder tannins, overripe fruit and **more oak**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The Court's suggested pair:",
+     "mixup": "**Haut-Médoc** and **Graves** are Left Bank Cabernet country. **Pomerol** and **Saint-Émilion** are Right Bank Merlot country."
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   },
+   {
+    "name": "Syrah",
+    "video": {
+     "youtubeId": "o9BM4foIZWI",
+     "title": "Are you curious about Australian Shiraz? | Wine Unpacked",
+     "by": "Wine Folly",
+     "length": "5:11"
+    },
+    "keyPoints": [
+     {
+      "big": "BLUE FRUIT",
+      "line": "blueberry belongs on the red grid's blue fruit line."
+     },
+     {
+      "big": "BLACK PEPPER",
+      "line": "a lingering peppery finish, per Wine Folly."
+     },
+     {
+      "big": "DEEP COLOR",
+      "line": "deep ruby to deep purple."
+     },
+     {
+      "big": "FRANCE",
+      "line": "more acid, earthy and herbal."
+     },
+     {
+      "big": "AUSTRALIA",
+      "line": "riper, spicier, high alcohol, sometimes eucalyptus."
+     }
+    ],
+    "read": {
+     "bigIdea": "Syrah: dark fruit and pepper, earthy or ripe.",
+     "where": "The exam's Syrah is **Northern Rhône** (**Côte-Rôtie**, **Saint-Joseph**, **Crozes-Hermitage**) or **Australian Shiraz** from South Australia, Western Australia or Victoria, with **new oak**. Syrah has some of the most intense color of any red.",
+     "stopsTitle": "Two classics",
+     "stops": [
+      {
+       "name": "Northern Rhône",
+       "note": "France",
+       "text": "**Black plum** and **blueberry**, **pepper**, savory and earthy, herbal notes, with **more acidity**."
+      },
+      {
+       "name": "Australia",
+       "note": "Shiraz",
+       "text": "Riper, more fruit-driven, **lots of spice**. Barossa Shiraz often reaches **14-15%** alcohol."
+      },
+      {
+       "name": "The Court's sample",
+       "note": "exam guide",
+       "text": "The filled-in red grid that concluded **Australia** gave **black fruit**, **black pepper** and **eucalyptus** as its grape reasons, and **high alcohol** and **very ripe fruit** for climate."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The two exam styles:",
+     "mixup": "**Syrah** and **Shiraz** are the same grape. The name on the label hints at the style."
+    },
+    "check": [
+     18,
+     19,
+     20
+    ]
+   },
+   {
+    "name": "Malbec",
+    "video": {
+     "youtubeId": "z-8MHuNNo9E",
+     "title": "France vs Argentina Malbec Wine",
+     "by": "Wine Folly",
+     "length": "5:05"
+    },
+    "keyPoints": [
+     {
+      "big": "MAGENTA RIM",
+      "line": "opaque purple color: Malbec's classic tell."
+     },
+     {
+      "big": "MENDOZA",
+      "line": "is the exam's only Malbec region."
+     },
+     {
+      "big": "PLUM + COCOA",
+      "line": "red plum, blackberry, sweet tobacco, vanilla."
+     },
+     {
+      "big": "SOFT ACID",
+      "line": "medium-low acidity, medium tannin, full body."
+     },
+     {
+      "big": "ALTITUDE",
+      "line": "600-1,200 m in Mendoza helps keep acidity."
+     }
+    ],
+    "read": {
+     "bigIdea": "Malbec: purple, plush and plummy.",
+     "where": "The exam's Malbec is from **Mendoza**, Argentina, where vineyards sit at **600-1,200 m**. Malbec's thick skins are rich in color pigment, and the Court notes high-altitude sun can give an **electric purple** color.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Look",
+       "note": "the tell",
+       "text": "**Opaque purple** with a **bright magenta rim**."
+      },
+      {
+       "name": "Nose",
+       "note": "fruit",
+       "text": "**Red plum**, **blackberry**, **cocoa**, **sweet tobacco** and vanilla."
+      },
+      {
+       "name": "Palate",
+       "note": "structure",
+       "text": "**Full body**, **medium tannin** and **medium-low acidity**. It keeps acid best at high elevation, with cold nights."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The Court's warm-climate trio:",
+     "mixup": "**Malbec** has softer acid and a magenta rim. **Shiraz** shows black pepper and sometimes eucalyptus.",
+     "sayIt": "Plush and dark, with plum and cocoa. Made for steak with chimichurri."
+    },
+    "check": [
+     21,
+     22,
+     23
+    ]
+   },
+   {
+    "name": "Zinfandel",
+    "video": {
+     "youtubeId": "M3aFaqoGjiw",
+     "title": "Italy vs California Zinfandel Showdown!",
+     "by": "Wine Folly",
+     "length": "6:36"
+    },
+    "keyPoints": [
+     {
+      "big": "NAPA · SONOMA",
+      "line": "with new oak: the exam's Zinfandel."
+     },
+     {
+      "big": "JAMMY",
+      "line": "blackberry and strawberry, sweet spice, tobacco."
+     },
+     {
+      "big": "OVER 15%",
+      "line": "alcohol is common; raisined berries add sugar."
+     },
+     {
+      "big": "SOFT ACID",
+      "line": "medium-low acidity, medium-high tannin."
+     },
+     {
+      "big": "PRIMITIVO",
+      "line": "is the same grape; Croatia's Tribidrag too."
+     }
+    ],
+    "read": {
+     "bigIdea": "Zinfandel: jammy fruit, sweet spice and real heat.",
+     "where": "The exam's Zinfandel is **California**: **Napa Valley** or **Sonoma County**, with **new oak**. Zinfandel ripens unevenly, so **raisined berries** sit beside ripe ones, which concentrates sugar and raises alcohol.",
+     "stopsTitle": "Down the grid",
+     "stops": [
+      {
+       "name": "Nose",
+       "note": "fruit",
+       "text": "**Blackberry**, **strawberry** and peach-preserve jamminess, with **cinnamon** and **sweet tobacco**. North Coast versions add bramble, vanilla and **black pepper**."
+      },
+      {
+       "name": "Palate",
+       "note": "structure",
+       "text": "**Medium-high tannin**, **medium-low acidity** and **high alcohol**, often over 15%."
+      },
+      {
+       "name": "Conclusion",
+       "note": "where",
+       "text": "**United States**. Fruit condition calls like **jammy** or **dried** fit the raisined character."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "How it fills the grid:",
+     "mixup": "**Zinfandel** on the exam is a dry red. **White Zinfandel** is a sweet rosé from the same grape."
+    },
+    "check": [
+     24,
+     25,
+     26
+    ]
+   }
+  ]
+ }
+}

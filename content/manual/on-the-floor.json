@@ -8,7 +8,7 @@
  "intro": {
   "script": "Start here",
   "title": "WHAT LEVEL 1 ASKS",
-  "text": "The Level 1 exam has basic service and food-and-wine pairing questions. In class you watch formal still and sparkling service; you are not graded on doing it.",
+  "text": "The Level 1 exam has basic service and food-and-wine pairing questions. In class you watch formal still and sparkling service; you are not graded on doing it. The deductive tasting method is introduced too, but it is not tested at this level (see chapter 2).",
   "tiers": [
    {
     "name": "Pairing",
@@ -25,6 +25,85 @@
    {
     "name": "Business",
     "note": "Introduced, not tested at Level 1"
+   }
+  ]
+ },
+ "court": {
+  "section": 12,
+  "outline": [
+   "Introduction to the Deductive Tasting Method",
+   "Food and Beverage Pairing",
+   "Introduction to the Business of the Sommelier",
+   "Hospitality and Service"
+  ],
+  "outcome": "BUSINESS OF THE SOMMELIER: After studying this section, a student will understand basics of what the sommelier profession entails in both the back and front of the house aspects.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "Introduction to the Deductive Tasting Method",
+    "guide": "Workbook chapter only; no Curriculum Guide row. The Court says not tested at this level.",
+    "where": "chapter 2 (Tasting like a sommelier); noted in the intro",
+    "tested": false
+   },
+   {
+    "topic": "Food and Beverage Pairing: principles and interactions",
+    "guide": "Match wine weight to food; acid wines with seafood; intense flavors can swamp delicate dishes.",
+    "where": "Food and wine pairing",
+    "tested": true
+   },
+   {
+    "topic": "Food and Beverage Pairing: classic pairings",
+    "guide": "Bold reds with beef and lamb; sweet wines with dessert and foie gras; Sancerre and goat cheese.",
+    "where": "Food and wine pairing",
+    "tested": true
+   },
+   {
+    "topic": "Business of the Sommelier: the profession (Introductory outcome)",
+    "guide": "Know what the job involves, front of house and back of house.",
+    "where": "added: Business of the sommelier",
+    "tested": false
+   },
+   {
+    "topic": "Business of the Sommelier: Ounces and amounts for regular sized bottles",
+    "guide": "Know metric and standard capacity of 375 ml, 750 ml and 1.5 L magnum.",
+    "where": "Business of the sommelier",
+    "tested": false
+   },
+   {
+    "topic": "Hospitality and Service: basics of wine service",
+    "guide": "Basic service questions are on the exam; the Service Standards are the reference.",
+    "where": "Mise en place; Still wine service; Sparkling wine service; Decanting; Glassware",
+    "tested": true
+   },
+   {
+    "topic": "Hospitality and Service: hospitality and guest care",
+    "guide": "Service Standards' goal plus the Court's Demeanor guide: attitude, recommending, honesty, fixing problems.",
+    "where": "added: Hospitality and the guest",
+    "tested": true
+   },
+   {
+    "topic": "Hospitality and Service: after-dinner drinks and buying older wines",
+    "guide": "Service Standards: jigger-measured cordial, Port and brandy service; check provenance of older wines.",
+    "where": "added: Glassware; Business of the sommelier",
+    "tested": true
+   },
+   {
+    "topic": "Hospitality and Service: performance of service",
+    "guide": "Formal still and sparkling service is watched in class; the Court does not test performing it.",
+    "where": "intro",
+    "tested": false
+   },
+   {
+    "topic": "Hospitality and Service: service temperatures",
+    "guide": "The Service Standards list exam serving temperatures; the Court says no need to memorize them at Level 1.",
+    "where": "Temperature and storage",
+    "tested": false
+   },
+   {
+    "topic": "Hospitality and Service: wine storage",
+    "guide": "Service Standards: constant 50-60°F, cork-finished wine on its side, spirits and fortified wine standing up.",
+    "where": "Temperature and storage",
+    "tested": true
    }
   ]
  },
@@ -56,7 +135,8 @@
     "Glassware and service items come to the table on a tray lined with a napkin.",
     "Serviettes are cotton or similar, so they soak up liquid, and are folded before service.",
     "Bottles, decanters and corks go on an underliner, never straight on the tablecloth.",
-    "Wines are stored and served at the right temperature, using ice buckets or decanters when needed."
+    "Wines are stored and served at the right temperature, using ice buckets or decanters when needed.",
+    "During service, serviettes are held in the hand or on the forearm, never in a pocket or on the shoulder."
    ],
    "visuals": [
     {
@@ -99,7 +179,7 @@
    ],
    "know": [
     "Take the order from the host's right and repeat it back.",
-    "Cut the foil at or below the second lip, so wine can't drip behind it.",
+    "Cut the foil at or below the second lip, so wine can't drip behind it. The foil goes in your pocket.",
     "Pour the host a 1 to 1.5 oz taste, step back, and wait for approval.",
     "Wipe the bottle after every pour, and ask before removing the cork.",
     "A screwcap is not presented. A synthetic cork is treated like a natural cork."
@@ -262,7 +342,8 @@
     "Choose the right size and shape of glass for each wine.",
     "Several glasses can sit in a line, diagonal, diamond or cluster, depending on table space.",
     "A new wine's glass goes to the right of earlier glasses, so you never pour over stemware.",
-    "A second bottle of the same wine gets a fresh glass for the host's taste."
+    "A second bottle of the same wine gets a fresh glass for the host's taste.",
+    "After-dinner drinks (cordials, Port, brandy) are measured with a jigger and served from the guest's right."
    ],
    "visuals": [
     {
@@ -364,6 +445,86 @@
    ]
   },
   {
+   "name": "Hospitality and the guest",
+   "lines": [
+    {
+     "label": "Attitude",
+     "text": "The Court wants a sommelier who is quietly confident, never arrogant. No job on the floor is beneath you, and every guest should feel welcome, drinking or not."
+    },
+    {
+     "label": "At the table",
+     "text": "Present the wine list and offer help. Be ready to recommend and to answer questions on vintage, style, food and quality."
+    }
+   ],
+   "chips": {
+    "label": "Vendors",
+    "items": [
+     "Distributors",
+     "Importers",
+     "Brokers",
+     "Winemakers"
+    ]
+   },
+   "know": [
+    "If you don't know an answer, never make it up: offer to find out as soon as possible.",
+    "Discreetly find out if the host has a budget. If not, offer several wines at different prices.",
+    "When in doubt, undersell.",
+    "If a guest rejects a wine, apologize and remove it, then check it away from the table: flawed gets another bottle of the same wine; sound gets the wine list.",
+    "Never put the guest in the position of being wrong."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Fixing a problem, in order",
+     "items": [
+      {
+       "name": "Acknowledge",
+       "text": "Recognize there is a problem"
+      },
+      {
+       "name": "Listen",
+       "text": "Let the guest talk; listen fully"
+      },
+      {
+       "name": "Ask",
+       "text": "“How can I make this right?”"
+      },
+      {
+       "name": "Decide",
+       "text": "Based on the guest and house policy"
+      },
+      {
+       "name": "Get help",
+       "text": "Bring in other staff when it fits"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Four problems, four fixes",
+     "rows": [
+      {
+       "name": "Wine rejected",
+       "meta": "apologize, remove it, check it away from the table"
+      },
+      {
+       "name": "Wine spilled",
+       "meta": "apologize, act fast, offer dry cleaning, reseat"
+      },
+      {
+       "name": "Wrong bottle or price on the check",
+       "meta": "bring in a manager"
+      },
+      {
+       "name": "Pricing complaint",
+       "meta": "acknowledge it, explain the house policy"
+      }
+     ],
+     "note": "From the Court's Demeanor of the Professional Sommelier."
+    }
+   ]
+  },
+  {
    "name": "Food and wine pairing",
    "lines": [
     {
@@ -450,7 +611,8 @@
     "A 30% wine cost means $30 in product for every $100 the business earns.",
     "Inventory is counted in dollars: last month's count is the beginning inventory, this month's is the ending inventory.",
     "Pours per bottle depend on pour size: divide the ounces in the bottle by the ounces per pour.",
-    "A standard bottle is 750 ml, or 25.4 oz."
+    "A standard bottle is 750 ml, or 25.4 oz.",
+    "The job has a front of house (guests, service, leading the team) and a back of house (vendors, buying, storing and counting the wine)."
    ],
    "visuals": [
     {
@@ -507,7 +669,7 @@
    "why": "COGS is dollars: (beginning inventory + purchases) - ending inventory. Cost % is COGS divided by wine sales."
   }
  ],
- "sources": "Court of Master Sommeliers, Americas: Hospitality & Service Standards (1.2023), Introductory Sommelier Course Guide (1.2024), Introductory and Certified Theory Curriculum Guide, Introductory practice exam (3.2024) and Certified Sommelier Exam Guide. Checked Oct 31, 2026.",
+ "sources": "Court of Master Sommeliers, Americas: Hospitality & Service Standards (1.2023), Introductory Sommelier Course Guide (1.2024), Introductory and Certified Theory Curriculum Guide, Introductory practice exam (3.2024), Certified Sommelier Exam Guide and Demeanor of the Professional Sommelier. Checked Oct 31, 2026; Court alignment Nov 2, 2026.",
  "cards": [
   {
    "q": "How many wine bottle openers are in the Court's standard sommelier kit?",
@@ -828,6 +990,126 @@
     "Behind the water glass"
    ],
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "q": "A guest asks a question you can't answer. What does the Court say to do?",
+   "answer": "Offer to find the answer as soon as possible",
+   "wrong": [
+    "Give your best guess with confidence",
+    "Change the subject",
+    "Tell the guest it doesn't matter"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "The host has no budget in mind. What does the Court suggest?",
+   "answer": "Offer several wines at different price points",
+   "wrong": [
+    "Recommend the most expensive wine",
+    "Recommend the cheapest wine",
+    "Ask the host to name a price in front of the table"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "When in doubt about price, the Court says to:",
+   "answer": "Undersell",
+   "wrong": [
+    "Upsell",
+    "Recommend the house wine",
+    "Leave the guest to choose alone"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "A guest rejects a bottle, and away from the table you find it is sound. What do you offer?",
+   "answer": "The wine list, to choose again",
+   "wrong": [
+    "Another bottle of the same wine",
+    "Nothing, since the wine is fine",
+    "A second taste to prove it's sound"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "A rejected bottle turns out to be flawed. What do you offer?",
+   "answer": "Another bottle of the same wine",
+   "wrong": [
+    "The wine list",
+    "A discount on the bill",
+    "A glass of the house wine"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "During service, where should a serviette never go?",
+   "answer": "In a pocket or on the shoulder",
+   "wrong": [
+    "In the hand",
+    "On the forearm",
+    "Over the cage and cork when opening sparkling wine"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "q": "You spill wine on a guest. What does the Court say to assure them of?",
+   "answer": "The restaurant will pay for any dry cleaning",
+   "wrong": [
+    "It will come out in the wash",
+    "Their whole meal is free",
+    "Nothing; just wipe it up"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "Is the Business of the Sommelier tested at Level 1?",
+   "answer": "No, it is introduced but not tested",
+   "wrong": [
+    "Yes, in a section quiz",
+    "Yes, as a hands-on exam",
+    "Only the costing formulas"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=7"
+  },
+  {
+   "q": "Is the Deductive Tasting Method tested at Level 1?",
+   "answer": "No, it is introduced but not tested",
+   "wrong": [
+    "Yes, with a blind tasting",
+    "Yes, as a written grid",
+    "Only for sparkling wine"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=7"
+  },
+  {
+   "q": "When buying older wines, the Court says to ask about provenance. What is that?",
+   "answer": "The wine's history of ownership",
+   "wrong": [
+    "The vineyard it came from",
+    "The year it was bottled",
+    "Its alcohol level"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=6"
+  },
+  {
+   "q": "Which of these does the Court count as vendors?",
+   "answer": "Distributors, importers, brokers and winemakers",
+   "wrong": [
+    "Guests and their hosts",
+    "Servers and bussers",
+    "The restaurant's owners"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "q": "How are after-dinner drinks like Port and brandy measured?",
+   "answer": "With a jigger",
+   "wrong": [
+    "By eye",
+    "Up to half the glass",
+    "Up to 3/4 of the glass"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
   }
  ],
  "facts": [
@@ -950,12 +1232,53 @@
   {
    "fact": "Business of the Sommelier is tested in the Certified theory exam. A 30% wine cost means for every $100 of revenue, $30 is product cost. Bottle sizes: half bottle 12.7 oz / 375 ml; standard 25.4 oz / 750 ml; magnum 50.7 oz / 1500 ml / 1.5 L. Understand how pour size relates to servings per bottle. COGS = (BI + P) - EI, with BI last month's inventory and EI this month's inventory in dollars. Cost % = COGS ÷ wine sales.",
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "fact": "Service Standards intro: mastery of beverage service combines theoretical knowledge, a trained palate, universal vocabulary, gracious carriage, respectful salesmanship and sound service mechanics. The mechanics are the foundation for world-class hospitality; reading the table's needs, understanding guest expectations and using sound sales strategies to provide a memorable dining experience remains the ultimate goal.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "fact": "Standard service: the wine list is presented and assistance is offered; the sommelier is prepared to offer active and appropriate recommendations (sales skills are essential) and to answer questions on vintages, style, character of wine, food compatibility and quality. Serviettes are held in hand or on the forearm during all service and are NEVER placed in pockets or on the shoulder. The foil is placed in the sommelier's pocket.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "fact": "After-dinner drinks (cordial, Port and brandy service): a gueridon or tray is used; items include measuring jiggers, a lined service tray, beverage selections, glassware and three serviettes; offer assistance and recommendations, including pairings with desserts and cheeses; measure the proper amount with a jigger; present from the guest's right.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+  },
+  {
+   "fact": "Purchasing older wines: inquire about provenance (history of ownership), how the bottles were stored, when the bottle left the winery's cellar and how many times it has been sold or shipped; inspect for label damage, leakage and ullage.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=6"
+  },
+  {
+   "fact": "Demeanor of the Professional Sommelier, page 1. Attitude: quietly confident but not arrogant; superlative hospitality; no job or task on the floor is beneath a sommelier; hospitality first, making guests feel welcome and comfortable whether they are drinking or not; the sommelier is part of a team. Vendors (distributors, importers, brokers and winemakers) are treated respectfully and responsibly; the supplier is part of the team. Colleagues: integrate into the service team; the sommelier is a service leader who sets the tone. Team education: share knowledge with an inclusive spirit; avoid intimidating guests or co-workers with esoteric wine information. Tableside: smile; attention always on the guest, never drawn to the sommelier; respond to compliments with brief thanks. Rapport: understand guests' priorities, wants and needs; read their response and body language. General: know the beverage program, food menu and policies; give brief, accurate descriptors without overwhelming the guest.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "fact": "Demeanor of the Professional Sommelier, page 2. Do not make things up: if you do not know the answer, offer to get it as soon as possible. Discreetly determine if the host has a budget; if not, offer several selections at different price points. When in doubt, undersell. Learn and remember guests' preferences. Problem resolution: recognize and acknowledge the problem; engage the guest and let them express themselves; listen actively; ask how the issue can be addressed ('How can I make this right?'); decide what can be done based on the guest's expectation and the establishment's policies; rely on other key staff when appropriate. Rejected wine: apologize and remove the glassware and bottle; away from the table determine its condition; if flawed, offer another bottle of the same wine; if sound, offer the wine list; never put the guest in the position of being wrong. Spills: apologize, act immediately, assure the guest the restaurant will pay for dry cleaning, reseat if possible. Wrong bottle or price on a check: bring in upper management. Pricing complaints: acknowledge and tactfully state the restaurant's policies.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "fact": "Course Section 12 Sommelier Skills: Introduction to the Deductive Tasting Method (workbook; not tested at this level); Food and Beverage Pairing (Curriculum Guide, workbook, section quiz); Introduction to the Business of the Sommelier (Curriculum Guide, workbook; not tested at this level); Hospitality and Service (Service Standards in workbook).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=7"
+  },
+  {
+   "fact": "A student will NOT be tested on: wine tasting; performance of service elements; vintage memorization.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf#page=10"
+  },
+  {
+   "fact": "Business of the Sommelier, Introductory outcome: 'After studying this section, a student will understand basics of what the sommelier profession entails in both the back and front of the house aspects.' Introductory column (text position checked Nov 2 2026): ounces and amounts for regular sized bottles - the capacity in metric and standard for common bottle sizes: 375ml, 750ml, 1.5 liter - Magnum. Every other row (pour sizes, terms, case sizes, costing) is in the Certified column.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "fact": "Intro-column pairing rows in the Curriculum Guide (text position checked Nov 2 2026): Bordeaux (bold reds with beef and lamb; rich sweet wines with dessert and foie gras), Alsace (a wide range of pairings with its diversity of wine styles), California North Coast (match full-bodied wines with food richness and intensity), New Zealand (high-acid, unoaked wines with seafood, starters, salads; intense flavors can be too much for super delicate dishes). All other regional pairing rows are in the Certified column.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=74"
   }
  ],
  "unverified": [
-  "Level placement of some pairing rules: 'big tannins require meat or fat', 'the wine should be sweeter than the dessert' and 'Champagne goes with many types of food' sit in the Certified column of the Court's joint Introductory/Certified curriculum guide (column read from the PDF layout). The Court's Level 1 pairing chapter is in the Introductory workbook, which is only given to enrolled students and was not checked.",
+  "Resolved Nov 2, 2026: by text position in the Curriculum Guide PDF, 'big tannins require meat or fat' (Piedmont), 'the wine should be sweeter than the dessert' (Sweet Wines) and 'Champagne goes with many types of food' sit in the Certified column. They are kept as rules of thumb. The Court's Level 1 pairing chapter is in the Introductory workbook, which is only given to enrolled students and was not checked.",
   "Standard by-the-glass pour for still wine: the Court gives no standard size. Its costing example uses 5 pours per bottle; the curriculum guide gives 2 oz for sweet and fortified wine by the glass (and lists 2 oz as both 59.1 ml and 51.9 ml). Not used in this chapter.",
-  "The magnum card's '3 liters (101.4 oz)' is a wrong-answer option only; the Court lists no bottle larger than a magnum."
+  "The magnum card's '3 liters (101.4 oz)' is a wrong-answer option only; the Court lists no bottle larger than a magnum.",
+  "Page 1 of the Court's Demeanor of the Professional Sommelier PDF is a scanned image; it was read visually, not as extracted text."
  ],
  "v3": {
   "video": {
@@ -1005,7 +1328,7 @@
       },
       {
        "name": "Serviettes",
-       "text": "Cotton or similar, so they soak up liquid instead of repelling it. Folded before service."
+       "text": "Cotton or similar, so they soak up liquid instead of repelling it. Folded before service. During service, hold them in your hand or on your forearm, **never in a pocket or on your shoulder**."
       },
       {
        "name": "Service items",
@@ -1063,7 +1386,7 @@
       },
       {
        "name": "Cut and open",
-       "text": "Cut the foil at or below the **second lip**, so wine can’t drip behind it. Wipe the cork top, then pull the cork as quietly as you can, with little movement."
+       "text": "Cut the foil at or below the **second lip**, so wine can’t drip behind it, and put the foil in your pocket. Wipe the cork top, then pull the cork as quietly as you can, with little movement."
       },
       {
        "name": "Show the cork",
@@ -1247,6 +1570,11 @@
        "name": "A second bottle",
        "note": "same wine",
        "text": "The host gets a **fresh glass** for the taste."
+      },
+      {
+       "name": "After-dinner drinks",
+       "note": "cordials, Port, brandy",
+       "text": "Bring them on a **gueridon** or a lined tray. Measure the pour with a **jigger** and serve from the guest’s right."
       }
      ]
     },
@@ -1307,6 +1635,69 @@
      18,
      19,
      20
+    ]
+   },
+   {
+    "name": "Hospitality and the guest",
+    "video": {
+     "youtubeId": "SRB5dITG63s",
+     "title": "Hospitality & Service: Court of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "11:03"
+    },
+    "keyPoints": [
+     {
+      "big": "QUIETLY CONFIDENT",
+      "line": "never arrogant. No job on the floor is beneath you."
+     },
+     {
+      "big": "THE GUEST",
+      "line": "gets the attention, never the sommelier."
+     },
+     {
+      "big": "DON'T GUESS",
+      "line": "offer to find the answer as soon as you can."
+     },
+     {
+      "big": "NO BUDGET?",
+      "line": "offer several wines at different prices."
+     },
+     {
+      "big": "UNDERSELL",
+      "line": "when in doubt. Honor the guest's trust on price."
+     }
+    ],
+    "read": {
+     "bigIdea": "Take care of the guest first, every time.",
+     "where": "The Court’s **Service Standards** are the mechanics. The goal is a memorable meal: read the table, understand what guests expect, and sell with respect.\n\nThe Court wants a **quietly confident**, never arrogant sommelier. No job on the floor is beneath you, and every guest should feel welcome, drinking or not.",
+     "stopsTitle": "Four moments at the table",
+     "stops": [
+      {
+       "name": "At the table",
+       "text": "**Smile**, and keep the attention on the guest. Present the wine list and offer help. Give short, accurate descriptions without burying the guest in detail."
+      },
+      {
+       "name": "Recommending",
+       "text": "Discreetly find out if the host has a **budget**. If not, offer several wines at different price points. **When in doubt, undersell.** Learn and remember what guests like."
+      },
+      {
+       "name": "Not sure?",
+       "text": "**Never make things up.** Offer to find the answer as soon as possible."
+      },
+      {
+       "name": "Something goes wrong",
+       "text": "Acknowledge it, let the guest talk and listen. Ask **“How can I make this right?”**, then decide based on the guest and house policy. Bring in other staff when it helps."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The Court’s fixes for four common problems:",
+     "mixup": "A rejected wine that is **flawed** gets another bottle of the same wine. One that is **sound** gets the wine list. Either way, never make the guest wrong.",
+     "sayIt": "I’m not sure, but let me find out for you."
+    },
+    "check": [
+     32,
+     34,
+     35
     ]
    },
    {
@@ -1403,9 +1794,14 @@
     ],
     "read": {
      "bigIdea": "The math behind a wine program.",
-     "where": "The Court introduces the business side at Level 1 but **does not test it**. It is tested at the **Certified** level.",
+     "where": "The Court introduces the business side at Level 1 but **does not test it**. It is tested at the **Certified** level. At Level 1 the Court wants you to know what the job involves, front and back of house, and the common bottle sizes.",
      "stopsTitle": "Three numbers to know",
      "stops": [
+      {
+       "name": "Front and back of house",
+       "note": "the Level 1 goal",
+       "text": "Out front, the sommelier looks after guests and leads the service team. In the back, they work with **vendors** (distributors, importers, brokers and winemakers), store the wine correctly and count inventory. When buying older wines, ask about **provenance**: who has owned it and how it was stored."
+      },
       {
        "name": "Inventory",
        "note": "in dollars",

@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { clone, find, findAll, byName, texts, setText, remove } from './templates.mjs';
-import { chapters, GUIDE, quizHref, shuffleSeeded, blockBuilder } from './manual.mjs';
+import { chapters, chapters2, levelChapters, chapterBase, GUIDE, quizHref, shuffleSeeded, blockBuilder } from './manual.mjs';
 
 export const HUB = 'sommelier-program';
 export const L1 = 'sommelier-program/level-1';
@@ -18,8 +18,8 @@ export const DETAILS = { hub: 'sommelier-program/about', 1: 'sommelier-program/l
 
 const slugify = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/&/g, 'and').replace(/[’'.]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 /** Lesson addresses: the chapter's first section at /<guide>/<chapter>, the rest at /<guide>/<chapter>/<section>. */
-export const lessonSlug = (ch, i) => (i === 0 ? `${GUIDE}/${ch.slug}` : `${GUIDE}/${ch.slug}/${slugify(ch.sections[i].name)}`);
-export const wholeChapterSlug = (ch) => `${GUIDE}/${ch.slug}/whole-chapter`;
+export const lessonSlug = (ch, i) => (i === 0 ? `${chapterBase(ch)}/${ch.slug}` : `${chapterBase(ch)}/${ch.slug}/${slugify(ch.sections[i].name)}`);
+export const wholeChapterSlug = (ch) => `${chapterBase(ch)}/${ch.slug}/whole-chapter`;
 export const doneKey = (ch, i) => `${ch.slug}#${i}`;
 export const lessonFile = (ch, i) => `l-${ch.slug}~${i}`;
 const v3Of = (ch, i) => (ch.v3?.sections || []).find((x) => x.name === ch.sections[i].name) || {};
@@ -30,8 +30,7 @@ const setImg = (node, url) => { if (node && url) node.f = [{ img: url, m: 'FILL'
 
 // Progress (Nov 1, Tommy: "show a completed section, like a percentage of the course … check it off, gray it out … with a green check mark")
 const GREEN = '#2E7D45';
-export function courseProgress(done) {
-  const all = chapters(); const total = all.reduce((a, c) => a + c.sections.length, 0);
+export function courseProgress(done, all = chapters()) { const total = all.reduce((a, c) => a + c.sections.length, 0);
   const k = all.reduce((a, c) => a + c.sections.filter((_, i) => done.has(doneKey(c, i))).length, 0);
   return { k, total, pct: total ? Math.round((100 * k) / total) : 0 };
 }
@@ -79,21 +78,91 @@ const chapterState = (ch, done) => {
   return { n, k, state: k === n ? 'done' : k ? 'half' : 'todo', next: Math.max(0, ch.sections.findIndex((_, i) => !done.has(doneKey(ch, i)))) };
 };
 /** Where to pick up: the first unfinished section of the first chapter that isn't finished. */
-export function nextLesson(done) {
-  for (const ch of chapters()) { const s = chapterState(ch, done); if (s.state !== 'done') return { ch, i: s.next, started: s.k > 0 || done.size > 0 }; }
+export function nextLesson(done, all = chapters()) {
+  for (const ch of all) { const s = chapterState(ch, done); if (s.state !== 'done') return { ch, i: s.next, started: s.k > 0 || done.size > 0 }; }
   return null;
+}
+
+/* ---------------- the Court's outcome card ---------------- */
+const CURRICULUM = 'https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf';
+const norm = (x) => String(x || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, ' ').trim();
+const STOP = new Set(['after', 'studying', 'section', 'student', 'students', 'candidate', 'will', 'know', 'with', 'their', 'from', 'wine', 'wines', 'able', 'understand', 'learn', 'selected', 'major', 'general', 'grape', 'varieties', 'variety', 'styles', 'style', 'regions', 'region', 'climate', 'location', 'geography', 'appellations', 'identify', 'recognize', 'locate', 'important', 'primary', 'different', 'methods', 'ways', 'made', 'production', 'definition', 'factor', 'terms', 'world', 'introduction', 'basics', 'what', 'that', 'this', 'into', 'within', 'about', 'their', 'other', 'main']);
+const words = (x) => [...new Set(norm(x).split(' ').filter((w) => w.length > 3 && !STOP.has(w) && !/^\d+$/.test(w)))];
+/** Which lessons a coverage row points at: "Rioja", "Rioja; Priorat", "added: Cava (Priorat already covered)", "intro: …". */
+const wheresOf = (c) => String(c.where || '').split(';').map((w) => w.replace(/\(.*?\)/g, '').replace(/^\s*added:\s*/i, '').trim()).filter(Boolean);
+function rowsFor(ch, si) {
+  const name = norm(ch.sections[si].name);
+  return (ch.court?.coverage || []).filter((c) => wheresOf(c).some((w) => norm(w) === name || (si === 0 && /^intro\b/i.test(w))));
+}
+/** The Court's outcome(s) for this lesson. Chapters quote several subjects, as "Subject: quote | Subject: quote" or one
+ *  sentence after another; a lesson shows only the ones about its own subject. */
+function outcomesFor(ch, si, rows) {
+  const raw = String(ch.court?.outcome || '').trim(); if (!raw) return [];
+  // split at each "After studying this section"; a "Subject:" just before it belongs to the next piece
+  const MARK = 'After studying this section';
+  const parts = raw.split(MARK);
+  const pieces = []; let subject = parts[0].replace(/[|]/g, '').trim().replace(/:$/, '').trim();
+  for (let i = 1; i < parts.length; i++) {
+    let body = parts[i];
+    const m = /(?:^|[.|”"])\s*([^.|:]{2,80}):\s*\|?\s*$/.exec(body);
+    let next = '';
+    if (m) { next = m[1].replace(/^\|\s*/, '').trim(); body = body.slice(0, m.index + (m[0].match(/^[.|”"]/) ? 1 : 0)); }
+    pieces.push({ subject, text: (MARK + body).replace(/\s*\|\s*$/, '').trim() });
+    subject = next;
+  }
+  if (!pieces.length) pieces.push({ subject: '', text: raw });
+  if (pieces.length === 1 && !pieces[0].subject) return pieces;
+  // each covered row votes for the piece its subject names (so a lesson's own rows outweigh a few intro rows)
+  const weak = words(ch.sections[si].name);
+  const has = (hay, w) => new RegExp('\\b' + w.slice(0, Math.max(4, Math.min(w.length, 6)))).test(hay);
+  const scored = pieces.map((p) => { const hay = norm(p.subject + ' ' + p.text);
+    return { p, sc: rows.filter((r) => words(String(r.topic || '').split(' · ')[0]).some((w) => has(hay, w))).length * 2 + weak.filter((w) => has(hay, w)).length }; });
+  const best = Math.max(...scored.map((x) => x.sc));
+  return best > 0 ? scored.filter((x) => x.sc === best).slice(0, 2).map((x) => x.p) : [];
+}
+/** "BUSINESS OF THE SOMMELIER" → "Business of the Sommelier"; mixed-case subjects stay as written. */
+const titleCase = (x) => (/[a-z]/.test(x) ? x : x.toLowerCase().replace(/\b([a-zà-ÿ])([a-zà-ÿ']*)/g, (m, a, b, i) => (i > 0 && ['of', 'the', 'and', 'a', 'an', 'in', 'on', 'to', 'for'].includes(m) ? m : a.toUpperCase() + b)));
+export function courtCard(ch, si, lvl) {
+  const ct = ch.court; if (!ct) return null;
+  const rows = rowsFor(ch, si);
+  const outs = outcomesFor(ch, si, rows);
+  if (!outs.length && !rows.length) return null;
+  const src = ct.outcomeSource || CURRICULUM;
+  const docName = /Curriculum-Guide/i.test(src) ? 'Curriculum Guide' : /Syllabus/i.test(src) ? 'Syllabus' : /Guide/i.test(src) ? 'Exam Guide' : 'Court PDF';
+  const t = (x, o) => ({ ...txt(x, o), ar: 'H', sh: 'L' });
+  const MAX = 6; const shown = rows.slice(0, MAX);
+  const row = (r) => ({ t: 'F', n: 'Asks · ' + String(r.topic || '').slice(0, 30), lm: 'H', gap: 10, sh: 'L', sv: 'H', c: [
+    { t: 'F', n: 'Tick', w: 18, h: 18, r: 9, sh: 'F', sv: 'F', f: [{ c: r.tested === false ? '#B8AFA3' : '#1E1C1A' }], lm: 'H', pa: 'C', ca: 'C', c: [txt('✓', { z: 11, c: '#F2EEE7', fs: 'Bold' })] },
+    { ...t(String(r.guide || r.topic).replace(/\s*\.$/, '.') + (r.tested === false ? ' (not tested at this level)' : ''), { z: 14, c: '#1E1C1A', fs: 'Medium' }), lh: '140%' },
+  ] });
+  const body = { t: 'F', n: 'Body', lm: 'V', gap: 16, pd: [22, 24, 22, 20], sh: 'L', sv: 'H', c: [
+    { t: 'F', n: 'Head', lm: 'H', gap: 12, ca: 'C', sh: 'L', sv: 'H', c: [
+      { t: 'F', n: 'Badge', w: 30, h: 30, r: 15, sh: 'F', sv: 'F', f: [{ c: '#1E1C1A' }], lm: 'H', pa: 'C', ca: 'C', c: [txt('C', { z: 14, c: '#F2EEE7', fs: 'ExtraBold' })] },
+      { t: 'F', n: 'Titles', lm: 'V', gap: 2, sh: 'L', sv: 'H', c: [txt('WHAT THE COURT EXPECTS', { z: 11, ls: '12%', c: '#8A5A3A' }), t(`${lvl === 2 ? 'Certified' : 'Introductory'} level${outs.length === 1 && outs[0].subject ? ' · ' + titleCase(outs[0].subject) : ''}`, { z: 15, c: '#1E1C1A', fs: 'ExtraBold' })] },
+      { t: 'F', n: 'Link · ' + docName, to: src, lm: 'H', pd: [8, 14, 8, 14], r: 17, st: '#1E1C1A', sw: 1, pa: 'C', ca: 'C', sh: 'H', sv: 'H', c: [txt(docName + ' ›', { z: 12.5, c: '#1E1C1A' })] },
+    ] },
+    ...outs.map((o, i) => ({ ...t(`“${o.text.replace(/^“|”$/g, '')}”`, { z: outs.length > 1 ? 16 : 18, c: '#1E1C1A', fs: 'Medium' }), n: 'Outcome · quoted' + (i ? ' ' + (i + 1) : ''), lh: '140%' })),
+    ...(rows.length ? [
+      txt(`WHAT THE COURT ASKS · COVERED IN THIS LESSON`, { z: 11, ls: '12%', c: '#5E574F' }),
+      { t: 'F', n: 'Coverage', lm: 'V', gap: 8, sh: 'L', sv: 'H', c: [...shown.map(row), ...(rows.length > MAX ? [t(`+ ${rows.length - MAX} more in the ${docName}`, { z: 13, c: '#5E574F', fs: 'Medium' })] : [])] },
+    ] : []),
+    { ...t(`Source: Court of Master Sommeliers, ${docName}.${outs.length ? ' Outcome quoted word for word;' : ''} the checklist and lesson are in our own words.`, { z: 12.5, c: '#5E574F', fs: 'Regular' }), n: 'Source' },
+  ] };
+  return { t: 'F', n: 'Court · What the Court expects', lm: 'H', r: 18, clip: 1, f: [{ c: '#EFE7DA' }], sh: 'L', sv: 'H', c: [
+    { t: 'F', n: 'Rule', w: 4, h: 40, sh: 'F', sv: 'L', f: [{ c: '#C49A6C' }] }, body] };
 }
 
 /* ---------------- lesson ---------------- */
 export function lessonPage(tpl, chTpl, ch, si, ctx) {
   const main = clone(tpl.main);
   const sec = ch.sections[si]; const v = v3Of(ch, si); const r = v.read || {};
-  const n = ch.sections.length; const all = chapters();
+  const n = ch.sections.length; const all = levelChapters(ch);
+  const lvl = ch.level === 2 ? 2 : 1; const home = lvl === 2 ? L2 : L1;
   const href = (c, i) => '/' + lessonSlug(c, i);
 
   // breadcrumb: Level 1 / Lesson N · Chapter / Section
   const bc = find(main, byName('Breadcrumb'));
-  if (bc) { const t = texts(bc); setText(t[0], 'Level 1'); setText(t[2], `Lesson ${ch.number} · ${ch.title}`); setText(t[4], sec.name); const back = find(bc, byName('Back')); if (back) back.to = '/' + L1; }
+  if (bc) { const t = texts(bc); setText(t[0], `Level ${lvl}`); setText(t[2], `${lvl === 2 && ch.part ? `Part ${ch.part} · ` : ''}Lesson ${ch.number} · ${ch.title}`); setText(t[4], sec.name); const back = find(bc, byName('Back')); if (back) back.to = '/' + home; }
 
   // the video, or nothing when there isn't a good one
   const slot = find(main, byName('Video slot · Lesson'));
@@ -113,6 +182,11 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
     const credit = T(under)[0];
     if (v.video?.youtubeId) setText(credit, `Video: ${v.video.by} · ${v.video.length}`); else under.c = under.c.filter((x) => x !== credit);
   }
+
+  // what the Court expects (Nov 2, Tommy: "use these resources to structure everything"): the Court's own learning
+  // outcome, quoted, and the parts of its outline this lesson covers. Figma 423:53.
+  const cc = courtCard(ch, si, lvl);
+  if (cc && under) { const host = find(main, byName('Lesson')) || main; const at = host.c.indexOf(under); if (at >= 0) host.c.splice(at + 1, 0, cc); }
 
   // key points: cards that scroll sideways
   const kp = find(main, byName('Key points'));
@@ -176,7 +250,11 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
     const mix = find(read, byName('Easy to mix up'));
     if (r.mixup) setMd(T(mix)[1], r.mixup); else remove(read, mix);
     const say = find(read, byName('Say it at the table'));
-    if (r.sayIt) setText(T(say)[1], `“${r.sayIt.replace(/^“|”$/g, '')}”`); else remove(read, say);
+    if (r.sayIt) {
+      const st = T(say)[1]; setText(st, `“${r.sayIt.replace(/^“|”$/g, '')}”`);
+      // long lines wrap instead of running past the card (Nov 2)
+      st.ar = 'H'; st.sh = 'L'; say.sh = 'L';
+    } else remove(read, say);
     const src = read.c.filter((c) => c.t === 'T').pop();
     setText(src, ch.sources ? `Sources: ${ch.sources}` : '');
   } else remove(main, read);
@@ -231,9 +309,9 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
   if (chk) { chk.n = 'Row · Check Yourself'; chk.to = quizHref(ch); setText(T(chk)[1], `${ch.cards.length} cards`); }
   {
     const nc = all[all.indexOf(ch) + 1];
-    const to = si < n - 1 ? href(ch, si + 1) : nc ? href(nc, 0) : '/' + L1;
-    const label = si < n - 1 ? 'Next Section' : nc ? 'Next Lesson' : 'Back to Level 1';
-    const what = si < n - 1 ? ch.sections[si + 1].name : nc ? nc.title : 'Level 1';
+    const to = si < n - 1 ? href(ch, si + 1) : nc ? href(nc, 0) : '/' + home;
+    const label = si < n - 1 ? 'Next Section' : nc ? 'Next Lesson' : `Back to Level ${lvl}`;
+    const what = si < n - 1 ? ch.sections[si + 1].name : nc ? nc.title : `Level ${lvl}`;
     const eyebrow = si < n - 1 ? `UP NEXT · SECTION ${si + 2} OF ${n}` : nc ? `UP NEXT · LESSON ${nc.number}` : 'YOU’VE FINISHED THE LAST LESSON';
     const doneHere = ctx.done.has(doneKey(ch, si));
     const prevBtn = si > 0 ? [{ t: 'F', n: 'Button · Previous section', to: href(ch, si - 1), lm: 'H', gap: 8, pd: [14, 18, 14, 18], r: 999, st: '#4A4540', sw: 1, pa: 'C', ca: 'C', sh: 'H', sv: 'H', c: [txt('←  Previous', { z: 15, c: '#F2EEE7', fs: 'SemiBold' })] }] : [];
@@ -253,10 +331,42 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
     const nc = all[all.indexOf(ch) + 1];
     if (si < n - 1) { next.to = href(ch, si + 1); setText(texts(next)[0], `Next: ${ch.sections[si + 1].name}`); }
     else if (nc) { next.to = href(nc, 0); setText(texts(next)[0], `Next Lesson: ${nc.title}`); }
-    else { next.to = '/' + L1; setText(texts(next)[0], 'Back to Level 1'); }
+    else { next.to = '/' + home; setText(texts(next)[0], `Back to Level ${lvl}`); }
     next.n = 'Button · Next';
   }
   return { id: tpl.id, name: `Study Guide · ${ch.title} · ${sec.name}`, bg: tpl.bg, main };
+}
+
+/** The lesson tiles (Figma 392:31): done, half-done and to-do cards, one per chapter. Returns how many are done. */
+function lessonsGrid(grid, all, done) {
+  const tiles = grid.c;
+  const P = { done: tiles[0], half: tiles[3], todo: tiles[4] };
+  let finished = 0; const used = new Set();
+  grid.c = all.map((ch) => {
+    const s = chapterState(ch, done); if (s.state === 'done') finished++;
+    const c = clone(P[s.state]); c.n = `Lesson ${String(ch.number).padStart(2, '0')} · ${ch.title}`; c.to = '/' + lessonSlug(ch, s.state === 'done' ? 0 : s.next);
+    const th = c.c.find((x) => (x.n || '').startsWith('IMG/'));
+    // two lessons never share a thumbnail: if the chapter's video is already used, take its first section's
+    let vid = ch.v3?.video || v3Of(ch, 0).video;
+    if (vid?.youtubeId && used.has(vid.youtubeId)) vid = ch.sections.map((_, i) => v3Of(ch, i).video).find((x) => x?.youtubeId && !used.has(x.youtubeId)) || vid;
+    if (vid?.youtubeId) used.add(vid.youtubeId);
+    if (th) {
+      th.n = 'IMG/Lesson thumbnail';
+      const ph = !vid?.youtubeId && ch.sections.map((x) => photoOf(ch, x)).find(Boolean);
+      if (vid?.youtubeId) setImg(th, thumb(vid)); else if (ph) setImg(th, ph); else th.f = [{ c: '#2A2724' }];
+      const d = find(th, byName('Duration')); if (d) { if (vid?.length) setText(T(d)[0], vid.length); else th.c = th.c.filter((x) => x !== d); }
+      const num = find(th, byName('Number')); if (num) setText(T(num)[0], (s.state === 'done' ? '✓ ' : '') + String(ch.number).padStart(2, '0'));
+      const w = find(th, byName('Watched')); if (w) w.w = Math.round((th.w || 250) * (s.k / s.n));
+      if (!vid?.youtubeId) th.c = (th.c || []).filter((x) => x.n !== 'Play');
+    }
+    if (s.state === 'done' && th) markDone(th);
+    const t = T(c); setText(t[0], ch.title);
+    if (s.state === 'done') { setText(t[1], `✓ Done · ${s.n} sections`); t[1].f = [{ c: GREEN }]; t[1].fs = 'Bold'; }
+    const videos = ch.sections.filter((_, i) => v3Of(ch, i).video?.youtubeId).length;
+    if (s.state !== 'done') setText(t[1], s.state === 'half' ? `${s.k} of ${s.n} sections done · ${ch.cards.length} cards` : `${s.n} sections · ${videos} videos · ${ch.cards.length} cards`);
+    return c;
+  });
+  return finished;
 }
 
 /* ---------------- Level 1: the course ---------------- */
@@ -282,30 +392,8 @@ export function level1Page(page, ctx) {
   const heroCopy = find(find(main, byName('Hero')), byName('Copy'));
   if (heroCopy) { const at = heroCopy.c.findIndex((x) => x.n === 'At a glance'); heroCopy.c.splice(at + 1, 0, progressBlock(prog, 398)); }
   // twelve lessons
-  const grid = find(main, byName('Lessons')); const tiles = grid.c;
-  const P = { done: tiles[0], half: tiles[3], todo: tiles[4] };
-  let finished = 0;
-  grid.c = all.map((ch) => {
-    const s = chapterState(ch, ctx.done); if (s.state === 'done') finished++;
-    const c = clone(P[s.state]); c.n = `Lesson ${String(ch.number).padStart(2, '0')} · ${ch.title}`; c.to = '/' + lessonSlug(ch, s.state === 'done' ? 0 : s.next);
-    const th = c.c.find((x) => (x.n || '').startsWith('IMG/'));
-    const vid = ch.v3?.video || v3Of(ch, 0).video;
-    if (th) {
-      th.n = 'IMG/Lesson thumbnail';
-      const ph = !vid?.youtubeId && ch.sections.map((x) => photoOf(ch, x)).find(Boolean);
-      if (vid?.youtubeId) setImg(th, thumb(vid)); else if (ph) setImg(th, ph); else th.f = [{ c: '#2A2724' }];
-      const d = find(th, byName('Duration')); if (d) { if (vid?.length) setText(T(d)[0], vid.length); else th.c = th.c.filter((x) => x !== d); }
-      const num = find(th, byName('Number')); if (num) setText(T(num)[0], (s.state === 'done' ? '✓ ' : '') + String(ch.number).padStart(2, '0'));
-      const w = find(th, byName('Watched')); if (w) w.w = Math.round((th.w || 250) * (s.k / s.n));
-      if (!vid?.youtubeId) th.c = (th.c || []).filter((x) => x.n !== 'Play');
-    }
-    if (s.state === 'done' && th) markDone(th);
-    const t = T(c); setText(t[0], ch.title);
-    if (s.state === 'done') { setText(t[1], `✓ Done · ${s.n} sections`); t[1].f = [{ c: GREEN }]; t[1].fs = 'Bold'; }
-    const videos = ch.sections.filter((_, i) => v3Of(ch, i).video?.youtubeId).length;
-    if (s.state !== 'done') setText(t[1], s.state === 'half' ? `${s.k} of ${s.n} sections done · ${ch.cards.length} cards` : `${s.n} sections · ${videos} videos · ${ch.cards.length} cards`);
-    return c;
-  });
+  const grid = find(main, byName('Lessons'));
+  const finished = lessonsGrid(grid, all, ctx.done);
   const head = find(find(main, byName('The course')), byName('Head'));
   if (head) setText(T(head)[0], `${finished} of ${all.length} done`);
   return page;
@@ -322,9 +410,58 @@ const HUB_VIDEOS = {
 function wireVideos(main) {
   for (const n of findAll(main, (x) => HUB_VIDEOS[x.n])) n.vid = { kind: 'youtube', youtubeId: HUB_VIDEOS[n.n], title: n.n.replace('Video · ', '') + ' · Court of Master Sommeliers, Americas' };
 }
+// Nov 2: the Court's own documents, one tap away (Figma 423:117). We link to mastersommeliers.org; we don't copy.
+const UP = 'https://www.mastersommeliers.org/wp-content/uploads/';
+export const COURT_DOCS = [
+  ['LEVEL 1 · INTRODUCTORY', false, [
+    ['Course Guide', 'What the two days look like and how the exam works.', 'GUIDE', '2023/12/Introductory-Sommelier-Course-Guide-What-to-Expect.pdf'],
+    ['Course Syllabus', 'Every topic the course and exam can cover.', 'SYLLABUS', '2023/12/Introductory-Sommelier-Course-Syllabus.pdf'],
+    ['Curriculum Guide', 'What to know for each subject, Level 1 and Level 2 side by side.', 'CURRICULUM', '2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf'],
+    ['Practice Exam', 'Sample questions in the exam’s format. Try it after Lesson 12.', 'PRACTICE', '2024/03/Introductory-Sommelier-Course-Practice-Exam.pdf'],
+    ['Tasting Journal', 'The Court’s note format for tasting at the Introductory level.', 'TASTING', '2024/03/Introductory-Tasting-Journal-2024.pdf'],
+    ['Grape Variety Profiles', 'How the key grapes look, smell and taste.', 'GRAPES', '2024/10/Grape-Variety-Profiles-Introductory-Level.pdf'],
+  ]],
+  ['LEVEL 2 · CERTIFIED', true, [
+    ['Exam Guide', 'What happens on exam day: theory, tasting and service.', 'GUIDE', '2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf'],
+    ['Exam Syllabus', 'The full list of topics for the Certified exam.', 'SYLLABUS', '2023/12/Certified-Sommelier-Exam-Syllabus.pdf'],
+    ['Examinable Wines', 'The grapes and places the blind tasting wines are chosen from.', 'TASTING', '2023/12/Certified-Sommelier-Level-Wines.pdf'],
+    ['Deductive Tasting Grid', 'The grid you fill in for each wine in the tasting exam.', 'TASTING', '2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf'],
+    ['Hospitality & Service Standards', 'How the service exam is judged at the table.', 'SERVICE', '2023/12/CMS-Hospitality-Service-Standards.pdf'],
+    ['Example Feedback Report', 'What a candidate’s results look like, section by section.', 'RESULTS', '2026/04/Certified_Sommelier_Example_Feedback_Report_2026322.pdf'],
+  ]],
+];
+function courtShelf() {
+  const W = 1080, cw = Math.floor((W - 32) / 3);
+  const group = ([label, dark, docs]) => ({ t: 'F', n: 'Group · ' + label, lm: 'V', gap: 12, sh: 'L', sv: 'H', c: [
+    txt(label, { z: 11, ls: '12%', c: '#8A5A3A' }),
+    { t: 'F', n: 'Docs', lm: 'H', gap: 16, wrap: 1, cg: 16, sh: 'L', sv: 'H', c: docs.map(([title, line, kind, file]) => {
+      const fg = dark ? '#F2EEE7' : '#1E1C1A', sub = dark ? '#CFC6B9' : '#5E574F';
+      return { t: 'F', n: 'Doc · ' + title, to: UP + file, lm: 'V', gap: 10, pd: [18, 20, 18, 20], r: 18, w: cw, h: 150, sh: 'F', sv: 'F', f: [{ c: dark ? '#1E1C1A' : '#EFE3D3' }], c: [
+        { t: 'F', n: 'Top', lm: 'H', gap: 8, ca: 'C', sh: 'L', sv: 'H', c: [
+          { t: 'F', n: 'Pill · PDF', lm: 'H', pd: [4, 8, 4, 8], r: 10, f: [{ c: '#C49A6C' }], pa: 'C', ca: 'C', sh: 'H', sv: 'H', c: [txt('PDF', { z: 10, ls: '10%', c: '#1E1C1A' })] },
+          { ...txt(kind, { z: 10, ls: '10%', c: sub }), ar: 'H', sh: 'L' },
+          txt('›', { z: 20, c: fg }),
+        ] },
+        { ...txt(title, { z: 18, c: fg, fs: 'ExtraBold' }), ar: 'H', sh: 'L' },
+        { ...txt(line, { z: 14, c: sub, fs: 'Medium' }), ar: 'H', sh: 'L', lh: '135%' },
+      ] };
+    }) },
+  ] });
+  return { t: 'F', n: 'From the Court', lm: 'V', gap: 24, w: W, sh: 'L', sv: 'H', c: [
+    { t: 'F', n: 'Head', lm: 'H', ca: 'M', sh: 'L', sv: 'H', c: [
+      { t: 'F', n: 'Titles', lm: 'V', sh: 'L', sv: 'H', c: [
+        { ...txt('Straight from the source', { z: 26, c: '#8A5A3A', fs: 'Regular' }), ff: 'Pinyon Script' },
+        txt('FROM THE COURT', { z: 26, c: '#1E1C1A', fs: 'ExtraBold' }),
+      ] },
+      { ...txt('Official PDFs from the Court of Master Sommeliers · open in a new tab', { z: 13, c: '#5E574F', fs: 'Regular' }), ar: 'H', sh: 'H' },
+    ] },
+    ...COURT_DOCS.map(group),
+  ] };
+}
 export function hubPage(page, ctx) {
   const main = page.main;
   wireVideos(main);
+  { const at = main.c.findIndex((x) => x.n === 'Start here · videos'); main.c.splice(at >= 0 ? at + 1 : main.c.length - 1, 0, courtShelf()); }
   for (const b of findAll(main, (x) => x.n === 'Button · Start Level 1')) b.to = '/' + L1;
   const hc = find(find(main, byName('Hero')), byName('Copy'));
   if (hc) { const line = hc.c.filter((x) => x.t === 'T')[2]; if (line) line.n = 'Lead'; }
@@ -350,24 +487,50 @@ export function hubPage(page, ctx) {
 }
 
 /* ---------------- Level 2 ---------------- */
-export function level2Page(page) {
-  const main = page.main;
+// Nov 2: the nine Certified lessons (content/manual-l2), written from the Court's resource library. The parts open their
+// first lesson; "The lessons" is the Level 1 course grid (Figma 392:31) with the Level 2 chapters. The two practice tools
+// are still to come.
+export function level2Page(page, ctx = {}) {
+  const main = page.main; const all = chapters2(); const done = ctx.done || new Set();
+  const live = all.length > 0;
   const hc = find(find(main, byName('Hero')), byName('Copy'));
   if (hc) {
     const line = hc.c.filter((x) => x.t === 'T')[2];
-    // Level 2 lessons are next (Nov 1, Tommy: "have level two say 'coming soon'")
-    if (line) { line.n = 'Lead'; setText(line, 'Lessons are coming soon. Watch the Court’s videos and read the exam details now.'); line.ar = 'H'; line.sh = 'F'; line.w = 520; }
-    const pill = { t: 'F', n: 'Pill · Coming Soon', lm: 'H', pd: [6, 12, 6, 12], r: 999, f: [{ c: '#C49A6C' }], sh: 'H', sv: 'H', c: [txt('COMING SOON', { z: 11, c: '#1E1C1A', ls: '14%', fs: 'ExtraBold' })] };
-    hc.c.splice(1, 0, pill);
+    if (line) { line.n = 'Lead'; setText(line, live ? `${all.length} video lessons in three parts, with practice cards. Then one day, three exams.` : 'Lessons are coming soon. Watch the Court’s videos and read the exam details now.'); line.ar = 'H'; line.sh = 'F'; line.w = 520; }
+    if (!live) hc.c.splice(1, 0, { t: 'F', n: 'Pill · Coming Soon', lm: 'H', pd: [6, 12, 6, 12], r: 999, f: [{ c: '#C49A6C' }], sh: 'H', sv: 'H', c: [txt('COMING SOON', { z: 11, c: '#1E1C1A', ls: '14%', fs: 'ExtraBold' })] });
+    else { const at = hc.c.findIndex((x) => x.n === 'Buttons'); hc.c.splice(at >= 0 ? at : hc.c.length, 0, progressBlock(courseProgress(done, all), 398)); }
   }
   for (const t of findAll(main, (x) => x.t === 'T' && (x.z || 0) >= 22)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
   wireVideos(main);
   for (const b of findAll(main, (x) => (x.n || '').startsWith('Button · Book'))) b.to = REGISTER[2];
-  // Level 2 lessons and the two practice tools are still being built: the parts open the exam details for now
-  for (const b of findAll(main, (x) => x.n === 'Button · Start Part 1')) { b.to = '/' + DETAILS[2]; setText(texts(b)[0], 'Exam Details'); }
+  const btns = find(find(main, byName('Hero')), byName('Buttons'));
+  const book = btns && btns.c.find((x) => (x.n || '').startsWith('Button · Book'));
+  if (book && live) { const d = clone(book); d.n = 'Button · Exam Details'; d.to = '/' + DETAILS[2]; setText(texts(d)[0], 'Exam Details'); btns.c.push(d); btns.wrap = 1; btns.cg = 8; btns.sh = 'L'; }
+  const nx = live && nextLesson(done, all);
+  for (const b of findAll(main, (x) => x.n === 'Button · Start Part 1')) {
+    if (!live) { b.to = '/' + DETAILS[2]; setText(texts(b)[0], 'Exam Details'); continue; }
+    if (nx) { b.to = '/' + lessonSlug(nx.ch, nx.i); setText(texts(b)[0], nx.started ? `Continue Lesson ${nx.ch.number}` : 'Start Part 1'); } else { b.to = '/' + lessonSlug(all[0], 0); setText(texts(b)[0], 'Watch Again'); }
+  }
   for (const c of findAll(main, (x) => /^Part \d · /.test(x.n || ''))) {
-    c.to = '/' + DETAILS[2];
-    const pill = find(c, byName('Pill')); if (pill) setText(texts(pill)[0], 'Lessons Coming Soon');
+    const part = Number(/^Part (\d)/.exec(c.n)[1]); const mine = all.filter((ch) => ch.part === part);
+    const pill = find(c, byName('Pill'));
+    if (!mine.length) { c.to = '/' + DETAILS[2]; if (pill) setText(texts(pill)[0], 'Lessons Coming Soon'); continue; }
+    const first = mine.find((ch) => chapterState(ch, done).state !== 'done') || mine[0];
+    c.to = '/' + lessonSlug(first, chapterState(first, done).state === 'done' ? 0 : chapterState(first, done).next);
+    const k = mine.filter((ch) => chapterState(ch, done).state === 'done').length;
+    const cards = mine.reduce((a, ch) => a + ch.cards.length, 0);
+    if (pill) setText(texts(pill)[0], `${mine.length} lesson${mine.length === 1 ? '' : 's'} · ${k ? `${k} done` : `${cards} cards`}`);
+  }
+  // the lessons, in the Level 1 course layout
+  if (live && ctx.course) {
+    const course = clone(ctx.course); course.n = 'The lessons';
+    const grid = find(course, byName('Lessons'));
+    const finished = lessonsGrid(grid, all, done);
+    for (const tile of grid.c) { const ch = all.find((x) => tile.n.endsWith('· ' + x.title)); if (ch) tile.n = `Part ${ch.part} · Lesson ${String(ch.number).padStart(2, '0')} · ${ch.title}`; }
+    const head = find(course, byName('Head'));
+    if (head) { const tt = T(find(head, byName('Titles'))); setText(tt[0], 'Three parts, in exam order'); setText(tt[1], `${all.length} LESSON${all.length === 1 ? '' : 'S'}`); setText(T(head)[0], `${finished} of ${all.length} done`); }
+    const at = main.c.findIndex((x) => x.n === 'Three parts');
+    main.c.splice(at + 1, 0, course);
   }
   for (const t of findAll(main, (x) => (x.n || '').startsWith('Tool · '))) {
     const b = t.c.find((x) => (x.n || '').startsWith('Button · ')); if (b) { setText(texts(b)[0], 'Coming Soon'); b.f = [{ c: '#3A3632' }]; for (const x of texts(b)) x.f = [{ c: '#B8AFA3' }]; delete b.to; }

@@ -24,6 +24,251 @@
    }
   ]
  },
+ "court": {
+  "section": 7,
+  "outline": [
+   "Spain",
+   "Rías Baixas",
+   "Rioja",
+   "Ribera del Duero",
+   "Toro",
+   "Rueda",
+   "Cava",
+   "Priorat",
+   "Portugal",
+   "Vinho Verde",
+   "Douro"
+  ],
+  "outcome": "After studying this section, a student will know the location, general climate, grape variety, and style of the Rías Baixas DO. After studying this section, a student will know the general location, climate, grape varieties, styles, and label language of Rioja. After studying this section, a student will know the major DOs within Castilla y León, the grape varieties used, and styles of wine produced. After studying this section, a student will understand the general location, styles, and grape varieties of the Cava DO and Priorat DOCa. After studying this section, a student will know the location of Portugal on a map and Portugal's important wine regions and grape varieties.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "Galicia · Location",
+    "guide": "Northwest Iberia, 'Green Spain'; spot Rías Baixas on a map.",
+    "where": "Rías Baixas"
+   },
+   {
+    "topic": "Galicia · Climate",
+    "guide": "Maritime, humid, cooler than the rest of Spain.",
+    "where": "Rías Baixas"
+   },
+   {
+    "topic": "Galicia · Physical feature",
+    "guide": "Atlantic Ocean and Miño River; Rías Baixas means 'low estuaries'.",
+    "where": "added: Rías Baixas"
+   },
+   {
+    "topic": "Galicia · Grape growing",
+    "guide": "High canopy trellising because of humidity.",
+    "where": "added: Rías Baixas"
+   },
+   {
+    "topic": "Galicia · Winemaking",
+    "guide": "Modern methods, stainless steel tanks; lees aging is common.",
+    "where": "Rías Baixas"
+   },
+   {
+    "topic": "Galicia · White grape",
+    "guide": "Albariño.",
+    "where": "Rías Baixas"
+   },
+   {
+    "topic": "Galicia · Wine law (DO)",
+    "guide": "Rías Baixas DO: a wine labeled Albariño must be 100% Albariño.",
+    "where": "Rías Baixas"
+   },
+   {
+    "topic": "Galicia · Style",
+    "guide": "Dry, crisp, aromatic Albariño whites.",
+    "where": "Rías Baixas"
+   },
+   {
+    "topic": "La Rioja · Location",
+    "guide": "North central Spain.",
+    "where": "Rioja"
+   },
+   {
+    "topic": "La Rioja · Climate",
+    "guide": "Continental; the Cantabrian Mountains make a rain shadow.",
+    "where": "Rioja"
+   },
+   {
+    "topic": "La Rioja · Physical feature",
+    "guide": "Foothills of the Cantabrian and Pyrenees; the Ebro River.",
+    "where": "added: Rioja"
+   },
+   {
+    "topic": "La Rioja · Winemaking",
+    "guide": "Traditionally aged in American oak.",
+    "where": "Rioja"
+   },
+   {
+    "topic": "La Rioja · White grape",
+    "guide": "Viura.",
+    "where": "Rioja"
+   },
+   {
+    "topic": "La Rioja · Red grapes",
+    "guide": "Tempranillo and Garnacha.",
+    "where": "Rioja"
+   },
+   {
+    "topic": "La Rioja · Wine law (DOCa)",
+    "guide": "DOCa for dry Tempranillo reds and Viura whites.",
+    "where": "Rioja"
+   },
+   {
+    "topic": "La Rioja · Label terms",
+    "guide": "Crianza, Reserva, Gran Reserva rise by minimum aging; exact times not needed.",
+    "where": "Spain: law and aging words"
+   },
+   {
+    "topic": "La Rioja · Style",
+    "guide": "Dry reds and whites, from young and fresh to ageable.",
+    "where": "Rioja"
+   },
+   {
+    "topic": "Castilla y León · Location",
+    "guide": "North central Spain.",
+    "where": "added: Ribera del Duero, Toro, Rueda"
+   },
+   {
+    "topic": "Castilla y León · Climate",
+    "guide": "Cantabrian rain shadow; continental with big seasonal and day-night swings.",
+    "where": "added: Ribera del Duero, Toro, Rueda"
+   },
+   {
+    "topic": "Castilla y León · Physical feature",
+    "guide": "High-altitude meseta; the Duero River (Douro in Portugal).",
+    "where": "Ribera del Duero, Toro, Rueda"
+   },
+   {
+    "topic": "Castilla y León · Winemaking",
+    "guide": "Fresh Rueda whites; reds young to age-worthy, in American and French oak.",
+    "where": "Ribera del Duero, Toro, Rueda"
+   },
+   {
+    "topic": "Castilla y León · White grapes",
+    "guide": "Verdejo and Sauvignon Blanc.",
+    "where": "Ribera del Duero, Toro, Rueda"
+   },
+   {
+    "topic": "Castilla y León · Red grape",
+    "guide": "Tempranillo.",
+    "where": "Ribera del Duero, Toro, Rueda"
+   },
+   {
+    "topic": "Castilla y León · DOs",
+    "guide": "Toro (ripe Tempranillo), Ribera del Duero (Tempranillo blends), Rueda (Verdejo, Sauvignon Blanc).",
+    "where": "Ribera del Duero, Toro, Rueda"
+   },
+   {
+    "topic": "Castilla y León · Label terms",
+    "guide": "Ribera del Duero uses Crianza, Reserva, Gran Reserva; exact times not needed.",
+    "where": "added: Ribera del Duero, Toro, Rueda"
+   },
+   {
+    "topic": "Castilla y León · Style",
+    "guide": "Ribera: young drinking or long aging in American or French oak.",
+    "where": "Ribera del Duero, Toro, Rueda"
+   },
+   {
+    "topic": "Catalonia · Location",
+    "guide": "Northeastern Spain, Pyrenees foothills, near the Mediterranean and Barcelona.",
+    "where": "added: Cava"
+   },
+   {
+    "topic": "Catalonia · Climate",
+    "guide": "Priorat hot and dry Mediterranean; Cava moderate thanks to altitude.",
+    "where": "added: Cava (Priorat already covered)"
+   },
+   {
+    "topic": "Catalonia · Physical feature",
+    "guide": "Priorat steep terraced slopes; Cava high-altitude Pyrenees sites.",
+    "where": "added: Cava (Priorat already covered)"
+   },
+   {
+    "topic": "Catalonia · Soil",
+    "guide": "Priorat's llicorella lets vines dig deep for water.",
+    "where": "Priorat"
+   },
+   {
+    "topic": "Catalonia · Winemaking",
+    "guide": "Priorat modern with French oak; Cava traditional method, gyropalette.",
+    "where": "Priorat; Cava"
+   },
+   {
+    "topic": "Catalonia · White grapes",
+    "guide": "Cava: Xarel-lo, Parellada, Macabeo.",
+    "where": "Cava"
+   },
+   {
+    "topic": "Catalonia · Red grapes",
+    "guide": "Priorat: Garnacha, Cariñena, international grapes.",
+    "where": "Priorat"
+   },
+   {
+    "topic": "Catalonia · DO / DOCa",
+    "guide": "Cava DO: traditional-method white and rosado; Priorat DOCa: dry reds.",
+    "where": "Cava; Priorat"
+   },
+   {
+    "topic": "Catalonia · Style",
+    "guide": "Priorat powerful, spicy Garnacha blend; Cava is traditional-method sparkling.",
+    "where": "Priorat; Cava"
+   },
+   {
+    "topic": "Catalonia · History & lore",
+    "guide": "Priorat is modern, made a fast impact and is highly respected.",
+    "where": "added: Priorat"
+   },
+   {
+    "topic": "Portugal · Location",
+    "guide": "Iberian Peninsula, on Spain's western border; know it on a map.",
+    "where": "added: Portugal at a glance"
+   },
+   {
+    "topic": "Portugal · Climate",
+    "guide": "Maritime in the Atlantic north, warm continental inland.",
+    "where": "added: Portugal at a glance"
+   },
+   {
+    "topic": "Portugal · Physical feature",
+    "guide": "Douro River (Spain's Duero), Atlantic coast, very mountainous interior.",
+    "where": "added: Portugal at a glance"
+   },
+   {
+    "topic": "Portugal · Soil",
+    "guide": "Douro and Porto: schist.",
+    "where": "Douro, and Port in brief"
+   },
+   {
+    "topic": "Portugal · Winemaking",
+    "guide": "Vinho Verde low alcohol, slight fizz; Porto and Madeira fortified.",
+    "where": "Vinho Verde; Douro, and Port in brief; added: Portugal at a glance (Madeira)"
+   },
+   {
+    "topic": "Portugal · White grapes",
+    "guide": "Vinho Verde Alvarinho; Madeira Sercial, Verdelho, Bual, Malmsey.",
+    "where": "Vinho Verde; added: Portugal at a glance (Madeira)"
+   },
+   {
+    "topic": "Portugal · Red grape",
+    "guide": "Douro and Porto: Touriga Nacional.",
+    "where": "Douro, and Port in brief"
+   },
+   {
+    "topic": "Portugal · DOPs",
+    "guide": "Vinho Verde, Douro, Porto, Madeira.",
+    "where": "added: Portugal at a glance"
+   },
+   {
+    "topic": "Portugal · Style",
+    "guide": "Vinho Verde light; Douro bold dry reds; Porto sweet fortified red; Madeira fortified white.",
+    "where": "Vinho Verde; Douro, and Port in brief; added: Portugal at a glance"
+   }
+  ]
+ },
  "sections": [
   {
    "name": "Spain: law and aging words",
@@ -101,7 +346,8 @@
     "Red Rioja is based on Tempranillo. White Rioja is based on Viura.",
     "Traditional Rioja is aged in American oak.",
     "The three zones are Rioja Alta, Rioja Alavesa and Rioja Oriental.",
-    "Some modern producers use French oak and skip the Crianza and Reserva labels."
+    "Some modern producers use French oak and skip the Crianza and Reserva labels.",
+    "Rioja sits in the foothills of the Cantabrian and Pyrenees mountains."
    ],
    "visuals": [
     {
@@ -151,7 +397,8 @@
     "Ribera del Duero reds must be at least 75% Tempranillo.",
     "Ribera vineyards sit at about 720 to over 1,000 meters.",
     "Toro makes ripe, concentrated Tempranillo reds.",
-    "Rueda makes fresh whites from Verdejo and Sauvignon Blanc."
+    "Rueda makes fresh whites from Verdejo and Sauvignon Blanc.",
+    "Ribera del Duero uses the same aging words as Rioja: Crianza, Reserva, Gran Reserva."
    ],
    "visuals": [
     {
@@ -198,7 +445,8 @@
     "Rías Baixas means 'low estuaries'.",
     "A wine labelled Albariño must be 100% Albariño.",
     "Albariño is about 96% of the grapes grown here.",
-    "Albariño is a classic match for simply prepared shellfish."
+    "Albariño is a classic match for simply prepared shellfish.",
+    "Vines are trained on a high canopy because of the humidity."
    ],
    "visuals": [
     {
@@ -278,7 +526,8 @@
     "The gyropalette, a Spanish invention, is used instead of riddling by hand.",
     "Cava de Guarda ages at least 9 months on the lees.",
     "Cava Reserva ages at least 18 months; Gran Reserva 30 months.",
-    "Sant Sadurní d'Anoia is called the Cava capital."
+    "Sant Sadurní d'Anoia is called the Cava capital.",
+    "Catalonia is in northeastern Spain; most Cava grows on high Pyrenees-foothill sites, where altitude keeps it moderate."
    ],
    "visuals": [
     {
@@ -307,6 +556,63 @@
       }
      ],
      "note": "Reserva, Gran Reserva and Paraje are grouped as Cava de Guarda Superior."
+    }
+   ]
+  },
+  {
+   "name": "Portugal at a glance",
+   "book": "wine/portugal",
+   "lines": [
+    {
+     "label": "Place",
+     "text": "On the Iberian Peninsula, on Spain's western border, with the Atlantic to the west. Maritime in the north, warm continental inland toward Spain."
+    },
+    {
+     "label": "DOPs",
+     "text": "The Court names four: Vinho Verde, Douro, Porto and Madeira. Porto and Madeira are fortified."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Alvarinho",
+     "Touriga Nacional",
+     "Sercial",
+     "Verdelho",
+     "Bual",
+     "Malmsey"
+    ]
+   },
+   "know": [
+    "Portugal is on Spain's western border; the Atlantic is its own western border.",
+    "The climate runs from maritime in the north to warm continental inland.",
+    "The interior is very mountainous, and the Douro River is Spain's Duero.",
+    "Four DOPs to know: Vinho Verde, Douro, Porto, Madeira.",
+    "Madeira is a fortified white, made dry, medium dry or sweet, from Sercial, Verdelho, Bual and Malmsey."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Four DOPs the Court names",
+     "rows": [
+      {
+       "name": "Vinho Verde",
+       "meta": "Low alcohol, slight fizz · Alvarinho"
+      },
+      {
+       "name": "Douro",
+       "meta": "Bold, dry reds · Touriga Nacional"
+      },
+      {
+       "name": "Porto",
+       "meta": "Fortified, sweet red · Touriga Nacional"
+      },
+      {
+       "name": "Madeira",
+       "meta": "Fortified white, dry to sweet · Sercial, Verdelho, Bual, Malmsey"
+      }
+     ],
+     "note": "Port and Madeira come back in the fortified chapter."
     }
    ]
   },
@@ -445,7 +751,7 @@
    "why": "Not different grapes: local names for Tempranillo in Ribera del Duero."
   }
  ],
- "sources": "Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide; Consejo Regulador DOCa Rioja; Consejo Regulador Ribera del Duero; DOQ Priorat; D.O. Rías Baixas; D.O. Cava; IVDP (Port and Douro Wines Institute); Vinho Verde commission (CVRVV); Wines of Portugal; Wine Folly as a labelled secondary source. Checked Oct 31, 2026.",
+ "sources": "Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide; Consejo Regulador DOCa Rioja; Consejo Regulador Ribera del Duero; DOQ Priorat; D.O. Rías Baixas; D.O. Cava; IVDP (Port and Douro Wines Institute); Vinho Verde commission (CVRVV); Wines of Portugal; Wine Folly as a labelled secondary source. Checked Oct 31, 2026; Court alignment Nov 2, 2026.",
  "cards": [
   {
    "q": "Which two Spanish regions hold the top DOCa status?",
@@ -746,6 +1052,106 @@
     "Cávado"
    ],
    "source": "https://www.winesofportugal.com/en/discover/wine-regions/vinho-verde/"
+  },
+  {
+   "q": "Why are Rías Baixas vines trained on a high canopy?",
+   "answer": "Because of the humidity",
+   "wrong": [
+    "To catch more sun in a hot, dry climate",
+    "To shelter them from desert winds",
+    "So machines can pick the grapes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+  },
+  {
+   "q": "Besides the Atlantic, which body of water does the Court name for Rías Baixas?",
+   "answer": "The Miño River (Minho in Portugal)",
+   "wrong": [
+    "The Ebro River",
+    "The Duero River",
+    "The Mediterranean Sea"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+  },
+  {
+   "q": "Rioja sits in the foothills of which two mountain ranges?",
+   "answer": "The Cantabrian and the Pyrenees",
+   "wrong": [
+    "The Pyrenees and the Sierra Nevada",
+    "The Cantabrian and the Montsant",
+    "The Sierra de Gredos and the Sierra Nevada"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+  },
+  {
+   "q": "Which mountains put Castilla y León in a rain shadow?",
+   "answer": "The Cantabrian Mountains",
+   "wrong": [
+    "The Pyrenees",
+    "The Sierra Nevada",
+    "The Montsant massif"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=40"
+  },
+  {
+   "q": "Which aging words appear on Ribera del Duero labels, as in Rioja?",
+   "answer": "Crianza, Reserva, Gran Reserva",
+   "wrong": [
+    "Riserva, Superiore, Classico",
+    "Kabinett, Spätlese, Auslese",
+    "Cava de Guarda, Reserva, Paraje"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=40"
+  },
+  {
+   "q": "Why is the climate moderate where most Cava is made?",
+   "answer": "Altitude: high sites in the Pyrenees foothills",
+   "wrong": [
+    "The Atlantic Ocean cools it",
+    "The Cantabrian Mountains block the heat",
+    "The Ebro River cools it"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+  },
+  {
+   "q": "Where is Portugal, relative to Spain?",
+   "answer": "On Spain's western border, on the Atlantic",
+   "wrong": [
+    "On Spain's northern border",
+    "East of Spain, on the Mediterranean",
+    "Across the Pyrenees from Spain"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+  },
+  {
+   "q": "Which four Portuguese DOPs does the Court list at the Introductory level?",
+   "answer": "Vinho Verde, Douro, Porto, Madeira",
+   "wrong": [
+    "Dão, Alentejo, Bairrada, Douro",
+    "Vinho Verde, Dão, Setúbal, Lisboa",
+    "Alentejo, Tejo, Porto, Madeira"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+  },
+  {
+   "q": "Madeira from Sercial, Verdelho, Bual and Malmsey is what style?",
+   "answer": "Fortified white wine, from dry to sweet",
+   "wrong": [
+    "Light, low-alcohol white with a slight fizz",
+    "Dry, unfortified red",
+    "Fortified, sweet red"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+  },
+  {
+   "q": "How does the Court describe Portugal's climate?",
+   "answer": "Maritime in the north, warm continental inland",
+   "wrong": [
+    "Hot desert across the country",
+    "Alpine in the north, maritime in the south",
+    "Continental on the coast, maritime inland"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
   }
  ],
  "facts": [
@@ -770,7 +1176,7 @@
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
   },
   {
-   "fact": "Rías Baixas: high canopy trellising because of humidity and granite soil are in the Certified column; Albariño is a classic match for simply prepared shellfish (Certified column).",
+   "fact": "Rías Baixas: high canopy trellising because of humidity is in the Introductory column; granite soil and the shellfish pairing (Albariño with simply prepared shellfish and bivalves) are in the Certified column.",
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
   },
   {
@@ -948,6 +1354,34 @@
   {
    "fact": "Wine Folly (secondary): Albariño's two main homes are Rías Baixas in Spain and Vinho Verde in Portugal, where it is called Alvarinho.",
    "source": "https://winefolly.com/grapes/albarino/"
+  },
+  {
+   "fact": "Rías Baixas (Introductory column, checked on the rendered page): high canopy trellising because of humidity; bodies of water are the Atlantic Ocean and the Miño River (Minho in Portuguese).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+  },
+  {
+   "fact": "Rioja (Introductory column): physical features are the foothills of the Cantabrian and Pyrenees Mountains and the Ebro River.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+  },
+  {
+   "fact": "Castilla y León (Introductory column): north central Spain; the Cantabrian Mountains create a rain shadow. Label terms for Ribera del Duero: Crianza, Reserva, Gran Reserva, in ascending order of minimum time in oak and bottle.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=40"
+  },
+  {
+   "fact": "Catalonia (Introductory column): northeastern Spain, in the foothills of the Pyrenees, near the Mediterranean Sea and the city of Barcelona. Cava: moderate climate due to altitude where most Cava is made; high-altitude sites in the Pyrenees.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+  },
+  {
+   "fact": "Priorat (Introductory column, History & Lore): a modern Spanish wine, not a traditional style; it made a big impact in a short time and is highly respected.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=43"
+  },
+  {
+   "fact": "Portugal (Introductory column): Madeira DOP is fortified; Madeira white grapes Sercial, Verdelho, Bual, Malmsey; style fortified dry, medium dry and sweet white wines. Porto DOP: fortified, sweet red wine. Tinta Negra (Madeira) is in the Certified column.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+  },
+  {
+   "fact": "Wines of Portugal: Madeira sits in the North Atlantic; its four noble grapes Sercial, Verdelho, Boal and Malvasia are all white and made dry, medium dry, semi-sweet and sweet respectively; Tinta Negra is over 80% of the harvest; vines grow on small terraces on steep slopes; soils are volcanic.",
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/madeira/"
   }
  ],
  "unverified": [
@@ -958,10 +1392,13 @@
   "Ribera del Duero's 'Nuestros vinos' page shows '36 months, 12 in barrel' under an unlabelled image near the rosé section; it was not used. The Court's Ribera minimums (Certified column) match Rioja's.",
   "The Rías Baixas statistics page is age-gated and could not be read; Albariño share (96% of grapes) comes from the D.O. 'Our wines' page.",
   "Counts of Spanish DOs and Vinos de Pago were not confirmed from an official source and are left out.",
-  "Rioja soils (calcareous clay, ferrous clay, alluvial) could not be placed in the Court's Introductory or Certified column from the PDF text, so they are left out.",
   "Sherry styles (Fino, Manzanilla, Amontillado, Oloroso, PX) were not researched here: the Court puts Sherry in the Fortified Wines subject (course Section 10), so this chapter only points to it.",
   "Dão and Alentejo appear in the Court's Certified column for Portugal; they are included as context only. Port details beyond the basics are left to the fortified chapter.",
-  "Court column split (Introductory vs Certified) was read from the PDF's text positions."
+  "Rioja soils (calcareous clay, ferrous clay, alluvial) sit in the Court's Certified column (checked on the rendered PDF page, Nov 2 2026), so they stay out of this Level 1 chapter.",
+  "Court column split (Introductory vs Certified) was read from the PDF's text positions and re-checked against rendered page images on Nov 2 2026 (pages 37-46).",
+  "Madeira grape names: the Court writes Bual and Malmsey; Wines of Portugal writes Boal and Malvasia. Both spellings are given.",
+  "The Court lists Madeira DOP under Portugal at the Introductory level; this chapter covers it briefly and leaves the detail to the fortified chapter.",
+  "The 'Portugal at a glance' video is from Wines of Portugal (the official generic body); it is a brand film, not a lesson, so it is a light intro only."
  ],
  "v3": {
   "video": {
@@ -1066,7 +1503,7 @@
     ],
     "read": {
      "bigIdea": "Rioja is Tempranillo, aged in American oak.",
-     "where": "Rioja sits in **north central Spain**, along the **Ebro River**. The **Cantabrian Mountains** block the rain, so the climate is **continental**. It was Spain’s first **DOCa**, and its three zones are **Rioja Alta**, **Rioja Alavesa** and **Rioja Oriental**.",
+     "where": "Rioja sits in **north central Spain**, along the **Ebro River**. The **Cantabrian Mountains** block the rain, so the climate is **continental**. It was Spain’s first **DOCa**, and its three zones are **Rioja Alta**, **Rioja Alavesa** and **Rioja Oriental**. Its vineyards sit in the foothills of the **Cantabrian** and **Pyrenees** mountains.",
      "stops": [
       {
        "name": "Red Rioja",
@@ -1121,13 +1558,13 @@
     ],
     "read": {
      "bigIdea": "Three wines from Spain’s high plateau on the Duero.",
-     "where": "These three DOs are in **Castilla y León**, on a high plateau called the **meseta**, along the **Duero River**. Seasons and day-night temperatures swing hard, and winters are long and harsh. Ribera’s vineyards sit at about **720 to over 1,000 meters**.",
+     "where": "These three DOs are in **Castilla y León**, on a high plateau called the **meseta**, along the **Duero River**. Seasons and day-night temperatures swing hard, and winters are long and harsh. Ribera’s vineyards sit at about **720 to over 1,000 meters**. The region is in **north central Spain**, in the **rain shadow** of the **Cantabrian Mountains**.",
      "stopsTitle": "Three DOs, three styles",
      "stops": [
       {
        "name": "Ribera del Duero",
        "note": "Tempranillo reds",
-       "text": "Here Tempranillo is called **Tinto Fino** or **Tinta del País**. Reds must be at least **75%** Tempranillo, from young to long-aged in American or French oak."
+       "text": "Here Tempranillo is called **Tinto Fino** or **Tinta del País**. Reds must be at least **75%** Tempranillo, from young to long-aged in American or French oak. Labels use the same aging words as Rioja: **Crianza**, **Reserva**, **Gran Reserva**."
       },
       {
        "name": "Toro",
@@ -1179,7 +1616,7 @@
     ],
     "read": {
      "bigIdea": "Rías Baixas is Spain’s Atlantic white-wine corner.",
-     "where": "Rías Baixas is in **Galicia**, in northwest **“Green Spain”** on the **Atlantic**. The climate is **maritime**, humid and cooler than the rest of Spain. The name means **“low estuaries.”**",
+     "where": "Rías Baixas is in **Galicia**, in northwest **“Green Spain”** on the **Atlantic**. The climate is **maritime**, humid and cooler than the rest of Spain. The name means **“low estuaries.”** Its river is the **Miño** (Minho in Portugal), and vines are trained on a **high canopy** because of the **humidity**.",
      "stopsTitle": "Grape, cellar, glass",
      "stops": [
       {
@@ -1247,7 +1684,7 @@
       {
        "name": "The style",
        "note": "modern",
-       "text": "**Powerful, intense and spicy**, often aged in **French oak**. It’s a **modern** style that made a big impact fast; the revival began in the late 1980s."
+       "text": "**Powerful, intense and spicy**, often aged in **French oak**. It’s a **modern** style that made a big impact fast; the revival began in the late 1980s. Today it is **highly respected**."
       }
      ],
      "visual": 0,
@@ -1292,7 +1729,7 @@
     ],
     "read": {
      "bigIdea": "Cava is Spain’s traditional-method sparkling wine.",
-     "where": "Cava can be made in several parts of Spain, but most comes from **Penedès** in **Catalonia**. The town of **Sant Sadurní d’Anoia** is called the **Cava capital**.",
+     "where": "Cava can be made in several parts of Spain, but most comes from **Penedès** in **Catalonia**. The town of **Sant Sadurní d’Anoia** is called the **Cava capital**. Catalonia is in **northeastern Spain**, in the **Pyrenees foothills** near the Mediterranean and **Barcelona**. Most Cava grows on **high-altitude** sites, where the climate stays **moderate**.",
      "stopsTitle": "From grape to bubbles",
      "stops": [
       {
@@ -1325,6 +1762,69 @@
      18,
      19,
      21
+    ]
+   },
+   {
+    "name": "Portugal at a glance",
+    "video": {
+     "youtubeId": "lc-PC_ZCKjA",
+     "title": "Wines of Portugal - a world of difference",
+     "by": "Wines of Portugal",
+     "length": "12:07"
+    },
+    "keyPoints": [
+     {
+      "big": "WEST",
+      "line": "of Spain: Portugal is Iberia’s Atlantic side."
+     },
+     {
+      "big": "MOUNTAINS",
+      "line": "fill the interior, which runs warm and continental."
+     },
+     {
+      "big": "FOUR DOPS",
+      "line": "to know: Vinho Verde, Douro, Porto and Madeira."
+     },
+     {
+      "big": "MADEIRA",
+      "line": "is a fortified white, made from dry to sweet."
+     }
+    ],
+    "read": {
+     "bigIdea": "Portugal is Iberia’s Atlantic side.",
+     "where": "Portugal sits on the **Iberian Peninsula**, on **Spain’s western border**, with the **Atlantic** as its own western edge. The north is **maritime**; inland, toward Spain, it turns **warm continental**. The interior is **very mountainous**, and the **Douro River** is the same river as Spain’s **Duero**.",
+     "stopsTitle": "Four DOPs to know",
+     "stops": [
+      {
+       "name": "Vinho Verde",
+       "note": "the northwest",
+       "text": "**Low alcohol** with a **slight fizz**, from grapes like **Alvarinho**."
+      },
+      {
+       "name": "Douro",
+       "note": "bold and dry",
+       "text": "**Bold, dry reds** from grapes like **Touriga Nacional**, grown on **schist**."
+      },
+      {
+       "name": "Porto",
+       "note": "sweet and fortified",
+       "text": "A **fortified, sweet red** from the same area as the Douro wines."
+      },
+      {
+       "name": "Madeira",
+       "note": "an Atlantic island",
+       "text": "A **fortified white**, made **dry**, **medium dry** or **sweet**. The four classic grapes are **Sercial**, **Verdelho**, **Bual** and **Malmsey** (Boal and Malvasia in Portuguese)."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The Court’s four Portuguese DOPs:",
+     "mixup": "**Porto** and **Douro** come from the same area. Porto is fortified and sweet; Douro reds are dry.",
+     "sayIt": "Madeira is a fortified wine from a Portuguese island, made dry to sweet."
+    },
+    "check": [
+     36,
+     37,
+     38
     ]
    },
    {

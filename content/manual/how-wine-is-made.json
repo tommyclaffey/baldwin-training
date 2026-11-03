@@ -4,7 +4,148 @@
  "title": "How wine is made",
  "script": "Chapter one",
  "lead": "From vine to bottle: what shapes grapes in the vineyard, and the steps that turn them into white, red and rosé wine.",
- "minutes": 20,
+ "minutes": 25,
+ "court": {
+  "section": 1,
+  "outline": [
+   "Grape Growing (Viticulture)",
+   "Winemaking (Vinification)"
+  ],
+  "outcome": "After studying this section, a student will understand the important factors that influence grape growing (viticulture) that impact the final flavor of the wine. After studying this section, a student will understand the definition of winemaking (vinification), the steps of making white, red, and rosé, and other important factors of consideration that influence the how and why wines taste the way they do.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "Definition of Viticulture",
+    "guide": "Nature plus vineyard decisions that together shape wine quality.",
+    "where": "The vine"
+   },
+   {
+    "topic": "Factor 1: Location and Geography",
+    "guide": "Site, producer goals, regional wine law and money decide where to plant.",
+    "where": "The vine"
+   },
+   {
+    "topic": "Factor 2: Climate - Terms",
+    "guide": "Climate vs. weather; continental, maritime, Mediterranean, desert; cool to hot.",
+    "where": "Climate, soil and terroir"
+   },
+   {
+    "topic": "Factor 2: Climate - Latitude",
+    "guide": "Most regions sit between 30° and 50°; moderators explain the exceptions.",
+    "where": "Climate, soil and terroir"
+   },
+   {
+    "topic": "Factor 2: Climate - Moderators",
+    "guide": "Altitude, diurnal shifts, sunshine hours, water, wind, rain shadow.",
+    "where": "Climate, soil and terroir"
+   },
+   {
+    "topic": "Factor 3: Topography",
+    "guide": "Land features: elevation, mountains, hills, valleys, bodies of water.",
+    "where": "Climate, soil and terroir"
+   },
+   {
+    "topic": "Factor 4: Soil",
+    "guide": "Soil properties and types; match soils to eight major regions.",
+    "where": "Climate, soil and terroir"
+   },
+   {
+    "topic": "Factor 5: Grape Variety",
+    "guide": "Genus Vitis, vinifera's origins and examples, and how varieties are chosen.",
+    "where": "The vine"
+   },
+   {
+    "topic": "Factor 6: Vintage - Yearly Weather",
+    "guide": "Each year's crop differs with weather; no vintage memorizing at this level.",
+    "where": "The vineyard year"
+   },
+   {
+    "topic": "Factor 7: Vineyard Management",
+    "guide": "Training, canopy, irrigation, pests and disease, yield, green harvest, botrytis.",
+    "where": "The vineyard year"
+   },
+   {
+    "topic": "Factor 7: Vineyard Management - Pests and Disease",
+    "guide": "Phylloxera: a louse that hit France in the 1800s; American rootstock.",
+    "where": "The vine"
+   },
+   {
+    "topic": "Factor 8: Yield",
+    "guide": "How much fruit a vine gives, in tons per acre or hectoliters per hectare.",
+    "where": "The vineyard year"
+   },
+   {
+    "topic": "Factor 9: Harvest",
+    "guide": "When to pick, hand or machine, bin size, ripeness as a range, Brix.",
+    "where": "The vineyard year"
+   },
+   {
+    "topic": "Factor 10: Terroir",
+    "guide": "Goût de terroir: every environmental effect on the vine.",
+    "where": "Climate, soil and terroir"
+   },
+   {
+    "topic": "Factor 11: Regional Wine Law",
+    "guide": "Laws set which grapes are grown and how.",
+    "where": "The vine"
+   },
+   {
+    "topic": "Definition of Winemaking - Vinification",
+    "guide": "Winery decisions from harvest until the wine is bottled.",
+    "where": "added: The winemaker’s choices"
+   },
+   {
+    "topic": "Factors in Decision Making",
+    "guide": "Goal, style, price point, regional wine law, sustainability.",
+    "where": "added: The winemaker’s choices"
+   },
+   {
+    "topic": "Winemaking Steps",
+    "guide": "Harvest, sort, destem; the step order for white, red and rosé.",
+    "where": "Making white wine; Making red wine; Making rosé"
+   },
+   {
+    "topic": "Alcoholic Fermentation",
+    "guide": "Sugar plus yeast gives alcohol, CO2, heat, aromas and flavors.",
+    "where": "Making white wine"
+   },
+   {
+    "topic": "Fermentation Vessels Types",
+    "guide": "Wood, stainless steel, concrete.",
+    "where": "added: The winemaker’s choices"
+   },
+   {
+    "topic": "Fermentation Vessels Types and Considerations",
+    "guide": "Size, shape (oval, round, egg), oxygen permeability, temperature control.",
+    "where": "added: The winemaker’s choices"
+   },
+   {
+    "topic": "Winemaking Terms",
+    "guide": "Must, chaptalization, acidification, water addition, lees, autolysis, malolactic, carbonic maceration.",
+    "where": "The winemaker’s choices; Oak, malolactic and lees; Making red wine"
+   },
+   {
+    "topic": "Winemaking Decisions",
+    "guide": "Temperature control, oxygen management, and extraction methods.",
+    "where": "The winemaker’s choices; Making red wine"
+   },
+   {
+    "topic": "Aging and Maturation Considerations",
+    "guide": "Costs, age of barrels, length of aging.",
+    "where": "Oak, malolactic and lees"
+   },
+   {
+    "topic": "Preparation for Bottling",
+    "guide": "Clarification: the difference between fining and filtration.",
+    "where": "added: Bottling and packaging"
+   },
+   {
+    "topic": "Packaging",
+    "guide": "Bottles, kegs, boxes; cork, composite, screw cap, glass top; labels, capsules, label law.",
+    "where": "added: Bottling and packaging"
+   }
+  ]
+ },
  "intro": {
   "script": "Start here",
   "title": "ONE GRAPE, THREE COLORS",
@@ -52,7 +193,8 @@
     "Vitis vinifera is native to the Mediterranean, Europe and Southwestern Asia.",
     "Concord and Catawba are Vitis labrusca, not vinifera.",
     "Phylloxera is fought with resistant American rootstock.",
-    "Varieties are chosen by wine law, climate, soil and marketability."
+    "Varieties are chosen by wine law, climate, soil and marketability.",
+    "Regional wine laws often set which grapes are grown, and how."
    ],
    "visuals": [
     {
@@ -103,7 +245,8 @@
     "Cool climates give tart fruit and more acidity; warm climates give riper fruit and less acidity.",
     "Warmer grapes build more sugar, so the wine has more alcohol.",
     "Macroclimate = region; mesoclimate = vineyard; microclimate = one vine.",
-    "Growing degree-days count days averaging above 50°F."
+    "Growing degree-days count days averaging above 50°F.",
+    "Climate moderators: altitude, diurnal shifts, sunshine hours, water, wind, rain shadow."
    ],
    "visuals": [
     {
@@ -149,6 +292,10 @@
        "meta": "Mosel"
       },
       {
+       "name": "Galets, alluvial, limestone",
+       "meta": "Southern Rhône"
+      },
+      {
        "name": "Terra rossa",
        "meta": "Coonawarra"
       }
@@ -162,7 +309,7 @@
    "lines": [
     {
      "label": "The cycle",
-     "text": "The vine sleeps in winter, buds in spring, flowers, sets fruit and ripens. Veraison is when the berries change color. Harvest comes when the grapes are ripe."
+     "text": "The vine sleeps in winter, buds in spring, flowers, sets fruit and ripens. Veraison is when the berries change color. Harvest comes when the grapes are ripe. Each year’s crop, the vintage, differs with the weather."
     },
     {
      "label": "The work",
@@ -217,6 +364,81 @@
        "name": "Pruning",
        "text": "Last year's canes cut back",
        "meta": "Winter"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "The winemaker’s choices",
+   "lines": [
+    {
+     "label": "Vinification",
+     "text": "Vinification is every decision made in the winery, from harvest to bottling. It starts with the winery’s goal, the style, the price point and local wine law."
+    },
+    {
+     "label": "Vessels",
+     "text": "Wine ferments in wood, stainless steel or concrete. Size, shape, oxygen and temperature control all matter."
+    }
+   ],
+   "chips": {
+    "label": "Vessels",
+    "items": [
+     "Wood",
+     "Stainless steel",
+     "Concrete"
+    ]
+   },
+   "know": [
+    "Vinification runs from harvest to bottling.",
+    "Must is unfermented grape juice.",
+    "Acidification adds acid to correct low acidity.",
+    "In Bordeaux and Burgundy, a wine can't be both chaptalized and acidified.",
+    "Whites usually ferment cooler than reds to keep delicate aromas."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Three ways to adjust the must",
+     "dark": true,
+     "items": [
+      {
+       "name": "Chaptalization",
+       "text": "Add sugar for more alcohol"
+      },
+      {
+       "name": "Acidification",
+       "text": "Add acid for balance"
+      },
+      {
+       "name": "Water addition",
+       "text": "Dilute very sweet must"
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "title": "What the winery decides first",
+     "items": [
+      {
+       "name": "Goal",
+       "text": "What the winery wants"
+      },
+      {
+       "name": "Style",
+       "text": "What kind of wine"
+      },
+      {
+       "name": "Price point",
+       "text": "What it will sell for"
+      },
+      {
+       "name": "Wine law",
+       "text": "What the region allows"
+      },
+      {
+       "name": "Sustainability",
+       "text": "How it is made"
       }
      ]
     }
@@ -287,7 +509,8 @@
     "Red color comes from anthocyanin in black grape skins.",
     "Pressing comes after fermentation for reds.",
     "Pump-overs extract more; punch-downs are gentler.",
-    "Whole-cluster fermentation keeps stems and adds tannin (common with Pinot Noir)."
+    "Whole-cluster fermentation keeps stems and adds tannin (common with Pinot Noir).",
+    "Carbonic maceration ferments whole bunches under CO2 (think Beaujolais)."
    ],
    "visuals": [
     {
@@ -356,7 +579,7 @@
     },
     {
      "label": "Malo and lees",
-     "text": "Malolactic fermentation turns sharp malic acid into soft lactic acid and can taste buttery. Lees are dead yeast; stirring them adds bready flavor and a creamy feel."
+     "text": "Malolactic fermentation turns sharp malic acid into soft lactic acid and can taste buttery. Lees are dead yeast; stirring them adds bready flavor and a creamy feel. As the dead yeast breaks down (autolysis), it adds richness and brioche aromas."
     }
    ],
    "chips": {
@@ -417,6 +640,74 @@
      ]
     }
    ]
+  },
+  {
+   "name": "Bottling and packaging",
+   "lines": [
+    {
+     "label": "Clearing the wine",
+     "text": "Before bottling, wine is clarified. Fining adds an agent that pulls particles down; filtering pushes wine through a screen or pad."
+    },
+    {
+     "label": "The package",
+     "text": "Wine goes into bottles, kegs or boxes. It is sealed with cork, a composite, a screw cap (Stelvin) or a glass top (Vinolok)."
+    }
+   ],
+   "chips": {
+    "label": "Closures",
+    "items": [
+     "Cork",
+     "Composite",
+     "Screw cap (Stelvin)",
+     "Glass top (Vinolok)"
+    ]
+   },
+   "know": [
+    "Fining agents like bentonite, egg whites or gelatin settle out particles.",
+    "Filtering pushes wine through a screen or pad.",
+    "Stelvin is a screw cap; Vinolok is a glass top.",
+    "Containers include bottles, kegs and boxed wine.",
+    "Labels must follow government label laws."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "FINING",
+       "title": "Add, then settle",
+       "text": "An agent binds the haze\nIt sinks to the bottom\nThen it is removed"
+      },
+      {
+       "label": "FILTERING",
+       "title": "Strain it",
+       "text": "Wine is pumped\nthrough a screen or pad\nfor clarity and stability"
+      }
+     ]
+    },
+    {
+     "type": "tiles",
+     "title": "The four closures",
+     "items": [
+      {
+       "name": "Cork",
+       "text": "The classic stopper"
+      },
+      {
+       "name": "Composite",
+       "text": "Made from more than one material"
+      },
+      {
+       "name": "Screw cap",
+       "text": "Stelvin is the brand name"
+      },
+      {
+       "name": "Glass top",
+       "text": "Vinolok is the brand name"
+      }
+     ]
+    }
+   ]
   }
  ],
  "mixups": [
@@ -441,7 +732,7 @@
    "why": "Must is unfermented grape juice; lees are dead yeast left after fermentation."
   }
  ],
- "sources": "Court of Master Sommeliers Americas curriculum guide (8.2023), with Wine Folly as a labelled secondary source. Checked Oct 31, 2026.",
+ "sources": "Court of Master Sommeliers Americas curriculum guide (8.2023), with Wine Folly as a labelled secondary source. Checked Oct 31, 2026. Court coverage pass Nov 2, 2026: curriculum guide columns checked against the PDF itself; definitions added from the Wine Spectator glossary and Wine Australia.",
  "cards": [
   {
    "q": "Wine grapes come from vines of which genus?",
@@ -782,6 +1073,116 @@
     "Carbonic maceration"
    ],
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "q": "In many regions, what sets which grapes may be grown and how they are grown?",
+   "answer": "Regional wine law",
+   "wrong": [
+    "The age of the vine",
+    "The size of the bottle",
+    "The importer"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=6"
+  },
+  {
+   "q": "Which of these is a climate moderator on the Court's list?",
+   "answer": "Rain shadow effect",
+   "wrong": [
+    "Grape variety",
+    "Yield",
+    "Bottle aging"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "q": "What is the famous soil type of the Southern Rhône?",
+   "answer": "Galets",
+   "wrong": [
+    "Slate",
+    "Terra rossa",
+    "Chalk"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=17"
+  },
+  {
+   "q": "What does the Court call the decisions made in the winery, from harvest to bottling?",
+   "answer": "Vinification",
+   "wrong": [
+    "Viticulture",
+    "Assemblage",
+    "Terroir"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "q": "What is grape must?",
+   "answer": "Unfermented grape juice",
+   "wrong": [
+    "Dead yeast left after fermentation",
+    "The layer of skins on top of a red ferment",
+    "Sugar added before fermentation"
+   ],
+   "source": "https://www.winespectator.com/glossary/show/id/must"
+  },
+  {
+   "q": "What is acidification?",
+   "answer": "Adding acid to balance the wine",
+   "wrong": [
+    "Adding sugar to raise alcohol",
+    "Turning malic acid into lactic acid",
+    "Removing acid by chilling"
+   ],
+   "source": "https://www.winespectator.com/glossary/show/id/acidification"
+  },
+  {
+   "q": "Carbonic maceration is most associated with which region?",
+   "answer": "Beaujolais",
+   "wrong": [
+    "Barolo",
+    "Napa Valley",
+    "Mosel"
+   ],
+   "source": "https://www.winespectator.com/glossary/show/id/carbonic_maceration"
+  },
+  {
+   "q": "What is autolysis?",
+   "answer": "Dead yeast cells breaking down in the wine",
+   "wrong": [
+    "Bacteria turning malic acid into lactic acid",
+    "Yeast turning sugar into alcohol",
+    "Oxygen entering through the barrel"
+   ],
+   "source": "https://www.winespectator.com/glossary/show/id/autolysis"
+  },
+  {
+   "q": "What is the difference between fining and filtering?",
+   "answer": "Fining adds an agent that settles particles; filtering strains wine through a pad or screen",
+   "wrong": [
+    "They are the same thing",
+    "Fining removes alcohol; filtering removes sugar",
+    "Filtering adds egg whites; fining uses a screen"
+   ],
+   "source": "https://www.winespectator.com/glossary/show/id/fining"
+  },
+  {
+   "q": "Stelvin is a brand of what?",
+   "answer": "Screw cap",
+   "wrong": [
+    "Glass stopper",
+    "Natural cork",
+    "Wine box"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=8"
+  },
+  {
+   "q": "Which of these is a fining agent?",
+   "answer": "Bentonite clay",
+   "wrong": [
+    "Saccharomyces cerevisiae",
+    "Tartaric acid",
+    "Oenococcus oeni"
+   ],
+   "source": "https://www.winespectator.com/glossary/show/id/fining"
   }
  ],
  "facts": [
@@ -1048,14 +1449,92 @@
   {
    "fact": "The two main oak species are Quercus alba (American white oak) and Quercus petraea (European white oak). American oak suits bolder wines; European oak suits lighter wines.",
    "source": "https://winefolly.com/tips/how-wine-barrels-affect-the-taste-of-wine/"
+  },
+  {
+   "fact": "Location and geography considerations for a vineyard (Introductory): site location of the vineyard, goals of the wine producer, regional wine laws, financial considerations.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=3"
+  },
+  {
+   "fact": "Regional wine laws dictate which grape varieties can be grown, and how they are grown, in many wine regions of the world.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=6"
+  },
+  {
+   "fact": "Vineyards are managed to stay viable and healthy; vines are trained to a size and shape that ripens grapes best, and many training systems exist. Irrigation makes sure the vine has enough water in the growing season.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=5"
+  },
+  {
+   "fact": "Harvest (Introductory): grapes are collected in large or small bins; ripeness is a range, and one vineyard manager's definition of ripeness may differ from another's; structure and flavor ripeness.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=6"
+  },
+  {
+   "fact": "Rhône soils (Introductory column): Northern Rhône decomposed granite and schist; Southern Rhône galets, alluvial, limestone. The Introductory outcome asks students to know the famous soil type of the Southern Rhône.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=17"
+  },
+  {
+   "fact": "Viticulture soil row (Introductory): be able to match soils to Champagne, Chablis, Côte d'Or, Haut-Médoc, Pomerol, St.-Émilion, Châteauneuf-du-Pape and Mosel.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=4"
+  },
+  {
+   "fact": "Factors in winemaking decisions: the goal of the winery, the style of wine, the price point, regional wine laws the winery must follow, and sustainability.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "fact": "Fermentation vessel considerations (Introductory): size (large or small), shape (oval, round, egg), oxygen permeability, temperature control.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=7"
+  },
+  {
+   "fact": "Winemaking decisions (Introductory): temperature control and why it matters for different colors and styles; oxygen management and its impact on the final style; extraction through punch downs, pump overs, maceration times and fermentation temperature.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=8"
+  },
+  {
+   "fact": "Aging and maturation considerations (Introductory): costs, age of barrels, length of time of aging.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=8"
+  },
+  {
+   "fact": "Preparation for bottling (Introductory): clarification and the difference between fining and filtration. Cold stabilization, fining agent examples and sulfur additions are Certified-column.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=8"
+  },
+  {
+   "fact": "Packaging (Introductory): containers are bottles, kegs and boxed wine; closures are cork, composites, screw cap (Stelvin) and glass top (Vinolok); packaging covers labels and label design, capsule colors and design, and adhering to governmental label laws.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=8"
+  },
+  {
+   "fact": "Must: the unfermented juice of grapes extracted by crushing or pressing; grape juice in the cask or vat before it is converted into wine.",
+   "source": "https://www.winespectator.com/glossary/show/id/must"
+  },
+  {
+   "fact": "Acidification: the addition of acid to wine by a winemaker to balance the soft components (sugar, alcohol, fruit). It is legal in some areas to correct deficient acidity. It is illegal in Bordeaux and Burgundy to both chaptalize and acidify a wine.",
+   "source": "https://www.winespectator.com/glossary/show/id/acidification"
+  },
+  {
+   "fact": "Fining: clarifying wine with agents such as bentonite (powdered clay), isinglass, casein, gelatin or egg whites, which combine with sediment particles so they settle to the bottom and can be removed.",
+   "source": "https://www.winespectator.com/glossary/show/id/fining"
+  },
+  {
+   "fact": "Filtering: pumping wine through a screen or pad to remove leftover grape and fermentation particles. Most wines are filtered for clarity and stability, though some winemakers believe flavor and complexity may be stripped.",
+   "source": "https://www.winespectator.com/glossary/show/id/filtering"
+  },
+  {
+   "fact": "Autolysis: enzymes break down dead yeast cells in the lees, releasing amino acids, proteins and carbohydrates. It gives richness, creaminess and aromas of bread dough, toast or brioche, and is a key element of traditional-method sparkling wine such as Champagne.",
+   "source": "https://www.winespectator.com/glossary/show/id/autolysis"
+  },
+  {
+   "fact": "Carbonic maceration: most associated with Beaujolais; makes light-bodied, fresh, fruity reds. Whole bunches go into a tank where oxygen is displaced by carbon dioxide, and fermentation starts inside the berry. In practice the bottom grapes are crushed and ferment with yeast, so the wine is partly carbonic and partly traditional fermentation.",
+   "source": "https://www.winespectator.com/glossary/show/id/carbonic_maceration"
+  },
+  {
+   "fact": "Australia's Food Standards Code: water may be added only to dilute high-sugar grape must before fermentation, to help fermentation, and not below 13.5 degrees Baumé.",
+   "source": "https://www.wineaustralia.com/news/articles/water-additions-to-must"
   }
  ],
  "unverified": [
-  "Must and grape must: the Court lists 'grape must' as a term but the fetched pages give no definition. The mix-up line calls must 'unfermented grape juice', which follows from the Court's chaptalization definition ('adding sugar to unfermented grape must') rather than a stated definition.",
+  "Resolved Nov 2, 2026: 'grape must' is now defined from the Wine Spectator glossary (unfermented juice before it becomes wine).",
   "Definitions of hybrid, crossing, clone and mutation: listed as terms in the Court's curriculum guide, but no definitions were found in the sources fetched, so they are left out.",
   "Puncheon and demi-muid sizes come only from the Court's guide; no second source was checked.",
-  "The Court's guide prints Introductory and Certified columns side by side; the PDF text did not always show which column a term sits in, so some terms here may be Certified-level detail.",
-  "Wine Folly timings (14 days for whites, 5–21 days for reds, 15% more wine from pressing, harvest months) are secondary-source generalizations, not Court figures."
+  "Resolved Nov 2, 2026 by reading the PDF pages: macro/meso/microclimate, growing degree-days, parts of the vine, the vine cycle, training systems, Vitis labrusca, the three rosé methods, barrel sizes, other barrel woods and whole-cluster are Certified-column detail. They stay as extra context but are beyond Level 1.",
+  "Wine Folly timings (14 days for whites, 5–21 days for reds, 15% more wine from pressing, harvest months) are secondary-source generalizations, not Court figures.",
+  "Water addition: only Australia's rule (Wine Australia) was checked; US and EU rules were not.",
+  "The Court lists 'diurnal shifts' and 'rain shadow effect' as moderators without defining them; this chapter names them but does not define them."
  ],
  "v3": {
   "video": {
@@ -1084,11 +1563,15 @@
      {
       "big": "PHYLLOXERA",
       "line": "is a tiny vine louse, stopped by American rootstock."
+     },
+     {
+      "big": "WINE LAW",
+      "line": "often decides which grapes are planted, and how."
      }
     ],
     "read": {
      "bigIdea": "Most quality wine comes from one vine species.",
-     "where": "Wine grapes grow on vines of the genus **Vitis**. The species behind most quality wine is **Vitis vinifera**, native to the Mediterranean, Europe and Southwestern Asia. It has about **10,000 varieties**.",
+     "where": "Wine grapes grow on vines of the genus **Vitis**. The species behind most quality wine is **Vitis vinifera**, native to the Mediterranean, Europe and Southwestern Asia. It has about **10,000 varieties**. **Viticulture** is grape growing: what nature gives plus the grower’s decisions, which together shape the wine’s quality.",
      "stopsTitle": "Four things to know",
      "stops": [
       {
@@ -1110,6 +1593,11 @@
        "name": "Choosing a grape",
        "note": "why it’s planted",
        "text": "Growers pick varieties by **regional wine law**, climate, soil and what will sell."
+      },
+      {
+       "name": "Where to plant",
+       "note": "site, goals, law, money",
+       "text": "Choosing a vineyard comes down to the **site**, the producer’s **goals**, **regional wine law** and **money**. In many regions the law also sets which grapes can be grown and how."
       }
      ],
      "visual": 0,
@@ -1154,13 +1642,18 @@
     ],
     "read": {
      "bigIdea": "Where a vine grows shapes how the wine tastes.",
-     "where": "**Climate** is the weather of a place over a long time, not one year’s weather. Most wine regions sit between **30 and 50 degrees latitude**. Places outside that band mostly rely on **climate moderators** like altitude, water and wind. The Court names four climate types: **continental**, **maritime**, **Mediterranean** and **desert/arid**.",
+     "where": "**Climate** is the weather of a place over a long time, not one year’s weather. Most wine regions sit between **30 and 50 degrees latitude**. Places outside that band mostly rely on **climate moderators** like altitude, water and wind. The Court names four climate types: **continental**, **maritime**, **Mediterranean** and **desert/arid**. Climates are also described as **cool**, **moderate**, **warm** or **hot**.",
      "stopsTitle": "Four ideas to know",
      "stops": [
       {
        "name": "Cool vs. warm",
        "note": "the big split",
        "text": "Cool climates give **tart fruit** and **more acidity**. Warm climates give riper fruit and less acidity. Warmer grapes build more sugar, so the wine has **more alcohol**."
+      },
+      {
+       "name": "Moderators and topography",
+       "note": "what bends the climate",
+       "text": "**Climate moderators** change a place’s climate: **altitude**, **diurnal shifts**, **sunshine hours**, **bodies of water**, **wind** and the **rain shadow** effect. **Topography** is the shape of the land: elevation, mountains, hills, valleys and water."
       },
       {
        "name": "Big to small",
@@ -1170,7 +1663,7 @@
       {
        "name": "Soil",
        "note": "drainage, heat, nutrients",
-       "text": "Soil affects drainage, temperature and nutrients, so growers match each grape to a soil. In Bordeaux, **Cabernet Sauvignon** goes in **gravel** and **Merlot** in **clay**."
+       "text": "Soil affects drainage, temperature and nutrients, so growers match each grape to a soil. In Bordeaux, **Cabernet Sauvignon** goes in **gravel** and **Merlot** in **clay**. Soil can drain or hold water, reflect sun, feed the vine, hold heat and resist pests. The Southern Rhône’s famous soil is **galets**."
       },
       {
        "name": "Terroir",
@@ -1215,7 +1708,7 @@
     ],
     "read": {
      "bigIdea": "Every year, the vine runs through the same cycle.",
-     "where": "The vine rests through winter, then buds in spring. It flowers, sets fruit, ripens and is picked. Each year’s crop is called the **vintage**.",
+     "where": "The vine rests through winter, then buds in spring. It flowers, sets fruit, ripens and is picked. Each year’s crop is called the **vintage**. Each vintage can differ in style, quality and price because of the weather. You don’t need to memorize vintages at Level 1.",
      "stopsTitle": "The year, in the Northern Hemisphere",
      "stops": [
       {
@@ -1231,12 +1724,12 @@
       {
        "name": "The grower’s work",
        "note": "all season",
-       "text": "Growers manage the **canopy** (the leaves), water, pests and **yield**. A **green harvest** drops unripe clusters for quality."
+       "text": "Growers manage the **canopy** (the leaves), water, pests and **yield**. A **green harvest** drops unripe clusters for quality. Vines are **trained** to a size and shape that ripens grapes best, and **irrigation** makes sure they get enough water."
       },
       {
        "name": "Harvest",
        "note": "September–November",
-       "text": "Timing depends on weather, wine style and local wine law. Sugar is measured with scales like **Brix**. Grapes don’t keep ripening once they’re picked."
+       "text": "Timing depends on weather, wine style and local wine law. Sugar is measured with scales like **Brix**. Grapes don’t keep ripening once they’re picked. Grapes are picked **by hand** or **by machine** and collected in large or small bins. Ripeness is a range: two growers may call different grapes ripe."
       },
       {
        "name": "Pruning",
@@ -1251,6 +1744,67 @@
      16,
      17,
      21
+    ]
+   },
+   {
+    "name": "The winemaker’s choices",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "VINIFICATION",
+      "line": "is every winery decision from harvest to bottling."
+     },
+     {
+      "big": "MUST",
+      "line": "is the unfermented juice, before it becomes wine."
+     },
+     {
+      "big": "CHAPTALIZATION",
+      "line": "adds sugar to the must for more alcohol."
+     },
+     {
+      "big": "ACIDIFICATION",
+      "line": "adds acid when the grapes come in low on it."
+     },
+     {
+      "big": "TEMPERATURE",
+      "line": "control: whites usually ferment cooler than reds."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every wine starts with the winery’s plan.",
+     "where": "**Vinification** is every decision made in the winery, from **harvest** to **bottling**. The Court lists the questions that come first: the winery’s **goal**, the **style** of wine, its **price point**, any **regional wine laws**, and **sustainability**.",
+     "stopsTitle": "Four choices to know",
+     "stops": [
+      {
+       "name": "The vessel",
+       "note": "wood, steel, concrete",
+       "text": "Wine ferments in **wood**, **stainless steel** or **concrete**. Vessels can be large or small, and oval, round or **egg**-shaped. The Court asks you to weigh how much **oxygen** each lets in and how well it controls **temperature**."
+      },
+      {
+       "name": "Temperature",
+       "note": "cool or warm",
+       "text": "The Court wants you to know why **temperature control** matters for each color and style. Whites usually ferment **cooler** than reds to keep delicate floral aromas."
+      },
+      {
+       "name": "Oxygen",
+       "note": "how much air",
+       "text": "How much **oxygen** the wine meets changes its final style. Oak barrels, for example, let oxygen in slowly, which makes the wine smoother."
+      },
+      {
+       "name": "Fixing the must",
+       "note": "sugar, acid, water",
+       "text": "**Must** is the unfermented juice. **Chaptalization** adds sugar for more alcohol. **Acidification** adds acid for balance. **Water addition** dilutes very sweet must: Australia allows it before fermentation, down to 13.5° Baumé."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Three ways to adjust the must:",
+     "mixup": "**Chaptalization** adds sugar to the must. **Acidification** adds acid."
+    },
+    "check": [
+     37,
+     38,
+     39
     ]
    },
    {
@@ -1354,7 +1908,7 @@
       {
        "name": "Work the cap",
        "note": "during fermentation",
-       "text": "The skins float up and form a **cap**. **Pumping over** gives stronger extraction for rich reds. **Punching down** is gentler, for more subtle reds."
+       "text": "The skins float up and form a **cap**. **Pumping over** gives stronger extraction for rich reds. **Punching down** is gentler, for more subtle reds. The Court lists four levers for **extraction**: punch downs, pump overs, maceration time and fermentation temperature."
       },
       {
        "name": "Press",
@@ -1365,6 +1919,11 @@
        "name": "Age and bottle",
        "note": "barrel, steel, concrete",
        "text": "Reds age in barrels, concrete, glass, clay or steel. Wooden barrels change the wine the most. Then the wine is fined or filtered and bottled."
+      },
+      {
+       "name": "Carbonic maceration",
+       "note": "whole bunches",
+       "text": "Whole bunches go into a tank filled with **carbon dioxide**, and fermentation starts **inside each berry**. It makes light, fresh, fruity reds and is most linked to **Beaujolais**."
       }
      ],
      "visual": 0,
@@ -1484,7 +2043,12 @@
       {
        "name": "Lees",
        "note": "dead yeast",
-       "text": "**Lees** are dead yeast particles. Stirring them adds bread- or beer-like flavor and a **creamier** texture."
+       "text": "**Lees** are dead yeast particles. Stirring them adds bread- or beer-like flavor and a **creamier** texture. As the dead yeast breaks down (**autolysis**), it adds richness, creaminess and bread-dough or brioche aromas. It’s key to traditional-method sparkling wine like Champagne."
+      },
+      {
+       "name": "How long, and in what",
+       "note": "cost and time",
+       "text": "Aging choices weigh **cost**, the **age of the barrels** and **how long** the wine ages. Oak flavor drops each time a barrel is reused."
       }
      ],
      "visual": 0,
@@ -1496,6 +2060,69 @@
      27,
      28,
      29
+    ]
+   },
+   {
+    "name": "Bottling and packaging",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FINING",
+      "line": "adds an agent that pulls haze down so it can be removed."
+     },
+     {
+      "big": "FILTERING",
+      "line": "pushes wine through a screen or pad."
+     },
+     {
+      "big": "STELVIN",
+      "line": "is a screw cap. Vinolok is a glass top."
+     },
+     {
+      "big": "BOXES AND KEGS",
+      "line": "are wine containers too, not just bottles."
+     }
+    ],
+    "read": {
+     "bigIdea": "Before it’s sold, wine is cleared, sealed and labeled.",
+     "where": "Before bottling, most wine is **clarified**. The Court wants you to know the difference between **fining** and **filtration**. Then the winery picks a container, a closure and a label.",
+     "stopsTitle": "From tank to shelf",
+     "stops": [
+      {
+       "name": "Fining",
+       "note": "add, then settle",
+       "text": "**Fining** adds an agent such as **bentonite** clay, **egg whites**, gelatin, casein or isinglass. It binds to the haze and sinks, so it can be removed."
+      },
+      {
+       "name": "Filtering",
+       "note": "strain it",
+       "text": "**Filtering** pumps wine through a screen or pad to remove leftover grape and yeast bits. Most wines are filtered for clarity and stability, though some winemakers think it strips flavor."
+      },
+      {
+       "name": "Containers",
+       "note": "bottle, keg, box",
+       "text": "Wine is sold in **bottles**, **kegs** and **boxed wine**."
+      },
+      {
+       "name": "Closures",
+       "note": "four to know",
+       "text": "**Cork**, **composites**, **screw cap** (**Stelvin**) and **glass top** (**Vinolok**)."
+      },
+      {
+       "name": "Labels",
+       "note": "design and law",
+       "text": "Label design and **capsule** color are the winery’s choice, but every label must follow **government label laws**."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The four closures the Court lists:",
+     "mixup": "**Fining** adds something that sinks the haze. **Filtering** strains the wine through a pad or screen.",
+     "sayIt": "This one has a screw cap, so no corkscrew needed."
+    },
+    "check": [
+     42,
+     43,
+     44
     ]
    }
   ]

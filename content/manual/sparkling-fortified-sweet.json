@@ -3,8 +3,8 @@
  "slug": "sparkling-fortified-sweet",
  "title": "Sparkling, fortified and sweet",
  "script": "Chapter ten",
- "lead": "How bubbles, added spirit and concentrated sugar change a wine. Sparkling methods, Port, Sherry, Madeira, and the noble-rot, frozen and dried-grape sweet wines.",
- "minutes": 25,
+ "lead": "How bubbles, added spirit and concentrated sugar change a wine. Sparkling methods, Port, Sherry, Madeira, and the noble-rot, frozen and dried-grape sweet wines, plus Hungary's Tokaji Aszú.",
+ "minutes": 29,
  "intro": {
   "script": "Start here",
   "title": "OTHER WAYS TO MAKE WINE",
@@ -21,6 +21,178 @@
    {
     "name": "Sweet",
     "note": "noble rot, drying or freezing concentrates the sugar"
+   }
+  ]
+ },
+ "court": {
+  "section": 10,
+  "outline": [
+   "Sparkling Wine: Review of methods, Champagne",
+   "Fortified Wine: Review of methods, Sherry, Port, Madeira, Vins Doux Naturels",
+   "Sweet Wines: Review of Methods, Review of previous sweet wines discussed, Tokaji Aszú - Hungary"
+  ],
+  "outcome": "After studying this section, a student will understand the different ways sparkling wines are made. After studying this section, a student will learn the different methods of sweet wine production and will review the most well-known wines and their grape varieties. After studying this section, a student will be able to identify major fortified wines, their styles, and the grape varieties typically used in their production. After studying this section, a student will be able to recognize Tokaji as a wine from Hungary and one of the great sweet wines of the world.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "World Sparkling · Winemaking: Classic / Traditional Method",
+    "guide": "Its other names, the steps from cuvée to dosage, autolysis; Champagne, Crémant, Cava, Franciacorta.",
+    "where": "Sparkling methods; Champagne, Crémant, Cava and Franciacorta"
+   },
+   {
+    "topic": "World Sparkling · Winemaking: Transfer Method",
+    "guide": "Bottle-fermented, then emptied into tanks and rebottled; keeps lees flavor, no riddling; big and tiny bottles.",
+    "where": "Sparkling methods (lees flavor added)"
+   },
+   {
+    "topic": "World Sparkling · Winemaking: Charmat Method - Cuve Close",
+    "guide": "Tank fermentation in 4-5 days, cheap and fast (90 days possible), best for aromatic grapes; Prosecco, Moscato d'Asti.",
+    "where": "Sparkling methods (90 days added); Prosecco"
+   },
+   {
+    "topic": "World Sparkling · Winemaking: Méthode Ancestrale",
+    "guide": "First fermentation paused and finished in bottle; no disgorging.",
+    "where": "Sparkling methods"
+   },
+   {
+    "topic": "World Sparkling · Label Terms",
+    "guide": "Crémant: French traditional method outside Champagne; Bourgogne, Alsace, Loire.",
+    "where": "Champagne, Crémant, Cava and Franciacorta"
+   },
+   {
+    "topic": "World Sparkling · General Terms",
+    "guide": "Gyropalette.",
+    "where": "Sparkling methods"
+   },
+   {
+    "topic": "Sweet Wines · Geography: Appellation - Noble Rot",
+    "guide": "Sauternes; Alsace VT and SGN; Auslese, BA, TBA; Quarts de Chaume, Bonnezeaux, Vouvray Moelleux; Tokaji Aszú.",
+    "where": "Noble rot; Tokaji Aszú · Hungary"
+   },
+   {
+    "topic": "Sweet Wines · Geography: Appellation - Drying",
+    "guide": "Vin Santo, Recioto di Soave, Recioto della Valpolicella.",
+    "where": "Ice, late harvest and dried grapes"
+   },
+   {
+    "topic": "Sweet Wines · Geography: Appellation - Freezing",
+    "guide": "Eiswein (Germany, Austria); Icewine (Canada, Ontario VQA).",
+    "where": "Ice, late harvest and dried grapes"
+   },
+   {
+    "topic": "Sweet Wines · Winemaking",
+    "guide": "Stop the yeast by chilling and filtering, or chilling and adding SO2.",
+    "where": "Noble rot"
+   },
+   {
+    "topic": "Sweet Wines · Wine: Grape Variety Names - Noble Rot",
+    "guide": "Sauternes Sémillon; Alsace Riesling, Pinot Gris, Gewürztraminer, Muscat; Loire Chenin Blanc; Tokaji Furmint.",
+    "where": "Noble rot"
+   },
+   {
+    "topic": "Sweet Wines · Wine: Grape Variety Names - Freezing",
+    "guide": "Germany: Riesling. Canada: Riesling, Cabernet Franc.",
+    "where": "Ice, late harvest and dried grapes"
+   },
+   {
+    "topic": "Sweet Wines · Label Terms",
+    "guide": "Recioto, Vendange Tardive, Sélection de Grains Nobles, Moelleux.",
+    "where": "Noble rot; Ice, late harvest and dried grapes"
+   },
+   {
+    "topic": "Sweet Wines · General Terms",
+    "guide": "Noble rot is Botrytis cinerea.",
+    "where": "Noble rot"
+   },
+   {
+    "topic": "Fortified · Geography: Appellation - Port",
+    "guide": "Same area as the Douro DOP, Portugal.",
+    "where": "Port; added: How fortified wines are made"
+   },
+   {
+    "topic": "Fortified · Geography: Appellation - Madeira",
+    "guide": "Island near North Africa.",
+    "where": "Madeira and Vins Doux Naturels"
+   },
+   {
+    "topic": "Fortified · Geography: Appellation - Sherry",
+    "guide": "Southwest Spain.",
+    "where": "Sherry"
+   },
+   {
+    "topic": "Fortified · Geography: Appellation - Marsala",
+    "guide": "Sicily, Italy.",
+    "where": "added: How fortified wines are made"
+   },
+   {
+    "topic": "Fortified · Geography: Appellation - French Fortified Wines",
+    "guide": "Banyuls AOP (Roussillon); Muscat de Beaumes-de-Venise AOP (Southern Rhône).",
+    "where": "Madeira and Vins Doux Naturels; How fortified wines are made"
+   },
+   {
+    "topic": "Fortified · Soil",
+    "guide": "Port schist; Madeira volcanic; Sherry albariza (chalk).",
+    "where": "Port; Sherry; added: How fortified wines are made (volcanic)"
+   },
+   {
+    "topic": "Fortified · Winemaking - Port",
+    "guide": "Fortified during fermentation.",
+    "where": "Port"
+   },
+   {
+    "topic": "Fortified · Winemaking - Madeira",
+    "guide": "Fortified during fermentation, oxidized, exposed to heat.",
+    "where": "Madeira and Vins Doux Naturels"
+   },
+   {
+    "topic": "Fortified · Winemaking - Sherry",
+    "guide": "Fortified after fermentation, oxidized.",
+    "where": "Sherry; added: How fortified wines are made"
+   },
+   {
+    "topic": "Fortified · Wine: Grape Variety Names",
+    "guide": "Port Touriga Nacional; Madeira's five; Sherry Palomino, Moscatel, PX; Banyuls Grenache; Beaumes-de-Venise Muscat.",
+    "where": "Port; Sherry; Madeira and Vins Doux Naturels"
+   },
+   {
+    "topic": "Fortified · Style - Port",
+    "guide": "Ruby: basic Ruby, LBV, Single Quinta, Vintage. Aged Tawny: 10, 20, 30, 40 years.",
+    "where": "Port (Single Quinta added to the read)"
+   },
+   {
+    "topic": "Fortified · Style - Madeira",
+    "guide": "Driest to sweetest: Sercial, Verdelho, Bual, Malmsey.",
+    "where": "Madeira and Vins Doux Naturels"
+   },
+   {
+    "topic": "Fortified · Style - Sherry",
+    "guide": "Biological aging vs. oxidative aging.",
+    "where": "Sherry"
+   },
+   {
+    "topic": "Hungary · Geography: Location",
+    "guide": "Hungary lies east of Austria.",
+    "where": "added: Tokaji Aszú · Hungary"
+   },
+   {
+    "topic": "Hungary · Grape Growing",
+    "guide": "Botrytis-affected grapes.",
+    "where": "added: Tokaji Aszú · Hungary"
+   },
+   {
+    "topic": "Hungary · Winemaking",
+    "guide": "Sweet wine making.",
+    "where": "added: Tokaji Aszú · Hungary"
+   },
+   {
+    "topic": "Hungary · Wine: White Grape Variety Names",
+    "guide": "Furmint (white).",
+    "where": "added: Tokaji Aszú · Hungary; Noble rot"
+   },
+   {
+    "topic": "Hungary · Wine Law / Appellation",
+    "guide": "Tokaj.",
+    "where": "added: Tokaji Aszú · Hungary"
    }
   ]
  },
@@ -51,7 +223,7 @@
     "The traditional method is also called the Champagne method, méthode traditionnelle or metodo classico.",
     "Traditional method: the second fermentation happens in the bottle, and dosage uses liqueur d'expédition.",
     "Transfer method: same as traditional until the second fermentation ends, then the wine is emptied into tanks under pressure, filtered and rebottled. No riddling. Used for very large and very small bottles.",
-    "Charmat (tank) method: the second fermentation happens in pressurized tanks in 4-5 days. Examples: Prosecco, Moscato d'Asti.",
+    "Charmat (tank) method: the second fermentation happens in pressurized tanks in 4-5 days. Examples: Prosecco, Moscato d'Asti. It can go from harvest to bottle in as little as 90 days.",
     "Méthode ancestrale: the first fermentation is paused, the wine is bottled and finishes fermenting in the bottle. No disgorging needed."
    ],
    "visuals": [
@@ -213,6 +385,81 @@
    ]
   },
   {
+   "name": "How fortified wines are made",
+   "lines": [
+    {
+     "label": "During or after",
+     "text": "Alcohol added during fermentation stops the yeast and keeps grape sugar: Port, Madeira and the Vins Doux Naturels. Sherry is fortified after fermentation."
+    },
+    {
+     "label": "Where",
+     "text": "Port: the Douro, Portugal. Sherry: southwest Spain. Madeira: an island near North Africa. Marsala: Sicily. Vins Doux Naturels: southern France."
+    }
+   ],
+   "chips": {
+    "label": "Fortified wines",
+    "items": [
+     "Port",
+     "Sherry",
+     "Madeira",
+     "Marsala",
+     "Banyuls",
+     "Muscat de Beaumes-de-Venise"
+    ]
+   },
+   "know": [
+    "Port and Madeira are fortified during fermentation; Sherry is fortified after fermentation.",
+    "Mutage is the French word for stopping fermentation by adding alcohol; the Rhône's Vins Doux Naturels use it.",
+    "Soils: Port on schist, Madeira on volcanic soil, Sherry on albariza (chalk).",
+    "Marsala is a fortified wine from Sicily, Italy.",
+    "Madeira is also oxidized and heated; Sherry is oxidized."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "DURING",
+       "title": "Spirit stops the yeast",
+       "text": "Grape sugar is kept\nPort, Madeira\nVins Doux Naturels (mutage)"
+      },
+      {
+       "label": "AFTER",
+       "title": "Spirit goes into finished wine",
+       "text": "Added once fermentation is done\nSherry\nThen aged under flor or with air"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Five fortified wines and where they're from",
+     "rows": [
+      {
+       "name": "Sherry",
+       "meta": "southwest Spain · albariza"
+      },
+      {
+       "name": "Port",
+       "meta": "Douro, Portugal · schist"
+      },
+      {
+       "name": "Madeira",
+       "meta": "island near North Africa · volcanic"
+      },
+      {
+       "name": "Vins Doux Naturels",
+       "meta": "Roussillon (Banyuls), Southern Rhône (Muscat)"
+      },
+      {
+       "name": "Marsala",
+       "meta": "Sicily, Italy"
+      }
+     ],
+     "note": "The Court's Introductory list."
+    }
+   ]
+  },
+  {
    "name": "Port",
    "book": "wine/portugal/douro",
    "lines": [
@@ -363,7 +610,7 @@
    "lines": [
     {
      "label": "Madeira",
-     "text": "An island near North Africa; Funchal is the main city. The wine is fortified during fermentation, then oxidized and exposed to heat."
+     "text": "A volcanic island near North Africa; Funchal is the main city. The wine is fortified during fermentation, then oxidized and exposed to heat."
     },
     {
      "label": "Vins Doux Naturels",
@@ -562,6 +809,64 @@
      ]
     }
    ]
+  },
+  {
+   "name": "Tokaji Aszú · Hungary",
+   "lines": [
+    {
+     "label": "Where",
+     "text": "Tokaj is a wine region of Hungary, the country east of Austria. Its grape is the white Furmint."
+    },
+    {
+     "label": "How",
+     "text": "Aszú berries, shriveled by noble rot, are picked one by one, soaked in must or new wine, then gently pressed."
+    }
+   ],
+   "chips": {
+    "label": "Words to know",
+    "items": [
+     "Tokaj",
+     "Tokaji Aszú",
+     "Furmint",
+     "Aszú",
+     "Puttonyos"
+    ]
+   },
+   "know": [
+    "Tokaji comes from Tokaj, in Hungary, east of Austria.",
+    "Its grape is Furmint, a white grape.",
+    "Aszú berries are shriveled by botrytis and picked one by one.",
+    "An Aszú needs at least 120 g/l of sugar and 18 months in wooden casks.",
+    "Puttonyos were the baskets for the aszú berries; 6 puttonyos now means 150 g/l or more."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "From berry to bottle",
+     "items": [
+      {
+       "name": "Pick",
+       "text": "Aszú berries, one by one",
+       "meta": "noble rot"
+      },
+      {
+       "name": "Soak",
+       "text": "In must, fermenting must or new wine",
+       "meta": "then press gently"
+      },
+      {
+       "name": "Age",
+       "text": "At least 18 months in wooden casks",
+       "meta": "after fermentation"
+      },
+      {
+       "name": "Release",
+       "text": "No earlier than January 1 of the third year",
+       "meta": "after harvest"
+      }
+     ]
+    }
+   ]
   }
  ],
  "mixups": [
@@ -586,7 +891,7 @@
    "why": "Eiswein grapes are frozen and free of noble rot; TBA grapes are shriveled, usually by noble rot."
   }
  ],
- "sources": "Court of Master Sommeliers Americas Introductory Course Guide (1.2024) and Curriculum Guide (8.2023); Comité Champagne; Consejo Regulador DO Cava; Consorzio Franciacorta; Consorzio Prosecco DOC; IVDP (Port); Consejo Regulador Jerez-Xérès-Sherry; IVBAM (Madeira); Magyar Bor (Tokaj); Wines of Germany USA; VQA Ontario and Wine Country Ontario; Wine Folly as a secondary source. Checked Oct 31, 2026.",
+ "sources": "Court of Master Sommeliers Americas Introductory Course Guide (1.2024) and Curriculum Guide (8.2023); Comité Champagne; Consejo Regulador DO Cava; Consorzio Franciacorta; Consorzio Prosecco DOC; IVDP (Port); Consejo Regulador Jerez-Xérès-Sherry; IVBAM (Madeira); Magyar Bor (Tokaj); Wines of Germany USA; VQA Ontario and Wine Country Ontario; Wine Folly as a secondary source. Checked Oct 31, 2026. Aligned with the Court's Introductory column, plus Inter Rhône's glossary for mutage, Nov 2, 2026.",
  "cards": [
   {
    "q": "In the traditional method, where does the second fermentation happen?",
@@ -927,6 +1232,116 @@
     "Grape spirit is added"
    ],
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  },
+  {
+   "q": "When is Sherry fortified?",
+   "answer": "After fermentation",
+   "wrong": [
+    "Before fermentation",
+    "During fermentation",
+    "Only at bottling"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "q": "What is mutage?",
+   "answer": "Stopping fermentation by adding alcohol",
+   "wrong": [
+    "Turning bottles to collect sediment",
+    "Heating wine in tanks",
+    "Blending wines from several years"
+   ],
+   "source": "https://www.vins-rhone.com/en/wine-school/glossary/mutage"
+  },
+  {
+   "q": "Which fortified wine comes from Sicily?",
+   "answer": "Marsala",
+   "wrong": [
+    "Madeira",
+    "Banyuls",
+    "Port"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "q": "Which soil does the Court list for Madeira?",
+   "answer": "Volcanic",
+   "wrong": [
+    "Schist",
+    "Albariza (chalk)",
+    "Terra rossa"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "q": "Which soil does the Court list for Port?",
+   "answer": "Schist",
+   "wrong": [
+    "Volcanic",
+    "Albariza (chalk)",
+    "Gravel"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "q": "With the Charmat method, how short can the time from harvest to bottling be?",
+   "answer": "About 90 days",
+   "wrong": [
+    "9 months",
+    "15 months",
+    "3 years"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "q": "Where is Hungary, per the Court?",
+   "answer": "East of Austria",
+   "wrong": [
+    "Between France and Spain",
+    "North of Germany",
+    "South of Italy"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=54"
+  },
+  {
+   "q": "How are aszú berries picked?",
+   "answer": "One by one",
+   "wrong": [
+    "Machine-harvested as whole clusters",
+    "Frozen on the vine at -8°C",
+    "Before they ripen, to keep acidity"
+   ],
+   "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
+  },
+  {
+   "q": "How long must Tokaji Aszú age in wooden casks, at least?",
+   "answer": "18 months",
+   "wrong": [
+    "3 months",
+    "5 years",
+    "It may not touch wood"
+   ],
+   "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
+  },
+  {
+   "q": "What were puttonyos?",
+   "answer": "Baskets the aszú berries were gathered in",
+   "wrong": [
+    "Wooden casks in Tokaj cellars",
+    "Villages of the Tokaj region",
+    "Glasses for serving Aszú"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=54"
+  },
+  {
+   "q": "The Court says the transfer method is used for which bottles?",
+   "answer": "Extra-large and extra-small formats",
+   "wrong": [
+    "Only standard 750 ml bottles",
+    "Only half bottles of sweet wine",
+    "Clear bottles for rosé"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
   }
  ],
  "facts": [
@@ -1105,17 +1520,44 @@
   {
    "fact": "Prosecco DOC Consortium (Treviso, Italy): Prosecco DOC closed 2025 with 667 million bottles, the best-selling Italian sparkling wine in the world.",
    "source": "https://www.prosecco.wine/en/prosecco/"
+  },
+  {
+   "fact": "Court (Introductory, Fortified Wines): Marsala - Sicily, Italy.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "fact": "Inter Rhône (Rhône Valley Vineyards glossary): mutage stops the alcoholic fermentation by adding alcohol to get a sweet wine rich in residual sugar; called fortification in English; used for the Vins Doux Naturels of Rasteau and Muscat de Beaumes-de-Venise.",
+   "source": "https://www.vins-rhone.com/en/wine-school/glossary/mutage"
+  },
+  {
+   "fact": "Court (Introductory, Hungary): Hungary is located east of Austria; grape growing - botrytis-affected grapes; winemaking - sweet wine making; white grape - Furmint; appellation - Tokaj. Learning outcome: recognize Tokaji as a wine from Hungary and one of the great sweet wines of the world.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=54"
+  },
+  {
+   "fact": "Court (Certified, Hungary): puttonyos is the name of the basket in which the aszú grapes were traditionally gathered; aszú are shrivelled, botrytis-affected berries; grapes Furmint and Hárslevelű.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=54"
+  },
+  {
+   "fact": "Magyar Bor (bor.hu): aszú berries are picked individually and soaked in must, fermenting must or fully fermented new wine, then gently pressed; Aszú must age in wooden casks for at least 18 months after fermentation and may be released no earlier than 1 January of the third year after harvest; 6 puttony (above 150 g/l) may still be advertised.",
+   "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
+  },
+  {
+   "fact": "Court (Introductory, World Sparkling Wines): with the Charmat method it can be as little as 90 days from harvest to final bottling; the transfer method keeps lees contact for flavor and is used for extra large and extra small format bottles.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
   }
  ],
  "unverified": [
   "Grape lists for Cava (Macabeo, Xarel·lo, Parellada) were not confirmed on a fetched Cava DO page, so they are left out.",
   "No official Champagne or Crémant body page was used for Crémant rules; the definition comes from the Court Curriculum Guide only.",
-  "Vins Doux Naturels production method (how and when spirit is added) was not confirmed from an official source; only the Court's examples and grapes are used.",
+  "Vins Doux Naturels method: Inter Rhône confirms mutage (alcohol added to stop fermentation) for the Rhône's VDNs, including Muscat de Beaumes-de-Venise; no Roussillon body page was fetched for Banyuls, so the chapter ties mutage only to the Rhône.",
   "Sauternes, Alsace VT/SGN and Loire sweet-wine details come from the Court Curriculum Guide only; no Bordeaux, Alsace or Loire body page was fetched.",
   "Grapes for Vin Santo (Trebbiano), Recioto di Soave (Garganega) and Recioto della Valpolicella (Corvina) are in the Court's Certified column, not the Introductory column.",
   "The Court's Curriculum Guide gives a fortified by-the-glass pour as '2 oz (51.9 ml)' and a sweet-wine pour as '2 oz (59.1ml)'; the two ml figures disagree, so neither is used.",
   "The Madeira page used (vinhomadeira.com, IVBAM) is in Portuguese; facts were translated.",
-  "Tokaj facts come from bor.hu (Magyar Bor, Hungarian wine promotion site), not from the Tokaj product specification itself."
+  "Tokaj facts come from bor.hu (Magyar Bor, Hungarian wine promotion site), not from the Tokaj product specification itself.",
+  "Marsala appears in the Court's Introductory column (Sicily, Italy) but no Marsala consortium page was fetched; its styles (Secco, Semi-Secco, Dolce) are Certified-only and left out.",
+  "The Tokaji section and the Noble rot section share one Wine Folly video (4bXuYPIUaMM, about Hungarian wine); no second video from an approved channel covers noble rot or Tokaji.",
+  "Champagne itself is taught in Chapter 4 (France); this chapter covers it only as a traditional-method example. The France - Champagne rows of the Curriculum Guide are not mapped here."
  ],
  "v3": {
   "video": {
@@ -1168,12 +1610,12 @@
       {
        "name": "Transfer method",
        "note": "very big and very small bottles",
-       "text": "Same as traditional until the second fermentation ends. Then the wine is emptied into tanks under pressure, filtered and rebottled, so there is **no riddling**."
+       "text": "Same as traditional until the second fermentation ends. Then the wine is emptied into tanks under pressure, filtered and rebottled, so there is **no riddling**. The wine still gains flavor from its **lees**."
       },
       {
        "name": "Charmat (tank) method",
        "note": "Prosecco, Moscato d'Asti",
-       "text": "The second fermentation happens in **pressurized tanks** and takes 4 to 5 days. No riddling or disgorging saves time and money. The Court calls it the best method for **aromatic grapes**."
+       "text": "The second fermentation happens in **pressurized tanks** and takes 4 to 5 days. No riddling or disgorging saves time and money: it can be as little as **90 days** from harvest to bottle. The Court calls it the best method for **aromatic grapes**."
       },
       {
        "name": "Méthode ancestrale",
@@ -1322,6 +1764,73 @@
     ]
    },
    {
+    "name": "How fortified wines are made",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DURING",
+      "line": "fermentation: Port and Madeira keep their grape sugar."
+     },
+     {
+      "big": "AFTER",
+      "line": "fermentation: Sherry gets its spirit once the wine is made."
+     },
+     {
+      "big": "MUTAGE",
+      "line": "is French for stopping fermentation by adding alcohol."
+     },
+     {
+      "big": "SOILS",
+      "line": "Port on schist, Madeira volcanic, Sherry on albariza."
+     },
+     {
+      "big": "MARSALA",
+      "line": "is the fortified wine of Sicily."
+     }
+    ],
+    "read": {
+     "bigIdea": "When the spirit goes in shapes each fortified wine.",
+     "where": "A fortified wine has **alcohol added**. Added **during** fermentation, it stops the yeast and keeps the grape's sugar; the French call this **mutage**. Added **after** fermentation, it goes into finished wine, as with **Sherry**.",
+     "stopsTitle": "Five wines, in the Court's order",
+     "stops": [
+      {
+       "name": "Sherry",
+       "note": "southwest Spain",
+       "text": "Fortified **after** fermentation, then aged under flor or with air. Its best soil is white **albariza** chalk."
+      },
+      {
+       "name": "Port",
+       "note": "the Douro, Portugal",
+       "text": "Fortified **during** fermentation with grape brandy, on **schist** soil. The grape to know is **Touriga Nacional**."
+      },
+      {
+       "name": "Madeira",
+       "note": "island near North Africa",
+       "text": "Fortified **during** fermentation, then **oxidized** and **heated**. The island's soil is **volcanic**."
+      },
+      {
+       "name": "Vins Doux Naturels",
+       "note": "southern France",
+       "text": "**Banyuls** (Roussillon, **Grenache**) and **Muscat de Beaumes-de-Venise** (Southern Rhône, **Muscat**). The Rhône's VDNs keep their sweetness by **mutage**."
+      },
+      {
+       "name": "Marsala",
+       "note": "Sicily, Italy",
+       "text": "Italy's fortified wine to know, from **Sicily**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Two times to add the spirit:",
+     "mixup": "**Port** is fortified **during** fermentation. **Sherry** is fortified **after** it.",
+     "sayIt": "This Port was fortified mid-fermentation, which keeps it sweet."
+    },
+    "check": [
+     34,
+     35,
+     36
+    ]
+   },
+   {
     "name": "Port",
     "video": {
      "youtubeId": "wa3uPeCmb6Q",
@@ -1359,7 +1868,7 @@
       {
        "name": "Ruby style",
        "note": "kept young and red",
-       "text": "Keeps the deep red color and fruit of a young wine. In rising order of quality: **Ruby**, **Reserve**, **LBV**, **Vintage**."
+       "text": "Keeps the deep red color and fruit of a young wine. In rising order of quality: **Ruby**, **Reserve**, **LBV**, **Vintage**. The Court's Ruby list also names **Single Quinta**."
       },
       {
        "name": "LBV",
@@ -1487,7 +1996,7 @@
     ],
     "read": {
      "bigIdea": "Madeira is fortified wine aged with heat and air.",
-     "where": "Madeira is an island near **North Africa**; its main city is **Funchal**. The wine is fortified **during** fermentation with 96% wine alcohol, and the timing sets the sweetness. Then it is **oxidized** and exposed to **heat**.",
+     "where": "Madeira is a **volcanic** island near **North Africa**; its main city is **Funchal**. The wine is fortified **during** fermentation with 96% wine alcohol, and the timing sets the sweetness. Then it is **oxidized** and exposed to **heat**.",
      "stopsTitle": "Two ways to heat it, then France",
      "stops": [
       {
@@ -1658,6 +2167,73 @@
      28,
      32,
      33
+    ]
+   },
+   {
+    "name": "Tokaji Aszú · Hungary",
+    "video": {
+     "youtubeId": "4bXuYPIUaMM",
+     "title": "The Region That Changed History (Learn Hungarian Wine)",
+     "by": "Wine Folly",
+     "length": "9:11"
+    },
+    "keyPoints": [
+     {
+      "big": "TOKAJI",
+      "line": "is Hungary's great sweet wine, from the Tokaj region."
+     },
+     {
+      "big": "HUNGARY",
+      "line": "lies east of Austria."
+     },
+     {
+      "big": "FURMINT",
+      "line": "is the white grape behind Tokaji."
+     },
+     {
+      "big": "ASZÚ",
+      "line": "berries are shriveled by botrytis and picked one by one."
+     },
+     {
+      "big": "120 G/L",
+      "line": "is the least sugar an Aszú can have."
+     }
+    ],
+    "read": {
+     "bigIdea": "Tokaji Aszú is Hungary's great noble-rot wine.",
+     "where": "**Tokaj** is a wine region in **Hungary**, the country east of **Austria**. The Court calls its **Tokaji** one of the great sweet wines of the world, made from **botrytis**-affected grapes. The grape to know is **Furmint**, a white.",
+     "stopsTitle": "Four steps to an Aszú",
+     "stops": [
+      {
+       "name": "Pick",
+       "note": "berry by berry",
+       "text": "**Aszú** berries, shriveled by noble rot, are picked **one at a time**."
+      },
+      {
+       "name": "Soak and press",
+       "note": "in must or new wine",
+       "text": "The berries soak in must, fermenting must or new wine, then are gently pressed."
+      },
+      {
+       "name": "Age",
+       "note": "in wood",
+       "text": "At least **18 months** in wooden casks after fermentation. It can't be released before January 1 of the third year after harvest."
+      },
+      {
+       "name": "The label",
+       "note": "sugar and puttonyos",
+       "text": "Since 2013 an Aszú needs at least **120 g/l** of sugar. **Puttonyos**, the old baskets for the berries, live on as **6 puttonyos**: 150 g/l or more."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "From berry to bottle:",
+     "mixup": "**Tokaj** is the place. **Tokaji** is the wine from there.",
+     "sayIt": "A Tokaji Aszú, Hungary's famous sweet wine."
+    },
+    "check": [
+     40,
+     41,
+     42
     ]
    }
   ]

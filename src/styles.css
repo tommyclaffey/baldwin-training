@@ -1214,6 +1214,29 @@ body.eip-lock { overflow: hidden; }
 .carousel.dragging { cursor: grabbing; user-select: none; }
 .carousel.dragging * { pointer-events: none; }
 @media (max-width: 859px) { [data-name="Carousel · Key points"] > * { width: 78vw !important; max-width: 320px; } }
+/* phones: the general "pair mid tiles into a grid" and "stack rows" rules must not reshape these (Nov 2: the key point
+   carousel became a grid and cut off words like "TRADITIONAL"). The repeated [data-name] only raises specificity. */
+[data-name="Carousel · Key points"][data-name][data-name][data-name] { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; }
+@media (max-width: 859px) {
+  [data-name="Carousel · Key points"][data-name][data-name][data-name] > * { flex: 0 0 auto !important; width: 72vw !important; max-width: 300px !important; }
+  [data-name="Key points"][data-name][data-name][data-name] > [data-name="Head"], [data-name="Key points"] > [data-name="Head"][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: nowrap !important; align-items: center !important; justify-content: space-between !important; gap: 8px !important; }
+  [data-name="Carousel controls"][data-name][data-name][data-name] { display: flex !important; flex-direction: row !important; gap: 10px !important; flex-wrap: nowrap !important; align-items: center !important; width: auto !important; }
+}
+/* what the Court expects (Nov 2): the copper rule stays on the left, the head stays a row */
+[data-name="Court · What the Court expects"][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: nowrap !important; align-items: stretch !important; }
+[data-name="Court · What the Court expects"][data-name][data-name][data-name] { position: relative !important; padding-left: 4px !important; }
+[data-name="Court · What the Court expects"] > [data-name="Rule"][data-name][data-name][data-name] { position: absolute !important; left: 0 !important; top: 0 !important; bottom: 0 !important; height: 100% !important; min-height: 100% !important; max-height: none !important; width: 4px !important; margin: 0 !important; }
+[data-name="Court · What the Court expects"] [data-name="Head"][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: wrap !important; align-items: center !important; }
+[data-name="Court · What the Court expects"] [data-name^="Asks · "][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: nowrap !important; align-items: flex-start !important; }
+/* From the Court (Nov 2): the tag row stays a row; on phones each level swipes sideways instead of 12 cards in a stack */
+[data-name^="Doc · "] > [data-name="Top"][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: nowrap !important; align-items: center !important; }
+@media (max-width: 859px) {
+  [data-name="Docs"][data-name][data-name][data-name] { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 12px !important; }
+  [data-name="Docs"]::-webkit-scrollbar { display: none; }
+  [data-name="Docs"][data-name][data-name][data-name] > [data-name^="Doc · "] { width: 72vw !important; max-width: 300px !important; flex: 0 0 auto !important; scroll-snap-align: start; }
+  [data-name="From the Court"] > [data-name="Head"][data-name][data-name][data-name] { flex-direction: column !important; align-items: flex-start !important; gap: 6px !important; }
+  [data-name="From the Court"] > [data-name="Head"] > * { flex: none !important; }
+}
 /* lesson: Mark Complete + Up next (Nov 2) */
 .complete-toggle { display: inline-flex; align-items: center; gap: 12px; height: 48px; padding: 0 18px 0 12px; border-radius: 999px; border: 1px solid #4A4540; background: transparent; color: #F2EEE7; font: 600 15px 'Archivo', sans-serif; cursor: pointer; flex: none; white-space: nowrap; }
 .complete-toggle .ct-box { width: 24px; height: 24px; border-radius: 7px; border: 2px solid #B8AFA3; display: grid; place-items: center; font: 800 14px 'Archivo', sans-serif; color: #fff; }

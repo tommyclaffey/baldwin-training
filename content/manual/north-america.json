@@ -28,6 +28,315 @@
    }
   ]
  },
+ "court": {
+  "section": 8,
+  "outline": [
+   "United States",
+   "California",
+   "Oregon",
+   "Washington",
+   "New York State"
+  ],
+  "outcome": "After studying this section, a student will know major counties of the North Coast of California, selected AVAs within them, and understand the relation of climate to the grape varieties grown. After studying this section, a student will know selected counties of the Central Coast of California and the major AVAs within them. Students will know basic wine labeling laws and understand the relationship of climate to the grape varieties grown. After studying this section, a student will understand the climate, climate moderators, and major grape varieties grown in New York State. After studying this section, a student will understand the general climate, grapes grown, wine law, and AVAs of the Columbia Valley of Washington and the Willamette Valley of Oregon. After studying this section, a student will know the general location, climate and style of wine produced in Canada. After studying this section, a student will know the general location, climate and style of wine produced in México's most important wine regions.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "North Coast · Location",
+    "guide": "Coastal counties north of San Pablo Bay.",
+    "where": "California · Sonoma and Mendocino"
+   },
+   {
+    "topic": "North Coast · Appellation",
+    "guide": "Lake; Mendocino (Anderson Valley); Sonoma and Napa AVAs; match AVAs to counties.",
+    "where": "California · Napa Valley; California · Sonoma and Mendocino"
+   },
+   {
+    "topic": "North Coast · Climate",
+    "guide": "Moderate to warm, by distance from the Pacific or San Pablo Bay.",
+    "where": "California · Napa Valley"
+   },
+   {
+    "topic": "North Coast · Physical feature",
+    "guide": "Sonoma, Mayacamas and Vaca ranges, San Pablo Bay, Napa River, Petaluma Wind Gap.",
+    "where": "added: California · Sonoma and Mendocino (Napa River, Vaca range)"
+   },
+   {
+    "topic": "North Coast · Soil",
+    "guide": "Very diverse soils throughout.",
+    "where": "added: California · Sonoma and Mendocino"
+   },
+   {
+    "topic": "North Coast · Winemaking",
+    "guide": "New French (some American) oak; malolactic for Chardonnay; cool-area sparkling.",
+    "where": "California · Napa Valley; California · Sonoma and Mendocino"
+   },
+   {
+    "topic": "North Coast · White grapes",
+    "guide": "Chardonnay, Sauvignon Blanc.",
+    "where": "California · Napa Valley"
+   },
+   {
+    "topic": "North Coast · Red grapes",
+    "guide": "Pinot Noir, Merlot, Cabernet Sauvignon, Zinfandel, Syrah.",
+    "where": "California · Napa Valley; California · Sonoma and Mendocino"
+   },
+   {
+    "topic": "North Coast · Wine law",
+    "guide": "75% variety, 85% AVA, 95% vintage, 95% single vineyard.",
+    "where": "U.S. wine law and labels"
+   },
+   {
+    "topic": "North Coast · Producers",
+    "guide": "Opus One, Robert Mondavi, Beringer.",
+    "where": "California · Napa Valley"
+   },
+   {
+    "topic": "North Coast · History & lore",
+    "guide": "Haraszthy, Mondavi, Tchelistcheff, Paris Tasting of 1976.",
+    "where": "added: California · names, service and food"
+   },
+   {
+    "topic": "North Coast · Service",
+    "guide": "Decant young Cabernet to help it; old Cabernet for sediment.",
+    "where": "added: California · names, service and food"
+   },
+   {
+    "topic": "North Coast · Food pairing",
+    "guide": "Match full-bodied wines with food of equal richness and intensity.",
+    "where": "added: California · names, service and food"
+   },
+   {
+    "topic": "Central Coast · Location",
+    "guide": "Coastal counties south of San Francisco Bay, north of Santa Barbara city.",
+    "where": "California · Central Coast"
+   },
+   {
+    "topic": "Central Coast · Appellation",
+    "guide": "Monterey, San Luis Obispo (Paso Robles), Santa Barbara; know relative positions.",
+    "where": "California · Central Coast"
+   },
+   {
+    "topic": "Central Coast · Climate",
+    "guide": "Monterey and Santa Barbara cool maritime; Paso Robles warm continental.",
+    "where": "California · Central Coast"
+   },
+   {
+    "topic": "Central Coast · Physical feature",
+    "guide": "Wind tunnels in Monterey and Santa Barbara; mountains shelter Paso Robles.",
+    "where": "California · Central Coast"
+   },
+   {
+    "topic": "Central Coast · Winemaking",
+    "guide": "Often new French oak; malolactic for whites, especially Chardonnay.",
+    "where": "added: California · Central Coast"
+   },
+   {
+    "topic": "Central Coast · White grapes",
+    "guide": "Chardonnay, Sauvignon Blanc.",
+    "where": "added: California · Central Coast (Sauvignon Blanc chip)"
+   },
+   {
+    "topic": "Central Coast · Red grapes",
+    "guide": "Pinot Noir, Merlot, Cabernet Sauvignon, Zinfandel, Syrah.",
+    "where": "added: California · Central Coast (Merlot chip)"
+   },
+   {
+    "topic": "Central Coast · Wine law",
+    "guide": "Same federal minimums: 75/85/95/95.",
+    "where": "U.S. wine law and labels"
+   },
+   {
+    "topic": "New York · Location",
+    "guide": "Northeastern United States.",
+    "where": "New York · Finger Lakes"
+   },
+   {
+    "topic": "New York · Appellation",
+    "guide": "Finger Lakes AVA.",
+    "where": "New York · Finger Lakes"
+   },
+   {
+    "topic": "New York · Climate",
+    "guide": "Continental, moderated by lakes and rivers inland, the Atlantic on the coast.",
+    "where": "New York · Finger Lakes"
+   },
+   {
+    "topic": "New York · Physical feature",
+    "guide": "Finger Lakes: deep glacial lakes.",
+    "where": "New York · Finger Lakes"
+   },
+   {
+    "topic": "New York · Grape growing",
+    "guide": "Protect vines from deep winter freezes and summer mold.",
+    "where": "New York · Finger Lakes"
+   },
+   {
+    "topic": "New York · White grapes",
+    "guide": "Riesling, Gewürztraminer, Chardonnay.",
+    "where": "New York · Finger Lakes"
+   },
+   {
+    "topic": "New York · Red grapes",
+    "guide": "Pinot Noir, Merlot, Cabernet Franc.",
+    "where": "New York · Finger Lakes"
+   },
+   {
+    "topic": "New York · History & lore",
+    "guide": "Dr. Konstantin Frank.",
+    "where": "New York · Finger Lakes"
+   },
+   {
+    "topic": "Pacific Northwest · Location",
+    "guide": "Find Willamette Valley by Portland and Columbia Valley by Seattle on a map.",
+    "where": "added: Oregon · Willamette Valley; Washington · Columbia Valley"
+   },
+   {
+    "topic": "Pacific Northwest · Appellation",
+    "guide": "Oregon: Willamette Valley. Washington: Columbia, Yakima, Walla Walla valleys.",
+    "where": "Oregon · Willamette Valley; Washington · Columbia Valley"
+   },
+   {
+    "topic": "Pacific Northwest · Climate",
+    "guide": "Willamette cool Mediterranean, maritime influence; Columbia Valley warm desert.",
+    "where": "Oregon · Willamette Valley; Washington · Columbia Valley"
+   },
+   {
+    "topic": "Pacific Northwest · Physical feature",
+    "guide": "Coast Range rain shadow and Cascades (Oregon); Cascade rain shadow (Columbia Valley).",
+    "where": "Oregon · Willamette Valley; Washington · Columbia Valley"
+   },
+   {
+    "topic": "Pacific Northwest · Grape growing",
+    "guide": "Irrigation needed in the Columbia Valley.",
+    "where": "Washington · Columbia Valley"
+   },
+   {
+    "topic": "Pacific Northwest · Grapes",
+    "guide": "Willamette: Pinot Noir, Pinot Gris, Chardonnay, Riesling. Columbia: Chardonnay, Riesling, Merlot, Cabernet, Syrah.",
+    "where": "Oregon · Willamette Valley; Washington · Columbia Valley"
+   },
+   {
+    "topic": "Pacific Northwest · Wine law",
+    "guide": "Oregon: 90% named variety (with exceptions), 95% AVA.",
+    "where": "Oregon · Willamette Valley"
+   },
+   {
+    "topic": "Pacific Northwest · Style",
+    "guide": "Oregon dry whites, dry reds, sparkling; Washington dry whites and reds.",
+    "where": "added: Oregon · Willamette Valley (Washington already covered)"
+   },
+   {
+    "topic": "Pacific Northwest · History & lore",
+    "guide": "David Lett of Eyrie Vineyards.",
+    "where": "Oregon · Willamette Valley"
+   },
+   {
+    "topic": "Canada · Location",
+    "guide": "North of the continent, Pacific to Atlantic, up to the Arctic.",
+    "where": "added: Canada"
+   },
+   {
+    "topic": "Canada · Climate",
+    "guide": "Main areas within 30-50° latitude; cool to continental to desert.",
+    "where": "added: Canada"
+   },
+   {
+    "topic": "Canada · Physical feature",
+    "guide": "Pacific and Atlantic; deep Great Lakes moderate winters; water cools summers.",
+    "where": "Canada; added: oceans and summer cooling"
+   },
+   {
+    "topic": "Canada · Grape growing",
+    "guide": "Winter-hardy varieties that survive deep freezes.",
+    "where": "Canada"
+   },
+   {
+    "topic": "Canada · Winemaking",
+    "guide": "Make what the climate does best: still, sparkling, Icewine.",
+    "where": "added: Canada"
+   },
+   {
+    "topic": "Canada · White grapes",
+    "guide": "Chardonnay, Riesling.",
+    "where": "Canada"
+   },
+   {
+    "topic": "Canada · Red grapes",
+    "guide": "Pinot Noir, Merlot, Cabernet Franc.",
+    "where": "Canada"
+   },
+   {
+    "topic": "Canada · Wine law",
+    "guide": "No national wine law; provinces rule; VQA for premium wine.",
+    "where": "Canada"
+   },
+   {
+    "topic": "Canada · Appellations",
+    "guide": "Wine in at least nine provinces, mostly British Columbia and Ontario.",
+    "where": "Canada"
+   },
+   {
+    "topic": "Canada · Style",
+    "guide": "Leading Icewine maker, 90% Ontario; frozen on the vine, picked at night; Riesling, Cabernet Franc.",
+    "where": "Canada"
+   },
+   {
+    "topic": "Canada · History & lore",
+    "guide": "Commercial wine since mid-1800s; Prohibition 1916-1927; Ontario license 1970s.",
+    "where": "added: Canada"
+   },
+   {
+    "topic": "México · Location",
+    "guide": "Bordered by the U.S. to the north, Guatemala and Belize to the southeast.",
+    "where": "added: Mexico"
+   },
+   {
+    "topic": "México · Climate",
+    "guide": "Hot Mediterranean to semi-desert.",
+    "where": "added: Mexico"
+   },
+   {
+    "topic": "México · Physical feature",
+    "guide": "Pacific fog and breezes; cooler mountain heights with day-night swings.",
+    "where": "added: Mexico"
+   },
+   {
+    "topic": "México · Grape growing",
+    "guide": "Scarce water, irrigation essential; Italian, French and Spanish grapes.",
+    "where": "added: Mexico"
+   },
+   {
+    "topic": "México · Winemaking",
+    "guide": "Non-traditional blends.",
+    "where": "added: Mexico"
+   },
+   {
+    "topic": "México · White grapes",
+    "guide": "Chenin Blanc, Chardonnay, Viognier, Sauvignon Blanc.",
+    "where": "added: Mexico"
+   },
+   {
+    "topic": "México · Red grapes",
+    "guide": "Tempranillo, Nebbiolo, Cabernet, Merlot, Zinfandel, Grenache, Barbera.",
+    "where": "added: Mexico"
+   },
+   {
+    "topic": "México · Wine law",
+    "guide": "No laws.",
+    "where": "added: Mexico"
+   },
+   {
+    "topic": "México · Appellations",
+    "guide": "Baja California's Valle de Guadalupe: 90% of production.",
+    "where": "added: Mexico"
+   },
+   {
+    "topic": "México · History & lore",
+    "guide": "Spanish conquest 1520s; winemaking banned 1595-1821; modern era from the 1970s.",
+    "where": "added: Mexico"
+   }
+  ]
+ },
  "sections": [
   {
    "name": "U.S. wine law and labels",
@@ -180,7 +489,7 @@
    "lines": [
     {
      "label": "Where",
-     "text": "Sonoma, Mendocino and Lake counties sit in the North Coast, north of San Pablo Bay. Physical features to know: the Petaluma Wind Gap and the Mayacamas and Sonoma mountain ranges."
+     "text": "Sonoma, Mendocino and Lake counties sit in the North Coast, north of San Pablo Bay. Physical features to know: the Petaluma Wind Gap, the Napa River, and the Mayacamas, Sonoma and Vaca mountain ranges. Soils are very diverse."
     },
     {
      "label": "Sparkling",
@@ -257,14 +566,17 @@
      "Pinot Noir",
      "Syrah",
      "Zinfandel",
-     "Cabernet Sauvignon"
+     "Cabernet Sauvignon",
+     "Sauvignon Blanc",
+     "Merlot"
     ]
    },
    "know": [
     "Monterey and Santa Barbara are cool maritime; closer to the coast is cooler.",
     "Paso Robles (San Luis Obispo County) is warm continental with big day-night swings.",
     "Mountains block Paso Robles from the sea, with only a small gap.",
-    "California makes about 81% of U.S. wine."
+    "California makes about 81% of U.S. wine.",
+    "Cellar habits match the North Coast: often new French oak, and malolactic for Chardonnay."
    ],
    "visuals": [
     {
@@ -287,6 +599,69 @@
      "number": "81%",
      "title": "of U.S. wine is Californian",
      "text": "The Wine Institute's average share of total U.S. wine production."
+    }
+   ]
+  },
+  {
+   "name": "California · names, service and food",
+   "lines": [
+    {
+     "label": "People",
+     "text": "Agoston Haraszthy, André Tchelistcheff and Robert Mondavi shaped California wine. At the 1976 Paris Tasting, a Napa Cabernet beat top Bordeaux, blind."
+    },
+    {
+     "label": "At the table",
+     "text": "Young Cabernet often benefits from decanting; old Cabernet needs it for sediment. Match full-bodied wines with rich, intense food."
+    }
+   ],
+   "know": [
+    "Agoston Haraszthy bought and named Buena Vista in Sonoma in 1857.",
+    "In 1861 Haraszthy brought back over 100,000 vine cuttings from Europe.",
+    "André Tchelistcheff became Beaulieu Vineyard's winemaker in 1938.",
+    "Robert Mondavi Winery was founded in 1966.",
+    "At the 1976 Paris Tasting, Stag's Leap Wine Cellars' 1973 Cabernet topped the reds, above First Growth Bordeaux."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Four names, in time order",
+     "items": [
+      {
+       "name": "Agoston Haraszthy",
+       "text": "Buys and names Buena Vista",
+       "meta": "1857 · Sonoma"
+      },
+      {
+       "name": "André Tchelistcheff",
+       "text": "Becomes Beaulieu Vineyard's winemaker",
+       "meta": "1938 · Napa"
+      },
+      {
+       "name": "Robert Mondavi",
+       "text": "Founds his winery",
+       "meta": "1966 · Napa"
+      },
+      {
+       "name": "Paris Tasting",
+       "text": "A Napa Cabernet tops the reds, blind",
+       "meta": "1976 · Paris"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "YOUNG CABERNET",
+       "title": "Often benefits",
+       "text": "Decanting often helps\na young, full-bodied red"
+      },
+      {
+       "label": "OLD CABERNET",
+       "title": "Needs it",
+       "text": "Decant to leave\nthe sediment behind"
+      }
+     ]
     }
    ]
   },
@@ -317,7 +692,8 @@
     "David Lett planted the Willamette Valley's first Pinot Noir in 1965 (The Eyrie Vineyards).",
     "Oregon labels need 90% of the named grape (with 18 exceptions) and 95% from the named appellation.",
     "Willamette Valley has two-thirds of Oregon's wineries and vineyards.",
-    "Willamette Pinot Noir pairs with salmon."
+    "Willamette Pinot Noir pairs with salmon.",
+    "On a map, the Willamette Valley runs south from near Portland. Oregon makes dry whites, dry reds and sparkling wine."
    ],
    "visuals": [
     {
@@ -371,7 +747,8 @@
     "Washington is the 2nd largest wine producer in the U.S.",
     "The Court's Washington AVAs: Columbia Valley, Yakima Valley, Walla Walla Valley.",
     "Columbia Valley, Walla Walla Valley and Columbia Gorge cross into Oregon.",
-    "Washington Cabernet or Merlot pairs with beef or lamb."
+    "Washington Cabernet or Merlot pairs with beef or lamb.",
+    "On a map, the Columbia Valley lies wholly east of the Cascades, in central and southeastern Washington."
    ],
    "visuals": [
     {
@@ -495,7 +872,9 @@
     "Icewine grapes freeze naturally on the vine and are picked below -8 °C.",
     "Icewine grapes: Riesling, Cabernet Franc and Vidal.",
     "Every VQA Ontario wine is 100% Ontario grapes.",
-    "Main areas: Niagara Peninsula (Ontario) and Okanagan Valley (British Columbia)."
+    "Main areas: Niagara Peninsula (Ontario) and Okanagan Valley (British Columbia).",
+    "Canada spans the Pacific to the Atlantic and north to the Arctic; the Court puts its main wine areas within 30-50° latitude.",
+    "Commercial wine since the mid-1800s; Prohibition ran 1916-1927."
    ],
    "visuals": [
     {
@@ -526,6 +905,76 @@
      "text": "The Court calls Canada a leading global Icewine producer."
     }
    ]
+  },
+  {
+   "name": "Mexico",
+   "lines": [
+    {
+     "label": "Where",
+     "text": "South of the United States, bordered to the southeast by Guatemala and Belize. Baja California's Valle de Guadalupe makes 90% of Mexican wine."
+    },
+    {
+     "label": "Climate",
+     "text": "Hot Mediterranean to semi-desert. Pacific fog and breezes cool the vines, and higher mountain sites get cooler nights."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Chenin Blanc",
+     "Chardonnay",
+     "Viognier",
+     "Sauvignon Blanc",
+     "Tempranillo",
+     "Nebbiolo",
+     "Cabernet Sauvignon",
+     "Merlot",
+     "Zinfandel",
+     "Grenache",
+     "Barbera"
+    ]
+   },
+   "know": [
+    "Valle de Guadalupe, in Baja California, makes 90% of Mexican wine.",
+    "Water is scarce, so irrigation is essential.",
+    "The grapes are a melting pot of Italian, French and Spanish varieties, often in non-traditional blends.",
+    "The Court notes Mexico has no wine laws.",
+    "Mexico has the oldest wine industry in the Americas; modern Mexican wine dates from the 1970s."
+   ],
+   "visuals": [
+    {
+     "type": "stat",
+     "number": "90%",
+     "title": "of Mexican wine",
+     "text": "comes from Valle de Guadalupe, in Baja California."
+    },
+    {
+     "type": "steps",
+     "title": "Mexico's wine story",
+     "items": [
+      {
+       "name": "1520s",
+       "text": "Spain conquers the Aztec Empire and orders vines planted",
+       "meta": "Hernán Cortés"
+      },
+      {
+       "name": "1595",
+       "text": "Spanish law bans winemaking in New Spain",
+       "meta": "The ban holds until 1821"
+      },
+      {
+       "name": "1821",
+       "text": "Independence ends the ban",
+       "meta": "Mexican Independence"
+      },
+      {
+       "name": "1970s",
+       "text": "Modern Mexican wine takes off",
+       "meta": "The modern era"
+      }
+     ]
+    }
+   ]
   }
  ],
  "mixups": [
@@ -550,7 +999,7 @@
    "why": "Both Central Coast. Paso Robles is warm continental; Santa Barbara is cool maritime with fog."
   }
  ],
- "sources": "Built from the Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide, TTB rules in 27 CFR part 4 (eCFR), Napa Valley Vintners, Wine Institute, Oregon Wine Board, Washington State Wine Commission, New York Wine & Grape Foundation, VQA Ontario, and Wine Folly as a secondary source. Checked Oct 31, 2026.",
+ "sources": "Built from the Court of Master Sommeliers Americas Introductory Course Guide and Curriculum Guide, TTB rules in 27 CFR part 4 (eCFR), Napa Valley Vintners, Wine Institute, Oregon Wine Board, Washington State Wine Commission, New York Wine & Grape Foundation, VQA Ontario, and Wine Folly as a secondary source. Court alignment (Nov 2, 2026) adds Sonoma State University Library, UC Davis Library, Robert Mondavi Winery and Stag's Leap Wine Cellars. Checked Oct 31, 2026.",
  "cards": [
   {
    "q": "Under federal rules, how much of a U.S. wine must be the named grape to put that grape on the label?",
@@ -871,6 +1320,136 @@
     "Consejo Regulador"
    ],
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+  },
+  {
+   "q": "What cellar habit does the Court note for Central Coast Chardonnay?",
+   "answer": "Malolactic fermentation, often with new French oak",
+   "wrong": [
+    "Carbonic maceration",
+    "Aging under flor",
+    "Fermenting in clay amphorae"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+  },
+  {
+   "q": "Who bought and named Buena Vista in Sonoma in 1857?",
+   "answer": "Agoston Haraszthy",
+   "wrong": [
+    "André Tchelistcheff",
+    "Robert Mondavi",
+    "David Lett"
+   ],
+   "source": "https://library.sonoma.edu/research/guides/regional/notablepeople/haraszthy"
+  },
+  {
+   "q": "André Tchelistcheff became winemaker at which Napa winery in 1938?",
+   "answer": "Beaulieu Vineyard",
+   "wrong": [
+    "Robert Mondavi Winery",
+    "Stag's Leap Wine Cellars",
+    "The Eyrie Vineyards"
+   ],
+   "source": "https://library.ucdavis.edu/?p=27949"
+  },
+  {
+   "q": "At the 1976 Paris Tasting, which wine took the top red spot, above First Growth Bordeaux?",
+   "answer": "Stag's Leap Wine Cellars 1973 S.L.V. Cabernet Sauvignon",
+   "wrong": [
+    "Opus One 1979",
+    "Beaulieu Vineyard 1970 Cabernet Sauvignon",
+    "The Eyrie Vineyards 1975 Pinot Noir"
+   ],
+   "source": "https://www.stagsleapwinecellars.com/our-story"
+  },
+  {
+   "q": "Why does an old Cabernet Sauvignon need decanting?",
+   "answer": "To leave the sediment behind",
+   "wrong": [
+    "To chill it quickly",
+    "To add bubbles",
+    "To raise its alcohol"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+  },
+  {
+   "q": "On a map, the Willamette Valley runs south from near which city?",
+   "answer": "Portland",
+   "wrong": [
+    "Seattle",
+    "Boise",
+    "San Francisco"
+   ],
+   "source": "https://www.oregonwine.org/regions/willamette-valley/"
+  },
+  {
+   "q": "Which styles does the Court list for Oregon?",
+   "answer": "Dry whites, dry reds and sparkling wines",
+   "wrong": [
+    "Mostly sweet whites and Icewine",
+    "Fortified reds",
+    "Only dry reds"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+  },
+  {
+   "q": "Per the Court, Canada's main wine areas sit within which latitude lines?",
+   "answer": "30-50°",
+   "wrong": [
+    "10-20°",
+    "50-60°",
+    "60-70°"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=63"
+  },
+  {
+   "q": "When does the Court date Canadian Prohibition?",
+   "answer": "1916-1927",
+   "wrong": [
+    "1920-1933",
+    "1900-1910",
+    "1935-1945"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+  },
+  {
+   "q": "Which area makes about 90% of Mexican wine?",
+   "answer": "Valle de Guadalupe, Baja California",
+   "wrong": [
+    "Valle de Parras, Coahuila",
+    "Querétaro",
+    "Sonora"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=65"
+  },
+  {
+   "q": "Why is irrigation essential in Mexican vineyards?",
+   "answer": "Water is scarce in the hot, arid climate",
+   "wrong": [
+    "The soils are frozen in winter",
+    "Vines are grown on rooftops",
+    "The law requires it"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=65"
+  },
+  {
+   "q": "What does the Court say about Mexico's wine laws?",
+   "answer": "There are none",
+   "wrong": [
+    "They copy French AOC rules",
+    "They match U.S. AVA rules",
+    "They require 100% Mexican grapes on every label"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=65"
+  },
+  {
+   "q": "From 1595 until independence in 1821, what did Spanish law do to winemaking in Mexico?",
+   "answer": "Banned it",
+   "wrong": [
+    "Made it compulsory for all farms",
+    "Limited it to Baja California",
+    "Taxed only exported wine"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=66"
   }
  ],
  "facts": [
@@ -947,15 +1526,15 @@
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
   },
   {
-   "fact": "Court Curriculum Guide (California): 'Reserve' has no legal meaning.",
+   "fact": "Court Curriculum Guide (California, Certified column): 'Reserve' has no legal meaning.",
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
   },
   {
-   "fact": "Court Curriculum Guide (California) label terms: Estate Bottled, Meritage (trademark only), Claret.",
+   "fact": "Court Curriculum Guide (California, Certified column) label terms: Estate Bottled, Meritage (trademark only), Claret.",
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
   },
   {
-   "fact": "Court Curriculum Guide (California): style point - American vs. French oak flavor differences.",
+   "fact": "Court Curriculum Guide (California, Certified column): style point - American vs. French oak flavor differences.",
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
   },
   {
@@ -991,7 +1570,7 @@
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
   },
   {
-   "fact": "Court history (California): Agoston Haraszthy, Robert Mondavi, André Tchelistcheff.",
+   "fact": "Court history (California, Introductory column): Agoston Haraszthy, Robert Mondavi, André Tchelistcheff, Paris Tasting of 1976. Warren Winiarski and Charles Krug are in the Certified column.",
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
   },
   {
@@ -1269,6 +1848,62 @@
   {
    "fact": "Wine Folly (secondary): Okanagan Valley's climate is dry, sunny, hot with a short season, moderated by lakes; best wines are dry reds and whites.",
    "source": "https://winefolly.com/lifestyle/okanagan-wine-country-guide/"
+  },
+  {
+   "fact": "Court (North Coast, Introductory column, checked on the rendered page): very diverse soils throughout; physical features include the Vaca Mountain Range and the Napa River.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+  },
+  {
+   "fact": "Court (Central Coast, Introductory column): winemaking often uses extensive new French and sometimes American oak for reds and whites; malolactic fermentation often used for whites, especially Chardonnay. Grapes: Chardonnay, Sauvignon Blanc; Pinot Noir, Merlot, Cabernet Sauvignon, Zinfandel, Syrah.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+  },
+  {
+   "fact": "Court (California, Introductory column): History & Lore - Agoston Haraszthy, Robert Mondavi, André Tchelistcheff, Paris Tasting of 1976. Service - young Cabernet Sauvignon often benefits from decanting; old Cabernet Sauvignon needs decanting for sediment. Pairing - match full-bodied wines with food richness and intensity.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+  },
+  {
+   "fact": "Sonoma State University Library: in 1857 Agoston Haraszthy acquired property in Sonoma and named it Buena Vista; he is called the \"Father of Modern Viticulture in California\"; in 1861 he returned from Europe with more than 100,000 cuttings of 350 varieties.",
+   "source": "https://library.sonoma.edu/research/guides/regional/notablepeople/haraszthy"
+  },
+  {
+   "fact": "UC Davis Library: André Tchelistcheff joined Beaulieu Vineyard as its new winemaker in 1938; under him the winery won international acclaim, especially for its California Cabernet wines.",
+   "source": "https://library.ucdavis.edu/?p=27949"
+  },
+  {
+   "fact": "Robert Mondavi Winery: founded in 1966 with a vision to create wines from Napa Valley that could stand among the world's finest.",
+   "source": "https://www.robertmondaviwinery.com/"
+  },
+  {
+   "fact": "Stag's Leap Wine Cellars: at the 1976 Judgment of Paris blind tasting, its 1973 S.L.V. Cabernet Sauvignon won the highest honor in the red wine category, above First Growth Bordeaux châteaux.",
+   "source": "https://www.stagsleapwinecellars.com/our-story"
+  },
+  {
+   "fact": "Oregon Wine Board: the Willamette Valley follows the Willamette River for more than a hundred miles from the Columbia River near Portland to just south of Eugene; wineries also produce sparkling wine.",
+   "source": "https://www.oregonwine.org/regions/willamette-valley/"
+  },
+  {
+   "fact": "Washington State Wine Commission: the Columbia Valley is wholly east of the Cascade Mountains, in central, south-central and southeastern Washington and north-central Oregon.",
+   "source": "https://www.washingtonwine.org/region/columbia-valley/"
+  },
+  {
+   "fact": "Court (Pacific Northwest, Introductory column): identify the Willamette Valley in relation to Portland and the Columbia Valley in relation to Seattle on a map. Style - Oregon: dry whites, dry reds, sparkling wines; Washington: dry white and dry red wines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+  },
+  {
+   "fact": "Court (Canada, Introductory column): the northern part of North America, from the Pacific Ocean to the Atlantic Ocean and north to the Arctic Ocean. Lakes and oceans help cool the climate in warm summers. Winemaking: make wines based on what the climate does best - still wine (red, white and rosé), sparkling wine, ice wine.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=63"
+  },
+  {
+   "fact": "Court (México, Introductory column): bordered to the north by the United States and to the southeast by Guatemala and Belize; climate hot Mediterranean to semi-desert; the Pacific Ocean provides moderating fog and cooling breezes; mountains are cooler at higher elevations, with diurnal shifts and cooler nights.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=65"
+  },
+  {
+   "fact": "Court (México, Introductory column): water is in short supply and irrigation is essential in the hot, arid climate; a melting pot of Italian, French and Spanish grape varieties; non-traditional blends. Whites: Chenin Blanc, Chardonnay, Viognier, Sauvignon Blanc. Reds: Tempranillo, Nebbiolo, Cabernet Sauvignon, Merlot, Zinfandel, Grenache, Barbera. Wine law: no laws. Baja California - Valle de Guadalupe: 90% of Mexican wine production.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=65"
+  },
+  {
+   "fact": "Court (México, Introductory column, History & Lore): Mexico is the oldest wine industry outside of Europe; in the 1520s Hernán Cortés defeated the Aztec Empire for Spain; Spanish orders required vine planting; from 1595 winemaking in New Spain was prohibited by Spanish law until Mexican Independence in 1821; the advance of modern Mexican wine is as recent as the 1970s.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=66"
   }
  ],
  "unverified": [
@@ -1276,11 +1911,18 @@
   "The Court gives a single '95% minimum for vintage'. eCFR 27 CFR 4.27 says 95% only with an AVA and 85% with other appellations; the chapter uses the eCFR split.",
   "Napa Valley's number of nested AVAs was not stated on the Napa Valley Vintners page fetched (it links to 17 AVA pages), so no count is given.",
   "Willamette Valley AVA year: the Oregon Wine Board page says 'Established: 1983'; a non-official search snippet said 1984. Not used in cards.",
-  "No bios were fetched for Agoston Haraszthy, Robert Mondavi or André Tchelistcheff; they appear only as names the Court lists. Stags Leap District and Oakville have no fetched details beyond their county.",
   "Sonoma AVA grape notes (Russian River, Dry Creek, Alexander Valley, Sonoma Coast) come from Wine Folly (secondary); the Sonoma County Vintners site was not fetched.",
   "Okanagan Valley details come from the Court's Certified column and Wine Folly only; no British Columbia Wine Authority page was fetched. Canada is in the Court Curriculum Guide (Introductory column) but not in the Course Guide's Section 8 list, which names only U.S. states.",
   "Oregon's 18 exempt varieties are not listed by name here; the Court names Cabernet Sauvignon and Merlot as examples.",
-  "The Court Curriculum Guide is dated 8.2023; figures from trade bodies (Oregon 59% Pinot Noir, Washington 21 AVAs, California 81%) may change year to year."
+  "The Court Curriculum Guide is dated 8.2023; figures from trade bodies (Oregon 59% Pinot Noir, Washington 21 AVAs, California 81%) may change year to year.",
+  "Short bios now come from Sonoma State University Library (Haraszthy), UC Davis Library (Tchelistcheff) and the Robert Mondavi Winery site (founded 1966). Stags Leap District and Oakville still have no fetched details beyond their county.",
+  "Paris Tasting 1976: only the red result was confirmed from an official page (Stag's Leap Wine Cellars). The white winner (Chateau Montelena 1973 Chardonnay) is widely reported, but the Smithsonian and Montelena pages could not be fetched, so it is left out.",
+  "The Court places the Columbia Valley 'in relation to Seattle' on a map. The Washington State Wine Commission confirms the valley is wholly east of the Cascades in central and southeastern Washington; Seattle's position was not separately sourced, so the chapter doesn't state it.",
+  "Canada: the Court says the first winery license in Ontario was issued in the 1970s. Ontario had wineries before then; this likely means the first new license after Prohibition (often given as Inniskillin, 1975), but no official page was fetched. The chapter attributes the line to the Court.",
+  "Canada: the Court puts the main wine areas 'within the 30-50° latitude lines'; quoted as the Court states it.",
+  "Mexico: the Court calls it 'the oldest wine industry outside of Europe'. The chapter narrows this to 'in the Americas'. No Mexican official wine-body page was fetched; all Mexico facts come from the Court's Introductory column.",
+  "Mexico: no Wine Folly, Court or official Mexican wine-body video was found, so the Mexico section has no video.",
+  "Some classic 'know' lists now hold 6 items (one over the schema's 3-5) to carry the Court's added rows; the v3 key points stay within 3-5."
  ],
  "v3": {
   "video": {
@@ -1466,7 +2108,7 @@
     ],
     "read": {
      "bigIdea": "In Sonoma, each valley has its own grape.",
-     "where": "**Sonoma**, **Mendocino** and **Lake** counties sit in the **North Coast**, north of **San Pablo Bay**. Features to know are the **Petaluma Wind Gap** and the **Mayacamas** and **Sonoma** mountain ranges. Cooler spots make **sparkling wine**.",
+     "where": "**Sonoma**, **Mendocino** and **Lake** counties sit in the **North Coast**, north of **San Pablo Bay**. Features to know are the **Petaluma Wind Gap**, the **Napa River**, and the **Mayacamas**, **Sonoma** and **Vaca** mountain ranges. Soils are **very diverse**, and cooler spots make **sparkling wine**.",
      "stopsTitle": "Match the AVA to its grape",
      "stops": [
       {
@@ -1534,7 +2176,7 @@
     ],
     "read": {
      "bigIdea": "The Central Coast runs from cool to warm.",
-     "where": "The **Central Coast** is the coastal counties south of **San Francisco Bay** and north of the city of **Santa Barbara**. The counties to know are **Monterey**, **San Luis Obispo** and **Santa Barbara**. Closer to the coast is cooler.",
+     "where": "The **Central Coast** is the coastal counties south of **San Francisco Bay** and north of the city of **Santa Barbara**. The counties to know are **Monterey**, **San Luis Obispo** and **Santa Barbara**. Closer to the coast is cooler. In the cellar, it’s like the North Coast: often **new French oak**, and **malolactic** for Chardonnay.",
      "stopsTitle": "Three counties to know",
      "stops": [
       {
@@ -1561,6 +2203,74 @@
      16,
      17,
      18
+    ]
+   },
+   {
+    "name": "California · names, service and food",
+    "video": {
+     "youtubeId": "QEMdqMSADTM",
+     "title": "Capstone Masterclass: The History of California Wines – Evan Goldstein, Master Sommelier",
+     "by": "California Wines by Wine Institute",
+     "length": "26:08"
+    },
+    "keyPoints": [
+     {
+      "big": "HARASZTHY",
+      "line": "bought and named Buena Vista, in Sonoma, in 1857."
+     },
+     {
+      "big": "TCHELISTCHEFF",
+      "line": "became Beaulieu Vineyard’s winemaker in 1938."
+     },
+     {
+      "big": "1976",
+      "line": "Paris Tasting: a Napa Cabernet topped the reds, blind."
+     },
+     {
+      "big": "DECANT",
+      "line": "young Cabernet to help it; old Cabernet for sediment."
+     }
+    ],
+    "read": {
+     "bigIdea": "Four names and two table habits to know.",
+     "where": "The Court lists four names in California’s story: **Agoston Haraszthy**, **André Tchelistcheff**, **Robert Mondavi** and the **Paris Tasting of 1976**. At the table, it asks you to know when to **decant** Cabernet, and to match **full-bodied** wines with **rich** food.",
+     "stopsTitle": "In time order, then the table",
+     "stops": [
+      {
+       "name": "Agoston Haraszthy",
+       "note": "1857 · Sonoma",
+       "text": "He bought and named **Buena Vista** in Sonoma in 1857, and is called the father of modern viticulture in California. In 1861 he brought back over **100,000 vine cuttings** from Europe."
+      },
+      {
+       "name": "André Tchelistcheff",
+       "note": "1938 · Napa",
+       "text": "He became **Beaulieu Vineyard’s** winemaker in 1938. Under him, the winery won acclaim for its **Cabernet**."
+      },
+      {
+       "name": "Robert Mondavi",
+       "note": "1966 · Napa",
+       "text": "He founded the **Robert Mondavi Winery** in 1966, aiming for Napa wines that could stand among the world’s finest."
+      },
+      {
+       "name": "Paris Tasting",
+       "note": "1976",
+       "text": "In a **blind** tasting in Paris, **Stag’s Leap Wine Cellars’ 1973 Cabernet** took the top red spot, above **First Growth Bordeaux**."
+      },
+      {
+       "name": "At the table",
+       "note": "decant and match",
+       "text": "Young **Cabernet** often benefits from **decanting**; old Cabernet needs it to leave the **sediment** behind. Match **full-bodied** wines with food of the same **richness** and intensity."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Four names, in time order:",
+     "mixup": "**Haraszthy** founded Buena Vista, in Sonoma. **Tchelistcheff** made wine at Beaulieu Vineyard, in Napa.",
+     "sayIt": "This Cabernet is young, so I’d suggest we decant it."
+    },
+    "check": [
+     33,
+     35,
+     36
     ]
    },
    {
@@ -1591,12 +2301,12 @@
     ],
     "read": {
      "bigIdea": "Oregon’s Willamette Valley is Pinot Noir country.",
-     "where": "The **Willamette Valley** has a **cool Mediterranean** climate with maritime influence. The **Coast Range** to the west makes a **rain shadow**, and the **Cascades** lie to the east. Soils are marine sedimentary, volcanic and **loess**.",
+     "where": "The **Willamette Valley** has a **cool Mediterranean** climate with maritime influence. The **Coast Range** to the west makes a **rain shadow**, and the **Cascades** lie to the east. Soils are marine sedimentary, volcanic and **loess**. On a map, it runs south along the Willamette River from near **Portland**.",
      "stops": [
       {
        "name": "The grapes",
        "note": "Pinot first",
-       "text": "**Pinot Noir** is 59% of Oregon’s planted acres. **Pinot Gris** is the top white at 14%, then Chardonnay at 7%."
+       "text": "**Pinot Noir** is 59% of Oregon’s planted acres. **Pinot Gris** is the top white at 14%, then Chardonnay at 7%. Oregon makes **dry whites**, **dry reds** and **sparkling** wines."
       },
       {
        "name": "The label",
@@ -1648,7 +2358,7 @@
     ],
     "read": {
      "bigIdea": "Washington’s wine grows in desert, east of the Cascades.",
-     "where": "Over **99%** of Washington’s vineyards are in the **Columbia Valley**. The **Cascade Range** to the west makes a **rain shadow**, so it gets only 6-8 inches of rain a year and needs **irrigation**. Soils are **loess** over gravel and sediment on basalt, shaped by the **Missoula Floods**.",
+     "where": "Over **99%** of Washington’s vineyards are in the **Columbia Valley**. The **Cascade Range** to the west makes a **rain shadow**, so it gets only 6-8 inches of rain a year and needs **irrigation**. Soils are **loess** over gravel and sediment on basalt, shaped by the **Missoula Floods**. On a map, it lies wholly **east of the Cascades**, in central and southeastern Washington.",
      "stops": [
       {
        "name": "The grapes",
@@ -1761,7 +2471,7 @@
     ],
     "read": {
      "bigIdea": "Canada is one of the world’s leading Icewine makers.",
-     "where": "Wine is made in at least **nine provinces**, mostly **British Columbia** and **Ontario**. The deep **Great Lakes** rarely freeze, which softens the winters. Vines must be **winter-hardy** to survive deep freezes.",
+     "where": "Wine is made in at least **nine provinces**, mostly **British Columbia** and **Ontario**. The deep **Great Lakes** rarely freeze, which softens the winters. Vines must be **winter-hardy** to survive deep freezes. The country runs from the **Pacific** to the **Atlantic** and north to the **Arctic**; the Court puts its main wine areas within **30-50° latitude**, in climates from cool to continental to desert.",
      "stops": [
       {
        "name": "The law",
@@ -1777,6 +2487,16 @@
        "name": "Icewine",
        "note": "frozen on the vine",
        "text": "Grapes **freeze naturally on the vine** and are picked below **-8 °C**, often at night. Riesling, Cabernet Franc and **Vidal** are used, and Ontario makes **90%** of it."
+      },
+      {
+       "name": "The wines",
+       "note": "what the climate does best",
+       "text": "Canada makes **still** wine (red, white and rosé), **sparkling** wine and **Icewine**. Lakes and oceans help cool the warm summers."
+      },
+      {
+       "name": "History",
+       "note": "since the mid-1800s",
+       "text": "Commercial wine since the **mid-1800s**. **Prohibition** ran from 1916 to 1927, and the Court dates Ontario’s first winery license to the **1970s**."
       }
      ],
      "visual": 0,
@@ -1788,6 +2508,64 @@
      28,
      29,
      31
+    ]
+   },
+   {
+    "name": "Mexico",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "VALLE DE GUADALUPE",
+      "line": "in Baja California makes 90% of Mexico’s wine."
+     },
+     {
+      "big": "IRRIGATION",
+      "line": "is essential: water is scarce in the hot, dry climate."
+     },
+     {
+      "big": "NO LAWS",
+      "line": "govern Mexican wine, the Court notes."
+     },
+     {
+      "big": "OLDEST",
+      "line": "wine industry in the Americas is Mexico’s."
+     }
+    ],
+    "read": {
+     "bigIdea": "Mexico is the Americas’ oldest wine country.",
+     "where": "Mexico borders the **United States** to the north and **Guatemala** and **Belize** to the southeast. Its climate runs from **hot Mediterranean** to **semi-desert**. **Pacific** fog and breezes cool the vines, and higher **mountain** sites get cooler nights. **Valle de Guadalupe**, in **Baja California**, makes **90%** of Mexican wine.",
+     "stopsTitle": "Vineyard, glass, label, history",
+     "stops": [
+      {
+       "name": "In the vineyard",
+       "note": "water is short",
+       "text": "Water is scarce, so **irrigation** is essential. The grapes are a melting pot of **Italian**, **French** and **Spanish** varieties."
+      },
+      {
+       "name": "In the glass",
+       "note": "blends",
+       "text": "Winemakers favor **non-traditional blends**. Whites include **Chenin Blanc**, **Chardonnay**, **Viognier** and **Sauvignon Blanc**; reds include **Tempranillo**, **Nebbiolo**, **Cabernet Sauvignon**, Merlot, Zinfandel, Grenache and Barbera."
+      },
+      {
+       "name": "On the label",
+       "note": "no rules",
+       "text": "The Court notes that Mexico has **no wine laws**."
+      },
+      {
+       "name": "The history",
+       "note": "1520s to 1970s",
+       "text": "Mexico has the **oldest wine industry in the Americas**. Spanish law banned winemaking there from **1595** until independence in **1821**, and modern Mexican wine dates from the **1970s**."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Five centuries in four dates:",
+     "mixup": "**Baja California** is in Mexico. **California** is the U.S. state just to its north.",
+     "sayIt": "This is from Valle de Guadalupe, where most Mexican wine is made."
+    },
+    "check": [
+     41,
+     42,
+     44
     ]
    }
   ]

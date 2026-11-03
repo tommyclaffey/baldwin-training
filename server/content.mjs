@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { addRows } from './editinplace.mjs';
-import { chapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE } from './manual.mjs';
+import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE } from './manual.mjs';
 import { regionPage, regionData } from './region.mjs';
 import { lessonPage, level1Page, level2Page, hubPage, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
@@ -435,7 +435,7 @@ function assembleRaw(db, file) {
     const ch = chapterBySlug(file.slice(2)); const tpl = basePage('362-2');
     if (!ch || !tpl) return null;
     if (SCOPE.user) markRead(db, SCOPE.user.id, ch.slug);
-    return chapterPage(tpl, ch, { all: chapters(), prog: progress(db, SCOPE.user?.id, SCOPE.store), slugs: new Set(baseIndex().map((x) => x.slug)) });
+    return chapterPage(tpl, ch, { all: levelChapters(ch), prog: progress(db, SCOPE.user?.id, SCOPE.store), slugs: new Set(baseIndex().map((x) => x.slug)) });
   }
   // v3 lessons (Nov 1): one per chapter section, drawn from Figma 403:45
   const lm = /^l-(.+)~(\d+)$/.exec(file);
@@ -459,7 +459,7 @@ function assembleRaw(db, file) {
   if (slug === HUB) return hubPage(page, { done: sectionsDone(db, SCOPE.user?.id) });
   if (slug === L1) return level1Page(page, { done: sectionsDone(db, SCOPE.user?.id) });
   if (slug === GUIDE) { const l1 = baseIndex().find((x) => x.slug === L1); const p1 = l1 && basePage(l1.file); if (p1) return level1Page(p1, { done: sectionsDone(db, SCOPE.user?.id) }); return guideIndex(page, { prog: progress(db, SCOPE.user?.id, SCOPE.store) }); }
-  if (slug === L2) return level2Page(page);
+  if (slug === L2) { const l1 = baseIndex().find((x) => x.slug === L1); const p1 = l1 && basePage(l1.file); return level2Page(page, { done: sectionsDone(db, SCOPE.user?.id), course: p1 && find(p1.main, byName('The course')) }); }
   if (isGeneric()) return genericPage(db, file, slug, page);
   if (file === '23-2') {
     const SITES = { 'Restaurant · J.Baldwin’s': 'https://www.jbaldwins.com', 'Restaurant · Testa Barra': 'https://www.testabarra.com', 'Restaurant · The Baldwin': 'https://thebaldwinshelby.com' };
@@ -560,13 +560,13 @@ export function fullIndex(db) {
     }
   }
   // Study Guide chapters (content/manual), searchable like any page
-  for (const ch of chapters()) {
-    entries.push({ id: 'm-' + ch.slug, file: 'm-' + ch.slug, slug: wholeChapterSlug(ch), name: 'Study Guide · ' + ch.title + ' · Whole Chapter', title: ch.title, section: 'Study Guide', nav: 'Sommelier Program',
+  for (const ch of allChapters()) {
+    entries.push({ id: 'm-' + ch.slug, file: 'm-' + ch.slug, slug: wholeChapterSlug(ch), name: (ch.level === 2 ? 'Level 2 · ' : 'Study Guide · ') + ch.title + ' · Whole Chapter', title: ch.title, section: ch.level === 2 ? 'Level 2' : 'Study Guide', nav: 'Sommelier Program',
       text: [ch.lead, ...ch.sections.flatMap((x) => [x.name, ...(x.know || []), ...(x.chips?.items || [])])].filter(Boolean).join(' ').slice(0, 1200), blurb: ch.lead });
     // one lesson per section (the first one is the chapter's own address)
     ch.sections.forEach((sec, i) => {
       const v = (ch.v3?.sections || []).find((x) => x.name === sec.name) || {};
-      entries.push({ id: lessonFile(ch, i), file: lessonFile(ch, i), slug: lessonSlug(ch, i), name: `Study Guide · ${ch.title} · ${sec.name}`, title: i === 0 ? ch.title : sec.name, section: 'Study Guide', nav: 'Sommelier Program',
+      entries.push({ id: lessonFile(ch, i), file: lessonFile(ch, i), slug: lessonSlug(ch, i), name: `${ch.level === 2 ? 'Level 2' : 'Study Guide'} · ${ch.title} · ${sec.name}`, title: i === 0 ? ch.title : sec.name, section: ch.level === 2 ? 'Level 2' : 'Study Guide', nav: 'Sommelier Program',
         text: [sec.name, v.read?.bigIdea, v.read?.where, ...(v.read?.stops || []).map((x) => x.name + ' ' + x.text), ...(v.keyPoints || []).map((k) => k.big + ' ' + k.line)].filter(Boolean).join(' ').replace(/\*\*/g, '').slice(0, 1200),
         thumb: v.video?.youtubeId ? `https://i.ytimg.com/vi/${v.video.youtubeId}/mqdefault.jpg` : undefined, blurb: v.read?.bigIdea || ch.lead });
     });

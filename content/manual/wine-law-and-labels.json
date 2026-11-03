@@ -81,7 +81,9 @@
     "AOP is the EU sign; AOC is the French national equivalent.",
     "Only wine may keep using the term AOC.",
     "INAO has run France's origin system since 1935.",
-    "IGP wines are also checked by state-certified bodies."
+    "IGP wines are also checked by state-certified bodies.",
+    "Southern Rhône tiers: Côtes du Rhône, Côtes du Rhône Villages, then single-village crus like Châteauneuf-du-Pape.",
+    "In Alsace, a grape named on the label means 100% of that grape."
    ],
    "visuals": [
     {
@@ -96,6 +98,28 @@
        "label": "IGP",
        "title": "Geographic indication",
        "text": "Quality tied to origin\nFor wine: harvest to bottle-ready in the zone\nEU-approved rules"
+      }
+     ]
+    },
+    {
+     "type": "pyramid",
+     "title": "Burgundy, top to bottom",
+     "rows": [
+      {
+       "name": "Grand Cru",
+       "note": "e.g. Les Clos in Chablis"
+      },
+      {
+       "name": "Premier Cru",
+       "note": "a step above Village"
+      },
+      {
+       "name": "Village",
+       "note": "e.g. Gevrey-Chambertin"
+      },
+      {
+       "name": "Regional",
+       "note": "e.g. Bourgogne AOP"
       }
      ]
     }
@@ -127,7 +151,8 @@
     "DOCG rules must be stricter than the DOC they came from.",
     "Riserva: at least two years for reds, one year for whites.",
     "Gran Selezione is only for DOCG wines from the estate's own grapes.",
-    "DO wines must show a vintage, except fortified, non-vintage sparkling and frizzante."
+    "DO wines must show a vintage, except fortified, non-vintage sparkling and frizzante.",
+    "The Court also lists Secco, Amabile, Charmat and Appassimento as Veneto label words; they are taught in the Italy chapter."
    ],
    "visuals": [
     {
@@ -167,7 +192,8 @@
     "Rioja is a DOCa.",
     "Vino de Pago is a DOP from one site with its own soil and microclimate.",
     "Under Spanish law, red Crianza needs 24 months, 6 in oak.",
-    "Rioja's own rules are longer: Crianza 2 years with 1 in oak."
+    "Rioja's own rules are longer: Crianza 2 years with 1 in oak.",
+    "Cava is a DO for traditional-method sparkling wine; Priorat is a DOCa."
    ],
    "visuals": [
     {
@@ -296,6 +322,82 @@
    ]
   },
   {
+   "name": "Austria and Portugal",
+   "lines": [
+    {
+     "label": "Austria",
+     "text": "Austria's tiers run Wein, Landwein, Qualitätswein and Prädikatswein. DAC is its quality appellation, like an AOC, with set grapes and mostly dry styles."
+    },
+    {
+     "label": "Portugal",
+     "text": "Portugal calls its protected wines DOP. Know four: Vinho Verde, Douro, Porto and Madeira."
+    }
+   ],
+   "chips": {
+    "label": "Label words",
+    "items": [
+     "Qualitätswein",
+     "DAC",
+     "Smaragd",
+     "DOP"
+    ]
+   },
+   "know": [
+    "DAC (Districtus Austriae Controllatus) is like an AOC or DOC: set grapes and styles, mostly dry wines.",
+    "Prädikatswein exists in Austria too, but it is rarely made; Landwein is rarely exported.",
+    "The Wachau has its own ripeness ladder; Smaragd is the ripest level.",
+    "A red-white-red band on the capsule marks Austrian quality wine.",
+    "Portugal's DOPs to know: Vinho Verde, Douro, Porto, Madeira."
+   ],
+   "visuals": [
+    {
+     "type": "pyramid",
+     "title": "Austria, top to bottom",
+     "rows": [
+      {
+       "name": "Prädikatswein",
+       "note": "graded by ripeness, rare in Austria"
+      },
+      {
+       "name": "Qualitätswein · DAC",
+       "note": "DAC: set grapes and styles, mostly dry"
+      },
+      {
+       "name": "Landwein",
+       "note": "regional, rarely exported"
+      },
+      {
+       "name": "Wein",
+       "note": "no geographic indication"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Portugal’s four DOPs",
+     "rows": [
+      {
+       "name": "Vinho Verde",
+       "meta": "low alcohol, a slight fizz"
+      },
+      {
+       "name": "Douro",
+       "meta": "bold, dry reds"
+      },
+      {
+       "name": "Porto",
+       "meta": "fortified, sweet red"
+      },
+      {
+       "name": "Madeira",
+       "meta": "fortified white, dry to sweet"
+      }
+     ],
+     "note": "The Court’s Level 1 list."
+    }
+   ]
+  },
+  {
    "name": "United States: AVAs and percentages",
    "book": "wine/usa",
    "lines": [
@@ -359,6 +461,91 @@
    ]
   },
   {
+   "name": "New World origin rules",
+   "lines": [
+    {
+     "label": "Origin only",
+     "text": "A Chilean DO or an Australian GI names where the grapes grew. It adds no other rules, unlike a European appellation."
+    },
+    {
+     "label": "The percentages",
+     "text": "Argentina, Australia and New Zealand need 85% of a named grape. South Africa needs 100% from a single named appellation."
+    }
+   ],
+   "chips": {
+    "label": "Origin systems",
+    "items": [
+     "DO (Chile)",
+     "GI (Australia, NZ)",
+     "Wine of Origin (South Africa)",
+     "VQA (Canada)"
+    ]
+   },
+   "know": [
+    "Chile's DO levels, big to small: Region, Subregion, Zone, Area.",
+    "South Africa's Wine of Origin levels, big to small: Geographical Unit, Region, District, Ward.",
+    "Australia's GIs, big to small: Australia, State, Zone, Region, Sub-Region.",
+    "South Eastern Australia is a huge zone used for high-volume wine.",
+    "Canada has no national wine law; each province sets its own, and VQA oversees premium wine.",
+    "The Court's guide says Mexico has no wine laws."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Named-grape minimums",
+     "rows": [
+      {
+       "name": "United States",
+       "value": "75%",
+       "pct": 0.75
+      },
+      {
+       "name": "Argentina",
+       "value": "85%",
+       "pct": 0.85
+      },
+      {
+       "name": "Australia",
+       "value": "85%",
+       "pct": 0.85
+      },
+      {
+       "name": "New Zealand",
+       "value": "85%",
+       "pct": 0.85
+      },
+      {
+       "name": "Oregon",
+       "value": "90%",
+       "pct": 0.9
+      }
+     ],
+     "note": "Court guide figures. South Africa: 100% from a single named appellation."
+    },
+    {
+     "type": "steps",
+     "title": "Big to small: three ways to nest a place",
+     "items": [
+      {
+       "name": "Chile",
+       "text": "Region › Subregion › Zone › Area",
+       "meta": "DO"
+      },
+      {
+       "name": "South Africa",
+       "text": "Geographical Unit › Region › District › Ward",
+       "meta": "Wine of Origin"
+      },
+      {
+       "name": "Australia",
+       "text": "Australia › State › Zone › Region › Sub-Region",
+       "meta": "GI"
+      }
+     ]
+    }
+   ]
+  },
+  {
    "name": "Reading a label",
    "lines": [
     {
@@ -374,7 +561,8 @@
     "Chablis = Chardonnay, Chianti = Sangiovese, even though the label won't say so.",
     "NV means non-vintage, a blend of years.",
     "Mis en bouteille au château/domaine is French for estate bottled.",
-    "Imbottigliato all'origine is the Italian equivalent."
+    "Imbottigliato all'origine is the Italian equivalent.",
+    "Burgundy label words: Négociant, Domaine, Clos (walled vineyard), Monopole (one owner), Vieilles Vignes (old vines)."
    ],
    "visuals": [
     {
@@ -429,7 +617,7 @@
    "why": "85% of the grapes must come from the AVA; 95% must come from the stated year."
   }
  ],
- "sources": "INAO, Italian Law 238/2016, Spain's Ley 6/2015 (BOE), Consejo Regulador DOCa Rioja, Wines of Germany (DWI), TTB and 27 CFR part 4 (eCFR), and the Court of Master Sommeliers Americas curriculum guide, with Wine Folly as a labelled secondary source. Checked Oct 31, 2026.",
+ "sources": "INAO, Italian Law 238/2016, Spain's Ley 6/2015 (BOE), Consejo Regulador DOCa Rioja, Wines of Germany (DWI), TTB and 27 CFR part 4 (eCFR), and the Court of Master Sommeliers Americas curriculum guide, with Wine Folly as a labelled secondary source. Checked Oct 31, 2026; aligned with the Court’s Introductory curriculum Nov 2, 2026, adding the Court guide’s Austria, Portugal and New World law rows, Wine Australia’s GI register, Der Standard (Austrian banderole) and the Wine Spectator glossary.",
  "cards": [
   {
    "q": "What does AOP stand for?",
@@ -780,6 +968,106 @@
     "Chenin Blanc"
    ],
    "source": "https://winefolly.com/tips/reading-wine-labels/"
+  },
+  {
+   "q": "An Alsace label names Riesling. How much of the wine must be Riesling?",
+   "answer": "100%",
+   "wrong": [
+    "75%",
+    "85%",
+    "51%"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=22"
+  },
+  {
+   "q": "Per the Court, Oregon’s minimum for most named grapes is what?",
+   "answer": "90%",
+   "wrong": [
+    "75%",
+    "85%",
+    "100%"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+  },
+  {
+   "q": "What is a ‘monopole’ in Burgundy?",
+   "answer": "A vineyard controlled entirely by one winery",
+   "wrong": [
+    "A walled vineyard",
+    "A wine made from one grape",
+    "A négociant’s blend"
+   ],
+   "source": "https://www.winespectator.com/glossary/show/id/monopole"
+  },
+  {
+   "q": "What does DAC mark on an Austrian label?",
+   "answer": "A quality wine from a named area, like an AOC",
+   "wrong": [
+    "A sweet late-harvest wine",
+    "A wine with no geographic indication",
+    "A sparkling wine"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=52"
+  },
+  {
+   "q": "In the Wachau’s own system, which level is the ripest?",
+   "answer": "Smaragd",
+   "wrong": [
+    "Kabinett",
+    "Landwein",
+    "Steinfeder"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=52"
+  },
+  {
+   "q": "What does Portugal call its protected-origin wines?",
+   "answer": "DOP",
+   "wrong": [
+    "DOCa",
+    "AVA",
+    "DAC"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+  },
+  {
+   "q": "Which colors mark the capsule on Austrian quality wine?",
+   "answer": "Red, white and red",
+   "wrong": [
+    "Black, red and gold",
+    "Blue and white",
+    "Green and white"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=53"
+  },
+  {
+   "q": "What does Chile’s DO system control?",
+   "answer": "Only where the grapes come from",
+   "wrong": [
+    "Which grapes may be planted",
+    "Minimum aging in oak",
+    "Maximum yields"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "q": "South Africa’s Wine of Origin: a wine from one named appellation must be how much from it?",
+   "answer": "100%",
+   "wrong": [
+    "75%",
+    "85%",
+    "95%"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+  },
+  {
+   "q": "Australia’s 85% rule covers which label claims?",
+   "answer": "Grape variety, vintage and origin",
+   "wrong": [
+    "Only grape variety",
+    "Only alcohol level",
+    "Only vintage"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
   }
  ],
  "facts": [
@@ -998,6 +1286,106 @@
   {
    "fact": "Court guide, Oregon: 90% minimum for stated variety (with exceptions such as Cabernet Sauvignon and Merlot) and 95% minimum for AVA.",
    "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+  },
+  {
+   "fact": "CMS curriculum guide, Winemaking (Intro) packaging: labels and label design, capsule colors and design, adhering to governmental label laws.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=8"
+  },
+  {
+   "fact": "CMS curriculum guide, Bordeaux (Intro): Regional appellation (Bordeaux AOC), sub-regional appellations (Médoc AOP, Haut-Médoc AOP) and commune appellations (Margaux, Pauillac, St-Estèphe, St-Julien).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=10"
+  },
+  {
+   "fact": "CMS curriculum guide, Burgundy (Intro): Regional AOP / Villages AOP / Premier Cru AOP / Grand Cru AOP. Regional AOP: Bourgogne AOP; villages such as Gevrey-Chambertin; recognize the Chablis Grand Cru Les Clos.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=13"
+  },
+  {
+   "fact": "CMS curriculum guide, Burgundy (Intro) label terms: Négociant, Domaine, Clos, Monopole, Vieilles Vignes.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=14"
+  },
+  {
+   "fact": "CMS curriculum guide, Southern Rhône (Intro) classification tiers: Côtes-du-Rhône AOP, Côtes-du-Rhône Villages AOP (named villages), Crus/single village (e.g. Châteauneuf-du-Pape, Tavel, Gigondas, Vacqueyras).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=18"
+  },
+  {
+   "fact": "CMS curriculum guide, Alsace (Intro) wine law: must be 100% of the grape variety if the name is mentioned on the label.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=22"
+  },
+  {
+   "fact": "Clos: a French term for a walled vineyard, such as Clos de Vougeot in Burgundy.",
+   "source": "https://www.winespectator.com/glossary/show/id/clos"
+  },
+  {
+   "fact": "Monopole: an appellation or other designated winegrowing area controlled entirely by one winery, e.g. Domaine de la Romanée-Conti's Romanée-Conti and La Tâche.",
+   "source": "https://www.winespectator.com/glossary/show/id/monopole"
+  },
+  {
+   "fact": "Négociant-Manipulant (NM): a house that buys grapes or wine; all the big Champagne houses are NM.",
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-bottles-bottling"
+  },
+  {
+   "fact": "CMS curriculum guide, Northeast Italy (Intro) general terms: Classico, Superiore, Secco, Amabile, Charmat, Appassimento.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=31"
+  },
+  {
+   "fact": "CMS curriculum guide, Catalonia (Intro): Cava DO is traditional method sparkling, white and rosado; Priorat DOCa is mainly still, dry reds from Garnacha, Cariñena and international varieties.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=42"
+  },
+  {
+   "fact": "CMS curriculum guide, Portugal (Intro) DOPs: Vinho Verde DOP, Douro DOP, Porto DOP, Madeira DOP. Styles: Vinho Verde low alcohol, slight effervescence; Douro bold, dry reds; Porto fortified, sweet red; Madeira fortified dry, medium dry and sweet whites.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+  },
+  {
+   "fact": "CMS curriculum guide, Austria (Intro) wine law: without geographical indication - Wein; with GI - Landwein (regional wines, rarely exported); Qualitätswein; DAC (Districtus Austriae Controllatus): quality wine/appellation of origin, similar to the AOC or DOC system, specific grape varieties and styles permitted, focus on dry wines; Prädikatswein: like Germany but rarely produced in Austria.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=52"
+  },
+  {
+   "fact": "CMS curriculum guide, Austria (Intro): the Wachau has its own classification system based on grape ripeness at harvest; example Smaragd, the highest level of ripeness, named for green lizards in the vineyards.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=52"
+  },
+  {
+   "fact": "CMS curriculum guide, Austria (Intro) label terms: recognize an Austrian wine capsule (shown red-white-red). The Certified column names it the Banderole, the capsule showing the wine is Qualitätswein level or higher.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=53"
+  },
+  {
+   "fact": "Every Austrian DAC bottle carries the red-white-red Qualitätswein banderole on its closure. (Translated from German.)",
+   "source": "https://www.derstandard.at/story/3000000218543/was-bedeutet-dac"
+  },
+  {
+   "fact": "CMS curriculum guide, Canada (Intro): Canada has no national wine law; each province has its own laws. VQA (Vintners Quality Alliance) is the primary regulatory body for premium wine.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+  },
+  {
+   "fact": "CMS curriculum guide, Mexico wine law row: 'No laws!'",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=65"
+  },
+  {
+   "fact": "CMS curriculum guide, Chile (Intro): the Denominación de Origen (DO) system refers to a geographic place of origin only, with no other additional laws. Levels: Region, Subregion, Zone, Area.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "fact": "CMS curriculum guide, Argentina (Intro): 85% minimum to list the grape variety on a label.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "fact": "CMS curriculum guide, South Africa (Intro): Wine of Origin system - a wine from a single appellation must be 100% from that appellation; rigorous certification. From largest area to smallest: Geographical Unit, Region, District, Ward.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+  },
+  {
+   "fact": "CMS curriculum guide, New Zealand (Intro): Geographical Indications (GIs) are 'trademark only with no minimums, no rules'; 85% minimum to list the grape variety on a label.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+  },
+  {
+   "fact": "CMS curriculum guide, Australia (Intro): a GI refers to a geographic place of origin only, no other additional laws; 85% labeling required for grape variety, vintage and origin.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+  },
+  {
+   "fact": "CMS curriculum guide, Australia (Intro): GIs nest Australia, State, Zone, Region, Sub-Region, more specific as the area gets smaller; South Eastern Australia is a high-volume super GI.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+  },
+  {
+   "fact": "The zone South Eastern Australia covers the whole of New South Wales, Victoria and Tasmania and part of Queensland and South Australia.",
+   "source": "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
   }
  ],
  "unverified": [
@@ -1009,8 +1397,178 @@
   "German minimum must weights conflict between Wines of Germany pages (one says Eiswein and BA need 120°Oe; another gives 110–128°Oe by region), so no Oechsle figures are used.",
   "The 2021 German origin pyramid allowed a transition for older labeling through the 2025 harvest; how labels look from the 2026 vintage was not checked.",
   "The Italian law text used is the Lazio agency (ARSIAL) copy of Law 238/2016 as published in the Gazzetta Ufficiale (Vigente al 12-1-2017); later amendments were not checked.",
-  "Germany's Landwein is listed by the Court as a wine 'with geographic indication', but no official page fetched confirms it as the EU PGI tier, so it is left out of the PGI row."
+  "Germany's Landwein is listed by the Court as a wine 'with geographic indication', but no official page fetched confirms it as the EU PGI tier, so it is left out of the PGI row.",
+  "Argentina's varietal minimum: the Court guide gives 85%; Wine Folly's table (fact above) gives 80%. The chapter follows the Court; Argentina's INV rules were not fetched.",
+  "New World rules (Chile, Argentina, South Africa, New Zealand, Australia, Canada, Mexico) come from the Court guide only; the official bodies' pages (Wine Australia's LIP, WOSA/SAWIS, NZ Winegrowers, Wines of Chile, VQA) were not fetched or did not load, except Wine Australia's GI register for South Eastern Australia.",
+  "Mexico 'no laws': the Court's wording. Whether Mexico has any national labeling or origin rules for wine was not checked.",
+  "New Zealand GIs as 'trademark only with no minimums, no rules' is the Court's wording; the Certified column itself says Marlborough labeling needs 100% fruit from the region, and NZ's own rules were not fetched, so the chapter only says a GI names the origin.",
+  "Austria: austrianwine.com returned 403, so Austrian tiers, DAC and the Wachau system come from the Court guide; the red-white-red banderole is also confirmed by Der Standard (in German). Whether Smaragd sits within the DAC rules today was not checked.",
+  "Burgundy label words Négociant and Domaine: listed by the Court; the négociant definition uses champagne.fr's NM definition; Domaine is not defined."
  ],
+ "court": {
+  "section": 3,
+  "outline": [],
+  "outcome": "Germany: After studying this section, a student will understand Germany's climate, the importance of rivers, soil types, grape varieties, and learn about selected wine regions. Students will recognize the hierarchy of German wine law (Wein, Qualitätswein, Prädikatswein), and the progression of Prädikat levels. Rioja: After studying this section, a student will know the general location, climate, grape varieties, styles, and label language of Rioja. Northeast Italy: After studying this section, a student will know the major DOC/DOCGs in Northeast Italy, be able to match grape varieties with their regions, and understand general labeling terms. California Central Coast: After studying this section, a student will know selected counties of the Central Coast of California and the major AVAs within them. Students will know basic wine labeling laws and understand the relationship of climate to the grape varieties grown. Pacific Northwest: After studying this section, a student will understand the general climate, grapes grown, wine law, and AVAs of the Columbia Valley of Washington and the Willamette Valley of Oregon.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "Viticulture · Factor 11: Regional Wine Law",
+    "guide": "Regional laws decide which grapes are grown and how.",
+    "where": "Old World, New World"
+   },
+   {
+    "topic": "Winemaking · Packaging",
+    "guide": "Labels, capsules, and following each government’s label laws.",
+    "where": "Reading a label"
+   },
+   {
+    "topic": "Bordeaux · Wine Law / Appellations",
+    "guide": "Regional, sub-regional and commune appellations.",
+    "where": "France: AOC, AOP and IGP"
+   },
+   {
+    "topic": "Burgundy · Wine Law / Classification",
+    "guide": "Regional, Village, Premier Cru, Grand Cru AOPs.",
+    "where": "France: AOC, AOP and IGP"
+   },
+   {
+    "topic": "Rhône · Wine Law / Classification",
+    "guide": "Southern tiers: Côtes du Rhône, Villages, single-village crus.",
+    "where": "France: AOC, AOP and IGP"
+   },
+   {
+    "topic": "Alsace · Wine Law",
+    "guide": "A named grape must be 100% of the wine.",
+    "where": "France: AOC, AOP and IGP"
+   },
+   {
+    "topic": "Burgundy · Label Terms",
+    "guide": "Négociant, Domaine, Clos, Monopole, Vieilles Vignes.",
+    "where": "Reading a label"
+   },
+   {
+    "topic": "Italy · Classification (every Italy subject)",
+    "guide": "IGP, DOC, DOCG.",
+    "where": "Italy: DOCG, DOC and IGT"
+   },
+   {
+    "topic": "Italy (Tuscany, Central/South) · Label Terms",
+    "guide": "Superiore, Classico, Riserva.",
+    "where": "Italy: DOCG, DOC and IGT"
+   },
+   {
+    "topic": "Italy (Northeast) · General Terms",
+    "guide": "Classico, Superiore, Secco, Amabile, Charmat, Appassimento.",
+    "where": "Italy: DOCG, DOC and IGT"
+   },
+   {
+    "topic": "Spain (Rioja) · Wine Law / Appellation: DOCa",
+    "guide": "Rioja is a DOCa: Tempranillo reds and Viura whites.",
+    "where": "Spain: DO, DOCa and Pago"
+   },
+   {
+    "topic": "Spain (Rioja, Ribera del Duero) · Label Terms / Classification",
+    "guide": "Crianza, Reserva, Gran Reserva in order; exact times not needed.",
+    "where": "Spain: DO, DOCa and Pago"
+   },
+   {
+    "topic": "Spain (Catalonia) · Wine Law: DO, DOCa",
+    "guide": "Cava DO for traditional-method sparkling; Priorat DOCa.",
+    "where": "Spain: DO, DOCa and Pago"
+   },
+   {
+    "topic": "Portugal · Wine Law / Appellations: DOPs",
+    "guide": "Vinho Verde, Douro, Porto and Madeira DOPs and their styles.",
+    "where": "added: Austria and Portugal"
+   },
+   {
+    "topic": "Germany · Wine Law / Classification",
+    "guide": "Deutscher Wein, Landwein, Qualitätswein (13 regions), Prädikatswein; no chaptalization.",
+    "where": "Germany: the Prädikat levels"
+   },
+   {
+    "topic": "Germany · Wine Law / Prädikate",
+    "guide": "Six levels in ripeness order; winery choices set final sweetness.",
+    "where": "Germany: the Prädikat levels"
+   },
+   {
+    "topic": "Germany · General Terms",
+    "guide": "Anbaugebiete (13 regions); Prädikate.",
+    "where": "Germany: the Prädikat levels"
+   },
+   {
+    "topic": "Germany · Label Terms",
+    "guide": "Trocken means dry.",
+    "where": "Germany: the Prädikat levels"
+   },
+   {
+    "topic": "Austria · Wine Law / Classification",
+    "guide": "Wein, Landwein, Qualitätswein/DAC, rare Prädikatswein.",
+    "where": "added: Austria and Portugal"
+   },
+   {
+    "topic": "Austria · Wine Law / Classification (Wachau)",
+    "guide": "The Wachau’s own ripeness system; Smaragd is the ripest.",
+    "where": "added: Austria and Portugal"
+   },
+   {
+    "topic": "Austria · Label Terms",
+    "guide": "Recognize the red-white-red Austrian capsule.",
+    "where": "added: Austria and Portugal"
+   },
+   {
+    "topic": "USA (California North and Central Coast) · Wine Law",
+    "guide": "75% grape, 85% AVA, 95% vintage, 95% single vineyard.",
+    "where": "United States: AVAs and percentages"
+   },
+   {
+    "topic": "USA (Oregon) · Wine Law",
+    "guide": "90% for most named grapes; 95% for the AVA.",
+    "where": "United States: AVAs and percentages"
+   },
+   {
+    "topic": "Canada · Wine Law",
+    "guide": "No national law; provinces set rules; VQA for premium wine.",
+    "where": "added: New World origin rules"
+   },
+   {
+    "topic": "Mexico · Wine Law",
+    "guide": "The Court says Mexico has no wine laws.",
+    "where": "added: New World origin rules"
+   },
+   {
+    "topic": "Chile · Wine Law",
+    "guide": "DO marks origin only: Region, Subregion, Zone, Area.",
+    "where": "added: New World origin rules"
+   },
+   {
+    "topic": "Argentina · Wine Law",
+    "guide": "85% to name a grape on the label.",
+    "where": "added: New World origin rules"
+   },
+   {
+    "topic": "South Africa · Wine Law",
+    "guide": "Wine of Origin: 100% from a single appellation; Geographical Unit to Ward.",
+    "where": "added: New World origin rules"
+   },
+   {
+    "topic": "New Zealand · Wine Law and Appellation",
+    "guide": "GIs name the origin with few rules; 85% to name a grape.",
+    "where": "added: New World origin rules"
+   },
+   {
+    "topic": "Australia · Wine Law",
+    "guide": "GI is origin only; 85% for grape, vintage and origin.",
+    "where": "added: New World origin rules"
+   },
+   {
+    "topic": "Australia · Wine Law / Appellation",
+    "guide": "GI levels from Australia to Sub-Region; South Eastern Australia super zone.",
+    "where": "added: New World origin rules"
+   }
+  ],
+  "note": "The Court's outline lists no subtopics for Section 3, and the Curriculum Guide has no wine-law subject. Coverage uses the Introductory wine law, classification and general label-term rows across the guide's subjects; region-by-region appellation lists and style words tied to one region stay in the country chapters."
+ },
  "v3": {
   "video": {
    "youtubeId": "1DSTNnSDNfE",
@@ -1119,6 +1677,11 @@
        "name": "IGP",
        "note": "geographic indication",
        "text": "The wine’s quality or reputation is linked to where it’s from. For wine, every step from **harvest to finished wine** happens in the zone."
+      },
+      {
+       "name": "Inside an AOP",
+       "note": "big to small",
+       "text": "French appellations nest. In **Bordeaux**, a wine can be plain **Bordeaux AOC**, a sub-region like **Haut-Médoc**, or a commune like **Pauillac**. **Burgundy** climbs from **Regional** to **Village**, **Premier Cru** and **Grand Cru**."
       }
      ],
      "visual": 0,
@@ -1230,7 +1793,7 @@
       {
        "name": "DO",
        "note": "Denominación de origen",
-       "text": "Needs **high prestige** and at least **five years** as a recognized quality region."
+       "text": "Needs **high prestige** and at least **five years** as a recognized quality region. **Cava** is a DO for traditional-method sparkling wine."
       },
       {
        "name": "DOCa",
@@ -1285,7 +1848,7 @@
     ],
     "read": {
      "bigIdea": "German law grades wine by how ripe the grapes are.",
-     "where": "The **1971 wine law** made ripeness at harvest the main measure of quality. **Qualitätswein** comes from one of **13 regions**. **Prädikatswein** is Qualitätswein graded by ripeness, and it may not be enriched (**chaptalized**).",
+     "where": "The **1971 wine law** made ripeness at harvest the main measure of quality. **Qualitätswein** comes from one of **13 regions**. **Prädikatswein** is Qualitätswein graded by ripeness, and it may not be enriched (**chaptalized**). Those 13 regions are the **Anbaugebiete**.",
      "stopsTitle": "The six Prädikate, least to most ripe",
      "stops": [
       {
@@ -1318,6 +1881,73 @@
      18,
      20,
      21
+    ]
+   },
+   {
+    "name": "Austria and Portugal",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DAC",
+      "line": "is Austria’s quality appellation, much like an AOC."
+     },
+     {
+      "big": "SMARAGD",
+      "line": "is the ripest level on the Wachau’s own ladder."
+     },
+     {
+      "big": "RED-WHITE-RED",
+      "line": "on the capsule marks Austrian quality wine."
+     },
+     {
+      "big": "DOP",
+      "line": "is the word for protected wines in Portugal."
+     },
+     {
+      "big": "FOUR DOPs",
+      "line": "to know: Vinho Verde, Douro, Porto and Madeira."
+     }
+    ],
+    "read": {
+     "bigIdea": "Austria and Portugal have their own label words.",
+     "where": "**Austria** uses tiers that look like Germany’s: **Wein**, **Landwein**, **Qualitätswein** and **Prädikatswein**. Its own addition is the **DAC**. **Portugal** calls its protected wines **DOP**.",
+     "stopsTitle": "Five words to know",
+     "stops": [
+      {
+       "name": "DAC",
+       "note": "Austria’s appellation",
+       "text": "**Districtus Austriae Controllatus.** A quality wine from a named area, like an **AOC** or **DOC**. Each DAC sets its grapes and styles, and the focus is on **dry** wines."
+      },
+      {
+       "name": "Prädikatswein",
+       "note": "rare in Austria",
+       "text": "Graded by ripeness as in Germany, but **rarely made** in Austria. **Landwein**, the regional tier, is rarely exported."
+      },
+      {
+       "name": "Smaragd",
+       "note": "the Wachau’s ladder",
+       "text": "The **Wachau** has its own system based on grape ripeness at harvest. **Smaragd**, named for the green lizards in the vines, is the ripest level."
+      },
+      {
+       "name": "The capsule",
+       "note": "red-white-red",
+       "text": "Austrian quality wine carries a **red-white-red** band on the capsule. The Court expects you to recognize it."
+      },
+      {
+       "name": "DOP",
+       "note": "Portugal",
+       "text": "Portugal’s protected wines are **DOP**. Know four: **Vinho Verde** (low alcohol, a slight fizz), **Douro** (bold dry reds), **Porto** (fortified sweet red) and **Madeira** (fortified white, dry to sweet)."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Austria’s tiers, top to bottom:",
+     "mixup": "**Smaragd** is a Wachau ripeness level. **DAC** is a place-based appellation used across Austria.",
+     "sayIt": null
+    },
+    "check": [
+     38,
+     39,
+     40
     ]
    },
    {
@@ -1369,6 +1999,11 @@
        "name": "Vineyard or vintage",
        "note": "95%",
        "text": "A **vineyard name** needs **95%** from that vineyard. A **vintage** with an AVA needs **95%** from that year; with a state or county, **85%**."
+      },
+      {
+       "name": "Oregon",
+       "note": "stricter",
+       "text": "The Court lists Oregon at **90%** for most named grapes (with exceptions such as **Cabernet Sauvignon** and **Merlot**) and **95%** from a named AVA."
       }
      ],
      "visual": 0,
@@ -1379,6 +2014,73 @@
      25,
      24,
      26
+    ]
+   },
+   {
+    "name": "New World origin rules",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ORIGIN ONLY",
+      "line": "is what a Chilean DO or an Australian GI controls."
+     },
+     {
+      "big": "85%",
+      "line": "of a named grape in Argentina, Australia and New Zealand."
+     },
+     {
+      "big": "WINE OF ORIGIN",
+      "line": "is South Africa’s system: 100% from one appellation."
+     },
+     {
+      "big": "SUPER ZONE",
+      "line": "South Eastern Australia spans several states."
+     },
+     {
+      "big": "VQA",
+      "line": "oversees premium Canadian wine; there’s no national law."
+     }
+    ],
+    "read": {
+     "bigIdea": "New World labels mostly promise where, not how.",
+     "where": "Most New World place names promise **origin**, not a style. A Chilean **DO** or an Australian **GI** names where the grapes grew, with no other rules attached. The numbers to know are the **minimum percentages** behind a grape or place name.",
+     "stopsTitle": "Country by country",
+     "stops": [
+      {
+       "name": "Chile",
+       "note": "DO",
+       "text": "The **Denominación de Origen** marks origin only. Places nest from **Region** to **Subregion**, **Zone** and **Area**."
+      },
+      {
+       "name": "Argentina",
+       "note": "85%",
+       "text": "Name a grape and at least **85%** of the wine must be that grape."
+      },
+      {
+       "name": "South Africa",
+       "note": "Wine of Origin",
+       "text": "A wine from a single appellation must be **100%** from it, and certification is strict. The places, big to small: **Geographical Unit**, **Region**, **District** and **Ward**."
+      },
+      {
+       "name": "Australia and New Zealand",
+       "note": "GI",
+       "text": "A **GI** names the origin. Both need **85%** of a named grape, and Australia’s 85% also covers **vintage** and **origin**. Australian GIs nest from **Australia** to **State**, **Zone**, **Region** and **Sub-Region**."
+      },
+      {
+       "name": "Canada and Mexico",
+       "note": "no national law",
+       "text": "Canada has **no national wine law**: each province sets its own, and **VQA** oversees premium wine. The Court’s guide says Mexico has **no wine laws** at all."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Big to small, three ways to nest a place:",
+     "mixup": "**Australia** needs 85% of a named grape. The **United States** needs only 75%.",
+     "sayIt": null
+    },
+    "check": [
+     42,
+     43,
+     44
     ]
    },
    {
@@ -1408,7 +2110,7 @@
     ],
     "read": {
      "bigIdea": "Every label answers who, where, what and when.",
-     "where": "Look for five things: the producer, the region, the grape or appellation, the vintage, and the alcohol. If no grape is named, the **appellation’s rules** tell you what’s in the bottle.",
+     "where": "Look for five things: the producer, the region, the grape or appellation, the vintage, and the alcohol. If no grape is named, the **appellation’s rules** tell you what’s in the bottle. Producers design labels and capsules within each government’s **label laws**.",
      "stopsTitle": "Words worth knowing",
      "stops": [
       {
@@ -1425,6 +2127,11 @@
        "name": "Reserve and Old Vines",
        "note": "no fixed meaning",
        "text": "**Reserve** has no official meaning, and **Old Vines** has no rule for how old the vines are."
+      },
+      {
+       "name": "Burgundy words",
+       "note": "on French labels",
+       "text": "A **négociant** buys grapes or wine. A **clos** is a walled vineyard, and a **monopole** is a vineyard controlled by one winery. **Domaine** and **Vieilles Vignes** (old vines) are the other words the Court lists."
       }
      ],
      "visual": 0,

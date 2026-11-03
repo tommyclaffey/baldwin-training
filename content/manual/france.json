@@ -51,7 +51,11 @@
     "Minimum aging: 15 months for non-vintage, 3 years for vintage.",
     "17 villages keep the Grand Cru name; 42 keep Premier Cru.",
     "Blanc de Blancs is white grapes only; Blanc de Noirs is black grapes only.",
-    "Non-vintage Brut is the most common Champagne: a blend of several years."
+    "Non-vintage Brut is the most common Champagne: a blend of several years.",
+    "Non-vintage spends at least 12 months on its lees, 15 months in all.",
+    "The main areas: Montagne de Reims, Vallée de la Marne, Côte des Blancs.",
+    "The Court credits Madame Clicquot with inventing the riddling rack.",
+    "When opening, never point the cork at anyone, and keep a hand on the cage and cork."
    ],
    "visuals": [
     {
@@ -143,7 +147,11 @@
     "A Grand Cru label shows only the vineyard (Climat) name, like Montrachet or Corton.",
     "Côte de Nuits is mainly red Pinot Noir; from Meursault south, the Côte de Beaune is mostly Chardonnay.",
     "Chablis is 100% Chardonnay, on Kimmeridgian limestone with tiny oyster fossils.",
-    "Beaujolais Nouveau is released on the third Thursday of November."
+    "Beaujolais Nouveau is released on the third Thursday of November.",
+    "The base level is Bourgogne AOP; Beaujolais climbs from Beaujolais to Beaujolais-Villages to the crus.",
+    "The Court links Burgundy with malolactic fermentation, carbonic maceration and new French oak.",
+    "Label words: Négociant, Domaine, Clos (a walled vineyard), Monopole (one owner), Vieilles Vignes (old vines).",
+    "Monastic history and Napoleonic inheritance law shaped the classification and split vineyards among many owners."
    ],
    "visuals": [
     {
@@ -210,7 +218,11 @@
     "Mouton Rothschild was promoted to First Growth in 1973.",
     "Haut-Brion (Pessac, Graves) is the only First Growth outside the Médoc.",
     "Château d'Yquem in Sauternes is the only Premier Cru Supérieur.",
-    "Saint-Émilion's classification is revised every ten years; Pomerol has none."
+    "Saint-Émilion's classification is revised every ten years; Pomerol has none.",
+    "Know these labels too: Château d'Yquem (Sauternes), Petrus (Pomerol), Ausone and Cheval Blanc (Saint-Émilion).",
+    "Every vintage is different: the weather changes both the style and the price.",
+    "Bold reds suit beef and lamb; sweet Sauternes suits dessert and foie gras.",
+    "History: Eleanor of Aquitaine's marriage, Dutch trade, and a slave-trade port. Today it is France's largest AOP region."
    ],
    "visuals": [
     {
@@ -283,7 +295,9 @@
     "Sancerre and Pouilly-Fumé are Sauvignon Blanc.",
     "Vouvray is Chenin, made dry, sweet or sparkling.",
     "Chinon and Bourgueil are Cabernet Franc reds.",
-    "Quarts de Chaume, Bonnezeaux and Coteaux du Layon are sweet, botrytis Chenin."
+    "Quarts de Chaume, Bonnezeaux and Coteaux du Layon are sweet, botrytis Chenin.",
+    "Vouvray's soil is tuffeau; it can be sparkling, dry, off-dry or sweet.",
+    "Saumur-Champigny is a Cabernet Franc red."
    ],
    "visuals": [
     {
@@ -354,7 +368,9 @@
     "Wines are named for their grape, and a named grape must be 100% of the wine.",
     "Over 90% of Alsace wine comes from white grapes.",
     "AOC Alsace is over 70% of production; Crémant d'Alsace is about a quarter.",
-    "Four classic Grand Cru grapes: Riesling, Gewurztraminer, Pinot Gris, Muscat."
+    "Four classic Grand Cru grapes: Riesling, Gewurztraminer, Pinot Gris, Muscat.",
+    "The better vineyards face east or southeast, on slopes.",
+    "Wine is made in large neutral casks, with little or no new oak."
    ],
    "visuals": [
     {
@@ -407,7 +423,10 @@
     "North: Syrah for reds; Viognier for Condrieu.",
     "South: Grenache-based blends, as in Châteauneuf-du-Pape.",
     "Tiers: Côtes du Rhône, Côtes du Rhône Villages, then the crus (one village each).",
-    "Muscat de Beaumes-de-Venise is a Vin Doux Naturel: alcohol is added to stop fermentation."
+    "Muscat de Beaumes-de-Venise is a Vin Doux Naturel: alcohol is added to stop fermentation.",
+    "Style: spicy, meaty reds and rich, aromatic whites. Whites are Viognier, Marsanne and Roussanne in the north, Grenache Blanc in the south.",
+    "North: co-fermented wines; Côte-Rôtie is the only northern red cru that plants Viognier with its Syrah. South: blends.",
+    "Châteauneuf-du-Pape recalls the popes who lived at Avignon in the 14th century."
    ],
    "visuals": [
     {
@@ -450,7 +469,7 @@
    "why": "Extra Dry (12-17 g/L) is sweeter than Brut (under 12 g/L)."
   }
  ],
- "sources": "Court of Master Sommeliers, Americas curriculum guide; INAO; and each region's official wine body: Comité Champagne, BIVB (Bourgogne and Chablis), Inter Beaujolais, CIVB (Bordeaux), Conseil des Grands Crus Classés en 1855, Conseil des Vins de Saint-Émilion, InterLoire, BIVC (Centre-Loire), CIVA (Alsace) and Inter Rhône. Checked Oct 31, 2026.",
+ "sources": "Court of Master Sommeliers, Americas curriculum guide; INAO; and each region's official wine body: Comité Champagne, BIVB (Bourgogne and Chablis), Inter Beaujolais, CIVB (Bordeaux), Conseil des Grands Crus Classés en 1855, Conseil des Vins de Saint-Émilion, InterLoire, BIVC (Centre-Loire), CIVA (Alsace) and Inter Rhône. Checked Oct 31, 2026; aligned with the Court’s Introductory curriculum Nov 2, 2026 (plus Wine Spectator glossary for Clos and Monopole).",
  "cards": [
   {
    "q": "Which of Champagne's three main grapes is white?",
@@ -751,6 +770,156 @@
     "Premier Cru"
    ],
    "source": "https://www.vins-rhone.com/en/wine-school/glossary/indication-geographique-protegee-igp"
+  },
+  {
+   "q": "Who does the Court credit with inventing the riddling rack?",
+   "answer": "Madame Clicquot",
+   "wrong": [
+    "Dom Pérignon",
+    "Napoleon III",
+    "Claude Moët"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "q": "What is a Champagne house’s top wine called?",
+   "answer": "Cuvée de prestige (tête de cuvée)",
+   "wrong": [
+    "Blanc de Noirs",
+    "Brut Nature",
+    "Récoltant-Manipulant"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "q": "While removing a Champagne cork, what should you never do?",
+   "answer": "Take your hand off the cage and cork",
+   "wrong": [
+    "Turn the bottle instead of the cork",
+    "Hold the bottle at an angle",
+    "Use a napkin"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "q": "What does ‘Monopole’ on a Burgundy label mean?",
+   "answer": "The vineyard is controlled entirely by one winery",
+   "wrong": [
+    "The wine is from one grape",
+    "The wine is a Grand Cru",
+    "The vineyard is walled"
+   ],
+   "source": "https://www.winespectator.com/glossary/show/id/monopole"
+  },
+  {
+   "q": "Which soil is Beaujolais known for?",
+   "answer": "Granite",
+   "wrong": [
+    "Chalk",
+    "Kimmeridgian limestone",
+    "Gravel"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=12"
+  },
+  {
+   "q": "Vosne-Romanée is a village in which part of Burgundy?",
+   "answer": "Côte de Nuits",
+   "wrong": [
+    "Côte de Beaune",
+    "Mâconnais",
+    "Chablis"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=13"
+  },
+  {
+   "q": "Which of these is a Bordeaux commune (village) appellation?",
+   "answer": "Pauillac",
+   "wrong": [
+    "Bordeaux AOC",
+    "Haut-Médoc",
+    "Entre-Deux-Mers"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=10"
+  },
+  {
+   "q": "Château Petrus comes from which Bordeaux appellation?",
+   "answer": "Pomerol",
+   "wrong": [
+    "Pauillac",
+    "Sauternes",
+    "Margaux"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "q": "Which soil is Vouvray known for?",
+   "answer": "Tuffeau",
+   "wrong": [
+    "Galets",
+    "Granite",
+    "Gravel"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=15"
+  },
+  {
+   "q": "Saumur-Champigny is a red made from which grape?",
+   "answer": "Cabernet Franc",
+   "wrong": [
+    "Pinot Noir",
+    "Gamay",
+    "Merlot"
+   ],
+   "source": "https://www.vinsvaldeloire.fr/en/grape-varieties"
+  },
+  {
+   "q": "What kind of vessel is typical for Alsace wine?",
+   "answer": "Large neutral casks",
+   "wrong": [
+    "New French barriques",
+    "Clay amphorae",
+    "New American oak barrels"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=21"
+  },
+  {
+   "q": "Which two countries have both ruled Alsace?",
+   "answer": "France and Germany",
+   "wrong": [
+    "France and Switzerland",
+    "Germany and Austria",
+    "France and Italy"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=22"
+  },
+  {
+   "q": "What are ‘galets’ in the Southern Rhône?",
+   "answer": "Big rounded stones in the vineyards",
+   "wrong": [
+    "A local white grape",
+    "A cold north wind",
+    "A small oak barrel"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=17"
+  },
+  {
+   "q": "Which soils are typical of the Northern Rhône?",
+   "answer": "Decomposed granite and schist",
+   "wrong": [
+    "Chalk",
+    "Gravel and sand",
+    "Kimmeridgian limestone"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=17"
+  },
+  {
+   "q": "Which Northern Rhône red cru plants Viognier alongside Syrah?",
+   "answer": "Côte-Rôtie",
+   "wrong": [
+    "Cornas",
+    "Hermitage",
+    "Gigondas"
+   ],
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-cote-rotie"
   }
  ],
  "facts": [
@@ -1521,6 +1690,118 @@
   {
    "fact": "Lower Loire (Pays Nantais) makes bracing, citrusy white wines from Melon de Bourgogne.",
    "source": "https://winefolly.com/deep-dive/loire-valley-wine-guide/"
+  },
+  {
+   "fact": "CMS curriculum guide, Champagne (Intro): no protection from Atlantic influence, so unpredictable weather, rain, frost and hail threats; grapes are picked earlier to preserve natural acidity.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "CMS curriculum guide, Champagne (Intro): Champagne AOP; subregions Vallée de la Marne, Côte des Blancs, Montagne de Reims.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "CMS curriculum guide, Champagne (Intro): Champagne Method steps include assemblage of the cuvée, sur lie aging (autolysis), riddling (remuage) using a pupitre or gyropalette, and dosage added using liqueur d'expédition.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "CMS curriculum guide, Champagne (Intro): General terms Cuvée de Prestige/Tête de Cuvée, Négociant, Grower. Styles: Brut, Non-Vintage, Vintage, Blanc de Blancs, Blanc de Noirs, Rosé.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "fact": "CMS curriculum guide, Champagne (Intro) producers: Moët & Chandon, Roederer, Veuve Clicquot, Taittinger, Charles Heidsieck, Krug.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "fact": "CMS curriculum guide, Champagne (Intro) history: invention of the riddling rack (Madame Clicquot) and the gyropalette.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "fact": "CMS curriculum guide, Champagne (Intro) service: never point the cork at someone while opening, and never take your hand off the top (the cage and cork) while removing the cork.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "fact": "CMS curriculum guide, Burgundy (Intro): physical features are hills, aspect and slope of vineyards. Soils: Chablis and Côte d'Or limestone and clay; Beaujolais granite.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=12"
+  },
+  {
+   "fact": "CMS curriculum guide, Burgundy (Intro) winemaking: malolactic fermentation, carbonic maceration, use of new French oak. Style: dry white wines, dry red wines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=12"
+  },
+  {
+   "fact": "CMS curriculum guide, Burgundy (Intro): Regional AOP is Bourgogne AOP. Chablis AOP has Village / Premier Cru / Grand Cru AOPs; recognize the Chablis Grand Cru Les Clos AOP. Beaujolais AOP: Beaujolais-Villages / Beaujolais Cru; recognize the cru Morgon.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=13"
+  },
+  {
+   "fact": "CMS curriculum guide, Burgundy (Intro) villages to recognize: Côte de Nuits - Gevrey-Chambertin, Morey-St.-Denis, Chambolle-Musigny, Vougeot, Vosne-Romanée, Nuits-St.-Georges; Côte de Beaune - Pommard, Volnay, Meursault, Chassagne-Montrachet, Puligny-Montrachet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=13"
+  },
+  {
+   "fact": "CMS curriculum guide, Burgundy (Intro) history: the Monastic and Napoleonic Code of Inheritance influences on classification, fragmentation of vineyards, and vineyard ownership.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=14"
+  },
+  {
+   "fact": "Clos: a French term for a walled vineyard, such as Clos de Vougeot in Burgundy.",
+   "source": "https://www.winespectator.com/glossary/show/id/clos"
+  },
+  {
+   "fact": "Monopole: an appellation or other designated winegrowing area controlled entirely by one winery, e.g. Domaine de la Romanée-Conti's Romanée-Conti and La Tâche.",
+   "source": "https://www.winespectator.com/glossary/show/id/monopole"
+  },
+  {
+   "fact": "CMS curriculum guide, Bordeaux (Intro): whites Sauvignon Blanc and Sémillon, small amounts of Muscadelle; reds Cabernet Sauvignon, Merlot, Cabernet Franc, small amounts of Malbec, Petit Verdot, Carménère. Soils: gravel, clay, limestone, sand.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=9"
+  },
+  {
+   "fact": "CMS curriculum guide, Bordeaux (Intro): evaporation from large bodies of water and spring rain bring humidity, mold and rot; humidity helps noble rot form for sweet wine, especially in Sauternes. Winemaking uses new French oak for red and white wines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=9"
+  },
+  {
+   "fact": "CMS curriculum guide, Bordeaux (Intro) appellations: Regional (Bordeaux AOC), sub-regional (Médoc AOP, Haut-Médoc AOP), commune (Margaux, Pauillac, St-Estèphe, St-Julien); Graves AOP with Pessac-Léognan and Sauternes; Entre-Deux-Mers AOP; Right Bank Pomerol, St-Émilion, St-Émilion Grand Cru.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=10"
+  },
+  {
+   "fact": "CMS curriculum guide, Bordeaux (Intro): recognize Château Lafite Rothschild, Latour, Mouton Rothschild (Pauillac), Margaux (Margaux), Haut-Brion (Graves), d'Yquem (Sauternes), Petrus (Pomerol), Ausone and Cheval Blanc (St-Émilion) as Bordeaux.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "CMS curriculum guide, Bordeaux (Intro): general terms Barrique and Château. Vintage: every vintage is very different; yearly weather affects the wine style and the selling price.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "CMS curriculum guide, Bordeaux (Intro) history: marriage of Eleanor of Aquitaine; Dutch innovation and exportation; slave trade port; today the largest region of AOP wine production in France. Pairing: bold reds with beef and lamb, rich sweet wines with dessert and foie gras.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "CMS curriculum guide, Loire (Intro): Pays Nantais cool and wet maritime; Anjou-Saumur maritime moving toward continental, humid; Touraine and Central Vineyards continental. Appellations include Muscadet de Sèvre-et-Maine, Saumur and Saumur-Champigny.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=15"
+  },
+  {
+   "fact": "CMS curriculum guide, Loire (Intro): soil - tuffeau in Vouvray; botrytis in Bonnezeaux and Quarts-de-Chaume due to humidity from multiple rivers; Saumur makes traditional method sparkling, dry white, dry red and lusciously sweet wines; Vouvray can be sparkling, dry, off-dry and sweet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=15"
+  },
+  {
+   "fact": "CMS curriculum guide, Rhône (Intro): soils - Northern Rhône decomposed granite and schist; Southern Rhône galets, alluvial, limestone. Northern Rhône: terraced slopes with staked vines to reinforce against the Mistral; Southern Rhône: traditionally bush vines to conserve water and give shade.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=17"
+  },
+  {
+   "fact": "CMS curriculum guide, Rhône (Intro): co-fermented wines in the north, blended wines in the south. Whites: Viognier, Marsanne, Roussanne (north), Grenache Blanc (south).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=17"
+  },
+  {
+   "fact": "CMS curriculum guide, Rhône (Intro): style - spicy, meaty reds; rich, aromatic whites. History: papal occupation. General terms: Cru (single village), co-fermentation.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=18"
+  },
+  {
+   "fact": "Côte-Rôtie is the only red cru in the Northern Rhône to plant Viognier alongside Syrah.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-cote-rotie"
+  },
+  {
+   "fact": "CMS curriculum guide, Alsace (Intro): soils vary widely in type and origin after a long history of geological activity. Winemaking: large neutral casks, little to no new oak; sparkling, dry, off-dry and sweet wines are made.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=21"
+  },
+  {
+   "fact": "CMS curriculum guide, Alsace (Intro) history: French and German political rule, as a strategic area the two countries fought over for many years; a distinctive culture seen in architecture, language and food. Pairing: wide range of pairings with its diversity of wine styles.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=22"
   }
  ],
  "unverified": [
@@ -1534,8 +1815,441 @@
   "Châteauneuf-du-Pape minimum alcohol and Southern Rhône minimum Grenache rules: listed as Certified-level topics by CMS; not verified.",
   "Burgundy 'five regions': CMS counts Chablis, Côte d'Or, Côte Chalonnaise, Mâconnais, Beaujolais; BIVB lists six areas without Beaujolais (and its pages also say 'five wine-producing regions'). Treat the CMS grouping as the exam view.",
   "Champagne minimum aging: champagne.fr gives 15 months (non-vintage) and 3 years (vintage) from bottling; the CMS guide gives 12 months on lees / 15 months total and 36 months total. The chapter uses 15 months and 3 years, which both agree on.",
-  "1855 changes: CMS says only one change (Mouton Rothschild, 1973); the Conseil des Grands Crus Classés en 1855 also counts Cantemerle's addition in September 1855. The chapter only states the 1973 promotion."
+  "1855 changes: CMS says only one change (Mouton Rothschild, 1973); the Conseil des Grands Crus Classés en 1855 also counts Cantemerle's addition in September 1855. The chapter only states the 1973 promotion.",
+  "Burgundy label words Négociant and Domaine: listed by the CMS guide; no official Burgundy definition was fetched, so the chapter names them without defining them (Clos and Monopole use the Wine Spectator glossary).",
+  "Loire 'sec' (dry) and 'demi-sec' (half-dry) are given as plain translations; legal sugar limits were not confirmed (see the earlier note).",
+  "Bordeaux history items (Eleanor of Aquitaine, Dutch trade, slave-trade port) come from the CMS guide only; no Bordeaux body page was fetched for them."
  ],
+ "court": {
+  "section": 4,
+  "outline": [
+   "Champagne",
+   "Burgundy",
+   "Bordeaux",
+   "Loire Valley",
+   "Alsace",
+   "Rhône Valley"
+  ],
+  "outcome": "Champagne: After studying this section, a student will be able to identify Champagne as a region in France on a map, know the grape varieties that make up Champagne, define the points that make Champagne unique from other sparkling wines by understanding the Champagne Method. Burgundy: After studying this section, a student will be able to identify Burgundy and the five major regions within Burgundy on a map. Students will learn the history that influences the region, prominent soil types, the classification hierarchy, and grape varieties associated with each area. Students should be able to recognize major villages and highlighted significant vineyards within the Côte d'Or. Bordeaux: After studying this section, a student will be able to locate and recognize major appellations that make up the Bordeaux wine region. Students will know the important grape varieties, bodies of water, and soil types and understand their connection to each other and to grape growing. Students will understand the basics of the Bordeaux classification systems, and will be able to recognize the names and wine labels of important producers/châteaux. Students will begin an understanding of the connection between yearly weather, vintage variation, wine style and wine selling price. Loire Valley: After studying this section, a student will be able to identify the Loire Valley and selected regions and appellations on a map. Students will be able to connect primary grape varieties to their appellations. Alsace: After studying this section, a student will be able to recognize and locate Alsace as a region in France on a map, identify its main grape varieties, and understand how its geography and history affect the styles of wine made. Rhône Valley: After studying this section, a student will be able to identify the Rhône Valley on a map. A student will know the climatic differences between the Northern and Southern parts of the region, the primary grape varieties, and understand the importance of the Mistral wind and the Rhône River. Students will be able to associate the most important AOCs and Crus with their grape varieties and know a classification system exists in the Southern Rhône. Students will have the ability to describe the major characteristics of a typical Northern Rhône Syrah and a typical Southern Rhône blend. Students will know the major soil types of the Northern Rhône and the famous soil type of the Southern Rhône.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "Champagne · Geography: Location",
+    "guide": "On the 49th parallel, one of the most northerly wine regions.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Geography: Climate",
+    "guide": "Cool continental.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Geography: Physical Feature",
+    "guide": "No shelter from the Atlantic: unpredictable weather, rain, frost and hail.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Soil",
+    "guide": "Limestone and chalk.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Grape Growing",
+    "guide": "Grapes are picked earlier to keep natural acidity.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Winemaking",
+    "guide": "The Champagne Method steps, from still wine and assemblage to riddling, disgorging and dosage.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · White Grapes",
+    "guide": "Chardonnay.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Red Grapes",
+    "guide": "Pinot Noir and Meunier.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Wine Law / Appellations",
+    "guide": "Champagne AOP; subregions Vallée de la Marne, Côte des Blancs, Montagne de Reims.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Wine Law / Classification",
+    "guide": "Non-vintage 12 months on lees, 15 months total; vintage 36 months total.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Label Terms",
+    "guide": "Blanc de Blancs, Blanc de Noirs, Brut.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · General Terms",
+    "guide": "Cuvée de prestige (tête de cuvée), négociant, grower.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Style",
+    "guide": "Brut, non-vintage, vintage, Blanc de Blancs, Blanc de Noirs, rosé.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Producers",
+    "guide": "Moët & Chandon, Roederer, Veuve Clicquot, Taittinger, Charles Heidsieck, Krug.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · History & Lore",
+    "guide": "Madame Clicquot and the riddling rack; the gyropalette.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Champagne · Service of Beverage",
+    "guide": "Never point the cork at anyone; keep a hand on the cage and cork.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "Burgundy · Geography: Location",
+    "guide": "Five non-contiguous regions in eastern France.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · Geography: Climate",
+    "guide": "Cool continental.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · Geography: Physical Features",
+    "guide": "Hills, aspect and slope of the vineyards.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · White Grapes",
+    "guide": "Chardonnay, with small amounts of Aligoté; link Chardonnay to the regions.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · Red Grapes",
+    "guide": "Pinot Noir and Gamay, linked to their regions.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · Soil",
+    "guide": "Limestone and clay in Chablis and Côte d’Or; granite in Beaujolais.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · Winemaking",
+    "guide": "Malolactic fermentation, carbonic maceration, new French oak.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · Style",
+    "guide": "Dry whites and dry reds.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · Wine Law / Appellations",
+    "guide": "Find the five regions on a map, incl. Côte de Nuits and Côte de Beaune.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · Wine Law / Classification",
+    "guide": "Regional, Village, Premier Cru and Grand Cru AOPs.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · Wine Law / Appellation detail",
+    "guide": "Bourgogne AOP, Chablis levels and Les Clos, key Nuits and Beaune villages, Beaujolais-Villages, crus, Morgon.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · Label Terms",
+    "guide": "Négociant, Domaine, Clos, Monopole, Vieilles Vignes.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Burgundy · History & Lore",
+    "guide": "Monastic and Napoleonic inheritance: classification and split-up vineyard ownership.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "Bordeaux · Geography: Location",
+    "guide": "Southwest France, along the Atlantic coast.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Geography: Climate",
+    "guide": "Maritime to continental moving inland.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Geography: Physical Feature",
+    "guide": "Atlantic Ocean, Gironde Estuary, Garonne and Dordogne rivers.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · White Grapes",
+    "guide": "Sauvignon Blanc and Sémillon, a little Muscadelle.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Red Grapes",
+    "guide": "Cabernet Sauvignon, Merlot, Cabernet Franc; a little Malbec, Petit Verdot, Carménère.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Soil",
+    "guide": "Gravel, clay, limestone, sand; Cabernet on gravel, Merlot on clay.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Grape Growing",
+    "guide": "Humidity from water and spring rain brings rot; it helps noble rot in Sauternes.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Winemaking",
+    "guide": "Blends; dry whites, dry reds, botrytis sweet wines; new French oak.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Style",
+    "guide": "From dry reds and whites to lusciously sweet whites, by appellation.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Wine Law / Appellation levels",
+    "guide": "Regional, sub-regional and commune appellations.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Wine Law / Appellations",
+    "guide": "Locate Médoc, Haut-Médoc, the four communes, Graves, Pessac-Léognan, Sauternes, Entre-Deux-Mers, Pomerol, Saint-Émilion.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Wine Law / Classification",
+    "guide": "1855 and the 1973 Mouton change, the five First Growths; Pomerol unranked; Saint-Émilion revised.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Producers",
+    "guide": "Recognize nine top châteaux, from Lafite to Cheval Blanc, as Bordeaux.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · General Terms",
+    "guide": "Barrique, château.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Vintage",
+    "guide": "Each vintage differs; weather shapes style and price.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · History & Lore",
+    "guide": "Eleanor of Aquitaine, Dutch trade, slave-trade port, largest AOP region.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Food and Beverage Pairing",
+    "guide": "Bold reds with beef and lamb; sweet wines with dessert and foie gras.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Loire · Geography: Location",
+    "guide": "From the Atlantic coast to central France.",
+    "where": "Loire"
+   },
+   {
+    "topic": "Loire · Geography: Regions",
+    "guide": "Pays Nantais, Anjou-Saumur, Touraine, Central Vineyards, west to east.",
+    "where": "Loire"
+   },
+   {
+    "topic": "Loire · Geography: Physical Feature",
+    "guide": "France’s longest river, rising in the Massif Central.",
+    "where": "Loire"
+   },
+   {
+    "topic": "Loire · Geography: Climate",
+    "guide": "Maritime by the coast, turning continental inland.",
+    "where": "Loire"
+   },
+   {
+    "topic": "Loire · Geography: Appellations",
+    "guide": "Muscadet (Sèvre-et-Maine), Saumur, Saumur-Champigny, Savennières, Quarts de Chaume, Bonnezeaux, Chinon, Bourgueil, Vouvray, Sancerre, Pouilly-Fumé.",
+    "where": "Loire"
+   },
+   {
+    "topic": "Loire · Soil",
+    "guide": "Tuffeau in Vouvray.",
+    "where": "Loire"
+   },
+   {
+    "topic": "Loire · Grape Growing",
+    "guide": "River humidity brings botrytis to Bonnezeaux and Quarts de Chaume.",
+    "where": "Loire"
+   },
+   {
+    "topic": "Loire · Winemaking",
+    "guide": "Muscadet sur lie; Saumur in every style; Vouvray sparkling to sweet.",
+    "where": "Loire"
+   },
+   {
+    "topic": "Loire · Grape Variety Names",
+    "guide": "Melon B; Chenin Blanc and Cabernet Franc; Sauvignon Blanc and Pinot Noir.",
+    "where": "Loire"
+   },
+   {
+    "topic": "Loire · Label Terms",
+    "guide": "Sur lie, sec, demi-sec.",
+    "where": "Loire"
+   },
+   {
+    "topic": "Alsace · Geography: Location",
+    "guide": "Northeastern France, on the German border.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Geography: Climate",
+    "guide": "Cool continental with a dry, sunny growing season.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Geography: Physical Features",
+    "guide": "Vosges Mountains and the Rhine.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Soil",
+    "guide": "Soils vary widely after a long geological history.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Grape growing (unlabeled row)",
+    "guide": "Vosges rain shadow, dry and sunny; best slopes face east/southeast; over 90% white.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Winemaking",
+    "guide": "Large neutral casks, little new oak; sparkling to sweet styles.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · White Grapes",
+    "guide": "Riesling, Gewurztraminer, Pinot Gris, Muscat.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Red Grapes",
+    "guide": "Pinot Noir.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Wine Law: varietal rule",
+    "guide": "A grape named on the label means 100% of that grape.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Wine Law / AOPs",
+    "guide": "Alsace AOP, 51 Grands Crus with four grapes (Pinot Noir added 2022), Crémant d’Alsace.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Label Terms",
+    "guide": "Crémant.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Style",
+    "guide": "Vendange Tardive and Sélection de Grains Nobles.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · History & Lore",
+    "guide": "French and German rule; a distinctive culture.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Alsace · Food and Beverage Pairing",
+    "guide": "A wide range of pairings across its many styles.",
+    "where": "Alsace"
+   },
+   {
+    "topic": "Rhône · Geography: Location",
+    "guide": "Between Burgundy and Provence; a 30-mile gap splits north and south.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · Geography: Climate",
+    "guide": "North moderate continental; south Mediterranean.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · Geography: Physical Feature",
+    "guide": "River from Switzerland to the Mediterranean; steep north, flatter south.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · Soil",
+    "guide": "North decomposed granite and schist; south galets, alluvial, limestone.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · Grape Growing",
+    "guide": "Staked vines on northern terraces against the Mistral; bush vines in the south.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · Winemaking",
+    "guide": "Co-fermented wines in the north, blends in the south.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · White Grapes",
+    "guide": "Viognier, Marsanne, Roussanne (north); Grenache Blanc (south).",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · Red Grapes",
+    "guide": "Syrah (north); Grenache and Mourvèdre (south).",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · Wine Law / Appellations / Classification",
+    "guide": "Six northern AOPs and their styles; southern tiers and crus with their grapes and styles.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · Label Terms",
+    "guide": "Vins Doux Naturels, e.g. Muscat de Beaumes-de-Venise.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · General Terms",
+    "guide": "Cru (single village); co-fermentation.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · Style",
+    "guide": "Spicy, meaty reds; rich, aromatic whites.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "Rhône · History & Lore",
+    "guide": "The papal occupation.",
+    "where": "Rhône"
+   }
+  ]
+ },
  "v3": {
   "video": {
    "youtubeId": "jn_XB6gfp3Q",
@@ -1576,28 +2290,33 @@
     ],
     "read": {
      "bigIdea": "Champagne gets its bubbles from a second fermentation.",
-     "where": "Champagne sits about **150 km north-east of Paris**, near the **49th parallel**. It’s one of the most northerly wine regions, with a **cool continental** climate and **chalk** and limestone soils. Three grapes do most of the work: **Chardonnay** (white), and **Pinot Noir** and **Meunier** (black).",
+     "where": "Champagne sits about **150 km north-east of Paris**, near the **49th parallel**. It’s one of the most northerly wine regions, with a **cool continental** climate and **chalk** and limestone soils. Three grapes do most of the work: **Chardonnay** (white), and **Pinot Noir** and **Meunier** (black). With no shelter from the Atlantic, it faces **rain, frost and hail**, and grapes are picked early to keep their acidity. The three main areas are the **Montagne de Reims**, the **Vallée de la Marne** and the **Côte des Blancs**.",
      "stopsTitle": "From still wine to sparkling",
      "stops": [
       {
        "name": "Still wine",
        "note": "first fermentation",
-       "text": "The grapes are fermented into still wine in tank, then blended into a **cuvée**."
+       "text": "The grapes are fermented into still wine in tank, then blended into a **cuvée**. This blending is the **assemblage**."
       },
       {
        "name": "Second fermentation",
        "note": "in the bottle",
-       "text": "Yeast, sugar and wine (the **liqueur de tirage**) go into the bottle. The second fermentation, the **prise de mousse**, makes the bubbles."
+       "text": "Yeast, sugar and wine (the **liqueur de tirage**) go into the bottle. The second fermentation, the **prise de mousse**, makes the bubbles. The wine then ages on its spent yeast (**sur lie**), where **autolysis** happens."
       },
       {
        "name": "Riddling",
        "note": "remuage",
-       "text": "After aging on the lees, the bottles are turned so the yeast deposit collects in the neck. Machines now do most of it."
+       "text": "After aging on the lees, the bottles are turned so the yeast deposit collects in the neck. Machines now do most of it. It’s done by hand on a **pupitre** rack or by machine in a **gyropalette**."
       },
       {
        "name": "Disgorging and dosage",
        "note": "sets the sweetness",
-       "text": "The deposit is removed (**disgorging**). Then a mix of wine and cane sugar, the **dosage**, tops up the bottle and sets the style."
+       "text": "The deposit is removed (**disgorging**). Then a mix of wine and cane sugar, the **dosage**, tops up the bottle and sets the style. That mix is the **liqueur d’expédition**."
+      },
+      {
+       "name": "The big houses",
+       "note": "names to know",
+       "text": "Famous houses include **Moët & Chandon**, **Roederer**, **Veuve Clicquot**, **Taittinger**, **Charles Heidsieck** and **Krug**. A house’s top wine is its **cuvée de prestige** (tête de cuvée). Styles run from Brut non-vintage to vintage, Blanc de Blancs, Blanc de Noirs and **rosé**."
       }
      ],
      "visual": 0,
@@ -1643,18 +2362,18 @@
     ],
     "read": {
      "bigIdea": "Burgundy is Pinot Noir and Chardonnay, plot by plot.",
-     "where": "Burgundy is **five separate regions** in eastern France, with a **cool continental** climate. Red Burgundy is **Pinot Noir** and white Burgundy is **Chardonnay**. It has **84 AOCs** in four levels, from **Régionale** up to **Grand Cru**.",
+     "where": "Burgundy is **five separate regions** in eastern France, with a **cool continental** climate. Red Burgundy is **Pinot Noir** and white Burgundy is **Chardonnay**. It has **84 AOCs** in four levels, from **Régionale** up to **Grand Cru**. Its vineyards sit on **hills**, where **aspect** and **slope** matter. The soils are **limestone** and **clay** in Chablis and the Côte d’Or, and **granite** in Beaujolais.",
      "stopsTitle": "Five regions, north to south",
      "stops": [
       {
        "name": "Chablis",
        "note": "the far north",
-       "text": "**100% Chardonnay**, on **Kimmeridgian** limestone with tiny oyster fossils. Seven vineyards make up **Chablis Grand Cru**."
+       "text": "**100% Chardonnay**, on **Kimmeridgian** limestone with tiny oyster fossils. Seven vineyards make up **Chablis Grand Cru**. Chablis has **Village**, **Premier Cru** and **Grand Cru** levels; **Les Clos** is the Grand Cru to know."
       },
       {
        "name": "Côte d’Or",
        "note": "two halves",
-       "text": "The **Côte de Nuits** is mainly red **Pinot Noir**. In the **Côte de Beaune**, from **Meursault** south, **Chardonnay** leads."
+       "text": "The **Côte de Nuits** is mainly red **Pinot Noir**. In the **Côte de Beaune**, from **Meursault** south, **Chardonnay** leads. Villages to know: **Gevrey-Chambertin**, **Morey-Saint-Denis**, **Chambolle-Musigny**, **Vougeot**, **Vosne-Romanée** and **Nuits-Saint-Georges** (Nuits); **Pommard**, **Volnay**, **Meursault**, **Puligny-Montrachet** and **Chassagne-Montrachet** (Beaune)."
       },
       {
        "name": "Côte Chalonnaise",
@@ -1721,7 +2440,7 @@
     ],
     "read": {
      "bigIdea": "Bordeaux is about blends, and which bank they grow on.",
-     "where": "Bordeaux sits in southwest France on the Atlantic, around the **Gironde** estuary and the **Garonne** and **Dordogne** rivers. Most wines are **blends**. **Merlot** is the most planted grape, and **Cabernet Sauvignon** is matched to gravel, Merlot to clay.",
+     "where": "Bordeaux sits in southwest France on the Atlantic, around the **Gironde** estuary and the **Garonne** and **Dordogne** rivers. Most wines are **blends**. **Merlot** is the most planted grape, and **Cabernet Sauvignon** is matched to gravel, Merlot to clay. Small amounts of **Malbec**, **Petit Verdot** and **Carménère** may join the reds, and **Muscadelle** the whites. The soils are **gravel**, **clay**, **limestone** and **sand**.",
      "stopsTitle": "Three places to know",
      "stops": [
       {
@@ -1730,14 +2449,24 @@
        "text": "Cabernet Sauvignon on **gravel**. The **Médoc** makes only reds, from villages like **Margaux** and **Pauillac**. Its best châteaux were ranked in the **1855 Classification**."
       },
       {
+       "name": "Graves and Entre-Deux-Mers",
+       "note": "south and between the rivers",
+       "text": "**Graves** includes **Pessac-Léognan**, home of Haut-Brion, and **Sauternes**. **Entre-Deux-Mers** lies between the Dordogne and the Garonne and is known for dry whites."
+      },
+      {
        "name": "Sauternes",
        "note": "sweet whites",
-       "text": "Sweet white wine from grapes with **noble rot** (botrytis). **Château d’Yquem** is the only **Premier Cru Supérieur**."
+       "text": "Sweet white wine from grapes with **noble rot** (botrytis). **Château d’Yquem** is the only **Premier Cru Supérieur**. Humidity from the rivers helps the noble rot form."
       },
       {
        "name": "Right Bank",
        "note": "Saint-Émilion and Pomerol",
        "text": "**Merlot** on clay and limestone, along the **Dordogne**. **Saint-Émilion**’s ranking is revised **every ten years**. **Pomerol** has no classification."
+      },
+      {
+       "name": "On the label",
+       "note": "big to small",
+       "text": "Names nest from **Bordeaux AOC** to a sub-region like **Haut-Médoc** to a commune like **Pauillac**. Two words to know are **château** and **barrique**, and many wines see **new French oak**."
       }
      ],
      "visual": 1,
@@ -1789,13 +2518,13 @@
     ],
     "read": {
      "bigIdea": "The Loire is France’s white-wine river.",
-     "where": "It runs about **600 miles** across France to the Atlantic. Near the coast the weather is mild and maritime. Inland it turns **continental**: warmer summers, colder winters. **White is the main color**, and each stop on the river leans on its own grape.",
+     "where": "It runs about **600 miles** across France to the Atlantic. Near the coast the weather is mild and maritime. Inland it turns **continental**: warmer summers, colder winters. **White is the main color**, and each stop on the river leans on its own grape. The river rises in the **Massif Central**. Humidity from its rivers brings noble rot to **Bonnezeaux** and **Quarts de Chaume**.",
      "stopsTitle": "Four stops, west to east",
      "stops": [
       {
        "name": "Pays Nantais",
        "note": "by the Atlantic",
-       "text": "**Muscadet** is a dry white from **Melon B**, often aged on its yeast (**sur lie**). Bracing and citrusy: a seafood wine."
+       "text": "**Muscadet** is a dry white from **Melon B**, often aged on its yeast (**sur lie**). Bracing and citrusy: a seafood wine. Look for **Muscadet de Sèvre-et-Maine**."
       },
       {
        "name": "Anjou-Saumur",
@@ -1803,9 +2532,14 @@
        "text": "**Chenin Blanc** and **Cabernet Franc** country. **Savennières** is dry Chenin. **Quarts de Chaume** and **Bonnezeaux** are sweet Chenin from noble rot."
       },
       {
+       "name": "Saumur",
+       "note": "every style",
+       "text": "**Saumur** makes traditional-method **sparkling**, dry whites, dry reds and sweet wines. **Saumur-Champigny** is a **Cabernet Franc** red."
+      },
+      {
        "name": "Touraine",
        "note": "the middle",
-       "text": "**Vouvray** is Chenin Blanc, made **dry, sweet or sparkling**. **Chinon** and **Bourgueil** are Cabernet Franc reds."
+       "text": "**Vouvray** is Chenin Blanc, made **dry, sweet or sparkling**. **Chinon** and **Bourgueil** are Cabernet Franc reds. Vouvray’s soil to know is **tuffeau**, and its labels may say **sec** (dry) or **demi-sec** (half-dry)."
       },
       {
        "name": "Centre",
@@ -1856,7 +2590,7 @@
     ],
     "read": {
      "bigIdea": "Alsace names its wines after the grape.",
-     "where": "Alsace lies between the **Rhine** river and the **Vosges** mountains, on the borders of Germany and Switzerland. The Vosges block the rain, so it’s one of France’s **driest** regions: sunny, warm and dry. Over **90%** of the wine is white.",
+     "where": "Alsace lies between the **Rhine** river and the **Vosges** mountains, on the borders of Germany and Switzerland. The Vosges block the rain, so it’s one of France’s **driest** regions: sunny, warm and dry. Over **90%** of the wine is white. Its soils vary widely after a long geological history. Wines are made in large **neutral casks** with little or no new oak, and range from sparkling and dry to off-dry and sweet.",
      "stopsTitle": "Three appellations",
      "stops": [
       {
@@ -1872,7 +2606,12 @@
       {
        "name": "Alsace Grand Cru",
        "note": "51 sites",
-       "text": "**51** vineyards, each its own appellation, about 5% of the wine. The four classic grapes are **Riesling**, **Gewurztraminer**, **Pinot Gris** and **Muscat**."
+       "text": "**51** vineyards, each its own appellation, about 5% of the wine. The four classic grapes are **Riesling**, **Gewurztraminer**, **Pinot Gris** and **Muscat**. The Court adds **Pinot Noir** as a fifth from the **2022** vintage."
+      },
+      {
+       "name": "French and German",
+       "note": "its history",
+       "text": "France and Germany fought over Alsace for years, and both have ruled it. Its own culture shows in its architecture, language and food. With so many styles, the wines pair with a wide range of dishes."
       }
      ],
      "visual": 1,
@@ -1924,18 +2663,18 @@
     ],
     "read": {
      "bigIdea": "The Rhône is two halves: Syrah north, Grenache south.",
-     "where": "The Rhône vineyards run from **Vienne** to **Avignon**. A **30-mile gap** splits the steep, **continental** north from the flatter, **Mediterranean** south. In the south the **Mistral**, a cold, dry north wind, dries the vines after rain.",
+     "where": "The Rhône vineyards run from **Vienne** to **Avignon**. A **30-mile gap** splits the steep, **continental** north from the flatter, **Mediterranean** south. In the south the **Mistral**, a cold, dry north wind, dries the vines after rain. The **Rhône** river starts in **Switzerland** and flows south to the Mediterranean, between **Burgundy** and **Provence**.",
      "stopsTitle": "North to south, then the labels",
      "stops": [
       {
        "name": "Northern Rhône",
        "note": "steep slopes",
-       "text": "**Syrah** for reds, in **Côte-Rôtie**, **Hermitage** and **Cornas**. **Condrieu** is white from **Viognier**."
+       "text": "**Syrah** for reds, in **Côte-Rôtie**, **Hermitage** and **Cornas**. **Condrieu** is white from **Viognier**. Vines climb steep **terraces** of **decomposed granite** and **schist**, staked against the wind."
       },
       {
        "name": "Southern Rhône",
        "note": "flatter ground",
-       "text": "**Grenache**-based blends, with Syrah and Mourvèdre. **Châteauneuf-du-Pape** is the famous one, with 18 grape varieties allowed."
+       "text": "**Grenache**-based blends, with Syrah and Mourvèdre. **Châteauneuf-du-Pape** is the famous one, with 18 grape varieties allowed. Old **bush vines** grow in **galets** (big rounded stones), alluvial soils and limestone."
       },
       {
        "name": "The tiers",

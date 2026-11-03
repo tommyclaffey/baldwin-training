@@ -1,0 +1,2597 @@
+{
+ "number": 5,
+ "slug": "certified-new-world",
+ "title": "The New World, in depth",
+ "script": "Chapter five",
+ "level": 2,
+ "part": 2,
+ "lead": "The Certified view of the New World: more AVAs and subregions, each country's label law, the producers the Court names, and why each place tastes the way it does.",
+ "minutes": 35,
+ "intro": {
+  "script": "Start here",
+  "title": "THE GRAPE-NAME MINIMUMS",
+  "text": "Every New World country sets a minimum share for a grape named on the label. Learn the number for each.",
+  "tiers": [
+   {
+    "name": "Oregon",
+    "note": "90% (with exceptions)"
+   },
+   {
+    "name": "85%",
+    "note": "Argentina, Australia, New Zealand, South Africa"
+   },
+   {
+    "name": "75%",
+    "note": "U.S. federal and Chile (Chile: 85% in practice for the EU)"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "California · North Coast",
+   "book": "wine/usa/napa-valley",
+   "lines": [
+    {
+     "label": "Place",
+     "text": "The coastal counties north of San Pablo Bay. At Certified you add Knights Valley (Sonoma County), and Mount Veeder, Calistoga and Yountville (Napa County)."
+    },
+    {
+     "label": "Label law",
+     "text": "Variety 75%, AVA 85%, vintage 95% with an AVA (85% with a state or county), single vineyard 95%. Estate bottled means the winery grew every grape in its AVA and made the wine there."
+    }
+   ],
+   "chips": {
+    "label": "Napa AVAs to add",
+    "items": [
+     "Calistoga",
+     "Mount Veeder",
+     "Yountville",
+     "Oakville",
+     "Stags Leap District"
+    ]
+   },
+   "know": [
+    "Calistoga is Napa's most northerly and hottest valley-floor AVA, mostly on volcanic soil.",
+    "Mount Veeder, on the Mayacamas slopes, is Napa's coolest mountain AVA; its Cabernet is high in tannin and acid.",
+    "At the 1976 Paris tasting, Stag's Leap Wine Cellars' 1973 Cabernet Sauvignon won the reds.",
+    "Meritage is a trademark only, and 'Reserve' has no legal meaning on a U.S. label.",
+    "Martha's Vineyard (Heitz) and To Kalon are famous vineyards on Oakville's western gravel fans."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "U.S. label minimums",
+     "rows": [
+      {
+       "name": "Named grape",
+       "value": "75%",
+       "pct": 0.75
+      },
+      {
+       "name": "Named AVA",
+       "value": "85%",
+       "pct": 0.85
+      },
+      {
+       "name": "Vintage (with an AVA)",
+       "value": "95%",
+       "pct": 0.95
+      },
+      {
+       "name": "Single vineyard",
+       "value": "95%",
+       "pct": 0.95
+      },
+      {
+       "name": "Estate bottled",
+       "value": "all grapes grown by the winery",
+       "pct": 1
+      }
+     ],
+     "note": "Federal rules (27 CFR part 4). Oregon asks for more."
+    },
+    {
+     "type": "names",
+     "items": [
+      {
+       "title": "NORTH COAST PRODUCERS · COURT LIST",
+       "text": "Spottswoode, Far Niente, Groth, Cakebread, Stag's Leap Wine Cellars, Silver Oak, Chappellet, Caymus, Etude, Iron Horse, Domaine Carneros, Roederer Estate, Quintessa, Merryvale, Larkmead, Williams Selyem, Kistler"
+      },
+      {
+       "title": "HISTORY NAMES",
+       "text": "Agoston Haraszthy, Charles Krug, André Tchelistcheff, Robert Mondavi, Warren Winiarski, the Paris Tasting of 1976"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "California · Central Coast",
+   "book": "wine/usa/santa-barbara",
+   "lines": [
+    {
+     "label": "Place",
+     "text": "The coastal counties south of San Francisco Bay: Monterey, San Luis Obispo and Santa Barbara. Know which county each AVA sits in."
+    },
+    {
+     "label": "Climate",
+     "text": "Paso Robles and Happy Canyon are warm. Santa Lucia Highlands, Sta. Rita Hills, Santa Maria Valley and Santa Ynez Valley are cool Pinot Noir and Chardonnay country."
+    }
+   ],
+   "chips": {
+    "label": "AVAs",
+    "items": [
+     "Santa Lucia Highlands",
+     "Paso Robles",
+     "Sta. Rita Hills",
+     "Santa Maria Valley",
+     "Santa Ynez Valley",
+     "Happy Canyon"
+    ]
+   },
+   "know": [
+    "Santa Lucia Highlands (Monterey) is cooled by fog and wind off Monterey Bay.",
+    "Sta. Rita Hills sits in an east-west 'maritime throat' that pulls in Pacific fog and wind.",
+    "Sta. Rita Hills became an AVA in 2001; its first vineyard, Sanford & Benedict, was planted in 1971.",
+    "Paso Robles and Happy Canyon are the warm AVAs on the Court's Central Coast list.",
+    "Producers to know: Ridge, Justin and Au Bon Climat."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "COOL",
+       "title": "Pinot Noir and Chardonnay",
+       "text": "Santa Lucia Highlands\nSta. Rita Hills\nSanta Maria Valley\nSanta Ynez Valley"
+      },
+      {
+       "label": "WARM",
+       "title": "The two warm AVAs",
+       "text": "Paso Robles (San Luis Obispo)\nHappy Canyon (Santa Barbara)"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Match the AVA to its county",
+     "rows": [
+      {
+       "name": "Santa Lucia Highlands",
+       "meta": "Monterey"
+      },
+      {
+       "name": "Paso Robles",
+       "meta": "San Luis Obispo"
+      },
+      {
+       "name": "Sta. Rita Hills",
+       "meta": "Santa Barbara"
+      },
+      {
+       "name": "Santa Maria Valley",
+       "meta": "Santa Barbara"
+      },
+      {
+       "name": "Santa Ynez Valley",
+       "meta": "Santa Barbara"
+      },
+      {
+       "name": "Happy Canyon",
+       "meta": "Santa Barbara"
+      }
+     ],
+     "note": "Santa Barbara County has four of the six."
+    }
+   ]
+  },
+  {
+   "name": "Oregon and Washington",
+   "book": "wine/usa/oregon",
+   "lines": [
+    {
+     "label": "Oregon",
+     "text": "The Willamette Valley holds nested AVAs including Dundee Hills, Eola-Amity Hills, Chehalem Mountains, Ribbon Ridge, McMinnville, Yamhill-Carlton and Van Duzer Corridor. Soils are volcanic and marine sediment."
+    },
+    {
+     "label": "Washington",
+     "text": "The Columbia Valley is a warm desert in the Cascades' rain shadow, so vines need irrigation. The Columbia, Yakima and Snake rivers supply the water, and slopes face mostly south."
+    }
+   ],
+   "chips": {
+    "label": "AVAs to add",
+    "items": [
+     "Dundee Hills",
+     "Eola-Amity Hills",
+     "Van Duzer Corridor",
+     "Red Mountain",
+     "Horse Heaven Hills",
+     "Columbia Gorge"
+    ]
+   },
+   "know": [
+    "Oregon labels need 90% of the named grape (with exceptions) and 95% from the named AVA.",
+    "Columbia Valley, Walla Walla Valley and Columbia Gorge are shared by Washington and Oregon.",
+    "Red Mountain is small, hot and dry; Cabernet Sauvignon is 60% of its plantings.",
+    "Desert conditions keep phylloxera out of the Columbia Valley.",
+    "Willamette Pinot Noir goes with salmon; Washington Cabernet or Merlot with beef or lamb."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "OREGON",
+       "title": "Stricter label rules",
+       "text": "90% named grape (some exceptions)\n95% named AVA\n100% Oregon grapes"
+      },
+      {
+       "label": "U.S. FEDERAL",
+       "title": "The base rules",
+       "text": "75% named grape\n85% named AVA\n95% vintage (with an AVA)"
+      }
+     ]
+    },
+    {
+     "type": "tiles",
+     "title": "Producers the Court names",
+     "dark": true,
+     "items": [
+      {
+       "name": "Willamette Valley",
+       "text": "Eyrie Vineyards, Domaine Drouhin, Domaine Serene, Erath, Ponzi"
+      },
+      {
+       "name": "Columbia Valley",
+       "text": "Quilceda Creek, L'Ecole No. 41, Château Ste. Michelle, Leonetti"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "New York, Canada and México",
+   "book": "wine/usa/new-york",
+   "lines": [
+    {
+     "label": "New York",
+     "text": "Four AVAs to know: Finger Lakes, Hudson River, Lake Erie and Long Island. Besides vinifera, growers use French-American hybrids (Aurore, Seyval Blanc) and native Vitis labrusca (Concord)."
+    },
+    {
+     "label": "Canada and México",
+     "text": "Canada has no national wine law; VQA governs premium wine, and Ontario makes 90% of Canada's Icewine. In México, Baja California's Valle de Guadalupe makes 90% of the country's wine."
+    }
+   ],
+   "chips": {
+    "label": "Not vinifera",
+    "items": [
+     "Seyval Blanc",
+     "Aurore",
+     "Vidal",
+     "Concord"
+    ]
+   },
+   "know": [
+    "Long Island is mid-latitude maritime with milder winters, suited to Merlot, Chardonnay and Bordeaux varieties.",
+    "The Lake Erie AVA grows mainly Concord, with some hybrids and vinifera.",
+    "The Okanagan Valley holds 86% of British Columbia's vineyard acreage.",
+    "Icewine grapes freeze on the vine and are picked below -8 °C; Inniskillin is the Court's producer to know.",
+    "Valle de Guadalupe: Mediterranean climate, with valleys that bring in Pacific fog and breezes."
+   ],
+   "visuals": [
+    {
+     "type": "stat",
+     "number": "90%",
+     "title": "of Canada's Icewine comes from Ontario",
+     "text": "Grapes must freeze on the vine and are picked below -8 °C. Vidal is the flagship grape; Riesling and Cabernet Franc are used too."
+    },
+    {
+     "type": "list",
+     "title": "New York's four AVAs",
+     "rows": [
+      {
+       "name": "Finger Lakes",
+       "meta": "deep glacial lakes"
+      },
+      {
+       "name": "Long Island",
+       "meta": "maritime · Merlot, Chardonnay"
+      },
+      {
+       "name": "Hudson River",
+       "meta": "one of the oldest U.S. wine areas"
+      },
+      {
+       "name": "Lake Erie",
+       "meta": "mostly Concord"
+      }
+     ],
+     "note": "Dr. Konstantin Frank planted the East's first modern vinifera in 1957."
+    }
+   ]
+  },
+  {
+   "name": "Chile",
+   "book": "wine/chile",
+   "lines": [
+    {
+     "label": "Geography",
+     "text": "Hot desert in the north to cold in the south. The cold Humboldt Current and the Coastal Range shape the vineyards, the Andes supply irrigation, and sandy soils keep phylloxera out."
+    },
+    {
+     "label": "Law",
+     "text": "A DO names a place only. The legal minimum for variety, vintage and origin is 75%, but EU rules mean 85% in practice."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Cabernet Sauvignon",
+     "Carménère",
+     "Merlot",
+     "Syrah",
+     "País",
+     "Sauvignon Blanc",
+     "Chardonnay"
+    ]
+   },
+   "know": [
+    "Valle Central makes 80% of Chile's wine; subregions include Maipo, Rapel (Colchagua, Cachapoal), Curicó and Maule.",
+    "Casablanca, a subregion of Aconcagua, is cool and maritime, west of the Coastal Range.",
+    "Most of Chile's major historical wineries are in Maipo, around Santiago.",
+    "Vines arrived with the Spanish colonies in the 1500s; European immigrants expanded them in the 1800s.",
+    "Producers to know: Concha y Toro, Santa Rita, Errázuriz, Casa Lapostolle, Carmen."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "The Court's DOs, Aconcagua to Maule",
+     "items": [
+      {
+       "name": "Aconcagua · Casablanca",
+       "text": "cool coast, morning fog",
+       "meta": "Sauvignon Blanc, Chardonnay, Pinot Noir"
+      },
+      {
+       "name": "Valle Central · Maipo",
+       "text": "around Santiago",
+       "meta": "Cabernet Sauvignon"
+      },
+      {
+       "name": "Valle Central · Rapel",
+       "text": "Colchagua, Cachapoal",
+       "meta": "Carménère, Cabernet, Merlot"
+      },
+      {
+       "name": "Valle Central · Curicó and Maule",
+       "text": "Maule is the largest region",
+       "meta": "old dry-farmed vines, Carignan"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "How the vines got here",
+     "rows": [
+      {
+       "name": "1500s",
+       "meta": "Spanish colonies plant grapes"
+      },
+      {
+       "name": "1600s",
+       "meta": "Spanish laws restrict wine"
+      },
+      {
+       "name": "1800s",
+       "meta": "independence; European immigrants expand vineyards"
+      },
+      {
+       "name": "1970s-80s",
+       "meta": "foreign investment arrives"
+      }
+     ],
+     "note": "From the Court's history notes for Chile."
+    }
+   ]
+  },
+  {
+   "name": "Argentina",
+   "book": "wine/argentina/mendoza",
+   "lines": [
+    {
+     "label": "Altitude",
+     "text": "Salta sits at 1,500-2,000 m (5,000-6,000 ft), Argentina's highest; Mendoza at 600-1,200 m (2,000-4,000 ft). Strong sun at altitude can give Malbec an electric purple color."
+    },
+    {
+     "label": "Law",
+     "text": "A named grape needs 85%. Places are IGs (Indicaciones Geográficas) and DOCs (Denominación de Origen Controlada)."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Malbec",
+     "Cabernet Sauvignon",
+     "Bonarda",
+     "Tempranillo",
+     "Syrah",
+     "Torrontés"
+    ]
+   },
+   "know": [
+    "Uco Valley has some of Mendoza's highest vineyards; labels may name Tupungato or Vista Flores.",
+    "Luján de Cuyo subzones include Agrelo, Vistalba, Las Compuertas and Perdriel.",
+    "Bonarda grows in abundance in Argentina; Napa calls it Charbono.",
+    "Torrontés is highly aromatic, with medium-plus to high acidity.",
+    "Italian and Spanish immigrants revitalized the vineyards."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Vineyard height above sea level",
+     "rows": [
+      {
+       "name": "Salta",
+       "value": "5,000-6,000 ft",
+       "pct": 1
+      },
+      {
+       "name": "Mendoza",
+       "value": "2,000-4,000 ft",
+       "pct": 0.67
+      }
+     ],
+     "note": "The Court's figures. Salta is Argentina's highest region."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "LUJÁN DE CUYO",
+       "title": "Lush, black-fruited Malbec",
+       "text": "Agrelo\nVistalba\nLas Compuertas\nPerdriel"
+      },
+      {
+       "label": "UCO VALLEY",
+       "title": "Higher, more savory",
+       "text": "Tupungato\nVista Flores\nDusty tannins"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "South Africa",
+   "book": "wine/south-africa",
+   "lines": [
+    {
+     "label": "Climate",
+     "text": "The Western Cape is the heart of the industry. The Cape Doctor, a dry southeasterly wind, keeps vine disease down, and the cold Benguela Current cools the west coast."
+    },
+    {
+     "label": "Wine of Origin",
+     "text": "Units run Geographical Unit, Region, District, Ward. A WO place name means 100% from that place; a grape or a vintage means at least 85%."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Chenin Blanc",
+     "Sauvignon Blanc",
+     "Chardonnay",
+     "Pinotage",
+     "Syrah/Shiraz",
+     "Pinot Noir"
+    ]
+   },
+   "know": [
+    "Pinotage is Pinot Noir × Cinsaut, created by Abraham Perold in 1925.",
+    "Cap Classique is South Africa's bottle-fermented sparkling wine; the name dates from 1992.",
+    "The Old Vine Project (founded 2002) certifies vineyards 35 years or older.",
+    "The Klein Karoo is known for sweet Muscat wines and pot-still brandy.",
+    "Producers to know: Graham Beck, Mulderbosch, Hamilton Russell, Klein Constantia, A.A. Badenhorst, Eben Sadie."
+   ],
+   "visuals": [
+    {
+     "type": "pyramid",
+     "title": "Wine of Origin, largest to smallest",
+     "rows": [
+      {
+       "name": "Geographical Unit",
+       "note": "e.g. Western Cape"
+      },
+      {
+       "name": "Region",
+       "note": "e.g. Coastal Region, Klein Karoo"
+      },
+      {
+       "name": "District",
+       "note": "e.g. Cape Town"
+      },
+      {
+       "name": "Ward",
+       "note": "e.g. Constantia"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Cape wine history",
+     "rows": [
+      {
+       "name": "1655",
+       "meta": "first Cape vineyard planted"
+      },
+      {
+       "name": "1659",
+       "meta": "first wine from Cape grapes"
+      },
+      {
+       "name": "1600s",
+       "meta": "Simon van der Stel's Constantia farm"
+      },
+      {
+       "name": "1925",
+       "meta": "Pinotage created"
+      },
+      {
+       "name": "1973",
+       "meta": "Wine of Origin scheme begins"
+      }
+     ],
+     "note": "The Court also names phylloxera, the Anglo-Boer War, KWV and apartheid's effect on exports."
+    }
+   ]
+  },
+  {
+   "name": "Australia",
+   "book": "wine/australia/barossa-valley",
+   "lines": [
+    {
+     "label": "GIs",
+     "text": "A GI names a place only: Australia, State, Zone, Region, Sub-Region. Claims for variety, vintage and origin need 85%."
+    },
+    {
+     "label": "Bulk vs premium",
+     "text": "South Eastern Australia is a high-volume super GI; Riverina and Murray Darling are inside it. The hot interior must be irrigated, and the best vineyards sit near the cooler coast."
+    }
+   ],
+   "chips": {
+    "label": "GIs to know",
+    "items": [
+     "Barossa Valley",
+     "McLaren Vale",
+     "Eden Valley",
+     "Clare Valley",
+     "Coonawarra",
+     "Hunter Valley",
+     "Yarra Valley",
+     "Margaret River",
+     "Rutherglen"
+    ]
+   },
+   "know": [
+    "The Barossa has some of the world's oldest Shiraz vines, dating to 1843.",
+    "McLaren Vale was South Australia's first wine region (1838); Shiraz is its signature.",
+    "Penfolds Grange is the iconic wine the Court names.",
+    "Rutherglen, in North East Victoria, is known for fortified Muscat and Muscadelle.",
+    "Australians bought the French company that invented the Stelvin screw cap."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "BULK",
+       "title": "South Eastern Australia",
+       "text": "Super GI for blending across regions\nRiverina, Murray Darling\nIrrigated, hot interior"
+      },
+      {
+       "label": "PREMIUM",
+       "title": "Single regions",
+       "text": "Barossa, McLaren Vale, Coonawarra\nMargaret River, Yarra Valley\nNear the cooler coast"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Sell it like its twin",
+     "rows": [
+      {
+       "name": "Clare or Eden Riesling",
+       "meta": "like NZ Sauvignon Blanc"
+      },
+      {
+       "name": "Yarra Pinot Noir",
+       "meta": "like Willamette Pinot Noir"
+      },
+      {
+       "name": "Yarra Chardonnay",
+       "meta": "like Sonoma Coast Chardonnay"
+      },
+      {
+       "name": "Margaret River Bordeaux blend",
+       "meta": "elegant, like Bordeaux"
+      }
+     ],
+     "note": "The Court's own pairing comparisons."
+    }
+   ]
+  },
+  {
+   "name": "New Zealand",
+   "book": "wine/new-zealand/marlborough",
+   "lines": [
+    {
+     "label": "Regions",
+     "text": "North Island: Gisborne, Hawke's Bay (with the Gimblett Gravels) and Wairarapa (Martinborough). South Island: Nelson, Marlborough (Wairau and Awatere valleys), Canterbury and Central Otago."
+    },
+    {
+     "label": "Why Marlborough",
+     "text": "Low rain, high sunshine and big day-night swings while the grapes ripen. That builds intense flavor and keeps acidity high."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Sauvignon Blanc",
+     "Pinot Noir",
+     "Chardonnay",
+     "Pinot Gris",
+     "Riesling",
+     "Gewürztraminer",
+     "Syrah"
+    ]
+   },
+   "know": [
+    "Awatere Valley Sauvignon is more herbaceous and mineral; Wairau is riper and more tropical.",
+    "No vineyard is more than 130 km from the ocean.",
+    "A named grape needs 85% on the label.",
+    "Producers to know: Cloudy Bay, Felton Road, Villa Maria.",
+    "Know the VSP and Scott Henry trellis systems; harvest runs about six months ahead of the Northern Hemisphere."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "AWATERE",
+       "title": "Herbaceous and mineral",
+       "text": "The more restrained Marlborough style"
+      },
+      {
+       "label": "WAIRAU",
+       "title": "Riper and tropical",
+       "text": "The main valley\nMore pungent fruit"
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "title": "Five regions, North Island to South Island",
+     "items": [
+      {
+       "name": "Gisborne",
+       "text": "North Island",
+       "meta": "high sunshine"
+      },
+      {
+       "name": "Hawke's Bay",
+       "text": "North Island · Gimblett Gravels",
+       "meta": "red blends, Chardonnay"
+      },
+      {
+       "name": "Wairarapa",
+       "text": "North Island · Martinborough",
+       "meta": "Pinot Noir"
+      },
+      {
+       "name": "Marlborough",
+       "text": "South Island · Wairau, Awatere",
+       "meta": "Sauvignon Blanc"
+      },
+      {
+       "name": "Central Otago",
+       "text": "South Island · southernmost",
+       "meta": "Pinot Noir"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Sta. Rita Hills",
+   "b": "Happy Canyon",
+   "why": "Both are in Santa Barbara County. Sta. Rita Hills is cool Pinot Noir country; Happy Canyon is warm."
+  },
+  {
+   "a": "Awatere Valley",
+   "b": "Wairau Valley",
+   "why": "Both are Marlborough. Awatere Sauvignon is herbaceous and mineral; Wairau is riper and tropical."
+  },
+  {
+   "a": "Marlborough",
+   "b": "Martinborough",
+   "why": "Marlborough is the South Island's Sauvignon Blanc heartland. Martinborough is in Wairarapa, on the North Island."
+  },
+  {
+   "a": "Vidal",
+   "b": "Concord",
+   "why": "Vidal is a French-American hybrid (Canada's Icewine grape). Concord is native Vitis labrusca."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas Curriculum Guide (Certified column); eCFR 27 CFR part 4; Napa Valley Vintners; Stag's Leap Wine Cellars; Heitz Cellar; Santa Lucia Highlands Wine Artisans; Sta. Rita Hills Winegrowers Alliance; Ridge; Justin; Oregon Wine Board; Washington State Wine Commission; New York Wine & Grape Foundation; VQA Ontario; Wine BC; Wines of Chile; WOSA; Old Vine Project; Cap Classique Producers Association; Wine Australia; New Zealand Winegrowers; Wine Folly (secondary). Checked Nov 2, 2026.",
+ "cards": [
+  {
+   "q": "Which Napa AVA is the most northerly, and hottest, of the valley-floor appellations?",
+   "answer": "Calistoga",
+   "wrong": [
+    "Yountville",
+    "Oakville",
+    "Los Carneros"
+   ],
+   "source": "https://www.napavintners.com/napa_valley/calistoga-ava/"
+  },
+  {
+   "q": "A U.S. wine labeled with an AVA and a vintage needs what share of its grapes from that year?",
+   "answer": "95%",
+   "wrong": [
+    "75%",
+    "85%",
+    "100%"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/section-4.27"
+  },
+  {
+   "q": "Whose 1973 Cabernet Sauvignon won the red wines at the 1976 Paris tasting?",
+   "answer": "Stag's Leap Wine Cellars",
+   "wrong": [
+    "Robert Mondavi Winery",
+    "Heitz Cellar",
+    "Beringer"
+   ],
+   "source": "https://www.stagsleapwinecellars.com/our-story"
+  },
+  {
+   "q": "Which Central Coast AVA is in Monterey County?",
+   "answer": "Santa Lucia Highlands",
+   "wrong": [
+    "Sta. Rita Hills",
+    "Paso Robles",
+    "Santa Ynez Valley"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+  },
+  {
+   "q": "Which two Central Coast AVAs does the Court list as warm?",
+   "answer": "Paso Robles and Happy Canyon",
+   "wrong": [
+    "Sta. Rita Hills and Santa Maria Valley",
+    "Santa Lucia Highlands and Paso Robles",
+    "Santa Ynez Valley and Sta. Rita Hills"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+  },
+  {
+   "q": "Why do Pacific fog and wind reach so far into the Sta. Rita Hills?",
+   "answer": "Its valley runs east to west, open to the ocean",
+   "wrong": [
+    "It sits on a high plateau above the fog",
+    "Deep glacial lakes pull in cool air",
+    "Mountains to the west block the sea"
+   ],
+   "source": "https://staritahills.com/about"
+  },
+  {
+   "q": "For most grapes, what share of an Oregon wine must be the variety named on the label?",
+   "answer": "90%",
+   "wrong": [
+    "75%",
+    "85%",
+    "95%"
+   ],
+   "source": "https://trade.oregonwine.org/wine/labeling-regulations/"
+  },
+  {
+   "q": "Which of these AVAs is NOT shared between Washington and Oregon?",
+   "answer": "Red Mountain",
+   "wrong": [
+    "Walla Walla Valley",
+    "Columbia Valley",
+    "Columbia Gorge"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+  },
+  {
+   "q": "Why, according to the Court, is phylloxera absent from the Columbia Valley?",
+   "answer": "Desert conditions",
+   "wrong": [
+    "Every vine is grafted",
+    "Very cold winters",
+    "Volcanic soils"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+  },
+  {
+   "q": "Concord, grown widely around Lake Erie, belongs to which species?",
+   "answer": "Vitis labrusca",
+   "wrong": [
+    "Vitis vinifera",
+    "Vitis riparia",
+    "A French-American hybrid"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=60"
+  },
+  {
+   "q": "Which grape does VQA Ontario call its flagship Icewine grape?",
+   "answer": "Vidal",
+   "wrong": [
+    "Chardonnay",
+    "Pinot Noir",
+    "Gamay"
+   ],
+   "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+  },
+  {
+   "q": "Which valley makes about 90% of México's wine?",
+   "answer": "Valle de Guadalupe",
+   "wrong": [
+    "Okanagan Valley",
+    "Uco Valley",
+    "Valle Central"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=65"
+  },
+  {
+   "q": "Which cold ocean current cools Chile's coast?",
+   "answer": "The Humboldt Current",
+   "wrong": [
+    "The Benguela Current",
+    "The Gulf Stream",
+    "The Agulhas Current"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+  },
+  {
+   "q": "Casablanca is a subregion of which Chilean DO?",
+   "answer": "Aconcagua",
+   "wrong": [
+    "Valle Central",
+    "Maipo",
+    "Maule"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+  },
+  {
+   "q": "What does Chile's DO system regulate?",
+   "answer": "Place of origin only",
+   "wrong": [
+    "Yields and aging",
+    "Which grapes each region may plant",
+    "Minimum alcohol"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "q": "Which Argentine region has the country's highest vineyards, per the Court?",
+   "answer": "Salta",
+   "wrong": [
+    "Mendoza",
+    "Patagonia",
+    "Luján de Cuyo"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "q": "What minimum share of a named grape does an Argentine label need?",
+   "answer": "85%",
+   "wrong": [
+    "75%",
+    "90%",
+    "100%"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "q": "Which subzone name would you expect on an Uco Valley Malbec?",
+   "answer": "Tupungato",
+   "wrong": [
+    "Cafayate",
+    "Agrelo",
+    "Neuquén"
+   ],
+   "source": "https://winefolly.com/wine-regions/argentina/"
+  },
+  {
+   "q": "What is the Cape Doctor?",
+   "answer": "A dry southeasterly wind that keeps vine disease down",
+   "wrong": [
+    "A cold Atlantic current from Antarctica",
+    "A sea fog from the Indian Ocean",
+    "The local name for Chenin Blanc"
+   ],
+   "source": "https://www.wosa.co.za/The-Industry/Terroir/Climate/"
+  },
+  {
+   "q": "Which two grapes were crossed to make Pinotage?",
+   "answer": "Pinot Noir and Cinsaut",
+   "wrong": [
+    "Pinot Noir and Syrah",
+    "Pinot Gris and Cinsaut",
+    "Pinot Noir and Grenache"
+   ],
+   "source": "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/Red-Wine-Varieties/"
+  },
+  {
+   "q": "What is Cap Classique?",
+   "answer": "South African sparkling wine made by second fermentation in the bottle",
+   "wrong": [
+    "A sweet Muscat from the Klein Karoo",
+    "A red blend built on Pinotage",
+    "A pot-still brandy"
+   ],
+   "source": "https://www.capclassique.co.za/"
+  },
+  {
+   "q": "What is 'South Eastern Australia' on a label?",
+   "answer": "A high-volume super GI used for blending across regions",
+   "wrong": [
+    "A premium single region in Victoria",
+    "A subregion of the Barossa",
+    "A grape-variety term"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+  },
+  {
+   "q": "The Barossa's oldest Shiraz vines date back to which year?",
+   "answer": "1843",
+   "wrong": [
+    "1788",
+    "1838",
+    "1925"
+   ],
+   "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/south-australia-wines/barossa"
+  },
+  {
+   "q": "Rutherglen, in North East Victoria, is best known for what?",
+   "answer": "Fortified wines from Muscat and Muscadelle",
+   "wrong": [
+    "Sparkling Pinot Noir",
+    "Dry Hunter-style Semillon",
+    "Cool-climate Riesling"
+   ],
+   "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/victoria-wines/rutherglen"
+  },
+  {
+   "q": "Which Marlborough subregion gives a more herbaceous, mineral Sauvignon Blanc?",
+   "answer": "Awatere Valley",
+   "wrong": [
+    "Wairau Valley",
+    "Gimblett Gravels",
+    "Martinborough"
+   ],
+   "source": "https://www.nzwine.com/en/winestyles/sauvignonblanc/"
+  },
+  {
+   "q": "What helps Marlborough Sauvignon Blanc build intense flavor and keep its acidity?",
+   "answer": "High sunshine with big day-night temperature swings",
+   "wrong": [
+    "Warm, humid nights",
+    "Long aging in new oak",
+    "High rainfall in summer"
+   ],
+   "source": "https://www.nzwine.com/en/winestyles/sauvignonblanc/"
+  },
+  {
+   "q": "Martinborough sits in which New Zealand region?",
+   "answer": "Wairarapa",
+   "wrong": [
+    "Marlborough",
+    "Hawke's Bay",
+    "Central Otago"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+  },
+  {
+   "q": "Mount Veeder AVA lies on the slopes of which mountain range?",
+   "answer": "The Mayacamas Range",
+   "wrong": [
+    "The Vaca Range",
+    "The Santa Lucia Range",
+    "The Cascades"
+   ],
+   "source": "https://www.napavintners.com/napa_valley/mount-veeder-ava/"
+  },
+  {
+   "q": "Which order runs from largest to smallest in Australia's GI system?",
+   "answer": "State, Zone, Region, Sub-Region",
+   "wrong": [
+    "Region, Zone, State, Sub-Region",
+    "Zone, State, Sub-Region, Region",
+    "State, Region, Zone, Sub-Region"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+  },
+  {
+   "q": "About what share of British Columbia's vineyard acreage is in the Okanagan Valley?",
+   "answer": "86%",
+   "wrong": [
+    "25%",
+    "50%",
+    "99%"
+   ],
+   "source": "https://winebc.com/discover-bc-wine-country/okanagan-valley/"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "27 CFR 4.23(b): a single grape variety may be named if not less than 75 percent of the wine is from that variety, all grown in the labeled appellation area.",
+   "source": "https://www.ecfr.gov/current/title-27/section-4.23"
+  },
+  {
+   "fact": "27 CFR 4.25(e)(3): a wine may carry a viticultural area (AVA) appellation if not less than 85 percent of the wine is from grapes grown inside that area.",
+   "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+  },
+  {
+   "fact": "27 CFR 4.27(a)(1): a vintage-dated wine with an AVA appellation needs at least 95 percent from grapes harvested in the labeled year; with a state or county appellation it is 85 percent (4.27(a)(2)).",
+   "source": "https://www.ecfr.gov/current/title-27/section-4.27"
+  },
+  {
+   "fact": "27 CFR 4.39(m): a vineyard name may not be used unless 95 percent of the wine came from that named vineyard.",
+   "source": "https://www.ecfr.gov/current/title-27/section-4.39"
+  },
+  {
+   "fact": "27 CFR 4.26: 'Estate bottled' needs an AVA appellation; the winery must be in that area, grow all the grapes on land it owns or controls there, and make and bottle the wine on its premises.",
+   "source": "https://www.ecfr.gov/current/title-27/section-4.26"
+  },
+  {
+   "fact": "Court Curriculum Guide, California (Certified column): 75% minimum grape variety, 85% minimum for AVA, 100% for estate bottling, 95% minimum for vintage, 95% minimum for single vineyard.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+  },
+  {
+   "fact": "Court Curriculum Guide, California (Certified column) label terms: Estate Bottled, Meritage (trademark only), Claret; 'Reserve' has no legal meaning; style point: American vs. French oak flavor differences.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+  },
+  {
+   "fact": "Court (Certified column): the North Coast is the coastal counties north of the San Pablo Bay. AVAs to add: Knights Valley (Sonoma County); Mount Veeder, Calistoga and Yountville (Napa County). Match AVAs to counties.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+  },
+  {
+   "fact": "Court (Certified column): north Napa is warmer; mountainous regions have lower yields and bigger diurnal shifts; very diverse soils throughout.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+  },
+  {
+   "fact": "Court (Certified column): North Coast sparkling wine is commonly traditional method; match the grape varieties to the major AVAs.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=56"
+  },
+  {
+   "fact": "Court (Certified column) North Coast producers: Spottswoode, Far Niente, Groth, Cakebread, Stag's Leap Wine Cellars, Silver Oak, Chappellet, Caymus, Etude, Iron Horse, Domaine Carneros, Roederer Estate, Quintessa, Merryvale, Larkmead, Williams Selyem (printed 'William Selyem'), Kistler; know iconic wines, e.g. Martha's Vineyard with Heitz; know vintage quality of the past 5 years.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+  },
+  {
+   "fact": "Court (Certified column) history: Agoston Haraszthy, Robert Mondavi, André Tchelistcheff, the Paris Tasting of 1976, Warren Winiarski, Charles Krug.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+  },
+  {
+   "fact": "Court (Certified column): young Cabernet Sauvignon often benefits from decanting; old Cabernet Sauvignon needs decanting for sediment.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+  },
+  {
+   "fact": "Napa Valley Vintners: Calistoga is the most northerly of the valley-floor appellations and also the hottest; its soils are primarily volcanic; principal varieties include Cabernet Sauvignon and Zinfandel; it makes ripe, rich reds, dark in color.",
+   "source": "https://www.napavintners.com/napa_valley/calistoga-ava/"
+  },
+  {
+   "fact": "Napa Valley Vintners: Mount Veeder is on the eastern slopes of the Mayacamas Range; near San Pablo Bay with mostly east-facing slopes, it is the coolest of Napa Valley's mountain AVAs; its Cabernets are very high in tannin and acidity and capable of great age.",
+   "source": "https://www.napavintners.com/napa_valley/mount-veeder-ava/"
+  },
+  {
+   "fact": "Napa Valley Vintners: Yountville's more southerly position means constant fog and wind; its Cabernets have finely knit tannins and tend to be lower in alcohol than Rutherford and Oakville bench Cabernets.",
+   "source": "https://www.napavintners.com/napa_valley/yountville-ava/"
+  },
+  {
+   "fact": "Napa Valley Vintners: Oakville's western edge has famous gravelly fans that include Martha's Vineyard and To Kalon.",
+   "source": "https://www.napavintners.com/napa_valley/oakville-ava/"
+  },
+  {
+   "fact": "Napa Valley Vintners: Stags Leap District was designated an AVA in 1989; at a 1976 blind tasting in Paris, Stag's Leap Wine Cellars was awarded first place against renowned French producers.",
+   "source": "https://www.napavintners.com/napa_valley/stags-leap-district-ava/"
+  },
+  {
+   "fact": "Stag's Leap Wine Cellars: at the 1976 Judgment of Paris its 1973 S.L.V. Cabernet Sauvignon won the highest honor in the red wine category, above First Growth Bordeaux.",
+   "source": "https://www.stagsleapwinecellars.com/our-story"
+  },
+  {
+   "fact": "Heitz Cellar lists a Martha's Vineyard Cabernet Sauvignon among its wines.",
+   "source": "https://www.heitzcellar.com/our-story"
+  },
+  {
+   "fact": "Court (Certified column): the Central Coast is the coastal counties south of the San Francisco Bay; identify Monterey, San Luis Obispo and Santa Barbara on a map. AVAs: Monterey County - Santa Lucia Highlands; San Luis Obispo - Paso Robles; Santa Barbara County - Sta. Rita Hills, Santa Maria Valley, Santa Ynez Valley, Happy Canyon.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+  },
+  {
+   "fact": "Court (Certified column): Paso Robles AVA and Happy Canyon AVA are warm climate; the others listed (Santa Lucia Highlands, Sta. Rita Hills, Santa Maria Valley, Santa Ynez Valley) are cool Pinot Noir and Chardonnay growing regions.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+  },
+  {
+   "fact": "Court: Paso Robles is warm continental with large diurnal shifts and is blocked by mountains to the west with only a small gap; Santa Barbara has an east-to-west mountain range creating a cool wind tunnel and fog.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=58"
+  },
+  {
+   "fact": "Court (Certified column) Central Coast producers: knowledge of iconic producers and vineyards is expected; examples include Ridge, Justin and Au Bon Climat.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=59"
+  },
+  {
+   "fact": "Santa Lucia Highlands Wine Artisans: granite terraces rise from the Salinas Valley floor; cold marine air off Monterey Bay brings morning fog and afternoon wind that make the season long and cool; the AVA is known for Pinot Noir and Chardonnay.",
+   "source": "https://santaluciahighlands.com/about/"
+  },
+  {
+   "fact": "Sta. Rita Hills Winegrowers Alliance: the first vineyard, Sanford & Benedict, was planted in 1971; AVA status was granted in 2001; an east/west maritime throat and the Pacific's fog and wind make it a cool-climate area for Pinot Noir and Chardonnay.",
+   "source": "https://staritahills.com/about"
+  },
+  {
+   "fact": "JUSTIN Vineyards & Winery: in 1981 Justin Baldwin planted a vineyard in Paso Robles.",
+   "source": "https://www.justinwine.com/our-story"
+  },
+  {
+   "fact": "Ridge Vineyards: its Monte Bello winery sits near the top of Monte Bello Ridge; Cabernet and Zinfandel make up most of its production.",
+   "source": "https://www.ridgewine.com/about/history/"
+  },
+  {
+   "fact": "Court (Certified column) Oregon AVAs: Willamette Valley, Dundee Hills, Yamhill-Carlton, Eola-Amity Hills, Chehalem Mountains, Ribbon Ridge, McMinnville, Van Duzer Corridor. Shared AVAs: Columbia Valley, Walla Walla Valley, Columbia Gorge. Washington: Yakima Valley, Horse Heaven Hills, Red Mountain.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+  },
+  {
+   "fact": "Court (Certified column): the Columbia, Yakima and Snake Rivers provide a water source; the Columbia Valley AVA has generally south-facing slopes; irrigation is needed in the Columbia Valley.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+  },
+  {
+   "fact": "Court (Certified column) soils: Willamette Valley volcanic and marine sediment; Columbia Valley gravel.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=61"
+  },
+  {
+   "fact": "Court (Certified column): Oregon requires 90% minimum for the stated variety, except for Cabernet Sauvignon, Merlot and others, and 95% minimum for the AVA.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+  },
+  {
+   "fact": "Court (Certified column) producers: Willamette Valley - Eyrie Vineyards, Domaine Drouhin, Domaine Serene, Erath, Ponzi; Columbia Valley - Quilceda Creek, L'Ecole No. 41, Château Ste. Michelle, Leonetti. History: Missoula Floods; David Lett of Eyrie Vineyards; absence of phylloxera in the Columbia Valley due to desert conditions.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+  },
+  {
+   "fact": "Court (Certified column) pairings: Willamette Valley Pinot Noir with salmon or butternut squash; Washington Cabernet Sauvignon or Merlot with beef or lamb.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=62"
+  },
+  {
+   "fact": "Oregon Wine Board: for an Oregon appellation, 100% of the grapes must be from Oregon and 95% from that appellation; 90% or more must be the named variety; 18 varieties are exempt from the 90% rule.",
+   "source": "https://trade.oregonwine.org/wine/labeling-regulations/"
+  },
+  {
+   "fact": "Oregon Wine Board: in 1965 David Lett rooted Pinot Noir cuttings, the first plantings in the Willamette Valley; the vines went to The Eyrie Vineyards in the Dundee Hills.",
+   "source": "https://www.oregonwine.org/discover/oregon-wine-history/"
+  },
+  {
+   "fact": "Washington State Wine Commission: Columbia Valley lies in the rain shadow of the Cascades; its soils were shaped by the Missoula Floods over 15,000 years ago.",
+   "source": "https://www.washingtonwine.org/region/columbia-valley/"
+  },
+  {
+   "fact": "Washington State Wine Commission: Red Mountain is one of Washington's smallest, warmest and driest appellations; Cabernet Sauvignon makes up 60% of plantings.",
+   "source": "https://www.washingtonwine.org/region/red-mountain/"
+  },
+  {
+   "fact": "Washington State Wine Commission: Horse Heaven Hills is a warm, windy region home to one-quarter of Washington's wine grape acreage.",
+   "source": "https://www.washingtonwine.org/region/horse-heaven-hills/"
+  },
+  {
+   "fact": "Washington State Wine Commission: Walla Walla Valley is one of three AVAs that cross into Oregon.",
+   "source": "https://www.washingtonwine.org/region/walla-walla-valley/"
+  },
+  {
+   "fact": "Court (Certified column) New York: AVAs Finger Lakes, Hudson River, Lake Erie, Long Island; climate continental, moderated by lakes and rivers inland and the Atlantic on the coast; hybrids Aurore and Seyval Blanc; Vitis labrusca Concord; Dr. Konstantin Frank.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=60"
+  },
+  {
+   "fact": "New York Wine & Grape Foundation: eastern Long Island is 'mid-latitude maritime'; winters are much milder than most of New York State, suiting cold-sensitive grapes such as Chardonnay and Merlot, along with Bordeaux varieties and sparkling wines.",
+   "source": "https://newyorkwines.org/avas/long-island/"
+  },
+  {
+   "fact": "Court: New York growers must protect vines from deep freezes in harsh winters and from mold in summer.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=60"
+  },
+  {
+   "fact": "Court: Canada needs winter-hardy varieties able to survive deep freezes; French-American hybrids such as Vidal are winter hardy.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=63"
+  },
+  {
+   "fact": "VQA Ontario: the Niagara Peninsula is bordered by Lake Ontario to the north; breezes between the lake and the Niagara Escarpment moderate temperatures.",
+   "source": "https://vqaontario.ca/ontario-appellations/niagara-peninsula/"
+  },
+  {
+   "fact": "New York Wine & Grape Foundation: the Hudson River Valley is one of the oldest and most historically important wine areas in the U.S.",
+   "source": "https://newyorkwines.org/avas/hudson-river-region/"
+  },
+  {
+   "fact": "New York Wine & Grape Foundation: the Lake Erie AVA grows Concord, with small amounts of labrusca, hybrids and Vitis vinifera; the lake moderates the climate.",
+   "source": "https://newyorkwines.org/avas/lake-erie/"
+  },
+  {
+   "fact": "New York Wine & Grape Foundation: Concord is a cold-hardy native North American variety with a prominent 'foxy' aroma like grape jelly.",
+   "source": "https://newyorkwines.org/grapes/"
+  },
+  {
+   "fact": "New York Wine & Grape Foundation: Dr. Konstantin Frank planted the first vinifera vines in the Eastern United States in modern history in 1957.",
+   "source": "https://newyorkwines.org/the-pioneering-dr-konstantin-frank-wins-best-white-for-reserve-riesling/"
+  },
+  {
+   "fact": "Court: Canada has no national wine law; each province has its own laws. VQA (Vintners Quality Alliance) is the primary regulatory body for premium wine.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+  },
+  {
+   "fact": "Court (Certified column): Canadian vines are Vitis vinifera, native species (Vitis labrusca and Vitis riparia) and French-American hybrids such as Vidal; Certified grapes add Vidal, Pinot Gris and Gewürztraminer.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=63"
+  },
+  {
+   "fact": "Court (Certified column): Okanagan Valley is British Columbia's main area, on the 50-degree line, continental with very hot summers and very cold winters, moderated by Lake Okanagan; Ontario is influenced by the Great Lakes, makes half of all Canadian wine, its main area is the Niagara Peninsula, and it makes 90% of Canadian ice wine; Vidal is also used for ice wine; producer Inniskillin; producer Inniskillin (printed 'Inniskillen'); sweet and savory pairings with Icewine.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+  },
+  {
+   "fact": "VQA Ontario: Icewine is made from grapes frozen naturally on the vine and harvested below -8 °C; the hybrid Vidal is the flagship Icewine grape.",
+   "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+  },
+  {
+   "fact": "Court: ice wine grapes must be frozen on the vine and are often picked in the middle of the night; Riesling and Cabernet Franc are used.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=64"
+  },
+  {
+   "fact": "Wine BC: the Okanagan Valley is British Columbia's largest grape-growing region, with 86% of BC's vineyard acreage; hot, dry summers are tempered by cool nights and lake breezes; the south near Osoyoos is desert-like.",
+   "source": "https://winebc.com/discover-bc-wine-country/okanagan-valley/"
+  },
+  {
+   "fact": "Court (Certified column) México: hot Mediterranean to semi-desert; the Pacific gives fog and cooling breezes; mountains give cooler, higher sites; soils mixed with lots of sand; water is short and irrigation essential; sandy soils keep phylloxera away; a melting pot of Italian, French and Spanish grapes in non-traditional blends; 'No laws!'.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=65"
+  },
+  {
+   "fact": "Court (Certified column) México grapes: whites Chenin Blanc, Chardonnay, Viognier, Sauvignon Blanc; reds Tempranillo, Nebbiolo, Cabernet Sauvignon, Merlot, Zinfandel, Grenache, Barbera.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=65"
+  },
+  {
+   "fact": "Court (Certified column): Baja California's Valle de Guadalupe has a Mediterranean climate and produces 90% of Mexico's wine; southwest-to-northeast valleys bring in fog and cooling Pacific breezes; reds are fruit-driven, deeply colored and high in alcohol.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=65"
+  },
+  {
+   "fact": "Court: Chile runs from hot desert to cool to cold, north to south; the Pacific brings cool breezes and fog; the Andes supply irrigation water; the Coastal Range creates a rain shadow.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "fact": "Court (Certified column): Chile's soil: sand; no phylloxera (because of sandy soil); mostly ungrafted vines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "fact": "Court (Certified column): Chile's minimum for variety, vintage and origin labeling is 75%; in practice EU rules require 85% in all three.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "fact": "Court: Chile's Denominación de Origen (DO) system refers to place of origin only, with no other laws.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "fact": "Court (Certified column): Aconcagua DO with subregion Casablanca DO - cool maritime, west of the Coastal Range, Chardonnay, Sauvignon Blanc, Pinot Noir. Valle Central DO - warm to hot, between the Coastal Range and the Andes, 80% of Chilean production, Cabernet Sauvignon, Carménère, Merlot; subregions Maipo, Rapel (Colchagua, Cachapoal), Curicó, Maule. Maipo surrounds Santiago; most major historical wineries are there.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+  },
+  {
+   "fact": "Court (Certified column): the Humboldt Current is a cold current from Antarctica along South America's west coast; Chilean wines are often big, intense, fruit-driven and high in alcohol.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+  },
+  {
+   "fact": "Court (Certified column) Chile producers: Concha y Toro, Santa Rita, Errázuriz, Casa Lapostolle, Carmen. History: 1500s grapes grown in the Spanish colonies; 1600s Spanish laws restrict wine production; 1800s independence and European immigrants expand viticulture; 1970s-80s foreign investment.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=68"
+  },
+  {
+   "fact": "Court (Certified column) Chile red grapes add Syrah and País.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=67"
+  },
+  {
+   "fact": "Wines of Chile: Casablanca is Chile's pioneering cool-climate region, with Pacific morning fog; Sauvignon Blanc and Chardonnay are its most iconic grapes.",
+   "source": "https://www.winesofchile.org/winegrowing-regions/"
+  },
+  {
+   "fact": "Wines of Chile: Maipo has a mild Mediterranean climate; its main grape is Cabernet Sauvignon.",
+   "source": "https://www.winesofchile.org/winegrowing-regions/"
+  },
+  {
+   "fact": "Wines of Chile: Colchagua is mostly red, especially Carménère, Cabernet Sauvignon and Merlot; it has the largest area planted with Carménère.",
+   "source": "https://www.winesofchile.org/winegrowing-regions/"
+  },
+  {
+   "fact": "Wines of Chile: Maule is Chile's largest winegrowing region, home to some of the oldest vineyards, dry-farmed head-trained vines and exceptional Carignan.",
+   "source": "https://www.winesofchile.org/winegrowing-regions/"
+  },
+  {
+   "fact": "Wines of Chile: in the old Itata Valley, traditional varieties such as País and Moscatel de Alejandría predominate.",
+   "source": "https://www.winesofchile.org/winegrowing-regions/"
+  },
+  {
+   "fact": "Court (Certified column): Salta is 1,500-2,000 m (5,000-6,000 ft), the highest elevation in Argentina; Mendoza is 600-1,200 m (2,000-4,000 ft).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "fact": "Court (Certified column): Malbec can have an electric purple color because more sun at higher elevations causes intense pigmentation.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "fact": "Court: Argentina lies east of the Andes; the Andes create a rain shadow; melted snow from the Andes is the water source.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "fact": "Court (Certified column): 85% minimum to list a grape variety on an Argentine label; classification: IG (Indicaciones Geográficas) and DOC (Denominación de Origen Controlada). Red grapes add Bonarda, Tempranillo, Syrah.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "fact": "Court: Salta's subregion Cafayate is known for Torrontés; Mendoza's Luján de Cuyo and Uco Valley are known for Malbec; Patagonia is cool due to its southern latitude.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=69"
+  },
+  {
+   "fact": "Court (Certified column): Torrontés is highly aromatic with soapy, floral and fruity flavors and medium-plus to high acidity. Vineyards were revitalized by Italian and Spanish immigrants. Malbec and Cabernet pair with steak and chimichurri; some high-end bottles benefit from decanting. Know a couple of producers.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=70"
+  },
+  {
+   "fact": "Wine Folly (secondary): Uco Valley has some of Mendoza's highest vineyards, with more savory flavors and dusty tannins; labels often name a subzone such as Tupungato or Vista Flores. Luján de Cuyo Malbec has more black fruit in a lusher style; its subzones include Agrelo, Vistalba, Las Compuertas and Perdriel.",
+   "source": "https://winefolly.com/wine-regions/argentina/"
+  },
+  {
+   "fact": "Wine Folly (secondary): Torrontés smells sweet but usually tastes dry; Patagonia makes Pinot Noir from Neuquén and Río Negro.",
+   "source": "https://winefolly.com/wine-regions/argentina/"
+  },
+  {
+   "fact": "Wine Folly (secondary): Bonarda grows in abundance in Argentina and is also known as Charbono in Napa Valley.",
+   "source": "https://argentina.guides.winefolly.com/regions/mendoza"
+  },
+  {
+   "fact": "Court (Certified column): the Western Cape is the heart of South African viticulture; the Cape Doctor is a strong, dry southeasterly wind from spring to summer that helps mitigate pests; the Benguela Current is a frigid Atlantic current from Antarctica; the Old Vines Project; distillation and brandy; Cap Classique is traditional-method sparkling wine.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+  },
+  {
+   "fact": "Court (Certified column): Pinotage is a crossing of Cinsault x Pinot Noir.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=71"
+  },
+  {
+   "fact": "Court (Certified column): Western Cape appellations add Klein Karoo Region (sweet fortified wines and brandy), Franschhoek Valley (Coastal Region), Cape Agulhas and Overberg (Cape South Region).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=72"
+  },
+  {
+   "fact": "Court (Certified column) producers: Graham Beck, Mulderbosch, Hamilton Russell, Klein Constantia, A.A. Badenhorst, Eben Sadie; wines range from sparkling to light and crisp to rich and intense and are great recommendations for world-class wine from an undervalued area.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=72"
+  },
+  {
+   "fact": "Court history: 1600s Dutch settlement and Simon van der Stel; phylloxera and the Anglo-Boer War; KWV; apartheid and its effect on the export market; a move from oxidative and fortified wine to world-class wines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=72"
+  },
+  {
+   "fact": "WOSA: Wine of Origin areas are divided into geographical units, regions, districts and wards; the Western Cape geographical unit has five regions: Breede River Valley, Cape South Coast, Coastal Region, Klein Karoo and Olifants River.",
+   "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+  },
+  {
+   "fact": "WOSA: the Cape Town district incorporates the wards of Constantia, Hout Bay, Durbanville and Philadelphia; Constantia is the cradle of winemaking in the Cape, site of Simon van der Stel's 17th-century wine farm and origin of the Constantia dessert wines famous in 18th-century Europe.",
+   "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+  },
+  {
+   "fact": "WOSA: Franschhoek has kept its French Huguenot character; the valley lies southeast of Paarl, enclosed on three sides by mountains.",
+   "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+  },
+  {
+   "fact": "WOSA: Cape Agulhas vineyards are mostly in the ward of Elim near Africa's southernmost point; strong cooling summer winds give a very cool ripening season, perfect for Sauvignon Blanc. Newer areas have opened in the southerly Overberg district.",
+   "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+  },
+  {
+   "fact": "WOSA: the Klein Karoo is known for extremes of soil and climate; vines grow mainly in kloofs, valleys and riverine sites; historically Muscat varieties flourished and it is known for sweet wines and potstill brandies.",
+   "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa"
+  },
+  {
+   "fact": "WOSA: 'Wine of Origin' with an area name confirms 100% of the grapes come from that area; a cultivar may be named at 85% or more; a vintage confirms at least 85% from that year.",
+   "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Wine-Of-Origin-Scheme/"
+  },
+  {
+   "fact": "WOSA: Pinotage, a cross of Pinot Noir and Cinsaut, was created by Professor Abraham Perold in 1925 and is unique to South Africa.",
+   "source": "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/Red-Wine-Varieties/"
+  },
+  {
+   "fact": "WOSA: the Cape Doctor is a southeasterly wind in spring and summer that inhibits vineyard disease; the cold Benguela current runs up the west coast from Antarctica.",
+   "source": "https://www.wosa.co.za/The-Industry/Terroir/Climate/"
+  },
+  {
+   "fact": "WOSA: the first Cape vineyard was planted in 1655 and wine was first made from Cape grapes on 2 February 1659; the Wine of Origin scheme was instituted in 1973.",
+   "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Introduction/"
+  },
+  {
+   "fact": "Old Vine Project: founded in 2002 by Rosa Kruger, it certifies and protects heritage vines; a vineyard officially recognized as 35 years of age or older.",
+   "source": "https://oldvineproject.co.za/"
+  },
+  {
+   "fact": "Cap Classique Producers Association: Cap Classique is made by a second fermentation in the bottle; the term has been used since 1992.",
+   "source": "https://www.capclassique.co.za/"
+  },
+  {
+   "fact": "Court: a GI refers to geographic place of origin only; 85% labeling is required for grape variety, vintage and origin; GI levels are Australia, State, Zone, Region, Sub-Region.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+  },
+  {
+   "fact": "Court: hot, dry interior, cooler near the coast; blending across regions for volume; 100+ year old vines; irrigation necessary in the interior; best vineyards near the cooler coast; traditional style blends across regions with American oak, modern style is single GI/site with French oak; Rutherglen: fortified wines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+  },
+  {
+   "fact": "Court: South Eastern Australia is a high-volume super GI (superzone) including Riverina and Murray Darling; premium GIs include Barossa Valley, McLaren Vale, Coonawarra, Clare Valley, Eden Valley (South Australia), Hunter Valley (New South Wales), Yarra Valley (Victoria), Margaret River (Western Australia), and Tasmania.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+  },
+  {
+   "fact": "Court (Certified column): iconic producer Penfolds Grange; history - first vines 1788 near Sydney, industry moved west after phylloxera (quarantine), sweet and fortified wines dominated until the late 20th century, Australians purchased the French company that invented the Stelvin closure, Yellow Tail business model; screw cap.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+  },
+  {
+   "fact": "Court (Certified column) pairings: ripe Shiraz with intense grilled or barbecued meat; use Clare or Eden Riesling like New Zealand Sauvignon Blanc; Yarra Pinot Noir parallels Willamette Valley Pinot Noir; Yarra Chardonnay works like Sonoma Coast Chardonnay; Margaret River Bordeaux blends are elegant like Bordeaux.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=76"
+  },
+  {
+   "fact": "Court (Certified column): Coonawarra soil is terra rossa.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=75"
+  },
+  {
+   "fact": "Wine Australia: the zone South Eastern Australia incorporates the whole of NSW, Victoria and Tasmania and only part of Queensland and South Australia.",
+   "source": "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+  },
+  {
+   "fact": "Wine Australia: the Barossa has some of the oldest Shiraz vines in the world, dating back to 1843; Shiraz is 50% of its plantings.",
+   "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/south-australia-wines/barossa"
+  },
+  {
+   "fact": "Wine Australia (australianwine.com): McLaren Vale was South Australia's first wine region, established 1838; Eden Valley is a cool-climate Riesling region; Coonawarra is known for terra rossa and age-worthy Cabernet Sauvignon.",
+   "source": "https://www.australianwine.com/experience/articles/the-ultimate-guide-to-south-australia-s-wine-regions"
+  },
+  {
+   "fact": "Wine Australia (australianwine.com): Shiraz is McLaren Vale's signature wine.",
+   "source": "https://www.australianwine.com/our-places/south-australia/mclaren-vale-wine-region"
+  },
+  {
+   "fact": "Wine Australia (australianwine.com): Coonawarra has a strip of terra rossa ('red soil') among limestone-based soils.",
+   "source": "https://www.australianwine.com/our-places/south-australia/coonawarra-wine-region"
+  },
+  {
+   "fact": "Wine Australia: Rutherglen is in North East Victoria, has a classic continental climate and is known for unrivaled sweet and fortified wines made from Muscat and Muscadelle.",
+   "source": "https://www.wineaustralia.com/market-insights/regions-and-varieties/victoria-wines/rutherglen"
+  },
+  {
+   "fact": "Wine Folly (secondary): Barossa Shiraz is among the most powerful in the world, often 14-15% alcohol; Eden Valley sits higher in the Mount Lofty Ranges and is cooler than Barossa Valley.",
+   "source": "https://winefolly.com/deep-dive/barossa-valley-and-the-wines-of-south-australia/"
+  },
+  {
+   "fact": "Court (Certified column) New Zealand: Gisborne and Wairarapa are cool maritime; Gimblett Gravels soil is gravel; North Island GIs Gisborne, Wairarapa (Martinborough); South Island GIs Marlborough (subregions Awatere Valley and Wairau Valley), Nelson, Canterbury; Pinot Gris, Gewürztraminer, Riesling (Central Otago); 85% minimum to list a grape variety.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=73"
+  },
+  {
+   "fact": "Court (Certified column) New Zealand: producers Cloudy Bay, Felton Road, Villa Maria; recent vintages are 6 months ahead of the Northern Hemisphere; know Scott Henry and Vertical Shoot Position (VSP) trellis systems; know how to open a screwcap; Sauvignon Blanc has ripeness for sweet-savory ingredients (e.g., mango salsa); pair acid with acid.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=74"
+  },
+  {
+   "fact": "Court: New Zealand winemaking is clean and modern, with screwcaps; history includes a young industry, the temperance movement, innovation and the screwcap initiative.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=74"
+  },
+  {
+   "fact": "New Zealand Winegrowers: no vineyard is more than 130 km (80 miles) from the ocean; most regions are on the eastern coasts of both islands, in the rain shadow of the mountains.",
+   "source": "https://www.nzwine.com/en/regions/"
+  },
+  {
+   "fact": "New Zealand Winegrowers: Hawke's Bay is New Zealand's second largest wine region; Wairarapa is a compact region of boutique producers; Canterbury makes Pinot Noir, Riesling and Chardonnay; Gisborne has high sunshine.",
+   "source": "https://www.nzwine.com/en/regions/"
+  },
+  {
+   "fact": "New Zealand Winegrowers: Marlborough is New Zealand's largest Sauvignon Blanc region, with low rainfall, consistently high sunshine hours and large day-night temperature shifts during ripening that build and lock in flavor; Awatere Valley gives more herbaceous and mineral styles, the main Wairau Valley a riper, tropical, more pungent style.",
+   "source": "https://www.nzwine.com/en/winestyles/sauvignonblanc/"
+  },
+  {
+   "fact": "New Zealand Winegrowers: NZ Sauvignon Blanc shows red capsicum (bell pepper), gooseberry and passionfruit, plus cut grass, tomato stalk, grapefruit or lime; it complements seafood, shellfish and citrus or garlic sauces; Marlborough's first Sauvignon Blanc vines were planted in 1975.",
+   "source": "https://www.nzwine.com/en/winestyles/sauvignonblanc/"
+  },
+  {
+   "fact": "New Zealand Winegrowers: Hawke's Bay is best known for red blends and Chardonnay; the Gimblett Gravels sit on its plains.",
+   "source": "https://www.nzwine.com/en/regions/hawkesbay/"
+  },
+  {
+   "fact": "New Zealand Winegrowers: Pinot Noir is grown mainly in the cooler southerly regions: Wairarapa, Marlborough, Nelson, North Canterbury and Central Otago; Central Otago is the southernmost region.",
+   "source": "https://www.nzwine.com/en/winestyles/pinot-noir/"
+  },
+  {
+   "fact": "Court Curriculum Guide: the Certified Sommelier Exam curriculum includes and builds from the Introductory curriculum; the Certified theory exam is not written exclusively from the guide.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=2"
+  }
+ ],
+ "unverified": [
+  "Estate bottled: the Court's Certified column says '100%, must be in the same county'; eCFR 27 CFR 4.26 instead ties it to an AVA where the winery grows all the grapes. The chapter uses the eCFR wording.",
+  "Vintage: the Court gives a single 95% minimum; eCFR 27 CFR 4.27 says 95% with an AVA and 85% with a state or county. The chapter uses the eCFR split.",
+  "Marlborough: the Court's Certified column says labels require 100% fruit from the region; this was not found on the New Zealand Winegrowers pages fetched, so the chapter only uses the Court's general 85% grape rule.",
+  "The Curriculum Guide's Canada and New Zealand pages extract with blurred columns, so the Introductory/Certified split for some rows (NZ style, pairing; Canada history) is approximate.",
+  "México facts come only from the Court's Certified column (incl. 'No laws!' and Valle de Guadalupe's 90%); no Mexican official body page was fetched and Wine Folly's Mexico pages returned errors.",
+  "Happy Canyon and Santa Maria/Santa Ynez climate notes are from the Court only; the Happy Canyon Vintners and Au Bon Climat sites returned no text.",
+  "Knights Valley: the Sonoma County Vintners pages tried returned 404; only the Court's listing (Sonoma County) is used.",
+  "Yakima Valley details: the Washington State Wine Commission page returned an image, not text; only the Court's listing is used. Van Duzer Corridor is named only; its role as a wind gap was not confirmed.",
+  "History names (Haraszthy, Charles Krug, Tchelistcheff, Mondavi, Winiarski) are given as the Court lists them; the Charles Krug and Buena Vista history pages did not load, so no dates are stated, and Winiarski's role at Stag's Leap Wine Cellars was not confirmed on the page fetched.",
+  "Court producer spellings corrected: 'William Selyem' printed for Williams Selyem; 'Inniskillen' printed for Inniskillin.",
+  "Roederer Estate, Au Bon Climat and Penfolds Grange are named as producers only; their locations and details were not confirmed (sites not fetched or behind an age gate).",
+  "Argentina subzone notes (Uco, Luján de Cuyo, Bonarda as Charbono) come from Wine Folly (secondary); the Wines of Argentina site is a JavaScript app. The Court's Mendoza altitude (600-1,200 m) conflicts with Wine Folly's 1,400 to 6,500+ ft; the chapter uses the Court's figures.",
+  "North Coast vintage quality for the past 5 years is a Court topic not covered: no official vintage chart was fetched.",
+  "Chile's 75% legal minimum (85% in practice for the EU) comes only from the Court; no Chilean government source was fetched."
+ ],
+ "court": {
+  "outcome": "NORTH AMERICA - CALIFORNIA - NORTH COAST: After studying this section, a candidate will know the major AVAs in the North Coast, which counties they are located, and the main grape varieties grown. A Certified Sommelier will know basic wine labeling laws, iconic producers and vineyards and will be able to recommend and sell food pairings to a guest.\n\nNORTH AMERICA - UNITED STATES - CALIFORNIA - CENTRAL COAST: After studying this section, a candidate will dive deeper into selected counties of the Central Coast of California and the major AVAs within them. Certified Sommeliers will know iconic producers and vineyards and be able to recommend and sell food pairings to a guest.\n\nNORTH AMERICA - UNITED STATES - NEW YORK STATE: After studying this section, a candidate will know the major AVAs and grapes varieties grown in New York State (including hybrids and other species). Certified Sommeliers will be able to recommend and sell food pairings with New York wines to a guest.\n\nNORTH AMERICA - UNITED STATES - PACIFIC NORTHWEST: After studying this section, a candidate will know all major grapes varieties grown in their respective AVAs and wine labeling law in Washington and Oregon. Certified Sommeliers will know iconic producers and be able to recommend and sell food pairings to a guest.\n\nNORTH AMERICA - CANADA: After studying this section, a candidate will know the location, climate, principle grape varieties, and styles of the prominent wine regions of Canada. A Certified Sommelier will be able to recognize iconic producers and be able to describe, recommend, and sell food pairings with Canadian Ice Wine to a guest.\n\nNORTH AMERICA - MÉXICO: After studying this section, a candidate will know the specific locations, climates and principle grape varieties of Mexico's most important wine region. Certified Sommeliers will be able to recommend and sell food pairings with wines from México to a guest.\n\nSOUTH AMERICA - CHILE: After studying this section, a candidate will learn the major geographical influences that affect vine growing, how the major grape varieties grown in Chile arrived in the country, have a familiarity with the Denominación de Origen (DO) system, and recognize major growing areas and major subregions. A Certified Sommelier will be able to recognize iconic producers and be able to recommend and sell food pairings with wines from Chile to a guest.\n\nSOUTH AMERICA - ARGENTINA: After studying this section, a candidate will have a deeper knowledge of the winemaking regions of Argentina and factors of its unique terroirs. A Certified Sommelier will be able to recognize iconic producers and be able to recommend and sell food pairings with wines from Argentina to a guest.\n\nSOUTH AFRICA: After studying this section, a candidate will be able to locate the general area where South African wines are made, understand the climate of South African wine regions, recognize important grape varieties, recall the basics of the Wine of Origin (WO) System, identify primary growing areas, and understand how important historical and political events have shaped the industry as we know it today. Certified Sommeliers will recognize iconic producers and be able to recommend and sell food pairings with wines from South Africa to a guest.\n\nNEW ZEALAND: After studying this section, a candidate will know the specific locations, climates, and principal grape varieties of New Zealand's most important wine regions. A Certified Sommelier will have the ability to describe New Zealand Sauvignon Blanc, the natural factors that are responsible for its distinct style, and be able to recommend and sell food pairings with New Zealand wines to a guest.\n\nAUSTRALIA: After studying this section, a candidate will be know the specific locations, climates, and principal grape varieties of Australia's most important wine regions and the difference between bulk wine regions and premium wine regions. A Certified Sommelier will have the ability to describe Barossa/McLaren Vale Shiraz, recognize iconic producers, and be able to recommend and sell food pairings with Australian wines to a guest.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "North Coast · Geography: Location",
+    "guide": "Coastal counties north of San Pablo Bay.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · Appellations",
+    "guide": "Add Knights Valley (Sonoma), Mount Veeder, Calistoga, Yountville (Napa); match AVAs to counties.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · Physical features, soil, grape growing",
+    "guide": "North Napa warmer; mountains give lower yields and bigger day-night swings; diverse soils.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · Winemaking and white grapes",
+    "guide": "Sparkling is mostly traditional method; match white grapes to AVAs.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · Red grapes",
+    "guide": "Match red grapes to the major AVAs.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · Wine law",
+    "guide": "75% variety, 85% AVA, 100% estate, 95% vintage, 95% single vineyard.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · Label terms",
+    "guide": "Estate Bottled, Meritage (trademark), Claret.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · General terms",
+    "guide": "'Reserve' has no legal meaning.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · Style",
+    "guide": "American vs. French oak flavor differences.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · Producers and vintage",
+    "guide": "Iconic producers and vineyards (e.g. Heitz Martha's Vineyard); last 5 vintages.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · History and lore",
+    "guide": "Haraszthy, Mondavi, Tchelistcheff, Winiarski, Krug, Paris 1976.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "North Coast · Service and pairing",
+    "guide": "Decant young Cabernet for air, old Cabernet for sediment.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "Central Coast · Location",
+    "guide": "Counties south of San Francisco Bay: Monterey, San Luis Obispo, Santa Barbara.",
+    "where": "California · Central Coast"
+   },
+   {
+    "topic": "Central Coast · Appellations",
+    "guide": "Santa Lucia Highlands, Paso Robles, Sta. Rita Hills, Santa Maria, Santa Ynez, Happy Canyon by county.",
+    "where": "California · Central Coast"
+   },
+   {
+    "topic": "Central Coast · Climate",
+    "guide": "Paso Robles and Happy Canyon warm; the rest cool Pinot Noir and Chardonnay.",
+    "where": "California · Central Coast"
+   },
+   {
+    "topic": "Central Coast · White grapes",
+    "guide": "Chardonnay and Sauvignon Blanc matched to AVAs.",
+    "where": "California · Central Coast"
+   },
+   {
+    "topic": "Central Coast · Red grapes",
+    "guide": "Pinot Noir, Merlot, Cabernet, Zinfandel, Syrah matched to AVAs.",
+    "where": "California · Central Coast"
+   },
+   {
+    "topic": "Central Coast · Wine law",
+    "guide": "Same federal minimums as the North Coast.",
+    "where": "California · North Coast"
+   },
+   {
+    "topic": "Central Coast · Producers",
+    "guide": "Iconic producers and vineyards, e.g. Ridge, Justin, Au Bon Climat.",
+    "where": "California · Central Coast"
+   },
+   {
+    "topic": "New York · Appellations",
+    "guide": "Finger Lakes plus Hudson River, Lake Erie and Long Island AVAs.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "New York · Climate and physical features",
+    "guide": "Continental, moderated by lakes, rivers and the Atlantic; deep glacial lakes.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "New York · Grape growing and varieties",
+    "guide": "Winter freeze and mold; hybrids Aurore, Seyval Blanc; labrusca Concord.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "New York · History and lore",
+    "guide": "Dr. Konstantin Frank.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "Pacific Northwest · Geography and appellations",
+    "guide": "Willamette nested AVAs, shared AVAs, Washington AVAs, rivers, south-facing slopes.",
+    "where": "Oregon and Washington"
+   },
+   {
+    "topic": "Pacific Northwest · Soil",
+    "guide": "Willamette volcanic and marine sediment; Columbia Valley gravel.",
+    "where": "Oregon and Washington"
+   },
+   {
+    "topic": "Pacific Northwest · Grape growing",
+    "guide": "Irrigation needed in the Columbia Valley.",
+    "where": "Oregon and Washington"
+   },
+   {
+    "topic": "Pacific Northwest · Wine law",
+    "guide": "Oregon: 90% variety (with exceptions), 95% AVA.",
+    "where": "Oregon and Washington"
+   },
+   {
+    "topic": "Pacific Northwest · Style",
+    "guide": "Oregon dry whites, reds, sparkling; Washington dry whites and reds.",
+    "where": "Oregon and Washington"
+   },
+   {
+    "topic": "Pacific Northwest · Producers, history and lore",
+    "guide": "Eyrie, Drouhin, Serene, Erath, Ponzi; Quilceda Creek, L'Ecole, Ste. Michelle, Leonetti; Missoula Floods; no phylloxera.",
+    "where": "Oregon and Washington"
+   },
+   {
+    "topic": "Pacific Northwest · Food pairing",
+    "guide": "Willamette Pinot with salmon; Washington Cabernet or Merlot with beef or lamb.",
+    "where": "Oregon and Washington"
+   },
+   {
+    "topic": "Canada · Grape growing",
+    "guide": "Vinifera, native labrusca and riparia, and hybrids like Vidal.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "Canada · White grapes",
+    "guide": "Add Vidal, Pinot Gris, Gewürztraminer.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "Canada · Appellations",
+    "guide": "British Columbia's Okanagan Valley and Ontario's Niagara Peninsula.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "Canada · Style",
+    "guide": "Ontario makes 90% of Canada's Icewine; Vidal is used too.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "Canada · Producer",
+    "guide": "Inniskillin.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "Canada · Food pairing",
+    "guide": "Sweet and savory pairings with Icewine.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "México · Location and climate",
+    "guide": "Hot Mediterranean to semi-desert.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "México · Physical features and soil",
+    "guide": "Pacific fog and breezes, cooler mountains, sandy soils.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "México · Grape growing and winemaking",
+    "guide": "Scarce water, irrigation, no phylloxera, non-traditional blends, some new oak.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "México · White grapes",
+    "guide": "Chenin Blanc, Chardonnay, Viognier, Sauvignon Blanc.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "México · Red grapes, wine law, appellations",
+    "guide": "Italian, French, Spanish reds; no wine laws; Valle de Guadalupe makes 90%.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "México · Style",
+    "guide": "Whites crisp to full; reds fruit-driven, deep and high in alcohol.",
+    "where": "New York, Canada and México"
+   },
+   {
+    "topic": "Chile · Climate",
+    "guide": "Hot desert in the north to cold in the south.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Soil",
+    "guide": "Sand.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Red grapes",
+    "guide": "Add Syrah and País.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Wine law",
+    "guide": "75% for variety, vintage, origin; 85% in practice for the EU.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Appellations and style",
+    "guide": "Aconcagua/Casablanca and Valle Central subregions; Humboldt Current; big, fruity wines.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · Producers",
+    "guide": "Concha y Toro, Santa Rita, Errázuriz, Casa Lapostolle, Carmen.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Chile · History and lore",
+    "guide": "Spanish colonies, restrictions, immigrants, foreign investment: how the grapes arrived.",
+    "where": "Chile"
+   },
+   {
+    "topic": "Argentina · Location",
+    "guide": "East of the Andes, west of the Atlantic.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "Argentina · Physical features",
+    "guide": "Salta 1,500-2,000 m; Mendoza 600-1,200 m.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "Argentina · Grape growing",
+    "guide": "Altitude sun can give Malbec an electric purple color.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "Argentina · Red grapes",
+    "guide": "Add Bonarda, Tempranillo, Syrah.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "Argentina · Wine law",
+    "guide": "85% to name a grape.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "Argentina · Style",
+    "guide": "Torrontés: aromatic, soapy, floral, fruity, high acid.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "Argentina · Classification",
+    "guide": "IG and DOC.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "Argentina · Producers",
+    "guide": "Know a couple of producers for the service exam.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "Argentina · History and lore",
+    "guide": "Italian and Spanish immigrants revitalized vineyards.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "Argentina · Service",
+    "guide": "High-end Malbec and Cabernet may benefit from decanting.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "Argentina · Food pairing",
+    "guide": "Malbec and Cabernet with steak and chimichurri.",
+    "where": "Argentina"
+   },
+   {
+    "topic": "South Africa · Location",
+    "guide": "Western Cape is the heart of the industry.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Grape growing and winemaking",
+    "guide": "Cape Doctor, Benguela Current, Old Vine Project, brandy, Cap Classique.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Red grapes",
+    "guide": "Pinotage is Cinsaut × Pinot Noir.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Appellations",
+    "guide": "Add Klein Karoo, Franschhoek, Cape Agulhas, Overberg.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Producers",
+    "guide": "Graham Beck, Mulderbosch, Hamilton Russell, Klein Constantia, Badenhorst, Sadie.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "South Africa · Pairing and selling",
+    "guide": "Wide range of styles; world-class wine from an undervalued area.",
+    "where": "South Africa"
+   },
+   {
+    "topic": "New Zealand · Climate",
+    "guide": "Gisborne and Wairarapa cool maritime.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Soil",
+    "guide": "Gimblett Gravels is gravel.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Appellations",
+    "guide": "Gisborne, Wairarapa/Martinborough, Marlborough (Awatere, Wairau), Nelson, Canterbury.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Grape growing and winemaking",
+    "guide": "Long sunlight hours; clean, modern winemaking with screwcaps.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Grape varieties",
+    "guide": "Add Pinot Gris, Gewürztraminer, Riesling (Central Otago).",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Wine law",
+    "guide": "85% to name a grape.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Producers",
+    "guide": "Cloudy Bay, Felton Road, Villa Maria.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Vintage",
+    "guide": "Harvest about six months ahead of the Northern Hemisphere.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · History and lore",
+    "guide": "Scott Henry and VSP trellis systems; screwcap initiative.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Service",
+    "guide": "Know how to open a screwcap.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "New Zealand · Food pairing",
+    "guide": "Sauvignon's ripeness suits sweet-savory dishes; pair acid with acid.",
+    "where": "New Zealand"
+   },
+   {
+    "topic": "Australia · Location",
+    "guide": "Southern Hemisphere, the size of the continental U.S.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Climate",
+    "guide": "Hot, dry interior; cooler near the coast.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Physical features",
+    "guide": "Elevation in South Australia; Antarctic currents.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Soil",
+    "guide": "Coonawarra terra rossa.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Grape growing",
+    "guide": "Cross-regional blending, 100+ year-old vines, interior irrigation, best sites near the coast.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Winemaking",
+    "guide": "Traditional blends and American oak vs. modern single sites and French oak; Rutherglen fortifieds.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · White grapes",
+    "guide": "Riesling, Chardonnay, Sauvignon/Semillon, Hunter Semillon, Muscat.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Red grapes",
+    "guide": "Shiraz, Grenache, Cabernet Sauvignon.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Wine law",
+    "guide": "GI is place only; 85% for variety, vintage, origin.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Appellations (GIs)",
+    "guide": "GI ladder; South Eastern Australia super GI vs premium state GIs.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Producers and history",
+    "guide": "Penfolds Grange; 1788 vines, phylloxera quarantine, Stelvin, Yellow Tail.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Service",
+    "guide": "Screw caps.",
+    "where": "Australia"
+   },
+   {
+    "topic": "Australia · Food pairing",
+    "guide": "Shiraz with barbecue; Clare/Eden Riesling, Yarra and Margaret River twins.",
+    "where": "Australia"
+   }
+  ]
+ },
+ "v3": {
+  "video": {
+   "youtubeId": "JY4AtT36MXc",
+   "title": "Theory Examination Advice with Rob Bigelow, MS: Court of Master Sommeliers, Americas",
+   "by": "Court of Master Sommeliers, Americas",
+   "length": "0:48"
+  },
+  "sections": [
+   {
+    "name": "California · North Coast",
+    "video": {
+     "youtubeId": "a_Kd0YulIhQ",
+     "title": "Capstone California Level 1 Chapter 8 AVA - Napa Valley",
+     "by": "California Wines by Wine Institute",
+     "length": "5:31"
+    },
+    "keyPoints": [
+     {
+      "big": "75/85/95",
+      "line": "variety, AVA and vintage minimums on a U.S. label."
+     },
+     {
+      "big": "CALISTOGA",
+      "line": "is Napa's northernmost and hottest valley-floor AVA."
+     },
+     {
+      "big": "MOUNT VEEDER",
+      "line": "is Napa's coolest mountain AVA, on the Mayacamas slopes."
+     },
+     {
+      "big": "PARIS 1976",
+      "line": "Stag's Leap Wine Cellars' 1973 Cabernet won the reds."
+     },
+     {
+      "big": "MERITAGE",
+      "line": "is a trademark, not a legal grape rule."
+     }
+    ],
+    "read": {
+     "bigIdea": "More AVAs, more producers, and the label math.",
+     "where": "From Level 1: Napa and Sonoma are the **North Coast**, the coastal counties north of **San Pablo Bay**. At Certified you match more AVAs to their counties: **Knights Valley** in Sonoma, and **Mount Veeder**, **Calistoga** and **Yountville** in Napa. In Napa the **north is warmer**, and mountain vineyards give **lower yields** and bigger day-night swings.",
+     "stopsTitle": "Five places to add",
+     "stops": [
+      {
+       "name": "Calistoga",
+       "note": "top of the valley",
+       "text": "The most northerly and **hottest** valley-floor AVA, on mostly **volcanic** soil. Expect ripe, dark reds; **Cabernet Sauvignon** and **Zinfandel** lead."
+      },
+      {
+       "name": "Mount Veeder",
+       "note": "Mayacamas Range",
+       "text": "Napa's **coolest mountain AVA**, on steep, mostly east-facing slopes near San Pablo Bay. Its Cabernet is **high in tannin and acid** and can age a long time."
+      },
+      {
+       "name": "Yountville",
+       "note": "fog and wind",
+       "text": "Fog and wind give **elegant** Cabernet with fine tannins, often **lower in alcohol** than Rutherford or Oakville bench Cabernet."
+      },
+      {
+       "name": "Oakville",
+       "note": "famous vineyards",
+       "text": "Its western gravel fans hold **To Kalon** and **Martha's Vineyard**, the vineyard behind Heitz's iconic Cabernet."
+      },
+      {
+       "name": "Cool-climate sparkling",
+       "note": "traditional method",
+       "text": "North Coast sparkling is usually **traditional method**. Court-listed houses include **Domaine Carneros**, **Roederer Estate** and **Iron Horse**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The numbers behind a U.S. label:",
+     "mixup": "**Meritage** is a trademark, not a legal grape rule. **Reserve** has no legal meaning on a U.S. label.",
+     "sayIt": "This is Calistoga, the warm north end of Napa. Expect ripe, dark fruit."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "California · Central Coast",
+    "video": {
+     "youtubeId": "l3fvguftSgA",
+     "title": "Capstone California Level 2: Central Coast",
+     "by": "California Wines by Wine Institute",
+     "length": "4:13"
+    },
+    "keyPoints": [
+     {
+      "big": "SANTA LUCIA HIGHLANDS",
+      "line": "Monterey's cool bench for Pinot Noir and Chardonnay."
+     },
+     {
+      "big": "STA. RITA HILLS",
+      "line": "an east-west valley that pulls in Pacific fog and wind."
+     },
+     {
+      "big": "PASO ROBLES",
+      "line": "warm San Luis Obispo AVA, walled off from the sea."
+     },
+     {
+      "big": "HAPPY CANYON",
+      "line": "is the warm corner of Santa Barbara County."
+     }
+    ],
+    "read": {
+     "bigIdea": "Cool coast, warm inland, one AVA at a time.",
+     "where": "From Level 1: **Monterey** and **Santa Barbara** are cool, and **Paso Robles** is warm. At Certified you match each AVA to its **county** and know which ones are warm. In Santa Barbara a mountain range runs **east to west**, so ocean fog and wind flow straight inland.",
+     "stopsTitle": "Six AVAs, three counties",
+     "stops": [
+      {
+       "name": "Santa Lucia Highlands",
+       "note": "Monterey County",
+       "text": "**Granite** terraces above the Salinas Valley, cooled by fog and wind off **Monterey Bay**. Known for **Pinot Noir** and **Chardonnay**."
+      },
+      {
+       "name": "Paso Robles",
+       "note": "San Luis Obispo County",
+       "text": "**Warm**, with big day-night swings; mountains to the west block most sea air. **Justin** planted here in 1981 and is a producer to know."
+      },
+      {
+       "name": "Sta. Rita Hills",
+       "note": "Santa Barbara County",
+       "text": "Cool **Pinot Noir** and **Chardonnay** country in an **east-west** valley open to the Pacific. AVA since **2001**."
+      },
+      {
+       "name": "Santa Maria and Santa Ynez Valleys",
+       "note": "Santa Barbara County",
+       "text": "Both are on the Court's cool list for **Pinot Noir** and **Chardonnay**."
+      },
+      {
+       "name": "Happy Canyon",
+       "note": "Santa Barbara County",
+       "text": "The **warm** exception in Santa Barbara County, listed with Paso Robles as the region's warm AVAs."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Sort them by temperature:",
+     "mixup": "**Sta. Rita Hills** is cool Pinot Noir country. **Happy Canyon**, in the same county, is warm.",
+     "sayIt": "A Sta. Rita Hills Pinot: cool coast, bright acid."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Oregon and Washington",
+    "video": {
+     "youtubeId": "S6Dxd7_FRw4",
+     "title": "Shortform Masterclass: Oregon's Willamette Valley AVA",
+     "by": "Oregon Wine",
+     "length": "3:05"
+    },
+    "keyPoints": [
+     {
+      "big": "90 · 95",
+      "line": "Oregon's grape and AVA minimums: stricter than federal law."
+     },
+     {
+      "big": "DUNDEE HILLS",
+      "line": "home of The Eyrie Vineyards, Willamette's Pinot pioneer."
+     },
+     {
+      "big": "RED MOUNTAIN",
+      "line": "small, hot and dry; Cabernet is 60% of the vines."
+     },
+     {
+      "big": "MISSOULA FLOODS",
+      "line": "shaped Columbia Valley soils over 15,000 years ago."
+     },
+     {
+      "big": "SHARED AVAS",
+      "line": "Columbia Valley, Walla Walla and Columbia Gorge cross into Oregon."
+     }
+    ],
+    "read": {
+     "bigIdea": "Cool Pinot to the west, desert reds to the east.",
+     "where": "From Level 1: **Willamette Valley** Pinot Noir is Oregon's calling card, and Washington's vines are almost all in the **Columbia Valley**. At Certified you learn the **nested AVAs**, the soils and **Oregon's stricter label law**. Willamette soils are **volcanic** and **marine sediment**; the Columbia Valley sits in the **rain shadow** of the Cascades and must be **irrigated**.",
+     "stopsTitle": "West to east",
+     "stops": [
+      {
+       "name": "Willamette Valley",
+       "note": "Oregon",
+       "text": "Nested AVAs include **Dundee Hills**, **Eola-Amity Hills**, **Chehalem Mountains**, **Ribbon Ridge**, **McMinnville**, **Yamhill-Carlton** and **Van Duzer Corridor**. David Lett planted the valley's first Pinot Noir in 1965; the vines went to **The Eyrie Vineyards** in the Dundee Hills."
+      },
+      {
+       "name": "Columbia Valley",
+       "note": "Washington",
+       "text": "A warm **desert** watered by the **Columbia, Yakima and Snake** rivers. Slopes face mostly **south**, and the dry conditions keep **phylloxera** out."
+      },
+      {
+       "name": "Red Mountain and Horse Heaven Hills",
+       "note": "inside the Columbia Valley",
+       "text": "**Red Mountain** is small, hot and dry, and **Cabernet Sauvignon** is 60% of its vines. **Horse Heaven Hills** is warm and windy and holds a **quarter** of Washington's wine grapes."
+      },
+      {
+       "name": "Shared AVAs",
+       "note": "across the state line",
+       "text": "**Columbia Valley**, **Walla Walla Valley** and **Columbia Gorge** sit in both Washington and Oregon."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Oregon asks more of its labels:",
+     "mixup": "**Walla Walla Valley** is shared with Oregon. **Red Mountain** is a Washington AVA only.",
+     "sayIt": "Willamette Pinot with salmon: a classic Northwest match."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "New York, Canada and México",
+    "video": {
+     "youtubeId": "67fJ_D6bdmo",
+     "title": "New York Region Guide: Everything you need to know",
+     "by": "Wine Folly",
+     "length": "8:01"
+    },
+    "keyPoints": [
+     {
+      "big": "CONCORD",
+      "line": "is Vitis labrusca, a native grape with a 'foxy' aroma."
+     },
+     {
+      "big": "LONG ISLAND",
+      "line": "maritime and mild: Merlot, Chardonnay, Bordeaux grapes."
+     },
+     {
+      "big": "VQA",
+      "line": "governs Canada's premium wine; there's no national wine law."
+     },
+     {
+      "big": "-8 °C",
+      "line": "Icewine grapes freeze on the vine and are picked below it."
+     },
+     {
+      "big": "VALLE DE GUADALUPE",
+      "line": "makes 90% of México's wine, in Baja California."
+     }
+    ],
+    "read": {
+     "bigIdea": "Cold winters, hybrids, Icewine and a Baja valley.",
+     "where": "From Level 1: New York's **Finger Lakes** and Canada's **Icewine**. At Certified you add New York's other AVAs and its **non-vinifera** grapes, Canada's two main regions and **México**. Hard winters bring in **hybrids** such as **Seyval Blanc**, **Aurore** and **Vidal**, and the native **Concord**.",
+     "stopsTitle": "Four stops",
+     "stops": [
+      {
+       "name": "Long Island",
+       "note": "New York",
+       "text": "**Mid-latitude maritime**, with winters much milder than the rest of the state. Good for **Merlot**, **Chardonnay** and Bordeaux varieties."
+      },
+      {
+       "name": "Lake Erie and Hudson River",
+       "note": "New York",
+       "text": "The **Lake Erie** belt grows mainly **Concord**, with some hybrids and vinifera. The **Hudson River** region is one of the oldest wine areas in the U.S."
+      },
+      {
+       "name": "Ontario and British Columbia",
+       "note": "Canada",
+       "text": "Ontario's **Niagara Peninsula**, by the Great Lakes, makes most of Canada's **Icewine**. B.C.'s **Okanagan Valley** is hot and dry, cooled by lakes, with 86% of the province's vineyards."
+      },
+      {
+       "name": "Valle de Guadalupe",
+       "note": "Baja California, México",
+       "text": "**Mediterranean**, with valleys that funnel in **Pacific fog**. Water is short, **sandy soils** keep phylloxera away, and blends mix **Italian, French and Spanish** grapes."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Canada's sweet signature:",
+     "mixup": "**Vidal** is a French-American **hybrid**. **Concord** is native **Vitis labrusca**. Neither is vinifera.",
+     "sayIt": "Icewine from Niagara: sweet, made from grapes frozen on the vine."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Chile",
+    "video": {
+     "youtubeId": "nwVlvezUSRo",
+     "title": "How Well Do You Know Sauvignon Blanc From Chile?",
+     "by": "Wine Folly",
+     "length": "6:09"
+    },
+    "keyPoints": [
+     {
+      "big": "HUMBOLDT",
+      "line": "a cold current from Antarctica that cools Chile's coast."
+     },
+     {
+      "big": "75%",
+      "line": "is Chile's legal label minimum; EU rules push it to 85% in practice."
+     },
+     {
+      "big": "VALLE CENTRAL",
+      "line": "makes 80% of Chile's wine, between the Coastal Range and Andes."
+     },
+     {
+      "big": "CASABLANCA",
+      "line": "cool, foggy Aconcagua subregion for Sauvignon Blanc."
+     },
+     {
+      "big": "PAÍS",
+      "line": "a traditional grape that still leads in the old Itata Valley."
+     }
+    ],
+    "read": {
+     "bigIdea": "A long, thin country cooled by sea and mountains.",
+     "where": "From Level 1: Chile has **no phylloxera**, and **Carménère** was rediscovered here. At Certified you add how the land shapes the wine, the **DO system** and the main subregions. The cold **Humboldt Current** cools the coast, the **Coastal Range** casts a rain shadow, and the **Andes** supply irrigation water. Soils are often **sandy**, which the Court links to the lack of phylloxera.",
+     "stopsTitle": "Four places on the label",
+     "stops": [
+      {
+       "name": "Casablanca",
+       "note": "Aconcagua, west of the Coastal Range",
+       "text": "**Cool and maritime**, with Pacific morning fog. Best for **Sauvignon Blanc**, **Chardonnay** and **Pinot Noir**."
+      },
+      {
+       "name": "Maipo",
+       "note": "Valle Central, around Santiago",
+       "text": "Home to most of Chile's **historical wineries**. A mild Mediterranean climate; **Cabernet Sauvignon** leads."
+      },
+      {
+       "name": "Colchagua and Cachapoal",
+       "note": "Rapel, in Valle Central",
+       "text": "Mostly reds: **Carménère**, **Cabernet Sauvignon** and **Merlot**. Colchagua has more Carménère than anywhere else in Chile."
+      },
+      {
+       "name": "Curicó and Maule",
+       "note": "southern Valle Central",
+       "text": "**Maule** is Chile's largest region, with some of its **oldest dry-farmed vines** and exceptional **Carignan**."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "How the vines got here:",
+     "mixup": "**Aconcagua** is the region; **Casablanca** sits inside it. **Valle Central** is the region; **Maipo** sits inside it.",
+     "sayIt": "A Maipo Cabernet: Chile's classic red, big and fruit-driven."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "Argentina",
+    "video": {
+     "youtubeId": "DAWvucB2A1s",
+     "title": "Argentina Malbec History and Producers Part 2",
+     "by": "Wine Folly",
+     "length": "6:29"
+    },
+    "keyPoints": [
+     {
+      "big": "SALTA",
+      "line": "Argentina's highest vineyards, 1,500-2,000 m up."
+     },
+     {
+      "big": "ELECTRIC PURPLE",
+      "line": "high-altitude sun can deepen Malbec's color."
+     },
+     {
+      "big": "85%",
+      "line": "of the named grape on an Argentine label."
+     },
+     {
+      "big": "IG · DOC",
+      "line": "Argentina's place system: Geographical Indications and DOCs."
+     },
+     {
+      "big": "BONARDA",
+      "line": "Argentina's other big red; Napa calls it Charbono."
+     }
+    ],
+    "read": {
+     "bigIdea": "Altitude is Argentina's terroir.",
+     "where": "From Level 1: **Mendoza** Malbec, **Salta**'s Torrontés and cool **Patagonia**. At Certified you go deeper into what makes each place different. Vineyards sit east of the **Andes**, in their rain shadow, watered by **snowmelt**. Higher sites get **more sun**, which can turn Malbec an electric purple.",
+     "stopsTitle": "Four zones to name",
+     "stops": [
+      {
+       "name": "Luján de Cuyo",
+       "note": "Mendoza",
+       "text": "Lush Malbec with **black fruit**. Subzones include **Agrelo**, **Vistalba**, **Las Compuertas** and **Perdriel**."
+      },
+      {
+       "name": "Uco Valley",
+       "note": "Mendoza, highest",
+       "text": "Some of Mendoza's **highest** vineyards, with **savory** flavors and **dusty tannins**. Labels may name **Tupungato** or **Vista Flores**."
+      },
+      {
+       "name": "Salta",
+       "note": "far north",
+       "text": "Argentina's highest region, at **1,500-2,000 m**. Its **Cafayate** subregion is known for **Torrontés**: soapy, floral, fruity and high in acid."
+      },
+      {
+       "name": "Patagonia",
+       "note": "far south",
+       "text": "Cool because of its **southern latitude**. **Neuquén** and **Río Negro** make Pinot Noir."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Height above sea level, by the Court's figures:",
+     "mixup": "**Torrontés** smells sweet but usually tastes **dry**.",
+     "sayIt": "Malbec with steak and chimichurri is the classic match."
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   },
+   {
+    "name": "South Africa",
+    "video": {
+     "youtubeId": "jz7xkyplcuo",
+     "title": "Hunting Syrah in South Africa",
+     "by": "Wine Folly",
+     "length": "3:01"
+    },
+    "keyPoints": [
+     {
+      "big": "CAPE DOCTOR",
+      "line": "a dry southeasterly wind that keeps vine disease down."
+     },
+     {
+      "big": "BENGUELA",
+      "line": "a frigid Atlantic current from Antarctica cooling the coast."
+     },
+     {
+      "big": "PINOTAGE",
+      "line": "Pinot Noir × Cinsaut, bred in South Africa in 1925."
+     },
+     {
+      "big": "CAP CLASSIQUE",
+      "line": "South African sparkling, fermented a second time in bottle."
+     },
+     {
+      "big": "35 YEARS",
+      "line": "the Old Vine Project's mark for a certified old vineyard."
+     }
+    ],
+    "read": {
+     "bigIdea": "Cape wine: cool winds, old vines, deep history.",
+     "where": "From Level 1: **Chenin Blanc** is the Cape's most planted grape and **Pinotage** is its own cross. At Certified you add the climate drivers, more of the **Wine of Origin** map and the history. Two forces cool the **Western Cape**: the **Cape Doctor** wind and the cold **Benguela Current**.",
+     "stopsTitle": "Four places to add",
+     "stops": [
+      {
+       "name": "Franschhoek",
+       "note": "Coastal Region",
+       "text": "A valley southeast of **Paarl**, ringed by mountains on three sides, with a strong **French Huguenot** character."
+      },
+      {
+       "name": "Constantia",
+       "note": "Cape Town district",
+       "text": "The **cradle** of Cape wine: Simon van der Stel's 17th-century farm and home of the famous **Constantia dessert wines**."
+      },
+      {
+       "name": "Cape Agulhas and Overberg",
+       "note": "Cape South Coast",
+       "text": "Near **Africa's southernmost point**, strong summer winds make a **very cool** season, perfect for **Sauvignon Blanc**. Overberg is a newer, southerly district."
+      },
+      {
+       "name": "Klein Karoo",
+       "note": "inland region",
+       "text": "Rugged valleys with extreme soils and climate, known for **sweet Muscat** wines and **pot-still brandy**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The WO map, biggest to smallest:",
+     "mixup": "The **Cape Doctor** is a wind. The **Benguela** is an ocean current. Both cool the vineyards.",
+     "sayIt": "South Africa gives world-class wine from an undervalued place."
+    },
+    "check": [
+     18,
+     19,
+     20
+    ]
+   },
+   {
+    "name": "Australia",
+    "video": {
+     "youtubeId": "o9BM4foIZWI",
+     "title": "Are you curious about Australian Shiraz? | Wine Unpacked",
+     "by": "Wine Folly",
+     "length": "5:11"
+    },
+    "keyPoints": [
+     {
+      "big": "SUPER GI",
+      "line": "South Eastern Australia, for big-volume blends."
+     },
+     {
+      "big": "85%",
+      "line": "for variety, vintage and region claims on an Australian label."
+     },
+     {
+      "big": "1843",
+      "line": "the Barossa's oldest Shiraz vines, among the world's oldest."
+     },
+     {
+      "big": "TERRA ROSSA",
+      "line": "Coonawarra's red soil over limestone, for Cabernet."
+     },
+     {
+      "big": "RUTHERGLEN",
+      "line": "North East Victoria's fortified Muscat and Muscadelle."
+     }
+    ],
+    "read": {
+     "bigIdea": "Blends for volume, single regions for quality.",
+     "where": "From Level 1: **Shiraz** is Australia's top grape, and **South Eastern Australia** is the big blending GI. At Certified you learn the **GI ladder**, the difference between **bulk** and **premium** regions, and how to describe **Barossa** and **McLaren Vale** Shiraz. The interior is hot and dry and must be **irrigated**; the best vineyards are near the **cooler coast**.",
+     "stopsTitle": "Old ways, new ways, key places",
+     "stops": [
+      {
+       "name": "Traditional style",
+       "note": "blend and American oak",
+       "text": "Fruit **blended across regions** for volume, aged in **American oak**."
+      },
+      {
+       "name": "Modern style",
+       "note": "one place, French oak",
+       "text": "A **single GI or site**, aged in **French oak**."
+      },
+      {
+       "name": "Barossa and McLaren Vale",
+       "note": "South Australia",
+       "text": "Barossa Shiraz is powerful, often **14-15% alcohol**, from vines dating to **1843**. **McLaren Vale**, the state's first region (1838), makes Shiraz its signature too."
+      },
+      {
+       "name": "Rutherglen",
+       "note": "North East Victoria",
+       "text": "A continental climate and classic **fortified** wines from **Muscat** and **Muscadelle**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Two kinds of Australian wine region:",
+     "mixup": "**Eden Valley** is higher and cooler, for Riesling. **Barossa Valley** is the powerful Shiraz.",
+     "sayIt": "Barossa Shiraz with barbecue: ripe fruit for big flavors."
+    },
+    "check": [
+     21,
+     22,
+     23
+    ]
+   },
+   {
+    "name": "New Zealand",
+    "video": {
+     "youtubeId": "BRYmCptEULU",
+     "title": "Marlborough Wine Region",
+     "by": "New Zealand Wine",
+     "length": "3:40"
+    },
+    "keyPoints": [
+     {
+      "big": "MARLBOROUGH",
+      "line": "cool, sunny and dry, with big day-night swings."
+     },
+     {
+      "big": "AWATERE",
+      "line": "gives a more herbaceous, mineral Sauvignon than Wairau."
+     },
+     {
+      "big": "130 KM",
+      "line": "no New Zealand vineyard is farther than that from the sea."
+     },
+     {
+      "big": "GIMBLETT GRAVELS",
+      "line": "gravel plains in Hawke's Bay, known for red blends."
+     },
+     {
+      "big": "SCREWCAP",
+      "line": "is part of NZ's modern style; know how to open one."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sunshine, sea air and pungent Sauvignon Blanc.",
+     "where": "From Level 1: **Marlborough** Sauvignon Blanc and **Central Otago** Pinot Noir. At Certified you name more regions and explain **why** Marlborough Sauvignon tastes the way it does. No vineyard is more than **130 km** from the ocean, and most regions sit on the **east coasts**, in the **rain shadow** of the mountains.",
+     "stopsTitle": "Why Marlborough tastes like Marlborough",
+     "stops": [
+      {
+       "name": "Sun and cool nights",
+       "note": "the main reason",
+       "text": "Low rain, high sunshine and **big day-night swings** build flavor and keep **acidity** high."
+      },
+      {
+       "name": "The flavors",
+       "note": "what's in the glass",
+       "text": "**Red capsicum** (bell pepper), **gooseberry** and **passionfruit**, plus cut grass, grapefruit or lime."
+      },
+      {
+       "name": "Two valleys",
+       "note": "Wairau and Awatere",
+       "text": "**Wairau** is riper and more **tropical**. **Awatere** is more **herbaceous** and **mineral**."
+      },
+      {
+       "name": "Beyond Marlborough",
+       "note": "other regions",
+       "text": "**Hawke's Bay** (with the **Gimblett Gravels**) for red blends and Chardonnay. **Wairarapa**, **Nelson**, **North Canterbury** and **Central Otago** for Pinot Noir."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Same grape, two valleys:",
+     "mixup": "**Marlborough** is the Sauvignon Blanc heartland on the South Island. **Martinborough** is in Wairarapa, on the North Island.",
+     "sayIt": "Marlborough Sauvignon with seafood and a citrus or garlic sauce."
+    },
+    "check": [
+     24,
+     25,
+     26
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,2841 @@
+{
+ "number": 4,
+ "slug": "certified-old-world",
+ "title": "The Old World, in depth",
+ "script": "Chapter four",
+ "level": 2,
+ "part": 2,
+ "lead": "What the Certified exam adds for Europe’s classic regions, from Bordeaux to Greece: classifications, aging laws, more appellations, iconic producers and pairings. Champagne in depth is in chapter six.",
+ "minutes": 45,
+ "intro": {
+  "script": "Start here",
+  "title": "WHAT CERTIFIED ADDS",
+  "text": "Level 1 placed each region and its grapes on the map. Certified adds the rules, the names and the table.",
+  "tiers": [
+   {
+    "name": "Rules",
+    "note": "Classifications and aging laws"
+   },
+   {
+    "name": "Names",
+    "note": "Appellations, crus and iconic producers"
+   },
+   {
+    "name": "Table",
+    "note": "Pairings, glassware and decanting"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Bordeaux",
+   "lines": [
+    {
+     "label": "More places",
+     "text": "Pessac-Léognan and Barsac in Graves; Lalande-de-Pomerol and Montagne-Saint-Émilion beside the Right Bank stars."
+    },
+    {
+     "label": "At the table",
+     "text": "Decant young Bordeaux for air and old Bordeaux for its sediment. Bold reds suit beef and lamb; sweet Sauternes suits dessert and foie gras."
+    }
+   ],
+   "chips": {
+    "label": "Rankings",
+    "items": [
+     "1855 Médoc",
+     "1855 Sauternes",
+     "Graves",
+     "Saint-Émilion",
+     "Crus Bourgeois"
+    ]
+   },
+   "know": [
+    "Château d’Yquem is the only Premier Cru Supérieur of Sauternes and Barsac.",
+    "The Graves classification ranks 14 Pessac-Léognan châteaux for red, white or both.",
+    "Saint-Émilion’s ranking has three tiers and is revised every ten years; Pomerol has none.",
+    "Crus Bourgeois du Médoc has three levels, up to Cru Bourgeois Exceptionnel.",
+    "Noble rot helps Sauternes; black and grey rot and spring frost hurt a vintage."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Beyond the red 1855 list",
+     "dark": true,
+     "items": [
+      {
+       "name": "Sauternes 1855",
+       "text": "Yquem alone at the top, then Premiers and Seconds Crus"
+      },
+      {
+       "name": "Graves",
+       "text": "14 Pessac-Léognan châteaux, red and white"
+      },
+      {
+       "name": "Saint-Émilion",
+       "text": "Three tiers, revised every ten years"
+      },
+      {
+       "name": "Crus Bourgeois",
+       "text": "Three levels, revised every five years"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Second Growths, by commune",
+     "rows": [
+      {
+       "name": "Château Rauzan-Ségla",
+       "meta": "Margaux"
+      },
+      {
+       "name": "Château Brane-Cantenac",
+       "meta": "Margaux"
+      },
+      {
+       "name": "Château Léoville Barton",
+       "meta": "Saint-Julien"
+      },
+      {
+       "name": "Château Ducru-Beaucaillou",
+       "meta": "Saint-Julien"
+      },
+      {
+       "name": "Château Pichon Baron",
+       "meta": "Pauillac"
+      },
+      {
+       "name": "Château Pichon Longueville Comtesse de Lalande",
+       "meta": "Pauillac"
+      },
+      {
+       "name": "Château Cos d’Estournel",
+       "meta": "Saint-Estèphe"
+      },
+      {
+       "name": "Château Montrose",
+       "meta": "Saint-Estèphe"
+      }
+     ],
+     "note": "A sample from the Conseil des Grands Crus Classés en 1855 list."
+    }
+   ]
+  },
+  {
+   "name": "Burgundy and Beaujolais",
+   "lines": [
+    {
+     "label": "Chablis",
+     "text": "Petit Chablis grows on harder Portlandian limestone; Chablis and its crus on Kimmeridgian limestone and marl. Spring frost is the classic danger."
+    },
+    {
+     "label": "In the cellar",
+     "text": "The Court adds bâtonnage, cold soak, whole-cluster fermentation, the pièce barrel and chaptalization, and how oak use changes by level."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Chardonnay",
+     "Pinot Noir",
+     "Aligoté",
+     "Gamay"
+    ]
+   },
+   "know": [
+    "Chablis has seven Grands Crus, including Les Clos, Valmur and Vaudésir.",
+    "Bouzeron is the only village appellation made only from Aligoté.",
+    "Côte Chalonnaise villages: Bouzeron, Rully, Mercurey, Givry, Montagny.",
+    "Morgon is the largest Beaujolais cru; Côte du Py is its famous lieu-dit.",
+    "Monks and the Napoleonic inheritance code shaped the crus and split up vineyards."
+   ],
+   "visuals": [
+    {
+     "type": "names",
+     "items": [
+      {
+       "title": "CHABLIS GRANDS CRUS · 7",
+       "text": "Blanchot, Bougros, Les Clos, Grenouilles, Preuses, Valmur, Vaudésir"
+      },
+      {
+       "title": "CÔTE DE BEAUNE GRANDS CRUS",
+       "text": "Corton, Corton-Charlemagne, Montrachet, Bâtard-Montrachet, Chevalier-Montrachet, Bienvenues-Bâtard-Montrachet, Criots-Bâtard-Montrachet"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Côte Chalonnaise: five villages",
+     "rows": [
+      {
+       "name": "Bouzeron",
+       "meta": "white, 100% Aligoté"
+      },
+      {
+       "name": "Rully",
+       "meta": "Village AOC"
+      },
+      {
+       "name": "Mercurey",
+       "meta": "Village AOC"
+      },
+      {
+       "name": "Givry",
+       "meta": "Village AOC"
+      },
+      {
+       "name": "Montagny",
+       "meta": "Village AOC"
+      }
+     ],
+     "note": "Thought to be the cradle of Crémant de Bourgogne."
+    }
+   ]
+  },
+  {
+   "name": "The Loire and Alsace",
+   "lines": [
+    {
+     "label": "Loire",
+     "text": "Tuffeau under Vouvray, plus silex and Kimmeridgian clay. Humidity from the Layon River brings botrytis to Quarts de Chaume and Bonnezeaux."
+    },
+    {
+     "label": "Alsace",
+     "text": "Bas-Rhin, to the north, is lower and less sheltered by the Vosges. Haut-Rhin, to the south, is higher and more sheltered, with many of the best sites."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Chenin Blanc",
+     "Sauvignon Blanc",
+     "Riesling",
+     "Gewurztraminer",
+     "Pinot Gris",
+     "Pinot Blanc",
+     "Auxerrois"
+    ]
+   },
+   "know": [
+    "Chenin label words: Sec, Demi-Sec and Moelleux; Vouvray can also be Pétillant.",
+    "Domaine Huet and Nicolas Joly are the Loire producers the Court names.",
+    "Alsace ages wine in big neutral casks called foudres, with little new oak.",
+    "Every Alsace AOP wine goes in the traditional Flûte d’Alsace bottle.",
+    "Alsace names to know: Trimbach, Weinbach, Zind-Humbrecht, Hugel, Marcel Deiss."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "NORTH",
+       "title": "Bas-Rhin",
+       "text": "Lower elevation\nLess sheltered by the Vosges"
+      },
+      {
+       "label": "SOUTH",
+       "title": "Haut-Rhin",
+       "text": "Higher elevation\nMore sheltered\nMany of the best sites"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Alsace Grand Cru: the exceptions",
+     "rows": [
+      {
+       "name": "Zotzenberg",
+       "meta": "Sylvaner allowed"
+      },
+      {
+       "name": "Altenberg de Bergheim",
+       "meta": "co-planted blends"
+      },
+      {
+       "name": "Kaefferkopf",
+       "meta": "co-planted blends"
+      }
+     ],
+     "note": "The classic four: Riesling, Muscat, Pinot Gris, Gewurztraminer."
+    }
+   ]
+  },
+  {
+   "name": "The Rhône and the South of France",
+   "lines": [
+    {
+     "label": "Rhône",
+     "text": "Lyon lies to the north and Avignon is the south’s main city; Montélimar is the unofficial dividing line. North: decomposed granite and schist. South: galets, alluvium and limestone."
+    },
+    {
+     "label": "South of France",
+     "text": "Provence, Languedoc-Roussillon, the Southwest and the Dordogne each have their own grapes. The Court asks you to match each AOP to its grape and style."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Syrah",
+     "Grenache",
+     "Mourvèdre",
+     "Viognier",
+     "Côt (Malbec)",
+     "Tannat",
+     "Petit Manseng"
+    ]
+   },
+   "know": [
+    "Côte-Rôtie is the only northern red cru to plant Viognier alongside Syrah.",
+    "Châteauneuf-du-Pape may use 18 grape varieties; its bottles can carry the papal crest.",
+    "Bandol is at least 50% Mourvèdre; Côtes de Provence is mostly dry rosé.",
+    "Cahors is Côt (Malbec), Madiran is Tannat, Jurançon is Gros and Petit Manseng.",
+    "Banyuls and Muscat de Rivesaltes are Vins Doux Naturels, made by mutage."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Match the appellation to its grape",
+     "rows": [
+      {
+       "name": "Bandol",
+       "meta": "Mourvèdre, min 50%"
+      },
+      {
+       "name": "Fitou",
+       "meta": "Grenache, Carignan, Syrah, Mourvèdre"
+      },
+      {
+       "name": "Limoux",
+       "meta": "Mauzac, Chenin Blanc, Chardonnay"
+      },
+      {
+       "name": "Banyuls",
+       "meta": "Grenache, sweet (VDN)"
+      },
+      {
+       "name": "Cahors",
+       "meta": "Côt (Malbec)"
+      },
+      {
+       "name": "Madiran",
+       "meta": "Tannat"
+      },
+      {
+       "name": "Jurançon",
+       "meta": "Gros and Petit Manseng"
+      },
+      {
+       "name": "Monbazillac",
+       "meta": "Sémillon, Sauvignon, Muscadelle, botrytis"
+      }
+     ],
+     "note": "From the Court’s Certified South of France page."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "NORTH",
+       "title": "Granite and schist",
+       "text": "Steep hills\nThe river reflects light\nCo-fermented wines"
+      },
+      {
+       "label": "SOUTH",
+       "title": "Galets and limestone",
+       "text": "Rolling hills\nBlended wines\nOften trellised today"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Northern Italy",
+   "book": "wine/italy/piedmont",
+   "lines": [
+    {
+     "label": "Piedmont",
+     "text": "Barolo ages 38 months (18 in oak); Barbaresco 26 months (9 in oak). Riserva takes five years for Barolo and four for Barbaresco."
+    },
+    {
+     "label": "Nebbiolo’s other names",
+     "text": "Valtellina calls it Chiavennasca; Gattinara and Ghemme call it Spanna."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Nebbiolo",
+     "Arneis",
+     "Lambrusco",
+     "Corvina",
+     "Teroldego",
+     "Lagrein",
+     "Friulano",
+     "Ribolla Gialla"
+    ]
+   },
+   "know": [
+    "Top Barolo sites: Cannubi, Brunate, Monprivato. Barbaresco: Asili, Ovello, Pora, Montestefano.",
+    "Alta Langa DOCG is metodo classico, at least 90% Pinot Noir and/or Chardonnay.",
+    "Franciacorta Satèn is Brut only, max 5 atmospheres, Chardonnay with up to 50% Pinot Bianco.",
+    "Lambrusco subzones: Sorbara, Grasparossa di Castelvetro, Salamino di Santa Croce.",
+    "Friuli is known for orange and natural wines; Gravner is the name to know."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "BAROLO",
+       "title": "38 months",
+       "text": "At least 18 in oak\nRiserva after 5 years\nCannubi, Brunate"
+      },
+      {
+       "label": "BARBARESCO",
+       "title": "26 months",
+       "text": "At least 9 in oak\nRiserva after 4 years\nAsili, Ovello"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Valpolicella, from light to sweet",
+     "rows": [
+      {
+       "name": "Valpolicella DOC",
+       "meta": "dry red, Corvina and Rondinella"
+      },
+      {
+       "name": "Valpolicella Ripasso DOC",
+       "meta": "refermented on Amarone or Recioto lees"
+      },
+      {
+       "name": "Amarone della Valpolicella DOCG",
+       "meta": "dried grapes, at least 14%"
+      },
+      {
+       "name": "Recioto della Valpolicella DOCG",
+       "meta": "dried grapes, sweet"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tuscany, the South and the islands",
+   "book": "wine/italy/tuscany",
+   "lines": [
+    {
+     "label": "Montalcino",
+     "text": "Clay and marine sediments lie low; galestro sits higher up. Brunello is Sangiovese with 2 years in oak and 4 months in bottle."
+    },
+    {
+     "label": "The south",
+     "text": "Match each DOCG to its region: Campania’s Taurasi, Greco di Tufo and Fiano di Avellino; Umbria’s Sagrantino di Montefalco; Sicily’s Cerasuolo di Vittoria."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Sangiovese",
+     "Prugnolo Gentile",
+     "Vernaccia",
+     "Aglianico",
+     "Sagrantino",
+     "Nerello Mascalese",
+     "Nero d’Avola",
+     "Cannonau"
+    ]
+   },
+   "know": [
+    "Vino Nobile di Montepulciano is Sangiovese, called Prugnolo Gentile there.",
+    "Gran Selezione is Chianti Classico’s top tier: 90% Sangiovese, estate grapes, 30 months.",
+    "Decant young Brunello, Taurasi and Sagrantino di Montefalco.",
+    "Etna DOC: white from Carricante, red from Nerello Mascalese, on volcanic soil.",
+    "Marsala is Sicily’s fortified wine: Secco, Semi-Secco or Dolce."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Minimum Sangiovese, by wine",
+     "rows": [
+      {
+       "name": "Chianti",
+       "value": "70%",
+       "pct": 0.7
+      },
+      {
+       "name": "Vino Nobile",
+       "value": "70%",
+       "pct": 0.7
+      },
+      {
+       "name": "Chianti Classico",
+       "value": "80%",
+       "pct": 0.8
+      },
+      {
+       "name": "Gran Selezione",
+       "value": "90%",
+       "pct": 0.9
+      },
+      {
+       "name": "Brunello",
+       "value": "100%",
+       "pct": 1
+      }
+     ],
+     "note": "Brunello is the only one with no other grapes."
+    },
+    {
+     "type": "list",
+     "title": "Southern DOCGs and their homes",
+     "rows": [
+      {
+       "name": "Taurasi",
+       "meta": "Campania · Aglianico"
+      },
+      {
+       "name": "Fiano di Avellino",
+       "meta": "Campania · Fiano"
+      },
+      {
+       "name": "Greco di Tufo",
+       "meta": "Campania · Greco"
+      },
+      {
+       "name": "Montefalco Sagrantino",
+       "meta": "Umbria · Sagrantino"
+      },
+      {
+       "name": "Cerasuolo di Vittoria",
+       "meta": "Sicily · Nero d’Avola, Frappato"
+      },
+      {
+       "name": "Vermentino di Gallura",
+       "meta": "Sardinia · Vermentino"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Spain and Portugal",
+   "book": "wine/spain/rioja",
+   "lines": [
+    {
+     "label": "Rioja",
+     "text": "Alta is continental, Alavesa the coolest and wettest, Oriental Mediterranean. Gran Reserva is usually made only in the best vintages."
+    },
+    {
+     "label": "Portugal",
+     "text": "The Douro has three subregions: Baixo Corgo, Cima Corgo and Douro Superior. Dão, Bairrada and Alentejo are DOPs to know."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Tempranillo",
+     "Graciano",
+     "Mencía",
+     "Godello",
+     "Monastrell",
+     "Hondarrabi Zuri",
+     "Touriga Nacional",
+     "Encruzado"
+    ]
+   },
+   "know": [
+    "Rioja and Ribera tinto: Crianza 2 years (1 in oak), Reserva 3 (1), Gran Reserva 5 (2).",
+    "Cava de Guarda needs 9 months on the lees; Reserva needs 18.",
+    "Tempranillo is Tinta del País in Ribera del Duero and Tinta de Toro in Toro.",
+    "Bierzo and Ribeira Sacra make Mencía; Valdeorras makes Godello.",
+    "Vino de Pago began in 2003: producer appellations, 20 of them by 2022."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Rioja and Ribera tinto · minimum aging",
+     "rows": [
+      {
+       "name": "Crianza",
+       "value": "2 years · 1 in oak",
+       "pct": 0.4
+      },
+      {
+       "name": "Reserva",
+       "value": "3 years · 1 in oak",
+       "pct": 0.6
+      },
+      {
+       "name": "Gran Reserva",
+       "value": "5 years · 2 in oak",
+       "pct": 1
+      }
+     ],
+     "note": "Total years, with the oak time included."
+    },
+    {
+     "type": "list",
+     "title": "Beyond the classics",
+     "rows": [
+      {
+       "name": "Txakolina",
+       "meta": "Basque · light, fizzy whites"
+      },
+      {
+       "name": "Jumilla",
+       "meta": "Murcia · Monastrell reds"
+      },
+      {
+       "name": "Valdeorras",
+       "meta": "Galicia · Godello"
+      },
+      {
+       "name": "Ribeira Sacra",
+       "meta": "Galicia · Mencía, terraced"
+      },
+      {
+       "name": "Bierzo",
+       "meta": "Castilla y León · Mencía"
+      },
+      {
+       "name": "Dão",
+       "meta": "Portugal · Encruzado, Touriga Nacional"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Germany and Austria",
+   "book": "wine/germany",
+   "lines": [
+    {
+     "label": "Germany",
+     "text": "Beyond the Mosel and Rheingau: Nahe, Franken, Baden, Mittelrhein and Ahr. The VDP ranks vineyards on a Burgundy model."
+    },
+    {
+     "label": "Austria",
+     "text": "Kremstal and Kamptal DACs make dry Grüner Veltliner and Riesling. The Wachau grades dry wines Steinfeder, Federspiel and Smaragd."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Riesling",
+     "Silvaner",
+     "Spätburgunder",
+     "Müller-Thurgau",
+     "Grüner Veltliner",
+     "Blaufränkisch"
+    ]
+   },
+   "know": [
+    "Franken uses the flat, round Bocksbeutel bottle and is known for Silvaner.",
+    "The Ahr, north of the 50th parallel, makes some of Germany’s best Spätburgunder.",
+    "Baden is Germany’s warmest growing area.",
+    "The 1971 wine law made ripeness at harvest the measure of quality.",
+    "The Banderole is Austria’s capsule for Qualitätswein and above."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Five more Anbaugebiete",
+     "rows": [
+      {
+       "name": "Nahe",
+       "meta": "Rhine tributary · Riesling"
+      },
+      {
+       "name": "Franken",
+       "meta": "Main River · Silvaner, Bocksbeutel"
+      },
+      {
+       "name": "Baden",
+       "meta": "warmest · Spätburgunder, Müller-Thurgau"
+      },
+      {
+       "name": "Mittelrhein",
+       "meta": "steep slate slopes · Riesling"
+      },
+      {
+       "name": "Ahr",
+       "meta": "north of 50° · Spätburgunder"
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "title": "The Wachau’s three dry levels",
+     "items": [
+      {
+       "name": "Steinfeder",
+       "text": "up to 11.5% alcohol",
+       "meta": "feather grass"
+      },
+      {
+       "name": "Federspiel",
+       "text": "up to 12.5%",
+       "meta": "falconry"
+      },
+      {
+       "name": "Smaragd",
+       "text": "at least 12.5%",
+       "meta": "emerald lizard"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Hungary and Greece",
+   "lines": [
+    {
+     "label": "Tokaji",
+     "text": "Humidity from the Bodrog River helps noble rot form. Furmint and Hárslevelű shrivel into aszú berries for the sweet wine."
+    },
+    {
+     "label": "Greece",
+     "text": "Three PDOs to know: Santorini (Assyrtiko), Naoussa (Xinomavro) and Nemea (Agiorgitiko)."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Furmint",
+     "Hárslevelű",
+     "Assyrtiko",
+     "Xinomavro",
+     "Agiorgitiko"
+    ]
+   },
+   "know": [
+    "Since 2013, Tokaji Aszú needs at least 120 g/L of sugar and 18 months in cask.",
+    "Eszencia is made entirely from aszú berries.",
+    "Tokaji usually comes in 500 ml bottles.",
+    "Santorini vines are trained into low baskets (kouloura) against the wind.",
+    "Naoussa is 100% Xinomavro; Nemea is 100% Agiorgitiko."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Greece: three PDOs",
+     "rows": [
+      {
+       "name": "Santorini",
+       "meta": "Assyrtiko · volcanic Aegean island"
+      },
+      {
+       "name": "Naoussa",
+       "meta": "Xinomavro · slopes of Mt Vermio"
+      },
+      {
+       "name": "Nemea",
+       "meta": "Agiorgitiko · Korinthia, 230-850 m"
+      }
+     ],
+     "note": "Each is set up as a PDO zone since 1971."
+    },
+    {
+     "type": "stat",
+     "number": "120",
+     "title": "grams of sugar per liter",
+     "text": "The minimum for Tokaji Aszú since 2013, the old 5-puttonyos level."
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Petit Chablis",
+   "b": "Chablis",
+   "why": "Petit Chablis grows on harder Portlandian limestone; Chablis and its crus on Kimmeridgian."
+  },
+  {
+   "a": "Valpolicella Ripasso",
+   "b": "Amarone",
+   "why": "Ripasso is young Valpolicella refermented on Amarone lees. Amarone is made from dried grapes."
+  },
+  {
+   "a": "Vino Nobile di Montepulciano",
+   "b": "Montepulciano d’Abruzzo",
+   "why": "Vino Nobile is Tuscan Sangiovese. Montepulciano d’Abruzzo is the Montepulciano grape."
+  },
+  {
+   "a": "Spanna",
+   "b": "Chiavennasca",
+   "why": "Both are Nebbiolo: Spanna in Gattinara and Ghemme, Chiavennasca in Valtellina."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas Curriculum Guide (Certified column); Conseil des Grands Crus Classés en 1855; CIVB (bordeaux.com); Conseil des Vins de Saint-Émilion; BIVB; Bureau Interprofessionnel des Vins de Chablis; Inter Beaujolais; InterLoire; CIVA (vinsalsace.com); Inter Rhône; Langhe, Franciacorta, Valpolicella, Chianti Classico, Brunello and Vino Nobile consortia; Federdoc; Consejo Regulador DOCa Rioja; D.O. Cava; Wines of Portugal; VDP; Vinea Wachau; bor.hu; Wines of Greece. Checked Nov 2, 2026.",
+ "cards": [
+  {
+   "q": "Which château is the only Premier Cru Supérieur in the 1855 Sauternes and Barsac list?",
+   "answer": "Château d’Yquem",
+   "wrong": [
+    "Château Climens",
+    "Château Suduiraut",
+    "Château Haut-Brion"
+   ],
+   "source": "https://gcc-1855.fr/classement-grands-crus-classes-1855/"
+  },
+  {
+   "q": "Which Bordeaux classification ranks 14 Pessac-Léognan châteaux for red, white or both?",
+   "answer": "The Graves classification",
+   "wrong": [
+    "The 1855 classification",
+    "The Saint-Émilion classification",
+    "The Crus Bourgeois du Médoc"
+   ],
+   "source": "https://www.bordeaux.com/en/classifications/graves/"
+  },
+  {
+   "q": "In Saint-Émilion’s 2022 classification, which two châteaux are Premiers Grands Crus Classés ‘A’?",
+   "answer": "Figeac and Pavie",
+   "wrong": [
+    "Ausone and Cheval Blanc",
+    "Angélus and Ausone",
+    "Pétrus and Le Pin"
+   ],
+   "source": "https://vins-saint-emilion.com/en/welcome-in-the-vineyard/the-2022-classification/"
+  },
+  {
+   "q": "Which of these is a Chablis Premier Cru, not one of the seven Grands Crus?",
+   "answer": "Montée de Tonnerre",
+   "wrong": [
+    "Les Clos",
+    "Valmur",
+    "Blanchot"
+   ],
+   "source": "https://www.chablis-wines.com/explore/chablis-appellations/chablis-grand-cru/chablis-grand-cru,1820,7663.html"
+  },
+  {
+   "q": "Which Côte Chalonnaise village appellation is made only from Aligoté?",
+   "answer": "Bouzeron",
+   "wrong": [
+    "Rully",
+    "Mercurey",
+    "Givry"
+   ],
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/aligote/aligote-a-100-bourgogne-varietal,2799,10609.html"
+  },
+  {
+   "q": "Côte du Py is a famous lieu-dit in which Beaujolais cru?",
+   "answer": "Morgon",
+   "wrong": [
+    "Fleurie",
+    "Moulin-à-Vent",
+    "Brouilly"
+   ],
+   "source": "https://www.beaujolais.com/en/appellation/morgon/"
+  },
+  {
+   "q": "Vouvray’s Chenin Blanc grows on which soft limestone?",
+   "answer": "Tuffeau",
+   "wrong": [
+    "Portlandian limestone",
+    "Galets",
+    "Llicorella"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=15"
+  },
+  {
+   "q": "Which Alsace department lies to the south, higher and more sheltered by the Vosges?",
+   "answer": "Haut-Rhin",
+   "wrong": [
+    "Bas-Rhin",
+    "Moselle",
+    "Haute-Saône"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=21"
+  },
+  {
+   "q": "On a Loire Chenin label, “moelleux” means:",
+   "answer": "Sweet, about 10 to 45 g/L of sugar",
+   "wrong": [
+    "Bone dry",
+    "Lightly sparkling",
+    "Aged on its lees"
+   ],
+   "source": "https://www.vinsvaldeloire.fr/fr/styles-vins-loire/vins-blancs-moelleux-et-liquoreux"
+  },
+  {
+   "q": "Which Northern Rhône red cru plants Viognier alongside Syrah?",
+   "answer": "Côte-Rôtie",
+   "wrong": [
+    "Cornas",
+    "Hermitage",
+    "Saint-Joseph"
+   ],
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-cote-rotie"
+  },
+  {
+   "q": "Bandol must be at least 50% of which grape?",
+   "answer": "Mourvèdre",
+   "wrong": [
+    "Grenache",
+    "Syrah",
+    "Cinsault"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=24"
+  },
+  {
+   "q": "Madiran is based on which grape?",
+   "answer": "Tannat",
+   "wrong": [
+    "Côt (Malbec)",
+    "Petit Manseng",
+    "Mauzac"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=24"
+  },
+  {
+   "q": "What is Barolo’s minimum aging under the Court’s curriculum?",
+   "answer": "38 months, at least 18 in oak",
+   "wrong": [
+    "26 months, at least 9 in oak",
+    "24 months, at least 12 in oak",
+    "60 months, at least 36 in oak"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+  },
+  {
+   "q": "In Valtellina, Nebbiolo is called:",
+   "answer": "Chiavennasca",
+   "wrong": [
+    "Spanna",
+    "Prugnolo Gentile",
+    "Corvina"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=29"
+  },
+  {
+   "q": "Valpolicella Ripasso gets its extra flavor, tannin and alcohol from:",
+   "answer": "A short second fermentation on Amarone or Recioto lees",
+   "wrong": [
+    "Drying the grapes for three months",
+    "Aging under a film of flor yeast",
+    "Whole-cluster carbonic maceration"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=31"
+  },
+  {
+   "q": "Chianti Classico must contain at least how much Sangiovese?",
+   "answer": "80%",
+   "wrong": [
+    "70%",
+    "90%",
+    "100%"
+   ],
+   "source": "https://www.chianticlassico.com/en/wine/types/"
+  },
+  {
+   "q": "Taurasi DOCG is made mainly from which grape?",
+   "answer": "Aglianico",
+   "wrong": [
+    "Sagrantino",
+    "Primitivo",
+    "Montepulciano"
+   ],
+   "source": "https://www.federdoc.com/new/regioni/en/Campania.pdf"
+  },
+  {
+   "q": "Cerasuolo di Vittoria DOCG blends Nero d’Avola with which grape?",
+   "answer": "Frappato",
+   "wrong": [
+    "Nerello Mascalese",
+    "Cannonau",
+    "Carricante"
+   ],
+   "source": "https://www.federdoc.com/new/regioni/en/Sicily.pdf"
+  },
+  {
+   "q": "A Rioja tinto Gran Reserva must age at least:",
+   "answer": "5 years, including 2 in oak",
+   "wrong": [
+    "3 years, including 1 in oak",
+    "2 years, including 1 in oak",
+    "4 years, including 18 months in oak"
+   ],
+   "source": "https://riojawine.com/en-gb/the-designation/classification/"
+  },
+  {
+   "q": "Which Rioja subzone is the coolest and wettest?",
+   "answer": "Rioja Alavesa",
+   "wrong": [
+    "Rioja Alta",
+    "Rioja Oriental",
+    "Rioja Baja"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+  },
+  {
+   "q": "Txakolina, a light, slightly fizzy white, comes from:",
+   "answer": "The Basque Country (País Vasco)",
+   "wrong": [
+    "Murcia",
+    "Galicia",
+    "Catalonia"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=44"
+  },
+  {
+   "q": "Which German region is known for Silvaner and the flat Bocksbeutel bottle?",
+   "answer": "Franken",
+   "wrong": [
+    "Nahe",
+    "Ahr",
+    "Baden"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=50"
+  },
+  {
+   "q": "In the VDP system, “Grosses Gewächs” is:",
+   "answer": "A dry wine from a top (Grosse Lage) vineyard",
+   "wrong": [
+    "A sweet late-harvest wine",
+    "A village-level wine",
+    "A German sparkling wine"
+   ],
+   "source": "https://www.vdp.de/en/the-wines/classification"
+  },
+  {
+   "q": "What is the Wachau’s ripest dry wine category?",
+   "answer": "Smaragd",
+   "wrong": [
+    "Federspiel",
+    "Steinfeder",
+    "Spätlese"
+   ],
+   "source": "https://www.vinea-wachau.at/en/vinea-wachau/the-brandnames"
+  },
+  {
+   "q": "Since 2013, Tokaji Aszú must have at least how much residual sugar?",
+   "answer": "120 g/L",
+   "wrong": [
+    "45 g/L",
+    "60 g/L",
+    "250 g/L"
+   ],
+   "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
+  },
+  {
+   "q": "Which grape makes up at least 85% of dry PDO Santorini?",
+   "answer": "Assyrtiko",
+   "wrong": [
+    "Athiri",
+    "Xinomavro",
+    "Agiorgitiko"
+   ],
+   "source": "https://winesofgreece.org/pdo/pdo-santorini/"
+  },
+  {
+   "q": "PDO Naoussa red wine is made from 100%:",
+   "answer": "Xinomavro",
+   "wrong": [
+    "Agiorgitiko",
+    "Assyrtiko",
+    "Furmint"
+   ],
+   "source": "https://winesofgreece.org/pdo/pdo-naoussa/"
+  },
+  {
+   "q": "Why does the Court say to decant an aged Bordeaux?",
+   "answer": "To take it off its sediment",
+   "wrong": [
+    "To chill it quickly",
+    "To soften young tannins with air",
+    "To raise its alcohol"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "q": "Chaptalization, used in cool Burgundy vintages, means:",
+   "answer": "Adding sugar to the must to raise alcohol",
+   "wrong": [
+    "Adding acid to the must",
+    "Leaving stems in the ferment",
+    "Stirring the lees in barrel"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
+  },
+  {
+   "q": "Banyuls and Muscat de Rivesaltes are Vins Doux Naturels. How are they made?",
+   "answer": "Mutage: grape spirit stops the fermentation",
+   "wrong": [
+    "Grapes are dried on mats",
+    "Grapes freeze on the vine",
+    "Noble rot shrivels the grapes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=24"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "CMS Certified learning outcomes for the Old World subjects add classification systems, aging requirements and label laws, more appellations and crus, iconic producers, and recommending and selling food pairings to a guest.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=9"
+  },
+  {
+   "fact": "CMS Introductory learning outcomes for the same subjects focus on locating regions on a map and connecting grape varieties, climate and main appellations.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=9"
+  },
+  {
+   "fact": "The Certified curriculum includes and builds from the Introductory curriculum; Certified-only subjects include South France, Spain Other DOs and Greece.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=2"
+  },
+  {
+   "fact": "CMS Certified rows include service of beverage items such as glassware (Burgundy, Rhône) and decanting (Bordeaux, Brunello, Taurasi, Sagrantino).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "Bordeaux Certified column: Graves area adds Barsac AOP; Right Bank adds Lalande-de-Pomerol AOP and Montagne-St-Émilion AOP (alongside Pessac-Léognan, Sauternes, Pomerol, St-Émilion from the Intro column).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=10"
+  },
+  {
+   "fact": "Bordeaux, Left Bank Cabernet Sauvignon on gravel and Right Bank Merlot on clay/limestone (Level 1 recap).",
+   "source": "https://www.bordeaux.com/en/grape-varieties/"
+  },
+  {
+   "fact": "1855 has 88 classified growths: reds in five levels (Premier to Cinquième Cru) - 60 Médoc estates plus Château Haut-Brion in Graves (Pessac); sweet whites in three levels (Premier Cru Supérieur, Premier Cru, Second Cru) - 27 châteaux in Sauternes and Barsac.",
+   "source": "https://www.bordeaux.com/en/classifications/classifications-1855/"
+  },
+  {
+   "fact": "Conseil des Grands Crus Classés en 1855 list, Seconds Crus include: Rauzan-Ségla (Margaux), Rauzan-Gassies (Margaux), Léoville-Poyferré (Saint-Julien), Léoville Barton (Saint-Julien), Durfort-Vivens (Margaux), Gruaud Larose (Saint-Julien), Lascombes (Margaux), Brane-Cantenac (Margaux), Pichon Baron (Pauillac), Pichon Longueville Comtesse de Lalande (Pauillac), Ducru-Beaucaillou (Saint-Julien), Cos d'Estournel (Saint-Estèphe), Montrose (Saint-Estèphe).",
+   "source": "https://gcc-1855.fr/classement-grands-crus-classes-1855/"
+  },
+  {
+   "fact": "CMS Certified column: know the First Growths and the Second Growths (14), each with château and commune.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "Sauternes and Barsac 1855: Château d'Yquem (Sauternes) is the single Premier Cru Supérieur; Premiers Crus include Climens and Coutet (Barsac), Suduiraut and Rieussec (Sauternes).",
+   "source": "https://gcc-1855.fr/classement-grands-crus-classes-1855/"
+  },
+  {
+   "fact": "Graves classification: 14 châteaux, all in Pessac-Léognan, classified for red, white or both; first list 1953, one change 1959; Haut-Brion is in both Graves and 1855 lists.",
+   "source": "https://www.bordeaux.com/en/classifications/graves/"
+  },
+  {
+   "fact": "Saint-Émilion classification: first in 1955, revised every ten years. Three levels: Premiers Grands Crus Classés 'A', Premiers Grands Crus Classés, Grands Crus Classés.",
+   "source": "https://vins-saint-emilion.com/en/welcome-in-the-vineyard/saint-emilion-wine-classification/"
+  },
+  {
+   "fact": "2022 Premiers Grands Crus Classés 'A': Château Figeac and Château Pavie.",
+   "source": "https://vins-saint-emilion.com/en/welcome-in-the-vineyard/the-2022-classification/"
+  },
+  {
+   "fact": "Crus Bourgeois du Médoc: three levels (Cru Bourgeois, Cru Bourgeois Supérieur, Cru Bourgeois Exceptionnel); revised every five years since 2020.",
+   "source": "https://www.bordeaux.com/en/classifications/crus-bourgeois-du-medoc/"
+  },
+  {
+   "fact": "CMS Certified column: Cru Bourgeois created in the 1930s with three levels; Pomerol has no classification.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=10"
+  },
+  {
+   "fact": "CMS Certified column: Pomerol top producers include Château Pétrus, Château Lafleur, Le Pin, Clos l'Église; St-Émilion top producers: Angélus, Ausone, Cheval-Blanc, Pavie, Figeac; Graves top producer Haut-Brion; Sauternes top producer d'Yquem.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "CMS Certified column (Bordeaux grape growing): humidity from water and spring rain brings mold and rot - black and grey rot (bad), noble rot (good for sweet wines); springtime frosts; Bordeaux mixture.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=10"
+  },
+  {
+   "fact": "CMS Certified column (Bordeaux): know top vintages of the last 15 years; history includes the marriage of Eleanor of Aquitaine, Dutch draining of the Gironde estuary and the slave trade port; today the largest region of AOP wine production in France.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "CMS Certified column (Bordeaux service): decant young Bordeaux for aeration and aged Bordeaux for sediment; know service temperatures.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "CMS Certified column (Bordeaux pairing): bold red wines with beef and lamb; rich sweet wines with dessert and foie gras.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "Chablis Grand Cru has seven Climats: Blanchot, Bougros, Les Clos, Grenouilles, Preuses, Valmur, Vaudésir.",
+   "source": "https://www.chablis-wines.com/explore/chablis-appellations/chablis-grand-cru/chablis-grand-cru,1820,7663.html"
+  },
+  {
+   "fact": "Chablis soils: Kimmeridgian limestone and marl (Chablis, Premier Cru, Grand Cru on the hillsides); harder Portlandian limestone mainly for Petit Chablis on higher slopes and plateau.",
+   "source": "https://www.chablis-wines.com/explore/the-terroir/special-soil/special-soil,1824,7666.html"
+  },
+  {
+   "fact": "Premier Cru labels show the commune then the Climat, e.g. 'Chablis Premier Cru, Montée de Tonnerre'.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/decoding-the-aocs/bourgogne-wines-decoding-the-aocs,2467,9263.html"
+  },
+  {
+   "fact": "CMS Certified column (Burgundy): Chablis AOP vs Petit Chablis AOP; know all seven Chablis Grands Crus; frost hazard in Chablis; know all Côte de Nuits and Côte de Beaune villages and their Grands Crus; Côte de Nuits-Villages AOP and Côte de Beaune-Villages AOP; identify the 10 Beaujolais Crus; Côte du Py lieu-dit in Morgon.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=13"
+  },
+  {
+   "fact": "Burgundy hierarchy: Régionale, Village, Premier Cru, Grand Cru (Level 1 recap); 33 Grand Cru appellations.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/decoding-the-aocs/bourgogne-wines-decoding-the-aocs,2467,9263.html"
+  },
+  {
+   "fact": "Côte de Nuits Grands Crus listed by BIVB include Chambertin, Chambertin-Clos de Bèze, Clos de la Roche, Clos de Tart, Clos de Vougeot, Échezeaux, Richebourg, Romanée-Conti, La Tâche, Musigny, Bonnes Mares. It is the centre of the region's Grands Crus, mainly red Pinot Noir.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-vineyards/cote-de-nuits-and-hautes-cotes-de-nuits/cote-de-nuits-and-hautes-cotes-de-nuits-purple-and-gold,2470,9313.html"
+  },
+  {
+   "fact": "Côte de Beaune: around Beaune mainly Pinot Noir (Volnay, Pommard); from Meursault south, Chardonnay dominates. Grands Crus: Corton, Corton-Charlemagne, Montrachet, Bâtard-Montrachet, Chevalier-Montrachet, Criots-Bâtard-Montrachet, Bienvenues-Bâtard-Montrachet.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-vineyards/cote-de-beaune-and-hautes-cotes-de-beaune/cote-de-beaune-and-the-hautes-cotes-de-beaune-a-winegrowing-region-renowned-for-its-legendary-wines,2471,9314.html"
+  },
+  {
+   "fact": "Côte Chalonnaise Village appellations: Bouzeron, Givry, Mercurey, Montagny, Rully. Thought to be the cradle of Crémant de Bourgogne.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-vineyards/the-cote-chalonnaise-and-couchois/the-cote-chalonnaise-and-the-couchois-historical-winegrowing-terroir,2472,9316.html"
+  },
+  {
+   "fact": "Bouzeron is the only Village appellation made exclusively from Aligoté.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/aligote/aligote-a-100-bourgogne-varietal,2799,10609.html"
+  },
+  {
+   "fact": "CMS Certified column (Burgundy): Mâcon - Pouilly-Fuissé AOP has Premier Cru designated vineyards; Côte Chalonnaise: Bouzeron AOP white from 100% Aligoté, Rully, Mercurey, Givry, Montagny.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=13"
+  },
+  {
+   "fact": "The 10 Beaujolais crus: Brouilly, Chénas, Chiroubles, Côte de Brouilly, Fleurie, Juliénas, Morgon, Moulin-à-Vent, Régnié, Saint-Amour.",
+   "source": "https://www.beaujolais.com/en/discover/nos-12-appellations/"
+  },
+  {
+   "fact": "Morgon is the largest Beaujolais cru; its famous Côte du Py is decomposed shale.",
+   "source": "https://www.beaujolais.com/en/appellation/morgon/"
+  },
+  {
+   "fact": "CMS Certified column (Burgundy winemaking): bâtonnage; cold soak; stem inclusion, whole-cluster fermentation, semi-carbonic maceration; pièce barrel size; chaptalization; oak use varies by level in Chablis, Mâconnais and Beaujolais.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=12"
+  },
+  {
+   "fact": "CMS Certified column (Burgundy producers): distinguish négociants from domaines. Chablis: Dauvissat, Raveneau. Côte d'Or: DRC, Leroy, Coche-Dury, Domaine Leflaive, Roulot. Larger négociants: Louis Jadot, Louis Latour, Albert Bichot, Bouchard Père et Fils/William Fèvre, Drouhin, Faiveley.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=14"
+  },
+  {
+   "fact": "CMS Certified column (Burgundy history): the monastic influence and the Napoleonic Code of inheritance shaped classification, fragmentation of vineyards and vineyard ownership. Non-wine production: Marc de Bourgogne. Label terms: négociant, domaine, clos, monopole, vieilles vignes; lieu-dit.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=14"
+  },
+  {
+   "fact": "CMS Certified column (Burgundy service/pairing): proper glassware for white and red Burgundy; oak, acid and tannin levels matter for pairing; classic Burgundian dishes.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=14"
+  },
+  {
+   "fact": "Chaptalization: adding sugar to unfermented grape must to increase alcohol after fermentation; used when grapes do not reach enough sugar ripeness.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=47"
+  },
+  {
+   "fact": "CMS Certified column (Loire): soils - tuffeau in Vouvray; silex; Kimmeridgian clay. Layon River. Botrytis in Bonnezeaux and Quarts-de-Chaume from river humidity.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=15"
+  },
+  {
+   "fact": "CMS Certified column (Loire): sparkling wines Vouvray Pétillant and Crémant de Loire; label terms sur lie, sec, demi-sec, moelleux; producers Domaine Huet and Nicolas Joly; pair the different sweetness levels of Chenin Blanc; classic pairings with Sancerre and Pouilly-Fumé.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=16"
+  },
+  {
+   "fact": "Loire sweet terms: moelleux = 10-45 g/L residual sugar; liquoreux = over 45 g/L. (Translated from French.)",
+   "source": "https://www.vinsvaldeloire.fr/fr/styles-vins-loire/vins-blancs-moelleux-et-liquoreux"
+  },
+  {
+   "fact": "Loire sparkling wines use the traditional method; minimum 9 months on laths for Crémant de Loire and 12 months for Vouvray.",
+   "source": "https://www.vinsvaldeloire.fr/en/loire-valley-wine-styles/sparkling-wines"
+  },
+  {
+   "fact": "CMS Certified column (Alsace): Bas-Rhin lies to the north, lower average elevation, less protected by the Vosges; Haut-Rhin lies to the south, higher, more protected; many of the best regarded vineyard sites are in the Haut-Rhin.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=21"
+  },
+  {
+   "fact": "CMS Certified column (Alsace): very diverse soils (marl, limestone, gneiss, schist, sandstone, granite, clay, volcanic); large neutral casks called foudres, little to no new oak; extra white grapes Pinot Blanc, Silvaner, Chardonnay, Auxerrois; Alsace AOP wines must be bottled in the 'Vin du Rhin' / 'Flûte d'Alsace' bottle.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=21"
+  },
+  {
+   "fact": "CMS Certified column (Alsace Grands Crus): examples Schlossberg, Brand, Goldert, Hengst; one Grand Cru uses Sylvaner, two allow blending, two allow red wine; Pinot Noir added as of the 2022 vintage.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=22"
+  },
+  {
+   "fact": "Alsace Grand Cru grapes: Riesling, Muscat, Pinot Gris and Gewurztraminer; Sylvaner allowed in Zotzenberg; co-planting practised in Altenberg de Bergheim and Kaefferkopf.",
+   "source": "https://www.vinsalsace.com/en/grands-crus/"
+  },
+  {
+   "fact": "Edelzwicker and Gentil are Alsace blends.",
+   "source": "https://www.vinsalsace.com/en/tastes-and-colours/grapes-varieties/"
+  },
+  {
+   "fact": "CMS Certified column (Alsace): producers Trimbach, Domaine Weinbach, Marcel Deiss, Hugel et Fils, Pierre Sparr, Zind-Humbrecht; history of French and German rule; pairings choucroute, flammkuchen (tarte flambée), baeckeoffe, cured meats; Crémant d'Alsace is a cost-effective traditional method sparkling wine.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=22"
+  },
+  {
+   "fact": "CMS Certified column (Rhône): Lyon to the north; Montélimar the unofficial dividing line; Avignon the main city of the south. North: steep hills, the river reflects light and concentrates the Mistral. South: rolling hills.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=17"
+  },
+  {
+   "fact": "CMS Certified column (Rhône soils): Northern Rhône decomposed granite and schist; Southern Rhône galets, alluvial, limestone. Modern southern plantings are often trellised.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=17"
+  },
+  {
+   "fact": "CMS Certified column (Rhône): co-fermented wines in the north; blended wines in the south; minimum abv in Châteauneuf-du-Pape and minimum Grenache rules in Southern Rhône AOPs; producers Chave, Chapoutier, Guigal, Beaucastel, Rayas; papal crest on bottles; glassware for Syrah and Grenache; pair with meaty dishes with herbs, bacon, peppercorn; white Rhône as a Chardonnay alternative.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=18"
+  },
+  {
+   "fact": "Côte-Rôtie is the only red cru in the Northern Côtes du Rhône to plant Viognier alongside Syrah.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-cote-rotie"
+  },
+  {
+   "fact": "Châteauneuf-du-Pape lists 18 associated grape varieties, including Grenache Noir, Syrah, Mourvèdre, Cinsault, Counoise, Clairette and Roussanne.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-chateauneuf-du-pape"
+  },
+  {
+   "fact": "Vins Doux Naturels such as Muscat de Beaumes-de-Venise and Rasteau are made by mutage (adding alcohol to stop fermentation).",
+   "source": "https://www.vins-rhone.com/en/wine-school/glossary/mutage"
+  },
+  {
+   "fact": "CMS Certified column (South France): Provence - nearly 90% dry rosé production; grapes Grenache, Cinsault, Syrah, Mourvèdre; Côtes de Provence AOP dry rosé dominant; Bandol AOP Mourvèdre min 50% with Grenache and Cinsault, dry red dominant.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=23"
+  },
+  {
+   "fact": "CMS Certified column (South France): Languedoc-Roussillon - Limoux AOP (Mauzac, Chenin Blanc, Chardonnay; dry whites); Crémant de Limoux (traditional method white and rosé); Fitou AOP (Grenache, Carignan, Syrah, Mourvèdre; dry reds); Banyuls AOP/Banyuls Grand Cru (Grenache; VDN); Muscat de Rivesaltes (Muscat; VDN); large amount of IGP wine, Pays d'Oc IGP; mutage stops fermentation with neutral grape spirit.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=24"
+  },
+  {
+   "fact": "CMS Certified column (South France): Southwest - Cahors AOP Côt (Malbec)-dominant, dry reds only; Madiran AOP Tannat-dominant, dry reds only; Jurançon AOP Gros and Petit Manseng, sec (dry) and off-dry whites. Dordogne - Bergerac AOP (Bordeaux grapes; white, red and rosé); Monbazillac AOP botrytis-affected sweet wines (Muscadelle, Sauvignon Blanc, Sémillon).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=24"
+  },
+  {
+   "fact": "CMS Certified column (South France): producers Bandol - Domaine Tempier, Château de Pibarnon, Château Pradeaux; Banyuls - Chapoutier, Domaine du Mas Blanc. Provence: birthplace of wine in France, wine since 600 BCE. Pairings: dry rosé with shellfish, fish, bouillabaisse; Bandol with beef, lamb; Banyuls with chocolate, nuts, coffee; Cahors and Madiran with duck breast, lamb, cassoulet.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=25"
+  },
+  {
+   "fact": "CMS Certified column (Piedmont): Barolo 38 months total aging with a min of 18 months in oak; Barbaresco 26 months total with min 9 months in oak.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+  },
+  {
+   "fact": "Barolo: only after five years may it be called Riserva. Barbaresco: after four years it may be called Riserva.",
+   "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+  },
+  {
+   "fact": "CMS Certified column (Piedmont): top Barolo vineyards Cannubi, Brunate, Monprivato; top Barbaresco vineyards Ovello, Montestefano, Pora, Asili; Asti DOCG fully sparkling Moscato; Alta Langa DOCG metodo classico, min 90% Pinot Noir and/or Chardonnay; Roero DOCG Nebbiolo; Roero Arneis DOCG; Ghemme and Gattinara DOCG Nebbiolo, locally Spanna.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=26"
+  },
+  {
+   "fact": "CMS Certified column (Piedmont): label terms normale, riserva; sorì = best (privileged) site; producers Barolo - Vietti, Giacomo Conterno, Bruno Giacosa, Ceretto, Sandrone, Elio Altare, Giuseppe Mascarello; Barbaresco - Gaja, La Spinetta, Produttori del Barbaresco; traditional vs modernist styles; long ageability; big tannins require meat or fat.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=27"
+  },
+  {
+   "fact": "CMS Certified column (Lombardy/Emilia-Romagna): Valtellina Superiore DOCG dry red Nebbiolo, locally Chiavennasca; Sforzato di Valtellina DOCG passito-dried Chiavennasca; Franciacorta Satèn DOCG Brut only, max 5 atmospheres, Chardonnay with up to 50% Pinot Bianco; Lambrusco DOC frizzante or spumante, subzones Lambrusco di Sorbara, Grasparossa di Castelvetro, Salamino di Santa Croce; sweetness secco, amabile, dolce; producers Bellavista, Ca' del Bosco; Lambrusco has limited shelf life by the glass.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=29"
+  },
+  {
+   "fact": "Franciacorta regulations: minimum time on lees Franciacorta 18 months; Satèn 24; Rosé 24; Millesimato 30; Riserva 60.",
+   "source": "https://franciacorta.wine/en/consortium/regulations/"
+  },
+  {
+   "fact": "CMS Certified column (NE Italy): Trentino-Alto Adige reds Teroldego, Lagrein; Friuli whites Friulano, Ribolla Gialla, red Refosco dal Peduncolo Rosso; Friuli orange and natural wines; DOCs Alto Adige, Trentino, Valdadige; Friuli Isonzo, Friuli Colli Orientali, Friuli Grave.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=30"
+  },
+  {
+   "fact": "CMS Certified column (Veneto): Conegliano Valdobbiadene Prosecco Superiore DOCG; Recioto di Soave DOCG sweet Garganega, appassimento; Recioto della Valpolicella DOCG sweet red, Corvina and Rondinella; Valpolicella Ripasso DOC uses the remaining must and lees from Recioto and/or Amarone, a short second fermentation giving more flavor, tannin and alcohol. Amarone minimum 14% abv. Producers: Bertani, Masi, Allegrini, Quintarelli, Dal Forno; Friuli: Jermann, Livio Felluga, Josko Gravner; Alto Adige: Cantina Terlano, Tiefenbrunner; many Alto Adige producers are co-ops.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=31"
+  },
+  {
+   "fact": "Valpolicella consortium: the four wines are Valpolicella DOC, Valpolicella Ripasso DOC, Amarone della Valpolicella DOCG and Recioto della Valpolicella DOCG.",
+   "source": "https://www.consorziovalpolicella.it/en/types-of-wine/"
+  },
+  {
+   "fact": "CMS Certified column (Tuscany): Montalcino soils - clay and marine sediments at lower elevation, galestro at higher elevation; red grapes add Prugnolo Gentile, Cabernet Sauvignon, Merlot, Cabernet Franc; whites Trebbiano, Vermentino, Vernaccia; Vino Nobile di Montepulciano DOCG, Bolgheri DOC, Rosso di Montepulciano DOC, Vin Santo DOCs; Gran Selezione exists.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=32"
+  },
+  {
+   "fact": "Brunello di Montalcino DOCG is Sangiovese ('Brunello' in Montalcino); 2 years in oak and 4 months in bottle (6 for Riserva).",
+   "source": "https://consorziobrunellodimontalcino.it/en/583/vini"
+  },
+  {
+   "fact": "Chianti Classico: Annata min 80% Sangiovese; Gran Selezione min 90% Sangiovese, estate grapes only, min 30 months.",
+   "source": "https://www.chianticlassico.com/en/wine/types/"
+  },
+  {
+   "fact": "CMS curriculum: Chianti min 70% Sangiovese; Chianti Classico min 80%; Brunello 100%.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=32"
+  },
+  {
+   "fact": "Vino Nobile di Montepulciano: min 70% Sangiovese from the commune of Montepulciano; the consortium writes 'Sangiovese (Prugnolo Gentile)'.",
+   "source": "https://www.consorziovinonobile.it/disciplinaries/"
+  },
+  {
+   "fact": "CMS Certified column (Tuscany): Super Tuscan can be Bordeaux grape blends, Bordeaux varieties with Sangiovese, or pure Sangiovese; producers Antinori, Ruffino, Sassicaia, Ornellaia, Masseto, Tignanello, Solaia, Biondi Santi, Banfi, Soldera; decant young Brunello; know top Brunello vintages and current release.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=33"
+  },
+  {
+   "fact": "CMS Certified column (Central & Southern Italy): Marche - Verdicchio dei Castelli di Jesi DOC, Verdicchio di Matelica DOC; Umbria - Sagrantino di Montefalco DOCG; Abruzzo - Montepulciano d'Abruzzo DOC; Campania - Taurasi DOCG, Greco di Tufo DOCG, Fiano di Avellino DOCG; volcanic soils in Campania; young Taurasi and Sagrantino di Montefalco should be decanted.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=35"
+  },
+  {
+   "fact": "Bolgheri reds may use Cabernet Sauvignon, Merlot and Cabernet Franc (0-100%), Syrah and Sangiovese up to 50%.",
+   "source": "https://www.bolgheridoc.com/en/wines/"
+  },
+  {
+   "fact": "Federdoc, Campania: Taurasi DOCG Aglianico min 85%; Fiano di Avellino DOCG Fiano min 85%; Greco di Tufo DOCG Greco min 85%.",
+   "source": "https://www.federdoc.com/new/regioni/en/Campania.pdf"
+  },
+  {
+   "fact": "CMS Certified column (Sicily & Sardinia): Etna DOC (Rosso and Bianco); Cerasuolo di Vittoria DOCG; Marsala DOC (Secco, Semi-Secco, Dolce); Sicilian whites Grillo, Inzolia, Catarratto; Cannonau di Sardegna DOC; Vermentino di Sardegna DOC; volcanic soil on Etna.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=36"
+  },
+  {
+   "fact": "Federdoc, Sicily: Cerasuolo di Vittoria DOCG Nero d'Avola 50-70%, Frappato 30-50%; Etna DOC white Carricante 60-80%, red Nerello Mascalese min 80%.",
+   "source": "https://www.federdoc.com/new/regioni/en/Sicily.pdf"
+  },
+  {
+   "fact": "Federdoc, Sardinia: Vermentino di Gallura DOCG min 95% Vermentino; Cannonau di Sardegna DOC min 85% Cannonau.",
+   "source": "https://www.federdoc.com/new/regioni/en/Sardinia.pdf"
+  },
+  {
+   "fact": "CMS Certified column (Rioja): subzones Rioja Alta, Rioja Oriental, Rioja Alavesa; Alta is continental, Alavesa the coolest and wettest, Oriental Mediterranean; soils calcareous clay, ferrous clay, alluvial; grapes add Garnacha, Mazuelo, Graciano, Malvasia, Garnacha Blanca; carbonic maceration common on Joven; Viñedo Singular.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+  },
+  {
+   "fact": "CMS Certified column (Rioja tinto aging): Crianza min 2 years incl. 1 in oak; Reserva min 3 years incl. 1 in oak; Gran Reserva min 5 years incl. 2 in oak.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=38"
+  },
+  {
+   "fact": "Rioja: Gran Reserva = minimum 5 years, 2 in barrel plus 2 in bottle; Reserva = minimum 3 years, at least 1 in barrel.",
+   "source": "https://riojawine.com/en-gb/the-designation/classification/"
+  },
+  {
+   "fact": "CMS Certified column (Rioja): some modern producers make fruit-focused wines with French oak and avoid Crianza/Reserva/Gran Reserva terms; Gran Reserva typically made only in the best vintages; Bordeaux and Rioja relationship during phylloxera; producers Marqués de Riscal, Marqués de Cáceres, Finca Allende, López de Heredia, La Rioja Alta.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=39"
+  },
+  {
+   "fact": "CMS Certified column (Castilla y León): Tempranillo synonyms Tinta del País, Tinta de Toro; Bierzo DO Mencía; Ribera del Duero Crianza/Reserva/Gran Reserva as Rioja; producers Vega Sicilia, Pesquera, Pingus; Bierzo Descendientes de J. Palacios; Rueda Martinsancho; Rueda fresh whites from Verdejo and Sauvignon Blanc; Toro ripe, concentrated Tempranillo.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=40"
+  },
+  {
+   "fact": "CMS Certified (Galicia): Valdeorras DO Godello whites and Mencía reds; Ribeira Sacra DO steep terraced slopes, Mencía, Godello, Albariño; producers Pazo Señorans, Granbazán, Lagar de Cervera.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=37"
+  },
+  {
+   "fact": "CMS Certified column (Catalonia): Priorat bush vine (gobelet) training, no mechanization, llicorella soil, significant diurnal shifts; Gratallops project; producers René Barbier (Clos Mogador), Álvaro Palacios, Clos Erasmus, Clos Martinet, Scala Dei; Cava covers all of Spain but most is made in Penedès; Cava de Guarda min 9 months on lees, Reserva min 18; gyropalette a Spanish invention; Cava producer Gramona.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=43"
+  },
+  {
+   "fact": "Cava aging: Cava de Guarda minimum 9 months; Reserva over 18 months; Gran Reserva 30 months; Cava de Paraje Calificado over 36 months.",
+   "source": "https://www.cava.wine/en/categories-types/"
+  },
+  {
+   "fact": "CMS Certified (Spain Other DOs): País Vasco - Bizkaiko, Getariako and Arabako Txakolina DOs, primarily dry white, lightly effervescent, high acidity, early drinking, Hondarrabi Zuri (white) and Hondarrabi Beltza (red); Murcia - Jumilla DO, Monastrell, historically ungrafted vines due to sandy soil, avoided phylloxera until the 1980s, producer Juan Gil; DO Pago - created 2003, 20 as of 2022, producer appellations; Txakoli with oily seafood.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=44"
+  },
+  {
+   "fact": "CMS Certified column (Portugal): Douro subregions Cima Corgo, Baixo Corgo, Douro Superior; Dão, Alentejo and Bairrada DOPs; terraces on the mountainsides; label term Single Quinta; lagares = stone fermenters; Madeira grapes Sercial, Verdelho, Bual, Malmsey, Tinta Negra; Touriga Nacional for Douro and Porto.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=46"
+  },
+  {
+   "fact": "Dão: surrounded by mountains, poor granite soils, vineyards from 200 to 1,000 m; Encruzado white; Touriga Nacional red.",
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/dao-e-lafoes/"
+  },
+  {
+   "fact": "CMS Certified column (Germany): Nahe - Nahe River a Rhine tributary, Riesling; Franken - along the Main near Frankfurt, Silvaner, Spätburgunder, Bocksbeutel bottle; Baden - along French and Swiss borders, warmest growing area, Spätburgunder, Müller-Thurgau; Mittelrhein - steep slopes on the Rhine, Riesling, slate; Ahr - one of the smallest and most northerly regions, north of the 50th parallel, Spätburgunder (some of Germany's best).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=50"
+  },
+  {
+   "fact": "CMS Certified column (Germany): VDP national association with its own Burgundy-model classification; Grosses Gewächs = single vineyard grand cru wines; Erstes Gewächs = premier cru; general terms Gemeinde (village), Einzellage (single vineyard), Oechsle scale for must weight, Bocksbeutel; label terms Halbtrocken half-dry, Edelfäule noble rot, Schloss castle; Deutscher Sekt sparkling from German grapes; extra grapes Müller-Thurgau, Silvaner, Weissburgunder, Grauburgunder.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=48"
+  },
+  {
+   "fact": "VDP: dry wines from Grosse Lage vineyards are called VDP.Grosses Gewächs; it is the VDP's private rule, not German wine law.",
+   "source": "https://www.vdp.de/en/the-wines/classification"
+  },
+  {
+   "fact": "CMS Certified column (Germany): 1971 German Wine Law made ripeness at harvest the prime determinant of quality; know where each style belongs on a wine list and serving temperatures; producers Dönnhoff (Nahe), Hans Wirsching (Franken), Künstler, Robert Weil, Leitz (Rheingau), Gunderloch (Rheinhessen), Fritz Haag, Dr. Loosen, Egon Müller, J.J. Prüm, Selbach-Oster (Mosel).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=51"
+  },
+  {
+   "fact": "CMS Certified column (Austria): Kremstal DAC along the Krems River, Kamptal DAC along the Kamp, both dry Grüner Veltliner and Riesling; Wachau classification Steinfeder, Federspiel, Smaragd; Banderole = Austrian capsule marking Qualitätswein or higher; regions Burgenland (Mittelburgenland), Steiermark, Wien; producers Emmerich Knoll, Rudi Pichler, FX Pichler, Prager, Schloss Gobelsburg, Bründlmayer; Grüner pairs with seafood, vegetables, herbs, asparagus and artichokes.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=53"
+  },
+  {
+   "fact": "Vinea Wachau: all white, dry, no oak. Steinfeder up to 11.5% alcohol (feather grass); Federspiel not more than 12.5% (falconry); Smaragd at least 12.5% (emerald-green lizard).",
+   "source": "https://www.vinea-wachau.at/en/vinea-wachau/the-brandnames"
+  },
+  {
+   "fact": "CMS Certified column (Hungary): Bodrog River creates humidity in Tokaj; puttonyos = the basket aszú grapes were gathered in; aszú = shriveled, botrytis-affected berries; grapes Furmint and Hárslevelű; Eszencia made entirely of aszú berries; producer Royal Tokaji; Tokaji not made during the communist years 1949-1989; pair with foie gras, blue cheese, orchard tarts; bottles normally 500 ml.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=54"
+  },
+  {
+   "fact": "In Tokaj, since 2013, 120 g/l is the minimum residual sugar for Aszú (equivalent to the old 5 puttony); Aszú must age at least 18 months in wooden casks.",
+   "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
+  },
+  {
+   "fact": "CMS Certified (Greece): Santorini PDO - warm Mediterranean, Aegean salt air, volcanic, basket-shaped vines against wind, Assyrtiko, producer Sigalas; Naoussa PDO - continental, Xinomavro; Nemea PDO - Agiorgitiko. Assyrtiko pairs with seafood, roasted fish and fresh cheeses; Xinomavro needs lamb or beef to tame the tannins.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=55"
+  },
+  {
+   "fact": "PDO Santorini (est. 1971): volcanic soils, self-rooted vines never affected by phylloxera; basket-trained 'kouloura' vines protect against strong winds; dry wines at least 85% Assyrtiko with Athiri and Aidani; 'Nykteri' = dry, at least 13.5% and 3 months in oak; 'Vinsanto' = sweet wine from sun-dried grapes.",
+   "source": "https://winesofgreece.org/pdo/pdo-santorini/"
+  },
+  {
+   "fact": "PDO Naoussa: on the south-eastern slopes of Mt Vermio, temperate Mediterranean climate with continental influences; exclusively red wines from 100% Xinomavro; pale color, high tannins, high acidity.",
+   "source": "https://winesofgreece.org/pdo/pdo-naoussa/"
+  },
+  {
+   "fact": "PDO Nemea: in Korinthia (and a small part of Argolida); Greece's largest PDO zone for red wines, from about 230 to 850 m; exclusively red wines from 100% Agiorgitiko; red fruit, sweet spice, velvety texture.",
+   "source": "https://winesofgreece.org/pdo/pdo-nemea/"
+  },
+  {
+   "fact": "The PDO Santorini wine production zone was established in 1971.",
+   "source": "https://winesofgreece.org/pdo/pdo-santorini/"
+  },
+  {
+   "fact": "The PDO Naoussa wine production zone was established in 1971.",
+   "source": "https://winesofgreece.org/pdo/pdo-naoussa/"
+  },
+  {
+   "fact": "The PDO Nemea wine production zone was established in 1971.",
+   "source": "https://winesofgreece.org/pdo/pdo-nemea/"
+  },
+  {
+   "fact": "Barbaresco: 100% Nebbiolo; ages at least two years, nine months in oak; after four years it may be called Riserva.",
+   "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barbaresco-docg/"
+  },
+  {
+   "fact": "Alsace Grand Cru: Riesling, Muscat, Pinot Gris and Gewurztraminer are the traditional Grand Cru grapes.",
+   "source": "https://www.vinsalsace.com/en/grands-crus/"
+  }
+ ],
+ "unverified": [
+  "Second Growths count: the Court says 14; the Conseil des Grands Crus Classés en 1855 site lists 13 member Seconds (Léoville Las Cases is not on its member list). The chapter shows a sample and does not state a count.",
+  "Saint-Émilion classification start year: the Court lists 1959; the Conseil des Vins de Saint-Émilion says the first was 1955. The chapter does not state a year.",
+  "Top vintages (Bordeaux last 15 years, Burgundy and Champagne last 10, Barolo/Barbaresco last 10, Brunello last 15): the Court asks for them but gives no list; no official vintage chart was fetched.",
+  "Châteauneuf-du-Pape minimum alcohol and Southern Rhône minimum Grenache rules: Certified topics; the Inter Rhône pages fetched don't state them.",
+  "Which Côte de Nuits Grand Cru sits in which village: the BIVB page fetched lists the Grands Crus without villages, so the chapter doesn't map them. The BIVB list also omits La Grande Rue and La Romanée.",
+  "Nicolas Joly's estate (Coulée de Serrant) and Domaine Huet's appellation (Vouvray): not stated on the pages fetched; the chapter only names them as the Court does.",
+  "Brunello release date: the consortium's wording ('1 January of the year after the fifth year from harvest') is ambiguous, so the chapter leaves it out.",
+  "Tokaji not made 1949-1989: stated by the Court's Certified column only; not checked against a Hungarian body.",
+  "Burgundy négociant/domaine definitions: the Court asks candidates to distinguish them but gives no definition; the chapter only names which is which, per the Court.",
+  "Pinot Noir as a fifth Alsace Grand Cru grape from 2022: Court only (not on vinsalsace.com pages fetched)."
+ ],
+ "court": {
+  "outcome": "FRANCE - BORDEAUX: After studying this section, a candidate will be able to connect grape variety, geography, soil type, and wine style with important Bordeaux appellations. They will be able to identify key regions on map, distinguish the unique aspects of the different regions of Bordeaux in regional classification systems, vintages, and styles of wine produced. A candidate will understand the impact of these differences when making purchasing decisions and when making recommendations. Certified Sommeliers will recognize iconic producers and be able to recommend and sell food pairings with the various styles of wine from Bordeaux to a guest.\n\nFRANCE - BURGUNDY: After studying this section, a candidate will be able to identify major villages, grand crus, soil types, and winemaking styles for each area of Burgundy. A Certified Sommeliers will recognize iconic producers and be able to recommend and sell food pairings with the various wines from Burgundy to a guest.\n\nFRANCE - LOIRE VALLEY: After studying this section, a candidate will know the major regions and selected appellations of the Loire Valley and be able to connect the grape varieties to their appellations. Candidates will be able to recommend and sell food pairings with Loire Valley wines. Certified Sommeliers will recognize iconic producers and be able to recommend and sell food pairings with wines from the Loire Valley to a guest.\n\nFRANCE - THE RHÔNE VALLEY: After studying this section, a candidate will be able to identify the primary and secondary AOCs and Crus, know their locations, primary grape varieties, and general style. Candidates will understand and connect differences in quality and price among AOPs/Crus to physical features and landscape. Certified Sommeliers will recognize iconic producers and be able to recommend and sell food pairings with wines from the Rhône Valley to a guest.\n\nFRANCE - ALSACE: After studying this section, a candidate will understand the classification of Alsatian wine and be able to identify important Grands Crus vineyard names. A Certified Sommelier will be able to recognize iconic producers and be able to recommend and sell food pairings with wines from Alsace to a guest.\n\nFRANCE - SOUTH FRANCE: After studying this section, a candidate will be able to match regions in the South of France with their grape varieties and styles of wine made.\n\nITALY - NORTHERN ITALY - PIEDMONT: After studying this section, a candidate will know the major DOCGs within Piedmont, know their grape varieties, understand their styles, aging requirements, and labeling laws. A Certified Sommelier will be able to recognize iconic producers and be able to sell and recommend food pairings with Barolo and Barbaresco to a guest.\n\nITALY - NORTHERN ITALY - LOMBARDY & EMILIA-ROMAGNA: After studying this section, a student will be able to understand different styles of Franciacorta, know the grape variety and style of Valtellina Superiore DOCG, and know the styles and sub-zones of Lambrusco. A Certified Sommelier recognize iconic producers and be able to sell and recommend food pairings with Franciacorta to a guest.\n\nITALY - NORTHERN ITALY - TRENTINO-ALTO ADIGE / FRIULI / VENETO: After studying this section, a candidate will know a broader range of DOC/DOCGs in Northeast Italy, match grape varieties to their regions, and understand winemaking styles. A Certified Sommelier will be able to recognize iconic producers and be able to sell and recommend food pairings with wines from these regions to a guest.\n\nITALY - TUSCANY: After studying this section, a candidate will understand the differences between multiple regions of Sangiovese, and know and understand DOC/DOCG wines from regions in Tuscany. A Certified Sommelier recognize iconic producers and be able to sell and recommend food pairings with wines from Tuscany to a guest.\n\nITALY - CENTRAL & SOUTHERN ITALY: After studying this section, a candidate will know the DOC/DOCGs in Central and Southern Italy, match grape varieties to their regions, and understand winemaking styles.\n\nITALY - ISLANDS - SICILY & SARDINIA: After studying this section, a candidate will be able to match grape varieties to major DOC/DOCGs and know the larger region within Italy in which they are located.\n\nSPAIN - GALICIA: After studying this section, a candidate will know the soil type and the styles and grape varieties of Valdeorras DO and Ribeira Sacra DO.  A Certified Sommelier will be able to recognize iconic producers and be able to recommend and sell food pairings with Rías Baixas Albariño to a guest.\n\nSPAIN - LA RIOJA: After studying this section, a candidate will have a deeper knowledge of Rioja, including the subzones, specific aging requirements, iconic producers, and differences between traditional and modern styles. A Certified Sommelier will be able to recognize iconic producers and be able to sell and recommend food pairings with wines from Rioja to a guest.\n\nSPAIN - CASTILLA Y LEÓN: After studying this section, a candidate will have deeper knowledge of the major DOs within Castilla y León, including specific aging requirements. A Certified Sommelier will be able to recognize iconic producers and be able to sell and recommend food pairings with wines from Ribera del Duero to a guest.\n\nSPAIN - CATALONIA / CATALUNYA: After studying this section, a candidate will have a deeper understanding of Priorat DOCa and Cava DO, including aging requirements. A Certified Sommelier will be able to recognize iconic producers and be able to sell and recommend food pairings with wines from these regions to a guest.\n\nSPAIN - OTHER DOs: After studying this section, a student will know the  styles of wine made in selected DOs beyond the classic regions.\n\nPORTUGAL: After studying this section, a candidate will be able to match major grape varieties to their respective DOPs and styles. Certified Sommeliers will be able to recommend and sell food pairings with wines from Portugal to a guest.\n\nGERMANY: After studying this section, a candidate will expand their knowledge of wine terms, label terms, history, lore, and classifications. A candidate will be able to describe the general styles of finished wine, including structure and flavors. A Certified Sommelier will know the proper ways to include the wines of Germany on a wine list, be able to recognize iconic producers, and be able to recommend and sell food pairings with these wines to a guest.\n\nAUSTRIA: After studying this section, a candidate will increase their knowledge of general terms, styles of wine, and classifications in Austria. A Certified Sommelier will be able to recognize iconic producers and be able to recommend and sell food pairings with Austrian Grüner Veltliner to a guest.\n\nHUNGARY: After studying this section, a student will understand Tokaji's grape growing and winemaking. A Certified Sommelier will be able to sell and recommend food pairings with Tokaji to a guest.\n\nGREECE: After studying this section, a candidate will know the location, climate, and grape varieties of three important wine regions of Greece. Certified Sommeliers will recognize iconic producers and be able to recommend and sell food pairings with wines from Greece to a guest.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "Bordeaux · Geography",
+    "guide": "Atlantic coast to continental inland; how the Gironde, Garonne and Dordogne affect each appellation.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · White grapes",
+    "guide": "Sauvignon Blanc, Sémillon and Muscadelle.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Red grapes",
+    "guide": "Match Merlot and Cabernet Franc to the AOPs and styles.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Soil",
+    "guide": "Match each grape to its ideal soil: gravel, clay, limestone, sand.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Grape growing",
+    "guide": "Humidity and rot, noble rot, spring frost, Bordeaux mixture.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Style",
+    "guide": "Appellation-dependent: dry red, dry white, sweet white.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Wine Law / Appellations",
+    "guide": "Add Barsac, Lalande-de-Pomerol and Montagne-Saint-Émilion to the map.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Wine Law / Classification",
+    "guide": "1855 Firsts and Seconds, Sauternes, Graves, Saint-Émilion tiers, Cru Bourgeois.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Producers",
+    "guide": "Recognize classified châteaux and top Pomerol and Saint-Émilion names.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Vintage / History / Service",
+    "guide": "Vintage and price, Eleanor of Aquitaine, the Dutch, decanting young and old.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Bordeaux · Food and Beverage Pairing / BOS",
+    "guide": "Bold reds with beef and lamb, sweet wines with dessert and foie gras.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "Burgundy · Geography: Location",
+    "guide": "Five non-contiguous regions in eastern France.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · Climate",
+    "guide": "Continental.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · Physical features, soils, growing, winemaking",
+    "guide": "Slope and aspect, Kimmeridgian vs Portlandian, frost, bâtonnage, cold soak, whole cluster, pièce, chaptalization.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · Style",
+    "guide": "Dry whites and reds; a major source of Crémant.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · Wine Law / Appellations / Classification",
+    "guide": "Petit Chablis vs Chablis, 7 Chablis Grands Crus, Côte d’Or villages and Grands Crus, Chalonnaise, 10 Beaujolais crus.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · Label Terms",
+    "guide": "Négociant, domaine, clos, monopole, vieilles vignes.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · General Terms",
+    "guide": "Lieu-dit.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · Producers / Vintage",
+    "guide": "Négociants vs domaines: Dauvissat, Raveneau, DRC, Leroy, Jadot, Drouhin.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · History & Lore",
+    "guide": "Monks and Napoleonic inheritance split the vineyards.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · Non-Wine Production",
+    "guide": "Marc de Bourgogne.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · Service of Beverage",
+    "guide": "Glassware for white and red Burgundy.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Burgundy · Food and Beverage Pairing",
+    "guide": "Oak, acid and tannin in pairing; classic Burgundian dishes.",
+    "where": "Burgundy and Beaujolais"
+   },
+   {
+    "topic": "Loire · Geography",
+    "guide": "Atlantic to central France; four regions west to east; the Layon River.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Loire · Climate",
+    "guide": "Maritime to continental moving east.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Loire · Appellations",
+    "guide": "Connect Muscadet, Savennières, Vouvray, Sancerre and more to their grapes.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Loire · Soil / Grape Growing",
+    "guide": "Tuffeau in Vouvray, silex, Kimmeridgian clay; botrytis by the rivers.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Loire · Winemaking",
+    "guide": "Vouvray Pétillant and Crémant de Loire, dry to sweet Chenin.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Loire · Grapes",
+    "guide": "Melon B, Chenin Blanc, Cabernet Franc, Sauvignon Blanc, Pinot Noir.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Loire · Label Terms",
+    "guide": "Sur lie, sec, demi-sec, moelleux.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Loire · Producers / History",
+    "guide": "Domaine Huet, Nicolas Joly.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Loire · Food and Beverage Pairing",
+    "guide": "Pair each Chenin sweetness level; classic Sancerre and Pouilly-Fumé pairings.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · Geography / Climate",
+    "guide": "Bas-Rhin vs Haut-Rhin, elevation and Vosges shelter.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · Physical Features",
+    "guide": "Vosges Mountains and the Rhine.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · Soil / Winemaking",
+    "guide": "Very diverse soils; large neutral foudres, little new oak.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · White grapes",
+    "guide": "Add Pinot Blanc, Silvaner, Chardonnay, Auxerrois.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · Wine Law",
+    "guide": "100% of a named grape; the Flûte d’Alsace bottle.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · Appellations",
+    "guide": "Alsace AOP, 51 Grands Crus and their grape exceptions, Crémant d’Alsace.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · Label Terms",
+    "guide": "Crémant, Edelzwicker, Gentil.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · Style",
+    "guide": "VT and SGN.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · Producers",
+    "guide": "Trimbach, Weinbach, Deiss, Hugel, Sparr, Zind-Humbrecht.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · History & Lore",
+    "guide": "French and German rule shaped culture and food.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · Food and Beverage Pairing",
+    "guide": "Choucroute, tarte flambée, baeckeoffe, cured meats.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Alsace · BOS",
+    "guide": "Crémant d’Alsace as a cost-effective traditional-method sparkler.",
+    "where": "The Loire and Alsace"
+   },
+   {
+    "topic": "Rhône · Geography / Climate / Physical Features",
+    "guide": "Lyon, Montélimar, Avignon; steep north vs rolling south; slope and aspect.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "Rhône · Soil",
+    "guide": "North granite and schist; south galets, alluvium, limestone.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "Rhône · Grape Growing",
+    "guide": "Modern southern vineyards often trellised.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "Rhône · Winemaking / Grapes",
+    "guide": "Co-fermentation in the north, blending in the south; the full grape list.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "Rhône · Wine Law / Appellations / Classification",
+    "guide": "Northern crus and grapes; southern tiers and crus with their styles.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "Rhône · Wine Law / Label Terms",
+    "guide": "Châteauneuf alcohol and Grenache minimums; Vins Doux Naturels.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "Rhône · General Terms / Style",
+    "guide": "Cru = single village; spicy reds, rich whites.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "Rhône · Producers / History",
+    "guide": "Chave, Chapoutier, Guigal, Beaucastel, Rayas; the papal crest.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "Rhône · Service of Beverage",
+    "guide": "Glassware for Syrah and Grenache.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "Rhône · Food and Beverage Pairing",
+    "guide": "Meaty dishes with herbs, bacon, pepper; white Rhône for Chardonnay drinkers.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "South of France · Geography / Climate",
+    "guide": "Provence, Languedoc-Roussillon, Southwest and Dordogne: locations and climates.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "South of France · Grape Growing / Winemaking",
+    "guide": "Lots of IGP (Pays d’Oc); 90% rosé in Provence; mutage for VDNs.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "South of France · Grapes",
+    "guide": "Match each area’s white and red grapes.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "South of France · Wine Law / Appellations",
+    "guide": "Côtes de Provence, Bandol, Limoux, Fitou, Banyuls, Muscat de Rivesaltes, Cahors, Madiran, Jurançon, Bergerac, Monbazillac.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "South of France · Producers",
+    "guide": "Tempier, Pibarnon, Pradeaux; Banyuls from Chapoutier, Mas Blanc.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "South of France · History & Lore",
+    "guide": "Provence: wine since 600 BCE.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "South of France · Food and Beverage Pairing",
+    "guide": "Rosé with seafood, Bandol with lamb, Banyuls with chocolate, Cahors with duck.",
+    "where": "The Rhône and the South of France"
+   },
+   {
+    "topic": "Piedmont · Wine Law / DOCGs",
+    "guide": "Barolo, Barbaresco, Asti, Alta Langa, Roero, Roero Arneis, Ghemme, Gattinara.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "Piedmont · Winemaking / aging",
+    "guide": "Barolo 38 months (18 oak); Barbaresco 26 (9 oak).",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "Piedmont · Label / General Terms",
+    "guide": "Normale, riserva, sorì.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "Piedmont · Producers / Vintage / History",
+    "guide": "Barolo and Barbaresco producers; traditional vs modernist.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "Piedmont · Service / Pairing",
+    "guide": "Long ageability; big tannins need meat or fat.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Winemaking",
+    "guide": "Passito in Lombardy; Lambrusco by tank, metodo classico or ancestrale.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Red grapes",
+    "guide": "Lambrusco; Chiavennasca.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Classification",
+    "guide": "IGP, DOC, DOCG.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Wine Law / DOC(G)s",
+    "guide": "Valtellina Superiore, Sforzato, Franciacorta Satèn, Lambrusco subzones and sweetness.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "Lombardy & Emilia-Romagna · Service / Pairing / BOS",
+    "guide": "Serve Lambrusco cold; it fades by the glass; Franciacorta pairs like Champagne.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "NE Italy · Geography / grapes / winemaking",
+    "guide": "Teroldego, Lagrein, Friulano, Ribolla Gialla, Refosco; Friuli orange wines.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "NE Italy · Wine Law / DOC(G)s",
+    "guide": "Alto Adige, Trentino, Valdadige, Friuli DOCs; Conegliano Valdobbiadene, Reciotos, Ripasso.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "NE Italy · Producers / History",
+    "guide": "Terlano, Gravner, Masi, Quintarelli; Alto Adige co-ops; Amarone history.",
+    "where": "Northern Italy"
+   },
+   {
+    "topic": "Tuscany · Geography / Climate",
+    "guide": "Locate Chianti, Chianti Classico, Montalcino and Bolgheri.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · Physical Features",
+    "guide": "Apennines, Ligurian and Tyrrhenian Seas.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · White grapes",
+    "guide": "Trebbiano, Vermentino, Vernaccia.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · Red grapes",
+    "guide": "Prugnolo Gentile and the Bordeaux grapes.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · Soil",
+    "guide": "Montalcino: clay low, galestro high.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · Winemaking / Style / Classification",
+    "guide": "Brunello aging and barrels; Gran Selezione exists.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · Wine Law / DOCGs",
+    "guide": "Sangiovese minimums; Vino Nobile, Bolgheri, Rosso di Montepulciano, Vin Santo.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · Label Terms / Producers",
+    "guide": "Super Tuscan styles; Sassicaia, Ornellaia, Biondi Santi, Soldera.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · Vintage",
+    "guide": "Top Brunello vintages of the past 15 years.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · History & Lore",
+    "guide": "Super Tuscan history; Gallo Nero.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · Service of Beverage",
+    "guide": "Decant young Brunello.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · Food and Beverage Pairing",
+    "guide": "Pairings for Chianti and Brunello.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Tuscany · Business of the Sommelier",
+    "guide": "Current Brunello release and top-brand prices.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Central & Southern Italy · Geography",
+    "guide": "Locate all central and southern regions.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Central & Southern Italy · Appellations",
+    "guide": "Verdicchio DOCs, Montepulciano d’Abruzzo, Sagrantino, Campania’s three DOCGs.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Central & Southern Italy · Climate / Physical Features",
+    "guide": "Maritime coast, continental inland, Mediterranean south; Vesuvius.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Central & Southern Italy · Soil / Grapes",
+    "guide": "Volcanic Campania; Fiano, Greco, Verdicchio, Aglianico, Montepulciano, Sagrantino, Primitivo.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Central & Southern Italy · Classification / Wine Law",
+    "guide": "Match each DOCG to its region.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Central & Southern Italy · Label Terms",
+    "guide": "Superiore and Riserva.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Central & Southern Italy · Producers",
+    "guide": "Know any producer you recommend.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Central & Southern Italy · Service of Beverage",
+    "guide": "Decant young Taurasi and Sagrantino.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Sicily & Sardinia · DOC(G)s and grapes",
+    "guide": "Etna, Cerasuolo di Vittoria, Marsala, Cannonau and Vermentino di Sardegna; Grillo, Inzolia, Catarratto.",
+    "where": "Tuscany, the South and the islands"
+   },
+   {
+    "topic": "Galicia · Valdeorras and Ribeira Sacra",
+    "guide": "Soils, styles and grapes: Godello, Mencía; Albariño producers and shellfish.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Rioja · Geography / Climate",
+    "guide": "Subzone climates: Alta continental, Alavesa coolest, Oriental Mediterranean.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Rioja · Wine Law / DOCa",
+    "guide": "Subzones; Garnacha, Mazuelo, Graciano, Malvasia.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Rioja · Label Terms / Classification",
+    "guide": "Exact Crianza, Reserva, Gran Reserva aging; Viñedo Singular; Joven.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Rioja · Style",
+    "guide": "Rosado too; modern French-oak styles.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Rioja · Producers",
+    "guide": "López de Heredia, La Rioja Alta, Riscal, Cáceres, Allende.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Rioja · Vintage",
+    "guide": "Gran Reserva mainly in the best vintages.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Rioja · History & Lore",
+    "guide": "Bordeaux and Rioja during phylloxera.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Rioja · Food and Beverage Pairing",
+    "guide": "How oak and oxidation change the pairing.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Castilla y León · Geography",
+    "guide": "North central Spain, high meseta, the Duero.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Castilla y León · Grapes / DOs / Label Terms",
+    "guide": "Tinta del País, Tinta de Toro, Bierzo Mencía; Ribera aging.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Castilla y León · Style",
+    "guide": "Ribera: young or long-aged in American or French oak.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Castilla y León · Producers",
+    "guide": "Vega Sicilia, Pesquera, Pingus, Descendientes de J. Palacios.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Catalonia · Geography",
+    "guide": "Northeast Spain near Barcelona.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Catalonia · Climate / Soil",
+    "guide": "Priorat diurnal shifts and llicorella.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Catalonia · Grape Growing / Winemaking",
+    "guide": "Bush vines, no machines; gyropalette in Cava.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Catalonia · Grapes",
+    "guide": "Garnacha Blanca, Pinot Noir and international grapes.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Catalonia · Wine Law",
+    "guide": "Cava across Spain, mostly Penedès; Cava aging.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Catalonia · Producers / History",
+    "guide": "Clos Mogador, Álvaro Palacios, Gramona; the Gratallops project.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Catalonia · Food and Beverage Pairing",
+    "guide": "Priorat’s oak, ripeness and alcohol at the table.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Spain Other DOs · País Vasco, Murcia, Pago",
+    "guide": "Txakolina styles and grapes; Jumilla Monastrell; what a Vino de Pago is.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Portugal · Geography",
+    "guide": "Western border of Spain.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Portugal · Climate / Soil / Growing",
+    "guide": "Maritime north to warm interior; schist and granite; terraces.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Portugal · Winemaking",
+    "guide": "Vinho Verde low alcohol; Port and Madeira fortified.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Portugal · Grapes / DOPs",
+    "guide": "Match grapes to Douro subregions, Dão, Bairrada, Alentejo, Madeira.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Germany · Geography / Soil",
+    "guide": "Cool continental; Mosel slate, other soils vary.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Germany · Winemaking / Grapes",
+    "guide": "Deutscher Sekt; Müller-Thurgau, Silvaner, Weiss- and Grauburgunder.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Germany · Wine Law / Classification",
+    "guide": "VDP: Grosses and Erstes Gewächs.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Germany · General / Label Terms",
+    "guide": "Gemeinde, Einzellage, Oechsle, Bocksbeutel, Halbtrocken, Edelfäule, Schloss.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Germany · Wine Law / Appellations",
+    "guide": "Nahe, Franken, Baden, Mittelrhein, Ahr.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Germany · Producers",
+    "guide": "Dönnhoff, Wirsching, Weil, Leitz, Gunderloch, Egon Müller, Prüm.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Germany · History / Service / Pairing",
+    "guide": "1971 law; list by style and sweetness; pair sweet and dry Riesling.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Austria · Geography / Climate",
+    "guide": "Eastern Austria; continental with some warm eastern air.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Austria · Wine Law / Appellations",
+    "guide": "Kremstal, Kamptal, Wachau DACs; Burgenland, Steiermark, Wien.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Austria · Label Terms",
+    "guide": "The Banderole capsule.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Austria · Producers",
+    "guide": "Knoll, Rudi and FX Pichler, Prager, Schloss Gobelsburg, Bründlmayer.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Austria · Food and Beverage Pairing",
+    "guide": "Grüner with seafood, herbs, asparagus, artichokes.",
+    "where": "Germany and Austria"
+   },
+   {
+    "topic": "Hungary · Tokaji growing and winemaking",
+    "guide": "Bodrog humidity, aszú, puttonyos, Furmint and Hárslevelű, Eszencia, 500 ml, pairings.",
+    "where": "Hungary and Greece"
+   },
+   {
+    "topic": "Greece · Geography / Appellations",
+    "guide": "Santorini, Naoussa and Nemea PDOs.",
+    "where": "Hungary and Greece"
+   },
+   {
+    "topic": "Greece · Climate / Soil / Growing",
+    "guide": "Santorini volcanic soil and basket vines; Naoussa continental.",
+    "where": "Hungary and Greece"
+   },
+   {
+    "topic": "Greece · Grapes",
+    "guide": "Assyrtiko, Xinomavro, Agiorgitiko.",
+    "where": "Hungary and Greece"
+   },
+   {
+    "topic": "Greece · Producer",
+    "guide": "Sigalas (Santorini).",
+    "where": "Hungary and Greece"
+   },
+   {
+    "topic": "Greece · Food and Beverage Pairing",
+    "guide": "Assyrtiko with seafood; Xinomavro with lamb or beef.",
+    "where": "Hungary and Greece"
+   }
+  ]
+ },
+ "v3": {
+  "video": {
+   "youtubeId": "YKcbIjPuO7Q",
+   "title": "Determine What To Study For Your Sommelier Exam: Advanced Sommelier Series",
+   "by": "Court of Master Sommeliers, Americas",
+   "length": "1:34"
+  },
+  "sections": [
+   {
+    "name": "Bordeaux",
+    "video": {
+     "youtubeId": "HzbX0eO1gFM",
+     "title": "Bordeaux Part 3 | Certified",
+     "by": "Court of Master Sommeliers",
+     "length": "4:49"
+    },
+    "keyPoints": [
+     {
+      "big": "YQUEM",
+      "line": "is the only Premier Cru Supérieur in Sauternes and Barsac."
+     },
+     {
+      "big": "SECOND GROWTHS",
+      "line": "sit in Margaux, Saint-Julien, Pauillac and Saint-Estèphe."
+     },
+     {
+      "big": "GRAVES",
+      "line": "ranks 14 Pessac-Léognan châteaux, for red and white."
+     },
+     {
+      "big": "SAINT-ÉMILION",
+      "line": "has three tiers and a new list every ten years."
+     },
+     {
+      "big": "POMEROL",
+      "line": "has no classification, yet holds Pétrus and Le Pin."
+     }
+    ],
+    "read": {
+     "bigIdea": "Bordeaux ranks its châteaux five ways.",
+     "where": "From Level 1: the **Left Bank** is Cabernet on gravel, the **Right Bank** Merlot on clay. Certified adds more places: **Pessac-Léognan** and **Barsac** in Graves, **Lalande-de-Pomerol** and **Montagne-Saint-Émilion** on the Right Bank. It also adds every ranking and the producers behind them.",
+     "stopsTitle": "The rankings, one by one",
+     "stops": [
+      {
+       "name": "1855 · Médoc reds",
+       "note": "five levels",
+       "text": "Below the five Firsts come the **Second Growths**, such as **Cos d’Estournel** and **Montrose** (Saint-Estèphe) and the two **Pichons** (Pauillac)."
+      },
+      {
+       "name": "1855 · Sauternes and Barsac",
+       "note": "three levels",
+       "text": "**Château d’Yquem** alone is **Premier Cru Supérieur**. Premiers Crus include **Climens** and **Coutet** in Barsac."
+      },
+      {
+       "name": "Graves",
+       "note": "red and white",
+       "text": "**14 châteaux**, all in Pessac-Léognan. **Haut-Brion** sits on this list and the 1855 list."
+      },
+      {
+       "name": "Saint-Émilion",
+       "note": "every ten years",
+       "text": "Three tiers, topped by **Premier Grand Cru Classé ‘A’**. In 2022 the ‘A’ châteaux were **Figeac** and **Pavie**."
+      },
+      {
+       "name": "Crus Bourgeois",
+       "note": "Médoc",
+       "text": "Three levels up to **Exceptionnel**, revised every five years. **Pomerol** has no ranking at all."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Four rankings beyond the red 1855 list:",
+     "mixup": "**Pomerol** has no classification. **Saint-Émilion**’s list changes every ten years.",
+     "sayIt": "A Second Growth from Saint-Julien. Classic Left Bank Cabernet, lovely with lamb."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Burgundy and Beaujolais",
+    "video": {
+     "youtubeId": "qjsdbokNe-4",
+     "title": "Burgundy Part 2 | Introductory & Certified",
+     "by": "Court of Master Sommeliers",
+     "length": "4:14"
+    },
+    "keyPoints": [
+     {
+      "big": "SEVEN",
+      "line": "Grands Crus in Chablis: Les Clos, Valmur, Vaudésir and four more."
+     },
+     {
+      "big": "PETIT CHABLIS",
+      "line": "grows on Portlandian limestone, not Kimmeridgian."
+     },
+     {
+      "big": "BOUZERON",
+      "line": "is the one village appellation that is 100% Aligoté."
+     },
+     {
+      "big": "CÔTE DU PY",
+      "line": "is the famous lieu-dit of Morgon, Beaujolais’ largest cru."
+     },
+     {
+      "big": "NÉGOCIANTS",
+      "line": "to know: Jadot, Latour, Drouhin, Bouchard, Faiveley."
+     }
+    ],
+    "read": {
+     "bigIdea": "Certified means every village and Grand Cru.",
+     "where": "From Level 1: Burgundy runs from **Chablis** south to **Beaujolais**, with four levels from Régionale up to **Grand Cru**. Now learn the names inside each level. The Court expects every Côte d’Or village and its Grands Crus, all seven **Chablis** Grands Crus and all ten **Beaujolais** crus.",
+     "stopsTitle": "North to south",
+     "stops": [
+      {
+       "name": "Chablis",
+       "note": "Kimmeridgian",
+       "text": "**Petit Chablis** grows on harder **Portlandian** limestone; Chablis and its crus on **Kimmeridgian** limestone and marl. Top growers: **Dauvissat** and **Raveneau**."
+      },
+      {
+       "name": "Côte de Nuits",
+       "note": "red Grands Crus",
+       "text": "The heart of the Grands Crus, mainly Pinot Noir: **Chambertin**, **Clos de Vougeot**, **Musigny**, **Romanée-Conti**, **La Tâche** and more. There is also a **Côte de Nuits-Villages** appellation."
+      },
+      {
+       "name": "Côte de Beaune",
+       "note": "reds, then whites",
+       "text": "Reds around Beaune (**Volnay**, **Pommard**); Chardonnay from **Meursault** south. Grands Crus include **Corton-Charlemagne** and five Montrachets."
+      },
+      {
+       "name": "Chalonnaise and Mâconnais",
+       "note": "value villages",
+       "text": "**Bouzeron** (100% Aligoté), **Rully**, **Mercurey**, **Givry**, **Montagny**. In the Mâconnais, **Pouilly-Fuissé** has Premier Cru vineyards."
+      },
+      {
+       "name": "Beaujolais",
+       "note": "ten crus",
+       "text": "Ten crus, including **Fleurie**, **Moulin-à-Vent** and **Morgon**. Morgon is the largest; its **Côte du Py** is decomposed shale."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Two lists to learn by heart:",
+     "mixup": "**Jadot**, **Latour** and **Drouhin** are large **négociants**. **DRC**, **Leroy** and **Leflaive** are the Court’s top Côte d’Or **domaines**.",
+     "sayIt": "This is a Côte de Nuits Grand Cru: Pinot Noir from one of Burgundy’s top vineyards."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "The Loire and Alsace",
+    "video": {
+     "youtubeId": "hRboM5eAUZk",
+     "title": "Alsace | Introductory & Certified",
+     "by": "Court of Master Sommeliers",
+     "length": "3:08"
+    },
+    "keyPoints": [
+     {
+      "big": "TUFFEAU",
+      "line": "is the soft limestone under Vouvray’s Chenin."
+     },
+     {
+      "big": "MOELLEUX",
+      "line": "means sweet: about 10 to 45 grams of sugar per liter."
+     },
+     {
+      "big": "HAUT-RHIN",
+      "line": "is higher and more sheltered; many top sites sit there."
+     },
+     {
+      "big": "FOUDRE",
+      "line": "is Alsace’s big neutral cask; new oak is rare."
+     },
+     {
+      "big": "FLÛTE",
+      "line": "d’Alsace is the bottle every Alsace AOP wine must use."
+     }
+    ],
+    "read": {
+     "bigIdea": "Two white-wine regions, now soil by soil.",
+     "where": "From Level 1: the Loire runs from the Atlantic to central France, and Alsace hides behind the Vosges. Certified adds **soils**, **sweetness words** and **producers** for both. It also splits Alsace into **Bas-Rhin** and **Haut-Rhin**.",
+     "stopsTitle": "Four things to add",
+     "stops": [
+      {
+       "name": "Loire soils",
+       "note": "and a river",
+       "text": "**Tuffeau** limestone under Vouvray, plus **silex** (flint) and **Kimmeridgian** clay. Humidity from the **Layon River** brings botrytis to Quarts de Chaume and Bonnezeaux."
+      },
+      {
+       "name": "Chenin on the label",
+       "note": "dry to sweet",
+       "text": "**Sec**, **Demi-Sec**, **Moelleux** (10-45 g/L of sugar). Bubbles come as **Vouvray Pétillant** or **Crémant de Loire**. Names: **Domaine Huet**, **Nicolas Joly**."
+      },
+      {
+       "name": "Alsace, north and south",
+       "note": "two departments",
+       "text": "**Bas-Rhin** is lower and less sheltered by the Vosges. **Haut-Rhin** is higher, more sheltered and home to many top vineyards."
+      },
+      {
+       "name": "Alsace in the cellar",
+       "note": "and the bottle",
+       "text": "Large neutral **foudres**, little new oak. More grapes: **Pinot Blanc**, **Sylvaner**, **Chardonnay**, **Auxerrois**. Every Alsace AOP wine goes in the traditional **Flûte d’Alsace** bottle."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Same region, two departments:",
+     "mixup": "**Edelzwicker** and **Gentil** are both Alsace blends. A grape name on the label means **100%** that grape.",
+     "sayIt": "A Crémant d’Alsace: traditional-method bubbles at a friendlier price."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "The Rhône and the South of France",
+    "video": {
+     "youtubeId": "aLCocZki2tA",
+     "title": "Everything You Ever Wanted to Know About Châteauneuf-du-Pape",
+     "by": "Wine Folly",
+     "length": "8:51"
+    },
+    "keyPoints": [
+     {
+      "big": "MONTÉLIMAR",
+      "line": "is the unofficial line between the north and the south."
+     },
+     {
+      "big": "GALETS",
+      "line": "are the south’s rolled stones; the north has granite and schist."
+     },
+     {
+      "big": "BANDOL",
+      "line": "is at least 50% Mourvèdre."
+     },
+     {
+      "big": "MADIRAN",
+      "line": "is Tannat; Cahors is Côt, the local name for Malbec."
+     },
+     {
+      "big": "MUTAGE",
+      "line": "adds grape spirit to stop fermentation: Vins Doux Naturels."
+     }
+    ],
+    "read": {
+     "bigIdea": "The Rhône, then France’s whole sunny south.",
+     "where": "From Level 1: the **Northern Rhône** is Syrah on steep slopes; the **South** is Grenache blends under the Mistral. Certified adds soils, cru rules and producers. Then it adds the **South of France**: Provence, Languedoc-Roussillon, the Southwest and the Dordogne.",
+     "stopsTitle": "Five stops",
+     "stops": [
+      {
+       "name": "Northern Rhône",
+       "note": "granite and schist",
+       "text": "**Côte-Rôtie** is the only red cru that plants **Viognier** with Syrah. Names: **Chave**, **Guigal**, **Chapoutier**."
+      },
+      {
+       "name": "Southern Rhône",
+       "note": "galets",
+       "text": "Galets, alluvium and limestone. **Châteauneuf-du-Pape** allows 18 varieties; **Beaucastel** and **Rayas** are its icons."
+      },
+      {
+       "name": "Provence",
+       "note": "rosé country",
+       "text": "Nearly 90% **dry rosé**. **Bandol** is at least 50% **Mourvèdre**: **Domaine Tempier**, **Château de Pibarnon**."
+      },
+      {
+       "name": "Languedoc-Roussillon",
+       "note": "still, sparkling, sweet",
+       "text": "**Limoux** and **Crémant de Limoux**, **Fitou** reds, and the sweet **Vins Doux Naturels** **Banyuls** and **Muscat de Rivesaltes**."
+      },
+      {
+       "name": "Southwest and Dordogne",
+       "note": "inland",
+       "text": "**Cahors** (Côt), **Madiran** (Tannat), **Jurançon** (Manseng), **Bergerac** (Bordeaux grapes) and sweet, botrytised **Monbazillac**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Match the appellation to its grape:",
+     "mixup": "**Banyuls** is a sweet fortified Grenache. **Bandol** is a dry Mourvèdre red.",
+     "sayIt": "Bandol is big Mourvèdre. It’s great with lamb."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Northern Italy",
+    "video": {
+     "youtubeId": "OjZh5zLYCWU",
+     "title": "Two Nebbiolo Wines - Barolo vs Roero Riserva",
+     "by": "Wine Folly",
+     "length": "23:08"
+    },
+    "keyPoints": [
+     {
+      "big": "38 MONTHS",
+      "line": "is Barolo’s minimum aging, 18 of them in oak."
+     },
+     {
+      "big": "26 MONTHS",
+      "line": "is Barbaresco’s minimum, 9 of them in oak."
+     },
+     {
+      "big": "SPANNA",
+      "line": "is Nebbiolo in Gattinara and Ghemme."
+     },
+     {
+      "big": "CHIAVENNASCA",
+      "line": "is Nebbiolo in Valtellina, Lombardy."
+     },
+     {
+      "big": "RIPASSO",
+      "line": "is Valpolicella refermented on Amarone or Recioto lees."
+     }
+    ],
+    "read": {
+     "bigIdea": "Northern Italy, one DOCG at a time.",
+     "where": "From Level 1: **Barolo** and **Barbaresco** are Nebbiolo, **Franciacorta** is metodo classico, and **Amarone** uses dried grapes. Certified adds the **aging laws**, the top vineyards, more DOC(G)s and the producers.",
+     "stopsTitle": "Four regions",
+     "stops": [
+      {
+       "name": "Piedmont",
+       "note": "Nebbiolo’s home",
+       "text": "Barolo **38 months** (18 in oak), Barbaresco **26** (9 in oak). Top sites: **Cannubi**, **Brunate**, **Asili**. Also **Roero**, **Alta Langa**, **Gattinara** and **Ghemme**. A **sorì** is a privileged site."
+      },
+      {
+       "name": "Lombardy and Emilia-Romagna",
+       "note": "lakes and Alps",
+       "text": "**Valtellina Superiore** is Nebbiolo (**Chiavennasca**); **Sforzato** is its dried-grape version. **Satèn** is Brut-only Franciacorta. **Lambrusco** comes secco, amabile or dolce."
+      },
+      {
+       "name": "Trentino-Alto Adige and Friuli",
+       "note": "single varieties",
+       "text": "Local reds **Teroldego** and **Lagrein**. Friuli adds **Friulano**, **Ribolla Gialla** and **Refosco**, plus **orange** and natural wines."
+      },
+      {
+       "name": "Veneto",
+       "note": "dried grapes",
+       "text": "**Ripasso** is refermented on Amarone or Recioto lees. **Recioto** is sweet, from dried grapes. **Conegliano Valdobbiadene** is Prosecco’s DOCG."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Valpolicella, from light to sweet:",
+     "mixup": "**Spanna** (Gattinara, Ghemme) and **Chiavennasca** (Valtellina) are both Nebbiolo.",
+     "sayIt": "Barolo has big tannins. It wants a rich meat dish."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "Tuscany, the South and the islands",
+    "video": {
+     "youtubeId": "RU9rF1Thje8",
+     "title": "Super Tuscan Wine (Why Is It Italian Red Wine Heaven?)",
+     "by": "Wine Folly",
+     "length": "9:11"
+    },
+    "keyPoints": [
+     {
+      "big": "100%",
+      "line": "Sangiovese is Brunello; Chianti Classico needs 80%."
+     },
+     {
+      "big": "GALESTRO",
+      "line": "sits higher in Montalcino; clay lies lower down."
+     },
+     {
+      "big": "SUPER TUSCAN",
+      "line": "can be Bordeaux grapes, a blend, or pure Sangiovese."
+     },
+     {
+      "big": "TAURASI",
+      "line": "is Campania’s Aglianico; decant it young."
+     },
+     {
+      "big": "ETNA",
+      "line": "pairs Carricante whites with Nerello Mascalese reds."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sangiovese’s many homes, then the south.",
+     "where": "From Level 1: Chianti, Brunello and the Super Tuscans. Certified asks you to tell the **Sangiovese** regions apart and know **Brunello**’s rules. It then asks you to match each southern **DOCG** to its region.",
+     "stopsTitle": "Three stops",
+     "stops": [
+      {
+       "name": "Tuscany",
+       "note": "Sangiovese",
+       "text": "**Brunello** is 100% Sangiovese, with 2 years in oak. **Vino Nobile** uses **Prugnolo Gentile**; **Bolgheri** leans on Bordeaux grapes. Names: **Biondi Santi**, **Soldera**, **Sassicaia**, **Ornellaia**, **Tignanello**."
+      },
+      {
+       "name": "Central and southern Italy",
+       "note": "match the DOCG",
+       "text": "**Verdicchio** (Marche), **Montepulciano d’Abruzzo**, **Sagrantino di Montefalco** (Umbria), and Campania’s **Taurasi**, **Greco di Tufo** and **Fiano di Avellino**."
+      },
+      {
+       "name": "Sicily and Sardinia",
+       "note": "volcano and sea",
+       "text": "**Etna** (Carricante, Nerello Mascalese), **Cerasuolo di Vittoria** DOCG (Nero d’Avola, Frappato), fortified **Marsala**, and Sardinia’s **Cannonau** and **Vermentino**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "How much Sangiovese the rules ask for:",
+     "mixup": "**Vino Nobile di Montepulciano** is Tuscan Sangiovese. **Montepulciano d’Abruzzo** is the Montepulciano grape.",
+     "sayIt": "Young Brunello opens up beautifully in a decanter."
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   },
+   {
+    "name": "Spain and Portugal",
+    "video": {
+     "youtubeId": "tyLNt4cWOgE",
+     "title": "DOCa RIOJA - ENGLISH",
+     "by": "Rioja Wine",
+     "length": "13:58"
+    },
+    "keyPoints": [
+     {
+      "big": "GRAN RESERVA",
+      "line": "needs 5 years, 2 in oak, in Rioja and Ribera del Duero."
+     },
+     {
+      "big": "ALAVESA",
+      "line": "is Rioja’s coolest, wettest subzone."
+     },
+     {
+      "big": "TINTA DE TORO",
+      "line": "is Tempranillo’s name in Toro."
+     },
+     {
+      "big": "TXAKOLINA",
+      "line": "is the Basque white: light, high-acid, slightly fizzy."
+     },
+     {
+      "big": "CIMA CORGO",
+      "line": "is one of the Douro’s three subregions."
+     }
+    ],
+    "read": {
+     "bigIdea": "Spain’s aging ladder, then its newer names.",
+     "where": "From Level 1: Crianza, Reserva and Gran Reserva climb in time. Certified gives the **actual years**, Rioja’s **subzones**, more DOs and Portugal’s **DOPs**.",
+     "stopsTitle": "Five stops",
+     "stops": [
+      {
+       "name": "Rioja",
+       "note": "three subzones",
+       "text": "**Alta**, **Alavesa**, **Oriental**. Joven is often carbonic; some modern wines use French oak and skip the aging words. Names: **López de Heredia**, **La Rioja Alta**, **Marqués de Riscal**."
+      },
+      {
+       "name": "Castilla y León",
+       "note": "the Duero",
+       "text": "**Ribera del Duero** (Vega Sicilia, Pesquera, Pingus) uses Rioja’s ladder. **Toro** is ripe Tinta de Toro; **Bierzo** is Mencía; **Rueda** is Verdejo."
+      },
+      {
+       "name": "Galicia and Catalonia",
+       "note": "green and rugged",
+       "text": "**Valdeorras** (Godello) and terraced **Ribeira Sacra** (Mencía). **Priorat** grows bush vines on **llicorella**. **Cava** needs 9 months on lees, Reserva 18."
+      },
+      {
+       "name": "Other DOs",
+       "note": "Certified only",
+       "text": "Basque **Txakolina** (Hondarrabi Zuri), **Jumilla** (Monastrell, once ungrafted), and **Vino de Pago**, producer appellations created in 2003."
+      },
+      {
+       "name": "Portugal",
+       "note": "match grape to DOP",
+       "text": "Douro: **Baixo Corgo**, **Cima Corgo**, **Douro Superior**. **Dão** (Encruzado), **Bairrada**, **Alentejo**. Label words: **Single Quinta** and **lagares** (stone fermenters)."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Rioja and Ribera tinto, minimum aging:",
+     "mixup": "**Tinta del País** (Ribera) and **Tinta de Toro** (Toro) are both Tempranillo.",
+     "sayIt": "A Rioja Gran Reserva: at least five years old before release."
+    },
+    "check": [
+     18,
+     19,
+     20
+    ]
+   },
+   {
+    "name": "Germany and Austria",
+    "video": {
+     "youtubeId": "hI6FDVmDUj4",
+     "title": "Wachau (english)",
+     "by": "Austrian Wine (Österreich Wein)",
+     "length": "3:30"
+    },
+    "keyPoints": [
+     {
+      "big": "BOCKSBEUTEL",
+      "line": "is Franken’s flat, round bottle."
+     },
+     {
+      "big": "GROSSES GEWÄCHS",
+      "line": "is a dry wine from a VDP top (Grosse Lage) site."
+     },
+     {
+      "big": "OECHSLE",
+      "line": "is the German scale for must weight."
+     },
+     {
+      "big": "SMARAGD",
+      "line": "is the Wachau’s ripest dry level: at least 12.5%."
+     },
+     {
+      "big": "BANDEROLE",
+      "line": "is Austria’s capsule for Qualitätswein and above."
+     }
+    ],
+    "read": {
+     "bigIdea": "German label words, Austrian ripeness levels.",
+     "where": "From Level 1: the Prädikat ladder, the Mosel and the Rheingau, and Austria’s DACs. Certified adds five more German regions, the **VDP**, more label terms and the **1971 law**. For Austria it adds the Wachau’s own **ripeness** levels and the producers.",
+     "stopsTitle": "Four stops",
+     "stops": [
+      {
+       "name": "More Anbaugebiete",
+       "note": "five more",
+       "text": "**Nahe** (Riesling), **Franken** (Silvaner, **Bocksbeutel**), **Baden** (warmest), **Mittelrhein** (steep slate) and **Ahr** (Spätburgunder, north of the 50th parallel)."
+      },
+      {
+       "name": "Label words",
+       "note": "read the bottle",
+       "text": "**Einzellage** is a single vineyard, **Gemeinde** a village, **Halbtrocken** half-dry, **Edelfäule** noble rot, **Schloss** a castle. **Oechsle** measures must weight."
+      },
+      {
+       "name": "The VDP",
+       "note": "growers’ ranking",
+       "text": "Its own Burgundy-style ranking: **Grosses Gewächs** is the dry grand cru, **Erstes Gewächs** the premier cru. Names: **Dönnhoff**, **Robert Weil**, **Egon Müller**, **J.J. Prüm**."
+      },
+      {
+       "name": "Austria",
+       "note": "Danube whites",
+       "text": "**Kremstal** and **Kamptal** DACs for dry Grüner and Riesling; the Wachau’s **Steinfeder**, **Federspiel**, **Smaragd**. Names: **FX Pichler**, **Knoll**, **Prager**, **Bründlmayer**."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The Wachau’s three levels:",
+     "mixup": "**Grosses Gewächs** is the VDP’s dry grand cru. **Erstes Gewächs** is its premier cru.",
+     "sayIt": "A Grüner Veltliner: crisp and dry, and great with asparagus."
+    },
+    "check": [
+     21,
+     22,
+     23
+    ]
+   },
+   {
+    "name": "Hungary and Greece",
+    "video": {
+     "youtubeId": "4bXuYPIUaMM",
+     "title": "The Region That Changed History (Learn Hungarian Wine)",
+     "by": "Wine Folly",
+     "length": "9:11"
+    },
+    "keyPoints": [
+     {
+      "big": "PUTTONY",
+      "line": "was the basket that aszú grapes were gathered in."
+     },
+     {
+      "big": "120 G/L",
+      "line": "is the minimum sugar for Tokaji Aszú since 2013."
+     },
+     {
+      "big": "ESZENCIA",
+      "line": "is made only from aszú berries."
+     },
+     {
+      "big": "ASSYRTIKO",
+      "line": "is at least 85% of dry Santorini."
+     },
+     {
+      "big": "XINOMAVRO",
+      "line": "is Naoussa’s red: pale, tannic and high in acid."
+     }
+    ],
+    "read": {
+     "bigIdea": "One great sweet wine, three Greek classics.",
+     "where": "From Level 1: **Tokaji** is Hungary’s noble-rot wine. Certified adds how it’s grown and made. It also adds three Greek **PDOs**, each with its own grape.",
+     "stopsTitle": "Four stops",
+     "stops": [
+      {
+       "name": "Tokaj",
+       "note": "noble rot",
+       "text": "The **Bodrog River** brings humidity. Botrytis shrivels **Furmint** and **Hárslevelű** into **aszú** berries, once gathered in a basket called a **puttony**."
+      },
+      {
+       "name": "Tokaji on the label",
+       "note": "sweetness",
+       "text": "**Aszú** needs at least **120 g/L** of sugar and 18 months in cask. **Eszencia** is pure aszú. Bottles are usually **500 ml**; **Royal Tokaji** is a name to know."
+      },
+      {
+       "name": "Santorini",
+       "note": "volcanic island",
+       "text": "Ungrafted vines trained as low **baskets** on volcanic soil. Dry Santorini is at least **85% Assyrtiko**. **Sigalas** is the Court’s producer."
+      },
+      {
+       "name": "Naoussa and Nemea",
+       "note": "two reds",
+       "text": "**Naoussa**, on Mt Vermio, is 100% **Xinomavro**: pale, tannic, high in acid. **Nemea**, in Korinthia, is 100% **Agiorgitiko**: red fruit and a velvety texture."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Three Greek PDOs, three grapes:",
+     "mixup": "**Nykteri** is an oak-aged dry Santorini. **Vinsanto** is Santorini’s sweet wine from sun-dried grapes.",
+     "sayIt": "Santorini Assyrtiko: bright and salty, perfect with grilled fish."
+    },
+    "check": [
+     24,
+     25,
+     26
+    ]
+   }
+  ]
+ }
+}

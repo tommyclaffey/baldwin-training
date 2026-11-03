@@ -1,0 +1,1487 @@
+{
+ "level": 2,
+ "part": 3,
+ "number": 9,
+ "slug": "certified-business",
+ "title": "The business of the sommelier",
+ "script": "Chapter nine",
+ "lead": "The Certified business column: bottle and pour sizes, the vocabulary, bottle and glass pricing, COGS, the wine list, buying and storing, and selling at the table.",
+ "minutes": 25,
+ "intro": {
+  "script": "Start here",
+  "title": "THE MATH ON THE EXAM",
+  "text": "Business of the Sommelier is tested inside the Certified theory exam, with simple math. Examplify has a calculator. These four formulas do most of the work.",
+  "tiers": [
+   {
+    "name": "Cost %",
+    "note": "Bottle cost ÷ list price"
+   },
+   {
+    "name": "List price",
+    "note": "Bottle cost ÷ target cost %"
+   },
+   {
+    "name": "Glass price",
+    "note": "(List price ÷ 25 oz) × pour"
+   },
+   {
+    "name": "COGS",
+    "note": "Beginning + purchases - ending"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Bottles, cases and pours",
+   "lines": [
+    {
+     "label": "Sizes",
+     "text": "Common: 375 ml (12.7 oz), 750 ml (25.4 oz) and the 1.5 L magnum (50.7 oz). Uncommon: 1 liter, 187 ml and the Jeroboam."
+    },
+    {
+     "label": "Pours",
+     "text": "Pours per bottle = ounces in the bottle ÷ ounces per pour. The Court's formulas use 25 oz for a 750 ml bottle."
+    }
+   ],
+   "chips": {
+    "label": "Pour sizes to know",
+    "items": [
+     "2 oz · 60 ml",
+     "4 oz · 118 ml",
+     "5 oz · 148 ml",
+     "6 oz · 187 ml"
+    ]
+   },
+   "know": [
+    "A case is 9 liters: twelve 750 ml bottles.",
+    "Not every case holds 12: super premium wines can come in 6- or 3-bottle cases.",
+    "OWC means Original Wooden Case.",
+    "A Jeroboam is 3 L for sparkling wine and 4.5 L for still wine.",
+    "Tokaji comes in 500 ml bottles; sake in 300 ml, 720 ml and 1.8 L."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Bottle sizes",
+     "rows": [
+      {
+       "name": "Piccolo / split",
+       "meta": "187 ml"
+      },
+      {
+       "name": "Half bottle",
+       "meta": "375 ml · 12.7 oz"
+      },
+      {
+       "name": "Tokaji",
+       "meta": "500 ml · 17 oz"
+      },
+      {
+       "name": "Standard",
+       "meta": "750 ml · 25.4 oz"
+      },
+      {
+       "name": "Liter",
+       "meta": "1 L"
+      },
+      {
+       "name": "Magnum",
+       "meta": "1.5 L · 50.7 oz"
+      },
+      {
+       "name": "Jeroboam",
+       "meta": "3 L sparkling · 4.5 L still"
+      }
+     ]
+    },
+    {
+     "type": "scale",
+     "title": "Pours from a 25 oz bottle",
+     "rows": [
+      {
+       "name": "2 oz pour",
+       "value": "12.5 pours",
+       "pct": 1
+      },
+      {
+       "name": "4 oz pour",
+       "value": "6.25 pours",
+       "pct": 0.5
+      },
+      {
+       "name": "5 oz pour",
+       "value": "5 pours",
+       "pct": 0.4
+      },
+      {
+       "name": "6 oz pour",
+       "value": "about 4 pours",
+       "pct": 0.33
+      }
+     ],
+     "note": "25 oz ÷ the pour size, using the Court's 25 oz bottle."
+    }
+   ]
+  },
+  {
+   "name": "The words of the trade",
+   "lines": [
+    {
+     "label": "The list",
+     "text": "BTG, BTB, pour cost, bottle cost, COGS, cost %, revenue, gross profit, net profit, inventory, spillage, ullage and target cost %."
+    },
+    {
+     "label": "Cost %",
+     "text": "Cost % is what the wine cost you as a share of what you sold it for. 30% means $30 of product for every $100 of sales."
+    }
+   ],
+   "know": [
+    "BTG is by the glass; BTB is by the bottle.",
+    "Target cost % is the cost % you aim for when you set a price.",
+    "Gross profit is the sale price minus the wine's cost. Net profit is what's left after every other expense too.",
+    "Ullage is the air space between the wine and the cork.",
+    "Inventory change = beginning inventory minus ending inventory."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Four words, decoded",
+     "dark": true,
+     "items": [
+      {
+       "name": "BTG / BTB",
+       "text": "By the glass / by the bottle"
+      },
+      {
+       "name": "COST %",
+       "text": "Bottle cost ÷ list price"
+      },
+      {
+       "name": "GROSS PROFIT",
+       "text": "List price minus bottle cost"
+      },
+      {
+       "name": "COGS",
+       "text": "Beginning inventory + purchases - ending inventory"
+      }
+     ]
+    },
+    {
+     "type": "stat",
+     "number": "30%",
+     "title": "Wine cost",
+     "text": "For every $100 of wine revenue, $30 is what the wine cost."
+    }
+   ]
+  },
+  {
+   "name": "Pricing a bottle",
+   "lines": [
+    {
+     "label": "The formula",
+     "text": "List price = bottle cost ÷ target cost %. Check it: cost % = bottle cost ÷ list price."
+    },
+    {
+     "label": "Example",
+     "text": "A wine costs $20 and you want a 25% cost. $20 ÷ 0.25 = $80 on the list. Gross profit: $80 - $20 = $60."
+    }
+   ],
+   "know": [
+    "Raise the sale price and margin goes up; lower it and margin goes down.",
+    "Raise the product cost and margin goes down; lower it and margin goes up.",
+    "Vintage weather changes a Bordeaux's style and its selling price.",
+    "Know the current Brunello release and the rough price of top brands.",
+    "The Curriculum Guide prints gross profit as cost minus list price; work it as list price minus cost."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "From cost to list price",
+     "items": [
+      {
+       "name": "Bottle cost",
+       "text": "What you paid",
+       "meta": "$20"
+      },
+      {
+       "name": "Target cost %",
+       "text": "What you aim for",
+       "meta": "25%"
+      },
+      {
+       "name": "List price",
+       "text": "Cost ÷ target %",
+       "meta": "$80"
+      },
+      {
+       "name": "Gross profit",
+       "text": "List price - cost",
+       "meta": "$60"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "MARGIN UP",
+       "title": "When you…",
+       "text": "Raise the sale price\nPay less for the wine"
+      },
+      {
+       "label": "MARGIN DOWN",
+       "title": "When you…",
+       "text": "Lower the sale price\nPay more for the wine"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pricing a glass",
+   "lines": [
+    {
+     "label": "The Court's formula",
+     "text": "Glass price = (bottle list price ÷ 25 oz) × the pour. An $80 bottle poured at 5 oz: $80 ÷ 25 × 5 = $16."
+    },
+    {
+     "label": "From cost",
+     "text": "Cost per pour = bottle cost ÷ pours. Glass price = cost per pour ÷ target cost %."
+    }
+   ],
+   "know": [
+    "Starting from a case: case cost ÷ bottles in the case = bottle cost.",
+    "Bottles needed = (guests × oz per guest) ÷ 25.",
+    "Lambrusco by the glass loses its fizz: limited shelf life once open.",
+    "Sweet wine by the glass is usually 2 oz; an open bottle lasts about a week cold.",
+    "Mix sparkling styles by the glass and bottle to give guests many price points."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Glass price from a case",
+     "items": [
+      {
+       "name": "Case cost",
+       "text": "12 bottles",
+       "meta": "$216"
+      },
+      {
+       "name": "Bottle cost",
+       "text": "Case ÷ 12",
+       "meta": "$18"
+      },
+      {
+       "name": "Pour cost",
+       "text": "Bottle ÷ 5 pours",
+       "meta": "$3.60"
+      },
+      {
+       "name": "Glass price",
+       "text": "Pour cost ÷ 25% target",
+       "meta": "$14.40"
+      }
+     ]
+    },
+    {
+     "type": "stat",
+     "number": "÷ 25",
+     "title": "Bottles for an event",
+     "text": "Guests × ounces per guest, divided by 25 oz, gives the bottles you need."
+    }
+   ]
+  },
+  {
+   "name": "COGS and inventory",
+   "lines": [
+    {
+     "label": "COGS",
+     "text": "Cost of goods sold = (beginning inventory + purchases) - ending inventory, all in dollars."
+    },
+    {
+     "label": "Cost %",
+     "text": "Cost % for the period = COGS ÷ wine sales."
+    }
+   ],
+   "know": [
+    "Beginning inventory is last month's count; ending inventory is this month's.",
+    "Example: $12,000 + $5,000 - $10,000 = $7,000 COGS. On $28,000 of sales, that's 25%.",
+    "Anything that makes ending inventory look bigger makes COGS look smaller.",
+    "Wine poured but not charged raises your cost %: cost with no sales.",
+    "The theory exam asks about inventory, purchasing, sales and margin situations."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "One month, worked",
+     "items": [
+      {
+       "name": "Beginning",
+       "text": "Last month's count",
+       "meta": "$12,000"
+      },
+      {
+       "name": "+ Purchases",
+       "text": "Invoices this month",
+       "meta": "$5,000"
+      },
+      {
+       "name": "- Ending",
+       "text": "This month's count",
+       "meta": "$10,000"
+      },
+      {
+       "name": "= COGS",
+       "text": "÷ $28,000 sales = 25%",
+       "meta": "$7,000"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "The wine list",
+   "lines": [
+    {
+     "label": "The standard",
+     "text": "A wine list is clean, correct, current and easy to read. You present it and offer help."
+    },
+    {
+     "label": "On the exam",
+     "text": "The theory exam includes wine list mistake correction: misspellings, wines in the wrong category and wrong prices."
+    }
+   ],
+   "know": [
+    "Check producer and region spellings.",
+    "Check every wine sits in the right category.",
+    "Check prices against your formulas.",
+    "Know where each German style and sweetness level belongs on a list.",
+    "Sweet and fortified wines by the glass are usually 2 oz; know how long they keep once open."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Three list mistakes to catch",
+     "items": [
+      {
+       "name": "SPELLING",
+       "text": "Producer and region names"
+      },
+      {
+       "name": "CATEGORY",
+       "text": "A wine filed in the wrong section"
+      },
+      {
+       "name": "PRICE",
+       "text": "A price that doesn't fit"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Buying and storing",
+   "lines": [
+    {
+     "label": "Older wines",
+     "text": "Before you buy, ask about provenance: who owned it, how it was stored, when it left the winery and how often it changed hands."
+    },
+    {
+     "label": "Storage",
+     "text": "From Level 1: a constant 50-60°F, cork-finished wines on their side, spirits and fortified wines upright."
+    }
+   ],
+   "know": [
+    "Inspect older bottles for label damage, leakage and ullage.",
+    "Keep wine organized and accessible, away from odors and pests.",
+    "Avoid light, vibration, damp, heat, temperature swings and upright storage beyond a few weeks.",
+    "Vintage weather changes style and price: know Bordeaux vintages to buy and recommend well."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Before you buy an older wine",
+     "rows": [
+      {
+       "name": "Provenance",
+       "meta": "Who has owned it?"
+      },
+      {
+       "name": "Storage",
+       "meta": "How was it kept?"
+      },
+      {
+       "name": "Release",
+       "meta": "When did it leave the winery?"
+      },
+      {
+       "name": "Handling",
+       "meta": "How many times sold or shipped?"
+      },
+      {
+       "name": "Inspection",
+       "meta": "Label damage, leakage, ullage"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Selling at the table",
+   "lines": [
+    {
+     "label": "The standard",
+     "text": "Sales skills are part of proper service. Be ready to talk vintages, style, character, food and quality."
+    },
+    {
+     "label": "Price",
+     "text": "Find out the host's budget discreetly. If there isn't one, offer several wines at different prices. When in doubt, undersell."
+    }
+   ],
+   "know": [
+    "Name producer, vintage and full appellation when you recommend.",
+    "Explain why a pairing works, in words a guest enjoys.",
+    "Keep a short list in your head: crisp whites, full whites, off-dry whites, lighter reds, full reds.",
+    "Only recommend producers you know well enough to talk about.",
+    "On a price complaint, acknowledge it and state the policy tactfully."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "A wine in mind for each style",
+     "rows": [
+      {
+       "name": "Light, crisp white",
+       "meta": "Have one ready"
+      },
+      {
+       "name": "Full-bodied white",
+       "meta": "Have one ready"
+      },
+      {
+       "name": "Off-dry white",
+       "meta": "Have one ready"
+      },
+      {
+       "name": "Lighter, food-friendly red",
+       "meta": "Have one ready"
+      },
+      {
+       "name": "Full-bodied red",
+       "meta": "Have one ready"
+      }
+     ],
+     "note": "With producer, vintage and full appellation for each."
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Cost %",
+   "b": "Gross profit",
+   "why": "Cost % is a percentage: cost ÷ price. Gross profit is dollars: price - cost."
+  },
+  {
+   "a": "COGS",
+   "b": "Inventory change",
+   "why": "COGS adds purchases: (beginning + purchases) - ending. Inventory change is just beginning - ending."
+  },
+  {
+   "a": "25 oz",
+   "b": "25.4 oz",
+   "why": "A 750 ml bottle holds 25.4 oz. The Court's pricing formulas round it to 25."
+  },
+  {
+   "a": "Jeroboam (sparkling)",
+   "b": "Jeroboam (still)",
+   "why": "Sparkling: 3 L. Still: 4.5 L."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas: Introductory and Certified Theory Curriculum Guide (8.2023, Business of the Sommelier and region BOS rows), Certified Sommelier Exam Guide (7.2024), Hospitality & Service Standards (1.2023), Demeanor of the Professional Sommelier and the example Certified feedback report; Wine Folly (bottle sizes); Oxford Companion to Wine via JancisRobinson.com (ullage); Corporate Finance Institute (gross vs net profit). Checked Nov 2, 2026.",
+ "cards": [
+  {
+   "q": "How many 5 oz pours come from a bottle, using the Court's 25 oz figure?",
+   "answer": "5",
+   "wrong": [
+    "4",
+    "6",
+    "8"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "How many liters are in a standard case of twelve 750 ml bottles?",
+   "answer": "9 liters",
+   "wrong": [
+    "6 liters",
+    "12 liters",
+    "7.5 liters"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "What does 'OWC' mean on a wine offer?",
+   "answer": "Original Wooden Case",
+   "wrong": [
+    "Open Wine Container",
+    "Original Wine Cost",
+    "Off-Weight Case"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "How big is a Jeroboam of sparkling wine?",
+   "answer": "3 liters",
+   "wrong": [
+    "1.5 liters",
+    "4.5 liters",
+    "6 liters"
+   ],
+   "source": "https://winefolly.com/tips/wine-bottle-sizes/"
+  },
+  {
+   "q": "What does a 30% wine cost mean?",
+   "answer": "$30 of product cost for every $100 of wine revenue",
+   "wrong": [
+    "$30 profit on every bottle",
+    "Wine is marked up 30%",
+    "30% of the wine list is sold"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "q": "What is 'ullage' in a bottle of wine?",
+   "answer": "The air space between the wine and the cork",
+   "wrong": [
+    "The sediment at the bottom",
+    "The label's vintage line",
+    "The wine left in a glass"
+   ],
+   "source": "https://jancisrobinson.com/ocw/detail/ullage"
+  },
+  {
+   "q": "What separates net profit from gross profit?",
+   "answer": "Net profit also subtracts all other expenses",
+   "wrong": [
+    "Net profit ignores the wine's cost",
+    "They are the same number",
+    "Gross profit includes taxes"
+   ],
+   "source": "https://corporatefinanceinstitute.com/resources/accounting/profit/"
+  },
+  {
+   "q": "What does BTB stand for?",
+   "answer": "By the bottle",
+   "wrong": [
+    "Bottle-to-bar",
+    "Buy the best",
+    "Bottle tracking book"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "A wine costs $15 and your target cost is 25%. What is the list price?",
+   "answer": "$60",
+   "wrong": [
+    "$40",
+    "$18.75",
+    "$75"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "A bottle costs $30 and sells for $120. What is its cost %?",
+   "answer": "25%",
+   "wrong": [
+    "30%",
+    "40%",
+    "400%"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "A bottle costs $25 and lists at $90. What is its gross profit?",
+   "answer": "$65",
+   "wrong": [
+    "$115",
+    "$25",
+    "28%"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "Your supplier raises a wine's cost and you keep the list price. What happens to your margin?",
+   "answer": "It goes down",
+   "wrong": [
+    "It goes up",
+    "It stays the same",
+    "Cost % goes down"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "A bottle lists at $100. Using the Court's formula, what is a 5 oz glass?",
+   "answer": "$20",
+   "wrong": [
+    "$25",
+    "$16",
+    "$12.50"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "A 12-bottle case costs $240. What does one bottle cost?",
+   "answer": "$20",
+   "wrong": [
+    "$24",
+    "$12",
+    "$2.40"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "A party of 50 will each drink 5 oz. Using 25 oz a bottle, how many bottles?",
+   "answer": "10",
+   "wrong": [
+    "8",
+    "12",
+    "25"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "Why does the Curriculum Guide flag Lambrusco poured by the glass?",
+   "answer": "Its fizz has a limited shelf life once open",
+   "wrong": [
+    "It must be decanted",
+    "It is only sold in magnums",
+    "It can't be chilled"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=29"
+  },
+  {
+   "q": "Beginning inventory $8,000, purchases $3,000, ending inventory $6,000. What is COGS?",
+   "answer": "$5,000",
+   "wrong": [
+    "$11,000",
+    "$1,000",
+    "$17,000"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "q": "COGS is $6,000 and wine sales are $24,000. What is the cost %?",
+   "answer": "25%",
+   "wrong": [
+    "4%",
+    "40%",
+    "30%"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "q": "In the COGS formula, what is 'beginning inventory'?",
+   "answer": "Last month's ending inventory, in dollars",
+   "wrong": [
+    "This month's purchases",
+    "The number of bottles in the cellar",
+    "Next month's forecast"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "q": "Bottles are counted twice by mistake in the ending inventory. What does COGS do?",
+   "answer": "It looks lower than it really is",
+   "wrong": [
+    "It looks higher than it really is",
+    "It doesn't change",
+    "It doubles"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "q": "Which three kinds of wine list mistakes does the Court say to watch for?",
+   "answer": "Misspellings, miscategorized wines and incorrect pricing",
+   "wrong": [
+    "Font, color and paper",
+    "Vintage charts, maps and ratings",
+    "Missing photos, scores and tasting notes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "q": "How does the Court describe a wine list at mise en place?",
+   "answer": "Clean, correct, current and easy to read",
+   "wrong": [
+    "Long, leather-bound and detailed",
+    "Organized by price only",
+    "Printed fresh every day"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "q": "Which theory question type tests the wine list directly?",
+   "answer": "Wine list mistake correction",
+   "wrong": [
+    "Map identification",
+    "Label recognition",
+    "Style recognition"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=20"
+  },
+  {
+   "q": "For German wines, what does the Curriculum Guide want a Certified Sommelier to know about the list?",
+   "answer": "Where each style and sweetness level belongs on it",
+   "wrong": [
+    "That German wines go last",
+    "That German wine is never sold by the glass",
+    "Only the producers' founding dates"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=51"
+  },
+  {
+   "q": "What does 'provenance' mean when buying an older wine?",
+   "answer": "The history of who has owned it",
+   "wrong": [
+    "The region it comes from",
+    "The price it first sold for",
+    "The wine's alcohol level"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=6"
+  },
+  {
+   "q": "Which is on the Court's inspection list for older bottles?",
+   "answer": "Ullage",
+   "wrong": [
+    "The capsule color",
+    "The bottle's weight",
+    "The back-label font"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=6"
+  },
+  {
+   "q": "Why does the Curriculum Guide want you to know Bordeaux vintages?",
+   "answer": "To understand price differences, buy well and recommend at the table",
+   "wrong": [
+    "Only for the tasting exam",
+    "Because Bordeaux is never vintage-dated",
+    "To decide glass shapes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "q": "The host gives no budget. What does the Court suggest?",
+   "answer": "Offer several selections at different price points",
+   "wrong": [
+    "Recommend the most expensive wine",
+    "Recommend the cheapest wine",
+    "Ask them to name a price out loud"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "What does the Court say to do 'when in doubt' about price?",
+   "answer": "Undersell",
+   "wrong": [
+    "Upsell",
+    "Ask the manager",
+    "Offer a free glass"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "q": "Which five styles does the Court suggest having wines ready for?",
+   "answer": "Crisp whites, full whites, off-dry whites, lighter reds, full reds",
+   "wrong": [
+    "Old World, New World, rosé, orange, sparkling",
+    "Cheap, mid, premium, luxury, rare",
+    "France, Italy, Spain, USA, Australia"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Certified learning outcome, Business of the Sommelier: understand pour sizes, wine bottle sizes, define basic business vocabulary, and do basic beverage costing calculations.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "fact": "Business of the Sommelier is a key pillar of CMS-A education and is tested within the Certified Theory exam. A Certified Sommelier is expected to know basic financial wine program management and costing.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "fact": "A 30% wine cost means that for every $100 of revenue, $30 is product cost.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "fact": "Common bottle sizes: half bottle 12.7 oz / 375 ml; standard bottle 25.4 oz / 750 ml; magnum 50.7 oz / 1500 ml / 1.5 liter. Understand how pour size relates to servings per bottle.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "fact": "Certified column: know common sizes (375 ml, 750 ml, 1.5 liter magnum) and uncommon sizes (1 liter, 187 ml, Jeroboam); calculate ounce or milliliter pours from a standard bottle, e.g. 2, 4, 5, 6 oz or 60, 118, 148, 187 ml.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "fact": "A Jeroboam is 4.5 liters (six standard bottles) for still wine; in sparkling wine a Jeroboam is 3 liters. A 187.5 ml piccolo or split is typical for a single serving of Champagne.",
+   "source": "https://winefolly.com/tips/wine-bottle-sizes/"
+  },
+  {
+   "fact": "Terms to know: By The Glass, BTB, Pour Cost, Bottle Cost, Cost Of Goods Sold, Cost %, Revenue, Gross Profit, Net Profit, Inventory, Spillage, Ullage, Target Cost %. Inventory change = beginning inventory minus ending inventory.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "fact": "A case is 9 liters (twelve 750 ml bottles); not all cases are 12 bottles: super premium wines can come in 6- or 3-bottle cases. OWC means Original Wooden Case.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "fact": "Sales relation: increasing the sales price increases margin; decreasing it decreases margin; increasing product cost decreases margin; decreasing product cost increases margin.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "fact": "Formulas: Cost % = Bottle Cost / List Price. List Price = Bottle Cost / Target Cost %. BTG = (Bottle List Price / 25 oz or 750 ml) x oz or ml pour. Pour cost starting from case cost. Bottles needed = (number of guests x oz or ml per guest) / 25.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "fact": "The Curriculum Guide prints Gross Profit = Bottle Cost - List Price.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "fact": "Gross profit is revenue minus cost of goods sold; net profit is what remains after all expenses, including operating costs, interest and taxes.",
+   "source": "https://corporatefinanceinstitute.com/resources/accounting/profit/"
+  },
+  {
+   "fact": "Ullage is the head space between the wine and the cork in a bottle (or the space left in a cask as wine evaporates).",
+   "source": "https://jancisrobinson.com/ocw/detail/ullage"
+  },
+  {
+   "fact": "COGS = (BI + P) - EI, where BI is beginning inventory (last month's), P is purchases and EI is ending inventory (this month's), all in dollars or local currency. Cost % = COGS / wine sales.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "fact": "The theory exam also covers inventory, purchasing, sales and margin analysis, and menu corrections: misspellings of producers or regions, miscategorized or mismatched beverages, and incorrect pricing.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+  },
+  {
+   "fact": "Theory question types include simple business-of-the-sommelier math and wine list mistake correction. A calculator is available on Examplify.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=20"
+  },
+  {
+   "fact": "A calculator is available on the Examplify platform; you may bring your own if it has no communication capabilities.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=8"
+  },
+  {
+   "fact": "Wine lists are clean, correct, current and easy to read (mise en place). The wine list is presented and assistance offered.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "fact": "The sommelier is prepared to offer active and appropriate recommendations; sales skills are an essential element of proper service. The sommelier is ready to answer questions on vintages, style, character, food compatibility and quality.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "fact": "Germany (Certified column): know styles and sweetness levels and where each belongs on a wine list.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=51"
+  },
+  {
+   "fact": "World sparkling (Certified column, BOS): the cost of the various sparkling styles and how they fit a well-rounded program by the bottle and by the glass to offer guests many price points.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=78"
+  },
+  {
+   "fact": "Lambrusco: limited shelf life of effervescence if pouring by the glass.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=29"
+  },
+  {
+   "fact": "Sweet wines: a by-the-glass serving is usually 2 oz; open bottles typically last about a week kept cold in the refrigerator.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=80"
+  },
+  {
+   "fact": "Fortified wines: by-the-glass pours are typically 2 oz; know the general shelf life of the wine after opening.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "fact": "Tokaji bottles are normally 500 ml (17 oz).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=54"
+  },
+  {
+   "fact": "Sake bottle sizes: 300 ml, 720 ml, 1.8 L.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=87"
+  },
+  {
+   "fact": "Bordeaux (Certified column): yearly weather affects style and selling price; understand Bordeaux vintages and styles to understand price differences, appropriate purchasing and tableside recommendations.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "Tuscany (Certified column): know the current release of Brunello di Montalcino and the approximate price of top proprietary brands.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=33"
+  },
+  {
+   "fact": "Purchasing older wines: ask about provenance (history of ownership), how the bottles were stored, when they left the winery's cellar, and how many times they've been sold or shipped; inspect for label damage, leakage and ullage.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=6"
+  },
+  {
+   "fact": "Storage: constant temperature, 50-60°F / 10-15°C ideal for long term; organized and accessible; away from odors and pests; cork-finished table wines on their side; spirits and fortified standing up; avoid light, vibration, damp, upright storage over a few weeks, heat and temperature swings.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+  },
+  {
+   "fact": "Discreetly find out if the host has a budget; if not, offer several selections at different price points. When in doubt, undersell: honor the guest's trust on price and perceived value.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "fact": "Pricing complaints: acknowledge the guest's opinion and tactfully state the restaurant's pricing policy.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+  },
+  {
+   "fact": "Pairing recommendations: say why the pairing works in a guest-friendly way; keep a short mental list of wines for light crisp whites, full-bodied whites, off-dry whites, lighter food-friendly reds and full-bodied reds; name producer, vintage and full appellation for full marks.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  },
+  {
+   "fact": "The example feedback report scores Appetizing Description and Salesmanship in the service exam, and lists Price & Reputation and Vintage, and Business of the Sommelier: Costing and Program Management, as theory categories.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2026/04/Certified_Sommelier_Example_Feedback_Report_2026322.pdf"
+  },
+  {
+   "fact": "Know producers if you recommend them at service in the Hospitality and Service Exam (Curriculum Guide).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=35"
+  }
+ ],
+ "unverified": [
+  "The Curriculum Guide prints 'Gross Profit = Bottle Cost - List Price', which gives a negative number. This chapter teaches list price minus bottle cost (the standard definition, Corporate Finance Institute) and says so.",
+  "The Curriculum Guide calls (bottle list price ÷ 25) × pour 'BTG Cost'; it gives a glass's share of the bottle's list price, so it's taught here as the glass price.",
+  "Jeroboam and 187 ml sizes come from Wine Folly; the Court lists the names without volumes. The Court gives no volume for the 1 liter beyond its name.",
+  "Ullage definition comes from the Oxford Companion to Wine on JancisRobinson.com (search snippet; full page not loaded). Net profit definition comes from Corporate Finance Institute. The Court lists both terms without defining them.",
+  "Spillage, revenue, pour cost and target cost % are not defined by the Court; the plain definitions here follow from the Court's formulas.",
+  "The fortified-wine shelf life after opening is listed as a topic by the Court with no figure; none is given here.",
+  "All worked numbers ($20 bottle, $216 case, $12,000 inventory, etc.) are our own examples, not Court figures."
+ ],
+ "court": {
+  "outcome": "After studying this section, a candidate will understand pour sizes, wine bottle sizes, define basic business vocabulary, and be able to do basic beverage costing calculations.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93",
+  "coverage": [
+   {
+    "topic": "Ounces and amounts for regular sized bottles",
+    "guide": "Metric and US sizes for common (375, 750, 1.5 L) and uncommon (1 L, 187 ml, Jeroboam) bottles.",
+    "where": "Bottles, cases and pours"
+   },
+   {
+    "topic": "Amount of pours from a standard bottle",
+    "guide": "Calculate pours of 2, 4, 5, 6 oz or 60, 118, 148, 187 ml.",
+    "where": "Bottles, cases and pours"
+   },
+   {
+    "topic": "Terms",
+    "guide": "BTG, BTB, pour cost, bottle cost, COGS, cost %, revenue, gross and net profit, inventory, spillage, ullage, target cost %.",
+    "where": "The words of the trade"
+   },
+   {
+    "topic": "Amount of 750ml bottles in a case",
+    "guide": "9 L case; 6- or 3-bottle super premium cases; OWC.",
+    "where": "Bottles, cases and pours"
+   },
+   {
+    "topic": "Sales Relation",
+    "guide": "How sale price and product cost move margin.",
+    "where": "Pricing a bottle"
+   },
+   {
+    "topic": "Calculations - Cost %",
+    "guide": "Cost % = bottle cost ÷ list price.",
+    "where": "Pricing a bottle"
+   },
+   {
+    "topic": "Calculations - Gross Profit",
+    "guide": "Price minus cost (guide prints it reversed).",
+    "where": "Pricing a bottle"
+   },
+   {
+    "topic": "Calculations - List price based on target cost %",
+    "guide": "List price = bottle cost ÷ target cost %.",
+    "where": "Pricing a bottle"
+   },
+   {
+    "topic": "Calculations - BTG Costing",
+    "guide": "(Bottle list price ÷ 25 oz) × pour.",
+    "where": "Pricing a glass"
+   },
+   {
+    "topic": "Calculation - Combinations (pour cost from case cost)",
+    "guide": "Work from case cost to bottle cost to pour cost.",
+    "where": "Pricing a glass"
+   },
+   {
+    "topic": "Calculation - Combinations (bottles needed)",
+    "guide": "(Guests × oz per guest) ÷ 25.",
+    "where": "Pricing a glass"
+   },
+   {
+    "topic": "Exam guide: COGS and cost percentage",
+    "guide": "(BI + P) - EI; ÷ wine sales.",
+    "where": "COGS and inventory"
+   },
+   {
+    "topic": "Exam guide: inventory, purchasing, sales and margin situations",
+    "guide": "Reason through what raises or lowers COGS and margin.",
+    "where": "COGS and inventory"
+   },
+   {
+    "topic": "Exam guide: menu corrections",
+    "guide": "Misspellings, miscategorized beverages, incorrect pricing.",
+    "where": "The wine list"
+   },
+   {
+    "topic": "Region BOS rows (Bordeaux, Tuscany, Lombardy, Germany, sparkling, sweet, fortified, Hungary, sake)",
+    "guide": "Vintage and price, current releases, BTG shelf life, list placement, odd bottle sizes, price points.",
+    "where": "Pricing a bottle; Pricing a glass; The wine list; Buying and storing; Bottles, cases and pours"
+   },
+   {
+    "topic": "Service Standards: purchasing older wines and storage",
+    "guide": "Provenance questions, inspection, storage conditions.",
+    "where": "Buying and storing"
+   },
+   {
+    "topic": "Demeanor and exam guide: selling",
+    "guide": "Budget, price points, undersell, full recommendation, style shortlist.",
+    "where": "Selling at the table"
+   }
+  ]
+ },
+ "v3": {
+  "video": {
+   "youtubeId": "N1E6hkLDK54",
+   "title": "Why Sommeliers Need Business Skills",
+   "by": "Court of Master Sommeliers, Americas",
+   "length": "0:59"
+  },
+  "sections": [
+   {
+    "name": "Bottles, cases and pours",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "25.4 OZ",
+      "line": "in a 750 ml bottle. The formulas round it to 25."
+     },
+     {
+      "big": "9 LITERS",
+      "line": "is a case: twelve 750 ml bottles."
+     },
+     {
+      "big": "5 POURS",
+      "line": "of 5 oz come from one 25 oz bottle."
+     },
+     {
+      "big": "JEROBOAM",
+      "line": "3 L for sparkling, 4.5 L for still wine."
+     },
+     {
+      "big": "OWC",
+      "line": "means Original Wooden Case."
+     }
+    ],
+    "read": {
+     "bigIdea": "Know the sizes, then divide.",
+     "where": "From Level 1: a standard bottle is 750 ml. At Certified you also need the **uncommon sizes**, the **case** and the **pour math**.",
+     "stopsTitle": "Three things to memorize",
+     "stops": [
+      {
+       "name": "Bottles",
+       "text": "Common: **375 ml** (12.7 oz), **750 ml** (25.4 oz), **1.5 L magnum** (50.7 oz). Uncommon: **1 liter**, **187 ml** and the **Jeroboam** (3 L for sparkling, 4.5 L for still)."
+      },
+      {
+       "name": "Cases",
+       "text": "A case is **9 liters**, twelve 750 ml bottles. Super premium wines can come in **6- or 3-bottle** cases. **OWC** = Original Wooden Case."
+      },
+      {
+       "name": "Pours",
+       "text": "Divide the bottle by the pour. With the Court’s **25 oz** bottle: 2 oz = **12.5** pours, 4 oz = **6.25**, 5 oz = **5**, 6 oz = about **4**."
+      },
+      {
+       "name": "Odd bottles",
+       "text": "**Tokaji**: 500 ml. **Sake**: 300 ml, 720 ml and 1.8 L."
+      }
+     ],
+     "visual": 1,
+     "mixup": "A **magnum** is 1.5 L (two bottles). A sparkling **Jeroboam** is 3 L (four bottles)."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The words of the trade",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BTG · BTB",
+      "line": "By the glass, by the bottle."
+     },
+     {
+      "big": "COST %",
+      "line": "is the wine’s cost as a share of its price."
+     },
+     {
+      "big": "GROSS PROFIT",
+      "line": "is price minus the wine’s cost."
+     },
+     {
+      "big": "NET PROFIT",
+      "line": "is what’s left after every other expense too."
+     },
+     {
+      "big": "ULLAGE",
+      "line": "is the air space between the wine and the cork."
+     }
+    ],
+    "read": {
+     "bigIdea": "Learn the words, and the math gets easy.",
+     "where": "The Curriculum Guide lists the **business vocabulary** a Certified Sommelier must define. Most of it is about cost and price.",
+     "stopsTitle": "The words, in plain English",
+     "stops": [
+      {
+       "name": "Selling",
+       "text": "**BTG** is by the glass, **BTB** by the bottle. **Revenue** is what the sales bring in."
+      },
+      {
+       "name": "Cost",
+       "text": "**Bottle cost** is what you paid. **Pour cost** is the cost of one pour. **Cost %** = cost ÷ price. **Target cost %** is the cost % you aim for."
+      },
+      {
+       "name": "Profit",
+       "text": "**Gross profit** is price minus the wine’s cost. **Net profit** is what remains after **all** expenses."
+      },
+      {
+       "name": "Stock",
+       "text": "**Inventory** is what’s on hand, in dollars. **Spillage** is wine lost in pouring. **Ullage** is the air space between wine and cork."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Gross profit** subtracts only the wine. **Net profit** subtracts every expense."
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Pricing a bottle",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "COST ÷ TARGET",
+      "line": "% gives you the list price."
+     },
+     {
+      "big": "COST ÷ PRICE",
+      "line": "gives you the cost %."
+     },
+     {
+      "big": "PRICE - COST",
+      "line": "is the gross profit."
+     },
+     {
+      "big": "PRICE UP",
+      "line": "margin up. Cost up, margin down."
+     }
+    ],
+    "read": {
+     "bigIdea": "Price = cost ÷ the cost % you want.",
+     "where": "Most Certified math starts with **cost %**. Know the two formulas and you can run any bottle-pricing question either way.",
+     "stopsTitle": "Work one through",
+     "stops": [
+      {
+       "name": "Set the price",
+       "note": "list price = cost ÷ target %",
+       "text": "A bottle costs **$20** and your target cost is **25%**. $20 ÷ 0.25 = **$80**."
+      },
+      {
+       "name": "Check the %",
+       "note": "cost % = cost ÷ list price",
+       "text": "$20 ÷ $80 = **25%**. It matches."
+      },
+      {
+       "name": "Gross profit",
+       "note": "list price - cost",
+       "text": "$80 - $20 = **$60** on every bottle sold."
+      },
+      {
+       "name": "What moves margin",
+       "text": "**Raise the price** or **pay less**: margin goes up. **Lower the price** or **pay more**: margin goes down."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Cost %** is a percentage (cost ÷ price). **Gross profit** is dollars (price - cost)."
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "Pricing a glass",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LIST ÷ 25",
+      "line": "× the pour size gives the Court’s glass price."
+     },
+     {
+      "big": "POUR COST",
+      "line": "÷ target % is another way to price a glass."
+     },
+     {
+      "big": "CASE ÷ 12",
+      "line": "turns a case cost into a bottle cost."
+     },
+     {
+      "big": "GUESTS × OZ",
+      "line": "÷ 25 tells you how many bottles to buy."
+     },
+     {
+      "big": "SHELF LIFE",
+      "line": "matters: fizz fades, sweet wine lasts a week."
+     }
+    ],
+    "read": {
+     "bigIdea": "Price the glass from the bottle.",
+     "where": "By-the-glass questions start from either the **bottle’s list price** or its **cost**. The Court’s formulas use a **25 oz** bottle.",
+     "stopsTitle": "Three ways in",
+     "stops": [
+      {
+       "name": "From the list price",
+       "text": "**(List price ÷ 25) × pour.** An $80 bottle at a 5 oz pour: $80 ÷ 25 × 5 = **$16**."
+      },
+      {
+       "name": "From the cost",
+       "text": "Bottle cost **$18** ÷ 5 pours = **$3.60** a pour. At a **25%** target: $3.60 ÷ 0.25 = **$14.40**."
+      },
+      {
+       "name": "From a case",
+       "text": "Case cost ÷ bottles in the case = bottle cost. A **$216** case of 12 = **$18** a bottle. Then carry on as above."
+      },
+      {
+       "name": "For an event",
+       "text": "**(Guests × oz per guest) ÷ 25.** 40 guests at 5 oz = 200 oz ÷ 25 = **8 bottles**."
+      }
+     ],
+     "visual": 0,
+     "mixup": "A **6-bottle case** changes the math: divide the case cost by 6, not 12."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "COGS and inventory",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BI + P - EI",
+      "line": "is cost of goods sold, in dollars."
+     },
+     {
+      "big": "COGS ÷ SALES",
+      "line": "is your cost % for the month."
+     },
+     {
+      "big": "LAST MONTH",
+      "line": "is the beginning inventory; this month, the ending."
+     },
+     {
+      "big": "UNCHARGED",
+      "line": "wine adds cost with no sales: cost % goes up."
+     }
+    ],
+    "read": {
+     "bigIdea": "What you used, divided by what you sold.",
+     "where": "From Level 1: COGS = (beginning inventory + purchases) - ending inventory. At Certified you **use** it: run the numbers, and reason through what goes wrong.",
+     "stopsTitle": "Run a month",
+     "stops": [
+      {
+       "name": "Count",
+       "text": "**Beginning inventory** is last month’s count: **$12,000**. **Purchases** this month: **$5,000**. **Ending inventory** now: **$10,000**."
+      },
+      {
+       "name": "COGS",
+       "text": "$12,000 + $5,000 - $10,000 = **$7,000** of wine used."
+      },
+      {
+       "name": "Cost %",
+       "text": "**COGS ÷ wine sales.** $7,000 ÷ $28,000 = **25%**."
+      },
+      {
+       "name": "What skews it",
+       "text": "A bigger ending count or missing purchases makes **COGS look lower**. Wine poured but not charged, or sold too cheap, means **less revenue**, so **cost % rises** and margin falls."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**COGS** is dollars of wine used. **Inventory change** is beginning minus ending, without purchases."
+    },
+    "check": [
+     16,
+     17,
+     18
+    ]
+   },
+   {
+    "name": "The wine list",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CLEAN",
+      "line": "correct, current and easy to read."
+     },
+     {
+      "big": "SPELLING",
+      "line": "Producer and region names, checked."
+     },
+     {
+      "big": "CATEGORY",
+      "line": "Every wine in the right section."
+     },
+     {
+      "big": "PRICE",
+      "line": "Every price makes sense."
+     }
+    ],
+    "read": {
+     "bigIdea": "A list is correct, current and readable.",
+     "where": "The Court’s mise en place starts with a wine list that is **clean, correct, current and easy to read**. The theory exam tests it: **wine list mistake correction** is a question type.",
+     "stopsTitle": "What to check",
+     "stops": [
+      {
+       "name": "Spelling",
+       "text": "**Producer and region names** spelled right."
+      },
+      {
+       "name": "Category",
+       "text": "Nothing **miscategorized or mismatched**. Know where each **German style and sweetness level** belongs on a list."
+      },
+      {
+       "name": "Price",
+       "text": "**Incorrect pricing** is a mistake to catch. Check it against your cost formulas."
+      },
+      {
+       "name": "The glass list",
+       "text": "Offer **sparkling** by the glass and bottle at many price points. Sweet and fortified pours are usually **2 oz**. Know how long open bottles last."
+      }
+     ],
+     "visual": 0,
+     "sayIt": "May I help you find something on the list?"
+    },
+    "check": [
+     20,
+     21,
+     22
+    ]
+   },
+   {
+    "name": "Buying and storing",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PROVENANCE",
+      "line": "is the history of who has owned the wine."
+     },
+     {
+      "big": "INSPECT",
+      "line": "for label damage, leakage and ullage."
+     },
+     {
+      "big": "50-60°F",
+      "line": "and constant is the ideal long-term cellar."
+     }
+    ],
+    "read": {
+     "bigIdea": "Buy with care, then store it right.",
+     "where": "The Court’s standards include **purchasing older wines** and **storage**. Both protect what you’ve paid for.",
+     "stopsTitle": "Buying an older bottle",
+     "stops": [
+      {
+       "name": "Ask",
+       "text": "**Provenance**: who has owned it? **How was it stored?** When did it **leave the winery’s cellar?** How many times has it been **sold or shipped?**"
+      },
+      {
+       "name": "Inspect",
+       "text": "Look for **label damage, leakage and ullage** (a low fill)."
+      },
+      {
+       "name": "Store",
+       "text": "A **constant 50-60°F**, organized and accessible, away from odors and pests. Cork-finished wines on their side; spirits and fortified wines upright."
+      },
+      {
+       "name": "Buy smart",
+       "text": "Weather changes a vintage’s **style and price**. Knowing Bordeaux vintages guides **purchasing** and tableside advice."
+      }
+     ],
+     "visual": 0
+    },
+    "check": [
+     24,
+     25,
+     26
+    ]
+   },
+   {
+    "name": "Selling at the table",
+    "video": {
+     "youtubeId": "ngayAZjlSS0",
+     "title": "What You Need To Know About Ordering Wine At A Restaurant",
+     "by": "Wine Folly",
+     "length": "3:26"
+    },
+    "keyPoints": [
+     {
+      "big": "BUDGET",
+      "line": "Find it discreetly, or offer a few price points."
+     },
+     {
+      "big": "UNDERSELL",
+      "line": "when in doubt. Honor the guest’s trust."
+     },
+     {
+      "big": "FULL NAME",
+      "line": "Producer, vintage and full appellation."
+     },
+     {
+      "big": "FIVE STYLES",
+      "line": "Have a wine ready for each one."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sell with trust, not pressure.",
+     "where": "The Court calls **sales skills an essential part of service**. The service exam scores an **appetizing description** and **salesmanship**, and theory includes **price and reputation**.",
+     "stopsTitle": "How to sell it",
+     "stops": [
+      {
+       "name": "Budget",
+       "text": "Find out the host’s budget **discreetly**. If there isn’t one, offer **several wines at different price points**."
+      },
+      {
+       "name": "Trust",
+       "text": "**When in doubt, undersell.** Honor the guest’s trust on price and value."
+      },
+      {
+       "name": "Recommend",
+       "text": "Name the **producer, vintage and full appellation**, and say **why** it suits the dish. Only recommend producers you know."
+      },
+      {
+       "name": "Be ready",
+       "text": "Keep a wine in mind for **light crisp whites, full whites, off-dry whites, lighter reds and full reds**."
+      }
+     ],
+     "visual": 0,
+     "sayIt": "Here are three I love with the duck, at a few different prices."
+    },
+    "check": [
+     27,
+     28,
+     29
+    ]
+   }
+  ]
+ }
+}

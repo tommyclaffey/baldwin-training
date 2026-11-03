@@ -1,0 +1,1481 @@
+{
+ "level": 2,
+ "part": 3,
+ "number": 8,
+ "slug": "certified-at-the-table",
+ "title": "Still, sparkling and decanting at the exam",
+ "script": "Chapter eight",
+ "lead": "The Court's service mechanics at Certified standard: setup, the order, still and sparkling wine, decanting, after-dinner drinks and serving temperatures.",
+ "minutes": 25,
+ "intro": {
+  "script": "Start here",
+  "title": "FOUR WAYS TO SERVE",
+  "text": "From Level 1: present, open, taste, pour. Here is each service the Court defines, the way the examiners want to see it.",
+  "tiers": [
+   {
+    "name": "Sparkling",
+    "note": "3 methods · up to 3/4 full"
+   },
+   {
+    "name": "White",
+    "note": "4 methods · up to 1/2 full"
+   },
+   {
+    "name": "Young red",
+    "note": "3 methods · up to 1/2 full"
+   },
+   {
+    "name": "Old red",
+    "note": "Decanted at a gueridon"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Mise en place and traywork",
+   "book": "bar-basics/glassware",
+   "lines": [
+    {
+     "label": "Your kit",
+     "text": "Two openers, two pens, a pad of paper and two odorless lighters or matches."
+    },
+    {
+     "label": "The rule",
+     "text": "Only stemware touches the tablecloth. Bottles, decanters and corks sit on underliners."
+    }
+   ],
+   "know": [
+    "Polish glasses with clean linen over steam; they must be spotless and odor-free.",
+    "Serviettes are cotton (they must not repel water) and folded before service.",
+    "Bring glasses and service items to the table on a tray lined with a napkin.",
+    "Fill an ice bucket with water and ice so the bottle slides in and out without overflowing.",
+    "Stemware, tools and carrying a tray of stemware are all scored."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "The sommelier's kit",
+     "rows": [
+      {
+       "name": "Wine bottle openers",
+       "meta": "2"
+      },
+      {
+       "name": "Pens",
+       "meta": "2"
+      },
+      {
+       "name": "Pad of paper",
+       "meta": "1"
+      },
+      {
+       "name": "Odorless lighters or matches",
+       "meta": "2"
+      }
+     ],
+     "note": "At the exam, bring the opener, pen and notepad; the rest is provided."
+    }
+   ]
+  },
+  {
+   "name": "The order and the glasses",
+   "book": "wine-service/present-the-bottle",
+   "lines": [
+    {
+     "label": "The order",
+     "text": "Take it from the host's right and repeat it back. The host is whoever orders the wine."
+    },
+    {
+     "label": "The glasses",
+     "text": "Set from the guest's right, keyed off the knife, the same way for every guest, starting with the host or the person to the host's left."
+    }
+   ],
+   "know": [
+    "Several glasses can go in a line, diagonal, diamond or cluster: just be consistent.",
+    "A new wine's glass goes to the right of earlier glasses, so you never pour over stemware.",
+    "A second bottle of the same wine: give the host a fresh glass for the taste, then clear it.",
+    "Present the bottle on a serviette in your hand or on your forearm, and repeat the name and vintage.",
+    "Serviettes never go in a pocket or on your shoulder."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Order to presentation",
+     "items": [
+      {
+       "name": "Take the order",
+       "text": "From the host's right; repeat it"
+      },
+      {
+       "name": "Set glasses",
+       "text": "From the right, keyed off the knife, clockwise"
+      },
+      {
+       "name": "Underliners",
+       "text": "Right of or in front of the host"
+      },
+      {
+       "name": "Present",
+       "text": "Bottle on a serviette; name and vintage"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Opening still wine",
+   "book": "wine-service/open-still-wine",
+   "lines": [
+    {
+     "label": "White",
+     "text": "Four methods: in hand, in the bucket, on an underliner at the table or side station, or on a gueridon. Then into the bucket or onto an underliner at the host's right."
+    },
+    {
+     "label": "Young red",
+     "text": "Three methods: in hand, on an underliner at the table or side station, or on a gueridon. Then onto an underliner at the host's right."
+    }
+   ],
+   "know": [
+    "Cut the foil at the second or lower lip, pocket it, and wipe the cork top.",
+    "Pull the cork quietly, with as little bottle movement as possible.",
+    "Wipe the bottle top, then present the cork on an underliner to the host's right.",
+    "A screwcap goes in your pocket, unpresented. Wipe the lip and carry on.",
+    "Treat a synthetic cork exactly like a natural one."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "WHITE · 4 METHODS",
+       "title": "Ends in a bucket or on an underliner",
+       "text": "Open in hand\nOpen in the ice bucket\nOpen on an underliner (table or side station)\nOpen on a gueridon"
+      },
+      {
+       "label": "YOUNG RED · 3 METHODS",
+       "title": "Ends on an underliner",
+       "text": "Open in hand\nOpen on an underliner (table or side station)\nOpen on a gueridon"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pouring to exam standard",
+   "book": "wine-service/pour-for-the-table",
+   "lines": [
+    {
+     "label": "The taste",
+     "text": "Right hand, label to the host, a 1 to 1.5 oz taste. Step back and wait for approval."
+    },
+    {
+     "label": "The table",
+     "text": "Then pour clockwise, moving to the host's left. A guest of honor is served first."
+    }
+   ],
+   "know": [
+    "Still wine: up to half full, depending on the glass.",
+    "Wipe the bottle after every pour so it doesn't drip.",
+    "Leave the bottle on an underliner or in a bucket within the host's reach.",
+    "Ask before you remove the cork.",
+    "Scored: correct glass, clockwise, no drips, the host taste, pace and pour height."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "How full to pour",
+     "rows": [
+      {
+       "name": "Host's taste",
+       "value": "1-1.5 oz",
+       "pct": 0.15
+      },
+      {
+       "name": "Still wine",
+       "value": "up to 1/2",
+       "pct": 0.5
+      },
+      {
+       "name": "Sparkling wine",
+       "value": "up to 3/4",
+       "pct": 0.75
+      }
+     ],
+     "note": "Still-wine fills depend on the size of the stemware."
+    }
+   ]
+  },
+  {
+   "name": "Sparkling wine service",
+   "book": "wine-service/open-sparkling",
+   "lines": [
+    {
+     "label": "Three methods",
+     "text": "Always present in the air. Then open in the air, in the bucket on its stand, or in the air at a gueridon or side station."
+    },
+    {
+     "label": "Control",
+     "text": "A serviette over the cage and cork, your hand never off the top, the bottle always pointed away from guests."
+    }
+   ],
+   "know": [
+    "Cut the foil at the bottom of the cage with the corkscrew blade. The tab is allowed, not preferred.",
+    "Loosen the cage but don't take it off until the cork is out.",
+    "Twist the bottle, not the cork, at 45 degrees. Never brace it against your body.",
+    "Ease the cork out quietly until the rush of CO2 fades.",
+    "Pour up to 3/4 full, evenly, one glass at a time, in two pours at most."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Sparkling, at exam standard",
+     "items": [
+      {
+       "name": "Prepare",
+       "text": "Tulips or flutes, bucket and stand, two serviettes"
+      },
+      {
+       "name": "Foil",
+       "text": "Cut at the bottom of the cage with the blade"
+      },
+      {
+       "name": "Cage",
+       "text": "Loosen, keep it on, thumb on top"
+      },
+      {
+       "name": "Cork",
+       "text": "Twist the bottle at 45°, release quietly"
+      },
+      {
+       "name": "Pour",
+       "text": "Up to 3/4, max two pours per glass"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Decanting an old red",
+   "book": "wine-service/decanting",
+   "lines": [
+    {
+     "label": "The setup",
+     "text": "Everything goes on a gueridon before it comes to the table: decanter, lighter, three serviettes, three underliners, candle or flashlight, cork tools and a decanting basket."
+    },
+    {
+     "label": "Why decant",
+     "text": "Young wines are decanted for air. Old wines are decanted to leave the sediment behind."
+    }
+   ],
+   "know": [
+    "Carry the bottle in a lined basket without disturbing the sediment.",
+    "Not stored label up? Leave it as is, explain, and show the label after decanting.",
+    "Light the candle away from the table when you can.",
+    "Pour in one smooth movement; stop when sediment reaches the shoulder. Never look away.",
+    "Taste the host from the decanter, then ask about the cork and the empty bottle."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "On the gueridon",
+     "rows": [
+      {
+       "name": "Clean decanter",
+       "meta": "1"
+      },
+      {
+       "name": "Serviettes",
+       "meta": "3"
+      },
+      {
+       "name": "Underliners",
+       "meta": "3: cork, bottle, decanter"
+      },
+      {
+       "name": "Candle or small flashlight",
+       "meta": "1"
+      },
+      {
+       "name": "Matches or odorless lighter",
+       "meta": "1"
+      },
+      {
+       "name": "Decanting basket",
+       "meta": "1"
+      },
+      {
+       "name": "Cork removal tools",
+       "meta": "as needed"
+      }
+     ]
+    },
+    {
+     "type": "tiles",
+     "title": "Decant these (Certified column)",
+     "items": [
+      {
+       "name": "YOUNG BORDEAUX",
+       "text": "For air; aged Bordeaux for sediment"
+      },
+      {
+       "name": "YOUNG BRUNELLO",
+       "text": "Decant young Brunello di Montalcino"
+      },
+      {
+       "name": "TAURASI · SAGRANTINO",
+       "text": "Decant them young"
+      },
+      {
+       "name": "VINTAGE PORT",
+       "text": "Old vintage and single quinta, for sediment"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "After-dinner drinks",
+   "lines": [
+    {
+     "label": "The setup",
+     "text": "Cordials, Port and brandy are sold and served from a gueridon or tray, with everything on it before you reach the table."
+    },
+    {
+     "label": "Two methods",
+     "text": "Measure with a jigger at the gueridon and present the glass on a lined tray from the right. Or bring glass, bottle and serviette on a tray and pour at the table."
+    }
+   ],
+   "know": [
+    "Bring jiggers, a lined tray, the bottles, the right glasses and three serviettes.",
+    "Offer help choosing; talk styles, countries and pairings with desserts and cheeses.",
+    "Sweet and fortified wines by the glass are usually a 2 oz pour.",
+    "Old vintage and single quinta Ports need decanting for sediment.",
+    "Spirits and fortified wines are stored standing up."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "METHOD 1",
+       "title": "Pour at the gueridon",
+       "text": "Measure with a jigger\nPour into the right glass\nPresent on a lined tray, from the right"
+      },
+      {
+       "label": "METHOD 2",
+       "title": "Pour at the table",
+       "text": "Glass, bottle and serviette on a lined tray\nGlass to the guest's right\nPour the proper amount"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Temperatures by style",
+   "lines": [
+    {
+     "label": "The exam standard",
+     "text": "The Court sets serving ranges 'for exam standards'. In real service the style and the guest decide."
+    },
+    {
+     "label": "Beyond wine",
+     "text": "The ranges cover fortified wines and beer too."
+    }
+   ],
+   "know": [
+    "Sparkling, light whites, sweet whites and mineral water: 42-50°F.",
+    "Full-bodied reds are warmest: 58-65°F.",
+    "Dry Sherry and dry Madeira: 48-55°F. Tawny Port, sweet Sherry, sweet Madeira, vintage Port: 55-62°F.",
+    "Lager and pilsner: 40-45°F. Porter, stout and English ale: 50-55°F.",
+    "Long-term storage: a constant 50-60°F."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Wine · serving temperature °F",
+     "rows": [
+      {
+       "name": "Sparkling, light & sweet white",
+       "value": "42-50°F",
+       "pct": 0.5
+      },
+      {
+       "name": "Dry rosé",
+       "value": "45-55°F",
+       "pct": 0.62
+      },
+      {
+       "name": "Dry Sherry, dry Madeira",
+       "value": "48-55°F",
+       "pct": 0.66
+      },
+      {
+       "name": "Full white, light red",
+       "value": "50-59°F",
+       "pct": 0.75
+      },
+      {
+       "name": "Medium red; Port, sweet Sherry",
+       "value": "55-62°F",
+       "pct": 0.85
+      },
+      {
+       "name": "Full-bodied red",
+       "value": "58-65°F",
+       "pct": 1
+      }
+     ],
+     "note": "The Court's exam-standard ranges."
+    },
+    {
+     "type": "list",
+     "title": "Beer · serving temperature",
+     "rows": [
+      {
+       "name": "Lager, pilsner",
+       "meta": "40-45°F"
+      },
+      {
+       "name": "Specialty ale (wheat, IPA, Belgian pale)",
+       "meta": "45-50°F"
+      },
+      {
+       "name": "Lambic",
+       "meta": "45-50°F"
+      },
+      {
+       "name": "English ale, cask ale",
+       "meta": "50-55°F"
+      },
+      {
+       "name": "Porter, stout, Belgian dubbel",
+       "meta": "50-55°F"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Still wine foil",
+   "b": "Sparkling wine foil",
+   "why": "Still: cut at the second or lower lip. Sparkling: cut at the bottom of the cage with the corkscrew blade."
+  },
+  {
+   "a": "Still wine fill",
+   "b": "Sparkling wine fill",
+   "why": "Still: up to half full, depending on the glass. Sparkling: up to 3/4, in no more than two pours."
+  },
+  {
+   "a": "Decanting a young wine",
+   "b": "Decanting an old wine",
+   "why": "Young: for air. Old: to leave the sediment behind."
+  },
+  {
+   "a": "White wine methods",
+   "b": "Young red methods",
+   "why": "White has four (including opening in the ice bucket). Young red has three and ends on an underliner."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas: Hospitality & Service Standards (1.2023), Certified Sommelier Exam Guide (7.2024), Introductory and Certified Theory Curriculum Guide (8.2023) and the example Certified feedback report (2026). Checked Nov 2, 2026.",
+ "cards": [
+  {
+   "q": "What is the only thing that may touch the tablecloth in Court service?",
+   "answer": "Glass stemware",
+   "wrong": [
+    "The bottle",
+    "The cork",
+    "The decanter"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "q": "How are glasses carried to the table in Court service?",
+   "answer": "On a tray lined with a napkin",
+   "wrong": [
+    "By the stems, in one hand",
+    "Upside down on a bare tray",
+    "In a rack"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "q": "Why must serviettes be cotton or similar, per the Court?",
+   "answer": "They must not repel water",
+   "wrong": [
+    "Cotton is cheaper",
+    "Polyester stains the bottle",
+    "They must match the tablecloth"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "q": "How should an ice bucket for a bottle be filled?",
+   "answer": "With water and ice, so the bottle moves in and out easily",
+   "wrong": [
+    "With ice only, packed tight",
+    "With cold water only",
+    "Half full of salt and ice"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "q": "In Court service, where are a guest's glasses keyed from?",
+   "answer": "The knife",
+   "wrong": [
+    "The bread plate",
+    "The napkin",
+    "The water glass on the left"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "q": "The table orders a second bottle of the same wine. What does the host get?",
+   "answer": "A fresh glass for the taste",
+   "wrong": [
+    "No taste; just pour",
+    "A taste in their used glass",
+    "A new set of glasses for everyone, always"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "q": "Where does the glass for a newly ordered wine go?",
+   "answer": "To the right of the earlier glasses",
+   "wrong": [
+    "To the left of the earlier glasses",
+    "In front of the plate",
+    "Wherever there is space"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "q": "Where may a serviette be kept during service?",
+   "answer": "In hand or on the forearm",
+   "wrong": [
+    "On the shoulder",
+    "In a pocket",
+    "Tucked in the belt"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "q": "How many methods do the Court's standards give for opening a white wine?",
+   "answer": "Four",
+   "wrong": [
+    "Two",
+    "Three",
+    "One"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "q": "Which method is listed for white wine but not for young red?",
+   "answer": "Opening the bottle in the ice bucket",
+   "wrong": [
+    "Opening in hand",
+    "Opening on a gueridon",
+    "Opening on an underliner"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "q": "Where does a still wine's foil go after you cut it?",
+   "answer": "In the sommelier's pocket",
+   "wrong": [
+    "On the underliner with the cork",
+    "On the table beside the host",
+    "Back on the bottle"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "q": "What happens to a screwcap in Court service?",
+   "answer": "It goes in your pocket and is not presented",
+   "wrong": [
+    "It's presented on an underliner like a cork",
+    "It's put back on after the taste",
+    "It's left on the table"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+  },
+  {
+   "q": "How big is the host's taste in Court service?",
+   "answer": "1 to 1.5 ounces",
+   "wrong": [
+    "Half an ounce",
+    "3 ounces",
+    "A full glass"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "q": "After the host approves, which way do you pour around the table?",
+   "answer": "Clockwise, moving to the host's left",
+   "wrong": [
+    "Counterclockwise, moving to the host's right",
+    "Women first, then men",
+    "Host first, then whoever is closest"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "q": "How full should a still wine glass be poured?",
+   "answer": "Up to half full, depending on the glass",
+   "wrong": [
+    "Up to 3/4 full",
+    "To the brim",
+    "Exactly 6 ounces"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "q": "Who is poured first after the host approves, if there is one?",
+   "answer": "The guest of honor",
+   "wrong": [
+    "The oldest guest",
+    "The host",
+    "The guest to the host's right"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "q": "Where is a sparkling wine's foil cut in Court service?",
+   "answer": "At the bottom of the cage, with the corkscrew blade",
+   "wrong": [
+    "At the second lip",
+    "Not at all; the whole foil stays on",
+    "Only with the pull tab"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "q": "What do you twist when opening sparkling wine?",
+   "answer": "The bottle, not the cork",
+   "wrong": [
+    "The cork, not the bottle",
+    "The cage only",
+    "Both at once, in the same direction"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "q": "What is the most pours you may use to fill a sparkling glass?",
+   "answer": "Two",
+   "wrong": [
+    "One",
+    "Three",
+    "As many as needed"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "q": "When is the cage taken off the cork?",
+   "answer": "After the cork is out",
+   "wrong": [
+    "Before you loosen the cork",
+    "Right after cutting the foil",
+    "Never; it stays on the cork"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "q": "When do you stop pouring while decanting an old red?",
+   "answer": "When sediment reaches the shoulder of the bottle",
+   "wrong": [
+    "When the bottle is completely empty",
+    "After exactly half the bottle",
+    "When the candle flickers"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=4"
+  },
+  {
+   "q": "How many underliners does the Court list for decanting?",
+   "answer": "Three: cork, bottle and decanter",
+   "wrong": [
+    "One, for the bottle",
+    "Two: bottle and decanter",
+    "Four, one per guest"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=4"
+  },
+  {
+   "q": "An old bottle wasn't stored label up. What do you do?",
+   "answer": "Leave it as is, explain, and show the label after decanting",
+   "wrong": [
+    "Turn it label up before presenting",
+    "Refuse to decant it",
+    "Show the label by rotating it in the basket"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=4"
+  },
+  {
+   "q": "Why does the Curriculum Guide say to decant a young Bordeaux?",
+   "answer": "For aeration",
+   "wrong": [
+    "For sediment",
+    "To chill it",
+    "Young Bordeaux is never decanted"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "q": "What measures an after-dinner drink in Court service?",
+   "answer": "A measuring jigger",
+   "wrong": [
+    "The sommelier's eye",
+    "A marked glass",
+    "A wine thief"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+  },
+  {
+   "q": "What is the usual by-the-glass pour for sweet or fortified wine?",
+   "answer": "2 oz",
+   "wrong": [
+    "5 oz",
+    "1 oz",
+    "6 oz"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=80"
+  },
+  {
+   "q": "Which Ports does the Curriculum Guide say require decanting for sediment?",
+   "answer": "Old vintage and single quinta Ports",
+   "wrong": [
+    "Ruby and reserve Ports",
+    "White Ports",
+    "Every tawny Port"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "q": "What is the Court's exam-standard serving range for full-bodied red wine?",
+   "answer": "58-65°F",
+   "wrong": [
+    "42-50°F",
+    "50-59°F",
+    "65-72°F"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=6"
+  },
+  {
+   "q": "What range does the Court give for dry Sherry and dry Madeira?",
+   "answer": "48-55°F",
+   "wrong": [
+    "55-62°F",
+    "40-45°F",
+    "58-65°F"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=6"
+  },
+  {
+   "q": "What range does the Court give for porter and stout?",
+   "answer": "50-55°F",
+   "wrong": [
+    "40-45°F",
+    "35-40°F",
+    "58-65°F"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=6"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Required sommelier tools: 2 wine bottle openers, 2 pens, 1 pad of paper, 2 odorless lighters or matches.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "fact": "Mise en place: wine lists clean, correct, current, easy to read; glassware clean, spotless, odor-free, polished with clean linen using steam; serviettes of cotton or similar that don't repel water, folded before service; underliners cleaned and polished; trays, ice buckets, stands and decanters clean and ready; opening tools organized.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "fact": "Glass stemware is the only thing to touch the tablecloth; bottles, decanters and corks go on an underliner. Glassware and service items are brought to the table on a tray lined with a napkin.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=1"
+  },
+  {
+   "fact": "The Court's example feedback report scores Mise en Place (Other Equipment & Tools, Stemware), Opening (Confident, Quiet, Presentation, Safe, Wipes Bottle Lip, Opening Sparkling Wine), Order Taking (Repeat Order, Tracks Order Correctly), Pouring (Correct Glassware, Clockwise Service, No Drips, Offers Host Approval Taste, Pace, Pour Height) and Traywork (Pace, Tray Carry with Stemware).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2026/04/Certified_Sommelier_Example_Feedback_Report_2026322.pdf"
+  },
+  {
+   "fact": "Beverage service is always on the guest's right. The wine list is presented and assistance offered. The order is taken from the host's right and repeated to confirm. The host is the person who orders the wine.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "fact": "Glassware is placed from the guest's right, consistently, starting with the host or the person to the host's left and continuing clockwise regardless of gender. Space permitting, underliners for bottle, cork and decanters go to the right of and/or in front of the host.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "fact": "The sommelier presents the bottle and repeats the name and vintage. The bottle is presented underlined by a serviette held in hand or on the forearm. Serviettes are in hand or on the forearm during all service, never in pockets or on the shoulder.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "fact": "Glassware placement: right size and shape for each wine; placed to the guest's right and keyed off the knife; multiple glasses in a line, diagonal, diamond or cluster; consistent among all guests. A second bottle of the same wine gets a fresh tasting glass for the host, placed right of the first and cleared afterward; be ready to replace all glasses if asked. New wines' glasses go to the right of earlier ones so you never pour over stemware.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "fact": "Still wine: foil cut at the second or lower lip so wine can't drip behind it; foil into the pocket; cork top wiped; cork removed with minimal movement and as quietly as possible; bottle top wiped; cork presented to the host's right on an underliner.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "fact": "The bottle is held in the right hand, label to the host, for a 1 to 1.5 ounce taste; the sommelier steps back and waits. After approval, serve moving to the host's left (clockwise); a guest of honor is served first, then clockwise regardless of gender. Wipe the bottle after each pour. Place the bottle on an underliner or in an ice bucket within the host's reach, without hindering movement. Ask to remove the cork.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=2"
+  },
+  {
+   "fact": "White wine service has four methods: open in hand; open in a bucket to the host's right; open on an underliner on the table or a side station; open on a gueridon near the table, preferably to the host's right. Afterward the bottle goes in an ice bucket or on an underliner to the host's right. Glasses are filled up to 1/2 full depending on stemware size.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "fact": "Young red wine service has three methods: open in hand; open on an underliner on the table or at a side station; open on a gueridon near the table. The bottle then goes on an underliner to the host's right. Glasses are filled up to 1/2 full depending on stemware size.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=4"
+  },
+  {
+   "fact": "Screwcaps: present as standard, remove as quietly as possible, put the cap in your pocket (it is not presented), wipe the lip, pour the host's taste. Synthetic corks are treated like natural corks.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+  },
+  {
+   "fact": "Sparkling methods: present in the air and open in the air; present in the air and open in a bucket and stand; present in the air and open in the air at a gueridon or side station. Prepare glasses, ice bucket, stand and two serviettes; the bottle properly chilled; bucket filled with water and ice so the bottle moves in and out without overflowing; bucket to the host's right without blocking service.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "fact": "Sparkling: tulips or flutes placed from a lined tray; cork and bottle underliners to the host's right; ice bucket with stand to the host's right with a clean serviette on top or in its handle; present and re-confirm the order.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "fact": "Sparkling: cut the foil cleanly at the bottom of the cage with the corkscrew blade (the tab is allowed but not preferred); foil into the pocket; clean serviette held firmly over cage and cork; always point the bottle away from guests; untwist and loosen the cage but do not remove it; keep hand or thumb over cage and cork; twist the bottle, not the cork, at 45 degrees, in the air or against the inside of the bucket, never against the body; release the cork as quietly as possible until the rush of CO2 dissipates.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "fact": "Sparkling: cage into the pocket, cork on the underliner to the host's right, wipe the lip thoroughly. Hold the bottle in the right hand or by the bottom (not the punt); two fingers under the neck is acceptable. Label to the host, 1 to 1.5 ounce taste, serviette against drips. After approval, pour in standard order. Fill evenly up to 3/4 full, one glass at a time, with a maximum of two pours per glass. Bottle goes in the ice bucket or on an underliner per the host's preference; ask to remove the cork and unused underliner.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=3"
+  },
+  {
+   "fact": "Curriculum Guide (Champagne, Certified column): never point the cork at someone while opening, and never take your hand off the top (cage and cork) while removing the cork; follow the CMS-A sparkling opening standards.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "fact": "Old red wine service: a gueridon or room service cart is used for decanting, with all materials on it before going tableside. Items: clean decanter, matches or odorless lighter, three serviettes, three underliners (cork, bottle, decanter), candle or small flashlight, cork removal tools, decanting basket.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=4"
+  },
+  {
+   "fact": "Decanting: line the basket with a clean serviette and take it to the cellar; place the bottle in it without disturbing sediment; if not stored label up, leave it as is, present it with an explanation, decant, then show the label. Light the candle away from the table when possible. Roll the gueridon to the table, preferably to the host's right. Prop the basket with an underliner or serviette if its angle is too low.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=4"
+  },
+  {
+   "fact": "Decanting: remove the foil at the second lip (whole foil acceptable but not preferred; tell the guest if so); remove the cork with whatever tool is needed; wipe the lip a second time; pour slowly into the decanter in one smooth movement, bottle a safe distance above the flame, using the light to watch the shoulder; never look away; stop once fine or gross sediment reaches the shoulder; don't touch the bottle to the decanter.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=4"
+  },
+  {
+   "fact": "After decanting: wipe drips; bottle and cork on underliners with the label to the host; pour the host a 1 to 1.5 ounce taste from the decanter and ask if the wine can be served; serve in standard manner; wipe the decanter after each pour; decanter on an underliner within the host's reach; ask about removing the cork and the bottle; remove unused underliners.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=4"
+  },
+  {
+   "fact": "Curriculum Guide (Bordeaux, Certified column): decant young Bordeaux for aeration and aged Bordeaux for sediment; service temperatures.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=11"
+  },
+  {
+   "fact": "Curriculum Guide (California North Coast): young Cabernet Sauvignon often benefits from decanting; old Cabernet Sauvignon needs decanting for sediment.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=57"
+  },
+  {
+   "fact": "Decant young Brunello di Montalcino (Curriculum Guide, Tuscany).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=33"
+  },
+  {
+   "fact": "Young Taurasi and Sagrantino di Montefalco should be decanted (Curriculum Guide, Central & Southern Italy).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=35"
+  },
+  {
+   "fact": "Old Vintage and Single Quinta Ports require decanting for sediment; by-the-glass fortified pours are typically 2 oz (Curriculum Guide, Fortified Wines).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "fact": "Cordial, Port and Brandy service: a gueridon or tray is used for after-dinner drinks, with everything on it before going tableside. Items: measuring jiggers, lined service tray, beverage selections, appropriate glassware, three serviettes. Offer help choosing and answer questions on styles, countries of origin, and pairings with desserts and cheeses. Method 1: measure with a jigger on the gueridon, pour, and present on a lined tray from the right. Method 2: bring glass, bottle and a clean serviette on a lined tray; place the glass to the guest's right and pour the proper amount.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+  },
+  {
+   "fact": "Sweet wines by the glass: usually a 2 oz serving; open bottles can typically last about a week kept cold in the refrigerator (Curriculum Guide, Sweet Wines).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=80"
+  },
+  {
+   "fact": "Storage: constant temperature, 50-60°F / 10-15°C ideal for long-term storage; cork-finished table wines on their side; spirits and fortified wines standing up.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+  },
+  {
+   "fact": "Suggested serving temperatures 'for exam standards': mineral water, sweet white, Champagne and sparkling, light-bodied white 42-50°F (5.5-10°C); dry Sherry and dry Madeira 48-55°F (9-13°C); dry rosé 45-55°F (7-13°C); full-bodied white and light-bodied red 50-59°F (10-15°C); medium-bodied red 55-62°F (13-17°C); full-bodied red 58-65°F (14.5-18°C); tawny Port, sweet Sherry, sweet Madeira and vintage Port 55-62°F (13-17°C). They are guidelines; style and preference decide in the end.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=6"
+  },
+  {
+   "fact": "Beer serving temperatures: lager and pilsner 40-45°F (4.5-7°C); specialty ale (Belgian pale, wheat, APA, IPA, cream, abbey) 45-50°F (7-10°C); English-style ale, cask-conditioned ale, porter and stout, Belgian dubbel 50-55°F (10-13°C); lambic 45-50°F (7-10°C).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=6"
+  },
+  {
+   "fact": "Curriculum Guide (Germany, Certified column): know styles and sweetness levels, where each belongs on a wine list, and appropriate serving temperatures.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=51"
+  },
+  {
+   "fact": "Possible service exam scenarios include opening sparkling wine and serving guests, opening and pouring wines by the glass, and serving a wine flight.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=29"
+  },
+  {
+   "fact": "In the mock restaurant role play, watch reaching over a guest's space.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  },
+  {
+   "fact": "The Certified expected skill set includes proficiency in tableside service: still and sparkling wine bottle and glass pour service.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=1"
+  }
+ ],
+ "unverified": [
+  "Pour height is a scored line in the Court's example feedback report, but the Service Standards give no height; none is stated here.",
+  "The Standards say to serve 'moving to the left (clockwise) of the host' but don't say whether the host's own glass is filled first or last; not stated here.",
+  "The Curriculum Guide gives the 2 oz fortified pour as both 59.1 ml (sweet wines) and 51.9 ml (fortified wines); only '2 oz' is used.",
+  "Wine Folly's temperature video may give ranges that differ from the Court's; the chapter's numbers are the Court's."
+ ],
+ "court": {
+  "outcome": "Proficiency in tableside service, including: Still and sparkling wine bottle and glass pour service",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=1",
+  "coverage": [
+   {
+    "topic": "Required sommelier tools",
+    "guide": "Two openers, two pens, a pad, two odorless lighters or matches.",
+    "where": "Mise en place and traywork"
+   },
+   {
+    "topic": "Mise-en-place: pre-service set up",
+    "guide": "Clean, polished glassware and linen; only stemware on the cloth; lined trays.",
+    "where": "Mise en place and traywork"
+   },
+   {
+    "topic": "Standard service",
+    "guide": "Serve from the right; order from host's right and repeated; present; foil; cork; taste; clockwise.",
+    "where": "The order and the glasses; Opening still wine; Pouring to exam standard"
+   },
+   {
+    "topic": "Glassware placement",
+    "guide": "Keyed off the knife; consistent; new glasses to the right; fresh glass for a second bottle.",
+    "where": "The order and the glasses"
+   },
+   {
+    "topic": "Sparkling wine service",
+    "guide": "Three methods; foil at cage; cage stays on; twist bottle at 45°; up to 3/4, two pours.",
+    "where": "Sparkling wine service"
+   },
+   {
+    "topic": "White wine service",
+    "guide": "Four opening methods; up to 1/2 full.",
+    "where": "Opening still wine; Pouring to exam standard"
+   },
+   {
+    "topic": "Young red wine service",
+    "guide": "Three opening methods; up to 1/2 full.",
+    "where": "Opening still wine"
+   },
+   {
+    "topic": "Old red wine service (decanting)",
+    "guide": "Gueridon, items list, basket, candle, stop at sediment, taste from decanter.",
+    "where": "Decanting an old red"
+   },
+   {
+    "topic": "Screwcap closures and synthetic corks",
+    "guide": "Screwcap pocketed and not presented; synthetic treated like natural.",
+    "where": "Opening still wine"
+   },
+   {
+    "topic": "Cordial, Port and brandy service",
+    "guide": "Gueridon or tray; jiggers; two methods; recommend with desserts and cheeses.",
+    "where": "After-dinner drinks"
+   },
+   {
+    "topic": "Suggested serving temperatures",
+    "guide": "Exam-standard ranges for wine, fortified and beer.",
+    "where": "Temperatures by style"
+   },
+   {
+    "topic": "Storage",
+    "guide": "Constant 50-60°F; spirits and fortified standing up.",
+    "where": "Temperatures by style; After-dinner drinks; Chapter 9 (buying and storing)"
+   },
+   {
+    "topic": "Curriculum Guide, Service of Beverage rows (Certified column)",
+    "guide": "Decanting young/aged Bordeaux, young Brunello, Taurasi, Sagrantino, Cabernet, Port; sparkling opening rules; temperatures.",
+    "where": "Decanting an old red; Sparkling wine service; Temperatures by style"
+   },
+   {
+    "topic": "Purchasing older wines",
+    "guide": "Provenance, storage history, inspection.",
+    "where": "Chapter 9 (certified-business)"
+   }
+  ]
+ },
+ "v3": {
+  "video": {
+   "youtubeId": "9R3JBuXcNjQ",
+   "title": "How to Open A Bottle of Wine",
+   "by": "Court of Master Sommeliers, Americas",
+   "length": "2:14"
+  },
+  "sections": [
+   {
+    "name": "Mise en place and traywork",
+    "video": {
+     "youtubeId": "7AzoLSaIy38",
+     "title": "How to Polish Wine Glasses",
+     "by": "Wine Folly",
+     "length": "1:50"
+    },
+    "keyPoints": [
+     {
+      "big": "TWO OPENERS",
+      "line": "two pens, a pad, two odorless lighters or matches."
+     },
+     {
+      "big": "STEMWARE",
+      "line": "is the only thing that touches the tablecloth."
+     },
+     {
+      "big": "A LINED TRAY",
+      "line": "carries glasses and service items to the table."
+     },
+     {
+      "big": "STEAM",
+      "line": "and clean linen polish glasses spotless and odor-free."
+     }
+    ],
+    "read": {
+     "bigIdea": "Set up first, so service looks easy.",
+     "where": "From Level 1: you know the kit. At Certified, the **mise en place** and your **traywork** are scored, so practice them until they’re automatic.",
+     "stopsTitle": "Before the guest sits down",
+     "stops": [
+      {
+       "name": "Glasses",
+       "text": "Polished with **clean linen over steam**: spotless and free of odor. They come to the table on a **tray lined with a napkin**."
+      },
+      {
+       "name": "Linen",
+       "text": "**Cotton serviettes** (they must not repel water), folded before service. Underliners cleaned and polished."
+      },
+      {
+       "name": "The table",
+       "text": "**Only stemware touches the tablecloth.** Bottles, decanters and corks go on **underliners**."
+      },
+      {
+       "name": "The bucket",
+       "text": "Water and ice, so the bottle **slides in and out** without overflowing."
+      }
+     ],
+     "visual": 0
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The order and the glasses",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "REPEAT",
+      "line": "the order back, from the host’s right."
+     },
+     {
+      "big": "THE KNIFE",
+      "line": "is where each guest’s glasses are keyed from."
+     },
+     {
+      "big": "TO THE RIGHT",
+      "line": "goes each new glass, so you never pour over stems."
+     },
+     {
+      "big": "FRESH GLASS",
+      "line": "for the host’s taste of a second bottle."
+     },
+     {
+      "big": "NEVER",
+      "line": "a serviette in your pocket or on your shoulder."
+     }
+    ],
+    "read": {
+     "bigIdea": "Confirm the order, then set a tidy table.",
+     "where": "Every drink is served from the **guest’s right**. Take the order from the **host’s right** and **repeat it back**. Order taking is scored: repeat it, then track it correctly.",
+     "stopsTitle": "Four steps before the cork",
+     "stops": [
+      {
+       "name": "Glasses",
+       "text": "Set from the right, **keyed off the knife**. Start with the host or the person to the host’s left and go **clockwise**. Use a line, diagonal, diamond or cluster, but the **same for every guest**."
+      },
+      {
+       "name": "More wines",
+       "text": "Each new wine’s glass goes **to the right** of the earlier ones, so you never pour over stemware. A **second bottle of the same wine** gets a fresh tasting glass for the host, cleared afterward."
+      },
+      {
+       "name": "Underliners",
+       "text": "For bottle, cork and any decanter: **to the right of, or in front of, the host**."
+      },
+      {
+       "name": "Present",
+       "text": "Bottle on a **serviette in your hand or on your forearm**. Repeat the **name and vintage**. Serviettes never go in a pocket or on a shoulder."
+      }
+     ],
+     "mixup": "**Clockwise** is the direction for setting glasses and pouring. The **guest’s right** is the side you serve from.",
+     "sayIt": "The 2018 Barolo you ordered. Shall I open it?"
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Opening still wine",
+    "video": {
+     "youtubeId": "9R3JBuXcNjQ",
+     "title": "How to Open A Bottle of Wine",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "2:14"
+    },
+    "keyPoints": [
+     {
+      "big": "4 METHODS",
+      "line": "to open a white; 3 to open a young red."
+     },
+     {
+      "big": "SECOND LIP",
+      "line": "is where the foil is cut, so nothing drips."
+     },
+     {
+      "big": "QUIET",
+      "line": "Opening is scored: confident, quiet, safe."
+     },
+     {
+      "big": "WIPE",
+      "line": "the lip before you pour. It’s scored too."
+     },
+     {
+      "big": "SCREWCAP",
+      "line": "goes in your pocket. It is never presented."
+     }
+    ],
+    "read": {
+     "bigIdea": "Open it quietly, cleanly and safely.",
+     "where": "From Level 1: present, cut, open, taste, pour. At Certified the **opening is scored line by line**: confident, quiet, safe, the presentation and wiping the lip.",
+     "stopsTitle": "Still wine, at exam standard",
+     "stops": [
+      {
+       "name": "The foil",
+       "text": "Cut at the **second or lower lip** so wine can’t drip behind it. Foil goes **in your pocket**. Wipe the top of the cork."
+      },
+      {
+       "name": "The cork",
+       "text": "Out with **minimal bottle movement** and **as quietly as possible**. Wipe the bottle top. Cork on an **underliner to the host’s right**."
+      },
+      {
+       "name": "Where you open",
+       "text": "A **white** has **4 methods**: in hand, in the bucket, on an underliner, or on a gueridon. A **young red** has **3**: in hand, on an underliner, or on a gueridon."
+      },
+      {
+       "name": "Other closures",
+       "text": "A **screwcap** comes off quietly and goes in your pocket; it’s **not presented**. A **synthetic cork** is treated like a natural cork."
+      }
+     ],
+     "visual": 0,
+     "mixup": "A **white** can be opened **in the ice bucket**. A **young red** never needs one; it ends on an **underliner**.",
+     "sayIt": "Here’s your cork."
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "Pouring to exam standard",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1-1.5 OZ",
+      "line": "is the host’s taste, label facing the host."
+     },
+     {
+      "big": "CLOCKWISE",
+      "line": "after approval, guest of honor first."
+     },
+     {
+      "big": "HALF FULL",
+      "line": "at most for still wine, depending on the glass."
+     },
+     {
+      "big": "NO DRIPS",
+      "line": "Wipe the bottle after every pour."
+     },
+     {
+      "big": "ASK",
+      "line": "before you take the cork away."
+     }
+    ],
+    "read": {
+     "bigIdea": "Taste for the host, then pour clockwise.",
+     "where": "Pouring is scored on **correct glassware, clockwise service, no drips, the host’s taste, pace and pour height**. The steps are the same for every wine.",
+     "stopsTitle": "The pour, step by step",
+     "stops": [
+      {
+       "name": "Host's taste",
+       "text": "Bottle in your **right hand**, label to the host, a **1 to 1.5 oz** taste. **Step back and wait** for approval."
+      },
+      {
+       "name": "The table",
+       "text": "Pour **clockwise**, moving to the host’s left. A **guest of honor** is served first. Don’t reach over a guest’s space."
+      },
+      {
+       "name": "How much",
+       "text": "Still wine **up to half full**, depending on the glass. **Wipe the bottle** after every pour."
+      },
+      {
+       "name": "Finish",
+       "text": "Bottle on an **underliner** or in a **bucket** within the host’s reach, out of everyone’s way. **Ask** before removing the cork."
+      }
+     ],
+     "visual": 0,
+     "sayIt": "How do you find the wine? Shall I pour for the table?"
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "Sparkling wine service",
+    "video": {
+     "youtubeId": "XFiWNb9GMNE",
+     "title": "How to Open & Serve Sparkling Wine",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "5:31"
+    },
+    "keyPoints": [
+     {
+      "big": "3 METHODS",
+      "line": "always presented in the air first."
+     },
+     {
+      "big": "THE CAGE",
+      "line": "stays on. Loosen it and keep your thumb on top."
+     },
+     {
+      "big": "45 DEGREES",
+      "line": "Twist the bottle, not the cork."
+     },
+     {
+      "big": "3/4 FULL",
+      "line": "one glass at a time, two pours at most."
+     },
+     {
+      "big": "AWAY",
+      "line": "from guests. The bottle never points at anyone."
+     }
+    ],
+    "read": {
+     "bigIdea": "Control the cork, then pour in two passes.",
+     "where": "Opening sparkling wine is its own scored line. Have **tulips or flutes**, an **ice bucket and stand** and **two serviettes** ready, with the bottle properly chilled.",
+     "stopsTitle": "Sparkling, step by step",
+     "stops": [
+      {
+       "name": "Set up",
+       "text": "Bucket and stand **to the host’s right**, a clean serviette on top. Cork and bottle **underliners** to the host’s right. Present the bottle **in the air** and re-confirm the order."
+      },
+      {
+       "name": "Foil and cage",
+       "text": "Cut the foil at the **bottom of the cage** with the corkscrew blade. A serviette goes over the cage and cork. **Loosen the cage but leave it on**; your hand never leaves the top."
+      },
+      {
+       "name": "The cork",
+       "text": "Hold the bottle at **45 degrees**, pointed away from guests, and **twist the bottle, not the cork**. Do it in the air or against the inside of the bucket, never against your body. Release it **quietly**."
+      },
+      {
+       "name": "The pour",
+       "text": "Hold the bottle in your right hand or by the bottom (not the punt). Host’s taste first. Then fill evenly **up to 3/4**, one glass at a time, **two pours at most**."
+      }
+     ],
+     "mixup": "**Still** foil is cut at the **second lip**. **Sparkling** foil is cut at the **bottom of the cage**.",
+     "sayIt": "To start the evening, the Champagne. Shall I pour?"
+    },
+    "check": [
+     16,
+     17,
+     18
+    ]
+   },
+   {
+    "name": "Decanting an old red",
+    "video": {
+     "youtubeId": "uOhVibnoThs",
+     "title": "How to Decant Wine",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "7:00"
+    },
+    "keyPoints": [
+     {
+      "big": "GUERIDON",
+      "line": "holds everything before you go to the table."
+     },
+     {
+      "big": "THREE",
+      "line": "serviettes and three underliners: cork, bottle, decanter."
+     },
+     {
+      "big": "THE SHOULDER",
+      "line": "Stop pouring when sediment reaches it."
+     },
+     {
+      "big": "NEVER",
+      "line": "look away from the bottle while decanting."
+     },
+     {
+      "big": "YOUNG",
+      "line": "wines for air; old wines for sediment."
+     }
+    ],
+    "read": {
+     "bigIdea": "Slow, steady, eyes on the shoulder.",
+     "where": "The Court’s **old red wine service** happens at a **gueridon** (a side cart) or room service cart. Everything goes on it **before** you go to the table.",
+     "stopsTitle": "Decanting, step by step",
+     "stops": [
+      {
+       "name": "From the cellar",
+       "text": "Line the **decanting basket** with a serviette and lay the bottle in **without disturbing the sediment**. If it wasn’t stored label up, leave it; explain, and show the label after decanting."
+      },
+      {
+       "name": "At the table",
+       "text": "Light the **candle away from the table**. Roll the gueridon to the **host’s right** and present the bottle in its basket. Cut the foil at the **second lip**, pull the cork, wipe the lip twice."
+      },
+      {
+       "name": "The pour",
+       "text": "One **smooth movement**, bottle a safe distance above the flame. Watch the **shoulder** in the light and **stop when sediment reaches it**. Never look away; don’t touch bottle to decanter."
+      },
+      {
+       "name": "Serve",
+       "text": "Bottle and cork on underliners, label to the host. A **1 to 1.5 oz taste from the decanter**, then serve. Ask whether to remove the **cork** and the **bottle**."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The Curriculum Guide’s Certified column names these:",
+     "mixup": "Decant a **young** wine for **air**. Decant an **old** wine for **sediment**.",
+     "sayIt": "This wine has some sediment, so I’ll decant it for you."
+    },
+    "check": [
+     20,
+     21,
+     22
+    ]
+   },
+   {
+    "name": "After-dinner drinks",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "A JIGGER",
+      "line": "measures every after-dinner pour."
+     },
+     {
+      "big": "2 OZ",
+      "line": "is the usual glass of sweet or fortified wine."
+     },
+     {
+      "big": "FROM THE RIGHT",
+      "line": "on a lined tray, like every other drink."
+     }
+    ],
+    "read": {
+     "bigIdea": "Measured pours, from a gueridon or tray.",
+     "where": "The Court’s **cordial, Port and brandy service** runs from a **gueridon or tray**. Bring **jiggers, a lined tray, the bottles, the right glassware and three serviettes**.",
+     "stopsTitle": "How to serve it",
+     "stops": [
+      {
+       "name": "Sell it",
+       "text": "Offer help choosing. Talk **styles, countries of origin** and pairings with **desserts and cheeses**."
+      },
+      {
+       "name": "Method 1",
+       "text": "At the gueridon, **measure with a jigger**, pour, and present the glass on a lined tray **from the right**."
+      },
+      {
+       "name": "Method 2",
+       "text": "Bring glass, bottle and a clean serviette on a lined tray. Set the glass **to the guest’s right** and pour the proper amount."
+      },
+      {
+       "name": "Pour size",
+       "text": "Sweet and fortified wines by the glass are usually **2 oz**. Old vintage and single quinta **Ports need decanting** for sediment."
+      }
+     ],
+     "visual": 0,
+     "sayIt": "Would anyone like a glass of Port or a digestif with dessert?"
+    },
+    "check": [
+     24,
+     25,
+     26
+    ]
+   },
+   {
+    "name": "Temperatures by style",
+    "video": {
+     "youtubeId": "iJbmbeEtono",
+     "title": "What Temperature to Serve Wine",
+     "by": "Wine Folly",
+     "length": "2:20"
+    },
+    "keyPoints": [
+     {
+      "big": "42-50°F",
+      "line": "for sparkling, light whites and sweet whites."
+     },
+     {
+      "big": "58-65°F",
+      "line": "for full-bodied reds, the warmest wines."
+     },
+     {
+      "big": "55-62°F",
+      "line": "for tawny and vintage Port, sweet Sherry, Madeira."
+     },
+     {
+      "big": "40-45°F",
+      "line": "for lager and pilsner, the coldest beer."
+     }
+    ],
+    "read": {
+     "bigIdea": "Cold for light and fizzy, cool for big reds.",
+     "where": "From Level 1: you saw the ranges. At Certified they are the **exam standard**, and the theory curriculum asks for serving temperatures in places like **Bordeaux** and **Germany**.",
+     "stopsTitle": "Coldest to warmest",
+     "stops": [
+      {
+       "name": "Coldest",
+       "text": "**Sparkling, light whites, sweet whites** and mineral water: **42-50°F** (5.5-10°C). Dry rosé: **45-55°F**."
+      },
+      {
+       "name": "Cool",
+       "text": "**Dry Sherry and dry Madeira**: **48-55°F**. **Full whites and light reds**: **50-59°F**."
+      },
+      {
+       "name": "Warmer",
+       "text": "**Medium reds**, **tawny and vintage Port**, **sweet Sherry and sweet Madeira**: **55-62°F**. **Full-bodied reds**: **58-65°F**."
+      },
+      {
+       "name": "Beer",
+       "text": "**Lager and pilsner 40-45°F**. Specialty ales and lambic 45-50°F. **English ale, porter and stout 50-55°F**."
+      }
+     ],
+     "visual": 0,
+     "sayIt": "I’ll keep the white on ice and serve the red slightly cool."
+    },
+    "check": [
+     27,
+     28,
+     29
+    ]
+   }
+  ]
+ }
+}

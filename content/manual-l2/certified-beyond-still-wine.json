@@ -1,0 +1,2629 @@
+{
+ "number": 6,
+ "slug": "certified-beyond-still-wine",
+ "title": "Sparkling, sweet, fortified, beer, sake, spirits and cocktails",
+ "script": "Chapter six",
+ "lead": "The Certified view of everything beyond still wine: Champagne in detail, the world's sparkling methods, sweet and fortified wines, beer and sake, spirits and liqueurs, and the Court's 33 cocktails.",
+ "minutes": 45,
+ "intro": {
+  "script": "Start here",
+  "title": "WHAT CERTIFIED ADDS",
+  "text": "Level 1 taught what each drink is. The Certified exam asks for methods, styles, iconic producers, aging rules and pairings, plus every listed cocktail's base, mixers and garnish.",
+  "tiers": [
+   {
+    "name": "Wine",
+    "note": "Champagne detail, world sparkling, sweet, fortified"
+   },
+   {
+    "name": "Beer and sake",
+    "note": "Brewing steps, glassware, polishing grades"
+   },
+   {
+    "name": "Spirits",
+    "note": "Regions, aging rules, producers, liqueurs"
+   },
+   {
+    "name": "Cocktails",
+    "note": "33 drinks: base, mixers, garnish"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Champagne in depth",
+   "book": "wine/sparkling/champagne",
+   "lines": [
+    {
+     "label": "Place",
+     "text": "Cool continental, near the 49th parallel, with no shelter from Atlantic weather: rain, frost and hail are threats. Grapes are picked early to keep their acidity."
+    },
+    {
+     "label": "The map",
+     "text": "The Court lists five areas: Montagne de Reims, Vallée de la Marne, Côte des Blancs, Côte de Sézanne and Côte des Bar."
+    }
+   ],
+   "chips": {
+    "label": "Label terms",
+    "items": [
+     "RM",
+     "NM",
+     "Special Club",
+     "Tête de Cuvée",
+     "Vieilles Vignes",
+     "Grandes Marques"
+    ]
+   },
+   "know": [
+    "Liqueur de tirage is wine, sugar and yeast. Liqueur d'expédition is wine and cane sugar.",
+    "Non-vintage needs 15 months (12 on the lees); vintage needs 36 months.",
+    "17 villages keep the Grand Cru name and 42 keep Premier Cru, from the old Échelle des Crus.",
+    "Côte des Blancs is Chardonnay country; in the Côte des Bar, 83% of vines are Pinot Noir.",
+    "Spécial Club is the top cuvée of the Club Trésors growers' group, founded in 1971."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Five areas and their grape",
+     "rows": [
+      {
+       "name": "Montagne de Reims",
+       "meta": "Pinot Noir, around Reims"
+      },
+      {
+       "name": "Vallée de la Marne",
+       "meta": "Pinot Noir in the east, Meunier in the west"
+      },
+      {
+       "name": "Côte des Blancs",
+       "meta": "Chardonnay on chalk"
+      },
+      {
+       "name": "Côte de Sézanne",
+       "meta": "listed by the Court"
+      },
+      {
+       "name": "Côte des Bar",
+       "meta": "Pinot Noir, 83% of vines"
+      }
+     ],
+     "note": "Comité Champagne counts four main areas; the Court adds Sézanne."
+    },
+    {
+     "type": "tiles",
+     "title": "House and top cuvée",
+     "dark": true,
+     "items": [
+      {
+       "name": "Louis Roederer",
+       "text": "Cristal"
+      },
+      {
+       "name": "Veuve Clicquot",
+       "text": "La Grande Dame"
+      },
+      {
+       "name": "Krug",
+       "text": "Grande Cuvée; Clos du Mesnil (one plot)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sparkling wines of the world",
+   "book": "wine/sparkling",
+   "lines": [
+    {
+     "label": "Methods",
+     "text": "Traditional (Champagne, Crémant, Cava, Franciacorta, Cap Classique), tank or Charmat (Prosecco, Moscato d'Asti, Lambrusco), transfer (very large and very small bottles) and ancestral (pét-nat)."
+    },
+    {
+     "label": "On the list",
+     "text": "Offer several methods and price points by the glass and by the bottle. Crémant d'Alsace is a cost-effective traditional-method choice."
+    }
+   ],
+   "chips": {
+    "label": "Methods",
+    "items": [
+     "Traditional",
+     "Charmat",
+     "Transfer",
+     "Ancestral"
+    ]
+   },
+   "know": [
+    "Cap Classique is South Africa's bottle-fermented sparkling; the term dates from 1992.",
+    "Lambrusco is a Charmat (tank) wine, like Prosecco and Moscato d'Asti.",
+    "Pét-nat (méthode ancestrale or rurale) finishes its first fermentation in bottle, at lower pressure.",
+    "Crémant is French traditional-method sparkling from outside Champagne: Bourgogne, Alsace, Loire.",
+    "The gyropalette saves time and cost in riddling."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "IN THE BOTTLE",
+       "title": "Traditional method",
+       "text": "Second fermentation in the bottle\nLees aging, riddling, disgorging\nChampagne, Cava, Franciacorta\nCrémant, Cap Classique"
+      },
+      {
+       "label": "IN A TANK",
+       "title": "Charmat (cuve close)",
+       "text": "Second fermentation in a pressure tank\nDone in 4-5 days, then filtered\nBest for aromatic grapes\nProsecco, Moscato d'Asti, Lambrusco"
+      }
+     ]
+    },
+    {
+     "type": "scale",
+     "title": "Minimum time before release",
+     "rows": [
+      {
+       "name": "Cava de Guarda",
+       "value": "9 months",
+       "pct": 0.15
+      },
+      {
+       "name": "Champagne NV",
+       "value": "15 months",
+       "pct": 0.25
+      },
+      {
+       "name": "Franciacorta",
+       "value": "18 months on lees",
+       "pct": 0.3
+      },
+      {
+       "name": "Cava Gran Reserva",
+       "value": "30 months",
+       "pct": 0.5
+      },
+      {
+       "name": "Champagne vintage",
+       "value": "36 months",
+       "pct": 0.6
+      },
+      {
+       "name": "Franciacorta Riserva",
+       "value": "60 months on lees",
+       "pct": 1
+      }
+     ],
+     "note": "Each region counts its own way; check the rule before you quote it."
+    }
+   ]
+  },
+  {
+   "name": "Sweet wines",
+   "lines": [
+    {
+     "label": "Three ways",
+     "text": "Noble rot (Sauternes, Tokaji Aszú, Alsace SGN, German BA and TBA, Loire Chenin), drying (Vin Santo, Recioto) and freezing (Eiswein, Icewine). Eiswein and Icewine must be free of noble rot."
+    },
+    {
+     "label": "Service",
+     "text": "A glass is usually 2 oz. Open bottles keep about a week cold. Tokaji often comes in 500 ml bottles, so cost the glass from that."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Sémillon",
+     "Furmint",
+     "Chenin Blanc",
+     "Riesling",
+     "Vidal",
+     "Garganega",
+     "Corvina",
+     "Trebbiano"
+    ]
+   },
+   "know": [
+    "Château d'Yquem is Sauternes' Superior First Growth (Premier Cru Supérieur, 1855).",
+    "Vin Santo is Trebbiano; Recioto di Soave is Garganega; Recioto della Valpolicella is Corvina.",
+    "Canadian Icewine grapes: Vidal, Riesling, Cabernet Franc, picked at -8°C or colder.",
+    "Tokaji Aszú needs at least 120 g/L of sugar; 6 puttonyos means 150 g/L or more.",
+    "Serve a wine sweeter than the dessert, or contrast it with foie gras or blue cheese."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Three ways to make it sweet",
+     "dark": true,
+     "items": [
+      {
+       "name": "Noble rot",
+       "text": "Botrytis cinerea: Sauternes, Tokaji, TBA"
+      },
+      {
+       "name": "Drying",
+       "text": "Grapes dried: Vin Santo, Recioto"
+      },
+      {
+       "name": "Freezing",
+       "text": "Frozen grapes: Eiswein, Icewine"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Match the wine to its grape",
+     "rows": [
+      {
+       "name": "Sauternes",
+       "meta": "Bordeaux · Sémillon"
+      },
+      {
+       "name": "Tokaji Aszú",
+       "meta": "Hungary · Furmint"
+      },
+      {
+       "name": "Quarts de Chaume, Bonnezeaux",
+       "meta": "Loire · Chenin Blanc"
+      },
+      {
+       "name": "Alsace VT and SGN",
+       "meta": "Riesling, Pinot Gris, Gewurztraminer, Muscat"
+      },
+      {
+       "name": "Vin Santo",
+       "meta": "Italy · Trebbiano"
+      },
+      {
+       "name": "Recioto di Soave",
+       "meta": "Italy · Garganega"
+      },
+      {
+       "name": "Recioto della Valpolicella",
+       "meta": "Italy · Corvina"
+      },
+      {
+       "name": "Icewine",
+       "meta": "Ontario · Vidal, Riesling, Cabernet Franc"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sherry",
+   "book": "wine/spain/jerez",
+   "lines": [
+    {
+     "label": "Place",
+     "text": "Southwest Spain: Jerez-Xérès-Sherry, with Sanlúcar de Barrameda on the coast. Hot maritime climate; albariza (chalk) is the prized soil, with barros (clay) and arenas (sand)."
+    },
+    {
+     "label": "Method",
+     "text": "Fortified after fermentation. Wines under flor (Saccharomyces cerevisiae) age biologically; the rest age oxidatively. All age in the solera."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Palomino",
+     "Pedro Ximénez",
+     "Moscatel"
+    ]
+   },
+   "know": [
+    "Fino and Manzanilla are fortified to 15%; Oloroso to at least 17%, which stops flor.",
+    "Palo Cortado starts under flor, is re-fortified above 17%, then ages oxidatively.",
+    "Running the scales: draw from the solera, refill it from the 1st criadera, and so on up.",
+    "The Court lists Manzanilla, Fino, Amontillado and Palo Cortado as biological; Oloroso and Cream as oxidative.",
+    "Serve Fino chilled, at 6-8°C."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Running the scales (correr escalas)",
+     "items": [
+      {
+       "name": "Saca",
+       "text": "Draw wine from the solera for bottling",
+       "meta": "oldest tier"
+      },
+      {
+       "name": "Rocío",
+       "text": "Refill the solera from the 1st criadera",
+       "meta": "next oldest"
+      },
+      {
+       "name": "Up the tiers",
+       "text": "Each criadera is refilled from the next younger one",
+       "meta": "middle tiers"
+      },
+      {
+       "name": "New wine",
+       "text": "The youngest tier gets the new wine",
+       "meta": "youngest"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "BIOLOGICAL",
+       "title": "Under flor",
+       "text": "Fortified to 15%\nA yeast film keeps oxygen out\nManzanilla, Fino\nAmontillado and Palo Cortado start here"
+      },
+      {
+       "label": "OXIDATIVE",
+       "title": "In contact with air",
+       "text": "Fortified to 17% or more\nNo flor, so the wine darkens\nOloroso, Cream\nPedro Ximénez (sweet)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Port, Madeira and other fortified wines",
+   "book": "wine/portugal/madeira",
+   "lines": [
+    {
+     "label": "Port",
+     "text": "Same area as the Douro DOP: Baixo Corgo, Cima Corgo, Douro Superior. Schist slopes, warm to hot Mediterranean climate. Fortified during fermentation; Vila Nova de Gaia is the Port term to know."
+    },
+    {
+     "label": "Madeira",
+     "text": "A volcanic island near North Africa; Funchal is the main city. Fortified during fermentation, then heated and oxidized: estufagem (tanks) or canteiro (casks)."
+    }
+   ],
+   "chips": {
+    "label": "Also on the list",
+    "items": [
+     "Marsala",
+     "Banyuls",
+     "Muscat de Beaumes-de-Venise",
+     "Rutherglen Muscat",
+     "Klein Karoo Muscat"
+    ]
+   },
+   "know": [
+    "Ruby family: Ruby, LBV, Single Quinta, Vintage. Aged Tawny: 10, 20, 30, 40 years; Colheita at least 7 years.",
+    "Vintage Port is only made in the best years; old Vintage and Single Quinta Ports need decanting.",
+    "Estufagem: 45-50°C for at least 3 months. Canteiro: in casks, usually upstairs, for at least 2 years.",
+    "Madeira, driest to sweetest: Sercial, Verdelho, Bual, Malmsey. Tinta Negra is also used.",
+    "Marsala (Sicily) comes Secco, Semi-Secco or Dolce."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Madeira grapes, driest to sweetest",
+     "rows": [
+      {
+       "name": "Sercial",
+       "value": "driest",
+       "pct": 0.25
+      },
+      {
+       "name": "Verdelho",
+       "value": "2nd",
+       "pct": 0.5
+      },
+      {
+       "name": "Bual (Boal)",
+       "value": "3rd",
+       "pct": 0.75
+      },
+      {
+       "name": "Malmsey (Malvasia)",
+       "value": "sweetest",
+       "pct": 1
+      }
+     ],
+     "note": "Sweeter styles are fortified earlier in fermentation."
+    },
+    {
+     "type": "list",
+     "title": "Other fortified wines on the exam",
+     "rows": [
+      {
+       "name": "Marsala DOC",
+       "meta": "Sicily · Secco, Semi-Secco, Dolce"
+      },
+      {
+       "name": "Banyuls AOP",
+       "meta": "Roussillon · Grenache"
+      },
+      {
+       "name": "Muscat de Beaumes-de-Venise",
+       "meta": "Southern Rhône · Muscat"
+      },
+      {
+       "name": "Rutherglen",
+       "meta": "Victoria, Australia · Muscat"
+      },
+      {
+       "name": "Klein Karoo",
+       "meta": "Western Cape · Muscat de Frontignan, Muscat à Petits Grains"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Beer and sake",
+   "lines": [
+    {
+     "label": "Beer",
+     "text": "Germination and kilning make the malt; mashing and boiling come next; lagers get a cold lagering rest. Ales use S. cerevisiae (68-72°F), lagers S. pastorianus (48-55°F)."
+    },
+    {
+     "label": "Sake",
+     "text": "Koji (Aspergillus oryzae) and yeast work at the same time: parallel fermentation. Premium grades depend on how much of the rice grain is left."
+    }
+   ],
+   "chips": {
+    "label": "Beer glasses",
+    "items": [
+     "Pint",
+     "Mug",
+     "Tulip",
+     "Pilsner",
+     "Weizen"
+    ]
+   },
+   "know": [
+    "American hops: Cascade, Centennial, Citra. European hops: Hallertau, Saaz, Tettnang.",
+    "Daiginjo keeps 50% of the grain or less, Ginjo 60%, Honjozo 70%. Junmai means no added alcohol.",
+    "Sake Meter Value runs about -15 to +15; the higher, the drier.",
+    "Sake bottles: 300 ml, 720 ml, 1.8 L.",
+    "A quarter-barrel keg holds 992 oz (29.3 L); a pint is 16 oz."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Sake polishing · grain left, at most",
+     "rows": [
+      {
+       "name": "Daiginjo · Junmai Daiginjo",
+       "value": "50%",
+       "pct": 0.5
+      },
+      {
+       "name": "Ginjo · Junmai Ginjo",
+       "value": "60%",
+       "pct": 0.6
+      },
+      {
+       "name": "Honjozo",
+       "value": "70%",
+       "pct": 0.7
+      }
+     ],
+     "note": "Junmai = no brewer's alcohol added. Tokubetsu means 'special'."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "ALE",
+       "title": "Saccharomyces cerevisiae",
+       "text": "Top-fermenting\nWarm and fast: 68-72°F\nMore fruit and spice\nHefeweizen, IPA, Porter, Stout"
+      },
+      {
+       "label": "LAGER",
+       "title": "Saccharomyces pastorianus",
+       "text": "Bottom-fermenting\nCool and slow: 48-55°F\nClean and crisp\nPilsner, Bock, Oktoberfest"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Clear and agave spirits",
+   "book": "spirit/tequila",
+   "lines": [
+    {
+     "label": "Where",
+     "text": "Vodka, gin and rum can be made anywhere; rum is traditionally Caribbean. Tequila is Jalisco and blue agave. Mezcal is Oaxaca, from many agaves, roasted in pits for a smoky note."
+    },
+    {
+     "label": "Aging",
+     "text": "Tequila: Blanco straight from the still, Reposado 2 months to 1 year in oak, Añejo 1-3 years, Extra Añejo 3 years or more."
+    }
+   ],
+   "chips": {
+    "label": "Styles",
+    "items": [
+     "London Dry",
+     "Light rum",
+     "Dark rum",
+     "Aged rum",
+     "Spiced rum",
+     "Blanco",
+     "Reposado",
+     "Añejo"
+    ]
+   },
+   "know": [
+    "US vodka is distilled to 95% ABV or more and never aged in wood.",
+    "Gin must taste mainly of juniper; 'London' and 'Dry' are for distilled gin only.",
+    "Tequila uses only blue agave; '100% agave' is bottled in Mexico, plain 'Tequila' needs 51%.",
+    "Cachaça is Brazil's sugarcane rum, the base of a Caipirinha.",
+    "Mezcal producers on the Court's list: Bozal, Del Maguey, Wahaka."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Tequila · minimum time in oak",
+     "rows": [
+      {
+       "name": "Blanco",
+       "value": "none",
+       "pct": 0.02
+      },
+      {
+       "name": "Reposado",
+       "value": "2 months",
+       "pct": 0.06
+      },
+      {
+       "name": "Añejo",
+       "value": "1 year",
+       "pct": 0.33
+      },
+      {
+       "name": "Extra Añejo",
+       "value": "3 years",
+       "pct": 1
+      }
+     ],
+     "note": "The Court gives Reposado up to 1 year and Añejo up to 3."
+    },
+    {
+     "type": "list",
+     "title": "Producers the Court names",
+     "rows": [
+      {
+       "name": "Vodka",
+       "meta": "Tito's, Absolut, Grey Goose, Belvedere, Ketel One"
+      },
+      {
+       "name": "Gin",
+       "meta": "Tanqueray, Beefeater, Bombay, Hendrick's, Sipsmith"
+      },
+      {
+       "name": "Rum",
+       "meta": "Bacardi, Mount Gay, Diplomático, Havana Club, Goslings"
+      },
+      {
+       "name": "Tequila",
+       "meta": "Don Julio, Patrón, Herradura, Jose Cuervo, Sauza"
+      },
+      {
+       "name": "Mezcal",
+       "meta": "Del Maguey, Bozal, Wahaka"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Aged spirits and liqueurs",
+   "book": "spirit/whiskey",
+   "lines": [
+    {
+     "label": "Whisk(e)y",
+     "text": "Bourbon: US, 51% corn, new charred oak. Tennessee adds maple-charcoal filtering. Irish: three times in pot stills. Scotch: 3+ years in oak, twice in pot stills (Lowlands three)."
+    },
+    {
+     "label": "Brandy",
+     "text": "Cognac and Armagnac use VS 2, VSOP 4, XO 10 years. Cognac is double distilled in pot stills; Armagnac once in a column. Calvados is apples and pears, 2+ years in oak."
+    }
+   ],
+   "chips": {
+    "label": "Scotch regions",
+    "items": [
+     "Highland",
+     "Speyside",
+     "Lowland",
+     "Islay",
+     "Campbeltown"
+    ]
+   },
+   "know": [
+    "Cognac's top areas: Grande and Petite Champagne. A blend of the two is Fine Champagne.",
+    "Armagnac: Bas-Armagnac, Haut-Armagnac, Ténarèze; Ugni Blanc, Folle Blanche, Colombard, Baco.",
+    "Islay is the smokiest Scotch region: Lagavulin, Laphroaig, Ardbeg.",
+    "Fruit eaux de vie (Kirsch, Framboise, Poire William) and pomace brandies (Grappa, Marc) are generally unaged.",
+    "US liqueurs need at least 2.5% sugar. Drambuie is the Court's whiskey liqueur."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "COGNAC",
+       "title": "Twice in a pot still",
+       "text": "Mainly Ugni Blanc\nGrande and Petite Champagne\nVS 2 · VSOP 4 · XO 10 years\nHennessy, Rémy Martin, Martell"
+      },
+      {
+       "label": "ARMAGNAC",
+       "title": "Once in a column still",
+       "text": "Ugni Blanc, Folle Blanche, Colombard, Baco\nBas-Armagnac, Haut-Armagnac, Ténarèze\nVS 2 · VSOP 4 · XO 10 years\nLarressingle, Delord, Montal"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Liqueurs by family",
+     "rows": [
+      {
+       "name": "Herb and nut",
+       "meta": "Bénédictine, Chartreuse, Frangelico, Crème de Menthe"
+      },
+      {
+       "name": "Anise",
+       "meta": "Anisette, Galliano, Ouzo, Sambuca"
+      },
+      {
+       "name": "Orange",
+       "meta": "Triple Sec, Cointreau, Grand Marnier"
+      },
+      {
+       "name": "Other fruit",
+       "meta": "Amaretto (apricot), Southern Comfort (peach)"
+      },
+      {
+       "name": "Cream",
+       "meta": "Baileys Irish Cream"
+      },
+      {
+       "name": "Whiskey",
+       "meta": "Drambuie, Glayva, Irish Mist"
+      },
+      {
+       "name": "Other",
+       "meta": "St-Germain (elderflower), Canton (ginger), Kahlúa, Tia Maria (coffee)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cocktails",
+   "book": "bar-basics/shaken-vs-stirred",
+   "lines": [
+    {
+     "label": "The list",
+     "text": "The Court names 33 cocktails. For each one, know the base spirit, the mixers and the garnish."
+    },
+    {
+     "label": "Our specs",
+     "text": "We use the International Bartenders Association (IBA) official specs. Gibson, Gimlet, Greyhound, Kamikaze and Pimm's Cup aren't on the IBA pages we checked, so they come from Difford's Guide."
+    }
+   ],
+   "chips": {
+    "label": "Base spirits",
+    "items": [
+     "Gin",
+     "Vodka",
+     "Rum",
+     "Cachaça",
+     "Whiskey",
+     "Cognac",
+     "Tequila",
+     "Pisco"
+    ]
+   },
+   "know": [
+    "Negroni: gin, Campari, sweet vermouth, orange. The Americano swaps the gin for soda.",
+    "Manhattan: rye, sweet vermouth, Angostura, cherry. Old Fashioned: whiskey, sugar, bitters.",
+    "Margarita: tequila, triple sec, lime. Sidecar: Cognac, triple sec, lemon.",
+    "Tom Collins uses Old Tom gin; John Collins uses gin (IBA).",
+    "A Gibson is a dry Martini garnished with cocktail onions."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Gin · base · mixers · garnish",
+     "rows": [
+      {
+       "name": "Aviation",
+       "meta": "Gin, maraschino, lemon, crème de violette · cherry (optional)"
+      },
+      {
+       "name": "French 75",
+       "meta": "Gin, lemon, sugar syrup, Champagne · no garnish"
+      },
+      {
+       "name": "Gibson",
+       "meta": "Gin, dry vermouth, stirred · cocktail onions"
+      },
+      {
+       "name": "Gimlet",
+       "meta": "Gin, lime cordial · lime"
+      },
+      {
+       "name": "Negroni",
+       "meta": "Gin, Campari, sweet vermouth · orange slice"
+      },
+      {
+       "name": "Tom Collins",
+       "meta": "Old Tom gin, lemon, syrup, soda · lemon, cherry"
+      },
+      {
+       "name": "John Collins",
+       "meta": "Gin, lemon, syrup, soda · lemon, cherry"
+      },
+      {
+       "name": "Vesper",
+       "meta": "Gin, vodka, Lillet Blanc · lemon zest"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Vodka",
+     "rows": [
+      {
+       "name": "Cosmopolitan",
+       "meta": "Citron vodka, Cointreau, lime, cranberry · lemon twist"
+      },
+      {
+       "name": "Kamikaze",
+       "meta": "Vodka, triple sec, lime · lime wedge"
+      },
+      {
+       "name": "French Martini",
+       "meta": "Vodka, raspberry liqueur, pineapple · lemon oil"
+      },
+      {
+       "name": "Moscow Mule",
+       "meta": "Vodka, ginger beer, lime · lime slice"
+      },
+      {
+       "name": "Sea Breeze",
+       "meta": "Vodka, cranberry, grapefruit · orange zest, cherry"
+      },
+      {
+       "name": "Greyhound",
+       "meta": "Vodka, grapefruit · grapefruit wheel"
+      },
+      {
+       "name": "White Russian",
+       "meta": "Vodka, coffee liqueur, cream float · no garnish"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Rum and cachaça",
+     "rows": [
+      {
+       "name": "Daiquiri",
+       "meta": "White rum, lime, sugar · no garnish"
+      },
+      {
+       "name": "Mojito",
+       "meta": "White rum, lime, mint, sugar, soda · mint, lime"
+      },
+      {
+       "name": "Mai Tai",
+       "meta": "Jamaican and Martinique rums, curaçao, orgeat, lime · pineapple, mint, lime peel"
+      },
+      {
+       "name": "Caipirinha",
+       "meta": "Cachaça, muddled lime, sugar · no garnish"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Whiskey",
+     "rows": [
+      {
+       "name": "Old Fashioned",
+       "meta": "Bourbon or rye, sugar, Angostura · orange, cherry"
+      },
+      {
+       "name": "Manhattan",
+       "meta": "Rye, sweet vermouth, Angostura · cherry"
+      },
+      {
+       "name": "Whiskey Sour",
+       "meta": "Bourbon, lemon, sugar (egg white optional) · orange, cherry"
+      },
+      {
+       "name": "Mint Julep",
+       "meta": "Bourbon, mint, sugar, crushed ice · mint sprig"
+      },
+      {
+       "name": "Rusty Nail",
+       "meta": "Scotch, Drambuie · lemon zest"
+      },
+      {
+       "name": "Vieux Carré",
+       "meta": "Rye, Cognac, sweet vermouth, Bénédictine, Peychaud's · orange zest, cherry"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Brandy, agave, wine and aperitifs",
+     "rows": [
+      {
+       "name": "Sidecar",
+       "meta": "Cognac, triple sec, lemon · no garnish"
+      },
+      {
+       "name": "Sazerac",
+       "meta": "Cognac (later rye), absinthe rinse, sugar, Peychaud's · lemon zest"
+      },
+      {
+       "name": "Champagne Cocktail",
+       "meta": "Champagne, Cognac, sugar cube, Angostura · orange zest, cherry"
+      },
+      {
+       "name": "Margarita",
+       "meta": "100% agave tequila, triple sec, lime · salt rim (optional)"
+      },
+      {
+       "name": "Pisco Sour",
+       "meta": "Pisco, lemon, syrup, egg white · Amargo bitters"
+      },
+      {
+       "name": "Kir Royale",
+       "meta": "Champagne, crème de cassis · no garnish"
+      },
+      {
+       "name": "Americano",
+       "meta": "Campari, sweet vermouth, soda · orange slice, lemon zest"
+      },
+      {
+       "name": "Pimm's Cup",
+       "meta": "Pimm's, lemonade and ginger ale, fruit, cucumber · mint"
+      }
+     ],
+     "note": "Garnishes follow IBA; Gibson, Gimlet, Greyhound, Kamikaze and Pimm's Cup follow Difford's Guide."
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Liqueur de tirage",
+   "b": "Liqueur d'expédition",
+   "why": "Tirage (wine, sugar, yeast) starts the bubbles. Expédition (wine, cane sugar) is the dosage after disgorging."
+  },
+  {
+   "a": "Amontillado",
+   "b": "Palo Cortado",
+   "why": "Amontillado's flor dies naturally. Palo Cortado is re-fortified above 17% on purpose."
+  },
+  {
+   "a": "Cognac",
+   "b": "Armagnac",
+   "why": "Cognac is distilled twice in a pot still. Armagnac is distilled once in a column still."
+  },
+  {
+   "a": "Junmai",
+   "b": "Honjozo",
+   "why": "Junmai has no added alcohol. Honjozo adds a little, up to 10% of the rice weight."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas Curriculum Guide (Certified column); Comité Champagne; Club Trésors de Champagne; LVMH and Louis Roederer house pages; Cap Classique Producers Association; Cava DO; Franciacorta consortium; VQA Ontario; bor.hu (Tokaj); Consejo Regulador Jerez-Xérès-Sherry; IVDP; IVBAM (Madeira); Winemakers of Rutherglen; Japan Sake and Shochu Makers Association; US eCFR (TTB spirits rules); UK Scotch Whisky Regulations 2009; BNIC (Cognac); Consejo Regulador del Tequila; International Bartenders Association; Difford's Guide. Checked Nov 2, 2026.",
+ "cards": [
+  {
+   "q": "What goes into Champagne's liqueur de tirage?",
+   "answer": "Wine, sugar and yeast",
+   "wrong": [
+    "Wine and cane sugar only",
+    "Grape brandy and sugar",
+    "Reserve wine and lees"
+   ],
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/324"
+  },
+  {
+   "q": "Which Champagne sub-region is best known for Chardonnay on chalk cliffs?",
+   "answer": "Côte des Blancs",
+   "wrong": [
+    "Côte des Bar",
+    "Montagne de Reims",
+    "Vallée de la Marne"
+   ],
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/the-champagne-region"
+  },
+  {
+   "q": "What is the Court's minimum total aging for vintage Champagne?",
+   "answer": "36 months",
+   "wrong": [
+    "15 months",
+    "12 months",
+    "24 months"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "q": "Which South African term means a sparkling wine fermented a second time in the bottle?",
+   "answer": "Cap Classique",
+   "wrong": [
+    "Cava",
+    "Pétillant Naturel",
+    "Crémant"
+   ],
+   "source": "https://www.capclassique.co.za/"
+  },
+  {
+   "q": "The Court's Certified column adds which wine as a Charmat (tank) example?",
+   "answer": "Lambrusco",
+   "wrong": [
+    "Franciacorta",
+    "Cava",
+    "Crémant de Loire"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "q": "What sets méthode ancestrale (pét-nat) apart?",
+   "answer": "The first fermentation finishes in the bottle, at lower pressure",
+   "wrong": [
+    "A second fermentation in a pressure tank",
+    "Wine is disgorged into tanks and rebottled",
+    "Liqueur de tirage is added to still wine"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "q": "Which grape makes Recioto di Soave?",
+   "answer": "Garganega",
+   "wrong": [
+    "Corvina",
+    "Trebbiano",
+    "Furmint"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  },
+  {
+   "q": "What must Eiswein and Icewine be free of?",
+   "answer": "Noble rot",
+   "wrong": [
+    "Added sulfur",
+    "Oak aging",
+    "Residual sugar"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  },
+  {
+   "q": "Château d'Yquem holds which rank in the 1855 Sauternes classification?",
+   "answer": "Superior First Growth (Premier Cru Supérieur)",
+   "wrong": [
+    "First Growth (Premier Cru)",
+    "Second Growth",
+    "Grand Cru Classé"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=80"
+  },
+  {
+   "q": "To what strength are wines for Fino and Manzanilla fortified?",
+   "answer": "15% ABV",
+   "wrong": [
+    "17% ABV",
+    "19% ABV",
+    "12% ABV"
+   ],
+   "source": "https://www.sherry.wine/sherry-wine/production/fortification"
+  },
+  {
+   "q": "Which Sherry starts under flor, is marked by the cellar and re-fortified above 17%?",
+   "answer": "Palo Cortado",
+   "wrong": [
+    "Manzanilla",
+    "Cream",
+    "Fino"
+   ],
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/palo-cortado"
+  },
+  {
+   "q": "In a solera, what is the 'saca'?",
+   "answer": "Drawing wine from the oldest tier for bottling",
+   "wrong": [
+    "Topping up the youngest tier with new wine",
+    "Adding grape spirit to stop fermentation",
+    "Drying grapes in the sun"
+   ],
+   "source": "https://www.sherry.wine/sherry-wine/production/ageing"
+  },
+  {
+   "q": "Which is NOT one of the Port subregions the Court lists?",
+   "answer": "Vinho Verde",
+   "wrong": [
+    "Baixo Corgo",
+    "Cima Corgo",
+    "Douro Superior"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "q": "In Madeira's estufagem, how is the wine heated?",
+   "answer": "In tanks at 45-50°C for at least 3 months",
+   "wrong": [
+    "In casks in warm lofts for at least 2 years",
+    "In the sun on straw mats",
+    "By adding hot grape spirit"
+   ],
+   "source": "https://vinhomadeira.com/o-vinho-madeira/vinificacao-e-envelhecimento"
+  },
+  {
+   "q": "Rutherglen Muscat comes from which country?",
+   "answer": "Australia",
+   "wrong": [
+    "South Africa",
+    "France",
+    "Portugal"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "q": "Which yeast does the Court name for lagers?",
+   "answer": "Saccharomyces pastorianus",
+   "wrong": [
+    "Saccharomyces cerevisiae",
+    "Aspergillus oryzae",
+    "Botrytis cinerea"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "q": "Which of these is a European hop variety on the Court's list?",
+   "answer": "Saaz",
+   "wrong": [
+    "Cascade",
+    "Citra",
+    "Centennial"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "q": "How should namazake be stored?",
+   "answer": "In the fridge: it's unpasteurized",
+   "wrong": [
+    "Warm, to soften it",
+    "In clear glass in the light",
+    "Open, to breathe"
+   ],
+   "source": "https://japansake.or.jp/sake/en/basic/glossary/"
+  },
+  {
+   "q": "Under US rules, which spirit is distilled to at least 95% ABV and never aged in wood?",
+   "answer": "Vodka",
+   "wrong": [
+    "Gin",
+    "Rum",
+    "Tequila"
+   ],
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.142"
+  },
+  {
+   "q": "What is the minimum oak aging for Tequila Reposado?",
+   "answer": "2 months",
+   "wrong": [
+    "1 year",
+    "3 years",
+    "None"
+   ],
+   "source": "https://www.crt.org.mx/en/our-tequila/"
+  },
+  {
+   "q": "Which spirit is the base of a Caipirinha?",
+   "answer": "Cachaça",
+   "wrong": [
+    "Pisco",
+    "White rum from Cuba",
+    "Mezcal"
+   ],
+   "source": "https://iba-world.com/iba-official-cocktails/caipirinha/"
+  },
+  {
+   "q": "How does the Court say Armagnac is distilled?",
+   "answer": "Once, in a continuous still",
+   "wrong": [
+    "Twice, in a pot still",
+    "Three times, in a pot still",
+    "Not at all: it's a liqueur"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=90"
+  },
+  {
+   "q": "What does 'Fine Champagne' on a Cognac label mean?",
+   "answer": "A blend of Grande and Petite Champagne",
+   "wrong": [
+    "Cognac aged at least 10 years",
+    "Cognac blended with Champagne wine",
+    "Cognac from the Bois Ordinaires"
+   ],
+   "source": "https://www.cognac.fr/en/discover/a-unique-spirit/a-protected-origin/"
+  },
+  {
+   "q": "Which Scotch region does the Court call the smokiest?",
+   "answer": "Islay",
+   "wrong": [
+    "Speyside",
+    "Lowland",
+    "Campbeltown"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=89"
+  },
+  {
+   "q": "What are the three ingredients of an IBA Negroni?",
+   "answer": "Gin, Campari, sweet vermouth",
+   "wrong": [
+    "Gin, dry vermouth, orange bitters",
+    "Campari, sweet vermouth, soda",
+    "Rye, sweet vermouth, Angostura"
+   ],
+   "source": "https://iba-world.com/iba-official-cocktails/negroni/"
+  },
+  {
+   "q": "What garnish turns a dry Martini into a Gibson?",
+   "answer": "Pickled cocktail onions",
+   "wrong": [
+    "Green olives",
+    "A lemon twist",
+    "A cocktail cherry"
+   ],
+   "source": "https://www.diffordsguide.com/cocktails/recipe/830/gibson-dry-martini"
+  },
+  {
+   "q": "Which base spirit does the IBA Sidecar use?",
+   "answer": "Cognac",
+   "wrong": [
+    "Bourbon",
+    "Gin",
+    "Tequila"
+   ],
+   "source": "https://iba-world.com/iba-official-cocktails/sidecar/"
+  },
+  {
+   "q": "Which innovation does Veuve Clicquot credit to Madame Clicquot in 1816?",
+   "answer": "The riddling table",
+   "wrong": [
+    "The gyropalette",
+    "The first Brut Champagne",
+    "The Champagne cork cage"
+   ],
+   "source": "https://www.lvmh.com/en/our-maisons/wines-spirits/veuve-clicquot"
+  },
+  {
+   "q": "Why does the Court say Tokaji needs careful by-the-glass costing?",
+   "answer": "It's often bottled in 500 ml, not 750 ml",
+   "wrong": [
+    "It can only be poured in 1 oz servings",
+    "It must be decanted first",
+    "It's sold only in magnums"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=80"
+  },
+  {
+   "q": "Which Alsace wine does the Court name as a cost-effective traditional-method sparkling?",
+   "answer": "Crémant d'Alsace",
+   "wrong": [
+    "Alsace Grand Cru",
+    "Vendange Tardive",
+    "Edelzwicker"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=22"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Certified column: Champagne sits on the 49th parallel, one of the most northerly wine regions; cool continental climate; no protection from Atlantic influence, so unpredictable weather, rain, frost and hail threats; Marne River; limestone and chalk soils; grapes are picked earlier to preserve natural acidity.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "Certified column: Champagne AOP subregions: Vallée de la Marne, Côte des Blancs, Montagne de Reims, Côte des Bar, Côte de Sézanne.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "Comité Champagne: four main sub-regions: Montagne de Reims (around Reims, most common grape Pinot noir), Marne Valley (east near Épernay mainly Pinot noir, Meunier dominant moving west), Côte des Blancs (named for Chardonnay; chalk cliffs well suited to Chardonnay) and Côte des Bar (south-east of Troyes; Pinot noir 83% of vines).",
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/the-champagne-region"
+  },
+  {
+   "fact": "Certified column: plantings 38% Pinot Noir, 32% Meunier, 30% Chardonnay.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "Certified column (Champagne): know the contents of liqueur de tirage and of liqueur d'expédition and how the latter affects the style of the wine. Steps: still wine is made; assemblage of cuvée; bubbles created using liqueur de tirage; sur lie aging - autolysis; riddling (remuage) using pupitre or gyropalette; disgorging (dégorgement); dosage added using liqueur d'expédition.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "Comité Champagne glossary: liqueur de tirage is a solution of yeasts, sugar and wine added to the cuvée to trigger the second fermentation in the bottle.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/324"
+  },
+  {
+   "fact": "Comité Champagne glossary: immediately after disgorgement the bottle is topped up with a dosage liqueur (liqueur d'expédition), a mixture of cane sugar and wine, the quantity of which varies according to the style of Champagne.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/284"
+  },
+  {
+   "fact": "Comité Champagne: during maturation on lees the dead yeasts decompose (autolysis) while minute quantities of oxygen enter, causing slow oxidation; cellars at a steady temperature of around 12°C; in practice non-vintage is aged 2-3 years and vintage 4-10 years.",
+   "source": "https://www.champagne.fr/en/about-champagne/how-champagne-is-made/maturation"
+  },
+  {
+   "fact": "Certified column: non-vintage 12 months on lees, minimum 15 months total; vintage minimum 36 months total aging.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "Comité Champagne: manual riddling uses wooden pupitres, turning each bottle 1/8 or 1/4 turn; it takes 4-6 weeks and about 25 turns per bottle. Automated riddling machines (gyropalettes) handle metal racks of 500 bottles and take about one week instead of six.",
+   "source": "https://www.champagne.fr/en/about-champagne/how-champagne-is-made/riddling"
+  },
+  {
+   "fact": "Comité Champagne: for disgorgement the bottle neck is plunged into a solution at about -27°C, forming a frozen plug of sediment that the bottle's pressure expels when opened; large bottles and some cuvées are still disgorged by hand ('à la volée').",
+   "source": "https://www.champagne.fr/en/about-champagne/how-champagne-is-made/disgorgement"
+  },
+  {
+   "fact": "Comité Champagne: 17 crus have kept the Grand Cru designation and 42 the Premier Cru designation. The old échelle des crus rated villages 80-100%; it was scrapped in 2010 but villages kept the terms.",
+   "source": "https://www.champagne.fr/en/champagne-frequently-asked-questions"
+  },
+  {
+   "fact": "Certified column: Échelle des Crus: Grand Cru villages and Premier Cru villages exist and may be put on labels.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=19"
+  },
+  {
+   "fact": "Certified column (Champagne): label terms Special Club, Récoltant Manipulant, Négociant Manipulant, Vieilles Vignes; general terms Cuvée de Prestige / Tête de Cuvée, Grandes Marques, single vineyard, Clos. Be able to match Grandes Marques to their prestige cuvées; know three non-Grandes Marques producers and three grower producers; know the best vintages going back 15 years.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "fact": "Comité Champagne: label codes include NM (Négociant-Manipulant, buys grapes or wine; all the big houses) and RM (Récoltant-Manipulant, a grower using only their own grapes).",
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-bottles-bottling"
+  },
+  {
+   "fact": "Club Trésors de Champagne: founded in 1971, the first association of Champagne grower-producers, committed to a wine of excellence, the Spécial Club cuvée.",
+   "source": "https://www.clubtresorsdechampagne.com/en/"
+  },
+  {
+   "fact": "LVMH (Veuve Clicquot): Madame Clicquot created the first vintage champagne in 1810, invented the riddling table in 1816 and produced the first blended rosé champagne in 1818; La Grande Dame is one of the house's iconic cuvées.",
+   "source": "https://www.lvmh.com/en/our-maisons/wines-spirits/veuve-clicquot"
+  },
+  {
+   "fact": "LVMH (Krug): Krug Grande Cuvée blends 120+ wines from more than 10 different years; Le Clos du Mesnil is a 1.84-hectare Krug plot in Mesnil-sur-Oger.",
+   "source": "https://www.lvmh.com/en/our-maisons/wines-spirits/krug"
+  },
+  {
+   "fact": "Louis Roederer's own site lists Cristal and Cristal Rosé among the house's wines.",
+   "source": "https://www.louis-roederer.com/en/house"
+  },
+  {
+   "fact": "Certified column: history and lore: invention of the riddling rack (Madame Clicquot) and the gyropalette.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "fact": "Champagne service (Court): never point the cork at someone and never take your hand off the top (cage and cork) while removing the cork; CMS-A published sparkling wine opening standards; Champagne is an incredibly versatile beverage that goes with many types of foods.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=20"
+  },
+  {
+   "fact": "Certified column (World Sparkling): traditional method steps; know what liqueur de tirage and liqueur d'expédition are made of; examples include Cap Classique. Intro column examples: Champagne, Crémant, Cava, Franciacorta.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "fact": "Cap Classique Producers Association: Cap Classique is the classic method of making sparkling wine by creating a second fermentation in the bottle; the term has been used since 1992.",
+   "source": "https://www.capclassique.co.za/"
+  },
+  {
+   "fact": "Charmat (cuve close): second fermentation in pressurized tanks, complete in 4-5 days; filtered then bottled; saves time and cost with no riddling or disgorging; as little as 90 days from harvest to bottling; best process for aromatic grape varieties; examples Prosecco, Moscato d'Asti; Certified column adds Lambrusco.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "fact": "Transfer method: identical to the classic method up to the end of the second fermentation in bottle; bottles are disgorged under pressure into large tanks, filtered and rebottled; lees contact is obtained and riddling eliminated; used for extra large and extra small bottles.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "fact": "Méthode ancestrale: primary fermentation paused mid-way, wine bottled, fermentation finishes in bottle trapping CO2; no requirement to disgorge. Certified: also called Ancestral Method / Méthode Rurale / Pétillant Naturel ('pet-nat'); bottled at much lower pressure.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "fact": "Certified label term: Crémant is French sparkling wine made by méthode traditionnelle outside the Champagne region, e.g. Crémant de Bourgogne, Crémant d'Alsace, Crémant de Loire. General term: gyropalette - understand its importance for time, cost and efficacy.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=78"
+  },
+  {
+   "fact": "Certified (World Sparkling): differences between possible pairings depending on the method; impact of the cost of the various styles and how they fit a well-rounded wine program by the bottle and by the glass to offer many price points.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  },
+  {
+   "fact": "Certified (Alsace, BOS): Crémant d'Alsace is an alternative, cost-effective source for traditional method sparkling wine.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=22"
+  },
+  {
+   "fact": "Cava categories by aging: Cava de Guarda minimum 9 months; Reserva more than 18 months; Gran Reserva 30 months; Cava de Paraje Calificado more than 36 months.",
+   "source": "https://www.cava.wine/en/categories-types/"
+  },
+  {
+   "fact": "Franciacorta minimum time on the lees from tirage to disgorging: Franciacorta 18 months; Rosé and Satèn 24; vintage (millesimato) 30; riserva 60.",
+   "source": "https://franciacorta.wine/en/consortium/regulations/"
+  },
+  {
+   "fact": "Sweet wines: noble rot appellations - Bordeaux: Sauternes; Alsace: VT and SGN; Germany: Auslese, BA, TBA; Loire: Quarts de Chaume, Bonnezeaux, Vouvray Moelleux; Hungary: Tokaji Aszú. Drying - Italy: Vin Santo, Recioto di Soave, Recioto della Valpolicella. Freezing - Germany & Austria: Eiswein; Canada: Icewine (Ontario VQA). Certified: match appellations with their regions and grapes; Eiswein and Icewine must be free of noble rot.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  },
+  {
+   "fact": "Sweet wine grapes: Sauternes Sémillon; Alsace Riesling, Pinot Gris, Gewürztraminer, Muscat; Loire Chenin Blanc; Tokaji Furmint. Certified: Vin Santo Trebbiano; Recioto di Soave Garganega; Recioto della Valpolicella Corvina; Canada Vidal, Riesling, Cabernet Franc.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=79"
+  },
+  {
+   "fact": "Certified (Sweet): Noble Rot = Botrytis cinerea; Classification of Sauternes (1855): Château d'Yquem, Superior First Growth (Premier Cru Supérieur); know a couple of producers in each category; by-the-glass serving usually 2 oz; open bottles typically last a week kept cold in the refrigerator; match the weight of the dessert and the wine, the wine sweeter than the dessert; contrast sweet wines with fatty and salty foods such as foie gras and blue cheese; really old wines become drier over time; many are in clear bottles and should be kept out of direct light; full-sized bottles age better than half bottles; Tokaji is often bottled in 500ml bottles, cost by the glass correctly.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=80"
+  },
+  {
+   "fact": "Tokaj: since 2013, 120 g/l is the minimum residual sugar for Aszú; 6 puttony means upwards of 150 g/l; Aszú must age at least 18 months in wooden casks.",
+   "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
+  },
+  {
+   "fact": "Ontario VQA Icewine: grapes frozen naturally on the vine, harvested below -8°C, juice at least 35 degrees Brix.",
+   "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+  },
+  {
+   "fact": "Certified (Fortified): Sherry appellation Jerez-Xérès-Sherry, with Sanlúcar de Barrameda on the coast; climate hot maritime; close to the Atlantic; soils albariza (chalk), barros (clay), arenas (sand); fortified after fermentation, oxidized; flor: Saccharomyces cerevisiae; biological aging vs oxidative aging; running the scales of the solera; grapes Palomino, Moscatel, Pedro Ximénez.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "fact": "Certified (Sherry style): biological aging - Manzanilla, Fino, Amontillado, Palo Cortado; oxidative aging - Oloroso, Cream Sherry.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "fact": "Sherry: wines classified for fino and manzanilla are fortified to 15% ABV; wines for oloroso to at least 17%.",
+   "source": "https://www.sherry.wine/sherry-wine/production/fortification"
+  },
+  {
+   "fact": "Sherry solera: wine is drawn (saca) from the solera, the oldest tier; it is topped up (rocío) from the 1st criadera, and so on up to the youngest tier, which is topped up with new wine; the whole process is called correr escalas (running the scales).",
+   "source": "https://www.sherry.wine/sherry-wine/production/ageing"
+  },
+  {
+   "fact": "Biological ageing happens under a film of yeasts (velo de flor) that protects the wine from oxidation; oxidative ageing exposes the wine to oxygen, darkening and concentrating it.",
+   "source": "https://www.sherry.wine/sherry-wine/production/ageing"
+  },
+  {
+   "fact": "Albariza is a white soil of chalk and clay, the best soil for Palomino.",
+   "source": "https://www.sherry.wine/sherry-wine/production/viticulture"
+  },
+  {
+   "fact": "Fino: dry white wine from Palomino, aged under flor; serve chilled 6-8°C.",
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/fino"
+  },
+  {
+   "fact": "Manzanilla: dry Palomino wine aged under flor; its biological ageing must happen entirely in bodegas in Sanlúcar de Barrameda.",
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/manzanilla"
+  },
+  {
+   "fact": "Amontillado ages first under flor; then the flor disappears and the wine ages oxidatively.",
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/amontillado"
+  },
+  {
+   "fact": "Oloroso is fortified to 17%, which prevents flor, so it ages in contact with oxygen.",
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/oloroso"
+  },
+  {
+   "fact": "Palo Cortado: very fine must initially fortified to 15%, casks marked with a 'palo'; casks showing specific traits are marked as potential Palo Cortado and re-fortified above 17%, redirecting the wine to oxidative ageing; it combines the delicate bouquet of an Amontillado with the body of an Oloroso.",
+   "source": "https://www.sherry.wine/sherry-wine/dry-sherry-wines/palo-cortado"
+  },
+  {
+   "fact": "Pedro Ximénez is made from overripe grapes dried in the sun; fermentation is stopped with wine alcohol; ageing is exclusively oxidative; sugar more than 212 g/l.",
+   "source": "https://www.sherry.wine/sherry-wine/naturally-sweet-sherry-wine/pedro-ximenez"
+  },
+  {
+   "fact": "Certified (Fortified): by-the-glass pours typically 2 oz; refer to the CMS Hospitality and Service Standards for service temperatures; understand how sweetness, age and oxidation affect pairings; know general shelf life after opening.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "fact": "Certified (Port): same area as the Douro DOP, Portugal; subregions Cima Corgo, Baixo Corgo, Douro Superior; warm to hot Mediterranean; mountainous hillside; schist; fortified during fermentation; general term Vila Nova de Gaia; Ruby: basic Ruby, LBV, Single Quinta, Vintage; Aged Tawny 10, 20, 30, 40-year; Colheita (min 7 years aging); grape Touriga Nacional.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "fact": "Certified: vintage Port is only made in the best vintages; old Vintage and Single Quinta Ports require decanting for sediment.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "fact": "IVDP: Port fermentation is stopped by adding grape brandy (benefício); Port usually has 19-22% alcohol; sweetness depends on when the brandy is added.",
+   "source": "https://www.ivdp.pt/en/wines/port-wines/introduction/"
+  },
+  {
+   "fact": "IVDP: LBV is a Ruby Port from a single year bottled after four to six years in wood; Vintage Port is bottled two to three years after the vintage and is the only Port that ages in bottle; Single Quinta Vintage comes from a single harvest and a single estate (quinta); Colheita is a single-vintage Tawny aged in cask at least seven years.",
+   "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
+  },
+  {
+   "fact": "Certified (Madeira): Funchal is the main city; hot subtropical; mountainous hillside; volcanic soil; fortified during fermentation, oxidized, exposed to heat; know estufagem and canteiro; sweeter styles are fortified closer to the beginning of fermentation; grapes Sercial, Verdelho, Bual, Malmsey, Tinta Negra; driest to sweetest: Sercial, Verdelho, Bual, Malmsey.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=81"
+  },
+  {
+   "fact": "Madeira: fortification with 96% wine alcohol stops fermentation; estufagem heats the wine in stainless steel tanks at 45-50°C for at least 3 months; canteiro ages it in casks, usually on the warmer upper floors, for at least 2 years. (Translated.)",
+   "source": "https://vinhomadeira.com/o-vinho-madeira/vinificacao-e-envelhecimento"
+  },
+  {
+   "fact": "Madeira cannot be bottled before 3 years old; age indications 5, 10, 15, 20, 30, 40, 50 and over 50 years. (Translated.)",
+   "source": "https://vinhomadeira.com/o-vinho-madeira/tipos-categorias"
+  },
+  {
+   "fact": "Certified (Fortified): Marsala DOC, Sicily, styles Secco, Semi-Secco, Dolce; French fortified: Banyuls AOP (Roussillon, Grenache), Muscat de Beaumes-de-Venise AOP (Southern Rhône, Muscat); other: Rutherglen, Victoria, Australia (Muscat); Klein Karoo, Western Cape, South Africa (Muscat de Frontignan and Muscat à Petits Grains).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+  },
+  {
+   "fact": "Winemakers of Rutherglen: Muscat of Rutherglen is classified in four tiers - Rutherglen, Classic, Grand, Rare - marking a progression in richness, complexity, age and intensity.",
+   "source": "https://winemakers.com.au/muscat-of-rutherglen/"
+  },
+  {
+   "fact": "Certified (Beer) learning outcome statement: recommend producers of specific styles of beer, choose the appropriate glass for specific beers, and answer beer costing scenarios.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "fact": "Certified (Beer): germination - grain kernels produce enzymes that turn starches into sugar, creating malt; kilning - heating germinated barley to dry it and develop flavor and color; time and temperature determine color and flavor.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "fact": "Certified (Beer): ales Saccharomyces cerevisiae, warm and fast fermentation (68-72°F / 20-22°C); lagers Saccharomyces pastorianus, cool and slow fermentation (48-55°F / 9-13°C).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "fact": "Certified (Beer): American hops Cascade, Centennial, Citra; European hops Hallertau, Saaz, Tettnang; water's mineral and ion content shapes the style produced.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "fact": "Certified (Beer): process terms mashing, boiling, lagering; ABV = alcohol by volume; IBU = International Bitterness Unit, higher means more bitter. Producer examples: recall at least two producers of common styles (European and American pale lager, Pilsner, American IPA, American Pale Ale, porter, Irish dry stout, Hefeweizen, Witbier, sour).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=84"
+  },
+  {
+   "fact": "Certified (Beer): beer is one of the oldest alcoholic beverages; in Mesopotamia hunter-gatherers settled to grow crops for bread and beer; glassware must be clean and polished; common glasses pint, mug, tulip, pilsner, weizen; pairing principles: sweetness from malt, bitterness from hops, generally low alcohol, carbonation; FIFO for restocking; containers bottle, can, keg; a quarter barrel keg = 29.3 litres / 992 ounces; one pint = 16 ounces.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=85"
+  },
+  {
+   "fact": "Intro (Beer): ales are top-fermenting with more fruit and spice aromas (e.g. Hefeweizen, Pale Ale, IPA, Porter, Irish Dry Stout); lagers are bottom-fermenting, clean and crisp (e.g. Pilsner, Bock, Oktoberfest).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=83"
+  },
+  {
+   "fact": "Business of the Sommelier: amount of bottles needed = (number of guests x oz or ml per guest) / 25 (oz in a 750 ml bottle).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "fact": "Certified (Sake): Koji-kin = Aspergillus oryzae; parallel fermentation; Nigori = cloudy; Namazake = unpasteurized; Kimoto and Yamahai: no lactic acid added, resulting in a gamey flavor.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=86"
+  },
+  {
+   "fact": "Certified (Sake): premium classification based on minimum % of rice grain remaining: Daiginjo 50%, Ginjo 60%, Honjozo 70%; no alcohol added: Junmai Daiginjo 50%, Junmai Ginjo 60%; Sake Meter Value: the higher the number the drier, range -15 to +15; Tokubetsu = special sake category; Ginjo and Daiginjo best chilled; lower polishing levels, Yamahai and Kimoto chilled or warm; Kimoto and Yamahai have more umami for bigger, richer meats; bottle sizes 300ml / 720ml / 1.8L.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=87"
+  },
+  {
+   "fact": "JSS glossary: kimoto acquires acidity by cultivating wild lactic acid bacteria, grinding rice and koji together; yamahai does the same without the grinding; both tend to be full-bodied. Sokujo, the modern method, simply adds lactic acid.",
+   "source": "https://japansake.or.jp/sake/en/basic/glossary/"
+  },
+  {
+   "fact": "JSS glossary: Honjozo uses rice polished to 70% or less plus neutral spirits up to 10% of the polished rice weight; Junmai is made without neutral spirits; specially designated sake has 8 categories; namazake is unpasteurized and best stored in the fridge; nigori is cloudy sake filtered with a coarse mesh.",
+   "source": "https://japansake.or.jp/sake/en/basic/glossary/"
+  },
+  {
+   "fact": "Court spirits table (clear and agave): Vodka - anywhere, commonly cereal grain but can be anything, commonly continuous still, distilled multiple times to remove flavors; producers Tito's, Absolut, Smirnoff, Stolichnaya, Grey Goose, Ketel One, Cîroc, Belvedere. Rum - traditionally Caribbean, sugarcane and molasses, continuous or pot still; styles Light, Dark, Aged, Spiced; producers Myers's, Mount Gay, Bacardi, Captain Morgan (spiced), Diplomático, Goslings, Havana Club. Gin - anywhere, neutral grain, continuous, botanicals and juniper; London Dry; Tanqueray, Bombay, Nolet, Beefeater, Hendrick's, Sipsmith. Tequila - Jalisco, blue agave; Blanco under 2 months, Reposado 2 months to 1 year in oak, Añejo 1 to 3 years in oak; Don Julio, Jose Cuervo, Patrón, Herradura, Sauza, El Jimador, 1800, Hornitos. Mezcal - Oaxaca, many agave varieties, agave cooked over fire in pits gives a smoky character; Blanco most common, Reposado, Añejo; Bozal, Del Maguey, Wahaka.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=88"
+  },
+  {
+   "fact": "US rules: vodka is neutral spirit distilled at or above 95% ABV and may not be aged or stored in wood.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.142"
+  },
+  {
+   "fact": "US rules: gin must derive its main characteristic flavor from juniper berries; only gin made by original distillation or redistillation may be called 'distilled', 'Dry', 'London' or 'Old Tom'.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.144"
+  },
+  {
+   "fact": "US rules: rum is distilled from sugar cane juice, syrup, molasses or other cane by-products; Cachaça is rum that is a distinctive product of Brazil.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.147"
+  },
+  {
+   "fact": "CRT: only blue agave (Agave tequilana Weber) is permitted; the appellation covers 181 municipalities in five states: Jalisco, Michoacán, Guanajuato, Nayarit and Tamaulipas.",
+   "source": "https://www.crt.org.mx/en/appellation-of-origin/"
+  },
+  {
+   "fact": "CRT: Tequila 100% Agave is made from 100% blue agave sugars and bottled at origin; 'Tequila' needs at least 51% blue agave sugars and may be bottled outside the territory; Blanco comes direct from the still; Reposado at least 2 months in oak, añejo at least 1 year, extra añejo at least 3 years.",
+   "source": "https://www.crt.org.mx/en/our-tequila/"
+  },
+  {
+   "fact": "Court spirits table (whisk(e)y): Bourbon - USA, most made in Kentucky but not required, 51% corn, typically continuous, new charred American white oak; Jim Beam, Maker's Mark, Wild Turkey, Bulleit, Buffalo Trace, Woodford Reserve. Tennessee - 51% corn, filtered through maple charcoal; Jack Daniel's, George Dickel. Canadian - corn, wheat, rye or barley; Crown Royal, Pike Creek, Canadian Club. Irish - barley, three times in pot still; Jameson, Tullamore Dew, Bushmills, Proper Twelve. Scotch - barley; Highland, Lowland, Islay (smokiest), Speyside, Campbeltown; min 3 years in oak; single malt / blended; two times in pot still, Lowlands three; peat fires dry the barley giving a smoky character; Highland/Speyside: The Glenlivet, Macallan, Singleton, Glenmorangie; Lowland: Glenkinchie, Auchentoshan; Islay: Lagavulin, Laphroaig (spelled 'Laphroig' in the guide), Ardbeg, Bowmore, Caol Ila; blended: Johnnie Walker, Ballantine's, Chivas, Grant's, Famous Grouse, J&B, Dewar's.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=89"
+  },
+  {
+   "fact": "UK Scotch Whisky Regulations: Scotch matured only in Scotland in oak casks for at least three years; Single Malt is from one distillery, water and malted barley only, pot stills; Blended Scotch blends single malt(s) with single grain(s).",
+   "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/3/made"
+  },
+  {
+   "fact": "Court spirits table (brandy): Cognac - subregions Grande Champagne, Petite Champagne (Fine Champagne); VS/Three Star 2 years, VSOP 4, XO 10; white grapes mainly Ugni Blanc; two times in a pot still; aged in French oak; Hennessy, Rémy Martin, Courvoisier, Martell. Armagnac - Haut Armagnac, Bas Armagnac, Ténarèze; VS 2, VSOP 4, XO 10; Ugni Blanc, Folle Blanche, Colombard, Baco; one time in a unique continuous still; French oak; Larressingle, Delord, Montal. Calvados - apples, pears; min 2 years in oak; two times in pot still, some continuous. Eaux de vie de fruits - Framboise, Kirsch, Poire William (raspberry, cherry, pear), generally no aging. Pomace brandy - Grappa (Italy), Marc (France), generally no aging.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=90"
+  },
+  {
+   "fact": "BNIC: 'Fine Champagne' Cognac is a blend of Grande Champagne (minimum 50%) and Petite Champagne; XXO means 14 years or more.",
+   "source": "https://www.cognac.fr/en/discover/a-unique-spirit/a-protected-origin/"
+  },
+  {
+   "fact": "Court liqueurs table: Herb & Nut - Bénédictine, B&B, Pimm's, Chartreuse, Crème de Menthe, Frangelico; Anise - Anisette, Galliano, Ouzo, Sambuca; Fruit - Orange: Triple Sec, Cointreau, Grand Marnier; Apricot: Amaretto; Peaches: Southern Comfort; Cream - Baileys Irish Cream; Whiskey - Drambuie, Glayva, Irish Mist; Other - Elderflower: St. Germain; Ginger: Canton; Coffee: Kahlúa, Tia Maria.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=91"
+  },
+  {
+   "fact": "US rules: cordials and liqueurs are flavored spirits made with fruits, flowers, plants or other natural flavors, with at least 2.5% sugar by weight.",
+   "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.150"
+  },
+  {
+   "fact": "Certified exam only: a Certified Sommelier will know the base spirits, mixers and garnishes for: Americano, Aviation, Caipirinha, Champagne Cocktail, Cosmopolitan, Daiquiri, French 75, French Martini, Gibson, Gimlet, Greyhound, John Collins, Kamikaze, Kir Royale, Mai Tai, Manhattan, Margarita, Mint Julep, Mojito, Moscow Mule, Negroni, Old Fashioned, Pimm's Cup, Pisco Sour, Rusty Nail, Sazerac, Sea Breeze, Sidecar, Tom Collins, Vesper, Vieux Carré, Whiskey Sour, White Russian (33 drinks).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=92"
+  },
+  {
+   "fact": "IBA Aviation: gin, maraschino, fresh lemon juice, crème de violette; shaken; optional maraschino cherry.",
+   "source": "https://iba-world.com/iba-official-cocktails/aviation/"
+  },
+  {
+   "fact": "IBA French 75: gin, fresh lemon juice, sugar syrup, topped with Champagne; no garnish (N/A).",
+   "source": "https://iba-world.com/iba-official-cocktails/french-75/"
+  },
+  {
+   "fact": "IBA Negroni: gin, bitter Campari, sweet red vermouth over ice; half orange slice.",
+   "source": "https://iba-world.com/iba-official-cocktails/negroni/"
+  },
+  {
+   "fact": "IBA John Collins: gin, fresh lemon juice, simple syrup, soda water in a highball; lemon slice and maraschino cherry; use 'Old Tom' gin for a Tom Collins.",
+   "source": "https://iba-world.com/iba-official-cocktails/john-collins/"
+  },
+  {
+   "fact": "IBA Vesper: gin, vodka, Lillet Blanc, shaken; lemon zest.",
+   "source": "https://iba-world.com/iba-official-cocktails/vesper/"
+  },
+  {
+   "fact": "IBA Dry Martini: gin and dry vermouth, stirred; lemon oil or green olives.",
+   "source": "https://iba-world.com/iba-official-cocktails/dry-martini/"
+  },
+  {
+   "fact": "IBA French Martini: vodka, raspberry liqueur, fresh pineapple juice; lemon peel oil.",
+   "source": "https://iba-world.com/iba-official-cocktails/french-martini/"
+  },
+  {
+   "fact": "IBA Moscow Mule: vodka, ginger beer, fresh lime juice; lime slice.",
+   "source": "https://iba-world.com/iba-official-cocktails/moscow-mule/"
+  },
+  {
+   "fact": "IBA Sea Breeze: vodka, cranberry juice, grapefruit juice in a highball; orange zest and cherry.",
+   "source": "https://iba-world.com/iba-official-cocktails/sea-breeze/"
+  },
+  {
+   "fact": "IBA Black Russian: vodka and coffee liqueur, no garnish; White Russian: float fresh cream on top.",
+   "source": "https://iba-world.com/iba-official-cocktails/black-russian/"
+  },
+  {
+   "fact": "IBA Cosmopolitan: citron vodka, Cointreau, fresh lime juice, cranberry juice; lemon twist.",
+   "source": "https://iba-world.com/iba-official-cocktails/cosmopolitan/"
+  },
+  {
+   "fact": "IBA Mojito: white Cuban rum, fresh lime juice, mint, white cane sugar, soda water; mint sprigs and lime slice.",
+   "source": "https://iba-world.com/iba-official-cocktails/mojito/"
+  },
+  {
+   "fact": "IBA Mai Tai: amber Jamaican rum, Martinique molasses rum, orange curaçao, orgeat, fresh lime juice, simple syrup; pineapple spear, mint leaves and lime peel.",
+   "source": "https://iba-world.com/iba-official-cocktails/mai-tai/"
+  },
+  {
+   "fact": "IBA Daiquiri: white Cuban rum, fresh lime juice, superfine sugar; no garnish (N/A).",
+   "source": "https://iba-world.com/iba-official-cocktails/daiquiri/"
+  },
+  {
+   "fact": "IBA Caipirinha: cachaça, lime wedges, white cane sugar, muddled; no garnish (N/A).",
+   "source": "https://iba-world.com/iba-official-cocktails/caipirinha/"
+  },
+  {
+   "fact": "IBA Rusty Nail: Scotch whisky and Drambuie over ice; lemon zest.",
+   "source": "https://iba-world.com/iba-official-cocktails/rusty-nail/"
+  },
+  {
+   "fact": "IBA Whiskey Sour: bourbon, fresh lemon juice, sugar syrup, optional egg white; half orange slice and maraschino cherry.",
+   "source": "https://iba-world.com/iba-official-cocktails/whiskey-sour/"
+  },
+  {
+   "fact": "IBA Manhattan: rye whiskey, sweet red vermouth, Angostura bitters, stirred; cocktail cherry.",
+   "source": "https://iba-world.com/iba-official-cocktails/manhattan/"
+  },
+  {
+   "fact": "IBA Old Fashioned: bourbon or rye, sugar cube, Angostura bitters, a little water; orange slice or zest and a cocktail cherry.",
+   "source": "https://iba-world.com/iba-official-cocktails/old-fashioned/"
+  },
+  {
+   "fact": "IBA Mint Julep: bourbon, fresh mint, powdered sugar, water, crushed ice; mint sprig.",
+   "source": "https://iba-world.com/iba-official-cocktails/mint-julep/"
+  },
+  {
+   "fact": "IBA Vieux Carré: rye whiskey, Cognac, sweet vermouth, Bénédictine, Peychaud's bitters; orange zest and maraschino cherry.",
+   "source": "https://iba-world.com/iba-official-cocktails/vieux-carre/"
+  },
+  {
+   "fact": "IBA Sidecar: Cognac, triple sec, fresh lemon juice; no garnish (N/A).",
+   "source": "https://iba-world.com/iba-official-cocktails/sidecar/"
+  },
+  {
+   "fact": "IBA Sazerac: Cognac, absinthe rinse, sugar cube, Peychaud's bitters; lemon zest; rye whiskey replaced Cognac after the American Civil War.",
+   "source": "https://iba-world.com/iba-official-cocktails/sazerac/"
+  },
+  {
+   "fact": "IBA Pisco Sour: pisco, fresh lemon juice, simple syrup, egg white; a few dashes of Amargo bitters on top.",
+   "source": "https://iba-world.com/iba-official-cocktails/pisco-sour/"
+  },
+  {
+   "fact": "IBA Margarita: 100% agave tequila, triple sec, fresh lime juice; optional half salt rim.",
+   "source": "https://iba-world.com/iba-official-cocktails/margarita/"
+  },
+  {
+   "fact": "IBA Champagne Cocktail: chilled Champagne, Cognac, Angostura bitters, sugar cube (Grand Marnier optional); orange zest and maraschino cherry.",
+   "source": "https://iba-world.com/iba-official-cocktails/champagne-cocktail/"
+  },
+  {
+   "fact": "IBA Kir: dry white wine and crème de cassis, no garnish; Kir Royal uses Champagne instead of white wine.",
+   "source": "https://iba-world.com/iba-official-cocktails/kir/"
+  },
+  {
+   "fact": "IBA Americano: bitter Campari, sweet red vermouth, a splash of soda water; half orange slice and lemon zest.",
+   "source": "https://iba-world.com/iba-official-cocktails/americano/"
+  },
+  {
+   "fact": "Difford's Guide Gibson Dry Martini: London dry gin and dry vermouth, stirred; two skewered pickled cocktail onions.",
+   "source": "https://www.diffordsguide.com/cocktails/recipe/830/gibson-dry-martini"
+  },
+  {
+   "fact": "Difford's Guide Gimlet: London dry gin with lime cordial (plus a little genever, fresh lime and lemon, rich syrup); lime zest twist and lime wedge.",
+   "source": "https://www.diffordsguide.com/cocktails/recipe/831/gimlet-diffords-recipe"
+  },
+  {
+   "fact": "Difford's Guide Greyhound: vodka and fresh pink grapefruit juice (a little rich syrup, grapefruit bitters); grapefruit wheel.",
+   "source": "https://www.diffordsguide.com/cocktails/recipe/919/greyhound"
+  },
+  {
+   "fact": "Difford's Guide Kamikaze: vodka, Cointreau triple sec, fresh lime juice, shaken; lime wedge.",
+   "source": "https://www.diffordsguide.com/cocktails/recipe/1087/kamikaze"
+  },
+  {
+   "fact": "Difford's Guide Pimm's Cup: Pimm's (fruit cup), orange, lemon, cucumber and strawberry slices, topped with English-style lemonade and ginger ale; mint sprigs.",
+   "source": "https://www.diffordsguide.com/cocktails/recipe/1523/pimms-cup-or-classic-pimms"
+  },
+  {
+   "fact": "Certified learning outcomes (Champagne, World Sparkling, Sweet, Fortified, Beer, Sake, Spirits & Liqueurs, Cocktails) ask candidates to know production methods, styles, iconic producers, aging rules and food pairings, plus the base spirits, mixers and garnishes for selected cocktails.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=77"
+  }
+ ],
+ "unverified": [
+  "Champagne vintages: the Court asks for the best vintages of the last 10-15 years. No official vintage ratings were fetched, so no vintages are named.",
+  "Champagne prestige cuvées: Taittinger Comtes de Champagne, Moët & Chandon / Dom Pérignon and Charles Heidsieck's prestige cuvée were not confirmed on a house page (age gates or no page). Dom Pérignon is listed by LVMH as its own Maison within Moët Hennessy. Only Roederer (Cristal), Veuve Clicquot (La Grande Dame) and Krug (Grande Cuvée, Clos du Mesnil) are used.",
+  "Champagne grower and non-Grandes Marques producers (the Court asks for three of each) were not sourced, so none are named beyond the Spécial Club association.",
+  "Côte de Sézanne: listed by the Court as a subregion; Comité Champagne counts four main sub-regions and its page fetched does not describe Sézanne or its grapes.",
+  "Champagne plantings: the Court gives 38% Pinot Noir, 32% Meunier, 30% Chardonnay; Comité Champagne pages give slightly different shares (see Level 1 France). Not shown as a visual.",
+  "Sweet wine producers beyond Château d'Yquem (the Court asks for a couple per category) were not sourced.",
+  "Beer producers for each style (the Court asks for two per style) were not sourced, so none are named.",
+  "Beer glass shapes (pint, mug, tulip, pilsner, weizen) are named by the Court; no official description of each shape was fetched.",
+  "Sweet and fortified by-the-glass pours: the Court gives '2 oz (59.1 ml)' for sweet wine and '2 oz (51.9 ml)' for fortified; the ml figures disagree, so only '2 oz' is used.",
+  "Fortified shelf life after opening: the Court asks for it but gives no figures; no official figures were fetched.",
+  "The Court lists Amontillado and Palo Cortado under 'biological' aging; sherry.wine says both finish their aging oxidatively. The chapter shows both views.",
+  "Port: the fetched IVDP Douro region page did not load (empty); Port subregions and Vila Nova de Gaia come from the Court guide only.",
+  "Marsala, Banyuls, Muscat de Beaumes-de-Venise and Klein Karoo come from the Court guide only; no official body page was fetched.",
+  "Muscat of Rutherglen tiers come from winemakers.com.au, whose page also carries unrelated spam text; average ages per tier were not used because sources disagree.",
+  "Madeira: vinhomadeira.com pages are in Portuguese and were translated.",
+  "Tokaj facts come from bor.hu (Hungarian wine promotion site), not the Tokaj product specification.",
+  "Cocktail specs: 28 drinks follow IBA official pages. Gibson, Gimlet, Greyhound, Kamikaze and Pimm's Cup are not on the IBA pages checked and follow Difford's Guide, which is not an official body. Tom Collins comes from the IBA John Collins note (use Old Tom gin); White Russian from the IBA Black Russian note; Kir Royale from the IBA Kir note.",
+  "The Court's spirits tables mark Certified material in red; colors were read from the PDF programmatically and the split is approximate, so the chapter treats the whole table as Certified scope.",
+  "Mezcal and pisco: no official body page (CRM, Pisco DO) was fetched.",
+  "Cocktails section video: no Court, Wine Folly or official-body video on these cocktails was found, so it is null."
+ ],
+ "v3": {
+  "video": {
+   "youtubeId": "JY4AtT36MXc",
+   "title": "Theory Examination Advice with Rob Bigelow, MS: Court of Master Sommeliers, Americas",
+   "by": "Court of Master Sommeliers, Americas",
+   "length": "0:48"
+  },
+  "sections": [
+   {
+    "name": "Champagne in depth",
+    "video": {
+     "youtubeId": "uS0wx6Dl838",
+     "title": "The Wines of Champagne",
+     "by": "Champagne",
+     "length": "11:08"
+    },
+    "keyPoints": [
+     {
+      "big": "FIVE AREAS",
+      "line": "Reims, Marne, Côte des Blancs, Sézanne and Côte des Bar."
+     },
+     {
+      "big": "TIRAGE",
+      "line": "liqueur is wine, sugar and yeast. It starts the bubbles."
+     },
+     {
+      "big": "EXPÉDITION",
+      "line": "liqueur is wine and cane sugar. It sets the sweetness."
+     },
+     {
+      "big": "36 MONTHS",
+      "line": "minimum for vintage. Non-vintage needs 15 (12 on the lees)."
+     },
+     {
+      "big": "SPÉCIAL CLUB",
+      "line": "is the top cuvée of a growers' club founded in 1971."
+     }
+    ],
+    "read": {
+     "bigIdea": "At Certified level, Champagne is about detail.",
+     "where": "From Level 1: three grapes, the dosage scale, NM and RM. Now add the map. The Court lists five areas: **Montagne de Reims** and **Côte des Bar** (mostly Pinot Noir), the **Vallée de la Marne** (Meunier in the west), the **Côte des Blancs** (Chardonnay on chalk) and the **Côte de Sézanne**. Nothing shelters the region from Atlantic weather, so grapes are picked early to keep their acidity.",
+     "stopsTitle": "The traditional method, step by step",
+     "stops": [
+      {
+       "name": "Cuvée and tirage",
+       "note": "assemblage",
+       "text": "Still wines are blended into the **cuvée**. The **liqueur de tirage** (wine, sugar and yeast) goes in to start the second fermentation in the bottle."
+      },
+      {
+       "name": "Lees aging",
+       "note": "autolysis",
+       "text": "Dead yeast breaks down (**autolysis**) while a trace of oxygen gets in, in cellars around 12°C. Non-vintage needs **15 months** (12 on the lees); vintage **36 months**."
+      },
+      {
+       "name": "Riddling",
+       "note": "remuage",
+       "text": "By hand on wooden **pupitres** it takes 4-6 weeks and about 25 turns. A **gyropalette** turns 500 bottles at once in about a week."
+      },
+      {
+       "name": "Disgorging",
+       "note": "dégorgement",
+       "text": "The neck is frozen in a bath near -27°C and the pressure pushes the ice plug out. Big bottles are still done by hand (**à la volée**)."
+      },
+      {
+       "name": "Dosage",
+       "note": "liqueur d'expédition",
+       "text": "Wine and cane sugar top up the bottle. The amount of sugar sets the style, from Brut Nature to Doux."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Match the house to its top cuvée:",
+     "mixup": "**Liqueur de tirage** (wine, sugar, yeast) makes the bubbles. **Liqueur d'expédition** (wine, cane sugar) is the dosage.",
+     "sayIt": "This is the house's prestige cuvée, their top wine."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Sparkling wines of the world",
+    "video": {
+     "youtubeId": "AYt_Ge2Tv_k",
+     "title": "What Else is Beyond Champagne?",
+     "by": "Wine Folly",
+     "length": "10:02"
+    },
+    "keyPoints": [
+     {
+      "big": "CAP CLASSIQUE",
+      "line": "is South Africa's bottle-fermented sparkling wine."
+     },
+     {
+      "big": "LAMBRUSCO",
+      "line": "is made in tank (Charmat), like Prosecco."
+     },
+     {
+      "big": "PÉT-NAT",
+      "line": "finishes its first fermentation in bottle, at low pressure."
+     },
+     {
+      "big": "TRANSFER",
+      "line": "is used for very large and very small bottles."
+     },
+     {
+      "big": "CRÉMANT",
+      "line": "is French traditional method from outside Champagne."
+     }
+    ],
+    "read": {
+     "bigIdea": "The method sets the style and the price.",
+     "where": "From Level 1: the four methods. Now tie each one to its wines. The traditional method makes **Champagne**, **Crémant**, **Cava**, **Franciacorta** and South Africa's **Cap Classique**. A good list offers several methods and price points, by the glass and by the bottle. **Crémant d'Alsace** is a cost-effective traditional-method choice.",
+     "stopsTitle": "Four methods, four styles",
+     "stops": [
+      {
+       "name": "Traditional",
+       "note": "bubbles in the bottle",
+       "text": "The slow, costly way: lees aging, riddling and disgorging in each bottle. The **gyropalette** saves time and cost in riddling."
+      },
+      {
+       "name": "Charmat",
+       "note": "bubbles in a tank",
+       "text": "The second fermentation runs in a pressure tank in 4-5 days, with no riddling or disgorging. It suits aromatic grapes: **Prosecco**, **Moscato d'Asti**, **Lambrusco**."
+      },
+      {
+       "name": "Transfer",
+       "note": "bottle, tank, bottle",
+       "text": "Ferments in bottle, then is emptied into a tank under pressure, filtered and rebottled. Lees contact, no riddling. Used for very large and very small bottles."
+      },
+      {
+       "name": "Ancestral",
+       "note": "pét-nat",
+       "text": "The first fermentation is paused, and finishes in the bottle. Lower pressure, and no need to disgorge. Also called **méthode rurale**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The two methods you'll sell most:",
+     "mixup": "**Crémant** is French traditional method from outside Champagne. **Cava** is Spain's traditional-method DO.",
+     "sayIt": "Crémant is made the same way as Champagne and usually costs less."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Sweet wines",
+    "video": {
+     "youtubeId": "s8awGTgZvo8",
+     "title": "7 Amazing Sweet Wines You Must Try",
+     "by": "Wine Folly",
+     "length": "12:23"
+    },
+    "keyPoints": [
+     {
+      "big": "YQUEM",
+      "line": "is Sauternes' Superior First Growth (1855)."
+     },
+     {
+      "big": "GARGANEGA",
+      "line": "makes Recioto di Soave; Corvina makes Recioto della Valpolicella."
+     },
+     {
+      "big": "VIDAL",
+      "line": "is Canada's Icewine grape, with Riesling and Cabernet Franc."
+     },
+     {
+      "big": "NO ROT",
+      "line": "is allowed in Eiswein or Icewine."
+     },
+     {
+      "big": "2 OZ",
+      "line": "is the usual by-the-glass pour of a sweet wine."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sweet wines sell best when you match them well.",
+     "where": "From Level 1: noble rot, drying and freezing. Now match each wine to its region and grape. **Sauternes** is Sémillon, and **Château d'Yquem** is its Superior First Growth. **Vin Santo** is Trebbiano, **Recioto di Soave** Garganega and **Recioto della Valpolicella** Corvina. Canada's **Icewine** adds **Vidal** to Riesling and Cabernet Franc, and like Eiswein it must be free of noble rot.",
+     "stopsTitle": "Selling sweet wine",
+     "stops": [
+      {
+       "name": "Pair",
+       "note": "sweeter than the plate",
+       "text": "Match the weight of the dessert, and make the wine the sweeter of the two. Or contrast it with fatty, salty food: **foie gras**, **blue cheese**."
+      },
+      {
+       "name": "Pour",
+       "note": "2 oz",
+       "text": "A by-the-glass pour is usually **2 oz**. An open bottle keeps about a week in the fridge."
+      },
+      {
+       "name": "Store",
+       "note": "away from light",
+       "text": "Many come in clear glass, so keep them out of direct light. Full bottles age better than half bottles, and very old wines taste drier."
+      },
+      {
+       "name": "Cost",
+       "note": "500 ml Tokaji",
+       "text": "**Tokaji** often comes in **500 ml** bottles. Work out the cost per glass from the real bottle size."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Match the wine to its grape:",
+     "mixup": "**Eiswein and Icewine** must be free of noble rot. **TBA** is usually made from noble-rot berries.",
+     "sayIt": "Pick one a little sweeter than your dessert."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Sherry",
+    "video": {
+     "youtubeId": "pQ2YpHKbRCQ",
+     "title": "Sherry Wines",
+     "by": "vinosdejereztv",
+     "length": "6:58"
+    },
+    "keyPoints": [
+     {
+      "big": "15%",
+      "line": "is the fortification for Fino and Manzanilla."
+     },
+     {
+      "big": "17%",
+      "line": "or more for Oloroso, which stops flor from growing."
+     },
+     {
+      "big": "SANLÚCAR",
+      "line": "is the only place Manzanilla can age."
+     },
+     {
+      "big": "PALO CORTADO",
+      "line": "starts under flor, then is re-fortified above 17%."
+     },
+     {
+      "big": "SACA",
+      "line": "draws wine from the solera; rocío refills it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sherry is about flor, air and the solera.",
+     "where": "From Level 1: flor, the solera, Fino and PX. Sherry comes from **Jerez**, with **Sanlúcar de Barrameda** on the coast, in a hot climate near the Atlantic. **Albariza** (chalk) is the best soil for Palomino. Wine is fortified **after** fermentation, then ages either under **flor** (biological) or in contact with air (oxidative).",
+     "stopsTitle": "From driest and palest to sweetest",
+     "stops": [
+      {
+       "name": "Fino and Manzanilla",
+       "note": "biological",
+       "text": "Palomino fortified to 15% and aged under **flor**. Manzanilla must age in **Sanlúcar de Barrameda**. Serve Fino chilled."
+      },
+      {
+       "name": "Amontillado",
+       "note": "both",
+       "text": "Starts under flor. When the flor dies, it carries on aging in contact with oxygen."
+      },
+      {
+       "name": "Palo Cortado",
+       "note": "the rare one",
+       "text": "Starts at 15% under flor. The cellar marks the cask and re-fortifies it above 17%. Amontillado's delicacy with Oloroso's body."
+      },
+      {
+       "name": "Oloroso",
+       "note": "oxidative",
+       "text": "Fortified to **17%**, so no flor grows. It ages in contact with oxygen and darkens."
+      },
+      {
+       "name": "Cream and PX",
+       "note": "sweet",
+       "text": "The Court lists **Cream** as oxidative. **Pedro Ximénez** comes from sun-dried grapes, with over 212 g/L of sugar."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "How a solera is run:",
+     "mixup": "**Amontillado** loses its flor naturally. **Palo Cortado** is re-fortified on purpose, above 17%.",
+     "sayIt": "This one's dry. We serve it well chilled."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Port, Madeira and other fortified wines",
+    "video": {
+     "youtubeId": "0De25VucipY",
+     "title": "Ruby Port vs Tawny Port",
+     "by": "Wine Folly",
+     "length": "34:36"
+    },
+    "keyPoints": [
+     {
+      "big": "THREE ZONES",
+      "line": "Baixo Corgo, Cima Corgo and Douro Superior make up Port."
+     },
+     {
+      "big": "COLHEITA",
+      "line": "is a one-year Tawny aged at least 7 years in cask."
+     },
+     {
+      "big": "ESTUFAGEM",
+      "line": "heats Madeira in tanks; canteiro ages it in warm casks."
+     },
+     {
+      "big": "SERCIAL",
+      "line": "is the driest Madeira; Malmsey is the sweetest."
+     },
+     {
+      "big": "RUTHERGLEN",
+      "line": "Muscat runs Rutherglen, Classic, Grand, Rare."
+     }
+    ],
+    "read": {
+     "bigIdea": "Fortified during or after fermentation sets the style.",
+     "where": "From Level 1: Port's Ruby and Tawny families, and Madeira's four grapes. Port and Madeira are both fortified **during** fermentation, so some grape sugar stays. Port comes from the **Douro**: **Baixo Corgo**, **Cima Corgo** and **Douro Superior**, on schist. **Madeira** is a volcanic island, and its wine is heated and oxidized on purpose.",
+     "stopsTitle": "Port, then Madeira, then the rest",
+     "stops": [
+      {
+       "name": "Ruby Port",
+       "note": "fruit first",
+       "text": "**LBV** is one year, bottled after 4-6 years in wood. **Vintage** is bottled after 2-3 years and ages in bottle. **Single Quinta** is one year from one estate."
+      },
+      {
+       "name": "Tawny Port",
+       "note": "aged in wood",
+       "text": "Aged Tawny says **10, 20, 30 or 40** years. **Colheita** is a one-year Tawny with at least 7 years in cask."
+      },
+      {
+       "name": "Madeira",
+       "note": "heat and air",
+       "text": "Wine alcohol (96%) stops the fermentation; earlier means sweeter. Then **estufagem** (45-50°C tanks) or **canteiro** (casks). No bottling before 3 years."
+      },
+      {
+       "name": "Rutherglen Muscat",
+       "note": "Victoria, Australia",
+       "text": "Four tiers: **Rutherglen, Classic, Grand, Rare**, each richer and older than the last."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The rest of the Court's list:",
+     "mixup": "**Single Quinta** Port is one estate's vintage. **Colheita** is a one-year Tawny aged at least 7 years in cask.",
+     "sayIt": "This Port has sediment, so we'll decant it."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "Beer and sake",
+    "video": {
+     "youtubeId": "fQ0iep8Eq_s",
+     "title": "Sake Basic Course Part 1: Definition, Characteristic, and Brewing Process",
+     "by": "JapanSakeOfficial",
+     "length": "12:14"
+    },
+    "keyPoints": [
+     {
+      "big": "KILNING",
+      "line": "dries the sprouted grain; time and heat set color and flavor."
+     },
+     {
+      "big": "EUROPEAN HOPS",
+      "line": "Hallertau, Saaz, Tettnang. American: Cascade, Centennial, Citra."
+     },
+     {
+      "big": "992 OZ",
+      "line": "is a quarter-barrel keg (29.3 L). A pint is 16 oz."
+     },
+     {
+      "big": "60%",
+      "line": "of the grain left, or less, makes a sake Ginjo."
+     },
+     {
+      "big": "SMV",
+      "line": "runs about -15 to +15. Higher means drier."
+     }
+    ],
+    "read": {
+     "bigIdea": "Certified adds the steps, the glass and the grade.",
+     "where": "From Level 1: malt, hops, yeast and water; ale versus lager; sake's main grades. Beer is one of the oldest drinks: in **Mesopotamia**, early farmers grew grain for bread and beer. The Court now wants brewing steps, glassware, producers and keg math for beer, and polishing grades, styles and service for sake.",
+     "stopsTitle": "From grain to glass",
+     "stops": [
+      {
+       "name": "Malt",
+       "note": "germination and kilning",
+       "text": "Sprouting grain makes enzymes that turn starch into sugar (**germination**). **Kilning** dries it; time and heat set the color and flavor."
+      },
+      {
+       "name": "Brew",
+       "note": "mash, boil, ferment",
+       "text": "**Mashing** and **boiling** come before fermentation. Lagers then rest cold (**lagering**). Local water minerals shape the style."
+      },
+      {
+       "name": "Serve beer",
+       "note": "glass, food, stock",
+       "text": "Know the **pint, mug, tulip, pilsner and weizen** glasses. Malt sweetness, hop bitterness, low alcohol and bubbles make beer easy with food. Restock first in, first out (**FIFO**)."
+      },
+      {
+       "name": "Sake styles",
+       "note": "the starter",
+       "text": "**Kimoto** and **yamahai** grow wild lactic bacteria instead of adding lactic acid; yamahai skips the grinding. Both are fuller, with more umami for rich meats."
+      },
+      {
+       "name": "Serve sake",
+       "note": "cold or warm",
+       "text": "**Ginjo** and **Daiginjo** are best chilled. Lower grades, kimoto and yamahai can be chilled or warm. **Nigori** is cloudy; **namazake** is unpasteurized, so keep it cold."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Less rice left means a higher grade:",
+     "mixup": "**Junmai** means no added alcohol. **Honjozo** adds a little, up to 10% of the rice weight.",
+     "sayIt": "This Junmai Ginjo is best served chilled."
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   },
+   {
+    "name": "Clear and agave spirits",
+    "video": {
+     "youtubeId": "4m833yZuXtg",
+     "title": "Tequila Regulatory Council",
+     "by": "Consejo Regulador del Tequila",
+     "length": "11:33"
+    },
+    "keyPoints": [
+     {
+      "big": "95% ABV",
+      "line": "or more, and no wood: that's US vodka."
+     },
+     {
+      "big": "JUNIPER",
+      "line": "must lead a gin. London Dry is the style the Court names."
+     },
+     {
+      "big": "BLUE AGAVE",
+      "line": "only, for Tequila. '100% agave' is bottled in Mexico."
+     },
+     {
+      "big": "2 MONTHS",
+      "line": "in oak makes a Reposado; Añejo needs 1 year."
+     },
+     {
+      "big": "PIT ROAST",
+      "line": "gives mezcal its smoke. It's from Oaxaca."
+     }
+    ],
+    "read": {
+     "bigIdea": "Clear spirits differ by raw material and rules.",
+     "where": "From Level 1: what each spirit is made from. Now add the styles, the aging rules and the producers. Vodka, gin and rum can be made anywhere. **Tequila** and **mezcal** must come from Mexico: the Court places Tequila in **Jalisco** and mezcal in **Oaxaca**.",
+     "stopsTitle": "Five clear spirits",
+     "stops": [
+      {
+       "name": "Vodka",
+       "note": "neutral",
+       "text": "Usually grain, but it can be anything. Distilled many times in a column still to strip out flavor."
+      },
+      {
+       "name": "Gin",
+       "note": "juniper",
+       "text": "Neutral grain spirit flavored with juniper and botanicals. **London Dry** is the style the Court names."
+      },
+      {
+       "name": "Rum",
+       "note": "sugarcane",
+       "text": "Cane juice or molasses, in a column or pot still. Styles: **light, dark, aged, spiced**. Brazil's cachaça is a rum."
+      },
+      {
+       "name": "Tequila",
+       "note": "blue agave",
+       "text": "Only blue agave, from an appellation covering parts of five Mexican states. **Blanco, Reposado, Añejo, Extra Añejo.**"
+      },
+      {
+       "name": "Mezcal",
+       "note": "many agaves",
+       "text": "Many agave types, cooked in fire pits for the smoke. **Blanco** is the most common."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "How long Tequila rests in oak:",
+     "mixup": "**Reposado** rests at least 2 months in oak. **Añejo** rests at least 1 year.",
+     "sayIt": "This one's 100% blue agave, a Reposado."
+    },
+    "check": [
+     18,
+     19,
+     20
+    ]
+   },
+   {
+    "name": "Aged spirits and liqueurs",
+    "video": {
+     "youtubeId": "kSsBRQqhXcw",
+     "title": "From Grain to Glass: How Scotch Whisky is Made",
+     "by": "Scotch Whisky Association",
+     "length": "4:58"
+    },
+    "keyPoints": [
+     {
+      "big": "51% CORN",
+      "line": "and new charred oak make bourbon; Tennessee adds charcoal."
+     },
+     {
+      "big": "3 YEARS",
+      "line": "in oak, in Scotland, is the minimum for Scotch."
+     },
+     {
+      "big": "ISLAY",
+      "line": "is the smokiest Scotch region: Lagavulin, Laphroaig."
+     },
+     {
+      "big": "XO",
+      "line": "means 10 years for Cognac and Armagnac; VSOP 4, VS 2."
+     },
+     {
+      "big": "ARMAGNAC",
+      "line": "is distilled once in a column; Cognac twice in a pot."
+     }
+    ],
+    "read": {
+     "bigIdea": "Aged spirits are about grain or grape, still and oak.",
+     "where": "From Level 1: what each whiskey and brandy is made from. Now add regions, aging rules and producers, the way you'd sell them. Then sort the liqueurs by family, so you can recommend one fast.",
+     "stopsTitle": "Whiskey, brandy, liqueurs",
+     "stops": [
+      {
+       "name": "American",
+       "note": "corn and new oak",
+       "text": "**Bourbon** is 51% corn in new charred oak; most is from Kentucky, but it doesn't have to be. **Tennessee** whiskey is filtered through maple charcoal: Jack Daniel's, George Dickel."
+      },
+      {
+       "name": "Irish and Canadian",
+       "note": "pot and column",
+       "text": "**Irish** is barley, distilled three times in pot stills (Jameson, Bushmills). **Canadian** uses corn, wheat, rye or barley (Crown Royal, Canadian Club)."
+      },
+      {
+       "name": "Scotch",
+       "note": "five regions",
+       "text": "At least 3 years in oak in Scotland. Peat smoke makes **Islay** the smokiest. A single malt is one distillery; blends include Johnnie Walker and Chivas."
+      },
+      {
+       "name": "Brandy",
+       "note": "Cognac and Armagnac",
+       "text": "**Cognac** is mainly Ugni Blanc, double distilled in pot stills (Hennessy, Rémy Martin). **Armagnac** goes once through a column still (Larressingle, Delord)."
+      },
+      {
+       "name": "Liqueurs",
+       "note": "sweetened spirits",
+       "text": "Flavored spirits with at least 2.5% sugar (US rule). Learn them by family: herb, anise, orange, cream, whiskey, coffee."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Liqueurs by family:",
+     "mixup": "**Cognac** is distilled twice in a pot still. **Armagnac** is distilled once in a column still.",
+     "sayIt": "If you like smoke, try an Islay Scotch."
+    },
+    "check": [
+     21,
+     22,
+     23
+    ]
+   },
+   {
+    "name": "Cocktails",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "33 DRINKS",
+      "line": "on the Court's list: know base, mixers and garnish."
+     },
+     {
+      "big": "NEGRONI",
+      "line": "is gin, Campari and sweet vermouth, with orange."
+     },
+     {
+      "big": "GIBSON",
+      "line": "is a dry Martini with cocktail onions."
+     },
+     {
+      "big": "SIDECAR",
+      "line": "is Cognac, triple sec and lemon."
+     },
+     {
+      "big": "CAIPIRINHA",
+      "line": "is cachaça, muddled lime and sugar."
+     }
+    ],
+    "read": {
+     "bigIdea": "Learn the cocktails by their base spirit.",
+     "where": "The Court lists **33 cocktails**, and you need each one's **base spirit**, **mixers** and **garnish**. Group them by base and they're easier to hold. Specs below follow the **IBA** official list; five drinks the IBA doesn't list follow **Difford's Guide**.",
+     "stopsTitle": "Five groups, 33 drinks",
+     "stops": [
+      {
+       "name": "Gin",
+       "note": "8 drinks",
+       "text": "**Aviation, French 75, Gibson, Gimlet, Negroni, Tom Collins, John Collins, Vesper.** Tom Collins uses Old Tom gin; a Vesper adds vodka and Lillet Blanc."
+      },
+      {
+       "name": "Vodka",
+       "note": "7 drinks",
+       "text": "**Cosmopolitan, Kamikaze, French Martini, Moscow Mule, Sea Breeze, Greyhound, White Russian.** The White Russian is vodka and coffee liqueur with cream floated on top."
+      },
+      {
+       "name": "Rum and cachaça",
+       "note": "4 drinks",
+       "text": "**Daiquiri, Mojito, Mai Tai, Caipirinha.** The Caipirinha uses **cachaça**, Brazil's sugarcane rum."
+      },
+      {
+       "name": "Whiskey",
+       "note": "6 drinks",
+       "text": "**Old Fashioned, Manhattan, Whiskey Sour, Mint Julep, Rusty Nail, Vieux Carré.** The Rusty Nail is Scotch with Drambuie."
+      },
+      {
+       "name": "Brandy, agave and others",
+       "note": "8 drinks",
+       "text": "**Sidecar, Sazerac, Champagne Cocktail, Margarita, Pisco Sour, Kir Royale, Americano, Pimm's Cup.** The IBA Sazerac is Cognac; rye took over after the Civil War."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Gin drinks: base, mixers and garnish:",
+     "mixup": "**Manhattan** is rye and sweet vermouth, stirred. **Old Fashioned** is whiskey, sugar and bitters, built in the glass.",
+     "sayIt": "A Negroni is gin, Campari and sweet vermouth, with an orange slice."
+    },
+    "check": [
+     24,
+     25,
+     26
+    ]
+   }
+  ]
+ },
+ "level": 2,
+ "part": 2,
+ "court": {
+  "outcome": "FRANCE - CHAMPAGNE: After studying this section, a candidate will know all the steps in the traditional method, the major regions of Champagne, and their major styles. A Certified Sommelier will and be able to speak knowledgeably about vintages over the last 10 years, recognize iconic producers, and be able to recommend and sell food pairings with wines from Champagne to a guest.\n\nWORLD SPARKLING WINES: After studying this section, a Certified Sommelier will understand the different ways sparkling wines are made, be able to identify the method used for the world's most important sparkling wines, and describe the impact the method has on the final wine. A Certified Sommelier will be able to recommend sparkling wines to guests and pair them appropriately with food.\n\nSWEET WINES: After studying this section, a candidate will gain a deeper knowledge of the sweet wines of the world, know iconic producers, and be able to recommend sweet wines to guests and pair them appropriately with food. Match these appellations with their larger regions and know they most common grape varieties for each.\n\nFORTIFIED WINES: After studying this section, a candidate will understand the unique winemaking techniques used to make fortified wines. Certified Sommeliers will know iconic producers and be able to recommend and sell food pairings with fortified wines to a guest.\n\nBEER: A Certified Sommelier will be able recommend producers of specific styles of beer to a guest, choose the appropriate glass for specific beers, and be able to accurately answer beer costing scenarios.\n\nSAKE: After studying this section, a candidate will increase their knowledge of sake, sake styles, and polishing levels. A Certified Sommelier will be able to sell and recommend food pairings with sake to a guest.\n\nSPIRITS & LIQUEURS: After studying this section, a candidate will gain a deeper knowledge in spirits and liqueurs of the world by understand the region, styles, raw materials, aging requirements, and the general production process. A Certified Sommelier will be able to recommend spirits and liqueurs to guests and will know the base spirits, mixers, and garnishes for selected cocktails.\n\nCOCKTAILS: A CERTIFIED SOMMELIER WILL KNOW THE BASE SPIRITS, MIXERS, AND GARNISHES FOR THE FOLLOWING COCKTAILS",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf",
+  "coverage": [
+   {
+    "topic": "Champagne · Location",
+    "guide": "49th parallel; one of the most northerly wine regions.",
+    "where": "Champagne in depth"
+   },
+   {
+    "topic": "Champagne · Climate, physical feature, soil",
+    "guide": "Cool continental, exposed to Atlantic weather and frost; Marne River; limestone and chalk.",
+    "where": "Champagne in depth"
+   },
+   {
+    "topic": "Champagne · Grape growing",
+    "guide": "Grapes picked earlier to keep natural acidity.",
+    "where": "Champagne in depth"
+   },
+   {
+    "topic": "Champagne · Winemaking",
+    "guide": "Every traditional-method step; contents of liqueur de tirage and liqueur d'expédition.",
+    "where": "Champagne in depth"
+   },
+   {
+    "topic": "Champagne · Grape varieties",
+    "guide": "Planting shares: Pinot Noir 38%, Meunier 32%, Chardonnay 30%.",
+    "where": "Champagne in depth"
+   },
+   {
+    "topic": "Champagne · Appellations",
+    "guide": "Champagne AOP and its five subregions, including Côte de Sézanne.",
+    "where": "Champagne in depth"
+   },
+   {
+    "topic": "Champagne · Classification",
+    "guide": "NV 12 months on lees, 15 total; vintage 36; Échelle des Crus villages on labels.",
+    "where": "Champagne in depth"
+   },
+   {
+    "topic": "Champagne · Label terms, styles, producers, vintage",
+    "guide": "RM, NM, Special Club, Tête de Cuvée; match Grandes Marques to prestige cuvées; recent vintages.",
+    "where": "Champagne in depth"
+   },
+   {
+    "topic": "Champagne · History and lore",
+    "guide": "Madame Clicquot's riddling rack, and the gyropalette.",
+    "where": "Champagne in depth"
+   },
+   {
+    "topic": "Champagne · Service and pairing",
+    "guide": "Safe opening (hand on the cork); Champagne pairs with many foods.",
+    "where": "Champagne in depth"
+   },
+   {
+    "topic": "World sparkling · Traditional method",
+    "guide": "All steps; liqueur contents; Cap Classique as an example.",
+    "where": "Sparkling wines of the world"
+   },
+   {
+    "topic": "World sparkling · Charmat method",
+    "guide": "Adds Lambrusco as a tank-method example.",
+    "where": "Sparkling wines of the world"
+   },
+   {
+    "topic": "World sparkling · Méthode ancestrale",
+    "guide": "Also méthode rurale or pét-nat; bottled at lower pressure.",
+    "where": "Sparkling wines of the world"
+   },
+   {
+    "topic": "World sparkling · Food and beverage pairing",
+    "guide": "How the method changes the style and so the pairing.",
+    "where": "Sparkling wines of the world"
+   },
+   {
+    "topic": "World sparkling · Business of the sommelier",
+    "guide": "Cost of each style; many price points by glass and bottle.",
+    "where": "Sparkling wines of the world"
+   },
+   {
+    "topic": "World sparkling · Label terms",
+    "guide": "Crémant: French traditional method from outside Champagne.",
+    "where": "Sparkling wines of the world"
+   },
+   {
+    "topic": "World sparkling · General terms",
+    "guide": "Why the gyropalette matters for time, cost and efficacy.",
+    "where": "Sparkling wines of the world"
+   },
+   {
+    "topic": "Sweet · Appellations (noble rot, drying, freezing)",
+    "guide": "Match each appellation to its region and grape; Eiswein and Icewine free of noble rot.",
+    "where": "Sweet wines"
+   },
+   {
+    "topic": "Sweet · Grapes for dried-grape wines",
+    "guide": "Vin Santo Trebbiano; Recioto di Soave Garganega; Recioto della Valpolicella Corvina.",
+    "where": "Sweet wines"
+   },
+   {
+    "topic": "Sweet · Grapes for frozen-grape wines",
+    "guide": "Canada: Vidal, Riesling, Cabernet Franc.",
+    "where": "Sweet wines"
+   },
+   {
+    "topic": "Sweet · General terms",
+    "guide": "Noble rot is Botrytis cinerea.",
+    "where": "Sweet wines"
+   },
+   {
+    "topic": "Sweet · Classification",
+    "guide": "1855 Sauternes: Yquem the Superior First Growth.",
+    "where": "Sweet wines"
+   },
+   {
+    "topic": "Sweet · Producers, service, pairing, business",
+    "guide": "2 oz pours, a week open, sweeter than dessert, light, half bottles, 500 ml Tokaji costing.",
+    "where": "Sweet wines"
+   },
+   {
+    "topic": "Fortified · Location",
+    "guide": "Find the major fortified regions on a map.",
+    "where": "Port, Madeira and other fortified wines"
+   },
+   {
+    "topic": "Fortified · Port appellation",
+    "guide": "Douro DOP area; Cima Corgo, Baixo Corgo, Douro Superior.",
+    "where": "Port, Madeira and other fortified wines"
+   },
+   {
+    "topic": "Fortified · Madeira appellation",
+    "guide": "Funchal is the main city.",
+    "where": "Port, Madeira and other fortified wines"
+   },
+   {
+    "topic": "Fortified · Sherry appellation",
+    "guide": "Jerez-Xérès-Sherry; Sanlúcar de Barrameda on the coast.",
+    "where": "Sherry"
+   },
+   {
+    "topic": "Fortified · Marsala appellation",
+    "guide": "Marsala DOC, Sicily.",
+    "where": "Port, Madeira and other fortified wines"
+   },
+   {
+    "topic": "Fortified · French fortified wines",
+    "guide": "Banyuls (Roussillon) and Muscat de Beaumes-de-Venise (Southern Rhône).",
+    "where": "Port, Madeira and other fortified wines"
+   },
+   {
+    "topic": "Fortified · Other appellations",
+    "guide": "Rutherglen, Victoria; Klein Karoo, Western Cape.",
+    "where": "Port, Madeira and other fortified wines"
+   },
+   {
+    "topic": "Fortified · Climate, features, soils, Port winemaking",
+    "guide": "Climates and soils of Port, Madeira, Sherry; Port fortified during fermentation.",
+    "where": "Port, Madeira and other fortified wines"
+   },
+   {
+    "topic": "Fortified · Madeira and Sherry winemaking",
+    "guide": "Estufagem, canteiro; flor, biological vs oxidative aging, running the solera's scales.",
+    "where": "Sherry"
+   },
+   {
+    "topic": "Fortified · Grapes, label terms, Port and Madeira styles",
+    "guide": "Port categories, Vila Nova de Gaia, Colheita; Madeira grapes dry to sweet; Muscat grapes elsewhere.",
+    "where": "Port, Madeira and other fortified wines"
+   },
+   {
+    "topic": "Fortified · Sherry styles",
+    "guide": "Biological: Manzanilla, Fino, Amontillado, Palo Cortado; oxidative: Oloroso, Cream.",
+    "where": "Sherry"
+   },
+   {
+    "topic": "Fortified · Marsala styles, vintage, service, pairing",
+    "guide": "Secco to Dolce; Vintage Port only in top years; decanting; 2 oz pours; pairing by sweetness, age, oxidation.",
+    "where": "Port, Madeira and other fortified wines"
+   },
+   {
+    "topic": "Fortified · Business of the sommelier",
+    "guide": "Know general shelf life after opening.",
+    "where": "Sherry"
+   },
+   {
+    "topic": "Beer · Grains and malt",
+    "guide": "Germination and kilning, and how they set color and flavor.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Beer · Yeast",
+    "guide": "S. cerevisiae ales warm and fast; S. pastorianus lagers cool and slow.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Beer · Hops and water",
+    "guide": "American and European hop names; water minerals shape style.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Beer · Process and terms",
+    "guide": "Mashing, boiling, lagering; ABV and IBU.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Beer · Producers",
+    "guide": "Recall two producers for each common style.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Beer · History and lore",
+    "guide": "One of the oldest drinks; Mesopotamia.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Beer · Service",
+    "guide": "Clean glassware; pint, mug, tulip, pilsner, weizen.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Beer · Food and beer pairing",
+    "guide": "Malt sweetness, hop bitterness, low alcohol, carbonation.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Beer · Business of the sommelier",
+    "guide": "FIFO; bottle, can, keg; keg costing.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Sake · Production",
+    "guide": "Fermented from rice; most made in Japan.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Sake · Ingredients and styles",
+    "guide": "Aspergillus oryzae, parallel fermentation, nigori, namazake, kimoto and yamahai.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Sake · Classification",
+    "guide": "Polishing minimums by grade; Junmai; SMV; Tokubetsu.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Sake · Service",
+    "guide": "Ginjo and Daiginjo chilled; others chilled or warm.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Sake · Food pairing",
+    "guide": "Kimoto and yamahai umami for richer meats.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Sake · Business of the sommelier",
+    "guide": "Bottle sizes 300 ml, 720 ml, 1.8 L.",
+    "where": "Beer and sake"
+   },
+   {
+    "topic": "Spirits · Clear and agave spirits table",
+    "guide": "Region, styles, raw material, distillation and producers for vodka, rum, gin, Tequila, mezcal.",
+    "where": "Clear and agave spirits"
+   },
+   {
+    "topic": "Spirits · Whisk(e)y table",
+    "guide": "Regions, aging, stills and producers for bourbon, Tennessee, Canadian, Irish, Scotch.",
+    "where": "Aged spirits and liqueurs"
+   },
+   {
+    "topic": "Spirits · Brandy table",
+    "guide": "Cognac and Armagnac subregions, age tiers, grapes, stills, producers; Calvados, eaux de vie, pomace.",
+    "where": "Aged spirits and liqueurs"
+   },
+   {
+    "topic": "Spirits · Liqueurs and cordials table",
+    "guide": "Liqueurs by family with named brands.",
+    "where": "Aged spirits and liqueurs"
+   },
+   {
+    "topic": "Cocktails · Certified list",
+    "guide": "Base spirits, mixers and garnishes for the 33 listed cocktails.",
+    "where": "Cocktails"
+   }
+  ]
+ }
+}
