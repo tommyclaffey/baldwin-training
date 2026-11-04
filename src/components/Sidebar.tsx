@@ -6,6 +6,7 @@ import { api, canEdit } from '../lib/api';
 import { ManagerLinks } from './EditBar';
 import { trainingCard } from '../quiz/transform';
 import { useSession } from '../lib/session';
+import { exitDemo } from '../lib/demo';
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
 function forStore(n: FNode, name: string): FNode {
@@ -45,9 +46,21 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   }, [quiz, counts, generic, user]);
   return (
     <nav className="sidebar" aria-label="Main" onClick={(e) => { if ((e.target as HTMLElement).closest('a')) onNavigate?.(); }}>
+      {user?.demo && <DemoPill />}
       <FigmaNode node={{ ...node, x: undefined, y: undefined }} rootStyle={{ position: 'relative', width: '100%', height: 'auto', flex: '1 0 auto' }} />
       <Account />
     </nav>
+  );
+}
+
+/** Nov 4, Tommy: "the little demo pill label in the top left." */
+export function DemoPill({ compact = false }: { compact?: boolean }) {
+  const { refresh } = useSession();
+  return (
+    <div className={'demo-pill-row' + (compact ? ' compact' : '')}>
+      <span className="demo-pill">DEMO</span>
+      <button type="button" className="demo-exit" onClick={() => void exitDemo(refresh)}>Exit Demo</button>
+    </div>
   );
 }
 
@@ -57,7 +70,8 @@ function Account() {
   const { user, setUser, refresh } = useSession();
   if (!user) return null;
   const initials = user.name.split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
-  const signOut = async () => { await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); };
+  // in the demo, signing out leaves the demo and puts your own sign-in back
+  const signOut = async () => { if (user.demo) return exitDemo(refresh); await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); };
   const back = async () => { await api('/api/super/return', { method: 'POST' }).catch(() => {}); await refresh(); location.assign('/admin/super'); };
   const where = user.workingInName || user.store?.name || user.companyName || '';
   return (

@@ -14,11 +14,10 @@ import { createSession, sessionCookie } from './auth.mjs';
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const now = () => new Date().toISOString();
 const LIFETIME_MS = 24 * 3600e3;
+// Nov 4, Tommy: "one account for an employee and then one account that is a manager/admin."
 export const DEMO_ROLES = {
-  server: { role: 'staff', name: 'Marisol Vega' },
-  bartender: { role: 'staff', name: 'Dorian Pike' },
+  employee: { role: 'staff', name: 'Marisol Vega' },
   manager: { role: 'manager', name: 'Rosalind Hart' },
-  owner: { role: 'owner', name: 'Hollis Grant' },
 };
 const TEAM = [
   { name: 'Teddy Lam', scores: [['t:course:Pasta', 9], ['t:house', 7], ['t:classic', 10]], signed: ['t:course:Pasta', 't:classic'] },

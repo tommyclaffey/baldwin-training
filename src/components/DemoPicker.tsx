@@ -5,11 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
 
+// Nov 4, Tommy: "one account for an employee and then one account that is a manager/admin."
 const ROLES = [
-  { key: 'server', name: 'Server', line: 'The book on your phone: the menu, wine, the Sommelier lessons and quizzes.' },
-  { key: 'bartender', name: 'Bartender', line: 'Cocktail specs, the back bar, spirits and the classics, plus quizzes.' },
-  { key: 'manager', name: 'Manager', line: 'Everything staff see, plus adding dishes and cocktails, sections and quiz results.', lead: true },
-  { key: 'owner', name: 'Owner', line: 'The whole restaurant: the team, every page and every result.' },
+  { key: 'employee', name: 'Employee', line: 'The book on your phone: the menu, cocktails, wine, the Sommelier lessons and quizzes.' },
+  { key: 'manager', name: 'Manager / Admin', line: 'Everything employees see, plus adding dishes and cocktails, tonight’s sections and quiz results.', lead: true },
 ];
 
 export function DemoPicker() {
@@ -28,7 +27,7 @@ export function DemoPicker() {
       <div className="demo-head">
         <p className="demo-script">Try it yourself</p>
         <h1>THE TRAINING APP</h1>
-        <p className="demo-sub">Pick a role and look around. Your own copy, with a sample menu and our real wine list. It resets after a day.</p>
+        <p className="demo-sub">Pick a view and look around. It’s a separate demo restaurant with a sample menu and our real wine list. It resets after a day.</p>
       </div>
       <div className="demo-roles">
         {ROLES.map((r) => (
