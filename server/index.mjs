@@ -4,7 +4,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
-import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie } from './auth.mjs';
+import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie, endSession } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
 import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore } from './content.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
@@ -44,6 +44,13 @@ function cookies(req) {
 }
 const isSecure = (req) => req.headers['x-forwarded-proto'] === 'https';
 
+const RETURN_COOKIE = 'bt_return';
+/** Your own sign-in, kept aside while you look at the demo (a day at most). */
+function returnCookie(token, { secure = false, clear = false } = {}) {
+  const parts = [`${RETURN_COOKIE}=${clear ? '' : encodeURIComponent(token)}`, 'Path=/', 'HttpOnly', 'SameSite=Lax', clear ? 'Max-Age=0' : 'Max-Age=86400'];
+  if (secure) parts.push('Secure');
+  return parts.join('; ');
+}
 function sendJson(res, status, body, headers = {}) {
   res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...SECURITY, ...headers });
   res.end(JSON.stringify(body));
@@ -122,6 +129,9 @@ async function api(req, res, url) {
   const parts = p.split('/').filter(Boolean); // ['api', ...]
 
   // The public demo (Nov 2): /demo starts a private copy; a demo visitor can't change accounts or upload.
+  // Nov 4, Tommy: "I need the demo account to be a completely separate account, not changing the Baldwin account."
+  // Opening the demo used to replace your own sign-in in that browser. Now your session is kept aside (bt_return) and
+  // "Exit Demo" puts it back.
   if (p === '/api/demo/start' && m === 'POST') {
     if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
     const ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
@@ -130,7 +140,20 @@ async function api(req, res, url) {
     const r = startDemo(db, String(b.role || ''));
     if (!r) fail(400, 'Pick a role to start.');
     demoLimiter.record(ip);
-    return sendJson(res, 200, { ok: true }, { 'Set-Cookie': sessionCookie(r.token, { secure: isSecure(req), days: 1 }) });
+    const secure = isSecure(req);
+    const set = [sessionCookie(r.token, { secure, days: 1 })];
+    if (c.user && !isDemoCompany(db, c.user.company_id)) set.push(returnCookie(c.token, { secure }));
+    else if (c.user) endSession(db, c.token); // switching demo roles: the old demo session goes
+    return sendJson(res, 200, { ok: true }, { 'Set-Cookie': set });
+  }
+  if (p === '/api/demo/exit' && m === 'POST') {
+    if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
+    const secure = isSecure(req);
+    if (c.user && isDemoCompany(db, c.user.company_id)) endSession(db, c.token);
+    const back = cookies(req)[RETURN_COOKIE];
+    const ok = back && sessionUser(db, back) && !isDemoCompany(db, sessionUser(db, back).company_id);
+    return sendJson(res, 200, { ok: true, restored: !!ok }, { 'Set-Cookie': [
+      ok ? sessionCookie(back, { secure }) : sessionCookie('', { clear: true, secure }), returnCookie('', { secure, clear: true })] });
   }
   if (c.user && isDemoCompany(db, c.user.company_id) && demoBlocks(p, m)) fail(403, 'That’s switched off in the demo.');
   if ((await accounts(req, res, url, c)) !== false) return;

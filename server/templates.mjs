@@ -75,6 +75,11 @@ export function photoToCome(node, label = true, bowl = null) {
 const lines = (v) => (Array.isArray(v) ? v : String(v || '').split('\n')).map((s) => String(s).trim()).filter(Boolean);
 const COURSE_SHORT = { 'Passed Bites': 'Passed', Plates: 'Plate', Dessert: 'Dessert', 'Snacks & Small Plates': 'Small Plate', Salads: 'Salad', Pizza: 'Pizza', Pasta: 'Pasta', Mains: 'Main' };
 
+// Nov 4, Tommy: "Why are the pages looking different? … Need to create consistency through the app." Every dish page shows
+// every section in the same order. What the kitchen hasn't added yet reads "to come" in a muted colour (like photos).
+const SOON_DARK = '#B8AFA3', SOON = '#6B645B';
+const soon = (node, text, dark = false) => { if (!node) return; setText(node, text); node.f = [{ c: dark ? SOON_DARK : SOON }]; node.fs = 'Regular'; delete node.segs; };
+
 /* ------------------------------ cocktail ------------------------------ */
 
 export function cocktailPage(template, item, ctx) {
@@ -289,13 +294,18 @@ export function dishPage(template, item, links = {}) {
       const t = texts(row);
       setText(t[0], r.component); setText(t[1], r.portion || '—'); setText(t[2], r.hold || '—');
     });
-  } else remove(main, comps);
+  } else {
+    repeat(comps, startsWith('Row · '), ['To come'], (row) => { row.n = 'Row · To come'; const t = texts(row); soon(t[0], 'Components to come'); setText(t[1], '—'); setText(t[2], '—'); });
+  }
   const buildCard = find(main, byName('The Build'));
 
   // Steps
   const steps = find(main, byName('Steps'));
   const stepList = (d.steps || []).filter((s) => s && (s.title || s.detail));
-  repeat(steps, (n) => /^Step \d+$/.test(n.n || ''), stepList, (row, s, i) => {
+  if (!stepList.length) repeat(steps, (n) => /^Step \d+$/.test(n.n || ''), ['To come'], (row) => {
+    const t = texts(row); setText(t[0], '01'); soon(t[1], 'Steps to come'); setText(t[2], 'The kitchen hasn’t added the steps yet.'); remove(row, find(row, byName('Time')));
+  });
+  else repeat(steps, (n) => /^Step \d+$/.test(n.n || ''), stepList, (row, s, i) => {
     row.n = `Step ${i + 1}`;
     const t = texts(row);
     setText(t[0], String(i + 1).padStart(2, '0'));
@@ -308,26 +318,10 @@ export function dishPage(template, item, links = {}) {
   const points = (d.sellingPoints || []).filter(Boolean);
   if (story) {
     const insp = find(story, byName('Inspiration'));
-    if (d.inspiration) { setText(insp, d.inspiration); insp.sh = 'L'; insp.ar = 'H'; } else remove(story, insp);
+    if (d.inspiration) { setText(insp, d.inspiration); insp.sh = 'L'; insp.ar = 'H'; } else { soon(insp, 'The story behind the dish is to come.'); insp.sh = 'L'; insp.ar = 'H'; }
     const box = find(story, byName('Selling points'));
     if (points.length) repeat(box, startsWith('Point '), points, (row, t, i) => { row.n = 'Point ' + (i + 1); const tx = texts(row)[0]; setText(tx, t); tx.sh = 'L'; tx.ar = 'H'; });
-    else remove(story, box);
-    if (!d.inspiration && !points.length) remove(main, story);
-  }
-  const hasStory = !!(d.inspiration || points.length);
-  // No components and no steps: the build card goes. The story takes its place on the left;
-  // with no story either, the right-hand cards take the width.
-  const noBuild = !rows.length && !stepList.length;
-  if (noBuild && buildCard) {
-    const body = find(main, byName('Body'));
-    if (hasStory && story && body) {
-      remove(main, story);
-      body.c = body.c.map((c) => (c === buildCard ? { ...story, sh: 'L' } : c));
-    } else {
-      remove(main, buildCard);
-      const right = find(main, byName('Right column'));
-      if (right) { right.sh = 'L'; for (const c of right.c || []) c.sh = 'L'; }
-    }
+    else repeat(box, startsWith('Point '), ['To come'], (row) => { row.n = 'Point 1'; const tx = texts(row)[0]; soon(tx, 'Selling points to come.'); tx.sh = 'L'; tx.ar = 'H'; });
   }
   const tidyBody = () => {
     const body = find(main, byName('Body')); if (!body) return;
@@ -353,26 +347,31 @@ export function dishPage(template, item, links = {}) {
       t[1].s = s;
       t[1].segs = [[0, p.name.length, 'Bold', null], [p.name.length, s.length, 'Regular', '#5E574F']];
     });
-  } else remove(main, plating);
+  } else if (plating) {
+    const ph = find(plating, byName('Plate photo'));
+    const pimg = ph && find(ph, startsWith('IMG/'));
+    if (ph) ph.c = ph.c.filter((c) => !/^Pin \d$/.test(c.n || ''));
+    if (pimg) photoToCome(pimg, true);
+    const legend = find(plating, byName('Legend'));
+    if (legend) repeat(legend, startsWith('Key '), ['To come'], (row) => { row.n = 'Key 1'; const t = texts(row); setText(t[0], '–'); soon(t[1], 'Plating guide to come'); });
+  }
 
   tidyBody();
 
   // The selling line: what you say at the table, before it's ordered.
   const sellBand = find(main, byName('Selling line'));
-  if (sellBand) { if (d.sellingLine) setText(find(sellBand, byName('Line')), `“${d.sellingLine.replace(/^[“"]|[”"]$/g, '')}”`); else remove(main, sellBand); }
+  if (sellBand) { if (d.sellingLine) setText(find(sellBand, byName('Line')), `“${d.sellingLine.replace(/^[“"]|[”"]$/g, '')}”`); else soon(find(sellBand, byName('Line')), 'Selling line to come.', true); }
 
   // The three-line drop: Main, Side and Sauce tiles (the first one dark), then the sentence.
   const dropBand = find(main, byName('Drop band'));
   if (dropBand) {
     const tiles = find(dropBand, byName('Tiles'));
     const lines = [['Drop · Main', d.dropMain], ['Drop · Side', d.dropSide], ['Drop · Sauce', d.dropSauce]];
-    for (const [n, v] of lines) { const tile = find(tiles, byName(n)); if (v) setText(texts(tile)[1], v); else remove(dropBand, tile); }
-    if (!lines.some(([, v]) => v)) remove(dropBand, tiles);
+    for (const [n, v] of lines) { const tile = find(tiles, byName(n)); if (!tile) continue; if (v) setText(texts(tile)[1], v); else soon(texts(tile)[1], 'To come', n === 'Drop · Main'); }
     // "From the Food Book" / "From the Wine Book…" only when the dish came from the Food Book (not added or demo dishes).
     if (!item.seeded && !item.library?.seeded) for (const t of findAll(main, (x) => x.t === 'T' && /^From the (Food|Wine) Book/.test(x.s || ''))) t.s = '';
     const sayNode = find(dropBand, byName('Say it'));
-    if (d.say) setText(sayNode, d.say); else remove(dropBand, sayNode);
-    if (!d.say && !lines.some(([, v]) => v)) remove(main, dropBand);
+    if (d.say) setText(sayNode, d.say); else soon(sayNode, 'The drop line is to come.');
   }
 
   // Talking points: up to three short lines a server can say.
@@ -380,7 +379,7 @@ export function dishPage(template, item, links = {}) {
   const points3 = (d.talkingPoints || []).filter(Boolean).slice(0, 3);
   if (tp) {
     if (points3.length) repeat(find(tp, byName('Points')), startsWith('Point '), points3, (row, t, i) => { row.n = 'Point ' + (i + 1); const tx = texts(row); setText(tx[0], String(i + 1).padStart(2, '0')); setText(tx[1], t); });
-    else remove(main, tp);
+    else repeat(find(tp, byName('Points')), startsWith('Point '), ['To come'], (row) => { row.n = 'Point 1'; const tx = texts(row); setText(tx[0], '01'); soon(tx[1], 'Talking points to come.', true); });
   }
 
   // Pairings: the similar wine, the opposite wine and the cocktail, each opening its page.
@@ -391,7 +390,7 @@ export function dishPage(template, item, links = {}) {
     for (const [node, nm, ref, kind] of [['Pairing', d.pairing, d.pairingRef, 'wine'], ['Pairing · Opposite', d.pairingOpposite, d.pairingOppositeRef, 'wine'], ['Pairing · Cocktail', d.cocktail, d.cocktailRef, 'cocktail']]) {
       const tile = find(tiles, byName(node));
       if (!tile) continue;
-      if (!nm) { remove(pairBand, tile); continue; }
+      if (!nm) { const t = texts(tile); soon(t[1], 'To come', node === 'Pairing'); remove(tile, t[2]); remove(tile, find(tile, byName('Learn'))); continue; }
       any = true;
       const t = texts(tile);
       setText(t[1], nm);
@@ -399,19 +398,19 @@ export function dishPage(template, item, links = {}) {
       const hit = links[kind]?.(nm);
       if (hit) tile.to = '/' + hit.slug; else remove(tile, find(tile, byName('Learn')));
     }
-    if (!any) remove(main, pairBand);
+    void any;
   }
 
   // Watch it made: only when "Add a video" is on and a video is picked.
   const watch = find(main, byName('Watch it made'));
-  if (!(d.hasVideo && d.video)) remove(main, watch);
+  const hasVid = !!(d.hasVideo && d.video);
   const player = find(watch, byName('Player'));
   const still = find(player, startsWith('IMG/'));
-  if (still) still.f = img(d.videoStill || d.photo);
+  if (still && hasVid) still.f = img(d.videoStill || d.photo);
   const pt = texts(player);
   setText(pt[0], d.videoTitle || `${name} · How it’s made`);
   if (pt[1]) setText(pt[1], d.videoDuration ? `0:00 / ${d.videoDuration}` : '');
-  if (d.video) player.vid = d.video;
+  if (hasVid) player.vid = d.video;
   const chapters = (d.chapters || []).filter((c) => c && c.label);
   const chapBox = find(watch, byName('Chapters'));
   const wc = texts(find(watch, byName('Copy')));
@@ -419,9 +418,11 @@ export function dishPage(template, item, links = {}) {
     repeat(chapBox, startsWith('Chapter · '), chapters, (c, x) => { c.n = 'Chapter · ' + x.label; const t = texts(c); setText(t[0], x.time || ''); setText(t[1], x.label); });
   } else { remove(watch, chapBox); remove(watch, wc[3]); }
   if (!chapters.length) player.c = (player.c || []).filter((c) => c.n !== 'Chapter mark');
+  // no video yet: the frame says so (no play button, title or track)
+  if (!hasVid && still) { photoToCome(still, true); const l = find(still, byName('Photo to come')); if (l) l.s = 'VIDEO TO COME'; player.c = (player.c || []).filter((c) => c === still); }
   setText(wc[1], d.videoHeading || 'HOW IT’S MADE');
-  setText(wc[2], d.videoNote || `A walkthrough of the ${name} from prep to plate.`);
-  if (d.video) remove(watch, find(watch, byName('Video note')));
+  setText(wc[2], hasVid ? (d.videoNote || `A walkthrough of the ${name} from prep to plate.`) : 'The walkthrough video is to come.');
+  if (hasVid) remove(watch, find(watch, byName('Video note')));
 
   // Photos
   const photos = find(main, byName('Section · Photos'));
@@ -434,7 +435,11 @@ export function dishPage(template, item, links = {}) {
       setText(texts(c)[0], p.caption || '');
     });
     setText(texts(find(photos, byName('Link')))[0], `All ${list.length} Photos`);
-  } else remove(main, photos);
+  } else if (photos) {
+    const grid = find(photos, byName('Photos'));
+    if (grid) repeat(grid, startsWith('Photo · '), ['To come'], (c) => { c.n = 'Photo · To come'; const r = find(c, startsWith('IMG/')); if (r) photoToCome(r, true); const cap = texts(c).find((x) => x.n !== 'Photo to come'); if (cap) soon(cap, 'Photos to come'); });
+    const link = find(photos, byName('Link')); if (link) remove(photos, link);
+  }
 
   const signoff = find(main, byName('Sign-off'));
   setText(texts(signoff)[0], `Ready to sign off on the ${name}?`);

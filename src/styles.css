@@ -1270,7 +1270,10 @@ body.eip-lock { overflow: hidden; }
 .demo-role button:disabled { opacity: .6; cursor: default; }
 .demo-foot { margin: 0; font-size: 13px; color: #B8AFA3; }
 .demo-err { color: #F2B8B5; margin: 0; }
-.demo-tag { position: sticky; top: 0; z-index: 30; margin: 0 0 8px; padding: 8px 14px; background: #C49A6C; color: #1E1C1A; font: 600 13px 'Archivo', sans-serif; text-align: center; border-radius: 0 0 12px 12px; }
-.demo-tag a { color: #1E1C1A; font-weight: 800; }
+.demo-pill-row { display: flex; align-items: center; gap: 10px; padding: 18px 20px 0; }
+.demo-pill-row.compact { padding: 0; margin-left: 10px; margin-right: auto; }
+.demo-pill { display: inline-flex; align-items: center; justify-content: center; height: 22px; padding: 0 10px; border-radius: 999px; background: #C49A6C; color: #1E1C1A; font: 800 11px 'Archivo', sans-serif; letter-spacing: .12em; }
+.demo-exit { background: none; border: 0; padding: 0; color: #E8DCCB; font: 600 13px 'Archivo', sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.demo-exit:hover { color: #FFFFFF; }
 @media (max-width: 1140px) { .demo-roles { grid-template-columns: repeat(2, minmax(0, 300px)); } }
 @media (max-width: 640px) { .demo-roles { grid-template-columns: 1fr; width: 100%; max-width: 360px; } .demo-pick { padding: 56px 20px; gap: 28px; } }

@@ -116,7 +116,7 @@ test('a new classic gets a page, a chip on every classic page and a row in the t
   assert.doesNotMatch(JSON.stringify((await call('/api/page/14-2')).data), /Renamed Drink/);
 });
 
-test('every dish shows in the Food Matrix and opens its own page; empty sections stay off', async () => {
+test('every dish shows in the Food Matrix and opens its own page; every dish page has the same sections (empty ones read "to come")', async () => {
   const r = await call('/api/entries', { method: 'POST', body: { collection: 'recipe', data: { name: 'Test Plate', course: 'Mains', price: '30', allergens: ['Dairy'], pairing: 'Altocedro Malbec', cocktail: 'Paper Plane' } } });
   assert.equal(r.status, 200);
   const matrix = (await call('/api/page/13-2')).data;
@@ -125,16 +125,18 @@ test('every dish shows in the Food Matrix and opens its own page; empty sections
   assert.equal(row.to, '/recipe/test-plate', 'the card opens the dish');
   const page = (await call(`/api/page/e${r.data.id}`)).data;
   const names = new Set(all(page.main, () => true).map((n) => n.n));
-  assert.ok(!names.has('The Build') && !names.has('Plating guide') && !names.has('Section · Photos'), 'nothing to show, no section');
-  assert.ok(!names.has('Watch it made'), 'no video, no video section');
+  // Nov 4, Tommy: "Need to create consistency through the app." Every section shows, in the same order.
+  assert.ok(['Selling line', 'Drop band', 'Talking points', 'Pairings band', 'The Build', 'The story', 'Plating guide', 'Watch it made', 'Section · Photos'].every((n) => names.has(n)), 'every section shows');
+  const txt = JSON.stringify(page.main);
+  assert.ok(txt.includes('Plating guide to come') && txt.includes('VIDEO TO COME'), 'empty sections say what is to come');
   assert.ok(names.has('Tag · $30'), 'the price shows');
   assert.equal(all(page.main, (n) => n.n === 'Pairing · Cocktail')[0].to, '/classic/paper-plane', 'the cocktail links to its page');
-  assert.ok(!names.has('Pairing · Opposite'), 'no opposite wine, no row');
+  assert.ok(JSON.stringify(all(page.main, (n) => n.n === 'Pairing · Opposite')[0]).includes('To come'), 'no opposite wine yet: the tile says to come');
   const video = { kind: 'youtube', youtubeId: 'dQw4w9WgXcQ', title: 'Test' };
   await call(`/api/entries/${r.data.id}`, { method: 'PUT', body: { data: { ...r.data.data, video } } });
-  assert.ok(!JSON.stringify((await call(`/api/page/e${r.data.id}`)).data).includes('"Watch it made"'), 'a video alone isn’t enough: Add a video is off');
+  assert.ok(!JSON.stringify((await call(`/api/page/e${r.data.id}`)).data).includes('"youtubeId":"dQw4w9WgXcQ"'), 'a video alone isn’t enough: Add a video is off');
   await call(`/api/entries/${r.data.id}`, { method: 'PUT', body: { data: { ...r.data.data, video, hasVideo: true } } });
-  assert.ok(JSON.stringify((await call(`/api/page/e${r.data.id}`)).data).includes('"Watch it made"'), 'Add a video on: the section shows');
+  assert.ok(JSON.stringify((await call(`/api/page/e${r.data.id}`)).data).includes('"youtubeId":"dQw4w9WgXcQ"'), 'Add a video on: the video plays');
   await call(`/api/entries/${r.data.id}`, { method: 'DELETE' });
 });
 
@@ -539,6 +541,26 @@ test('the Study Guide: chapters from content/manual, each a 30-card quiz that fe
   const guide = await page('sommelier-program/study-guide');
   assert.ok(guide.includes('1 of 12') || guide.includes('"1"'), 'progress shows');
   assert.ok(guide.includes('/sommelier-program/study-guide/france'));
+});
+
+test('demo: your own account is kept aside and Exit Demo puts it back; the real book is untouched', async () => {
+  const me0 = (await call('/api/me')).data.user;
+  const dishes0 = (await call('/api/collections')).data.counts.recipe;
+  const h = { 'content-type': 'application/json', 'x-bt': '1', cookie };
+  const r = await fetch(BASE + '/api/demo/start', { method: 'POST', headers: h, body: JSON.stringify({ role: 'employee' }) });
+  assert.equal(r.status, 200);
+  const sets = r.headers.getSetCookie();
+  const demo = sets.find((x) => x.startsWith('bt_session=')).split(';')[0];
+  const back = sets.find((x) => x.startsWith('bt_return='));
+  assert.ok(back, 'your own sign-in is kept aside');
+  const me = (await (await fetch(BASE + '/api/me', { headers: { cookie: demo } })).json()).user;
+  assert.equal(me.demo, true); assert.equal(me.role, 'staff');
+  const x = await fetch(BASE + '/api/demo/exit', { method: 'POST', headers: { 'x-bt': '1', cookie: demo + '; ' + back.split(';')[0] } });
+  assert.equal((await x.json()).restored, true);
+  const again = x.headers.getSetCookie().find((c) => c.startsWith('bt_session=')).split(';')[0];
+  assert.equal((await (await fetch(BASE + '/api/me', { headers: { cookie: again } })).json()).user.id, me0.id, 'back in your own account');
+  assert.equal((await call('/api/collections')).data.counts.recipe, dishes0, 'the real menu is unchanged');
+  assert.equal((await fetch(BASE + '/api/demo/start', { method: 'POST', headers: h, body: '{"role":"owner"}' })).status, 400, 'two views only: employee and manager');
 });
 
 test('Court alignment: Level 2 lessons, the Court’s outcome on lessons, and its documents on the hub', async () => {
