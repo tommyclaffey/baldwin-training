@@ -181,7 +181,7 @@ async function api(req, res, url) {
       const known = new Set(topicList(questionPool(db, c.store)).map((t) => t.key));
       const topics = b.topics.map(String).filter((t) => known.has(t));
       if (!topics.length) fail(400, 'Pick at least one topic.');
-      id = customId(topics, [5, 10, 20].includes(Number(b.count)) ? Number(b.count) : 10);
+      id = customId(topics, [5, 10, 20, 50, 100].includes(Number(b.count)) ? Number(b.count) : 10);
     }
     const q = startQuiz(db, c.store, id, reader.id);
     if (!q && id === REVIEW) fail(404, 'Your review queue is empty.');
@@ -218,7 +218,7 @@ async function api(req, res, url) {
     const topics = (Array.isArray(b.topics) ? b.topics : []).map(String).filter((t) => known.has(t));
     if (!name) fail(400, 'Give the quiz a name.');
     if (!topics.length) fail(400, 'Pick at least one topic.');
-    const count = [5, 10, 20].includes(Number(b.count)) ? Number(b.count) : 10;
+    const count = [5, 10, 20, 50, 100].includes(Number(b.count)) ? Number(b.count) : 10;
     const r = db.prepare('INSERT INTO quiz_sets(company_id,store_id,name,topics,count,created_by,created_at) VALUES (?,?,?,?,?,?,?)').run(c.company, c.store, name, JSON.stringify(topics), count, u.id, now());
     audit(db, u.id, 'add quiz', name, c.company);
     return sendJson(res, 200, { id: 's:' + r.lastInsertRowid });
