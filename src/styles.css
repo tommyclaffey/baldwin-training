@@ -392,8 +392,9 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .quiz-ring-count strong { font-size: 34px; font-weight: 800; color: #F2EEE7; font-variant-numeric: tabular-nums; }
 .quiz-ring-count span { font-size: 13px; color: #B8AFA3; }
 .quiz-who { font-size: 16px; font-weight: 600; color: #F2EEE7; text-align: center; }
-.quiz-pills { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-.quiz-pills .pill { display: inline-flex; align-items: center; justify-content: center; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* Nov 5, Tommy: "fix the alignment with these pills": an even 2 × 2 grid, every pill the same width */
+.quiz-pills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; width: 100%; max-width: 340px; margin: 0 auto; }
+.quiz-pills .pill { display: flex; min-height: 28px; align-items: center; justify-content: center; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .pill.green { background: #E3ECDD; color: #3F6A39; }
 .pill.copper { background: #EFE3D3; color: #8A5A3A; }
 .pill.dark { background: #3A3632; color: #E2DACF; }

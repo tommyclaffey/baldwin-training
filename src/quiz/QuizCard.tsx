@@ -263,7 +263,7 @@ export function ProgressCard({ style, className }: { style: CSSProperties; class
       <span className="quiz-who">{s.name || 'Front of House · Week 1'}</span>
       <div className="quiz-pills">
         <span className="pill green">{signed} signed off</span>
-        {waiting > 0 && <span className="pill green">{waiting} passed · waiting on a manager</span>}
+        <span className="pill green">{waiting} awaiting sign-off</span>
         <span className="pill copper">{progress} in progress</span>
         <span className="pill dark">{toGo} to go</span>
       </div>
