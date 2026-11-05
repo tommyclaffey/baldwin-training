@@ -6,7 +6,7 @@ import { api, canEdit } from '../lib/api';
 import { useSession } from '../lib/session';
 import { getCatalog, loadCatalog, start, useQuiz } from './store';
 
-const LENGTHS = [5, 10, 20];
+const LENGTHS = [5, 10, 20, 50, 100]; // Nov 5, Tommy: "have a 50 and 100 question options"
 
 export function QuizBuilder({ style, className }: { style: CSSProperties; className: string }) {
   useQuiz(); // re-render when the catalog arrives
@@ -80,7 +80,7 @@ export function QuizBuilder({ style, className }: { style: CSSProperties; classN
             {LENGTHS.map((n) => <button key={n} type="button" role="radio" aria-checked={count === n} className={count === n ? 'on' : ''} onClick={() => setCount(n)}>{n}</button>)}
           </div>
           <span className="qb-summary">
-            {chosen.length ? `${chosen.length} subject${chosen.length === 1 ? '' : 's'} · ${pool} questions to pick from` : 'Pick one or more subjects.'}
+            {chosen.length ? `${chosen.length} subject${chosen.length === 1 ? '' : 's'} · ${pool} questions to pick from${pool < count ? ` · you’ll get all ${pool}` : ''}` : 'Pick one or more subjects.'}
           </span>
         </div>
         <div className="qb-buttons">
