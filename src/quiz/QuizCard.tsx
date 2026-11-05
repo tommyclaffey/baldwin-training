@@ -245,6 +245,9 @@ export function ProgressCard({ style, className }: { style: CSSProperties; class
   const passed = statuses.filter((x) => x === 'signed' || x === 'passed').length;
   const progress = statuses.filter((x) => x === 'progress' || x === 'retry').length;
   const toGo = QUIZZES.length - passed - progress;
+  // Nov 5, Tommy: "sign offs are not showing correctly" (1 passed, but the pills read 0 · 0 · 31). Passed-but-not-yet-
+  // signed quizzes get their own pill, so the pills always add up to the total.
+  const waiting = passed - signed;
   const r = 80, c = 2 * Math.PI * r, frac = QUIZZES.length ? passed / QUIZZES.length : 0;
   return (
     <div className={className + ' quiz-progress'} style={style}>
@@ -252,7 +255,7 @@ export function ProgressCard({ style, className }: { style: CSSProperties; class
       <div className="quiz-ring">
         <svg width="180" height="180" viewBox="0 0 180 180" aria-hidden="true">
           <circle cx="90" cy="90" r={r} fill="none" stroke="#3A3632" strokeWidth="18" />
-          <circle cx="90" cy="90" r={r} fill="none" stroke="#C49A6C" strokeWidth="18" strokeLinecap="round"
+          <circle cx="90" cy="90" r={r} fill="none" stroke="#C49A6C" strokeWidth="18" strokeLinecap={frac >= 0.12 ? 'round' : 'butt'}
             strokeDasharray={`${c * frac} ${c}`} transform="rotate(-90 90 90)" opacity={passed ? 1 : 0} />
         </svg>
         <div className="quiz-ring-count"><strong>{passed} of {QUIZZES.length}</strong><span>passed</span></div>
@@ -260,6 +263,7 @@ export function ProgressCard({ style, className }: { style: CSSProperties; class
       <span className="quiz-who">{s.name || 'Front of House · Week 1'}</span>
       <div className="quiz-pills">
         <span className="pill green">{signed} signed off</span>
+        {waiting > 0 && <span className="pill green">{waiting} passed · waiting on a manager</span>}
         <span className="pill copper">{progress} in progress</span>
         <span className="pill dark">{toGo} to go</span>
       </div>

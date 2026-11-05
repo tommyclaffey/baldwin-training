@@ -29,10 +29,10 @@ export function topicList(pool) {
     { key: 'wine-glass', label: 'Wine by the Glass', group: 'Bar' },
     { key: 'wine-bottle', label: 'Wine by the Bottle', group: 'Bar' },
     { key: 'beer', label: 'Beer', group: 'Bar' },
-    { key: 'allergens', label: 'Allergens', group: 'Know it cold' },
-    { key: 'pairings', label: 'Pairings', group: 'Know it cold' },
-    { key: 'prices', label: 'Prices', group: 'Know it cold' },
-    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Study Guide' })),
+    { key: 'allergens', label: 'Allergens', group: 'Know It Cold' },
+    { key: 'pairings', label: 'Pairings', group: 'Know It Cold' },
+    { key: 'prices', label: 'Prices', group: 'Know It Cold' },
+    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
   ];
   return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= 3);
 }

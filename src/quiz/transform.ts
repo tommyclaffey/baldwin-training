@@ -63,8 +63,29 @@ export function quizPage(main: FNode, s: State): FNode {
       });
       return row;
     });
-    const half = Math.ceil(rows.length / columns.length);
-    columns.forEach((col, i) => { col.c = rows.slice(i * half, (i + 1) * half); col.h = 0; });
+    // Nov 5, Tommy: "no som quizzes in the sign off sections". The list is sectioned like the quiz builder: a heading
+    // per group (Food, Bar, Know It Cold, Sommelier Level 1, Sommelier Level 2, Team Quizzes), each split across the
+    // two drawn columns.
+    let pair: FNode | undefined, holder: FNode | undefined;
+    walk(m, (n) => { if (!pair && n.c?.includes(columns[0])) pair = n; });
+    if (pair) walk(m, (n) => { if (!holder && n.c?.includes(pair!)) holder = n; });
+    const groups = [...new Set(QUIZZES.map((q) => q.group || 'More'))];
+    if (pair && holder && groups.length > 1) {
+      const blocks = groups.flatMap((g) => {
+        const mine = rows.filter((_, i) => (QUIZZES[i].group || 'More') === g);
+        const p = clone(pair!); const cols = (p.c || []).filter((c) => c.n === 'Column');
+        const half = Math.ceil(mine.length / cols.length);
+        cols.forEach((col, i) => { col.c = mine.slice(i * half, (i + 1) * half); col.h = 0; });
+        p.c = (p.c || []).filter((c) => c.n !== 'Column' || (c.c || []).length); // no empty card beside a one-quiz group
+        p.n = 'Columns · ' + g;
+        const head: FNode = { t: 'T', n: 'Group · ' + g, s: g.toUpperCase(), ff: 'Archivo', fs: 'Bold', z: 12, ls: '12%', f: [{ c: '#8A5A3A' }], ar: 'W', sh: 'H', sv: 'H' } as FNode;
+        return [head, p];
+      });
+      holder.c = holder.c!.flatMap((c) => (c === pair ? blocks : [c]));
+    } else {
+      const half = Math.ceil(rows.length / columns.length);
+      columns.forEach((col, i) => { col.c = rows.slice(i * half, (i + 1) * half); col.h = 0; });
+    }
   }
   return m;
 }
