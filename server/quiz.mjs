@@ -44,7 +44,9 @@ function topicsOf(db, store, id) {
   let m;
   if ((m = /^t:(.+)$/.exec(id))) { const t = m[1]; return BUILT_IN(t) ? { title: labelOf(t), topics: [t], count: t.startsWith('study:') ? 100 : BUILT_IN_LEN } : null; }
   if ((m = /^s:(\d+)$/.exec(id))) { const r = db.prepare('SELECT * FROM quiz_sets WHERE id = ? AND store_id = ?').get(Number(m[1]), store); return r ? { title: r.name, topics: JSON.parse(r.topics), count: r.count } : null; }
-  if ((m = /^c:([^:]+):(\d+)$/.exec(id))) { const topics = m[1].split('+'); return { title: 'Custom quiz', topics, count: Math.min(20, Number(m[2])) }; }
+  // Nov 5: topics like "course:Mains" and "study:france" have a colon in them; the count is whatever follows the last one.
+  // (Before, any pick with a course or a chapter came back "We couldn't find that quiz".)
+  if ((m = /^c:(.+):(\d+)$/.exec(id))) { const topics = m[1].split('+').filter(Boolean); return { title: 'Your Quiz', topics, count: Math.min(20, Number(m[2])) }; }
   return null;
 }
 export function labelOf(key) {
