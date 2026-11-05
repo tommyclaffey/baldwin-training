@@ -76,7 +76,31 @@ export function questionPool(db, store) {
     if (d.cocktail) ask('cocktail:' + e.id, { ...base, q: `Which cocktail pairs with ${the(n)}?`, right: d.cocktail, pool: [...house, ...classics].map((x) => x.data.name), why: `Suggest the ${d.cocktail}.`, topics: [course, 'pairings'] });
     if (d.dropSide) ask('side:' + e.id, { ...base, q: `What comes on the side of ${the(n)}?`, right: d.dropSide, pool: recipes.map((x) => x.data.dropSide), why: `${d.dropSide}.`, topics: [course] });
     if (d.dropSauce) ask('sauce:' + e.id, { ...base, q: `What sauce comes with ${the(n)}?`, right: d.dropSauce, pool: recipes.map((x) => x.data.dropSauce), why: `${d.dropSauce}.`, topics: [course] });
-    if (d.station) ask('station:' + e.id, { ...base, q: `Which station makes ${the(n)}?`, right: d.station, pool: recipes.map((x) => x.data.station), why: `${d.station}.`, topics: [course] });
+    // Nov 5, Tommy: "Make sure they're not kitchen questions … We want allergens, ingredients, what to say to a guest."
+    // (No station, portion or build questions.)
+    // A guest's allergy: the dish to steer them away from, against dishes that don't list it.
+    const alg = (d.allergens || []).filter(Boolean);
+    if (alg.length) {
+      const a = alg[Math.floor(rng('avoid:' + e.id)() * alg.length)];
+      const safe = recipes.filter((x) => !(x.data.allergens || []).some((y) => String(y).toLowerCase() === String(a).toLowerCase()));
+      ask('avoid:' + e.id, { ...base, q: `A guest has a ${String(a).toLowerCase()} allergy. Which dish do you steer them away from?`, right: n, pool: (safe.filter((x) => x.data.course === d.course).length >= 3 ? safe.filter((x) => x.data.course === d.course) : safe).map(dishName), why: `${the(n)[0].toUpperCase() + the(n).slice(1)} lists ${String(a).toLowerCase()}. Always confirm with the kitchen.`, topics: [course, 'allergens'] });
+    }
+    // What's in it: one of its ingredients, against ingredients it doesn't have.
+    const ing = (d.ingredients || []).filter(Boolean);
+    if (ing.length) {
+      const mine = new Set(ing.map((x) => String(x).toLowerCase()));
+      // not one the name gives away ("Filet mignon" in the Espresso Encrusted Filet)
+      const words = new Set(String(n).toLowerCase().split(/[^a-z]+/).filter((w) => w.length > 3));
+      const hidden = ing.filter((x) => !String(x).toLowerCase().split(/[^a-z]+/).some((w) => words.has(w)));
+      const one = hidden.length ? hidden[Math.floor(rng('ing:' + e.id)() * hidden.length)] : null;
+      if (one) ask('ing:' + e.id, { ...base, q: `A guest asks what’s in ${the(n)}. Which of these is in it?`, right: one, pool: recipes.flatMap((x) => x.data.ingredients || []).filter((x) => x && !mine.has(String(x).toLowerCase())), why: `${the(n)[0].toUpperCase() + the(n).slice(1)}: ${ing.join(', ')}.`, topics: [course] });
+    }
+    // What to say: the drop line, the selling line and a talking point (only finished lines, no "[sauce]" blanks).
+    const done = (x) => x && !/\[[^\]]*\]/.test(x);
+    if (done(d.say)) ask('say:' + e.id, { ...base, q: `You’re dropping ${the(n)}. What do you say?`, right: d.say, pool: recipes.map((x) => x.data.say).filter(done), why: `That’s the three-line drop for ${the(n)}.`, topics: [course] });
+    if (done(d.sellingLine)) ask('sell:' + e.id, { ...base, q: `A guest is deciding. Which line sells ${the(n)}?`, right: d.sellingLine, pool: recipes.map((x) => x.data.sellingLine).filter(done), why: `That’s the selling line for ${the(n)}.`, topics: [course] });
+    const tps = (d.talkingPoints || []).filter(done);
+    if (tps.length) ask('talk:' + e.id, { ...base, q: `Which of these can you tell a guest about ${the(n)}?`, right: tps[0], pool: recipes.filter((x) => x !== e).flatMap((x) => x.data.talkingPoints || []).filter(done), why: `It’s one of the talking points for ${the(n)}.`, topics: [course] });
   }
 
   /* cocktails: house and classic */

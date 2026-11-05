@@ -563,6 +563,15 @@ test('demo: your own account is kept aside and Exit Demo puts it back; the real 
   assert.equal((await fetch(BASE + '/api/demo/start', { method: 'POST', headers: h, body: '{"role":"owner"}' })).status, 400, 'two views only: employee and manager');
 });
 
+test('build your own quiz: any mix of topics makes a test on the spot; dish questions are for the floor, not the kitchen', async () => {
+  const q = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Mains', 'allergens', 'study:france'], count: 10 } })).data;
+  assert.equal(q.items.length, 10, 'a course, a chapter and allergens together (these used to come back "couldn’t find that quiz")');
+  const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Mains'], count: 20 } })).data;
+  const qs = Object.values(all.questions).map((x) => x.q).join(' ');
+  assert.ok(!/station/i.test(qs), 'no kitchen station questions');
+  assert.ok(/allergy/.test(qs), 'guest allergy questions');
+});
+
 test('Court alignment: Level 2 lessons, the Court’s outcome on lessons, and its documents on the hub', async () => {
   const index = (await call('/api/index')).data;
   const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
