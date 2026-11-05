@@ -6,7 +6,7 @@ import { api } from '../lib/api';
 
 export type Question = { q: string; options: string[]; answer: number; why: string; page: string; label: string };
 export type Topic = { key: string; label: string; group: string; count: number };
-export type Quiz = { id: string; title: string; kind: 'builtin' | 'team'; topics: string[]; count: number; photo?: string | null };
+export type Quiz = { id: string; title: string; kind: 'builtin' | 'team'; group?: string; topics: string[]; count: number; photo?: string | null };
 export type Catalog = { passPct: number; topics: Topic[]; quizzes: Quiz[]; preShift: { id: string; title: string; count: number } };
 
 export const PRE_SHIFT = 'pre-shift';

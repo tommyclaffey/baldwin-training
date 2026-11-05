@@ -32,8 +32,12 @@ export function catalog(db, store) {
     const list = listEntries(db, col, col === 'classic' ? null : store).filter((e) => e.data.photo && (!key.startsWith('course:') || e.data.course === key.slice(7)));
     return list[0]?.data.photo || null;
   };
-  const builtins = topics.filter((t) => BUILT_IN(t.key)).map((t) => ({ id: 't:' + t.key, title: t.label, kind: 'builtin', topics: [t.key], count: Math.min(BUILT_IN_LEN, t.count), photo: photoFor(t.key) }));
-  const team = teamSets(db, store).map((q) => ({ ...q, count: Math.min(q.count || Infinity, forTopics(pool, q.topics).length), photo: photoFor(q.topics[0]) }));
+  // Nov 5, Tommy: "no som quizzes in the sign off sections". Every quiz carries its group (Food, Bar, Know it cold,
+  // Sommelier Study Guide, Sommelier Level 2) so the sign-off list is sectioned like the builder. A chapter's sign-off
+  // is the whole chapter (every card), with its lesson video as the picture.
+  const studyPhoto = (key) => { const ch = key.startsWith('study:') && chapterBySlug(key.slice(6)); if (!ch) return null; const v = ch.v3?.video?.youtubeId || (ch.v3?.sections || []).find((x) => x.video?.youtubeId)?.video.youtubeId; return v ? `https://i.ytimg.com/vi/${v}/mqdefault.jpg` : null; };
+  const builtins = topics.filter((t) => BUILT_IN(t.key)).map((t) => ({ id: 't:' + t.key, title: t.label, kind: 'builtin', group: t.group, topics: [t.key], count: t.key.startsWith('study:') ? t.count : Math.min(BUILT_IN_LEN, t.count), photo: photoFor(t.key) || studyPhoto(t.key) }));
+  const team = teamSets(db, store).map((q) => ({ ...q, group: 'Team Quizzes', count: Math.min(q.count || Infinity, forTopics(pool, q.topics).length), photo: photoFor(q.topics[0]) }));
   return { passPct: PASS_PCT, topics, quizzes: [...builtins, ...team], preShift: { id: PRE_SHIFT, title: 'Pre-Shift Quiz', count: PRE_SHIFT_LEN } };
 }
 
