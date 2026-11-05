@@ -27,7 +27,8 @@
    "pairingOppositeRef": "Wine Book p. 20",
    "cocktail": "Paper Plane",
    "cocktailRef": "Drink Book p. 14",
-   "confirm": true
+   "confirm": true,
+   "gfOption": false
   }
  },
  {
@@ -58,7 +59,8 @@
    "cocktailRef": "Drink Book p. 17",
    "confirm": true,
    "inspiration": "Roman cacio e pepe, turned into ravioli",
-   "sellingLine": "Small, rich and buttery, with a peppery bite and a hint of lemon; a perfect pasta taste."
+   "sellingLine": "Small, rich and buttery, with a peppery bite and a hint of lemon; a perfect pasta taste.",
+   "gfOption": false
   }
  },
  {
@@ -93,7 +95,8 @@
    "confirm": true,
    "inspiration": "A warm Italian antipasto board",
    "sellingLine": "Cool, creamy and bright; a light, fresh start that is made for sharing with the table.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -129,7 +132,8 @@
    "confirm": true,
    "inspiration": "North African spice on a Michigan carrot",
    "sellingLine": "Warm and smoky with mild heat, balanced by a cool, herby crema; a lighter share plate.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -162,7 +166,8 @@
    "cocktailRef": "Drink Book p. 29",
    "confirm": true,
    "inspiration": "Eggplant parm meets Southern hot honey",
-   "sellingLine": "Crispy, sweet and a little spicy; the hot honey brings mild heat and the burrata cools it."
+   "sellingLine": "Crispy, sweet and a little spicy; the hot honey brings mild heat and the burrata cools it.",
+   "gfOption": false
   }
  },
  {
@@ -197,7 +202,8 @@
    "confirm": true,
    "inspiration": "Fried calamari meets a piccata-style butter sauce",
    "sellingLine": "Chef Jeff’s award-winning recipe; buttery and bright, with a briny pop from the capers.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -229,7 +235,8 @@
    "confirm": true,
    "inspiration": "Swiss fondue meets an Italian salumi board",
    "sellingLine": "Warm, rich and interactive; dip and share, perfect with a glass of wine before dinner.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -266,7 +273,8 @@
    "station": "Broil",
    "inspiration": "Oysters Rockefeller, made with bay scallops",
    "sellingLine": "Rich and indulgent on the half shell, with a soft hint of anise; a luxe starter to share.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -301,7 +309,8 @@
    "photo": "/img/4a4ffe91991e.jpg",
    "station": "Fry",
    "inspiration": "Sicilian arancini, stuffed with braised short rib",
-   "sellingLine": "Crispy outside, creamy inside, with a gentle kick from the chili aioli; easy to share."
+   "sellingLine": "Crispy outside, creamy inside, with a gentle kick from the chili aioli; easy to share.",
+   "gfOption": false
   }
  },
  {
@@ -337,7 +346,8 @@
    "confirm": true,
    "inspiration": "Veal Oscar’s crab and hollandaise, on tater tots",
    "sellingLine": "Fun, decadent and shareable; crispy tots dressed up with crab and caviar.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -369,7 +379,8 @@
    "cocktailRef": "Drink Book p. 32",
    "confirm": true,
    "inspiration": "A late-night Italian white pie",
-   "sellingLine": "A white pie with no red sauce; savory, earthy and rich, the pizza you crave late at night."
+   "sellingLine": "A white pie with no red sauce; savory, earthy and rich, the pizza you crave late at night.",
+   "gfOption": false
   }
  },
  {
@@ -403,7 +414,8 @@
    "cocktailRef": "Drink Book p. 17",
    "confirm": true,
    "inspiration": "A Neapolitan margherita with California tomatoes",
-   "sellingLine": "Light, fresh and simple; a classic margherita, great for guests who want something easy."
+   "sellingLine": "Light, fresh and simple; a classic margherita, great for guests who want something easy.",
+   "gfOption": false
   }
  },
  {
@@ -436,7 +448,8 @@
    "cocktailRef": "Drink Book p. 33",
    "confirm": true,
    "inspiration": "The classic New York pepperoni slice",
-   "sellingLine": "Classic, crowd-pleasing and a little spicy."
+   "sellingLine": "Classic, crowd-pleasing and a little spicy.",
+   "gfOption": false
   }
  },
  {
@@ -477,7 +490,8 @@
    "photo": "/img/4bc6d9652061.jpg",
    "station": "Oven",
    "inspiration": "A sweet-and-salty play on prosciutto and melon",
-   "sellingLine": "Sweet, salty and a touch spicy; the peaches and hot honey make it our most unexpected pie."
+   "sellingLine": "Sweet, salty and a touch spicy; the peaches and hot honey make it our most unexpected pie.",
+   "gfOption": false
   }
  },
  {
@@ -514,7 +528,8 @@
    "cocktailRef": "Drink Book p. 9",
    "confirm": true,
    "inspiration": "A harvest pizza with Southeast Asian accents",
-   "sellingLine": "Bright and herby with a little chili heat; a hearty vegetarian pie that changes with the season."
+   "sellingLine": "Bright and herby with a little chili heat; a hearty vegetarian pie that changes with the season.",
+   "gfOption": false
   }
  },
  {
@@ -551,7 +566,8 @@
    "station": "Garde Manger",
    "inspiration": "A play on an everything bagel with schmear, built on beets",
    "sellingLine": "Earthy, tangy and crunchy all at once, with a mild chili kick from the almonds.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -581,7 +597,8 @@
    "confirm": true,
    "inspiration": "Cream of mushroom soup meets baked brie",
    "sellingLine": "Velvety, rich and comforting; a perfect cold-weather starter with a crunchy finish.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -615,7 +632,8 @@
    "confirm": true,
    "inspiration": "A deconstructed Caesar salad",
    "sellingLine": "Our take on a Caesar; crisp, garlicky and lemony, with a crunchy topping instead of croutons.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -647,7 +665,8 @@
    "confirm": true,
    "inspiration": "A New York Italian-American house salad",
    "sellingLine": "Light, crisp and refreshing; an easy side salad that goes with anything on the menu.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -678,7 +697,8 @@
    "confirm": true,
    "inspiration": "French cassoulet, reimagined as pasta",
    "sellingLine": "Rustic and hearty, like a French country stew as pasta; savory, herby and perfect for fall.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -712,7 +732,8 @@
    "cocktailRef": "Drink Book p. 11",
    "confirm": true,
    "inspiration": "Lobster mac and cheese, made as tortellini",
-   "sellingLine": "Our most indulgent pasta; rich, buttery and cheesy, with sweet lobster in every bite."
+   "sellingLine": "Our most indulgent pasta; rich, buttery and cheesy, with sweet lobster in every bite.",
+   "gfOption": false
   }
  },
  {
@@ -745,7 +766,8 @@
    "confirm": true,
    "inspiration": "A Bolognese-style ragu with a pesto twist",
    "sellingLine": "Hearty, meaty and comforting; the creamy stracciatella and fresh pesto keep it from feeling heavy.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -777,7 +799,8 @@
    "photo": "/img/a6602894e763.jpg",
    "station": "Pasta",
    "inspiration": "Piedmont agnolotti meets a Michigan harvest",
-   "sellingLine": "Sweet, earthy and light; a seasonal vegetable pasta that tastes like a Michigan harvest."
+   "sellingLine": "Sweet, earthy and light; a seasonal vegetable pasta that tastes like a Michigan harvest.",
+   "gfOption": false
   }
  },
  {
@@ -809,7 +832,8 @@
    "confirm": true,
    "inspiration": "Italian-American Sunday gravy",
    "sellingLine": "Simple, light and kid-friendly; ask for it spicy or add a meatball to make it heartier.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -846,7 +870,8 @@
    "confirm": true,
    "inspiration": "A classic American burger made with Fairway Packing grass-fed beef",
    "sellingLine": "Juicy and messy in the best way; the sweet, peppery jam makes it more than a burger.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -996,7 +1021,8 @@
     }
    ],
    "inspiration": "A classic French red wine braise",
-   "sellingLine": "Fall-apart tender after a four-hour braise; deep, rich and comforting on a cold night."
+   "sellingLine": "Fall-apart tender after a four-hour braise; deep, rich and comforting on a cold night.",
+   "gfOption": true
   }
  },
  {
@@ -1029,7 +1055,8 @@
    "cocktailRef": "Drink Book p. 17",
    "confirm": true,
    "inspiration": "Roman saltimbocca meets chicken Milanese",
-   "sellingLine": "Crispy, salty and savory; a hearty, comforting plate that eats like an Italian classic."
+   "sellingLine": "Crispy, salty and savory; a hearty, comforting plate that eats like an Italian classic.",
+   "gfOption": false
   }
  },
  {
@@ -1063,7 +1090,8 @@
    "confirm": true,
    "inspiration": "A steakhouse filet with a coffee-rub crust",
    "sellingLine": "Our most luxurious steak; tender and rich.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -1096,7 +1124,8 @@
    "confirm": true,
    "inspiration": "Classic French steak au poivre, made with lamb",
    "sellingLine": "Rich and peppery with a cognac cream sauce; the fresh mint salad lightens every bite.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -1127,7 +1156,8 @@
    "confirm": true,
    "inspiration": "The classic French roast chicken dinner",
    "sellingLine": "Our lightest entree; simple, juicy and colorful, with plenty of roasted vegetables.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -1160,7 +1190,8 @@
    "confirm": true,
    "inspiration": "Southern shrimp and grits with an Italian lean",
    "sellingLine": "Southern comfort with an Italian twist; creamy, buttery grits with a little tang.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -1194,7 +1225,8 @@
    "confirm": true,
    "inspiration": "Salmon piccata over fresh pasta",
    "sellingLine": "Bright and tangy with a creamy, gently spicy sauce; a lighter entree that still feels like a full meal.",
-   "tagline": "Gluten-free option"
+   "tagline": "Gluten-free option",
+   "gfOption": true
   }
  },
  {
@@ -1225,7 +1257,8 @@
    "pairingOppositeRef": "Wine Book p. 4",
    "cocktail": "Spritz",
    "cocktailRef": "Drink Book p. 17",
-   "confirm": true
+   "confirm": true,
+   "gfOption": false
   }
  },
  {
@@ -1257,7 +1290,8 @@
    "pairingOppositeRef": "Wine Book p. 4",
    "cocktail": "Paper Plane",
    "cocktailRef": "Drink Book p. 14",
-   "confirm": true
+   "confirm": true,
+   "gfOption": false
   }
  },
  {
@@ -1284,7 +1318,8 @@
    "pairingOppositeRef": "Wine Book p. 6",
    "cocktail": "Perfect Martini",
    "cocktailRef": "Drink Book p. 18",
-   "confirm": true
+   "confirm": true,
+   "gfOption": false
   }
  },
  {
@@ -1315,7 +1350,8 @@
    "pairingOppositeRef": "Wine Book p. 6",
    "cocktail": "Cozy Blankets",
    "cocktailRef": "Drink Book p. 10",
-   "confirm": true
+   "confirm": true,
+   "gfOption": false
   }
  },
  {
@@ -1344,7 +1380,8 @@
    "pairingOppositeRef": "Wine Book p. 20",
    "cocktail": "BRG Old Fashion",
    "cocktailRef": "Drink Book p. 32",
-   "confirm": true
+   "confirm": true,
+   "gfOption": false
   }
  }
 ]

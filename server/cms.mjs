@@ -210,6 +210,7 @@ export const COLLECTIONS = {
       { key: 'photo', label: 'Main photo', type: 'photo', section: 'The basics' },
       { key: 'ingredients', label: 'Ingredients', type: 'tags', max: 20, section: 'The basics', hint: 'One per line.' },
       { key: 'allergens', label: 'Allergens', type: 'chips', options: ALLERGENS, section: 'The basics' },
+      { key: 'gfOption', label: 'Gluten-free option', type: 'toggle', section: 'The basics', hint: 'From the Food Book (GF OPTION). The standard dish still has gluten.' },
       { key: 'confirm', label: 'Chef still to confirm', type: 'toggle', section: 'The basics', hint: 'Shows “chef to confirm” next to the ingredients and allergens.' },
       { key: 'signature', label: 'Signature dish', type: 'toggle', section: 'The basics' },
       { key: 'tagline', label: 'Line above the name', type: 'text', max: 80, section: 'Recipe page', placeholder: 'The signature dish' },

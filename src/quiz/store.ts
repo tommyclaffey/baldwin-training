@@ -24,17 +24,23 @@ export const quizById = (id: string) => QUIZZES.find((q) => q.id === id);
 export const getCatalog = () => catalog;
 export const titleOf = (id: string) => (id === PRE_SHIFT ? catalog.preShift.title : id === REVIEW ? 'Review Queue' : quizById(id)?.title || (id.startsWith('c:') ? 'Custom quiz' : ''));
 
-export type Attempt = { items: string[]; questions: Record<string, Question>; answers: number[]; marks?: Record<string, Mark>; title?: string; finished?: boolean; score?: number; saved?: boolean; at: string };
+export type Attempt = { bank?: string; items: string[]; questions: Record<string, Question>; answers: number[]; marks?: Record<string, Mark>; title?: string; finished?: boolean; score?: number; saved?: boolean; at: string };
 export type Record_ = { current?: Attempt; best?: number; total?: number; last?: number; at?: string };
 type State = { device: string; name: string; quizzes: { [id: string]: Record_ }; signoffs: string[]; version: number };
 
 const KEY = 'bt-quiz2';
+/** Bump when the question bank is rewritten, so half-finished quizzes from the old bank start over. */
+export const QUIZ_BANK = '2026-11-05';
 const keyFor = (userId: number | null) => (userId ? `${KEY}:u${userId}` : KEY);
 let userId: number | null = null;
 function load(id: number | null = null, name = ''): State {
   let s: Partial<State> = {};
   try { s = JSON.parse(localStorage.getItem(keyFor(id)) || '{}'); } catch { /* start fresh */ }
-  return { device: id ? `u${id}` : 'anon', name: name || s.name || '', quizzes: s.quizzes || {}, signoffs: s.signoffs || [], version: 0 };
+  // Nov 5: the questions were rewritten from the Quiz Updates books. A quiz started before that and saved part-way
+  // would show the old questions (and be marked against the new answers), so it starts fresh. Results stay.
+  const quizzes = s.quizzes || {};
+  for (const r of Object.values(quizzes) as { current?: Attempt & { bank?: string } }[]) if (r?.current && !r.current.finished && r.current.bank !== QUIZ_BANK) delete r.current;
+  return { device: id ? `u${id}` : 'anon', name: name || s.name || '', quizzes, signoffs: s.signoffs || [], version: 0 };
 }
 let state = load();
 const subs = new Set<() => void>();
@@ -99,7 +105,7 @@ export function lookup(ref: string, a?: Attempt) {
 export async function start(id: string, custom?: { topics: string[]; count: number }) {
   const q = await api<{ id: string; title: string; items: string[]; questions: Record<string, Question> }>('/api/quiz/start', { method: 'POST', body: custom ? custom : { quiz: id } });
   const rec = state.quizzes[q.id] || {};
-  set({ ...state, quizzes: { ...state.quizzes, [q.id]: { ...rec, current: { items: q.items, questions: q.questions, answers: [], title: q.title, at: new Date().toISOString() } } } });
+  set({ ...state, quizzes: { ...state.quizzes, [q.id]: { ...rec, current: { items: q.items, questions: q.questions, answers: [], title: q.title, at: new Date().toISOString(), bank: QUIZ_BANK } } } });
   return q.id;
 }
 

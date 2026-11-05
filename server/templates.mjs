@@ -477,7 +477,8 @@ export function injectCocktailRows(page, cocktails) {
     if (im) im.f = img(d.photo);
     const t = texts(r);
     const build = (d.build || []).filter((b) => b && b.ingredient);
-    const base = build.find((b) => b.spirit) || build[0];
+    // The base is the spirit line, never just the first line (Nov 5: "the sugar cube cannot be a base spirit").
+    const base = build.find((b) => b.spirit) || (d.base ? { ingredient: d.base } : null);
     const rest = build.filter((b) => b !== base).map((b) => b.ingredient).join(', ');
     const vals = [d.name, rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.ice || '—', d.garnish || 'To confirm', d.pairs || '—'];
     vals.forEach((v, i) => t[i] && setText(t[i], v));
