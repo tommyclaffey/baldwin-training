@@ -33,7 +33,7 @@ export function catalog(db, store) {
     return list[0]?.data.photo || null;
   };
   const builtins = topics.filter((t) => BUILT_IN(t.key)).map((t) => ({ id: 't:' + t.key, title: t.label, kind: 'builtin', topics: [t.key], count: Math.min(BUILT_IN_LEN, t.count), photo: photoFor(t.key) }));
-  const team = teamSets(db, store).map((q) => ({ ...q, count: Math.min(q.count, forTopics(pool, q.topics).length), photo: photoFor(q.topics[0]) }));
+  const team = teamSets(db, store).map((q) => ({ ...q, count: Math.min(q.count || Infinity, forTopics(pool, q.topics).length), photo: photoFor(q.topics[0]) }));
   return { passPct: PASS_PCT, topics, quizzes: [...builtins, ...team], preShift: { id: PRE_SHIFT, title: 'Pre-Shift Quiz', count: PRE_SHIFT_LEN } };
 }
 
@@ -43,10 +43,10 @@ function topicsOf(db, store, id) {
   if (id === REVIEW) return { title: 'Review Queue', topics: null, count: REVIEW_LEN };
   let m;
   if ((m = /^t:(.+)$/.exec(id))) { const t = m[1]; return BUILT_IN(t) ? { title: labelOf(t), topics: [t], count: t.startsWith('study:') ? 100 : BUILT_IN_LEN } : null; }
-  if ((m = /^s:(\d+)$/.exec(id))) { const r = db.prepare('SELECT * FROM quiz_sets WHERE id = ? AND store_id = ?').get(Number(m[1]), store); return r ? { title: r.name, topics: JSON.parse(r.topics), count: r.count } : null; }
+  if ((m = /^s:(\d+)$/.exec(id))) { const r = db.prepare('SELECT * FROM quiz_sets WHERE id = ? AND store_id = ?').get(Number(m[1]), store); return r ? { title: r.name, topics: JSON.parse(r.topics), count: r.count || Infinity } : null; }
   // Nov 5: topics like "course:Mains" and "study:france" have a colon in them; the count is whatever follows the last one.
   // (Before, any pick with a course or a chapter came back "We couldn't find that quiz".)
-  if ((m = /^c:(.+):(\d+)$/.exec(id))) { const topics = m[1].split('+').filter(Boolean); return { title: 'Your Quiz', topics, count: Math.min(100, Number(m[2])) }; }
+  if ((m = /^c:(.+):(\d+)$/.exec(id))) { const topics = m[1].split('+').filter(Boolean); return { title: 'Your Quiz', topics, count: Number(m[2]) === 0 ? Infinity : Math.min(100, Number(m[2])) }; } // 0 = every question (Nov 5: "full quiz")
   return null;
 }
 export function labelOf(key) {
