@@ -615,10 +615,15 @@ test('quiz answers match the books in the Quiz Updates folder (Nov 5)', async ()
   const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['house', 'classic', 'wine-glass', 'wine-bottle', 'allergens', 'For the Table'.replace(/^/, 'course:')], count: 0 } })).data;
   const qs = Object.values(all.questions);
   const answer = (re) => qs.filter((x) => re.test(x.q)).map((x) => x.options[x.answer]);
-  assert.deepEqual(answer(/base spirit in the Veggie Spritz/), ['Chartreuse'], 'the Drink Book profile, not the first line of the build');
+  assert.deepEqual(answer(/base of the Veggie Spritz/), ['Chartreuse'], 'the Drink Book profile, not the first line of the build');
+  assert.ok(!qs.some((x) => /base spirit/.test(x.q) && x.options[x.answer] === 'Tequila' && x.options.includes('Mezcal')), 'all tequila is technically mezcal (Drink Book)');
+  assert.ok(!qs.some((x) => /Which of these is in The Ritz/.test(x.q) && x.options.some((o, i) => i !== x.answer && /simple syrup/i.test(o))), 'the mint foam is made with simple');
+  assert.ok(!qs.some((x) => /egg allergy/.test(x.q) && x.options.some((o, i) => i !== x.answer && /eggplant|calamari|gnocchetti|sunday sauce|rigatoni|tagliatelle|salmon/i.test(o))), 'fresh pasta and breading count as egg (Allergen Guide)');
+  assert.ok(!qs.some((x) => /^What style of beer/.test(x.q)), 'beer styles are ours, not the menu’s');
   assert.ok(!qs.some((x) => /base spirit/.test(x.q) && x.options.some((o) => /sugar|syrup|juice|bubbles/i.test(o))), 'only spirits are base spirits');
   assert.ok(!qs.some((x) => /What grape/.test(x.q) && x.options.some((o) => /^(Chianti Classico|Rioja|Blend|Brut|Prosecco|Barolo)$/.test(o))), 'grape questions use grapes');
   assert.ok(!qs.some((x) => /cost\?/.test(x.q)), 'no price questions');
   const pork = qs.filter((x) => /doesn’t eat pork/.test(x.q));
+  assert.ok(pork.length, 'pork questions exist');
   assert.ok(pork.every((x) => !x.options.some((o, i) => i !== x.answer && /meatball|ragu|sunday sauce/i.test(o))), 'meatballs and ragu are never offered as pork-free');
 });

@@ -19,12 +19,29 @@ const the = (n) => (/^the\s/i.test(n) ? n : 'the ' + n);
 const money = (p) => (clean(p) && /^\d/.test(clean(p)) ? `$${clean(p).replace(/^\$/, '')}` : '');
 const uniq = (a) => [...new Set(a.filter((x) => !bad(x)))];
 
+/* The Food Book's Allergen Guide (p. 50), as words to look for in a dish: a dish that might have it is never offered as safe. */
+const GUIDE = {
+  gluten: /pasta|spaghetti|tagliatelle|rigatoni|tortellini|gnocchetti|agnolotti|ravioli|pizza|\bpie\b|dough|bread|focaccia|toast|\bbun\b|brioche|crouton|pangrattato|panko|breaded|breading|fried|fries|\btots?\b|flour|semolina|malt|cutlet|crust|arancini|risotto|meatball|ragu/i,
+  dairy: /chees|butter|cream|crema|crème|ricotta|burrata|stracciatella|mozzarella|parmesan|parmigiano|locatelli|fontina|fonduta|gruy|brie|goat|mascarpone|asiago|beemster|hollandaise|beurre|pesto|zip sauce|grits|cacio/i,
+  egg: /pasta|spaghetti|tagliatelle|rigatoni|tortellini|gnocchetti|agnolotti|ravioli|aioli|hollandaise|caesar|bread|breaded|breading|fried|cutlet|meatball|arancini|crust|mayo|sauce|panko|pangrattato|crouton/i,
+  'tree nut': /\bnut|almond|pistachio|walnut|pine nut|pesto|praline|hazelnut/i,
+  peanut: /peanut|\bnut/i,
+  shellfish: /shrimp|crab|lobster|scallop|calamari|clam|oyster|mussel|prawn/i,
+  finfish: /salmon|fish|caviar|anchov|caesar|tuna|walleye|cod\b/i,
+  pork: /pork|prosciutto|guanciale|pepperoni|bacon|pancetta|\bham\b|meatball|ragu|sausage|salumi|sunday sauce/i,
+  allium: /onion|garlic|shallot|leek|scallion|chive|sauce|dressing|aioli|ragu|pesto|gravy|vinaigrette|salsa|\bjam\b|fonduta|fondue|crema|marinat|soup|beurre blanc|coulis|braise|confit|au poivre|pernod|rockefeller|cream sauce/i,
+  nightshade: /tomato|potato|fries|\btots?\b|eggplant|peppers|pepperoni|chili|calabrian|paprika|harissa|hot honey|zip sauce|7 peppers|ragu|sunday sauce|margherita/i,
+};
+const dishText = (x) => [x.data.name, x.data.description, ...(x.data.ingredients || []), x.data.inspiration].filter(Boolean).join(' · ');
+/** True when a dish might hold this allergen even though its page doesn't list it (or it has a gluten-free option, which means it isn't). */
+const mayHave = (x, a) => { const k = String(a).toLowerCase(); return (GUIDE[k] ? GUIDE[k].test(dishText(x)) : false) || (k === 'gluten' && !!x.data.gfOption); };
+
 /* ---- Nov 5 (Tommy: "Some of the questions are incorrect … the base spirit to a cocktail is a sugar cube"):
    every wrong answer has to be plainly wrong, so nothing in it may overlap the right answer. ---- */
 const GENERIC = new Set(['juice', 'syrup', 'nectar', 'liqueur', 'bitters', 'oz', 'top', 'fill', 'splash', 'fresh', 'the', 'de', 'la', 'di', 'of', 'and', 'in', 'on', 'with', 'or', 'a', 'dashes', 'house', 'local', 'roasted', 'crispy', 'toasted', 'warm', 'grilled', 'sauteed', 'seared', 'pickled', 'fried', 'organic', 'hand', 'cut', 'sea', 'thin', 'paper', 'large', 'small', 'whole', 'shaker', 'mix']);
-const words = (x) => String(x || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/[^a-z0-9]+/).map((w) => w.replace(/(es|s)$/, '')).filter((w) => w.length > 2 && !GENERIC.has(w)).flatMap((w) => (/^(toast|focaccia|crouton|bun|brioche|bread)$/.test(w) ? ['bread'] : [w]));
+const words = (x) => String(x || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/[^a-z0-9]+/).map((w) => w.replace(/(es|s)$/, '')).filter((w) => w.length > 2 && !GENERIC.has(w)).flatMap((w) => (/^(toast|focaccia|crouton|bun|brioche|bread)$/.test(w) ? ['bread'] : /^(sprite|7up|coke|soda|lemon-lime|lime-lemon)$/.test(w) ? ['soda'] : /^(saline|salt)$/.test(w) ? ['salt'] : [w]));
 /** "Sprite (top)", "Thyme, in the shaker", "Angostura Bitters, on top" → the ingredient itself. */
-const ingName = (x) => clean(x).replace(/\s*\((?:top)\)$/i, '').replace(/,\s*(?:in the shaker|on top)$/i, '');
+const ingName = (x) => { const v = clean(x).replace(/\s*\((?:top)\)$/i, '').replace(/,\s*(?:in the shaker|on top)$/i, ''); return /^agave$/i.test(v) ? 'Agave nectar' : v; };
 const shares = (a, b) => { const A = new Set(words(a)); return words(b).some((w) => A.has(w)); };
 /** Garnish words that don't tell one garnish from another ("orange peel" vs "orange twist" are the same thing). */
 const GARNISH_FORM = new Set(['peel', 'twist', 'slice', 'wedge', 'sprig', 'leaf', 'leave', 'wheel', 'optional', 'rim', 'dried', 'torched', 'half', 'discarded', 'dehydrated', 'champagne', 'spice', 'flower']);
@@ -91,9 +108,7 @@ export function questionPool(db, store) {
     const d = e.data, n = d.name, page = '/' + e.slug, course = 'course:' + d.course, base = { page, label: n };
     const same = recipes.filter((x) => x.data.course === d.course && x !== e);
     if (d.description) ask('describe:' + e.id, { ...base, q: `Which dish is this? “${clean(d.description)}”`, right: n, pool: (same.length >= 3 ? same : recipes).map(dishName), why: `That’s ${the(n)}.`, topics: [course] });
-    const alOf = (x) => ((x.data.allergens || []).length ? [...x.data.allergens].sort().join(', ') : 'None listed');
-    const al = alOf(e);
-    ask('allergens:' + e.id, { ...base, q: `Which allergens are listed for ${the(n)}?`, right: al, pool: recipes.map(alOf), why: `${al}. Always confirm with the kitchen.`, topics: [course, 'allergens'] });
+    // Nov 5 review: no "which allergens are listed" combos (the book's allergen matrix is a draft; options differing by one tag aren't fair).
     // Pairings: wrong answers are other wines and cocktails the Food Book pairs, never this dish's own (similar or opposite).
     const mineW = [d.pairing, d.pairingOpposite].filter(Boolean).map((x) => x.toLowerCase());
     if (d.pairing) ask('wine:' + e.id, { ...base, q: `Which wine do we suggest with ${the(n)}?`, right: d.pairing, pool: recipes.flatMap((x) => [x.data.pairing, x.data.pairingOpposite]).filter((x) => x && !mineW.includes(x.toLowerCase())), why: `${d.pairing} is the similar pairing${d.pairingOpposite ? `; ${d.pairingOpposite} is the opposite` : ''}.`, topics: [course, 'pairings'] });
@@ -109,8 +124,10 @@ export function questionPool(db, store) {
       const a = alg[Math.floor(rng('avoid:' + e.id)() * alg.length)];
       // The Food Book: pork is "often a dietary or religious choice rather than an allergy … ask about meatballs and ragu".
       const pork = /^pork$/i.test(a);
-      const safe = recipes.filter((x) => !(x.data.allergens || []).some((y) => String(y).toLowerCase() === String(a).toLowerCase()) && !(pork && /meatball|ragu/i.test(`${x.data.name} ${x.data.description} ${(x.data.ingredients || []).join(' ')}`)));
-      ask('avoid:' + e.id, { ...base, q: pork ? 'A guest doesn’t eat pork. Which dish do you steer them away from?' : `A guest has ${/^[aeiou]/i.test(String(a)) ? 'an' : 'a'} ${String(a).toLowerCase()} allergy. Which dish do you steer them away from?`, right: n, pool: (safe.filter((x) => x.data.course === d.course).length >= 3 ? safe.filter((x) => x.data.course === d.course) : safe).map(dishName), why: `${the(n)[0].toUpperCase() + the(n).slice(1)} lists ${String(a).toLowerCase()}. Always confirm with the kitchen.`, topics: [course, 'allergens'] });
+      // Wrong answers are dishes clear of it on their page AND by the Food Book's Allergen Guide (p. 50: egg in fresh pasta and
+      // breading, nuts in pesto, nightshade in hot honey, allium in sauces, "ask about meatballs and ragu"…).
+      const safe = recipes.filter((x) => !(x.data.allergens || []).some((y) => String(y).toLowerCase() === String(a).toLowerCase()) && !mayHave(x, a));
+      ask('avoid:' + e.id, { ...base, q: pork ? 'A guest doesn’t eat pork. Which of these dishes has pork?' : `A guest has ${/^[aeiou]/i.test(String(a)) ? 'an' : 'a'} ${String(a).toLowerCase()} allergy. Which of these dishes lists ${String(a).toLowerCase()}?`, right: n, pool: (safe.filter((x) => x.data.course === d.course).length >= 3 ? safe.filter((x) => x.data.course === d.course) : safe).map(dishName), why: `${the(n)[0].toUpperCase() + the(n).slice(1)} lists ${String(a).toLowerCase()}. Always confirm with the kitchen.`, topics: [course, 'allergens'] });
     }
     // What's in it: one of its ingredients, against ingredients it doesn't have.
     const ing = (d.ingredients || []).filter(Boolean);
@@ -120,7 +137,7 @@ export function questionPool(db, store) {
       const words = new Set(String(n).toLowerCase().split(/[^a-z]+/).filter((w) => w.length > 3));
       const hidden = ing.filter((x) => !String(x).toLowerCase().split(/[^a-z]+/).some((w) => words.has(w)) && !shares(n, x));
       const one = hidden.length ? hidden[Math.floor(rng('ing:' + e.id)() * hidden.length)] : null;
-      if (one) ask('ing:' + e.id, { ...base, q: `A guest asks what’s in ${the(n)}. Which of these is in it?`, right: one, pool: recipes.flatMap((x) => x.data.ingredients || []).filter((x) => x && !mine.has(String(x).toLowerCase()) && !ing.some((i) => shares(i, x)) && !shares(n, x) && !shares(d.description, x)), why: `${the(n)[0].toUpperCase() + the(n).slice(1)}: ${ing.join(', ')}.`, topics: [course] });
+      if (one) ask('ing:' + e.id, { ...base, q: `A guest asks what’s in ${the(n)}. Which of these is in it?`, right: one, pool: recipes.flatMap((x) => x.data.ingredients || []).filter((x) => x && !mine.has(String(x).toLowerCase()) && !ing.some((i) => shares(i, x)) && !shares(n, x) && !shares(d.description, x)), different: (x, others) => !others.some((o) => shares(o, x)), why: `${the(n)[0].toUpperCase() + the(n).slice(1)}: ${ing.join(', ')}.`, topics: [course] });
     }
     // What to say: the drop line, the selling line and a talking point (only finished lines, no "[sauce]" blanks).
     const done = (x) => x && !/\[[^\]]*\]/.test(x);
@@ -141,17 +158,25 @@ export function questionPool(db, store) {
     for (const e of list) {
       const d = e.data, n = d.name, base = { page: '/' + e.slug, label: n };
       const b = baseOf(e);
-      if (askableBase(b)) ask('spirit:' + e.id, { ...base, q: `What’s the base spirit in ${the(n)}?`, right: b, pool: [...SPIRITS.slice(0, 10), ...drinks.map(baseOf)].filter(askableBase), why: `${b}${(d.build || []).find((x) => x?.spirit) ? ': ' + [(d.build.find((x) => x?.spirit).amount || ''), d.build.find((x) => x?.spirit).ingredient].join(' ').trim() : ''}.`, topics: [topic] });
+      const liqueur = ['Chartreuse', 'Limoncello', 'Pimm’s'].includes(b);
+      // The Drink Book: "All tequila is technically mezcal"; Pimm's is gin-based. A name that gives the answer away isn't a question.
+      const near = { Tequila: ['Mezcal'], Gin: ['Pimm’s'], Rye: [], Bourbon: [] }[b] || [];
+      if (/martini/i.test(n) && b === 'Vodka') near.push('Gin'); // "Vodka or Gin Martini" (Social Hour)
+      if (askableBase(b) && !shares(n, b)) ask('spirit:' + e.id, { ...base, q: liqueur ? `What’s the base of ${the(n)}?` : `What’s the base spirit in ${the(n)}?`, right: b, pool: SPIRITS.slice(0, 10).filter((x) => !near.includes(x)), why: `${b}${(d.build || []).find((x) => x?.spirit) ? ': ' + [(d.build.find((x) => x?.spirit).amount || ''), d.build.find((x) => x?.spirit).ingredient].join(' ').trim() : ''}.`, topics: [topic] });
       const gf = glassFam(d.glass);
       if (gf.length && !bad(d.glass)) ask('glass:' + e.id, { ...base, q: `Which glass is ${the(n)} served in?`, right: d.glass, pool: drinks.map((x) => x.data.glass), different: (x, others) => { const f = glassFam(x); return f.length && !f.some((k) => gf.includes(k)) && !others.some((o) => glassFam(o).some((k) => f.includes(k))); }, why: `${d.glass}.`, topics: [topic] });
       const gw = garnishWords(d.garnish);
       if (gw.length && !bad(d.garnish) && !/^none|optional/i.test(d.garnish)) ask('garnish:' + e.id, { ...base, q: `What’s the garnish on ${the(n)}?`, right: d.garnish, pool: drinks.map((x) => x.data.garnish).filter((x) => !/^none|optional/i.test(x || '')), different: (x, others) => { const w = garnishWords(x); return w.length && !w.some((k) => gw.includes(k)) && !others.some((o) => garnishWords(o).some((k) => w.includes(k))); }, why: `${d.garnish}.`, topics: [topic] });
       const mf = methodFam(d.method);
-      if (mf) ask('method:' + e.id, { ...base, q: `Is ${the(n)} shaken, stirred or built in the glass?`, right: mf, pool: METHODS, why: `${d.method}.`, topics: [topic] });
+      // The book's bar terms: shake drinks with citrus, juice, cream or egg; stir spirit-only drinks. A spec that breaks its own rule waits for the bar lead.
+      const shakeable = (d.build || []).some((x) => /juice|lime|lemon|cream|egg|foam|pur[eé]e|pineapple|espresso|coffee|grapefruit|pom\b|pomegranate|cranberry|acai|syrup|agave|honey|orange|basil|mint|arugula|cucumber|thyme|sour mix|lemonade/i.test(x?.ingredient || ''));
+      if (mf && !(mf === 'Shaken' && !shakeable)) ask('method:' + e.id, { ...base, q: `How is ${the(n)} made?`, right: mf, pool: METHODS, why: `${d.method}.`, topics: [topic] });
       const mine = (d.build || []).filter((x) => x && x.ingredient);
-      const extras = mine.filter((x) => !x.spirit && words(x.ingredient).length);
+      // House preps (foams, cordials, oleo, house syrups and mixes) are made with sugar syrup (Drink Book prep pages), so it's never a wrong answer here.
+      const madeWithSugar = mine.some((x) => /foam|cordial|oleo|mix|syrup|pur[eé]e/i.test(x.ingredient));
+      const extras = mine.filter((x) => !x.spirit && words(x.ingredient).length && !/ or /.test(x.ingredient));
       const extra = extras.length ? extras[Math.floor(rng('in:' + e.id)() * extras.length)] : null;
-      if (extra) ask('in:' + e.id, { ...base, q: `Which of these is in ${the(n)}?`, right: ingName(extra.ingredient), pool: drinks.flatMap((x) => (x.data.build || []).map((y) => ingName(y?.ingredient))).filter((i) => i && !mine.some((m) => shares(m.ingredient, i)) && !shares(n, i)), why: mine.map((x) => [x.amount, x.ingredient].filter(Boolean).join(' ')).join(', ') + '.', topics: [topic] });
+      if (extra) ask('in:' + e.id, { ...base, q: `Which of these is in ${the(n)}?`, right: ingName(extra.ingredient), pool: drinks.flatMap((x) => (x.data.build || []).map((y) => ingName(y?.ingredient))).filter((i) => i && !/ or /.test(i) && !mine.some((m) => shares(m.ingredient, i)) && !shares(n, i) && !(madeWithSugar && /simple|sugar|demerara/i.test(i))), different: (x, others) => !others.some((o) => shares(o, x)), why: mine.map((x) => [x.amount, x.ingredient].filter(Boolean).join(' ')).join(', ') + '.', topics: [topic] });
     }
   }
 
@@ -160,13 +185,13 @@ export function questionPool(db, store) {
   const isGrape = (g) => GRAPE_NAMES.includes(clean(g));
   const TWINS = [['Syrah', 'Shiraz'], ['Albariño', 'Alvarinho'], ['Pinot Grigio', 'Pinot Gris']];
   const sameGrape = (a, b) => clean(a) === clean(b) || TWINS.some((t) => t.includes(clean(a)) && t.includes(clean(b)));
-  const wineName = (w) => { const d = w.data; return d.grape && !d.name.toLowerCase().includes(d.grape.toLowerCase()) ? `${d.name} ${d.grape}` : d.name; };
+  const wineName = (w) => { const d = w.data; return isGrape(d.grape) && !d.name.toLowerCase().includes(d.grape.toLowerCase()) ? `${d.name} ${d.grape}` : d.name; };
   for (const e of wines) {
     const d = e.data, n = wineName(e), topic = money(d.glass) ? 'wine-glass' : 'wine-bottle', base = { page: '/' + e.slug, label: n };
     // Only real grape varieties ("Chianti Classico", "Rioja", "Blend" and "Brut" aren't grapes); same grape, two names, never side by side.
     if (isGrape(d.grape) && !d.name.toLowerCase().includes(d.grape.toLowerCase())) ask('grape:' + e.id, { ...base, q: `What grape is ${the(d.name)} made from?`, right: d.grape, pool: wines.map((x) => x.data.grape).filter(isGrape), different: (x, others) => !sameGrape(x, d.grape) && !others.some((o) => sameGrape(o, x)), why: `${d.grape}.`, topics: [topic] });
     // Wrong regions come from another country on the list, so "California" is never offered against "Napa".
-    ask('region:' + e.id, { ...base, q: `Where is ${the(n)} from?`, right: d.region, pool: wines.filter((x) => x.data.country !== d.country).map((x) => x.data.region), why: `${d.region}.`, topics: [topic] });
+    if (!/rouge|blanc\b|vieilles vignes/i.test(d.region || '') && !shares(d.name, d.region) && !/sake/i.test(d.grape || '')) ask('region:' + e.id, { ...base, q: `Where is ${the(n)} from?`, right: d.region, pool: wines.filter((x) => x.data.country !== d.country).map((x) => x.data.region), why: `${d.region}.`, topics: [topic] });
     // Which dish: from the Food Book's pairings (a dish names its wine), never a dish that pairs it either way.
     const named = (p) => { const w = words(p); return w.length && w.every((x) => words(`${d.name} ${d.grape || ''} ${d.region || ''}`).some((y) => y.startsWith(x) || x.startsWith(y))); };
     const sim = recipes.filter((x) => named(x.data.pairing));
@@ -178,7 +203,8 @@ export function questionPool(db, store) {
   /* beer */
   for (const e of beers) {
     const d = e.data, base = { page: '/the-bar/beer-and-draft', label: d.name };
-    if (!/rotating/i.test(d.style || '')) ask('style:' + e.id, { ...base, q: `What style of beer is ${d.name}?`, right: d.style, pool: beers.map((x) => x.data.style).filter((x) => !/rotating/i.test(x || '')), why: `${d.style}.`, topics: ['beer'] });
+    // Nov 5 review: beer styles were sorted by us, not printed on the menu, so they aren't quizzed.
+    void d; void base;
   }
   /* the Study Guide's cards: the chapter's own three wrong answers, in a fixed order per card */
   for (const ch of allChapters()) {
