@@ -54,7 +54,7 @@ function topicsOf(db, store, id) {
   return null;
 }
 export function labelOf(key) {
-  const L = { house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings', prices: 'Prices' };
+  const L = { house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings' };
   if (key.startsWith('study:')) { const ch = chapterBySlug(key.slice(6)); return ch ? `Study Guide · ${ch.title}` : key; }
   return key.startsWith('course:') ? key.slice(7) : L[key] || key;
 }
