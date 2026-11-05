@@ -31,7 +31,6 @@ export function topicList(pool) {
     { key: 'beer', label: 'Beer', group: 'Bar' },
     { key: 'allergens', label: 'Allergens', group: 'Know It Cold' },
     { key: 'pairings', label: 'Pairings', group: 'Know It Cold' },
-    { key: 'prices', label: 'Prices', group: 'Know It Cold' },
     ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
   ];
   return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= 3);
@@ -67,7 +66,6 @@ export function questionPool(db, store) {
   for (const e of recipes) {
     const d = e.data, n = d.name, page = '/' + e.slug, course = 'course:' + d.course, base = { page, label: n };
     const same = recipes.filter((x) => x.data.course === d.course && x !== e);
-    if (d.price) ask('price:' + e.id, { ...base, q: `What does ${the(n)} cost?`, right: money(d.price), pool: recipes.map((x) => money(x.data.price)), why: `The ${n} is ${money(d.price)}.`, topics: [course, 'prices'] });
     if (d.description) ask('describe:' + e.id, { ...base, q: `Which dish is this? “${clean(d.description)}”`, right: n, pool: (same.length >= 3 ? same : recipes).map(dishName), why: `That’s ${the(n)}.`, topics: [course] });
     const alOf = (x) => ((x.data.allergens || []).length ? [...x.data.allergens].sort().join(', ') : 'None listed');
     const al = alOf(e);
@@ -113,7 +111,6 @@ export function questionPool(db, store) {
       ask('glass:' + e.id, { ...base, q: `Which glass is ${the(n)} served in?`, right: d.glass, pool: drinks.map((x) => x.data.glass), why: `A ${clean(d.glass).toLowerCase()}.`, topics: [topic] });
       ask('garnish:' + e.id, { ...base, q: `What’s the garnish on ${the(n)}?`, right: d.garnish, pool: drinks.map((x) => x.data.garnish), why: `${d.garnish}.`, topics: [topic] });
       ask('method:' + e.id, { ...base, q: `How is ${the(n)} made?`, right: d.method, pool: drinks.map((x) => x.data.method), why: `${d.method}.`, topics: [topic] });
-      if (topic === 'house' && d.price) ask('dprice:' + e.id, { ...base, q: `What does ${the(n)} cost?`, right: money(d.price), pool: house.map((x) => money(x.data.price)), why: `The ${n} is ${money(d.price)}.`, topics: [topic, 'prices'] });
       const mine = (d.build || []).filter((b) => b && b.ingredient);
       const extra = mine.find((b) => !b.spirit);
       if (extra) {
@@ -129,8 +126,6 @@ export function questionPool(db, store) {
     const d = e.data, n = wineName(e), topic = money(d.glass) ? 'wine-glass' : 'wine-bottle', base = { page: '/' + e.slug, label: n };
     if (d.grape && !d.name.toLowerCase().includes(d.grape.toLowerCase())) ask('grape:' + e.id, { ...base, q: `What grape is ${the(d.name)}?`, right: d.grape, pool: wines.map((x) => x.data.grape), why: `${d.grape}.`, topics: [topic] });
     ask('region:' + e.id, { ...base, q: `Where is ${the(n)} from?`, right: d.region, pool: wines.map((x) => x.data.region), why: `${d.region}.`, topics: [topic] });
-    if (money(d.glass)) ask('glass:' + e.id, { ...base, q: `What does a glass of ${the(n)} cost?`, right: money(d.glass), pool: wines.map((x) => money(x.data.glass)), why: `${money(d.glass)} a glass.`, topics: [topic, 'prices'] });
-    else if (money(d.bottle)) ask('bottle:' + e.id, { ...base, q: `What does a bottle of ${the(n)} cost?`, right: money(d.bottle), pool: wines.map((x) => money(x.data.bottle)), why: `${money(d.bottle)} a bottle.`, topics: [topic, 'prices'] });
     const listed = String(d.pairs || '').split(/,| · /).map(clean).filter(Boolean);
     const dish = listed[0];
     const taken = new Set(listed.map((x) => x.toLowerCase()));
