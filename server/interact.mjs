@@ -10,7 +10,7 @@ import { addHref } from './editinplace.mjs';
 import { clone, find, findAll, byName, startsWith, texts, setText } from './templates.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
-import { ALLERGENS } from './cms.mjs';
+import { ALLERGENS, COURSES } from './cms.mjs';
 
 const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
 const title = (s) => String(s || '').toLowerCase().replace(/\b\w/g, (m) => m.toUpperCase()).replace(/\bAnd\b/g, 'and');
@@ -50,7 +50,7 @@ function foodMatrix(page, icon) {
   let course = '';
   const courses = new Map(), stations = new Map();
   for (const c of table.c) {
-    if (startsWith('Group · ')(c)) { course = title(c.n.slice(8)); c.meta = { group: course }; continue; }
+    if (startsWith('Group · ')(c)) { const g = c.n.slice(8).toLowerCase(); course = COURSES.find((x) => x.toLowerCase() === g) || title(g); c.meta = { group: course }; continue; }
     if (!startsWith('Row · ')(c)) continue;
     const station = texts(find(c, byName('Station')) || { c: [] })[0]?.s || '—';
     const allergens = (find(c, byName('Allergens'))?.c || []).filter(startsWith('Pill · ')).map((p) => p.n.slice(7)).filter((a) => a !== 'None listed');
@@ -202,7 +202,7 @@ function homeMatrix(page) {
   const sec = find(page.main, byName('Section · Food Matrix'));
   const chips = sec && find(sec, byName('Filters'));
   if (!chips) return;
-  const COURSE = { 'Small Plate': 'Snacks & Small Plates', Salad: 'Salads', Pizza: 'Pizza', Pasta: 'Pasta', Main: 'Mains', Dessert: 'Dessert', Bar: 'Bar' };
+  const COURSE = { 'For the Table': 'For the Table', 'From the Oven': 'From the Oven', Soup: 'Soups & Salads', Salad: 'Soups & Salads', Entree: 'Entrees', 'Social Hour': 'Social Hour', 'Small Plate': 'Snacks & Small Plates', Pizza: 'Pizza', Pasta: 'Pasta', Main: 'Mains', Dessert: 'Dessert', Bar: 'Bar' };
   const rows = findAll(sec, startsWith('Row · '));
   const counts = new Map();
   for (const r of rows) {
@@ -212,7 +212,7 @@ function homeMatrix(page) {
   }
   const list = chips.c.filter(startsWith('Chip · '));
   const selected = list[0], plain = list[1] || list[0];
-  const order = ['Snacks & Small Plates', 'Salads', 'Pizza', 'Pasta', 'Mains', 'Dessert', 'Bar'].filter((c) => counts.get(c));
+  const order = [...COURSES, 'Bar'].filter((c) => counts.get(c));
   chips.c = [['All', `All ${rows.length}`], ...order.map((c) => [c, c])].map(([val, label]) => {
     const t = clone(val === 'All' ? selected : plain); t.n = 'Chip · ' + val;
     t.meta = { k: 'hchip', mode: 'pick', val, def: 'All', ...pickStates(t, selected, plain, label) };

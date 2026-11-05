@@ -93,7 +93,7 @@ test('companies are kept apart', async () => {
   assert.equal((await owner2(`/api/team/${bea.id}/reset-pin`, { method: 'POST' })).status, 404);
   // Quiz scores and sections stay in their company.
   const take = async (who, quiz) => { const q = (await who('/api/quiz/start', { method: 'POST', body: { quiz } })).data; return who('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: q.items.map((r) => q.questions[r].answer) } }); };
-  await take(staff1, 't:course:Mains');
+  await take(staff1, 't:course:Entrees');
   assert.ok((await owner('/api/quiz/results')).data.people.some((p) => p.name === 'Bea Baldwin'));
   assert.ok(!(await owner2('/api/quiz/results')).data.people.some((p) => p.name === 'Bea Baldwin'));
   await owner('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Bea' } });
