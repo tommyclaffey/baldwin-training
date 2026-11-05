@@ -61,16 +61,16 @@ test('writes need a session and the X-BT header', async () => {
 test('the CMS starts with every classic, house cocktail and dish from the design', async () => {
   const cols = (await call('/api/collections')).data;
   assert.equal(cols.counts.classic, 58);
-  assert.equal(cols.counts.house, 17, 'every cocktail on our menu');
+  assert.equal(cols.counts.house, 58, 'every drink in the Drink Book (Nov 5)');
   assert.equal(cols.counts.shelf, 92, "Mionetto moved to the wine list");
   assert.equal(cols.counts.beer, 15);
-  assert.equal(cols.counts.recipe, 35, 'the Food Book’s 35 dishes');
+  assert.equal(cols.counts.recipe, 37, 'the Food Book’s 37 dishes (Quiz Updates, Nov 5)');
   const index = (await call('/api/index')).data;
   // each Study Guide chapter: its whole-chapter page plus one lesson per section (Nov 1)
   // Level 1 (content/manual) and Level 2 (content/manual-l2, Nov 2) chapters
   const readDir = (d) => (fs.existsSync(path.join(root, d)) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'))) : []);
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
-  assert.equal(index.length, 631 + manual.reduce((a, c) => a + 1 + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus 15 menu cocktails, the Lemon Drop, 106 wine pages, a page for every dish and 92 bottle pages');
+  assert.equal(index.length, 674 + manual.reduce((a, c) => a + 1 + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus the Drink Book’s 58 drinks, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -196,10 +196,10 @@ test('quizzes are written from the book, scored by the server; custom and team q
   const sam = person();
   assert.equal((await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Server', pin: '4321', storeId: 1 } })).status, 200);
   const cat = (await sam('/api/quiz/catalog')).data;
-  assert.ok(cat.topics.some((t) => t.key === 'course:Mains') && cat.topics.some((t) => t.key === 'house'), 'topics come from the menu');
-  assert.ok(cat.quizzes.some((q) => q.id === 't:course:Mains'), 'a built-in quiz per course');
+  assert.ok(cat.topics.some((t) => t.key === 'course:Entrees') && cat.topics.some((t) => t.key === 'house'), 'topics come from the menu');
+  assert.ok(cat.quizzes.some((q) => q.id === 't:course:Entrees'), 'a built-in quiz per course');
   // A built-in quiz: every answer right.
-  const q = (await sam('/api/quiz/start', { method: 'POST', body: { quiz: 't:course:Mains' } })).data;
+  const q = (await sam('/api/quiz/start', { method: 'POST', body: { quiz: 't:course:Entrees' } })).data;
   assert.equal(q.items.length, 10);
   const right = q.items.map((ref) => q.questions[ref].answer);
   const r = await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: right } });
@@ -220,11 +220,11 @@ test('quizzes are written from the book, scored by the server; custom and team q
   // Results and sign-off.
   assert.equal((await sam('/api/quiz/results')).status, 403, 'staff can’t see everyone’s scores');
   const me = (await call('/api/quiz/results')).data.people.find((p) => p.name === 'Sam Server');
-  assert.equal(me.quizzes['t:course:Mains'].best, 10);
-  assert.equal((await call('/api/quiz/signoff', { method: 'POST', body: { device: me.device, quiz: 't:course:Mains' } })).status, 200);
+  assert.equal(me.quizzes['t:course:Entrees'].best, 10);
+  assert.equal((await call('/api/quiz/signoff', { method: 'POST', body: { device: me.device, quiz: 't:course:Entrees' } })).status, 200);
   assert.equal((await call('/api/quiz/signoff', { method: 'POST', body: { device: me.device, quiz: c.id } })).status, 400, 'custom quizzes are practice, not sign-offs');
   const mine = (await sam('/api/quiz/mine')).data;
-  assert.equal(mine.signoffs[0].quiz, 't:course:Mains');
+  assert.equal(mine.signoffs[0].quiz, 't:course:Entrees');
   assert.equal((await call('/api/quiz/sets/' + set.id.slice(2), { method: 'DELETE' })).data.archived, true);
 });
 
@@ -391,8 +391,8 @@ test('working controls: Food Matrix filters, photo chips, cleaning checklist, si
   const fm = await page('food-matrix');
   const opts = all(fm.main, (n) => (n.n || '').startsWith('Option · ') && n.meta?.k);
   assert.ok(opts.some((o) => o.meta.k === 'hide:Finfish') && opts.some((o) => o.meta.k === 'hide:Nightshade'), 'every allergen can be hidden');
-  assert.ok(opts.some((o) => o.meta.k === 'course:Mains'), 'courses come from the dishes');
-  assert.ok(all(fm.main, (n) => n.meta?.show?.req?.includes('course:Mains')).length >= 10, 'main rows know their course');
+  assert.ok(opts.some((o) => o.meta.k === 'course:Entrees'), 'courses come from the dishes');
+  assert.ok(all(fm.main, (n) => n.meta?.show?.req?.includes('course:Entrees')).length >= 8, 'entree rows know their course');
   assert.equal(all(fm.main, (n) => n.n === 'Button · Reset')[0].meta.act, 'reset');
   const clean = await page('cleanliness');
   const tasks = all(clean.main, (n) => n.meta?.save);
@@ -449,7 +449,7 @@ test('edit in place: list pages get Add rows with the group filled in, for manag
   const index = (await call('/api/index')).data;
   const file = (slug) => index.find((e) => e.slug === slug).file;
   const fm = JSON.stringify((await call('/api/page/' + file('food-matrix'))).data);
-  assert.ok(fm.includes('"to":"/admin/pages/recipe/new?course=Salads"') && fm.includes('Add a Dish to Salads'));
+  assert.ok(fm.includes('"to":"/admin/pages/recipe/new?course=Soups+%26+Salads"') && fm.includes('Add a Dish to Soups & Salads'));
   const wine = JSON.stringify((await call('/api/page/' + file('the-bar/wine'))).data);
   assert.ok(wine.includes('/admin/pages/wine/new?color=Red"'), 'Add a Red opens a new red wine');
   assert.ok(wine.includes('/admin/pages/wine/new?list=By+the+glass'), 'the glass lists add to By the glass');
@@ -564,9 +564,9 @@ test('demo: your own account is kept aside and Exit Demo puts it back; the real 
 });
 
 test('build your own quiz: any mix of topics makes a test on the spot; dish questions are for the floor, not the kitchen', async () => {
-  const q = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Mains', 'allergens', 'study:france'], count: 10 } })).data;
+  const q = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Entrees', 'allergens', 'study:france'], count: 10 } })).data;
   assert.equal(q.items.length, 10, 'a course, a chapter and allergens together (these used to come back "couldn’t find that quiz")');
-  const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Mains'], count: 20 } })).data;
+  const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Entrees'], count: 20 } })).data;
   const qs = Object.values(all.questions).map((x) => x.q).join(' ');
   assert.ok(!/station/i.test(qs), 'no kitchen station questions');
   assert.ok(/allergy/.test(qs), 'guest allergy questions');
@@ -609,4 +609,16 @@ test('demo: /demo starts a private copy with a sample menu; risky actions are of
   const pw = await fetch(BASE + '/api/password', { method: 'POST', headers: { cookie, 'content-type': 'application/json', 'x-bt': '1' }, body: '{}' });
   assert.equal(pw.status, 403);
   assert.equal((await fetch(BASE + '/api/demo/start', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: '{"role":"nope"}' })).status, 400);
+});
+
+test('quiz answers match the books in the Quiz Updates folder (Nov 5)', async () => {
+  const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['house', 'classic', 'wine-glass', 'wine-bottle', 'allergens', 'For the Table'.replace(/^/, 'course:')], count: 0 } })).data;
+  const qs = Object.values(all.questions);
+  const answer = (re) => qs.filter((x) => re.test(x.q)).map((x) => x.options[x.answer]);
+  assert.deepEqual(answer(/base spirit in the Veggie Spritz/), ['Chartreuse'], 'the Drink Book profile, not the first line of the build');
+  assert.ok(!qs.some((x) => /base spirit/.test(x.q) && x.options.some((o) => /sugar|syrup|juice|bubbles/i.test(o))), 'only spirits are base spirits');
+  assert.ok(!qs.some((x) => /What grape/.test(x.q) && x.options.some((o) => /^(Chianti Classico|Rioja|Blend|Brut|Prosecco|Barolo)$/.test(o))), 'grape questions use grapes');
+  assert.ok(!qs.some((x) => /cost\?/.test(x.q)), 'no price questions');
+  const pork = qs.filter((x) => /doesn’t eat pork/.test(x.q));
+  assert.ok(pork.every((x) => !x.options.some((o, i) => i !== x.answer && /meatball|ragu|sunday sauce/i.test(o))), 'meatballs and ragu are never offered as pork-free');
 });

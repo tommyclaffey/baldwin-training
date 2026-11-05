@@ -109,7 +109,8 @@ function entryPage(db, e) {
   if (e.collection === 'classic' && isGeneric()) e = { ...e, data: { ...e.data, menuPrice: '' } };
   if (e.collection === 'classic') return classicPage(tpl, e, { all: ordered(db, 'classic'), glassCard, protos: classicProtos() });
   if (e.collection === 'house') {
-    const signatures = ordered(db, 'house').map((x) => ({ name: x.data.name, slug: x.slug, photo: x.data.photo }));
+    // The strip shows this drink's own menu section (the Drink Book has 58 drinks).
+    const signatures = ordered(db, 'house').filter((x) => x.data.menuSection === e.data.menuSection).map((x) => ({ name: x.data.name, slug: x.slug, photo: x.data.photo }));
     return cocktailPage(tpl, e, { signatures, glassCard, glassShape });
   }
   if (e.collection === 'recipe') return dishPage(tpl, { ...e, quiz: quizFor(e.data.course) }, pairingLinks(db));
@@ -260,7 +261,7 @@ function houseRows(page, house) {
     return r;
   });
   // Our own spiritless drinks replace the zero-proof placeholder row.
-  const hasZero = house.some((it) => it.data.menuSection === 'Spiritless & Bubbles');
+  const hasZero = house.some((it) => /^Spiritless/.test(it.data.menuSection || ''));
   const rest = matrix.c.filter((c) => !(startsWith('Row · ')(c)) || (c === zero && !hasZero));
   const at = zero && !hasZero ? rest.indexOf(zero) : rest.length - 1;
   matrix.c = [...rest.slice(0, at), ...made, ...rest.slice(at)];
@@ -302,7 +303,11 @@ function glassFiller(proto, glass) {
 const SECTION_NAME = { 'Specialty Cocktails': 'Specialty', 'BRG Staples': 'BRG staple', Martinis: 'Martini', 'Spiritless & Bubbles': 'Spiritless' };
 function signatureCards(page, house) {
   const row = find(page.main, startsWith('Carousel · '));
+  house = house.filter((e) => e.data.onMenu !== false); // off-menu drinks: in the table, not the carousel
   if (!row || !house.length) return;
+  // The specs come from the Drink Book now (Nov 5), so the carousel no longer calls them sample amounts.
+  const note = find(page.main, (n) => n.t === 'T' && /^Sample amounts/.test(n.s || ''));
+  if (note && house.some((e) => (e.data.specNote || '').startsWith('From the Drink Book') || /Drink Book/.test(e.data.specNote || ''))) setText(note, 'Specs from the Drink Book');
   const cards = row.c.filter(startsWith('Spec · '));
   const filler = find(row, byName('Glass filler'));
   const proto = cards[0];

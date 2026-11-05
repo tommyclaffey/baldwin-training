@@ -9,7 +9,8 @@ import { slugify } from './templates.mjs';
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 
 const GLASSES = ['Rocks', 'Double rocks', 'Coupe', 'Nick & Nora', 'Martini', 'Highball', 'Collins', 'Copper mug', 'Wine glass', 'Flute', 'Julep cup'];
-const MENU_SECTIONS = ['Specialty Cocktails', 'BRG Staples', 'Martinis', 'Spiritless & Bubbles'];
+// Nov 5: the Drink Book's sections (Quiz Updates folder). The older names stay valid for the demo restaurant.
+const MENU_SECTIONS = ['Specialty Cocktails', 'Classics', 'Barra Cart', 'BRG Staples', 'House Cocktails', 'Mules', 'Dessert Cocktails', 'Spiritless Cocktails', 'Martinis', 'Spiritless & Bubbles'];
 /** Where a bottle shows: its spirit page (and that page's style pages). */
 export const SHELF = [
   { key: 'Vodka', page: 'spirit/vodka' }, { key: 'Gin', page: 'spirit/gin' }, { key: 'Tequila', page: 'spirit/tequila' },
@@ -45,7 +46,8 @@ export function wineDescription(d) {
   const feel = [m, f && `with ${f}`].filter(Boolean).join(', ');
   return cap([s, feel].filter(Boolean).join('; ')) + '.';
 }
-export const COURSES = ['Snacks & Small Plates', 'Salads', 'Pizza', 'Pasta', 'Mains', 'Dessert'];
+// Nov 5: the Food Book's sections (Quiz Updates folder). The older names stay valid for the demo restaurant.
+export const COURSES = ['For the Table', 'From the Oven', 'Soups & Salads', 'Pasta', 'Entrees', 'Social Hour', 'Snacks & Small Plates', 'Salads', 'Pizza', 'Mains', 'Dessert'];
 const PROFILE = ['—', '1', '2', '3', '4', '5'];
 
 /* Field types: text · textarea · photo · video · select · toggle · tags · chips · lines · list · link · color */
@@ -107,9 +109,11 @@ export const COLLECTIONS = {
       { key: 'name', label: 'Name', type: 'text', max: 80, required: true, section: 'The basics' },
       { key: 'menuSection', label: 'Menu section', type: 'select', options: MENU_SECTIONS, section: 'The basics' },
       { key: 'price', label: 'Price', type: 'text', max: 10, section: 'The basics', placeholder: '17' },
+      { key: 'onMenu', label: 'On the menu', type: 'toggle', section: 'The basics', hint: 'Off-menu drinks stay in the book and the quizzes, but not in the Our signatures carousel.' },
       { key: 'tagline', label: 'One line under the name', type: 'text', max: 80, section: 'The basics' },
       { key: 'description', label: 'Description', type: 'textarea', max: 400, section: 'The basics' },
       { key: 'photo', label: 'Main photo', type: 'photo', section: 'The basics' },
+      { key: 'base', label: 'Base spirit (the Drink Book profile)', type: 'text', max: 40, section: 'Glass, method, ice', placeholder: 'Gin', hint: 'The quizzes ask for this. Leave empty for spiritless drinks.' },
       { key: 'glass', label: 'Glass', type: 'text', max: 60, options: GLASSES, section: 'Glass, method, ice' },
       { key: 'method', label: 'Method', type: 'text', max: 60, section: 'Glass, method, ice' },
       { key: 'ice', label: 'Ice', type: 'text', max: 60, section: 'Glass, method, ice' },
@@ -202,7 +206,7 @@ export const COLLECTIONS = {
       { key: 'course', label: 'Course', type: 'select', options: COURSES, section: 'The basics' },
       { key: 'price', label: 'Price', type: 'text', max: 10, section: 'The basics', placeholder: '38' },
       { key: 'station', label: 'Station', type: 'text', max: 40, section: 'The basics', placeholder: 'Sauté' },
-      { key: 'description', label: 'Short description', type: 'text', max: 120, section: 'The basics', hint: 'One line. Shows in the Food Matrix.' },
+      { key: 'description', label: 'Short description', type: 'text', max: 200, section: 'The basics', hint: 'One or two lines (the Food Book’s run up to about 140 characters). Shows in the Food Matrix.' },
       { key: 'photo', label: 'Main photo', type: 'photo', section: 'The basics' },
       { key: 'ingredients', label: 'Ingredients', type: 'tags', max: 20, section: 'The basics', hint: 'One per line.' },
       { key: 'allergens', label: 'Allergens', type: 'chips', options: ALLERGENS, section: 'The basics' },

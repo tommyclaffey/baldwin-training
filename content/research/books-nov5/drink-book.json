@@ -1,0 +1,2075 @@
+[
+ {
+  "page": 4,
+  "section": "Specialty Cocktails",
+  "onMenu": true,
+  "spec": "house",
+  "name": "Andean Alchemy",
+  "price": "17",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Pisco"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Yellow Chartreuse"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Agave"
+   },
+   {
+    "amount": "2 dashes",
+    "ingredient": "Fee Foam"
+   }
+  ],
+  "notes": "",
+  "base": "Pisco",
+  "taste": [
+   "Sour",
+   "Herbal",
+   "Bright"
+  ],
+  "method": "Dry shake, shake",
+  "glass": "Coupe",
+  "garnish": "Mole bitters, flowers"
+ },
+ {
+  "page": 5,
+  "section": "Specialty Cocktails",
+  "onMenu": true,
+  "spec": "house",
+  "name": "The Furest",
+  "price": "23",
+  "build": [
+   {
+    "amount": "1.25 oz",
+    "ingredient": "Willett Family Estate Rye"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Grand Marnier Cuvée Louis-Alexandre"
+   },
+   {
+    "amount": ".25 oz",
+    "ingredient": "Amaretto"
+   },
+   {
+    "amount": ".25 oz",
+    "ingredient": "Sweet Vermouth"
+   },
+   {
+    "amount": "2 dashes",
+    "ingredient": "Angostura Bitters"
+   }
+  ],
+  "notes": "",
+  "base": "Rye",
+  "taste": [
+   "Spirit-Forward",
+   "Rich",
+   "Bittersweet"
+  ],
+  "method": "Stir",
+  "glass": "Short rocks, large ice",
+  "garnish": "Orange peel"
+ },
+ {
+  "page": 6,
+  "section": "Specialty Cocktails",
+  "onMenu": true,
+  "spec": "filler",
+  "name": "The Ritz",
+  "price": "17",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Hard Head Gin"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Yellow Chartreuse"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Citrus Cordial"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": "Top",
+    "ingredient": "Mint Foam"
+   }
+  ],
+  "notes": "",
+  "base": "Gin",
+  "taste": [
+   "Herbal",
+   "Bright",
+   "Sour"
+  ],
+  "method": "Shake, top with mint foam",
+  "glass": "Coupe",
+  "garnish": "Mint leaf"
+ },
+ {
+  "page": 7,
+  "section": "Specialty Cocktails",
+  "onMenu": true,
+  "spec": "house",
+  "name": "Fjordside Garden",
+  "price": "17",
+  "build": [
+   {
+    "amount": "1.25 oz",
+    "ingredient": "Aquavit"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Dolin Génépy de Chamois"
+   },
+   {
+    "amount": "2 dashes",
+    "ingredient": "Vegetal de la Grande Chartreuse"
+   },
+   {
+    "amount": "2 leaves",
+    "ingredient": "Basil"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Simple Syrup"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lemon Juice"
+   },
+   {
+    "amount": "1 ml",
+    "ingredient": "Saline"
+   }
+  ],
+  "notes": "",
+  "base": "Aquavit",
+  "taste": [
+   "Herbal",
+   "Vegetal",
+   "Bright"
+  ],
+  "method": "Shake, double strain",
+  "glass": "Small Nick and Nora",
+  "garnish": "Olive oil, pepper, basil"
+ },
+ {
+  "page": 8,
+  "section": "Specialty Cocktails",
+  "onMenu": true,
+  "spec": "house",
+  "name": "Fuschia Satin",
+  "price": "17",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Blanco Tequila"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Spiced Hibiscus Syrup"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Pineapple Juice"
+   }
+  ],
+  "notes": "",
+  "base": "Tequila",
+  "taste": [
+   "Fruity",
+   "Spicy",
+   "Sour"
+  ],
+  "method": "Shake",
+  "glass": "Rocks",
+  "garnish": "Dried hibiscus flower"
+ },
+ {
+  "page": 9,
+  "section": "Specialty Cocktails",
+  "onMenu": true,
+  "spec": "filler",
+  "name": "Veggie Spritz",
+  "price": "13",
+  "build": [
+   {
+    "amount": "1",
+    "ingredient": "Sugar Cube"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Vegetal De La Grand Chartreuse"
+   },
+   {
+    "amount": "4 oz",
+    "ingredient": "Bubbles"
+   }
+  ],
+  "notes": "",
+  "base": "Chartreuse",
+  "taste": [
+   "Vegetal",
+   "Herbal",
+   "Bubbly"
+  ],
+  "method": "Build in glass",
+  "glass": "Flute",
+  "garnish": "Lemon twist"
+ },
+ {
+  "page": 10,
+  "section": "Specialty Cocktails",
+  "onMenu": true,
+  "spec": "house",
+  "name": "Cozy Blankets",
+  "price": "16",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "DCD Homegrown Rye"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Spiced Pear Liqueur"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Lemon Juice"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Ginger Honey Syrup"
+   }
+  ],
+  "notes": "",
+  "base": "Rye",
+  "taste": [
+   "Spicy",
+   "Sour",
+   "Rich"
+  ],
+  "method": "Shake",
+  "glass": "Short rocks",
+  "garnish": "Thyme, lemon twist"
+ },
+ {
+  "page": 11,
+  "section": "Specialty Cocktails",
+  "onMenu": true,
+  "spec": "adapted",
+  "name": "Lavender Haze",
+  "price": "15",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Blueberry Vodka"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Pomegranate (POM Wonderful)"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Elderflower (St. Germain)"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lemon"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Agave"
+   },
+   {
+    "amount": "2 dashes",
+    "ingredient": "Lavender Bitters"
+   }
+  ],
+  "notes": "Built from Luminous in the master book, with agave in place of simple and lavender bitters added. Photo is Luminous.",
+  "base": "Vodka",
+  "taste": [
+   "Fruity",
+   "Herbal",
+   "Bright"
+  ],
+  "method": "Shake, strain",
+  "glass": "Coupe",
+  "garnish": "TBD"
+ },
+ {
+  "page": 13,
+  "section": "Classics",
+  "onMenu": true,
+  "spec": "classic",
+  "name": "Side Car",
+  "price": "15",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Cognac"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Cointreau"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lemon Juice"
+   }
+  ],
+  "notes": "",
+  "base": "Cognac",
+  "taste": [
+   "Sour",
+   "Bright"
+  ],
+  "method": "Shake",
+  "glass": "Coupe, sugar rim",
+  "garnish": "Orange twist"
+ },
+ {
+  "page": 14,
+  "section": "Classics",
+  "onMenu": true,
+  "spec": "house",
+  "name": "Paper Plane",
+  "price": "15",
+  "build": [
+   {
+    "amount": "1 oz",
+    "ingredient": "Green River Bourbon"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Aperol"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lemon"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Averna"
+   }
+  ],
+  "notes": "",
+  "base": "Whiskey",
+  "taste": [
+   "Bittersweet",
+   "Sour",
+   "Bright"
+  ],
+  "method": "Shake, strain",
+  "glass": "Coupe",
+  "garnish": "Orange twist"
+ },
+ {
+  "page": 15,
+  "section": "Classics",
+  "onMenu": true,
+  "spec": "classic",
+  "name": "The Last Word",
+  "price": "16",
+  "build": [
+   {
+    "amount": ".75 oz",
+    "ingredient": "Hard Head Gin"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Green Chartreuse"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Maraschino Liqueur"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lime Juice"
+   }
+  ],
+  "notes": "",
+  "base": "Gin",
+  "taste": [
+   "Herbal",
+   "Sour",
+   "Sweet"
+  ],
+  "method": "Shake",
+  "glass": "Coupe",
+  "garnish": "Luxardo cherry"
+ },
+ {
+  "page": 16,
+  "section": "Classics",
+  "onMenu": true,
+  "spec": "house",
+  "name": "Paloma",
+  "price": "14",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Espero Tequila"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Agave"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Grapefruit"
+   }
+  ],
+  "notes": "",
+  "base": "Tequila",
+  "taste": [
+   "Bright",
+   "Sour",
+   "Fruity"
+  ],
+  "method": "TBD",
+  "glass": "Fancy highball",
+  "garnish": "Lemon twist"
+ },
+ {
+  "page": 17,
+  "section": "Classics",
+  "onMenu": true,
+  "spec": "classic",
+  "name": "Spritz",
+  "price": "13",
+  "build": [
+   {
+    "amount": "3 oz",
+    "ingredient": "Prosecco"
+   },
+   {
+    "amount": "2 oz",
+    "ingredient": "Aperol, Hugo, Lemoncello or Campari"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Soda Water"
+   }
+  ],
+  "notes": "Guest’s choice: Aperol, Hugo, Limoncello or Campari.",
+  "base": "Aperitivo",
+  "taste": [
+   "Bubbly",
+   "Bittersweet",
+   "Bright"
+  ],
+  "method": "Build over ice",
+  "glass": "Wine glass",
+  "garnish": "Orange slice"
+ },
+ {
+  "page": 18,
+  "section": "Classics",
+  "onMenu": true,
+  "spec": "classic",
+  "name": "Proper Martini",
+  "price": "15",
+  "build": [
+   {
+    "amount": "2.5 oz",
+    "ingredient": "DCD Gilded Age Vodka"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Cocchi Vermouth di Torino Extra Dry"
+   }
+  ],
+  "notes": "",
+  "base": "Vodka",
+  "taste": [
+   "Spirit-Forward",
+   "Dry"
+  ],
+  "method": "Stir",
+  "glass": "Martini, chilled",
+  "garnish": "Lemon twist or olives"
+ },
+ {
+  "page": 19,
+  "section": "Classics",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Cosmo",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "VoMich Vodka"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Triple Sec"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": "Splash",
+    "ingredient": "Cranberry Juice"
+   }
+  ],
+  "notes": "",
+  "base": "Vodka",
+  "taste": [
+   "Fruity",
+   "Sour"
+  ],
+  "method": "Shake, strain",
+  "glass": "Martini",
+  "garnish": "Lemon peel or twist"
+ },
+ {
+  "page": 20,
+  "section": "Classics",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Pama-Tini",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Pearl Blueberry Vodka"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Pama Liqueur"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Pomegranate Syrup"
+   },
+   {
+    "amount": "Splash",
+    "ingredient": "Lemonade"
+   }
+  ],
+  "notes": "",
+  "base": "Vodka",
+  "taste": [
+   "Fruity",
+   "Sweet"
+  ],
+  "method": "Shake, strain",
+  "glass": "Martini",
+  "garnish": "3 blueberries"
+ },
+ {
+  "page": 21,
+  "section": "Classics",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Long Island Iced Tea",
+  "price": "",
+  "build": [
+   {
+    "amount": ".5 oz",
+    "ingredient": "VoMich Vodka"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Spring 44 Gin"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Triple Sec"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Bacardi"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Espero Tequila"
+   },
+   {
+    "amount": "Top",
+    "ingredient": "Sour Mix and Coke"
+   }
+  ],
+  "notes": "",
+  "base": "Multi-Spirit",
+  "taste": [
+   "Sweet",
+   "Sour"
+  ],
+  "method": "Build over ice",
+  "glass": "Fancy highball",
+  "garnish": "Lemon"
+ },
+ {
+  "page": 22,
+  "section": "Classics",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Margarita",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Espero Tequila"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Triple Sec"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": "3 oz",
+    "ingredient": "Sour Mix"
+   },
+   {
+    "amount": "Splash",
+    "ingredient": "Orange Juice"
+   }
+  ],
+  "notes": "Top with the sour mix in a glass with full ice.",
+  "base": "Tequila",
+  "taste": [
+   "Sour",
+   "Bright"
+  ],
+  "method": "Build over full ice",
+  "glass": "Fancy highball",
+  "garnish": "Lime; optional salt rim"
+ },
+ {
+  "page": 23,
+  "section": "Classics",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Lemon Drop Martini",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "VoMich Vodka"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Triple Sec"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lemon Juice"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Simple Syrup"
+   }
+  ],
+  "notes": "",
+  "base": "Vodka",
+  "taste": [
+   "Sour",
+   "Sweet",
+   "Bright"
+  ],
+  "method": "Shake, strain",
+  "glass": "Martini",
+  "garnish": "Lemon peel or twist"
+ },
+ {
+  "page": 24,
+  "section": "Classics",
+  "onMenu": false,
+  "spec": "classic",
+  "name": "Negroni",
+  "price": "",
+  "build": [
+   {
+    "amount": "1 oz",
+    "ingredient": "Hard Head Gin"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Campari"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Sweet Vermouth"
+   }
+  ],
+  "notes": "",
+  "base": "Gin",
+  "taste": [
+   "Spirit-Forward",
+   "Bittersweet"
+  ],
+  "method": "Stir",
+  "glass": "Rocks, large ice",
+  "garnish": "Orange peel"
+ },
+ {
+  "page": 25,
+  "section": "Classics",
+  "onMenu": false,
+  "spec": "classic",
+  "name": "White Negroni",
+  "price": "",
+  "build": [
+   {
+    "amount": "1 oz",
+    "ingredient": "Hard Head Gin"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Suze"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Lillet Blanc"
+   }
+  ],
+  "notes": "",
+  "base": "Gin",
+  "taste": [
+   "Spirit-Forward",
+   "Bittersweet",
+   "Dry"
+  ],
+  "method": "Stir",
+  "glass": "Rocks, large ice",
+  "garnish": "Lemon twist"
+ },
+ {
+  "page": 26,
+  "section": "Classics",
+  "onMenu": false,
+  "spec": "classic",
+  "name": "Sazerac",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Rye Whiskey"
+   },
+   {
+    "amount": ".25 oz",
+    "ingredient": "Simple Syrup"
+   },
+   {
+    "amount": "3 dashes",
+    "ingredient": "Peychaud’s Bitters"
+   },
+   {
+    "amount": "1 dash",
+    "ingredient": "Angostura Bitters"
+   },
+   {
+    "amount": "Rinse",
+    "ingredient": "Absinthe"
+   }
+  ],
+  "notes": "",
+  "base": "Rye",
+  "taste": [
+   "Spirit-Forward",
+   "Anise",
+   "Aromatic"
+  ],
+  "method": "Stir, absinthe-rinsed glass",
+  "glass": "Chilled rocks, no ice",
+  "garnish": "Lemon peel, discarded"
+ },
+ {
+  "page": 27,
+  "section": "Classics",
+  "onMenu": false,
+  "spec": "classic",
+  "name": "Black Manhattan",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Rye Whiskey"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Averna Amaro"
+   },
+   {
+    "amount": "1 dash",
+    "ingredient": "Angostura Bitters"
+   },
+   {
+    "amount": "1 dash",
+    "ingredient": "Orange Bitters"
+   }
+  ],
+  "notes": "",
+  "base": "Rye",
+  "taste": [
+   "Spirit-Forward",
+   "Bittersweet",
+   "Rich"
+  ],
+  "method": "Stir",
+  "glass": "Coupe",
+  "garnish": "Luxardo cherry"
+ },
+ {
+  "page": 29,
+  "section": "Barra Cart",
+  "onMenu": true,
+  "spec": "house",
+  "name": "Spicy Ghost",
+  "price": "15",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Ghost Blanco Tequila"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lime"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Agave"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Pineapple"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Noir Float (red wine)"
+   }
+  ],
+  "notes": "",
+  "base": "Tequila",
+  "taste": [
+   "Spicy",
+   "Fruity",
+   "Sour"
+  ],
+  "method": "Shake, strain, float",
+  "glass": "TBD",
+  "garnish": "Pepper ice cube"
+ },
+ {
+  "page": 30,
+  "section": "Barra Cart",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Smoked Old Fashioned",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "DCD Four Grain Straight Bourbon or DCD Homegrown Rye"
+   },
+   {
+    "amount": ".25 oz",
+    "ingredient": "Honey Syrup"
+   },
+   {
+    "amount": "3 dashes",
+    "ingredient": "Angostura Bitters"
+   }
+  ],
+  "notes": "",
+  "base": "Bourbon",
+  "taste": [
+   "Spirit-Forward",
+   "Smoky"
+  ],
+  "method": "Stir, smoke the glass",
+  "glass": "Rocks, large ice",
+  "garnish": "Orange peel, cherry"
+ },
+ {
+  "page": 32,
+  "section": "BRG Staples",
+  "onMenu": true,
+  "spec": "house",
+  "name": "BRG Old Fashion",
+  "price": "17",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "DCD Butcher’s Cut Bourbon"
+   },
+   {
+    "amount": ".25 oz",
+    "ingredient": "Orange Oleo Saccharum"
+   },
+   {
+    "amount": "3 dashes",
+    "ingredient": "Angostura Bitters"
+   }
+  ],
+  "notes": "",
+  "base": "Bourbon",
+  "taste": [
+   "Spirit-Forward",
+   "Rich"
+  ],
+  "method": "TBD",
+  "glass": "Crystal rocks",
+  "garnish": "1 Luxardo cherry"
+ },
+ {
+  "page": 33,
+  "section": "BRG Staples",
+  "onMenu": true,
+  "spec": "filler",
+  "name": "Guilty Rose",
+  "price": "15",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Hard Head Gin"
+   },
+   {
+    "amount": ".25 oz",
+    "ingredient": "Campari"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Elderflower"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lemon"
+   },
+   {
+    "amount": ".25 oz",
+    "ingredient": "Agave"
+   }
+  ],
+  "notes": "",
+  "base": "Gin",
+  "taste": [
+   "Bittersweet",
+   "Bright",
+   "Sour"
+  ],
+  "method": "Shake",
+  "glass": "Coupe",
+  "garnish": "Rose petal"
+ },
+ {
+  "page": 34,
+  "section": "BRG Staples",
+  "onMenu": true,
+  "spec": "house",
+  "name": "Testa Dura",
+  "price": "15",
+  "build": [
+   {
+    "amount": "1.25 oz",
+    "ingredient": "Charred Rosemary Hard Head Gin"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "St. Germain"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lemon Juice"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Agave"
+   },
+   {
+    "amount": "3 dashes",
+    "ingredient": "Peychaud’s Bitters"
+   }
+  ],
+  "notes": "",
+  "base": "Gin",
+  "taste": [
+   "Herbal",
+   "Sour",
+   "Bright"
+  ],
+  "method": "Shake, strain",
+  "glass": "Rocks",
+  "garnish": "Torched rosemary, lemon twist"
+ },
+ {
+  "page": 35,
+  "section": "BRG Staples",
+  "onMenu": true,
+  "spec": "filler",
+  "name": "Clean Getaway",
+  "price": "14",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Espero Blanco Tequila"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Agave"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lime"
+   },
+   {
+    "amount": "1",
+    "ingredient": "Orange Peel"
+   }
+  ],
+  "notes": "",
+  "base": "Tequila",
+  "taste": [
+   "Bright",
+   "Sour"
+  ],
+  "method": "Shake",
+  "glass": "Rocks",
+  "garnish": "Orange peel"
+ },
+ {
+  "page": 37,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Spice of Life",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Cucumber Vodka"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Agave"
+   },
+   {
+    "amount": "2 dashes",
+    "ingredient": "Spicy Bitters"
+   }
+  ],
+  "notes": "",
+  "base": "Vodka",
+  "taste": [
+   "Spicy",
+   "Vegetal",
+   "Bright"
+  ],
+  "method": "Shake, strain",
+  "glass": "TBD",
+  "garnish": "Cucumbers, half spice rim"
+ },
+ {
+  "page": 38,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Pom & Rye",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Redemption Rye"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "POM Wonderful"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Agave Nectar"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lemon Juice"
+   },
+   {
+    "amount": "4 leaves",
+    "ingredient": "Mint"
+   }
+  ],
+  "notes": "",
+  "base": "Rye",
+  "taste": [
+   "Fruity",
+   "Sour"
+  ],
+  "method": "Shake, strain",
+  "glass": "Crystal rocks",
+  "garnish": "Mint, blueberry"
+ },
+ {
+  "page": 39,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Drops of Juniper",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Hard Head Gin"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "POM Wonderful"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lemon Juice"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Agave Nectar"
+   },
+   {
+    "amount": "4 leaves",
+    "ingredient": "Mint"
+   },
+   {
+    "amount": "2 dashes",
+    "ingredient": "Lavender Bitters"
+   }
+  ],
+  "notes": "Gin botanicals: lavender, elderflower, orange zest, cinnamon, smoked juniper.",
+  "base": "Gin",
+  "taste": [
+   "Fruity",
+   "Herbal",
+   "Sour"
+  ],
+  "method": "Shake and dump",
+  "glass": "TBD",
+  "garnish": "Champagne mint sprig"
+ },
+ {
+  "page": 40,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Catch Me Acai",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Green Tea Gin"
+   },
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Acai Syrup"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lemon Juice"
+   },
+   {
+    "amount": "Top",
+    "ingredient": "Soda"
+   }
+  ],
+  "notes": "",
+  "base": "Gin",
+  "taste": [
+   "Fruity",
+   "Herbal",
+   "Bubbly"
+  ],
+  "method": "Shake, strain, top with soda",
+  "glass": "Fancy highball",
+  "garnish": "Blackberry, blueberry"
+ },
+ {
+  "page": 41,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Garden of Eden",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Hard Head Gin"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "St. Germain"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Agave Nectar"
+   },
+   {
+    "amount": "Handful",
+    "ingredient": "Arugula"
+   }
+  ],
+  "notes": "",
+  "base": "Gin",
+  "taste": [
+   "Vegetal",
+   "Herbal",
+   "Bright"
+  ],
+  "method": "Double strain",
+  "glass": "Coupe",
+  "garnish": "Pepper, arugula sprig"
+ },
+ {
+  "page": 42,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Pimm’s Cup",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Pimm’s"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Lemon Juice"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Simple Syrup"
+   },
+   {
+    "amount": "2 slices",
+    "ingredient": "Cucumber"
+   },
+   {
+    "amount": "Top",
+    "ingredient": "Lemon-Lime Soda"
+   }
+  ],
+  "notes": "",
+  "base": "Pimm’s",
+  "taste": [
+   "Bright",
+   "Fruity",
+   "Bubbly"
+  ],
+  "method": "Shake, strain, top with soda",
+  "glass": "Fancy highball",
+  "garnish": "2 cucumber slices"
+ },
+ {
+  "page": 43,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Romeo & Gimlet",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Hard Head Gin"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lemon Basil Syrup"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lemon Juice"
+   },
+   {
+    "amount": ".25 oz",
+    "ingredient": "Agave"
+   },
+   {
+    "amount": "2–3 dashes",
+    "ingredient": "Angostura Bitters, on top"
+   }
+  ],
+  "notes": "Shake and strain, add 5 to 6 ice cubes, then top with the bitters.",
+  "base": "Gin",
+  "taste": [
+   "Herbal",
+   "Sour",
+   "Bright"
+  ],
+  "method": "Shake, strain",
+  "glass": "Goblet",
+  "garnish": "Basil, lemon"
+ },
+ {
+  "page": 44,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Luminous",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Blueberry Vodka"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "POM Wonderful"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "St. Germain"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Simple Syrup"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lemon"
+   }
+  ],
+  "notes": "",
+  "base": "Vodka",
+  "taste": [
+   "Fruity",
+   "Sweet"
+  ],
+  "method": "Shake, strain",
+  "glass": "Coupe or rocks",
+  "garnish": "Orange slice, blackberry"
+ },
+ {
+  "page": 45,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Cherry Spiced Bourbon",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Cherry Spiced Bourbon"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Sweet Vermouth"
+   },
+   {
+    "amount": "1 dash",
+    "ingredient": "Angostura Bitters"
+   }
+  ],
+  "notes": "",
+  "base": "Bourbon",
+  "taste": [
+   "Spirit-Forward",
+   "Rich",
+   "Fruity"
+  ],
+  "method": "TBD",
+  "glass": "Short fancy",
+  "garnish": "Cherry"
+ },
+ {
+  "page": 46,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Bourbon Noir",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Redemption Bourbon"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Averna Amaro"
+   },
+   {
+    "amount": "2 dashes",
+    "ingredient": "Angostura Bitters"
+   }
+  ],
+  "notes": "",
+  "base": "Bourbon",
+  "taste": [
+   "Spirit-Forward",
+   "Bittersweet",
+   "Rich"
+  ],
+  "method": "Shake, strain",
+  "glass": "TBD",
+  "garnish": "Luxardo cherry"
+ },
+ {
+  "page": 47,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Cadillac’s in Manhattan",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Angel’s Envy Rye"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Grand Marnier Louis-Cuvee"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Vya Vermouth"
+   }
+  ],
+  "notes": "",
+  "base": "Rye",
+  "taste": [
+   "Spirit-Forward",
+   "Rich"
+  ],
+  "method": "TBD",
+  "glass": "Rocks",
+  "garnish": "Luxardo cherry"
+ },
+ {
+  "page": 48,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Parks & Rec",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Plantation Aged Rum"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Ancho Reyes Verde"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lime"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Agave"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Strawberry Puree"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Pineapple Juice"
+   },
+   {
+    "amount": "3 sprigs",
+    "ingredient": "Basil"
+   },
+   {
+    "amount": "3 dashes",
+    "ingredient": "Angostura Bitters"
+   }
+  ],
+  "notes": "",
+  "base": "Rum",
+  "taste": [
+   "Fruity",
+   "Spicy",
+   "Sour"
+  ],
+  "method": "Shake, strain",
+  "glass": "Chef & Somm old fashioned",
+  "garnish": "Basil, strawberry"
+ },
+ {
+  "page": 49,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Naked & Famous",
+  "price": "",
+  "build": [
+   {
+    "amount": ".75 oz",
+    "ingredient": "Mezcal"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Yellow Chartreuse"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Aperol"
+   }
+  ],
+  "notes": "",
+  "base": "Mezcal",
+  "taste": [
+   "Bittersweet",
+   "Herbal",
+   "Sour"
+  ],
+  "method": "Shake, strain",
+  "glass": "Coupe",
+  "garnish": "Dehydrated lime"
+ },
+ {
+  "page": 50,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Red Sangria",
+  "price": "",
+  "build": [
+   {
+    "amount": "5 oz",
+    "ingredient": "Red Sangria mix"
+   },
+   {
+    "amount": "2 oz",
+    "ingredient": "Sprite (top)"
+   }
+  ],
+  "notes": "",
+  "base": "Wine",
+  "taste": [
+   "Fruity",
+   "Sweet"
+  ],
+  "method": "Build, top with Sprite",
+  "glass": "Pint",
+  "garnish": "Orange, lemon, lime"
+ },
+ {
+  "page": 51,
+  "section": "House Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Estelle’s Terrace",
+  "price": "",
+  "build": [
+   {
+    "amount": "5 oz",
+    "ingredient": "White Sangria mix"
+   },
+   {
+    "amount": "2 oz",
+    "ingredient": "Sprite (top)"
+   }
+  ],
+  "notes": "",
+  "base": "Wine",
+  "taste": [
+   "Fruity",
+   "Bright"
+  ],
+  "method": "Build, top with Sprite",
+  "glass": "Pint",
+  "garnish": "Orange, lemon, lime"
+ },
+ {
+  "page": 53,
+  "section": "Mules",
+  "onMenu": false,
+  "spec": "house",
+  "name": "London Mule",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Spring 44 Gin"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime"
+   },
+   {
+    "amount": "Top",
+    "ingredient": "Ginger Beer"
+   }
+  ],
+  "notes": "",
+  "base": "Gin",
+  "taste": [
+   "Spicy",
+   "Bright"
+  ],
+  "method": "TBD",
+  "glass": "Mule mug",
+  "garnish": "Rosemary sprig"
+ },
+ {
+  "page": 54,
+  "section": "Mules",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Italian Mule",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Lemoncello"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": "4 oz",
+    "ingredient": "Ginger Beer"
+   }
+  ],
+  "notes": "",
+  "base": "Limoncello",
+  "taste": [
+   "Spicy",
+   "Bright"
+  ],
+  "method": "TBD",
+  "glass": "Mule mug",
+  "garnish": "Lemon twist"
+ },
+ {
+  "page": 55,
+  "section": "Mules",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Testabarra Mule",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "VoMich Vodka"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": "4 oz",
+    "ingredient": "Ginger Beer"
+   }
+  ],
+  "notes": "",
+  "base": "Vodka",
+  "taste": [
+   "Spicy",
+   "Bright"
+  ],
+  "method": "TBD",
+  "glass": "Mule mug",
+  "garnish": "Lime wedge"
+ },
+ {
+  "page": 56,
+  "section": "Mules",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Kentucky Mule",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Green River Bourbon"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": "4 oz",
+    "ingredient": "Ginger Beer"
+   }
+  ],
+  "notes": "",
+  "base": "Bourbon",
+  "taste": [
+   "Spicy",
+   "Rich"
+  ],
+  "method": "TBD",
+  "glass": "Mule mug",
+  "garnish": "Lime wedge"
+ },
+ {
+  "page": 57,
+  "section": "Mules",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Botanical Mule",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Spring 44 Gin"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": "4 oz",
+    "ingredient": "Ginger Beer"
+   }
+  ],
+  "notes": "",
+  "base": "Gin",
+  "taste": [
+   "Vegetal",
+   "Spicy",
+   "Bright"
+  ],
+  "method": "TBD",
+  "glass": "Mule mug",
+  "garnish": "Cucumber and mint"
+ },
+ {
+  "page": 58,
+  "section": "Mules",
+  "onMenu": false,
+  "spec": "house",
+  "name": "BRG Mexican Mule",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Mezcal"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime Juice"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Grapefruit"
+   },
+   {
+    "amount": "4 oz",
+    "ingredient": "Ginger Beer"
+   }
+  ],
+  "notes": "",
+  "base": "Mezcal",
+  "taste": [
+   "Spicy",
+   "Bright"
+  ],
+  "method": "TBD",
+  "glass": "Mule mug",
+  "garnish": "Grapefruit twist"
+ },
+ {
+  "page": 60,
+  "section": "Dessert Cocktails",
+  "onMenu": true,
+  "spec": "house",
+  "name": "Espresso Martini",
+  "price": "16",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Vanilla Vodka"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Mr. Black"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Demerara Syrup"
+   },
+   {
+    "amount": "Double shot",
+    "ingredient": "Espresso"
+   }
+  ],
+  "notes": "Shake vigorously, then draw chocolate across the foam.",
+  "base": "Vodka",
+  "taste": [
+   "Rich",
+   "Sweet"
+  ],
+  "method": "Hard shake",
+  "glass": "TBD",
+  "garnish": "3 coffee beans"
+ },
+ {
+  "page": 61,
+  "section": "Dessert Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Chocolate Martini",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Pearl Vanilla Bean Vodka"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Dorda Chocolate Liqueur"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Tia Maria"
+   }
+  ],
+  "notes": "",
+  "base": "Vodka",
+  "taste": [
+   "Sweet",
+   "Rich"
+  ],
+  "method": "Shake and pour",
+  "glass": "Martini",
+  "garnish": "Chocolate drizzle"
+ },
+ {
+  "page": 62,
+  "section": "Dessert Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Perfect Thyming",
+  "price": "",
+  "build": [
+   {
+    "amount": "1.5 oz",
+    "ingredient": "Hennessy"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Port Wine"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lemon"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Agave Nectar"
+   },
+   {
+    "amount": "1 sprig",
+    "ingredient": "Thyme, in the shaker"
+   }
+  ],
+  "notes": "",
+  "base": "Cognac",
+  "taste": [
+   "Herbal",
+   "Fruity",
+   "Rich"
+  ],
+  "method": "Shake with thyme, strain",
+  "glass": "TBD",
+  "garnish": "Thyme sprig"
+ },
+ {
+  "page": 64,
+  "section": "Spiritless Cocktails",
+  "onMenu": true,
+  "spec": "filler",
+  "name": "Cleaner Getaway",
+  "price": "",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Lyre’s Agave Blanco"
+   },
+   {
+    "amount": ".75 oz",
+    "ingredient": "Lime"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Agave"
+   },
+   {
+    "amount": "1 peel",
+    "ingredient": "Orange"
+   },
+   {
+    "amount": "Pinch",
+    "ingredient": "Salt"
+   }
+  ],
+  "notes": "",
+  "base": "Zero Proof",
+  "taste": [
+   "Bright",
+   "Sour"
+  ],
+  "method": "Shake",
+  "glass": "Rocks",
+  "garnish": "Orange peel"
+ },
+ {
+  "page": 65,
+  "section": "Spiritless Cocktails",
+  "onMenu": true,
+  "spec": "filler",
+  "name": "Co-No-Politan",
+  "price": "11",
+  "build": [
+   {
+    "amount": "2 oz",
+    "ingredient": "Lyre’s Pink London"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Lime"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Cranberry"
+   },
+   {
+    "amount": ".5 oz",
+    "ingredient": "Orange"
+   }
+  ],
+  "notes": "",
+  "base": "Zero Proof",
+  "taste": [
+   "Fruity",
+   "Sour"
+  ],
+  "method": "Shake",
+  "glass": "Martini",
+  "garnish": "Orange twist"
+ },
+ {
+  "page": 66,
+  "section": "Spiritless Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "No Troubles Just Bubbles",
+  "price": "",
+  "build": [
+   {
+    "amount": "1 oz",
+    "ingredient": "Orange Oleo Saccharum"
+   },
+   {
+    "amount": "Fill",
+    "ingredient": "7Up"
+   }
+  ],
+  "notes": "",
+  "base": "Zero Proof",
+  "taste": [
+   "Bubbly",
+   "Sweet"
+  ],
+  "method": "TBD",
+  "glass": "Tall fancy glass",
+  "garnish": "Orange, cherry"
+ },
+ {
+  "page": 67,
+  "section": "Spiritless Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Strawberry Basil Cooler",
+  "price": "",
+  "build": [
+   {
+    "amount": "1 oz",
+    "ingredient": "Strawberry Puree"
+   },
+   {
+    "amount": "Fill",
+    "ingredient": "Lemonade"
+   },
+   {
+    "amount": "Top",
+    "ingredient": "Sprite"
+   }
+  ],
+  "notes": "",
+  "base": "Zero Proof",
+  "taste": [
+   "Fruity",
+   "Sweet"
+  ],
+  "method": "TBD",
+  "glass": "Tall fancy glass",
+  "garnish": "Fresh strawberries, basil"
+ },
+ {
+  "page": 68,
+  "section": "Spiritless Cocktails",
+  "onMenu": false,
+  "spec": "house",
+  "name": "Blackberry Nojito",
+  "price": "",
+  "build": [
+   {
+    "amount": "1 oz",
+    "ingredient": "Berry Syrup"
+   },
+   {
+    "amount": "1 oz",
+    "ingredient": "Pom Juice"
+   },
+   {
+    "amount": "Fill",
+    "ingredient": "Sprite"
+   }
+  ],
+  "notes": "",
+  "base": "Zero Proof",
+  "taste": [
+   "Fruity",
+   "Bubbly"
+  ],
+  "method": "TBD",
+  "glass": "Tall fancy glass",
+  "garnish": "Blackberries, mint"
+ }
+]

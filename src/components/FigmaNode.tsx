@@ -312,7 +312,9 @@ function CarouselGroup({ children }: { children: ReactNode }) {
       const first = Math.round(el.scrollLeft / step);
       const gap = step - kids[0].offsetWidth;
       const shown = Math.max(1, Math.floor((el.clientWidth + gap + 2) / step));
-      setPos({ first, shown, total: kids.length, atStart: el.scrollLeft < 4, atEnd: el.scrollLeft + el.clientWidth >= el.scrollWidth - 4 });
+      // The manager's "Add" tile isn't a drink, so it doesn't count.
+      const total = kids.filter((k) => !(k.getAttribute('data-name') || k.querySelector('[data-name]')?.getAttribute('data-name') || '').startsWith('Add · ')).length;
+      setPos({ first, shown, total, atStart: el.scrollLeft < 4, atEnd: el.scrollLeft + el.clientWidth >= el.scrollWidth - 4 });
 
     };
     measure();

@@ -73,7 +73,7 @@ export function photoToCome(node, label = true, bowl = null) {
   ];
 }
 const lines = (v) => (Array.isArray(v) ? v : String(v || '').split('\n')).map((s) => String(s).trim()).filter(Boolean);
-const COURSE_SHORT = { 'Passed Bites': 'Passed', Plates: 'Plate', Dessert: 'Dessert', 'Snacks & Small Plates': 'Small Plate', Salads: 'Salad', Pizza: 'Pizza', Pasta: 'Pasta', Mains: 'Main' };
+const COURSE_SHORT = { 'Passed Bites': 'Passed', Plates: 'Plate', Dessert: 'Dessert', 'For the Table': 'For the Table', 'From the Oven': 'From the Oven', 'Soups & Salads': 'Soup & Salad', Entrees: 'Entree', 'Social Hour': 'Social Hour', 'Snacks & Small Plates': 'Small Plate', Salads: 'Salad', Pizza: 'Pizza', Pasta: 'Pasta', Mains: 'Main' };
 
 // Nov 4, Tommy: "Why are the pages looking different? … Need to create consistency through the app." Every dish page shows
 // every section in the same order. What the kitchen hasn't added yet reads "to come" in a muted colour (like photos).
@@ -261,7 +261,9 @@ export function dishPage(template, item, links = {}) {
   // Long names wrap onto a second line instead of running off the edge.
   find(header, byName('Titles')).sh = 'L'; tt[1].sh = 'L'; tt[1].ar = 'H';
   const info = find(header, byName('Info'));
-  setText(info.c.find((c) => c.t === 'T'), d.description || '');
+  const descT = info.c.find((c) => c.t === 'T');
+  setText(descT, d.description || '');
+  if (descT) { descT.sh = 'L'; descT.ar = 'H'; } // the Food Book's descriptions run longer than one line
 
   // Ingredients as one line of text; allergens as dark-red pills; "confirm with chef" notes while the chef hasn't signed off.
   const ingRow = find(header, byName('Ingredients'));
@@ -283,6 +285,11 @@ export function dishPage(template, item, links = {}) {
       if (!(d.allergens || []).length) setText(texts(note)[0], d.confirm ? 'NONE LISTED · CONFIRM WITH CHEF' : 'NONE');
       else if (!d.confirm) remove(allergens, note);
     }
+    // Pills and the confirm note wrap beside the label instead of running off the edge (Nov 5: longer allergen lists).
+    const label = allergens.c.find((c) => c.t === 'T');
+    const pills = allergens.c.filter((c) => c !== label);
+    if (pills.length) allergens.ca = 'S';
+    if (pills.length) allergens.c = [label, { t: 'F', n: 'Allergen pills', lm: 'H', wrap: true, gap: 6, cg: 6, sh: 'L', sv: 'H', ca: 'C', c: pills }].filter(Boolean);
   }
 
   // Components table

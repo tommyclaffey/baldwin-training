@@ -4,7 +4,7 @@ import { clone, find, findAll, byName, startsWith, texts, setText, repeat, photo
 import { COLLECTIONS, COURSES } from './cms.mjs';
 
 const TZ = 'America/Detroit';
-const SHORT = { 'Snacks & Small Plates': 'Small Plate', Salads: 'Salad', Pizza: 'Pizza', Pasta: 'Pasta', Mains: 'Main', Dessert: 'Dessert' };
+const SHORT = { 'For the Table': 'For the Table', 'From the Oven': 'From the Oven', 'Soups & Salads': 'Salad', Entrees: 'Entree', 'Social Hour': 'Social Hour', 'Snacks & Small Plates': 'Small Plate', Salads: 'Salad', Pizza: 'Pizza', Pasta: 'Pasta', Mains: 'Main', Dessert: 'Dessert' };
 const NOUN = { recipe: 'DISH', house: 'COCKTAIL', wine: 'WINE', shelf: 'BOTTLE', beer: 'BEER', classic: 'CLASSIC' };
 const LIST_PAGE = { shelf: '/the-bar/spirits', beer: '/the-bar/beer-and-draft' };
 const parentOf = (root, node) => (root.c || []).includes(node) ? root : (root.c || []).reduce((hit, c) => hit || parentOf(c, node), null);
@@ -66,7 +66,7 @@ export function fillHome(db, page, { store, user, recipes, house, wines, bowl })
   }
 
   // Tonight's focus: the signature dish.
-  const focus = recipes.find((e) => e.data.signature) || recipes.find((e) => e.data.course === 'Mains') || recipes[0];
+  const focus = recipes.find((e) => e.data.signature) || recipes.find((e) => ['Entrees', 'Mains'].includes(e.data.course)) || recipes[0];
   const hero = find(m, (n) => (n.n || '').startsWith('Hero · '));
   if (hero && focus) {
     const d = focus.data;
@@ -90,9 +90,9 @@ export function fillHome(db, page, { store, user, recipes, house, wines, bowl })
   const count = (...cs) => recipes.filter((e) => cs.includes(e.data.course)).length;
   const items = (n, one, many) => `${n} ${n === 1 ? one : many}`;
   const tile = (name, label) => { const t = find(m, byName('Tile · ' + name)); if (t) setText(texts(t)[1], label); };
-  tile('Small Plates', items(count('Snacks & Small Plates'), 'item', 'items'));
-  tile('Mains', items(count('Mains'), 'item', 'items'));
-  tile('Pizza & Pasta', items(count('Pizza', 'Pasta'), 'item', 'items'));
+  tile('Small Plates', items(count('For the Table', 'Social Hour', 'Snacks & Small Plates'), 'item', 'items'));
+  tile('Mains', items(count('Entrees', 'Mains'), 'item', 'items'));
+  tile('Pizza & Pasta', items(count('From the Oven', 'Pizza', 'Pasta'), 'item', 'items'));
   tile('Cocktails', items(house.length, 'drink', 'drinks'));
   tile('Wine', `${wines.length} on our list`);
 
