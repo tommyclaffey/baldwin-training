@@ -7,7 +7,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PRE_SHIFT, REVIEW, QUIZZES, answer, getReview, loadReview, lookup, markAnswer, passFor, quizById, refreshSignoffs, save, start, statusOf, titleOf, useQuiz, type Mark } from './store';
 
 /** A custom quiz id ("c:house+wine-glass:10") back into what to ask for. */
-const customOf = (id: string) => { const m = /^c:([^:]+):(\d+)$/.exec(id); return m ? { topics: m[1].split('+'), count: Number(m[2]) } : undefined; };
+// topics like "course:Mains" have a colon in them; the count is whatever follows the last one (Nov 5: Start Quiz did nothing)
+const customOf = (id: string) => { const m = /^c:(.+):(\d+)$/.exec(id); return m ? { topics: m[1].split('+').filter(Boolean), count: Number(m[2]) } : undefined; };
 const enc = encodeURIComponent;
 export const LEVELS: { key: Mark; label: string; sub: string }[] = [
   { key: 'red', label: 'Don’t know', sub: 'Back in your queue' },
