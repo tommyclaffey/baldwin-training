@@ -1,7 +1,7 @@
 // Quizzes written from the book itself (Tommy, Oct 30: "built-in quizzes, or you can customize what's in the quizzes").
 // Every question comes from a store's own dishes, cocktails, wines and beers, so a new restaurant gets quizzes the moment
 // its menu is in. A question's id ("price:123") is enough to write it again on the server, so scoring never trusts the phone.
-import { specHref } from './specs.mjs';
+import { specHref, specLists } from './specs.mjs';
 import { listEntries, COURSES } from './cms.mjs';
 import { allChapters, chapterSlug, shuffleSeeded } from './manual.mjs';
 
@@ -62,6 +62,10 @@ const baseFromBuild = (d) => { if ((d.build || []).filter((b) => SPIRIT_RE.test(
   return [['bourbon', 'Bourbon'], ['rye', 'Rye'], ['scotch', 'Scotch'], ['gin', 'Gin'], ['vodka', 'Vodka'], ['mezcal', 'Mezcal'], ['tequila', 'Tequila'], ['rum', 'Rum'], ['cachaça', 'Cachaça'], ['cognac', 'Cognac'], ['brandy', 'Brandy'], ['pisco', 'Pisco'], ['whiskey', 'Whiskey'], ['whisky', 'Whisky']].find(([k]) => new RegExp('\\b' + k + '\\b').test(l))?.[1] || ''; };
 
 /** The topics a person can pick, in the order they're shown. */
+/** The bartenders' spec quizzes, one per list on the Cocktail Specs page (Nov 6). */
+export const SPEC_TOPICS = [['spec:specialty', 'Specialty Cocktail Specs'], ['spec:brg', 'BRG Staples Specs'], ['spec:classic-on', 'Classics on the Menu Specs'], ['spec:mules', 'Mule Specs'], ['spec:dessert', 'Dessert Cocktail Specs'], ['spec:spiritless', 'Spiritless Cocktail Specs'], ['spec:house', 'House Cocktail Specs'], ['spec:classic-off', 'Classics off the Menu Specs'], ['spec:classic', 'Classic Cocktail Specs']];
+/** A question only bartenders need (an amount, the ice): kept out of the Quick Quiz. */
+export const barOnly = (q) => q.topics.every((t) => t.startsWith('spec:'));
 export function topicList(pool) {
   const count = (k) => pool.filter((q) => q.topics.includes(k)).length;
   const t = [
@@ -80,12 +84,13 @@ export function topicList(pool) {
     { key: 'beer', label: 'Beer', group: 'Bar' },
     { key: 'allergens', label: 'Allergens', group: 'Know It Cold' },
     { key: 'pairings', label: 'Pairings', group: 'Know It Cold' },
+    ...SPEC_TOPICS.map(([key, label]) => ({ key, label, group: 'Cocktail Specs · For Bartenders' })),
     ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
   ];
   return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= 3);
 }
 /** Topics that are also sign-off quizzes on their own. */
-export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || ['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house', 'classic-on', 'classic-off', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
+export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || key.startsWith('spec:') || ['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house', 'classic-on', 'classic-off', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
 
 /** Every question this store's book can ask. */
 export function questionPool(db, store) {
@@ -101,7 +106,7 @@ export function questionPool(db, store) {
     if (bad(right)) return;
     const r = rng(ref);
     // No near-twins of the answer ("Stir" next to "Stirred", "Rocks" next to "Rocks or coupe"), and no near-twins of each other.
-    const key = (x) => x.toLowerCase().replace(/\b(then|and|or|a|the|with)\b/g, '').replace(/[^a-z0-9$]/g, '').replace(/(ed|ing|s)$/, '');
+    const key = (x) => x.toLowerCase().replace(/\b(then|and|or|a|the|with)\b/g, '').replace(/[^a-z0-9$¼½¾⅓⅔⅛⅜⅙⅚.]/g, '').replace(/(ed|ing|s)$/, ''); // fractions and decimal points count ("¾ oz" isn't "½ oz")
     const close = (a, b) => key(a) === key(b) || (Math.min(a.length, b.length) <= 24 && (a.toLowerCase().includes(b.toLowerCase()) || b.toLowerCase().includes(a.toLowerCase())));
     const others = [];
     for (const x of shuffle(uniq(pool), r)) { if (others.length === 3) break; if (!close(x, right) && !others.some((o) => close(o, x)) && (!different || different(x, others))) others.push(x); }
@@ -209,6 +214,50 @@ export function questionPool(db, store) {
       const extras = mine.filter((x) => !x.spirit && words(x.ingredient).length && !/ or |optional|^water$/i.test(x.ingredient));
       const extra = extras.length ? extras[Math.floor(rng('in:' + e.id)() * extras.length)] : null;
       if (extra) ask('in:' + e.id, { ...base, q: `Which of these is in ${the(n)}?`, right: ingName(extra.ingredient), pool: drinks.flatMap((x) => (x.data.build || []).map((y) => ingName(y?.ingredient))).filter((i) => i && !/ or |optional|^water$/i.test(i) && !mine.some((m) => shares(m.ingredient, i)) && !shares(n, i) && !(madeWithSugar && /simple|sugar|demerara/i.test(i))), different: (x, others) => !others.some((o) => shares(o, x)), why: mine.map((x) => [x.amount, x.ingredient].filter(Boolean).join(' ')).join(', ') + '.', topics: [topic] });
+    }
+  }
+
+  /* Cocktail Specs, for bartenders (Nov 6, Tommy: "a specs section … for bartenders and all the cocktails and the specs that
+     they need to study … for the quiz"). One topic per list on the Cocktail Specs page. Each drink's method, glass and garnish
+     questions count toward it, plus how much of each ingredient goes in and what ice it takes. */
+  const SPEC_UNITS = { oz: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 4], dash: [1, 2, 3, 4, 5, 6] };
+  const FRAC = { '¼': 0.25, '½': 0.5, '¾': 0.75, '⅓': 1 / 3, '⅔': 2 / 3, '⅛': 0.125, '⅜': 0.375, '⅙': 1 / 6, '⅚': 5 / 6 };
+  const SHOW = { 0.25: '¼', 0.5: '½', 0.75: '¾' };
+  // "1½ oz", ".75 oz", "2 dashes" → { n, unit, frac } (fraction style or decimal style, to write the wrong answers the same way)
+  const measure = (a) => {
+    const m = String(a || '').trim().match(/^(\d*\.?\d*)\s*([¼½¾⅓⅔⅛⅜⅙⅚]?)\s*(oz|dash|dashes)$/i);
+    if (!m || (!m[1] && !m[2])) return null;
+    const n = (m[1] ? parseFloat(m[1]) : 0) + (FRAC[m[2]] || 0);
+    return n > 0 ? { n: Math.round(n * 1000) / 1000, unit: /^dash/i.test(m[3]) ? 'dash' : 'oz', frac: !!m[2] || !m[1].includes('.') } : null;
+  };
+  const write = (n, unit, frac) => {
+    if (unit === 'dash') return `${n} dash${n === 1 ? '' : 'es'}`;
+    const whole = Math.floor(n), part = Math.round((n - whole) * 100) / 100;
+    if (frac) return `${whole || ''}${part ? SHOW[part] : ''} oz`.trim();
+    return `${String(n).replace(/^0\./, '.')} oz`;
+  };
+  const specs = specLists(house, classics);
+  const specOf = new Map();
+  for (const l of specs) for (const { e } of l.items) specOf.set(e.id, 'spec:' + l.key);
+  // Method, glass and garnish are part of the spec: those questions count toward the drink's specs list too.
+  for (const q of out) { const m = q.ref.match(/^(method|glass|garnish):(\d+)$/); const k = m && specOf.get(Number(m[2])); if (k) q.topics = [...q.topics, k]; }
+  const ICE = [['up', /^none|served up|chilled glass|^up\b/i, 'None (served up)'], ['cubes', /cube|^ice$|fresh ice|shaker ice/i, 'Cubes'], ['large', /large cube/i, 'Large cube'], ['crushed', /crushed|cracked/i, 'Crushed'], ['hot', /served hot/i, 'None (served hot)']];
+  const iceFam = (x) => (ICE.find(([k, re]) => k === 'large' && re.test(x || '')) || ICE.find(([, re]) => re.test(x || '')) || [])[0];
+  for (const l of specs) {
+    const topic = 'spec:' + l.key;
+    for (const { e } of l.items) {
+      const d = e.data, n = d.name, base = { page: specHref(n), label: n + ' · spec' };
+      const lines = (d.build || []).filter((b) => b && b.ingredient && !/ or |optional/i.test(b.ingredient));
+      // The house book writes decimals (.75 oz), the classics fractions (¾ oz): wrong answers follow the drink's own style.
+      const fracStyle = (d.build || []).some((b) => /[¼½¾⅓⅔⅛⅜⅙⅚]/.test(b?.amount || ''));
+      lines.forEach((b, i) => {
+        const ms = measure(b.amount);
+        if (!ms || lines.filter((x) => ingName(x.ingredient).toLowerCase() === ingName(b.ingredient).toLowerCase()).length > 1) return;
+        const near = SPEC_UNITS[ms.unit].filter((v) => Math.abs(v - ms.n) > 0.01).sort((a, c) => Math.abs(a - ms.n) - Math.abs(c - ms.n)).slice(0, 5);
+        ask(`amt:${e.id}:${i}`, { ...base, q: `How much ${ingName(b.ingredient)} goes in ${the(n)}?`, right: b.amount, pool: near.map((v) => write(v, ms.unit, fracStyle)), why: lines.map((x) => [x.amount, x.ingredient].filter(Boolean).join(' ')).join(', ') + '.', topics: [topic] });
+      });
+      const fam = iceFam(d.ice);
+      if (d.ice && fam && !/ or /i.test(d.ice)) ask('ice:' + e.id, { ...base, q: `What ice goes in ${the(n)}?`, right: d.ice, pool: ICE.filter(([k]) => k !== fam && !(fam === 'up' && k === 'hot') && !(fam === 'hot' && k === 'up')).map(([, , label]) => label), why: `${d.ice}.`, topics: [topic] });
     }
   }
 
