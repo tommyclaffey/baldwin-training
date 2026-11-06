@@ -2,7 +2,7 @@
 // The old hand-written bank (content/quizzes.json) only names old results now.
 import fs from 'node:fs';
 import path from 'node:path';
-import { questionPool, topicList, forTopics, pick, passFor, PASS_PCT, BUILT_IN } from './quizgen.mjs';
+import { questionPool, topicList, forTopics, pick, passFor, PASS_PCT, BUILT_IN, SPEC_TOPICS, barOnly } from './quizgen.mjs';
 import { listEntries, COURSES } from './cms.mjs';
 import { chapterBySlug } from './manual.mjs';
 
@@ -27,6 +27,7 @@ export function catalog(db, store) {
   const pool = questionPool(db, store);
   const topics = topicList(pool);
   const photoFor = (key) => {
+    if (key.startsWith('spec:')) key = key.slice(5); // a specs quiz shows the same drink as its list
     const col = key.startsWith('course:') ? 'recipe' : ['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house'].includes(key) ? 'house' : key === 'classic' || key === 'classic-off' ? 'classic' : key === 'classic-on' ? 'house' : null;
     if (!col) return null;
     const section = { 'classic-on': 'Classics', specialty: 'Specialty Cocktails', brg: 'BRG Staples', mules: 'Mules', dessert: 'Dessert Cocktails', spiritless: 'Spiritless Cocktails' }[key];
@@ -56,6 +57,7 @@ function topicsOf(db, store, id) {
 }
 export function labelOf(key) {
   const L = { 'classic-on': 'Classic Cocktails on the Menu', 'classic-off': 'Classic Cocktails off the Menu', specialty: 'Specialty Cocktails', brg: 'BRG Favorites', mules: 'Mules', dessert: 'Dessert Cocktails', spiritless: 'Spiritless Cocktails', house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings' };
+  if (key.startsWith('spec:')) return SPEC_TOPICS.find(([k]) => k === key)?.[1] || key;
   if (key.startsWith('study:')) { const ch = chapterBySlug(key.slice(6)); return ch ? `Study Guide · ${ch.title}` : key; }
   return key.startsWith('course:') ? key.slice(7) : L[key] || key;
 }
@@ -67,7 +69,9 @@ export const customId = (topics, count) => `c:${[...new Set(topics)].sort().join
 export function startQuiz(db, store, id, userId = null, { fresh = false } = {}) {
   const def = topicsOf(db, store, id);
   if (!def) return null;
-  const pool = questionPool(db, store);
+  const all = questionPool(db, store);
+  // The Quick Quiz is for everyone, so bartender-only questions (amounts, ice) stay out of it.
+  const pool = id === PRE_SHIFT ? all.filter((q) => !barOnly(q)) : all;
   const deck = id !== REVIEW && userId ? rotation(db, store, userId, id, fresh) : null;
   // Picks n from a list, questions not yet seen this round first; a short round is topped up from the next one.
   const draw = (list, n) => {
