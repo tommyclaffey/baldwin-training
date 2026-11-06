@@ -612,7 +612,7 @@ test('demo: /demo starts a private copy with a sample menu; risky actions are of
 });
 
 test('quiz answers match the books in the Quiz Updates folder (Nov 5)', async () => {
-  const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['house', 'classic', 'wine-glass', 'wine-bottle', 'allergens', 'For the Table'.replace(/^/, 'course:')], count: 0 } })).data;
+  const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['specialty', 'brg', 'house', 'classic', 'wine-glass', 'wine-bottle', 'allergens', 'For the Table'.replace(/^/, 'course:')], count: 0 } })).data;
   const qs = Object.values(all.questions);
   const answer = (re) => qs.filter((x) => re.test(x.q)).map((x) => x.options[x.answer]);
   assert.deepEqual(answer(/base of the Veggie Spritz/), ['Chartreuse'], 'the Drink Book profile, not the first line of the build');

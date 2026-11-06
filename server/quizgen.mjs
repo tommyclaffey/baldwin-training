@@ -65,6 +65,8 @@ export function topicList(pool) {
   const count = (k) => pool.filter((q) => q.topics.includes(k)).length;
   const t = [
     ...COURSES.map((c) => ({ key: 'course:' + c, label: c, group: 'Food' })),
+    { key: 'specialty', label: 'Specialty Cocktails', group: 'Bar' },
+    { key: 'brg', label: 'BRG Favorites', group: 'Bar' },
     { key: 'house', label: 'House Cocktails', group: 'Bar' },
     { key: 'classic', label: 'Classic Cocktails', group: 'Bar' },
     { key: 'wine-glass', label: 'Wine by the Glass', group: 'Bar' },
@@ -77,7 +79,7 @@ export function topicList(pool) {
   return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= 3);
 }
 /** Topics that are also sign-off quizzes on their own. */
-export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || ['house', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
+export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || ['specialty', 'brg', 'house', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
 
 /** Every question this store's book can ask. */
 export function questionPool(db, store) {
@@ -150,7 +152,12 @@ export function questionPool(db, store) {
   /* cocktails. The Baldwin's bar is its Drink Book: the house list, with the book's classics as the Classic Cocktails topic.
      A store whose list has no Classics section quizzes the shared classics instead. */
   const ownClassics = house.filter((x) => x.data.menuSection === 'Classics');
-  const sets = ownClassics.length ? [[house.filter((x) => x.data.menuSection !== 'Classics'), 'house'], [ownClassics, 'classic']] : [[house, 'house'], [classics, 'classic']];
+  // Nov 5, Tommy: the Specialty Cocktails (the Baldwin's signatures on the menu) and the BRG favorites (the menu's BRG Staples)
+  // are their own categories; the rest of the house list stays House Cocktails.
+  const SECTION_TOPIC = { 'Specialty Cocktails': 'specialty', 'BRG Staples': 'brg', Classics: 'classic' };
+  const topicOf = (x) => SECTION_TOPIC[x.data.menuSection] || 'house';
+  const own = (k) => house.filter((x) => topicOf(x) === k);
+  const sets = [[own('specialty'), 'specialty'], [own('brg'), 'brg'], [own('house'), 'house'], [ownClassics.length ? ownClassics : classics, 'classic']];
   const drinks = sets.flatMap(([l]) => l);
   const baseOf = (x) => (x.data.base !== undefined ? clean(x.data.base) : baseFromBuild(x.data));
   const METHODS = ['Shaken', 'Stirred', 'Built in the glass', 'Blended'];

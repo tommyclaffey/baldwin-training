@@ -27,9 +27,10 @@ export function catalog(db, store) {
   const pool = questionPool(db, store);
   const topics = topicList(pool);
   const photoFor = (key) => {
-    const col = key.startsWith('course:') ? 'recipe' : key === 'house' ? 'house' : key === 'classic' ? 'classic' : null;
+    const col = key.startsWith('course:') ? 'recipe' : ['specialty', 'brg', 'house'].includes(key) ? 'house' : key === 'classic' ? 'classic' : null;
     if (!col) return null;
-    const list = listEntries(db, col, col === 'classic' ? null : store).filter((e) => e.data.photo && (!key.startsWith('course:') || e.data.course === key.slice(7)));
+    const section = { specialty: 'Specialty Cocktails', brg: 'BRG Staples' }[key];
+    const list = listEntries(db, col, col === 'classic' ? null : store).filter((e) => e.data.photo && (!key.startsWith('course:') || e.data.course === key.slice(7)) && (!section || e.data.menuSection === section) && (key !== 'house' || !['Specialty Cocktails', 'BRG Staples', 'Classics'].includes(e.data.menuSection)));
     return list[0]?.data.photo || null;
   };
   // Nov 5, Tommy: "no som quizzes in the sign off sections". Every quiz carries its group (Food, Bar, Know it cold,
@@ -54,7 +55,7 @@ function topicsOf(db, store, id) {
   return null;
 }
 export function labelOf(key) {
-  const L = { house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings' };
+  const L = { specialty: 'Specialty Cocktails', brg: 'BRG Favorites', house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings' };
   if (key.startsWith('study:')) { const ch = chapterBySlug(key.slice(6)); return ch ? `Study Guide · ${ch.title}` : key; }
   return key.startsWith('course:') ? key.slice(7) : L[key] || key;
 }
