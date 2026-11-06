@@ -657,3 +657,14 @@ test('cocktail specs live on their own page; the cocktail pages and the Cocktail
     }
   }
 });
+
+test('the Cocktails page lists every classic by its own name (Nov 6: every row read "Manhattan")', async () => {
+  const all = (n, f, out = []) => { if (f(n)) out.push(n); (n.c || []).forEach((c) => all(c, f, out)); return out; };
+  const page = (await call('/api/page/14-2')).data;
+  const rows = all(page.main, (n) => (n.n || '').startsWith('Classic row · '));
+  assert.ok(rows.length > 20);
+  const firstText = (n) => all(n, (x) => x.t === 'T')[0]?.s;
+  for (const r of rows) assert.equal(firstText(r), r.n.slice('Classic row · '.length), r.n + ' shows its own name');
+  const house = all(page.main, (n) => (n.n || '').startsWith('Row · ') && !n.n.includes('Zero-proof'));
+  for (const r of house) assert.equal(firstText(r), r.n.slice('Row · '.length), r.n + ' shows its own name');
+});
