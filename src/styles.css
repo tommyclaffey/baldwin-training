@@ -1318,3 +1318,18 @@ body.eip-lock { overflow: hidden; }
 .account-row { flex-wrap: wrap; row-gap: 12px; }
 .account-who { flex: 1 1 calc(100% - 46px); }
 .account-out { flex: 1 1 100%; min-height: 38px; border-radius: 10px; font-size: 13.5px; }
+/* Food Matrix on phones (Nov 5, Tommy: "fix layout and white space"): the filter groups use the full width, options in two
+   even columns; Table/Cards and Print share the width under the title. */
+@media (max-width: 859px) {
+  [data-name="Filters"] > [data-name^="Filter · "][data-name][data-name] { width: 100% !important; display: grid !important; grid-template-columns: 1fr 1fr; gap: 12px 16px !important; }
+  [data-name="Filters"] > [data-name^="Filter · "][data-name][data-name] > .ftext { grid-column: 1 / -1; }
+  [data-name="Filters"] > [data-name^="Filter · "] [data-name^="Option · "][data-name] { width: auto !important; min-width: 0; }
+  [data-name="Page title"] > [data-name="Actions"]:has([data-name="View toggle"]) { width: 100% !important; display: grid !important; grid-template-columns: 1fr auto; gap: 12px !important; }
+  [data-name="Actions"] > [data-name="View toggle"] { width: 100% !important; }
+  [data-name="Actions"] > [data-name="View toggle"] > * { flex: 1 1 0 !important; justify-content: center !important; }
+}
+@media (max-width: 859px) {
+  [data-name="Actions"] > [data-name="View toggle"] > [data-name^="Option · "] { justify-content: center !important; }
+  [data-name="Actions"] > [data-name="View toggle"] > [data-name^="Option · "] > .ftext { width: auto !important; flex: 0 0 auto !important; text-align: center; }
+  [data-name="Filters"] [data-name="Button · Reset"] { width: 100% !important; align-self: stretch !important; justify-content: center !important; }
+}

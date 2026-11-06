@@ -110,6 +110,14 @@ export function questionPool(db, store) {
     out.push({ ref, q, options, answer: options.indexOf(right), why, page, label, topics });
   };
 
+  // Nov 5, Tommy: "this is not true; this can go with any red meat". The Food Book names one similar and one opposite wine
+  // per dish, so a wrong answer is only fair when it can't pair: it's the other colour. Reds are one side; whites, bubbles
+  // and sweet whites the other. A Food Book pairing ("Cappone Chianti") is matched to its wine on the list for its colour.
+  const pairWords = (w) => words(`${w.data.name} ${w.data.grape || ''} ${w.data.region || ''}`);
+  const wineFor = (p) => { const w = words(p); return w.length ? wines.find((x) => { const all = pairWords(x); return w.every((a) => all.some((b) => b.startsWith(a) || a.startsWith(b))); }) : null; };
+  const side = (w) => (!w ? null : /^red$/i.test(w.data.color || '') ? 'red' : /^(white|bubbles)$/i.test(w.data.color || '') ? 'light' : null);
+  const sideOf = (p) => side(wineFor(p));
+
   /* dishes */
   const dishName = (e) => e.data.name;
   for (const e of recipes) {
@@ -119,7 +127,8 @@ export function questionPool(db, store) {
     // Nov 5 review: no "which allergens are listed" combos (the book's allergen matrix is a draft; options differing by one tag aren't fair).
     // Pairings: wrong answers are other wines and cocktails the Food Book pairs, never this dish's own (similar or opposite).
     const mineW = [d.pairing, d.pairingOpposite].filter(Boolean).map((x) => x.toLowerCase());
-    if (d.pairing) ask('wine:' + e.id, { ...base, q: `Which wine do we suggest with ${the(n)}?`, right: d.pairing, pool: recipes.flatMap((x) => [x.data.pairing, x.data.pairingOpposite]).filter((x) => x && !mineW.includes(x.toLowerCase())), why: `${d.pairing} is the similar pairing${d.pairingOpposite ? `; ${d.pairingOpposite} is the opposite` : ''}.`, topics: [course, 'pairings'] });
+    const mySide = sideOf(d.pairing);
+    if (d.pairing && mySide) ask('wine:' + e.id, { ...base, q: `Which wine do we suggest with ${the(n)}?`, right: d.pairing, pool: recipes.flatMap((x) => [x.data.pairing, x.data.pairingOpposite]).filter((x) => x && !mineW.includes(x.toLowerCase()) && sideOf(x) && sideOf(x) !== mySide), why: `${d.pairing} is the similar pairing${d.pairingOpposite ? `; ${d.pairingOpposite} is the opposite` : ''}.`, topics: [course, 'pairings'] });
     if (d.cocktail) ask('cocktail:' + e.id, { ...base, q: `Which cocktail do we pair with ${the(n)}?`, right: d.cocktail, pool: recipes.map((x) => x.data.cocktail).filter((x) => x && x.toLowerCase() !== d.cocktail.toLowerCase()), why: `Suggest the ${d.cocktail}.`, topics: [course, 'pairings'] });
     if (d.inspiration) ask('inspired:' + e.id, { ...base, q: `What’s the idea behind ${the(n)}?`, right: d.inspiration, pool: recipes.filter((x) => x.data.course !== d.course).map((x) => x.data.inspiration), why: `${d.inspiration}.`, topics: [course] });
     if (d.dropSide) ask('side:' + e.id, { ...base, q: `What comes on the side of ${the(n)}?`, right: d.dropSide, pool: recipes.map((x) => x.data.dropSide), why: `${d.dropSide}.`, topics: [course] });
@@ -220,7 +229,10 @@ export function questionPool(db, store) {
     const sim = recipes.filter((x) => named(x.data.pairing));
     const any = new Set([...sim, ...recipes.filter((x) => named(x.data.pairingOpposite))]);
     const dish = sim.length ? sim[Math.floor(rng('pairs:' + e.id)() * sim.length)] : null;
-    if (dish) ask('pairs:' + e.id, { ...base, q: `Which dish do we suggest ${the(n)} with?`, right: dish.data.name, pool: recipes.filter((x) => !any.has(x)).map(dishName), why: `${the(dish.data.name)[0].toUpperCase() + the(dish.data.name).slice(1)} lists it as the similar pairing.`, topics: [topic, 'pairings'] });
+    // Wrong dishes are ones the book pairs only with the other colour (a red's wrong answers pair with whites or bubbles).
+    const mine = side(e);
+    const otherSide = (x) => { const a = sideOf(x.data.pairing), b = x.data.pairingOpposite ? sideOf(x.data.pairingOpposite) : a; return a && b && a !== mine && b !== mine; };
+    if (dish && mine) ask('pairs:' + e.id, { ...base, q: `Which dish do we suggest ${the(n)} with?`, right: dish.data.name, pool: recipes.filter((x) => !any.has(x) && otherSide(x)).map(dishName), why: `${the(dish.data.name)[0].toUpperCase() + the(dish.data.name).slice(1)} lists it as the similar pairing.`, topics: [topic, 'pairings'] });
   }
 
   /* beer */
