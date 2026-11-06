@@ -558,7 +558,7 @@ export function QuizResults() {
                           </tr>
                         );
                       })}
-                      {p.quizzes['pre-shift'] && <tr><td>Pre-Shift Quiz</td><td>{p.quizzes['pre-shift'].best}/{p.quizzes['pre-shift'].total}</td><td>{p.quizzes['pre-shift'].attempts}</td><td>Practice</td><td /></tr>}
+                      {p.quizzes['pre-shift'] && <tr><td>Quick Quiz</td><td>{p.quizzes['pre-shift'].best}/{p.quizzes['pre-shift'].total}</td><td>{p.quizzes['pre-shift'].attempts}</td><td>Practice</td><td /></tr>}
                     </tbody>
                   </table>
                 )}

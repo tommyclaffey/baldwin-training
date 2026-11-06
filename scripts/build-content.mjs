@@ -48,6 +48,8 @@ function prep(node, texts) {
   if (node.to && LINK_TO[node.to]) node.to = LINK_TO[node.to];
   if (node.to && !/^https?:\/\//.test(node.to)) node.to = slugById[node.to] !== undefined ? '/' + slugById[node.to] : undefined;
   if (node.f) for (const f of node.f) if (f.img) f.img = imgFile[f.img] ? '/img/' + imgFile[f.img] : undefined;
+  // Renamed in Figma Nov 5 (Tommy: "Pre-Shift Quiz sounds weird"); older exports still carry the old label.
+  if (node.t === 'T' && node.s === 'Pre-Shift Quiz') node.s = 'Quick Quiz';
   if (node.t === 'T' && texts) texts.push(node.s);
   if (node.c) node.c.forEach((c) => prep(c, texts));
   return node;

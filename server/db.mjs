@@ -164,6 +164,12 @@ const MIGRATIONS = [
   `
   CREATE TABLE manual_reads(user_id INT NOT NULL, slug TEXT NOT NULL, at TEXT NOT NULL, PRIMARY KEY(user_id, slug));
   `,
+  // 13 (Nov 5, Tommy: "give me the next set of questions without repeating"): the questions each person has had in each
+  // quiz this round. New Questions skips them; once every question has come up (or they press Start Over) the round resets.
+  `
+  CREATE TABLE quiz_seen(user_id INT NOT NULL, store_id INT NOT NULL, quiz TEXT NOT NULL, ref TEXT NOT NULL, at TEXT NOT NULL,
+    PRIMARY KEY(user_id, store_id, quiz, ref));
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
