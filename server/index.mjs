@@ -162,7 +162,7 @@ async function api(req, res, url) {
   if (p === '/api/quiz/attempt' && m === 'POST') {
     const u = needReader(c, req);
     if (!quizLimiter.check('u' + u.id)) fail(429, 'Too many saves. Try again in an hour.');
-    const b = await readJson(req, 20_000);
+    const b = await readJson(req, 150_000); // a Full Quiz can be hundreds of questions (Nov 6: 50, 100 and Full didn't save)
     const r = scoreQuiz(db, c.store, String(b.quiz || ''), b.items, b.answers);
     if (!r) fail(400, 'That quiz didn’t match. Reload and try again.');
     quizLimiter.record('u' + u.id);

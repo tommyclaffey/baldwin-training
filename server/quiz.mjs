@@ -146,7 +146,7 @@ export function setMark(db, store, userId, ref, mark) {
 /** Scores an attempt from scratch: every question must exist and belong to the quiz. */
 export function score(db, store, quiz, items, answers) {
   const def = topicsOf(db, store, quiz);
-  if (!def || !Array.isArray(items) || !Array.isArray(answers) || !items.length || items.length > 20 || answers.length !== items.length) return null;
+  if (!def || !Array.isArray(items) || !Array.isArray(answers) || !items.length || items.length > 1000 || answers.length !== items.length) return null;
   const pool = new Map(questionPool(db, store).map((q) => [q.ref, q]));
   let right = 0;
   for (let i = 0; i < items.length; i++) {

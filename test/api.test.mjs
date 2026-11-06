@@ -566,10 +566,13 @@ test('demo: your own account is kept aside and Exit Demo puts it back; the real 
 test('build your own quiz: any mix of topics makes a test on the spot; dish questions are for the floor, not the kitchen', async () => {
   const q = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Entrees', 'allergens', 'study:france'], count: 10 } })).data;
   assert.equal(q.items.length, 10, 'a course, a chapter and allergens together (these used to come back "couldn’t find that quiz")');
-  const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Entrees'], count: 20 } })).data;
+  const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Entrees'], count: 0 } })).data; // every Entrees question (20 random ones could miss the allergy kind)
   const qs = Object.values(all.questions).map((x) => x.q).join(' ');
   assert.ok(!/station/i.test(qs), 'no kitchen station questions');
   assert.ok(/allergy/.test(qs), 'guest allergy questions');
+  // A long quiz saves too (it was capped at 20 questions, so 50, 100 and Full Quiz never reached a manager).
+  const saved = await call('/api/quiz/attempt', { method: 'POST', body: { quiz: all.id, items: all.items, answers: all.items.map(() => 0) } });
+  assert.equal(saved.status, 200, 'a ' + all.items.length + '-question quiz saves');
 });
 
 test('Court alignment: Level 2 lessons, the Court’s outcome on lessons, and its documents on the hub', async () => {
