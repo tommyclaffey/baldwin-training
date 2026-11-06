@@ -61,7 +61,7 @@ test('writes need a session and the X-BT header', async () => {
 test('the CMS starts with every classic, house cocktail and dish from the design', async () => {
   const cols = (await call('/api/collections')).data;
   assert.equal(cols.counts.classic, 58);
-  assert.equal(cols.counts.house, 58, 'every drink in the Drink Book (Nov 5)');
+  assert.equal(cols.counts.house, 43, 'every drink on the Cocktail Descriptions sheet (Nov 5)');
   assert.equal(cols.counts.shelf, 92, "Mionetto moved to the wine list");
   assert.equal(cols.counts.beer, 15);
   assert.equal(cols.counts.recipe, 37, 'the Food Book’s 37 dishes (Quiz Updates, Nov 5)');
@@ -70,7 +70,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   // Level 1 (content/manual) and Level 2 (content/manual-l2, Nov 2) chapters
   const readDir = (d) => (fs.existsSync(path.join(root, d)) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'))) : []);
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
-  assert.equal(index.length, 674 + manual.reduce((a, c) => a + 1 + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus the Drink Book’s 58 drinks, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  assert.equal(index.length, 659 + manual.reduce((a, c) => a + 1 + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -196,7 +196,7 @@ test('quizzes are written from the book, scored by the server; custom and team q
   const sam = person();
   assert.equal((await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Server', pin: '4321', storeId: 1 } })).status, 200);
   const cat = (await sam('/api/quiz/catalog')).data;
-  assert.ok(cat.topics.some((t) => t.key === 'course:Entrees') && cat.topics.some((t) => t.key === 'house'), 'topics come from the menu');
+  assert.ok(cat.topics.some((t) => t.key === 'course:Entrees') && cat.topics.some((t) => t.key === 'specialty'), 'topics come from the menu');
   assert.ok(cat.quizzes.some((q) => q.id === 't:course:Entrees'), 'a built-in quiz per course');
   // A built-in quiz: every answer right.
   const q = (await sam('/api/quiz/start', { method: 'POST', body: { quiz: 't:course:Entrees' } })).data;
@@ -205,17 +205,17 @@ test('quizzes are written from the book, scored by the server; custom and team q
   const r = await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: right } });
   assert.deepEqual(r.data, { score: 10, total: 10, passed: true });
   // A question from another topic is refused; no account, no score.
-  const other = (await sam('/api/quiz/start', { method: 'POST', body: { quiz: 't:house' } })).data;
+  const other = (await sam('/api/quiz/start', { method: 'POST', body: { quiz: 't:specialty' } })).data;
   assert.equal((await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: [other.items[0]], answers: [0] } })).status, 400);
   assert.equal((await call('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: right }, auth: false })).status, 401);
   // A custom mix.
-  const c = (await sam('/api/quiz/start', { method: 'POST', body: { topics: ['house', 'wine-glass'], count: 5 } })).data;
-  assert.equal(c.id, 'c:house+wine-glass:5');
+  const c = (await sam('/api/quiz/start', { method: 'POST', body: { topics: ['specialty', 'wine-glass'], count: 5 } })).data;
+  assert.equal(c.id, 'c:specialty+wine-glass:5');
   assert.equal(c.items.length, 5);
   assert.equal((await sam('/api/quiz/attempt', { method: 'POST', body: { quiz: c.id, items: c.items, answers: c.items.map((ref) => c.questions[ref].answer) } })).data.score, 5);
   // Staff can't save a team quiz; a manager can, and it joins the list.
-  assert.equal((await sam('/api/quiz/sets', { method: 'POST', body: { name: 'X', topics: ['house'], count: 5 } })).status, 403);
-  const set = (await call('/api/quiz/sets', { method: 'POST', body: { name: 'Bar week 2', topics: ['house', 'classic'], count: 10 } })).data;
+  assert.equal((await sam('/api/quiz/sets', { method: 'POST', body: { name: 'X', topics: ['specialty'], count: 5 } })).status, 403);
+  const set = (await call('/api/quiz/sets', { method: 'POST', body: { name: 'Bar week 2', topics: ['specialty', 'classic-on'], count: 10 } })).data;
   assert.ok((await sam('/api/quiz/catalog')).data.quizzes.some((x) => x.id === set.id && x.title === 'Bar week 2'));
   // Results and sign-off.
   assert.equal((await sam('/api/quiz/results')).status, 403, 'staff can’t see everyone’s scores');
@@ -318,7 +318,7 @@ test('review queue: mark each answer; red and yellow come back until they are gr
   const kit = person();
   assert.equal((await kit('/api/join', { method: 'POST', body: { code, name: 'Odette Vale', pin: '2468', storeId: 1 } })).status, 200);
   assert.equal((await kit('/api/quiz/start', { method: 'POST', body: { quiz: 'review' } })).status, 404, 'empty queue');
-  const q = (await kit('/api/quiz/start', { method: 'POST', body: { quiz: 't:house' } })).data;
+  const q = (await kit('/api/quiz/start', { method: 'POST', body: { quiz: 't:specialty' } })).data;
   const [a, b, c] = q.items;
   assert.equal((await kit('/api/quiz/mark', { method: 'POST', body: { ref: a, mark: 'purple' } })).status, 400);
   assert.equal((await kit('/api/quiz/mark', { method: 'POST', body: { ref: 'price:999999', mark: 'red' } })).status, 400);
@@ -612,7 +612,7 @@ test('demo: /demo starts a private copy with a sample menu; risky actions are of
 });
 
 test('quiz answers match the books in the Quiz Updates folder (Nov 5)', async () => {
-  const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['specialty', 'brg', 'house', 'classic', 'wine-glass', 'wine-bottle', 'allergens', 'For the Table'.replace(/^/, 'course:')], count: 0 } })).data;
+  const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house', 'classic-on', 'classic-off', 'wine-glass', 'wine-bottle', 'allergens', 'For the Table'.replace(/^/, 'course:')], count: 0 } })).data;
   const qs = Object.values(all.questions);
   const answer = (re) => qs.filter((x) => re.test(x.q)).map((x) => x.options[x.answer]);
   assert.deepEqual(answer(/base of the Veggie Spritz/), ['Chartreuse'], 'the Drink Book profile, not the first line of the build');

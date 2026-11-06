@@ -41,7 +41,7 @@ const mayHave = (x, a) => { const k = String(a).toLowerCase(); return (GUIDE[k] 
 const GENERIC = new Set(['juice', 'syrup', 'nectar', 'liqueur', 'bitters', 'oz', 'top', 'fill', 'splash', 'fresh', 'the', 'de', 'la', 'di', 'of', 'and', 'in', 'on', 'with', 'or', 'a', 'dashes', 'house', 'local', 'roasted', 'crispy', 'toasted', 'warm', 'grilled', 'sauteed', 'seared', 'pickled', 'fried', 'organic', 'hand', 'cut', 'sea', 'thin', 'paper', 'large', 'small', 'whole', 'shaker', 'mix']);
 const words = (x) => String(x || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/[^a-z0-9]+/).map((w) => w.replace(/(es|s)$/, '')).filter((w) => w.length > 2 && !GENERIC.has(w)).flatMap((w) => (/^(toast|focaccia|crouton|bun|brioche|bread)$/.test(w) ? ['bread'] : /^(sprite|7up|coke|soda|lemon-lime|lime-lemon)$/.test(w) ? ['soda'] : /^(saline|salt)$/.test(w) ? ['salt'] : [w]));
 /** "Sprite (top)", "Thyme, in the shaker", "Angostura Bitters, on top" → the ingredient itself. */
-const ingName = (x) => { const v = clean(x).replace(/\s*\((?:top)\)$/i, '').replace(/,\s*(?:in the shaker|on top)$/i, ''); return /^agave$/i.test(v) ? 'Agave nectar' : v; };
+const ingName = (x) => { const v = clean(x).replace(/\s*\((?:top|float|about [^)]*)\)$/i, '').replace(/,\s*(?:in the shaker|on top)$/i, ''); return /^agave$/i.test(v) ? 'Agave nectar' : v; };
 const shares = (a, b) => { const A = new Set(words(a)); return words(b).some((w) => A.has(w)); };
 /** Garnish words that don't tell one garnish from another ("orange peel" vs "orange twist" are the same thing). */
 const GARNISH_FORM = new Set(['peel', 'twist', 'slice', 'wedge', 'sprig', 'leaf', 'leave', 'wheel', 'optional', 'rim', 'dried', 'torched', 'half', 'discarded', 'dehydrated', 'champagne', 'spice', 'flower']);
@@ -67,8 +67,13 @@ export function topicList(pool) {
     ...COURSES.map((c) => ({ key: 'course:' + c, label: c, group: 'Food' })),
     { key: 'specialty', label: 'Specialty Cocktails', group: 'Bar' },
     { key: 'brg', label: 'BRG Favorites', group: 'Bar' },
-    { key: 'house', label: 'House Cocktails', group: 'Bar' },
+    { key: 'classic-on', label: 'Classic Cocktails on the Menu', group: 'Bar' },
+    { key: 'classic-off', label: 'Classic Cocktails off the Menu', group: 'Bar' },
     { key: 'classic', label: 'Classic Cocktails', group: 'Bar' },
+    { key: 'mules', label: 'Mules', group: 'Bar' },
+    { key: 'dessert', label: 'Dessert Cocktails', group: 'Bar' },
+    { key: 'spiritless', label: 'Spiritless Cocktails', group: 'Bar' },
+    { key: 'house', label: 'House Cocktails', group: 'Bar' },
     { key: 'wine-glass', label: 'Wine by the Glass', group: 'Bar' },
     { key: 'wine-bottle', label: 'Wine by the Bottle', group: 'Bar' },
     { key: 'beer', label: 'Beer', group: 'Bar' },
@@ -79,7 +84,7 @@ export function topicList(pool) {
   return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= 3);
 }
 /** Topics that are also sign-off quizzes on their own. */
-export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || ['specialty', 'brg', 'house', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
+export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || ['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house', 'classic-on', 'classic-off', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
 
 /** Every question this store's book can ask. */
 export function questionPool(db, store) {
@@ -154,10 +159,19 @@ export function questionPool(db, store) {
   const ownClassics = house.filter((x) => x.data.menuSection === 'Classics');
   // Nov 5, Tommy: the Specialty Cocktails (the Baldwin's signatures on the menu) and the BRG favorites (the menu's BRG Staples)
   // are their own categories; the rest of the house list stays House Cocktails.
-  const SECTION_TOPIC = { 'Specialty Cocktails': 'specialty', 'BRG Staples': 'brg', Classics: 'classic' };
+  // Tommy, Nov 5: organized by the Cocktail Descriptions sheet; anything on the menu that isn't a classic is a Specialty Cocktail.
+  const SECTION_TOPIC = { 'Specialty Cocktails': 'specialty', 'BRG Staples': 'brg', Classics: 'classic', Mules: 'mules', 'Dessert Cocktails': 'dessert', 'Spiritless Cocktails': 'spiritless' };
   const topicOf = (x) => SECTION_TOPIC[x.data.menuSection] || 'house';
   const own = (k) => house.filter((x) => topicOf(x) === k);
-  const sets = [[own('specialty'), 'specialty'], [own('brg'), 'brg'], [own('house'), 'house'], [ownClassics.length ? ownClassics : classics, 'classic']];
+  // Tommy, Nov 5: every classic in the app stays in the quizzes, as "on the menu" (our specs) and "off the menu"
+  // (our other classics plus the app's classic pages; where both have a drink, our book's spec wins so answers never clash).
+  const canon = (s) => { const k = String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '').replace(/^the/, ''); return { cosmopolitan: 'cosmo', lemondrop: 'lemondropmartini', martini: 'propermartini', aperolspritz: 'spritz' }[k] || k; };
+  const ownNames = new Set(house.map((x) => canon(x.data.name)));
+  const classicSets = ownClassics.length
+    ? [[[...ownClassics.filter((x) => x.data.onMenu), ...classics.filter((x) => x.data.onMenu && !ownNames.has(canon(x.data.name)))], 'classic-on'],
+       [[...ownClassics.filter((x) => !x.data.onMenu), ...classics.filter((x) => !x.data.onMenu && !ownNames.has(canon(x.data.name)))], 'classic-off']]
+    : [[classics, 'classic']];
+  const sets = [...['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house'].map((k) => [own(k), k]), ...classicSets];
   const drinks = sets.flatMap(([l]) => l);
   const baseOf = (x) => (x.data.base !== undefined ? clean(x.data.base) : baseFromBuild(x.data));
   const METHODS = ['Shaken', 'Stirred', 'Built in the glass', 'Blended'];
@@ -169,6 +183,7 @@ export function questionPool(db, store) {
       // The Drink Book: "All tequila is technically mezcal"; Pimm's is gin-based. A name that gives the answer away isn't a question.
       const near = { Tequila: ['Mezcal'], Gin: ['Pimm’s'], Rye: [], Bourbon: [] }[b] || [];
       if (/martini/i.test(n) && b === 'Vodka') near.push('Gin'); // "Vodka or Gin Martini" (Social Hour)
+      for (const x of d.build || []) for (const sp of SPIRITS) if (new RegExp('\\b' + sp + '\\b', 'i').test(x?.ingredient || '')) near.push(sp); // a Vesper has gin and vodka
       if (askableBase(b) && !shares(n, b)) ask('spirit:' + e.id, { ...base, q: liqueur ? `What’s the base of ${the(n)}?` : `What’s the base spirit in ${the(n)}?`, right: b, pool: SPIRITS.slice(0, 10).filter((x) => !near.includes(x)), why: `${b}${(d.build || []).find((x) => x?.spirit) ? ': ' + [(d.build.find((x) => x?.spirit).amount || ''), d.build.find((x) => x?.spirit).ingredient].join(' ').trim() : ''}.`, topics: [topic] });
       const gf = glassFam(d.glass);
       if (gf.length && !bad(d.glass)) ask('glass:' + e.id, { ...base, q: `Which glass is ${the(n)} served in?`, right: d.glass, pool: drinks.map((x) => x.data.glass), different: (x, others) => { const f = glassFam(x); return f.length && !f.some((k) => gf.includes(k)) && !others.some((o) => glassFam(o).some((k) => f.includes(k))); }, why: `${d.glass}.`, topics: [topic] });
@@ -181,9 +196,9 @@ export function questionPool(db, store) {
       const mine = (d.build || []).filter((x) => x && x.ingredient);
       // House preps (foams, cordials, oleo, house syrups and mixes) are made with sugar syrup (Drink Book prep pages), so it's never a wrong answer here.
       const madeWithSugar = mine.some((x) => /foam|cordial|oleo|mix|syrup|pur[eé]e/i.test(x.ingredient));
-      const extras = mine.filter((x) => !x.spirit && words(x.ingredient).length && !/ or /.test(x.ingredient));
+      const extras = mine.filter((x) => !x.spirit && words(x.ingredient).length && !/ or |optional|^water$/i.test(x.ingredient));
       const extra = extras.length ? extras[Math.floor(rng('in:' + e.id)() * extras.length)] : null;
-      if (extra) ask('in:' + e.id, { ...base, q: `Which of these is in ${the(n)}?`, right: ingName(extra.ingredient), pool: drinks.flatMap((x) => (x.data.build || []).map((y) => ingName(y?.ingredient))).filter((i) => i && !/ or /.test(i) && !mine.some((m) => shares(m.ingredient, i)) && !shares(n, i) && !(madeWithSugar && /simple|sugar|demerara/i.test(i))), different: (x, others) => !others.some((o) => shares(o, x)), why: mine.map((x) => [x.amount, x.ingredient].filter(Boolean).join(' ')).join(', ') + '.', topics: [topic] });
+      if (extra) ask('in:' + e.id, { ...base, q: `Which of these is in ${the(n)}?`, right: ingName(extra.ingredient), pool: drinks.flatMap((x) => (x.data.build || []).map((y) => ingName(y?.ingredient))).filter((i) => i && !/ or |optional|^water$/i.test(i) && !mine.some((m) => shares(m.ingredient, i)) && !shares(n, i) && !(madeWithSugar && /simple|sugar|demerara/i.test(i))), different: (x, others) => !others.some((o) => shares(o, x)), why: mine.map((x) => [x.amount, x.ingredient].filter(Boolean).join(' ')).join(', ') + '.', topics: [topic] });
     }
   }
 

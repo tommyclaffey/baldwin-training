@@ -41,7 +41,7 @@ export function classicPage(tpl, e, ctx) {
   setText(texts(tags.c[1])[0], fam.pill);
   // allergy tag (e.g. raw egg white): uses the design's warning pill
   tags.c = tags.c.filter((c) => !(c.n || '').startsWith('Pill · Contains'));
-  if (d.menuPrice) { const p = clone(tags.c[1]); p.n = 'Pill · On our menu'; setText(texts(p)[0], `On our menu · $${d.menuPrice}`); tags.c.push(p); }
+  if (d.menuPrice || d.onMenu) { const p = clone(tags.c[1]); p.n = 'Pill · On our menu'; setText(texts(p)[0], d.menuPrice ? `On our menu · $${d.menuPrice}` : 'On our menu'); tags.c.push(p); }
   if (d.allergyTag && ctx.protos.allergyPill) { const p = clone(ctx.protos.allergyPill); p.n = 'Pill · ' + d.allergyTag; setText(texts(p)[0], d.allergyTag); tags.c.push(p); }
   const copy = find(hero, byName('Copy'));
   const ct = copy.c.filter((c) => c.t === 'T');
