@@ -16,7 +16,7 @@ export type Mark = 'red' | 'yellow' | 'green';
 export type Review = { counts: Record<Mark, number>; total: number; practice: number; next: { ref: string; mark: Mark; q: string; topic: string }[] };
 let review: Review = { counts: { red: 0, yellow: 0, green: 0 }, total: 0, practice: 0, next: [] };
 export const getReview = () => review;
-let catalog: Catalog = { passPct: 80, topics: [], quizzes: [], preShift: { id: PRE_SHIFT, title: 'Pre-Shift Quiz', count: 5 } };
+let catalog: Catalog = { passPct: 80, topics: [], quizzes: [], preShift: { id: PRE_SHIFT, title: 'Quick Quiz', count: 5 } };
 /** Built-in and team quizzes (the ones that count toward sign-offs). */
 export let QUIZZES: Quiz[] = [];
 export const passFor = (total: number) => Math.ceil((total * catalog.passPct) / 100);
@@ -102,8 +102,8 @@ export function lookup(ref: string, a?: Attempt) {
 }
 
 /** A fresh attempt from the server. A custom mix is { topics, count }; it gets an id like "c:house+wine-glass:10". */
-export async function start(id: string, custom?: { topics: string[]; count: number }) {
-  const q = await api<{ id: string; title: string; items: string[]; questions: Record<string, Question> }>('/api/quiz/start', { method: 'POST', body: custom ? custom : { quiz: id } });
+export async function start(id: string, custom?: { topics: string[]; count: number }, fresh = false) {
+  const q = await api<{ id: string; title: string; items: string[]; questions: Record<string, Question> }>('/api/quiz/start', { method: 'POST', body: { ...(custom ? custom : { quiz: id }), ...(fresh ? { fresh: true } : {}) } });
   const rec = state.quizzes[q.id] || {};
   set({ ...state, quizzes: { ...state.quizzes, [q.id]: { ...rec, current: { items: q.items, questions: q.questions, answers: [], title: q.title, at: new Date().toISOString(), bank: QUIZ_BANK } } } });
   return q.id;

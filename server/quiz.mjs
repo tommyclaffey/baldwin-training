@@ -39,12 +39,12 @@ export function catalog(db, store) {
   const studyPhoto = (key) => { const ch = key.startsWith('study:') && chapterBySlug(key.slice(6)); if (!ch) return null; const v = ch.v3?.video?.youtubeId || (ch.v3?.sections || []).find((x) => x.video?.youtubeId)?.video.youtubeId; return v ? `https://i.ytimg.com/vi/${v}/mqdefault.jpg` : null; };
   const builtins = topics.filter((t) => BUILT_IN(t.key)).map((t) => ({ id: 't:' + t.key, title: t.label, kind: 'builtin', group: t.group, topics: [t.key], count: t.key.startsWith('study:') ? t.count : Math.min(BUILT_IN_LEN, t.count), photo: photoFor(t.key) || studyPhoto(t.key) }));
   const team = teamSets(db, store).map((q) => ({ ...q, group: 'Team Quizzes', count: Math.min(q.count || Infinity, forTopics(pool, q.topics).length), photo: photoFor(q.topics[0]) }));
-  return { passPct: PASS_PCT, topics, quizzes: [...builtins, ...team], preShift: { id: PRE_SHIFT, title: 'Pre-Shift Quiz', count: PRE_SHIFT_LEN } };
+  return { passPct: PASS_PCT, topics, quizzes: [...builtins, ...team], preShift: { id: PRE_SHIFT, title: 'Quick Quiz', count: PRE_SHIFT_LEN } };
 }
 
 /** What a quiz id asks about: a built-in topic, a team quiz's topics, or a custom mix. null = not a quiz. */
 function topicsOf(db, store, id) {
-  if (id === PRE_SHIFT) return { title: 'Pre-Shift Quiz', topics: null, count: PRE_SHIFT_LEN };
+  if (id === PRE_SHIFT) return { title: 'Quick Quiz', topics: null, count: PRE_SHIFT_LEN };
   if (id === REVIEW) return { title: 'Review Queue', topics: null, count: REVIEW_LEN };
   let m;
   if ((m = /^t:(.+)$/.exec(id))) { const t = m[1]; return BUILT_IN(t) ? { title: labelOf(t), topics: [t], count: t.startsWith('study:') ? 100 : BUILT_IN_LEN } : null; }
@@ -61,11 +61,22 @@ export function labelOf(key) {
 }
 export const customId = (topics, count) => `c:${[...new Set(topics)].sort().join('+')}:${count}`;
 
-/** A fresh attempt: the questions, with answers (the phone shows feedback right away; the server re-scores). */
-export function startQuiz(db, store, id, userId = null) {
+/** A fresh attempt: the questions, with answers (the phone shows feedback right away; the server re-scores).
+ *  Questions rotate (Nov 5): someone signed in gets questions they haven't had in this quiz yet, until every one has come up;
+ *  then a new round starts. `fresh` (Start Over) starts a new round now. */
+export function startQuiz(db, store, id, userId = null, { fresh = false } = {}) {
   const def = topicsOf(db, store, id);
   if (!def) return null;
   const pool = questionPool(db, store);
+  const deck = id !== REVIEW && userId ? rotation(db, store, userId, id, fresh) : null;
+  // Picks n from a list, questions not yet seen this round first; a short round is topped up from the next one.
+  const draw = (list, n) => {
+    if (!deck) return pick(list, n);
+    const unseen = list.filter((q) => !deck.seen.has(q.ref));
+    if (unseen.length >= n) return pick(unseen, n);
+    deck.reset();
+    return [...pick(unseen, unseen.length), ...pick(list.filter((q) => !unseen.includes(q)), n - unseen.length)];
+  };
   let qs;
   if (id === REVIEW) {
     if (!userId) return null;
@@ -75,12 +86,32 @@ export function startQuiz(db, store, id, userId = null) {
     // Tonight's focus (the signature dish) twice, then anything.
     const recipes = listEntries(db, 'recipe', store);
     const focus = recipes.find((e) => e.data.signature) || recipes.find((e) => e.data.course === 'Mains') || recipes[0];
-    const mine = focus ? pick(pool.filter((q) => q.ref.endsWith(':' + focus.id) && q.topics.some((t) => t.startsWith('course:'))), 2) : [];
-    qs = [...mine, ...pick(pool.filter((q) => !mine.includes(q)), PRE_SHIFT_LEN - mine.length)];
+    const mine = focus ? draw(pool.filter((q) => q.ref.endsWith(':' + focus.id) && q.topics.some((t) => t.startsWith('course:'))), 2) : [];
+    qs = [...mine, ...draw(pool.filter((q) => !mine.includes(q)), PRE_SHIFT_LEN - mine.length)];
     qs = pick(qs, qs.length);
-  } else qs = pick(forTopics(pool, def.topics), def.count);
+  } else {
+    const list = forTopics(pool, def.topics);
+    qs = def.count >= list.length ? pick(list, list.length) : draw(list, def.count);
+  }
   if (!qs.length) return null;
+  if (deck) deck.add(qs.map((q) => q.ref));
   return { id, title: def.title, items: qs.map((q) => q.ref), questions: Object.fromEntries(qs.map((q) => [q.ref, { q: q.q, options: q.options, answer: q.answer, why: q.why, page: q.page, label: q.label }])) };
+}
+
+/** The questions this person has had in this quiz this round. */
+function rotation(db, store, userId, quiz, fresh) {
+  const clear = () => db.prepare('DELETE FROM quiz_seen WHERE user_id = ? AND store_id = ? AND quiz = ?').run(userId, store, quiz);
+  if (fresh) clear();
+  const seen = new Set(db.prepare('SELECT ref FROM quiz_seen WHERE user_id = ? AND store_id = ? AND quiz = ?').all(userId, store, quiz).map((r) => r.ref));
+  return {
+    seen,
+    reset: () => { clear(); seen.clear(); },
+    add: (refs) => {
+      const ins = db.prepare('INSERT OR IGNORE INTO quiz_seen(user_id, store_id, quiz, ref, at) VALUES (?,?,?,?,?)');
+      const at = new Date().toISOString();
+      for (const r of refs) ins.run(userId, store, quiz, r, at);
+    },
+  };
 }
 
 /* ---- the review queue ---- */

@@ -183,7 +183,7 @@ async function api(req, res, url) {
       if (!topics.length) fail(400, 'Pick at least one topic.');
       id = customId(topics, [0, 5, 10, 20, 50, 100].includes(Number(b.count)) ? Number(b.count) : 10);
     }
-    const q = startQuiz(db, c.store, id, reader.id);
+    const q = startQuiz(db, c.store, id, reader.id, { fresh: b.fresh === true });
     if (!q && id === REVIEW) fail(404, 'Your review queue is empty.');
     if (!q) fail(404, 'We couldn’t find that quiz.');
     return sendJson(res, 200, q);

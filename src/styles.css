@@ -762,7 +762,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 @media (max-width: 859px) {
   .fx-h > .big { flex: 1 1 100% !important; width: auto !important; max-width: 100% !important; }
   /* Photo strips: an even 2-up grid. */
-  .fx-h:has(> [data-name^="Photo · "]) { display: grid !important; grid-template-columns: 1fr 1fr; }
+  .fx-h:has(> [data-name^="Photo · "]) { display: grid !important; grid-template-columns: 1fr 1fr; width: 100% !important; align-self: stretch !important; } /* Nov 5: Home's strip shrank to 202px */
   .fx-h:has(> [data-name^="Photo · "]) > [data-name^="Photo · "] { width: auto !important; }
   .fx-h:has(> [data-name^="Photo · "]) > [data-name^="Photo · "] [role="img"] { width: 100% !important; height: auto !important; }
   /* Beer taps: three across. */
@@ -1299,3 +1299,22 @@ body.eip-lock { overflow: hidden; }
   [data-name^="List · "] [data-name^="Meta · "] > [data-name="Label"] { width: 64px !important; padding-top: 2px; }
   [data-name^="List · "] [data-name^="Line · "] > [data-name="Ingredient"], [data-name^="List · "] [data-name^="Meta · "] > [data-name="Value"], [data-name^="List · "] [data-name^="Step "] > [data-name="Text"] { flex: 1 1 0 !important; min-width: 0; width: auto !important; }
 }
+/* Quiz finish: how New Questions works, and Start Over (Nov 5) */
+.qm-rotate { margin: -4px 0 0; font-size: 13px; line-height: 1.45; color: #5E574F; text-align: center; }
+.qm-rotate .quiz-link.plain { padding: 0; border: 0; background: none; font: 600 13px 'Archivo', sans-serif; color: #8A5A3A; text-decoration: underline; cursor: pointer; }
+/* Account foot (Nov 5, Tommy's phone screenshot: the name, team line and Sign Out were squeezed together at the bottom). */
+.account-row { gap: 12px; }
+.account-who { gap: 3px; }
+.account-who span { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.35; }
+.account-out { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 0 14px; border: 1px solid #7A7268; border-radius: 999px; color: #F2EEE7; text-decoration: none; } /* edge 3.5:1 on the sidebar */
+.account-out:hover { color: #F2EEE7; background: #34302C; }
+@media (max-width: 859px) {
+  .side { padding-bottom: calc(24px + env(safe-area-inset-bottom)) !important; }
+  .account { margin-bottom: 8px; }
+  /* The review queue card: no tall empty space above its buttons on a phone (the desktop height came along). */
+  .rq { min-height: 0 !important; height: auto !important; }
+}
+/* Sign Out gets its own row under the name, the same width as Admin, so the name and team line never squeeze. */
+.account-row { flex-wrap: wrap; row-gap: 12px; }
+.account-who { flex: 1 1 calc(100% - 46px); }
+.account-out { flex: 1 1 100%; min-height: 38px; border-radius: 10px; font-size: 13.5px; }

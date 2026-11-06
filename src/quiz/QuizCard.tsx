@@ -33,8 +33,10 @@ export function QuizModal() {
   useEffect(() => {
     if (!valid) return;
     const cur = s.quizzes[id]?.current;
-    const retake = params.get('retake') === '1';
-    if (retake || !cur || !cur.questions || ((id === PRE_SHIFT || id === REVIEW) && cur.finished)) { setError(''); start(id, customOf(id)).catch((e) => setError((e as Error).message)); }
+    const retake = params.get('retake') === '1' || params.get('retake') === 'fresh';
+    // "Start Over" (retake=fresh) begins a new round, so questions already had can come back.
+    const fresh = params.get('retake') === 'fresh';
+    if (retake || !cur || !cur.questions || ((id === PRE_SHIFT || id === REVIEW) && cur.finished)) { setError(''); start(id, customOf(id), fresh).catch((e) => setError((e as Error).message)); }
     if (retake) { params.delete('retake'); setParams(params, { replace: true }); }
     setReveal(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,7 +59,7 @@ export function QuizModal() {
   if (!valid) return null;
 
   const name = cur?.title || titleOf(id);
-  const kicker = id === PRE_SHIFT ? 'Pre-shift quiz' : id === REVIEW ? 'Review queue' : name;
+  const kicker = id === PRE_SHIFT ? 'Quick quiz' : id === REVIEW ? 'Review queue' : name;
   const leave = () => { nav('/quizzes'); window.scrollTo({ top: 0 }); };
   // Keep Tab inside the box.
   const trap = (e: KeyboardEvent) => {
@@ -127,6 +129,10 @@ export function QuizModal() {
             : <button className="quiz-btn ghost" onClick={() => nav(`/quizzes?quiz=${enc(id)}&retake=1`)}>New Questions</button>}
           <button className="quiz-btn" onClick={leave}>Back to Quizzes</button>
         </div>
+        {id !== REVIEW && (
+          <p className="qm-rotate">New questions skip the ones you’ve already had, until you’ve seen them all.{' '}
+            <button type="button" className="quiz-link plain" onClick={() => nav(`/quizzes?quiz=${enc(id)}&retake=fresh`)}>Start Over</button></p>
+        )}
       </>
     );
   } else {
@@ -217,7 +223,7 @@ export function ReviewCard({ style, className }: { style: CSSProperties; classNa
         <p className="rq-empty">{all ? 'Nothing red or yellow right now.' : 'Take any quiz and mark each answer. Anything red or yellow lands here.'}</p>
       )}
       <div className="quiz-actions">
-        <button className={'quiz-btn' + (r.practice ? ' ghost' : '')} onClick={() => nav('/quizzes?quiz=' + PRE_SHIFT + '&retake=1')}>Pre-Shift Quiz</button>
+        <button className={'quiz-btn' + (r.practice ? ' ghost' : '')} onClick={() => nav('/quizzes?quiz=' + PRE_SHIFT + '&retake=1')}>Quick Quiz</button>
         {r.practice > 0 && <button className="quiz-btn" onClick={() => nav(`/quizzes?quiz=${REVIEW}&retake=1`)}>Practice {plural(r.practice, 'Question')}</button>}
       </div>
     </div>
