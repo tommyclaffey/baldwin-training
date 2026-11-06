@@ -82,6 +82,16 @@ const soon = (node, text, dark = false) => { if (!node) return; setText(node, te
 
 /* ------------------------------ cocktail ------------------------------ */
 
+/** "For bartenders · The spec": the copy names the drink and the button opens Cocktail Specs filtered to it. */
+export function specCard(main, name) {
+  const card = find(main, byName('The spec'));
+  if (!card) return;
+  const copy = find(card, byName('Copy'));
+  if (copy) setText(copy, `The amounts, method and build for the ${name} are on Cocktail Specs, with every cocktail we make.`);
+  const btn = find(card, byName('Button · Open spec'));
+  if (btn) btn.to = `/the-bar/cocktail-specs?find=${encodeURIComponent(name)}`;
+}
+
 export function cocktailPage(template, item, ctx) {
   const d = item.data;
   const main = clone(template.main);
@@ -115,8 +125,8 @@ export function cocktailPage(template, item, ctx) {
   setText(ct[1], name.toUpperCase());
   setText(ct[2], d.description || '');
   const stats = find(copy, byName('Stats'));
-  for (const [label, key] of [['Glass', 'glass'], ['Method', 'method'], ['Ice', 'ice'], ['Garnish', 'garnish']]) {
-    setText(texts(find(stats, byName(label)))[1], d[key] || 'To confirm');
+  for (const [label, key] of [['Glass', 'glass'], ['Garnish', 'garnish']]) {
+    const cell = find(stats, byName(label)); if (cell) setText(texts(cell)[1], d[key] || 'To confirm');
   }
 
   // "Our cocktails" strip
@@ -135,35 +145,9 @@ export function cocktailPage(template, item, ctx) {
     t.f = [{ c: active ? '#F2EEE7' : '#1E1C1A' }];
   });
 
-  // The build
-  const ingr = find(main, byName('Ingredients'));
-  const kids = (ingr.c || []).filter(startsWith('Ingredient · '));
-  const featured = kids[0], plain = kids[1] || kids[0];
+  // The spec (Nov 5): amounts, method and steps live on Cocktail Specs, for the bartenders. This card links there.
   const build = (d.build || []).filter((b) => b && (b.amount || b.ingredient));
-  ingr.c = build.map((b) => {
-    const c = clone(b.spirit ? featured : plain);
-    c.n = 'Ingredient · ' + b.ingredient;
-    const t = texts(c);
-    setText(t[0], b.amount);
-    setText(t[1], b.ingredient);
-    c.to = b.link || undefined;
-    if (!b.link) remove(c, find(c, byName('Learn')));
-    return c;
-  });
-
-  // The note by the build: where the amounts come from (Drink Book specs since Oct 28), or what's still to confirm.
-  const amountNote = find(main, (n) => n.t === 'T' && /^Sample amounts/.test(n.s || ''));
-  if (amountNote && build.some((b) => b.amount)) setText(amountNote, d.specNote || 'From the Drink Book');
-
-  // Steps
-  const how = find(main, byName('How to make it'));
-  const stepList = lines(d.steps).length ? lines(d.steps) : ['Bar lead to add the build and steps.'];
-  repeat(how, (n) => /^Step \d+$/.test(n.n || ''), stepList, (row, s, i) => {
-    row.n = `Step ${i + 1}`;
-    const t = texts(row);
-    setText(t[0], i + 1);
-    setText(t[1], s);
-  });
+  specCard(main, name);
 
   // Taste
   const taste = find(main, byName('Taste'));

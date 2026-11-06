@@ -1286,3 +1286,16 @@ body.eip-lock { overflow: hidden; }
 .demo-exit:hover { color: #FFFFFF; }
 @media (max-width: 1140px) { .demo-roles { grid-template-columns: repeat(2, minmax(0, 300px)); } }
 @media (max-width: 640px) { .demo-roles { grid-template-columns: 1fr; width: 100%; max-width: 360px; } .demo-pick { padding: 56px 20px; gap: 28px; } }
+
+/* ---- Cocktail Specs (Nov 5, Figma 430:17) ---- */
+/* Step numbers stay 20px circles next to long steps. */
+[data-name^="List · "] [data-name^="Spec · "] [data-name="Number"] { flex: none !important; align-self: flex-start !important; width: 20px !important; height: 20px !important; min-height: 20px !important; }
+@media (max-width: 859px) {
+  /* Phones: amount beside ingredient, label beside value, number beside step (the general "stack rows" rule must not apply). */
+  [data-name^="List · "] [data-name^="Line · "][data-name][data-name][data-name],
+  [data-name^="List · "] [data-name^="Meta · "][data-name][data-name][data-name],
+  [data-name^="List · "] [data-name^="Step "][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: nowrap !important; align-items: flex-start !important; }
+  [data-name^="List · "] [data-name^="Line · "] > [data-name="Amount"], [data-name^="List · "] [data-name^="Meta · "] > [data-name="Label"] { flex: 0 0 auto !important; width: 76px !important; }
+  [data-name^="List · "] [data-name^="Meta · "] > [data-name="Label"] { width: 64px !important; padding-top: 2px; }
+  [data-name^="List · "] [data-name^="Line · "] > [data-name="Ingredient"], [data-name^="List · "] [data-name^="Meta · "] > [data-name="Value"], [data-name^="List · "] [data-name^="Step "] > [data-name="Text"] { flex: 1 1 0 !important; min-width: 0; width: auto !important; }
+}

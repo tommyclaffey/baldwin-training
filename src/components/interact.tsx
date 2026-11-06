@@ -198,6 +198,9 @@ export function AssignName({ slot, node, render }: { slot: string; node: FNode; 
 export function FindBox({ k, label, style, className }: { k: string; label: string; style: CSSProperties; className: string }) {
   const s = useInteract();
   const v = String(s?.get(k, '') ?? '');
+  // Arriving from a drink's "Open the Spec" (?find=Negroni): the box starts filled in, so that drink is what shows.
+  const q = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('find') : null;
+  useEffect(() => { if (q) s?.set(k, q); }, [q, k]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <label className={className + ' find-box'} style={style}>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B645B" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>

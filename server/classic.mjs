@@ -1,5 +1,5 @@
 // Classic cocktail pages, built from the CMS entry and the designed classic layout (Daiquiri in Figma).
-import { clone, find, byName, startsWith, findAll, texts, setText, remove, repeat } from './templates.mjs';
+import { clone, find, byName, startsWith, findAll, texts, setText, remove, repeat, specCard } from './templates.mjs';
 
 export const FAMILIES = [
   { key: 'Stirred', pill: 'Stirred · spirit-forward', head: 'STIRRED · SPIRIT-FORWARD' },
@@ -49,7 +49,7 @@ export function classicPage(tpl, e, ctx) {
   setText(ct[1], name.toUpperCase());
   setText(ct[2], d.description || '');
   const stats = find(copy, byName('Stats'));
-  for (const [label, key] of [['Glass', 'glass'], ['Method', 'method'], ['Ice', 'ice'], ['Garnish', 'garnish']]) setText(texts(find(stats, byName(label)))[1], d[key] || '—');
+  for (const [label, key] of [['Glass', 'glass'], ['Garnish', 'garnish']]) { const cell = find(stats, byName(label)); if (cell) setText(texts(cell)[1], d[key] || '—'); }
 
   // The classics strip: every classic, this one highlighted.
   const strip = find(main, byName('The classics'));
@@ -72,33 +72,9 @@ export function classicPage(tpl, e, ctx) {
     });
   }
 
-  // The build
-  const ingr = find(find(main, byName('Build band')), byName('Ingredients'));
-  const tiles = (ingr.c || []).filter(startsWith('Ingredient · '));
-  const featured = tiles[0];
-  const plain = ctx.protos.learnTile || tiles[1] || tiles[0];
+  // The spec (Nov 5): the build and steps live on Cocktail Specs, for the bartenders. This card links there.
   const build = (d.build || []).filter((b) => b && (b.amount || b.ingredient));
-  ingr.c = build.map((b, i) => {
-    const c = clone(b.spirit || (i === 0 && !build.some((x) => x.spirit)) ? featured : plain);
-    c.n = 'Ingredient · ' + b.ingredient;
-    const t = texts(c);
-    setText(t[0], b.amount); setText(t[1], b.ingredient);
-    c.to = b.link || undefined;
-    if (!b.link) remove(c, find(c, byName('Learn')));
-    return c;
-  });
-
-  const band = find(main, byName('Build band'));
-  band.c = band.c.filter((c) => c.n !== 'Allergen note');
-  if (d.allergyNote && ctx.protos.allergyNote) { const nt = clone(ctx.protos.allergyNote); setText(texts(nt)[0], d.allergyNote); band.c.push(nt); }
-
-  // Steps
-  const how = find(main, byName('How to make it'));
-  repeat(how, (x) => /^Step \d+$/.test(x.n || ''), (d.steps || []).filter(Boolean), (row, s, i) => {
-    row.n = `Step ${i + 1}`;
-    const t = texts(row);
-    setText(t[0], i + 1); setText(t[1], s);
-  });
+  specCard(main, name);
 
   // Taste
   const taste = find(main, byName('Taste'));
@@ -153,6 +129,13 @@ export function classicPage(tpl, e, ctx) {
       return c;
     });
   } else remove(main, linksBox);
+  // An allergy note (raw egg white) stays on the page for everyone (it sat in the build before Nov 5): under
+  // "What's in it", or with the taste when there's no such card.
+  if (d.allergyNote && ctx.protos.allergyNote) {
+    const nt = clone(ctx.protos.allergyNote); setText(texts(nt)[0], d.allergyNote); nt.sh = 'F';
+    const home = (linkList.length && linksBox) || find(main, byName('Taste')) || find(main, byName('The spec'));
+    if (home) (home.c ||= []).push(nt);
+  }
 
   // Say it
   const say = find(main, byName('Say it'));
@@ -216,7 +199,7 @@ export function classicTable(page, all) {
       if (th) { th.n = 'Thumb · ' + x.data.name; th.f = img(x.data.photo); }
       const t = texts(r);
       const base = x.data.tableBase || (x.data.build || []).find((b) => b.spirit)?.ingredient || '—';
-      [x.data.name, x.data.tagline || '', base, x.data.method || '—', x.data.glass || '—', x.data.garnish || '—'].forEach((v, k2) => t[k2] && setText(t[k2], v));
+      [x.data.name, x.data.tagline || '', base, x.data.glass || '—', x.data.garnish || '—'] // no method: specs live on Cocktail Specs (Nov 5).forEach((v, k2) => t[k2] && setText(t[k2], v));
       out.push(r);
     });
   }

@@ -1,6 +1,7 @@
 // Quizzes written from the book itself (Tommy, Oct 30: "built-in quizzes, or you can customize what's in the quizzes").
 // Every question comes from a store's own dishes, cocktails, wines and beers, so a new restaurant gets quizzes the moment
 // its menu is in. A question's id ("price:123") is enough to write it again on the server, so scoring never trusts the phone.
+import { specHref } from './specs.mjs';
 import { listEntries, COURSES } from './cms.mjs';
 import { allChapters, chapterSlug, shuffleSeeded } from './manual.mjs';
 
@@ -192,7 +193,7 @@ export function questionPool(db, store) {
       const mf = methodFam(d.method);
       // The book's bar terms: shake drinks with citrus, juice, cream or egg; stir spirit-only drinks. A spec that breaks its own rule waits for the bar lead.
       const shakeable = (d.build || []).some((x) => /juice|lime|lemon|cream|egg|foam|pur[eé]e|pineapple|espresso|coffee|grapefruit|pom\b|pomegranate|cranberry|acai|syrup|agave|honey|orange|basil|mint|arugula|cucumber|thyme|sour mix|lemonade/i.test(x?.ingredient || ''));
-      if (mf && !(mf === 'Shaken' && !shakeable)) ask('method:' + e.id, { ...base, q: `How is ${the(n)} made?`, right: mf, pool: METHODS, why: `${d.method}.`, topics: [topic] });
+      if (mf && !(mf === 'Shaken' && !shakeable)) ask('method:' + e.id, { ...base, page: specHref(n), q: `How is ${the(n)} made?`, right: mf, pool: METHODS, why: `${d.method}.`, topics: [topic] });
       const mine = (d.build || []).filter((x) => x && x.ingredient);
       // House preps (foams, cordials, oleo, house syrups and mixes) are made with sugar syrup (Drink Book prep pages), so it's never a wrong answer here.
       const madeWithSugar = mine.some((x) => /foam|cordial|oleo|mix|syrup|pur[eé]e/i.test(x.ingredient));

@@ -179,22 +179,23 @@ function zoomPhotos(page) {
 }
 
 
-/* ---- The Back Bar: spirit chips and the "Find a bottle" box filter the shelf ---- */
+/* ---- The Back Bar and Cocktail Specs: list chips and the find box filter the page ---- */
 function backBar(page) {
   const filter = find(page.main, byName('Filter'));
   if (!filter?._protos) return;
-  const { on, off } = filter._protos; delete filter._protos;
+  const { on, off, keys = ['bbar', 'bfind'] } = filter._protos; delete filter._protos;
+  const [pick, text] = keys;
   for (const c of filter.c) {
     const [l, n] = texts(c).map((t) => t.s);
     const st = pickStates(c, on, off, l);
     setText(texts(st.on)[1], n); setText(texts(st.off)[1], n);
-    c.meta = { k: 'bbar', mode: 'pick', val: c._val, def: 'All', ...st };
+    c.meta = { k: pick, mode: 'pick', val: c._val, def: 'All', ...st };
     delete c._val;
   }
-  for (const card of findAll(page.main, (n) => n._g)) { card.meta = { show: { pick: ['bbar', ['All', card._g], 'All'], text: ['bfind', card._find] } }; delete card._g; delete card._find; }
-  for (const r of findAll(page.main, (n) => typeof n._find === 'string')) { r.meta = { ...(r.meta || {}), show: { text: ['bfind', r._find] } }; delete r._find; }
-  const box = find(page.main, byName('Find a bottle'));
-  if (box) box.meta = { find: 'bfind', label: texts(box)[0]?.s || 'Find a bottle' };
+  for (const card of findAll(page.main, (n) => n._g)) { card.meta = { show: { pick: [pick, ['All', card._g], 'All'], text: [text, card._find] } }; delete card._g; delete card._find; }
+  for (const r of findAll(page.main, (n) => typeof n._find === 'string')) { r.meta = { ...(r.meta || {}), show: { text: [text, r._find] } }; delete r._find; }
+  const box = find(page.main, (n) => n.n === 'Find a bottle' || n.n === 'Find a spec');
+  if (box) box.meta = { find: text, label: texts(box)[0]?.s || 'Find' };
 }
 
 /* ---- Home: the Food Matrix preview's course chips ---- */

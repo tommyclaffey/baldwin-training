@@ -14,7 +14,7 @@ export function classify(slug) {
   // The Sommelier Program and its Study Guide belong to the whole group (Testa Barra hosts the courses).
   if (slug === 'sommelier-program' || slug.startsWith('sommelier-program/')) return 'shared';
   if (['the-bar/spirits', 'safety', 'cleanliness', 'steps-of-service'].includes(slug) || /^step-\d/.test(slug)) return 'shared';
-  if (['the-bar/cocktails', 'the-bar/wine', 'the-bar/beer-and-draft', 'the-bar/back-bar', 'food-matrix', 'allergen-guide'].includes(slug)) return 'mixed';
+  if (['the-bar/cocktails', 'the-bar/cocktail-specs', 'the-bar/wine', 'the-bar/beer-and-draft', 'the-bar/back-bar', 'food-matrix', 'allergen-guide'].includes(slug)) return 'mixed';
   return 'own';
 }
 

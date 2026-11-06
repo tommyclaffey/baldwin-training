@@ -186,7 +186,7 @@ export function bottlePage(tpl, e, { shelf, house, index, basePage }) {
         const rest = build.filter((b) => b !== mine).map((b) => b.ingredient);
         const [nm, ln] = texts(find(r, byName('Copy')));
         setText(nm, h.data.name);
-        setText(ln, `${mine?.amount ? mine.amount + ', ' : ''}with ${list(rest)}.`.replace(/^with/, 'With'));
+        setText(ln, `With ${list(rest)}.`); // no pour amount (Nov 5): amounts live on Cocktail Specs
         return r;
       });
       drinks.c = [...drinks.c.slice(0, at), ...made, ...drinks.c.slice(at + 1)];

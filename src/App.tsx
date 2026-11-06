@@ -10,6 +10,7 @@ import { clearPages } from './components/PageView';
 import { setQuizUser } from './quiz/store';
 import AdminApp from './admin/AdminApp';
 import { EditInPlaceProvider } from './components/EditSheet';
+import { setFavicon } from './lib/favicon';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -34,6 +35,9 @@ function Book() {
   }, [menu]);
   // A new person on this device: their own quiz progress, and no pages kept from the last person.
   useEffect(() => { clearPages(); setQuizUser(user ? { id: user.id, name: user.name } : null); }, [user?.id, user?.name, user?.workingIn]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // The tab icon follows the store being viewed (a manager can switch stores).
+  useEffect(() => { if (loaded) setFavicon(user?.store); }, [loaded, user?.store?.slug]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!loaded) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
   if (!user) return <BookSignIn />;

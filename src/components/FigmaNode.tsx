@@ -534,6 +534,9 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   return wrapLink(node, el, st, cls);
 }
 
+// A linked text keeps its own colour from the design (Nov 5: "Full specs on Cocktail Specs →" came out ink on the dark band).
+// Linked frames still pass colour down to their texts.
+const linkColor = (node: FNode, st: CSSProperties) => (node.t === 'T' && st.color ? st.color : 'inherit');
 function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[]) {
   if (!node.to) return el;
   const av = (node.meta as { addVideo?: { key: string; title: string } } | undefined)?.addVideo;
@@ -542,13 +545,13 @@ function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[]) 
   // Outside sources (Wine Folly, Vivino, producer sites) open in a new tab.
   if (/^https?:\/\//.test(node.to)) {
     return (
-      <a href={node.to} target="_blank" rel="noopener noreferrer" className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: 'inherit', textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
+      <a href={node.to} target="_blank" rel="noopener noreferrer" className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
         {(el as { props: { children?: ReactNode } }).props.children}
       </a>
     );
   }
   return (
-    <Link to={node.to} className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: 'inherit', textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
+    <Link to={node.to} className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
       {(el as { props: { children?: ReactNode } }).props.children}
     </Link>
   );
