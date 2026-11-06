@@ -1338,3 +1338,11 @@ body.eip-lock { overflow: hidden; }
 [data-name="Column"] > [data-name^="Sign-off · "]:last-child,
 [data-name="Steps"] > [data-name^="Step "]:last-child,
 [data-name="Cleaning board"] > [data-name^="Row · "]:last-child { border-bottom-width: 0 !important; }
+/* Sidebar foot (Nov 6, Tommy: "fix the padding on the bottom for desktop and mobile"). The sidebar grows with its content
+   so the space under Sign Out scrolls into view; phones leave room for Safari's floating address bar. */
+.sidebar { height: auto !important; min-height: 100%; display: flex; flex-direction: column; }
+.sidebar > [data-name="Sidebar"] { flex: 1 0 auto; }
+.side .account { margin-bottom: 0 !important; padding-bottom: 28px; }
+@media (max-width: 859px) {
+  .side .account { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+}
