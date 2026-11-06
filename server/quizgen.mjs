@@ -87,7 +87,8 @@ export function topicList(pool) {
     ...SPEC_TOPICS.map(([key, label]) => ({ key, label, group: 'Cocktail Specs · For Bartenders' })),
     ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
   ];
-  return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= 3);
+  // A specs list can be short (two dessert cocktails): it still gets its quiz.
+  return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= (x.key.startsWith('spec:') ? 2 : 3));
 }
 /** Topics that are also sign-off quizzes on their own. */
 export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || key.startsWith('spec:') || ['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house', 'classic-on', 'classic-off', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
@@ -217,18 +218,19 @@ export function questionPool(db, store) {
     }
   }
 
-  /* Cocktail Specs, for bartenders (Nov 6, Tommy: "a specs section … for bartenders and all the cocktails and the specs that
-     they need to study … for the quiz"). One topic per list on the Cocktail Specs page. Each drink's method, glass and garnish
-     questions count toward it, plus how much of each ingredient goes in and what ice it takes. */
+  /* Cocktail Specs, for bartenders (Nov 6). Tommy: "Cocktail specs are only the measurements and the ingredients. I would give
+     full ingredients, give one right answer, and mix it up: give an incorrect ingredient with correct measurements, or whatever
+     the case may be." One question per drink: four full builds, one of them the spec. Each wrong build changes one thing:
+     an ingredient swapped for a similar one, an amount changed, or two amounts switched. One topic per Cocktail Specs list. */
   const SPEC_UNITS = { oz: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 4], dash: [1, 2, 3, 4, 5, 6] };
   const FRAC = { '¼': 0.25, '½': 0.5, '¾': 0.75, '⅓': 1 / 3, '⅔': 2 / 3, '⅛': 0.125, '⅜': 0.375, '⅙': 1 / 6, '⅚': 5 / 6 };
   const SHOW = { 0.25: '¼', 0.5: '½', 0.75: '¾' };
-  // "1½ oz", ".75 oz", "2 dashes" → { n, unit, frac } (fraction style or decimal style, to write the wrong answers the same way)
+  // "1½ oz", ".75 oz", "2 dashes" → { n, unit }
   const measure = (a) => {
     const m = String(a || '').trim().match(/^(\d*\.?\d*)\s*([¼½¾⅓⅔⅛⅜⅙⅚]?)\s*(oz|dash|dashes)$/i);
     if (!m || (!m[1] && !m[2])) return null;
     const n = (m[1] ? parseFloat(m[1]) : 0) + (FRAC[m[2]] || 0);
-    return n > 0 ? { n: Math.round(n * 1000) / 1000, unit: /^dash/i.test(m[3]) ? 'dash' : 'oz', frac: !!m[2] || !m[1].includes('.') } : null;
+    return n > 0 ? { n: Math.round(n * 1000) / 1000, unit: /^dash/i.test(m[3]) ? 'dash' : 'oz' } : null;
   };
   const write = (n, unit, frac) => {
     if (unit === 'dash') return `${n} dash${n === 1 ? '' : 'es'}`;
@@ -236,28 +238,63 @@ export function questionPool(db, store) {
     if (frac) return `${whole || ''}${part ? SHOW[part] : ''} oz`.trim();
     return `${String(n).replace(/^0\./, '.')} oz`;
   };
+  // What kind of ingredient it is, so a swap is believable (lemon for lime, Aperol for Campari, honey for agave).
+  const KIND = [['bitters', /bitters/i], ['juice', /juice|lime\b|lemon\b|grapefruit|orange\b|pineapple|cranberry|lemonade|pur[eé]e/i],
+    ['sweet', /syrup|agave|honey|sugar|oleo|cordial|grenadine|demerara/i], ['top', /soda|tonic|ginger beer|ginger ale|sprite|7up|coke|prosecco|champagne|bubbles|float/i],
+    ['spirit', new RegExp('\\b(' + SPIRITS.join('|') + '|whiskey|whisky|cognac|brandy|pisco|aquavit|cacha[cç]a)\\b', 'i')]];
+  const kindOf = (b) => (b.spirit ? 'spirit' : (KIND.find(([, re]) => re.test(b.ingredient)) || ['modifier'])[0]);
+  const lineText = (b) => [b.amount, b.ingredient].filter(Boolean).join(' ');
   const specs = specLists(house, classics);
-  const specOf = new Map();
-  for (const l of specs) for (const { e } of l.items) specOf.set(e.id, 'spec:' + l.key);
-  // Method, glass and garnish are part of the spec: those questions count toward the drink's specs list too.
-  for (const q of out) { const m = q.ref.match(/^(method|glass|garnish):(\d+)$/); const k = m && specOf.get(Number(m[2])); if (k) q.topics = [...q.topics, k]; }
-  const ICE = [['up', /^none|served up|chilled glass|^up\b/i, 'None (served up)'], ['cubes', /cube|^ice$|fresh ice|shaker ice/i, 'Cubes'], ['large', /large cube/i, 'Large cube'], ['crushed', /crushed|cracked/i, 'Crushed'], ['hot', /served hot/i, 'None (served hot)']];
-  const iceFam = (x) => (ICE.find(([k, re]) => k === 'large' && re.test(x || '')) || ICE.find(([, re]) => re.test(x || '')) || [])[0];
+  // Swaps come from the same book (house drinks from the house list, classics from the classics), so the wording never
+  // gives the answer away ("Lime" vs "Fresh lime juice").
+  const linesOf = (own) => specs.flatMap((l) => l.items.filter((x) => x.house === own).flatMap(({ e }) => (e.data.build || []).filter((b) => b && b.ingredient && !/ or |optional/i.test(b.ingredient))));
+  const ownLines = linesOf(true), libLines = linesOf(false);
+  // A spirit swap must be a different family: bourbon in a Manhattan isn't wrong enough to be the wrong answer.
+  const FAMILY = [['whiskey', /rye|bourbon|whisk|scotch/i], ['agave', /tequila|mezcal/i], ['gin', /\bgin\b/i], ['vodka', /vodka/i], ['rum', /\brum\b|cacha/i], ['brandy', /cognac|brandy|pisco|armagnac/i]];
+  const familyOf = (x) => (FAMILY.find(([, re]) => re.test(x)) || [x.toLowerCase()])[0];
   for (const l of specs) {
     const topic = 'spec:' + l.key;
-    for (const { e } of l.items) {
-      const d = e.data, n = d.name, base = { page: specHref(n), label: n + ' · spec' };
-      const lines = (d.build || []).filter((b) => b && b.ingredient && !/ or |optional/i.test(b.ingredient));
-      // The house book writes decimals (.75 oz), the classics fractions (¾ oz): wrong answers follow the drink's own style.
-      const fracStyle = (d.build || []).some((b) => /[¼½¾⅓⅔⅛⅜⅙⅚]/.test(b?.amount || ''));
-      lines.forEach((b, i) => {
-        const ms = measure(b.amount);
-        if (!ms || lines.filter((x) => ingName(x.ingredient).toLowerCase() === ingName(b.ingredient).toLowerCase()).length > 1) return;
-        const near = SPEC_UNITS[ms.unit].filter((v) => Math.abs(v - ms.n) > 0.01).sort((a, c) => Math.abs(a - ms.n) - Math.abs(c - ms.n)).slice(0, 5);
-        ask(`amt:${e.id}:${i}`, { ...base, q: `How much ${ingName(b.ingredient)} goes in ${the(n)}?`, right: b.amount, pool: near.map((v) => write(v, ms.unit, fracStyle)), why: lines.map((x) => [x.amount, x.ingredient].filter(Boolean).join(' ')).join(', ') + '.', topics: [topic] });
-      });
-      const fam = iceFam(d.ice);
-      if (d.ice && fam && !/ or /i.test(d.ice)) ask('ice:' + e.id, { ...base, q: `What ice goes in ${the(n)}?`, right: d.ice, pool: ICE.filter(([k]) => k !== fam && !(fam === 'up' && k === 'hot') && !(fam === 'hot' && k === 'up')).map(([, , label]) => label), why: `${d.ice}.`, topics: [topic] });
+    for (const { e, house: own } of l.items) {
+      const allLines = own ? ownLines : libLines;
+      const d = e.data, n = d.name;
+      const build = (d.build || []).filter((b) => b && b.ingredient);
+      if (build.length < 2) continue;
+      const frac = build.some((b) => /[¼½¾⅓⅔⅛⅜⅙⅚]/.test(b.amount || ''));
+      const right = build.map(lineText).join('\n');
+      const r = rng('spec:' + e.id);
+      const at = (k) => Math.floor(r() * k);
+      const wrong = new Set();
+      const add = (lines) => { const t = lines.map(lineText).join('\n'); if (t !== right) wrong.add(t); };
+      // 1. An ingredient swapped for a similar one from another drink, amounts untouched.
+      const swap = () => {
+        const i = at(build.length), b = build[i];
+        const mine = build.map((x) => ingName(x.ingredient).toLowerCase());
+        const options = allLines.filter((x) => kindOf(x) === kindOf(b) && !mine.includes(ingName(x.ingredient).toLowerCase()) && !build.some((y) => shares(y.ingredient, x.ingredient)) && (kindOf(b) !== 'spirit' || familyOf(x.ingredient) !== familyOf(b.ingredient)));
+        if (!options.length) return;
+        const pickd = options[at(options.length)];
+        add(build.map((x, k) => (k === i ? { ...x, ingredient: pickd.ingredient } : x)));
+      };
+      // 2. One amount moved to the next real measure up or down.
+      const amount = () => {
+        const idx = build.map((b, k) => [k, measure(b.amount)]).filter(([, m]) => m);
+        if (!idx.length) return;
+        const [i, m] = idx[at(idx.length)];
+        const near = SPEC_UNITS[m.unit].filter((v) => Math.abs(v - m.n) > 0.01).sort((a2, c) => Math.abs(a2 - m.n) - Math.abs(c - m.n)).slice(0, 2);
+        const v = near[at(near.length)];
+        add(build.map((x, k) => (k === i ? { ...x, amount: write(v, m.unit, frac) } : x)));
+      };
+      // 3. Two different amounts switched between ingredients.
+      const switched = () => {
+        const pairs = [];
+        for (let i = 0; i < build.length; i++) for (let j = i + 1; j < build.length; j++) if (measure(build[i].amount) && measure(build[j].amount) && measure(build[i].amount).unit === measure(build[j].amount).unit && build[i].amount !== build[j].amount) pairs.push([i, j]);
+        if (!pairs.length) return;
+        const [i, j] = pairs[at(pairs.length)];
+        add(build.map((x, k) => (k === i ? { ...x, amount: build[j].amount } : k === j ? { ...x, amount: build[i].amount } : x)));
+      };
+      const makers = [swap, amount, switched];
+      for (let tries = 0; wrong.size < 6 && tries < 30; tries++) makers[tries % 3]();
+      if (wrong.size < 3) continue;
+      ask('spec:' + e.id, { page: specHref(n), label: n, q: `What’s the spec for ${the(n)}?`, right, pool: [...wrong], why: `${right.split('\n').join(', ')}.`, topics: [topic] });
     }
   }
 

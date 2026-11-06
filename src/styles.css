@@ -358,7 +358,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .quiz-option:hover:not(:disabled) { border-color: #C49A6C; background: #fff; }
 .quiz-option:disabled { cursor: default; }
 .quiz-letter { width: 30px; height: 30px; flex: none; display: grid; place-items: center; border-radius: 8px; background: #F3EEE6; font-weight: 700; font-size: 13px; }
-.quiz-option-text { flex: 1; min-width: 0; }
+.quiz-option-text { flex: 1; min-width: 0; white-space: pre-line; } /* a spec answer lists one ingredient per line (Nov 6) */
 .quiz-mark { flex: none; }
 .quiz-option.right { background: #E3ECDD; border: 2px solid #3F6A39; padding: 13px 15px 13px 13px; font-weight: 600; }
 .quiz-option.right .quiz-letter { background: #3F6A39; color: #fff; }
