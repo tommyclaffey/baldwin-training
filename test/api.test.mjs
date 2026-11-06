@@ -668,3 +668,11 @@ test('the Cocktails page lists every classic by its own name (Nov 6: every row r
   const house = all(page.main, (n) => (n.n || '').startsWith('Row · ') && !n.n.includes('Zero-proof'));
   for (const r of house) assert.equal(firstText(r), r.n.slice('Row · '.length), r.n + ' shows its own name');
 });
+
+test('pairing questions are wine only for now (Tommy, Nov 6: no cocktails)', async () => {
+  const q = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['pairings'], count: 0 } })).data;
+  const all = Object.values(q.questions);
+  assert.ok(all.length > 20, 'the Pairings quiz still has questions');
+  assert.ok(!all.some((x) => /cocktail/i.test(x.q)), 'no cocktail pairing questions');
+  assert.ok(all.every((x) => /wine do we suggest|dish do we suggest/.test(x.q)), 'only wine-with-dish and dish-with-wine');
+});

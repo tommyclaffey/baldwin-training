@@ -62,6 +62,7 @@ const baseFromBuild = (d) => { if ((d.build || []).filter((b) => SPIRIT_RE.test(
   return [['bourbon', 'Bourbon'], ['rye', 'Rye'], ['scotch', 'Scotch'], ['gin', 'Gin'], ['vodka', 'Vodka'], ['mezcal', 'Mezcal'], ['tequila', 'Tequila'], ['rum', 'Rum'], ['cachaça', 'Cachaça'], ['cognac', 'Cognac'], ['brandy', 'Brandy'], ['pisco', 'Pisco'], ['whiskey', 'Whiskey'], ['whisky', 'Whisky']].find(([k]) => new RegExp('\\b' + k + '\\b').test(l))?.[1] || ''; };
 
 /** The topics a person can pick, in the order they're shown. */
+const ASK_COCKTAIL_PAIRINGS = false;
 /** The bartenders' spec quizzes, one per list on the Cocktail Specs page (Nov 6). */
 export const SPEC_TOPICS = [['spec:specialty', 'Specialty Cocktail Specs'], ['spec:brg', 'BRG Staples Specs'], ['spec:classic-on', 'Classics on the Menu Specs'], ['spec:mules', 'Mule Specs'], ['spec:dessert', 'Dessert Cocktail Specs'], ['spec:spiritless', 'Spiritless Cocktail Specs'], ['spec:house', 'House Cocktail Specs'], ['spec:classic-off', 'Classics off the Menu Specs'], ['spec:classic', 'Classic Cocktail Specs']];
 /** A question only bartenders need (an amount, the ice): kept out of the Quick Quiz. */
@@ -135,7 +136,8 @@ export function questionPool(db, store) {
     const mineW = [d.pairing, d.pairingOpposite].filter(Boolean).map((x) => x.toLowerCase());
     const mySide = sideOf(d.pairing);
     if (d.pairing && mySide) ask('wine:' + e.id, { ...base, q: `Which wine do we suggest with ${the(n)}?`, right: d.pairing, pool: recipes.flatMap((x) => [x.data.pairing, x.data.pairingOpposite]).filter((x) => x && !mineW.includes(x.toLowerCase()) && sideOf(x) && sideOf(x) !== mySide), why: `${d.pairing} is the similar pairing${d.pairingOpposite ? `; ${d.pairingOpposite} is the opposite` : ''}.`, topics: [course, 'pairings'] });
-    if (d.cocktail) ask('cocktail:' + e.id, { ...base, q: `Which cocktail do we pair with ${the(n)}?`, right: d.cocktail, pool: recipes.map((x) => x.data.cocktail).filter((x) => x && x.toLowerCase() !== d.cocktail.toLowerCase()), why: `Suggest the ${d.cocktail}.`, topics: [course, 'pairings'] });
+    // Nov 6, Tommy: "Don't put cocktails in there for right now." Pairing questions are wine only; flip this to bring them back.
+    if (ASK_COCKTAIL_PAIRINGS && d.cocktail) ask('cocktail:' + e.id, { ...base, q: `Which cocktail do we pair with ${the(n)}?`, right: d.cocktail, pool: recipes.map((x) => x.data.cocktail).filter((x) => x && x.toLowerCase() !== d.cocktail.toLowerCase()), why: `Suggest the ${d.cocktail}.`, topics: [course, 'pairings'] });
     if (d.inspiration) ask('inspired:' + e.id, { ...base, q: `What’s the idea behind ${the(n)}?`, right: d.inspiration, pool: recipes.filter((x) => x.data.course !== d.course).map((x) => x.data.inspiration), why: `${d.inspiration}.`, topics: [course] });
     if (d.dropSide) ask('side:' + e.id, { ...base, q: `What comes on the side of ${the(n)}?`, right: d.dropSide, pool: recipes.map((x) => x.data.dropSide), why: `${d.dropSide}.`, topics: [course] });
     if (d.dropSauce) ask('sauce:' + e.id, { ...base, q: `What sauce comes with ${the(n)}?`, right: d.dropSauce, pool: recipes.map((x) => x.data.dropSauce), why: `${d.dropSauce}.`, topics: [course] });
