@@ -93,7 +93,8 @@
    },
    "glassCard": "Rocks",
    "allergyTag": "",
-   "allergyNote": ""
+   "allergyNote": "",
+   "onMenu": true
   },
   "sort": 0
  },
@@ -400,7 +401,8 @@
    },
    "glassCard": "Rocks",
    "allergyTag": "",
-   "allergyNote": ""
+   "allergyNote": "",
+   "onMenu": true
   },
   "sort": 3
  },
@@ -783,7 +785,8 @@
    },
    "glassCard": "Coupe",
    "allergyTag": "",
-   "allergyNote": ""
+   "allergyNote": "",
+   "onMenu": true
   },
   "sort": 7
  },
@@ -1165,7 +1168,8 @@
    "glassCard": "Coupe",
    "allergyTag": "",
    "allergyNote": "",
-   "menuPrice": "16"
+   "menuPrice": "16",
+   "onMenu": true
   },
   "sort": 11
  },
@@ -1259,8 +1263,7 @@
    "video": null,
    "glassCard": "Coupe",
    "allergyTag": "",
-   "allergyNote": "",
-   "menuPrice": "15"
+   "allergyNote": ""
   },
   "sort": 12
  },
@@ -1535,8 +1538,7 @@
    },
    "glassCard": "Coupe",
    "allergyTag": "",
-   "allergyNote": "",
-   "menuPrice": "15"
+   "allergyNote": ""
   },
   "sort": 15
  },
@@ -1725,8 +1727,7 @@
    },
    "glassCard": "Highball",
    "allergyTag": "",
-   "allergyNote": "",
-   "menuPrice": "14"
+   "allergyNote": ""
   },
   "sort": 17
  },
@@ -2013,7 +2014,8 @@
    "glassCard": "Wine glass",
    "allergyTag": "",
    "allergyNote": "",
-   "menuPrice": "13"
+   "menuPrice": "13",
+   "onMenu": true
   },
   "sort": 20
  },
@@ -3254,7 +3256,8 @@
     "title": "Let's get Naked and Famous · The Educated Barfly"
    },
    "allergyTag": "",
-   "allergyNote": ""
+   "allergyNote": "",
+   "onMenu": true
   }
  },
  {

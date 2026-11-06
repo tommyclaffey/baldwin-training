@@ -83,6 +83,7 @@ export const COLLECTIONS = {
       { key: 'garnish', label: 'Garnish', type: 'text', max: 80, section: 'Glass, method, ice' },
       { key: 'glassCard', label: 'Glass card', type: 'text', max: 60, options: [], section: 'Glass, method, ice', hint: 'Which glass drawing shows on the page. Leave empty to match the glass.' },
       { key: 'tableBase', label: 'Base, for the Cocktails table', type: 'text', max: 60, section: 'Glass, method, ice', placeholder: 'Bourbon or rye' },
+      { key: 'onMenu', label: 'On our menu', type: 'toggle', section: 'The basics', hint: 'Shows an “On our menu” tag, and puts it in the Classic Cocktails on the Menu quiz.' },
       { key: 'menuPrice', label: 'On our menu: price', type: 'text', max: 10, section: 'The basics', placeholder: '15', hint: 'Leave empty if it’s not on our menu. Shows as an “On our menu” tag.' },
       { key: 'allergyTag', label: 'Allergy tag', type: 'text', max: 40, section: 'Glass, method, ice', placeholder: 'Contains egg white', hint: 'Shows as a tag at the top and a note under the build.' },
       { key: 'allergyNote', label: 'Allergy note', type: 'textarea', max: 200, section: 'Glass, method, ice' },

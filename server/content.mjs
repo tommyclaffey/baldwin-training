@@ -94,7 +94,7 @@ const isGeneric = () => SCOPE.generic;
 export function ordered(db, col) {
   let list = listEntries(db, col, SHARED.has(col) ? null : SCOPE.store);
   // Classics are shared; "On our menu" prices are The Baldwin's.
-  if (col === 'classic' && isGeneric()) list = list.map((e) => ({ ...e, data: { ...e.data, menuPrice: '' } }));
+  if (col === 'classic' && isGeneric()) list = list.map((e) => ({ ...e, data: { ...e.data, menuPrice: '', onMenu: false } }));
   if (col === 'classic') return classicOrder(list);
   const g = COLLECTIONS[col].group;
   if (!g) return list;
@@ -106,7 +106,7 @@ function entryPage(db, e) {
   const c = COLLECTIONS[e.collection];
   if ((c.hasPage && !c.hasPage(e.data)) || !c.template) return null;
   const tpl = basePage(c.template);
-  if (e.collection === 'classic' && isGeneric()) e = { ...e, data: { ...e.data, menuPrice: '' } };
+  if (e.collection === 'classic' && isGeneric()) e = { ...e, data: { ...e.data, menuPrice: '', onMenu: false } };
   if (e.collection === 'classic') return classicPage(tpl, e, { all: ordered(db, 'classic'), glassCard, protos: classicProtos() });
   if (e.collection === 'house') {
     // The strip shows this drink's own menu section (the Drink Book has 58 drinks).

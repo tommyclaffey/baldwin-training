@@ -36,7 +36,7 @@ export function emptyPage(file, slug, store) {
 
 /** Baldwin's names and places, from its own dishes and drinks plus the ones written into the design. */
 // Names that are also classics or plain words stay (the Sidecar's history mentions the Ritz Hotel, for one).
-const KEEP = new Set(['The Ritz', 'Espresso Martini', 'Perfect Martini', 'Lemon Drop', 'Martini']);
+const KEEP = new Set(['The Ritz', 'Espresso Martini', 'Perfect Martini', 'Proper Martini', 'Lemon Drop', 'Martini']);
 export function baldwinTerms(names, classics = []) {
   // Plus the dish names written into the design before the Food Book renamed them (Oct 28).
   const fixed = ['The Baldwin', 'Baldwin family', 'J.Baldwin', 'Testa Barra', 'Macomb', 'Shelby', 'Bolgheri Rosso', 'Tenuta Spinelli', 'G4 Tequila', 'DCD Rye',
