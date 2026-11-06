@@ -199,7 +199,8 @@ export function classicTable(page, all) {
       if (th) { th.n = 'Thumb · ' + x.data.name; th.f = img(x.data.photo); }
       const t = texts(r);
       const base = x.data.tableBase || (x.data.build || []).find((b) => b.spirit)?.ingredient || '—';
-      [x.data.name, x.data.tagline || '', base, x.data.glass || '—', x.data.garnish || '—'] // no method: specs live on Cocktail Specs (Nov 5).forEach((v, k2) => t[k2] && setText(t[k2], v));
+      // No method column: specs live on Cocktail Specs (Nov 5).
+      [x.data.name, x.data.tagline || '', base, x.data.glass || '—', x.data.garnish || '—'].forEach((v, k2) => t[k2] && setText(t[k2], v));
       out.push(r);
     });
   }
