@@ -30,7 +30,7 @@ type State = { device: string; name: string; quizzes: { [id: string]: Record_ };
 
 const KEY = 'bt-quiz2';
 /** Bump when the question bank is rewritten, so half-finished quizzes from the old bank start over. */
-export const QUIZ_BANK = '2026-11-06';
+export const QUIZ_BANK = '2026-11-06b';
 const keyFor = (userId: number | null) => (userId ? `${KEY}:u${userId}` : KEY);
 let userId: number | null = null;
 function load(id: number | null = null, name = ''): State {
