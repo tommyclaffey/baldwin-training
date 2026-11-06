@@ -46,7 +46,7 @@ if (process.env.COOKIE) {
 const report = [];
 for (const screen of SCREENS) {
   for (const w of WIDTHS) {
-    await send('Emulation.setDeviceMetricsOverride', { width: w, height: w < 800 ? 844 : 1000, deviceScaleFactor: 1, mobile: w < 800 });
+    await send('Emulation.setDeviceMetricsOverride', { width: w, height: w < 800 ? (+process.env.H || 844) : 1000, deviceScaleFactor: 1, mobile: w < 800 });
     await send('Page.navigate', { url: BASE + screen });
     await sleep(1800);
     const probe = await send('Runtime.evaluate', { returnByValue: true, expression: `(() => {
@@ -63,7 +63,7 @@ for (const screen of SCREENS) {
       await send('Input.insertText', { text: process.env.TYPE });
       await sleep(500);
     }
-    const h = FULL ? Math.min(v.h, 8000) : (w < 800 ? 844 : 1000);
+    const h = FULL ? Math.min(v.h, 8000) : (w < 800 ? (+process.env.H || 844) : 1000);
     await send('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: 1, mobile: w < 800 });
     await sleep(400);
     const shot = await send('Page.captureScreenshot', { format: 'png' });

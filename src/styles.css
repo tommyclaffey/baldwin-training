@@ -1226,6 +1226,10 @@ body.eip-lock { overflow: hidden; }
   [data-name="Carousel · Key points"][data-name][data-name][data-name] > * { flex: 0 0 auto !important; width: 72vw !important; max-width: 300px !important; }
   [data-name="Key points"][data-name][data-name][data-name] > [data-name="Head"], [data-name="Key points"] > [data-name="Head"][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: nowrap !important; align-items: center !important; justify-content: space-between !important; gap: 8px !important; }
   [data-name="Carousel controls"][data-name][data-name][data-name] { display: flex !important; flex-direction: row !important; gap: 10px !important; flex-wrap: nowrap !important; align-items: center !important; width: auto !important; }
+  /* Signature cocktails head (Nov 5): the rule above put the note, count and both arrows on one line, which pushed the
+     next arrow off the screen on smaller iPhones. The note gets its own line again; count and arrows sit under it. */
+  [data-name="Band head"] > [data-name="Carousel controls"][data-name][data-name][data-name] { display: grid !important; grid-template-columns: 1fr auto auto; column-gap: 10px !important; row-gap: 6px !important; width: 100% !important; }
+  [data-name="Band head"] > [data-name="Carousel controls"][data-name][data-name][data-name] > :first-child:not(:nth-last-child(3)) { grid-column: 1 / -1; white-space: normal !important; }
 }
 /* what the Court expects (Nov 2): the copper rule stays on the left, the head stays a row */
 [data-name="Court · What the Court expects"][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: nowrap !important; align-items: stretch !important; }

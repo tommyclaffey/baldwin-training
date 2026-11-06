@@ -1,7 +1,7 @@
 // Home: the dashboard (greeting, tonight's sections, what's new) and the live parts of the designed page
 // (tonight's focus dish, Browse the Book counts, the Food Matrix preview). Your Training fills in on the phone.
 import { clone, find, findAll, byName, startsWith, texts, setText, repeat, photoToCome } from './templates.mjs';
-import { COLLECTIONS, COURSES } from './cms.mjs';
+import { COLLECTIONS, COURSES, getEntry } from './cms.mjs';
 
 const TZ = 'America/Detroit';
 const SHORT = { 'For the Table': 'For the Table', 'From the Oven': 'From the Oven', 'Soups & Salads': 'Salad', Entrees: 'Entree', 'Social Hour': 'Social Hour', 'Snacks & Small Plates': 'Small Plate', Salads: 'Salad', Pizza: 'Pizza', Pasta: 'Pasta', Mains: 'Main', Dessert: 'Dessert' };
@@ -50,7 +50,8 @@ export function fillHome(db, page, { store, user, recipes, house, wines, bowl })
       AND collection IN ('recipe','house','wine','shelf','beer') ORDER BY updated_at DESC, id DESC LIMIT 3`).all(store?.id ?? 1);
     const box = find(news, byName('Updates'));
     if (rows.length) repeat(box, startsWith('Update · '), rows, (row, r, i) => {
-      const d = JSON.parse(r.data);
+      // Store dishes keep only their own fields; the name lives in the group library (Nov 5: names came out blank).
+      const d = getEntry(db, r.id)?.data || JSON.parse(r.data);
       row.n = 'Update · ' + (i + 1);
       // Added in the last two weeks: new. Older and changed since: updated.
       const isNew = !r.created_at || Date.now() - new Date(r.created_at) < 14 * 864e5;
