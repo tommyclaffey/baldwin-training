@@ -1333,3 +1333,8 @@ body.eip-lock { overflow: hidden; }
   [data-name="Actions"] > [data-name="View toggle"] > [data-name^="Option · "] > .ftext { width: auto !important; flex: 0 0 auto !important; text-align: center; }
   [data-name="Filters"] [data-name="Button · Reset"] { width: 100% !important; align-self: stretch !important; justify-content: center !important; }
 }
+/* No divider under the last row at the bottom of a card (Nov 6, Tommy: "If it's the bottom section, you don't need to have a line"):
+   sign-off columns on Quizzes, a recipe's last step, the Cleaning Board's last task. */
+[data-name="Column"] > [data-name^="Sign-off · "]:last-child,
+[data-name="Steps"] > [data-name^="Step "]:last-child,
+[data-name="Cleaning board"] > [data-name^="Row · "]:last-child { border-bottom-width: 0 !important; }
