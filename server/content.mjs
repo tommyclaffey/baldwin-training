@@ -13,6 +13,7 @@ import { classify, emptyPage, baldwinTerms, snapshotShelves, genericize, indexTe
 import { wineKind, wineVideos, learnMore, wineCards, wineFollyLink } from './wine.mjs';
 import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
 import { fillBackBar, bottlePage, SPIRIT_FILLER } from './backbar.mjs';
+import { fillSpecs, SPECS_PATH } from './specs.mjs';
 import { WINE_FILLER } from './winelist.mjs';
 import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './winelist.mjs';
 import { wire } from './interact.mjs';
@@ -257,8 +258,10 @@ function houseRows(page, house) {
     // The base is the spirit line, never just the first line (Nov 5: "the sugar cube cannot be a base spirit").
     const base = build.find((b) => b.spirit) || (d.base ? { ingredient: d.base } : null);
     const rest = build.filter((b) => b !== base).map((b) => b.ingredient).join(', ');
-    [d.name, d.tableLine || rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.tableIce || d.ice || '—', d.garnish || 'To confirm', d.pairs || 'Ask the bar']
+    [d.name, d.tableLine || rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.garnish || 'To confirm', d.pairs || 'Ask the bar'] // no ice: Cocktail Specs (Nov 5)
       .forEach((v, i) => t[i] && setText(t[i], v));
+    // The design drew garnish as a grey placeholder ("To confirm"); real garnishes read like the other columns.
+    if (d.garnish && t[4] && t[3]) t[4].f = t[3].f;
     return r;
   });
   // Our own spiritless drinks replace the zero-proof placeholder row.
@@ -306,9 +309,9 @@ function signatureCards(page, house) {
   const row = find(page.main, startsWith('Carousel · '));
   house = house.filter((e) => e.data.onMenu !== false); // off-menu drinks: in the table, not the carousel
   if (!row || !house.length) return;
-  // The specs come from the Drink Book now (Nov 5), so the carousel no longer calls them sample amounts.
-  const note = find(page.main, (n) => n.t === 'T' && /^Sample amounts/.test(n.s || ''));
-  if (note && house.some((e) => (e.data.specNote || '').startsWith('From the Drink Book') || /Drink Book/.test(e.data.specNote || ''))) setText(note, 'Specs from the Drink Book');
+  // Nov 5: the amounts moved to Cocktail Specs; the head links there.
+  const specLink = find(page.main, byName('Link · Cocktail Specs'));
+  if (specLink) specLink.to = SPECS_PATH;
   const cards = row.c.filter(startsWith('Spec · '));
   const filler = find(row, byName('Glass filler'));
   const proto = cards[0];
@@ -334,16 +337,17 @@ function signatureCards(page, house) {
     name.w = col; name.sh = 'F';
     for (const t of nt) { t.ar = 'H'; t.w = col; t.sh = 'F'; }
     if ((d.name || '').length > 13) nt[1].z = Math.round((nt[1].z || 28) * 0.86); // long names stay on one line
-    // Cards stay one size: up to 4 ingredients, then "+ N more" (the card opens the full spec).
+    // Cards stay one size: up to 4 ingredients, then "+ N more" (the card opens the drink). No amounts (Nov 5): those are
+    // on Cocktail Specs, for the bartenders.
     const all = (d.build || []).filter((b) => b && b.ingredient);
-    const build = all.length > 4 ? [...all.slice(0, 3), { amount: '', ingredient: `+ ${all.length - 3} more on the full spec`, more: true }] : all;
+    const build = all.length > 4 ? [...all.slice(0, 3), { ingredient: `+ ${all.length - 3} more`, more: true }] : all;
     repeat(find(card, byName('Build')), startsWith('Line · '), build, (l, b) => {
       l.n = b.more ? 'Line · More' : 'Line · ' + b.ingredient;
-      const t = texts(l); setText(t[0], b.amount || ''); setText(t[1], b.ingredient); t[1].ar = 'H'; t[1].sh = 'L';
-      if (b.more) { t[1].f = [{ c: '#C49A6C' }]; t[1].fs = 'SemiBold'; t[1].z = Math.min(t[1].z || 15, 14); }
+      const t = texts(l); setText(t[0], b.ingredient); t[0].ar = 'H'; t[0].sh = 'L';
+      if (b.more) { t[0].f = [{ c: '#C49A6C' }]; t[0].fs = 'SemiBold'; t[0].z = Math.min(t[0].z || 15, 14); }
     });
     const det = find(card, byName('Details'));
-    for (const [label, v] of [['Glass', d.glass], ['Ice', d.ice], ['Method', d.method], ['Pairs with', d.pairs]]) {
+    for (const [label, v] of [['Glass', d.glass], ['Garnish', d.garnish], ['Pairs with', d.pairs]]) {
       const r = find(det, byName(label)); if (r) { const t = texts(r)[1]; setText(t, v || (label === 'Pairs with' ? 'Ask the bar' : 'To confirm')); t.ar = 'H'; t.sh = 'L'; r.sh = 'L'; }
     }
     return card;
@@ -486,6 +490,7 @@ function assembleRaw(db, file) {
   if (file === '26-2') fillBeerPage(page, baseIndex(), ordered(db, 'beer'), basePage);
   if (entry && entry.slug.startsWith('beer/')) fillBeerStyle(page, entry.slug, baseIndex(), ordered(db, 'beer'), basePage);
   if (file === '294-2') fillBackBar(page, ordered(db, 'shelf'), ordered(db, 'house'));
+  if (file === '430-17') fillSpecs(page, ordered(db, 'house'), ordered(db, 'classic'));
   return page;
 }
 
@@ -515,6 +520,7 @@ function genericPage(db, file, slug, page) {
   if (file === '26-2' && beers.length) fillBeerPage(page, baseIndex(), beers, basePage);
   if (entry && entry.slug.startsWith('beer/') && beers.length) fillBeerStyle(page, entry.slug, baseIndex(), beers, basePage);
   if (file === '294-2' && shelf.length) fillBackBar(page, shelf, house);
+  if (file === '430-17') fillSpecs(page, house, ordered(db, 'classic'));
   return genericize(page, slug, { store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: wines.length, beer: beers.length } });
 }
 /** Baldwin's own dish and drink names, so they're written out of the shared pages. */

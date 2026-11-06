@@ -70,7 +70,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   // Level 1 (content/manual) and Level 2 (content/manual-l2, Nov 2) chapters
   const readDir = (d) => (fs.existsSync(path.join(root, d)) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'))) : []);
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
-  assert.equal(index.length, 659 + manual.reduce((a, c) => a + 1 + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -626,4 +626,31 @@ test('quiz answers match the books in the Quiz Updates folder (Nov 5)', async ()
   const pork = qs.filter((x) => /doesn’t eat pork/.test(x.q));
   assert.ok(pork.length, 'pork questions exist');
   assert.ok(pork.every((x) => !x.options.some((o, i) => i !== x.answer && /meatball|ragu|sunday sauce/i.test(o))), 'meatballs and ragu are never offered as pork-free');
+});
+
+test('cocktail specs live on their own page; the cocktail pages and the Cocktails page show none (Nov 5)', async () => {
+  const all = (n, f, out = []) => { if (f(n)) out.push(n); (n.c || []).forEach((c) => all(c, f, out)); return out; };
+  const index = (await call('/api/index')).data;
+  const specsEntry = index.find((e) => e.slug === 'the-bar/cocktail-specs');
+  assert.ok(specsEntry, 'Cocktail Specs has an address');
+  const specs = (await call('/api/page/' + specsEntry.file)).data;
+  const cards = all(specs.main, (n) => (n.n || '').startsWith('Spec · '));
+  const house = (await call('/api/entries?collection=house')).data.entries;
+  assert.ok(house.length > 20);
+  for (const h of house) assert.ok(cards.some((c) => c.n === 'Spec · ' + h.data.name), `${h.data.name} has a spec`);
+  const fs = cards.find((c) => c.n === 'Spec · Fuschia Satin');
+  assert.match(JSON.stringify(fs), /"s":"[0-9.]+ oz"/, 'the spec card has amounts');
+  // No amounts, method, ice or steps on the drink pages or the Cocktails page.
+  const oz = /"s":"[0-9.¼½¾]+ oz"/;
+  for (const slug of ['signature/fuschia-satin', 'classic/daiquiri', 'classic/old-fashioned', 'the-bar/cocktails']) {
+    const e = index.find((x) => x.slug === slug);
+    const p = (await call('/api/page/' + e.file)).data;
+    const s = JSON.stringify(p.main);
+    assert.doesNotMatch(s, oz, slug + ' shows no amounts');
+    assert.doesNotMatch(s, /"n":"(Build band|How to make it|Method|Ice)"/, slug + ' has no build, steps, method or ice');
+    if (slug !== 'the-bar/cocktails') {
+      const btn = all(p.main, (n) => n.n === 'Button · Open spec')[0];
+      assert.ok(btn && btn.to.startsWith('/the-bar/cocktail-specs?find='), slug + ' links to its spec');
+    }
+  }
 });
