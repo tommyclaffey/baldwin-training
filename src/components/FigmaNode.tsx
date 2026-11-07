@@ -1,3 +1,4 @@
+import { focusVars, parseFocus, type Focus } from '../lib/focus';
 import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
@@ -93,13 +94,16 @@ function rgba(hex: string, a = 1) {
   return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
 }
 
-function background(node: FNode, st: CSSProperties) {
+function background(node: FNode, st: CSSProperties, cls?: string[]) {
   if (!node.f) return;
   const images: string[] = [];
   const sizes: string[] = [];
+  let focus: Focus | null = null;
   for (const f of node.f) {
     if (f.img) {
-      images.push(`url("${f.img}")`);
+      const p = parseFocus(f.img);
+      if (p.x !== 50 || p.y !== 50 || p.z !== 1) focus = p;
+      images.push(`url("${p.url}")`);
       sizes.push(f.m === 'FIT' ? 'contain' : f.m === 'TILE' ? 'auto' : 'cover');
     } else if (f.g) {
       const stops = f.g.map(([c, a, p]) => `${rgba(c, a)} ${Math.round(p * 100)}%`).join(', ');
@@ -112,8 +116,14 @@ function background(node: FNode, st: CSSProperties) {
   if (images.length) {
     st.backgroundImage = images.reverse().join(', ');
     st.backgroundSize = sizes.reverse().join(', ');
-    st.backgroundPosition = 'center';
+    st.backgroundPosition = focus ? `${focus.x}% ${focus.y}%` : 'center';
     st.backgroundRepeat = 'no-repeat';
+    // Zoomed in: the photo moves to a layer behind the children, so it can scale inside the box (see .f-zoom).
+    if (focus && focus.z > 1 && images.length === 1 && cls) {
+      Object.assign(st, focusVars(`${focus.url}#f=${focus.x},${focus.y},${focus.z}`));
+      st.backgroundImage = undefined; st.backgroundSize = undefined; st.backgroundPosition = undefined; st.backgroundRepeat = undefined;
+      cls.push('f-zoom');
+    }
   }
 }
 
@@ -406,7 +416,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   // Floor Plan: the real table finder replaces the drawn box.
   if (m?.finder) return <TableFinder style={st} className={cls.join(' ')} list={m.list || []} />;
 
-  background(node, st);
+  background(node, st, cls);
   if (node.st) {
     const color = rgba(node.st, node.sto ?? 1);
     const style = node.dash ? 'dashed' : 'solid';

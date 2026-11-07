@@ -1,3 +1,4 @@
+import { focusImg } from '../lib/focus';
 import { useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
@@ -112,7 +113,7 @@ export function SearchBox({ style }: { style?: CSSProperties }) {
             <li key={e.slug} id={`${listId}-${i}`} role="option" aria-selected={i === active} className={i === active ? 'active' : ''}
               onMouseDown={(ev) => { ev.preventDefault(); go(e); }} onMouseEnter={() => setActive(i)}>
               {e.thumb
-                ? <img className="search-thumb" src={e.thumb} alt="" loading="lazy" />
+                ? <img className="search-thumb" src={e.thumb} style={focusImg(e.thumb)} alt="" loading="lazy" />
                 : <span className="search-thumb search-initials" aria-hidden="true">{initials(e.title)}</span>}
               <span className="search-copy">
                 <span className="search-section">{kicker(e)}</span>

@@ -1,4 +1,5 @@
 // The CMS in the admin: pick a page type, see its pages, add one or edit one by filling in its template.
+import { focusImg } from '../lib/focus';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api, type Video } from '../lib/api';
@@ -72,7 +73,7 @@ export function CollectionList() {
           <div className="list">
             {g.items.map((e, i) => (
               <div key={e.id} className="list-row cms-row">
-                {c.noPages ? null : (e.data.photo || e.data.bottle_img) ? <img src={(e.data.photo || e.data.bottle_img) as string} alt="" /> : <span className="thumb-empty" />}
+                {c.noPages ? null : (e.data.photo || e.data.bottle_img) ? <img src={(e.data.photo || e.data.bottle_img) as string} style={focusImg((e.data.photo || e.data.bottle_img) as string)} alt="" /> : <span className="thumb-empty" />}
                 <Link className="grow" to={`/admin/pages/${c.id}/${e.id}`}>
                   <strong>{e.data.name as string}</strong>
                   <small>{(e.data.tagline as string) || (e.data.description as string) || subline(e.data) || '—'}</small>
@@ -97,7 +98,7 @@ export function CollectionList() {
             <div className="list">
               {archived.map((e) => (
                 <div key={e.id} className="list-row cms-row archived">
-                  {c.noPages ? null : e.data.photo ? <img src={e.data.photo as string} alt="" /> : <span className="thumb-empty" />}
+                  {c.noPages ? null : e.data.photo ? <img src={e.data.photo as string} style={focusImg(e.data.photo as string)} alt="" /> : <span className="thumb-empty" />}
                   <span className="grow"><strong>{e.data.name as string}</strong><small>Archived {when(e.archivedAt || '')}</small></span>
                   <button type="button" className="btn ghost" onClick={() => void restore(e)}>Restore</button>
                 </div>

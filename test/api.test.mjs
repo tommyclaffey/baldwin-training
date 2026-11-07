@@ -676,3 +676,18 @@ test('pairing questions are wine only for now (Tommy, Nov 6: no cocktails)', asy
   assert.ok(!all.some((x) => /cocktail/i.test(x.q)), 'no cocktail pairing questions');
   assert.ok(all.every((x) => /wine do we suggest|dish do we suggest/.test(x.q)), 'only wine-with-dish and dish-with-wine');
 });
+
+test('a photo keeps its framing when saved, and the file address stays clean (Nov 6)', async () => {
+  const all = (n, f, out = []) => { if (f(n)) out.push(n); (n.c || []).forEach((c) => all(c, f, out)); return out; };
+  const e = (await call('/api/entries?collection=recipe')).data.entries.find((x) => x.data.photo);
+  const base = e.data.photo.split('#')[0];
+  const framed = base + '#f=30,20,1.5';
+  const saved = await call('/api/entries/' + e.id, { method: 'PUT', body: { data: { ...e.data, photo: framed } } });
+  assert.equal(saved.status, 200);
+  assert.equal(saved.data.data.photo, framed, 'the framing is stored with the photo');
+  const index = (await call('/api/index')).data;
+  const page = (await call('/api/page/' + index.find((x) => x.slug === e.slug).file)).data;
+  assert.ok(all(page.main, (n) => (n.f || []).some((f) => f.img === framed)).length, 'the dish page gets the framed photo');
+  const back = await call('/api/entries/' + e.id, { method: 'PUT', body: { data: { ...e.data, photo: base } } });
+  assert.equal(back.data.data.photo, base, 'Reset goes back to the plain photo');
+});
