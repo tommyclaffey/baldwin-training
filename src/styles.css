@@ -1346,3 +1346,6 @@ body.eip-lock { overflow: hidden; }
 @media (max-width: 859px) {
   .side .account { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 }
+/* Home hero (Nov 6, Tommy: "the pic not going vertical full width"): the photo fills the card however tall the copy makes it. */
+[data-name^="Hero · "] > [data-name="Photo"] > [role="img"], [data-name^="Hero · "] > [data-name="Photo"] > [data-name^="IMG/"] { top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; }
+[data-name^="Hero · "] > [data-name="Copy"] > .ftext { text-wrap: balance; } /* "BRAISED / SHORT RIB", never one word alone on a line */

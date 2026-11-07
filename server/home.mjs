@@ -78,6 +78,7 @@ export function fillHome(db, page, { store, user, recipes, house, wines, bowl })
     // Long names wrap to a second line, a size down, instead of running under the photo.
     t[2].ar = 'H'; t[2].sh = 'L'; if (d.name.length > 12) { t[2].z = Math.min(t[2].z || 70, 56); t[2].lh = '100%'; }
     setText(t[3], d.description || '');
+    t[3].ar = 'H'; t[3].sh = 'L'; // wraps inside the copy column instead of running under the photo (Nov 6)
     const stat = find(hero, byName('Stat'));
     if (stat && d.pairing) setText(texts(stat)[0], d.pairing); else drop(hero, find(hero, byName('Stats')));
     const watch = find(hero, byName('Button · Watch'));
