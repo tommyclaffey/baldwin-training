@@ -3,6 +3,8 @@ import { SpinViewer } from '../components/SpinViewer';
 // Small form pieces shared by the admin screens.
 import { useState, type ReactNode } from 'react';
 import { MediaPicker } from '../components/MediaPicker';
+import { PhotoAdjust } from './PhotoAdjust';
+import { focusVars } from '../lib/focus';
 import { VideoEmbed } from '../components/VideoEmbed';
 import type { Video } from '../lib/api';
 
@@ -32,14 +34,16 @@ export function Text({ label, hint, value, onChange, max, placeholder, area, lis
 export function PhotoField({ label, hint, value, onChange, scanName }: { label: string; hint?: string; value?: string; onChange: (v: string) => void; scanName?: string }) {
   const [open, setOpen] = useState(false);
   const [scan, setScan] = useState(false);
+  const [adjust, setAdjust] = useState(false);
   return (
     <div className="field">
       <span>{label}</span>
       <div className="photo-field">
-        {value ? <img src={value} alt="" /> : <div className="photo-empty">No photo yet</div>}
+        {value ? <div className="f-zoom photo-preview" style={focusVars(value)} role="img" aria-label={label} /> : <div className="photo-empty">No photo yet</div>}
         <div className="row">
           {scanName !== undefined && <button type="button" className="btn" onClick={() => setScan(true)}>Scan Bottle</button>}
           <button type="button" className="btn ghost" onClick={() => setOpen(true)}>{value ? 'Replace Photo' : 'Add Photo'}</button>
+          {value && <button type="button" className="btn ghost" onClick={() => setAdjust(true)}>Adjust Photo</button>}
           {value && <button type="button" className="link-btn danger" onClick={() => onChange('')}>Remove</button>}
         </div>
       </div>
@@ -48,6 +52,7 @@ export function PhotoField({ label, hint, value, onChange, scanName }: { label: 
         <MediaPicker kind="image" title={label} onClose={() => setOpen(false)}
           onPick={(v) => { if ('img' in v) onChange(v.img); setOpen(false); }} />
       )}
+      {adjust && value && <PhotoAdjust value={value} label={label} onClose={() => setAdjust(false)} onSave={(v) => { onChange(v); setAdjust(false); }} />}
       {scan && <BottleScanner name={scanName || label} onClose={() => setScan(false)} onDone={(url) => { onChange(url); setScan(false); }} />}
     </div>
   );

@@ -2,6 +2,7 @@
 // Any link into the admin form (/admin/pages/<collection>/<id|new>?preset) opens that form in a panel
 // over the page instead: a side panel on desktop, a bottom sheet on phones (Figma section 14).
 // Saving updates the page behind it; a new entry opens its own page.
+import { focusImg } from '../lib/focus';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
@@ -236,7 +237,7 @@ function EditSheet({ target, onClose, onSaved, onSwitch }: { target: Target; onC
               {lib && lib.length > 5 && <label className="field"><span className="sr-only">Search our group’s dishes</span><input placeholder="Search our group’s dishes…" value={find} onChange={(e) => setFind(e.target.value)} /></label>}
               {lib && lib.filter((d) => String(d.data.name).toLowerCase().includes(find.toLowerCase())).map((d) => (
                 <div key={d.id} className="eip-lib">
-                  {d.data.photo ? <img src={String(d.data.photo)} alt="" /> : <span className="thumb-empty" aria-hidden="true" />}
+                  {d.data.photo ? <img src={String(d.data.photo)} style={focusImg(String(d.data.photo))} alt="" /> : <span className="thumb-empty" aria-hidden="true" />}
                   <div className="grow">
                     <strong>{String(d.data.name)}</strong>
                     {d.data.description ? <small>{String(d.data.description)}</small> : null}

@@ -1349,3 +1349,37 @@ body.eip-lock { overflow: hidden; }
 /* Home hero (Nov 6, Tommy: "the pic not going vertical full width"): the photo fills the card however tall the copy makes it. */
 [data-name^="Hero · "] > [data-name="Photo"] > [role="img"], [data-name^="Hero · "] > [data-name="Photo"] > [data-name^="IMG/"] { top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; }
 [data-name^="Hero · "] > [data-name="Copy"] > .ftext { text-wrap: balance; } /* "BRAISED / SHORT RIB", never one word alone on a line */
+
+/* ---- Photo focus (Nov 6): a zoomed photo sits on a layer behind the box's children, scaled around its focus point. ---- */
+.f-zoom { position: relative; overflow: hidden; isolation: isolate; }
+.f-zoom::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--fimg) var(--fx) var(--fy) / cover no-repeat; transform: scale(var(--fz)); transform-origin: var(--fx) var(--fy); }
+.photo-preview { width: 100%; max-width: 360px; aspect-ratio: 3 / 2; border-radius: 12px; }
+.photo-field .row { flex-wrap: wrap; }
+.adjust-back { z-index: 300; }
+.modal.adjust { width: min(920px, 100%); gap: 18px; }
+.adjust-head h2 { margin: 0; font-size: 24px; font-weight: 700; }
+.adjust-head p { margin: 4px 0 0; font-size: 15px; color: #5E574F; }
+.adjust-body { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 20px; align-items: start; }
+.adjust-main { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.adjust-stage { position: relative; width: fit-content; max-width: 100%; margin: 0 auto; line-height: 0; border-radius: 12px; overflow: hidden; background: #1E1C1A; cursor: grab; touch-action: none; user-select: none; }
+.adjust-stage:active { cursor: grabbing; }
+.adjust-stage:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }
+.adjust-stage img { width: auto; max-width: 100%; height: auto; max-height: 52vh; display: block; pointer-events: none; }
+.adjust-dot { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; border: 3px solid #fff; background: rgba(196, 154, 108, .55); box-shadow: 0 0 0 1px rgba(0, 0, 0, .55), 0 2px 8px rgba(0, 0, 0, .4); pointer-events: none; }
+.adjust-zoom { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; }
+.adjust-zoom input { flex: 1; min-width: 0; accent-color: #8A5A3A; min-height: 28px; }
+.adjust-zoom strong { min-width: 40px; text-align: right; font-variant-numeric: tabular-nums; }
+.adjust-shapes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.adjust-shape { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #5E574F; min-width: 0; }
+.adjust-shape strong { display: block; color: #1E1C1A; font-size: 13px; }
+.adjust-preview { width: 100%; border-radius: 10px; background: #E7DECF; }
+.adjust-shape.small .adjust-preview { width: 56px; }
+.adjust-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+@media (max-width: 720px) {
+  .adjust-back { padding: 8px; }
+  .modal.adjust { padding: 16px; max-height: calc(100dvh - 16px); }
+  .adjust-body { grid-template-columns: minmax(0, 1fr); }
+  .adjust-stage img { max-height: 38vh; }
+  .adjust-shapes { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .adjust-shape.small .adjust-preview { width: 100%; }
+}
