@@ -1,85 +1,53 @@
-// The public demo's banner and walkthrough (Nov 6, Tommy: "create the tour guides like you have the other apps"; same pattern as
-// Clinically Ready). The banner says what you're looking at and switches between the employee and the manager. The walkthrough
-// shows a few tips the first time you open each key page; "Show Me Around" replays them.
-import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
+// The public demo's banner, welcome card and tour (Nov 7, Tommy: "the best tour style I've seen is this one", Growth's).
+//   • The welcome card says what this is and who you are, with four things to try. It opens when the demo opens; the DEMO pill brings it back.
+//   • The tour is one walk through the real pages, a step at a time. It replaces the Nov 6 tips that fired page by page.
+//   • Nothing here is saved, on purpose: a refresh starts the demo over ("have all my demo restart after a refresh").
+//     main.tsx swaps the data for a fresh copy; this file's state just goes away with the page.
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
 
-type Tip = { target: string; title: string; body: string; manager?: boolean };
-type Tour = { key: string; match: RegExp; tips: Tip[] };
+/** A stop on the walk. `path` is where it lives (a function when the address depends on the data); `manager` stops are for managers only. */
+type Stop = { path: string | (() => string | null); match?: RegExp; target: string; title: string; body: string; manager?: boolean };
 
-const TOURS: Tour[] = [
-  { key: 'home', match: /^\/$/, tips: [
-    { target: '.menu-btn, #side', title: 'The whole book', body: 'Food, the bar, service, safety, videos and your training all live in this menu.' },
-    { target: '.search', title: 'Search anything', body: 'Type a dish, a drink, a wine or an ingredient. Results show as you type.' },
-    { target: '[data-name="Section · Dashboard"]', title: 'Your shift at a glance', body: 'Tonight’s sections, your training progress and what’s new on the menu.' },
-    { target: '[data-name^="Hero · "]', title: 'Tonight’s focus', body: 'The dish to know before line-up, with the pairing to suggest and its spec sheet.' },
-    { target: '.account-tools', title: 'Your admin', body: 'Managers change the menu, assign sections and check quiz results from here.', manager: true },
-  ] },
-  { key: 'matrix', match: /^\/food-matrix$/, tips: [
-    { target: '[data-name="Filters"]', title: 'Filter the menu', body: 'By course or station. A guest has an allergy? Hide every dish that lists it.' },
-    { target: '[data-name="Matrix table"]', title: 'Every dish, one list', body: 'Station, allergens and pairing at a glance. Open a dish for its full page.' },
-    { target: '[data-name="Actions"]', title: 'Table, cards or print', body: 'Switch the view, or print the matrix for line-up.' },
-  ] },
-  { key: 'dish', match: /^\/recipe\//, tips: [
-    { target: '[data-name="Header"]', title: 'A page for every dish', body: 'What’s in it and what to watch for, including allergens.' },
-    { target: '[data-name="Selling line"]', title: 'What to say at the table', body: 'The line to use with a guest, so everyone describes the dish the same way.' },
-    { target: '[data-name="Pairings band"]', title: 'What to pair it with', body: 'The wine and cocktail to suggest. Each one opens its own page.' },
-    { target: '.eip-edit', title: 'Edit right here', body: 'Managers change a dish from its own page. Everyone sees the update on Save.', manager: true },
-  ] },
-  { key: 'bar', match: /^\/the-bar\/cocktails$/, tips: [
-    { target: '[data-name="Bar tabs"]', title: 'The whole bar', body: 'Cocktails, wine, beer and spirits, each with its own section.' },
-    { target: '[data-name="Our signatures"]', title: 'What’s on the menu', body: 'Swipe through the drinks. Each card shows what’s in it, the glass and what it pairs with.' },
-    { target: '[data-name="Section · Classic cocktails"]', title: 'The classics', body: 'Every classic worth knowing, grouped by family. Open one for its story and riffs.' },
-  ] },
-  { key: 'drink', match: /^\/(signature|classic)\//, tips: [
-    { target: '[data-name="Hero"]', title: 'A page for every drink', body: 'What it tastes like, the glass and the garnish.' },
-    { target: '[data-name="The spec"]', title: 'For bartenders', body: 'Amounts and the build live in Cocktail Specs. This button opens this drink’s spec.' },
-    { target: '[data-name="Say it"]', title: 'What to say at the table', body: 'One line to use with a guest.' },
-  ] },
-  { key: 'specs', match: /^\/the-bar\/cocktail-specs$/, tips: [
-    { target: '[data-name="Toolbar"]', title: 'Find a spec fast', body: 'Search by drink, spirit or ingredient, or pick a list.' },
-    { target: '[data-name^="Spec · "]', title: 'One card per drink', body: 'The amounts, glass, ice, method and garnish. The spec quizzes test these builds.' },
-  ] },
-  { key: 'wine', match: /^\/the-bar\/wine$/, tips: [
-    { target: '[data-name="Section · By the glass"]', title: 'The list', body: 'Every wine has its own page: tasting notes, what to pair and what to say.' },
-    { target: '[data-name="Section · Wine by style"]', title: 'Learn wine', body: 'Styles, countries, grapes and regions, for when a guest asks more.' },
-  ] },
-  { key: 'quizzes', match: /^\/quizzes$/, tips: [
-    { target: '.rq', title: 'Your review queue', body: 'Mark how well you know each answer. Red and yellow come back here until they’re green.' },
-    { target: '.qb', title: 'Build a quiz', body: 'Pick any subjects and a length. New Questions never repeats until you’ve seen them all.' },
-    { target: '[data-name="Section · Sign-offs"]', title: 'Sign-offs', body: 'Pass a quiz here and a manager signs you off.' },
-  ] },
-  { key: 'somm', match: /^\/sommelier-program$/, tips: [
-    { target: '[data-name="Your path"]', title: 'Four levels', body: 'The Court of Master Sommeliers’ path, from Introductory to Master.' },
-    { target: '[data-name="Start here · videos"]', title: 'Video first', body: 'Short videos to start, then lessons with practice cards for each subject.' },
-  ] },
-  { key: 'admin', match: /^\/admin$/, tips: [
-    { target: '.admin-side nav', title: 'Everything you can change', body: 'The menu, cocktails, wine, back bar, photos, quiz results and your team.' },
-    { target: '.tiles', title: 'Where things stand', body: 'A quick count of what’s in the book.' },
-  ] },
-  { key: 'admin-list', match: /^\/admin\/pages\/[^/]+$/, tips: [
-    { target: '.editor-head .btn', title: 'Add something new', body: 'Fill in one form and it shows up on every list and page it belongs on.' },
-    { target: '.cms-row', title: 'Open any item', body: 'Edit it, or use the arrows to change the order on the menu.' },
-  ] },
-  { key: 'admin-edit', match: /^\/admin\/pages\/[^/]+\/\d+$/, tips: [
-    { target: '.photo-field', title: 'Frame the photo', body: 'Adjust Photo lets you choose what stays in frame on every screen.' },
-    { target: '.editor-foot, .editor-head .btn', title: 'Save when ready', body: 'Nothing changes for your team until you save.' },
-  ] },
-  { key: 'admin-quizzes', match: /^\/admin\/quizzes$/, tips: [
-    { target: '.person, .list-row', title: 'Everyone’s scores', body: 'Open a person to see their attempts, then sign them off.' },
-  ] },
+// The dish stops open whichever dish the Food Matrix lists first. Kept, so Back still gets there from a later page.
+let dish: string | null = null;
+const dishPath = () => { dish = document.querySelector('a[href^="/recipe/"]')?.getAttribute('href') ?? dish; return dish; };
+const DISH = { path: dishPath, match: /^\/recipe\// };
+const PILL = '[data-name="Demo pill"], .mobile-brand .demo-pill, .admin-demo';
+
+const STOPS: Stop[] = [
+  { path: '/', target: '#side, .menu-btn', title: 'The whole book', body: 'Food, the bar, service, safety, videos and your training all live in this menu.' },
+  { path: '/', target: '.search', title: 'Search anything', body: 'Type a dish, a drink, a wine or an ingredient. Results show as you type.' },
+  { path: '/', target: '[data-name="Section · Dashboard"]', title: 'Your shift at a glance', body: 'Tonight’s sections, your training progress and what’s new on the menu.' },
+  { path: '/food-matrix', target: '[data-name="Filters"]', title: 'Every dish, one list', body: 'Filter by course or station. A guest has an allergy? Hide every dish that lists it.' },
+  { ...DISH, target: '[data-name="Selling line"]', title: 'What to say at the table', body: 'Every dish has its own page, with the line to use with a guest, so everyone describes it the same way.' },
+  { ...DISH, target: '[data-name="Pairings band"]', title: 'What to pair it with', body: 'The wine and cocktail to suggest. Each one opens its own page.' },
+  { ...DISH, target: '.eip-edit', title: 'Edit right here', body: 'Managers change a dish from its own page. Everyone sees the update on Save.', manager: true },
+  { path: '/the-bar/cocktail-specs', target: '[data-name^="Spec · "]', title: 'Specs for bartenders', body: 'One card per drink: the amounts, glass, ice, method and garnish. The spec quizzes test these builds.' },
+  { path: '/the-bar/wine', target: '[data-name="Section · By the glass"]', title: 'The wine list', body: 'Every wine has its own page: tasting notes, what to pair and what to say.' },
+  { path: '/quizzes', target: '.qb', title: 'Build a quiz', body: 'Pick any subjects and a length. New Questions never repeats until you’ve seen them all.' },
+  { path: '/sommelier-program', target: '[data-name="Your path"]', title: 'The Sommelier lessons', body: 'The Court of Master Sommeliers’ path, from Introductory to Master, with videos and practice cards.' },
+  { path: '/admin', target: '.admin-side nav', title: 'Everything you can change', body: 'The menu, cocktails, wine, back bar, photos, quiz results and your team.', manager: true },
+  { path: '/admin/quizzes', target: '.person, .list-row', title: 'Everyone’s scores', body: 'Open a person to see their attempts, then sign them off.', manager: true },
 ];
-// "Show Me Around" on a page with no tour of its own.
-const ANYWHERE: Tour = { key: 'any', match: /./, tips: [
-  { target: '.menu-btn, #side', title: 'The whole book', body: 'Everything is in this menu.' },
-  { target: '.search', title: 'Search anything', body: 'Type a dish, a drink, a wine or an ingredient.' },
-] };
+// The last stop points at the DEMO pill, wherever the walk ended.
+const last = (path: string): Stop => ({ path, target: PILL, title: 'That’s the tour', body: 'Click DEMO anytime for the welcome card or to take the tour again. Refresh and the demo starts over.' });
+const FOR_STAFF = [...STOPS.filter((s) => !s.manager), last('/sommelier-program')];
+const FOR_MANAGER = [...STOPS, last('/admin/quizzes')];
 
-const seenKey = (userId: number, key: string) => `bt-tour:${userId}:${key}`;
-const RESTART = 'bt-tour-restart';
+// The two pieces of state, held outside React because the book and the admin each mount their own copy of this.
+let welcomeOpen = false, welcomed = false, step: number | null = null;
+const listeners = new Set<() => void>();
+const emit = () => listeners.forEach((l) => l());
+const subscribe = (l: () => void) => { listeners.add(l); return () => { listeners.delete(l); }; };
+export const openWelcome = () => { welcomed = true; welcomeOpen = true; step = null; emit(); };
+const closeWelcome = () => { welcomeOpen = false; emit(); };
+const setStep = (i: number | null) => { step = i; welcomeOpen = false; emit(); };
+const useWelcome = () => useSyncExternalStore(subscribe, () => welcomeOpen);
+const useStep = () => useSyncExternalStore(subscribe, () => step);
 
 /** The first element on screen for a selector list, or null. */
 function find(selector: string): HTMLElement | null {
@@ -88,6 +56,22 @@ function find(selector: string): HTMLElement | null {
     if (r.width > 0 && r.height > 0 && r.right > 0 && r.left < window.innerWidth && getComputedStyle(el).visibility !== 'hidden') return el;
   }
   return null;
+}
+
+/** While the card is up the keyboard belongs to it: Tab cycles its buttons, Escape closes. */
+function trapKeys(card: () => HTMLElement | null, close: () => void, more?: (e: KeyboardEvent) => void) {
+  const onKey = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') { close(); return; }
+    more?.(e);
+    if (e.key !== 'Tab') return;
+    const f = [...(card()?.querySelectorAll<HTMLElement>('button, a[href]') ?? [])];
+    if (!f.length) return;
+    e.preventDefault();
+    const at = f.indexOf(document.activeElement as HTMLElement);
+    f[at < 0 ? 0 : (at + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus({ preventScroll: true });
+  };
+  window.addEventListener('keydown', onKey, true);
+  return () => window.removeEventListener('keydown', onKey, true);
 }
 
 export function DemoBar() {
@@ -105,96 +89,148 @@ export function DemoBar() {
       <p>You’re in <strong>The Baldwin</strong>, a sample restaurant, as {manager ? <>the <strong>manager</strong></> : <>an <strong>employee</strong></>}.</p>
       <div className="demo-bar-actions">
         <button type="button" className="main" onClick={() => void swap()} disabled={busy}>{busy ? 'Switching…' : manager ? 'See It as an Employee' : 'See It as a Manager'}</button>
-        <button type="button" onClick={() => window.dispatchEvent(new Event(RESTART))}>Show Me Around</button>
+        <button type="button" onClick={() => setStep(0)}>Show Me Around</button>
         <a href="/demo">Demo Home</a>
       </div>
     </div>
   );
 }
 
-export function DemoTour() {
-  const { user } = useSession();
-  const { pathname, search } = useLocation();
-  const manager = !!user && user.role !== 'staff';
-  const quizOpen = /[?&]quiz=/.test(search); // never over a quiz in progress
-  const tour = quizOpen ? null : TOURS.find((t) => t.match.test(pathname)) ?? null;
-  const [tips, setTips] = useState<Tip[]>([]);
-  const [i, setI] = useState(0);
-  const [rect, setRect] = useState<DOMRect | null>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
+const CHEVRON = <svg className="dw-chev" width="8" height="12" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+const TRY_STAFF = [
+  { title: 'Look up a dish', body: 'Allergens, what to say at the table and what to pair it with', to: '/food-matrix' },
+  { title: 'Find a cocktail spec', body: 'Every build in one place, for bartenders', to: '/the-bar/cocktail-specs' },
+  { title: 'Take a quiz', body: 'Pick your subjects and a length, and see where you stand', to: '/quizzes' },
+  { title: 'Start the Sommelier lessons', body: 'Four levels, with videos and practice cards', to: '/sommelier-program' },
+];
+const TRY_MANAGER = [
+  { title: 'Change the menu', body: 'Add a dish or edit one, and everyone sees it on Save', to: '/admin/pages/recipe' },
+  { title: 'Check quiz results', body: 'Everyone’s scores. Open a person, then sign them off', to: '/admin/quizzes' },
+  { title: 'See your team', body: 'Who’s on the team and where they are in their training', to: '/admin/team' },
+  { title: 'See what your team sees', body: 'The menu, the bar, the lessons and the quizzes', to: '/' },
+];
+
+function WelcomeCard({ manager }: { manager: boolean }) {
+  const go = useNavigate();
+  const open = useWelcome();
+  const card = useRef<HTMLDivElement>(null);
+  const start = useRef<HTMLButtonElement>(null);
   const titleId = useId();
-
-  // `waiting`: the page may still be loading, so hold off until every tip has something to point at.
-  const open = useCallback((t: Tour, waiting = false) => {
-    const mine = t.tips.filter((tip) => !tip.manager || manager);
-    const found = mine.filter((tip) => find(tip.target));
-    if (!found.length || (waiting && found.length < mine.length)) return false;
-    setTips(found); setI(0);
-    return true;
-  }, [manager]);
-  const close = useCallback(() => {
-    if (tour && user) localStorage.setItem(seenKey(user.id, tour.key), '1');
-    setTips([]); setRect(null);
-  }, [tour, user]);
-
-  // First visit to a page with a tour: wait for the page to arrive, then start.
   useEffect(() => {
-    setTips([]); setRect(null);
-    if (!tour || !user || localStorage.getItem(seenKey(user.id, tour.key))) return;
-    let tries = 0;
-    // Some tips may never match (a phone hides the admin button, a drink has no line to say): after 4 seconds, use what's there.
-    const timer = setInterval(() => { tries++; if (open(tour, tries < 8) || tries >= 8) clearInterval(timer); }, 500);
-    return () => clearInterval(timer);
-  }, [tour, user, open]);
+    if (!open) return;
+    start.current?.focus({ preventScroll: true });
+    document.body.classList.add('menu-lock');
+    const off = trapKeys(() => card.current, closeWelcome);
+    return () => { off(); document.body.classList.remove('menu-lock'); };
+  }, [open]);
+  if (!open) return null;
+  return createPortal(
+    <div className="dw-scrim" onClick={closeWelcome}>
+      <div ref={card} className="dw" role="dialog" aria-modal="true" aria-labelledby={titleId} onClick={(e) => e.stopPropagation()}>
+        <span className="dw-pill">Live Demo</span>
+        <h2 id={titleId}>Welcome to The Training App</h2>
+        <p className="dw-lede">One training book for the whole restaurant, on every phone: the menu, the bar, the wine list, the lessons and the quizzes.</p>
+        <p className="dw-persona">{manager ? 'You’re Rosalind Hart, the manager of The Baldwin' : 'You’re Marisol Vega, a server at The Baldwin'}. It’s a sample restaurant: the dishes, house cocktails and people are made up. Refresh anytime to start over.</p>
+        <p className="dw-label">Try These</p>
+        <ol className="dw-steps">
+          {(manager ? TRY_MANAGER : TRY_STAFF).map((s, i) => (
+            <li key={s.title}>
+              <button type="button" className="dw-step" onClick={() => { closeWelcome(); go(s.to); }}>
+                <span className="dw-num" aria-hidden="true">{i + 1}</span>
+                <span className="dw-text"><strong>{s.title}</strong><span>{s.body}</span></span>
+                {CHEVRON}
+              </button>
+            </li>
+          ))}
+        </ol>
+        <div className="dw-foot">
+          <span className="dw-credit">Designed and engineered by <a href="https://www.tommyclaffey.com" target="_blank" rel="noopener noreferrer">Tommy Claffey</a></span>
+          <div className="dw-actions">
+            <button type="button" className="tour-btn ghost" onClick={closeWelcome}>Explore on My Own</button>
+            <button type="button" ref={start} className="tour-btn" onClick={() => setStep(0)}>Take the Tour</button>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  );
+}
 
-  useEffect(() => {
-    const restart = () => { window.scrollTo({ top: 0 }); setTimeout(() => open(tour ?? ANYWHERE), 200); };
-    window.addEventListener(RESTART, restart);
-    return () => window.removeEventListener(RESTART, restart);
-  }, [tour, open]);
+function Tour({ manager }: { manager: boolean }) {
+  const i = useStep();
+  const go = useNavigate();
+  const { pathname } = useLocation();
+  const stops = manager ? FOR_MANAGER : FOR_STAFF;
+  const stop = i === null ? null : stops[i];
+  const [el, setEl] = useState<HTMLElement | null>(null);
+  const [rect, setRect] = useState<DOMRect | null>(null);
+  const dir = useRef(1);
+  const nextRef = useRef<HTMLButtonElement>(null);
+  const card = useRef<HTMLDivElement>(null);
+  const titleId = useId();
+  const end = useCallback(() => setStep(null), []);
+  const move = useCallback((by: number) => {
+    dir.current = by;
+    const to = (i ?? 0) + by;
+    if (to >= stops.length) setStep(null); else if (to >= 0) setStep(to);
+  }, [i, stops.length]);
 
-  const tip = tips[i];
-  // Nov 6, Tommy: the box was "trying to find it … moving kind of in a sloppy way": a smooth scroll, repeated measuring and a glide
-  // all ran at once. Now the page, the box and the card land together in one frame, before anything is painted.
+  // Get to the stop's page, then wait for its element. Anything that never shows (a phone hides it, a drink has no such line) is
+  // skipped in the direction you were going.
   useLayoutEffect(() => {
-    if (!tip) return;
-    const el = find(tip.target);
-    if (!el) return;
+    setEl(null); setRect(null);
+    if (!stop) return;
+    const onPage = stop.match ? stop.match.test(pathname) : pathname === stop.path;
+    if (!onPage) {
+      const to = typeof stop.path === 'function' ? stop.path() : stop.path;
+      if (to) go(to); else move(dir.current);
+      return;
+    }
+    const first = find(stop.target);
+    if (first) { setEl(first); return; }
+    let tries = 0;
+    const timer = setInterval(() => {
+      const found = find(stop.target);
+      if (found) { clearInterval(timer); setEl(found); }
+      else if (++tries > 60) { clearInterval(timer); move(dir.current); } // 3 seconds
+    }, 50);
+    return () => clearInterval(timer);
+  }, [stop, pathname, go, move]);
+
+  // Nov 6, Tommy: the box was "trying to find it … moving kind of in a sloppy way". The page, the box and the card land together in
+  // one frame, before anything is painted. After that it only moves if the page itself does.
+  useLayoutEffect(() => {
+    if (!el || !stop) return;
     el.style.scrollMarginTop = '72px';
     const tall = el.getBoundingClientRect().height > window.innerHeight * 0.6;
     el.scrollIntoView({ block: tall ? 'start' : 'center', inline: 'nearest', behavior: 'instant' as ScrollBehavior });
     setRect(el.getBoundingClientRect());
-    // After that it only moves if the page itself does: scrolling, resizing, or a photo loading above it.
     let frame = 0;
-    const measure = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(() => setRect(el.getBoundingClientRect())); };
+    const measure = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => { if (el.isConnected) setRect(el.getBoundingClientRect()); else setEl(find(stop.target)); });
+    };
     const ro = new ResizeObserver(measure);
     ro.observe(document.documentElement); ro.observe(el);
     window.addEventListener('scroll', measure, true);
     window.addEventListener('resize', measure);
     return () => { cancelAnimationFrame(frame); ro.disconnect(); window.removeEventListener('scroll', measure, true); window.removeEventListener('resize', measure); };
-  }, [tip]);
-  // The card only exists once the box is measured, so focus waits for that too (it used to miss, and Tab wandered the page behind).
-  const shown = !!tip && !!rect;
+  }, [el, stop]);
+
+  const shown = !!stop && !!rect;
   useEffect(() => { if (shown) nextRef.current?.focus({ preventScroll: true }); }, [shown, i]);
-  // While a tip is up, the keyboard belongs to it: Tab cycles its buttons, the arrow keys step through the tips, Escape closes.
   useEffect(() => {
     if (!shown) return;
-    const onKey = (e: globalThis.KeyboardEvent) => {
-      if (e.key === 'Escape') { close(); return; }
-      if (e.key === 'ArrowRight') { e.preventDefault(); if (i < tips.length - 1) setI(i + 1); else close(); return; }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); if (i > 0) setI(i - 1); return; }
-      if (e.key !== 'Tab') return;
-      const f = [...document.querySelectorAll<HTMLElement>('.tour-card button')];
-      if (!f.length) return;
-      e.preventDefault();
-      const at = f.indexOf(document.activeElement as HTMLElement);
-      f[at < 0 ? f.length - 1 : (at + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus({ preventScroll: true });
-    };
-    window.addEventListener('keydown', onKey, true);
-    return () => window.removeEventListener('keydown', onKey, true);
-  }, [shown, i, tips.length, close]);
+    return trapKeys(() => card.current, end, (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); move(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); move(-1); }
+    });
+  }, [shown, end, move]);
 
-  if (!tip || !rect) return null;
+  if (i === null || !stop) return null;
+  // Between pages the screen stays dimmed, so it never flashes the page underneath.
+  if (!rect) return createPortal(<div className="tour"><div className="tour-block" /><div className="tour-dim" /></div>, document.body);
+
   const vw = window.innerWidth, vh = window.innerHeight, pad = 8;
   const top = Math.max(rect.top - pad, 4);
   // A full-height rail (the sidebar): the box matches its exact edge instead of spilling onto the page beside it (Nov 7).
@@ -203,8 +239,8 @@ export function DemoTour() {
     ? { top: 0, left: 0, width: rect.width, height: vh, borderRadius: 0 }
     : { top, left: Math.max(rect.left - pad, 4), width: Math.min(rect.width + pad * 2, vw - 8), height: Math.max(Math.min(rect.bottom + pad, vh - 4) - top, 0) };
   const narrow = vw < 640, cardW = 340;
-  const below = vh - (hl.top + hl.height) > 220;
-  const beside = !below && hl.top < 240; // a target that fills the screen: sit the card on top of it
+  const below = vh - (hl.top + hl.height) > 260;
+  const beside = !below && hl.top < 280; // a target that fills the screen: sit the card on top of it
   const style: CSSProperties = narrow ? {} : rail
     ? { top: 96, left: hl.width + 16, width: cardW } // beside the rail, so it doesn't cover what it's pointing at
     : {
@@ -215,20 +251,31 @@ export function DemoTour() {
     };
   return createPortal(
     <div className="tour">
+      <div className="tour-block" />
       <div className="tour-hl" style={hl} aria-hidden="true" />
-      <div className={'tour-card' + (narrow ? ' sheet' : '')} style={style} role="dialog" aria-modal="false" aria-labelledby={titleId}>
-        <p className="tour-count">{i + 1} of {tips.length}</p>
-        <h2 id={titleId}>{tip.title}</h2>
-        <p className="tour-body">{tip.body}</p>
+      <div ref={card} className={'tour-card' + (narrow ? ' sheet' : '')} style={style} role="dialog" aria-modal="false" aria-labelledby={titleId}>
+        <p className="tour-count">Step {i + 1} of {stops.length}</p>
+        <h2 id={titleId}>{stop.title}</h2>
+        <p className="tour-body">{stop.body}</p>
+        <div className="tour-dots" aria-hidden="true">
+          {stops.map((_, n) => <span key={n} className={n === i ? 'on' : n < i ? 'done' : ''} />)}
+        </div>
         <div className="tour-actions">
-          <button type="button" className="tour-skip" onClick={close}>Skip Tour</button>
+          <button type="button" className="tour-skip" onClick={end}>End Tour</button>
           <span>
-            {i > 0 && <button type="button" className="tour-btn ghost" onClick={() => setI(i - 1)}>Back</button>}
-            <button type="button" ref={nextRef} className="tour-btn" onClick={() => (i < tips.length - 1 ? setI(i + 1) : close())}>{i < tips.length - 1 ? 'Next' : 'Got It'}</button>
+            {i > 0 && <button type="button" className="tour-btn ghost" onClick={() => move(-1)}>Back</button>}
+            <button type="button" ref={nextRef} className="tour-btn" onClick={() => move(1)}>{i < stops.length - 1 ? 'Next' : 'Finish'}</button>
           </span>
         </div>
       </div>
     </div>,
     document.body,
   );
+}
+
+export function DemoTour() {
+  const { user } = useSession();
+  const manager = !!user && user.role !== 'staff';
+  useEffect(() => { if (!welcomed) openWelcome(); }, []);
+  return <><WelcomeCard manager={manager} /><Tour manager={manager} /></>;
 }

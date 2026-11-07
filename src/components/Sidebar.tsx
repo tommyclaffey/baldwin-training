@@ -1,11 +1,12 @@
 import sidebar from '../content/sidebar.json';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { FigmaNode, type FNode } from './FigmaNode';
 import { QUIZZES, statusOf, useQuiz } from '../quiz/store';
 import { api, canEdit } from '../lib/api';
 import { ManagerLinks } from './EditBar';
 import { trainingCard } from '../quiz/transform';
 import { useSession } from '../lib/session';
+import { openWelcome } from './DemoTour';
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
 function forStore(n: FNode, name: string): FNode {
@@ -15,11 +16,11 @@ function forStore(n: FNode, name: string): FNode {
 
 /** The demo pill, right under the logo on every demo page (Nov 7, Tommy). */
 function withDemoPill(n: FNode): FNode {
-  const pill: FNode = { t: 'F', n: 'Demo pill', lm: 'H', sh: 'H', sv: 'H', pd: [0, 0, 0, 8], c: [{ t: 'F', n: 'Pill', lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 999, pd: [4, 10, 4, 10], f: [{ c: '#C49A6C' }], c: [{ t: 'T', n: 'DEMO', s: 'DEMO', ff: 'Archivo', fs: 'ExtraBold', z: 11, ls: '12%', f: [{ c: '#1E1C1A' }], ar: 'W', sh: 'H', sv: 'H' } as FNode] } as FNode] } as FNode;
+  const pill: FNode = { t: 'F', n: 'Demo pill', lm: 'H', sh: 'H', sv: 'H', c: [{ t: 'F', n: 'Pill', lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 999, pd: [5, 11, 5, 11], f: [{ c: '#C49A6C', o: .22 }], c: [{ t: 'T', n: 'DEMO', s: 'DEMO', ff: 'Archivo', fs: 'SemiBold', z: 11.5, ls: '8%', f: [{ c: '#EBD2B2' }], ar: 'W', sh: 'H', sv: 'H' } as FNode] } as FNode] } as FNode;
   if (!n.c) return n;
   const at = n.c.findIndex((c) => c.n === 'Logo');
   if (at < 0) return { ...n, c: n.c.map(withDemoPill) };
-  const brand = { t: 'F', n: 'Brand', lm: 'V', gap: 10, sh: 'H', sv: 'H', c: [n.c[at], pill] } as FNode;
+  const brand = { t: 'F', n: 'Brand', lm: 'V', gap: 12, sh: 'H', sv: 'H', c: [n.c[at], pill] } as FNode; // under the logo: beside it, the logo doesn't fit at full size
   return { ...n, c: [...n.c.slice(0, at), brand, ...n.c.slice(at + 1)] };
 }
 
@@ -54,8 +55,22 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     const named = generic ? forStore(drawn, user!.store!.name) : drawn;
     return user?.demo ? withDemoPill(named) : named;
   }, [quiz, counts, generic, user]);
+  // The pill is drawn with the rest of the sidebar, so it's made a real control here: Tab reaches it, Enter opens the welcome card.
+  const nav = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const pill = nav.current?.querySelector<HTMLElement>('[data-name="Demo pill"]');
+    if (!pill) return;
+    pill.setAttribute('role', 'button'); pill.tabIndex = 0;
+    pill.setAttribute('aria-label', 'Demo: open the welcome card');
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openWelcome(); } };
+    pill.addEventListener('keydown', onKey);
+    return () => pill.removeEventListener('keydown', onKey);
+  }, [node]);
   return (
-    <nav className="sidebar" aria-label="Main" onClick={(e) => { if ((e.target as HTMLElement).closest('a')) onNavigate?.(); }}>
+    <nav ref={nav} className="sidebar" aria-label="Main" onClick={(e) => {
+      if ((e.target as HTMLElement).closest('[data-name="Demo pill"]')) { openWelcome(); return; }
+      if ((e.target as HTMLElement).closest('a')) onNavigate?.();
+    }}>
       <FigmaNode node={{ ...node, x: undefined, y: undefined }} rootStyle={{ position: 'relative', width: '100%', height: 'auto', flex: '1 0 auto' }} />
       <Account />
     </nav>

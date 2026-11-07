@@ -11,7 +11,7 @@ import { setQuizUser } from './quiz/store';
 import AdminApp from './admin/AdminApp';
 import { EditInPlaceProvider } from './components/EditSheet';
 import { setFavicon } from './lib/favicon';
-import { DemoBar, DemoTour } from './components/DemoTour';
+import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -51,7 +51,7 @@ function Book() {
           {user.store && !user.store.bookReady
             ? <strong className="mobile-name">{user.store.name}</strong>
             : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
-          {user.demo && <span className="demo-pill">DEMO</span>}
+          {user.demo && <button type="button" className="demo-pill" onClick={openWelcome}>DEMO</button>}
         </div>
         <button className="menu-btn" aria-expanded={menu} aria-controls="side" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu((m) => !m)}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">

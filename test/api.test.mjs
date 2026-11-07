@@ -691,3 +691,21 @@ test('a photo keeps its framing when saved, and the file address stays clean (No
   const back = await call('/api/entries/' + e.id, { method: 'PUT', body: { data: { ...e.data, photo: base } } });
   assert.equal(back.data.data.photo, base, 'Reset goes back to the plain photo');
 });
+
+test('demo: a refresh swaps the copy for a fresh one; real accounts are left alone', async () => {
+  const h = { 'content-type': 'application/json', 'x-bt': '1' };
+  const r = await fetch(BASE + '/api/demo/start', { method: 'POST', headers: h, body: JSON.stringify({ role: 'manager' }) });
+  const cookie = r.headers.get('set-cookie').split(';')[0];
+  const before = (await (await fetch(BASE + '/api/me', { headers: { cookie } })).json()).user;
+  const again = await fetch(BASE + '/api/demo/restart', { method: 'POST', headers: { ...h, cookie } });
+  assert.equal((await again.json()).restarted, true);
+  const fresh = again.headers.get('set-cookie').split(';')[0];
+  assert.notEqual(fresh, cookie);
+  const after = (await (await fetch(BASE + '/api/me', { headers: { cookie: fresh } })).json()).user;
+  assert.equal(after.demo, true); assert.equal(after.role, 'manager');
+  assert.notEqual(after.id, before.id);
+  assert.equal((await (await fetch(BASE + '/api/me', { headers: { cookie } })).json()).user, null, 'the old copy is gone');
+  const none = await fetch(BASE + '/api/demo/restart', { method: 'POST', headers: h });
+  assert.equal((await none.json()).restarted, false);
+  assert.equal(none.headers.get('set-cookie'), null);
+});

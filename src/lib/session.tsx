@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { api, type IndexEntry, type User } from './api';
+import { markDemo } from './demo';
 
 type Session = {
   user: User | null; setupNeeded: boolean; superSetupNeeded: boolean; loaded: boolean;
@@ -23,6 +24,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const refresh = useCallback(async () => {
     try {
       const me = await api<{ user: User | null; setupNeeded: boolean; superSetupNeeded: boolean }>('/api/me');
+      markDemo(!!me.user?.demo);
       setUser(me.user); setSetup(me.setupNeeded); setSuperSetup(me.superSetupNeeded);
     } catch { setUser(null); }
     setLoaded(true);

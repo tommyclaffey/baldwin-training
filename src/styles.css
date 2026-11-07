@@ -1279,7 +1279,7 @@ body.eip-lock { overflow: hidden; }
 .demo-role button:disabled { opacity: .6; cursor: default; }
 .demo-foot { margin: 0; font-size: 13px; color: #B8AFA3; }
 .demo-err { color: #F2B8B5; margin: 0; }
-.demo-pill { display: inline-flex; align-items: center; justify-content: center; height: 22px; padding: 0 10px; border-radius: 999px; background: #C49A6C; color: #1E1C1A; font: 800 11px 'Archivo', sans-serif; letter-spacing: .12em; }
+.demo-pill { display: inline-flex; align-items: center; justify-content: center; flex: none; height: 24px; padding: 0 11px; border: 0; border-radius: 999px; background: rgba(196, 154, 108, .22); color: #EBD2B2; font: 600 11.5px 'Archivo', sans-serif; letter-spacing: .08em; }
 @media (max-width: 640px) { .demo-roles { grid-template-columns: 1fr; width: 100%; max-width: 360px; } .demo-pick { padding: 56px 20px; gap: 28px; } }
 
 /* ---- Cocktail Specs (Nov 5, Figma 430:17) ---- */
@@ -1391,6 +1391,8 @@ body.eip-lock { overflow: hidden; }
 .demo-bar button:disabled { opacity: .6; cursor: default; }
 .demo-bar button:focus-visible, .tour-btn:focus-visible, .tour-skip:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }
 .tour { position: fixed; inset: 0; z-index: 150; pointer-events: none; font-family: 'Archivo', sans-serif; }
+.tour-block { position: fixed; inset: 0; pointer-events: auto; } /* the tour is the only thing to click */
+.tour-dim { position: fixed; inset: 0; background: rgba(20, 18, 16, .5); }
 .tour-hl { position: fixed; border-radius: 16px; box-shadow: 0 0 0 3px #C49A6C, 0 0 0 9999px rgba(20, 18, 16, .5); } /* no glide: it lands with the page */
 .tour-card { position: fixed; pointer-events: auto; display: flex; flex-direction: column; gap: 6px; background: #FBF9F5; color: #1E1C1A; border-radius: 18px; padding: 18px 20px 16px; box-shadow: 0 16px 40px rgba(0, 0, 0, .3); }
 .tour-card.sheet { left: 12px; right: 12px; bottom: 76px; } /* clear of Safari's floating address bar */
@@ -1421,10 +1423,9 @@ body.eip-lock { overflow: hidden; }
 /* The demo pill sits under the logo on every demo page; there's no way out from inside (Nov 7, Tommy). */
 .demo-bar-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #8A7A66; color: #1E1C1A; font: 600 13.5px 'Archivo', sans-serif; text-decoration: none; white-space: nowrap; }
 .demo-bar-actions a:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }
-.mobile-brand { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px; min-width: 0; }
-.mobile-brand.has-pill img { height: 24px; width: auto; }
-.mobile-brand .demo-pill { height: 16px; padding: 0 7px; font-size: 9px; }
-.admin-demo { align-self: flex-start; margin: 2px 6px 10px; }
+.mobile-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.mobile-brand .demo-pill { height: 22px; padding: 0 9px; font-size: 11px; }
+.admin-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
 .demo-brand { display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .demo-back { border: 0; background: none; padding: 8px 4px; color: #E8DCCB; font: 600 14px 'Archivo', sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .demo-back:hover { color: #fff; }
@@ -1432,3 +1433,42 @@ body.eip-lock { overflow: hidden; }
 @media (max-width: 859px) { .demo-bar-actions a { flex: 1 1 auto; } }
 /* Phones and tablets show the logo and pill in the top bar, and the menu drops its logo: no second pill in there. */
 @media (max-width: 1239px) { #side [data-name="Brand"] { display: none !important; } }
+
+/* Demo welcome card and tour, Nov 7 (Growth's, in The Baldwin's colours). */
+button.demo-pill { cursor: pointer; }
+button.demo-pill:hover, [data-name="Demo pill"]:hover [data-name="Pill"] { background: rgba(196, 154, 108, .34); }
+button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px; }
+[data-name="Demo pill"] { cursor: pointer; }
+.dw-scrim { position: fixed; inset: 0; z-index: 160; display: grid; place-items: center; padding: 24px; background: rgba(20, 18, 16, .6); overflow: auto; font-family: 'Archivo', sans-serif; }
+.dw { width: min(100%, 560px); display: flex; flex-direction: column; gap: 12px; padding: 28px 28px 24px; background: #FBF9F5; color: #1E1C1A; border-radius: 24px; box-shadow: 0 24px 60px rgba(0, 0, 0, .35); text-align: left; }
+.dw-pill { align-self: flex-start; padding: 3px 10px; border-radius: 999px; background: rgba(196, 154, 108, .28); color: #5E3A1E; font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.dw h2 { margin: 0; font-size: 28px; line-height: 1.2; font-weight: 800; letter-spacing: -.01em; }
+.dw-lede { margin: 0; font-size: 17px; line-height: 1.45; }
+.dw-persona { margin: 0; font-size: 14.5px; line-height: 1.5; color: #4A4540; }
+.dw-label { margin: 4px 0 0; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #5E574F; }
+.dw-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.dw-step { width: 100%; display: flex; align-items: center; gap: 14px; padding: 11px 14px; border: 1px solid #DDD3C5; border-radius: 14px; background: #fff; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.dw-step:hover { border-color: #8A7A66; background: #F7F1E8; }
+.dw-step:focus-visible, .dw-credit a:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }
+.dw-num { flex: none; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 999px; background: rgba(196, 154, 108, .28); color: #5E3A1E; font-size: 14px; font-weight: 600; }
+.dw-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.dw-text strong { font-size: 15px; font-weight: 600; }
+.dw-text span { font-size: 13px; line-height: 1.4; color: #5E574F; }
+.dw-chev { flex: none; color: #5E574F; }
+.dw-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; margin-top: 6px; }
+.dw-credit { font-size: 13px; color: #5E574F; }
+.dw-credit a { color: #5E3A1E; font-weight: 600; }
+.dw-actions { display: flex; gap: 8px; margin-left: auto; }
+.tour-dots { display: flex; gap: 5px; margin-top: 6px; }
+.tour-dots span { width: 6px; height: 6px; border-radius: 999px; background: #DDD3C5; }
+.tour-dots span.done { background: #C49A6C; }
+.tour-dots span.on { width: 18px; background: #8A5A3A; }
+@media (max-width: 639px) {
+  .dw-scrim { padding: 12px; place-items: start center; }
+  .dw { padding: 20px 18px 18px; gap: 10px; border-radius: 20px; }
+  .dw h2 { font-size: 24px; }
+  .dw-lede { font-size: 15.5px; }
+  .dw-persona { font-size: 14px; }
+  .dw-actions { width: 100%; margin: 0; }
+  .dw-actions .tour-btn { flex: 1; padding: 0 10px; }
+}

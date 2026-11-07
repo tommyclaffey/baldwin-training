@@ -70,24 +70,27 @@ export function startDemo(db, key) {
   } catch (e) { db.exec('ROLLBACK'); throw e; }
 }
 
-/** Throwaway demo copies older than a day go: their people, sessions, records and entries. */
+/** One demo copy goes: its people, sessions, records and entries. */
+export function dropDemo(db, id) {
+  const users = db.prepare('SELECT id FROM users WHERE company_id = ?').all(id).map((u) => u.id);
+  for (const u of users) {
+    db.prepare('DELETE FROM sessions WHERE user_id = ?').run(u);
+    db.prepare('DELETE FROM manual_reads WHERE user_id = ?').run(u);
+    db.prepare('DELETE FROM quiz_marks WHERE user_id = ?').run(u);
+  }
+  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit']) {
+    const cols = db.prepare(`PRAGMA table_info(${t})`).all().map((c) => c.name);
+    if (cols.includes('company_id')) db.prepare(`DELETE FROM ${t} WHERE company_id = ?`).run(id);
+  }
+  db.prepare('DELETE FROM users WHERE company_id = ?').run(id);
+  db.prepare('DELETE FROM stores WHERE company_id = ?').run(id);
+  db.prepare('DELETE FROM companies WHERE id = ?').run(id);
+}
+
+/** Throwaway demo copies older than a day go. */
 export function purgeDemos(db) {
   const old = db.prepare('SELECT id FROM companies WHERE demo = 1 AND created_at < ?').all(new Date(Date.now() - LIFETIME_MS).toISOString());
-  for (const { id } of old) {
-    const users = db.prepare('SELECT id FROM users WHERE company_id = ?').all(id).map((u) => u.id);
-    for (const u of users) {
-      db.prepare('DELETE FROM sessions WHERE user_id = ?').run(u);
-      db.prepare('DELETE FROM manual_reads WHERE user_id = ?').run(u);
-      db.prepare('DELETE FROM quiz_marks WHERE user_id = ?').run(u);
-    }
-    for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit']) {
-      const cols = db.prepare(`PRAGMA table_info(${t})`).all().map((c) => c.name);
-      if (cols.includes('company_id')) db.prepare(`DELETE FROM ${t} WHERE company_id = ?`).run(id);
-    }
-    db.prepare('DELETE FROM users WHERE company_id = ?').run(id);
-    db.prepare('DELETE FROM stores WHERE company_id = ?').run(id);
-    db.prepare('DELETE FROM companies WHERE id = ?').run(id);
-  }
+  for (const { id } of old) dropDemo(db, id);
   return old.length;
 }
 

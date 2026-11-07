@@ -8,7 +8,7 @@ import { WineVideos } from './wine';
 import { BottleScannerPage } from './scanner';
 import { SuperAdmin } from './super';
 import { api } from '../lib/api';
-import { DemoBar, DemoTour } from '../components/DemoTour';
+import { DemoBar, DemoTour, openWelcome } from '../components/DemoTour';
 
 export default function AdminApp() {
   const { user, loaded } = useSession();
@@ -55,8 +55,10 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
   return (
     <div className="admin">
       <aside className="admin-side">
-        <Link to="/" className="admin-logo"><img src="/img/logo-white.png" alt="The Baldwin" /></Link>
-        {user.demo && <span className="demo-pill admin-demo">DEMO</span>}
+        <div className="admin-brand">
+          <Link to="/" className="admin-logo"><img src="/img/logo-white.png" alt="The Baldwin" /></Link>
+          {user.demo && <button type="button" className="demo-pill admin-demo" onClick={openWelcome}>DEMO</button>}
+        </div>
         <span className="admin-tag">{isSuper ? 'Super Admin' : 'Admin'}</span>
         {isSuper && <span className="admin-working">Working in <strong>{user.workingInName || '—'}</strong> · <NavLink to="/admin/super">Switch</NavLink></span>}
         {user.canSwitchStore && (user.stores || []).length > 1
