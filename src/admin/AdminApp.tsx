@@ -8,6 +8,7 @@ import { WineVideos } from './wine';
 import { BottleScannerPage } from './scanner';
 import { SuperAdmin } from './super';
 import { api } from '../lib/api';
+import { DemoBar, DemoTour } from '../components/DemoTour';
 
 export default function AdminApp() {
   const { user, loaded } = useSession();
@@ -79,6 +80,8 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
       </aside>
       <main className="admin-main" id="content">
         {user.impersonatedBy && <div className="support-bar" role="note">Support view: you’re signed in as <strong>{user.name}</strong>. <button className="link-btn" onClick={() => void back()}>Back to Your Account</button></div>}
+        <DemoBar />
+        {user.demo && <DemoTour />}
         <PageOptions />
         <Routes>
           <Route index element={<Overview />} />
