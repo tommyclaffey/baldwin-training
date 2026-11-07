@@ -5,9 +5,10 @@ import App from './App';
 import { SessionProvider } from './lib/session';
 import './styles.css';
 import { overflowReport } from './debug';
+import { restartDemoIfRefreshed } from './lib/demo';
 overflowReport();
 
-createRoot(document.getElementById('root')!).render(
+const mount = () => createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <SessionProvider>
@@ -16,3 +17,5 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </StrictMode>,
 );
+
+restartDemoIfRefreshed().finally(mount);

@@ -1,6 +1,7 @@
 // The live state behind drawn controls (filters, tabs, chips, checklists, print, photo viewer).
 // The server tags each control with a `meta` (see server/interact.mjs); this keeps the state for one page.
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from 'react';
+import { inDemo } from '../lib/demo';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
 import type { FNode } from './FigmaNode';
@@ -34,7 +35,7 @@ export const useInteract = () => useContext(Ctx);
 // Ticks are kept on this phone until the day (or the week, for weekly jobs) is over.
 const today = () => new Date().toLocaleDateString('en-CA');
 const week = () => { const d = new Date(); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return d.toLocaleDateString('en-CA'); };
-const storeKey = (save: 'day' | 'week') => `bt-ticks:${save}:${save === 'day' ? today() : week()}`;
+const storeKey = (save: 'day' | 'week') => `${inDemo() ? 'bt-demo-ticks' : 'bt-ticks'}:${save}:${save === 'day' ? today() : week()}`;
 function loadSaved(): Record<string, Value> {
   try { return { ...JSON.parse(localStorage.getItem(storeKey('week')) || '{}'), ...JSON.parse(localStorage.getItem(storeKey('day')) || '{}') }; } catch { return {}; }
 }

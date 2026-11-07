@@ -1,5 +1,5 @@
 // Lineup server (The Baldwin's training app): the built app, the content API, sign-in and uploads. No dependencies.
-import { migrateDemo, purgeDemos, startDemo, demoBlocks, isDemoCompany } from './demo.mjs';
+import { migrateDemo, purgeDemos, dropDemo, startDemo, demoBlocks, isDemoCompany } from './demo.mjs';
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -145,6 +145,15 @@ async function api(req, res, url) {
     if (c.user && !isDemoCompany(db, c.user.company_id)) set.push(returnCookie(c.token, { secure }));
     else if (c.user) endSession(db, c.token); // switching demo roles: the old demo session goes
     return sendJson(res, 200, { ok: true }, { 'Set-Cookie': set });
+  }
+  // Nov 7, Tommy: "have all my demo restart after a refresh". A refresh swaps this visitor's copy for a new one, same role.
+  // Not counted against the start limit: it replaces a copy, so nothing piles up.
+  if (p === '/api/demo/restart' && m === 'POST') {
+    if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
+    if (!c.user || !isDemoCompany(db, c.user.company_id)) return sendJson(res, 200, { restarted: false });
+    const r = startDemo(db, c.user.role === 'staff' ? 'employee' : 'manager');
+    dropDemo(db, c.user.company_id);
+    return sendJson(res, 200, { restarted: true }, { 'Set-Cookie': [sessionCookie(r.token, { secure: isSecure(req), days: 1 })] });
   }
   // Is there a real account to go back to? Only true inside a demo opened from one.
   if (p === '/api/demo/return' && m === 'GET') {
