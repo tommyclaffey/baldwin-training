@@ -106,6 +106,7 @@ export function DemoBar() {
       <div className="demo-bar-actions">
         <button type="button" className="main" onClick={() => void swap()} disabled={busy}>{busy ? 'Switching…' : manager ? 'See It as an Employee' : 'See It as a Manager'}</button>
         <button type="button" onClick={() => window.dispatchEvent(new Event(RESTART))}>Show Me Around</button>
+        <a href="/demo">Demo Home</a>
       </div>
     </div>
   );

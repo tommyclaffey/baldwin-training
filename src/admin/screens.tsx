@@ -452,7 +452,7 @@ export function Account() {
         {msg && <p className="ok" role="status">{msg}</p>}
         <button className="btn" disabled={!f.current || !f.next}>Change Password</button>
       </form>
-      <button className="btn ghost" onClick={signOut}>Sign Out</button>
+      {!user?.demo && <button className="btn ghost" onClick={signOut}>Sign Out</button>}
     </div>
   );
 }

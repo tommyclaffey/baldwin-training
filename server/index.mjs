@@ -146,6 +146,12 @@ async function api(req, res, url) {
     else if (c.user) endSession(db, c.token); // switching demo roles: the old demo session goes
     return sendJson(res, 200, { ok: true }, { 'Set-Cookie': set });
   }
+  // Is there a real account to go back to? Only true inside a demo opened from one.
+  if (p === '/api/demo/return' && m === 'GET') {
+    const back = cookies(req)[RETURN_COOKIE];
+    const kept = back ? sessionUser(db, back) : null;
+    return sendJson(res, 200, { own: !!(c.user && isDemoCompany(db, c.user.company_id) && kept && !isDemoCompany(db, kept.company_id)) });
+  }
   if (p === '/api/demo/exit' && m === 'POST') {
     if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
     const secure = isSecure(req);

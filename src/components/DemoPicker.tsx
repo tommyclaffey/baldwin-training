@@ -1,9 +1,10 @@
 // /demo (Nov 2): pick a role, get your own private copy of The Baldwin with a sample menu. Figma: 09 · Proposals,
 // "18 · Demo account" → "Demo · Pick a role · Desktop".
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
+import { exitDemo } from '../lib/demo';
 
 // Nov 4, Tommy: "one account for an employee and then one account that is a manager/admin."
 const ROLES = [
@@ -16,6 +17,10 @@ export function DemoPicker() {
   const go = useNavigate();
   const [busy, setBusy] = useState('');
   const [err, setErr] = useState('');
+  // There's no way out from inside the demo (Nov 7, Tommy). Someone who opened it from their own account gets back to it here;
+  // a visitor has no account kept aside, so they never see this.
+  const [own, setOwn] = useState(false);
+  useEffect(() => { api<{ own: boolean }>('/api/demo/return').then((r) => setOwn(r.own)).catch(() => {}); }, []);
   const start = async (key: string) => {
     if (busy) return; setBusy(key); setErr('');
     try { await api('/api/demo/start', { method: 'POST', body: { role: key } }); await refresh(); go('/'); }
@@ -23,7 +28,10 @@ export function DemoPicker() {
   };
   return (
     <main className="demo-pick">
-      <img src="/img/logo-white.png" alt="The Baldwin" height="40" />
+      <div className="demo-brand">
+        <img src="/img/logo-white.png" alt="The Baldwin" height="40" />
+        <span className="demo-pill">DEMO</span>
+      </div>
       <div className="demo-head">
         <p className="demo-script">Try it yourself</p>
         <h1>THE TRAINING APP</h1>
@@ -40,6 +48,7 @@ export function DemoPicker() {
       </div>
       {err && <p role="alert" className="demo-err">{err}</p>}
       <p className="demo-foot">Demo · sample dishes and cocktails, not a real menu. Uploads, invites and passwords are switched off.</p>
+      {own && <button type="button" className="demo-back" onClick={() => void exitDemo(refresh)}>Back to My Account</button>}
     </main>
   );
 }

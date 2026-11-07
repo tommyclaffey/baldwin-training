@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
-import { Sidebar, DemoPill } from './components/Sidebar';
+import { Sidebar } from './components/Sidebar';
 import { PageView, usePageEntry } from './components/PageView';
 import { NavContext } from './components/FigmaNode';
 import { useSession } from './lib/session';
@@ -47,10 +47,12 @@ function Book() {
     <NavContext.Provider value={entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
-        {user.store && !user.store.bookReady
-          ? <strong className="mobile-name">{user.store.name}</strong>
-          : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
-        {user.demo && <DemoPill compact />}
+        <div className={'mobile-brand' + (user.demo ? ' has-pill' : '')}>
+          {user.store && !user.store.bookReady
+            ? <strong className="mobile-name">{user.store.name}</strong>
+            : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
+          {user.demo && <span className="demo-pill">DEMO</span>}
+        </div>
         <button className="menu-btn" aria-expanded={menu} aria-controls="side" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu((m) => !m)}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
             {menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}

@@ -1279,11 +1279,7 @@ body.eip-lock { overflow: hidden; }
 .demo-role button:disabled { opacity: .6; cursor: default; }
 .demo-foot { margin: 0; font-size: 13px; color: #B8AFA3; }
 .demo-err { color: #F2B8B5; margin: 0; }
-.demo-pill-row { display: flex; align-items: center; gap: 10px; padding: 18px 20px 0; }
-.demo-pill-row.compact { padding: 0; margin-left: 10px; margin-right: auto; }
 .demo-pill { display: inline-flex; align-items: center; justify-content: center; height: 22px; padding: 0 10px; border-radius: 999px; background: #C49A6C; color: #1E1C1A; font: 800 11px 'Archivo', sans-serif; letter-spacing: .12em; }
-.demo-exit { background: none; border: 0; padding: 0; color: #E8DCCB; font: 600 13px 'Archivo', sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
-.demo-exit:hover { color: #FFFFFF; }
 @media (max-width: 640px) { .demo-roles { grid-template-columns: 1fr; width: 100%; max-width: 360px; } .demo-pick { padding: 56px 20px; gap: 28px; } }
 
 /* ---- Cocktail Specs (Nov 5, Figma 430:17) ---- */
@@ -1421,3 +1417,18 @@ body.eip-lock { overflow: hidden; }
    and cut off the count pills. The sidebar still scrolls; it just never gives up width for a bar. */
 .side, .admin-side { scrollbar-width: none; }
 .side::-webkit-scrollbar, .admin-side::-webkit-scrollbar { display: none; }
+
+/* The demo pill sits under the logo on every demo page; there's no way out from inside (Nov 7, Tommy). */
+.demo-bar-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #8A7A66; color: #1E1C1A; font: 600 13.5px 'Archivo', sans-serif; text-decoration: none; white-space: nowrap; }
+.demo-bar-actions a:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }
+.mobile-brand { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px; min-width: 0; }
+.mobile-brand.has-pill img { height: 24px; width: auto; }
+.mobile-brand .demo-pill { height: 16px; padding: 0 7px; font-size: 9px; }
+.admin-demo { align-self: flex-start; margin: 2px 6px 10px; }
+.demo-brand { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.demo-back { border: 0; background: none; padding: 8px 4px; color: #E8DCCB; font: 600 14px 'Archivo', sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.demo-back:hover { color: #fff; }
+.demo-back:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px; }
+@media (max-width: 859px) { .demo-bar-actions a { flex: 1 1 auto; } }
+/* Phones and tablets show the logo and pill in the top bar, and the menu drops its logo: no second pill in there. */
+@media (max-width: 1239px) { #side [data-name="Demo pill"] { display: none !important; } }
