@@ -1431,4 +1431,4 @@ body.eip-lock { overflow: hidden; }
 .demo-back:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px; }
 @media (max-width: 859px) { .demo-bar-actions a { flex: 1 1 auto; } }
 /* Phones and tablets show the logo and pill in the top bar, and the menu drops its logo: no second pill in there. */
-@media (max-width: 1239px) { #side [data-name="Demo pill"] { display: none !important; } }
+@media (max-width: 1239px) { #side [data-name="Brand"] { display: none !important; } }
