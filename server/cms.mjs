@@ -87,6 +87,7 @@ export const COLLECTIONS = {
       { key: 'menuPrice', label: 'On our menu: price', type: 'text', max: 10, section: 'The basics', placeholder: '15', hint: 'Leave empty if it’s not on our menu. Shows as an “On our menu” tag.' },
       { key: 'allergyTag', label: 'Allergy tag', type: 'text', max: 40, section: 'Glass, method, ice', placeholder: 'Contains egg white', hint: 'Shows as a tag at the top and a note under the build.' },
       { key: 'allergyNote', label: 'Allergy note', type: 'textarea', max: 200, section: 'Glass, method, ice' },
+      { key: 'specNote', label: 'Spec note', type: 'text', max: 160, section: 'Glass, method, ice', hint: 'Shows on the Cocktail Specs card. Leave blank for “The standard build”.' },
       { ...build, section: 'The build' },
       { key: 'steps', label: 'Steps', type: 'lines', max: 8, section: 'The build' },
       { key: 'flavors', label: 'Taste words', type: 'tags', section: 'Taste', placeholder: 'Whiskey, Orange, Spice' },

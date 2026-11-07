@@ -24,17 +24,24 @@
     },
     {
      "amount": "¼ oz",
-     "ingredient": "Simple syrup (or 1 sugar cube)",
+     "ingredient": "Demerara syrup",
      "spirit": false,
      "link": ""
     },
     {
-     "amount": "2–3 dashes",
+     "amount": "2 dashes",
      "ingredient": "Angostura bitters",
      "spirit": false,
      "link": "/spirit/bitters/aromatic"
+    },
+    {
+     "amount": "2 dashes",
+     "ingredient": "Orange bitters",
+     "spirit": false,
+     "link": "/spirit/bitters/orange"
     }
    ],
+   "specNote": "The Baldwin’s build",
    "steps": [
     "Add syrup and bitters to a mixing glass.",
     "Add whiskey and ice. Stir 20–30 seconds.",
@@ -82,6 +89,10 @@
     {
      "label": "Aromatic bitters",
      "link": "/spirit/bitters/aromatic"
+    },
+    {
+     "label": "Orange bitters",
+     "link": "/spirit/bitters/orange"
     }
    ],
    "say": "“An Old Fashioned: whiskey, a little sugar and bitters, with an orange peel. Bourbon or rye?”",
