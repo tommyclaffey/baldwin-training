@@ -56,6 +56,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
     <div className="admin">
       <aside className="admin-side">
         <Link to="/" className="admin-logo"><img src="/img/logo-white.png" alt="The Baldwin" /></Link>
+        {user.demo && <span className="demo-pill admin-demo">DEMO</span>}
         <span className="admin-tag">{isSuper ? 'Super Admin' : 'Admin'}</span>
         {isSuper && <span className="admin-working">Working in <strong>{user.workingInName || '—'}</strong> · <NavLink to="/admin/super">Switch</NavLink></span>}
         {user.canSwitchStore && (user.stores || []).length > 1

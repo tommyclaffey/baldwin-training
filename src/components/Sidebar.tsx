@@ -6,12 +6,21 @@ import { api, canEdit } from '../lib/api';
 import { ManagerLinks } from './EditBar';
 import { trainingCard } from '../quiz/transform';
 import { useSession } from '../lib/session';
-import { exitDemo } from '../lib/demo';
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
 function forStore(n: FNode, name: string): FNode {
   if (n.n === 'Logo') return { ...n, sh: 'F', c: [{ t: 'T', n: 'Store name', s: name, w: 164, h: 28, sh: 'F', sv: 'H', f: [{ c: '#F2EEE7' }], ff: 'Archivo', fs: 'ExtraBold', z: 22, ls: '-1%', ar: 'H' } as FNode] };
   return n.c ? { ...n, c: n.c.filter((c) => c.n !== 'Your Training').map((c) => forStore(c, name)) } : n;
+}
+
+/** The demo pill, right under the logo on every demo page (Nov 7, Tommy). */
+function withDemoPill(n: FNode): FNode {
+  const pill: FNode = { t: 'F', n: 'Demo pill', lm: 'H', sh: 'H', sv: 'H', pd: [0, 0, 0, 8], c: [{ t: 'F', n: 'Pill', lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 999, pd: [4, 10, 4, 10], f: [{ c: '#C49A6C' }], c: [{ t: 'T', n: 'DEMO', s: 'DEMO', ff: 'Archivo', fs: 'ExtraBold', z: 11, ls: '12%', f: [{ c: '#1E1C1A' }], ar: 'W', sh: 'H', sv: 'H' } as FNode] } as FNode] } as FNode;
+  if (!n.c) return n;
+  const at = n.c.findIndex((c) => c.n === 'Logo');
+  if (at < 0) return { ...n, c: n.c.map(withDemoPill) };
+  const brand = { t: 'F', n: 'Brand', lm: 'V', gap: 10, sh: 'H', sv: 'H', c: [n.c[at], pill] } as FNode;
+  return { ...n, c: [...n.c.slice(0, at), brand, ...n.c.slice(at + 1)] };
 }
 
 const NODES = sidebar as FNode[];
@@ -42,25 +51,14 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     // Badges: what's really on each page; Quizzes = quizzes still to pass on this phone.
     const live: Record<string, number> = { ...counts, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
     const drawn = linkHome(withCounts(trainingCard([SIDEBAR], quiz)[0], live));
-    return generic ? forStore(drawn, user!.store!.name) : drawn;
+    const named = generic ? forStore(drawn, user!.store!.name) : drawn;
+    return user?.demo ? withDemoPill(named) : named;
   }, [quiz, counts, generic, user]);
   return (
     <nav className="sidebar" aria-label="Main" onClick={(e) => { if ((e.target as HTMLElement).closest('a')) onNavigate?.(); }}>
-      {user?.demo && <DemoPill />}
       <FigmaNode node={{ ...node, x: undefined, y: undefined }} rootStyle={{ position: 'relative', width: '100%', height: 'auto', flex: '1 0 auto' }} />
       <Account />
     </nav>
-  );
-}
-
-/** Nov 4, Tommy: "the little demo pill label in the top left." */
-export function DemoPill({ compact = false }: { compact?: boolean }) {
-  const { refresh } = useSession();
-  return (
-    <div className={'demo-pill-row' + (compact ? ' compact' : '')}>
-      <span className="demo-pill">DEMO</span>
-      <button type="button" className="demo-exit" onClick={() => void exitDemo(refresh)}>Exit Demo</button>
-    </div>
   );
 }
 
@@ -71,7 +69,7 @@ function Account() {
   if (!user) return null;
   const initials = user.name.split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
   // in the demo, signing out leaves the demo and puts your own sign-in back
-  const signOut = async () => { if (user.demo) return exitDemo(refresh); await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); };
+  const signOut = async () => { await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); };
   const back = async () => { await api('/api/super/return', { method: 'POST' }).catch(() => {}); await refresh(); location.assign('/admin/super'); };
   const where = user.workingInName || user.store?.name || user.companyName || '';
   return (
@@ -85,7 +83,7 @@ function Account() {
         </span>
         {user.impersonatedBy
           ? <button type="button" className="account-out" onClick={() => void back()}>Back</button>
-          : <button type="button" className="account-out" onClick={() => void signOut()}>Sign Out</button>}
+          : !user.demo && <button type="button" className="account-out" onClick={() => void signOut()}>Sign Out</button>}
       </div>
     </div>
   );
