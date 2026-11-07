@@ -1395,7 +1395,7 @@ body.eip-lock { overflow: hidden; }
 .demo-bar button:disabled { opacity: .6; cursor: default; }
 .demo-bar button:focus-visible, .tour-btn:focus-visible, .tour-skip:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }
 .tour { position: fixed; inset: 0; z-index: 150; pointer-events: none; font-family: 'Archivo', sans-serif; }
-.tour-hl { position: fixed; border-radius: 16px; box-shadow: 0 0 0 3px #C49A6C, 0 0 0 9999px rgba(20, 18, 16, .5); transition: top .25s ease, left .25s ease, width .25s ease, height .25s ease; }
+.tour-hl { position: fixed; border-radius: 16px; box-shadow: 0 0 0 3px #C49A6C, 0 0 0 9999px rgba(20, 18, 16, .5); } /* no glide: it lands with the page */
 .tour-card { position: fixed; pointer-events: auto; display: flex; flex-direction: column; gap: 6px; background: #FBF9F5; color: #1E1C1A; border-radius: 18px; padding: 18px 20px 16px; box-shadow: 0 16px 40px rgba(0, 0, 0, .3); }
 .tour-card.sheet { left: 12px; right: 12px; bottom: 76px; } /* clear of Safari's floating address bar */
 .tour-count { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: #8A5A3A; text-transform: uppercase; }
@@ -1406,7 +1406,6 @@ body.eip-lock { overflow: hidden; }
 .tour-skip { border: 0; background: none; padding: 6px 2px; color: #5E574F; font: 500 14px 'Archivo', sans-serif; text-decoration: underline; cursor: pointer; }
 .tour-btn { min-height: 40px; padding: 0 18px; border-radius: 999px; border: 1px solid #1E1C1A; background: #1E1C1A; color: #F2EEE7; font: 600 14px 'Archivo', sans-serif; cursor: pointer; }
 .tour-btn.ghost { background: transparent; color: #1E1C1A; border-color: #8A7A66; }
-@media (prefers-reduced-motion: reduce) { .tour-hl { transition: none; } }
 @media (max-width: 859px) { .demo-bar { padding: 10px 14px; } .demo-bar-actions { width: 100%; } .demo-bar-actions button { flex: 1 1 auto; } }
 
 /* ---- Keyboard focus you can see (Nov 6, Tommy: "I'm not sure exactly what it's selecting"). The ring was drawn outside each card, and
