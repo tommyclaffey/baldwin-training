@@ -1408,3 +1408,12 @@ body.eip-lock { overflow: hidden; }
 .tour-btn.ghost { background: transparent; color: #1E1C1A; border-color: #8A7A66; }
 @media (prefers-reduced-motion: reduce) { .tour-hl { transition: none; } }
 @media (max-width: 859px) { .demo-bar { padding: 10px 14px; } .demo-bar-actions { width: 100%; } .demo-bar-actions button { flex: 1 1 auto; } }
+
+/* ---- Keyboard focus you can see (Nov 6, Tommy: "I'm not sure exactly what it's selecting"). The ring was drawn outside each card, and
+   most cards sit inside a clipping parent, so it was cut off. Cards draw it inside their own edge, in two tones so it shows on light and dark. ---- */
+/* Cards: the ring sits on its own layer above the content, so a photo that fills the card can't cover it. */
+.flink:not(.ftext):focus-visible, [data-name^="Photo · "].is-ctl:focus-visible { outline: none; position: relative; }
+.flink:not(.ftext):focus-visible::after, [data-name^="Photo · "].is-ctl:focus-visible::after { content: ''; position: absolute; inset: 0; z-index: 5; border-radius: inherit; pointer-events: none; box-shadow: inset 0 0 0 3px #C49A6C, inset 0 0 0 5px #1E1C1A; }
+.is-ctl:not([data-name^="Photo · "]):focus-visible, .carousel:focus-visible { outline: 2px solid #C49A6C; outline-offset: -2px; box-shadow: inset 0 0 0 3px #1E1C1A; }
+.flink.ftext:focus-visible { outline: 2px solid #C49A6C; outline-offset: 1px; box-shadow: none; text-decoration: underline !important; text-underline-offset: 3px; }
+.search:focus-within, .find-box:focus-within { outline: 3px solid #C49A6C; outline-offset: -1px; }
