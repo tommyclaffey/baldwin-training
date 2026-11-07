@@ -17,6 +17,7 @@ import { AssignName, FindBox, TableFinder, TableMarker, controlProps, isActive, 
 export type FNode = {
   t: 'F' | 'T' | 'R' | 'E' | 'S';
   n?: string; w: number; h: number; x?: number; y?: number; abs?: 1;
+  skipTab?: 1; // clickable, but Tab skips it: it repeats a link right beside it
   lab?: string; empty?: 1; hdr?: 1; // table cells: column label, an empty allergen cell, the header row (phones stack rows)
   sh?: 'F' | 'H' | 'L'; sv?: 'F' | 'H' | 'L';
   op?: number; rot?: number; to?: string; svg?: string;
@@ -366,6 +367,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   const slots = useContext(SlotContext);
   const carousel = useContext(CarouselContext);
   const shrink = useContext(ScaleContext);
+  const inLink = useContext(InLink);
   const live = useInteract();
   const [playing, setPlaying] = useState(false);
   // A control is drawn in its current state (ticked / empty, selected / plain).
@@ -381,7 +383,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     const { st, cls, content: raw } = textNode(node, parentLm);
     if (shrink < 1 && node.z && node.z * shrink < 11) st.fontSize = 11 / shrink;
     const content = node.n === 'Carousel count' && carousel ? <span aria-live="polite">{carousel.label}</span> : raw;
-    return wrapLink(node, <div className={cls.join(' ')} style={st} data-label={node.lab} data-empty={node.empty}>{content}</div>, st, cls);
+    return wrapLink(node, <div className={cls.join(' ')} style={st} data-label={node.lab} data-empty={node.empty}>{content}</div>, st, cls, inLink);
   }
 
   const { st, cls } = boxStyle(node, parentLm, parentH);
@@ -519,7 +521,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     }
     const box = <div className={cls.join(' ')} style={{ ...inner, position: 'relative', width: node.w, height: node.h, maxWidth: 'none' }} data-name={node.n}>{kids}</div>;
     const scaled = <Scaled w={node.w} h={node.h} outer={{ flex, alignSelf, minWidth, flexShrink }}>{box}</Scaled>;
-    return node.to ? wrapLink(node, <div>{scaled}</div>, {}, ['fn']) : scaled;
+    return node.to ? wrapLink(node, <div>{scaled}</div>, {}, ['fn'], inLink) : scaled;
   }
   if (carousel && (node.n === 'Carousel prev' || node.n === 'Carousel next')) {
     const prev = node.n === 'Carousel prev';
@@ -530,7 +532,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     );
   }
   if (carousel && isCarousel(node)) {
-    return <div ref={carousel.setEl} className={cls.concat('carousel').join(' ')} style={{ ...st, overflowX: 'auto', overflowY: 'hidden' }} data-name={node.n} tabIndex={0} aria-label={node.n!.split(' · ')[1]} role="region">{kids}</div>;
+    return <div ref={carousel.setEl} className={cls.concat('carousel').join(' ')} style={{ ...st, overflowX: 'auto', overflowY: 'hidden' }} data-name={node.n} tabIndex={(node.c || []).some((c) => c.to) ? undefined : 0} aria-label={node.n!.split(' · ')[1]} role="region">{kids}</div>; // cards that link are stops already
   }
   const el = ctl && !node.to ? (
     <div className={cls.join(' ')} style={st} data-name={node.n} data-label={node.lab} data-empty={node.empty} data-head={node.hdr} aria-label={node.n?.split(' · ').slice(1).join(' · ') || undefined} {...ctl}>
@@ -541,28 +543,33 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
       {kids}
     </div>
   );
-  return wrapLink(node, el, st, cls);
+  return wrapLink(node, el, st, cls, inLink);
 }
 
 // A linked text keeps its own colour from the design (Nov 5: "Full specs on Cocktail Specs →" came out ink on the dark band).
 // Linked frames still pass colour down to their texts.
 const linkColor = (node: FNode, st: CSSProperties) => (node.t === 'T' && st.color ? st.color : 'inherit');
-function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[]) {
+// One card, one Tab stop (Nov 6, Tommy: "I have to press Tab twice to select the next card"). A link inside another link, or a photo
+// that repeats its card's button, stays clickable but Tab skips it.
+const InLink = createContext(false);
+function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[], inLink = false) {
   if (!node.to) return el;
+  const skip = inLink || !!node.skipTab;
+  const tabProps = skip ? { tabIndex: -1, ...(node.skipTab ? { 'aria-hidden': true } : {}) } : {};
   const av = (node.meta as { addVideo?: { key: string; title: string } } | undefined)?.addVideo;
   if (av) return <AddVideoButton pageKey={av.key} title={av.title} style={st} className={cls.join(' ')}>{(el as { props: { children?: ReactNode } }).props.children}</AddVideoButton>;
   const label = node.n?.includes(' · ') ? node.n.split(' · ').slice(1).join(' · ') : undefined;
   // Outside sources (Wine Folly, Vivino, producer sites) open in a new tab.
   if (/^https?:\/\//.test(node.to)) {
     return (
-      <a href={node.to} target="_blank" rel="noopener noreferrer" className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
-        {(el as { props: { children?: ReactNode } }).props.children}
+      <a href={node.to} target="_blank" rel="noopener noreferrer" className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr} {...tabProps}>
+        <InLink.Provider value={true}>{(el as { props: { children?: ReactNode } }).props.children}</InLink.Provider>
       </a>
     );
   }
   return (
-    <Link to={node.to} className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
-      {(el as { props: { children?: ReactNode } }).props.children}
+    <Link to={node.to} className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr} {...tabProps}>
+      <InLink.Provider value={true}>{(el as { props: { children?: ReactNode } }).props.children}</InLink.Provider>
     </Link>
   );
 }
