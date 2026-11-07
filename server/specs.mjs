@@ -142,7 +142,7 @@ function specCard(proto, e, own) {
     });
   } else if (steps) c.c = c.c.filter((x) => x !== steps);
 
-  setText(find(c, byName('Spec note')), own ? (d.specNote || 'From the Drink Book') : 'The standard build');
+  setText(find(c, byName('Spec note')), d.specNote || (own ? 'From the Drink Book' : 'The standard build'));
   c._find = norm([d.name, d.menuSection, d.family, d.glass, d.method, d.garnish, ...lines.map((b) => b.ingredient)].join(' '));
   return c;
 }
