@@ -15,7 +15,8 @@ export function inDemo() { try { return !!localStorage.getItem(FLAG); } catch { 
 
 export async function restartDemoIfRefreshed() {
   const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
-  if (nav?.type !== 'reload' || !inDemo() || location.pathname === '/demo') return;
+  // Inside another page's frame a refresh of that page reports "navigate", so every load there counts.
+  if ((nav?.type !== 'reload' && window.self === window.top) || !inDemo() || location.pathname === '/demo') return;
   try {
     const r = await api<{ restarted: boolean }>('/api/demo/restart', { method: 'POST' });
     if (!r.restarted) return;
