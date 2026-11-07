@@ -196,16 +196,22 @@ export function DemoTour() {
   if (!tip || !rect) return null;
   const vw = window.innerWidth, vh = window.innerHeight, pad = 8;
   const top = Math.max(rect.top - pad, 4);
-  const hl = { top, left: Math.max(rect.left - pad, 4), width: Math.min(rect.width + pad * 2, vw - 8), height: Math.max(Math.min(rect.bottom + pad, vh - 4) - top, 0) };
+  // A full-height rail (the sidebar): the box matches its exact edge instead of spilling onto the page beside it (Nov 7).
+  const rail = rect.left <= 1 && rect.height >= vh - 2;
+  const hl: CSSProperties & { top: number; left: number; width: number; height: number } = rail
+    ? { top: 0, left: 0, width: rect.width, height: vh, borderRadius: 0 }
+    : { top, left: Math.max(rect.left - pad, 4), width: Math.min(rect.width + pad * 2, vw - 8), height: Math.max(Math.min(rect.bottom + pad, vh - 4) - top, 0) };
   const narrow = vw < 640, cardW = 340;
   const below = vh - (hl.top + hl.height) > 220;
   const beside = !below && hl.top < 240; // a target that fills the screen: sit the card on top of it
-  const style: CSSProperties = narrow ? {} : {
-    top: below ? hl.top + hl.height + 12 : beside ? vh - 24 : Math.max(12, hl.top - 12),
-    left: Math.min(Math.max(12, hl.left), vw - cardW - 12),
-    transform: below ? undefined : 'translateY(-100%)',
-    width: cardW,
-  };
+  const style: CSSProperties = narrow ? {} : rail
+    ? { top: 96, left: hl.width + 16, width: cardW } // beside the rail, so it doesn't cover what it's pointing at
+    : {
+      top: below ? hl.top + hl.height + 12 : beside ? vh - 24 : Math.max(12, hl.top - 12),
+      left: Math.min(Math.max(12, hl.left), vw - cardW - 12),
+      transform: below ? undefined : 'translateY(-100%)',
+      width: cardW,
+    };
   return createPortal(
     <div className="tour">
       <div className="tour-hl" style={hl} aria-hidden="true" />
