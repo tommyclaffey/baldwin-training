@@ -11,6 +11,7 @@ import { setQuizUser } from './quiz/store';
 import AdminApp from './admin/AdminApp';
 import { EditInPlaceProvider } from './components/EditSheet';
 import { setFavicon } from './lib/favicon';
+import { DemoBar, DemoTour } from './components/DemoTour';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -62,8 +63,10 @@ function Book() {
           <Sidebar onNavigate={() => setMenu(false)} />
         </aside>
         <div id="content" className="content">
+          <DemoBar />
           <PageView />
         </div>
+        {user.demo && <DemoTour />}
       </div>
     </NavContext.Provider>
     </EditInPlaceProvider>
