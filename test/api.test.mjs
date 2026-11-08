@@ -731,3 +731,17 @@ test('videos: no empty video frames, and the library lists only real videos (Nov
     });
   }
 });
+
+test('notes to the team ("bar lead to add", "confirm with chef") show to managers only (Nov 8)', async () => {
+  const as = async (role) => {
+    const r = await fetch(BASE + '/api/demo/start', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ role }) });
+    const c = r.headers.get('set-cookie').split(';')[0];
+    const get = async (p) => (await fetch(BASE + p, { headers: { cookie: c, 'x-bt': '1' } })).json();
+    const index = await get('/api/index');
+    const page = async (slug) => JSON.stringify((await get('/api/page/' + index.find((e) => e.slug === slug).file)).main);
+    return Promise.all(['classic/old-fashioned', 'the-bar/cocktail-specs', 'food-matrix'].map(page)).then((x) => x.join(' '));
+  };
+  const NOTE = /lead to add|lead to confirm|confirm with chef|chef to confirm|sample data/i;
+  assert.match(await as('manager'), NOTE, 'managers see what is still to fill in');
+  assert.doesNotMatch(await as('employee'), NOTE, 'staff never do');
+});
