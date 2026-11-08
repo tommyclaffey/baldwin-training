@@ -66,7 +66,10 @@ const ASK_COCKTAIL_PAIRINGS = false;
 /** The bartenders' spec quizzes, one per list on the Cocktail Specs page (Nov 6). */
 export const SPEC_TOPICS = [['spec:specialty', 'Specialty Cocktail Specs'], ['spec:brg', 'BRG Staples Specs'], ['spec:classic-on', 'Classics on the Menu Specs'], ['spec:mules', 'Mule Specs'], ['spec:dessert', 'Dessert Cocktail Specs'], ['spec:spiritless', 'Spiritless Cocktail Specs'], ['spec:house', 'House Cocktail Specs'], ['spec:classic-off', 'Classics off the Menu Specs'], ['spec:classic', 'Classic Cocktail Specs']];
 /** A question only bartenders need (an amount, the ice): kept out of the Quick Quiz. */
-export const barOnly = (q) => q.topics.every((t) => t.startsWith('spec:'));
+export const barOnly = (q) => q.topics.every((t) => t.startsWith('spec:') || t.startsWith('final:'));
+/** The Cocktail Program's Level 1 final (Nov 8): every lesson card plus the spec questions for the drinks on our menu. */
+export const BAR_FINAL_KEY = 'final:bar-1';
+const ON_MENU_SPECS = new Set(['specialty', 'brg', 'classic-on', 'mules', 'dessert', 'spiritless', 'house']);
 export function topicList(pool) {
   const count = (k) => pool.filter((q) => q.topics.includes(k)).length;
   const t = [
@@ -86,13 +89,14 @@ export function topicList(pool) {
     { key: 'allergens', label: 'Allergens', group: 'Know It Cold' },
     { key: 'pairings', label: 'Pairings', group: 'Know It Cold' },
     ...SPEC_TOPICS.map(([key, label]) => ({ key, label, group: 'Cocktail Specs · For Bartenders' })),
-    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
+    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.program === 'bar' ? 'Cocktail Program · Level 1' : c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
+    { key: BAR_FINAL_KEY, label: 'Certified Bar Server · Final Exam', group: 'Cocktail Program · Level 1' },
   ];
   // A specs list can be short (two dessert cocktails): it still gets its quiz.
   return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= (x.key.startsWith('spec:') ? 2 : 3));
 }
 /** Topics that are also sign-off quizzes on their own. */
-export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || key.startsWith('spec:') || ['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house', 'classic-on', 'classic-off', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
+export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || key.startsWith('final:') || key.startsWith('spec:') || ['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house', 'classic-on', 'classic-off', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
 
 /** Every question this store's book can ask. */
 export function questionPool(db, store) {
@@ -256,6 +260,7 @@ export function questionPool(db, store) {
   const familyOf = (x) => (FAMILY.find(([, re]) => re.test(x)) || [x.toLowerCase()])[0];
   for (const l of specs) {
     const topic = 'spec:' + l.key;
+    const finalToo = ON_MENU_SPECS.has(l.key);
     for (const { e, house: own } of l.items) {
       const allLines = own ? ownLines : libLines;
       const d = e.data, n = d.name;
@@ -296,7 +301,7 @@ export function questionPool(db, store) {
       const makers = [swap, amount, switched];
       for (let tries = 0; wrong.size < 6 && tries < 30; tries++) makers[tries % 3]();
       if (wrong.size < 3) continue;
-      ask('spec:' + e.id, { page: specHref(n), label: n, q: `What’s the spec for ${the(n)}?`, right, pool: [...wrong], why: `${right.split('\n').join(', ')}.`, topics: [topic] });
+      ask('spec:' + e.id, { page: specHref(n), label: n, q: `What’s the spec for ${the(n)}?`, right, pool: [...wrong], why: `${right.split('\n').join(', ')}.`, topics: finalToo ? [topic, BAR_FINAL_KEY] : [topic] });
     }
   }
 
@@ -334,7 +339,7 @@ export function questionPool(db, store) {
     ch.cards.forEach((c, i) => {
       const ref = `study:${ch.slug}:${i}`;
       const options = shuffleSeeded([c.answer, ...c.wrong.slice(0, 3)], ref);
-      out.push({ ref, q: c.q, options, answer: options.indexOf(c.answer), why: `${c.answer}.`, page: '/' + chapterSlug(ch), label: ch.title, topics: ['study:' + ch.slug] });
+      out.push({ ref, q: c.q, options, answer: options.indexOf(c.answer), why: `${c.answer}.`, page: '/' + chapterSlug(ch), label: ch.title, topics: ch.program === 'bar' ? ['study:' + ch.slug, BAR_FINAL_KEY] : ['study:' + ch.slug] });
     });
   }
   return out;

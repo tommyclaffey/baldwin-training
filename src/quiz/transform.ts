@@ -127,6 +127,16 @@ export function pathSidebar(root: FNode, p: PathSummary | null): FNode {
         setText(texts(item)[0], 'My Path');
         n.c.splice(n.c.indexOf(quizzes), 0, item);
       }
+      // The Cocktail Program (Nov 8), under the Sommelier Program, with The Bar's glass icon.
+      const somm = n.c.find((c) => c.n === 'Nav · Sommelier Program');
+      const barIcon = n.c.find((c) => c.n === 'Nav · The Bar')?.c?.find((c) => c.n === 'icon');
+      if (somm && !n.c.some((c) => c.n === 'Nav · Cocktail Program')) {
+        const item = clone(somm);
+        item.n = 'Nav · Cocktail Program'; item.to = '/cocktail-program';
+        if (barIcon) item.c = (item.c || []).map((c) => (c.n === 'icon' ? clone(barIcon) : c));
+        setText(texts(item)[0], 'Cocktail Program');
+        n.c.splice(n.c.indexOf(somm) + 1, 0, item);
+      }
     }
     if (n.n !== 'Your Training' || !n.c || !p) return;
     for (const c of n.c) {

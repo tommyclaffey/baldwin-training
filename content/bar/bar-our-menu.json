@@ -1,0 +1,278 @@
+{
+ "number": 3,
+ "slug": "bar-our-menu",
+ "title": "Our menu",
+ "script": "Lesson three",
+ "lead": "How to read a spec, where every drink lives in the app, and how to sell it at the table. Then the spec quizzes test our own builds.",
+ "minutes": 10,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Reading a spec",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Every spec is written the same way."
+    }
+   ],
+   "know": [
+    "Amount first, then the ingredient, one per line.",
+    "Glass ice, method and garnish finish every spec.",
+    "Top means fill the glass with the last ingredient.",
+    "1 Oz is about 30 ml.",
+    "Build means make it right in the glass."
+   ]
+  },
+  {
+   "name": "Where every drink lives",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Know where to look it up."
+    }
+   ],
+   "know": [
+    "One Page per drink: how it tastes, the glass and the garnish.",
+    "Specs holds every build, list by list.",
+    "Our Build comes first when a classic is on our menu.",
+    "Spiritless drinks have no alcohol at all."
+   ]
+  },
+  {
+   "name": "Selling a cocktail",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Sell the drink in one sentence."
+    }
+   ],
+   "know": [
+    "Spirit first: tell the guest what the drink is built on.",
+    "Taste in a few words: bright, smoky, bitter, sweet.",
+    "Say It with the line on each drink’s page.",
+    "Pair It with a dish the drink page suggests."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Reading a spec",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AMOUNT",
+      "line": "first, then the ingredient, one per line."
+     },
+     {
+      "big": "GLASS",
+      "line": "ice, method and garnish finish every spec."
+     },
+     {
+      "big": "TOP",
+      "line": "means fill the glass with the last ingredient."
+     },
+     {
+      "big": "1 OZ",
+      "line": "is about 30 ml."
+     },
+     {
+      "big": "BUILD",
+      "line": "means make it right in the glass."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every spec is written the same way.",
+     "where": "Each line is an **amount** and an **ingredient**. Under them: the **glass**, the **ice**, the **method** (shake, stir or build) and the **garnish**. **Top** means fill to the top with the last ingredient, often soda or bubbles. **Build** means make it right in the glass. Every drink we make is on **Cocktail Specs**."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Where every drink lives",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ONE PAGE",
+      "line": "per drink: how it tastes, the glass and the garnish."
+     },
+     {
+      "big": "SPECS",
+      "line": "holds every build, list by list."
+     },
+     {
+      "big": "OUR BUILD",
+      "line": "comes first when a classic is on our menu."
+     },
+     {
+      "big": "SPIRITLESS",
+      "line": "drinks have no alcohol at all."
+     }
+    ],
+    "read": {
+     "bigIdea": "Know where to look it up.",
+     "where": "The menu is grouped into **lists**, and the app follows them. Each drink has its own **page** for selling it: what it tastes like, the glass and the garnish. **Cocktail Specs** has every build, list by list. When a classic is on our menu, **our build** comes first. **Spiritless** drinks have no alcohol."
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Selling a cocktail",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SPIRIT",
+      "line": "first: tell the guest what the drink is built on."
+     },
+     {
+      "big": "TASTE",
+      "line": "in a few words: bright, smoky, bitter, sweet."
+     },
+     {
+      "big": "SAY IT",
+      "line": "with the line on each drink’s page."
+     },
+     {
+      "big": "PAIR IT",
+      "line": "with a dish the drink page suggests."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sell the drink in one sentence.",
+     "where": "Lead with the **spirit**, then **how it tastes** in a few words, then **how it’s served**. Every drink page has a **Say It at the Table** line you can use as is. If the guest is ordering food, suggest the **pairing** from the drink page.",
+     "sayIt": "It’s tequila with hibiscus and lime: bright, a little tart, served up."
+    },
+    "check": [
+     7,
+     8,
+     9
+    ]
+   }
+  ]
+ },
+ "sources": "Written for Mise from Our book: Cocktail Specs, drink pages and the Safety page in this app. Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "In a spec, “top with soda” means…",
+   "answer": "Fill the glass the rest of the way with soda",
+   "wrong": [
+    "Add exactly 1 oz of soda",
+    "Pour soda on the side",
+    "Shake the soda in"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "About how many milliliters are in 1 oz?",
+   "answer": "About 30 ml",
+   "wrong": [
+    "About 10 ml",
+    "About 50 ml",
+    "About 100 ml"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "“Build” as a method means…",
+   "answer": "Make it right in the glass it’s served in",
+   "wrong": [
+    "Shake it hard",
+    "Stir it in a mixing glass",
+    "Blend it with ice"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "Where do you find the amounts for our cocktails?",
+   "answer": "Cocktail Specs",
+   "wrong": [
+    "The Food Matrix",
+    "The Allergen Guide",
+    "The Floor Plan"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "A classic is on our menu. Which build do you make?",
+   "answer": "Our house build",
+   "wrong": [
+    "Any build you like",
+    "The oldest recipe you can find",
+    "The one from a video"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "What is a spiritless cocktail?",
+   "answer": "A cocktail with no alcohol",
+   "wrong": [
+    "A cocktail with half the spirit",
+    "A cocktail made with wine",
+    "A cocktail with no ice"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "Where do you look to describe a drink to a guest?",
+   "answer": "The drink’s own page",
+   "wrong": [
+    "The Floor Plan",
+    "The Cleanliness page",
+    "The Safety page"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "What do you tell a guest first about a cocktail?",
+   "answer": "The spirit it’s built on",
+   "wrong": [
+    "The price",
+    "How long it takes",
+    "Who invented it"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "Where is a ready-made line for describing a drink?",
+   "answer": "Say It at the Table, on the drink’s page",
+   "wrong": [
+    "On the receipt",
+    "On the Floor Plan",
+    "On the Allergen Guide"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "A guest wants something not too sweet. What helps most?",
+   "answer": "Taste words like bright, dry or bitter",
+   "wrong": [
+    "The drink’s price",
+    "The size of the glass",
+    "The name of the garnish"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Each line is an amount and an ingredient. Under them: the glass, the ice, the method (shake, stir or build) and the garnish. Top means fill to the top with the last ingredient, often soda or bubbles. Build means make it right in the glass. Every drink we make is on Cocktail Specs.",
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "fact": "The menu is grouped into lists, and the app follows them. Each drink has its own page for selling it: what it tastes like, the glass and the garnish. Cocktail Specs has every build, list by list. When a classic is on our menu, our build comes first. Spiritless drinks have no alcohol.",
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "fact": "Lead with the spirit, then how it tastes in a few words, then how it’s served. Every drink page has a Say It at the Table line you can use as is. If the guest is ordering food, suggest the pairing from the drink page.",
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  }
+ ],
+ "unverified": []
+}

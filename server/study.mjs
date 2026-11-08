@@ -5,9 +5,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { clone, find, findAll, byName, texts, setText, remove } from './templates.mjs';
-import { chapters, chapters2, levelChapters, chapterBase, GUIDE, quizHref, shuffleSeeded, blockBuilder } from './manual.mjs';
+import { chapters, chapters2, chaptersBar, levelChapters, chapterBase, GUIDE, BAR, quizHref, shuffleSeeded, blockBuilder } from './manual.mjs';
 
 export const HUB = 'sommelier-program';
+export const BAR_FINAL = 't:final:bar-1';
 export const L1 = 'sommelier-program/level-1';
 export const L2 = 'sommelier-program/level-2';
 export const REGISTER = {
@@ -157,12 +158,12 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
   const main = clone(tpl.main);
   const sec = ch.sections[si]; const v = v3Of(ch, si); const r = v.read || {};
   const n = ch.sections.length; const all = levelChapters(ch);
-  const lvl = ch.level === 2 ? 2 : 1; const home = lvl === 2 ? L2 : L1;
+  const lvl = ch.level === 2 ? 2 : 1; const isBar = ch.program === 'bar'; const home = isBar ? BAR : lvl === 2 ? L2 : L1;
   const href = (c, i) => '/' + lessonSlug(c, i);
 
   // breadcrumb: Level 1 / Lesson N · Chapter / Section
   const bc = find(main, byName('Breadcrumb'));
-  if (bc) { const t = texts(bc); setText(t[0], `Level ${lvl}`); setText(t[2], `${lvl === 2 && ch.part ? `Part ${ch.part} · ` : ''}Lesson ${ch.number} · ${ch.title}`); setText(t[4], sec.name); const back = find(bc, byName('Back')); if (back) back.to = '/' + home; }
+  if (bc) { const t = texts(bc); setText(t[0], isBar ? 'Cocktail Program' : `Level ${lvl}`); setText(t[2], `${lvl === 2 && ch.part ? `Part ${ch.part} · ` : ''}Lesson ${ch.number} · ${ch.title}`); setText(t[4], sec.name); const back = find(bc, byName('Back')); if (back) back.to = '/' + home; }
 
   // the video, or nothing when there isn't a good one
   const slot = find(main, byName('Video slot · Lesson'));
@@ -180,7 +181,7 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
     find(under, byName('Titles')).c = [tt[0], tt[1]];
     find(under, byName('Titles')).sh = 'L';
     const credit = T(under)[0];
-    if (v.video?.youtubeId) setText(credit, `Video: ${v.video.by} · ${v.video.length}`); else under.c = under.c.filter((x) => x !== credit);
+    if (v.video?.youtubeId) setText(credit, `Video: ${v.video.by}${v.video.length ? ' · ' + v.video.length : ''}`); else under.c = under.c.filter((x) => x !== credit);
   }
 
   // what the Court expects (Nov 2, Tommy: "use these resources to structure everything"): the Court's own learning
@@ -304,14 +305,17 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
   const at = pl.c.indexOf(rows[0]);
   pl.c = [...pl.c.slice(0, at), ...built, ...pl.c.slice(at).filter((x) => !rows.includes(x))];
   const whole = find(pl, byName('Item · Easy to Mix Up'));
-  if (whole) { whole.n = 'Row · Read Whole Chapter'; whole.to = '/' + wholeChapterSlug(ch); const t = T(whole); setText(t[0], 'Read Whole Chapter'); setText(t[1], `${ch.minutes || 20} min`); }
+  if (whole && isBar) pl.c = pl.c.filter((x) => x !== whole);
+  else if (whole) { whole.n = 'Row · Read Whole Chapter'; whole.to = '/' + wholeChapterSlug(ch); const t = T(whole); setText(t[0], 'Read Whole Chapter'); setText(t[1], `${ch.minutes || 20} min`); }
   const chk = find(pl, byName('Item · Check Yourself'));
   if (chk) { chk.n = 'Row · Check Yourself'; chk.to = quizHref(ch); setText(T(chk)[1], `${ch.cards.length} cards`); }
   {
     const nc = all[all.indexOf(ch) + 1];
-    const to = si < n - 1 ? href(ch, si + 1) : nc ? href(nc, 0) : '/' + home;
-    const label = si < n - 1 ? 'Next Section' : nc ? 'Next Lesson' : `Back to Level ${lvl}`;
-    const what = si < n - 1 ? ch.sections[si + 1].name : nc ? nc.title : `Level ${lvl}`;
+    // the Cocktail Program's last lesson leads to its final exam
+    const exam = isBar && si === n - 1 && !nc;
+    const to = si < n - 1 ? href(ch, si + 1) : nc ? href(nc, 0) : exam ? '/quizzes?quiz=' + encodeURIComponent(BAR_FINAL) : '/' + home;
+    const label = si < n - 1 ? 'Next Section' : nc ? 'Next Lesson' : exam ? 'Take the Final Exam' : `Back to Level ${lvl}`;
+    const what = si < n - 1 ? ch.sections[si + 1].name : nc ? nc.title : exam ? 'Certified Bar Server · Final Exam' : `Level ${lvl}`;
     const eyebrow = si < n - 1 ? `UP NEXT · SECTION ${si + 2} OF ${n}` : nc ? `UP NEXT · LESSON ${nc.number}` : 'YOU’VE FINISHED THE LAST LESSON';
     const doneHere = ctx.done.has(doneKey(ch, si));
     const prevBtn = si > 0 ? [{ t: 'F', n: 'Button · Previous section', to: href(ch, si - 1), lm: 'H', gap: 8, pd: [14, 18, 14, 18], r: 999, st: '#4A4540', sw: 1, pa: 'C', ca: 'C', sh: 'H', sv: 'H', c: [txt('←  Previous', { z: 15, c: '#F2EEE7', fs: 'SemiBold' })] }] : [];
@@ -363,7 +367,7 @@ function lessonsGrid(grid, all, done) {
     const t = T(c); setText(t[0], ch.title);
     if (s.state === 'done') { setText(t[1], `✓ Done · ${s.n} sections`); t[1].f = [{ c: GREEN }]; t[1].fs = 'Bold'; }
     const videos = ch.sections.filter((_, i) => v3Of(ch, i).video?.youtubeId).length;
-    if (s.state !== 'done') setText(t[1], s.state === 'half' ? `${s.k} of ${s.n} sections done · ${ch.cards.length} cards` : `${s.n} sections · ${videos} videos · ${ch.cards.length} cards`);
+    if (s.state !== 'done') setText(t[1], s.state === 'half' ? `${s.k} of ${s.n} sections done · ${ch.cards.length} cards` : `${s.n} sections${videos ? ` · ${videos} videos` : ''} · ${ch.cards.length} cards`);
     return c;
   });
   return finished;
@@ -534,6 +538,69 @@ export function level2Page(page, ctx = {}) {
   }
   for (const t of findAll(main, (x) => (x.n || '').startsWith('Tool · '))) {
     const b = t.c.find((x) => (x.n || '').startsWith('Button · ')); if (b) { setText(texts(b)[0], 'Coming Soon'); b.f = [{ c: '#3A3632' }]; for (const x of texts(b)) x.f = [{ c: '#B8AFA3' }]; delete b.to; }
+  }
+  return page;
+}
+
+/* ---------------- the Cocktail Program (Nov 8) ---------------- */
+// Tommy, Nov 8: "start building it in the app … we already have a skeleton with the wine program." Drawn from the
+// Sommelier Level 1 course page (Figma 392:31): Level 1, Certified Bar Server, five lessons, then a final exam.
+// The four levels (Tommy, Nov 6): Certified Bar Server → Certified Bartender → Advanced Mixologist → Master of the Bar.
+const BAR_HERO = '/img/fe067d97b4ac.jpg';
+export function barPage(page, ctx) {
+  const main = page.main; const all = chaptersBar();
+  if (!all.length) return page;
+  const nx = nextLesson(ctx.done, all);
+  const cards = all.reduce((k, c) => k + c.cards.length, 0);
+  // breadcrumb: The Bar / Cocktail Program / Level 1
+  const bc = find(main, byName('Breadcrumb'));
+  if (bc) { const t = texts(bc); const back = find(bc, byName('Back')); if (back) { back.to = '/the-bar/cocktails'; setText(T(back)[0], 'The Bar'); } setText(t[2], 'Cocktail Program'); t[2].n = 'Cocktail Program'; setText(t[4], 'Level 1'); }
+  const hero = find(main, byName('Hero'));
+  const hv = find(hero, (x) => !!x.vid || (x.n || '').includes('YouTube R6ESxHbDSrg'));
+  if (hv) { delete hv.vid; hv.n = 'IMG/Behind the bar · Unsplash, Olena Bohovyk'; hv.f = [{ img: BAR_HERO, m: 'FILL' }]; hv.c = []; }
+  const copy = find(hero, byName('Copy'));
+  const ct = T(copy);
+  setText(ct[0], 'Cocktail Program · Level one'); setText(ct[1], 'CERTIFIED BAR SERVER'); ct[1].ar = 'H'; ct[1].sh = 'F';
+  const lead = find(hero, (x) => x.n === 'Lead' || (x.t === 'T' && /video lessons/.test(x.s || '')));
+  if (lead) { lead.n = 'Lead'; setText(lead, 'Five lessons with practice cards, then a final exam. Pass it and you’re a Certified Bar Server.'); }
+  for (const t of findAll(hero, (x) => x.t === 'T' && (x.z || 0) >= 36)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
+  const glance = find(hero, byName('At a glance'));
+  if (glance) {
+    const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], ['60', 'question exam'], ['80%', 'to pass']];
+    glance.c.forEach((st, i) => { const tt = texts(st); if (stats[i]) { setText(tt[0], stats[i][0]); setText(tt[1], stats[i][1]); st.n = 'Stat · ' + stats[i][1]; } });
+  }
+  const prog = courseProgress(ctx.done, all);
+  if (copy) { const at = copy.c.findIndex((x) => x.n === 'At a glance'); copy.c.splice(at + 1, 0, progressBlock(prog, 398)); }
+  // passed the final: say so where the progress is
+  if (ctx.passedAt && copy) {
+    const d = new Date(ctx.passedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/Detroit' });
+    copy.c.splice(copy.c.findIndex((x) => x.n === 'Course progress') + 1, 0, txt(`✓ CERTIFIED BAR SERVER · PASSED ${d.toUpperCase()}`, { ls: '10%', c: '#7FCB93', z: 12.5 }));
+  }
+  const btns = find(hero, byName('Buttons'));
+  if (btns) {
+    const cont = btns.c.find((x) => (x.n || '').startsWith('Button · Continue'));
+    const book = btns.c.find((x) => (x.n || '').startsWith('Button · Book'));
+    if (cont) { cont.n = 'Button · Continue'; cont.to = '/' + lessonSlug(nx ? nx.ch : all[0], nx ? nx.i : 0); setText(texts(cont)[0], !nx ? 'Watch Again' : nx.started ? `Continue Lesson ${nx.ch.number}` : 'Start Lesson 1'); }
+    const exam = book && clone(book);
+    if (exam) { exam.n = 'Button · Final Exam'; exam.to = '/quizzes?quiz=' + encodeURIComponent(BAR_FINAL); setText(texts(exam)[0], ctx.passedAt ? 'Retake Final Exam' : 'Final Exam'); }
+    btns.c = [cont, exam].filter(Boolean); btns.wrap = 1; btns.cg = 8; btns.sh = 'L';
+  }
+  // the five lessons
+  const course = find(main, byName('The course'));
+  const head = find(course, byName('Head'));
+  const grid = find(course, byName('Lessons'));
+  const finished = lessonsGrid(grid, all, ctx.done);
+  if (head) { const ht = texts(head); setText(ht[0], 'Learn it, then prove it'); setText(ht[1], `${all.length} LESSONS`); setText(ht[ht.length - 1], `${finished} of ${all.length} done`); }
+  // how it works, then the four levels
+  const how = find(main, byName('How it works'));
+  if (how) {
+    const steps = ['Watch or read the lesson', 'Swipe the key points', 'Answer 3 cards per section', 'Pass the 60-question final'];
+    how.c.forEach((st, i) => { const tt = texts(st); if (steps[i]) setText(tt[tt.length - 1], steps[i]); });
+    const levels = clone(how); levels.n = 'The four levels';
+    const L = [['Certified Bar Server', true], ['Certified Bartender', false], ['Advanced Mixologist', false], ['Master of the Bar', false]];
+    levels.c.forEach((st, i) => { const tt = texts(st); setText(tt[tt.length - 1], L[i][0] + (L[i][1] ? '' : ' · coming')); st.n = 'Level · ' + L[i][0]; if (!L[i][1]) st.op = 0.55; });
+    const at = main.c.indexOf(how);
+    main.c.splice(at + 1, 0, { t: 'F', n: 'Levels', lm: 'V', gap: 14, w: how.w, sh: 'F', sv: 'H', c: [txt('THE FOUR LEVELS', { ls: '12%', c: '#8A5A3A', z: 12 }), levels] });
   }
   return page;
 }

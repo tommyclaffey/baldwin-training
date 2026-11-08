@@ -1,27 +1,271 @@
 {
-  "_source": "Unsplash stand-ins, Nov 1 2026",
-  "photos": [
-    { "chapter": "beer-sake-spirits", "section": "Distillation", "file": "/img/study/beer-sake-spirits--distillation.jpg", "unsplashId": "rzvBp1sEHaw", "photographer": "François Hoppet", "description": "Row of tall golden copper pot stills in a distillery, a small cask beside them" },
-    { "chapter": "beer-sake-spirits", "section": "Cognac and other brandy", "file": "/img/study/beer-sake-spirits--cognac-and-other-brandy.jpg", "unsplashId": "cfiR6ju8sNI", "photographer": "Timothé Durand", "description": "Dim ageing cellar of a Cognac house: rows of oak casks with chalked numbers, large wooden vats behind" },
-    { "chapter": "beer-sake-spirits", "section": "Tequila and mezcal", "file": "/img/study/beer-sake-spirits--tequila-and-mezcal.jpg", "unsplashId": "dkcopnqR64Y", "photographer": "Dylan Freedom", "description": "Field of blue agave just outside Tequila, Jalisco, with mountains behind" },
-    { "chapter": "beer-sake-spirits", "section": "Vodka, gin, rum and liqueurs", "file": "/img/study/beer-sake-spirits--vodka-gin-rum-and-liqueurs.jpg", "unsplashId": "IlpXSjNSNRI", "photographer": "Jez Timms", "description": "Gin botanicals close up: juniper berries, lemon and orange wedges and ice cubes" },
-    { "chapter": "germany-and-austria", "section": "Dry or sweet? Label words", "file": "/img/study/germany-and-austria--dry-or-sweet-label-words.jpg", "unsplashId": "YbmP6CcShWk", "photographer": "Lukas Zischke", "description": "Sunset over a German river winding between steep vineyard slopes, vines in the foreground" },
-    { "chapter": "germany-and-austria", "section": "VDP and the vineyard pyramid", "file": "/img/study/germany-and-austria--vdp-and-the-vineyard-pyramid.jpg", "unsplashId": "JHjft3eBL9c", "photographer": "Marc-Philipp Esser", "description": "German wine village with a church steeple, surrounded by individual vineyard parcels on steep hillsides" },
-    { "chapter": "how-wine-is-made", "section": "The vine", "file": "/img/study/how-wine-is-made--the-vine.jpg", "unsplashId": "a-fZVq5Xowg", "photographer": "Ruben Mavarez", "description": "A single vine trunk with leaves and green grape clusters in sunlight (Mendoza, Argentina)" },
-    { "chapter": "how-wine-is-made", "section": "The vineyard year", "file": "/img/study/how-wine-is-made--the-vineyard-year.jpg", "unsplashId": "rJuUTnD9Ei8", "photographer": "Andrea Cairone", "description": "Harvest: a picker stacking crates of black Nebbiolo grapes in a vineyard at Serralunga, Piedmont" },
-    { "chapter": "how-wine-is-made", "section": "Making white wine", "file": "/img/study/how-wine-is-made--making-white-wine.jpg", "unsplashId": "sVothhm7iRI", "photographer": "Daniel Vogel", "description": "Long row of stainless steel fermentation tanks in a winery cellar" },
-    { "chapter": "italy", "section": "Lombardy", "file": "/img/study/italy--lombardy.jpg", "unsplashId": "UXtmWUrNGUI", "photographer": "Daniel R.", "description": "Aerial view of a hill village surrounded by green vineyards, with the plain stretching out behind (returned for 'Lombardy vineyard'; exact location not stated)" },
-    { "chapter": "italy", "section": "Central and Southern Italy", "file": "/img/study/italy--central-and-southern-italy.jpg", "unsplashId": "vJbkA08lWzY", "photographer": "Gabriella Clare Marino", "description": "Crate of freshly picked white grapes during harvest in a vineyard in Puglia" },
-    { "chapter": "on-the-floor", "section": "Mise en place", "file": "/img/study/on-the-floor--mise-en-place.jpg", "unsplashId": "PCE0T5i4pDI", "photographer": "Ronan", "description": "Restaurant table set for service: white cloth, polished wine and water glasses, cutlery laid out" },
-    { "chapter": "on-the-floor", "section": "Glassware", "file": "/img/study/on-the-floor--glassware.jpg", "unsplashId": "gVkAiPchYhY", "photographer": "Michael Wave", "description": "Black-and-white shot of stemmed wine glasses and tumblers on a set table, light through the glass" },
-    { "chapter": "on-the-floor", "section": "Temperature and storage", "file": "/img/study/on-the-floor--temperature-and-storage.jpg", "unsplashId": "Sx15E8AtZh0", "photographer": "Joao Vitor Marcilio", "description": "Bottles stacked on their sides in a cellar, seen end-on (bottle bases only, no labels)" },
-    { "chapter": "southern-hemisphere", "section": "Argentina · Salta and Patagonia", "file": "/img/study/southern-hemisphere--argentina-salta-and-patagonia.jpg", "unsplashId": "-YVYx8LFheo", "photographer": "Shai Pal", "description": "Low sun over vineyard rows near Cafayate, Salta, with the Andes foothills on the horizon" },
-    { "chapter": "spain-and-portugal", "section": "Priorat", "file": "/img/study/spain-and-portugal--priorat.jpg", "unsplashId": "zZcvA-y90bY", "photographer": "Ben Steele", "description": "Rugged, sun-baked hills around Torroja del Priorat with the Montsant cliffs behind" },
-    { "chapter": "spain-and-portugal", "section": "Vinho Verde", "file": "/img/study/spain-and-portugal--vinho-verde.jpg", "unsplashId": "vxDl5lexnHs", "photographer": "Antonio Araujo", "description": "Aerial view of a green vineyard ringed by pine woods in Portugal (northern Portugal look; exact location not stated)" },
-    { "chapter": "wine-law-and-labels", "section": "France: AOC, AOP and IGP", "file": "/img/study/wine-law-and-labels--france-aoc-aop-and-igp.jpg", "unsplashId": "cMBKBtCfpS4", "photographer": "Adlan", "description": "Autumn vineyard rows leading to the village of Verzenay, Champagne, under a blue sky" },
-    { "chapter": "wine-law-and-labels", "section": "Italy: DOCG, DOC and IGT", "file": "/img/study/wine-law-and-labels--italy-docg-doc-and-igt.jpg", "unsplashId": "dbaJRjPORV0", "photographer": "Pietro Schellino", "description": "Looking down a row of vines toward hazy hills in Piedmont's Langhe (returned for 'Langhe vineyards')" },
-    { "chapter": "wine-law-and-labels", "section": "Spain: DO, DOCa and Pago", "file": "/img/study/wine-law-and-labels--spain-do-doca-and-pago.jpg", "unsplashId": "hDSJA4D0-Ps", "photographer": "Pix Tresa", "description": "Vineyards inside a bend of the Ebro river, Rioja, patchwork of vineyard plots beyond" },
-    { "chapter": "wine-law-and-labels", "section": "United States: AVAs and percentages", "file": "/img/study/wine-law-and-labels--united-states-avas-and-percentages.jpg", "unsplashId": "sj4M_cwUGB0", "photographer": "Trent Erwin", "description": "Sonoma vineyard rows on a slope with oak-covered hills behind" },
-    { "chapter": "wine-law-and-labels", "section": "Reading a label", "file": "/img/study/wine-law-and-labels--reading-a-label.jpg", "unsplashId": "Eo9ZNtEUH_Y", "photographer": "Thomas Martinsen", "description": "Unbranded glass of white wine in soft light, a row of tasting glasses blurred behind" }
-  ]
+ "_source": "Unsplash stand-ins, Nov 1 2026",
+ "photos": [
+  {
+   "chapter": "beer-sake-spirits",
+   "section": "Distillation",
+   "file": "/img/study/beer-sake-spirits--distillation.jpg",
+   "unsplashId": "rzvBp1sEHaw",
+   "photographer": "François Hoppet",
+   "description": "Row of tall golden copper pot stills in a distillery, a small cask beside them"
+  },
+  {
+   "chapter": "beer-sake-spirits",
+   "section": "Cognac and other brandy",
+   "file": "/img/study/beer-sake-spirits--cognac-and-other-brandy.jpg",
+   "unsplashId": "cfiR6ju8sNI",
+   "photographer": "Timothé Durand",
+   "description": "Dim ageing cellar of a Cognac house: rows of oak casks with chalked numbers, large wooden vats behind"
+  },
+  {
+   "chapter": "beer-sake-spirits",
+   "section": "Tequila and mezcal",
+   "file": "/img/study/beer-sake-spirits--tequila-and-mezcal.jpg",
+   "unsplashId": "dkcopnqR64Y",
+   "photographer": "Dylan Freedom",
+   "description": "Field of blue agave just outside Tequila, Jalisco, with mountains behind"
+  },
+  {
+   "chapter": "beer-sake-spirits",
+   "section": "Vodka, gin, rum and liqueurs",
+   "file": "/img/study/beer-sake-spirits--vodka-gin-rum-and-liqueurs.jpg",
+   "unsplashId": "IlpXSjNSNRI",
+   "photographer": "Jez Timms",
+   "description": "Gin botanicals close up: juniper berries, lemon and orange wedges and ice cubes"
+  },
+  {
+   "chapter": "germany-and-austria",
+   "section": "Dry or sweet? Label words",
+   "file": "/img/study/germany-and-austria--dry-or-sweet-label-words.jpg",
+   "unsplashId": "YbmP6CcShWk",
+   "photographer": "Lukas Zischke",
+   "description": "Sunset over a German river winding between steep vineyard slopes, vines in the foreground"
+  },
+  {
+   "chapter": "germany-and-austria",
+   "section": "VDP and the vineyard pyramid",
+   "file": "/img/study/germany-and-austria--vdp-and-the-vineyard-pyramid.jpg",
+   "unsplashId": "JHjft3eBL9c",
+   "photographer": "Marc-Philipp Esser",
+   "description": "German wine village with a church steeple, surrounded by individual vineyard parcels on steep hillsides"
+  },
+  {
+   "chapter": "how-wine-is-made",
+   "section": "The vine",
+   "file": "/img/study/how-wine-is-made--the-vine.jpg",
+   "unsplashId": "a-fZVq5Xowg",
+   "photographer": "Ruben Mavarez",
+   "description": "A single vine trunk with leaves and green grape clusters in sunlight (Mendoza, Argentina)"
+  },
+  {
+   "chapter": "how-wine-is-made",
+   "section": "The vineyard year",
+   "file": "/img/study/how-wine-is-made--the-vineyard-year.jpg",
+   "unsplashId": "rJuUTnD9Ei8",
+   "photographer": "Andrea Cairone",
+   "description": "Harvest: a picker stacking crates of black Nebbiolo grapes in a vineyard at Serralunga, Piedmont"
+  },
+  {
+   "chapter": "how-wine-is-made",
+   "section": "Making white wine",
+   "file": "/img/study/how-wine-is-made--making-white-wine.jpg",
+   "unsplashId": "sVothhm7iRI",
+   "photographer": "Daniel Vogel",
+   "description": "Long row of stainless steel fermentation tanks in a winery cellar"
+  },
+  {
+   "chapter": "italy",
+   "section": "Lombardy",
+   "file": "/img/study/italy--lombardy.jpg",
+   "unsplashId": "UXtmWUrNGUI",
+   "photographer": "Daniel R.",
+   "description": "Aerial view of a hill village surrounded by green vineyards, with the plain stretching out behind (returned for 'Lombardy vineyard'; exact location not stated)"
+  },
+  {
+   "chapter": "italy",
+   "section": "Central and Southern Italy",
+   "file": "/img/study/italy--central-and-southern-italy.jpg",
+   "unsplashId": "vJbkA08lWzY",
+   "photographer": "Gabriella Clare Marino",
+   "description": "Crate of freshly picked white grapes during harvest in a vineyard in Puglia"
+  },
+  {
+   "chapter": "on-the-floor",
+   "section": "Mise en place",
+   "file": "/img/study/on-the-floor--mise-en-place.jpg",
+   "unsplashId": "PCE0T5i4pDI",
+   "photographer": "Ronan",
+   "description": "Restaurant table set for service: white cloth, polished wine and water glasses, cutlery laid out"
+  },
+  {
+   "chapter": "on-the-floor",
+   "section": "Glassware",
+   "file": "/img/study/on-the-floor--glassware.jpg",
+   "unsplashId": "gVkAiPchYhY",
+   "photographer": "Michael Wave",
+   "description": "Black-and-white shot of stemmed wine glasses and tumblers on a set table, light through the glass"
+  },
+  {
+   "chapter": "on-the-floor",
+   "section": "Temperature and storage",
+   "file": "/img/study/on-the-floor--temperature-and-storage.jpg",
+   "unsplashId": "Sx15E8AtZh0",
+   "photographer": "Joao Vitor Marcilio",
+   "description": "Bottles stacked on their sides in a cellar, seen end-on (bottle bases only, no labels)"
+  },
+  {
+   "chapter": "southern-hemisphere",
+   "section": "Argentina · Salta and Patagonia",
+   "file": "/img/study/southern-hemisphere--argentina-salta-and-patagonia.jpg",
+   "unsplashId": "-YVYx8LFheo",
+   "photographer": "Shai Pal",
+   "description": "Low sun over vineyard rows near Cafayate, Salta, with the Andes foothills on the horizon"
+  },
+  {
+   "chapter": "spain-and-portugal",
+   "section": "Priorat",
+   "file": "/img/study/spain-and-portugal--priorat.jpg",
+   "unsplashId": "zZcvA-y90bY",
+   "photographer": "Ben Steele",
+   "description": "Rugged, sun-baked hills around Torroja del Priorat with the Montsant cliffs behind"
+  },
+  {
+   "chapter": "spain-and-portugal",
+   "section": "Vinho Verde",
+   "file": "/img/study/spain-and-portugal--vinho-verde.jpg",
+   "unsplashId": "vxDl5lexnHs",
+   "photographer": "Antonio Araujo",
+   "description": "Aerial view of a green vineyard ringed by pine woods in Portugal (northern Portugal look; exact location not stated)"
+  },
+  {
+   "chapter": "wine-law-and-labels",
+   "section": "France: AOC, AOP and IGP",
+   "file": "/img/study/wine-law-and-labels--france-aoc-aop-and-igp.jpg",
+   "unsplashId": "cMBKBtCfpS4",
+   "photographer": "Adlan",
+   "description": "Autumn vineyard rows leading to the village of Verzenay, Champagne, under a blue sky"
+  },
+  {
+   "chapter": "wine-law-and-labels",
+   "section": "Italy: DOCG, DOC and IGT",
+   "file": "/img/study/wine-law-and-labels--italy-docg-doc-and-igt.jpg",
+   "unsplashId": "dbaJRjPORV0",
+   "photographer": "Pietro Schellino",
+   "description": "Looking down a row of vines toward hazy hills in Piedmont's Langhe (returned for 'Langhe vineyards')"
+  },
+  {
+   "chapter": "wine-law-and-labels",
+   "section": "Spain: DO, DOCa and Pago",
+   "file": "/img/study/wine-law-and-labels--spain-do-doca-and-pago.jpg",
+   "unsplashId": "hDSJA4D0-Ps",
+   "photographer": "Pix Tresa",
+   "description": "Vineyards inside a bend of the Ebro river, Rioja, patchwork of vineyard plots beyond"
+  },
+  {
+   "chapter": "wine-law-and-labels",
+   "section": "United States: AVAs and percentages",
+   "file": "/img/study/wine-law-and-labels--united-states-avas-and-percentages.jpg",
+   "unsplashId": "sj4M_cwUGB0",
+   "photographer": "Trent Erwin",
+   "description": "Sonoma vineyard rows on a slope with oak-covered hills behind"
+  },
+  {
+   "chapter": "wine-law-and-labels",
+   "section": "Reading a label",
+   "file": "/img/study/wine-law-and-labels--reading-a-label.jpg",
+   "unsplashId": "Eo9ZNtEUH_Y",
+   "photographer": "Thomas Martinsen",
+   "description": "Unbranded glass of white wine in soft light, a row of tasting glasses blurred behind"
+  },
+  {
+   "chapter": "bar-serving",
+   "section": "Neat, up and on the rocks",
+   "file": "/img/5e5d6ac14e27.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-serving",
+   "section": "Well, call and premium",
+   "file": "/img/fe067d97b4ac.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-serving",
+   "section": "Dry, dirty and with a twist",
+   "file": "/img/98f69a7fb7fe.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-serving",
+   "section": "Taking the order",
+   "file": "/img/study/on-the-floor--mise-en-place.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-spirits",
+   "section": "How spirits are made",
+   "file": "/img/study/beer-sake-spirits--distillation.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-spirits",
+   "section": "Whiskey",
+   "file": "/img/classic-rusty-nail.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-spirits",
+   "section": "Tequila, mezcal, gin and vodka",
+   "file": "/img/study/beer-sake-spirits--tequila-and-mezcal.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-spirits",
+   "section": "Liqueurs, vermouth and bitters",
+   "file": "/img/study/beer-sake-spirits--vodka-gin-rum-and-liqueurs.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-our-menu",
+   "section": "Reading a spec",
+   "file": "/img/d757eed8b346.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-our-menu",
+   "section": "Where every drink lives",
+   "file": "/img/48ca851d7531.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-our-menu",
+   "section": "Selling a cocktail",
+   "file": "/img/6a38e5b20321.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-glass-ice-garnish",
+   "section": "Glassware",
+   "file": "/img/study/on-the-floor--glassware.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-glass-ice-garnish",
+   "section": "Ice",
+   "file": "/img/classic-oaxaca-old-fashioned.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-glass-ice-garnish",
+   "section": "Garnish",
+   "file": "/img/0839380a2aaf.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-glass-ice-garnish",
+   "section": "Shake, stir or build",
+   "file": "/img/classic-bees-knees.jpg",
+   "description": "Reused from the app (Cocktail Program, Nov 8)"
+  }
+ ]
 }

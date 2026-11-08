@@ -1,0 +1,374 @@
+{
+ "number": 5,
+ "slug": "bar-glass-ice-garnish",
+ "title": "Glass, ice and garnish",
+ "script": "Lesson five",
+ "lead": "The glass, the ice, the garnish and the method are part of the spec. Get them right every time.",
+ "minutes": 12,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Glassware",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The glass matches how the drink is served."
+    }
+   ],
+   "know": [
+    "Stemmed glasses are for drinks served up.",
+    "Rocks glasses hold drinks over ice.",
+    "Tall glasses hold drinks with soda.",
+    "Chill a stemmed glass before a drink goes in."
+   ]
+  },
+  {
+   "name": "Ice",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Ice chills the drink, and its water is part of the spec."
+    }
+   ],
+   "know": [
+    "Chills and dilutes: the water from ice is part of the drink.",
+    "Big Cubes melt slower than small ones.",
+    "Fresh Ice in the glass; the shaking ice is strained out.",
+    "Scoop only: never scoop ice with a glass."
+   ]
+  },
+  {
+   "name": "Garnish",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Guests smell a drink before they taste it."
+    }
+   ],
+   "know": [
+    "Aroma first: the garnish is the first thing a guest smells.",
+    "Express a peel by squeezing it over the drink.",
+    "Wedge wheel and twist are different citrus cuts.",
+    "Tongs or picks: never bare hands."
+   ]
+  },
+  {
+   "name": "Shake, stir or build",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The method follows the ingredients."
+    }
+   ],
+   "know": [
+    "Shake drinks with citrus, egg or cream.",
+    "Stir drinks that are all spirit, for a silky texture.",
+    "Build highballs right in the glass.",
+    "Soda goes in last, in the glass, never in the shaker."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Glassware",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "STEMMED",
+      "line": "glasses are for drinks served up."
+     },
+     {
+      "big": "ROCKS",
+      "line": "glasses hold drinks over ice."
+     },
+     {
+      "big": "TALL",
+      "line": "glasses hold drinks with soda."
+     },
+     {
+      "big": "CHILL",
+      "line": "a stemmed glass before a drink goes in."
+     }
+    ],
+    "read": {
+     "bigIdea": "The glass matches how the drink is served.",
+     "where": "**Stemmed** glasses (coupe, Nick and Nora, martini) are for drinks served **up**: the stem keeps a warm hand off the cold drink. **Rocks** glasses hold drinks over ice. **Tall** glasses (highball, Collins) hold drinks with soda. **Chill** a stemmed glass before a drink goes in."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Ice",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CHILLS",
+      "line": "and dilutes: the water from ice is part of the drink."
+     },
+     {
+      "big": "BIG CUBES",
+      "line": "melt slower than small ones."
+     },
+     {
+      "big": "FRESH ICE",
+      "line": "in the glass; the shaking ice is strained out."
+     },
+     {
+      "big": "SCOOP",
+      "line": "only: never scoop ice with a glass."
+     }
+    ],
+    "read": {
+     "bigIdea": "Ice chills the drink, and its water is part of the spec.",
+     "where": "Shaking or stirring with ice **chills** the drink and **dilutes** it; that water is part of the recipe. The shaking ice is **strained out**: the glass gets **fresh ice**, or none if it’s served up. **Big cubes** melt slower. Use a **scoop**, never a glass. If glass breaks near the ice, **empty the bin**."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Garnish",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AROMA",
+      "line": "first: the garnish is the first thing a guest smells."
+     },
+     {
+      "big": "EXPRESS",
+      "line": "a peel by squeezing it over the drink."
+     },
+     {
+      "big": "WEDGE",
+      "line": "wheel and twist are different citrus cuts."
+     },
+     {
+      "big": "TONGS",
+      "line": "or picks: never bare hands."
+     }
+    ],
+    "read": {
+     "bigIdea": "Guests smell a drink before they taste it.",
+     "where": "The garnish adds **aroma** and finishes the look. To **express** a peel, squeeze it skin-side down over the glass so its oils land on top. A **wedge** is cut from the side of the fruit, a **wheel** is a round slice, and a **twist** is a strip of peel. Handle garnish with **tongs or picks**."
+    },
+    "check": [
+     7,
+     8,
+     9
+    ]
+   },
+   {
+    "name": "Shake, stir or build",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SHAKE",
+      "line": "drinks with citrus, egg or cream."
+     },
+     {
+      "big": "STIR",
+      "line": "drinks that are all spirit, for a silky texture."
+     },
+     {
+      "big": "BUILD",
+      "line": "highballs right in the glass."
+     },
+     {
+      "big": "SODA",
+      "line": "goes in last, in the glass, never in the shaker."
+     }
+    ],
+    "read": {
+     "bigIdea": "The method follows the ingredients.",
+     "where": "**Shake** drinks with **citrus, egg or cream**, to mix and aerate them. **Stir** drinks that are **all spirit**, for a clear, silky drink. **Build** highballs right in the glass. Never shake **soda**: add it in the glass at the end."
+    },
+    "check": [
+     11,
+     12,
+     13
+    ]
+   }
+  ]
+ },
+ "sources": "Written for Mise from Common bar practice (bar lead to confirm). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Why do drinks served up go in stemmed glasses?",
+   "answer": "The stem keeps a warm hand off the cold drink",
+   "wrong": [
+    "They hold more",
+    "They’re cheaper",
+    "They keep ice from melting"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "Which glass is for a highball?",
+   "answer": "A tall glass",
+   "wrong": [
+    "A coupe",
+    "A small rocks glass with no ice",
+    "A wine glass"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "Before a drink is strained up, the glass should be…",
+   "answer": "Chilled",
+   "wrong": [
+    "Warmed",
+    "Rinsed with soda",
+    "Salted"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "Why is the shaking ice strained out?",
+   "answer": "The glass gets fresh ice, or none if it’s up",
+   "wrong": [
+    "It’s too cold",
+    "It has the garnish in it",
+    "To save ice"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Why use one big cube in a rocks drink?",
+   "answer": "It melts slower, so the drink stays strong longer",
+   "wrong": [
+    "It’s cheaper",
+    "It makes the drink sweeter",
+    "It’s the law"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "What do you use to get ice from the bin?",
+   "answer": "An ice scoop",
+   "wrong": [
+    "The glass",
+    "Your hand",
+    "A shaker tin"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Glass breaks near the ice bin. What do you do?",
+   "answer": "Empty the bin and refill it",
+   "wrong": [
+    "Pick out the pieces",
+    "Keep using it",
+    "Cover it with fresh ice"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "What does expressing a citrus peel do?",
+   "answer": "Sprays its oils over the drink",
+   "wrong": [
+    "Adds juice",
+    "Makes it sweeter",
+    "Chills the glass"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "A round slice of lemon is a…",
+   "answer": "Wheel",
+   "wrong": [
+    "Wedge",
+    "Twist",
+    "Peel"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "How do you handle garnishes?",
+   "answer": "With tongs or a pick",
+   "wrong": [
+    "With bare hands",
+    "With the bar spoon only",
+    "By the glass rim"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Is the garnish part of the spec?",
+   "answer": "Yes, it’s part of how the drink smells and looks",
+   "wrong": [
+    "No, it’s optional",
+    "Only for photos",
+    "Only on dessert drinks"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Which drink should be shaken?",
+   "answer": "One with citrus juice",
+   "wrong": [
+    "One that’s all spirit",
+    "A highball with soda",
+    "A neat pour"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Why stir an all-spirit drink?",
+   "answer": "For a clear, silky drink",
+   "wrong": [
+    "To make it foamy",
+    "To add soda",
+    "To warm it up"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Highballs are usually…",
+   "answer": "Built in the glass",
+   "wrong": [
+    "Shaken hard",
+    "Stirred in a mixing glass",
+    "Blended"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Do you shake a drink with soda in the tin?",
+   "answer": "No, add the soda in the glass at the end",
+   "wrong": [
+    "Yes, always",
+    "Only with gin",
+    "Only with vodka"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Stemmed glasses (coupe, Nick and Nora, martini) are for drinks served up: the stem keeps a warm hand off the cold drink. Rocks glasses hold drinks over ice. Tall glasses (highball, Collins) hold drinks with soda. Chill a stemmed glass before a drink goes in.",
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "fact": "Shaking or stirring with ice chills the drink and dilutes it; that water is part of the recipe. The shaking ice is strained out: the glass gets fresh ice, or none if it’s served up. Big cubes melt slower. Use a scoop, never a glass. If glass breaks near the ice, empty the bin.",
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "fact": "The garnish adds aroma and finishes the look. To express a peel, squeeze it skin-side down over the glass so its oils land on top. A wedge is cut from the side of the fruit, a wheel is a round slice, and a twist is a strip of peel. Handle garnish with tongs or picks.",
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "fact": "Shake drinks with citrus, egg or cream, to mix and aerate them. Stir drinks that are all spirit, for a clear, silky drink. Build highballs right in the glass. Never shake soda: add it in the glass at the end.",
+   "source": "Common bar practice (bar lead to confirm)"
+  }
+ ],
+ "unverified": [
+  "Bar technique is common practice; bar lead to confirm it matches how we work."
+ ]
+}

@@ -5,7 +5,8 @@ import path from 'node:path';
 import { addRows } from './editinplace.mjs';
 import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE } from './manual.mjs';
 import { regionPage, regionData } from './region.mjs';
-import { lessonPage, level1Page, level2Page, hubPage, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
+import { lessonPage, level1Page, level2Page, hubPage, barPage, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2, BAR_FINAL } from './study.mjs';
+import { passFor } from './quizgen.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
 import { COLLECTIONS, COURSES, SHARED, listEntries, getEntry, wineDescription } from './cms.mjs';
@@ -483,6 +484,12 @@ function assembleRaw(db, file) {
     if (SCOPE.user) markRead(db, SCOPE.user.id, ch.slug);
     return chapterPage(tpl, ch, { all: levelChapters(ch), prog: progress(db, SCOPE.user?.id, SCOPE.store), slugs: new Set(baseIndex().map((x) => x.slug)) });
   }
+  // The Cocktail Program (Nov 8): its Level 1 course page, drawn from the Sommelier Level 1 page (Figma 392:31)
+  if (file === 'bar-1') {
+    const tpl = basePage('392-31'); if (!tpl) return null;
+    const passed = SCOPE.user && db.prepare('SELECT score, total, at FROM quiz_attempts WHERE user_id = ? AND quiz = ? ORDER BY at').all(SCOPE.user.id, BAR_FINAL).find((r) => r.score >= passFor(r.total));
+    return barPage({ ...tpl, name: 'Cocktail Program' }, { done: sectionsDone(db, SCOPE.user?.id), passedAt: passed?.at || null });
+  }
   // v3 lessons (Nov 1): one per chapter section, drawn from Figma 403:45
   const lm = /^l-(.+)~(\d+)$/.exec(file);
   if (lm) {
@@ -608,13 +615,17 @@ export function fullIndex(db) {
     }
   }
   // Study Guide chapters (content/manual), searchable like any page
+  // The Cocktail Program (Nov 8): its course page, and its lessons below
+  entries.push({ id: 'bar-1', file: 'bar-1', slug: 'cocktail-program', name: 'The Bar · Cocktail Program', title: 'Cocktail Program', section: 'The Bar', nav: 'Cocktail Program',
+    text: 'Cocktail Program Level 1 Certified Bar Server lessons final exam spirits six roots glass ice garnish', blurb: 'Level 1: Certified Bar Server. Five lessons, then a final exam.' });
   for (const ch of allChapters()) {
-    entries.push({ id: 'm-' + ch.slug, file: 'm-' + ch.slug, slug: wholeChapterSlug(ch), name: (ch.level === 2 ? 'Level 2 · ' : 'Study Guide · ') + ch.title + ' · Whole Chapter', title: ch.title, section: ch.level === 2 ? 'Level 2' : 'Study Guide', nav: 'Sommelier Program',
+    const bar = ch.program === 'bar';
+    if (!bar) entries.push({ id: 'm-' + ch.slug, file: 'm-' + ch.slug, slug: wholeChapterSlug(ch), name: (ch.level === 2 ? 'Level 2 · ' : 'Study Guide · ') + ch.title + ' · Whole Chapter', title: ch.title, section: ch.level === 2 ? 'Level 2' : 'Study Guide', nav: 'Sommelier Program',
       text: [ch.lead, ...ch.sections.flatMap((x) => [x.name, ...(x.know || []), ...(x.chips?.items || [])])].filter(Boolean).join(' ').slice(0, 1200), blurb: ch.lead });
     // one lesson per section (the first one is the chapter's own address)
     ch.sections.forEach((sec, i) => {
       const v = (ch.v3?.sections || []).find((x) => x.name === sec.name) || {};
-      entries.push({ id: lessonFile(ch, i), file: lessonFile(ch, i), slug: lessonSlug(ch, i), name: `${ch.level === 2 ? 'Level 2' : 'Study Guide'} · ${ch.title} · ${sec.name}`, title: i === 0 ? ch.title : sec.name, section: ch.level === 2 ? 'Level 2' : 'Study Guide', nav: 'Sommelier Program',
+      entries.push({ id: lessonFile(ch, i), file: lessonFile(ch, i), slug: lessonSlug(ch, i), name: `${bar ? 'Cocktail Program' : ch.level === 2 ? 'Level 2' : 'Study Guide'} · ${ch.title} · ${sec.name}`, title: i === 0 ? ch.title : sec.name, section: bar ? 'Cocktail Program' : ch.level === 2 ? 'Level 2' : 'Study Guide', nav: bar ? 'Cocktail Program' : 'Sommelier Program',
         text: [sec.name, v.read?.bigIdea, v.read?.where, ...(v.read?.stops || []).map((x) => x.name + ' ' + x.text), ...(v.keyPoints || []).map((k) => k.big + ' ' + k.line)].filter(Boolean).join(' ').replace(/\*\*/g, '').slice(0, 1200),
         thumb: v.video?.youtubeId ? `https://i.ytimg.com/vi/${v.video.youtubeId}/mqdefault.jpg` : undefined, blurb: v.read?.bigIdea || ch.lead });
     });

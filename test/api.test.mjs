@@ -70,7 +70,9 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   // Level 1 (content/manual) and Level 2 (content/manual-l2, Nov 2) chapters
   const readDir = (d) => (fs.existsSync(path.join(root, d)) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'))) : []);
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
-  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  // + the Cocktail Program (Nov 8): its course page and one entry per lesson section (no whole-chapter pages)
+  const bar = readDir('content/bar');
+  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 1 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -782,4 +784,23 @@ test('job paths: a server’s path from the book, page reads, quiz passes and ma
   assert.equal((await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'path:server:floor' })).status, 400, 'not a step in their path');
   const both = (await mgr(`/api/path/person/${quinn.id}`, 'PATCH', { jobs: ['bartender', 'server'] })).data;
   assert.equal(both.paths.length, 2);
+});
+
+test('the Cocktail Program: its page, lessons that work like the Sommelier ones, and a 60-question final (Nov 8)', async () => {
+  const index = (await call('/api/index')).data;
+  const hub = index.find((e) => e.slug === 'cocktail-program');
+  assert.ok(hub, 'the course page is in the book');
+  const page = JSON.stringify((await call('/api/page/' + hub.file)).data);
+  assert.ok(page.includes('CERTIFIED BAR SERVER') && page.includes('t%3Afinal%3Abar-1'), 'Level 1 with its final exam');
+  assert.ok(!/Court of Master|mastersommeliers/.test(page), 'nothing from the Sommelier page left over');
+  const lesson = index.find((e) => e.slug === 'cocktail-program/level-1/bar-six-roots');
+  const lp = JSON.stringify((await call('/api/page/' + lesson.file)).data);
+  assert.ok(lp.includes('"youtubeId":"pdcrJ5V7YKM"') && lp.includes('OLD FASHIONED'), 'the Old Fashioned lesson with its video');
+  const cat = (await call('/api/quiz/catalog')).data;
+  const final = cat.quizzes.find((q) => q.id === 't:final:bar-1');
+  assert.equal(final.count, 60);
+  assert.equal(final.group, 'Cocktail Program · Level 1');
+  assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 1').length, 6, 'five lesson quizzes and the final');
+  const start = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-1' } })).data;
+  assert.equal(start.items.length, 60);
 });
