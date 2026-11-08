@@ -8,6 +8,7 @@
 //   cls                    [key, { value: className }] adds a class while the key has that value
 import { addHref } from './editinplace.mjs';
 import { clone, find, findAll, byName, startsWith, texts, setText } from './templates.mjs';
+import { fillVideoLibrary, fillHomeVideos, emptyVideoFrames } from './videos.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { ALLERGENS, COURSES } from './cms.mjs';
@@ -291,6 +292,10 @@ export function wire(page, ctx) {
   for (const b of findAll(m, byName('Button · Print'))) b.meta = { act: 'print' };
   foodMatrix(page, ctx.icon);
   cleaningBoard(page, ctx.icon);
+  // Real videos only (Nov 8): the library and Home's row list what the book has; empty frames go (videos.mjs).
+  if (ctx.videos && ctx.slug === 'video-library') fillVideoLibrary(page, ctx.videos());
+  if (ctx.videos && ctx.slug === '') fillHomeVideos(page, ctx.videos());
+  emptyVideoFrames(page, ctx.slug, ctx.file);
   videoLibrary(page);
   photoLibrary(page, ctx);
   zoomPhotos(page);

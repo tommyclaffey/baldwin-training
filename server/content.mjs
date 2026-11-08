@@ -17,6 +17,7 @@ import { fillSpecs, SPECS_PATH } from './specs.mjs';
 import { WINE_FILLER } from './winelist.mjs';
 import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './winelist.mjs';
 import { wire } from './interact.mjs';
+import { libraryVideos } from './videos.mjs';
 import { fillHome } from './home.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -433,7 +434,8 @@ export function assemble(db, file) {
   if (entry?.archivedAt) return null; // archived: out of the book until restored
   const page = assembleRaw(db, file);
   if (page?.empty) return page;
-  if (page) wire(page, { entry, slug: baseIndex().find((x) => x.file === file)?.slug, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
+  if (page) wire(page, { entry, file, slug: baseIndex().find((x) => x.file === file)?.slug, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine'),
+    videos: () => libraryVideos({ recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), classics: ordered(db, 'classic'), db }) });
   // Managers get an Add row after every list of dishes, cocktails, wines and bottles (staff never see them).
   if (page && !entry && canOpen(SCOPE.user, '/admin/pages/recipe/new')) addRows(page, baseIndex().find((x) => x.file === file)?.slug, db, SCOPE.store);
   return balance(forViewer(page, SCOPE.user));
@@ -583,6 +585,10 @@ export function fullIndex(db) {
         thumb: v.video?.youtubeId ? `https://i.ytimg.com/vi/${v.video.youtubeId}/mqdefault.jpg` : undefined, blurb: v.read?.bigIdea || ch.lead });
     });
   }
+  // The Video Library is searched by the videos it really has (the design's sample titles were made up).
+  const vids = libraryVideos({ recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), classics: ordered(db, 'classic'), db });
+  const lib = base.find((e) => e.slug === 'video-library');
+  if (lib) lib.text = ['Video Library', ...vids.map((v) => `${v.title} ${v.by}`)].join(' ').slice(0, 2400);
   return [...base, ...entries];
 }
 

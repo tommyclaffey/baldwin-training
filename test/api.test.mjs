@@ -126,9 +126,11 @@ test('every dish shows in the Food Matrix and opens its own page; every dish pag
   const page = (await call(`/api/page/e${r.data.id}`)).data;
   const names = new Set(all(page.main, () => true).map((n) => n.n));
   // Nov 4, Tommy: "Need to create consistency through the app." Every section shows, in the same order.
-  assert.ok(['Selling line', 'Drop band', 'Talking points', 'Pairings band', 'The Build', 'The story', 'Plating guide', 'Watch it made', 'Section · Photos'].every((n) => names.has(n)), 'every section shows');
+  assert.ok(['Selling line', 'Drop band', 'Talking points', 'Pairings band', 'The Build', 'The story', 'Plating guide', 'Section · Photos'].every((n) => names.has(n)), 'every section shows');
+  // Nov 8, Tommy: "If there's no video uploaded, just have it not be there." No video, no Watch It Made.
+  assert.ok(!names.has('Watch it made'), 'no video, no video section');
   const txt = JSON.stringify(page.main);
-  assert.ok(txt.includes('Plating guide to come') && txt.includes('VIDEO TO COME'), 'empty sections say what is to come');
+  assert.ok(txt.includes('Plating guide to come') && !txt.includes('VIDEO TO COME'), 'empty sections say what is to come; an empty video frame is gone');
   assert.ok(names.has('Tag · $30'), 'the price shows');
   assert.equal(all(page.main, (n) => n.n === 'Pairing · Cocktail')[0].to, '/classic/paper-plane', 'the cocktail links to its page');
   assert.ok(JSON.stringify(all(page.main, (n) => n.n === 'Pairing · Opposite')[0]).includes('To come'), 'no opposite wine yet: the tile says to come');
@@ -708,4 +710,24 @@ test('demo: a refresh swaps the copy for a fresh one; real accounts are left alo
   const none = await fetch(BASE + '/api/demo/restart', { method: 'POST', headers: h });
   assert.equal((await none.json()).restarted, false);
   assert.equal(none.headers.get('set-cookie'), null);
+});
+
+test('videos: no empty video frames, and the library lists only real videos (Nov 8)', async () => {
+  const index = (await call('/api/index')).data;
+  const file = (slug) => index.find((e) => e.slug === slug)?.file;
+  const walk = (n, fn) => { fn(n); (n.c || []).forEach((c) => walk(c, fn)); };
+  const lib = (await call('/api/page/' + file('video-library'))).data;
+  const cards = [];
+  walk(lib.main, (n) => { if ((n.n || '').startsWith('Video · ')) cards.push(n); });
+  assert.ok(cards.length > 0, 'the library has videos');
+  assert.ok(cards.every((c) => c.vid), 'every library card plays something');
+  assert.doesNotMatch(JSON.stringify(lib), /Walleye Milanese|Watched|Required before your next shift/, 'none of the made-up library');
+  for (const slug of ['recipe/baked-meatballs', 'classic/gimlet', 'wine/red', '']) {
+    const f = file(slug); if (!f) continue;
+    const page = (await call('/api/page/' + f)).data;
+    walk(page.main, (n) => {
+      const frame = (n.n || '').startsWith('Video slot') || n.n === 'Player' || (n.n || '').startsWith('Video · ');
+      assert.ok(!frame || n.vid, `${slug || 'home'}: ${n.n} has no video`);
+    });
+  }
 });
