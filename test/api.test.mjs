@@ -745,3 +745,41 @@ test('notes to the team ("bar lead to add", "confirm with chef") show to manager
   assert.match(await as('manager'), NOTE, 'managers see what is still to fill in');
   assert.doesNotMatch(await as('employee'), NOTE, 'staff never do');
 });
+
+test('job paths: a server’s path from the book, page reads, quiz passes and manager sign-offs (Nov 8)', async () => {
+  const start = async (role) => {
+    const r = await fetch(BASE + '/api/demo/start', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ role }) });
+    const cookie = r.headers.get('set-cookie').split(';')[0];
+    return async (p, method = 'GET', body) => {
+      const res = await fetch(BASE + p, { method, headers: { cookie, 'x-bt': '1', 'content-type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+      return { status: res.status, data: await res.json() };
+    };
+  };
+  const me = await start('employee');
+  const path = (await me('/api/path')).data;
+  assert.deepEqual(path.jobs, ['server']);
+  const p = path.paths[0];
+  assert.equal(p.stages[0].state, 'done', 'before your first shift is done');
+  assert.ok(p.stages[1].steps.some((s) => s.id === 't:course:Pasta' && s.done), 'a passed quiz ticks its step');
+  assert.ok(p.stages.some((st) => st.steps.some((s) => s.kind === 'lesson' && s.program === 'Sommelier · Level 1')), 'a Sommelier lesson is part of the path');
+  assert.ok(p.stages.every((st) => st.steps.every((s) => s.kind === 'signoff' || s.to)), 'every step opens a real page, quiz or lesson');
+  // a page read
+  await me('/api/path/read', 'POST', { slug: 'safety', done: false });
+  assert.equal((await me('/api/path')).data.paths[0].stages[0].state, 'now', 'unread, the stage reopens');
+  await me('/api/path/read', 'POST', { slug: 'safety' });
+  assert.equal((await me('/api/path')).data.paths[0].stages[0].state, 'done');
+  // staff can't change their job once it's set, or reach the manager's view
+  assert.equal((await me('/api/path/jobs', 'POST', { jobs: ['host'] })).status, 403);
+  assert.equal((await me('/api/path/team')).status, 403);
+  // a manager's team, a job change and a sign-off
+  const mgr = await start('manager');
+  const team = (await mgr('/api/path/team')).data;
+  assert.equal(team.people.length, 4);
+  const quinn = team.people.find((x) => x.name === 'Quinn Abbott');
+  assert.deepEqual(quinn.jobs, ['bartender']);
+  const signed = (await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'path:bartender:build-three' })).data;
+  assert.ok(signed.paths[0].stages.some((st) => st.steps.some((s) => s.id === 'path:bartender:build-three' && s.done && s.by === 'Rosalind Hart')));
+  assert.equal((await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'path:server:floor' })).status, 400, 'not a step in their path');
+  const both = (await mgr(`/api/path/person/${quinn.id}`, 'PATCH', { jobs: ['bartender', 'server'] })).data;
+  assert.equal(both.paths.length, 2);
+});

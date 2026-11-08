@@ -133,6 +133,7 @@ export async function save(id: string) {
   const cur = rec?.current;
   if (!cur?.finished || cur.saved || !userId || id === REVIEW) return;
   await api('/api/quiz/attempt', { method: 'POST', body: { quiz: id, items: cur.items, answers: cur.answers } });
+  void import('../path/store').then((m) => m.reloadPath()); // a pass ticks its step in My Path
   const now = state.quizzes[id];
   if (now?.current === cur) set({ ...state, quizzes: { ...state.quizzes, [id]: { ...now, current: { ...cur, saved: true } } } });
 }

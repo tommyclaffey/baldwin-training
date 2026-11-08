@@ -4,7 +4,8 @@ import { FigmaNode, type FNode } from './FigmaNode';
 import { QUIZZES, statusOf, useQuiz } from '../quiz/store';
 import { api, canEdit } from '../lib/api';
 import { ManagerLinks } from './EditBar';
-import { trainingCard } from '../quiz/transform';
+import { trainingCard, pathSidebar } from '../quiz/transform';
+import { usePath } from '../path/store';
 import { useSession } from '../lib/session';
 import { openWelcome } from './DemoTour';
 
@@ -44,6 +45,8 @@ function withCounts(n: FNode, live: Record<string, number>): FNode {
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const quiz = useQuiz();
   const { user } = useSession();
+  const path = usePath(user?.id);
+  const mine = path?.paths[0] || null;
   const generic = !!user?.store && !user.store.bookReady;
   // Other stores start at zero (no drawn Baldwin numbers while the real ones load).
   const [counts, setCounts] = useState<Record<string, number>>((): Record<string, number> => (generic ? { 'Food Matrix': 0, 'Video Library': 0, 'Photo Library': 0 } : {}));
@@ -51,10 +54,10 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const node = useMemo(() => {
     // Badges: what's really on each page; Quizzes = quizzes still to pass on this phone.
     const live: Record<string, number> = { ...counts, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
-    const drawn = linkHome(withCounts(trainingCard([SIDEBAR], quiz)[0], live));
+    const drawn = pathSidebar(linkHome(withCounts(trainingCard([SIDEBAR], quiz)[0], live)), mine);
     const named = generic ? forStore(drawn, user!.store!.name) : drawn;
     return user?.demo ? withDemoPill(named) : named;
-  }, [quiz, counts, generic, user]);
+  }, [quiz, counts, generic, user, mine]);
   // The pill is drawn with the rest of the sidebar, so it's made a real control here: Tab reaches it, Enter opens the welcome card.
   const nav = useRef<HTMLElement>(null);
   useEffect(() => {

@@ -12,6 +12,7 @@ import AdminApp from './admin/AdminApp';
 import { EditInPlaceProvider } from './components/EditSheet';
 import { setFavicon } from './lib/favicon';
 import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
+import { MyPathPage, PathReadBar } from './path/MyPath';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -44,7 +45,7 @@ function Book() {
   if (!user) return <BookSignIn />;
   return (
     <EditInPlaceProvider>
-    <NavContext.Provider value={entry?.nav ?? ''}>
+    <NavContext.Provider value={pathname === '/my-path' ? 'My Path' : entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
         <div className={'mobile-brand' + (user.demo ? ' has-pill' : '')}>
@@ -66,7 +67,7 @@ function Book() {
         </aside>
         <div id="content" className="content">
           <DemoBar />
-          <PageView />
+          {pathname === '/my-path' ? <MyPathPage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
         </div>
         {user.demo && <DemoTour />}
       </div>
