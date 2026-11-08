@@ -1,0 +1,394 @@
+{
+ "number": 7,
+ "programLevel": 1,
+ "slug": "beer-flavor",
+ "title": "Tasting and off-flavors",
+ "script": "Lesson 7",
+ "lead": "How to taste a beer, and how to tell when one’s gone wrong.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "How to taste",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Look, smell, taste, feel, finish."
+    }
+   ],
+   "know": [
+    "Check color and clarity against something plain.",
+    "Swirl, then smell.",
+    "Let it reach the whole tongue; notice the finish."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "name": "Hops by where they grow",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Where the hop grows changes how it tastes."
+    }
+   ],
+   "know": [
+    "American: citrus, pine, tropical.",
+    "English: earthy, herbal.",
+    "German and Czech: floral, spicy."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "name": "Light and age",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Skunky from light, cardboard from age."
+    }
+   ],
+   "know": [
+    "Skunky shows most in the aroma.",
+    "Old beer tastes papery, like wet cardboard.",
+    "Old beer also loses its hops."
+   ],
+   "source": "Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org)"
+  },
+  {
+   "name": "Butter and sour",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Usually the draft lines."
+    }
+   ],
+   "know": [
+    "Butter or butterscotch: diacetyl.",
+    "Vinegar or sour: bacteria.",
+    "Pour another and tell a manager."
+   ],
+   "source": "Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org); Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Two more to know",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Cooked corn and green apple."
+    }
+   ],
+   "know": [
+    "DMS: cooked corn; fine at low levels in light lagers.",
+    "Acetaldehyde: green apple; the beer is too young.",
+    "These are tested at the next Cicerone level."
+   ],
+   "source": "American Homebrewers Association, “Acceptable Off-Flavors in Beer” (homebrewersassociation.org); Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "How to taste",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LOOK",
+      "line": "color and clarity."
+     },
+     {
+      "big": "SMELL",
+      "line": "swirl first."
+     },
+     {
+      "big": "TASTE",
+      "line": "whole tongue, then the finish."
+     }
+    ],
+    "read": {
+     "bigIdea": "Taste in the same order every time.",
+     "where": "Cicerone’s order: **appearance** (color and clarity, against a plain background), **aroma**, **taste** (let the beer reach your whole tongue), **mouthfeel** (body and carbonation), then the **finish**, which carries on after you swallow. To smell, **swirl** first, then try a quick sniff or a long one.",
+     "mixup": "Most of what we call “taste” is smell. Skip the swirl and you miss half the beer.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Hops by where they grow",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AMERICAN",
+      "line": "citrus, pine, tropical."
+     },
+     {
+      "big": "ENGLISH",
+      "line": "earthy, herbal."
+     },
+     {
+      "big": "GERMAN, CZECH",
+      "line": "floral, spicy."
+     }
+    ],
+    "read": {
+     "bigIdea": "The hop’s home shows in the glass.",
+     "where": "**American** hops taste **piney, citrusy, resiny** or **tropical**: think West Coast IPA. **English** hops are **earthy**, herbal and woody. **German and Czech** hops are **floral**, perfumy and **spicy**: think pilsner. Knowing which tells you what to expect from a beer before you taste it.",
+     "mixup": "Hoppy doesn’t always mean citrus. A German pils is hoppy too, in a floral, spicy way.",
+     "sayIt": "It’s hoppy in a citrusy, piney way."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Light and age",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SKUNKY",
+      "line": "light: strongest in the aroma."
+     },
+     {
+      "big": "CARDBOARD",
+      "line": "age: stale, papery."
+     },
+     {
+      "big": "FADED",
+      "line": "old beer loses its hops."
+     }
+    ],
+    "read": {
+     "bigIdea": "Two faults that come from how beer is kept.",
+     "where": "**Lightstruck** beer smells **skunky**, sometimes described as like fresh coffee; it comes from light and can happen in minutes. **Oxidized** (stale) beer tastes **papery** or like **wet cardboard**; hop aroma fades and the malt turns honey or toffee. Age causes it and **heat** speeds it up.",
+     "mixup": "Skunky = **light**. Cardboard = **age and heat**. Different causes, different fixes.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Butter and sour",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BUTTER",
+      "line": "diacetyl: often dirty lines."
+     },
+     {
+      "big": "SOUR, VINEGAR",
+      "line": "bacteria in the lines."
+     },
+     {
+      "big": "REPLACE",
+      "line": "pour another, tell a manager."
+     }
+    ],
+    "read": {
+     "bigIdea": "Off flavors on draft usually mean the lines.",
+     "where": "A **buttery** or **butterscotch** flavor is **diacetyl**. Yeast normally clean it up during fermentation, but bacteria in **dirty draft lines** make it too. **Sour** or **vinegar** flavors in a beer that shouldn’t be sour are bacteria as well. If a guest says a draft tastes off, **replace it** with something else and tell a manager so the lines get checked.",
+     "mixup": "A Berliner weisse is meant to be sour. A pilsner that tastes sour is a fault.",
+     "sayIt": "I’m sorry about that. Let me get you something else while we check the line."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Two more to know",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DMS",
+      "line": "cooked corn: OK low in light lagers."
+     },
+     {
+      "big": "GREEN APPLE",
+      "line": "acetaldehyde: too young."
+     },
+     {
+      "big": "NEXT LEVEL",
+      "line": "tasted at Certified Cicerone."
+     }
+    ],
+    "read": {
+     "bigIdea": "Two you’ll hear about.",
+     "where": "**DMS** tastes like **cooked or creamed corn** (at high levels, cooked cabbage). It comes from pale malt and is normally boiled off; a **low level is acceptable** in some light lagers. **Acetaldehyde** tastes like **green apple**: a normal step in fermentation that yeast clean up with time, so a lot of it means the beer is **too young**. Cicerone expects servers to know light, age and dirty lines; these two come at the next level.",
+     "mixup": "A hint of corn in a light lager can be normal. Strong cabbage isn’t.",
+     "sayIt": ""
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "sources": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org); Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); American Homebrewers Association, “Acceptable Off-Flavors in Beer” (homebrewersassociation.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "What do you look at first when tasting a beer?",
+   "answer": "Color and clarity",
+   "wrong": [
+    "The finish",
+    "The bitterness",
+    "The label"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "What should you do before smelling a beer?",
+   "answer": "Swirl it",
+   "wrong": [
+    "Chill it",
+    "Add ice",
+    "Stir it with a straw"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Mouthfeel covers…",
+   "answer": "Body and carbonation",
+   "wrong": [
+    "Color and clarity",
+    "Aroma",
+    "Price"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "American hops usually taste…",
+   "answer": "Citrusy, piney, tropical",
+   "wrong": [
+    "Earthy and woody",
+    "Floral and spicy",
+    "Like banana"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "German and Czech hops usually taste…",
+   "answer": "Floral and spicy",
+   "wrong": [
+    "Tropical",
+    "Citrusy and piney",
+    "Roasty"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "English hops usually taste…",
+   "answer": "Earthy and herbal",
+   "wrong": [
+    "Tropical",
+    "Banana and clove",
+    "Sour"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "A skunky beer has been exposed to…",
+   "answer": "Light",
+   "wrong": [
+    "Heat",
+    "Dirty lines",
+    "Too much gas"
+   ],
+   "source": "Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org)"
+  },
+  {
+   "q": "Wet cardboard flavor means the beer is…",
+   "answer": "Old or stored warm",
+   "wrong": [
+    "Lightstruck",
+    "Too fresh",
+    "Sour on purpose"
+   ],
+   "source": "Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org)"
+  },
+  {
+   "q": "Where does a skunky beer show most?",
+   "answer": "In the aroma",
+   "wrong": [
+    "In the color",
+    "In the head",
+    "In the finish only"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "A buttery flavor on draft usually means…",
+   "answer": "Dirty lines (diacetyl)",
+   "wrong": [
+    "The beer is fresh",
+    "It’s lightstruck",
+    "The glass is cold"
+   ],
+   "source": "Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org)"
+  },
+  {
+   "q": "A pilsner on draft tastes like vinegar. What do you do?",
+   "answer": "Replace it and tell a manager",
+   "wrong": [
+    "Serve it anyway",
+    "Add lime",
+    "Turn up the gas"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Butter or butterscotch in beer is called…",
+   "answer": "Diacetyl",
+   "wrong": [
+    "DMS",
+    "Acetaldehyde",
+    "Skunk"
+   ],
+   "source": "Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org)"
+  },
+  {
+   "q": "Cooked corn flavor is…",
+   "answer": "DMS",
+   "wrong": [
+    "Diacetyl",
+    "Acetaldehyde",
+    "Oxidation"
+   ],
+   "source": "American Homebrewers Association, “Acceptable Off-Flavors in Beer” (homebrewersassociation.org)"
+  },
+  {
+   "q": "Green apple flavor means the beer is…",
+   "answer": "Too young (acetaldehyde)",
+   "wrong": [
+    "Too old",
+    "Lightstruck",
+    "From dirty lines"
+   ],
+   "source": "Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org)"
+  },
+  {
+   "q": "A low level of DMS is acceptable in…",
+   "answer": "Some light lagers",
+   "wrong": [
+    "Every stout",
+    "No beer",
+    "Every IPA"
+   ],
+   "source": "American Homebrewers Association, “Acceptable Off-Flavors in Beer” (homebrewersassociation.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "DMS and acetaldehyde are beyond the Certified Beer Server syllabus; included because guests and reps use the words."
+ ]
+}

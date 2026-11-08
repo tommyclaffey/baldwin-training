@@ -22,7 +22,7 @@ export const PROGRAMS = [
     fine: 'It isn’t a certification from the USBG or any other outside body.' },
   { key: 'beer', name: 'Beer Program', short: 'Beer', slug: 'beer-program', dir: here('beer'), seal: 'BEER',
     back: ['/the-bar/beer-and-draft', 'The Bar'], hero: '/img/a25e068de269.jpg', heroName: 'IMG/Pouring a draft · Unsplash stand-in (the Pilsner page photo)',
-    ladder: ['Beer Server', 'Beer Specialist', 'Advanced Beer Specialist', 'Master of Beer'],
+    ladder: ['Beer Server', 'Beer Specialist', 'Advanced Specialist', 'Master of Beer'],
     fine: 'It isn’t a Cicerone® certification. It prepares you for Cicerone’s Certified Beer Server exam.' },
 ];
 export const BAR = 'cocktail-program';

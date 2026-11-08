@@ -1,6 +1,11 @@
 // Puts real progress into the designed Quizzes page rows and the sidebar "Your training" card.
 import type { FNode } from '../components/FigmaNode';
 import { QUIZZES, nextQuiz, passFor, statusOf, type Status, useQuiz } from './store';
+import svgs from '../content/svgs.json';
+
+/** The Beer Program's sidebar icon (Nov 8): a mug in the same 17 px, 1.8 stroke line style as the design's icons. */
+const BEER_ICON = 'mise_beer';
+(svgs as Record<string, string>)[BEER_ICON] = '<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 5.4H11V13.9C11 14.5 10.5 15 9.9 15H5C4.4 15 3.9 14.5 3.9 13.9V5.4Z M11 7H12.6C13.4 7 14 7.6 14 8.4V10.6C14 11.4 13.4 12 12.6 12H11 M6.2 8.2V12.4 M8.7 8.2V12.4 M3.9 5.4C3.9 4.2 4.8 3.3 6 3.3C6.4 2.5 7.1 2 8 2C9 2 9.8 2.7 10 3.6C10.6 3.8 11 4.5 11 5.4" stroke="#B8AFA3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 type State = ReturnType<typeof useQuiz>;
 const clone = <T,>(x: T): T => JSON.parse(JSON.stringify(x));
@@ -136,6 +141,15 @@ export function pathSidebar(root: FNode, p: PathSummary | null): FNode {
         if (barIcon) item.c = (item.c || []).map((c) => (c.n === 'icon' ? clone(barIcon) : c));
         setText(texts(item)[0], 'Cocktail Program');
         n.c.splice(n.c.indexOf(somm) + 1, 0, item);
+      }
+      // The Beer Program (Nov 8), under the Cocktail Program, with its own mug icon drawn in the same line style.
+      const cock = n.c.find((c) => c.n === 'Nav · Cocktail Program');
+      if (cock && !n.c.some((c) => c.n === 'Nav · Beer Program')) {
+        const item = clone(cock);
+        item.n = 'Nav · Beer Program'; item.to = '/beer-program';
+        item.c = (item.c || []).map((c) => (c.n === 'icon' ? { ...clone(c), svg: BEER_ICON } : c));
+        setText(texts(item)[0], 'Beer Program');
+        n.c.splice(n.c.indexOf(cock) + 1, 0, item);
       }
     }
     if (n.n !== 'Your Training' || !n.c || !p) return;

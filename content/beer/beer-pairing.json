@@ -1,0 +1,321 @@
+{
+ "number": 8,
+ "programLevel": 1,
+ "slug": "beer-pairing",
+ "title": "Beer with food, and the exam",
+ "script": "Lesson 8",
+ "lead": "Three ideas for pairing beer, then what Cicerone’s first exam looks like.",
+ "minutes": 12,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Match the strength",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Delicate with delicate, bold with bold."
+    }
+   ],
+   "know": [
+    "Strength means alcohol, malt, bitterness, richness and roast.",
+    "A big stout buries a light fish.",
+    "A light lager disappears next to barbecue."
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "name": "Complement, contrast, cut",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Share a flavor, balance one, or cut through fat."
+    }
+   ],
+   "know": [
+    "Shared flavors: caramel lager with roast pork.",
+    "Bitterness, bubbles and roast cut fat.",
+    "Malt sweetness calms chili heat; hops make it hotter."
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org); CraftBeer.com (Brewers Association), “The Sensory Side of Craft Beer Pairing”"
+  },
+  {
+   "name": "Classic matches",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Easy pairings that work."
+    }
+   ],
+   "know": [
+    "Pilsner with grilled fish.",
+    "Stout with oysters, or roast beef.",
+    "Dessert: the beer as rich as the dish."
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "name": "The Certified Beer Server exam",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "This level follows Cicerone’s first exam."
+    }
+   ],
+   "know": [
+    "60 multiple-choice questions, 30 minutes.",
+    "75% to pass; $79 for two tries.",
+    "Next: Certified Cicerone, with tasting and a demonstration."
+   ],
+   "source": "Cicerone Support, Certified Beer Server Exam FAQ (support.cicerone.org); Cicerone Support, About the Certified Cicerone Exam (support.cicerone.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Match the strength",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "INTENSITY",
+      "line": "match it first."
+     },
+     {
+      "big": "DELICATE",
+      "line": "with delicate."
+     },
+     {
+      "big": "BOLD",
+      "line": "with bold."
+     }
+    ],
+    "read": {
+     "bigIdea": "Neither one should drown the other.",
+     "where": "The Brewers Association’s first rule: match **strength with strength**. Delicate dishes go with delicate beers; **strong flavors** need **assertive** beers. Strength here means **alcohol**, **malt**, **bitterness**, **sweetness**, **richness** and **roast**. A big stout buries a light fish; a light lager disappears next to smoky barbecue.",
+     "mixup": "Strength isn’t only alcohol. A low-alcohol stout can still be big in roast.",
+     "sayIt": "With something rich like a braise, I’d go with a beer with more body."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Complement, contrast, cut",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "COMPLEMENT",
+      "line": "share a flavor."
+     },
+     {
+      "big": "CUT",
+      "line": "bitterness and bubbles cut fat."
+     },
+     {
+      "big": "HEAT",
+      "line": "malt calms it; hops make it hotter."
+     }
+    ],
+    "read": {
+     "bigIdea": "Three ways a beer works with food.",
+     "where": "**Complement**: the beer and the dish share a flavor, like an Oktoberfest lager’s **caramel** with **roast pork**. **Contrast and cut**: **hop bitterness**, **carbonation**, roast and acidity cut through **fat** and refresh the palate. **Heat**: **malt sweetness** calms chili heat, while **hop bitterness** makes it feel **hotter**. Most good pairings use a bit of each.",
+     "mixup": "An IPA with a very spicy dish turns the heat up, not down.",
+     "sayIt": "Something malty will cool that spice down."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Classic matches",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PILSNER",
+      "line": "grilled fish."
+     },
+     {
+      "big": "STOUT",
+      "line": "oysters, or roast beef."
+     },
+     {
+      "big": "DESSERT",
+      "line": "beer at least as sweet as the dish."
+     }
+    ],
+    "read": {
+     "bigIdea": "A few pairings to have ready.",
+     "where": "From the Brewers Association’s guide: **pilsner** with **grilled fish**; a malty lager or **pale ale** with **roast chicken**; **porter or stout** with grilled or **roast beef**; **stout** with **oysters**. With **dessert**, the beer has to be **at least as rich and sweet** as the dish: imperial stout with chocolate cake, a tripel with fruit desserts. With **cheese**: IPA with blue cheese, stout with aged cheddar.",
+     "mixup": "A light beer with a rich dessert tastes thin and sour. Go richer.",
+     "sayIt": "A stout with the chocolate dessert is a great match."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "The Certified Beer Server exam",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "60 QUESTIONS",
+      "line": "multiple choice, 30 minutes."
+     },
+     {
+      "big": "75%",
+      "line": "to pass; $79 for two tries."
+     },
+     {
+      "big": "NEXT",
+      "line": "Certified Cicerone: written, tasting, demo."
+     }
+    ],
+    "read": {
+     "bigIdea": "This level follows Cicerone’s outline.",
+     "where": "Cicerone’s **Certified Beer Server** exam is **60 multiple-choice** questions in up to **30 minutes**, **75%** to pass, and **$79** buys two attempts. Cicerone says about 80% pass the first time. Our Level 1 follows its outline: keeping and serving beer, styles, flavor, brewing and pairing. The next step, **Certified Cicerone**, adds a written exam, a **tasting** and a **demonstration**.",
+     "mixup": "Our certificate is the restaurant’s, not Cicerone’s. To become a Certified Beer Server, you take Cicerone’s exam.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org); CraftBeer.com (Brewers Association), “The Sensory Side of Craft Beer Pairing”; Cicerone Support, Certified Beer Server Exam FAQ (support.cicerone.org); Cicerone Support, About the Certified Cicerone Exam (support.cicerone.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "The first rule of beer pairing is to match…",
+   "answer": "Strength with strength",
+   "wrong": [
+    "Color with color",
+    "Price with price",
+    "Glass with plate"
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "q": "In pairing, “strength” includes…",
+   "answer": "Alcohol, malt, bitterness, richness and roast",
+   "wrong": [
+    "Only alcohol",
+    "Only color",
+    "Only price"
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "q": "A light lager next to smoky barbecue will…",
+   "answer": "Get lost",
+   "wrong": [
+    "Overpower it",
+    "Turn sour",
+    "Taste stronger"
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "q": "What cuts through fatty, rich food?",
+   "answer": "Hop bitterness and carbonation",
+   "wrong": [
+    "Sweetness",
+    "Warm temperature",
+    "A frosted glass"
+   ],
+   "source": "CraftBeer.com (Brewers Association), “The Sensory Side of Craft Beer Pairing”"
+  },
+  {
+   "q": "With a very spicy dish, hop bitterness makes the heat feel…",
+   "answer": "Hotter",
+   "wrong": [
+    "Cooler",
+    "The same",
+    "Gone"
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "q": "What calms chili heat?",
+   "answer": "Malt sweetness",
+   "wrong": [
+    "Hop bitterness",
+    "High alcohol",
+    "Sourness"
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "q": "A classic match for grilled fish is…",
+   "answer": "Pilsner",
+   "wrong": [
+    "Imperial stout",
+    "Barley wine",
+    "Smoked porter"
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "q": "A classic match for oysters is…",
+   "answer": "Stout",
+   "wrong": [
+    "Hazy IPA",
+    "Fruit beer",
+    "Light lager"
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "q": "With dessert, the beer should be…",
+   "answer": "At least as rich and sweet as the dish",
+   "wrong": [
+    "Lighter than the dish",
+    "Sour",
+    "Very bitter and light"
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "q": "How many questions are on Cicerone’s Certified Beer Server exam?",
+   "answer": "60",
+   "wrong": [
+    "20",
+    "100",
+    "150"
+   ],
+   "source": "Cicerone Support, Certified Beer Server Exam FAQ (support.cicerone.org)"
+  },
+  {
+   "q": "What score passes the Certified Beer Server exam?",
+   "answer": "75%",
+   "wrong": [
+    "60%",
+    "90%",
+    "100%"
+   ],
+   "source": "Cicerone Support, Certified Beer Server Exam FAQ (support.cicerone.org)"
+  },
+  {
+   "q": "The Certified Cicerone exam adds…",
+   "answer": "A tasting and a demonstration",
+   "wrong": [
+    "Nothing: it’s the same exam",
+    "A cocktail practical",
+    "A wine exam"
+   ],
+   "source": "Cicerone Support, About the Certified Cicerone Exam (support.cicerone.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Whether Cicerone’s CBS exam is taken online wasn’t re-confirmed on Nov 8; the page doesn’t say.",
+  "Pairing suggestions are general; our Food Book pairings come first at the table."
+ ]
+}

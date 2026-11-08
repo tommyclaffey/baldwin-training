@@ -2,38 +2,6 @@
  "_source": "Unsplash stand-ins, Nov 1 2026",
  "photos": [
   {
-   "chapter": "beer-sake-spirits",
-   "section": "Distillation",
-   "file": "/img/study/beer-sake-spirits--distillation.jpg",
-   "unsplashId": "rzvBp1sEHaw",
-   "photographer": "François Hoppet",
-   "description": "Row of tall golden copper pot stills in a distillery, a small cask beside them"
-  },
-  {
-   "chapter": "beer-sake-spirits",
-   "section": "Cognac and other brandy",
-   "file": "/img/study/beer-sake-spirits--cognac-and-other-brandy.jpg",
-   "unsplashId": "cfiR6ju8sNI",
-   "photographer": "Timothé Durand",
-   "description": "Dim ageing cellar of a Cognac house: rows of oak casks with chalked numbers, large wooden vats behind"
-  },
-  {
-   "chapter": "beer-sake-spirits",
-   "section": "Tequila and mezcal",
-   "file": "/img/study/beer-sake-spirits--tequila-and-mezcal.jpg",
-   "unsplashId": "dkcopnqR64Y",
-   "photographer": "Dylan Freedom",
-   "description": "Field of blue agave just outside Tequila, Jalisco, with mountains behind"
-  },
-  {
-   "chapter": "beer-sake-spirits",
-   "section": "Vodka, gin, rum and liqueurs",
-   "file": "/img/study/beer-sake-spirits--vodka-gin-rum-and-liqueurs.jpg",
-   "unsplashId": "IlpXSjNSNRI",
-   "photographer": "Jez Timms",
-   "description": "Gin botanicals close up: juniper berries, lemon and orange wedges and ice cubes"
-  },
-  {
    "chapter": "germany-and-austria",
    "section": "Dry or sweet? Label words",
    "file": "/img/study/germany-and-austria--dry-or-sweet-label-words.jpg",
@@ -632,6 +600,222 @@
    "section": "Building a menu",
    "file": "/img/48ca851d7531.jpg",
    "description": "Reused from the app (Cocktail Program, Level 3, Nov 8)"
+  },
+  {
+   "chapter": "beer-keeping",
+   "section": "Fresh is best",
+   "file": "/img/cc320d4a67b8.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-keeping",
+   "section": "Keep it cold",
+   "file": "/img/f5aacf389a69.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-keeping",
+   "section": "Light makes skunk",
+   "file": "/img/d5d0ee3cad76.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-keeping",
+   "section": "Rotate and check",
+   "file": "/img/cbff01f7a889.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-draft",
+   "section": "Keg to faucet",
+   "file": "/img/d5d0ee3cad76.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-draft",
+   "section": "Cold, every step",
+   "file": "/img/cc320d4a67b8.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-draft",
+   "section": "Clean lines",
+   "file": "/img/f5aacf389a69.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-draft",
+   "section": "What you do, and don’t touch",
+   "file": "/img/d5d0ee3cad76.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-glass-pour",
+   "section": "Beer-clean",
+   "file": "/img/ecec443ea0eb.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-glass-pour",
+   "section": "Wash, rinse, dry",
+   "file": "/img/b8572f354718.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-glass-pour",
+   "section": "The draft pour",
+   "file": "/img/a25e068de269.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-glass-pour",
+   "section": "Bottles, nitro and temperature",
+   "file": "/img/f63b1d92dbf9.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-brewing",
+   "section": "Four ingredients",
+   "file": "/img/f5aacf389a69.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-brewing",
+   "section": "Malt",
+   "file": "/img/cbff01f7a889.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-brewing",
+   "section": "Brew day",
+   "file": "/img/d5d0ee3cad76.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-brewing",
+   "section": "Ale or lager",
+   "file": "/img/a25e068de269.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-brewing",
+   "section": "Corn, rice, gluten-free and NA",
+   "file": "/img/cc320d4a67b8.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-lagers",
+   "section": "Pilsner",
+   "file": "/img/a25e068de269.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-lagers",
+   "section": "American lager and light lager",
+   "file": "/img/cc320d4a67b8.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-lagers",
+   "section": "Helles, Märzen and Oktoberfest",
+   "file": "/img/f5aacf389a69.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-lagers",
+   "section": "Bock and dark lagers",
+   "file": "/img/cbff01f7a889.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-ales",
+   "section": "Pale ale and IPA",
+   "file": "/img/36bb65135c79.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-ales",
+   "section": "Hazy IPA",
+   "file": "/img/62a6f7be3fe0.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-ales",
+   "section": "Wheat beers",
+   "file": "/img/ecec443ea0eb.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-ales",
+   "section": "Belgian ales",
+   "file": "/img/bb23f11b90c9.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-ales",
+   "section": "Stout and porter",
+   "file": "/img/f63b1d92dbf9.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-ales",
+   "section": "Sours",
+   "file": "/img/6736295e20db.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-flavor",
+   "section": "How to taste",
+   "file": "/img/b8572f354718.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-flavor",
+   "section": "Hops by where they grow",
+   "file": "/img/36bb65135c79.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-flavor",
+   "section": "Light and age",
+   "file": "/img/cc320d4a67b8.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-flavor",
+   "section": "Butter and sour",
+   "file": "/img/6736295e20db.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-flavor",
+   "section": "Two more to know",
+   "file": "/img/d5d0ee3cad76.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-pairing",
+   "section": "Match the strength",
+   "file": "/img/cbff01f7a889.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-pairing",
+   "section": "Complement, contrast, cut",
+   "file": "/img/bb23f11b90c9.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-pairing",
+   "section": "Classic matches",
+   "file": "/img/f63b1d92dbf9.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
+  },
+  {
+   "chapter": "beer-pairing",
+   "section": "The Certified Beer Server exam",
+   "file": "/img/a25e068de269.jpg",
+   "description": "Reused from the app (Beer Program, Nov 8): the beer style pages’ Unsplash stand-ins"
   }
  ]
 }

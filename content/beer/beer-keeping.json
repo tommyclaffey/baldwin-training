@@ -1,0 +1,335 @@
+{
+ "number": 1,
+ "programLevel": 1,
+ "slug": "beer-keeping",
+ "title": "Keeping beer fresh",
+ "script": "Lesson 1",
+ "lead": "Beer is a fresh product. Cold, dark and first in, first out.",
+ "minutes": 12,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Fresh is best",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Most beer is at its best the day it leaves the brewery."
+    }
+   ],
+   "know": [
+    "Only a few strong styles improve with age.",
+    "Unpasteurized draft: about 45–60 days, cold.",
+    "Bottles and cans: up to about 6 months cold; hoppy beers fade sooner."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "name": "Keep it cold",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Cold storage keeps beer fresh longest."
+    }
+   ],
+   "know": [
+    "38°F is the standard.",
+    "At about 72°F beer ages up to ten times faster.",
+    "Above 77–80°F flavor breaks down fast."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org)"
+  },
+  {
+   "name": "Light makes skunk",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Light reacts with hop compounds and makes beer skunky."
+    }
+   ],
+   "know": [
+    "It can happen in a couple of minutes.",
+    "Brown glass blocks most of it; green and clear barely help.",
+    "Cans, kegs and closed cases protect fully."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); Craft Beer & Brewing, Dictionary: lightstruck (from The Oxford Companion to Beer)"
+  },
+  {
+   "name": "Rotate and check",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "First in, first out, and look before you pour."
+    }
+   ],
+   "know": [
+    "Read the date codes and sell in date order.",
+    "Flakes or a ring in the neck mean old beer: don’t serve it.",
+    "Bottle-conditioned beer is stored upright."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Fresh is best",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FRESH",
+      "line": "most beer is best young."
+     },
+     {
+      "big": "45–60 DAYS",
+      "line": "unpasteurized draft, kept cold."
+     },
+     {
+      "big": "IPA",
+      "line": "fades first: hops don’t last."
+     }
+    ],
+    "read": {
+     "bigIdea": "Beer doesn’t get better on the shelf.",
+     "where": "Almost every beer is ready to drink when it leaves the brewery and is best **fresh**. Cicerone’s guide: **unpasteurized draft** stays fresh about **45–60 days** cold, **pasteurized draft** about **90–120 days**. Cold bottles and cans can last up to about **6 months**, but **hoppy beers** like IPA can change in **3 months** even cold.",
+     "mixup": "Wine can improve with age; most beer can’t. Only a few strong styles are meant for the cellar.",
+     "sayIt": "That one’s brewed to drink fresh, and ours just came in."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Keep it cold",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "38°F",
+      "line": "the standard for storing beer."
+     },
+     {
+      "big": "10×",
+      "line": "faster aging at room temperature."
+     },
+     {
+      "big": "80°F+",
+      "line": "can ruin beer fast."
+     }
+    ],
+    "read": {
+     "bigIdea": "Cold beer stays fresh. Warm beer goes stale.",
+     "where": "Cold storage is best for all beer. Cicerone notes that beer at about **72°F** ages up to **ten times faster** than at **38°F**, and storage above about **80°F** can ruin it quickly. Moving beer between cold and room temperature doesn’t hurt it by itself; the warm time is what ages it.",
+     "mixup": "Taking a case out of the cooler for an hour doesn’t “skunk” it. Warm time makes it **stale**; light makes it **skunky**.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Light makes skunk",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SKUNKY",
+      "line": "light + hop compounds, in minutes."
+     },
+     {
+      "big": "BROWN",
+      "line": "glass blocks most of the light."
+     },
+     {
+      "big": "GREEN, CLEAR",
+      "line": "barely protect at all."
+     }
+    ],
+    "read": {
+     "bigIdea": "Keep beer out of the light.",
+     "where": "Sunlight, fluorescent and most **LED** light break down the bitter compounds from hops, and the pieces form the same kind of compound a **skunk** sprays (3-MBT). It can happen in **a couple of minutes**. **Brown** glass blocks most of the damaging light; **green** blocks very little and **clear** none. **Cans**, **kegs** and bottles in **closed cases** are fully protected.",
+     "stopsTitle": "Best to worst",
+     "stops": [
+      {
+       "name": "Can, keg, closed case",
+       "text": "**Full** protection."
+      },
+      {
+       "name": "Brown bottle",
+       "text": "Blocks **most** of it."
+      },
+      {
+       "name": "Green or clear bottle",
+       "text": "Little to **none**. Keep them boxed."
+      }
+     ],
+     "mixup": "Some clear-bottle beers use a special hop extract that resists skunking. Most green and clear bottles don’t.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Rotate and check",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FIFO",
+      "line": "first in, first out."
+     },
+     {
+      "big": "DATE CODE",
+      "line": "read it, sell in order."
+     },
+     {
+      "big": "FLAKES",
+      "line": "or a ring in the neck: don’t serve it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sell the oldest first, and check every bottle.",
+     "where": "Rotate stock **first in, first out**: put new beer behind old, check **date codes** and pull anything past its date. Codes can be a normal date, a **day-of-year** code or the brewery’s own. Before you open a bottle, look: **white flakes** or a **thin ring** at the liquid line in the neck mean old beer. **Bottle-conditioned** beers are stored **upright**.",
+     "mixup": "A date code isn’t always a best-by date. Some are the day it was packaged.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org); Craft Beer & Brewing, Dictionary: lightstruck (from The Oxford Companion to Beer). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Most beer is best…",
+   "answer": "Fresh, soon after it leaves the brewery",
+   "wrong": [
+    "After a year in the cellar",
+    "After it warms to room temperature",
+    "Once the date code has passed"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "About how long does unpasteurized draft beer stay fresh, kept cold?",
+   "answer": "45–60 days",
+   "wrong": [
+    "1 week",
+    "1 year",
+    "2 years"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Which beer loses its character fastest, even cold?",
+   "answer": "A hoppy IPA",
+   "wrong": [
+    "A strong ale meant for aging",
+    "A lager in a keg",
+    "Every beer ages the same"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "What is the standard cold temperature for beer?",
+   "answer": "38°F",
+   "wrong": [
+    "50°F",
+    "28°F",
+    "65°F"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "At about 72°F, beer ages…",
+   "answer": "Up to ten times faster than at 38°F",
+   "wrong": [
+    "Slower than cold beer",
+    "The same as cold beer",
+    "Only if it’s in the light"
+   ],
+   "source": "Cicerone blog, “Off” Flavors in Beer: The Basics (cicerone.org)"
+  },
+  {
+   "q": "What does warm storage do to beer?",
+   "answer": "Makes it stale faster",
+   "wrong": [
+    "Makes it skunky",
+    "Makes it fresher",
+    "Adds carbonation"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "What makes beer “skunky”?",
+   "answer": "Light reacting with hop compounds",
+   "wrong": [
+    "Warm storage",
+    "Dirty draft lines",
+    "Too much CO2"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Which bottle protects beer best from light?",
+   "answer": "Brown",
+   "wrong": [
+    "Green",
+    "Clear",
+    "They’re all the same"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "How fast can light skunk a beer?",
+   "answer": "In a couple of minutes",
+   "wrong": [
+    "Only after a month",
+    "Only after a year",
+    "Never, if it’s cold"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "“First in, first out” means…",
+   "answer": "Sell the oldest beer first",
+   "wrong": [
+    "Sell the newest beer first",
+    "Put new beer in front",
+    "Serve the coldest first"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "White flakes or a ring in a bottle’s neck mean…",
+   "answer": "Old or bad beer: don’t serve it",
+   "wrong": [
+    "It’s bottle-conditioned and perfect",
+    "It needs shaking",
+    "It’s non-alcoholic"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "How is bottle-conditioned beer stored?",
+   "answer": "Upright",
+   "wrong": [
+    "On its side",
+    "Upside down",
+    "In the freezer"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Freshness windows are Cicerone’s general guide; the brewery’s own date code wins."
+ ]
+}
