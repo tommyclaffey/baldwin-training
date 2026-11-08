@@ -1,0 +1,414 @@
+{
+ "number": 3,
+ "programLevel": 2,
+ "slug": "beer-ingredients",
+ "title": "Ingredients in depth",
+ "script": "Lesson 3",
+ "lead": "Malt types, hop varieties, famous waters and yeast: what each one tastes like.",
+ "minutes": 18,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Malt families",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Base, kilned specialty, crystal and roasted."
+    }
+   ],
+   "know": [
+    "Base malts: Pils, pale, Vienna, Munich.",
+    "Crystal: caramel sweetness and body.",
+    "Roasted: chocolate and coffee; roasted barley is unmalted."
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "name": "Hops by region",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Each region has its signature hops."
+    }
+   ],
+   "know": [
+    "Czech and German: Saaz, Hallertau, Tettnang (the “noble” hops).",
+    "English: East Kent Golding, Fuggle.",
+    "American: Cascade, Citra; New Zealand: Nelson Sauvin."
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer); Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "name": "Bitterness and IBU",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Alpha acids become bitter in the boil."
+    }
+   ],
+   "know": [
+    "1 IBU ≈ 1 mg/L of bitter iso-alpha acids.",
+    "Most people taste bitterness from about 4–9 IBU.",
+    "Malt and sweetness hide bitterness."
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "name": "Water",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Famous beers grew from their water."
+    }
+   ],
+   "know": [
+    "Pilsen: very soft, for pilsner.",
+    "Burton: high sulfate, for dry, bitter pale ales.",
+    "Carbonate water suits dark beers."
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "name": "Yeast, sugar and pasteurization",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Yeast flavors, Belgian sugar, and keeping beer stable."
+    }
+   ],
+   "know": [
+    "Weizen yeast: banana and clove. Brett: funk.",
+    "Candi sugar makes strong Belgians drink light.",
+    "Pasteurized draft lasts longer than unpasteurized."
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Malt families",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BASE",
+      "line": "Pils, pale, Vienna, Munich."
+     },
+     {
+      "big": "CRYSTAL",
+      "line": "stewed: caramel, body."
+     },
+     {
+      "big": "ROASTED",
+      "line": "chocolate, coffee."
+     }
+    ],
+    "read": {
+     "bigIdea": "Four kinds of malt build every beer.",
+     "where": "Cicerone groups malt into **kilned base** malts (**Pils**, **pale**, **Vienna**, **Munich**), **kilned specialty** malts (biscuit, Victory), **crystal or caramel** malts and **roasted** malts. **Crystal** malt is “stewed” wet so its starch turns to sugar inside the husk: it adds **caramel**, color and **body**. **Roasted** malts (chocolate, black) add **coffee** and **chocolate**. **Roasted barley** isn’t malted at all: it’s raw barley roasted like coffee, and it gives Irish stout its bitter coffee edge.",
+     "mixup": "Munich and Vienna malts are base malts: they can be most of the beer, not just a pinch.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Hops by region",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NOBLE",
+      "line": "Saaz, Hallertau, Tettnang, Spalt."
+     },
+     {
+      "big": "ENGLISH",
+      "line": "East Kent Golding, Fuggle."
+     },
+     {
+      "big": "NEW WORLD",
+      "line": "Cascade, Citra, Nelson Sauvin, Galaxy."
+     }
+    ],
+    "read": {
+     "bigIdea": "A hop tastes of where it grows.",
+     "where": "**“Noble” hops** is a 1980s marketing term for four old Central European aroma hops: **Hallertau**, **Spalt**, **Tettnang** and **Saaz** (from Žatec, the hop of Czech pilsner). England’s classics are **East Kent Golding** (earthy, apricot) and **Fuggle**. America’s **Cascade** (1971) is floral and **grapefruit**; **Citra** is citrus, tropical, lychee; **Mosaic** is blueberry and tangerine. New Zealand’s **Nelson Sauvin** is named for its likeness to Sauvignon Blanc; Australia’s **Galaxy** is passion fruit and peach.",
+     "stopsTitle": "Around the world",
+     "stops": [
+      {
+       "name": "Czech and German",
+       "text": "Floral, **spicy**: Saaz, Hallertau."
+      },
+      {
+       "name": "English",
+       "text": "**Earthy**, herbal: Golding, Fuggle."
+      },
+      {
+       "name": "American",
+       "text": "**Citrus**, pine, tropical: Cascade, Citra."
+      },
+      {
+       "name": "Southern Hemisphere",
+       "text": "Passion fruit, **gooseberry**: Nelson Sauvin, Galaxy."
+      }
+     ],
+     "mixup": "“Noble” isn’t a quality rating. It’s a name for four traditional hops.",
+     "sayIt": "It’s hopped with Citra, so it’s tropical and citrusy."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Bitterness and IBU",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ALPHA ACIDS",
+      "line": "turn bitter in the boil."
+     },
+     {
+      "big": "1 IBU",
+      "line": "≈ 1 mg/L of iso-alpha acids."
+     },
+     {
+      "big": "4–9 IBU",
+      "line": "where most people start tasting it."
+     }
+    ],
+    "read": {
+     "bigIdea": "IBU measures bitterness, not how bitter it tastes.",
+     "where": "Hop bitterness comes from **alpha acids**, which barely dissolve until the **boil** turns them into **iso-alpha acids**: the longer a hop boils, the more bitterness it gives. One **IBU** is about **1 mg/L** of iso-alpha acids. Most people start tasting bitterness around **4–9 IBU**, and the practical ceiling is about **110**. Malt **sweetness** and body **mask** bitterness, so two beers with the same IBU can taste very different.",
+     "mixup": "A 60 IBU imperial stout can taste less bitter than a 40 IBU pale ale: the malt hides it.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Water",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PILSEN",
+      "line": "very soft water: pilsner."
+     },
+     {
+      "big": "BURTON",
+      "line": "high sulfate: dry, bitter pale ale."
+     },
+     {
+      "big": "CARBONATE",
+      "line": "Dublin, London, Munich: dark beers."
+     }
+    ],
+    "read": {
+     "bigIdea": "Water shaped the classic styles.",
+     "where": "**Pilsen**’s water is very **soft**, part of why the first pilsner (1842) stood out. **Burton-on-Trent**’s well water is full of **gypsum** (calcium sulfate), which gives pale ales and IPAs a **dry, crisp** bitterness; brewers copy it by “Burtonizing”. Water high in **carbonate**, as in **Dublin**, **London** and **Munich**, balances the acidity of dark malts, which is why those cities became known for **porter, stout** and **dark lager**. Chlorine must be removed, or it makes medicinal flavors.",
+     "mixup": "Hard water isn’t one thing: sulfate and carbonate do very different jobs.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Yeast, sugar and pasteurization",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "YEAST",
+      "line": "Weizen = banana and clove; Brett = funk."
+     },
+     {
+      "big": "CANDI SUGAR",
+      "line": "more alcohol, lighter body."
+     },
+     {
+      "big": "PASTEURIZED",
+      "line": "keeps longer; unpasteurized tastes fresher."
+     }
+    ],
+    "read": {
+     "bigIdea": "Small choices, big flavor.",
+     "where": "**Weizen** yeast makes **banana** (isoamyl acetate) and **clove** (4-vinylguaiacol); many **Belgian** yeasts make spicy phenols. **Brettanomyces** is a wild yeast with a **farmyard** funk that also dries beer out. **Candi sugar** ferments completely, so it raises alcohol while keeping the beer **light and dry**: why a tripel drinks easier than its strength. **Lactose** doesn’t ferment and stays sweet (sweet stout). **Pasteurization** heats beer to stop spoilage: pasteurized draft keeps about **90–120 days**, unpasteurized about **45–60**.",
+     "mixup": "Sugar in a Belgian beer makes it drier, not sweeter: the yeast eats it all.",
+     "sayIt": ""
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "sources": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Which is a base malt?",
+   "answer": "Munich",
+   "wrong": [
+    "Crystal 120",
+    "Chocolate",
+    "Roasted barley"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "q": "Crystal (caramel) malt adds…",
+   "answer": "Caramel sweetness, color and body",
+   "wrong": [
+    "Smoke",
+    "Sourness",
+    "Bitterness"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Roasted barley is…",
+   "answer": "Raw barley roasted like coffee, not malted",
+   "wrong": [
+    "A kind of hop",
+    "A pale base malt",
+    "A yeast"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Which is one of the four “noble” hops?",
+   "answer": "Saaz",
+   "wrong": [
+    "Citra",
+    "Cascade",
+    "Galaxy"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Nelson Sauvin is named for its likeness to…",
+   "answer": "Sauvignon Blanc wine",
+   "wrong": [
+    "A Belgian monk",
+    "A Czech town",
+    "Coffee"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Cascade hops taste of…",
+   "answer": "Grapefruit and flowers",
+   "wrong": [
+    "Clove and banana",
+    "Smoke",
+    "Chocolate"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Where does hop bitterness come from?",
+   "answer": "Alpha acids turned bitter in the boil",
+   "wrong": [
+    "Malt sugar",
+    "Yeast",
+    "Water minerals"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "1 IBU is about…",
+   "answer": "1 mg/L of iso-alpha acids",
+   "wrong": [
+    "1% alcohol",
+    "1 gram of hops",
+    "1 volume of CO2"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Why can two beers with the same IBU taste different?",
+   "answer": "Malt sweetness masks bitterness",
+   "wrong": [
+    "IBU measures color",
+    "One is colder",
+    "They can’t"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Pilsen’s water is…",
+   "answer": "Very soft",
+   "wrong": [
+    "Very high in sulfate",
+    "Salty",
+    "High in chlorine"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Burton’s high-sulfate water gives pale ales…",
+   "answer": "A dry, crisp bitterness",
+   "wrong": [
+    "A sweet finish",
+    "A sour taste",
+    "A smoky taste"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Carbonate-rich water suits…",
+   "answer": "Dark beers like porter and stout",
+   "wrong": [
+    "Pilsner",
+    "Kölsch",
+    "Light lager"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Weizen yeast is known for…",
+   "answer": "Banana and clove",
+   "wrong": [
+    "Coffee and chocolate",
+    "Grapefruit and pine",
+    "Smoke"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "q": "Belgian candi sugar makes a strong beer…",
+   "answer": "Lighter and drier",
+   "wrong": [
+    "Sweeter and heavier",
+    "Sour",
+    "Darker only"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Brettanomyces adds…",
+   "answer": "Farmyard funk, and dries the beer out",
+   "wrong": [
+    "Banana",
+    "Caramel",
+    "Butter"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Hop release years differ by source (Cascade 1971 or 1972; Citra 2007 or 2009); only Cascade’s 1971 (Oxford Companion) is on the page.",
+  "Munich and Dublin water profiles left out: no strong source."
+ ]
+}

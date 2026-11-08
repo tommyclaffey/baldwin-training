@@ -1,0 +1,320 @@
+{
+ "number": 7,
+ "programLevel": 2,
+ "slug": "beer-american",
+ "title": "American craft styles",
+ "script": "Lesson 7",
+ "lead": "From cream ale to imperial stout, barrels and fruit: the styles American brewers made their own.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Easy ales",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Cream ale, blonde and American wheat."
+    }
+   ],
+   "know": [
+    "Cream ale: pale, crisp ale made to rival lager.",
+    "Blonde: a brewery’s easy house ale.",
+    "American wheat: bready, no banana or clove (Bell’s Oberon)."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 1C, 18A, 1D (bjcp.org)"
+  },
+  {
+   "name": "IPAs: West Coast, hazy, double",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Three ways to be hoppy."
+    }
+   ],
+   "know": [
+    "West Coast: clear, dry, sharply bitter.",
+    "Hazy: soft, juicy, less bitter.",
+    "Double IPA: 7.5–10%, intensely hoppy but dry."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 21A, 21C, 22A (bjcp.org)"
+  },
+  {
+   "name": "Stouts and barleywine",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "American strength and hops."
+    }
+   ],
+   "know": [
+    "American stout: roasty with American hops.",
+    "Imperial stout: 8–12%, once shipped to Russia’s court.",
+    "American barleywine: much hoppier than English."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 20B, 20C, 22C (bjcp.org)"
+  },
+  {
+   "name": "Barrels, fruit and spice",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Beer plus something else."
+    }
+   ],
+   "know": [
+    "Barrel-aged: spirits barrels add their character.",
+    "Fruit and spice should taste real and balanced.",
+    "Pastry stouts and fruited sours are newer."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 29A, 30A, 33A, 33B (bjcp.org); Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Easy ales",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CREAM ALE",
+      "line": "pale, crisp, lager-like."
+     },
+     {
+      "big": "BLONDE",
+      "line": "easy, malt-leaning house ale."
+     },
+     {
+      "big": "AMERICAN WHEAT",
+      "line": "bready, clean yeast."
+     }
+    ],
+    "read": {
+     "bigIdea": "Ales for lager drinkers.",
+     "where": "**Cream ale** (4.2–5.6%) is a very pale, crisp, fizzy **ale** first brewed in the 1800s to compete with lager; Genesee is the classic. **Blonde ale** (3.8–5.5%) is easy and clean, often a brewery’s **entry-level** house beer. **American wheat** (4–5.5%) is bready with **clean** yeast, so **no banana or clove**: Anchor made the first in 1984, and Michigan’s **Bell’s Oberon** is a listed example.",
+     "mixup": "American wheat and Hefeweizen look alike. The Hefeweizen has banana and clove; the American one doesn’t.",
+     "sayIt": "If you like light lagers, try the blonde. It’s easy and clean."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "IPAs: West Coast, hazy, double",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WEST COAST",
+      "line": "clear, dry, sharply bitter."
+     },
+     {
+      "big": "HAZY",
+      "line": "soft, juicy, lower bitterness."
+     },
+     {
+      "big": "DOUBLE",
+      "line": "7.5–10%, 60–100 IBU."
+     }
+    ],
+    "read": {
+     "bigIdea": "Three kinds of hoppy.",
+     "where": "**West Coast IPA** is BJCP’s American IPA at its driest: **clear**, sharply **bitter**, 5.5–7.5%. **Hazy IPA** is **soft** and **juicy** with lower perceived bitterness; the haze should come from hops and grain proteins, not floating yeast. **Double IPA** (7.5–10%, 60–100 IBU) is intensely hoppy and bitter but stays **dry** and drinkable, without barleywine’s sweetness; Russian River **Pliny the Elder** (2000) made it famous.",
+     "mixup": "Double IPA isn’t sweet. If it tastes rich and malty, that’s closer to barleywine.",
+     "sayIt": "Do you like it bitter and crisp, or soft and juicy? That decides which IPA."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Stouts and barleywine",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AMERICAN STOUT",
+      "line": "roast plus American hops."
+     },
+     {
+      "big": "IMPERIAL STOUT",
+      "line": "8–12%, Russian court history."
+     },
+     {
+      "big": "AMERICAN BARLEYWINE",
+      "line": "strong and hoppy."
+     }
+    ],
+    "read": {
+     "bigIdea": "Big, dark and strong.",
+     "where": "**American stout** (5–7%) is black, strongly **roasted** and bitter, with American hops: Michigan’s **Bell’s Kalamazoo Stout** is an example. **Imperial stout** (8–12%) traces to strong English porters exported in the 1700s, said to be popular at the **Russian imperial court**; it has roast, **dark fruit** and a warming finish (Old Rasputin, Bell’s Expedition). **American barleywine** (8–12%) is much **hoppier** than the English kind; Sierra Nevada Bigfoot (1983) set the standard.",
+     "mixup": "“Imperial” on any style just means a stronger version.",
+     "sayIt": "It’s an imperial stout, about 10%: chocolate, coffee, dark fruit. Best sipped."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Barrels, fruit and spice",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BARREL-AGED",
+      "line": "the barrel’s old spirit adds flavor."
+     },
+     {
+      "big": "FRUIT, SPICE",
+      "line": "present, real and balanced."
+     },
+     {
+      "big": "NEW",
+      "line": "pastry stouts, fruited sours."
+     }
+    ],
+    "read": {
+     "bigIdea": "Beer plus one more thing.",
+     "where": "**Wood-aged** beer rests on oak; **barrel-aged** beer sits in barrels that held **spirits** like bourbon, whose character adds to the beer. They’re usually stronger and darker than the base style. **Fruit** and **spice** beers should taste of the real ingredient, in **balance**, and still taste like beer: Founders Breakfast Stout and Bell’s Cherry Stout are listed examples. Cicerone also expects you to know newer styles by producer: **pastry stouts** and **fruited sours**.",
+     "mixup": "Barrel-aged doesn’t mean sour. A bourbon-barrel stout is rich and boozy, not tart.",
+     "sayIt": "It spent time in bourbon barrels, so expect vanilla and a little whiskey warmth."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "BJCP 2021 Style Guidelines, 1C, 1D, 18A, 20B, 20C, 21A, 21C, 22A, 22C, 29A, 30A, 33A, 33B (bjcp.org); Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Cream ale is…",
+   "answer": "A pale, crisp ale made to rival lager",
+   "wrong": [
+    "A sweet milk stout",
+    "A Belgian ale",
+    "A sour"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 1C (bjcp.org)"
+  },
+  {
+   "q": "Blonde ale is usually…",
+   "answer": "An easy, clean entry-level ale",
+   "wrong": [
+    "A 12% sipper",
+    "A smoked beer",
+    "A sour"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 18A (bjcp.org)"
+  },
+  {
+   "q": "American wheat beer differs from Hefeweizen because…",
+   "answer": "It has no banana or clove",
+   "wrong": [
+    "It’s black",
+    "It’s sour",
+    "It has no wheat"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 1D (bjcp.org)"
+  },
+  {
+   "q": "West Coast IPA is…",
+   "answer": "Clear, dry and sharply bitter",
+   "wrong": [
+    "Hazy and juicy",
+    "Sweet and malty",
+    "Sour"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 21A (bjcp.org)"
+  },
+  {
+   "q": "Double IPA is about…",
+   "answer": "7.5–10% ABV, 60–100 IBU",
+   "wrong": [
+    "3–4% ABV",
+    "5% ABV, 20 IBU",
+    "15% ABV, 10 IBU"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 22A (bjcp.org)"
+  },
+  {
+   "q": "What should a double IPA not be?",
+   "answer": "Sweet and heavy like barleywine",
+   "wrong": [
+    "Hoppy",
+    "Bitter",
+    "Dry"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 22A (bjcp.org)"
+  },
+  {
+   "q": "Imperial stout is linked in history to…",
+   "answer": "The Russian imperial court",
+   "wrong": [
+    "The Belgian monks",
+    "Bavarian law",
+    "Czech brewers"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 20C (bjcp.org)"
+  },
+  {
+   "q": "Imperial stout is about…",
+   "answer": "8–12% ABV",
+   "wrong": [
+    "3–4% ABV",
+    "5% ABV",
+    "20% ABV"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 20C (bjcp.org)"
+  },
+  {
+   "q": "American barleywine is…",
+   "answer": "Hoppier than English barleywine",
+   "wrong": [
+    "Lower in alcohol",
+    "Always sour",
+    "A lager"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 22C (bjcp.org)"
+  },
+  {
+   "q": "A bourbon-barrel stout picks up…",
+   "answer": "Character from the barrel’s old spirit",
+   "wrong": [
+    "Sourness from the barrel",
+    "Hop bitterness",
+    "Nothing"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 33B (bjcp.org)"
+  },
+  {
+   "q": "A good fruit beer…",
+   "answer": "Tastes of real fruit, in balance, and still like beer",
+   "wrong": [
+    "Hides the beer completely",
+    "Tastes artificial",
+    "Must be sour"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 29A (bjcp.org)"
+  },
+  {
+   "q": "“Imperial” on a style name means…",
+   "answer": "A stronger version",
+   "wrong": [
+    "Made in Russia",
+    "Barrel-aged",
+    "Sour"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 20C (bjcp.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "ABV and IBU ranges are guideline ranges; brands vary."
+ ]
+}

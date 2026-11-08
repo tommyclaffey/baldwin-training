@@ -1,0 +1,320 @@
+{
+ "number": 1,
+ "programLevel": 2,
+ "slug": "beer-draft-balance",
+ "title": "Draft in depth",
+ "script": "Lesson 1",
+ "lead": "Pressure, temperature and resistance: why a draft pours right, and how to find out why it doesn’t.",
+ "minutes": 16,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Pressure, temperature, carbonation",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Temperature and gas pressure together set the fizz."
+    }
+   ],
+   "know": [
+    "At 38°F, about 11 psi holds 2.5 volumes of CO2.",
+    "Warmer beer or less pressure: flatter. More pressure: fizzier.",
+    "Most beers sit at 2.2–2.8 volumes."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "A balanced system",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Pressure on the keg equals the resistance of the system."
+    }
+   ],
+   "know": [
+    "Balanced draft pours about 2 oz a second.",
+    "Lifting beer up adds resistance; so does narrow line.",
+    "Fix the flow with line, never with gas."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Gas blends and nitro",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Long draws and nitro beers need nitrogen in the mix."
+    }
+   ],
+   "know": [
+    "Nitrogen pushes without carbonating.",
+    "70/30 CO2/N2 is today’s blend default.",
+    "Nitro: 25/75 gas and a restrictor plate for the cascade."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Fixing a foamy pour",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Check the temperature first."
+    }
+   ],
+   "know": [
+    "Temperature is the most common cause of draft problems.",
+    "Then: kinked line, worn washers, empty gas, dirty system.",
+    "Never compressed air in a keg."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Pressure, temperature, carbonation",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "VOLUMES",
+      "line": "of CO2: most beers 2.2–2.8."
+     },
+     {
+      "big": "38°F + 11 PSI",
+      "line": "≈ 2.5 volumes."
+     },
+     {
+      "big": "WARMER",
+      "line": "or lower pressure: it goes flat."
+     }
+    ],
+    "read": {
+     "bigIdea": "The keg’s pressure has to match the beer.",
+     "where": "**Carbonation** is measured in **volumes of CO2**: most beers sit at **2.2–2.8**. Temperature and gas pressure together hold it there. In the Brewers Association’s example, a keg at **38°F** needs about **11 psi** to keep **2.5 volumes**. Let it warm to 42°F at the same pressure and it slowly goes **flatter**; turn the gas up at 38°F and it gets **fizzier**. The right pressure depends on the bar’s temperature, altitude and the beer, so it’s set once and held steady.",
+     "mixup": "Altitude changes the gauge reading too: add about 1 psi for every 2,000 ft above sea level.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "A balanced system",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BALANCED",
+      "line": "pressure = resistance."
+     },
+     {
+      "big": "2 OZ/SEC",
+      "line": "about 8 seconds a pint."
+     },
+     {
+      "big": "LINE, NOT GAS",
+      "line": "change resistance to fix flow."
+     }
+    ],
+    "read": {
+     "bigIdea": "Resistance slows the beer down to the right speed.",
+     "where": "A **balanced** system applies exactly as much pressure as the system resists, and pours clear beer at about **2 oz a second** (about **8 seconds a pint**). Resistance comes from **gravity** (about half a pound for every foot the beer rises) and **friction** in the line: narrow **3/16-inch** line resists about **3 lb per foot**, wide barrier tubing almost none. Installers fine-tune with a short “choker” of narrow line. **Never** change the gas to speed up or slow down a pour: it over- or under-carbonates the beer and causes foam.",
+     "mixup": "Turning the gas up for a faster pour makes the beer fizzier and foamier. Flow is fixed with line.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Gas blends and nitro",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NITROGEN",
+      "line": "pushes but barely dissolves."
+     },
+     {
+      "big": "70/30",
+      "line": "CO2/N2: the blend default now."
+     },
+     {
+      "big": "25/75",
+      "line": "for nitro stout, through a restrictor plate."
+     }
+    ],
+    "read": {
+     "bigIdea": "Nitrogen lets you push hard without adding fizz.",
+     "where": "Long-draw systems (over about **50 ft**) usually need **blended gas**: **nitrogen** barely dissolves in beer, so it adds pushing power without **overcarbonating**. Blenders used to default to 60/40; the Brewers Association now calls **70% CO2 / 30% N2** the default and says the best practice is to calculate your own. **Nitro** beers are low in CO2 and pushed with **25/75** gas through a faucet with a **restrictor plate** that knocks the nitrogen out into the cascading head. Put nitro gas on a regular beer and it goes **flat** in days; put pure CO2 on a nitro beer and it **overcarbonates**.",
+     "mixup": "Nitro beer isn’t full of nitrogen. It’s low-CO2 beer with a little nitrogen, and the faucet makes the creamy head.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Fixing a foamy pour",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "TEMPERATURE",
+      "line": "check it first: keg, then faucet."
+     },
+     {
+      "big": "CHECKLIST",
+      "line": "kinks, washers, gas, cleanliness."
+     },
+     {
+      "big": "NO AIR",
+      "line": "compressors never touch a keg."
+     }
+    ],
+    "read": {
+     "bigIdea": "Foam has a short list of causes.",
+     "where": "The Brewers Association calls **temperature** the most common cause of draft problems: check the beer in the **keg**, then at the **faucet**. Then work the list: a **kinked** or wrong-size line, pressure **too high or too low**, worn **coupler or faucet washers**, a **dirty** system, a **leak or empty** gas tank, a torn keg valve seal, clogged faucet vents. Air compressors may only drive beer **pumps** or bag-in-keg systems, **never** a regular keg.",
+     "mixup": "Foam isn’t always too much gas. Too little pressure causes foam too, as CO2 breaks out of the beer.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Carbonation in beer is measured in…",
+   "answer": "Volumes of CO2",
+   "wrong": [
+    "IBU",
+    "Degrees Plato",
+    "PSI only"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Most beers are carbonated to about…",
+   "answer": "2.2–2.8 volumes",
+   "wrong": [
+    "0.5 volumes",
+    "5–6 volumes",
+    "10 volumes"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "At 38°F, about how much pressure holds 2.5 volumes of CO2?",
+   "answer": "About 11 psi",
+   "wrong": [
+    "About 2 psi",
+    "About 40 psi",
+    "About 100 psi"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A balanced draft system pours about…",
+   "answer": "2 oz per second",
+   "wrong": [
+    "1 oz per minute",
+    "10 oz per second",
+    "A pint in 1 second"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "To slow down a fast pour, you change…",
+   "answer": "The resistance (line length or size)",
+   "wrong": [
+    "The gas pressure",
+    "The beer",
+    "The glass"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Which line gives the most resistance per foot?",
+   "answer": "Narrow 3/16-inch vinyl",
+   "wrong": [
+    "Wide 3/8-inch barrier tubing",
+    "They’re all the same",
+    "Gas line"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Why blend nitrogen into the gas on a long-draw system?",
+   "answer": "It pushes without overcarbonating",
+   "wrong": [
+    "It adds flavor",
+    "It cools the beer",
+    "It cleans the lines"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The Brewers Association’s blend default today is…",
+   "answer": "70% CO2 / 30% nitrogen",
+   "wrong": [
+    "100% nitrogen",
+    "25% CO2 / 75% nitrogen for everything",
+    "Compressed air"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Nitro stout is pushed with…",
+   "answer": "25/75 CO2/nitrogen gas",
+   "wrong": [
+    "100% CO2",
+    "Compressed air",
+    "70/30 gas"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The first thing to check on a foamy draft is…",
+   "answer": "The temperature",
+   "wrong": [
+    "The glass size",
+    "The tap handle",
+    "The menu"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Can too little gas pressure cause foam?",
+   "answer": "Yes, CO2 breaks out of the beer",
+   "wrong": [
+    "No, only too much",
+    "Only with nitro",
+    "Only in cans"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Air compressors may be used to…",
+   "answer": "Drive beer pumps, never to push a regular keg",
+   "wrong": [
+    "Push any keg",
+    "Carbonate beer",
+    "Clean lines"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Pressure figures are the Brewers Association’s rounded example, not settings for our system; our draft service sets pressures."
+ ]
+}

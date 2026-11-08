@@ -1,0 +1,339 @@
+{
+ "number": 8,
+ "programLevel": 2,
+ "slug": "beer-off-flavors",
+ "title": "Off-flavors in depth",
+ "script": "Lesson 8",
+ "lead": "What a flaw tastes like, what caused it, and when it isn’t a flaw at all.",
+ "minutes": 16,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "The five on the exam",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Cicerone’s tasting exam spikes these five."
+    }
+   ],
+   "know": [
+    "Acetaldehyde: green apple. DMS: cooked corn.",
+    "Diacetyl: butter. Lightstruck: skunk.",
+    "Trans-2-nonenal: wet cardboard."
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "name": "Fermentation flavors",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Normal in one style, a fault in another."
+    }
+   ],
+   "know": [
+    "Banana (isoamyl acetate): right in Weizen, wrong elsewhere.",
+    "Sulfur: a whiff is normal in some German lagers.",
+    "Solvent, hot alcohol: fermented too warm."
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "name": "Contamination",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Chemicals, metal and bugs."
+    }
+   ],
+   "know": [
+    "Medicinal, Band-Aid: chlorine (chlorophenol).",
+    "Metallic: iron or worn equipment.",
+    "Vinegar or yogurt: bacteria, unless the style is sour."
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "name": "Age, hops and texture",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Old beer, old hops and harsh tannin."
+    }
+   ],
+   "know": [
+    "Cardboard in pale beer; sherry in strong dark beer.",
+    "Sweaty cheese: old hops (isovaleric).",
+    "Puckering, tea-like: astringency."
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "The five on the exam",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "GREEN APPLE",
+      "line": "acetaldehyde: too young."
+     },
+     {
+      "big": "COOKED CORN",
+      "line": "DMS: weak boil."
+     },
+     {
+      "big": "BUTTER",
+      "line": "diacetyl: rushed beer or dirty lines."
+     }
+    ],
+    "read": {
+     "bigIdea": "Five flaws every beer pro should spot.",
+     "where": "Cicerone’s Certified Cicerone tasting exam spikes beers with five: **acetaldehyde** (green apple, latex paint; beer pulled off the yeast too early), **DMS** (cooked corn, cabbage; a weak or covered boil), **diacetyl** (butter, butterscotch; rushed fermentation or dirty draft lines), **lightstruck** (skunky; light) and **trans-2-nonenal** (wet cardboard, paper; oxidation). A light DMS note is allowed in some pale lagers, a little diacetyl in some English and Czech beers.",
+     "stopsTitle": "The five",
+     "stops": [
+      {
+       "name": "Acetaldehyde",
+       "text": "**Green apple**: too young."
+      },
+      {
+       "name": "DMS",
+       "text": "**Cooked corn**: weak boil."
+      },
+      {
+       "name": "Diacetyl",
+       "text": "**Butter**: rushed or dirty lines."
+      },
+      {
+       "name": "Lightstruck / nonenal",
+       "text": "**Skunk** from light; **cardboard** from age."
+      }
+     ],
+     "mixup": "Some people can’t smell diacetyl at all. If a guest says butter, believe them.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Fermentation flavors",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BANANA",
+      "line": "right in Weizen, a fault elsewhere."
+     },
+     {
+      "big": "SULFUR",
+      "line": "a whiff OK in some German lagers."
+     },
+     {
+      "big": "SOLVENT",
+      "line": "nail polish: too warm."
+     }
+    ],
+    "read": {
+     "bigIdea": "Context decides.",
+     "where": "**Banana** (isoamyl acetate) is the signature of Weissbier; in other styles strong banana is a **fault** from fermenting too warm. **Sulfur**: rotten egg or struck match from yeast, usually gone by packaging; a faint whiff is normal in some German lagers and Kölsch. **Solvent** and **hot alcohol** (nail polish, burning) come from fermenting too warm or too little yeast; a little warmth is normal in barleywine.",
+     "mixup": "Banana in a pilsner is a fault. Banana in a Hefeweizen is the point.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Contamination",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BAND-AID",
+      "line": "chlorophenol: chlorine."
+     },
+     {
+      "big": "METALLIC",
+      "line": "iron, coins, worn equipment."
+     },
+     {
+      "big": "SOUR",
+      "line": "bacteria, unless the style is sour."
+     }
+    ],
+    "read": {
+     "bigIdea": "Flavors that shouldn’t be there.",
+     "where": "**Medicinal** (plastic, Band-Aid) is **chlorophenol**: chlorine from tap water or sanitizer reacting with the beer. **Metallic** (coins, blood, ink) comes from iron or worn equipment. **Butyric** acid (baby vomit, rancid butter) points to bacteria and poor hygiene. **Lactic** (yogurt) and **acetic** (vinegar) sourness are right in lambic, Flanders and Berliner weisse; anywhere else they mean bacteria, and on draft, **dirty lines**.",
+     "mixup": "A sour IPA on purpose is fine. An IPA that’s gone sour on draft isn’t.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Age, hops and texture",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CARDBOARD",
+      "line": "pale beer, oxidized."
+     },
+     {
+      "big": "SHERRY",
+      "line": "strong dark beer, aged."
+     },
+     {
+      "big": "SWEATY CHEESE",
+      "line": "old hops (isovaleric)."
+     }
+    ],
+    "read": {
+     "bigIdea": "How age and old hops show.",
+     "where": "**Oxidation** shows as **cardboard** and paper in pale, light beers; in strong, dark beers it turns **sherry**-like (dried fruit, almond), which can add complexity to barleywine. **Isovaleric** acid (aged cheese, **sweaty socks**) usually means **old, badly stored hops**. **Mercaptans** are tropical in some new hops at low levels, but onion, garlic or **burnt rubber** when high. **Astringency** is puckering, like over-steeped tea: tannin from grain husks or heavy hopping.",
+     "mixup": "Sherry notes in a 10-year-old barleywine can be good. In a pale lager, any oxidation is a fault.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org); Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Green apple flavor is…",
+   "answer": "Acetaldehyde",
+   "wrong": [
+    "DMS",
+    "Diacetyl",
+    "Isovaleric acid"
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "q": "Cooked corn or cabbage is…",
+   "answer": "DMS",
+   "wrong": [
+    "Acetaldehyde",
+    "Chlorophenol",
+    "Butyric acid"
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "q": "Which five off-flavors does the Certified Cicerone tasting exam use?",
+   "answer": "Acetaldehyde, diacetyl, DMS, lightstruck, trans-2-nonenal",
+   "wrong": [
+    "Banana, clove, smoke, sour, sweet",
+    "Only lightstruck",
+    "Metallic, salt, soap, iron, chalk"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "q": "Banana flavor is a fault in…",
+   "answer": "A pilsner",
+   "wrong": [
+    "A Hefeweizen",
+    "A Dunkelweizen",
+    "A Weizenbock"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Nail polish or solvent flavor usually means…",
+   "answer": "Fermented too warm",
+   "wrong": [
+    "Too much light",
+    "Old hops",
+    "Chlorine"
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "q": "A faint sulfur note is normal in…",
+   "answer": "Some German lagers",
+   "wrong": [
+    "Every IPA",
+    "No beer",
+    "Stouts only"
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "q": "Band-Aid or plastic flavor comes from…",
+   "answer": "Chlorine (chlorophenol)",
+   "wrong": [
+    "Hops",
+    "Light",
+    "Lactose"
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "q": "Metallic flavor comes from…",
+   "answer": "Iron or worn equipment",
+   "wrong": [
+    "Yeast",
+    "Wheat",
+    "Cold storage"
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "q": "Vinegar flavor in a pilsner on draft points to…",
+   "answer": "Bacteria in dirty lines",
+   "wrong": [
+    "A fresh keg",
+    "Light",
+    "Too much hops"
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "q": "Wet cardboard in a pale lager means…",
+   "answer": "Oxidation",
+   "wrong": [
+    "Fresh hops",
+    "Wild yeast",
+    "Chlorine"
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "q": "Sweaty cheese flavor usually means…",
+   "answer": "Old, badly stored hops",
+   "wrong": [
+    "Fresh hops",
+    "Light",
+    "Too much malt"
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  },
+  {
+   "q": "Astringency feels like…",
+   "answer": "Over-steeped tea, puckering",
+   "wrong": [
+    "Butter",
+    "Banana",
+    "Skunk"
+   ],
+   "source": "BJCP Beer Exam Study Guide, Troubleshooting (bjcp.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Off-flavors should be learned by tasting with a spiking kit; check our liquor-licence and HR policy before any tasting session."
+ ]
+}

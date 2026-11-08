@@ -1,0 +1,955 @@
+{
+  "checked": "2026-11-08",
+  "syllabus": {
+    "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+    "landing_page": "https://www.cicerone.org/us-en/certified-cicerone",
+    "version": "US Certified Cicerone Syllabus, Version 6.0. PDF header: 'Updated August 1, 2024' (27 pages, copyright 2024).",
+    "sections": [
+      "I Keeping and Serving Beer (A Purchasing and accepting beer, B Serving alcohol, C Beer storage, D Draft principles, E Draft systems, F Beer glassware, G Serving bottled beer, H Serving draft beer, I Other draft service practices)",
+      "II Beer Styles (A Understanding beer styles, B Style parameters, C Beer style knowledge)",
+      "III Beer Flavor and Evaluation (A Taste and flavor, B Identify normal flavors of beer and their source, C Identify common beer off flavors by name and source, D Tasting exam format)",
+      "IV Beer Ingredients and Brewing Processes (A Ingredients, B Processes)",
+      "V Pairing Beer with Food (A Possible outcomes, B Vocabulary, C Pairing concepts, D Common interactions, E Creating a pairing, F Designing a meal, G Classic pairings, H Cooking with beer)",
+      "Appendix A: Recommended Culinary Knowledge"
+    ],
+    "adds_over_cbs": "Same five areas as CBS, much deeper: draft balance and system design (static/dynamic resistance, gas blends, couplers, cooling types, troubleshooting), growlers, jockey boxes and cask ale; about 70 named styles with BJCP 2021 numeric ranges and three commercial examples each (vs about 25 descriptive at CBS), plus specialty, emerging, NA and gluten-free beers; named flavor compounds and their causes with a live tasting exam; malting, hop regions and chemistry, yeast taxonomy, water cities and every brewing step; and real pairing skill (intensity, complement/contrast/cut, interactions, meal design, classic pairings, cooking with beer, culinary vocabulary).",
+    "weighting": "Keeping and Serving 25%, Styles 25%, Flavor and Evaluation 25%, Ingredients and Processes 15%, Pairing 10% (cicerone.org/us-en/certified-cicerone).",
+    "notes": "PDF downloaded and read in full on 2026-11-08. All facts are paraphrased; the syllabus and BJCP guidelines are copyrighted. Style numbers come from the BJCP 2021 Beer Style Guidelines PDF (bjcp.org, 2025-02 reprint '2021_Guidelines_Beer_1.25.pdf'). Draft numbers come from the BA Draught Beer Quality Manual (4th ed., 2019 PDF), which Cicerone names as its draft reference."
+  },
+  "topics": {
+    "syllabus": [
+      {
+        "fact": "The Certified Cicerone syllabus keeps the same five knowledge areas as CBS (Keeping and Serving Beer; Beer Styles; Beer Flavor and Evaluation; Ingredients and Brewing Processes; Pairing Beer with Food) but goes much deeper in each. New subsections include Draft principles (I.D), Other draft service practices such as growlers, jockey boxes and cask ale (I.I), a Tasting exam format section (III.D), a separate Processes section (IV.B) and eight pairing subsections (V.A-H).",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, outline (p.1)",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Exam weighting by area: Keeping and Serving Beer 25%, Beer Styles 25%, Beer Flavor and Evaluation 25%, Ingredients and Brewing Processes 15%, Pairing Beer with Food 10%. By format: short answer 66.75%, essay 12.5%, demonstration 4%, tasting 16.75%.",
+        "source": "Cicerone Certification Program, Certified Cicerone page, Exam Scoring Breakdown",
+        "url": "https://www.cicerone.org/us-en/certified-cicerone",
+        "verified": true
+      },
+      {
+        "fact": "For every listed style, candidates must know the upper and lower limits for ABV, IBU and SRM, the flavor profile, carbonation/body/mouthfeel, basic history, and three commercial examples (a classic producer, an American producer, and another notable producer). Cicerone uses the BJCP 2021 guidelines for all numbers and expects awareness of the Brewers Association guidelines.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, II.C.1 and footnotes 3-4",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "The style list is organised by region: Belgium and France (lambic family, Flanders ales, Trappist/abbey ales, pale Belgian beers, saison, bière de garde, witbier); Britain and Ireland (bitters, English IPA, milds, browns, porters, stouts, old ale, barley wine, four Scottish ales, Irish red and stout); Germany, Czech Republic and Austria (pale, amber and dark lagers, bocks, wheat beers, Altbier, Kölsch); the United States (lagers, pale ales, IPAs, dark ales, barleywine, specialty beers); plus International Pale Lager and Baltic Porter. By our count that is about 70 named styles, versus about 25 at CBS.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, II.C.2 (count is ours)",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Also tested: specialty beers made with novel ingredients (rye/spelt, smoked malt, honey/molasses, fruit, herbs and spices, coffee, chocolate) or novel processes (Brettanomyces, Lactobacillus, barrel aging); emerging styles (pastry/dessert stout, American fruited sour) where producers matter but numbers aren't required; non-alcoholic vs alcohol-free beer; and gluten-free vs gluten-reduced beer.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, II.C.2.d.vii and II.C.2.f-h",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Flavor section adds named flavor compounds and their sources: from yeast (diacetyl, H2S and other sulfur, acetaldehyde, phenols incl. 4-vinylguaiacol, esters incl. isoamyl acetate); from other organisms (diacetyl, acetic and lactic acid); from packaging and storage (oxidation incl. trans-2-nonenal, waxy/lipstick and sherry notes; lightstruck; autolysis; draft line infection); and from process/ingredients (isovaleric acid, metallic, DMS, astringent/tannic).",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, III.C",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Ingredients go to a technical level: malting stages and malt families (kilned base malts Pils, Pale Ale, Vienna, Munich; kilned specialty Victory and Biscuit; stewed crystal/caramel; roasted chocolate and black), hop growing regions, the four noble hops, hop forms (whole, pellet, extracts including skunk-resistant hydro-isomerized extract), yeast taxonomy, non-Saccharomyces organisms, the water of Munich, Pilsen and Burton-on-Trent, and sugars such as candi sugar and lactose.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, IV.A",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Brewing processes covered step by step: milling, mashing (infusion, cereal, step, decoction), lautering (vorlauf, sparge), boiling, whirlpool, chilling (heat exchanger or coolship), aeration and pitching, fermentation, lagering, aging in steel or new/used wood, clarification (filtration, finings, settling), carbonation methods and packaging/pasteurization.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, IV.B",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Draft knowledge expands to system design: every component on the gas side, beer side and cooling side; couplers A, D, G, M, S, U and KeyKeg; standard, nitro and flow-control faucets; direct-draw, glycol and air-cooled systems; balance using static and dynamic resistance; and troubleshooting no beer, foaming, flat and cloudy beer.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, I.D-I.E",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Cask ale is now in scope: the CAMRA definition of real ale, how cask conditioning carbonates the beer, cask parts (cask, tap, soft and hard spiles), cellaring steps (stillaging, spiling, tapping, judging readiness by clarity, condition, flavor and temperature), and service by gravity or beer engine with or without a sparkler.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, I.I.3",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Pairing at this level means naming specific beers or styles for specific dishes. Appendix A lists culinary knowledge candidates should have, e.g. cheeses (burrata, Camembert, chèvre, Gruyère, paneer), spices and pantry items (harissa, saffron, miso, fish sauce, tahini) and cooking methods (braise, deglaze, sous vide, cure).",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, V and Appendix A",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      }
+    ],
+    "draft_balance": [
+      {
+        "fact": "Temperature and pressure together set carbonation. In the BA's illustration, a keg at 38°F needs about 11 psi to hold 2.5 volumes of CO2. Keep 11 psi but let the beer warm to 42°F and carbonation drifts down to about 2.3 volumes over a few days; keep 38°F but raise the gas to 13 psi and it climbs to about 2.7 volumes. (The manual says its table is rounded and not for adjusting a real system.)",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.3 Carbonation Dynamics, table 3.1",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "'Volumes of CO2' means how many keg-volumes of gas are dissolved in one keg of beer. Most beers sit at 2.2-2.8 volumes, with specialty beers from about 1.2 up to 4.0. Europe uses grams per liter: multiply volumes by about 2 (2.5 volumes is roughly 5 g/L).",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), sidebar Units of Carbonation",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "The ideal gauge pressure is the point where CO2 is neither escaping from the beer into the keg headspace nor being absorbed into it. It depends on temperature, altitude and the beer's carbonation, so it varies from bar to bar and must be held steady.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.3",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Altitude: gauges read pressure relative to the air around them, and air pressure drops about 1 psi per 2,000 ft. Rule of thumb: add 1 psi to the regulator for every 2,000 ft above sea level (about +5 psi at 10,000 ft).",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.1 Elevation Affects Pressure and ch.3 A Note about Altitude",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "A balanced system is one where the pressure applied to the keg equals the total resistance of the system. Balanced draft pours clear beer at about 2 oz per second: roughly 8 seconds for a pint and 1 minute per gallon.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.3 System Balance and Achieving Flow",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Never change gas pressure to speed up or slow down the pour. Raising pressure overcarbonates the beer and causes foam; lowering it also causes foam and eventually flat beer. If the flow rate needs changing, change the system's resistance (line length or diameter), not the gas.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.3",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Resistance comes in two kinds. Static resistance is gravity: each foot the beer rises adds about 0.43 lb (the trade rounds to 0.5 lb), and each foot it drops below the keg subtracts the same. Measure from the middle of the keg to the faucet. Dynamic resistance is friction from beer line and hardware; towers can add 0 to 8 lb.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.4 Long-Draw Draught Systems",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Line size matters a lot. Example resistance per foot: 3/16-inch ID vinyl about 3.0 lb, 1/4-inch vinyl 0.85 lb, 5/16-inch barrier tubing 0.10 lb, 3/8-inch barrier 0.06 lb. A short length of narrow 3/16-inch 'choker' line at the tower is the installer's main tool for fine-tuning balance. A typical direct-draw kegerator balances with 4-5 ft of 3/16-inch vinyl.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), table 4.1 and ch.3",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "System types: a long-draw system is over 50 ft and usually needs blended gas. Air-cooled lines work up to about 15 ft (single duct) or 25 ft (double duct); glycol-cooled systems handle anything longer, with towers up to several hundred feet from the cooler. Short direct-draw systems can usually run on 100% CO2.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.4 and glossary",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Why blend nitrogen in: nitrogen barely dissolves in beer at draft pressures and is inert, so mixing it with CO2 lets a long system push harder without overcarbonating. Pure CO2 in a long draw rarely works, because even slight warming in the lines lets CO2 break out and the beer foams; the higher blended pressure keeps beer 'packed' above that breakout point.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.4 Mixed Gas",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Gas blenders used to default to a 60% CO2 / 40% N2 mix, but retail studies found 70/30 is more likely to keep beer correctly carbonated, so 70/30 is now the industry default. The BA says the best practice is to calculate the exact blend for your system. Two-mix blenders add a 25/75 blend for nitro beers.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.4 Gas Blenders",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Premixed 'G-Mix' bottles (25-30% CO2 / 70-75% N2) are for nitro beers only. On a regular beer (over 2.0 volumes) the beer loses carbonation and pours flat after 3 to 5 days. The reverse is also true: 100% CO2 on a nitro beer overcarbonates it fast and makes it unpourable.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.4 Blended Gas Bottles",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Nitro beer was developed in the 1960s to imitate cask ale's creaminess. It is still mostly a low-CO2 beer (about 1.1-1.7 volumes, typically ~1.2) with a tiny amount of nitrogen (parts per million). It is pushed with a 25% CO2 / 75% N2 blend at high pressure (the BA's Denver example works out to 37.8 psi) through a nitro faucet whose restrictor plate with five tiny holes adds about 20 lb of resistance and knocks the nitrogen out to form the cascading head.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.4 Nitrogenated (Nitro) Beers",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Troubleshooting starts with temperature. The BA calls temperature control the single most common cause of draft problems: first check the beer's temperature in the keg, then at the faucet. Other foam causes on its checklist: kinked or wrong-size line, pressure too high or too low, worn coupler or faucet washers, dirty system, CO2 leak or empty tank, torn keg valve seal, and clogged faucet vent holes.",
+        "source": "Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF), ch.8 Troubleshooting, table 8.1",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "High-resistance systems can add a beer pump to help the gas push the beer. Air compressors may only power such pumps or push single-use bag-in-keg containers; they must never pressurize a traditional keg.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, I.D.3 and I.E.1",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      }
+    ],
+    "glassware_cellaring": [
+      {
+        "fact": "Cicerone's rules for choosing a glass: stronger beers go in smaller glasses; leave room for a proper head; shape follows cultural tradition, affects presentation and can change how aroma and flavor come across; and a brand's own glass can be matched to its beer.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, I.F.1",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Why shape matters: a thin, slightly flared rim delivers beer cleanly to the palate; a bowl collects and concentrates aroma and makes swirling easy; a stem keeps the drinker's hand from warming the beer. The Oxford Companion says the Belgian tulip does all of this, and that a white wine glass is a good stand-in (a red wine glass for very strong or aged beers).",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'glassware'",
+        "url": "https://www.beerandbrewing.com/dictionary/d9Rqb0MQxr",
+        "verified": true
+      },
+      {
+        "fact": "Tulip: a short-stemmed glass, usually about 250 ml (8.5 oz), with a wide bowl that flares at the mouth; suited to rich, complex, stronger beers because the bowl allows swirling. Scotch ales are sometimes served in a pint-size tulip called a 'thistle'.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'drinking vessels'",
+        "url": "https://www.beerandbrewing.com/dictionary/ERoycJ0Zj2",
+        "verified": true
+      },
+      {
+        "fact": "Flute: a narrow stemmed glass that traps head and aroma, favored for finely carbonated beers like lambic and gueuze. Pilsner glass: essentially a straight-sided tulip, good for pale and amber lagers; a stemmed version is called a pokal in Germany.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'drinking vessels'",
+        "url": "https://www.beerandbrewing.com/dictionary/ERoycJ0Zj2",
+        "verified": true
+      },
+      {
+        "fact": "Weissbier (weizen) glass: tall, like an oversized upside-down flute with no stem, usually sized for half a liter (about 16 oz) with extra headspace for the style's high carbonation and big foam. Weizenbock is also served in it.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'drinking vessels'; Craft Beer & Brewing, Your Essential Guide to Lager Drinkware",
+        "url": "https://www.beerandbrewing.com/dictionary/ERoycJ0Zj2",
+        "verified": true
+      },
+      {
+        "fact": "Goblet and chalice: goblets are stocky, short-stemmed, bowl-shaped glasses good for strong beers; a chalice is a large goblet, and Belgian Trappist and abbey ales are often served in one.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'drinking vessels'",
+        "url": "https://www.beerandbrewing.com/dictionary/ERoycJ0Zj2",
+        "verified": true
+      },
+      {
+        "fact": "Stange: a narrow cylinder of about 200 ml (BJCP says 20 cl) that is the traditional Kölsch glass in Cologne; also suits Altbier and small pours of German lagers.",
+        "source": "BJCP 2021 Beer Style Guidelines 5B Kölsch; Craft Beer & Brewing, Illustrated Guide to Homebrewing ch.11",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Nonic pint: the standard English pub glass, with a bulge near the top so it stacks without sticking; most hold an imperial pint (the source says about 19 US fl oz). The classic glass for bitter, pale ale, brown ale, porter and stout.",
+        "source": "Craft Beer & Brewing, Illustrated Guide to Homebrewing ch.11 (Dave Carpenter)",
+        "url": "https://www.beerandbrewing.com/the-illustrated-guide-to-homebrewing-chapter-11-serving-your-beer",
+        "verified": true
+      },
+      {
+        "fact": "Snifter: reserved for the strongest beers (barleywine, imperial stout, Belgian strong ales); the wide bowl is cupped in the hand, which warms the beer. Teku: a newer stemmed, angular tasting glass the same author likes for sours, imperial stout and Scotch ale. (Who designed the Teku was only seen in non-preferred sources, so it's left out here.)",
+        "source": "Craft Beer & Brewing, Illustrated Guide to Homebrewing ch.11 (Dave Carpenter)",
+        "url": "https://www.beerandbrewing.com/the-illustrated-guide-to-homebrewing-chapter-11-serving-your-beer",
+        "verified": true
+      },
+      {
+        "fact": "Lager traditions: the 1-liter Mass (Masskrug) is the Oktoberfest mug; Czech lager is usually drunk from dimpled handled mugs (often called Tübinger), which suit side-pull taps where foam is poured first; doppelbock is often served in a stout stemmed 'bockbecher'. The Oxford Companion criticises serving every beer in a thick straight-sided shaker pint.",
+        "source": "Craft Beer & Brewing, Your Essential Guide to Lager Drinkware; Oxford Companion 'drinking vessels'",
+        "url": "https://www.beerandbrewing.com/your-essential-guide-to-lager-drinkware",
+        "verified": true
+      },
+      {
+        "fact": "Most beer is at its best the day it leaves the brewery and has a shelf life of months, rarely more than a year. Only certain beers improve with age. The Oxford Companion separates maturation (the brewery's short planned conditioning) and staling (unwanted damage from heat, light and oxygen) from deliberate aging.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'aging of beer'",
+        "url": "https://www.beerandbrewing.com/dictionary/wyphNb2YK8",
+        "verified": true
+      },
+      {
+        "fact": "A beer worth cellaring should be at least one of three things: strong, sour or smoked. High alcohol, acidity and smoke phenols act as preservatives. Don't age hop-forward beers (IPAs, double IPAs; Russian River prints 'do not age' on Pliny the Elder), fruity-estery beers, or unfiltered wheat beers, whose body and fruit fade. Twist-off caps and swing-top gaskets let oxygen in over time.",
+        "source": "Craft Beer & Brewing, In the Cellar: Don't Age These Beers",
+        "url": "https://www.beerandbrewing.com/dont-age-these-beers",
+        "verified": true
+      },
+      {
+        "fact": "What ages well: strong beers, especially malt-forward ones with residual sugar such as barley wine, imperial stout and old ale; strong dark Trappist and abbey ales; and lambic and gueuze, which can keep evolving for years. Dark beers tend to age better than pale ones, with lambic and some tripels as exceptions.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'aging of beer'",
+        "url": "https://www.beerandbrewing.com/dictionary/wyphNb2YK8",
+        "verified": true
+      },
+      {
+        "fact": "How to store: about 52-55°F (11-13°C), upright and in the dark. Colder slows aging; much warmer speeds it up but tastes worse. Crown caps and Champagne-style corks don't need the bottle on its side the way wine corks do. Stand old bottles upright for at least 24 hours before pouring, and pour carefully off the sediment.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'aging of beer'",
+        "url": "https://www.beerandbrewing.com/dictionary/wyphNb2YK8",
+        "verified": true
+      },
+      {
+        "fact": "How flavors change with age: bready malt turns nutty, then toffee, then almond and sherry; roast goes from fresh coffee to dark chocolate to old Madeira; hop bitterness and aroma fade; banana-type esters drop while wine-like esters build; pale beers darken. Bad aging in delicate beers brings black currant or tomato notes, then wet cardboard.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'aging of beer'",
+        "url": "https://www.beerandbrewing.com/dictionary/wyphNb2YK8",
+        "verified": true
+      },
+      {
+        "fact": "Warning signs a cellared beer is fading: thinning body, stale cardboard notes, carbonation leaking out through the cap or cork (corks dry out below about 55% humidity), medicinal or plastic notes from Brettanomyces (Orval can show this after about three years), green-apple acetaldehyde, and meaty or soy-sauce autolysis flavors from dying yeast.",
+        "source": "Craft Beer & Brewing, Past Its Prime? Vintage Beer Warning Signs",
+        "url": "https://www.beerandbrewing.com/past-its-prime-vintage-beer-warning-signs",
+        "verified": true
+      },
+      {
+        "fact": "Bottle conditioning means beer is bottled with priming sugar and live yeast, which re-ferments in the bottle (usually done in 2-3 weeks) to carbonate it naturally. Done well, it gives finer carbonation, better foam, more complex flavor, longer shelf life and better aging than force carbonation. Cicerone says to store bottle-conditioned beer upright so the sediment settles.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'bottle conditioning'; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 I.G.1",
+        "url": "https://www.beerandbrewing.com/dictionary/iKSxvCoDdk",
+        "verified": true
+      },
+      {
+        "fact": "Vintage beer: more brewers now print the production year on age-worthy bottles, and some bars and restaurants keep vintage lists. Barley wines and imperial stouts aged 10-20 years are not unusual; in 2006 Burton's Worthington White Shield brewery found about 200 bottles of Bass Ratcliff Ale from 1869 that tasters said resembled a fine old Amontillado sherry.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'aging of beer'",
+        "url": "https://www.beerandbrewing.com/dictionary/wyphNb2YK8",
+        "verified": true
+      }
+    ],
+    "ingredients": [
+      {
+        "fact": "Malt families (Cicerone): kilned base malts (Pils, Pale Ale, Vienna, Munich); kilned specialty malts (e.g. Victory, Biscuit); stewed malts (crystal/caramel); and roasted malts (chocolate, black). Other grains to know: wheat, oats and rye for their flavor and texture, and corn and rice as adjuncts.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, IV.A.1",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Crystal (caramel) malt is moved wet from germination into a roasting drum and 'stewed' at about 147-162°F so the starch turns to sugar inside the husk, then dried hot so those sugars set into unfermentable dextrins. It gives caramel, nutty sweetness, color (about 10-120°L), body and head retention, and has no enzymes of its own.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'crystal malt'",
+        "url": "https://www.beerandbrewing.com/dictionary/Sdt5aAdUAi",
+        "verified": true
+      },
+      {
+        "fact": "Munich malt was created by Spaten in Munich in the late 1830s and first used for Märzen in 1841; Dreher developed the similar Vienna malt near Vienna. Both are kilned gently enough to keep their enzymes, so they can be most of the grain bill and give bready, toasty depth.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'Munich malt'",
+        "url": "https://www.beerandbrewing.com/dictionary/mkURPnjPOf",
+        "verified": true
+      },
+      {
+        "fact": "Roasted malts (brown, chocolate, black patent) are roasted hot enough to destroy all enzymes and add toffee, chocolate and coffee flavors plus color. Roasted barley is not malt at all: it is raw barley roasted like coffee, and it gives Irish-style stouts their bitter coffee edge.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'roasted malts'",
+        "url": "https://www.beerandbrewing.com/dictionary/9f6TaGJ1JT",
+        "verified": true
+      },
+      {
+        "fact": "'Noble hops' is a 1980s US marketing term with no technical meaning. It refers to four old Central European aroma hops with low alpha acid and high aroma oil: Hallertauer Mittelfrüh, Spalt, Tettnanger and Saaz. Cicerone lists the same four.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'noble hops'; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 IV.A.2.d",
+        "url": "https://www.beerandbrewing.com/dictionary/eSxMBDAtWS",
+        "verified": true
+      },
+      {
+        "fact": "Saaz is named after the Czech town Žatec. It has low bitterness (about 3-5% alpha acid) but a prized aroma, and with pale Moravian malt and soft water it defines Bohemian pilsner. German Tettnanger is very similar (2.5-5.5% alpha); American-grown 'Tettnanger' is a different variety.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'Saaz (hop)' and 'Tettnanger (hop)'",
+        "url": "https://www.beerandbrewing.com/dictionary/j0Hhs33kNQ",
+        "verified": true
+      },
+      {
+        "fact": "English hops: East Kent Golding comes only from the eastern part of Kent and is earthy with apricot and light spice (about 4-5.5% alpha); Fuggle was propagated by Richard Fuggle in 1875. Together they are the classic hops of traditional English ales. Cicerone sums up English hops as earthy, herbal and woodsy, and German/Czech hops as floral, perfumy, peppery and minty.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'East Kent Golding (hop)' and 'English hops'; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 III.B.2",
+        "url": "https://www.beerandbrewing.com/dictionary/Ki5c7acWZ3",
+        "verified": true
+      },
+      {
+        "fact": "Classic American hops: Cascade (USDA, Corvallis, Oregon, released 1971) is floral and citrusy with grapefruit and pine, and once defined US craft beer; Centennial is floral, citrus and lemon; Simcoe (Yakima Chief Ranches, 2000) is piney, woody and grapefruit with dank onion-garlic notes. Note: CraftBeer.com gives Cascade's release as 1972 and Centennial as developed 1974, released 1991; the Oxford Companion says 1971 for Cascade.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'Cascade (hop)' and 'Simcoe (hop)'; CraftBeer.com, 12 Single-Hop Beers",
+        "url": "https://www.beerandbrewing.com/dictionary/BBfE6xHJQS",
+        "verified": true
+      },
+      {
+        "fact": "Modern fruit-forward American hops: Citra (Hop Breeding Company) is about 11-13% alpha with very high oil (2.2-2.8%, roughly twice Cascade) and smells of citrus, gooseberry, tropical fruit and lychee, sometimes catty black currant. Mosaic (introduced 2012) is described as blueberry, tangerine, papaya, rose and bubble gum. Release year for Citra differs: Oxford Companion says 2009, CraftBeer.com says 2007.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'Citra (hop)'; CraftBeer.com, 12 Single-Hop Beers to Test Your Palate",
+        "url": "https://www.craftbeer.com/editors-picks/13-single-hop-beers-test-palate",
+        "verified": true
+      },
+      {
+        "fact": "Southern Hemisphere hops: Nelson Sauvin (New Zealand, released 2000) gives gooseberry, passion fruit, grapefruit and melon, named for its likeness to Sauvignon Blanc wine. Galaxy (Australia, from Hop Products Australia) is described by its grower as punchy passionfruit, peach and citrus, with 15.7-19.8% alpha acid. Cicerone sums up the region as passionfruit, melon, pear, stone fruit and tropical.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'Nelson Sauvin (hop)'; Hop Products Australia, Galaxy; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 III.B.2",
+        "url": "https://www.hops.com.au/products/galaxy/",
+        "verified": true
+      },
+      {
+        "fact": "Alpha acids are the bitter resins in hops, but they barely dissolve until the boil converts them to iso-alpha acids, so the longer a hop boils the more bitterness it gives. Brewhouse utilization rarely passes 30%. Rough bands: aroma hops 2.5-6% alpha, dual-purpose 6-10%, bittering 10-15%, 'super alpha' 14-18%.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'alpha acids'",
+        "url": "https://www.beerandbrewing.com/dictionary/0Mo49i2N1B",
+        "verified": true
+      },
+      {
+        "fact": "IBU (International Bitterness Units): in practice 1 IBU is about 1 mg/L of iso-alpha acids. Most people start tasting bitterness somewhere between 4 and 9 IBU, and the theoretical ceiling is around 110 IBU. Recipe IBUs are only estimates because bitterness drops during fermentation, and sweetness and malt can mask it.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'International Bitterness Units (IBUs)'",
+        "url": "https://www.beerandbrewing.com/dictionary/eej03p6ZUI",
+        "verified": true
+      },
+      {
+        "fact": "Water is most of beer (Cicerone: over 90% by weight; Oxford Companion: 85-95%). Pilsen's water is very soft and low in minerals, which the Oxford Companion counts among the reasons the first pilsner (1842) stood out. Burton-on-Trent's well water is rich in calcium sulfate (gypsum), up to about 800 ppm sulfate, giving pale ales and IPAs a dry, crisp, minerally bitterness and sometimes a sulfur whiff called the 'Burton snatch'. Adding gypsum to copy it is called Burtonizing.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'water', 'Burton snatch', 'Pilsner Urquell'; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 IV.A.4",
+        "url": "https://www.beerandbrewing.com/dictionary/wUDIO48E7p",
+        "verified": true
+      },
+      {
+        "fact": "Munich, Dublin and London are classic examples of water high in calcium carbonate. Carbonate is usually unwanted (it can make hop bitterness harsh) but it offsets the acidity of dark malts, which is why those cities became known for dark lagers, porter and stout. Chlorine in tap water must be removed (usually with activated carbon) or it forms medicinal, Band-Aid-like chlorophenols.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'calcium carbonate' and 'water'",
+        "url": "https://www.beerandbrewing.com/dictionary/x81ZJfdjiU",
+        "verified": true
+      },
+      {
+        "fact": "Yeast: ale yeast (Saccharomyces cerevisiae) makes fruity esters, and strains with the POF+ gene make spicy phenols (clove, nutmeg, white pepper), as in Weizen and many Belgian ales. Lager yeast (S. pastorianus) makes few esters or phenols, so malt and hops come forward. Weizen yeast's signature is isoamyl acetate (banana) plus 4-vinylguaiacol (clove); S. cerevisiae var. diastaticus is an unwanted strain that can over-ferment beer.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, IV.A.3; Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012) 'isoamyl acetate'",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Brettanomyces is a wild yeast that brings 'funk': its phenol 4-ethylphenol is described as farmyard, barnyard, horsey, medicinal or mousy. Brett also scavenges oxygen, which helps Brett beers age, and makes beers drier and fruitier than their base style. Other key microbes Cicerone lists: Lactobacillus and Pediococcus (lactic sourness) and Acetobacter (vinegar).",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'phenolic'; Craft Beer & Brewing, Off-Flavor: Phenolic and Past Its Prime?; BJCP 2021 28A; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 IV.A.3.b",
+        "url": "https://www.beerandbrewing.com/dictionary/9Z95BHQHMb",
+        "verified": true
+      },
+      {
+        "fact": "Candi sugar is a Belgian brewing sugar made by heating beet sugar until it browns. It ferments completely, so it raises alcohol while making the beer lighter and drier, which is why many strong Belgian ales drink so easily. Typical use is 10-30% of the gravity: light candi for tripels and golden ales, dark candi (caramel, raisin, burnt sugar) for dubbels. Lactose, by contrast, doesn't ferment and leaves sweetness, as in sweet stout.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'candi sugar'; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 IV.A.5",
+        "url": "https://www.beerandbrewing.com/dictionary/5SreTKcjau",
+        "verified": true
+      },
+      {
+        "fact": "Pasteurization heats beer to stop spoilage. One pasteurization unit (PU) is one minute at 60°C (140°F). Bottles and cans go through a hot-water 'tunnel'; kegged beer is flash-pasteurized at 70-72°C for about 30 seconds (about 15 PU) and filled cold. Most beers get 5-25 PU. Cicerone says unpasteurized draft stays fresh about 45-60 days, pasteurized 90-120.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'pasteurization'; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 I.C.2.d",
+        "url": "https://www.beerandbrewing.com/dictionary/edvVKFchSZ",
+        "verified": true
+      }
+    ],
+    "british_irish": [
+      {
+        "fact": "British bitters grew out of English pale ale as a draft beer after the late 1800s, with crystal malt common after WWI. Traditionally they are served very fresh, without gas pressure (gravity or hand pump), at cellar temperature: 'real ale'. BJCP describes the cask versions; bottled and kegged export versions are often stronger, fizzier, sweeter and less hoppy.",
+        "source": "BJCP 2021 Beer Style Guidelines, category 11 introduction",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Ordinary Bitter (BJCP 11A): 3.2-3.8% ABV, 25-35 IBU, amber (SRM 8-14). Low alcohol and low carbonation make it an easy session beer; malt can vary but bitterness should lead. Examples: Fuller's Chiswick Bitter, Brains Bitter, Tetley's Original.",
+        "source": "BJCP 2021 Beer Style Guidelines 11A",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Best Bitter (BJCP 11B): 3.8-4.6% ABV, 25-40 IBU, SRM 8-16. A step up in strength and often the brewery's finest product. Examples: Fuller's London Pride, Timothy Taylor Landlord, Harvey's Sussex Best Bitter, Adnams Southwold Bitter.",
+        "source": "BJCP 2021 Beer Style Guidelines 11B",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Strong Bitter (BJCP 11C): 4.6-6.2% ABV, 30-50 IBU. Burton examples use high-sulfate water for a drier, minerally edge (Bass Ale is listed). 'ESB' is a Fuller's trademark in England, not a style name there; in the US 'ESB' is used loosely for a malty, bitter, reddish British-type ale.",
+        "source": "BJCP 2021 Beer Style Guidelines 11C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "English IPA (BJCP 12C): 5.0-7.5% ABV, 40-60 IBU, very dry with English hop aroma. It began as a pale London stock ale shipped to India in the late 1700s; George Hodgson of the Bow Brewery dominated that trade, and in 1823 Samuel Allsopp re-created it in Burton with sulfate-rich water. The name 'India Pale Ale' appears around 1830. Less hop intensity and more malt than American IPA. Examples: Fuller's Bengal Lancer, Thornbridge Jaipur, Worthington White Shield.",
+        "source": "BJCP 2021 Beer Style Guidelines 12C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Dark Mild (BJCP 13A): 3.0-3.8% ABV, 10-25 IBU, dark (SRM 14-25), malty and made for drinking in quantity. 'Mild' first just meant young, unaged beer; milds only became dark brown after WWI. BJCP notes there is no historical link between mild and porter. Increasingly rare.",
+        "source": "BJCP 2021 Beer Style Guidelines 13A",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "British Brown Ale (BJCP 13B): 4.2-5.9% ABV, 20-30 IBU. Malty and caramelly with nutty notes but none of porter's roast. Examples: Newcastle Brown Ale, Samuel Smith's Nut Brown Ale.",
+        "source": "BJCP 2021 Beer Style Guidelines 13B",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Scottish ales are, on average, weaker, sweeter, darker and less hoppy than English equivalents, with a light roast dryness but no smoke (peat-smoked malt is called inauthentic). The 'shilling' names (60/-, 70/-, 80/-) came from the old price of a hogshead cask; today a higher number just means stronger. Scottish Light 14A: 2.5-3.3% ABV; Scottish Export 14C: 3.9-6.0%.",
+        "source": "BJCP 2021 Beer Style Guidelines, category 14 introduction, 14A, 14C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Wee Heavy (BJCP 17C), also called Strong Scotch Ale: 6.5-10.0% ABV, 17-35 IBU. Rich caramel and toffee, full and chewy, warming, with restrained bitterness. 'Wee heavy' means 'small strong', from Fowler's Wee Heavy. Examples: Traquair House Ale, Orkney Skull Splitter, Belhaven Wee Heavy.",
+        "source": "BJCP 2021 Beer Style Guidelines 17C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "English Barley Wine (BJCP 17D): 8.0-12.0% ABV, 35-70 IBU; the richest and strongest English ale, a winter sipper that changes a lot with age. Descended from strong Burton ales; Bass No. 1 was first called a barley wine in 1872, and Tennant's Gold Label (1951) was the first golden one. Written 'Barley Wine' in the UK, 'Barleywine' in the US.",
+        "source": "BJCP 2021 Beer Style Guidelines 17D",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Irish Red Ale (BJCP 15A): 3.8-5.0% ABV, 18-28 IBU. An easy-drinking pint with soft toffee or caramel, a grainy-biscuity palate and a touch of roasted dryness. BJCP sees the modern style as an Irish take on English bitter with less hops and a little roast. Irish versions tend to be drier and lower in alcohol than American ones. Examples: Smithwick's, Murphy's Irish Red, O'Hara's.",
+        "source": "BJCP 2021 Beer Style Guidelines 15A",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Real ale (as CAMRA branches explain it): a natural product brewed from traditional ingredients and left to mature in the cask it is served from, through a secondary fermentation in that container. Keg ('brewery-conditioned') beer is instead chilled, filtered to remove all yeast and pasteurized, so it has no natural carbonation and must have CO2 or a CO2/nitrogen mix added.",
+        "source": "CAMRA Tynland branch, What Is Real Ale? (the national camra.org.uk definition page did not load as text; the wording 'no extraneous carbon dioxide' was only seen in search summaries of branch pages)",
+        "url": "https://tynland.camra.org.uk/information/what-is-real-ale/",
+        "verified": true
+      },
+      {
+        "fact": "Cask conditioning: unfiltered, unpasteurized beer goes into the cask with live yeast (sometimes with priming sugar and isinglass finings). The cellar keeper vents it with a porous soft spile, then seals with a hard spile once it has 'condition'; it may need 24 hours to 16 days before it 'drops bright'. Cask ale should be lively, never flat.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'cask conditioning'",
+        "url": "https://www.beerandbrewing.com/dictionary/dr3wlD9enF",
+        "verified": true
+      },
+      {
+        "fact": "Cask cellar standards from Cask Marque: keep the cellar and the beer in the glass at 11-13°C (52-56°F); stillage casks level as soon as they arrive; vent with a soft peg and switch to a hard peg when it stops working; tap within two days of venting; taste and check clarity before selling; clean beer lines at least every 7 days. Once on sale, sell a cask within three days, because every pint drawn lets a pint of air in and the beer turns vinegary or papery.",
+        "source": "Cask Marque, Cask Cellar Card and 'Cask vs Keg?'",
+        "url": "https://cask-marque.co.uk/wp-content/uploads/2017/10/a4-cask-cellar-card.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Serving cask ale: by gravity straight from the cask, or with a beer engine (hand pump), a piston pump patented in early form by Joseph Bramah in 1797 that draws a half or quarter pint per pull from the cellar. A sparkler on a swan-neck spout forces beer through tiny holes for a tight creamy head; northern English drinkers tend to favor it, southerners say it strips carbonation and hop bitterness. Cicerone notes a UK cask head is traditionally no more than about 0.4 in (1 cm), while US pours run up to 1 in.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'beer engine' and 'sparkler'; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 I.I.3.e",
+        "url": "https://www.beerandbrewing.com/dictionary/9jJqP2rvoW",
+        "verified": true
+      }
+    ],
+    "german_czech": [
+      {
+        "fact": "Kölsch (BJCP 5B): 4.4-5.2% ABV, 18-30 IBU, very pale and brilliantly clear, delicate, softly fruity. A top-fermented beer that is then cold-conditioned like a lager, developed in Cologne in the late 1800s. Since the 1986 Kölsch Konvention the name is protected for breweries in and around Cologne. Served in a 20 cl Stange. Fades fast with age. Examples: Früh, Gaffel, Reissdorf, Päffgen.",
+        "source": "BJCP 2021 Beer Style Guidelines 5B",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "BJCP notes that Germans don't split beer into 'ale vs lager' the way Americans do: they say top-fermented or bottom-fermented, and treat 'lager' as a way of cold-conditioning. So a German would call Kölsch a top-fermented lager beer.",
+        "source": "BJCP 2021 Beer Style Guidelines, Introduction to Beer Styles",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Altbier (BJCP 7B): 4.3-5.5% ABV, 25-50 IBU, copper to brown, dry and firmly bitter with rich malt. Developed in Düsseldorf in the late 19th century, using lager techniques to compete with lager; classic examples in Düsseldorf's old town are served from casks. Most are 25-35 IBU; Zum Uerige is the aggressive exception. Examples: Uerige, Füchschen, Schumacher, Diebels.",
+        "source": "BJCP 2021 Beer Style Guidelines 7B",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Dunkles Weissbier / Dunkelweizen (BJCP 10B): 4.3-5.6% ABV, 10-18 IBU. A darker Bavarian wheat beer with the same banana-and-clove yeast as Hefeweizen plus toasted bread or caramel malt; creamy and highly carbonated. Old Bavarian wheat beer was usually dark; pale Weissbier only became popular in the 1960s. Examples: Ayinger Urweisse, Franziskaner Dunkel, Weihenstephaner Hefeweissbier Dunkel.",
+        "source": "BJCP 2021 Beer Style Guidelines 10B",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Weizenbock (BJCP 10C): 6.5-9.0% ABV, 15-30 IBU; a wheat beer brewed to bock or doppelbock strength, pale or (more often) dark. The classic is Schneider Aventinus, created in Munich in 1907; Weihenstephaner Vitus is a well-known pale one.",
+        "source": "BJCP 2021 Beer Style Guidelines 10C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Doppelbock (BJCP 9A): 7.0-10.0% ABV, 16-26 IBU, very rich and malty. First brewed by the monks of St. Francis of Paula in Munich by the 1700s as 'liquid bread' for the Lenten fast. After a 19th-century court ruling said only Paulaner could use the name Salvator, other brewers began naming theirs with '-ator' (Ayinger Celebrator, Spaten Optimator, Tröegs Troegenator).",
+        "source": "BJCP 2021 Beer Style Guidelines 9A",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Eisbock (BJCP 9B): 9.0-14.0% ABV, a dark, full, concentrated lager made by freezing a doppelbock-like beer and removing ice. BJCP stresses the name describes the process, not strength: some doppelbocks are stronger. From Kulmbach in Franconia in the late 1800s; the legend is that a barrel froze by accident. Example: Kulmbacher Eisbock. Pronounced 'ICE-bock'.",
+        "source": "BJCP 2021 Beer Style Guidelines 9B",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Rauchbier (BJCP 6B): 4.8-6.0% ABV, an amber Märzen-style lager made with beechwood-smoked malt, from Bamberg in Franconia. Smoke ranges from noticeable to intense depending on the brewery. 'Rauch' means smoke. Examples: Schlenkerla Rauchbier Märzen, Spezial Rauchbier.",
+        "source": "BJCP 2021 Beer Style Guidelines 6B",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Vienna Lager (BJCP 7A): 4.7-5.5% ABV, 18-30 IBU, amber, soft and toasty but dry. Created by Anton Dreher in Vienna in 1841 and carried to Mexico by Austrian immigrant brewers (Santiago Graf and others) in the late 1800s. An everyday beer, not a festival beer.",
+        "source": "BJCP 2021 Beer Style Guidelines 7A",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Czech Amber Lager (BJCP 3C, 'polotmavé', half-dark): 4.4-5.8% ABV, 20-35 IBU, from bready-dry to caramel-sweet, with variable hops. Czech Dark Lager (BJCP 3D, 'tmavé'): 4.4-5.8% ABV, 18-34 IBU, rich and malty with roast from faint to prominent; U Fleků in Prague, brewing since 1499, makes the best-known one. BJCP defines the Czech categories by starting gravity in degrees Plato: ležák 11-12.9°P, speciální 13-14.9°P (hence example names like 'Bernard černý ležák 12°').",
+        "source": "BJCP 2021 Beer Style Guidelines 3C and 3D",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Reinheitsgebot: on April 23, 1516, Bavarian Duke Wilhelm IV decreed at Ingolstadt that beer could only contain barley, hops and water (yeast was added to the rule later, once it was understood). The word 'Reinheitsgebot' only dates from 1918; before that it was called the 'Surrogatverbot'. It became law for all of Germany in 1906.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'Reinheitsgebot'",
+        "url": "https://www.beerandbrewing.com/dictionary/7SMpZlapQl",
+        "verified": true
+      },
+      {
+        "fact": "The Reinheitsgebot today: it survives inside Germany's 1993 Provisional Beer Law, and there are really two versions. Bavaria still allows only malt, hops, water and yeast for lagers (malted wheat and rye allowed for top-fermented beers); the rest of Germany also allows certain sugars in lagers. In 1987 the European Court ruled it could not be used to block imported beer, so non-German beer brewed with other ingredients can be sold in Germany as beer.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'Reinheitsgebot'",
+        "url": "https://www.beerandbrewing.com/dictionary/7SMpZlapQl",
+        "verified": true
+      }
+    ],
+    "belgian_sour": [
+      {
+        "fact": "Belgian Blond Ale (BJCP 25A): 6.0-7.5% ABV, 15-30 IBU, golden, smooth and malty with subtle citrus-spicy yeast and a dry, soft finish; almost lager-like for a Belgian. Despite claims of medieval roots it was created after WWII and popularised by Leffe. Examples: Leffe Blond, Affligem Blond, La Trappe Blond.",
+        "source": "BJCP 2021 Beer Style Guidelines 25A",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Belgian Golden Strong Ale (BJCP 25C): 7.5-10.5% ABV, 22-35 IBU, very pale, very dry and highly carbonated with a rocky white head; fruity and hoppy more than spicy. Developed by the Moortgat brewery after WWI as an answer to pilsner and in its modern form by the 1970s. Many examples have devilish names (Duvel, Lucifer, Judas, Delirium Tremens) as a nod to Duvel and their hidden strength. Traditionally bottle-conditioned.",
+        "source": "BJCP 2021 Beer Style Guidelines 25C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Belgian Dark Strong Ale (BJCP 26D): 8.0-12.0% ABV, 20-35 IBU, dark, rich and complex with dark fruit, malt and spice. Westvleteren started theirs just before WWII, Chimay and Rochefort right after. Outside Belgium it's often called a 'quad' (Quadrupel is actually a specific beer's name). Examples: Westvleteren 12, Rochefort 10, St. Bernardus Abt 12, Chimay Blue.",
+        "source": "BJCP 2021 Beer Style Guidelines 26D",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "BJCP's 'Monastic Ale' category covers styles inspired by Belgian religious breweries. What they share: top fermentation, very high attenuation, high carbonation from bottle conditioning ('refermented in the bottle'), and a complex, spicy-fruity Belgian yeast character. Many names are protected appellations that describe origin rather than style, and many monasteries have licensed their names to commercial breweries.",
+        "source": "BJCP 2021 Beer Style Guidelines, category 26 introduction",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "'Trappist' is about who makes the beer, not a style. The International Trappist Association (ITA) awards the 'Authentic Trappist Product' (ATP) label only to member abbeys whose product is (1) made within or right next to the abbey, (2) made under the supervision of the monks or nuns, and (3) whose profits support the community, the Order or charity. The license runs five years and requires an audit.",
+        "source": "International Trappist Association, ATP label criteria",
+        "url": "https://www.trappist.be/en/the-international-trappist-association/atp-label/",
+        "verified": true
+      },
+      {
+        "fact": "Trappist breweries: the ITA's ATP page (checked Nov 8, 2026) lists ATP-labelled Trappist beers from 8 abbeys: Chimay, Orval, Rochefort, Westmalle and Westvleteren (Belgium), La Trappe (Koningshoeven, Netherlands), Tre Fontane (Italy) and Tynt Meadow (Mount Saint Bernard, England). Its beer page says ten member abbeys brew and sell beer, adding Mont des Cats (France) and Cardeña (Spain) to the list. The count changes over time (Achel, for example, is no longer listed), so check trappist.be before teaching a number.",
+        "source": "International Trappist Association, ATP label page and Beers page",
+        "url": "https://www.trappist.be/en/the-international-trappist-association/atp-label/",
+        "verified": false
+      },
+      {
+        "fact": "Lambic (BJCP 23D): 5.0-6.5% ABV, 0-10 IBU, a sour, often funky Belgian wheat beer from the Brussels area (Senne Valley, Pajottenland) where sourness replaces hop bitterness. Made with Pilsner malt plus unmalted wheat and hops aged 3+ years (for preservation, not bitterness), spontaneously fermented in old neutral oak barrels. Straight lambic is unblended and usually served flat from the cask, young (around 6 months). Lambic sweetened with sugar is faro.",
+        "source": "BJCP 2021 Beer Style Guidelines 23D",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Spontaneous fermentation: after boiling, lambic wort is pumped into a coolship, a wide, shallow open vessel usually under the brewery roof with louvers open to the night air, where wild yeast and bacteria from the air and the building inoculate it. It is traditionally brewed only from October to April, when nights are cool. Fermentation runs in stages, with Brettanomyces (B. bruxellensis, B. lambicus) arriving late and adding the 'horse blanket' character.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'coolship' and 'lambic'",
+        "url": "https://www.beerandbrewing.com/dictionary/yMMOVuzEum",
+        "verified": true
+      },
+      {
+        "fact": "Gueuze (BJCP 23E): 5.0-8.0% ABV, a blend of young and old lambic (roughly one-third young to two-thirds old) that re-ferments in the bottle, giving a dry, sparkling, complex sour beer. Some of the best are made by blenders who buy lambic and age it. 'Oude' or 'vieille' on the label means the most traditional, unsweetened kind. Examples: 3 Fonteinen Oud Gueuze, Cantillon Classic Gueuze, Boon, Hanssens.",
+        "source": "BJCP 2021 Beer Style Guidelines 23E; Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012) 'lambic'",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Fruit lambic (BJCP 23F): 5.0-7.0% ABV, lambic aged on whole fruit, usually added midway through aging so it ferments out dry. Kriek uses sour cherries (traditionally from Schaarbeek near Brussels), framboise uses raspberries. Fermented fruit tastes different from fresh fruit. Examples: Cantillon Lou Pepe Framboise, 3 Fonteinen Schaerbeekse Kriek, Oude Kriek Boon.",
+        "source": "BJCP 2021 Beer Style Guidelines 23F; Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012) 'lambic'",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Flanders Red Ale (BJCP 23B): 4.6-6.5% ABV, a sour, fruity, reddish-brown ale aged up to two years in large oak vats (foeders) and blended young with old, with a dry tannic, red-wine-like finish. West Flanders; Rodenbach (founded 1821) is the benchmark. Some acetic (vinegar) note is allowed but should stay balanced. Examples: Rodenbach Grand Cru, Duchesse de Bourgogne.",
+        "source": "BJCP 2021 Beer Style Guidelines 23B",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Oud Bruin (BJCP 23C): 4.0-8.0% ABV, a malty, fruity, mildly sour brown ale from East Flanders, typified by Liefmans; more caramel and chocolate and less acetic than Flanders Red, and made to be laid down. Unlike lambic, Flanders ales aren't spontaneously fermented and contain no wheat.",
+        "source": "BJCP 2021 Beer Style Guidelines 23C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Brett Beer (BJCP 28A): a base style fermented with Brettanomyces, which usually makes it drier, thinner and fruitier, with funk that grows with age; Brett makes little acid on its own. Mixed Saccharomyces + Brett fermentation is now standard practice. Examples: Boulevard Saison Brett, Russian River Sanctification. Orval is a classic Belgian Brett-influenced beer.",
+        "source": "BJCP 2021 Beer Style Guidelines 28A; Craft Beer & Brewing, Past Its Prime? (Orval)",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      }
+    ],
+    "american": [
+      {
+        "fact": "Cream Ale (BJCP 1C): 4.2-5.6% ABV, 8-20 IBU, very pale (SRM 2-5), clean, crisp and highly carbonated; a 'lawnmower' beer with a bit more character than American lager. An ale brewed from the second half of the 1800s to compete with lagers; it survived Prohibition. Examples: Genesee Cream Ale, Sun King Sunlight.",
+        "source": "BJCP 2021 Beer Style Guidelines 1C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Blonde Ale (BJCP 18A): 3.8-5.5% ABV, 15-28 IBU, easy, clean, malt-leaning with no aggressive flavors; often a brewery's entry-level house ale. Believed first brewed in 1987 at Catamount. Also called Golden Ale. Examples: Firestone Walker 805, Kona Big Wave.",
+        "source": "BJCP 2021 Beer Style Guidelines 18A",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "American Wheat Beer (BJCP 1D): 4.0-5.5% ABV, 15-30 IBU, a bready, doughy wheat beer with clean yeast, so no banana or clove like a German Weissbier. First produced by Anchor in 1984 and popularised by Widmer. Michigan's Bell's Oberon is a listed example.",
+        "source": "BJCP 2021 Beer Style Guidelines 1D",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Double IPA (BJCP 22A): 7.5-10.0% ABV, 60-100 IBU. Intensely hoppy and bitter but dry, clean and drinkable, without barleywine's rich malt and sweetness. Developed in the mid-late 1990s; Russian River Pliny the Elder (2000) helped popularise it. BJCP notes it is rarely called Imperial IPA. Examples: Pliny the Elder, Fat Head's Hop Juju, Stone Ruination.",
+        "source": "BJCP 2021 Beer Style Guidelines 22A",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "West Coast vs hazy, by the numbers: American IPA (BJCP 21A) is 5.5-7.5% ABV, 40-70 IBU, SRM 6-14, clear and dry; BJCP says 'West Coast IPA' is just a dry, sharply bitter, clear American IPA. Hazy IPA (21C) is 6.0-9.0% ABV, 25-60 IBU, SRM 3-7, soft and juicy with lower perceived bitterness; its haze should come from dry-hop polyphenols combining with proteins from starchy grains, not from suspended yeast or starch.",
+        "source": "BJCP 2021 Beer Style Guidelines 21A and 21C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "American Stout (BJCP 20B): 5.0-7.0% ABV, 35-75 IBU, black, strongly roasted and bitter with American hop character; once known as West Coast Stout among homebrewers. Examples: Bell's Kalamazoo Stout, Sierra Nevada Stout, Deschutes Obsidian.",
+        "source": "BJCP 2021 Beer Style Guidelines 20B",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Imperial Stout (BJCP 20C): 8.0-12.0% ABV, 50-90 IBU, very strong and dark with roast, dark fruit and a warming bittersweet finish. It traces to strong English porters brewed for export in the 1700s that were said to be popular with the Russian imperial court (hence 'Russian Imperial Stout'); after the Napoleonic Wars cut trade, they were sold more at home, nearly died out, and were revived by the craft movement. American versions are more bitter and roasty; English ones more estery. Examples: North Coast Old Rasputin, Great Divide Yeti, Bell's Expedition, Samuel Smith Imperial Stout.",
+        "source": "BJCP 2021 Beer Style Guidelines 20C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "American Barleywine (BJCP 22C): 8.0-12.0% ABV, 50-100 IBU, strong, malty and much hoppier than the English version, often vintage-dated and seasonal. Anchor Old Foghorn (1975) was an early US example; Sierra Nevada Bigfoot (1983) set the hop-forward standard. BJCP tells the story that a lab once told Sierra Nevada its barleywine was 'too bitter', and the brewery said 'thank you.'",
+        "source": "BJCP 2021 Beer Style Guidelines 22C",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Wood-aged beers: BJCP 33A covers beer aged on wood (oak is traditional) and 33B covers beer aged in barrels that previously held alcohol, such as spirits barrels, where the earlier liquid's character adds to the beer. These are usually stronger and darker than the base style. Excess oxidation or sourness is a fault, and styles where wood is built in (Flanders Red, lambic) aren't entered here.",
+        "source": "BJCP 2021 Beer Style Guidelines 33A and 33B",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Fruit beers (BJCP 29A) and spice/herb/vegetable beers (30A): the added ingredient should be clearly present but in balance, still recognizable as beer and never tasting artificial. Judges assess the declared concept rather than trying to name every ingredient. Examples: Founders Rübæus (fruit), Bell's Cherry Stout, Founders Breakfast Stout and Young's Double Chocolate Stout (30A).",
+        "source": "BJCP 2021 Beer Style Guidelines 29A and 30A",
+        "url": "https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Emerging styles Cicerone expects candidates to know by producer, without fixed numbers: pastry or dessert stout, and American-style fruited sour, whose acidity can come from acidulated malt, quick souring with bacteria, specific fermentation products, or the fruit itself.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, II.C.2.f",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      }
+    ],
+    "off_flavors": [
+      {
+        "fact": "Acetaldehyde: green apple, sometimes fresh-cut grass, leaves or latex paint. A normal fermentation step that yeast usually converts on to ethanol; high levels mean 'green' beer pulled off the yeast too early, weak fermentation, or bacteria (Zymomonas, Acetobacter). Oxidation of finished beer can also turn ethanol back into acetaldehyde.",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults)",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "DMS (dimethyl sulfide): cooked or creamed corn, celery, cabbage, even boiled shellfish. Comes from a malt precursor (SMM) that a strong open boil drives off; a weak or covered boil or slow wort cooling leaves more. Pilsner malt has up to eight times the precursor of pale malt, so a light DMS note is acceptable in some pale lagers (American Lager, Cream Ale, Helles, German Pils) but not in ales, Czech lagers or amber and dark lagers.",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults)",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "Diacetyl: artificial butter, butterscotch or toffee, sometimes a slick feel. Yeast make it and normally reabsorb it; it lingers when beer leaves the yeast too soon or fermentation is stressed. Lager brewers use a 'diacetyl rest' of a few days at 60-65°F. A significant share of people can't smell it at all. A low level is allowed in some Czech lagers, English bitters and dark British ales. In draft, it is the classic sign of dirty lines (Pediococcus).",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults); Brewers Association, Draught Beer Quality Manual (4th ed., 2019 PDF) table 8.4",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "Isoamyl acetate (banana, pear drops): an ester made by yeast, noticeable from about 0.6-1.2 ppm. With clove (4-vinylguaiacol) it is the signature of Bavarian Weissbier, and it's the main thing separating a German Hefeweizen from an American wheat beer. In other styles strong banana is a fault, usually from fermenting too warm or pitching too little yeast.",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'isoamyl acetate'; MoreBeer, 'Off' Flavors in Beer: Their Causes & How to Avoid Them (MoreManual, hosted on cicerone.org)",
+        "url": "https://www.beerandbrewing.com/dictionary/9Al9LHtPlN",
+        "verified": true
+      },
+      {
+        "fact": "Chlorophenol / medicinal: plastic, vinyl, Band-Aid, iodine or bleach-like. Most often from chlorinated tap water or chlorine/iodine sanitizer residue reacting with malt compounds; some wild yeasts make similar phenols. Prevented by removing chlorine from brewing water (e.g. activated carbon) and using sanitizer at the right strength.",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults); MoreBeer, 'Off' Flavors in Beer: Their Causes & How to Avoid Them (MoreManual, hosted on cicerone.org); Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012) 'water'",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "Metallic: blood, ink, coins or iron, felt on the front of the mouth. Caused by iron, copper or other metals leaching from water or equipment (worn kettles, non-stainless parts), and sometimes from oxidized fats in old malt.",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults); MoreBeer, 'Off' Flavors in Beer: Their Causes & How to Avoid Them (MoreManual, hosted on cicerone.org)",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "Isovaleric acid: aged cheese, sweaty socks, goaty. Usually from old or badly stored hops (oxidized hop acids); Brettanomyces can also produce it, which can be acceptable at low levels in some sour or wild styles. People's sensitivity to it varies hugely.",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults)",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "Butyric acid: cheesy, rancid butter, baby vomit, putrid; above about 2 mg/L. It comes from Clostridium bacteria infecting wort or sugar syrups, so it points to poor plant hygiene. (Our teaching note: butyric is the 'baby vomit' one, isovaleric the 'sweaty cheese' one.)",
+        "source": "Craft Beer & Brewing, Brewing Dictionary (The Oxford Companion to Beer, ed. Garrett Oliver, 2012), 'butyric acid'",
+        "url": "https://www.beerandbrewing.com/dictionary/jqALuAyCXB",
+        "verified": true
+      },
+      {
+        "fact": "Sulfur: hydrogen sulfide smells of rotten egg, sulfur dioxide of a struck match. Both come from yeast (especially lager yeast) during fermentation and are usually carried off by CO2 or fade during lagering; a faint whiff is normal in some German lagers and Kölsch. In British styles a minerally sulfur note can come from high-sulfate (Burton) water instead.",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults)",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "Mercaptans (thiols): grapefruit and passion fruit at low levels in some new-world hops (Citra, Mosaic), but onion, garlic, catty, burnt rubber or sewage when high. Yeast autolysis (dying yeast left too long, or bottle-conditioned beer stored warm) gives Vegemite, beef broth and, at worst, burnt rubber.",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults)",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "Sour faults: lactic acid (yogurt, sourdough) comes from Lactobacillus and Pediococcus; acetic acid (vinegar) from Acetobacter and some wild yeasts. Both are essential in lambic, Flanders ales, Berliner Weisse and Gose, but in other styles they almost always mean a sanitation problem; in draft, sour notes point to dirty lines.",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults)",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "Oxidation, trans-2-nonenal (now written (E)-2-nonenal): cut cucumber, paper, lipstick, wet cardboard; detectable at about 0.1 parts per billion. Pale, low-strength beers show it most; dark, malty beers tend toward sherry-like oxidation instead (dry sherry, almond, dried fruit, from oxidized malt compounds such as benzaldehyde), which can add complexity to old ales and barley wines.",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults)",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "Astringency: dry, puckering, like grape skins or over-steeped black tea. Mostly tannins from grain husks (over-crushed malt, over-sparging, sparge water above about pH 6 or 170°F), also from heavy hopping, spices or oxidation. A light touch is allowed in very hoppy beers, some roasty porters, and Flanders Red (not Oud Bruin).",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults)",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "Solvent and hot alcohol: nail polish remover, paint thinner, with a burning feel, from ethyl acetate and fusel alcohols. Usually from fermenting too warm, underpitching or poor aeration. A little warmth is normal in very strong beers like barleywine.",
+        "source": "BJCP Beer Exam Study Guide, Troubleshooting (beer characteristics and faults); MoreBeer, 'Off' Flavors in Beer: Their Causes & How to Avoid Them (MoreManual, hosted on cicerone.org)",
+        "url": "https://www.bjcp.org/exam-certification/program/studying/beer-exam-study-guide/troubleshooting/",
+        "verified": true
+      },
+      {
+        "fact": "On the Certified Cicerone tasting exam, the off-flavor panel is limited to five: acetaldehyde, diacetyl, DMS, lightstruck and trans-2-nonenal, spiked into a control beer. The quality-assessment section separately asks whether a beer shows a handling flaw (from brewery to glass) and what caused it.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, III.D",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      }
+    ],
+    "pairing_advanced": [
+      {
+        "fact": "Cicerone lists three outcomes of a successful pairing: good flavors in both the beer and the dish get highlighted; the combination stirs memory, emotion or thought; or the pair creates a new flavor neither had alone.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, V.A",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Intensity is judged on both sides. A beer's intensity comes from malt flavor, hop bitterness, sweetness/body, alcohol, carbonation, sourness, yeast flavors (esters, phenols), hop aroma and special ingredients (fruit, coffee, barrel). A dish's comes from its ingredients, cooking method, spices, sauces and levels of fat, umami, sweetness, salt, bitterness and acidity. Match them so neither overpowers.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, V.C.1 and V.E",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Three ways flavors interact: complement (shared flavors resonate, e.g. a clove-spiced curry with the clove notes of a Dunkles Weissbier); contrast (an opposing flavor makes the other stand out, e.g. gueuze's acidity makes mussels seem richer and sweeter); and cut (carbonation, sourness and bitterness, and to a lesser degree alcohol and roast, lift fat and richness off the palate).",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, V.C.2",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Specific interactions to teach: carbonation and bitterness cut fat, umami and sweetness but make chili heat hotter; bitterness can turn harsh or metallic with oily fish and works with bitter greens; malt sweetness soothes chili heat; roast suits chocolate and charred food and contrasts sweetness; sourness brightens food and contrasts fat and salt; salt makes sweetness seem stronger.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, V.D",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Classic pairings Cicerone names: blue cheese with barleywine, oysters with Irish stout, mussels with witbier. Design a meal so the intensity of dishes and beers builds as it goes.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, V.F-V.G",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Cooking with beer: beer can replace water or other liquid in a recipe. Reducing it concentrates the non-volatile parts: bitterness can climb steeply and turn unpleasant, malt sweetness rises and caramelizes, and roasted malt's burnt, astringent notes grow; volatile hop aroma and fruity esters fade or vanish. To keep delicate hop or yeast flavors, use beer uncooked, such as an IPA in a salad dressing.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, V.H",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "The BA's simple staff demo: warm cans of beer in just-boiled water for 20 minutes, chill them back to 38°F for 24 hours, then taste against unheated beer. Expect less hop aroma and flavor, softer carbonation and changed malt flavors, which is what happens to beer in a dish.",
+        "source": "Brewers Association / CraftBeer.com, Beer & Food Course (PDF), heated-beer exercise",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Beer and cheese principles (BA, with the American Cheese Society): acidity, carbonation and bitterness cut through fat; malt complements creamy, nutty, earthy and caramel flavors and contrasts with salt; carbonation lifts fat off the palate. Let cheese warm to about 55-65°F, match intensity (delicate beer with young cheese, bold beer with aged cheese, which gains umami as it ages), serve from mildest to strongest, and add palate balancers such as baguette, nuts, dried fruit, honey or pickles.",
+        "source": "Brewers Association / CraftBeer.com, Beer & Food Course (PDF), Section 4 Craft Beer & Cheese",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "BA cheese-type starting points: fresh cheeses (ricotta, mascarpone, soft chèvre) with wheat and lambic-style beers; semi-soft (Fontina, Havarti, mild blue) with Kölsch, bock or pale ale; firm and hard (cheddar, Swiss) with pilsner, bock, brown ale or imperial stout; blue cheeses with IPA or imperial IPA; natural-rind cheeses (Brie, Camembert, Stilton, Lancashire) with golden or pale ales, or barley wine to amplify sweetness; washed-rind cheeses with Belgian-style ales.",
+        "source": "Brewers Association / CraftBeer.com, Beer & Food Course (PDF), Suggested Craft Beer and Cheese Interactions (source: American Cheese Society)",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Describing beer to guests: the BA recommends starting from flavor, not style name, because guests relate more easily to words like crisp, clean, bitter, fruity, tart and sour than to 'IPA' or 'stout'. Ask which flavors they like, then pick a beer. Its pairing chart groups beers into flavor families: Clean & Crisp, Malty & Sweet, Fruity & Spicy, Sour/Tart & Funky, Hoppy & Bitter, Dark & Roasty. (We found no Cicerone or BA document specifically on laying out a beer list; grouping a menu by these flavor families is our suggestion based on this guidance.)",
+        "source": "Brewers Association / CraftBeer.com, Beer & Food Course (PDF), Profiles of Beer; Brewers Association Craft Beer & Food Pairing Guide",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Cicerone wants food described precisely, not just by name: instead of 'seared scallop', describe a crisp, caramelized sear with toasted, toffee-like flavors and a buttery-sweet interior. Candidates should also know how cooking methods (poaching, roasting, frying) change flavor. The same habit helps servers describe a beer by its actual flavors rather than its style name.",
+        "source": "Cicerone Certification Program, US Certified Cicerone Syllabus v6.0, V.B.2",
+        "url": "https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Beer dinners (BA): common formats are a 3-5 course tasting menu, a featured-brewery dinner with the brewer present (3-7 courses), a regional dinner and a collaboration dinner. Typical pours: a 4-6 oz welcome beer, then 3-4 oz per course. Past about 10 beers most palates are fatigued. Start with clean, familiar pairings and build to more complex ones.",
+        "source": "Brewers Association / CraftBeer.com, Beer & Food Course (PDF), Section 5 Designing a Beer Dinner",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Glass size follows strength: higher-alcohol beers go in smaller glasses, which helps the venue's margins and keeps service responsible. Cicerone says the same and also lists adjusting serving size to ABV under responsible service.",
+        "source": "Brewers Association / CraftBeer.com, Beer & Food Course (PDF), glassware; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 I.B.2 and I.F.1",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      }
+    ],
+    "cicerone_exam": [
+      {
+        "fact": "Prerequisites: you must have passed the Certified Beer Server exam and be of legal drinking age.",
+        "source": "Cicerone Certification Program, Certified Cicerone page",
+        "url": "https://www.cicerone.org/us-en/certified-cicerone",
+        "verified": true
+      },
+      {
+        "fact": "Format: a written exam (short answer and essay) plus a tasting exam and a demonstration. The written part is taken online, separately; the tasting and demonstration are in person. They can be taken in any order.",
+        "source": "Cicerone, Certified Cicerone page; What to Expect from the Certified Cicerone Exam",
+        "url": "https://www.cicerone.org/us-en/certified-cicerone",
+        "verified": true
+      },
+      {
+        "fact": "Pass marks confirmed: 80% overall and at least 70% on the tasting portion.",
+        "source": "Cicerone Certification Program, Certified Cicerone page and Help Center article",
+        "url": "https://www.cicerone.org/us-en/certified-cicerone",
+        "verified": true
+      },
+      {
+        "fact": "Price (as shown on cicerone.org, checked Nov 8, 2026): $250 for the written exam and $200 for the tasting and demonstration ($450 total); retakes $200 written, $150 tasting. Fees are non-refundable. Note: the Help Center article (last modified Dec 2021) still shows the older $400 total ($225 + $175, retakes $175 / $125), so quote the main page.",
+        "source": "Cicerone Certification Program, Certified Cicerone page (current) vs Help Center article (2021)",
+        "url": "https://www.cicerone.org/us-en/certified-cicerone",
+        "verified": false
+      },
+      {
+        "fact": "Written exam: three hours online, timed from the first question, closed book, no notes, no headphones, no leaving the session. It is remotely proctored: audio, video and your screen are recorded and reviewed by AI and humans. A short orientation quiz is required beforehand.",
+        "source": "Cicerone, What to Expect from the Certified Cicerone Exam (PDF, undated; mentions COVID-era protocols)",
+        "url": "https://www.cicerone.org/sites/default/files/resources/Taking-The-CC-Exam-Document_FINAL.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Tasting exam: up to 45 minutes, 13 labelled samples of at least 1.5 oz (45 ml) in three flights, plus a two-page answer sheet. No scented products; phones off; no talking.",
+        "source": "Cicerone, What to Expect from the Certified Cicerone Exam",
+        "url": "https://www.cicerone.org/sites/default/files/resources/Taking-The-CC-Exam-Document_FINAL.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Tasting part 1, off-flavor identification: a control beer plus samples A-D. Three contain an off-flavor and one is clean; name each. The possible flaws are acetaldehyde, diacetyl, DMS, lightstruck and trans-2-nonenal.",
+        "source": "Cicerone, What to Expect from the Certified Cicerone Exam; Cicerone Certification Program, US Certified Cicerone Syllabus v6.0 III.D",
+        "url": "https://www.cicerone.org/sites/default/files/resources/Taking-The-CC-Exam-Document_FINAL.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Tasting part 2, style discrimination: samples E-H, each with a choice of two styles; pick the right one. Part 3, quality assessment (weighted more): samples I-L with the style given; say whether each is fit to sell, and if it shows a flaw from mishandling between brewery and sale, name the flaw and its likely cause.",
+        "source": "Cicerone, What to Expect from the Certified Cicerone Exam",
+        "url": "https://www.cicerone.org/sites/default/files/resources/Taking-The-CC-Exam-Document_FINAL.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Demonstration: you get a question slip and a related item and answer on video in three minutes; it is scored later. Demo is worth 4% of the total; tasting 16.75%; short answer 66.75%; essay 12.5%.",
+        "source": "Cicerone, What to Expect from the Certified Cicerone Exam; Certified Cicerone page scoring table",
+        "url": "https://www.cicerone.org/sites/default/files/resources/Taking-The-CC-Exam-Document_FINAL.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Results: the list of how each tasting sample was treated arrives within two business days; tasting results within four weeks; written results can take up to six weeks, because six to eight graders (Master, Advanced or Certified Cicerones) each score different sections.",
+        "source": "Cicerone, What to Expect from the Certified Cicerone Exam",
+        "url": "https://www.cicerone.org/sites/default/files/resources/Taking-The-CC-Exam-Document_FINAL.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Preparation time, per Cicerone: an experienced professional with strong tasting and study skills might be ready in about six months; many people should plan on one to two years. Cicerone calls the BJCP guidelines and the BA Draught Beer Quality Manual critical study resources and offers Road to Cicerone courses and sample written and tasting exams.",
+        "source": "Cicerone, Certified Cicerone page; What to Expect from the Certified Cicerone Exam",
+        "url": "https://www.cicerone.org/us-en/certified-cicerone",
+        "verified": true
+      }
+    ]
+  }
+}

@@ -44,6 +44,10 @@ export const LEVELS = [
   { program: 'beer', level: 1, title: 'Beer Server', file: 'beer-1', final: 'final:beer-1', len: 60, prefix: 'BEER1', head: 'Every beer, served right',
     practical: 'program:beer-1:practical', practicalTitle: 'Pour and present a draft', practicalHow: 'Check a glass is beer-clean, pour a draft with the right head and describe it; a manager signs you off', practicalStep: 'Pour a draft for a manager',
     lead: (n, L) => `${countWord(n)} lessons built on the Cicerone Certified Beer Server outline: keeping and serving beer, how it’s made, the styles, flavor and pairing. A ${L.len}-question practice final, then a practical: pour a draft for a manager.` },
+  // Beer Level 2 (Nov 8): deeper, on the Certified Cicerone outline. Shows once its lessons exist (content/beer, programLevel 2).
+  { program: 'beer', level: 2, title: 'Beer Specialist', file: 'beer-2', final: 'final:beer-2', len: 60, prefix: 'BEER2', head: 'Know beer like a pro',
+    practical: 'program:beer-2:practical', practicalTitle: 'Change a keg and fix a pour', practicalHow: 'Change a keg, talk a manager through fixing a foamy pour, and describe five beers on our list; they sign you off', practicalStep: 'Change a keg for a manager',
+    lead: (n, L) => `${countWord(n)} lessons built on the Certified Cicerone outline: draft systems in depth, ingredients, the world’s beer styles, off-flavors and pairing. A ${L.len}-question final, then a practical: change a keg and fix a pour for a manager.` },
 ].map((L) => { const P = PROGRAMS.find((p) => p.key === L.program); return { ...L, slug: L.level === 1 ? P.slug : `${P.slug}/level-${L.level}` }; });
 export const programDef = (key) => PROGRAMS.find((p) => p.key === key);
 export const isProgram = (c) => !!programDef(c?.program);

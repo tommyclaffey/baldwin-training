@@ -1,0 +1,394 @@
+{
+ "number": 5,
+ "programLevel": 2,
+ "slug": "beer-german",
+ "title": "German and Czech, beyond pilsner",
+ "script": "Lesson 5",
+ "lead": "Kölsch and Altbier, the wheat and bock families, smoke beer, and the purity law.",
+ "minutes": 16,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Kölsch and Altbier",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Ales made like lagers."
+    }
+   ],
+   "know": [
+    "Kölsch: pale, delicate, from Cologne; a protected name.",
+    "Altbier: copper, dry and bitter, from Düsseldorf.",
+    "Germans say top- or bottom-fermented, not ale or lager."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 5B, 7B (bjcp.org)"
+  },
+  {
+   "name": "The wheat family",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Hefeweizen’s darker and stronger cousins."
+    }
+   ],
+   "know": [
+    "Dunkelweizen: banana and clove plus bread crust.",
+    "Weizenbock: wheat beer at bock strength, 6.5–9%.",
+    "Schneider Aventinus (1907) is the classic."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 10B, 10C (bjcp.org)"
+  },
+  {
+   "name": "Doppelbock and Eisbock",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Liquid bread, and frozen strength."
+    }
+   ],
+   "know": [
+    "Doppelbock: 7–10%, monks’ Lenten beer; names end in -ator.",
+    "Eisbock: frozen and concentrated, 9–14%.",
+    "Eisbock names the process, not the strength."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 9A, 9B (bjcp.org)"
+  },
+  {
+   "name": "Smoke, Vienna and Czech lagers",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Three more lagers to know."
+    }
+   ],
+   "know": [
+    "Rauchbier: Bamberg, beechwood-smoked malt.",
+    "Vienna lager: amber, toasty, carried to Mexico.",
+    "Czech amber and dark lagers; strength by degrees Plato."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 6B, 7A, 3C, 3D (bjcp.org)"
+  },
+  {
+   "name": "The Reinheitsgebot",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Germany’s famous purity law."
+    }
+   ],
+   "know": [
+    "1516: only barley, hops and water.",
+    "Yeast added once it was understood.",
+    "Today it lives on inside the 1993 beer law."
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Kölsch and Altbier",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "KÖLSCH",
+      "line": "pale, delicate, Cologne only."
+     },
+     {
+      "big": "ALTBIER",
+      "line": "copper, dry, bitter, Düsseldorf."
+     },
+     {
+      "big": "TOP-FERMENTED",
+      "line": "then cold-aged like lager."
+     }
+    ],
+    "read": {
+     "bigIdea": "Two ales brewed like lagers.",
+     "where": "**Kölsch** (4.4–5.2%) is very pale, brilliantly clear and delicately fruity: top-fermented, then cold-conditioned like a lager. Since **1986** the name is **protected** for breweries in and around **Cologne**, where it’s poured in a small **stange**. **Altbier** (“old beer”) from **Düsseldorf** is **copper**, dry and firmly **bitter**. Germans don’t split beer into ale and lager the way Americans do: they say **top- or bottom-fermented**, and “lager” means cold-aging.",
+     "mixup": "Kölsch looks like a light lager, but it’s an ale: a hint of fruit gives it away.",
+     "sayIt": "It’s a Kölsch: as light and crisp as a lager, with a touch of fruit."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The wheat family",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DUNKELWEIZEN",
+      "line": "banana, clove, bread crust."
+     },
+     {
+      "big": "WEIZENBOCK",
+      "line": "wheat at bock strength."
+     },
+     {
+      "big": "AVENTINUS",
+      "line": "Schneider, 1907: the classic."
+     }
+    ],
+    "read": {
+     "bigIdea": "Hefeweizen, darker and stronger.",
+     "where": "**Dunkelweizen** (dark wheat, 4.3–5.6%) has Hefeweizen’s **banana and clove** yeast plus **toasted bread** and caramel malt. Old Bavarian wheat beer was usually dark; pale Weissbier only took over in the 1960s. **Weizenbock** (6.5–9%) is wheat beer brewed to **bock** strength: Schneider **Aventinus** (Munich, 1907) is the classic dark one, Weihenstephaner Vitus a pale one. Both go in the **weizen glass**.",
+     "mixup": "Weizenbock isn’t a bock with a lemon. It’s a strong wheat beer with the same banana and clove.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Doppelbock and Eisbock",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DOPPELBOCK",
+      "line": "7–10%, “liquid bread”."
+     },
+     {
+      "big": "-ATOR",
+      "line": "Salvator, Celebrator, Optimator."
+     },
+     {
+      "big": "EISBOCK",
+      "line": "frozen and concentrated, 9–14%."
+     }
+    ],
+    "read": {
+     "bigIdea": "The strongest German lagers.",
+     "where": "**Doppelbock** (7–10%) is very **rich and malty**. Munich monks brewed it as “**liquid bread**” for the Lenten fast. Paulaner owns the name **Salvator**, so others named theirs with **-ator**: Ayinger **Celebrator**, Spaten **Optimator**, Tröegs Troegenator. **Eisbock** (9–14%) is made by **freezing** a doppelbock-like beer and removing ice, concentrating it. BJCP stresses the name describes the **process**, not the strength.",
+     "mixup": "An “-ator” name almost always means doppelbock. It’s a naming habit, not a rule.",
+     "sayIt": "It’s a doppelbock: rich, malty, about 8%. A sipping beer."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Smoke, Vienna and Czech lagers",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "RAUCHBIER",
+      "line": "Bamberg, beechwood smoke."
+     },
+     {
+      "big": "VIENNA",
+      "line": "amber, toasty, now Mexican too."
+     },
+     {
+      "big": "CZECH",
+      "line": "amber (polotmavé) and dark (tmavé)."
+     }
+    ],
+    "read": {
+     "bigIdea": "Three lagers with a story.",
+     "where": "**Rauchbier** (“smoke beer”) from **Bamberg** is an amber lager made with **beechwood-smoked** malt; Schlenkerla is the benchmark. **Vienna lager** (1841, Anton Dreher) is **amber**, soft and toasty but dry; Austrian brewers carried it to **Mexico**. The Czechs have **amber** (polotmavé) and **dark** (tmavé) lagers too, and label strength by **degrees Plato**: a “12°” is a ležák, the standard lager.",
+     "mixup": "The 12° on a Czech label is its starting gravity, not its alcohol. A 12° lager is roughly 5%.",
+     "sayIt": "It’s a smoked beer: think campfire, or smoked ham."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "The Reinheitsgebot",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1516",
+      "line": "Bavaria: barley, hops, water."
+     },
+     {
+      "big": "YEAST",
+      "line": "added once people knew it existed."
+     },
+     {
+      "big": "TODAY",
+      "line": "part of the 1993 German beer law."
+     }
+    ],
+    "read": {
+     "bigIdea": "The most famous beer law.",
+     "where": "On **April 23, 1516**, Bavaria’s Duke Wilhelm IV decreed that beer could only contain **barley, hops and water**; **yeast** was added later, once it was understood. It became law for all of Germany in **1906**, and the name “Reinheitsgebot” dates from **1918**. Today it lives on inside Germany’s **1993** beer law. In **1987** the European Court ruled it couldn’t keep imported beer out, so foreign beer brewed other ways can be sold in Germany.",
+     "mixup": "Wheat beer isn’t illegal in Germany. Top-fermented beers may use malted wheat.",
+     "sayIt": ""
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "sources": "BJCP 2021 Style Guidelines, 3C, 3D, 5B, 6B, 7A, 7B, 9A, 9B, 10B, 10C (bjcp.org); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Kölsch can only be called Kölsch if it’s brewed…",
+   "answer": "In and around Cologne",
+   "wrong": [
+    "Anywhere in Germany",
+    "In Düsseldorf",
+    "In Bavaria"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 5B (bjcp.org)"
+  },
+  {
+   "q": "Kölsch is…",
+   "answer": "Top-fermented, then cold-aged like a lager",
+   "wrong": [
+    "A bottom-fermented lager",
+    "A sour beer",
+    "A smoked beer"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 5B (bjcp.org)"
+  },
+  {
+   "q": "Altbier comes from…",
+   "answer": "Düsseldorf",
+   "wrong": [
+    "Cologne",
+    "Bamberg",
+    "Pilsen"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 7B (bjcp.org)"
+  },
+  {
+   "q": "Dunkelweizen tastes of…",
+   "answer": "Banana, clove and bread crust",
+   "wrong": [
+    "Smoke",
+    "Grapefruit",
+    "Vinegar"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 10B (bjcp.org)"
+  },
+  {
+   "q": "Weizenbock is…",
+   "answer": "A wheat beer at bock strength",
+   "wrong": [
+    "A light wheat beer",
+    "A smoked lager",
+    "A sour ale"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 10C (bjcp.org)"
+  },
+  {
+   "q": "The classic dark weizenbock is…",
+   "answer": "Schneider Aventinus",
+   "wrong": [
+    "Pilsner Urquell",
+    "Rodenbach",
+    "Duvel"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 10C (bjcp.org)"
+  },
+  {
+   "q": "Doppelbock was brewed by monks as…",
+   "answer": "“Liquid bread” for Lent",
+   "wrong": [
+    "A summer refresher",
+    "A sour beer",
+    "A Christmas cider"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 9A (bjcp.org)"
+  },
+  {
+   "q": "A beer named Celebrator or Optimator is probably a…",
+   "answer": "Doppelbock",
+   "wrong": [
+    "Kölsch",
+    "Pilsner",
+    "Hefeweizen"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 9A (bjcp.org)"
+  },
+  {
+   "q": "Eisbock is made by…",
+   "answer": "Freezing the beer and removing ice",
+   "wrong": [
+    "Adding ice to the glass",
+    "Brewing in winter only",
+    "Aging in snow"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 9B (bjcp.org)"
+  },
+  {
+   "q": "Rauchbier gets its flavor from…",
+   "answer": "Beechwood-smoked malt",
+   "wrong": [
+    "Peat",
+    "Liquid smoke",
+    "Charred barrels"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 6B (bjcp.org)"
+  },
+  {
+   "q": "Vienna lager is…",
+   "answer": "Amber and toasty",
+   "wrong": [
+    "Black and roasty",
+    "Pale and sour",
+    "Hazy and hoppy"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 7A (bjcp.org)"
+  },
+  {
+   "q": "On a Czech label, “12°” refers to…",
+   "answer": "Starting gravity (degrees Plato)",
+   "wrong": [
+    "12% alcohol",
+    "Serving temperature",
+    "Bitterness"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 3C, 3D (bjcp.org)"
+  },
+  {
+   "q": "The 1516 Reinheitsgebot allowed…",
+   "answer": "Barley, hops and water",
+   "wrong": [
+    "Barley, hops, water and sugar",
+    "Any grain",
+    "Wheat only"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Why was yeast added to the rule later?",
+   "answer": "It wasn’t understood in 1516",
+   "wrong": [
+    "It was banned until 1906",
+    "It was too expensive",
+    "It wasn’t"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "In 1987 the European Court ruled the Reinheitsgebot…",
+   "answer": "Couldn’t be used to block imported beer",
+   "wrong": [
+    "Applied to all of Europe",
+    "Was abolished in Germany",
+    "Banned wheat beer"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "“A 12° is about 5%” is a rough guide; strength varies by brewery."
+ ]
+}

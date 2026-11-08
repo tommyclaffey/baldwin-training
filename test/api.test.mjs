@@ -72,7 +72,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
   // + the Cocktail Program (Nov 8): a course page per level (2) and one entry per lesson section (no whole-chapter pages)
   const bar = [...readDir('content/bar'), ...readDir('content/beer')]; // + the Beer Program (Nov 8)
-  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 4 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 5 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -842,4 +842,8 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   assert.ok(pour.includes('/beer/pilsner') === false && pour.includes('1 INCH'), 'the draft pour lesson');
   const sb = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:beer-1' } })).data;
   assert.equal(sb.items.length, 60);
+  // Beer Level 2 (Nov 8): Beer Specialist, on the Certified Cicerone outline
+  const b2 = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'beer-program/level-2').file)).data);
+  assert.ok(b2.includes('BEER SPECIALIST') && b2.includes('t%3Afinal%3Abeer-2'));
+  assert.equal(cat.quizzes.filter((q) => q.group === 'Beer Program · Level 2').length, 10, 'nine lesson quizzes and the final');
 });

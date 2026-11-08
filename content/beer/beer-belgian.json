@@ -1,0 +1,320 @@
+{
+ "number": 6,
+ "programLevel": 2,
+ "slug": "beer-belgian",
+ "title": "Belgian and wild ales",
+ "script": "Lesson 6",
+ "lead": "Strong Belgian ales, what Trappist means, and the spontaneous beers of Brussels and Flanders.",
+ "minutes": 16,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Blond, golden and dark strong",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Belgium’s strong ales."
+    }
+   ],
+   "know": [
+    "Blond: 6–7.5%, smooth, almost lager-like.",
+    "Golden strong (Duvel): 7.5–10.5%, very dry, very fizzy.",
+    "Dark strong (“quad”): 8–12%, dark fruit and spice."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 25A, 25C, 26D (bjcp.org)"
+  },
+  {
+   "name": "Trappist and abbey",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Trappist is who makes it, not a style."
+    }
+   ],
+   "know": [
+    "Made at or beside the abbey, under the monks.",
+    "Profits support the community or charity.",
+    "Abbey beers are often licensed names."
+   ],
+   "source": "International Trappist Association, Authentic Trappist Product label (trappist.be); BJCP 2021 Style Guidelines, 26 (bjcp.org)"
+  },
+  {
+   "name": "Lambic, gueuze and fruit",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Spontaneous beers from around Brussels."
+    }
+   ],
+   "know": [
+    "Wild yeast from the night air, in a coolship.",
+    "Gueuze: young and old lambic blended, refermented in the bottle.",
+    "Kriek: cherries. Framboise: raspberries."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 23D, 23E, 23F (bjcp.org); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "name": "Flanders ales and Brett",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Oak-aged sours and funky beers."
+    }
+   ],
+   "know": [
+    "Flanders red: red-wine-like, aged in oak (Rodenbach).",
+    "Oud bruin: malty, gently sour brown ale.",
+    "Brett: farmyard funk, dries the beer out (Orval)."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 23B, 23C, 28A (bjcp.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Blond, golden and dark strong",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BLOND",
+      "line": "smooth, 6–7.5%."
+     },
+     {
+      "big": "GOLDEN STRONG",
+      "line": "Duvel: dry, fizzy, 7.5–10.5%."
+     },
+     {
+      "big": "DARK STRONG",
+      "line": "“quad”: 8–12%, dark fruit."
+     }
+    ],
+    "read": {
+     "bigIdea": "Belgian strength hides well.",
+     "where": "**Belgian blond** (6–7.5%) is golden and smooth, almost lager-like, popularized by Leffe. **Golden strong** ale (7.5–10.5%) is very pale, very **dry** and highly **carbonated** with a rocky head: **Duvel** (“devil”) is the model, and many copies took devilish names. **Dark strong** ale (8–12%) is rich with **dark fruit** and spice: Westvleteren 12, Rochefort 10, Chimay Blue. Outside Belgium it’s often called a “**quad**”.",
+     "mixup": "Pale doesn’t mean light. A golden strong ale can be 9% and drink like a lager.",
+     "sayIt": "It’s about 8.5%, so it comes in the smaller glass. It drinks easy."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Trappist and abbey",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "TRAPPIST",
+      "line": "who makes it, not a style."
+     },
+     {
+      "big": "3 RULES",
+      "line": "at the abbey, under the monks, for good causes."
+     },
+     {
+      "big": "ABBEY",
+      "line": "often a licensed name."
+     }
+    ],
+    "read": {
+     "bigIdea": "“Trappist” is a label you earn.",
+     "where": "The **International Trappist Association** gives the **Authentic Trappist Product** label only when the beer is made **at or beside the abbey**, **under the monks’ supervision**, and its profits support the **community, the Order or charity**. Westmalle, Chimay, Rochefort, Orval and Westvleteren are among them. **Abbey** beers (Leffe, for one) are made in a monastic style, often under a **licensed** name, without that label.",
+     "mixup": "Abbey isn’t Trappist. Look for the Authentic Trappist Product logo on the label.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Lambic, gueuze and fruit",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "COOLSHIP",
+      "line": "wild yeast from the night air."
+     },
+     {
+      "big": "GUEUZE",
+      "line": "young + old lambic, sparkling."
+     },
+     {
+      "big": "KRIEK, FRAMBOISE",
+      "line": "cherry, raspberry."
+     }
+    ],
+    "read": {
+     "bigIdea": "Beer fermented by the air of Brussels.",
+     "where": "**Lambic** comes from around **Brussels**. The hot wort cools overnight in a wide, shallow **coolship** with the windows open, and **wild yeast and bacteria** from the air start the fermentation; it’s brewed only in the cool months. It ages in old oak, sour and funky, with aged hops for preservation, not bitterness. **Gueuze** blends **young and old** lambic and referments in the bottle: dry and **sparkling**. **Kriek** ages lambic on sour **cherries**, **framboise** on **raspberries**. “Oude” on the label means the traditional, unsweetened kind.",
+     "mixup": "A sweet kriek from a supermarket isn’t traditional. “Oude Kriek” is dry and sour.",
+     "sayIt": "It’s a gueuze: sour, dry and sparkling, closer to Champagne than to a lager."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Flanders ales and Brett",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FLANDERS RED",
+      "line": "oak-aged, red-wine-like (Rodenbach)."
+     },
+     {
+      "big": "OUD BRUIN",
+      "line": "malty, gently sour."
+     },
+     {
+      "big": "BRETT",
+      "line": "farmyard funk (Orval)."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sour from oak and time.",
+     "where": "**Flanders red** (4.6–6.5%) is sour, fruity and reddish-brown, aged up to two years in big oak **foeders** and blended young with old: it finishes dry and **red-wine-like**. **Rodenbach** is the benchmark. **Oud bruin** from East Flanders (Liefmans) is maltier, with **caramel** and gentler sourness. Neither is spontaneously fermented or uses wheat. **Brett** beers use **Brettanomyces**: drier, fruitier and **funky**, like Belgium’s **Orval**.",
+     "mixup": "Brett on its own makes funk, not much sourness. The sour comes from bacteria.",
+     "sayIt": "Think of it as halfway between a beer and a red wine."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "BJCP 2021 Style Guidelines, 23B–23F, 25A, 25C, 26, 26D, 28A (bjcp.org); International Trappist Association, Authentic Trappist Product label (trappist.be); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Duvel is the model for which style?",
+   "answer": "Belgian golden strong ale",
+   "wrong": [
+    "Belgian blond",
+    "Lambic",
+    "Flanders red"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 25C (bjcp.org)"
+  },
+  {
+   "q": "Belgian golden strong ale is…",
+   "answer": "Pale, very dry, strong and fizzy",
+   "wrong": [
+    "Dark and sweet",
+    "Sour",
+    "Low in alcohol"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 25C (bjcp.org)"
+  },
+  {
+   "q": "Outside Belgium, a Belgian dark strong ale is often called…",
+   "answer": "A quad",
+   "wrong": [
+    "A tripel",
+    "A gueuze",
+    "A blond"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 26D (bjcp.org)"
+  },
+  {
+   "q": "“Trappist” describes…",
+   "answer": "Who makes the beer, under set rules",
+   "wrong": [
+    "A style of beer",
+    "A type of hop",
+    "A glass"
+   ],
+   "source": "International Trappist Association, Authentic Trappist Product label (trappist.be)"
+  },
+  {
+   "q": "Which is a rule for the Authentic Trappist Product label?",
+   "answer": "Brewed at or beside the abbey",
+   "wrong": [
+    "Must be dark",
+    "Must be over 10%",
+    "Must be brewed in Belgium"
+   ],
+   "source": "International Trappist Association, Authentic Trappist Product label (trappist.be)"
+  },
+  {
+   "q": "Abbey beers like Leffe are…",
+   "answer": "Monastic-style, often under a licensed name",
+   "wrong": [
+    "Always Trappist",
+    "Always sour",
+    "Lagers"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 26 (bjcp.org)"
+  },
+  {
+   "q": "What starts a lambic’s fermentation?",
+   "answer": "Wild yeast and bacteria from the air",
+   "wrong": [
+    "Lager yeast",
+    "Ale yeast only",
+    "Added sugar"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Gueuze is…",
+   "answer": "A blend of young and old lambic, refermented in the bottle",
+   "wrong": [
+    "A fruit beer",
+    "A Trappist ale",
+    "A smoked beer"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 23E (bjcp.org)"
+  },
+  {
+   "q": "Kriek is lambic aged on…",
+   "answer": "Sour cherries",
+   "wrong": [
+    "Raspberries",
+    "Peaches",
+    "Oranges"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 23F (bjcp.org)"
+  },
+  {
+   "q": "Flanders red is aged in…",
+   "answer": "Big oak vats (foeders)",
+   "wrong": [
+    "Steel tanks only",
+    "Bourbon barrels only",
+    "The bottle only"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 23B (bjcp.org)"
+  },
+  {
+   "q": "Compared with Flanders red, oud bruin is…",
+   "answer": "Maltier and less sour",
+   "wrong": [
+    "Hoppier",
+    "Spontaneously fermented",
+    "Made with wheat"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 23C (bjcp.org)"
+  },
+  {
+   "q": "Brettanomyces adds…",
+   "answer": "Funk, and dries the beer",
+   "wrong": [
+    "Most of the sourness",
+    "Sweetness",
+    "Hop bitterness"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 28A (bjcp.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "The number of Trappist breweries changes (the ITA’s pages list 8 labelled and 10 brewing); the page gives no count."
+ ]
+}
