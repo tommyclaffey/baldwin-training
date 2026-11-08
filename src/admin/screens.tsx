@@ -56,7 +56,7 @@ export function SignIn() {
     setBusy(false);
   };
   if (ticket) return (
-    <AuthCard title="Two-step sign-in" sub="Open your authenticator app and type the 6-digit code for Lineup.">
+    <AuthCard title="Two-step sign-in" sub="Open your authenticator app and type the 6-digit code for Mise.">
       <form className="stack" onSubmit={submitCode}>
         <label className="field"><span>Code</span><input inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} autoFocus /></label>
         {error && <ErrorNote error={error} />}
@@ -305,7 +305,7 @@ export function People() {
         <div className="join-code" aria-label="Join code">{data.company.joinCode}</div>
         <p className="muted small">Staff open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong>, type this code, {multi ? 'pick their restaurant, ' : ''}pick their name (or “I’m New Here”) and a PIN. One code for {multi ? 'every restaurant in the group' : 'the whole team'}. Share it at line-up or post it in the back of house.</p>
         <div className="row">
-          <button className="btn ghost" onClick={() => copy(`Join the ${data.company.name} training app on Lineup: ${joinUrl}  Join code: ${data.company.joinCode}`, 'code')}>{copied === 'code' ? 'Copied' : 'Copy Code and Link'}</button>
+          <button className="btn ghost" onClick={() => copy(`Join the ${data.company.name} training app on Mise: ${joinUrl}  Join code: ${data.company.joinCode}`, 'code')}>{copied === 'code' ? 'Copied' : 'Copy Code and Link'}</button>
           <button className="link-btn danger" onClick={() => { if (confirm('Make a new join code? The old one stops working. People already signed in stay signed in.')) void run(() => api('/api/team/join-code', { method: 'POST' }), 'New join code made.'); }}>New Code</button>
         </div>
       </section>

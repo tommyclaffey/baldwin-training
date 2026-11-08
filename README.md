@@ -1,4 +1,4 @@
-# Lineup
+# Mise
 
 The training app for restaurant teams. First customer: The Baldwin (Baldwin Restaurant Group). Was “The Baldwin Training Book” until Oct 28, 2026.
 
