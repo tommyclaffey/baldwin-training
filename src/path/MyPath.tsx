@@ -87,9 +87,12 @@ function StepRow({ step: s }: { step: Step }) {
   return (
     <li className={'mp-step' + (s.done ? ' done' : '')}>
       <span className={'mp-tick' + (s.done ? ' on' : '')} aria-label={s.done ? 'Done' : 'Not done yet'}>{s.done ? '✓' : ''}</span>
-      <span className={'mp-kind ' + s.kind}>{KIND[s.kind]}</span>
       <span className="mp-step-copy">
-        {s.to ? <Link to={s.to}>{s.title}</Link> : <strong>{s.title}</strong>}
+        {/* Nov 8, Tommy: a tag on every row was noise. Only lessons and sign-offs get one, next to the title. */}
+        <span className="mp-step-title">
+          {s.to ? <Link to={s.to}>{s.title}</Link> : <strong>{s.title}</strong>}
+          {(s.kind === 'lesson' || s.kind === 'signoff') && <span className={'mp-kind ' + s.kind}>{KIND[s.kind]}</span>}
+        </span>
         <small>{s.done && s.kind === 'signoff' && s.by ? `Signed off by ${s.by}` : s.meta}</small>
       </span>
       {s.done

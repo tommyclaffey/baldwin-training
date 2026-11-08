@@ -1474,7 +1474,7 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 }
 
 /* My Path (Nov 8). Figma 09 · Proposals → 21: 459:72 (desktop), 461:45 (phone). */
-.mp { max-width: 1176px; padding: 32px 48px 72px; font-family: 'Archivo', sans-serif; color: var(--ink); }
+.mp { box-sizing: border-box; width: 100%; max-width: 1176px; margin: 0 auto; padding: 32px 48px 72px; font-family: 'Archivo', sans-serif; color: var(--ink); }
 .mp-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; margin-bottom: 26px; }
 .mp-script { margin: 0; font: 30px 'Pinyon Script', cursive; color: var(--copper-dk); }
 .mp h1 { margin: 0; font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -.01em; }
@@ -1506,7 +1506,8 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 .mp-step { display: flex; align-items: center; gap: 14px; padding: 13px 22px 13px 20px; border-top: 1px solid #DDD3C5; }
 .mp-tick { flex: none; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 999px; border: 1.5px solid #B9AE9F; font-size: 13px; font-weight: 700; }
 .mp-tick.on { background: #2F6B3F; border-color: #2F6B3F; color: #fff; }
-.mp-kind { flex: none; width: 78px; display: inline-flex; align-items: center; justify-content: center; height: 22px; border-radius: 999px; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.mp-step .mp-tick { margin: 0 5px; } /* step titles line up with the stage title above */
+.mp-kind { flex: none; display: inline-flex; align-items: center; justify-content: center; height: 20px; padding: 0 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .mp-kind.read { background: #EFE3D3; color: #6B4426; }
 .mp-kind.quiz { background: #E7E2F0; color: #4B3F6B; }
 .mp-kind.lesson { background: #E2ECF0; color: #2C5466; }
@@ -1515,6 +1516,7 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 .mp-step-copy a, .mp-step-copy strong { font-size: 15.5px; font-weight: 600; color: var(--ink); text-decoration: none; }
 .mp-step-copy a:hover { text-decoration: underline; }
 .mp-step-copy small { font-size: 13px; color: var(--muted); }
+.mp-step-title { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .mp-result { flex: none; font-size: 14px; font-weight: 700; color: #2F6B3F; }
 .mp-wait { flex: none; font-size: 13px; font-weight: 600; color: var(--muted); white-space: nowrap; }
 .mp-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--ink); background: transparent; color: var(--ink); font: 700 14px 'Archivo', sans-serif; text-decoration: none; white-space: nowrap; cursor: pointer; }
@@ -1544,7 +1546,7 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 .mp-pick-btn small { font-size: 12px; color: var(--muted); }
 .mp-pick-btn:hover { border-color: var(--copper-dk); background: #F7F1E8; }
 .mp-err { color: #8E2F16 !important; }
-.mp-readbar { display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; margin: 0 48px 48px; padding: 16px 20px; border-radius: 18px; background: var(--ink); color: var(--cream); font-family: 'Archivo', sans-serif; }
+.mp-readbar { box-sizing: border-box; max-width: 1080px; display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; margin: 0 auto 48px; padding: 16px 20px; border-radius: 18px; background: var(--ink); color: var(--cream); font-family: 'Archivo', sans-serif; }
 .mp-readbar p { margin: 0; display: flex; flex-direction: column; gap: 2px; }
 .mp-readbar p span { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--copper); }
 .mp-readbar p strong { font-size: 17px; }
@@ -1562,11 +1564,10 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
   .mp-stage-copy strong { font-size: 16.5px; }
   .mp-summary { padding: 12px 16px 14px 56px; }
   .mp-step { padding: 12px 14px; gap: 12px; flex-wrap: wrap; }
-  .mp-kind { display: none; }
   .mp-step-copy a, .mp-step-copy strong { font-size: 14.5px; }
   .mp-side { display: flex; }
   .mp-pick-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .mp-readbar { margin: 0 16px 32px; }
+  .mp-readbar { margin: 0 16px 32px; max-width: none; }
 }
 
 /* Admin → Training (Nov 8) */
