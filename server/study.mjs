@@ -400,7 +400,7 @@ export function level1Page(page, ctx) {
 }
 
 /* ---------------- the hub ---------------- */
-const HUB_VIDEOS = {
+export const HUB_VIDEOS = {
   'Video · What It Takes': 'vHo_OsDWfpE', 'Video · The Journey, Level by Level': 'jiFXI8fFzhU', 'Video · What Does It Take to Be a Sommelier Today?': 'vHo_OsDWfpE',
   'Video · Decide What to Study': 'YKcbIjPuO7Q', 'Video · How Working the Floor Helps You Study': '_DoX91Lu1NE',
   'Video · After You Pass Level 1': 'RDcViBQkMm8', 'Video · How to Open a Bottle of Wine': '9R3JBuXcNjQ', 'Video · How to Open & Serve Sparkling Wine': 'XFiWNb9GMNE',
