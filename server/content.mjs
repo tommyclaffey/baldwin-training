@@ -130,19 +130,53 @@ export function canOpen(user, to) {
   if (/^\/admin\/(wine-videos|pages\/classic)/.test(to)) return user.role === 'superadmin';
   return true;
 }
+/* Notes to the team that fills the book in ("Bar lead to add our bottle", "confirm with chef", "Sample spec"). Managers see
+ * them; staff don't (Nov 8, Tommy: "Keep adding / to confirm for managers only"). A note is a whole text, or one part of
+ * one ("Gin · bar lead to confirm" reads "Gin" to staff). */
+const NOTES = [
+  /\b(bar lead|lead|chef|managers?)\s+(to|must)\s+(add|confirm|check)\b/i, /\bstill to confirm\b/i, /^to confirm\.?$/i,
+  /\bconfirm with (the )?(chef|bar|macomb)/i, /\btap order to confirm\b/i, /\bneed full list from chef\b/i,
+  /\b(date|address|locations?|price) to add\b/i, /^address to add$/i,
+  /\bsample (data|spec|script|standards|schedule|pour sizes)\b/i, /\bis a sample\b/i, /^sample$/i, /\bfiller spec\b/i,
+];
+const isNote = (seg) => NOTES.some((r) => r.test(seg.trim()));
+/** The text with its note parts taken out: '' when it was all note, null when there was none. */
+export function withoutNotes(s) {
+  const str = String(s || '');
+  const parts = str.split(/(\s·\s|;\s+|\.\s+)/);
+  if (!parts.some((p, i) => i % 2 === 0 && isNote(p))) return null;
+  let out = '';
+  for (let i = 0; i < parts.length; i += 2) if (!isNote(parts[i])) out += parts[i] + (parts[i + 1] || '');
+  out = out.trim().replace(/(\s·|;|:|,)$/, '').trim();
+  if (out && /[.!?]$/.test(str.trim()) && !/[.!?]$/.test(out)) out += '.';
+  return out === str ? null : out;
+}
 function forViewer(page, user) {
   if (!page?.main) return page;
+  const staff = !user || !MANAGERS.has(user.role);
   const words = (n) => (n.t === 'T' ? 1 : (n.c || []).reduce((k, c) => k + words(c), 0));
-  // Returns true when the node lost something and is left as a bare label (a column heading, a tier name): it goes too.
+  // Returns why the node goes, or false. A node that lost an admin link and is left as a bare label (a column heading, a tier
+  // name) goes too. Notes: a label whose value was a note goes with it ("GLASS · To confirm"); a box left with no words goes
+  // (the dashed "Confirm with chef" chip); a list that only lost a chip stays.
   const prune = (n) => {
     if (!n.c) return false;
     const before = n.c.length;
     n.c = n.c.filter((c) => !(c.to && c.to.startsWith('/admin') && !canOpen(user, c.to)));
-    let lost = n.c.length < before;
-    n.c = n.c.filter((c) => { const empty = prune(c); if (empty) lost = true; return !empty; });
-    return lost && n !== page.main && words(n) <= 1;
+    let lost = n.c.length < before, noteText = false, noteKid = false;
+    if (staff) n.c = n.c.filter((c) => { if (c.t !== 'T') return true; const s = withoutNotes(c.s); if (s === null) return true; if (s) { setText(c, s); return true; } noteText = true; return false; });
+    n.c = n.c.filter((c) => { const why = prune(c); if (why === 'admin') lost = true; if (why === 'note') noteKid = true; return !why; });
+    if (n === page.main) return false;
+    if (lost && words(n) <= 1) return 'admin';
+    if (noteText && words(n) <= 1) return 'note';
+    if (noteKid && words(n) === 0) return 'note';
+    return false;
   };
   prune(page.main);
+  // A story band left with only its headings (its words were a note to the bar lead) goes.
+  if (staff) for (const st of findAll(page.main, byName('The story'))) {
+    const copy = find(st, byName('Copy'));
+    if (copy && !find(st, (x) => x.vid) && texts(copy).length <= 2) { const p = parentOf(page.main, st); if (p) p.c = p.c.filter((x) => x !== st); }
+  }
   return page;
 }
 

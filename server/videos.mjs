@@ -132,7 +132,7 @@ export function emptyVideoFrames(page, slug, file = '') {
       const copy = find(story, byName('Copy'));
       if (copy) copy.sh = 'F';
       const body = copy ? texts(copy).slice(2).map((t) => String(t.s || '').trim()).join(' ') : '';
-      if (!body || /lead to add/i.test(body)) remove(m, story); // nothing real to say either
+      if (!body) remove(m, story); // nothing to say either (a "bar lead to add" note stays for managers; staff never see it)
     } else {
       const band = path[1] && path[1] !== frame ? path[1] : null; // the page-level band holding the frame
       remove(band ? m : path[path.length - 2], band || frame);
