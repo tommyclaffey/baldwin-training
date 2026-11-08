@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
-import { dayLabel, dueWords, setPath, usePath, reloadPath, type JobPath, type Stage, type Step } from './store';
+import { dayLabel, dueWords, setPath, usePath, reloadPath, type JobPath, type Program, type Stage, type Step } from './store';
 
 const KIND: Record<Step['kind'], string> = { read: 'Read', quiz: 'Quiz', lesson: 'Lesson', signoff: 'Sign-Off' };
 const STATUS = { 'on-track': 'On Track', behind: 'Behind', done: 'Done' } as const;
@@ -50,6 +50,7 @@ export function MyPathPage() {
                   <strong>{g.title}</strong>
                   <small>{g.total} lessons · {g.done} done{g.inPath ? ` · ${g.inPath} in your path` : ''}</small>
                   <span className="mp-track" aria-hidden="true"><span style={{ width: `${Math.round((g.done / g.total) * 100)}%` }} /></span>
+                  {g.cert && <small className={'mp-cert' + (g.certified ? ' on' : '')}>{certLine(g)}</small>}
                 </Link>
               ))}
             </section>
@@ -62,6 +63,13 @@ export function MyPathPage() {
       </div>
     </main>
   );
+}
+
+/** "✓ Certified Bartender", or what's left: the final, the practical. */
+function certLine(g: Program) {
+  if (g.certified) return `✓ ${g.cert}`;
+  const left = [!g.final?.passedAt && 'final exam', g.practical && !g.practical.at && 'practical'].filter(Boolean);
+  return `${g.cert}: ${left.join(' and ')} to go`;
 }
 
 function StageCard({ stage, n, open: startOpen }: { stage: Stage; n: number; open: boolean }) {

@@ -1535,6 +1535,8 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 .mp-program { display: flex; flex-direction: column; gap: 4px; padding: 12px 0 2px; border-top: 1px solid #DDD3C5; color: inherit; text-decoration: none; }
 .mp-program strong { font-size: 15.5px; font-weight: 600; }
 .mp-program small { font-size: 13px; color: var(--muted); }
+.mp-program small.mp-cert { color: var(--copper-dk); font-weight: 600; }
+.mp-program small.mp-cert.on { color: #2F6B45; }
 .mp-track { display: block; height: 5px; border-radius: 3px; background: #E6DED2; overflow: hidden; margin-top: 4px; }
 .mp-track span { display: block; height: 100%; background: var(--copper); border-radius: 3px; }
 .mp-tint { background: #EFE3D3; border-color: #EFE3D3; }

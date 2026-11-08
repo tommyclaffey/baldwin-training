@@ -202,30 +202,6 @@
    "description": "Reused from the app (Cocktail Program, Nov 8)"
   },
   {
-   "chapter": "bar-spirits",
-   "section": "How spirits are made",
-   "file": "/img/study/beer-sake-spirits--distillation.jpg",
-   "description": "Reused from the app (Cocktail Program, Nov 8)"
-  },
-  {
-   "chapter": "bar-spirits",
-   "section": "Whiskey",
-   "file": "/img/classic-rusty-nail.jpg",
-   "description": "Reused from the app (Cocktail Program, Nov 8)"
-  },
-  {
-   "chapter": "bar-spirits",
-   "section": "Tequila, mezcal, gin and vodka",
-   "file": "/img/study/beer-sake-spirits--tequila-and-mezcal.jpg",
-   "description": "Reused from the app (Cocktail Program, Nov 8)"
-  },
-  {
-   "chapter": "bar-spirits",
-   "section": "Liqueurs, vermouth and bitters",
-   "file": "/img/study/beer-sake-spirits--vodka-gin-rum-and-liqueurs.jpg",
-   "description": "Reused from the app (Cocktail Program, Nov 8)"
-  },
-  {
    "chapter": "bar-our-menu",
    "section": "Reading a spec",
    "file": "/img/d757eed8b346.jpg",
@@ -488,6 +464,30 @@
    "section": "Bitters",
    "file": "/img/221c0f0689de.jpg",
    "description": "Reused from the app (Cocktail Program, Nov 8)"
+  },
+  {
+   "chapter": "bar-spirits-at-a-glance",
+   "section": "Clear spirits",
+   "file": "/img/96166a879fdb.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 1 split, Nov 8)"
+  },
+  {
+   "chapter": "bar-spirits-at-a-glance",
+   "section": "Whiskey",
+   "file": "/img/classic-rusty-nail.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 1 split, Nov 8)"
+  },
+  {
+   "chapter": "bar-spirits-at-a-glance",
+   "section": "Agave and cane",
+   "file": "/img/study/beer-sake-spirits--tequila-and-mezcal.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 1 split, Nov 8)"
+  },
+  {
+   "chapter": "bar-spirits-at-a-glance",
+   "section": "Brandy, liqueurs and vermouth",
+   "file": "/img/e42985c58f55.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 1 split, Nov 8)"
   }
  ]
 }

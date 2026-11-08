@@ -3,7 +3,7 @@
 // its menu is in. A question's id ("price:123") is enough to write it again on the server, so scoring never trusts the phone.
 import { specHref, specLists } from './specs.mjs';
 import { listEntries, COURSES } from './cms.mjs';
-import { allChapters, chapterSlug, shuffleSeeded } from './manual.mjs';
+import { allChapters, chapterSlug, shuffleSeeded, BAR_LEVELS, barLevel, barLevelOf } from './manual.mjs';
 
 export const PASS_PCT = 80;
 export const passFor = (total) => Math.ceil((total * PASS_PCT) / 100);
@@ -67,8 +67,10 @@ const ASK_COCKTAIL_PAIRINGS = false;
 export const SPEC_TOPICS = [['spec:specialty', 'Specialty Cocktail Specs'], ['spec:brg', 'BRG Staples Specs'], ['spec:classic-on', 'Classics on the Menu Specs'], ['spec:mules', 'Mule Specs'], ['spec:dessert', 'Dessert Cocktail Specs'], ['spec:spiritless', 'Spiritless Cocktail Specs'], ['spec:house', 'House Cocktail Specs'], ['spec:classic-off', 'Classics off the Menu Specs'], ['spec:classic', 'Classic Cocktail Specs']];
 /** A question only bartenders need (an amount, the ice): kept out of the Quick Quiz. */
 export const barOnly = (q) => q.topics.every((t) => t.startsWith('spec:') || t.startsWith('final:'));
-/** The Cocktail Program's Level 1 final (Nov 8): every lesson card plus the spec questions for the drinks on our menu. */
+/** The Cocktail Program's finals (Nov 8): each level's lesson cards. Our menu's specs are a bartender's job, so they're in
+ *  Level 2's final (Certified Bartender), not Level 1's (Certified Bar Server). */
 export const BAR_FINAL_KEY = 'final:bar-1';
+const SPECS_FINAL = barLevelOf(2).final;
 const ON_MENU_SPECS = new Set(['specialty', 'brg', 'classic-on', 'mules', 'dessert', 'spiritless', 'house']);
 export function topicList(pool) {
   const count = (k) => pool.filter((q) => q.topics.includes(k)).length;
@@ -89,8 +91,8 @@ export function topicList(pool) {
     { key: 'allergens', label: 'Allergens', group: 'Know It Cold' },
     { key: 'pairings', label: 'Pairings', group: 'Know It Cold' },
     ...SPEC_TOPICS.map(([key, label]) => ({ key, label, group: 'Cocktail Specs · For Bartenders' })),
-    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.program === 'bar' ? 'Cocktail Program · Level 1' : c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
-    { key: BAR_FINAL_KEY, label: 'Certified Bar Server · Final Exam', group: 'Cocktail Program · Level 1' },
+    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.program === 'bar' ? `Cocktail Program · Level ${barLevel(c)}` : c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
+    ...BAR_LEVELS.map((L) => ({ key: L.final, label: `${L.title} · Final Exam`, group: `Cocktail Program · Level ${L.level}` })),
   ];
   // A specs list can be short (two dessert cocktails): it still gets its quiz.
   return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= (x.key.startsWith('spec:') ? 2 : 3));
@@ -301,7 +303,7 @@ export function questionPool(db, store) {
       const makers = [swap, amount, switched];
       for (let tries = 0; wrong.size < 6 && tries < 30; tries++) makers[tries % 3]();
       if (wrong.size < 3) continue;
-      ask('spec:' + e.id, { page: specHref(n), label: n, q: `What’s the spec for ${the(n)}?`, right, pool: [...wrong], why: `${right.split('\n').join(', ')}.`, topics: finalToo ? [topic, BAR_FINAL_KEY] : [topic] });
+      ask('spec:' + e.id, { page: specHref(n), label: n, q: `What’s the spec for ${the(n)}?`, right, pool: [...wrong], why: `${right.split('\n').join(', ')}.`, topics: finalToo ? [topic, SPECS_FINAL] : [topic] });
     }
   }
 
@@ -339,7 +341,7 @@ export function questionPool(db, store) {
     ch.cards.forEach((c, i) => {
       const ref = `study:${ch.slug}:${i}`;
       const options = shuffleSeeded([c.answer, ...c.wrong.slice(0, 3)], ref);
-      out.push({ ref, q: c.q, options, answer: options.indexOf(c.answer), why: `${c.answer}.`, page: '/' + chapterSlug(ch), label: ch.title, topics: ch.program === 'bar' ? ['study:' + ch.slug, BAR_FINAL_KEY] : ['study:' + ch.slug] });
+      out.push({ ref, q: c.q, options, answer: options.indexOf(c.answer), why: `${c.answer}.`, page: '/' + chapterSlug(ch), label: ch.title, topics: ch.program === 'bar' ? ['study:' + ch.slug, barLevelOf(barLevel(ch)).final] : ['study:' + ch.slug] });
     });
   }
   return out;

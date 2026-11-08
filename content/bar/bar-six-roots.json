@@ -1,8 +1,9 @@
 {
- "number": 11,
+ "number": 9,
+ "barLevel": 2,
  "slug": "bar-six-roots",
  "title": "The six roots",
- "script": "Lesson 11",
+ "script": "Lesson 9",
  "lead": "Six classic drinks are the patterns most cocktails follow. Learn them and every new drink is a variation.",
  "minutes": 20,
  "program": "bar",

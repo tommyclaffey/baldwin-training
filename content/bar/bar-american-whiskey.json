@@ -1,8 +1,9 @@
 {
- "number": 4,
+ "number": 3,
+ "barLevel": 2,
  "slug": "bar-american-whiskey",
  "title": "American whiskey",
- "script": "Lesson 4",
+ "script": "Lesson 3",
  "lead": "Bourbon, rye, Tennessee and the words on the label that mean something by law: straight and bottled-in-bond.",
  "minutes": 18,
  "program": "bar",

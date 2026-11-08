@@ -70,9 +70,9 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   // Level 1 (content/manual) and Level 2 (content/manual-l2, Nov 2) chapters
   const readDir = (d) => (fs.existsSync(path.join(root, d)) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'))) : []);
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
-  // + the Cocktail Program (Nov 8): its course page and one entry per lesson section (no whole-chapter pages)
+  // + the Cocktail Program (Nov 8): a course page per level (2) and one entry per lesson section (no whole-chapter pages)
   const bar = readDir('content/bar');
-  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 1 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 2 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -782,6 +782,9 @@ test('job paths: a server’s path from the book, page reads, quiz passes and ma
   const signed = (await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'path:bartender:build-three' })).data;
   assert.ok(signed.paths[0].stages.some((st) => st.steps.some((s) => s.id === 'path:bartender:build-three' && s.done && s.by === 'Rosalind Hart')));
   assert.equal((await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'path:server:floor' })).status, 400, 'not a step in their path');
+  // the Cocktail Program's Level 2 practical (Nov 8): a manager signs it off on Admin → Training
+  const pr = (await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'program:bar-2:practical' })).data;
+  assert.ok(pr.programs.find((g) => g.cert === 'Certified Bartender').practical.by === 'Rosalind Hart');
   const both = (await mgr(`/api/path/person/${quinn.id}`, 'PATCH', { jobs: ['bartender', 'server'] })).data;
   assert.equal(both.paths.length, 2);
 });
@@ -793,16 +796,26 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   const page = JSON.stringify((await call('/api/page/' + hub.file)).data);
   assert.ok(page.includes('CERTIFIED BAR SERVER') && page.includes('t%3Afinal%3Abar-1'), 'Level 1 with its final exam');
   assert.ok(!/Court of Master|mastersommeliers/.test(page), 'nothing from the Sommelier page left over');
-  const lesson = index.find((e) => e.slug === 'cocktail-program/level-1/bar-six-roots');
+  const lesson = index.find((e) => e.slug === 'cocktail-program/level-2/bar-six-roots');
   const lp = JSON.stringify((await call('/api/page/' + lesson.file)).data);
   assert.ok(lp.includes('"youtubeId":"pdcrJ5V7YKM"') && lp.includes('OLD FASHIONED'), 'the Old Fashioned lesson with its video');
   const cat = (await call('/api/quiz/catalog')).data;
   const final = cat.quizzes.find((q) => q.id === 't:final:bar-1');
-  assert.equal(final.count, 60);
+  assert.equal(final.count, 30, 'Level 1 is a short final');
   assert.equal(final.group, 'Cocktail Program · Level 1');
-  assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 1').length, 13, 'twelve lesson quizzes and the final');
-  const gin = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'cocktail-program/level-1/bar-vodka-gin/gin-styles').file)).data);
+  assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 1').length, 5, 'four lesson quizzes and the final');
+  // Level 2 (Nov 8 split): the spirits and the six roots, a 60-question final with our menu's specs, and a practical
+  const l2 = index.find((e) => e.slug === 'cocktail-program/level-2');
+  const l2p = JSON.stringify((await call('/api/page/' + l2.file)).data);
+  assert.ok(l2p.includes('CERTIFIED BARTENDER') && l2p.includes('t%3Afinal%3Abar-2') && l2p.includes('PRACTICAL'), 'Level 2 with its final and practical');
+  const final2 = cat.quizzes.find((q) => q.id === 't:final:bar-2');
+  assert.equal(final2.count, 60);
+  assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 2').length, 10, 'nine lesson quizzes and the final');
+  const gin = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'cocktail-program/level-2/bar-vodka-gin/gin-styles').file)).data);
   assert.ok(gin.includes('GENEVER') && gin.includes('/spirit/gin/london-dry'), 'a spirit lesson links to its back bar page');
   const start = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-1' } })).data;
-  assert.equal(start.items.length, 60);
+  assert.equal(start.items.length, 30);
+  assert.ok(start.items.every((q) => !/What’s the spec/.test(q.q)), 'specs are a bartender’s job: not in Level 1');
+  const start2 = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-2' } })).data;
+  assert.equal(start2.items.length, 60);
 });
