@@ -10,26 +10,53 @@ const DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../co
 // Level 2 (Certified) chapters, Nov 2: same format plus "level": 2 and "part", written from the Court's resource library
 const DIR2 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/manual-l2');
 export const GUIDE = 'sommelier-program/study-guide';
-// The Cocktail Program (Nov 8, Tommy: "start building it in the app"): Level 1, Certified Bar Server, same lesson format.
-const DIR_BAR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/bar');
+// The training programs (Nov 8): the Cocktail Program ("start building it in the app") and the Beer Program (built on the
+// Cicerone Certified Beer Server outline). Same lesson format as the Study Guide, one folder each, grouped into levels.
+// The levels follow the Court, Cicerone and WSET: the same subjects at every level, deeper each time; Level 1 is a
+// multiple-choice final, later levels add a practical a manager signs off. Plan: vault › (C) Cocktail Program — Level Structure.
+const here = (d) => path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/' + d);
+export const PROGRAMS = [
+  { key: 'bar', name: 'Cocktail Program', short: 'Bar', slug: 'cocktail-program', dir: here('bar'), seal: 'BAR',
+    back: ['/the-bar/cocktails', 'The Bar'], hero: '/img/fe067d97b4ac.jpg', heroName: 'IMG/Behind the bar · Unsplash, Olena Bohovyk',
+    ladder: ['Certified Bar Server', 'Certified Bartender', 'Advanced Mixologist', 'Master of the Bar'],
+    fine: 'It isn’t a certification from the USBG or any other outside body.' },
+  { key: 'beer', name: 'Beer Program', short: 'Beer', slug: 'beer-program', dir: here('beer'), seal: 'BEER',
+    back: ['/the-bar/beer-and-draft', 'The Bar'], hero: '/img/a25e068de269.jpg', heroName: 'IMG/Pouring a draft · Unsplash stand-in (the Pilsner page photo)',
+    ladder: ['Beer Server', 'Beer Specialist', 'Advanced Beer Specialist', 'Master of Beer'],
+    fine: 'It isn’t a Cicerone® certification. It prepares you for Cicerone’s Certified Beer Server exam.' },
+];
 export const BAR = 'cocktail-program';
 export const BAR_BASE = 'cocktail-program/level-1';
-// The levels (Nov 8, Tommy: "I went too deep into the Certified Bar Server … this might be a little intense for most people").
-// Built like the Court, Cicerone and WSET: the same subjects at every level, deeper each time; Level 1 is a multiple-choice
-// final, Level 2 adds a practical a manager signs off. Plan: vault › (C) Cocktail Program — Level Structure (Nov 8 2026).
-export const BAR_LEVELS = [
-  { level: 1, title: 'Certified Bar Server', slug: BAR, file: 'bar-1', final: 'final:bar-1', len: 30 },
-  { level: 2, title: 'Certified Bartender', slug: BAR + '/level-2', file: 'bar-2', final: 'final:bar-2', len: 60, practical: 'program:bar-2:practical',
-    practicalTitle: 'Build from our specs', practicalHow: 'Build drinks from our specs while a manager watches; they sign you off' },
+const words = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
+export const countWord = (n) => words[n] || String(n);
+/** Every built level. A level's first page is the program's address for Level 1, then <program>/level-N. */
+export const LEVELS = [
+  { program: 'bar', level: 1, title: 'Certified Bar Server', file: 'bar-1', final: 'final:bar-1', len: 30, prefix: 'BAR1', head: 'Learn it, then prove it',
+    lead: (n, L) => `${countWord(n)} short lessons for everyone on the floor: how guests order, every spirit at a glance, our menu, and the glass. Then a ${L.len}-question final.` },
+  { program: 'bar', level: 2, title: 'Certified Bartender', file: 'bar-2', final: 'final:bar-2', len: 60, prefix: 'BAR2', head: 'Know every bottle',
+    practical: 'program:bar-2:practical', practicalTitle: 'Build from our specs', practicalHow: 'Build drinks from our specs while a manager watches; they sign you off', practicalStep: 'Build our specs for a manager',
+    lead: (n, L) => `${countWord(n)} lessons for bartenders: every spirit on the back bar in depth, then the six roots. A ${L.len}-question final, then a practical: build our specs while a manager watches.` },
   // Level 3 (Nov 8, Tommy: "do Advanced Mixologist"): the craft. Its practical is an original drink, specced, costed and built.
-  { level: 3, title: 'Advanced Mixologist', slug: BAR + '/level-3', file: 'bar-3', final: 'final:bar-3', len: 60, practical: 'program:bar-3:practical',
-    practicalTitle: 'Create an original cocktail', practicalHow: 'Write an original spec, cost it, and build it for the bar lead; they sign you off' },
-];
-export const barLevel = (c) => c?.barLevel || 1;
-export const barLevelOf = (n) => BAR_LEVELS.find((x) => x.level === n);
+  { program: 'bar', level: 3, title: 'Advanced Mixologist', file: 'bar-3', final: 'final:bar-3', len: 60, prefix: 'BAR3', head: 'Make it your own',
+    practical: 'program:bar-3:practical', practicalTitle: 'Create an original cocktail', practicalHow: 'Write an original spec, cost it, and build it for the bar lead; they sign you off', practicalStep: 'Create your own drink',
+    lead: (n, L) => `${countWord(n)} lessons on the craft: balance, water and citrus, new drinks, house syrups, batching and costing. A ${L.len}-question final, then a practical: create, cost and build an original cocktail.` },
+  // The Beer Program (Nov 8, Tommy: "beer will be based off of Cicerone"): Level 1 follows the Certified Beer Server outline.
+  { program: 'beer', level: 1, title: 'Beer Server', file: 'beer-1', final: 'final:beer-1', len: 60, prefix: 'BEER1', head: 'Every beer, served right',
+    practical: 'program:beer-1:practical', practicalTitle: 'Pour and present a draft', practicalHow: 'Check a glass is beer-clean, pour a draft with the right head and describe it; a manager signs you off', practicalStep: 'Pour a draft for a manager',
+    lead: (n, L) => `${countWord(n)} lessons built on the Cicerone Certified Beer Server outline: keeping and serving beer, how it’s made, the styles, flavor and pairing. A ${L.len}-question practice final, then a practical: pour a draft for a manager.` },
+].map((L) => { const P = PROGRAMS.find((p) => p.key === L.program); return { ...L, slug: L.level === 1 ? P.slug : `${P.slug}/level-${L.level}` }; });
+export const programDef = (key) => PROGRAMS.find((p) => p.key === key);
+export const isProgram = (c) => !!programDef(c?.program);
+/** A program lesson's level (the Cocktail Program's files say "barLevel"; newer ones say "programLevel"). */
+export const barLevel = (c) => c?.programLevel || c?.barLevel || 1;
+export const progLevel = barLevel;
+export const levelFor = (program, n) => LEVELS.find((x) => x.program === program && x.level === n);
+export const levelOfChapter = (c) => levelFor(c.program, progLevel(c));
+export const barLevelOf = (n) => levelFor('bar', n);
+export const BAR_LEVELS = LEVELS.filter((x) => x.program === 'bar');
 export const L2_BASE = 'sommelier-program/level-2';
 /** Where a chapter's lessons live: Level 1 under the Study Guide, Level 2 under the Level 2 page. */
-export const chapterBase = (c) => (c?.program === 'bar' ? `${BAR}/level-${barLevel(c)}` : c?.level === 2 ? L2_BASE : GUIDE);
+export const chapterBase = (c) => (isProgram(c) ? `${programDef(c.program).slug}/level-${progLevel(c)}` : c?.level === 2 ? L2_BASE : GUIDE);
 export const chapterSlug = (c) => `${chapterBase(c)}/${c.slug}`;
 export const quizHref = (c) => `/quizzes?quiz=t:study:${c.slug}`;
 
@@ -53,18 +80,18 @@ export function chapters2() {
   if (!cache2) cache2 = load(DIR2, 2);
   return cache2;
 }
-/** Every chapter, both levels. */
-let cacheBar;
-/** The Cocktail Program's lessons, in order: one level, or every level (Level 1's first). */
-export function chaptersBar(level) {
-  if (!cacheBar) cacheBar = load(DIR_BAR, 1).map((c) => ({ ...c, program: 'bar', barLevel: c.barLevel || 1 })).sort((a, b) => a.barLevel - b.barLevel || a.number - b.number);
-  return level ? cacheBar.filter((c) => c.barLevel === level) : cacheBar;
+const progCache = {};
+/** A program's lessons, in order: one level, or every level (Level 1's first). */
+export function chaptersOf(program, level) {
+  if (!progCache[program]) progCache[program] = load(programDef(program).dir, 1).map((c) => ({ ...c, program, programLevel: c.programLevel || c.barLevel || 1 })).sort((a, b) => a.programLevel - b.programLevel || a.number - b.number);
+  return level ? progCache[program].filter((c) => c.programLevel === level) : progCache[program];
 }
-export const allChapters = () => [...chapters(), ...chapters2(), ...chaptersBar()];
+export const chaptersBar = (level) => chaptersOf('bar', level);
+export const allChapters = () => [...chapters(), ...chapters2(), ...PROGRAMS.flatMap((p) => chaptersOf(p.key))];
 /** "Sommelier · Level 1", "Cocktail Program · Level 1": the program a lesson belongs to. */
-export const programOf = (c) => (c?.program === 'bar' ? `Cocktail Program · Level ${barLevel(c)}` : `Sommelier · Level ${c?.level || 1}`);
+export const programOf = (c) => (isProgram(c) ? `${programDef(c.program).name} · Level ${progLevel(c)}` : `Sommelier · Level ${c?.level || 1}`);
 /** The chapters in the same level as this one. */
-export const levelChapters = (c) => (c?.program === 'bar' ? chaptersBar(barLevel(c)) : c?.level === 2 ? chapters2() : chapters());
+export const levelChapters = (c) => (isProgram(c) ? chaptersOf(c.program, progLevel(c)) : c?.level === 2 ? chapters2() : chapters());
 export const chapterBySlug = (slug) => allChapters().find((c) => c.slug === slug);
 
 /** One person's progress: chapters opened, cards known cold, cards to review (from their quiz marks). */

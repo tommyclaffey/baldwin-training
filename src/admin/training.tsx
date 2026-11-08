@@ -115,7 +115,7 @@ function PersonPath({ id, jobs, onChange }: { id: number; jobs: Job[]; onChange:
               {p.programs.filter((g) => g.cert).map((g) => (
                 <tr key={g.title}>
                   <td className="tr-kind">{g.title.replace('Cocktail Program · ', 'Bar · ')}</td>
-                  <td>{g.cert}{g.certified ? ' · certified' : ''}</td>
+                  <td>{g.cert}{g.certified ? <> · certified · <a href={`/certificate/${g.certKey}?user=${p.id}`}>View</a></> : ''}</td>
                   <td>{g.final?.passedAt ? `Final passed ${when(g.final.passedAt)}` : g.final?.best ? `Final best ${g.final.best}, not passed yet` : 'Final not taken'}
                     {g.practical && <><br />{g.practical.at ? `Practical signed off${g.practical.by ? ' by ' + g.practical.by : ''} ${when(g.practical.at)}` : `Practical: ${g.practical.how}`}</>}</td>
                   <td>{g.practical && (g.practical.at

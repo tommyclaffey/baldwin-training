@@ -13,6 +13,7 @@ import { EditInPlaceProvider } from './components/EditSheet';
 import { setFavicon } from './lib/favicon';
 import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
 import { MyPathPage, PathReadBar } from './path/MyPath';
+import { CertificatePage } from './path/Certificate';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -45,7 +46,7 @@ function Book() {
   if (!user) return <BookSignIn />;
   return (
     <EditInPlaceProvider>
-    <NavContext.Provider value={pathname === '/my-path' ? 'My Path' : entry?.nav ?? ''}>
+    <NavContext.Provider value={pathname === '/my-path' ? 'My Path' : pathname.startsWith('/certificate/beer') ? 'Beer Program' : pathname.startsWith('/certificate/') ? 'Cocktail Program' : entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
         <div className={'mobile-brand' + (user.demo ? ' has-pill' : '')}>
@@ -67,7 +68,7 @@ function Book() {
         </aside>
         <div id="content" className="content">
           <DemoBar />
-          {pathname === '/my-path' ? <MyPathPage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
+          {pathname === '/my-path' ? <MyPathPage /> : pathname.startsWith('/certificate/') ? <CertificatePage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
         </div>
         {user.demo && <DemoTour />}
       </div>

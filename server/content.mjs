@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { addRows } from './editinplace.mjs';
-import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, BAR_LEVELS, chaptersBar } from './manual.mjs';
+import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, LEVELS, chaptersOf, programDef, isProgram, progLevel } from './manual.mjs';
 import { regionPage, regionData } from './region.mjs';
 import { lessonPage, level1Page, level2Page, hubPage, barPage, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
 import { passFor } from './quizgen.mjs';
@@ -485,13 +485,13 @@ function assembleRaw(db, file) {
     return chapterPage(tpl, ch, { all: levelChapters(ch), prog: progress(db, SCOPE.user?.id, SCOPE.store), slugs: new Set(baseIndex().map((x) => x.slug)) });
   }
   // The Cocktail Program (Nov 8): a course page per level, drawn from the Sommelier Level 1 page (Figma 392:31)
-  const bl = BAR_LEVELS.find((x) => x.file === file);
+  const bl = LEVELS.find((x) => x.file === file && chaptersOf(x.program, x.level).length);
   if (bl) {
     const tpl = basePage('392-31'); if (!tpl) return null;
     const uid = SCOPE.user?.id;
     const passed = uid && db.prepare('SELECT score, total, at FROM quiz_attempts WHERE user_id = ? AND quiz = ? ORDER BY at').all(uid, 't:' + bl.final).find((r) => r.score >= passFor(r.total));
     const practical = uid && bl.practical ? db.prepare('SELECT s.at, u.name by_name FROM signoffs s LEFT JOIN users u ON u.id = s.by_user WHERE s.device = ? AND s.quiz = ? AND s.store_id = ?').get('u' + uid, bl.practical, SCOPE.store) : null;
-    return barPage({ ...tpl, name: `Cocktail Program · Level ${bl.level}` }, { level: bl.level, done: sectionsDone(db, uid), passedAt: passed?.at || null, practical: practical ? { at: practical.at, by: practical.by_name } : null });
+    return barPage({ ...tpl, name: `${programDef(bl.program).name} · Level ${bl.level}` }, { L: bl, level: bl.level, done: sectionsDone(db, uid), passedAt: passed?.at || null, practical: practical ? { at: practical.at, by: practical.by_name } : null });
   }
   // v3 lessons (Nov 1): one per chapter section, drawn from Figma 403:45
   const lm = /^l-(.+)~(\d+)$/.exec(file);
@@ -619,20 +619,21 @@ export function fullIndex(db) {
   }
   // Study Guide chapters (content/manual), searchable like any page
   // The Cocktail Program (Nov 8): its course page, and its lessons below
-  for (const L of BAR_LEVELS) {
-    const n = chaptersBar(L.level).length;
-    entries.push({ id: L.file, file: L.file, slug: L.slug, name: `The Bar · Cocktail Program · Level ${L.level}`, title: L.level === 1 ? 'Cocktail Program' : `Cocktail Program · Level ${L.level}`, section: 'The Bar', nav: 'Cocktail Program',
-      text: `Cocktail Program Level ${L.level} ${L.title} lessons final exam ${chaptersBar(L.level).map((c) => c.title).join(' ')}`,
+  for (const L of LEVELS) {
+    const P = programDef(L.program); const chs = chaptersOf(L.program, L.level); const n = chs.length;
+    if (!n) continue;
+    entries.push({ id: L.file, file: L.file, slug: L.slug, name: `The Bar · ${P.name} · Level ${L.level}`, title: L.level === 1 ? P.name : `${P.name} · Level ${L.level}`, section: 'The Bar', nav: P.name,
+      text: `${P.name} Level ${L.level} ${L.title} lessons final exam ${chs.map((c) => c.title).join(' ')}`,
       blurb: `Level ${L.level}: ${L.title}. ${n} lessons, then a ${L.len}-question final${L.practical ? ' and a practical' : ''}.` });
   }
   for (const ch of allChapters()) {
-    const bar = ch.program === 'bar';
+    const bar = isProgram(ch); const PN = bar && programDef(ch.program).name;
     if (!bar) entries.push({ id: 'm-' + ch.slug, file: 'm-' + ch.slug, slug: wholeChapterSlug(ch), name: (ch.level === 2 ? 'Level 2 · ' : 'Study Guide · ') + ch.title + ' · Whole Chapter', title: ch.title, section: ch.level === 2 ? 'Level 2' : 'Study Guide', nav: 'Sommelier Program',
       text: [ch.lead, ...ch.sections.flatMap((x) => [x.name, ...(x.know || []), ...(x.chips?.items || [])])].filter(Boolean).join(' ').slice(0, 1200), blurb: ch.lead });
     // one lesson per section (the first one is the chapter's own address)
     ch.sections.forEach((sec, i) => {
       const v = (ch.v3?.sections || []).find((x) => x.name === sec.name) || {};
-      entries.push({ id: lessonFile(ch, i), file: lessonFile(ch, i), slug: lessonSlug(ch, i), name: `${bar ? `Cocktail Program L${ch.barLevel}` : ch.level === 2 ? 'Level 2' : 'Study Guide'} · ${ch.title} · ${sec.name}`, title: i === 0 ? ch.title : sec.name, section: bar ? 'Cocktail Program' : ch.level === 2 ? 'Level 2' : 'Study Guide', nav: bar ? 'Cocktail Program' : 'Sommelier Program',
+      entries.push({ id: lessonFile(ch, i), file: lessonFile(ch, i), slug: lessonSlug(ch, i), name: `${bar ? `${PN} L${progLevel(ch)}` : ch.level === 2 ? 'Level 2' : 'Study Guide'} · ${ch.title} · ${sec.name}`, title: i === 0 ? ch.title : sec.name, section: bar ? PN : ch.level === 2 ? 'Level 2' : 'Study Guide', nav: bar ? PN : 'Sommelier Program',
         text: [sec.name, v.read?.bigIdea, v.read?.where, ...(v.read?.stops || []).map((x) => x.name + ' ' + x.text), ...(v.keyPoints || []).map((k) => k.big + ' ' + k.line)].filter(Boolean).join(' ').replace(/\*\*/g, '').slice(0, 1200),
         thumb: v.video?.youtubeId ? `https://i.ytimg.com/vi/${v.video.youtubeId}/mqdefault.jpg` : undefined, blurb: v.read?.bigIdea || ch.lead });
     });
