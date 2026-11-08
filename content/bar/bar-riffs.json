@@ -1,0 +1,336 @@
+{
+ "number": 3,
+ "barLevel": 3,
+ "slug": "bar-riffs",
+ "title": "Building new drinks",
+ "script": "Lesson 3",
+ "lead": "Every new drink starts from an old one. Change one part and taste.",
+ "minutes": 14,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Swap one part",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Change the core, the balance or the seasoning."
+    }
+   ],
+   "know": [
+    "Swap the spirit of an Old Fashioned for agricole rhum: a Ti’ Punch.",
+    "Swap its sugar for Bénédictine: a Monte Carlo.",
+    "One swap at a time."
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018), as summarized by the publisher (randomhousebooks.com) and reviews"
+  },
+  {
+   "name": "Split the base",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Two spirits can share the core."
+    }
+   ],
+   "know": [
+    "The Vieux Carré splits rye and Cognac.",
+    "A split base adds depth without a new recipe.",
+    "Keep the total spirit the same."
+   ],
+   "source": "Our book: the classic cocktail specs in this app; Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018), as summarized by the publisher (randomhousebooks.com) and reviews"
+  },
+  {
+   "name": "Swap the sweetener",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The sweet part can bring flavor too."
+    }
+   ],
+   "know": [
+    "Honey syrup turns a Whiskey Sour into a Gold Rush.",
+    "A liqueur can be the sweetener, like the Sidecar’s orange liqueur.",
+    "A sweeter liqueur means less syrup."
+   ],
+   "source": "Our book: the classic cocktail specs in this app; Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018), as summarized by the publisher (randomhousebooks.com) and reviews"
+  },
+  {
+   "name": "Write the spec",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "If it isn’t written down, it isn’t a drink yet."
+    }
+   ],
+   "know": [
+    "Amounts, glass, ice, method and garnish.",
+    "Build it three times the same way.",
+    "Name it so a guest can say it."
+   ],
+   "source": "Common bar practice"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Swap one part",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "TI’ PUNCH",
+      "line": "an Old Fashioned with agricole rhum."
+     },
+     {
+      "big": "MONTE CARLO",
+      "line": "an Old Fashioned sweetened with Bénédictine."
+     },
+     {
+      "big": "ONE",
+      "line": "swap at a time."
+     }
+    ],
+    "read": {
+     "bigIdea": "New drinks are old drinks with one part changed.",
+     "where": "Cocktail Codex’s six roots are templates. Keep the template and **swap one part**: the **core**, the **balance** or the **seasoning**. Swap the whiskey in an Old Fashioned for **agricole rhum** and you’re close to a **Ti’ Punch**. Swap its sugar for **Bénédictine** and you have a **Monte Carlo**.",
+     "stopsTitle": "Where to swap",
+     "stops": [
+      {
+       "name": "Core",
+       "text": "A different **spirit**."
+      },
+      {
+       "name": "Balance",
+       "text": "A different **sweetener** or **citrus**."
+      },
+      {
+       "name": "Seasoning",
+       "text": "Different **bitters**, a rinse, a new garnish."
+      }
+     ],
+     "mixup": "Changing three things at once isn’t a riff, it’s a guess. Start with one.",
+     "sayIt": "It’s built like an Old Fashioned, with rhum agricole instead of whiskey."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Split the base",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "VIEUX CARRÉ",
+      "line": "rye and Cognac, an ounce each."
+     },
+     {
+      "big": "DEPTH",
+      "line": "without a new recipe."
+     },
+     {
+      "big": "SAME TOTAL",
+      "line": "spirit stays the same."
+     }
+    ],
+    "read": {
+     "bigIdea": "Two spirits can share the core.",
+     "where": "A **split base** uses two spirits where the root uses one. The **Vieux Carré** splits **rye and Cognac**, an ounce each, with sweet vermouth, Bénédictine and Peychaud’s. Keep the **total** spirit the same as the root, so the balance still works.",
+     "mixup": "A split base isn’t more spirit. It’s the same amount, shared.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Swap the sweetener",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "GOLD RUSH",
+      "line": "a Whiskey Sour with honey syrup."
+     },
+     {
+      "big": "LIQUEUR",
+      "line": "can be the sweet part, like the Sidecar’s."
+     },
+     {
+      "big": "LESS SYRUP",
+      "line": "when the liqueur is sweet."
+     }
+    ],
+    "read": {
+     "bigIdea": "The sweet part can carry flavor.",
+     "where": "Plain syrup only sweetens. A flavored sweetener sweetens **and** adds taste. Our **Gold Rush** is bourbon, lemon and **honey syrup**: a Whiskey Sour with honey. In the **Sidecar** family, an **orange liqueur** does the sweetening. When the new sweetener is sweeter, use **less**, and taste.",
+     "mixup": "Adding a liqueur on top of the syrup makes a drink sweeter. Take some syrup out.",
+     "sayIt": "It’s a whiskey sour sweetened with honey instead of sugar."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Write the spec",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SPEC",
+      "line": "amounts, glass, ice, method, garnish."
+     },
+     {
+      "big": "THREE TIMES",
+      "line": "the same way before it’s done."
+     },
+     {
+      "big": "NAME",
+      "line": "it so a guest can say it."
+     }
+    ],
+    "read": {
+     "bigIdea": "A drink isn’t real until anyone can build it.",
+     "where": "Write the **spec** like ours: every **amount**, the **glass**, the **ice**, the **method** and the **garnish**. Build it **three times** the same way; if it tastes different each time, the spec isn’t finished. Give it a **name** a guest can say out loud, and one line that sells it.",
+     "mixup": "“A splash” isn’t an amount. Write the measure.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018), as summarized by the publisher (randomhousebooks.com) and reviews; Our book: the classic cocktail specs in this app. Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "In Cocktail Codex, a new drink usually starts by…",
+   "answer": "Swapping one part of a root recipe",
+   "wrong": [
+    "Inventing every part from scratch",
+    "Changing the glass only",
+    "Adding more spirit"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018), as summarized by the publisher (randomhousebooks.com) and reviews"
+  },
+  {
+   "q": "An Old Fashioned with agricole rhum instead of whiskey is close to a…",
+   "answer": "Ti’ Punch",
+   "wrong": [
+    "Daiquiri",
+    "Mojito",
+    "Sazerac"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018), as summarized by the publisher (randomhousebooks.com) and reviews"
+  },
+  {
+   "q": "An Old Fashioned sweetened with Bénédictine instead of sugar is a…",
+   "answer": "Monte Carlo",
+   "wrong": [
+    "Vieux Carré",
+    "Manhattan",
+    "Rusty Nail"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018), as summarized by the publisher (randomhousebooks.com) and reviews"
+  },
+  {
+   "q": "Which two spirits does the Vieux Carré split?",
+   "answer": "Rye and Cognac",
+   "wrong": [
+    "Gin and vodka",
+    "Rum and tequila",
+    "Scotch and bourbon"
+   ],
+   "source": "Our book: the classic cocktail specs in this app"
+  },
+  {
+   "q": "With a split base, the total amount of spirit…",
+   "answer": "Stays the same as the root",
+   "wrong": [
+    "Doubles",
+    "Halves",
+    "Doesn’t matter"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Why split a base?",
+   "answer": "To add depth without a new recipe",
+   "wrong": [
+    "To make it stronger",
+    "To make it cheaper",
+    "To skip the bitters"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Our Gold Rush is a Whiskey Sour sweetened with…",
+   "answer": "Honey syrup",
+   "wrong": [
+    "Maple syrup",
+    "Orange liqueur",
+    "Grenadine"
+   ],
+   "source": "Our book: the classic cocktail specs in this app"
+  },
+  {
+   "q": "In the Sidecar family, what does the sweetening?",
+   "answer": "An orange liqueur",
+   "wrong": [
+    "Simple syrup",
+    "Honey",
+    "Vermouth"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018), as summarized by the publisher (randomhousebooks.com) and reviews"
+  },
+  {
+   "q": "You swap the syrup for a sweeter liqueur. You should…",
+   "answer": "Use less, and taste",
+   "wrong": [
+    "Use more",
+    "Use the same amount",
+    "Add syrup too"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A finished spec lists…",
+   "answer": "Amounts, glass, ice, method and garnish",
+   "wrong": [
+    "Just the ingredients",
+    "The price only",
+    "The spirit and the glass"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "How do you know a new spec is finished?",
+   "answer": "It tastes the same built three times",
+   "wrong": [
+    "A guest liked it once",
+    "It has a name",
+    "It uses a new spirit"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "“A splash of lime” in a spec should be…",
+   "answer": "Written as a measure",
+   "wrong": [
+    "Left as is",
+    "Removed",
+    "Doubled"
+   ],
+   "source": "Common bar practice"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Ti’ Punch and Monte Carlo examples are from a review summary of Cocktail Codex (cocktailsandbars.com), not the book itself.",
+  "Spec-writing steps are our house practice."
+ ]
+}

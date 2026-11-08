@@ -1,0 +1,321 @@
+{
+ "number": 4,
+ "barLevel": 3,
+ "slug": "bar-syrups",
+ "title": "Syrups, infusions and oleo",
+ "script": "Lesson 4",
+ "lead": "The house-made ingredients that make a drink ours.",
+ "minutes": 14,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Simple and rich",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Sugar and water, measured the same way every time."
+    }
+   ],
+   "know": [
+    "Simple is 1:1, rich is 2:1.",
+    "Weighing makes a sweeter syrup than measuring by volume.",
+    "Make it the way the spec says."
+   ],
+   "source": "Difford’s Guide, “2 to 1 ‘rich’ sugar syrup versus 1 to 1 ‘simple’ syrup” (diffordsguide.com/encyclopedia/3593)"
+  },
+  {
+   "name": "Flavored syrups",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Honey, demerara, ginger: syrups that bring flavor."
+    }
+   ],
+   "know": [
+    "Honey is thinned into a syrup so it mixes cold.",
+    "Our Penicillin uses honey-ginger syrup.",
+    "Write every syrup down as its own recipe."
+   ],
+   "source": "Our book: the classic cocktail specs in this app; Common bar practice"
+  },
+  {
+   "name": "Oleo saccharum",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Sugar pulls the oil out of citrus peel."
+    }
+   ],
+   "know": [
+    "Peel with little white pith.",
+    "Toss peels with sugar and let it sit.",
+    "Strain the oily syrup off the peels."
+   ],
+   "source": "Difford’s Guide, Oleo Saccharum (diffordsguide.com/encyclopedia/234)"
+  },
+  {
+   "name": "Infusions and fat-washing",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Flavor steeped into a spirit."
+    }
+   ],
+   "know": [
+    "Taste an infusion often; strong flavors go fast.",
+    "Fat-washing infuses a fat, then strains it out.",
+    "Label every bottle with what’s in it and the date."
+   ],
+   "source": "Difford’s Guide, Fat washing (diffordsguide.com/encyclopedia/328); Common bar practice"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Simple and rich",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1:1",
+      "line": "simple: equal sugar and water."
+     },
+     {
+      "big": "2:1",
+      "line": "rich: twice the sugar."
+     },
+     {
+      "big": "WEIGH",
+      "line": "or measure: the spec says which."
+     }
+    ],
+    "read": {
+     "bigIdea": "Same syrup, every batch.",
+     "where": "**Simple syrup** is **1:1** sugar to water; **rich** is **2:1**. Difford’s Guide notes that measuring by **weight** gives a sweeter syrup than measuring by **volume**, so the recipe has to say which. Make it the same way every batch, or every drink changes.",
+     "mixup": "A cup of sugar doesn’t weigh the same as a cup of water. That’s why weight and volume give different syrups.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Flavored syrups",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "HONEY",
+      "line": "is thinned so it mixes into a cold drink."
+     },
+     {
+      "big": "PENICILLIN",
+      "line": "uses honey-ginger syrup."
+     },
+     {
+      "big": "RECIPE",
+      "line": "every syrup gets one, written down."
+     }
+    ],
+    "read": {
+     "bigIdea": "A syrup can carry flavor.",
+     "where": "**Honey** straight from the jar seizes up in a cold drink, so it’s thinned with water into **honey syrup** (our Gold Rush and Bee’s Knees). **Demerara** syrup brings a caramel note. Ginger, spice or herb syrups bring theirs. Our **Penicillin** uses **honey-ginger syrup**. Every house syrup gets a **written recipe**, so any shift can make it.",
+     "mixup": "Honey syrup and honey aren’t the same amount in a spec. Use the syrup the spec names.",
+     "sayIt": "It’s sweetened with a honey-ginger syrup we make here."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Oleo saccharum",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "OLEO",
+      "line": "saccharum: “oil sugar”."
+     },
+     {
+      "big": "PEEL",
+      "line": "with little white pith; pith is bitter."
+     },
+     {
+      "big": "TIME",
+      "line": "lets the sugar draw out the oil."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sugar pulls the oil out of citrus peel.",
+     "where": "**Oleo saccharum** is a syrup made from **citrus peel and sugar**. Sugar draws water and the fragrant **oils** out of the peel. Peel the fruit with as little **white pith** as you can (pith is bitter), toss the peels with sugar, let it sit, then **strain**. It’s the base of classic **punch**. Difford’s Guide also describes a faster vacuum-bag method.",
+     "mixup": "Oleo isn’t juice. It’s the peel’s oil; use the peeled fruit for juice.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Infusions and fat-washing",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "TASTE",
+      "line": "often: chili and tea go fast."
+     },
+     {
+      "big": "FAT-WASH",
+      "line": "infuse a fat, chill, strain it out."
+     },
+     {
+      "big": "LABEL",
+      "line": "what’s in it, and the date."
+     }
+    ],
+    "read": {
+     "bigIdea": "Steep a flavor into the spirit.",
+     "where": "An **infusion** steeps fruit, spice, tea or chili in a spirit, then strains it out. Strong flavors (**chili**, **tea**) can take minutes or hours, so **taste often**. **Fat-washing** infuses a fat, like bacon fat or butter, then chills it so the fat sets and **strains** it out; Difford’s credits PDT’s bacon Old Fashioned with making it popular. Label every bottle with **what’s in it** (allergens too) and the **date**.",
+     "mixup": "A fat-washed spirit still carries that food. Butter-washed means dairy: tell the guest, and put it in the Allergen Guide.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Difford’s Guide, “2 to 1 ‘rich’ sugar syrup versus 1 to 1 ‘simple’ syrup” (diffordsguide.com/encyclopedia/3593); Difford’s Guide, Oleo Saccharum (diffordsguide.com/encyclopedia/234); Difford’s Guide, Fat washing (diffordsguide.com/encyclopedia/328); Our book: the classic cocktail specs in this app. Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Simple syrup is…",
+   "answer": "1 part sugar to 1 part water",
+   "wrong": [
+    "2 parts sugar to 1 water",
+    "1 part sugar to 2 water",
+    "Sugar only"
+   ],
+   "source": "Difford’s Guide, “2 to 1 ‘rich’ sugar syrup versus 1 to 1 ‘simple’ syrup” (diffordsguide.com/encyclopedia/3593)"
+  },
+  {
+   "q": "Made by weight instead of volume, 1:1 syrup comes out…",
+   "answer": "Sweeter",
+   "wrong": [
+    "Less sweet",
+    "Exactly the same",
+    "Thinner"
+   ],
+   "source": "Difford’s Guide, “2 to 1 ‘rich’ sugar syrup versus 1 to 1 ‘simple’ syrup” (diffordsguide.com/encyclopedia/3593)"
+  },
+  {
+   "q": "Why does a syrup recipe say weight or volume?",
+   "answer": "They give different syrups",
+   "wrong": [
+    "It doesn’t matter",
+    "Only for rich syrup",
+    "For the price"
+   ],
+   "source": "Difford’s Guide, “2 to 1 ‘rich’ sugar syrup versus 1 to 1 ‘simple’ syrup” (diffordsguide.com/encyclopedia/3593)"
+  },
+  {
+   "q": "Why is honey made into a syrup?",
+   "answer": "Straight honey seizes in a cold drink",
+   "wrong": [
+    "To make it sweeter",
+    "To make it keep forever",
+    "To change its color"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Our Penicillin is sweetened with…",
+   "answer": "Honey-ginger syrup",
+   "wrong": [
+    "Simple syrup",
+    "Orange liqueur",
+    "Maple syrup"
+   ],
+   "source": "Our book: the classic cocktail specs in this app"
+  },
+  {
+   "q": "Every house syrup should have…",
+   "answer": "A written recipe",
+   "wrong": [
+    "A secret recipe",
+    "No label",
+    "A different recipe each shift"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Oleo saccharum is made from…",
+   "answer": "Citrus peel and sugar",
+   "wrong": [
+    "Citrus juice and water",
+    "Honey and lemon",
+    "Sugar and bitters"
+   ],
+   "source": "Difford’s Guide, Oleo Saccharum (diffordsguide.com/encyclopedia/234)"
+  },
+  {
+   "q": "Why peel with little white pith?",
+   "answer": "Pith is bitter",
+   "wrong": [
+    "Pith is sweet",
+    "Pith has the oil",
+    "It’s faster"
+   ],
+   "source": "Difford’s Guide, Oleo Saccharum (diffordsguide.com/encyclopedia/234)"
+  },
+  {
+   "q": "What does the sugar do in an oleo saccharum?",
+   "answer": "Draws the oil out of the peel",
+   "wrong": [
+    "Preserves the juice",
+    "Colors the drink",
+    "Adds bitterness"
+   ],
+   "source": "Difford’s Guide, Oleo Saccharum (diffordsguide.com/encyclopedia/234)"
+  },
+  {
+   "q": "Which infusion needs tasting most often?",
+   "answer": "Chili",
+   "wrong": [
+    "Vanilla bean over a week",
+    "Dried fruit",
+    "They’re all the same"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Fat-washing: after the fat infuses, you…",
+   "answer": "Chill it so the fat sets, then strain it out",
+   "wrong": [
+    "Serve it with the fat",
+    "Boil it",
+    "Add sugar"
+   ],
+   "source": "Difford’s Guide, Fat washing (diffordsguide.com/encyclopedia/328)"
+  },
+  {
+   "q": "A butter-washed spirit must be labeled with…",
+   "answer": "Dairy, and the date",
+   "wrong": [
+    "Nothing",
+    "Only the price",
+    "The bartender’s name"
+   ],
+   "source": "Common bar practice"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Infusion times and the allergen-labeling step are common bar practice; chef or GM to confirm the house labeling rule.",
+  "Oleo resting time varies by source (about an hour or more); not stated as a number."
+ ]
+}

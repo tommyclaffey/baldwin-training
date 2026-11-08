@@ -72,7 +72,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
   // + the Cocktail Program (Nov 8): a course page per level (2) and one entry per lesson section (no whole-chapter pages)
   const bar = readDir('content/bar');
-  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 2 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 3 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -818,4 +818,9 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   assert.ok(start.items.every((q) => !/What’s the spec/.test(q.q)), 'specs are a bartender’s job: not in Level 1');
   const start2 = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-2' } })).data;
   assert.equal(start2.items.length, 60);
+  // Level 3 (Nov 8): the craft, its final and an original-cocktail practical
+  const l3 = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'cocktail-program/level-3').file)).data);
+  assert.ok(l3.includes('ADVANCED MIXOLOGIST') && l3.includes('t%3Afinal%3Abar-3') && l3.includes('PRACTICAL'));
+  assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 3').length, 7, 'six lesson quizzes and the final');
+  assert.ok(index.some((e) => e.slug === 'cocktail-program/level-3/bar-costing/pour-cost'));
 });

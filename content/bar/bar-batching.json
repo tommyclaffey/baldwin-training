@@ -1,0 +1,321 @@
+{
+ "number": 5,
+ "barLevel": 3,
+ "slug": "bar-batching",
+ "title": "Batching",
+ "script": "Lesson 5",
+ "lead": "Building ahead for a busy night or a party, without changing the drink.",
+ "minutes": 12,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Scale the spec",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Multiply every ingredient by the same number."
+    }
+   ],
+   "know": [
+    "Same units for every line.",
+    "Write the batch recipe down.",
+    "Pour a test drink and taste."
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "name": "Add the water",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A batch skips the ice, so add the water."
+    }
+   ],
+   "know": [
+    "Death & Co suggests water at about 20% of the batch.",
+    "Or weigh one drink before and after stirring: the gain is the water.",
+    "Served up, a little more; over ice, a little less."
+   ],
+   "source": "Death & Co, “How to batch cocktails for a crowd” (fashioned.deathandcompany.com); Foodism, “Pre-batched cocktails” (foodism.co.uk); Cocktails Distilled, batching guide (cocktailsdistilled.com)"
+  },
+  {
+   "name": "What not to batch",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Citrus, bubbles, egg and cream go in at service."
+    }
+   ],
+   "know": [
+    "Citrus fades: add it fresh or batch it the same day.",
+    "Bubbles go in last, in the glass.",
+    "Egg and cream are shaken to order."
+   ],
+   "source": "Dave Arnold, “Fresh Lime Juice: WTF?”, Cooking Issues, Oct 1, 2010 (cookingissues.com); Common bar practice"
+  },
+  {
+   "name": "Label, date, chill",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Every batch: name, date, who made it."
+    }
+   ],
+   "know": [
+    "Keep stirred batches cold.",
+    "Label and date the bottle.",
+    "Taste it at the start of the shift."
+   ],
+   "source": "Common bar practice"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Scale the spec",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "× SERVINGS",
+      "line": "every line by the same number."
+     },
+     {
+      "big": "SAME UNITS",
+      "line": "on every line."
+     },
+     {
+      "big": "TEST",
+      "line": "pour one and taste."
+     }
+    ],
+    "read": {
+     "bigIdea": "A batch is the spec, multiplied.",
+     "where": "Multiply **every ingredient** by the **number of drinks**: 2 oz × 20 = 40 oz. Keep **one unit** for the whole batch. Bitters scale too: count dashes, then measure them. Write the batch recipe down, pour one **test drink** and taste it against the single spec.",
+     "mixup": "Don’t round one line and not the others. The balance moves.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Add the water",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "20%",
+      "line": "water: Death & Co’s starting point."
+     },
+     {
+      "big": "WEIGH",
+      "line": "one drink before and after: that’s the water."
+     },
+     {
+      "big": "UP",
+      "line": "needs a bit more; on ice, a bit less."
+     }
+    ],
+    "read": {
+     "bigIdea": "A batch has no ice, so the water goes in the bottle.",
+     "where": "A stirred drink gets its water from the ice. A **pre-batched** stirred drink poured straight from the fridge doesn’t, so you **add the water** to the batch. Death & Co suggests about **20%** of the batch. The exact way: **weigh** one drink, stir it on ice, weigh it again; the difference is the water each drink needs. Drinks served **up** want a little more; drinks over **ice** a little less, since the ice keeps melting.",
+     "mixup": "A batch that’s going to be stirred on ice again doesn’t get the water. It would end up double-diluted.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "What not to batch",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CITRUS",
+      "line": "fades: fresh, or same day."
+     },
+     {
+      "big": "BUBBLES",
+      "line": "go in last, in the glass."
+     },
+     {
+      "big": "EGG, CREAM",
+      "line": "shaken to order."
+     }
+    ],
+    "read": {
+     "bigIdea": "Batch the parts that keep.",
+     "where": "Spirits, liqueurs, vermouth and bitters keep well together. **Citrus** doesn’t: it fades within the day (Dave Arnold’s test), so add it at service or batch it that day. **Bubbles** (soda, sparkling wine) go flat: top each drink in the glass. **Egg** and **cream** need a hard shake to order.",
+     "mixup": "A batched Martini keeps. A batched Margarita with yesterday’s lime doesn’t.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Label, date, chill",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LABEL",
+      "line": "name, date, who made it."
+     },
+     {
+      "big": "COLD",
+      "line": "keep stirred batches in the fridge."
+     },
+     {
+      "big": "TASTE",
+      "line": "it at the top of each shift."
+     }
+    ],
+    "read": {
+     "bigIdea": "A batch is only as good as its label.",
+     "where": "Every batch bottle gets the **drink name**, the **date** and **who made it**. Keep stirred batches **cold** so they pour ready to serve. **Taste** a batch at the start of each shift before the first drink goes out.",
+     "mixup": "An unlabeled bottle on the bar is a guess. If it isn’t labeled, don’t pour it.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Death & Co, “How to batch cocktails for a crowd” (fashioned.deathandcompany.com); Foodism, “Pre-batched cocktails” (foodism.co.uk); Cocktails Distilled, batching guide (cocktailsdistilled.com); Dave Arnold, “Fresh Lime Juice: WTF?”, Cooking Issues, Oct 1, 2010 (cookingissues.com). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "A spec has 2 oz of gin. How much for a batch of 20?",
+   "answer": "40 oz",
+   "wrong": [
+    "20 oz",
+    "22 oz",
+    "60 oz"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Scaling a spec for a batch, you multiply…",
+   "answer": "Every ingredient by the same number",
+   "wrong": [
+    "Only the spirit",
+    "Only the sweetener",
+    "Everything except the bitters"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Before serving a new batch, you…",
+   "answer": "Pour a test drink and taste it",
+   "wrong": [
+    "Add more spirit",
+    "Shake the bottle",
+    "Nothing"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Why add water to a pre-batched stirred drink?",
+   "answer": "It won’t get the water from stirring on ice",
+   "wrong": [
+    "To make it cheaper",
+    "To make it last longer",
+    "To keep it from freezing"
+   ],
+   "source": "Death & Co, “How to batch cocktails for a crowd” (fashioned.deathandcompany.com); Foodism, “Pre-batched cocktails” (foodism.co.uk)"
+  },
+  {
+   "q": "Death & Co suggests adding water at about…",
+   "answer": "20% of the batch",
+   "wrong": [
+    "2%",
+    "50%",
+    "75%"
+   ],
+   "source": "Death & Co, “How to batch cocktails for a crowd” (fashioned.deathandcompany.com); Foodism, “Pre-batched cocktails” (foodism.co.uk)"
+  },
+  {
+   "q": "The exact way to find a batch’s water:",
+   "answer": "Weigh one drink before and after stirring it on ice",
+   "wrong": [
+    "Guess",
+    "Match the spirit amount",
+    "Add a cup per bottle"
+   ],
+   "source": "Cocktails Distilled, batching guide (cocktailsdistilled.com)"
+  },
+  {
+   "q": "Which ingredient shouldn’t sit in a batch overnight?",
+   "answer": "Fresh citrus",
+   "wrong": [
+    "Vermouth",
+    "Bitters",
+    "Spirit"
+   ],
+   "source": "Dave Arnold, “Fresh Lime Juice: WTF?”, Cooking Issues, Oct 1, 2010 (cookingissues.com)"
+  },
+  {
+   "q": "Soda in a batched highball goes in…",
+   "answer": "Last, in the glass",
+   "wrong": [
+    "In the batch bottle",
+    "Before the spirit",
+    "It’s left out"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A drink with egg white is…",
+   "answer": "Shaken to order, not batched",
+   "wrong": [
+    "Batched the night before",
+    "Batched with water",
+    "Served from a tap"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A batch bottle’s label shows…",
+   "answer": "The drink, the date and who made it",
+   "wrong": [
+    "The price",
+    "Nothing",
+    "Only the drink"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Where do stirred batches live?",
+   "answer": "In the fridge",
+   "wrong": [
+    "On the back bar",
+    "In the freezer",
+    "In the ice well"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "An unlabeled batch bottle on the bar should be…",
+   "answer": "Not poured",
+   "wrong": [
+    "Poured if it smells fine",
+    "Topped up",
+    "Used for staff drinks"
+   ],
+   "source": "Common bar practice"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Batching water: sources range from about 15% to 30% (Death & Co 20%, Foodism 20–30%); our starting point is Death & Co’s.",
+  "Labeling, storage and tasting steps are common bar practice; GM to confirm house rules."
+ ]
+}
