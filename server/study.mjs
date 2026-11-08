@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { clone, find, findAll, byName, texts, setText, remove } from './templates.mjs';
-import { chapters, chapters2, chaptersBar, levelChapters, chapterBase, GUIDE, BAR, BAR_LEVELS, barLevel, barLevelOf, quizHref, shuffleSeeded, blockBuilder } from './manual.mjs';
+import { chapters, chapters2, chaptersOf, levelChapters, chapterBase, GUIDE, LEVELS, levelFor, isProgram, programDef, progLevel, levelOfChapter, quizHref, shuffleSeeded, blockBuilder } from './manual.mjs';
 
 export const HUB = 'sommelier-program';
 export const BAR_FINAL = 't:final:bar-1';
@@ -158,12 +158,12 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
   const main = clone(tpl.main);
   const sec = ch.sections[si]; const v = v3Of(ch, si); const r = v.read || {};
   const n = ch.sections.length; const all = levelChapters(ch);
-  const isBar = ch.program === 'bar'; const lvl = isBar ? barLevel(ch) : ch.level === 2 ? 2 : 1; const BL = isBar && barLevelOf(lvl); const home = isBar ? BL.slug : lvl === 2 ? L2 : L1;
+  const isBar = isProgram(ch); const lvl = isBar ? progLevel(ch) : ch.level === 2 ? 2 : 1; const BL = isBar && levelOfChapter(ch); const home = isBar ? BL.slug : lvl === 2 ? L2 : L1;
   const href = (c, i) => '/' + lessonSlug(c, i);
 
   // breadcrumb: Level 1 / Lesson N · Chapter / Section
   const bc = find(main, byName('Breadcrumb'));
-  if (bc) { const t = texts(bc); setText(t[0], isBar ? `Bar · Level ${lvl}` : `Level ${lvl}`); setText(t[2], `${lvl === 2 && ch.part ? `Part ${ch.part} · ` : ''}Lesson ${ch.number} · ${ch.title}`); setText(t[4], sec.name); const back = find(bc, byName('Back')); if (back) back.to = '/' + home; }
+  if (bc) { const t = texts(bc); setText(t[0], isBar ? `${programDef(ch.program).short} · Level ${lvl}` : `Level ${lvl}`); setText(t[2], `${lvl === 2 && ch.part ? `Part ${ch.part} · ` : ''}Lesson ${ch.number} · ${ch.title}`); setText(t[4], sec.name); const back = find(bc, byName('Back')); if (back) back.to = '/' + home; }
 
   // the video, or nothing when there isn't a good one
   const slot = find(main, byName('Video slot · Lesson'));
@@ -553,12 +553,11 @@ export function level2Page(page, ctx = {}) {
 // Tommy, Nov 8: "start building it in the app … we already have a skeleton with the wine program." Drawn from the
 // Sommelier Level 1 course page (Figma 392:31): Level 1, Certified Bar Server, five lessons, then a final exam.
 // The four levels (Tommy, Nov 6): Certified Bar Server → Certified Bartender → Advanced Mixologist → Master of the Bar.
-const BAR_HERO = '/img/fe067d97b4ac.jpg';
 export function barPage(page, ctx) {
-  // Nov 8, the split: Level 1 is four short lessons and a 30-question final; Level 2 is the spirits and the six roots, a
-  // 60-question final, and a practical a manager signs off (like the Court's service exam and Cicerone's demonstration).
-  const L = barLevelOf(ctx.level || 1);
-  const main = page.main; const all = chaptersBar(L.level);
+  // Nov 8, the split: each level is its lessons, a final, and (from Level 2, or Beer Level 1) a practical a manager signs off,
+  // like the Court's service exam and Cicerone's demonstration. Every program uses this page (Cocktail, Beer).
+  const L = ctx.L || levelFor('bar', ctx.level || 1); const P = programDef(L.program);
+  const main = page.main; const all = chaptersOf(L.program, L.level);
   if (!all.length) return page;
   const nx = nextLesson(ctx.done, all);
   const cards = all.reduce((k, c) => k + c.cards.length, 0);
@@ -566,21 +565,15 @@ export function barPage(page, ctx) {
   const day = (iso) => new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/Detroit' }).toUpperCase();
   // breadcrumb: The Bar / Cocktail Program / Level N
   const bc = find(main, byName('Breadcrumb'));
-  if (bc) { const t = texts(bc); const back = find(bc, byName('Back')); if (back) { back.to = '/the-bar/cocktails'; setText(T(back)[0], 'The Bar'); } setText(t[2], 'Cocktail Program'); t[2].n = 'Cocktail Program'; setText(t[4], `Level ${L.level}`); }
+  if (bc) { const t = texts(bc); const back = find(bc, byName('Back')); if (back) { back.to = P.back[0]; setText(T(back)[0], P.back[1]); } setText(t[2], P.name); t[2].n = P.name; setText(t[4], `Level ${L.level}`); }
   const hero = find(main, byName('Hero'));
   const hv = find(hero, (x) => !!x.vid || (x.n || '').includes('YouTube R6ESxHbDSrg'));
-  if (hv) { delete hv.vid; hv.n = 'IMG/Behind the bar · Unsplash, Olena Bohovyk'; hv.f = [{ img: BAR_HERO, m: 'FILL' }]; hv.c = []; }
+  if (hv) { delete hv.vid; hv.n = P.heroName; hv.f = [{ img: P.hero, m: 'FILL' }]; hv.c = []; }
   const copy = find(hero, byName('Copy'));
   const ct = T(copy);
-  setText(ct[0], `Cocktail Program · Level ${['', 'one', 'two', 'three', 'four'][L.level]}`); setText(ct[1], L.title.toUpperCase()); ct[1].ar = 'H'; ct[1].sh = 'F';
+  setText(ct[0], `${P.name} · Level ${['', 'one', 'two', 'three', 'four'][L.level]}`); setText(ct[1], L.title.toUpperCase()); ct[1].ar = 'H'; ct[1].sh = 'F';
   const lead = find(hero, (x) => x.n === 'Lead' || (x.t === 'T' && /video lessons/.test(x.s || '')));
-  const words = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
-  const leads = {
-    1: `${words[all.length] || all.length} short lessons for everyone on the floor: how guests order, every spirit at a glance, our menu, and the glass. Then a ${L.len}-question final.`,
-    2: `${words[all.length] || all.length} lessons for bartenders: every spirit on the back bar in depth, then the six roots. A ${L.len}-question final, then a practical: build our specs while a manager watches.`,
-    3: `${words[all.length] || all.length} lessons on the craft: balance, water and citrus, new drinks, house syrups, batching and costing. A ${L.len}-question final, then a practical: create, cost and build an original cocktail.`,
-  };
-  if (lead) { lead.n = 'Lead'; setText(lead, leads[L.level]); }
+  if (lead) { lead.n = 'Lead'; setText(lead, L.lead(all.length, L)); }
   for (const t of findAll(hero, (x) => x.t === 'T' && (x.z || 0) >= 36)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
   const glance = find(hero, byName('At a glance'));
   if (glance) {
@@ -607,6 +600,9 @@ export function barPage(page, ctx) {
     if (cont) { cont.n = 'Button · Continue'; cont.to = '/' + lessonSlug(nx ? nx.ch : all[0], nx ? nx.i : 0); setText(texts(cont)[0], !nx ? 'Watch Again' : nx.started ? `Continue Lesson ${nx.ch.number}` : 'Start Lesson 1'); }
     const exam = book && clone(book);
     if (exam) { exam.n = 'Button · Final Exam'; exam.to = finalHref; setText(texts(exam)[0], ctx.passedAt ? 'Retake Final Exam' : 'Final Exam'); }
+    // Certified (Nov 8, Figma 09 · Proposals → 22, 469:45): View Certificate takes the lead button's place.
+    const certified = ctx.passedAt && (!L.practical || ctx.practical);
+    if (certified && cont) { cont.n = 'Button · View Certificate'; cont.to = `/certificate/${L.file}`; setText(texts(cont)[0], 'View Certificate'); }
     btns.c = [cont, exam].filter(Boolean); btns.wrap = 1; btns.cg = 8; btns.sh = 'L';
   }
   // the lessons
@@ -614,18 +610,18 @@ export function barPage(page, ctx) {
   const head = find(course, byName('Head'));
   const grid = find(course, byName('Lessons'));
   const finished = lessonsGrid(grid, all, ctx.done);
-  if (head) { const ht = texts(head); setText(ht[0], ['', 'Learn it, then prove it', 'Know every bottle', 'Make it your own'][L.level]); setText(ht[1], `${all.length} LESSONS`); setText(ht[ht.length - 1], `${finished} of ${all.length} done`); }
+  if (head) { const ht = texts(head); setText(ht[0], L.head); setText(ht[1], `${all.length} LESSONS`); setText(ht[ht.length - 1], `${finished} of ${all.length} done`); }
   // how it works, then the four levels
   const how = find(main, byName('How it works'));
   if (how) {
     const steps = L.practical
-      ? ['Watch or read the lesson', 'Answer 3 cards per section', `Pass the ${L.len}-question final`, L.level === 3 ? 'Create your own drink' : 'Build our specs for a manager']
+      ? ['Watch or read the lesson', 'Answer 3 cards per section', `Pass the ${L.len}-question final`, L.practicalStep]
       : ['Watch or read the lesson', 'Swipe the key points', 'Answer 3 cards per section', `Pass the ${L.len}-question final`];
     how.c.forEach((st, i) => { const tt = texts(st); if (steps[i]) setText(tt[tt.length - 1], steps[i]); });
     const levels = clone(how); levels.n = 'The four levels';
-    const names = ['Certified Bar Server', 'Certified Bartender', 'Advanced Mixologist', 'Master of the Bar'];
+    const names = P.ladder;
     levels.c.forEach((st, i) => {
-      const built = BAR_LEVELS.find((x) => x.level === i + 1); const tt = texts(st);
+      const built = LEVELS.find((x) => x.program === L.program && x.level === i + 1 && chaptersOf(x.program, x.level).length); const tt = texts(st);
       setText(tt[tt.length - 1], names[i] + (built ? '' : ' · coming'));
       st.n = 'Level · ' + names[i];
       if (!built) st.op = 0.55; else if (i + 1 !== L.level) st.to = '/' + built.slug;

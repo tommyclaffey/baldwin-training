@@ -3,7 +3,7 @@
 // its menu is in. A question's id ("price:123") is enough to write it again on the server, so scoring never trusts the phone.
 import { specHref, specLists } from './specs.mjs';
 import { listEntries, COURSES } from './cms.mjs';
-import { allChapters, chapterSlug, shuffleSeeded, BAR_LEVELS, barLevel, barLevelOf } from './manual.mjs';
+import { allChapters, chapterSlug, shuffleSeeded, LEVELS, isProgram, progLevel, levelOfChapter, programDef, barLevelOf, chaptersOf } from './manual.mjs';
 
 export const PASS_PCT = 80;
 export const passFor = (total) => Math.ceil((total * PASS_PCT) / 100);
@@ -91,8 +91,8 @@ export function topicList(pool) {
     { key: 'allergens', label: 'Allergens', group: 'Know It Cold' },
     { key: 'pairings', label: 'Pairings', group: 'Know It Cold' },
     ...SPEC_TOPICS.map(([key, label]) => ({ key, label, group: 'Cocktail Specs · For Bartenders' })),
-    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: c.program === 'bar' ? `Cocktail Program · Level ${barLevel(c)}` : c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
-    ...BAR_LEVELS.map((L) => ({ key: L.final, label: `${L.title} · Final Exam`, group: `Cocktail Program · Level ${L.level}` })),
+    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: isProgram(c) ? `${programDef(c.program).name} · Level ${progLevel(c)}` : c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
+    ...LEVELS.filter((L) => chaptersOf(L.program, L.level).length).map((L) => ({ key: L.final, label: `${L.title} · Final Exam`, group: `${programDef(L.program).name} · Level ${L.level}` })),
   ];
   // A specs list can be short (two dessert cocktails): it still gets its quiz.
   return t.map((x) => ({ ...x, count: count(x.key) })).filter((x) => x.count >= (x.key.startsWith('spec:') ? 2 : 3));
@@ -341,7 +341,7 @@ export function questionPool(db, store) {
     ch.cards.forEach((c, i) => {
       const ref = `study:${ch.slug}:${i}`;
       const options = shuffleSeeded([c.answer, ...c.wrong.slice(0, 3)], ref);
-      out.push({ ref, q: c.q, options, answer: options.indexOf(c.answer), why: `${c.answer}.`, page: '/' + chapterSlug(ch), label: ch.title, topics: ch.program === 'bar' ? ['study:' + ch.slug, barLevelOf(barLevel(ch)).final] : ['study:' + ch.slug] });
+      out.push({ ref, q: c.q, options, answer: options.indexOf(c.answer), why: `${c.answer}.`, page: '/' + chapterSlug(ch), label: ch.title, topics: isProgram(ch) ? ['study:' + ch.slug, levelOfChapter(ch).final] : ['study:' + ch.slug] });
     });
   }
   return out;

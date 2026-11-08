@@ -46,12 +46,16 @@ export function MyPathPage() {
               <p className="mp-label" id="mp-prog">Your Programs</p>
               <p className="mp-note">Lessons in your path count here too. Go further any time, or redo a lesson.</p>
               {path.programs.map((g) => (
-                <Link key={g.title} to={g.to} className="mp-program">
-                  <strong>{g.title}</strong>
-                  <small>{g.total} lessons · {g.done} done{g.inPath ? ` · ${g.inPath} in your path` : ''}</small>
-                  <span className="mp-track" aria-hidden="true"><span style={{ width: `${Math.round((g.done / g.total) * 100)}%` }} /></span>
-                  {g.cert && <small className={'mp-cert' + (g.certified ? ' on' : '')}>{certLine(g)}</small>}
-                </Link>
+                <div key={g.title} className="mp-program-row">
+                  <Link to={g.to} className="mp-program">
+                    <strong>{g.title}</strong>
+                    <small>{g.total} lessons · {g.done} done{g.inPath ? ` · ${g.inPath} in your path` : ''}</small>
+                    <span className="mp-track" aria-hidden="true"><span style={{ width: `${Math.round((g.done / g.total) * 100)}%` }} /></span>
+                    {g.cert && !g.certified && <small className="mp-cert">{certLine(g)}</small>}
+                  </Link>
+                  {/* Nov 8 (Figma 469:58): certified levels link to their certificate. */}
+                  {g.certified && <p className="mp-cert-row"><span className="mp-cert on">{certLine(g)}</span><Link to={`/certificate/${g.certKey}`}>View Certificate →</Link></p>}
+                </div>
               ))}
             </section>
           )}

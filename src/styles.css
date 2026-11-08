@@ -1590,3 +1590,59 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 .tr-stage-head small.late { color: #8E2F16; font-weight: 600; }
 .tr-kind { width: 80px; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 @media (max-width: 700px) { .tr-bar { display: none; } }
+
+/* ---- Certificates (Nov 8). Figma 09 · Proposals → 22 (468:46). Sizes are the design's px ÷ 10.56, in container units,
+   so the certificate is the same at any width and prints edge to edge on Letter landscape. ---- */
+.cp { box-sizing: border-box; width: 100%; max-width: 1176px; margin: 0 auto; padding: 32px 48px 72px; }
+.cp h1 { font: 800 34px/1.1 'Archivo', sans-serif; margin: 0; color: #1E1C1A; letter-spacing: -.5px; }
+.cp-crumbs { display: flex; flex-wrap: wrap; gap: 10px; font: 500 15px 'Archivo', sans-serif; color: #5E574F; margin-bottom: 18px; }
+.cp-crumbs a { color: #8A5A3A; font-weight: 600; text-decoration: none; }
+.cp-crumbs a:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }
+.cp-crumbs [aria-current] { color: #1E1C1A; font-weight: 600; }
+.cp-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+.cp-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cp-sheet { box-shadow: 0 10px 30px rgba(31, 26, 20, .14); border-radius: 4px; }
+.cp-note { font: 13.5px/1.5 'Archivo', sans-serif; color: #5E574F; margin: 18px 0 0; }
+.cert { container-type: inline-size; width: 100%; aspect-ratio: 1056 / 816; background: #F6F1E8; position: relative; color: #1E1C1A; font-family: 'Archivo', sans-serif;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.cert-in { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 4.545cqw 4.545cqw 0; }
+.cert::before, .cert::after { content: ''; position: absolute; pointer-events: none; }
+.cert::before { inset: 2.273cqw; border: .19cqw solid #C49A6C; border-radius: .38cqw; }
+.cert::after { inset: 3.409cqw; border: .095cqw solid rgba(196, 154, 108, .55); border-radius: .19cqw; }
+.cert-band { align-self: stretch; height: 8.712cqw; background: #1E1C1A; border-radius: .19cqw; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+.cert-band img { width: 20.45cqw; height: auto; display: block; }
+.cert-band span { color: #F2EEE7; font-weight: 800; font-size: 2.65cqw; letter-spacing: -.02em; }
+.cert p { margin: 0; }
+.cert-script { font: 4.356cqw/1.25 'Pinyon Script', cursive; color: #8A5A3A; margin-top: 2.1cqw !important; }
+.cert-label, .cert-facts span, .cert-foot span { font-weight: 600; font-size: 1.042cqw; letter-spacing: .16em; text-transform: uppercase; color: #5E574F; }
+.cert-label { font-size: 1.136cqw; margin-top: 1.7cqw !important; }
+.cert-name { font: 6.44cqw/1.3 'Pinyon Script', cursive; color: #1E1C1A; }
+.cert-rule { display: block; width: 39.77cqw; height: .142cqw; background: #C49A6C; }
+.cert-line { font-size: 1.468cqw; color: #5E574F; margin-top: 1.7cqw !important; }
+.cert-title { font-weight: 800; font-size: 3.977cqw; letter-spacing: .03em; text-transform: uppercase; line-height: 1.2; margin-top: .76cqw !important; }
+.cert-facts { display: flex; align-items: center; margin-top: 4.3cqw; }
+.cert-facts > div { display: flex; flex-direction: column; gap: .57cqw; padding: 0 2.65cqw; }
+.cert-facts > div + div { border-left: .095cqw solid rgba(196, 154, 108, .6); }
+.cert-facts span, .cert-foot span { color: #8A5A3A; letter-spacing: .14em; }
+.cert-facts strong, .cert-foot strong { font-weight: 500; font-size: 1.373cqw; }
+.cert-foot { align-self: stretch; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; margin: auto 3.03cqw 0; padding-bottom: 1.2cqw; }
+.cert-foot > div:not(.cert-seal) { display: flex; flex-direction: column; gap: .57cqw; text-align: left; align-self: start; margin-top: 2.9cqw; }
+.cert-foot > .right { text-align: right; align-items: flex-end; }
+.cert-foot small { font-size: 1.184cqw; color: #5E574F; }
+.cert-seal { width: 10.6cqw; aspect-ratio: 1; border-radius: 50%; background: #1E1C1A; border: .284cqw solid #C49A6C; box-shadow: inset 0 0 0 .66cqw #1E1C1A, inset 0 0 0 .76cqw rgba(196, 154, 108, .6);
+  display: grid; place-items: center; align-content: center; gap: 0; }
+.cert-seal i { font-style: normal; text-transform: uppercase; font-weight: 600; font-size: .947cqw; letter-spacing: .18em; color: #C49A6C; }
+.cert-seal b { font-weight: 800; font-size: 3.79cqw; line-height: 1.05; color: #F2EEE7; }
+.cert-fine { font-size: 1.042cqw; color: #5E574F; max-width: 72cqw; margin: 0 0 5.4cqw !important; }
+@media (max-width: 859px) { .cp { padding: 20px 16px 56px; } .cp h1 { font-size: 28px; } }
+@media print {
+  @page { size: letter landscape; margin: 0; }
+  body.printing-cert * { visibility: hidden !important; }
+  body.printing-cert .cert, body.printing-cert .cert * { visibility: visible !important; }
+  body.printing-cert .cert { position: fixed; left: 0; top: 0; width: 11in; height: 8.5in; aspect-ratio: auto; box-shadow: none; }
+}
+.mp-cert-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; margin: 2px 0 0; font: 600 13px 'Archivo', sans-serif; }
+.mp-cert-row .mp-cert.on { color: #2F6B45; }
+.mp-cert-row a { color: #8A5A3A; font-weight: 700; text-decoration: none; }
+.mp-cert-row a:hover { text-decoration: underline; }
+.mp-cert-row a:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }

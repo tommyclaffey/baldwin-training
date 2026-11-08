@@ -14,7 +14,7 @@ export type JobPath = {
 };
 export type Program = { title: string; to: string; total: number; done: number; inPath: number;
   /** Cocktail Program levels (Nov 8): the certificate, its final, and Level 2's practical a manager signs off. */
-  cert?: string; certified?: boolean; final?: { id: string; passedAt: string | null; best: string | null };
+  cert?: string; certKey?: string; certified?: boolean; final?: { id: string; passedAt: string | null; best: string | null };
   practical?: { key: string; title: string; how: string; at: string | null; by: string | null } };
 export type Job = { key: string; label: string; note?: string };
 export type MyPath = { jobs: string[]; startedOn: string; paths: JobPath[]; programs: Program[]; allJobs: Job[] };

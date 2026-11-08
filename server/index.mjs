@@ -12,6 +12,7 @@ import { COLLECTIONS, SHARED, LOCAL_KEYS, publicSchemas, seed, listEntries, list
 import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames } from './scanner.mjs';
 import { personPath, personSummary, isPathSignoff, validJobs, JOBS } from './paths.mjs';
+import { certificatesFor } from './certs.mjs';
 import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
 import { topicList, questionPool } from './quizgen.mjs';
 import { chapterBySlug, markRead } from './manual.mjs';
@@ -255,6 +256,19 @@ async function api(req, res, url) {
   if (p === '/api/quiz/results' && m === 'GET') {
     needUser(c, req);
     return sendJson(res, 200, { people: quizResults(db, c.store), store: c.storeRow?.name || null });
+  }
+  /* ---- Certificates (Nov 8): server/certs.mjs. Your own, or (managers) one of your store's staff with ?user= ---- */
+  if (p === '/api/certificates' && m === 'GET') {
+    const u = needReader(c, req);
+    const who = url.searchParams.get('user');
+    let row = db.prepare('SELECT * FROM users WHERE id = ? AND deleted_at IS NULL').get(u.id) || u;
+    if (who && Number(who) !== u.id) {
+      if (!canEdit(u)) fail(403, 'You can only see your own certificates.');
+      const x = db.prepare('SELECT * FROM users WHERE id = ? AND deleted_at IS NULL').get(Number(who));
+      if (!x || x.company_id !== c.company || x.store_id !== c.store) fail(404, 'We couldn’t find that person.');
+      row = x;
+    }
+    return sendJson(res, 200, { certificates: certificatesFor(db, row, c.store, c.storeRow) });
   }
   /* ---- Job paths (Nov 8): server/paths.mjs ---- */
   if (p.startsWith('/api/path')) {

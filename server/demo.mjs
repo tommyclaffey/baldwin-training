@@ -22,7 +22,7 @@ export const DEMO_ROLES = {
 const TEAM = [
   { name: 'Teddy Lam', jobs: ['server'], started: 5, scores: [['t:course:Pasta', 9], ['t:house', 7], ['t:classic', 10]], signed: ['t:course:Pasta', 't:classic'] },
   { name: 'Odalys Ruiz', jobs: ['server'], started: 3, scores: [['t:course:Mains', 10], ['t:course:Pizza', 8]], signed: ['t:course:Mains'] },
-  { name: 'Quinn Abbott', jobs: ['bartender'], started: 10, scores: [['t:house', 6], ['t:course:Snacks & Small Plates', 9]], signed: [] },
+  { name: 'Quinn Abbott', jobs: ['bartender'], started: 10, scores: [['t:house', 6], ['t:course:Snacks & Small Plates', 9]], signed: [], finals: [['t:final:bar-1', 28, 30], ['t:final:bar-2', 54, 60]] },
   { name: 'Wynn Carver', jobs: ['support'], started: 2, scores: [['t:classic', 8], ['t:course:Salads', 10], ['t:house', 9]], signed: ['t:course:Salads'] },
 ];
 const FIRST_DAY = ['our-story', 'steps-of-service', 'safety', 'cleanliness', 'floor-plan', 'allergen-guide', 'step-1/greet', 'step-9/goodbye', 'step-4/fire-and-run', 'step-6/clear'];
@@ -64,6 +64,9 @@ export function startDemo(db, key) {
       [['t:allergens', 10], ['t:course:Pasta', 10], ['t:course:Snacks & Small Plates', 9], ['t:course:Salads', 9]].forEach(([quiz, score], i) =>
         db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
           .run('u' + me, pick.name, quiz, score, 10, '{"items":[],"answers":[]}', new Date(Date.now() - (5 - i) * 864e5).toISOString(), co, me, st));
+      // Certificates (Nov 8): she passed the Cocktail Program's Level 1 final yesterday, so the demo has a certificate to show.
+      db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
+        .run('u' + me, pick.name, 't:final:bar-1', 27, 30, '{"items":[],"answers":[]}', new Date(Date.now() - 864e5).toISOString(), co, me, st);
     }
     const day = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
     const slots = ['Servers 1', 'Servers 2', 'Bar 1', 'Support 1'];
@@ -79,6 +82,8 @@ export function startDemo(db, key) {
         db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
           .run('u' + id, p.name, quiz, score, 10, '{"items":[],"answers":[]}', new Date(Date.now() - (i + 1) * 3600e3).toISOString(), co, id, st);
       }
+      for (const [quiz, score, total] of p.finals || []) db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
+        .run('u' + id, p.name, quiz, score, total, '{"items":[],"answers":[]}', new Date(Date.now() - 2 * 864e5).toISOString(), co, id, st);
       for (const quiz of p.signed) db.prepare('INSERT INTO signoffs(device, quiz, by_user, at, company_id, store_id) VALUES (?,?,?,?,?,?)').run('u' + id, quiz, me, t, co, st);
       db.prepare('INSERT INTO sections(company_id,store_id,day,slot,name,by_user,at) VALUES (?,?,?,?,?,?,?)').run(co, st, day, slots[i], p.name, me, t);
     });

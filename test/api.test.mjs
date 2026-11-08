@@ -785,6 +785,15 @@ test('job paths: a server’s path from the book, page reads, quiz passes and ma
   // the Cocktail Program's Level 2 practical (Nov 8): a manager signs it off on Admin → Training
   const pr = (await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'program:bar-2:practical' })).data;
   assert.ok(pr.programs.find((g) => g.cert === 'Certified Bartender').practical.by === 'Rosalind Hart');
+  // Certificates (Nov 8): Quinn passed both finals in the demo; Level 2 needs the practical too, now signed
+  const qc = (await mgr('/api/certificates?user=' + quinn.id)).data.certificates;
+  assert.deepEqual(qc.map((x) => x.key).sort(), ['bar-1', 'bar-2']);
+  const c2 = qc.find((x) => x.key === 'bar-2');
+  assert.equal(c2.title, 'Certified Bartender'); assert.equal(c2.final.pct, 90); assert.equal(c2.practical.by, 'Rosalind Hart'); assert.equal(c2.store, 'The Baldwin');
+  assert.ok(/^BAR2-\d{4}$/.test(c2.number));
+  const mine = (await me('/api/certificates')).data.certificates;
+  assert.deepEqual(mine.map((x) => x.key), ['bar-1'], 'the demo employee is a Certified Bar Server');
+  assert.equal((await me('/api/certificates?user=' + quinn.id)).status, 403, 'staff only see their own');
   const both = (await mgr(`/api/path/person/${quinn.id}`, 'PATCH', { jobs: ['bartender', 'server'] })).data;
   assert.equal(both.paths.length, 2);
 });

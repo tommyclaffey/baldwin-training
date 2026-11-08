@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { questionPool, topicList, forTopics, pick, passFor, PASS_PCT, BUILT_IN, SPEC_TOPICS, barOnly } from './quizgen.mjs';
 import { listEntries, COURSES } from './cms.mjs';
-import { chapterBySlug, BAR_LEVELS } from './manual.mjs';
+import { chapterBySlug, LEVELS, isProgram, programDef, progLevel } from './manual.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 export const BANK = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/quizzes.json'), 'utf8'));
@@ -16,7 +16,7 @@ export const MARKS = ['red', 'yellow', 'green'];
 const REVIEW_LEN = 20;
 const BUILT_IN_LEN = 10, PRE_SHIFT_LEN = 5, FINAL_LEN = 60; // a program level's final exam: 60 questions
 // Nov 8: Certified Bar Server's final is 30 questions (like WSET Spirits Level 1); Certified Bartender's is 60.
-const finalLen = (key) => BAR_LEVELS.find((L) => L.final === key)?.len || FINAL_LEN;
+const finalLen = (key) => LEVELS.find((L) => L.final === key)?.len || FINAL_LEN;
 
 /** Team quizzes a manager saved: a name, its topics and its length. */
 export function teamSets(db, store) {
@@ -60,8 +60,8 @@ function topicsOf(db, store, id) {
 export function labelOf(key) {
   const L = { 'classic-on': 'Classic Cocktails on the Menu', 'classic-off': 'Classic Cocktails off the Menu', specialty: 'Specialty Cocktails', brg: 'BRG Favorites', mules: 'Mules', dessert: 'Dessert Cocktails', spiritless: 'Spiritless Cocktails', house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings' };
   if (key.startsWith('spec:')) return SPEC_TOPICS.find(([k]) => k === key)?.[1] || key;
-  { const L = BAR_LEVELS.find((x) => x.final === key); if (L) return `${L.title} · Final Exam`; }
-  if (key.startsWith('study:')) { const ch = chapterBySlug(key.slice(6)); return ch ? `${ch.program === 'bar' ? `Cocktail Program L${ch.barLevel || 1}` : 'Study Guide'} · ${ch.title}` : key; }
+  { const L = LEVELS.find((x) => x.final === key); if (L) return `${L.title} · Final Exam`; }
+  if (key.startsWith('study:')) { const ch = chapterBySlug(key.slice(6)); return ch ? `${isProgram(ch) ? `${programDef(ch.program).name} L${progLevel(ch)}` : 'Study Guide'} · ${ch.title}` : key; }
   return key.startsWith('course:') ? key.slice(7) : L[key] || key;
 }
 export const customId = (topics, count) => `c:${[...new Set(topics)].sort().join('+')}:${count}`;
