@@ -2,7 +2,7 @@
  "number": 1,
  "slug": "bar-serving",
  "title": "Serving and how guests order",
- "script": "Lesson one",
+ "script": "Lesson 1",
  "lead": "The words guests use at the bar, and how to take a drink order right the first time.",
  "minutes": 12,
  "program": "bar",
@@ -20,7 +20,8 @@
     "On The Rocks means poured over ice.",
     "Up is chilled with ice, then strained into a glass with no ice.",
     "Straight Up is unclear: some guests mean up, some mean neat. Ask."
-   ]
+   ],
+   "source": "Common bar practice"
   },
   {
    "name": "Well, call and premium",
@@ -35,7 +36,8 @@
     "Call is when the guest names the brand they want.",
     "Premium is the top shelf: the bottles that cost the most.",
     "Repeat It back so the guest gets, and pays for, what they asked for."
-   ]
+   ],
+   "source": "Common bar practice"
   },
   {
    "name": "Dry, dirty and with a twist",
@@ -51,7 +53,8 @@
     "Twist is a strip of citrus peel, its oils squeezed over the drink.",
     "Gibson is a martini garnished with a cocktail onion.",
     "Perfect means equal parts sweet and dry vermouth."
-   ]
+   ],
+   "source": "Common bar practice"
   },
   {
    "name": "Taking the order",
@@ -67,7 +70,8 @@
     "Allergies matter at the bar too: egg white, nuts, dairy.",
     "Repeat the order back before it goes in.",
     "21 and over: check ID the way the Safety page says."
-   ]
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
   }
  ],
  "v3": {
@@ -213,7 +217,7 @@
    }
   ]
  },
- "sources": "Written for Mise from Common bar practice (bar lead to confirm). Checked Nov 8, 2026.",
+ "sources": "Written for Mise from Common bar practice. Checked Nov 8, 2026.",
  "cards": [
   {
    "q": "A guest orders a bourbon neat. What do they get?",
@@ -223,7 +227,7 @@
     "Bourbon stirred on ice and strained",
     "Bourbon with a splash of soda"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "What does “on the rocks” mean?",
@@ -233,7 +237,7 @@
     "Shaken hard",
     "Served in a stemmed glass"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "A martini served “up” is…",
@@ -243,7 +247,7 @@
     "Poured with no chilling at all",
     "Topped with soda"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "A guest asks for a whiskey “straight up.” What should you do?",
@@ -253,7 +257,7 @@
     "Add a splash of water",
     "Serve it with a soda back"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "A guest orders a “gin and tonic” and names no brand. Which gin goes in?",
@@ -263,7 +267,7 @@
     "Whatever the bartender likes",
     "No gin until they pick one"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "“Tito’s and soda” is what kind of order?",
@@ -273,7 +277,7 @@
     "A neat pour",
     "A spiritless drink"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "What is the top shelf usually called?",
@@ -283,7 +287,7 @@
     "House",
     "Call"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "Why repeat the brand back to the guest?",
@@ -293,7 +297,7 @@
     "Because a manager has to approve it",
     "To make the ticket shorter"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "A “dirty” martini has what added?",
@@ -303,7 +307,7 @@
     "Bitters",
     "Lemon juice"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "A guest wants their martini “dry.” What changes?",
@@ -313,7 +317,7 @@
     "No ice",
     "Olive brine"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "Which garnish makes a martini a Gibson?",
@@ -323,7 +327,7 @@
     "A lemon twist",
     "A cherry"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "A “perfect” Manhattan uses…",
@@ -333,7 +337,7 @@
     "Twice the whiskey",
     "No bitters"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "What is a twist?",
@@ -343,7 +347,7 @@
     "A sugared rim",
     "A splash of citrus juice"
    ],
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "q": "Orgeat, a syrup in some cocktails, is made from…",
@@ -389,15 +393,15 @@
  "facts": [
   {
    "fact": "Neat is the spirit alone, with no ice. On the rocks is over ice. Up means shaken or stirred with ice, then strained into a stemmed glass with no ice.",
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "fact": "A guest who orders a “vodka soda” gets the well vodka, the house pour. “Tito’s and soda” names the brand, so it’s a call drink. Premium bottles are the top shelf and cost more. The Back Bar shows which bottles sit in each tier.",
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "fact": "Dry means less vermouth; wet means more. Dirty adds olive brine. A twist is a strip of lemon peel squeezed over the glass so its oils land on the drink. A Gibson is a martini with a cocktail onion. A perfect Manhattan uses equal parts sweet and dry vermouth.",
-   "source": "Common bar practice (bar lead to confirm)"
+   "source": "Common bar practice"
   },
   {
    "fact": "Get the spirit, the brand and how they like it. Ask about allergies: some cocktails use egg white, nut syrups such as orgeat (made from almonds), or cream. Repeat the order back before it goes in. We serve guests 21 and over.",

@@ -1,0 +1,368 @@
+{
+ "number": 2,
+ "slug": "bar-how-spirits-are-made",
+ "title": "How spirits are made",
+ "script": "Lesson 2",
+ "lead": "Fermenting, distilling and aging: the three steps behind every bottle on the back bar.",
+ "minutes": 14,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Ferment, then distill",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Every spirit starts as something fermented."
+    }
+   ],
+   "know": [
+    "Ferment first: yeast turns sugar into alcohol.",
+    "Distill next: alcohol boils before water, so the vapor is stronger.",
+    "The Base decides the spirit: grain, agave, cane or fruit."
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Pot stills and column stills",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Two kinds of still, two kinds of spirit."
+    }
+   ],
+   "know": [
+    "Pot Still works in batches and keeps more flavor.",
+    "Column Still runs nonstop and makes a lighter spirit.",
+    "The Heart of the run is what the distiller keeps."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "POT STILL",
+       "title": "One batch at a time",
+       "text": "Often distilled twice\nMore flavor from the base\nCognac, single malt Scotch"
+      },
+      {
+       "label": "COLUMN STILL",
+       "title": "Runs nonstop",
+       "text": "Reaches a higher strength\nLighter, cleaner spirit\nMost vodka, grain whisky"
+      }
+     ]
+    }
+   ],
+   "source": "Common bar practice; BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "name": "Aging in oak",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The barrel adds color, flavor and time."
+    }
+   ],
+   "know": [
+    "Clear off the still: color comes from the barrel.",
+    "Oak adds vanilla and spice, and softens the spirit.",
+    "Age Statement is the age of the youngest spirit in the bottle."
+   ],
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Strength and proof",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Proof is twice the ABV, in the US."
+    }
+   ],
+   "know": [
+    "Abv is the share of alcohol in the bottle.",
+    "Proof in the US is twice the ABV: 40% is 80 proof.",
+    "Cask Strength is bottled near barrel strength, little or no water."
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Ferment, then distill",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FERMENT",
+      "line": "first: yeast turns sugar into alcohol."
+     },
+     {
+      "big": "DISTILL",
+      "line": "next: alcohol boils before water, so the vapor is stronger."
+     },
+     {
+      "big": "THE BASE",
+      "line": "decides the spirit: grain, agave, cane or fruit."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every spirit starts as something fermented.",
+     "where": "Yeast turns sugar into alcohol. **Distilling** heats that liquid; alcohol boils before water, so the vapor is stronger than what went in. The start decides the spirit: **grain** for whiskey and most vodka, **agave** for tequila and mezcal, **sugarcane** for rum, **grapes or other fruit** for brandy."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Pot stills and column stills",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "POT STILL",
+      "line": "works in batches and keeps more flavor."
+     },
+     {
+      "big": "COLUMN STILL",
+      "line": "runs nonstop and makes a lighter spirit."
+     },
+     {
+      "big": "THE HEART",
+      "line": "of the run is what the distiller keeps."
+     }
+    ],
+    "read": {
+     "bigIdea": "Two kinds of still, two kinds of spirit.",
+     "where": "A **pot still** works one batch at a time and is often run twice; more of the base’s flavor comes through. A **column still** runs nonstop and can reach a higher strength, so the spirit is lighter. Either way the distiller keeps the **heart** of the run and sets aside the first and last parts. Cognac, for example, is distilled twice in **copper pot stills**.",
+     "visual": 0,
+     "visualIntro": ""
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Aging in oak",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CLEAR",
+      "line": "off the still: color comes from the barrel."
+     },
+     {
+      "big": "OAK",
+      "line": "adds vanilla and spice, and softens the spirit."
+     },
+     {
+      "big": "AGE STATEMENT",
+      "line": "is the age of the youngest spirit in the bottle."
+     }
+    ],
+    "read": {
+     "bigIdea": "The barrel adds color, flavor and time.",
+     "where": "Spirits come off the still clear. Time in **oak** adds color and flavors like vanilla and spice, and softens the spirit. **New charred oak** gives a lot of flavor fast; **used casks** give less. An **age statement** is the age of the **youngest** spirit in the bottle. Some whiskies may add plain caramel color.",
+     "mixup": "A 12-year-old whisky can hold older whisky, but **nothing younger than 12 years**."
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "Strength and proof",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ABV",
+      "line": "is the share of alcohol in the bottle."
+     },
+     {
+      "big": "PROOF",
+      "line": "in the US is twice the ABV: 40% is 80 proof."
+     },
+     {
+      "big": "CASK STRENGTH",
+      "line": "is bottled near barrel strength, little or no water."
+     }
+    ],
+    "read": {
+     "bigIdea": "Proof is twice the ABV, in the US.",
+     "where": "**ABV** is the share of alcohol in the bottle. In the US, **proof** is twice the ABV: 40% is 80 proof. US whiskey is bottled at **40% or more**; in the EU, gin, vodka and rum are at least **37.5%**. **Cask strength** means bottled at about the strength it came out of the barrel, with little or no water added."
+    },
+    "check": [
+     11,
+     12,
+     13
+    ]
+   }
+  ]
+ },
+ "sources": "Common bar practice; BNIC rules for Cognac (as summarized on Wikipedia); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Why does distilling make a drink stronger?",
+   "answer": "Alcohol boils before water, so the vapor is stronger",
+   "wrong": [
+    "It adds sugar",
+    "The barrel adds alcohol",
+    "It removes the water with charcoal"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Tequila is distilled from…",
+   "answer": "Agave",
+   "wrong": [
+    "Grain",
+    "Sugarcane",
+    "Grapes"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Brandy is distilled from…",
+   "answer": "Grapes or other fruit",
+   "wrong": [
+    "Grain",
+    "Agave",
+    "Potatoes"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "What comes before distilling?",
+   "answer": "Fermentation",
+   "wrong": [
+    "Aging",
+    "Bottling",
+    "Filtering"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Which still runs nonstop?",
+   "answer": "A column still",
+   "wrong": [
+    "A pot still",
+    "An alembic",
+    "A clay pot still"
+   ],
+   "source": "Common bar practice; BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "Which still usually keeps more flavor from the base?",
+   "answer": "A pot still",
+   "wrong": [
+    "A column still",
+    "Neither, the barrel does it all",
+    "A charcoal filter"
+   ],
+   "source": "Common bar practice; BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "Cognac is distilled…",
+   "answer": "Twice, in copper pot stills",
+   "wrong": [
+    "Once, in a column still",
+    "Three times, in steel tanks",
+    "It isn’t distilled"
+   ],
+   "source": "Common bar practice; BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "Which part of the run does the distiller keep?",
+   "answer": "The heart",
+   "wrong": [
+    "The first part only",
+    "The last part only",
+    "All of it"
+   ],
+   "source": "Common bar practice; BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "A bottle says “12 years.” What does that mean?",
+   "answer": "The youngest whisky in it is 12 years old",
+   "wrong": [
+    "The oldest whisky in it is 12 years old",
+    "The average age is 12 years",
+    "It was bottled 12 years ago"
+   ],
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Where does an aged spirit’s brown color come from?",
+   "answer": "Mostly the oak barrel",
+   "wrong": [
+    "The still",
+    "The grain",
+    "The water"
+   ],
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Which barrel gives more flavor, faster?",
+   "answer": "New charred oak",
+   "wrong": [
+    "A used cask",
+    "A steel tank",
+    "A glass jar"
+   ],
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "What is 45% ABV in US proof?",
+   "answer": "90 proof",
+   "wrong": [
+    "45 proof",
+    "100 proof",
+    "22.5 proof"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "What does “cask strength” mean?",
+   "answer": "Bottled near the strength it left the barrel",
+   "wrong": [
+    "Aged in a special cask",
+    "Watered down for cocktails",
+    "Bottled at exactly 40%"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "US whiskey is bottled at no less than…",
+   "answer": "40% ABV",
+   "wrong": [
+    "30% ABV",
+    "50% ABV",
+    "35% ABV"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Yeast turns sugar into alcohol. Distilling heats that liquid; alcohol boils before water, so the vapor is stronger than what went in. The start decides the spirit: grain for whiskey and most vodka, agave for tequila and mezcal, sugarcane for rum, grapes or other fruit for brandy.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "A pot still works one batch at a time and is often run twice; more of the base’s flavor comes through. A column still runs nonstop and can reach a higher strength, so the spirit is lighter. Either way the distiller keeps the heart of the run and sets aside the first and last parts. Cognac, for example, is distilled twice in copper pot stills.",
+   "source": "Common bar practice; BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "fact": "Spirits come off the still clear. Time in oak adds color and flavors like vanilla and spice, and softens the spirit. New charred oak gives a lot of flavor fast; used casks give less. An age statement is the age of the youngest spirit in the bottle. Some whiskies may add plain caramel color.",
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "ABV is the share of alcohol in the bottle. In the US, proof is twice the ABV: 40% is 80 proof. US whiskey is bottled at 40% or more; in the EU, gin, vodka and rum are at least 37.5%. Cask strength means bottled at about the strength it came out of the barrel, with little or no water added.",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  }
+ ],
+ "unverified": [
+  "Pot vs column flavor is a general rule with many exceptions."
+ ]
+}

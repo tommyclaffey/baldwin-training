@@ -1,0 +1,486 @@
+{
+ "number": 8,
+ "slug": "bar-brandy",
+ "title": "Brandy",
+ "script": "Lesson 8",
+ "lead": "Brandy is distilled wine or fruit. Learn Cognac’s grades and regions, then Armagnac, Calvados and pisco.",
+ "minutes": 15,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "What brandy is",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Distilled wine, or fermented fruit."
+    }
+   ],
+   "know": [
+    "Wine distilled: that’s brandy.",
+    "Oak aging: at least six months to a year in the EU.",
+    "Fruit brandies are named for their fruit."
+   ],
+   "book": "spirit/cognac",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Cognac",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Twice distilled, from one region of France."
+    }
+   ],
+   "know": [
+    "Ugni Blanc is the main grape.",
+    "Twice distilled, in copper pot stills.",
+    "Vs, Vsop, Xo : at least 2, 4 and 10 years."
+   ],
+   "book": "spirit/cognac/vs",
+   "visuals": [
+    {
+     "type": "pyramid",
+     "title": "Cognac grades",
+     "rows": [
+      {
+       "name": "XO",
+       "note": "10+ years (since 2018)"
+      },
+      {
+       "name": "VSOP",
+       "note": "4+ years"
+      },
+      {
+       "name": "VS",
+       "note": "2+ years"
+      }
+     ]
+    }
+   ],
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "name": "Cognac’s crus",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Six growing areas, named on the label."
+    }
+   ],
+   "know": [
+    "Crus are Cognac’s six growing areas.",
+    "Grande Champagne is one of them; nothing to do with sparkling wine.",
+    "Fine Champagne blends Grande and Petite Champagne."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "The six crus",
+     "rows": [
+      {
+       "name": "Grande Champagne"
+      },
+      {
+       "name": "Petite Champagne"
+      },
+      {
+       "name": "Borderies"
+      },
+      {
+       "name": "Fins Bois"
+      },
+      {
+       "name": "Bons Bois"
+      },
+      {
+       "name": "Bois Ordinaires"
+      }
+     ]
+    }
+   ],
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "name": "Armagnac, Calvados and pisco",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Three more brandies guests ask for."
+    }
+   ],
+   "know": [
+    "Armagnac is grape brandy from Gascony, France.",
+    "Calvados is apple brandy from Normandy.",
+    "Pisco is grape brandy from Peru and Chile."
+   ],
+   "book": "spirit/pisco",
+   "source": "Common bar practice"
+  },
+  {
+   "name": "Brandy at the bar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The Sidecar, Pisco Sour and Vieux Carré."
+    }
+   ],
+   "know": [
+    "Sidecar is Cognac, lemon and orange liqueur.",
+    "Pisco Sour has egg white for a foamy top.",
+    "Vieux Carré is rye, Cognac, vermouth and Bénédictine."
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "What brandy is",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WINE",
+      "line": "distilled: that’s brandy."
+     },
+     {
+      "big": "OAK",
+      "line": "aging: at least six months to a year in the EU."
+     },
+     {
+      "big": "FRUIT",
+      "line": "brandies are named for their fruit."
+     }
+    ],
+    "read": {
+     "bigIdea": "Distilled wine, or fermented fruit.",
+     "where": "**Brandy** is distilled from **wine** (or other fermented fruit). In the EU, brandy ages at least **one year** in large oak, or **six months** in casks under 1,000 liters. Fruit brandies are named for their fruit: apple brandy, pear brandy and more."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Cognac",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "UGNI BLANC",
+      "line": "is the main grape."
+     },
+     {
+      "big": "TWICE",
+      "line": "distilled, in copper pot stills."
+     },
+     {
+      "big": "VS, VSOP, XO",
+      "line": ": at least 2, 4 and 10 years."
+     }
+    ],
+    "read": {
+     "bigIdea": "Twice distilled, from one region of France.",
+     "where": "**Cognac** comes from the Cognac region of France, mostly from **Ugni Blanc** grapes. It is distilled **twice** in **copper pot stills** and aged in **French oak**. The grade tells the age of the youngest brandy: **VS** at least **2 years**, **VSOP** at least **4**, **XO** at least **10** (since 2018).",
+     "visual": 0,
+     "visualIntro": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Cognac’s crus",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CRUS",
+      "line": "are Cognac’s six growing areas."
+     },
+     {
+      "big": "GRANDE CHAMPAGNE",
+      "line": "is one of them; nothing to do with sparkling wine."
+     },
+     {
+      "big": "FINE CHAMPAGNE",
+      "line": "blends Grande and Petite Champagne."
+     }
+    ],
+    "read": {
+     "bigIdea": "Six growing areas, named on the label.",
+     "where": "Cognac’s vineyards are split into **crus**: **Grande Champagne**, **Petite Champagne**, **Borderies**, **Fins Bois**, **Bons Bois** and **Bois Ordinaires**. **Fine Champagne** on a label means a blend of Grande and Petite Champagne. Here “Champagne” is a place name: it has nothing to do with the sparkling wine.",
+     "visual": 0,
+     "visualIntro": ""
+    },
+    "check": [
+     7,
+     8,
+     9
+    ]
+   },
+   {
+    "name": "Armagnac, Calvados and pisco",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ARMAGNAC",
+      "line": "is grape brandy from Gascony, France."
+     },
+     {
+      "big": "CALVADOS",
+      "line": "is apple brandy from Normandy."
+     },
+     {
+      "big": "PISCO",
+      "line": "is grape brandy from Peru and Chile."
+     }
+    ],
+    "read": {
+     "bigIdea": "Three more brandies guests ask for.",
+     "where": "**Armagnac** is grape brandy from **Gascony** in southwest France. **Calvados** is **apple** brandy (pears allowed) from **Normandy**. **Pisco** is grape brandy from **Peru** and **Chile**. Peruvian styles: **puro** (one grape), **aromático** (aromatic grapes), **acholado** (a blend of grapes) and **mosto verde** (distilled before fermentation finishes, so it’s rounder).",
+     "stopsTitle": "Pisco, on our back bar",
+     "stops": [
+      {
+       "name": "Puro",
+       "text": "From **one grape** variety."
+      },
+      {
+       "name": "Aromático",
+       "text": "From **aromatic** grapes."
+      },
+      {
+       "name": "Acholado",
+       "text": "A **blend** of grapes."
+      },
+      {
+       "name": "Mosto verde",
+       "text": "Distilled **before fermentation finishes**."
+      }
+     ]
+    },
+    "check": [
+     10,
+     11,
+     12
+    ]
+   },
+   {
+    "name": "Brandy at the bar",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SIDECAR",
+      "line": "is Cognac, lemon and orange liqueur."
+     },
+     {
+      "big": "PISCO SOUR",
+      "line": "has egg white for a foamy top."
+     },
+     {
+      "big": "VIEUX CARRÉ",
+      "line": "is rye, Cognac, vermouth and Bénédictine."
+     }
+    ],
+    "read": {
+     "bigIdea": "The Sidecar, Pisco Sour and Vieux Carré.",
+     "where": "The **Sidecar** is Cognac, lemon and orange liqueur. The **Pisco Sour** is pisco, lime, sugar and egg white. The **Brandy Alexander** is Cognac, crème de cacao and cream. The **Vieux Carré** is rye, Cognac, sweet vermouth and Bénédictine."
+    },
+    "check": [
+     13,
+     14,
+     15
+    ]
+   }
+  ]
+ },
+ "sources": "BNIC rules for Cognac (as summarized on Wikipedia); Common bar practice; EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); Our book: the classic and house cocktail specs in this app. Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Brandy is distilled from…",
+   "answer": "Wine or other fermented fruit",
+   "wrong": [
+    "Grain",
+    "Agave",
+    "Molasses"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Calvados is made from…",
+   "answer": "Apples",
+   "wrong": [
+    "Grapes",
+    "Pears only",
+    "Plums"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "In the EU, brandy aged in casks under 1,000 liters ages at least…",
+   "answer": "Six months",
+   "wrong": [
+    "Ten years",
+    "No time at all",
+    "Five years"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "XO Cognac is aged at least…",
+   "answer": "10 years",
+   "wrong": [
+    "6 years",
+    "4 years",
+    "20 years"
+   ],
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "VSOP Cognac is aged at least…",
+   "answer": "4 years",
+   "wrong": [
+    "2 years",
+    "10 years",
+    "1 year"
+   ],
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "The main grape in Cognac is…",
+   "answer": "Ugni Blanc",
+   "wrong": [
+    "Chardonnay",
+    "Pinot Noir",
+    "Muscat"
+   ],
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "VS Cognac is aged at least…",
+   "answer": "2 years",
+   "wrong": [
+    "4 years",
+    "6 months",
+    "10 years"
+   ],
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "“Grande Champagne” on a Cognac label is…",
+   "answer": "One of Cognac’s growing areas",
+   "wrong": [
+    "Cognac mixed with Champagne",
+    "A grade like XO",
+    "A grape"
+   ],
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "Fine Champagne Cognac is a blend of…",
+   "answer": "Grande and Petite Champagne",
+   "wrong": [
+    "Cognac and Armagnac",
+    "VS and XO",
+    "Borderies and Fins Bois"
+   ],
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "How many crus does Cognac have?",
+   "answer": "Six",
+   "wrong": [
+    "Three",
+    "Ten",
+    "Two"
+   ],
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "Pisco comes from…",
+   "answer": "Peru and Chile",
+   "wrong": [
+    "Spain",
+    "Mexico",
+    "France"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "An acholado pisco is…",
+   "answer": "A blend of grapes",
+   "wrong": [
+    "From one grape",
+    "Aged ten years",
+    "Made from apples"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Armagnac comes from…",
+   "answer": "Gascony, France",
+   "wrong": [
+    "Normandy, France",
+    "Spain",
+    "Italy"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Which brandy goes in a Sidecar?",
+   "answer": "Cognac",
+   "wrong": [
+    "Pisco",
+    "Calvados",
+    "Grappa"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "What gives a Pisco Sour its foam?",
+   "answer": "Egg white",
+   "wrong": [
+    "Cream",
+    "Soda",
+    "Aquafaba only"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "A Vieux Carré uses rye and…",
+   "answer": "Cognac",
+   "wrong": [
+    "Mezcal",
+    "Gin",
+    "Rum"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Brandy is distilled from wine (or other fermented fruit). In the EU, brandy ages at least one year in large oak, or six months in casks under 1,000 liters. Fruit brandies are named for their fruit: apple brandy, pear brandy and more.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "Cognac comes from the Cognac region of France, mostly from Ugni Blanc grapes. It is distilled twice in copper pot stills and aged in French oak. The grade tells the age of the youngest brandy: VS at least 2 years, VSOP at least 4, XO at least 10 (since 2018).",
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "fact": "Cognac’s vineyards are split into crus: Grande Champagne, Petite Champagne, Borderies, Fins Bois, Bons Bois and Bois Ordinaires. Fine Champagne on a label means a blend of Grande and Petite Champagne. Here “Champagne” is a place name: it has nothing to do with the sparkling wine.",
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "fact": "Armagnac is grape brandy from Gascony in southwest France. Calvados is apple brandy (pears allowed) from Normandy. Pisco is grape brandy from Peru and Chile. Peruvian styles: puro (one grape), aromático (aromatic grapes), acholado (a blend of grapes) and mosto verde (distilled before fermentation finishes, so it’s rounder).",
+   "source": "Common bar practice"
+  },
+  {
+   "fact": "The Sidecar is Cognac, lemon and orange liqueur. The Pisco Sour is pisco, lime, sugar and egg white. The Brandy Alexander is Cognac, crème de cacao and cream. The Vieux Carré is rye, Cognac, sweet vermouth and Bénédictine.",
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "unverified": [
+  "Armagnac, Calvados and pisco facts are general knowledge, not checked against their appellation rules; bar lead to confirm."
+ ]
+}

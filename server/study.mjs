@@ -238,7 +238,7 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
     const built = b ? blockBuilder(chTpl.main)(b) : [];
     read.c = read.c.filter((x) => x !== scriptAfter);
     if (built.length) {
-      vis.lm = 'V'; vis.gap = 12; vis.c = built.map((x) => { x.sh = 'L'; return x; });
+      vis.lm = 'V'; vis.gap = 12; vis.sv = 'H'; vis.c = built.map((x) => { x.sh = 'L'; return x; }); // hugs its diagram, so nothing below gets covered
       for (const t of findAll(vis, (x) => x.t === 'T' && x.ar === 'W' && (x.s || '').length > 18)) { t.ar = 'H'; t.sh = 'F'; }
       for (const c of findAll(vis, (x) => /^(Tile|Step) · /.test(x.n || ''))) for (const t of texts(c)) { t.ar = 'H'; t.sh = 'L'; }
       // rows of steps or tiles share the reading column (628 wide); five or more wrap three to a row instead of running off
@@ -257,7 +257,14 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
       st.ar = 'H'; st.sh = 'L'; say.sh = 'L';
     } else remove(read, say);
     const src = read.c.filter((c) => c.t === 'T').pop();
-    setText(src, ch.sources ? `Sources: ${ch.sources}` : '');
+    setText(src, sec.source ? `Source: ${sec.source}.` : ch.sources ? `Sources: ${ch.sources}` : ''); // a Cocktail Program section names its own sources
+    src.ar = 'H'; src.sh = 'L'; delete src.h; // two lines of sources wrap instead of hiding the first
+    // Cocktail Program (Nov 8): a lesson about a spirit links to that spirit's page on our back bar
+    if (sec.book) {
+      const link = { t: 'F', n: 'Button · On our back bar', to: '/' + sec.book, lm: 'H', gap: 8, pd: [10, 16, 10, 16], r: 999, st: '#1E1C1A', sw: 1, pa: 'C', ca: 'C', sh: 'H', sv: 'H',
+        c: [txt('See it on our back bar  →', { z: 14, c: '#1E1C1A', fs: 'Bold' })] };
+      read.c.splice(read.c.indexOf(src), 0, link);
+    }
   } else remove(main, read);
 
   // quick check: 3 cards, live (QuickCheck in the browser); misses go to the review queue
@@ -562,7 +569,7 @@ export function barPage(page, ctx) {
   const ct = T(copy);
   setText(ct[0], 'Cocktail Program · Level one'); setText(ct[1], 'CERTIFIED BAR SERVER'); ct[1].ar = 'H'; ct[1].sh = 'F';
   const lead = find(hero, (x) => x.n === 'Lead' || (x.t === 'T' && /video lessons/.test(x.s || '')));
-  if (lead) { lead.n = 'Lead'; setText(lead, 'Five lessons with practice cards, then a final exam. Pass it and you’re a Certified Bar Server.'); }
+  if (lead) { lead.n = 'Lead'; const words = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve']; setText(lead, `${words[all.length] || all.length} lessons, every spirit on the back bar, then a final exam. Pass it and you’re a Certified Bar Server.`); }
   for (const t of findAll(hero, (x) => x.t === 'T' && (x.z || 0) >= 36)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
   const glance = find(hero, byName('At a glance'));
   if (glance) {

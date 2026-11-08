@@ -1,0 +1,350 @@
+{
+ "number": 7,
+ "slug": "bar-rum",
+ "title": "Rum and cane spirits",
+ "script": "Lesson 7",
+ "lead": "Rum is the most varied spirit on the back bar: cane juice or molasses, pot or column, white to dark.",
+ "minutes": 15,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "What rum is",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Rum comes from sugarcane."
+    }
+   ],
+   "know": [
+    "Sugarcane juice, syrup or molasses.",
+    "Molasses is what’s left after making sugar.",
+    "No One Rulebook : each country sets its own rules."
+   ],
+   "book": "spirit/rum",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Cane juice: agricole and cachaça",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Fresh cane juice tastes grassy and bright."
+    }
+   ],
+   "know": [
+    "Agricole is made from fresh cane juice.",
+    "Martinique has its own appellation for it.",
+    "Cachaça is Brazil’s cane-juice spirit."
+   ],
+   "book": "spirit/rum/agricole",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Styles on the back bar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "White, gold, dark and spiced."
+    }
+   ],
+   "know": [
+    "White rum is light: unaged or filtered.",
+    "Dark rum is richer: longer aging or caramel.",
+    "Spiced rum is flavored with spices."
+   ],
+   "book": "spirit/rum/dark",
+   "source": "Common bar practice"
+  },
+  {
+   "name": "Rum at the bar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Daiquiris, Mojitos and tiki."
+    }
+   ],
+   "know": [
+    "Daiquiri is rum, lime and sugar.",
+    "Mai Tai is rum, lime, orange curaçao and orgeat.",
+    "Jungle Bird is rum with Campari and pineapple."
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "What rum is",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SUGARCANE",
+      "line": "juice, syrup or molasses."
+     },
+     {
+      "big": "MOLASSES",
+      "line": "is what’s left after making sugar."
+     },
+     {
+      "big": "NO ONE RULEBOOK",
+      "line": ": each country sets its own rules."
+     }
+    ],
+    "read": {
+     "bigIdea": "Rum comes from sugarcane.",
+     "where": "Rum is distilled from **sugarcane**: its juice, its syrup or **molasses** (what’s left after making sugar). There is no single world rulebook; each country sets its own rules. In the EU, rum is bottled at **37.5% or more**."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Cane juice: agricole and cachaça",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AGRICOLE",
+      "line": "is made from fresh cane juice."
+     },
+     {
+      "big": "MARTINIQUE",
+      "line": "has its own appellation for it."
+     },
+     {
+      "big": "CACHAÇA",
+      "line": "is Brazil’s cane-juice spirit."
+     }
+    ],
+    "read": {
+     "bigIdea": "Fresh cane juice tastes grassy and bright.",
+     "where": "Most rum is made from molasses. **Rhum agricole** is made from **fresh cane juice**, which tastes grassy and bright. In the EU the “agricultural” term is only for rum from the **French overseas departments** and **Madeira**; **Martinique** has its own appellation for it. **Cachaça**, from **Brazil**, is also made from cane juice: it’s the spirit in a **Caipirinha**."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Styles on the back bar",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WHITE",
+      "line": "rum is light: unaged or filtered."
+     },
+     {
+      "big": "DARK",
+      "line": "rum is richer: longer aging or caramel."
+     },
+     {
+      "big": "SPICED",
+      "line": "rum is flavored with spices."
+     }
+    ],
+    "read": {
+     "bigIdea": "White, gold, dark and spiced.",
+     "where": "**White** rum is unaged or filtered after aging, so it’s light. **Gold** has some time in wood. **Dark** rum is richer, from longer aging or added caramel. **Spiced** rum is flavored with spices like vanilla and cinnamon. Rum from **pot stills** tends to be heavier; from **column stills**, lighter.",
+     "stopsTitle": "The styles",
+     "stops": [
+      {
+       "name": "White",
+       "text": "**Light**: unaged or filtered."
+      },
+      {
+       "name": "Gold",
+       "text": "Some **time in wood**."
+      },
+      {
+       "name": "Dark",
+       "text": "**Richer**: longer aging or caramel."
+      },
+      {
+       "name": "Spiced",
+       "text": "**Flavored** with spices."
+      }
+     ]
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Rum at the bar",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DAIQUIRI",
+      "line": "is rum, lime and sugar."
+     },
+     {
+      "big": "MAI TAI",
+      "line": "is rum, lime, orange curaçao and orgeat."
+     },
+     {
+      "big": "JUNGLE BIRD",
+      "line": "is rum with Campari and pineapple."
+     }
+    ],
+    "read": {
+     "bigIdea": "Daiquiris, Mojitos and tiki.",
+     "where": "The **Daiquiri** is rum, lime and sugar. The **Mojito** adds mint and soda. The **Mai Tai** is rum, lime, orange curaçao and orgeat. The **Dark ’n’ Stormy** is dark rum and ginger beer. The **Piña Colada** is rum, pineapple and coconut. The **Jungle Bird** brings in Campari."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Common bar practice; EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); Our book: the classic and house cocktail specs in this app. Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Rum is made from…",
+   "answer": "Sugarcane juice, syrup or molasses",
+   "wrong": [
+    "Agave",
+    "Grain",
+    "Grapes"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "What is molasses?",
+   "answer": "What’s left after making sugar from cane",
+   "wrong": [
+    "Fresh cane juice",
+    "A kind of yeast",
+    "Burnt sugar color"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Is there one set of rules for rum worldwide?",
+   "answer": "No, each country sets its own",
+   "wrong": [
+    "Yes, from the EU",
+    "Yes, from Jamaica",
+    "Yes, from the US"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Rhum agricole is made from…",
+   "answer": "Fresh sugarcane juice",
+   "wrong": [
+    "Molasses",
+    "Agave",
+    "Grapes"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Cachaça comes from…",
+   "answer": "Brazil",
+   "wrong": [
+    "Jamaica",
+    "Cuba",
+    "Mexico"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Which drink is built on cachaça?",
+   "answer": "Caipirinha",
+   "wrong": [
+    "Mojito",
+    "Daiquiri",
+    "Mai Tai"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Spiced rum is…",
+   "answer": "Flavored with spices like vanilla",
+   "wrong": [
+    "Aged ten years",
+    "Made from agave",
+    "Always clear"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "White rum is usually…",
+   "answer": "Unaged or filtered, so it’s light",
+   "wrong": [
+    "Aged the longest",
+    "Made from cane juice only",
+    "Flavored with coconut"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Rum from pot stills tends to be…",
+   "answer": "Heavier",
+   "wrong": [
+    "Lighter",
+    "Always clear",
+    "Sweeter by law"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Rum, lime, sugar, mint and soda make a…",
+   "answer": "Mojito",
+   "wrong": [
+    "Daiquiri",
+    "Mai Tai",
+    "Caipirinha"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "Which drink is dark rum and ginger beer?",
+   "answer": "Dark ’n’ Stormy",
+   "wrong": [
+    "Moscow Mule",
+    "Mai Tai",
+    "Hurricane"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "Orgeat goes in a…",
+   "answer": "Mai Tai",
+   "wrong": [
+    "Mojito",
+    "Daiquiri",
+    "Piña Colada"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Rum is distilled from sugarcane: its juice, its syrup or molasses (what’s left after making sugar). There is no single world rulebook; each country sets its own rules. In the EU, rum is bottled at 37.5% or more.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "Most rum is made from molasses. Rhum agricole is made from fresh cane juice, which tastes grassy and bright. In the EU the “agricultural” term is only for rum from the French overseas departments and Madeira; Martinique has its own appellation for it. Cachaça, from Brazil, is also made from cane juice: it’s the spirit in a Caipirinha.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "White rum is unaged or filtered after aging, so it’s light. Gold has some time in wood. Dark rum is richer, from longer aging or added caramel. Spiced rum is flavored with spices like vanilla and cinnamon. Rum from pot stills tends to be heavier; from column stills, lighter.",
+   "source": "Common bar practice"
+  },
+  {
+   "fact": "The Daiquiri is rum, lime and sugar. The Mojito adds mint and soda. The Mai Tai is rum, lime, orange curaçao and orgeat. The Dark ’n’ Stormy is dark rum and ginger beer. The Piña Colada is rum, pineapple and coconut. The Jungle Bird brings in Campari.",
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "unverified": [
+  "Rum style descriptions are general and vary by maker; bar lead to confirm against our bottles."
+ ]
+}

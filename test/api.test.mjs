@@ -800,7 +800,9 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   const final = cat.quizzes.find((q) => q.id === 't:final:bar-1');
   assert.equal(final.count, 60);
   assert.equal(final.group, 'Cocktail Program · Level 1');
-  assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 1').length, 6, 'five lesson quizzes and the final');
+  assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 1').length, 13, 'twelve lesson quizzes and the final');
+  const gin = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'cocktail-program/level-1/bar-vodka-gin/gin-styles').file)).data);
+  assert.ok(gin.includes('GENEVER') && gin.includes('/spirit/gin/london-dry'), 'a spirit lesson links to its back bar page');
   const start = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-1' } })).data;
   assert.equal(start.items.length, 60);
 });

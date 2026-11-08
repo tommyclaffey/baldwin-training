@@ -1,8 +1,8 @@
 {
- "number": 3,
+ "number": 10,
  "slug": "bar-our-menu",
  "title": "Our menu",
- "script": "Lesson three",
+ "script": "Lesson 10",
  "lead": "How to read a spec, where every drink lives in the app, and how to sell it at the table. Then the spec quizzes test our own builds.",
  "minutes": 10,
  "program": "bar",
@@ -21,7 +21,8 @@
     "Top means fill the glass with the last ingredient.",
     "1 Oz is about 30 ml.",
     "Build means make it right in the glass."
-   ]
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
   },
   {
    "name": "Where every drink lives",
@@ -36,7 +37,8 @@
     "Specs holds every build, list by list.",
     "Our Build comes first when a classic is on our menu.",
     "Spiritless drinks have no alcohol at all."
-   ]
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
   },
   {
    "name": "Selling a cocktail",
@@ -51,7 +53,8 @@
     "Taste in a few words: bright, smoky, bitter, sweet.",
     "Say It with the line on each drink’s page.",
     "Pair It with a dish the drink page suggests."
-   ]
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
   }
  ],
  "v3": {

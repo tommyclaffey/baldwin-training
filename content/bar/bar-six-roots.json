@@ -1,8 +1,8 @@
 {
- "number": 4,
+ "number": 11,
  "slug": "bar-six-roots",
  "title": "The six roots",
- "script": "Lesson four",
+ "script": "Lesson 11",
  "lead": "Six classic drinks are the patterns most cocktails follow. Learn them and every new drink is a variation.",
  "minutes": 20,
  "program": "bar",
@@ -19,7 +19,8 @@
     "Spirit sweetened and seasoned: spirit, sugar and bitters.",
     "Stirred over ice, served on a big cube.",
     "Sazerac follows the same pattern."
-   ]
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
   },
   {
    "name": "The Martini",
@@ -33,7 +34,8 @@
     "Spirit plus vermouth: gin or vodka with dry vermouth.",
     "Stirred and strained up, very cold.",
     "Manhattan is the same idea: whiskey and sweet vermouth."
-   ]
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
   },
   {
    "name": "The Daiquiri",
@@ -47,7 +49,8 @@
     "Sour pattern: spirit, citrus and sugar.",
     "Shaken because it has citrus.",
     "Same Pattern as the Whiskey Sour, Gimlet and Pisco Sour."
-   ]
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
   },
   {
    "name": "The Sidecar",
@@ -61,7 +64,8 @@
     "Liqueur sweetens it: spirit, citrus and orange liqueur.",
     "Shaken and served up.",
     "Margarita and Cosmopolitan follow the same pattern."
-   ]
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
   },
   {
    "name": "The Highball",
@@ -75,7 +79,8 @@
     "Spirit made long with something bubbly.",
     "Built in a tall glass over ice.",
     "Same Pattern as the Moscow Mule, Dark ’n’ Stormy and Paloma."
-   ]
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
   },
   {
    "name": "The Flip",
@@ -89,7 +94,8 @@
     "Rich drinks: egg or cream give the body.",
     "Shaken hard to mix and foam.",
     "Brandy Alexander gets its body from cream."
-   ]
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
   }
  ],
  "v3": {
