@@ -1,5 +1,6 @@
 {
  "number": 1,
+ "barLevel": 1,
  "slug": "bar-serving",
  "title": "Serving and how guests order",
  "script": "Lesson 1",

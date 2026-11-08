@@ -1,8 +1,9 @@
 {
- "number": 6,
+ "number": 5,
+ "barLevel": 2,
  "slug": "bar-agave",
  "title": "Tequila and mezcal",
- "script": "Lesson 6",
+ "script": "Lesson 5",
  "lead": "Two agave spirits from Mexico: how they’re made, how they’re aged and what the label tells you.",
  "minutes": 18,
  "program": "bar",

@@ -7,7 +7,7 @@
 //   • Paths borrow from the programs (Tommy: "if they've completed it, it counts towards their regular [Sommelier] training"):
 //     a Sommelier lesson in a path is the same lesson, so finishing it in either place ticks it in both.
 //   • Steps are only ever things the book already has; a step whose page or quiz isn't in this store's book is left out.
-import { chapterBySlug, allChapters, chaptersBar, programOf, BAR } from './manual.mjs';
+import { chapterBySlug, allChapters, chaptersBar, programOf, BAR_LEVELS } from './manual.mjs';
 import { lessonSlug, doneKey } from './study.mjs';
 import { passFor, PASS_PCT } from './quizgen.mjs';
 
@@ -142,9 +142,16 @@ function progressFor(stages, done, startedOn) {
 function programsFor(done, paths) {
   const inPath = new Set(paths.flatMap((p) => p.stages.flatMap((st) => st.steps.filter((s) => s.kind === 'lesson').map((s) => s.key))));
   const out = [];
-  // The Cocktail Program first: it's the one most of the floor takes.
-  const bar = chaptersBar().flatMap((c) => c.sections.map((_, i) => doneKey(c, i)));
-  if (bar.length) out.push({ title: 'Cocktail Program · Level 1', to: '/' + BAR, total: bar.length, done: bar.filter((k) => done.reads.has(k)).length, inPath: bar.filter((k) => inPath.has(k)).length });
+  // The Cocktail Program first: it's the one most of the floor takes. Each level shows its final, and Level 2 its practical.
+  for (const L of BAR_LEVELS) {
+    const bar = chaptersBar(L.level).flatMap((c) => c.sections.map((_, i) => doneKey(c, i)));
+    if (!bar.length) continue;
+    const fin = done.quizzes.get('t:' + L.final); const pr = L.practical && done.signs.get(L.practical);
+    out.push({ title: `Cocktail Program · Level ${L.level}`, cert: L.title, to: '/' + L.slug, total: bar.length, done: bar.filter((k) => done.reads.has(k)).length, inPath: bar.filter((k) => inPath.has(k)).length,
+      final: { id: 't:' + L.final, passedAt: fin?.passedAt || null, best: fin ? `${Math.round((fin.best / fin.total) * 100)}%` : null },
+      ...(L.practical ? { practical: { key: L.practical, title: L.practicalTitle, how: L.practicalHow, at: pr?.at || null, by: pr?.by || null } } : {}),
+      certified: !!(fin?.passedAt && (!L.practical || pr)) });
+  }
   for (const level of [1, 2]) {
     const chs = allChapters().filter((c) => c.program !== 'bar' && (c.level || 1) === level);
     const keys = chs.flatMap((c) => c.sections.map((_, i) => doneKey(c, i)));
@@ -171,6 +178,6 @@ export function personSummary(db, store, user, ctx) {
     status: !p.paths.length ? 'no-job' : p.paths.every((x) => x.status === 'done') ? 'done' : p.paths.some((x) => x.status === 'behind') ? 'behind' : 'on-track',
     next: p.paths.map((x) => x.next).find(Boolean) || null, week: p.paths[0]?.week || null, weeks: p.paths[0]?.weeks || null };
 }
-/** Is this a sign-off step in one of this person's paths? */
-export const isPathSignoff = (user, key) => validJobs(safeJson(user.jobs)).some((job) => (PATHS[job] || []).some((st) => st.steps.some((s) => s.kind === 'signoff' && `path:${job}:${s.key}` === key)));
+/** Is this a sign-off step in one of this person's paths, or a program's practical (Cocktail Program Level 2)? */
+export const isPathSignoff = (user, key) => BAR_LEVELS.some((L) => L.practical === key) || validJobs(safeJson(user.jobs)).some((job) => (PATHS[job] || []).some((st) => st.steps.some((s) => s.kind === 'signoff' && `path:${job}:${s.key}` === key)));
 const safeJson = (s) => { try { return JSON.parse(s || '[]'); } catch { return []; } };

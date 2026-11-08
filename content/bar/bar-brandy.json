@@ -1,8 +1,9 @@
 {
- "number": 8,
+ "number": 7,
+ "barLevel": 2,
  "slug": "bar-brandy",
  "title": "Brandy",
- "script": "Lesson 8",
+ "script": "Lesson 7",
  "lead": "Brandy is distilled wine or fruit. Learn Cognac’s grades and regions, then Armagnac, Calvados and pisco.",
  "minutes": 15,
  "program": "bar",

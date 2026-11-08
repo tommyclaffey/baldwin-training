@@ -106,6 +106,27 @@ function PersonPath({ id, jobs, onChange }: { id: number; jobs: Job[]; onChange:
         </div>
       ))}
       {!p.paths.length && <p className="muted">Pick a job above and their path appears here.</p>}
+      {/* Nov 8: program certificates. Level 2 of the Cocktail Program needs a practical a manager signs off. */}
+      {p.programs.some((g) => g.cert) && (
+        <div className="tr-stage">
+          <p className="tr-stage-head"><strong>Certificates</strong><small>Final exam, plus a practical where the level has one</small></p>
+          <table className="table inner">
+            <tbody>
+              {p.programs.filter((g) => g.cert).map((g) => (
+                <tr key={g.title}>
+                  <td className="tr-kind">{g.title.replace('Cocktail Program · ', 'Bar · ')}</td>
+                  <td>{g.cert}{g.certified ? ' · certified' : ''}</td>
+                  <td>{g.final?.passedAt ? `Final passed ${when(g.final.passedAt)}` : g.final?.best ? `Final best ${g.final.best}, not passed yet` : 'Final not taken'}
+                    {g.practical && <><br />{g.practical.at ? `Practical signed off${g.practical.by ? ' by ' + g.practical.by : ''} ${when(g.practical.at)}` : `Practical: ${g.practical.how}`}</>}</td>
+                  <td>{g.practical && (g.practical.at
+                    ? <button className="link-btn danger" onClick={() => void sign(g.practical!.key, false)} disabled={!!busy}>Undo</button>
+                    : <button className="btn small" onClick={() => void sign(g.practical!.key, true)} disabled={!!busy}>{busy === g.practical.key ? 'Signing…' : 'Sign Off Practical'}</button>)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }

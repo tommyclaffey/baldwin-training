@@ -1,8 +1,9 @@
 {
- "number": 3,
+ "number": 2,
+ "barLevel": 2,
  "slug": "bar-vodka-gin",
  "title": "Vodka and gin",
- "script": "Lesson 3",
+ "script": "Lesson 2",
  "lead": "Vodka is the clean slate; gin is vodka’s cousin with juniper. Learn the legal kinds of gin and the styles on our back bar.",
  "minutes": 16,
  "program": "bar",

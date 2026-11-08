@@ -1,0 +1,452 @@
+{
+ "number": 2,
+ "barLevel": 1,
+ "slug": "bar-spirits-at-a-glance",
+ "title": "Spirits at a glance",
+ "script": "Lesson 2",
+ "lead": "Every spirit on the back bar, in a sentence or two: what it’s made from and the words guests use.",
+ "minutes": 10,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Clear spirits",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Vodka, gin, blanco tequila and white rum."
+    }
+   ],
+   "know": [
+    "Vodka is clean and neutral, from any farm base.",
+    "Gin is a neutral spirit where juniper leads.",
+    "Blanco tequila and white rum are clear because they’re unaged or barely aged."
+   ],
+   "book": "spirit/vodka",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "name": "Whiskey",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Grain, distilled, then aged in wood."
+    }
+   ],
+   "know": [
+    "Bourbon is at least 51% corn, aged in new charred oak.",
+    "Rye is at least 51% rye: drier and spicier.",
+    "Scotch is made in Scotland and aged at least three years."
+   ],
+   "book": "spirit/whiskey",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890)"
+  },
+  {
+   "name": "Agave and cane",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Tequila and mezcal from agave, rum from sugarcane."
+    }
+   ],
+   "know": [
+    "Tequila is blue agave, from Mexico.",
+    "Mezcal can use other agaves and is often smoky.",
+    "Rum is sugarcane: molasses or fresh juice."
+   ],
+   "book": "spirit/tequila",
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Brandy, liqueurs and vermouth",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Brandy from fruit, liqueurs sweet, vermouth is wine."
+    }
+   ],
+   "know": [
+    "Brandy is distilled from wine or fruit. Cognac is France’s.",
+    "A liqueur is a spirit with sugar and flavor added.",
+    "Vermouth is fortified wine: fridge once open."
+   ],
+   "book": "spirit/liqueurs",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); BNIC rules for Cognac (as summarized on Wikipedia); Common bar practice"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Clear spirits",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "VODKA",
+      "line": "is clean and neutral, from any farm base."
+     },
+     {
+      "big": "GIN",
+      "line": "is a neutral spirit where juniper leads."
+     },
+     {
+      "big": "BLANCO",
+      "line": "tequila is unaged or rested under two months."
+     },
+     {
+      "big": "WHITE RUM",
+      "line": "is light and mixes like vodka with a touch of sweetness."
+     }
+    ],
+    "read": {
+     "bigIdea": "Clear usually means unaged.",
+     "where": "Most clear spirits never sit in a barrel, so they taste of what they’re made from. **Vodka** is meant to taste of almost nothing. **Gin** is neutral spirit flavored with botanicals, and **juniper** has to lead. **Blanco tequila** tastes of agave. **White rum** tastes of cane.",
+     "stopsTitle": "On our back bar",
+     "stops": [
+      {
+       "name": "Vodka",
+       "text": "Clean. From wheat, rye, potato or corn."
+      },
+      {
+       "name": "Gin",
+       "text": "**Juniper** first, then citrus and spice."
+      },
+      {
+       "name": "Blanco tequila",
+       "text": "Bright, peppery **agave**."
+      },
+      {
+       "name": "White rum",
+       "text": "Light, a little sweet."
+      }
+     ],
+     "mixup": "A **citrus vodka** isn’t a gin. Gin has to taste of **juniper** first.",
+     "sayIt": "Do you have a vodka you like, or should I suggest one?"
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Whiskey",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WHISKEY",
+      "line": "is grain, distilled, then aged in wood."
+     },
+     {
+      "big": "BOURBON",
+      "line": "is at least 51% corn: rounder and sweeter."
+     },
+     {
+      "big": "RYE",
+      "line": "is at least 51% rye: drier and spicier."
+     },
+     {
+      "big": "SCOTCH",
+      "line": "is made in Scotland. Some are smoky."
+     }
+    ],
+    "read": {
+     "bigIdea": "All whiskey is grain and wood. The grain and the place change the taste.",
+     "where": "Whiskey starts as a beer made from grain, gets distilled, then ages in oak, which gives it its color and vanilla. **Bourbon** is American, at least **51% corn**, aged in **new charred oak**. **Rye** is at least **51% rye**. **Scotch** has to be made in **Scotland** and aged at least **three years**.",
+     "stopsTitle": "The family",
+     "stops": [
+      {
+       "name": "Bourbon",
+       "text": "**Corn**: sweet, vanilla, caramel."
+      },
+      {
+       "name": "Rye",
+       "text": "**Rye**: drier, peppery."
+      },
+      {
+       "name": "Scotch",
+       "text": "**Scotland**: malty, sometimes **smoky**."
+      },
+      {
+       "name": "Irish and Japanese",
+       "text": "Usually smooth and light."
+      }
+     ],
+     "mixup": "**Bourbon** and **rye** are both American. The grain is the difference: corn is sweeter, rye is spicier.",
+     "sayIt": "Do you like it sweeter, like a bourbon, or spicier, like a rye?"
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Agave and cane",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "TEQUILA",
+      "line": "is blue agave, from Mexico."
+     },
+     {
+      "big": "MEZCAL",
+      "line": "is agave too, often smoky from pit roasting."
+     },
+     {
+      "big": "RUM",
+      "line": "is sugarcane: molasses or fresh juice."
+     },
+     {
+      "big": "AGE",
+      "line": "blanco → reposado → añejo: more oak, more vanilla."
+     }
+    ],
+    "read": {
+     "bigIdea": "Agave makes tequila and mezcal. Sugarcane makes rum.",
+     "where": "**Tequila** is made from **blue agave** in Mexico. It’s sold by age: **blanco** (unaged or under two months), **reposado** (rested at least **two months**) and **añejo** (at least **a year**). **Mezcal** can use other agaves and is often **smoky**, because the agave is roasted in pits. **Rum** is distilled from **sugarcane**, usually molasses, sometimes fresh juice.",
+     "stopsTitle": "Tequila by age",
+     "stops": [
+      {
+       "name": "Blanco",
+       "text": "Bright and peppery."
+      },
+      {
+       "name": "Reposado",
+       "text": "Rested **two months** or more: softer."
+      },
+      {
+       "name": "Añejo",
+       "text": "A **year** or more: vanilla and caramel."
+      }
+     ],
+     "mixup": "**Mezcal** isn’t a kind of tequila with a worm. It’s its own agave spirit, and the smoke comes from roasting.",
+     "sayIt": "Would you like it smoky? Try it with mezcal."
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "Brandy, liqueurs and vermouth",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BRANDY",
+      "line": "is distilled from wine or fruit."
+     },
+     {
+      "big": "COGNAC",
+      "line": "is brandy from Cognac, France."
+     },
+     {
+      "big": "LIQUEUR",
+      "line": "is a spirit with sugar and flavor added."
+     },
+     {
+      "big": "VERMOUTH",
+      "line": "is fortified wine. Fridge once open."
+     }
+    ],
+    "read": {
+     "bigIdea": "The bottles that finish a drink.",
+     "where": "**Brandy** is distilled from **wine or fruit**; **Cognac** is the famous one, from France. A **liqueur** is a spirit with **sugar and flavor** added: orange, coffee, herbal, nut. **Vermouth** is **wine** flavored with herbs and fortified, so once it’s open it goes in the **fridge**.",
+     "stopsTitle": "Where you’ll see them",
+     "stops": [
+      {
+       "name": "Cognac",
+       "text": "The **Sidecar**, or neat after dinner."
+      },
+      {
+       "name": "Orange liqueur",
+       "text": "The **Margarita** and Cosmopolitan."
+      },
+      {
+       "name": "Sweet vermouth",
+       "text": "The **Manhattan** and **Negroni**."
+      },
+      {
+       "name": "Dry vermouth",
+       "text": "The **Martini**."
+      }
+     ],
+     "mixup": "**Vermouth** isn’t a spirit. It’s wine, so it spoils like wine.",
+     "sayIt": "Something after dinner? A Cognac, or an amaro?"
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "sources": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890); Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide); BNIC rules for Cognac (as summarized on Wikipedia). Facts taken from the Level 2 lessons, which cite them. Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "What is vodka meant to taste like?",
+   "answer": "Clean and neutral",
+   "wrong": [
+    "Smoky",
+    "Sweet and herbal",
+    "Like oak and vanilla"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "What flavor has to lead in every gin?",
+   "answer": "Juniper",
+   "wrong": [
+    "Orange peel",
+    "Smoke",
+    "Vanilla"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Blanco tequila is…",
+   "answer": "Unaged or rested under two months",
+   "wrong": [
+    "Aged at least a year",
+    "Made from sugarcane",
+    "Always smoky"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "Which of these is usually unaged and clear?",
+   "answer": "Vodka",
+   "wrong": [
+    "Bourbon",
+    "Cognac",
+    "Scotch"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Whiskey is distilled from…",
+   "answer": "Grain",
+   "wrong": [
+    "Grapes",
+    "Agave",
+    "Sugarcane"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Bourbon has to be at least 51%…",
+   "answer": "Corn",
+   "wrong": [
+    "Rye",
+    "Barley",
+    "Wheat"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Where does Scotch have to be made?",
+   "answer": "Scotland",
+   "wrong": [
+    "Ireland",
+    "Anywhere in the UK",
+    "Kentucky"
+   ],
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890)"
+  },
+  {
+   "q": "Rye whiskey has to be at least 51%…",
+   "answer": "Rye",
+   "wrong": [
+    "Corn",
+    "Barley",
+    "Wheat"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Tequila is made from…",
+   "answer": "Blue agave",
+   "wrong": [
+    "Sugarcane",
+    "Corn",
+    "Grapes"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "Mezcal is often…",
+   "answer": "Smoky, from agave roasted in pits",
+   "wrong": [
+    "Made from sugarcane",
+    "Aged in sherry casks by law",
+    "Flavored with juniper"
+   ],
+   "source": "Mexican mezcal standard NOM-070-SCFI-2016 (as summarized on Wikipedia)"
+  },
+  {
+   "q": "Rum is made from…",
+   "answer": "Sugarcane: its juice or molasses",
+   "wrong": [
+    "Blue agave",
+    "Grapes",
+    "Malted barley"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Reposado tequila is rested in oak for at least…",
+   "answer": "Two months",
+   "wrong": [
+    "Two years",
+    "Two days",
+    "Ten years"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "Brandy is distilled from…",
+   "answer": "Wine or fruit",
+   "wrong": [
+    "Grain",
+    "Agave",
+    "Sugarcane"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Cognac is a brandy from…",
+   "answer": "France",
+   "wrong": [
+    "Spain",
+    "Peru",
+    "Italy"
+   ],
+   "source": "BNIC rules for Cognac (as summarized on Wikipedia)"
+  },
+  {
+   "q": "What is a liqueur?",
+   "answer": "A spirit with sugar and flavor added",
+   "wrong": [
+    "A spirit aged ten years",
+    "Beer mixed with spirit",
+    "Any spirit under 10% ABV"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Vermouth, once opened, goes…",
+   "answer": "In the fridge",
+   "wrong": [
+    "On the back bar at room temperature",
+    "In the freezer",
+    "Back in the case"
+   ],
+   "source": "Common bar practice"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Taste words (“peppery”, “rounder”) are general bar descriptions, not from a rule. Bar lead to check against our bottles."
+ ]
+}

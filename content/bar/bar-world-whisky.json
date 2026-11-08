@@ -1,8 +1,9 @@
 {
- "number": 5,
+ "number": 4,
+ "barLevel": 2,
  "slug": "bar-world-whisky",
  "title": "Scotch, Irish, Japanese and Canadian",
- "script": "Lesson 5",
+ "script": "Lesson 4",
  "lead": "Whisky outside the US: what each country’s rules say, the categories on the label and the regions people ask about.",
  "minutes": 20,
  "program": "bar",

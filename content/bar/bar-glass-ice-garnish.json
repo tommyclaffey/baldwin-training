@@ -1,8 +1,9 @@
 {
- "number": 12,
+ "number": 4,
+ "barLevel": 1,
  "slug": "bar-glass-ice-garnish",
  "title": "Glass, ice and garnish",
- "script": "Lesson 12",
+ "script": "Lesson 4",
  "lead": "The glass, the ice, the garnish and the method are part of the spec. Get them right every time.",
  "minutes": 12,
  "program": "bar",

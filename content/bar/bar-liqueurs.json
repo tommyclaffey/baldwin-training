@@ -1,8 +1,9 @@
 {
- "number": 9,
+ "number": 8,
+ "barLevel": 2,
  "slug": "bar-liqueurs",
  "title": "Liqueurs, vermouth and bitters",
- "script": "Lesson 9",
+ "script": "Lesson 8",
  "lead": "The bottles that sweeten, season and finish a drink.",
  "minutes": 14,
  "program": "bar",

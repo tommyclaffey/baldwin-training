@@ -1,8 +1,9 @@
 {
- "number": 10,
+ "number": 3,
+ "barLevel": 1,
  "slug": "bar-our-menu",
  "title": "Our menu",
- "script": "Lesson 10",
+ "script": "Lesson 3",
  "lead": "How to read a spec, where every drink lives in the app, and how to sell it at the table. Then the spec quizzes test our own builds.",
  "minutes": 10,
  "program": "bar",

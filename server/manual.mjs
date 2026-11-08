@@ -14,9 +14,19 @@ export const GUIDE = 'sommelier-program/study-guide';
 const DIR_BAR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/bar');
 export const BAR = 'cocktail-program';
 export const BAR_BASE = 'cocktail-program/level-1';
+// The levels (Nov 8, Tommy: "I went too deep into the Certified Bar Server … this might be a little intense for most people").
+// Built like the Court, Cicerone and WSET: the same subjects at every level, deeper each time; Level 1 is a multiple-choice
+// final, Level 2 adds a practical a manager signs off. Plan: vault › (C) Cocktail Program — Level Structure (Nov 8 2026).
+export const BAR_LEVELS = [
+  { level: 1, title: 'Certified Bar Server', slug: BAR, file: 'bar-1', final: 'final:bar-1', len: 30 },
+  { level: 2, title: 'Certified Bartender', slug: BAR + '/level-2', file: 'bar-2', final: 'final:bar-2', len: 60, practical: 'program:bar-2:practical',
+    practicalTitle: 'Build from our specs', practicalHow: 'Build drinks from our specs while a manager watches; they sign you off' },
+];
+export const barLevel = (c) => c?.barLevel || 1;
+export const barLevelOf = (n) => BAR_LEVELS.find((x) => x.level === n);
 export const L2_BASE = 'sommelier-program/level-2';
 /** Where a chapter's lessons live: Level 1 under the Study Guide, Level 2 under the Level 2 page. */
-export const chapterBase = (c) => (c?.program === 'bar' ? BAR_BASE : c?.level === 2 ? L2_BASE : GUIDE);
+export const chapterBase = (c) => (c?.program === 'bar' ? `${BAR}/level-${barLevel(c)}` : c?.level === 2 ? L2_BASE : GUIDE);
 export const chapterSlug = (c) => `${chapterBase(c)}/${c.slug}`;
 export const quizHref = (c) => `/quizzes?quiz=t:study:${c.slug}`;
 
@@ -42,16 +52,16 @@ export function chapters2() {
 }
 /** Every chapter, both levels. */
 let cacheBar;
-/** The Cocktail Program's Level 1 lessons, in order. */
-export function chaptersBar() {
-  if (!cacheBar) cacheBar = load(DIR_BAR, 1).map((c) => ({ ...c, program: 'bar' }));
-  return cacheBar;
+/** The Cocktail Program's lessons, in order: one level, or every level (Level 1's first). */
+export function chaptersBar(level) {
+  if (!cacheBar) cacheBar = load(DIR_BAR, 1).map((c) => ({ ...c, program: 'bar', barLevel: c.barLevel || 1 })).sort((a, b) => a.barLevel - b.barLevel || a.number - b.number);
+  return level ? cacheBar.filter((c) => c.barLevel === level) : cacheBar;
 }
 export const allChapters = () => [...chapters(), ...chapters2(), ...chaptersBar()];
 /** "Sommelier · Level 1", "Cocktail Program · Level 1": the program a lesson belongs to. */
-export const programOf = (c) => (c?.program === 'bar' ? 'Cocktail Program · Level 1' : `Sommelier · Level ${c?.level || 1}`);
+export const programOf = (c) => (c?.program === 'bar' ? `Cocktail Program · Level ${barLevel(c)}` : `Sommelier · Level ${c?.level || 1}`);
 /** The chapters in the same level as this one. */
-export const levelChapters = (c) => (c?.program === 'bar' ? chaptersBar() : c?.level === 2 ? chapters2() : chapters());
+export const levelChapters = (c) => (c?.program === 'bar' ? chaptersBar(barLevel(c)) : c?.level === 2 ? chapters2() : chapters());
 export const chapterBySlug = (slug) => allChapters().find((c) => c.slug === slug);
 
 /** One person's progress: chapters opened, cards known cold, cards to review (from their quiz marks). */

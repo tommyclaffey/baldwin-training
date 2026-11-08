@@ -1,8 +1,9 @@
 {
- "number": 2,
+ "number": 1,
+ "barLevel": 2,
  "slug": "bar-how-spirits-are-made",
  "title": "How spirits are made",
- "script": "Lesson 2",
+ "script": "Lesson 1",
  "lead": "Fermenting, distilling and aging: the three steps behind every bottle on the back bar.",
  "minutes": 14,
  "program": "bar",

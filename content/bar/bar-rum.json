@@ -1,8 +1,9 @@
 {
- "number": 7,
+ "number": 6,
+ "barLevel": 2,
  "slug": "bar-rum",
  "title": "Rum and cane spirits",
- "script": "Lesson 7",
+ "script": "Lesson 6",
  "lead": "Rum is the most varied spirit on the back bar: cane juice or molasses, pot or column, white to dark.",
  "minutes": 15,
  "program": "bar",
