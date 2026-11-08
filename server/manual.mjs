@@ -21,6 +21,9 @@ export const BAR_LEVELS = [
   { level: 1, title: 'Certified Bar Server', slug: BAR, file: 'bar-1', final: 'final:bar-1', len: 30 },
   { level: 2, title: 'Certified Bartender', slug: BAR + '/level-2', file: 'bar-2', final: 'final:bar-2', len: 60, practical: 'program:bar-2:practical',
     practicalTitle: 'Build from our specs', practicalHow: 'Build drinks from our specs while a manager watches; they sign you off' },
+  // Level 3 (Nov 8, Tommy: "do Advanced Mixologist"): the craft. Its practical is an original drink, specced, costed and built.
+  { level: 3, title: 'Advanced Mixologist', slug: BAR + '/level-3', file: 'bar-3', final: 'final:bar-3', len: 60, practical: 'program:bar-3:practical',
+    practicalTitle: 'Create an original cocktail', practicalHow: 'Write an original spec, cost it, and build it for the bar lead; they sign you off' },
 ];
 export const barLevel = (c) => c?.barLevel || 1;
 export const barLevelOf = (n) => BAR_LEVELS.find((x) => x.level === n);

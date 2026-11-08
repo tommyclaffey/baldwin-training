@@ -1,0 +1,321 @@
+{
+ "number": 2,
+ "barLevel": 3,
+ "slug": "bar-dilution",
+ "title": "Water, ice and citrus",
+ "script": "Lesson 2",
+ "lead": "The two ingredients that never show on the menu: water and time.",
+ "minutes": 12,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Water is an ingredient",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Melted ice is part of every drink."
+    }
+   ],
+   "know": [
+    "An average cocktail ends up more than 25% water.",
+    "Too little water and it’s hot; too much and it’s thin.",
+    "Shaking and stirring are how the water gets in."
+   ],
+   "source": "Campari Academy, “Reconsidering Dilution” with Dave Arnold and Mike Capoferri (campariacademy.com)"
+  },
+  {
+   "name": "Shaken or stirred",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Shaking adds more water and air than stirring."
+    }
+   ],
+   "know": [
+    "Shaken drinks come out colder, lighter and cloudy.",
+    "Stirred drinks stay clear and silky.",
+    "Spirit-only drinks are stirred; citrus, egg or cream are shaken."
+   ],
+   "source": "Death & Co, “How to batch cocktails for a crowd” (fashioned.deathandcompany.com); Foodism, “Pre-batched cocktails” (foodism.co.uk); Common bar practice"
+  },
+  {
+   "name": "Ice",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Fresh, dry, hard ice. Big cubes melt slower."
+    }
+   ],
+   "know": [
+    "Old or wet ice adds water before you start.",
+    "A big cube suits a drink sipped over ice.",
+    "Crushed ice dilutes fast, on purpose."
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "name": "Citrus timing",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Juice each shift. A few hours’ rest can help lime."
+    }
+   ],
+   "know": [
+    "Dave Arnold’s blind test preferred hand-pressed lime about four hours old.",
+    "By the next day it’s worse: juice for the shift.",
+    "Fridge it if it isn’t used soon."
+   ],
+   "source": "Dave Arnold, “Fresh Lime Juice: WTF?”, Cooking Issues, Oct 1, 2010 (cookingissues.com)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Water is an ingredient",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "25%+",
+      "line": "of an average cocktail is water."
+     },
+     {
+      "big": "HOT",
+      "line": "means too little water."
+     },
+     {
+      "big": "THIN",
+      "line": "means too much."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every drink has water in it, and it’s on purpose.",
+     "where": "When you shake or stir with ice, some of the ice **melts into the drink**. That water softens the alcohol and opens up the flavor. Dave Arnold’s class for Campari Academy puts an average cocktail at **more than 25% water**. Too little and the drink tastes **hot**; too much and it tastes **thin**.",
+     "mixup": "Dilution isn’t watering a drink down. It’s part of the spec.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Shaken or stirred",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SHAKEN",
+      "line": "colder, lighter, cloudy: citrus, egg, cream."
+     },
+     {
+      "big": "STIRRED",
+      "line": "clear and silky: spirit-only drinks."
+     },
+     {
+      "big": "MORE WATER",
+      "line": "goes into a shaken drink than a stirred one."
+     }
+    ],
+    "read": {
+     "bigIdea": "How you chill it changes the drink.",
+     "where": "**Shaking** is hard and fast: it adds more **water** and **air**, so the drink comes out **colder, lighter and cloudy**. That suits drinks with **citrus, egg or cream**. **Stirring** is gentler: less water, no air, so the drink stays **clear and silky**. That suits **spirit-only** drinks like the Martini and Manhattan.",
+     "mixup": "A shaken Martini isn’t wrong if a guest asks for it, but it will be cloudier and more watery than our spec.",
+     "sayIt": "Would you like that shaken or stirred? Stirred keeps it clear and silky."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Ice",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FRESH",
+      "line": "dry, hard ice. Wet ice adds water early."
+     },
+     {
+      "big": "BIG CUBE",
+      "line": "melts slowly: for sipping over ice."
+     },
+     {
+      "big": "CRUSHED",
+      "line": "melts fast, for juleps and swizzles."
+     }
+    ],
+    "read": {
+     "bigIdea": "Ice is part of the build.",
+     "where": "Use **fresh, dry ice**. Ice that’s been sitting wet in the well has already started melting and adds water you didn’t plan for. A **large cube** has less surface, so it melts **slowly**: right for an Old Fashioned. **Crushed ice** melts **fast**, which is the point in a julep.",
+     "mixup": "Shaking with the big cube from the glass doesn’t chill or dilute the same way. Shake with fresh tin ice.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Citrus timing",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "4 HOURS",
+      "line": "old lime juice won Dave Arnold’s blind test."
+     },
+     {
+      "big": "NEXT DAY",
+      "line": "it’s worse. Juice for the shift."
+     },
+     {
+      "big": "FRIDGE",
+      "line": "it if it isn’t used soon."
+     }
+    ],
+    "read": {
+     "bigIdea": "Fresh juice, every shift.",
+     "where": "In a 2010 blind tasting, Dave Arnold’s testers preferred **hand-pressed lime juice about four hours old** over juice squeezed that minute: it tasted rounder. The benefit doesn’t last: by the **next day** the juice has gone dull and bitter. So juice **at the start of the shift**, keep it **cold**, and don’t carry it over.",
+     "mixup": "“Fresh” doesn’t mean squeezed this second. It means squeezed today.",
+     "sayIt": "We juice our citrus fresh every day."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Campari Academy, “Reconsidering Dilution” with Dave Arnold and Mike Capoferri (campariacademy.com); Dave Arnold, “Fresh Lime Juice: WTF?”, Cooking Issues, Oct 1, 2010 (cookingissues.com); Death & Co, “How to batch cocktails for a crowd” (fashioned.deathandcompany.com); Foodism, “Pre-batched cocktails” (foodism.co.uk). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "About how much of an average cocktail is water from melted ice?",
+   "answer": "More than 25%",
+   "wrong": [
+    "Under 5%",
+    "About half",
+    "None"
+   ],
+   "source": "Campari Academy, “Reconsidering Dilution” with Dave Arnold and Mike Capoferri (campariacademy.com)"
+  },
+  {
+   "q": "A drink tastes hot and harsh with alcohol. It probably needs…",
+   "answer": "More dilution",
+   "wrong": [
+    "Less ice",
+    "More spirit",
+    "A smaller glass"
+   ],
+   "source": "Campari Academy, “Reconsidering Dilution” with Dave Arnold and Mike Capoferri (campariacademy.com)"
+  },
+  {
+   "q": "Where does a drink’s water come from?",
+   "answer": "Ice melting as you shake or stir",
+   "wrong": [
+    "A splash from the tap",
+    "The syrup only",
+    "The garnish"
+   ],
+   "source": "Campari Academy, “Reconsidering Dilution” with Dave Arnold and Mike Capoferri (campariacademy.com)"
+  },
+  {
+   "q": "Which adds more water and air?",
+   "answer": "Shaking",
+   "wrong": [
+    "Stirring",
+    "Building in the glass",
+    "They’re the same"
+   ],
+   "source": "Death & Co, “How to batch cocktails for a crowd” (fashioned.deathandcompany.com); Foodism, “Pre-batched cocktails” (foodism.co.uk); Common bar practice"
+  },
+  {
+   "q": "A Manhattan is stirred because…",
+   "answer": "It’s spirit-only and should stay clear and silky",
+   "wrong": [
+    "It has citrus",
+    "It has egg",
+    "It’s served tall"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Which drinks are shaken?",
+   "answer": "Ones with citrus, egg or cream",
+   "wrong": [
+    "Spirit-only drinks",
+    "Highballs",
+    "Anything served up"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Why use fresh, dry ice?",
+   "answer": "Wet ice adds water before you start",
+   "wrong": [
+    "It looks better",
+    "It’s cheaper",
+    "It melts faster on purpose"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Why does a big cube suit an Old Fashioned?",
+   "answer": "It melts slowly",
+   "wrong": [
+    "It melts fast",
+    "It adds air",
+    "It makes it cloudy"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Crushed ice…",
+   "answer": "Melts fast, on purpose",
+   "wrong": [
+    "Never melts",
+    "Is only for shaking",
+    "Can’t be used in a julep"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "In Dave Arnold’s 2010 blind test, which lime juice won?",
+   "answer": "Hand-pressed, about four hours old",
+   "wrong": [
+    "Squeezed that second",
+    "Bottled",
+    "Two days old"
+   ],
+   "source": "Dave Arnold, “Fresh Lime Juice: WTF?”, Cooking Issues, Oct 1, 2010 (cookingissues.com)"
+  },
+  {
+   "q": "When should the bar juice its citrus?",
+   "answer": "At the start of each shift",
+   "wrong": [
+    "Once a week",
+    "The night before",
+    "Only when it runs out"
+   ],
+   "source": "Dave Arnold, “Fresh Lime Juice: WTF?”, Cooking Issues, Oct 1, 2010 (cookingissues.com)"
+  },
+  {
+   "q": "Yesterday’s lime juice is…",
+   "answer": "Past its best: juice fresh",
+   "wrong": [
+    "Better than today’s",
+    "Fine for a week",
+    "Only for shots"
+   ],
+   "source": "Dave Arnold, “Fresh Lime Juice: WTF?”, Cooking Issues, Oct 1, 2010 (cookingissues.com)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "The exact amount of extra water from shaking vs stirring varies by source (15–25% in batching guides); not stated as a number on the page.",
+  "Ice notes are common bar practice."
+ ]
+}

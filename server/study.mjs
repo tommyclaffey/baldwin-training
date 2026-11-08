@@ -575,9 +575,12 @@ export function barPage(page, ctx) {
   setText(ct[0], `Cocktail Program · Level ${['', 'one', 'two', 'three', 'four'][L.level]}`); setText(ct[1], L.title.toUpperCase()); ct[1].ar = 'H'; ct[1].sh = 'F';
   const lead = find(hero, (x) => x.n === 'Lead' || (x.t === 'T' && /video lessons/.test(x.s || '')));
   const words = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
-  if (lead) { lead.n = 'Lead'; setText(lead, L.level === 1
-    ? `${words[all.length] || all.length} short lessons for everyone on the floor: how guests order, every spirit at a glance, our menu, and the glass. Then a ${L.len}-question final.`
-    : `${words[all.length] || all.length} lessons for bartenders: every spirit on the back bar in depth, then the six roots. A ${L.len}-question final, then a practical: build our specs while a manager watches.`); }
+  const leads = {
+    1: `${words[all.length] || all.length} short lessons for everyone on the floor: how guests order, every spirit at a glance, our menu, and the glass. Then a ${L.len}-question final.`,
+    2: `${words[all.length] || all.length} lessons for bartenders: every spirit on the back bar in depth, then the six roots. A ${L.len}-question final, then a practical: build our specs while a manager watches.`,
+    3: `${words[all.length] || all.length} lessons on the craft: balance, water and citrus, new drinks, house syrups, batching and costing. A ${L.len}-question final, then a practical: create, cost and build an original cocktail.`,
+  };
+  if (lead) { lead.n = 'Lead'; setText(lead, leads[L.level]); }
   for (const t of findAll(hero, (x) => x.t === 'T' && (x.z || 0) >= 36)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
   const glance = find(hero, byName('At a glance'));
   if (glance) {
@@ -611,12 +614,12 @@ export function barPage(page, ctx) {
   const head = find(course, byName('Head'));
   const grid = find(course, byName('Lessons'));
   const finished = lessonsGrid(grid, all, ctx.done);
-  if (head) { const ht = texts(head); setText(ht[0], L.level === 1 ? 'Learn it, then prove it' : 'Know every bottle'); setText(ht[1], `${all.length} LESSONS`); setText(ht[ht.length - 1], `${finished} of ${all.length} done`); }
+  if (head) { const ht = texts(head); setText(ht[0], ['', 'Learn it, then prove it', 'Know every bottle', 'Make it your own'][L.level]); setText(ht[1], `${all.length} LESSONS`); setText(ht[ht.length - 1], `${finished} of ${all.length} done`); }
   // how it works, then the four levels
   const how = find(main, byName('How it works'));
   if (how) {
     const steps = L.practical
-      ? ['Watch or read the lesson', 'Answer 3 cards per section', `Pass the ${L.len}-question final`, 'Build our specs for a manager']
+      ? ['Watch or read the lesson', 'Answer 3 cards per section', `Pass the ${L.len}-question final`, L.level === 3 ? 'Create your own drink' : 'Build our specs for a manager']
       : ['Watch or read the lesson', 'Swipe the key points', 'Answer 3 cards per section', `Pass the ${L.len}-question final`];
     how.c.forEach((st, i) => { const tt = texts(st); if (steps[i]) setText(tt[tt.length - 1], steps[i]); });
     const levels = clone(how); levels.n = 'The four levels';
