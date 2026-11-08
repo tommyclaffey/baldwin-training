@@ -1,0 +1,418 @@
+{
+ "number": 4,
+ "programLevel": 1,
+ "slug": "beer-brewing",
+ "title": "How beer is made",
+ "script": "Lesson 4",
+ "lead": "Four ingredients and one long day of brewing, then weeks of waiting.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Four ingredients",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Malt, hops, yeast and water."
+    }
+   ],
+   "know": [
+    "Malt: sugar, color and most of the flavor.",
+    "Hops: bitterness, flavor and aroma.",
+    "Yeast turns sugar into alcohol and bubbles."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "name": "Malt",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Grain that’s sprouted, then dried in a kiln."
+    }
+   ],
+   "know": [
+    "Usually barley, sometimes wheat.",
+    "The longer and hotter the kiln, the darker the malt.",
+    "Pale tastes like bread; dark like coffee."
+   ],
+   "source": "CraftBeer.com (Brewers Association), Beer Glossary; Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "name": "Brew day",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Mash, boil with hops, ferment."
+    }
+   ],
+   "know": [
+    "The mash turns starch into sugar.",
+    "Early hops add bitterness; late hops add aroma.",
+    "Dry hopping adds aroma without bitterness."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); CraftBeer.com (Brewers Association), Beer Glossary"
+  },
+  {
+   "name": "Ale or lager",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The yeast decides."
+    }
+   ],
+   "know": [
+    "Ale yeast works warmer and makes fruity flavors.",
+    "Lager yeast works cooler and tastes clean.",
+    "Lagers are cold-aged for weeks."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); American Homebrewers Association, “Ale vs. Lager: What’s the Difference?” (homebrewersassociation.org)"
+  },
+  {
+   "name": "Corn, rice, gluten-free and NA",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "What’s on some labels, and what it means."
+    }
+   ],
+   "know": [
+    "American lagers can use corn or rice to keep them light.",
+    "Gluten-free uses no barley or wheat; gluten-reduced does.",
+    "Non-alcoholic means under 0.5% ABV."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 1A and 1B (bjcp.org); Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Four ingredients",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "MALT",
+      "line": "sugar, color, most of the flavor."
+     },
+     {
+      "big": "HOPS",
+      "line": "bitterness, flavor, aroma."
+     },
+     {
+      "big": "YEAST",
+      "line": "sugar → alcohol and bubbles."
+     },
+     {
+      "big": "WATER",
+      "line": "over 90% of the beer."
+     }
+    ],
+    "read": {
+     "bigIdea": "Almost every beer is four things.",
+     "where": "**Malted grain** gives the sugar, the color and most of the flavor. **Hops** give bitterness, flavor and aroma. **Yeast** turns the sugar into **alcohol**, **CO2** and flavor. **Water** is more than **90%** of the beer, and its minerals shape the taste.",
+     "mixup": "Hops aren’t a grain. They’re the flowers of a climbing plant.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Malt",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "MALTING",
+      "line": "soak, sprout, then kiln-dry."
+     },
+     {
+      "big": "KILN",
+      "line": "hotter and longer = darker."
+     },
+     {
+      "big": "COLOR",
+      "line": "pale = bread, black = coffee."
+     }
+    ],
+    "read": {
+     "bigIdea": "The malt’s color is the beer’s flavor.",
+     "where": "**Malt** is grain, usually **barley**, that’s soaked, allowed to **sprout**, then **dried in a kiln**. The hotter and longer it’s kilned or roasted, the **darker** it gets. Cicerone ties color to flavor: **pale** beers taste like bread dough or crackers, **amber** like toast or caramel, **brown** like nuts or chocolate, **black** like roast or coffee.",
+     "stopsTitle": "Color tells you the taste",
+     "stops": [
+      {
+       "name": "Pale",
+       "text": "Bread dough, **crackers**."
+      },
+      {
+       "name": "Amber",
+       "text": "**Toast**, caramel."
+      },
+      {
+       "name": "Brown",
+       "text": "Nuts, toffee, **chocolate**."
+      },
+      {
+       "name": "Black",
+       "text": "**Roast**, coffee."
+      }
+     ],
+     "mixup": "Dark doesn’t mean strong. A dry Irish stout is lighter in alcohol than most IPAs.",
+     "sayIt": "It’s a dark beer, but it drinks light: coffee and chocolate, not heavy."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Brew day",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "MASH",
+      "line": "hot water turns starch into sugar."
+     },
+     {
+      "big": "BOIL",
+      "line": "early hops bitter, late hops aroma."
+     },
+     {
+      "big": "DRY HOP",
+      "line": "aroma, no added bitterness."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sugar first, then hops, then yeast.",
+     "where": "The malt is milled and **mashed** in hot water so its enzymes turn **starch into sugar**. The sweet liquid (**wort**) is drained off and **boiled with hops**. Hops added **early** give **bitterness**; hops added **late** give **flavor and aroma**. After chilling, the yeast goes in to **ferment**. **Dry hopping** adds hops after the boil, in the tank, for aroma without more bitterness (DDH on a label = double dry hopped).",
+     "mixup": "A very hoppy-smelling beer isn’t always very bitter. Hazy IPAs are dry-hopped heavily but often less bitter.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Ale or lager",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ALE",
+      "line": "warm, fruity, top-fermenting."
+     },
+     {
+      "big": "LAGER",
+      "line": "cool, clean, bottom-fermenting."
+     },
+     {
+      "big": "LAGERING",
+      "line": "weeks of cold aging."
+     }
+    ],
+    "read": {
+     "bigIdea": "Ale and lager are two families of yeast.",
+     "where": "**Ale** yeast ferments **warmer** (roughly 60–70°F, some sources say up to 78°F) and makes **fruity** flavors, sometimes spicy ones. **Lager** yeast ferments **cooler** (roughly 45–58°F) and makes very little of either, so lagers taste of **malt and hops**: clean and crisp. Lagers are then **cold-aged** (“lagered”) for weeks.",
+     "mixup": "Lager isn’t a color. There are pale lagers and black lagers; it’s the yeast that makes it a lager.",
+     "sayIt": "It’s a lager, so it’s clean and crisp."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Corn, rice, gluten-free and NA",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ADJUNCTS",
+      "line": "corn or rice keep American lager light."
+     },
+     {
+      "big": "GLUTEN-FREE",
+      "line": "no barley or wheat at all."
+     },
+     {
+      "big": "NA",
+      "line": "under 0.5% ABV; 0.0 = alcohol-free."
+     }
+    ],
+    "read": {
+     "bigIdea": "Read the label words right.",
+     "where": "American lager and light lager can use **corn or rice** (up to about 40%) with barley malt, which keeps the body **light**. **Gluten-free** beer uses only gluten-free grains like sorghum or rice. **Gluten-reduced** beer is made from barley or wheat and treated: it isn’t gluten-free. **Non-alcoholic** means under **0.5% ABV**; **alcohol-free** means **0.0**.",
+     "mixup": "“Gluten-reduced” isn’t safe for a guest with celiac. Only gluten-free is. When unsure, tell the guest and offer something else.",
+     "sayIt": "That one is gluten-reduced, not gluten-free. For a gluten allergy I’d steer you to a cider or wine."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "sources": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); CraftBeer.com (Brewers Association), Beer Glossary; American Homebrewers Association, “Ale vs. Lager: What’s the Difference?” (homebrewersassociation.org); BJCP 2021 Style Guidelines, 1A American Light Lager, 1B American Lager (bjcp.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Which ingredient gives beer most of its color?",
+   "answer": "Malt",
+   "wrong": [
+    "Hops",
+    "Yeast",
+    "Water"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "What does yeast make from sugar?",
+   "answer": "Alcohol, CO2 and flavor",
+   "wrong": [
+    "Bitterness",
+    "Color",
+    "Malt"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "About how much of beer is water?",
+   "answer": "Over 90%",
+   "wrong": [
+    "About half",
+    "About 10%",
+    "About 25%"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Malt is grain that has been…",
+   "answer": "Soaked, sprouted and kiln-dried",
+   "wrong": [
+    "Fermented",
+    "Boiled with hops",
+    "Roasted with sugar"
+   ],
+   "source": "CraftBeer.com (Brewers Association), Beer Glossary"
+  },
+  {
+   "q": "A black beer’s malt tastes most like…",
+   "answer": "Roast or coffee",
+   "wrong": [
+    "Bread dough",
+    "Crackers",
+    "Lemon"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Darker malt comes from…",
+   "answer": "Kilning hotter and longer",
+   "wrong": [
+    "More hops",
+    "More yeast",
+    "Colder water"
+   ],
+   "source": "CraftBeer.com (Brewers Association), Beer Glossary"
+  },
+  {
+   "q": "In the mash, enzymes turn…",
+   "answer": "Starch into sugar",
+   "wrong": [
+    "Sugar into alcohol",
+    "Hops into bitterness",
+    "Water into wort"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Hops added early in the boil mostly give…",
+   "answer": "Bitterness",
+   "wrong": [
+    "Aroma",
+    "Color",
+    "Alcohol"
+   ],
+   "source": "CraftBeer.com (Brewers Association), Beer Glossary"
+  },
+  {
+   "q": "Dry hopping adds…",
+   "answer": "Aroma without more bitterness",
+   "wrong": [
+    "More bitterness only",
+    "Color",
+    "Alcohol"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Which yeast ferments cooler and tastes cleaner?",
+   "answer": "Lager yeast",
+   "wrong": [
+    "Ale yeast",
+    "Wild yeast",
+    "Bread yeast"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Ale yeast often adds…",
+   "answer": "Fruity flavors",
+   "wrong": [
+    "Skunky flavors",
+    "Corn flavors",
+    "No flavor at all"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "“Lagering” means…",
+   "answer": "Cold-aging for weeks",
+   "wrong": [
+    "Adding lime",
+    "Boiling longer",
+    "Aging in sherry casks"
+   ],
+   "source": "American Homebrewers Association, “Ale vs. Lager: What’s the Difference?” (homebrewersassociation.org)"
+  },
+  {
+   "q": "American lagers often use corn or rice to…",
+   "answer": "Keep the body light",
+   "wrong": [
+    "Make them darker",
+    "Make them sour",
+    "Add bitterness"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 1A and 1B (bjcp.org)"
+  },
+  {
+   "q": "A guest with celiac asks about a gluten-reduced beer. It is…",
+   "answer": "Not gluten-free",
+   "wrong": [
+    "Gluten-free",
+    "Alcohol-free",
+    "Made with no grain"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "“Non-alcoholic” beer in the US is…",
+   "answer": "Under 0.5% ABV",
+   "wrong": [
+    "Exactly 0.0%",
+    "Under 2% ABV",
+    "Under 4% ABV"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Fermentation temperature ranges differ by source (ale 60–70°F or up to 78°F; lager 45–55°F or 48–58°F); the page gives the wider ranges.",
+  "Allergy advice: our Allergen Guide and manager rules come first."
+ ]
+}

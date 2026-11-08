@@ -1,0 +1,323 @@
+{
+ "number": 5,
+ "programLevel": 1,
+ "slug": "beer-lagers",
+ "title": "Lager styles",
+ "script": "Lesson 5",
+ "lead": "Clean, crisp and cold: from pilsner to dark lager.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Pilsner",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Gold, crisp and noticeably bitter."
+    }
+   ],
+   "know": [
+    "Born in Plzeň, Czechia, in 1842.",
+    "Czech pilsner: rich malt, smooth bitterness.",
+    "German pils: drier, crisper, floral hops."
+   ],
+   "book": "beer/pilsner",
+   "source": "BJCP 2021 Style Guidelines, 3B, 5D (bjcp.org)"
+  },
+  {
+   "name": "American lager and light lager",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Pale, fizzy, light and served very cold."
+    }
+   ],
+   "know": [
+    "Light lager: about 2.8–4.2% ABV.",
+    "Corn or rice keeps it light.",
+    "Very low bitterness."
+   ],
+   "book": "beer/light-lager",
+   "source": "BJCP 2021 Style Guidelines, 1A, 1B (bjcp.org)"
+  },
+  {
+   "name": "Helles, Märzen and Oktoberfest",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "German malty lagers, gold to amber."
+    }
+   ],
+   "know": [
+    "Helles: gold, bready, gently bitter.",
+    "Märzen: amber and toasty, the classic US “Oktoberfest”.",
+    "Festbier: the paler beer poured at Munich’s Oktoberfest today."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 4A, 6A, 4B (bjcp.org)"
+  },
+  {
+   "name": "Bock and dark lagers",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Strong bocks, and black beers that drink light."
+    }
+   ],
+   "know": [
+    "Bock: strong and malty, about 6–7.5% ABV.",
+    "Dunkel: brown, bread-crust toasty.",
+    "Schwarzbier: black but light, smooth roast."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 6C, 4C, 8A, 8B (bjcp.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Pilsner",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1842",
+      "line": "first brewed in Plzeň (Pilsen)."
+     },
+     {
+      "big": "CZECH",
+      "line": "rich malt, smooth bitterness."
+     },
+     {
+      "big": "GERMAN",
+      "line": "drier, crisper, floral hops."
+     }
+    ],
+    "read": {
+     "bigIdea": "The original golden lager.",
+     "where": "Pilsner was first brewed in **Plzeň** (Pilsen), in today’s Czech Republic, in **1842**: the beer now sold as Pilsner Urquell. **Czech** pilsner is gold with rich malt and a strong but **smooth** bitterness from Czech hops (about 4.2–5.8% ABV). Germany’s **pils** came a few decades later: paler, **drier** and **crisper**, with a floral, spicy hop aroma.",
+     "mixup": "Most mass-market “pilsner” lagers are closer to American lager: lighter and much less bitter.",
+     "sayIt": "It’s a crisp pilsner: clean, a little bitter, really refreshing."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "American lager and light lager",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LIGHT",
+      "line": "about 2.8–4.2% ABV."
+     },
+     {
+      "big": "FIZZY",
+      "line": "very pale, very carbonated."
+     },
+     {
+      "big": "COLD",
+      "line": "served colder than any other style."
+     }
+    ],
+    "read": {
+     "bigIdea": "Built to be light and cold.",
+     "where": "**American light lager** is very pale, highly carbonated and very light in body, with very little bitterness: about **2.8–4.2% ABV**. Miller popularized it from **1973**. **American lager** is the same idea, slightly fuller, about **4.2–5.3%**. Both can use **corn or rice**. Serve them the **coldest** of any beer.",
+     "mixup": "Light lager isn’t “watered down”. It’s brewed light on purpose.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Helles, Märzen and Oktoberfest",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "HELLES",
+      "line": "gold, bready, gently bitter."
+     },
+     {
+      "big": "MÄRZEN",
+      "line": "amber, toasty: US “Oktoberfest”."
+     },
+     {
+      "big": "FESTBIER",
+      "line": "paler: what Munich pours now."
+     }
+    ],
+    "read": {
+     "bigIdea": "German lagers that lead with malt.",
+     "where": "**Munich Helles** (1894) is gold, smooth and **bready**, with gentle bitterness. **Märzen** is **amber** and **toasty**, with a dry finish: originally brewed in March and aged cold over summer. It’s the classic amber **Oktoberfest**, and still what most US breweries call Oktoberfest. Since 1990, most beer at Munich’s own Oktoberfest is **Festbier**: paler, gold and smooth.",
+     "mixup": "Märzen and Oktoberfest are often the same beer in the US. In Munich today, the festival beer is paler.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Bock and dark lagers",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BOCK",
+      "line": "strong and malty, about 6–7.5%."
+     },
+     {
+      "big": "DUNKEL",
+      "line": "brown, bread-crust toasty."
+     },
+     {
+      "big": "SCHWARZBIER",
+      "line": "black, but light and dry."
+     }
+    ],
+    "read": {
+     "bigIdea": "Dark lagers are smooth, not heavy.",
+     "where": "**Bock** is a **strong, malty** German lager, from the town of **Einbeck**: dark **Dunkles Bock** is toasty (about 6.3–7.2% ABV), pale **Maibock** a little hoppier. **Munich Dunkel** is **brown** and tastes of **bread crust**, with no burnt notes. **Schwarzbier** (“black beer”) is nearly black with smooth roast, but light and dry: it drinks **lighter than it looks**.",
+     "mixup": "A black lager isn’t a stout. It’s lighter, crisper and less roasty.",
+     "sayIt": "It looks like a stout, but it drinks light and smooth."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "BJCP 2021 Style Guidelines, 1A, 1B, 3B, 4A, 4B, 4C, 5D, 6A, 6C, 8A, 8B (bjcp.org); Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Where was pilsner first brewed?",
+   "answer": "Plzeň, in today’s Czech Republic",
+   "wrong": [
+    "Munich",
+    "Milwaukee",
+    "Dublin"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 3B (bjcp.org)"
+  },
+  {
+   "q": "Compared with Czech pilsner, German pils is…",
+   "answer": "Drier and crisper",
+   "wrong": [
+    "Darker and sweeter",
+    "Sour",
+    "Smoky"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 5D (bjcp.org)"
+  },
+  {
+   "q": "Pilsner’s bitterness is…",
+   "answer": "Noticeable",
+   "wrong": [
+    "Almost none",
+    "Extreme",
+    "Sour"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "American light lager is about…",
+   "answer": "2.8–4.2% ABV",
+   "wrong": [
+    "8–10% ABV",
+    "6–7% ABV",
+    "0% ABV"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 1A (bjcp.org)"
+  },
+  {
+   "q": "What keeps American lager light in body?",
+   "answer": "Corn or rice",
+   "wrong": [
+    "Oats",
+    "Roasted barley",
+    "Extra hops"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 1A, 1B (bjcp.org)"
+  },
+  {
+   "q": "Which beer is served coldest?",
+   "answer": "American light lager",
+   "wrong": [
+    "Bock",
+    "Stout",
+    "Dunkel"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Munich Helles tastes…",
+   "answer": "Gold, smooth and bready",
+   "wrong": [
+    "Black and roasty",
+    "Sour and tart",
+    "Hoppy and bitter"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 4A (bjcp.org)"
+  },
+  {
+   "q": "In the US, “Oktoberfest” usually means…",
+   "answer": "An amber Märzen",
+   "wrong": [
+    "A pale light lager",
+    "A stout",
+    "A wheat beer"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 6A (bjcp.org)"
+  },
+  {
+   "q": "Most beer poured at Munich’s Oktoberfest today is…",
+   "answer": "Festbier, paler and gold",
+   "wrong": [
+    "Märzen",
+    "Bock",
+    "Dunkel"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 4B (bjcp.org)"
+  },
+  {
+   "q": "Bock is…",
+   "answer": "A strong, malty lager",
+   "wrong": [
+    "A light, hoppy ale",
+    "A sour wheat beer",
+    "A nitro stout"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 6C (bjcp.org)"
+  },
+  {
+   "q": "Munich Dunkel tastes most like…",
+   "answer": "Bread crust",
+   "wrong": [
+    "Banana",
+    "Lemon",
+    "Pine"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 8A (bjcp.org)"
+  },
+  {
+   "q": "Schwarzbier is…",
+   "answer": "A black lager that drinks light",
+   "wrong": [
+    "A strong stout",
+    "A sour beer",
+    "A pale ale"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 8B (bjcp.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "ABV ranges are BJCP 2021 guideline ranges; a brand can fall outside them.",
+  "The BJCP translates “Bock” as ram; dictionaries say billy goat. Left out of the lesson."
+ ]
+}

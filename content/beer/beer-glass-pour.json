@@ -1,0 +1,336 @@
+{
+ "number": 3,
+ "programLevel": 1,
+ "slug": "beer-glass-pour",
+ "title": "The glass and the pour",
+ "script": "Lesson 3",
+ "lead": "A clean glass and a proper head: what a guest sees first.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Beer-clean",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A clean glass holds a head and leaves rings of lace."
+    }
+   ],
+   "know": [
+    "Sheeting: water coats it evenly.",
+    "Salt: sticks evenly all over.",
+    "Lacing: foam rings after each sip; no bubbles stuck to the sides."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Wash, rinse, dry",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Beer glasses only, rinsed cold, dried upside down."
+    }
+   ],
+   "know": [
+    "Three sinks: wash, rinse, sanitize.",
+    "Keep milk and egg-white glasses out of the beer washer.",
+    "No frozen or frosted glasses."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "The draft pour",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Tilt, pour down the side, straighten, build the head."
+    }
+   ],
+   "know": [
+    "Open the faucet all the way.",
+    "Never let the faucet touch the glass or the beer.",
+    "About an inch of head; wheat beers more."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Bottles, nitro and temperature",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Every beer has its pour and its temperature."
+    }
+   ],
+   "know": [
+    "Stop before the yeast, unless it’s a style poured with it.",
+    "Nitro: pour three-quarters, let it settle, top up.",
+    "Lagers colder than ales; darker and stronger, warmer."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); American Homebrewers Association, “Proper Beer Serving Temperatures” (homebrewersassociation.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Beer-clean",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SHEETING",
+      "line": "water coats a clean glass evenly."
+     },
+     {
+      "big": "SALT",
+      "line": "sticks evenly to clean glass."
+     },
+     {
+      "big": "LACING",
+      "line": "rings of foam after each sip."
+     }
+    ],
+    "read": {
+     "bigIdea": "A dirty glass kills the head.",
+     "where": "A **beer-clean** glass forms a proper head and leaves **lacing** as it’s drunk. Three checks from the Brewers Association: the **sheeting** test (dip it in water: a clean glass is coated evenly, a dirty one beads), the **salt** test (salt sticks evenly to a wet clean glass, not to greasy spots), and the **lacing** test (foam clings in **rings** after each sip). **Bubbles stuck** to the sides mean it isn’t clean.",
+     "mixup": "A glass can look spotless and still not be beer-clean. Grease is invisible; the beer shows it.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Wash, rinse, dry",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "3 SINKS",
+      "line": "wash, rinse, sanitize."
+     },
+     {
+      "big": "BEER ONLY",
+      "line": "no milk or egg-white glasses in the washer."
+     },
+     {
+      "big": "NO FROST",
+      "line": "frozen glasses cause foam."
+     }
+    ],
+    "read": {
+     "bigIdea": "Clean, rinse cold, air dry.",
+     "where": "Wash in **three sinks**: warm water with a **sudsless** detergent and a brush, a **cold rinse**, then **sanitizer**. Dry glasses **upside down** on a rack, never with a towel. Keep a washer for **beer glasses only**: fat from creamy coffee mugs or **egg-white cocktails** coats glasses and kills the head. Rinse each clean glass in **cold water** just before filling. Skip **frozen or frosted** glasses: they cause foam and over-chill the beer.",
+     "mixup": "A frosty mug looks cold and refreshing, but it foams the beer and hides its flavor.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "The draft pour",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "45°",
+      "line": "tilt and pour down the side."
+     },
+     {
+      "big": "ALL THE WAY",
+      "line": "open the faucet fully."
+     },
+     {
+      "big": "1 INCH",
+      "line": "of head; wheat beer 2–3."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every draft gets a head.",
+     "where": "Hold the glass at **45°**, about an inch under the faucet, and **open it all the way**. Pour down the side, then **straighten** the glass and pour down the middle to build the head (Cicerone says straighten at about two-thirds full; the Brewers Association says about halfway). Close as the foam reaches the rim. Aim for about **1 inch** of head; German **wheat** beers and Belgian ales get **2–3 inches**. The faucet **never touches** the glass or the beer.",
+     "stopsTitle": "The pour",
+     "stops": [
+      {
+       "name": "Tilt",
+       "text": "Glass at **45°**, faucet **fully** open."
+      },
+      {
+       "name": "Straighten",
+       "text": "Halfway to two-thirds, pour down the **middle**."
+      },
+      {
+       "name": "Finish",
+       "text": "About **1 inch** of foam at the rim."
+      }
+     ],
+     "mixup": "A head isn’t short-changing the guest: foam is part beer, and it carries the aroma.",
+     "sayIt": "Here you go, poured with a proper head."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Bottles, nitro and temperature",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "YEAST",
+      "line": "stop before it, unless the style wants it."
+     },
+     {
+      "big": "NITRO",
+      "line": "pour, settle 1–2 minutes, top up."
+     },
+     {
+      "big": "38–55°F",
+      "line": "serve colder for lagers, warmer for dark and strong."
+     }
+    ],
+    "read": {
+     "bigIdea": "Know how each beer wants to be served.",
+     "where": "A bottle with **yeast** in it: pour gently and stop when the yeast reaches the neck, unless the guest wants it or the style (like a **Weissbier**) is poured with it; when unsure, **ask**. **Nitro** beer: pour to about **three-quarters**, let it **settle 1–2 minutes**, then top up. Serve beer between **38 and 55°F**: **lagers colder** than ales, **darker and stronger** beers warmer.",
+     "mixup": "Colder isn’t always better. Too cold numbs the taste and hides the aroma.",
+     "sayIt": "Would you like the yeast in it, or poured clear?"
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); American Homebrewers Association, “Proper Beer Serving Temperatures” (homebrewersassociation.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "In the sheeting test, a dirty glass…",
+   "answer": "Breaks water into droplets",
+   "wrong": [
+    "Coats evenly",
+    "Turns cloudy",
+    "Holds more beer"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Bubbles clinging to the inside of a poured beer mean…",
+   "answer": "The glass isn’t beer-clean",
+   "wrong": [
+    "The beer is extra fresh",
+    "It’s a nitro beer",
+    "The beer is too cold"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A beer-clean glass leaves lace in…",
+   "answer": "Rings after each sip",
+   "wrong": [
+    "Random spots",
+    "No lace at all",
+    "A single line at the top"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "How are beer glasses dried?",
+   "answer": "Upside down on a rack, in the air",
+   "wrong": [
+    "With a bar towel",
+    "On a rubber mat",
+    "In the freezer"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Why keep egg-white cocktail glasses out of the beer washer?",
+   "answer": "Fat coats the glasses and kills the head",
+   "wrong": [
+    "They’re too big",
+    "They break easily",
+    "It doesn’t matter"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Are frosted glasses recommended for beer?",
+   "answer": "No: they cause foam and over-chill it",
+   "wrong": [
+    "Yes, always",
+    "Only for stouts",
+    "Only for IPAs"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "When pouring a draft, the faucet should be…",
+   "answer": "Opened all the way",
+   "wrong": [
+    "Opened halfway",
+    "Opened slowly a bit at a time",
+    "Dipped into the beer"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "How much head does most draft beer get?",
+   "answer": "About 1 inch",
+   "wrong": [
+    "None",
+    "Half the glass",
+    "Just a few bubbles"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Which beers traditionally get a bigger head, 2–3 inches?",
+   "answer": "German wheat beers and Belgian ales",
+   "wrong": [
+    "American light lagers",
+    "Stouts on nitro",
+    "None"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Pouring a bottle with yeast at the bottom, you usually…",
+   "answer": "Stop when the yeast reaches the neck, unless the style or guest wants it",
+   "wrong": [
+    "Always pour it all",
+    "Shake it first",
+    "Pour it over ice"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Pouring a nitro beer, you…",
+   "answer": "Pour three-quarters, let it settle, then top up",
+   "wrong": [
+    "Pour it all at once",
+    "Pour it with no head",
+    "Shake it first"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Which is served colder?",
+   "answer": "A light lager",
+   "wrong": [
+    "A stout",
+    "A Belgian dubbel",
+    "A strong ale"
+   ],
+   "source": "American Homebrewers Association, “Proper Beer Serving Temperatures” (homebrewersassociation.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "When to straighten the glass differs: Cicerone about two-thirds, the Brewers Association about halfway. Both are on the page.",
+  "Serving temperatures by style are the American Homebrewers Association’s, from Randy Mosher’s Tasting Beer."
+ ]
+}

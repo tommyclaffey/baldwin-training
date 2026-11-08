@@ -1,0 +1,475 @@
+{
+ "number": 6,
+ "programLevel": 1,
+ "slug": "beer-ales",
+ "title": "Ale styles",
+ "script": "Lesson 6",
+ "lead": "Pale ales and IPAs, wheat beers, Belgians, stouts and sours.",
+ "minutes": 18,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Pale ale and IPA",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Hops first: citrus, pine, tropical."
+    }
+   ],
+   "know": [
+    "Pale ale: balanced, about 4.5–6.2%.",
+    "IPA: hoppier and more bitter, about 5.5–7.5%.",
+    "Session IPA: hoppy, 5% or under."
+   ],
+   "book": "beer/ipa",
+   "source": "BJCP 2021 Style Guidelines, 18B, 21A (bjcp.org); Brewers Association, 2026 Beer Style Guidelines"
+  },
+  {
+   "name": "Hazy IPA",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Cloudy, soft and juicy, less bitter."
+    }
+   ],
+   "know": [
+    "From New England in the 2010s.",
+    "Oats and wheat, heavy dry hopping.",
+    "About 6–9% ABV."
+   ],
+   "book": "beer/hazy-ipa",
+   "source": "BJCP 2021 Style Guidelines, 21C (bjcp.org)"
+  },
+  {
+   "name": "Wheat beers",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Hazy, fizzy and light in bitterness."
+    }
+   ],
+   "know": [
+    "Hefeweizen: banana and clove from the yeast.",
+    "Witbier: coriander and orange peel.",
+    "Both have a big head."
+   ],
+   "book": "beer/wheat-beer",
+   "source": "BJCP 2021 Style Guidelines, 10A, 24A (bjcp.org)"
+  },
+  {
+   "name": "Belgian ales",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Yeast-driven: fruity, spicy, often strong."
+    }
+   ],
+   "know": [
+    "Dubbel: reddish, raisin and plum, 6–7.6%.",
+    "Tripel: pale gold, dry, strong at 7.5–9.5%.",
+    "Saison: dry, peppery farmhouse ale."
+   ],
+   "book": "beer/belgian-ale",
+   "source": "BJCP 2021 Style Guidelines, 26B, 26C, 25B (bjcp.org)"
+  },
+  {
+   "name": "Stout and porter",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Dark, roasty, and often lighter than they look."
+    }
+   ],
+   "know": [
+    "Irish stout: dry, coffee roast, 3.8–5%.",
+    "Porter: chocolate and caramel, less roasty.",
+    "Nitro makes it creamy."
+   ],
+   "book": "beer/stout",
+   "source": "BJCP 2021 Style Guidelines, 15B, 13C, 20A (bjcp.org)"
+  },
+  {
+   "name": "Sours",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Tart beers, quick or slow."
+    }
+   ],
+   "know": [
+    "Berliner weisse: light, very fizzy, lemony sour.",
+    "Gose: tart with a little salt and coriander.",
+    "Kettle sours are quick and clean; mixed-fermentation sours are funky."
+   ],
+   "book": "beer/sour",
+   "source": "BJCP 2021 Style Guidelines, 23A, 23G, 28B, 28D (bjcp.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Pale ale and IPA",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PALE ALE",
+      "line": "balanced hops, about 4.5–6.2%."
+     },
+     {
+      "big": "IPA",
+      "line": "bitter and hoppy, about 5.5–7.5%."
+     },
+     {
+      "big": "SESSION",
+      "line": "IPA flavor, 5% or under."
+     }
+    ],
+    "read": {
+     "bigIdea": "American ales that lead with hops.",
+     "where": "**American pale ale** (popularized by Sierra Nevada in **1980**) is hop-forward with **citrus, pine** and **tropical** American hops, balanced by malt: about **4.5–6.2% ABV**. **American IPA** is hoppier, more **bitter** and stronger: about **5.5–7.5%**, with a dry finish. A **session IPA** keeps the hop aroma at **5% ABV or under**.",
+     "mixup": "IPA isn’t a measure of strength. Session IPAs are hoppy but light in alcohol.",
+     "sayIt": "If you like hoppy, our IPA is citrusy and bitter. Want something lighter? Try a session IPA."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Hazy IPA",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "HAZY",
+      "line": "cloudy on purpose."
+     },
+     {
+      "big": "JUICY",
+      "line": "tropical, stone fruit, citrus."
+     },
+     {
+      "big": "SOFT",
+      "line": "less bitter than a regular IPA."
+     }
+    ],
+    "read": {
+     "bigIdea": "An IPA that’s juicy, not bitter.",
+     "where": "The **hazy** (New England) IPA came from **New England** in the **2010s**. Lots of **oats and wheat** and heavy **dry hopping** make it **cloudy**, **soft** and **juicy**: tropical, stone fruit and citrus aromas, with **less bitterness** than a regular IPA. It’s usually strong: about **6–9% ABV**.",
+     "mixup": "The haze isn’t a fault here. It’s part of the style.",
+     "sayIt": "It’s a hazy IPA: juicy and soft, not very bitter."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Wheat beers",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "HEFEWEIZEN",
+      "line": "banana and clove from the yeast."
+     },
+     {
+      "big": "WITBIER",
+      "line": "coriander and orange peel."
+     },
+     {
+      "big": "BIG HEAD",
+      "line": "fizzy, light bitterness."
+     }
+    ],
+    "read": {
+     "bigIdea": "Hazy, fizzy, easy to like.",
+     "where": "German **Hefeweizen** (Weissbier) is at least half **wheat malt**. Its yeast makes **banana** and **clove** flavors, with a thick head and very low bitterness. Belgian **witbier** uses unmalted wheat and is spiced with **coriander** and dried **orange peel**; Hoegaarden brought the style back in 1966. Both are pale, **cloudy** and highly **carbonated**.",
+     "mixup": "Hefeweizen’s banana and clove come from the yeast, not added fruit or spice. Witbier’s orange and coriander are added.",
+     "sayIt": "It’s a wheat beer: light, a little citrusy, very easy drinking."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Belgian ales",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DUBBEL",
+      "line": "reddish, raisin and plum."
+     },
+     {
+      "big": "TRIPEL",
+      "line": "pale, dry, strong: 7.5–9.5%."
+     },
+     {
+      "big": "SAISON",
+      "line": "dry, peppery farmhouse ale."
+     }
+    ],
+    "read": {
+     "bigIdea": "The yeast is the star.",
+     "where": "Belgian yeast brings **fruit** and **spice**. A **dubbel** is deep reddish-copper with **raisin** and **plum** and a dry finish (about 6–7.6%). A **tripel** is **pale gold**, spicy and fruity, very dry and fizzy, and **strong**: about **7.5–9.5%**, though it hides it. **Saison** is a dry, highly carbonated farmhouse ale from French-speaking Belgium, often **peppery**.",
+     "mixup": "A pale Belgian isn’t a light beer. A tripel can be twice as strong as a lager.",
+     "sayIt": "Heads up, it’s about 9%. It drinks lighter than it is."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Stout and porter",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "IRISH STOUT",
+      "line": "dry, coffee roast, 3.8–5%."
+     },
+     {
+      "big": "PORTER",
+      "line": "chocolate, caramel, softer roast."
+     },
+     {
+      "big": "NITRO",
+      "line": "creamy texture."
+     }
+    ],
+    "read": {
+     "bigIdea": "Dark beers aren’t heavy beers.",
+     "where": "**Irish (dry) stout** is black, with a **coffee-like roast** from roasted barley, and dry to quite bitter. On draft it’s usually poured on **nitro** for a creamy texture, and at **3.8–5% ABV** it’s **lighter in alcohol** than most IPAs. **Porter** came first, in **London** in the early 1700s: dark brown with **chocolate** and **caramel** and gentler roast. American porter is stronger and hoppier.",
+     "mixup": "Stout and porter overlap. Porter is usually softer and less roasty; stout drier and more coffee-like.",
+     "sayIt": "It’s dark, but it’s actually lighter than an IPA."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "Sours",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BERLINER WEISSE",
+      "line": "light, fizzy, lemony sour."
+     },
+     {
+      "big": "GOSE",
+      "line": "tart, a little salt and coriander."
+     },
+     {
+      "big": "KETTLE SOUR",
+      "line": "quick and clean; mixed: funky."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sour on purpose.",
+     "where": "**Berliner weisse** is very pale, low in alcohol (2.8–3.8%) and very fizzy, with a clean **lactic** sourness. **Gose** is a tart wheat beer brewed with a little **salt** and **coriander**. Most modern quick sours are **kettle soured**: the wort is soured with lactic bacteria before fermentation, for a clean, lemony tartness. **Mixed-fermentation** sours use yeast and bacteria, often in barrels, for a sour and **funky** beer.",
+     "mixup": "A sour on purpose isn’t the same as a beer gone sour from dirty lines. One is the style; the other is a fault.",
+     "sayIt": "It’s tart, almost like lemonade. Want a taste first?"
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   }
+  ]
+ },
+ "sources": "BJCP 2021 Style Guidelines, 10A, 13C, 15B, 18B, 20A, 21A, 21C, 23A, 23G, 24A, 25B, 26B, 26C, 28B, 28D (bjcp.org); Brewers Association, 2026 Beer Style Guidelines; Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "American pale ale leads with…",
+   "answer": "Hops: citrus, pine, tropical",
+   "wrong": [
+    "Roast",
+    "Banana and clove",
+    "Sourness"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 18B (bjcp.org)"
+  },
+  {
+   "q": "American IPA is about…",
+   "answer": "5.5–7.5% ABV",
+   "wrong": [
+    "2.8–4.2% ABV",
+    "10–12% ABV",
+    "0.5% ABV"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 21A (bjcp.org)"
+  },
+  {
+   "q": "A session IPA is…",
+   "answer": "Hoppy, at 5% ABV or under",
+   "wrong": [
+    "Over 8% ABV",
+    "Not hoppy",
+    "Always sour"
+   ],
+   "source": "Brewers Association, 2026 Beer Style Guidelines"
+  },
+  {
+   "q": "A hazy IPA is…",
+   "answer": "Cloudy, juicy and less bitter",
+   "wrong": [
+    "Clear and very bitter",
+    "Black and roasty",
+    "Sour"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 21C (bjcp.org)"
+  },
+  {
+   "q": "Where did the hazy IPA come from?",
+   "answer": "New England, in the 2010s",
+   "wrong": [
+    "Belgium, in the 1600s",
+    "Munich, in 1894",
+    "London, in the 1700s"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 21C (bjcp.org)"
+  },
+  {
+   "q": "What makes a hazy IPA cloudy?",
+   "answer": "Oats, wheat and heavy dry hopping",
+   "wrong": [
+    "Dirty lines",
+    "Old beer",
+    "Light"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 21C (bjcp.org)"
+  },
+  {
+   "q": "Hefeweizen’s banana and clove come from…",
+   "answer": "The yeast",
+   "wrong": [
+    "Added fruit",
+    "Added spice",
+    "The hops"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 10A (bjcp.org)"
+  },
+  {
+   "q": "Witbier is spiced with…",
+   "answer": "Coriander and orange peel",
+   "wrong": [
+    "Cinnamon and clove",
+    "Salt",
+    "Coffee"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 24A (bjcp.org)"
+  },
+  {
+   "q": "Wheat beers usually have…",
+   "answer": "A big head and low bitterness",
+   "wrong": [
+    "No head",
+    "High bitterness",
+    "A black color"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 10A, 24A (bjcp.org)"
+  },
+  {
+   "q": "A Belgian tripel is…",
+   "answer": "Pale gold, dry and strong",
+   "wrong": [
+    "Black and light",
+    "Sour and salty",
+    "Low in alcohol"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 26C (bjcp.org)"
+  },
+  {
+   "q": "A dubbel tastes of…",
+   "answer": "Raisin and plum",
+   "wrong": [
+    "Lemon and salt",
+    "Pine and citrus",
+    "Coffee and roast"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 26B (bjcp.org)"
+  },
+  {
+   "q": "Saison is…",
+   "answer": "A dry, peppery farmhouse ale",
+   "wrong": [
+    "A sweet stout",
+    "A light lager",
+    "A hazy IPA"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 25B (bjcp.org)"
+  },
+  {
+   "q": "Irish stout’s coffee-like flavor comes from…",
+   "answer": "Roasted barley",
+   "wrong": [
+    "Coffee beans",
+    "Dark hops",
+    "Yeast"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 15B (bjcp.org)"
+  },
+  {
+   "q": "Compared with most IPAs, a dry Irish stout is…",
+   "answer": "Lower in alcohol",
+   "wrong": [
+    "Much stronger",
+    "Always sweeter",
+    "Hoppier"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 15B (bjcp.org)"
+  },
+  {
+   "q": "Compared with stout, porter is usually…",
+   "answer": "Softer and less roasty",
+   "wrong": [
+    "More sour",
+    "Paler",
+    "Much stronger"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 13C, 20A (bjcp.org)"
+  },
+  {
+   "q": "Berliner weisse is…",
+   "answer": "Light, fizzy and lemony sour",
+   "wrong": [
+    "Strong and black",
+    "Bitter and hoppy",
+    "Smoky"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 23A (bjcp.org)"
+  },
+  {
+   "q": "Gose is brewed with…",
+   "answer": "A little salt and coriander",
+   "wrong": [
+    "Coffee",
+    "Honey",
+    "Corn"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 23G (bjcp.org)"
+  },
+  {
+   "q": "Kettle souring makes a sour that is…",
+   "answer": "Quick and clean",
+   "wrong": [
+    "Funky and barrel-aged",
+    "Sweet",
+    "Bitter"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 28D (bjcp.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Session IPA is not a BJCP 2021 style; its range is from the Brewers Association 2026 guidelines.",
+  "ABV ranges are guideline ranges; a brand can fall outside them."
+ ]
+}

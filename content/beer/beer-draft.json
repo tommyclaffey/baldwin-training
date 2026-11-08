@@ -1,0 +1,339 @@
+{
+ "number": 2,
+ "programLevel": 1,
+ "slug": "beer-draft",
+ "title": "Draft systems",
+ "script": "Lesson 2",
+ "lead": "What happens between the keg and the faucet, and the parts you can look after.",
+ "minutes": 12,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Keg to faucet",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Gas pushes beer from the keg, through the lines, to the faucet."
+    }
+   ],
+   "know": [
+    "Keg, coupler, lines, faucet, gas and regulator.",
+    "The coupler lets gas in and beer out.",
+    "Gas is beverage-grade CO2 or a CO2 and nitrogen blend."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "name": "Cold, every step",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "38°F from keg to glass."
+    }
+   ],
+   "know": [
+    "Store and serve kegs at or below 38°F.",
+    "A few degrees warmer and it foams.",
+    "Give a new keg 24 hours in the cooler."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Clean lines",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Lines are cleaned at least every 14 days."
+    }
+   ],
+   "know": [
+    "Faucets and couplers are cleaned on the same schedule.",
+    "An acid clean every three months.",
+    "Dirty lines taste of butter, sour milk or vinegar."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "What you do, and don’t touch",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Pour well, rinse at close, leave the gas to the pros."
+    }
+   ],
+   "know": [
+    "Never touch the regulator: a trained person sets the pressure.",
+    "Never push a keg with compressed air.",
+    "Rinse faucets and drip trays with water at close."
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org); Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Keg to faucet",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "GAS",
+      "line": "pushes the beer; it doesn’t pump."
+     },
+     {
+      "big": "COUPLER",
+      "line": "gas in, beer out."
+     },
+     {
+      "big": "REGULATOR",
+      "line": "sets the pressure."
+     }
+    ],
+    "read": {
+     "bigIdea": "Gas pressure moves the beer.",
+     "where": "A draft system is a **keg**, a **coupler**, **beer lines**, a **faucet**, a **gas** source and **regulators**. The coupler locks onto the keg: **gas goes in** and **beer comes out**. The gas pushes beer up the keg’s spear, along the lines and out the faucet. A **regulator** controls the pressure, and the gas must be **beverage grade**: CO2, or a CO2 and nitrogen blend for some systems.",
+     "stopsTitle": "Keg to glass",
+     "stops": [
+      {
+       "name": "Gas and regulator",
+       "text": "Set **pressure** pushes the beer."
+      },
+      {
+       "name": "Coupler",
+       "text": "Gas **in**, beer **out**."
+      },
+      {
+       "name": "Lines",
+       "text": "Carry beer to the bar, kept **cold**."
+      },
+      {
+       "name": "Faucet",
+       "text": "Where you pour."
+      }
+     ],
+     "mixup": "The gas isn’t just carbonation. It’s what moves the beer.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Cold, every step",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "38°F",
+      "line": "or colder for every keg."
+     },
+     {
+      "big": "WARM",
+      "line": "by a few degrees = foam."
+     },
+     {
+      "big": "24 HOURS",
+      "line": "in the cooler before tapping."
+     }
+    ],
+    "read": {
+     "bigIdea": "Warm beer foams.",
+     "where": "Cicerone’s standard is **38°F** for the cooler and the system. The Brewers Association says every keg should be **at or below 38°F** when it’s served; even a few degrees warmer causes **foaming**. A keg fresh off the truck should sit in the cooler **at least 24 hours** before it’s tapped.",
+     "mixup": "Foaming isn’t usually the gas. Check the temperature, the coupler, a kinked hose, then call the draft pro.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Clean lines",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "14 DAYS",
+      "line": "line cleaning, at least."
+     },
+     {
+      "big": "3 MONTHS",
+      "line": "an acid clean for beer stone."
+     },
+     {
+      "big": "BUTTERY",
+      "line": "or sour beer = dirty lines."
+     }
+    ],
+    "read": {
+     "bigIdea": "Clean lines or the beer goes bad.",
+     "where": "The Brewers Association says draft lines are cleaned **at least every 14 days**, with **faucets** taken apart and **couplers** scrubbed on the same schedule, and an **acid clean every three months**. Skipped cleanings grow bacteria: the most common sign is a **buttery** flavor (diacetyl); others are **sour milk** and **vinegar**. Never pour while lines are being cleaned: the chemicals are hazardous.",
+     "mixup": "A buttery beer on draft is usually the **lines**, not the brewery.",
+     "sayIt": "Let me pour you a fresh one and have our lines checked."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "What you do, and don’t touch",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "REGULATOR",
+      "line": "hands off: a trained person sets it."
+     },
+     {
+      "big": "NO AIR",
+      "line": "never push a keg with compressed air."
+     },
+     {
+      "big": "RINSE",
+      "line": "faucets and drip trays at close."
+     }
+    ],
+    "read": {
+     "bigIdea": "Know your part of the system.",
+     "where": "Gas pressure is set by a **draft-trained** person only: don’t turn the regulator to fix a pour. Never pressurize a keg with **compressed air** (a hand party pump pushes air in and the beer won’t last a day). Your part: **pour well**, keep the **faucet out of the beer**, and at close **rinse faucets and drip trays** with fresh water and let them air dry.",
+     "mixup": "Turning the gas up doesn’t fix a foamy pour. It usually makes it worse.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "What moves beer from the keg to the faucet?",
+   "answer": "Gas pressure",
+   "wrong": [
+    "A pump in the faucet",
+    "Gravity only",
+    "The coupler’s motor"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "What does the coupler do?",
+   "answer": "Lets gas in and beer out of the keg",
+   "wrong": [
+    "Cools the beer",
+    "Adds flavor",
+    "Measures the pour"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "What sets the gas pressure?",
+   "answer": "The regulator",
+   "wrong": [
+    "The faucet",
+    "The drip tray",
+    "The glass rinser"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The standard draft temperature is…",
+   "answer": "38°F",
+   "wrong": [
+    "45°F",
+    "55°F",
+    "30°F"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "A keg a few degrees warmer than 38°F will…",
+   "answer": "Foam",
+   "wrong": [
+    "Taste skunky",
+    "Pour faster and clearer",
+    "Lose its color"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "How long should a new keg sit in the cooler before tapping?",
+   "answer": "At least 24 hours",
+   "wrong": [
+    "10 minutes",
+    "1 hour",
+    "No time at all"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "How often are draft lines cleaned?",
+   "answer": "At least every 14 days",
+   "wrong": [
+    "Once a year",
+    "Once a quarter",
+    "Only when they taste off"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The most common dirty-line flavor is…",
+   "answer": "Butter (diacetyl)",
+   "wrong": [
+    "Skunk",
+    "Cardboard",
+    "Green apple"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Vinegar or sour-milk flavors on draft usually mean…",
+   "answer": "Dirty lines",
+   "wrong": [
+    "Fresh beer",
+    "Too much light",
+    "The glass is too cold"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Who sets or changes the gas pressure?",
+   "answer": "A draft-trained professional",
+   "wrong": [
+    "Any bartender on shift",
+    "The guest",
+    "Whoever opens the bar"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "Should you ever push a keg with compressed air?",
+   "answer": "Never",
+   "wrong": [
+    "Only for parties",
+    "Yes, it’s the same as CO2",
+    "Only on weekends"
+   ],
+   "source": "Cicerone, US Certified Beer Server Syllabus v6.0, 2024 (cicerone.org)"
+  },
+  {
+   "q": "What happens to faucets and drip trays at close?",
+   "answer": "Rinsed with fresh water and air dried",
+   "wrong": [
+    "Left as they are",
+    "Wiped with a bar rag",
+    "Soaked in beer"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Our own cleaning schedule and who services the system: GM to confirm."
+ ]
+}
