@@ -1,0 +1,320 @@
+{
+ "number": 4,
+ "programLevel": 2,
+ "slug": "beer-british",
+ "title": "British and Irish ales",
+ "script": "Lesson 4",
+ "lead": "Bitters, milds and browns, Scottish ales and barley wine, and the cask ale they’re poured from.",
+ "minutes": 16,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Bitters",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "England’s everyday draft ales."
+    }
+   ],
+   "know": [
+    "Ordinary 3.2–3.8%, Best 3.8–4.6%, Strong 4.6–6.2%.",
+    "Bitterness leads, malt balances.",
+    "“ESB” is a Fuller’s beer name in England."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 11A–11C (bjcp.org)"
+  },
+  {
+   "name": "English IPA, mild and brown",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The original IPA and two malty classics."
+    }
+   ],
+   "know": [
+    "English IPA: drier and less hoppy than American.",
+    "Dark mild: 3–3.8%, malty, made for drinking in quantity.",
+    "Brown ale: nutty, caramel, no roast."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 12C, 13A, 13B (bjcp.org)"
+  },
+  {
+   "name": "Scotland, Ireland and barley wine",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Malty, and stronger as the names climb."
+    }
+   ],
+   "know": [
+    "Scottish ales: malty, low hops; 60/- to 80/- is strength.",
+    "Wee heavy: rich, 6.5–10%.",
+    "English barley wine 8–12%; Irish red, soft toffee."
+   ],
+   "source": "BJCP 2021 Style Guidelines, 14, 15A, 17C, 17D (bjcp.org)"
+  },
+  {
+   "name": "Cask ale",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Real ale: conditioned and served from the cask."
+    }
+   ],
+   "know": [
+    "Live yeast, no added gas.",
+    "Cellar temperature, 52–56°F.",
+    "Sell a cask within three days of tapping."
+   ],
+   "source": "CAMRA branch guide, “What Is Real Ale?”; Cask Marque, Cask Cellar Card (cask-marque.co.uk); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Bitters",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ORDINARY",
+      "line": "3.2–3.8%."
+     },
+     {
+      "big": "BEST",
+      "line": "3.8–4.6%."
+     },
+     {
+      "big": "STRONG",
+      "line": "4.6–6.2% (ESB is Fuller’s)."
+     }
+    ],
+    "read": {
+     "bigIdea": "England’s pub ale, in three strengths.",
+     "where": "Bitter grew out of English pale ale as a **draft** beer. It’s amber, with **bitterness** leading and malt in balance, and traditionally served fresh from the **cask**. BJCP gives three: **Ordinary** (3.2–3.8%), **Best** (3.8–4.6%, often the brewery’s finest, like Fuller’s London Pride) and **Strong** (4.6–6.2%). **ESB** is a **Fuller’s** trademark in England; in the US it’s used loosely for a malty, bitter British-style ale.",
+     "mixup": "Bitter isn’t harsh. It’s a gentle, low-alcohol session ale; the name just says hops lead.",
+     "sayIt": "It’s an English bitter: low in alcohol, malty, with a gentle bite."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "English IPA, mild and brown",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ENGLISH IPA",
+      "line": "dry, earthy hops, 5–7.5%."
+     },
+     {
+      "big": "MILD",
+      "line": "dark, malty, 3–3.8%."
+     },
+     {
+      "big": "BROWN",
+      "line": "nutty, caramel, no roast."
+     }
+    ],
+    "read": {
+     "bigIdea": "The original IPA and the malty side of England.",
+     "where": "**English IPA** began as a pale London ale shipped to India in the late 1700s; Burton brewers remade it in **1823** with their sulfate water. It’s **drier** and less hop-intense than American IPA, with **earthy** English hops. **Dark mild** (3–3.8%) is malty and made for a long session; “mild” first meant **young**, unaged beer. **British brown ale** (Newcastle, Samuel Smith’s Nut Brown) is **nutty** and **caramel** with none of porter’s roast.",
+     "mixup": "Mild isn’t a weak porter. BJCP notes there’s no historical link between the two.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Scotland, Ireland and barley wine",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SHILLINGS",
+      "line": "60/-, 70/-, 80/-: higher = stronger."
+     },
+     {
+      "big": "WEE HEAVY",
+      "line": "rich, 6.5–10%."
+     },
+     {
+      "big": "BARLEY WINE",
+      "line": "England’s strongest, 8–12%."
+     }
+    ],
+    "read": {
+     "bigIdea": "The malty end of the British Isles.",
+     "where": "**Scottish ales** are weaker, sweeter, darker and less hoppy than English ones, with no smoke. The **shilling** names (60/-, 70/-, 80/-) come from an old cask price; now a higher number just means **stronger**. **Wee heavy** (strong Scotch ale) is rich **caramel and toffee**, 6.5–10%. **English barley wine** (8–12%) is the strongest English ale, made for sipping and aging. **Irish red** (3.8–5%) is easy, with **soft toffee** and a touch of roast.",
+     "mixup": "Scotch ale shouldn’t taste smoky. Peat smoke belongs to Scotch whisky, not its beer.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Cask ale",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "REAL ALE",
+      "line": "finished in the cask, live yeast, no added gas."
+     },
+     {
+      "big": "52–56°F",
+      "line": "cellar temperature, in the cellar and the glass."
+     },
+     {
+      "big": "3 DAYS",
+      "line": "to sell a tapped cask."
+     }
+    ],
+    "read": {
+     "bigIdea": "A living beer, served by hand.",
+     "where": "**Real ale** (cask ale) is unfiltered, unpasteurized beer that finishes fermenting in the **cask** it’s served from, with **no added gas**. Keg beer is filtered and pasteurized, then needs CO2 added. Cask Marque’s standards: keep the cellar and the beer at **52–56°F**, vent with a soft peg, taste before selling, and **sell a cask within three days**, because every pint drawn lets air in. It’s poured by **gravity** or a **beer engine** (hand pump), and should be lively, never flat.",
+     "mixup": "Cask ale isn’t warm beer. It’s cellar temperature, cooler than a room.",
+     "sayIt": "It’s a cask ale: hand-pulled, softer bubbles, a little cooler than room temperature."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "BJCP 2021 Style Guidelines, 11A, 11B, 11C, 12C, 13A, 13B, 14, 15A, 17C, 17D (bjcp.org); CAMRA branch guide, “What Is Real Ale?”; Cask Marque, Cask Cellar Card (cask-marque.co.uk); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Ordinary bitter is about…",
+   "answer": "3.2–3.8% ABV",
+   "wrong": [
+    "8–10% ABV",
+    "6–7% ABV",
+    "0.5% ABV"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 11A (bjcp.org)"
+  },
+  {
+   "q": "In bitter, what leads?",
+   "answer": "Bitterness, balanced by malt",
+   "wrong": [
+    "Sourness",
+    "Smoke",
+    "Banana"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 11A (bjcp.org)"
+  },
+  {
+   "q": "In England, ESB is…",
+   "answer": "A Fuller’s beer name",
+   "wrong": [
+    "A legal style",
+    "A Belgian ale",
+    "A lager"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 11C (bjcp.org)"
+  },
+  {
+   "q": "Compared with American IPA, English IPA is…",
+   "answer": "Drier and less hop-intense",
+   "wrong": [
+    "Hazier and juicier",
+    "Sweeter and stronger",
+    "Sour"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 12C (bjcp.org)"
+  },
+  {
+   "q": "“Mild” first meant…",
+   "answer": "Young, unaged beer",
+   "wrong": [
+    "Low in bitterness only",
+    "A weak porter",
+    "A pale lager"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 13A (bjcp.org)"
+  },
+  {
+   "q": "British brown ale tastes…",
+   "answer": "Nutty and caramel, no roast",
+   "wrong": [
+    "Smoky",
+    "Sour",
+    "Very hoppy"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 13B (bjcp.org)"
+  },
+  {
+   "q": "On Scottish ales, a higher shilling number means…",
+   "answer": "Stronger",
+   "wrong": [
+    "Older",
+    "Smokier",
+    "Cheaper"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 14 (bjcp.org)"
+  },
+  {
+   "q": "Wee heavy is…",
+   "answer": "A rich, strong Scotch ale",
+   "wrong": [
+    "A light lager",
+    "A sour wheat beer",
+    "A hazy IPA"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 17C (bjcp.org)"
+  },
+  {
+   "q": "English barley wine is about…",
+   "answer": "8–12% ABV",
+   "wrong": [
+    "3–4% ABV",
+    "5% ABV",
+    "15–20% ABV"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 17D (bjcp.org)"
+  },
+  {
+   "q": "Real (cask) ale is…",
+   "answer": "Finished in the cask with live yeast, no added gas",
+   "wrong": [
+    "Filtered and force-carbonated",
+    "Pasteurized in cans",
+    "Served on nitro"
+   ],
+   "source": "CAMRA branch guide, “What Is Real Ale?”"
+  },
+  {
+   "q": "Cask ale is served at about…",
+   "answer": "52–56°F",
+   "wrong": [
+    "33°F",
+    "70°F",
+    "38°F"
+   ],
+   "source": "Cask Marque, Cask Cellar Card (cask-marque.co.uk)"
+  },
+  {
+   "q": "Once tapped, a cask should sell within…",
+   "answer": "Three days",
+   "wrong": [
+    "A month",
+    "Two weeks",
+    "A year"
+   ],
+   "source": "Cask Marque, Cask Cellar Card (cask-marque.co.uk)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "CAMRA’s own definition page didn’t load; a CAMRA branch page was used."
+ ]
+}

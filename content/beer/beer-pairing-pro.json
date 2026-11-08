@@ -1,0 +1,394 @@
+{
+ "number": 9,
+ "programLevel": 2,
+ "slug": "beer-pairing-pro",
+ "title": "Pairing in depth, and the next exam",
+ "script": "Lesson 9",
+ "lead": "Cheese, cooking with beer and beer dinners, then what the Certified Cicerone exam asks.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "How flavors meet",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Complement, contrast, cut."
+    }
+   ],
+   "know": [
+    "Complement: clove-spiced curry with a Dunkelweizen.",
+    "Contrast: gueuze’s acid makes mussels taste richer.",
+    "Cut: bubbles, sourness, bitterness lift fat."
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "name": "Beer and cheese",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Match intensity, mildest first."
+    }
+   ],
+   "know": [
+    "Fresh cheese with wheat beers; blue cheese with IPA.",
+    "Aged cheddar with stout; Brie with golden ales.",
+    "Serve cheese at 55–65°F."
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "name": "Cooking with beer and beer dinners",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Heat changes beer; dinners build in intensity."
+    }
+   ],
+   "know": [
+    "Reducing beer makes bitterness climb.",
+    "Use hoppy beer uncooked, like in a dressing.",
+    "Dinner pours: 3–4 oz per course, build up."
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "name": "Describing beer",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Talk flavor, not style names."
+    }
+   ],
+   "know": [
+    "Crisp, fruity, roasty, tart: guests relate.",
+    "Ask what they like, then pick.",
+    "Describe food precisely too."
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course; Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "name": "The Certified Cicerone exam",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Written online, tasting and demo in person."
+    }
+   ],
+   "know": [
+    "Needs a passed Certified Beer Server.",
+    "Pass: 80% overall, 70% on tasting.",
+    "Plan six months to two years of study."
+   ],
+   "source": "Cicerone, Certified Cicerone exam page and “What to Expect” (cicerone.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "How flavors meet",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "COMPLEMENT",
+      "line": "shared flavors resonate."
+     },
+     {
+      "big": "CONTRAST",
+      "line": "opposites make each other stand out."
+     },
+     {
+      "big": "CUT",
+      "line": "bubbles, acid, bitterness lift fat."
+     }
+    ],
+    "read": {
+     "bigIdea": "Three ways beer and food work.",
+     "where": "Cicerone’s examples: **complement**, where shared flavors resonate (a clove-spiced curry with a **Dunkelweizen**’s clove); **contrast**, where an opposite makes the other stand out (a **gueuze**’s acidity makes **mussels** taste richer and sweeter); and **cut**, where **carbonation**, **sourness** and **bitterness** lift fat off the palate. More detail: bitterness can turn **metallic** with oily fish; **roast** suits chocolate and char; **salt** makes sweetness seem stronger.",
+     "mixup": "Bitterness doesn’t suit everything: with oily fish it can taste metallic.",
+     "sayIt": "The bubbles in this one will cut right through the richness."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Beer and cheese",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "INTENSITY",
+      "line": "young cheese, delicate beer."
+     },
+     {
+      "big": "BLUE + IPA",
+      "line": "and aged cheddar + stout."
+     },
+     {
+      "big": "55–65°F",
+      "line": "let cheese warm first."
+     }
+    ],
+    "read": {
+     "bigIdea": "Match the cheese’s strength with the beer’s.",
+     "where": "The Brewers Association and American Cheese Society: **carbonation**, acidity and bitterness cut through fat, and **malt** complements creamy, nutty, caramel flavors. Match **intensity**: delicate beers with **young** cheese, bold beers with **aged** cheese. Starting points: fresh cheese with **wheat** beers; **blue** cheese with **IPA**; aged **cheddar** with **stout**; **Brie** with golden ales; washed-rind cheeses with **Belgian** ales. Serve cheese at **55–65°F**, mildest to strongest.",
+     "mixup": "Cold cheese from the fridge has little flavor. Let it warm up.",
+     "sayIt": "With the blue cheese, an IPA is a great match."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Cooking with beer and beer dinners",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "REDUCE",
+      "line": "and bitterness climbs."
+     },
+     {
+      "big": "UNCOOKED",
+      "line": "keeps hop aroma: dressings."
+     },
+     {
+      "big": "3–4 OZ",
+      "line": "per course; build intensity."
+     }
+    ],
+    "read": {
+     "bigIdea": "Heat changes beer.",
+     "where": "Reducing beer **concentrates** what doesn’t evaporate: **bitterness** climbs and can turn harsh, malt sweetness **caramelizes**, and roast gets more burnt; **hop aroma** and fruity esters fade. So use hoppy beer **uncooked** (an IPA vinaigrette) and malty beer in braises. For **beer dinners**, the Brewers Association suggests a 4–6 oz welcome beer, then **3–4 oz** per course, building **intensity** as the meal goes; past about **10 beers** most palates are tired.",
+     "mixup": "A very hoppy IPA in a long braise turns bitter. Pick a malty beer for the pot.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Describing beer",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FLAVOR FIRST",
+      "line": "not the style name."
+     },
+     {
+      "big": "ASK",
+      "line": "what they like, then choose."
+     },
+     {
+      "big": "PRECISE",
+      "line": "describe food the same way."
+     }
+    ],
+    "read": {
+     "bigIdea": "Guests understand flavors, not styles.",
+     "where": "The Brewers Association suggests starting with **flavor words** guests know: **crisp, clean, bitter, fruity, tart, roasty**, rather than “IPA” or “stout”. **Ask** what they usually like, then pick. It groups beers into flavor families: **Clean & Crisp**, **Malty & Sweet**, **Fruity & Spicy**, **Sour & Funky**, **Hoppy & Bitter**, **Dark & Roasty**. Cicerone asks for the same precision with food: not just “seared scallop”, but a caramelized, **toffee-like** sear with a sweet center.",
+     "mixup": "Dark doesn’t mean heavy, and hoppy doesn’t mean strong. Describe what’s in the glass.",
+     "sayIt": "Do you like something crisp and clean, or something with more flavor, like fruity or roasty?"
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "The Certified Cicerone exam",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PREREQ",
+      "line": "a passed Certified Beer Server."
+     },
+     {
+      "big": "80% / 70%",
+      "line": "overall / tasting."
+     },
+     {
+      "big": "6 MO–2 YRS",
+      "line": "of study, by Cicerone’s estimate."
+     }
+    ],
+    "read": {
+     "bigIdea": "The next step, if you want it.",
+     "where": "The **Certified Cicerone** exam needs a passed **Certified Beer Server** and legal drinking age. The **written** part (short answer and essay) is taken **online**, three hours, closed book and proctored. The **tasting** (13 samples: off-flavors, style, fitness to sell) and a short **demonstration** are **in person**. You need **80% overall** and at least **70% on tasting**. Cicerone suggests about **six months** of study for an experienced pro, **one to two years** for many.",
+     "mixup": "Our Beer Specialist certificate is the restaurant’s. The Certified Cicerone title only comes from Cicerone’s exam.",
+     "sayIt": ""
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "sources": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); Brewers Association / CraftBeer.com, Beer & Food Course; Cicerone, Certified Cicerone exam page and “What to Expect” (cicerone.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Gueuze with mussels is an example of…",
+   "answer": "Contrast: acid makes the mussels taste richer",
+   "wrong": [
+    "Complement",
+    "Cut by bitterness only",
+    "A bad pairing"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "q": "Which of these cuts fat?",
+   "answer": "Carbonation, sourness and bitterness",
+   "wrong": [
+    "Sweetness",
+    "Warm temperature",
+    "Low carbonation"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "q": "Bitter beer with oily fish can taste…",
+   "answer": "Metallic",
+   "wrong": [
+    "Sweeter",
+    "Creamy",
+    "Smoky"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "q": "A classic match for blue cheese is…",
+   "answer": "IPA",
+   "wrong": [
+    "Light lager",
+    "Kölsch",
+    "Berliner weisse"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "Cheese should be served at about…",
+   "answer": "55–65°F",
+   "wrong": [
+    "Straight from the fridge",
+    "38°F",
+    "90°F"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "With cheese, delicate beers go with…",
+   "answer": "Young cheeses",
+   "wrong": [
+    "Aged cheeses",
+    "Blue cheeses",
+    "Any cheese"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "When you reduce beer in cooking, bitterness…",
+   "answer": "Climbs and can turn harsh",
+   "wrong": [
+    "Disappears",
+    "Stays the same",
+    "Turns sweet"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "q": "To keep an IPA’s hop aroma in a dish, use it…",
+   "answer": "Uncooked, like in a dressing",
+   "wrong": [
+    "In a long braise",
+    "Boiled down",
+    "Frozen"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "q": "At a beer dinner, each course usually gets…",
+   "answer": "3–4 oz",
+   "wrong": [
+    "A full pint",
+    "1 oz",
+    "A pitcher"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "The Brewers Association suggests talking to guests about…",
+   "answer": "Flavors like crisp, fruity, roasty",
+   "wrong": [
+    "Style numbers",
+    "IBU only",
+    "Price only"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "Which is one of the BA’s flavor families?",
+   "answer": "Dark & Roasty",
+   "wrong": [
+    "Cold & Cheap",
+    "Old & Rare",
+    "Tall & Short"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "Before choosing a beer for a guest, you…",
+   "answer": "Ask what they usually like",
+   "wrong": [
+    "Pick the strongest",
+    "Pick the most expensive",
+    "Pick the newest"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "To take the Certified Cicerone exam you need…",
+   "answer": "A passed Certified Beer Server",
+   "wrong": [
+    "Our Level 2 certificate",
+    "Nothing",
+    "A brewing degree"
+   ],
+   "source": "Cicerone, Certified Cicerone exam page and “What to Expect” (cicerone.org)"
+  },
+  {
+   "q": "Certified Cicerone pass marks are…",
+   "answer": "80% overall and 70% on tasting",
+   "wrong": [
+    "60% overall",
+    "75% on everything",
+    "100% on tasting"
+   ],
+   "source": "Cicerone, Certified Cicerone exam page and “What to Expect” (cicerone.org)"
+  },
+  {
+   "q": "Where is the Certified Cicerone written exam taken?",
+   "answer": "Online, proctored",
+   "wrong": [
+    "Only in Chicago",
+    "At a brewery",
+    "By mail"
+   ],
+   "source": "Cicerone, Certified Cicerone exam page and “What to Expect” (cicerone.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Certified Cicerone price differs between Cicerone’s pages ($450 on the main page, $400 on an older help article); the page gives no price."
+ ]
+}

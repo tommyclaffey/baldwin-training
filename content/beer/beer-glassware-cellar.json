@@ -1,0 +1,339 @@
+{
+ "number": 2,
+ "programLevel": 2,
+ "slug": "beer-glassware-cellar",
+ "title": "Glassware and cellaring",
+ "script": "Lesson 2",
+ "lead": "The right glass for each beer, and the few beers that get better with age.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Why the glass matters",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Shape changes aroma, foam and temperature."
+    }
+   ],
+   "know": [
+    "Stronger beers go in smaller glasses.",
+    "A bowl gathers aroma; a stem keeps hands off.",
+    "Leave room for the head."
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "name": "The glasses",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Each style has its traditional glass."
+    }
+   ],
+   "know": [
+    "Weizen: tall, for wheat beer’s big head.",
+    "Tulip, goblet, snifter: strong and complex beers.",
+    "Stange: Kölsch. Nonic pint: English ales."
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer); Craft Beer & Brewing (beerandbrewing.com)"
+  },
+  {
+   "name": "What ages",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Strong, sour or smoked."
+    }
+   ],
+   "know": [
+    "Barley wine, imperial stout, old ale, strong dark Belgians, lambic.",
+    "Never IPAs or fresh wheat beers.",
+    "Dark beers usually age better than pale."
+   ],
+   "source": "Craft Beer & Brewing (beerandbrewing.com); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "name": "How to cellar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Cool, dark and upright."
+    }
+   ],
+   "know": [
+    "About 52–55°F, in the dark.",
+    "Upright, so sediment settles.",
+    "Bottle-conditioned beers age best."
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Why the glass matters",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "STRONGER",
+      "line": "beer, smaller glass."
+     },
+     {
+      "big": "BOWL",
+      "line": "gathers the aroma."
+     },
+     {
+      "big": "STEM",
+      "line": "keeps the hand from warming it."
+     }
+    ],
+    "read": {
+     "bigIdea": "The glass is part of the beer.",
+     "where": "Cicerone’s rules: **stronger** beers go in **smaller** glasses, always leave room for a proper **head**, and the shape follows the style’s tradition. Shape changes the drink: a **bowl** collects aroma and lets you swirl, a thin **flared rim** delivers the beer cleanly, and a **stem** keeps the hand from warming it. In a pinch, a **white wine glass** works for most specialty beers.",
+     "mixup": "A thick shaker pint is easy to stack, but it does nothing for aroma or head.",
+     "sayIt": "It’s about 10%, so it comes in a smaller glass."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The glasses",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WEIZEN",
+      "line": "tall, room for the big head."
+     },
+     {
+      "big": "TULIP, SNIFTER",
+      "line": "strong and complex beers."
+     },
+     {
+      "big": "STANGE, NONIC",
+      "line": "Kölsch; English ales."
+     }
+    ],
+    "read": {
+     "bigIdea": "Know the glass for each style.",
+     "where": "The **weizen** glass is tall with extra headspace for wheat beer’s big foam (usually half a liter). The **tulip**, a stemmed glass with a wide bowl and flared lip, suits rich, strong beers. A **goblet** or **chalice** is the Trappist glass. The **snifter** is for the strongest: barley wine, imperial stout. The **stange** (about 200 ml) is the Kölsch glass. The **nonic pint**, with its bulge, is the English pub glass for bitter, pale ale and stout. A **flute** suits lambic and gueuze.",
+     "stopsTitle": "Glass by style",
+     "stops": [
+      {
+       "name": "Weizen",
+       "text": "Hefeweizen, **weizenbock**."
+      },
+      {
+       "name": "Tulip, goblet",
+       "text": "Belgian strong ales, **Trappist** ales."
+      },
+      {
+       "name": "Snifter",
+       "text": "**Barley wine**, imperial stout."
+      },
+      {
+       "name": "Stange",
+       "text": "**Kölsch**, Altbier."
+      }
+     ],
+     "mixup": "A pilsner glass is tall and straight; a weizen glass curves out at the top for foam.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "What ages",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "STRONG",
+      "line": "barley wine, imperial stout, old ale."
+     },
+     {
+      "big": "SOUR",
+      "line": "lambic and gueuze keep evolving."
+     },
+     {
+      "big": "NEVER",
+      "line": "IPAs or fresh wheat beers."
+     }
+    ],
+    "read": {
+     "bigIdea": "Most beer won’t improve. A few will.",
+     "where": "A beer worth keeping should be **strong**, **sour** or **smoked**: alcohol, acid and smoke protect it. Good candidates: **barley wine**, **imperial stout**, old ale, strong **dark Belgian** ales, **lambic** and **gueuze**. Dark beers usually age better than pale. **Don’t** age **hop-forward** beers (Russian River prints “do not age” on Pliny the Elder) or fresh **wheat** beers: their best flavors fade.",
+     "mixup": "“Vintage” on a beer list means the year it was brewed, and only for beers built to age.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "How to cellar",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "52–55°F",
+      "line": "cool, not cold."
+     },
+     {
+      "big": "UPRIGHT",
+      "line": "and in the dark."
+     },
+     {
+      "big": "24 HOURS",
+      "line": "standing before you pour an old bottle."
+     }
+    ],
+    "read": {
+     "bigIdea": "Cool, dark, upright.",
+     "where": "Keep aging beer at about **52–55°F**, in the **dark**, **upright**. Crown caps and Champagne-style corks don’t need the bottle on its side. Stand an old bottle **upright for 24 hours** before opening and pour carefully off the sediment. Over time, bready malt turns **nutty**, then **toffee** and **sherry**; hops **fade**. Signs it’s past its best: thin body, **cardboard**, or lost carbonation. **Bottle-conditioned** beers, with live yeast, age best.",
+     "mixup": "Wine lies down; beer stands up.",
+     "sayIt": "This is the 2023 bottle: rounder and more toffee than the new one."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer); Craft Beer & Brewing (beerandbrewing.com); BJCP 2021 Style Guidelines, 5B (bjcp.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Cicerone’s rule for glass size:",
+   "answer": "Stronger beers go in smaller glasses",
+   "wrong": [
+    "Every beer gets a pint",
+    "Stronger beers go in bigger glasses",
+    "Size doesn’t matter"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "q": "What does a bowl-shaped glass do?",
+   "answer": "Collects aroma and allows swirling",
+   "wrong": [
+    "Keeps beer colder",
+    "Removes the head",
+    "Adds carbonation"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Why a stem on a beer glass?",
+   "answer": "Keeps the hand from warming the beer",
+   "wrong": [
+    "It looks fancy only",
+    "It holds more beer",
+    "It adds foam"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Which glass is made for wheat beer’s big head?",
+   "answer": "The weizen glass",
+   "wrong": [
+    "The snifter",
+    "The stange",
+    "The nonic pint"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Which glass is traditional for Kölsch?",
+   "answer": "The stange",
+   "wrong": [
+    "The weizen glass",
+    "The chalice",
+    "The snifter"
+   ],
+   "source": "BJCP 2021 Style Guidelines, 5B (bjcp.org)"
+  },
+  {
+   "q": "A snifter is used for…",
+   "answer": "The strongest beers, like barley wine",
+   "wrong": [
+    "Light lager",
+    "Kölsch",
+    "Session IPA"
+   ],
+   "source": "Craft Beer & Brewing (beerandbrewing.com)"
+  },
+  {
+   "q": "A beer worth cellaring is usually…",
+   "answer": "Strong, sour or smoked",
+   "wrong": [
+    "Hoppy and fresh",
+    "Light and pale",
+    "Any canned beer"
+   ],
+   "source": "Craft Beer & Brewing (beerandbrewing.com)"
+  },
+  {
+   "q": "Which beer should not be aged?",
+   "answer": "An IPA",
+   "wrong": [
+    "A barley wine",
+    "A gueuze",
+    "An imperial stout"
+   ],
+   "source": "Craft Beer & Brewing (beerandbrewing.com)"
+  },
+  {
+   "q": "Which usually age better?",
+   "answer": "Dark beers",
+   "wrong": [
+    "Pale lagers",
+    "Hazy IPAs",
+    "Fresh wheat beers"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Aging beer is stored at about…",
+   "answer": "52–55°F, dark, upright",
+   "wrong": [
+    "38°F on its side",
+    "75°F in the light",
+    "In the freezer"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "Before pouring an old bottle, you…",
+   "answer": "Stand it upright for 24 hours",
+   "wrong": [
+    "Shake it",
+    "Lay it on its side",
+    "Warm it in water"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  },
+  {
+   "q": "As a malty beer ages, bready flavors turn…",
+   "answer": "Nutty, then toffee and sherry",
+   "wrong": [
+    "Hoppier",
+    "Lemony",
+    "Skunky"
+   ],
+   "source": "Craft Beer & Brewing, Brewing Dictionary (from The Oxford Companion to Beer)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Glass names and sizes vary by maker; these are traditional examples."
+ ]
+}
