@@ -11,6 +11,7 @@ import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mj
 import { COLLECTIONS, SHARED, LOCAL_KEYS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames } from './scanner.mjs';
+import { personPath, personSummary, isPathSignoff, validJobs, JOBS } from './paths.mjs';
 import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
 import { topicList, questionPool } from './quizgen.mjs';
 import { chapterBySlug, markRead } from './manual.mjs';
@@ -254,6 +255,62 @@ async function api(req, res, url) {
   if (p === '/api/quiz/results' && m === 'GET') {
     needUser(c, req);
     return sendJson(res, 200, { people: quizResults(db, c.store), store: c.storeRow?.name || null });
+  }
+  /* ---- Job paths (Nov 8): server/paths.mjs ---- */
+  if (p.startsWith('/api/path')) {
+    const pathCtx = () => {
+      const idx = inStore(c, () => fullIndex(db));
+      return { quizzes: quizCatalog(db, c.store).quizzes.filter((q) => q.kind === 'builtin'), slugs: new Set(idx.map((e) => e.slug)), titles: new Map(idx.map((e) => [e.slug, e.title])) };
+    };
+    const userRow = (id) => db.prepare('SELECT * FROM users WHERE id = ? AND deleted_at IS NULL').get(id);
+    // A manager's people: staff of the store they're working in, in their company.
+    const staffOf = () => db.prepare("SELECT * FROM users WHERE company_id = ? AND store_id = ? AND role = 'staff' AND deleted_at IS NULL ORDER BY name").all(c.company, c.store);
+    const person = (id) => { const x = userRow(Number(id)); if (!x || x.company_id !== c.company || x.store_id !== c.store || x.role !== 'staff') fail(404, 'We couldn’t find that person.'); return x; };
+    if (p === '/api/path' && m === 'GET') { const u = needReader(c, req); return sendJson(res, 200, personPath(db, c.store, userRow(u.id) || u, pathCtx())); }
+    // Staff pick their own job once; after that a manager changes it.
+    if (p === '/api/path/jobs' && m === 'POST') {
+      const u = needReader(c, req); const row = userRow(u.id);
+      if (validJobs(JSON.parse(row?.jobs || '[]')).length && !canEdit(u)) fail(403, 'Ask a manager to change your job.');
+      const jobs = validJobs((await readJson(req)).jobs);
+      if (!jobs.length) fail(400, 'Pick your job.');
+      db.prepare('UPDATE users SET jobs = ? WHERE id = ?').run(JSON.stringify(jobs), u.id);
+      return sendJson(res, 200, personPath(db, c.store, userRow(u.id), pathCtx()));
+    }
+    // "Mark as Read" on a page in your path.
+    if (p === '/api/path/read' && m === 'POST') {
+      const u = needReader(c, req); const b = await readJson(req);
+      const slug = String(b.slug || '');
+      if (!pathCtx().slugs.has(slug)) fail(400, 'That page wasn’t found. Reload and try again.');
+      if (b.done === false) db.prepare('DELETE FROM manual_reads WHERE user_id = ? AND slug = ?').run(u.id, 'page:' + slug);
+      else db.prepare('INSERT OR IGNORE INTO manual_reads(user_id, slug, at) VALUES (?,?,?)').run(u.id, 'page:' + slug, now());
+      return sendJson(res, 200, { ok: true });
+    }
+    if (p === '/api/path/team' && m === 'GET') {
+      needUser(c, req); const ctx = pathCtx();
+      return sendJson(res, 200, { jobs: JOBS, store: c.storeRow?.name || null, people: staffOf().map((x) => personSummary(db, c.store, x, ctx)) });
+    }
+    const pm = /^\/api\/path\/person\/(\d+)$/.exec(p);
+    if (pm && m === 'GET') { needUser(c, req); const x = person(pm[1]); return sendJson(res, 200, { id: x.id, name: x.name, ...personPath(db, c.store, x, pathCtx()) }); }
+    if (pm && m === 'PATCH') {
+      const u = needUser(c, req); const x = person(pm[1]); const b = await readJson(req);
+      if (b.jobs !== undefined) db.prepare('UPDATE users SET jobs = ? WHERE id = ?').run(JSON.stringify(validJobs(b.jobs)), x.id);
+      if (b.startedOn !== undefined) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(String(b.startedOn))) fail(400, 'Pick a start date.');
+        db.prepare('UPDATE users SET started_on = ? WHERE id = ?').run(String(b.startedOn), x.id);
+      }
+      audit(db, u.id, 'training path', `${x.name}: ${b.jobs !== undefined ? 'jobs ' + validJobs(b.jobs).join(', ') : ''}${b.startedOn ? ' started ' + b.startedOn : ''}`, c.company);
+      return sendJson(res, 200, { id: x.id, name: x.name, ...personPath(db, c.store, userRow(x.id), pathCtx()) });
+    }
+    // A manager signs off a path step (a sign-off, or a quiz they've watched someone know cold).
+    if (p === '/api/path/signoff' && (m === 'POST' || m === 'DELETE')) {
+      const u = needUser(c, req); const b = await readJson(req);
+      const x = person(b.userId); const key = String(b.key || '');
+      if (!isPathSignoff(x, key) && !signable(db, c.store, key)) fail(400, 'That step can’t be signed off.');
+      if (m === 'POST') db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at,company_id,store_id) VALUES (?,?,?,?,?,?)').run('u' + x.id, key, u.id, now(), c.company, c.store);
+      else db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').run('u' + x.id, key, c.store);
+      audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${x.name} · ${key}`, c.company);
+      return sendJson(res, 200, { id: x.id, name: x.name, ...personPath(db, c.store, userRow(x.id), pathCtx()) });
+    }
   }
   if (p === '/api/quiz/signoff' && (m === 'POST' || m === 'DELETE')) {
     const u = needUser(c, req);

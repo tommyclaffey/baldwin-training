@@ -20,11 +20,12 @@ export const DEMO_ROLES = {
   manager: { role: 'manager', name: 'Rosalind Hart' },
 };
 const TEAM = [
-  { name: 'Teddy Lam', scores: [['t:course:Pasta', 9], ['t:house', 7], ['t:classic', 10]], signed: ['t:course:Pasta', 't:classic'] },
-  { name: 'Odalys Ruiz', scores: [['t:course:Mains', 10], ['t:course:Pizza', 8]], signed: ['t:course:Mains'] },
-  { name: 'Quinn Abbott', scores: [['t:house', 6], ['t:course:Snacks & Small Plates', 9]], signed: [] },
-  { name: 'Wynn Carver', scores: [['t:classic', 8], ['t:course:Salads', 10], ['t:house', 9]], signed: ['t:course:Salads'] },
+  { name: 'Teddy Lam', jobs: ['server'], started: 5, scores: [['t:course:Pasta', 9], ['t:house', 7], ['t:classic', 10]], signed: ['t:course:Pasta', 't:classic'] },
+  { name: 'Odalys Ruiz', jobs: ['server'], started: 3, scores: [['t:course:Mains', 10], ['t:course:Pizza', 8]], signed: ['t:course:Mains'] },
+  { name: 'Quinn Abbott', jobs: ['bartender'], started: 10, scores: [['t:house', 6], ['t:course:Snacks & Small Plates', 9]], signed: [] },
+  { name: 'Wynn Carver', jobs: ['support'], started: 2, scores: [['t:classic', 8], ['t:course:Salads', 10], ['t:house', 9]], signed: ['t:course:Salads'] },
 ];
+const FIRST_DAY = ['our-story', 'steps-of-service', 'safety', 'cleanliness', 'floor-plan', 'allergen-guide', 'step-1/greet', 'step-9/goodbye', 'step-4/fire-and-run', 'step-6/clear'];
 const COPY = ['wine', 'shelf', 'beer']; // The Baldwin's real lists (Tommy: "wine is fine")
 
 export function migrateDemo(db) {
@@ -54,10 +55,26 @@ export function startDemo(db, key) {
     }
     const addUser = (name, role, storeId) => Number(db.prepare('INSERT INTO users(company_id, name, role, store_id, created_at, last_seen_at) VALUES (?,?,?,?,?,?)').run(co, name, role, storeId, t, t).lastInsertRowid);
     const me = addUser(pick.name, pick.role, pick.role === 'staff' ? st : null);
+    // Job paths (Nov 8): everyone on the team has a job and a start date, and the employee is part-way through hers.
+    const ago = (d) => new Date(Date.now() - d * 864e5).toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
+    const setJob = (id, jobs, days) => db.prepare('UPDATE users SET jobs = ?, started_on = ? WHERE id = ?').run(JSON.stringify(jobs), ago(days), id);
+    if (pick.role === 'staff') {
+      setJob(me, ['server'], 6);
+      for (const slug of ['our-story', 'steps-of-service', 'safety', 'cleanliness', 'floor-plan', 'allergen-guide']) db.prepare('INSERT OR IGNORE INTO manual_reads(user_id, slug, at) VALUES (?,?,?)').run(me, 'page:' + slug, new Date(Date.now() - 6 * 864e5).toISOString());
+      [['t:allergens', 10], ['t:course:Pasta', 10], ['t:course:Snacks & Small Plates', 9], ['t:course:Salads', 9]].forEach(([quiz, score], i) =>
+        db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
+          .run('u' + me, pick.name, quiz, score, 10, '{"items":[],"answers":[]}', new Date(Date.now() - (5 - i) * 864e5).toISOString(), co, me, st));
+    }
     const day = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
     const slots = ['Servers 1', 'Servers 2', 'Bar 1', 'Support 1'];
     TEAM.forEach((p, i) => {
       const id = addUser(p.name, 'staff', st);
+      setJob(id, p.jobs, p.started);
+      // Their first day is done: the pages read and the allergens quiz passed.
+      const firstDay = new Date(Date.now() - p.started * 864e5).toISOString();
+      for (const slug of FIRST_DAY) db.prepare('INSERT OR IGNORE INTO manual_reads(user_id, slug, at) VALUES (?,?,?)').run(id, 'page:' + slug, firstDay);
+      db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
+        .run('u' + id, p.name, 't:allergens', 10, 10, '{"items":[],"answers":[]}', firstDay, co, id, st);
       for (const [quiz, score] of p.scores) {
         db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
           .run('u' + id, p.name, quiz, score, 10, '{"items":[],"answers":[]}', new Date(Date.now() - (i + 1) * 3600e3).toISOString(), co, id, st);

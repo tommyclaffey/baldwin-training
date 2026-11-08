@@ -10,7 +10,7 @@ import { api } from '../lib/api';
 import { useSession } from '../lib/session';
 
 /** A stop on the walk. `path` is where it lives (a function when the address depends on the data); `manager` stops are for managers only. */
-type Stop = { path: string | (() => string | null); match?: RegExp; target: string; title: string; body: string; manager?: boolean };
+type Stop = { path: string | (() => string | null); match?: RegExp; target: string; title: string; body: string; manager?: boolean; staff?: boolean };
 
 // The dish stops open whichever dish the Food Matrix lists first. Kept, so Back still gets there from a later page.
 let dish: string | null = null;
@@ -22,6 +22,7 @@ const STOPS: Stop[] = [
   { path: '/', target: '#side, .menu-btn', title: 'The whole book', body: 'Food, the bar, service, safety, videos and your training all live in this menu.' },
   { path: '/', target: '.search', title: 'Search anything', body: 'Type a dish, a drink, a wine or an ingredient. Results show as you type.' },
   { path: '/', target: '[data-name="Section · Dashboard"]', title: 'Your shift at a glance', body: 'Tonight’s sections, your training progress and what’s new on the menu.' },
+  { path: '/my-path', target: '.mp-stages', title: 'Your path', body: 'What your job learns, stage by stage, with a due date for each. Pass a quiz or read a page and it ticks here.', staff: true },
   { path: '/food-matrix', target: '[data-name="Filters"]', title: 'Every dish, one list', body: 'Filter by course or station. A guest has an allergy? Hide every dish that lists it.' },
   { ...DISH, target: '[data-name="Selling line"]', title: 'What to say at the table', body: 'Every dish has its own page, with the line to use with a guest, so everyone describes it the same way.' },
   { ...DISH, target: '[data-name="Pairings band"]', title: 'What to pair it with', body: 'The wine and cocktail to suggest. Each one opens its own page.' },
@@ -31,12 +32,13 @@ const STOPS: Stop[] = [
   { path: '/quizzes', target: '.qb', title: 'Build a quiz', body: 'Pick any subjects and a length. New Questions never repeats until you’ve seen them all.' },
   { path: '/sommelier-program', target: '[data-name="Your path"]', title: 'The Sommelier lessons', body: 'The Court of Master Sommeliers’ path, from Introductory to Master, with videos and practice cards.' },
   { path: '/admin', target: '.admin-side nav', title: 'Everything you can change', body: 'The menu, cocktails, wine, back bar, photos, quiz results and your team.', manager: true },
+  { path: '/admin/training', target: '.list', title: 'Everyone’s path', body: 'Each person’s job, how far along they are and what’s late. Open someone to sign off what you’ve watched them do.', manager: true },
   { path: '/admin/quizzes', target: '.person, .list-row', title: 'Everyone’s scores', body: 'Open a person to see their attempts, then sign them off.', manager: true },
 ];
 // The last stop points at the DEMO pill, wherever the walk ended.
 const last = (path: string): Stop => ({ path, target: PILL, title: 'That’s the tour', body: 'Click DEMO anytime for the welcome card or to take the tour again. Refresh and the demo starts over.' });
 const FOR_STAFF = [...STOPS.filter((s) => !s.manager), last('/sommelier-program')];
-const FOR_MANAGER = [...STOPS, last('/admin/quizzes')];
+const FOR_MANAGER = [...STOPS.filter((s) => !s.staff), last('/admin/quizzes')];
 
 // The two pieces of state, held outside React because the book and the admin each mount their own copy of this.
 let welcomeOpen = false, welcomed = false, step: number | null = null;
@@ -98,15 +100,15 @@ export function DemoBar() {
 
 const CHEVRON = <svg className="dw-chev" width="8" height="12" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>;
 const TRY_STAFF = [
+  { title: 'Follow your path', body: 'What a server learns, week by week, and what’s next for you', to: '/my-path' },
   { title: 'Look up a dish', body: 'Allergens, what to say at the table and what to pair it with', to: '/food-matrix' },
   { title: 'Find a cocktail spec', body: 'Every build in one place, for bartenders', to: '/the-bar/cocktail-specs' },
-  { title: 'Take a quiz', body: 'Pick your subjects and a length, and see where you stand', to: '/quizzes' },
   { title: 'Start the Sommelier lessons', body: 'Four levels, with videos and practice cards', to: '/sommelier-program' },
 ];
 const TRY_MANAGER = [
   { title: 'Change the menu', body: 'Add a dish or edit one, and everyone sees it on Save', to: '/admin/pages/recipe' },
   { title: 'Check quiz results', body: 'Everyone’s scores. Open a person, then sign them off', to: '/admin/quizzes' },
-  { title: 'See your team', body: 'Who’s on the team and where they are in their training', to: '/admin/team' },
+  { title: 'See your team’s training', body: 'Each person’s path, what’s late, and sign-offs', to: '/admin/training' },
   { title: 'See what your team sees', body: 'The menu, the bar, the lessons and the quizzes', to: '/' },
 ];
 

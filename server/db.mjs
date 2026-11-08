@@ -170,6 +170,12 @@ const MIGRATIONS = [
   CREATE TABLE quiz_seen(user_id INT NOT NULL, store_id INT NOT NULL, quiz TEXT NOT NULL, ref TEXT NOT NULL, at TEXT NOT NULL,
     PRIMARY KEY(user_id, store_id, quiz, ref));
   `,
+  // 14 (Nov 8, Tommy: "Let's work on the job paths"): each person's jobs (JSON list: server, bartender, host, support)
+  // and the day they started, which the path's due dates count from. Page reads go in manual_reads as 'page:<slug>'.
+  `
+  ALTER TABLE users ADD COLUMN jobs TEXT;
+  ALTER TABLE users ADD COLUMN started_on TEXT;
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

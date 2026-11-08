@@ -7,6 +7,7 @@ import { Loading } from './ui';
 import { WineVideos } from './wine';
 import { BottleScannerPage } from './scanner';
 import { SuperAdmin } from './super';
+import { Training } from './training';
 import { api } from '../lib/api';
 import { DemoBar, DemoTour, openWelcome } from '../components/DemoTour';
 
@@ -73,6 +74,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           {(hasBook || library) && <NavLink to="/admin/wine-videos">Wine Videos</NavLink>}
           <NavLink to="/admin/bottle-scanner">Bottle Scanner</NavLink>
           <NavLink to="/admin/media">Videos and Photos</NavLink>
+          <NavLink to="/admin/training">Training</NavLink>
           <NavLink to="/admin/quizzes">Quiz Results</NavLink>
           <NavLink to="/admin/team">Team</NavLink>
           {owner && <NavLink to="/admin/activity">Activity</NavLink>}
@@ -93,6 +95,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <Route path="wine-videos" element={<WineVideos />} />
           <Route path="bottle-scanner" element={<BottleScannerPage />} />
           <Route path="media" element={<MediaLibrary />} />
+          <Route path="training" element={<Training />} />
           <Route path="quizzes" element={<QuizResults />} />
           <Route path="team" element={<People />} />
           <Route path="people" element={<People />} />

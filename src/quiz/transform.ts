@@ -109,3 +109,37 @@ export function trainingCard(nodes: FNode[], s: State): FNode[] {
   });
   return out;
 }
+
+/** Job paths (Nov 8): the sidebar card shows your path, and the menu gets My Path above Quizzes. */
+type PathSummary = { label: string; week: number; weeks: number; done: number; total: number; next: { title: string; to?: string; kind: string } | null };
+export function pathSidebar(root: FNode, p: PathSummary | null): FNode {
+  const out = clone(root);
+  walk(out, (n) => {
+    if (n.n === 'Nav' && n.c && !n.c.some((c) => c.n === 'Nav · My Path')) {
+      const quizzes = n.c.find((c) => c.n === 'Nav · Quizzes');
+      const steps = n.c.find((c) => c.n === 'Nav · Steps of Service');
+      if (quizzes) {
+        const item = clone(quizzes);
+        item.n = 'Nav · My Path'; item.to = '/my-path';
+        item.c = (item.c || []).filter((c) => c.n !== 'Count');
+        const icon = steps?.c?.find((c) => c.n === 'icon');
+        if (icon) item.c = item.c.map((c) => (c.n === 'icon' ? clone(icon) : c));
+        setText(texts(item)[0], 'My Path');
+        n.c.splice(n.c.indexOf(quizzes), 0, item);
+      }
+    }
+    if (n.n !== 'Your Training' || !n.c || !p) return;
+    for (const c of n.c) {
+      if (c.t === 'T' && c.s === 'YOUR TRAINING') setText(c, 'MY PATH');
+      else if (c.t === 'T' && /Week|Front of House/.test(c.s || '')) setText(c, `${p.label} · Week ${p.week} of ${p.weeks}`);
+      else if (c.t === 'T' && /signed off|passed/.test(c.s || '')) setText(c, `${p.done} of ${p.total} steps done`);
+      if (c.n === 'Progress' && c.c?.[0]) c.c[0].w = p.total ? Math.round((c.w * p.done) / p.total) : 0;
+      if (c.n === 'Button · Continue') {
+        const short = p.next && p.next.title.length <= 16;
+        c.to = p.next?.to || '/my-path';
+        setText(texts(c)[0], !p.next ? 'Open My Path' : short ? `Next: ${p.next.title}` : 'Continue My Path');
+      }
+    }
+  });
+  return out;
+}
