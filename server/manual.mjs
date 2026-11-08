@@ -10,9 +10,13 @@ const DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../co
 // Level 2 (Certified) chapters, Nov 2: same format plus "level": 2 and "part", written from the Court's resource library
 const DIR2 = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/manual-l2');
 export const GUIDE = 'sommelier-program/study-guide';
+// The Cocktail Program (Nov 8, Tommy: "start building it in the app"): Level 1, Certified Bar Server, same lesson format.
+const DIR_BAR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/bar');
+export const BAR = 'cocktail-program';
+export const BAR_BASE = 'cocktail-program/level-1';
 export const L2_BASE = 'sommelier-program/level-2';
 /** Where a chapter's lessons live: Level 1 under the Study Guide, Level 2 under the Level 2 page. */
-export const chapterBase = (c) => (c?.level === 2 ? L2_BASE : GUIDE);
+export const chapterBase = (c) => (c?.program === 'bar' ? BAR_BASE : c?.level === 2 ? L2_BASE : GUIDE);
 export const chapterSlug = (c) => `${chapterBase(c)}/${c.slug}`;
 export const quizHref = (c) => `/quizzes?quiz=t:study:${c.slug}`;
 
@@ -37,9 +41,17 @@ export function chapters2() {
   return cache2;
 }
 /** Every chapter, both levels. */
-export const allChapters = () => [...chapters(), ...chapters2()];
+let cacheBar;
+/** The Cocktail Program's Level 1 lessons, in order. */
+export function chaptersBar() {
+  if (!cacheBar) cacheBar = load(DIR_BAR, 1).map((c) => ({ ...c, program: 'bar' }));
+  return cacheBar;
+}
+export const allChapters = () => [...chapters(), ...chapters2(), ...chaptersBar()];
+/** "Sommelier · Level 1", "Cocktail Program · Level 1": the program a lesson belongs to. */
+export const programOf = (c) => (c?.program === 'bar' ? 'Cocktail Program · Level 1' : `Sommelier · Level ${c?.level || 1}`);
 /** The chapters in the same level as this one. */
-export const levelChapters = (c) => (c?.level === 2 ? chapters2() : chapters());
+export const levelChapters = (c) => (c?.program === 'bar' ? chaptersBar() : c?.level === 2 ? chapters2() : chapters());
 export const chapterBySlug = (slug) => allChapters().find((c) => c.slug === slug);
 
 /** One person's progress: chapters opened, cards known cold, cards to review (from their quiz marks). */

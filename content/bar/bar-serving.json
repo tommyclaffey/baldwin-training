@@ -1,0 +1,410 @@
+{
+ "number": 1,
+ "slug": "bar-serving",
+ "title": "Serving and how guests order",
+ "script": "Lesson one",
+ "lead": "The words guests use at the bar, and how to take a drink order right the first time.",
+ "minutes": 12,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Neat, up and on the rocks",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Three words tell you how a spirit is served."
+    }
+   ],
+   "know": [
+    "Neat is the spirit alone in the glass: no ice, nothing added.",
+    "On The Rocks means poured over ice.",
+    "Up is chilled with ice, then strained into a glass with no ice.",
+    "Straight Up is unclear: some guests mean up, some mean neat. Ask."
+   ]
+  },
+  {
+   "name": "Well, call and premium",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Naming a brand changes the drink and the price."
+    }
+   ],
+   "know": [
+    "Well is the house pour when a guest doesn’t name a brand.",
+    "Call is when the guest names the brand they want.",
+    "Premium is the top shelf: the bottles that cost the most.",
+    "Repeat It back so the guest gets, and pays for, what they asked for."
+   ]
+  },
+  {
+   "name": "Dry, dirty and with a twist",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Martini orders have their own words."
+    }
+   ],
+   "know": [
+    "Dry means less vermouth; wet means more.",
+    "Dirty means olive brine goes in the drink.",
+    "Twist is a strip of citrus peel, its oils squeezed over the drink.",
+    "Gibson is a martini garnished with a cocktail onion.",
+    "Perfect means equal parts sweet and dry vermouth."
+   ]
+  },
+  {
+   "name": "Taking the order",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A clear order is the first step of a good drink."
+    }
+   ],
+   "know": [
+    "Spirit first: which spirit, then which brand.",
+    "How they like it: neat, on the rocks or up.",
+    "Allergies matter at the bar too: egg white, nuts, dairy.",
+    "Repeat the order back before it goes in.",
+    "21 and over: check ID the way the Safety page says."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Neat, up and on the rocks",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NEAT",
+      "line": "is the spirit alone in the glass: no ice, nothing added."
+     },
+     {
+      "big": "ON THE ROCKS",
+      "line": "means poured over ice."
+     },
+     {
+      "big": "UP",
+      "line": "is chilled with ice, then strained into a glass with no ice."
+     },
+     {
+      "big": "STRAIGHT UP",
+      "line": "is unclear: some guests mean up, some mean neat. Ask."
+     }
+    ],
+    "read": {
+     "bigIdea": "Three words tell you how a spirit is served.",
+     "where": "**Neat** is the spirit alone, with no ice. **On the rocks** is over ice. **Up** means shaken or stirred with ice, then strained into a stemmed glass with no ice.",
+     "mixup": "**Neat** never touches ice. **Up** is chilled on ice, but the ice stays in the tin.",
+     "sayIt": "Would you like that neat or on the rocks?"
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Well, call and premium",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WELL",
+      "line": "is the house pour when a guest doesn’t name a brand."
+     },
+     {
+      "big": "CALL",
+      "line": "is when the guest names the brand they want."
+     },
+     {
+      "big": "PREMIUM",
+      "line": "is the top shelf: the bottles that cost the most."
+     },
+     {
+      "big": "REPEAT IT",
+      "line": "back so the guest gets, and pays for, what they asked for."
+     }
+    ],
+    "read": {
+     "bigIdea": "Naming a brand changes the drink and the price.",
+     "where": "A guest who orders a “vodka soda” gets the **well** vodka, the house pour. “Tito’s and soda” names the brand, so it’s a **call** drink. **Premium** bottles are the top shelf and cost more. The Back Bar shows which bottles sit in each tier.",
+     "sayIt": "Any vodka you like, or our house vodka?"
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Dry, dirty and with a twist",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DRY",
+      "line": "means less vermouth; wet means more."
+     },
+     {
+      "big": "DIRTY",
+      "line": "means olive brine goes in the drink."
+     },
+     {
+      "big": "TWIST",
+      "line": "is a strip of citrus peel, its oils squeezed over the drink."
+     },
+     {
+      "big": "GIBSON",
+      "line": "is a martini garnished with a cocktail onion."
+     },
+     {
+      "big": "PERFECT",
+      "line": "means equal parts sweet and dry vermouth."
+     }
+    ],
+    "read": {
+     "bigIdea": "Martini orders have their own words.",
+     "where": "**Dry** means less vermouth; **wet** means more. **Dirty** adds olive brine. A **twist** is a strip of lemon peel squeezed over the glass so its oils land on the drink. A **Gibson** is a martini with a cocktail onion. A **perfect** Manhattan uses equal parts sweet and dry vermouth.",
+     "mixup": "Olives make it a martini with olives. **Brine** in the drink makes it **dirty**.",
+     "sayIt": "Gin or vodka? And olives or a twist?"
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "Taking the order",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SPIRIT",
+      "line": "first: which spirit, then which brand."
+     },
+     {
+      "big": "HOW",
+      "line": "they like it: neat, on the rocks or up."
+     },
+     {
+      "big": "ALLERGIES",
+      "line": "matter at the bar too: egg white, nuts, dairy."
+     },
+     {
+      "big": "REPEAT",
+      "line": "the order back before it goes in."
+     },
+     {
+      "big": "21",
+      "line": "and over: check ID the way the Safety page says."
+     }
+    ],
+    "read": {
+     "bigIdea": "A clear order is the first step of a good drink.",
+     "where": "Get the **spirit**, the **brand** and **how they like it**. Ask about **allergies**: some cocktails use egg white, nut syrups such as orgeat (made from almonds), or cream. **Repeat the order back** before it goes in. We serve guests **21 and over**.",
+     "sayIt": "So that’s a Tito’s martini, dirty, up."
+    },
+    "check": [
+     13,
+     14,
+     15
+    ]
+   }
+  ]
+ },
+ "sources": "Written for Mise from Common bar practice (bar lead to confirm). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "A guest orders a bourbon neat. What do they get?",
+   "answer": "Bourbon alone, no ice",
+   "wrong": [
+    "Bourbon over ice",
+    "Bourbon stirred on ice and strained",
+    "Bourbon with a splash of soda"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "What does “on the rocks” mean?",
+   "answer": "Served over ice",
+   "wrong": [
+    "Served with no ice",
+    "Shaken hard",
+    "Served in a stemmed glass"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "A martini served “up” is…",
+   "answer": "Chilled with ice, then strained into a glass with no ice",
+   "wrong": [
+    "Served over fresh ice",
+    "Poured with no chilling at all",
+    "Topped with soda"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "A guest asks for a whiskey “straight up.” What should you do?",
+   "answer": "Ask whether they mean neat or up",
+   "wrong": [
+    "Pour it over ice",
+    "Add a splash of water",
+    "Serve it with a soda back"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "A guest orders a “gin and tonic” and names no brand. Which gin goes in?",
+   "answer": "The well gin",
+   "wrong": [
+    "The most expensive gin",
+    "Whatever the bartender likes",
+    "No gin until they pick one"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "“Tito’s and soda” is what kind of order?",
+   "answer": "A call drink",
+   "wrong": [
+    "A well drink",
+    "A neat pour",
+    "A spiritless drink"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "What is the top shelf usually called?",
+   "answer": "Premium",
+   "wrong": [
+    "Well",
+    "House",
+    "Call"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Why repeat the brand back to the guest?",
+   "answer": "So they get, and pay for, what they asked for",
+   "wrong": [
+    "So the bar can charge more",
+    "Because a manager has to approve it",
+    "To make the ticket shorter"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "A “dirty” martini has what added?",
+   "answer": "Olive brine",
+   "wrong": [
+    "Extra vermouth",
+    "Bitters",
+    "Lemon juice"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "A guest wants their martini “dry.” What changes?",
+   "answer": "Less vermouth",
+   "wrong": [
+    "More vermouth",
+    "No ice",
+    "Olive brine"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Which garnish makes a martini a Gibson?",
+   "answer": "A cocktail onion",
+   "wrong": [
+    "Three olives",
+    "A lemon twist",
+    "A cherry"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "A “perfect” Manhattan uses…",
+   "answer": "Equal parts sweet and dry vermouth",
+   "wrong": [
+    "Only dry vermouth",
+    "Twice the whiskey",
+    "No bitters"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "What is a twist?",
+   "answer": "A strip of citrus peel, its oils squeezed over the drink",
+   "wrong": [
+    "A lime wedge",
+    "A sugared rim",
+    "A splash of citrus juice"
+   ],
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Orgeat, a syrup in some cocktails, is made from…",
+   "answer": "Almonds",
+   "wrong": [
+    "Oranges",
+    "Honey",
+    "Ginger"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "Before you send a drink order, you should…",
+   "answer": "Repeat it back to the guest",
+   "wrong": [
+    "Ring in the well brand",
+    "Ask the bartender to guess",
+    "Start pouring"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "Which allergen can be in a sour-style cocktail?",
+   "answer": "Egg white",
+   "wrong": [
+    "Shellfish",
+    "Sesame from the ice",
+    "Peanuts in the bitters"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  },
+  {
+   "q": "Who can be served alcohol?",
+   "answer": "Guests 21 and over",
+   "wrong": [
+    "Guests 18 and over",
+    "Anyone sitting with an adult",
+    "Guests 19 and over"
+   ],
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Neat is the spirit alone, with no ice. On the rocks is over ice. Up means shaken or stirred with ice, then strained into a stemmed glass with no ice.",
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "fact": "A guest who orders a “vodka soda” gets the well vodka, the house pour. “Tito’s and soda” names the brand, so it’s a call drink. Premium bottles are the top shelf and cost more. The Back Bar shows which bottles sit in each tier.",
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "fact": "Dry means less vermouth; wet means more. Dirty adds olive brine. A twist is a strip of lemon peel squeezed over the glass so its oils land on the drink. A Gibson is a martini with a cocktail onion. A perfect Manhattan uses equal parts sweet and dry vermouth.",
+   "source": "Common bar practice (bar lead to confirm)"
+  },
+  {
+   "fact": "Get the spirit, the brand and how they like it. Ask about allergies: some cocktails use egg white, nut syrups such as orgeat (made from almonds), or cream. Repeat the order back before it goes in. We serve guests 21 and over.",
+   "source": "Our book: Cocktail Specs, drink pages and the Safety page in this app"
+  }
+ ],
+ "unverified": [
+  "Ordering words are common US bar usage, not a legal standard; bar lead to confirm the house wording."
+ ]
+}

@@ -14,7 +14,7 @@ export const PRE_SHIFT = 'pre-shift';
 export const REVIEW = 'review';
 export const MARKS = ['red', 'yellow', 'green'];
 const REVIEW_LEN = 20;
-const BUILT_IN_LEN = 10, PRE_SHIFT_LEN = 5;
+const BUILT_IN_LEN = 10, PRE_SHIFT_LEN = 5, FINAL_LEN = 60; // a program level's final exam: 60 questions
 
 /** Team quizzes a manager saved: a name, its topics and its length. */
 export function teamSets(db, store) {
@@ -38,7 +38,7 @@ export function catalog(db, store) {
   // Sommelier Study Guide, Sommelier Level 2) so the sign-off list is sectioned like the builder. A chapter's sign-off
   // is the whole chapter (every card), with its lesson video as the picture.
   const studyPhoto = (key) => { const ch = key.startsWith('study:') && chapterBySlug(key.slice(6)); if (!ch) return null; const v = ch.v3?.video?.youtubeId || (ch.v3?.sections || []).find((x) => x.video?.youtubeId)?.video.youtubeId; return v ? `https://i.ytimg.com/vi/${v}/mqdefault.jpg` : null; };
-  const builtins = topics.filter((t) => BUILT_IN(t.key)).map((t) => ({ id: 't:' + t.key, title: t.label, kind: 'builtin', group: t.group, topics: [t.key], count: t.key.startsWith('study:') ? t.count : Math.min(BUILT_IN_LEN, t.count), photo: photoFor(t.key) || studyPhoto(t.key) }));
+  const builtins = topics.filter((t) => BUILT_IN(t.key)).map((t) => ({ id: 't:' + t.key, title: t.label, kind: 'builtin', group: t.group, topics: [t.key], count: t.key.startsWith('study:') ? t.count : t.key.startsWith('final:') ? Math.min(FINAL_LEN, t.count) : Math.min(BUILT_IN_LEN, t.count), photo: photoFor(t.key) || studyPhoto(t.key) }));
   const team = teamSets(db, store).map((q) => ({ ...q, group: 'Team Quizzes', count: Math.min(q.count || Infinity, forTopics(pool, q.topics).length), photo: photoFor(q.topics[0]) }));
   return { passPct: PASS_PCT, topics, quizzes: [...builtins, ...team], preShift: { id: PRE_SHIFT, title: 'Quick Quiz', count: PRE_SHIFT_LEN } };
 }
@@ -48,7 +48,7 @@ function topicsOf(db, store, id) {
   if (id === PRE_SHIFT) return { title: 'Quick Quiz', topics: null, count: PRE_SHIFT_LEN };
   if (id === REVIEW) return { title: 'Review Queue', topics: null, count: REVIEW_LEN };
   let m;
-  if ((m = /^t:(.+)$/.exec(id))) { const t = m[1]; return BUILT_IN(t) ? { title: labelOf(t), topics: [t], count: t.startsWith('study:') ? 100 : BUILT_IN_LEN } : null; }
+  if ((m = /^t:(.+)$/.exec(id))) { const t = m[1]; return BUILT_IN(t) ? { title: labelOf(t), topics: [t], count: t.startsWith('study:') ? 100 : t.startsWith('final:') ? FINAL_LEN : BUILT_IN_LEN } : null; }
   if ((m = /^s:(\d+)$/.exec(id))) { const r = db.prepare('SELECT * FROM quiz_sets WHERE id = ? AND store_id = ?').get(Number(m[1]), store); return r ? { title: r.name, topics: JSON.parse(r.topics), count: r.count || Infinity } : null; }
   // Nov 5: topics like "course:Mains" and "study:france" have a colon in them; the count is whatever follows the last one.
   // (Before, any pick with a course or a chapter came back "We couldn't find that quiz".)
@@ -58,7 +58,8 @@ function topicsOf(db, store, id) {
 export function labelOf(key) {
   const L = { 'classic-on': 'Classic Cocktails on the Menu', 'classic-off': 'Classic Cocktails off the Menu', specialty: 'Specialty Cocktails', brg: 'BRG Favorites', mules: 'Mules', dessert: 'Dessert Cocktails', spiritless: 'Spiritless Cocktails', house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings' };
   if (key.startsWith('spec:')) return SPEC_TOPICS.find(([k]) => k === key)?.[1] || key;
-  if (key.startsWith('study:')) { const ch = chapterBySlug(key.slice(6)); return ch ? `Study Guide · ${ch.title}` : key; }
+  if (key === 'final:bar-1') return 'Certified Bar Server · Final Exam';
+  if (key.startsWith('study:')) { const ch = chapterBySlug(key.slice(6)); return ch ? `${ch.program === 'bar' ? 'Cocktail Program' : 'Study Guide'} · ${ch.title}` : key; }
   return key.startsWith('course:') ? key.slice(7) : L[key] || key;
 }
 export const customId = (topics, count) => `c:${[...new Set(topics)].sort().join('+')}:${count}`;

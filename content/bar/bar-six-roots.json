@@ -1,0 +1,519 @@
+{
+ "number": 4,
+ "slug": "bar-six-roots",
+ "title": "The six roots",
+ "script": "Lesson four",
+ "lead": "Six classic drinks are the patterns most cocktails follow. Learn them and every new drink is a variation.",
+ "minutes": 20,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "The Old Fashioned",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Spirit, a little sugar, bitters."
+    }
+   ],
+   "know": [
+    "Spirit sweetened and seasoned: spirit, sugar and bitters.",
+    "Stirred over ice, served on a big cube.",
+    "Sazerac follows the same pattern."
+   ]
+  },
+  {
+   "name": "The Martini",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A spirit and vermouth, stirred cold."
+    }
+   ],
+   "know": [
+    "Spirit plus vermouth: gin or vodka with dry vermouth.",
+    "Stirred and strained up, very cold.",
+    "Manhattan is the same idea: whiskey and sweet vermouth."
+   ]
+  },
+  {
+   "name": "The Daiquiri",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Spirit, citrus and sugar: the sour."
+    }
+   ],
+   "know": [
+    "Sour pattern: spirit, citrus and sugar.",
+    "Shaken because it has citrus.",
+    "Same Pattern as the Whiskey Sour, Gimlet and Pisco Sour."
+   ]
+  },
+  {
+   "name": "The Sidecar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A sour sweetened with a liqueur."
+    }
+   ],
+   "know": [
+    "Liqueur sweetens it: spirit, citrus and orange liqueur.",
+    "Shaken and served up.",
+    "Margarita and Cosmopolitan follow the same pattern."
+   ]
+  },
+  {
+   "name": "The Highball",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A spirit made long with something bubbly."
+    }
+   ],
+   "know": [
+    "Spirit made long with something bubbly.",
+    "Built in a tall glass over ice.",
+    "Same Pattern as the Moscow Mule, Dark ’n’ Stormy and Paloma."
+   ]
+  },
+  {
+   "name": "The Flip",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Egg or cream for a rich drink."
+    }
+   ],
+   "know": [
+    "Rich drinks: egg or cream give the body.",
+    "Shaken hard to mix and foam.",
+    "Brandy Alexander gets its body from cream."
+   ]
+  }
+ ],
+ "v3": {
+  "video": {
+   "youtubeId": "pdcrJ5V7YKM",
+   "title": "How I Make an Old Fashioned",
+   "by": "Anders Erickson",
+   "length": "5:31"
+  },
+  "sections": [
+   {
+    "name": "The Old Fashioned",
+    "video": {
+     "youtubeId": "pdcrJ5V7YKM",
+     "title": "How I Make an Old Fashioned",
+     "by": "Anders Erickson",
+     "length": "5:31"
+    },
+    "keyPoints": [
+     {
+      "big": "SPIRIT",
+      "line": "sweetened and seasoned: spirit, sugar and bitters."
+     },
+     {
+      "big": "STIRRED",
+      "line": "over ice, served on a big cube."
+     },
+     {
+      "big": "SAZERAC",
+      "line": "follows the same pattern."
+     }
+    ],
+    "read": {
+     "bigIdea": "Spirit, a little sugar, bitters.",
+     "where": "The **Old Fashioned** is a spirit with a little **sugar** and **bitters**, stirred and served over ice. It’s all spirit, so it’s **stirred**, not shaken. The **Sazerac** follows the same pattern."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The Martini",
+    "video": {
+     "youtubeId": "izZsjqnADAA",
+     "title": "How to make a MARTINI",
+     "by": "Anders Erickson",
+     "length": "7:30"
+    },
+    "keyPoints": [
+     {
+      "big": "SPIRIT",
+      "line": "plus vermouth: gin or vodka with dry vermouth."
+     },
+     {
+      "big": "STIRRED",
+      "line": "and strained up, very cold."
+     },
+     {
+      "big": "MANHATTAN",
+      "line": "is the same idea: whiskey and sweet vermouth."
+     }
+    ],
+    "read": {
+     "bigIdea": "A spirit and vermouth, stirred cold.",
+     "where": "The **Martini** pairs a spirit with **vermouth**, stirred and strained **up**. Swap the gin for whiskey and the dry vermouth for sweet, and you have a **Manhattan**."
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "The Daiquiri",
+    "video": {
+     "youtubeId": "71jQRf5UrpE",
+     "title": "THE DAIQUIRI",
+     "by": "Anders Erickson",
+     "length": "7:26"
+    },
+    "keyPoints": [
+     {
+      "big": "SOUR",
+      "line": "pattern: spirit, citrus and sugar."
+     },
+     {
+      "big": "SHAKEN",
+      "line": "because it has citrus."
+     },
+     {
+      "big": "SAME PATTERN",
+      "line": "as the Whiskey Sour, Gimlet and Pisco Sour."
+     }
+    ],
+    "read": {
+     "bigIdea": "Spirit, citrus and sugar: the sour.",
+     "where": "The **Daiquiri** is rum, **lime** and **sugar**, shaken and served up. Swap the spirit and the citrus and you get the **Whiskey Sour**, the **Gimlet** and the **Pisco Sour**."
+    },
+    "check": [
+     7,
+     8,
+     9
+    ]
+   },
+   {
+    "name": "The Sidecar",
+    "video": {
+     "youtubeId": "re76GCUoiH4",
+     "title": "How I Make a Sidecar",
+     "by": "Anders Erickson",
+     "length": "3:25"
+    },
+    "keyPoints": [
+     {
+      "big": "LIQUEUR",
+      "line": "sweetens it: spirit, citrus and orange liqueur."
+     },
+     {
+      "big": "SHAKEN",
+      "line": "and served up."
+     },
+     {
+      "big": "MARGARITA",
+      "line": "and Cosmopolitan follow the same pattern."
+     }
+    ],
+    "read": {
+     "bigIdea": "A sour sweetened with a liqueur.",
+     "where": "The **Sidecar** is brandy, **lemon** and an **orange liqueur**, shaken and served up. The liqueur does the sweetening. The **Margarita** and the **Cosmopolitan** follow the same pattern."
+    },
+    "check": [
+     10,
+     11,
+     12
+    ]
+   },
+   {
+    "name": "The Highball",
+    "video": {
+     "youtubeId": "2EZBGowe0ho",
+     "title": "How to Make the Dark ’N Stormy",
+     "by": "Anders Erickson",
+     "length": "7:47"
+    },
+    "keyPoints": [
+     {
+      "big": "SPIRIT",
+      "line": "made long with something bubbly."
+     },
+     {
+      "big": "BUILT",
+      "line": "in a tall glass over ice."
+     },
+     {
+      "big": "SAME PATTERN",
+      "line": "as the Moscow Mule, Dark ’n’ Stormy and Paloma."
+     }
+    ],
+    "read": {
+     "bigIdea": "A spirit made long with something bubbly.",
+     "where": "A **highball** is a spirit and a **bubbly mixer**, built in a **tall glass** over ice. The **Moscow Mule**, the **Dark ’n’ Stormy** and the **Paloma** all follow this pattern."
+    },
+    "check": [
+     13,
+     14,
+     15
+    ]
+   },
+   {
+    "name": "The Flip",
+    "video": {
+     "youtubeId": "5LEgIoddxY4",
+     "title": "The Brandy Alexander",
+     "by": "Anders Erickson",
+     "length": "5:06"
+    },
+    "keyPoints": [
+     {
+      "big": "RICH",
+      "line": "drinks: egg or cream give the body."
+     },
+     {
+      "big": "SHAKEN",
+      "line": "hard to mix and foam."
+     },
+     {
+      "big": "BRANDY ALEXANDER",
+      "line": "gets its body from cream."
+     }
+    ],
+    "read": {
+     "bigIdea": "Egg or cream for a rich drink.",
+     "where": "A **flip** gets its richness from **egg**, **cream** or both. It’s **shaken hard** so it mixes and gets a light foam. The **Brandy Alexander** gets its body from cream the same way."
+    },
+    "check": [
+     16,
+     17,
+     18
+    ]
+   }
+  ]
+ },
+ "sources": "Written for Mise from Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "The Old Fashioned pattern is…",
+   "answer": "Spirit, sugar and bitters",
+   "wrong": [
+    "Spirit, citrus and sugar",
+    "Spirit and soda",
+    "Spirit, egg and cream"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "Is an Old Fashioned shaken or stirred?",
+   "answer": "Stirred",
+   "wrong": [
+    "Shaken",
+    "Blended",
+    "Built with soda"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "Which drink follows the Old Fashioned pattern?",
+   "answer": "Sazerac",
+   "wrong": [
+    "Daiquiri",
+    "Moscow Mule",
+    "Brandy Alexander"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "Which drinks get shaken?",
+   "answer": "Drinks with citrus, egg or cream",
+   "wrong": [
+    "Drinks that are all spirit",
+    "Drinks topped with soda",
+    "Every drink"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "A Martini is a spirit plus…",
+   "answer": "Vermouth",
+   "wrong": [
+    "Lime juice",
+    "Soda",
+    "Cream"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "How is a Martini usually served?",
+   "answer": "Stirred and strained up",
+   "wrong": [
+    "Shaken over crushed ice",
+    "Built over ice with soda",
+    "Blended"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "Which drink follows the Martini pattern, with whiskey?",
+   "answer": "Manhattan",
+   "wrong": [
+    "Whiskey Sour",
+    "Old Fashioned",
+    "Irish Coffee"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "The Daiquiri pattern is…",
+   "answer": "Spirit, citrus and sugar",
+   "wrong": [
+    "Spirit and vermouth",
+    "Spirit, sugar and bitters",
+    "Spirit and soda"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "Why is a Daiquiri shaken?",
+   "answer": "It has citrus juice",
+   "wrong": [
+    "It has no ice",
+    "It’s served hot",
+    "It has soda"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "Which drink follows the Daiquiri pattern?",
+   "answer": "Whiskey Sour",
+   "wrong": [
+    "Martini",
+    "Old Fashioned",
+    "Paloma"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "In a Sidecar, what sweetens the drink?",
+   "answer": "An orange liqueur",
+   "wrong": [
+    "Simple syrup only",
+    "Sweet vermouth",
+    "Honey"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "Which drink follows the Sidecar pattern?",
+   "answer": "Margarita",
+   "wrong": [
+    "Manhattan",
+    "Moscow Mule",
+    "Old Fashioned"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "The Sidecar is built on which spirit?",
+   "answer": "Brandy",
+   "wrong": [
+    "Gin",
+    "Tequila",
+    "Rum"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "A highball is a spirit plus…",
+   "answer": "A bubbly mixer, like soda",
+   "wrong": [
+    "Vermouth",
+    "Egg white",
+    "Cream"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "How is a highball usually made?",
+   "answer": "Built in a tall glass over ice",
+   "wrong": [
+    "Shaken and strained up",
+    "Stirred and served neat",
+    "Blended"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "Which drink follows the Highball pattern?",
+   "answer": "Moscow Mule",
+   "wrong": [
+    "Sidecar",
+    "Martini",
+    "Daiquiri"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "What gives a flip its body?",
+   "answer": "Egg or cream",
+   "wrong": [
+    "Soda",
+    "Vermouth",
+    "Bitters"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "How is a flip mixed?",
+   "answer": "Shaken hard",
+   "wrong": [
+    "Stirred gently",
+    "Built over ice",
+    "Poured neat"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "q": "Which drink gets its body from cream?",
+   "answer": "Brandy Alexander",
+   "wrong": [
+    "Daiquiri",
+    "Martini",
+    "Paloma"
+   ],
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "The Old Fashioned is a spirit with a little sugar and bitters, stirred and served over ice. It’s all spirit, so it’s stirred, not shaken. The Sazerac follows the same pattern.",
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "fact": "The Martini pairs a spirit with vermouth, stirred and strained up. Swap the gin for whiskey and the dry vermouth for sweet, and you have a Manhattan.",
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "fact": "The Daiquiri is rum, lime and sugar, shaken and served up. Swap the spirit and the citrus and you get the Whiskey Sour, the Gimlet and the Pisco Sour.",
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "fact": "The Sidecar is brandy, lemon and an orange liqueur, shaken and served up. The liqueur does the sweetening. The Margarita and the Cosmopolitan follow the same pattern.",
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "fact": "A highball is a spirit and a bubbly mixer, built in a tall glass over ice. The Moscow Mule, the Dark ’n’ Stormy and the Paloma all follow this pattern.",
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  },
+  {
+   "fact": "A flip gets its richness from egg, cream or both. It’s shaken hard so it mixes and gets a light foam. The Brandy Alexander gets its body from cream the same way.",
+   "source": "Cocktail Codex (Alex Day, Nick Fauchald and David Kaplan, Ten Speed Press, 2018)"
+  }
+ ],
+ "unverified": [
+  "Which drinks follow which pattern is worked out from their ingredients, not quoted from Cocktail Codex."
+ ]
+}

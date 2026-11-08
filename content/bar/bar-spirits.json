@@ -1,0 +1,417 @@
+{
+ "number": 2,
+ "slug": "bar-spirits",
+ "title": "Spirits, liqueurs and bitters",
+ "script": "Lesson two",
+ "lead": "What each spirit is made from, and the bottles that sweeten, flavor and finish a drink.",
+ "minutes": 15,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "How spirits are made",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Every spirit starts as something fermented."
+    }
+   ],
+   "know": [
+    "Distilling concentrates the alcohol made by fermentation.",
+    "The Base decides the spirit: grain, agave, sugarcane or fruit.",
+    "Proof in the US is twice the alcohol by volume.",
+    "Oak adds color and flavor; most unaged spirits are clear."
+   ]
+  },
+  {
+   "name": "Whiskey",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Whiskey is grain, distilled and aged in oak."
+    }
+   ],
+   "know": [
+    "Bourbon is American whiskey, at least 51% corn.",
+    "New Oak barrels, charred inside, are a must for bourbon.",
+    "Rye whiskey is at least 51% rye.",
+    "Scotch is made in Scotland and aged at least three years.",
+    "Irish whiskey is made in Ireland."
+   ]
+  },
+  {
+   "name": "Tequila, mezcal, gin and vodka",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Agave, juniper and a clean slate."
+    }
+   ],
+   "know": [
+    "Tequila is made from blue Weber agave in Mexico.",
+    "Reposado rests at least 2 months in oak; añejo at least a year.",
+    "Mezcal is agave too, often roasted in pits, so it’s smoky.",
+    "Gin always tastes of juniper.",
+    "Vodka is meant to be clean and neutral."
+   ]
+  },
+  {
+   "name": "Liqueurs, vermouth and bitters",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Small pours that shape the drink."
+    }
+   ],
+   "know": [
+    "Liqueur is a spirit with sugar and flavor added.",
+    "Orange liqueurs: triple sec, Cointreau, Grand Marnier.",
+    "Vermouth is flavored, fortified wine. Keep it cold once open.",
+    "Bitters go in by the dash: Angostura, Peychaud’s, orange."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "How spirits are made",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DISTILLING",
+      "line": "concentrates the alcohol made by fermentation."
+     },
+     {
+      "big": "THE BASE",
+      "line": "decides the spirit: grain, agave, sugarcane or fruit."
+     },
+     {
+      "big": "PROOF",
+      "line": "in the US is twice the alcohol by volume."
+     },
+     {
+      "big": "OAK",
+      "line": "adds color and flavor; most unaged spirits are clear."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every spirit starts as something fermented.",
+     "where": "Yeast turns sugar into alcohol. **Distilling** heats it and collects the alcohol, making it stronger. The start decides the spirit: **grain** for whiskey, **agave** for tequila and mezcal, **sugarcane** for rum, **grapes or other fruit** for brandy. In the US, **proof** is twice the ABV: 40% ABV is 80 proof."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Whiskey",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BOURBON",
+      "line": "is American whiskey, at least 51% corn."
+     },
+     {
+      "big": "NEW OAK",
+      "line": "barrels, charred inside, are a must for bourbon."
+     },
+     {
+      "big": "RYE",
+      "line": "whiskey is at least 51% rye."
+     },
+     {
+      "big": "SCOTCH",
+      "line": "is made in Scotland and aged at least three years."
+     },
+     {
+      "big": "IRISH",
+      "line": "whiskey is made in Ireland."
+     }
+    ],
+    "read": {
+     "bigIdea": "Whiskey is grain, distilled and aged in oak.",
+     "where": "**Bourbon** is made in the US from at least **51% corn** and aged in **new, charred oak** containers. **Rye** whiskey is at least **51% rye**, so it tastes spicier. **Scotch** is made in Scotland and aged at least **three years**. **Irish** whiskey is made in Ireland.",
+     "mixup": "**Bourbon** has to be made in the US, but not only in Kentucky.",
+     "sayIt": "Rye is a little spicier; bourbon is a little sweeter."
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Tequila, mezcal, gin and vodka",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "TEQUILA",
+      "line": "is made from blue Weber agave in Mexico."
+     },
+     {
+      "big": "REPOSADO",
+      "line": "rests at least 2 months in oak; añejo at least a year."
+     },
+     {
+      "big": "MEZCAL",
+      "line": "is agave too, often roasted in pits, so it’s smoky."
+     },
+     {
+      "big": "GIN",
+      "line": "always tastes of juniper."
+     },
+     {
+      "big": "VODKA",
+      "line": "is meant to be clean and neutral."
+     }
+    ],
+    "read": {
+     "bigIdea": "Agave, juniper and a clean slate.",
+     "where": "**Tequila** is made in Mexico from **blue Weber agave**. **Blanco** is unaged or barely rested, **reposado** rests in oak at least two months, **añejo** at least a year. **Mezcal** is agave too; roasting it in pits makes it **smoky**. **Gin** tastes of **juniper**. **Vodka** is meant to be clean and neutral.",
+     "mixup": "**Reposado** rests at least two months. **Añejo** rests at least a year."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Liqueurs, vermouth and bitters",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LIQUEUR",
+      "line": "is a spirit with sugar and flavor added."
+     },
+     {
+      "big": "ORANGE",
+      "line": "liqueurs: triple sec, Cointreau, Grand Marnier."
+     },
+     {
+      "big": "VERMOUTH",
+      "line": "is flavored, fortified wine. Keep it cold once open."
+     },
+     {
+      "big": "BITTERS",
+      "line": "go in by the dash: Angostura, Peychaud’s, orange."
+     }
+    ],
+    "read": {
+     "bigIdea": "Small pours that shape the drink.",
+     "where": "A **liqueur** is a spirit with sugar and flavor added. **Orange liqueurs** (triple sec, Cointreau, Grand Marnier) sweeten many sours. **Vermouth** is wine that’s flavored and fortified; once open it fades like wine, so it lives in the **fridge**. **Bitters** are strong flavorings used a **dash** at a time: Angostura, Peychaud’s, orange."
+    },
+    "check": [
+     13,
+     14,
+     15
+    ]
+   }
+  ]
+ },
+ "sources": "Written for Mise from US TTB standards of identity for distilled spirits (27 CFR part 5). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "What is 40% ABV in proof?",
+   "answer": "80 proof",
+   "wrong": [
+    "40 proof",
+    "100 proof",
+    "20 proof"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5)"
+  },
+  {
+   "q": "Rum is made from…",
+   "answer": "Sugarcane or molasses",
+   "wrong": [
+    "Agave",
+    "Grapes",
+    "Potatoes"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5)"
+  },
+  {
+   "q": "Brandy is distilled from…",
+   "answer": "Grapes or other fruit",
+   "wrong": [
+    "Grain",
+    "Sugarcane",
+    "Agave"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5)"
+  },
+  {
+   "q": "Where does whiskey get its brown color?",
+   "answer": "Aging in oak",
+   "wrong": [
+    "The grain itself",
+    "Distilling twice",
+    "Adding juice"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5)"
+  },
+  {
+   "q": "Bourbon is made from at least how much corn?",
+   "answer": "51%",
+   "wrong": [
+    "100%",
+    "75%",
+    "25%"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Scotch Whisky Regulations 2009"
+  },
+  {
+   "q": "Does bourbon have to come from Kentucky?",
+   "answer": "No, anywhere in the US",
+   "wrong": [
+    "Yes, only Kentucky",
+    "Only Kentucky or Tennessee",
+    "Only the South"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Scotch Whisky Regulations 2009"
+  },
+  {
+   "q": "Scotch is aged at least…",
+   "answer": "Three years",
+   "wrong": [
+    "One year",
+    "Ten years",
+    "Six months"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Scotch Whisky Regulations 2009"
+  },
+  {
+   "q": "Rye whiskey is at least 51%…",
+   "answer": "Rye",
+   "wrong": [
+    "Corn",
+    "Barley",
+    "Wheat"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Scotch Whisky Regulations 2009"
+  },
+  {
+   "q": "Bourbon ages in…",
+   "answer": "New, charred oak containers",
+   "wrong": [
+    "Used wine barrels only",
+    "Steel tanks",
+    "Clay pots"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Scotch Whisky Regulations 2009"
+  },
+  {
+   "q": "Tequila is made from…",
+   "answer": "Blue Weber agave",
+   "wrong": [
+    "Any cactus",
+    "Sugarcane",
+    "Corn"
+   ],
+   "source": "Mexican tequila standard (NOM-006-SCFI); US TTB standards of identity for distilled spirits (27 CFR part 5)"
+  },
+  {
+   "q": "Which tequila rests in oak the longest?",
+   "answer": "Añejo",
+   "wrong": [
+    "Blanco",
+    "Reposado",
+    "They all rest the same"
+   ],
+   "source": "Mexican tequila standard (NOM-006-SCFI); US TTB standards of identity for distilled spirits (27 CFR part 5)"
+  },
+  {
+   "q": "Why does mezcal often taste smoky?",
+   "answer": "The agave is roasted in pits",
+   "wrong": [
+    "Smoke is added after bottling",
+    "It’s made from peat",
+    "It’s aged next to a fire"
+   ],
+   "source": "Mexican tequila standard (NOM-006-SCFI); US TTB standards of identity for distilled spirits (27 CFR part 5)"
+  },
+  {
+   "q": "Which flavor does every gin have?",
+   "answer": "Juniper",
+   "wrong": [
+    "Anise",
+    "Orange",
+    "Vanilla"
+   ],
+   "source": "Mexican tequila standard (NOM-006-SCFI); US TTB standards of identity for distilled spirits (27 CFR part 5)"
+  },
+  {
+   "q": "What is a liqueur?",
+   "answer": "A spirit with sugar and flavor added",
+   "wrong": [
+    "A spirit aged ten years",
+    "Beer mixed with a spirit",
+    "Any spirit under 20% ABV"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Where does an open bottle of vermouth go?",
+   "answer": "In the fridge",
+   "wrong": [
+    "On the back bar",
+    "In the freezer",
+    "Anywhere, it never goes off"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Bitters are added…",
+   "answer": "A dash at a time",
+   "wrong": [
+    "An ounce at a time",
+    "Only to beer",
+    "Only to hot drinks"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "Which is an orange liqueur?",
+   "answer": "Cointreau",
+   "wrong": [
+    "Campari",
+    "Angostura",
+    "Dry vermouth"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Common bar practice (bar lead to confirm)"
+  },
+  {
+   "q": "A Sazerac is made with which bitters?",
+   "answer": "Peychaud’s",
+   "wrong": [
+    "Orange only",
+    "Chocolate",
+    "Celery"
+   ],
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Common bar practice (bar lead to confirm)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Yeast turns sugar into alcohol. Distilling heats it and collects the alcohol, making it stronger. The start decides the spirit: grain for whiskey, agave for tequila and mezcal, sugarcane for rum, grapes or other fruit for brandy. In the US, proof is twice the ABV: 40% ABV is 80 proof.",
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5)"
+  },
+  {
+   "fact": "Bourbon is made in the US from at least 51% corn and aged in new, charred oak containers. Rye whiskey is at least 51% rye, so it tastes spicier. Scotch is made in Scotland and aged at least three years. Irish whiskey is made in Ireland.",
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Scotch Whisky Regulations 2009"
+  },
+  {
+   "fact": "Tequila is made in Mexico from blue Weber agave. Blanco is unaged or barely rested, reposado rests in oak at least two months, añejo at least a year. Mezcal is agave too; roasting it in pits makes it smoky. Gin tastes of juniper. Vodka is meant to be clean and neutral.",
+   "source": "Mexican tequila standard (NOM-006-SCFI); US TTB standards of identity for distilled spirits (27 CFR part 5)"
+  },
+  {
+   "fact": "A liqueur is a spirit with sugar and flavor added. Orange liqueurs (triple sec, Cointreau, Grand Marnier) sweeten many sours. Vermouth is wine that’s flavored and fortified; once open it fades like wine, so it lives in the fridge. Bitters are strong flavorings used a dash at a time: Angostura, Peychaud’s, orange.",
+   "source": "US TTB standards of identity for distilled spirits (27 CFR part 5); Common bar practice (bar lead to confirm)"
+  }
+ ],
+ "unverified": [
+  "Tequila aging minimums are from the Mexican standard as commonly summarized; bar lead to confirm against the CRT."
+ ]
+}

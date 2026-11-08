@@ -7,7 +7,7 @@
 //   • Paths borrow from the programs (Tommy: "if they've completed it, it counts towards their regular [Sommelier] training"):
 //     a Sommelier lesson in a path is the same lesson, so finishing it in either place ticks it in both.
 //   • Steps are only ever things the book already has; a step whose page or quiz isn't in this store's book is left out.
-import { chapterBySlug, allChapters } from './manual.mjs';
+import { chapterBySlug, allChapters, chaptersBar, programOf, BAR } from './manual.mjs';
 import { lessonSlug, doneKey } from './study.mjs';
 import { passFor, PASS_PCT } from './quizgen.mjs';
 
@@ -31,13 +31,13 @@ const PATHS = {
   server: [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('steps-of-service'), read('safety'), read('cleanliness'), read('floor-plan'), read('allergen-guide'), quiz('t:allergens')] },
     { key: 'week-1', title: 'Week 1 · The menu', day: 7, steps: [group('food'), sign('table-talk', 'Talk through three dishes at a table', 'A manager listens and signs you off')] },
-    { key: 'week-2', title: 'Week 2 · The bar and wine', day: 14, steps: [group('bar-menu'), group('wine'), lesson('on-the-floor#1'), lesson('on-the-floor#7')] },
+    { key: 'week-2', title: 'Week 2 · The bar and wine', day: 14, steps: [lesson('bar-serving#0'), lesson('bar-serving#2'), group('bar-menu'), group('wine'), lesson('on-the-floor#1'), lesson('on-the-floor#7')] },
     { key: 'weeks-3-4', title: 'Weeks 3 and 4 · On the floor', day: 28, steps: [sign('shadow', 'Shadow a full shift', 'Work a shift beside a trainer'), sign('wine-at-table', 'Open and pour wine at a table', 'A manager watches the full service'), sign('floor', 'Floor sign-off', 'Your manager signs you off for the floor')] },
   ],
   bartender: [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('steps-of-service'), read('safety'), read('cleanliness'), read('allergen-guide'), quiz('t:allergens')] },
-    { key: 'week-1', title: 'Week 1 · Our cocktails', day: 7, steps: [read('the-bar/cocktail-specs'), group('specs-menu'), sign('build-three', 'Build three menu cocktails', 'A manager watches the builds and tastes them')] },
-    { key: 'week-2', title: 'Week 2 · Back bar, wine and food', day: 14, steps: [read('the-bar/back-bar'), quiz('t:spec:classic-off'), group('wine'), group('food'), lesson('on-the-floor#1')] },
+    { key: 'week-1', title: 'Week 1 · Our cocktails', day: 7, steps: [lesson('bar-our-menu#0'), lesson('bar-glass-ice-garnish#3'), read('the-bar/cocktail-specs'), group('specs-menu'), sign('build-three', 'Build three menu cocktails', 'A manager watches the builds and tastes them')] },
+    { key: 'week-2', title: 'Week 2 · Back bar, wine and food', day: 14, steps: [lesson('bar-spirits#1'), lesson('bar-spirits#3'), read('the-bar/back-bar'), quiz('t:spec:classic-off'), group('wine'), group('food'), lesson('on-the-floor#1')] },
     { key: 'weeks-3-4', title: 'Weeks 3 and 4 · Behind the bar', day: 28, steps: [sign('shadow', 'Shadow a bar shift', 'Work a shift beside a bartender'), sign('bar', 'Bar sign-off', 'Your manager signs you off for the bar')] },
   ],
   host: [
@@ -59,7 +59,7 @@ function groupQuizzes(name, quizzes) {
   if (name === 'specs-menu') return inGroup('Cocktail Specs · For Bartenders').filter((q) => q.id !== 't:spec:classic-off');
   return [];
 }
-const PROGRAM_LEVEL = (ch) => `Sommelier · Level ${ch.level || 1}`;
+const PROGRAM_LEVEL = programOf;
 
 /** A job's path for this store: stages with concrete steps (left out when this store's book doesn't have them). */
 export function pathFor(job, { quizzes, slugs, titles }) {
@@ -142,8 +142,11 @@ function progressFor(stages, done, startedOn) {
 function programsFor(done, paths) {
   const inPath = new Set(paths.flatMap((p) => p.stages.flatMap((st) => st.steps.filter((s) => s.kind === 'lesson').map((s) => s.key))));
   const out = [];
+  // The Cocktail Program first: it's the one most of the floor takes.
+  const bar = chaptersBar().flatMap((c) => c.sections.map((_, i) => doneKey(c, i)));
+  if (bar.length) out.push({ title: 'Cocktail Program · Level 1', to: '/' + BAR, total: bar.length, done: bar.filter((k) => done.reads.has(k)).length, inPath: bar.filter((k) => inPath.has(k)).length });
   for (const level of [1, 2]) {
-    const chs = allChapters().filter((c) => (c.level || 1) === level);
+    const chs = allChapters().filter((c) => c.program !== 'bar' && (c.level || 1) === level);
     const keys = chs.flatMap((c) => c.sections.map((_, i) => doneKey(c, i)));
     if (!keys.length) continue;
     out.push({ title: `Sommelier · Level ${level}`, to: level === 1 ? '/sommelier-program/level-1' : '/sommelier-program/level-2', total: keys.length,
