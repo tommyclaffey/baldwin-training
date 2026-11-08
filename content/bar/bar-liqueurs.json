@@ -1,0 +1,394 @@
+{
+ "number": 9,
+ "slug": "bar-liqueurs",
+ "title": "Liqueurs, vermouth and bitters",
+ "script": "Lesson 9",
+ "lead": "The bottles that sweeten, season and finish a drink.",
+ "minutes": 14,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Liqueurs",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A spirit with sugar and flavor added."
+    }
+   ],
+   "know": [
+    "Liqueur is a spirit with sugar and flavor added.",
+    "15% Abv and up, in the EU.",
+    "Grand Marnier is an orange liqueur made with Cognac."
+   ],
+   "book": "spirit/liqueurs",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Amaro and aperitivo",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Italy’s bitter liqueurs."
+    }
+   ],
+   "know": [
+    "Amaro means bitter: herbal, bitter and sweet.",
+    "Aperol and Campari are aperitivo bitters.",
+    "Fernet is one of the most bitter."
+   ],
+   "book": "spirit/amaro",
+   "source": "Common bar practice"
+  },
+  {
+   "name": "Vermouth",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Wine, flavored and fortified."
+    }
+   ],
+   "know": [
+    "Fortified wine, flavored with herbs and spices.",
+    "Sweet red vermouth: Manhattan, Negroni.",
+    "Dry vermouth: Martini.",
+    "Fridge once open; finish it in one to three months."
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "name": "Bitters",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A dash seasons the whole drink."
+    }
+   ],
+   "know": [
+    "A Dash at a time: bitters are strong.",
+    "Angostura is aromatic bitters.",
+    "Peychaud’S is the Sazerac’s Creole bitters."
+   ],
+   "book": "spirit/bitters",
+   "source": "Common bar practice"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Liqueurs",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LIQUEUR",
+      "line": "is a spirit with sugar and flavor added."
+     },
+     {
+      "big": "15% ABV",
+      "line": "and up, in the EU."
+     },
+     {
+      "big": "GRAND MARNIER",
+      "line": "is an orange liqueur made with Cognac."
+     }
+    ],
+    "read": {
+     "bigIdea": "A spirit with sugar and flavor added.",
+     "where": "A **liqueur** is a spirit sweetened and flavored. In the EU it has at least **15% ABV** and, for most, at least **100 grams of sugar per liter**. Families on our back bar: **orange** (triple sec, Cointreau, Grand Marnier), **coffee**, **nut**, **herbal** (Chartreuse, Bénédictine), **cream** and **fruit and floral** (elderflower, cassis, maraschino).",
+     "stopsTitle": "Families on our back bar",
+     "stops": [
+      {
+       "name": "Orange",
+       "text": "Triple sec, **Cointreau**, **Grand Marnier** (Cognac-based)."
+      },
+      {
+       "name": "Coffee",
+       "text": "For the **Espresso Martini** and White Russian."
+      },
+      {
+       "name": "Herbal",
+       "text": "**Chartreuse**, **Bénédictine**."
+      },
+      {
+       "name": "Fruit and floral",
+       "text": "Elderflower, cassis, **maraschino**."
+      }
+     ]
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Amaro and aperitivo",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AMARO",
+      "line": "means bitter: herbal, bitter and sweet."
+     },
+     {
+      "big": "APEROL",
+      "line": "and Campari are aperitivo bitters."
+     },
+     {
+      "big": "FERNET",
+      "line": "is one of the most bitter."
+     }
+    ],
+    "read": {
+     "bigIdea": "Italy’s bitter liqueurs.",
+     "where": "**Amaro** means “bitter” in Italian: herbal liqueurs that are bitter and sweet at once. **Aperitivo** bitters like **Aperol** and **Campari** are lighter and brighter, for before dinner. **Fernet** is one of the most bitter. **Carciofo** amari, like Cynar, use artichoke. **Alpine** amari use mountain herbs.",
+     "stopsTitle": "On our back bar",
+     "stops": [
+      {
+       "name": "Aperitivo",
+       "text": "**Aperol**, **Campari**: bright, for before dinner."
+      },
+      {
+       "name": "Fernet",
+       "text": "Very **bitter** and minty."
+      },
+      {
+       "name": "Carciofo",
+       "text": "**Artichoke**, like Cynar."
+      },
+      {
+       "name": "Alpine",
+       "text": "**Mountain herbs**."
+      }
+     ]
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Vermouth",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FORTIFIED",
+      "line": "wine, flavored with herbs and spices."
+     },
+     {
+      "big": "SWEET",
+      "line": "red vermouth: Manhattan, Negroni."
+     },
+     {
+      "big": "DRY",
+      "line": "vermouth: Martini."
+     },
+     {
+      "big": "FRIDGE",
+      "line": "once open; finish it in one to three months."
+     }
+    ],
+    "read": {
+     "bigIdea": "Wine, flavored and fortified.",
+     "where": "**Vermouth** is wine flavored with herbs and spices and fortified with spirit. **Sweet** (red, Italian-style) goes in Manhattans and Negronis; **dry** (pale, French-style) goes in Martinis. It is wine, so once open it fades: keep it in the **fridge** and finish it within **one to three months**.",
+     "mixup": "**Sweet** vermouth for a Manhattan and Negroni. **Dry** vermouth for a Martini."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Bitters",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "A DASH",
+      "line": "at a time: bitters are strong."
+     },
+     {
+      "big": "ANGOSTURA",
+      "line": "is aromatic bitters."
+     },
+     {
+      "big": "PEYCHAUD’S",
+      "line": "is the Sazerac’s Creole bitters."
+     }
+    ],
+    "read": {
+     "bigIdea": "A dash seasons the whole drink.",
+     "where": "**Bitters** are strong infusions of herbs, roots and spices, added a **dash** at a time. **Aromatic** bitters (Angostura) go in the Old Fashioned and Manhattan. **Creole** bitters (Peychaud’s) are the Sazerac’s. **Orange** bitters suit Martinis. There are **chocolate**, **mole** and **herbal** bitters too.",
+     "stopsTitle": "On our back bar",
+     "stops": [
+      {
+       "name": "Aromatic",
+       "text": "**Angostura**: Old Fashioned, Manhattan."
+      },
+      {
+       "name": "Creole",
+       "text": "**Peychaud’s**: the Sazerac."
+      },
+      {
+       "name": "Orange",
+       "text": "Bright; good in **Martinis**."
+      },
+      {
+       "name": "Chocolate and mole",
+       "text": "Rich, for **dark spirits**."
+      }
+     ]
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Common bar practice; EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "What is a liqueur?",
+   "answer": "A spirit with sugar and flavor added",
+   "wrong": [
+    "A spirit aged ten years",
+    "Beer mixed with spirit",
+    "Any spirit under 10% ABV"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Grand Marnier is…",
+   "answer": "An orange liqueur made with Cognac",
+   "wrong": [
+    "A coffee liqueur",
+    "A bitter amaro",
+    "A vermouth"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Chartreuse is a…",
+   "answer": "Herbal liqueur",
+   "wrong": [
+    "Coffee liqueur",
+    "Cream liqueur",
+    "Vermouth"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "“Amaro” means…",
+   "answer": "Bitter",
+   "wrong": [
+    "Sweet",
+    "Old",
+    "Strong"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Which is an aperitivo bitter?",
+   "answer": "Aperol",
+   "wrong": [
+    "Fernet",
+    "Chartreuse",
+    "Kahlúa"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Cynar, a carciofo amaro, uses…",
+   "answer": "Artichoke",
+   "wrong": [
+    "Orange",
+    "Coffee",
+    "Mint"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Where does an open bottle of vermouth go?",
+   "answer": "In the fridge",
+   "wrong": [
+    "On the back bar",
+    "In the freezer",
+    "In the sun"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Which vermouth goes in a Manhattan?",
+   "answer": "Sweet",
+   "wrong": [
+    "Dry",
+    "Blanc",
+    "None"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Vermouth is…",
+   "answer": "Wine, flavored and fortified",
+   "wrong": [
+    "A whiskey",
+    "A bitter amaro",
+    "A gin style"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Bitters are added…",
+   "answer": "A dash at a time",
+   "wrong": [
+    "An ounce at a time",
+    "Only to beer",
+    "Only to hot drinks"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "The Sazerac uses which bitters?",
+   "answer": "Peychaud’s",
+   "wrong": [
+    "Orange",
+    "Chocolate",
+    "Celery"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Angostura is what kind of bitters?",
+   "answer": "Aromatic",
+   "wrong": [
+    "Orange",
+    "Creole",
+    "Herbal"
+   ],
+   "source": "Common bar practice"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "A liqueur is a spirit sweetened and flavored. In the EU it has at least 15% ABV and, for most, at least 100 grams of sugar per liter. Families on our back bar: orange (triple sec, Cointreau, Grand Marnier), coffee, nut, herbal (Chartreuse, Bénédictine), cream and fruit and floral (elderflower, cassis, maraschino).",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "Amaro means “bitter” in Italian: herbal liqueurs that are bitter and sweet at once. Aperitivo bitters like Aperol and Campari are lighter and brighter, for before dinner. Fernet is one of the most bitter. Carciofo amari, like Cynar, use artichoke. Alpine amari use mountain herbs.",
+   "source": "Common bar practice"
+  },
+  {
+   "fact": "Vermouth is wine flavored with herbs and spices and fortified with spirit. Sweet (red, Italian-style) goes in Manhattans and Negronis; dry (pale, French-style) goes in Martinis. It is wine, so once open it fades: keep it in the fridge and finish it within one to three months.",
+   "source": "Common bar practice"
+  },
+  {
+   "fact": "Bitters are strong infusions of herbs, roots and spices, added a dash at a time. Aromatic bitters (Angostura) go in the Old Fashioned and Manhattan. Creole bitters (Peychaud’s) are the Sazerac’s. Orange bitters suit Martinis. There are chocolate, mole and herbal bitters too.",
+   "source": "Common bar practice"
+  }
+ ],
+ "unverified": [
+  "Amaro descriptions are general; bar lead to confirm against our bottles."
+ ]
+}

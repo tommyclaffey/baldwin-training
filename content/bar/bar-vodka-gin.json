@@ -1,0 +1,423 @@
+{
+ "number": 3,
+ "slug": "bar-vodka-gin",
+ "title": "Vodka and gin",
+ "script": "Lesson 3",
+ "lead": "Vodka is the clean slate; gin is vodka’s cousin with juniper. Learn the legal kinds of gin and the styles on our back bar.",
+ "minutes": 16,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Vodka",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Vodka is meant to be clean and neutral."
+    }
+   ],
+   "know": [
+    "Any Base works: wheat, rye, corn, potatoes or grapes.",
+    "Not Aged usually, so it stays clean and clear.",
+    "37.5% is the EU minimum strength for vodka."
+   ],
+   "book": "spirit/vodka",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "What makes gin gin",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Juniper first, then the botanicals."
+    }
+   ],
+   "know": [
+    "Juniper must lead the flavor.",
+    "Botanicals like coriander and citrus peel build around it.",
+    "London Dry is a method: nothing but water added after distilling."
+   ],
+   "book": "spirit/gin",
+   "visuals": [
+    {
+     "type": "pyramid",
+     "title": "Three kinds of gin, by EU law",
+     "rows": [
+      {
+       "name": "London gin",
+       "note": "all flavor from distilling; then only water"
+      },
+      {
+       "name": "Distilled gin",
+       "note": "redistilled with juniper and botanicals"
+      },
+      {
+       "name": "Gin",
+       "note": "juniper flavor added to neutral spirit"
+      }
+     ]
+    }
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "name": "Gin styles",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Five styles of gin, from dry to malty."
+    }
+   ],
+   "know": [
+    "Old Tom is the sweeter style.",
+    "Genever is made from malt wine, so it’s malty.",
+    "Contemporary gins let other botanicals lead.",
+    "Sloe Gin is a liqueur made with sloe berries."
+   ],
+   "book": "spirit/gin/london-dry",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Gin at the bar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Most of the classics start with gin."
+    }
+   ],
+   "know": [
+    "Negroni is gin, Campari and sweet vermouth.",
+    "French 75 is gin, lemon and sugar, topped with Champagne.",
+    "Tom Collins is gin, lemon, sugar and soda."
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Vodka",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ANY BASE",
+      "line": "works: wheat, rye, corn, potatoes or grapes."
+     },
+     {
+      "big": "NOT AGED",
+      "line": "usually, so it stays clean and clear."
+     },
+     {
+      "big": "37.5%",
+      "line": "is the EU minimum strength for vodka."
+     }
+    ],
+    "read": {
+     "bigIdea": "Vodka is meant to be clean and neutral.",
+     "where": "Vodka can be made from **any farm base**: wheat, rye, corn, potatoes, even grapes. It is distilled to a high strength and usually **not aged**, so it tastes clean. In the EU it is bottled at **37.5% or more**. **Flavored vodkas** add fruit, citrus or vanilla.",
+     "stopsTitle": "On our back bar",
+     "stops": [
+      {
+       "name": "Wheat",
+       "text": "Soft and a little sweet."
+      },
+      {
+       "name": "Rye",
+       "text": "Drier, with a peppery edge."
+      },
+      {
+       "name": "Potato",
+       "text": "Rounder and creamier."
+      },
+      {
+       "name": "Corn",
+       "text": "Clean and slightly sweet."
+      }
+     ]
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "What makes gin gin",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "JUNIPER",
+      "line": "must lead the flavor."
+     },
+     {
+      "big": "BOTANICALS",
+      "line": "like coriander and citrus peel build around it."
+     },
+     {
+      "big": "LONDON DRY",
+      "line": "is a method: nothing but water added after distilling."
+     }
+    ],
+    "read": {
+     "bigIdea": "Juniper first, then the botanicals.",
+     "where": "Gin is a spirit flavored with **juniper**, and juniper has to lead. Other **botanicals** (coriander, citrus peel, angelica root and more) build around it. EU law has three kinds. **Gin**: juniper flavor added to neutral spirit. **Distilled gin**: redistilled with the botanicals. **London gin**: every flavor comes from that distillation; afterward only water and a tiny amount of sugar (0.1 g per liter) may go in, and no color.",
+     "visual": 0,
+     "visualIntro": "",
+     "mixup": "**London Dry** is a method, not a place: it can be made anywhere."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Gin styles",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "OLD TOM",
+      "line": "is the sweeter style."
+     },
+     {
+      "big": "GENEVER",
+      "line": "is made from malt wine, so it’s malty."
+     },
+     {
+      "big": "CONTEMPORARY",
+      "line": "gins let other botanicals lead."
+     },
+     {
+      "big": "SLOE GIN",
+      "line": "is a liqueur made with sloe berries."
+     }
+    ],
+    "read": {
+     "bigIdea": "Five styles of gin, from dry to malty.",
+     "where": "**London Dry** is crisp and juniper-forward. **Plymouth** comes from Plymouth, England. **Old Tom** is a softer, sweeter style. **Genever**, from the Netherlands and Belgium, is made from **malt wine**, so it tastes malty, a little like whiskey. **Contemporary** gins keep juniper but let other botanicals lead. **Sloe gin** is a liqueur: gin with sloe berries, at least 25% ABV.",
+     "stopsTitle": "The styles",
+     "stops": [
+      {
+       "name": "London Dry",
+       "text": "Dry and **juniper-forward**."
+      },
+      {
+       "name": "Plymouth",
+       "text": "From **Plymouth, England**."
+      },
+      {
+       "name": "Old Tom",
+       "text": "**Sweeter** and softer."
+      },
+      {
+       "name": "Genever",
+       "text": "**Malt wine** base; malty, from the Netherlands and Belgium."
+      },
+      {
+       "name": "Contemporary",
+       "text": "Juniper is there, but **other botanicals** lead."
+      }
+     ]
+    },
+    "check": [
+     7,
+     8,
+     9
+    ]
+   },
+   {
+    "name": "Gin at the bar",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NEGRONI",
+      "line": "is gin, Campari and sweet vermouth."
+     },
+     {
+      "big": "FRENCH 75",
+      "line": "is gin, lemon and sugar, topped with Champagne."
+     },
+     {
+      "big": "TOM COLLINS",
+      "line": "is gin, lemon, sugar and soda."
+     }
+    ],
+    "read": {
+     "bigIdea": "Most of the classics start with gin.",
+     "where": "Gin is the base of the **Martini**, **Negroni** (gin, Campari, sweet vermouth), **Gimlet** (gin and lime), **Tom Collins** (gin, lemon, sugar and soda), **French 75** (gin, lemon and sugar topped with Champagne) and the **Gin and Tonic**. A **dry** gin keeps a Martini crisp.",
+     "sayIt": "It’s gin-based: bright, botanical and dry."
+    },
+    "check": [
+     11,
+     12,
+     13
+    ]
+   }
+  ]
+ },
+ "sources": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Our book: the classic and house cocktail specs in this app. Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "What can vodka be made from?",
+   "answer": "Grain, potatoes, corn or grapes",
+   "wrong": [
+    "Only potatoes",
+    "Only wheat",
+    "Only agave"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Is vodka usually aged?",
+   "answer": "No, it’s meant to be clean and clear",
+   "wrong": [
+    "Yes, at least two years",
+    "Yes, in new charred oak",
+    "Only in Russia"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "The EU minimum strength for vodka is…",
+   "answer": "37.5% ABV",
+   "wrong": [
+    "25% ABV",
+    "50% ABV",
+    "20% ABV"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Does London Dry gin have to be made in London?",
+   "answer": "No, it’s a method, not a place",
+   "wrong": [
+    "Yes, only in London",
+    "Only in England",
+    "Only in the UK"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Which flavor has to lead in every gin?",
+   "answer": "Juniper",
+   "wrong": [
+    "Citrus",
+    "Coriander",
+    "Cucumber"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "What can go into London gin after it’s distilled?",
+   "answer": "Only water, and a tiny amount of sugar",
+   "wrong": [
+    "Any flavor",
+    "Color and sugar",
+    "Fruit juice"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "“Distilled gin” means…",
+   "answer": "Redistilled with juniper and botanicals",
+   "wrong": [
+    "Aged in oak",
+    "Distilled in London",
+    "Made without juniper"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Genever is made from…",
+   "answer": "Malt wine",
+   "wrong": [
+    "Potatoes",
+    "Agave",
+    "Sugarcane"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Which gin style is sweeter?",
+   "answer": "Old Tom",
+   "wrong": [
+    "London Dry",
+    "Plymouth",
+    "Navy"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "What is sloe gin?",
+   "answer": "A liqueur made with sloe berries",
+   "wrong": [
+    "A gin aged in oak",
+    "A gin from Plymouth",
+    "A juniper-free gin"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "A contemporary gin…",
+   "answer": "Keeps juniper but lets other botanicals lead",
+   "wrong": [
+    "Has no juniper",
+    "Must be made in London",
+    "Is always pink"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Gin, Campari and sweet vermouth make a…",
+   "answer": "Negroni",
+   "wrong": [
+    "Martini",
+    "Gimlet",
+    "French 75"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "What tops a French 75?",
+   "answer": "Champagne",
+   "wrong": [
+    "Soda water",
+    "Tonic",
+    "Ginger beer"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "A Gimlet is gin and…",
+   "answer": "Lime",
+   "wrong": [
+    "Lemon and soda",
+    "Vermouth",
+    "Grapefruit"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Vodka can be made from any farm base: wheat, rye, corn, potatoes, even grapes. It is distilled to a high strength and usually not aged, so it tastes clean. In the EU it is bottled at 37.5% or more. Flavored vodkas add fruit, citrus or vanilla.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "Gin is a spirit flavored with juniper, and juniper has to lead. Other botanicals (coriander, citrus peel, angelica root and more) build around it. EU law has three kinds. Gin: juniper flavor added to neutral spirit. Distilled gin: redistilled with the botanicals. London gin: every flavor comes from that distillation; afterward only water and a tiny amount of sugar (0.1 g per liter) may go in, and no color.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "fact": "London Dry is crisp and juniper-forward. Plymouth comes from Plymouth, England. Old Tom is a softer, sweeter style. Genever, from the Netherlands and Belgium, is made from malt wine, so it tastes malty, a little like whiskey. Contemporary gins keep juniper but let other botanicals lead. Sloe gin is a liqueur: gin with sloe berries, at least 25% ABV.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "Gin is the base of the Martini, Negroni (gin, Campari, sweet vermouth), Gimlet (gin and lime), Tom Collins (gin, lemon, sugar and soda), French 75 (gin, lemon and sugar topped with Champagne) and the Gin and Tonic. A dry gin keeps a Martini crisp.",
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "unverified": [
+  "Plymouth gin’s protected status has lapsed (per Wikipedia); we only say where it comes from.",
+  "Style descriptions are general; bar lead to confirm against our bottles."
+ ]
+}

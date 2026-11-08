@@ -1,0 +1,512 @@
+{
+ "number": 6,
+ "slug": "bar-agave",
+ "title": "Tequila and mezcal",
+ "script": "Lesson 6",
+ "lead": "Two agave spirits from Mexico: how they’re made, how they’re aged and what the label tells you.",
+ "minutes": 18,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "How tequila is made",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Blue agave, cooked, crushed and distilled."
+    }
+   ],
+   "know": [
+    "Blue Weber agave is the only agave for tequila.",
+    "The Piña is the agave heart that gets cooked.",
+    "Cooked in ovens: bright and peppery, not smoky."
+   ],
+   "book": "spirit/tequila",
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Agave to tequila",
+     "items": [
+      {
+       "name": "Harvest",
+       "text": "the piña, the agave’s heart"
+      },
+      {
+       "name": "Cook",
+       "text": "starch turns to sugar"
+      },
+      {
+       "name": "Crush + ferment",
+       "text": "juice becomes alcohol"
+      },
+      {
+       "name": "Distill",
+       "text": "then rest or age"
+      }
+     ]
+    }
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "name": "100% agave or not",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Read the label: 100% agave or just “tequila.”"
+    }
+   ],
+   "know": [
+    "100% Agave means only agave sugars.",
+    "Mixto needs only 51% agave sugars.",
+    "The Label tells you: look for “100% de agave.”"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "name": "Tequila by age",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Five classes, from unaged to three years."
+    }
+   ],
+   "know": [
+    "Blanco is unaged or rested under two months.",
+    "Reposado rests at least two months in oak.",
+    "Añejo ages at least one year; extra añejo, three.",
+    "Cristalino is aged tequila filtered clear."
+   ],
+   "book": "spirit/tequila/blanco",
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Minimum time in oak",
+     "rows": [
+      {
+       "name": "Blanco",
+       "value": "under 2 months",
+       "pct": 0.04
+      },
+      {
+       "name": "Reposado",
+       "value": "2 months",
+       "pct": 0.12
+      },
+      {
+       "name": "Añejo",
+       "value": "1 year",
+       "pct": 0.4
+      },
+      {
+       "name": "Extra añejo",
+       "value": "3 years",
+       "pct": 1
+      }
+     ],
+     "note": "NOM-006, as summarized by Difford’s Guide"
+    }
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "name": "Mezcal",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Any of many agaves, often roasted in pits."
+    }
+   ],
+   "know": [
+    "Oaxaca makes most of the mezcal.",
+    "Espadín is the most common agave; tobalá is wild.",
+    "Smoky from roasting agave in earthen pits.",
+    "Ancestral mezcal is distilled in clay pots."
+   ],
+   "book": "spirit/mezcal",
+   "source": "Mexican mezcal standard NOM-070-SCFI-2016 (as summarized on Wikipedia)"
+  },
+  {
+   "name": "Agave at the bar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "From the Margarita to the Oaxaca Old Fashioned."
+    }
+   ],
+   "know": [
+    "Margarita is tequila, lime and orange liqueur.",
+    "Paloma is tequila, grapefruit soda and lime.",
+    "Blanco keeps citrus drinks bright."
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "How tequila is made",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BLUE WEBER",
+      "line": "agave is the only agave for tequila."
+     },
+     {
+      "big": "THE PIÑA",
+      "line": "is the agave heart that gets cooked."
+     },
+     {
+      "big": "COOKED",
+      "line": "in ovens: bright and peppery, not smoky."
+     }
+    ],
+    "read": {
+     "bigIdea": "Blue agave, cooked, crushed and distilled.",
+     "where": "Tequila is made in Mexico from **blue Weber agave**. The heart of the plant, the **piña**, is cooked to turn its starch into sugar, crushed, fermented and distilled. Cooking in ovens keeps the flavor bright and peppery; there’s no pit smoke as in many mezcals.",
+     "visual": 0,
+     "visualIntro": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "100% agave or not",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "100% AGAVE",
+      "line": "means only agave sugars."
+     },
+     {
+      "big": "MIXTO",
+      "line": "needs only 51% agave sugars."
+     },
+     {
+      "big": "THE LABEL",
+      "line": "tells you: look for “100% de agave.”"
+     }
+    ],
+    "read": {
+     "bigIdea": "Read the label: 100% agave or just “tequila.”",
+     "where": "**100% de agave** tequila is made only from agave sugars and must be bottled in its production region. A tequila that just says **“tequila”** (often called **mixto**) needs only **51%** of its sugars from agave; the rest can come from other sugars.",
+     "mixup": "**100% agave** says so on the label. If it doesn’t, it’s a **mixto**."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Tequila by age",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BLANCO",
+      "line": "is unaged or rested under two months."
+     },
+     {
+      "big": "REPOSADO",
+      "line": "rests at least two months in oak."
+     },
+     {
+      "big": "AÑEJO",
+      "line": "ages at least one year; extra añejo, three."
+     },
+     {
+      "big": "CRISTALINO",
+      "line": "is aged tequila filtered clear."
+     }
+    ],
+    "read": {
+     "bigIdea": "Five classes, from unaged to three years.",
+     "where": "**Blanco** is unaged or rested under two months. **Joven** is usually blanco with color or a little aged tequila mixed in. **Reposado** rests in oak at least **two months**. **Añejo** ages at least **one year** in oak of 600 liters or less. **Extra añejo** ages at least **three years**. **Cristalino** is aged tequila filtered clear; it isn’t its own legal class.",
+     "visual": 0,
+     "visualIntro": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Mezcal",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "OAXACA",
+      "line": "makes most of the mezcal."
+     },
+     {
+      "big": "ESPADÍN",
+      "line": "is the most common agave; tobalá is wild."
+     },
+     {
+      "big": "SMOKY",
+      "line": "from roasting agave in earthen pits."
+     },
+     {
+      "big": "ANCESTRAL",
+      "line": "mezcal is distilled in clay pots."
+     }
+    ],
+    "read": {
+     "bigIdea": "Any of many agaves, often roasted in pits.",
+     "where": "**Mezcal** is an agave spirit made mostly in **Oaxaca**, from many kinds of agave. **Espadín** is the most common; **tobalá** is a smaller, wild agave; an **ensamble** blends several. Roasting the agave in **earthen pits** gives the smoky taste. The label says how it’s made: **mezcal**, **mezcal artesanal** (pit ovens, traditional crushing) or **mezcal ancestral** (pit ovens, hand crushing, clay pot stills).",
+     "stopsTitle": "On our back bar",
+     "stops": [
+      {
+       "name": "Espadín",
+       "text": "The **most common** agave for mezcal."
+      },
+      {
+       "name": "Tobalá",
+       "text": "A small, **wild** agave."
+      },
+      {
+       "name": "Ensamble",
+       "text": "A **blend** of agaves."
+      }
+     ],
+     "mixup": "All tequila is a kind of agave spirit, but **tequila** must be blue Weber agave from its own region. **Mezcal** can use many agaves."
+    },
+    "check": [
+     10,
+     11,
+     12
+    ]
+   },
+   {
+    "name": "Agave at the bar",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "MARGARITA",
+      "line": "is tequila, lime and orange liqueur."
+     },
+     {
+      "big": "PALOMA",
+      "line": "is tequila, grapefruit soda and lime."
+     },
+     {
+      "big": "BLANCO",
+      "line": "keeps citrus drinks bright."
+     }
+    ],
+    "read": {
+     "bigIdea": "From the Margarita to the Oaxaca Old Fashioned.",
+     "where": "The **Margarita** is tequila, lime and orange liqueur. The **Paloma** is tequila with grapefruit soda and lime. The **Oaxaca Old Fashioned** uses tequila **and** mezcal. The **Naked and Famous** is mezcal, Aperol, yellow Chartreuse and lime. **Blanco** keeps citrus drinks bright; **reposado** and **añejo** suit stirred drinks."
+    },
+    "check": [
+     14,
+     15,
+     16
+    ]
+   }
+  ]
+ },
+ "sources": "Mexican mezcal standard NOM-070-SCFI-2016 (as summarized on Wikipedia); Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide); Our book: the classic and house cocktail specs in this app. Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Tequila is made from which agave?",
+   "answer": "Blue Weber agave",
+   "wrong": [
+    "Any agave",
+    "Espadín",
+    "Tobalá"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "What part of the agave is cooked?",
+   "answer": "The piña, its heart",
+   "wrong": [
+    "The leaves",
+    "The flower",
+    "The roots"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "Why is the agave cooked?",
+   "answer": "To turn its starch into sugar",
+   "wrong": [
+    "To add smoke",
+    "To color it",
+    "To kill the yeast"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "A tequila labeled just “tequila” needs at least how much agave sugar?",
+   "answer": "51%",
+   "wrong": [
+    "100%",
+    "80%",
+    "25%"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "How do you know a tequila is 100% agave?",
+   "answer": "The label says “100% de agave”",
+   "wrong": [
+    "It’s clear",
+    "It’s expensive",
+    "It’s aged"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "100% agave tequila must be bottled…",
+   "answer": "In its production region",
+   "wrong": [
+    "Anywhere",
+    "In the US",
+    "In Oaxaca"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "Reposado tequila rests in oak at least…",
+   "answer": "Two months",
+   "wrong": [
+    "One year",
+    "Three years",
+    "Two weeks"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "Añejo tequila ages at least…",
+   "answer": "One year",
+   "wrong": [
+    "Two months",
+    "Three years",
+    "Five years"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "What is a cristalino?",
+   "answer": "Aged tequila filtered clear",
+   "wrong": [
+    "An unaged tequila",
+    "A mezcal",
+    "A tequila liqueur"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "Extra añejo ages at least…",
+   "answer": "Three years",
+   "wrong": [
+    "One year",
+    "Ten years",
+    "Six months"
+   ],
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "q": "Why is mezcal often smoky?",
+   "answer": "The agave is roasted in earthen pits",
+   "wrong": [
+    "Smoke is added after",
+    "It ages in burnt barrels",
+    "It’s made from peat"
+   ],
+   "source": "Mexican mezcal standard NOM-070-SCFI-2016 (as summarized on Wikipedia)"
+  },
+  {
+   "q": "Which agave is most common for mezcal?",
+   "answer": "Espadín",
+   "wrong": [
+    "Blue Weber",
+    "Tobalá",
+    "Aloe"
+   ],
+   "source": "Mexican mezcal standard NOM-070-SCFI-2016 (as summarized on Wikipedia)"
+  },
+  {
+   "q": "An “ensamble” mezcal is…",
+   "answer": "A blend of agaves",
+   "wrong": [
+    "Aged three years",
+    "Made in Jalisco",
+    "Mixed with tequila"
+   ],
+   "source": "Mexican mezcal standard NOM-070-SCFI-2016 (as summarized on Wikipedia)"
+  },
+  {
+   "q": "Which Mexican state makes most mezcal?",
+   "answer": "Oaxaca",
+   "wrong": [
+    "Jalisco",
+    "Sonora",
+    "Yucatán"
+   ],
+   "source": "Mexican mezcal standard NOM-070-SCFI-2016 (as summarized on Wikipedia)"
+  },
+  {
+   "q": "Tequila, grapefruit soda and lime make a…",
+   "answer": "Paloma",
+   "wrong": [
+    "Margarita",
+    "Tequila Sunrise",
+    "Mojito"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "Which spirits go in an Oaxaca Old Fashioned?",
+   "answer": "Tequila and mezcal",
+   "wrong": [
+    "Bourbon and rye",
+    "Rum and cachaça",
+    "Gin and genever"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "A Naked and Famous is built on…",
+   "answer": "Mezcal",
+   "wrong": [
+    "Gin",
+    "Rum",
+    "Vodka"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Tequila is made in Mexico from blue Weber agave. The heart of the plant, the piña, is cooked to turn its starch into sugar, crushed, fermented and distilled. Cooking in ovens keeps the flavor bright and peppery; there’s no pit smoke as in many mezcals.",
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "fact": "100% de agave tequila is made only from agave sugars and must be bottled in its production region. A tequila that just says “tequila” (often called mixto) needs only 51% of its sugars from agave; the rest can come from other sugars.",
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "fact": "Blanco is unaged or rested under two months. Joven is usually blanco with color or a little aged tequila mixed in. Reposado rests in oak at least two months. Añejo ages at least one year in oak of 600 liters or less. Extra añejo ages at least three years. Cristalino is aged tequila filtered clear; it isn’t its own legal class.",
+   "source": "Mexican tequila standard NOM-006-SCFI (as summarized by Difford’s Guide)"
+  },
+  {
+   "fact": "Mezcal is an agave spirit made mostly in Oaxaca, from many kinds of agave. Espadín is the most common; tobalá is a smaller, wild agave; an ensamble blends several. Roasting the agave in earthen pits gives the smoky taste. The label says how it’s made: mezcal, mezcal artesanal (pit ovens, traditional crushing) or mezcal ancestral (pit ovens, hand crushing, clay pot stills).",
+   "source": "Mexican mezcal standard NOM-070-SCFI-2016 (as summarized on Wikipedia)"
+  },
+  {
+   "fact": "The Margarita is tequila, lime and orange liqueur. The Paloma is tequila with grapefruit soda and lime. The Oaxaca Old Fashioned uses tequila and mezcal. The Naked and Famous is mezcal, Aperol, yellow Chartreuse and lime. Blanco keeps citrus drinks bright; reposado and añejo suit stirred drinks.",
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "unverified": [
+  "Tequila’s five DO states (Jalisco and parts of four others) are left out until checked against the CRT.",
+  "Mezcal categories are summarized from Wikipedia, not the 2016 standard itself."
+ ]
+}

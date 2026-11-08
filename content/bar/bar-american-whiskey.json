@@ -1,0 +1,503 @@
+{
+ "number": 4,
+ "slug": "bar-american-whiskey",
+ "title": "American whiskey",
+ "script": "Lesson 4",
+ "lead": "Bourbon, rye, Tennessee and the words on the label that mean something by law: straight and bottled-in-bond.",
+ "minutes": 18,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "The rules",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "American whiskey is named by its grain."
+    }
+   ],
+   "know": [
+    "51% of the named grain: bourbon, rye, wheat, malt.",
+    "New Charred oak barrels for bourbon and rye.",
+    "Corn Whiskey is at least 80% corn.",
+    "80 Proof or more in the bottle."
+   ],
+   "book": "spirit/whiskey",
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Named by the grain",
+     "rows": [
+      {
+       "name": "Bourbon",
+       "meta": "51%+ corn"
+      },
+      {
+       "name": "Rye whiskey",
+       "meta": "51%+ rye"
+      },
+      {
+       "name": "Wheat whiskey",
+       "meta": "51%+ wheat"
+      },
+      {
+       "name": "Malt whiskey",
+       "meta": "51%+ malted barley"
+      },
+      {
+       "name": "Corn whiskey",
+       "meta": "80%+ corn"
+      }
+     ],
+     "note": "US federal rules, 27 CFR 5.143"
+    }
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "name": "Bourbon",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "American, at least 51% corn, new charred oak."
+    }
+   ],
+   "know": [
+    "Usa only: bourbon is made in the United States.",
+    "Not Only Kentucky: any state can make bourbon.",
+    "Wheated bourbons are softer; high-rye are spicier."
+   ],
+   "book": "spirit/bourbon",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "name": "Straight and bottled-in-bond",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Two label words that are rules, not marketing."
+    }
+   ],
+   "know": [
+    "Straight means at least two years in new charred oak.",
+    "Bonded means one distiller, one season, four years.",
+    "100 Proof exactly, for bottled-in-bond."
+   ],
+   "book": "spirit/bourbon/bottled-in-bond",
+   "visuals": [
+    {
+     "type": "stat",
+     "number": "100",
+     "title": "proof, bottled-in-bond",
+     "text": "One distiller, one season, at least four years in a bonded warehouse."
+    }
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Bottled-in-Bond Act of 1897"
+  },
+  {
+   "name": "Rye and Tennessee",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Spicy rye, and Tennessee’s charcoal step."
+    }
+   ],
+   "know": [
+    "Rye is spicier and drier than bourbon.",
+    "Tennessee whiskey is filtered through maple charcoal first.",
+    "Lincoln County Process is the name for that charcoal step."
+   ],
+   "book": "spirit/rye",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Tennessee House Bill 1084 (2013)"
+  },
+  {
+   "name": "American whiskey at the bar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The classics most guests order."
+    }
+   ],
+   "know": [
+    "Manhattan is whiskey and sweet vermouth.",
+    "Boulevardier is bourbon, Campari and sweet vermouth.",
+    "Sazerac is rye with absinthe and Peychaud’s."
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "The rules",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "51%",
+      "line": "of the named grain: bourbon, rye, wheat, malt."
+     },
+     {
+      "big": "NEW CHARRED",
+      "line": "oak barrels for bourbon and rye."
+     },
+     {
+      "big": "CORN WHISKEY",
+      "line": "is at least 80% corn."
+     },
+     {
+      "big": "80 PROOF",
+      "line": "or more in the bottle."
+     }
+    ],
+    "read": {
+     "bigIdea": "American whiskey is named by its grain.",
+     "where": "Whiskey is distilled from a **grain mash** and aged in **oak**. **Bourbon, rye, wheat and malt whiskey** each need **at least 51%** of that grain, distilling at **160 proof or less**, and aging in **new charred oak** barrels, entered at 125 proof or less. **Corn whiskey** needs at least **80% corn** and doesn’t need new charred oak. It’s all bottled at **80 proof or more**.",
+     "visual": 0,
+     "visualIntro": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Bourbon",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "USA",
+      "line": "only: bourbon is made in the United States."
+     },
+     {
+      "big": "NOT ONLY",
+      "line": "Kentucky: any state can make bourbon."
+     },
+     {
+      "big": "WHEATED",
+      "line": "bourbons are softer; high-rye are spicier."
+     }
+    ],
+    "read": {
+     "bigIdea": "American, at least 51% corn, new charred oak.",
+     "where": "**Bourbon** must be made in the **United States**, but **not only in Kentucky**. Corn gives it sweetness. The other grains change the taste: **wheated** bourbons swap rye for wheat and taste softer; **high-rye** bourbons are spicier. **Small batch** and **single barrel** aren’t defined in the federal rules: they’re the maker’s own words.",
+     "stopsTitle": "On our back bar",
+     "stops": [
+      {
+       "name": "Wheated",
+       "text": "Wheat instead of rye: **softer**."
+      },
+      {
+       "name": "High-rye",
+       "text": "More rye: **spicier**."
+      },
+      {
+       "name": "Small batch",
+       "text": "A blend of a few barrels; the maker’s term."
+      },
+      {
+       "name": "Single barrel",
+       "text": "From **one barrel**; the maker’s term."
+      }
+     ],
+     "mixup": "**Bourbon** can come from any US state. Kentucky makes most of it.",
+     "sayIt": "Bourbon is a little sweeter; rye is a little spicier."
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Straight and bottled-in-bond",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "STRAIGHT",
+      "line": "means at least two years in new charred oak."
+     },
+     {
+      "big": "BONDED",
+      "line": "means one distiller, one season, four years."
+     },
+     {
+      "big": "100 PROOF",
+      "line": "exactly, for bottled-in-bond."
+     }
+    ],
+    "read": {
+     "bigIdea": "Two label words that are rules, not marketing.",
+     "where": "**Straight** whiskey has aged at least **two years** in new charred oak. **Bottled-in-bond** goes further: made by **one distiller** in **one distilling season**, aged at least **four years** in a government-bonded warehouse, and bottled at exactly **100 proof**. The rule dates to **1897**.",
+     "visual": 0,
+     "visualIntro": ""
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "Rye and Tennessee",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "RYE",
+      "line": "is spicier and drier than bourbon."
+     },
+     {
+      "big": "TENNESSEE",
+      "line": "whiskey is filtered through maple charcoal first."
+     },
+     {
+      "big": "LINCOLN COUNTY",
+      "line": "Process is the name for that charcoal step."
+     }
+    ],
+    "read": {
+     "bigIdea": "Spicy rye, and Tennessee’s charcoal step.",
+     "where": "**Rye whiskey** is at least 51% rye, so it’s **spicier and drier** than bourbon. **Tennessee whiskey**, by a 2013 state law, follows the bourbon rules and is also **filtered through maple charcoal** before it goes into the barrel: the **Lincoln County Process**. Jack Daniel’s is the best-known example."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "American whiskey at the bar",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "MANHATTAN",
+      "line": "is whiskey and sweet vermouth."
+     },
+     {
+      "big": "BOULEVARDIER",
+      "line": "is bourbon, Campari and sweet vermouth."
+     },
+     {
+      "big": "SAZERAC",
+      "line": "is rye with absinthe and Peychaud’s."
+     }
+    ],
+    "read": {
+     "bigIdea": "The classics most guests order.",
+     "where": "The **Old Fashioned**, **Manhattan** (whiskey and sweet vermouth) and **Whiskey Sour** take bourbon or rye. The **Sazerac** is rye with absinthe and Peychaud’s. The **Boulevardier** is bourbon, Campari and sweet vermouth. The **Mint Julep** is bourbon, mint and sugar over crushed ice. The **Gold Rush** is bourbon, lemon and honey."
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   }
+  ]
+ },
+ "sources": "Our book: the classic and house cocktail specs in this app; US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Bottled-in-Bond Act of 1897; US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Tennessee House Bill 1084 (2013). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Rye whiskey is at least what share rye?",
+   "answer": "51%",
+   "wrong": [
+    "100%",
+    "80%",
+    "30%"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Bourbon and rye are aged in…",
+   "answer": "New charred oak barrels",
+   "wrong": [
+    "Used wine casks",
+    "Steel tanks",
+    "Any container"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Corn whiskey is at least what share corn?",
+   "answer": "80%",
+   "wrong": [
+    "51%",
+    "100%",
+    "60%"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "American whiskey is bottled at no less than…",
+   "answer": "80 proof",
+   "wrong": [
+    "60 proof",
+    "100 proof",
+    "70 proof"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Does bourbon have to come from Kentucky?",
+   "answer": "No, anywhere in the US",
+   "wrong": [
+    "Yes, only Kentucky",
+    "Kentucky or Tennessee",
+    "Only the South"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "A wheated bourbon tastes…",
+   "answer": "Softer",
+   "wrong": [
+    "Smokier",
+    "Spicier",
+    "Saltier"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Is “small batch” defined in the federal rules?",
+   "answer": "No, it’s the maker’s term",
+   "wrong": [
+    "Yes, under 10 barrels",
+    "Yes, under 100 barrels",
+    "Yes, one barrel"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Bourbon must be made in…",
+   "answer": "The United States",
+   "wrong": [
+    "Kentucky only",
+    "North America",
+    "Any country"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Straight whiskey is aged at least…",
+   "answer": "Two years",
+   "wrong": [
+    "Four years",
+    "Six months",
+    "Ten years"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Bottled-in-Bond Act of 1897"
+  },
+  {
+   "q": "Bottled-in-bond whiskey is bottled at…",
+   "answer": "100 proof",
+   "wrong": [
+    "80 proof",
+    "90 proof",
+    "Cask strength"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Bottled-in-Bond Act of 1897"
+  },
+  {
+   "q": "Bottled-in-bond whiskey is aged at least…",
+   "answer": "Four years",
+   "wrong": [
+    "Two years",
+    "One year",
+    "Eight years"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Bottled-in-Bond Act of 1897"
+  },
+  {
+   "q": "Bottled-in-bond whiskey comes from…",
+   "answer": "One distiller in one distilling season",
+   "wrong": [
+    "Any number of distilleries",
+    "One barrel only",
+    "Kentucky only"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Bottled-in-Bond Act of 1897"
+  },
+  {
+   "q": "What extra step does Tennessee whiskey take?",
+   "answer": "Filtered through maple charcoal before aging",
+   "wrong": [
+    "Aged in used wine casks",
+    "Distilled three times",
+    "Smoked over peat"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Tennessee House Bill 1084 (2013)"
+  },
+  {
+   "q": "Compared with bourbon, rye tastes…",
+   "answer": "Spicier and drier",
+   "wrong": [
+    "Sweeter",
+    "Smokier",
+    "Fruitier"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Tennessee House Bill 1084 (2013)"
+  },
+  {
+   "q": "The charcoal step is called the…",
+   "answer": "Lincoln County Process",
+   "wrong": [
+    "Solera",
+    "Charentais method",
+    "Coffey process"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Tennessee House Bill 1084 (2013)"
+  },
+  {
+   "q": "Bourbon, Campari and sweet vermouth make a…",
+   "answer": "Boulevardier",
+   "wrong": [
+    "Negroni",
+    "Manhattan",
+    "Sazerac"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "Which whiskey goes in a classic Sazerac?",
+   "answer": "Rye",
+   "wrong": [
+    "Scotch",
+    "Irish",
+    "Japanese"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "Bourbon, lemon and honey make a…",
+   "answer": "Gold Rush",
+   "wrong": [
+    "Whiskey Sour",
+    "Penicillin",
+    "Mint Julep"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Whiskey is distilled from a grain mash and aged in oak. Bourbon, rye, wheat and malt whiskey each need at least 51% of that grain, distilling at 160 proof or less, and aging in new charred oak barrels, entered at 125 proof or less. Corn whiskey needs at least 80% corn and doesn’t need new charred oak. It’s all bottled at 80 proof or more.",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "fact": "Bourbon must be made in the United States, but not only in Kentucky. Corn gives it sweetness. The other grains change the taste: wheated bourbons swap rye for wheat and taste softer; high-rye bourbons are spicier. Small batch and single barrel aren’t defined in the federal rules: they’re the maker’s own words.",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "fact": "Straight whiskey has aged at least two years in new charred oak. Bottled-in-bond goes further: made by one distiller in one distilling season, aged at least four years in a government-bonded warehouse, and bottled at exactly 100 proof. The rule dates to 1897.",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Bottled-in-Bond Act of 1897"
+  },
+  {
+   "fact": "Rye whiskey is at least 51% rye, so it’s spicier and drier than bourbon. Tennessee whiskey, by a 2013 state law, follows the bourbon rules and is also filtered through maple charcoal before it goes into the barrel: the Lincoln County Process. Jack Daniel’s is the best-known example.",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Tennessee House Bill 1084 (2013)"
+  },
+  {
+   "fact": "The Old Fashioned, Manhattan (whiskey and sweet vermouth) and Whiskey Sour take bourbon or rye. The Sazerac is rye with absinthe and Peychaud’s. The Boulevardier is bourbon, Campari and sweet vermouth. The Mint Julep is bourbon, mint and sugar over crushed ice. The Gold Rush is bourbon, lemon and honey.",
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "unverified": []
+}
