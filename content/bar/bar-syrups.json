@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Simple and rich",
-    "video": null,
+    "video": {
+     "youtubeId": "KptY-1ye6lY",
+     "title": "Basic Syrups Vol. II Rich Simple, Cinnamon, Cream Of Coconut, Lazy Grenadine",
+     "by": "The Educated Barfly",
+     "length": "12:10"
+    },
     "keyPoints": [
      {
       "big": "1:1",
@@ -103,7 +108,12 @@
    },
    {
     "name": "Flavored syrups",
-    "video": null,
+    "video": {
+     "youtubeId": "j30c91cPPN4",
+     "title": "How to make Cocktail Syrups: Simple, Ginger, Honey and Raspberry Vol. 1",
+     "by": "The Educated Barfly",
+     "length": "11:30"
+    },
     "keyPoints": [
      {
       "big": "HONEY",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Oleo saccharum",
-    "video": null,
+    "video": {
+     "youtubeId": "xzzeDqJJArs",
+     "title": "Oleo Saccharum - 2 Easy Methods",
+     "by": "Steve the Bartender",
+     "length": "3:07"
+    },
     "keyPoints": [
      {
       "big": "OLEO",
@@ -161,7 +176,12 @@
    },
    {
     "name": "Infusions and fat-washing",
-    "video": null,
+    "video": {
+     "youtubeId": "TOq1MDzw2dk",
+     "title": "Home Bar Advanced: Bacon Fat Wash",
+     "by": "The Educated Barfly",
+     "length": "8:52"
+    },
     "keyPoints": [
      {
       "big": "TASTE",

@@ -77,7 +77,12 @@
   "sections": [
    {
     "name": "What rum is",
-    "video": null,
+    "video": {
+     "youtubeId": "4i4_bouIZqw",
+     "title": "How Authentic Caribbean Rum Is Made",
+     "by": "WIRSPA",
+     "length": "2:47"
+    },
     "keyPoints": [
      {
       "big": "SUGARCANE",
@@ -104,7 +109,12 @@
    },
    {
     "name": "Cane juice: agricole and cachaça",
-    "video": null,
+    "video": {
+     "youtubeId": "YboAmuQfZAY",
+     "title": "What is Cane Juice Rum & Rhum Agricole? Welcome to Cane Juice Month!",
+     "by": "Steve the Barman",
+     "length": "5:49"
+    },
     "keyPoints": [
      {
       "big": "AGRICOLE",
@@ -131,7 +141,12 @@
    },
    {
     "name": "Styles on the back bar",
-    "video": null,
+    "video": {
+     "youtubeId": "F4BFb5sknGY",
+     "title": "A basic guide to RUM for everyone!",
+     "by": "Anders Erickson",
+     "length": "15:13"
+    },
     "keyPoints": [
      {
       "big": "WHITE",
@@ -177,7 +192,12 @@
    },
    {
     "name": "Rum at the bar",
-    "video": null,
+    "video": {
+     "youtubeId": "vi_g5FWqIAo",
+     "title": "BEST RUM COCKTAILS - volume 01",
+     "by": "Steve the Bartender",
+     "length": "10:45"
+    },
     "keyPoints": [
      {
       "big": "DAIQUIRI",

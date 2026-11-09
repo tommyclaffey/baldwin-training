@@ -138,7 +138,12 @@
   "sections": [
    {
     "name": "What brandy is",
-    "video": null,
+    "video": {
+     "youtubeId": "UvIRb-fq4vk",
+     "title": "The Basics of Brandy | Everything You Need to Know",
+     "by": "Distiller",
+     "length": "1:45"
+    },
     "keyPoints": [
      {
       "big": "WINE",
@@ -165,7 +170,12 @@
    },
    {
     "name": "Cognac",
-    "video": null,
+    "video": {
+     "youtubeId": "EdyVTzzntSo",
+     "title": "What Is Cognac? | Everything You Need to Know",
+     "by": "Distiller",
+     "length": "4:31"
+    },
     "keyPoints": [
      {
       "big": "UGNI BLANC",
@@ -223,7 +233,12 @@
    },
    {
     "name": "Armagnac, Calvados and pisco",
-    "video": null,
+    "video": {
+     "youtubeId": "2kNZ4Uo_Eag",
+     "title": "What's the Difference Between Cognac and Armagnac?",
+     "by": "Flaviar",
+     "length": "2:00"
+    },
     "keyPoints": [
      {
       "big": "ARMAGNAC",
@@ -269,7 +284,12 @@
    },
    {
     "name": "Brandy at the bar",
-    "video": null,
+    "video": {
+     "youtubeId": "8Zi0ZIEfNAQ",
+     "title": "Master The Classics: Sidecar",
+     "by": "The Educated Barfly",
+     "length": "3:59"
+    },
     "keyPoints": [
      {
       "big": "SIDECAR",

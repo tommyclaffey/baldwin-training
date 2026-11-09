@@ -197,7 +197,9 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
     head.c = head.c.filter((x) => !(x.n || '').startsWith('Arrow'));
     setText(T(head)[0], 'KEY POINTS');
     const cards = find(kp, byName('Cards')); const protos = cards.c;
-    cards.c = pts.map((p, i) => { const c = clone(protos[i % protos.length]); c.n = 'Point · ' + p.big; const t = texts(c); setText(t[0], p.big); setText(t[1], p.line); t[0].ar = 'H'; t[0].sh = 'F'; if (pts.length > 3) { c.sh = 'F'; c.w = 220; } return c; });
+    cards.c = pts.map((p, i) => { const c = clone(protos[i % protos.length]); c.n = 'Point · ' + p.big; const t = texts(c); setText(t[0], p.big); setText(t[1], p.line); t[0].ar = 'H'; t[0].sh = 'F';
+      // Nov 9: a long word (CONTEMPORARY, BOTTLED-IN-BOND) shrinks to fit the card instead of being cut off
+      { const longest = Math.max(...String(p.big).split(/\s+/).map((w) => w.length)); if (longest > 10 && t[0].z) t[0].z = Math.max(16, Math.floor(t[0].z * 10 / longest)); } if (pts.length > 3) { c.sh = 'F'; c.w = 220; } return c; });
     if (pts.length > 3) {
       // Nov 2, Tommy: "swipe is not working". The cards become a carousel: arrows, a count, and drag / swipe.
       cards.n = 'Carousel · Key points'; delete cards.clip; cards.wrap = 0;

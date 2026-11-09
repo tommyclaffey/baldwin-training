@@ -186,7 +186,12 @@
   "sections": [
    {
     "name": "Scotch: the rules",
-    "video": null,
+    "video": {
+     "youtubeId": "yqniYWLN6PE",
+     "title": "The ultimate beginner's guide to SCOTCH WHISKY",
+     "by": "Anders Erickson",
+     "length": "16:15"
+    },
     "keyPoints": [
      {
       "big": "SCOTLAND",
@@ -213,7 +218,12 @@
    },
    {
     "name": "The five kinds of Scotch",
-    "video": null,
+    "video": {
+     "youtubeId": "H5CwBROVxGg",
+     "title": "6 Types of Scotch Whisky Explained: (What's the difference between a single malt & a blended malt?)",
+     "by": "The Whisky Pour",
+     "length": "5:56"
+    },
     "keyPoints": [
      {
       "big": "SINGLE MALT",
@@ -243,7 +253,12 @@
    },
    {
     "name": "Scotch regions",
-    "video": null,
+    "video": {
+     "youtubeId": "pMV-T5hkRdg",
+     "title": "Scotch Whisky Regions Explained in 13 Minutes - A Beginners Guide",
+     "by": "First Phil Whisky",
+     "length": "12:59"
+    },
     "keyPoints": [
      {
       "big": "PEAT",
@@ -272,7 +287,12 @@
    },
    {
     "name": "Irish whiskey",
-    "video": null,
+    "video": {
+     "youtubeId": "_tvGbBRLp1w",
+     "title": "Irish whiskey explained. Single Malt, Single Pot Still, Single Grain & Blended Irish Whiskey",
+     "by": "Wine Tuber",
+     "length": "7:58"
+    },
     "keyPoints": [
      {
       "big": "IRELAND",

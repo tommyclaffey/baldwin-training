@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Cost per ounce",
-    "video": null,
+    "video": {
+     "youtubeId": "t3NQf3hXOX8",
+     "title": "How to Cost Out a Cocktail",
+     "by": "A Bar Above",
+     "length": "6:51"
+    },
     "keyPoints": [
      {
       "big": "25.4 OZ",
@@ -103,7 +108,12 @@
    },
    {
     "name": "Pour cost",
-    "video": null,
+    "video": {
+     "youtubeId": "JV3hGq4CRBs",
+     "title": "Liquor Cost Formula Video How to Calculate Your Liquor Cost For Bars and Restaurants",
+     "by": "Backbar",
+     "length": "3:09"
+    },
     "keyPoints": [
      {
       "big": "COST ÷ PRICE",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Pricing a new drink",
-    "video": null,
+    "video": {
+     "youtubeId": "3HraItbId10",
+     "title": "How to Determine Pricing For Beer, Liquor & Wine [Restaurant Business Plan]",
+     "by": "Dave Allred TheRealBarman (Bar Patrol)",
+     "length": "12:22"
+    },
     "keyPoints": [
      {
       "big": "COST ÷ TARGET",
@@ -161,7 +176,12 @@
    },
    {
     "name": "Building a menu",
-    "video": null,
+    "video": {
+     "youtubeId": "IJXbUrWxfG0",
+     "title": "7 Steps to a Highly Profitable Cocktail Menu",
+     "by": "Dave Allred TheRealBarman (Bar Patrol)",
+     "length": "13:02"
+    },
     "keyPoints": [
      {
       "big": "COVER",

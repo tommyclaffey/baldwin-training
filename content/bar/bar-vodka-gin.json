@@ -98,7 +98,12 @@
   "sections": [
    {
     "name": "Vodka",
-    "video": null,
+    "video": {
+     "youtubeId": "uNt4RDzmBv8",
+     "title": "What is Vodka? | Everything You Need to Know",
+     "by": "Distiller",
+     "length": "1:37"
+    },
     "keyPoints": [
      {
       "big": "ANY BASE",
@@ -144,7 +149,12 @@
    },
    {
     "name": "What makes gin gin",
-    "video": null,
+    "video": {
+     "youtubeId": "piWxJhWS5cM",
+     "title": "What is Gin? | Everything You Need to Know",
+     "by": "Distiller",
+     "length": "1:39"
+    },
     "keyPoints": [
      {
       "big": "JUNIPER",
@@ -174,7 +184,12 @@
    },
    {
     "name": "Gin styles",
-    "video": null,
+    "video": {
+     "youtubeId": "sA8t919MOOY",
+     "title": "🌿🌿 5 Amazing Styles of Gin To Consider When Shopping: Genever, London Dry, Plymouth, Old Tom and?",
+     "by": "Common Man Cocktails",
+     "length": "15:23"
+    },
     "keyPoints": [
      {
       "big": "OLD TOM",
@@ -228,7 +243,12 @@
    },
    {
     "name": "Gin at the bar",
-    "video": null,
+    "video": {
+     "youtubeId": "5dBEK79dqhQ",
+     "title": "7 BEST GIN COCKTAILS (and How to Make Them with 10 Ingredients!) - VOL. 1",
+     "by": "Steve the Bartender",
+     "length": "12:03"
+    },
     "keyPoints": [
      {
       "big": "NEGRONI",

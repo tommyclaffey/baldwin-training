@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Swap one part",
-    "video": null,
+    "video": {
+     "youtubeId": "r-5fOYhWbjM",
+     "title": "How to Invent your Own Cocktail w/ 3 Different Methods! | Cocktail Basics",
+     "by": "Lui Fernandes",
+     "length": "7:08"
+    },
     "keyPoints": [
      {
       "big": "TI’ PUNCH",
@@ -118,7 +123,12 @@
    },
    {
     "name": "Split the base",
-    "video": null,
+    "video": {
+     "youtubeId": "YrME62J4aT0",
+     "title": "Dale DeGroff's Yummy Split Based Sazerac - Make it Quick",
+     "by": "Behind the Bar",
+     "length": "2:12"
+    },
     "keyPoints": [
      {
       "big": "VIEUX CARRÉ",
@@ -147,7 +157,12 @@
    },
    {
     "name": "Swap the sweetener",
-    "video": null,
+    "video": {
+     "youtubeId": "Sd_J_Oky-wU",
+     "title": "GOLD RUSH - Whiskey Sour x Bees Knees (ONLY 3-ingredients!)",
+     "by": "Steve the Bartender",
+     "length": "4:37"
+    },
     "keyPoints": [
      {
       "big": "GOLD RUSH",

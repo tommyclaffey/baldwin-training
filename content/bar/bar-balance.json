@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Core, balance, seasoning",
-    "video": null,
+    "video": {
+     "youtubeId": "5LdnOQ5FOv4",
+     "title": "Bartender's Book Club: Cocktail Codex",
+     "by": "FreePour",
+     "length": "9:32"
+    },
     "keyPoints": [
      {
       "big": "CORE",
@@ -118,7 +123,12 @@
    },
    {
     "name": "Strong, sweet, sour",
-    "video": null,
+    "video": {
+     "youtubeId": "LP2f5EKnk3g",
+     "title": "Understanding The 2:1:1 Cocktail Formula for Sours - Course 2 Lesson 05",
+     "by": "Common Man Cocktails",
+     "length": "8:13"
+    },
     "keyPoints": [
      {
       "big": "2 : ¾ : 1",
@@ -147,7 +157,12 @@
    },
    {
     "name": "Syrup strength",
-    "video": null,
+    "video": {
+     "youtubeId": "nMU5FaXMQn0",
+     "title": "Essential Cocktail Syrups | Sugars in cocktails EXPLAINED, Vol.1",
+     "by": "Cocktail Time with Kevin Kos",
+     "length": "9:27"
+    },
     "keyPoints": [
      {
       "big": "1:1",
@@ -176,7 +191,12 @@
    },
    {
     "name": "Taste and adjust",
-    "video": null,
+    "video": {
+     "youtubeId": "lARvCR6j-6I",
+     "title": "The Secret to Perfectly Balanced Cocktails",
+     "by": "Lui Fernandes",
+     "length": "5:52"
+    },
     "keyPoints": [
      {
       "big": "STRAW",

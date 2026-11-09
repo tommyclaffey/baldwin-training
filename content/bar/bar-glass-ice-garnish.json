@@ -78,7 +78,12 @@
   "sections": [
    {
     "name": "Glassware",
-    "video": null,
+    "video": {
+     "youtubeId": "ebciWSd3vC4",
+     "title": "Which Glass should I use for my cocktail? Home Bar Glass Guide",
+     "by": "The Educated Barfly",
+     "length": "10:30"
+    },
     "keyPoints": [
      {
       "big": "STEMMED",
@@ -109,7 +114,12 @@
    },
    {
     "name": "Ice",
-    "video": null,
+    "video": {
+     "youtubeId": "iE1CkrUMztk",
+     "title": "Ice Cutting and Molds! - what is the proper ice?",
+     "by": "Anders Erickson",
+     "length": "11:45"
+    },
     "keyPoints": [
      {
       "big": "CHILLS",
@@ -140,7 +150,12 @@
    },
    {
     "name": "Garnish",
-    "video": null,
+    "video": {
+     "youtubeId": "640aJL2zmww",
+     "title": "Easy Cocktail Garnishes - Bar Basics",
+     "by": "Steve the Bartender",
+     "length": "8:03"
+    },
     "keyPoints": [
      {
       "big": "AROMA",
@@ -171,7 +186,12 @@
    },
    {
     "name": "Shake, stir or build",
-    "video": null,
+    "video": {
+     "youtubeId": "BQKcNXcgBYM",
+     "title": "How to Mix a Drink - are you doing it wrong?",
+     "by": "Anders Erickson",
+     "length": "12:11"
+    },
     "keyPoints": [
      {
       "big": "SHAKE",
