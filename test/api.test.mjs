@@ -822,7 +822,7 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   // Level 2 (Nov 8 split): the spirits and the six roots, a 60-question final with our menu's specs, and a practical
   const l2 = index.find((e) => e.slug === 'cocktail-program/level-2');
   const l2p = JSON.stringify((await call('/api/page/' + l2.file)).data);
-  assert.ok(l2p.includes('CERTIFIED BARTENDER') && l2p.includes('t%3Afinal%3Abar-2') && l2p.includes('PRACTICAL'), 'Level 2 with its final and practical');
+  assert.ok(l2p.includes('CERTIFIED BARTENDER') && l2p.includes('t%3Afinal%3Abar-2') && l2p.includes('practical'), 'Level 2 with its final and practical');
   const final2 = cat.quizzes.find((q) => q.id === 't:final:bar-2');
   assert.equal(final2.count, 60);
   assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 2').length, 10, 'nine lesson quizzes and the final');
@@ -835,13 +835,13 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   assert.equal(start2.items.length, 60);
   // Level 3 (Nov 8): the craft, its final and an original-cocktail practical
   const l3 = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'cocktail-program/level-3').file)).data);
-  assert.ok(l3.includes('ADVANCED MIXOLOGIST') && l3.includes('t%3Afinal%3Abar-3') && l3.includes('PRACTICAL'));
+  assert.ok(l3.includes('ADVANCED MIXOLOGIST') && l3.includes('t%3Afinal%3Abar-3') && l3.includes('practical'));
   assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 3').length, 7, 'six lesson quizzes and the final');
   assert.ok(index.some((e) => e.slug === 'cocktail-program/level-3/bar-costing/pour-cost'));
   // The Beer Program (Nov 8): Level 1 on the Cicerone Certified Beer Server outline, a 60-question final, a draft-pour practical
   const beer = index.find((e) => e.slug === 'beer-program/level-1');
   const bp = JSON.stringify((await call('/api/page/' + beer.file)).data);
-  assert.ok(bp.includes('BEER SERVER') && bp.includes('t%3Afinal%3Abeer-1') && bp.includes('PRACTICAL') && bp.includes('Beer Program'));
+  assert.ok(bp.includes('BEER SERVER') && bp.includes('t%3Afinal%3Abeer-1') && bp.includes('practical') && bp.includes('Beer Program'));
   assert.ok(!/Cocktail Program|USBG/.test(bp), 'nothing from the Cocktail Program left over');
   assert.equal(cat.quizzes.filter((q) => q.group === 'Beer Program · Level 1').length, 9, 'eight lesson quizzes and the final');
   const pour = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'beer-program/level-1/beer-glass-pour/the-draft-pour').file)).data);

@@ -383,6 +383,7 @@ function lessonsGrid(grid, all, done) {
 /* ---------------- Level 1: the course ---------------- */
 export function level1Page(page, ctx) {
   const main = page.main; const all = chapters();
+  unclipHero(main); evenButtons(main);
   const nx = nextLesson(ctx.done);
   for (const b of findAll(main, (x) => (x.n || '').startsWith('Button · Continue'))) {
     if (nx) { b.to = '/' + lessonSlug(nx.ch, nx.i); setText(texts(b)[0], nx.started ? `Continue Lesson ${nx.ch.number}` : 'Start Lesson 1'); } else { b.to = '/' + lessonSlug(all[0], 0); setText(texts(b)[0], 'Watch Again'); }
@@ -471,7 +472,7 @@ function courtShelf() {
 }
 export function hubPage(page, ctx) {
   const main = page.main;
-  unclipHero(main);
+  unclipHero(main); evenButtons(main);
   wireVideos(main);
   { const at = main.c.findIndex((x) => x.n === 'Start here · videos'); main.c.splice(at >= 0 ? at + 1 : main.c.length - 1, 0, courtShelf()); }
   for (const b of findAll(main, (x) => x.n === 'Button · Start Level 1')) b.to = '/' + L1;
@@ -504,6 +505,7 @@ export function hubPage(page, ctx) {
 // are still to come.
 export function level2Page(page, ctx = {}) {
   const main = page.main; const all = chapters2(); const done = ctx.done || new Set();
+  unclipHero(main); evenButtons(main);
   const live = all.length > 0;
   const hc = find(find(main, byName('Hero')), byName('Copy'));
   if (hc) {
@@ -587,27 +589,26 @@ export function barPage(page, ctx) {
   if (hv) { delete hv.vid; hv.n = P.heroName; hv.f = [{ img: P.hero, m: 'FILL' }]; hv.c = []; }
   const copy = find(hero, byName('Copy'));
   const ct = T(copy);
-  setText(ct[0], `${P.name} · Level ${['', 'one', 'two', 'three', 'four'][L.level]}`); setText(ct[1], L.title.toUpperCase()); ct[1].ar = 'H'; ct[1].sh = 'F';
+  // script like the Sommelier's (Tommy, Nov 8: uniform with the som); the program is in the breadcrumb
+  setText(ct[0], `Level ${['', 'one', 'two', 'three', 'four'][L.level]}`); setText(ct[1], L.title.toUpperCase()); ct[1].ar = 'H'; ct[1].sh = 'F';
   const lead = find(hero, (x) => x.n === 'Lead' || (x.t === 'T' && /video lessons/.test(x.s || '')));
   if (lead) { lead.n = 'Lead'; setText(lead, L.lead(all.length, L)); }
   for (const t of findAll(hero, (x) => x.t === 'T' && (x.z || 0) >= 36)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
   const glance = find(hero, byName('At a glance'));
   if (glance) {
-    const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], [String(L.len), 'question exam'], L.practical ? ['1', 'practical'] : ['80%', 'to pass']];
+    const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], [String(L.len), 'questions'], L.practical ? ['1', 'practical'] : ['80%', 'to pass']];
     glance.c.forEach((st, i) => { const tt = texts(st); if (stats[i]) { setText(tt[0], stats[i][0]); setText(tt[1], stats[i][1]); st.n = 'Stat · ' + stats[i][1]; } });
   }
   const prog = courseProgress(ctx.done, all);
   if (copy) { const at = copy.c.findIndex((x) => x.n === 'At a glance'); copy.c.splice(at + 1, 0, progressBlock(prog, 398)); }
-  // the final and the practical: say where they stand under the progress
+  // the final and the practical: one line at most, so the hero keeps the Sommelier page's height (Tommy, Nov 8)
   if (copy) {
-    const lines = [];
-    if (ctx.passedAt) lines.push(txt(`✓ FINAL EXAM · PASSED ${day(ctx.passedAt)}`, { ls: '10%', c: '#7FCB93', z: 12.5 }));
-    if (L.practical) lines.push(ctx.practical
-      ? txt(`✓ PRACTICAL · SIGNED OFF${ctx.practical.by ? ' BY ' + ctx.practical.by.toUpperCase() : ''} ${day(ctx.practical.at)}`, { ls: '10%', c: '#7FCB93', z: 12.5 })
-      : txt('PRACTICAL · ASK A MANAGER WHEN YOU’RE READY', { ls: '10%', c: '#C49A6C', z: 12.5 }));
-    if (ctx.passedAt && (!L.practical || ctx.practical)) lines.unshift(txt(`✓ ${L.title.toUpperCase()}`, { ls: '10%', c: '#7FCB93', z: 14, fs: 'Bold' }));
-    for (const x of lines) { x.n = 'Status line'; x.ar = 'H'; x.sh = 'F'; x.w = 398; }
-    copy.c.splice(copy.c.findIndex((x) => x.n === 'Course progress') + 1, 0, ...lines);
+    let line = null;
+    const certified = ctx.passedAt && (!L.practical || ctx.practical);
+    if (certified) line = txt(`✓ ${L.title.toUpperCase()} · ${day(ctx.practical?.at > ctx.passedAt ? ctx.practical.at : ctx.passedAt)}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
+    else if (ctx.passedAt) line = txt('✓ FINAL PASSED · PRACTICAL: ASK A MANAGER WHEN READY', { ls: '10%', c: '#7FCB93', z: 12.5 });
+    else if (ctx.practical) line = txt(`✓ PRACTICAL SIGNED OFF${ctx.practical.by ? ' BY ' + ctx.practical.by.toUpperCase() : ''}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
+    if (line) { line.n = 'Status line'; line.ar = 'H'; line.sh = 'F'; line.w = 398; copy.c.splice(copy.c.findIndex((x) => x.n === 'Course progress') + 1, 0, line); }
   }
   const btns = find(hero, byName('Buttons'));
   if (btns) {
@@ -621,6 +622,7 @@ export function barPage(page, ctx) {
     if (certified && cont) { cont.n = 'Button · View Certificate'; cont.to = `/certificate/${L.file}`; setText(texts(cont)[0], 'View Certificate'); }
     btns.c = [cont, exam].filter(Boolean); btns.wrap = 1; btns.cg = 8; btns.sh = 'L';
     delete btns.clip; delete btns.h; btns.sv = 'H';
+    evenButtons(main);
   }
   // the lessons
   const course = find(main, byName('The course'));
@@ -720,7 +722,7 @@ function sourceShelf([script, sub, groups]) {
 export function programHub(page, ctx) {
   const P = programDef(ctx.program); const H = HUB_COPY[P.key];
   const main = page.main;
-  unclipHero(main);
+  unclipHero(main); evenButtons(main);
   const levels = LEVELS.filter((L) => L.program === P.key && chaptersOf(P.key, L.level).length);
   const all = chaptersOf(P.key); const done = ctx.done || new Set(); const certified = ctx.certified || new Set();
   // hero
@@ -815,4 +817,11 @@ function unclipHero(main) {
   const hero = find(main, byName('Hero')); const copy = hero && find(hero, byName('Copy')); const btns = copy && find(copy, byName('Buttons'));
   for (const n of [copy, btns]) if (n) { delete n.clip; delete n.h; n.sv = 'H'; }
   for (const b of btns?.c || []) { delete b.clip; delete b.h; b.sv = 'H'; }
+}
+
+/** Nov 8 (Tommy: "spacing/sizing … uniform with the som and beer"): a filled hero button gets a hairline in its own colour,
+ *  so it's exactly as tall as the outlined one beside it (41 vs 43 px before). */
+function evenButtons(main) {
+  const hero = find(main, byName('Hero')); const btns = hero && find(hero, byName('Buttons'));
+  for (const b of btns?.c || []) if (!b.st && b.f?.[0]?.c) { b.st = b.f[0].c; b.sw = 1; }
 }
