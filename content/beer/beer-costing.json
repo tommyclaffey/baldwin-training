@@ -1,0 +1,395 @@
+{
+ "number": 3,
+ "programLevel": 3,
+ "slug": "beer-costing",
+ "title": "Costing beer",
+ "script": "Lesson 3",
+ "lead": "Pour cost, pricing a draft and a bottle, and where the money leaks out.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Pour cost",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Cost of the beer ÷ its price."
+    }
+   ],
+   "know": [
+    "Draft is often aimed around 20%.",
+    "Bottles around 25%.",
+    "These are rules of thumb, not standards."
+   ],
+   "source": "BevSpot blog (bar inventory software); Backbar Academy (bar inventory software)"
+  },
+  {
+   "name": "Pricing a draft",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Keg cost, pours per keg, target."
+    }
+   ],
+   "know": [
+    "Pours = keg ounces ÷ ounces per pour.",
+    "Price = (keg cost ÷ target) ÷ pours.",
+    "Count the foam: a 16 oz glass holds about 14.5 oz of beer."
+   ],
+   "source": "Backbar Academy (bar inventory software)"
+  },
+  {
+   "name": "Pricing bottles and cans",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Unit cost ÷ target."
+    }
+   ],
+   "know": [
+    "A $25.99 case of 24 is $1.08 a bottle.",
+    "$1.08 ÷ 25% ≈ $4.32, rounded up.",
+    "Packaged beer wastes less than draft."
+   ],
+   "source": "Backbar Academy (bar inventory software)"
+  },
+  {
+   "name": "Foam, spills and line cleaning",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Small losses, big money."
+    }
+   ],
+   "know": [
+    "A 1-inch head is right; foam is part beer.",
+    "1 oz lost per pint is 6% of the keg.",
+    "Every line clean dumps the beer in the line."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); Siebel Institute, “How much does wasting draught beer cost?”"
+  },
+  {
+   "name": "Inventory and variance",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "What you used against what you sold."
+    }
+   ],
+   "know": [
+    "Usage = start + purchases − end.",
+    "Variance = what the POS sold − usage.",
+    "Weighing kegs beats guessing."
+   ],
+   "source": "BevSpot blog (bar inventory software)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Pour cost",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "COST ÷ PRICE",
+      "line": "pour cost."
+     },
+     {
+      "big": "~20%",
+      "line": "common draft target."
+     },
+     {
+      "big": "~25%",
+      "line": "common bottle target."
+     }
+    ],
+    "read": {
+     "bigIdea": "Pour cost tells you if beer earns its place.",
+     "where": "**Pour cost** is what the beer costs ÷ what it sells for; for the whole bar, **usage ÷ sales**. Backbar (bar inventory software) gives common targets: **draft about 20%**, **bottles about 25%**, spirits about 15%. BevSpot’s customer data put the median beer pour cost at **24%**, the best bars at 20% or lower. These are **rules of thumb**: our real targets are the GM’s call.",
+     "mixup": "A low pour cost isn’t always good. Price beer too high and it doesn’t sell.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Pricing a draft",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "POURS",
+      "line": "keg oz ÷ oz per pour."
+     },
+     {
+      "big": "TARGET",
+      "line": "keg cost ÷ pour cost = keg revenue."
+     },
+     {
+      "big": "PRICE",
+      "line": "keg revenue ÷ pours, rounded."
+     }
+    ],
+    "read": {
+     "bigIdea": "Work it out per keg.",
+     "where": "Backbar’s method: **pours per keg** = keg ounces ÷ liquid ounces per pour. **Keg revenue** = keg cost ÷ target pour cost. **Price** = keg revenue ÷ pours, rounded up. Their example: a **$120** half barrel at **20%** needs **$600**; 1,984 oz ÷ **14.5 oz** (a 16 oz glass with about 1.5 oz of foam) is about **136 pours**; $600 ÷ 136 ≈ **$4.41**, so **$4.50**.",
+     "mixup": "Don’t divide by 16 for a pint. The foam isn’t all beer, so the liquid pour is less.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Pricing bottles and cans",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "UNIT COST",
+      "line": "case ÷ bottles."
+     },
+     {
+      "big": "÷ TARGET",
+      "line": "$1.08 ÷ 0.25 ≈ $4.32."
+     },
+     {
+      "big": "STEADY",
+      "line": "less waste than draft."
+     }
+    ],
+    "read": {
+     "bigIdea": "Same math, simpler.",
+     "where": "Find the **unit cost**: a **$25.99** case of 24 is about **$1.08** a bottle. Divide by the **target**: $1.08 ÷ 0.25 ≈ **$4.32**, rounded to **$4.50**. Some bars use a markup instead (2–3× cost). **Packaged** beer has little spillage, so its cost percentage stays steadier than draft.",
+     "mixup": "Use the percent as a decimal: divide by 0.25, not 25.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Foam, spills and line cleaning",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1 INCH",
+      "line": "of head is right, and profitable."
+     },
+     {
+      "big": "1 OZ/PINT",
+      "line": "6.25% of the keg."
+     },
+     {
+      "big": "LINE CLEAN",
+      "line": "dumps the line’s beer."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every lost ounce raises the real cost.",
+     "where": "A **1-inch head** is the right pour: foam is 25–33% beer, and filling to the rim is over-pouring. Siebel Institute: losing **1 oz per pint** is **6.25%** of the keg; at a $4 pint, that’s about **$31 a keg**. Each **line clean** dumps the beer in the line: 50 ft of 3/8-inch line holds about **37 oz**, more than two pints. An open faucet with no glass runs about **2 oz a second** down the drain.",
+     "mixup": "Topping off a foamy pour by letting it run over the glass pours money into the drain.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Inventory and variance",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "USAGE",
+      "line": "start + bought − end."
+     },
+     {
+      "big": "VARIANCE",
+      "line": "sold − used."
+     },
+     {
+      "big": "WEIGH",
+      "line": "kegs on a scale, not by kicking."
+     }
+    ],
+    "read": {
+     "bigIdea": "Count it, compare it.",
+     "where": "**Usage** = beginning inventory + purchases − ending inventory (at cost). **Variance** = the cost of what the POS says you sold − usage; BevSpot’s example: **$10,000** used but only **$8,000** sold is a **−20%** variance. Causes: miscounts, **over-pouring**, comps, theft. Counting kegs by “touch and guess” is the least accurate; **weighing** on a keg scale (minus the empty keg) is better.",
+     "mixup": "A big variance isn’t always theft. Start with the count and the pour.",
+     "sayIt": ""
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "sources": "BevSpot blog (bar inventory software); Backbar Academy (bar inventory software); Siebel Institute, “How much does wasting draught beer cost?”; Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Pour cost is…",
+   "answer": "Beer cost ÷ selling price",
+   "wrong": [
+    "Price ÷ cost",
+    "Price − cost",
+    "Keg size ÷ price"
+   ],
+   "source": "BevSpot blog (bar inventory software)"
+  },
+  {
+   "q": "A common draft pour-cost target is about…",
+   "answer": "20%",
+   "wrong": [
+    "5%",
+    "50%",
+    "80%"
+   ],
+   "source": "Backbar Academy (bar inventory software)"
+  },
+  {
+   "q": "Pour-cost targets from bar software are…",
+   "answer": "Rules of thumb; the GM sets ours",
+   "wrong": [
+    "Federal law",
+    "The same for every bar",
+    "Set by the brewery"
+   ],
+   "source": "Backbar Academy (bar inventory software)"
+  },
+  {
+   "q": "Pours per keg =",
+   "answer": "Keg ounces ÷ liquid ounces per pour",
+   "wrong": [
+    "Keg cost ÷ price",
+    "Pints × 2",
+    "Gallons × 10"
+   ],
+   "source": "Backbar Academy (bar inventory software)"
+  },
+  {
+   "q": "A $120 half barrel at a 20% target needs to bring in…",
+   "answer": "$600",
+   "wrong": [
+    "$240",
+    "$120",
+    "$1,200"
+   ],
+   "source": "Backbar Academy (bar inventory software)"
+  },
+  {
+   "q": "A 16 oz glass with a proper head holds about how much beer?",
+   "answer": "14.5 oz",
+   "wrong": [
+    "16 oz",
+    "10 oz",
+    "20 oz"
+   ],
+   "source": "Backbar Academy (bar inventory software)"
+  },
+  {
+   "q": "A $25.99 case of 24 costs about how much per bottle?",
+   "answer": "$1.08",
+   "wrong": [
+    "$2.60",
+    "$0.50",
+    "$25.99"
+   ],
+   "source": "Backbar Academy (bar inventory software)"
+  },
+  {
+   "q": "At a 25% target, a $1.08 bottle sells for about…",
+   "answer": "$4.32, rounded to $4.50",
+   "wrong": [
+    "$1.35",
+    "$2.16",
+    "$27"
+   ],
+   "source": "Backbar Academy (bar inventory software)"
+  },
+  {
+   "q": "Compared with draft, packaged beer’s cost percentage is…",
+   "answer": "Steadier: less spillage",
+   "wrong": [
+    "Always higher",
+    "Always lower",
+    "Impossible to know"
+   ],
+   "source": "Backbar Academy (bar inventory software)"
+  },
+  {
+   "q": "Losing 1 oz per pint loses about what share of a keg?",
+   "answer": "6.25%",
+   "wrong": [
+    "0.5%",
+    "25%",
+    "50%"
+   ],
+   "source": "Siebel Institute, “How much does wasting draught beer cost?”"
+  },
+  {
+   "q": "Why is a 1-inch head good for the bar too?",
+   "answer": "Foam is part beer; filling to the rim over-pours",
+   "wrong": [
+    "Foam is free",
+    "It hides the color",
+    "It isn’t"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Each line cleaning costs…",
+   "answer": "The beer sitting in the lines",
+   "wrong": [
+    "Nothing",
+    "One keg",
+    "One bottle"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Usage =",
+   "answer": "Beginning inventory + purchases − ending inventory",
+   "wrong": [
+    "Sales − purchases",
+    "Kegs × price",
+    "Purchases only"
+   ],
+   "source": "BevSpot blog (bar inventory software)"
+  },
+  {
+   "q": "$10,000 used but $8,000 sold is a variance of…",
+   "answer": "−20%",
+   "wrong": [
+    "+20%",
+    "0%",
+    "−80%"
+   ],
+   "source": "BevSpot blog (bar inventory software)"
+  },
+  {
+   "q": "The most accurate way to count a tapped keg is…",
+   "answer": "Weigh it on a keg scale",
+   "wrong": [
+    "Kick it",
+    "Guess",
+    "Shake it"
+   ],
+   "source": "BevSpot blog (bar inventory software)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Pour-cost targets are bar-software rules of thumb; BevSpot’s “20% shrinkage” claim left out as a vendor estimate.",
+  "Our real keg costs and targets: GM to supply."
+ ]
+}

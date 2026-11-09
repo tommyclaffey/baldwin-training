@@ -1,0 +1,394 @@
+{
+ "number": 1,
+ "programLevel": 3,
+ "slug": "beer-line-cleaning",
+ "title": "Cleaning the lines",
+ "script": "Lesson 1",
+ "lead": "How a draft system is actually cleaned, safely, and how to check that it was.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Every 14 days, no matter what",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Slow taps still need cleaning."
+    }
+   ],
+   "know": [
+    "Bacteria grow whether a line pours or not.",
+    "The cleaner gets stronger the longer you wait.",
+    "Older or problem systems may need more."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "The caustic clean",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Right strength, right heat, long enough."
+    }
+   ],
+   "know": [
+    "2% caustic for routine, 3% for dirty or old lines.",
+    "Mixed at 80–110°F.",
+    "15 minutes recirculating, 20 if static."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Pump, rinse, acid",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Recirculate, rinse to neutral, acid every quarter."
+    }
+   ],
+   "know": [
+    "A pump beats a canister.",
+    "Rinse until the water matches tap-water pH.",
+    "Acid clean quarterly: phosphoric, never mixed with caustic."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Faucets, couplers and old lines",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The parts the chemical doesn’t reach."
+    }
+   ],
+   "know": [
+    "Faucets come apart at every clean.",
+    "FOBs and couplers fully apart every six months.",
+    "Cider or root beer can taint a line for good."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Safety and the log",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Trained people, proper gear, written records."
+    }
+   ],
+   "know": [
+    "Goggles, chemical gloves past the wrist, boots.",
+    "Chemical into water, never water into caustic.",
+    "A dated cleaning log in the cooler."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Every 14 days, no matter what",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "14 DAYS",
+      "line": "however little the line pours."
+     },
+     {
+      "big": "BIOFILM",
+      "line": "gets tougher with time."
+     },
+     {
+      "big": "OLD SYSTEMS",
+      "line": "may need more often."
+     }
+    ],
+    "read": {
+     "bigIdea": "The schedule doesn’t depend on sales.",
+     "where": "The Brewers Association’s **14-day** caustic clean applies however much or little a line pours, because **bacteria keep growing** and their **biofilm** gets harder to remove the longer you wait. Its pre-shift checklist gives **7–14 days** and says to check local rules. Older systems, or ones with flavor problems, may need a tighter schedule.",
+     "mixup": "A slow tap isn’t a clean tap. It may be the dirtiest line on the bar.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The caustic clean",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "2% / 3%",
+      "line": "routine / dirty or old lines."
+     },
+     {
+      "big": "80–110°F",
+      "line": "mixing water."
+     },
+     {
+      "big": "15 / 20 MIN",
+      "line": "pumped / static contact."
+     }
+    ],
+    "read": {
+     "bigIdea": "Strength, heat, time.",
+     "where": "Mix the caustic cleaner (sodium or potassium hydroxide) to at least **2%** for routine cleaning of well-kept lines, **3%** for heavily soiled or old lines or any line that changes a beer’s flavor, and check it with a titration kit. Mix with water at **80–110°F**. Keep it in the line at least **15 minutes** when a pump recirculates it, or **20 minutes** for static or canister cleaning. **Never** use a chlorine cleaner: it damages lines and leaves flavors.",
+     "mixup": "Hotter or stronger isn’t a shortcut for skipping time. The four work together: time, temperature, scrubbing and strength.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Pump, rinse, acid",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PUMP",
+      "line": "recirculate: the preferred way."
+     },
+     {
+      "big": "pH",
+      "line": "rinse until it matches tap water."
+     },
+     {
+      "big": "QUARTERLY",
+      "line": "phosphoric acid clean."
+     }
+    ],
+    "read": {
+     "bigIdea": "Move it, rinse it, then descale.",
+     "where": "An electric **pump** recirculating the cleaner is preferred for nearly every system: aim for about **2 gallons a minute**, against the beer’s flow where possible. A pressure canister is a weaker fallback. **Rinse** with fresh water before and after every chemical, until the water out of the line matches a tap-water **pH** reference; never push cleaner out with beer. Every **three months**, add an **acid** clean (phosphoric acid) for beer stone, and **never** let acid and caustic meet.",
+     "mixup": "Acid doesn’t replace the caustic clean. It’s in addition to it, four times a year.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Faucets, couplers and old lines",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FAUCETS",
+      "line": "apart at every clean."
+     },
+     {
+      "big": "6 MONTHS",
+      "line": "FOBs and couplers fully apart."
+     },
+     {
+      "big": "TAINT",
+      "line": "cider, root beer, wine stay in a line."
+     }
+    ],
+    "read": {
+     "bigIdea": "Chemical in the line doesn’t clean everything.",
+     "where": "**Faucets** are taken apart and hand-cleaned at **every** line clean, and cleaner is run through every FOB. Every **six months**, **FOBs and couplers** are fully taken apart. Each leg of a split line is cleaned as its own line. Long trunk lines get replaced when the system is **10+ years** old or flavors carry between lines. **Root beer, cider, wine** or flavored beers can **permanently taint** a line and its neighbors, so give them their own.",
+     "mixup": "A new cider on an old beer line won’t just “rinse out”. It can flavor the beer after it for good.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Safety and the log",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PPE",
+      "line": "goggles, nitrile gloves, boots."
+     },
+     {
+      "big": "ADD TO WATER",
+      "line": "chemical into water, never the reverse."
+     },
+     {
+      "big": "LOG",
+      "line": "dated, in the cooler."
+     }
+    ],
+    "read": {
+     "bigIdea": "Caustic burns. Treat it that way.",
+     "where": "Only **trained** people clean lines. Wear **splash goggles**, **nitrile, neoprene or butyl** gloves that reach past the wrist (not latex), and chemical-resistant boots. Always add **chemical to water**, never water to concentrated caustic, which can erupt. Keep the **safety data sheet** handy and never leave a clean half-done. Keep a **cleaning log** in the cooler (date, initials, caustic or acid). To check the cleaner’s work, scrape inside a faucet with a straw: a **vinegar or butter** smell means trouble.",
+     "mixup": "A “sonic” line device doesn’t replace chemical cleaning.",
+     "sayIt": ""
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "A tap that sells one keg a month gets its lines cleaned…",
+   "answer": "Every 14 days, like the rest",
+   "wrong": [
+    "Once a month",
+    "When the keg changes",
+    "Never"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Why clean a slow line on schedule?",
+   "answer": "Bacteria and biofilm grow either way",
+   "wrong": [
+    "It isn’t needed",
+    "To use up chemical",
+    "For the log only"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The BA’s pre-shift checklist gives a cleaning range of…",
+   "answer": "7–14 days",
+   "wrong": [
+    "30–60 days",
+    "Once a year",
+    "Every day"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Routine caustic strength for well-kept lines is at least…",
+   "answer": "2%",
+   "wrong": [
+    "0.2%",
+    "10%",
+    "25%"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Caustic and acid cleaners are mixed with water at…",
+   "answer": "80–110°F",
+   "wrong": [
+    "Ice cold",
+    "Boiling",
+    "50°F"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "With a recirculating pump, the cleaner stays in the line at least…",
+   "answer": "15 minutes",
+   "wrong": [
+    "1 minute",
+    "2 hours",
+    "Overnight"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The preferred way to clean lines is…",
+   "answer": "An electric pump recirculating the cleaner",
+   "wrong": [
+    "Pushing cleaner out with beer",
+    "A bucket and brush only",
+    "A sonic device"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "You’ve rinsed enough when the rinse water…",
+   "answer": "Matches tap water’s pH",
+   "wrong": [
+    "Smells of beer",
+    "Turns blue",
+    "Is warm"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "How often is the acid clean?",
+   "answer": "Every three months, on top of caustic",
+   "wrong": [
+    "Instead of caustic",
+    "Every day",
+    "Never"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Faucets are taken apart and cleaned…",
+   "answer": "At every line cleaning",
+   "wrong": [
+    "Once a year",
+    "Only when they drip",
+    "Never"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "FOBs and couplers are fully taken apart…",
+   "answer": "Every six months",
+   "wrong": [
+    "Every day",
+    "Every ten years",
+    "Never"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Why give cider its own line?",
+   "answer": "It can permanently taint a beer line",
+   "wrong": [
+    "It pours faster",
+    "It needs nitrogen",
+    "It’s required by law"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Which gloves for line cleaning?",
+   "answer": "Nitrile, neoprene or butyl, past the wrist",
+   "wrong": [
+    "Latex",
+    "Fabric",
+    "None"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "When mixing caustic, you…",
+   "answer": "Add chemical to water",
+   "wrong": [
+    "Add water to chemical",
+    "Mix with acid",
+    "Mix with beer"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A faucet scraped with a straw smells of vinegar. That means…",
+   "answer": "Infection: the lines need attention",
+   "wrong": [
+    "It’s clean",
+    "It’s new",
+    "It’s a sour beer"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Who cleans our lines and how often: GM to confirm with our draft service. Local rules may differ."
+ ]
+}

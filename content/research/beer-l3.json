@@ -1,0 +1,651 @@
+{
+  "checked": "2026-11-08",
+  "syllabus": {
+    "url": "https://www.cicerone.org/sites/default/files/resources/English_AC_Syllabus_V6.0_0.pdf",
+    "landing_page": "https://www.cicerone.org/us-en/node/9483",
+    "exam_page": "https://cicerone.org/us-en/node/356",
+    "version": "Advanced Cicerone Syllabus, Version 6.0, updated August 1, 2024 (35 pages). The landing page says to study this version for exams taken after January 1, 2025.",
+    "sections": [
+      "I Keeping and Serving Beer (A Purchasing and accepting beer, B Serving alcohol, C Beer storage, D Draft principles, E Draft systems, F Beer glassware, G Serving bottled beer, H Serving draft beer, I Other draft service practices)",
+      "II Beer Styles (A Understanding beer styles, B Style parameters, C Beer style knowledge)",
+      "III Beer Flavor and Evaluation (A Taste and flavor, B Normal beer flavors, C Specific beer flavor compounds, D Other beer flavors, E Tasting exam format)",
+      "IV Beer Ingredients and Brewing Processes (A Ingredients, B Processes)",
+      "V Pairing Beer with Food (A-H, same headings as Certified)",
+      "Appendix A: Recommended Culinary Knowledge"
+    ],
+    "adds_over_certified": "Same five areas as Certified Cicerone, but deeper and more global. Service: glass-cleaning methods from around the world (two-sink, Spülboy), the Belgian/Dutch spatula pour, Czech side-pull faucets, flash chillers for unrefrigerated kegs, and cask cellar management (stock levels, spile management). Styles: four commercial examples per style instead of three, approximate attenuation and carbonation, more historical (BJCP 27) and emerging styles. Flavor: a new section naming specific flavor compounds by chemistry (aldehydes, esters, organic acids, phenols, sulfur compounds, damascenone, geosmin, TCA). Tasting exam: 12 possible off-flavors (Certified has 5), plus consumer and technical descriptions. Ingredients: barley and hop agronomy, advanced hop products, novel yeasts (kveik, thiol-boosting), water chemistry. Pairing: extra interaction terms (accentuating, canceling, clashing, softening) and a long global culinary vocabulary list. Content is a subset of the Master Cicerone syllabus.",
+    "notes": "Syllabus PDF downloaded and compared line by line against the Certified Cicerone v6.0 syllabus on 2026-11-08. Exam fees, weighting and pass marks come from the cicerone.org Advanced Cicerone page (node/356), checked the same day; that page also listed upcoming tasting exams on Nov 11, 2026 (Atlanta) and Feb 16, 2027 (Boston). Copyrighted: everything below is paraphrased."
+  },
+  "topics": {
+    "advanced_cicerone": [
+      {
+        "fact": "Prerequisites: you must have passed the Certified Cicerone exam and be of legal drinking age.",
+        "source": "Cicerone Certification Program, Advanced Cicerone exam page; Help Center FAQ",
+        "url": "https://cicerone.org/us-en/node/356",
+        "verified": true
+      },
+      {
+        "fact": "Format: an online, remotely proctored written exam (multiple choice and essays; in-person written sittings are limited), plus an in-person tasting exam and two in-person oral exams on beer styles and on food pairing, taken alongside the tasting panels. Cicerone's Help Center calls it a day-long examination.",
+        "source": "Cicerone Certification Program, Advanced Cicerone exam page; Help Center 'About the Advanced Cicerone Exam' (last modified Dec 2021)",
+        "url": "https://cicerone.org/us-en/node/356",
+        "verified": true
+      },
+      {
+        "fact": "Weighting and pass marks: written 75%, tasting 15%, oral 10%. You need 80% overall and at least 75% on the tasting portion (Certified Cicerone asks for 70% on tasting).",
+        "source": "Cicerone Certification Program, Advanced Cicerone exam page",
+        "url": "https://cicerone.org/us-en/node/356",
+        "verified": true
+      },
+      {
+        "fact": "Fees on cicerone.org (checked Nov 8, 2026): $450 for the first written exam and $400 for the first tasting and oral exams ($850 total); retakes are $400 written and $350 tasting/oral, all nonrefundable. The Help Center FAQ (last modified Dec 2021) still lists older prices ($795 total; retakes $375 written, $300 tasting), so quote the main page.",
+        "source": "Cicerone Certification Program, Advanced Cicerone exam page vs Help Center FAQ",
+        "url": "https://cicerone.org/us-en/node/356",
+        "verified": true
+      },
+      {
+        "fact": "Retake timing (Help Center FAQ, Dec 2021): a written retake is allowed six months after your most recent exam; a tasting retake has no waiting period.",
+        "source": "Cicerone Help Center, Advanced Cicerone FAQ",
+        "url": "https://support.cicerone.org/en/support/solutions/articles/69000190309-advanced-cicerone-frequently-asked-questions-faq-",
+        "verified": true
+      },
+      {
+        "fact": "Tasting exam, part 1: identify off-flavors by comparing spiked samples to a control beer. Twelve flaws are possible: acetaldehyde, acetic acid, chlorophenol, diacetyl, DMS, H2S, isovaleric acid, lactic acid, lightstruck, mercaptan, metallic and trans-2-nonenal (the Certified panel uses only five).",
+        "source": "Cicerone, Advanced Cicerone Syllabus v6.0, III.E",
+        "url": "https://www.cicerone.org/sites/default/files/resources/English_AC_Syllabus_V6.0_0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Tasting exam, other exercises: a consumer-focused description (five specific, evocative descriptors for an unknown beer), style discrimination (place a sample in one of four styles), and a technical description covering appearance, aroma, flavor and mouthfeel using chemical terms where they fit.",
+        "source": "Cicerone, Advanced Cicerone Syllabus v6.0, III.E",
+        "url": "https://www.cicerone.org/sites/default/files/resources/English_AC_Syllabus_V6.0_0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Styles go further than Certified: four commercial examples per style (classic and other notable producers worldwide), approximate attenuation and carbonation, and each style's history. Added styles include historical beers (London Brown Ale, Lichtenhainer, Roggenbier, Piwo Grodziskie, Sahti) and emerging styles (Italian Pils, New Zealand Pils, West Coast Pilsner, Australian-style XPA, Cold IPA, American-style fruited sour), where only flavor and examples are tested.",
+        "source": "Cicerone, Advanced Cicerone Syllabus v6.0, II.B-C",
+        "url": "https://www.cicerone.org/sites/default/files/resources/English_AC_Syllabus_V6.0_0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "A new section names flavor compounds by chemistry: aldehydes (acetaldehyde, grainy isobutyraldehyde, trans-2-nonenal), esters (ethyl acetate, ethyl butyrate, isoamyl acetate), organic acids (acetic, butyric, isovaleric, lactic), phenols (4-ethylphenol, 4-vinylguaiacol, chlorophenol, vanillin), sulfur compounds (catty 4MMP, DMS, H2S, lightstruck 3MBT, methanethiol, SO2), plus damascenone, geosmin, metallic and cork-taint TCA.",
+        "source": "Cicerone, Advanced Cicerone Syllabus v6.0, III.C",
+        "url": "https://www.cicerone.org/sites/default/files/resources/English_AC_Syllabus_V6.0_0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Service knowledge widens to world practice: two-sink and Spülboy glass rinsers, glass washers at 130-140°F (or 180°F high-temp machines without chemical sanitizer), the Belgian/Dutch pour where foam is cut with a wet spatula, Czech side-pull faucets, flash chillers for kegs kept warm, and running a cask cellar.",
+        "source": "Cicerone, Advanced Cicerone Syllabus v6.0, I.E-I.I",
+        "url": "https://www.cicerone.org/sites/default/files/resources/English_AC_Syllabus_V6.0_0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Master Cicerone, the fourth and highest level: a two-day exam of written essays, oral exams with industry experts (often hands-on) and tasting. You must have passed Advanced Cicerone; the pass mark is 85% overall; fees are $1,095 initial and $895 for retakes. The page says it is held once a year in the US in one place and one or two times a year in another.",
+        "source": "Cicerone Certification Program, Master Cicerone page",
+        "url": "https://www.cicerone.org/us-en/node/357",
+        "verified": true
+      },
+      {
+        "fact": "Roughly 28 people worldwide held the Master Cicerone title as of late 2023, per local news coverage. Cicerone's own site gives no total, so treat the number as unverified.",
+        "source": "WLOX news (Nov 30, 2023), seen in search results only",
+        "url": "https://www.wlox.com/2023/11/30/fly-llama-owner-certified-master-cicerone-among-28-certified-globally/",
+        "verified": false
+      }
+    ],
+    "line_cleaning": [
+      {
+        "fact": "The 14-day caustic clean applies however much or little beer a line pours, because bacteria keep growing and biofilms get stronger the longer cleanings are spaced out. The manual's pre-shift checklist gives 7-14 days and says to check local ordinances. Older or problem systems may need a more aggressive schedule.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 5 p. 49 and ch. 7 p. 65",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Caustic strength: mix to at least 2% caustic (as sodium hydroxide) for routine cleaning of well-kept lines, and 3% for heavily soiled or older lines or any line that changes a beer's flavor. Use a draft cleaner based on sodium hydroxide, potassium hydroxide or both, and confirm working strength with a portable titration kit. Never use chlorine-containing cleaners: chlorine attacks some line materials and leaves flavors.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 pp. 65-66",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Temperature and contact time: mix both caustic and acid cleaners with water at 80-110°F. The solution must stay in the line at least 15 minutes when recirculated by pump, or at least 20 minutes for static or pressure-canister cleaning.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 pp. 66, 78",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Recirculation by electric pump is the preferred method for nearly all systems; a pressurized canister is a less effective fallback. CO2 pushing a canister weakens caustic, and a proper canister clean takes about 5-6 trips between cooler and bar versus 2-3 with a pump.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 pp. 67, 73",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Pump setup: run chemical against the direction of beer flow where possible and alternate direction between cleanings. Aim for twice the beer's flow (beer runs about 1 gal/min, so 2 gal/min), with 1 gal/min as the minimum. Check flow by catching 15 seconds of output and multiplying by four. Back-pressure must never exceed 50 psi.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 pp. 68-69",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "The 'Sinner's Circle': time, temperature, mechanical action and chemical concentration work together. Cut one (for example, no pump means no mechanical scrubbing) and you must raise another, such as strength or contact time.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 pp. 64-65",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Rinsing: flush with fresh water before the chemical goes in and after every chemical. Never push cleaner out with beer. Test a tap-water reference with pH strips first, then rinse until the water leaving the line matches it and carries no debris. Caustic cleaner reads pH 10-13.5, acid cleaner pH 2-4.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 pp. 67, 73",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Acid cleaning (quarterly, in addition to caustic, never instead): use phosphoric-acid line cleaners. Hydrochloric acid corrodes stainless and nitric acid damages nylon tubing, so neither is used. Never let acid and caustic meet in a line or bucket; flush to pH neutral between them. Caustics 'built' with EDTA or other chelators help remove beer stone and can reduce the need for acid.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 pp. 65-67",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Hardware: remove and hand-clean faucets at every line cleaning; purge cleaner through every FOB and out its drain hose. Every six months, fully take apart and hand-clean all FOBs and couplers. Each leg of a split ('Y'd') line is cleaned as its own line.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 pp. 65, 68, 72, 78",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Safety: only trained people clean lines. Wear splash goggles (or impact safety glasses with side shields), nitrile, neoprene or butyl gloves that reach past the wrist (not latex, vinyl or fabric), and waterproof, slip- and chemical-resistant boots. Always add chemical to water, never water to concentrated caustic, which can erupt. Keep the safety data sheet (SDS) on hand, set cleaners on the floor, never leave a job half-finished, and check local rules before pouring used solution down the drain.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 pp. 62-63, 67",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Records and spot checks: keep a cleaning log in the keg cooler where the retailer, wholesaler and brewer can see it, showing a clean within the last two weeks (the BA's printable log has date, initials, caustic or acid, and brand). Check the cleaner's work by scraping inside a faucet with a bar straw, inspecting couplers, FOB sight glasses, jumper lines and drip trays; a vinegar or butter smell means infection. Sonic 'cleaners' do not replace chemical cleaning, and ATP swabs can't tell beer-spoiling bacteria from harmless yeast.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 pp. 64, 75-79",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Line replacement beyond vinyl jumpers: replace long-draw trunk line when the system is 10+ years old or when flavor carries over between lines. Root beer, flavored beers, margaritas, wine or cider can permanently taint a line and its neighbors in the bundle. If a coupler's gas check valve is or ever was missing, replace the gas line.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 7 p. 64",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      }
+    ],
+    "keg_and_cooler": [
+      {
+        "fact": "Common US keg sizes (BA): sixth barrel 5.16 gal (660 oz, about 55 x 12 oz, 58 lb full); quarter barrel or 'pony' 7.75 gal (992 oz, about 82 x 12 oz, 87 lb); half barrel 15.5 gal (1,984 oz, about 165 x 12 oz, 161 lb); Euro keg 50 L / 13.2 gal (1,690 oz, about 140 x 12 oz, 137 lb).",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 1 fig. 1.1 p. 6",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "In 16 oz pints: sixtel about 41, quarter about 62, half barrel about 124, 50 L Euro about 105. A 'slim quarter' holds the same 7.75 gal as a stubby quarter but is tall and narrow (about 23⅜ x 11⅛ in), the same height as a sixtel, so it suits tight coolers and dual-tap kegerators. 'Pony keg' is used loosely: some people mean the 7.75 gal quarter, others an eighth barrel (3.875 gal).",
+        "source": "KegWorks (draft equipment retailer), Guide to Beer Keg Sizes",
+        "url": "https://www.kegworks.com/blog/guide-to-beer-keg-sizes",
+        "verified": true
+      },
+      {
+        "fact": "Imported 50 L kegs often don't take the standard US Sankey 'D' coupler, so confirm the coupler type when ordering imports.",
+        "source": "KegWorks, Guide to Beer Keg Sizes",
+        "url": "https://www.kegworks.com/blog/guide-to-beer-keg-sizes",
+        "verified": true
+      },
+      {
+        "fact": "Chill times to 38°F (BA table): from 40°F about 7 hours, 44°F 18 hours, 46°F 21 hours, 48°F 23.5 hours, 50°F 25 hours. Out of the cooler, a keg warms from 38°F to 43°F in about 4 hours and 48°F in 6. So a delivery that sat out a few hours needs most of a day back in the cooler, even if it 'feels cold'.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 5 tables 5.1-5.2 p. 51",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Daily cooler checks (BA): air and liquid thermometers at 36-38°F; lines full of beer with no bubbles or kinks; no leaks or spills; FOBs set to pour and their drains clear; gas valves open; listen for the hiss of a leak. Kegs on tap longer than 45 days may no longer taste as the brewer intended. Keep food away from kegs and lines; a dedicated beer cooler is recommended.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 5 p. 50",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Gauge ballparks to spot problems (BA): direct-draw with 100% CO2 about 12-15 psi; long-draw with a 60-80% CO2 blend about 22-25 psi; premixed 25% CO2/75% N2 for nitro beers about 30-35 psi. A full CO2 cylinder reads about 800 psi and a full nitrogen cylinder about 2,200 psi. Exact settings come from a calculation for your system.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 5 pp. 49-50",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Keg handling: a full half barrel weighs about 161-165 lb, so buddy-lift or use a lift, watch for pinch points and never get below a rolling or sliding keg. Kegs are pressure vessels: never remove a keg valve or its lock ring in the field.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 1 p. 6 and ch. 5 p. 50",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "CO2 cylinder storage: never inside the walk-in, because a leak can fill the room with deadly gas (and cold also reduces gas yield). Store cylinders upright with the valve cap on, firmly secured so they can't fall, and below 125°F. Move them with the valve closed and regulator off, and never lift by the valve. Tank pressure varies with temperature (600-1,200 psi) whatever the fill level, so a gauge can't show how full it is.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 1 pp. 14-15",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "CO2 hazard: it is colorless, odorless and heavier than air, so it pools in low, closed spaces like walk-ins. At 10% (100,000 ppm) or more it can cause unconsciousness or death, and high concentrations can kill in under 15 minutes; lower levels cause headache, dizziness, rapid breathing and shaking. The BA recommends CO2 alarms in walk-ins with gas lines, shutting gas off before maintenance, and ventilating at once after a release.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 1 p. 15 and ch. 3 pp. 25-26",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Receiving deliveries (BA operator's guide): know your distributor's return policy; check the invoice against what arrived; make sure date codes are legible and in range and that crowns, cans and keg valves are free of rust or debris; refuse anything wrong; move product straight into cold storage and rotation. Rotate first in, first out.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 5 pp. 65-66",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "The 3-30-300 rule (from MillerCoors research, quoted by the BA): 3 days at 90°F (a hot car trunk), 30 days at room temperature (71°F) and 300 days refrigerated (33°F) cause about the same flavor loss in packaged beer.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 5 p. 65",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Reading date codes: some are best-by dates (required in much of the world for drinks under 10% ABV), others are packaging dates, and some brands print both. Formats include a plain date (061512 = June 15, 2012), Julian/ordinal codes (364-14 = December 30, 2014) and brewery-specific codes. Sell in date order and pull out-of-date product from service.",
+        "source": "Cicerone Certification Program, Advanced Cicerone Syllabus v6.0 (Aug 1, 2024), I.C.2",
+        "url": "https://www.cicerone.org/sites/default/files/resources/English_AC_Syllabus_V6.0_0.pdf",
+        "verified": true
+      }
+    ],
+    "costing": [
+      {
+        "fact": "Pour cost = cost of what's in the drink ÷ its sale price. For the whole bar over a period, pour cost = inventory usage ÷ sales. To set a price: price = ingredient cost ÷ target pour cost.",
+        "source": "BevSpot (bar inventory software) blog: 'What's the Average Pour Cost' (2016) and 'Pricing Drinks' (2015)",
+        "url": "https://bevspot.com/blog/bar-management-pricing-drinks-pour-costs/",
+        "verified": true
+      },
+      {
+        "fact": "Common targets from Backbar (bar inventory software, 2019): draft beer about 20% pour cost, bottled beer about 25%, spirits about 15%, wine 30-40%, and 18-24% across a whole bar program. These are industry rules of thumb, not standards.",
+        "source": "Backbar Academy, 'What is the average liquor cost for bars and restaurants' (Oct 2019)",
+        "url": "https://academy.getbackbar.com/what-is-the-average-liquor-cost-for-bars-and-restaurants",
+        "verified": true
+      },
+      {
+        "fact": "BevSpot's own customer data (published 2016, sample size not given): median beer pour cost 24% (draft and bottle together), with the best quarter of bars at or below 20%; spirits median 15%, wine 28%; the median bar overall just above 20%.",
+        "source": "BevSpot blog, 'What's the Average Pour Cost in the Bar Industry?' (May 27, 2016)",
+        "url": "https://bevspot.com/blog/whats-average-pour-cost-bar-industry/",
+        "verified": true
+      },
+      {
+        "fact": "Pricing a draft (Backbar method): pours per keg = keg ounces ÷ liquid ounces per pour; keg revenue target = keg cost ÷ target pour cost; price = keg revenue ÷ pours, rounded up. Their example: a $120 half barrel at 20% needs $600; 1,984 oz ÷ 14.5 oz (a 16 oz glass with about 1.5 oz of foam) = about 136 pours; $600 ÷ 136 = $4.41, rounded to $4.50. Backbar also claims draft costs 40-45% less per ounce than bottles and cans.",
+        "source": "Backbar Academy, 'Pricing Draft vs Bottle Beer' (Jan 13, 2020)",
+        "url": "https://academy.getbackbar.com/pricing-draft-vs-bottle-beer",
+        "verified": true
+      },
+      {
+        "fact": "Cost per ounce, worked example (our arithmetic on BA keg volumes): a half barrel holds 1,984 oz, so a $180 keg costs about $0.091/oz before waste. A 14.5 oz liquid pour then costs about $1.32; sold at $7.00 that is about a 19% pour cost. Every ounce lost to foam, spills or line cleaning raises the real cost per pour.",
+        "source": "Derived from Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), fig. 1.1",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Pricing bottles and cans (Backbar): either wholesale cost per unit × 2-3, or cost ÷ target pour cost. Their example: a $25.99 case of 24 is $1.08 a bottle; $1.08 ÷ 0.25 = $4.32, rounded to $4.50. Packaged beer has less spillage, so its cost percentage stays more consistent than draft.",
+        "source": "Backbar Academy, 'Pricing Draft vs Bottle Beer' (Jan 13, 2020)",
+        "url": "https://academy.getbackbar.com/pricing-draft-vs-bottle-beer",
+        "verified": true
+      },
+      {
+        "fact": "Foam is money: the BA says a one-inch head is the right pour and maximizes profit, because foam is 25-33% beer, while filling to the rim is over-pouring. Siebel Institute adds that 4 oz of foam holds about 1 oz of beer, and an open faucet with no glass under it runs about 2 oz per second down the drain.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 6 p. 56; Siebel Institute, 'How much does wasting draught beer cost a Retailer?' (Jul 4, 2022)",
+        "url": "https://www.siebelinstitute.com/news/business-and-management/how-much-does-wasting-draught-beer-cost-a-retailer",
+        "verified": true
+      },
+      {
+        "fact": "Small losses add up: Siebel's example is losing 1 oz of beer per pint on a half barrel (124 pints), which at a $4 pint ($0.25/oz) is $31 per keg, or about $1,612 a year at one keg a week and $16,120 at ten. One ounce of every 16 is 6.25% of the keg. (The article has small internal math slips; these figures are the consistent ones.)",
+        "source": "Siebel Institute, 'How much does wasting draught beer cost a Retailer?' (Jul 4, 2022)",
+        "url": "https://www.siebelinstitute.com/news/business-and-management/how-much-does-wasting-draught-beer-cost-a-retailer",
+        "verified": true
+      },
+      {
+        "fact": "Line cleaning costs beer: each clean dumps beer equal to the volume of the lines, so long draws cost more. Line volume per foot (BA): 3/16 in vinyl about 1/6 oz, 1/4 in about 1/3 oz, 5/16 in about 1/2 oz, 3/8 in about 3/4 oz. So 50 ft of 3/8 in line holds about 37.5 oz, more than two pints, per line per cleaning (our arithmetic).",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 4 table 4.1 p. 39 and ch. 7 p. 63",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Usage and variance: usage = beginning inventory + purchases − ending inventory (at cost). Dollar variance = cost of what the POS says you sold − usage; % variance = dollar variance ÷ usage. BevSpot's example: $10,000 used but only $8,000 sold = −20% variance. Causes include miscounts, over-pouring and theft.",
+        "source": "BevSpot blog, 'Calculating Variance' (Nov 2, 2015)",
+        "url": "https://bevspot.com/blog/calculating-variance/",
+        "verified": true
+      },
+      {
+        "fact": "BevSpot claims industry shrinkage hovers around 20% and suggests pricing at about a 16.67% pour cost to land at a real 20% after loss. Treat this as a software vendor's estimate, not a measured industry figure.",
+        "source": "BevSpot blog, 'Pricing Drinks' (Oct 13, 2015)",
+        "url": "https://bevspot.com/blog/bar-management-pricing-drinks-pour-costs/",
+        "verified": true
+      },
+      {
+        "fact": "Counting kegs: 'touch and guess' (lift or kick and estimate tenths) is the most common and least accurate method. Weighing on a keg scale rated for at least 300 lb, minus the tare weight of an empty keg, is more precise; wrench-style keg gauges and flow meters are other options. Weighing tapped kegs is fine, but don't switch between tapped and untapped from count to count.",
+        "source": "BevSpot blog, 'How to Count a Keg in Inventory' (Feb 11, 2016)",
+        "url": "https://bevspot.com/how-to-count-a-keg-in-inventory-bar-management/",
+        "verified": true
+      }
+    ],
+    "beer_list": [
+      {
+        "fact": "Organize a restaurant list by flavor, not by country: region doesn't tell a guest how a beer tastes. Neighborhood Restaurant Group (Washington, DC) uses headings like Crisp, Roast, Tart & Funky, Fruit and Spice, Hop and Cask, and warns that very specific style headings please experts but confuse casual drinkers. (The BA's six flavor families from Level 2 work the same way.)",
+        "source": "FSR Magazine, 'Anatomy of a Beer List' (Jul 24, 2016)",
+        "url": "https://www.fsrmagazine.com/food/beverage/anatomy-beer-list/",
+        "verified": true
+      },
+      {
+        "fact": "Pairing a flavor category, subcategory, style and key ingredients on the menu gives staff enough to describe a beer they haven't tasted yet, which matters when taps rotate quickly. The printed list should start a conversation, not replace a knowledgeable server.",
+        "source": "FSR Magazine, 'Anatomy of a Beer List' (Jul 24, 2016)",
+        "url": "https://www.fsrmagazine.com/food/beverage/anatomy-beer-list/",
+        "verified": true
+      },
+      {
+        "fact": "Guests choose on flavor first. In a 2015 Nielsen poll for the BA, 97% of craft beer drinkers rated flavor important when choosing beer at a bar or restaurant, and 71% rated 'complements my meal' very or somewhat important.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 4 p. 48 (Nielsen Craft Beer Insights Poll, May 2015)",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Put ABV and pour size next to each other so guests and servers can see the alcohol. A US standard drink is about 0.6 fl oz (14 g) of pure alcohol: 12 oz of 5% beer. A 12 oz pour of 10% beer is two drinks, and a 16 oz pour of 8% beer is about 2.1 (our arithmetic).",
+        "source": "NIH/NIAAA, 'What Is A Standard Drink?'",
+        "url": "https://www.niaaa.nih.gov/alcohols-effects-health/what-standard-drink",
+        "verified": true
+      },
+      {
+        "fact": "Non-alcoholic labels (TTB rules for malt beverages): 'non-alcoholic' means under 0.5% ABV and must be shown with 'contains less than 0.5 percent (or .5%) alcohol by volume'; 'alcohol free' means no alcohol at all; 'low' or 'reduced alcohol' means under 2.5% ABV. List NA beers with the same wording so guests know what they're getting.",
+        "source": "US Alcohol and Tobacco Tax and Trade Bureau (TTB), Malt Beverage Labeling: Alcohol Content (27 CFR 7.65)",
+        "url": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/beer/labeling/malt-beverage-alcohol-content",
+        "verified": true
+      },
+      {
+        "fact": "Glassware for a list: if you can only stock one all-purpose beer glass, the BA suggests a 16 oz footed Belgian-style tulip. It leaves out the shaker pint because that glass was designed for mixing spirit drinks.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 2 p. 35",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Rotating taps: plan rotations so a keg doesn't sit; the BA warns that a keg on tap more than 45 days may have changed from the brewer's intent. Give cider, fruit or flavored beers their own lines, because those drinks can permanently taint a beer line and its neighbors in the bundle.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 5 p. 50 and ch. 7 p. 64",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Freshness is a list decision: Cicerone expects the program to sell beer in date order, pull out-of-date product, and train staff to promote and sell every beer offered, so nothing ages on the shelf or in the cooler.",
+        "source": "Cicerone Certification Program, Advanced Cicerone Syllabus v6.0 (Aug 1, 2024), I.C.2.b-e",
+        "url": "https://www.cicerone.org/sites/default/files/resources/English_AC_Syllabus_V6.0_0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "When a beer tastes off (BA): pull it from draft or inventory right away, keep the back-stock cold, take it off the menu and tell staff, then call the distributor, and the brewery if the distributor doesn't help. Trained staff should be able to tell a flawed beer from one they just don't like.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 5 pp. 65-66",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "A cellar or vintage list: the BA, citing Patrick Dawson's Vintage Beer, names 'the three S's' that age well: strong (generally 8% ABV or more), sour and smoked. Check with the brewery first, taste cellared beer after six months and then yearly, and list it when it's ready. A well-aged beer can command a premium, but the venue, not the brewer, owns the risk.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 5 pp. 66-67",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      }
+    ],
+    "staff_training": [
+      {
+        "fact": "Michigan law lets an on-premises licensee give samples to employees for education, during legal hours for consumption, if the employee is at least 21.",
+        "source": "Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov, compiled through PA 114 of 2026), subsection (3)(b)",
+        "url": "https://www.legislature.mi.gov/documents/mcl/pdf/mcl-436-2027.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Tasting order: when tasting without food, go by intensity, starting with the lowest-ABV beer and working up, so aggressive flavors don't swamp delicate ones.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 6 p. 69",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "The BA's tasting steps: look at color against white paper; smell first without swirling, then swirl and smell again; sip and hold the beer on the palate, breathing out through the nose; then rest. Don't drink water right away: notice the finish first, then reset with a cracker or water. If your nose tires, sniff your sleeve to reset.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 2 pp. 35-36",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Setting up a staff tasting (BA instructor list): per taster, a tasting sheet, a stemmed tulip (or similar) glass for each beer, a full water glass and white paper. For the group: water pitchers without ice, seltzer and unsalted crackers to clean the palate, towels, openers, and a dump bucket for every four tasters. Plan 2-3 oz per person per beer.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 2 p. 36 and course appendix",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Cicerone sells off-flavor kits made with AROXA. The single-user basic kit ($69 subsidized, one per customer) has six flavors (DMS, diacetyl, acetaldehyde, trans-2-nonenal, lightstruck and an infection flavor), each capsule making about 3 oz of spiked beer, with an hour-long online guide. Knead the capsules before opening because the powder compacts in shipping.",
+        "source": "Cicerone Certification Program store, Single-User Basic Off-Flavor Training",
+        "url": "https://cicerone.org/us-en/node/9478",
+        "verified": true
+      },
+      {
+        "fact": "Cicerone's 12-person basic kit (listed at $249) covers the same six common flaws, three from brewing and three from handling, with enough for a 2 oz sample each. Seen only in search results, not on a loaded page.",
+        "source": "Cicerone Certification Program store (search snippet)",
+        "url": "https://www.cicerone.org/int-en/node/9480",
+        "verified": false
+      },
+      {
+        "fact": "Cicerone's Master Off-Flavor Kit ($795) spikes 24 flavors (25 capsules) for 12-18 people: 3 oz each for 12, 2 oz for 18. You supply the beer and cups. It is aimed at Master-level study, so it's overkill for floor staff.",
+        "source": "Cicerone Certification Program store, Master Off-Flavor Kit",
+        "url": "https://cicerone.org/us-en/node/5826",
+        "verified": true
+      },
+      {
+        "fact": "Siebel Institute kits (sold by Lallemand Brewing): the Intermediate kit has 12 vials (acetaldehyde, acetic acid, contamination, DMS, diacetyl, grainy, indole, isovaleric acid, lightstruck, metallic, papery, H2S), and each vial spikes up to 1 liter of beer. Other suppliers include FlavorActiV and AROXA.",
+        "source": "Lallemand Brewing, Intermediate Off-Flavor Sensory Kit",
+        "url": "https://www.lallemandbrewing.com/en/global/products/intermediate-off-flavor-sensory-kit/",
+        "verified": true
+      },
+      {
+        "fact": "Running a spiked tasting (BeerSmith, a homebrewing software blog): spike a very neutral light lager; a liter of each spiked beer serves about 15-20 people; for big kits, work in rounds of 5-6 flavors, label cups with letters and have each person match flavors on their own. Its comparisons: Siebel basic kit 6 flavors, AROXA 'Beer Uno' 10, FlavorActiV professional starter kit 20; kits are typically $75-200 and single-use.",
+        "source": "BeerSmith blog, 'Using Sensory Kits to Understand Off Flavors in Beer' (Mar 5, 2025)",
+        "url": "https://beersmith.com/blog/2025/03/05/using-sensory-kits-to-understand-off-flavors-in-beer/",
+        "verified": true
+      },
+      {
+        "fact": "Always pour an unspiked control. Cicerone's off-flavor exams have tasters compare each spiked sample against a control beer, and staff learn faster the same way.",
+        "source": "Cicerone Certification Program, Advanced Cicerone Syllabus v6.0 (Aug 1, 2024), III.E.1.a",
+        "url": "https://www.cicerone.org/sites/default/files/resources/English_AC_Syllabus_V6.0_0.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Make pre-shift draft checks part of training (BA): flush faucets with clean water and wipe with a clean microfiber towel; pour 1-3 oz from each tap to check it works and taste it to confirm the tap marker matches the beer; wipe up spills; look for fruit flies; check glassware for smells, dust and lipstick.",
+        "source": "Brewers Association, Draught Beer Quality Manual, 4th ed. (2019), ch. 5 p. 50",
+        "url": "https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Cicerone's BeerSavvy is an online course for restaurant staff that managers can track, and each license includes the Certified Beer Server exam. Siebel Institute recommends having at least one staff member trained in draft systems.",
+        "source": "Cicerone, Training for Restaurants; Siebel Institute (Jul 2022)",
+        "url": "https://www.cicerone.org/us-en/restaurant-training",
+        "verified": true
+      }
+    ],
+    "beer_history": [
+      {
+        "fact": "Porter grew out of London 'brown beer' in the 1700s and was first prized as an aged ('stale') beer. The story that Ralph Harwood of Shoreditch invented it in 1722 has very little hard evidence, and the tale that it was named for London's market porters is probably untrue.",
+        "source": "Oxford Companion to Beer, 'porter' (via beerandbrewing.com)",
+        "url": "https://www.beerandbrewing.com/dictionary/DjSL6BaGJ0",
+        "verified": true
+      },
+      {
+        "fact": "Porter was arguably the first mass-produced commercial beer and peaked in London in the 1820s. Truman, Hanbury & Buxton made about 260,000 US barrels in 1845 on porter alone; brewers installed steam engines within months of their patent. In October 1814 a Meux Brewery porter vat burst, flooding nearby streets and killing eight people.",
+        "source": "Oxford Companion to Beer, 'porter' (via beerandbrewing.com)",
+        "url": "https://www.beerandbrewing.com/dictionary/DjSL6BaGJ0",
+        "verified": true
+      },
+      {
+        "fact": "In 1817 Daniel Wheeler introduced black 'patent' malt, letting brewers make porter mostly from pale malt, which yields over 30% more extract than the scorched brown malts it replaced. Porter faded after the 1870s; Whitbread brewed its last on September 9, 1940.",
+        "source": "Oxford Companion to Beer, 'porter' (via beerandbrewing.com)",
+        "url": "https://www.beerandbrewing.com/dictionary/DjSL6BaGJ0",
+        "verified": true
+      },
+      {
+        "fact": "Burton-on-Trent: William Bass founded his brewery there in 1777. It made over 100,000 UK barrels a year by 1850 and approached a million by 1888, and its red triangle became the first registered trademark in the UK in 1876.",
+        "source": "Oxford Companion to Beer, 'Bass & Company' (via beerandbrewing.com)",
+        "url": "https://www.beerandbrewing.com/dictionary/28hc1iTi5P",
+        "verified": true
+      },
+      {
+        "fact": "Lager takes its name from the German 'lagern', to store. In 1553 Bavaria banned brewing between April 23 and September 29, pushing brewers toward cold-season lager stored in cellars and caves on ice cut from lakes, a practice that lasted into the late 1800s. Today about 9 of every 10 beers drunk worldwide are lagers.",
+        "source": "Oxford Companion to Beer, 'lager' and 'Linde, Carl von' (via beerandbrewing.com)",
+        "url": "https://www.beerandbrewing.com/dictionary/crsBr6IEDq",
+        "verified": true
+      },
+      {
+        "fact": "Refrigeration: Carl von Linde's first practical system for keeping beer cold went into Munich's Spaten Brewery in 1873 (Spaten helped fund it). He first used dimethyl ether, then ammonia, and by 1890 had sold 747 units. Lager could then be brewed in any season, anywhere.",
+        "source": "Oxford Companion to Beer, 'Linde, Carl von' (via beerandbrewing.com)",
+        "url": "https://www.beerandbrewing.com/dictionary/UiffmNkpOm",
+        "verified": true
+      },
+      {
+        "fact": "Lager reached America in 1840, when John Wagner brought Bavarian lager yeast to Philadelphia and brewed in an eight-barrel brewery behind his house. German immigration (1.7 million in the 1840s, 2.6 million in the 1850s) spread it. The US count peaked at 4,131 breweries in 1873, a record not passed until 2015.",
+        "source": "Oxford Companion to Beer, 'The United States'; American Homebrewers Association (Dec 2, 2015)",
+        "url": "https://www.beerandbrewing.com/dictionary/6mbR07Ew5B",
+        "verified": true
+      },
+      {
+        "fact": "Prohibition: Congress passed the 18th Amendment on December 18, 1917; it was ratified January 16, 1919 and took effect a year later. The 21st Amendment repealing it passed Congress February 20, 1933 and was ratified December 5, 1933. CraftBeer.com says legislation allowing 3.2% beer was signed March 23, 1933. About 1,179 brewers were operating when Prohibition began; only 703 breweries existed by 1935.",
+        "source": "National Constitution Center (Amendments XVIII and XXI); CraftBeer.com Beer History; Oxford Companion to Beer, 'The United States'",
+        "url": "https://constitutioncenter.org/the-constitution/amendments/amendment-xviii",
+        "verified": true
+      },
+      {
+        "fact": "Consolidation: by 1978 the US was down to 89 breweries owned by fewer than 50 companies (the AHA counts 50 companies and 100 facilities), the low point since Prohibition.",
+        "source": "Oxford Companion to Beer, 'The United States'; American Homebrewers Association (Dec 2, 2015)",
+        "url": "https://homebrewersassociation.org/?p=20022",
+        "verified": true
+      },
+      {
+        "fact": "Homebrewing: President Carter signed H.R. 1337 on October 14, 1978. Its home-use exemption, added in the Senate, made homebrewing federally legal (the BA cites up to 200 gallons a year per household from 1979). Charlie Papazian founded the American Homebrewers Association in 1978, and Mississippi and Alabama were the last states to legalize homebrewing, in 2013.",
+        "source": "Library of Congress, In Custodia Legis blog (Feb 2023); CraftBeer.com Beer History; BA Beer & Food Course",
+        "url": "https://blogs.loc.gov/law/2023/02/just-brew-it-a-brief-legislative-history-about-homebrewing-in-the-united-states-part-2/",
+        "verified": true
+      },
+      {
+        "fact": "Craft pioneers: Fritz Maytag bought the failing Anchor Brewing in San Francisco (CraftBeer.com says August 1965; the Oxford Companion says 1964). Jack McAuliffe opened New Albion in Sonoma, California, in 1976, generally called America's first modern microbrewery; it lasted about six years. The BA timeline counts 100 craft breweries in 1985, 1,000 in 1996 and over 7,000 by 2018; Montana was the last state to legalize brewpubs (January 1999), and the Brewers Association formed by merger in January 2005.",
+        "source": "CraftBeer.com Beer History; Oxford Companion to Beer, 'The United States'",
+        "url": "https://www.craftbeer.com/beer/beer-history",
+        "verified": true
+      },
+      {
+        "fact": "The BA's current craft brewer definition: small (6 million barrels a year or less, about 3% of US annual sales) and independent (less than 25% owned or controlled by an alcohol-industry member that isn't itself a craft brewer), holding a TTB Brewer's Notice (or owning brands brewed for it). For 2025 the BA counts 9,724 US breweries, 9,578 of them craft, with craft at 13.4% of volume and 24.8% of the $113 billion US beer market by dollars.",
+        "source": "Brewers Association, Craft Brewer Definition; National Beer Stats (2025 data)",
+        "url": "https://www.brewersassociation.org/statistics-and-data/craft-brewer-definition/",
+        "verified": true
+      }
+    ],
+    "michigan": [
+      {
+        "fact": "BA 2025 figures for Michigan: 410 craft breweries (8th in the US), 5.4 per 100,000 adults 21+ (15th), $1,655 million economic impact (16th), 267,660 barrels of craft beer a year (21st), and 1.1 gallons per adult 21+ (38th). Big Michigan names owned by larger companies (Bell's, Founders) don't count as craft, which helps explain the modest barrel total.",
+        "source": "Brewers Association, State Craft Beer Stats: Michigan (2025)",
+        "url": "https://www.brewersassociation.org/statistics-and-data/state-craft-beer-stats/?state=MI",
+        "verified": true
+      },
+      {
+        "fact": "The Michigan Brewers Guild calls Michigan 'The Great Beer State' and, in June 2022, ranked it 6th nationally for number of breweries, microbreweries and brewpubs. The BA's 2025 craft-only count puts it 8th, so say 'top ten' unless you name the source and year.",
+        "source": "Michigan Brewers Guild, '25 Years of the Michigan Brewers Guild' (Jun 27, 2022); BA State Stats",
+        "url": "https://www.mibeer.com/Resources/News-Features/michigan-beer-month-july-highlights-25-years-of-the-michigan-brewers-guild",
+        "verified": true
+      },
+      {
+        "fact": "The Michigan Brewers Guild began with an organizing meeting in a Saginaw pub on October 22, 1997 (49 people from 30 breweries) and was formally created December 3, 1997. It had nearly 300 member breweries in 2022, promotes July as Michigan Beer Month, and held its first Summer Beer Festival in July 1998.",
+        "source": "Michigan Brewers Guild (Jun 27, 2022)",
+        "url": "https://www.mibeer.com/Resources/News-Features/michigan-beer-month-july-highlights-25-years-of-the-michigan-brewers-guild",
+        "verified": true
+      },
+      {
+        "fact": "Guild festivals (member breweries only): the Summer Beer Festival in Ypsilanti's Riverside Park in Depot Town (there since 2001), the Winter Beer Festival at LMCU Ballpark in Comstock Park near Grand Rapids, the Detroit Fall Beer Festival at Eastern Market, and the U.P. Fall Beer Festival in Marquette. Seen in search snippets of mibeer.com pages, not loaded in full.",
+        "source": "Michigan Brewers Guild event pages (search snippets)",
+        "url": "https://www.mibeer.com/events/detroit-fall-beer-festival",
+        "verified": false
+      },
+      {
+        "fact": "Bell's: Larry Bell opened a homebrew supply shop in Kalamazoo in 1983, and Kalamazoo Brewing Co. sold its first beer on September 19, 1985, brewed in a 15-gallon soup pot. Its Eccentric Café opened June 11, 1993, the first onsite pub at a Michigan brewery, after Bell worked with the Legislature to change the law. Oberon was first brewed in 1992 (as SolSun), today's Two Hearted Ale debuted in 1997, and the Comstock brewery opened in 2003.",
+        "source": "Bell's Brewery, History",
+        "url": "https://bellsbeer.com/history/",
+        "verified": true
+      },
+      {
+        "fact": "In November 2021 Bell's was sold to Lion Little World Beverages, the craft arm of Japan's Kirin, and placed under New Belgium; Larry Bell retired. Bell's brewed nearly 462,000 barrels in 2020 and was the BA's 16th-largest US brewing company by volume.",
+        "source": "Good Beer Hunting, Sightlines (Nov 10, 2021)",
+        "url": "https://www.goodbeerhunting.com/sightlines/2021/11/10/bells-brewery-sale-adds-to-japan-led-beer-collectives-growing-international-portfolio",
+        "verified": true
+      },
+      {
+        "fact": "Founders: Mike Stevens and Dave Engbers opened a 9,800 sq ft brewery in downtown Grand Rapids ('since 1997'). It nearly went bankrupt, then turned around by brewing bigger beers: Dirty Bastard, KBS, bourbon-barrel aging and later All Day IPA. In 2023 it merged with Avery Brewing and Mahou Imports to form Mahou USA.",
+        "source": "Founders Brewing Co., About",
+        "url": "https://foundersbrewing.com/about-founders/",
+        "verified": true
+      },
+      {
+        "fact": "Founders ownership: Spain's Mahou San Miguel bought about 30% in 2014 and a majority (an additional 59%) in 2019, which is why the BA no longer counts Founders as craft. Taken from news snippets (Brewbound, Fox 17), not loaded in full.",
+        "source": "Brewbound; Fox 17 (search snippets)",
+        "url": "https://www.brewbound.com/news/mahou-san-miguel-takes-majority-stake-in-founders-brewing-co",
+        "verified": false
+      },
+      {
+        "fact": "Short's: Joe Short opened his brewpub in a renovated hardware store in Bellaire in 2004 (the business was registered in 2002), bought a production site in Elk Rapids in 2008 and started brewing there in 2009. Lagunitas (owned by Heineken) bought a 19.9% stake in July 2017. Seen only in search snippets; Short's own site blocked loading.",
+        "source": "Search snippets (Short's Brewing, Wikipedia, Northern Express)",
+        "url": "https://www.shortsbrewing.com/our-story/",
+        "verified": false
+      },
+      {
+        "fact": "Detroit's Stroh's: 28-year-old German immigrant Bernhard Stroh founded the Lion's Head Brewery in Detroit in 1850. Stroh's became known for 'fire-brewed' beer, with kettles heated directly by gas flame, which lightly caramelized the wort. A 1958 strike let national brands into Detroit, and after borrowing about $700 million to buy other regional brewers, the company collapsed in 2000.",
+        "source": "Oxford Companion to Beer, 'Stroh Brewery Company' (via beerandbrewing.com)",
+        "url": "https://www.beerandbrewing.com/dictionary/oL16EBsqnH",
+        "verified": true
+      },
+      {
+        "fact": "Michigan hops: an MSU Extension headline from its 2015 grower survey says Michigan ranked fourth in US hop production. Crain's, citing Hop Growers of America, reports Michigan's harvested acreage peaked at 810 acres in 2017 and fell to 380 by 2022. Both are search snippets only (the pages blocked loading). The HGA's 2025 report lists only Washington, Oregon and Idaho, so there is no current official Michigan figure.",
+        "source": "MSU Extension; Crain's Detroit (search snippets); Hop Growers of America 2025 Statistical Report",
+        "url": "https://www.canr.msu.edu/news/michigan_ranks_fourth_in_the_united_states_for_hop_production",
+        "verified": false
+      }
+    ],
+    "events_dinners": [
+      {
+        "fact": "Tap takeover sizes (FSR, 2015): Taps in Petaluma, CA runs 4-6 beers from one brewery, which it finds manageable; Pizzeria Paradiso aims for at least 10 handles about once a month; Cloverleaf Tavern runs about 24 'mini' takeovers a year (6-12 beers) plus three that use all 24 lines. Pizzeria Paradiso's advice for a first one: keep it simple, work with local brewers, and give them half your lines.",
+        "source": "FSR Magazine, 'Taking On Tap Takeovers' (Oct 12, 2015)",
+        "url": "https://www.fsrmagazine.com/feature/taking-tap-takeovers/",
+        "verified": true
+      },
+      {
+        "fact": "Takeover logistics from the same operators: order sixtels instead of half barrels when cooler space is tight; tap the beers the day before so the chef can build pairings; have brewery reps brief servers and bartenders; schedule on slow nights (Cloverleaf uses Mondays and Tuesdays); promote with bold menu listings, branded tap handles, email, text lists and social media.",
+        "source": "FSR Magazine, 'Taking On Tap Takeovers' (Oct 12, 2015)",
+        "url": "https://www.fsrmagazine.com/feature/taking-tap-takeovers/",
+        "verified": true
+      },
+      {
+        "fact": "Michigan free-sample limits: an on-premises retailer may let customers sample beer, wine and spirits only if it doesn't charge. Beer samples can't exceed 3 oz (wine 2 oz, spirits ½ oz), and a customer can get no more than 2 samples per 24 hours per licensed premises. This covers free tastes, not paid flights.",
+        "source": "Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov, compiled through PA 114 of 2026), subsection (2)",
+        "url": "https://www.legislature.mi.gov/documents/mcl/pdf/mcl-436-2027.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Michigan homebrew events: a micro brewer, brewpub or on-premises licensee may host homebrewers' club meetings for exhibitions or competitions, with beer in portions of 3 oz or less, drunk only by the brewers, their families, club members, judges or guest speakers, never sold to the public, and under a written agreement.",
+        "source": "Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov, compiled through PA 114 of 2026), subsection (3)(d)",
+        "url": "https://www.legislature.mi.gov/documents/mcl/pdf/mcl-436-2027.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Responsible flights (our arithmetic on NIAAA's standard drink): four 5 oz pours of 5% beer are 20 oz, about 1.7 standard drinks; four 5 oz pours of 8% beer are about 2.7. Print ABV on the flight card.",
+        "source": "NIH/NIAAA, 'What Is A Standard Drink?'",
+        "url": "https://www.niaaa.nih.gov/alcohols-effects-health/what-standard-drink",
+        "verified": true
+      },
+      {
+        "fact": "Flight pours are commonly about 3-5 oz each, varying by venue. Only a lifestyle-site snippet supports this, and no BA or Cicerone figure was found.",
+        "source": "Tasting Table (search snippet)",
+        "url": "https://www.tastingtable.com/1752995/how-many-ounces-beer-flight-vs-standard-beer",
+        "verified": false
+      },
+      {
+        "fact": "Vertical tastings (several vintages of one beer): use at least 2 and no more than 6 vintages in a sitting, at 2-3 oz per person. They don't have to run oldest to newest: taste them first and pair the years that show best side by side.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 5 p. 67",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Planning a beer dinner (BA): get each beer's ABV, style, IBU and special ingredients from the brewery; keep samples cold and taste them at serving temperature, lowest ABV to highest; write first impressions as ingredient and sensation words; then reorder beers to suit the dishes, usually small plates, then the main, then dessert.",
+        "source": "Brewers Association, CraftBeer.com Beer & Food Course, Section 6 pp. 69-70",
+        "url": "https://www.craftbeer.com/wp-content/uploads/CB_Food_Course/BeerAndFoodCourse_LR.pdf",
+        "verified": true
+      },
+      {
+        "fact": "Cask night logistics (Cicerone): sell a cask within three days of tapping. If two beer engines pour the same beer, use a double cask tap so one cask empties faster. Hold 3-10 days' demand in the cellar for standard ales and rotate oldest first. Remove hard spiles at the start of service and put them back at the end. Clean cask lines weekly or on each cask change, and clean taps and extractors right after use.",
+        "source": "Cicerone Certification Program, Advanced Cicerone Syllabus v6.0 (Aug 1, 2024), I.I (cask ale inventory and maintenance)",
+        "url": "https://www.cicerone.org/sites/default/files/resources/English_AC_Syllabus_V6.0_0.pdf",
+        "verified": true
+      }
+    ]
+  }
+}

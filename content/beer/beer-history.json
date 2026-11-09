@@ -1,0 +1,320 @@
+{
+ "number": 6,
+ "programLevel": 3,
+ "slug": "beer-history",
+ "title": "Beer history",
+ "script": "Lesson 6",
+ "lead": "Porter and pale ale, the lager revolution, Prohibition, and the craft beer boom.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Porter and London",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The first mass-produced beer."
+    }
+   ],
+   "know": [
+    "Grew out of London brown beer in the 1700s.",
+    "Peaked in the 1820s.",
+    "1817: black patent malt changed it."
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "name": "Burton and lager",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Pale ale’s home, then cold beer everywhere."
+    }
+   ],
+   "know": [
+    "Bass, Burton, 1777; first UK trademark (1876).",
+    "1873: Linde’s refrigeration at Spaten.",
+    "About 9 in 10 beers drunk today are lagers."
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "name": "America: lager to Prohibition",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Boom, ban and bust."
+    }
+   ],
+   "know": [
+    "1840: lager yeast reaches Philadelphia.",
+    "4,131 US breweries in 1873.",
+    "Prohibition 1920–1933; 89 breweries by 1978."
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com); National Constitution Center, Amendments XVIII and XXI"
+  },
+  {
+   "name": "Craft beer",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Homebrewers to 9,000+ breweries."
+    }
+   ],
+   "know": [
+    "1978: homebrewing made federally legal.",
+    "1976: New Albion, the first modern microbrewery.",
+    "Craft = small and independent (BA)."
+   ],
+   "source": "Library of Congress, In Custodia Legis blog; CraftBeer.com, Beer History; Brewers Association, Craft Brewer Definition and Stats"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Porter and London",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1700s",
+      "line": "porter from London brown beer."
+     },
+     {
+      "big": "1820s",
+      "line": "porter’s peak."
+     },
+     {
+      "big": "1817",
+      "line": "black patent malt."
+     }
+    ],
+    "read": {
+     "bigIdea": "Porter was the first industrial beer.",
+     "where": "Porter grew out of London “**brown beer**” in the **1700s** and was first prized aged. The stories that Ralph Harwood invented it in 1722 and that it was named after market porters have little evidence. It was arguably the first **mass-produced** beer and peaked in the **1820s**; brewers installed **steam engines** early. In **1817** Daniel Wheeler’s **black patent malt** let brewers make porter mostly from pale malt. Whitbread brewed its last porter in 1940.",
+     "mixup": "The “porters drank it, so it’s called porter” story is probably a legend.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Burton and lager",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1777",
+      "line": "Bass founded in Burton."
+     },
+     {
+      "big": "1873",
+      "line": "Linde’s refrigeration, Spaten."
+     },
+     {
+      "big": "9 IN 10",
+      "line": "beers drunk worldwide are lagers."
+     }
+    ],
+    "read": {
+     "bigIdea": "Two revolutions: pale ale, then cold.",
+     "where": "William **Bass** founded his Burton-on-Trent brewery in **1777**; its **red triangle** became the UK’s first registered trademark in **1876**. “Lager” comes from the German **lagern**, to store: from 1553 Bavaria banned summer brewing, so brewers stored beer in cold cellars on lake ice. In **1873** Carl von **Linde**’s first practical refrigeration went into Munich’s **Spaten** brewery, and lager could be brewed anywhere, any season. Today about **9 in 10** beers drunk worldwide are lagers.",
+     "mixup": "Lager isn’t a modern style. Cold storage goes back centuries; refrigeration just spread it.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "America: lager to Prohibition",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1840",
+      "line": "lager yeast to Philadelphia."
+     },
+     {
+      "big": "1873",
+      "line": "4,131 US breweries."
+     },
+     {
+      "big": "1978",
+      "line": "down to 89."
+     }
+    ],
+    "read": {
+     "bigIdea": "America’s beer rose, crashed and consolidated.",
+     "where": "In **1840** John Wagner brought Bavarian **lager yeast** to Philadelphia, and German immigrants spread it. The US peaked at **4,131 breweries** in **1873**, a number not passed again until **2015**. **Prohibition** took effect in **1920**; the 21st Amendment ended it in **December 1933**. Then came consolidation: by **1978** there were just **89 breweries**, owned by fewer than 50 companies.",
+     "mixup": "Beer came back before full repeal: 3.2% beer was allowed in spring 1933.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Craft beer",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1978",
+      "line": "homebrewing legalized (H.R. 1337)."
+     },
+     {
+      "big": "1976",
+      "line": "New Albion, Sonoma."
+     },
+     {
+      "big": "SMALL + INDEPENDENT",
+      "line": "the BA’s craft definition."
+     }
+    ],
+    "read": {
+     "bigIdea": "Homebrewers built craft beer.",
+     "where": "President Carter signed **H.R. 1337** on October 14, **1978**, making **homebrewing** federally legal; Charlie Papazian founded the American Homebrewers Association the same year. Fritz Maytag had already bought **Anchor** in San Francisco (1964 or 1965, sources differ), and Jack McAuliffe opened **New Albion** in Sonoma in **1976**, usually called the first modern microbrewery. The Brewers Association defines a **craft brewer** as **small** (6 million barrels a year or less) and **independent** (under 25% owned by a non-craft alcohol company). It counts **9,724** US breweries for 2025.",
+     "mixup": "Craft isn’t about taste. It’s the BA’s definition by size and ownership, which is why some famous brands no longer count.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Oxford Companion to Beer (via beerandbrewing.com); National Constitution Center, Amendments XVIII and XXI; Library of Congress, In Custodia Legis blog; CraftBeer.com, Beer History; Brewers Association, Craft Brewer Definition and Stats. Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Porter grew out of…",
+   "answer": "London brown beer in the 1700s",
+   "wrong": [
+    "Belgian monasteries",
+    "Czech lager",
+    "American craft"
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "q": "Porter peaked in London in the…",
+   "answer": "1820s",
+   "wrong": [
+    "1520s",
+    "1950s",
+    "2010s"
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "q": "What did black patent malt (1817) let brewers do?",
+   "answer": "Make porter mostly from pale malt",
+   "wrong": [
+    "Brew lager",
+    "Make sour beer",
+    "Skip hops"
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "q": "Bass was founded in Burton in…",
+   "answer": "1777",
+   "wrong": [
+    "1873",
+    "1978",
+    "1517"
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "q": "Linde’s refrigeration first went into which brewery in 1873?",
+   "answer": "Spaten, Munich",
+   "wrong": [
+    "Bass, Burton",
+    "Guinness, Dublin",
+    "Anchor, San Francisco"
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "q": "About what share of beer drunk worldwide is lager?",
+   "answer": "9 in 10",
+   "wrong": [
+    "1 in 10",
+    "Half",
+    "1 in 100"
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "q": "Lager yeast reached America in 1840 in…",
+   "answer": "Philadelphia",
+   "wrong": [
+    "Detroit",
+    "Boston",
+    "San Francisco"
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "q": "US Prohibition ended in…",
+   "answer": "December 1933",
+   "wrong": [
+    "1920",
+    "1965",
+    "1978"
+   ],
+   "source": "National Constitution Center, Amendments XVIII and XXI"
+  },
+  {
+   "q": "By 1978 the US was down to about…",
+   "answer": "89 breweries",
+   "wrong": [
+    "4,131 breweries",
+    "9,000 breweries",
+    "2 breweries"
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "q": "Homebrewing became federally legal in…",
+   "answer": "1978",
+   "wrong": [
+    "1933",
+    "1920",
+    "2013"
+   ],
+   "source": "Library of Congress, In Custodia Legis blog"
+  },
+  {
+   "q": "New Albion (1976) is usually called…",
+   "answer": "The first modern US microbrewery",
+   "wrong": [
+    "The first lager brewery",
+    "A Trappist abbey",
+    "The first brewpub in Michigan"
+   ],
+   "source": "CraftBeer.com, Beer History"
+  },
+  {
+   "q": "The Brewers Association’s craft brewer is…",
+   "answer": "Small and independent",
+   "wrong": [
+    "Any brewery under 10 years old",
+    "Any brewery making IPA",
+    "Any brewery with a taproom"
+   ],
+   "source": "Brewers Association, Craft Brewer Definition and Stats"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Anchor’s purchase year differs (1964 or 1965); the page gives both."
+ ]
+}

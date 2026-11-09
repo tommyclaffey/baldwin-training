@@ -1,0 +1,320 @@
+{
+ "number": 4,
+ "programLevel": 3,
+ "slug": "beer-list",
+ "title": "Building the beer list",
+ "script": "Lesson 4",
+ "lead": "How a good list is organized, labeled, rotated and kept fresh.",
+ "minutes": 12,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Organize by flavor",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Guests choose on flavor."
+    }
+   ],
+   "know": [
+    "Group by taste (crisp, roasty, hoppy), not country.",
+    "Give staff enough to describe beers they haven’t tried.",
+    "97% of craft drinkers say flavor matters (BA, 2015)."
+   ],
+   "source": "FSR Magazine, “Anatomy of a Beer List”; Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "name": "ABV, pour size and NA",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Show the strength; label NA right."
+    }
+   ],
+   "know": [
+    "ABV next to the pour size.",
+    "12 oz of 10% beer is two standard drinks.",
+    "Non-alcoholic = under 0.5%; alcohol-free = none."
+   ],
+   "source": "NIH/NIAAA, “What Is a Standard Drink?”; US Alcohol and Tobacco Tax and Trade Bureau, malt beverage labeling rules"
+  },
+  {
+   "name": "Glass, rotation, freshness",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Run the list, not just write it."
+    }
+   ],
+   "know": [
+    "One glass for everything? A 16 oz tulip.",
+    "Rotate taps before kegs sit 45 days.",
+    "Sell in date order; train staff on every beer."
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course; Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  },
+  {
+   "name": "Off beer and the cellar list",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Pull bad beer; age good beer on purpose."
+    }
+   ],
+   "know": [
+    "Off beer: pull it, tell staff, call the distributor.",
+    "Cellar the three S’s: strong, sour, smoked.",
+    "Taste aging beer before you list it."
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Organize by flavor",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FLAVOR",
+      "line": "not country or style codes."
+     },
+     {
+      "big": "DESCRIBE",
+      "line": "category + style + key ingredient."
+     },
+     {
+      "big": "97%",
+      "line": "of craft drinkers rate flavor important."
+     }
+    ],
+    "read": {
+     "bigIdea": "A list is a menu of flavors.",
+     "where": "Organize by **flavor**, not by country: region doesn’t tell a guest how a beer tastes. One DC restaurant group uses headings like **Crisp**, **Roast**, **Tart & Funky**, **Fruit and Spice**, **Hop**. Give each beer a **category, style and key ingredients**, so staff can describe one they haven’t tasted yet. In a 2015 Nielsen poll for the Brewers Association, **97%** of craft drinkers rated **flavor** important when ordering.",
+     "mixup": "Very specific style headings please experts and confuse everyone else.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "ABV, pour size and NA",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ABV + SIZE",
+      "line": "side by side."
+     },
+     {
+      "big": "STANDARD DRINK",
+      "line": "12 oz of 5% beer."
+     },
+     {
+      "big": "NA",
+      "line": "under 0.5%; alcohol-free = 0."
+     }
+    ],
+    "read": {
+     "bigIdea": "Show the strength honestly.",
+     "where": "Put **ABV** next to the **pour size**. A US **standard drink** is about 0.6 oz of pure alcohol: **12 oz of 5%** beer. So **12 oz of a 10%** beer is **two** drinks, and a 16 oz pour of 8% is about two. Label NA beer the federal way: **non-alcoholic** means **under 0.5%** ABV (with that statement), **alcohol-free** means none, and **low** or **reduced alcohol** means under 2.5%.",
+     "mixup": "“Non-alcoholic” isn’t zero. For a guest who can’t have any alcohol, offer an alcohol-free one.",
+     "sayIt": "That one’s 9%, so we pour it in a smaller glass."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Glass, rotation, freshness",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "TULIP",
+      "line": "the one glass if you only have one."
+     },
+     {
+      "big": "45 DAYS",
+      "line": "rotate before a keg sits."
+     },
+     {
+      "big": "DATE ORDER",
+      "line": "sell oldest first."
+     }
+    ],
+    "read": {
+     "bigIdea": "A list is only as good as its freshest beer.",
+     "where": "If you can only stock one beer glass, the Brewers Association suggests a **16 oz footed tulip** (it calls the shaker pint a mixing glass). Plan **tap rotations** so no keg sits past **45 days**, and give cider and flavored beers **their own lines**. Cicerone expects the program to sell in **date order**, pull out-of-date beer, and train staff to sell **every** beer on the list so nothing ages in the cooler.",
+     "mixup": "A long list isn’t a better list if half of it sits in the cooler going stale.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Off beer and the cellar list",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PULL IT",
+      "line": "off draft and the menu."
+     },
+     {
+      "big": "3 S’s",
+      "line": "strong, sour, smoked age well."
+     },
+     {
+      "big": "TASTE",
+      "line": "aging beer before you list it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Protect the list.",
+     "where": "When a beer tastes off: **pull it** from draft or inventory, keep back-stock cold, take it **off the menu**, tell staff, then call the **distributor** (and the brewery if needed). Staff should know a flawed beer from one they just don’t like. For a **cellar list**, the three S’s age well: **strong** (about 8%+), **sour** and **smoked**. Check with the brewery, **taste** after six months and then yearly, and list it when it’s ready.",
+     "mixup": "Aged beer can sell at a premium, but the restaurant carries the risk if it fades.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "FSR Magazine; Brewers Association / CraftBeer.com, Beer & Food Course; NIH/NIAAA, “What Is a Standard Drink?”; US Alcohol and Tobacco Tax and Trade Bureau, malt beverage labeling rules; Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "A restaurant beer list is best organized by…",
+   "answer": "Flavor",
+   "wrong": [
+    "Country",
+    "Price only",
+    "Brewery founding date"
+   ],
+   "source": "FSR Magazine"
+  },
+  {
+   "q": "Why give each beer a category, style and key ingredient?",
+   "answer": "So staff can describe beers they haven’t tasted",
+   "wrong": [
+    "For taxes",
+    "To make the list longer",
+    "It’s required"
+   ],
+   "source": "FSR Magazine"
+  },
+  {
+   "q": "In the BA’s 2015 poll, what share of craft drinkers rated flavor important?",
+   "answer": "97%",
+   "wrong": [
+    "10%",
+    "50%",
+    "25%"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "A US standard drink is about…",
+   "answer": "12 oz of 5% beer",
+   "wrong": [
+    "16 oz of 10% beer",
+    "1 oz of beer",
+    "24 oz of 5% beer"
+   ],
+   "source": "NIH/NIAAA, “What Is a Standard Drink?”"
+  },
+  {
+   "q": "12 oz of a 10% beer is about…",
+   "answer": "Two standard drinks",
+   "wrong": [
+    "Half a drink",
+    "One drink",
+    "Five drinks"
+   ],
+   "source": "NIH/NIAAA, “What Is a Standard Drink?”"
+  },
+  {
+   "q": "“Non-alcoholic” on a US beer label means…",
+   "answer": "Under 0.5% ABV",
+   "wrong": [
+    "Exactly 0%",
+    "Under 2.5%",
+    "Under 4%"
+   ],
+   "source": "US Alcohol and Tobacco Tax and Trade Bureau, malt beverage labeling rules"
+  },
+  {
+   "q": "If you can only stock one beer glass, the BA suggests…",
+   "answer": "A 16 oz footed tulip",
+   "wrong": [
+    "A shaker pint",
+    "A snifter",
+    "A frosted mug"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "Plan tap rotations so a keg doesn’t sit past…",
+   "answer": "45 days",
+   "wrong": [
+    "7 days",
+    "1 year",
+    "90 days"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Cicerone expects a beer program to sell beer…",
+   "answer": "In date order, and train staff on every beer",
+   "wrong": [
+    "Newest first",
+    "Only the bestsellers",
+    "At any temperature"
+   ],
+   "source": "Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  },
+  {
+   "q": "A draft tastes off. First you…",
+   "answer": "Pull it and take it off the menu",
+   "wrong": [
+    "Keep selling it",
+    "Raise the price",
+    "Add a lime"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "The three S’s that age well are…",
+   "answer": "Strong, sour, smoked",
+   "wrong": [
+    "Small, sweet, simple",
+    "Session, stout, saison",
+    "Sparkling, smooth, sharp"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "Before listing a cellared beer, you…",
+   "answer": "Taste it to make sure it’s ready",
+   "wrong": [
+    "Shake it",
+    "Freeze it",
+    "Nothing"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Flavor headings are one restaurant group’s example; ours are the GM’s call."
+ ]
+}

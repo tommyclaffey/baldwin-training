@@ -1,0 +1,321 @@
+{
+ "number": 5,
+ "programLevel": 3,
+ "slug": "beer-training",
+ "title": "Training the team",
+ "script": "Lesson 5",
+ "lead": "Running a staff tasting, teaching off-flavors, and the pre-shift draft check.",
+ "minutes": 12,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Staff tastings",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Lightest to strongest, with a plan."
+    }
+   ],
+   "know": [
+    "Michigan allows tastings for staff 21+ for education.",
+    "Go by intensity: lowest ABV first.",
+    "Plan 2–3 oz per person per beer."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov); Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "name": "How to taste together",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Look, smell, swirl, sip, rest."
+    }
+   ],
+   "know": [
+    "Color against white paper.",
+    "Smell, swirl, smell again.",
+    "Note the finish before water."
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "name": "Teaching off-flavors",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Spiking kits and a control beer."
+    }
+   ],
+   "know": [
+    "Kits from Cicerone (with AROXA), Siebel, FlavorActiV.",
+    "Spike a neutral light lager.",
+    "Always pour an unspiked control."
+   ],
+   "source": "Cicerone store: off-flavor kits (cicerone.org); Lallemand Brewing, Siebel off-flavor kits; Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  },
+  {
+   "name": "The pre-shift draft check",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Every tap, every shift."
+    }
+   ],
+   "know": [
+    "Flush and wipe faucets.",
+    "Pour a little from each tap; taste it.",
+    "Check glasses for smells and lipstick."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Staff tastings",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "21+",
+      "line": "Michigan: staff tastings for education."
+     },
+     {
+      "big": "LOW TO HIGH",
+      "line": "ABV order."
+     },
+     {
+      "big": "2–3 OZ",
+      "line": "per person per beer."
+     }
+    ],
+    "read": {
+     "bigIdea": "Tasting is training.",
+     "where": "Michigan’s Liquor Control Code lets an on-premises licensee give **samples to employees** for **education**, during legal hours, if they’re **21 or older**. Taste by **intensity**: start with the **lowest-ABV** beer and work up so big flavors don’t swamp delicate ones. The Brewers Association’s setup: a tasting sheet, a stemmed glass per beer, water, white paper, unsalted crackers, a dump bucket for every four tasters, and **2–3 oz** per person per beer.",
+     "mixup": "A staff tasting isn’t a staff drink. Small pours, spit buckets, and only staff who are 21+.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "How to taste together",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LOOK",
+      "line": "against white paper."
+     },
+     {
+      "big": "SMELL",
+      "line": "still, then swirled."
+     },
+     {
+      "big": "FINISH",
+      "line": "before you reset with water."
+     }
+    ],
+    "read": {
+     "bigIdea": "Same steps, every beer.",
+     "where": "Look at the **color against white paper**. **Smell** first without swirling, then **swirl** and smell again. **Sip** and hold it, breathing out through your nose. Notice the **finish** before you reach for water, then reset with a cracker. If your nose gets tired, smell your **sleeve** to reset.",
+     "mixup": "Drinking water straight away washes out the finish. Wait a moment.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Teaching off-flavors",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "KITS",
+      "line": "Cicerone (AROXA), Siebel, FlavorActiV."
+     },
+     {
+      "big": "LIGHT LAGER",
+      "line": "spike a neutral beer."
+     },
+     {
+      "big": "CONTROL",
+      "line": "always taste against it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Taste a fault once and you’ll know it.",
+     "where": "Off-flavor **kits** spike beer with a known flaw. Cicerone sells kits made with **AROXA** (the single-user basic kit covers DMS, diacetyl, acetaldehyde, trans-2-nonenal, lightstruck and an infection flavor); **Siebel** kits (from Lallemand) and **FlavorActiV** are others. Spike a **neutral light lager**, work in rounds of five or six, label cups with letters, and always pour an **unspiked control** to compare against, the way Cicerone’s exams do.",
+     "mixup": "A master kit with 24 flavors is for exam study. Floor staff need the basic six.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "The pre-shift draft check",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FLUSH",
+      "line": "faucets with water, wipe them."
+     },
+     {
+      "big": "TASTE",
+      "line": "1–3 oz from every tap."
+     },
+     {
+      "big": "GLASSES",
+      "line": "no smells, dust or lipstick."
+     }
+    ],
+    "read": {
+     "bigIdea": "Catch the problem before a guest does.",
+     "where": "The Brewers Association’s pre-shift check: **flush** faucets with clean water and wipe them with a clean towel; pour **1–3 oz** from each tap to check it works and **taste** it to confirm the tap marker matches the beer; wipe up spills; look for **fruit flies**; check glassware for **smells, dust and lipstick**. Make it part of every opening.",
+     "mixup": "A tap marker can be wrong after a keg change. Tasting is how you catch it.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov); Brewers Association / CraftBeer.com, Beer & Food Course; Cicerone store: off-flavor kits (cicerone.org); Lallemand Brewing, Siebel off-flavor kits; Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org); Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "Under Michigan law, staff tastings for education are allowed for employees who are…",
+   "answer": "21 or older",
+   "wrong": [
+    "18 or older",
+    "Any age",
+    "Managers only"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov)"
+  },
+  {
+   "q": "In a staff tasting, beers go in order of…",
+   "answer": "Intensity: lowest ABV first",
+   "wrong": [
+    "Price",
+    "Color only",
+    "Random"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "About how much per person per beer at a tasting?",
+   "answer": "2–3 oz",
+   "wrong": [
+    "A full pint",
+    "8 oz",
+    "A drop"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "To judge a beer’s color, hold it against…",
+   "answer": "White paper",
+   "wrong": [
+    "A window",
+    "The bar",
+    "Your hand"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "When smelling at a tasting, you…",
+   "answer": "Smell still, then swirl and smell again",
+   "wrong": [
+    "Only swirl",
+    "Never swirl",
+    "Shake the glass"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "If your nose gets tired, you can reset by…",
+   "answer": "Smelling your sleeve",
+   "wrong": [
+    "Drinking more",
+    "Eating salt",
+    "Holding your breath"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "Off-flavor kits are used to…",
+   "answer": "Spike beer with a known flaw to learn it",
+   "wrong": [
+    "Clean lines",
+    "Carbonate beer",
+    "Flavor cocktails"
+   ],
+   "source": "Cicerone store: off-flavor kits (cicerone.org)"
+  },
+  {
+   "q": "Which beer is best for spiking?",
+   "answer": "A neutral light lager",
+   "wrong": [
+    "An imperial stout",
+    "A sour",
+    "A smoked beer"
+   ],
+   "source": "BeerSmith blog, “Using Sensory Kits”"
+  },
+  {
+   "q": "Every spiked tasting needs…",
+   "answer": "An unspiked control beer",
+   "wrong": [
+    "Ice",
+    "A frosted glass",
+    "Nothing else"
+   ],
+   "source": "Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  },
+  {
+   "q": "At the pre-shift check, you pour from each tap to…",
+   "answer": "Check it pours and the marker matches the beer",
+   "wrong": [
+    "Fill the drip tray",
+    "Warm the line",
+    "Drink it"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Before service, faucets are…",
+   "answer": "Flushed with water and wiped",
+   "wrong": [
+    "Dipped in beer",
+    "Left alone",
+    "Covered in plastic"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Glassware is checked for…",
+   "answer": "Smells, dust and lipstick",
+   "wrong": [
+    "Price tags",
+    "Weight",
+    "Nothing"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Kit prices change; the 12-person Cicerone kit was only seen in search results, so no price is on the page.",
+  "Staff tasting rules: GM to confirm against our licence and HR policy."
+ ]
+}
