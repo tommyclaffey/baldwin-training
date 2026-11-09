@@ -620,6 +620,7 @@ export function barPage(page, ctx) {
     const certified = ctx.passedAt && (!L.practical || ctx.practical);
     if (certified && cont) { cont.n = 'Button · View Certificate'; cont.to = `/certificate/${L.file}`; setText(texts(cont)[0], 'View Certificate'); }
     btns.c = [cont, exam].filter(Boolean); btns.wrap = 1; btns.cg = 8; btns.sh = 'L';
+    delete btns.clip; delete btns.h; btns.sv = 'H';
   }
   // the lessons
   const course = find(main, byName('The course'));
@@ -812,5 +813,6 @@ export function programHub(page, ctx) {
 /** Nov 8, Tommy's screenshot: the hero's outlined video button lost the bottom of its border to the row's clip. */
 function unclipHero(main) {
   const hero = find(main, byName('Hero')); const copy = hero && find(hero, byName('Copy')); const btns = copy && find(copy, byName('Buttons'));
-  for (const n of [copy, btns]) if (n) { delete n.clip; n.sv = 'H'; }
+  for (const n of [copy, btns]) if (n) { delete n.clip; delete n.h; n.sv = 'H'; }
+  for (const b of btns?.c || []) { delete b.clip; delete b.h; b.sv = 'H'; }
 }
