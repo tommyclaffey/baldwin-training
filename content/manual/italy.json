@@ -1969,7 +1969,12 @@
    },
    {
     "name": "Lombardy",
-    "video": null,
+    "video": {
+     "youtubeId": "i4DoJXhN9v8",
+     "title": "Wine 101: The ABCs of Franciacorta",
+     "by": "Wine Spectator",
+     "length": "4:26"
+    },
     "keyPoints": [
      {
       "big": "FRANCIACORTA",
@@ -2241,7 +2246,12 @@
    },
    {
     "name": "Marche",
-    "video": null,
+    "video": {
+     "youtubeId": "qBRetJZ3QlQ",
+     "title": "Verdicchio (dei Castelli di Jesi) - Know Wine In No Time",
+     "by": "KnowWineInNoTime",
+     "length": "6:46"
+    },
     "keyPoints": [
      {
       "big": "VERDICCHIO",
@@ -2303,7 +2313,12 @@
    },
    {
     "name": "Campania",
-    "video": null,
+    "video": {
+     "youtubeId": "GmxDFNq12_o",
+     "title": "Travel and Wine, the Italian region of Campania (Grapes, wines & soils) w/Professor Attilio Scienza",
+     "by": "Italian Wine Travel with Stevie Kim",
+     "length": "8:45"
+    },
     "keyPoints": [
      {
       "big": "AGLIANICO",
@@ -2365,7 +2380,12 @@
    },
    {
     "name": "Central and Southern Italy",
-    "video": null,
+    "video": {
+     "youtubeId": "Q0ZUQeTAF3w",
+     "title": "Italy Part 3 | Introductory & Certified | Court of Master Sommeliers",
+     "by": "Court of Master Sommeliers",
+     "length": "6:52"
+    },
     "keyPoints": [
      {
       "big": "TAURASI",

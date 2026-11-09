@@ -1607,7 +1607,12 @@
    },
    {
     "name": "Distillation",
-    "video": null,
+    "video": {
+     "youtubeId": "cexTjvlgjAc",
+     "title": "How a Pot Still Works | Distiller",
+     "by": "Distiller",
+     "length": "1:58"
+    },
     "keyPoints": [
      {
       "big": "DISTILLING",
@@ -1726,7 +1731,12 @@
    },
    {
     "name": "Cognac and other brandy",
-    "video": null,
+    "video": {
+     "youtubeId": "2htLTYDx_-U",
+     "title": "WSET 3 Minute Spirit School - Cognac, presented by Joel Harrison",
+     "by": "WSET",
+     "length": "3:02"
+    },
     "keyPoints": [
      {
       "big": "COGNAC",
@@ -1793,7 +1803,12 @@
    },
    {
     "name": "Tequila and mezcal",
-    "video": null,
+    "video": {
+     "youtubeId": "AqpWfE6ruMg",
+     "title": "Tequila and Mezcal: What's the Difference?",
+     "by": "Rick Bayless",
+     "length": "11:13"
+    },
     "keyPoints": [
      {
       "big": "TEQUILA",
@@ -1860,7 +1875,12 @@
    },
    {
     "name": "Vodka, gin, rum and liqueurs",
-    "video": null,
+    "video": {
+     "youtubeId": "LVn4EMxC5oA",
+     "title": "WSET 3 Minute Spirit School - Vodka, Mia Johansson, Bar Owner & Manager",
+     "by": "WSET",
+     "length": "3:29"
+    },
     "keyPoints": [
      {
       "big": "VODKA",

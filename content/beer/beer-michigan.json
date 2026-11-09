@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Michigan by the numbers",
-    "video": null,
+    "video": {
+     "youtubeId": "GZ_bcPekc6A",
+     "title": "Michigan, Founders Brewing Co. define craft beer movement",
+     "by": "CBS Detroit",
+     "length": "2:07"
+    },
     "keyPoints": [
      {
       "big": "410",
@@ -103,7 +108,12 @@
    },
    {
     "name": "The Michigan Brewers Guild",
-    "video": null,
+    "video": {
+     "youtubeId": "KW1nuedp--0",
+     "title": "Michigan Brewers Guild Director Talks Rise of Michigan Beer! |Megacast Interview, September 26, 2022",
+     "by": "Civic Center TV",
+     "length": "12:18"
+    },
     "keyPoints": [
      {
       "big": "1997",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Bell’s",
-    "video": null,
+    "video": {
+     "youtubeId": "K-9W2ILySgU",
+     "title": "Larry Bell's 35th Anniversary of Bell's Brewery Speech",
+     "by": "Bell's Brewery",
+     "length": "12:25"
+    },
     "keyPoints": [
      {
       "big": "1985",
@@ -161,7 +176,12 @@
    },
    {
     "name": "Founders and Stroh’s",
-    "video": null,
+    "video": {
+     "youtubeId": "5tm4a7eBz2w",
+     "title": "The Rise and Fall of Stroh's, Detroit's First Fire-Brewed Beer | Clip",
+     "by": "One Detroit",
+     "length": "5:19"
+    },
     "keyPoints": [
      {
       "big": "FOUNDERS",

@@ -1290,7 +1290,12 @@
   "sections": [
    {
     "name": "Mise en place",
-    "video": null,
+    "video": {
+     "youtubeId": "nNi2jTF36vA",
+     "title": "WSET Wine Service Series - Preparation",
+     "by": "WSET",
+     "length": "2:31"
+    },
     "keyPoints": [
      {
       "big": "STEMWARE",
@@ -1534,7 +1539,12 @@
    },
    {
     "name": "Glassware",
-    "video": null,
+    "video": {
+     "youtubeId": "cks86rDRMmQ",
+     "title": "Every Wine Glass Explained By A Sommelier | World of Wine | Bon Appétit",
+     "by": "Bon Appétit",
+     "length": "8:17"
+    },
     "keyPoints": [
      {
       "big": "THE RIGHT",
@@ -1586,7 +1596,12 @@
    },
    {
     "name": "Temperature and storage",
-    "video": null,
+    "video": {
+     "youtubeId": "FvxxLs4ja1Y",
+     "title": "AVOID Ruining Your WINE COLLECTION (5 Essential Wine Storage Tips)",
+     "by": "No Sediment",
+     "length": "10:13"
+    },
     "keyPoints": [
      {
       "big": "50-60°F",

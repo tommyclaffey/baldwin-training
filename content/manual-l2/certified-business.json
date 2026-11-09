@@ -1053,7 +1053,12 @@
   "sections": [
    {
     "name": "Bottles, cases and pours",
-    "video": null,
+    "video": {
+     "youtubeId": "MkHVaXU8www",
+     "title": "Know Your Wine: A Guide to Bottle Sizes",
+     "by": "Sotheby's",
+     "length": "2:36"
+    },
     "keyPoints": [
      {
       "big": "25.4 OZ",
@@ -1165,7 +1170,12 @@
    },
    {
     "name": "Pricing a bottle",
-    "video": null,
+    "video": {
+     "youtubeId": "C6sd_K6qd2o",
+     "title": "2-Minute Tuesdays: Pricing Wine to Maximize Profits",
+     "by": "BevSpot",
+     "length": "2:05"
+    },
     "keyPoints": [
      {
       "big": "COST ÷ TARGET",
@@ -1220,7 +1230,12 @@
    },
    {
     "name": "Pricing a glass",
-    "video": null,
+    "video": {
+     "youtubeId": "GiVEpb5zlhw",
+     "title": "Your Wine by the Glass Is Leaking Money - The Pour Math Most Restaurants Get Wrong",
+     "by": "Jordi Oliveras - Hospitality & Wine",
+     "length": "10:02"
+    },
     "keyPoints": [
      {
       "big": "LIST ÷ 25",
@@ -1276,7 +1291,12 @@
    },
    {
     "name": "COGS and inventory",
-    "video": null,
+    "video": {
+     "youtubeId": "FX6yW5lTmSw",
+     "title": "How Does a Sommelier Track the Inventory?: Lindsey Young",
+     "by": "Beverage Trade Network",
+     "length": "5:15"
+    },
     "keyPoints": [
      {
       "big": "BI + P - EI",
@@ -1328,7 +1348,12 @@
    },
    {
     "name": "The wine list",
-    "video": null,
+    "video": {
+     "youtubeId": "6ct_Z6bx70A",
+     "title": "5 Tips for Building a Successful Wine Menu",
+     "by": "Breakthru Beverage Group",
+     "length": "2:48"
+    },
     "keyPoints": [
      {
       "big": "CLEAN",

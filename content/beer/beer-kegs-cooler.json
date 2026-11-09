@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Keg sizes",
-    "video": null,
+    "video": {
+     "youtubeId": "Vw02-Y681QU",
+     "title": "US Keg Sizes & their Measurements",
+     "by": "Coldbreak",
+     "length": "3:15"
+    },
     "keyPoints": [
      {
       "big": "HALF BARREL",
@@ -132,7 +137,12 @@
    },
    {
     "name": "Handling and CO2 safety",
-    "video": null,
+    "video": {
+     "youtubeId": "kpNNoneuIYI",
+     "title": "Inside a Beverage Install CO2 Safety from Cylinder to Tap l CO2Meter",
+     "by": "CO2Meter",
+     "length": "2:16"
+    },
     "keyPoints": [
      {
       "big": "160 LB",
@@ -161,7 +171,12 @@
    },
    {
     "name": "Receiving and freshness",
-    "video": null,
+    "video": {
+     "youtubeId": "xU7VtqTpdE4",
+     "title": "Understanding Beer Date codes",
+     "by": "Beverage Professor",
+     "length": "8:28"
+    },
     "keyPoints": [
      {
       "big": "CHECK",

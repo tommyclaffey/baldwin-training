@@ -1327,7 +1327,12 @@
    },
    {
     "name": "Dry or sweet? Label words",
-    "video": null,
+    "video": {
+     "youtubeId": "Yv60KWyvGIc",
+     "title": "German wine terms explained | @WineTuber",
+     "by": "Wine Tuber",
+     "length": "4:04"
+    },
     "keyPoints": [
      {
       "big": "TROCKEN",
@@ -1389,7 +1394,12 @@
    },
    {
     "name": "VDP and the vineyard pyramid",
-    "video": null,
+    "video": {
+     "youtubeId": "vCRfpp81BTU",
+     "title": "The VDP.Classification – The Film",
+     "by": "VDPWeingueter",
+     "length": "4:26"
+    },
     "keyPoints": [
      {
       "big": "VDP",

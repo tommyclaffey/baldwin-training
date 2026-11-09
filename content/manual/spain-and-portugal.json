@@ -1648,7 +1648,12 @@
    },
    {
     "name": "Priorat",
-    "video": null,
+    "video": {
+     "youtubeId": "3lAsdBxncFk",
+     "title": "Master of Wine Discusses PRIORAT, a Great Wine from Spain",
+     "by": "Bob Paulinski, Master of Wine",
+     "length": "9:57"
+    },
     "keyPoints": [
      {
       "big": "GARNACHA",
@@ -1829,7 +1834,12 @@
    },
    {
     "name": "Vinho Verde",
-    "video": null,
+    "video": {
+     "youtubeId": "XH0jzMnTXYQ",
+     "title": "Vinho Verde 101 Video",
+     "by": "Vinho Verde",
+     "length": "8:26"
+    },
     "keyPoints": [
      {
       "big": "ALVARINHO",

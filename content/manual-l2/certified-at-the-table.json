@@ -1075,7 +1075,12 @@
    },
    {
     "name": "The order and the glasses",
-    "video": null,
+    "video": {
+     "youtubeId": "EQneo8iXYvg",
+     "title": "Service Tutorial: How to Approach Wine Service",
+     "by": "GuildSomm International",
+     "length": "1:22"
+    },
     "keyPoints": [
      {
       "big": "REPEAT",
@@ -1193,7 +1198,12 @@
    },
    {
     "name": "Pouring to exam standard",
-    "video": null,
+    "video": {
+     "youtubeId": "iv56O-NGBGg",
+     "title": "WSET Wine Service Series - Serving Red Wine",
+     "by": "WSET",
+     "length": "2:59"
+    },
     "keyPoints": [
      {
       "big": "1-1.5 OZ",
@@ -1373,7 +1383,12 @@
    },
    {
     "name": "After-dinner drinks",
-    "video": null,
+    "video": {
+     "youtubeId": "fkda-ll7V8M",
+     "title": "The Essentials - Ep 15 - How to store & serve port",
+     "by": "School of Port",
+     "length": "5:20"
+    },
     "keyPoints": [
      {
       "big": "A JIGGER",

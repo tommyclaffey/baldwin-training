@@ -1765,7 +1765,12 @@
    },
    {
     "name": "How fortified wines are made",
-    "video": null,
+    "video": {
+     "youtubeId": "_Nlzmbhva1k",
+     "title": "A Master Somm's Guide to Fortified Wines",
+     "by": "SOMM TV",
+     "length": "6:58"
+    },
     "keyPoints": [
      {
       "big": "DURING",
