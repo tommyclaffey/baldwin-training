@@ -1,0 +1,320 @@
+{
+ "number": 7,
+ "programLevel": 3,
+ "slug": "beer-michigan",
+ "title": "Michigan beer",
+ "script": "Lesson 7",
+ "lead": "The Great Beer State: its numbers, its guild and the breweries guests ask about.",
+ "minutes": 10,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Michigan by the numbers",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A top-ten beer state."
+    }
+   ],
+   "know": [
+    "410 craft breweries in 2025, 8th in the US (BA).",
+    "The Guild ranked it 6th in 2022 (all breweries).",
+    "Say “top ten” unless you cite the source."
+   ],
+   "source": "Brewers Association, State Craft Beer Stats (2025); Michigan Brewers Guild (mibeer.com)"
+  },
+  {
+   "name": "The Michigan Brewers Guild",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Founded 1997; runs the beer festivals."
+    }
+   ],
+   "know": [
+    "First meeting in a Saginaw pub, October 1997.",
+    "Nearly 300 member breweries (2022).",
+    "July is Michigan Beer Month."
+   ],
+   "source": "Michigan Brewers Guild (mibeer.com)"
+  },
+  {
+   "name": "Bell’s",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Kalamazoo, since 1985."
+    }
+   ],
+   "know": [
+    "Started in a homebrew shop; first beer 1985.",
+    "Oberon 1992, Two Hearted 1997.",
+    "Sold in 2021; no longer counted as craft."
+   ],
+   "source": "Bell’s Brewery, History (bellsbeer.com); Good Beer Hunting, Sightlines (Nov 10, 2021)"
+  },
+  {
+   "name": "Founders and Stroh’s",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Grand Rapids now, Detroit then."
+    }
+   ],
+   "know": [
+    "Founders: Grand Rapids, since 1997; KBS, All Day IPA.",
+    "Stroh’s: Detroit, 1850, “fire-brewed”.",
+    "Stroh’s collapsed in 2000."
+   ],
+   "source": "Founders Brewing Co., About (foundersbrewing.com); Oxford Companion to Beer (via beerandbrewing.com)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Michigan by the numbers",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "410",
+      "line": "craft breweries (BA, 2025)."
+     },
+     {
+      "big": "8th",
+      "line": "in the US for craft breweries."
+     },
+     {
+      "big": "TOP TEN",
+      "line": "the safe way to say it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Michigan is a big beer state.",
+     "where": "The Brewers Association counts **410 craft breweries** in Michigan for **2025**, **8th** in the US, with about **$1.66 billion** in economic impact. The **Michigan Brewers Guild** calls it “**The Great Beer State**” and ranked it **6th** in 2022, counting all breweries and brewpubs. The numbers differ because of what they count, so say “**top ten**” unless you name the source and year. Bell’s and Founders are now owned by larger companies, so they don’t count as craft.",
+     "mixup": "Rankings depend on what’s counted: all breweries, or craft only.",
+     "sayIt": "Michigan is one of the top ten beer states in the country."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The Michigan Brewers Guild",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1997",
+      "line": "founded, Saginaw."
+     },
+     {
+      "big": "~300",
+      "line": "member breweries (2022)."
+     },
+     {
+      "big": "JULY",
+      "line": "Michigan Beer Month."
+     }
+    ],
+    "read": {
+     "bigIdea": "The brewers organized.",
+     "where": "The **Michigan Brewers Guild** began with a meeting in a **Saginaw** pub on October 22, **1997** (49 people from 30 breweries). It had nearly **300** member breweries in 2022, promotes **July** as **Michigan Beer Month**, and has run a **Summer Beer Festival** since **1998**, plus winter and fall festivals around the state.",
+     "mixup": "",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Bell’s",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1985",
+      "line": "first beer, Kalamazoo."
+     },
+     {
+      "big": "OBERON",
+      "line": "1992; Two Hearted 1997."
+     },
+     {
+      "big": "2021",
+      "line": "sold to Kirin’s craft arm."
+     }
+    ],
+    "read": {
+     "bigIdea": "Michigan’s best-known brewery.",
+     "where": "Larry **Bell** opened a homebrew shop in **Kalamazoo** in 1983, and the brewery sold its first beer in **1985**, brewed in a soup pot. Its **Eccentric Café** (1993) was the first on-site pub at a Michigan brewery, after Bell helped change the law. **Oberon** was first brewed in **1992**, **Two Hearted Ale** in **1997**. In **2021** Bell’s was sold to Lion Little World Beverages (Kirin’s craft arm), under New Belgium.",
+     "mixup": "Bell’s is still brewed in Michigan, but by the BA’s definition it isn’t craft anymore.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Founders and Stroh’s",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FOUNDERS",
+      "line": "Grand Rapids, since 1997."
+     },
+     {
+      "big": "STROH’S",
+      "line": "Detroit, 1850, fire-brewed."
+     },
+     {
+      "big": "2000",
+      "line": "Stroh’s collapsed."
+     }
+    ],
+    "read": {
+     "bigIdea": "Grand Rapids today, Detroit yesterday.",
+     "where": "**Founders** opened in downtown **Grand Rapids** (since **1997**). It nearly went bankrupt, then turned around brewing bigger beers: **Dirty Bastard**, **KBS**, bourbon-barrel aging, and later **All Day IPA**. In 2023 it merged into **Mahou USA**. Detroit’s **Stroh’s** began in **1850**, known for “**fire-brewed**” beer (kettles over direct flame), but after borrowing heavily to buy other breweries it collapsed in **2000**.",
+     "mixup": "",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association, State Craft Beer Stats (2025); Michigan Brewers Guild (mibeer.com); Bell’s Brewery, History (bellsbeer.com); Good Beer Hunting, Sightlines (Nov 10, 2021); Founders Brewing Co., About (foundersbrewing.com); Oxford Companion to Beer (via beerandbrewing.com). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "How many craft breweries does the BA count in Michigan for 2025?",
+   "answer": "410",
+   "wrong": [
+    "41",
+    "4,100",
+    "9,724"
+   ],
+   "source": "Brewers Association, State Craft Beer Stats (2025)"
+  },
+  {
+   "q": "Michigan’s rank for craft breweries (BA, 2025) is…",
+   "answer": "8th",
+   "wrong": [
+    "1st",
+    "30th",
+    "50th"
+   ],
+   "source": "Brewers Association, State Craft Beer Stats (2025)"
+  },
+  {
+   "q": "Why do Michigan rankings differ between sources?",
+   "answer": "They count different things",
+   "wrong": [
+    "One is wrong",
+    "Michigan changed size",
+    "They don’t"
+   ],
+   "source": "Michigan Brewers Guild (mibeer.com)"
+  },
+  {
+   "q": "The Michigan Brewers Guild was founded in…",
+   "answer": "1997",
+   "wrong": [
+    "1850",
+    "1933",
+    "2015"
+   ],
+   "source": "Michigan Brewers Guild (mibeer.com)"
+  },
+  {
+   "q": "Michigan Beer Month is…",
+   "answer": "July",
+   "wrong": [
+    "October",
+    "January",
+    "March"
+   ],
+   "source": "Michigan Brewers Guild (mibeer.com)"
+  },
+  {
+   "q": "The Guild began with a meeting in…",
+   "answer": "A Saginaw pub",
+   "wrong": [
+    "A Detroit stadium",
+    "Lansing’s capitol",
+    "Grand Rapids city hall"
+   ],
+   "source": "Michigan Brewers Guild (mibeer.com)"
+  },
+  {
+   "q": "Bell’s is from…",
+   "answer": "Kalamazoo",
+   "wrong": [
+    "Grand Rapids",
+    "Detroit",
+    "Traverse City"
+   ],
+   "source": "Bell’s Brewery, History (bellsbeer.com)"
+  },
+  {
+   "q": "Bell’s Oberon was first brewed in…",
+   "answer": "1992",
+   "wrong": [
+    "1985",
+    "2010",
+    "1975"
+   ],
+   "source": "Bell’s Brewery, History (bellsbeer.com)"
+  },
+  {
+   "q": "In 2021, Bell’s was…",
+   "answer": "Sold to Kirin’s craft arm, under New Belgium",
+   "wrong": [
+    "Closed",
+    "Bought by Stroh’s",
+    "Made a Trappist brewery"
+   ],
+   "source": "Good Beer Hunting, Sightlines (Nov 10, 2021)"
+  },
+  {
+   "q": "Founders is from…",
+   "answer": "Grand Rapids",
+   "wrong": [
+    "Kalamazoo",
+    "Bellaire",
+    "Detroit"
+   ],
+   "source": "Founders Brewing Co., About (foundersbrewing.com)"
+  },
+  {
+   "q": "Stroh’s was known for…",
+   "answer": "“Fire-brewed” beer",
+   "wrong": [
+    "Sour beer",
+    "Hazy IPA",
+    "Nitro stout"
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  },
+  {
+   "q": "Stroh’s, founded in Detroit in 1850, collapsed in…",
+   "answer": "2000",
+   "wrong": [
+    "1920",
+    "1978",
+    "2021"
+   ],
+   "source": "Oxford Companion to Beer (via beerandbrewing.com)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Left out as unverified: Founders’ exact ownership stakes, Short’s history, Michigan hop rankings and acreage, the Guild’s current festival venues."
+ ]
+}

@@ -1,0 +1,320 @@
+{
+ "number": 2,
+ "programLevel": 3,
+ "slug": "beer-kegs-cooler",
+ "title": "Kegs and the cooler",
+ "script": "Lesson 2",
+ "lead": "Keg sizes and what they pour, the walk-in, CO2 safety and receiving beer.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Keg sizes",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Know what each keg holds and pours."
+    }
+   ],
+   "know": [
+    "Half barrel: 15.5 gal, about 124 pints.",
+    "Quarter: 7.75 gal, about 62 pints. Sixtel: 5.16 gal, about 41.",
+    "Imports may need a different coupler."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com)"
+  },
+  {
+   "name": "The walk-in",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Cold, checked every day."
+    }
+   ],
+   "know": [
+    "36–38°F, air and beer.",
+    "A warm keg can take a day to chill.",
+    "On tap over 45 days: past its best."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Handling and CO2 safety",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Heavy kegs, dangerous gas."
+    }
+   ],
+   "know": [
+    "A full half barrel is about 160 lb.",
+    "CO2 tanks never in the walk-in.",
+    "CO2 pools low and can kill; use an alarm."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Receiving and freshness",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Check it in, rotate it, keep it cold."
+    }
+   ],
+   "know": [
+    "Check invoice, dates and packaging.",
+    "3-30-300: hot days age beer fast.",
+    "First in, first out."
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course; Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Keg sizes",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "HALF BARREL",
+      "line": "15.5 gal ≈ 124 pints."
+     },
+     {
+      "big": "QUARTER",
+      "line": "7.75 gal ≈ 62 pints."
+     },
+     {
+      "big": "SIXTEL",
+      "line": "5.16 gal ≈ 41 pints."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every keg has a number of pours.",
+     "where": "From the Brewers Association: a **half barrel** is **15.5 gallons** (1,984 oz, about **124 pints** or 165 12-oz pours); a **quarter** is **7.75 gallons** (about **62 pints**); a **sixtel** is **5.16 gallons** (about **41 pints**); a **50-liter Euro** keg is 13.2 gallons (about 105 pints). A “slim quarter” holds the same as a quarter but is tall and narrow. **Imported** kegs often don’t take the standard US coupler, so check when ordering.",
+     "mixup": "“Pony keg” is used loosely: some mean a quarter, some an eighth. Ask for gallons.",
+     "sayIt": ""
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The walk-in",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "36–38°F",
+      "line": "air and beer, checked daily."
+     },
+     {
+      "big": "A DAY",
+      "line": "to chill a warm keg."
+     },
+     {
+      "big": "45 DAYS",
+      "line": "on tap: past its best."
+     }
+    ],
+    "read": {
+     "bigIdea": "The cooler is the draft system’s heart.",
+     "where": "Check the walk-in every day: thermometers at **36–38°F**, lines full with no bubbles or kinks, no leaks, gas valves open, and listen for a hiss. A keg that sat out warms fast (38°F to 48°F in about 6 hours) and takes most of a **day** to chill back. Kegs on tap longer than **45 days** may no longer taste as the brewer meant. Keep **food** away from kegs and lines; a dedicated beer cooler is best.",
+     "mixup": "A keg can feel cold on the outside and still be warm inside. Give it time.",
+     "sayIt": ""
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Handling and CO2 safety",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "160 LB",
+      "line": "a full half barrel: lift in pairs."
+     },
+     {
+      "big": "NOT IN THE WALK-IN",
+      "line": "CO2 tanks."
+     },
+     {
+      "big": "ALARM",
+      "line": "CO2 pools low and can kill."
+     }
+    ],
+    "read": {
+     "bigIdea": "Kegs are heavy; CO2 is dangerous.",
+     "where": "A full half barrel weighs about **161 lb**: lift with a partner or a lift, and never get below a rolling keg. Kegs are pressure vessels: **never** take a keg valve apart. **CO2 tanks** never go **inside the walk-in**: CO2 is colorless, odorless and **heavier than air**, so a leak fills the room from the floor up, and at high levels it can kill in minutes. Store tanks **upright and chained**, valve cap on. The Brewers Association recommends a **CO2 alarm** in walk-ins with gas lines.",
+     "mixup": "A tank’s gauge doesn’t show how full it is: pressure changes with temperature. Weigh it.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Receiving and freshness",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CHECK",
+      "line": "invoice, dates, packaging."
+     },
+     {
+      "big": "3-30-300",
+      "line": "3 hot days = 30 warm = 300 cold."
+     },
+     {
+      "big": "FIFO",
+      "line": "oldest out first."
+     }
+    ],
+    "read": {
+     "bigIdea": "Freshness starts at the back door.",
+     "where": "When beer arrives, check the **invoice** against what came, that **date codes** are readable and in range, and that crowns, cans and keg valves are clean; **refuse** anything wrong and get the rest **straight into the cold**. The **3-30-300** rule (MillerCoors research, quoted by the Brewers Association): **3 days** at 90°F, **30 days** at room temperature and **300 days** cold do about the same damage. Rotate **first in, first out**.",
+     "mixup": "A case left on a warm dock for an afternoon has lost real shelf life, even back in the cooler.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com); Brewers Association / CraftBeer.com, Beer & Food Course; Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "A half barrel holds about…",
+   "answer": "15.5 gallons, about 124 pints",
+   "wrong": [
+    "5 gallons, 40 pints",
+    "30 gallons, 250 pints",
+    "1 gallon, 8 pints"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A sixtel holds about…",
+   "answer": "5.16 gallons, about 41 pints",
+   "wrong": [
+    "15.5 gallons",
+    "7.75 gallons",
+    "50 liters"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Ordering an imported 50-liter keg, you check…",
+   "answer": "That it fits your coupler",
+   "wrong": [
+    "Its color",
+    "Nothing",
+    "Its weight only"
+   ],
+   "source": "KegWorks, Guide to Beer Keg Sizes (kegworks.com)"
+  },
+  {
+   "q": "The walk-in should read…",
+   "answer": "36–38°F",
+   "wrong": [
+    "45–50°F",
+    "28–30°F",
+    "Room temperature"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A keg that sat out for hours needs…",
+   "answer": "Most of a day back in the cooler",
+   "wrong": [
+    "Ten minutes",
+    "An ice bath for a minute",
+    "Nothing if it feels cold"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A keg on tap more than 45 days…",
+   "answer": "May no longer taste as intended",
+   "wrong": [
+    "Is better",
+    "Is required to be dumped by law",
+    "Must be re-gassed"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A full half barrel weighs about…",
+   "answer": "160 lb",
+   "wrong": [
+    "50 lb",
+    "300 lb",
+    "20 lb"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Where do CO2 tanks NOT go?",
+   "answer": "Inside the walk-in",
+   "wrong": [
+    "Upright and chained",
+    "In a ventilated area",
+    "Away from heat"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Why is a CO2 leak in a walk-in dangerous?",
+   "answer": "It’s heavier than air and pools, and can kill",
+   "wrong": [
+    "It smells bad",
+    "It freezes the beer",
+    "It’s flammable"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The 3-30-300 rule says 3 days at 90°F equal…",
+   "answer": "30 days warm or 300 days cold",
+   "wrong": [
+    "3 days cold",
+    "1 day cold",
+    "Nothing"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "When beer is delivered, you check…",
+   "answer": "Invoice, date codes and packaging",
+   "wrong": [
+    "Only the count",
+    "Only the price",
+    "Nothing"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "Stock is rotated…",
+   "answer": "First in, first out",
+   "wrong": [
+    "Newest first",
+    "By color",
+    "By price"
+   ],
+   "source": "Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Our own keg sizes and cooler setup: GM to confirm."
+ ]
+}

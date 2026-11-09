@@ -1,0 +1,322 @@
+{
+ "number": 8,
+ "programLevel": 3,
+ "slug": "beer-events",
+ "title": "Events, and the Advanced Cicerone",
+ "script": "Lesson 8",
+ "lead": "Tap takeovers, flights and dinners, Michigan’s sample rules, then Cicerone’s third level.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Tap takeovers",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "One brewery, several taps, one night."
+    }
+   ],
+   "know": [
+    "Start simple: 4–6 beers from a local brewer.",
+    "Order sixtels if the cooler is tight.",
+    "Tap the day before; have the rep brief staff."
+   ],
+   "source": "FSR Magazine, “Taking On Tap Takeovers”"
+  },
+  {
+   "name": "Samples and flights",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Free samples have limits; flights need ABV."
+    }
+   ],
+   "know": [
+    "Michigan: free beer samples up to 3 oz, two per guest per day.",
+    "Paid flights aren’t covered by that limit.",
+    "Print ABV on the flight card."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov); NIH/NIAAA, “What Is a Standard Drink?”"
+  },
+  {
+   "name": "Dinners, verticals and cask nights",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Plan the beer like a menu."
+    }
+   ],
+   "know": [
+    "Taste every beer at serving temperature first.",
+    "Verticals: 2–6 vintages, 2–3 oz each.",
+    "Sell a cask within three days."
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course; Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  },
+  {
+   "name": "The Advanced Cicerone",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Cicerone’s third level."
+    }
+   ],
+   "know": [
+    "Needs Certified Cicerone; 80% overall, 75% tasting.",
+    "12 off-flavors on the tasting, plus oral exams.",
+    "Then Master Cicerone: 85%, two days."
+   ],
+   "source": "Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org); Cicerone, Master Cicerone exam page (cicerone.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Tap takeovers",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "4–6 BEERS",
+      "line": "a manageable first takeover."
+     },
+     {
+      "big": "SIXTELS",
+      "line": "when the cooler is tight."
+     },
+     {
+      "big": "DAY BEFORE",
+      "line": "tap and taste, brief staff."
+     }
+    ],
+    "read": {
+     "bigIdea": "Keep the first one simple.",
+     "where": "Operators interviewed by FSR Magazine: a first takeover of **4–6 beers** from one brewery is manageable; work with **local** brewers. Order **sixtels** when cooler space is tight, **tap the day before** so the chef can build pairings, have the **brewery rep brief** servers and bartenders, schedule on a **slow night**, and promote with the menu, tap handles, email and social media.",
+     "mixup": "A takeover isn’t only for the brewery. Pick beers that fit our food.",
+     "sayIt": "Tonight we’ve got six beers from one local brewery. Want a taste first?"
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Samples and flights",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "3 OZ",
+      "line": "max free beer sample (Michigan)."
+     },
+     {
+      "big": "2 A DAY",
+      "line": "free samples per guest."
+     },
+     {
+      "big": "ABV",
+      "line": "on every flight card."
+     }
+    ],
+    "read": {
+     "bigIdea": "Know the rules for free tastes.",
+     "where": "Michigan’s Liquor Control Code lets an on-premises licensee give **free samples** only if it doesn’t charge: **beer up to 3 oz**, and no more than **two samples per guest in 24 hours**. That covers **free tastes**, not **paid flights**. For flights, print **ABV** on the card: four 5 oz pours of 5% beer are about **1.7 standard drinks**; at 8% it’s about **2.7**.",
+     "mixup": "A flight isn’t a few free samples. It’s a paid drink, and it counts like one.",
+     "sayIt": "I can give you a small taste of one or two before you decide."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Dinners, verticals and cask nights",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "TASTE FIRST",
+      "line": "every beer, at serving temperature."
+     },
+     {
+      "big": "2–6",
+      "line": "vintages in a vertical."
+     },
+     {
+      "big": "3 DAYS",
+      "line": "to sell a tapped cask."
+     }
+    ],
+    "read": {
+     "bigIdea": "Plan it like a menu.",
+     "where": "For a **beer dinner**, the Brewers Association says get each beer’s ABV, style and ingredients, **taste** them at serving temperature (lowest ABV first), then order them to suit the dishes. A **vertical** tasting compares **2–6 vintages** of one beer at **2–3 oz** each. For a **cask night**, Cicerone says sell a cask within **three days** of tapping and clean cask lines weekly or at each cask change.",
+     "mixup": "A vertical doesn’t have to go oldest to newest. Taste first and pair the years that show best.",
+     "sayIt": ""
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "The Advanced Cicerone",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PREREQ",
+      "line": "Certified Cicerone."
+     },
+     {
+      "big": "80% / 75%",
+      "line": "overall / tasting."
+     },
+     {
+      "big": "12",
+      "line": "off-flavors on the tasting."
+     }
+    ],
+    "read": {
+     "bigIdea": "The level above Certified.",
+     "where": "The **Advanced Cicerone** needs a passed **Certified Cicerone**. It has an online **written** exam (multiple choice and essays), an in-person **tasting** with **12 possible off-flavors** (including acetic, chlorophenol, H2S, isovaleric, mercaptan and metallic), and two **oral** exams on styles and food pairing. You need **80%** overall and **75%** on tasting. Above it is **Master Cicerone**: a two-day exam, **85%** to pass. Our Advanced Specialist certificate is the restaurant’s; these titles only come from Cicerone.",
+     "mixup": "Our Level 3 isn’t Cicerone’s Advanced level. It’s how we run our beer program.",
+     "sayIt": ""
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "FSR Magazine; Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov); NIH/NIAAA, “What Is a Standard Drink?”; Brewers Association / CraftBeer.com, Beer & Food Course; Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org); Cicerone, Master Cicerone exam page (cicerone.org). Checked Nov 8, 2026.",
+ "cards": [
+  {
+   "q": "A manageable first tap takeover is about…",
+   "answer": "4–6 beers from one brewery",
+   "wrong": [
+    "24 beers",
+    "1 beer",
+    "50 beers"
+   ],
+   "source": "FSR Magazine"
+  },
+  {
+   "q": "If the cooler is tight for a takeover, order…",
+   "answer": "Sixtels",
+   "wrong": [
+    "Half barrels",
+    "Euro kegs",
+    "Nothing"
+   ],
+   "source": "FSR Magazine"
+  },
+  {
+   "q": "Why tap takeover beers the day before?",
+   "answer": "So the chef can build pairings and staff can taste",
+   "wrong": [
+    "To warm them",
+    "It’s the law",
+    "To empty them"
+   ],
+   "source": "FSR Magazine"
+  },
+  {
+   "q": "In Michigan, a free beer sample can be at most…",
+   "answer": "3 oz",
+   "wrong": [
+    "8 oz",
+    "1 oz",
+    "12 oz"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov)"
+  },
+  {
+   "q": "Michigan allows how many free samples per guest per 24 hours?",
+   "answer": "Two",
+   "wrong": [
+    "Ten",
+    "Unlimited",
+    "Zero"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov)"
+  },
+  {
+   "q": "Michigan’s free-sample limit covers…",
+   "answer": "Free tastes, not paid flights",
+   "wrong": [
+    "Paid flights",
+    "Pints",
+    "Bottles to go"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.2027 (legislature.mi.gov)"
+  },
+  {
+   "q": "Four 5 oz pours of 5% beer are about…",
+   "answer": "1.7 standard drinks",
+   "wrong": [
+    "4 drinks",
+    "0.5 drinks",
+    "10 drinks"
+   ],
+   "source": "NIH/NIAAA, “What Is a Standard Drink?”"
+  },
+  {
+   "q": "Before a beer dinner, you taste each beer…",
+   "answer": "At serving temperature, lowest ABV first",
+   "wrong": [
+    "Warm",
+    "Frozen",
+    "Not at all"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "A vertical tasting compares…",
+   "answer": "Several vintages of one beer",
+   "wrong": [
+    "Several breweries",
+    "Beer and wine",
+    "Draft and cans"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  },
+  {
+   "q": "To sit the Advanced Cicerone you need…",
+   "answer": "A passed Certified Cicerone",
+   "wrong": [
+    "Our Level 3 certificate",
+    "Nothing",
+    "A brewery job"
+   ],
+   "source": "Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  },
+  {
+   "q": "Advanced Cicerone pass marks are…",
+   "answer": "80% overall, 75% on tasting",
+   "wrong": [
+    "60% overall",
+    "100% on tasting",
+    "50% overall"
+   ],
+   "source": "Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  },
+  {
+   "q": "Master Cicerone needs…",
+   "answer": "85%, over a two-day exam",
+   "wrong": [
+    "70%, online only",
+    "No exam",
+    "50%"
+   ],
+   "source": "Cicerone, Master Cicerone exam page (cicerone.org)"
+  }
+ ],
+ "facts": [],
+ "unverified": [
+  "Flight pour sizes vary by venue; no BA or Cicerone figure found, so none is given.",
+  "Advanced Cicerone fees differ between Cicerone’s pages; left out.",
+  "Tied-house and event rules beyond MCL 436.2027: GM to check with our licence."
+ ]
+}
