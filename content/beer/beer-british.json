@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Bitters",
-    "video": null,
+    "video": {
+     "youtubeId": "SPk4n5MOvxo",
+     "title": "What is a Bitter Beer? -- History of the Bitter Style",
+     "by": "Beer By The Numbers",
+     "length": "8:05"
+    },
     "keyPoints": [
      {
       "big": "ORDINARY",
@@ -103,7 +108,12 @@
    },
    {
     "name": "English IPA, mild and brown",
-    "video": null,
+    "video": {
+     "youtubeId": "q8DRPbmVn6Y",
+     "title": "What even is Mild | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "12:25"
+    },
     "keyPoints": [
      {
       "big": "ENGLISH IPA",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Scotland, Ireland and barley wine",
-    "video": null,
+    "video": {
+     "youtubeId": "V7bjGMYJ1OA",
+     "title": "What is Barley wine? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "15:46"
+    },
     "keyPoints": [
      {
       "big": "SHILLINGS",
@@ -161,7 +176,12 @@
    },
    {
     "name": "Cask ale",
-    "video": null,
+    "video": {
+     "youtubeId": "9sNVOXKKkBo",
+     "title": "Cask Beer Uncovered - 'What to do in the Pub Cellar'",
+     "by": "Cask Marque",
+     "length": "4:27"
+    },
     "keyPoints": [
      {
       "big": "REAL ALE",

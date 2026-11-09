@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Easy ales",
-    "video": null,
+    "video": {
+     "youtubeId": "l6-8FP_NzVY",
+     "title": "American Wheat vs American Blonde - Side-by-Side",
+     "by": "Beer Scholar",
+     "length": "8:48"
+    },
     "keyPoints": [
      {
       "big": "CREAM ALE",
@@ -103,7 +108,12 @@
    },
    {
     "name": "IPAs: West Coast, hazy, double",
-    "video": null,
+    "video": {
+     "youtubeId": "WiS3m_wewxQ",
+     "title": "Styles of IPA beer and how they are different.",
+     "by": "Beverage Professor",
+     "length": "8:41"
+    },
     "keyPoints": [
      {
       "big": "WEST COAST",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Stouts and barleywine",
-    "video": null,
+    "video": {
+     "youtubeId": "5G8fs6tY0U0",
+     "title": "What is Imperial Stout? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "14:38"
+    },
     "keyPoints": [
      {
       "big": "AMERICAN STOUT",
@@ -161,7 +176,12 @@
    },
    {
     "name": "Barrels, fruit and spice",
-    "video": null,
+    "video": {
+     "youtubeId": "EM1VQM2V34o",
+     "title": "Beer School: how does barrel ageing work? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "7:04"
+    },
     "keyPoints": [
      {
       "big": "BARREL-AGED",

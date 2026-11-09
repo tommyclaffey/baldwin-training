@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Beer-clean",
-    "video": null,
+    "video": {
+     "youtubeId": "zWTQzE6JYHc",
+     "title": "Minute with a Master Cicerone - Beer Clean Glass Tests",
+     "by": "Cicerone Certification Program",
+     "length": "2:36"
+    },
     "keyPoints": [
      {
       "big": "SHEETING",
@@ -103,7 +108,12 @@
    },
    {
     "name": "Wash, rinse, dry",
-    "video": null,
+    "video": {
+     "youtubeId": "tVp2KfH-o78",
+     "title": "Beer Clean Glass",
+     "by": "FromTheBarVideos",
+     "length": "2:54"
+    },
     "keyPoints": [
      {
       "big": "3 SINKS",
@@ -132,7 +142,12 @@
    },
    {
     "name": "The draft pour",
-    "video": null,
+    "video": {
+     "youtubeId": "BVXGIZq_JuE",
+     "title": "How to properly pour the perfect pint of beer",
+     "by": "Bell's Brewery",
+     "length": "2:19"
+    },
     "keyPoints": [
      {
       "big": "45°",
@@ -176,7 +191,12 @@
    },
    {
     "name": "Bottles, nitro and temperature",
-    "video": null,
+    "video": {
+     "youtubeId": "Erocg2FaFMs",
+     "title": "How to Pour Beer From Cans & Bottles",
+     "by": "Beer Scholar",
+     "length": "1:31"
+    },
     "keyPoints": [
      {
       "big": "YEAST",

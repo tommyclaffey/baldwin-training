@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Why the glass matters",
-    "video": null,
+    "video": {
+     "youtubeId": "jwZ4Fmz58So",
+     "title": "Does glassware matter when drinking beer?",
+     "by": "The Craft Beer Channel",
+     "length": "20:08"
+    },
     "keyPoints": [
      {
       "big": "STRONGER",
@@ -103,7 +108,12 @@
    },
    {
     "name": "The glasses",
-    "video": null,
+    "video": {
+     "youtubeId": "gMj2XYpnvKo",
+     "title": "Best Beer Glassware - Master Cicerone® Rich Higgins Beer Lesson 02",
+     "by": "Master Cicerone Rich Higgins",
+     "length": "6:16"
+    },
     "keyPoints": [
      {
       "big": "WEIZEN",
@@ -151,7 +161,12 @@
    },
    {
     "name": "What ages",
-    "video": null,
+    "video": {
+     "youtubeId": "VVjf4habyes",
+     "title": "What's Beer Aging? (Cellaring Beer) | Craft Beer 101",
+     "by": "bring your empties",
+     "length": "12:09"
+    },
     "keyPoints": [
      {
       "big": "STRONG",
@@ -180,7 +195,12 @@
    },
    {
     "name": "How to cellar",
-    "video": null,
+    "video": {
+     "youtubeId": "_UjEMw4EjTw",
+     "title": "How To cellar Beer : Beer Geek 101 | Beer Geek Nation Craft Beer Reviews",
+     "by": "Beer Geek Nation",
+     "length": "8:26"
+    },
     "keyPoints": [
      {
       "big": "52–55°F",

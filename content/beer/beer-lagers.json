@@ -76,7 +76,12 @@
   "sections": [
    {
     "name": "Pilsner",
-    "video": null,
+    "video": {
+     "youtubeId": "HxAkd0okiWM",
+     "title": "What even is Pilsner? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "14:51"
+    },
     "keyPoints": [
      {
       "big": "1842",
@@ -105,7 +110,12 @@
    },
    {
     "name": "American lager and light lager",
-    "video": null,
+    "video": {
+     "youtubeId": "2E3bPU0g8SA",
+     "title": "Why Does American Beer Taste Like Water?",
+     "by": "The Good Stuff",
+     "length": "9:22"
+    },
     "keyPoints": [
      {
       "big": "LIGHT",
@@ -134,7 +144,12 @@
    },
    {
     "name": "Helles, Märzen and Oktoberfest",
-    "video": null,
+    "video": {
+     "youtubeId": "9pK9jqR27to",
+     "title": "MARZEN vs. FESTBIER - What's the Difference?  Inside the Brackets Ep.32",
+     "by": "Beer Brackets [🍺]",
+     "length": "4:54"
+    },
     "keyPoints": [
      {
       "big": "HELLES",
@@ -163,7 +178,12 @@
    },
    {
     "name": "Bock and dark lagers",
-    "video": null,
+    "video": {
+     "youtubeId": "aWvL3m4HDOQ",
+     "title": "What even is Bock beer? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "15:05"
+    },
     "keyPoints": [
      {
       "big": "BOCK",
