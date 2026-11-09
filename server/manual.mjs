@@ -32,27 +32,27 @@ export const countWord = (n) => words[n] || String(n);
 /** Every built level. A level's first page is the program's address for Level 1, then <program>/level-N. */
 export const LEVELS = [
   { program: 'bar', level: 1, title: 'Certified Bar Server', file: 'bar-1', final: 'final:bar-1', len: 30, prefix: 'BAR1', head: 'Learn it, then prove it',
-    lead: (n, L) => `${countWord(n)} short lessons for everyone on the floor: how guests order, every spirit at a glance, our menu, and the glass. Then a ${L.len}-question final.` },
+    lead: (n, L) => `${countWord(n)} short lessons for everyone on the floor, then a final of ${L.len} questions.` },
   { program: 'bar', level: 2, title: 'Certified Bartender', file: 'bar-2', final: 'final:bar-2', len: 60, prefix: 'BAR2', head: 'Know every bottle',
     practical: 'program:bar-2:practical', practicalTitle: 'Build from our specs', practicalHow: 'Build drinks from our specs while a manager watches; they sign you off', practicalStep: 'Build our specs for a manager',
-    lead: (n, L) => `${countWord(n)} lessons for bartenders: every spirit on the back bar in depth, then the six roots. A ${L.len}-question final, then a practical: build our specs while a manager watches.` },
+    lead: (n, L) => `${countWord(n)} lessons on every spirit and the six roots, then a final and a practical.` },
   // Level 3 (Nov 8, Tommy: "do Advanced Mixologist"): the craft. Its practical is an original drink, specced, costed and built.
   { program: 'bar', level: 3, title: 'Advanced Mixologist', file: 'bar-3', final: 'final:bar-3', len: 60, prefix: 'BAR3', head: 'Make it your own',
     practical: 'program:bar-3:practical', practicalTitle: 'Create an original cocktail', practicalHow: 'Write an original spec, cost it, and build it for the bar lead; they sign you off', practicalStep: 'Create your own drink',
-    lead: (n, L) => `${countWord(n)} lessons on the craft: balance, water and citrus, new drinks, house syrups, batching and costing. A ${L.len}-question final, then a practical: create, cost and build an original cocktail.` },
+    lead: (n, L) => `${countWord(n)} lessons on the craft and the business, then a final and a practical.` },
   // The Beer Program (Nov 8, Tommy: "beer will be based off of Cicerone"): Level 1 follows the Certified Beer Server outline.
   { program: 'beer', level: 1, title: 'Beer Server', file: 'beer-1', final: 'final:beer-1', len: 60, prefix: 'BEER1', head: 'Every beer, served right',
     practical: 'program:beer-1:practical', practicalTitle: 'Pour and present a draft', practicalHow: 'Check a glass is beer-clean, pour a draft with the right head and describe it; a manager signs you off', practicalStep: 'Pour a draft for a manager',
-    lead: (n, L) => `${countWord(n)} lessons built on the Cicerone Certified Beer Server outline: keeping and serving beer, how it’s made, the styles, flavor and pairing. A ${L.len}-question practice final, then a practical: pour a draft for a manager.` },
+    lead: (n, L) => `${countWord(n)} lessons on Cicerone’s Beer Server outline, then a final and a practical.` },
   // Beer Level 2 (Nov 8): deeper, on the Certified Cicerone outline. Shows once its lessons exist (content/beer, programLevel 2).
   { program: 'beer', level: 2, title: 'Beer Specialist', file: 'beer-2', final: 'final:beer-2', len: 60, prefix: 'BEER2', head: 'Know beer like a pro',
     practical: 'program:beer-2:practical', practicalTitle: 'Change a keg and fix a pour', practicalHow: 'Change a keg, talk a manager through fixing a foamy pour, and describe five beers on our list; they sign you off', practicalStep: 'Change a keg for a manager',
-    lead: (n, L) => `${countWord(n)} lessons built on the Certified Cicerone outline: draft systems in depth, ingredients, the world’s beer styles, off-flavors and pairing. A ${L.len}-question final, then a practical: change a keg and fix a pour for a manager.` },
+    lead: (n, L) => `${countWord(n)} lessons on the Certified Cicerone outline, then a final and a practical.` },
   // Beer Level 3 (Nov 8, Tommy: "You can build out level 3 for the beer"): running the beer program, like the Cocktail
   // Program's Level 3. Its practical is a beer list for our menu, costed and paired, presented to the GM.
   { program: 'beer', level: 3, title: 'Advanced Specialist', file: 'beer-3', final: 'final:beer-3', len: 60, prefix: 'BEER3', head: 'Run the beer program',
     practical: 'program:beer-3:practical', practicalTitle: 'Build our beer list', practicalHow: 'Build a beer list for our menu (styles, sizes, pour costs, glassware, a pairing per course) and present it to the GM; they sign you off', practicalStep: 'Build and cost a beer list',
-    lead: (n, L) => `${countWord(n)} lessons on running the beer program: line cleaning, kegs and the cooler, costing, the beer list, training the team, history and Michigan beer, and events. A ${L.len}-question final, then a practical: build and cost our beer list.` },
+    lead: (n, L) => `${countWord(n)} lessons on running the beer program, then a final and a practical.` },
 ].map((L) => { const P = PROGRAMS.find((p) => p.key === L.program); return { ...L, slug: `${P.slug}/level-${L.level}` }; }); // the program's own address is its hub (Nov 8)
 export const programDef = (key) => PROGRAMS.find((p) => p.key === key);
 export const isProgram = (c) => !!programDef(c?.program);
