@@ -89,7 +89,12 @@
   "sections": [
    {
     "name": "Every 14 days, no matter what",
-    "video": null,
+    "video": {
+     "youtubeId": "RRNFl0Honuc",
+     "title": "Draught Beer Line Maintenance (Cleaning)",
+     "by": "Leaders Beverage",
+     "length": "3:32"
+    },
     "keyPoints": [
      {
       "big": "14 DAYS",
@@ -118,7 +123,12 @@
    },
    {
     "name": "The caustic clean",
-    "video": null,
+    "video": {
+     "youtubeId": "owRHjTbGw9k",
+     "title": "Draft Beer Line Cleaning",
+     "by": "Micro Matic - Beverage Dispensing",
+     "length": "13:35"
+    },
     "keyPoints": [
      {
       "big": "2% / 3%",
@@ -147,7 +157,12 @@
    },
    {
     "name": "Pump, rinse, acid",
-    "video": null,
+    "video": {
+     "youtubeId": "xc3cAKkaLmE",
+     "title": "Beer Line Cleaning with the Electric Recirculating Pump | Premier Draft Beer Services",
+     "by": "Premier Draft Beer Services",
+     "length": "13:50"
+    },
     "keyPoints": [
      {
       "big": "PUMP",
@@ -176,7 +191,12 @@
    },
    {
     "name": "Faucets, couplers and old lines",
-    "video": null,
+    "video": {
+     "youtubeId": "Wtpk5EXsZy0",
+     "title": "How To Clean a Draft Beer Faucet Tap: Draft Maintenance",
+     "by": "Leaders Beverage",
+     "length": "5:23"
+    },
     "keyPoints": [
      {
       "big": "FAUCETS",
@@ -205,7 +225,12 @@
    },
    {
     "name": "Safety and the log",
-    "video": null,
+    "video": {
+     "youtubeId": "j5IJ13MDTl0",
+     "title": "Beer Draft Line Cleaning - Standard Operating Procedure (SOP)",
+     "by": "KPU Brewing - Beer School",
+     "length": "6:45"
+    },
     "keyPoints": [
      {
       "big": "PPE",

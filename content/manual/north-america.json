@@ -2512,7 +2512,12 @@
    },
    {
     "name": "Mexico",
-    "video": null,
+    "video": {
+     "youtubeId": "uk1qlwchELY",
+     "title": "Mexico's blossoming wine region: Valle de Guadalupe",
+     "by": "ABC 10 News",
+     "length": "4:44"
+    },
     "keyPoints": [
      {
       "big": "VALLE DE GUADALUPE",

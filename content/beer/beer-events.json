@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Tap takeovers",
-    "video": null,
+    "video": {
+     "youtubeId": "n2tqtCGYTW8",
+     "title": "POV - Getting The Pub Ready For A Cloudwater Tap Takeover",
+     "by": "The Dodo Micropub",
+     "length": "17:05"
+    },
     "keyPoints": [
      {
       "big": "4–6 BEERS",
@@ -132,7 +137,12 @@
    },
    {
     "name": "Dinners, verticals and cask nights",
-    "video": null,
+    "video": {
+     "youtubeId": "3FJs5sOr2Eo",
+     "title": "Beer & Food Pairings Create Experiences",
+     "by": "Brewers Association",
+     "length": "3:06"
+    },
     "keyPoints": [
      {
       "big": "TASTE FIRST",
@@ -161,7 +171,12 @@
    },
    {
     "name": "The Advanced Cicerone",
-    "video": null,
+    "video": {
+     "youtubeId": "l_t0gzWE87M",
+     "title": "What can you skip studying for the Advanced Cicerone exam?",
+     "by": "Beer Scholar",
+     "length": "16:02"
+    },
     "keyPoints": [
      {
       "big": "PREREQ",

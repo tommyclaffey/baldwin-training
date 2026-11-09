@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Organize by flavor",
-    "video": null,
+    "video": {
+     "youtubeId": "6lZ_zX9LYfg",
+     "title": "Craft Beer’s Place on the Menu",
+     "by": "The Culinary Institute of America",
+     "length": "3:06"
+    },
     "keyPoints": [
      {
       "big": "FLAVOR",
@@ -103,7 +108,12 @@
    },
    {
     "name": "ABV, pour size and NA",
-    "video": null,
+    "video": {
+     "youtubeId": "VcVjrCsldik",
+     "title": "What is a Standard Drink?",
+     "by": "Gordie Center",
+     "length": "1:12"
+    },
     "keyPoints": [
      {
       "big": "ABV + SIZE",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Glass, rotation, freshness",
-    "video": null,
+    "video": {
+     "youtubeId": "0iOuyjSFepU",
+     "title": "The Tulip Glass | The Beer Heads - Glassware 101",
+     "by": "The Beer Heads",
+     "length": "2:52"
+    },
     "keyPoints": [
      {
       "big": "TULIP",
@@ -161,7 +176,12 @@
    },
    {
     "name": "Off beer and the cellar list",
-    "video": null,
+    "video": {
+     "youtubeId": "CkSPjN3y62U",
+     "title": "Should I age my beer? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "17:58"
+    },
     "keyPoints": [
      {
       "big": "PULL IT",

@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Porter and London",
-    "video": null,
+    "video": {
+     "youtubeId": "1X5ES5P0kZ8",
+     "title": "The Historical Decline of Porter",
+     "by": "Craft Beer and Brewing",
+     "length": "2:36"
+    },
     "keyPoints": [
      {
       "big": "1700s",
@@ -103,7 +108,12 @@
    },
    {
     "name": "Burton and lager",
-    "video": null,
+    "video": {
+     "youtubeId": "4N03L8kPYQE",
+     "title": "The true history of the IPA | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "23:45"
+    },
     "keyPoints": [
      {
       "big": "1777",
@@ -132,7 +142,12 @@
    },
    {
     "name": "America: lager to Prohibition",
-    "video": null,
+    "video": {
+     "youtubeId": "sGCfBqfjSqY",
+     "title": "Documentaries and Specials | Prohibition Extra | Survival of the Breweries",
+     "by": "Milwaukee PBS",
+     "length": "3:52"
+    },
     "keyPoints": [
      {
       "big": "1840",
@@ -161,7 +176,12 @@
    },
    {
     "name": "Craft beer",
-    "video": null,
+    "video": {
+     "youtubeId": "P8IRonAGztE",
+     "title": "How Jimmy Carter Jump-Started the Craft Beer Revolution | WSJ",
+     "by": "The Wall Street Journal",
+     "length": "6:00"
+    },
     "keyPoints": [
      {
       "big": "1978",

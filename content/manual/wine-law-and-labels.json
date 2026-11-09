@@ -1639,7 +1639,12 @@
    },
    {
     "name": "France: AOC, AOP and IGP",
-    "video": null,
+    "video": {
+     "youtubeId": "2ZLmAv7I9Dk",
+     "title": "French Wine Classification System",
+     "by": "Millesiwine Paris",
+     "length": "6:29"
+    },
     "keyPoints": [
      {
       "big": "AOP",
@@ -1696,7 +1701,12 @@
    },
    {
     "name": "Italy: DOCG, DOC and IGT",
-    "video": null,
+    "video": {
+     "youtubeId": "epdW2XdU3jQ",
+     "title": "Italy Part 1 | Introductory & Certified | Court of Master Sommeliers",
+     "by": "Court of Master Sommeliers",
+     "length": "5:03"
+    },
     "keyPoints": [
      {
       "big": "DOCG",
@@ -1757,7 +1767,12 @@
    },
    {
     "name": "Spain: DO, DOCa and Pago",
-    "video": null,
+    "video": {
+     "youtubeId": "GvTNY46a7-g",
+     "title": "Spain Part 1 | Introductory & Certified | Court of Master Sommeliers",
+     "by": "Court of Master Sommeliers",
+     "length": "5:54"
+    },
     "keyPoints": [
      {
       "big": "DO",
@@ -1885,7 +1900,12 @@
    },
    {
     "name": "Austria and Portugal",
-    "video": null,
+    "video": {
+     "youtubeId": "-TdBUdDfFtU",
+     "title": "Willi Klinger explains Austria's DAC system",
+     "by": "International Wine Challenge",
+     "length": "3:00"
+    },
     "keyPoints": [
      {
       "big": "DAC",
@@ -1952,7 +1972,12 @@
    },
    {
     "name": "United States: AVAs and percentages",
-    "video": null,
+    "video": {
+     "youtubeId": "Q2bp9k95Wic",
+     "title": "Explaining AVAs and Exploring California Wine for WSET Level 3 and wine lovers @winebeerspirits",
+     "by": "Alcohol Education Alliance",
+     "length": "11:03"
+    },
     "keyPoints": [
      {
       "big": "AVA",
@@ -2085,7 +2110,12 @@
    },
    {
     "name": "Reading a label",
-    "video": null,
+    "video": {
+     "youtubeId": "r9pEjs7qpiY",
+     "title": "Wine 101: How to Read a Wine Label",
+     "by": "Epicurious",
+     "length": "2:36"
+    },
     "keyPoints": [
      {
       "big": "FIVE PARTS",

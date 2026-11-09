@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Staff tastings",
-    "video": null,
+    "video": {
+     "youtubeId": "5HP-Rb9oLu8",
+     "title": "Basic tasting practice in beer sensory training",
+     "by": "Siebel Institute of Technology",
+     "length": "3:36"
+    },
     "keyPoints": [
      {
       "big": "21+",
@@ -103,7 +108,12 @@
    },
    {
     "name": "How to taste together",
-    "video": null,
+    "video": {
+     "youtubeId": "DGqsnwk9MCc",
+     "title": "CraftBeer.com: Tasting Craft Beer",
+     "by": "Brewers Association",
+     "length": "3:00"
+    },
     "keyPoints": [
      {
       "big": "LOOK",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Teaching off-flavors",
-    "video": null,
+    "video": {
+     "youtubeId": "J0cH01rdpb0",
+     "title": "Preparing spiked beer sensory samples using Siebel Institute Sensory Training kits",
+     "by": "Siebel Institute of Technology",
+     "length": "4:31"
+    },
     "keyPoints": [
      {
       "big": "KITS",

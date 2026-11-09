@@ -89,7 +89,12 @@
   "sections": [
    {
     "name": "Pour cost",
-    "video": null,
+    "video": {
+     "youtubeId": "YtuNTkX1y8k",
+     "title": "How to Calculate Pour Cost in Under 2 Minutes (Bar & Restaurant Management Tips)",
+     "by": "Backbar",
+     "length": "3:14"
+    },
     "keyPoints": [
      {
       "big": "COST ÷ PRICE",
@@ -118,7 +123,12 @@
    },
    {
     "name": "Pricing a draft",
-    "video": null,
+    "video": {
+     "youtubeId": "2KTUIwHHwWU",
+     "title": "How to price drinks at your bar | Tips of boosting profits",
+     "by": "Backbar",
+     "length": "1:52"
+    },
     "keyPoints": [
      {
       "big": "POURS",
@@ -176,7 +186,12 @@
    },
    {
     "name": "Foam, spills and line cleaning",
-    "video": null,
+    "video": {
+     "youtubeId": "OUD3IfOavAU",
+     "title": "How Much FOAM Really Costs You on Draft Beer",
+     "by": "Kali Kat Tap Talks",
+     "length": "2:13"
+    },
     "keyPoints": [
      {
       "big": "1 INCH",
@@ -205,7 +220,12 @@
    },
    {
     "name": "Inventory and variance",
-    "video": null,
+    "video": {
+     "youtubeId": "FFDZZD66rcs",
+     "title": "Pour Cost % vs. Variance %: Which One is Better?",
+     "by": "Dave Allred TheRealBarman (Bar Patrol)",
+     "length": "9:07"
+    },
     "keyPoints": [
      {
       "big": "USAGE",

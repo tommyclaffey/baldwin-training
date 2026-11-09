@@ -1202,7 +1202,12 @@
    },
    {
     "name": "Chenin Blanc",
-    "video": null,
+    "video": {
+     "youtubeId": "atHP95EWsks",
+     "title": "Loire Part 3 | Introductory & Certified | Court of Master Sommeliers",
+     "by": "Court of Master Sommeliers",
+     "length": "4:23"
+    },
     "keyPoints": [
      {
       "big": "VOUVRAY",

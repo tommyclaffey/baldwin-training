@@ -1546,7 +1546,12 @@
   "sections": [
    {
     "name": "The vine",
-    "video": null,
+    "video": {
+     "youtubeId": "xoOBJPNnNEQ",
+     "title": "Viticulture",
+     "by": "GuildSomm International",
+     "length": "14:04"
+    },
     "keyPoints": [
      {
       "big": "VITIS VINIFERA",
@@ -1683,7 +1688,12 @@
    },
    {
     "name": "The vineyard year",
-    "video": null,
+    "video": {
+     "youtubeId": "-nSTanr9g8k",
+     "title": "What is the lifecycle of a vine?",
+     "by": "WSET",
+     "length": "2:51"
+    },
     "keyPoints": [
      {
       "big": "BUD BREAK",
@@ -1748,7 +1758,12 @@
    },
    {
     "name": "The winemaker’s choices",
-    "video": null,
+    "video": {
+     "youtubeId": "CZtN4KKvT_4",
+     "title": "Shortform Masterclass:  Fermentation Vessels Used in Oregon Winemaking",
+     "by": "Oregon Wine",
+     "length": "4:21"
+    },
     "keyPoints": [
      {
       "big": "VINIFICATION",
@@ -1809,7 +1824,12 @@
    },
    {
     "name": "Making white wine",
-    "video": null,
+    "video": {
+     "youtubeId": "bPw-pTGzao0",
+     "title": "Through the Grapevine: How to Make White Wine",
+     "by": "Purdue Agriculture",
+     "length": "4:09"
+    },
     "keyPoints": [
      {
       "big": "PRESSING",
@@ -2064,7 +2084,12 @@
    },
    {
     "name": "Bottling and packaging",
-    "video": null,
+    "video": {
+     "youtubeId": "px6PRAd-_mM",
+     "title": "Fining & Filtering Defined",
+     "by": "LDV Winery",
+     "length": "2:17"
+    },
     "keyPoints": [
      {
       "big": "FINING",

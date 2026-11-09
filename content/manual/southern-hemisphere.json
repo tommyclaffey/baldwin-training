@@ -2011,7 +2011,12 @@
    },
    {
     "name": "Argentina · Salta and Patagonia",
-    "video": null,
+    "video": {
+     "youtubeId": "jEvXuqK7HHs",
+     "title": "Argentina for WSET Level 3 | Wine Regions, Grapes & Laws",
+     "by": "Wine With Jimmy",
+     "length": "13:32"
+    },
     "keyPoints": [
      {
       "big": "SALTA",
@@ -2130,7 +2135,12 @@
    },
    {
     "name": "Chile · Valle Central",
-    "video": null,
+    "video": {
+     "youtubeId": "Cvs1yaonY3k",
+     "title": "Maipo Valley & Chile’s Central Valley Wine Secrets | WSET Diploma Guide",
+     "by": "Wine With Jimmy",
+     "length": "13:23"
+    },
     "keyPoints": [
      {
       "big": "VALLE CENTRAL",
@@ -2534,7 +2544,12 @@
    },
    {
     "name": "South Africa · Cape Town to Walker Bay",
-    "video": null,
+    "video": {
+     "youtubeId": "_6yljMEFoR4",
+     "title": "WSET 3 Minute Wine School - South Africa, presented by Jancis Robinson MW",
+     "by": "WSET",
+     "length": "2:38"
+    },
     "keyPoints": [
      {
       "big": "COASTAL REGION",

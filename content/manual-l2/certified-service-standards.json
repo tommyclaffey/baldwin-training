@@ -1272,7 +1272,12 @@
    },
    {
     "name": "When something goes wrong",
-    "video": null,
+    "video": {
+     "youtubeId": "uKM5g_yeGTc",
+     "title": "What are the Three Steps for a Successful Service Recovery?",
+     "by": "Ron Kaufman",
+     "length": "3:29"
+    },
     "keyPoints": [
      {
       "big": "PERCEPTION",

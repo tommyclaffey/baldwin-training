@@ -2271,7 +2271,12 @@
    },
    {
     "name": "Cocktails",
-    "video": null,
+    "video": {
+     "youtubeId": "tfy8xqRmHDw",
+     "title": "WSET 3 Minute Spirit School - Cocktails, presented by Paul Graham",
+     "by": "WSET",
+     "length": "3:14"
+    },
     "keyPoints": [
      {
       "big": "33 DRINKS",
