@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Match the strength",
-    "video": null,
+    "video": {
+     "youtubeId": "t0uVkzTgRN4",
+     "title": "Instant Beer Expert - Beer & Food Pairing",
+     "by": "BrewDog",
+     "length": "1:14"
+    },
     "keyPoints": [
      {
       "big": "INTENSITY",
@@ -103,7 +108,12 @@
    },
    {
     "name": "Complement, contrast, cut",
-    "video": null,
+    "video": {
+     "youtubeId": "BJ45_kjGJNU",
+     "title": "CraftBeer.com: Pairing Tips with Greg Koch",
+     "by": "Brewers Association",
+     "length": "1:24"
+    },
     "keyPoints": [
      {
       "big": "COMPLEMENT",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Classic matches",
-    "video": null,
+    "video": {
+     "youtubeId": "WGXXyD0-f7s",
+     "title": "TODAY: Cheers! These 5 dishes pair great with beer",
+     "by": "Brewers Association",
+     "length": "3:45"
+    },
     "keyPoints": [
      {
       "big": "PILSNER",
@@ -161,7 +176,12 @@
    },
    {
     "name": "The Certified Beer Server exam",
-    "video": null,
+    "video": {
+     "youtubeId": "992HhcEJ0pk",
+     "title": "Everything you need to study to crush the Certified Beer Server exam",
+     "by": "Beer Scholar",
+     "length": "5:36"
+    },
     "keyPoints": [
      {
       "big": "60 QUESTIONS",

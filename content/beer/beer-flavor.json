@@ -89,7 +89,12 @@
   "sections": [
    {
     "name": "How to taste",
-    "video": null,
+    "video": {
+     "youtubeId": "KpqRKLigVTw",
+     "title": "Beer School: How to taste beer like a beer judge | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "9:33"
+    },
     "keyPoints": [
      {
       "big": "LOOK",
@@ -147,7 +152,12 @@
    },
    {
     "name": "Light and age",
-    "video": null,
+    "video": {
+     "youtubeId": "YKNq3eFxt-A",
+     "title": "Lightstruck - Beer sensory characteristics, causes and control factors",
+     "by": "Siebel Institute of Technology",
+     "length": "2:21"
+    },
     "keyPoints": [
      {
       "big": "SKUNKY",
@@ -176,7 +186,12 @@
    },
    {
     "name": "Butter and sour",
-    "video": null,
+    "video": {
+     "youtubeId": "7Py9cCShcZU",
+     "title": "Beer Off-Flavors & Detecting Diacetyl - Master Cicerone® Rich Higgins Beer Lesson",
+     "by": "Master Cicerone Rich Higgins",
+     "length": "5:45"
+    },
     "keyPoints": [
      {
       "big": "BUTTER",
@@ -205,7 +220,12 @@
    },
    {
     "name": "Two more to know",
-    "video": null,
+    "video": {
+     "youtubeId": "vg4-4MlYeU0",
+     "title": "Acetaldehyde - Beer sensory characteristics, causes and control factors",
+     "by": "Siebel Institute of Technology",
+     "length": "1:46"
+    },
     "keyPoints": [
      {
       "big": "DMS",

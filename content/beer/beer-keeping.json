@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Fresh is best",
-    "video": null,
+    "video": {
+     "youtubeId": "iTInIHYciM8",
+     "title": "How Long Does Craft Beer Stay Fresh?",
+     "by": "Tree House Brewing Company",
+     "length": "13:59"
+    },
     "keyPoints": [
      {
       "big": "FRESH",
@@ -103,7 +108,12 @@
    },
    {
     "name": "Keep it cold",
-    "video": null,
+    "video": {
+     "youtubeId": "3-3FrhTMo0Q",
+     "title": "Should Beer Be Stored Cold For Freshness? | exBEERiments",
+     "by": "The Brülosophy Show",
+     "length": "9:53"
+    },
     "keyPoints": [
      {
       "big": "38°F",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Light makes skunk",
-    "video": null,
+    "video": {
+     "youtubeId": "9i4dHdQzTFg",
+     "title": "Why Does Beer Get Skunked?",
+     "by": "Reactions",
+     "length": "2:26"
+    },
     "keyPoints": [
      {
       "big": "SKUNKY",
@@ -176,7 +191,12 @@
    },
    {
     "name": "Rotate and check",
-    "video": null,
+    "video": {
+     "youtubeId": "5eld9lDNYik",
+     "title": "Beer Store Tips: Reading Beer Date Stamps",
+     "by": "Beer By The Numbers",
+     "length": "4:58"
+    },
     "keyPoints": [
      {
       "big": "FIFO",

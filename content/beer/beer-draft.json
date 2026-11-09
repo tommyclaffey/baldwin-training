@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Keg to faucet",
-    "video": null,
+    "video": {
+     "youtubeId": "lp_RtDrhXCU",
+     "title": "10 Key Elements of a Draft Beer System",
+     "by": "Micro Matic - Beverage Dispensing",
+     "length": "2:12"
+    },
     "keyPoints": [
      {
       "big": "GAS",
@@ -151,7 +156,12 @@
    },
    {
     "name": "Clean lines",
-    "video": null,
+    "video": {
+     "youtubeId": "mwB8KjlUf3s",
+     "title": "How Often Should You Clean Your Draft Beer Lines?",
+     "by": "Dave Allred TheRealBarman (Bar Patrol)",
+     "length": "2:28"
+    },
     "keyPoints": [
      {
       "big": "14 DAYS",

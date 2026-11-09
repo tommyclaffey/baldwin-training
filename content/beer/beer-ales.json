@@ -110,7 +110,12 @@
   "sections": [
    {
     "name": "Pale ale and IPA",
-    "video": null,
+    "video": {
+     "youtubeId": "2W9khB4WVIY",
+     "title": "Beer Talk: What is a Pale Ale vs. IPA vs. Double IPA?! - Ep. #1301",
+     "by": "Darwin's Beer Reviews",
+     "length": "3:43"
+    },
     "keyPoints": [
      {
       "big": "PALE ALE",
@@ -139,7 +144,12 @@
    },
    {
     "name": "Hazy IPA",
-    "video": null,
+    "video": {
+     "youtubeId": "hBqWiPPtE5w",
+     "title": "What even is New England IPA? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "12:47"
+    },
     "keyPoints": [
      {
       "big": "HAZY",
@@ -168,7 +178,12 @@
    },
    {
     "name": "Wheat beers",
-    "video": null,
+    "video": {
+     "youtubeId": "7YJs1ipP6zY",
+     "title": "Wheat Beer vs. Witbier vs. Hefeweizen. What's the difference? - Inside the Brackets Ep.25",
+     "by": "Beer Brackets [🍺]",
+     "length": "6:54"
+    },
     "keyPoints": [
      {
       "big": "HEFEWEIZEN",
@@ -197,7 +212,12 @@
    },
    {
     "name": "Belgian ales",
-    "video": null,
+    "video": {
+     "youtubeId": "fv1KrCzRWUA",
+     "title": "Introduction to Belgian Beer & Lambic - Master Cicerone® Rich Higgins Beer Lesson",
+     "by": "Master Cicerone Rich Higgins",
+     "length": "5:56"
+    },
     "keyPoints": [
      {
       "big": "DUBBEL",
@@ -226,7 +246,12 @@
    },
    {
     "name": "Stout and porter",
-    "video": null,
+    "video": {
+     "youtubeId": "RvMsdZdQpkA",
+     "title": "Porter and Stout: What's the difference? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "16:28"
+    },
     "keyPoints": [
      {
       "big": "IRISH STOUT",
@@ -255,7 +280,12 @@
    },
    {
     "name": "Sours",
-    "video": null,
+    "video": {
+     "youtubeId": "Q0jkQukciGA",
+     "title": "Beer School: how is sour beer made? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "7:41"
+    },
     "keyPoints": [
      {
       "big": "BERLINER WEISSE",

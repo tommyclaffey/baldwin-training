@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "The five on the exam",
-    "video": null,
+    "video": {
+     "youtubeId": "Sg-CPGDAJCE",
+     "title": "Cicerone Study: Cicerone Off-Flavor Tasting Kit - Ep. #1279",
+     "by": "Darwin's Beer Reviews",
+     "length": "6:54"
+    },
     "keyPoints": [
      {
       "big": "GREEN APPLE",
@@ -122,7 +127,12 @@
    },
    {
     "name": "Fermentation flavors",
-    "video": null,
+    "video": {
+     "youtubeId": "G6gnGBNweN0",
+     "title": "Isoamyl Acetate",
+     "by": "Siebel Institute of Technology",
+     "length": "2:23"
+    },
     "keyPoints": [
      {
       "big": "BANANA",
@@ -151,7 +161,12 @@
    },
    {
     "name": "Contamination",
-    "video": null,
+    "video": {
+     "youtubeId": "HgHxP-5jvnQ",
+     "title": "Contamination (Infection) - Beer sensory characteristics, causes and control factors",
+     "by": "Siebel Institute of Technology",
+     "length": "2:42"
+    },
     "keyPoints": [
      {
       "big": "BAND-AID",
@@ -180,7 +195,12 @@
    },
    {
     "name": "Age, hops and texture",
-    "video": null,
+    "video": {
+     "youtubeId": "TMYCBt8iJh4",
+     "title": "Papery (Trans-2-nonenal) - Beer sensory characteristics, causes and control factors",
+     "by": "Siebel Institute of Technology",
+     "length": "1:52"
+    },
     "keyPoints": [
      {
       "big": "CARDBOARD",

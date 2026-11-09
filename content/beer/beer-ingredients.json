@@ -89,7 +89,12 @@
   "sections": [
    {
     "name": "Malt families",
-    "video": null,
+    "video": {
+     "youtubeId": "gh2KHDYjXNU",
+     "title": "The Four Families of Malt (and How to Use Them in Homebrew)",
+     "by": "NorthernBrewerTV",
+     "length": "7:26"
+    },
     "keyPoints": [
      {
       "big": "BASE",
@@ -118,7 +123,12 @@
    },
    {
     "name": "Hops by region",
-    "video": null,
+    "video": {
+     "youtubeId": "zYxOTYTATuY",
+     "title": "A crash course in HOPS part 1 (Europe)",
+     "by": "The Craft Beer Channel",
+     "length": "21:08"
+    },
     "keyPoints": [
      {
       "big": "NOBLE",
@@ -166,7 +176,12 @@
    },
    {
     "name": "Bitterness and IBU",
-    "video": null,
+    "video": {
+     "youtubeId": "DkAcypL8sbs",
+     "title": "IBU Explained: Measuring Beer",
+     "by": "Beer By The Numbers",
+     "length": "4:01"
+    },
     "keyPoints": [
      {
       "big": "ALPHA ACIDS",
@@ -224,7 +239,12 @@
    },
    {
     "name": "Yeast, sugar and pasteurization",
-    "video": null,
+    "video": {
+     "youtubeId": "DshY6jw3N7w",
+     "title": "Beyond Barley: Wheat, Rye, Adjuncts, Sugars & Honey - Master Cicerone® Rich Higgins Beer Lesson",
+     "by": "Master Cicerone Rich Higgins",
+     "length": "5:56"
+    },
     "keyPoints": [
      {
       "big": "YEAST",

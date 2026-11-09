@@ -89,7 +89,12 @@
   "sections": [
    {
     "name": "How flavors meet",
-    "video": null,
+    "video": {
+     "youtubeId": "tsK_Rt7Vg64",
+     "title": "[Video Tip] Breaking Down the Flavor Elements of Beer and Food",
+     "by": "Craft Beer and Brewing",
+     "length": "5:24"
+    },
     "keyPoints": [
      {
       "big": "COMPLEMENT",
@@ -118,7 +123,12 @@
    },
    {
     "name": "Beer and cheese",
-    "video": null,
+    "video": {
+     "youtubeId": "IB9otZ_si8E",
+     "title": "CraftBeer.com: Pairing Craft Beer and Cheese",
+     "by": "Brewers Association",
+     "length": "3:54"
+    },
     "keyPoints": [
      {
       "big": "INTENSITY",
@@ -205,7 +215,12 @@
    },
    {
     "name": "The Certified Cicerone exam",
-    "video": null,
+    "video": {
+     "youtubeId": "IVWL_J2k3zU",
+     "title": "Beer Talk: Certified Cicerone Test Format and How Hard Is It?! - Ep. #1286",
+     "by": "Darwin's Beer Reviews",
+     "length": "4:18"
+    },
     "keyPoints": [
      {
       "big": "PREREQ",

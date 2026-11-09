@@ -89,7 +89,12 @@
   "sections": [
    {
     "name": "Four ingredients",
-    "video": null,
+    "video": {
+     "youtubeId": "7RwQ2BA3p5I",
+     "title": "Learning to Homebrew Lesson 2: Brewing Ingredients",
+     "by": "American Homebrewers Association",
+     "length": "3:28"
+    },
     "keyPoints": [
      {
       "big": "MALT",
@@ -122,7 +127,12 @@
    },
    {
     "name": "Malt",
-    "video": null,
+    "video": {
+     "youtubeId": "uXao3n3cj_A",
+     "title": "Beer School: What is Malt? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "13:10"
+    },
     "keyPoints": [
      {
       "big": "MALTING",
@@ -170,7 +180,12 @@
    },
    {
     "name": "Brew day",
-    "video": null,
+    "video": {
+     "youtubeId": "ZL_HGOgy_Zo",
+     "title": "Beer Brewing Process - 3D Animation \"The art of brewing\"",
+     "by": "EXPLANATION-AVENUE - 3D Animations by Oliver Ende",
+     "length": "6:13"
+    },
     "keyPoints": [
      {
       "big": "MASH",
@@ -199,7 +214,12 @@
    },
    {
     "name": "Ale or lager",
-    "video": null,
+    "video": {
+     "youtubeId": "eYMtc0JVLZo",
+     "title": "Lagers vs Ales - Master Cicerone® Rich Higgins Beer Lesson 01",
+     "by": "Master Cicerone Rich Higgins",
+     "length": "2:47"
+    },
     "keyPoints": [
      {
       "big": "ALE",
@@ -228,7 +248,12 @@
    },
    {
     "name": "Corn, rice, gluten-free and NA",
-    "video": null,
+    "video": {
+     "youtubeId": "T61wj9CVZRU",
+     "title": "Gluten-free Vs. Gluten-reduced Beer Explained",
+     "by": "Holidaily Brewing Co.",
+     "length": "1:37"
+    },
     "keyPoints": [
      {
       "big": "ADJUNCTS",

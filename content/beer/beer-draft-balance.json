@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Pressure, temperature, carbonation",
-    "video": null,
+    "video": {
+     "youtubeId": "MFmrBHLPvsM",
+     "title": "Beer Draft Systems & Ideal Gauge Pressure - Master Cicerone® Rich Higgins Beer Lesson",
+     "by": "Master Cicerone Rich Higgins",
+     "length": "6:14"
+    },
     "keyPoints": [
      {
       "big": "VOLUMES",
@@ -103,7 +108,12 @@
    },
    {
     "name": "A balanced system",
-    "video": null,
+    "video": {
+     "youtubeId": "w6whE1jrVQ4",
+     "title": "Draft System Balancing or How To Fix Foamy Beer",
+     "by": "BEER-N-BBQ by Larry",
+     "length": "8:43"
+    },
     "keyPoints": [
      {
       "big": "BALANCED",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Gas blends and nitro",
-    "video": null,
+    "video": {
+     "youtubeId": "VfNbRczYH4E",
+     "title": "Using Carbon Dioxide in Draft Systems - CO2, Nitrogen, & Beer Gas Mix",
+     "by": "Coldbreak",
+     "length": "4:42"
+    },
     "keyPoints": [
      {
       "big": "NITROGEN",
@@ -161,7 +176,12 @@
    },
    {
     "name": "Fixing a foamy pour",
-    "video": null,
+    "video": {
+     "youtubeId": "V6ZSa-_NYCI",
+     "title": "How to Deal with Beer Foaming Issues - 3 Proven Solutions for Your Draft Beer Program",
+     "by": "Barmetrix",
+     "length": "6:57"
+    },
     "keyPoints": [
      {
       "big": "TEMPERATURE",

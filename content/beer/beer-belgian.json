@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Blond, golden and dark strong",
-    "video": null,
+    "video": {
+     "youtubeId": "IYK0fyDIdCY",
+     "title": "Basic Beers: Belgian Golden Strong Ale (Duvel) - Ep. #1254",
+     "by": "Darwin's Beer Reviews",
+     "length": "5:40"
+    },
     "keyPoints": [
      {
       "big": "BLOND",
@@ -103,7 +108,12 @@
    },
    {
     "name": "Trappist and abbey",
-    "video": null,
+    "video": {
+     "youtubeId": "M3Oe9a3StvE",
+     "title": "Why Belgium's Trappist Beer Is Considered One Of The Best Beers In The World",
+     "by": "DW Food",
+     "length": "4:37"
+    },
     "keyPoints": [
      {
       "big": "TRAPPIST",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Lambic, gueuze and fruit",
-    "video": null,
+    "video": {
+     "youtubeId": "1ARSSZUVQxw",
+     "title": "What even is lambic? | The Craft Beer Channel",
+     "by": "The Craft Beer Channel",
+     "length": "17:48"
+    },
     "keyPoints": [
      {
       "big": "COOLSHIP",
@@ -161,7 +176,12 @@
    },
    {
     "name": "Flanders ales and Brett",
-    "video": null,
+    "video": {
+     "youtubeId": "Ga5dACyl4WI",
+     "title": "What even is Flemish Red (and oud bruin)?",
+     "by": "The Craft Beer Channel",
+     "length": "19:06"
+    },
     "keyPoints": [
      {
       "big": "FLANDERS RED",
