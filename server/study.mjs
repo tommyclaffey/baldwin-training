@@ -566,6 +566,21 @@ export function barPage(page, ctx) {
   // breadcrumb: The Bar / Cocktail Program / Level N
   const bc = find(main, byName('Breadcrumb'));
   if (bc) { const t = texts(bc); const back = find(bc, byName('Back')); if (back) { back.to = P.back[0]; setText(T(back)[0], P.back[1]); } setText(t[2], P.name); t[2].n = P.name; setText(t[4], `Level ${L.level}`); }
+  // Level tabs (Nov 8, Tommy: "Only see level 1 … Do you have multiple levels?"): every level of the program, up top.
+  // The current one is dark, built ones link, the rest are dimmed with "Coming".
+  if (bc) {
+    const holder = main.c.includes(bc) ? main : find(main, (x) => (x.c || []).includes(bc));
+    const tab = (i) => {
+      const built = LEVELS.find((x) => x.program === L.program && x.level === i + 1 && chaptersOf(x.program, x.level).length);
+      const here = i + 1 === L.level;
+      const label = `Level ${i + 1} · ${P.ladder[i]}${built ? '' : ' · Coming'}`;
+      return { t: 'F', n: 'Level tab · ' + (i + 1), lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 999, pd: [9, 16, 9, 16],
+        ...(here ? { f: [{ c: '#1E1C1A' }] } : { st: built ? '#8A8178' : '#CFC6B8', sw: 1 }), ...(built && !here ? { to: '/' + built.slug } : {}),
+        c: [txt(label, { z: 14, c: here ? '#F2EEE7' : built ? '#1E1C1A' : '#5E574F', fs: here ? 'Bold' : built ? 'SemiBold' : 'Medium' })] };
+    };
+    const tabs = { t: 'F', n: 'Level tabs', lm: 'H', gap: 8, wrap: 1, cg: 8, sh: 'F', sv: 'H', c: P.ladder.map((_, i) => tab(i)) };
+    holder.c.splice(holder.c.indexOf(bc) + 1, 0, tabs);
+  }
   const hero = find(main, byName('Hero'));
   const hv = find(hero, (x) => !!x.vid || (x.n || '').includes('YouTube R6ESxHbDSrg'));
   if (hv) { delete hv.vid; hv.n = P.heroName; hv.f = [{ img: P.hero, m: 'FILL' }]; hv.c = []; }
