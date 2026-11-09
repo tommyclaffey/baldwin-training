@@ -481,7 +481,9 @@ test('sommelier program: video-first hub, Level 1 course and Level 2, with the o
   assert.ok(l1.includes('"/sommelier-program/study-guide/france"') && l1.includes('"/sommelier-program/level-1/exam-details"'), 'twelve lessons and the exam details');
   assert.equal((await page('sommelier-program/study-guide')).includes('12 LESSONS'), true, 'the old Study Guide address shows the course');
   const l2 = await page('sommelier-program/level-2');
-  assert.ok(l2.includes('"youtubeId":"XFiWNb9GMNE"') && l2.includes('c6f9912b50984cdf8aaf65b76099975a'));
+  assert.ok(l2.includes('"youtubeId":"XFiWNb9GMNE"') && l2.includes('"/sommelier-program/level-2/exam-details"'));
+  // Nov 8, Tommy: no Book button in the level heroes (booking stays on the hub), same two buttons as Cocktail and Beer
+  assert.ok(!/"Button · Book/.test(l1 + l2) || !/"n":"Button · Book[^"]*","[^}]*"to"/.test(l1), 'no book link in the level heroes');
   assert.ok((await page('sommelier-program/level-1/exam-details')).includes('42 of 70'), 'the old Level 1 page is still there');
   assert.ok((await page('sommelier-program/level-2/exam-details')).includes('THE TASTING GRID'));
   const side = JSON.stringify((await import('../src/content/sidebar.json', { with: { type: 'json' } })).default);
