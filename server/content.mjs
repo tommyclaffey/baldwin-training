@@ -6,7 +6,7 @@ import { addRows } from './editinplace.mjs';
 import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, LEVELS, PROGRAMS, chaptersOf, programDef, isProgram, progLevel } from './manual.mjs';
 import { certificatesFor } from './certs.mjs';
 import { regionPage, regionData } from './region.mjs';
-import { lessonPage, level1Page, level2Page, hubPage, barPage, programHub, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
+import { lessonPage, level1Page, level2Page, level2OnLevel1, hubPage, barPage, programHub, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
 import { passFor } from './quizgen.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
@@ -523,7 +523,13 @@ function assembleRaw(db, file) {
   if (slug === HUB) return hubPage(page, { done: sectionsDone(db, SCOPE.user?.id) });
   if (slug === L1) return level1Page(page, { done: sectionsDone(db, SCOPE.user?.id) });
   if (slug === GUIDE) { const l1 = baseIndex().find((x) => x.slug === L1); const p1 = l1 && basePage(l1.file); if (p1) return level1Page(p1, { done: sectionsDone(db, SCOPE.user?.id) }); return guideIndex(page, { prog: progress(db, SCOPE.user?.id, SCOPE.store) }); }
-  if (slug === L2) { const l1 = baseIndex().find((x) => x.slug === L1); const p1 = l1 && basePage(l1.file); return level2Page(page, { done: sectionsDone(db, SCOPE.user?.id), course: p1 && find(p1.main, byName('The course')) }); }
+  if (slug === L2) {
+    const l1 = baseIndex().find((x) => x.slug === L1); const p1 = l1 && basePage(l1.file); const done = sectionsDone(db, SCOPE.user?.id);
+    const old = level2Page(page, { done, course: p1 && find(p1.main, byName('The course')) });
+    // Nov 8: Level 2 on the Level 1 layout, like the Cocktail and Beer levels (Tommy: "Yes")
+    const p2 = l1 && basePage(l1.file);
+    return p2 ? { ...level2OnLevel1(p2, old, { done }), name: page.name } : old;
+  }
   if (isGeneric()) return genericPage(db, file, slug, page);
   if (file === '23-2') {
     const SITES = { 'Restaurant · J.Baldwin’s': 'https://www.jbaldwins.com', 'Restaurant · Testa Barra': 'https://www.testabarra.com', 'Restaurant · The Baldwin': 'https://thebaldwinshelby.com' };

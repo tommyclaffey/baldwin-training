@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { clone, find, findAll, byName, texts, setText, remove } from './templates.mjs';
-import { chapters, chapters2, chaptersOf, levelChapters, chapterBase, GUIDE, LEVELS, levelFor, isProgram, programDef, progLevel, levelOfChapter, quizHref, shuffleSeeded, blockBuilder } from './manual.mjs';
+import { chapters, chapters2, chaptersOf, levelChapters, chapterBase, GUIDE, LEVELS, levelFor, isProgram, programDef, progLevel, levelOfChapter, quizHref, shuffleSeeded, blockBuilder, countWord } from './manual.mjs';
 
 export const HUB = 'sommelier-program';
 export const BAR_FINAL = 't:final:bar-1';
@@ -831,4 +831,57 @@ function unclipHero(main) {
 function evenButtons(main) {
   const hero = find(main, byName('Hero')); const btns = hero && find(hero, byName('Buttons'));
   for (const b of btns?.c || []) if (!b.st && b.f?.[0]?.c) { b.st = b.f[0].c; b.sw = 1; }
+}
+
+/* ---------------- Level 2 on the Level 1 layout (Nov 8) ---------------- */
+// Tommy, Nov 8: "Yes" to switching Sommelier Level 2 to the Level 1 layout so all three programs match at every level
+// (Figma 392:31). The Level 2 sections that have no Level 1 counterpart (the three exam parts, the Court's service videos,
+// study tips, the practice tools) follow the lessons.
+export function level2OnLevel1(p1, old, ctx = {}) {
+  const main = p1.main; const all = chapters2(); const done = ctx.done || new Set();
+  unclipHero(main);
+  const bc = find(main, byName('Breadcrumb')); if (bc) { const t = texts(bc); setText(t[t.length - 1], 'Level 2'); }
+  const hero = find(main, byName('Hero'));
+  const hv = find(hero, (x) => (x.n || '').includes('YouTube R6ESxHbDSrg'));
+  if (hv) {
+    hv.n = 'IMG/Video · After You Pass Level 1 · Court of Master Sommeliers (YouTube RDcViBQkMm8)';
+    hv.f = [{ img: 'https://i.ytimg.com/vi/RDcViBQkMm8/maxresdefault.jpg', m: 'FILL' }];
+    hv.vid = { kind: 'youtube', youtubeId: 'RDcViBQkMm8', title: 'After You Pass Level 1 · Court of Master Sommeliers, Americas' };
+    const dur = find(hv, byName('Duration')); if (dur) setText(texts(dur)[0], '1:08');
+  }
+  const copy = find(hero, byName('Copy')); const ct = T(copy);
+  setText(ct[0], 'Level two'); setText(ct[1], 'CERTIFIED');
+  const lead = find(hero, (x) => x.t === 'T' && /video lessons/.test(x.s || ''));
+  if (lead) { setText(lead, `${countWord(all.length)} video lessons in three parts, with practice cards. Then one day, three exams.`); lead.n = 'Lead'; }
+  const gl = find(hero, byName('At a glance'));
+  const cards = all.reduce((k, c) => k + c.cards.length, 0);
+  const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], ['3', 'exams'], ['60%', 'on each']];
+  if (gl) gl.c.forEach((st, i) => { const tt = texts(st); if (stats[i]) { setText(tt[0], stats[i][0]); setText(tt[1], stats[i][1]); st.n = 'Stat · ' + stats[i][1]; } });
+  if (copy) { const at = copy.c.findIndex((x) => x.n === 'At a glance'); copy.c.splice(at + 1, 0, progressBlock(courseProgress(done, all), 398)); }
+  const btns = find(hero, byName('Buttons'));
+  if (btns) {
+    const cont = btns.c.find((x) => (x.n || '').startsWith('Button · Continue'));
+    const book = btns.c.find((x) => (x.n || '').startsWith('Button · Book'));
+    const nx = nextLesson(done, all); const begun = all.some((c) => chapterState(c, done).k > 0);
+    if (cont) { cont.n = 'Button · Continue'; cont.to = '/' + lessonSlug(nx ? nx.ch : all[0], nx ? nx.i : 0); setText(texts(cont)[0], !nx ? 'Watch Again' : begun ? `Continue Lesson ${nx.ch.number}` : 'Start Part 1'); }
+    const d = book && clone(book);
+    if (d) { d.n = 'Button · Exam Details'; d.to = '/' + DETAILS[2]; setText(texts(d)[0], 'Exam Details'); }
+    btns.c = [cont, d].filter(Boolean); btns.wrap = 1; btns.cg = 8; btns.sh = 'L';
+    delete btns.clip; delete btns.h; btns.sv = 'H';
+  }
+  evenButtons(main);
+  for (const t of findAll(hero || { c: [] }, (x) => x.t === 'T' && (x.z || 0) >= 36)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
+  // the nine lessons, labelled by part
+  const course = find(main, byName('The course'));
+  const grid = find(course, byName('Lessons'));
+  const finished = lessonsGrid(grid, all, done);
+  for (const tile of grid?.c || []) { const ch = all.find((x) => (tile.n || '').endsWith('· ' + x.title)); if (ch) tile.n = `Part ${ch.part} · Lesson ${String(ch.number).padStart(2, '0')} · ${ch.title}`; }
+  const head = find(course, byName('Head'));
+  if (head) { const ht = texts(head); setText(ht[0], 'Three parts, in exam order'); setText(ht[1], `${all.length} LESSONS`); setText(ht[ht.length - 1], `${finished} of ${all.length} done`); }
+  // the Level 2 sections that have no Level 1 twin
+  const keep = (old?.main?.c || []).filter((x) => ['Three parts', 'WATCH THE SERVICE', 'STUDY TIPS', 'Practice tools'].includes(x.n));
+  const at = main.c.indexOf(course);
+  main.c.splice(at + 1, 0, ...keep);
+  for (const t of findAll(find(main, byName('How it works')) || { c: [] }, (x) => x.t === 'T' && (x.s || '').length > 2)) { t.ar = 'H'; t.sh = 'L'; }
+  return p1;
 }
