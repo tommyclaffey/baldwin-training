@@ -91,7 +91,12 @@
   "sections": [
    {
     "name": "Ferment, then distill",
-    "video": null,
+    "video": {
+     "youtubeId": "cR7Bt9Ei_zI",
+     "title": "How Is Whiskey Made?",
+     "by": "Reactions",
+     "length": "4:55"
+    },
     "keyPoints": [
      {
       "big": "FERMENT",
@@ -118,7 +123,12 @@
    },
    {
     "name": "Pot stills and column stills",
-    "video": null,
+    "video": {
+     "youtubeId": "TB-6qr0Vp3w",
+     "title": "Whiskey 101: Know Your Stills to Know Your Whiskey",
+     "by": "Whisky Advocate",
+     "length": "2:40"
+    },
     "keyPoints": [
      {
       "big": "POT STILL",
@@ -147,7 +157,12 @@
    },
    {
     "name": "Aging in oak",
-    "video": null,
+    "video": {
+     "youtubeId": "tbFgI3fBpzQ",
+     "title": "Bourbon 101: The Mechanics of Barrel-Aging",
+     "by": "Whisky Advocate",
+     "length": "2:48"
+    },
     "keyPoints": [
      {
       "big": "CLEAR",
@@ -175,7 +190,12 @@
    },
    {
     "name": "Strength and proof",
-    "video": null,
+    "video": {
+     "youtubeId": "mfLBw9VfeKI",
+     "title": "Why Is Alcohol Measured By Proof? | Encyclopaedia Britannica",
+     "by": "Encyclopaedia Britannica",
+     "length": "2:23"
+    },
     "keyPoints": [
      {
       "big": "ABV",

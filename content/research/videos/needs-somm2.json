@@ -1,0 +1,137 @@
+[
+ {
+  "file": "content/manual-l2/certified-at-the-table.json",
+  "slug": "certified-at-the-table",
+  "level": 2,
+  "lesson": "Still, sparkling and decanting at the exam",
+  "section": "The order and the glasses",
+  "has": false,
+  "idea": "Confirm the order, then set a tidy table."
+ },
+ {
+  "file": "content/manual-l2/certified-at-the-table.json",
+  "slug": "certified-at-the-table",
+  "level": 2,
+  "lesson": "Still, sparkling and decanting at the exam",
+  "section": "Pouring to exam standard",
+  "has": false,
+  "idea": "Taste for the host, then pour clockwise."
+ },
+ {
+  "file": "content/manual-l2/certified-at-the-table.json",
+  "slug": "certified-at-the-table",
+  "level": 2,
+  "lesson": "Still, sparkling and decanting at the exam",
+  "section": "After-dinner drinks",
+  "has": false,
+  "idea": "Measured pours, from a gueridon or tray."
+ },
+ {
+  "file": "content/manual-l2/certified-beyond-still-wine.json",
+  "slug": "certified-beyond-still-wine",
+  "level": 2,
+  "lesson": "Sparkling, sweet, fortified, beer, sake, spirits and cocktails",
+  "section": "Cocktails",
+  "has": false,
+  "idea": "Learn the cocktails by their base spirit."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "Bottles, cases and pours",
+  "has": false,
+  "idea": "Know the sizes, then divide."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "The words of the trade",
+  "has": false,
+  "idea": "Learn the words, and the math gets easy."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "Pricing a bottle",
+  "has": false,
+  "idea": "Price = cost ÷ the cost % you want."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "Pricing a glass",
+  "has": false,
+  "idea": "Price the glass from the bottle."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "COGS and inventory",
+  "has": false,
+  "idea": "What you used, divided by what you sold."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "The wine list",
+  "has": false,
+  "idea": "A list is correct, current and readable."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "Buying and storing",
+  "has": false,
+  "idea": "Buy with care, then store it right."
+ },
+ {
+  "file": "content/manual-l2/certified-service-standards.json",
+  "slug": "certified-service-standards",
+  "level": 2,
+  "lesson": "Hospitality and service standards",
+  "section": "How the practical is scored",
+  "has": false,
+  "idea": "Hospitality, selling, mechanics and theory."
+ },
+ {
+  "file": "content/manual-l2/certified-service-standards.json",
+  "slug": "certified-service-standards",
+  "level": 2,
+  "lesson": "Hospitality and service standards",
+  "section": "When something goes wrong",
+  "has": false,
+  "idea": "Fix it in the guest’s mind, not on paper."
+ },
+ {
+  "file": "content/manual-l2/certified-service-standards.json",
+  "slug": "certified-service-standards",
+  "level": 2,
+  "lesson": "Hospitality and service standards",
+  "section": "Dress and appearance",
+  "has": false,
+  "idea": "Dress safe, clean and like a pro."
+ },
+ {
+  "file": "content/manual-l2/certified-white-wines.json",
+  "slug": "certified-white-wines",
+  "level": 2,
+  "lesson": "The white wines on the exam",
+  "section": "Chenin Blanc",
+  "has": false,
+  "idea": "Chenin Blanc: quince and honey over bright acidity."
+ }
+]

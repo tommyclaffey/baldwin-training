@@ -131,7 +131,12 @@
   "sections": [
    {
     "name": "The rules",
-    "video": null,
+    "video": {
+     "youtubeId": "5pclfapJxB4",
+     "title": "Bourbon Masterclass: History, Rules & Production",
+     "by": "FreePour",
+     "length": "9:43"
+    },
     "keyPoints": [
      {
       "big": "51%",
@@ -164,7 +169,12 @@
    },
    {
     "name": "Bourbon",
-    "video": null,
+    "video": {
+     "youtubeId": "zbyMW8764n8",
+     "title": "Explaining 6 Styles of Bourbon",
+     "by": "ABC Fine Wine & Spirits",
+     "length": "4:08"
+    },
     "keyPoints": [
      {
       "big": "USA",
@@ -212,7 +222,12 @@
    },
    {
     "name": "Straight and bottled-in-bond",
-    "video": null,
+    "video": {
+     "youtubeId": "IW03veDVdWA",
+     "title": "What is Bottled In Bond?",
+     "by": "Bourbinsane",
+     "length": "3:00"
+    },
     "keyPoints": [
      {
       "big": "STRAIGHT",
@@ -241,7 +256,12 @@
    },
    {
     "name": "Rye and Tennessee",
-    "video": null,
+    "video": {
+     "youtubeId": "Py4IDjx63qI",
+     "title": "Tennessee Whiskey Basics | What is the Lincoln County Process?",
+     "by": "Distiller",
+     "length": "2:10"
+    },
     "keyPoints": [
      {
       "big": "RYE",
@@ -268,7 +288,12 @@
    },
    {
     "name": "American whiskey at the bar",
-    "video": null,
+    "video": {
+     "youtubeId": "iay69j4f5V8",
+     "title": "The 5 most popular whiskey cocktails",
+     "by": "Steve the Bartender",
+     "length": "11:07"
+    },
     "keyPoints": [
      {
       "big": "MANHATTAN",

@@ -1,0 +1,299 @@
+[
+ {
+  "file": "content/manual/beer-sake-spirits.json",
+  "slug": "beer-sake-spirits",
+  "level": 1,
+  "lesson": "Beer, sake and spirits",
+  "section": "Distillation",
+  "has": false,
+  "idea": "Distilling makes a fermented drink stronger."
+ },
+ {
+  "file": "content/manual/beer-sake-spirits.json",
+  "slug": "beer-sake-spirits",
+  "level": 1,
+  "lesson": "Beer, sake and spirits",
+  "section": "Cognac and other brandy",
+  "has": false,
+  "idea": "Brandy is distilled from fruit."
+ },
+ {
+  "file": "content/manual/beer-sake-spirits.json",
+  "slug": "beer-sake-spirits",
+  "level": 1,
+  "lesson": "Beer, sake and spirits",
+  "section": "Tequila and mezcal",
+  "has": false,
+  "idea": "Tequila and mezcal are agave spirits from Mexico."
+ },
+ {
+  "file": "content/manual/beer-sake-spirits.json",
+  "slug": "beer-sake-spirits",
+  "level": 1,
+  "lesson": "Beer, sake and spirits",
+  "section": "Vodka, gin, rum and liqueurs",
+  "has": false,
+  "idea": "Know what each spirit is made from."
+ },
+ {
+  "file": "content/manual/germany-and-austria.json",
+  "slug": "germany-and-austria",
+  "level": 1,
+  "lesson": "Germany and Austria",
+  "section": "Dry or sweet? Label words",
+  "has": false,
+  "idea": "The sweetness word tells you how dry the wine is."
+ },
+ {
+  "file": "content/manual/germany-and-austria.json",
+  "slug": "germany-and-austria",
+  "level": 1,
+  "lesson": "Germany and Austria",
+  "section": "VDP and the vineyard pyramid",
+  "has": false,
+  "idea": "The VDP ranks vineyards, Burgundy style."
+ },
+ {
+  "file": "content/manual/how-wine-is-made.json",
+  "slug": "how-wine-is-made",
+  "level": 1,
+  "lesson": "How wine is made",
+  "section": "The vine",
+  "has": false,
+  "idea": "Most quality wine comes from one vine species."
+ },
+ {
+  "file": "content/manual/how-wine-is-made.json",
+  "slug": "how-wine-is-made",
+  "level": 1,
+  "lesson": "How wine is made",
+  "section": "The vineyard year",
+  "has": false,
+  "idea": "Every year, the vine runs through the same cycle."
+ },
+ {
+  "file": "content/manual/how-wine-is-made.json",
+  "slug": "how-wine-is-made",
+  "level": 1,
+  "lesson": "How wine is made",
+  "section": "The winemaker’s choices",
+  "has": false,
+  "idea": "Every wine starts with the winery’s plan."
+ },
+ {
+  "file": "content/manual/how-wine-is-made.json",
+  "slug": "how-wine-is-made",
+  "level": 1,
+  "lesson": "How wine is made",
+  "section": "Making white wine",
+  "has": false,
+  "idea": "White wine is juice fermented without the skins."
+ },
+ {
+  "file": "content/manual/how-wine-is-made.json",
+  "slug": "how-wine-is-made",
+  "level": 1,
+  "lesson": "How wine is made",
+  "section": "Bottling and packaging",
+  "has": false,
+  "idea": "Before it’s sold, wine is cleared, sealed and labeled."
+ },
+ {
+  "file": "content/manual/italy.json",
+  "slug": "italy",
+  "level": 1,
+  "lesson": "Italy",
+  "section": "Lombardy",
+  "has": false,
+  "idea": "In Lombardy, the wine to know is Franciacorta."
+ },
+ {
+  "file": "content/manual/italy.json",
+  "slug": "italy",
+  "level": 1,
+  "lesson": "Italy",
+  "section": "Marche",
+  "has": false,
+  "idea": "The Marche is Verdicchio country, on the Adriatic."
+ },
+ {
+  "file": "content/manual/italy.json",
+  "slug": "italy",
+  "level": 1,
+  "lesson": "Italy",
+  "section": "Campania",
+  "has": false,
+  "idea": "Campania: Aglianico red, Fiano and Greco whites."
+ },
+ {
+  "file": "content/manual/italy.json",
+  "slug": "italy",
+  "level": 1,
+  "lesson": "Italy",
+  "section": "Central and Southern Italy",
+  "has": false,
+  "idea": "Central and southern Italy: match the wine to its grape."
+ },
+ {
+  "file": "content/manual/north-america.json",
+  "slug": "north-america",
+  "level": 1,
+  "lesson": "North America",
+  "section": "Mexico",
+  "has": false,
+  "idea": "Mexico is the Americas’ oldest wine country."
+ },
+ {
+  "file": "content/manual/on-the-floor.json",
+  "slug": "on-the-floor",
+  "level": 1,
+  "lesson": "On the floor",
+  "section": "Mise en place",
+  "has": false,
+  "idea": "Get everything ready before the first guest."
+ },
+ {
+  "file": "content/manual/on-the-floor.json",
+  "slug": "on-the-floor",
+  "level": 1,
+  "lesson": "On the floor",
+  "section": "Glassware",
+  "has": false,
+  "idea": "Glasses go on the right, the same for everyone."
+ },
+ {
+  "file": "content/manual/on-the-floor.json",
+  "slug": "on-the-floor",
+  "level": 1,
+  "lesson": "On the floor",
+  "section": "Temperature and storage",
+  "has": false,
+  "idea": "Store it steady. Serve it at the right chill."
+ },
+ {
+  "file": "content/manual/southern-hemisphere.json",
+  "slug": "southern-hemisphere",
+  "level": 1,
+  "lesson": "The Southern Hemisphere",
+  "section": "Argentina · Salta and Patagonia",
+  "has": false,
+  "idea": "Go high or go south to find cool vines."
+ },
+ {
+  "file": "content/manual/southern-hemisphere.json",
+  "slug": "southern-hemisphere",
+  "level": 1,
+  "lesson": "The Southern Hemisphere",
+  "section": "Chile · Valle Central",
+  "has": false,
+  "idea": "Chile's warm middle makes most of its wine."
+ },
+ {
+  "file": "content/manual/southern-hemisphere.json",
+  "slug": "southern-hemisphere",
+  "level": 1,
+  "lesson": "The Southern Hemisphere",
+  "section": "South Africa · Cape Town to Walker Bay",
+  "has": false,
+  "idea": "Seven names, two regions, one Western Cape."
+ },
+ {
+  "file": "content/manual/spain-and-portugal.json",
+  "slug": "spain-and-portugal",
+  "level": 1,
+  "lesson": "Spain and Portugal",
+  "section": "Priorat",
+  "has": false,
+  "idea": "Priorat is Spain’s modern, powerful red."
+ },
+ {
+  "file": "content/manual/spain-and-portugal.json",
+  "slug": "spain-and-portugal",
+  "level": 1,
+  "lesson": "Spain and Portugal",
+  "section": "Vinho Verde",
+  "has": false,
+  "idea": "Vinho Verde is Portugal’s light, low-alcohol white."
+ },
+ {
+  "file": "content/manual/sparkling-fortified-sweet.json",
+  "slug": "sparkling-fortified-sweet",
+  "level": 1,
+  "lesson": "Sparkling, fortified and sweet",
+  "section": "How fortified wines are made",
+  "has": false,
+  "idea": "When the spirit goes in shapes each fortified wine."
+ },
+ {
+  "file": "content/manual/tasting.json",
+  "slug": "tasting",
+  "level": 1,
+  "lesson": "Tasting like a sommelier",
+  "section": "Wine information review",
+  "has": false,
+  "idea": "Tie what’s in the glass to what you’ve studied."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "France: AOC, AOP and IGP",
+  "has": false,
+  "idea": "In France, the place on the label is protected by law."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "Italy: DOCG, DOC and IGT",
+  "has": false,
+  "idea": "Italy’s protected wines come in two tiers: DOCG and DOC."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "Spain: DO, DOCa and Pago",
+  "has": false,
+  "idea": "Spain’s labels tell you where, and how long it aged."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "Austria and Portugal",
+  "has": false,
+  "idea": "Austria and Portugal have their own label words."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "United States: AVAs and percentages",
+  "has": false,
+  "idea": "US label rules come down to a few percentages."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "New World origin rules",
+  "has": false,
+  "idea": "New World labels mostly promise where, not how."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "Reading a label",
+  "has": false,
+  "idea": "Every label answers who, where, what and when."
+ }
+]

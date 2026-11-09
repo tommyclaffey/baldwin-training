@@ -147,7 +147,12 @@
   "sections": [
    {
     "name": "How tequila is made",
-    "video": null,
+    "video": {
+     "youtubeId": "dmAZ0aH0P9o",
+     "title": "TEQUILA | How It's Made",
+     "by": "Discovery UK",
+     "length": "5:05"
+    },
     "keyPoints": [
      {
       "big": "BLUE WEBER",
@@ -176,7 +181,12 @@
    },
    {
     "name": "100% agave or not",
-    "video": null,
+    "video": {
+     "youtubeId": "RbJ-7lDaHL4",
+     "title": "What Tequila Should You Buy💰? The Different Categories of Tequila",
+     "by": "Jeff Bradford ",
+     "length": "3:39"
+    },
     "keyPoints": [
      {
       "big": "100% AGAVE",
@@ -204,7 +214,12 @@
    },
    {
     "name": "Tequila by age",
-    "video": null,
+    "video": {
+     "youtubeId": "-iEO6D7VCwo",
+     "title": "Every Type of Tequila Explained: Blanco, Reposado, Añejo & More",
+     "by": "VinePair",
+     "length": "4:47"
+    },
     "keyPoints": [
      {
       "big": "BLANCO",
@@ -237,7 +252,12 @@
    },
    {
     "name": "Mezcal",
-    "video": null,
+    "video": {
+     "youtubeId": "kAbzLXgBRpI",
+     "title": "What IS Mezcal? - a history and tasting",
+     "by": "Anders Erickson",
+     "length": "9:52"
+    },
     "keyPoints": [
      {
       "big": "OAXACA",
@@ -284,7 +304,12 @@
    },
    {
     "name": "Agave at the bar",
-    "video": null,
+    "video": {
+     "youtubeId": "8DcW1BVlUvc",
+     "title": "My Favorite Tequila Cocktails",
+     "by": "The Educated Barfly",
+     "length": "10:55"
+    },
     "keyPoints": [
      {
       "big": "MARGARITA",

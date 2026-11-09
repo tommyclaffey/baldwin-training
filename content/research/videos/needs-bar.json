@@ -1,0 +1,686 @@
+[
+ {
+  "file": "content/bar/bar-agave.json",
+  "slug": "bar-agave",
+  "level": 2,
+  "lesson": "Tequila and mezcal",
+  "section": "How tequila is made",
+  "has": false,
+  "idea": "Blue agave, cooked, crushed and distilled."
+ },
+ {
+  "file": "content/bar/bar-agave.json",
+  "slug": "bar-agave",
+  "level": 2,
+  "lesson": "Tequila and mezcal",
+  "section": "100% agave or not",
+  "has": false,
+  "idea": "Read the label: 100% agave or just “tequila.”"
+ },
+ {
+  "file": "content/bar/bar-agave.json",
+  "slug": "bar-agave",
+  "level": 2,
+  "lesson": "Tequila and mezcal",
+  "section": "Tequila by age",
+  "has": false,
+  "idea": "Five classes, from unaged to three years."
+ },
+ {
+  "file": "content/bar/bar-agave.json",
+  "slug": "bar-agave",
+  "level": 2,
+  "lesson": "Tequila and mezcal",
+  "section": "Mezcal",
+  "has": false,
+  "idea": "Any of many agaves, often roasted in pits."
+ },
+ {
+  "file": "content/bar/bar-agave.json",
+  "slug": "bar-agave",
+  "level": 2,
+  "lesson": "Tequila and mezcal",
+  "section": "Agave at the bar",
+  "has": false,
+  "idea": "From the Margarita to the Oaxaca Old Fashioned."
+ },
+ {
+  "file": "content/bar/bar-american-whiskey.json",
+  "slug": "bar-american-whiskey",
+  "level": 2,
+  "lesson": "American whiskey",
+  "section": "The rules",
+  "has": false,
+  "idea": "American whiskey is named by its grain."
+ },
+ {
+  "file": "content/bar/bar-american-whiskey.json",
+  "slug": "bar-american-whiskey",
+  "level": 2,
+  "lesson": "American whiskey",
+  "section": "Bourbon",
+  "has": false,
+  "idea": "American, at least 51% corn, new charred oak."
+ },
+ {
+  "file": "content/bar/bar-american-whiskey.json",
+  "slug": "bar-american-whiskey",
+  "level": 2,
+  "lesson": "American whiskey",
+  "section": "Straight and bottled-in-bond",
+  "has": false,
+  "idea": "Two label words that are rules, not marketing."
+ },
+ {
+  "file": "content/bar/bar-american-whiskey.json",
+  "slug": "bar-american-whiskey",
+  "level": 2,
+  "lesson": "American whiskey",
+  "section": "Rye and Tennessee",
+  "has": false,
+  "idea": "Spicy rye, and Tennessee’s charcoal step."
+ },
+ {
+  "file": "content/bar/bar-american-whiskey.json",
+  "slug": "bar-american-whiskey",
+  "level": 2,
+  "lesson": "American whiskey",
+  "section": "American whiskey at the bar",
+  "has": false,
+  "idea": "The classics most guests order."
+ },
+ {
+  "file": "content/bar/bar-balance.json",
+  "slug": "bar-balance",
+  "level": 3,
+  "lesson": "Balance",
+  "section": "Core, balance, seasoning",
+  "has": false,
+  "idea": "Every drink is a core, a balance and a seasoning."
+ },
+ {
+  "file": "content/bar/bar-balance.json",
+  "slug": "bar-balance",
+  "level": 3,
+  "lesson": "Balance",
+  "section": "Strong, sweet, sour",
+  "has": false,
+  "idea": "A sour is three things in proportion."
+ },
+ {
+  "file": "content/bar/bar-balance.json",
+  "slug": "bar-balance",
+  "level": 3,
+  "lesson": "Balance",
+  "section": "Syrup strength",
+  "has": false,
+  "idea": "Know which syrup a spec means."
+ },
+ {
+  "file": "content/bar/bar-balance.json",
+  "slug": "bar-balance",
+  "level": 3,
+  "lesson": "Balance",
+  "section": "Taste and adjust",
+  "has": false,
+  "idea": "Taste before it leaves the bar."
+ },
+ {
+  "file": "content/bar/bar-batching.json",
+  "slug": "bar-batching",
+  "level": 3,
+  "lesson": "Batching",
+  "section": "Scale the spec",
+  "has": false,
+  "idea": "A batch is the spec, multiplied."
+ },
+ {
+  "file": "content/bar/bar-batching.json",
+  "slug": "bar-batching",
+  "level": 3,
+  "lesson": "Batching",
+  "section": "Add the water",
+  "has": false,
+  "idea": "A batch has no ice, so the water goes in the bottle."
+ },
+ {
+  "file": "content/bar/bar-batching.json",
+  "slug": "bar-batching",
+  "level": 3,
+  "lesson": "Batching",
+  "section": "What not to batch",
+  "has": false,
+  "idea": "Batch the parts that keep."
+ },
+ {
+  "file": "content/bar/bar-batching.json",
+  "slug": "bar-batching",
+  "level": 3,
+  "lesson": "Batching",
+  "section": "Label, date, chill",
+  "has": false,
+  "idea": "A batch is only as good as its label."
+ },
+ {
+  "file": "content/bar/bar-brandy.json",
+  "slug": "bar-brandy",
+  "level": 2,
+  "lesson": "Brandy",
+  "section": "What brandy is",
+  "has": false,
+  "idea": "Distilled wine, or fermented fruit."
+ },
+ {
+  "file": "content/bar/bar-brandy.json",
+  "slug": "bar-brandy",
+  "level": 2,
+  "lesson": "Brandy",
+  "section": "Cognac",
+  "has": false,
+  "idea": "Twice distilled, from one region of France."
+ },
+ {
+  "file": "content/bar/bar-brandy.json",
+  "slug": "bar-brandy",
+  "level": 2,
+  "lesson": "Brandy",
+  "section": "Cognac’s crus",
+  "has": false,
+  "idea": "Six growing areas, named on the label."
+ },
+ {
+  "file": "content/bar/bar-brandy.json",
+  "slug": "bar-brandy",
+  "level": 2,
+  "lesson": "Brandy",
+  "section": "Armagnac, Calvados and pisco",
+  "has": false,
+  "idea": "Three more brandies guests ask for."
+ },
+ {
+  "file": "content/bar/bar-brandy.json",
+  "slug": "bar-brandy",
+  "level": 2,
+  "lesson": "Brandy",
+  "section": "Brandy at the bar",
+  "has": false,
+  "idea": "The Sidecar, Pisco Sour and Vieux Carré."
+ },
+ {
+  "file": "content/bar/bar-costing.json",
+  "slug": "bar-costing",
+  "level": 3,
+  "lesson": "Costing and the menu",
+  "section": "Cost per ounce",
+  "has": false,
+  "idea": "Know what an ounce costs."
+ },
+ {
+  "file": "content/bar/bar-costing.json",
+  "slug": "bar-costing",
+  "level": 3,
+  "lesson": "Costing and the menu",
+  "section": "Pour cost",
+  "has": false,
+  "idea": "Pour cost tells you if a drink earns its spot."
+ },
+ {
+  "file": "content/bar/bar-costing.json",
+  "slug": "bar-costing",
+  "level": 3,
+  "lesson": "Costing and the menu",
+  "section": "Pricing a new drink",
+  "has": false,
+  "idea": "Work the price back from the cost."
+ },
+ {
+  "file": "content/bar/bar-costing.json",
+  "slug": "bar-costing",
+  "level": 3,
+  "lesson": "Costing and the menu",
+  "section": "Building a menu",
+  "has": false,
+  "idea": "A menu works as a set."
+ },
+ {
+  "file": "content/bar/bar-dilution.json",
+  "slug": "bar-dilution",
+  "level": 3,
+  "lesson": "Water, ice and citrus",
+  "section": "Water is an ingredient",
+  "has": false,
+  "idea": "Every drink has water in it, and it’s on purpose."
+ },
+ {
+  "file": "content/bar/bar-dilution.json",
+  "slug": "bar-dilution",
+  "level": 3,
+  "lesson": "Water, ice and citrus",
+  "section": "Shaken or stirred",
+  "has": false,
+  "idea": "How you chill it changes the drink."
+ },
+ {
+  "file": "content/bar/bar-dilution.json",
+  "slug": "bar-dilution",
+  "level": 3,
+  "lesson": "Water, ice and citrus",
+  "section": "Ice",
+  "has": false,
+  "idea": "Ice is part of the build."
+ },
+ {
+  "file": "content/bar/bar-dilution.json",
+  "slug": "bar-dilution",
+  "level": 3,
+  "lesson": "Water, ice and citrus",
+  "section": "Citrus timing",
+  "has": false,
+  "idea": "Fresh juice, every shift."
+ },
+ {
+  "file": "content/bar/bar-glass-ice-garnish.json",
+  "slug": "bar-glass-ice-garnish",
+  "level": 1,
+  "lesson": "Glass, ice and garnish",
+  "section": "Glassware",
+  "has": false,
+  "idea": "The glass matches how the drink is served."
+ },
+ {
+  "file": "content/bar/bar-glass-ice-garnish.json",
+  "slug": "bar-glass-ice-garnish",
+  "level": 1,
+  "lesson": "Glass, ice and garnish",
+  "section": "Ice",
+  "has": false,
+  "idea": "Ice chills the drink, and its water is part of the spec."
+ },
+ {
+  "file": "content/bar/bar-glass-ice-garnish.json",
+  "slug": "bar-glass-ice-garnish",
+  "level": 1,
+  "lesson": "Glass, ice and garnish",
+  "section": "Garnish",
+  "has": false,
+  "idea": "Guests smell a drink before they taste it."
+ },
+ {
+  "file": "content/bar/bar-glass-ice-garnish.json",
+  "slug": "bar-glass-ice-garnish",
+  "level": 1,
+  "lesson": "Glass, ice and garnish",
+  "section": "Shake, stir or build",
+  "has": false,
+  "idea": "The method follows the ingredients."
+ },
+ {
+  "file": "content/bar/bar-how-spirits-are-made.json",
+  "slug": "bar-how-spirits-are-made",
+  "level": 2,
+  "lesson": "How spirits are made",
+  "section": "Ferment, then distill",
+  "has": false,
+  "idea": "Every spirit starts as something fermented."
+ },
+ {
+  "file": "content/bar/bar-how-spirits-are-made.json",
+  "slug": "bar-how-spirits-are-made",
+  "level": 2,
+  "lesson": "How spirits are made",
+  "section": "Pot stills and column stills",
+  "has": false,
+  "idea": "Two kinds of still, two kinds of spirit."
+ },
+ {
+  "file": "content/bar/bar-how-spirits-are-made.json",
+  "slug": "bar-how-spirits-are-made",
+  "level": 2,
+  "lesson": "How spirits are made",
+  "section": "Aging in oak",
+  "has": false,
+  "idea": "The barrel adds color, flavor and time."
+ },
+ {
+  "file": "content/bar/bar-how-spirits-are-made.json",
+  "slug": "bar-how-spirits-are-made",
+  "level": 2,
+  "lesson": "How spirits are made",
+  "section": "Strength and proof",
+  "has": false,
+  "idea": "Proof is twice the ABV, in the US."
+ },
+ {
+  "file": "content/bar/bar-liqueurs.json",
+  "slug": "bar-liqueurs",
+  "level": 2,
+  "lesson": "Liqueurs, vermouth and bitters",
+  "section": "Liqueurs",
+  "has": false,
+  "idea": "A spirit with sugar and flavor added."
+ },
+ {
+  "file": "content/bar/bar-liqueurs.json",
+  "slug": "bar-liqueurs",
+  "level": 2,
+  "lesson": "Liqueurs, vermouth and bitters",
+  "section": "Amaro and aperitivo",
+  "has": false,
+  "idea": "Italy’s bitter liqueurs."
+ },
+ {
+  "file": "content/bar/bar-liqueurs.json",
+  "slug": "bar-liqueurs",
+  "level": 2,
+  "lesson": "Liqueurs, vermouth and bitters",
+  "section": "Vermouth",
+  "has": false,
+  "idea": "Wine, flavored and fortified."
+ },
+ {
+  "file": "content/bar/bar-liqueurs.json",
+  "slug": "bar-liqueurs",
+  "level": 2,
+  "lesson": "Liqueurs, vermouth and bitters",
+  "section": "Bitters",
+  "has": false,
+  "idea": "A dash seasons the whole drink."
+ },
+ {
+  "file": "content/bar/bar-our-menu.json",
+  "slug": "bar-our-menu",
+  "level": 1,
+  "lesson": "Our menu",
+  "section": "Reading a spec",
+  "has": false,
+  "idea": "Every spec is written the same way."
+ },
+ {
+  "file": "content/bar/bar-our-menu.json",
+  "slug": "bar-our-menu",
+  "level": 1,
+  "lesson": "Our menu",
+  "section": "Where every drink lives",
+  "has": false,
+  "idea": "Know where to look it up."
+ },
+ {
+  "file": "content/bar/bar-our-menu.json",
+  "slug": "bar-our-menu",
+  "level": 1,
+  "lesson": "Our menu",
+  "section": "Selling a cocktail",
+  "has": false,
+  "idea": "Sell the drink in one sentence."
+ },
+ {
+  "file": "content/bar/bar-riffs.json",
+  "slug": "bar-riffs",
+  "level": 3,
+  "lesson": "Building new drinks",
+  "section": "Swap one part",
+  "has": false,
+  "idea": "New drinks are old drinks with one part changed."
+ },
+ {
+  "file": "content/bar/bar-riffs.json",
+  "slug": "bar-riffs",
+  "level": 3,
+  "lesson": "Building new drinks",
+  "section": "Split the base",
+  "has": false,
+  "idea": "Two spirits can share the core."
+ },
+ {
+  "file": "content/bar/bar-riffs.json",
+  "slug": "bar-riffs",
+  "level": 3,
+  "lesson": "Building new drinks",
+  "section": "Swap the sweetener",
+  "has": false,
+  "idea": "The sweet part can carry flavor."
+ },
+ {
+  "file": "content/bar/bar-riffs.json",
+  "slug": "bar-riffs",
+  "level": 3,
+  "lesson": "Building new drinks",
+  "section": "Write the spec",
+  "has": false,
+  "idea": "A drink isn’t real until anyone can build it."
+ },
+ {
+  "file": "content/bar/bar-rum.json",
+  "slug": "bar-rum",
+  "level": 2,
+  "lesson": "Rum and cane spirits",
+  "section": "What rum is",
+  "has": false,
+  "idea": "Rum comes from sugarcane."
+ },
+ {
+  "file": "content/bar/bar-rum.json",
+  "slug": "bar-rum",
+  "level": 2,
+  "lesson": "Rum and cane spirits",
+  "section": "Cane juice: agricole and cachaça",
+  "has": false,
+  "idea": "Fresh cane juice tastes grassy and bright."
+ },
+ {
+  "file": "content/bar/bar-rum.json",
+  "slug": "bar-rum",
+  "level": 2,
+  "lesson": "Rum and cane spirits",
+  "section": "Styles on the back bar",
+  "has": false,
+  "idea": "White, gold, dark and spiced."
+ },
+ {
+  "file": "content/bar/bar-rum.json",
+  "slug": "bar-rum",
+  "level": 2,
+  "lesson": "Rum and cane spirits",
+  "section": "Rum at the bar",
+  "has": false,
+  "idea": "Daiquiris, Mojitos and tiki."
+ },
+ {
+  "file": "content/bar/bar-serving.json",
+  "slug": "bar-serving",
+  "level": 1,
+  "lesson": "Serving and how guests order",
+  "section": "Neat, up and on the rocks",
+  "has": false,
+  "idea": "Three words tell you how a spirit is served."
+ },
+ {
+  "file": "content/bar/bar-serving.json",
+  "slug": "bar-serving",
+  "level": 1,
+  "lesson": "Serving and how guests order",
+  "section": "Well, call and premium",
+  "has": false,
+  "idea": "Naming a brand changes the drink and the price."
+ },
+ {
+  "file": "content/bar/bar-serving.json",
+  "slug": "bar-serving",
+  "level": 1,
+  "lesson": "Serving and how guests order",
+  "section": "Dry, dirty and with a twist",
+  "has": false,
+  "idea": "Martini orders have their own words."
+ },
+ {
+  "file": "content/bar/bar-serving.json",
+  "slug": "bar-serving",
+  "level": 1,
+  "lesson": "Serving and how guests order",
+  "section": "Taking the order",
+  "has": false,
+  "idea": "A clear order is the first step of a good drink."
+ },
+ {
+  "file": "content/bar/bar-spirits-at-a-glance.json",
+  "slug": "bar-spirits-at-a-glance",
+  "level": 1,
+  "lesson": "Spirits at a glance",
+  "section": "Clear spirits",
+  "has": false,
+  "idea": "Clear usually means unaged."
+ },
+ {
+  "file": "content/bar/bar-spirits-at-a-glance.json",
+  "slug": "bar-spirits-at-a-glance",
+  "level": 1,
+  "lesson": "Spirits at a glance",
+  "section": "Whiskey",
+  "has": false,
+  "idea": "All whiskey is grain and wood. The grain and the place change the taste."
+ },
+ {
+  "file": "content/bar/bar-spirits-at-a-glance.json",
+  "slug": "bar-spirits-at-a-glance",
+  "level": 1,
+  "lesson": "Spirits at a glance",
+  "section": "Agave and cane",
+  "has": false,
+  "idea": "Agave makes tequila and mezcal. Sugarcane makes rum."
+ },
+ {
+  "file": "content/bar/bar-spirits-at-a-glance.json",
+  "slug": "bar-spirits-at-a-glance",
+  "level": 1,
+  "lesson": "Spirits at a glance",
+  "section": "Brandy, liqueurs and vermouth",
+  "has": false,
+  "idea": "The bottles that finish a drink."
+ },
+ {
+  "file": "content/bar/bar-syrups.json",
+  "slug": "bar-syrups",
+  "level": 3,
+  "lesson": "Syrups, infusions and oleo",
+  "section": "Simple and rich",
+  "has": false,
+  "idea": "Same syrup, every batch."
+ },
+ {
+  "file": "content/bar/bar-syrups.json",
+  "slug": "bar-syrups",
+  "level": 3,
+  "lesson": "Syrups, infusions and oleo",
+  "section": "Flavored syrups",
+  "has": false,
+  "idea": "A syrup can carry flavor."
+ },
+ {
+  "file": "content/bar/bar-syrups.json",
+  "slug": "bar-syrups",
+  "level": 3,
+  "lesson": "Syrups, infusions and oleo",
+  "section": "Oleo saccharum",
+  "has": false,
+  "idea": "Sugar pulls the oil out of citrus peel."
+ },
+ {
+  "file": "content/bar/bar-syrups.json",
+  "slug": "bar-syrups",
+  "level": 3,
+  "lesson": "Syrups, infusions and oleo",
+  "section": "Infusions and fat-washing",
+  "has": false,
+  "idea": "Steep a flavor into the spirit."
+ },
+ {
+  "file": "content/bar/bar-vodka-gin.json",
+  "slug": "bar-vodka-gin",
+  "level": 2,
+  "lesson": "Vodka and gin",
+  "section": "Vodka",
+  "has": false,
+  "idea": "Vodka is meant to be clean and neutral."
+ },
+ {
+  "file": "content/bar/bar-vodka-gin.json",
+  "slug": "bar-vodka-gin",
+  "level": 2,
+  "lesson": "Vodka and gin",
+  "section": "What makes gin gin",
+  "has": false,
+  "idea": "Juniper first, then the botanicals."
+ },
+ {
+  "file": "content/bar/bar-vodka-gin.json",
+  "slug": "bar-vodka-gin",
+  "level": 2,
+  "lesson": "Vodka and gin",
+  "section": "Gin styles",
+  "has": false,
+  "idea": "Five styles of gin, from dry to malty."
+ },
+ {
+  "file": "content/bar/bar-vodka-gin.json",
+  "slug": "bar-vodka-gin",
+  "level": 2,
+  "lesson": "Vodka and gin",
+  "section": "Gin at the bar",
+  "has": false,
+  "idea": "Most of the classics start with gin."
+ },
+ {
+  "file": "content/bar/bar-world-whisky.json",
+  "slug": "bar-world-whisky",
+  "level": 2,
+  "lesson": "Scotch, Irish, Japanese and Canadian",
+  "section": "Scotch: the rules",
+  "has": false,
+  "idea": "Made and aged in Scotland, three years minimum."
+ },
+ {
+  "file": "content/bar/bar-world-whisky.json",
+  "slug": "bar-world-whisky",
+  "level": 2,
+  "lesson": "Scotch, Irish, Japanese and Canadian",
+  "section": "The five kinds of Scotch",
+  "has": false,
+  "idea": "Single or blended, malt or grain."
+ },
+ {
+  "file": "content/bar/bar-world-whisky.json",
+  "slug": "bar-world-whisky",
+  "level": 2,
+  "lesson": "Scotch, Irish, Japanese and Canadian",
+  "section": "Scotch regions",
+  "has": false,
+  "idea": "Five places the law protects by name."
+ },
+ {
+  "file": "content/bar/bar-world-whisky.json",
+  "slug": "bar-world-whisky",
+  "level": 2,
+  "lesson": "Scotch, Irish, Japanese and Canadian",
+  "section": "Irish whiskey",
+  "has": false,
+  "idea": "Made in Ireland, aged at least three years."
+ },
+ {
+  "file": "content/bar/bar-world-whisky.json",
+  "slug": "bar-world-whisky",
+  "level": 2,
+  "lesson": "Scotch, Irish, Japanese and Canadian",
+  "section": "Japanese whisky",
+  "has": false,
+  "idea": "Since 2021, a standard says what “Japanese” means."
+ },
+ {
+  "file": "content/bar/bar-world-whisky.json",
+  "slug": "bar-world-whisky",
+  "level": 2,
+  "lesson": "Scotch, Irish, Japanese and Canadian",
+  "section": "Canadian whisky",
+  "has": false,
+  "idea": "Three years in Canada, often called “rye.”"
+ }
+]

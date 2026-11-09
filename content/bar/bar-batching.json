@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Scale the spec",
-    "video": null,
+    "video": {
+     "youtubeId": "3fpIPcq58tk",
+     "title": "How to Batch (Almost) Any Cocktail | Serious Eats",
+     "by": "Serious Eats",
+     "length": "8:53"
+    },
     "keyPoints": [
      {
       "big": "× SERVINGS",
@@ -103,7 +108,12 @@
    },
    {
     "name": "Add the water",
-    "video": null,
+    "video": {
+     "youtubeId": "E53nH4zPtdw",
+     "title": "Make Amazing Cocktails Fast | Pre-Batched Old Fashioned",
+     "by": "Cocktail Time with Kevin Kos",
+     "length": "7:36"
+    },
     "keyPoints": [
      {
       "big": "20%",

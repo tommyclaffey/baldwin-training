@@ -145,7 +145,12 @@
    },
    {
     "name": "Dry, dirty and with a twist",
-    "video": null,
+    "video": {
+     "youtubeId": "MnCmEkmK_AI",
+     "title": "Ultimate Guide to Every Martini!",
+     "by": "The Educated Barfly",
+     "length": "14:04"
+    },
     "keyPoints": [
      {
       "big": "DRY",
@@ -182,7 +187,12 @@
    },
    {
     "name": "Taking the order",
-    "video": null,
+    "video": {
+     "youtubeId": "BkPK2mnwEOU",
+     "title": "How to Take a Drink Order - Restaurant Server Training",
+     "by": "6 Figure Server",
+     "length": "3:43"
+    },
     "keyPoints": [
      {
       "big": "SPIRIT",

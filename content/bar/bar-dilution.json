@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Water is an ingredient",
-    "video": null,
+    "video": {
+     "youtubeId": "sjC8XjgT7MQ",
+     "title": "10 Chilling Factors to Cocktail Dilution | Course 2 - Lesson 09",
+     "by": "Common Man Cocktails",
+     "length": "11:39"
+    },
     "keyPoints": [
      {
       "big": "25%+",
@@ -103,7 +108,12 @@
    },
    {
     "name": "Shaken or stirred",
-    "video": null,
+    "video": {
+     "youtubeId": "BCzLkSkG0Fs",
+     "title": "Getting Started - Shaking vs Stirring",
+     "by": "Cocktail Chemistry",
+     "length": "4:15"
+    },
     "keyPoints": [
      {
       "big": "SHAKEN",
@@ -132,7 +142,12 @@
    },
    {
     "name": "Ice",
-    "video": null,
+    "video": {
+     "youtubeId": "vE5bOWf-vCw",
+     "title": "The Ultimate Guide to Cocktail Ice: Tricks, Tips, and Experiments",
+     "by": "Cocktail Time with Kevin Kos",
+     "length": "10:31"
+    },
     "keyPoints": [
      {
       "big": "FRESH",

@@ -1,0 +1,983 @@
+[
+ {
+  "file": "content/beer/beer-ales.json",
+  "slug": "beer-ales",
+  "level": 1,
+  "lesson": "Ale styles",
+  "section": "Pale ale and IPA",
+  "has": false,
+  "idea": "American ales that lead with hops."
+ },
+ {
+  "file": "content/beer/beer-ales.json",
+  "slug": "beer-ales",
+  "level": 1,
+  "lesson": "Ale styles",
+  "section": "Hazy IPA",
+  "has": false,
+  "idea": "An IPA that’s juicy, not bitter."
+ },
+ {
+  "file": "content/beer/beer-ales.json",
+  "slug": "beer-ales",
+  "level": 1,
+  "lesson": "Ale styles",
+  "section": "Wheat beers",
+  "has": false,
+  "idea": "Hazy, fizzy, easy to like."
+ },
+ {
+  "file": "content/beer/beer-ales.json",
+  "slug": "beer-ales",
+  "level": 1,
+  "lesson": "Ale styles",
+  "section": "Belgian ales",
+  "has": false,
+  "idea": "The yeast is the star."
+ },
+ {
+  "file": "content/beer/beer-ales.json",
+  "slug": "beer-ales",
+  "level": 1,
+  "lesson": "Ale styles",
+  "section": "Stout and porter",
+  "has": false,
+  "idea": "Dark beers aren’t heavy beers."
+ },
+ {
+  "file": "content/beer/beer-ales.json",
+  "slug": "beer-ales",
+  "level": 1,
+  "lesson": "Ale styles",
+  "section": "Sours",
+  "has": false,
+  "idea": "Sour on purpose."
+ },
+ {
+  "file": "content/beer/beer-american.json",
+  "slug": "beer-american",
+  "level": 2,
+  "lesson": "American craft styles",
+  "section": "Easy ales",
+  "has": false,
+  "idea": "Ales for lager drinkers."
+ },
+ {
+  "file": "content/beer/beer-american.json",
+  "slug": "beer-american",
+  "level": 2,
+  "lesson": "American craft styles",
+  "section": "IPAs: West Coast, hazy, double",
+  "has": false,
+  "idea": "Three kinds of hoppy."
+ },
+ {
+  "file": "content/beer/beer-american.json",
+  "slug": "beer-american",
+  "level": 2,
+  "lesson": "American craft styles",
+  "section": "Stouts and barleywine",
+  "has": false,
+  "idea": "Big, dark and strong."
+ },
+ {
+  "file": "content/beer/beer-american.json",
+  "slug": "beer-american",
+  "level": 2,
+  "lesson": "American craft styles",
+  "section": "Barrels, fruit and spice",
+  "has": false,
+  "idea": "Beer plus one more thing."
+ },
+ {
+  "file": "content/beer/beer-belgian.json",
+  "slug": "beer-belgian",
+  "level": 2,
+  "lesson": "Belgian and wild ales",
+  "section": "Blond, golden and dark strong",
+  "has": false,
+  "idea": "Belgian strength hides well."
+ },
+ {
+  "file": "content/beer/beer-belgian.json",
+  "slug": "beer-belgian",
+  "level": 2,
+  "lesson": "Belgian and wild ales",
+  "section": "Trappist and abbey",
+  "has": false,
+  "idea": "“Trappist” is a label you earn."
+ },
+ {
+  "file": "content/beer/beer-belgian.json",
+  "slug": "beer-belgian",
+  "level": 2,
+  "lesson": "Belgian and wild ales",
+  "section": "Lambic, gueuze and fruit",
+  "has": false,
+  "idea": "Beer fermented by the air of Brussels."
+ },
+ {
+  "file": "content/beer/beer-belgian.json",
+  "slug": "beer-belgian",
+  "level": 2,
+  "lesson": "Belgian and wild ales",
+  "section": "Flanders ales and Brett",
+  "has": false,
+  "idea": "Sour from oak and time."
+ },
+ {
+  "file": "content/beer/beer-brewing.json",
+  "slug": "beer-brewing",
+  "level": 1,
+  "lesson": "How beer is made",
+  "section": "Four ingredients",
+  "has": false,
+  "idea": "Almost every beer is four things."
+ },
+ {
+  "file": "content/beer/beer-brewing.json",
+  "slug": "beer-brewing",
+  "level": 1,
+  "lesson": "How beer is made",
+  "section": "Malt",
+  "has": false,
+  "idea": "The malt’s color is the beer’s flavor."
+ },
+ {
+  "file": "content/beer/beer-brewing.json",
+  "slug": "beer-brewing",
+  "level": 1,
+  "lesson": "How beer is made",
+  "section": "Brew day",
+  "has": false,
+  "idea": "Sugar first, then hops, then yeast."
+ },
+ {
+  "file": "content/beer/beer-brewing.json",
+  "slug": "beer-brewing",
+  "level": 1,
+  "lesson": "How beer is made",
+  "section": "Ale or lager",
+  "has": false,
+  "idea": "Ale and lager are two families of yeast."
+ },
+ {
+  "file": "content/beer/beer-brewing.json",
+  "slug": "beer-brewing",
+  "level": 1,
+  "lesson": "How beer is made",
+  "section": "Corn, rice, gluten-free and NA",
+  "has": false,
+  "idea": "Read the label words right."
+ },
+ {
+  "file": "content/beer/beer-british.json",
+  "slug": "beer-british",
+  "level": 2,
+  "lesson": "British and Irish ales",
+  "section": "Bitters",
+  "has": false,
+  "idea": "England’s pub ale, in three strengths."
+ },
+ {
+  "file": "content/beer/beer-british.json",
+  "slug": "beer-british",
+  "level": 2,
+  "lesson": "British and Irish ales",
+  "section": "English IPA, mild and brown",
+  "has": false,
+  "idea": "The original IPA and the malty side of England."
+ },
+ {
+  "file": "content/beer/beer-british.json",
+  "slug": "beer-british",
+  "level": 2,
+  "lesson": "British and Irish ales",
+  "section": "Scotland, Ireland and barley wine",
+  "has": false,
+  "idea": "The malty end of the British Isles."
+ },
+ {
+  "file": "content/beer/beer-british.json",
+  "slug": "beer-british",
+  "level": 2,
+  "lesson": "British and Irish ales",
+  "section": "Cask ale",
+  "has": false,
+  "idea": "A living beer, served by hand."
+ },
+ {
+  "file": "content/beer/beer-costing.json",
+  "slug": "beer-costing",
+  "level": 3,
+  "lesson": "Costing beer",
+  "section": "Pour cost",
+  "has": false,
+  "idea": "Pour cost tells you if beer earns its place."
+ },
+ {
+  "file": "content/beer/beer-costing.json",
+  "slug": "beer-costing",
+  "level": 3,
+  "lesson": "Costing beer",
+  "section": "Pricing a draft",
+  "has": false,
+  "idea": "Work it out per keg."
+ },
+ {
+  "file": "content/beer/beer-costing.json",
+  "slug": "beer-costing",
+  "level": 3,
+  "lesson": "Costing beer",
+  "section": "Pricing bottles and cans",
+  "has": false,
+  "idea": "Same math, simpler."
+ },
+ {
+  "file": "content/beer/beer-costing.json",
+  "slug": "beer-costing",
+  "level": 3,
+  "lesson": "Costing beer",
+  "section": "Foam, spills and line cleaning",
+  "has": false,
+  "idea": "Every lost ounce raises the real cost."
+ },
+ {
+  "file": "content/beer/beer-costing.json",
+  "slug": "beer-costing",
+  "level": 3,
+  "lesson": "Costing beer",
+  "section": "Inventory and variance",
+  "has": false,
+  "idea": "Count it, compare it."
+ },
+ {
+  "file": "content/beer/beer-draft-balance.json",
+  "slug": "beer-draft-balance",
+  "level": 2,
+  "lesson": "Draft in depth",
+  "section": "Pressure, temperature, carbonation",
+  "has": false,
+  "idea": "The keg’s pressure has to match the beer."
+ },
+ {
+  "file": "content/beer/beer-draft-balance.json",
+  "slug": "beer-draft-balance",
+  "level": 2,
+  "lesson": "Draft in depth",
+  "section": "A balanced system",
+  "has": false,
+  "idea": "Resistance slows the beer down to the right speed."
+ },
+ {
+  "file": "content/beer/beer-draft-balance.json",
+  "slug": "beer-draft-balance",
+  "level": 2,
+  "lesson": "Draft in depth",
+  "section": "Gas blends and nitro",
+  "has": false,
+  "idea": "Nitrogen lets you push hard without adding fizz."
+ },
+ {
+  "file": "content/beer/beer-draft-balance.json",
+  "slug": "beer-draft-balance",
+  "level": 2,
+  "lesson": "Draft in depth",
+  "section": "Fixing a foamy pour",
+  "has": false,
+  "idea": "Foam has a short list of causes."
+ },
+ {
+  "file": "content/beer/beer-draft.json",
+  "slug": "beer-draft",
+  "level": 1,
+  "lesson": "Draft systems",
+  "section": "Keg to faucet",
+  "has": false,
+  "idea": "Gas pressure moves the beer."
+ },
+ {
+  "file": "content/beer/beer-draft.json",
+  "slug": "beer-draft",
+  "level": 1,
+  "lesson": "Draft systems",
+  "section": "Cold, every step",
+  "has": false,
+  "idea": "Warm beer foams."
+ },
+ {
+  "file": "content/beer/beer-draft.json",
+  "slug": "beer-draft",
+  "level": 1,
+  "lesson": "Draft systems",
+  "section": "Clean lines",
+  "has": false,
+  "idea": "Clean lines or the beer goes bad."
+ },
+ {
+  "file": "content/beer/beer-draft.json",
+  "slug": "beer-draft",
+  "level": 1,
+  "lesson": "Draft systems",
+  "section": "What you do, and don’t touch",
+  "has": false,
+  "idea": "Know your part of the system."
+ },
+ {
+  "file": "content/beer/beer-events.json",
+  "slug": "beer-events",
+  "level": 3,
+  "lesson": "Events, and the Advanced Cicerone",
+  "section": "Tap takeovers",
+  "has": false,
+  "idea": "Keep the first one simple."
+ },
+ {
+  "file": "content/beer/beer-events.json",
+  "slug": "beer-events",
+  "level": 3,
+  "lesson": "Events, and the Advanced Cicerone",
+  "section": "Samples and flights",
+  "has": false,
+  "idea": "Know the rules for free tastes."
+ },
+ {
+  "file": "content/beer/beer-events.json",
+  "slug": "beer-events",
+  "level": 3,
+  "lesson": "Events, and the Advanced Cicerone",
+  "section": "Dinners, verticals and cask nights",
+  "has": false,
+  "idea": "Plan it like a menu."
+ },
+ {
+  "file": "content/beer/beer-events.json",
+  "slug": "beer-events",
+  "level": 3,
+  "lesson": "Events, and the Advanced Cicerone",
+  "section": "The Advanced Cicerone",
+  "has": false,
+  "idea": "The level above Certified."
+ },
+ {
+  "file": "content/beer/beer-flavor.json",
+  "slug": "beer-flavor",
+  "level": 1,
+  "lesson": "Tasting and off-flavors",
+  "section": "How to taste",
+  "has": false,
+  "idea": "Taste in the same order every time."
+ },
+ {
+  "file": "content/beer/beer-flavor.json",
+  "slug": "beer-flavor",
+  "level": 1,
+  "lesson": "Tasting and off-flavors",
+  "section": "Hops by where they grow",
+  "has": false,
+  "idea": "The hop’s home shows in the glass."
+ },
+ {
+  "file": "content/beer/beer-flavor.json",
+  "slug": "beer-flavor",
+  "level": 1,
+  "lesson": "Tasting and off-flavors",
+  "section": "Light and age",
+  "has": false,
+  "idea": "Two faults that come from how beer is kept."
+ },
+ {
+  "file": "content/beer/beer-flavor.json",
+  "slug": "beer-flavor",
+  "level": 1,
+  "lesson": "Tasting and off-flavors",
+  "section": "Butter and sour",
+  "has": false,
+  "idea": "Off flavors on draft usually mean the lines."
+ },
+ {
+  "file": "content/beer/beer-flavor.json",
+  "slug": "beer-flavor",
+  "level": 1,
+  "lesson": "Tasting and off-flavors",
+  "section": "Two more to know",
+  "has": false,
+  "idea": "Two you’ll hear about."
+ },
+ {
+  "file": "content/beer/beer-german.json",
+  "slug": "beer-german",
+  "level": 2,
+  "lesson": "German and Czech, beyond pilsner",
+  "section": "Kölsch and Altbier",
+  "has": false,
+  "idea": "Two ales brewed like lagers."
+ },
+ {
+  "file": "content/beer/beer-german.json",
+  "slug": "beer-german",
+  "level": 2,
+  "lesson": "German and Czech, beyond pilsner",
+  "section": "The wheat family",
+  "has": false,
+  "idea": "Hefeweizen, darker and stronger."
+ },
+ {
+  "file": "content/beer/beer-german.json",
+  "slug": "beer-german",
+  "level": 2,
+  "lesson": "German and Czech, beyond pilsner",
+  "section": "Doppelbock and Eisbock",
+  "has": false,
+  "idea": "The strongest German lagers."
+ },
+ {
+  "file": "content/beer/beer-german.json",
+  "slug": "beer-german",
+  "level": 2,
+  "lesson": "German and Czech, beyond pilsner",
+  "section": "Smoke, Vienna and Czech lagers",
+  "has": false,
+  "idea": "Three lagers with a story."
+ },
+ {
+  "file": "content/beer/beer-german.json",
+  "slug": "beer-german",
+  "level": 2,
+  "lesson": "German and Czech, beyond pilsner",
+  "section": "The Reinheitsgebot",
+  "has": false,
+  "idea": "The most famous beer law."
+ },
+ {
+  "file": "content/beer/beer-glass-pour.json",
+  "slug": "beer-glass-pour",
+  "level": 1,
+  "lesson": "The glass and the pour",
+  "section": "Beer-clean",
+  "has": false,
+  "idea": "A dirty glass kills the head."
+ },
+ {
+  "file": "content/beer/beer-glass-pour.json",
+  "slug": "beer-glass-pour",
+  "level": 1,
+  "lesson": "The glass and the pour",
+  "section": "Wash, rinse, dry",
+  "has": false,
+  "idea": "Clean, rinse cold, air dry."
+ },
+ {
+  "file": "content/beer/beer-glass-pour.json",
+  "slug": "beer-glass-pour",
+  "level": 1,
+  "lesson": "The glass and the pour",
+  "section": "The draft pour",
+  "has": false,
+  "idea": "Every draft gets a head."
+ },
+ {
+  "file": "content/beer/beer-glass-pour.json",
+  "slug": "beer-glass-pour",
+  "level": 1,
+  "lesson": "The glass and the pour",
+  "section": "Bottles, nitro and temperature",
+  "has": false,
+  "idea": "Know how each beer wants to be served."
+ },
+ {
+  "file": "content/beer/beer-glassware-cellar.json",
+  "slug": "beer-glassware-cellar",
+  "level": 2,
+  "lesson": "Glassware and cellaring",
+  "section": "Why the glass matters",
+  "has": false,
+  "idea": "The glass is part of the beer."
+ },
+ {
+  "file": "content/beer/beer-glassware-cellar.json",
+  "slug": "beer-glassware-cellar",
+  "level": 2,
+  "lesson": "Glassware and cellaring",
+  "section": "The glasses",
+  "has": false,
+  "idea": "Know the glass for each style."
+ },
+ {
+  "file": "content/beer/beer-glassware-cellar.json",
+  "slug": "beer-glassware-cellar",
+  "level": 2,
+  "lesson": "Glassware and cellaring",
+  "section": "What ages",
+  "has": false,
+  "idea": "Most beer won’t improve. A few will."
+ },
+ {
+  "file": "content/beer/beer-glassware-cellar.json",
+  "slug": "beer-glassware-cellar",
+  "level": 2,
+  "lesson": "Glassware and cellaring",
+  "section": "How to cellar",
+  "has": false,
+  "idea": "Cool, dark, upright."
+ },
+ {
+  "file": "content/beer/beer-history.json",
+  "slug": "beer-history",
+  "level": 3,
+  "lesson": "Beer history",
+  "section": "Porter and London",
+  "has": false,
+  "idea": "Porter was the first industrial beer."
+ },
+ {
+  "file": "content/beer/beer-history.json",
+  "slug": "beer-history",
+  "level": 3,
+  "lesson": "Beer history",
+  "section": "Burton and lager",
+  "has": false,
+  "idea": "Two revolutions: pale ale, then cold."
+ },
+ {
+  "file": "content/beer/beer-history.json",
+  "slug": "beer-history",
+  "level": 3,
+  "lesson": "Beer history",
+  "section": "America: lager to Prohibition",
+  "has": false,
+  "idea": "America’s beer rose, crashed and consolidated."
+ },
+ {
+  "file": "content/beer/beer-history.json",
+  "slug": "beer-history",
+  "level": 3,
+  "lesson": "Beer history",
+  "section": "Craft beer",
+  "has": false,
+  "idea": "Homebrewers built craft beer."
+ },
+ {
+  "file": "content/beer/beer-ingredients.json",
+  "slug": "beer-ingredients",
+  "level": 2,
+  "lesson": "Ingredients in depth",
+  "section": "Malt families",
+  "has": false,
+  "idea": "Four kinds of malt build every beer."
+ },
+ {
+  "file": "content/beer/beer-ingredients.json",
+  "slug": "beer-ingredients",
+  "level": 2,
+  "lesson": "Ingredients in depth",
+  "section": "Hops by region",
+  "has": false,
+  "idea": "A hop tastes of where it grows."
+ },
+ {
+  "file": "content/beer/beer-ingredients.json",
+  "slug": "beer-ingredients",
+  "level": 2,
+  "lesson": "Ingredients in depth",
+  "section": "Bitterness and IBU",
+  "has": false,
+  "idea": "IBU measures bitterness, not how bitter it tastes."
+ },
+ {
+  "file": "content/beer/beer-ingredients.json",
+  "slug": "beer-ingredients",
+  "level": 2,
+  "lesson": "Ingredients in depth",
+  "section": "Water",
+  "has": false,
+  "idea": "Water shaped the classic styles."
+ },
+ {
+  "file": "content/beer/beer-ingredients.json",
+  "slug": "beer-ingredients",
+  "level": 2,
+  "lesson": "Ingredients in depth",
+  "section": "Yeast, sugar and pasteurization",
+  "has": false,
+  "idea": "Small choices, big flavor."
+ },
+ {
+  "file": "content/beer/beer-keeping.json",
+  "slug": "beer-keeping",
+  "level": 1,
+  "lesson": "Keeping beer fresh",
+  "section": "Fresh is best",
+  "has": false,
+  "idea": "Beer doesn’t get better on the shelf."
+ },
+ {
+  "file": "content/beer/beer-keeping.json",
+  "slug": "beer-keeping",
+  "level": 1,
+  "lesson": "Keeping beer fresh",
+  "section": "Keep it cold",
+  "has": false,
+  "idea": "Cold beer stays fresh. Warm beer goes stale."
+ },
+ {
+  "file": "content/beer/beer-keeping.json",
+  "slug": "beer-keeping",
+  "level": 1,
+  "lesson": "Keeping beer fresh",
+  "section": "Light makes skunk",
+  "has": false,
+  "idea": "Keep beer out of the light."
+ },
+ {
+  "file": "content/beer/beer-keeping.json",
+  "slug": "beer-keeping",
+  "level": 1,
+  "lesson": "Keeping beer fresh",
+  "section": "Rotate and check",
+  "has": false,
+  "idea": "Sell the oldest first, and check every bottle."
+ },
+ {
+  "file": "content/beer/beer-kegs-cooler.json",
+  "slug": "beer-kegs-cooler",
+  "level": 3,
+  "lesson": "Kegs and the cooler",
+  "section": "Keg sizes",
+  "has": false,
+  "idea": "Every keg has a number of pours."
+ },
+ {
+  "file": "content/beer/beer-kegs-cooler.json",
+  "slug": "beer-kegs-cooler",
+  "level": 3,
+  "lesson": "Kegs and the cooler",
+  "section": "The walk-in",
+  "has": false,
+  "idea": "The cooler is the draft system’s heart."
+ },
+ {
+  "file": "content/beer/beer-kegs-cooler.json",
+  "slug": "beer-kegs-cooler",
+  "level": 3,
+  "lesson": "Kegs and the cooler",
+  "section": "Handling and CO2 safety",
+  "has": false,
+  "idea": "Kegs are heavy; CO2 is dangerous."
+ },
+ {
+  "file": "content/beer/beer-kegs-cooler.json",
+  "slug": "beer-kegs-cooler",
+  "level": 3,
+  "lesson": "Kegs and the cooler",
+  "section": "Receiving and freshness",
+  "has": false,
+  "idea": "Freshness starts at the back door."
+ },
+ {
+  "file": "content/beer/beer-lagers.json",
+  "slug": "beer-lagers",
+  "level": 1,
+  "lesson": "Lager styles",
+  "section": "Pilsner",
+  "has": false,
+  "idea": "The original golden lager."
+ },
+ {
+  "file": "content/beer/beer-lagers.json",
+  "slug": "beer-lagers",
+  "level": 1,
+  "lesson": "Lager styles",
+  "section": "American lager and light lager",
+  "has": false,
+  "idea": "Built to be light and cold."
+ },
+ {
+  "file": "content/beer/beer-lagers.json",
+  "slug": "beer-lagers",
+  "level": 1,
+  "lesson": "Lager styles",
+  "section": "Helles, Märzen and Oktoberfest",
+  "has": false,
+  "idea": "German lagers that lead with malt."
+ },
+ {
+  "file": "content/beer/beer-lagers.json",
+  "slug": "beer-lagers",
+  "level": 1,
+  "lesson": "Lager styles",
+  "section": "Bock and dark lagers",
+  "has": false,
+  "idea": "Dark lagers are smooth, not heavy."
+ },
+ {
+  "file": "content/beer/beer-line-cleaning.json",
+  "slug": "beer-line-cleaning",
+  "level": 3,
+  "lesson": "Cleaning the lines",
+  "section": "Every 14 days, no matter what",
+  "has": false,
+  "idea": "The schedule doesn’t depend on sales."
+ },
+ {
+  "file": "content/beer/beer-line-cleaning.json",
+  "slug": "beer-line-cleaning",
+  "level": 3,
+  "lesson": "Cleaning the lines",
+  "section": "The caustic clean",
+  "has": false,
+  "idea": "Strength, heat, time."
+ },
+ {
+  "file": "content/beer/beer-line-cleaning.json",
+  "slug": "beer-line-cleaning",
+  "level": 3,
+  "lesson": "Cleaning the lines",
+  "section": "Pump, rinse, acid",
+  "has": false,
+  "idea": "Move it, rinse it, then descale."
+ },
+ {
+  "file": "content/beer/beer-line-cleaning.json",
+  "slug": "beer-line-cleaning",
+  "level": 3,
+  "lesson": "Cleaning the lines",
+  "section": "Faucets, couplers and old lines",
+  "has": false,
+  "idea": "Chemical in the line doesn’t clean everything."
+ },
+ {
+  "file": "content/beer/beer-line-cleaning.json",
+  "slug": "beer-line-cleaning",
+  "level": 3,
+  "lesson": "Cleaning the lines",
+  "section": "Safety and the log",
+  "has": false,
+  "idea": "Caustic burns. Treat it that way."
+ },
+ {
+  "file": "content/beer/beer-list.json",
+  "slug": "beer-list",
+  "level": 3,
+  "lesson": "Building the beer list",
+  "section": "Organize by flavor",
+  "has": false,
+  "idea": "A list is a menu of flavors."
+ },
+ {
+  "file": "content/beer/beer-list.json",
+  "slug": "beer-list",
+  "level": 3,
+  "lesson": "Building the beer list",
+  "section": "ABV, pour size and NA",
+  "has": false,
+  "idea": "Show the strength honestly."
+ },
+ {
+  "file": "content/beer/beer-list.json",
+  "slug": "beer-list",
+  "level": 3,
+  "lesson": "Building the beer list",
+  "section": "Glass, rotation, freshness",
+  "has": false,
+  "idea": "A list is only as good as its freshest beer."
+ },
+ {
+  "file": "content/beer/beer-list.json",
+  "slug": "beer-list",
+  "level": 3,
+  "lesson": "Building the beer list",
+  "section": "Off beer and the cellar list",
+  "has": false,
+  "idea": "Protect the list."
+ },
+ {
+  "file": "content/beer/beer-michigan.json",
+  "slug": "beer-michigan",
+  "level": 3,
+  "lesson": "Michigan beer",
+  "section": "Michigan by the numbers",
+  "has": false,
+  "idea": "Michigan is a big beer state."
+ },
+ {
+  "file": "content/beer/beer-michigan.json",
+  "slug": "beer-michigan",
+  "level": 3,
+  "lesson": "Michigan beer",
+  "section": "The Michigan Brewers Guild",
+  "has": false,
+  "idea": "The brewers organized."
+ },
+ {
+  "file": "content/beer/beer-michigan.json",
+  "slug": "beer-michigan",
+  "level": 3,
+  "lesson": "Michigan beer",
+  "section": "Bell’s",
+  "has": false,
+  "idea": "Michigan’s best-known brewery."
+ },
+ {
+  "file": "content/beer/beer-michigan.json",
+  "slug": "beer-michigan",
+  "level": 3,
+  "lesson": "Michigan beer",
+  "section": "Founders and Stroh’s",
+  "has": false,
+  "idea": "Grand Rapids today, Detroit yesterday."
+ },
+ {
+  "file": "content/beer/beer-off-flavors.json",
+  "slug": "beer-off-flavors",
+  "level": 2,
+  "lesson": "Off-flavors in depth",
+  "section": "The five on the exam",
+  "has": false,
+  "idea": "Five flaws every beer pro should spot."
+ },
+ {
+  "file": "content/beer/beer-off-flavors.json",
+  "slug": "beer-off-flavors",
+  "level": 2,
+  "lesson": "Off-flavors in depth",
+  "section": "Fermentation flavors",
+  "has": false,
+  "idea": "Context decides."
+ },
+ {
+  "file": "content/beer/beer-off-flavors.json",
+  "slug": "beer-off-flavors",
+  "level": 2,
+  "lesson": "Off-flavors in depth",
+  "section": "Contamination",
+  "has": false,
+  "idea": "Flavors that shouldn’t be there."
+ },
+ {
+  "file": "content/beer/beer-off-flavors.json",
+  "slug": "beer-off-flavors",
+  "level": 2,
+  "lesson": "Off-flavors in depth",
+  "section": "Age, hops and texture",
+  "has": false,
+  "idea": "How age and old hops show."
+ },
+ {
+  "file": "content/beer/beer-pairing-pro.json",
+  "slug": "beer-pairing-pro",
+  "level": 2,
+  "lesson": "Pairing in depth, and the next exam",
+  "section": "How flavors meet",
+  "has": false,
+  "idea": "Three ways beer and food work."
+ },
+ {
+  "file": "content/beer/beer-pairing-pro.json",
+  "slug": "beer-pairing-pro",
+  "level": 2,
+  "lesson": "Pairing in depth, and the next exam",
+  "section": "Beer and cheese",
+  "has": false,
+  "idea": "Match the cheese’s strength with the beer’s."
+ },
+ {
+  "file": "content/beer/beer-pairing-pro.json",
+  "slug": "beer-pairing-pro",
+  "level": 2,
+  "lesson": "Pairing in depth, and the next exam",
+  "section": "Cooking with beer and beer dinners",
+  "has": false,
+  "idea": "Heat changes beer."
+ },
+ {
+  "file": "content/beer/beer-pairing-pro.json",
+  "slug": "beer-pairing-pro",
+  "level": 2,
+  "lesson": "Pairing in depth, and the next exam",
+  "section": "Describing beer",
+  "has": false,
+  "idea": "Guests understand flavors, not styles."
+ },
+ {
+  "file": "content/beer/beer-pairing-pro.json",
+  "slug": "beer-pairing-pro",
+  "level": 2,
+  "lesson": "Pairing in depth, and the next exam",
+  "section": "The Certified Cicerone exam",
+  "has": false,
+  "idea": "The next step, if you want it."
+ },
+ {
+  "file": "content/beer/beer-pairing.json",
+  "slug": "beer-pairing",
+  "level": 1,
+  "lesson": "Beer with food, and the exam",
+  "section": "Match the strength",
+  "has": false,
+  "idea": "Neither one should drown the other."
+ },
+ {
+  "file": "content/beer/beer-pairing.json",
+  "slug": "beer-pairing",
+  "level": 1,
+  "lesson": "Beer with food, and the exam",
+  "section": "Complement, contrast, cut",
+  "has": false,
+  "idea": "Three ways a beer works with food."
+ },
+ {
+  "file": "content/beer/beer-pairing.json",
+  "slug": "beer-pairing",
+  "level": 1,
+  "lesson": "Beer with food, and the exam",
+  "section": "Classic matches",
+  "has": false,
+  "idea": "A few pairings to have ready."
+ },
+ {
+  "file": "content/beer/beer-pairing.json",
+  "slug": "beer-pairing",
+  "level": 1,
+  "lesson": "Beer with food, and the exam",
+  "section": "The Certified Beer Server exam",
+  "has": false,
+  "idea": "This level follows Cicerone’s outline."
+ },
+ {
+  "file": "content/beer/beer-training.json",
+  "slug": "beer-training",
+  "level": 3,
+  "lesson": "Training the team",
+  "section": "Staff tastings",
+  "has": false,
+  "idea": "Tasting is training."
+ },
+ {
+  "file": "content/beer/beer-training.json",
+  "slug": "beer-training",
+  "level": 3,
+  "lesson": "Training the team",
+  "section": "How to taste together",
+  "has": false,
+  "idea": "Same steps, every beer."
+ },
+ {
+  "file": "content/beer/beer-training.json",
+  "slug": "beer-training",
+  "level": 3,
+  "lesson": "Training the team",
+  "section": "Teaching off-flavors",
+  "has": false,
+  "idea": "Taste a fault once and you’ll know it."
+ },
+ {
+  "file": "content/beer/beer-training.json",
+  "slug": "beer-training",
+  "level": 3,
+  "lesson": "Training the team",
+  "section": "The pre-shift draft check",
+  "has": false,
+  "idea": "Catch the problem before a guest does."
+ }
+]

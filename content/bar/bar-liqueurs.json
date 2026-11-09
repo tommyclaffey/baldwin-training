@@ -78,7 +78,12 @@
   "sections": [
    {
     "name": "Liqueurs",
-    "video": null,
+    "video": {
+     "youtubeId": "dntZiMM7Bvo",
+     "title": "Orange you glad I made this video on ORANGE LIQUEURS? Triple Sec vs Curaçao",
+     "by": "Anders Erickson",
+     "length": "11:36"
+    },
     "keyPoints": [
      {
       "big": "LIQUEUR",
@@ -124,7 +129,12 @@
    },
    {
     "name": "Amaro and aperitivo",
-    "video": null,
+    "video": {
+     "youtubeId": "FJkMSEvozmc",
+     "title": "Amari, the Bartender's Secret Weapon!",
+     "by": "Behind the Bar",
+     "length": "12:21"
+    },
     "keyPoints": [
      {
       "big": "AMARO",
@@ -170,7 +180,12 @@
    },
    {
     "name": "Vermouth",
-    "video": null,
+    "video": {
+     "youtubeId": "zDa4TEKjE9I",
+     "title": "I meet an Expert - Vermouth (& fortified/aromatised wines) explained!",
+     "by": "Behind the Bar",
+     "length": "14:34"
+    },
     "keyPoints": [
      {
       "big": "FORTIFIED",
@@ -202,7 +217,12 @@
    },
    {
     "name": "Bitters",
-    "video": null,
+    "video": {
+     "youtubeId": "qBkfbSMBU_I",
+     "title": "What are Cocktail Bitters?",
+     "by": "Steve the Bartender",
+     "length": "2:43"
+    },
     "keyPoints": [
      {
       "big": "A DASH",

@@ -1,0 +1,740 @@
+[
+ {
+  "file": "content/beer/beer-costing.json",
+  "slug": "beer-costing",
+  "level": 3,
+  "lesson": "Costing beer",
+  "section": "Pour cost",
+  "has": false,
+  "idea": "Pour cost tells you if beer earns its place."
+ },
+ {
+  "file": "content/beer/beer-costing.json",
+  "slug": "beer-costing",
+  "level": 3,
+  "lesson": "Costing beer",
+  "section": "Pricing a draft",
+  "has": false,
+  "idea": "Work it out per keg."
+ },
+ {
+  "file": "content/beer/beer-costing.json",
+  "slug": "beer-costing",
+  "level": 3,
+  "lesson": "Costing beer",
+  "section": "Pricing bottles and cans",
+  "has": false,
+  "idea": "Same math, simpler."
+ },
+ {
+  "file": "content/beer/beer-costing.json",
+  "slug": "beer-costing",
+  "level": 3,
+  "lesson": "Costing beer",
+  "section": "Foam, spills and line cleaning",
+  "has": false,
+  "idea": "Every lost ounce raises the real cost."
+ },
+ {
+  "file": "content/beer/beer-costing.json",
+  "slug": "beer-costing",
+  "level": 3,
+  "lesson": "Costing beer",
+  "section": "Inventory and variance",
+  "has": false,
+  "idea": "Count it, compare it."
+ },
+ {
+  "file": "content/beer/beer-events.json",
+  "slug": "beer-events",
+  "level": 3,
+  "lesson": "Events, and the Advanced Cicerone",
+  "section": "Tap takeovers",
+  "has": false,
+  "idea": "Keep the first one simple."
+ },
+ {
+  "file": "content/beer/beer-events.json",
+  "slug": "beer-events",
+  "level": 3,
+  "lesson": "Events, and the Advanced Cicerone",
+  "section": "Samples and flights",
+  "has": false,
+  "idea": "Know the rules for free tastes."
+ },
+ {
+  "file": "content/beer/beer-events.json",
+  "slug": "beer-events",
+  "level": 3,
+  "lesson": "Events, and the Advanced Cicerone",
+  "section": "Dinners, verticals and cask nights",
+  "has": false,
+  "idea": "Plan it like a menu."
+ },
+ {
+  "file": "content/beer/beer-events.json",
+  "slug": "beer-events",
+  "level": 3,
+  "lesson": "Events, and the Advanced Cicerone",
+  "section": "The Advanced Cicerone",
+  "has": false,
+  "idea": "The level above Certified."
+ },
+ {
+  "file": "content/beer/beer-history.json",
+  "slug": "beer-history",
+  "level": 3,
+  "lesson": "Beer history",
+  "section": "Porter and London",
+  "has": false,
+  "idea": "Porter was the first industrial beer."
+ },
+ {
+  "file": "content/beer/beer-history.json",
+  "slug": "beer-history",
+  "level": 3,
+  "lesson": "Beer history",
+  "section": "Burton and lager",
+  "has": false,
+  "idea": "Two revolutions: pale ale, then cold."
+ },
+ {
+  "file": "content/beer/beer-history.json",
+  "slug": "beer-history",
+  "level": 3,
+  "lesson": "Beer history",
+  "section": "America: lager to Prohibition",
+  "has": false,
+  "idea": "America’s beer rose, crashed and consolidated."
+ },
+ {
+  "file": "content/beer/beer-history.json",
+  "slug": "beer-history",
+  "level": 3,
+  "lesson": "Beer history",
+  "section": "Craft beer",
+  "has": false,
+  "idea": "Homebrewers built craft beer."
+ },
+ {
+  "file": "content/beer/beer-kegs-cooler.json",
+  "slug": "beer-kegs-cooler",
+  "level": 3,
+  "lesson": "Kegs and the cooler",
+  "section": "Keg sizes",
+  "has": false,
+  "idea": "Every keg has a number of pours."
+ },
+ {
+  "file": "content/beer/beer-kegs-cooler.json",
+  "slug": "beer-kegs-cooler",
+  "level": 3,
+  "lesson": "Kegs and the cooler",
+  "section": "The walk-in",
+  "has": false,
+  "idea": "The cooler is the draft system’s heart."
+ },
+ {
+  "file": "content/beer/beer-kegs-cooler.json",
+  "slug": "beer-kegs-cooler",
+  "level": 3,
+  "lesson": "Kegs and the cooler",
+  "section": "Handling and CO2 safety",
+  "has": false,
+  "idea": "Kegs are heavy; CO2 is dangerous."
+ },
+ {
+  "file": "content/beer/beer-kegs-cooler.json",
+  "slug": "beer-kegs-cooler",
+  "level": 3,
+  "lesson": "Kegs and the cooler",
+  "section": "Receiving and freshness",
+  "has": false,
+  "idea": "Freshness starts at the back door."
+ },
+ {
+  "file": "content/beer/beer-line-cleaning.json",
+  "slug": "beer-line-cleaning",
+  "level": 3,
+  "lesson": "Cleaning the lines",
+  "section": "Every 14 days, no matter what",
+  "has": false,
+  "idea": "The schedule doesn’t depend on sales."
+ },
+ {
+  "file": "content/beer/beer-line-cleaning.json",
+  "slug": "beer-line-cleaning",
+  "level": 3,
+  "lesson": "Cleaning the lines",
+  "section": "The caustic clean",
+  "has": false,
+  "idea": "Strength, heat, time."
+ },
+ {
+  "file": "content/beer/beer-line-cleaning.json",
+  "slug": "beer-line-cleaning",
+  "level": 3,
+  "lesson": "Cleaning the lines",
+  "section": "Pump, rinse, acid",
+  "has": false,
+  "idea": "Move it, rinse it, then descale."
+ },
+ {
+  "file": "content/beer/beer-line-cleaning.json",
+  "slug": "beer-line-cleaning",
+  "level": 3,
+  "lesson": "Cleaning the lines",
+  "section": "Faucets, couplers and old lines",
+  "has": false,
+  "idea": "Chemical in the line doesn’t clean everything."
+ },
+ {
+  "file": "content/beer/beer-line-cleaning.json",
+  "slug": "beer-line-cleaning",
+  "level": 3,
+  "lesson": "Cleaning the lines",
+  "section": "Safety and the log",
+  "has": false,
+  "idea": "Caustic burns. Treat it that way."
+ },
+ {
+  "file": "content/beer/beer-list.json",
+  "slug": "beer-list",
+  "level": 3,
+  "lesson": "Building the beer list",
+  "section": "Organize by flavor",
+  "has": false,
+  "idea": "A list is a menu of flavors."
+ },
+ {
+  "file": "content/beer/beer-list.json",
+  "slug": "beer-list",
+  "level": 3,
+  "lesson": "Building the beer list",
+  "section": "ABV, pour size and NA",
+  "has": false,
+  "idea": "Show the strength honestly."
+ },
+ {
+  "file": "content/beer/beer-list.json",
+  "slug": "beer-list",
+  "level": 3,
+  "lesson": "Building the beer list",
+  "section": "Glass, rotation, freshness",
+  "has": false,
+  "idea": "A list is only as good as its freshest beer."
+ },
+ {
+  "file": "content/beer/beer-list.json",
+  "slug": "beer-list",
+  "level": 3,
+  "lesson": "Building the beer list",
+  "section": "Off beer and the cellar list",
+  "has": false,
+  "idea": "Protect the list."
+ },
+ {
+  "file": "content/beer/beer-michigan.json",
+  "slug": "beer-michigan",
+  "level": 3,
+  "lesson": "Michigan beer",
+  "section": "Michigan by the numbers",
+  "has": false,
+  "idea": "Michigan is a big beer state."
+ },
+ {
+  "file": "content/beer/beer-michigan.json",
+  "slug": "beer-michigan",
+  "level": 3,
+  "lesson": "Michigan beer",
+  "section": "The Michigan Brewers Guild",
+  "has": false,
+  "idea": "The brewers organized."
+ },
+ {
+  "file": "content/beer/beer-michigan.json",
+  "slug": "beer-michigan",
+  "level": 3,
+  "lesson": "Michigan beer",
+  "section": "Bell’s",
+  "has": false,
+  "idea": "Michigan’s best-known brewery."
+ },
+ {
+  "file": "content/beer/beer-michigan.json",
+  "slug": "beer-michigan",
+  "level": 3,
+  "lesson": "Michigan beer",
+  "section": "Founders and Stroh’s",
+  "has": false,
+  "idea": "Grand Rapids today, Detroit yesterday."
+ },
+ {
+  "file": "content/beer/beer-training.json",
+  "slug": "beer-training",
+  "level": 3,
+  "lesson": "Training the team",
+  "section": "Staff tastings",
+  "has": false,
+  "idea": "Tasting is training."
+ },
+ {
+  "file": "content/beer/beer-training.json",
+  "slug": "beer-training",
+  "level": 3,
+  "lesson": "Training the team",
+  "section": "How to taste together",
+  "has": false,
+  "idea": "Same steps, every beer."
+ },
+ {
+  "file": "content/beer/beer-training.json",
+  "slug": "beer-training",
+  "level": 3,
+  "lesson": "Training the team",
+  "section": "Teaching off-flavors",
+  "has": false,
+  "idea": "Taste a fault once and you’ll know it."
+ },
+ {
+  "file": "content/beer/beer-training.json",
+  "slug": "beer-training",
+  "level": 3,
+  "lesson": "Training the team",
+  "section": "The pre-shift draft check",
+  "has": false,
+  "idea": "Catch the problem before a guest does."
+ },
+ {
+  "file": "content/manual/beer-sake-spirits.json",
+  "slug": "beer-sake-spirits",
+  "level": 1,
+  "lesson": "Beer, sake and spirits",
+  "section": "Distillation",
+  "has": false,
+  "idea": "Distilling makes a fermented drink stronger."
+ },
+ {
+  "file": "content/manual/beer-sake-spirits.json",
+  "slug": "beer-sake-spirits",
+  "level": 1,
+  "lesson": "Beer, sake and spirits",
+  "section": "Cognac and other brandy",
+  "has": false,
+  "idea": "Brandy is distilled from fruit."
+ },
+ {
+  "file": "content/manual/beer-sake-spirits.json",
+  "slug": "beer-sake-spirits",
+  "level": 1,
+  "lesson": "Beer, sake and spirits",
+  "section": "Tequila and mezcal",
+  "has": false,
+  "idea": "Tequila and mezcal are agave spirits from Mexico."
+ },
+ {
+  "file": "content/manual/beer-sake-spirits.json",
+  "slug": "beer-sake-spirits",
+  "level": 1,
+  "lesson": "Beer, sake and spirits",
+  "section": "Vodka, gin, rum and liqueurs",
+  "has": false,
+  "idea": "Know what each spirit is made from."
+ },
+ {
+  "file": "content/manual/germany-and-austria.json",
+  "slug": "germany-and-austria",
+  "level": 1,
+  "lesson": "Germany and Austria",
+  "section": "Dry or sweet? Label words",
+  "has": false,
+  "idea": "The sweetness word tells you how dry the wine is."
+ },
+ {
+  "file": "content/manual/germany-and-austria.json",
+  "slug": "germany-and-austria",
+  "level": 1,
+  "lesson": "Germany and Austria",
+  "section": "VDP and the vineyard pyramid",
+  "has": false,
+  "idea": "The VDP ranks vineyards, Burgundy style."
+ },
+ {
+  "file": "content/manual/how-wine-is-made.json",
+  "slug": "how-wine-is-made",
+  "level": 1,
+  "lesson": "How wine is made",
+  "section": "The vine",
+  "has": false,
+  "idea": "Most quality wine comes from one vine species."
+ },
+ {
+  "file": "content/manual/how-wine-is-made.json",
+  "slug": "how-wine-is-made",
+  "level": 1,
+  "lesson": "How wine is made",
+  "section": "The vineyard year",
+  "has": false,
+  "idea": "Every year, the vine runs through the same cycle."
+ },
+ {
+  "file": "content/manual/how-wine-is-made.json",
+  "slug": "how-wine-is-made",
+  "level": 1,
+  "lesson": "How wine is made",
+  "section": "The winemaker’s choices",
+  "has": false,
+  "idea": "Every wine starts with the winery’s plan."
+ },
+ {
+  "file": "content/manual/how-wine-is-made.json",
+  "slug": "how-wine-is-made",
+  "level": 1,
+  "lesson": "How wine is made",
+  "section": "Making white wine",
+  "has": false,
+  "idea": "White wine is juice fermented without the skins."
+ },
+ {
+  "file": "content/manual/how-wine-is-made.json",
+  "slug": "how-wine-is-made",
+  "level": 1,
+  "lesson": "How wine is made",
+  "section": "Bottling and packaging",
+  "has": false,
+  "idea": "Before it’s sold, wine is cleared, sealed and labeled."
+ },
+ {
+  "file": "content/manual/italy.json",
+  "slug": "italy",
+  "level": 1,
+  "lesson": "Italy",
+  "section": "Lombardy",
+  "has": false,
+  "idea": "In Lombardy, the wine to know is Franciacorta."
+ },
+ {
+  "file": "content/manual/italy.json",
+  "slug": "italy",
+  "level": 1,
+  "lesson": "Italy",
+  "section": "Marche",
+  "has": false,
+  "idea": "The Marche is Verdicchio country, on the Adriatic."
+ },
+ {
+  "file": "content/manual/italy.json",
+  "slug": "italy",
+  "level": 1,
+  "lesson": "Italy",
+  "section": "Campania",
+  "has": false,
+  "idea": "Campania: Aglianico red, Fiano and Greco whites."
+ },
+ {
+  "file": "content/manual/italy.json",
+  "slug": "italy",
+  "level": 1,
+  "lesson": "Italy",
+  "section": "Central and Southern Italy",
+  "has": false,
+  "idea": "Central and southern Italy: match the wine to its grape."
+ },
+ {
+  "file": "content/manual/north-america.json",
+  "slug": "north-america",
+  "level": 1,
+  "lesson": "North America",
+  "section": "Mexico",
+  "has": false,
+  "idea": "Mexico is the Americas’ oldest wine country."
+ },
+ {
+  "file": "content/manual/on-the-floor.json",
+  "slug": "on-the-floor",
+  "level": 1,
+  "lesson": "On the floor",
+  "section": "Mise en place",
+  "has": false,
+  "idea": "Get everything ready before the first guest."
+ },
+ {
+  "file": "content/manual/on-the-floor.json",
+  "slug": "on-the-floor",
+  "level": 1,
+  "lesson": "On the floor",
+  "section": "Glassware",
+  "has": false,
+  "idea": "Glasses go on the right, the same for everyone."
+ },
+ {
+  "file": "content/manual/on-the-floor.json",
+  "slug": "on-the-floor",
+  "level": 1,
+  "lesson": "On the floor",
+  "section": "Temperature and storage",
+  "has": false,
+  "idea": "Store it steady. Serve it at the right chill."
+ },
+ {
+  "file": "content/manual/southern-hemisphere.json",
+  "slug": "southern-hemisphere",
+  "level": 1,
+  "lesson": "The Southern Hemisphere",
+  "section": "Argentina · Salta and Patagonia",
+  "has": false,
+  "idea": "Go high or go south to find cool vines."
+ },
+ {
+  "file": "content/manual/southern-hemisphere.json",
+  "slug": "southern-hemisphere",
+  "level": 1,
+  "lesson": "The Southern Hemisphere",
+  "section": "Chile · Valle Central",
+  "has": false,
+  "idea": "Chile's warm middle makes most of its wine."
+ },
+ {
+  "file": "content/manual/southern-hemisphere.json",
+  "slug": "southern-hemisphere",
+  "level": 1,
+  "lesson": "The Southern Hemisphere",
+  "section": "South Africa · Cape Town to Walker Bay",
+  "has": false,
+  "idea": "Seven names, two regions, one Western Cape."
+ },
+ {
+  "file": "content/manual/spain-and-portugal.json",
+  "slug": "spain-and-portugal",
+  "level": 1,
+  "lesson": "Spain and Portugal",
+  "section": "Priorat",
+  "has": false,
+  "idea": "Priorat is Spain’s modern, powerful red."
+ },
+ {
+  "file": "content/manual/spain-and-portugal.json",
+  "slug": "spain-and-portugal",
+  "level": 1,
+  "lesson": "Spain and Portugal",
+  "section": "Vinho Verde",
+  "has": false,
+  "idea": "Vinho Verde is Portugal’s light, low-alcohol white."
+ },
+ {
+  "file": "content/manual/sparkling-fortified-sweet.json",
+  "slug": "sparkling-fortified-sweet",
+  "level": 1,
+  "lesson": "Sparkling, fortified and sweet",
+  "section": "How fortified wines are made",
+  "has": false,
+  "idea": "When the spirit goes in shapes each fortified wine."
+ },
+ {
+  "file": "content/manual/tasting.json",
+  "slug": "tasting",
+  "level": 1,
+  "lesson": "Tasting like a sommelier",
+  "section": "Wine information review",
+  "has": false,
+  "idea": "Tie what’s in the glass to what you’ve studied."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "France: AOC, AOP and IGP",
+  "has": false,
+  "idea": "In France, the place on the label is protected by law."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "Italy: DOCG, DOC and IGT",
+  "has": false,
+  "idea": "Italy’s protected wines come in two tiers: DOCG and DOC."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "Spain: DO, DOCa and Pago",
+  "has": false,
+  "idea": "Spain’s labels tell you where, and how long it aged."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "Austria and Portugal",
+  "has": false,
+  "idea": "Austria and Portugal have their own label words."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "United States: AVAs and percentages",
+  "has": false,
+  "idea": "US label rules come down to a few percentages."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "New World origin rules",
+  "has": false,
+  "idea": "New World labels mostly promise where, not how."
+ },
+ {
+  "file": "content/manual/wine-law-and-labels.json",
+  "slug": "wine-law-and-labels",
+  "level": 1,
+  "lesson": "Wine law and labels",
+  "section": "Reading a label",
+  "has": false,
+  "idea": "Every label answers who, where, what and when."
+ },
+ {
+  "file": "content/manual-l2/certified-at-the-table.json",
+  "slug": "certified-at-the-table",
+  "level": 2,
+  "lesson": "Still, sparkling and decanting at the exam",
+  "section": "The order and the glasses",
+  "has": false,
+  "idea": "Confirm the order, then set a tidy table."
+ },
+ {
+  "file": "content/manual-l2/certified-at-the-table.json",
+  "slug": "certified-at-the-table",
+  "level": 2,
+  "lesson": "Still, sparkling and decanting at the exam",
+  "section": "Pouring to exam standard",
+  "has": false,
+  "idea": "Taste for the host, then pour clockwise."
+ },
+ {
+  "file": "content/manual-l2/certified-at-the-table.json",
+  "slug": "certified-at-the-table",
+  "level": 2,
+  "lesson": "Still, sparkling and decanting at the exam",
+  "section": "After-dinner drinks",
+  "has": false,
+  "idea": "Measured pours, from a gueridon or tray."
+ },
+ {
+  "file": "content/manual-l2/certified-beyond-still-wine.json",
+  "slug": "certified-beyond-still-wine",
+  "level": 2,
+  "lesson": "Sparkling, sweet, fortified, beer, sake, spirits and cocktails",
+  "section": "Cocktails",
+  "has": false,
+  "idea": "Learn the cocktails by their base spirit."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "Bottles, cases and pours",
+  "has": false,
+  "idea": "Know the sizes, then divide."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "The words of the trade",
+  "has": false,
+  "idea": "Learn the words, and the math gets easy."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "Pricing a bottle",
+  "has": false,
+  "idea": "Price = cost ÷ the cost % you want."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "Pricing a glass",
+  "has": false,
+  "idea": "Price the glass from the bottle."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "COGS and inventory",
+  "has": false,
+  "idea": "What you used, divided by what you sold."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "The wine list",
+  "has": false,
+  "idea": "A list is correct, current and readable."
+ },
+ {
+  "file": "content/manual-l2/certified-business.json",
+  "slug": "certified-business",
+  "level": 2,
+  "lesson": "The business of the sommelier",
+  "section": "Buying and storing",
+  "has": false,
+  "idea": "Buy with care, then store it right."
+ },
+ {
+  "file": "content/manual-l2/certified-service-standards.json",
+  "slug": "certified-service-standards",
+  "level": 2,
+  "lesson": "Hospitality and service standards",
+  "section": "How the practical is scored",
+  "has": false,
+  "idea": "Hospitality, selling, mechanics and theory."
+ },
+ {
+  "file": "content/manual-l2/certified-service-standards.json",
+  "slug": "certified-service-standards",
+  "level": 2,
+  "lesson": "Hospitality and service standards",
+  "section": "When something goes wrong",
+  "has": false,
+  "idea": "Fix it in the guest’s mind, not on paper."
+ },
+ {
+  "file": "content/manual-l2/certified-service-standards.json",
+  "slug": "certified-service-standards",
+  "level": 2,
+  "lesson": "Hospitality and service standards",
+  "section": "Dress and appearance",
+  "has": false,
+  "idea": "Dress safe, clean and like a pro."
+ },
+ {
+  "file": "content/manual-l2/certified-white-wines.json",
+  "slug": "certified-white-wines",
+  "level": 2,
+  "lesson": "The white wines on the exam",
+  "section": "Chenin Blanc",
+  "has": false,
+  "idea": "Chenin Blanc: quince and honey over bright acidity."
+ }
+]
