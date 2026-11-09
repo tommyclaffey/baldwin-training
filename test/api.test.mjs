@@ -72,7 +72,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
   // + the Cocktail Program (Nov 8): a course page per level (2) and one entry per lesson section (no whole-chapter pages)
   const bar = [...readDir('content/bar'), ...readDir('content/beer')]; // + the Beer Program (Nov 8)
-  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 5 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  assert.equal(index.length, 660 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 5 + 2 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 43 drinks on the Cocktail Descriptions sheet, the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -800,7 +800,13 @@ test('job paths: a server’s path from the book, page reads, quiz passes and ma
 
 test('the Cocktail Program: its page, lessons that work like the Sommelier ones, and a 60-question final (Nov 8)', async () => {
   const index = (await call('/api/index')).data;
-  const hub = index.find((e) => e.slug === 'cocktail-program');
+  // Nov 8: the program's address is its hub (like the Sommelier Program); Level 1 is /cocktail-program/level-1
+  const home = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'cocktail-program').file)).data);
+  assert.ok(home.includes('COCKTAIL') && home.includes('Certified Bartender') && home.includes('/cocktail-program/level-3') && home.includes('t%3Afinal%3Abar-2') && home.includes('pdcrJ5V7YKM'), 'the hub: levels, finals, the six roots videos');
+  assert.ok(!/Court of Master|Testa Barra|mastersommeliers/.test(home), 'nothing from the Sommelier hub left over');
+  const beerHome = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'beer-program').file)).data);
+  assert.ok(beerHome.includes('Beer Specialist') && beerHome.includes('cicerone.org') && !/Court of Master|Testa Barra/.test(beerHome), 'the beer hub');
+  const hub = index.find((e) => e.slug === 'cocktail-program/level-1');
   assert.ok(hub, 'the course page is in the book');
   const page = JSON.stringify((await call('/api/page/' + hub.file)).data);
   assert.ok(page.includes('CERTIFIED BAR SERVER') && page.includes('t%3Afinal%3Abar-1'), 'Level 1 with its final exam');
@@ -833,7 +839,7 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 3').length, 7, 'six lesson quizzes and the final');
   assert.ok(index.some((e) => e.slug === 'cocktail-program/level-3/bar-costing/pour-cost'));
   // The Beer Program (Nov 8): Level 1 on the Cicerone Certified Beer Server outline, a 60-question final, a draft-pour practical
-  const beer = index.find((e) => e.slug === 'beer-program');
+  const beer = index.find((e) => e.slug === 'beer-program/level-1');
   const bp = JSON.stringify((await call('/api/page/' + beer.file)).data);
   assert.ok(bp.includes('BEER SERVER') && bp.includes('t%3Afinal%3Abeer-1') && bp.includes('PRACTICAL') && bp.includes('Beer Program'));
   assert.ok(!/Cocktail Program|USBG/.test(bp), 'nothing from the Cocktail Program left over');

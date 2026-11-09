@@ -48,7 +48,12 @@ export const LEVELS = [
   { program: 'beer', level: 2, title: 'Beer Specialist', file: 'beer-2', final: 'final:beer-2', len: 60, prefix: 'BEER2', head: 'Know beer like a pro',
     practical: 'program:beer-2:practical', practicalTitle: 'Change a keg and fix a pour', practicalHow: 'Change a keg, talk a manager through fixing a foamy pour, and describe five beers on our list; they sign you off', practicalStep: 'Change a keg for a manager',
     lead: (n, L) => `${countWord(n)} lessons built on the Certified Cicerone outline: draft systems in depth, ingredients, the world’s beer styles, off-flavors and pairing. A ${L.len}-question final, then a practical: change a keg and fix a pour for a manager.` },
-].map((L) => { const P = PROGRAMS.find((p) => p.key === L.program); return { ...L, slug: L.level === 1 ? P.slug : `${P.slug}/level-${L.level}` }; });
+  // Beer Level 3 (Nov 8, Tommy: "You can build out level 3 for the beer"): running the beer program, like the Cocktail
+  // Program's Level 3. Its practical is a beer list for our menu, costed and paired, presented to the GM.
+  { program: 'beer', level: 3, title: 'Advanced Specialist', file: 'beer-3', final: 'final:beer-3', len: 60, prefix: 'BEER3', head: 'Run the beer program',
+    practical: 'program:beer-3:practical', practicalTitle: 'Build our beer list', practicalHow: 'Build a beer list for our menu (styles, sizes, pour costs, glassware, a pairing per course) and present it to the GM; they sign you off', practicalStep: 'Build and cost a beer list',
+    lead: (n, L) => `${countWord(n)} lessons on running the beer program: line cleaning, kegs and the cooler, costing, the beer list, training the team, history and Michigan beer, and events. A ${L.len}-question final, then a practical: build and cost our beer list.` },
+].map((L) => { const P = PROGRAMS.find((p) => p.key === L.program); return { ...L, slug: `${P.slug}/level-${L.level}` }; }); // the program's own address is its hub (Nov 8)
 export const programDef = (key) => PROGRAMS.find((p) => p.key === key);
 export const isProgram = (c) => !!programDef(c?.program);
 /** A program lesson's level (the Cocktail Program's files say "barLevel"; newer ones say "programLevel"). */
