@@ -46,7 +46,7 @@ function Book() {
   if (!user) return <BookSignIn />;
   return (
     <EditInPlaceProvider>
-    <NavContext.Provider value={pathname === '/my-path' ? 'My Path' : pathname.startsWith('/certificate/beer') ? 'Beer Program' : pathname.startsWith('/certificate/') ? 'Cocktail Program' : entry?.nav ?? ''}>
+    <NavContext.Provider value={pathname === '/my-path' ? 'My Path' : pathname.startsWith('/certificate/beer') ? 'Beer Program' : pathname.startsWith('/certificate/somm') ? 'Sommelier Program' : pathname.startsWith('/certificate/') ? 'Cocktail Program' : entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
         <div className={'mobile-brand' + (user.demo ? ' has-pill' : '')}>
