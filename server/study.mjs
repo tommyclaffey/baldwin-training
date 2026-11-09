@@ -395,7 +395,14 @@ export function level1Page(page, ctx) {
   // the exam details (the old Level 1 page) stay one tap away
   const btns = find(find(main, byName('Hero')), byName('Buttons'));
   const book = btns && btns.c.find((x) => (x.n || '').startsWith('Button · Book'));
-  if (book) { const d = clone(book); d.n = 'Button · Exam Details'; d.to = '/' + DETAILS[1]; setText(texts(d)[0], 'Exam Details'); btns.c.push(d); btns.wrap = 1; btns.cg = 8; btns.sh = 'L'; }
+  // Nov 8, Tommy: "you don't need to put the book link there", and keep it consistent with the Cocktail and Beer pages:
+  // two buttons, Continue and Exam Details. Booking stays on the hub's dates band.
+  if (book) { const d = clone(book); d.n = 'Button · Exam Details'; d.to = '/' + DETAILS[1]; setText(texts(d)[0], 'Exam Details'); btns.c = btns.c.filter((x) => x !== book); btns.c.push(d); btns.wrap = 1; btns.cg = 8; btns.sh = 'L'; }
+  // the same four stats as the other programs: lessons, cards, then the exam's questions and pass mark
+  { const gl = find(find(main, byName('Hero')), byName('At a glance'));
+    const cards = all.reduce((k, c) => k + c.cards.length, 0);
+    const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], ['70', 'questions'], ['60%', 'to pass']];
+    if (gl) gl.c.forEach((st, i) => { const tt = texts(st); if (stats[i]) { setText(tt[0], stats[i][0]); setText(tt[1], stats[i][1]); st.n = 'Stat · ' + stats[i][1]; } }); }
   const lead = find(find(main, byName('Hero')), (x) => x.t === 'T' && /video lessons/.test(x.s || ''));
   if (lead) { setText(lead, 'Twelve video lessons with practice cards, then two days with us.'); lead.n = 'Lead'; }
   for (const t of findAll(find(main, byName('Hero')) || { c: [] }, (x) => x.t === 'T' && (x.z || 0) >= 36)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
@@ -519,7 +526,7 @@ export function level2Page(page, ctx = {}) {
   for (const b of findAll(main, (x) => (x.n || '').startsWith('Button · Book'))) b.to = REGISTER[2];
   const btns = find(find(main, byName('Hero')), byName('Buttons'));
   const book = btns && btns.c.find((x) => (x.n || '').startsWith('Button · Book'));
-  if (book && live) { const d = clone(book); d.n = 'Button · Exam Details'; d.to = '/' + DETAILS[2]; setText(texts(d)[0], 'Exam Details'); btns.c.push(d); btns.wrap = 1; btns.cg = 8; btns.sh = 'L'; }
+  if (book && live) { const d = clone(book); d.n = 'Button · Exam Details'; d.to = '/' + DETAILS[2]; setText(texts(d)[0], 'Exam Details'); btns.c = btns.c.filter((x) => x !== book); btns.c.push(d); btns.wrap = 1; btns.cg = 8; btns.sh = 'L'; }
   const nx = live && nextLesson(done, all);
   for (const b of findAll(main, (x) => x.n === 'Button · Start Part 1')) {
     if (!live) { b.to = '/' + DETAILS[2]; setText(texts(b)[0], 'Exam Details'); continue; }
