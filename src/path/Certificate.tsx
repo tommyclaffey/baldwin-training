@@ -7,7 +7,7 @@ import { api } from '../lib/api';
 import { useSession } from '../lib/session';
 
 export type Cert = {
-  key: string; program: string; programName: string; programSlug: string; level: number; levelWord: string; title: string; seal: string;
+  key: string; isA?: boolean; program: string; programName: string; programSlug: string; level: number; levelWord: string; title: string; seal: string;
   name: string; final: { pct: number; at: string; firstAt: string }; practical: { at: string; by: string | null } | null;
   number: string; earnedAt: string; store: string | null; logo: string | null; fine: string;
 };
@@ -28,7 +28,7 @@ export function Certificate({ c }: { c: Cert }) {
         <p className="cert-label">This certifies that</p>
         <p className="cert-name">{c.name}</p>
         <span className="cert-rule" aria-hidden="true" />
-        <p className="cert-line">completed Level {c.levelWord} of {store === 'Our restaurant' ? 'the' : store} {c.programName} and is a</p>
+        <p className="cert-line">completed Level {c.levelWord} of {store === 'Our restaurant' ? 'the' : store} {c.programName}{c.isA === false ? ':' : ' and is a'}</p>
         <p className="cert-title">{c.title}</p>
         <div className="cert-facts">
           {facts.map(([k, v]) => <div key={k}><span>{k}</span><strong>{v}</strong></div>)}

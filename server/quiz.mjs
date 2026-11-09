@@ -60,7 +60,7 @@ function topicsOf(db, store, id) {
 export function labelOf(key) {
   const L = { 'classic-on': 'Classic Cocktails on the Menu', 'classic-off': 'Classic Cocktails off the Menu', specialty: 'Specialty Cocktails', brg: 'BRG Favorites', mules: 'Mules', dessert: 'Dessert Cocktails', spiritless: 'Spiritless Cocktails', house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings' };
   if (key.startsWith('spec:')) return SPEC_TOPICS.find(([k]) => k === key)?.[1] || key;
-  { const L = LEVELS.find((x) => x.final === key); if (L) return `${L.title} · Final Exam`; }
+  { const L = LEVELS.find((x) => x.final === key); if (L) return L.finalLabel || `${L.title} · Final Exam`; }
   if (key.startsWith('study:')) { const ch = chapterBySlug(key.slice(6)); return ch ? `${isProgram(ch) ? `${programDef(ch.program).name} L${progLevel(ch)}` : 'Study Guide'} · ${ch.title}` : key; }
   return key.startsWith('course:') ? key.slice(7) : L[key] || key;
 }
