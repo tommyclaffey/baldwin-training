@@ -477,6 +477,14 @@ export function assemble(db, file) {
   return balance(forViewer(page, SCOPE.user));
 }
 
+/** Where the signed-in person stands on a level's final and practical (Nov 8). */
+function levelStatus(db, file) {
+  const L = LEVELS.find((x) => x.file === file); const uid = SCOPE.user?.id;
+  if (!L || !uid) return { passedAt: null, practical: null };
+  const passed = db.prepare('SELECT score, total, at FROM quiz_attempts WHERE user_id = ? AND quiz = ? ORDER BY at').all(uid, 't:' + L.final).find((r) => r.score >= passFor(r.total));
+  const pr = L.practical ? db.prepare('SELECT s.at, u.name by_name FROM signoffs s LEFT JOIN users u ON u.id = s.by_user WHERE s.device = ? AND s.quiz = ? AND s.store_id = ?').get('u' + uid, L.practical, SCOPE.store) : null;
+  return { passedAt: passed?.at || null, practical: pr ? { at: pr.at, by: pr.by_name } : null };
+}
 function assembleRaw(db, file) {
   // Study Guide chapters: drawn from the France chapter's design (Figma 362:2), one per content/manual/<slug>.json
   if (/^m-/.test(file)) {
@@ -521,14 +529,14 @@ function assembleRaw(db, file) {
   if (process.env.REGION_V2 !== '0' && regionData(slug) && wineKind(slug)) { const v2 = regionPage(basePage(regionData(slug).isGrape ? '111-4' : '377-2'), page, slug, { video: wineVideos(db).get(slug) }); if (v2) page = v2; }
   // the Sommelier Program, video first (Nov 1): the Study Guide index is now the Level 1 course
   if (slug === HUB) return hubPage(page, { done: sectionsDone(db, SCOPE.user?.id) });
-  if (slug === L1) return level1Page(page, { done: sectionsDone(db, SCOPE.user?.id) });
-  if (slug === GUIDE) { const l1 = baseIndex().find((x) => x.slug === L1); const p1 = l1 && basePage(l1.file); if (p1) return level1Page(p1, { done: sectionsDone(db, SCOPE.user?.id) }); return guideIndex(page, { prog: progress(db, SCOPE.user?.id, SCOPE.store) }); }
+  if (slug === L1) return level1Page(page, { done: sectionsDone(db, SCOPE.user?.id), ...levelStatus(db, 'somm-1') });
+  if (slug === GUIDE) { const l1 = baseIndex().find((x) => x.slug === L1); const p1 = l1 && basePage(l1.file); if (p1) return level1Page(p1, { done: sectionsDone(db, SCOPE.user?.id), ...levelStatus(db, 'somm-1') }); return guideIndex(page, { prog: progress(db, SCOPE.user?.id, SCOPE.store) }); }
   if (slug === L2) {
     const l1 = baseIndex().find((x) => x.slug === L1); const p1 = l1 && basePage(l1.file); const done = sectionsDone(db, SCOPE.user?.id);
     const old = level2Page(page, { done, course: p1 && find(p1.main, byName('The course')) });
     // Nov 8: Level 2 on the Level 1 layout, like the Cocktail and Beer levels (Tommy: "Yes")
     const p2 = l1 && basePage(l1.file);
-    return p2 ? { ...level2OnLevel1(p2, old, { done }), name: page.name } : old;
+    return p2 ? { ...level2OnLevel1(p2, old, { done, ...levelStatus(db, 'somm-2') }), name: page.name } : old;
   }
   if (isGeneric()) return genericPage(db, file, slug, page);
   if (file === '23-2') {

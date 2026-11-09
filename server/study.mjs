@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { clone, find, findAll, byName, texts, setText, remove } from './templates.mjs';
-import { chapters, chapters2, chaptersOf, levelChapters, chapterBase, GUIDE, LEVELS, levelFor, isProgram, programDef, progLevel, levelOfChapter, quizHref, shuffleSeeded, blockBuilder, countWord } from './manual.mjs';
+import { chapters, chapters2, chaptersOf, levelChapters, chapterBase, GUIDE, LEVELS, levelFor, isProgram, programDef, progLevel, levelOfChapter, levelForChapter, quizHref, shuffleSeeded, blockBuilder, countWord } from './manual.mjs';
 
 export const HUB = 'sommelier-program';
 export const BAR_FINAL = 't:final:bar-1';
@@ -158,7 +158,7 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
   const main = clone(tpl.main);
   const sec = ch.sections[si]; const v = v3Of(ch, si); const r = v.read || {};
   const n = ch.sections.length; const all = levelChapters(ch);
-  const isBar = isProgram(ch); const lvl = isBar ? progLevel(ch) : ch.level === 2 ? 2 : 1; const BL = isBar && levelOfChapter(ch); const home = isBar ? BL.slug : lvl === 2 ? L2 : L1;
+  const isBar = isProgram(ch); const lvl = isBar ? progLevel(ch) : ch.level === 2 ? 2 : 1; const BL = levelForChapter(ch); const home = isBar ? BL.slug : lvl === 2 ? L2 : L1;
   const href = (c, i) => '/' + lessonSlug(c, i);
 
   // breadcrumb: Level 1 / Lesson N · Chapter / Section
@@ -319,10 +319,10 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
   {
     const nc = all[all.indexOf(ch) + 1];
     // the Cocktail Program's last lesson leads to its final exam
-    const exam = isBar && si === n - 1 && !nc;
+    const exam = !!BL && si === n - 1 && !nc; // every level's last lesson leads to its final (Sommelier too, Nov 8)
     const to = si < n - 1 ? href(ch, si + 1) : nc ? href(nc, 0) : exam ? '/quizzes?quiz=' + encodeURIComponent('t:' + BL.final) : '/' + home;
     const label = si < n - 1 ? 'Next Section' : nc ? 'Next Lesson' : exam ? 'Take the Final Exam' : `Back to Level ${lvl}`;
-    const what = si < n - 1 ? ch.sections[si + 1].name : nc ? nc.title : exam ? `${BL.title} · Final Exam` : `Level ${lvl}`;
+    const what = si < n - 1 ? ch.sections[si + 1].name : nc ? nc.title : exam ? (BL.finalLabel || `${BL.title} · Final Exam`) : `Level ${lvl}`;
     const eyebrow = si < n - 1 ? `UP NEXT · SECTION ${si + 2} OF ${n}` : nc ? `UP NEXT · LESSON ${nc.number}` : 'YOU’VE FINISHED THE LAST LESSON';
     const doneHere = ctx.done.has(doneKey(ch, si));
     const prevBtn = si > 0 ? [{ t: 'F', n: 'Button · Previous section', to: href(ch, si - 1), lm: 'H', gap: 8, pd: [14, 18, 14, 18], r: 999, st: '#4A4540', sw: 1, pa: 'C', ca: 'C', sh: 'H', sv: 'H', c: [txt('←  Previous', { z: 15, c: '#F2EEE7', fs: 'SemiBold' })] }] : [];
@@ -401,7 +401,7 @@ export function level1Page(page, ctx) {
   // the same four stats as the other programs: lessons, cards, then the exam's questions and pass mark
   { const gl = find(find(main, byName('Hero')), byName('At a glance'));
     const cards = all.reduce((k, c) => k + c.cards.length, 0);
-    const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], ['70', 'questions'], ['60%', 'to pass']];
+    const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], ['70', 'questions'], ['80%', 'to pass']]; // our practice final (the Court's own exam is 60%)
     if (gl) gl.c.forEach((st, i) => { const tt = texts(st); if (stats[i]) { setText(tt[0], stats[i][0]); setText(tt[1], stats[i][1]); st.n = 'Stat · ' + stats[i][1]; } }); }
   const lead = find(find(main, byName('Hero')), (x) => x.t === 'T' && /video lessons/.test(x.s || ''));
   if (lead) { setText(lead, 'Twelve video lessons with practice cards, then two days with us.'); lead.n = 'Lead'; }
@@ -415,6 +415,7 @@ export function level1Page(page, ctx) {
   const finished = lessonsGrid(grid, all, ctx.done);
   const head = find(find(main, byName('The course')), byName('Head'));
   if (head) setText(T(head)[0], `${finished} of ${all.length} done`);
+  sommFinal(main, 1, ctx);
   return page;
 }
 
@@ -855,7 +856,7 @@ export function level2OnLevel1(p1, old, ctx = {}) {
   if (lead) { setText(lead, `${countWord(all.length)} video lessons in three parts, with practice cards. Then one day, three exams.`); lead.n = 'Lead'; }
   const gl = find(hero, byName('At a glance'));
   const cards = all.reduce((k, c) => k + c.cards.length, 0);
-  const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], ['3', 'exams'], ['60%', 'on each']];
+  const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], ['45', 'questions'], ['1', 'practical']]; // our theory final + mock service, like Cocktail and Beer
   if (gl) gl.c.forEach((st, i) => { const tt = texts(st); if (stats[i]) { setText(tt[0], stats[i][0]); setText(tt[1], stats[i][1]); st.n = 'Stat · ' + stats[i][1]; } });
   if (copy) { const at = copy.c.findIndex((x) => x.n === 'At a glance'); copy.c.splice(at + 1, 0, progressBlock(courseProgress(done, all), 398)); }
   const btns = find(hero, byName('Buttons'));
@@ -883,5 +884,34 @@ export function level2OnLevel1(p1, old, ctx = {}) {
   const at = main.c.indexOf(course);
   main.c.splice(at + 1, 0, ...keep);
   for (const t of findAll(find(main, byName('How it works')) || { c: [] }, (x) => x.t === 'T' && (x.s || '').length > 2)) { t.ar = 'H'; t.sh = 'L'; }
+  sommFinal(main, 2, ctx);
   return p1;
+}
+
+/** Sommelier level heroes (Nov 8): the same two buttons as Cocktail and Beer (Continue or View Certificate, then the
+ *  final), the one status line, and the Court's exam details as a small link under the buttons. */
+export function sommFinal(main, level, ctx = {}) {
+  const L = levelFor('somm', level); if (!L) return;
+  const hero = find(main, byName('Hero')); const copy = hero && find(hero, byName('Copy')); const btns = hero && find(hero, byName('Buttons'));
+  if (!btns) return;
+  const day = (iso) => new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/Detroit' }).toUpperCase();
+  const certified = ctx.passedAt && (!L.practical || ctx.practical);
+  const cont = btns.c.find((x) => (x.n || '').startsWith('Button · Continue'));
+  const details = btns.c.find((x) => (x.n || '').startsWith('Button · Exam Details'));
+  if (cont && certified) { cont.n = 'Button · View Certificate'; cont.to = `/certificate/${L.file}`; setText(texts(cont)[0], 'View Certificate'); }
+  const exam = details && clone(details);
+  if (exam) { exam.n = 'Button · Final Exam'; exam.to = '/quizzes?quiz=' + encodeURIComponent('t:' + L.final); setText(texts(exam)[0], ctx.passedAt ? 'Retake Final Exam' : 'Final Exam'); }
+  btns.c = [cont, exam].filter(Boolean);
+  if (details && copy) {
+    const link = { ...txt('Court exam details  →', { z: 13.5, c: '#C49A6C', fs: 'SemiBold' }), n: 'Link · Exam Details', to: details.to };
+    copy.c.splice(copy.c.indexOf(btns) + 1, 0, link);
+  }
+  if (copy) {
+    let line = null;
+    if (certified) line = txt(`✓ ${L.title.toUpperCase()} · ${day(ctx.practical?.at > ctx.passedAt ? ctx.practical.at : ctx.passedAt)}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
+    else if (ctx.passedAt) line = txt('✓ FINAL PASSED · PRACTICAL: ASK A MANAGER WHEN READY', { ls: '10%', c: '#7FCB93', z: 12.5 });
+    else if (ctx.practical) line = txt(`✓ PRACTICAL SIGNED OFF${ctx.practical.by ? ' BY ' + ctx.practical.by.toUpperCase() : ''}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
+    if (line) { line.n = 'Status line'; line.ar = 'H'; line.sh = 'F'; line.w = 398; copy.c.splice(copy.c.findIndex((x) => x.n === 'Course progress') + 1, 0, line); }
+  }
+  evenButtons(main);
 }

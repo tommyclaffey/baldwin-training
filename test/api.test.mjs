@@ -485,6 +485,14 @@ test('sommelier program: video-first hub, Level 1 course and Level 2, with the o
   // Nov 8, Tommy: no Book button in the level heroes (booking stays on the hub), same two buttons as Cocktail and Beer
   assert.ok(!/"Button · Book/.test(l1 + l2) || !/"n":"Button · Book[^"]*","[^}]*"to"/.test(l1), 'no book link in the level heroes');
   assert.ok((await page('sommelier-program/level-1/exam-details')).includes('42 of 70'), 'the old Level 1 page is still there');
+  // Nov 8: Sommelier finals, like every other program level: a 70-question practice exam and a 45-question theory exam
+  assert.ok(l1.includes('t%3Afinal%3Asomm-1') && l1.includes('"/sommelier-program/level-1/exam-details"'), 'Level 1: final exam, exam details link');
+  assert.ok(l2.includes('t%3Afinal%3Asomm-2'), 'Level 2: final exam');
+  const cat = (await call('/api/quiz/catalog')).data;
+  const f1 = cat.quizzes.find((q) => q.id === 't:final:somm-1'), f2 = cat.quizzes.find((q) => q.id === 't:final:somm-2');
+  assert.equal(f1.count, 70); assert.equal(f1.group, 'Sommelier Level 1'); assert.equal(f1.title, 'Sommelier Level 1 · Practice Exam');
+  assert.equal(f2.count, 45); assert.equal(f2.group, 'Sommelier Level 2');
+  assert.equal((await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:somm-1' } })).data.items.length, 70);
   assert.ok((await page('sommelier-program/level-2/exam-details')).includes('THE TASTING GRID'));
   const side = JSON.stringify((await import('../src/content/sidebar.json', { with: { type: 'json' } })).default);
   assert.ok(side.includes('Nav · Sommelier Program') && side.includes('"/sommelier-program"'));

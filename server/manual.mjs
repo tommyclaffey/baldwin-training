@@ -24,6 +24,11 @@ export const PROGRAMS = [
     back: ['/the-bar/beer-and-draft', 'The Bar'], hero: '/img/a25e068de269.jpg', heroName: 'IMG/Pouring a draft · Unsplash stand-in (the Pilsner page photo)',
     ladder: ['Beer Server', 'Beer Specialist', 'Advanced Specialist', 'Master of Beer'],
     fine: 'It isn’t a Cicerone® certification. It prepares you for Cicerone’s Certified Beer Server exam.' },
+  // The Sommelier Program (Nov 8, Tommy: finals and certificates for every program). Its lessons live in content/manual and
+  // content/manual-l2 with their own pages, so it has no folder here; chaptersForLevel() reads them.
+  { key: 'somm', name: 'Sommelier Program', short: 'Somm', slug: 'sommelier-program', dir: null, seal: 'WINE', external: true,
+    ladder: ['Introductory', 'Certified', 'Advanced', 'Master'],
+    fine: 'It isn’t a Court of Master Sommeliers certification. It prepares you for the Court’s exams.' },
 ];
 export const BAR = 'cocktail-program';
 export const BAR_BASE = 'cocktail-program/level-1';
@@ -44,6 +49,13 @@ export const LEVELS = [
   { program: 'beer', level: 1, title: 'Beer Server', file: 'beer-1', final: 'final:beer-1', len: 60, prefix: 'BEER1', head: 'Every beer, served right',
     practical: 'program:beer-1:practical', practicalTitle: 'Pour and present a draft', practicalHow: 'Check a glass is beer-clean, pour a draft with the right head and describe it; a manager signs you off', practicalStep: 'Pour a draft for a manager',
     lead: (n, L) => `${countWord(n)} lessons on Cicerone’s Beer Server outline, then a final and a practical.` },
+  // Sommelier finals (Nov 8): Level 1 is a practice exam in the Court's Introductory format (70 questions); Level 2 is the
+  // theory part of the Certified exam (45 questions) plus a mock service a manager scores. Our certificate, not the Court's.
+  { program: 'somm', level: 1, title: 'Introductory Prep', file: 'somm-1', final: 'final:somm-1', len: 70, prefix: 'SOMM1', isA: false,
+    finalLabel: 'Sommelier Level 1 · Practice Exam', group: 'Sommelier Level 1' },
+  { program: 'somm', level: 2, title: 'Certified Prep', file: 'somm-2', final: 'final:somm-2', len: 45, prefix: 'SOMM2', isA: false,
+    finalLabel: 'Sommelier Level 2 · Theory Exam', group: 'Sommelier Level 2',
+    practical: 'program:somm-2:practical', practicalTitle: 'Mock service', practicalHow: 'A manager plays the guest and scores your wine service on the Court’s standards; they sign you off', practicalStep: 'Mock service for a manager' },
   // Beer Level 2 (Nov 8): deeper, on the Certified Cicerone outline. Shows once its lessons exist (content/beer, programLevel 2).
   { program: 'beer', level: 2, title: 'Beer Specialist', file: 'beer-2', final: 'final:beer-2', len: 60, prefix: 'BEER2', head: 'Know beer like a pro',
     practical: 'program:beer-2:practical', practicalTitle: 'Change a keg and fix a pour', practicalHow: 'Change a keg, talk a manager through fixing a foamy pour, and describe five beers on our list; they sign you off', practicalStep: 'Change a keg for a manager',
@@ -63,6 +75,10 @@ export const levelFor = (program, n) => LEVELS.find((x) => x.program === program
 export const levelOfChapter = (c) => levelFor(c.program, progLevel(c));
 export const barLevelOf = (n) => levelFor('bar', n);
 export const BAR_LEVELS = LEVELS.filter((x) => x.program === 'bar');
+/** A level's lessons, whatever program (the Sommelier's live in their own folders). */
+export const chaptersForLevel = (L) => (L.program === 'somm' ? (L.level === 1 ? chapters() : L.level === 2 ? chapters2() : []) : chaptersOf(L.program, L.level));
+/** The level a lesson counts toward (Sommelier lessons included). */
+export const levelForChapter = (c) => (isProgram(c) ? levelOfChapter(c) : levelFor('somm', c?.level === 2 ? 2 : 1));
 export const L2_BASE = 'sommelier-program/level-2';
 /** Where a chapter's lessons live: Level 1 under the Study Guide, Level 2 under the Level 2 page. */
 export const chapterBase = (c) => (isProgram(c) ? `${programDef(c.program).slug}/level-${progLevel(c)}` : c?.level === 2 ? L2_BASE : GUIDE);

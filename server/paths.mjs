@@ -156,8 +156,14 @@ function programsFor(done, paths) {
     const chs = allChapters().filter((c) => !isProgram(c) && (c.level || 1) === level);
     const keys = chs.flatMap((c) => c.sections.map((_, i) => doneKey(c, i)));
     if (!keys.length) continue;
+    // Nov 8: the Sommelier levels have finals and certificates too
+    const L = LEVELS.find((x) => x.program === 'somm' && x.level === level);
+    const fin = L && done.quizzes.get('t:' + L.final); const pr = L?.practical && done.signs.get(L.practical);
     out.push({ title: `Sommelier · Level ${level}`, to: level === 1 ? '/sommelier-program/level-1' : '/sommelier-program/level-2', total: keys.length,
-      done: keys.filter((k) => done.reads.has(k)).length, inPath: keys.filter((k) => inPath.has(k)).length });
+      done: keys.filter((k) => done.reads.has(k)).length, inPath: keys.filter((k) => inPath.has(k)).length,
+      ...(L ? { cert: L.title, certKey: L.file, final: { id: 't:' + L.final, passedAt: fin?.passedAt || null, best: fin ? `${Math.round((fin.best / fin.total) * 100)}%` : null },
+        ...(L.practical ? { practical: { key: L.practical, title: L.practicalTitle, how: L.practicalHow, at: pr?.at || null, by: pr?.by || null } } : {}),
+        certified: !!(fin?.passedAt && (!L.practical || pr)) } : {}) });
   }
   return out;
 }
