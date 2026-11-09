@@ -471,6 +471,7 @@ function courtShelf() {
 }
 export function hubPage(page, ctx) {
   const main = page.main;
+  unclipHero(main);
   wireVideos(main);
   { const at = main.c.findIndex((x) => x.n === 'Start here · videos'); main.c.splice(at >= 0 ? at + 1 : main.c.length - 1, 0, courtShelf()); }
   for (const b of findAll(main, (x) => x.n === 'Button · Start Level 1')) b.to = '/' + L1;
@@ -718,6 +719,7 @@ function sourceShelf([script, sub, groups]) {
 export function programHub(page, ctx) {
   const P = programDef(ctx.program); const H = HUB_COPY[P.key];
   const main = page.main;
+  unclipHero(main);
   const levels = LEVELS.filter((L) => L.program === P.key && chaptersOf(P.key, L.level).length);
   const all = chaptersOf(P.key); const done = ctx.done || new Set(); const certified = ctx.certified || new Set();
   // hero
@@ -805,4 +807,10 @@ export function programHub(page, ctx) {
     const copy = find(book, byName('Copy')); if (copy) delete copy.to;
   }
   return page;
+}
+
+/** Nov 8, Tommy's screenshot: the hero's outlined video button lost the bottom of its border to the row's clip. */
+function unclipHero(main) {
+  const hero = find(main, byName('Hero')); const copy = hero && find(hero, byName('Copy')); const btns = copy && find(copy, byName('Buttons'));
+  for (const n of [copy, btns]) if (n) { delete n.clip; n.sv = 'H'; }
 }
