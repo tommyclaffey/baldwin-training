@@ -565,7 +565,7 @@ export function barPage(page, ctx) {
   const day = (iso) => new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/Detroit' }).toUpperCase();
   // breadcrumb: The Bar / Cocktail Program / Level N
   const bc = find(main, byName('Breadcrumb'));
-  if (bc) { const t = texts(bc); const back = find(bc, byName('Back')); if (back) { back.to = P.back[0]; setText(T(back)[0], P.back[1]); } setText(t[2], P.name); t[2].n = P.name; setText(t[4], `Level ${L.level}`); }
+  if (bc) { const t = texts(bc); const back = find(bc, byName('Back')); if (back) { back.to = P.back[0]; setText(T(back)[0], P.back[1]); } setText(t[2], P.name); t[2].n = P.name; t[2].to = '/' + P.slug; setText(t[4], `Level ${L.level}`); }
   // Level tabs (Nov 8, Tommy: "Only see level 1 … Do you have multiple levels?"): every level of the program, up top.
   // The current one is dark, built ones link, the rest are dimmed with "Coming".
   if (bc) {
@@ -643,6 +643,166 @@ export function barPage(page, ctx) {
     });
     const at = main.c.indexOf(how);
     main.c.splice(at + 1, 0, { t: 'F', n: 'Levels', lm: 'V', gap: 14, w: how.w, sh: 'F', sv: 'H', c: [txt('THE FOUR LEVELS', { ls: '12%', c: '#8A5A3A', z: 12 }), levels] });
+  }
+  return page;
+}
+
+/* ---------------- program hubs (Nov 8) ---------------- */
+// Tommy, Nov 8: "build out a homepage exactly like the som … mirror structurally the way the wine program is. It's just beer
+// and bartending." Drawn from the Sommelier Program hub (Figma 391:32): hero, pick up where you left off, the four levels,
+// start-here videos, a shelf of sources, and a dark band (the Sommelier's exam dates; here, each level's final).
+const HUB_COPY = {
+  bar: {
+    script: 'Our bar training', lead: 'Learn it, practise it, then earn your certificate: three levels, from the floor to the bar lead.',
+    who: ['Everyone on the floor', 'Bartenders', 'Bar leads'], cards: ['/img/5e5d6ac14e27.jpg', '/img/9dafca12fbe5.jpg', '/img/classic-bees-knees.jpg', '/img/fe067d97b4ac.jpg'],
+    videosHead: ['A few minutes each', 'The six roots, from Anders Erickson'],
+    shelf: ['Where our lessons come from', 'Laws, guides and books our lessons cite · open in a new tab', [
+      ['THE RULES', false, [
+        ['US spirits standards', '27 CFR 5.143: what makes bourbon, rye and the rest.', 'LAW', 'https://www.law.cornell.edu/cfr/text/27/5.143'],
+        ['EU spirit drinks', 'Regulation 2019/787: gin, liqueurs, rum and brandy.', 'LAW', 'https://eur-lex.europa.eu/eli/reg/2019/787/oj'],
+        ['Scotch Whisky Regulations', 'The 2009 rules: the five kinds and the regions.', 'LAW', 'https://www.legislation.gov.uk/uksi/2009/2890'],
+      ]],
+      ['THE CRAFT', true, [
+        ['Cocktail Codex', 'The six root recipes behind Levels 2 and 3.', 'BOOK', 'https://www.randomhousebooks.com/books/534533'],
+        ['Rich vs simple syrup', 'Difford’s Guide on 2:1 and 1:1, and how to swap them.', 'GUIDE', 'https://www.diffordsguide.com/encyclopedia/3593/cocktails/2-to-1-rich-sugar-syrup-versus-1-to-1-simple-syrup'],
+        ['Fresh lime juice', 'Dave Arnold’s 2010 blind test of lime juice by age.', 'ARTICLE', 'https://cookingissues.com/2010/10/01/fresh-lime-juice-wtf/'],
+      ]],
+    ]],
+  },
+  beer: {
+    script: 'Built on Cicerone’s outline', lead: 'From the first pour to running the program, with a certificate at every level.',
+    who: ['Everyone who pours', 'Bartenders', 'Whoever runs the beer'], cards: ['/img/cc320d4a67b8.jpg', '/img/bb23f11b90c9.jpg', '/img/cbff01f7a889.jpg', '/img/f63b1d92dbf9.jpg'],
+    videosHead: null,
+    shelf: ['Straight from the source', 'Official guides from Cicerone, the Brewers Association and the BJCP · open in a new tab', [
+      ['CICERONE', false, [
+        ['Certified Beer Server syllabus', 'Everything Level 1 follows, topic by topic.', 'PDF', 'https://www.cicerone.org/sites/default/files/resources/US_English_CBS_Syllabus_V6.0_0.pdf'],
+        ['Certified Cicerone syllabus', 'The outline behind Level 2.', 'PDF', 'https://www.cicerone.org/sites/default/files/resources/US_English_CC_Syllabus_V6.0.pdf'],
+        ['Beer Server exam FAQ', '60 questions, 30 minutes, 75% to pass, $79 for two tries.', 'FAQ', 'https://support.cicerone.org/en/support/solutions/articles/69000179490-certified-beer-server-exam-frequently-asked-questions-faq-'],
+      ]],
+      ['THE REFERENCES', true, [
+        ['Draught Beer Quality Manual', 'The Brewers Association’s guide to draft systems.', 'PDF', 'https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf'],
+        ['BJCP Style Guidelines', 'Every style, with its numbers (2021 edition).', 'PDF', 'https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf'],
+        ['Beer and food', 'The Brewers Association’s pairing guide.', 'PDF', 'https://www.cicerone.org/sites/default/files/resources/Beer_and_Food_English.pdf'],
+      ]],
+    ]],
+  },
+};
+function sourceShelf([script, sub, groups]) {
+  const W = 1080, cw = Math.floor((W - 32) / 3);
+  const group = ([label, dark, docs]) => ({ t: 'F', n: 'Group · ' + label, lm: 'V', gap: 12, sh: 'L', sv: 'H', c: [
+    txt(label, { z: 11, ls: '12%', c: '#8A5A3A' }),
+    { t: 'F', n: 'Docs', lm: 'H', gap: 16, wrap: 1, cg: 16, sh: 'L', sv: 'H', c: docs.map(([title, line, kind, url]) => {
+      const fg = dark ? '#F2EEE7' : '#1E1C1A', sub2 = dark ? '#CFC6B9' : '#5E574F';
+      return { t: 'F', n: 'Doc · ' + title, to: url, lm: 'V', gap: 10, pd: [18, 20, 18, 20], r: 18, w: cw, h: 150, sh: 'F', sv: 'F', f: [{ c: dark ? '#1E1C1A' : '#EFE3D3' }], c: [
+        { t: 'F', n: 'Top', lm: 'H', gap: 8, ca: 'C', sh: 'L', sv: 'H', c: [
+          { t: 'F', n: 'Pill · ' + kind, lm: 'H', pd: [4, 8, 4, 8], r: 10, f: [{ c: '#C49A6C' }], pa: 'C', ca: 'C', sh: 'H', sv: 'H', c: [txt(kind, { z: 10, ls: '10%', c: '#1E1C1A' })] },
+          { ...txt('', { z: 10, c: sub2 }), ar: 'H', sh: 'L' },
+          txt('›', { z: 20, c: fg }),
+        ] },
+        { ...txt(title, { z: 18, c: fg, fs: 'ExtraBold' }), ar: 'H', sh: 'L' },
+        { ...txt(line, { z: 14, c: sub2, fs: 'Medium' }), ar: 'H', sh: 'L', lh: '135%' },
+      ] };
+    }) },
+  ] });
+  return { t: 'F', n: 'Sources', lm: 'V', gap: 24, w: W, sh: 'L', sv: 'H', c: [
+    { t: 'F', n: 'Head', lm: 'H', ca: 'M', sh: 'L', sv: 'H', c: [
+      { t: 'F', n: 'Titles', lm: 'V', sh: 'L', sv: 'H', c: [
+        { ...txt(script, { z: 26, c: '#8A5A3A', fs: 'Regular' }), ff: 'Pinyon Script' },
+        txt('OUR SOURCES', { z: 26, c: '#1E1C1A', fs: 'ExtraBold' }),
+      ] },
+      { ...txt(sub, { z: 13, c: '#5E574F', fs: 'Regular' }), ar: 'H', sh: 'H' },
+    ] },
+    ...groups.map(group),
+  ] };
+}
+export function programHub(page, ctx) {
+  const P = programDef(ctx.program); const H = HUB_COPY[P.key];
+  const main = page.main;
+  const levels = LEVELS.filter((L) => L.program === P.key && chaptersOf(P.key, L.level).length);
+  const all = chaptersOf(P.key); const done = ctx.done || new Set(); const certified = ctx.certified || new Set();
+  // hero
+  const hero = find(main, byName('Hero'));
+  if (hero) { hero.f = [{ img: P.hero, m: 'FILL' }]; }
+  const hc = find(hero, byName('Copy'));
+  if (hc) {
+    const ts = hc.c.filter((x) => x.t === 'T');
+    setText(ts[0], H.script); ts[0].n = 'Script';
+    setText(ts[1], P.name.toUpperCase().replace(' ', '\n')); ts[1].n = 'Title';
+    setText(ts[2], H.lead); ts[2].n = 'Lead';
+    const btns = find(hc, byName('Buttons'));
+    if (btns) {
+      const start = btns.c.find((x) => (x.n || '').startsWith('Button · Start'));
+      const nx0 = nextLesson(done, all); const nx = nx0 && { ...nx0, started: all.some((c) => chapterState(c, done).k > 0) };
+      if (start) { start.n = 'Button · Start'; start.to = '/' + (nx?.started ? lessonSlug(nx.ch, nx.i) : levels[0].slug); setText(texts(start)[0], nx?.started ? `Continue Level ${progLevel(nx.ch)}` : 'Start Level 1'); }
+      const vb = btns.c.find((x) => (x.n || '').startsWith('Video · '));
+      const v0 = P.key === 'bar' && chaptersOf('bar').find((c) => c.slug === 'bar-six-roots')?.v3?.sections?.[0]?.video;
+      if (vb && v0) { vb.n = 'Video · ' + v0.title; vb.vid = asVid(v0); setText(texts(vb)[0], `The Old Fashioned · ${v0.length}`); }
+      else if (vb) btns.c = btns.c.filter((x) => x !== vb);
+    }
+  }
+  for (const t of findAll(main, (x) => x.t === 'T' && (x.z || 0) >= 22)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
+  // pick up where you left off
+  const cont = find(main, byName('Continue'));
+  const nx = nextLesson(done, all); const begun = all.some((c) => chapterState(c, done).k > 0);
+  if (cont && nx && begun) {
+    cont.to = '/' + lessonSlug(nx.ch, nx.i);
+    const cc = T(find(cont, byName('Copy'))); setText(cc[1], `Level ${progLevel(nx.ch)} · ${nx.ch.title} · ${nx.ch.sections[nx.i].name}`);
+    const lvlAll = chaptersOf(P.key, progLevel(nx.ch));
+    setText(cc[0], `PICK UP WHERE YOU LEFT OFF · ${courseProgress(done, lvlAll).pct}% OF LEVEL ${progLevel(nx.ch)} DONE`);
+    const s = chapterState(nx.ch, done); const pb = find(cont, byName('Progress')); if (pb?.c?.[0]) pb.c[0].w = Math.round((pb.w || 320) * (s.k / s.n));
+    const th = cont.c.find((x) => (x.n || '').startsWith('IMG/'));
+    const vv = v3Of(nx.ch, nx.i).video; const ph = photoOf(nx.ch, nx.ch.sections[nx.i]);
+    if (th) { delete th.vid; th.n = 'IMG/Lesson'; setImg(th, thumb(vv) || ph); if (!thumb(vv)) th.c = (th.c || []).filter((x) => x.n !== 'Play'); }
+    const rb = find(cont, byName('Button · Resume')); if (rb) rb.to = cont.to;
+  } else if (cont) remove(main, cont);
+  // the four levels
+  const lv = find(main, byName('Levels'));
+  if (lv) lv.c.forEach((card, i) => {
+    const L = levels.find((x) => x.level === i + 1);
+    card.n = `Level ${i + 1} · ${P.ladder[i]}`; card.f = [{ img: H.cards[i], m: 'FILL' }];
+    const tt = texts(card);
+    setText(tt[0], `LEVEL ${i + 1}`); setText(tt[1], P.ladder[i]);
+    const n = L ? chaptersOf(P.key, L.level).length : 0;
+    setText(tt[2], !L ? 'Coming' : certified.has(L.file) ? '✓ Certified' : `${H.who[i]} · ${n} lessons`);
+    if (L) card.to = '/' + L.slug; else delete card.to;
+    // the design's copy box was sized for "Introductory": let it use the card's width so names and pills don't clip
+    const cp = find(card, byName('Copy')); if (cp) { cp.w = Math.round((card.w || 260) - 40); delete cp.clip; cp.sh = 'F'; }
+    const pill = find(card, byName('Pill')); if (pill) { delete pill.clip; pill.sh = 'H'; delete pill.w; for (const x of texts(pill)) { x.ar = 'W'; delete x.w; } }
+    tt[1].ar = 'H'; tt[1].sh = 'F'; tt[1].w = cp ? cp.w : tt[1].w;
+  });
+  // start here: videos (Cocktail: the six roots), or nothing
+  const sh = find(main, byName('Start here · videos'));
+  const roots = P.key === 'bar' ? (chaptersOf('bar').find((c) => c.slug === 'bar-six-roots')?.v3?.sections || []).map((s) => s.video).filter(Boolean) : [];
+  if (sh && H.videosHead && roots.length >= 4) {
+    const ht = texts(find(sh, byName('Head'))); setText(ht[0], H.videosHead[0]); setText(ht[2], H.videosHead[1]); ht[2].n = 'Source';
+    const cards = find(sh, byName('Videos')).c;
+    cards.forEach((card, i) => {
+      const v = roots[i]; if (!v) return;
+      card.n = 'Video · ' + v.title;
+      const im = card.c.find((x) => (x.n || '').startsWith('IMG/')); if (im) { im.n = `IMG/Video · ${v.title} · ${v.by} (YouTube ${v.youtubeId})`; setImg(im, thumb(v)); im.vid = asVid(v); }
+      const tt = texts(card); setText(tt[0], v.length); setText(tt[1], v.title); setText(tt[2], v.by.toUpperCase());
+    });
+  } else if (sh) remove(main, sh);
+  // our sources, after the videos (or the levels)
+  { const at = main.c.findIndex((x) => x.n === 'Start here · videos' || x.n === 'Your path'); const after = main.c.findIndex((x) => x.n === 'Start here · videos'); main.c.splice((after >= 0 ? after : at) + 1, 0, sourceShelf(H.shelf)); }
+  // no Sommelier names left in layer names either
+  for (const n of findAll(main, (x) => x.t === 'T' && /Court|Testa Barra|Sommelier/.test(x.n || ''))) n.n = String(n.s).slice(0, 40);
+  // the dark band: each level's final, or its certificate
+  const book = find(main, byName('Book your seat'));
+  if (book) {
+    const bt = texts(find(book, byName('Copy'))); setText(bt[0], 'EARN YOUR CERTIFICATES'); setText(bt[1], 'The finals');
+    const tpl = book.c.find((x) => (x.n || '').startsWith('Date · '));
+    const cards = levels.map((L) => {
+      const d = clone(tpl); d.n = `Final · Level ${L.level}`;
+      const ct = texts(find(d, byName('Copy'))); setText(ct[0], `Level ${L.level} · ${L.len} questions`); setText(ct[1], L.title);
+      const b = find(d, (x) => (x.n || '').startsWith('Button · ')); const has = certified.has(L.file);
+      b.n = has ? 'Button · View Certificate' : 'Button · Take the Final'; b.to = has ? `/certificate/${L.file}` : '/quizzes?quiz=' + encodeURIComponent('t:' + L.final);
+      setText(texts(b)[0], has ? 'Certificate' : 'Take It');
+      return d;
+    });
+    const rest = book.c.filter((x) => !(x.n || '').startsWith('Date · '));
+    book.c = [...rest, { t: 'F', n: 'Finals', lm: 'H', gap: 12, wrap: 1, cg: 12, sh: 'H', sv: 'H', c: cards }]; book.wrap = 1; book.cg = 16;
+    const copy = find(book, byName('Copy')); if (copy) delete copy.to;
   }
   return page;
 }

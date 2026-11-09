@@ -3,9 +3,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { addRows } from './editinplace.mjs';
-import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, LEVELS, chaptersOf, programDef, isProgram, progLevel } from './manual.mjs';
+import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, LEVELS, PROGRAMS, chaptersOf, programDef, isProgram, progLevel } from './manual.mjs';
+import { certificatesFor } from './certs.mjs';
 import { regionPage, regionData } from './region.mjs';
-import { lessonPage, level1Page, level2Page, hubPage, barPage, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
+import { lessonPage, level1Page, level2Page, hubPage, barPage, programHub, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
 import { passFor } from './quizgen.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
@@ -485,6 +486,13 @@ function assembleRaw(db, file) {
     return chapterPage(tpl, ch, { all: levelChapters(ch), prog: progress(db, SCOPE.user?.id, SCOPE.store), slugs: new Set(baseIndex().map((x) => x.slug)) });
   }
   // The Cocktail Program (Nov 8): a course page per level, drawn from the Sommelier Level 1 page (Figma 392:31)
+  // Program hubs (Nov 8): drawn from the Sommelier Program hub (Figma 391:32)
+  const hubOf = PROGRAMS.find((p) => file === p.key + '-hub' && chaptersOf(p.key).length);
+  if (hubOf) {
+    const tpl = basePage('391-32'); if (!tpl) return null;
+    const certified = new Set(SCOPE.user ? certificatesFor(db, SCOPE.user, SCOPE.store, null).map((c) => c.key) : []);
+    return programHub({ ...tpl, name: hubOf.name }, { program: hubOf.key, done: sectionsDone(db, SCOPE.user?.id), certified });
+  }
   const bl = LEVELS.find((x) => x.file === file && chaptersOf(x.program, x.level).length);
   if (bl) {
     const tpl = basePage('392-31'); if (!tpl) return null;
@@ -619,10 +627,15 @@ export function fullIndex(db) {
   }
   // Study Guide chapters (content/manual), searchable like any page
   // The Cocktail Program (Nov 8): its course page, and its lessons below
+  for (const P of PROGRAMS) {
+    if (!chaptersOf(P.key).length) continue;
+    entries.push({ id: P.key + '-hub', file: P.key + '-hub', slug: P.slug, name: `The Bar · ${P.name}`, title: P.name, section: 'The Bar', nav: P.name,
+      text: `${P.name} levels certificates ${P.ladder.join(' ')}`, blurb: `${P.name}: every level, its final and its certificate.` });
+  }
   for (const L of LEVELS) {
     const P = programDef(L.program); const chs = chaptersOf(L.program, L.level); const n = chs.length;
     if (!n) continue;
-    entries.push({ id: L.file, file: L.file, slug: L.slug, name: `The Bar · ${P.name} · Level ${L.level}`, title: L.level === 1 ? P.name : `${P.name} · Level ${L.level}`, section: 'The Bar', nav: P.name,
+    entries.push({ id: L.file, file: L.file, slug: L.slug, name: `The Bar · ${P.name} · Level ${L.level}`, title: `${P.name} · Level ${L.level}`, section: 'The Bar', nav: P.name,
       text: `${P.name} Level ${L.level} ${L.title} lessons final exam ${chs.map((c) => c.title).join(' ')}`,
       blurb: `Level ${L.level}: ${L.title}. ${n} lessons, then a ${L.len}-question final${L.practical ? ' and a practical' : ''}.` });
   }
