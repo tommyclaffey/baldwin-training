@@ -150,7 +150,6 @@ export function Overview() {
         <Link className="tile" to="/admin/media"><strong>Videos and photos · {media.data?.media.length ?? '–'}</strong><span>Upload files or add YouTube links, then pick them in any page’s form.</span></Link>
         <Link className="tile" to="/admin/quizzes"><strong>Quiz results</strong><span>See who passed, and sign people off.</span></Link>
       </div>
-      <p className="muted small">Other pages (spirits, wine, beer, service) still come from the design. They move into the CMS next, one page type at a time.</p>
     </div>
   );
 }
@@ -266,6 +265,7 @@ type Invite = { id: string; email: string; role: string; created_at: string; exp
 type StoreRow = { id: number; name: string; bookReady: boolean };
 type TeamData = { company: { id: number; name: string; joinCode: string }; stores: StoreRow[]; yourStore: number | null; people: Member[]; invites: Invite[]; you: number; youRole: Role };
 export function People() {
+  const { user } = useSession();
   const { data, error, load } = useLoad<TeamData>('/api/team');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('manager');
@@ -302,7 +302,7 @@ export function People() {
 
       <section className="card stack">
         <h2>Staff join code</h2>
-        <div className="join-code" aria-label="Join code">{data.company.joinCode}</div>
+        <div className="join-code" aria-label="Join code">{data.company.joinCode || (user?.demo ? 'DEMO' : '–')}</div>
         <p className="muted small">Staff open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong>, type this code, {multi ? 'pick their restaurant, ' : ''}pick their name (or “I’m New Here”) and a PIN. One code for {multi ? 'every restaurant in the group' : 'the whole team'}. Share it at line-up or post it in the back of house.</p>
         <div className="row">
           <button className="btn ghost" onClick={() => copy(`Join the ${data.company.name} training app on Mise: ${joinUrl}  Join code: ${data.company.joinCode}`, 'code')}>{copied === 'code' ? 'Copied' : 'Copy Code and Link'}</button>

@@ -30,7 +30,11 @@ const STOPS: Stop[] = [
   { path: '/the-bar/cocktail-specs', target: '[data-name^="Spec · "]', title: 'Specs for bartenders', body: 'One card per drink: the amounts, glass, ice, method and garnish. The spec quizzes test these builds.' },
   { path: '/the-bar/wine', target: '[data-name="Section · By the glass"]', title: 'The wine list', body: 'Every wine has its own page: tasting notes, what to pair and what to say.' },
   { path: '/quizzes', target: '.qb', title: 'Build a quiz', body: 'Pick any subjects and a length. New Questions never repeats until you’ve seen them all.' },
-  { path: '/sommelier-program', target: '[data-name="Your path"]', title: 'The Sommelier lessons', body: 'The Court of Master Sommeliers’ path, from Introductory to Master, with videos and practice cards.' },
+  // Nov 10 (audit: the demo never showed the programs): the training programs, and a certificate earned
+  { path: '/cocktail-program', target: '[data-name="Your path"]', title: 'Training programs', body: 'Cocktail, Beer and Sommelier programs, each in levels with video lessons and practice cards.' },
+  { path: '/cocktail-program/level-1', target: '[data-name="Hero"]', title: 'Every level ends in a final', body: 'Pass the final, and the practical where a level has one, and the level is yours.' },
+  { path: '/certificate/bar-1', target: '.cert', title: 'A certificate to keep', body: 'You passed Level 1 of the Cocktail Program. Print it or save it as a PDF; your manager sees it too.', staff: true },
+  { path: '/sommelier-program', target: '[data-name="Your path"]', title: 'The Sommelier lessons', body: 'Built on the Court of Master Sommeliers’ path, with videos and a practice exam at each level.' },
   { path: '/admin', target: '.admin-side nav', title: 'Everything you can change', body: 'The menu, cocktails, wine, back bar, photos, quiz results and your team.', manager: true },
   { path: '/admin/training', target: '.list', title: 'Everyone’s path', body: 'Each person’s job, how far along they are and what’s late. Open someone to sign off what you’ve watched them do.', manager: true },
   { path: '/admin/quizzes', target: '.person, .list-row', title: 'Everyone’s scores', body: 'Open a person to see their attempts, then sign them off.', manager: true },
@@ -103,13 +107,13 @@ const TRY_STAFF = [
   { title: 'Follow your path', body: 'What a server learns, week by week, and what’s next for you', to: '/my-path' },
   { title: 'Look up a dish', body: 'Allergens, what to say at the table and what to pair it with', to: '/food-matrix' },
   { title: 'Find a cocktail spec', body: 'Every build in one place, for bartenders', to: '/the-bar/cocktail-specs' },
-  { title: 'Start the Sommelier lessons', body: 'Four levels, with videos and practice cards', to: '/sommelier-program' },
+  { title: 'Earn a certificate', body: 'Cocktail, Beer and Sommelier programs: video lessons, a final, a certificate', to: '/cocktail-program' },
 ];
 const TRY_MANAGER = [
   { title: 'Change the menu', body: 'Add a dish or edit one, and everyone sees it on Save', to: '/admin/pages/recipe' },
   { title: 'Check quiz results', body: 'Everyone’s scores. Open a person, then sign them off', to: '/admin/quizzes' },
   { title: 'See your team’s training', body: 'Each person’s path, what’s late, and sign-offs', to: '/admin/training' },
-  { title: 'See what your team sees', body: 'The menu, the bar, the lessons and the quizzes', to: '/' },
+  { title: 'See the training programs', body: 'Cocktail, Beer and Sommelier, each level with a final and a certificate', to: '/cocktail-program' },
 ];
 
 function WelcomeCard({ manager }: { manager: boolean }) {
@@ -130,7 +134,7 @@ function WelcomeCard({ manager }: { manager: boolean }) {
     <div className="dw-scrim" onClick={closeWelcome}>
       <div ref={card} className="dw" role="dialog" aria-modal="true" aria-labelledby={titleId} onClick={(e) => e.stopPropagation()}>
         <span className="dw-pill">Live Demo</span>
-        <h2 id={titleId}>Welcome to The Training App</h2>
+        <h2 id={titleId}>Welcome to Mise Academy</h2>
         <p className="dw-lede">One training book for the whole restaurant, on every phone: the menu, the bar, the wine list, the lessons and the quizzes.</p>
         <p className="dw-persona">{manager ? 'You’re Rosalind Hart, the manager of The Baldwin' : 'You’re Marisol Vega, a server at The Baldwin'}. It’s a sample restaurant: the dishes, house cocktails and people are made up. Refresh anytime to start over.</p>
         <p className="dw-label">Try These</p>

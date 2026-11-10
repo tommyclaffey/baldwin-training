@@ -35,12 +35,80 @@
    "pairingOpposite": "Adelsheim Pinot Noir",
    "cocktail": "Garden Spritz",
    "say": "“Something to share while you look at the menu: warm toast, cool ricotta, a little heat from the honey.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "A snack from the chef’s first trip to Sicily, where ricotta came warm from the dairy.",
+   "sellingPoints": [
+    "Whipped to order, so it stays light",
+    "Calabrian chili honey made in house",
+    "Easy to share for two to four"
+   ],
+   "components": [
+    {
+     "component": "Whipped ricotta",
+     "portion": "3 oz",
+     "hold": "Cold, 38°F"
+    },
+    {
+     "component": "Sourdough",
+     "portion": "2 slices",
+     "hold": "Room temp, cut at open"
+    },
+    {
+     "component": "Hot honey",
+     "portion": "1 oz",
+     "hold": "Warm, squeeze bottle"
+    },
+    {
+     "component": "Black pepper",
+     "portion": "To finish",
+     "hold": "Grinder at the pass"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Whip the ricotta",
+     "detail": "Whip ricotta with olive oil and salt until smooth and airy.",
+     "time": "Prep"
+    },
+    {
+     "title": "Grill the bread",
+     "detail": "Brush sourdough with oil and grill until marked on both sides.",
+     "time": "3 min"
+    },
+    {
+     "title": "Build",
+     "detail": "Swoosh the ricotta across each slice, edge to edge.",
+     "time": "1 min"
+    },
+    {
+     "title": "Finish",
+     "detail": "Drizzle hot honey, crack pepper over, cut on the bias.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Toast",
+     "note": "cut on the bias, overlapping"
+    },
+    {
+     "name": "Ricotta",
+     "note": "thick swoosh, edge to edge"
+    },
+    {
+     "name": "Hot honey",
+     "note": "zigzag over the top"
+    },
+    {
+     "name": "Pepper",
+     "note": "last, coarse"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/whipped-ricotta-toast.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -84,12 +152,80 @@
    "pairingOpposite": "Cappone Chianti Classico",
    "cocktail": "Paloma Verde",
    "say": "“Crisp and light, with a squeeze of lemon. A great start with a glass of white.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "The bar snack every table orders, made lighter with a rice-flour dredge.",
+   "sellingPoints": [
+    "Cut and dredged to order",
+    "Rice flour keeps it crisp, not heavy",
+    "Lemon aioli made fresh each morning"
+   ],
+   "components": [
+    {
+     "component": "Calamari, rings and tentacles",
+     "portion": "6 oz",
+     "hold": "Cold, on ice"
+    },
+    {
+     "component": "Rice-flour dredge",
+     "portion": "As needed",
+     "hold": "Dry bin, sifted"
+    },
+    {
+     "component": "Lemon aioli",
+     "portion": "2 oz",
+     "hold": "Cold, ramekin"
+    },
+    {
+     "component": "Pickled peppers",
+     "portion": "1 oz",
+     "hold": "Cold"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Soak",
+     "detail": "Soak calamari in buttermilk for at least an hour.",
+     "time": "Prep"
+    },
+    {
+     "title": "Dredge",
+     "detail": "Shake off, toss in the rice-flour dredge, tap off the extra.",
+     "time": "1 min"
+    },
+    {
+     "title": "Fry",
+     "detail": "Fry at 350°F until pale gold and crisp.",
+     "time": "2 min"
+    },
+    {
+     "title": "Season and plate",
+     "detail": "Salt straight from the fryer, toss with the peppers.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Calamari",
+     "note": "piled high, centred"
+    },
+    {
+     "name": "Peppers",
+     "note": "scattered over the top"
+    },
+    {
+     "name": "Aioli",
+     "note": "ramekin at 2 o’clock"
+    },
+    {
+     "name": "Lemon",
+     "note": "wedge at 10 o’clock"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/crispy-calamari.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -136,12 +272,85 @@
    "pairingOpposite": "Poggio Costa Prosecco",
    "cocktail": "Smoked Maple Old Fashioned",
    "say": "“Three meatballs, baked to order in tomato. Perfect with a glass of Chianti.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "Sunday supper at the chef’s grandmother’s, baked in the same dish they’re served in.",
+   "sellingPoints": [
+    "Beef, pork and veal, rolled by hand",
+    "Baked in the sauce, so they stay tender",
+    "Ask about pork before ordering"
+   ],
+   "components": [
+    {
+     "component": "Meatballs",
+     "portion": "3 each, 2 oz",
+     "hold": "Hot, in sauce"
+    },
+    {
+     "component": "Tomato sauce",
+     "portion": "4 oz",
+     "hold": "Bain-marie, 165°F"
+    },
+    {
+     "component": "Fresh mozzarella",
+     "portion": "2 oz",
+     "hold": "Cold"
+    },
+    {
+     "component": "Grilled bread",
+     "portion": "1 slice",
+     "hold": "Room temp"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Roll",
+     "detail": "Mix the meat, soaked bread and cheese gently; roll into 2 oz balls.",
+     "time": "Prep"
+    },
+    {
+     "title": "Brown",
+     "detail": "Roast at 450°F until browned outside.",
+     "time": "12 min"
+    },
+    {
+     "title": "Braise",
+     "detail": "Finish in the tomato sauce at a low simmer.",
+     "time": "45 min"
+    },
+    {
+     "title": "Fire to order",
+     "detail": "Three meatballs and sauce in a cast-iron dish, top with mozzarella, into the oven.",
+     "time": "6 min"
+    },
+    {
+     "title": "Finish",
+     "detail": "Basil and grated cheese over, bread on the side.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Meatballs",
+     "note": "three, in a triangle"
+    },
+    {
+     "name": "Mozzarella",
+     "note": "melted over the middle"
+    },
+    {
+     "name": "Basil",
+     "note": "torn, on top"
+    },
+    {
+     "name": "Bread",
+     "note": "on the board beside"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/meatballs-al-forno.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -184,12 +393,80 @@
    "pairingOpposite": "Adelsheim Pinot Noir",
    "cocktail": "Garden Spritz",
    "say": "“Creamy burrata with the best tomatoes of the week. Light and bright.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "A summer plate that lives or dies on the tomatoes, so it’s built simply.",
+   "sellingPoints": [
+    "Burrata delivered twice a week",
+    "Tomatoes salted ten minutes before plating",
+    "Naturally gluten-free without the bread"
+   ],
+   "components": [
+    {
+     "component": "Burrata",
+     "portion": "1 ball, 4 oz",
+     "hold": "Cold, in its liquid"
+    },
+    {
+     "component": "Heirloom tomatoes",
+     "portion": "5 oz",
+     "hold": "Room temp, cut to order"
+    },
+    {
+     "component": "Basil oil",
+     "portion": "1 oz",
+     "hold": "Room temp"
+    },
+    {
+     "component": "Flaky salt",
+     "portion": "To finish",
+     "hold": "Pass"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Cut tomatoes",
+     "detail": "Cut into wedges and rounds; salt and rest.",
+     "time": "10 min"
+    },
+    {
+     "title": "Arrange",
+     "detail": "Lay tomatoes in a loose ring.",
+     "time": "1 min"
+    },
+    {
+     "title": "Burrata",
+     "detail": "Set the burrata in the centre and tear it open.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Finish",
+     "detail": "Basil oil, flaky salt and black pepper.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Tomatoes",
+     "note": "loose ring, colours mixed"
+    },
+    {
+     "name": "Burrata",
+     "note": "centre, torn open"
+    },
+    {
+     "name": "Basil oil",
+     "note": "around the cheese"
+    },
+    {
+     "name": "Salt",
+     "note": "flaky, last"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/burrata-heirloom-tomato.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -235,12 +512,75 @@
    "pairingOpposite": "Adelsheim Pinot Noir",
    "cocktail": "Paloma Verde",
    "say": "“Our take on the classic: crisp little gems and a punchy anchovy dressing.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "The classic Caesar, with crisp little gems instead of romaine.",
+   "sellingPoints": [
+    "Dressing made in house daily",
+    "Contains anchovy and egg",
+    "Ask about a version without croutons"
+   ],
+   "components": [
+    {
+     "component": "Little gem leaves",
+     "portion": "5 oz",
+     "hold": "Cold, washed"
+    },
+    {
+     "component": "Caesar dressing",
+     "portion": "2 oz",
+     "hold": "Cold"
+    },
+    {
+     "component": "Garlic croutons",
+     "portion": "1 oz",
+     "hold": "Dry, room temp"
+    },
+    {
+     "component": "Parmesan",
+     "portion": "0.5 oz",
+     "hold": "Grated to order"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Dress",
+     "detail": "Toss leaves with the dressing until every leaf is coated.",
+     "time": "1 min"
+    },
+    {
+     "title": "Stack",
+     "detail": "Stand the leaves up in the bowl, tallest in back.",
+     "time": "1 min"
+    },
+    {
+     "title": "Finish",
+     "detail": "Croutons, grated parmesan and black pepper.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Little gem",
+     "note": "stacked, tall in back"
+    },
+    {
+     "name": "Croutons",
+     "note": "tucked between leaves"
+    },
+    {
+     "name": "Parmesan",
+     "note": "grated over everything"
+    },
+    {
+     "name": "Pepper",
+     "note": "last"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/little-gem-caesar.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -285,12 +625,80 @@
    "pairingOpposite": "Cappone Chianti Classico",
    "cocktail": "Garden Spritz",
    "say": "“Hearty but fresh: warm farro and squash with bright lemon.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "A hearty grain salad that holds its own as a light main.",
+   "sellingPoints": [
+    "Farro cooked fresh every morning",
+    "Contains gluten (farro is wheat)",
+    "Add chicken or salmon for a main"
+   ],
+   "components": [
+    {
+     "component": "Farro, cooked",
+     "portion": "3 oz",
+     "hold": "Cold, 38°F"
+    },
+    {
+     "component": "Arugula",
+     "portion": "2 oz",
+     "hold": "Cold"
+    },
+    {
+     "component": "Roasted squash",
+     "portion": "2 oz",
+     "hold": "Room temp"
+    },
+    {
+     "component": "Lemon vinaigrette",
+     "portion": "1.5 oz",
+     "hold": "Room temp"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Cook the farro",
+     "detail": "Simmer in salted water until just tender; cool on a sheet tray.",
+     "time": "Prep"
+    },
+    {
+     "title": "Roast the squash",
+     "detail": "Toss in oil and salt, roast at 425°F until caramelised.",
+     "time": "Prep"
+    },
+    {
+     "title": "Toss to order",
+     "detail": "Farro, squash and vinaigrette first, then fold in the arugula.",
+     "time": "1 min"
+    },
+    {
+     "title": "Finish",
+     "detail": "Shaved pecorino and toasted seeds.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Farro and squash",
+     "note": "base of the bowl"
+    },
+    {
+     "name": "Arugula",
+     "note": "loose on top"
+    },
+    {
+     "name": "Pecorino",
+     "note": "shaved over"
+    },
+    {
+     "name": "Seeds",
+     "note": "last, scattered"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/farro-arugula-salad.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -335,12 +743,80 @@
    "pairingOpposite": "Poggio Costa Prosecco",
    "cocktail": "Smoked Maple Old Fashioned",
    "say": "“The classic, done right: our dough rests for 48 hours before it hits the oven.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "The pizza that tests every pizzeria: dough, tomato, mozzarella, basil.",
+   "sellingPoints": [
+    "Dough rested for 48 hours",
+    "San Marzano tomatoes, hand-crushed",
+    "Baked in about 90 seconds"
+   ],
+   "components": [
+    {
+     "component": "Dough ball",
+     "portion": "250 g",
+     "hold": "Proofed, room temp"
+    },
+    {
+     "component": "Tomato sauce",
+     "portion": "3 oz",
+     "hold": "Room temp"
+    },
+    {
+     "component": "Fresh mozzarella",
+     "portion": "3 oz",
+     "hold": "Cold, torn"
+    },
+    {
+     "component": "Basil",
+     "portion": "4 leaves",
+     "hold": "Room temp, under a damp towel"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Stretch",
+     "detail": "Press from the middle out, leaving a 1-inch rim.",
+     "time": "1 min"
+    },
+    {
+     "title": "Top",
+     "detail": "Sauce in a spiral, mozzarella torn and spread out.",
+     "time": "1 min"
+    },
+    {
+     "title": "Bake",
+     "detail": "Bake on the deck, turning once, until the rim is leopard-spotted.",
+     "time": "90 sec"
+    },
+    {
+     "title": "Finish",
+     "detail": "Basil, olive oil, cut in six.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Crust",
+     "note": "puffed rim, spotted"
+    },
+    {
+     "name": "Mozzarella",
+     "note": "even pools"
+    },
+    {
+     "name": "Basil",
+     "note": "four leaves, spread out"
+    },
+    {
+     "name": "Olive oil",
+     "note": "drizzle, last"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/margherita.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -385,12 +861,80 @@
    "pairingOpposite": "Thomas Schmitt Riesling",
    "cocktail": "Paloma Verde",
    "say": "“Sweet heat: crisp soppressata cups with hot honey over the top.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "Sweet, spicy and salty on one pie; the late-night favourite.",
+   "sellingPoints": [
+    "Soppressata cups and crisps in the oven",
+    "Hot honey added after the bake",
+    "Contains pork"
+   ],
+   "components": [
+    {
+     "component": "Dough ball",
+     "portion": "250 g",
+     "hold": "Proofed, room temp"
+    },
+    {
+     "component": "Tomato sauce",
+     "portion": "3 oz",
+     "hold": "Room temp"
+    },
+    {
+     "component": "Soppressata",
+     "portion": "2 oz",
+     "hold": "Cold, sliced thin"
+    },
+    {
+     "component": "Hot honey",
+     "portion": "1 oz",
+     "hold": "Warm"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Stretch",
+     "detail": "Press from the middle out, leaving a rim.",
+     "time": "1 min"
+    },
+    {
+     "title": "Top",
+     "detail": "Sauce, mozzarella, then soppressata edge to edge.",
+     "time": "1 min"
+    },
+    {
+     "title": "Bake",
+     "detail": "Bake until the soppressata cups and crisps.",
+     "time": "90 sec"
+    },
+    {
+     "title": "Finish",
+     "detail": "Hot honey zigzag, cut in six.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Soppressata",
+     "note": "cupped, even spacing"
+    },
+    {
+     "name": "Hot honey",
+     "note": "zigzag over the top"
+    },
+    {
+     "name": "Chili flake",
+     "note": "light pinch"
+    },
+    {
+     "name": "Cut",
+     "note": "six even slices"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/hot-honey-soppressata.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -433,12 +977,80 @@
    "pairingOpposite": "Cappone Chianti Classico",
    "cocktail": "Espresso Negroni",
    "say": "“Three ingredients, done perfectly: pecorino, pepper and fresh pasta.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "Three ingredients and all technique: pasta, pecorino, pepper.",
+   "sellingPoints": [
+    "Fresh tonnarelli made in house",
+    "The sauce is just cheese, pepper and pasta water",
+    "Made to order, never held"
+   ],
+   "components": [
+    {
+     "component": "Tonnarelli",
+     "portion": "5 oz fresh",
+     "hold": "Cold, portioned"
+    },
+    {
+     "component": "Pecorino Romano",
+     "portion": "1.5 oz",
+     "hold": "Finely grated"
+    },
+    {
+     "component": "Black pepper",
+     "portion": "1 tsp",
+     "hold": "Toasted, coarse"
+    },
+    {
+     "component": "Pasta water",
+     "portion": "As needed",
+     "hold": "From the pot"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Toast the pepper",
+     "detail": "Toast cracked pepper in a dry pan until fragrant.",
+     "time": "1 min"
+    },
+    {
+     "title": "Cook the pasta",
+     "detail": "Boil until just short of done; save the water.",
+     "time": "2 min"
+    },
+    {
+     "title": "Emulsify",
+     "detail": "Off the heat, toss pasta with pecorino and pasta water until glossy.",
+     "time": "1 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Twist into a nest, more pecorino and pepper on top.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Pasta",
+     "note": "twisted nest, centred"
+    },
+    {
+     "name": "Sauce",
+     "note": "glossy, no pooling"
+    },
+    {
+     "name": "Pecorino",
+     "note": "snowfall over the top"
+    },
+    {
+     "name": "Pepper",
+     "note": "coarse, last"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/cacio-e-pepe.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -485,12 +1097,80 @@
    "pairingOpposite": "Château St. Sulpice Sauvignon Blanc",
    "cocktail": "Smoked Maple Old Fashioned",
    "say": "“Our signature pasta: creamy, a little spicy, and big enough to share.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "The creamy tomato pasta guests come back for.",
+   "sellingPoints": [
+    "Vodka cooks off; the sauce keeps its body",
+    "Calabrian chili for gentle heat",
+    "Contains dairy and gluten"
+   ],
+   "components": [
+    {
+     "component": "Rigatoni",
+     "portion": "5 oz dry",
+     "hold": "Par-cooked, oiled"
+    },
+    {
+     "component": "Vodka sauce",
+     "portion": "5 oz",
+     "hold": "Bain-marie, 165°F"
+    },
+    {
+     "component": "Parmesan",
+     "portion": "0.5 oz",
+     "hold": "Grated"
+    },
+    {
+     "component": "Basil",
+     "portion": "3 leaves",
+     "hold": "Room temp"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Make the sauce",
+     "detail": "Sweat shallot, add tomato paste and chili, deglaze with vodka, finish with cream.",
+     "time": "Prep"
+    },
+    {
+     "title": "Cook the pasta",
+     "detail": "Finish the rigatoni in boiling water.",
+     "time": "3 min"
+    },
+    {
+     "title": "Toss",
+     "detail": "Toss pasta in the sauce with a splash of pasta water.",
+     "time": "1 min"
+    },
+    {
+     "title": "Finish",
+     "detail": "Parmesan and torn basil.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Rigatoni",
+     "note": "piled, sauce clinging"
+    },
+    {
+     "name": "Parmesan",
+     "note": "grated over"
+    },
+    {
+     "name": "Basil",
+     "note": "torn, on top"
+    },
+    {
+     "name": "Bowl",
+     "note": "wiped rim"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/rigatoni-alla-vodka.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -537,12 +1217,80 @@
    "pairingOpposite": "Adelsheim Pinot Noir",
    "cocktail": "Garden Spritz",
    "say": "“Sweet lobster with brown butter. Our special-occasion pasta.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "The special-occasion pasta: lobster, butter, a little chili.",
+   "sellingPoints": [
+    "Whole lobster tail, poached in butter",
+    "Fresh tagliatelle made in house",
+    "Contains shellfish, dairy and gluten"
+   ],
+   "components": [
+    {
+     "component": "Lobster tail",
+     "portion": "5 oz",
+     "hold": "Cold, shelled"
+    },
+    {
+     "component": "Tagliatelle",
+     "portion": "5 oz fresh",
+     "hold": "Cold, portioned"
+    },
+    {
+     "component": "Lobster butter",
+     "portion": "2 oz",
+     "hold": "Room temp"
+    },
+    {
+     "component": "Chives",
+     "portion": "To finish",
+     "hold": "Cut to order"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Poach",
+     "detail": "Poach the lobster gently in butter until just opaque.",
+     "time": "5 min"
+    },
+    {
+     "title": "Cook the pasta",
+     "detail": "Boil the tagliatelle until just tender.",
+     "time": "2 min"
+    },
+    {
+     "title": "Toss",
+     "detail": "Toss with lobster butter, lemon and a splash of pasta water.",
+     "time": "1 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Pasta nest, lobster on top, chives over.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Tagliatelle",
+     "note": "nest, centred"
+    },
+    {
+     "name": "Lobster",
+     "note": "on top, sliced in medallions"
+    },
+    {
+     "name": "Butter sauce",
+     "note": "spooned over"
+    },
+    {
+     "name": "Chives",
+     "note": "last"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/lobster-tagliatelle.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -588,12 +1336,80 @@
    "pairingOpposite": "Thomas Schmitt Riesling",
    "cocktail": "Smoked Maple Old Fashioned",
    "say": "“The comfort classic: a big crispy cutlet with melted mozzarella.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "An Italian-American classic, pounded thin and fried to order.",
+   "sellingPoints": [
+    "Breaded and fried to order",
+    "Served with rigatoni in tomato sauce",
+    "Contains gluten, dairy and egg"
+   ],
+   "components": [
+    {
+     "component": "Chicken cutlet",
+     "portion": "8 oz, pounded",
+     "hold": "Cold, breaded"
+    },
+    {
+     "component": "Tomato sauce",
+     "portion": "3 oz",
+     "hold": "Bain-marie, 165°F"
+    },
+    {
+     "component": "Mozzarella",
+     "portion": "3 oz",
+     "hold": "Cold, sliced"
+    },
+    {
+     "component": "Rigatoni side",
+     "portion": "4 oz",
+     "hold": "Hot"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Bread",
+     "detail": "Pound thin, then flour, egg and breadcrumbs.",
+     "time": "Prep"
+    },
+    {
+     "title": "Fry",
+     "detail": "Pan-fry until golden on both sides.",
+     "time": "6 min"
+    },
+    {
+     "title": "Melt",
+     "detail": "Sauce and mozzarella on top; under the broiler until bubbling.",
+     "time": "3 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Cutlet beside the rigatoni, basil over.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Cutlet",
+     "note": "left side, slightly overlapping the pasta"
+    },
+    {
+     "name": "Rigatoni",
+     "note": "right side, sauced"
+    },
+    {
+     "name": "Mozzarella",
+     "note": "bubbling, browned spots"
+    },
+    {
+     "name": "Basil",
+     "note": "last"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/chicken-parmesan.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -637,12 +1453,80 @@
    "pairingOpposite": "Deux Roches Chardonnay",
    "cocktail": "Garden Spritz",
    "say": "“Crispy skin and a bright lemon caper butter. Light, and full of flavor.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "A lighter main built around a crisp skin and a bright sauce.",
+   "sellingPoints": [
+    "Skin seared crisp, centre medium unless asked",
+    "Gluten-free as plated",
+    "Contains finfish"
+   ],
+   "components": [
+    {
+     "component": "Salmon fillet",
+     "portion": "7 oz",
+     "hold": "Cold, skin on"
+    },
+    {
+     "component": "Herbed potatoes",
+     "portion": "4 oz",
+     "hold": "Hot"
+    },
+    {
+     "component": "Salsa verde",
+     "portion": "1.5 oz",
+     "hold": "Room temp"
+    },
+    {
+     "component": "Lemon",
+     "portion": "1 wedge",
+     "hold": "Cold"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Season",
+     "detail": "Pat the skin dry and salt it.",
+     "time": "1 min"
+    },
+    {
+     "title": "Sear",
+     "detail": "Skin down in a hot pan; press flat for the first 30 seconds.",
+     "time": "5 min"
+    },
+    {
+     "title": "Finish",
+     "detail": "Flip for the last minute; rest skin up.",
+     "time": "2 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Potatoes, salmon skin up, salsa verde beside.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Potatoes",
+     "note": "base, slightly left"
+    },
+    {
+     "name": "Salmon",
+     "note": "skin up, on the potatoes"
+    },
+    {
+     "name": "Salsa verde",
+     "note": "spooned beside, not on the skin"
+    },
+    {
+     "name": "Lemon",
+     "note": "wedge at 2 o’clock"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/seared-salmon.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -685,12 +1569,80 @@
    "pairingOpposite": "Thomas Schmitt Riesling",
    "cocktail": "Smoked Maple Old Fashioned",
    "say": "“A 12-ounce strip off the grill with garlic butter. Ask how they like it cooked.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "The steakhouse cut, seasoned simply and finished with herb butter.",
+   "sellingPoints": [
+    "Dry-aged 28 days",
+    "Cooked to temperature, rested before slicing",
+    "Gluten-free as plated"
+   ],
+   "components": [
+    {
+     "component": "NY strip",
+     "portion": "12 oz",
+     "hold": "Cold, seasoned"
+    },
+    {
+     "component": "Herb butter",
+     "portion": "1 oz",
+     "hold": "Cold, sliced"
+    },
+    {
+     "component": "Roasted garlic potatoes",
+     "portion": "5 oz",
+     "hold": "Hot"
+    },
+    {
+     "component": "Charred broccolini",
+     "portion": "3 oz",
+     "hold": "Hot"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Season",
+     "detail": "Salt heavily and rest at room temp for 20 minutes.",
+     "time": "Prep"
+    },
+    {
+     "title": "Sear",
+     "detail": "Sear hard on every side in a cast-iron pan.",
+     "time": "6 min"
+    },
+    {
+     "title": "Finish",
+     "detail": "Into the oven to temperature; baste with butter.",
+     "time": "To temp"
+    },
+    {
+     "title": "Rest and slice",
+     "detail": "Rest 5 minutes, slice against the grain.",
+     "time": "5 min"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Steak",
+     "note": "sliced, fanned at centre"
+    },
+    {
+     "name": "Herb butter",
+     "note": "melting on top"
+    },
+    {
+     "name": "Potatoes",
+     "note": "left"
+    },
+    {
+     "name": "Broccolini",
+     "note": "right"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/12-oz-ny-strip.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -733,12 +1685,80 @@
    "pairingOpposite": "Cappone Chianti Classico",
    "cocktail": "Smoked Maple Old Fashioned",
    "say": "“A thick, juicy chop with sweet-tart apple mostarda.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "A thick chop brined overnight, so it stays juicy.",
+   "sellingPoints": [
+    "Brined 12 hours",
+    "Cooked to 145°F and rested",
+    "Contains pork"
+   ],
+   "components": [
+    {
+     "component": "Pork chop, bone in",
+     "portion": "14 oz",
+     "hold": "Cold, brined"
+    },
+    {
+     "component": "Apple mostarda",
+     "portion": "2 oz",
+     "hold": "Room temp"
+    },
+    {
+     "component": "Polenta",
+     "portion": "5 oz",
+     "hold": "Hot, loose"
+    },
+    {
+     "component": "Pan jus",
+     "portion": "2 oz",
+     "hold": "Bain-marie, 165°F"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Brine",
+     "detail": "Brine the chops in salt, sugar and herbs overnight.",
+     "time": "12 hr"
+    },
+    {
+     "title": "Sear",
+     "detail": "Pat dry and sear the fat cap first, then both sides.",
+     "time": "6 min"
+    },
+    {
+     "title": "Roast",
+     "detail": "Finish in the oven to 145°F; rest.",
+     "time": "To temp"
+    },
+    {
+     "title": "Plate",
+     "detail": "Polenta, chop leaning on it, jus over, mostarda on top.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Polenta",
+     "note": "base, spread"
+    },
+    {
+     "name": "Pork chop",
+     "note": "leaning on the polenta, bone up"
+    },
+    {
+     "name": "Jus",
+     "note": "spooned over"
+    },
+    {
+     "name": "Mostarda",
+     "note": "on top of the chop"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/bone-in-pork-chop.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,
@@ -782,12 +1802,75 @@
    "pairingOpposite": "Poggio Costa Prosecco",
    "cocktail": "Espresso Negroni",
    "say": "“Made in house every morning: espresso, mascarpone and cocoa.”",
-   "inspiration": "",
-   "sellingPoints": [],
-   "components": [],
-   "steps": [],
-   "plating": [],
-   "photos": [],
+   "inspiration": "Made the traditional way, in a pan, and cut to order.",
+   "sellingPoints": [
+    "Made in house every morning",
+    "Contains raw egg, dairy, gluten and coffee",
+    "Pairs with an espresso or a dessert wine"
+   ],
+   "components": [
+    {
+     "component": "Tiramisu",
+     "portion": "1 square, 4 x 3 in",
+     "hold": "Cold, 38°F"
+    },
+    {
+     "component": "Cocoa powder",
+     "portion": "To finish",
+     "hold": "Dry, sifter"
+    },
+    {
+     "component": "Chocolate shavings",
+     "portion": "0.25 oz",
+     "hold": "Cold"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Build",
+     "detail": "Layer espresso-dipped ladyfingers and mascarpone cream in the pan.",
+     "time": "Prep"
+    },
+    {
+     "title": "Set",
+     "detail": "Chill at least six hours.",
+     "time": "6 hr"
+    },
+    {
+     "title": "Cut",
+     "detail": "Cut with a hot knife, wiping between cuts.",
+     "time": "1 min"
+    },
+    {
+     "title": "Finish",
+     "detail": "Dust with cocoa, top with shavings.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Tiramisu",
+     "note": "centre, clean edges"
+    },
+    {
+     "name": "Cocoa",
+     "note": "dusted over the top"
+    },
+    {
+     "name": "Shavings",
+     "note": "small pile, top left"
+    },
+    {
+     "name": "Plate",
+     "note": "wiped of cocoa"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo/tiramisu.jpg",
+     "caption": "Final plate"
+    }
+   ],
    "chapters": [],
    "hasVideo": false,
    "video": null,

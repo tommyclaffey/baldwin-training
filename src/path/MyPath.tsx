@@ -13,7 +13,7 @@ export function MyPathPage() {
   const { user } = useSession();
   const path = usePath(user?.id);
   const [tab, setTab] = useState(0);
-  useEffect(() => { document.title = 'My Path · The Training App'; void reloadPath(); }, []);
+  useEffect(() => { document.title = 'My Path · Mise Academy'; void reloadPath(); }, []);
   if (!path) return <main className="page mp"><div className="loader" /></main>;
   if (!path.paths.length) return <PickJob jobs={path.allJobs} />;
   const p = path.paths[Math.min(tab, path.paths.length - 1)];

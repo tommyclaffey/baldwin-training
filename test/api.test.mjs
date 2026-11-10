@@ -754,7 +754,8 @@ test('notes to the team ("bar lead to add", "confirm with chef") show to manager
     return Promise.all(['classic/old-fashioned', 'the-bar/cocktail-specs', 'food-matrix'].map(page)).then((x) => x.join(' '));
   };
   const NOTE = /lead to add|lead to confirm|confirm with chef|chef to confirm|sample data/i;
-  assert.match(await as('manager'), NOTE, 'managers see what is still to fill in');
+  // Nov 10 (audit): a demo manager sees the finished book too; real managers still see the notes (forViewer: staff || demo)
+  assert.doesNotMatch(await as('manager'), NOTE, 'demo managers see the finished book');
   assert.doesNotMatch(await as('employee'), NOTE, 'staff never do');
 });
 

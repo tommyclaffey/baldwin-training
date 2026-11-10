@@ -30,11 +30,11 @@ export function DemoPicker() {
     <main className="demo-pick">
       <div className="demo-brand">
         <img src="/img/logo-white.png" alt="The Baldwin" height="40" />
-        <span className="demo-pill">DEMO</span>
+        <span className="demo-line"><span>Mise Academy</span><span className="demo-pill">DEMO</span></span>
       </div>
       <div className="demo-head">
         <p className="demo-script">Try it yourself</p>
-        <h1>THE TRAINING APP</h1>
+        <h1>MISE ACADEMY</h1>
         <p className="demo-sub">Pick a view and look around. It’s a separate demo restaurant with a sample menu and our real wine list. It resets after a day.</p>
       </div>
       <div className="demo-roles">

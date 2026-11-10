@@ -46,7 +46,7 @@ export function createSession(db, userId, { days = SESSION_DAYS, impersonator = 
 /** The signed-in person, with their session's support and acting-company details. Deleted people and companies are out. */
 export function sessionUser(db, token) {
   if (!token) return null;
-  return db.prepare(`SELECT u.*, s.impersonator_id, s.acting_company_id, s.acting_store_id, c.name company_name
+  return db.prepare(`SELECT u.*, s.impersonator_id, s.acting_company_id, s.acting_store_id, c.name company_name, c.demo demo
       FROM sessions s JOIN users u ON u.id = s.user_id LEFT JOIN companies c ON c.id = u.company_id
       WHERE s.token_hash = ? AND s.expires_at > ? AND u.deleted_at IS NULL AND (u.company_id IS NULL OR c.deleted_at IS NULL)`)
     .get(sha256(token), now()) || null;

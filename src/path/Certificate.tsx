@@ -65,7 +65,7 @@ export function CertificatePage() {
     api<{ certificates: Cert[] }>('/api/certificates' + (who ? `?user=${encodeURIComponent(who)}` : '')).then((r) => setList(r.certificates)).catch((e) => setErr((e as Error).message));
   }, [who]);
   const c = list?.find((x) => x.key === key);
-  useEffect(() => { document.title = `${c ? c.title : 'Certificate'} · The Training App`; }, [c]);
+  useEffect(() => { document.title = `${c ? c.title : 'Certificate'} · Mise Academy`; }, [c]);
   const mine = !who || Number(who) === user?.id;
   if (err) return <main className="page cp"><p role="alert" className="mp-err">{err}</p></main>;
   if (!list) return <main className="page cp"><div className="loader" /></main>;

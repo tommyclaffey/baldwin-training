@@ -57,6 +57,15 @@ function topicsOf(db, store, id) {
   if ((m = /^c:(.+):(\d+)$/.exec(id))) { const topics = m[1].split('+').filter(Boolean); return { title: 'Your Quiz', topics, count: Number(m[2]) === 0 ? Infinity : Math.min(100, Number(m[2])) }; } // 0 = every question (Nov 5: "full quiz")
   return null;
 }
+/** Nov 10 (audit; Tommy: "what do you mean"): the line above a question named its subject, which is the answer to
+ *  "Which dish lists gluten?" or "Which dish is this?". When the subject shows up in the options, show the topic instead. */
+function safeLabel(q) {
+  const lab = String(q.label || '').trim().toLowerCase();
+  if (!lab || !(q.options || []).some((o) => String(o).toLowerCase().includes(lab))) return q.label;
+  const ts = (q.topics || []).filter((k) => !k.startsWith('final:'));
+  const t = ts.find((k) => !k.startsWith('course:')) || ts[0] || q.topics?.[0]; // a course can hint too ("Mains" → the salmon)
+  return t ? labelOf(t) : 'Quiz';
+}
 export function labelOf(key) {
   const L = { 'classic-on': 'Classic Cocktails on the Menu', 'classic-off': 'Classic Cocktails off the Menu', specialty: 'Specialty Cocktails', brg: 'BRG Favorites', mules: 'Mules', dessert: 'Dessert Cocktails', spiritless: 'Spiritless Cocktails', house: 'House Cocktails', classic: 'Classic Cocktails', 'wine-glass': 'Wine by the Glass', 'wine-bottle': 'Wine by the Bottle', beer: 'Beer', allergens: 'Allergens', pairings: 'Pairings' };
   if (key.startsWith('spec:')) return SPEC_TOPICS.find(([k]) => k === key)?.[1] || key;
@@ -102,7 +111,7 @@ export function startQuiz(db, store, id, userId = null, { fresh = false } = {}) 
   }
   if (!qs.length) return null;
   if (deck) deck.add(qs.map((q) => q.ref));
-  return { id, title: def.title, items: qs.map((q) => q.ref), questions: Object.fromEntries(qs.map((q) => [q.ref, { q: q.q, options: q.options, answer: q.answer, why: q.why, page: q.page, label: q.label }])) };
+  return { id, title: def.title, items: qs.map((q) => q.ref), questions: Object.fromEntries(qs.map((q) => [q.ref, { q: q.q, options: q.options, answer: q.answer, why: q.why, page: q.page, label: safeLabel(q) }])) };
 }
 
 /** The questions this person has had in this quiz this round. */
