@@ -17,8 +17,8 @@ export function DemoPicker() {
   const go = useNavigate();
   const [busy, setBusy] = useState('');
   const [err, setErr] = useState('');
-  // There's no way out from inside the demo (Nov 7, Tommy). Someone who opened it from their own account gets back to it here;
-  // a visitor has no account kept aside, so they never see this.
+  // There's no way out from inside the demo pages (Nov 7, Tommy). Demo Home (this picker) is the way out: back to your own
+  // account if one was kept aside, otherwise to the sign-in screen.
   const [own, setOwn] = useState(false);
   useEffect(() => { api<{ own: boolean }>('/api/demo/return').then((r) => setOwn(r.own)).catch(() => {}); }, []);
   const start = async (key: string) => {
@@ -48,7 +48,9 @@ export function DemoPicker() {
       </div>
       {err && <p role="alert" className="demo-err">{err}</p>}
       <p className="demo-foot">Demo · sample dishes and cocktails, not a real menu. Uploads, invites and passwords are switched off.</p>
-      {own && <button type="button" className="demo-back" onClick={() => void exitDemo(refresh)}>Back to My Account</button>}
+      {/* Nov 10, Tommy: "there is no log out button. i am stuck in demo". Demo Home always offers a way back to sign-in:
+          your own account if one was kept aside, otherwise the sign-in screen. The demo pages themselves still have no exit (Nov 7). */}
+      <button type="button" className="demo-back" onClick={() => void exitDemo(refresh)}>{own ? 'Back to My Account' : 'Sign In to Your Account'}</button>
     </main>
   );
 }

@@ -2,6 +2,7 @@
 import { api } from './api';
 
 export async function exitDemo(refresh: () => Promise<unknown>) {
+  markDemo(false);
   await api('/api/demo/exit', { method: 'POST' }).catch(() => {});
   await refresh();
   location.assign('/');
