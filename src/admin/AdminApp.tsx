@@ -1,5 +1,6 @@
 // The /admin area: everything a manager needs to change the book.
 import { NavLink, Route, Routes, Link } from 'react-router-dom';
+import { ACADEMY_NAME } from '../lib/brand';
 import { useSession } from '../lib/session';
 import { AcceptInvite, Account, Activity, MediaLibrary, Overview, People, QuizResults, SignIn } from './screens';
 import { CollectionList, EntryEditor, PageOptions, useCollections } from './cms';
@@ -58,7 +59,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
       <aside className="admin-side">
         <div className="admin-brand">
           <Link to="/" className="admin-logo"><img src="/img/logo-white.png" alt="The Baldwin" /></Link>
-          {user.demo && <button type="button" className="demo-pill admin-demo" onClick={openWelcome}>DEMO</button>}
+          {user.demo && <button type="button" className="demo-line admin-demo" onClick={openWelcome} aria-label="Demo: open the welcome card"><span>{ACADEMY_NAME}</span><span className="demo-pill">DEMO</span></button>}
         </div>
         <span className="admin-tag">{isSuper ? 'Super Admin' : 'Admin'}</span>
         {isSuper && <span className="admin-working">Working in <strong>{user.workingInName || '—'}</strong> · <NavLink to="/admin/super">Switch</NavLink></span>}

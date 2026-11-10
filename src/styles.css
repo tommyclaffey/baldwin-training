@@ -1279,7 +1279,11 @@ body.eip-lock { overflow: hidden; }
 .demo-role button:disabled { opacity: .6; cursor: default; }
 .demo-foot { margin: 0; font-size: 13px; color: #B8AFA3; }
 .demo-err { color: #F2B8B5; margin: 0; }
-.demo-pill { display: inline-flex; align-items: center; justify-content: center; flex: none; height: 24px; padding: 0 11px; border: 0; border-radius: 999px; background: rgba(196, 154, 108, .22); color: #EBD2B2; font: 600 11.5px 'Archivo', sans-serif; letter-spacing: .08em; }
+.demo-pill { display: inline-flex; align-items: center; justify-content: center; flex: none; height: 21px; padding: 0 7px; border: 0; border-radius: 6px; background: rgba(196, 154, 108, .24); color: #EBD2B2; font: 700 11px 'Archivo', sans-serif; letter-spacing: .08em; }
+/* Nov 9 (Growth's pattern): the product's name, then the DEMO tag beside it. */
+.demo-line { display: inline-flex; align-items: center; gap: 8px; border: 0; background: none; padding: 0; cursor: pointer; color: #B8AFA3; font: 500 14px 'Archivo', sans-serif; }
+.demo-line:hover .demo-pill { background: rgba(196, 154, 108, .34); }
+.demo-line:focus-visible { outline: 2px solid #C49A6C; outline-offset: 3px; border-radius: 4px; }
 @media (max-width: 640px) { .demo-roles { grid-template-columns: 1fr; width: 100%; max-width: 360px; } .demo-pick { padding: 56px 20px; gap: 28px; } }
 
 /* ---- Cocktail Specs (Nov 5, Figma 430:17) ---- */
@@ -1424,7 +1428,7 @@ body.eip-lock { overflow: hidden; }
 .demo-bar-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #8A7A66; color: #1E1C1A; font: 600 13.5px 'Archivo', sans-serif; text-decoration: none; white-space: nowrap; }
 .demo-bar-actions a:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }
 .mobile-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.mobile-brand .demo-pill { height: 22px; padding: 0 9px; font-size: 11px; }
+.mobile-brand .demo-pill { height: 21px; padding: 0 7px; font-size: 11px; }
 .admin-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
 .demo-brand { display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .demo-back { border: 0; background: none; padding: 8px 4px; color: #E8DCCB; font: 600 14px 'Archivo', sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
