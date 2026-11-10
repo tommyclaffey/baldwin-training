@@ -7,6 +7,7 @@ import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, useSy
 import { createPortal } from 'react-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
+import { markDemoTab } from '../lib/demo';
 import { useSession } from '../lib/session';
 
 /** A stop on the walk. `path` is where it lives (a function when the address depends on the data); `manager` stops are for managers only. */
@@ -87,7 +88,7 @@ export function DemoBar() {
   const manager = user.role !== 'staff';
   const swap = async () => {
     setBusy(true);
-    try { await api('/api/demo/start', { method: 'POST', body: { role: manager ? 'employee' : 'manager' } }); await refresh(); location.assign('/'); }
+    try { await api('/api/demo/start', { method: 'POST', body: { role: manager ? 'employee' : 'manager' } }); markDemoTab(); await refresh(); location.assign('/'); }
     catch { location.assign('/demo'); }
   };
   return (
