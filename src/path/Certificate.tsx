@@ -67,12 +67,14 @@ export function CertificatePage() {
   const c = list?.find((x) => x.key === key);
   useEffect(() => { document.title = `${c ? c.title : 'Certificate'} · Mise Academy`; }, [c]);
   const mine = !who || Number(who) === user?.id;
+  const [full, setFull] = useState(false); // Nov 10 (audit): on a phone the certificate is tiny; this shows it sideways, as big as the screen allows
+  useEffect(() => { if (!full) return; const k = (e: KeyboardEvent) => { if (e.key === 'Escape') setFull(false); }; window.addEventListener('keydown', k); return () => window.removeEventListener('keydown', k); }, [full]);
   if (err) return <main className="page cp"><p role="alert" className="mp-err">{err}</p></main>;
   if (!list) return <main className="page cp"><div className="loader" /></main>;
   if (!c) return (
     <main className="page cp" aria-labelledby="cp-title">
       <h1 id="cp-title">NOT EARNED YET</h1>
-      <p className="cp-note">This certificate shows here once its final is passed{key.endsWith('-1') && key.startsWith('bar') ? '' : ' and its practical is signed off'}.</p>
+      <p className="cp-note">This certificate shows here once its final is passed, and its practical is signed off where the level has one.</p>
       <Link className="mp-btn dark" to="/my-path">Back to My Path</Link>
     </main>
   );
@@ -90,9 +92,16 @@ export function CertificatePage() {
         </div>
         <div className="cp-actions">
           <button type="button" className="mp-btn dark" onClick={printCert}>Print or Save as PDF</button>
+          <button type="button" className="mp-btn cp-full-btn" onClick={() => setFull(true)}>View Full Size</button>
         </div>
       </header>
       <div className="cp-sheet"><Certificate c={c} /></div>
+      {full && (
+        <div className="cp-full" role="dialog" aria-modal="true" aria-label="Certificate, full size" onClick={() => setFull(false)}>
+          <div className="cp-full-rot"><Certificate c={c} /></div>
+          <button type="button" className="cp-full-close" onClick={() => setFull(false)} autoFocus>Close</button>
+        </div>
+      )}
       <p className="cp-note">To keep a copy, pick “Save as PDF” in the print window. Your manager can see it on Admin → Training. Retaking the final never takes it away.</p>
     </main>
   );

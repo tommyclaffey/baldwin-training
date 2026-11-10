@@ -21,9 +21,9 @@ const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
 const SUPERADMIN_EMAIL = (process.env.SUPERADMIN_EMAIL || '').trim().toLowerCase();
 const STAFF_ROLES = new Set(['owner', 'manager', 'superadmin']);
 
-const loginLimiter = new LoginLimiter();
-const codeLimiter = new LoginLimiter(30, 15 * 60_000); // join-code lookups per address
-const pinLimiter = new LoginLimiter(5, 15 * 60_000); // wrong PINs per person
+const loginLimiter = new LoginLimiter(8, 15 * 60_000, 'login');
+const codeLimiter = new LoginLimiter(30, 15 * 60_000, 'join-code'); // join-code lookups per address
+const pinLimiter = new LoginLimiter(5, 15 * 60_000, 'pin'); // wrong PINs per person
 const tickets = new Map(); // two-step sign-in: ticket → { userId, at }
 
 /** Startup: Baldwin has a join code, the super admin email is a super admin, and 30-day-old deletions are gone for good. */

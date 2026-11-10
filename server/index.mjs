@@ -24,15 +24,23 @@ const PORT = Number(process.env.PORT) || 8080;
 const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
 initOps(db);
+LoginLimiter.useDb(db); // Nov 10: lockouts survive a redeploy
 seed(db);
 seedWineVideos(db);
 bootAccounts(db);
 migrateDemo(db); purgeDemos(db);
 setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
-const demoLimiter = new LoginLimiter(30, 60 * 60_000); // 30 demo starts an hour per address
+const demoLimiter = new LoginLimiter(30, 60 * 60_000, 'demo-start'); // 30 demo starts an hour per address
 const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address
 
-const SECURITY = { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'X-Frame-Options': 'SAMEORIGIN' };
+// Nov 10 (audit): a Content-Security-Policy, so an injected script can't run or send data anywhere. Only our own scripts;
+// styles inline (the design's layout is drawn with style attributes) plus Google Fonts; images from us, YouTube thumbnails,
+// data: and blob: (the bottle scanner); video embeds from YouTube only. HSTS: .app is HTTPS-only in browsers already.
+const CSP = ["default-src 'self'", "script-src 'self'", "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com", "font-src 'self' https://fonts.gstatic.com data:",
+  "img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com", "media-src 'self' blob:", "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
+  "connect-src 'self'", "object-src 'none'", "base-uri 'self'", "form-action 'self'", "frame-ancestors 'self'"].join('; ');
+const SECURITY = { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'X-Frame-Options': 'SAMEORIGIN',
+  'Content-Security-Policy': CSP, 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'Permissions-Policy': 'camera=(self), microphone=(), geolocation=()' };
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.mp4': 'video/mp4', '.mov': 'video/quicktime', '.webm': 'video/webm', '.m4v': 'video/mp4' };
 
 class HttpError extends Error { constructor(status, message) { super(message); this.status = status; } }

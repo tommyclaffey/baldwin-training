@@ -529,7 +529,7 @@ function assembleRaw(db, file) {
   // REGION_V2: on (Nov 2, research in). REGION_V2=0 switches back to the old layout.
   if (process.env.REGION_V2 !== '0' && regionData(slug) && wineKind(slug)) { const v2 = regionPage(basePage(regionData(slug).isGrape ? '111-4' : '377-2'), page, slug, { video: wineVideos(db).get(slug) }); if (v2) page = v2; }
   // the Sommelier Program, video first (Nov 1): the Study Guide index is now the Level 1 course
-  if (slug === HUB) return hubPage(page, { done: sectionsDone(db, SCOPE.user?.id) });
+  if (slug === HUB) return hubPage(page, { done: sectionsDone(db, SCOPE.user?.id), demo: !!SCOPE.user?.demo });
   if (slug === L1) return level1Page(page, { done: sectionsDone(db, SCOPE.user?.id), ...levelStatus(db, 'somm-1') });
   if (slug === GUIDE) { const l1 = baseIndex().find((x) => x.slug === L1); const p1 = l1 && basePage(l1.file); if (p1) return level1Page(p1, { done: sectionsDone(db, SCOPE.user?.id), ...levelStatus(db, 'somm-1') }); return guideIndex(page, { prog: progress(db, SCOPE.user?.id, SCOPE.store) }); }
   if (slug === L2) {

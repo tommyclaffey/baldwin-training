@@ -64,11 +64,28 @@ export function sessionCookie(token, { secure = false, clear = false, days = SES
 }
 
 /** 8 tries per email+IP per 15 minutes. */
+/** Attempts per key in a time window. Nov 10 (audit): named limiters keep their count in the database once useDb() is
+ *  called, so a redeploy doesn't clear a lockout (5 wrong PINs, too many sign-ins). Unnamed ones stay in memory. */
 export class LoginLimiter {
-  constructor(max = 8, windowMs = 15 * 60_000) { this.max = max; this.windowMs = windowMs; this.hits = new Map(); }
-  check(key) { const t = Date.now(); const l = (this.hits.get(key) || []).filter((x) => t - x < this.windowMs); this.hits.set(key, l); return l.length < this.max; }
-  record(key) { const l = this.hits.get(key) || []; l.push(Date.now()); this.hits.set(key, l); }
-  reset(key) { this.hits.delete(key); }
+  static db = null;
+  static useDb(db) {
+    db.exec('CREATE TABLE IF NOT EXISTS limits(name TEXT NOT NULL, key TEXT NOT NULL, at INTEGER NOT NULL)');
+    db.exec('CREATE INDEX IF NOT EXISTS limits_key ON limits(name, key, at)');
+    LoginLimiter.db = db;
+  }
+  constructor(max = 8, windowMs = 15 * 60_000, name = null) { this.max = max; this.windowMs = windowMs; this.name = name; this.hits = new Map(); }
+  get #db() { return this.name ? LoginLimiter.db : null; }
+  check(key) {
+    const t = Date.now(), db = this.#db;
+    if (db) return db.prepare('SELECT COUNT(*) n FROM limits WHERE name = ? AND key = ? AND at > ?').get(this.name, String(key), t - this.windowMs).n < this.max;
+    const l = (this.hits.get(key) || []).filter((x) => t - x < this.windowMs); this.hits.set(key, l); return l.length < this.max;
+  }
+  record(key) {
+    const t = Date.now(), db = this.#db;
+    if (db) { db.prepare('INSERT INTO limits(name, key, at) VALUES (?,?,?)').run(this.name, String(key), t); if (Math.random() < 0.02) db.prepare('DELETE FROM limits WHERE at < ?').run(t - 24 * 3600e3); return; }
+    const l = this.hits.get(key) || []; l.push(t); this.hits.set(key, l);
+  }
+  reset(key) { const db = this.#db; if (db) db.prepare('DELETE FROM limits WHERE name = ? AND key = ?').run(this.name, String(key)); else this.hits.delete(key); }
 }
 
 /** Public shape of a user. Never includes password, PIN or two-step secrets. */
