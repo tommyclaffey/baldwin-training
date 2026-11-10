@@ -16,12 +16,14 @@ import { certificatesFor } from './certs.mjs';
 import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
 import { topicList, questionPool } from './quizgen.mjs';
 import { chapterBySlug, markRead } from './manual.mjs';
+import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErrorAllowed } from './ops.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
 const PORT = Number(process.env.PORT) || 8080;
 const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
+initOps(db);
 seed(db);
 seedWineVideos(db);
 bootAccounts(db);
@@ -129,6 +131,28 @@ async function api(req, res, url) {
   const m = req.method;
   const p = url.pathname;
   const parts = p.split('/').filter(Boolean); // ['api', ...]
+
+  // Behind the scenes (Nov 10, server/ops.mjs): health, the nightly encrypted backup and the error report (OPS_TOKEN),
+  // and browser errors from the app.
+  if (p === '/api/health' && m === 'GET') { db.prepare('SELECT 1').get(); return sendJson(res, 200, { ok: true, at: new Date().toISOString() }); }
+  if (p === '/api/ops/backup' && m === 'GET') {
+    if (!opsAllowed(req)) fail(404, 'Not found.');
+    if (!process.env.BACKUP_KEY || process.env.BACKUP_KEY.length < 24) fail(503, 'BACKUP_KEY isn’t set.');
+    const buf = encryptedBackup(db);
+    res.writeHead(200, { 'Content-Type': 'application/octet-stream', 'Content-Length': buf.length, 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="mise-${new Date().toISOString().slice(0, 10)}.bk"` });
+    return res.end(buf);
+  }
+  if (p === '/api/ops/errors' && m === 'GET') {
+    if (!opsAllowed(req)) fail(404, 'Not found.');
+    return sendJson(res, 200, { errors: recentErrors(db, Math.min(168, Number(url.searchParams.get('hours')) || 24)) });
+  }
+  if (p === '/api/client-error' && m === 'POST') {
+    const ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
+    if (req.headers['x-bt'] !== '1' || !clientErrorAllowed(ip)) { res.writeHead(204); return res.end(); }
+    const b = await readJson(req, 20_000).catch(() => ({}));
+    logError(db, 'client', String(b.path || '').slice(0, 200), { message: String(b.message || 'Browser error'), stack: String(b.stack || '') }, c.user?.id ?? null);
+    res.writeHead(204); return res.end();
+  }
 
   // The public demo (Nov 2): /demo starts a private copy; a demo visitor can't change accounts or upload.
   // Nov 4, Tommy: "I need the demo account to be a completely separate account, not changing the Baldwin account."
@@ -626,7 +650,7 @@ http.createServer(async (req, res) => {
     else { res.writeHead(405); res.end(); }
   } catch (e) {
     const status = e instanceof HttpError ? e.status : 500;
-    if (status === 500) console.error(e);
+    if (status === 500) { console.error(e); logError(db, 'server', `${req.method} ${url.pathname}`, e); }
     if (!res.headersSent) sendJson(res, status, { error: status === 500 ? 'Something went wrong on our side. Try again.' : e.message });
     else res.end();
   }
