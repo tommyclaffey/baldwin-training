@@ -6,7 +6,9 @@ import { SessionProvider } from './lib/session';
 import './styles.css';
 import { overflowReport } from './debug';
 import { restartDemoIfRefreshed } from './lib/demo';
+import { reportErrors } from './lib/reportErrors';
 overflowReport();
+reportErrors();
 
 const mount = () => createRoot(document.getElementById('root')!).render(
   <StrictMode>

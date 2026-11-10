@@ -1,0 +1,38 @@
+# Behind the scenes (Nov 10, server/ops.mjs). Nightly: pull an encrypted backup of the live database and keep it here
+# for 30 days, off Railway; then check the app's error log. Every 6 hours: is the app up?
+# A failed run makes GitHub email the repo owner. Secrets: OPS_TOKEN (same as the Railway variable), APP_URL.
+name: Ops
+on:
+  schedule:
+    - cron: '15 8 * * *'    # nightly, about 3–4 am Detroit
+    - cron: '45 */6 * * *'  # health check every 6 hours
+  workflow_dispatch:
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: The app answers
+        run: curl -fsS --retry 3 --retry-delay 20 "${{ secrets.APP_URL }}/api/health"
+  backup-and-errors:
+    if: github.event.schedule == '15 8 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull the encrypted backup
+        run: |
+          curl -fsS --retry 3 -H "Authorization: Bearer ${{ secrets.OPS_TOKEN }}" "${{ secrets.APP_URL }}/api/ops/backup" -o mise.bk
+          head -c 7 mise.bk | grep -q MISEBK1
+          ls -l mise.bk
+          echo "DAY=$(date -u +%F)" >> "$GITHUB_ENV"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mise-backup-${{ env.DAY }}
+          path: mise.bk
+          retention-days: 30
+      - name: Errors in the last day
+        run: |
+          curl -fsS -H "Authorization: Bearer ${{ secrets.OPS_TOKEN }}" "${{ secrets.APP_URL }}/api/ops/errors?hours=24" -o errors.json
+          node -e '
+            const e = require("./errors.json").errors;
+            if (!e.length) { console.log("No errors in the last 24 hours."); process.exit(0); }
+            for (const x of e) console.log(`${x.kind} · ${x.path || "-"} · ${x.message} (×${x.count}, last ${x.last_at})`);
+            console.log(`\n${e.length} error(s) in the last 24 hours.`); process.exit(1);'

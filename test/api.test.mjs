@@ -868,3 +868,13 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   assert.ok(b3.includes('ADVANCED SPECIALIST') && b3.includes('t%3Afinal%3Abeer-3'));
   assert.equal(cat.quizzes.filter((q) => q.group === 'Beer Program · Level 3').length, 9, 'eight lesson quizzes and the final');
 });
+
+test('behind the scenes: health answers, ops endpoints are closed without the token, browser errors are taken (Nov 10)', async () => {
+  const h = await fetch(BASE + '/api/health');
+  assert.equal(h.status, 200);
+  assert.equal((await h.json()).ok, true);
+  assert.equal((await fetch(BASE + '/api/ops/backup')).status, 404);
+  assert.equal((await fetch(BASE + '/api/ops/errors', { headers: { authorization: 'Bearer nope' } })).status, 404);
+  const r = await fetch(BASE + '/api/client-error', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ message: 'test', path: '/x' }) });
+  assert.equal(r.status, 204);
+});
