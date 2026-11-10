@@ -523,7 +523,7 @@
    "glass": "Flute",
    "method": "Build in glass",
    "ice": "",
-   "garnish": "Lemon twist",
+   "garnish": "",
    "build": [
     {
      "amount": "1",
@@ -532,7 +532,7 @@
      "spirit": false
     },
     {
-     "amount": "1 oz",
+     "amount": ".5 oz",
      "ingredient": "Vegetal De La Grand Chartreuse",
      "link": "/spirit/liqueurs/herbal",
      "spirit": true
@@ -546,8 +546,7 @@
    ],
    "steps": [
     "Build in glass.",
-    "Serve in a flute.",
-    "Garnish: lemon twist."
+    "Serve in a flute."
    ],
    "tags": [
     "Vegetal",
@@ -563,7 +562,7 @@
    "say": "",
    "story": "",
    "video": null,
-   "specNote": "Filler spec in the Drink Book: bar lead to confirm.",
+   "specNote": "Updated Nov 9 from the bar’s spec markup.",
    "base": "Chartreuse",
    "onMenu": true,
    "tableIce": ""
@@ -586,7 +585,7 @@
    "garnish": "3 coffee beans",
    "build": [
     {
-     "amount": "2 oz",
+     "amount": "1.5 oz",
      "ingredient": "Vanilla Vodka",
      "link": "/spirit/vodka",
      "spirit": true
@@ -629,7 +628,7 @@
    "say": "",
    "story": "",
    "video": null,
-   "specNote": "From the Drink Book. Still to confirm: glass.",
+   "specNote": "Updated Nov 9 from the bar’s spec markup. Still to confirm: glass.",
    "base": "Vodka",
    "onMenu": true,
    "tableIce": ""
@@ -658,13 +657,13 @@
      "spirit": true
     },
     {
-     "amount": ".5 oz",
+     "amount": ".75 oz",
      "ingredient": "Agave",
      "link": "",
      "spirit": false
     },
     {
-     "amount": ".75 oz",
+     "amount": "1 oz",
      "ingredient": "Lime",
      "link": "",
      "spirit": false
@@ -694,7 +693,7 @@
    "say": "",
    "story": "",
    "video": null,
-   "specNote": "Filler spec in the Drink Book: bar lead to confirm.",
+   "specNote": "Updated Nov 9 from the bar’s spec markup.",
    "base": "Tequila",
    "onMenu": true,
    "tableIce": ""
@@ -940,7 +939,7 @@
      "spirit": true
     },
     {
-     "amount": ".5 oz",
+     "amount": ".75 oz",
      "ingredient": "Triple Sec",
      "link": "",
      "spirit": false
@@ -963,7 +962,7 @@
     "Serve in a martini.",
     "Garnish: lemon peel or twist."
    ],
-   "specNote": "From the Drink Book",
+   "specNote": "Updated Nov 9 from the bar’s spec markup.",
    "tags": [
     "Fruity",
     "Sour"
@@ -1112,9 +1111,9 @@
    "name": "Margarita",
    "menuSection": "Classics",
    "price": "",
-   "description": "Espero Tequila, Triple Sec, Lime Juice, Sour Mix and Orange Juice.",
+   "description": "Espero Tequila, Triple Sec, Lime Juice and Agave.",
    "glass": "Fancy highball",
-   "method": "Build over full ice",
+   "method": "",
    "garnish": "Lime; optional salt rim",
    "build": [
     {
@@ -1130,31 +1129,24 @@
      "spirit": false
     },
     {
-     "amount": ".5 oz",
+     "amount": "1 oz",
      "ingredient": "Lime Juice",
      "link": "",
      "spirit": false
     },
     {
-     "amount": "3 oz",
-     "ingredient": "Sour Mix",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": "Splash",
-     "ingredient": "Orange Juice",
+     "amount": ".75 oz",
+     "ingredient": "Agave",
      "link": "",
      "spirit": false
     }
    ],
    "steps": [
-    "Build over full ice.",
+    "Method to confirm with the bar lead.",
     "Serve in a fancy highball.",
-    "Garnish: lime; optional salt rim.",
-    "Top with the sour mix in a glass with full ice."
+    "Garnish: lime; optional salt rim."
    ],
-   "specNote": "From the Drink Book",
+   "specNote": "Updated Nov 9 from the bar’s spec markup. Sour mix and orange juice are out. Still to confirm: method.",
    "tags": [
     "Sour",
     "Bright"
@@ -1188,7 +1180,7 @@
      "spirit": true
     },
     {
-     "amount": "1 oz",
+     "amount": ".5 oz",
      "ingredient": "Agave",
      "link": "",
      "spirit": false
@@ -1211,7 +1203,7 @@
     "Serve in a fancy highball.",
     "Garnish: lemon twist."
    ],
-   "specNote": "From the Drink Book. Still to confirm: method.",
+   "specNote": "Updated Nov 9 from the bar’s spec markup. Agave written as “.05 oz”; .5 oz used, bar lead to confirm. Still to confirm: method.",
    "tags": [
     "Bright",
     "Sour",
@@ -1224,63 +1216,6 @@
    "ice": "",
    "tableIce": "",
    "pairs": "Harissa Carrots, JB Calamari"
-  }
- },
- {
-  "key": "signature/pama-tini",
-  "slug": "signature/pama-tini",
-  "sort": 19,
-  "data": {
-   "name": "Pama-Tini",
-   "menuSection": "Classics",
-   "price": "",
-   "description": "Pearl Blueberry Vodka, Pama Liqueur, Pomegranate Syrup and Lemonade.",
-   "glass": "Martini",
-   "method": "Shake, strain",
-   "garnish": "3 blueberries",
-   "build": [
-    {
-     "amount": "1.5 oz",
-     "ingredient": "Pearl Blueberry Vodka",
-     "link": "/spirit/vodka",
-     "spirit": true
-    },
-    {
-     "amount": ".5 oz",
-     "ingredient": "Pama Liqueur",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": ".5 oz",
-     "ingredient": "Pomegranate Syrup",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": "Splash",
-     "ingredient": "Lemonade",
-     "link": "",
-     "spirit": false
-    }
-   ],
-   "steps": [
-    "Shake, strain.",
-    "Serve in a martini.",
-    "Garnish: 3 blueberries."
-   ],
-   "specNote": "From the Drink Book",
-   "tags": [
-    "Fruity",
-    "Sweet"
-   ],
-   "base": "Vodka",
-   "onMenu": false,
-   "spiritName": "Vodka",
-   "spiritLink": "/spirit/vodka",
-   "ice": "",
-   "tableIce": "",
-   "pairs": ""
   }
  },
  {
@@ -1894,115 +1829,6 @@
   }
  },
  {
-  "key": "signature/botanical-mule",
-  "slug": "signature/botanical-mule",
-  "sort": 30,
-  "data": {
-   "name": "Botanical Mule",
-   "menuSection": "Mules",
-   "price": "",
-   "description": "Spring 44 Gin, Lime Juice and Ginger Beer.",
-   "glass": "Mule mug",
-   "method": "",
-   "garnish": "Cucumber and mint",
-   "build": [
-    {
-     "amount": "2 oz",
-     "ingredient": "Spring 44 Gin",
-     "link": "/spirit/gin",
-     "spirit": true
-    },
-    {
-     "amount": ".5 oz",
-     "ingredient": "Lime Juice",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": "4 oz",
-     "ingredient": "Ginger Beer",
-     "link": "",
-     "spirit": false
-    }
-   ],
-   "steps": [
-    "Method to confirm with the bar lead.",
-    "Serve in a mule mug.",
-    "Garnish: cucumber and mint."
-   ],
-   "specNote": "From the Drink Book. Still to confirm: method.",
-   "tags": [
-    "Vegetal",
-    "Spicy",
-    "Bright"
-   ],
-   "base": "Gin",
-   "onMenu": false,
-   "spiritName": "Gin",
-   "spiritLink": "/spirit/gin",
-   "ice": "",
-   "tableIce": "",
-   "pairs": ""
-  }
- },
- {
-  "key": "signature/brg-mexican-mule",
-  "slug": "signature/brg-mexican-mule",
-  "sort": 31,
-  "data": {
-   "name": "BRG Mexican Mule",
-   "menuSection": "Mules",
-   "price": "",
-   "description": "Mezcal, Lime Juice, Grapefruit and Ginger Beer.",
-   "glass": "Mule mug",
-   "method": "",
-   "garnish": "Grapefruit twist",
-   "build": [
-    {
-     "amount": "1.5 oz",
-     "ingredient": "Mezcal",
-     "link": "/spirit/mezcal",
-     "spirit": true
-    },
-    {
-     "amount": ".5 oz",
-     "ingredient": "Lime Juice",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": ".5 oz",
-     "ingredient": "Grapefruit",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": "4 oz",
-     "ingredient": "Ginger Beer",
-     "link": "",
-     "spirit": false
-    }
-   ],
-   "steps": [
-    "Method to confirm with the bar lead.",
-    "Serve in a mule mug.",
-    "Garnish: grapefruit twist."
-   ],
-   "specNote": "From the Drink Book. Still to confirm: method.",
-   "tags": [
-    "Spicy",
-    "Bright"
-   ],
-   "base": "Mezcal",
-   "onMenu": false,
-   "spiritName": "Mezcal",
-   "spiritLink": "/spirit/mezcal",
-   "ice": "",
-   "tableIce": "",
-   "pairs": ""
-  }
- },
- {
   "key": "signature/italian-mule",
   "slug": "signature/italian-mule",
   "sort": 32,
@@ -2048,57 +1874,6 @@
    "onMenu": false,
    "spiritName": "Limoncello",
    "spiritLink": "/spirit/liqueurs",
-   "ice": "",
-   "tableIce": "",
-   "pairs": ""
-  }
- },
- {
-  "key": "signature/kentucky-mule",
-  "slug": "signature/kentucky-mule",
-  "sort": 33,
-  "data": {
-   "name": "Kentucky Mule",
-   "menuSection": "Mules",
-   "price": "",
-   "description": "Green River Bourbon, Lime Juice and Ginger Beer.",
-   "glass": "Mule mug",
-   "method": "",
-   "garnish": "Lime wedge",
-   "build": [
-    {
-     "amount": "1.5 oz",
-     "ingredient": "Green River Bourbon",
-     "link": "/spirit/bourbon",
-     "spirit": true
-    },
-    {
-     "amount": ".5 oz",
-     "ingredient": "Lime Juice",
-     "link": "",
-     "spirit": false
-    },
-    {
-     "amount": "4 oz",
-     "ingredient": "Ginger Beer",
-     "link": "",
-     "spirit": false
-    }
-   ],
-   "steps": [
-    "Method to confirm with the bar lead.",
-    "Serve in a mule mug.",
-    "Garnish: lime wedge."
-   ],
-   "specNote": "From the Drink Book. Still to confirm: method.",
-   "tags": [
-    "Spicy",
-    "Rich"
-   ],
-   "base": "Bourbon",
-   "onMenu": false,
-   "spiritName": "Bourbon",
-   "spiritLink": "/spirit/bourbon",
    "ice": "",
    "tableIce": "",
    "pairs": ""
@@ -2214,26 +1989,26 @@
    "name": "Chocolate Martini",
    "menuSection": "Dessert Cocktails",
    "price": "",
-   "description": "Pearl Vanilla Bean Vodka, Dorda Chocolate Liqueur and Tia Maria.",
+   "description": "VoMich Vodka, Disaronno Velvet and Chocolate Liqueur.",
    "glass": "Martini",
    "method": "Shake and pour",
    "garnish": "Chocolate drizzle",
    "build": [
     {
-     "amount": "1.5 oz",
-     "ingredient": "Pearl Vanilla Bean Vodka",
+     "amount": "1 oz",
+     "ingredient": "VoMich Vodka",
      "link": "/spirit/vodka",
      "spirit": true
     },
     {
-     "amount": ".5 oz",
-     "ingredient": "Dorda Chocolate Liqueur",
-     "link": "",
+     "amount": "1 oz",
+     "ingredient": "Disaronno Velvet",
+     "link": "/spirit/liqueurs/cream",
      "spirit": false
     },
     {
-     "amount": ".5 oz",
-     "ingredient": "Tia Maria",
+     "amount": "1 oz",
+     "ingredient": "Chocolate Liqueur",
      "link": "",
      "spirit": false
     }
@@ -2243,7 +2018,7 @@
     "Serve in a martini.",
     "Garnish: chocolate drizzle."
    ],
-   "specNote": "From the Drink Book",
+   "specNote": "Updated Nov 9 from the bar’s spec markup.",
    "tags": [
     "Sweet",
     "Rich"
@@ -2265,7 +2040,7 @@
    "name": "Perfect Thyming",
    "menuSection": "Dessert Cocktails",
    "price": "",
-   "description": "Hennessy, Port Wine, Lemon, Agave Nectar and Thyme, in the shaker.",
+   "description": "Hennessy, Port Wine, Lemon, Demerara Syrup and Thyme.",
    "glass": "",
    "method": "Shake with thyme, strain",
    "garnish": "Thyme sprig",
@@ -2290,7 +2065,7 @@
     },
     {
      "amount": ".5 oz",
-     "ingredient": "Agave Nectar",
+     "ingredient": "Demerara Syrup",
      "link": "",
      "spirit": false
     },
@@ -2306,7 +2081,7 @@
     "Glass to confirm with the bar lead.",
     "Garnish: thyme sprig."
    ],
-   "specNote": "From the Drink Book. Still to confirm: glass.",
+   "specNote": "Updated Nov 9 from the bar’s spec markup. Still to confirm: glass.",
    "tags": [
     "Herbal",
     "Fruity",
@@ -2338,7 +2113,7 @@
    "garnish": "Orange peel",
    "build": [
     {
-     "amount": "2 oz",
+     "amount": "1.5 oz",
      "ingredient": "Lyre’s Agave Blanco",
      "link": "",
      "spirit": true
@@ -2386,7 +2161,7 @@
    "say": "",
    "story": "",
    "video": null,
-   "specNote": "Filler spec in the Drink Book: bar lead to confirm.",
+   "specNote": "Updated Nov 9 from the bar’s spec markup.",
    "base": "Zero proof",
    "onMenu": true,
    "tableIce": ""
@@ -2401,7 +2176,7 @@
    "menuSection": "Spiritless Cocktails",
    "price": "11",
    "tagline": "No alcohol",
-   "description": "Lyre’s Pink London, Lime, Cranberry and Orange.",
+   "description": "Lyre’s Pink London, Lime, Cranberry and Demerara Syrup.",
    "photo": "",
    "glass": "Martini",
    "method": "Shake",
@@ -2409,13 +2184,13 @@
    "garnish": "Orange twist",
    "build": [
     {
-     "amount": "2 oz",
+     "amount": "1.5 oz",
      "ingredient": "Lyre’s Pink London",
      "link": "",
      "spirit": true
     },
     {
-     "amount": ".5 oz",
+     "amount": ".75 oz",
      "ingredient": "Lime",
      "link": "",
      "spirit": false
@@ -2428,7 +2203,7 @@
     },
     {
      "amount": ".5 oz",
-     "ingredient": "Orange",
+     "ingredient": "Demerara Syrup",
      "link": "",
      "spirit": false
     }
@@ -2451,7 +2226,7 @@
    "say": "",
    "story": "",
    "video": null,
-   "specNote": "Filler spec in the Drink Book: bar lead to confirm.",
+   "specNote": "Updated Nov 9 from the bar’s spec markup.",
    "base": "Zero proof",
    "onMenu": true,
    "tableIce": ""
