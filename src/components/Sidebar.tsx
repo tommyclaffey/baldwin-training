@@ -8,6 +8,7 @@ import { trainingCard, pathSidebar } from '../quiz/transform';
 import { usePath } from '../path/store';
 import { useSession } from '../lib/session';
 import { openWelcome } from './DemoTour';
+import { ACADEMY_NAME } from '../lib/brand';
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
 function forStore(n: FNode, name: string): FNode {
@@ -15,13 +16,15 @@ function forStore(n: FNode, name: string): FNode {
   return n.c ? { ...n, c: n.c.filter((c) => c.n !== 'Your Training').map((c) => forStore(c, name)) } : n;
 }
 
-/** The demo pill, right under the logo on every demo page (Nov 7, Tommy). */
+/** The demo pill (Nov 9, Tommy: "I like it like the screenshot", Growth's "Copperline · DEMO"): under the logo, a line with
+ *  the product's name and a small tinted DEMO tag beside it. Same pattern in every app. */
 function withDemoPill(n: FNode): FNode {
-  const pill: FNode = { t: 'F', n: 'Demo pill', lm: 'H', sh: 'H', sv: 'H', c: [{ t: 'F', n: 'Pill', lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 999, pd: [5, 11, 5, 11], f: [{ c: '#C49A6C', o: .22 }], c: [{ t: 'T', n: 'DEMO', s: 'DEMO', ff: 'Archivo', fs: 'SemiBold', z: 11.5, ls: '8%', f: [{ c: '#EBD2B2' }], ar: 'W', sh: 'H', sv: 'H' } as FNode] } as FNode] } as FNode;
+  const tag: FNode = { t: 'F', n: 'Pill', lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 6, pd: [3, 7, 3, 7], f: [{ c: '#C49A6C', o: .24 }], c: [{ t: 'T', n: 'DEMO', s: 'DEMO', ff: 'Archivo', fs: 'Bold', z: 11, ls: '8%', f: [{ c: '#EBD2B2' }], ar: 'W', sh: 'H', sv: 'H' } as FNode] } as FNode;
+  const pill: FNode = { t: 'F', n: 'Demo pill', lm: 'H', gap: 8, ca: 'C', sh: 'H', sv: 'H', c: [{ t: 'T', n: 'Product', s: ACADEMY_NAME, ff: 'Archivo', fs: 'Medium', z: 14, f: [{ c: '#B8AFA3' }], ar: 'W', sh: 'H', sv: 'H' } as FNode, tag] } as FNode;
   if (!n.c) return n;
   const at = n.c.findIndex((c) => c.n === 'Logo');
   if (at < 0) return { ...n, c: n.c.map(withDemoPill) };
-  const brand = { t: 'F', n: 'Brand', lm: 'V', gap: 12, sh: 'H', sv: 'H', c: [n.c[at], pill] } as FNode; // under the logo: beside it, the logo doesn't fit at full size
+  const brand = { t: 'F', n: 'Brand', lm: 'V', gap: 10, sh: 'H', sv: 'H', c: [n.c[at], pill] } as FNode; // under the logo: beside it, the logo doesn't fit at full size
   return { ...n, c: [...n.c.slice(0, at), brand, ...n.c.slice(at + 1)] };
 }
 
