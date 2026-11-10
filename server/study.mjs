@@ -882,7 +882,7 @@ export function level2OnLevel1(p1, old, ctx = {}) {
   const head = find(course, byName('Head'));
   if (head) { const ht = texts(head); setText(ht[0], 'Three parts, in exam order'); setText(ht[1], `${all.length} LESSONS`); setText(ht[ht.length - 1], `${finished} of ${all.length} done`); }
   // the Level 2 sections that have no Level 1 twin
-  const keep = (old?.main?.c || []).filter((x) => ['Three parts', 'WATCH THE SERVICE', 'STUDY TIPS', 'Practice tools'].includes(x.n));
+  const keep = (old?.main?.c || []).filter((x) => ['Three parts', 'WATCH THE SERVICE', 'STUDY TIPS'] /* Nov 10: the unbuilt practice tools stay off until they're built */.includes(x.n));
   const at = main.c.indexOf(course);
   main.c.splice(at + 1, 0, ...keep);
   for (const t of findAll(find(main, byName('How it works')) || { c: [] }, (x) => x.t === 'T' && (x.s || '').length > 2)) { t.ar = 'H'; t.sh = 'L'; }

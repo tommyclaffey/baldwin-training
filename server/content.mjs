@@ -155,7 +155,8 @@ export function withoutNotes(s) {
 }
 function forViewer(page, user) {
   if (!page?.main) return page;
-  const staff = !user || !MANAGERS.has(user.role);
+  // Nov 10 (audit): demo managers don't see the team's working notes either; a prospect only sees the finished book.
+  const staff = !user || !MANAGERS.has(user.role) || !!user.demo;
   const words = (n) => (n.t === 'T' ? 1 : (n.c || []).reduce((k, c) => k + words(c), 0));
   // Returns why the node goes, or false. A node that lost an admin link and is left as a bare label (a column heading, a tier
   // name) goes too. Notes: a label whose value was a note goes with it ("GLASS · To confirm"); a box left with no words goes
