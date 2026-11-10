@@ -42,7 +42,7 @@ async function run(role, width) {
   try {
     await b.size(width);
     await b.go(BASE + '/demo', 1200);
-    const ok = await b.ev(`fetch('/api/demo/start',{method:'POST',headers:{'Content-Type':'application/json','X-BT':'1'},body:JSON.stringify({role:'${role}'})}).then(r=>r.ok)`);
+    const ok = await b.ev(`fetch('/api/demo/start',{method:'POST',headers:{'Content-Type':'application/json','X-BT':'1'},body:JSON.stringify({role:'${role}'})}).then(r=>{sessionStorage.setItem('bt-demo-tab','1');return r.ok})`);
     if (!ok) throw new Error('demo did not start');
     await b.go(BASE + '/', 3000);
     if (!(await b.ev(`!!document.querySelector('.dw')`))) fails.push('welcome card did not open');

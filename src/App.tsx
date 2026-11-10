@@ -4,6 +4,7 @@ import { Sidebar } from './components/Sidebar';
 import { PageView, usePageEntry } from './components/PageView';
 import { NavContext } from './components/FigmaNode';
 import { useSession } from './lib/session';
+import { demoTab, leaveDemo } from './lib/demo';
 import { BookSignIn } from './components/BookSignIn';
 import { DemoPicker } from './components/DemoPicker';
 import { clearPages } from './components/PageView';
@@ -24,7 +25,7 @@ export default function App() {
 
 function Book() {
   const entry = usePageEntry();
-  const { user, loaded } = useSession();
+  const { user, loaded, refresh } = useSession();
   const [menu, setMenu] = useState(false);
   const { pathname } = useLocation();
   useEffect(() => setMenu(false), [pathname]);
@@ -42,7 +43,11 @@ function Book() {
   // The tab icon follows the store being viewed (a manager can switch stores).
   useEffect(() => { if (loaded) setFavicon(user?.store); }, [loaded, user?.store?.slug]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!loaded) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
+  // A demo sign-in opened outside the tab it started in: end it and show the real site (see leaveDemo).
+  const strayDemo = !!user?.demo && !demoTab();
+  useEffect(() => { if (strayDemo) void leaveDemo().then(refresh); }, [strayDemo]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!loaded || strayDemo) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
   if (!user) return <BookSignIn />;
   return (
     <EditInPlaceProvider>

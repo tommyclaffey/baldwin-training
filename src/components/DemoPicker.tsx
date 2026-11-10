@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
-import { exitDemo } from '../lib/demo';
+import { exitDemo, markDemoTab } from '../lib/demo';
 
 // Nov 4, Tommy: "one account for an employee and then one account that is a manager/admin."
 const ROLES = [
@@ -23,7 +23,7 @@ export function DemoPicker() {
   useEffect(() => { api<{ own: boolean }>('/api/demo/return').then((r) => setOwn(r.own)).catch(() => {}); }, []);
   const start = async (key: string) => {
     if (busy) return; setBusy(key); setErr('');
-    try { await api('/api/demo/start', { method: 'POST', body: { role: key } }); await refresh(); go('/'); }
+    try { await api('/api/demo/start', { method: 'POST', body: { role: key } }); markDemoTab(); await refresh(); go('/'); }
     catch (e) { setErr((e as Error).message || 'That didn’t start. Try again.'); setBusy(''); }
   };
   return (
