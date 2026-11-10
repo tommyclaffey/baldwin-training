@@ -92,11 +92,11 @@ export function DemoBar() {
   };
   return (
     <div className="demo-bar" role="region" aria-label="Demo">
-      <p>You’re in <strong>The Baldwin</strong>, a sample restaurant, as {manager ? <>the <strong>manager</strong></> : <>an <strong>employee</strong></>}.</p>
+      <p><span className="demo-long">You’re in <strong>The Baldwin</strong>, a sample restaurant, as </span>{manager ? <><span className="demo-long">the </span><strong>Manager</strong></> : <><span className="demo-long">an </span><strong>Employee</strong></>}<span className="demo-short"> view</span><span className="demo-long">.</span></p>
       <div className="demo-bar-actions">
-        <button type="button" className="main" onClick={() => void swap()} disabled={busy}>{busy ? 'Switching…' : manager ? 'See It as an Employee' : 'See It as a Manager'}</button>
-        <button type="button" onClick={() => setStep(0)}>Show Me Around</button>
-        <a href="/demo">Demo Home</a>
+        <button type="button" className="main" onClick={() => void swap()} disabled={busy}>{busy ? 'Switching…' : <><span className="demo-long">{manager ? 'See It as an Employee' : 'See It as a Manager'}</span><span className="demo-short">{manager ? 'As Employee' : 'As Manager'}</span></>}</button>
+        <button type="button" onClick={() => setStep(0)}><span className="demo-long">Show Me Around</span><span className="demo-short">Tour</span></button>
+        <a href="/demo"><span className="demo-long">Demo Home</span><span className="demo-short">Home</span></a>
       </div>
     </div>
   );

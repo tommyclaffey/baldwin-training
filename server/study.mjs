@@ -502,7 +502,9 @@ export function hubPage(page, ctx) {
   const levels = find(main, byName('Levels'));
   if (levels) { const [a, b] = levels.c; if (a) a.to = '/' + L1; if (b) b.to = '/' + L2; }
   const book = find(main, byName('Book your seat'));
-  if (book) {
+  // Nov 10 (audit): the Court's real dates at Testa Barra read oddly to a prospect, so the demo leaves them out
+  if (book && ctx.demo) remove(main, book);
+  else if (book) {
     for (const d of book.c.filter((x) => (x.n || '').startsWith('Date · '))) { const lvl = d.n.includes('Level 1') ? 1 : 2; const rg = find(d, byName('Button · Register')); if (rg) rg.to = REGISTER[lvl]; }
     const copy = find(book, byName('Copy')); if (copy) { copy.to = '/' + DETAILS.hub; }
   }
@@ -668,7 +670,7 @@ export function barPage(page, ctx) {
 const HUB_COPY = {
   bar: {
     script: 'Our bar training', lead: 'Learn it, practise it, then earn your certificate: three levels, from the floor to the bar lead.',
-    who: ['Everyone on the floor', 'Bartenders', 'Bar leads'], cards: ['/img/5e5d6ac14e27.jpg', '/img/9dafca12fbe5.jpg', '/img/classic-bees-knees.jpg', '/img/fe067d97b4ac.jpg'],
+    who: ['Everyone', 'Bartenders', 'Bar leads'], cards: ['/img/5e5d6ac14e27.jpg', '/img/9dafca12fbe5.jpg', '/img/classic-bees-knees.jpg', '/img/fe067d97b4ac.jpg'],
     videosHead: ['A few minutes each', 'The six roots, from Anders Erickson'],
     shelf: ['Where our lessons come from', 'Laws, guides and books our lessons cite · open in a new tab', [
       ['THE RULES', false, [
@@ -685,7 +687,7 @@ const HUB_COPY = {
   },
   beer: {
     script: 'Built on Cicerone’s outline', lead: 'From the first pour to running the program, with a certificate at every level.',
-    who: ['Everyone who pours', 'Bartenders', 'Whoever runs the beer'], cards: ['/img/cc320d4a67b8.jpg', '/img/bb23f11b90c9.jpg', '/img/cbff01f7a889.jpg', '/img/f63b1d92dbf9.jpg'],
+    who: ['Everyone', 'Bartenders', 'Beer leads'], cards: ['/img/cc320d4a67b8.jpg', '/img/bb23f11b90c9.jpg', '/img/cbff01f7a889.jpg', '/img/f63b1d92dbf9.jpg'],
     videosHead: null,
     shelf: ['Straight from the source', 'Official guides from Cicerone, the Brewers Association and the BJCP · open in a new tab', [
       ['CICERONE', false, [

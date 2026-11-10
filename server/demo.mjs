@@ -87,6 +87,9 @@ export function startDemo(db, key) {
       for (const quiz of p.signed) db.prepare('INSERT INTO signoffs(device, quiz, by_user, at, company_id, store_id) VALUES (?,?,?,?,?,?)').run('u' + id, quiz, me, t, co, st);
       db.prepare('INSERT INTO sections(company_id,store_id,day,slot,name,by_user,at) VALUES (?,?,?,?,?,?,?)').run(co, st, day, slots[i], p.name, me, t);
     });
+    // Nov 10 (audit: "Videos and photos · 0" in the demo admin): a few videos already in the library
+    for (const [title, yt] of [['How I Make an Old Fashioned · Anders Erickson', 'pdcrJ5V7YKM'], ['How to Make a Martini · Anders Erickson', 'izZsjqnADAA'], ['The Daiquiri · Anders Erickson', '71jQRf5UrpE'], ['How to Open a Bottle of Wine · Court of Master Sommeliers', '9R3JBuXcNjQ']])
+      db.prepare('INSERT INTO media(kind,title,youtube_id,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?)').run('youtube', title, yt, me, t, co, st);
     db.exec('COMMIT');
     return { token: createSession(db, me, { days: 1 }), userId: me };
   } catch (e) { db.exec('ROLLBACK'); throw e; }

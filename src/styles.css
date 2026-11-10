@@ -1650,3 +1650,27 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 .mp-cert-row a { color: #8A5A3A; font-weight: 700; text-decoration: none; }
 .mp-cert-row a:hover { text-decoration: underline; }
 .mp-cert-row a:focus-visible { outline: 2px solid #8A5A3A; outline-offset: 2px; }
+
+/* Nov 10 (audit): phone fixes. Demo banner on one line; level-card labels don't wrap; admin menu strip shows it scrolls. */
+.demo-short { display: none; }
+@media (max-width: 640px) {
+  .demo-bar { flex-wrap: nowrap; gap: 8px; padding: 8px 12px; font-size: 13px; }
+  .demo-bar p { white-space: nowrap; }
+  .demo-long { display: none; }
+  .demo-short { display: inline; }
+  .demo-bar-actions { width: auto; flex-wrap: nowrap; gap: 6px; margin-left: auto; }
+  .demo-bar button, .demo-bar-actions a { min-height: 32px; padding: 0 10px; font-size: 12.5px; flex: none !important; }
+  [data-name="Your path"] [data-name="Pill"] { white-space: nowrap; }
+  [data-name="Your path"] [data-name="Pill"] [data-name] { font-size: 10.5px !important; }
+}
+@media (max-width: 900px) {
+  .admin-side nav { -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); padding-right: 32px; scroll-snap-type: x proximity; }
+  .admin-side nav a { scroll-snap-align: start; }
+}
+.cp-full-btn { display: none; }
+@media (max-width: 640px) { .cp-full-btn { display: inline-flex; } }
+.cp-full { position: fixed; inset: 0; z-index: 300; background: #14120F; overflow: hidden; }
+.cp-full-rot { position: absolute; left: 50%; top: 50%; width: min(calc(100vh - 40px), calc((100vw - 24px) * 1056 / 816)); transform: translate(-50%, -50%) rotate(90deg); }
+.cp-full-close { position: fixed; top: 12px; right: 12px; min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid #8A7A66; background: #1E1C1A; color: #F2EEE7; font: 600 14px 'Archivo', sans-serif; }
+.cp-full-close:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px; }
+@media print { .cp-full { display: none !important; } }
