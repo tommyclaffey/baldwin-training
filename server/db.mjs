@@ -234,7 +234,17 @@ export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
     db.exec('COMMIT');
     v++;
   }
+  migrateBrand(db);
   return db;
+}
+
+/** Brand per company (Nov 11, Tommy: a Mise demo beside The Baldwin's). 'baldwin' = The Baldwin's look (every company so
+ *  far, and the default); 'mise' = the Mise Academy look. The front end gets it with the session and switches the skin on.
+ *  Added by a column check, not a numbered migration, so it can't collide with a migration added on another branch. */
+export const BRANDS = ['baldwin', 'mise'];
+export function migrateBrand(db) {
+  const cols = db.prepare('PRAGMA table_info(companies)').all().map((c) => c.name);
+  if (!cols.includes('brand')) db.exec("ALTER TABLE companies ADD COLUMN brand TEXT NOT NULL DEFAULT 'baldwin'");
 }
 
 export function audit(db, userId, action, detail, companyId = null) {

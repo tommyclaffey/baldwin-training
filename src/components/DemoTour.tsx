@@ -7,7 +7,7 @@ import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, useSy
 import { createPortal } from 'react-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
-import { markDemoTab } from '../lib/demo';
+import { markDemoTab, demoKindOf, demoHome } from '../lib/demo';
 import { useSession } from '../lib/session';
 
 /** A stop on the walk. `path` is where it lives (a function when the address depends on the data); `manager` stops are for managers only. */
@@ -91,18 +91,19 @@ export function DemoBar() {
   const [busy, setBusy] = useState(false);
   if (!user?.demo) return null;
   const manager = user.role !== 'staff';
+  const kind = demoKindOf(user); // Nov 11: The Baldwin's demo or the Mise demo (Wrenfield); switching role stays in the same one
   const swap = async () => {
     setBusy(true);
-    try { await api('/api/demo/start', { method: 'POST', body: { role: manager ? 'employee' : 'manager' } }); markDemoTab(); await refresh(); location.assign(manager ? '/' : '/admin'); }
-    catch { location.assign('/demo'); }
+    try { await api('/api/demo/start', { method: 'POST', body: { role: manager ? 'employee' : 'manager', demo: kind } }); markDemoTab(); await refresh(); location.assign(manager ? '/' : '/admin'); }
+    catch { location.assign(demoHome(kind)); }
   };
   return (
     <div className="demo-bar" role="region" aria-label="Demo">
-      <p><span className="demo-long">You’re in <strong>The Baldwin</strong>, a sample restaurant, as </span>{manager ? <><span className="demo-long">the </span><strong>Manager</strong></> : <><span className="demo-long">an </span><strong>Employee</strong></>}<span className="demo-short"> view</span><span className="demo-long">.</span></p>
+      <p><span className="demo-long">You’re in <strong>{user.store?.name || 'The Baldwin'}</strong>, a sample restaurant, as </span>{manager ? <><span className="demo-long">the </span><strong>Manager</strong></> : <><span className="demo-long">an </span><strong>Employee</strong></>}<span className="demo-short"> view</span><span className="demo-long">.</span></p>
       <div className="demo-bar-actions">
         <button type="button" className="main" onClick={() => void swap()} disabled={busy}>{busy ? 'Switching…' : <><span className="demo-long">{manager ? 'See It as an Employee' : 'See It as a Manager'}</span><span className="demo-short">{manager ? 'As Employee' : 'As Manager'}</span></>}</button>
         <button type="button" onClick={() => setStep(0)}><span className="demo-long">Show Me Around</span><span className="demo-short">Tour</span></button>
-        <a href="/demo"><span className="demo-long">Demo Home</span><span className="demo-short">Home</span></a>
+        <a href={demoHome(kind)}><span className="demo-long">Demo Home</span><span className="demo-short">Home</span></a>
       </div>
     </div>
   );
@@ -122,7 +123,7 @@ const TRY_MANAGER = [
   { title: 'See the training programs', body: 'Cocktail, Beer and Sommelier, each level with a final and a certificate', to: '/cocktail-program' },
 ];
 
-function WelcomeCard({ manager }: { manager: boolean }) {
+function WelcomeCard({ manager, place }: { manager: boolean; place: string }) {
   const go = useNavigate();
   const open = useWelcome();
   const card = useRef<HTMLDivElement>(null);
@@ -142,7 +143,7 @@ function WelcomeCard({ manager }: { manager: boolean }) {
         <span className="dw-pill">Live Demo</span>
         <h2 id={titleId}>Welcome to Mise Academy</h2>
         <p className="dw-lede">One training book for the whole restaurant, on every phone: the menu, the bar, the wine list, the lessons and the quizzes.</p>
-        <p className="dw-persona">{manager ? 'You’re Rosalind Hart, the manager of The Baldwin' : 'You’re Marisol Vega, a server at The Baldwin'}. It’s a sample restaurant: the dishes, house cocktails and people are made up. Refresh anytime to start over.</p>
+        <p className="dw-persona">{manager ? `You’re Rosalind Hart, the manager of ${place}` : `You’re Marisol Vega, a server at ${place}`}. {place === 'The Baldwin' ? 'It’s a sample restaurant: the dishes, house cocktails and people are made up.' : 'It’s a sample restaurant: the menu, drinks, wine list and people are all made up.'} Refresh anytime to start over.</p>
         <p className="dw-label">Try These</p>
         <ol className="dw-steps">
           {(manager ? TRY_MANAGER : TRY_STAFF).map((s, i) => (
@@ -289,5 +290,5 @@ export function DemoTour() {
   const { user } = useSession();
   const manager = !!user && user.role !== 'staff';
   useEffect(() => { if (!welcomed) openWelcome(); }, []);
-  return <><WelcomeCard manager={manager} /><Tour manager={manager} /></>;
+  return <><WelcomeCard manager={manager} place={user?.store?.name || 'The Baldwin'} /><Tour manager={manager} /></>;
 }

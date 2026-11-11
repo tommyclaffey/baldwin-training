@@ -1,5 +1,15 @@
 // Nov 4: leaving the demo puts your own sign-in back (the server kept it aside when the demo started).
-import { api } from './api';
+import { api, type User } from './api';
+
+/* Nov 11: two demos. /demo is The Baldwin's (its name, logo and look); /demo/mise is Wrenfield, a made-up restaurant in the
+ * Mise Academy look. Which one a demo account is in comes from its company's brand. */
+export type DemoKind = 'baldwin' | 'mise';
+export const demoKindOf = (u: User | null | undefined): DemoKind => (u?.brand === 'mise' ? 'mise' : 'baldwin');
+export const demoHome = (k: DemoKind) => (k === 'mise' ? '/demo/mise' : '/demo');
+export const isDemoHome = (p: string) => p === '/demo' || p === '/demo/mise';
+/** Pages the Mise demo's book leaves out (The Baldwin's own story and floor plan). Kept in step with SAMPLE_HIDDEN in server/content.mjs. */
+export const SAMPLE_HIDDEN = ['/our-story', '/floor-plan', '/sommelier-program/about'];
+export const isSample = (u: User | null | undefined) => !!u?.demo && u.brand === 'mise';
 
 export async function exitDemo(refresh: () => Promise<unknown>) {
   await leaveDemo();
@@ -27,7 +37,7 @@ export function inDemo() { try { return !!localStorage.getItem(FLAG); } catch { 
 export async function restartDemoIfRefreshed() {
   const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
   // Inside another page's frame a refresh of that page reports "navigate", so every load there counts.
-  if ((nav?.type !== 'reload' && window.self === window.top) || !inDemo() || location.pathname === '/demo') return;
+  if ((nav?.type !== 'reload' && window.self === window.top) || !inDemo() || isDemoHome(location.pathname)) return;
   try {
     const r = await api<{ restarted: boolean }>('/api/demo/restart', { method: 'POST' });
     if (!r.restarted) return;

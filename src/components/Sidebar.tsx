@@ -54,6 +54,8 @@ function withTeam(n: FNode, signoffs: number): FNode {
   const team = [relabel({ ...label, n: 'Group · TEAM' }, 'TEAM'), navItem('People', '/admin/people', 'team-people', 0), navItem('Sign-offs', '/admin/signoffs', 'team-signoffs', signoffs)];
   return { ...n, c: [...n.c.slice(0, home + 1), ...team, ...n.c.slice(home + 1)] };
 }
+import { currentBrand, miseSidebar, MISE } from '../lib/skin';
+import { isSample, SAMPLE_HIDDEN } from '../lib/demo';
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
 function forStore(n: FNode, name: string): FNode {
@@ -63,12 +65,16 @@ function forStore(n: FNode, name: string): FNode {
 
 /** The demo pill (Nov 9, Tommy: "I like it like the screenshot", Growth's "Copperline · DEMO"): under the logo, a line with
  *  the product's name and a small tinted DEMO tag beside it. Same pattern in every app. */
-function withDemoPill(n: FNode): FNode {
-  const tag: FNode = { t: 'F', n: 'Pill', lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 6, pd: [3, 7, 3, 7], f: [{ c: '#C49A6C', o: .24 }], c: [{ t: 'T', n: 'DEMO', s: 'DEMO', ff: 'Archivo', fs: 'Bold', z: 11, ls: '8%', f: [{ c: '#EBD2B2' }], ar: 'W', sh: 'H', sv: 'H' } as FNode] } as FNode;
-  const pill: FNode = { t: 'F', n: 'Demo pill', lm: 'H', gap: 8, ca: 'C', sh: 'H', sv: 'H', c: [{ t: 'T', n: 'Product', s: ACADEMY_NAME, ff: 'Archivo', fs: 'Medium', z: 14, f: [{ c: '#B8AFA3' }], ar: 'W', sh: 'H', sv: 'H' } as FNode, tag] } as FNode;
+// Nov 11: in the Mise demo the logo is Mise Academy's own, so the line names the workspace (the restaurant), like Growth's
+// "Copperline · DEMO", and the tag is tinted in Mise's accent (deep fig) with light fig text: 10.5:1 on its tint.
+type PillLook = { label: string; tint: string; tintO: number; ink: string; muted: string };
+const BALDWIN_PILL: PillLook = { label: ACADEMY_NAME, tint: '#C49A6C', tintO: .24, ink: '#EBD2B2', muted: '#B8AFA3' };
+function withDemoPill(n: FNode, look: PillLook = BALDWIN_PILL): FNode {
+  const tag: FNode = { t: 'F', n: 'Pill', lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 6, pd: [3, 7, 3, 7], f: [{ c: look.tint, o: look.tintO }], c: [{ t: 'T', n: 'DEMO', s: 'DEMO', ff: 'Archivo', fs: 'Bold', z: 11, ls: '8%', f: [{ c: look.ink }], ar: 'W', sh: 'H', sv: 'H' } as FNode] } as FNode;
+  const pill: FNode = { t: 'F', n: 'Demo pill', lm: 'H', gap: 8, ca: 'C', sh: 'H', sv: 'H', c: [{ t: 'T', n: 'Product', s: look.label, ff: 'Archivo', fs: 'Medium', z: 14, f: [{ c: look.muted }], ar: 'W', sh: 'H', sv: 'H' } as FNode, tag] } as FNode;
   if (!n.c) return n;
   const at = n.c.findIndex((c) => c.n === 'Logo');
-  if (at < 0) return { ...n, c: n.c.map(withDemoPill) };
+  if (at < 0) return { ...n, c: n.c.map((c) => withDemoPill(c, look)) };
   const brand = { t: 'F', n: 'Brand', lm: 'V', gap: 10, sh: 'H', sv: 'H', c: [n.c[at], pill] } as FNode; // under the logo: beside it, the logo doesn't fit at full size
   return { ...n, c: [...n.c.slice(0, at), brand, ...n.c.slice(at + 1)] };
 }
@@ -76,6 +82,15 @@ function withDemoPill(n: FNode): FNode {
 const NODES = sidebar as FNode[];
 // The drawn sidebar is the second node ("Sidebar"); the first is the dark rail behind it.
 const SIDEBAR = NODES.find((n) => n.n === 'Sidebar') as FNode;
+
+/** Pages a book leaves out (the Mise demo has no Our Story or Floor Plan): their menu items go. */
+function withoutNav(n: FNode, hidden: string[]): FNode {
+  if (!n.c) return n;
+  const kept = n.c.filter((c) => !(c.n?.startsWith('Nav · ') && c.to && hidden.includes(c.to)));
+  // a group heading left with nothing under it goes too ("Our Company" once Our Story is out)
+  const c = kept.filter((x, i) => !(x.n?.startsWith('Group · ') && !kept[i + 1]?.n?.startsWith('Nav · ')));
+  return { ...n, c: c.map((x) => withoutNav(x, hidden)) };
+}
 
 /** Home (and the logo) open the home page; the design leaves Home unlinked because it was the page drawn. */
 function linkHome(n: FNode): FNode {
@@ -97,9 +112,10 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const signoffs = useSignoffCount(manager);
   const path = usePath(user?.id);
   const mine = path?.paths[0] || null;
-  const generic = !!user?.store && !user.store.bookReady;
+  const sample = isSample(user); // the Mise demo restaurant: a full book from its own menu, not empty "goes here" pages
+  const generic = !!user?.store && !user.store.bookReady && !sample;
   // Other stores start at zero (no drawn Baldwin numbers while the real ones load).
-  const [counts, setCounts] = useState<Record<string, number>>((): Record<string, number> => (generic ? { 'Food Matrix': 0, 'Video Library': 0, 'Photo Library': 0 } : {}));
+  const [counts, setCounts] = useState<Record<string, number>>((): Record<string, number> => (generic || sample ? { 'Food Matrix': 0, 'Video Library': 0, 'Photo Library': 0 } : {}));
   useEffect(() => { api<Record<string, number>>('/api/counts').then(setCounts).catch(() => { /* keep the drawn numbers */ }); }, []);
   const chat = hasChat(user);
   const unread = useChatUnread(chat);
@@ -108,10 +124,13 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     const live: Record<string, number> = { ...counts, 'Team Chat': unread, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
     const base = trainingCard([SIDEBAR], quiz)[0];
     const drawn = pathSidebar(linkHome(withCounts(chat ? withChat(base) : base, live)), mine);
-    const named = generic ? forStore(drawn, user!.store!.name) : drawn;
+    const named = generic ? forStore(drawn, user!.store!.name) : sample ? withoutNav(drawn, SAMPLE_HIDDEN) : drawn;
     const teamed = manager ? withTeam(named, signoffs) : named;
-    return user?.demo ? withDemoPill(teamed) : teamed;
-  }, [quiz, counts, generic, user, mine, chat, unread, manager, signoffs]);
+    const mise = currentBrand() === 'mise';
+    const look: PillLook = mise && sample ? { label: user!.store?.name || ACADEMY_NAME, tint: MISE.fig, tintO: .42, ink: '#F6D3CE', muted: MISE.ash } : BALDWIN_PILL;
+    const shown = user?.demo ? withDemoPill(teamed, look) : teamed;
+    return mise ? miseSidebar(shown) : shown;
+  }, [quiz, counts, generic, sample, user, mine, chat, unread, manager, signoffs]);
   // The pill is drawn with the rest of the sidebar, so it's made a real control here: Tab reaches it, Enter opens the welcome card.
   const nav = useRef<HTMLElement>(null);
   useEffect(() => {

@@ -78,7 +78,7 @@ const LINES = new Map(Object.entries({
 const parentOf = (root, node) => (root.c || []).includes(node) ? root : (root.c || []).reduce((hit, c) => hit || parentOf(c, node), null);
 const drop = (root, node) => { const p = parentOf(root, node); if (p) p.c = p.c.filter((c) => c !== node); };
 /** Leave a line out: the whole message (You / Guest bubble) or list item it sits in, not just the words. */
-function dropLine(root, t) {
+export function dropLine(root, t) {
   let n = t, up = parentOf(root, t);
   for (let i = 0; i < 3 && up; i++) {
     if (/^(You|Guest|Bubble|Item|Row|Line)\b/.test(up.n || '') || /^(Pair|Dish|Key|Sibling|Chip|Pill|Spec|Wine|Pour|In our cocktails) · /.test(up.n || '')) n = up;
@@ -92,7 +92,9 @@ const OWN_SECTIONS = {
   'the-bar/wine': ['Section · Wine program'],
 };
 const STORE_CARDS = ['Pairs with', 'Try it with', 'In our cocktails'];
-const SHELF_CARDS = ['On our shelf', 'On our list', 'Our whiskey shelf'];
+// Nov 11: + 'Section · On our shelf' (the Whiskey page's "Our whiskey shelf" band): a store with no shelf of its own was
+// still showing The Baldwin's whiskeys there.
+const SHELF_CARDS = ['On our shelf', 'On our list', 'Our whiskey shelf', 'Section · On our shelf'];
 
 /** Before the store's lists fill in: remember the designed (Baldwin) shelf cards, so the unfilled ones can go. */
 export function snapshotShelves(page) {

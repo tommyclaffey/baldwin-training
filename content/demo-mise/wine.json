@@ -1,0 +1,511 @@
+[
+ {
+  "key": "demo-mise/wine/Segura Viudas ‘Brut Reserva’",
+  "slug": "wine-list/by-the-glass-bubbles-cava-segura-viudas-brut-reserva-penedes",
+  "sort": 0,
+  "data": {
+   "name": "Segura Viudas ‘Brut Reserva’",
+   "grape": "Cava",
+   "region": "Penedès",
+   "list": "By the glass",
+   "country": "Around the world",
+   "color": "Bubbles",
+   "glass": "10",
+   "half": "",
+   "bottle": "38",
+   "size": "",
+   "pages": [
+    "Cava",
+    "Penedès"
+   ],
+   "style": "Crisp",
+   "notes": "Green apple, lemon peel and toasted almond, with fine, steady bubbles.",
+   "pairs": "Charred Shishito Peppers, Grilled Pound Cake",
+   "say": "Dry and bright; an easy way to start.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Dog Point",
+  "slug": "wine-list/by-the-glass-white-sauvignon-blanc-dog-point-marlborough",
+  "sort": 1,
+  "data": {
+   "name": "Dog Point",
+   "grape": "Sauvignon Blanc",
+   "region": "Marlborough",
+   "list": "By the glass",
+   "country": "Around the world",
+   "color": "White",
+   "glass": "13",
+   "half": "",
+   "bottle": "50",
+   "size": "",
+   "pages": [
+    "Sauvignon Blanc",
+    "Marlborough"
+   ],
+   "style": "Zesty",
+   "notes": "Passion fruit, lime zest and fresh-cut grass, with a mineral finish.",
+   "pairs": "Crispy Brussels Sprouts, Roasted Beet & Citrus Salad",
+   "say": "Zippy and fresh; great with anything green.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Trimbach",
+  "slug": "wine-list/by-the-glass-white-riesling-trimbach-alsace",
+  "sort": 2,
+  "data": {
+   "name": "Trimbach",
+   "grape": "Riesling",
+   "region": "Alsace",
+   "list": "By the glass",
+   "country": "France",
+   "color": "White",
+   "glass": "12",
+   "half": "",
+   "bottle": "46",
+   "size": "",
+   "pages": [
+    "Riesling",
+    "Alsace"
+   ],
+   "style": "Dry",
+   "notes": "Lime, white peach and wet stone; bone dry with a long finish.",
+   "pairs": "Smoked Salmon Toast, Apple & Celery Root Salad",
+   "say": "A dry Riesling, not a sweet one.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Domaine Laroche ‘Saint Martin’",
+  "slug": "wine-list/by-the-glass-white-chablis-domaine-laroche-saint-martin-burgundy",
+  "sort": 3,
+  "data": {
+   "name": "Domaine Laroche ‘Saint Martin’",
+   "grape": "Chablis",
+   "region": "Burgundy",
+   "list": "By the glass",
+   "country": "France",
+   "color": "White",
+   "glass": "15",
+   "half": "",
+   "bottle": "58",
+   "size": "",
+   "pages": [
+    "Chardonnay",
+    "Burgundy"
+   ],
+   "style": "Mineral",
+   "notes": "Lemon, green apple and chalk; Chardonnay with no oak.",
+   "pairs": "Wood-Grilled Half Chicken, Seared Scallops",
+   "say": "Chardonnay without the butter.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Elk Cove",
+  "slug": "wine-list/by-the-glass-red-pinot-noir-elk-cove-willamette-valley",
+  "sort": 4,
+  "data": {
+   "name": "Elk Cove",
+   "grape": "Pinot Noir",
+   "region": "Willamette Valley",
+   "list": "By the glass",
+   "country": "USA",
+   "color": "Red",
+   "glass": "15",
+   "half": "",
+   "bottle": "58",
+   "size": "",
+   "pages": [
+    "Pinot Noir",
+    "Willamette Valley"
+   ],
+   "style": "Silky",
+   "notes": "Red cherry, cranberry and a little forest floor; silky and light.",
+   "pairs": "Beef Tartare, Wild Mushroom Risotto",
+   "say": "Light on its feet; it goes with almost everything.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "2",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Catena",
+  "slug": "wine-list/by-the-glass-red-malbec-catena-mendoza",
+  "sort": 5,
+  "data": {
+   "name": "Catena",
+   "grape": "Malbec",
+   "region": "Mendoza",
+   "list": "By the glass",
+   "country": "Around the world",
+   "color": "Red",
+   "glass": "12",
+   "half": "",
+   "bottle": "46",
+   "size": "",
+   "pages": [
+    "Malbec",
+    "Mendoza"
+   ],
+   "style": "Plush",
+   "notes": "Blackberry, plum and violet, with soft, round tannins.",
+   "pairs": "Hanger Steak Frites, Wrenfield Burger",
+   "say": "Made for the steak.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Fontodi",
+  "slug": "wine-list/by-the-glass-red-chianti-classico-fontodi-tuscany",
+  "sort": 6,
+  "data": {
+   "name": "Fontodi",
+   "grape": "Chianti Classico",
+   "region": "Tuscany",
+   "list": "By the glass",
+   "country": "Italy",
+   "color": "Red",
+   "glass": "16",
+   "half": "",
+   "bottle": "62",
+   "size": "",
+   "pages": [
+    "Sangiovese",
+    "Tuscany"
+   ],
+   "style": "Savory",
+   "notes": "Sour cherry, dried herbs and leather, with bright acidity.",
+   "pairs": "Wild Mushroom Risotto, Braised Lamb Shank",
+   "say": "Tuscany in a glass: cherry and herbs.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "4",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/G.D. Vajra ‘Albe’",
+  "slug": "wine-list/sommelier-selection-red-barolo-g-d-vajra-albe-piedmont",
+  "sort": 7,
+  "data": {
+   "name": "G.D. Vajra ‘Albe’",
+   "grape": "Barolo",
+   "region": "Piedmont",
+   "list": "Sommelier selection",
+   "country": "Italy",
+   "color": "Red",
+   "glass": "24",
+   "half": "60",
+   "bottle": "110",
+   "size": "",
+   "pages": [
+    "Nebbiolo",
+    "Piedmont"
+   ],
+   "style": "Structured",
+   "notes": "Rose petal, red cherry and tar, with firm tannins and a long finish.",
+   "pairs": "Braised Lamb Shank, Hanger Steak Frites",
+   "say": "Pale in colour, big in flavour.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "5",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Ridge ‘Three Valleys’",
+  "slug": "wine-list/by-the-bottle-red-zinfandel-blend-ridge-three-valleys-sonoma",
+  "sort": 8,
+  "data": {
+   "name": "Ridge ‘Three Valleys’",
+   "grape": "Zinfandel blend",
+   "region": "Sonoma",
+   "list": "By the bottle",
+   "country": "USA",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "64",
+   "size": "",
+   "pages": [
+    "Zinfandel",
+    "Sonoma"
+   ],
+   "style": "Juicy",
+   "notes": "Raspberry, black pepper and baking spice; juicy and generous.",
+   "pairs": "Wrenfield Burger, Hanger Steak Frites",
+   "say": "Big fruit with a peppery kick.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Frog’s Leap",
+  "slug": "wine-list/by-the-bottle-red-cabernet-sauvignon-frogs-leap-rutherford",
+  "sort": 9,
+  "data": {
+   "name": "Frog’s Leap",
+   "grape": "Cabernet Sauvignon",
+   "region": "Rutherford",
+   "list": "By the bottle",
+   "country": "USA",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "120",
+   "size": "",
+   "pages": [
+    "Cabernet",
+    "Rutherford",
+    "Napa Valley"
+   ],
+   "style": "Classic",
+   "notes": "Black currant, cedar and cocoa, with polished tannins.",
+   "pairs": "Hanger Steak Frites, Braised Lamb Shank",
+   "say": "Napa Cabernet, on the elegant side.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Sandhi",
+  "slug": "wine-list/by-the-bottle-white-chardonnay-sandhi-sta-rita-hills",
+  "sort": 10,
+  "data": {
+   "name": "Sandhi",
+   "grape": "Chardonnay",
+   "region": "Sta. Rita Hills",
+   "list": "By the bottle",
+   "country": "USA",
+   "color": "White",
+   "glass": "",
+   "half": "",
+   "bottle": "72",
+   "size": "",
+   "pages": [
+    "Chardonnay",
+    "Sta. Rita Hills",
+    "Santa Barbara"
+   ],
+   "style": "Bright",
+   "notes": "Meyer lemon, pear and a touch of oak; bright, not buttery.",
+   "pairs": "Seared Scallops, Wood-Grilled Half Chicken",
+   "say": "California Chardonnay with real freshness.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Elena Walch",
+  "slug": "wine-list/by-the-bottle-white-pinot-grigio-elena-walch-trentino-alto-adige",
+  "sort": 11,
+  "data": {
+   "name": "Elena Walch",
+   "grape": "Pinot Grigio",
+   "region": "Trentino-Alto Adige",
+   "list": "By the bottle",
+   "country": "Italy",
+   "color": "White",
+   "glass": "",
+   "half": "",
+   "bottle": "48",
+   "size": "",
+   "pages": [
+    "Pinot Grigio",
+    "Trentino-Alto Adige"
+   ],
+   "style": "Crisp",
+   "notes": "Pear, almond and mountain herbs; crisp and clean.",
+   "pairs": "Apple & Celery Root Salad, Smoked Salmon Toast",
+   "say": "Pinot Grigio with more to say.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Pascal Jolivet",
+  "slug": "wine-list/by-the-bottle-white-sancerre-pascal-jolivet-loire",
+  "sort": 12,
+  "data": {
+   "name": "Pascal Jolivet",
+   "grape": "Sancerre",
+   "region": "Loire",
+   "list": "By the bottle",
+   "country": "France",
+   "color": "White",
+   "glass": "",
+   "half": "",
+   "bottle": "64",
+   "size": "",
+   "pages": [
+    "Sauvignon Blanc",
+    "Loire"
+   ],
+   "style": "Mineral",
+   "notes": "Grapefruit, gooseberry and flint, with racy acidity.",
+   "pairs": "Roasted Beet & Citrus Salad, Smoked Salmon Toast",
+   "say": "The original Sauvignon Blanc.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Château Greysac",
+  "slug": "wine-list/by-the-bottle-red-medoc-chateau-greysac-bordeaux",
+  "sort": 13,
+  "data": {
+   "name": "Château Greysac",
+   "grape": "Médoc",
+   "region": "Bordeaux",
+   "list": "By the bottle",
+   "country": "France",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "56",
+   "size": "",
+   "pages": [
+    "Bordeaux"
+   ],
+   "style": "Classic",
+   "notes": "Black cherry, graphite and cedar; medium body and dry.",
+   "pairs": "Braised Lamb Shank, Hanger Steak Frites",
+   "say": "Classic Bordeaux at a friendly price.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Guigal",
+  "slug": "wine-list/by-the-bottle-red-cotes-du-rhone-guigal-rhone",
+  "sort": 14,
+  "data": {
+   "name": "Guigal",
+   "grape": "Côtes du Rhône",
+   "region": "Rhône",
+   "list": "By the bottle",
+   "country": "France",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "44",
+   "size": "",
+   "pages": [
+    "Syrah",
+    "Rhône"
+   ],
+   "style": "Spicy",
+   "notes": "Dark berries, black pepper and garrigue; warm and round.",
+   "pairs": "Braised Lamb Shank, Wrenfield Burger",
+   "say": "Peppery and warm; great value.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Muga ‘Reserva’",
+  "slug": "wine-list/by-the-bottle-red-tempranillo-muga-reserva-rioja",
+  "sort": 15,
+  "data": {
+   "name": "Muga ‘Reserva’",
+   "grape": "Tempranillo",
+   "region": "Rioja",
+   "list": "By the bottle",
+   "country": "Around the world",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "68",
+   "size": "",
+   "pages": [
+    "Rioja"
+   ],
+   "style": "Savory",
+   "notes": "Red plum, vanilla and dill from American oak; smooth and savory.",
+   "pairs": "Braised Lamb Shank, Chocolate Pot de Crème",
+   "say": "Aged in oak for that classic vanilla note.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo-mise/wine/Billecart-Salmon ‘Brut Réserve’",
+  "slug": "wine-list/bubbles-bubbles-champagne-billecart-salmon-brut-reserve-champagne",
+  "sort": 16,
+  "data": {
+   "name": "Billecart-Salmon ‘Brut Réserve’",
+   "grape": "Champagne",
+   "region": "Champagne",
+   "list": "Bubbles",
+   "country": "France",
+   "color": "Bubbles",
+   "glass": "",
+   "half": "",
+   "bottle": "115",
+   "size": "",
+   "pages": [
+    "Champagne"
+   ],
+   "style": "Elegant",
+   "notes": "Pear, brioche and citrus, with fine, creamy bubbles.",
+   "pairs": "Seared Scallops, Beef Tartare",
+   "say": "Real Champagne for a celebration.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ }
+]

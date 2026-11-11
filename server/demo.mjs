@@ -38,8 +38,28 @@ const TEAM = [
 ];
 // The book's last few changes, so "Your last edits" has something to open.
 const EDITS = [['edit house', 'Paloma Verde', 0.1], ['add recipe', 'Lobster Tagliatelle', 1], ['edit recipe', 'Cacio e Pepe', 2]];
-const FIRST_DAY = ['our-story', 'steps-of-service', 'safety', 'cleanliness', 'floor-plan', 'allergen-guide', 'step-1/greet', 'step-9/goodbye', 'step-4/fire-and-run', 'step-6/clear'];
 const COPY = ['wine', 'shelf', 'beer']; // The Baldwin's real lists (Tommy: "wine is fine")
+
+/* Two demos (Nov 11, Tommy: "a completely separate demo for Mise itself", so he can show both):
+ *   baldwin  /demo       a private copy of The Baldwin: its name, logo and look, its real wine list, back bar and beers,
+ *                        made-up dishes and cocktails (content/demo/). Unchanged.
+ *   mise     /demo/mise  Wrenfield, a made-up restaurant in the Mise Academy look. Everything on its menu is made up
+ *                        (content/demo-mise/), and it reads the shared library like any store that isn't The Baldwin
+ *                        (book_ready 0), so none of The Baldwin's names, logo, story or floor plan show.
+ * Same cast in both (same project, same people). */
+export const DEMOS = {
+  baldwin: { company: 'Baldwin Restaurant Group', store: 'The Baldwin', storeSlug: 'the-baldwin', brand: 'baldwin', bookReady: 1, seeds: 'demo', copy: COPY },
+  mise: { company: 'Wrenfield', store: 'Wrenfield', storeSlug: 'wrenfield', brand: 'mise', bookReady: 0, seeds: 'demo-mise', copy: [],
+    // Home's What's New: a dish, a drink and a wine (newest last), not whichever list was loaded last
+    whatsNew: ['wine-list/by-the-glass-red-pinot-noir-elk-cove-willamette-valley', 'signature/smoke-signal', 'recipe/seared-scallops'] },
+};
+// Wrenfield's menu has no pasta or pizza: the same people's scores land on its own courses.
+const MISE_QUIZ = { 't:course:Pasta': 't:course:Dessert', 't:course:Pizza': 't:course:Salads' };
+// Pages Wrenfield's book doesn't have (they're The Baldwin's own design: its story, its floor plan). Kept in step with
+// SAMPLE_HIDDEN in server/content.mjs.
+const MISE_SKIP = new Set(['our-story', 'floor-plan']);
+/** Which demo a company is ('baldwin' or 'mise'), from its brand. */
+export const demoKind = (db, companyId) => (db.prepare('SELECT brand FROM companies WHERE id = ?').get(companyId)?.brand === 'mise' ? 'mise' : 'baldwin');
 
 export function migrateDemo(db) {
   const cols = db.prepare('PRAGMA table_info(companies)').all().map((c) => c.name);
@@ -47,25 +67,30 @@ export function migrateDemo(db) {
 }
 export const isDemoCompany = (db, companyId) => !!companyId && !!db.prepare('SELECT demo FROM companies WHERE id = ?').get(companyId)?.demo;
 
-const readSeed = (f) => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'content/demo', f), 'utf8')); } catch { return []; } };
+const readSeed = (dir, f) => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'content', dir, f), 'utf8')); } catch { return []; } };
 
 /** Make a visitor's private copy and sign them in. Returns { token, userId }. */
-export function startDemo(db, key) {
+export function startDemo(db, key, which = 'baldwin') {
   const pick = DEMO_ROLES[key];
-  if (!pick) return null;
+  const D = DEMOS[which];
+  if (!pick || !D) return null;
+  const mise = which === 'mise';
+  const qz = (q) => (mise ? MISE_QUIZ[q] || q : q);
   const tag = crypto.randomBytes(5).toString('hex');
   const t = now();
   db.exec('BEGIN');
   try {
-    const co = Number(db.prepare('INSERT INTO companies(name, slug, created_at, demo) VALUES (?,?,?,1)').run('Baldwin Restaurant Group', 'demo-' + tag, t).lastInsertRowid);
-    const st = Number(db.prepare('INSERT INTO stores(company_id, name, slug, book_ready, sort, created_at) VALUES (?,?,?,1,0,?)').run(co, 'The Baldwin', 'the-baldwin', t).lastInsertRowid);
+    const co = Number(db.prepare('INSERT INTO companies(name, slug, created_at, demo, brand) VALUES (?,?,?,1,?)').run(D.company, (mise ? 'demo-mise-' : 'demo-') + tag, t, D.brand).lastInsertRowid);
+    const st = Number(db.prepare('INSERT INTO stores(company_id, name, slug, book_ready, sort, created_at) VALUES (?,?,?,?,0,?)').run(co, D.store, D.storeSlug, D.bookReady, t).lastInsertRowid);
     const ins = db.prepare('INSERT INTO entries(collection,slug,data,sort,created_at,updated_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?)');
-    for (const col of COPY) {
+    for (const col of D.copy) {
       for (const r of db.prepare('SELECT slug, data, sort FROM entries WHERE collection = ? AND store_id = 1 AND archived_at IS NULL').all(col)) ins.run(col, r.slug, r.data, r.sort, t, t, co, st);
     }
-    for (const [col, file] of [['recipe', 'recipe.json'], ['house', 'house.json']]) {
-      for (const s of readSeed(file)) ins.run(col, s.slug, JSON.stringify(s.data), s.sort ?? 0, t, t, co, st);
+    const files = [['recipe', 'recipe.json'], ['house', 'house.json'], ...(mise ? [['wine', 'wine.json'], ['shelf', 'shelf.json'], ['beer', 'beer.json']] : [])];
+    for (const [col, file] of files) {
+      for (const s of readSeed(D.seeds, file)) ins.run(col, s.slug, JSON.stringify(s.data), s.sort ?? 0, t, t, co, st);
     }
+    (D.whatsNew || []).forEach((slug, i) => db.prepare('UPDATE entries SET updated_at = ? WHERE store_id = ? AND slug = ?').run(new Date(Date.parse(t) + (i + 1) * 1000).toISOString(), st, slug));
     const addUser = (name, role, storeId) => Number(db.prepare('INSERT INTO users(company_id, name, role, store_id, created_at, last_seen_at) VALUES (?,?,?,?,?,?)').run(co, name, role, storeId, t, t).lastInsertRowid);
     const me = addUser(pick.name, pick.role, pick.role === 'staff' ? st : null);
     // Job paths (Nov 8): everyone on the team has a job and a start date, and the employee is part-way through hers.
@@ -77,9 +102,9 @@ export function startDemo(db, key) {
     // Marisol (the employee demo, and on the manager's team): her first week, and the Cocktail Program's Level 1 final yesterday.
     const marisol = (id) => {
       setJob(id, ['server'], 6);
-      for (const slug of ['our-story', 'steps-of-service', 'safety', 'cleanliness', 'floor-plan', 'allergen-guide']) read(id, 'page:' + slug, new Date(Date.now() - 6 * 864e5).toISOString());
+      for (const slug of ['our-story', 'steps-of-service', 'safety', 'cleanliness', 'floor-plan', 'allergen-guide'].filter((x) => !(mise && MISE_SKIP.has(x)))) read(id, 'page:' + slug, new Date(Date.now() - 6 * 864e5).toISOString());
       [['t:allergens', 10], ['t:course:Pasta', 10], ['t:course:Snacks & Small Plates', 9], ['t:course:Salads', 9]].forEach(([quiz, score], i) =>
-        attempt(id, 'Marisol Vega', quiz, score, 10, new Date(Date.now() - (5 - i) * 864e5).toISOString()));
+        attempt(id, 'Marisol Vega', qz(quiz), score, 10, new Date(Date.now() - (5 - i) * 864e5).toISOString()));
       attempt(id, 'Marisol Vega', 't:final:bar-1', 27, 30, new Date(Date.now() - 864e5).toISOString());
     };
     if (pick.role === 'staff') marisol(me);
