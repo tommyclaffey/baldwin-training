@@ -9,7 +9,7 @@ import { SearchBox } from '../components/SearchBox';
 import { useCollections } from './cms';
 import { ErrorNote, Loading, Text } from './ui';
 import { dayLabel, type Job, type MyPath, type Stage, type Step } from '../path/store';
-import { SendToTeamButton } from '../chat/SendToTeam';
+import { ItemChatButton, SendToTeamButton } from '../chat/SendToTeam';
 import { hasChat } from '../chat/unread';
 
 /* ---------- data ---------- */
@@ -377,11 +377,15 @@ export function PeoplePage() {
           </div>
           {shown.length === 0 && <p className="mh-empty">{people.length ? 'No one matches.' : 'No one on the team yet.'}</p>}
           {shown.map((p) => (
-            <button key={p.id} type="button" className={'pp-row' + (chosen?.id === p.id ? ' on' : '')} aria-current={chosen?.id === p.id ? 'true' : undefined} onClick={() => pick(p.id)}>
-              <Avatar initials={p.initials} />
-              <span className="pp-row-main"><span><strong>{p.name}</strong><small> · {p.jobLabel || 'No job yet'}</small></span><Bar done={p.done} total={p.total} /></span>
-              <Pill status={p.status} />
-            </button>
+            // The chat button sends their progress card (managers only, into a DM with another manager; server/chat.mjs).
+            <div key={p.id} className={'pp-row-wrap' + (hasChat(user) ? ' with-chat' : '')}>
+              <button type="button" className={'pp-row' + (chosen?.id === p.id ? ' on' : '')} aria-current={chosen?.id === p.id ? 'true' : undefined} onClick={() => pick(p.id)}>
+                <Avatar initials={p.initials} />
+                <span className="pp-row-main"><span><strong>{p.name}</strong><small> · {p.jobLabel || 'No job yet'}</small></span><Bar done={p.done} total={p.total} /></span>
+                <Pill status={p.status} />
+              </button>
+              {hasChat(user) && <ItemChatButton item={{ type: 'person', id: p.id }} title={`${p.name}’s progress`} className="row" />}
+            </div>
           ))}
           <div className="pp-foot">
             <button type="button" className="mg-btn" onClick={() => setAdding(true)}>Add a Person</button>

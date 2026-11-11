@@ -2214,24 +2214,33 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 /* ---- Team Chat side panel + Send to Team (Nov 11, Tommy: "make the chat similar to growth where you can select an item
    to populate in the chat"). Growth's pattern: 400 wide on the right; the page narrows beside it (is-chat-open) on wide
    screens, sits over it on tablets, and is a full-screen sheet on phones. ---- */
-.tcp { position: fixed; top: 0; right: 0; bottom: 0; width: 400px; z-index: 85; display: flex; background: var(--card); border-left: 1px solid #DDD3C5; outline: none; }
+.tcp { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 100vw); box-sizing: border-box; z-index: 85; display: flex; background: var(--card); border-left: 1px solid #DDD3C5; outline: none; overflow: hidden; zoom: 1; }
 .tcp-in { flex: 1 1 auto; min-width: 0; height: auto !important; min-height: 0 !important; flex-direction: column; background: var(--card); }
+.tcp .tc-list-head { gap: 12px; }
+.tcp .tc-list-head > div:first-child { min-width: 0; }
 .tcp .tc-list { flex: 1 1 auto; border-right: 0; padding: 18px 16px 16px; }
-.tcp .tc-list-head h2 { margin: 0; font-size: 20px; font-weight: 800; line-height: 1.2; }
+.tcp .tc-list-head h2 { margin: 0; font-size: 22px; font-weight: 800; line-height: 1.2; }
 .tcp .tc-room { flex: 1 1 auto; }
 .tcp .tc-room-head { padding: 12px 12px 12px 16px; }
 .tc-head-btns { display: flex; align-items: center; gap: 6px; flex: none; }
-.tcp-btn { flex: none; width: 36px; height: 36px; border-radius: 999px; border: 1px solid #DDD3C5; background: var(--card); color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.tcp-btn { flex: none; width: 38px; height: 38px; border-radius: 999px; border: 1px solid #DDD3C5; background: var(--card); color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0; }
 .tcp-btn:hover { border-color: var(--copper-dk); }
-.tcp .tc-new { width: 36px; height: 36px; }
 .tcp-staged { flex: none; padding: 12px 16px calc(16px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid #E4DCCF; background: var(--cream); }
 .tcp :focus-visible { outline: 2px solid var(--copper-dk); outline-offset: 2px; }
+/* Beside or over the page (Nov 11, Tommy: "This looks weird how it scales"). The book's pages are a 1176-wide design
+   scaled to fit, so docking the panel beside one on a laptop shrank the page to half size next to a full-size panel.
+   The book docks the panel only when the page keeps at least ~900 px (1560 = 264 sidebar + 400 panel + 896); below
+   that the panel sits over the page, which keeps its full size. The admin reflows rather than scales, so it docks
+   from 1100. The panel itself never scales: a fixed 400 px column, the same type and controls as /team-chat. */
 @media (min-width: 1100px) {
-  body.tcp-open .shell, body.tcp-open .admin { padding-right: 400px; }
-  body.tcp-open .demo-bar { padding-right: 24px; }
+  body.tcp-open .admin { padding-right: 400px; }
+}
+@media (min-width: 1560px) {
+  body.tcp-open .shell { padding-right: 400px; }
 }
 @media (max-width: 1239px) and (min-width: 860px) { .tcp { top: 56px; } } /* under the book's top bar, so its menu button stays reachable */
-@media (max-width: 1099px) and (min-width: 860px) { .tcp { box-shadow: -12px 0 32px rgba(30,28,26,.18); } }
+@media (max-width: 1559px) and (min-width: 860px) { body:not(:has(.admin)) .tcp { box-shadow: -12px 0 32px rgba(30,28,26,.18); } }
+@media (max-width: 1099px) and (min-width: 860px) { body:has(.admin) .tcp { box-shadow: -12px 0 32px rgba(30,28,26,.18); } }
 @media (max-width: 859px) { .tcp { top: 0; left: 0; width: auto; border-left: 0; z-index: 95; } }
 body:has(.admin) .tcp { top: 0; } /* the admin has no top bar */
 
@@ -2293,3 +2302,41 @@ body.eip-lock .page-tools.floating, body.menu-lock .page-tools.floating { displa
   body.tcp-open .pp-cols { grid-template-columns: minmax(0, 1fr); }
 }
 .pp-head-btns { flex-wrap: wrap; }
+.tc-blocked { display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap; }
+
+/* ---- Chat buttons on items (Nov 11, Tommy: "have those hover states where you can select the item and have the chat
+   button"). One look everywhere: a small round button, white with an ink ring (one of the two always stands out, on a
+   cream card, a dark band or a photo), the Team Chat bubble inside. It shows on hover and keyboard focus; on touch it
+   stays on rows and wide cards only. Rows keep a gutter at their end for it (chat/sendable.ts), so it never sits on a
+   name, a price or an allergen pill; cards carry it in the top-right corner of their photo. ---- */
+.item-chat { position: absolute; z-index: 4; width: 32px; height: 32px; box-sizing: border-box; padding: 0; border-radius: 999px; border: 1.5px solid #1E1C1A;
+  background: #FFFFFF; color: #1E1C1A; display: grid; place-items: center; cursor: pointer; box-shadow: 0 2px 8px rgba(30,28,26,.22);
+  opacity: 0; pointer-events: none; transition: opacity .16s ease, background-color .12s ease, color .12s ease; }
+.item-chat svg { display: block; }
+.item-chat.row { top: 50%; transform: translateY(-50%); }
+.has-chat:hover > .item-chat, .has-chat:focus-within > .item-chat, .item-chat:focus-visible, .pp-row-wrap:hover > .item-chat, .pp-row-wrap:focus-within > .item-chat { opacity: 1; pointer-events: auto; }
+.item-chat:hover { background: #1E1C1A; color: #FFFFFF; border-color: #FFFFFF; }
+.item-chat:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px; }
+/* The link's own hover fade and press nudge don't reach the button. */
+.has-chat:hover:has(> .item-chat:hover) { opacity: 1; }
+.has-chat:active:has(> .item-chat:active) { transform: none; }
+@media (hover: none) {
+  .has-chat > .item-chat.row, .has-chat > .item-chat.wide, .pp-row-wrap > .item-chat { opacity: 1; pointer-events: auto; }
+  .has-chat > .item-chat:not(.row):not(.wide) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .item-chat { transition: none; } }
+/* Phones reflow cards, so the corner is the card's own. */
+.page.compact .item-chat:not(.row) { top: 8px !important; right: 8px !important; }
+/* Screenshots only: the shot scripts add this class to body to show every chat button at once. */
+.show-chat-btns .item-chat { opacity: 1; pointer-events: auto; }
+/* People: the chat button sits at the end of a person's row, in a gutter past their status pill. */
+.pp-row-wrap { position: relative; }
+.pp-row-wrap.with-chat > .pp-row { padding-right: 58px; }
+.pp-row-wrap > .item-chat { right: 16px; }
+/* A stacked row (What's New) keeps its words out of the gutter: they wrap instead of running under the button. */
+.has-chat.chat-row.fx-v > * { max-width: 100%; }
+.has-chat.chat-row.fx-v .fx-h > .ftext.nowrap { white-space: normal !important; min-width: 0; flex: 0 1 auto !important; }
+/* A row's name part that now shares the row with the gutter wraps rather than running under the button. */
+.has-chat.chat-row > .fill-h .ftext.nowrap { white-space: normal !important; }
+/* The phone table layouts (grid rows, stretched cells) never resize or re-place the button. */
+.has-chat > .item-chat, .pp-row-wrap > .item-chat { width: 32px !important; height: 32px !important; min-width: 0 !important; left: auto !important; bottom: auto !important; margin: 0 !important; flex: none !important; grid-column: auto !important; grid-row: auto !important; }

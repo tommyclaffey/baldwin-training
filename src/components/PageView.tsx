@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigationType, Link } from 'react-router-dom';
-import { CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
+import { ChatItemsContext, CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
 import { InteractProvider } from './interact';
 import { QuizModal, ReviewCard, ProgressCard } from '../quiz/QuizCard';
 import { QuizBuilder } from '../quiz/QuizBuilder';
@@ -131,6 +131,14 @@ export function PageView() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const bySlug = useMemo(() => new Map(session.index.map((e) => [e.slug, e.file])), [session.index]);
+  // Chat buttons on the page's items: links to pages you can share, other than the one you're on (Send to Team covers it).
+  const chatOn = hasChat(session.user);
+  const here = entry?.slug;
+  const chatLookup = useMemo(() => {
+    if (!chatOn) return null;
+    const by = new Map(session.index.map((e) => [e.slug, e]));
+    return (slug: string) => { const e = by.get(slug); return e && slug !== here && shareable(e) ? { slug, title: e.title } : null; };
+  }, [chatOn, session.index, here]);
   const fileFor = (href: string | null) => {
     if (!href || !href.startsWith('/') || href.startsWith('/admin') || href.startsWith('/media')) return undefined;
     return bySlug.get(decodeURIComponent(href.split(/[?#]/)[0]).replace(/^\/+|\/+$/g, ''));
@@ -235,6 +243,7 @@ export function PageView() {
     <NavContext.Provider value={entry.nav}>
       <CompactContext.Provider value={compact}>
           <SlotContext.Provider value={isQuiz ? QUIZ_SLOTS : NO_SLOTS}>
+          <ChatItemsContext.Provider value={chatLookup}>
           <InteractProvider key={shown.file}>
           {loading && <div className="nav-progress" role="progressbar" aria-label="Loading page" />}
           <main ref={ref} key={shown.file} aria-busy={loading || undefined} className={'page page-enter' + (compact ? ' compact' : '')} style={{ backgroundColor: page.bg }}>
@@ -249,6 +258,7 @@ export function PageView() {
           </main>
           {isQuiz && <QuizModal />}
           </InteractProvider>
+          </ChatItemsContext.Provider>
           </SlotContext.Provider>
       </CompactContext.Provider>
     </NavContext.Provider>
