@@ -352,7 +352,7 @@ export function Conversation({ roomKey, phone, details, setDetails, onChanged, o
           </div>
         </div>
         {note && <p className="tc-note" role="alert">{note} <button type="button" onClick={() => setNote('')} aria-label="Dismiss">{I.close}</button></p>}
-        <Composer room={r} demo={!!user?.demo} replyTo={replyTo} clearReply={() => setReplyTo(null)} autoFocus={panel && !phone}
+        <Composer room={r} demo={!!user?.demo} replyTo={replyTo} clearReply={() => setReplyTo(null)} autoFocus={panel && !phone} onPickOther={onBack}
           onSent={(x) => { stick.current = true; take(x); onChanged(); }} />
       </section>
       {!panel && <Details d={d} open={details} onClose={() => setDetails(false)} manager={!!user && user.role !== 'staff'} onPin={(id) => setPinAt(id)} />}
@@ -573,7 +573,7 @@ export function toMentionTokens(text: string, members: { id: number; name: strin
   return out;
 }
 
-function Composer({ room, demo, replyTo, clearReply, onSent, autoFocus = false }: { room: Room; demo: boolean; replyTo: Msg | null; clearReply: () => void; onSent: (d: Detail) => void; autoFocus?: boolean }) {
+function Composer({ room, demo, replyTo, clearReply, onSent, autoFocus = false, onPickOther }: { room: Room; demo: boolean; replyTo: Msg | null; clearReply: () => void; onSent: (d: Detail) => void; autoFocus?: boolean; onPickOther?: () => void }) {
   const { user } = useSession();
   const { staged } = useChatPanel();
   const [text, setText] = useState('');
@@ -640,11 +640,22 @@ function Composer({ room, demo, replyTo, clearReply, onSent, autoFocus = false }
     setBusy('');
     if (file.current) file.current.value = '';
   };
-  const blockedNote = cardBlocked ? <p className="tc-compose-note err" role="note">Progress cards go only to another manager, in a direct message. Pick a manager, or remove the card.</p> : null;
+  // In the panel, the note offers the conversations the card can go to (the list, showing managers only).
+  const blockedNote = cardBlocked ? (
+    <div className="tc-blocked">
+      <p className="tc-compose-note err" role="note">Progress cards go only to another manager, in a direct message. Pick a manager, or remove the card.</p>
+      {onPickOther && <button type="button" className="tc-act" onClick={onPickOther}>Pick a Manager</button>}
+    </div>
+  ) : null;
 
   if (locked) return (
     <div className="tc-compose-wrap">
-      {staged && <StagedCard staged={staged} note={<p className="tc-compose-note" role="note">Managers start posts in {room.name}. Pick another conversation to send this.</p>} />}
+      {staged && <StagedCard staged={staged} note={(
+        <div className="tc-blocked">
+          <p className="tc-compose-note" role="note">Managers start posts in {room.name}. Pick another conversation to send this.</p>
+          {onPickOther && <button type="button" className="tc-act" onClick={onPickOther}>Pick a Conversation</button>}
+        </div>
+      )} />}
       <p className="tc-locked">Managers start posts in {room.name}. Open the <span aria-hidden="true">⋯</span> on a post and press Reply to answer it.</p>
     </div>
   );

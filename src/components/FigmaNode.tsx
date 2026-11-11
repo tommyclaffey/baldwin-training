@@ -12,6 +12,8 @@ import { QuickCheck } from './QuickCheck';
 import { AddVideoButton } from './AddVideo';
 import { CompleteToggle } from './CompleteToggle';
 import { AssignName, FindBox, TableFinder, TableMarker, controlProps, isActive, useInteract, visibleKids, type Meta } from './interact';
+import { ItemChatButton } from '../chat/SendToTeam';
+import { cardPlan, holderTarget, placeOf, targetOf, withBand, withGutters, wordsOf, type Lookup, type Shape, type Target } from '../chat/sendable';
 
 // One node of the Figma layout export (see scripts/build-content.mjs).
 export type FNode = {
@@ -33,7 +35,13 @@ export type FNode = {
   bal?: 1;
   /** A control or filtered layer (see server/interact.mjs). */
   meta?: Meta;
+  /** A row's chat button: its distance from the right (the row got a gutter for it; see chat/sendable.ts). */
+  gut?: number;
 };
+
+/** Which links can go to Team Chat (the page you're on provides it; nothing outside a book page gets chat buttons). */
+export const ChatItemsContext = createContext<Lookup | null>(null);
+type ChatOn = Target & { shape: Shape };
 
 const isVideoSlot = (n: FNode) => !!n.n && (n.n.startsWith('Video slot') || n.n === 'Player');
 const isVideoCard = (n: FNode) => !!n.n && (n.n.startsWith('Video · ') || n.n.startsWith('Item · ') || n.n.startsWith('Wine · '));
@@ -368,6 +376,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   const carousel = useContext(CarouselContext);
   const shrink = useContext(ScaleContext);
   const inLink = useContext(InLink);
+  const chatLookup = useContext(ChatItemsContext);
   const live = useInteract();
   const [playing, setPlaying] = useState(false);
   // A control is drawn in its current state (ticked / empty, selected / plain).
@@ -468,7 +477,15 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   const table = String(live?.get('table', '') || '');
   if (m?.range && table && Number(table) >= m.range[0] && Number(table) <= m.range[1] && (m.range[0] < 100) === (Number(table) < 100)) cls.push('area-hit');
   const child = (c: FNode) => <FigmaNode node={c} parentLm={node.lm} parentH={node.lm === 'H' ? node.h : undefined} />;
-  let kids: ReactNode = visibleKids(node.c, live)?.map((c, i) => (
+  // Rows that can go to Team Chat get a gutter at their end for the chat button (and so do their table's other rows).
+  const shown = visibleKids(node.c, live);
+  let laid = shown && chatLookup && !inLink && shown.some((c) => c.to) ? withGutters(shown, node, (c) => targetOf(c, chatLookup)?.shape === 'row') : shown;
+  const chat = chatLookup && !inLink ? targetOf(node, chatLookup) : null;
+  // A card about one thing that isn't a link itself (Cocktail Specs: the name links): it carries the button too.
+  const holder = chatLookup && !inLink && !chat ? holderTarget(node, chatLookup) : null;
+  const plan = chat?.shape === 'card' || holder ? cardPlan(node) : null;
+  if (plan && laid) laid = withBand(laid, plan);
+  let kids: ReactNode = laid?.map((c, i) => (
     // Tonight's sections: the name in each row is live (and editable for a signed-in manager).
     m?.assign && c.t === 'T' && c.s === 'Unassigned'
       ? <AssignName key={i} slot={m.assign} node={c} render={child} />
@@ -497,6 +514,10 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
         </div>, document.body)}
     </>
   );
+  if (holder && plan) {
+    cls.push('has-chat', 'chat-card');
+    extras.push(<ItemChatButton key="chat" item={{ type: 'page', slug: holder.slug }} title={holder.title} className={'card' + (node.w >= 480 ? ' wide' : '')} style={{ top: plan.top, right: plan.right }} />);
+  }
   if (m?.tables && table && m.tables[table]) { extras.push(<TableMarker key="table" at={m.tables[table]} label={table} />); st.position = st.position || 'relative'; st.overflow = 'hidden'; }
   if (extras.length || playing) kids = <>{kids}{extras}{overlays}</>;
   if (extras.length && !st.position) st.position = 'relative';
@@ -521,7 +542,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     }
     const box = <div className={cls.join(' ')} style={{ ...inner, position: 'relative', width: node.w, height: node.h, maxWidth: 'none' }} data-name={node.n}>{kids}</div>;
     const scaled = <Scaled w={node.w} h={node.h} outer={{ flex, alignSelf, minWidth, flexShrink }}>{box}</Scaled>;
-    return node.to ? wrapLink(node, <div>{scaled}</div>, {}, ['fn'], inLink) : scaled;
+    return node.to ? wrapLink(node, <div>{scaled}</div>, {}, ['fn'], inLink, chat) : scaled;
   }
   if (carousel && (node.n === 'Carousel prev' || node.n === 'Carousel next')) {
     const prev = node.n === 'Carousel prev';
@@ -543,7 +564,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
       {kids}
     </div>
   );
-  return wrapLink(node, el, st, cls, inLink);
+  return wrapLink(node, el, st, cls, inLink, chat);
 }
 
 // A linked text keeps its own colour from the design (Nov 5: "Full specs on Cocktail Specs →" came out ink on the dark band).
@@ -552,7 +573,7 @@ const linkColor = (node: FNode, st: CSSProperties) => (node.t === 'T' && st.colo
 // One card, one Tab stop (Nov 6, Tommy: "I have to press Tab twice to select the next card"). A link inside another link, or a photo
 // that repeats its card's button, stays clickable but Tab skips it.
 const InLink = createContext(false);
-function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[], inLink = false) {
+function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[], inLink = false, chat: ChatOn | null = null) {
   if (!node.to) return el;
   const skip = inLink || !!node.skipTab;
   const tabProps = skip ? { tabIndex: -1, ...(node.skipTab ? { 'aria-hidden': true } : {}) } : {};
@@ -565,6 +586,18 @@ function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[], 
       <a href={node.to} target="_blank" rel="noopener noreferrer" className={cls.concat('flink').join(' ')} style={{ ...st, display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }} aria-label={label} data-name={node.n} data-label={node.lab} data-head={node.hdr} {...tabProps}>
         <InLink.Provider value={true}>{(el as { props: { children?: ReactNode } }).props.children}</InLink.Provider>
       </a>
+    );
+  }
+  // An item that can go to Team Chat: its chat button sits inside it (the next Tab stop), shown on hover and focus.
+  if (chat && !skip) {
+    const at = placeOf(node, chat.shape);
+    return (
+      <Link to={node.to} className={cls.concat('flink', 'has-chat', 'chat-' + chat.shape).join(' ')} style={{ ...st, position: st.position || 'relative', display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }}
+        aria-label={label || wordsOf(node) || chat.title} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
+        <InLink.Provider value={true}>{(el as { props: { children?: ReactNode } }).props.children}</InLink.Provider>
+        <ItemChatButton item={{ type: 'page', slug: chat.slug }} title={chat.title} className={chat.shape + (node.w >= 480 ? ' wide' : '')}
+          style={{ top: at.top, right: at.right }} />
+      </Link>
     );
   }
   return (
