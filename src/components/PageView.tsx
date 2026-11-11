@@ -1,3 +1,4 @@
+import { currentBrand, miseSkin } from '../lib/skin';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
@@ -70,6 +71,15 @@ export function usePageEntry() {
 }
 
 /** The assembled page from the server (recipes, cocktails and edits included), for signed-in people only. */
+// Mise skin (Nov 10): `?brand=mise` shows a page in Mise; The Baldwin's look is the default. Skinned pages are kept
+// per page object, so re-renders don't redo the work.
+const BRAND = currentBrand();
+const skinCache = new WeakMap<object, Page>();
+function skinned(_file: string, p: Page): Page {
+  let s = skinCache.get(p);
+  if (!s) { s = miseSkin(p); skinCache.set(p, s); }
+  return s;
+}
 async function fetchPage(file: string): Promise<Page> {
   return api<Page>(`/api/page/${file}`);
 }
@@ -222,7 +232,7 @@ export function PageView() {
     );
   }
   if (!shown) return <main ref={ref} className="page page-loading" aria-busy="true"><div className="loader" /></main>;
-  const page = shown.page;
+  const page = BRAND === 'mise' && !shown.page.empty ? skinned(shown.file, shown.page) : shown.page;
   if (page.empty) return <EmptyPage e={page.empty} mainRef={ref} />;
 
   const isQuiz = page.id === QUIZ_PAGE;

@@ -1674,3 +1674,16 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 .cp-full-close { position: fixed; top: 12px; right: 12px; min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid #8A7A66; background: #1E1C1A; color: #F2EEE7; font: 600 14px 'Archivo', sans-serif; }
 .cp-full-close:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px; }
 @media print { .cp-full { display: none !important; } }
+
+/* ── Mise skin (Nov 10, branch mise-skin): only when <html class="brand-mise"> (`?brand=mise`). The Baldwin is untouched. ── */
+.brand-mise body, .brand-mise .content { background: #EDE6DA; }
+.brand-mise .mobile-bar { background: #121110; }
+.brand-mise .mobile-brand .demo-pill { background: rgba(237,230,218,.14); color: #EDE6DA; }
+/* Watch = dark, read = light: the photo fades into Char. Desktop: from the left edge; phones: photo on top, fading down. */
+[data-name^="Mise hero photo"] { position: relative; }
+[data-name^="Mise hero photo"]::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, #121110 0%, rgba(18,17,16,.55) 22%, rgba(18,17,16,0) 48%), linear-gradient(0deg, rgba(18,17,16,.55) 0%, rgba(18,17,16,0) 30%); }
+.page.compact [data-name="Hero"]:has(> [data-name^="Mise hero photo"]) { flex-direction: column-reverse !important; height: auto !important; min-height: 0 !important; }
+.page.compact [data-name^="Mise hero photo"] { width: 100% !important; height: 300px !important; min-height: 0 !important; flex: 0 0 auto !important; }
+.page.compact [data-name^="Mise hero photo"]::after { background: linear-gradient(180deg, rgba(18,17,16,0) 45%, #121110 100%); }
+.page.compact [data-name="Hero"]:has(> [data-name^="Mise hero photo"]) > [data-name="Copy"] { height: auto !important; min-height: 0 !important; padding: 4px 22px 26px !important; width: 100% !important; }

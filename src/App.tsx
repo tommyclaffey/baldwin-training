@@ -14,6 +14,11 @@ import { EditInPlaceProvider } from './components/EditSheet';
 import { setFavicon } from './lib/favicon';
 import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
 import { MyPathPage, PathReadBar } from './path/MyPath';
+import { currentBrand } from './lib/skin';
+
+// Mise skin (Nov 10): `?brand=mise` shows the app in Mise; The Baldwin's look is the default.
+const MISE_SKIN = currentBrand() === 'mise';
+if (MISE_SKIN) document.documentElement.classList.add('brand-mise');
 import { CertificatePage } from './path/Certificate';
 
 export default function App() {
@@ -57,7 +62,9 @@ function Book() {
         <div className={'mobile-brand' + (user.demo ? ' has-pill' : '')}>
           {user.store && !user.store.bookReady
             ? <strong className="mobile-name">{user.store.name}</strong>
-            : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
+            : MISE_SKIN
+              ? <Link to="/" aria-label="Home"><img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy" height="34" /></Link>
+              : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
           {user.demo && <button type="button" className="demo-pill" onClick={openWelcome}>DEMO</button>}
         </div>
         <button className="menu-btn" aria-expanded={menu} aria-controls="side" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu((m) => !m)}>
