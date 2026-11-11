@@ -9,6 +9,26 @@ import { usePath } from '../path/store';
 import { useSession } from '../lib/session';
 import { openWelcome } from './DemoTour';
 import { ACADEMY_NAME } from '../lib/brand';
+import svgs from '../content/svgs.json';
+import { hasChat, useChatUnread } from '../chat/unread';
+
+/** Team Chat (Nov 11, Figma 580:670): under Home, with the design's speech-bubble icon and an unread count. */
+const CHAT_ICON = 'mise_chat';
+(svgs as Record<string, string>)[CHAT_ICON] = '<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.52 8.15a5.67 5.67 0 0 1-8.29 5.03l-3.4.99.99-3.12A5.67 5.67 0 1 1 14.52 8.15Z" stroke="#B8AFA3" stroke-width="1.49" stroke-linejoin="round"/></svg>';
+function withChat(n: FNode): FNode {
+  if (n.n === 'Nav' && n.c && !n.c.some((c) => c.n === 'Nav · Team Chat')) {
+    const home = n.c.find((c) => c.n === 'Nav · Home');
+    const model = n.c.find((c) => c.n === 'Nav · Food Matrix');
+    if (!home || !model) return n;
+    const item: FNode = JSON.parse(JSON.stringify(model));
+    item.n = 'Nav · Team Chat'; item.to = '/team-chat';
+    item.c = (item.c || []).map((c) => (c.n === 'icon' ? { ...c, svg: CHAT_ICON } : c.t === 'T' ? { ...c, s: 'Team Chat', n: 'Team Chat', segs: undefined } : c));
+    const c = [...n.c];
+    c.splice(c.indexOf(home) + 1, 0, item);
+    return { ...n, c };
+  }
+  return n.c ? { ...n, c: n.c.map(withChat) } : n;
+}
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
 function forStore(n: FNode, name: string): FNode {
@@ -54,13 +74,16 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   // Other stores start at zero (no drawn Baldwin numbers while the real ones load).
   const [counts, setCounts] = useState<Record<string, number>>((): Record<string, number> => (generic ? { 'Food Matrix': 0, 'Video Library': 0, 'Photo Library': 0 } : {}));
   useEffect(() => { api<Record<string, number>>('/api/counts').then(setCounts).catch(() => { /* keep the drawn numbers */ }); }, []);
+  const chat = hasChat(user);
+  const unread = useChatUnread(chat);
   const node = useMemo(() => {
     // Badges: what's really on each page; Quizzes = quizzes still to pass on this phone.
-    const live: Record<string, number> = { ...counts, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
-    const drawn = pathSidebar(linkHome(withCounts(trainingCard([SIDEBAR], quiz)[0], live)), mine);
+    const live: Record<string, number> = { ...counts, 'Team Chat': unread, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
+    const base = trainingCard([SIDEBAR], quiz)[0];
+    const drawn = pathSidebar(linkHome(withCounts(chat ? withChat(base) : base, live)), mine);
     const named = generic ? forStore(drawn, user!.store!.name) : drawn;
     return user?.demo ? withDemoPill(named) : named;
-  }, [quiz, counts, generic, user, mine]);
+  }, [quiz, counts, generic, user, mine, chat, unread]);
   // The pill is drawn with the rest of the sidebar, so it's made a real control here: Tab reaches it, Enter opens the welcome card.
   const nav = useRef<HTMLElement>(null);
   useEffect(() => {

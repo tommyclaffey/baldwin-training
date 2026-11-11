@@ -15,6 +15,8 @@ import { setFavicon } from './lib/favicon';
 import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
 import { MyPathPage, PathReadBar } from './path/MyPath';
 import { CertificatePage } from './path/Certificate';
+import { TeamChatPage } from './chat/TeamChat';
+import { hasChat, useChatUnread } from './chat/unread';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -47,11 +49,12 @@ function Book() {
   const strayDemo = !!user?.demo && !demoTab();
   useEffect(() => { if (strayDemo) void leaveDemo().then(refresh); }, [strayDemo]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const unread = useChatUnread(hasChat(user));
   if (!loaded || strayDemo) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
   if (!user) return <BookSignIn />;
   return (
     <EditInPlaceProvider>
-    <NavContext.Provider value={pathname === '/my-path' ? 'My Path' : pathname.startsWith('/certificate/beer') ? 'Beer Program' : pathname.startsWith('/certificate/somm') ? 'Sommelier Program' : pathname.startsWith('/certificate/') ? 'Cocktail Program' : entry?.nav ?? ''}>
+    <NavContext.Provider value={pathname === '/my-path' ? 'My Path' : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? 'Team Chat' : pathname.startsWith('/certificate/beer') ? 'Beer Program' : pathname.startsWith('/certificate/somm') ? 'Sommelier Program' : pathname.startsWith('/certificate/') ? 'Cocktail Program' : entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
         <div className={'mobile-brand' + (user.demo ? ' has-pill' : '')}>
@@ -60,7 +63,8 @@ function Book() {
             : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
           {user.demo && <button type="button" className="demo-pill" onClick={openWelcome}>DEMO</button>}
         </div>
-        <button className="menu-btn" aria-expanded={menu} aria-controls="side" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu((m) => !m)}>
+        <button className="menu-btn" aria-expanded={menu} aria-controls="side" aria-label={(menu ? 'Close menu' : 'Open menu') + (unread ? `, ${unread} unread in Team Chat` : '')} onClick={() => setMenu((m) => !m)}>
+          {unread > 0 && !menu && <span className="menu-count" aria-hidden="true">{unread > 99 ? '99+' : unread}</span>}
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
             {menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
           </svg>
@@ -73,7 +77,7 @@ function Book() {
         </aside>
         <div id="content" className="content">
           <DemoBar />
-          {pathname === '/my-path' ? <MyPathPage /> : pathname.startsWith('/certificate/') ? <CertificatePage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
+          {pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? <TeamChatPage /> : pathname === '/my-path' ? <MyPathPage /> : pathname.startsWith('/certificate/') ? <CertificatePage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
         </div>
         {user.demo && <DemoTour />}
       </div>

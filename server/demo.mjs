@@ -13,6 +13,7 @@ import { createSession, sessionCookie } from './auth.mjs';
 import { pathFor } from './paths.mjs';
 import { pathCtxFor } from './team.mjs';
 import { questionPool } from './quizgen.mjs';
+import { seedChat, BALDWIN_DEMO_CHAT } from './chat.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const now = () => new Date().toISOString();
@@ -134,6 +135,11 @@ export function startDemo(db, key) {
       }
       if (p.started > 0 && slot < slots.length) db.prepare('INSERT INTO sections(company_id,store_id,day,slot,name,by_user,at) VALUES (?,?,?,?,?,?,?)').run(co, st, day, slots[slot++], p.name, me, t);
     });
+    // Team Chat (Nov 11, Figma 580:670): the conversation the design shows. The employee's store gets its manager too
+    // (she can't sign in; she's there so her pre-shift note and DMs are). seedChat takes any store and script, so another
+    // demo can bring its own.
+    if (pick.role === 'staff') addUser(DEMO_ROLES.manager.name, 'manager', null);
+    seedChat(db, { company: co, storeRow, script: BALDWIN_DEMO_CHAT });
     if (pick.role !== 'staff') for (const [action, name, days] of EDITS) db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id) VALUES (?,?,?,?,?)').run(me, action, name, new Date(Date.now() - days * 864e5).toISOString(), co);
     // Nov 10 (audit: "Videos and photos · 0" in the demo admin): a few videos already in the library
     for (const [title, yt] of [['How I Make an Old Fashioned · Anders Erickson', 'pdcrJ5V7YKM'], ['How to Make a Martini · Anders Erickson', 'izZsjqnADAA'], ['The Daiquiri · Anders Erickson', '71jQRf5UrpE'], ['How to Open a Bottle of Wine · Court of Master Sommeliers', '9R3JBuXcNjQ']])
@@ -151,7 +157,7 @@ export function dropDemo(db, id) {
     db.prepare('DELETE FROM manual_reads WHERE user_id = ?').run(u);
     db.prepare('DELETE FROM quiz_marks WHERE user_id = ?').run(u);
   }
-  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes']) {
+  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit']) {
     const cols = db.prepare(`PRAGMA table_info(${t})`).all().map((c) => c.name);
     if (cols.includes('company_id')) db.prepare(`DELETE FROM ${t} WHERE company_id = ?`).run(id);
   }
@@ -168,7 +174,7 @@ export function purgeDemos(db) {
 }
 
 /** What a demo visitor can't do: anything that leaves the sandbox or changes accounts. */
-const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/pin$/, /^\/api\/team/, /^\/api\/media\/upload$/, /^\/api\/scan/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/];
+const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/pin$/, /^\/api\/team/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/scan/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/];
 export const demoBlocks = (p, m) => m !== 'GET' && BLOCKED.some((r) => r.test(p));
 
 export { sessionCookie };

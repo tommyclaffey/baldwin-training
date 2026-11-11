@@ -18,6 +18,7 @@ import { passFor } from './quizgen.mjs';
 import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
 import { topicList, questionPool } from './quizgen.mjs';
 import { chapterBySlug, markRead } from './manual.mjs';
+import * as chat from './chat.mjs';
 import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErrorAllowed } from './ops.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -435,6 +436,58 @@ async function api(req, res, url) {
       audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${x.name} · ${key}`, c.company);
       return sendJson(res, 200, personFull(userRow(x.id)));
     }
+  }
+  /* ---- Team Chat (Nov 11, server/chat.mjs, Figma 580:670): one store's channels and direct messages ---- */
+  if (p === '/api/chat' || p.startsWith('/api/chat/')) {
+    needReader(c, req);
+    const x = chat.chatCtx(db, c);
+    // The sidebar's number, polled lightly on every page. Someone who isn't on this store's team just gets 0.
+    if (p === '/api/chat/unread' && m === 'GET') return sendJson(res, 200, { count: x ? chat.unreadTotal(x) : 0, member: !!x });
+    if (!x) fail(403, 'Team Chat is for the people who work at this store.');
+    try {
+      if (p === '/api/chat' && m === 'GET') return sendJson(res, 200, chat.roomList(x));
+      if (p === '/api/chat/search' && m === 'GET') return sendJson(res, 200, { results: chat.search(x, url.searchParams.get('q')) });
+      // A photo for a message. Uploads are off in the demo (demoBlocks).
+      if (p === '/api/chat/photo' && m === 'POST') {
+        const mime = String(req.headers['content-type'] || '').split(';')[0].trim();
+        if (!/^image\/(jpeg|png|webp|gif|heic|heif)$/.test(mime)) fail(415, 'Send a photo (JPG, PNG or WebP).');
+        if (Number(req.headers['content-length'] || 0) > chat.PHOTO_MAX) fail(413, 'That photo is over 15 MB.');
+        const buf = await new Promise((resolve, reject) => {
+          const parts = []; let size = 0;
+          req.on('data', (d) => { size += d.length; if (size > chat.PHOTO_MAX) { reject(new HttpError(413, 'That photo is over 15 MB.')); req.destroy(); } else parts.push(d); });
+          req.on('end', () => resolve(Buffer.concat(parts))); req.on('error', reject);
+        });
+        if (!buf.length) fail(400, 'That photo was empty.');
+        return sendJson(res, 200, { url: await chat.savePhoto(buf) });
+      }
+      const rm = /^\/api\/chat\/room\/([a-z0-9-]{2,40})(?:\/(messages|read))?$/.exec(p);
+      if (rm) {
+        const room = chat.resolveRoom(x, rm[1], { create: true });
+        if (!rm[2] && m === 'GET') {
+          const before = url.searchParams.get('before');
+          if (!before && url.searchParams.get('rev') !== null && Number(url.searchParams.get('rev')) === room.rev) return sendJson(res, 200, { same: true, rev: room.rev });
+          return sendJson(res, 200, chat.roomDetail(x, room, { before }));
+        }
+        if (rm[2] === 'messages' && m === 'POST') {
+          const id = chat.postMessage(x, room, await readJson(req, 20_000));
+          return sendJson(res, 200, { id, ...chat.roomDetail(x, db.prepare('SELECT * FROM chat_rooms WHERE id = ?').get(room.id)) });
+        }
+        if (rm[2] === 'read' && m === 'POST') { chat.markRead(x, room, (await readJson(req, 2000)).last); return sendJson(res, 200, { unread: chat.unreadTotal(x) }); }
+      }
+      const mm = /^\/api\/chat\/message\/(\d+)(?:\/(react|pin|got-it))?$/.exec(p);
+      if (mm) {
+        let room;
+        if (!mm[2] && m === 'DELETE') {
+          const own = db.prepare('SELECT user_id FROM chat_messages WHERE id = ?').get(Number(mm[1]))?.user_id === x.me.id;
+          room = chat.removeMessage(x, mm[1]);
+          if (!own) audit(db, x.me.id, 'chat remove', `message ${mm[1]}`, c.company);
+        } else if (mm[2] === 'react' && m === 'POST') room = chat.react(x, mm[1], String((await readJson(req, 2000)).emoji || ''));
+        else if (mm[2] === 'pin' && (m === 'POST' || m === 'DELETE')) room = chat.pin(x, mm[1], m === 'POST');
+        else if (mm[2] === 'got-it' && (m === 'POST' || m === 'DELETE')) room = chat.gotIt(x, mm[1], m === 'POST');
+        if (room) return sendJson(res, 200, chat.roomDetail(x, db.prepare('SELECT * FROM chat_rooms WHERE id = ?').get(room.id)));
+      }
+    } catch (e) { if (e instanceof chat.ChatError) fail(e.status, e.message); throw e; }
+    fail(404, 'Not found.');
   }
   /* ---- Manager home + People (Nov 11, server/team.mjs): the team in the store you're working in ---- */
   // The count beside Sign-offs in the sidebar: asks still waiting in this store.
