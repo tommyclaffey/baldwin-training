@@ -12,7 +12,9 @@ import { COLLECTIONS, SHARED, LOCAL_KEYS, publicSchemas, seed, listEntries, list
 import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames } from './scanner.mjs';
 import { personPath, personSummary, isPathSignoff, validJobs, JOBS } from './paths.mjs';
+import { pathCtxFor, teamRows, signoffQueue, quizWeek, newCertificates, lastEdits, bookTiles, reminderText, addNote, pathSteps, personRow, todayIso, addDays } from './team.mjs';
 import { certificatesFor } from './certs.mjs';
+import { passFor } from './quizgen.mjs';
 import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
 import { topicList, questionPool } from './quizgen.mjs';
 import { chapterBySlug, markRead } from './manual.mjs';
@@ -304,10 +306,7 @@ async function api(req, res, url) {
   }
   /* ---- Job paths (Nov 8): server/paths.mjs ---- */
   if (p.startsWith('/api/path')) {
-    const pathCtx = () => {
-      const idx = inStore(c, () => fullIndex(db));
-      return { quizzes: quizCatalog(db, c.store).quizzes.filter((q) => q.kind === 'builtin'), slugs: new Set(idx.map((e) => e.slug)), titles: new Map(idx.map((e) => [e.slug, e.title])) };
-    };
+    const pathCtx = () => pathCtxFor(db, c.storeRow, c.user);
     const userRow = (id) => db.prepare('SELECT * FROM users WHERE id = ? AND deleted_at IS NULL').get(id);
     // A manager's people: staff of the store they're working in, in their company.
     const staffOf = () => db.prepare("SELECT * FROM users WHERE company_id = ? AND store_id = ? AND role = 'staff' AND deleted_at IS NULL ORDER BY name").all(c.company, c.store);
@@ -335,28 +334,129 @@ async function api(req, res, url) {
       needUser(c, req); const ctx = pathCtx();
       return sendJson(res, 200, { jobs: JOBS, store: c.storeRow?.name || null, people: staffOf().map((x) => personSummary(db, c.store, x, ctx)) });
     }
+    // Nov 11 (People, Figma 532:274): one person, everything a manager acts on in one place.
+    const personFull = (x, ctx = pathCtx()) => {
+      const { row, path } = personRow(db, c.store, x, ctx);
+      const mine = quizResults(db, c.store).find((r) => r.device === 'u' + x.id);
+      const quizzes = mine ? Object.entries(mine.quizzes).filter(([id]) => id !== 'pre-shift').map(([id, q]) => ({ id, title: q.title, best: q.best, total: q.total, attempts: q.attempts, lastAt: q.lastAt,
+        passed: q.best >= passFor(q.total), signedOff: mine.signoffs[id] || null, signable: signable(db, c.store, id) })) : [];
+      const quizAverage = quizzes.length ? Math.round((quizzes.reduce((n, q) => n + q.best / q.total, 0) / quizzes.length) * 100) : null;
+      const certificates = certificatesFor(db, x, c.store, c.storeRow).map((z) => ({ key: z.key, title: z.title, earnedAt: z.earnedAt }));
+      return { ...path, ...row, hasPin: !!x.pin_hash, createdAt: x.created_at, store: c.storeRow?.name || null, quizzes, quizAverage, certificates };
+    };
     const pm = /^\/api\/path\/person\/(\d+)$/.exec(p);
-    if (pm && m === 'GET') { needUser(c, req); const x = person(pm[1]); return sendJson(res, 200, { id: x.id, name: x.name, ...personPath(db, c.store, x, pathCtx()) }); }
+    if (pm && m === 'GET') { needUser(c, req); const x = person(pm[1]); return sendJson(res, 200, personFull(x)); }
     if (pm && m === 'PATCH') {
       const u = needUser(c, req); const x = person(pm[1]); const b = await readJson(req);
-      if (b.jobs !== undefined) db.prepare('UPDATE users SET jobs = ? WHERE id = ?').run(JSON.stringify(validJobs(b.jobs)), x.id);
+      if (b.jobs !== undefined) {
+        db.prepare('UPDATE users SET jobs = ? WHERE id = ?').run(JSON.stringify(validJobs(b.jobs)), x.id);
+        // A new job swaps the path: asks for the old path's sign-offs go (finished steps carry over where they're shared).
+        const moved = userRow(x.id);
+        for (const r of db.prepare('SELECT key FROM signoff_requests WHERE user_id = ? AND store_id = ?').all(x.id, c.store)) if (!isPathSignoff(moved, r.key)) db.prepare('DELETE FROM signoff_requests WHERE user_id = ? AND store_id = ? AND key = ?').run(x.id, c.store, r.key);
+      }
       if (b.startedOn !== undefined) {
         if (!/^\d{4}-\d{2}-\d{2}$/.test(String(b.startedOn))) fail(400, 'Pick a start date.');
         db.prepare('UPDATE users SET started_on = ? WHERE id = ?').run(String(b.startedOn), x.id);
       }
       audit(db, u.id, 'training path', `${x.name}: ${b.jobs !== undefined ? 'jobs ' + validJobs(b.jobs).join(', ') : ''}${b.startedOn ? ' started ' + b.startedOn : ''}`, c.company);
-      return sendJson(res, 200, { id: x.id, name: x.name, ...personPath(db, c.store, userRow(x.id), pathCtx()) });
+      return sendJson(res, 200, personFull(userRow(x.id)));
+    }
+    // Staff ask for a sign-off from My Path (a path sign-off step, or a program's practical); they can take it back.
+    if (p === '/api/path/ask' && (m === 'POST' || m === 'DELETE')) {
+      const u = needReader(c, req); const row = userRow(u.id); const key = String((await readJson(req)).key || '');
+      if (!row || row.role !== 'staff' || row.store_id !== c.store) fail(403, 'Sign-offs are for staff.');
+      if (!isPathSignoff(row, key)) fail(400, 'That step can’t be signed off.');
+      if (m === 'POST') {
+        if (db.prepare('SELECT 1 FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').get('u' + u.id, key, c.store)) fail(409, 'That’s already signed off.');
+        db.prepare('INSERT OR REPLACE INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(u.id, c.store, c.company, key, now());
+      } else db.prepare('DELETE FROM signoff_requests WHERE user_id = ? AND store_id = ? AND key = ?').run(u.id, c.store, key);
+      return sendJson(res, 200, personPath(db, c.store, userRow(u.id), pathCtx()));
+    }
+    // Close a note from a manager on My Path.
+    if (p === '/api/path/notes/seen' && m === 'POST') {
+      const u = needReader(c, req); const id = Number((await readJson(req)).id);
+      db.prepare('UPDATE notes SET seen_at = ? WHERE id = ? AND user_id = ? AND seen_at IS NULL').run(now(), id, u.id);
+      return sendJson(res, 200, { ok: true });
+    }
+    // "Not Yet": the manager watched and it isn't there yet. The ask goes back to the person with an optional word why.
+    if (p === '/api/path/not-yet' && m === 'POST') {
+      const u = needUser(c, req); const b = await readJson(req); const x = person(b.userId); const key = String(b.key || '');
+      const r = db.prepare('UPDATE signoff_requests SET declined_at = ?, declined_by = ?, note = ? WHERE user_id = ? AND store_id = ? AND key = ? AND declined_at IS NULL')
+        .run(now(), u.id, str(b.note, 200) || null, x.id, c.store, key);
+      if (!r.changes) fail(404, 'That sign-off isn’t waiting anymore.');
+      audit(db, u.id, 'not yet', `${x.name} · ${key}`, c.company);
+      return sendJson(res, 200, personFull(x));
+    }
+    // Give More Time: one step to a date the manager picks, or (no step) every late step to 3 days from today.
+    if (p === '/api/path/more-time' && m === 'POST') {
+      const u = needUser(c, req); const b = await readJson(req); const x = person(b.userId);
+      const steps = pathSteps(personPath(db, c.store, x, pathCtx())).filter((s) => !s.done);
+      const t = todayIso();
+      let moves;
+      if (b.step) {
+        const s = steps.find((z) => z.id === String(b.step));
+        if (!s) fail(400, 'That step isn’t open on their path.');
+        const due = String(b.due || '');
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(due) || due < t || due > addDays(t, 90)) fail(400, 'Pick a date between today and three months out.');
+        moves = [[s.id, due]];
+      } else {
+        moves = steps.filter((s) => s.late).map((s) => [s.id, addDays(t, 3)]);
+        if (!moves.length) fail(400, 'Nothing on their path is late.');
+      }
+      const ins = db.prepare('INSERT OR REPLACE INTO path_due(user_id, store_id, company_id, step, due, by_user, at) VALUES (?,?,?,?,?,?,?)');
+      for (const [step, due] of moves) ins.run(x.id, c.store, c.company, step, due, u.id, now());
+      audit(db, u.id, 'more time', `${x.name} · ${moves.map(([s, d]) => `${s} → ${d}`).join(', ')}`, c.company);
+      return sendJson(res, 200, personFull(x));
+    }
+    // Send a Reminder / Send Congrats: a note on their My Path (no email service yet, so it shows when they open the app).
+    if ((p === '/api/path/remind' || p === '/api/path/congrats') && m === 'POST') {
+      const u = needUser(c, req); const b = await readJson(req); const x = person(b.userId);
+      const ctx = pathCtx();
+      let body;
+      if (p === '/api/path/remind') body = reminderText(personRow(db, c.store, x, ctx).row);
+      else {
+        const cert = certificatesFor(db, x, c.store, c.storeRow).find((z) => z.key === String(b.cert || ''));
+        if (!cert) fail(400, 'That certificate isn’t theirs yet.');
+        body = `Congrats on earning ${cert.title}.`;
+      }
+      addNote(db, { company: c.company, store: c.store, userId: x.id, by: u.id, kind: p === '/api/path/remind' ? 'reminder' : 'congrats', body });
+      audit(db, u.id, p === '/api/path/remind' ? 'reminder' : 'congrats', x.name, c.company);
+      return sendJson(res, 200, personFull(x, ctx));
     }
     // A manager signs off a path step (a sign-off, or a quiz they've watched someone know cold).
     if (p === '/api/path/signoff' && (m === 'POST' || m === 'DELETE')) {
       const u = needUser(c, req); const b = await readJson(req);
       const x = person(b.userId); const key = String(b.key || '');
       if (!isPathSignoff(x, key) && !signable(db, c.store, key)) fail(400, 'That step can’t be signed off.');
-      if (m === 'POST') db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at,company_id,store_id) VALUES (?,?,?,?,?,?)').run('u' + x.id, key, u.id, now(), c.company, c.store);
-      else db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').run('u' + x.id, key, c.store);
+      if (m === 'POST') {
+        db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at,company_id,store_id) VALUES (?,?,?,?,?,?)').run('u' + x.id, key, u.id, now(), c.company, c.store);
+        db.prepare('DELETE FROM signoff_requests WHERE user_id = ? AND store_id = ? AND key = ?').run(x.id, c.store, key); // asked and answered
+      } else db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').run('u' + x.id, key, c.store);
       audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${x.name} · ${key}`, c.company);
-      return sendJson(res, 200, { id: x.id, name: x.name, ...personPath(db, c.store, userRow(x.id), pathCtx()) });
+      return sendJson(res, 200, personFull(userRow(x.id)));
     }
+  }
+  /* ---- Manager home + People (Nov 11, server/team.mjs): the team in the store you're working in ---- */
+  // The count beside Sign-offs in the sidebar: asks still waiting in this store.
+  if (p === '/api/manager/signoffs/count' && m === 'GET') {
+    needUser(c, req);
+    const n = c.store ? db.prepare(`SELECT COUNT(*) n FROM signoff_requests r JOIN users u ON u.id = r.user_id WHERE r.store_id = ? AND r.declined_at IS NULL
+      AND u.deleted_at IS NULL AND u.role = 'staff' AND u.store_id = r.store_id
+      AND NOT EXISTS (SELECT 1 FROM signoffs s WHERE s.device = 'u' || r.user_id AND s.quiz = r.key AND s.store_id = r.store_id)`).get(c.store).n : 0;
+    return sendJson(res, 200, { count: n });
+  }
+  if ((p === '/api/manager/team' || p === '/api/manager/home') && m === 'GET') {
+    const u = needUser(c, req);
+    if (!c.storeRow) fail(400, 'Pick a store to work in first.');
+    const ctx = pathCtxFor(db, c.storeRow, c.user);
+    const rows = teamRows(db, c.company, c.storeRow, ctx);
+    const co = db.prepare('SELECT name, join_code FROM companies WHERE id = ?').get(c.company);
+    const out = { store: c.storeRow.name, company: co?.name || null, joinCode: co?.join_code || (c.user.demo ? 'DEMO' : null), you: u.name, jobs: JOBS,
+      people: rows.map((r) => r.row), signoffs: signoffQueue(rows) };
+    if (p === '/api/manager/home') Object.assign(out, {
+      certificates: newCertificates(db, rows, c.storeRow), quizzes: quizWeek(db, c.store), edits: lastEdits(db, c.company, c.store), book: bookTiles(db, c.storeRow, c.user),
+    });
+    return sendJson(res, 200, out);
   }
   if (p === '/api/quiz/signoff' && (m === 'POST' || m === 'DELETE')) {
     const u = needUser(c, req);

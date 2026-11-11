@@ -176,6 +176,19 @@ const MIGRATIONS = [
   ALTER TABLE users ADD COLUMN jobs TEXT;
   ALTER TABLE users ADD COLUMN started_on TEXT;
   `,
+  // 15 (Nov 11, manager home + People, Figma 09 · Proposals → 24): acting on the row where a person shows up.
+  //   signoff_requests: a staff member asks for a sign-off from My Path; a manager signs it off or says Not Yet.
+  //   path_due: Give More Time moves one step's due date (the stage's date stays for everyone else).
+  //   notes: a reminder or a congrats from a manager, shown on the person's My Path until they close it.
+  `
+  CREATE TABLE signoff_requests(user_id INT NOT NULL, store_id INT NOT NULL, company_id INT NOT NULL, key TEXT NOT NULL, at TEXT NOT NULL,
+    declined_at TEXT, declined_by INT, note TEXT, PRIMARY KEY(user_id, store_id, key));
+  CREATE TABLE path_due(user_id INT NOT NULL, store_id INT NOT NULL, company_id INT NOT NULL, step TEXT NOT NULL, due TEXT NOT NULL,
+    by_user INT, at TEXT, PRIMARY KEY(user_id, store_id, step));
+  CREATE TABLE notes(id INTEGER PRIMARY KEY, company_id INT NOT NULL, store_id INT NOT NULL, user_id INT NOT NULL, kind TEXT NOT NULL,
+    body TEXT NOT NULL, by_user INT, at TEXT NOT NULL, seen_at TEXT);
+  CREATE INDEX notes_user ON notes(user_id, store_id);
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

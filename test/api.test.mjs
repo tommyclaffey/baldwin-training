@@ -786,7 +786,7 @@ test('job paths: a server’s path from the book, page reads, quiz passes and ma
   // a manager's team, a job change and a sign-off
   const mgr = await start('manager');
   const team = (await mgr('/api/path/team')).data;
-  assert.equal(team.people.length, 4);
+  assert.equal(team.people.length, 7, 'the demo team (Nov 11): seven on staff, as in the manager home design');
   const quinn = team.people.find((x) => x.name === 'Quinn Abbott');
   assert.deepEqual(quinn.jobs, ['bartender']);
   const signed = (await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'path:bartender:build-three' })).data;
@@ -806,6 +806,80 @@ test('job paths: a server’s path from the book, page reads, quiz passes and ma
   assert.equal((await me('/api/certificates?user=' + quinn.id)).status, 403, 'staff only see their own');
   const both = (await mgr(`/api/path/person/${quinn.id}`, 'PATCH', { jobs: ['bartender', 'server'] })).data;
   assert.equal(both.paths.length, 2);
+});
+
+test('manager home + People (Nov 11): sign-offs asked for, Not Yet, Give More Time, reminders, congrats, job chip', async () => {
+  const start = async (role) => {
+    const r = await fetch(BASE + '/api/demo/start', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ role }) });
+    const cookie = r.headers.get('set-cookie').split(';')[0];
+    return async (p, method = 'GET', body) => {
+      const res = await fetch(BASE + p, { method, headers: { cookie, 'x-bt': '1', 'content-type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+      return { status: res.status, data: await res.json() };
+    };
+  };
+  const mgr = await start('manager');
+  const home = (await mgr('/api/manager/home')).data;
+  // the demo is full: seven people, two behind, one new, three sign-offs waiting, certificates, quizzes, edits, the book
+  assert.deepEqual(home.people.map((p) => p.name).sort(), ['Dorian Pike', 'Hollis Grant', 'Marisol Vega', 'Odalys Ruiz', 'Quinn Abbott', 'Teddy Lam', 'Wynn Carver']);
+  assert.equal(home.people.filter((p) => p.status === 'behind').length, 2);
+  assert.equal(home.people.find((p) => p.name === 'Odalys Ruiz').status, 'new');
+  assert.equal(home.signoffs.length, 3);
+  assert.equal((await mgr('/api/manager/signoffs/count')).data.count, 3);
+  assert.ok(home.certificates.length >= 2);
+  assert.ok(home.quizzes.taken > 0 && home.quizzes.missed && home.quizzes.missed.asked >= 3 && home.quizzes.missed.pct < 100 && /\?$/.test(home.quizzes.missed.q), 'the most-missed question is a real question from saved answers');
+  assert.equal(home.edits.length, 3);
+  assert.ok(home.edits.every((e) => e.to && e.to.startsWith('/')), 'each edit opens its page');
+  assert.equal(home.book.find((t) => t.key === 'recipe').count, 16);
+  // Not Yet: the ask goes back to the person; Sign Off clears it
+  const teddy = home.signoffs.find((a) => a.name === 'Teddy Lam');
+  const ny = (await mgr('/api/path/not-yet', 'POST', { userId: teddy.userId, key: teddy.key })).data;
+  assert.ok(ny.paths[0].stages.some((st) => st.steps.some((x) => x.id === teddy.key && x.ask.declinedAt && x.ask.declinedBy === 'Rosalind Hart')));
+  assert.equal((await mgr('/api/path/not-yet', 'POST', { userId: teddy.userId, key: teddy.key })).status, 404, 'not waiting anymore');
+  const wynn = home.signoffs.find((a) => a.name === 'Wynn Carver');
+  const signed = (await mgr('/api/path/signoff', 'POST', { userId: wynn.userId, key: wynn.key })).data;
+  assert.ok(signed.paths[0].stages.some((st) => st.steps.some((x) => x.id === wynn.key && x.done)));
+  assert.equal((await mgr('/api/manager/signoffs/count')).data.count, 1, 'only Quinn’s practical is left');
+  // Give More Time: every late step to 3 days out, or one step to a picked date
+  const hollis = home.people.find((p) => p.name === 'Hollis Grant');
+  const before = (await mgr(`/api/path/person/${hollis.id}`)).data;
+  assert.ok(before.late > 0 && before.status === 'behind');
+  const lateStep = before.paths[0].stages.flatMap((st) => st.steps).find((x) => x.late);
+  const pick = new Date(Date.now() + 7 * 864e5).toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
+  const one = (await mgr('/api/path/more-time', 'POST', { userId: hollis.id, step: lateStep.id, due: pick })).data;
+  const moved = one.paths[0].stages.flatMap((st) => st.steps).find((x) => x.id === lateStep.id);
+  assert.ok(moved.due === pick && moved.moved && !moved.late);
+  assert.equal(one.late, before.late - 1);
+  assert.equal((await mgr('/api/path/more-time', 'POST', { userId: hollis.id, step: lateStep.id, due: '2020-01-01' })).status, 400, 'not in the past');
+  const all = (await mgr('/api/path/more-time', 'POST', { userId: hollis.id })).data;
+  assert.equal(all.late, 0); assert.notEqual(all.status, 'behind');
+  assert.equal((await mgr('/api/path/more-time', 'POST', { userId: hollis.id })).status, 400, 'nothing late now');
+  // a reminder and a congrats land on the person's My Path as notes (a second reminder the same day replaces the first)
+  const dorian = home.people.find((p) => p.name === 'Dorian Pike');
+  await mgr('/api/path/remind', 'POST', { userId: dorian.id });
+  const r2 = (await mgr('/api/path/remind', 'POST', { userId: dorian.id })).data;
+  assert.equal(r2.notes.filter((n) => n.kind === 'reminder').length, 1);
+  assert.match(r2.notes[0].body, /past due/);
+  const cert = home.certificates[0];
+  assert.equal((await mgr('/api/path/congrats', 'POST', { userId: cert.userId, cert: cert.key })).status, 200);
+  assert.equal((await mgr('/api/path/congrats', 'POST', { userId: dorian.id, cert: 'bar-3' })).status, 400, 'only a certificate they have');
+  // the job chip: one job, the path swaps in place
+  const swapped = (await mgr(`/api/path/person/${dorian.id}`, 'PATCH', { jobs: ['host'] })).data;
+  assert.deepEqual(swapped.jobs, ['host']); assert.equal(swapped.jobLabel, 'Host');
+  // a person's page has their quizzes and sign-in, and the old Training / Quiz Results data
+  const full = (await mgr(`/api/path/person/${hollis.id}`)).data;
+  assert.ok(Array.isArray(full.quizzes) && full.quizzes.length > 0 && 'hasPin' in full && Array.isArray(full.programs));
+  // staff: ask for a sign-off, take it back; close a note; never reach the manager side
+  const me = await start('employee');
+  assert.equal((await me('/api/path/ask', 'POST', { key: 'path:server:table-talk' })).status, 200);
+  const mine = (await me('/api/path')).data;
+  assert.ok(mine.paths[0].stages.some((st) => st.steps.some((x) => x.id === 'path:server:table-talk' && x.ask && !x.ask.declinedAt)));
+  assert.equal((await me('/api/path/ask', 'POST', { key: 'path:bartender:bar' })).status, 400, 'not on their path');
+  assert.equal((await me('/api/path/ask', 'DELETE', { key: 'path:server:table-talk' })).status, 200);
+  assert.ok(!(await me('/api/path')).data.paths[0].stages.some((st) => st.steps.some((x) => x.ask)));
+  for (const [p, m] of [['/api/manager/home', 'GET'], ['/api/manager/team', 'GET'], ['/api/path/remind', 'POST'], ['/api/path/more-time', 'POST'], ['/api/path/not-yet', 'POST'], ['/api/path/congrats', 'POST']])
+    assert.equal((await me(p, m, m === 'POST' ? { userId: 1 } : undefined)).status, 403, p);
+  // another demo's people are out of reach (each demo is its own company)
+  assert.equal((await mgr(`/api/path/person/${(await me('/api/me')).data.user.id}`)).status, 404);
 });
 
 test('the Cocktail Program: its page, lessons that work like the Sommelier ones, and a 60-question final (Nov 8)', async () => {
