@@ -23,7 +23,7 @@ export function DemoPicker() {
   useEffect(() => { api<{ own: boolean }>('/api/demo/return').then((r) => setOwn(r.own)).catch(() => {}); }, []);
   const start = async (key: string) => {
     if (busy) return; setBusy(key); setErr('');
-    try { await api('/api/demo/start', { method: 'POST', body: { role: key } }); markDemoTab(); await refresh(); go('/'); }
+    try { await api('/api/demo/start', { method: 'POST', body: { role: key } }); markDemoTab(); await refresh(); go(key === 'manager' ? '/admin' : '/'); } // managers start on their home (Nov 11)
     catch (e) { setErr((e as Error).message || 'That didn’t start. Try again.'); setBusy(''); }
   };
   return (
@@ -42,7 +42,7 @@ export function DemoPicker() {
           <section key={r.key} className={'demo-role' + (r.lead ? ' lead' : '')}>
             <h2>{r.name.toUpperCase()}</h2>
             <p>{r.line}</p>
-            <button type="button" onClick={() => start(r.key)} disabled={!!busy}>{busy === r.key ? 'Opening…' : `Start as ${r.name}  →`}</button>
+            <button type="button" className={busy === r.key ? 'is-opening' : undefined} onClick={() => start(r.key)} disabled={!!busy}>{busy === r.key ? 'Opening…' : `Start as ${r.name}  →`}</button>
           </section>
         ))}
       </div>

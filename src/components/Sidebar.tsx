@@ -9,6 +9,30 @@ import { usePath } from '../path/store';
 import { useSession } from '../lib/session';
 import { openWelcome } from './DemoTour';
 import { ACADEMY_NAME } from '../lib/brand';
+import svgs from '../content/svgs.json';
+import { useSignoffCount } from '../admin/manager';
+
+// Team links for managers in the book's sidebar (Nov 11, Tommy: "there is no people button"). Same icons as the admin's.
+const ICON = (d: string) => `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="${d}" stroke="#B8AFA3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+(svgs as Record<string, string>)['team-people'] = ICON('M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 10a7 7 0 0 1 14 0M17 3.5a4 4 0 0 1 0 7.5M22 21a7 7 0 0 0-4-6.3');
+(svgs as Record<string, string>)['team-signoffs'] = ICON('M3 17c3-4 5-8 7-8s-1 8 1 8 3-5 5-5-1 5 1 5h4M3 21h18');
+/** Puts a TEAM group (People, Sign-offs with its count) under Home, built from the drawn group label and nav items. */
+function withTeam(n: FNode, signoffs: number): FNode {
+  if (n.n !== 'Nav' || !n.c) return n.c ? { ...n, c: n.c.map((c) => withTeam(c, signoffs)) } : n;
+  const label = n.c.find((c) => c.n?.startsWith('Group · '));
+  const item = n.c.find((c) => c.c?.some((k) => k.n === 'Count'));
+  const home = n.c.findIndex((c) => c.n === 'Nav · Home');
+  if (!label || !item || home < 0) return n;
+  const relabel = (x: FNode, text: string): FNode => ({ ...x, c: x.c?.map((k) => (k.t === 'T' ? { ...k, s: text, n: text } : k)) });
+  const navItem = (name: string, to: string, svg: string, count: number): FNode => ({
+    ...item, n: 'Nav · ' + name, to,
+    c: (item.c || []).flatMap((k): FNode[] => k.n === 'icon' ? [{ ...k, svg }]
+      : k.n === 'Count' ? (count ? [{ ...k, c: (k.c || []).map((t) => (t.t === 'T' ? { ...t, s: String(count) } : t)) }] : [])
+      : k.t === 'T' ? [{ ...k, s: name, n: name }] : [k]),
+  });
+  const team = [relabel({ ...label, n: 'Group · TEAM' }, 'TEAM'), navItem('People', '/admin/people', 'team-people', 0), navItem('Sign-offs', '/admin/signoffs', 'team-signoffs', signoffs)];
+  return { ...n, c: [...n.c.slice(0, home + 1), ...team, ...n.c.slice(home + 1)] };
+}
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
 function forStore(n: FNode, name: string): FNode {
@@ -48,6 +72,8 @@ function withCounts(n: FNode, live: Record<string, number>): FNode {
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const quiz = useQuiz();
   const { user } = useSession();
+  const manager = !!user && user.role !== 'staff' && canEdit(user);
+  const signoffs = useSignoffCount(manager);
   const path = usePath(user?.id);
   const mine = path?.paths[0] || null;
   const generic = !!user?.store && !user.store.bookReady;
@@ -59,8 +85,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     const live: Record<string, number> = { ...counts, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
     const drawn = pathSidebar(linkHome(withCounts(trainingCard([SIDEBAR], quiz)[0], live)), mine);
     const named = generic ? forStore(drawn, user!.store!.name) : drawn;
-    return user?.demo ? withDemoPill(named) : named;
-  }, [quiz, counts, generic, user, mine]);
+    const teamed = manager ? withTeam(named, signoffs) : named;
+    return user?.demo ? withDemoPill(teamed) : teamed;
+  }, [quiz, counts, generic, user, mine, manager, signoffs]);
   // The pill is drawn with the rest of the sidebar, so it's made a real control here: Tab reaches it, Enter opens the welcome card.
   const nav = useRef<HTMLElement>(null);
   useEffect(() => {
