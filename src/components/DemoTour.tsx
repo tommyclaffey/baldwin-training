@@ -23,6 +23,9 @@ const STOPS: Stop[] = [
   { path: '/', target: '#side, .menu-btn', title: 'The whole book', body: 'Food, the bar, service, safety, videos and your training all live in this menu.' },
   { path: '/', target: '.search', title: 'Search anything', body: 'Type a dish, a drink, a wine or an ingredient. Results show as you type.' },
   { path: '/', target: '[data-name="Section · Dashboard"]', title: 'Your shift at a glance', body: 'Tonight’s sections, your training progress and what’s new on the menu.' },
+  // Nov 11: Team Chat (Figma 580:670)
+  { path: '/team-chat/foh', target: '.tc-pinned', title: 'Team chat', body: 'Channels for front of house and the bar, and messages with anyone on the team. Tap Got It on the pre-shift note so your manager knows you read it.', staff: true },
+  { path: '/team-chat/foh', target: '.tc-pinned', title: 'Team chat', body: 'Pin tonight’s pre-shift note and see who tapped Got It. Share a photo of the plate or link a page from the book.', manager: true },
   { path: '/my-path', target: '.mp-stages', title: 'Your path', body: 'What your job learns, stage by stage, with a due date for each. Pass a quiz or read a page and it ticks here.', staff: true },
   { path: '/food-matrix', target: '[data-name="Filters"]', title: 'Every dish, one list', body: 'Filter by course or station. A guest has an allergy? Hide every dish that lists it.' },
   { ...DISH, target: '[data-name="Selling line"]', title: 'What to say at the table', body: 'Every dish has its own page, with the line to use with a guest, so everyone describes it the same way.' },
