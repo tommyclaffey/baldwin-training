@@ -1,14 +1,14 @@
 // The /admin area: everything a manager needs to change the book.
-import { NavLink, Route, Routes, Link } from 'react-router-dom';
+import { NavLink, Navigate, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { ACADEMY_NAME } from '../lib/brand';
 import { useSession } from '../lib/session';
-import { AcceptInvite, Account, Activity, MediaLibrary, Overview, People, QuizResults, SignIn } from './screens';
+import { AcceptInvite, Account, Activity, MediaLibrary, People, SignIn } from './screens';
 import { CollectionList, EntryEditor, PageOptions, useCollections } from './cms';
 import { Loading } from './ui';
 import { WineVideos } from './wine';
 import { BottleScannerPage } from './scanner';
 import { SuperAdmin } from './super';
-import { Training } from './training';
+import { ManagerHome, PeoplePage, SignoffsPage, useSignoffCount } from './manager';
 import { api } from '../lib/api';
 import { DemoBar, DemoTour, openWelcome } from '../components/DemoTour';
 
@@ -54,6 +54,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
   const hasBook = !!user.store?.bookReady;
   // The shared library (classics, grape and region videos) is kept by super admins; everything else is the store's own.
   const library = user.role === 'superadmin';
+  const signoffs = useSignoffCount();
   return (
     <div className="admin">
       <aside className="admin-side">
@@ -69,15 +70,18 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
                 {(user.stores || []).map((x) => <option key={x.id} value={x.id}>{x.name}{x.bookReady ? '' : ' · shared library'}</option>)}
               </select></label>
           : user.store && <span className="admin-working">Store: <strong>{user.store.name}</strong></span>}
+        {/* Nov 11 (Figma 523:276): Home, then the team (a manager's daily job), then the book. */}
         <nav aria-label="Admin">
-          <NavLink end to="/admin">Overview</NavLink>
+          <NavLink end to="/admin"><NavIcon d="M3 11 12 4l9 7M5 10v10h5v-6h4v6h5V10" />Home</NavLink>
+          <p className="admin-group">Team</p>
+          <NavLink to="/admin/people"><NavIcon d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 10a7 7 0 0 1 14 0M17 3.5a4 4 0 0 1 0 7.5M22 21a7 7 0 0 0-4-6.3" />People</NavLink>
+          <NavLink to="/admin/signoffs"><NavIcon d="M3 17c3-4 5-8 7-8s-1 8 1 8 3-5 5-5-1 5 1 5h4M3 21h18" />Sign-offs{signoffs > 0 && <span className="admin-count" aria-label={`${signoffs} waiting`}>{signoffs}</span>}</NavLink>
+          <p className="admin-group">The Book</p>
           {cols?.collections && Object.values(cols.collections).filter((c) => library || c.id !== 'classic').map((c) => <NavLink key={c.id} to={`/admin/pages/${c.id}`}>{c.label}</NavLink>)}
           {(hasBook || library) && <NavLink to="/admin/wine-videos">Wine Videos</NavLink>}
           <NavLink to="/admin/bottle-scanner">Bottle Scanner</NavLink>
           <NavLink to="/admin/media">Videos and Photos</NavLink>
-          <NavLink to="/admin/training">Training</NavLink>
-          <NavLink to="/admin/quizzes">Quiz Results</NavLink>
-          <NavLink to="/admin/team">Team</NavLink>
+          <p className="admin-group">You</p>
           {owner && <NavLink to="/admin/activity">Activity</NavLink>}
           <NavLink to="/admin/account">Your Account</NavLink>
           {isSuper && <NavLink to="/admin/super" className="nav-super">Super Admin</NavLink>}
@@ -90,16 +94,19 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
         {user.demo && <DemoTour />}
         <PageOptions />
         <Routes>
-          <Route index element={<Overview />} />
+          <Route index element={<ManagerHome />} />
           <Route path="pages/:col" element={<CollectionList />} />
           <Route path="pages/:col/:id" element={<EntryEditor />} />
           <Route path="wine-videos" element={<WineVideos />} />
           <Route path="bottle-scanner" element={<BottleScannerPage />} />
           <Route path="media" element={<MediaLibrary />} />
-          <Route path="training" element={<Training />} />
-          <Route path="quizzes" element={<QuizResults />} />
-          <Route path="team" element={<People />} />
-          <Route path="people" element={<People />} />
+          {/* Nov 11: Training, Quiz Results and Team are one People screen now. The old addresses land there. */}
+          <Route path="people" element={<PeoplePage />} />
+          <Route path="people/managers" element={<People leadsOnly />} />
+          <Route path="signoffs" element={<SignoffsPage />} />
+          <Route path="training" element={<ToPeople />} />
+          <Route path="quizzes" element={<ToPeople />} />
+          <Route path="team" element={<ToPeople />} />
           <Route path="super/*" element={<SuperAdmin />} />
           <Route path="activity" element={<Activity />} />
           <Route path="account" element={<Account />} />
@@ -109,3 +116,11 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
     </div>
   );
 }
+
+/** Old addresses (Training, Quiz Results, Team) keep working: they open People, with the person if one was named. */
+function ToPeople() {
+  const { search } = useLocation();
+  return <Navigate to={'/admin/people' + search} replace />;
+}
+
+const NavIcon = ({ d }: { d: string }) => <svg className="admin-nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>;

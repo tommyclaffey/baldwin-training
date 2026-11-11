@@ -36,14 +36,15 @@ const STOPS: Stop[] = [
   { path: '/cocktail-program/level-1', target: '[data-name="Hero"]', title: 'Every level ends in a final', body: 'Pass the final, and the practical where a level has one, and the level is yours.' },
   { path: '/certificate/bar-1', target: '.cert', title: 'A certificate to keep', body: 'You passed Level 1 of the Cocktail Program. Print it or save it as a PDF; your manager sees it too.', staff: true },
   { path: '/sommelier-program', target: '[data-name="Your path"]', title: 'The Sommelier lessons', body: 'Built on the Court of Master Sommeliers’ path, with videos and a practice exam at each level.' },
-  { path: '/admin', target: '.admin-side nav', title: 'Everything you can change', body: 'The menu, cocktails, wine, back bar, photos, quiz results and your team.', manager: true },
-  { path: '/admin/training', target: '.list', title: 'Everyone’s path', body: 'Each person’s job, how far along they are and what’s late. Open someone to sign off what you’ve watched them do.', manager: true },
-  { path: '/admin/quizzes', target: '.person, .list-row', title: 'Everyone’s scores', body: 'Open a person to see their attempts, then sign them off.', manager: true },
+  // Nov 11: the manager home and People (Figma 523:276, 532:274)
+  { path: '/admin', target: '.mh-band, .mh-team', title: 'What’s waiting on you', body: 'People who asked for a sign-off. Watch them do it on shift, then Sign Off or say Not Yet, right here.', manager: true },
+  { path: '/admin', target: '.mh-team', title: 'Your team at a glance', body: 'Who’s behind, who’s new, and what each person is on next. Tap someone to send a reminder or give them more time.', manager: true },
+  { path: '/admin/people', target: '.pp-detail', title: 'One person, everything', body: 'Their path this week, quiz scores, programs and sign-in. Change their job with the chip and the path swaps in place.', manager: true },
 ];
 // The last stop points at the DEMO pill, wherever the walk ended.
 const last = (path: string): Stop => ({ path, target: PILL, title: 'That’s the tour', body: 'Click DEMO anytime for the welcome card or to take the tour again. Refresh and the demo starts over.' });
 const FOR_STAFF = [...STOPS.filter((s) => !s.manager), last('/sommelier-program')];
-const FOR_MANAGER = [...STOPS.filter((s) => !s.staff), last('/admin/quizzes')];
+const FOR_MANAGER = [...STOPS.filter((s) => !s.staff), last('/admin/people')];
 
 // The two pieces of state, held outside React because the book and the admin each mount their own copy of this.
 let welcomeOpen = false, welcomed = false, step: number | null = null;
@@ -112,8 +113,8 @@ const TRY_STAFF = [
 ];
 const TRY_MANAGER = [
   { title: 'Change the menu', body: 'Add a dish or edit one, and everyone sees it on Save', to: '/admin/pages/recipe' },
-  { title: 'Check quiz results', body: 'Everyone’s scores. Open a person, then sign them off', to: '/admin/quizzes' },
-  { title: 'See your team’s training', body: 'Each person’s path, what’s late, and sign-offs', to: '/admin/training' },
+  { title: 'Sign people off', body: 'Your team asked you to watch them. Sign off or say not yet', to: '/admin' },
+  { title: 'See your team', body: 'Each person’s path, what’s late, their quizzes and programs', to: '/admin/people' },
   { title: 'See the training programs', body: 'Cocktail, Beer and Sommelier, each level with a final and a certificate', to: '/cocktail-program' },
 ];
 

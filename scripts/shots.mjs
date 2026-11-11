@@ -39,6 +39,8 @@ await send('Runtime.enable');
 if (process.env.COOKIE) {
   await send('Network.enable');
   await send('Network.setCookie', { name: 'bt_session', value: process.env.COOKIE, url: BASE });
+  // A demo session only lives in the tab it was started in (Nov 10): DEMO_TAB=1 marks this tab, like the smoke test does.
+  if (process.env.DEMO_TAB === '1') await send('Page.addScriptToEvaluateOnNewDocument', { source: "sessionStorage.setItem('bt-demo-tab','1')" });
   await send('Page.navigate', { url: BASE + '/admin' });
   await sleep(800);
   await send('Runtime.evaluate', { expression: `localStorage.setItem('bt-editing', '${process.env.EDIT === '1' ? 1 : 0}')` });
