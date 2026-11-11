@@ -176,6 +176,49 @@ const MIGRATIONS = [
   ALTER TABLE users ADD COLUMN jobs TEXT;
   ALTER TABLE users ADD COLUMN started_on TEXT;
   `,
+  // 15 (Nov 11, manager home + People, Figma 09 · Proposals → 24): acting on the row where a person shows up.
+  //   signoff_requests: a staff member asks for a sign-off from My Path; a manager signs it off or says Not Yet.
+  //   path_due: Give More Time moves one step's due date (the stage's date stays for everyone else).
+  //   notes: a reminder or a congrats from a manager, shown on the person's My Path until they close it.
+  `
+  CREATE TABLE signoff_requests(user_id INT NOT NULL, store_id INT NOT NULL, company_id INT NOT NULL, key TEXT NOT NULL, at TEXT NOT NULL,
+    declined_at TEXT, declined_by INT, note TEXT, PRIMARY KEY(user_id, store_id, key));
+  CREATE TABLE path_due(user_id INT NOT NULL, store_id INT NOT NULL, company_id INT NOT NULL, step TEXT NOT NULL, due TEXT NOT NULL,
+    by_user INT, at TEXT, PRIMARY KEY(user_id, store_id, step));
+  CREATE TABLE notes(id INTEGER PRIMARY KEY, company_id INT NOT NULL, store_id INT NOT NULL, user_id INT NOT NULL, kind TEXT NOT NULL,
+    body TEXT NOT NULL, by_user INT, at TEXT NOT NULL, seen_at TEXT);
+  CREATE INDEX notes_user ON notes(user_id, store_id);
+  `,
+  // 16 (Nov 11, Team Chat, Figma 09 · Proposals → 27: 580:670): one store's channels and direct messages.
+  //   chat_rooms: a store's channels (key everyone · foh · bar · kitchen) and DMs (key dm:<low id>:<high id>). Who's in a
+  //     channel is worked out from people's jobs each time (server/chat.mjs), so nothing here goes stale. rev goes up on
+  //     every change, so a poll that finds the same rev gets a one-line answer.
+  //   chat_messages: text, a photo, or a page from the book (JSON); reply_to for replies; pinned_* for pre-shift notes;
+  //     removed_* instead of deleting ("message removed").
+  //   chat_reactions, chat_reads (last message read, for unread counts and "seen by"), chat_gotit (the "Got It" tap).
+  `
+  CREATE TABLE chat_rooms(id INTEGER PRIMARY KEY, company_id INT NOT NULL, store_id INT NOT NULL, key TEXT NOT NULL, kind TEXT NOT NULL,
+    rev INT NOT NULL DEFAULT 0, created_at TEXT, UNIQUE(store_id, key));
+  CREATE TABLE chat_messages(id INTEGER PRIMARY KEY, room_id INT NOT NULL, company_id INT NOT NULL, store_id INT NOT NULL, user_id INT NOT NULL,
+    body TEXT, photo TEXT, page TEXT, reply_to INT, created_at TEXT NOT NULL,
+    pinned_at TEXT, pinned_by INT, pin_title TEXT, removed_at TEXT, removed_by INT);
+  CREATE INDEX chat_messages_room ON chat_messages(room_id, id);
+  CREATE INDEX chat_messages_store ON chat_messages(store_id, id);
+  CREATE TABLE chat_reactions(message_id INT NOT NULL, user_id INT NOT NULL, emoji TEXT NOT NULL, company_id INT NOT NULL, store_id INT NOT NULL, at TEXT,
+    PRIMARY KEY(message_id, user_id, emoji));
+  CREATE TABLE chat_reads(room_id INT NOT NULL, user_id INT NOT NULL, company_id INT NOT NULL, store_id INT NOT NULL, last_read INT NOT NULL DEFAULT 0, at TEXT,
+    PRIMARY KEY(room_id, user_id));
+  CREATE TABLE chat_gotit(message_id INT NOT NULL, user_id INT NOT NULL, company_id INT NOT NULL, store_id INT NOT NULL, at TEXT,
+    PRIMARY KEY(message_id, user_id));
+  `,
+  // 17 (Nov 11, Tommy: "make the chat similar to growth where you can select an item to populate in the chat"):
+  //   mentions: the people a message @mentions, as a JSON list of user ids (the body holds them as <@id>, so a renamed
+  //     person's old mentions still read right).
+  //   person: a manager's progress card for someone on the team (JSON snapshot), only ever shown to managers.
+  `
+  ALTER TABLE chat_messages ADD COLUMN mentions TEXT;
+  ALTER TABLE chat_messages ADD COLUMN person TEXT;
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

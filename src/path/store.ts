@@ -6,7 +6,11 @@ import { api } from '../lib/api';
 export type Step = {
   id: string; kind: 'read' | 'quiz' | 'lesson' | 'signoff'; title: string; meta: string; to?: string; program?: string;
   done: boolean; at: string | null; result: string | null; by: string | null;
+  /** Nov 11: each step's own due date (a manager can give more time on one step), and a sign-off the person asked for. */
+  due: string; moved?: boolean; late?: boolean; ask?: Ask | null;
 };
+export type Ask = { at: string; declinedAt: string | null; declinedBy: string | null; note: string | null };
+export type Note = { id: number; kind: 'reminder' | 'congrats'; body: string; at: string; seenAt: string | null; by: string | null };
 export type Stage = { key: string; title: string; due: string; done: number; total: number; late: number; state: 'done' | 'now' | 'later'; steps: Step[] };
 export type JobPath = {
   job: string; label: string; stages: Stage[]; done: number; total: number; late: number; next: Step | null; current: string | null;
@@ -15,9 +19,9 @@ export type JobPath = {
 export type Program = { title: string; to: string; total: number; done: number; inPath: number;
   /** Cocktail Program levels (Nov 8): the certificate, its final, and Level 2's practical a manager signs off. */
   cert?: string; certKey?: string; certified?: boolean; final?: { id: string; passedAt: string | null; best: string | null };
-  practical?: { key: string; title: string; how: string; at: string | null; by: string | null } };
+  practical?: { key: string; title: string; how: string; at: string | null; by: string | null; ask?: Ask | null } };
 export type Job = { key: string; label: string; note?: string };
-export type MyPath = { jobs: string[]; startedOn: string; paths: JobPath[]; programs: Program[]; allJobs: Job[] };
+export type MyPath = { jobs: string[]; startedOn: string; paths: JobPath[]; programs: Program[]; allJobs: Job[]; notes?: Note[] };
 
 let data: MyPath | null = null;
 let loading: Promise<void> | null = null;

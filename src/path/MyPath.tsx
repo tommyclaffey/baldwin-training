@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
-import { dayLabel, dueWords, setPath, usePath, reloadPath, type JobPath, type Program, type Stage, type Step } from './store';
+import { dayLabel, dueWords, setPath, usePath, reloadPath, type JobPath, type Note, type Program, type Stage, type Step } from './store';
 
 const KIND: Record<Step['kind'], string> = { read: 'Read', quiz: 'Quiz', lesson: 'Lesson', signoff: 'Sign-Off' };
 const STATUS = { 'on-track': 'On Track', behind: 'Behind', done: 'Done' } as const;
@@ -35,6 +35,7 @@ export function MyPathPage() {
           {path.paths.map((x, i) => <button key={x.job} role="tab" aria-selected={i === tab} className={'mp-job' + (i === tab ? ' on' : '')} onClick={() => setTab(i)}>{x.label}</button>)}
         </div>
       )}
+      <Notes notes={(path.notes || []).filter((n) => !n.seenAt)} />
       <div className="mp-cols">
         <section className="mp-stages" aria-label="Stages">
           {p.stages.map((st, i) => <StageCard key={st.key} stage={st} n={i + 1} open={st.state === 'now'} />)}
@@ -61,7 +62,7 @@ export function MyPathPage() {
           )}
           <section className="mp-card mp-tint">
             <p className="mp-label">Sign-Offs</p>
-            <p>When a step needs a sign-off, ask a manager on shift. They tap it on their phone.</p>
+            <p>When you’re ready for a sign-off, tap Ask for a Sign-Off. Your manager sees it on their home screen and watches you do it on shift.</p>
           </section>
         </aside>
       </div>
@@ -105,12 +106,52 @@ function StepRow({ step: s }: { step: Step }) {
           {s.to ? <Link to={s.to}>{s.title}</Link> : <strong>{s.title}</strong>}
           {(s.kind === 'lesson' || s.kind === 'signoff') && <span className={'mp-kind ' + s.kind}>{KIND[s.kind]}</span>}
         </span>
-        <small>{s.done && s.kind === 'signoff' && s.by ? `Signed off by ${s.by}` : s.meta}</small>
+        <small>{s.done && s.kind === 'signoff' && s.by ? `Signed off by ${s.by}`
+          : !s.done && s.ask && !s.ask.declinedAt ? `Asked ${dayLabel(s.ask.at.slice(0, 10), { month: 'short', day: 'numeric' })} · your manager will watch you on shift`
+            : !s.done && s.ask?.declinedAt ? `Not yet${s.ask.declinedBy ? `, said ${s.ask.declinedBy}` : ''}${s.ask.note ? `: “${s.ask.note}”` : ''}. Ask again when you’re ready.`
+              : !s.done && s.moved ? `${s.meta} · now due ${dayLabel(s.due)}` : s.meta}</small>
       </span>
       {s.done
         ? <span className="mp-result">{s.result || 'Done'}</span>
-        : s.to ? <Link className="mp-btn" to={s.to}>{label}</Link> : <span className="mp-wait">Ask a Manager</span>}
+        : s.to ? <Link className="mp-btn" to={s.to}>{label}</Link> : <AskButton step={s} />}
     </li>
+  );
+}
+
+/** Nov 11: a sign-off step asks the manager (it shows on their home screen); it can be taken back. */
+function AskButton({ step: s }: { step: Step }) {
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
+  const asked = !!s.ask && !s.ask.declinedAt;
+  const flip = async () => {
+    setBusy(true); setErr('');
+    try { setPath(await api('/api/path/ask', { method: asked ? 'DELETE' : 'POST', body: { key: s.id } })); } catch (e) { setErr((e as Error).message); }
+    setBusy(false);
+  };
+  return (
+    <span className="mp-ask">
+      <button type="button" className={'mp-btn' + (asked ? '' : ' dark')} onClick={() => void flip()} disabled={busy} aria-pressed={asked}>
+        {busy ? '…' : asked ? 'Take Back' : s.ask?.declinedAt ? 'Ask Again' : 'Ask for a Sign-Off'}
+      </button>
+      {err && <small role="alert" className="mp-err">{err}</small>}
+    </span>
+  );
+}
+
+/** Nov 11: a reminder or a congrats from a manager, until it's closed. */
+function Notes({ notes }: { notes: Note[] }) {
+  if (!notes.length) return null;
+  const close = async (id: number) => { await api('/api/path/notes/seen', { method: 'POST', body: { id } }).catch(() => {}); await reloadPath(); };
+  return (
+    <div className="mp-notes">
+      {notes.map((n) => (
+        <section key={n.id} className={'mp-card mp-mnote ' + n.kind} role="status">
+          <p className="mp-label">{n.kind === 'congrats' ? 'Congrats' : 'A reminder'}{n.by ? ` from ${n.by}` : ''} · {dayLabel(n.at.slice(0, 10), { month: 'short', day: 'numeric' })}</p>
+          <p>{n.body}</p>
+          <button type="button" className="mp-btn" onClick={() => void close(n.id)}>Got It</button>
+        </section>
+      ))}
+    </div>
   );
 }
 
