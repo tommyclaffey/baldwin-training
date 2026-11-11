@@ -248,3 +248,39 @@ test('stores: a store manager manages only their store; the owner moves people b
   assert.equal((await owner(`/api/team/${bea.id}`, { method: 'PATCH', body: { storeId: jb } })).status, 200, 'the owner moves Bea to J.Baldwin’s');
   assert.ok((await gm('/api/team')).data.people.some((p) => p.name === 'Bea Baldwin'));
 });
+
+test('manager home + People (Nov 11): a store manager sees and acts on their own store only; staff are kept out', async () => {
+  const stores = (await person()(`/api/join/${code1}`)).data.stores;
+  const tb = stores[2].id;
+  const inv = await owner('/api/team/invite', { method: 'POST', body: { email: 'gm@testabarra.test', role: 'manager', storeId: tb } });
+  const gm = person();
+  assert.equal((await gm(`/api/invite/${inv.data.link.split('/').pop()}`, { method: 'POST', body: { name: 'Tess GM', password: 'long-enough-6' } })).status, 200);
+  const tia = person(), rob = person();
+  assert.equal((await tia('/api/join', { method: 'POST', body: { code: code1, name: 'Tia Testa', pin: '2468', storeId: tb } })).status, 200);
+  assert.equal((await rob('/api/join', { method: 'POST', body: { code: code1, name: 'Rob Baldwin', pin: '1357', storeId: 1 } })).status, 200);
+  await tia('/api/path/jobs', { method: 'POST', body: { jobs: ['server'] } });
+  await rob('/api/path/jobs', { method: 'POST', body: { jobs: ['server'] } });
+  const tiaId = (await tia('/api/me')).data.user.id, robId = (await rob('/api/me')).data.user.id;
+  // the store manager's team is their store's staff
+  const team = (await gm('/api/manager/team')).data;
+  assert.equal(team.store, 'Testa Barra');
+  assert.deepEqual(team.people.map((p) => p.name), ['Tia Testa']);
+  assert.ok(team.people[0].jobLabel === 'Server' && team.people[0].total > 0);
+  assert.equal((await gm('/api/manager/home')).status, 200);
+  // another store's person is out of reach for every action
+  for (const [path, body] of [['/api/path/remind', {}], ['/api/path/more-time', {}], ['/api/path/not-yet', { key: 'path:server:floor' }], ['/api/path/signoff', { key: 'path:server:floor' }]])
+    assert.equal((await gm(path, { method: 'POST', body: { userId: robId, ...body } })).status, 404, path + ' on another store’s staff');
+  assert.equal((await gm(`/api/path/person/${robId}`)).status, 404);
+  assert.equal((await gm(`/api/path/person/${tiaId}`)).status, 200);
+  // staff never reach the manager side
+  assert.equal((await tia('/api/manager/team')).status, 403);
+  assert.equal((await tia('/api/manager/home')).status, 403);
+  assert.equal((await tia('/api/manager/signoffs/count')).status, 403);
+  assert.equal((await tia('/api/path/remind', { method: 'POST', body: { userId: robId } })).status, 403);
+  // Tia asks for a sign-off: only her store's manager sees it
+  assert.equal((await tia('/api/path/ask', { method: 'POST', body: { key: 'path:server:floor' } })).status, 200);
+  assert.equal((await gm('/api/manager/signoffs/count')).data.count, 1);
+  assert.equal((await owner('/api/store', { method: 'POST', body: { storeId: 1 } })).status, 200);
+  assert.equal((await owner('/api/manager/signoffs/count')).data.count, 0, 'The Baldwin has none waiting');
+  assert.ok(!(await owner('/api/manager/team')).data.people.some((p) => p.name === 'Tia Testa'));
+});

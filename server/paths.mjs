@@ -93,12 +93,16 @@ function doneFor(db, store, userId) {
     quizzes.set(r.quiz, q);
   }
   const signs = new Map(db.prepare("SELECT s.quiz, s.at, u.name by_name FROM signoffs s LEFT JOIN users u ON u.id = s.by_user WHERE s.device = ? AND s.store_id = ?").all('u' + userId, store).map((r) => [r.quiz, { at: r.at, by: r.by_name }]));
-  return { reads, quizzes, signs };
+  // Nov 11 (manager home + People): a step's own due date after Give More Time, and the sign-offs this person asked for.
+  const dues = new Map(db.prepare('SELECT step, due FROM path_due WHERE user_id = ? AND store_id = ?').all(userId, store).map((r) => [r.step, r.due]));
+  const asks = new Map(db.prepare('SELECT r.key, r.at, r.declined_at, r.note, u.name by_name FROM signoff_requests r LEFT JOIN users u ON u.id = r.declined_by WHERE r.user_id = ? AND r.store_id = ?').all(userId, store)
+    .map((r) => [r.key, { at: r.at, declinedAt: r.declined_at || null, declinedBy: r.by_name || null, note: r.note || null }]));
+  return { reads, quizzes, signs, dues, asks };
 }
 
 const DAY = 864e5;
-const dayOf = (iso) => new Date(String(iso).slice(0, 10) + 'T12:00:00Z');
-const today = () => dayOf(new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' }));
+export const dayOf = (iso) => new Date(String(iso).slice(0, 10) + 'T12:00:00Z');
+export const today = () => dayOf(new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' }));
 export const startOf = (u) => String(u.started_on || u.created_at || new Date().toISOString()).slice(0, 10);
 
 /** One person's path for one job, with what's done, what's due and what's next. */
@@ -116,11 +120,15 @@ function progressFor(stages, done, startedOn) {
         if (q) result = `${Math.round((q.best / q.total) * 100)}%`;
         ok = !!(q?.passedAt || sg); at = q?.passedAt || sg?.at || null;
       } else if (s.kind === 'signoff') { const sg = done.signs.get(s.id); ok = !!sg; at = sg?.at || null; by = sg?.by || null; }
-      return { ...s, done: ok, at, result, by };
+      // A step is due with its stage unless a manager gave more time on it.
+      const own = done.dues.get(s.id) || null;
+      const stepDue = own || due.toISOString().slice(0, 10);
+      const ask = s.kind === 'signoff' && !ok ? done.asks.get(s.id) || null : null;
+      return { ...s, done: ok, at, result, by, due: stepDue, moved: !!own, late: !ok && dayOf(stepDue) < now, ...(ask ? { ask } : {}) };
     });
     const k = steps.filter((s) => s.done).length;
     total += steps.length; finished += k;
-    const overdue = due < now ? steps.length - k : 0;
+    const overdue = steps.filter((s) => s.late).length;
     late += overdue;
     if (!next) next = steps.find((s) => !s.done && s.kind !== 'signoff') || null;
     return { key: st.key, title: st.title, due: due.toISOString().slice(0, 10), done: k, total: steps.length, late: overdue, steps };
@@ -149,7 +157,7 @@ function programsFor(done, paths) {
     const fin = done.quizzes.get('t:' + L.final); const pr = L.practical && done.signs.get(L.practical);
     out.push({ title: `${programDef(L.program).name} · Level ${L.level}`, cert: L.title, certKey: L.file, to: '/' + L.slug, total: bar.length, done: bar.filter((k) => done.reads.has(k)).length, inPath: bar.filter((k) => inPath.has(k)).length,
       final: { id: 't:' + L.final, passedAt: fin?.passedAt || null, best: fin ? `${Math.round((fin.best / fin.total) * 100)}%` : null },
-      ...(L.practical ? { practical: { key: L.practical, title: L.practicalTitle, how: L.practicalHow, at: pr?.at || null, by: pr?.by || null } } : {}),
+      ...(L.practical ? { practical: { key: L.practical, title: L.practicalTitle, how: L.practicalHow, at: pr?.at || null, by: pr?.by || null, ask: (!pr && done.asks.get(L.practical)) || null } } : {}),
       certified: !!(fin?.passedAt && (!L.practical || pr)) });
   }
   for (const level of [1, 2]) {
@@ -162,7 +170,7 @@ function programsFor(done, paths) {
     out.push({ title: `Sommelier · Level ${level}`, to: level === 1 ? '/sommelier-program/level-1' : '/sommelier-program/level-2', total: keys.length,
       done: keys.filter((k) => done.reads.has(k)).length, inPath: keys.filter((k) => inPath.has(k)).length,
       ...(L ? { cert: L.title, certKey: L.file, final: { id: 't:' + L.final, passedAt: fin?.passedAt || null, best: fin ? `${Math.round((fin.best / fin.total) * 100)}%` : null },
-        ...(L.practical ? { practical: { key: L.practical, title: L.practicalTitle, how: L.practicalHow, at: pr?.at || null, by: pr?.by || null } } : {}),
+        ...(L.practical ? { practical: { key: L.practical, title: L.practicalTitle, how: L.practicalHow, at: pr?.at || null, by: pr?.by || null, ask: (!pr && done.asks.get(L.practical)) || null } } : {}),
         certified: !!(fin?.passedAt && (!L.practical || pr)) } : {}) });
   }
   return out;
@@ -174,7 +182,10 @@ export function personPath(db, store, user, ctx) {
   const done = doneFor(db, store, user.id);
   const startedOn = startOf(user);
   const paths = jobs.map((job) => ({ job, label: JOBS.find((j) => j.key === job).label, ...progressFor(pathFor(job, ctx), done, startedOn) }));
-  return { jobs, startedOn, paths, programs: programsFor(done, paths), allJobs: JOBS };
+  // Notes from a manager (a reminder, a congrats), newest first; My Path shows the unseen ones until they're closed.
+  const notes = db.prepare('SELECT n.id, n.kind, n.body, n.at, n.seen_at, u.name by_name FROM notes n LEFT JOIN users u ON u.id = n.by_user WHERE n.user_id = ? AND n.store_id = ? ORDER BY n.id DESC LIMIT 5').all(user.id, store)
+    .map((n) => ({ id: n.id, kind: n.kind, body: n.body, at: n.at, seenAt: n.seen_at || null, by: n.by_name || null }));
+  return { jobs, startedOn, paths, programs: programsFor(done, paths), allJobs: JOBS, notes };
 }
 /** One line per person for the manager's Training list. */
 export function personSummary(db, store, user, ctx) {

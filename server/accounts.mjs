@@ -73,7 +73,7 @@ const storeOut = (x) => x && { id: x.id, name: x.name, slug: x.slug, bookReady: 
 export function purgeDeleted(db) {
   const cutoff = new Date(Date.now() - 30 * 864e5).toISOString();
   for (const c of db.prepare('SELECT id FROM companies WHERE deleted_at IS NOT NULL AND deleted_at < ?').all(cutoff)) {
-    for (const t of ['quiz_attempts', 'signoffs', 'sections']) db.prepare(`DELETE FROM ${t} WHERE company_id = ?`).run(c.id);
+    for (const t of ['quiz_attempts', 'signoffs', 'sections', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'chat_rooms']) db.prepare(`DELETE FROM ${t} WHERE company_id = ?`).run(c.id);
     db.prepare('DELETE FROM sessions WHERE user_id IN (SELECT id FROM users WHERE company_id = ?)').run(c.id);
     db.prepare('DELETE FROM users WHERE company_id = ?').run(c.id);
     db.prepare('DELETE FROM invites WHERE company_id = ?').run(c.id);

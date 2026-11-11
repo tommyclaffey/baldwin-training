@@ -5,9 +5,7 @@ import { api, uploadFile, ROLE_LABEL, type MediaItem, type Role, type User } fro
 import { useSession } from '../lib/session';
 import { VideoEmbed } from '../components/VideoEmbed';
 import { Empty, ErrorNote, Loading, Text, when } from './ui';
-import { useCollections } from './cms';
 import { PRODUCT_NAME } from '../lib/brand';
-import { QUIZZES, loadCatalog, passFor, useQuiz } from '../quiz/store';
 
 function useLoad<T>(path: string) {
   const [data, setData] = useState<T | null>(null);
@@ -134,26 +132,6 @@ export function AcceptInvite() {
   );
 }
 
-/* ---------- overview ---------- */
-export function Overview() {
-  const { user } = useSession();
-  const { data } = useCollections();
-  const media = useLoad<{ media: MediaItem[] }>('/api/media');
-  return (
-    <div className="admin-page">
-      <h1>Hi, {user?.name.split(' ')[0]}</h1>
-      <p className="muted">Pick a page type, then add a page or edit one by filling in its template. Lists like the Cocktails table and the Food Matrix fill in on their own.</p>
-      <div className="tiles">
-        {data && Object.values(data.collections).filter((c) => user?.role === 'superadmin' || c.id !== 'classic').map((c) => (
-          <Link key={c.id} className="tile" to={`/admin/pages/${c.id}`}><strong>{c.label} · {data.counts[c.id]}</strong><span>{c.lists}</span></Link>
-        ))}
-        <Link className="tile" to="/admin/media"><strong>Videos and photos · {media.data?.media.length ?? '–'}</strong><span>Upload files or add YouTube links, then pick them in any page’s form.</span></Link>
-        <Link className="tile" to="/admin/quizzes"><strong>Quiz results</strong><span>See who passed, and sign people off.</span></Link>
-      </div>
-    </div>
-  );
-}
-
 /* ---------- media ---------- */
 export function MediaLibrary() {
   const { data, error, load, setData } = useLoad<{ media: MediaItem[] }>('/api/media');
@@ -264,7 +242,7 @@ type Member = { id: number; name: string; email: string | null; role: Role; crea
 type Invite = { id: string; email: string; role: string; created_at: string; expires_at: string; storeName: string | null };
 type StoreRow = { id: number; name: string; bookReady: boolean };
 type TeamData = { company: { id: number; name: string; joinCode: string }; stores: StoreRow[]; yourStore: number | null; people: Member[]; invites: Invite[]; you: number; youRole: Role };
-export function People() {
+export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
   const { user } = useSession();
   const { data, error, load } = useLoad<TeamData>('/api/team');
   const [email, setEmail] = useState('');
@@ -295,11 +273,13 @@ export function People() {
 
   return (
     <div className="admin-page">
-      <h1>Team</h1>
-      <p className="muted">{data.company.name}{multi ? ` · ${data.stores.map((x) => x.name).join(', ')}` : ''}. Owners and managers sign in with email; staff join with the code below, pick their restaurant, and use a PIN.</p>
+      {leadsOnly && <Link className="link-btn back-link" to="/admin/people">← People</Link>}
+      <h1>{leadsOnly ? 'Owners and managers' : 'Team'}</h1>
+      <p className="muted">{data.company.name}{multi ? ` · ${data.stores.map((x) => x.name).join(', ')}` : ''}. {leadsOnly ? 'Owners and managers sign in with email. Owners invite them and set their role and store here.' : 'Owners and managers sign in with email; staff join with the code below, pick their restaurant, and use a PIN.'}</p>
       {err && <ErrorNote error={err} />}
       {note && <p className="ok" role="status">{note}</p>}
 
+      {!leadsOnly && <>
       <section className="card stack">
         <h2>Staff join code</h2>
         <div className="join-code" aria-label="Join code">{data.company.joinCode || (user?.demo ? 'DEMO' : '–')}</div>
@@ -335,6 +315,7 @@ export function People() {
           ))}</tbody>
         </table>
       )}
+      </>}
 
       <h2 className="sub">Owners and managers · {leads.length}</h2>
       <table className="table">
@@ -482,90 +463,6 @@ export function Activity() {
           <thead><tr><th>When</th><th>Who</th><th>What</th></tr></thead>
           <tbody>{data.audit.map((r) => <tr key={r.id}><td>{when(r.at)}</td><td>{r.name || '—'}</td><td>{what(r)}</td></tr>)}</tbody>
         </table>
-      )}
-    </div>
-  );
-}
-
-/* ---------- quiz results ---------- */
-type QuizPerson = { device: string; name: string; lastAt: string; quizzes: Record<string, { best: number; total: number; attempts: number; lastAt: string }>; signoffs: Record<string, { at: string; by: string | null }> };
-export function QuizResults() {
-  const { data, error, load } = useLoad<{ people: QuizPerson[]; store: string | null }>('/api/quiz/results');
-  const [open, setOpen] = useState<string | null>(null);
-  const [err, setErr] = useState('');
-  useQuiz(); useEffect(() => { void loadCatalog(); }, []);
-  const QUIZ_LIST = QUIZZES;
-  const passedOf = (r?: { best: number; total: number }) => !!r && r.best >= passFor(r.total);
-  // Team quizzes a manager saved: they can be archived (never deleted).
-  const archiveSet = async (id: string) => {
-    if (!confirm('Archive this team quiz? It leaves everyone’s list. Scores already taken stay.')) return;
-    try { await api('/api/quiz/sets/' + id.slice(2), { method: 'DELETE' }); await loadCatalog(); } catch (e) { setErr((e as Error).message); }
-  };
-  const toggle = async (p: QuizPerson, quiz: string, on: boolean) => {
-    setErr('');
-    try { await api('/api/quiz/signoff', { method: on ? 'POST' : 'DELETE', body: { device: p.device, quiz } }); load(); }
-    catch (e) { setErr((e as Error).message); }
-  };
-  return (
-    <div className="admin-page">
-      <h1>Quiz results{data?.store ? ` · ${data.store}` : ''}</h1>
-      <p className="muted">Everyone who has taken a quiz. Sign someone off once they’ve passed and shown you they know it at the table. Quizzes are written from the book; build a team quiz on the Quizzes page.</p>
-      {QUIZ_LIST.some((q) => q.kind === 'team') && (
-        <section className="stack-sm">
-          <h2 className="sub">Team quizzes</h2>
-          <div className="list">
-            {QUIZ_LIST.filter((q) => q.kind === 'team').map((q) => (
-              <div key={q.id} className="list-row"><span className="grow"><strong>{q.title}</strong><small>{q.count} questions</small></span>
-                <button className="link-btn danger" onClick={() => void archiveSet(q.id)}>Archive</button></div>
-            ))}
-          </div>
-        </section>
-      )}
-      {(error || err) && <ErrorNote error={err || error} retry={error ? load : undefined} />}
-      {!data && !error && <Loading />}
-      {data && data.people.length === 0 && <Empty title="No quiz scores yet"><p className="muted">Scores show here once staff finish a quiz and add their name.</p></Empty>}
-      {data && data.people.length > 0 && (
-        <div className="list">
-          {data.people.map((p) => {
-            const passed = QUIZ_LIST.filter((q) => passedOf(p.quizzes[q.id])).length;
-            const signed = Object.keys(p.signoffs).filter((k) => k !== 'pre-shift').length;
-            const isOpen = open === p.device;
-            return (
-              <div key={p.device} className="person">
-                <button className="list-row person-head" aria-expanded={isOpen} onClick={() => setOpen(isOpen ? null : p.device)}>
-                  <span className="avatar" aria-hidden="true">{p.name.split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase()}</span>
-                  <span className="grow"><strong>{p.name}</strong><small>{passed} of {QUIZ_LIST.length} passed · {signed} signed off</small></span>
-                  <small className="muted">Last quiz {when(p.lastAt)}</small>
-                  <span aria-hidden="true">{isOpen ? '▴' : '▾'}</span>
-                </button>
-                {isOpen && (
-                  <table className="table inner">
-                    <thead><tr><th>Quiz</th><th>Best</th><th>Tries</th><th>Status</th><th /></tr></thead>
-                    <tbody>
-                      {QUIZ_LIST.map((q) => {
-                        const r = p.quizzes[q.id];
-                        const s = p.signoffs[q.id];
-                        const ok = passedOf(r);
-                        return (
-                          <tr key={q.id}>
-                            <td>{q.title}</td>
-                            <td>{r ? `${r.best}/${r.total}` : '—'}</td>
-                            <td>{r?.attempts ?? 0}</td>
-                            <td>{s ? `Signed off${s.by ? ' by ' + s.by : ''}` : ok ? 'Passed, waiting for you' : r ? 'Not passed yet' : 'Not started'}</td>
-                            <td>{s
-                              ? <button className="link-btn danger" onClick={() => toggle(p, q.id, false)}>Undo</button>
-                              : ok ? <button className="btn small" onClick={() => toggle(p, q.id, true)}>Sign Off</button> : null}</td>
-                          </tr>
-                        );
-                      })}
-                      {p.quizzes['pre-shift'] && <tr><td>Quick Quiz</td><td>{p.quizzes['pre-shift'].best}/{p.quizzes['pre-shift'].total}</td><td>{p.quizzes['pre-shift'].attempts}</td><td>Practice</td><td /></tr>}
-                    </tbody>
-                  </table>
-                )}
-              </div>
-            );
-          })}
-        </div>
       )}
     </div>
   );
