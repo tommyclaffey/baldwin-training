@@ -1977,7 +1977,8 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 /* ---- Team Chat (Nov 11, Figma 09 · Proposals → 27 · Team chat, 580:670) ---- */
 .menu-btn { position: relative; }
 .menu-count { position: absolute; top: -5px; right: -5px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--copper); color: var(--ink); display: grid; place-items: center; font: 700 11px 'Archivo', sans-serif; font-variant-numeric: tabular-nums; border: 2px solid var(--ink); }
-.tc { display: flex; height: calc(100dvh - var(--tc-top, 0px)); min-height: 480px; overflow: hidden; background: var(--cream); font-family: 'Archivo', sans-serif; color: var(--ink); position: relative; }
+.tc { display: flex; height: calc(100dvh - var(--tc-top, 0px)); min-height: 480px; overflow: hidden; background: var(--cream); font-family: 'Archivo', sans-serif; color: var(--ink); position: relative;
+  container: tc / inline-size; } /* the phone layout follows the chat's own width, so the side panel gets it too */
 .tc button { font-family: inherit; }
 .tc-av { flex: none; display: inline-grid; place-items: center; border-radius: 999px; background: #EFE3D3; color: var(--ink); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
 .tc-av.mgr { background: var(--copper); }
@@ -2172,9 +2173,9 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 }
 @media (max-width: 1100px) { .tc-list { flex-basis: 260px; } }
 
-/* phone: the list, then one conversation full screen */
-@media (max-width: 859px) {
-  .tc { min-height: 0; }
+/* phone (and the side panel): the list, then one conversation full screen */
+@media (max-width: 859px) { .tc { min-height: 0; } }
+@container tc (max-width: 859px) {
   .tc-list { flex: 1 1 auto; border-right: 0; padding: 18px 14px 24px; gap: 14px; }
   .tc-list-head h1 { font-size: 24px; }
   .tc-chan, .tc-dm { min-height: 48px; }
@@ -2204,8 +2205,91 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
   .tc-got-who { grid-template-columns: 1fr; }
   .tc-details { width: 100%; }
 }
-@media (max-width: 380px) { .tc-tool span { display: none; } .tc-tool { width: 38px; padding: 0; } }
+@container tc (max-width: 380px) { .tc-tool span { display: none; } .tc-tool { width: 38px; padding: 0; } }
 /* The unread count beside Team Chat reads like the design's (copper, dark numbers), not like the page counts. */
 .side [data-name="Nav · Team Chat"] [data-name="Count"] { background-color: var(--copper) !important; }
 .side [data-name="Nav · Team Chat"] [data-name="Count"] .ftext { color: var(--ink) !important; font-weight: 700 !important; }
 .tc-about-dm .tc-av:not(.mgr) { background: var(--card); }
+
+/* ---- Team Chat side panel + Send to Team (Nov 11, Tommy: "make the chat similar to growth where you can select an item
+   to populate in the chat"). Growth's pattern: 400 wide on the right; the page narrows beside it (is-chat-open) on wide
+   screens, sits over it on tablets, and is a full-screen sheet on phones. ---- */
+.tcp { position: fixed; top: 0; right: 0; bottom: 0; width: 400px; z-index: 85; display: flex; background: var(--card); border-left: 1px solid #DDD3C5; outline: none; }
+.tcp-in { flex: 1 1 auto; min-width: 0; height: auto !important; min-height: 0 !important; flex-direction: column; background: var(--card); }
+.tcp .tc-list { flex: 1 1 auto; border-right: 0; padding: 18px 16px 16px; }
+.tcp .tc-list-head h2 { margin: 0; font-size: 20px; font-weight: 800; line-height: 1.2; }
+.tcp .tc-room { flex: 1 1 auto; }
+.tcp .tc-room-head { padding: 12px 12px 12px 16px; }
+.tc-head-btns { display: flex; align-items: center; gap: 6px; flex: none; }
+.tcp-btn { flex: none; width: 36px; height: 36px; border-radius: 999px; border: 1px solid #DDD3C5; background: var(--card); color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.tcp-btn:hover { border-color: var(--copper-dk); }
+.tcp .tc-new { width: 36px; height: 36px; }
+.tcp-staged { flex: none; padding: 12px 16px calc(16px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid #E4DCCF; background: var(--cream); }
+.tcp :focus-visible { outline: 2px solid var(--copper-dk); outline-offset: 2px; }
+@media (min-width: 1100px) {
+  body.tcp-open .shell, body.tcp-open .admin { padding-right: 400px; }
+  body.tcp-open .demo-bar { padding-right: 24px; }
+}
+@media (max-width: 1239px) and (min-width: 860px) { .tcp { top: 56px; } } /* under the book's top bar, so its menu button stays reachable */
+@media (max-width: 1099px) and (min-width: 860px) { .tcp { box-shadow: -12px 0 32px rgba(30,28,26,.18); } }
+@media (max-width: 859px) { .tcp { top: 0; left: 0; width: auto; border-left: 0; z-index: 95; } }
+body:has(.admin) .tcp { top: 0; } /* the admin has no top bar */
+
+/* the list in the panel: buttons that look like the page's links */
+.tcp button.tc-chan, .tcp button.tc-dm { width: 100%; border: 0; background: none; font-family: inherit; text-align: left; cursor: pointer; }
+.tc-person-note { margin: 0 4px; padding: 10px 12px; border-radius: 10px; background: #EFE3D3; font-size: 13px; line-height: 1.4; color: #2E2B28; }
+.tc-at-count { flex: none; width: 21px; height: 19px; border-radius: 999px; background: var(--ink); color: var(--cream); display: inline-grid; place-items: center; font-size: 11.5px; font-weight: 700; line-height: 1; }
+.tc-chan.on .tc-at-count, .tc-dm.on .tc-at-count { background: var(--copper); color: var(--ink); }
+
+/* @mentions: tags in messages, yours highlighted; the list of the conversation's people over the composer */
+.tc-at { font-weight: 600; color: var(--copper-dk); }
+.tc-at.me { color: var(--ink); background: #F3DFC2; border-radius: 5px; padding: 0 3px; box-shadow: inset 0 -1px 0 var(--copper); }
+.tc-pinned .tc-at { color: var(--copper); }
+.tc-pinned .tc-at.me { color: var(--ink); background: var(--copper); box-shadow: none; }
+.tc-msg.at-me { margin: -6px -10px; padding: 6px 10px; border-radius: 12px; background: #FBF1E3; box-shadow: inset 3px 0 0 var(--copper); }
+.tc-compose { position: relative; }
+.tc-mention { position: absolute; left: 0; right: 0; bottom: calc(100% + 6px); z-index: 30; display: flex; flex-direction: column; gap: 2px; padding: 8px; max-height: 300px; overflow-y: auto;
+  background: var(--card); border: 1px solid #DDD3C5; border-radius: 14px; box-shadow: 0 14px 40px rgba(30,28,26,.18); }
+.tc-mention .tc-pop-title { margin: 2px 6px 4px; }
+.tc-mention button { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border: 0; border-radius: 9px; background: none; cursor: pointer; text-align: left; color: var(--ink); font-family: inherit; }
+.tc-mention button.on { background: #EFE3D3; }
+.tc-mention button > span:last-child { display: flex; flex-direction: column; min-width: 0; }
+.tc-mention strong { font-size: 14px; font-weight: 600; }
+.tc-mention small { font-size: 12.5px; color: var(--muted); }
+
+/* cards: the kind ("House cocktail") on top; a person's progress; the staged card with its ✕ */
+.tc-card-person { align-items: center; }
+.tc-person-av { font-size: 16px; font-weight: 700; color: var(--ink); background: #EFE3D3; border-radius: 999px !important; }
+.tc-person-progress { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: #2E2B28; font-variant-numeric: tabular-nums; }
+.tc-person-bar { flex: 0 0 64px; height: 6px; border-radius: 999px; background: #E4DCCF; overflow: hidden; }
+.tc-person-bar > span { display: block; height: 100%; border-radius: inherit; background: var(--copper-dk); }
+.tc-person-name { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+.tc-person-name .mg-status { height: 22px; padding: 0 9px; font-size: 12px; }
+.tc-person-progress > span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.tc-staged { display: flex; flex-direction: column; gap: 6px; }
+.tc-card-staged { position: relative; width: 100%; padding-right: 48px; box-sizing: border-box; background: var(--cream); }
+.tc-card-staged:hover { border-color: #DDD3C5; }
+.tc-card-line.wrap { white-space: normal; }
+.tc-unstage { position: absolute; top: 50%; right: 8px; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 999px; border: 1px solid #DDD3C5; background: var(--card); color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.tc-unstage:hover { border-color: var(--copper-dk); }
+@container tc (max-width: 859px) {
+  .tc-person-bar { flex-basis: 40px; }
+  .tc-card-person .tc-card-line { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+}
+
+/* Send to Team: the page's tool row (with Edit Page), over the right end of the design's breadcrumb row */
+.page-tools { position: absolute; top: 96px; right: 48px; display: flex; align-items: center; gap: 8px; pointer-events: auto; }
+.page-tools .eip-edit { position: static; }
+.page-tools.floating { position: fixed; top: auto; right: 16px; bottom: calc(20px + env(safe-area-inset-bottom)); z-index: 60; max-width: calc(100vw - 32px); flex-wrap: wrap-reverse; justify-content: flex-end; }
+.page-tools.floating .eip-edit { min-height: 44px; padding: 10px 16px; box-shadow: 0 6px 20px rgba(30,28,26,.25); }
+body.eip-lock .page-tools.floating, body.menu-lock .page-tools.floating { display: none; }
+.mg-btn.send-team, .eip-edit.send-team { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.tc .tc-compose textarea:focus-visible { outline: none; } /* the composer's border shows focus (focus-within) */
+/* The admin beside the open chat panel: its content is 400 px narrower, so it takes the layout it has at that width. */
+@media (min-width: 1100px) and (max-width: 1579px) {
+  body.tcp-open .mh-cols { grid-template-columns: minmax(0, 1fr); }
+  body.tcp-open .mh-side { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  body.tcp-open .mh-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body.tcp-open .pp-cols { grid-template-columns: minmax(0, 1fr); }
+}
+.pp-head-btns { flex-wrap: wrap; }

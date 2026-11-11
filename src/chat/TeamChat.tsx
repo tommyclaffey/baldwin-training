@@ -2,29 +2,32 @@
 // Desktop: conversations on the left, the open conversation in the middle (pinned pre-shift note, messages, composer),
 // its details on the right. Phone (no design; the app's phone pattern): the list, then a conversation full screen with a
 // back button and the composer pinned to the bottom. The server decides who's in what (server/chat.mjs).
+// The same pieces run in the side panel (ChatPanel.tsx): the list and one conversation, Growth's way, beside any page.
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { api, ApiError, type IndexEntry } from '../lib/api';
 import { useSession } from '../lib/session';
 import { focusImg } from '../lib/focus';
 import { setChatUnread } from './unread';
+import { clearStaged, closeChat, stageItem, useChatPanel, type PageCard, type PersonCard, type Staged } from './panel';
+import { dueText, STATUS } from '../admin/manager';
 
 type Person = { id: number; name: string; initials: string; label: string; manager: boolean };
-type PageCard = { slug: string; title: string; kicker: string; thumb: string | null; line: string; at?: string };
 type Reaction = { emoji: string; count: number; mine: boolean; names: string[] };
 type Msg = {
   id: number; at: string; user: Person; mine: boolean; removed?: boolean; body?: string; photo?: string | null; page?: PageCard | null;
+  person?: PersonCard | null; personHidden?: boolean; mentions?: { id: number; name: string }[]; mentionsMe?: boolean;
   replyTo?: { id: number; name: string; text: string } | null; reactions: Reaction[]; canRemove?: boolean;
 };
 type GotIt = { mine: boolean; count: number; total: number; canTap: boolean; people?: { id: number; name: string; initials: string; at: string }[]; waiting?: { id: number; name: string; initials: string }[] };
 type Pin = Msg & { title: string; pinnedAt: string; gotIt: GotIt };
 type Room = {
   id: number; key: string; kind: 'everyone' | 'channel' | 'dm'; rev: number; name: string; line: string; about: string | null; other: Person | null;
-  members: Person[]; canStart: boolean; canPin: boolean; lastId: number; read: number;
+  members: Person[]; canStart: boolean; canPin: boolean; lastId: number; read: number; canSendPerson?: boolean;
 };
 type Detail = { room: Room; messages: Msg[]; hasMore: boolean; pins: Pin[]; shared: PageCard[]; seen: { messageId: number; people: { id: number; first: string; initials: string }[]; of: number } | null; reactions: string[] };
-type ListRoom = { id: number; key: string; kind: Room['kind']; name: string; unread: number; last: { at: string; text: string; mine: boolean } | null; other?: Person };
-type List = { store: string; me: { id: number; name: string; manager: boolean }; rooms: ListRoom[]; unread: number; people: Person[] };
+type ListRoom = { id: number; key: string; kind: Room['kind']; name: string; unread: number; mentions?: number; last: { at: string; text: string; mine: boolean } | null; other?: Person };
+export type List = { store: string; me: { id: number; name: string; manager: boolean }; rooms: ListRoom[]; unread: number; people: Person[] };
 type Hit = { id: number; key: string; kind: string; roomName: string; name: string; text: string; at: string };
 
 const LAST_KEY = 'bt-chat-room';
@@ -44,7 +47,7 @@ const dayWord = (iso: string) => { const d = dayDiff(iso); return d <= 0 ? 'toda
 const dayHead = (iso: string) => { const d = dayDiff(iso); return d <= 0 ? 'Today' : d === 1 ? 'Yesterday' : new Date(iso).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }); };
 
 /* ------------------------------ icons (drawn from the design's layers) ------------------------------ */
-const I = {
+export const I = {
   plus: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.3V8M8 8v5.7M8 8H2.3M8 8h5.7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>,
   search: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7.33" cy="7.33" r="4.33" stroke="currentColor" strokeWidth="1.33" /><path d="M10.67 10.67l2.66 2.66" stroke="currentColor" strokeWidth="1.33" strokeLinecap="round" /></svg>,
   pin: <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M6.5 7.04h3.25L7.58 4.88l.54-3.25H4.88l.54 3.25-2.17 2.16H6.5Zm0 0v4.34" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg>,
@@ -56,6 +59,7 @@ const I = {
   more: <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="3.5" cy="8" r="1.4" fill="currentColor" /><circle cx="8" cy="8" r="1.4" fill="currentColor" /><circle cx="12.5" cy="8" r="1.4" fill="currentColor" /></svg>,
   info: <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.5" /><path d="M9 8v4.5M9 5.6v.1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>,
   close: <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>,
+  expand: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>,
 };
 
 const Avatar = ({ p, size = 34, className = '' }: { p: Pick<Person, 'initials' | 'manager' | 'name'>; size?: number; className?: string }) => (
@@ -63,7 +67,7 @@ const Avatar = ({ p, size = 34, className = '' }: { p: Pick<Person, 'initials' |
 );
 const Count = ({ n, label }: { n: number; label?: string }) => (n > 0 ? <span className="tc-count" aria-label={label ?? `${n} unread`}>{n > 99 ? '99+' : n}</span> : null);
 
-function useIsPhone() {
+export function useIsPhone() {
   const q = '(max-width: 859px)';
   const [on, setOn] = useState(() => typeof matchMedia !== 'undefined' && matchMedia(q).matches);
   useEffect(() => { const m = matchMedia(q); const f = () => setOn(m.matches); m.addEventListener('change', f); return () => m.removeEventListener('change', f); }, []);
@@ -71,7 +75,7 @@ function useIsPhone() {
 }
 
 /** Runs every `ms` while the tab is in view. */
-function usePoll(fn: () => void, ms: number, on = true) {
+export function usePoll(fn: () => void, ms: number, on = true) {
   const ref = useRef(fn); ref.current = fn;
   useEffect(() => {
     if (!on) return;
@@ -130,7 +134,11 @@ export function TeamChatPage() {
 }
 
 /* ===================================== left: conversations ===================================== */
-function Conversations({ list, error, active, onOpen }: { list: List | null; error: string; active: string; onOpen: (key: string) => void }) {
+/** The list. In the panel (`panel`), rows are buttons that open the conversation in place, and `actions` sit in the head.
+ *  With a person's progress staged, only direct messages with managers show: that's where a progress card can go. */
+export function Conversations({ list, error, active, onOpen, panel = false, actions, personOnly = false }: {
+  list: List | null; error: string; active: string; onOpen: (key: string) => void; panel?: boolean; actions?: ReactNode; personOnly?: boolean;
+}) {
   const [q, setQ] = useState('');
   const [hits, setHits] = useState<Hit[] | null>(null);
   const [picking, setPicking] = useState(false);
@@ -140,22 +148,33 @@ function Conversations({ list, error, active, onOpen }: { list: List | null; err
     const t = setTimeout(() => { api<{ results: Hit[] }>('/api/chat/search?q=' + enc(term)).then((r) => setHits(r.results)).catch(() => setHits([])); }, 250);
     return () => clearTimeout(t);
   }, [q]);
-  const channels = list?.rooms.filter((r) => r.kind !== 'dm') || [];
-  const dms = list?.rooms.filter((r) => r.kind === 'dm') || [];
+  const channels = personOnly ? [] : list?.rooms.filter((r) => r.kind !== 'dm') || [];
+  const dms = list?.rooms.filter((r) => r.kind === 'dm' && (!personOnly || r.other?.manager)) || [];
+  const people = (list?.people || []).filter((p) => !personOnly || p.manager);
+  const Title = panel ? 'h2' : 'h1';
+  // A row opens its conversation: a link on the Team Chat page, a button in the panel.
+  const row = (r: ListRoom, className: string, children: ReactNode) => panel
+    ? <button type="button" key={r.key} className={className + (r.unread ? ' unread' : '')} onClick={() => onOpen(r.key)}>{children}</button>
+    : <Link key={r.key} to={'/team-chat/' + r.key} className={className + (r.key === active ? ' on' : '') + (r.unread ? ' unread' : '')} aria-current={r.key === active ? 'page' : undefined}>{children}</Link>;
+  const at = (r: ListRoom) => (r.mentions ? <span className="tc-at-count" title="Mentions you" aria-label={`${r.mentions} ${r.mentions === 1 ? 'mention' : 'mentions'} of you`}>@</span> : null);
   return (
     <section className="tc-list" aria-label="Conversations">
       <header className="tc-list-head">
         <div>
-          <h1>Team Chat</h1>
+          <Title>Team Chat</Title>
           <p>{list?.store || ' '}</p>
         </div>
-        <button type="button" className="tc-new" aria-label="New Message" aria-expanded={picking} onClick={() => setPicking((v) => !v)}>{I.plus}</button>
-        {picking && list && <NewMessage people={list.people} onPick={(id) => { setPicking(false); onOpen('dm-' + id); }} onClose={() => setPicking(false)} />}
+        <div className="tc-head-btns">
+          <button type="button" className="tc-new" aria-label="New Message" aria-expanded={picking} onClick={() => setPicking((v) => !v)}>{I.plus}</button>
+          {actions}
+        </div>
+        {picking && list && <NewMessage people={people} onPick={(id) => { setPicking(false); onOpen('dm-' + id); }} onClose={() => setPicking(false)} />}
       </header>
-      <label className="tc-search">
+      {personOnly && <p className="tc-person-note">Progress cards go only to managers, in a direct message. Pick one below, or press + for another manager.</p>}
+      {!personOnly && <label className="tc-search">
         {I.search}
         <input type="search" placeholder="Search messages" aria-label="Search messages" value={q} onChange={(e) => setQ(e.target.value)} />
-      </label>
+      </label>}
       {error && <p className="tc-error" role="alert">{error}</p>}
       {hits ? (
         <div className="tc-hits" aria-live="polite">
@@ -170,24 +189,20 @@ function Conversations({ list, error, active, onOpen }: { list: List | null; err
         </div>
       ) : (
         <nav className="tc-rooms" aria-label="Channels and direct messages">
-          <p className="tc-group">Channels</p>
+          {!personOnly && <p className="tc-group">Channels</p>}
           {!list && !error && <div className="loader" />}
-          {channels.map((r) => (
-            <Link key={r.key} to={'/team-chat/' + r.key} className={'tc-chan' + (r.key === active ? ' on' : '') + (r.unread ? ' unread' : '')} aria-current={r.key === active ? 'page' : undefined}>
-              <span className="tc-hash" aria-hidden="true">#</span><span className="tc-chan-name">{r.name}</span><Count n={r.unread} />
-            </Link>
-          ))}
-          <p className="tc-group tc-group-dm">Direct Messages</p>
-          {list && !dms.length && <p className="tc-none">No direct messages yet. Press + to start one.</p>}
-          {dms.map((r) => (
-            <Link key={r.key} to={'/team-chat/' + r.key} className={'tc-dm' + (r.key === active ? ' on' : '') + (r.unread ? ' unread' : '')} aria-current={r.key === active ? 'page' : undefined}>
-              <Avatar p={r.other!} />
-              <span className="tc-dm-copy">
-                <span className="tc-dm-top"><strong>{r.name}</strong>{r.last && <time dateTime={r.last.at}>{listTime(r.last.at)}</time>}</span>
-                <span className="tc-dm-bottom"><span className="tc-dm-text">{r.last ? (r.last.mine ? 'You: ' : '') + r.last.text : ''}</span><Count n={r.unread} /></span>
-              </span>
-            </Link>
-          ))}
+          {channels.map((r) => row(r, 'tc-chan', <>
+            <span className="tc-hash" aria-hidden="true">#</span><span className="tc-chan-name">{r.name}</span>{at(r)}<Count n={r.unread} />
+          </>))}
+          <p className={'tc-group' + (personOnly ? '' : ' tc-group-dm')}>{personOnly ? 'Managers' : 'Direct Messages'}</p>
+          {list && !dms.length && <p className="tc-none">{personOnly ? 'No messages with a manager yet. Press + to start one.' : 'No direct messages yet. Press + to start one.'}</p>}
+          {dms.map((r) => row(r, 'tc-dm', <>
+            <Avatar p={r.other!} />
+            <span className="tc-dm-copy">
+              <span className="tc-dm-top"><strong>{r.name}</strong>{r.last && <time dateTime={r.last.at}>{listTime(r.last.at)}</time>}</span>
+              <span className="tc-dm-bottom"><span className="tc-dm-text">{r.last ? (r.last.mine ? 'You: ' : '') + r.last.text : ''}</span>{at(r)}<Count n={r.unread} /></span>
+            </span>
+          </>))}
         </nav>
       )}
     </section>
@@ -219,7 +234,12 @@ function NewMessage({ people, onPick, onClose }: { people: Person[]; onPick: (id
 }
 
 /* ===================================== middle: one conversation ===================================== */
-function Conversation({ roomKey, phone, details, setDetails, onChanged }: { roomKey: string; phone: boolean; details: boolean; setDetails: (v: boolean) => void; onChanged: () => void }) {
+/** One conversation. In the panel: a back button (`onBack`) instead of the link, the panel's own buttons (`actions`) in
+ *  the head, and no details column. */
+export function Conversation({ roomKey, phone, details, setDetails, onChanged, onBack, actions }: {
+  roomKey: string; phone: boolean; details: boolean; setDetails: (v: boolean) => void; onChanged: () => void; onBack?: () => void; actions?: ReactNode;
+}) {
+  const panel = !!onBack;
   const { user } = useSession();
   const [d, setD] = useState<Detail | null>(null);
   const [err, setErr] = useState('');
@@ -284,7 +304,7 @@ function Conversation({ roomKey, phone, details, setDetails, onChanged }: { room
     requestAnimationFrame(() => { if (el) el.scrollTop = el.scrollHeight - h; });
   };
 
-  if (err && !d) return <section className="tc-room"><div className="tc-room-error"><p role="alert">{err}</p>{phone && <Link to="/team-chat" className="tc-btn">Back to Team Chat</Link>}</div></section>;
+  if (err && !d) return <section className="tc-room"><div className="tc-room-error"><p role="alert">{err}</p>{panel ? <button type="button" className="tc-act" onClick={onBack}>Back to Conversations</button> : phone && <Link to="/team-chat" className="tc-btn">Back to Team Chat</Link>}</div></section>;
   if (!d) return <section className="tc-room" aria-busy="true"><div className="loader" /></section>;
   const r = d.room;
   const all = [...older, ...d.messages];
@@ -296,19 +316,21 @@ function Conversation({ roomKey, phone, details, setDetails, onChanged }: { room
     <>
       <section className="tc-room" aria-label={r.kind === 'dm' ? r.name : '# ' + r.name}>
         <header className="tc-room-head">
-          {phone && <Link to="/team-chat" className="tc-back" aria-label="Back to Team Chat">{I.back}</Link>}
+          {panel ? <button type="button" className="tc-back" aria-label="Back to Conversations" onClick={onBack}>{I.back}</button>
+            : phone && <Link to="/team-chat" className="tc-back" aria-label="Back to Team Chat">{I.back}</Link>}
           {r.other && <Avatar p={r.other} size={36} />}
           <div className="tc-titles">
             <h2>{r.kind !== 'dm' && <span className="tc-hash" aria-hidden="true">#</span>}{r.name}</h2>
             <p>{r.line}</p>
           </div>
-          {r.kind !== 'dm' && (
+          {r.kind !== 'dm' && !panel && (
             <button type="button" className="tc-faces" onClick={() => setDetails(!details)} aria-label={`${r.members.length} members. Show details`}>
               {r.members.slice(0, 5).map((m) => <Avatar key={m.id} p={m} size={30} />)}
               {r.members.length > 5 && <span className="tc-av more" style={{ width: 30, height: 30 }}>+{r.members.length - 5}</span>}
             </button>
           )}
-          <button type="button" className="tc-info" aria-label={details ? 'Hide details' : 'Show details'} aria-expanded={details} onClick={() => setDetails(!details)}>{I.info}</button>
+          {!panel && <button type="button" className="tc-info" aria-label={details ? 'Hide details' : 'Show details'} aria-expanded={details} onClick={() => setDetails(!details)}>{I.info}</button>}
+          {actions && <div className="tc-head-btns">{actions}</div>}
         </header>
 
         {pin && <PinnedCard pin={pin} manager={!!d.room.canPin} count={d.pins.length}
@@ -320,7 +342,7 @@ function Conversation({ roomKey, phone, details, setDetails, onChanged }: { room
           {hasMore && <button type="button" className="tc-older" onClick={() => void loadOlder()}>Show Earlier Messages</button>}
           {!all.length && <Empty room={r} />}
           {all.map((m, i) => (
-            <MessageRow key={m.id} m={m} room={r} reactions={d.reactions} prev={all[i - 1]}
+            <MessageRow key={m.id} m={m} room={r} reactions={d.reactions} prev={all[i - 1]} phonePanel={panel && phone}
               seen={m.id === lastVisible?.id && d.seen?.messageId === m.id ? d.seen : null}
               onReact={(e) => void act(`/api/chat/message/${m.id}/react`, 'POST', { emoji: e })}
               onReply={() => setReplyTo(m)}
@@ -330,10 +352,10 @@ function Conversation({ roomKey, phone, details, setDetails, onChanged }: { room
           </div>
         </div>
         {note && <p className="tc-note" role="alert">{note} <button type="button" onClick={() => setNote('')} aria-label="Dismiss">{I.close}</button></p>}
-        <Composer room={r} demo={!!user?.demo} replyTo={replyTo} clearReply={() => setReplyTo(null)}
+        <Composer room={r} demo={!!user?.demo} replyTo={replyTo} clearReply={() => setReplyTo(null)} autoFocus={panel && !phone}
           onSent={(x) => { stick.current = true; take(x); onChanged(); }} />
       </section>
-      <Details d={d} open={details} onClose={() => setDetails(false)} manager={!!user && user.role !== 'staff'} onPin={(id) => setPinAt(id)} />
+      {!panel && <Details d={d} open={details} onClose={() => setDetails(false)} manager={!!user && user.role !== 'staff'} onPin={(id) => setPinAt(id)} />}
     </>
   );
 }
@@ -351,10 +373,22 @@ function Empty({ room }: { room: Room }) {
 }
 
 /** Pre-shift notes: "Label: rest" lines get a bold label, like the design's pinned card. */
-function NoteLines({ text }: { text: string }) {
+function NoteLines({ text, m }: { text: string; m: Msg }) {
   return <>{text.split('\n').filter((l) => l.trim()).map((l, i) => {
-    const m = /^(.{1,32}?):\s(.*)$/.exec(l);
-    return <p key={i}>{m ? <><strong>{m[1]}: </strong>{m[2]}</> : l}</p>;
+    const x = /^(.{1,32}?):\s(.*)$/.exec(l);
+    return <p key={i}>{x ? <><strong>{x[1]}: </strong><Body text={x[2]} m={m} /></> : <Body text={l} m={m} />}</p>;
+  })}</>;
+}
+
+/** A message's words with its @mentions as tags; a mention of you stands out. <@id> comes from the server. */
+function Body({ text, m }: { text: string; m: Msg }) {
+  const { user } = useSession();
+  const parts = text.split(/<@(\d+)>/);
+  return <>{parts.map((p, i) => {
+    if (i % 2 === 0) return p;
+    const id = Number(p);
+    const who = m.mentions?.find((x) => x.id === id);
+    return <span key={i} className={'tc-at' + (id === user?.id ? ' me' : '')}>@{who?.name || 'Former teammate'}</span>;
   })}</>;
 }
 
@@ -369,7 +403,7 @@ function PinnedCard({ pin, manager, count, onGot, onUnpin }: { pin: Pin; manager
           <span className="tc-pinned-title">Pinned · {pin.title}{count > 1 ? ` · 1 of ${count}` : ''}</span>
           <span className="tc-pinned-by">{pin.user.name} · {clock(pin.at)}</span>
         </div>
-        <div className="tc-pinned-notes">{pin.body ? <NoteLines text={pin.body} /> : null}</div>
+        <div className="tc-pinned-notes">{pin.body ? <NoteLines text={pin.body} m={pin} /> : null}</div>
         {pin.photo && <img className="tc-pinned-photo" src={pin.photo} alt="" />}
         <div className="tc-pinned-foot">
           {g.canTap && (g.mine
@@ -393,8 +427,8 @@ function PinnedCard({ pin, manager, count, onGot, onUnpin }: { pin: Pin; manager
   );
 }
 
-function MessageRow({ m, room, reactions, prev, seen, onReact, onReply, onPin, onRemove }: {
-  m: Msg; room: Room; reactions: string[]; prev?: Msg; seen: Detail['seen'];
+function MessageRow({ m, room, reactions, prev, seen, phonePanel, onReact, onReply, onPin, onRemove }: {
+  m: Msg; room: Room; reactions: string[]; prev?: Msg; seen: Detail['seen']; phonePanel: boolean;
   onReact: (e: string) => void; onReply: () => void; onPin: () => void; onRemove: () => void;
 }) {
   const [menu, setMenu] = useState(false);
@@ -403,7 +437,7 @@ function MessageRow({ m, room, reactions, prev, seen, onReact, onReply, onPin, o
   return (
     <>
       {newDay && <p className="tc-day"><span>{dayHead(m.at)}</span></p>}
-      <article className={'tc-msg' + (menu ? ' menu' : '')} aria-label={`${m.user.name}, ${clock(m.at)}`}>
+      <article className={'tc-msg' + (menu ? ' menu' : '') + (m.mentionsMe ? ' at-me' : '')} aria-label={`${m.user.name}, ${clock(m.at)}${m.mentionsMe ? ', mentions you' : ''}`}>
         <Avatar p={m.user} />
         <div className="tc-body">
           <p className="tc-who"><strong>{m.user.name}</strong><span>{m.user.label}</span><time dateTime={m.at}>{clock(m.at)}</time>
@@ -412,9 +446,11 @@ function MessageRow({ m, room, reactions, prev, seen, onReact, onReply, onPin, o
           {m.removed ? <p className="tc-removed">Message removed</p> : (
             <>
               {m.replyTo && <p className="tc-quote"><strong>{m.replyTo.name}</strong> {m.replyTo.text}</p>}
-              {m.body && <p className="tc-text">{m.body}</p>}
+              {m.body && <p className="tc-text"><Body text={m.body} m={m} /></p>}
               {m.photo && <a className="tc-photo" href={m.photo} target="_blank" rel="noopener"><img src={m.photo} alt={`Photo from ${m.user.name}`} loading="lazy" /></a>}
-              {m.page && <PageLink page={m.page} />}
+              {m.page && <PageLink page={m.page} onOpen={phonePanel ? () => closeChat({ restoreFocus: false }) : undefined} />}
+              {m.person && <PersonLink person={m.person} onOpen={phonePanel ? () => closeChat({ restoreFocus: false }) : undefined} />}
+              {m.personHidden && <p className="tc-removed">A progress card, for managers.</p>}
               {m.reactions.length > 0 && (
                 <div className="tc-reacts">
                   {m.reactions.map((r) => (
@@ -450,41 +486,141 @@ function MessageRow({ m, room, reactions, prev, seen, onReact, onReply, onPin, o
 }
 const seenWords = (names: string[]) => (names.length <= 3 ? names.join(names.length === 2 ? ' and ' : ', ').replace(/, ([^,]*)$/, ' and $1') : `${names.slice(0, 3).join(', ')} and ${names.length - 3} more`);
 
-function PageLink({ page }: { page: PageCard }) {
+/** The card a page makes: its photo, what it is ("House cocktail"), its title and one line. Opens the page. */
+function PageLink({ page, onOpen }: { page: PageCard; onOpen?: () => void }) {
   return (
-    <Link to={'/' + page.slug} className="tc-card">
-      {page.thumb ? <img src={page.thumb} style={focusImg(page.thumb)} alt="" /> : <span className="tc-card-tile">{I.book}</span>}
-      <span className="tc-card-copy">
-        <span className="tc-card-kicker">{page.kicker}</span>
-        <strong>{page.title}</strong>
-        {page.line && <span className="tc-card-line">{page.line}</span>}
-      </span>
+    <Link to={'/' + page.slug} className="tc-card" onClick={onOpen}>
+      <PageCardInner page={page} />
       <span className="tc-card-open">Open Page →</span>
     </Link>
   );
 }
+function PageCardInner({ page }: { page: PageCard }) {
+  return (
+    <>
+      {page.thumb ? <img src={page.thumb} style={focusImg(page.thumb)} alt="" /> : <span className="tc-card-tile">{/allergen|safety/.test(page.slug) ? I.shield : I.book}</span>}
+      <span className="tc-card-copy">
+        <span className="tc-card-kicker">{page.kind || page.kicker.replace(/^The Book · /, '')}</span>
+        <strong>{page.title}</strong>
+        {page.line && <span className="tc-card-line">{page.line}</span>}
+      </span>
+    </>
+  );
+}
+
+/** A person's progress, as a manager shared it: job, steps done, status and what's next. Opens them on People. */
+const personLine = (p: PersonCard) => {
+  const n = p.next;
+  const next = !p.job ? 'No job picked yet' : !n ? 'Every step is done' : 'waiting' in n ? 'Waiting on a sign-off' : `Next: ${n.kind === 'quiz' && !/quiz/i.test(n.title) ? n.title + ' quiz' : n.title} · ${dueText(n.due, n.late)}`;
+  return next;
+};
+function PersonCardInner({ person: p }: { person: PersonCard }) {
+  const pct = p.total ? Math.round((p.done / p.total) * 100) : 0;
+  return (
+    <>
+      <span className="tc-card-tile tc-person-av" aria-hidden="true">{p.initials}</span>
+      <span className="tc-card-copy">
+        <span className="tc-card-kicker">Progress{p.job ? ' · ' + p.job : ''}</span>
+        <span className="tc-person-name"><strong>{p.name}</strong><span className={'mg-status ' + p.status}>{STATUS[p.status]}</span></span>
+        <span className="tc-person-progress">
+          <span className="tc-person-bar" aria-hidden="true"><span style={{ width: pct + '%' }} /></span>
+          <span>{p.done} of {p.total} steps{p.week && p.weeks ? ` · Week ${p.week} of ${p.weeks}` : ''}</span>
+        </span>
+        <span className="tc-card-line">{personLine(p)}</span>
+      </span>
+    </>
+  );
+}
+function PersonLink({ person, onOpen }: { person: PersonCard; onOpen?: () => void }) {
+  return (
+    <Link to={'/admin/people?id=' + person.id} className="tc-card tc-card-person" onClick={onOpen} aria-label={`${person.name}'s progress: ${STATUS[person.status]}, ${person.done} of ${person.total} steps. Open on People.`}>
+      <PersonCardInner person={person} />
+    </Link>
+  );
+}
+
+/** The staged item (Send to Team, or Link a Page) as a card with an ✕, in the composer or under the panel's list. */
+export function StagedCard({ staged, note }: { staged: NonNullable<Staged>; note?: ReactNode }) {
+  return (
+    <div className="tc-staged">
+      <div className={'tc-card tc-card-staged' + (staged.type === 'person' ? ' tc-card-person' : '')} aria-live="polite">
+        {staged.error ? <span className="tc-card-copy"><span className="tc-card-kicker">Didn’t load</span><span className="tc-card-line wrap">{staged.error}</span></span>
+          : !staged.card ? <span className="tc-card-copy"><span className="tc-card-kicker">Loading…</span><strong>&nbsp;</strong></span>
+          : staged.type === 'page' ? <PageCardInner page={staged.card as PageCard} /> : <PersonCardInner person={staged.card as PersonCard} />}
+        <button type="button" className="tc-unstage" aria-label="Remove this card" onClick={clearStaged}>{I.close}</button>
+      </div>
+      {note}
+    </div>
+  );
+}
 
 /* ------------------------------ composer: text, a photo, a page from the book ------------------------------ */
-function Composer({ room, demo, replyTo, clearReply, onSent }: { room: Room; demo: boolean; replyTo: Msg | null; clearReply: () => void; onSent: (d: Detail) => void }) {
+/** The partial "@word" just before the caret, if the caret is in one (Growth's activeMention): "@" starts a word, a space ends it. */
+function activeMention(text: string, caret: number): { query: string; start: number } | null {
+  const upto = text.slice(0, caret);
+  const at = upto.lastIndexOf('@');
+  if (at === -1 || (at > 0 && !/\s/.test(upto[at - 1]))) return null;
+  const query = upto.slice(at + 1);
+  return /\s/.test(query) || query.length > 30 ? null : { query, start: at };
+}
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+/** "@Marisol Vega" → "<@12>" for the people in this conversation (longest names first, so "Ana Lee" beats "Ana"). */
+export function toMentionTokens(text: string, members: { id: number; name: string }[]) {
+  let out = text;
+  for (const p of [...members].sort((a, b) => b.name.length - a.name.length)) {
+    out = out.replace(new RegExp(`(^|\\s)@${escapeRe(p.name)}(?=$|[\\s.,!?;:'’)])`, 'g'), `$1<@${p.id}>`);
+  }
+  return out;
+}
+
+function Composer({ room, demo, replyTo, clearReply, onSent, autoFocus = false }: { room: Room; demo: boolean; replyTo: Msg | null; clearReply: () => void; onSent: (d: Detail) => void; autoFocus?: boolean }) {
+  const { user } = useSession();
+  const { staged } = useChatPanel();
   const [text, setText] = useState('');
   const [photo, setPhoto] = useState<{ url: string } | null>(null);
-  const [page, setPage] = useState<IndexEntry | null>(null);
   const [busy, setBusy] = useState('');
   const [err, setErr] = useState('');
   const [linking, setLinking] = useState(false);
+  const [mention, setMention] = useState<{ query: string; start: number } | null>(null);
+  const [pick, setPick] = useState(0);
   const file = useRef<HTMLInputElement>(null);
   const area = useRef<HTMLTextAreaElement>(null);
   useEffect(() => { if (replyTo) area.current?.focus(); }, [replyTo]);
+  useEffect(() => { if (autoFocus) area.current?.focus({ preventScroll: true }); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useLayoutEffect(() => { const a = area.current; if (a) { a.style.height = 'auto'; a.style.height = Math.min(a.scrollHeight, 160) + 'px'; } }, [text]);
   const locked = !room.canStart && !replyTo;
 
+  // @mentions: only the people in this conversation (Growth: "a mention is a claim that someone will see it").
+  const roster = room.members.filter((m) => m.id !== user?.id);
+  const q = mention?.query.toLowerCase() ?? '';
+  const suggestions = mention ? roster.filter((m) => m.name.toLowerCase().split(/\s+/).some((w) => w.startsWith(q)) || m.name.toLowerCase().startsWith(q)).slice(0, 6) : [];
+  const watch = (el: HTMLTextAreaElement) => { setMention(activeMention(el.value, el.selectionStart ?? el.value.length)); setPick(0); };
+  const choose = (p: Person) => {
+    const el = area.current; if (!el || !mention) return;
+    const caret = el.selectionStart ?? text.length;
+    const inserted = `@${p.name} `;
+    const next = text.slice(0, mention.start) + inserted + text.slice(caret);
+    setText(next); setMention(null);
+    requestAnimationFrame(() => { el.focus(); el.setSelectionRange(mention.start + inserted.length, mention.start + inserted.length); });
+  };
+
+  // The staged card (Send to Team or Link a Page). A progress card only goes to another manager, in a direct message.
+  const cardBlocked = staged?.type === 'person' && !room.canSendPerson;
+  const cardReady = !!staged?.card && !cardBlocked;
+  const cardWaiting = !!staged && !staged.card && !staged.error;
+  const canSend = !busy && !cardWaiting && !cardBlocked && !staged?.error && (!!text.trim() || !!photo || cardReady);
+
   const send = async (e?: FormEvent) => {
     e?.preventDefault();
-    if (busy || (!text.trim() && !photo && !page)) return;
+    if (!canSend) return;
     setBusy('Sending…'); setErr('');
     try {
-      const d = await api<Detail>(`/api/chat/room/${enc(room.key)}/messages`, { method: 'POST', body: { body: text, photo: photo?.url, page: page?.slug, replyTo: replyTo?.id } });
-      setText(''); setPhoto(null); setPage(null); clearReply(); onSent(d);
+      const body = toMentionTokens(text, room.members);
+      const d = await api<Detail>(`/api/chat/room/${enc(room.key)}/messages`, { method: 'POST', body: {
+        body, photo: photo?.url, replyTo: replyTo?.id,
+        page: cardReady && staged?.type === 'page' ? staged.slug : undefined, person: cardReady && staged?.type === 'person' ? staged.id : undefined,
+      } });
+      setText(''); setPhoto(null); clearReply(); if (cardReady) clearStaged(); onSent(d);
     } catch (x) { setErr(x instanceof ApiError ? x.message : 'That didn’t send. Try again.'); }
     setBusy('');
   };
@@ -504,34 +640,59 @@ function Composer({ room, demo, replyTo, clearReply, onSent }: { room: Room; dem
     setBusy('');
     if (file.current) file.current.value = '';
   };
+  const blockedNote = cardBlocked ? <p className="tc-compose-note err" role="note">Progress cards go only to another manager, in a direct message. Pick a manager, or remove the card.</p> : null;
 
   if (locked) return (
     <div className="tc-compose-wrap">
+      {staged && <StagedCard staged={staged} note={<p className="tc-compose-note" role="note">Managers start posts in {room.name}. Pick another conversation to send this.</p>} />}
       <p className="tc-locked">Managers start posts in {room.name}. Open the <span aria-hidden="true">⋯</span> on a post and press Reply to answer it.</p>
     </div>
   );
   return (
     <form className="tc-compose-wrap" onSubmit={(e) => void send(e)}>
-      {(replyTo || photo || page) && (
+      {staged && <StagedCard staged={staged} note={blockedNote} />}
+      {(replyTo || photo) && (
         <div className="tc-attach">
           {replyTo && <span className="tc-chip">Replying to {replyTo.user.name}<button type="button" aria-label="Cancel reply" onClick={clearReply}>{I.close}</button></span>}
           {photo && <span className="tc-chip tc-chip-photo"><img src={photo.url} alt="Photo to send" />Photo<button type="button" aria-label="Remove photo" onClick={() => setPhoto(null)}>{I.close}</button></span>}
-          {page && <span className="tc-chip">{I.book}{page.title}<button type="button" aria-label="Remove page" onClick={() => setPage(null)}>{I.close}</button></span>}
         </div>
       )}
       <div className="tc-compose">
-        <textarea ref={area} rows={1} value={text} maxLength={2000} placeholder={replyTo ? `Reply to ${replyTo.user.name.split(' ')[0]}` : room.kind === 'dm' ? `Message ${room.name.split(' ')[0]}` : `Message ${room.name}`}
-          aria-label={room.kind === 'dm' ? `Message ${room.name}` : `Message ${room.name}`}
-          onChange={(e) => setText(e.target.value)}
-          onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); void send(); } }} />
+        {mention && suggestions.length > 0 && (
+          <div className="tc-mention" role="listbox" id={`tc-mention-${room.id}`} aria-label="People in this conversation">
+            <p className="tc-pop-title">Mention someone in {room.kind === 'dm' ? 'this conversation' : room.name}</p>
+            {suggestions.map((p, i) => (
+              <button type="button" role="option" aria-selected={i === pick} key={p.id} className={i === pick ? 'on' : ''}
+                onMouseDown={(e) => e.preventDefault()} onMouseEnter={() => setPick(i)} onClick={() => choose(p)}>
+                <Avatar p={p} size={28} /><span><strong>{p.name}</strong><small>{p.label}</small></span>
+              </button>
+            ))}
+          </div>
+        )}
+        <textarea ref={area} rows={1} value={text} maxLength={2000}
+          placeholder={staged ? 'Add a message (optional)' : replyTo ? `Reply to ${replyTo.user.name.split(' ')[0]}` : room.kind === 'dm' ? `Message ${room.name.split(' ')[0]}` : `Message ${room.name}`}
+          aria-label={`Message ${room.name}`} aria-autocomplete="list" aria-expanded={!!mention && suggestions.length > 0}
+          aria-controls={mention && suggestions.length ? `tc-mention-${room.id}` : undefined}
+          onChange={(e) => { setText(e.target.value); watch(e.target); }}
+          onSelect={(e) => watch(e.currentTarget)}
+          onBlur={() => setMention(null)}
+          onKeyDown={(e) => {
+            if (mention && suggestions.length) {
+              if (e.key === 'ArrowDown') { e.preventDefault(); setPick((i) => (i + 1) % suggestions.length); return; }
+              if (e.key === 'ArrowUp') { e.preventDefault(); setPick((i) => (i - 1 + suggestions.length) % suggestions.length); return; }
+              if ((e.key === 'Enter' || e.key === 'Tab') && !e.shiftKey) { e.preventDefault(); choose(suggestions[Math.min(pick, suggestions.length - 1)]); return; }
+              if (e.key === 'Escape') { e.preventDefault(); setMention(null); return; }
+            }
+            if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); void send(); }
+          }} />
         <div className="tc-compose-tools">
           <button type="button" className="tc-tool" onClick={pickPhoto} disabled={!!busy}>{I.photo}<span>Photo</span></button>
           <input ref={file} type="file" accept="image/jpeg,image/png,image/webp,image/heic" hidden onChange={(e) => void upload(e.target.files?.[0])} />
           <span className="tc-link-wrap">
             <button type="button" className="tc-tool" onClick={() => setLinking((v) => !v)} aria-expanded={linking} disabled={!!busy}>{I.book}<span>Link a Page</span></button>
-            {linking && <PagePicker onPick={(e) => { setPage(e); setLinking(false); area.current?.focus(); }} onClose={() => setLinking(false)} />}
+            {linking && <PagePicker onPick={(e) => { stageItem({ type: 'page', slug: e.slug }); setLinking(false); area.current?.focus(); }} onClose={() => setLinking(false)} />}
           </span>
-          <button type="submit" className="tc-send" disabled={!!busy || (!text.trim() && !photo && !page)}>{I.send}<span>{busy === 'Sending…' ? 'Sending' : 'Send'}</span></button>
+          <button type="submit" className="tc-send" disabled={!canSend}>{I.send}<span>{busy === 'Sending…' ? 'Sending' : 'Send'}</span></button>
         </div>
       </div>
       {(err || busy === 'Uploading photo…') && <p className={'tc-compose-note' + (err ? ' err' : '')} role={err ? 'alert' : 'status'}>{err || busy}</p>}
@@ -571,7 +732,7 @@ function PagePicker({ onPick, onClose }: { onPick: (e: IndexEntry) => void; onCl
           if (e.key === 'ArrowDown') { e.preventDefault(); setActive((a) => Math.min(a + 1, results.length - 1)); }
           if (e.key === 'ArrowUp') { e.preventDefault(); setActive((a) => Math.max(a - 1, 0)); }
           if (e.key === 'Enter') { e.preventDefault(); if (results[active]) onPick(results[active]); }
-          if (e.key === 'Escape') onClose();
+          if (e.key === 'Escape') { e.preventDefault(); onClose(); }
         }} />
       <div className="tc-pop-list" role="listbox" aria-label="Pages">
         {!term && <p className="tc-none">Type a dish, a drink or a page.</p>}

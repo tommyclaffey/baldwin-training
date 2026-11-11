@@ -12,6 +12,7 @@ import { ManagerHome, PeoplePage, SignoffsPage, useSignoffCount } from './manage
 import { api } from '../lib/api';
 import { DemoBar, DemoTour, openWelcome } from '../components/DemoTour';
 import { hasChat, useChatUnread } from '../chat/unread';
+import { openChat } from '../chat/panel';
 
 export default function AdminApp() {
   const { user, loaded } = useSession();
@@ -76,7 +77,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
         <nav aria-label="Admin">
           <NavLink end to="/admin"><NavIcon d="M3 11 12 4l9 7M5 10v10h5v-6h4v6h5V10" />Home</NavLink>
           {/* Nov 11 (Figma 580:670): Team Chat under Home. The chat lives in the book, beside the pages people link. */}
-          {hasChat(user) && <NavLink to="/team-chat"><NavIcon d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.55L3.5 20.5l1.45-4.5A8.5 8.5 0 1 1 20.5 11.5Z" />Team Chat{chatUnread > 0 && <span className="admin-count" aria-label={`${chatUnread} unread`}>{chatUnread}</span>}</NavLink>}
+          {hasChat(user) && <NavLink to="/team-chat" onClick={(e) => { if (!e.metaKey && !e.ctrlKey && !e.shiftKey) { e.preventDefault(); openChat(); } }}><NavIcon d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.55L3.5 20.5l1.45-4.5A8.5 8.5 0 1 1 20.5 11.5Z" />Team Chat{chatUnread > 0 && <span className="admin-count" aria-label={`${chatUnread} unread`}>{chatUnread}</span>}</NavLink>}
           <p className="admin-group">Team</p>
           <NavLink to="/admin/people"><NavIcon d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 10a7 7 0 0 1 14 0M17 3.5a4 4 0 0 1 0 7.5M22 21a7 7 0 0 0-4-6.3" />People</NavLink>
           <NavLink to="/admin/signoffs"><NavIcon d="M3 17c3-4 5-8 7-8s-1 8 1 8 3-5 5-5-1 5 1 5h4M3 21h18" />Sign-offs{signoffs > 0 && <span className="admin-count" aria-label={`${signoffs} waiting`}>{signoffs}</span>}</NavLink>

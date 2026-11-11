@@ -11,6 +11,7 @@ import { openWelcome } from './DemoTour';
 import { ACADEMY_NAME } from '../lib/brand';
 import svgs from '../content/svgs.json';
 import { hasChat, useChatUnread } from '../chat/unread';
+import { openChat } from '../chat/panel';
 
 /** Team Chat (Nov 11, Figma 580:670): under Home, with the design's speech-bubble icon and an unread count. */
 const CHAT_ICON = 'mise_chat';
@@ -123,7 +124,14 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     return () => pill.removeEventListener('keydown', onKey);
   }, [node]);
   return (
-    <nav ref={nav} className="sidebar" aria-label="Main" onClick={(e) => {
+    <nav ref={nav} className="sidebar" aria-label="Main" onClickCapture={(e) => {
+      // Team Chat opens the side panel beside the page you're on (Growth's way); the full page is one click from it.
+      // Caught before the link's own click, so it doesn't navigate. Cmd/Ctrl-click, or being on the chat page, still goes there.
+      const a = (e.target as HTMLElement).closest('a');
+      if (a?.closest('[data-name="Nav · Team Chat"]') && !e.metaKey && !e.ctrlKey && !e.shiftKey && !location.pathname.startsWith('/team-chat')) {
+        e.preventDefault(); e.stopPropagation(); onNavigate?.(); openChat();
+      }
+    }} onClick={(e) => {
       if ((e.target as HTMLElement).closest('[data-name="Demo pill"]')) { openWelcome(); return; }
       if ((e.target as HTMLElement).closest('a')) onNavigate?.();
     }}>
