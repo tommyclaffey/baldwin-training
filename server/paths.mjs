@@ -25,28 +25,34 @@ const quiz = (id) => ({ kind: 'quiz', id });
 const group = (name) => ({ kind: 'quizzes', group: name }); // every quiz in a catalog group (this store's menu)
 const lesson = (key) => ({ kind: 'lesson', key });
 const sign = (key, title, how) => ({ kind: 'signoff', key, title, how });
+const lessonAll = (slug) => ({ kind: 'lessons', slug }); // every section of a program lesson (Hospitality, Nov 11)
+// The Hospitality Program (Nov 11): Hospitality 101 is part of the new-hire paperwork, so all five lessons open week 1 on
+// every path. (Week 1, not "Before your first shift", so people already past their first shift aren't sent back.)
+// The Art of Table Service is the floor's later weeks.
+const HOSP_WEEK1 = ['hosp-welcome', 'hosp-experience-creator', 'hosp-soft-skills', 'hosp-guest-conflict', 'hosp-safety'].map(lessonAll);
+const TABLE_SERVICE = ['hosp-mise-en-place', 'hosp-presence', 'hosp-greeting', 'hosp-water-selling', 'hosp-coursing', 'hosp-farewell'].map(lessonAll);
 
 /** Mise's starting path for each job. The steps name what's in the book; each store's menu fills in the quizzes. */
 const PATHS = {
   server: [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('steps-of-service'), read('safety'), read('cleanliness'), read('floor-plan'), read('allergen-guide'), quiz('t:allergens')] },
-    { key: 'week-1', title: 'Week 1 · The menu', day: 7, steps: [group('food'), sign('table-talk', 'Talk through three dishes at a table', 'A manager listens and signs you off')] },
+    { key: 'week-1', title: 'Week 1 · The menu', day: 7, steps: [...HOSP_WEEK1, group('food'), sign('table-talk', 'Talk through three dishes at a table', 'A manager listens and signs you off')] },
     { key: 'week-2', title: 'Week 2 · The bar, beer and wine', day: 14, steps: [lesson('bar-serving#0'), lesson('bar-serving#2'), lesson('beer-glass-pour#2'), group('bar-menu'), group('wine'), lesson('on-the-floor#1'), lesson('on-the-floor#7')] },
-    { key: 'weeks-3-4', title: 'Weeks 3 and 4 · On the floor', day: 28, steps: [sign('shadow', 'Shadow a full shift', 'Work a shift beside a trainer'), sign('wine-at-table', 'Open and pour wine at a table', 'A manager watches the full service'), sign('floor', 'Floor sign-off', 'Your manager signs you off for the floor')] },
+    { key: 'weeks-3-4', title: 'Weeks 3 and 4 · On the floor', day: 28, steps: [...TABLE_SERVICE, sign('shadow', 'Shadow a full shift', 'Work a shift beside a trainer'), sign('wine-at-table', 'Open and pour wine at a table', 'A manager watches the full service'), sign('floor', 'Floor sign-off', 'Your manager signs you off for the floor')] },
   ],
   bartender: [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('steps-of-service'), read('safety'), read('cleanliness'), read('allergen-guide'), quiz('t:allergens')] },
-    { key: 'week-1', title: 'Week 1 · Our cocktails', day: 7, steps: [lesson('bar-our-menu#0'), lesson('bar-glass-ice-garnish#3'), read('the-bar/cocktail-specs'), group('specs-menu'), sign('build-three', 'Build three menu cocktails', 'A manager watches the builds and tastes them')] },
+    { key: 'week-1', title: 'Week 1 · Our cocktails', day: 7, steps: [...HOSP_WEEK1, lesson('bar-our-menu#0'), lesson('bar-glass-ice-garnish#3'), read('the-bar/cocktail-specs'), group('specs-menu'), sign('build-three', 'Build three menu cocktails', 'A manager watches the builds and tastes them')] },
     { key: 'week-2', title: 'Week 2 · Back bar, wine and food', day: 14, steps: [lesson('bar-vodka-gin#2'), lesson('bar-american-whiskey#1'), lesson('bar-liqueurs#2'), lesson('beer-draft#2'), lesson('beer-glass-pour#2'), read('the-bar/back-bar'), quiz('t:spec:classic-off'), group('wine'), group('food'), lesson('on-the-floor#1')] },
-    { key: 'weeks-3-4', title: 'Weeks 3 and 4 · Behind the bar', day: 28, steps: [sign('shadow', 'Shadow a bar shift', 'Work a shift beside a bartender'), sign('bar', 'Bar sign-off', 'Your manager signs you off for the bar')] },
+    { key: 'weeks-3-4', title: 'Weeks 3 and 4 · Behind the bar', day: 28, steps: [lessonAll('hosp-presence'), lessonAll('hosp-greeting'), lessonAll('hosp-water-selling'), sign('shadow', 'Shadow a bar shift', 'Work a shift beside a bartender'), sign('bar', 'Bar sign-off', 'Your manager signs you off for the bar')] },
   ],
   host: [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('step-1/greet'), read('step-9/goodbye'), read('floor-plan'), read('safety'), read('allergen-guide'), quiz('t:allergens')] },
-    { key: 'week-1', title: 'Week 1 · The menu, for questions at the door', day: 7, steps: [group('food'), sign('door', 'Run the door for a shift', 'A manager watches and signs you off')] },
+    { key: 'week-1', title: 'Week 1 · The menu, for questions at the door', day: 7, steps: [...HOSP_WEEK1, group('food'), sign('door', 'Run the door for a shift', 'A manager watches and signs you off')] },
   ],
   support: [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('safety'), read('cleanliness'), read('floor-plan'), read('step-4/fire-and-run'), read('step-6/clear'), read('allergen-guide'), quiz('t:allergens')] },
-    { key: 'week-1', title: 'Week 1 · Every dish you run', day: 7, steps: [group('food'), sign('run-food', 'Run food for a shift', 'Name every dish at the table; a manager signs you off')] },
+    { key: 'week-1', title: 'Week 1 · Every dish you run', day: 7, steps: [...HOSP_WEEK1, group('food'), sign('run-food', 'Run food for a shift', 'Name every dish at the table; a manager signs you off')] },
   ],
 };
 
@@ -71,9 +77,12 @@ export function pathFor(job, { quizzes, slugs, titles }) {
       if (s.kind === 'read' && slugs.has(s.slug)) steps.push({ id: 'page:' + s.slug, kind: 'read', title: titles.get(s.slug) || s.slug, meta: 'Read it, then mark it read', to: '/' + s.slug });
       else if (s.kind === 'quiz' && byId.has(s.id)) steps.push(qStep(byId.get(s.id)));
       else if (s.kind === 'quizzes') steps.push(...groupQuizzes(s.group, quizzes).map(qStep));
-      else if (s.kind === 'lesson') {
-        const [slug, i] = s.key.split('#'); const ch = chapterBySlug(slug); const sec = ch?.sections[Number(i)];
-        if (sec) steps.push({ id: 'lesson:' + s.key, kind: 'lesson', key: s.key, title: sec.name, meta: `${PROGRAM_LEVEL(ch)} lesson · counts there too`, program: PROGRAM_LEVEL(ch), to: '/' + lessonSlug(ch, Number(i)) });
+      else if (s.kind === 'lesson' || s.kind === 'lessons') {
+        const keys = s.kind === 'lesson' ? [s.key] : (chapterBySlug(s.slug)?.sections || []).map((_, i) => `${s.slug}#${i}`);
+        for (const key of keys) {
+          const [slug, i] = key.split('#'); const ch = chapterBySlug(slug); const sec = ch?.sections[Number(i)];
+          if (sec) steps.push({ id: 'lesson:' + key, kind: 'lesson', key, title: sec.name, meta: `${PROGRAM_LEVEL(ch)} lesson · counts there too`, program: PROGRAM_LEVEL(ch), to: '/' + lessonSlug(ch, Number(i)) });
+        }
       } else if (s.kind === 'signoff') steps.push({ id: `path:${job}:${s.key}`, kind: 'signoff', title: s.title, meta: s.how });
     }
     return { key: st.key, title: st.title, day: st.day, steps: dedupe(steps) };
@@ -93,7 +102,10 @@ function doneFor(db, store, userId) {
     quizzes.set(r.quiz, q);
   }
   const signs = new Map(db.prepare("SELECT s.quiz, s.at, u.name by_name FROM signoffs s LEFT JOIN users u ON u.id = s.by_user WHERE s.device = ? AND s.store_id = ?").all('u' + userId, store).map((r) => [r.quiz, { at: r.at, by: r.by_name }]));
-  return { reads, quizzes, signs };
+  // Hospitality 101's acknowledgment, signed by the person (server/acks.mjs)
+  let acks = new Map();
+  try { acks = new Map(db.prepare('SELECT level, name, at FROM program_acks WHERE user_id = ? AND store_id = ?').all(userId, store).map((r) => [r.level, { name: r.name, at: r.at }])); } catch { /* table not made yet */ }
+  return { reads, quizzes, signs, acks };
 }
 
 const DAY = 864e5;
@@ -149,7 +161,7 @@ function programsFor(done, paths) {
     const fin = done.quizzes.get('t:' + L.final); const pr = L.practical && done.signs.get(L.practical);
     out.push({ title: `${programDef(L.program).name} · Level ${L.level}`, cert: L.title, certKey: L.file, to: '/' + L.slug, total: bar.length, done: bar.filter((k) => done.reads.has(k)).length, inPath: bar.filter((k) => inPath.has(k)).length,
       final: { id: 't:' + L.final, passedAt: fin?.passedAt || null, best: fin ? `${Math.round((fin.best / fin.total) * 100)}%` : null },
-      ...(L.practical ? { practical: { key: L.practical, title: L.practicalTitle, how: L.practicalHow, at: pr?.at || null, by: pr?.by || null } } : {}),
+      ...(L.practical ? { practical: { key: L.practical, title: L.practicalTitle, how: L.practicalHow, at: pr?.at || null, by: pr?.by || null, ...(L.ack ? { ack: done.acks.get(L.file) || null } : {}) } } : {}),
       certified: !!(fin?.passedAt && (!L.practical || pr)) });
   }
   for (const level of [1, 2]) {

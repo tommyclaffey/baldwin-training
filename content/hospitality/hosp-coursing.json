@@ -1,0 +1,217 @@
+{
+ "number": 5,
+ "programLevel": 2,
+ "slug": "hosp-coursing",
+ "title": "Coursing and manicuring the table",
+ "script": "Lesson 5",
+ "lead": "The rhythm of the meal, and a table that is never allowed to look used.",
+ "minutes": 10,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "Coursing",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Never rushed, never forgotten."
+    }
+   ],
+   "know": [
+    "By course enter every item that way.",
+    "The pace ask, then adjust the whole meal.",
+    "Together the whole table is served at once.",
+    "First bites check back then, then give them space."
+   ]
+  },
+  {
+   "name": "Manicuring the table",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The table is our canvas."
+    }
+   ],
+   "know": [
+    "Canvas the table never looks used.",
+    "Silently clear, then reset everything perfectly straight.",
+    "Crumb before dessert, toward a small plate.",
+    "Refold a napkin when a guest steps away."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Coursing",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BY COURSE",
+      "line": "enter every item that way."
+     },
+     {
+      "big": "THE PACE",
+      "line": "ask, then adjust the whole meal."
+     },
+     {
+      "big": "TOGETHER",
+      "line": "the whole table is served at once."
+     },
+     {
+      "big": "FIRST BITES",
+      "line": "check back then, then give them space."
+     }
+    ],
+    "read": {
+     "bigIdea": "Never rushed, never forgotten.",
+     "where": "**Coursing is the rhythm of the meal.** Guests should **never feel rushed or forgotten**.",
+     "stops": [
+      {
+       "name": "Order and communicate",
+       "text": "Enter every item **by course**, and tell the kitchen about any **special pacing or timing** request."
+      },
+      {
+       "name": "Ask about pace",
+       "text": "Ask, then **adjust the whole meal** to the answer."
+      },
+      {
+       "name": "Serve together",
+       "text": "Present each course to the **whole table at the same moment**, describing every dish. **Clear only when every guest has finished.**"
+      },
+      {
+       "name": "Check back early",
+       "text": "Return **within the first couple of bites**, then give the table **space** to enjoy it."
+      }
+     ],
+     "sayIt": "Would you like us to linger, or do you have a curtain to catch?"
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Manicuring the table",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CANVAS",
+      "line": "the table never looks used."
+     },
+     {
+      "big": "SILENTLY",
+      "line": "clear, then reset everything perfectly straight."
+     },
+     {
+      "big": "CRUMB",
+      "line": "before dessert, toward a small plate."
+     },
+     {
+      "big": "REFOLD",
+      "line": "a napkin when a guest steps away."
+     }
+    ],
+    "read": {
+     "bigIdea": "The table is our canvas.",
+     "where": "The table is **never allowed to look used**. Tend it **quietly**, between and during courses.",
+     "stops": [
+      {
+       "name": "Clear and reset",
+       "text": "Remove used items **silently**, and align the next course’s cutlery, glassware and linens **perfectly straight**."
+      },
+      {
+       "name": "Crumb before dessert",
+       "text": "With a **crumber or folded napkin** and a **small plate held just below the table edge**, sweep lightly toward the plate."
+      },
+      {
+       "name": "Little details",
+       "text": "Straighten candles and décor, **refold napkins** when a guest steps away, wipe spills **discreetly**, and replace soiled linen."
+      }
+     ]
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   }
+  ]
+ },
+ "sources": "Baldwin Restaurant Group, The Art of Table Service: 11, Coursing, and 12, Manicuring the Table.",
+ "cards": [
+  {
+   "q": "When do you clear a course?",
+   "answer": "Only when every guest has finished",
+   "wrong": [
+    "As each guest finishes",
+    "When most of the table is done",
+    "When the next course is ready"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "When do you check back on a course?",
+   "answer": "Within the first couple of bites",
+   "wrong": [
+    "Once they’ve finished",
+    "Every five minutes",
+    "Only if they wave you over"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How is each course presented?",
+   "answer": "To the whole table at the same moment, describing every dish",
+   "wrong": [
+    "Each plate as it’s ready",
+    "Without a word, to keep it quiet",
+    "Starting with whoever ordered first"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "A table has a show to catch. What do you do?",
+   "answer": "Tell the kitchen and adjust the whole meal’s pace",
+   "wrong": [
+    "Bring everything at once",
+    "Skip the check-back",
+    "Drop the check with the entrées"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "When do you crumb the table?",
+   "answer": "Before dessert",
+   "wrong": [
+    "After the check is paid",
+    "Before the first course",
+    "Only if the guest asks"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How do you crumb a table?",
+   "answer": "A crumber or folded napkin, sweeping toward a small plate held just below the edge",
+   "wrong": [
+    "Brush the crumbs onto the floor",
+    "Wipe with a wet towel",
+    "Sweep them into your hand"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "A guest steps away from the table. You…",
+   "answer": "Refold their napkin",
+   "wrong": [
+    "Clear their plate",
+    "Leave everything as it is",
+    "Bring the check"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}

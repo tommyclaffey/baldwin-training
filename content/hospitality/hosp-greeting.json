@@ -1,0 +1,336 @@
+{
+ "number": 3,
+ "programLevel": 2,
+ "slug": "hosp-greeting",
+ "title": "Greeting our guest",
+ "script": "Lesson 3",
+ "lead": "The first minute or two at the table: five beats, as a conversation, not a script.",
+ "minutes": 10,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "The first minute or two",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A conversation, not a script."
+    }
+   ],
+   "know": [
+    "1–2 minutes after seating: that’s when we approach.",
+    "Five beats in every greeting.",
+    "Not a script a relaxed conversation instead.",
+    "Record it so the whole team can act on what you learn."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "The five beats",
+     "items": [
+      {
+       "name": "Welcome",
+       "text": "smile, eye contact, open hand"
+      },
+      {
+       "name": "Last visit",
+       "text": "regulars or newcomers?"
+      },
+      {
+       "name": "Dietary needs",
+       "text": "ask directly and calmly"
+      },
+      {
+       "name": "Reason for dining",
+       "text": "discover the occasion"
+      },
+      {
+       "name": "Introduction",
+       "text": "your name, then water"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "The five beats",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Five beats, one easy conversation."
+    }
+   ],
+   "know": [
+    "Welcome smile, eye contact, an open hand.",
+    "Last visit are they regulars or newcomers?",
+    "Dietary needs confirm with the kitchen before ordering.",
+    "The occasion shapes the pace, the comfort and a surprise.",
+    "Your name then offer water."
+   ]
+  },
+  {
+   "name": "What to say",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Sample language for every beat."
+    }
+   ],
+   "know": [
+    "So glad you’re here: the welcome.",
+    "Allergies or dietary restrictions I should know about?",
+    "Celebrating something special tonight?",
+    "Water may I start you with water?"
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Sample language",
+     "rows": [
+      {
+       "name": "Welcome",
+       "meta": "“Good evening, and welcome to {restaurant}. We’re so glad you’re here.”"
+      },
+      {
+       "name": "Last visit",
+       "meta": "“Have you dined with us before? When were you last with us?”"
+      },
+      {
+       "name": "Dietary needs",
+       "meta": "“Does anyone have allergies or dietary restrictions I should know about?”"
+      },
+      {
+       "name": "Reason for dining",
+       "meta": "“Are we celebrating something special tonight, or just treating yourselves?”"
+      },
+      {
+       "name": "Personal introduction",
+       "meta": "“I’m [name], and I’ll be taking care of you this evening. May I start you with water?”"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "The first minute or two",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "1–2 MINUTES",
+      "line": "after seating: that’s when we approach."
+     },
+     {
+      "big": "FIVE BEATS",
+      "line": "in every greeting."
+     },
+     {
+      "big": "NOT A SCRIPT",
+      "line": "a relaxed conversation instead."
+     },
+     {
+      "big": "RECORD IT",
+      "line": "so the whole team can act on what you learn."
+     }
+    ],
+    "read": {
+     "bigIdea": "A conversation, not a script.",
+     "where": "Approach **within the first minute or two** of seating. Follow these **five beats** in a **relaxed conversation rather than a script**, and **record what you learn** so the whole team can act on it.",
+     "visual": 0,
+     "visualIntro": "The five beats, in order:"
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The five beats",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WELCOME",
+      "line": "smile, eye contact, an open hand."
+     },
+     {
+      "big": "LAST VISIT",
+      "line": "are they regulars or newcomers?"
+     },
+     {
+      "big": "DIETARY NEEDS",
+      "line": "confirm with the kitchen before ordering."
+     },
+     {
+      "big": "THE OCCASION",
+      "line": "shapes the pace, the comfort and a surprise."
+     },
+     {
+      "big": "YOUR NAME",
+      "line": "then offer water."
+     }
+    ],
+    "read": {
+     "bigIdea": "Five beats, one easy conversation.",
+     "where": "What we do at each beat.",
+     "stops": [
+      {
+       "name": "Welcome",
+       "text": "**Smile**, make **eye contact**, and greet the table with an **open hand**."
+      },
+      {
+       "name": "Last visit",
+       "text": "Learn whether they are **regulars or newcomers**, including at any of **our other locations**."
+      },
+      {
+       "name": "Dietary needs",
+       "text": "Ask **directly and calmly**; **confirm with the kitchen** before the order is placed."
+      },
+      {
+       "name": "Reason for dining",
+       "text": "Discover the **occasion** so we can tailor **pace, seating comfort and a surprise**."
+      },
+      {
+       "name": "Personal introduction",
+       "text": "Share **your name** and a touch of who you are; then **offer water**."
+      }
+     ]
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "What to say",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SO GLAD",
+      "line": "you’re here: the welcome."
+     },
+     {
+      "big": "ALLERGIES",
+      "line": "or dietary restrictions I should know about?"
+     },
+     {
+      "big": "CELEBRATING",
+      "line": "something special tonight?"
+     },
+     {
+      "big": "WATER",
+      "line": "may I start you with water?"
+     }
+    ],
+    "read": {
+     "bigIdea": "Sample language for every beat.",
+     "where": "A guide for each beat. Keep it a **relaxed conversation rather than a script**.",
+     "visual": 0
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   }
+  ]
+ },
+ "sources": "Baldwin Restaurant Group, The Art of Table Service: 8, Greeting Our Guest.",
+ "cards": [
+  {
+   "q": "When do we approach a newly seated table?",
+   "answer": "Within the first minute or two",
+   "wrong": [
+    "Within five minutes",
+    "Once they’ve looked at the menu",
+    "When they wave you over"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How do we deliver the five beats?",
+   "answer": "As a relaxed conversation, not a script",
+   "wrong": [
+    "Word for word, as written",
+    "All at once, before they sit",
+    "Only when the guest asks"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Why record what you learn at the greeting?",
+   "answer": "So the whole team can act on it",
+   "wrong": [
+    "So the manager can grade you",
+    "For the end-of-night report only",
+    "So the kitchen can plan prep"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "A guest mentions an allergy. When do you confirm it with the kitchen?",
+   "answer": "Before the order is placed",
+   "wrong": [
+    "After the food is fired",
+    "Only if it sounds severe",
+    "When the food comes up"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Why ask the reason for dining?",
+   "answer": "To tailor the pace, seating comfort and a surprise",
+   "wrong": [
+    "To decide which menu to hand them",
+    "To guess how much they’ll spend",
+    "To fill in the reservation"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Which beat comes last?",
+   "answer": "Your personal introduction, then water",
+   "wrong": [
+    "Dietary needs",
+    "The welcome",
+    "Last visit"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Which line asks about dietary needs?",
+   "answer": "“Does anyone have allergies or dietary restrictions I should know about?”",
+   "wrong": [
+    "“Is everyone eating tonight?”",
+    "“Are you all ready to order?”",
+    "“Can I get you started with anything?”"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How does your personal introduction end?",
+   "answer": "“May I start you with water?”",
+   "wrong": [
+    "“Are you ready to order?”",
+    "“Can I tell you about the specials?”",
+    "“Would you like a cocktail?”"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Which line finds the reason for dining?",
+   "answer": "“Are we celebrating something special tonight, or just treating yourselves?”",
+   "wrong": [
+    "“How many in your party?”",
+    "“Do you have a reservation?”",
+    "“How did you hear about us?”"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}

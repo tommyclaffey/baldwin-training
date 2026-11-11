@@ -1,0 +1,490 @@
+{
+ "number": 2,
+ "programLevel": 1,
+ "slug": "hosp-experience-creator",
+ "title": "Becoming an Experience Creator",
+ "script": "Lesson 2",
+ "lead": "Order taker or experience creator: the four pillars, a real turnaround, and three boxes to tick every day.",
+ "minutes": 14,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "Order taker vs experience creator",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Compliance or connection."
+    }
+   ],
+   "know": [
+    "Connection not just compliance: that defines our brand.",
+    "Order taker finishes the task quickly. Forgettable.",
+    "Experience creator makes the customer feel valued.",
+    "Loyalty and advocacy: what an experience creator earns."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "THE ORDER TAKER",
+       "title": "Passive",
+       "text": "Goal: finish the task quickly\nScripted and transactional\nFollows rules blindly\nSatisfaction (neutral)"
+      },
+      {
+       "label": "THE EXPERIENCE CREATOR",
+       "title": "Proactive",
+       "text": "Goal: make the customer feel valued\nPersonalized and conversational\nCreative solutions within guidelines\nLoyalty and advocacy (emotional high)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Observe, then choose your words",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Read between the lines. Then speak like a person."
+    }
+   ],
+   "know": [
+    "The why behind the request: find it.",
+    "In a rush means they want speed and peace of mind.",
+    "Indecisive means they want guidance and reassurance.",
+    "No scripts warm, human words instead of robotic ones."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Instead of… try",
+     "rows": [
+      {
+       "name": "“Is that all?”",
+       "meta": "“What else can I help you take care of today?”"
+      },
+      {
+       "name": "“I don’t know, not my department.”",
+       "meta": "“Let’s find out. I’ll connect you with the right person.”"
+      },
+      {
+       "name": "“Hold please.”",
+       "meta": "“May I place you on a brief hold while I look up that information for you?”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Think ahead and own the vibe",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Solve the next problem. Own the vibe."
+    }
+   ],
+   "know": [
+    "One step ahead of the customer: solve the next problem.",
+    "Unasked extra offer what you know before they ask.",
+    "The vibe is yours: you control how they feel with you.",
+    "Own it apologize for the frustration, then fix it."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "The four pillars",
+     "items": [
+      {
+       "name": "OBSERVATION",
+       "text": "Read between the lines"
+      },
+      {
+       "name": "LANGUAGE",
+       "text": "Ban robotic phrasing"
+      },
+      {
+       "name": "ANTICIPATION",
+       "text": "Solve the next problem"
+      },
+      {
+       "name": "OWNERSHIP",
+       "text": "Take responsibility for the vibe"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "A turnaround and the daily checklist",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Three boxes to tick, every single day."
+    }
+   ],
+   "know": [
+    "Name drop use their name naturally, at least twice.",
+    "Plus-one one extra they didn’t ask for.",
+    "Personal touch a human moment that isn’t about the sale.",
+    "Sold out check with the kitchen or bar: see what we can do."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "THE ORDER TAKER SAYS",
+       "title": "The answer",
+       "text": "“We’re out of that\nright now. Sorry.”"
+      },
+      {
+       "label": "THE EXPERIENCE CREATOR SAYS",
+       "title": "A way forward",
+       "text": "“That is a very popular item and\nit’s currently sold out. However,\nI can check with the kitchen/bar\nand see what we can do.”"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Order taker vs experience creator",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CONNECTION",
+      "line": "not just compliance: that defines our brand."
+     },
+     {
+      "big": "ORDER TAKER",
+      "line": "finishes the task quickly. Forgettable."
+     },
+     {
+      "big": "EXPERIENCE CREATOR",
+      "line": "makes the customer feel valued."
+     },
+     {
+      "big": "LOYALTY",
+      "line": "and advocacy: what an experience creator earns."
+     }
+    ],
+    "read": {
+     "bigIdea": "Compliance or connection.",
+     "where": "The difference between **compliance** and **connection** defines our brand. **The Order Taker** focuses on the **transaction**: they listen to the request, process it accurately and say goodbye. The interaction is **forgettable**. **The Experience Creator** focuses on the **interaction**: they read the customer’s energy, uncover **hidden needs** and leave a **lasting positive impression**.",
+     "visual": 0,
+     "visualIntro": "A direct comparison:"
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Observe, then choose your words",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "THE WHY",
+      "line": "behind the request: find it."
+     },
+     {
+      "big": "IN A RUSH",
+      "line": "means they want speed and peace of mind."
+     },
+     {
+      "big": "INDECISIVE",
+      "line": "means they want guidance and reassurance."
+     },
+     {
+      "big": "NO SCRIPTS",
+      "line": "warm, human words instead of robotic ones."
+     }
+    ],
+    "read": {
+     "bigIdea": "Read between the lines. Then speak like a person.",
+     "where": "The first two of the **four pillars of experience creation**.",
+     "stops": [
+      {
+       "name": "Active observation",
+       "note": "read between the lines",
+       "text": "Look for **emotional cues**: body language, tone of voice, context clues. Then identify the **why**. If a customer is in a rush, they don’t just want a product; they want **speed and peace of mind**. If they are indecisive, they want **guidance and reassurance**."
+      },
+      {
+       "name": "Elevated language",
+       "note": "ban robotic phrasing",
+       "text": "Replace transactional scripts with **warm, human responses**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Three swaps to start with:"
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Think ahead and own the vibe",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ONE STEP AHEAD",
+      "line": "of the customer: solve the next problem."
+     },
+     {
+      "big": "UNASKED EXTRA",
+      "line": "offer what you know before they ask."
+     },
+     {
+      "big": "THE VIBE",
+      "line": "is yours: you control how they feel with you."
+     },
+     {
+      "big": "OWN IT",
+      "line": "apologize for the frustration, then fix it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Solve the next problem. Own the vibe.",
+     "where": "The other two pillars of experience creation.",
+     "stops": [
+      {
+       "name": "Anticipatory service",
+       "note": "solve the next problem",
+       "text": "Think **one step ahead** of the customer, and provide the **unasked extra**. If they buy a bottle of wine, don’t wait for them to ask about it: offer information you know about the product."
+      },
+      {
+       "name": "Emotional ownership",
+       "note": "take responsibility for the vibe",
+       "text": "You cannot control a customer’s bad day, but you **entirely control** how they feel when they’re interacting with you. **Own mistakes instantly**: if something goes wrong, apologize for the frustration caused and focus **immediately on the solution**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "All four pillars:"
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "A turnaround and the daily checklist",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NAME DROP",
+      "line": "use their name naturally, at least twice."
+     },
+     {
+      "big": "PLUS-ONE",
+      "line": "one extra they didn’t ask for."
+     },
+     {
+      "big": "PERSONAL TOUCH",
+      "line": "a human moment that isn’t about the sale."
+     },
+     {
+      "big": "SOLD OUT",
+      "line": "check with the kitchen or bar: see what we can do."
+     }
+    ],
+    "read": {
+     "bigIdea": "Three boxes to tick, every single day.",
+     "where": "To keep this mindset alive, challenge yourself to tick these **three boxes every single day**.",
+     "stops": [
+      {
+       "name": "The Name Drop",
+       "text": "Use the customer’s **name** naturally **at least twice** during the conversation."
+      },
+      {
+       "name": "The Plus-One",
+       "text": "Give **one extra** piece of advice, validation or assistance that the customer **didn’t explicitly ask for**."
+      },
+      {
+       "name": "The Personal Touch",
+       "text": "Share a moment of **genuine human connection** (a laugh, a shared compliment or active empathy) that has **nothing to do with the transaction** itself."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "A real-world turnaround. A customer asks for a product that is out of stock:"
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "sources": "Hospitality 101 Training, page 2: Becoming an Experience Creator.",
+ "cards": [
+  {
+   "q": "What defines our brand?",
+   "answer": "The difference between compliance and connection",
+   "wrong": [
+    "The speed of our service",
+    "The size of our menu",
+    "Our prices"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "An Order Taker’s primary goal is to…",
+   "answer": "Finish the task quickly",
+   "wrong": [
+    "Make the customer feel valued",
+    "Uncover hidden needs",
+    "Find creative solutions within guidelines"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "What does an Experience Creator leave the customer with?",
+   "answer": "Loyalty and advocacy: an emotional high",
+   "wrong": [
+    "Neutral satisfaction",
+    "A forgettable interaction",
+    "A quicker goodbye"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "How does an Experience Creator solve problems?",
+   "answer": "Finds creative solutions within guidelines",
+   "wrong": [
+    "Follows rules blindly",
+    "Waits for the guest to suggest one",
+    "Ignores the guidelines"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "A customer is in a rush. Beyond the product, what do they want?",
+   "answer": "Speed and peace of mind",
+   "wrong": [
+    "Guidance and reassurance",
+    "A longer conversation",
+    "A discount"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Instead of “Is that all?”, an experience creator says…",
+   "answer": "“What else can I help you take care of today?”",
+   "wrong": [
+    "“Anything else?”",
+    "“Will that be everything?”",
+    "“Ready for the check?”"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Instead of “I don’t know, not my department,” you say…",
+   "answer": "“Let’s find out. I’ll connect you with the right person.”",
+   "wrong": [
+    "“You’ll have to ask someone else.”",
+    "“That’s not something I handle.”",
+    "“I’m not sure, sorry.”"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "An indecisive customer wants…",
+   "answer": "Guidance and reassurance",
+   "wrong": [
+    "Speed and peace of mind",
+    "To be left alone",
+    "The lowest-priced option"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "A guest buys a bottle of wine. What does anticipatory service look like?",
+   "answer": "Offer what you know about it without waiting to be asked",
+   "wrong": [
+    "Wait for them to ask questions",
+    "Bring the check early",
+    "Recommend a second bottle right away"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Something goes wrong at the table. Emotional ownership means…",
+   "answer": "Apologize for the frustration caused and focus on the solution",
+   "wrong": [
+    "Explain whose fault it was",
+    "Say nothing until it’s fixed",
+    "Offer a discount before apologizing"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "What can you entirely control?",
+   "answer": "How the customer feels when they’re with you",
+   "wrong": [
+    "The customer’s bad day",
+    "How long the kitchen takes",
+    "What the customer orders"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Which of these is not one of the four pillars?",
+   "answer": "Speed of service",
+   "wrong": [
+    "Active observation",
+    "Elevated language",
+    "Emotional ownership"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "The Name Drop: how often do you use the customer’s name?",
+   "answer": "Naturally, at least twice in the conversation",
+   "wrong": [
+    "Once, when you greet them",
+    "Every time you speak to them",
+    "Only when you say goodbye"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "What is the Plus-One?",
+   "answer": "One extra piece of advice, validation or help they didn’t ask for",
+   "wrong": [
+    "Adding one more item to their order",
+    "Bringing a second menu",
+    "Checking back one extra time"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "A guest asks for something that’s sold out. The experience creator…",
+   "answer": "Says it’s popular and sold out, then offers to check with the kitchen or bar",
+   "wrong": [
+    "Says “We’re out of that right now. Sorry.”",
+    "Suggests they come back another day",
+    "Tells them to pick something else"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "The Personal Touch is a moment of connection that…",
+   "answer": "Has nothing to do with the transaction itself",
+   "wrong": [
+    "Ends with a recommendation",
+    "Happens only with regulars",
+    "Comes after the check is paid"
+   ],
+   "source": "Hospitality 101 Training"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}

@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { clone, find, findAll, byName, startsWith, texts, setText, remove } from './templates.mjs';
+import { variant } from './variant.mjs';
 
 const DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/manual');
 // Level 2 (Certified) chapters, Nov 2: same format plus "level": 2 and "part", written from the Court's resource library
@@ -24,6 +25,14 @@ export const PROGRAMS = [
     back: ['/the-bar/beer-and-draft', 'The Bar'], hero: '/img/a25e068de269.jpg', heroName: 'IMG/Pouring a draft · Unsplash stand-in (the Pilsner page photo)',
     ladder: ['Beer Server', 'Beer Specialist', 'Advanced Specialist', 'Master of Beer'],
     fine: 'It isn’t a Cicerone® certification. It prepares you for Cicerone’s Certified Beer Server exam.' },
+  // The Hospitality Program (Nov 11, Tommy: "put these doc in the Hospitality Training folders … for the Hospitality
+  // Training program"). Built from BRG's own two documents (content/research/hospitality). BRG's companies read them as
+  // written (content/hospitality); everyone else reads the same lessons with no BRG names (content/hospitality-generic).
+  // Which one a request gets: server/variant.mjs.
+  { key: 'hosp', name: 'Hospitality Program', short: 'Hospitality', slug: 'hospitality-program', dir: here('hospitality'), genericDir: here('hospitality-generic'), seal: 'SERVICE', section: 'Service',
+    back: ['/steps-of-service', 'Service'], hero: '/img/study/on-the-floor--mise-en-place.jpg', heroName: 'IMG/Table set for service · Unsplash, Ronan (stand-in)',
+    ladder: ['Hospitality 101', 'The Art of Table Service'],
+    fine: 'It shows the level’s lessons were finished, its final passed and its sign-off given.' },
   // The Sommelier Program (Nov 8, Tommy: finals and certificates for every program). Its lessons live in content/manual and
   // content/manual-l2 with their own pages, so it has no folder here; chaptersForLevel() reads them.
   { key: 'somm', name: 'Sommelier Program', short: 'Somm', slug: 'sommelier-program', dir: null, seal: 'WINE', external: true,
@@ -65,6 +74,15 @@ export const LEVELS = [
   { program: 'beer', level: 3, title: 'Advanced Specialist', file: 'beer-3', final: 'final:beer-3', len: 60, prefix: 'BEER3', head: 'Run the beer program',
     practical: 'program:beer-3:practical', practicalTitle: 'Build our beer list', practicalHow: 'Build a beer list for our menu (styles, sizes, pour costs, glassware, a pairing per course) and present it to the GM; they sign you off', practicalStep: 'Build and cost a beer list',
     lead: (n, L) => `${countWord(n)} lessons on running the beer program, then a final and a practical.` },
+  // The Hospitality Program (Nov 11). Level 1 is BRG's Hospitality 101: its acknowledgment is the practical (the person
+  // signs it in the app, then their trainer signs it off). Level 2 is The Art of Table Service: a manager watches a full table.
+  { program: 'hosp', level: 1, title: 'Hospitality 101', file: 'hosp-1', final: 'final:hosp-1', len: 30, prefix: 'HOSP1', isA: false, head: 'Hospitality from day one', ack: true,
+    practical: 'program:hosp-1:practical', practicalTitle: 'Sign the acknowledgment', practicalHow: 'Read and sign the training acknowledgment; your trainer signs it off', practicalStep: 'Sign the acknowledgment',
+    practicalStat: 'sign-off', practicalLabel: 'Acknowledgment',
+    lead: (n, L) => `${countWord(n)} lessons from our new-hire training, then a final and the acknowledgment.` },
+  { program: 'hosp', level: 2, title: 'The Art of Table Service', file: 'hosp-2', final: 'final:hosp-2', len: 40, prefix: 'HOSP2', isA: false, head: 'Every table, a conversation',
+    practical: 'program:hosp-2:practical', practicalTitle: 'Serve a full table', practicalHow: 'A manager watches you serve a full table, from the greeting to the farewell, and signs you off', practicalStep: 'Serve a table for a manager',
+    lead: (n, L) => `${countWord(n)} lessons on table service, then a final and a practical.` },
 ].map((L) => { const P = PROGRAMS.find((p) => p.key === L.program); return { ...L, slug: `${P.slug}/level-${L.level}` }; }); // the program's own address is its hub (Nov 8)
 export const programDef = (key) => PROGRAMS.find((p) => p.key === key);
 export const isProgram = (c) => !!programDef(c?.program);
@@ -87,7 +105,7 @@ export const quizHref = (c) => `/quizzes?quiz=t:study:${c.slug}`;
 
 function load(dir, level) {
   let files = [];
-  try { files = fs.readdirSync(dir).filter((f) => f.endsWith('.json')); } catch { return []; }
+  try { files = fs.readdirSync(dir).filter((f) => f.endsWith('.json') && !f.startsWith('_')); } catch { return []; } // _program.json: program text, not a lesson
   return files.map((f) => {
     try { return JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')); } catch { return null; }
   }).filter((c) => c && c.slug && c.title && Array.isArray(c.sections) && c.sections.length && Array.isArray(c.cards))
@@ -106,10 +124,27 @@ export function chapters2() {
   return cache2;
 }
 const progCache = {};
+/** A program with two versions (Hospitality): this request's folder, cache key and restaurant name. */
+function versionOf(P) {
+  if (!P.genericDir) return { dir: P.dir, key: P.key, name: null };
+  const v = variant();
+  const name = v.restaurant || (v.brg ? 'The Baldwin' : 'our restaurant');
+  return { dir: v.brg ? P.dir : P.genericDir, key: `${P.key}:${v.brg ? 'brg' : 'generic'}:${name}`, name };
+}
+/** "{restaurant}" in a lesson's text becomes the store's name (both versions; the generic one never names BRG). */
+const fillName = (x, name) => (name ? JSON.parse(JSON.stringify(x).replaceAll('{restaurant}', JSON.stringify(name).slice(1, -1))) : x);
 /** A program's lessons, in order: one level, or every level (Level 1's first). */
 export function chaptersOf(program, level) {
-  if (!progCache[program]) progCache[program] = load(programDef(program).dir, 1).map((c) => ({ ...c, program, programLevel: c.programLevel || c.barLevel || 1 })).sort((a, b) => a.programLevel - b.programLevel || a.number - b.number);
-  return level ? progCache[program].filter((c) => c.programLevel === level) : progCache[program];
+  const V = versionOf(programDef(program));
+  if (!progCache[V.key]) progCache[V.key] = fillName(load(V.dir, 1), V.name).map((c) => ({ ...c, program, programLevel: c.programLevel || c.barLevel || 1 })).sort((a, b) => a.programLevel - b.programLevel || a.number - b.number);
+  return level ? progCache[V.key].filter((c) => c.programLevel === level) : progCache[V.key];
+}
+const textCache = {};
+/** A program's own words outside its lessons (content/<program>/_program.json: the acknowledgment), in this request's version. */
+export function programText(program) {
+  const V = versionOf(programDef(program));
+  if (!(V.key in textCache)) { try { textCache[V.key] = fillName(JSON.parse(fs.readFileSync(path.join(V.dir, '_program.json'), 'utf8')), V.name); } catch { textCache[V.key] = {}; } }
+  return textCache[V.key];
 }
 export const chaptersBar = (level) => chaptersOf('bar', level);
 export const allChapters = () => [...chapters(), ...chapters2(), ...PROGRAMS.flatMap((p) => chaptersOf(p.key))];

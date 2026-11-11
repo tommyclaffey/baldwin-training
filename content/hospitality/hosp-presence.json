@@ -1,0 +1,319 @@
+{
+ "number": 2,
+ "programLevel": 2,
+ "slug": "hosp-presence",
+ "title": "Presence",
+ "script": "Lesson 2",
+ "lead": "Open hands, good posture, a real smile, the right voice, sincerity, and moving with grace.",
+ "minutes": 12,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "Open hand and posture",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "An open hand says “welcome.”"
+    }
+   ],
+   "know": [
+    "Open palm never a pointed finger.",
+    "Hands visible and out of your pockets.",
+    "Never lean on chairs, side stands or tables.",
+    "No hovering bend slightly to speak to seated guests."
+   ]
+  },
+  {
+   "name": "Smile and voice",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A real smile reaches the eyes."
+    }
+   ],
+   "know": [
+    "The eyes a real smile reaches them.",
+    "Lower, slower than ordinary conversation.",
+    "Match the table’s energy: quiet or bright.",
+    "My pleasure not “no problem.”"
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "SAY",
+       "title": "Warm and sure",
+       "text": "“Absolutely”\n“Certainly”\n“My pleasure”"
+      },
+      {
+       "label": "NOT",
+       "title": "Too casual",
+       "text": "“No problem”\n“you guys”"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Sincerity and moving with grace",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Noticing is where every great gesture begins."
+    }
+   ],
+   "know": [
+    "Curious ask, listen, and use what you learn.",
+    "Let me find out always beats a guess.",
+    "Never run walk with purpose instead.",
+    "Hands full never travel the floor empty-handed."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Open hand and posture",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "OPEN PALM",
+      "line": "never a pointed finger."
+     },
+     {
+      "big": "HANDS VISIBLE",
+      "line": "and out of your pockets."
+     },
+     {
+      "big": "NEVER LEAN",
+      "line": "on chairs, side stands or tables."
+     },
+     {
+      "big": "NO HOVERING",
+      "line": "bend slightly to speak to seated guests."
+     }
+    ],
+    "read": {
+     "bigIdea": "An open hand says “welcome.”",
+     "where": "An open hand says **“welcome”** before a word is spoken.",
+     "stops": [
+      {
+       "name": "Open hand service",
+       "text": "Gesture and present with an **open, relaxed palm**, never a **pointed finger**: toward the menu, a seat, the restroom, a dish. Keep **hands visible** and **out of pockets**."
+      },
+      {
+       "name": "Posture",
+       "text": "Stand **tall** with shoulders relaxed and weight balanced. **Never lean** on chairs, side stands or tables. At the table, stay calm and still, hands relaxed, **bending slightly** to speak with seated guests without ever **hovering** over them."
+      }
+     ]
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Smile and voice",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "THE EYES",
+      "line": "a real smile reaches them."
+     },
+     {
+      "big": "LOWER, SLOWER",
+      "line": "than ordinary conversation."
+     },
+     {
+      "big": "MATCH",
+      "line": "the table’s energy: quiet or bright."
+     },
+     {
+      "big": "MY PLEASURE",
+      "line": "not “no problem.”"
+     }
+    ],
+    "read": {
+     "bigIdea": "A real smile reaches the eyes.",
+     "where": "Each guest deserves a **fresh, unhurried** version of you.",
+     "stops": [
+      {
+       "name": "Smiling",
+       "text": "A real smile **reaches the eyes**. Smile **as you approach**, **before you speak** and when you **say goodbye**. Between tables, **shake off any stress**."
+      },
+      {
+       "name": "Vocal tone and pace",
+       "text": "Speak warmly, **a little lower and a touch slower** than ordinary conversation, and **match the table’s energy**: quiet for an intimate dinner, brighter for a celebration."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Words to prefer:"
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Sincerity and moving with grace",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CURIOUS",
+      "line": "ask, listen, and use what you learn."
+     },
+     {
+      "big": "LET ME FIND OUT",
+      "line": "always beats a guess."
+     },
+     {
+      "big": "NEVER RUN",
+      "line": "walk with purpose instead."
+     },
+     {
+      "big": "HANDS FULL",
+      "line": "never travel the floor empty-handed."
+     }
+    ],
+    "read": {
+     "bigIdea": "Noticing is where every great gesture begins.",
+     "where": "Guests **sense performance instantly**.",
+     "stops": [
+      {
+       "name": "Sincerity",
+       "text": "Be **genuinely curious**, listen to the answers, and use what you learn. If you love a dish, **say why**. “I’m not sure, let me find out” **always beats a guess**."
+      },
+      {
+       "name": "Moving with grace",
+       "text": "Walk with purpose: **never rush, never run**. Carry plates with **two hands** and a steady core, serve from the **guest’s side** without reaching across them, and **yield the aisle**. **Scan every table** on every pass; **never travel empty-handed**."
+      }
+     ]
+    },
+    "check": [
+     7,
+     8,
+     9
+    ]
+   }
+  ]
+ },
+ "sources": "Baldwin Restaurant Group, The Art of Table Service: 2 to 7.",
+ "cards": [
+  {
+   "q": "How do you point a guest toward the restroom?",
+   "answer": "With an open, relaxed palm",
+   "wrong": [
+    "With a pointed finger",
+    "With a nod of the head",
+    "By pointing with a pen"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Speaking with a seated guest, you…",
+   "answer": "Bend slightly, without hovering over them",
+   "wrong": [
+    "Lean on the back of a chair",
+    "Lean on the table to be heard",
+    "Stand back with arms crossed"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Where are your hands when you’re not using them?",
+   "answer": "Visible, relaxed, and out of your pockets",
+   "wrong": [
+    "In your pockets",
+    "Behind your back, out of sight",
+    "Resting on a guest’s chair"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "When do you smile?",
+   "answer": "As you approach, before you speak, and when you say goodbye",
+   "wrong": [
+    "Only when the guest smiles first",
+    "Only at the greeting",
+    "When you drop the check"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How does your voice sound at the table?",
+   "answer": "Warm, a little lower and a touch slower than ordinary conversation",
+   "wrong": [
+    "Louder and faster, to be heard",
+    "The same at every table",
+    "Bright and loud at every table"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Instead of “No problem,” we say…",
+   "answer": "“My pleasure”",
+   "wrong": [
+    "“No worries”",
+    "“You bet”",
+    "“Sure thing”"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "A quiet, intimate dinner calls for…",
+   "answer": "A quieter voice, matched to the table",
+   "wrong": [
+    "Your brightest celebration energy",
+    "A few jokes to warm them up",
+    "More frequent visits"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "A guest asks something you don’t know. You say…",
+   "answer": "“I’m not sure, let me find out.”",
+   "wrong": [
+    "Your best guess",
+    "“That’s not my area.”",
+    "“I think so.”"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How do you carry plates?",
+   "answer": "With two hands and a steady core",
+   "wrong": [
+    "Stacked, to save trips",
+    "In one hand, to keep the other free",
+    "Held high above guests’ heads"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Serving a guest, you…",
+   "answer": "Serve from their side without reaching across them",
+   "wrong": [
+    "Reach across whoever is closest",
+    "Pass plates down the table",
+    "Set everything in the center"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "On every pass through the dining room, you…",
+   "answer": "Scan every table and never travel empty-handed",
+   "wrong": [
+    "Walk quickly and look straight ahead",
+    "Stop to chat at your favorite table",
+    "Watch only your own section"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}
