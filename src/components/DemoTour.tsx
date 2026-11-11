@@ -89,7 +89,7 @@ export function DemoBar() {
   const manager = user.role !== 'staff';
   const swap = async () => {
     setBusy(true);
-    try { await api('/api/demo/start', { method: 'POST', body: { role: manager ? 'employee' : 'manager' } }); markDemoTab(); await refresh(); location.assign('/'); }
+    try { await api('/api/demo/start', { method: 'POST', body: { role: manager ? 'employee' : 'manager' } }); markDemoTab(); await refresh(); location.assign(manager ? '/' : '/admin'); }
     catch { location.assign('/demo'); }
   };
   return (
