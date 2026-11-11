@@ -85,6 +85,11 @@ function Drawing({ svg, style, className }: { svg: string; style: CSSProperties;
   }, [svg]);
   return <span ref={ref} aria-hidden="true" className={className} style={{ ...style, alignItems: 'center', justifyContent: 'center' }} dangerouslySetInnerHTML={{ __html: svg }} />;
 }
+// The Mise skin's fonts (src/lib/skin.ts) sit beside The Baldwin's Archivo and Pinyon Script.
+const FONT: Record<string, string> = {
+  'Pinyon Script': "'Pinyon Script', cursive", 'Instrument Serif': "'Instrument Serif', Georgia, serif",
+  'DM Mono': "'DM Mono', ui-monospace, monospace", 'Reenie Beanie': "'Reenie Beanie', cursive",
+};
 const WEIGHT: Record<string, number> = { Regular: 400, Italic: 400, Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800 };
 const JUSTIFY: Record<string, string> = { C: 'center', M: 'flex-end', S: 'space-between' };
 const ALIGN: Record<string, string> = { C: 'center', M: 'flex-end', B: 'baseline' };
@@ -172,7 +177,7 @@ function boxStyle(node: FNode, parentLm: 'H' | 'V' | undefined, parentH?: number
 function textNode(node: FNode, parentLm: 'H' | 'V' | undefined, key?: number) {
   const { st, cls } = boxStyle(node, parentLm);
   cls.push('ftext');
-  st.fontFamily = node.ff === 'Pinyon Script' ? "'Pinyon Script', cursive" : "'Archivo', system-ui, sans-serif";
+  st.fontFamily = FONT[node.ff || ''] || "'Archivo', system-ui, sans-serif";
   st.fontWeight = WEIGHT[node.fs || 'Regular'] ?? 400;
   if ((node.fs || '').includes('Italic')) st.fontStyle = 'italic';
   st.fontSize = node.z;

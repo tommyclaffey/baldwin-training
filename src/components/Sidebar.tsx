@@ -9,6 +9,9 @@ import { usePath } from '../path/store';
 import { useSession } from '../lib/session';
 import { openWelcome } from './DemoTour';
 import { ACADEMY_NAME } from '../lib/brand';
+import { currentBrand, miseSidebar } from '../lib/skin';
+
+const MISE_SKIN = currentBrand() === 'mise';
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
 function forStore(n: FNode, name: string): FNode {
@@ -59,7 +62,8 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     const live: Record<string, number> = { ...counts, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
     const drawn = pathSidebar(linkHome(withCounts(trainingCard([SIDEBAR], quiz)[0], live)), mine);
     const named = generic ? forStore(drawn, user!.store!.name) : drawn;
-    return user?.demo ? withDemoPill(named) : named;
+    const shown = user?.demo ? withDemoPill(named) : named;
+    return MISE_SKIN ? miseSidebar(shown) : shown;
   }, [quiz, counts, generic, user, mine]);
   // The pill is drawn with the rest of the sidebar, so it's made a real control here: Tab reaches it, Enter opens the welcome card.
   const nav = useRef<HTMLElement>(null);
