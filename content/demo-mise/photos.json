@@ -1,0 +1,254 @@
+{
+  "charred-shishito-peppers": {
+    "file": "/img/demo-mise/charred-shishito-peppers.jpg",
+    "credit": "Joshua Brown · Unsplash (stand-in)",
+    "unsplashId": "q02OIv0wKVE",
+    "fit": "close",
+    "what": "Blistered, sea-salted shishito peppers piled on foil (no bowl or lime)",
+    "w": 1200,
+    "h": 1599
+  },
+  "crispy-brussels-sprouts": {
+    "file": "/img/demo-mise/crispy-brussels-sprouts.jpg",
+    "credit": "Mette van der Linden · Unsplash (stand-in)",
+    "unsplashId": "q3Ti1x2zcN4",
+    "fit": "exact",
+    "what": "Roasted, caramelized brussels sprouts with bacon and onion in a white bowl",
+    "w": 1200,
+    "h": 900
+  },
+  "beef-tartare": {
+    "file": "/img/demo-mise/beef-tartare.jpg",
+    "credit": "Liuda Brogiene · Unsplash (stand-in)",
+    "unsplashId": "fTcJd8Nzao0",
+    "fit": "exact",
+    "what": "Beef tartare topped with a raw egg yolk in a dark bowl",
+    "w": 1200,
+    "h": 800
+  },
+  "roasted-beet-citrus-salad": {
+    "file": "/img/demo-mise/roasted-beet-citrus-salad.jpg",
+    "credit": "Louis Hansel · Unsplash (stand-in)",
+    "unsplashId": "MlPD-AzZYMg",
+    "fit": "exact",
+    "what": "Beet, orange, goat cheese and walnut salad on greens",
+    "w": 1200,
+    "h": 800
+  },
+  "wood-grilled-half-chicken": {
+    "file": "/img/demo-mise/wood-grilled-half-chicken.jpg",
+    "credit": "Angela Bailey · Unsplash (stand-in)",
+    "unsplashId": "46i7Fqy4bto",
+    "fit": "exact",
+    "what": "Grilled half chicken on a white platter with a side salad, fork and knife in frame",
+    "w": 1200,
+    "h": 800
+  },
+  "seared-scallops": {
+    "file": "/img/demo-mise/seared-scallops.jpg",
+    "credit": "Connie Perez · Unsplash (stand-in)",
+    "unsplashId": "V6RjrMC15iw",
+    "fit": "exact",
+    "what": "Seared scallops with cauliflower and purple garnish (no purée)",
+    "w": 1200,
+    "h": 1800
+  },
+  "braised-lamb-shank": {
+    "file": "/img/demo-mise/braised-lamb-shank.jpg",
+    "credit": "Neil Marshall · Unsplash (stand-in)",
+    "unsplashId": "2nJ7fYeuXVI",
+    "fit": "exact",
+    "what": "Braised lamb shank over mash with vegetables and jus; blurred wine bottle behind",
+    "w": 1200,
+    "h": 1200
+  },
+  "hanger-steak-frites": {
+    "file": "/img/demo-mise/hanger-steak-frites.jpg",
+    "credit": "Tim Toomey · Unsplash (stand-in)",
+    "unsplashId": "pe9dvM1rQkM",
+    "fit": "exact",
+    "what": "Sliced grilled steak with herbed fries on a white plate",
+    "w": 1200,
+    "h": 800
+  },
+  "wild-mushroom-risotto": {
+    "file": "/img/demo-mise/wild-mushroom-risotto.jpg",
+    "credit": "Zoshua Colah · Unsplash (stand-in)",
+    "unsplashId": "noaP9Z9Ta2Y",
+    "fit": "exact",
+    "what": "Mushroom risotto topped with garlic chips and arugula",
+    "w": 1200,
+    "h": 818
+  },
+  "wrenfield-burger": {
+    "file": "/img/demo-mise/wrenfield-burger.jpg",
+    "credit": "Kimia Zarifi · Unsplash (stand-in)",
+    "unsplashId": "9V2YVX_Cojg",
+    "fit": "exact",
+    "what": "Cheeseburger with lettuce and tomato, fries and dip on a tray",
+    "w": 1200,
+    "h": 800
+  },
+  "chocolate-pot-de-creme": {
+    "file": "/img/demo-mise/chocolate-pot-de-creme.jpg",
+    "credit": "American Heritage Chocolate · Unsplash (stand-in)",
+    "unsplashId": "YxjIO0LmDO0",
+    "fit": "exact",
+    "what": "Chocolate custard in white ramekins with whipped cream and raspberries",
+    "w": 1200,
+    "h": 1799
+  },
+  "wrens-nest": {
+    "file": "/img/demo-mise/wrens-nest.jpg",
+    "credit": "Taylor Friehl · Unsplash (stand-in)",
+    "unsplashId": "UCpyfr7dWzY",
+    "fit": "exact",
+    "what": "Pale cocktail in a stemmed coupe with a cucumber garnish",
+    "w": 1200,
+    "h": 1599
+  },
+  "smoke-signal": {
+    "file": "/img/demo-mise/smoke-signal.jpg",
+    "credit": "Sara Cervera · Unsplash (stand-in)",
+    "unsplashId": "F7HkGy4U0fo",
+    "fit": "exact",
+    "what": "Pink grapefruit cocktail on the rocks with salt rim, grapefruit wheel and rosemary",
+    "w": 1200,
+    "h": 1524
+  },
+  "orchard-sour": {
+    "file": "/img/demo-mise/orchard-sour.jpg",
+    "credit": "Ambitious Studio* | Rick Barrett · Unsplash (stand-in)",
+    "unsplashId": "0DgZCy1hi5o",
+    "fit": "exact",
+    "what": "Frothy pale-amber sour in a coupe on a marble table",
+    "w": 1200,
+    "h": 800
+  },
+  "honey-rye-highball": {
+    "file": "/img/demo-mise/honey-rye-highball.jpg",
+    "credit": "Andrea Huls Pareja · Unsplash (stand-in)",
+    "unsplashId": "-TK1UmEUYDE",
+    "fit": "close",
+    "what": "Pale amber highball poured over ice in a tall tumbler (ginger beer cocktail)",
+    "w": 1200,
+    "h": 800
+  },
+  "black-walnut-manhattan": {
+    "file": "/img/demo-mise/black-walnut-manhattan.jpg",
+    "credit": "Drew Beamer · Unsplash (stand-in)",
+    "unsplashId": "KOrhUJUVIyI",
+    "fit": "exact",
+    "what": "Dark red-brown Manhattan in a stemmed glass with a cherry, bar behind",
+    "w": 1200,
+    "h": 800
+  },
+  "hibiscus-daiquiri": {
+    "file": "/img/demo-mise/hibiscus-daiquiri.jpg",
+    "credit": "Daniel · Unsplash (stand-in)",
+    "unsplashId": "PukJAYiQHc4",
+    "fit": "exact",
+    "what": "Deep pink cocktail in a coupe on a wooden bar",
+    "w": 1200,
+    "h": 1800
+  },
+  "rosemary-lemon-spritz": {
+    "file": "/img/demo-mise/rosemary-lemon-spritz.jpg",
+    "credit": "Wafer WAN · Unsplash (stand-in)",
+    "unsplashId": "8JUiGoAnpp8",
+    "fit": "exact",
+    "what": "Lemon spritz over ice in a tall glass with a rosemary sprig",
+    "w": 1200,
+    "h": 1800
+  },
+  "ginger-shrub-soda": {
+    "file": "/img/demo-mise/ginger-shrub-soda.jpg",
+    "credit": "Snapium Photography · Unsplash (stand-in)",
+    "unsplashId": "gHYOL97H5NM",
+    "fit": "close",
+    "what": "Lemon-ginger soda with mint over ice in a rocks glass, ginger root beside (not a collins)",
+    "w": 1200,
+    "h": 1599
+  },
+  "dining-room": {
+    "file": "/img/demo-mise/dining-room.jpg",
+    "credit": "Valeriia Ruban · Unsplash (stand-in)",
+    "unsplashId": "bWap8Ce24ak",
+    "fit": "exact",
+    "what": "Empty modern dining room with wooden tables and warm pendant lights",
+    "w": 1200,
+    "h": 800
+  },
+  "bar-counter": {
+    "file": "/img/demo-mise/bar-counter.jpg",
+    "credit": "Ashley Byrd · Unsplash (stand-in)",
+    "unsplashId": "fWBcjhd47H8",
+    "fit": "exact",
+    "what": "Bar counter with stools and backlit bottle shelves (labels not readable)",
+    "w": 1200,
+    "h": 800
+  },
+  "chef-plating": {
+    "file": "/img/demo-mise/chef-plating.jpg",
+    "credit": "Sebastian Coman Photography · Unsplash (stand-in)",
+    "unsplashId": "cQbOSRpElxw",
+    "fit": "exact",
+    "what": "Tattooed chef's hands plating with tweezers, face out of frame",
+    "w": 1200,
+    "h": 800
+  },
+  "table-service": {
+    "file": "/img/demo-mise/table-service.jpg",
+    "credit": "Stefan Schauberger · Unsplash (stand-in)",
+    "unsplashId": "djfmhCXyxV8",
+    "fit": "exact",
+    "what": "Hands pouring white wine into a glass, face out of frame",
+    "w": 1200,
+    "h": 800
+  },
+  "kitchen-line": {
+    "file": "/img/demo-mise/kitchen-line.jpg",
+    "credit": "Rohan G · Unsplash (stand-in)",
+    "unsplashId": "-mwNJswDlXE",
+    "fit": "exact",
+    "what": "Open kitchen pass under heat lamps with a cook at work in the background",
+    "w": 1200,
+    "h": 857
+  },
+  "herbs-prep": {
+    "file": "/img/demo-mise/herbs-prep.jpg",
+    "credit": "Kevin Doran · Unsplash (stand-in)",
+    "unsplashId": "OtdNWHGRvfI",
+    "fit": "exact",
+    "what": "Fresh herbs, chef's knife and prepped bowls on a wooden board",
+    "w": 1200,
+    "h": 800
+  },
+  "smoked-salmon-toast": {
+    "file": "/img/demo-mise/smoked-salmon-toast.jpg",
+    "credit": "George Dagerotip · Unsplash (stand-in)",
+    "unsplashId": "Y9t1GL6xTwQ",
+    "fit": "exact",
+    "what": "Smoked salmon over a creamy spread on toasted bread",
+    "w": 1200,
+    "h": 1800
+  },
+  "grilled-pound-cake": {
+    "file": "/img/demo-mise/grilled-pound-cake.jpg",
+    "credit": "sheri silver · Unsplash (stand-in)",
+    "unsplashId": "v0ylyNo7IW0",
+    "fit": "exact",
+    "what": "Grilled pound cake slices with whipped cream and berries",
+    "w": 1200,
+    "h": 855
+  },
+  "apple-celery-root-salad": {
+    "file": "/img/demo-mise/apple-celery-root-salad.jpg",
+    "credit": "Vinn Koonyosying · Unsplash (stand-in)",
+    "unsplashId": "7CahmNYdTmg",
+    "fit": "exact",
+    "what": "Julienned apple salad with greens in a wooden bowl (no visible fennel)",
+    "w": 1200,
+    "h": 1800
+  }
+}

@@ -35,7 +35,7 @@ export function uploadFile(file: File, onProgress?: (pct: number) => void): Prom
 export type MediaItem = { id: number; kind: 'file' | 'youtube'; title: string; url: string | null; mime: string | null; size: number | null; youtubeId: string | null; createdAt: string };
 export type Video = { kind: 'youtube'; youtubeId: string; title?: string } | { kind: 'file'; url: string; mime?: string; title?: string };
 export type Role = 'superadmin' | 'owner' | 'manager' | 'staff';
-export type User = { demo?: boolean;
+export type User = { demo?: boolean; brand?: 'baldwin' | 'mise';
   id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null;
   totpOn: boolean; superPrimary: boolean; impersonatedBy: number | null; workingIn?: number; workingInName?: string | null;
   storeId: number | null; store?: Store | null; canSwitchStore?: boolean; stores?: Store[];

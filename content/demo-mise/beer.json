@@ -1,0 +1,178 @@
+[
+ {
+  "key": "demo-mise/beer/Pilsner Urquell",
+  "slug": "beer-list/pilsner-urquell",
+  "sort": 0,
+  "data": {
+   "name": "Pilsner Urquell",
+   "serve": "Draft",
+   "style": "Pilsner",
+   "tap": "1",
+   "abv": "4.4%",
+   "glass": "Pilsner glass",
+   "pour": "16 oz",
+   "price": "8",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo-mise/beer/Allagash White",
+  "slug": "beer-list/allagash-white",
+  "sort": 1,
+  "data": {
+   "name": "Allagash White",
+   "serve": "Draft",
+   "style": "Wheat Beer",
+   "tap": "2",
+   "abv": "5.2%",
+   "glass": "Tulip",
+   "pour": "14 oz",
+   "price": "8",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo-mise/beer/Bell’s Two Hearted",
+  "slug": "beer-list/bells-two-hearted",
+  "sort": 2,
+  "data": {
+   "name": "Bell’s Two Hearted",
+   "serve": "Draft",
+   "style": "IPA",
+   "tap": "3",
+   "abv": "7.0%",
+   "glass": "Nonic pint",
+   "pour": "16 oz",
+   "price": "8",
+   "michigan": true
+  }
+ },
+ {
+  "key": "demo-mise/beer/Sierra Nevada Pale Ale",
+  "slug": "beer-list/sierra-nevada-pale-ale",
+  "sort": 3,
+  "data": {
+   "name": "Sierra Nevada Pale Ale",
+   "serve": "Draft",
+   "style": "Pale Ale",
+   "tap": "4",
+   "abv": "5.6%",
+   "glass": "Nonic pint",
+   "pour": "16 oz",
+   "price": "7",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo-mise/beer/Founders All Day IPA",
+  "slug": "beer-list/founders-all-day-ipa",
+  "sort": 4,
+  "data": {
+   "name": "Founders All Day IPA",
+   "serve": "Draft",
+   "style": "Session IPA",
+   "tap": "5",
+   "abv": "4.7%",
+   "glass": "Nonic pint",
+   "pour": "16 oz",
+   "price": "7",
+   "michigan": true
+  }
+ },
+ {
+  "key": "demo-mise/beer/Guinness Draught",
+  "slug": "beer-list/guinness-draught",
+  "sort": 5,
+  "data": {
+   "name": "Guinness Draught",
+   "serve": "Draft",
+   "style": "Stout",
+   "tap": "6",
+   "abv": "4.2%",
+   "glass": "Tulip pint",
+   "pour": "20 oz",
+   "price": "9",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo-mise/beer/Duvel",
+  "slug": "beer-list/duvel",
+  "sort": 6,
+  "data": {
+   "name": "Duvel",
+   "serve": "Bottle",
+   "style": "Belgian Ale",
+   "tap": "",
+   "abv": "8.5%",
+   "glass": "",
+   "pour": "",
+   "price": "11",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo-mise/beer/Rodenbach Grand Cru",
+  "slug": "beer-list/rodenbach-grand-cru",
+  "sort": 7,
+  "data": {
+   "name": "Rodenbach Grand Cru",
+   "serve": "Bottle",
+   "style": "Sour",
+   "tap": "",
+   "abv": "6.0%",
+   "glass": "",
+   "pour": "",
+   "price": "12",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo-mise/beer/Deschutes Black Butte Porter",
+  "slug": "beer-list/deschutes-black-butte-porter",
+  "sort": 8,
+  "data": {
+   "name": "Deschutes Black Butte Porter",
+   "serve": "Bottle",
+   "style": "Porter",
+   "tap": "",
+   "abv": "5.2%",
+   "glass": "",
+   "pour": "",
+   "price": "7",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo-mise/beer/Miller High Life",
+  "slug": "beer-list/miller-high-life",
+  "sort": 9,
+  "data": {
+   "name": "Miller High Life",
+   "serve": "Bottle",
+   "style": "Light Lager",
+   "tap": "",
+   "abv": "4.6%",
+   "glass": "",
+   "pour": "",
+   "price": "5",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo-mise/beer/Athletic Run Wild IPA",
+  "slug": "beer-list/athletic-run-wild-ipa",
+  "sort": 10,
+  "data": {
+   "name": "Athletic Run Wild IPA",
+   "serve": "Bottle",
+   "style": "Non-alcoholic",
+   "tap": "",
+   "abv": "0.5%",
+   "glass": "",
+   "pour": "",
+   "price": "6",
+   "michigan": false
+  }
+ }
+]
