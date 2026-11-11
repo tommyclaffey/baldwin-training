@@ -11,6 +11,12 @@
 //   • The server decides everything here: who's in a room is worked out from the store's people and their jobs on every
 //     request, and anyone outside a room gets "not found", never its messages. Nothing is hard-deleted: a removed message
 //     shows "Message removed".
+//   • Send to Team (Nov 11, Tommy: "make the chat similar to growth where you can select an item to populate in the chat"):
+//     a page from the book (dish, cocktail, wine, bottle, lesson…) as a card with its kind ("House cocktail"), or, for
+//     managers, a person's progress card. Person cards go only into a direct message with another manager (there's no
+//     managers-only channel: Kitchen is managers-only today only because nobody has a kitchen job yet), and only managers
+//     ever see one.
+//   • @mentions, Growth's way: only the conversation's members; stored as <@id> in the body and a list of ids, never names.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -18,6 +24,7 @@ import { MEDIA_DIR, now } from './db.mjs';
 import { JOBS } from './paths.mjs';
 import { fullIndex, withStore } from './content.mjs';
 import { COLLECTIONS } from './cms.mjs';
+import { pathCtxFor, personRow } from './team.mjs';
 
 export const REACTIONS = ['👍', '❤️', '🔥', '✅', '😂', '🙏'];
 const FOH_JOBS = ['server', 'host', 'bartender', 'support'];
@@ -107,6 +114,20 @@ function unreadByRoom(x) {
     WHERE m.store_id = ? AND m.user_id <> ? AND m.removed_at IS NULL AND m.id > r.last_read GROUP BY m.room_id`).all(x.me.id, x.store, x.me.id);
   return new Map(rows.map((r) => [r.room_id, r.n]));
 }
+/** Unread messages that @mention you, per room (they're in the unread count too; the list marks them with an @). */
+function mentionsByRoom(x) {
+  const rows = x.db.prepare(`SELECT m.room_id, COUNT(*) n FROM chat_messages m JOIN chat_reads r ON r.room_id = m.room_id AND r.user_id = ?
+    WHERE m.store_id = ? AND m.user_id <> ? AND m.removed_at IS NULL AND m.id > r.last_read AND m.mentions IS NOT NULL
+    AND EXISTS (SELECT 1 FROM json_each(m.mentions) j WHERE j.value = ?) GROUP BY m.room_id`).all(x.me.id, x.store, x.me.id, x.me.id);
+  return new Map(rows.map((r) => [r.room_id, r.n]));
+}
+
+/* ---------------------------------- @mentions ---------------------------------- */
+const MENTION_RE = /<@(\d+)>/g;
+/** The ids a body mentions, each once, in order. */
+export const mentionIds = (body) => [...new Set([...String(body || '').matchAll(MENTION_RE)].map((m) => Number(m[1])))];
+/** <@12> → "@Rosalind Hart", for previews, reply quotes and search results. */
+const plainBody = (body, who) => String(body || '').replace(MENTION_RE, (_, id) => '@' + who(Number(id)).name);
 
 /** The number beside Team Chat in the sidebar. */
 export function unreadTotal(x) {
@@ -116,18 +137,22 @@ export function unreadTotal(x) {
   return rooms.reduce((n, r) => n + (by.get(r.id) || 0), 0);
 }
 
-const preview = (m) => (m.removed_at ? 'Message removed' : m.body ? m.body.split('\n')[0] : m.photo ? 'Sent a photo' : m.page ? `Shared a page: ${JSON.parse(m.page).title}` : '');
+/** One line for the list, a reply quote or a search hit. A progress card names its person only to managers. */
+const preview = (m, who, me) => (m.removed_at ? 'Message removed' : m.body ? plainBody(m.body, who).split('\n')[0] : m.photo ? 'Sent a photo'
+  : m.page ? `Shared a page: ${JSON.parse(m.page).title}` : m.person ? (me?.manager ? `Shared a progress card: ${JSON.parse(m.person).name}` : 'Shared a progress card') : '');
 
 /** The conversation list: channels first (in their set order), then DMs, newest first. Plus the store's people, for New Message. */
 export function roomList(x) {
   const rooms = myRooms(x);
   ensureReads(x, rooms);
   const unread = unreadByRoom(x);
+  const mentioned = mentionsByRoom(x);
   const last = new Map(x.db.prepare(`SELECT * FROM chat_messages WHERE id IN (SELECT MAX(id) FROM chat_messages WHERE store_id = ? GROUP BY room_id)`).all(x.store).map((m) => [m.room_id, m]));
+  const who = nameBook(x, [...last.values()].flatMap((m) => mentionIds(m.body)));
   const out = rooms.map((r) => {
     const l = last.get(r.id);
-    const base = { id: r.id, key: clientKey(r, x.me), kind: r.kind, unread: Math.min(unread.get(r.id) || 0, 99),
-      last: l ? { at: l.created_at, text: preview(l), mine: l.user_id === x.me.id } : null };
+    const base = { id: r.id, key: clientKey(r, x.me), kind: r.kind, unread: Math.min(unread.get(r.id) || 0, 99), mentions: mentioned.get(r.id) || 0,
+      last: l ? { at: l.created_at, text: preview(l, who, x.me), mine: l.user_id === x.me.id } : null };
     if (r.kind === 'dm') {
       const other = x.members.find((m) => m.id === dmIds(r.key).find((id) => id !== x.me.id));
       return { ...base, name: other.name, other: { id: other.id, name: other.name, initials: other.initials, label: other.label, manager: other.manager } };
@@ -207,8 +232,12 @@ function msgOut(x, m, who, reactions, quotes) {
   const base = { id: m.id, at: m.created_at, user: { id: p.id, name: p.name, initials: p.initials, label: p.label, manager: p.manager }, mine: m.user_id === x.me.id };
   if (m.removed_at) return { ...base, removed: true, reactions: [] };
   const q = m.reply_to ? quotes.get(m.reply_to) : null;
+  const ids = m.mentions ? JSON.parse(m.mentions) : [];
   return { ...base, body: m.body || '', photo: m.photo || null, page: m.page ? JSON.parse(m.page) : null,
-    replyTo: q ? { id: q.id, name: who(q.user_id).name, text: q.removed_at ? 'Message removed' : preview(q) } : null,
+    // A progress card is for managers: anyone else (say, someone demoted since) sees that one was shared, not who or how they're doing.
+    person: m.person && x.me.manager ? JSON.parse(m.person) : null, personHidden: !!m.person && !x.me.manager,
+    mentions: ids.map((id) => ({ id, name: who(id).name })), mentionsMe: ids.includes(x.me.id),
+    replyTo: q ? { id: q.id, name: who(q.user_id).name, text: q.removed_at ? 'Message removed' : preview(q, who, x.me) } : null,
     reactions: reactions.get(m.id) || [], canRemove: m.user_id === x.me.id || x.me.manager };
 }
 
@@ -223,7 +252,8 @@ export function roomDetail(x, room, { before } = {}) {
   const pinnedRows = db.prepare('SELECT * FROM chat_messages WHERE room_id = ? AND pinned_at IS NOT NULL AND removed_at IS NULL ORDER BY pinned_at DESC').all(room.id);
   const replyIds = [...new Set(list.map((m) => m.reply_to).filter(Boolean))];
   const quotes = new Map(replyIds.length ? db.prepare(`SELECT * FROM chat_messages WHERE room_id = ? AND id IN (${replyIds.map(() => '?').join(',')})`).all(room.id, ...replyIds).map((q) => [q.id, q]) : []);
-  const who = nameBook(x, [...list, ...pinnedRows, ...quotes.values()].map((m) => m.user_id));
+  const shown = [...list, ...pinnedRows, ...quotes.values()];
+  const who = nameBook(x, [...shown.map((m) => m.user_id), ...shown.flatMap((m) => mentionIds(m.body))]);
   const reactions = reactionsFor(x, [...list, ...pinnedRows].map((m) => m.id));
   const messages = list.map((m) => msgOut(x, m, who, reactions, quotes));
 
@@ -270,6 +300,7 @@ export function roomDetail(x, room, { before } = {}) {
       other: other && { id: other.id, name: other.name, initials: other.initials, label: other.label, manager: other.manager },
       members: members.map((m) => ({ id: m.id, name: m.name, initials: m.initials, label: m.label, manager: m.manager })),
       canStart: room.kind !== 'everyone' || x.me.manager, canPin: x.me.manager && room.kind !== 'dm', lastId, read,
+      canSendPerson: canSendPerson(x, room, members),
     },
     messages, hasMore, pins, shared, seen, reactions: REACTIONS,
   };
@@ -291,6 +322,30 @@ function kickerFor(e) {
   const where = col?.label || (e.name.split(' · ').length > 1 ? e.name.split(' · ')[0] : e.nav) || 'Page';
   return `The Book · ${where}`;
 }
+const WINE_STYLES = new Set(['red', 'white', 'rose', 'orange', 'sparkling']);
+/** What a page is, in a word or two, for its card: "House cocktail", "Grape", "Lesson". Null for hubs and the like. */
+export function kindFor(e) {
+  if (/^[lm]/.test(String(e.file || ''))) return 'Lesson';
+  if (/^Step \d/.test(e.section)) return 'Steps of service';
+  const parts = String(e.slug).split('/');
+  switch (e.section) {
+    case 'Recipe': return 'Dish';
+    case 'Signature': return 'House cocktail';
+    case 'Classic': return 'Classic cocktail';
+    case 'Wine list': return /by-the-glass/.test(e.slug) ? 'Wine by the glass' : 'Wine by the bottle';
+    case 'Back bar': return 'Back bar';
+    case 'Bottle': return 'Bottle';
+    case 'Spirit': return 'Spirit';
+    case 'Beer': return 'Beer';
+    case 'Bar Basics': return 'Bar basics';
+    case 'Wine Service': return 'Wine service';
+    case 'Wine':
+      if (parts.length <= 2) return WINE_STYLES.has(parts[1]) ? 'Wine style' : 'Wine country';
+      return WINE_STYLES.has(parts[1]) ? (parts[1] === 'red' || parts[1] === 'white' ? 'Grape' : 'Wine style') : 'Wine region';
+    default: return null;
+  }
+}
+
 /** A page from this store's book, as a card. Null if the store's book doesn't have it. */
 export function pageCard(db, storeRow, slug, user = null) {
   const s = String(slug || '').replace(/^\//, '');
@@ -303,7 +358,27 @@ export function pageCard(db, storeRow, slug, user = null) {
     try { const d = JSON.parse(db.prepare('SELECT data FROM entries WHERE id = ?').get(Number(String(e.id).slice(1)))?.data || '{}'); extra = d.tasteLine || d.sellingLine || d.story || ''; } catch { /* no line */ }
   }
   const line = String(e.blurb || extra).replace(/\s+/g, ' ').trim();
-  return { slug: e.slug, title: e.title, kicker: kickerFor(e), thumb: e.thumb || null, line: line.length > 90 ? line.slice(0, 88).replace(/\s+\S*$/, '') + '…' : line };
+  return { slug: e.slug, title: e.title, kicker: kickerFor(e), kind: kindFor(e), thumb: e.thumb || null, line: line.length > 90 ? line.slice(0, 88).replace(/\s+\S*$/, '') + '…' : line };
+}
+
+/** Person cards go from a manager into a direct message with another manager, and nowhere else. */
+export function canSendPerson(x, room, members = membersOf(room, x.members)) {
+  if (!x.me.manager || room.kind !== 'dm') return false;
+  const other = members.find((m) => m.id !== x.me.id);
+  return !!other?.manager;
+}
+
+/** A manager's snapshot of how someone on this store's team is doing: job, progress, status and what's next. */
+export function personCard(x, id) {
+  if (!x.me.manager) fail(403, 'Only managers can share someone’s progress.');
+  const u = x.db.prepare("SELECT * FROM users WHERE id = ? AND company_id = ? AND store_id = ? AND role = 'staff' AND deleted_at IS NULL").get(Number(id), x.company, x.store);
+  if (!u) fail(404, 'That person isn’t on this store’s team.');
+  return personSnapshot(x.db, x.storeRow, u, x.user);
+}
+function personSnapshot(db, storeRow, u, viewer = null) {
+  const { row } = personRow(db, storeRow.id, u, pathCtxFor(db, storeRow, viewer));
+  return { id: row.id, name: row.name, initials: row.initials, job: row.jobLabel || '', done: row.done, total: row.total, late: row.late,
+    status: row.status, week: row.week, weeks: row.weeks, startedOn: row.startedOn, next: row.next, at: now() };
 }
 
 const PHOTO_RE = /^\/media\/chat-[a-z0-9]+-[a-f0-9]{18}\.jpg$/;
@@ -320,17 +395,29 @@ export function postMessage(x, room, b) {
     page = pageCard(db, x.storeRow, b.page, x.user);
     if (!page) fail(400, 'That page isn’t in the book.');
   }
+  let person = null;
+  if (b.person) {
+    if (!x.me.manager) fail(403, 'Only managers can share someone’s progress.');
+    if (!canSendPerson(x, room)) fail(403, 'Progress cards go only to another manager, in a direct message.');
+    person = personCard(x, b.person);
+  }
+  if (page && person) fail(400, 'Send one card at a time.');
+  // @mentions: <@id> for people in this conversation only.
+  const members = membersOf(room, x.members);
+  const mentions = mentionIds(body);
+  if (mentions.some((id) => !members.some((m) => m.id === id))) fail(400, 'You can only mention people in this conversation.');
   if (b.replyTo) {
     const q = db.prepare('SELECT * FROM chat_messages WHERE id = ? AND room_id = ?').get(Number(b.replyTo), room.id);
     if (!q || q.removed_at) fail(400, 'That message isn’t there anymore.');
     replyTo = q.id;
   }
-  if (!body && !photo && !page) fail(400, 'Write a message first.');
+  if (!body && !photo && !page && !person) fail(400, 'Write a message first.');
   if (room.kind === 'everyone' && !x.me.manager && !replyTo) fail(403, 'Managers start posts in Everyone. Reply to a post to join in.');
   rateLimit(x.me.id);
   const t = now();
-  const id = Number(db.prepare('INSERT INTO chat_messages(room_id, company_id, store_id, user_id, body, photo, page, reply_to, created_at) VALUES (?,?,?,?,?,?,?,?,?)')
-    .run(room.id, x.company, x.store, x.me.id, body || null, photo, page ? JSON.stringify(page) : null, replyTo, t).lastInsertRowid);
+  const id = Number(db.prepare('INSERT INTO chat_messages(room_id, company_id, store_id, user_id, body, photo, page, person, mentions, reply_to, created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)')
+    .run(room.id, x.company, x.store, x.me.id, body || null, photo, page ? JSON.stringify(page) : null, person ? JSON.stringify(person) : null,
+      mentions.length ? JSON.stringify(mentions) : null, replyTo, t).lastInsertRowid);
   markRead(x, room, id, { quiet: true });
   bump(db, room.id);
   return id;
@@ -402,12 +489,12 @@ export function search(x, q) {
   const like = '%' + term.replace(/[\\%_]/g, (c) => '\\' + c) + '%';
   const rows = x.db.prepare(`SELECT * FROM chat_messages WHERE store_id = ? AND removed_at IS NULL AND room_id IN (${rooms.map(() => '?').join(',')})
     AND (body LIKE ? ESCAPE '\\' OR page LIKE ? ESCAPE '\\') ORDER BY id DESC LIMIT 20`).all(x.store, ...rooms.map((r) => r.id), like, like);
-  const who = nameBook(x, rows.map((m) => m.user_id));
+  const who = nameBook(x, [...rows.map((m) => m.user_id), ...rows.flatMap((m) => mentionIds(m.body))]);
   return rows.map((m) => {
     const room = rooms.find((r) => r.id === m.room_id);
     const ch = CHANNELS.find((c) => c.key === room.key);
     const roomName = room.kind === 'dm' ? who(dmIds(room.key).find((id) => id !== x.me.id)).name : ch.name(x.storeName);
-    return { id: m.id, key: clientKey(room, x.me), kind: room.kind, roomName, name: who(m.user_id).name, text: preview(m), at: m.created_at, pinned: !!m.pinned_at };
+    return { id: m.id, key: clientKey(room, x.me), kind: room.kind, roomName, name: who(m.user_id).name, text: preview(m, who, x.me), at: m.created_at, pinned: !!m.pinned_at };
   });
 }
 
@@ -445,7 +532,8 @@ export function demoAnchor(at = new Date()) {
  * names its own people (by name, as they are in the store) and its own pages (by slug; a page the store doesn't have is
  * left off its message). "{store}" in a message becomes the store's name.
  *   script.channels: { everyone|foh|bar|kitchen: [message…] }    script.dms: [{ between: [name, name], messages: [message…] }]
- *   message: { ref?, by, at (minutes from the anchor), body?, photo?, page?, reply? (a ref), pin?, gotIt?: [names],
+ *   message: { ref?, by, at (minutes from the anchor), body? ("@[Name]" mentions them), photo?, page?, person? (a staff name:
+ *              their progress card, in a DM between managers only), reply? (a ref), pin?, gotIt?: [names],
  *              react?: { emoji: [names] }, unreadBy?: [names] }
  *   script.seen?: { roomKey: [names, oldest read first] } orders "seen by".
  */
@@ -459,8 +547,10 @@ export function seedChat(db, { company, storeRow, script, anchor = demoAnchor() 
   const refs = new Map();
   const cards = new Map();
   const card = (slug) => { if (!cards.has(slug)) cards.set(slug, pageCard(db, storeRow, slug)); return cards.get(slug); };
-  const insMsg = db.prepare(`INSERT INTO chat_messages(room_id, company_id, store_id, user_id, body, photo, page, reply_to, created_at, pinned_at, pinned_by, pin_title)
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`);
+  const insMsg = db.prepare(`INSERT INTO chat_messages(room_id, company_id, store_id, user_id, body, photo, page, person, mentions, reply_to, created_at, pinned_at, pinned_by, pin_title)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`);
+  // A person card in a script: a snapshot of a staff member's progress, by name (only between managers, as in the app).
+  const personFor = (name) => { const u = db.prepare("SELECT * FROM users WHERE company_id = ? AND store_id = ? AND role = 'staff' AND name = ? AND deleted_at IS NULL").get(company, store, name); return u ? personSnapshot(db, storeRow, u) : null; };
   const insReact = db.prepare('INSERT OR IGNORE INTO chat_reactions(message_id, user_id, emoji, company_id, store_id, at) VALUES (?,?,?,?,?,?)');
   const insGot = db.prepare('INSERT OR IGNORE INTO chat_gotit(message_id, user_id, company_id, store_id, at) VALUES (?,?,?,?,?)');
   const insRead = db.prepare('INSERT OR REPLACE INTO chat_reads(room_id, user_id, company_id, store_id, last_read, at) VALUES (?,?,?,?,?,?)');
@@ -471,9 +561,13 @@ export function seedChat(db, { company, storeRow, script, anchor = demoAnchor() 
       const by = id(s.by);
       if (!by) continue;
       const pg = s.page ? card(s.page) : null;
-      const body = s.body ? s.body.replaceAll('{store}', storeRow.name) : null;
+      // "@[Marisol Vega]" in a script is a mention: <@her id> in the body (left as plain text if she isn't in the room).
+      const inRoom = membersOf(room, members);
+      const body = s.body ? s.body.replaceAll('{store}', storeRow.name).replace(/@\[([^\]]+)\]/g, (_, n) => { const m = inRoom.find((z) => z.name === n); return m ? `<@${m.id}>` : '@' + n; }) : null;
       if (!body && !s.photo && !pg) continue;
-      const mid = Number(insMsg.run(room.id, company, store, by, body, s.photo || null, pg ? JSON.stringify(pg) : null, s.reply ? refs.get(s.reply) ?? null : null, at(s.at),
+      const ments = mentionIds(body);
+      const pc = s.person && room.kind === 'dm' && membersOf(room, members).every((m) => m.manager) ? personFor(s.person) : null;
+      const mid = Number(insMsg.run(room.id, company, store, by, body, s.photo || null, pg ? JSON.stringify(pg) : null, pc ? JSON.stringify(pc) : null, ments.length ? JSON.stringify(ments) : null, s.reply ? refs.get(s.reply) ?? null : null, at(s.at),
         s.pin ? at(s.at) : null, s.pin ? by : null, s.pin ? `${weekday(at(s.at))} pre-shift` : null).lastInsertRowid);
       if (s.ref) refs.set(s.ref, mid);
       for (const [emoji, names] of Object.entries(s.react || {})) names.forEach((n, i) => id(n) && insReact.run(mid, id(n), emoji, company, store, at(s.at + 1 + i)));
@@ -508,6 +602,7 @@ export function seedChat(db, { company, storeRow, script, anchor = demoAnchor() 
 /** The Baldwin demo's chat (Figma 580:670), told with the demo's own menu: its pork chop and Paloma Verde stand in for the
  *  design's short rib and Paloma, so every card opens a page the demo really has. Times are minutes from 3:30 pm. */
 const R = 'Rosalind Hart', DP = 'Dorian Pike', QA = 'Quinn Abbott', TL = 'Teddy Lam', MV = 'Marisol Vega', HG = 'Hollis Grant', OR = 'Odalys Ruiz', WC = 'Wynn Carver';
+const GA = 'Gideon Ambrose'; // The Baldwin's owner (Nov 11): a second manager, so a progress card has somewhere to go
 export const BALDWIN_DEMO_CHAT = {
   channels: {
     everyone: [
@@ -526,11 +621,12 @@ export const BALDWIN_DEMO_CHAT = {
         react: { '🔥': [R, DP, QA, TL, OR], '👍': [HG, MV, WC] } },
       { by: DP, at: 11, body: 'Paloma Verde spec changed today. Check the build before you make your first one. The page is updated.', page: 'signature/paloma-verde', react: { '✅': [QA, TL, MV, OR] } },
       { by: TL, at: 22, body: 'Can anyone take my Friday close? Family thing. I can pick up Sunday brunch for you.' },
+      { by: R, at: 23, body: '@[Marisol Vega] you asked for more hours this week. Want Teddy’s Friday close?' },
       { by: MV, at: 25, body: 'I’ve got Friday, Teddy.' },
     ],
     bar: [
       { by: R, at: -50, body: 'Bar inventory is Sunday at 10. Dorian and Quinn, plan on an hour.' },
-      { by: QA, at: 6, body: 'We’re low on grapefruit soda for the Paloma Verde. Using the backup case from dry storage.', unreadBy: [R] },
+      { by: QA, at: 6, body: '@[Rosalind Hart] we’re low on grapefruit soda for the Paloma Verde. Using the backup case from dry storage.', unreadBy: [R] },
       { by: DP, at: 14, body: 'Juice is batched: lime and lemon, two quarts each.', unreadBy: [R] },
       { by: QA, at: 20, body: 'Espresso for the Espresso Negroni is pulled fresh. Good until close.', page: 'signature/espresso-negroni', unreadBy: [R] },
     ],
@@ -555,6 +651,11 @@ export const BALDWIN_DEMO_CHAT = {
     ] },
     { between: [MV, TL], messages: [
       { by: TL, at: 26, body: 'Thanks for taking Friday. I owe you one.', unreadBy: [MV] },
+    ] },
+    { between: [GA, R], messages: [
+      { by: GA, at: -24 * 60 - 150, body: 'How’s Hollis doing on the host path?' },
+      { by: R, at: -24 * 60 - 140, body: 'Behind on the host quiz. I gave him until Friday.', person: HG },
+      { by: GA, at: -24 * 60 - 130, body: 'Thanks. Let me know if he needs a shift shadowing Odalys.' },
     ] },
     { between: [R, MV], messages: [
       { by: R, at: -24 * 60 - 90, body: 'Nice work on the Level 1 final. Level 2 whenever you’re ready.' },

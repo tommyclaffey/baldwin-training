@@ -447,6 +447,13 @@ async function api(req, res, url) {
     try {
       if (p === '/api/chat' && m === 'GET') return sendJson(res, 200, chat.roomList(x));
       if (p === '/api/chat/search' && m === 'GET') return sendJson(res, 200, { results: chat.search(x, url.searchParams.get('q')) });
+      // Send to Team: the card a page (anyone) or a person (managers, this store's staff) makes, before it's sent.
+      if (p === '/api/chat/card' && m === 'GET') {
+        if (url.searchParams.get('person')) return sendJson(res, 200, { type: 'person', card: chat.personCard(x, url.searchParams.get('person')) });
+        const card = chat.pageCard(db, x.storeRow, url.searchParams.get('page'), x.user);
+        if (!card) fail(404, 'That page isn’t in the book.');
+        return sendJson(res, 200, { type: 'page', card });
+      }
       // A photo for a message. Uploads are off in the demo (demoBlocks).
       if (p === '/api/chat/photo' && m === 'POST') {
         const mime = String(req.headers['content-type'] || '').split(';')[0].trim();

@@ -17,12 +17,13 @@ import { MyPathPage, PathReadBar } from './path/MyPath';
 import { CertificatePage } from './path/Certificate';
 import { TeamChatPage } from './chat/TeamChat';
 import { hasChat, useChatUnread } from './chat/unread';
+import { ChatPanelHost } from './chat/ChatPanel';
 
 export default function App() {
   const { pathname } = useLocation();
-  if (pathname === '/admin' || pathname.startsWith('/admin/')) return <Routes><Route path="/admin/*" element={<AdminApp />} /></Routes>;
+  if (pathname === '/admin' || pathname.startsWith('/admin/')) return <><Routes><Route path="/admin/*" element={<AdminApp />} /></Routes><ChatPanelHost /></>;
   if (pathname === '/demo') return <DemoPicker />;
-  return <Book />;
+  return <><Book /><ChatPanelHost /></>;
 }
 
 function Book() {

@@ -9,6 +9,8 @@ import { SearchBox } from '../components/SearchBox';
 import { useCollections } from './cms';
 import { ErrorNote, Loading, Text } from './ui';
 import { dayLabel, type Job, type MyPath, type Stage, type Step } from '../path/store';
+import { SendToTeamButton } from '../chat/SendToTeam';
+import { hasChat } from '../chat/unread';
 
 /* ---------- data ---------- */
 type Status = 'behind' | 'new' | 'on-track' | 'done' | 'no-job';
@@ -62,7 +64,7 @@ function whenWords(at: string) {
 }
 const shortDay = (iso: string) => dayLabel(iso, { weekday: 'short', month: 'short', day: 'numeric' });
 const KIND: Record<Step['kind'], string> = { quiz: 'Quiz', read: 'Read', lesson: 'Lesson', signoff: 'Sign-off' };
-const STATUS: Record<Status, string> = { behind: 'Behind', new: 'New', 'on-track': 'On track', done: 'Done', 'no-job': 'No job yet' };
+export const STATUS: Record<Status, string> = { behind: 'Behind', new: 'New', 'on-track': 'On track', done: 'Done', 'no-job': 'No job yet' };
 const nextLine = (n: Next) => {
   if (!n) return 'Every step is done';
   if ('waiting' in n) return 'Waiting on your sign-off';
@@ -444,6 +446,8 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
         </div>
         <div className="pp-head-btns">
           <button type="button" className="mg-btn dark" disabled={!!busy || !p.jobs.length} onClick={() => void act('remind', '/api/path/remind', {}, `Reminder sent. ${first} sees it on My Path next time they open the app.`)}>{busy === 'remind' ? 'Sending…' : 'Send a Reminder'}</button>
+          {/* Send to Team: their progress as a card, to another manager (managers only; server/chat.mjs). */}
+          {hasChat(user) && <SendToTeamButton item={{ type: 'person', id: p.id }} className="mg-btn" />}
           <div className="pp-more">
             <button type="button" className="mg-btn" aria-haspopup="menu" aria-expanded={moreOpen} onClick={() => setMoreOpen(!moreOpen)}>More</button>
             {moreOpen && (

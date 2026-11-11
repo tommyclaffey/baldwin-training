@@ -211,6 +211,14 @@ const MIGRATIONS = [
   CREATE TABLE chat_gotit(message_id INT NOT NULL, user_id INT NOT NULL, company_id INT NOT NULL, store_id INT NOT NULL, at TEXT,
     PRIMARY KEY(message_id, user_id));
   `,
+  // 17 (Nov 11, Tommy: "make the chat similar to growth where you can select an item to populate in the chat"):
+  //   mentions: the people a message @mentions, as a JSON list of user ids (the body holds them as <@id>, so a renamed
+  //     person's old mentions still read right).
+  //   person: a manager's progress card for someone on the team (JSON snapshot), only ever shown to managers.
+  `
+  ALTER TABLE chat_messages ADD COLUMN mentions TEXT;
+  ALTER TABLE chat_messages ADD COLUMN person TEXT;
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

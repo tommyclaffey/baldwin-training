@@ -15,6 +15,8 @@ import { api, canEdit } from '../lib/api';
 import { useSession } from '../lib/session';
 import { EditPageButton } from './EditSheet';
 import { COLLECTION_OF } from './EditBar';
+import { PageTools, SendToTeamButton, shareable } from '../chat/SendToTeam';
+import { hasChat } from '../chat/unread';
 
 type Empty = { kind: 'home' | 'page'; title: string; body: string; admin: string | null; store: string | null };
 type Page = { id: string; name: string; bg?: string; main: FNode; edited?: number; empty?: Empty };
@@ -237,10 +239,12 @@ export function PageView() {
           {loading && <div className="nav-progress" role="progressbar" aria-label="Loading page" />}
           <main ref={ref} key={shown.file} aria-busy={loading || undefined} className={'page page-enter' + (compact ? ' compact' : '')} style={{ backgroundColor: page.bg }}>
             <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
-            {entry.file.startsWith('e') && COLLECTION_OF[entry.section] && (
-              <div className="eip-edit-wrap" style={{ width: compact ? '100%' : DESIGN_W, zoom: zoom < 1 ? zoom : undefined }}>
-                <EditPageButton col={COLLECTION_OF[entry.section]} id={Number(entry.file.slice(1))} floating={compact} />
-              </div>
+            {/* Send to Team and Edit Page: one row, the same spot on every page (phones: floating together, bottom right). */}
+            {((hasChat(session.user) && shareable(entry)) || (entry.file.startsWith('e') && COLLECTION_OF[entry.section])) && (
+              <PageTools floating={compact} width={compact ? '100%' : DESIGN_W} zoom={zoom < 1 ? zoom : undefined}>
+                {hasChat(session.user) && shareable(entry) && <SendToTeamButton item={{ type: 'page', slug: entry.slug }} />}
+                {entry.file.startsWith('e') && COLLECTION_OF[entry.section] && <EditPageButton col={COLLECTION_OF[entry.section]} id={Number(entry.file.slice(1))} />}
+              </PageTools>
             )}
           </main>
           {isQuiz && <QuizModal />}

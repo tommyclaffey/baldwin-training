@@ -23,6 +23,7 @@ export const DEMO_ROLES = {
   employee: { role: 'staff', name: 'Marisol Vega' },
   manager: { role: 'manager', name: 'Rosalind Hart' },
 };
+export const DEMO_OWNER = 'Gideon Ambrose';
 // Nov 11 (manager home + People, Figma 523:276 / 532:274): seven on the team, each somewhere real on their path.
 //   started: days ago (negative = starts soon) · stages: stages fully done · partial: steps done in the next one
 //   fail: a quiz in that stage they tried and didn't pass yet · ask: a sign-off they asked for, minutes ago
@@ -139,6 +140,8 @@ export function startDemo(db, key) {
     // (she can't sign in; she's there so her pre-shift note and DMs are). seedChat takes any store and script, so another
     // demo can bring its own.
     if (pick.role === 'staff') addUser(DEMO_ROLES.manager.name, 'manager', null);
+    // The owner (Nov 11, Send to Team): a second manager in the store, so a manager's progress card has someone to go to.
+    addUser(DEMO_OWNER, 'owner', null);
     seedChat(db, { company: co, storeRow, script: BALDWIN_DEMO_CHAT });
     if (pick.role !== 'staff') for (const [action, name, days] of EDITS) db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id) VALUES (?,?,?,?,?)').run(me, action, name, new Date(Date.now() - days * 864e5).toISOString(), co);
     // Nov 10 (audit: "Videos and photos · 0" in the demo admin): a few videos already in the library

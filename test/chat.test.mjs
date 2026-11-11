@@ -1,5 +1,5 @@
 // Team Chat (Nov 11): who's in which room, what staff can and can't do, other stores kept out, Got It, unread counts,
-// "message removed", and the demo's conversation. Runs the real server on a temp database.
+// "message removed", Send to Team cards (pages; managers' person cards), @mentions, and the demo's conversation. Runs the real server on a temp database.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
@@ -174,6 +174,84 @@ test('pages and photos: a page must be in the book; photos must be ones the chat
   assert.equal((await ana('/api/chat/photo', { method: 'POST', raw: 'hello', headers: { 'Content-Type': 'text/plain' } })).status, 415);
 });
 
+test('Send to Team: a page card says what it is; the server checks the page is in this store’s book', async () => {
+  const c = await ana('/api/chat/card?page=classic/old-fashioned');
+  assert.equal(c.status, 200);
+  assert.equal(c.data.type, 'page');
+  assert.equal(c.data.card.kind, 'Classic cocktail');
+  assert.equal(c.data.card.title, 'Old Fashioned');
+  assert.equal((await ana('/api/chat/card?page=nope/not-a-page')).status, 404);
+  const sent = await say(ana, 'foh', { page: 'classic/old-fashioned' });
+  assert.equal(sent.status, 200, 'a card on its own, no words, is a message');
+  assert.equal(sent.data.messages.at(-1).page.kind, 'Classic cocktail');
+  assert.equal((await say(ana, 'foh', { page: 'classic/old-fashioned', person: ids['Ben Bar'] })).status, 403, 'staff never send a person card');
+  // another store's own page isn't in J.Baldwin's book: no card, no message
+  const mine = (await owner('/api/index')).data.find((e) => e.section === 'Recipe');
+  assert.ok(mine && !(await jo('/api/index')).data.some((e) => e.slug === mine.slug), 'The Baldwin has a dish J.Baldwin’s doesn’t');
+  assert.equal((await jo('/api/chat/card?page=' + encodeURIComponent(mine.slug))).status, 404);
+  assert.equal((await say(jo, 'foh', { page: mine.slug })).status, 400);
+  // and the panel's list (the same /api/chat) holds only Jo's own store
+  const jl = (await jo('/api/chat')).data;
+  assert.equal(jl.store.startsWith('J'), true);
+  assert.ok(!jl.people.some((p) => ['Ana Server', 'Ben Bar', 'Cal Host'].includes(p.name)));
+});
+
+test('person cards: managers only, only into a direct message with another manager, only this store’s team', async () => {
+  const inv = await owner('/api/team/invite', { method: 'POST', body: { email: 'mo@chat.test', role: 'manager', storeId: 1 } });
+  assert.equal(inv.status, 200);
+  const mo = person();
+  assert.equal((await mo(`/api/invite/${inv.data.link.split('/').pop()}`, { method: 'POST', body: { name: 'Mo Manager', password: 'long-enough-7' } })).status, 200);
+  ids['Mo Manager'] = (await mo('/api/me')).data.user.id;
+
+  const card = await owner(`/api/chat/card?person=${ids['Ana Server']}`);
+  assert.equal(card.status, 200);
+  assert.equal(card.data.card.name, 'Ana Server');
+  assert.equal(card.data.card.job, 'Server');
+  assert.ok(['behind', 'new', 'on-track', 'done', 'no-job'].includes(card.data.card.status));
+  assert.equal((await ana(`/api/chat/card?person=${ids['Ben Bar']}`)).status, 403, 'staff can’t look anyone up');
+  assert.equal((await owner(`/api/chat/card?person=${ids['Jo Jbs']}`)).status, 404, 'another store’s person');
+  assert.equal((await owner(`/api/chat/card?person=${ids['Mo Manager']}`)).status, 404, 'a manager isn’t on the team list');
+
+  assert.equal((await room(owner, 'dm-' + ids['Mo Manager'])).data.room.canSendPerson, true);
+  assert.equal((await room(owner, 'foh')).data.room.canSendPerson, false);
+  const sent = await say(owner, 'dm-' + ids['Mo Manager'], { body: 'Ana is flying through it.', person: ids['Ana Server'] });
+  assert.equal(sent.status, 200);
+  assert.equal(sent.data.messages.at(-1).person.name, 'Ana Server');
+  const seen = (await room(mo, 'dm-' + ids.owner)).data.messages.at(-1);
+  assert.equal(seen.person.name, 'Ana Server', 'the other manager sees the card');
+  assert.match((await mo('/api/chat')).data.rooms.find((r) => r.key === 'dm-' + ids.owner).last.text, /Ana Server|flying/);
+
+  assert.equal((await say(owner, 'foh', { person: ids['Ana Server'] })).status, 403, 'not into a channel the subject is in');
+  assert.equal((await say(owner, 'kitchen', { person: ids['Ana Server'] })).status, 403, 'not into a channel at all');
+  assert.equal((await say(owner, 'dm-' + ids['Ben Bar'], { person: ids['Ana Server'] })).status, 403, 'not to staff');
+  assert.equal((await say(ana, 'dm-' + ids.owner, { person: ids['Ben Bar'] })).status, 403, 'staff can’t send one');
+  assert.equal((await say(owner, 'dm-' + ids['Mo Manager'], { person: ids['Jo Jbs'] })).status, 404, 'only this store’s team');
+});
+
+test('@mentions: only the conversation’s members, stored as ids; a mention of you is flagged and counts as unread', async () => {
+  const before = (await ana('/api/chat')).data.rooms.find((r) => r.key === 'foh');
+  const sent = await say(owner, 'foh', { body: `Great tables tonight <@${ids['Ana Server']}>.` });
+  assert.equal(sent.status, 200);
+  const m = sent.data.messages.at(-1);
+  assert.equal(m.body, `Great tables tonight <@${ids['Ana Server']}>.`, 'the body keeps the id, not the name');
+  assert.deepEqual(m.mentions, [{ id: ids['Ana Server'], name: 'Ana Server' }]);
+  assert.equal(m.mentionsMe, false);
+  const list = (await ana('/api/chat')).data.rooms.find((r) => r.key === 'foh');
+  assert.equal(list.unread, before.unread + 1);
+  assert.equal(list.mentions, 1);
+  assert.equal(list.last.text, 'Great tables tonight @Ana Server.', 'previews show the name');
+  const mine = (await room(ana, 'foh')).data;
+  assert.equal(mine.messages.at(-1).mentionsMe, true);
+  await ana('/api/chat/room/foh/read', { method: 'POST', body: { last: mine.room.lastId } });
+  assert.equal((await ana('/api/chat')).data.rooms.find((r) => r.key === 'foh').mentions, 0, 'reading clears it');
+
+  assert.equal((await say(owner, 'foh', { body: `<@${ids['Cal Host']}> can you help?` })).status, 400, 'Cal has no job, so isn’t in Front of House');
+  assert.equal((await say(owner, 'foh', { body: `<@${ids['Jo Jbs']}> hi` })).status, 400, 'another store');
+  assert.equal((await say(ana, 'dm-' + ids['Ben Bar'], { body: `<@${ids.owner}> look` })).status, 400, 'a DM is its two people');
+  assert.equal((await say(ana, 'dm-' + ids['Ben Bar'], { body: `<@${ids['Ben Bar']}> look` })).status, 200);
+  assert.equal((await say(owner, 'everyone', { body: `<@${ids['Cal Host']}> welcome!` })).status, 200, 'everyone is in Everyone');
+});
+
 test('the demo opens on the design’s conversation, with uploads off; its chat goes when the demo does', async () => {
   const mgr = person();
   await mgr('/api/demo/start', { method: 'POST', body: { role: 'manager' } });
@@ -186,17 +264,22 @@ test('the demo opens on the design’s conversation, with uploads off; its chat 
   assert.match(foh.pins[0].body, /^Focus dish: /);
   assert.equal(foh.pins[0].gotIt.count, 5);
   assert.ok(foh.messages.some((m) => m.photo && m.user.name === 'Rosalind Hart'), 'the plate photo');
-  assert.ok(foh.messages.some((m) => m.page?.title === 'Paloma Verde' && m.user.name === 'Dorian Pike'), 'the spec card');
+  assert.ok(foh.messages.some((m) => m.page?.title === 'Paloma Verde' && m.page.kind === 'House cocktail' && m.user.name === 'Dorian Pike'), 'the spec card');
+  assert.ok(foh.messages.some((m) => m.user.name === 'Rosalind Hart' && m.mentions?.[0]?.name === 'Marisol Vega'), 'a message with an @mention');
+  assert.equal(list.rooms.find((r) => r.key === 'bar').mentions, 1, 'Quinn’s @Rosalind in Bar is unread');
   assert.ok(foh.messages.some((m) => m.user.name === 'Teddy Lam' && /Friday close/.test(m.body)));
   assert.equal(foh.messages.at(-1).user.name, 'Marisol Vega');
   assert.equal(foh.seen.people.slice(0, 3).map((p) => p.first).join(', '), 'Quinn, Odalys, Wynn');
-  assert.equal(foh.room.members.length, 8);
+  assert.equal(foh.room.members.length, 9, 'the seven on the team, Rosalind and the owner');
+  const dm = (await room(mgr, 'dm-' + list.rooms.find((r) => r.name === 'Gideon Ambrose').other.id)).data;
+  assert.equal(dm.messages.find((m) => m.person)?.person.name, 'Hollis Grant', 'a progress card between the two managers');
   assert.equal((await mgr('/api/chat/photo', { method: 'POST', raw: 'x', headers: { 'Content-Type': 'image/png' } })).status, 403, 'uploads are off in the demo');
   // the employee's copy: Rosalind is there too (her note, her DMs), and Marisol hasn't tapped Got It yet
   const emp = person();
   await emp('/api/demo/start', { method: 'POST', body: { role: 'employee' } });
   const e = (await room(emp, 'foh')).data;
   assert.equal(e.pins[0].gotIt.canTap, true); assert.equal(e.pins[0].gotIt.mine, false);
+  assert.ok(e.messages.some((m) => m.mentionsMe && m.user.name === 'Rosalind Hart'), 'Marisol sees Rosalind’s @mention of her');
   assert.ok((await emp('/api/chat')).data.rooms.some((r) => r.name === 'Rosalind Hart'));
   // a refresh swaps the copy: the old copy's chat is gone with it
   const oldId = foh.messages[0].id;
