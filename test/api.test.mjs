@@ -877,3 +877,59 @@ test('behind the scenes: health answers, ops endpoints are closed without the to
   const r = await fetch(BASE + '/api/client-error', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ message: 'test', path: '/x' }) });
   assert.equal(r.status, 204);
 });
+
+// Nov 11: two demos. /demo is The Baldwin's (unchanged); /demo/mise is Wrenfield, a made-up restaurant in the Mise look.
+async function startDemo(role, demo) {
+  const r = await fetch(BASE + '/api/demo/start', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify(demo ? { role, demo } : { role }) });
+  assert.equal(r.status, 200);
+  return r.headers.getSetCookie().find((x) => x.startsWith('bt_session=')).split(';')[0];
+}
+const getAs = async (cookie, p) => { const r = await fetch(BASE + p, { headers: { cookie, 'x-bt': '1' } }); assert.equal(r.status, 200, p); return r.text(); };
+
+test('demo: The Baldwin demo stays brand baldwin; the Mise demo is Wrenfield, brand mise', async () => {
+  const baldwin = JSON.parse(await getAs(await startDemo('employee'), '/api/me')).user;
+  assert.equal(baldwin.brand, 'baldwin');
+  assert.equal(baldwin.store.name, 'The Baldwin');
+  assert.equal(baldwin.store.bookReady, true);
+  const mise = JSON.parse(await getAs(await startDemo('employee', 'mise'), '/api/me')).user;
+  assert.equal(mise.brand, 'mise');
+  assert.equal(mise.demo, true);
+  assert.equal(mise.store.name, 'Wrenfield');
+  assert.equal(mise.companyName, 'Wrenfield');
+  // the real company keeps The Baldwin's look
+  assert.equal((await call('/api/me')).data.user.brand, 'baldwin');
+});
+
+test('demo: nothing of The Baldwin in the Mise demo (every page, the index, the lists), and its own menu fills the book', async () => {
+  const cookie = await startDemo('manager', 'mise');
+  const idx = JSON.parse(await getAs(cookie, '/api/index'));
+  assert.ok(!idx.some((e) => e.slug === 'our-story' || e.slug === 'floor-plan'), 'Our Story and the Floor Plan are left out');
+  assert.equal((await fetch(BASE + '/api/page/' + idx.find((e) => e.slug === 'food-matrix').file.replace('13-2', '30-2'), { headers: { cookie } })).status, 404, 'the floor plan is not in its book');
+  const BALDWIN = /Baldwin|Testa Barra|Jeffrey(?! Ong)|\bBRG\b|logo-white/;
+  const bodies = [JSON.stringify(idx)];
+  for (const p of ['/api/me', '/api/counts', '/api/quiz/catalog', '/api/path', '/api/collections', '/api/team', '/api/quiz/results', ...['recipe', 'house', 'wine', 'shelf', 'beer', 'classic'].map((c) => '/api/entries?collection=' + c)]) bodies.push(await getAs(cookie, p));
+  for (const e of idx) bodies.push(await getAs(cookie, '/api/page/' + e.file));
+  const hits = bodies.filter((b) => BALDWIN.test(b)).map((b) => b.match(new RegExp('.{0,40}' + BALDWIN.source + '.{0,40}'))[0]);
+  assert.deepEqual(hits, [], 'no Baldwin text in what the Mise demo is sent');
+  const home = await getAs(cookie, '/api/page/4-2');
+  assert.match(home, /Wood-Grilled Half Chicken/);
+  assert.ok(!JSON.parse(home).empty, 'Home is a full page, not an empty state');
+  const fm = await getAs(cookie, '/api/page/13-2');
+  for (const dish of ['Hanger Steak Frites', 'Charred Shishito Peppers', 'Chocolate Pot de Crème']) assert.match(fm, new RegExp(dish), dish);
+  for (const slug of ['the-bar/wine', 'the-bar/beer-and-draft', 'the-bar/back-bar', 'photo-library', 'video-library', 'quizzes']) {
+    const f = idx.find((e) => e.slug === slug)?.file;
+    assert.ok(f, slug + ' is in the book');
+    assert.ok(!JSON.parse(await getAs(cookie, '/api/page/' + f)).empty, slug + ' is full');
+  }
+});
+
+test('demo: the Mise demo restarts as the Mise demo; The Baldwin keeps its own menu sections', async () => {
+  const cookie = await startDemo('manager', 'mise');
+  const r = await fetch(BASE + '/api/demo/restart', { method: 'POST', headers: { 'x-bt': '1', cookie } });
+  const fresh = r.headers.getSetCookie().find((x) => x.startsWith('bt_session=')).split(';')[0];
+  const me = JSON.parse(await getAs(fresh, '/api/me')).user;
+  assert.equal(me.brand, 'mise'); assert.equal(me.role, 'manager'); assert.equal(me.store.name, 'Wrenfield');
+  // the Mise demo's section list leaves out The Baldwin group's own; the shared schema isn't changed for anyone else
+  assert.doesNotMatch(await getAs(fresh, '/api/collections'), /BRG Staples/);
+  assert.match(JSON.stringify((await call('/api/collections')).data), /BRG Staples/);
+});

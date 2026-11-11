@@ -1,0 +1,522 @@
+[
+ {
+  "key": "demo-mise/Wren’s Nest",
+  "slug": "signature/wrens-nest",
+  "sort": 0,
+  "data": {
+   "name": "Wren’s Nest",
+   "menuSection": "Specialty Cocktails",
+   "price": "15",
+   "onMenu": true,
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo-mise/wrens-nest.jpg",
+   "base": "Gin",
+   "glass": "Coupe",
+   "method": "Shake",
+   "ice": "None, up",
+   "garnish": "Cucumber ribbon",
+   "tableLine": "Elderflower, cucumber, lime",
+   "tableIce": "None, up",
+   "build": [
+    {
+     "amount": "1.5 oz",
+     "ingredient": "Sipsmith London Dry Gin",
+     "link": "/spirit/gin/london-dry",
+     "spirit": true
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "St-Germain",
+     "link": "/spirit/liqueurs/fruit-and-floral",
+     "spirit": false
+    },
+    {
+     "amount": ".75 oz",
+     "ingredient": "Lime juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "Cucumber syrup",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Shake.",
+    "Serve in a coupe.",
+    "Garnish: cucumber ribbon."
+   ],
+   "specNote": "",
+   "tags": [
+    "Shaken",
+    "Floral",
+    "Crisp"
+   ],
+   "tasteLine": "Cool cucumber and elderflower over a dry gin backbone.",
+   "pairs": "Smoked Salmon Toast",
+   "spiritName": "Gin",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/gin",
+   "spiritLinkLabel": "Learn about it",
+   "say": "“It’s our house gin drink: bright, floral and very easy to like.”",
+   "story": "Named for the restaurant, and the first drink the bar team agreed on. The cucumber syrup is made fresh every afternoon.",
+   "video": null,
+   "photoCredit": "Taylor Friehl · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Smoke Signal",
+  "slug": "signature/smoke-signal",
+  "sort": 1,
+  "data": {
+   "name": "Smoke Signal",
+   "menuSection": "Specialty Cocktails",
+   "price": "16",
+   "onMenu": true,
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo-mise/smoke-signal.jpg",
+   "base": "Mezcal",
+   "glass": "Rocks",
+   "method": "Shake",
+   "ice": "Large cube",
+   "garnish": "Grapefruit peel",
+   "tableLine": "Aperol, grapefruit, lime",
+   "tableIce": "Large cube",
+   "build": [
+    {
+     "amount": "1.5 oz",
+     "ingredient": "Ilegal Joven Mezcal",
+     "link": "/spirit/mezcal/joven",
+     "spirit": true
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "Aperol",
+     "link": "/spirit/amaro/aperitivo",
+     "spirit": false
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Grapefruit juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "Lime juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".25 oz",
+     "ingredient": "Agave syrup",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Shake.",
+    "Serve in a rocks over large cube.",
+    "Garnish: grapefruit peel."
+   ],
+   "specNote": "",
+   "tags": [
+    "Shaken",
+    "Smoky",
+    "Bittersweet"
+   ],
+   "tasteLine": "Smoky mezcal, bittersweet orange and tart grapefruit.",
+   "pairs": "Hanger Steak Frites",
+   "spiritName": "Mezcal",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/mezcal",
+   "spiritLinkLabel": "Learn about it",
+   "say": "“If you like a Paloma, this is its smoky cousin.”",
+   "story": "Built as a bridge for tequila drinkers who haven’t tried mezcal yet.",
+   "video": null,
+   "photoCredit": "Sara Cervera · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Orchard Sour",
+  "slug": "signature/orchard-sour",
+  "sort": 2,
+  "data": {
+   "name": "Orchard Sour",
+   "menuSection": "Specialty Cocktails",
+   "price": "15",
+   "onMenu": true,
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo-mise/orchard-sour.jpg",
+   "base": "Bourbon",
+   "glass": "Coupe",
+   "method": "Dry shake, then shake",
+   "ice": "None, up",
+   "garnish": "Cinnamon dust",
+   "tableLine": "Spiced apple, lemon, egg white",
+   "tableIce": "None, up",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Buffalo Trace Bourbon",
+     "link": "/spirit/bourbon",
+     "spirit": true
+    },
+    {
+     "amount": ".75 oz",
+     "ingredient": "Spiced apple syrup",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".75 oz",
+     "ingredient": "Lemon juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "1",
+     "ingredient": "Egg white",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Dry shake, then shake with ice.",
+    "Serve in a coupe.",
+    "Garnish: cinnamon dust."
+   ],
+   "specNote": "",
+   "tags": [
+    "Shaken",
+    "Silky",
+    "Spiced"
+   ],
+   "tasteLine": "A whiskey sour that tastes like fall: apple, cinnamon and a silky top.",
+   "pairs": "Wood-Grilled Half Chicken",
+   "spiritName": "Bourbon",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/bourbon",
+   "spiritLinkLabel": "Learn about it",
+   "say": "“A whiskey sour with spiced apple. Heads up: it has raw egg white.”",
+   "story": "The spiced apple syrup changes with the season’s apples.",
+   "video": null,
+   "photoCredit": "Ambitious Studio* | Rick Barrett · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Hibiscus Daiquiri",
+  "slug": "signature/hibiscus-daiquiri",
+  "sort": 3,
+  "data": {
+   "name": "Hibiscus Daiquiri",
+   "menuSection": "Specialty Cocktails",
+   "price": "14",
+   "onMenu": true,
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo-mise/hibiscus-daiquiri.jpg",
+   "base": "Rum",
+   "glass": "Coupe",
+   "method": "Shake",
+   "ice": "None, up",
+   "garnish": "Lime wheel",
+   "tableLine": "Hibiscus, lime",
+   "tableIce": "None, up",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Planteray 3 Stars Rum",
+     "link": "/spirit/rum/white",
+     "spirit": true
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Lime juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".75 oz",
+     "ingredient": "Hibiscus syrup",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Shake.",
+    "Serve in a coupe.",
+    "Garnish: lime wheel."
+   ],
+   "specNote": "",
+   "tags": [
+    "Shaken",
+    "Tart",
+    "Floral"
+   ],
+   "tasteLine": "A classic daiquiri with a tart, ruby-red hibiscus twist.",
+   "pairs": "Charred Shishito Peppers",
+   "spiritName": "Rum",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/rum",
+   "spiritLinkLabel": "Learn about it",
+   "say": "“Think of a classic daiquiri, a little tart and a lot prettier.”",
+   "story": "The hibiscus syrup is steeped from dried flowers in house.",
+   "video": null,
+   "photoCredit": "Daniel · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Honey Rye Highball",
+  "slug": "signature/honey-rye-highball",
+  "sort": 4,
+  "data": {
+   "name": "Honey Rye Highball",
+   "menuSection": "House Cocktails",
+   "price": "13",
+   "onMenu": true,
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo-mise/honey-rye-highball.jpg",
+   "base": "Rye",
+   "glass": "Highball",
+   "method": "Build",
+   "ice": "Collins spear",
+   "garnish": "Lemon peel",
+   "tableLine": "Honey-ginger, soda",
+   "tableIce": "Collins spear",
+   "build": [
+    {
+     "amount": "1.5 oz",
+     "ingredient": "Rittenhouse Rye",
+     "link": "/spirit/rye",
+     "spirit": true
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "Honey-ginger syrup",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "4 oz",
+     "ingredient": "Soda water",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Build in the glass.",
+    "Serve in a highball over collins spear.",
+    "Garnish: lemon peel."
+   ],
+   "specNote": "",
+   "tags": [
+    "Built",
+    "Light",
+    "Spicy"
+   ],
+   "tasteLine": "Spicy rye lifted with honey, ginger and bubbles.",
+   "pairs": "Wrenfield Burger",
+   "spiritName": "Rye",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/rye",
+   "spiritLinkLabel": "Learn about it",
+   "say": "“Light and refreshing, but it still tastes like whiskey.”",
+   "story": "A simple highball for the bar rail, built in the glass in seconds.",
+   "video": null,
+   "photoCredit": "Andrea Huls Pareja · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Black Walnut Manhattan",
+  "slug": "signature/black-walnut-manhattan",
+  "sort": 5,
+  "data": {
+   "name": "Black Walnut Manhattan",
+   "menuSection": "House Cocktails",
+   "price": "16",
+   "onMenu": true,
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo-mise/black-walnut-manhattan.jpg",
+   "base": "Bourbon",
+   "glass": "Nick & Nora",
+   "method": "Stir",
+   "ice": "None, up",
+   "garnish": "Brandied cherry",
+   "tableLine": "Sweet vermouth, black walnut bitters",
+   "tableIce": "None, up",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Buffalo Trace Bourbon",
+     "link": "/spirit/bourbon",
+     "spirit": true
+    },
+    {
+     "amount": "1 oz",
+     "ingredient": "Sweet vermouth",
+     "link": "/bottle/sweet-vermouth",
+     "spirit": false
+    },
+    {
+     "amount": "2 dashes",
+     "ingredient": "Black walnut bitters",
+     "link": "/spirit/bitters",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Stir.",
+    "Serve in a nick & nora.",
+    "Garnish: brandied cherry."
+   ],
+   "specNote": "",
+   "tags": [
+    "Stirred",
+    "Rich",
+    "Nutty"
+   ],
+   "tasteLine": "A rich Manhattan with a toasty, nutty finish.",
+   "pairs": "Braised Lamb Shank",
+   "spiritName": "Bourbon",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "/spirit/bourbon",
+   "spiritLinkLabel": "Learn about it",
+   "say": "“Our Manhattan, with black walnut bitters for a toasty finish.”",
+   "story": "Swapping the Angostura for black walnut bitters makes it taste warmer. Walnut is a flavour, not a nut, but it’s worth a mention to anyone with a nut allergy.",
+   "video": null,
+   "photoCredit": "Drew Beamer · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Rosemary Lemon Spritz",
+  "slug": "signature/rosemary-lemon-spritz",
+  "sort": 6,
+  "data": {
+   "name": "Rosemary Lemon Spritz",
+   "menuSection": "Spiritless Cocktails",
+   "price": "9",
+   "onMenu": true,
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo-mise/rosemary-lemon-spritz.jpg",
+   "base": "",
+   "glass": "Wine glass",
+   "method": "Build",
+   "ice": "Cubes",
+   "garnish": "Rosemary sprig",
+   "tableLine": "Lemon, rosemary, soda",
+   "tableIce": "Cubes",
+   "build": [
+    {
+     "amount": "1 oz",
+     "ingredient": "Lemon juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".75 oz",
+     "ingredient": "Rosemary syrup",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "4 oz",
+     "ingredient": "Soda water",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Build in the glass.",
+    "Serve in a wine glass over cubes.",
+    "Garnish: rosemary sprig."
+   ],
+   "specNote": "",
+   "tags": [
+    "Spiritless",
+    "Bright",
+    "Herbal"
+   ],
+   "tasteLine": "Fresh lemon and rosemary, bright and not too sweet.",
+   "pairs": "Roasted Beet & Citrus Salad",
+   "spiritName": "No spirit",
+   "spiritLine": "Made without alcohol.",
+   "spiritLink": "",
+   "spiritLinkLabel": "",
+   "say": "“No alcohol, still made like a real cocktail.”",
+   "story": "Made for guests who want something special without the alcohol.",
+   "video": null,
+   "photoCredit": "Wafer WAN · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Ginger Shrub Soda",
+  "slug": "signature/ginger-shrub-soda",
+  "sort": 7,
+  "data": {
+   "name": "Ginger Shrub Soda",
+   "menuSection": "Spiritless Cocktails",
+   "price": "8",
+   "onMenu": true,
+   "tagline": "",
+   "description": "",
+   "photo": "/img/demo-mise/ginger-shrub-soda.jpg",
+   "base": "",
+   "glass": "Double rocks",
+   "method": "Build",
+   "ice": "Cubes",
+   "garnish": "Candied ginger",
+   "tableLine": "Ginger-apple shrub, soda",
+   "tableIce": "Cubes",
+   "build": [
+    {
+     "amount": "1.5 oz",
+     "ingredient": "Ginger-apple shrub",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": ".5 oz",
+     "ingredient": "Lime juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "5 oz",
+     "ingredient": "Soda water",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Build in the glass.",
+    "Serve in a double rocks over cubes.",
+    "Garnish: candied ginger."
+   ],
+   "specNote": "",
+   "tags": [
+    "Spiritless",
+    "Tangy",
+    "Spicy"
+   ],
+   "tasteLine": "Tangy apple cider vinegar shrub with a real ginger bite.",
+   "pairs": "Crispy Brussels Sprouts",
+   "spiritName": "No spirit",
+   "spiritLine": "Made without alcohol.",
+   "spiritLink": "",
+   "spiritLinkLabel": "",
+   "say": "“Tangy and spicy, like a grown-up ginger ale.”",
+   "story": "The shrub is fresh ginger and apple, cured in cider vinegar for a week.",
+   "video": null,
+   "photoCredit": "Snapium Photography · Unsplash (stand-in)"
+  }
+ }
+]

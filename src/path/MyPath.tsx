@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
+import { currentBrand } from '../lib/skin';
 import { dayLabel, dueWords, setPath, usePath, reloadPath, type JobPath, type Program, type Stage, type Step } from './store';
 
 const KIND: Record<Step['kind'], string> = { read: 'Read', quiz: 'Quiz', lesson: 'Lesson', signoff: 'Sign-Off' };
@@ -22,7 +23,7 @@ export function MyPathPage() {
       <header className="mp-head">
         <div>
           <p className="mp-script">{p.label} · started {dayLabel(path.startedOn)}</p>
-          <h1 id="mp-title">MY PATH</h1>
+          <h1 id="mp-title">{currentBrand() === 'mise' ? 'My Path' : 'MY PATH'}</h1>
         </div>
         <div className="mp-pills">
           <span className="mp-pill">Week {p.week} of {p.weeks}</span>
@@ -144,7 +145,7 @@ function PickJob({ jobs }: { jobs: { key: string; label: string; note?: string }
   };
   return (
     <main className="page mp" aria-labelledby="mp-title">
-      <header className="mp-head"><div><p className="mp-script">Your training, week by week</p><h1 id="mp-title">MY PATH</h1></div></header>
+      <header className="mp-head"><div><p className="mp-script">Your training, week by week</p><h1 id="mp-title">{currentBrand() === 'mise' ? 'My Path' : 'MY PATH'}</h1></div></header>
       <section className="mp-card mp-pick">
         <h2>What’s Your Job?</h2>
         <p>Your path is what your job needs to learn, in order, with a due date for each stage. A manager can change it later.</p>

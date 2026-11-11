@@ -1,5 +1,5 @@
 // Mise server (The Baldwin's training app): the built app, the content API, sign-in and uploads. No dependencies.
-import { migrateDemo, purgeDemos, dropDemo, startDemo, demoBlocks, isDemoCompany } from './demo.mjs';
+import { migrateDemo, purgeDemos, dropDemo, startDemo, demoBlocks, isDemoCompany, demoKind, DEMOS } from './demo.mjs';
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -84,6 +84,10 @@ const ctx = (req) => {
   const store = user ? storeOf(db, user) : null;
   return { token, user, company: companyOf(user), store: store?.id ?? null, storeRow: store };
 };
+/** Is the company this request works in a Mise-brand one (Nov 11: the Mise demo)? */
+const miseBrand = (c) => !!c.company && db.prepare('SELECT brand FROM companies WHERE id = ?').get(c.company)?.brand === 'mise';
+/** The Baldwin group's own house-cocktail menu sections (the BRG Staples list, Testa Barra's cart). */
+const BALDWIN_SECTIONS = new Set(['BRG Staples', 'Barra Cart']);
 /** Tonight, in the restaurant's time zone (Metro Detroit). */
 const restaurantDay = () => new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
 
@@ -171,7 +175,9 @@ async function api(req, res, url) {
     const ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
     if (!demoLimiter.check(ip)) fail(429, 'Too many demos from here. Try again in an hour.');
     const b = await readJson(req, 2000);
-    const r = startDemo(db, String(b.role || ''));
+    // Nov 11: two demos. `demo: 'mise'` is Wrenfield in the Mise look (/demo/mise); anything else is The Baldwin's (/demo).
+    const which = Object.hasOwn(DEMOS, String(b.demo)) ? String(b.demo) : 'baldwin';
+    const r = startDemo(db, String(b.role || ''), which);
     if (!r) fail(400, 'Pick a role to start.');
     demoLimiter.record(ip);
     const secure = isSecure(req);
@@ -185,7 +191,7 @@ async function api(req, res, url) {
   if (p === '/api/demo/restart' && m === 'POST') {
     if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
     if (!c.user || !isDemoCompany(db, c.user.company_id)) return sendJson(res, 200, { restarted: false });
-    const r = startDemo(db, c.user.role === 'staff' ? 'employee' : 'manager');
+    const r = startDemo(db, c.user.role === 'staff' ? 'employee' : 'manager', demoKind(db, c.user.company_id)); // same demo, same role
     dropDemo(db, c.user.company_id);
     return sendJson(res, 200, { restarted: true }, { 'Set-Cookie': [sessionCookie(r.token, { secure: isSecure(req), days: 1 })] });
   }
@@ -387,6 +393,12 @@ async function api(req, res, url) {
     const schemas = publicSchemas();
     const gc = schemas.classic.fields.find((f) => f.key === 'glassCard');
     if (gc) gc.options = glassTitles();
+    // Nov 11: a Mise-brand company (the Mise demo) doesn't get The Baldwin group's own menu sections to pick from.
+    if (miseBrand(c)) {
+      const keep = (list) => list.filter((o) => !BALDWIN_SECTIONS.has(o)); // copies: the schemas share their field objects
+      schemas.house = { ...schemas.house, group: { ...schemas.house.group, values: keep(schemas.house.group.values) },
+        fields: schemas.house.fields.map((f) => (f.key === 'menuSection' ? { ...f, options: keep(f.options) } : f)) };
+    }
     return sendJson(res, 200, { collections: schemas, counts });
   }
   if (p === '/api/entries' && m === 'GET') {
@@ -394,7 +406,10 @@ async function api(req, res, url) {
     const col = url.searchParams.get('collection');
     if (!COLLECTIONS[col]) fail(400, 'Unknown collection.');
     if (url.searchParams.get('archived')) return sendJson(res, 200, { entries: listArchived(db, col, SHARED.has(col) ? null : c.store) });
-    return sendJson(res, 200, { entries: inStore(c, () => ordered(db, col)) });
+    const list = inStore(c, () => ordered(db, col));
+    // Shared classics carry The Baldwin's notes about its own builds; a Mise-brand company doesn't see them.
+    if (col === 'classic' && miseBrand(c)) return sendJson(res, 200, { entries: list.map((e) => (/Baldwin/.test(e.data.specNote || '') ? { ...e, data: { ...e.data, specNote: '' } } : e)) });
+    return sendJson(res, 200, { entries: list });
   }
   // The group's kitchen: dishes every store in the company can put on its menu.
   if (p === '/api/library' && m === 'GET') {

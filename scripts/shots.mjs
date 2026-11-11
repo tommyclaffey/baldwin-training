@@ -41,7 +41,8 @@ if (process.env.COOKIE) {
   await send('Network.setCookie', { name: 'bt_session', value: process.env.COOKIE, url: BASE });
   await send('Page.navigate', { url: BASE + '/admin' });
   await sleep(800);
-  await send('Runtime.evaluate', { expression: `localStorage.setItem('bt-editing', '${process.env.EDIT === '1' ? 1 : 0}')` });
+  // A demo session only lives in the tab it was started in (Nov 10): mark this tab as that tab.
+  await send('Runtime.evaluate', { expression: `localStorage.setItem('bt-editing', '${process.env.EDIT === '1' ? 1 : 0}'); sessionStorage.setItem('bt-demo-tab', '1')` });
 }
 const report = [];
 for (const screen of SCREENS) {

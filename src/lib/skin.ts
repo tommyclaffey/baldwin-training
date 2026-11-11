@@ -6,16 +6,31 @@
 import type { FNode } from '../components/FigmaNode';
 
 export type Brand = 'baldwin' | 'mise';
-const KEY = 'brand';
 
-/** `?brand=mise` turns the skin on (remembered on this device); `?brand=baldwin` turns it off. */
-export function currentBrand(): Brand {
-  try {
-    const q = new URLSearchParams(location.search).get('brand');
-    if (q === 'mise' || q === 'baldwin') localStorage.setItem(KEY, q);
-    return localStorage.getItem(KEY) === 'mise' ? 'mise' : 'baldwin';
-  } catch { return 'baldwin'; }
+/* Nov 11: the brand is the company's (companies.brand), sent with the session: The Baldwin and its demo are 'baldwin', the
+ * Mise demo (Wrenfield) is 'mise'. Signed out (the sign-in screen) it's The Baldwin's, as before. `?brand=mise|baldwin`
+ * is kept as a dev override for this tab only (sessionStorage), so it can never stick to someone's real account. */
+const OVERRIDE = 'brand-override';
+let fromSession: Brand = 'baldwin';
+let fromPage: Brand | null = null; // a public page that has its own look (the Mise demo picker at /demo/mise)
+try {
+  localStorage.removeItem('brand'); // the old device-wide switch (Nov 10) is retired
+  const q = new URLSearchParams(location.search).get('brand');
+  if (q === 'mise' || q === 'baldwin') sessionStorage.setItem(OVERRIDE, q);
+} catch { /* private mode */ }
+function override(): Brand | null {
+  try { const v = sessionStorage.getItem(OVERRIDE); return v === 'mise' || v === 'baldwin' ? v : null; } catch { return null; }
 }
+/** The look to draw right now. Read it while rendering (it changes when someone signs in or a demo starts). */
+export function currentBrand(): Brand {
+  return override() || fromPage || fromSession;
+}
+const apply = () => document.documentElement.classList.toggle('brand-mise', currentBrand() === 'mise');
+/** The signed-in company's brand (session.tsx sets it on every /api/me). */
+export function setSessionBrand(b: string | null | undefined) { fromSession = b === 'mise' ? 'mise' : 'baldwin'; apply(); }
+/** A signed-out page with its own look (null = follow the session). */
+export function setPageBrand(b: Brand | null) { fromPage = b; apply(); }
+apply();
 
 export const MISE = {
   char: '#121110', smoke: '#1E1C1A', smoke2: '#26231F', line: '#34302C', ash: '#9A928A', inkMuted: '#4A443E',
@@ -47,15 +62,19 @@ function lum(hex: string) {
   const ch = (v: number) => { const c = v / 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
   return 0.2126 * ch((n >> 16) & 255) + 0.7152 * ch((n >> 8) & 255) + 0.0722 * ch(n & 255);
 }
+/** A frame whose background is a photo under a Shade layer (the program level cards): its text sits on dark. */
+const ON_PHOTO = '#000001';
 const isDark = (hex?: string) => !!hex && /^#[0-9a-f]{6}/i.test(hex) && lum(hex) < 0.2;
 const up = (s?: string) => (s || '').toUpperCase();
 const solid = (n: FNode) => n.f?.find((f) => f.c && (f.o ?? 1) > 0.5)?.c;
 
 const SMALL = new Set(['a', 'an', 'and', 'of', 'the', 'to', 'or', 'at', 'by', 'in', 'on', 'for', 'with']);
+// Nov 11: short names that stay in capitals ("USA" read "Usa" on the Wine page)
+const KEEP_CAPS = new Set(['usa', 'uk', 'ipa', 'vs', 'vsop', 'xo', 'xxo', 'abv', 'pos', 'na', 'ny', 'diy', 'tv', 'am', 'pm']);
 /** "OLD FASHIONED" → "Old Fashioned"; leaves mixed-case text alone. */
 export function titleCase(s: string) {
   if (!s || s !== s.toUpperCase() || !/[A-Z]{2}/.test(s)) return s;
-  return s.toLowerCase().split(' ').map((w, i) => (i > 0 && SMALL.has(w) ? w : w.replace(/^([^a-z]*)([a-z])/, (_m, p, c) => p + c.toUpperCase()))).join(' ');
+  return s.toLowerCase().split(' ').map((w, i) => (KEEP_CAPS.has(w.replace(/[^a-z]/g, '')) ? w.toUpperCase() : i > 0 && SMALL.has(w) ? w : w.replace(/^([^a-z]*)([a-z])/, (_m, p, c) => p + c.toUpperCase()))).join(' ');
 }
 
 function skinText(t: FNode, bg: string | undefined, inPill: boolean) {
@@ -63,6 +82,8 @@ function skinText(t: FNode, bg: string | undefined, inPill: boolean) {
   const c = up(solid(t));
   const map = dark ? TEXT_ON_DARK : TEXT_ON_LIGHT;
   if (c && map[c]) t.f = [{ c: map[c] }];
+  // On a shaded photo (Nov 11): light ink, never a muted or red one (♿: text on a photo is white on a dark overlay)
+  if (bg === ON_PHOTO && t.f?.[0]?.c && !/^#(FFFFFF|EDE6DA|D9D4CB)$/i.test(t.f[0].c)) t.f = [{ c: '#D9D4CB' }];
   // a filled red pill or button: white on deep fig (8.4:1)
   if (up(bg) === MISE.fig) t.f = [{ c: MISE.white }];
   const z = t.z || 14;
@@ -81,7 +102,8 @@ function walk(n: FNode, bg: string | undefined, inPill: boolean): FNode | null {
   const own = solid(n);
   if (n.f) n.f = n.f.map((f) => (f.c && SHAPE[up(f.c)] && n.t !== 'T' ? { ...f, c: SHAPE[up(f.c)] } : f));
   if (n.st && STROKE[up(n.st)]) n.st = STROKE[up(n.st)];
-  const here = n.t !== 'T' && own ? (n.f?.find((f) => f.c)?.c || bg) : bg;
+  const photoBg = n.t !== 'T' && !own && n.f?.some((f) => f.img) && (n.c || []).some((c) => c.n === 'Shade');
+  const here = photoBg ? ON_PHOTO : n.t !== 'T' && own ? (n.f?.find((f) => f.c)?.c || bg) : bg;
   // Main buttons: near-black on light, Bone on dark panels (Nov 10: the red read harsh as a big fill).
   if ((n.n || '').startsWith('Button') && up(own) && (up(own) === '#C49A6C' || up(own) === '#8E2F24')) {
     const onDark = isDark(bg);

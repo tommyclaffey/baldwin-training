@@ -37,12 +37,13 @@ async function browser() {
   return { ev, size, go, close, problems };
 }
 
-async function run(role, width) {
-  const b = await browser(); const tag = `${role} @${width}`; const fails = [];
+// Nov 11: both demos, The Baldwin's (/demo) and the Mise demo (/demo/mise, Wrenfield). DEMOS=baldwin or DEMOS=mise runs one.
+async function run(role, width, demo = 'baldwin') {
+  const b = await browser(); const tag = `${demo} ${role} @${width}`; const fails = [];
   try {
     await b.size(width);
-    await b.go(BASE + '/demo', 1200);
-    const ok = await b.ev(`fetch('/api/demo/start',{method:'POST',headers:{'Content-Type':'application/json','X-BT':'1'},body:JSON.stringify({role:'${role}'})}).then(r=>{sessionStorage.setItem('bt-demo-tab','1');return r.ok})`);
+    await b.go(BASE + (demo === 'mise' ? '/demo/mise' : '/demo'), 1200);
+    const ok = await b.ev(`fetch('/api/demo/start',{method:'POST',headers:{'Content-Type':'application/json','X-BT':'1'},body:JSON.stringify({role:'${role}',demo:'${demo}'})}).then(r=>{sessionStorage.setItem('bt-demo-tab','1');return r.ok})`);
     if (!ok) throw new Error('demo did not start');
     await b.go(BASE + '/', 3000);
     if (!(await b.ev(`!!document.querySelector('.dw')`))) fails.push('welcome card did not open');
@@ -72,6 +73,7 @@ async function run(role, width) {
 }
 
 const all = [];
-for (const [role, w] of [['employee', 1440], ['manager', 1440], ['employee', 390], ['manager', 390]]) all.push(...(await run(role, w)));
+const DEMOS = (process.env.DEMOS || 'baldwin,mise').split(',');
+for (const demo of DEMOS) for (const [role, w] of [['employee', 1440], ['manager', 1440], ['employee', 390], ['manager', 390]]) all.push(...(await run(role, w, demo)));
 if (all.length) { console.log('\n' + [...new Set(all)].join('\n')); process.exit(1); }
 console.log('\nSmoke test passed.');

@@ -71,9 +71,8 @@ export function usePageEntry() {
 }
 
 /** The assembled page from the server (recipes, cocktails and edits included), for signed-in people only. */
-// Mise skin (Nov 10): `?brand=mise` shows a page in Mise; The Baldwin's look is the default. Skinned pages are kept
-// per page object, so re-renders don't redo the work.
-const BRAND = currentBrand();
+// Mise skin (Nov 10): a Mise-brand company (Nov 11: the brand comes with the session) sees each page in Mise; The Baldwin's
+// look is the default. Skinned pages are kept per page object, so re-renders don't redo the work.
 const skinCache = new WeakMap<object, Page>();
 function skinned(_file: string, p: Page): Page {
   let s = skinCache.get(p);
@@ -232,7 +231,7 @@ export function PageView() {
     );
   }
   if (!shown) return <main ref={ref} className="page page-loading" aria-busy="true"><div className="loader" /></main>;
-  const page = BRAND === 'mise' && !shown.page.empty ? skinned(shown.file, shown.page) : shown.page;
+  const page = currentBrand() === 'mise' && !shown.page.empty ? skinned(shown.file, shown.page) : shown.page;
   if (page.empty) return <EmptyPage e={page.empty} mainRef={ref} />;
 
   const isQuiz = page.id === QUIZ_PAGE;

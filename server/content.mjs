@@ -11,7 +11,7 @@ import { passFor } from './quizgen.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
 import { COLLECTIONS, COURSES, SHARED, listEntries, getEntry, wineDescription } from './cms.mjs';
-import { classify, emptyPage, baldwinTerms, snapshotShelves, genericize, indexText } from './generic.mjs';
+import { classify, emptyPage, baldwinTerms, snapshotShelves, genericize, indexText, dropLine } from './generic.mjs';
 import { wineKind, wineVideos, learnMore, wineCards, wineFollyLink } from './wine.mjs';
 import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
 import { fillBackBar, bottlePage, SPIRIT_FILLER } from './backbar.mjs';
@@ -21,6 +21,7 @@ import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './wi
 import { wire } from './interact.mjs';
 import { libraryVideos } from './videos.mjs';
 import { fillHome } from './home.mjs';
+import { fillSample } from './sample.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -94,6 +95,61 @@ export function withStore(row, fn, user = null) {
   try { return fn(); } finally { SCOPE = prev; }
 }
 const isGeneric = () => SCOPE.generic;
+
+/* ---- Wrenfield, the Mise demo (Nov 11, Tommy: "a completely separate demo for Mise itself") ----
+ * A made-up restaurant that reads the shared library like any store that isn't The Baldwin, but whose demo has to look
+ * finished (no "goes here" pages). So for a Mise-brand demo company:
+ *   • Home, the Video Library, the Photo Library and Quizzes are drawn like The Baldwin's, from its own menu, then
+ *     The Baldwin's names are written out the same way as on the library pages (genericize);
+ *   • Our Story and the Floor Plan are left out of its book (they're The Baldwin's own: its family, its room). */
+export const SAMPLE_HIDDEN = new Set(['our-story', 'floor-plan', 'sommelier-program/about']);
+/** Links to a left-out page go somewhere that's in the book, or (null) go. The old Sommelier "about" page is about booking
+ *  The Baldwin group's own Court sittings; its links lead to the Sommelier hub. */
+const SAMPLE_REDIRECT = { 'sommelier-program/about': '/sommelier-program' };
+/** The Baldwin group's own people and places, as they appear in the shared Sommelier pages ("with us at Testa Barra",
+ *  "Ask Jeffrey Baldwin"). Jeffrey Ong (the Jungle Bird's creator) stays. */
+const GROUP = /\bBaldwin|Testa Barra|\bBRG\b|Macomb|Shelby Twp|Tell Jeffrey|Jeffrey(?! Ong)\b/i;
+/** The Court sittings The Baldwin group books (its real dates and seats). Wrenfield doesn't host any. */
+const HOSTED = /\bWe host this\b|\bFeb 2[2-4](–23)?, 2027\b|^Book Feb 2/;
+/** Anything of theirs in a layer name or the search text: the group, its bookings, its menu's name. */
+const THEIRS = new RegExp([GROUP.source, HOSTED.source, 'We host', 'Opening Menu · Fall 2026', 'Book Feb 2[2-4](–23)?'].join('|'), 'i');
+/** The Mise demo's last pass on every page: the group's lines go (a sentence that only names the venue is rewritten), and
+ *  layer names that still carry one of The Baldwin's dish or drink names (a template's original) are renamed, so nothing
+ *  of The Baldwin's is left in what the browser gets. */
+function sampleScrub(db, page) {
+  const m = page.main;
+  if (!m) return page;
+  const ours = [...ordered(db, 'recipe'), ...ordered(db, 'house')].map((e) => e.data.name);
+  const terms = baldwinNames(db, ours);
+  const any = (v) => THEIRS.test(v) || terms.test(v);
+  // The top bar's "Opening Menu · Fall 2026" (The Baldwin's menu) and its pre-shift quiz, as on the library pages; and the
+  // design's "+ Add our next cocktail" slot (a finished demo shows what's there, not a slot for more)
+  for (const n of findAll(m, (x) => x.n === 'Menu chip' || x.n === 'Button · Pre-Shift Quiz' || x.n === 'More coming')) { const p = parentOf(m, n); if (p) p.c = p.c.filter((x) => x !== n); }
+  for (const t of findAll(m, (n) => n.t === 'T' && typeof n.s === 'string')) {
+    if (/ with us at Testa Barra/.test(t.s)) setText(t, t.s.replace(/ with us at Testa Barra/, ''));
+    // The Baldwin group hosts the Court's Levels 1 and 2 (real dates at Testa Barra); Wrenfield doesn't
+    if (/^We host it\b/.test(t.s)) { setText(t, 'Through the Court'); t.n = 'Through the Court'; }
+    // The Baldwin's flights ($22 wine flight, $30 sommelier flight) are its own offers
+    if (GROUP.test(t.s) || /\bwine flight\b|\bsommelier flight\b/i.test(t.s) || HOSTED.test(t.s)) dropLine(m, t);
+  }
+  // links to the pages its book leaves out (Home's "Open the Floor Plan →") go
+  for (const n of findAll(m, (x) => typeof x.to === 'string' && SAMPLE_HIDDEN.has(x.to.replace(/^\//, '').replace(/[?#].*$/, '')))) {
+    const to = SAMPLE_REDIRECT[n.to.replace(/^\//, '').replace(/[?#].*$/, '')];
+    if (to) { n.to = to; continue; }
+    const p = parentOf(m, n); if (p) p.c = p.c.filter((x) => x !== n);
+  }
+  for (const n of findAll(m, (x) => typeof x.n === 'string' && any(x.n))) n.n = n.t === 'T' && n.s && !any(n.s) ? String(n.s).slice(0, 60) : n.n.replace(new RegExp(terms.source, 'g'), 'Dish').replace(new RegExp(THEIRS.source, 'gi'), '').replace(/^[\s·]+|[\s·]+$/g, '').trim() || 'Item';
+  return page;
+}
+/** Is this store the Mise demo restaurant? */
+function isSample(db) {
+  if (!SCOPE.generic || !SCOPE.row?.company_id) return false;
+  if (SCOPE.sample === undefined) {
+    const c = db.prepare('SELECT demo, brand FROM companies WHERE id = ?').get(SCOPE.row.company_id);
+    SCOPE.sample = !!c?.demo && c.brand === 'mise';
+  }
+  return SCOPE.sample;
+}
 
 export function ordered(db, col) {
   let list = listEntries(db, col, SHARED.has(col) ? null : SCOPE.store);
@@ -473,8 +529,14 @@ export function assemble(db, file) {
   if (page?.empty) return page;
   if (page) wire(page, { entry, file, slug: baseIndex().find((x) => x.file === file)?.slug, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine'),
     videos: () => libraryVideos({ recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), classics: ordered(db, 'classic'), db }) });
+  if (page?.sampleOf) {
+    const { slug, statics } = page.sampleOf; delete page.sampleOf;
+    const recipes = ordered(db, 'recipe'), house = ordered(db, 'house');
+    genericize(page, slug, { store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: ordered(db, 'wine').length, beer: ordered(db, 'beer').length } });
+  }
   // Managers get an Add row after every list of dishes, cocktails, wines and bottles (staff never see them).
   if (page && !entry && canOpen(SCOPE.user, '/admin/pages/recipe/new')) addRows(page, baseIndex().find((x) => x.file === file)?.slug, db, SCOPE.store);
+  if (page?.main && isSample(db)) sampleScrub(db, page);
   return balance(forViewer(page, SCOPE.user));
 }
 
@@ -539,7 +601,19 @@ function assembleRaw(db, file) {
     const p2 = l1 && basePage(l1.file);
     return p2 ? { ...level2OnLevel1(p2, old, { done, ...levelStatus(db, 'somm-2') }), name: page.name } : old;
   }
-  if (isGeneric()) return genericPage(db, file, slug, page);
+  if (isGeneric()) {
+    if (!isSample(db) || classify(slug) !== 'own') return genericPage(db, file, slug, page);
+    if (SAMPLE_HIDDEN.has(slug)) return null;
+    // Filled like The Baldwin's page; assemble() writes The Baldwin's names out after the videos and photos are in.
+    const statics = snapshotShelves(page);
+    const filled = fillSample(fullBook(db, file, page), slug, { recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
+    return Object.assign(filled, { sampleOf: { slug, statics } });
+  }
+  return fullBook(db, file, page);
+}
+
+/** A designed page filled from this store's own lists (The Baldwin's book, and the Mise demo's own pages). */
+function fullBook(db, file, page) {
   if (file === '23-2') {
     const SITES = { 'Restaurant · J.Baldwin’s': 'https://www.jbaldwins.com', 'Restaurant · Testa Barra': 'https://www.testabarra.com', 'Restaurant · The Baldwin': 'https://thebaldwinshelby.com' };
     for (const [n, url] of Object.entries(SITES)) { const card = find(page.main, byName(n)); if (card) card.to = url; }
@@ -595,8 +669,10 @@ function genericPage(db, file, slug, page) {
 /** Baldwin's own dish and drink names, so they're written out of the shared pages. */
 function baldwinNames(db, ours = []) {
   // A store that names a dish or drink the same as one of Baldwin's keeps its own.
+  // Nov 11: …or one inside its own name (The Baldwin's "Steak Frites" was taking out Wrenfield's "Hanger Steak Frites").
   const mine = new Set(ours);
-  const names = ['recipe', 'house'].flatMap((col) => listEntries(db, col, 1).map((e) => e.data.name)).filter((n) => !mine.has(n));
+  const inOurs = (n) => ours.some((o) => o && o !== n && new RegExp('\\b' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b').test(o));
+  const names = ['recipe', 'house'].flatMap((col) => listEntries(db, col, 1).map((e) => e.data.name)).filter((n) => !mine.has(n) && !inOurs(n));
   return baldwinTerms(names, listEntries(db, 'classic').map((e) => e.data.name));
 }
 
@@ -619,13 +695,21 @@ function libraryEntry(db, e) {
   return { ...e, text: lib.text.get(e.slug) || '', blurb: terms.test(e.blurb || '') ? undefined : e.blurb };
 }
 
+/** Search text for the Mise demo's own pages, read from the pages as it sees them. */
+function sampleEntry(db, e) {
+  const p = assemble(db, e.file);
+  return { ...e, text: p?.main ? texts(p.main).map((t) => t.s).join(' ').replace(/\s+/g, ' ').slice(0, 1200) : '', thumb: undefined, blurb: undefined };
+}
+
 /* ---- index: designed pages, minus the ones the CMS now owns, plus every CMS page ---- */
 const PREFIXES = [...Object.values(COLLECTIONS).map((c) => c.prefix), GUIDE + '/'];
 export function fullIndex(db) {
   const extra = shelfSearchText(baseIndex(), ordered(db, 'shelf'), ordered(db, 'beer'));
   for (const [k, v] of wineSearchText(baseIndex(), ordered(db, 'wine'))) extra.set(k, ((extra.get(k) || '') + ' ' + v).trim());
-  const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p)))
-    .map((e) => (isGeneric() ? libraryEntry(db, e) : e))
+  const sample = isSample(db);
+  const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p)) && !(sample && SAMPLE_HIDDEN.has(e.slug)))
+    .map((e) => (sample && classify(e.slug) === 'own' ? sampleEntry(db, e) : isGeneric() ? libraryEntry(db, e) : e))
+    .map((e) => (sample ? { ...e, text: (e.text || '').replace(new RegExp(THEIRS.source, 'gi'), ''), blurb: e.blurb && GROUP.test(e.blurb) ? undefined : e.blurb } : e))
     .map((e) => (extra.has(e.slug) ? { ...e, text: (extra.get(e.slug) + ' ' + (e.text || '')).slice(0, 2400) } : e));
   const entries = [];
   for (const [id, c] of Object.entries(COLLECTIONS)) {

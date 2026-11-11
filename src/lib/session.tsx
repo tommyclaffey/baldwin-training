@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { api, type IndexEntry, type User } from './api';
 import { markDemo } from './demo';
+import { setSessionBrand } from './skin';
 
 type Session = {
   user: User | null; setupNeeded: boolean; superSetupNeeded: boolean; loaded: boolean;
@@ -25,8 +26,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     try {
       const me = await api<{ user: User | null; setupNeeded: boolean; superSetupNeeded: boolean }>('/api/me');
       markDemo(!!me.user?.demo);
+      setSessionBrand(me.user?.brand); // Nov 11: the look follows the company
       setUser(me.user); setSetup(me.setupNeeded); setSuperSetup(me.superSetupNeeded);
-    } catch { setUser(null); }
+    } catch { setUser(null); setSessionBrand(null); }
     setLoaded(true);
   }, []);
   const reloadIndex = useCallback(async () => {
