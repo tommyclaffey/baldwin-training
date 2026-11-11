@@ -708,13 +708,14 @@ export function SignoffsPage() {
 }
 
 /** The count beside Sign-offs in the sidebar. */
-export function useSignoffCount() {
+export function useSignoffCount(enabled = true) {
   const [n, setN] = useState(0);
   useEffect(() => {
+    if (!enabled) return;
     const load = () => { api<{ count: number }>('/api/manager/signoffs/count').then((r) => setN(r.count)).catch(() => {}); };
     load();
     window.addEventListener('mise:signoffs', load);
     return () => window.removeEventListener('mise:signoffs', load);
-  }, []);
+  }, [enabled]);
   return n;
 }
