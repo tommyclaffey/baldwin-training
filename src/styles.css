@@ -1687,3 +1687,56 @@ button.demo-pill:focus-visible { outline: 2px solid #C49A6C; outline-offset: 2px
 .page.compact [data-name^="Mise hero photo"] { width: 100% !important; height: 300px !important; min-height: 0 !important; flex: 0 0 auto !important; }
 .page.compact [data-name^="Mise hero photo"]::after { background: linear-gradient(180deg, rgba(18,17,16,0) 45%, #121110 100%); }
 .page.compact [data-name="Hero"]:has(> [data-name^="Mise hero photo"]) > [data-name="Copy"] { height: auto !important; min-height: 0 !important; padding: 4px 22px 26px !important; width: 100% !important; }
+
+/* ── The Mise demo (Nov 11, /demo/mise): the picker, demo bar, welcome card and tour in Mise's look. Light first, one red
+   (deep fig #8E2A26), Char for main buttons, Instrument Serif only from 40 px up, DM Mono labels. The Baldwin's demo is untouched. ── */
+.demo-pick.mise { background: #121110; color: #EDE6DA; }
+.demo-pick.mise .demo-brand img { height: 64px; width: auto; }
+.demo-pick.mise .demo-line { color: #9A928A; }
+.demo-pick.mise .demo-pill, .brand-mise .mobile-brand .demo-pill, .brand-mise .admin-demo .demo-pill { background: rgba(142, 42, 38, .42); color: #F6D3CE; }
+.demo-pick.mise .demo-kicker { margin: 0; font: 500 13px 'DM Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: #9A928A; }
+.demo-pick.mise h1 { font: 400 clamp(44px, 7vw, 64px)/1 'Instrument Serif', serif; letter-spacing: -.005em; }
+.demo-pick.mise .demo-sub { color: #D9D4CB; }
+.demo-pick.mise .demo-role { background: #FBF8F2; color: #121110; border-radius: 16px; }
+.demo-pick.mise .demo-role.lead { background: #EDE6DA; box-shadow: inset 0 0 0 2px #8E2A26; }
+.demo-pick.mise .demo-role h2 { font: 600 22px/1.25 'Archivo', sans-serif; letter-spacing: -.01em; }
+.demo-pick.mise .demo-role p { color: #4A443E; }
+.demo-pick.mise .demo-role button { background: #121110; color: #EDE6DA; border-radius: 10px; }
+.demo-pick.mise .demo-role.lead button { background: #8E2A26; color: #FFFFFF; }
+.demo-pick.mise .demo-role button:focus-visible, .demo-pick.mise .demo-back:focus-visible { outline: 2px solid #7BA5CB; outline-offset: 2px; }
+.demo-pick.mise .demo-foot { color: #9A928A; }
+.demo-pick.mise .demo-back { color: #EDE6DA; }
+.brand-mise .demo-bar { background: #FBF8F2; color: #121110; border-bottom: 1px solid #D9CFBF; }
+.brand-mise .demo-bar button, .brand-mise .demo-bar-actions a { border-color: #7F776F; color: #121110; border-radius: 10px; }
+.brand-mise .demo-bar button.main { background: #121110; border-color: #121110; color: #EDE6DA; }
+.brand-mise .dw, .brand-mise .tour-card { background: #FBF8F2; color: #121110; }
+.brand-mise .dw h2 { font-weight: 600; letter-spacing: -.01em; }
+.brand-mise .dw-pill, .brand-mise .dw-num { background: rgba(142, 42, 38, .12); color: #8E2A26; }
+.brand-mise .dw-label, .brand-mise .tour-count { font-family: 'DM Mono', monospace; font-weight: 500; letter-spacing: .12em; color: #4A443E; }
+.brand-mise .dw-persona, .brand-mise .tour-body, .brand-mise .dw-text span, .brand-mise .dw-credit, .brand-mise .tour-skip, .brand-mise .dw-chev { color: #4A443E; }
+.brand-mise .dw-credit a { color: #8E2A26; }
+.brand-mise .dw-step { border-color: #D9CFBF; border-radius: 12px; }
+.brand-mise .dw-step:hover { border-color: #9A928A; background: #F4EFE0; }
+.brand-mise .tour-btn { background: #121110; border-color: #121110; color: #EDE6DA; border-radius: 10px; }
+.brand-mise .tour-btn.ghost { background: transparent; color: #121110; border-color: #7F776F; }
+.brand-mise .tour-hl { box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 9999px rgba(18, 17, 16, .5); }
+.brand-mise .tour-dots span { background: #D9CFBF; }
+.brand-mise .tour-dots span.done { background: #9A928A; }
+.brand-mise .tour-dots span.on { background: #8E2A26; }
+.brand-mise .demo-bar button:focus-visible, .brand-mise .tour-btn:focus-visible, .brand-mise .tour-skip:focus-visible, .brand-mise .dw-step:focus-visible { outline-color: #8E2A26; }
+/* Coded pages (My Path, quizzes, certificates…) in a Mise-brand company: the same variables, Mise's values (Nov 11). */
+/* --copper stays (it's also used as text on dark, where deep fig would fail contrast); --copper-dk is text on light: deep fig */
+.brand-mise { --ink: #121110; --cream: #EDE6DA; --card: #FBF8F2; --line: #D9CFBF; --copper-dk: #8E2A26; --muted: #4A443E; }
+.brand-mise .mp-stage.now .mp-num { background: #8E2A26; color: #FFFFFF; }
+.brand-mise .mp-track span { background: #8E2A26; }
+.brand-mise .loader { border-top-color: #8E2A26; }
+.brand-mise .mp-script { font: 500 13px 'DM Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: #4A443E; margin-bottom: 6px; }
+.brand-mise .mp h1 { font: 400 64px/1 'Instrument Serif', serif; letter-spacing: -.005em; }
+.brand-mise .mp-next { background: #121110; border-color: #121110; color: #EDE6DA; }
+.brand-mise .mp-next .mp-label, .brand-mise .mp-next p, .brand-mise .mp-next span { color: #D9D4CB !important; }
+.brand-mise .mp-next h2, .brand-mise .mp-next h3, .brand-mise .mp-next strong { color: #EDE6DA; }
+.brand-mise .mp-next .mp-btn.dark, .brand-mise .mp-next .mp-btn { background: #EDE6DA; color: #121110; border-color: #EDE6DA; }
+.brand-mise .mp-label { font-family: 'DM Mono', monospace; font-weight: 500; letter-spacing: .12em; }
+.brand-mise .mp-stage:not(.now):not(.done) .mp-num { background: #F4EFE0; }
+.brand-mise .mp-tint { background: #F4EFE0; border-color: #D9CFBF; }
+@media (max-width: 640px) { .brand-mise .mp h1 { font-size: 44px; } }

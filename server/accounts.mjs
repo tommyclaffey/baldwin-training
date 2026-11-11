@@ -98,6 +98,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   /** The signed-in person as the app sees them: role, company, and the store they're working in. */
   const meOut = (u) => ({
     ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo,
+    brand: companyRow(companyOf(u))?.brand === 'mise' ? 'mise' : 'baldwin', // Nov 11: the look follows the company
     store: storeOut(storeOf(db, u)), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
   });
   const signIn = (res, req, user, opts = {}) => {

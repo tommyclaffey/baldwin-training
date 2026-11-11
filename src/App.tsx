@@ -4,7 +4,7 @@ import { Sidebar } from './components/Sidebar';
 import { PageView, usePageEntry } from './components/PageView';
 import { NavContext } from './components/FigmaNode';
 import { useSession } from './lib/session';
-import { demoTab, leaveDemo } from './lib/demo';
+import { demoTab, leaveDemo, isSample } from './lib/demo';
 import { BookSignIn } from './components/BookSignIn';
 import { DemoPicker } from './components/DemoPicker';
 import { clearPages } from './components/PageView';
@@ -16,15 +16,16 @@ import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
 import { MyPathPage, PathReadBar } from './path/MyPath';
 import { currentBrand } from './lib/skin';
 
-// Mise skin (Nov 10): `?brand=mise` shows the app in Mise; The Baldwin's look is the default.
-const MISE_SKIN = currentBrand() === 'mise';
-if (MISE_SKIN) document.documentElement.classList.add('brand-mise');
+// Mise skin (Nov 10): a Mise-brand company sees the app in Mise (Nov 11: the brand comes with the session, see lib/skin.ts);
+// The Baldwin's look is the default.
 import { CertificatePage } from './path/Certificate';
 
 export default function App() {
   const { pathname } = useLocation();
   if (pathname === '/admin' || pathname.startsWith('/admin/')) return <Routes><Route path="/admin/*" element={<AdminApp />} /></Routes>;
-  if (pathname === '/demo') return <DemoPicker />;
+  // Nov 11: two demos, each with its own link. /demo = The Baldwin's, /demo/mise = Wrenfield in the Mise look.
+  if (pathname === '/demo') return <DemoPicker kind="baldwin" />;
+  if (pathname === '/demo/mise') return <DemoPicker kind="mise" />;
   return <Book />;
 }
 
@@ -60,9 +61,9 @@ function Book() {
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
         <div className={'mobile-brand' + (user.demo ? ' has-pill' : '')}>
-          {user.store && !user.store.bookReady
+          {user.store && !user.store.bookReady && !isSample(user)
             ? <strong className="mobile-name">{user.store.name}</strong>
-            : MISE_SKIN
+            : currentBrand() === 'mise'
               ? <Link to="/" aria-label="Home"><img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy" height="34" /></Link>
               : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
           {user.demo && <button type="button" className="demo-pill" onClick={openWelcome}>DEMO</button>}

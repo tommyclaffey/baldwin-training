@@ -208,7 +208,8 @@ function homeMatrix(page) {
   const rows = findAll(sec, startsWith('Row · '));
   const counts = new Map();
   for (const r of rows) {
-    const c = COURSE[texts(r).map((t) => t.s).find((x) => COURSE[x])] || '';
+    // r.course: the dish's real course, when the page builder knows it (the Mise demo's "Salads" isn't "Soups & Salads")
+    const c = r.course || COURSE[texts(r).map((t) => t.s).find((x) => COURSE[x])] || ''; delete r.course;
     if (c) counts.set(c, (counts.get(c) || 0) + 1);
     r.meta = { show: { pick: ['hchip', ['All', c], 'All'] } };
   }

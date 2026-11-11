@@ -1,0 +1,1652 @@
+[
+ {
+  "key": "demo-mise/Charred Shishito Peppers",
+  "slug": "recipe/charred-shishito-peppers",
+  "sort": 0,
+  "data": {
+   "name": "Charred Shishito Peppers",
+   "course": "Snacks & Small Plates",
+   "price": "11",
+   "station": "Grill",
+   "description": "Blistered shishitos with flaky salt, lime and a smoked paprika aioli for dipping.",
+   "photo": "/img/demo-mise/charred-shishito-peppers.jpg",
+   "ingredients": [
+    "Shishito peppers",
+    "Flaky salt",
+    "Lime",
+    "Smoked paprika aioli"
+   ],
+   "allergens": [
+    "Egg",
+    "Nightshade"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "A bowl to share while you decide: smoky, salty, and about one in ten has a little kick.",
+   "dropMain": "Blistered shishitos",
+   "dropSide": "Lime wedge",
+   "dropSauce": "Smoked paprika aioli",
+   "talkingPoints": [
+    "They go on the grill over high heat until the skins blister.",
+    "Most are mild; roughly one in ten is hot, and there’s no telling which.",
+    "The aioli is made in house with smoked paprika."
+   ],
+   "pairing": "Segura Viudas Cava",
+   "pairingOpposite": "Catena Malbec",
+   "cocktail": "Smoke Signal",
+   "say": "“A bowl to share while you decide: smoky, salty, and about one in ten has a little kick.”",
+   "inspiration": "The grill is the first thing lit every day, and this was the first snack the kitchen put on it.",
+   "sellingPoints": [
+    "Fast to the table",
+    "Easy to share",
+    "Vegetarian"
+   ],
+   "components": [
+    {
+     "component": "Shishito peppers",
+     "portion": "5 oz",
+     "hold": "Cold, 38°F"
+    },
+    {
+     "component": "Flaky salt",
+     "portion": "Pinch",
+     "hold": "Station"
+    },
+    {
+     "component": "Lime",
+     "portion": "½ lime",
+     "hold": "Cut at open"
+    },
+    {
+     "component": "Smoked paprika aioli",
+     "portion": "2 oz",
+     "hold": "Cold, 38°F"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Toss",
+     "detail": "Toss peppers in oil and a pinch of salt.",
+     "time": "Prep"
+    },
+    {
+     "title": "Grill",
+     "detail": "Grill over high heat, turning, until blistered all over.",
+     "time": "4 min"
+    },
+    {
+     "title": "Season",
+     "detail": "Finish with flaky salt and a squeeze of lime.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Plate",
+     "detail": "Pile in a bowl with aioli on the side.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Peppers",
+     "note": "piled high, stems up"
+    },
+    {
+     "name": "Lime",
+     "note": "wedge on the rim"
+    },
+    {
+     "name": "Aioli",
+     "note": "ramekin on the side"
+    },
+    {
+     "name": "Salt",
+     "note": "last, so it stays crunchy"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/charred-shishito-peppers.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Joshua Brown · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Smoked Salmon Toast",
+  "slug": "recipe/smoked-salmon-toast",
+  "sort": 1,
+  "data": {
+   "name": "Smoked Salmon Toast",
+   "course": "Snacks & Small Plates",
+   "price": "15",
+   "station": "Pantry",
+   "description": "House-cured smoked salmon over whipped crème fraîche on toasted rye, with capers, chives and lemon.",
+   "photo": "/img/demo-mise/smoked-salmon-toast.jpg",
+   "ingredients": [
+    "Smoked salmon",
+    "Crème fraîche",
+    "Rye bread",
+    "Capers",
+    "Chives",
+    "Lemon"
+   ],
+   "allergens": [
+    "Finfish",
+    "Dairy",
+    "Gluten"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Silky smoked salmon on toasted rye with whipped crème fraîche. Light, salty and bright.",
+   "dropMain": "Smoked salmon",
+   "dropSide": "Toasted rye",
+   "dropSauce": "Whipped crème fraîche",
+   "talkingPoints": [
+    "The salmon is cured in salt and brown sugar for two days, then cold-smoked.",
+    "Crème fraîche is whipped with lemon zest so it stays light.",
+    "Capers and chives go on last, so they stay bright."
+   ],
+   "pairing": "Trimbach Riesling",
+   "pairingOpposite": "Elk Cove Pinot Noir",
+   "cocktail": "Wren’s Nest",
+   "say": "“Silky smoked salmon on toasted rye with whipped crème fraîche. Light, salty and bright.”",
+   "inspiration": "A nod to the smoked fish counters at old delis, made into a two-bite toast.",
+   "sellingPoints": [
+    "Cured and smoked in house",
+    "Light before a big main",
+    "Great with a glass of white"
+   ],
+   "components": [
+    {
+     "component": "Smoked salmon",
+     "portion": "3 oz",
+     "hold": "Cold, 34°F"
+    },
+    {
+     "component": "Whipped crème fraîche",
+     "portion": "1.5 oz",
+     "hold": "Cold, piping bag"
+    },
+    {
+     "component": "Rye bread",
+     "portion": "2 slices",
+     "hold": "Room temp, toast to order"
+    },
+    {
+     "component": "Capers and chives",
+     "portion": "To finish",
+     "hold": "Cold"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Toast",
+     "detail": "Toast the rye until crisp at the edges.",
+     "time": "2 min"
+    },
+    {
+     "title": "Spread",
+     "detail": "Spread crème fraîche edge to edge.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Drape",
+     "detail": "Drape the salmon in loose folds.",
+     "time": "1 min"
+    },
+    {
+     "title": "Finish",
+     "detail": "Capers, chives, lemon zest and black pepper.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Toast",
+     "note": "two slices, slightly overlapping"
+    },
+    {
+     "name": "Salmon",
+     "note": "loose folds, not flat"
+    },
+    {
+     "name": "Capers",
+     "note": "scattered"
+    },
+    {
+     "name": "Lemon",
+     "note": "wedge on the side"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/smoked-salmon-toast.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "George Dagerotip · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Crispy Brussels Sprouts",
+  "slug": "recipe/crispy-brussels-sprouts",
+  "sort": 2,
+  "data": {
+   "name": "Crispy Brussels Sprouts",
+   "course": "Snacks & Small Plates",
+   "price": "12",
+   "station": "Fry",
+   "description": "Flash-fried Brussels sprouts with bacon lardons, red onion and a maple-chili glaze.",
+   "photo": "/img/demo-mise/crispy-brussels-sprouts.jpg",
+   "ingredients": [
+    "Brussels sprouts",
+    "Bacon",
+    "Red onion",
+    "Maple syrup",
+    "Chili",
+    "Soy sauce"
+   ],
+   "allergens": [
+    "Pork",
+    "Allium",
+    "Soy",
+    "Nightshade"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Crispy on the outside, sweet and a little spicy from the maple-chili glaze.",
+   "dropMain": "Crispy Brussels sprouts",
+   "dropSide": "Bacon lardons",
+   "dropSauce": "Maple-chili glaze",
+   "talkingPoints": [
+    "They’re halved and flash-fried so the outer leaves go crisp.",
+    "The glaze is maple, chili and a splash of soy.",
+    "The bacon can come off for a guest who doesn’t eat pork."
+   ],
+   "pairing": "Dog Point Sauvignon Blanc",
+   "pairingOpposite": "Guigal Côtes du Rhône",
+   "cocktail": "Honey Rye Highball",
+   "say": "“Crispy on the outside, sweet and a little spicy from the maple-chili glaze.”",
+   "inspiration": "Built for guests who say they don’t like Brussels sprouts.",
+   "sellingPoints": [
+    "Easy to share",
+    "Bacon can come off",
+    "Sweet, salty and a little heat"
+   ],
+   "components": [
+    {
+     "component": "Brussels sprouts",
+     "portion": "6 oz",
+     "hold": "Cold, halved"
+    },
+    {
+     "component": "Bacon lardons",
+     "portion": "1.5 oz",
+     "hold": "Rendered, warm"
+    },
+    {
+     "component": "Red onion",
+     "portion": "1 oz",
+     "hold": "Cold, sliced"
+    },
+    {
+     "component": "Maple-chili glaze",
+     "portion": "1.5 oz",
+     "hold": "Room temp, squeeze bottle"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Fry",
+     "detail": "Fry halved sprouts at 350°F until the edges brown.",
+     "time": "3 min"
+    },
+    {
+     "title": "Drain",
+     "detail": "Drain well and season with salt.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Glaze",
+     "detail": "Toss in a warm bowl with the glaze.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Finish",
+     "detail": "Fold in the warm bacon and serve right away.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Sprouts",
+     "note": "piled in a warm bowl"
+    },
+    {
+     "name": "Glaze",
+     "note": "clinging, not pooling"
+    },
+    {
+     "name": "Bacon",
+     "note": "scattered through"
+    },
+    {
+     "name": "Onion",
+     "note": "a few rings on top"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/crispy-brussels-sprouts.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Mette van der Linden · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Beef Tartare",
+  "slug": "recipe/beef-tartare",
+  "sort": 3,
+  "data": {
+   "name": "Beef Tartare",
+   "course": "Snacks & Small Plates",
+   "price": "18",
+   "station": "Pantry",
+   "description": "Hand-cut beef with shallot, capers and Dijon, a cured egg yolk and grilled sourdough.",
+   "photo": "/img/demo-mise/beef-tartare.jpg",
+   "ingredients": [
+    "Beef tenderloin",
+    "Shallot",
+    "Capers",
+    "Dijon",
+    "Cured egg yolk",
+    "Sourdough"
+   ],
+   "allergens": [
+    "Egg",
+    "Gluten",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Hand-cut to order, bright with capers and mustard, with a rich cured yolk on top.",
+   "dropMain": "Hand-cut beef tartare",
+   "dropSide": "Grilled sourdough",
+   "dropSauce": "Cured egg yolk",
+   "talkingPoints": [
+    "The beef is cut by hand to order, never ground.",
+    "The egg yolk is cured in salt and sugar for three days, then grated over.",
+    "Raw beef and egg: mention the consumer advisory if a guest asks."
+   ],
+   "pairing": "Elk Cove Pinot Noir",
+   "pairingOpposite": "Trimbach Riesling",
+   "cocktail": "Black Walnut Manhattan",
+   "say": "“Hand-cut to order, bright with capers and mustard, with a rich cured yolk on top.”",
+   "inspiration": "A bistro classic, made the way the chef learned it in a small kitchen in Lyon.",
+   "sellingPoints": [
+    "Cut to order",
+    "Cured yolk made in house",
+    "A classic done carefully"
+   ],
+   "components": [
+    {
+     "component": "Beef tenderloin",
+     "portion": "4 oz",
+     "hold": "Cold, 34°F, on ice"
+    },
+    {
+     "component": "Tartare dressing",
+     "portion": "1 oz",
+     "hold": "Cold, 38°F"
+    },
+    {
+     "component": "Cured egg yolk",
+     "portion": "1 yolk",
+     "hold": "Cold, covered"
+    },
+    {
+     "component": "Sourdough",
+     "portion": "3 slices",
+     "hold": "Room temp, cut at open"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Cut",
+     "detail": "Dice the beef by hand into small, even cubes.",
+     "time": "3 min"
+    },
+    {
+     "title": "Dress",
+     "detail": "Fold in shallot, capers, Dijon and dressing over ice.",
+     "time": "1 min"
+    },
+    {
+     "title": "Shape",
+     "detail": "Press into a ring on a chilled plate.",
+     "time": "1 min"
+    },
+    {
+     "title": "Finish",
+     "detail": "Grate the yolk over and add the grilled bread.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Tartare",
+     "note": "ring-molded, center"
+    },
+    {
+     "name": "Yolk",
+     "note": "grated over the top"
+    },
+    {
+     "name": "Bread",
+     "note": "three slices, leaning"
+    },
+    {
+     "name": "Plate",
+     "note": "chilled first"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/beef-tartare.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Liuda Brogiene · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Roasted Beet & Citrus Salad",
+  "slug": "recipe/roasted-beet-citrus-salad",
+  "sort": 4,
+  "data": {
+   "name": "Roasted Beet & Citrus Salad",
+   "course": "Salads",
+   "price": "14",
+   "station": "Pantry",
+   "description": "Roasted red and gold beets, orange and grapefruit, whipped goat cheese and pistachio.",
+   "photo": "/img/demo-mise/roasted-beet-citrus-salad.jpg",
+   "ingredients": [
+    "Red beets",
+    "Gold beets",
+    "Orange",
+    "Grapefruit",
+    "Goat cheese",
+    "Pistachio"
+   ],
+   "allergens": [
+    "Dairy",
+    "Tree Nut"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Earthy roasted beets with bright citrus and a cool swipe of whipped goat cheese.",
+   "dropMain": "Roasted beets",
+   "dropSide": "Citrus segments",
+   "dropSauce": "Whipped goat cheese",
+   "talkingPoints": [
+    "The beets roast in salt for an hour, then they’re peeled warm.",
+    "Citrus is cut into segments to order so it stays juicy.",
+    "Pistachio can come off for a nut allergy; the goat cheese can’t be swapped."
+   ],
+   "pairing": "Pascal Jolivet Sancerre",
+   "pairingOpposite": "Ridge Three Valleys",
+   "cocktail": "Rosemary Lemon Spritz",
+   "say": "“Earthy roasted beets with bright citrus and a cool swipe of whipped goat cheese.”",
+   "inspiration": "A winter salad: beets from the cellar and citrus at its best.",
+   "sellingPoints": [
+    "Vegetarian",
+    "Bright and filling",
+    "Nuts can come off"
+   ],
+   "components": [
+    {
+     "component": "Roasted beets",
+     "portion": "5 oz",
+     "hold": "Cold, 38°F"
+    },
+    {
+     "component": "Citrus segments",
+     "portion": "3 oz",
+     "hold": "Cold, cut to order"
+    },
+    {
+     "component": "Whipped goat cheese",
+     "portion": "2 oz",
+     "hold": "Cold, piping bag"
+    },
+    {
+     "component": "Pistachio",
+     "portion": "½ oz",
+     "hold": "Room temp"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Swipe",
+     "detail": "Spread the goat cheese across the plate.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Build",
+     "detail": "Arrange beets and citrus over it, alternating colours.",
+     "time": "1 min"
+    },
+    {
+     "title": "Dress",
+     "detail": "Spoon over the citrus vinaigrette.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Finish",
+     "detail": "Top with pistachio and herbs.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Goat cheese",
+     "note": "one long swipe"
+    },
+    {
+     "name": "Beets",
+     "note": "red and gold, alternating"
+    },
+    {
+     "name": "Citrus",
+     "note": "tucked between"
+    },
+    {
+     "name": "Pistachio",
+     "note": "scattered last"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/roasted-beet-citrus-salad.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Louis Hansel · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Apple & Celery Root Salad",
+  "slug": "recipe/apple-celery-root-salad",
+  "sort": 5,
+  "data": {
+   "name": "Apple & Celery Root Salad",
+   "course": "Salads",
+   "price": "13",
+   "station": "Pantry",
+   "description": "Crisp apple and celery root cut into matchsticks, with greens, parmesan, toasted walnuts and a cider vinaigrette.",
+   "photo": "/img/demo-mise/apple-celery-root-salad.jpg",
+   "ingredients": [
+    "Apple",
+    "Celery root",
+    "Greens",
+    "Parmesan",
+    "Walnuts",
+    "Cider vinaigrette"
+   ],
+   "allergens": [
+    "Dairy",
+    "Tree Nut"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Light and crunchy: crisp apple and celery root with parmesan and a cider dressing.",
+   "dropMain": "Apple and celery root",
+   "dropSide": "Parmesan",
+   "dropSauce": "Cider vinaigrette",
+   "talkingPoints": [
+    "Apple and celery root are cut to order so nothing goes brown.",
+    "Celery root tastes like a mild, nutty celery.",
+    "Walnuts can come off for a nut allergy."
+   ],
+   "pairing": "Elena Walch Pinot Grigio",
+   "pairingOpposite": "Frog’s Leap Cabernet",
+   "cocktail": "Wren’s Nest",
+   "say": "“Light and crunchy: crisp apple and celery root with parmesan and a cider dressing.”",
+   "inspiration": "The salad the kitchen eats at family meal, cleaned up for the menu.",
+   "sellingPoints": [
+    "Light before a big main",
+    "Vegetarian",
+    "Cut to order"
+   ],
+   "components": [
+    {
+     "component": "Celery root",
+     "portion": "2 oz",
+     "hold": "Cold, in acidulated water"
+    },
+    {
+     "component": "Apple",
+     "portion": "½ apple",
+     "hold": "Whole, cut to order"
+    },
+    {
+     "component": "Parmesan",
+     "portion": "½ oz",
+     "hold": "Cold, shaved"
+    },
+    {
+     "component": "Cider vinaigrette",
+     "portion": "1 oz",
+     "hold": "Room temp"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Cut",
+     "detail": "Cut apple and celery root into thin matchsticks.",
+     "time": "1 min"
+    },
+    {
+     "title": "Dress",
+     "detail": "Toss with the vinaigrette and a pinch of salt.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Pile",
+     "detail": "Pile high in a chilled bowl.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Finish",
+     "detail": "Top with parmesan and walnuts.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Salad",
+     "note": "tall, loose pile"
+    },
+    {
+     "name": "Parmesan",
+     "note": "wide shavings on top"
+    },
+    {
+     "name": "Walnuts",
+     "note": "broken, scattered"
+    },
+    {
+     "name": "Greens",
+     "note": "tucked through"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/apple-celery-root-salad.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Vinn Koonyosying · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Wood-Grilled Half Chicken",
+  "slug": "recipe/wood-grilled-half-chicken",
+  "sort": 6,
+  "data": {
+   "name": "Wood-Grilled Half Chicken",
+   "course": "Mains",
+   "price": "29",
+   "station": "Grill",
+   "description": "A brined half chicken over the wood grill with salsa verde, charred lemon and crispy potatoes.",
+   "photo": "/img/demo-mise/wood-grilled-half-chicken.jpg",
+   "ingredients": [
+    "Half chicken",
+    "Salsa verde",
+    "Lemon",
+    "Fingerling potatoes",
+    "Garlic"
+   ],
+   "allergens": [
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": true,
+   "sellingLine": "Our signature: brined overnight, cooked over the wood fire, with a bright green salsa verde.",
+   "dropMain": "Wood-grilled half chicken",
+   "dropSide": "Crispy fingerlings",
+   "dropSauce": "Salsa verde",
+   "talkingPoints": [
+    "The chicken is brined for 24 hours, so it stays juicy.",
+    "It cooks over oak on the grill for the smoky skin.",
+    "It takes about 20 minutes; let the table know when they order."
+   ],
+   "pairing": "Domaine Laroche Chablis",
+   "pairingOpposite": "Catena Malbec",
+   "cocktail": "Orchard Sour",
+   "say": "“Our signature: brined overnight, cooked over the wood fire, with a bright green salsa verde.”",
+   "inspiration": "The dish the restaurant was built around: one fire, one great chicken.",
+   "sellingPoints": [
+    "Our signature dish",
+    "Gluten-free as written",
+    "Brined for 24 hours"
+   ],
+   "components": [
+    {
+     "component": "Half chicken, brined",
+     "portion": "1 half",
+     "hold": "Cold, 38°F"
+    },
+    {
+     "component": "Fingerling potatoes",
+     "portion": "6 oz",
+     "hold": "Par-cooked, cold"
+    },
+    {
+     "component": "Salsa verde",
+     "portion": "2 oz",
+     "hold": "Cold, 38°F"
+    },
+    {
+     "component": "Charred lemon",
+     "portion": "½ lemon",
+     "hold": "Grill to order"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Grill",
+     "detail": "Grill skin side down over the oak, then turn.",
+     "time": "18 min"
+    },
+    {
+     "title": "Crisp",
+     "detail": "Smash and fry the fingerlings until golden.",
+     "time": "4 min"
+    },
+    {
+     "title": "Rest",
+     "detail": "Rest the chicken, then cut through the joints.",
+     "time": "3 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Chicken over potatoes, salsa verde and lemon.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Potatoes",
+     "note": "bed, center"
+    },
+    {
+     "name": "Chicken",
+     "note": "leaning on the potatoes, skin up"
+    },
+    {
+     "name": "Salsa verde",
+     "note": "spooned along one side"
+    },
+    {
+     "name": "Lemon",
+     "note": "charred half, cut side up"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/wood-grilled-half-chicken.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Angela Bailey · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Seared Scallops",
+  "slug": "recipe/seared-scallops",
+  "sort": 7,
+  "data": {
+   "name": "Seared Scallops",
+   "course": "Mains",
+   "price": "36",
+   "station": "Sauté",
+   "description": "Dry-packed sea scallops seared hard, with roasted cauliflower, brown butter and pickled shallot.",
+   "photo": "/img/demo-mise/seared-scallops.jpg",
+   "ingredients": [
+    "Sea scallops",
+    "Cauliflower",
+    "Brown butter",
+    "Pickled shallot",
+    "Micro herbs"
+   ],
+   "allergens": [
+    "Shellfish",
+    "Dairy",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Sea scallops with a deep golden crust, roasted cauliflower and nutty brown butter.",
+   "dropMain": "Seared sea scallops",
+   "dropSide": "Roasted cauliflower",
+   "dropSauce": "Brown butter",
+   "talkingPoints": [
+    "Dry-packed scallops, so they take a real sear.",
+    "The cauliflower is roasted hard until the edges are nutty.",
+    "Shellfish: always confirm allergies before you fire it."
+   ],
+   "pairing": "Sandhi Chardonnay",
+   "pairingOpposite": "Elk Cove Pinot Noir",
+   "cocktail": "Wren’s Nest",
+   "say": "“Sea scallops with a deep golden crust, roasted cauliflower and nutty brown butter.”",
+   "inspiration": "Brown butter, cauliflower and scallops: three sweet, nutty things on one plate.",
+   "sellingPoints": [
+    "Seared to order",
+    "Gluten-free as written",
+    "Light but filling"
+   ],
+   "components": [
+    {
+     "component": "Sea scallops",
+     "portion": "4 each",
+     "hold": "Cold, 34°F, on paper"
+    },
+    {
+     "component": "Roasted cauliflower",
+     "portion": "4 oz",
+     "hold": "Hot, 140°F"
+    },
+    {
+     "component": "Brown butter",
+     "portion": "1 oz",
+     "hold": "Warm"
+    },
+    {
+     "component": "Pickled shallot",
+     "portion": "1 tbsp",
+     "hold": "Cold, 38°F"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Dry",
+     "detail": "Pat the scallops dry and season just before searing.",
+     "time": "1 min"
+    },
+    {
+     "title": "Sear",
+     "detail": "Sear in a smoking pan without moving them.",
+     "time": "2 min"
+    },
+    {
+     "title": "Baste",
+     "detail": "Flip, add butter and baste.",
+     "time": "1 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Cauliflower first, scallops on top, brown butter over.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Cauliflower",
+     "note": "florets in a loose line"
+    },
+    {
+     "name": "Scallops",
+     "note": "four in a row, crust up"
+    },
+    {
+     "name": "Brown butter",
+     "note": "spooned around"
+    },
+    {
+     "name": "Shallot and herbs",
+     "note": "last"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/seared-scallops.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Connie Perez · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Braised Lamb Shank",
+  "slug": "recipe/braised-lamb-shank",
+  "sort": 8,
+  "data": {
+   "name": "Braised Lamb Shank",
+   "course": "Mains",
+   "price": "34",
+   "station": "Oven",
+   "description": "Lamb shank braised in red wine until it falls from the bone, over creamy polenta with gremolata.",
+   "photo": "/img/demo-mise/braised-lamb-shank.jpg",
+   "ingredients": [
+    "Lamb shank",
+    "Red wine",
+    "Polenta",
+    "Parmesan",
+    "Gremolata"
+   ],
+   "allergens": [
+    "Dairy",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Slow-braised in red wine for hours; it comes off the bone with a spoon.",
+   "dropMain": "Braised lamb shank",
+   "dropSide": "Creamy polenta",
+   "dropSauce": "Red wine braise",
+   "talkingPoints": [
+    "It braises for about four hours in red wine and stock.",
+    "The gremolata (lemon, parsley, garlic) brightens it up.",
+    "A big plate: good for a hungry guest or a cold night."
+   ],
+   "pairing": "Guigal Côtes du Rhône",
+   "pairingOpposite": "Dog Point Sauvignon Blanc",
+   "cocktail": "Black Walnut Manhattan",
+   "say": "“Slow-braised in red wine for hours; it comes off the bone with a spoon.”",
+   "inspiration": "A cold-weather dish, cooked low and slow while the dining room sets up.",
+   "sellingPoints": [
+    "Braised for four hours",
+    "Gluten-free as written",
+    "A big, comforting plate"
+   ],
+   "components": [
+    {
+     "component": "Lamb shank, braised",
+     "portion": "1 shank",
+     "hold": "Hot, in braise"
+    },
+    {
+     "component": "Polenta",
+     "portion": "6 oz",
+     "hold": "Hot, 150°F"
+    },
+    {
+     "component": "Braising sauce",
+     "portion": "3 oz",
+     "hold": "Hot, reduced"
+    },
+    {
+     "component": "Gremolata",
+     "portion": "1 tbsp",
+     "hold": "Cold, made each shift"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Heat",
+     "detail": "Warm the shank in its braise in the oven.",
+     "time": "10 min"
+    },
+    {
+     "title": "Polenta",
+     "detail": "Loosen polenta with stock and parmesan.",
+     "time": "2 min"
+    },
+    {
+     "title": "Glaze",
+     "detail": "Spoon reduced sauce over the shank.",
+     "time": "1 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Polenta, shank upright, gremolata on top.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Polenta",
+     "note": "wide bowl, center"
+    },
+    {
+     "name": "Shank",
+     "note": "standing, bone up"
+    },
+    {
+     "name": "Sauce",
+     "note": "spooned over"
+    },
+    {
+     "name": "Gremolata",
+     "note": "on top, last"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/braised-lamb-shank.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Neil Marshall · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Hanger Steak Frites",
+  "slug": "recipe/hanger-steak-frites",
+  "sort": 9,
+  "data": {
+   "name": "Hanger Steak Frites",
+   "course": "Mains",
+   "price": "32",
+   "station": "Grill",
+   "description": "Grilled hanger steak sliced against the grain with chimichurri and hand-cut fries.",
+   "photo": "/img/demo-mise/hanger-steak-frites.jpg",
+   "ingredients": [
+    "Hanger steak",
+    "Chimichurri",
+    "Hand-cut fries",
+    "Garlic aioli"
+   ],
+   "allergens": [
+    "Egg",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "A big-flavoured steak cooked over the grill, with fresh chimichurri and our hand-cut fries.",
+   "dropMain": "Grilled hanger steak",
+   "dropSide": "Hand-cut fries",
+   "dropSauce": "Chimichurri",
+   "talkingPoints": [
+    "Hanger is the butcher’s cut: rich and beefy. We suggest medium-rare.",
+    "Fries are cut by hand and cooked twice.",
+    "Chimichurri is parsley, oregano, garlic, chili and vinegar."
+   ],
+   "pairing": "Catena Malbec",
+   "pairingOpposite": "Segura Viudas Cava",
+   "cocktail": "Smoke Signal",
+   "say": "“A big-flavoured steak cooked over the grill, with fresh chimichurri and our hand-cut fries.”",
+   "inspiration": "Steak frites, with Argentina’s chimichurri in place of the usual butter.",
+   "sellingPoints": [
+    "Best at medium-rare",
+    "Hand-cut fries",
+    "Great with our Malbec"
+   ],
+   "components": [
+    {
+     "component": "Hanger steak",
+     "portion": "8 oz",
+     "hold": "Cold, 34°F"
+    },
+    {
+     "component": "Hand-cut fries",
+     "portion": "6 oz",
+     "hold": "Blanched, cold"
+    },
+    {
+     "component": "Chimichurri",
+     "portion": "2 oz",
+     "hold": "Room temp, made each shift"
+    },
+    {
+     "component": "Garlic aioli",
+     "portion": "1.5 oz",
+     "hold": "Cold, 38°F"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Grill",
+     "detail": "Grill to temp, turning once.",
+     "time": "8 min"
+    },
+    {
+     "title": "Fry",
+     "detail": "Fry the blanched fries at 375°F until golden.",
+     "time": "4 min"
+    },
+    {
+     "title": "Rest",
+     "detail": "Rest the steak, then slice against the grain.",
+     "time": "4 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Steak fanned, fries beside, chimichurri over.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Steak",
+     "note": "sliced and fanned"
+    },
+    {
+     "name": "Fries",
+     "note": "stacked beside"
+    },
+    {
+     "name": "Chimichurri",
+     "note": "spooned over the slices"
+    },
+    {
+     "name": "Aioli",
+     "note": "ramekin for the fries"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/hanger-steak-frites.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Tim Toomey · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Wild Mushroom Risotto",
+  "slug": "recipe/wild-mushroom-risotto",
+  "sort": 10,
+  "data": {
+   "name": "Wild Mushroom Risotto",
+   "course": "Mains",
+   "price": "26",
+   "station": "Sauté",
+   "description": "Carnaroli risotto with roasted wild mushrooms, thyme, parmesan and a little truffle butter.",
+   "photo": "/img/demo-mise/wild-mushroom-risotto.jpg",
+   "ingredients": [
+    "Carnaroli rice",
+    "Wild mushrooms",
+    "Thyme",
+    "Parmesan",
+    "Truffle butter"
+   ],
+   "allergens": [
+    "Dairy",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Creamy, made to order, with a pile of roasted wild mushrooms and a little truffle butter.",
+   "dropMain": "Wild mushroom risotto",
+   "dropSide": "Roasted mushrooms",
+   "dropSauce": "Truffle butter",
+   "talkingPoints": [
+    "Made to order: it takes about 18 minutes.",
+    "The mushrooms change with what the forager brings in.",
+    "Vegetarian; we use vegetable stock."
+   ],
+   "pairing": "Fontodi Chianti Classico",
+   "pairingOpposite": "Dog Point Sauvignon Blanc",
+   "cocktail": "Black Walnut Manhattan",
+   "say": "“Creamy, made to order, with a pile of roasted wild mushrooms and a little truffle butter.”",
+   "inspiration": "The vegetarian main the kitchen is proudest of.",
+   "sellingPoints": [
+    "Vegetarian",
+    "Made to order",
+    "Gluten-free as written"
+   ],
+   "components": [
+    {
+     "component": "Par-cooked risotto",
+     "portion": "6 oz",
+     "hold": "Cold, sheet tray"
+    },
+    {
+     "component": "Roasted mushrooms",
+     "portion": "3 oz",
+     "hold": "Warm"
+    },
+    {
+     "component": "Vegetable stock",
+     "portion": "6 oz",
+     "hold": "Hot, simmering"
+    },
+    {
+     "component": "Truffle butter",
+     "portion": "½ oz",
+     "hold": "Cold"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Finish",
+     "detail": "Finish the risotto with hot stock, stirring.",
+     "time": "8 min"
+    },
+    {
+     "title": "Mount",
+     "detail": "Off the heat, beat in parmesan and butter.",
+     "time": "1 min"
+    },
+    {
+     "title": "Roast",
+     "detail": "Flash the mushrooms in a hot pan with thyme.",
+     "time": "2 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Risotto spread flat, mushrooms on top.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Risotto",
+     "note": "spread flat to the rim"
+    },
+    {
+     "name": "Mushrooms",
+     "note": "piled center"
+    },
+    {
+     "name": "Truffle butter",
+     "note": "small knob, melting"
+    },
+    {
+     "name": "Thyme",
+     "note": "a few leaves"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/wild-mushroom-risotto.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Zoshua Colah · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Wrenfield Burger",
+  "slug": "recipe/wrenfield-burger",
+  "sort": 11,
+  "data": {
+   "name": "Wrenfield Burger",
+   "course": "Mains",
+   "price": "21",
+   "station": "Grill",
+   "description": "Two smashed patties, aged cheddar, onion jam and house pickles on a toasted brioche bun, with fries.",
+   "photo": "/img/demo-mise/wrenfield-burger.jpg",
+   "ingredients": [
+    "Beef patties",
+    "Aged cheddar",
+    "Onion jam",
+    "House pickles",
+    "Brioche bun",
+    "Hand-cut fries"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Egg",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Two crispy smashed patties, sharp cheddar and sweet onion jam. The one regulars order.",
+   "dropMain": "Double smash burger",
+   "dropSide": "Hand-cut fries",
+   "dropSauce": "Onion jam",
+   "talkingPoints": [
+    "The patties are smashed thin on the flat-top for crispy edges.",
+    "Onion jam cooks low for two hours.",
+    "Can go in a lettuce wrap; the bun has egg and dairy."
+   ],
+   "pairing": "Ridge Three Valleys",
+   "pairingOpposite": "Trimbach Riesling",
+   "cocktail": "Honey Rye Highball",
+   "say": "“Two crispy smashed patties, sharp cheddar and sweet onion jam. The one regulars order.”",
+   "inspiration": "The staff vote for best family meal, put on the menu.",
+   "sellingPoints": [
+    "A regulars’ favourite",
+    "Lettuce wrap on request",
+    "Comes with hand-cut fries"
+   ],
+   "components": [
+    {
+     "component": "Beef balls",
+     "portion": "2 × 3 oz",
+     "hold": "Cold, 34°F"
+    },
+    {
+     "component": "Aged cheddar",
+     "portion": "2 slices",
+     "hold": "Cold"
+    },
+    {
+     "component": "Onion jam",
+     "portion": "1 oz",
+     "hold": "Warm"
+    },
+    {
+     "component": "Brioche bun",
+     "portion": "1",
+     "hold": "Toast to order"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Smash",
+     "detail": "Smash the beef thin on a very hot flat-top.",
+     "time": "2 min"
+    },
+    {
+     "title": "Cheese",
+     "detail": "Flip, add cheddar, stack the patties.",
+     "time": "1 min"
+    },
+    {
+     "title": "Build",
+     "detail": "Bun, pickles, patties, onion jam, top bun.",
+     "time": "1 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Burger cut in half, fries beside.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Burger",
+     "note": "cut in half, stacked"
+    },
+    {
+     "name": "Pick",
+     "note": "through the top bun"
+    },
+    {
+     "name": "Fries",
+     "note": "beside, not under"
+    },
+    {
+     "name": "Pickles",
+     "note": "two spears"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/wrenfield-burger.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "Kimia Zarifi · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Grilled Pound Cake",
+  "slug": "recipe/grilled-pound-cake",
+  "sort": 12,
+  "data": {
+   "name": "Grilled Pound Cake",
+   "course": "Dessert",
+   "price": "11",
+   "station": "Pastry",
+   "description": "Brown butter pound cake, grilled until crisp at the edges, with whipped cream and macerated berries.",
+   "photo": "/img/demo-mise/grilled-pound-cake.jpg",
+   "ingredients": [
+    "Brown butter pound cake",
+    "Whipped cream",
+    "Strawberries",
+    "Blueberries",
+    "Honey"
+   ],
+   "allergens": [
+    "Dairy",
+    "Gluten",
+    "Egg"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Warm pound cake straight off the grill, with cold whipped cream and sweet berries.",
+   "dropMain": "Grilled pound cake",
+   "dropSide": "Macerated berries",
+   "dropSauce": "Whipped cream",
+   "talkingPoints": [
+    "Baked each afternoon, then grilled to order.",
+    "The butter is browned first, so the cake tastes nutty (there are no nuts in it).",
+    "Big enough for two to share."
+   ],
+   "pairing": "Segura Viudas Cava",
+   "pairingOpposite": "Guigal Côtes du Rhône",
+   "cocktail": "Orchard Sour",
+   "say": "“Warm pound cake straight off the grill, with cold whipped cream and sweet berries.”",
+   "inspiration": "The grill is still warm at the end of the night, so dessert goes on it too.",
+   "sellingPoints": [
+    "Grilled to order",
+    "Shares well",
+    "No nuts, despite the nutty taste"
+   ],
+   "components": [
+    {
+     "component": "Pound cake",
+     "portion": "2 slices",
+     "hold": "Room temp, covered"
+    },
+    {
+     "component": "Macerated berries",
+     "portion": "2 oz",
+     "hold": "Cold, 38°F"
+    },
+    {
+     "component": "Whipped cream",
+     "portion": "1.5 oz",
+     "hold": "Cold, piping bag"
+    },
+    {
+     "component": "Honey",
+     "portion": "Drizzle",
+     "hold": "Room temp"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Butter",
+     "detail": "Brush the slices with melted butter.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Grill",
+     "detail": "Grill until marked and crisp at the edges.",
+     "time": "2 min"
+    },
+    {
+     "title": "Plate",
+     "detail": "Overlap the slices; spoon berries over.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Finish",
+     "detail": "Whipped cream and a drizzle of honey.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Cake",
+     "note": "two slices, overlapping"
+    },
+    {
+     "name": "Berries",
+     "note": "spooned over, with juice"
+    },
+    {
+     "name": "Cream",
+     "note": "a big dollop"
+    },
+    {
+     "name": "Honey",
+     "note": "thin drizzle, last"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/grilled-pound-cake.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "sheri silver · Unsplash (stand-in)"
+  }
+ },
+ {
+  "key": "demo-mise/Chocolate Pot de Crème",
+  "slug": "recipe/chocolate-pot-de-creme",
+  "sort": 13,
+  "data": {
+   "name": "Chocolate Pot de Crème",
+   "course": "Dessert",
+   "price": "10",
+   "station": "Pastry",
+   "description": "Dark chocolate custard with whipped crème fraîche and a cocoa nib tuile.",
+   "photo": "/img/demo-mise/chocolate-pot-de-creme.jpg",
+   "ingredients": [
+    "Dark chocolate",
+    "Cream",
+    "Egg yolks",
+    "Crème fraîche",
+    "Cocoa nibs"
+   ],
+   "allergens": [
+    "Dairy",
+    "Egg",
+    "Gluten"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Silky dark chocolate custard, not too sweet, with a little cream on top.",
+   "dropMain": "Dark chocolate pot de crème",
+   "dropSide": "Whipped crème fraîche",
+   "dropSauce": "Cocoa nib tuile",
+   "talkingPoints": [
+    "A baked custard: rich but small.",
+    "The crème fraîche keeps it from tasting too sweet.",
+    "The tuile has gluten; it can come off."
+   ],
+   "pairing": "Muga Reserva",
+   "pairingOpposite": "Dog Point Sauvignon Blanc",
+   "cocktail": "Black Walnut Manhattan",
+   "say": "“Silky dark chocolate custard, not too sweet, with a little cream on top.”",
+   "inspiration": "The French classic, served in a small jar so it fits after a big dinner.",
+   "sellingPoints": [
+    "A small, rich finish",
+    "Gluten-free without the tuile",
+    "Pairs with a stirred cocktail"
+   ],
+   "components": [
+    {
+     "component": "Pot de crème",
+     "portion": "1 jar",
+     "hold": "Cold, 38°F"
+    },
+    {
+     "component": "Whipped crème fraîche",
+     "portion": "1 oz",
+     "hold": "Cold, piping bag"
+    },
+    {
+     "component": "Cocoa nib tuile",
+     "portion": "1",
+     "hold": "Room temp, airtight"
+    },
+    {
+     "component": "Cocoa powder",
+     "portion": "Dust",
+     "hold": "Station"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Temper",
+     "detail": "Pull the jar 5 minutes before serving.",
+     "time": "5 min"
+    },
+    {
+     "title": "Top",
+     "detail": "Pipe crème fraîche on top.",
+     "time": "30 sec"
+    },
+    {
+     "title": "Dust",
+     "detail": "Dust lightly with cocoa.",
+     "time": "10 sec"
+    },
+    {
+     "title": "Finish",
+     "detail": "Stand the tuile in the cream.",
+     "time": "Pass"
+    }
+   ],
+   "plating": [
+    {
+     "name": "Jar",
+     "note": "on a small plate with a spoon"
+    },
+    {
+     "name": "Cream",
+     "note": "one rosette"
+    },
+    {
+     "name": "Cocoa",
+     "note": "light dust"
+    },
+    {
+     "name": "Tuile",
+     "note": "standing upright"
+    }
+   ],
+   "photos": [
+    {
+     "img": "/img/demo-mise/chocolate-pot-de-creme.jpg",
+     "caption": "Final plate"
+    }
+   ],
+   "chapters": [],
+   "hasVideo": false,
+   "video": null,
+   "photoCredit": "American Heritage Chocolate · Unsplash (stand-in)"
+  }
+ }
+]
