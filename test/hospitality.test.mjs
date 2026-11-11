@@ -95,7 +95,7 @@ test('another company reads the generic version, with the same structure and no 
     assert.ok(!BRG_WORDS.test(JSON.stringify(r.data)), e.slug + ' names nothing of BRG’s');
   }
   const page = async (slug) => JSON.stringify((await owner2('/api/page/' + index.find((e) => e.slug === slug).file)).data);
-  assert.ok((await page('hospitality-program/level-1')).includes('Cobalt Kitchen Hospitality 101 Training Module'), 'their own acknowledgment');
+  assert.ok((await page('hospitality-program/level-1')).includes('Cobalt Kitchen Hospitality 101 training'), 'their own acknowledgment');
   assert.ok((await page('hospitality-program/level-2/hosp-greeting/what-to-say')).includes('welcome to Cobalt Kitchen'), 'their own name in the greeting');
   assert.ok((await page('hospitality-program/level-2/hosp-water-selling')).includes('Bottled waters'), 'water, generalised');
   const qs = (await owner2('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:hosp-2' } })).data;
