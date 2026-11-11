@@ -9,7 +9,7 @@ import { useSession } from '../lib/session';
 export type Cert = {
   key: string; isA?: boolean; program: string; programName: string; programSlug: string; level: number; levelWord: string; title: string; seal: string;
   name: string; final: { pct: number; at: string; firstAt: string }; practical: { at: string; by: string | null } | null;
-  number: string; earnedAt: string; store: string | null; logo: string | null; fine: string;
+  number: string; earnedAt: string; store: string | null; logo: string | null; fine: string; practicalLabel?: string | null;
 };
 
 const day = (iso: string, month: 'short' | 'long' = 'short') => new Date(iso).toLocaleDateString('en-US', { month, day: 'numeric', year: 'numeric', timeZone: 'America/Detroit' });
@@ -17,7 +17,7 @@ const day = (iso: string, month: 'short' | 'long' = 'short') => new Date(iso).to
 /** The certificate itself, 1056 × 816 in the design. */
 export function Certificate({ c }: { c: Cert }) {
   const facts: [string, string][] = [['Final exam', `${c.final.pct}% · ${day(c.final.at)}`]];
-  if (c.practical) facts.push(['Practical', c.practical.by ? `Signed off by ${c.practical.by}` : `Signed off ${day(c.practical.at)}`]);
+  if (c.practical) facts.push([c.practicalLabel || 'Practical', c.practical.by ? `Signed off by ${c.practical.by}` : `Signed off ${day(c.practical.at)}`]);
   facts.push(['Certificate no.', c.number]);
   const store = c.store || 'Our restaurant';
   return (

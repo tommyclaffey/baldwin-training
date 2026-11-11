@@ -1,0 +1,285 @@
+{
+ "number": 1,
+ "programLevel": 2,
+ "slug": "hosp-mise-en-place",
+ "title": "Mise en place",
+ "script": "Lesson 1",
+ "lead": "Every table is a conversation. It starts with everything in its place before the doors open.",
+ "minutes": 10,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "Every table is a conversation",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Every table is a conversation."
+    }
+   ],
+   "know": [
+    "Conversation every table is one.",
+    "Their side we are always on the guest’s side.",
+    "Small gestures become the moments guests retell."
+   ]
+  },
+  {
+   "name": "Your station and what you know",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Everything in its place before the doors open."
+    }
+   ],
+   "know": [
+    "Fully present a prepared server can be, with every guest.",
+    "Side stand napkins, crumber, wine key, pens, candles.",
+    "Taste the specials before service.",
+    "86 list know it, with ingredients and allergens."
+   ]
+  },
+  {
+   "name": "Pre-shift and you",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Plan a gesture before the guest arrives."
+    }
+   ],
+   "know": [
+    "Guest notes regulars, celebrations, dietary needs, VIPs.",
+    "A gesture planned before the guest arrives.",
+    "Phone away uniform pressed, grooming immaculate.",
+    "Reset your mind and your station between tables."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Every table is a conversation",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CONVERSATION",
+      "line": "every table is one."
+     },
+     {
+      "big": "THEIR SIDE",
+      "line": "we are always on the guest’s side."
+     },
+     {
+      "big": "SMALL GESTURES",
+      "line": "become the moments guests retell."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every table is a conversation.",
+     "where": "**Service is what we do; hospitality is how it makes the guest feel.** Drawing on the philosophies of **Danny Meyer** (Setting the Table) and **Will Guidara** (Unreasonable Hospitality), this module treats **every table as a conversation**: one where we are **always on the guest’s side**, and where small, personal gestures become the moments guests **remember and retell**."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Your station and what you know",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "FULLY PRESENT",
+      "line": "a prepared server can be, with every guest."
+     },
+     {
+      "big": "SIDE STAND",
+      "line": "napkins, crumber, wine key, pens, candles."
+     },
+     {
+      "big": "TASTE",
+      "line": "the specials before service."
+     },
+     {
+      "big": "86 LIST",
+      "line": "know it, with ingredients and allergens."
+     }
+    ],
+    "read": {
+     "bigIdea": "Everything in its place before the doors open.",
+     "where": "A prepared server is free to be **fully present** with guests, because nothing pulls attention away from them.",
+     "stops": [
+      {
+       "name": "Station",
+       "text": "Glassware and silver **polished and spotless**; linens **pressed**; the side stand stocked with **napkins, crumber, wine key, pens, candles** and water service pieces."
+      },
+      {
+       "name": "Knowledge",
+       "text": "**Taste the specials.** Know ingredients, **allergens**, the **86 list**, and the wine, cocktail and water offerings well enough to describe them **in a sentence**."
+      }
+     ]
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Pre-shift and you",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "GUEST NOTES",
+      "line": "regulars, celebrations, dietary needs, VIPs."
+     },
+     {
+      "big": "A GESTURE",
+      "line": "planned before the guest arrives."
+     },
+     {
+      "big": "PHONE AWAY",
+      "line": "uniform pressed, grooming immaculate."
+     },
+     {
+      "big": "RESET",
+      "line": "your mind and your station between tables."
+     }
+    ],
+    "read": {
+     "bigIdea": "Plan a gesture before the guest arrives.",
+     "where": "Pre-shift is where the evening’s **gestures** get planned, and where you get yourself ready.",
+     "stops": [
+      {
+       "name": "Pre-shift",
+       "text": "Review **reservations and guest notes**: **regulars, celebrations, dietary needs and VIPs**, so we can **plan a gesture** before the guest arrives."
+      },
+      {
+       "name": "Self",
+       "text": "Uniform **pressed**, grooming **immaculate**, **phone away**. **Reset your mind and your station** between every table."
+      }
+     ]
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   }
+  ]
+ },
+ "sources": "The Art of Table Service: introduction and 1, Mise en Place.",
+ "cards": [
+  {
+   "q": "The Art of Table Service treats every table as…",
+   "answer": "A conversation",
+   "wrong": [
+    "A transaction",
+    "A performance",
+    "A checklist"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Whose side are we always on?",
+   "answer": "The guest’s",
+   "wrong": [
+    "The kitchen’s",
+    "Whoever is paying",
+    "The manager’s"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "What becomes the moments guests remember and retell?",
+   "answer": "Small, personal gestures",
+   "wrong": [
+    "Big discounts",
+    "Fast table turns",
+    "A long wine list"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "The module draws on the philosophies of which two authors?",
+   "answer": "Danny Meyer and Will Guidara",
+   "wrong": [
+    "Thomas Keller and Danny Meyer",
+    "Will Guidara and Anthony Bourdain",
+    "Julia Child and Thomas Keller"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Why does mise en place matter to the guest?",
+   "answer": "A prepared server is free to be fully present with them",
+   "wrong": [
+    "It lets the server skip pre-shift",
+    "It makes tables turn faster",
+    "It saves on linens"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "What goes on a stocked side stand?",
+   "answer": "Napkins, crumber, wine key, pens, candles and water service pieces",
+   "wrong": [
+    "Menus, the reservation book and the phone",
+    "Extra chairs and high chairs",
+    "The day’s receipts"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How well do you know the wine, cocktail and water offerings?",
+   "answer": "Well enough to describe each in a sentence",
+   "wrong": [
+    "Well enough to read the menu aloud",
+    "Only the prices",
+    "Only what a guest asks about"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Before service, what do you do with the specials?",
+   "answer": "Taste them",
+   "wrong": [
+    "Learn the prices only",
+    "Leave them for the kitchen to explain",
+    "Skip them if the menu is new"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Why review reservations and guest notes before service?",
+   "answer": "So we can plan a gesture before the guest arrives",
+   "wrong": [
+    "So we can seat the biggest checks first",
+    "So we know which tables to rush",
+    "To count covers for the kitchen"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "What do we look for in the guest notes?",
+   "answer": "Regulars, celebrations, dietary needs and VIPs",
+   "wrong": [
+    "Only VIPs",
+    "Only allergies",
+    "Only large parties"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Between every table, you…",
+   "answer": "Reset your mind and your station",
+   "wrong": [
+    "Check your phone",
+    "Take a short break",
+    "Restock the bar"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}

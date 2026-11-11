@@ -608,7 +608,7 @@ export function barPage(page, ctx) {
   for (const t of findAll(hero, (x) => x.t === 'T' && (x.z || 0) >= 36)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
   const glance = find(hero, byName('At a glance'));
   if (glance) {
-    const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], [String(L.len), 'questions'], L.practical ? ['1', 'practical'] : ['80%', 'to pass']];
+    const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], [String(L.len), 'questions'], L.practical ? ['1', L.practicalStat || 'practical'] : ['80%', 'to pass']];
     glance.c.forEach((st, i) => { const tt = texts(st); if (stats[i]) { setText(tt[0], stats[i][0]); setText(tt[1], stats[i][1]); st.n = 'Stat · ' + stats[i][1]; } });
   }
   const prog = courseProgress(ctx.done, all);
@@ -618,8 +618,10 @@ export function barPage(page, ctx) {
     let line = null;
     const certified = ctx.passedAt && (!L.practical || ctx.practical);
     if (certified) line = txt(`✓ ${L.title.toUpperCase()} · ${day(ctx.practical?.at > ctx.passedAt ? ctx.practical.at : ctx.passedAt)}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
+    else if (ctx.passedAt && L.ack) line = txt(ctx.ack?.signed ? '✓ FINAL PASSED · ACKNOWLEDGED · TRAINER SIGN-OFF NEXT' : '✓ FINAL PASSED · NEXT: SIGN THE ACKNOWLEDGMENT', { ls: '10%', c: '#7FCB93', z: 12.5 });
     else if (ctx.passedAt) line = txt('✓ FINAL PASSED · PRACTICAL: ASK A MANAGER WHEN READY', { ls: '10%', c: '#7FCB93', z: 12.5 });
-    else if (ctx.practical) line = txt(`✓ PRACTICAL SIGNED OFF${ctx.practical.by ? ' BY ' + ctx.practical.by.toUpperCase() : ''}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
+    else if (ctx.practical) line = txt(`✓ ${L.ack ? 'SIGNED OFF' : 'PRACTICAL SIGNED OFF'}${ctx.practical.by ? ' BY ' + ctx.practical.by.toUpperCase() : ''}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
+    else if (ctx.ack?.signed) line = txt(`✓ ACKNOWLEDGMENT SIGNED · ${day(ctx.ack.signed.at)}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
     if (line) { line.n = 'Status line'; line.ar = 'H'; line.sh = 'F'; line.w = 398; copy.c.splice(copy.c.findIndex((x) => x.n === 'Course progress') + 1, 0, line); }
   }
   const btns = find(hero, byName('Buttons'));
@@ -649,8 +651,9 @@ export function barPage(page, ctx) {
       ? ['Watch or read the lesson', 'Answer 3 cards per section', `Pass the ${L.len}-question final`, L.practicalStep]
       : ['Watch or read the lesson', 'Swipe the key points', 'Answer 3 cards per section', `Pass the ${L.len}-question final`];
     how.c.forEach((st, i) => { const tt = texts(st); if (steps[i]) setText(tt[tt.length - 1], steps[i]); });
-    const levels = clone(how); levels.n = 'The four levels';
+    const levels = clone(how); levels.n = `The ${countWord(P.ladder.length).toLowerCase()} levels`;
     const names = P.ladder;
+    if (levels.c.length > names.length) levels.c = levels.c.slice(0, names.length); // Hospitality has two
     levels.c.forEach((st, i) => {
       const built = LEVELS.find((x) => x.program === L.program && x.level === i + 1 && chaptersOf(x.program, x.level).length); const tt = texts(st);
       setText(tt[tt.length - 1], names[i] + (built ? '' : ' · coming'));
@@ -658,9 +661,27 @@ export function barPage(page, ctx) {
       if (!built) st.op = 0.55; else if (i + 1 !== L.level) st.to = '/' + built.slug;
     });
     const at = main.c.indexOf(how);
-    main.c.splice(at + 1, 0, { t: 'F', n: 'Levels', lm: 'V', gap: 14, w: how.w, sh: 'F', sv: 'H', c: [txt('THE FOUR LEVELS', { ls: '12%', c: '#8A5A3A', z: 12 }), levels] });
+    main.c.splice(at + 1, 0, { t: 'F', n: 'Levels', lm: 'V', gap: 14, w: how.w, sh: 'F', sv: 'H', c: [txt(`THE ${countWord(names.length).toUpperCase()} LEVELS`, { ls: '12%', c: '#8A5A3A', z: 12 }), levels] });
+  }
+  // Hospitality 101 (Nov 11): the acknowledgment, after the lessons. The statement is drawn here; signing is live.
+  if (L.ack && ctx.ack) {
+    const at = main.c.indexOf(course);
+    main.c.splice(at + 1, 0, ackBlock({ ...ctx.ack, trainer: ctx.practical }, L, course?.w || how?.w || 1080));
   }
   return page;
+}
+
+/** The training acknowledgment: BRG's (or this restaurant's) statement, then the live sign box (src/components/Acknowledgment.tsx). */
+function ackBlock(a, L, W) {
+  const signed = a.signed ? { name: a.signed.name, at: a.signed.at } : null;
+  return { t: 'F', n: 'Acknowledgment', lm: 'V', gap: 18, w: W, pd: [32, 36, 32, 36], r: 24, f: [{ c: '#1E1C1A' }], sh: 'F', sv: 'H', c: [
+    { t: 'F', n: 'Head', lm: 'V', gap: 4, sh: 'F', sv: 'H', c: [
+      { ...txt(a.script || 'Part of your new-hire paperwork', { z: 26, c: '#C49A6C', fs: 'Regular' }), ff: 'Pinyon Script' },
+      { ...txt((a.title || 'Training acknowledgment').toUpperCase(), { z: 26, c: '#F2EEE7', fs: 'ExtraBold' }), ar: 'H', sh: 'F' },
+    ] },
+    { ...txt(a.statement || '', { z: 17, c: '#F2EEE7', fs: 'Medium' }), n: 'Statement', ar: 'H', sh: 'F', lh: '150%' },
+    { t: 'F', n: 'Acknowledgment sign box', w: W - 72, h: 120, sh: 'F', sv: 'H', meta: { ack: { level: L.file, signed, canSign: !!a.canSign, trainer: a.trainer || null } } },
+  ] };
 }
 
 /* ---------------- program hubs (Nov 8) ---------------- */
@@ -703,9 +724,26 @@ const HUB_COPY = {
     ]],
   },
 };
+// The Hospitality Program (Nov 11): BRG's two training documents are its levels; the two books they name are its shelf.
+HUB_COPY.hosp = {
+  script: 'Our hospitality training', lead: 'Our core beliefs, then the art of table service, with a certificate at each level.',
+  who: ['Everyone', 'Servers'], cards: ['/img/6a901544ea2b.jpg', '/img/study/on-the-floor--glassware.jpg'],
+  videosHead: null,
+  shelf: ['Where our lessons come from', 'Our two training documents, and the books they draw on', [
+    ['OUR TRAINING', false, [
+      ['Hospitality 101', 'Part of the new-hire paperwork. Level 1 follows it page by page.', 'LEVEL 1', '/hospitality-program/level-1'],
+      ['The Art of Table Service', 'Our service training module. Level 2 follows its thirteen parts.', 'LEVEL 2', '/hospitality-program/level-2'],
+    ]],
+    ['THE BOOKS IT DRAWS ON', true, [
+      ['Setting the Table', 'Danny Meyer, 2006. Where service vs hospitality comes from.', 'BOOK', 'https://www.harpercollins.ca/9780060742768/setting-the-table'],
+      ['Unreasonable Hospitality', 'Will Guidara, 2022. Named in The Art of Table Service.', 'BOOK', 'https://www.penguinrandomhouse.com/books/674289/unreasonable-hospitality-by-will-guidara'],
+    ]],
+  ]],
+};
 function sourceShelf([script, sub, groups]) {
-  const W = 1080, cw = Math.floor((W - 32) / 3);
-  const group = ([label, dark, docs]) => ({ t: 'F', n: 'Group · ' + label, lm: 'V', gap: 12, sh: 'L', sv: 'H', c: [
+  const W = 1080;
+  // three to a row; a group of two (Hospitality) shares the row between them
+  const group = ([label, dark, docs], _i, _a, cw = Math.floor((W - 16 * (Math.min(3, docs.length) - 1)) / Math.min(3, docs.length))) => ({ t: 'F', n: 'Group · ' + label, lm: 'V', gap: 12, sh: 'L', sv: 'H', c: [
     txt(label, { z: 11, ls: '12%', c: '#8A5A3A' }),
     { t: 'F', n: 'Docs', lm: 'H', gap: 16, wrap: 1, cg: 16, sh: 'L', sv: 'H', c: docs.map(([title, line, kind, url]) => {
       const fg = dark ? '#F2EEE7' : '#1E1C1A', sub2 = dark ? '#CFC6B9' : '#5E574F';
@@ -774,6 +812,10 @@ export function programHub(page, ctx) {
   } else if (cont) remove(main, cont);
   // the four levels
   const lv = find(main, byName('Levels'));
+  // a program with fewer than four levels (Hospitality: two) shows just its own and says how many; on a wide screen two cards
+  // share the row (styles.css), on a phone they stay two across like the others
+  if (P.ladder.length !== 4) for (const t of findAll(main, (x) => x.t === 'T' && x.s === 'Four levels')) { setText(t, `${countWord(P.ladder.length)} levels`); t.n = t.s; }
+  if (lv && lv.c.length > P.ladder.length) { lv.c = lv.c.slice(0, P.ladder.length); lv.n = 'Levels'; }
   if (lv) lv.c.forEach((card, i) => {
     const L = levels.find((x) => x.level === i + 1);
     card.n = `Level ${i + 1} · ${P.ladder[i]}`; card.f = [{ img: H.cards[i], m: 'FILL' }];

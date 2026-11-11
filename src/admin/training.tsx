@@ -117,10 +117,13 @@ function PersonPath({ id, jobs, onChange }: { id: number; jobs: Job[]; onChange:
                   <td className="tr-kind">{g.title.replace('Cocktail Program · ', 'Bar · ')}</td>
                   <td>{g.cert}{g.certified ? <> · certified · <a href={`/certificate/${g.certKey}?user=${p.id}`}>View</a></> : ''}</td>
                   <td>{g.final?.passedAt ? `Final passed ${when(g.final.passedAt)}` : g.final?.best ? `Final best ${g.final.best}, not passed yet` : 'Final not taken'}
-                    {g.practical && <><br />{g.practical.at ? `Practical signed off${g.practical.by ? ' by ' + g.practical.by : ''} ${when(g.practical.at)}` : `Practical: ${g.practical.how}`}</>}</td>
+                    {g.practical && <><br />{g.practical.at ? `Practical signed off${g.practical.by ? ' by ' + g.practical.by : ''} ${when(g.practical.at)}` : `Practical: ${g.practical.how}`}</>}
+                    {/* Hospitality 101 (Nov 11): the person signs the acknowledgment first, then the trainer signs it off */}
+                    {g.practical && 'ack' in g.practical && <><br />{g.practical.ack ? `Acknowledgment signed “${g.practical.ack.name}” ${when(g.practical.ack.at)}` : 'Acknowledgment not signed yet'}</>}</td>
                   <td>{g.practical && (g.practical.at
                     ? <button className="link-btn danger" onClick={() => void sign(g.practical!.key, false)} disabled={!!busy}>Undo</button>
-                    : <button className="btn small" onClick={() => void sign(g.practical!.key, true)} disabled={!!busy}>{busy === g.practical.key ? 'Signing…' : 'Sign Off Practical'}</button>)}</td>
+                    : 'ack' in g.practical && !g.practical.ack ? null
+                    : <button className="btn small" onClick={() => void sign(g.practical!.key, true)} disabled={!!busy}>{busy === g.practical.key ? 'Signing…' : 'ack' in g.practical ? 'Sign Off' : 'Sign Off Practical'}</button>)}</td>
                 </tr>
               ))}
             </tbody>
