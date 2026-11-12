@@ -915,9 +915,9 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   assert.ok(lp.includes('"youtubeId":"pdcrJ5V7YKM"') && lp.includes('OLD FASHIONED'), 'the Old Fashioned lesson with its video');
   const cat = (await call('/api/quiz/catalog')).data;
   const final = cat.quizzes.find((q) => q.id === 't:final:bar-1');
-  assert.equal(final.count, 30, 'Level 1 is a short final');
+  assert.equal(final.count, 40, 'Level 1 is a short final (40 questions since Nov 12: one lesson per staple spirit)');
   assert.equal(final.group, 'Cocktail Program · Level 1');
-  assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 1').length, 5, 'four lesson quizzes and the final');
+  assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 1').length, 10, 'nine lesson quizzes and the final');
   // Level 2 (Nov 8 split): the spirits and the six roots, a 60-question final with our menu's specs, and a practical
   const l2 = index.find((e) => e.slug === 'cocktail-program/level-2');
   const l2p = JSON.stringify((await call('/api/page/' + l2.file)).data);
@@ -928,7 +928,7 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   const gin = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'cocktail-program/level-2/bar-vodka-gin/gin-styles').file)).data);
   assert.ok(gin.includes('GENEVER') && gin.includes('/spirit/gin/london-dry'), 'a spirit lesson links to its back bar page');
   const start = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-1' } })).data;
-  assert.equal(start.items.length, 30);
+  assert.equal(start.items.length, 40);
   assert.ok(start.items.every((q) => !/What’s the spec/.test(q.q)), 'specs are a bartender’s job: not in Level 1');
   const start2 = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-2' } })).data;
   assert.equal(start2.items.length, 60);
@@ -955,6 +955,64 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   const b3 = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'beer-program/level-3').file)).data);
   assert.ok(b3.includes('ADVANCED SPECIALIST') && b3.includes('t%3Afinal%3Abeer-3'));
   assert.equal(cat.quizzes.filter((q) => q.group === 'Beer Program · Level 3').length, 9, 'eight lesson quizzes and the final');
+});
+
+test('Cocktail Program Level 1: one lesson per staple spirit, each store’s own drinks and bottles, a final across all nine (Nov 12)', async () => {
+  const index = (await call('/api/index')).data;
+  const slugs = ['bar-serving', 'bar-l1-vodka', 'bar-l1-gin', 'bar-l1-rum', 'bar-l1-tequila', 'bar-l1-whiskey', 'bar-l1-basics', 'bar-our-menu', 'bar-glass-ice-garnish'];
+  const lessons = slugs.map((s) => JSON.parse(fs.readFileSync(path.join(root, 'content/bar', s + '.json'), 'utf8')));
+  assert.deepEqual(lessons.map((c) => [c.number, c.barLevel]), slugs.map((_, i) => [i + 1, 1]), 'nine lessons, in order, all Level 1');
+  assert.deepEqual(lessons.map((c) => c.title), ['Serving and how guests order', 'Vodka', 'Gin', 'Rum', 'Tequila and mezcal', 'Whiskey', 'The basics', 'Our menu', 'Glass, ice and garnish']);
+  assert.ok(!fs.existsSync(path.join(root, 'content/bar/bar-spirits-at-a-glance.json')) && fs.existsSync(path.join(root, 'content/archive/bar-l1-v2/bar-spirits-at-a-glance.json')), 'Spirits at a glance is archived, not deleted');
+  const level1 = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'cocktail-program/level-1').file)).data);
+  for (const c of lessons) assert.ok(level1.includes(`"/cocktail-program/level-1/${c.slug}"`), c.slug + ' is on the Level 1 page');
+  assert.ok(level1.includes('9 LESSONS') && level1.includes('Nine short lessons'), 'the Level 1 page counts nine');
+  // every video in the app, so a spirit lesson's video is used nowhere else
+  const ids = (dir) => fs.readdirSync(path.join(root, dir)).filter((f) => f.endsWith('.json')).flatMap((f) => [...fs.readFileSync(path.join(root, dir, f), 'utf8').matchAll(/"youtubeId": ?"([\w-]{11})"/g)].map((m) => [f, m[1]]));
+  const all = [...ids('content/bar'), ...ids('content/beer'), ...ids('content/manual'), ...ids('content/manual-l2'), ...ids('content/cms')];
+  const photos = JSON.parse(fs.readFileSync(path.join(root, 'content/research/study-photos.json'), 'utf8')).photos;
+  for (const c of lessons.slice(1, 6)) {
+    const vids = c.v3.sections.map((s) => s.video).filter(Boolean);
+    assert.equal(vids.length, 1, c.slug + ': one video');
+    assert.ok(vids[0].youtubeId && vids[0].title && vids[0].by && vids[0].length, c.slug + ': title, channel and length recorded');
+    assert.deepEqual([...new Set(all.filter(([f, id]) => id === vids[0].youtubeId).map(([f]) => f))], [c.slug + '.json'], c.slug + ': its video is used nowhere else');
+    const own = { 'bar-l1-vodka': 'vodka', 'bar-l1-gin': 'gin', 'bar-l1-rum': 'rum', 'bar-l1-tequila': 'tequila', 'bar-l1-whiskey': 'whiske?y' }[c.slug];
+    const named = ['vodka', 'gin', 'rum', 'tequila', 'mezcal', 'whiske?y', 'bourbon', 'scotch', 'brandy', 'cognac'].filter((w) => new RegExp(`\\b${w}s?\\b`, 'i').test(vids[0].title));
+    assert.deepEqual(named, [own], c.slug + ': a video about that spirit only (' + vids[0].title + ')');
+    for (const s of c.sections) {
+      assert.ok(s.source && s.source.length > 10, `${c.slug} · ${s.name}: names its source`);
+      const v = c.v3.sections.find((x) => x.name === s.name);
+      assert.ok(v.video || photos.some((p) => p.chapter === c.slug && p.section === s.name), `${c.slug} · ${s.name}: a video or a photo`);
+      assert.equal(v.check.length, 3, `${c.slug} · ${s.name}: three check cards`);
+      assert.ok(v.keyPoints.length >= 3 && v.read.bigIdea && v.read.where, `${c.slug} · ${s.name}: key points and the reading`);
+    }
+    assert.ok(Array.isArray(c.unverified) && c.unverified.length, c.slug + ': says what still needs checking');
+  }
+  // our menu's drinks first: The Baldwin's own vodka drinks; no house rum on its menu, so the classics stay
+  const lessonPage = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
+  const vodka = await lessonPage('cocktail-program/level-1/bar-l1-vodka/vodka-cocktails');
+  assert.ok(vodka.includes('ON OUR MENU') || vodka.includes('On our menu'), 'an On our menu list');
+  assert.ok(vodka.includes('Lavender Haze'), 'The Baldwin’s own vodka drink');
+  const rum = await lessonPage('cocktail-program/level-1/bar-l1-rum/rum-cocktails');
+  assert.ok(rum.includes('Classics to know') && rum.includes('Piña Colada'), 'no house rum drink on the menu: the classics');
+  const order = await lessonPage('cocktail-program/level-1/bar-l1-vodka/how-guests-order-it');
+  assert.ok(order.includes('On our back bar:') && order.includes('Absolut Blue') && order.includes('and 4 more'), 'its own back bar');
+  // Wrenfield (the Mise demo) sees its own
+  const cookie = await startDemo('employee', 'mise');
+  const idx = JSON.parse(await getAs(cookie, '/api/index'));
+  const mrum = await getAs(cookie, '/api/page/' + idx.find((e) => e.slug === 'cocktail-program/level-1/bar-l1-rum/rum-cocktails').file);
+  assert.ok(mrum.includes('Hibiscus Daiquiri') && !mrum.includes('Lavender Haze'), 'Wrenfield’s own rum drink');
+  const mvodka = await getAs(cookie, '/api/page/' + idx.find((e) => e.slug === 'cocktail-program/level-1/bar-l1-vodka/how-guests-order-it').file);
+  assert.ok(mvodka.includes('Wheatley Vodka') && !mvodka.includes('Absolut Blue'), 'Wrenfield’s own vodkas');
+  // the final: 40 questions, every one of the nine lessons asked
+  const start = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-1', fresh: true } })).data;
+  assert.equal(start.items.length, 40);
+  const asked = new Set(start.items.map((r) => r.split(':')[1]));
+  assert.deepEqual([...asked].sort(), [...slugs].sort(), 'every lesson is in the final');
+  // the server path borrows each spirit's "How guests order it"
+  const { pathFor } = await import('../server/paths.mjs');
+  const steps = pathFor('server', { quizzes: [], slugs: new Set(), titles: new Map() }).flatMap((st) => st.steps.map((x) => x.key)).filter(Boolean);
+  for (const k of ['bar-l1-vodka#2', 'bar-l1-gin#2', 'bar-l1-rum#2', 'bar-l1-tequila#3', 'bar-l1-whiskey#4']) assert.ok(steps.includes(k), k);
 });
 
 test('behind the scenes: health answers, ops endpoints are closed without the token, browser errors are taken (Nov 10)', async () => {

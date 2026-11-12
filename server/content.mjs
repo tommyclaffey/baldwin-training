@@ -594,7 +594,8 @@ function assembleRaw(db, file) {
     const ch = chapterBySlug(lm[1]); const i = Number(lm[2]); const tpl = basePage('403-45'); const chTpl = basePage('362-2');
     if (!ch || !tpl || !chTpl || !ch.sections[i]) return null;
     if (SCOPE.user) markRead(db, SCOPE.user.id, ch.slug);
-    return lessonPage(tpl, chTpl, ch, i, { done: sectionsDone(db, SCOPE.user?.id) });
+    // Nov 12: Level 1's spirit lessons list this store's own house cocktails and bottles (study.mjs, withOurs)
+    return lessonPage(tpl, chTpl, ch, i, { done: sectionsDone(db, SCOPE.user?.id), ours: () => ({ house: ordered(db, 'house'), shelf: ordered(db, 'shelf') }) });
   }
   if (/^e\d+$/.test(file)) {
     const e = getEntry(db, Number(file.slice(1)));
