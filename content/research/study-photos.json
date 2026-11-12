@@ -1595,6 +1595,150 @@
    "section": "Well, call and premium",
    "file": "/img/fe067d97b4ac.jpg",
    "description": "Reused from the app (Cocktail Program Level 1 spirits, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-menu",
+   "section": "Shape of the menu",
+   "file": "/img/fe067d97b4ac.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-menu",
+   "section": "Price across the menu",
+   "file": "/img/48ca851d7531.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-menu",
+   "section": "Seasonal changes",
+   "file": "/img/classic-oaxaca-old-fashioned.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-menu",
+   "section": "Menu engineering",
+   "file": "/img/6a38e5b20321.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-running",
+   "section": "Par levels",
+   "file": "/img/96166a879fdb.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-running",
+   "section": "Prep and the prep list",
+   "file": "/img/0839380a2aaf.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-running",
+   "section": "Ordering",
+   "file": "/img/d757eed8b346.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-running",
+   "section": "Inventory and variance",
+   "file": "/img/8130b0d82b8b.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-team",
+   "section": "Training bartenders",
+   "file": "/img/9dafca12fbe5.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-team",
+   "section": "Pre-shift",
+   "file": "/img/98f69a7fb7fe.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-team",
+   "section": "Standards",
+   "file": "/img/a48943778c20.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-team",
+   "section": "Tasting with the team",
+   "file": "/img/classic-bees-knees.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-hospitality",
+   "section": "Service vs hospitality",
+   "file": "/img/6a901544ea2b.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-hospitality",
+   "section": "Reading the bar",
+   "file": "/img/5e5d6ac14e27.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-hospitality",
+   "section": "Regulars",
+   "file": "/img/classic-rusty-nail.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-hospitality",
+   "section": "When it goes wrong",
+   "file": "/img/study/on-the-floor--glassware.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-suppliers",
+   "section": "How liquor gets to us",
+   "file": "/img/study/beer-sake-spirits--distillation.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-suppliers",
+   "section": "Reps and distributors",
+   "file": "/img/study/beer-sake-spirits--vodka-gin-rum-and-liqueurs.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-suppliers",
+   "section": "Allocations",
+   "file": "/img/classic-mai-tai.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-suppliers",
+   "section": "Sourcing for the menu",
+   "file": "/img/study/beer-sake-spirits--cognac-and-other-brandy.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-law",
+   "section": "Age and ID",
+   "file": "/img/study/on-the-floor--mise-en-place.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-law",
+   "section": "Visible intoxication",
+   "file": "/img/classic-rob-roy.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-law",
+   "section": "Liability",
+   "file": "/img/study/on-the-floor--temperature-and-storage.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
+  },
+  {
+   "chapter": "bar-l4-law",
+   "section": "Hours, records and training",
+   "file": "/img/e066afd0239e.jpg",
+   "description": "Reused from the app (Cocktail Program, Level 4, Nov 12)"
   }
  ]
 }

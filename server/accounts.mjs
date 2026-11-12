@@ -416,7 +416,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const all = db.prepare("SELECT u.*, c.name company_name FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.company_id = ? AND u.deleted_at IS NULL ORDER BY CASE u.role WHEN 'owner' THEN 0 WHEN 'manager' THEN 1 ELSE 2 END, u.name COLLATE NOCASE").all(cid);
       // A store manager sees their store's people (and the owners); everyone else sees the whole company.
       const people = all.filter((x) => inScope(u, x) || x.role === 'owner');
-      const passed = new Map(db.prepare('SELECT device, COUNT(*) n FROM signoffs WHERE company_id = ? GROUP BY device').all(cid).map((r) => [r.device, r.n]));
+      const passed = new Map(db.prepare("SELECT device, COUNT(*) n FROM signoffs WHERE company_id = ? AND quiz NOT LIKE '%:invite' GROUP BY device").all(cid).map((r) => [r.device, r.n]));
       const invites = db.prepare('SELECT substr(token_hash,1,16) id, email, role, store_id, created_at, expires_at FROM invites WHERE company_id = ? AND used_at IS NULL AND expires_at > ? ORDER BY created_at DESC').all(cid, now());
       const stores = storesOf(db, cid);
       const storeName = new Map(stores.map((x) => [x.id, x.name]));

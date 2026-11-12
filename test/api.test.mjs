@@ -71,7 +71,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
   // + the Cocktail Program (Nov 8): a course page per level (2) and one entry per lesson section (no whole-chapter pages)
   const bar = [...readDir('content/bar'), ...readDir('content/beer'), ...readDir('content/hospitality')]; // + the Beer Program (Nov 8), the Hospitality Program (Nov 11)
-  assert.equal(index.length, 656 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 8 + 3 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 39 house drinks (Nov 9: four off the list), the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  assert.equal(index.length, 656 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 9 + 3 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 39 house drinks (Nov 9: four off the list), the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -1146,4 +1146,93 @@ test('demo: the Mise demo restarts as the Mise demo; The Baldwin keeps its own m
   // the Mise demo's section list leaves out The Baldwin group's own; the shared schema isn't changed for anyone else
   assert.doesNotMatch(await getAs(fresh, '/api/collections'), /BRG Staples/);
   assert.match(JSON.stringify((await call('/api/collections')).data), /BRG Staples/);
+});
+
+// Nov 12 (Tommy: "let's finish the advanced cocktail program"): Level 4, Master of the Bar, by invitation
+test('Cocktail Program Level 4: six lessons, a 60-question final, a practical and a certificate, by invitation', async () => {
+  const slugs = ['bar-l4-menu', 'bar-l4-running', 'bar-l4-team', 'bar-l4-hospitality', 'bar-l4-suppliers', 'bar-l4-law'];
+  const lessons = slugs.map((s) => JSON.parse(fs.readFileSync(path.join(root, 'content/bar', s + '.json'), 'utf8')));
+  assert.deepEqual(lessons.map((c) => [c.number, c.barLevel]), slugs.map((_, i) => [i + 1, 4]), 'six lessons, in order, all Level 4');
+  const photos = JSON.parse(fs.readFileSync(path.join(root, 'content/research/study-photos.json'), 'utf8')).photos;
+  for (const c of lessons) {
+    assert.ok(c.unverified.length && c.sources, c.slug + ': sources and what still needs checking');
+    for (const s of c.sections) {
+      const v = c.v3.sections.find((x) => x.name === s.name);
+      assert.ok(v.video || photos.some((p) => p.chapter === c.slug && p.section === s.name), `${c.slug} · ${s.name}: a video or a photo`);
+      assert.equal(v.check.length, 3); assert.ok(v.check.every((i) => c.cards[i]), `${c.slug} · ${s.name}: three check cards`);
+      assert.ok(v.keyPoints.length >= 3 && v.read.bigIdea && v.read.where && v.read.stops.length >= 2 && v.read.mixup, `${c.slug} · ${s.name}: the full reading flow`);
+    }
+  }
+  assert.ok(lessons.reduce((k, c) => k + c.cards.length, 0) >= 60, 'enough cards for a 60-question final');
+  const index = (await call('/api/index')).data;
+  const l4 = index.find((e) => e.slug === 'cocktail-program/level-4');
+  assert.ok(l4, 'Level 4 is in the book');
+  for (const c of lessons) for (const [i] of c.sections.entries()) assert.ok(index.some((e) => e.file === `l-${c.slug}~${i}`), `${c.slug} lesson ${i} is in the book`);
+  // the owner can open it, and is told how invitations work
+  const op = JSON.stringify((await call('/api/page/' + l4.file)).data);
+  assert.ok(op.includes('MASTER OF THE BAR') && op.includes('t%3Afinal%3Abar-4') && op.includes('practical') && op.includes('INVITE YOUR TEAM ON PEOPLE'));
+  assert.ok(!op.includes('· Coming'), 'nothing in the Cocktail Program says coming');
+  const hub = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'cocktail-program').file)).data);
+  assert.ok(hub.includes('/cocktail-program/level-4') && hub.includes('By invitation · 6 lessons') && hub.includes('t%3Afinal%3Abar-4') && !/"Coming"/.test(hub), 'the hub: Level 4 card and its final');
+  const cat = (await call('/api/quiz/catalog')).data;
+  assert.equal(cat.quizzes.find((q) => q.id === 't:final:bar-4').count, 60);
+  assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 4').length, 7, 'six lesson quizzes and the final');
+  // a member of staff sees the level but can't open it
+  const code = (await call('/api/team')).data.company.joinCode;
+  const tam = person();
+  assert.equal((await tam('/api/join', { method: 'POST', body: { code, name: 'Tamsin Rook', pin: '8642', storeId: 1 } })).status, 200);
+  const sp = JSON.stringify((await tam('/api/page/' + l4.file)).data);
+  assert.ok(sp.includes('BY INVITATION · ASK YOUR MANAGER') && !sp.includes('t%3Afinal%3Abar-4') && !sp.includes('"/cocktail-program/level-4/bar-l4-'), 'locked: no final, lessons don’t open');
+  const lockedLesson = JSON.stringify((await tam('/api/page/l-bar-l4-law~0')).data);
+  assert.ok(lockedLesson.includes('ASK YOUR MANAGER') && !lockedLesson.includes('21 or older'), 'a lesson address shows the level page instead');
+  assert.equal((await tam('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-4' } })).status, 403);
+  assert.equal((await tam('/api/quiz/start', { method: 'POST', body: { quiz: 't:study:bar-l4-law' } })).status, 403);
+  assert.ok(!(await tam('/api/quiz/catalog')).data.quizzes.some((q) => q.id === 't:final:bar-4'), 'not in the staff quiz list');
+  assert.ok(!(await tam('/api/quiz/catalog')).data.topics.some((t) => t.key === 'study:bar-l4-law'), 'not in Build a Quiz either');
+  // the owner invites her on People; Remove takes it back; invite again
+  const team = (await call('/api/path/team')).data;
+  const tid = team.people.find((x) => x.name === 'Tamsin Rook').id;
+  const inv = (await call('/api/path/signoff', { method: 'POST', body: { userId: tid, key: 'program:bar-4:invite' } })).data;
+  assert.ok(inv.programs.find((g) => g.cert === 'Master of the Bar').invite.at, 'invited');
+  await call('/api/path/signoff', { method: 'DELETE', body: { userId: tid, key: 'program:bar-4:invite' } });
+  assert.equal((await tam('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-4' } })).status, 403, 'removed');
+  await call('/api/path/signoff', { method: 'POST', body: { userId: tid, key: 'program:bar-4:invite' } });
+  assert.ok(JSON.stringify((await tam('/api/page/' + l4.file)).data).includes('✓ INVITED'));
+  assert.ok(JSON.stringify((await tam('/api/page/l-bar-l4-law~0')).data).includes('21 or older'), 'the lessons open');
+  // the final (60 questions), then the practical a manager signs off = the certificate
+  const q = (await tam('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-4' } })).data;
+  assert.equal(q.items.length, 60);
+  const r = (await tam('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: q.items.map((ref) => q.questions[ref].answer) } })).data;
+  assert.equal(r.score, 60);
+  assert.ok(!(await tam('/api/certificates')).data.certificates.some((c) => c.key === 'bar-4'), 'no certificate before the practical');
+  await call('/api/path/signoff', { method: 'POST', body: { userId: tid, key: 'program:bar-4:practical' } });
+  const cert = (await tam('/api/certificates')).data.certificates.find((c) => c.key === 'bar-4');
+  assert.ok(cert && cert.title === 'Master of the Bar' && cert.number.startsWith('BAR4-') && cert.practical, 'Master of the Bar, earned');
+});
+
+test('every Cocktail Program video is used once in the whole app, and every section names its source (Nov 12)', () => {
+  // The Sommelier chapters share some Court and Wine Folly videos with Level 2 and the wine pages on purpose; the Cocktail
+  // Program's don't repeat anywhere (the six roots are the classics' own how-to videos, by design).
+  const uses = new Map();
+  const add = (id, where) => uses.set(id, [...(uses.get(id) || []), where]);
+  for (const d of ['content/bar', 'content/beer', 'content/manual', 'content/manual-l2', 'content/hospitality', 'content/hospitality-generic']) {
+    if (!fs.existsSync(path.join(root, d))) continue;
+    for (const f of fs.readdirSync(path.join(root, d)).filter((x) => x.endsWith('.json') && !x.startsWith('_'))) {
+      const c = JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'));
+      for (const s of c.v3?.sections || []) if (s.video?.youtubeId) add(s.video.youtubeId, `${d}/${f}`);
+      if (d === 'content/bar') for (const s of c.sections) assert.ok(s.source && s.source.length > 10, `${f} · ${s.name}: names its source`);
+    }
+  }
+  const other = ['content/cms/classic.json', 'content/wine-videos.json'].map((f) => fs.readFileSync(path.join(root, f), 'utf8')).join('\n');
+  let n = 0;
+  for (const f of fs.readdirSync(path.join(root, 'content/bar')).filter((x) => x.endsWith('.json'))) {
+    const c = JSON.parse(fs.readFileSync(path.join(root, 'content/bar', f), 'utf8'));
+    for (const s of c.v3?.sections || []) {
+      if (!s.video?.youtubeId) continue; n++;
+      assert.ok(s.video.title && s.video.by && s.video.length, `${f} · ${s.name}: title, channel and length`);
+      assert.deepEqual([...new Set(uses.get(s.video.youtubeId))], ['content/bar/' + f], `${f} · ${s.name}: its video is in no other lesson`);
+      if (c.slug !== 'bar-six-roots') assert.ok(!other.includes(s.video.youtubeId), `${f} · ${s.name}: not on a classic or wine page`);
+    }
+  }
+  assert.ok(n >= 70, 'the Cocktail Program’s videos');
 });

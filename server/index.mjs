@@ -14,6 +14,7 @@ import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames } from './scanner.mjs';
 import { personPath, personSummary, isPathSignoff, validJobs, JOBS } from './paths.mjs';
 import { pathCtxFor, teamRows, signoffQueue, quizWeek, newCertificates, lastEdits, bookTiles, reminderText, addNote, pathSteps, personRow, todayIso, addDays } from './team.mjs';
+import { lockedTopics, isInviteKey } from './invite.mjs';
 import { certificatesFor } from './certs.mjs';
 import { passFor } from './quizgen.mjs';
 import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
@@ -255,6 +256,7 @@ async function api(req, res, url) {
     const u = needReader(c, req);
     if (!quizLimiter.check('u' + u.id)) fail(429, 'Too many saves. Try again in an hour.');
     const b = await readJson(req, 150_000); // a Full Quiz can be hundreds of questions (Nov 6: 50, 100 and Full didn't save)
+    if (/^t:/.test(String(b.quiz || '')) && lockedTopics(db, u, c.store).has(String(b.quiz).slice(2))) fail(403, 'That level is by invitation. Ask your manager.');
     const r = scoreQuiz(db, c.store, String(b.quiz || ''), b.items, b.answers);
     if (!r) fail(400, 'That quiz didn’t match. Reload and try again.');
     quizLimiter.record('u' + u.id);
@@ -263,15 +265,23 @@ async function api(req, res, url) {
     return sendJson(res, 200, r);
   }
   // The quizzes for this store: topics to pick from, built-in and team quizzes.
-  if (p === '/api/quiz/catalog' && m === 'GET') { needReader(c, req); return sendJson(res, 200, quizCatalog(db, c.store)); }
+  if (p === '/api/quiz/catalog' && m === 'GET') {
+    const u = needReader(c, req); const cat = quizCatalog(db, c.store);
+    // Nov 12: a level by invitation (Master of the Bar) stays out of the list until this person is invited
+    const locked = lockedTopics(db, u, c.store);
+    if (!locked.size) return sendJson(res, 200, cat);
+    return sendJson(res, 200, { ...cat, topics: cat.topics.filter((t) => !locked.has(t.key)), quizzes: cat.quizzes.filter((q) => !(q.topics || []).some((t) => locked.has(t))) });
+  }
   // A fresh attempt: a built-in, team or pre-shift quiz by id, or a custom mix of topics.
   if (p === '/api/quiz/start' && m === 'POST') {
     const reader = needReader(c, req);
     const b = await readJson(req);
     let id = String(b.quiz || '');
+    const locked = lockedTopics(db, reader, c.store);
+    if (/^t:/.test(id) && locked.has(id.slice(2))) fail(403, 'That level is by invitation. Ask your manager.');
     if (!id && Array.isArray(b.topics)) {
       const known = new Set(topicList(questionPool(db, c.store)).map((t) => t.key));
-      const topics = b.topics.map(String).filter((t) => known.has(t));
+      const topics = b.topics.map(String).filter((t) => known.has(t) && !locked.has(t));
       if (!topics.length) fail(400, 'Pick at least one topic.');
       id = customId(topics, [0, 5, 10, 20, 50, 100].includes(Number(b.count)) ? Number(b.count) : 10);
     }
@@ -485,14 +495,16 @@ async function api(req, res, url) {
     if (p === '/api/path/signoff' && (m === 'POST' || m === 'DELETE')) {
       const u = needUser(c, req); const b = await readJson(req);
       const x = person(b.userId); const key = String(b.key || '');
-      if (!isPathSignoff(x, key) && !signable(db, c.store, key)) fail(400, 'That step can’t be signed off.');
+      if (!isPathSignoff(x, key) && !signable(db, c.store, key) && !isInviteKey(key)) fail(400, 'That step can’t be signed off.');
+      // Nov 12: inviting someone to a level by invitation (Master of the Bar). Managers and owners can already open it.
+      if (isInviteKey(key) && x.role !== 'staff') fail(400, 'Managers and owners can already open that level.');
       // Hospitality 101 (Nov 11): the trainer signs off after the person has signed the acknowledgment
       if (m === 'POST' && ackFor(key) && !ackOf(db, x.id, c.store, ackFor(key).file)) fail(400, `${x.name.split(/\s+/)[0]} hasn’t signed the acknowledgment yet.`);
       if (m === 'POST') {
         db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at,company_id,store_id) VALUES (?,?,?,?,?,?)').run('u' + x.id, key, u.id, now(), c.company, c.store);
         db.prepare('DELETE FROM signoff_requests WHERE user_id = ? AND store_id = ? AND key = ?').run(x.id, c.store, key); // asked and answered
       } else db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').run('u' + x.id, key, c.store);
-      audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${x.name} · ${key}`, c.company);
+      audit(db, u.id, isInviteKey(key) ? (m === 'POST' ? 'invite to level' : 'remove level invitation') : m === 'POST' ? 'sign off' : 'undo sign off', `${x.name} · ${key}`, c.company);
       return sendJson(res, 200, personFull(userRow(x.id)));
     }
   }

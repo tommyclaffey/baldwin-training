@@ -1,0 +1,391 @@
+{
+ "number": 3,
+ "barLevel": 4,
+ "slug": "bar-l4-team",
+ "title": "Leading the team",
+ "script": "Lesson 3",
+ "lead": "Train bartenders, run pre-shift, hold the standard, and taste safely.",
+ "minutes": 12,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Training bartenders",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Show, watch, then sign off."
+    }
+   ],
+   "know": [
+    "Levels the programs teach the knowledge.",
+    "Shadow learn the station beside a pro.",
+    "Sign off only after you’ve watched them do it."
+   ],
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app; House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Pre-shift",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Ten minutes that set the night."
+    }
+   ],
+   "know": [
+    "86’d what’s out, and what to offer instead.",
+    "Focus one drink or one standard tonight.",
+    "Check a quick question to see who knows it."
+   ],
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app; House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Standards",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The spec is the spec."
+    }
+   ],
+   "know": [
+    "Jigger every pour, every drink.",
+    "Same drink, any bartender, any night.",
+    "Fix it on the spot, kindly."
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Tasting with the team",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Taste to learn, never to drink."
+    }
+   ],
+   "know": [
+    "Law no one on staff may be intoxicated at work.",
+    "Ask the GM before any tasting with alcohol.",
+    "Straw taste: a sip, not a drink."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707); House practice (ours; GM to confirm)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Training bartenders",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LEVELS",
+      "line": "the programs teach the knowledge."
+     },
+     {
+      "big": "SHADOW",
+      "line": "learn the station beside a pro."
+     },
+     {
+      "big": "SIGN OFF",
+      "line": "only after you’ve watched them do it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Show, watch, then sign off.",
+     "where": "The **programs** in this book carry the knowledge: Level 1 for everyone, Level 2 for bartenders, Level 3 for the craft. On the bar, a new bartender **shadows** a strong one, then builds drinks while you **watch**. Sign off a practical only after you’ve **seen** it done to spec.",
+     "stopsTitle": "A new bartender",
+     "stops": [
+      {
+       "name": "Learn",
+       "text": "The **lessons** and finals."
+      },
+      {
+       "name": "Shadow",
+       "text": "A few shifts beside a **pro**."
+      },
+      {
+       "name": "Prove it",
+       "text": "A **practical**, watched and signed."
+      }
+     ],
+     "mixup": "Passing a quiz isn’t the same as making the drink. The **practical** is where you see it."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Pre-shift",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "86’D",
+      "line": "what’s out, and what to offer instead."
+     },
+     {
+      "big": "FOCUS",
+      "line": "one drink or one standard tonight."
+     },
+     {
+      "big": "CHECK",
+      "line": "a quick question to see who knows it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Ten minutes that set the night.",
+     "where": "Pre-shift is short and the same every night: what’s **86’d** and what to offer instead, tonight’s **focus** (one drink or one standard), anything new on the menu, and a quick **check** (the book’s Quick Quiz works). Pin the notes in **Team Chat** so the late arrival reads them too.",
+     "stopsTitle": "Every pre-shift",
+     "stops": [
+      {
+       "name": "Out",
+       "text": "What’s **86’d**, what to offer."
+      },
+      {
+       "name": "Focus",
+       "text": "**One** thing for tonight."
+      },
+      {
+       "name": "Check",
+       "text": "A quick **question** or two."
+      }
+     ],
+     "mixup": "Pre-shift isn’t a lecture. **One** focus sticks; ten don’t.",
+     "sayIt": "We’re out of the lavender syrup tonight, but I can make it with honey instead."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Standards",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "JIGGER",
+      "line": "every pour, every drink."
+     },
+     {
+      "big": "SAME",
+      "line": "drink, any bartender, any night."
+     },
+     {
+      "big": "FIX",
+      "line": "it on the spot, kindly."
+     }
+    ],
+    "read": {
+     "bigIdea": "The spec is the spec.",
+     "where": "A guest should get the **same drink** from any bartender on any night. That means every pour is **measured** with a jigger, every drink follows the **spec**, the **glass**, the **ice** and the **garnish**. When you see a drift, fix it **on the spot**, quietly and kindly, and change the spec only through you.",
+     "stopsTitle": "What you check",
+     "stops": [
+      {
+       "name": "Pour",
+       "text": "**Jiggered**, not free-poured."
+      },
+      {
+       "name": "Build",
+       "text": "The **spec**, in order."
+      },
+      {
+       "name": "Finish",
+       "text": "Right **glass**, **ice**, **garnish**."
+      }
+     ],
+     "mixup": "A “good” free pour isn’t a standard. A **jigger** is."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Tasting with the team",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LAW",
+      "line": "no one on staff may be intoxicated at work."
+     },
+     {
+      "big": "ASK",
+      "line": "the GM before any tasting with alcohol."
+     },
+     {
+      "big": "STRAW",
+      "line": "taste: a sip, not a drink."
+     }
+    ],
+    "read": {
+     "bigIdea": "Taste to learn, never to drink.",
+     "where": "Tasting is how a team learns a menu, but it has limits. Michigan’s Liquor Control Code says a licensee’s **employees may not be intoxicated** on the premises. So any tasting that involves alcohol happens only under **our license and HR policy**, set by the **GM**. Tasting **syrups**, **citrus** and spec checks with a **straw** (Level 3) is part of the job.",
+     "stopsTitle": "A safe tasting",
+     "stops": [
+      {
+       "name": "Check",
+       "text": "The **GM** has okayed it."
+      },
+      {
+       "name": "Small",
+       "text": "A **straw** sip, not a drink."
+      },
+      {
+       "name": "Learn",
+       "text": "Talk about **balance** and the selling line."
+      }
+     ],
+     "mixup": "A staff tasting isn’t a staff drink. It’s a **sip** to learn from."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707); Our book: the training programs, Quick Quiz and Team Chat in this app; House practice (ours; GM to confirm). Written for Mise in our own words, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "Before signing off a bartender’s practical, you should…",
+   "answer": "Watch them build the drinks to spec",
+   "wrong": [
+    "Ask if they feel ready",
+    "Check their quiz score only",
+    "Sign it on their first day"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "In this book, which level is for bartenders?",
+   "answer": "Level 2, Certified Bartender",
+   "wrong": [
+    "Level 1 only",
+    "Level 4 only",
+    "None: bartenders skip training"
+   ],
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app"
+  },
+  {
+   "q": "Shadowing means a new bartender…",
+   "answer": "Works beside a strong bartender for a few shifts",
+   "wrong": [
+    "Works alone on a slow night",
+    "Only reads the menu",
+    "Watches videos at home"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "An 86’d item is…",
+   "answer": "Out for the night",
+   "wrong": [
+    "The 86th drink sold",
+    "A double pour",
+    "A drink on special"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A good pre-shift has how many main focus points?",
+   "answer": "One",
+   "wrong": [
+    "Ten",
+    "None",
+    "One per bartender"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Where can pre-shift notes be pinned so everyone sees them?",
+   "answer": "Team Chat",
+   "wrong": [
+    "The back of a receipt",
+    "A guest’s check",
+    "Nowhere"
+   ],
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app"
+  },
+  {
+   "q": "Why measure every pour with a jigger?",
+   "answer": "So the drink is the same from any bartender",
+   "wrong": [
+    "It looks better on video",
+    "It’s faster than anything else",
+    "So the drink is stronger"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A bartender drifts from the spec on a busy night. You…",
+   "answer": "Fix it on the spot, quietly and kindly",
+   "wrong": [
+    "Ignore it until the review",
+    "Shout across the bar",
+    "Change the spec to match"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Who changes a house spec?",
+   "answer": "The bar lead, through the spec book",
+   "wrong": [
+    "Any bartender who prefers it",
+    "The guest",
+    "The distributor"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Under Michigan’s Liquor Control Code, a licensee’s employees on the premises…",
+   "answer": "May not be intoxicated",
+   "wrong": [
+    "May drink once their shift ends at the bar",
+    "May taste anything at any time",
+    "Must taste every drink they serve"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  },
+  {
+   "q": "Before a team tasting that involves alcohol, you…",
+   "answer": "Check it with the GM under our license and HR policy",
+   "wrong": [
+    "Just pour for everyone",
+    "Ask a guest to join",
+    "Do it after closing with no one told"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "How do bartenders check a drink during service?",
+   "answer": "A straw taste",
+   "wrong": [
+    "A full glass",
+    "A shot from the batch",
+    "They don’t"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "In this book, which level is for bartenders? Level 2, Certified Bartender.",
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app"
+  },
+  {
+   "fact": "Where can pre-shift notes be pinned so everyone sees them? Team Chat.",
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app"
+  },
+  {
+   "fact": "Under Michigan’s Liquor Control Code, a licensee’s employees on the premises… May not be intoxicated.",
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  }
+ ],
+ "unverified": [
+  "Training steps, pre-shift format and the jigger standard are house practice.",
+  "Staff tastings: check our liquor license and HR policy with the GM before any tasting that involves alcohol; this lesson doesn’t set that rule."
+ ]
+}

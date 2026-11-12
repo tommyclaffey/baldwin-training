@@ -98,7 +98,22 @@
      "bigIdea": "Every drink has water in it, and it’s on purpose.",
      "where": "When you shake or stir with ice, some of the ice **melts into the drink**. That water softens the alcohol and opens up the flavor. Dave Arnold’s class for Campari Academy puts an average cocktail at **more than 25% water**. Too little and the drink tastes **hot**; too much and it tastes **thin**.",
      "mixup": "Dilution isn’t watering a drink down. It’s part of the spec.",
-     "sayIt": ""
+     "sayIt": "It’s stirred on ice to open it up, so it’s smooth, not hot.",
+     "stopsTitle": "Too little or too much",
+     "stops": [
+      {
+       "name": "Too little",
+       "text": "The drink tastes **hot**."
+      },
+      {
+       "name": "Right",
+       "text": "Over **25%** water: soft and open."
+      },
+      {
+       "name": "Too much",
+       "text": "The drink tastes **thin**."
+      }
+     ]
     },
     "check": [
      0,
@@ -132,7 +147,18 @@
      "bigIdea": "How you chill it changes the drink.",
      "where": "**Shaking** is hard and fast: it adds more **water** and **air**, so the drink comes out **colder, lighter and cloudy**. That suits drinks with **citrus, egg or cream**. **Stirring** is gentler: less water, no air, so the drink stays **clear and silky**. That suits **spirit-only** drinks like the Martini and Manhattan.",
      "mixup": "A shaken Martini isn’t wrong if a guest asks for it, but it will be cloudier and more watery than our spec.",
-     "sayIt": "Would you like that shaken or stirred? Stirred keeps it clear and silky."
+     "sayIt": "Would you like that shaken or stirred? Stirred keeps it clear and silky.",
+     "stopsTitle": "Which one",
+     "stops": [
+      {
+       "name": "Shake",
+       "text": "**Citrus**, **egg** or **cream**: colder, lighter, cloudy."
+      },
+      {
+       "name": "Stir",
+       "text": "**Spirit-only**: clear and silky."
+      }
+     ]
     },
     "check": [
      3,
@@ -166,7 +192,22 @@
      "bigIdea": "Ice is part of the build.",
      "where": "Use **fresh, dry ice**. Ice that’s been sitting wet in the well has already started melting and adds water you didn’t plan for. A **large cube** has less surface, so it melts **slowly**: right for an Old Fashioned. **Crushed ice** melts **fast**, which is the point in a julep.",
      "mixup": "Shaking with the big cube from the glass doesn’t chill or dilute the same way. Shake with fresh tin ice.",
-     "sayIt": ""
+     "sayIt": "It’s on one big cube, so it stays cold without watering down.",
+     "stopsTitle": "Three ices",
+     "stops": [
+      {
+       "name": "Fresh, dry",
+       "text": "For shaking and stirring: no **early water**."
+      },
+      {
+       "name": "Big cube",
+       "text": "Melts **slowly**: an Old Fashioned."
+      },
+      {
+       "name": "Crushed",
+       "text": "Melts **fast**: a julep."
+      }
+     ]
     },
     "check": [
      6,
@@ -176,7 +217,12 @@
    },
    {
     "name": "Citrus timing",
-    "video": null,
+    "video": {
+     "youtubeId": "RhMnZKQGkjg",
+     "title": "Juicing 101: The best way to keep juice fresh while at work",
+     "by": "Rob Stuart",
+     "length": "2:39"
+    },
     "keyPoints": [
      {
       "big": "4 HOURS",
@@ -195,7 +241,22 @@
      "bigIdea": "Fresh juice, every shift.",
      "where": "In a 2010 blind tasting, Dave Arnold’s testers preferred **hand-pressed lime juice about four hours old** over juice squeezed that minute: it tasted rounder. The benefit doesn’t last: by the **next day** the juice has gone dull and bitter. So juice **at the start of the shift**, keep it **cold**, and don’t carry it over.",
      "mixup": "“Fresh” doesn’t mean squeezed this second. It means squeezed today.",
-     "sayIt": "We juice our citrus fresh every day."
+     "sayIt": "We juice our citrus fresh every day.",
+     "stopsTitle": "A day of lime juice",
+     "stops": [
+      {
+       "name": "Squeezed now",
+       "text": "Sharp; testers liked it less."
+      },
+      {
+       "name": "About 4 hours",
+       "text": "The **favorite** in Dave Arnold’s test."
+      },
+      {
+       "name": "Next day",
+       "text": "**Dull** and bitter: don’t carry it over."
+      }
+     ]
     },
     "check": [
      9,

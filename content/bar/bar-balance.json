@@ -147,7 +147,22 @@
      "bigIdea": "A sour is three things in proportion.",
      "where": "Every sour has a **strong** part (the spirit), a **sour** part (citrus) and a **sweet** part (syrup or liqueur). A common “golden ratio” is **2 parts spirit, ¾ sour, 1 sweet**. Difford’s Guide points out it comes out **sweet rather than sour**, especially with **rich syrup**, so many bars cut the sugar or add citrus. Our specs are where we’ve landed: start there.",
      "mixup": "A ratio is a **starting point**, not a rule. Every citrus and every syrup is a little different.",
-     "sayIt": "Would you like it on the tart side or a little sweeter?"
+     "sayIt": "Would you like it on the tart side or a little sweeter?",
+     "stopsTitle": "The three parts",
+     "stops": [
+      {
+       "name": "Strong",
+       "text": "The **spirit**: 2 parts."
+      },
+      {
+       "name": "Sour",
+       "text": "**Citrus**: ¾ part."
+      },
+      {
+       "name": "Sweet",
+       "text": "**Syrup** or liqueur: 1 part."
+      }
+     ]
     },
     "check": [
      3,
@@ -181,7 +196,22 @@
      "bigIdea": "Know which syrup a spec means.",
      "where": "**Simple syrup** is **1:1** sugar to water. **Rich syrup** is **2:1**. Rich isn’t twice as sweet: Difford’s Guide measures it at about **1.35 times**. So to swap rich for simple, use about **1½ times** as much simple (10 ml rich ≈ 15 ml simple). Simple also adds more water to the drink, about **5–8%** more dilution.",
      "mixup": "Doubling the simple to replace rich makes the drink **too sweet and too watery**.",
-     "sayIt": ""
+     "sayIt": "It’s made with a rich syrup, so it’s silky without being too sweet.",
+     "stopsTitle": "Two syrups",
+     "stops": [
+      {
+       "name": "Simple",
+       "text": "**1:1** sugar to water."
+      },
+      {
+       "name": "Rich",
+       "text": "**2:1**, about **1.35×** as sweet."
+      },
+      {
+       "name": "The swap",
+       "text": "10 ml rich ≈ **15 ml** simple."
+      }
+     ]
     },
     "check": [
      6,
@@ -215,7 +245,22 @@
      "bigIdea": "Taste before it leaves the bar.",
      "where": "Dip a **straw**, cap it with a finger, taste. If it’s **too sharp**, it wants a little more sweet. If it’s **too sweet** or flat, a little more **citrus** or a **dash of bitters**. If it’s **hot** with alcohol, it may need more dilution: shake or stir longer. Change **one thing at a time**, so you know what fixed it.",
      "mixup": "Changing two things at once means you never learn which one worked.",
-     "sayIt": ""
+     "sayIt": "Let me taste it before it goes out. One second.",
+     "stopsTitle": "Read the taste",
+     "stops": [
+      {
+       "name": "Too sharp",
+       "text": "A little more **sweet**."
+      },
+      {
+       "name": "Too sweet or flat",
+       "text": "A little more **citrus**, or a dash of **bitters**."
+      },
+      {
+       "name": "Hot",
+       "text": "More **dilution**: shake or stir longer."
+      }
+     ]
     },
     "check": [
      9,

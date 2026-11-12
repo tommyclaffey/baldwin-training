@@ -1,0 +1,427 @@
+{
+ "number": 6,
+ "barLevel": 4,
+ "slug": "bar-l4-law",
+ "title": "Responsible service and the law",
+ "script": "Lesson 6",
+ "lead": "Michigan’s rules on ID, intoxication, liability, hours and training, and how the bar lives by them.",
+ "minutes": 15,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Age and ID",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "21 or older, proved by a real ID."
+    }
+   ],
+   "know": [
+    "21+ the ID has to prove it.",
+    "Genuine a real-looking Michigan license or state ID is a defense.",
+    "17 may serve only with training and an adult supervisor on shift."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801); Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707); House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Visible intoxication",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "No sale, no drink, and get them home safe."
+    }
+   ],
+   "know": [
+    "No sale to anyone who is intoxicated.",
+    "No drinking by an intoxicated guest on our premises.",
+    "Stay to eat, get help, or wait for a ride."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  },
+  {
+   "name": "Liability",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Serving the wrong guest can cost the bar a lawsuit."
+    }
+   ],
+   "know": [
+    "Dram shop MCL 436.1801.",
+    "Who sues the person harmed and their family.",
+    "Last licensee to serve is presumed the one responsible."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801)"
+  },
+  {
+   "name": "Hours, records and training",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Know the hours, keep the proof, train the team."
+    }
+   ],
+   "know": [
+    "2 to 7 a.m.: no alcohol sold or served.",
+    "Sunday 7 a.m. to noon needs a permit.",
+    "Trained supervisors on every shift, where required."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.2114 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-2114); Michigan Liquor Control Code, MCL 436.1906 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1906); House practice (ours; GM to confirm)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Age and ID",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "21+",
+      "line": "the ID has to prove it."
+     },
+     {
+      "big": "GENUINE",
+      "line": "a real-looking Michigan license or state ID is a defense."
+     },
+     {
+      "big": "17",
+      "line": "may serve only with training and an adult supervisor on shift."
+     }
+    ],
+    "read": {
+     "bigIdea": "21 or older, proved by a real ID.",
+     "where": "Selling or furnishing alcohol to a **minor** breaks the law and can make the bar **liable**. Under the Code, showing that the guest presented a **genuine-looking Michigan driver’s license or state ID** proving they were **21 or older** is a defense. Check **every** guest who might be under 30 (our house rule; GM to confirm). On staff: a **17-year-old** may serve at an on-premises licensee only after **server training** and with **adult supervisory staff** on shift.",
+     "stopsTitle": "Checking an ID",
+     "stops": [
+      {
+       "name": "Look",
+       "text": "Is it **genuine**? Photo matches?"
+      },
+      {
+       "name": "Date",
+       "text": "**21** or older today?"
+      },
+      {
+       "name": "Unsure",
+       "text": "Ask a **manager**; don’t serve."
+      }
+     ],
+     "mixup": "An ID that’s expired or doesn’t look genuine doesn’t protect anyone. **When in doubt, don’t serve.**",
+     "sayIt": "Could I see your ID, please? We check everyone."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Visible intoxication",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NO SALE",
+      "line": "to anyone who is intoxicated."
+     },
+     {
+      "big": "NO DRINKING",
+      "line": "by an intoxicated guest on our premises."
+     },
+     {
+      "big": "STAY",
+      "line": "to eat, get help, or wait for a ride."
+     }
+    ],
+    "read": {
+     "bigIdea": "No sale, no drink, and get them home safe.",
+     "where": "The Code says we may not **sell, serve or furnish** alcohol to someone who is **intoxicated**, and may not let an intoxicated person **drink** on the premises. We may not let them **loiter** either, but they **may stay** to **eat**, get **medical help**, or arrange a ride that isn’t them **driving**. And no one on staff may be **intoxicated** at work.",
+     "stopsTitle": "Cutting a guest off",
+     "stops": [
+      {
+       "name": "Tell",
+       "text": "A **manager**; decide together."
+      },
+      {
+       "name": "Say it",
+       "text": "Quietly, kindly, **no more alcohol**."
+      },
+      {
+       "name": "Offer",
+       "text": "Water, **food**, a **ride**."
+      }
+     ],
+     "mixup": "Cutting someone off isn’t throwing them out. They can stay to **eat** or wait for a **ride**.",
+     "sayIt": "I can’t pour you another tonight, but I’d love to get you some food and water."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Liability",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DRAM SHOP",
+      "line": "MCL 436.1801."
+     },
+     {
+      "big": "WHO SUES",
+      "line": "the person harmed and their family."
+     },
+     {
+      "big": "LAST",
+      "line": "licensee to serve is presumed the one responsible."
+     }
+    ],
+    "read": {
+     "bigIdea": "Serving the wrong guest can cost the bar a lawsuit.",
+     "where": "Michigan’s **dram shop** law (MCL 436.1801) lets a person **harmed** by a minor or a visibly intoxicated person, and their **family**, sue the licensee that **unlawfully sold** them alcohol, if that sale was a cause of the harm. Licensees other than the **last** one to serve the person are **presumed** not liable. The **intoxicated person** can’t sue under it. Claims must be filed within **2 years**, with written notice within **120 days** of hiring a lawyer.",
+     "stopsTitle": "Who it touches",
+     "stops": [
+      {
+       "name": "The guest",
+       "text": "Can’t sue under the dram shop law."
+      },
+      {
+       "name": "The harmed",
+       "text": "And their family **can**."
+      },
+      {
+       "name": "The bar",
+       "text": "The **last** to serve is the one presumed responsible."
+      }
+     ],
+     "mixup": "The last bar to serve isn’t automatically liable, but the law **presumes** the others aren’t. Don’t be the last pour to someone who’s had enough."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Hours, records and training",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "2 TO 7",
+      "line": "a.m.: no alcohol sold or served."
+     },
+     {
+      "big": "SUNDAY",
+      "line": "7 a.m. to noon needs a permit."
+     },
+     {
+      "big": "TRAINED",
+      "line": "supervisors on every shift, where required."
+     }
+    ],
+    "read": {
+     "bigIdea": "Know the hours, keep the proof, train the team.",
+     "where": "No alcohol may be **sold, given or furnished** between **2 a.m. and 7 a.m.** on any day; selling between **7 a.m. and noon on Sunday** takes a **permit**, and local rules can limit Sunday more. For on-premises licenses issued since the state’s **mandatory server training** began (and others the Commission names), a **trained supervisor** has to be on the premises **every shift** while alcohol is served, with **proof of training** kept on site. Log every **refusal** and **incident** the night it happens (house practice).",
+     "stopsTitle": "Every night",
+     "stops": [
+      {
+       "name": "Hours",
+       "text": "Last pour **before 2 a.m.**"
+      },
+      {
+       "name": "Trained",
+       "text": "A **trained** supervisor on shift."
+      },
+      {
+       "name": "Log",
+       "text": "Refusals and **incidents**, that night."
+      }
+     ],
+     "mixup": "Last call isn’t 2 a.m. **2 a.m.** is when the selling has to have **stopped**."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707); Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801); Michigan Liquor Control Code, MCL 436.1906 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1906); Michigan Liquor Control Code, MCL 436.2114 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-2114); House practice (ours; GM to confirm). Written for Mise in our own words, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "Under Michigan’s Code, a defense to a claim of selling to a minor is that the guest showed…",
+   "answer": "A genuine-looking Michigan driver’s license or state ID proving 21 or older",
+   "wrong": [
+    "A student ID",
+    "A friend vouching for them",
+    "A credit card"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801)"
+  },
+  {
+   "q": "In Michigan, a 17-year-old may serve alcohol at an on-premises licensee only if…",
+   "answer": "They’ve completed server training and an adult supervisor is on shift",
+   "wrong": [
+    "A guest agrees",
+    "They’re working the day shift",
+    "Never, under any conditions"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  },
+  {
+   "q": "You’re not sure an ID is real. You…",
+   "answer": "Ask a manager and don’t serve until it’s settled",
+   "wrong": [
+    "Serve a half pour",
+    "Serve it if they’re polite",
+    "Keep the ID and serve"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Michigan’s Code says you may not sell or serve alcohol to…",
+   "answer": "A person who is intoxicated",
+   "wrong": [
+    "A guest who orders water",
+    "A guest who orders food",
+    "A regular"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  },
+  {
+   "q": "An intoxicated guest may stay on the premises to…",
+   "answer": "Eat, get medical help, or arrange a ride that isn’t them driving",
+   "wrong": [
+    "Keep drinking slowly",
+    "Play pool for an hour",
+    "Wait for last call"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  },
+  {
+   "q": "Under the Code, staff on the premises may not be…",
+   "answer": "Intoxicated",
+   "wrong": [
+    "Over 21",
+    "Off the clock",
+    "Wearing an apron"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  },
+  {
+   "q": "Under Michigan’s dram shop law, who can sue a licensee?",
+   "answer": "A person harmed by the minor or intoxicated guest, and their family",
+   "wrong": [
+    "The intoxicated guest",
+    "Any guest at the bar",
+    "The distributor"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801)"
+  },
+  {
+   "q": "Which licensee does the law presume could be responsible?",
+   "answer": "The last one to serve the person",
+   "wrong": [
+    "The first bar they went to",
+    "Every bar on the street",
+    "The bar with the biggest sign"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801)"
+  },
+  {
+   "q": "How long does a person have to file a dram shop claim in Michigan?",
+   "answer": "2 years from the injury or death",
+   "wrong": [
+    "30 days",
+    "10 years",
+    "There’s no limit"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801)"
+  },
+  {
+   "q": "In Michigan, alcohol may not be sold or served between…",
+   "answer": "2 a.m. and 7 a.m.",
+   "wrong": [
+    "Midnight and noon",
+    "4 a.m. and 6 a.m.",
+    "10 p.m. and 2 a.m."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.2114 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-2114)"
+  },
+  {
+   "q": "Selling alcohol between 7 a.m. and noon on Sunday requires…",
+   "answer": "A Sunday permit",
+   "wrong": [
+    "Nothing extra",
+    "A manager on shift only",
+    "A food order"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.2114 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-2114)"
+  },
+  {
+   "q": "Where MCL 436.1906’s training rule applies, a trained supervisor must be…",
+   "answer": "On the premises every shift while alcohol is served",
+   "wrong": [
+    "On call by phone",
+    "There on weekends only",
+    "Hired once a year"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1906 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1906)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Under Michigan’s Code, a defense to a claim of selling to a minor is that the guest showed… A genuine-looking Michigan driver’s license or state ID proving 21 or older.",
+   "source": "Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801)"
+  },
+  {
+   "fact": "In Michigan, a 17-year-old may serve alcohol at an on-premises licensee only if… They’ve completed server training and an adult supervisor is on shift.",
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  },
+  {
+   "fact": "Michigan’s Code says you may not sell or serve alcohol to… A person who is intoxicated.",
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  },
+  {
+   "fact": "An intoxicated guest may stay on the premises to… Eat, get medical help, or arrange a ride that isn’t them driving.",
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  },
+  {
+   "fact": "Under the Code, staff on the premises may not be… Intoxicated.",
+   "source": "Michigan Liquor Control Code, MCL 436.1707 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1707)"
+  },
+  {
+   "fact": "Under Michigan’s dram shop law, who can sue a licensee? A person harmed by the minor or intoxicated guest, and their family.",
+   "source": "Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801)"
+  },
+  {
+   "fact": "Which licensee does the law presume could be responsible? The last one to serve the person.",
+   "source": "Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801)"
+  },
+  {
+   "fact": "How long does a person have to file a dram shop claim in Michigan? 2 years from the injury or death.",
+   "source": "Michigan Liquor Control Code, MCL 436.1801 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801)"
+  },
+  {
+   "fact": "In Michigan, alcohol may not be sold or served between… 2 a.m. and 7 a.m..",
+   "source": "Michigan Liquor Control Code, MCL 436.2114 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-2114)"
+  },
+  {
+   "fact": "Selling alcohol between 7 a.m. and noon on Sunday requires… A Sunday permit.",
+   "source": "Michigan Liquor Control Code, MCL 436.2114 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-2114)"
+  },
+  {
+   "fact": "Where MCL 436.1906’s training rule applies, a trained supervisor must be… On the premises every shift while alcohol is served.",
+   "source": "Michigan Liquor Control Code, MCL 436.1906 (legislature.mi.gov/Laws/MCL?objectName=mcl-436-1906)"
+  }
+ ],
+ "unverified": [
+  "This lesson follows Michigan’s Liquor Control Code. Stores in other states: your manager swaps in your state’s rules.",
+  "Which IDs we accept beyond a Michigan driver’s license or state ID, and our cut-off steps, are house policy; GM to confirm.",
+  "Incident log and records steps are house practice.",
+  "Whether our license falls under the mandatory server-training rule (MCL 436.1906(10)): GM to confirm.",
+  "Not legal advice: the GM and the owner confirm how the rules apply to us."
+ ]
+}
