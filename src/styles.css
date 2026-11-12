@@ -2725,3 +2725,8 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .brand-mise .ed-text.ed-dark:focus-within { outline-color: #EDE6DA; background-color: rgba(237,230,218,.06); }
 .brand-mise .ed-dark .ed-input, .brand-mise .ed-text.ed-dark .ed-input { caret-color: #EDE6DA; }
 .brand-mise .ed-card.ed-dark .ed-text:focus-within { outline-color: #EDE6DA; }
+
+/* Mise: play buttons are a cream circle with a Char triangle and a soft shadow, so they read on any photo; deep fig is for
+   things that need attention (Nov 11, Tommy: "Do you feel like this color button is the right call?" → "Sounds good") */
+.brand-mise [data-name="Play"] { background: #EDE6DA !important; box-shadow: 0 4px 16px rgba(18, 17, 16, .35); }
+.brand-mise [data-name="Play"] svg path, .brand-mise [data-name="Play"] svg polygon { fill: #121110 !important; stroke: none; }

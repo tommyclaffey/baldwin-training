@@ -201,11 +201,23 @@ function cinematicHero(main: FNode) {
   hero.c = [copy, photo];
 }
 
+/** Video cards: the channel line under a video (Anders Erickson, Wine Folly…) is muted ink, not deep fig. Deep fig is for
+ *  things that need attention (Nov 11, Tommy: "Sounds good" to a cream play button and a grey author line). */
+function videoCaptions(n: FNode) {
+  const hasPlay = (x: FNode): boolean => x.n === 'Play' || (x.c || []).some((c) => c.n === 'Play');
+  if (n.c?.some((c) => c.t !== 'T' && hasPlay(c))) {
+    const mute = (x: FNode) => { if (x.t === 'T' && x.ff === 'DM Mono' && up(solid(x)) === MISE.fig) x.f = [{ c: MISE.inkMuted }]; (x.c || []).forEach(mute); };
+    n.c.filter((c) => !hasPlay(c)).forEach(mute);
+  }
+  (n.c || []).forEach(videoCaptions);
+}
+
 export function miseSkin<P extends { main: FNode; bg?: string }>(page: P): P {
   const main = structuredClone(page.main);
   const isClassic = (page as { name?: string }).name?.startsWith('Classic · ');
   if (isClassic) cinematicHero(main);
   const out = walk(main, MISE.bone, false, { title: pageTitle(main), card: null }) || main;
+  videoCaptions(out);
   return { ...page, bg: MISE.bone, main: out };
 }
 
