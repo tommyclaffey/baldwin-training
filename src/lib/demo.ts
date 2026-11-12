@@ -5,8 +5,10 @@ import { api, type User } from './api';
  * Mise Academy look. Which one a demo account is in comes from its company's brand. */
 export type DemoKind = 'baldwin' | 'mise';
 export const demoKindOf = (u: User | null | undefined): DemoKind => (u?.brand === 'mise' ? 'mise' : 'baldwin');
-export const demoHome = (k: DemoKind) => (k === 'mise' ? '/demo/mise' : '/demo');
-export const isDemoHome = (p: string) => p === '/demo' || p === '/demo/mise';
+// Nov 11, Tommy: "can it be demo/brg for the other one": The Baldwin's demo lives at /demo/brg; plain /demo still opens it
+// so links already shared keep working.
+export const demoHome = (k: DemoKind) => (k === 'mise' ? '/demo/mise' : '/demo/brg');
+export const isDemoHome = (p: string) => p === '/demo' || p === '/demo/brg' || p === '/demo/mise';
 export const isSample = (u: User | null | undefined) => !!u?.demo && u.brand === 'mise';
 /** The menu the top bar's chip names: The Baldwin's opening menu, or the Mise demo's (SAMPLE_MENU in server/content.mjs). */
 export const menuName = (u: User | null | undefined) => (isSample(u) ? 'Fall Menu · 2026' : u?.store?.bookReady && u.store.slug === 'the-baldwin' ? 'Opening Menu · Fall 2026' : null);
