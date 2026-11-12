@@ -133,7 +133,7 @@ export function CountPage() {
             const list = items.filter((i) => i.kind === k);
             return (
               <div key={k} role="rowgroup">
-                <div className="prp-group" role="row"><span role="cell">{GROUP_LINE[k]} · {quarters(list[0].unit) ? `${UNIT_LABEL[list[0].unit]}, ¼ steps` : `${UNIT_LABEL[list[0].unit] || list[0].unit}, whole numbers`}</span></div>
+                <div className="prp-group" role="row"><span role="cell">{GROUP_LINE[k]} · {quarters(list[0].unit) ? `${UNIT_LABEL[list[0].unit]}, quarter steps` : `${UNIT_LABEL[list[0].unit] || list[0].unit}, whole numbers`}</span></div>
                 {list.map((it) => <CountRow key={it.id} it={it} v={vals[it.id] ?? null} c={calc.get(it.id)!} on={open === it.id} tossed={toss[it.id] || 0} pastChoice={past[it.id]} kept={!!keep[it.id]}
                   onOpen={() => setOpen(open === it.id ? null : it.id)} onSet={(v) => set(it.id, v)} onToss={() => doToss(it)} onUndoToss={() => undoToss(it)}
                   onKeepPast={() => setPast((x) => ({ ...x, [it.id]: 'keep' }))} onKeep={() => setKeep((x) => ({ ...x, [it.id]: true }))} onRecount={() => recount(it)} onBatch={() => setSheet(it)} />)}
