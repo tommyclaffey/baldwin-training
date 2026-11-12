@@ -2,6 +2,7 @@
 // The cut-out runs on the server (server/scanner.mjs). The box can be moved and the bottle cut again.
 import { useCallback, useEffect, useRef, useState, type PointerEvent as RPointerEvent } from 'react';
 import { api, type MediaItem } from '../lib/api';
+import { useSession } from '../lib/session';
 
 type Box = [number, number, number, number]; // x0, y0, x1, y1 as fractions of the photo
 
@@ -10,6 +11,12 @@ function guideFor(w: number, h: number): Box {
   const gh = 0.84, gw = Math.min(0.9, (gh * h * 0.36) / w);
   return [(1 - gw) / 2, (1 - gh) / 2, (1 + gw) / 2, (1 + gh) / 2];
 }
+
+/** Sample bottles for the demo (Nov 12): unbranded stand-ins, credited in public/img/scanner-samples/samples.json. */
+type Sample = { file: string; thumb: string; label: string; box: Box; w: number; h: number; credit: string };
+let samplesP: Promise<Sample[]> | null = null;
+const loadSamples = () => (samplesP ??= fetch('/img/scanner-samples/samples.json').then((r) => r.json()).then((j) => j.samples as Sample[]).catch(() => { samplesP = null; return []; }));
+type DemoLeft = { scans: number; saves: number; scansLeft: number; savesLeft: number };
 
 async function post(path: string, blob: Blob) {
   const res = await fetch(path, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': blob.type || 'image/jpeg', 'X-BT': '1' }, body: blob });
@@ -33,8 +40,15 @@ export function BottleScanner({ name, onDone, onClose, spin = false, onSpin }: {
   const [recording, setRecording] = useState(0);
   const video = useRef<HTMLVideoElement>(null);
   const stream = useRef<MediaStream | null>(null);
+  // The demo (Nov 12): the same scanner, plus sample bottles to try; what it saves lasts as long as the demo.
+  const demo = !!useSession().user?.demo;
+  const [samples, setSamples] = useState<Sample[]>([]);
+  const [left, setLeft] = useState<DemoLeft | null>(null);
+  const [sample, setSample] = useState('');
 
-  useEffect(() => { void api('/api/scan/ready', { method: 'POST' }).catch(() => {}); }, []);
+  const ready = useCallback(() => { void api<{ demo?: DemoLeft }>('/api/scan/ready', { method: 'POST' }).then((r) => setLeft(r.demo || null)).catch(() => {}); }, []);
+  useEffect(ready, [ready]);
+  useEffect(() => { if (demo && !spin) void loadSamples().then(setSamples); }, [demo, spin]);
   const stop = () => { stream.current?.getTracks().forEach((t) => t.stop()); stream.current = null; };
   useEffect(() => {
     if (step !== 'camera') return;
@@ -72,8 +86,19 @@ export function BottleScanner({ name, onDone, onClose, spin = false, onSpin }: {
       const r = await post('/api/scan', blob);
       setToken(r.token);
       setStep('review');
+      if (demo) ready();
       await cut(r.token, b);
     } catch (e) { setError((e as Error).message); setStep('review'); setBusy(''); }
+  };
+  /** A sample bottle (demo): the photo, with the box already on the bottle. */
+  const trySample = async (x: Sample) => {
+    setSample(x.label); setError('');
+    try {
+      const res = await fetch(x.file);
+      if (!res.ok) throw new Error('That sample didn’t load. Try another.');
+      await use(await res.blob(), x.w, x.h, x.box);
+    } catch (e) { setError((e as Error).message); }
+    setSample('');
   };
 
   const snap = () => {
@@ -136,7 +161,7 @@ export function BottleScanner({ name, onDone, onClose, spin = false, onSpin }: {
   };
   const keep = async () => {
     setBusy('Saving…'); setError('');
-    try { const m = await api<MediaItem>('/api/scan/keep', { method: 'POST', body: { token, name } }); if (m.url) onDone(m.url); }
+    try { const m = await api<MediaItem>('/api/scan/keep', { method: 'POST', body: { token, name } }); if (demo) ready(); if (m.url) onDone(m.url); }
     catch (e) { setError((e as Error).message); setBusy(''); }
   };
   const retake = () => { setPhoto(null); setPreview(''); setToken(''); setError(''); setCamErr(''); setFrames([]); setStep('camera'); };
@@ -150,6 +175,12 @@ export function BottleScanner({ name, onDone, onClose, spin = false, onSpin }: {
           <div><strong>{spin ? 'Spin the Bottle' : 'Scan the Bottle'}</strong><small>{name}</small></div>
           <button className="icon-btn" onClick={onClose} aria-label="Close">✕</button>
         </header>
+        {demo && (
+          <p className="scanner-demo" role="note">
+            <strong>Demo:</strong> photos you save here only last as long as this demo. They’re deleted when it resets.
+            {left && <> {left.savesLeft} of {left.saves} saves and {left.scansLeft} of {left.scans} photos left.</>}
+          </p>
+        )}
 
         {step === 'camera' && (
           <>
@@ -164,6 +195,19 @@ export function BottleScanner({ name, onDone, onClose, spin = false, onSpin }: {
             {spin
               ? <p className="muted scanner-tip">Stand the bottle on a lazy Susan, fill the outline, then tap Record and turn it slowly all the way round (about five seconds). Keep the phone still.</p>
               : <p className="muted scanner-tip">Stand the bottle up, label facing you, and fill the outline top to bottom. Plain background is best, but it works on the back bar too.</p>}
+            {demo && !spin && samples.length > 0 && (
+              <div className="scanner-samples" role="group" aria-label="Try a sample bottle">
+                <small className="muted">Try a sample bottle</small>
+                <div className="scanner-sample-row">
+                  {samples.map((x) => (
+                    <button key={x.file} type="button" className="scanner-sample" disabled={!!sample} onClick={() => void trySample(x)} title={`Photo: ${x.credit}`}>
+                      <img src={x.thumb} alt="" loading="lazy" />
+                      <span>{sample === x.label ? 'Opening…' : x.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
             {error && <p className="error" role="alert">{error}</p>}
             <div className="row scanner-actions">
               {spin
