@@ -3,7 +3,7 @@
 // Nov 11 (Tommy: "for the mise version can i get the garlic icon for the favicon"): anything drawn in the Mise look
 // (a Mise-brand company, the /demo/mise picker, any Mise-look signed-out screen) shows Mise's garlic + fig app icon
 // (Figma Brand assets/App icon 520:233), public/icons/mise-*.png. It follows the brand: skin.ts announces each change.
-import { currentBrand } from './skin';
+import { currentBrand } from './theme';
 
 const HAS_LOGO = new Set(['the-baldwin', 'mise']);
 type Store = { slug: string; name: string } | null | undefined;

@@ -55,7 +55,7 @@ function withTeam(n: FNode, signoffs: number): FNode {
   const team = [relabel({ ...label, n: 'Group · TEAM' }, 'TEAM'), navItem('People', '/admin/people', 'team-people', 0), navItem('Sign-offs', '/admin/signoffs', 'team-signoffs', signoffs)];
   return { ...n, c: [...n.c.slice(0, home + 1), ...team, ...n.c.slice(home + 1)] };
 }
-import { currentBrand, miseSidebar, MISE } from '../lib/skin';
+import { currentBrand, themeSidebar, MISE } from '../lib/theme';
 import { isSample } from '../lib/demo';
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
@@ -122,7 +122,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     const mise = currentBrand() === 'mise';
     const look: PillLook = mise && sample ? { label: user!.store?.name || ACADEMY_NAME, tint: MISE.fig, tintO: .42, ink: '#F6D3CE', muted: MISE.ash } : BALDWIN_PILL;
     const shown = user?.demo ? withDemoPill(teamed, look) : teamed;
-    return mise ? miseSidebar(shown) : shown;
+    return themeSidebar(shown);
   }, [quiz, counts, generic, sample, user, mine, chat, unread, manager, signoffs]);
   // The pill is drawn with the rest of the sidebar, so it's made a real control here: Tab reaches it, Enter opens the welcome card.
   const nav = useRef<HTMLElement>(null);
