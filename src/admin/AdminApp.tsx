@@ -2,7 +2,7 @@
 import { NavLink, Navigate, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { ACADEMY_NAME } from '../lib/brand';
 import { useSession } from '../lib/session';
-import { AcceptInvite, Account, Activity, MediaLibrary, People, SignIn } from './screens';
+import { AcceptInvite, Account, Activity, MediaLibrary, People, ResetPassword, SignIn } from './screens';
 import { CollectionList, EntryEditor, PageOptions, useCollections } from './cms';
 import { Loading } from './ui';
 import { WineVideos } from './wine';
@@ -19,6 +19,7 @@ export default function AdminApp() {
   return (
     <Routes>
       <Route path="invite/:token" element={<AcceptInvite />} />
+      <Route path="reset/:token" element={<ResetPassword />} />
       <Route path="*" element={!loaded ? <Loading /> : !user ? <SignIn /> : <Shell />} />
     </Routes>
   );

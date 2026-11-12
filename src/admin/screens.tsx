@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api, uploadFile, ROLE_LABEL, type MediaItem, type Role, type User } from '../lib/api';
 import { useSession } from '../lib/session';
 import { VideoEmbed } from '../components/VideoEmbed';
-import { Empty, ErrorNote, Loading, Text, when } from './ui';
+import { Empty, ErrorNote, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 import { PRODUCT_NAME } from '../lib/brand';
 
 function useLoad<T>(path: string) {
@@ -38,7 +38,9 @@ export function SignIn() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [setup, setSetup] = useState(false);
+  const [forgot, setForgot] = useState(false);
   if (setupNeeded || setup) return <Setup superAdmin={!setupNeeded && superSetupNeeded} />;
+  if (forgot) return <ForgotPassword email={email} onBack={(e) => { setForgot(false); setEmail(e); setError(''); }} />;
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');
     try {
@@ -70,8 +72,102 @@ export function SignIn() {
         <label className="field"><span>Password</span><input type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
         {error && <ErrorNote error={error} />}
         <button className="btn" disabled={busy || !email || !password}>{busy ? 'Signing In…' : 'Sign In'}</button>
+        <button type="button" className="link-btn" onClick={() => { setForgot(true); setError(''); }}>Forgot Password?</button>
         <p className="muted small">No account? Ask your owner for an invite link.</p>
         {superSetupNeeded && <button type="button" className="link-btn" onClick={() => setSetup(true)}>Set up the super admin account</button>}
+      </form>
+    </AuthCard>
+  );
+}
+
+/** Forgot Password? (Nov 11): the same answer for every email. The link comes by email when Resend is set up. */
+function ForgotPassword({ email: start, onBack }: { email: string; onBack: (email: string) => void }) {
+  const { user } = useSession();
+  const [email, setEmail] = useState(start);
+  const [sent, setSent] = useState('');
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+  const submit = async (e: FormEvent) => {
+    e.preventDefault(); setBusy(true); setError('');
+    if (user?.demo) { setError('That’s switched off in the demo.'); setBusy(false); return; }
+    try { setSent((await api<{ message: string }>('/api/password/forgot', { method: 'POST', body: { email } })).message); }
+    catch (err) { setError((err as Error).message); }
+    setBusy(false);
+  };
+  if (sent) return (
+    <AuthCard title="Check your email" sub={sent}>
+      <div className="stack">
+        <p className="muted small">The link works once and expires in 24 hours. Staff don’t need one: a manager can Reset PIN.</p>
+        <button type="button" className="btn" onClick={() => onBack(email)}>Back to Sign In</button>
+      </div>
+    </AuthCard>
+  );
+  return (
+    <AuthCard title="Forgot your password?" sub="Type the email you sign in with. If it has an account, we’ll email a link to pick a new password.">
+      <form className="stack" onSubmit={submit}>
+        <label className="field"><span>Email</span><input type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus /></label>
+        {error && <ErrorNote error={error} />}
+        <button className="btn" disabled={busy || !email.trim()}>{busy ? 'Sending…' : 'Send Reset Link'}</button>
+        <button type="button" className="link-btn" onClick={() => onBack(email)}>Back to Sign In</button>
+        <p className="muted small">Staff sign in with a PIN. Forgot it? Ask a manager to reset it.</p>
+      </form>
+    </AuthCard>
+  );
+}
+
+/** /admin/reset/<token>: pick a new password from a one-time link, then you're signed in. Two-step still asks for its code. */
+export function ResetPassword() {
+  const { token } = useParams();
+  const { user, setUser } = useSession();
+  const nav = useNavigate();
+  const [info, setInfo] = useState<{ valid: boolean; name?: string; email?: string; expiresAt?: string } | null>(null);
+  const [f, setF] = useState({ password: '', again: '' });
+  const [ticket, setTicket] = useState('');
+  const [code, setCode] = useState('');
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+  useEffect(() => { api<typeof info>(`/api/reset/${token}`).then(setInfo).catch(() => setInfo({ valid: false })); }, [token]);
+  if (!info) return <AuthCard title="Checking your link…"><Loading /></AuthCard>;
+  if (!info.valid) return (
+    <AuthCard title="This reset link doesn’t work" sub="It expired, was already used, or a newer link replaced it. Ask an owner for a new one, or use Forgot Password? on the sign-in page.">
+      <Link className="btn" to="/admin">Go to Sign In</Link>
+    </AuthCard>
+  );
+  const done = (u: User) => { setUser(u); nav('/admin'); };
+  const submit = async (e: FormEvent) => {
+    e.preventDefault(); setError('');
+    if (user?.demo) { setError('That’s switched off in the demo.'); return; }
+    if (f.password !== f.again) { setError('Those passwords don’t match. Type the same one twice.'); return; }
+    setBusy(true);
+    try {
+      const r = await api<{ user?: User; needCode?: boolean; ticket?: string }>(`/api/reset/${token}`, { method: 'POST', body: { password: f.password } });
+      if (r.needCode) setTicket(r.ticket!); else done(r.user!);
+    } catch (err) { setError((err as Error).message); }
+    setBusy(false);
+  };
+  const submitCode = async (e: FormEvent) => {
+    e.preventDefault(); setBusy(true); setError('');
+    try { done((await api<{ user: User }>('/api/login/code', { method: 'POST', body: { ticket, code } })).user); }
+    catch (err) { setError((err as Error).message); if (/timed out/.test((err as Error).message)) nav('/admin'); }
+    setBusy(false);
+  };
+  if (ticket) return (
+    <AuthCard title="Two-step sign-in" sub="Your new password is set. Open your authenticator app and type the 6-digit code for Mise.">
+      <form className="stack" onSubmit={submitCode}>
+        <label className="field"><span>Code</span><input inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} autoFocus /></label>
+        {error && <ErrorNote error={error} />}
+        <button className="btn" disabled={busy || code.length !== 6}>{busy ? 'Checking…' : 'Sign In'}</button>
+      </form>
+    </AuthCard>
+  );
+  return (
+    <AuthCard title="Pick a new password" sub={<>For <strong>{info.email}</strong>. The link works once{info.expiresAt ? ` and expires ${when(info.expiresAt)}` : ''}. You’ll be signed out everywhere else.</>}>
+      <form className="stack" onSubmit={submit}>
+        <input type="email" autoComplete="username" value={info.email || ''} readOnly hidden />
+        <label className="field"><span>New password</span><input type="password" autoComplete="new-password" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} autoFocus /><small>At least 10 characters.</small></label>
+        <label className="field"><span>Type it again</span><input type="password" autoComplete="new-password" value={f.again} onChange={(e) => setF({ ...f, again: e.target.value })} /></label>
+        {error && <ErrorNote error={error} />}
+        <button className="btn" disabled={busy || !f.password || !f.again}>{busy ? 'Saving…' : 'Save and Sign In'}</button>
       </form>
     </AuthCard>
   );
@@ -253,7 +349,12 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
   const [err, setErr] = useState('');
   const [note, setNote] = useState('');
   const [copied, setCopied] = useState('');
+  const [reset, setReset] = useState<ResetLink | null>(null);
   const owner = data?.youRole === 'owner' || data?.youRole === 'superadmin';
+  const makeReset = (p: Member) => {
+    if (!confirm(`Make a password reset link for ${p.name}? Their password keeps working until they use the link.`)) return;
+    void run(async () => { setReset(null); setReset(await api<ResetLink>(`/api/team/${p.id}/reset-password`, { method: 'POST' })); });
+  };
   const run = async (fn: () => Promise<unknown>, ok?: string) => { setErr(''); setNote(''); try { await fn(); if (ok) setNote(ok); load(); } catch (e) { setErr((e as Error).message); } };
   const copy = (text: string, what: string) => { void navigator.clipboard.writeText(text); setCopied(what); };
 
@@ -331,10 +432,14 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
                 ? <select aria-label={`${p.name}’s stores`} value={p.storeId ?? ''} onChange={(e) => move(p, e.target.value ? Number(e.target.value) : null)}><option value="">Every store</option>{data.stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select>
                 : p.storeName || 'Every store'}</td>}
             <td>{when(p.lastSeenAt)}</td>
-            <td>{owner && p.id !== data.you && <button className="link-btn danger" onClick={() => { if (confirm(`Remove ${p.name}? They’re signed out and can’t edit anymore.`)) void run(() => api(`/api/team/${p.id}`, { method: 'DELETE' })); }}>Remove</button>}</td>
+            <td>{owner && p.id !== data.you && <div className="row-actions">
+              {p.email && <button className="link-btn" onClick={() => makeReset(p)}>Reset Password</button>}
+              <button className="link-btn danger" onClick={() => { if (confirm(`Remove ${p.name}? They’re signed out and can’t edit anymore.`)) void run(() => api(`/api/team/${p.id}`, { method: 'DELETE' })); }}>Remove</button>
+            </div>}</td>
           </tr>
         ))}</tbody>
       </table>
+      {reset && <ResetLinkCard reset={reset} onClose={() => setReset(null)} />}
 
       {owner && (
         <>
@@ -440,7 +545,7 @@ export function Account() {
 
 /* ---------- activity ---------- */
 type Row = { id: number; name: string | null; action: string; detail: string | null; at: string };
-const ACTIONS: Record<string, string> = { 'joined with the code': 'Joined with the code:', 'reset PIN': 'Reset the PIN for', 'set a new PIN': 'Picked a new PIN', 'changed PIN': 'Changed their PIN', 'new join code': 'Made a new join code', 'change role': 'Changed a role:', 'remove person': 'Removed', rename: 'Renamed', 'two-step on': 'Turned on two-step sign-in', 'two-step off': 'Turned off two-step sign-in', 'set section': 'Set a section:', edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'archive media': 'Archived', 'restore media': 'Restored', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'sign off': 'Signed off', 'undo sign off': 'Undid a sign-off for', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail' };
+const ACTIONS: Record<string, string> = { 'joined with the code': 'Joined with the code:', 'reset PIN': 'Reset the PIN for', 'set a new PIN': 'Picked a new PIN', 'changed PIN': 'Changed their PIN', 'new join code': 'Made a new join code', 'change role': 'Changed a role:', 'remove person': 'Removed', rename: 'Renamed', 'two-step on': 'Turned on two-step sign-in', 'two-step off': 'Turned off two-step sign-in', 'set section': 'Set a section:', edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'archive media': 'Archived', 'restore media': 'Restored', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'sign off': 'Signed off', 'undo sign off': 'Undid a sign-off for', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail', 'reset link': 'Made a password reset link for', 'reset password': 'Reset their password', 'reset email': 'Was emailed a password reset link', 'reset asked': 'Asked for a password reset email:' };
 export function Activity() {
   const { data, error, load } = useLoad<{ audit: Row[] }>('/api/audit');
   const { index } = useSession();
@@ -448,7 +553,7 @@ export function Activity() {
   const what = (r: Row) => {
     const verb = ACTIONS[r.action] || r.action;
     if ((r.action === 'edit' || r.action === 'revert') && r.detail) return `${verb} ${pageName(r.detail.split(' ')[0])}`;
-    if (['upload', 'add youtube', 'delete media', 'remove user', 'cancel invite', 'login', 'password', 'setup', 'set a new PIN', 'changed PIN', 'new join code', 'two-step on', 'two-step off'].includes(r.action)) return verb;
+    if (['upload', 'add youtube', 'delete media', 'remove user', 'cancel invite', 'login', 'password', 'setup', 'set a new PIN', 'changed PIN', 'new join code', 'two-step on', 'two-step off', 'reset email'].includes(r.action)) return verb;
     return r.detail ? `${verb} ${r.detail}` : verb;
   };
   return (
