@@ -1,9 +1,10 @@
 // Mise server (The Baldwin's training app): the built app, the content API, sign-in and uploads. No dependencies.
-import { migrateDemo, purgeDemos, dropDemo, startDemo, demoBlocks, isDemoCompany, demoKind, DEMOS } from './demo.mjs';
+import { migrateDemo, purgeDemos, dropDemo, startDemo, demoBlocks, isDemoCompany, demoKind, DEMOS, demoMediaOf, demoMediaPath, demoMediaAllowed } from './demo.mjs';
 import http from 'node:http';
 import zlib from 'node:zlib';
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie, endSession } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
@@ -40,6 +41,14 @@ setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3)
 try { warmContent(db); } catch (e) { console.error('warm-up', e); } // before listening: the first visitor doesn't wait for it
 const demoLimiter = new LoginLimiter(30, 60 * 60_000, 'demo-start'); // 30 demo starts an hour per address
 const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address
+// Bottle scanner in the demo (Nov 12, Tommy: "scanner sounds good"): the same scanner, with limits. Real companies have none.
+//   per demo copy: 10 photos read, 60 cuts, 5 saved photos (a spin counts as one) · per address: 30 photos and 150 cuts an hour
+//   photos up to 8 MB and 40 megapixels · saved files go to media/demo/<demo>/ and are deleted with the demo
+const DEMO_SCAN = { scans: 10, cuts: 60, saves: 5, bytes: 8e6, pixels: 40e6 };
+const demoScanIp = new LoginLimiter(30, 60 * 60_000, 'demo-scan-ip');
+const demoCutIp = new LoginLimiter(150, 60 * 60_000, 'demo-cut-ip');
+const demoScans = new LoginLimiter(DEMO_SCAN.scans, 48 * 3600e3, 'demo-scan'); // keyed by the demo's random slug
+const demoCuts = new LoginLimiter(DEMO_SCAN.cuts, 48 * 3600e3, 'demo-cut');
 
 // Nov 10 (audit): a Content-Security-Policy, so an injected script can't run or send data anywhere. Only our own scripts;
 // styles inline (the design's layout is drawn with style attributes) plus Google Fonts; images from us, YouTube thumbnails,
@@ -159,6 +168,18 @@ function youtubeId(url) {
   const m = s.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/) || s.match(/^([A-Za-z0-9_-]{11})$/);
   return m ? m[1] : null;
 }
+/** A demo's saved scans so far (archived ones count: the file is still there). */
+const demoSaves = (companyId) => db.prepare("SELECT COUNT(*) n FROM media WHERE company_id = ? AND file LIKE 'demo/%'").get(companyId).n;
+const demoFull = `This demo has saved its ${DEMO_SCAN.saves} photos. Refresh the page for a fresh demo.`;
+/** Write a scanned photo (already re-encoded by the scanner, no metadata). A demo's go in its own folder. Returns the
+ *  path under media/. A random part keeps a demo's file names unguessable. */
+function saveScan(demoDir, name, jpg) {
+  const rel = demoDir ? `${demoDir}/${crypto.randomBytes(6).toString('hex')}-${name}` : name;
+  if (demoDir) fs.mkdirSync(demoMediaPath(demoDir), { recursive: true });
+  fs.writeFileSync(path.join(MEDIA_DIR, rel), jpg);
+  return rel;
+}
+const clientIp = (req) => String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
 const mediaOut = (m) => ({ id: m.id, kind: m.kind, title: m.title, url: m.file ? '/media/' + m.file : null, mime: m.mime, size: m.size, youtubeId: m.youtube_id, createdAt: m.created_at });
 
 /* ------------------------------ item data ------------------------------ */
@@ -752,45 +773,70 @@ async function api(req, res, url) {
     return sendJson(res, 200, { ok: true, video, note: video ? str(b.note, 400) : '' });
   }
 
-  /* Bottle scanner (admin): photo → just the bottle, on the Wine Book beige → a media file. */
+  /* Bottle scanner (admin): photo → just the bottle, on the Wine Book beige → a media file.
+   * In a demo (Nov 12) it works the same, within DEMO_SCAN; what it saves stays in that demo's folder. */
   if (p === '/api/scan/ready' && m === 'POST') {
-    needEditor(c, req);
+    const u = needEditor(c, req);
     warmScanner();
-    return sendJson(res, 200, { ok: true });
+    const dm = demoMediaOf(db, u.company_id);
+    if (!dm) return sendJson(res, 200, { ok: true });
+    const key = dm.slice(5);
+    const left = (lim, n) => Math.max(0, n - db.prepare('SELECT COUNT(*) n FROM limits WHERE name = ? AND key = ? AND at > ?').get(lim.name, key, Date.now() - lim.windowMs).n);
+    return sendJson(res, 200, { ok: true, demo: { scans: DEMO_SCAN.scans, saves: DEMO_SCAN.saves, scansLeft: left(demoScans, DEMO_SCAN.scans), savesLeft: Math.max(0, DEMO_SCAN.saves - demoSaves(c.company)) } });
   }
   if (p === '/api/scan' && m === 'POST') {
-    needEditor(c, req);
+    const u = needEditor(c, req);
+    const dm = demoMediaOf(db, u.company_id), ip = clientIp(req);
     const mime = String(req.headers['content-type'] || '').split(';')[0].trim();
     if (!/^image\/(jpeg|png|webp|heic|heif)$/.test(mime)) fail(415, 'Take a photo, or upload a JPG, PNG or WebP.');
+    if (dm) {
+      if (!demoScans.check(dm.slice(5))) fail(429, `This demo has read its ${DEMO_SCAN.scans} photos. Refresh the page for a fresh demo.`);
+      if (!demoScanIp.check(ip)) fail(429, 'Too many scans from here. Try again in an hour.');
+    }
+    const max = dm ? DEMO_SCAN.bytes : 25e6;
+    if (Number(req.headers['content-length'] || 0) > max) fail(413, `That photo is over ${max / 1e6} MB.`);
     const chunks = []; let size = 0;
-    for await (const ch of req) { size += ch.length; if (size > 25e6) fail(413, 'That photo is over 25 MB.'); chunks.push(ch); }
-    try { return sendJson(res, 200, await startScan(Buffer.concat(chunks))); }
-    catch (e) { console.error('scan', e); fail(e.status || 500, e.status ? e.message : 'The scanner couldn’t read that photo. Try another.'); }
+    for await (const ch of req) { size += ch.length; if (size > max) fail(413, `That photo is over ${max / 1e6} MB.`); chunks.push(ch); }
+    try {
+      const r = await startScan(Buffer.concat(chunks), { owner: u.id, demo: !!dm, maxPixels: dm ? DEMO_SCAN.pixels : undefined });
+      if (dm) { demoScans.record(dm.slice(5)); demoScanIp.record(ip); }
+      return sendJson(res, 200, r);
+    }
+    catch (e) { if (!e.status) console.error('scan', e); fail(e.status || 500, e.status ? e.message : 'The scanner couldn’t read that photo. Try another.'); }
   }
   if (p === '/api/scan/cut' && m === 'POST') {
-    needEditor(c, req);
+    const u = needEditor(c, req);
+    const dm = demoMediaOf(db, u.company_id), ip = clientIp(req);
     const b = await readJson(req);
     if (!Array.isArray(b.box) || b.box.length !== 4) fail(400, 'Draw a box around the bottle.');
-    try { const jpg = await cutScan(String(b.token || ''), b.box); return sendJson(res, 200, { preview: 'data:image/jpeg;base64,' + jpg.toString('base64') }); }
+    if (dm && (!demoCuts.check(dm.slice(5)) || !demoCutIp.check(ip))) fail(429, 'That’s all the cuts for this demo. Refresh the page for a fresh demo.');
+    try {
+      const jpg = await cutScan(String(b.token || ''), b.box, u.id);
+      if (dm) { demoCuts.record(dm.slice(5)); demoCutIp.record(ip); }
+      return sendJson(res, 200, { preview: 'data:image/jpeg;base64,' + jpg.toString('base64') });
+    }
     catch (e) { if (!e.status) console.error('cut', e); fail(e.status || 500, e.status ? e.message : 'The scanner couldn’t cut that out. Try a new box.'); }
   }
   // Spin scan: after the first frame is cut, each later frame is posted here, then all of them are kept together.
   if (p === '/api/scan/spin' && m === 'POST') {
-    needEditor(c, req);
+    const u = needEditor(c, req);
+    const dm = demoMediaOf(db, u.company_id);
     const token = url.searchParams.get('token') || '';
     const chunks = []; let size = 0;
     for await (const ch of req) { size += ch.length; if (size > 8e6) fail(413, 'That frame is too big.'); chunks.push(ch); }
-    try { return sendJson(res, 200, { frames: await spinFrame(token, Buffer.concat(chunks)) }); }
+    try { return sendJson(res, 200, { frames: await spinFrame(token, Buffer.concat(chunks), u.id, { maxPixels: dm ? DEMO_SCAN.pixels : undefined }) }); }
     catch (e) { if (!e.status) console.error('spin', e); fail(e.status || 500, e.status ? e.message : 'That frame didn’t work. Try the spin again.'); }
   }
   if (p === '/api/scan/spin/keep' && m === 'POST') {
     const u = needEditor(c, req);
+    const dm = demoMediaOf(db, u.company_id);
     const b = await readJson(req);
-    const frames = await spinFrames(String(b.token || ''));
+    const frames = await spinFrames(String(b.token || ''), u.id);
     if (!frames) fail(410, 'That spin has expired. Record it again.');
+    if (dm && demoSaves(c.company) >= DEMO_SCAN.saves) fail(429, demoFull);
     const name = str(b.name, 80) || 'Bottle';
     const stem = `${Date.now().toString(36)}-spin-${slugify(name).slice(0, 40) || 'bottle'}`;
-    const urls = frames.map((jpg, i) => { const file = `${stem}-${String(i).padStart(2, '0')}.jpg`; fs.writeFileSync(path.join(MEDIA_DIR, file), jpg); return '/media/' + file; });
+    const urls = frames.map((jpg, i) => '/media/' + saveScan(dm, `${stem}-${String(i).padStart(2, '0')}.jpg`, jpg));
     db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)')
       .run('file', `Bottle spin · ${name}`, urls[0].slice(7), 'image/jpeg', frames[0].length, u.id, now(), c.company, c.store);
     audit(db, u.id, 'spin scan bottle', name);
@@ -798,12 +844,13 @@ async function api(req, res, url) {
   }
   if (p === '/api/scan/keep' && m === 'POST') {
     const u = needEditor(c, req);
+    const dm = demoMediaOf(db, u.company_id);
     const b = await readJson(req);
-    const jpg = lastCut(String(b.token || ''));
+    const jpg = lastCut(String(b.token || ''), u.id);
     if (!jpg) fail(410, 'That photo has expired. Take it again.');
+    if (dm && demoSaves(c.company) >= DEMO_SCAN.saves) fail(429, demoFull);
     const name = str(b.name, 80) || 'Bottle';
-    const file = `${Date.now().toString(36)}-bottle-${slugify(name).slice(0, 40) || 'scan'}.jpg`;
-    fs.writeFileSync(path.join(MEDIA_DIR, file), jpg);
+    const file = saveScan(dm, `${Date.now().toString(36)}-bottle-${slugify(name).slice(0, 40) || 'scan'}.jpg`, jpg);
     const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)').run('file', `Bottle · ${name}`, file, 'image/jpeg', jpg.length, u.id, now(), c.company, c.store);
     audit(db, u.id, 'scan bottle', name);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
@@ -894,6 +941,14 @@ function sendFile(req, res, file, cache) {
 
 function staticFile(req, res, url) {
   const p = decodeURIComponent(url.pathname);
+  // A demo's scanned photos (Nov 12): only that demo's own people see them.
+  const dm = /^\/media\/demo\/([a-z0-9-]+)\/([^/]+)$/.exec(p);
+  if (dm) {
+    const user = sessionUser(db, cookies(req)[SESSION_COOKIE]);
+    const f = path.join(MEDIA_DIR, 'demo', dm[1], path.basename(dm[2]));
+    if (!demoMediaAllowed(db, user, dm[1]) || !fs.existsSync(f)) { res.writeHead(404); return res.end('Not found'); }
+    return sendFile(req, res, f, 'private, max-age=86400');
+  }
   if (p.startsWith('/media/')) {
     const f = path.join(MEDIA_DIR, path.basename(p));
     if (!fs.existsSync(f)) { res.writeHead(404); return res.end('Not found'); }
