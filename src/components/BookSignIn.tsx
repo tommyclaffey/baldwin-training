@@ -1,10 +1,13 @@
 // Signing in to read the book. Staff: the group's join code → your restaurant → your name → your PIN.
 // Owners and managers sign in with email in the admin, which also opens the book.
+// Nov 12 (Figma section 28): the join-code screen wears Mise, the platform's front door. Once the code is right the app
+// knows the restaurant, so the store, name and PIN screens wear that restaurant's own look (the brand comes with the code).
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { api, type User } from '../lib/api';
 import { useSession } from '../lib/session';
-import { AuthCard } from '../admin/screens';
+import type { Brand } from '../lib/theme';
+import { AuthCard } from './AuthCard';
 
 type Staff = { id: number; name: string; needsPin: boolean; storeId: number | null };
 type Store = { id: number; name: string };
@@ -18,6 +21,7 @@ export function BookSignIn() {
   const [store, setStore] = useState<Store | null>(null);
   const [code, setCode] = useState(() => localStorage.getItem(CODE_KEY) || '');
   const [company, setCompany] = useState('');
+  const [brand, setBrand] = useState<Brand>('mise');
   const [staff, setStaff] = useState<Staff[]>([]);
   const [who, setWho] = useState<Staff | null>(null);
   const [q, setQ] = useState('');
@@ -30,8 +34,8 @@ export function BookSignIn() {
   const lookUp = async (c: string) => {
     setBusy(true); setError('');
     try {
-      const r = await api<{ company: string; stores: Store[]; staff: Staff[] }>(`/api/join/${encodeURIComponent(c.trim().toUpperCase())}`);
-      setCompany(r.company); setStaff(r.staff); setStores(r.stores); localStorage.setItem(CODE_KEY, c.trim().toUpperCase());
+      const r = await api<{ company: string; brand?: string; stores: Store[]; staff: Staff[] }>(`/api/join/${encodeURIComponent(c.trim().toUpperCase())}`);
+      setCompany(r.company); setBrand(r.brand === 'mise' ? 'mise' : 'baldwin'); setStaff(r.staff); setStores(r.stores); localStorage.setItem(CODE_KEY, c.trim().toUpperCase());
       // One store: skip the question. Several: ask once, then remember it on this phone.
       const saved = r.stores.find((x) => String(x.id) === localStorage.getItem(STORE_KEY));
       const pick = r.stores.length === 1 ? r.stores[0] : saved || null;
@@ -70,18 +74,21 @@ export function BookSignIn() {
         onChange={(e) => set(e.target.value.replace(/\D/g, '').slice(0, 6))} />
     </label>
   );
-  const managers = <p className="muted small">Owner or manager? <Link to="/admin">Sign in with your email</Link>.</p>;
+  const managers = <><hr className="si-rule" /><p className="si-alt">Owner or manager? <Link to="/admin">Sign in with your email.</Link></p></>;
+  const card = { kicker: 'Staff', brand }; // after the join code: the restaurant's own look
 
   if (step === 'code') return (
-    <AuthCard title="Sign in to the training app" sub="Ask a manager for your restaurant’s join code. You only type it once on this phone.">
+    <AuthCard kicker="Staff" title="Sign In" sub="Ask a manager for your restaurant’s join code."
+      foot={<>Just looking? <Link to="/demo/mise">Try the Demo</Link></>}>
       <form className="stack" onSubmit={(e) => { e.preventDefault(); void lookUp(code); }}>
         <label className="field"><span>Join code</span>
           <input value={code} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12))} autoCapitalize="characters" autoComplete="off" spellCheck={false} placeholder="8 letters and numbers" />
+          <small><span className="si-wide">You only type it once on this device.</span><span className="si-narrow">You only type it once on this phone.</span></small>
         </label>
         {error && <p className="error" role="alert">{error}</p>}
         <button className="btn" disabled={busy || code.length < 6}>{busy ? 'Checking…' : 'Continue'}</button>
-        {managers}
       </form>
+      {managers}
     </AuthCard>
   );
 
@@ -90,7 +97,7 @@ export function BookSignIn() {
     : <button className="link-btn" onClick={() => { localStorage.removeItem(CODE_KEY); setCode(''); setStep('code'); }}>Different restaurant?</button>;
 
   if (step === 'store') return (
-    <AuthCard title={company} sub="Which restaurant do you work at?">
+    <AuthCard {...card} title={company} sub="Which restaurant do you work at?">
       <div className="stack">
         <div className="name-list" role="list">
           {stores.map((st) => <button key={st.id} role="listitem" className="name-btn" onClick={() => choose(st)}>{st.name}</button>)}
@@ -102,7 +109,7 @@ export function BookSignIn() {
   );
 
   if (step === 'who') return (
-    <AuthCard title={store?.name || company} sub={stores.length > 1 ? `${company} · tap your name.` : 'Tap your name.'}>
+    <AuthCard {...card} title={store?.name || company} sub={stores.length > 1 ? `${company} · tap your name.` : 'Tap your name.'}>
       <div className="stack">
         {here.length > 8 && <label className="field"><span className="sr-only">Find your name</span><input type="search" placeholder="Find your name" value={q} onChange={(e) => setQ(e.target.value)} /></label>}
         <div className="name-list" role="list">
@@ -117,7 +124,7 @@ export function BookSignIn() {
   );
 
   if (step === 'pin' && who) return (
-    <AuthCard title={`Hi, ${who.name.split(' ')[0]}`} sub={who.needsPin ? 'Your PIN was reset. Pick a new one: 4 to 6 numbers.' : 'Enter your PIN.'}>
+    <AuthCard {...card} title={`Hi, ${who.name.split(' ')[0]}`} sub={who.needsPin ? 'Your PIN was reset. Pick a new one: 4 to 6 numbers.' : 'Enter your PIN.'}>
       <form className="stack" onSubmit={signIn}>
         {pinField(who.needsPin ? 'New PIN' : 'PIN', pin, setPin, who.needsPin ? 'new-password' : 'current-password')}
         {who.needsPin && pinField('Type it again', pin2, setPin2, 'new-password')}
@@ -130,7 +137,7 @@ export function BookSignIn() {
   );
 
   return (
-    <AuthCard title={`Join ${store?.name || company}`} sub="Your name is how managers find your quiz scores. Your PIN keeps your training yours.">
+    <AuthCard {...card} title={`Join ${store?.name || company}`} sub="Your name is how managers find your quiz scores. Your PIN keeps your training yours.">
       <form className="stack" onSubmit={join}>
         <label className="field"><span>First and last name</span><input value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" /></label>
         {pinField('Pick a PIN (4 to 6 numbers)', pin, setPin, 'new-password')}
