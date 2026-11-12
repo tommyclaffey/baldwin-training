@@ -16,9 +16,9 @@ import { EditModeToggle } from './edit/EditModeBar';
 import { setFavicon } from './lib/favicon';
 import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
 import { MyPathPage, PathReadBar } from './path/MyPath';
-import { currentBrand } from './lib/skin';
+import { currentBrand } from './lib/theme';
 
-// Mise skin (Nov 10): a Mise-brand company sees the app in Mise (Nov 11: the brand comes with the session, see lib/skin.ts);
+// Mise skin (Nov 10): a Mise-brand company sees the app in Mise (Nov 11: the brand comes with the session, see lib/theme.ts);
 // The Baldwin's look is the default.
 import { CertificatePage } from './path/Certificate';
 import { TeamChatPage } from './chat/TeamChat';

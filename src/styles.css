@@ -2365,14 +2365,25 @@ body.eip-lock .page-tools.floating, body.menu-lock .page-tools.floating { displa
 .brand-mise body, .brand-mise .content { background: #EDE6DA; }
 .brand-mise .mobile-bar { background: #121110; }
 .brand-mise .mobile-brand .demo-pill { background: rgba(237,230,218,.14); color: #EDE6DA; }
-/* Watch = dark, read = light: the photo fades into Char. Desktop: from the left edge; phones: photo on top, fading down. */
-[data-name^="Mise hero photo"] { position: relative; }
-[data-name^="Mise hero photo"]::after { content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(90deg, #121110 0%, rgba(18,17,16,.55) 22%, rgba(18,17,16,0) 48%), linear-gradient(0deg, rgba(18,17,16,.55) 0%, rgba(18,17,16,0) 30%); }
-.page.compact [data-name="Hero"]:has(> [data-name^="Mise hero photo"]) { flex-direction: column-reverse !important; height: auto !important; min-height: 0 !important; }
-.page.compact [data-name^="Mise hero photo"] { width: 100% !important; height: 300px !important; min-height: 0 !important; flex: 0 0 auto !important; }
-.page.compact [data-name^="Mise hero photo"]::after { background: linear-gradient(180deg, rgba(18,17,16,0) 45%, #121110 100%); }
-.page.compact [data-name="Hero"]:has(> [data-name^="Mise hero photo"]) > [data-name="Copy"] { height: auto !important; min-height: 0 !important; padding: 4px 22px 26px !important; width: 100% !important; }
+/* ── The cinematic hero, every brand (Nov 12, src/lib/theme.ts; Figma 555:586, 555:388). Watch = dark, read = light: the photo
+   bleeds in from the right and fades into the brand's dark panel (--c-inverse: The Baldwin's espresso, Mise's Char).
+   Phones: the photo on top, fading down. A lesson's video is a live player, so only a thin edge of it fades. ── */
+[data-name="Hero"] > [data-name^="Hero photo"], [data-name="Hero"] > [data-name^="Video slot"] { position: relative; top: 0; } /* in the hero, a lesson video no longer sticks to the top on phones */
+[data-name="Hero"] > [data-name^="Hero photo"]::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, var(--c-inverse) 0%, color-mix(in srgb, var(--c-inverse) 55%, transparent) 22%, color-mix(in srgb, var(--c-inverse) 0%, transparent) 48%),
+    linear-gradient(0deg, color-mix(in srgb, var(--c-inverse) 55%, transparent) 0%, color-mix(in srgb, var(--c-inverse) 0%, transparent) 30%); }
+[data-name="Hero"] > [data-name^="Video slot"]::after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 40px; z-index: 3; pointer-events: none;
+  background: linear-gradient(90deg, var(--c-inverse), color-mix(in srgb, var(--c-inverse) 0%, transparent)); }
+.page.compact [data-name="Hero"]:has(> [data-name^="Hero photo"], > [data-name^="Video slot"]) { flex-direction: column-reverse !important; height: auto !important; min-height: 0 !important; }
+.page.compact [data-name="Hero"] > [data-name^="Hero photo"] { width: 100% !important; height: 300px !important; min-height: 0 !important; flex: 0 0 auto !important; }
+.page.compact [data-name="Hero"] > [data-name^="Hero photo"]::after { background: linear-gradient(180deg, color-mix(in srgb, var(--c-inverse) 0%, transparent) 45%, var(--c-inverse) 100%); }
+.page.compact [data-name="Hero"] > [data-name^="Video slot"] { width: 100% !important; height: calc(56.25vw - 16px) !important; min-height: 0 !important; flex: 0 0 auto !important; } /* 16:9 of the phone column (an aspect-ratio box mis-sizes in a reversed column) */
+.page.compact [data-name="Hero"] > [data-name^="Video slot"]::after { top: auto; right: 0; width: auto; height: 16px; background: linear-gradient(180deg, color-mix(in srgb, var(--c-inverse) 0%, transparent), var(--c-inverse)); }
+.page.compact [data-name="Hero"]:has(> [data-name^="Hero photo"], > [data-name^="Video slot"]) > [data-name="Copy"] { height: auto !important; min-height: 0 !important; flex: 0 0 auto !important; padding: 4px 22px 26px !important; width: 100% !important; }
+.page.compact [data-name="Hero"] > [data-name="Copy"]:only-child { padding: 26px 22px !important; flex: 0 0 auto !important; min-height: 0 !important; }
+/* the dish hero's buttons: the icon takes the button's ink (the brand's main button on dark, then the outlined one) */
+[data-name="Hero"]:has(> [data-name^="Hero photo"]) [data-name="Buttons"] > [data-name^="Button"]:first-child .fsvg svg [stroke] { stroke: var(--c-on-button-on-dark); }
+[data-name="Hero"]:has(> [data-name^="Hero photo"]) [data-name="Buttons"] > [data-name^="Button"]:not(:first-child) .fsvg svg [stroke] { stroke: var(--c-on-inverse); }
 
 /* ── The Mise demo (Nov 11, /demo/mise): the picker, demo bar, welcome card and tour in Mise's look. Light first, one red
    (deep fig #8E2A26), Char for main buttons, Instrument Serif only from 40 px up, DM Mono labels. The Baldwin's demo is untouched. ── */
@@ -2740,3 +2751,41 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
    things that need attention (Nov 11, Tommy: "Do you feel like this color button is the right call?" → "Sounds good") */
 .brand-mise [data-name="Play"] { background: #EDE6DA !important; box-shadow: 0 4px 16px rgba(18, 17, 16, .35); }
 .brand-mise [data-name="Play"] svg path, .brand-mise [data-name="Play"] svg polygon { fill: #121110 !important; stroke: none; }
+
+/* ---- Archive where items live (Nov 12; src/edit/archive.tsx). The Archive button on rows and cards is the chat button's
+   twin (same 32 px circle, same show-on-hover rules via .item-chat), just left of it. The confirm and the Undo toast use
+   the app's modal and toast, so both brands pick them up from their variables. ---- */
+.item-archive:hover { background: var(--ink); color: #FFFFFF; border-color: #FFFFFF; }
+.page.compact .item-archive.beside:not(.row) { right: 46px !important; }
+.arc-confirm { width: min(460px, 100%); gap: 12px; }
+.arc-confirm p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink); }
+.arc-confirm .arc-note { font-size: 14px; color: var(--muted, #5C554D); }
+.arc-confirm .arc-error { font-size: 14px; color: #A1271F; font-weight: 600; }
+.arc-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.arc-actions .btn { min-width: 112px; }
+.arc-actions .btn:focus-visible, .arc-undo:focus-visible { outline: 3px solid var(--copper); outline-offset: 2px; }
+.arc-toast { gap: 12px; }
+.arc-undo { display: inline-flex; align-items: center; justify-content: center; min-height: 30px; padding: 4px 12px; margin-left: 4px; border-radius: 999px;
+  border: 1px solid rgba(242,238,231,.55); background: transparent; color: var(--cream); font: 700 13px 'Archivo', sans-serif; cursor: pointer; }
+.arc-undo:hover { background: var(--cream); color: var(--ink); }
+/* The Archived page (/admin/archived) */
+.arc-page .arc-search { width: min(420px, 100%); }
+.arc-group { margin-top: 28px; }
+.arc-group-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.arc-group-head h2 { margin: 0; font-size: 18px; }
+.arc-count { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; border-radius: 999px; background: var(--tint, #F1EBDF); font: 700 12px 'Archivo', sans-serif; font-variant-numeric: tabular-nums; }
+.arc-group-head .grow { flex: 1; }
+.arc-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.arc-row .grow { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.arc-row strong { font-size: 15px; }
+.arc-row small { font-size: 13px; color: var(--muted, #5C554D); }
+.arc-store { display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; margin-top: 4px; padding: 2px 8px; border-radius: 6px; background: var(--tint, #F1EBDF); color: var(--ink); font: 600 12px 'Archivo', sans-serif; }
+.arc-empty { color: var(--muted, #5C554D); font-size: 14px; padding: 12px 0; margin: 0; }
+@media (max-width: 600px) { .arc-row { flex-wrap: wrap; } .arc-row .btn { width: 100%; } }
+/* The Undo toast keeps its words on one or two lines, and on phones in Edit Mode it sits under the top bar so the
+   floating edit bar never covers it. */
+.arc-toast { width: max-content; max-width: calc(100vw - 32px); box-sizing: border-box; line-height: 1.35; }
+.arc-toast .dot, .arc-toast .arc-undo { flex: none; }
+@media (max-width: 800px) { body.edit-on .arc-toast { top: 76px; bottom: auto; } }
+/* Edit Mode on the cinematic hero (every brand): allergen chips that aren't picked read on the dark panel */
+[data-name="Hero"] .ed-chip:not(.on) { color: var(--c-on-inverse-muted); border-color: var(--c-outline-on-dark); }

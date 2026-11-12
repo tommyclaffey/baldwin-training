@@ -14,7 +14,8 @@ import { AddVideoButton } from './AddVideo';
 import { CompleteToggle } from './CompleteToggle';
 import { AssignName, FindBox, TableFinder, TableMarker, controlProps, isActive, useInteract, visibleKids, type Meta } from './interact';
 import { ItemChatButton } from '../chat/SendToTeam';
-import { cardPlan, holderTarget, placeOf, targetOf, withBand, withGutters, wordsOf, type Lookup, type Shape, type Target } from '../chat/sendable';
+import { BTN, GAP, cardPlan, holderTarget, placeOf, shapeOf, targetOf, withBand, withGutters, wordsOf, type Lookup, type Shape, type Target } from '../chat/sendable';
+import { ItemArchiveButton, type Arc } from '../edit/archive';
 import { useEditing, useField, type EdBind } from '../edit/state';
 import { ChipsEditor, EditText, PhotoTools, SpecEditor, TagsEditor } from '../edit/fields';
 
@@ -23,6 +24,7 @@ export type FNode = {
   t: 'F' | 'T' | 'R' | 'E' | 'S';
   n?: string; w: number; h: number; x?: number; y?: number; abs?: 1;
   skipTab?: 1; // clickable, but Tab skips it: it repeats a link right beside it
+  arc?: Arc; // a manager can archive this row or card (server/archive.mjs; staff never get it)
   lab?: string; empty?: 1; hdr?: 1; // table cells: column label, an empty allergen cell, the header row (phones stack rows)
   sh?: 'F' | 'H' | 'L'; sv?: 'F' | 'H' | 'L';
   op?: number; rot?: number; to?: string; svg?: string;
@@ -98,7 +100,7 @@ function Drawing({ svg, style, className }: { svg: string; style: CSSProperties;
   }, [svg]);
   return <span ref={ref} aria-hidden="true" className={className} style={{ ...style, alignItems: 'center', justifyContent: 'center' }} dangerouslySetInnerHTML={{ __html: svg }} />;
 }
-// The Mise skin's fonts (src/lib/skin.ts) sit beside The Baldwin's Archivo and Pinyon Script.
+// The Mise skin's fonts (src/lib/theme.ts) sit beside The Baldwin's Archivo and Pinyon Script.
 const FONT: Record<string, string> = {
   'Pinyon Script': "'Pinyon Script', cursive", 'Instrument Serif': "'Instrument Serif', Georgia, serif",
   'DM Mono': "'DM Mono', ui-monospace, monospace", 'Reenie Beanie': "'Reenie Beanie', cursive",
@@ -504,12 +506,17 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   const child = (c: FNode) => <FigmaNode node={c} parentLm={node.lm} parentH={node.lm === 'H' ? node.h : undefined} />;
   // Rows that can go to Team Chat get a gutter at their end for the chat button (and so do their table's other rows).
   const shown = visibleKids(node.c, live);
-  let laid = shown && chatLookup && !inLink && shown.some((c) => c.to) ? withGutters(shown, node, (c) => targetOf(c, chatLookup)?.shape === 'row') : shown;
+  // Nov 12: a manager's rows also carry an Archive button beside the chat button, so their gutter fits two.
+  const arcKids = !inLink && !!shown?.some((c) => c.arc);
+  const isRowKid = (c: FNode) => (!!chatLookup && targetOf(c, chatLookup)?.shape === 'row') || (!!c.arc && shapeOf(c) === 'row');
+  let laid = shown && !inLink && ((chatLookup && shown.some((c) => c.to)) || arcKids) ? withGutters(shown, node, isRowKid, chatLookup && arcKids ? 2 : 1) : shown;
   const chat = chatLookup && !inLink ? targetOf(node, chatLookup) : null;
+  const arcShape = !inLink && node.arc ? shapeOf(node) : null;
+  const arc = arcShape && node.arc ? { ...node.arc, shape: arcShape } : null;
   // A card about one thing that isn't a link itself (Cocktail Specs: the name links): it carries the button too.
   const holder = chatLookup && !inLink && !chat ? holderTarget(node, chatLookup) : null;
-  const plan = chat?.shape === 'card' || holder ? cardPlan(node) : null;
-  if (plan && laid) laid = withBand(laid, plan);
+  const plan = chat?.shape === 'card' || holder || arc?.shape === 'card' ? cardPlan(node) : null;
+  if (plan && laid) laid = withBand(laid, plan, (chat || holder) && arc ? 2 : 1);
   let kids: ReactNode = laid?.map((c, i) => (
     // Tonight's sections: the name in each row is live (and editable for a signed-in manager).
     m?.assign && c.t === 'T' && c.s === 'Unassigned'
@@ -558,6 +565,12 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     cls.push('has-chat', 'chat-card');
     extras.push(<ItemChatButton key="chat" item={{ type: 'page', slug: holder.slug }} title={holder.title} className={'card' + (node.w >= 480 ? ' wide' : '')} style={{ top: plan.top, right: plan.right }} />);
   }
+  // A row that isn't a link (Beer & Draft's tap table): its Archive button sits at its end, like a link row's.
+  if (arc && !node.to) {
+    const at = placeOf(node, arc.shape);
+    cls.push('has-chat', 'chat-' + arc.shape);
+    extras.push(<ItemArchiveButton key="arc" arc={arc} className={arc.shape + (node.w >= 480 ? ' wide' : '')} style={{ top: at.top, right: at.right }} />);
+  }
   if (m?.tables && table && m.tables[table]) { extras.push(<TableMarker key="table" at={m.tables[table]} label={table} />); st.position = st.position || 'relative'; st.overflow = 'hidden'; }
   if (extras.length || playing) kids = <>{kids}{extras}{overlays}</>;
   if (extras.length && !st.position) st.position = 'relative';
@@ -582,7 +595,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     }
     const box = <div className={cls.join(' ')} style={{ ...inner, position: 'relative', width: node.w, height: node.h, maxWidth: 'none' }} data-name={node.n}>{kids}</div>;
     const scaled = <Scaled w={node.w} h={node.h} outer={{ flex, alignSelf, minWidth, flexShrink }}>{box}</Scaled>;
-    return node.to ? wrapLink(node, <div>{scaled}</div>, {}, ['fn'], inLink, chat) : scaled;
+    return node.to ? wrapLink(node, <div>{scaled}</div>, {}, ['fn'], inLink, chat, arc) : scaled;
   }
   if (carousel && (node.n === 'Carousel prev' || node.n === 'Carousel next')) {
     const prev = node.n === 'Carousel prev';
@@ -604,7 +617,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
       {kids}
     </div>
   );
-  return wrapLink(node, el, st, cls, inLink, chat);
+  return wrapLink(node, el, st, cls, inLink, chat, arc);
 }
 
 // A linked text keeps its own colour from the design (Nov 5: "Full specs on Cocktail Specs →" came out ink on the dark band).
@@ -613,7 +626,7 @@ const linkColor = (node: FNode, st: CSSProperties) => (node.t === 'T' && st.colo
 // One card, one Tab stop (Nov 6, Tommy: "I have to press Tab twice to select the next card"). A link inside another link, or a photo
 // that repeats its card's button, stays clickable but Tab skips it.
 const InLink = createContext(false);
-function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[], inLink = false, chat: ChatOn | null = null) {
+function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[], inLink = false, chat: ChatOn | null = null, arc: (Arc & { shape: Shape }) | null = null) {
   if (!node.to) return el;
   const skip = inLink || !!node.skipTab;
   const tabProps = skip ? { tabIndex: -1, ...(node.skipTab ? { 'aria-hidden': true } : {}) } : {};
@@ -629,14 +642,17 @@ function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[], 
     );
   }
   // An item that can go to Team Chat: its chat button sits inside it (the next Tab stop), shown on hover and focus.
-  if (chat && !skip) {
-    const at = placeOf(node, chat.shape);
+  // Nov 12: a manager's Archive button sits just left of the chat button (or in its place when there's no chat).
+  if ((chat || arc) && !skip) {
+    const shape = (chat?.shape || arc?.shape)!;
+    const at = placeOf(node, shape);
+    const size = shape + (node.w >= 480 ? ' wide' : '');
     return (
-      <Link to={node.to} className={cls.concat('flink', 'has-chat', 'chat-' + chat.shape).join(' ')} style={{ ...st, position: st.position || 'relative', display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }}
-        aria-label={label || wordsOf(node) || chat.title} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
+      <Link to={node.to} className={cls.concat('flink', 'has-chat', 'chat-' + shape).join(' ')} style={{ ...st, position: st.position || 'relative', display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }}
+        aria-label={label || wordsOf(node) || chat?.title || arc?.n} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
         <InLink.Provider value={true}>{(el as { props: { children?: ReactNode } }).props.children}</InLink.Provider>
-        <ItemChatButton item={{ type: 'page', slug: chat.slug }} title={chat.title} className={chat.shape + (node.w >= 480 ? ' wide' : '')}
-          style={{ top: at.top, right: at.right }} />
+        {arc && <ItemArchiveButton arc={arc} className={size + (chat ? ' beside' : '')} style={{ top: at.top, right: at.right + (chat ? BTN + GAP : 0) }} />}
+        {chat && <ItemChatButton item={{ type: 'page', slug: chat.slug }} title={chat.title} className={size} style={{ top: at.top, right: at.right }} />}
       </Link>
     );
   }
