@@ -122,7 +122,8 @@ export function cocktailPage(template, item, ctx) {
     : `Our signature · ${k} of ${all.length}`);
   const ct = copy.c.filter((c) => c.t === 'T');
   setText(ct[0], d.tagline || 'Our signature cocktail');
-  setText(ct[1], name.toUpperCase());
+  // Long names shrink, then wrap, instead of running off the hero (Nov 11, Tommy: "fix this" on CITRUS FIZZ (SPIRITLESS)).
+  fitTitle(ct[1], name.toUpperCase(), copy.w - (copy.pd ? copy.pd[1] + copy.pd[3] : 0));
   setText(ct[2], d.description || '');
   const stats = find(copy, byName('Stats'));
   for (const [label, key] of [['Glass', 'glass'], ['Garnish', 'garnish']]) {
