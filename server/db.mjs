@@ -8,7 +8,7 @@ export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(path.dirn
 export const MEDIA_DIR = path.join(DATA_DIR, 'media');
 export const now = () => new Date().toISOString();
 
-const MIGRATIONS = [
+export const MIGRATIONS = [
   `
   CREATE TABLE users(
     id INTEGER PRIMARY KEY, email TEXT UNIQUE COLLATE NOCASE NOT NULL, name TEXT NOT NULL,
@@ -254,6 +254,24 @@ const MIGRATIONS = [
   CREATE INDEX prep_events_store ON prep_events(store_id, day);
   CREATE INDEX prep_events_batch ON prep_events(batch_id);
   CREATE INDEX prep_events_item ON prep_events(item_id, day);
+  `,
+  // 20 (Nov 12, the shift count; Figma 09 · Proposals → 31b, 666:818; server/prep.mjs). Tommy: "log how many we have at the
+  //   beginning of the shift … the amount that they walked in with and then the amount that they're prepping."
+  //   prep_counts: one row per item each time someone counts it at the start of a shift (day = the store's Detroit date).
+  //     amount = walked in with. tossed = what was past its use-by and logged as Expired waste at the count (not counted).
+  //     Two counts in one day: the latest wins; the earlier gets replaced_at and stays as history.
+  //     kept = 1 when a count higher than expected was kept on purpose ("Keep the count").
+  //   Worked out by server/prep.mjs (recompute) every time a count, batch or waste changes, so reports read stored numbers:
+  //     expected = what the shift before left if nothing was used (its starting with − its waste); high = amount > expected.
+  //     For the shift this count starts (up to the next count): prepped (batches made from this day to the next count's day),
+  //     wasted (waste logged from this count to the next), next_day, shifts (days spanned: 1, or more after a missed day),
+  //     used = walked in + prepped − wasted − the next count (NULL until the next count, or when the next count is high).
+  `
+  CREATE TABLE prep_counts(id INTEGER PRIMARY KEY, company_id INT NOT NULL, store_id INT NOT NULL, item_id INT NOT NULL,
+    day TEXT NOT NULL, amount REAL NOT NULL, tossed REAL NOT NULL DEFAULT 0, at TEXT NOT NULL, by_user INT, replaced_at TEXT, kept INT NOT NULL DEFAULT 0,
+    expected REAL, high INT NOT NULL DEFAULT 0, prepped REAL NOT NULL DEFAULT 0, wasted REAL NOT NULL DEFAULT 0, used REAL, next_day TEXT, shifts INT);
+  CREATE INDEX prep_counts_item ON prep_counts(item_id, day);
+  CREATE INDEX prep_counts_store ON prep_counts(store_id, day);
   `,
 ];
 
