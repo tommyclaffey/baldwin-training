@@ -1609,7 +1609,7 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 
 /* ---- Certificates (Nov 8). Figma 09 · Proposals → 22 (468:46). Sizes are the design's px ÷ 10.56, in container units,
    so the certificate is the same at any width and prints edge to edge on Letter landscape. ---- */
-.cp { box-sizing: border-box; width: 100%; max-width: 1176px; margin: 0 auto; padding: 32px 48px 72px; }
+.cp { box-sizing: border-box; width: 100%; max-width: 1176px; min-width: 0; margin: 0 auto; padding: 32px 48px 72px; }
 .cp h1 { font: 800 34px/1.1 'Archivo', sans-serif; margin: 0; color: var(--ink); letter-spacing: -.5px; }
 .cp-crumbs { display: flex; flex-wrap: wrap; gap: 10px; font: 500 15px 'Archivo', sans-serif; color: var(--muted); margin-bottom: 18px; }
 .cp-crumbs a { color: var(--copper-dk); font-weight: 600; text-decoration: none; }
@@ -1617,10 +1617,10 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .cp-crumbs [aria-current] { color: var(--ink); font-weight: 600; }
 .cp-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
 .cp-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.cp-sheet { box-shadow: 0 10px 30px rgba(31, 26, 20, .14); border-radius: 4px; }
+.cp-sheet { box-shadow: 0 10px 30px rgba(31, 26, 20, .14); border-radius: 4px; width: 100%; max-width: 100%; min-width: 0; }
 .cp-note { font: 13.5px/1.5 'Archivo', sans-serif; color: var(--muted); margin: 18px 0 0; }
-.cert { container-type: inline-size; width: 100%; aspect-ratio: 1056 / 816; background: #F6F1E8; position: relative; color: var(--ink); font-family: 'Archivo', sans-serif;
-  -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.cert { container-type: inline-size; width: 100%; max-width: 100%; aspect-ratio: 1056 / 816; background: #F6F1E8; position: relative; color: var(--ink); font-family: 'Archivo', sans-serif;
+  overflow: hidden; -webkit-print-color-adjust: exact; print-color-adjust: exact; } /* Nov 12: the sheet never spills past its box, whatever's inside it */
 .cert-in { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 4.545cqw 4.545cqw 0; }
 .cert::before, .cert::after { content: ''; position: absolute; pointer-events: none; }
 .cert::before { inset: 2.273cqw; border: .19cqw solid var(--copper); border-radius: .38cqw; }
@@ -1641,10 +1641,11 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .cert-facts > div + div { border-left: .095cqw solid rgb(var(--copper-rgb) / .6); }
 .cert-facts span, .cert-foot span { color: var(--copper-dk); letter-spacing: .14em; }
 .cert-facts strong, .cert-foot strong { font-weight: 500; font-size: 1.373cqw; }
-.cert-foot { align-self: stretch; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; margin: auto 3.03cqw 0; padding-bottom: 1.2cqw; }
+.cert-foot { align-self: stretch; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; margin: auto 3.03cqw 0; padding-bottom: 1.2cqw; }
 .cert-foot > div:not(.cert-seal) { display: flex; flex-direction: column; gap: .57cqw; text-align: left; align-self: start; margin-top: 2.9cqw; }
 .cert-foot > .right { text-align: right; align-items: flex-end; }
 .cert-foot small { font-size: 1.184cqw; color: var(--muted); }
+.cert-foot strong, .cert-foot small, .cert-facts strong { overflow-wrap: anywhere; }
 .cert-seal { width: 10.6cqw; aspect-ratio: 1; border-radius: 50%; background: var(--ink); border: .284cqw solid var(--copper); box-shadow: inset 0 0 0 .66cqw var(--ink), inset 0 0 0 .76cqw rgb(var(--copper-rgb) / .6);
   display: grid; place-items: center; align-content: center; gap: 0; }
 .cert-seal i { font-style: normal; text-transform: uppercase; font-weight: 600; font-size: .947cqw; letter-spacing: .18em; color: var(--copper-text); }
