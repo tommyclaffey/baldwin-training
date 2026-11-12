@@ -100,7 +100,7 @@ function Drawing({ svg, style, className }: { svg: string; style: CSSProperties;
   }, [svg]);
   return <span ref={ref} aria-hidden="true" className={className} style={{ ...style, alignItems: 'center', justifyContent: 'center' }} dangerouslySetInnerHTML={{ __html: svg }} />;
 }
-// The Mise skin's fonts (src/lib/skin.ts) sit beside The Baldwin's Archivo and Pinyon Script.
+// The Mise skin's fonts (src/lib/theme.ts) sit beside The Baldwin's Archivo and Pinyon Script.
 const FONT: Record<string, string> = {
   'Pinyon Script': "'Pinyon Script', cursive", 'Instrument Serif': "'Instrument Serif', Georgia, serif",
   'DM Mono': "'DM Mono', ui-monospace, monospace", 'Reenie Beanie': "'Reenie Beanie', cursive",

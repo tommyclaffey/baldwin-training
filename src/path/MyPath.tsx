@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
-import { currentBrand } from '../lib/skin';
+import { currentBrand } from '../lib/theme';
 import { dayLabel, dueWords, setPath, usePath, reloadPath, type JobPath, type Note, type Program, type Stage, type Step } from './store';
 
 const KIND: Record<Step['kind'], string> = { read: 'Read', quiz: 'Quiz', lesson: 'Lesson', signoff: 'Sign-Off' };
