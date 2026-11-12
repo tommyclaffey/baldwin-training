@@ -37,6 +37,8 @@ export function courseProgress(done, all = chapters()) { const total = all.reduc
 }
 const txt = (s, o = {}) => ({ t: 'T', n: s.slice(0, 40), s, ff: 'Archivo', fs: o.fs || 'Bold', z: o.z || 12, f: [{ c: o.c || '#C49A6C' }], ar: 'W', ...(o.ls ? { ls: o.ls } : {}), sh: 'H', sv: 'H' });
 /** "34% DONE · 31 of 90 sections" over a copper bar. */
+/** Nov 12: the program heroes' copy column (was 398; heroFrame widens it). */
+const HERO_COPY = 440;
 function progressBlock(p, w, dark = true) {
   const bar = { t: 'F', n: 'Bar', w, h: 6, r: 3, f: [{ c: dark ? '#3A3632' : '#E4DCCF' }], sh: 'F', sv: 'F', c: [{ t: 'R', n: 'Done', x: 0, y: 0, w: Math.max(p.k ? 6 : 0, Math.round((w * p.pct) / 100)), h: 6, r: 3, f: [{ c: p.pct === 100 ? GREEN : '#C49A6C' }] }] };
   return { t: 'F', n: 'Course progress', lm: 'V', gap: 8, w, h: 30, sh: 'F', sv: 'H', c: [txt(`${p.pct}% DONE · ${p.k} OF ${p.total} SECTIONS`, { ls: '12%', c: p.pct === 100 ? '#7FCB93' : '#C49A6C' }), bar] };
@@ -433,7 +435,7 @@ export function level1Page(page, ctx) {
   for (const t of findAll(find(main, byName('How it works')) || { c: [] }, (x) => x.t === 'T' && (x.s || '').length > 2)) { t.ar = 'H'; t.sh = 'L'; }
   const prog = courseProgress(ctx.done);
   const heroCopy = find(find(main, byName('Hero')), byName('Copy'));
-  if (heroCopy) { const at = heroCopy.c.findIndex((x) => x.n === 'At a glance'); heroCopy.c.splice(at + 1, 0, progressBlock(prog, 398)); }
+  if (heroCopy) { const at = heroCopy.c.findIndex((x) => x.n === 'At a glance'); heroCopy.c.splice(at + 1, 0, progressBlock(prog, HERO_COPY)); }
   // twelve lessons
   const grid = find(main, byName('Lessons'));
   const finished = lessonsGrid(grid, all, ctx.done);
@@ -546,7 +548,7 @@ export function level2Page(page, ctx = {}) {
     const line = hc.c.filter((x) => x.t === 'T')[2];
     if (line) { line.n = 'Lead'; setText(line, live ? `${all.length} video lessons in three parts, with practice cards. Then one day, three exams.` : 'Lessons are coming soon. Watch the Court’s videos and read the exam details now.'); line.ar = 'H'; line.sh = 'F'; line.w = 520; }
     if (!live) hc.c.splice(1, 0, { t: 'F', n: 'Pill · Coming Soon', lm: 'H', pd: [6, 12, 6, 12], r: 999, f: [{ c: '#C49A6C' }], sh: 'H', sv: 'H', c: [txt('COMING SOON', { z: 11, c: '#1E1C1A', ls: '14%', fs: 'ExtraBold' })] });
-    else { const at = hc.c.findIndex((x) => x.n === 'Buttons'); hc.c.splice(at >= 0 ? at : hc.c.length, 0, progressBlock(courseProgress(done, all), 398)); }
+    else { const at = hc.c.findIndex((x) => x.n === 'Buttons'); hc.c.splice(at >= 0 ? at : hc.c.length, 0, progressBlock(courseProgress(done, all), HERO_COPY)); }
   }
   for (const t of findAll(main, (x) => x.t === 'T' && (x.z || 0) >= 22)) t.lw = Math.max(...String(t.s).split(/[\s-]+/).map((w) => w.length));
   wireVideos(main);
@@ -634,7 +636,7 @@ export function barPage(page, ctx) {
     glance.c.forEach((st, i) => { const tt = texts(st); if (stats[i]) { setText(tt[0], stats[i][0]); setText(tt[1], stats[i][1]); st.n = 'Stat · ' + stats[i][1]; } });
   }
   const prog = courseProgress(ctx.done, all);
-  if (copy) { const at = copy.c.findIndex((x) => x.n === 'At a glance'); copy.c.splice(at + 1, 0, progressBlock(prog, 398)); }
+  if (copy) { const at = copy.c.findIndex((x) => x.n === 'At a glance'); copy.c.splice(at + 1, 0, progressBlock(prog, HERO_COPY)); }
   // the final and the practical: one line at most, so the hero keeps the Sommelier page's height (Tommy, Nov 8)
   if (copy) {
     let line = null;
@@ -697,6 +699,7 @@ export function barPage(page, ctx) {
     const at = main.c.indexOf(how);
     main.c.splice(at + 1, 0, { t: 'F', n: 'Levels', lm: 'V', gap: 14, w: how.w, sh: 'F', sv: 'H', c: [txt(`THE ${countWord(names.length).toUpperCase()} LEVELS`, { ls: '12%', c: '#8A5A3A', z: 12 }), levels] });
   }
+  { const h = find(main, byName('Hero')); heroFrame(h, h && find(h, byName('Copy'))); }
   return page;
 }
 
@@ -895,13 +898,39 @@ function unclipHero(main) {
   const hero = find(main, byName('Hero')); const copy = hero && find(hero, byName('Copy')); const btns = copy && find(copy, byName('Buttons'));
   for (const n of [copy, btns]) if (n) { delete n.clip; delete n.h; n.sv = 'H'; }
   for (const b of btns?.c || []) { delete b.clip; delete b.h; b.sv = 'H'; }
+  heroFrame(hero, copy);
+}
+
+/** Nov 12 (Tommy, on the Certified Bar Server hero: "make this sizing and padding better"): the program heroes had
+ *  22/30 px padding, a photo floating in the middle and the copy pressed to the top. Now: even 40 px padding, a 44 px
+ *  gap, the copy centred top to bottom with a little more width, and the photo filling the hero's full height. */
+function heroFrame(hero, copy) {
+  if (!hero || hero.lm !== 'H' || !copy) return;
+  const img = (hero.c || []).find((x) => (x.n || '').startsWith('IMG/'));
+  if (!img) return;
+  const W = hero.w || 1080; const pad = 40; const gap = 44;
+  hero.pd = [pad, pad, pad, pad]; hero.gap = gap; hero.ca = 'C'; delete hero.h; hero.sv = 'H';
+  copy.w = Math.max(copy.w || 0, HERO_COPY); copy.sh = 'F'; copy.sv = 'H';
+  // the photo: fixed width, as tall as the copy beside it (sv 'L' stretches it with the row)
+  img.w = W - 2 * pad - gap - copy.w; img.sh = 'F'; img.sv = 'L'; img.h = 240;
+  // the stat boxes and progress bar use the copy's full width, so the right edge matches the left
+  const widen = (n, from) => { if (n.w === from) n.w = copy.w; for (const g of n.c || []) widen(g, from); };
+  for (const k of copy.c || []) {
+    if (k.n === 'At a glance') {
+      // four even boxes across the wider column (fixed widths, so phones still pair them two by two)
+      const n = (k.c || []).length; const g = k.gap ?? 8;
+      k.w = copy.w; k.sh = 'F';
+      if (n) for (const st of k.c) { st.sh = 'F'; st.w = Math.floor((copy.w - g * (n - 1)) / n); }
+    }
+    else if (k.n === 'Course progress' && k.w) widen(k, k.w);
+  }
 }
 
 /** Nov 8 (Tommy: "spacing/sizing … uniform with the som and beer"): a filled hero button gets a hairline in its own colour,
  *  so it's exactly as tall as the outlined one beside it (41 vs 43 px before). */
 function evenButtons(main) {
   const hero = find(main, byName('Hero')); const btns = hero && find(hero, byName('Buttons'));
-  for (const b of btns?.c || []) if (!b.st && b.f?.[0]?.c) { b.st = b.f[0].c; b.sw = 1; }
+  for (const b of btns?.c || []) if (!b.st && b.f?.[0]?.c) { b.st = b.f[0].c; b.sw = 1; b.sto = 0; } // Nov 12: invisible, so a brand that re-colours strokes never draws an edge on it
 }
 
 /* ---------------- Level 2 on the Level 1 layout (Nov 8) ---------------- */
@@ -928,7 +957,7 @@ export function level2OnLevel1(p1, old, ctx = {}) {
   const cards = all.reduce((k, c) => k + c.cards.length, 0);
   const stats = [[String(all.length), 'lessons'], [String(cards), 'cards'], ['45', 'questions'], ['1', 'practical']]; // our theory final + mock service, like Cocktail and Beer
   if (gl) gl.c.forEach((st, i) => { const tt = texts(st); if (stats[i]) { setText(tt[0], stats[i][0]); setText(tt[1], stats[i][1]); st.n = 'Stat · ' + stats[i][1]; } });
-  if (copy) { const at = copy.c.findIndex((x) => x.n === 'At a glance'); copy.c.splice(at + 1, 0, progressBlock(courseProgress(done, all), 398)); }
+  if (copy) { const at = copy.c.findIndex((x) => x.n === 'At a glance'); copy.c.splice(at + 1, 0, progressBlock(courseProgress(done, all), HERO_COPY)); }
   const btns = find(hero, byName('Buttons'));
   if (btns) {
     const cont = btns.c.find((x) => (x.n || '').startsWith('Button · Continue'));

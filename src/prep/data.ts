@@ -5,38 +5,57 @@ import { theme, brandTitle, type TypeRole } from '../lib/theme';
 export type Kind = 'juice' | 'syrup' | 'garnish';
 export type Person = { id: number; name: string; initials: string; usual?: boolean };
 export type Row = {
-  id: number; name: string; kind: Kind; unit: string; batch: number; par: number; onHand: number; toMake: number; batches: number;
+  id: number; name: string; kind: Kind; unit: string; batch: number; par: number; onHand: number; toMake: number; toMakeAtCount: number; batches: number;
+  walkedIn: number | null; prepped: number; starting: number | null; lastUsed: number | null; tossed: number; check: boolean; kept: boolean;
+  lastStarting: number | null; lastDay: string | null;
   made: { amount: number; at: string; by: Person | null } | null; who: Person | null; useFirst: boolean; ratio: string | null; hasRecipe: boolean;
-  lesson: string | null; shelfDays: number | null; useByIfMadeNow: string | null; status: 'make' | 'made' | 'use-first' | 'at-par';
+  lesson: string | null; shelfDays: number | null; useByIfMadeNow: string | null; status: 'uncounted' | 'check' | 'make' | 'made' | 'use-first' | 'at-par';
 };
 export type UseFirst = { batchId: number; itemId: number; name: string; kind: Kind; unit: string; amount: number; remaining: number; day: string; madeAt: string;
-  by: Person | null; useBy: string; state: 'expired' | 'today' | 'tomorrow'; line: string };
+  by: Person | null; useBy: string; state: 'today' | 'tomorrow'; line: string };
+export type Counted = { at: string; by: Person | null; n: number };
 export type Today = {
-  store: string; day: string; weekday: string; can: { log: boolean; edit: boolean }; useFirst: UseFirst[]; items: Row[]; people: Person[];
+  store: string; day: string; weekday: string; can: { log: boolean; edit: boolean }; counted: Counted | null; lastCount: { day: string; at: string; by: Person | null } | null;
+  steps: { toMake: number; made: number }; useFirst: UseFirst[]; items: Row[]; people: Person[];
   week: { from: string; to: string; made: Record<string, number>; wasted: Record<string, number>; ranOut: number }; started: string | null;
+  example: { item: string; unit: string; day: string; starting: number; wasted: number; nextDay: string; walkedIn: number; used: number } | null;
+};
+/** The Start of Shift Count page (Figma 666:818). */
+export type CountItem = {
+  id: number; name: string; kind: Kind; unit: string; batch: number; par: number; shelfDays: number | null; shelfWords: string;
+  last: { day: string; at: string; by: Person | null; walkedIn: number; starting: number; wasted: number; expected: number | null } | null;
+  today: { amount: number; tossed: number; kept: boolean; high: boolean; at: string; by: Person | null } | null;
+  fresh: number; expired: { id: number; day: string; amount: number; useBy: string }[];
+};
+export type CountSheet = { store: string; day: string; weekday: string; can: { log: boolean; edit: boolean }; me: Person | null; counted: Counted | null; items: CountItem[] };
+export type LedgerRow = {
+  id: number; day: string; lastDay: string; shifts: number; nextDay: string | null; walkedIn: number; tossed: number; prepped: number; starting: number; wasted: number;
+  waste: { reason: string; amount: number }[]; used: number | null; pending: boolean; check: boolean; kept: boolean; nextCount: number | null; expectedNext: number | null;
+  by: Person | null; at: string; ranOutAt: string | null; recounts: { amount: number; at: string; by: Person | null }[];
 };
 export type Stat = { days: number; used: number | null; wasted: number | null; ranOut: number };
 export type Suggestion = { dow: number; kind: 'raise' | 'lower'; from: number; to: number; text: string };
-export type Batch = { id: number; day: string; madeAt: string; by: Person | null; amount: number; remaining: number; useBy: string | null; open: boolean; expired: boolean;
-  used: number; wasted: { amount: number; reason: string }[]; ranOutAt: string | null; unit: string };
+export type Batch = { id: number; day: string; madeAt: string; by: Person | null; amount: number; remaining: number; useBy: string | null; open: boolean; expired: boolean; unit: string };
 export type Item = {
   id: number; name: string; kind: Kind; kindLabel: string; unit: string; batch: number; pars: number[]; today: number; day: string; parToday: number; onHand: number; step: number;
   stats: Stat[]; suggestions: Suggestion[];
   shelf: { days: number | null; words: string; storage: string; note: string; source: string; lesson: string; confirmed: boolean };
   recipe: { ratio: string; steps: string[]; yield: string; lesson: string };
-  drinks: { name: string; slug: string; amount: string }[]; batches: Batch[];
-  week: { from: string; made: number; used: number; wasted: number; inUse: number };
+  drinks: { name: string; slug: string; amount: string }[]; batches: Batch[]; ledger: LedgerRow[];
+  counted: { walkedIn: number; at: string; by: Person | null; check: boolean } | null;
+  week: { from: string; made: number; used: number; wasted: number; closed: number; shifts: number };
   makers: (Person & { days: string[] })[]; archived: boolean; can: { log: boolean; edit: boolean };
 };
-export type Bucket = { key: string; label: string; sub: string; on: boolean; made: number; used: number; wasted: number; inUse: number; prevUsed: number | null; ranOutAt: string | null; ranOut: number };
-export type ReportRow = { id: number; name: string; kind: Kind; unit: string; archived: boolean; made: number; used: number; wasted: number; inUse: number; batches: number;
+export type Bucket = { key: string; label: string; sub: string; on: boolean; made: number; used: number; wasted: number; inUse: number; pending?: boolean; prevUsed: number | null; ranOutAt: string | null; ranOut: number };
+export type ReportRow = { id: number; name: string; kind: Kind; unit: string; archived: boolean; made: number; used: number; wasted: number; batches: number; shifts: number; pending: number;
   wastePct: number | null; prevWastePct: number | null; vsPrev: number | null; ranOut: number; ranOutDays: string[] };
-export type Tile = { made: number; wasted: number; pct: number | null; prevPct: number | null; items: number };
+export type Tile = { made: number; used: number; wasted: number; pct: number | null; prevPct: number | null; items: number };
 export type Report = {
   store: string; range: 'day' | 'week' | 'year'; at: string; today: string;
   period: { from: string; to: string; label: string; prevFrom: string; prevTo: string; prevLabel: string };
   tiles: { liquid: Tile; garnish: Tile; ranOut: { count: number; prev: number }; batches: { count: number; prev: number } };
   ranOut: { item: string; itemId: number; at: string; day: string; note: string; by: string | null }[];
+  kept: { itemId: number; item: string; unit: string; day: string; amount: number; expected: number | null; kept: boolean; by: string | null }[];
   rows: ReportRow[]; series: { id: number | string; unit: string; options: { id: number | string; label: string }[] };
   chart: Bucket[]; busiest: { dow: number; label: string; batches: number }[]; started: string | null; lastYear: boolean;
   periods: { at: string; label: string }[]; summary: string;
@@ -88,3 +107,12 @@ export function roleStyle(role: TypeRole, size?: number): CSSProperties {
   return { fontFamily: `var(--font-${kebab})`, fontWeight: WEIGHT[t.fs || 'Regular'] ?? 400, fontSize: t.z ?? size, lineHeight: t.lh || 1, letterSpacing: t.ls ? `${parseFloat(t.ls) / 100}em` : undefined };
 }
 export const pageTitle = (s: string) => brandTitle(s);
+
+/** "¼", "1½", "2¾": quarter steps the way a bar writes them. */
+export function frac(n: number) {
+  const v = Math.round(n * 4) / 4, w = Math.floor(v), q = Math.round((v - w) * 4);
+  const f = ['', '¼', '½', '¾'][q];
+  return w === 0 && f ? f : `${w}${f}`;
+}
+/** "Wed", or "Mon–Tue" for a count that spans a missed day. */
+export const spanLabel = (from: string, to: string) => (from === to ? dayLabel(from, { weekday: 'short' }) : `${dayLabel(from, { weekday: 'short' })}–${dayLabel(to, { weekday: 'short' })}`);

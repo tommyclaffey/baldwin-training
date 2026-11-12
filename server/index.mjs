@@ -600,7 +600,8 @@ async function api(req, res, url) {
     fail(404, 'Not found.');
   }
   /* ---- Prep tracker (Nov 12, server/prep.mjs, Figma 09 · Proposals → 31): juices, syrups and garnishes ---- */
-  // Everyone at the store reads Today. Bartenders, managers and owners log (prep.canLog); managers and owners edit.
+  // Everyone at the store reads Today. Bartenders, managers and owners count and log (prep.canLog); managers and owners edit.
+  // Nov 12 (31b): POST /api/prep/count saves the shift count; the Used Up route is gone (Used comes from the count).
   if (p === '/api/prep' || p.startsWith('/api/prep/')) {
     const u = needReader(c, req);
     if (!c.storeRow) fail(400, 'Pick a store to work in first.');
@@ -609,17 +610,16 @@ async function api(req, res, url) {
     const manager = () => { if (!prep.canManage(u)) fail(403, 'Only managers can change prep items and pars.'); };
     try {
       if (p === '/api/prep' && m === 'GET') return sendJson(res, 200, prep.today(db, c.storeRow, u));
-      const im = /^\/api\/prep\/items\/(\d+)(?:\/(suggestion|archive|restore|count|ranout))?$/.exec(p);
+      if (p === '/api/prep/count' && m === 'GET') return sendJson(res, 200, prep.countSheet(db, c.storeRow, u));
+      if (p === '/api/prep/count' && m === 'POST') { logger(); prep.saveCount(db, x, u, await readJson(req, 100_000)); return sendJson(res, 200, prep.today(db, c.storeRow, u)); }
+      const im = /^\/api\/prep\/items\/(\d+)(?:\/(suggestion|archive|restore|ranout))?$/.exec(p);
       if (im && !im[2] && m === 'GET') { const d = prep.itemDetail(db, c.storeRow, u, im[1]); if (!d) fail(404, 'That prep item isn’t here.'); return sendJson(res, 200, d); }
       if (im && !im[2] && m === 'PATCH') { manager(); prep.saveItem(db, x, u, Number(im[1]), await readJson(req, 20_000)); return sendJson(res, 200, prep.itemDetail(db, c.storeRow, u, im[1])); }
       if (p === '/api/prep/items' && m === 'POST') { manager(); const id = prep.saveItem(db, x, u, null, await readJson(req, 20_000)); return sendJson(res, 200, { id }); }
       if (im?.[2] === 'suggestion' && m === 'POST') { manager(); prep.answerSuggestion(db, x, u, im[1], await readJson(req)); return sendJson(res, 200, prep.itemDetail(db, c.storeRow, u, im[1])); }
       if ((im?.[2] === 'archive' || im?.[2] === 'restore') && m === 'POST') { manager(); prep.archiveItem(db, x, u, im[1], im[2] === 'archive'); return sendJson(res, 200, { ok: true }); }
-      if (im?.[2] === 'count' && m === 'POST') { logger(); return sendJson(res, 200, prep.count(db, x, u, im[1], (await readJson(req)).onHand)); }
       if (im?.[2] === 'ranout' && m === 'POST') { logger(); prep.ranOut(db, x, u, im[1], (await readJson(req)).note); return sendJson(res, 200, { ok: true }); }
       if (p === '/api/prep/batches' && m === 'POST') { logger(); return sendJson(res, 200, prep.logBatch(db, x, u, await readJson(req))); }
-      const bm = /^\/api\/prep\/batches\/(\d+)\/used$/.exec(p);
-      if (bm && m === 'POST') { logger(); prep.usedUp(db, x, u, bm[1]); return sendJson(res, 200, { ok: true }); }
       if (p === '/api/prep/waste' && m === 'POST') { logger(); prep.logWaste(db, x, u, await readJson(req)); return sendJson(res, 200, { ok: true }); }
       if (p === '/api/prep/report' && m === 'GET') {
         manager();

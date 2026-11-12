@@ -2886,3 +2886,10 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   .si-wide { display: none; }
   .si-narrow { display: inline; }
 }
+
+/* Nov 12 (Tommy: "make this sizing and padding better"): the program level heroes' four stat boxes go two to a row on
+   phones and tablets, splitting the column evenly instead of leaving a gap on the right. */
+@media (max-width: 859px) {
+  [data-name="Hero"] [data-name="At a glance"]:has(> [data-name^="Stat · "]) { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; width: 100% !important; height: auto !important; }
+  [data-name="Hero"] [data-name="At a glance"] > [data-name^="Stat · "] { width: auto !important; max-width: none !important; }
+}
