@@ -14,6 +14,8 @@ import { CompleteToggle } from './CompleteToggle';
 import { AssignName, FindBox, TableFinder, TableMarker, controlProps, isActive, useInteract, visibleKids, type Meta } from './interact';
 import { ItemChatButton } from '../chat/SendToTeam';
 import { cardPlan, holderTarget, placeOf, targetOf, withBand, withGutters, wordsOf, type Lookup, type Shape, type Target } from '../chat/sendable';
+import { useEditing, useField, type EdBind } from '../edit/state';
+import { ChipsEditor, EditText, PhotoTools, SpecEditor, TagsEditor } from '../edit/fields';
 
 // One node of the Figma layout export (see scripts/build-content.mjs).
 export type FNode = {
@@ -37,6 +39,8 @@ export type FNode = {
   meta?: Meta;
   /** A row's chat button: its distance from the right (the row got a gutter for it; see chat/sendable.ts). */
   gut?: number;
+  /** Edit Mode (server/editmode.mjs): a field on this node, a card holding fields, a part shown only while editing. */
+  ed?: EdBind; edc?: 1; eo?: 1;
 };
 
 /** Which links can go to Team Chat (the page you're on provides it; nothing outside a book page gets chat buttons). */
@@ -379,9 +383,16 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   const chatLookup = useContext(ChatItemsContext);
   const live = useInteract();
   const [playing, setPlaying] = useState(false);
+  const editing = useEditing();
+  const ef = useField(editing ? drawn.ed : undefined);
   // A control is drawn in its current state (ticked / empty, selected / plain).
   const m = drawn.meta;
-  const node: FNode = m?.on && m.off && live ? { ...(isActive(m, live) ? m.on : m.off), meta: m } : drawn;
+  let node: FNode = m?.on && m.off && live ? { ...(isActive(m, live) ? m.on : m.off), meta: m } : drawn;
+  // Edit Mode: a photo shows the one just picked (or none) before it's saved.
+  if (ef && node.ed?.t === 'photo' && ef.changed) {
+    const v = String(ef.value || '');
+    node = v ? { ...node, f: [{ img: v, m: node.ed.fit ? 'FIT' : 'FILL' }], c: undefined, lm: undefined } : { ...node, f: [{ c: '#E7DECF' }], c: undefined, lm: undefined };
+  }
   const ctl = controlProps(m, live);
 
   if (node.c?.some(isCarousel) && !carousel) {
@@ -389,6 +400,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   }
 
   if (node.t === 'T') {
+    if (editing && node.ed) { const t = textNode(node, parentLm); return <EditText ed={node.ed} st={t.st} cls={t.cls} />; }
     const { st, cls, content: raw } = textNode(node, parentLm);
     if (shrink < 1 && node.z && node.z * shrink < 11) st.fontSize = 11 / shrink;
     const content = node.n === 'Carousel count' && carousel ? <span aria-live="polite">{carousel.label}</span> : raw;
@@ -466,7 +478,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   }
 
   const img = node.f?.find((f) => f.img);
-  const role = img && node.t !== 'F' ? 'img' : undefined;
+  const role = img && node.t !== 'F' && !(editing && node.ed?.t === 'photo') ? 'img' : undefined; // with Replace Photo inside, it's a group
   // Photos keep their shape when a phone reflows them (see .fx-v > [role="img"].wide in styles.css).
   if (role && node.w && node.h) st.aspectRatio = `${node.w} / ${node.h}`;
   const label = role ? (node.n || '').replace(/^IMG\//, '').split(' · ')[0] : undefined;
@@ -499,6 +511,18 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     const at = Number(live?.get('chapter', '') || 0);
     kids = <div className="video-fill"><VideoEmbed key={at} video={node.vid} start={at} /></div>;
   }
+  // Edit Mode: pills, allergens and the spec become editors in place; the hero photo gets Replace Photo.
+  if (editing && node.ed) {
+    const ed = node.ed;
+    if (ed.t === 'tags') kids = <TagsEditor ed={ed} />;
+    else if (ed.t === 'chips') { const label = (node.c || []).find((c) => c.t === 'T'); kids = <>{label && child(label)}<ChipsEditor ed={ed} /></>; }
+    else if (ed.t === 'spec') {
+      const titles = (node.c || []).find((c) => c.n === 'Titles');
+      kids = <SpecEditor ed={ed} title={<div className="ed-spec-head">{titles && child(titles)}<span className="ed-spec-note">Changes here update Cocktail Specs and the quizzes</span></div>} />;
+      cls.push('ed-spec-card');
+    } else if (ed.t === 'photo') { extras.push(<PhotoTools key="photo" ed={ed} />); st.position = st.position || 'relative'; }
+  }
+  if (editing && node.edc) cls.push('ed-card');
   if (isVideoCard(node) && node.vid) {
     cls.push('has-video');
     extras.push(<button key="play" type="button" className="play-overlay" aria-label={`Play ${node.n!.split(' · ').slice(1).join(' · ')}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); setPlaying(true); }} />);

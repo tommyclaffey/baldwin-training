@@ -10,7 +10,8 @@ import { api, canEdit } from '../lib/api';
 import { useSession } from '../lib/session';
 import { PageOptions, blank, renderField, useCollections, wide, type Entry, type FieldDef } from '../admin/cms';
 
-type Target = { col: string; id: number | null; preset: Record<string, string>; jump?: string; notice?: string; fresh?: boolean };
+// draft: Edit Mode's waiting changes, carried into the form by More Fields (they start as unsaved changes here).
+type Target = { col: string; id: number | null; preset: Record<string, string>; jump?: string; notice?: string; fresh?: boolean; draft?: Record<string, unknown> };
 type LibDish = { id: number; data: Record<string, unknown>; stores: string[]; onMine: boolean };
 type Shared = { library?: { id: number }; sharedWith?: string[]; storeName?: string };
 type Ctx = { open: (t: Target) => void; canOpen: (col: string) => boolean };
@@ -89,8 +90,13 @@ function EditSheet({ target, onClose, onSaved, onSwitch }: { target: Target; onC
 
   useEffect(() => {
     if (isNew) return;
-    api<Entry>(`/api/entries/${target.id}`).then((e) => { setEntry(e); setData(e.data); }).catch((e) => setError(e.message));
-  }, [isNew, target.id]);
+    api<Entry>(`/api/entries/${target.id}`).then((e) => {
+      setEntry(e);
+      const draft = target.draft && Object.keys(target.draft).length ? target.draft : null;
+      setData(draft ? { ...e.data, ...draft } : e.data);
+      if (draft) setDirty(true);
+    }).catch((e) => setError(e.message));
+  }, [isNew, target.id]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (mode !== 'pick') return;
     api<{ entries: LibDish[] }>(`/api/library?collection=${target.col}`).then((r) => {
@@ -182,6 +188,7 @@ function EditSheet({ target, onClose, onSaved, onSwitch }: { target: Target; onC
         ? await api<Entry>('/api/entries', { method: 'POST', body: { collection: c.id, data, share: usesLibrary ? share : undefined } })
         : await api<Entry>(`/api/entries/${entry!.id}`, { method: 'PUT', body: { data, scope } });
       setDirty(false);
+      window.dispatchEvent(new CustomEvent('bt:entry-saved', { detail: { id: out.id } }));
       await session.reloadIndex(); session.bump();
       if (isNew && !c.noPages) nav('/' + out.slug);
       onSaved(isNew ? `${name} is in the book.` : 'Saved. The page is updated.');
@@ -192,7 +199,9 @@ function EditSheet({ target, onClose, onSaved, onSwitch }: { target: Target; onC
     if (!entry || !confirm(libDish ? `Take “${name}” off our menu? It stays in the group’s kitchen, so it can come back any time.` : `Archive “${name}”? It leaves the book and every list. You can restore it from the Archive in the admin.`)) return;
     try {
       await api(`/api/entries/${entry.id}`, { method: 'DELETE' });
-      setDirty(false); await session.reloadIndex(); session.bump();
+      setDirty(false);
+      window.dispatchEvent(new CustomEvent('bt:entry-saved', { detail: { id: entry.id } }));
+      await session.reloadIndex(); session.bump();
       if (window.location.pathname === '/' + entry.slug) nav(LIST_OF[target.col] || '/', { replace: true });
       onSaved(libDish ? `${name} is off our menu.` : `${name} is archived.`);
     } catch (e) { setError((e as Error).message); }
