@@ -1,12 +1,13 @@
 // Mise server (The Baldwin's training app): the built app, the content API, sign-in and uploads. No dependencies.
 import { migrateDemo, purgeDemos, dropDemo, startDemo, demoBlocks, isDemoCompany, demoKind, DEMOS } from './demo.mjs';
 import http from 'node:http';
+import zlib from 'node:zlib';
 import fs from 'node:fs';
 import path from 'node:path';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie, endSession } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
-import { assemble, fullIndex, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore } from './content.mjs';
+import { assemble, fullIndex, isCachedIndex, warmContent, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore } from './content.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, SHARED, LOCAL_KEYS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
 import { slugify } from './templates.mjs';
@@ -35,6 +36,7 @@ seedWineVideos(db);
 bootAccounts(db);
 migrateAcks(db); migrateDemo(db); purgeDemos(db); // acks first: demo copies seed and drop them
 setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
+try { warmContent(db); } catch (e) { console.error('warm-up', e); } // before listening: the first visitor doesn't wait for it
 const demoLimiter = new LoginLimiter(30, 60 * 60_000, 'demo-start'); // 30 demo starts an hour per address
 const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address
 
@@ -68,10 +70,39 @@ function returnCookie(token, { secure = false, clear = false } = {}) {
   if (secure) parts.push('Secure');
   return parts.join('; ');
 }
-function sendJson(res, status, body, headers = {}) {
-  res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...SECURITY, ...headers });
-  res.end(JSON.stringify(body));
+/* Nov 11 (speed): JSON goes compressed when the browser takes it (brotli, else gzip). Railway's edge only compresses the
+ * app's own files, so the 1 MB search index was going out raw on every sign-in. Small answers (under 1 KB) go as they are. */
+const MIN_PACK = 1024;
+/** brotli or gzip, whichever the request accepts (brotli first), or null. */
+function encodingFor(res) {
+  const ok = new Map();
+  for (const part of String(res.acceptEncoding || '').toLowerCase().split(',')) {
+    const [name, ...params] = part.trim().split(';');
+    const q = params.map((x) => /^\s*q=([\d.]+)/.exec(x)).find(Boolean);
+    if (name) ok.set(name.trim(), q ? Number(q[1]) : 1);
+  }
+  return ok.get('br') > 0 ? 'br' : ok.get('gzip') > 0 ? 'gzip' : null;
 }
+const pack = (raw, enc, quality = 6) => (enc === 'br'
+  ? zlib.brotliCompressSync(raw, { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: quality, [zlib.constants.BROTLI_PARAM_MODE]: zlib.constants.BROTLI_MODE_TEXT, [zlib.constants.BROTLI_PARAM_SIZE_HINT]: raw.length } })
+  : zlib.gzipSync(raw, { level: 6 }));
+/** `packed` (optional): { br, gzip, quality } kept by the caller, so an answer that doesn't change is compressed once. */
+function sendJson(res, status, body, headers = {}, packed = null) {
+  let enc = encodingFor(res), out = enc && packed?.[enc];
+  if (!out) {
+    const raw = Buffer.from(JSON.stringify(body));
+    if (raw.length < MIN_PACK) enc = null;
+    out = enc ? pack(raw, enc, packed?.quality) : raw;
+    if (enc && packed) packed[enc] = out;
+  }
+  res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', Vary: 'Accept-Encoding', ...SECURITY, ...headers,
+    ...(enc ? { 'Content-Encoding': enc } : {}), 'Content-Length': out.length });
+  res.end(out);
+}
+/** The search index as sent: kept with the cached index it came from (server/content.mjs), so it's written and compressed
+ *  once per change to the book, not per sign-in. The Mise demo's index is read per person, so it's packed per request. */
+const packedIndex = new WeakMap();
+const indexBytes = (list) => { let p = packedIndex.get(list); if (!p) packedIndex.set(list, (p = { quality: 9 })); return p; };
 
 function readJson(req, limit = 2_000_000) {
   return new Promise((resolve, reject) => {
@@ -560,7 +591,11 @@ async function api(req, res, url) {
   }
 
   /* content */
-  if (p === '/api/index' && m === 'GET') { needBook(c, req); return sendJson(res, 200, inStore(c, () => fullIndex(db))); }
+  if (p === '/api/index' && m === 'GET') {
+    needBook(c, req);
+    const list = inStore(c, () => fullIndex(db));
+    return sendJson(res, 200, list, {}, isCachedIndex(list) ? indexBytes(list) : null);
+  }
   if (p === '/api/counts' && m === 'GET') { needBook(c, req); return sendJson(res, 200, inStore(c, () => sidebarCounts(db))); }
   if (parts[1] === 'page' && parts[2] && m === 'GET') {
     needBook(c, req);
@@ -866,6 +901,7 @@ function staticFile(req, res, url) {
 
 http.createServer(async (req, res) => {
   const url = new URL(req.url || '/', 'http://x');
+  res.acceptEncoding = req.headers['accept-encoding']; // sendJson compresses for it
   try {
     if (url.pathname.startsWith('/api/')) await api(req, res, url);
     else if (req.method === 'GET' || req.method === 'HEAD') staticFile(req, res, url);

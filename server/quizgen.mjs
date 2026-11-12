@@ -3,6 +3,8 @@
 // its menu is in. A question's id ("price:123") is enough to write it again on the server, so scoring never trusts the phone.
 import { specHref, specLists } from './specs.mjs';
 import { listEntries, COURSES } from './cms.mjs';
+import { storeCache, cached } from './cache.mjs';
+import { variant } from './variant.mjs';
 import { allChapters, chapterSlug, shuffleSeeded, LEVELS, isProgram, progLevel, levelOfChapter, programDef, barLevelOf, chaptersOf, chaptersForLevel, levelForChapter } from './manual.mjs';
 
 export const PASS_PCT = 80;
@@ -40,7 +42,10 @@ const mayHave = (x, a) => { const k = String(a).toLowerCase(); return (GUIDE[k] 
 /* ---- Nov 5 (Tommy: "Some of the questions are incorrect … the base spirit to a cocktail is a sugar cube"):
    every wrong answer has to be plainly wrong, so nothing in it may overlap the right answer. ---- */
 const GENERIC = new Set(['juice', 'syrup', 'nectar', 'liqueur', 'bitters', 'oz', 'top', 'fill', 'splash', 'fresh', 'the', 'de', 'la', 'di', 'of', 'and', 'in', 'on', 'with', 'or', 'a', 'dashes', 'house', 'local', 'roasted', 'crispy', 'toasted', 'warm', 'grilled', 'sauteed', 'seared', 'pickled', 'fried', 'organic', 'hand', 'cut', 'sea', 'thin', 'paper', 'large', 'small', 'whole', 'shaker', 'mix']);
-const words = (x) => String(x || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/[^a-z0-9]+/).map((w) => w.replace(/(es|s)$/, '')).filter((w) => w.length > 2 && !GENERIC.has(w)).flatMap((w) => (/^(toast|focaccia|crouton|bun|brioche|bread)$/.test(w) ? ['bread'] : /^(sprite|7up|coke|soda|lemon-lime|lime-lemon)$/.test(w) ? ['soda'] : /^(saline|salt)$/.test(w) ? ['salt'] : [w]));
+// Memoised (Nov 11, speed): the same few hundred ingredient lines are compared with each other thousands of times.
+const wordsMemo = new Map();
+const words = (x) => { const k = String(x || ''); let w = wordsMemo.get(k); if (!w) { if (wordsMemo.size > 50000) wordsMemo.clear(); w = readWords(k); wordsMemo.set(k, w); } return w; };
+const readWords = (x) => String(x || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/[^a-z0-9]+/).map((w) => w.replace(/(es|s)$/, '')).filter((w) => w.length > 2 && !GENERIC.has(w)).flatMap((w) => (/^(toast|focaccia|crouton|bun|brioche|bread)$/.test(w) ? ['bread'] : /^(sprite|7up|coke|soda|lemon-lime|lime-lemon)$/.test(w) ? ['soda'] : /^(saline|salt)$/.test(w) ? ['salt'] : [w]));
 /** "Sprite (top)", "Thyme, in the shaker", "Angostura Bitters, on top" → the ingredient itself. */
 const ingName = (x) => { const v = clean(x).replace(/\s*\((?:top|float|about [^)]*)\)$/i, '').replace(/,\s*(?:in the shaker|on top)$/i, ''); return /^agave$/i.test(v) ? 'Agave nectar' : v; };
 const shares = (a, b) => { const A = new Set(words(a)); return words(b).some((w) => A.has(w)); };
@@ -100,8 +105,15 @@ export function topicList(pool) {
 /** Topics that are also sign-off quizzes on their own. */
 export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('study:') || key.startsWith('final:') || key.startsWith('spec:') || ['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house', 'classic-on', 'classic-off', 'classic', 'wine-glass', 'wine-bottle', 'beer', 'allergens'].includes(key);
 
-/** Every question this store's book can ask. */
+/** Every question this store's book can ask. Worked out once per store (and program version) until its book changes
+ *  (Nov 11, speed: it was rebuilt several times per request; server/cache.mjs drops it on any save). Read-only: callers
+ *  filter and map it, never change it. */
+const poolCache = storeCache();
 export function questionPool(db, store) {
+  const v = variant();
+  return cached(poolCache, db, store, `${v.brg ? 1 : 0}:${v.restaurant ?? ''}`, () => buildPool(db, store));
+}
+function buildPool(db, store) {
   const recipes = listEntries(db, 'recipe', store);
   const house = listEntries(db, 'house', store);
   const classics = listEntries(db, 'classic');
