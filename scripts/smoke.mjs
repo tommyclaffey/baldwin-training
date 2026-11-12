@@ -12,7 +12,8 @@ if (!CHROME) { console.error('No Chrome found. Set CHROME=/path/to/chrome.'); pr
 const PAGES = ['/', '/our-story', '/floor-plan', '/sommelier-program/about', '/food-matrix', '/the-bar/cocktails', '/the-bar/cocktail-specs', '/the-bar/wine', '/allergen-guide', '/quizzes', '/my-path', '/team-chat', '/team-chat/foh',
   '/cocktail-program', '/cocktail-program/level-1', '/cocktail-program/level-1/bar-l1-whiskey', '/cocktail-program/level-1/bar-l1-basics', '/cocktail-program/level-2', '/beer-program', '/beer-program/level-1', '/sommelier-program', '/sommelier-program/level-1', '/sommelier-program/level-2',
   '/hospitality-program', '/hospitality-program/level-1', '/hospitality-program/level-1/hosp-welcome',
-  '/cocktail-program/level-2/bar-vodka-gin/gin-styles', '/certificate/bar-1'];
+  '/cocktail-program/level-2/bar-vodka-gin/gin-styles', '/certificate/bar-1',
+  '/prep', '/prep/reports']; // Nov 12: the Prep tracker
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function browser() {

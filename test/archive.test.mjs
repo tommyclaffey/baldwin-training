@@ -93,7 +93,7 @@ test('archive from a list → gone from the book, quizzes and search; restore br
   assert.ok(!arcs((await manager('/api/page/' + file('food-matrix'))).data).some((x) => x.e === a.e), 'off the Food Matrix');
   // The Archived page lists it under Dishes, with who and when.
   const groups = (await manager('/api/archived')).data.groups;
-  assert.deepEqual(groups.map((g) => g.label), ['Dishes', 'House Cocktails', 'Wines', 'Bottles', 'Beers', 'Videos and Photos'], 'by type; no classics for a manager');
+  assert.deepEqual(groups.map((g) => g.label), ['Dishes', 'House Cocktails', 'Wines', 'Bottles', 'Beers', 'Prep items', 'Videos and Photos'], 'by type; no classics for a manager (Nov 12: + Prep items)');
   const it = groups[0].items.find((x) => x.id === a.e);
   assert.ok(it && it.by === 'Mia Manager' && it.at, 'who archived it, and when');
   assert.equal(it.storeOnly?.store, 'The Baldwin', 'a group dish: off this store’s menu only');

@@ -26,6 +26,7 @@ import * as chat from './chat.mjs';
 import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErrorAllowed } from './ops.mjs';
 import { enterStore } from './variant.mjs';
 import { migrateAcks, ackLevel, ackFor, ackOf, signAck } from './acks.mjs';
+import * as prep from './prep.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -589,6 +590,37 @@ async function api(req, res, url) {
     } catch (e) { if (e instanceof chat.ChatError) fail(e.status, e.message); throw e; }
     fail(404, 'Not found.');
   }
+  /* ---- Prep tracker (Nov 12, server/prep.mjs, Figma 09 · Proposals → 31): juices, syrups and garnishes ---- */
+  // Everyone at the store reads Today. Bartenders, managers and owners log (prep.canLog); managers and owners edit.
+  if (p === '/api/prep' || p.startsWith('/api/prep/')) {
+    const u = needReader(c, req);
+    if (!c.storeRow) fail(400, 'Pick a store to work in first.');
+    const x = { company: c.company, store: c.store, storeRow: c.storeRow };
+    const logger = () => { if (!prep.canLog(u)) fail(403, 'Bartenders and managers log prep. Ask your manager if that should be you.'); };
+    const manager = () => { if (!prep.canManage(u)) fail(403, 'Only managers can change prep items and pars.'); };
+    try {
+      if (p === '/api/prep' && m === 'GET') return sendJson(res, 200, prep.today(db, c.storeRow, u));
+      const im = /^\/api\/prep\/items\/(\d+)(?:\/(suggestion|archive|restore|count|ranout))?$/.exec(p);
+      if (im && !im[2] && m === 'GET') { const d = prep.itemDetail(db, c.storeRow, u, im[1]); if (!d) fail(404, 'That prep item isn’t here.'); return sendJson(res, 200, d); }
+      if (im && !im[2] && m === 'PATCH') { manager(); prep.saveItem(db, x, u, Number(im[1]), await readJson(req, 20_000)); return sendJson(res, 200, prep.itemDetail(db, c.storeRow, u, im[1])); }
+      if (p === '/api/prep/items' && m === 'POST') { manager(); const id = prep.saveItem(db, x, u, null, await readJson(req, 20_000)); return sendJson(res, 200, { id }); }
+      if (im?.[2] === 'suggestion' && m === 'POST') { manager(); prep.answerSuggestion(db, x, u, im[1], await readJson(req)); return sendJson(res, 200, prep.itemDetail(db, c.storeRow, u, im[1])); }
+      if ((im?.[2] === 'archive' || im?.[2] === 'restore') && m === 'POST') { manager(); prep.archiveItem(db, x, u, im[1], im[2] === 'archive'); return sendJson(res, 200, { ok: true }); }
+      if (im?.[2] === 'count' && m === 'POST') { logger(); return sendJson(res, 200, prep.count(db, x, u, im[1], (await readJson(req)).onHand)); }
+      if (im?.[2] === 'ranout' && m === 'POST') { logger(); prep.ranOut(db, x, u, im[1], (await readJson(req)).note); return sendJson(res, 200, { ok: true }); }
+      if (p === '/api/prep/batches' && m === 'POST') { logger(); return sendJson(res, 200, prep.logBatch(db, x, u, await readJson(req))); }
+      const bm = /^\/api\/prep\/batches\/(\d+)\/used$/.exec(p);
+      if (bm && m === 'POST') { logger(); prep.usedUp(db, x, u, bm[1]); return sendJson(res, 200, { ok: true }); }
+      if (p === '/api/prep/waste' && m === 'POST') { logger(); prep.logWaste(db, x, u, await readJson(req)); return sendJson(res, 200, { ok: true }); }
+      if (p === '/api/prep/report' && m === 'GET') {
+        manager();
+        const q = url.searchParams;
+        return sendJson(res, 200, prep.report(db, c.storeRow, { range: q.get('range') || 'week', at: q.get('at') || undefined, series: q.get('series') || '' }));
+      }
+      if (p === '/api/prep/report/send' && m === 'POST') { manager(); return sendJson(res, 200, prep.sendSummary(db, c, u, await readJson(req, 20_000))); }
+    } catch (e) { if (e instanceof prep.PrepError) fail(e.status, e.message); throw e; }
+    fail(404, 'Not found.');
+  }
   /* ---- Manager home + People (Nov 11, server/team.mjs): the team in the store you're working in ---- */
   // The count beside Sign-offs in the sidebar: asks still waiting in this store.
   if (p === '/api/manager/signoffs/count' && m === 'GET') {
@@ -666,7 +698,10 @@ async function api(req, res, url) {
   // Classics are the shared library's, so only a super admin sees (and restores) them.
   if (p === '/api/archived' && m === 'GET') {
     const u = needEditor(c, req);
-    return sendJson(res, 200, { groups: archivedList(db, c.store, (col) => canOpen(u, `/admin/pages/${col}/new`)) });
+    const groups = archivedList(db, c.store, (col) => canOpen(u, `/admin/pages/${col}/new`));
+    // Nov 12: the Prep tracker's items, before Videos and Photos
+    groups.splice(groups.findIndex((g) => g.id === 'media'), 0, { id: 'prep', label: 'Prep items', items: prep.archivedItems(db, c.store) });
+    return sendJson(res, 200, { groups });
   }
   if (p === '/api/archived/restore' && m === 'POST') {
     const u = needEditor(c, req);
@@ -675,6 +710,12 @@ async function api(req, res, url) {
       const r = db.prepare('UPDATE media SET archived_at = NULL, archived_by = NULL WHERE store_id = ? AND archived_at IS NOT NULL').run(c.store);
       audit(db, u.id, 'restore media', `${r.changes} archived`, c.company);
       return sendJson(res, 200, { ok: true, restored: r.changes });
+    }
+    if (b.group === 'prep') {
+      const list = prep.archivedItems(db, c.store);
+      let n = 0;
+      for (const it of list) { try { prep.archiveItem(db, { company: c.company, store: c.store }, u, it.id, false); n++; } catch (e) { if (!(e instanceof prep.PrepError)) throw e; } }
+      return sendJson(res, 200, { ok: true, restored: n });
     }
     if (!ARCHIVE_GROUPS.some((g) => g.col === b.group)) fail(400, 'Unknown group.');
     if (SHARED.has(b.group)) needLibrary(c, req);

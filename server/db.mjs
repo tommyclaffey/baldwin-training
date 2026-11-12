@@ -229,6 +229,32 @@ const MIGRATIONS = [
     created_at TEXT NOT NULL, expires_at TEXT NOT NULL, used_at TEXT);
   CREATE INDEX password_resets_user ON password_resets(user_id);
   `,
+  // 19 (Nov 12, Tommy: "a garnish, syrup, and juice tracker … day over day, week over week, year over year"; Figma 09 ·
+  //   Proposals → 31, 632:802; server/prep.mjs). One store's prep:
+  //   prep_items: juices, syrups and garnishes. unit (qt · pt · oz · each · bottles), batch size, pars = JSON [Sun…Sat],
+  //     shelf_days (0 = one shift, toss at close; NULL = not set), shelf_source NULL = "house standard · to confirm",
+  //     match = JSON regexes for the house specs that use it, kept = JSON {weekday: day} for suggestions a manager kept.
+  //     Archived, never deleted.
+  //   prep_batches: each batch made (day = the store's Detroit date; use_by = the last day it's good, through close).
+  //   prep_events: 'used' and 'waste' (reason expired · spilled · quality · other) against a batch, and 'ranout'.
+  `
+  CREATE TABLE prep_items(id INTEGER PRIMARY KEY, company_id INT NOT NULL, store_id INT NOT NULL, name TEXT NOT NULL,
+    kind TEXT NOT NULL CHECK(kind IN ('juice','syrup','garnish')), unit TEXT NOT NULL, batch REAL NOT NULL, pars TEXT NOT NULL,
+    shelf_days INT, storage TEXT, shelf_note TEXT, shelf_source TEXT, shelf_lesson TEXT, ratio TEXT, recipe TEXT, recipe_lesson TEXT,
+    yield_note TEXT, match TEXT, kept TEXT, sort REAL DEFAULT 0, seed_key TEXT, created_by INT, created_at TEXT, updated_by INT,
+    updated_at TEXT, archived_at TEXT, archived_by INT);
+  CREATE INDEX prep_items_store ON prep_items(store_id, sort);
+  CREATE TABLE prep_batches(id INTEGER PRIMARY KEY, company_id INT NOT NULL, store_id INT NOT NULL, item_id INT NOT NULL,
+    amount REAL NOT NULL, remaining REAL NOT NULL, day TEXT NOT NULL, made_at TEXT NOT NULL, use_by TEXT, made_by INT, by_user INT, closed_at TEXT);
+  CREATE INDEX prep_batches_item ON prep_batches(item_id, day);
+  CREATE INDEX prep_batches_store ON prep_batches(store_id, day);
+  CREATE TABLE prep_events(id INTEGER PRIMARY KEY, company_id INT NOT NULL, store_id INT NOT NULL, item_id INT NOT NULL, batch_id INT,
+    kind TEXT NOT NULL CHECK(kind IN ('used','waste','ranout')), amount REAL NOT NULL DEFAULT 0, reason TEXT, note TEXT,
+    day TEXT NOT NULL, at TEXT NOT NULL, by_user INT);
+  CREATE INDEX prep_events_store ON prep_events(store_id, day);
+  CREATE INDEX prep_events_batch ON prep_events(batch_id);
+  CREATE INDEX prep_events_item ON prep_events(item_id, day);
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
