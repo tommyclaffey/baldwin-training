@@ -219,6 +219,15 @@ const MIGRATIONS = [
   ALTER TABLE chat_messages ADD COLUMN mentions TEXT;
   ALTER TABLE chat_messages ADD COLUMN person TEXT;
   `,
+  // 18 (Nov 11, Tommy approved reset password): one-time links to pick a new password, for people who sign in with email.
+  //   Made by an owner (Admin → People → Owners and Managers), a super admin (Super Admin → People), or sent by email from
+  //   Forgot Password? when Resend is set up. Only the token's hash is kept; a link works once and expires in 24 hours.
+  //   via: 'owner' | 'super' | 'email'. A new link for someone replaces their unused ones.
+  `
+  CREATE TABLE password_resets(token_hash TEXT PRIMARY KEY, user_id INT NOT NULL, company_id INT, created_by INT, via TEXT NOT NULL,
+    created_at TEXT NOT NULL, expires_at TEXT NOT NULL, used_at TEXT);
+  CREATE INDEX password_resets_user ON password_resets(user_id);
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

@@ -140,6 +140,23 @@ export const when = (iso?: string | null) => {
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) + ', ' + d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
 };
 
+/** A password reset link to send by hand (Nov 11): like an invite link, with Copy Link and when it stops working. */
+export type ResetLink = { link: string; expiresAt: string; hours: number; name: string; email: string };
+export function ResetLinkCard({ reset, onClose }: { reset: ResetLink; onClose: () => void }) {
+  const [copied, setCopied] = useState(false);
+  const url = location.origin + reset.link;
+  return (
+    <div className="card ok-card reset-card" role="status">
+      <p>Send this link to <strong>{reset.name}</strong> ({reset.email}). It works once and expires in {reset.hours} hours ({when(reset.expiresAt)}). They pick a new password and are signed out everywhere else.</p>
+      <div className="row">
+        <input readOnly value={url} onFocus={(e) => e.target.select()} aria-label={`Reset link for ${reset.name}`} />
+        <button type="button" className="btn ghost" onClick={() => { void navigator.clipboard?.writeText(url); setCopied(true); }}>{copied ? 'Copied' : 'Copy Link'}</button>
+        <button type="button" className="link-btn" onClick={onClose}>Done</button>
+      </div>
+    </div>
+  );
+}
+
 /** A 360° spin of the bottle: frames from the spin scanner (Oct 31). */
 export function SpinField({ label, hint, value, onChange, name }: { label: string; hint?: string; value: string[]; onChange: (v: string[]) => void; name: string }) {
   const [open, setOpen] = useState(false);

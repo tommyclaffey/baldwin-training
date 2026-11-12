@@ -177,7 +177,7 @@ export function purgeDemos(db) {
 }
 
 /** What a demo visitor can't do: anything that leaves the sandbox or changes accounts. */
-const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/pin$/, /^\/api\/team/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/scan/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/];
+const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/password\//, /^\/api\/reset\//, /^\/api\/pin$/, /^\/api\/team/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/scan/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/];
 export const demoBlocks = (p, m) => m !== 'GET' && BLOCKED.some((r) => r.test(p));
 
 export { sessionCookie };

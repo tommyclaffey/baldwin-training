@@ -4,7 +4,7 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { api, ROLE_LABEL, type Role } from '../lib/api';
 import { useSession } from '../lib/session';
-import { ErrorNote, Loading, Text, when } from './ui';
+import { ErrorNote, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 
 type Company = { id: number; name: string; slug: string; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number }[] };
 type Person = { id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null; createdAt: string; lastSeenAt: string | null; deletedAt: string | null; hasPin: boolean; totpOn: boolean; superPrimary: boolean };
@@ -116,9 +116,16 @@ function People() {
   const [rows, setRows] = useState<Person[] | null>(null);
   const [err, setErr] = useState('');
   const [edit, setEdit] = useState<Person | null>(null);
+  const [reset, setReset] = useState<ResetLink | null>(null);
   const load = () => { setErr(''); api<{ users: Person[] }>(`/api/super/users?q=${encodeURIComponent(q)}&company=${company}`).then((r) => setRows(r.users)).catch((e) => setErr(e.message)); };
   useEffect(load, [q, company]); // eslint-disable-line react-hooks/exhaustive-deps
   const run = async (fn: () => Promise<unknown>) => { setErr(''); try { await fn(); load(); } catch (e) { setErr((e as Error).message); } };
+  // Reset Password (Nov 11): a one-time link for anyone who signs in with email. Another super admin's only from the primary.
+  const canReset = (p: Person) => !!p.email && p.role !== 'staff' && p.id !== ov?.you && (p.role !== 'superadmin' || (!!ov?.youPrimary && !p.superPrimary));
+  const makeReset = (p: Person) => {
+    if (!confirm(`Make a password reset link for ${p.name}? Their password keeps working until they use the link. This is logged.`)) return;
+    void run(async () => { setReset(null); setReset(await api<ResetLink>(`/api/super/users/${p.id}/reset-password`, { method: 'POST' })); });
+  };
   const signInAs = async (p: Person) => {
     if (!confirm(`Sign in as ${p.name} to see exactly what they see? This is logged. Use “Back to Your Account” at the bottom of the screen to return.`)) return;
     await run(async () => { await api(`/api/super/users/${p.id}/sign-in-as`, { method: 'POST' }); location.assign(p.role === 'staff' ? '/' : '/admin'); });
@@ -130,6 +137,7 @@ function People() {
         <label className="field"><span>Company</span><select value={company} onChange={(e) => setCompany(e.target.value)}><option value="">All</option>{ov?.companies.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}</select></label>
       </div>
       {err && <ErrorNote error={err} />}
+      {reset && <ResetLinkCard reset={reset} onClose={() => setReset(null)} />}
       {!rows && <Loading />}
       {rows && (
         <table className="table">
@@ -145,6 +153,7 @@ function People() {
                     {p.role !== 'superadmin' && <button className="link-btn" onClick={() => void signInAs(p)}>Sign In As</button>}
                     <button className="link-btn" onClick={() => setEdit(p)}>Edit</button>
                     {p.role === 'staff' && <button className="link-btn" onClick={() => void run(() => api(`/api/super/users/${p.id}/reset-pin`, { method: 'POST' }))}>Reset PIN</button>}
+                    {canReset(p) && <button className="link-btn" onClick={() => makeReset(p)}>Reset Password</button>}
                     {!p.superPrimary && ov?.you !== p.id && <button className="link-btn danger" onClick={() => { if (confirm(`Delete ${p.name}? They’re signed out. You have 30 days to restore them.`)) void run(() => api(`/api/super/users/${p.id}`, { method: 'DELETE' })); }}>Delete</button>}
                   </>}
               </td>
