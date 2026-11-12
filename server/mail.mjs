@@ -20,14 +20,17 @@ export async function sendMail({ to, subject, text, html }) {
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
-/** The reset email: who it's for, the link, and when it stops working. */
-export function resetEmail({ name, email, url, hours }) {
+/** The reset email: who it's for, the restaurant (their store or company, Tommy, Nov 11), the link, and when it stops
+ *  working. "Reset your password for The Baldwin on Mise Academy". With no restaurant (a super admin): the plain one. */
+export function resetEmail({ name, email, url, hours, place = null }) {
   const first = String(name || '').split(' ')[0] || 'there';
-  const subject = 'Reset your Mise Academy password';
+  const where = String(place || '').replace(/[\r\n]+/g, ' ').trim().slice(0, 80);
+  const subject = where ? `Reset your password for ${where} on Mise Academy` : 'Reset your Mise Academy password';
+  const asked = where ? `Someone asked to reset your password for ${where} on Mise Academy` : 'Someone asked to reset the password for your Mise Academy account';
   const text = [
     `Hi ${first},`,
     '',
-    `Someone asked to reset the password for your Mise Academy account (${email}). Pick a new one here:`,
+    `${asked} (${email}). Pick a new one here:`,
     '',
     url,
     '',
@@ -37,9 +40,9 @@ export function resetEmail({ name, email, url, hours }) {
   ].join('\n');
   const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#f5f2ec;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1d1b18">
 <div style="max-width:480px;margin:0 auto;background:#ffffff;border-radius:12px;padding:28px">
-<p style="margin:0 0 20px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5c564d">Mise Academy</p>
+<p style="margin:0 0 20px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5c564d">${where ? esc(where) + ' · ' : ''}Mise Academy</p>
 <p style="margin:0 0 12px;font-size:16px;line-height:1.5">Hi ${esc(first)},</p>
-<p style="margin:0 0 20px;font-size:16px;line-height:1.5">Someone asked to reset the password for your Mise Academy account (${esc(email)}). Pick a new one here:</p>
+<p style="margin:0 0 20px;font-size:16px;line-height:1.5">${esc(asked)} (${esc(email)}). Pick a new one here:</p>
 <p style="margin:0 0 20px"><a href="${esc(url)}" style="display:inline-block;background:#1d1b18;color:#ffffff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:8px">Pick a New Password</a></p>
 <p style="margin:0 0 12px;font-size:14px;line-height:1.5;color:#5c564d">The link works once and expires in ${hours} hours. If you didn’t ask for this, ignore this email and your password stays the same.</p>
 <p style="margin:0;font-size:12px;line-height:1.5;color:#5c564d;word-break:break-all">${esc(url)}</p>

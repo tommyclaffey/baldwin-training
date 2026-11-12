@@ -210,6 +210,8 @@ function forViewer(page, user) {
   // Nov 10 (audit): demo managers don't see the team's working notes either; a prospect only sees the finished book.
   const staff = !user || !MANAGERS.has(user.role) || !!user.demo;
   const words = (n) => (n.t === 'T' ? 1 : (n.c || []).reduce((k, c) => k + words(c), 0));
+  const liveWords = (n) => (n.eo ? 0 : n.t === 'T' ? 1 : (n.c || []).reduce((k, c) => k + liveWords(c), 0));
+  const hasEd = (n) => !!n.ed || (n.c || []).some(hasEd);
   // Returns why the node goes, or false. A node that lost an admin link and is left as a bare label (a column heading, a tier
   // name) goes too. Notes: a label whose value was a note goes with it ("GLASS · To confirm"); a box left with no words goes
   // (the dashed "Confirm with chef" chip); a list that only lost a chip stays.
@@ -218,11 +220,13 @@ function forViewer(page, user) {
     const before = n.c.length;
     n.c = n.c.filter((c) => !(c.to && c.to.startsWith('/admin') && !canOpen(user, c.to)));
     let lost = n.c.length < before, noteText = false, noteKid = false;
-    if (staff) n.c = n.c.filter((c) => { if (c.t !== 'T') return true; const s = withoutNotes(c.s); if (s === null) return true; if (s) { setText(c, s); return true; } noteText = true; return false; });
+    // An Edit Mode field whose text is a note (a demo manager's "Bar lead to add" pour price) stays, blank, for Edit Mode
+    // only (eo), so the field is still there to fill in (Nov 11 release: both demos get the same Edit Mode fields).
+    if (staff) n.c = n.c.filter((c) => { if (c.t !== 'T') return true; const s = withoutNotes(c.s); if (s === null) return true; if (s) { setText(c, s); return true; } noteText = true; if (c.ed) { c.s = ''; delete c.segs; c.eo = 1; return true; } return false; });
     n.c = n.c.filter((c) => { const why = prune(c); if (why === 'admin') lost = true; if (why === 'note') noteKid = true; return !why; });
     if (n === page.main) return false;
     if (lost && words(n) <= 1) return 'admin';
-    if (noteText && words(n) <= 1) return 'note';
+    if (noteText && liveWords(n) <= 1) { if (hasEd(n)) { n.eo = 1; return false; } return 'note'; }
     if (noteKid && words(n) === 0) return 'note';
     return false;
   };

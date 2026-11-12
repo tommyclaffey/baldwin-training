@@ -208,7 +208,11 @@ test('Forgot Password? with Resend set up: emails a working link; unknown emails
   assert.equal(mail.auth, 'Bearer re_test_key');
   assert.equal(mail.from, 'Mise Academy <hello@mise.test>');
   assert.deepEqual(mail.to, ['owner@reset.test']);
-  assert.match(mail.subject, /Mise Academy/);
+  // Nov 11, Tommy: the restaurant's name in the email (their store or company); the sender stays the one Mise address
+  const place = mail.subject.match(/^Reset your password for (.+) on Mise Academy$/)?.[1];
+  assert.ok(place && !/undefined|null/.test(place), 'the subject names the restaurant: ' + mail.subject);
+  assert.ok(mail.text.includes(`reset your password for ${place} on Mise Academy`), 'and so does the body');
+  assert.ok(mail.html.includes(place));
   assert.match(mail.text, /expires in 24 hours/);
   const url = mail.text.match(/https:\/\/app\.mise\.test\/admin\/reset\/[A-Za-z0-9_-]+/)?.[0];
   assert.ok(url, 'the link uses APP_URL');
@@ -234,4 +238,15 @@ test('the demo: reset and forgot password are switched off', async () => {
     assert.equal(r.status, 403, p);
     assert.equal(r.data.error, 'That’s switched off in the demo.');
   }
+});
+
+test('the reset email names the restaurant; a super admin with none gets the plain one', async () => {
+  const { resetEmail } = await import('../server/mail.mjs');
+  const a = resetEmail({ name: 'Rosa Vance', email: 'r@x.test', url: 'https://app.mise.test/admin/reset/abc', hours: 24, place: 'The Baldwin' });
+  assert.equal(a.subject, 'Reset your password for The Baldwin on Mise Academy');
+  assert.match(a.text, /Someone asked to reset your password for The Baldwin on Mise Academy \(r@x\.test\)/);
+  assert.match(a.html, /The Baldwin · Mise Academy/);
+  const b = resetEmail({ name: 'Sam', email: 's@x.test', url: 'https://app.mise.test/admin/reset/abc', hours: 24 });
+  assert.equal(b.subject, 'Reset your Mise Academy password');
+  assert.match(b.text, /your Mise Academy account/);
 });

@@ -33,7 +33,7 @@ LoginLimiter.useDb(db); // Nov 10: lockouts survive a redeploy
 seed(db);
 seedWineVideos(db);
 bootAccounts(db);
-migrateDemo(db); purgeDemos(db); migrateAcks(db);
+migrateAcks(db); migrateDemo(db); purgeDemos(db); // acks first: demo copies seed and drop them
 setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
 const demoLimiter = new LoginLimiter(30, 60 * 60_000, 'demo-start'); // 30 demo starts an hour per address
 const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address

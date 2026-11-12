@@ -819,12 +819,13 @@ test('manager home + People (Nov 11): sign-offs asked for, Not Yet, Give More Ti
   };
   const mgr = await start('manager');
   const home = (await mgr('/api/manager/home')).data;
-  // the demo is full: seven people, two behind, one new, three sign-offs waiting, certificates, quizzes, edits, the book
+  // the demo is full: seven people, two behind, one new, four sign-offs waiting (Dorian's Hospitality 101 acknowledgment, Nov 11), certificates, quizzes, edits, the book
   assert.deepEqual(home.people.map((p) => p.name).sort(), ['Dorian Pike', 'Hollis Grant', 'Marisol Vega', 'Odalys Ruiz', 'Quinn Abbott', 'Teddy Lam', 'Wynn Carver']);
   assert.equal(home.people.filter((p) => p.status === 'behind').length, 2);
   assert.equal(home.people.find((p) => p.name === 'Odalys Ruiz').status, 'new');
-  assert.equal(home.signoffs.length, 3);
-  assert.equal((await mgr('/api/manager/signoffs/count')).data.count, 3);
+  assert.equal(home.signoffs.length, 4);
+  assert.equal((await mgr('/api/manager/signoffs/count')).data.count, 4);
+  assert.ok(home.signoffs.some((a) => a.name === 'Dorian Pike' && a.key === 'program:hosp-1:practical'), 'the signed acknowledgment waits for the trainer');
   assert.ok(home.certificates.length >= 2);
   assert.ok(home.quizzes.taken > 0 && home.quizzes.missed && home.quizzes.missed.asked >= 3 && home.quizzes.missed.pct < 100 && /\?$/.test(home.quizzes.missed.q), 'the most-missed question is a real question from saved answers');
   assert.equal(home.edits.length, 3);
@@ -838,7 +839,7 @@ test('manager home + People (Nov 11): sign-offs asked for, Not Yet, Give More Ti
   const wynn = home.signoffs.find((a) => a.name === 'Wynn Carver');
   const signed = (await mgr('/api/path/signoff', 'POST', { userId: wynn.userId, key: wynn.key })).data;
   assert.ok(signed.paths[0].stages.some((st) => st.steps.some((x) => x.id === wynn.key && x.done)));
-  assert.equal((await mgr('/api/manager/signoffs/count')).data.count, 1, 'only Quinn’s practical is left');
+  assert.equal((await mgr('/api/manager/signoffs/count')).data.count, 2, 'Quinn’s practical and Dorian’s acknowledgment are left');
   // Give More Time: every late step to 3 days out, or one step to a picked date
   const hollis = home.people.find((p) => p.name === 'Hollis Grant');
   const before = (await mgr(`/api/path/person/${hollis.id}`)).data;
@@ -987,6 +988,11 @@ test('demo: nothing of The Baldwin in the Mise demo (every page, the index, the 
   const rooms = JSON.parse(await getAs(cookie, '/api/chat')).rooms;
   assert.ok(rooms.length >= 5, 'channels and direct messages are seeded');
   for (const r of rooms) bodies.push(await getAs(cookie, '/api/chat/room/' + r.key));
+  // The Hospitality Program (Nov 11): its hub, levels and every lesson are in the sweep above, in the generic version
+  const hosp = idx.filter((e) => e.slug.startsWith('hospitality-program'));
+  assert.ok(hosp.length >= 30, 'the Hospitality Program is in its book: ' + hosp.length);
+  const hospL1 = await getAs(cookie, '/api/page/' + idx.find((e) => e.slug === 'hospitality-program/level-1').file);
+  assert.match(hospL1, /Wrenfield/, 'the acknowledgment names its own restaurant');
   const hits = bodies.filter((b) => BALDWIN.test(b)).map((b) => b.match(new RegExp('.{0,40}(' + BALDWIN.source + ').{0,40}', 'i'))[0]);
   assert.deepEqual(hits, [], 'no Baldwin text in what the Mise demo is sent');
   const home = await getAs(cookie, '/api/page/4-2');
@@ -1024,6 +1030,39 @@ test('demo: both demos have the same pages, apart from their menu items', async 
   const [b, m] = [await pages('baldwin'), await pages('mise')];
   assert.deepEqual([...b].filter((s) => !m.has(s)), [], 'every page The Baldwin demo has, Wrenfield has');
   assert.deepEqual([...m].filter((s) => !b.has(s)), [], 'and nothing extra');
+  // Nov 11 release: the Hospitality Program is the same in both (BRG's words in The Baldwin's, generic in Wrenfield's)
+  const hosp = [...b].filter((s) => s.startsWith('hospitality-program'));
+  assert.ok(hosp.length >= 30 && hosp.every((s) => m.has(s)), 'the same Hospitality pages in both demos');
+});
+
+// One foundation (Tommy, Nov 11): Edit Mode, the Hospitality Program's progress and the reset rules are the same in both demos.
+test('demo: both demos get the same Edit Mode (managers, not staff), Hospitality progress and sign-offs', async () => {
+  const MENU = ['recipe/', 'signature/', 'wine-list/', 'shelf/'];
+  const flat = (n, out = []) => { if (!n) return out; out.push(n); (n.c || []).forEach((c) => flat(c, out)); return out; };
+  const look = async (demo) => {
+    const mgr = await startDemo('manager', demo); const staff = await startDemo('employee', demo);
+    const idx = JSON.parse(await getAs(mgr, '/api/index'));
+    const staffIdx = JSON.parse(await getAs(staff, '/api/index')); // each demo start is its own copy, with its own ids
+    const fields = {};
+    for (const pre of [...MENU, 'the-bar/beer-and-draft']) {
+      const e = idx.find((x) => x.slug.startsWith(pre)); assert.ok(e, demo + ' has ' + pre);
+      const page = JSON.parse(await getAs(mgr, '/api/page/' + e.file));
+      assert.ok(page.edit, `${demo}: Edit Mode on ${e.slug}`);
+      fields[pre] = [...new Set(flat(page.main).filter((n) => n.ed).map((n) => n.ed.k.split('.')[0]))].sort().join(',');
+      const seen = JSON.parse(await getAs(staff, '/api/page/' + staffIdx.find((x) => x.slug === e.slug).file));
+      assert.ok(!seen.edit && !flat(seen.main).some((n) => n.ed || n.eo), `${demo}: staff get no Edit Mode on ${e.slug}`);
+    }
+    const home = JSON.parse(await getAs(mgr, '/api/manager/home'));
+    const path = JSON.parse(await getAs(staff, '/api/path'));
+    const hosp1 = path.programs.find((g) => /Hospitality/.test(g.title) && g.certKey === 'hosp-1');
+    return { fields, home: JSON.stringify(home), hosp1 };
+  };
+  const [b, m] = [await look('baldwin'), await look('mise')];
+  assert.deepEqual(m.fields, b.fields, 'the same fields to edit');
+  for (const x of [b, m]) {
+    assert.match(x.home, /Dorian Pike/); assert.match(x.home, /program:hosp-1:practical/, 'the acknowledgment waits for the trainer on the manager home');
+    assert.ok(x.hosp1 && x.hosp1.done >= 3, 'the demo employee has read Hospitality 101’s first lesson');
+  }
 });
 
 test('demo: the Mise demo restarts as the Mise demo; The Baldwin keeps its own menu sections', async () => {

@@ -31,10 +31,11 @@ export function PageTools({ floating, width, zoom, children }: { floating: boole
 const Bubble = <svg width="16" height="16" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M14.52 8.15a5.67 5.67 0 0 1-8.29 5.03l-3.4.99.99-3.12A5.67 5.67 0 1 1 14.52 8.15Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /></svg>;
 
 /** The small round chat button on an item (a card, a row, a person), shown on hover and focus (always on touch rows).
+ *  No native tooltip (Nov 11, Tommy: it popped up over the dish name); the aria-label names it for screen readers.
  *  It stages the item in Team Chat, like Send to Team, and never follows the link it sits in. */
 export function ItemChatButton({ item, title, className = '', style }: { item: ChatItem; title: string; className?: string; style?: CSSProperties }) {
   return (
-    <button type="button" className={'item-chat ' + className} style={style} aria-label={`Send ${title} to Team Chat`} title="Send to Team Chat" aria-haspopup="dialog"
+    <button type="button" className={'item-chat ' + className} style={style} aria-label={`Send ${title} to Team Chat`} aria-haspopup="dialog"
       onClick={(e) => { e.preventDefault(); e.stopPropagation(); openChat({ item }); }}>
       {Bubble}
     </button>
