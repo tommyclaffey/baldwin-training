@@ -347,9 +347,14 @@ export function kindFor(e) {
 }
 
 /** A page from this store's book, as a card. Null if the store's book doesn't have it. */
+/** Cards for coded pages that aren't in the book's index (Nov 12: the Prep tracker registers its own). A source
+ *  returns undefined when the address isn't one of its pages. */
+const cardSources = [];
+export const addCardSource = (fn) => { cardSources.push(fn); };
 export function pageCard(db, storeRow, slug, user = null) {
   const s = String(slug || '').replace(/^\//, '');
   if (!s) return null;
+  for (const fn of cardSources) { const card = fn(db, storeRow, s, user); if (card !== undefined) return card; }
   const e = withStore(storeRow, () => fullIndex(db, { text: false }), user).find((z) => z.slug === s); // addresses and titles only
   if (!e) return null;
   // The card's one line: the page's blurb, or for a drink or dish without one, its taste or selling line.

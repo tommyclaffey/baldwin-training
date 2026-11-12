@@ -33,6 +33,25 @@ function withChat(n: FNode): FNode {
 }
 import { useSignoffCount } from '../admin/manager';
 
+/** Prep (Nov 12, Figma 632:803): the juice, syrup and garnish tracker, under the menu pages after the Allergen Guide,
+ *  with a citrus-slice icon. Every store and brand gets it (the one-foundation rule). */
+const PREP_ICON = 'mise_prep';
+(svgs as Record<string, string>)[PREP_ICON] = '<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8.5" cy="8.5" r="6.4" stroke="#B8AFA3" stroke-width="1.49"/><path d="M8.5 2.6v11.8M2.6 8.5h11.8M4.3 4.3l8.4 8.4M12.7 4.3l-8.4 8.4" stroke="#B8AFA3" stroke-width="1.1" stroke-linecap="round"/></svg>';
+function withPrep(n: FNode): FNode {
+  if (n.n === 'Nav' && n.c && !n.c.some((c) => c.n === 'Nav · Prep')) {
+    const after = n.c.find((c) => c.n === 'Nav · Allergen Guide');
+    const model = n.c.find((c) => c.n === 'Nav · Food Matrix');
+    if (!after || !model) return n;
+    const item: FNode = JSON.parse(JSON.stringify(model));
+    item.n = 'Nav · Prep'; item.to = '/prep';
+    item.c = (item.c || []).filter((c) => c.n !== 'Count').map((c) => (c.n === 'icon' ? { ...c, svg: PREP_ICON } : c.t === 'T' ? { ...c, s: 'Prep', n: 'Prep', segs: undefined, w: 171 } : c));
+    const c = [...n.c];
+    c.splice(c.indexOf(after) + 1, 0, item);
+    return { ...n, c };
+  }
+  return n.c ? { ...n, c: n.c.map(withPrep) } : n;
+}
+
 // Team links for managers in the book's sidebar (Nov 11, Tommy: "there is no people button"). Same icons as the admin's.
 const ICON = (d: string) => `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="${d}" stroke="#B8AFA3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 (svgs as Record<string, string>)['team-people'] = ICON('M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 10a7 7 0 0 1 14 0M17 3.5a4 4 0 0 1 0 7.5M22 21a7 7 0 0 0-4-6.3');
@@ -116,7 +135,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     // Badges: what's really on each page; Quizzes = quizzes still to pass on this phone.
     const live: Record<string, number> = { ...counts, 'Team Chat': unread, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
     const base = trainingCard([SIDEBAR], quiz)[0];
-    const drawn = pathSidebar(linkHome(withCounts(chat ? withChat(base) : base, live)), mine);
+    const drawn = pathSidebar(linkHome(withCounts(withPrep(chat ? withChat(base) : base), live)), mine);
     const named = generic ? forStore(drawn, user!.store!.name) : drawn;
     const teamed = manager ? withTeam(named, signoffs) : named;
     const mise = currentBrand() === 'mise';

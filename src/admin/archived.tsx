@@ -30,13 +30,13 @@ export function ArchivedPage() {
   const restore = async (g: Group, i: Item) => {
     setBusy(`${g.id}:${i.id}`); setError('');
     try {
-      await api(g.id === 'media' ? `/api/media/${i.id}/restore` : `/api/entries/${i.id}/restore`, { method: 'POST' });
+      await api(g.id === 'media' ? `/api/media/${i.id}/restore` : g.id === 'prep' ? `/api/prep/items/${i.id}/restore` : `/api/entries/${i.id}/restore`, { method: 'POST' });
       await after(`${i.name} is back.`);
     } catch (e) { setError((e as Error).message); }
     setBusy('');
   };
   const restoreAll = async (g: Group) => {
-    if (!confirm(`Restore all ${g.items.length} archived ${g.label.toLowerCase()}? They go back into the book, quizzes and search.`)) return;
+    if (!confirm(`Restore all ${g.items.length} archived ${g.label.toLowerCase()}? ${g.id === 'prep' ? 'They go back on Today’s prep list.' : 'They go back into the book, quizzes and search.'}`)) return;
     setBusy(g.id); setError('');
     try { await api('/api/archived/restore', { method: 'POST', body: { group: g.id } }); await after(`${g.label} restored.`); }
     catch (e) { setError((e as Error).message); }

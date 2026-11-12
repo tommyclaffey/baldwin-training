@@ -17,6 +17,7 @@ import { questionPool } from './quizgen.mjs';
 import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
 import { forget } from './cache.mjs';
 import { MEDIA_DIR } from './db.mjs';
+import { seedDemoPrep } from './prep.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const now = () => new Date().toISOString();
@@ -130,9 +131,11 @@ export function startDemo(db, key, which = 'baldwin') {
     const day = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
     const slots = ['Servers 1', 'Servers 2', 'Bar 1', 'Support 1'];
     let slot = 0;
+    const bartenders = []; // the Prep tracker's openers (Nov 12)
     TEAM.forEach((p, n) => {
       if (p.marisol && pick.role === 'staff') return; // she's the visitor
       const id = addUser(p.name, 'staff', st);
+      if (p.jobs.includes('bartender')) bartenders.push(id);
       if (p.marisol) { marisol(id); }
       else {
         setJob(id, p.jobs, p.started);
@@ -179,6 +182,9 @@ export function startDemo(db, key, which = 'baldwin') {
     // The owner (Nov 11, Send to Team): a second manager in the store, so a manager's progress card has someone to go to.
     addUser(DEMO_OWNER, 'owner', null);
     seedChat(db, { company: co, storeRow, script: mise ? WRENFIELD_DEMO_CHAT : BALDWIN_DEMO_CHAT });
+    // Prep tracker (Nov 12): eight weeks of batches, waste and run-outs by the two bartenders and the manager, so Today, the item pages and Reports are full. Shown as demo data on screen.
+    const lead = db.prepare("SELECT id FROM users WHERE company_id = ? AND role = 'manager' ORDER BY id LIMIT 1").get(co)?.id;
+    seedDemoPrep(db, { company: co, storeRow, bartenders, lead });
     if (pick.role !== 'staff') for (const [action, name, days] of (mise ? MISE_EDITS : EDITS)) db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id) VALUES (?,?,?,?,?)').run(me, action, name, new Date(Date.now() - days * 864e5).toISOString(), co);
     // Nov 10 (audit: "Videos and photos · 0" in the demo admin): a few videos already in the library
     for (const [title, yt] of [['How I Make an Old Fashioned · Anders Erickson', 'pdcrJ5V7YKM'], ['How to Make a Martini · Anders Erickson', 'izZsjqnADAA'], ['The Daiquiri · Anders Erickson', '71jQRf5UrpE'], ['How to Open a Bottle of Wine · Court of Master Sommeliers', '9R3JBuXcNjQ']])
@@ -215,7 +221,7 @@ export function dropDemo(db, id) {
     db.prepare('DELETE FROM manual_reads WHERE user_id = ?').run(u);
     db.prepare('DELETE FROM quiz_marks WHERE user_id = ?').run(u);
   }
-  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'program_acks']) {
+  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'program_acks', 'prep_items', 'prep_batches', 'prep_events']) {
     const exists = db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(t);
     if (!exists) continue;
     const cols = db.prepare(`PRAGMA table_info(${t})`).all().map((c) => c.name);

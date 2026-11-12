@@ -55,7 +55,8 @@ export type ColorRole =
   | 'accent' | 'onAccent' | 'danger' | 'onDanger'                        // the accent fill, the allergen/warning fill
   | 'edgeStrong' | 'edgeMuted' | 'edgeSoft' | 'outlineOnDark'            // outlines
   | 'button' | 'onButton' | 'buttonOnDark' | 'onButtonOnDark'            // the main button, on light and on a dark panel
-  | 'new' | 'onNew' | 'tape' | 'onTape';                                 // "New" status, the taped note
+  | 'new' | 'onNew' | 'tape' | 'onTape'                                  // "New" status, the taped note
+  | 'dataUsed' | 'dataWasted';                                           // chart marks (Nov 12, Prep reports): what got used, what got tossed
 export type Colors = Record<ColorRole, string | string[]>;
 
 /** Type roles. `z` set = the role has its own size; unset = the size the page was drawn at. */
@@ -95,6 +96,9 @@ export const THEMES: Record<Brand, Theme> = {
       edgeStrong: ['#8A5A3A', '#1E1C1A'], edgeMuted: '#6B645B', edgeSoft: '#A39B90', outlineOnDark: '#8A8178',
       button: '#C49A6C', onButton: '#1E1C1A', buttonOnDark: '#C49A6C', onButtonOnDark: '#1E1C1A',
       new: '#E7E2F0', onNew: '#4B3F6B', tape: '#C49A6C', onTape: '#1E1C1A',
+      // Prep reports (Nov 12): espresso-copper for used, a warm terracotta for wasted. Checked with the dataviz validator
+      // on the card: ΔE 18.4 normal vision, 13.8 protan; 6.7:1 and 3.4:1 against the card.
+      dataUsed: '#7A4E31', dataWasted: '#D06A4C',
     },
     type: {
       pageTitle: { ff: ARCHIVO, fs: 'ExtraBold', case: 'upper' },
@@ -125,6 +129,9 @@ export const THEMES: Record<Brand, Theme> = {
       edgeStrong: '#121110', edgeMuted: '#4A443E', edgeSoft: '#9A928A', outlineOnDark: '#7F776F',
       button: '#121110', onButton: '#EDE6DA', buttonOnDark: '#EDE6DA', onButtonOnDark: '#121110',
       new: '#5B6B2E', onNew: '#FFFFFF', tape: '#7BA5CB', onTape: '#121110',
+      // Prep reports (Nov 12): char-grey for used, a lighter fig for wasted (fig is Mise's "needs attention").
+      // ΔE 21.0 normal vision, 9.5 protan, both ≥ 3:1 against Paper.
+      dataUsed: '#4A443E', dataWasted: '#B8463F',
     },
     type: {
       pageTitle: { ff: 'Instrument Serif', fs: 'Regular', z: 64, lh: '100%', ls: '-0.5%', case: 'title' },
