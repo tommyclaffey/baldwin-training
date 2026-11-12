@@ -2751,6 +2751,42 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
    things that need attention (Nov 11, Tommy: "Do you feel like this color button is the right call?" → "Sounds good") */
 .brand-mise [data-name="Play"] { background: #EDE6DA !important; box-shadow: 0 4px 16px rgba(18, 17, 16, .35); }
 .brand-mise [data-name="Play"] svg path, .brand-mise [data-name="Play"] svg polygon { fill: #121110 !important; stroke: none; }
+
+/* ---- Archive where items live (Nov 12; src/edit/archive.tsx). The Archive button on rows and cards is the chat button's
+   twin (same 32 px circle, same show-on-hover rules via .item-chat), just left of it. The confirm and the Undo toast use
+   the app's modal and toast, so both brands pick them up from their variables. ---- */
+.item-archive:hover { background: var(--ink); color: #FFFFFF; border-color: #FFFFFF; }
+.page.compact .item-archive.beside:not(.row) { right: 46px !important; }
+.arc-confirm { width: min(460px, 100%); gap: 12px; }
+.arc-confirm p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink); }
+.arc-confirm .arc-note { font-size: 14px; color: var(--muted, #5C554D); }
+.arc-confirm .arc-error { font-size: 14px; color: #A1271F; font-weight: 600; }
+.arc-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
+.arc-actions .btn { min-width: 112px; }
+.arc-actions .btn:focus-visible, .arc-undo:focus-visible { outline: 3px solid var(--copper); outline-offset: 2px; }
+.arc-toast { gap: 12px; }
+.arc-undo { display: inline-flex; align-items: center; justify-content: center; min-height: 30px; padding: 4px 12px; margin-left: 4px; border-radius: 999px;
+  border: 1px solid rgba(242,238,231,.55); background: transparent; color: var(--cream); font: 700 13px 'Archivo', sans-serif; cursor: pointer; }
+.arc-undo:hover { background: var(--cream); color: var(--ink); }
+/* The Archived page (/admin/archived) */
+.arc-page .arc-search { width: min(420px, 100%); }
+.arc-group { margin-top: 28px; }
+.arc-group-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.arc-group-head h2 { margin: 0; font-size: 18px; }
+.arc-count { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 8px; border-radius: 999px; background: var(--tint, #F1EBDF); font: 700 12px 'Archivo', sans-serif; font-variant-numeric: tabular-nums; }
+.arc-group-head .grow { flex: 1; }
+.arc-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.arc-row .grow { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.arc-row strong { font-size: 15px; }
+.arc-row small { font-size: 13px; color: var(--muted, #5C554D); }
+.arc-store { display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; margin-top: 4px; padding: 2px 8px; border-radius: 6px; background: var(--tint, #F1EBDF); color: var(--ink); font: 600 12px 'Archivo', sans-serif; }
+.arc-empty { color: var(--muted, #5C554D); font-size: 14px; padding: 12px 0; margin: 0; }
+@media (max-width: 600px) { .arc-row { flex-wrap: wrap; } .arc-row .btn { width: 100%; } }
+/* The Undo toast keeps its words on one or two lines, and on phones in Edit Mode it sits under the top bar so the
+   floating edit bar never covers it. */
+.arc-toast { width: max-content; max-width: calc(100vw - 32px); box-sizing: border-box; line-height: 1.35; }
+.arc-toast .dot, .arc-toast .arc-undo { flex: none; }
+@media (max-width: 800px) { body.edit-on .arc-toast { top: 76px; bottom: auto; } }
 /* Edit Mode on the cinematic hero (every brand): allergen chips that aren't picked read on the dark panel */
 [data-name="Hero"] .ed-chip:not(.on) { color: var(--c-on-inverse-muted); border-color: var(--c-outline-on-dark); }
 

@@ -13,6 +13,7 @@ const seen = new Map(); // youtubeId → lesson slug, so a video isn't reused ac
 for (const p0 of fs.readdirSync(path.join(ROOT, 'content')).filter((d) => ['bar', 'beer', 'manual', 'manual-l2'].includes(d)))
   for (const f of fs.readdirSync(path.join(ROOT, 'content', p0)).filter((x) => x.endsWith('.json'))) { const [, c] = load(path.join('content', p0, f)); for (const s of c.v3?.sections || []) if (s.video?.youtubeId) seen.set(s.video.youtubeId, c.slug); }
 for (const v of found) {
+  if (!fs.existsSync(path.isAbsolute(v.file) ? v.file : path.join(ROOT, v.file))) { skipped.push(`${v.file}: file gone (archived)`); continue; }
   const [p, c] = load(v.file);
   const s = (c.v3?.sections || []).find((x) => x.name === v.section);
   if (!s) { skipped.push(`${c.slug} · ${v.section}: no such section`); continue; }

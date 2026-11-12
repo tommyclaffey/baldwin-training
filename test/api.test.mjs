@@ -806,7 +806,7 @@ test('job paths: a server’s path from the book, page reads, quiz passes and ma
   const signed = (await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'path:bartender:build-three' })).data;
   assert.ok(signed.paths[0].stages.some((st) => st.steps.some((s) => s.id === 'path:bartender:build-three' && s.done && s.by === 'Rosalind Hart')));
   assert.equal((await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'path:server:floor' })).status, 400, 'not a step in their path');
-  // the Cocktail Program's Level 2 practical (Nov 8): a manager signs it off on Admin → Training
+  // the Cocktail Program's Level 2 practical (Nov 8): a manager signs it off in People (was Admin → Training)
   const pr = (await mgr('/api/path/signoff', 'POST', { userId: quinn.id, key: 'program:bar-2:practical' })).data;
   assert.ok(pr.programs.find((g) => g.cert === 'Certified Bartender').practical.by === 'Rosalind Hart');
   // Certificates (Nov 8): Quinn passed both finals in the demo; Level 2 needs the practical too, now signed

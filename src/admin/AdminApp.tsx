@@ -1,4 +1,5 @@
 // The /admin area: everything a manager needs to change the book.
+import { ArchivedPage } from './archived';
 import { NavLink, Navigate, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { ACADEMY_NAME } from '../lib/brand';
 import { useSession } from '../lib/session';
@@ -88,6 +89,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           {(hasBook || library) && <NavLink to="/admin/wine-videos">Wine Videos</NavLink>}
           <NavLink to="/admin/bottle-scanner">Bottle Scanner</NavLink>
           <NavLink to="/admin/media">Videos and Photos</NavLink>
+          <NavLink to="/admin/archived">Archived</NavLink>
           <p className="admin-group">You</p>
           {owner && <NavLink to="/admin/activity">Activity</NavLink>}
           <NavLink to="/admin/account">Your Account</NavLink>
@@ -107,6 +109,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <Route path="wine-videos" element={<WineVideos />} />
           <Route path="bottle-scanner" element={<BottleScannerPage />} />
           <Route path="media" element={<MediaLibrary />} />
+          <Route path="archived" element={<ArchivedPage />} />
           {/* Nov 11: Training, Quiz Results and Team are one People screen now. The old addresses land there. */}
           <Route path="people" element={<PeoplePage />} />
           <Route path="people/managers" element={<People leadsOnly />} />

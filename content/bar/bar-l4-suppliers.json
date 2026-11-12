@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "How liquor gets to us",
-    "video": null,
+    "video": {
+     "youtubeId": "-wbpa_B0M5U",
+     "title": "What is the Three-Tier System for Alcohol?",
+     "by": "Park Street University",
+     "length": "2:20"
+    },
     "keyPoints": [
      {
       "big": "MLCC",
@@ -121,7 +126,12 @@
    },
    {
     "name": "Reps and distributors",
-    "video": null,
+    "video": {
+     "youtubeId": "yevtXSuQpgA",
+     "title": "A Day in the Life of an On Premise Sales Representative",
+     "by": "Southern Glazer's Wine & Spirits",
+     "length": "1:39"
+    },
     "keyPoints": [
      {
       "big": "REP",
@@ -207,7 +217,12 @@
    },
    {
     "name": "Sourcing for the menu",
-    "video": null,
+    "video": {
+     "youtubeId": "6_1gbjGH2-E",
+     "title": "How Does a Bar Manager Choose and Upsell Liquor?: Jason Lam",
+     "by": "Beverage Trade Network",
+     "length": "3:37"
+    },
     "keyPoints": [
      {
       "big": "CHECK",
