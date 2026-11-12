@@ -16,6 +16,8 @@ import {
   hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionDays, LoginLimiter, publicUser,
   sha256, newToken, newTotpSecret, verifyTotp, otpauthUrl, newJoinCode,
 } from './auth.mjs';
+import { APP_URL, mailConfigured, sendMail, resetEmail } from './mail.mjs';
+import { logError } from './ops.mjs';
 
 const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
 const SUPERADMIN_EMAIL = (process.env.SUPERADMIN_EMAIL || '').trim().toLowerCase();
@@ -25,6 +27,11 @@ const loginLimiter = new LoginLimiter(8, 15 * 60_000, 'login');
 const codeLimiter = new LoginLimiter(30, 15 * 60_000, 'join-code'); // join-code lookups per address
 const pinLimiter = new LoginLimiter(5, 15 * 60_000, 'pin'); // wrong PINs per person
 const tickets = new Map(); // two-step sign-in: ticket → { userId, at }
+// Password reset (Nov 11): one-time links, 24 hours. Forgot Password? is limited per address and per email.
+const RESET_HOURS = 24;
+const forgotIpLimiter = new LoginLimiter(10, 60 * 60_000, 'forgot-ip');
+const forgotEmailLimiter = new LoginLimiter(3, 60 * 60_000, 'forgot-email');
+export const FORGOT_MESSAGE = 'If that email has an account, we’ve sent a reset link. No email? Ask an owner for a reset link.';
 
 /** Startup: Baldwin has a join code, the super admin email is a super admin, and 30-day-old deletions are gone for good. */
 export function bootAccounts(db) {
@@ -77,12 +84,15 @@ export function purgeDeleted(db) {
     db.prepare('DELETE FROM sessions WHERE user_id IN (SELECT id FROM users WHERE company_id = ?)').run(c.id);
     db.prepare('DELETE FROM users WHERE company_id = ?').run(c.id);
     db.prepare('DELETE FROM invites WHERE company_id = ?').run(c.id);
+    db.prepare('DELETE FROM password_resets WHERE company_id = ?').run(c.id);
     db.prepare('DELETE FROM companies WHERE id = ?').run(c.id);
   }
   for (const u of db.prepare('SELECT id FROM users WHERE deleted_at IS NOT NULL AND deleted_at < ?').all(cutoff)) {
     db.prepare('DELETE FROM sessions WHERE user_id = ?').run(u.id);
+    db.prepare('DELETE FROM password_resets WHERE user_id = ?').run(u.id);
     db.prepare('DELETE FROM users WHERE id = ?').run(u.id);
   }
+  db.prepare('DELETE FROM password_resets WHERE expires_at < ?').run(new Date(Date.now() - 7 * 864e5).toISOString());
 }
 
 /** The company a request works in: the person's own, or for a super admin the one they picked (Baldwin by default). */
@@ -135,6 +145,29 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const superLog = (u, action, detail, companyId = null) => audit(db, u.id, 'super: ' + action, detail, companyId);
   const personOut = (u) => ({ id: u.id, name: u.name, email: u.email, role: u.role, companyId: u.company_id, companyName: u.company_name ?? null,
     createdAt: u.created_at, lastSeenAt: u.last_seen_at, deletedAt: u.deleted_at, hasPin: !!u.pin_hash, totpOn: !!u.totp_on, superPrimary: !!u.super_primary });
+
+  /* Password reset links (Nov 11). Only the hash is stored; a new link replaces the person's unused ones. */
+  const makeReset = (t, by, via) => {
+    const token = newToken();
+    const expiresAt = new Date(Date.now() + RESET_HOURS * 3600e3).toISOString();
+    db.prepare('DELETE FROM password_resets WHERE user_id = ? AND used_at IS NULL').run(t.id);
+    db.prepare('INSERT INTO password_resets(token_hash,user_id,company_id,created_by,via,created_at,expires_at) VALUES (?,?,?,?,?,?,?)')
+      .run(sha256(token), t.id, t.company_id ?? null, by?.id ?? null, via, now(), expiresAt);
+    return { token, link: `/admin/reset/${token}`, expiresAt, hours: RESET_HOURS };
+  };
+  /** A link that still works: not used, not expired, for someone who still signs in with email. */
+  const resetRow = (token) => db.prepare(`SELECT r.*, u.name, u.email, u.role, u.totp_on, b.name by_name FROM password_resets r
+      JOIN users u ON u.id = r.user_id LEFT JOIN companies c ON c.id = u.company_id LEFT JOIN users b ON b.id = r.created_by
+      WHERE r.token_hash = ? AND r.used_at IS NULL AND r.expires_at > ? AND u.deleted_at IS NULL AND u.role != 'staff' AND u.email IS NOT NULL
+        AND (u.company_id IS NULL OR c.deleted_at IS NULL)`).get(sha256(String(token || '')), now());
+  /** Can this person get a reset link at all? Owners, managers and super admins sign in with email; staff use a PIN. */
+  const resettable = (t, actor) => {
+    if (t.deleted_at) fail(400, 'Restore this person first.');
+    if (t.role === 'staff' || !t.email) fail(400, 'Staff sign in with a PIN. Use Reset PIN instead.');
+    if (t.id === actor.id) fail(400, 'Change your own password on Your Account.');
+    if (t.company_id && !companyRow(t.company_id)) fail(400, 'Restore their company first.');
+  };
+  const resetOut = (t, r) => ({ link: r.link, expiresAt: r.expiresAt, hours: r.hours, name: t.name, email: t.email });
 
   return async function route(req, res, url, c) {
     const m = req.method, p = url.pathname, parts = p.split('/').filter(Boolean);
@@ -209,8 +242,70 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (!validPassword(b.next)) fail(400, 'Use at least 10 characters for the new password.');
       db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(await hashPassword(b.next), u.id);
       db.prepare('DELETE FROM sessions WHERE user_id = ? AND token_hash != ?').run(u.id, sha256(c.token));
+      db.prepare('DELETE FROM password_resets WHERE user_id = ? AND used_at IS NULL').run(u.id);
       audit(db, u.id, 'password', null, u.company_id);
       return sendJson(res, 200, { ok: true });
+    }
+
+    /* ---- Forgot Password? The same answer for every email, so nobody can find out which emails have accounts. ---- */
+    if (p === '/api/password/forgot' && m === 'POST') {
+      if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
+      const b = await readJson(req);
+      const email = String(b.email || '').trim().toLowerCase();
+      if (!validEmail(email)) fail(400, 'Enter a valid email address.');
+      if (!forgotIpLimiter.check(ip(req))) fail(429, 'Too many tries. Wait an hour, then try again.');
+      forgotIpLimiter.record(ip(req));
+      const reply = () => sendJson(res, 200, { ok: true, message: FORGOT_MESSAGE });
+      // A few emails an hour per address at most; past that, the same answer and nothing sent.
+      if (!forgotEmailLimiter.check(email)) return reply();
+      forgotEmailLimiter.record(email);
+      const t = db.prepare(`SELECT u.* FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.email = ? AND u.deleted_at IS NULL
+        AND u.role != 'staff' AND (u.company_id IS NULL OR (c.deleted_at IS NULL AND IFNULL(c.demo, 0) = 0))`).get(email);
+      const tag = t?.role === 'superadmin' ? 'super: ' : '';
+      if (!mailConfigured()) {
+        console.log('[mail] Forgot Password asked for, but email isn’t set up (RESEND_API_KEY and MAIL_FROM). Nothing sent.');
+        if (t) audit(db, t.id, tag + 'reset asked', 'email isn’t set up, so nothing was sent', t.company_id);
+        return reply();
+      }
+      if (t) {
+        const r = makeReset(t, null, 'email');
+        audit(db, t.id, tag + 'reset email', null, t.company_id);
+        // Not awaited: a real email shouldn't answer slower than an unknown one.
+        void sendMail({ to: t.email, ...resetEmail({ name: t.name, email: t.email, url: APP_URL + r.link, hours: r.hours }) })
+          .catch((e) => { console.error('[mail] reset email failed', e.message); logError(db, 'server', '/api/password/forgot', e, t.id); });
+      }
+      return reply();
+    }
+
+    /* ---- a reset link: pick a new password, then you're signed in (two-step still asks for its code) ---- */
+    if (parts[1] === 'reset' && parts[2] && !parts[3]) {
+      const r = resetRow(parts[2]);
+      if (m === 'GET') return sendJson(res, 200, r ? { valid: true, name: r.name, email: r.email, expiresAt: r.expires_at } : { valid: false });
+      if (m === 'POST') {
+        if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
+        if (!r) fail(410, 'This reset link has expired or was already used. Ask for a new one.');
+        const b = await readJson(req);
+        if (!validPassword(b.password)) fail(400, 'Use at least 10 characters for the password.');
+        const hash = await hashPassword(b.password);
+        // Single use: whoever marks it used first wins (a second request in flight gets "already used").
+        if (db.prepare('UPDATE password_resets SET used_at = ? WHERE token_hash = ? AND used_at IS NULL AND expires_at > ?').run(now(), r.token_hash, now()).changes !== 1) {
+          fail(410, 'This reset link has expired or was already used. Ask for a new one.');
+        }
+        db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(hash, r.user_id);
+        db.prepare('DELETE FROM sessions WHERE user_id = ?').run(r.user_id); // signed out everywhere else
+        db.prepare('DELETE FROM password_resets WHERE user_id = ? AND used_at IS NULL').run(r.user_id);
+        loginLimiter.reset(r.email + '|' + ip(req));
+        const how = r.via === 'email' ? 'from an email link' : `with a link from ${r.by_name || 'an owner'}`;
+        audit(db, r.user_id, 'reset password', how, r.company_id);
+        if (r.via === 'super' || r.role === 'superadmin') audit(db, r.user_id, 'super: reset password', how, r.company_id);
+        const user = byId(r.user_id);
+        if (user.totp_on) {
+          const ticket = newToken();
+          tickets.set(sha256(ticket), { userId: user.id, at: Date.now(), tries: 0 });
+          return sendJson(res, 200, { needCode: true, ticket });
+        }
+        return signIn(res, req, user);
+      }
     }
 
     /* ---- owners, all-store managers and super admins switch the store they're working in ---- */
@@ -357,6 +452,15 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const cid = companyOf(u);
       const t = db.prepare('SELECT * FROM users WHERE id = ? AND company_id = ? AND deleted_at IS NULL').get(Number(parts[2]), cid);
       if (!t || !inScope(u, t)) fail(404, 'We couldn’t find that person.');
+      // Owners (and super admins working in the company) make reset links for owners and managers. Managers can't:
+      // like invites, role changes and removing people, owners and managers are an owner's call.
+      if (parts[3] === 'reset-password' && m === 'POST') {
+        if (u.role !== 'owner' && u.role !== 'superadmin') fail(403, 'Only an owner can make a reset link.');
+        resettable(t, u);
+        const r = makeReset(t, u, u.role === 'superadmin' ? 'super' : 'owner');
+        audit(db, u.id, 'reset link', `${t.name} · ${t.email}`, cid);
+        return sendJson(res, 200, resetOut(t, r));
+      }
       if (parts[3] === 'reset-pin' && m === 'POST') {
         if (t.role !== 'staff') fail(400, 'Only staff have a PIN.');
         db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id);
@@ -583,6 +687,13 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         return sendJson(res, 200, { ok: true });
       }
       if (parts[4] === 'restore' && m === 'POST') { db.prepare('UPDATE users SET deleted_at = NULL WHERE id = ?').run(t.id); superLog(s, 'restore person', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
+      if (parts[4] === 'reset-password' && m === 'POST') {
+        resettable(t, s);
+        if (protectedSuper) fail(403, 'Only the primary super admin can reset another super admin’s password.');
+        const r = makeReset(t, s, 'super');
+        superLog(s, 'reset password link', `${t.name} (${t.role}) · ${t.email}`, t.company_id);
+        return sendJson(res, 200, resetOut(t, r));
+      }
       if (parts[4] === 'reset-pin' && m === 'POST') { db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id); db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id); superLog(s, 'reset PIN', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
       if (parts[4] === 'sign-in-as' && m === 'POST') {
         if (t.role === 'superadmin') fail(400, 'Super admins can’t sign in as each other.');
