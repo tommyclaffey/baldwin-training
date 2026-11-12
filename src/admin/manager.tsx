@@ -505,13 +505,22 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
         <div>
           <Label>Programs</Label>
           {(() => {
-            const started = p.programs.filter((g) => g.done > 0 || g.final?.best || g.certified || g.practical?.ask || g.practical?.ack);
+            // levels by invitation (Master of the Bar, Nov 12) always show, so a manager can invite anyone from here
+            const started = p.programs.filter((g) => g.done > 0 || g.final?.best || g.certified || g.practical?.ask || g.practical?.ack || g.invite);
             if (!started.length) return <p className="muted small">No program started yet.</p>;
             return started.map((g) => (
               <div key={g.title} className="pp-prog">
                 <strong>{g.title}</strong>
                 <small>{g.done} of {g.total} lessons · {g.certified ? `${g.cert}` : g.final?.passedAt ? 'final passed' : g.final?.best ? `final best ${g.final.best}` : 'no final yet'}</small>
                 <Bar done={g.done} total={g.total} />
+                {/* Nov 12: by invitation. The manager invites the person here; Remove takes it back. */}
+                {g.invite && !g.invite.at && (
+                  <div className="pp-prog-row">
+                    <small>By invitation: {first} can see this level but can’t open it yet</small>
+                    <button type="button" className="mg-btn copper small" disabled={!!busy} onClick={() => void act('s:' + g.invite!.key, '/api/path/signoff', { key: g.invite!.key }, `${first} is invited to ${g.cert}.`)}>Invite</button>
+                  </div>
+                )}
+                {g.invite?.at && <small>Invited{g.invite.by ? ` by ${g.invite.by}` : ''} {whenWords(g.invite.at)} · <button type="button" className="link-btn danger" onClick={() => void act('s:u' + g.invite!.key, '/api/path/signoff', { key: g.invite!.key }, 'Invitation removed.', 'DELETE')}>Remove</button></small>}
                 {/* Hospitality 101 (Nov 11): the person signs the acknowledgment first, then the trainer signs it off (no final needed first) */}
                 {g.practical && 'ack' in g.practical && !g.practical.at && <small>{g.practical.ack ? `Acknowledgment signed “${g.practical.ack.name}” ${whenWords(g.practical.ack.at)}` : 'Acknowledgment not signed yet'}</small>}
                 {g.practical && !g.practical.at && ('ack' in g.practical ? !!g.practical.ack : !!g.final?.passedAt) && (

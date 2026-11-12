@@ -56,6 +56,13 @@ export const LEVELS = [
   { program: 'bar', level: 3, title: 'Advanced Mixologist', file: 'bar-3', final: 'final:bar-3', len: 60, prefix: 'BAR3', head: 'Make it your own',
     practical: 'program:bar-3:practical', practicalTitle: 'Create an original cocktail', practicalHow: 'Write an original spec, cost it, and build it for the bar lead; they sign you off', practicalStep: 'Create your own drink',
     lead: (n, L) => `${countWord(n)} lessons on the craft and the business, then a final and a practical.` },
+  // Level 4 (Nov 12, Tommy: "let's finish the advanced cocktail program"): running the bar program. By invitation (Tommy, Nov 6:
+  // "Level 4, by invitation, panel"): everyone can see the level, but staff open its lessons and final only once a manager
+  // invites them in People (a sign-off row keyed `invite`, server/invite.mjs). Managers and owners can always open it.
+  { program: 'bar', level: 4, title: 'Master of the Bar', file: 'bar-4', final: 'final:bar-4', len: 60, prefix: 'BAR4', head: 'Run the bar program',
+    invite: 'program:bar-4:invite',
+    practical: 'program:bar-4:practical', practicalTitle: 'Present a seasonal menu change', practicalHow: 'Present a seasonal menu change to the owner or GM: the specs, what each drink costs, and how you’ll train the team; they sign you off', practicalStep: 'Present a menu change',
+    lead: (n, L) => `${countWord(n)} lessons on running the bar program, then a final and a practical.` },
   // The Beer Program (Nov 8, Tommy: "beer will be based off of Cicerone"): Level 1 follows the Certified Beer Server outline.
   { program: 'beer', level: 1, title: 'Beer Server', file: 'beer-1', final: 'final:beer-1', len: 60, prefix: 'BEER1', head: 'Every beer, served right',
     practical: 'program:beer-1:practical', practicalTitle: 'Pour and present a draft', practicalHow: 'Check a glass is beer-clean, pour a draft with the right head and describe it; a manager signs you off', practicalStep: 'Pour a draft for a manager',

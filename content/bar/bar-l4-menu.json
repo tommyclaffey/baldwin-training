@@ -1,0 +1,411 @@
+{
+ "number": 1,
+ "barLevel": 4,
+ "slug": "bar-l4-menu",
+ "title": "Building the cocktail menu",
+ "script": "Lesson 1",
+ "lead": "Shape the list, price it, change it with the seasons, and read what sells.",
+ "minutes": 14,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Shape of the menu",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A menu covers the guests, not the bartender."
+    }
+   ],
+   "know": [
+    "Spirits the ones guests ask for, each covered.",
+    "Styles bright, stirred, tall, and one without spirit.",
+    "One line every drink, so a server can sell it."
+   ],
+   "source": "House practice (ours; GM to confirm); Level 3, Costing and the menu: BevSpot and Backbar Academy pour-cost guides"
+  },
+  {
+   "name": "Price across the menu",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Price from cost, then fit the menu."
+    }
+   ],
+   "know": [
+    "Cost ÷ target gives the price.",
+    "18–25% a common pour-cost target.",
+    "Fit no drink far off its neighbors without a reason."
+   ],
+   "source": "Level 3, Costing and the menu: BevSpot and Backbar Academy pour-cost guides; House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Seasonal changes",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Change part of the list, keep what sells."
+    }
+   ],
+   "know": [
+    "Keep the drinks that sell all year.",
+    "Swap a few for what’s in season.",
+    "Train before the new menu goes live."
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Menu engineering",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Sort every drink by how often it sells and what it earns."
+    }
+   ],
+   "know": [
+    "Star sells a lot, earns a lot: keep it.",
+    "Plowhorse sells a lot, earns little: fix the cost or price.",
+    "Puzzle earns a lot, sells little: move or promote it.",
+    "Dog neither: rework or remove it."
+   ],
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Shape of the menu",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SPIRITS",
+      "line": "the ones guests ask for, each covered."
+     },
+     {
+      "big": "STYLES",
+      "line": "bright, stirred, tall, and one without spirit."
+     },
+     {
+      "big": "ONE LINE",
+      "line": "every drink, so a server can sell it."
+     }
+    ],
+    "read": {
+     "bigIdea": "A menu covers the guests, not the bartender.",
+     "where": "Start from who orders. Cover the **base spirits** guests ask for, then a range of **styles**: bright and shaken, strong and stirred, tall and bubbly, and at least one **spiritless** drink. Mix **easy sellers** with one or two drinks worth talking about. Every drink gets a **name** a guest can say and **one line** a server can sell it with.",
+     "stopsTitle": "Check the list",
+     "stops": [
+      {
+       "name": "Spirits",
+       "text": "Is every spirit guests ask for **covered**?"
+      },
+      {
+       "name": "Styles",
+       "text": "Shaken, stirred, tall, **spiritless**."
+      },
+      {
+       "name": "Words",
+       "text": "A name and **one line** for each."
+      }
+     ],
+     "mixup": "Eight sours with different names is one drink, eight times. Cover the **styles**, not just the spirits.",
+     "sayIt": "There’s something for every taste: tell me what you usually like."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Price across the menu",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "COST ÷ TARGET",
+      "line": "gives the price."
+     },
+     {
+      "big": "18–25%",
+      "line": "a common pour-cost target."
+     },
+     {
+      "big": "FIT",
+      "line": "no drink far off its neighbors without a reason."
+     }
+    ],
+    "read": {
+     "bigIdea": "Price from cost, then fit the menu.",
+     "where": "Each drink is priced from its **cost**: price = cost ÷ the **target pour cost**. Bar guides put a common target at about **18–25%** for spirits and cocktails, and it varies by bar. Then look at the list as a whole: prices should step up for a reason a guest can see (a rarer bottle, a bigger pour), not because one drink happened to cost more.",
+     "stopsTitle": "One menu, three steps",
+     "stops": [
+      {
+       "name": "Cost it",
+       "text": "Every **ounce**, syrup and garnish."
+      },
+      {
+       "name": "Price it",
+       "text": "Cost ÷ **target**."
+      },
+      {
+       "name": "Fit it",
+       "text": "Against the drinks **beside** it."
+      }
+     ],
+     "mixup": "A low pour cost isn’t always the best drink to sell. A $16 drink at 25% can earn more dollars than a $10 drink at 18%.",
+     "sayIt": "This one’s a little more because it’s made with a rare rye."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Seasonal changes",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "KEEP",
+      "line": "the drinks that sell all year."
+     },
+     {
+      "big": "SWAP",
+      "line": "a few for what’s in season."
+     },
+     {
+      "big": "TRAIN",
+      "line": "before the new menu goes live."
+     }
+    ],
+    "read": {
+     "bigIdea": "Change part of the list, keep what sells.",
+     "where": "A seasonal change swaps **some** drinks for ones built on what’s in season (stone fruit in summer, apple and spice in fall), and **keeps** the drinks guests come back for. Every new drink gets a **written spec**, a **cost**, and a **price** before it goes on. The team is **trained** on it before the first guest can order it.",
+     "stopsTitle": "Before it goes live",
+     "stops": [
+      {
+       "name": "Spec",
+       "text": "Written, built **three times** the same."
+      },
+      {
+       "name": "Cost and price",
+       "text": "From the **spec**."
+      },
+      {
+       "name": "Train",
+       "text": "Every bartender and server **tastes the idea** and learns the line."
+      }
+     ],
+     "mixup": "A new menu isn’t done when the drinks are. It’s done when the **team** can sell them.",
+     "sayIt": "It’s new for the season: a fall drink with apple and spice."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Menu engineering",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "STAR",
+      "line": "sells a lot, earns a lot: keep it."
+     },
+     {
+      "big": "PLOWHORSE",
+      "line": "sells a lot, earns little: fix the cost or price."
+     },
+     {
+      "big": "PUZZLE",
+      "line": "earns a lot, sells little: move or promote it."
+     },
+     {
+      "big": "DOG",
+      "line": "neither: rework or remove it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Sort every drink by how often it sells and what it earns.",
+     "where": "Menu engineering comes from **Michael Kasavana and Donald Smith** (Michigan State University, 1982). Each item is scored two ways: **popularity** (how many sell) and **contribution margin** (price minus cost, in dollars). That puts it in one of four boxes: **Stars**, **Plowhorses**, **Puzzles** and **Dogs**.",
+     "stopsTitle": "The four boxes",
+     "stops": [
+      {
+       "name": "Star",
+       "text": "Popular, high margin: **protect** it."
+      },
+      {
+       "name": "Plowhorse",
+       "text": "Popular, low margin: **reprice** or cut cost."
+      },
+      {
+       "name": "Puzzle",
+       "text": "High margin, rarely ordered: **reposition** or promote."
+      },
+      {
+       "name": "Dog",
+       "text": "Low on both: **rework** or remove."
+      }
+     ],
+     "mixup": "Margin here is **dollars**, not pour-cost percent. A drink can have a great percentage and still earn few dollars."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com); Level 3, Costing and the menu: BevSpot and Backbar Academy pour-cost guides; House practice (ours; GM to confirm). Written for Mise in our own words, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "A cocktail list should cover…",
+   "answer": "The base spirits and styles guests ask for",
+   "wrong": [
+    "Only the bartender’s favorite spirit",
+    "Eight versions of one sour",
+    "Only drinks over $15"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Which drink belongs on every list?",
+   "answer": "At least one spiritless drink",
+   "wrong": [
+    "A second Margarita",
+    "A drink with no name",
+    "A shot of the well vodka"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Every drink on the menu needs…",
+   "answer": "A name a guest can say and one selling line",
+   "wrong": [
+    "A secret recipe",
+    "Three garnishes",
+    "A price ending in .99"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A drink costs $3.00 to make. At a 20% target pour cost, its price is…",
+   "answer": "$15",
+   "wrong": [
+    "$6",
+    "$60",
+    "$3.60"
+   ],
+   "source": "Level 3, Costing and the menu: BevSpot and Backbar Academy pour-cost guides"
+  },
+  {
+   "q": "Bar guides put a common pour-cost target for cocktails at about…",
+   "answer": "18–25%",
+   "wrong": [
+    "50–60%",
+    "2–5%",
+    "90%"
+   ],
+   "source": "Level 3, Costing and the menu: BevSpot and Backbar Academy pour-cost guides"
+  },
+  {
+   "q": "Why might one drink cost more than the drinks beside it?",
+   "answer": "A reason a guest can see, like a rarer bottle",
+   "wrong": [
+    "The bartender likes it more",
+    "It has a longer name",
+    "It’s served in a smaller glass"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A seasonal menu change should usually…",
+   "answer": "Swap some drinks and keep the steady sellers",
+   "wrong": [
+    "Replace every drink at once",
+    "Keep every drink and add twelve",
+    "Remove the spiritless drink"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "What does each new seasonal drink need before it goes on?",
+   "answer": "A written spec, a cost and a price",
+   "wrong": [
+    "Only a photo",
+    "Only a name",
+    "A guest’s approval"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "When is the team trained on a new menu?",
+   "answer": "Before it goes live",
+   "wrong": [
+    "A week after it launches",
+    "Only if a guest complains",
+    "Never: they read the menu"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Menu engineering scores each item on…",
+   "answer": "Popularity and contribution margin",
+   "wrong": [
+    "Color and glassware",
+    "Alcohol content and garnish",
+    "Name length and price ending"
+   ],
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com)"
+  },
+  {
+   "q": "A drink that sells a lot but earns little is a…",
+   "answer": "Plowhorse",
+   "wrong": [
+    "Star",
+    "Puzzle",
+    "Dog"
+   ],
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com)"
+  },
+  {
+   "q": "A high-margin drink that rarely sells is a…",
+   "answer": "Puzzle",
+   "wrong": [
+    "Dog",
+    "Star",
+    "Plowhorse"
+   ],
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "A drink costs $3.00 to make. At a 20% target pour cost, its price is… $15.",
+   "source": "Level 3, Costing and the menu: BevSpot and Backbar Academy pour-cost guides"
+  },
+  {
+   "fact": "Bar guides put a common pour-cost target for cocktails at about… 18–25%.",
+   "source": "Level 3, Costing and the menu: BevSpot and Backbar Academy pour-cost guides"
+  },
+  {
+   "fact": "Menu engineering scores each item on… Popularity and contribution margin.",
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com)"
+  },
+  {
+   "fact": "A drink that sells a lot but earns little is a… Plowhorse.",
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com)"
+  },
+  {
+   "fact": "A high-margin drink that rarely sells is a… Puzzle.",
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com)"
+  }
+ ],
+ "unverified": [
+  "Menu shape (how many drinks, which styles) is house practice; the GM and owner set the real list.",
+  "Seasonal change timing is house practice.",
+  "The popularity cut-off (70% of an even share) is one common version of Kasavana and Smith’s method; tools vary."
+ ]
+}
