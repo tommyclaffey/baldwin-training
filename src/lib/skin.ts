@@ -89,7 +89,8 @@ function skinText(t: FNode, bg: string | undefined, inPill: boolean) {
   if (up(bg) === MISE.fig) t.f = [{ c: MISE.white }];
   const z = t.z || 14;
   if (t.ff === 'Archivo' && t.fs === 'ExtraBold') {
-    if (z >= 40) { t.ff = 'Instrument Serif'; t.fs = 'Regular'; t.z = 64; t.lh = '100%'; t.ls = '-0.5%'; t.s = titleCase(t.s || ''); if (t.lw) delete t.lw; }
+    // a fitted title (t.lw: server fitTitle shrank a long name, Nov 11) is still the page's title: serif
+    if (z >= 40 || t.lw) { t.ff = 'Instrument Serif'; t.fs = 'Regular'; t.z = 64; t.lh = '100%'; t.ls = '-0.5%'; t.s = titleCase(t.s || ''); if (t.lw) delete t.lw; }
     else { t.fs = 'SemiBold'; t.z = z >= 26 ? 26 : 20; t.ls = '-1%'; t.lh = '125%'; t.s = titleCase(t.s || ''); }
   } else if (t.ff === 'Archivo' && (t.fs === 'Bold' || t.fs === 'SemiBold') && z <= 12.5 && !inPill && t.s && t.s === t.s.toUpperCase() && /[A-Z]{2}/.test(t.s)) {
     t.ff = 'DM Mono'; t.fs = 'Medium'; t.ls = '12%';
