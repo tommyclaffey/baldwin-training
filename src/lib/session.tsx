@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { api, type IndexEntry, type User } from './api';
 import { markDemo } from './demo';
-import { setSessionBrand } from './skin';
+import { setSessionBrand } from './theme';
 
 type Session = {
   user: User | null; setupNeeded: boolean; superSetupNeeded: boolean; loaded: boolean;
