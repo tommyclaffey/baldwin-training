@@ -4,6 +4,7 @@ import { FigmaNode, type FNode } from './FigmaNode';
 import { QUIZZES, statusOf, useQuiz } from '../quiz/store';
 import { api, canEdit } from '../lib/api';
 import { ManagerLinks } from './EditBar';
+import { EditModeCard } from '../edit/EditModeBar';
 import { trainingCard, pathSidebar } from '../quiz/transform';
 import { usePath } from '../path/store';
 import { useSession } from '../lib/session';
@@ -136,6 +137,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       if ((e.target as HTMLElement).closest('a')) onNavigate?.();
     }}>
       <FigmaNode node={{ ...node, x: undefined, y: undefined }} rootStyle={{ position: 'relative', width: '100%', height: 'auto', flex: '1 0 auto' }} />
+      <EditModeCard onToggle={onNavigate} />
       <Account />
     </nav>
   );

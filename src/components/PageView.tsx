@@ -17,9 +17,12 @@ import { EditPageButton } from './EditSheet';
 import { COLLECTION_OF } from './EditBar';
 import { PageTools, SendToTeamButton, shareable } from '../chat/SendToTeam';
 import { hasChat } from '../chat/unread';
+import { EditModeBar } from '../edit/EditModeBar';
+import { PageEditContext, useEditMode, type PageEdit } from '../edit/state';
+import { editView, hasAddRow } from '../edit/view';
 
 type Empty = { kind: 'home' | 'page'; title: string; body: string; admin: string | null; store: string | null };
-type Page = { id: string; name: string; bg?: string; main: FNode; edited?: number; empty?: Empty };
+type Page = { id: string; name: string; bg?: string; main: FNode; edited?: number; empty?: Empty; edit?: PageEdit };
 
 /** The shared library every store has from day one. */
 const LIBRARY = [
@@ -125,6 +128,8 @@ export function PageView() {
   const location = useLocation();
   const navType = useNavigationType();
   const { ref, zoom, compact } = useFit();
+  const editMode = useEditMode();
+  const editing = editMode.can && editMode.on;
   const file = entry?.file;
   // The page on screen. While the next one loads, the current one stays up (no blank screen).
   const [shown, setShown] = useState<{ file: string; page: Page; key: string } | null>(() => (file && cache.has(file) ? { file, page: cache.get(file)!, key: location.key } : null));
@@ -237,19 +242,24 @@ export function PageView() {
 
   const isQuiz = page.id === QUIZ_PAGE;
   const isHome = page.id === '4:2';
-  const { x, y, ...main } = isQuiz ? quizPage(page.main, quiz) : isHome ? trainingCard([page.main], quiz)[0] : page.main;
+  const { x, y, ...drawnMain } = isQuiz ? quizPage(page.main, quiz) : isHome ? trainingCard([page.main], quiz)[0] : page.main;
   void x; void y;
+  // Edit Mode: fields where the server marked them; off, the editing-only parts go.
+  const main = editView(drawnMain as FNode, editing);
+  const hasAdd = editing && hasAddRow(page.main);
   return (
     <NavContext.Provider value={entry.nav}>
       <CompactContext.Provider value={compact}>
           <SlotContext.Provider value={isQuiz ? QUIZ_SLOTS : NO_SLOTS}>
           <ChatItemsContext.Provider value={chatLookup}>
           <InteractProvider key={shown.file}>
+          <PageEditContext.Provider value={page.edit || null}>
           {loading && <div className="nav-progress" role="progressbar" aria-label="Loading page" />}
           <main ref={ref} key={shown.file} aria-busy={loading || undefined} className={'page page-enter' + (compact ? ' compact' : '')} style={{ backgroundColor: page.bg }}>
+            {editing && <EditModeBar page={page.edit || null} hasAdd={hasAdd} floating={compact} width={compact ? '100%' : DESIGN_W} zoom={zoom < 1 ? zoom : undefined} />}
             <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
             {/* Send to Team and Edit Page: one row, the same spot on every page (phones: floating together, bottom right). */}
-            {((hasChat(session.user) && shareable(entry)) || (entry.file.startsWith('e') && COLLECTION_OF[entry.section])) && (
+            {!editing && ((hasChat(session.user) && shareable(entry)) || (entry.file.startsWith('e') && COLLECTION_OF[entry.section])) && (
               <PageTools floating={compact} width={compact ? '100%' : DESIGN_W} zoom={zoom < 1 ? zoom : undefined}>
                 {hasChat(session.user) && shareable(entry) && <SendToTeamButton item={{ type: 'page', slug: entry.slug }} />}
                 {entry.file.startsWith('e') && COLLECTION_OF[entry.section] && <EditPageButton col={COLLECTION_OF[entry.section]} id={Number(entry.file.slice(1))} />}
@@ -257,6 +267,7 @@ export function PageView() {
             )}
           </main>
           {isQuiz && <QuizModal />}
+          </PageEditContext.Provider>
           </InteractProvider>
           </ChatItemsContext.Provider>
           </SlotContext.Provider>

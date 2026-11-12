@@ -585,6 +585,23 @@ async function api(req, res, url) {
     if (!e || (!shared && e.storeId !== c.store)) fail(404, 'We couldn’t find that page.');
     if (m === 'GET') return sendJson(res, 200, e.library ? { ...e, sharedWith: sharedWith(db, e), storeName: db.prepare('SELECT name FROM stores WHERE id = ?').get(c.store)?.name } : e);
     const u = shared ? needLibrary(c, req) : needEditor(c, req);
+    // Edit Mode (Nov 11): only the fields changed on the page. They're laid over the saved record, then cleaned and saved
+    // the same way as the admin form, so lists, quizzes and search follow.
+    if (m === 'PATCH') {
+      const b = await readJson(req);
+      const changes = b.changes && typeof b.changes === 'object' && !Array.isArray(b.changes) ? b.changes : null;
+      if (!changes || !Object.keys(changes).length) fail(400, 'Nothing to save.');
+      const keys = new Set(COLLECTIONS[e.collection].fields.map((f) => f.key));
+      const bad = Object.keys(changes).find((k) => !keys.has(k));
+      if (bad) fail(400, 'That can’t be changed here.');
+      if (e.archivedAt) fail(409, 'This page is archived. Restore it from the Archive in the admin first.');
+      const data = { ...e.data, ...changes };
+      delete data.libraryId;
+      if (!str(data.name, 120)) fail(400, 'Give it a name.');
+      const out = updateEntry(db, e.id, data, u.id, b.scope === 'store' ? 'store' : 'group');
+      audit(db, u.id, 'edit ' + e.collection, out.data.name, c.company); // the plain name: "Your last edits" opens it by name
+      return sendJson(res, 200, out);
+    }
     if (m === 'PUT') {
       const b = await readJson(req);
       if (!str(b.data?.name, 120)) fail(400, 'Give it a name.');
