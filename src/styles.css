@@ -331,7 +331,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .auth-logo { width: 150px; align-self: flex-start; background: var(--ink); padding: 10px 12px; border-radius: 10px; box-sizing: content-box; }
 .auth-card h1 { margin: 6px 0 0; font-size: 26px; font-weight: 800; }
 .auth-card p { margin: 0; }
-.auth-card a { color: var(--copper-dk); }
+.auth-card a:not(.btn) { color: var(--copper-dk); }
 
 @media (max-width: 900px) {
   .admin { flex-direction: column; }
@@ -611,6 +611,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .name-btn:hover, .name-btn:focus-visible { border-color: var(--copper); outline: none; box-shadow: 0 0 0 3px rgb(var(--copper-rgb) / .2); }
 .join-code { font: 800 32px/1 'Archivo', sans-serif; letter-spacing: .12em; color: var(--ink); background: var(--wash); border-radius: 12px; padding: 14px 18px; width: fit-content; }
 .row-actions { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: flex-end; }
+.reset-card .row .link-btn { align-self: center; }
 .tabs-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 14px; border-bottom: 1px solid var(--line); }
 .tabs-row a { padding: 10px 14px; font: 600 14px 'Archivo', sans-serif; color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
 .tabs-row a.active { color: var(--ink); border-bottom-color: var(--copper); }
