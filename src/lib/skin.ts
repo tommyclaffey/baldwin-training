@@ -75,11 +75,33 @@ const KEEP_CAPS = new Set(['usa', 'uk', 'ipa', 'vs', 'vsop', 'xo', 'xxo', 'abv',
 /** "OLD FASHIONED" → "Old Fashioned"; leaves mixed-case text alone. */
 export function titleCase(s: string) {
   if (!s || s !== s.toUpperCase() || !/[A-Z]{2}/.test(s)) return s;
-  return s.toLowerCase().split(' ').map((w, i) => (KEEP_CAPS.has(w.replace(/[^a-z]/g, '')) ? w.toUpperCase() : i > 0 && SMALL.has(w) ? w : w.replace(/^([^a-z]*)([a-z])/, (_m, p, c) => p + c.toUpperCase()))).join(' ');
+  // split on any space or line break and keep it ("SOMMELIER\nPROGRAM" → "Sommelier\nProgram")
+  let i = -1;
+  return s.toLowerCase().split(/(\s+)/).map((w) => { if (/^\s*$/.test(w)) return w; i++; return KEEP_CAPS.has(w.replace(/[^a-z]/g, '')) ? w.toUpperCase() : i > 0 && SMALL.has(w) ? w : w.replace(/(^|-)([^a-z]*)([a-z])/g, (_m, h, p, c) => h + p + c.toUpperCase()); }).join('');
 }
 
-function skinText(t: FNode, bg: string | undefined, inPill: boolean) {
+/* Heading sizes in Mise (Figma "Headings proposal", made official Nov 10; Tommy, Nov 11: "the header sizing feels too big"):
+ *   the page's own title (one per page: the hero's title)  Instrument Serif 64
+ *   a big title inside a card (program levels, hub tiles)   Instrument Serif 40, wrapping, balanced lines
+ *   a smaller card title                                     Archivo SemiBold 20 (26 when it was 26+)
+ *   a section heading ("Your Path", "Start Here")            Archivo SemiBold 26, Title Case
+ * Serif only at 40 px and up. `lw` (a title's longest word, from fitTitle) no longer makes a text the page title. */
+type Ctx = { title: FNode | null; card: number | null };
+/** The page's own title: the biggest ExtraBold text in the hero; with no hero, the first ExtraBold text of 40 px or more. */
+function pageTitle(main: FNode): FNode | null {
+  const all = (n: FNode, out: FNode[] = []) => { if (n.t === 'T') out.push(n); (n.c || []).forEach((c) => all(c, out)); return out; };
+  const heavy = (t: FNode) => t.ff === 'Archivo' && t.fs === 'ExtraBold';
+  const findHero = (n: FNode): FNode | null => { if (/^(Hero|Header)\b/.test(n.n || '') && n.t !== 'T') return n; for (const c of n.c || []) { const r = findHero(c); if (r) return r; } return null; };
+  const hero = findHero(main);
+  const inHero = hero ? all(hero).filter((t) => heavy(t) && ((t.z || 0) >= 30 || t.lw)) : [];
+  if (inHero.length) return inHero.reduce((a, b) => ((b.z || 0) > (a.z || 0) ? b : a));
+  return all(main).find((t) => heavy(t) && (t.z || 0) >= 40) || null;
+}
+
+function skinText(t: FNode, bg: string | undefined, inPill: boolean, ctx: Ctx = { title: null, card: null }) {
   const dark = isDark(bg);
+  // Edit Mode fields: Mise titles are Title Case, not capitals; on a dark panel the outline is drawn light (styles.css)
+  if (t.ed) t.ed = { ...t.ed, u: undefined, ...(dark || bg === ON_PHOTO ? { dk: 1 as const } : {}) };
   const c = up(solid(t));
   const map = dark ? TEXT_ON_DARK : TEXT_ON_LIGHT;
   if (c && map[c]) t.f = [{ c: map[c] }];
@@ -89,9 +111,15 @@ function skinText(t: FNode, bg: string | undefined, inPill: boolean) {
   if (up(bg) === MISE.fig) t.f = [{ c: MISE.white }];
   const z = t.z || 14;
   if (t.ff === 'Archivo' && t.fs === 'ExtraBold') {
-    // a fitted title (t.lw: server fitTitle shrank a long name, Nov 11) is still the page's title: serif
-    if (z >= 40 || t.lw) { t.ff = 'Instrument Serif'; t.fs = 'Regular'; t.z = 64; t.lh = '100%'; t.ls = '-0.5%'; t.s = titleCase(t.s || ''); if (t.lw) delete t.lw; }
-    else { t.fs = 'SemiBold'; t.z = z >= 26 ? 26 : 20; t.ls = '-1%'; t.lh = '125%'; t.s = titleCase(t.s || ''); }
+    t.s = titleCase(t.s || '');
+    if (t === ctx.title) { t.ff = 'Instrument Serif'; t.fs = 'Regular'; t.z = 64; t.lh = '100%'; t.ls = '-0.5%'; delete t.lw; }
+    else if (ctx.card && (z >= 40 || (bg === ON_PHOTO && z >= 22)) && ctx.card >= 200) {
+      // a big title in a card: serif 40, wrapping inside the card (never one long line that the card cuts off)
+      t.ff = 'Instrument Serif'; t.fs = 'Regular'; t.z = 40; t.lh = '100%'; t.ls = '-0.5%'; t.tb = 1;
+      if (t.ar === 'W') { t.ar = 'H'; t.sh = 'F'; }
+      // lw stays: on phones the card sizes the title by its longest word (styles.css, Mise skin), so no word is cut
+    } else if (z < 18) { t.fs = 'Bold'; } // a small bold label (a lesson's "01" badge): its own size, never blown up past its box
+    else { t.fs = 'SemiBold'; t.z = z >= 26 || (!ctx.card && t.lw) ? 26 : 20; t.ls = '-1%'; t.lh = '125%'; t.tb = 1; delete t.lw; }
   } else if (t.ff === 'Archivo' && (t.fs === 'Bold' || t.fs === 'SemiBold') && z <= 12.5 && !inPill && t.s && t.s === t.s.toUpperCase() && /[A-Z]{2}/.test(t.s)) {
     t.ff = 'DM Mono'; t.fs = 'Medium'; t.ls = '12%';
   }
@@ -99,8 +127,15 @@ function skinText(t: FNode, bg: string | undefined, inPill: boolean) {
 
 /** Walks the page, re-colouring and re-typing it as Mise. Pinyon Script lines are dropped (Nov 10: handwriting only on
  *  the one taped note per screen), except the one the page builder marks for the tape. */
-function walk(n: FNode, bg: string | undefined, inPill: boolean): FNode | null {
-  if (n.t === 'T' && n.ff === 'Pinyon Script') return null;
+function walk(n: FNode, bg: string | undefined, inPill: boolean, ctx: Ctx = { title: null, card: null }): FNode | null {
+  if (n.t === 'T' && n.ff === 'Pinyon Script') {
+    // An editable script line (a cocktail's tagline): Mise doesn't show it, but Edit Mode still offers it, as a mono label
+    if (!n.ed) return null;
+    n.eo = 1; n.ff = 'DM Mono'; n.fs = 'Medium'; n.z = 13; n.ls = '12%'; n.lh = '130%';
+    n.f = [{ c: isDark(bg) || bg === ON_PHOTO ? '#D9D4CB' : MISE.inkMuted }];
+    n.ed = { ...n.ed, u: undefined, ...(isDark(bg) || bg === ON_PHOTO ? { dk: 1 as const } : {}) };
+    return n;
+  }
   const own = solid(n);
   if (n.f) n.f = n.f.map((f) => (f.c && SHAPE[up(f.c)] && n.t !== 'T' ? { ...f, c: SHAPE[up(f.c)] } : f));
   if (n.st && STROKE[up(n.st)]) n.st = STROKE[up(n.st)];
@@ -116,8 +151,21 @@ function walk(n: FNode, bg: string | undefined, inPill: boolean): FNode | null {
     return n;
   }
   const pill = inPill || (n.t !== 'T' && (n.h || 0) <= 30 && (n.w || 0) < 260 && n.r !== undefined && n.r >= (n.h || 0) / 2 - 1);
-  if (n.t === 'T') { skinText(n, bg, pill); return n; }
-  if (n.c) n.c = n.c.map((c) => walk(c, here, pill)).filter(Boolean) as FNode[];
+  if (n.t === 'T') { skinText(n, bg, pill, ctx); return n; }
+  if (n.edc && isDark(here)) n.edk = 1;
+  if (n.ed && (isDark(here) || here === ON_PHOTO)) n.ed = { ...n.ed, dk: 1 };
+  // a card: a rounded frame with its own fill or photo (not the hero, which holds the page title)
+  const isCard = !pill && (n.r || 0) > 0 && (photoBg || !!own || n.f?.some((f) => f.img)) && !/^(Hero|Mise hero)\b/.test(n.n || '') && (n.w || 0) < 900;
+  const inner = isCard ? { ...ctx, card: (n.w || 0) - ((n.pd?.[1] || 0) + (n.pd?.[3] || 0)) } : ctx;
+  if (n.c) n.c = n.c.map((c) => walk(c, here, pill, inner)).filter(Boolean) as FNode[];
+  // A box holding a card title that's now serif (the Sommelier levels' 172 px Copy): it spans the card, without clipping,
+  // so the title wraps inside the card instead of being cut off (Nov 11, "Introdu", "Certifie")
+  if (ctx.card && n.c?.some((c) => c.t === 'T' && c.tb && c.ff === 'Instrument Serif')) {
+    const room = ctx.card - 2 * (n.x ?? 0);
+    if ((n.w || 0) < room) { n.w = room; n.sh = 'F'; }
+    delete n.clip;
+    for (const c of n.c) if (c.t === 'T' && c.tb) c.w = n.w;
+  }
   return n;
 }
 
@@ -148,6 +196,7 @@ function cinematicHero(main: FNode) {
   if (tag) {
     const i = copy.c.indexOf(tag);
     copy.c[i] = tapedNote((tag.s || '').toLowerCase().replace(/^./, (c) => c.toUpperCase()));
+    if (tag.ed) { const note = copy.c[i].c![0]; note.ed = { ...tag.ed, u: undefined }; } // Edit Mode types on the note
   }
   hero.c = [copy, photo];
 }
@@ -156,7 +205,7 @@ export function miseSkin<P extends { main: FNode; bg?: string }>(page: P): P {
   const main = structuredClone(page.main);
   const isClassic = (page as { name?: string }).name?.startsWith('Classic · ');
   if (isClassic) cinematicHero(main);
-  const out = walk(main, MISE.bone, false) || main;
+  const out = walk(main, MISE.bone, false, { title: pageTitle(main), card: null }) || main;
   return { ...page, bg: MISE.bone, main: out };
 }
 

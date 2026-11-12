@@ -272,7 +272,10 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         const r = makeReset(t, null, 'email');
         audit(db, t.id, tag + 'reset email', null, t.company_id);
         // Not awaited: a real email shouldn't answer slower than an unknown one.
-        void sendMail({ to: t.email, ...resetEmail({ name: t.name, email: t.email, url: APP_URL + r.link, hours: r.hours }) })
+        // The restaurant's name in the email (Tommy, Nov 11): their store, else their company; the sender stays MAIL_FROM.
+        const place = (t.store_id && db.prepare('SELECT name FROM stores WHERE id = ?').get(t.store_id)?.name)
+          || (t.company_id && db.prepare('SELECT name FROM companies WHERE id = ?').get(t.company_id)?.name) || null;
+        void sendMail({ to: t.email, ...resetEmail({ name: t.name, email: t.email, url: APP_URL + r.link, hours: r.hours, place }) })
           .catch((e) => { console.error('[mail] reset email failed', e.message); logError(db, 'server', '/api/password/forgot', e, t.id); });
       }
       return reply();

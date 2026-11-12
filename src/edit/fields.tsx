@@ -44,7 +44,7 @@ export function EditText({ ed, st, cls }: { ed: EdBind; st: CSSProperties; cls: 
   const style: CSSProperties = { ...st, textTransform: ed.u ? 'uppercase' : undefined, whiteSpace: ed.m ? 'pre-wrap' : st.whiteSpace };
   const label = fieldLabel(ed.k);
   return (
-    <div className={cls.concat('ed-text', ed.cell ? 'ed-cell' : '', ed.m ? 'ed-m' : '', f.changed ? 'ed-changed' : '').filter(Boolean).join(' ')} style={style}
+    <div className={cls.concat('ed-text', ed.cell ? 'ed-cell' : '', ed.m ? 'ed-m' : '', ed.dk ? 'ed-dark' : '', f.changed ? 'ed-changed' : '').filter(Boolean).join(' ')} style={style}
       onClick={(e) => { e.preventDefault(); e.stopPropagation(); if (document.activeElement !== ref.current) ref.current?.focus(); }}>
       {ed.pre && <span className="ed-affix" aria-hidden="true">{ed.pre}</span>}
       <span ref={ref} className="ed-input" contentEditable="plaintext-only" suppressContentEditableWarning role="textbox" aria-label={label}

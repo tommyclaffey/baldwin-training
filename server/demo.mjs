@@ -11,6 +11,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { createSession, sessionCookie } from './auth.mjs';
 import { pathFor } from './paths.mjs';
+import { LEVELS, chapterBySlug } from './manual.mjs';
 import { pathCtxFor } from './team.mjs';
 import { questionPool } from './quizgen.mjs';
 import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
@@ -29,7 +30,8 @@ export const DEMO_OWNER = 'Gideon Ambrose';
 //   fail: a quiz in that stage they tried and didn't pass yet · ask: a sign-off they asked for, minutes ago
 const TEAM = [
   { name: 'Hollis Grant', jobs: ['host'], started: 9, stages: 1, partial: 2, fail: true },
-  { name: 'Dorian Pike', jobs: ['bartender'], started: 8, stages: 1, partial: 3, retake: true },
+  // ack: he's read Hospitality 101 (Week 1) and signed its acknowledgment; it waits for the trainer (Nov 11, Hospitality Program)
+  { name: 'Dorian Pike', jobs: ['bartender'], started: 8, stages: 1, partial: 3, retake: true, ack: ['hosp-1', 55] },
   { name: 'Odalys Ruiz', jobs: ['server'], started: -3, stages: 0, partial: 3 },
   { name: 'Teddy Lam', jobs: ['server'], started: 5, stages: 1, partial: 3, ask: ['path:server:table-talk', 40] },
   { name: 'Marisol Vega', jobs: ['server'], started: 6, marisol: true },
@@ -104,6 +106,8 @@ export function startDemo(db, key, which = 'baldwin') {
       [['t:allergens', 10], ['t:course:Pasta', 10], ['t:course:Snacks & Small Plates', 9], ['t:course:Salads', 9]].forEach(([quiz, score], i) =>
         attempt(id, 'Marisol Vega', qz(quiz), score, 10, new Date(Date.now() - (5 - i) * 864e5).toISOString()));
       attempt(id, 'Marisol Vega', 't:final:bar-1', 27, 30, new Date(Date.now() - 864e5).toISOString());
+      // the Hospitality Program (Nov 11): she's read its first lesson (Welcome), every section
+      (chapterBySlug('hosp-welcome')?.sections || []).forEach((_, i) => read(id, `hosp-welcome#${i}`, new Date(Date.now() - (2 - i * 0.1) * 864e5).toISOString()));
     };
     if (pick.role === 'staff') marisol(me);
     // The rest of the team is worked out from the real paths and quiz questions, which read the store's book.
@@ -156,6 +160,13 @@ export function startDemo(db, key, which = 'baldwin') {
         }
         for (const [quiz, score, total, days] of p.finals || []) attempt(id, p.name, quiz, score, total, new Date(Date.now() - days * 864e5).toISOString());
         if (p.ask) db.prepare('INSERT INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(id, st, co, p.ask[0], new Date(Date.now() - p.ask[1] * 60e3).toISOString());
+        // Signed the acknowledgment (his typed name) and asked for the trainer's sign-off, as the level page does
+        if (p.ack) {
+          const L = LEVELS.find((x) => x.file === p.ack[0]);
+          const at = new Date(Date.now() - p.ack[1] * 60e3).toISOString();
+          db.prepare('INSERT OR IGNORE INTO program_acks(user_id, store_id, company_id, level, name, at) VALUES (?,?,?,?,?,?)').run(id, st, co, L.file, p.name, at);
+          db.prepare('INSERT OR IGNORE INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(id, st, co, L.practical, at);
+        }
       }
       if (p.started > 0 && slot < slots.length) db.prepare('INSERT INTO sections(company_id,store_id,day,slot,name,by_user,at) VALUES (?,?,?,?,?,?,?)').run(co, st, day, slots[slot++], p.name, me, t);
     });
@@ -183,7 +194,9 @@ export function dropDemo(db, id) {
     db.prepare('DELETE FROM manual_reads WHERE user_id = ?').run(u);
     db.prepare('DELETE FROM quiz_marks WHERE user_id = ?').run(u);
   }
-  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit']) {
+  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'program_acks']) {
+    const exists = db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(t);
+    if (!exists) continue;
     const cols = db.prepare(`PRAGMA table_info(${t})`).all().map((c) => c.name);
     if (cols.includes('company_id')) db.prepare(`DELETE FROM ${t} WHERE company_id = ?`).run(id);
   }

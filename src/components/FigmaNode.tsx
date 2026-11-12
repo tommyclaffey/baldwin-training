@@ -29,7 +29,7 @@ export type FNode = {
   f?: { c?: string; o?: number; img?: string; m?: string; g?: [string, number, number][]; gt?: string; ga?: number }[];
   st?: string; sto?: number; sw?: number; sws?: number[]; dash?: 1; sa?: string;
   r?: number; rs?: number[];
-  s?: string; ff?: string; fs?: string; z?: number; lh?: string | number; ls?: string | number; ta?: string; ar?: string; lw?: number;
+  s?: string; ff?: string; fs?: string; z?: number; lh?: string | number; ls?: string | number; ta?: string; ar?: string; lw?: number; tb?: 1;
   segs?: [number, number, string, string | null][];
   clip?: 1; lm?: 'H' | 'V'; gap?: number; pd?: number[]; pa?: string; ca?: string; wrap?: 1; cg?: number;
   c?: FNode[];
@@ -41,7 +41,7 @@ export type FNode = {
   /** A row's chat button: its distance from the right (the row got a gutter for it; see chat/sendable.ts). */
   gut?: number;
   /** Edit Mode (server/editmode.mjs): a field on this node, a card holding fields, a part shown only while editing. */
-  ed?: EdBind; edc?: 1; eo?: 1;
+  ed?: EdBind; edc?: 1; eo?: 1; edk?: 1;
 };
 
 /** Which links can go to Team Chat (the page you're on provides it; nothing outside a book page gets chat buttons). */
@@ -204,6 +204,7 @@ function textNode(node: FNode, parentLm: 'H' | 'V' | undefined, key?: number) {
   if (fill?.c) st.color = rgba(fill.c, fill.o ?? 1);
   if (node.ar === 'W') { st.whiteSpace = 'pre'; cls.push('nowrap'); st.width = undefined; if (parentLm === 'H') st.flex = '0 0 auto'; }
   else st.whiteSpace = 'pre-wrap';
+  if (node.tb) (st as Record<string, unknown>).textWrap = 'balance'; // Mise headings: even line breaks
   if (node.ar === 'H' && parentLm && !node.abs && node.sh !== 'F' && node.sh !== 'L') st.width = node.w;
   let content: ReactNode = node.s;
   if (node.segs && node.s) {
@@ -516,6 +517,8 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
       : <FigmaNode key={c.n ? c.n + i : i} node={c} parentLm={node.lm} parentH={node.lm === 'H' ? node.h : undefined} />
   ));
   if (isHero) kids = <ChatItemsContext.Provider value={null}>{kids}</ChatItemsContext.Provider>;
+  // One chat button per item: a holder card carries it, so nothing inside the card gets another (the outermost wins).
+  if (holder && plan) kids = <ChatItemsContext.Provider value={null}>{kids}</ChatItemsContext.Provider>;
 
   // Videos: slots play inline; library cards open a player.
   const extras: ReactNode[] = [];
@@ -535,7 +538,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
       cls.push('ed-spec-card');
     } else if (ed.t === 'photo') { extras.push(<PhotoTools key="photo" ed={ed} />); st.position = st.position || 'relative'; }
   }
-  if (editing && node.edc) cls.push('ed-card');
+  if (editing && node.edc) cls.push('ed-card', ...(node.edk ? ['ed-dark'] : []));
   if (isVideoCard(node) && node.vid) {
     cls.push('has-video');
     extras.push(<button key="play" type="button" className="play-overlay" aria-label={`Play ${node.n!.split(' · ').slice(1).join(' · ')}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); setPlaying(true); }} />);

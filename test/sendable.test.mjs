@@ -93,3 +93,13 @@ test('holder cards: a stacked card whose head links to one shareable page (Cockt
   assert.equal(holderTarget({ ...card, to: '/signature/paloma-verde' }, lookup), null); // a linked card has its own button
   assert.equal(holderTarget({ ...card, c: [{ ...head, c: [{ ...text('Cocktails'), to: '/the-bar/cocktails' }] }] }, lookup), null);
 });
+
+// Nov 11, Tommy: "FIX THIS ERROR" — Home's What's New drew two chat buttons on its first row: the list counted as a holder
+// (its first child, the row, links to one page) and the row had its own. A list of linked rows is never a holder.
+test('one button per item: a list of linked rows is not a holder (Home’s What’s New)', () => {
+  const row = (name, slug) => ({ t: 'F', n: 'Update · ' + name, w: 296, h: 53, lm: 'V', to: '/signature/' + slug, c: [text(name, 180)] });
+  const updates = { t: 'F', n: 'Updates', w: 296, h: 159, lm: 'V', c: [row('Paloma Verde', 'paloma-verde'), row('Other', 'other'), row('Third', 'third')] };
+  assert.equal(holderTarget(updates, lookup), null);
+  assert.equal(holderTarget({ ...updates, c: [row('Paloma Verde', 'paloma-verde'), { t: 'F', w: 296, h: 100 }] }, lookup), null, 'even when only the first row links');
+  assert.equal(targetOf(updates.c[0], lookup)?.shape, 'row', 'the row keeps its own button');
+});

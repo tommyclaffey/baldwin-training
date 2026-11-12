@@ -244,6 +244,10 @@ export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
     v++;
   }
   migrateBrand(db);
+  // The Hospitality Program's acknowledgments (Nov 11, server/acks.mjs): its own table, made here too, so a demo copy
+  // can be seeded and dropped on any database (no migration number, like brand).
+  db.exec(`CREATE TABLE IF NOT EXISTS program_acks(user_id INT NOT NULL, store_id INT NOT NULL, company_id INT, level TEXT NOT NULL,
+    name TEXT NOT NULL, at TEXT NOT NULL, PRIMARY KEY(user_id, store_id, level))`);
   return db;
 }
 

@@ -2617,6 +2617,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   .ed-spec-row .ed-remove, .ed-spec-row:not(:has(.ed-was)) .ed-remove { grid-column: 4; grid-row: 1; }
   .ed-spec-note { padding-bottom: 0; }
   .ed-photo-tools { left: 12px; bottom: 12px; }
+}
 /* Hospitality 101's acknowledgment (Nov 11): the live sign box on the dark band */
 .ack { display: flex; flex-direction: column; gap: 14px; color: #F2EEE7; font-family: 'Archivo', sans-serif; border-top: 1px solid #3A3632; padding-top: 18px; }
 .ack-form { display: flex; flex-direction: column; gap: 14px; max-width: 560px; }
@@ -2640,3 +2641,87 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 @media (min-width: 860px) {
   [data-name="Levels"]:has(> [data-name^="Level "]:nth-child(2):last-child) > [data-name^="Level "] { flex: 1 1 0 !important; width: auto !important; max-width: none !important; }
 }
+
+/* Mise card titles (Nov 11, Tommy: "the header sizing feels too big"): serif 40 on desktop, wrapping with even lines; on
+   phones sized by the longest word (Instrument Serif runs about 0.46 em a letter), so a level name is never cut off. */
+@media (max-width: 859px) {
+  .brand-mise [data-name^="Level "] .ftext.fit, .brand-mise [data-name^="Part "] .ftext.fit { font-size: min(var(--z), calc((50vw - 64px) / (var(--lw) * 0.46))) !important; overflow-wrap: normal; }
+}
+
+/* Edit Mode in the Mise look (Nov 11 release: same Edit Mode for both brands, each in its own look). Char edit bar with
+   Bone actions, deep fig for the dashed outlines and the hint, Mise's pills, inputs and labels. The Baldwin's is above. */
+.brand-mise .em-bar { background: #121110; color: #EDE6DA; border-radius: 12px; box-shadow: 0 10px 30px rgba(18,17,16,.22); }
+.brand-mise .em-pen { background: #EDE6DA; }
+.brand-mise .em-copy strong { color: #EDE6DA; }
+.brand-mise .em-copy span, .brand-mise .em-scope > span { color: #A9A199; }
+.brand-mise .em-copy .em-error { color: #F6D3CE; }
+.brand-mise .em-btn { border-color: #7F776F; color: #EDE6DA; border-radius: 10px; }
+.brand-mise .em-btn:hover:not(:disabled) { border-color: #EDE6DA; }
+.brand-mise .em-btn.primary { background: #EDE6DA; border-color: #EDE6DA; color: #121110; }
+.brand-mise .em-btn.primary:hover:not(:disabled) { background: #FFFFFF; border-color: #FFFFFF; }
+.brand-mise .em-btn.quiet { border-color: transparent; color: #D9D4CB; }
+.brand-mise .em-btn.quiet:hover { border-color: #7F776F; }
+.brand-mise :is(.em-btn, .em-card-btn, .em-toggle):focus-visible { outline-color: #EDE6DA; }
+.brand-mise .em-card { background: #1E1C1A; border-color: #34302C; border-radius: 12px; }
+.brand-mise .em-card.on { border-color: #EDE6DA; }
+.brand-mise .em-card-eyebrow { font-family: 'DM Mono', monospace; font-weight: 500; letter-spacing: .12em; color: #A9A199; }
+.brand-mise .em-card-title { color: #EDE6DA; }
+.brand-mise .em-card-body { color: #A9A199; }
+.brand-mise .em-card-btn { background: #EDE6DA; border-color: #EDE6DA; color: #121110; border-radius: 10px; }
+.brand-mise .em-card-btn:hover { background: #FFFFFF; }
+.brand-mise .em-card.on .em-card-btn { background: transparent; border-color: #7F776F; color: #EDE6DA; }
+.brand-mise .em-toggle { background: #26231F; color: #EDE6DA; }
+.brand-mise .em-toggle img { background: #EDE6DA; }
+.brand-mise .em-toggle.on { background: #EDE6DA; color: #121110; }
+.brand-mise .ed-text { outline-color: #8E2A26; }
+.brand-mise .ed-text:hover { background-color: rgba(142,42,38,.08); }
+.brand-mise .ed-text:focus-within { outline-color: #8E2A26; background-color: rgba(142,42,38,.06); }
+.brand-mise .ed-input { caret-color: #8E2A26; }
+.brand-mise :is(.ed-card .ed-text, .ed-text.ed-cell) { outline-color: transparent; }
+.brand-mise :is([data-name^="Pill"], [data-name^="Tag · "]) .ed-text { outline-color: #121110; }
+.brand-mise :is(.ed-card .ed-text, .ed-text.ed-cell):focus-within { outline: 2px solid #8E2A26; }
+.brand-mise .ed-hint { background: #8E2A26; color: #FFFFFF; }
+.brand-mise .ed-hint img { filter: invert(1); }
+.brand-mise .ed-card { outline-color: #8E2A26; }
+.brand-mise .ed-spec-card { border-color: #8E2A26 !important; background-color: #FBF8F2 !important; }
+.brand-mise .ed-photo-btn { background: #FBF8F2; color: #121110; border-radius: 10px; box-shadow: 0 4px 14px rgba(18,17,16,.25); }
+.brand-mise .ed-photo-btn:focus-visible { outline-color: #EDE6DA; }
+.brand-mise .ed-pill { background: #F4EFE0; color: #8E2A26; }
+.brand-mise .ed-pill button:hover { background: rgba(142,42,38,.12); }
+.brand-mise .ed-pill button:focus-visible { outline-color: #8E2A26; }
+.brand-mise .ed-pill-add { background: transparent; border-color: #8E2A26; color: #4A443E; }
+.brand-mise .ed-pill-add input { color: #121110; }
+.brand-mise .ed-pill-add input::placeholder { color: #4A443E; }
+.brand-mise .ed-chip { border-color: #9A928A; color: #4A443E; }
+.brand-mise .ed-chip.on { background: #8E2A26; border-color: #8E2A26; color: #FFFFFF; }
+.brand-mise :is(.ed-chip, .ed-drag, .ed-remove, .ed-add, .ed-segments button):focus-visible { outline-color: #8E2A26; }
+.brand-mise .ed-spec { color: #121110; }
+.brand-mise .ed-spec-note, .brand-mise .ed-method-note { color: #4A443E; }
+.brand-mise .ed-remove:hover { background: #EDE6DA; }
+.brand-mise :is(.ed-spec input, .ed-select select) { border-color: #D9CFBF; color: #121110; }
+.brand-mise :is(.ed-spec input:focus, .ed-select select:focus, .ed-spec input.ed-amount.changed) { border-color: #8E2A26; }
+.brand-mise .ed-was { color: #8E2A26; }
+.brand-mise .ed-label { font-family: 'DM Mono', monospace; font-weight: 500; letter-spacing: .12em; color: #4A443E; }
+.brand-mise .ed-segments { border-color: #D9CFBF; }
+.brand-mise .ed-segments button { color: #121110; }
+.brand-mise .ed-segments button.on { background: #121110; color: #EDE6DA; }
+.brand-mise .ed-add { border-color: #9A928A; color: #121110; }
+.brand-mise .ed-add:hover:not(:disabled) { background: rgba(142,42,38,.06); border-color: #8E2A26; }
+.brand-mise .ed-add:disabled { color: #4A443E; }
+.brand-mise img[src$="/img/edit/plus.svg"] { content: url(/img/edit/plus-mise.svg); }
+.brand-mise img[src$="/img/edit/chevron.svg"] { content: url(/img/edit/chevron-mise.svg); }
+/* Hospitality 101's acknowledgment in the Mise look: Bone on the Char band (fig on Char is too dark to read) */
+.brand-mise .ack { color: #EDE6DA; border-top-color: #34302C; }
+.brand-mise .ack-field { font-family: 'DM Mono', monospace; font-weight: 500; color: #D9D4CB; }
+.brand-mise .ack-field input { border-radius: 10px; border-color: #4A443E; background: #1E1C1A; color: #EDE6DA; font-family: 'Archivo', sans-serif; }
+.brand-mise .ack-field input:focus { outline-color: #EDE6DA; border-color: #EDE6DA; }
+.brand-mise .ack-check input { accent-color: #EDE6DA; }
+.brand-mise .ack-btn { background: #EDE6DA; border-color: #EDE6DA; color: #121110; border-radius: 10px; }
+.brand-mise .ack-btn:disabled { background: #26231F; border-color: #34302C; color: #A9A199; }
+.brand-mise :is(.ack-note, .ack-sub) { color: #D9D4CB; }
+/* Mise Edit Mode on a dark panel (the cocktail hero, The Spirit): ash outlines, Bone while typing (fig is too dark on Char) */
+.brand-mise .ed-text.ed-dark, .brand-mise .ed-card.ed-dark { outline-color: #A9A199; }
+.brand-mise .ed-text.ed-dark:hover { background-color: rgba(237,230,218,.08); }
+.brand-mise .ed-text.ed-dark:focus-within { outline-color: #EDE6DA; background-color: rgba(237,230,218,.06); }
+.brand-mise .ed-dark .ed-input, .brand-mise .ed-text.ed-dark .ed-input { caret-color: #EDE6DA; }
+.brand-mise .ed-card.ed-dark .ed-text:focus-within { outline-color: #EDE6DA; }

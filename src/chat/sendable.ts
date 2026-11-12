@@ -84,8 +84,12 @@ export function withBand<T extends Box>(kids: T[], plan: CardPlan): T[] {
  *  the one shareable page its opening band links to. */
 export function holderTarget(n: Box, lookup: Lookup): Target | null {
   if (n.t !== 'F' || n.to || n.lm !== 'V' || n.w < 200 || n.h < 120 || (n.n && NOT_ITEMS.test(n.n))) return null;
-  const first = inFlowKids(n)[0];
+  const flow = inFlowKids(n);
+  const first = flow[0];
   if (!first || first.h > 100) return null;
+  // A list whose first row is a link (Home's What's New): that row carries its own button, so the list isn't a holder.
+  // Nov 11 fix, Tommy: "FIX THIS ERROR" (two chat buttons on What's New's first row). One button per item, always.
+  if (first.to || flow.some((c) => c !== first && c.to && shapeOf(c))) return null;
   const links: string[] = [];
   const walk = (b: Box) => { if (b.to) links.push(b.to); (b.c || []).forEach(walk); };
   walk(first);
