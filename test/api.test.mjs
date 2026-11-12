@@ -576,6 +576,20 @@ test('demo: your own account is kept aside and Exit Demo puts it back; the real 
   assert.equal((await fetch(BASE + '/api/demo/start', { method: 'POST', headers: h, body: '{"role":"owner"}' })).status, 400, 'two views only: employee and manager');
 });
 
+test('Spirits for staff: the cards lose "Our bottles" (managers only), so they hug their words and each grid row evens out', async () => {
+  const h = { 'content-type': 'application/json', 'x-bt': '1' };
+  const r = await fetch(BASE + '/api/demo/start', { method: 'POST', headers: h, body: JSON.stringify({ role: 'employee', demo: 'mise' }) });
+  const demo = r.headers.getSetCookie().find((x) => x.startsWith('bt_session=')).split(';')[0];
+  const get = async (p) => (await fetch(BASE + p, { headers: { ...h, cookie: demo } })).json();
+  const file = (await get('/api/index')).find((e) => e.slug === 'the-bar/spirits').file;
+  const find = (n, f) => (f(n) ? n : (n.c || []).reduce((hit, c) => hit || find(c, f), null));
+  const grid = find((await get('/api/page/' + file)).main, (n) => n.n === 'Categories');
+  const vodka = grid.c.find((c) => c.n === 'Spirit · Vodka');
+  assert.ok(!vodka.c.some((c) => c.n === 'Our bottles'));
+  assert.equal(vodka.sv, 'H', 'hugs its words');
+  assert.equal(grid.ca, 'S', 'each row one height');
+});
+
 test('build your own quiz: any mix of topics makes a test on the spot; dish questions are for the floor, not the kitchen', async () => {
   const q = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Entrees', 'allergens', 'study:france'], count: 10 } })).data;
   assert.equal(q.items.length, 10, 'a course, a chapter and allergens together (these used to come back "couldn’t find that quiz")');
