@@ -8,7 +8,8 @@ import crypto from 'node:crypto';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie, endSession } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
-import { assemble, fullIndex, isCachedIndex, warmContent, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore } from './content.mjs';
+import { assemble, fullIndex, isCachedIndex, warmContent, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore, canOpen } from './content.mjs';
+import { archivedList, ARCHIVE_GROUPS } from './archive.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, SHARED, LOCAL_KEYS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
 import { slugify } from './templates.mjs';
@@ -661,6 +662,27 @@ async function api(req, res, url) {
     if (col === 'classic' && miseBrand(c)) return sendJson(res, 200, { entries: list.map((e) => (/Baldwin/.test(e.data.specNote || '') ? { ...e, data: { ...e.data, specNote: '' } } : e)) });
     return sendJson(res, 200, { entries: list });
   }
+  // Archived (Nov 12): everything taken out of this store's book, by type, with who archived it, ready to restore.
+  // Classics are the shared library's, so only a super admin sees (and restores) them.
+  if (p === '/api/archived' && m === 'GET') {
+    const u = needEditor(c, req);
+    return sendJson(res, 200, { groups: archivedList(db, c.store, (col) => canOpen(u, `/admin/pages/${col}/new`)) });
+  }
+  if (p === '/api/archived/restore' && m === 'POST') {
+    const u = needEditor(c, req);
+    const b = await readJson(req);
+    if (b.group === 'media') {
+      const r = db.prepare('UPDATE media SET archived_at = NULL, archived_by = NULL WHERE store_id = ? AND archived_at IS NOT NULL').run(c.store);
+      audit(db, u.id, 'restore media', `${r.changes} archived`, c.company);
+      return sendJson(res, 200, { ok: true, restored: r.changes });
+    }
+    if (!ARCHIVE_GROUPS.some((g) => g.col === b.group)) fail(400, 'Unknown group.');
+    if (SHARED.has(b.group)) needLibrary(c, req);
+    const list = listArchived(db, b.group, SHARED.has(b.group) ? null : c.store);
+    for (const e of list) restoreEntry(db, e.id);
+    audit(db, u.id, 'restore ' + b.group, `${list.length} archived`, c.company);
+    return sendJson(res, 200, { ok: true, restored: list.length });
+  }
   // The group's kitchen: dishes every store in the company can put on its menu.
   if (p === '/api/library' && m === 'GET') {
     needEditor(c, req);
@@ -699,7 +721,7 @@ async function api(req, res, url) {
       const keys = new Set(COLLECTIONS[e.collection].fields.map((f) => f.key));
       const bad = Object.keys(changes).find((k) => !keys.has(k));
       if (bad) fail(400, 'That can’t be changed here.');
-      if (e.archivedAt) fail(409, 'This page is archived. Restore it from the Archive in the admin first.');
+      if (e.archivedAt) fail(409, 'This page is archived. Restore it from Archived first.');
       const data = { ...e.data, ...changes };
       delete data.libraryId;
       if (!str(data.name, 120)) fail(400, 'Give it a name.');

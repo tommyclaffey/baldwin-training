@@ -7,6 +7,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { useLocation, useNavigate } from 'react-router-dom';
 import { api, canEdit } from '../lib/api';
 import { useSession } from '../lib/session';
+import { ArchiveHost } from './archive';
 
 /** A field marked by the server on a node (see server/editmode.mjs). */
 export type EdBind = {
@@ -139,7 +140,7 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
   // While editing, the page knows it (outlines, phone bar spacing).
   useEffect(() => { document.body.classList.toggle('edit-on', can && on); return () => document.body.classList.remove('edit-on'); }, [can, on]);
 
-  return <EditCtx.Provider value={{ can, on: can && on, setOn, drafts, count, reset, setTop, discard, clearEntry }}>{children}</EditCtx.Provider>;
+  return <EditCtx.Provider value={{ can, on: can && on, setOn, drafts, count, reset, setTop, discard, clearEntry }}>{children}{can && <ArchiveHost />}</EditCtx.Provider>;
 }
 
 /** A field's current value (the waiting change, or what's saved) and a setter, for a path like "steps.0.title". */

@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { api } from '../lib/api';
-import { currentBrand } from '../lib/skin';
+import { currentBrand } from '../lib/theme';
 import { useSession } from '../lib/session';
 
 export type Cert = {
