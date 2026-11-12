@@ -57,8 +57,11 @@ const demoCuts = new LoginLimiter(DEMO_SCAN.cuts, 48 * 3600e3, 'demo-cut');
 // data: and blob: (the bottle scanner); video embeds from YouTube only. HSTS: .app is HTTPS-only in browsers already.
 const CSP = ["default-src 'self'", "script-src 'self'", "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com", "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com", "media-src 'self' blob:", "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
-  "connect-src 'self'", "object-src 'none'", "base-uri 'self'", "form-action 'self'", "frame-ancestors 'self'"].join('; ');
-const SECURITY = { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'X-Frame-Options': 'SAMEORIGIN',
+  "connect-src 'self'", "object-src 'none'", "base-uri 'self'", "form-action 'self'",
+  // Nov 12, Tommy: the live demo opens in his portfolio's link viewer (an iframe on tommyclaffey.com), like Growth and
+  // Queue. Only that site may frame the app; X-Frame-Options went, because SAMEORIGIN would still refuse it.
+  "frame-ancestors 'self' https://tommyclaffey.com https://www.tommyclaffey.com"].join('; ');
+const SECURITY = { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin',
   'Content-Security-Policy': CSP, 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'Permissions-Policy': 'camera=(self), microphone=(), geolocation=()' };
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.mp4': 'video/mp4', '.mov': 'video/quicktime', '.webm': 'video/webm', '.m4v': 'video/mp4' };
 
@@ -242,7 +245,7 @@ async function api(req, res, url) {
     if (!r) fail(400, 'Pick a role to start.');
     demoLimiter.record(ip);
     const secure = isSecure(req);
-    const set = [sessionCookie(r.token, { secure, days: 1 })];
+    const set = [sessionCookie(r.token, { secure, days: 1, embeddable: true })];
     if (c.user && !isDemoCompany(db, c.user.company_id)) set.push(returnCookie(c.token, { secure }));
     else if (c.user) endSession(db, c.token); // switching demo roles: the old demo session goes
     return sendJson(res, 200, { ok: true }, { 'Set-Cookie': set });
@@ -254,7 +257,7 @@ async function api(req, res, url) {
     if (!c.user || !isDemoCompany(db, c.user.company_id)) return sendJson(res, 200, { restarted: false });
     const r = startDemo(db, c.user.role === 'staff' ? 'employee' : 'manager', demoKind(db, c.user.company_id)); // same demo, same role
     dropDemo(db, c.user.company_id);
-    return sendJson(res, 200, { restarted: true }, { 'Set-Cookie': [sessionCookie(r.token, { secure: isSecure(req), days: 1 })] });
+    return sendJson(res, 200, { restarted: true }, { 'Set-Cookie': [sessionCookie(r.token, { secure: isSecure(req), days: 1, embeddable: true })] });
   }
   // Is there a real account to go back to? Only true inside a demo opened from one.
   if (p === '/api/demo/return' && m === 'GET') {
@@ -269,7 +272,8 @@ async function api(req, res, url) {
     const back = cookies(req)[RETURN_COOKIE];
     const ok = back && sessionUser(db, back) && !isDemoCompany(db, sessionUser(db, back).company_id);
     return sendJson(res, 200, { ok: true, restored: !!ok }, { 'Set-Cookie': [
-      ok ? sessionCookie(back, { secure }) : sessionCookie('', { clear: true, secure }), returnCookie('', { secure, clear: true })] });
+      ok ? sessionCookie(back, { secure }) : sessionCookie('', { clear: true, secure }), returnCookie('', { secure, clear: true }),
+      ...(secure ? [sessionCookie('', { clear: true, secure, embeddable: true })] : [])] });
   }
   if (c.user && isDemoCompany(db, c.user.company_id) && demoBlocks(p, m)) fail(403, 'That’s switched off in the demo.');
   if ((await accounts(req, res, url, c)) !== false) return;
