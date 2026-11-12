@@ -640,10 +640,8 @@ export function barPage(page, ctx) {
     let line = null;
     const certified = ctx.passedAt && (!L.practical || ctx.practical);
     if (certified) line = txt(`✓ ${L.title.toUpperCase()} · ${day(ctx.practical?.at > ctx.passedAt ? ctx.practical.at : ctx.passedAt)}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
-    else if (ctx.passedAt && L.ack) line = txt(ctx.ack?.signed ? '✓ FINAL PASSED · ACKNOWLEDGED · TRAINER SIGN-OFF NEXT' : '✓ FINAL PASSED · NEXT: SIGN THE ACKNOWLEDGMENT', { ls: '10%', c: '#7FCB93', z: 12.5 });
     else if (ctx.passedAt) line = txt('✓ FINAL PASSED · PRACTICAL: ASK A MANAGER WHEN READY', { ls: '10%', c: '#7FCB93', z: 12.5 });
-    else if (ctx.practical) line = txt(`✓ ${L.ack ? 'SIGNED OFF' : 'PRACTICAL SIGNED OFF'}${ctx.practical.by ? ' BY ' + ctx.practical.by.toUpperCase() : ''}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
-    else if (ctx.ack?.signed) line = txt(`✓ ACKNOWLEDGMENT SIGNED · ${day(ctx.ack.signed.at)}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
+    else if (ctx.practical) line = txt(`✓ PRACTICAL SIGNED OFF${ctx.practical.by ? ' BY ' + ctx.practical.by.toUpperCase() : ''}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
     // Nov 12: Master of the Bar is by invitation (server/invite.mjs). One line, like the others.
     if (ctx.invite && !ctx.invite.open) line = txt('BY INVITATION · ASK YOUR MANAGER', { ls: '10%', c: '#C49A6C', z: 12.5 });
     else if (!line && ctx.invite?.invited) line = txt(`✓ INVITED${ctx.invite.invited.by ? ' BY ' + ctx.invite.invited.by.toUpperCase() : ''} · ${day(ctx.invite.invited.at)}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
@@ -699,25 +697,7 @@ export function barPage(page, ctx) {
     const at = main.c.indexOf(how);
     main.c.splice(at + 1, 0, { t: 'F', n: 'Levels', lm: 'V', gap: 14, w: how.w, sh: 'F', sv: 'H', c: [txt(`THE ${countWord(names.length).toUpperCase()} LEVELS`, { ls: '12%', c: '#8A5A3A', z: 12 }), levels] });
   }
-  // Hospitality 101 (Nov 11): the acknowledgment, after the lessons. The statement is drawn here; signing is live.
-  if (L.ack && ctx.ack) {
-    const at = main.c.indexOf(course);
-    main.c.splice(at + 1, 0, ackBlock({ ...ctx.ack, trainer: ctx.practical }, L, course?.w || how?.w || 1080));
-  }
   return page;
-}
-
-/** The training acknowledgment: BRG's (or this restaurant's) statement, then the live sign box (src/components/Acknowledgment.tsx). */
-function ackBlock(a, L, W) {
-  const signed = a.signed ? { name: a.signed.name, at: a.signed.at } : null;
-  return { t: 'F', n: 'Acknowledgment', lm: 'V', gap: 18, w: W, pd: [32, 36, 32, 36], r: 24, f: [{ c: '#1E1C1A' }], sh: 'F', sv: 'H', c: [
-    { t: 'F', n: 'Head', lm: 'V', gap: 4, sh: 'F', sv: 'H', c: [
-      { ...txt(a.script || 'Part of your new-hire paperwork', { z: 26, c: '#C49A6C', fs: 'Regular' }), ff: 'Pinyon Script' },
-      { ...txt((a.title || 'Training acknowledgment').toUpperCase(), { z: 26, c: '#F2EEE7', fs: 'ExtraBold' }), ar: 'H', sh: 'F' },
-    ] },
-    { ...txt(a.statement || '', { z: 17, c: '#F2EEE7', fs: 'Medium' }), n: 'Statement', ar: 'H', sh: 'F', lh: '150%' },
-    { t: 'F', n: 'Acknowledgment sign box', w: W - 72, h: 120, sh: 'F', sv: 'H', meta: { ack: { level: L.file, signed, canSign: !!a.canSign, trainer: a.trainer || null } } },
-  ] };
 }
 
 /* ---------------- program hubs (Nov 8) ---------------- */

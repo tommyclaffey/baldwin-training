@@ -83,12 +83,11 @@ export const LEVELS = [
   { program: 'beer', level: 3, title: 'Advanced Specialist', file: 'beer-3', final: 'final:beer-3', len: 60, prefix: 'BEER3', head: 'Run the beer program',
     practical: 'program:beer-3:practical', practicalTitle: 'Build our beer list', practicalHow: 'Build a beer list for our menu (styles, sizes, pour costs, glassware, a pairing per course) and present it to the GM; they sign you off', practicalStep: 'Build and cost a beer list',
     lead: (n, L) => `${countWord(n)} lessons on running the beer program, then a final and a practical.` },
-  // The Hospitality Program (Nov 11). Level 1 is BRG's Hospitality 101: its acknowledgment is the practical (the person
-  // signs it in the app, then their trainer signs it off). Level 2 is The Art of Table Service: a manager watches a full table.
-  { program: 'hosp', level: 1, title: 'Hospitality 101', file: 'hosp-1', final: 'final:hosp-1', len: 30, prefix: 'HOSP1', isA: false, head: 'Hospitality from day one', ack: true,
-    practical: 'program:hosp-1:practical', practicalTitle: 'Sign the acknowledgment', practicalHow: 'Read and sign the training acknowledgment; your trainer signs it off', practicalStep: 'Sign the acknowledgment',
-    practicalStat: 'sign-off', practicalLabel: 'Acknowledgment',
-    lead: (n, L) => `${countWord(n)} lessons from our new-hire training, then a final and the acknowledgment.` },
+  // The Hospitality Program (Nov 11). Level 1 is BRG's Hospitality 101: its lessons and a final (Nov 12: the training
+  // acknowledgment moved to every new hire's path, Day 1, server/acks.mjs). Level 2 is The Art of Table Service: a manager
+  // watches a full table.
+  { program: 'hosp', level: 1, title: 'Hospitality 101', file: 'hosp-1', final: 'final:hosp-1', len: 30, prefix: 'HOSP1', isA: false, head: 'Hospitality from day one',
+    lead: (n, L) => `${countWord(n)} lessons from our new-hire training, then a final.` },
   { program: 'hosp', level: 2, title: 'The Art of Table Service', file: 'hosp-2', final: 'final:hosp-2', len: 40, prefix: 'HOSP2', isA: false, head: 'Every table, a conversation',
     practical: 'program:hosp-2:practical', practicalTitle: 'Serve a full table', practicalHow: 'A manager watches you serve a full table, from the greeting to the farewell, and signs you off', practicalStep: 'Serve a table for a manager',
     lead: (n, L) => `${countWord(n)} lessons on table service, then a final and a practical.` },

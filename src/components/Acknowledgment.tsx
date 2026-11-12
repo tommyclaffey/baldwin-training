@@ -1,6 +1,7 @@
-// The Hospitality 101 acknowledgment (Nov 11). BRG's paper form has a printed name, a signature, a date and the
+// The Training Acknowledgment's sign box (Nov 11). BRG's paper form has a printed name, a signature, a date and the
 // trainer's signature. Here the person types their name and ticks that they've read and agree (the date is kept with it);
-// their trainer or a manager then signs it off in People (Admin → People since Nov 11).
+// their trainer or a manager then signs it off in People. Nov 12: it's a Day 1 step on My Path (src/path/AckPage.tsx),
+// no longer part of Hospitality 101.
 import { useState, type CSSProperties } from 'react';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
@@ -9,7 +10,7 @@ export type Ack = { level: string; signed: { name: string; at: string } | null; 
 
 const day = (iso: string) => new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/Detroit' });
 
-export function Acknowledgment({ data, style, className = '' }: { data: Ack; style?: CSSProperties; className?: string }) {
+export function Acknowledgment({ data, style, className = '', onSigned }: { data: Ack; style?: CSSProperties; className?: string; onSigned?: () => void }) {
   const { bump } = useSession();
   const [signed, setSigned] = useState(data.signed);
   const [name, setName] = useState('');
@@ -22,8 +23,8 @@ export function Acknowledgment({ data, style, className = '' }: { data: Ack; sty
     if (!ready) return;
     setBusy(true); setErr('');
     try {
-      const r = await api<{ ack: { name: string; at: string } }>('/api/program/ack', { method: 'POST', body: { level: data.level, name: name.trim(), agree } });
-      setSigned(r.ack); bump();
+      const r = await api<{ ack: { name: string; at: string } }>('/api/path/ack', { method: 'POST', body: { level: data.level, name: name.trim(), agree } });
+      setSigned(r.ack); bump(); onSigned?.();
     } catch (e) { setErr((e as Error).message); }
     setBusy(false);
   };

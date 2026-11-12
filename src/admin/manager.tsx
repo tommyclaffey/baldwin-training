@@ -506,7 +506,7 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
           <Label>Programs</Label>
           {(() => {
             // levels by invitation (Master of the Bar, Nov 12) always show, so a manager can invite anyone from here
-            const started = p.programs.filter((g) => g.done > 0 || g.final?.best || g.certified || g.practical?.ask || g.practical?.ack || g.invite);
+            const started = p.programs.filter((g) => g.done > 0 || g.final?.best || g.certified || g.practical?.ask || g.invite);
             if (!started.length) return <p className="muted small">No program started yet.</p>;
             return started.map((g) => (
               <div key={g.title} className="pp-prog">
@@ -521,9 +521,7 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
                   </div>
                 )}
                 {g.invite?.at && <small>Invited{g.invite.by ? ` by ${g.invite.by}` : ''} {whenWords(g.invite.at)} · <button type="button" className="link-btn danger" onClick={() => void act('s:u' + g.invite!.key, '/api/path/signoff', { key: g.invite!.key }, 'Invitation removed.', 'DELETE')}>Remove</button></small>}
-                {/* Hospitality 101 (Nov 11): the person signs the acknowledgment first, then the trainer signs it off (no final needed first) */}
-                {g.practical && 'ack' in g.practical && !g.practical.at && <small>{g.practical.ack ? `Acknowledgment signed “${g.practical.ack.name}” ${whenWords(g.practical.ack.at)}` : 'Acknowledgment not signed yet'}</small>}
-                {g.practical && !g.practical.at && ('ack' in g.practical ? !!g.practical.ack : !!g.final?.passedAt) && (
+                {g.practical && !g.practical.at && !!g.final?.passedAt && (
                   <div className="pp-prog-row">
                     <small>Practical: {g.practical.title}{g.practical.ask && !g.practical.ask.declinedAt ? ` · asked ${whenWords(g.practical.ask.at)}` : ''}</small>
                     <button type="button" className="mg-btn copper small" disabled={!!busy} onClick={() => void act('s:' + g.practical!.key, '/api/path/signoff', { key: g.practical!.key }, `${first}’s practical is signed off.`)}>Sign Off</button>
@@ -571,12 +569,16 @@ function StepRow({ s, first, busy, act }: { s: Step; first: string; busy: string
   const options = [1, 3, 7, 14].map((n) => plusDays(n));
   const [due, setDue] = useState(options[1]);
   const asked = s.ask && !s.ask.declinedAt;
+  // Nov 12: the Training Acknowledgment (Day 1). The person signs it first; then a trainer or manager signs it off here.
+  const ackSigned = s.ack ? s.ack.signed : undefined;
   const icon = s.done ? <span className="pp-icon done" aria-label="Done">✓</span>
     : s.late ? <span className="pp-icon late" aria-label="Late"><Icon d="M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" /></span>
       : <span className="pp-icon" aria-label="Not done yet" />;
   const sub = s.done
     ? s.kind === 'signoff' ? `Signed off${s.by ? ` by ${s.by}` : ''}` : s.meta
     : s.late ? `Was due ${dayLabel(s.due)}`
+      : s.ack && !ackSigned ? `${first} hasn’t signed it yet`
+      : s.ack && ackSigned && !s.ask?.declinedAt ? `${first} signed “${ackSigned.name}” ${whenWords(ackSigned.at)}`
       : asked ? `${first} asked ${whenWords(s.ask!.at)}`
         : s.ask?.declinedAt ? `Not yet${s.ask.declinedBy ? `, said ${s.ask.declinedBy}` : ''} · ${s.meta}`
           : s.kind === 'signoff' ? s.meta : `Due ${dayLabel(s.due)}${s.moved ? ' (more time given)' : ''}`;
@@ -584,7 +586,7 @@ function StepRow({ s, first, busy, act }: { s: Step; first: string; busy: string
     <div className={'pp-step' + (s.late ? ' late' : '') + (s.done ? ' done' : '')}>
       {icon}
       <span className={'pp-kind ' + s.kind}>{KIND[s.kind]}</span>
-      <span className="pp-step-main"><strong>{s.to && s.kind !== 'quiz' ? <Link to={s.to}>{s.title}</Link> : s.title}</strong><small>{sub}</small></span>
+      <span className="pp-step-main"><strong>{s.to && s.kind !== 'quiz' && !s.ack ? <Link to={s.to}>{s.title}</Link> : s.title}</strong><small>{sub}</small></span>
       <span className="pp-step-end">
         {s.done && s.kind !== 'signoff' && <span className="pp-result">{s.result || 'Done'}</span>}
         {s.done && s.kind === 'signoff' && <button type="button" className="link-btn danger" disabled={!!busy} onClick={() => void act('s:' + s.id, '/api/path/signoff', { key: s.id }, 'Sign-off undone.', 'DELETE')}>Undo</button>}
@@ -596,7 +598,8 @@ function StepRow({ s, first, busy, act }: { s: Step; first: string; busy: string
         </>}
         {!s.done && s.kind === 'signoff' && <>
           {asked && <button type="button" className="mg-btn small" disabled={!!busy} onClick={() => void act('s:n' + s.id, '/api/path/not-yet', { key: s.id }, `${first} sees “not yet” on their path.`)}>Not Yet</button>}
-          <button type="button" className="mg-btn copper small" disabled={!!busy} onClick={() => void act('s:' + s.id, '/api/path/signoff', { key: s.id }, `${s.title}: signed off.`)}>{busy === 's:' + s.id ? 'Signing…' : 'Sign Off'}</button>
+          {(!s.ack || ackSigned) && <button type="button" className="mg-btn copper small" disabled={!!busy} onClick={() => void act('s:' + s.id, '/api/path/signoff', { key: s.id }, `${s.title}: signed off.`)}>{busy === 's:' + s.id ? 'Signing…' : 'Sign Off'}</button>}
+          {s.ack && !ackSigned && <span className="muted small">Not signed yet</span>}
         </>}
         {!s.done && !s.late && s.kind !== 'signoff' && <span className="muted small">{s.result ? `Best ${s.result}` : 'Not started'}</span>}
       </span>

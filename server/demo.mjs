@@ -11,7 +11,8 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { createSession, sessionCookie } from './auth.mjs';
 import { pathFor } from './paths.mjs';
-import { LEVELS, chapterBySlug } from './manual.mjs';
+import { ACK_KEY, ACK_LEVEL } from './acks.mjs';
+import { chapterBySlug } from './manual.mjs';
 import { pathCtxFor } from './team.mjs';
 import { questionPool } from './quizgen.mjs';
 import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
@@ -33,8 +34,9 @@ export const DEMO_OWNER = 'Gideon Ambrose';
 //   fail: a quiz in that stage they tried and didn't pass yet · ask: a sign-off they asked for, minutes ago
 const TEAM = [
   { name: 'Hollis Grant', jobs: ['host'], started: 9, stages: 1, partial: 2, fail: true },
-  // ack: he's read Hospitality 101 (Week 1) and signed its acknowledgment; it waits for the trainer (Nov 11, Hospitality Program)
-  { name: 'Dorian Pike', jobs: ['bartender'], started: 8, stages: 1, partial: 3, retake: true, ack: ['hosp-1', 55] },
+  // Nov 12: the Training Acknowledgment is a Day 1 step. Everyone past Day 1 signed it and had it signed off; Marisol
+  // (the employee demo) signed it and is waiting on her trainer; Odalys hasn't started yet.
+  { name: 'Dorian Pike', jobs: ['bartender'], started: 8, stages: 1, partial: 3, retake: true },
   { name: 'Odalys Ruiz', jobs: ['server'], started: -3, stages: 0, partial: 3 },
   { name: 'Teddy Lam', jobs: ['server'], started: 5, stages: 1, partial: 3, ask: ['path:server:table-talk', 40] },
   { name: 'Marisol Vega', jobs: ['server'], started: 6, marisol: true },
@@ -111,7 +113,12 @@ export function startDemo(db, key, which = 'baldwin') {
       attempt(id, 'Marisol Vega', 't:final:bar-1', 27, 30, new Date(Date.now() - 864e5).toISOString());
       // the Hospitality Program (Nov 11): she's read its first lesson (Welcome), every section
       (chapterBySlug('hosp-welcome')?.sections || []).forEach((_, i) => read(id, `hosp-welcome#${i}`, new Date(Date.now() - (2 - i * 0.1) * 864e5).toISOString()));
+      // the Training Acknowledgment (Nov 12, Day 1): she signed it on her first day and it's waiting on her trainer
+      const signedAt = new Date(Date.now() - 5.9 * 864e5).toISOString();
+      signAck(id, 'Marisol Vega', signedAt);
+      db.prepare('INSERT OR IGNORE INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(id, st, co, ACK_KEY, signedAt);
     };
+    const signAck = (id, name, at) => db.prepare('INSERT OR IGNORE INTO program_acks(user_id, store_id, company_id, level, name, at) VALUES (?,?,?,?,?,?)').run(id, st, co, ACK_LEVEL, name, at);
     if (pick.role === 'staff') marisol(me);
     // The rest of the team is worked out from the real paths and quiz questions, which read the store's book.
     const storeRow = db.prepare('SELECT * FROM stores WHERE id = ?').get(st);
@@ -147,7 +154,11 @@ export function startDemo(db, key, which = 'baldwin') {
           const at = when(k, plan.length);
           if (s.kind === 'read') read(id, s.id, at);
           else if (s.kind === 'lesson') read(id, s.key, at);
-          else if (s.kind === 'signoff') db.prepare('INSERT INTO signoffs(device, quiz, by_user, at, company_id, store_id) VALUES (?,?,?,?,?,?)').run('u' + id, s.id, me, at, co, st);
+          else if (s.kind === 'signoff') {
+            // the Training Acknowledgment: they signed it (their typed name) an hour before their trainer signed it off
+            if (s.id === ACK_KEY) signAck(id, p.name, new Date(Date.parse(at) - 3600e3).toISOString());
+            db.prepare('INSERT INTO signoffs(device, quiz, by_user, at, company_id, store_id) VALUES (?,?,?,?,?,?)').run('u' + id, s.id, me, at, co, st);
+          }
           else if (s.kind === 'quiz') {
             const a = answered(s.id.slice(2), 8 + ((n + k) % 3), (n + k) % 3 !== 0, n * 5 + k);
             // A retake: the first quiz on Dorian's path took him two tries.
@@ -165,13 +176,6 @@ export function startDemo(db, key, which = 'baldwin') {
         }
         for (const [quiz, score, total, days] of p.finals || []) attempt(id, p.name, quiz, score, total, new Date(Date.now() - days * 864e5).toISOString());
         if (p.ask) db.prepare('INSERT INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(id, st, co, p.ask[0], new Date(Date.now() - p.ask[1] * 60e3).toISOString());
-        // Signed the acknowledgment (his typed name) and asked for the trainer's sign-off, as the level page does
-        if (p.ack) {
-          const L = LEVELS.find((x) => x.file === p.ack[0]);
-          const at = new Date(Date.now() - p.ack[1] * 60e3).toISOString();
-          db.prepare('INSERT OR IGNORE INTO program_acks(user_id, store_id, company_id, level, name, at) VALUES (?,?,?,?,?,?)').run(id, st, co, L.file, p.name, at);
-          db.prepare('INSERT OR IGNORE INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(id, st, co, L.practical, at);
-        }
       }
       if (p.started > 0 && slot < slots.length) db.prepare('INSERT INTO sections(company_id,store_id,day,slot,name,by_user,at) VALUES (?,?,?,?,?,?,?)').run(co, st, day, slots[slot++], p.name, me, t);
     });

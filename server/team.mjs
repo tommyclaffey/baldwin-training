@@ -56,7 +56,7 @@ export function personRow(db, store, x, ctx) {
   const isNew = p.startedOn >= addDays(t, -1); // just started, or starts soon
   const status = !p.paths.length ? 'no-job' : late.length ? 'behind' : done === steps.length ? 'done' : isNew ? 'new' : 'on-track';
   const oldest = [...late].sort((a, b) => a.due.localeCompare(b.due))[0];
-  const upcoming = steps.find((s) => !s.done && s.kind !== 'signoff') || steps.find((s) => !s.done && !s.ask);
+  const upcoming = steps.find((s) => !s.done && (s.kind !== 'signoff' || (s.ack && !s.ack.signed))) || steps.find((s) => !s.done && !s.ask);
   const pick = oldest || (!asks.length ? upcoming : null);
   const next = pick ? { id: pick.id, title: pick.title, kind: pick.kind, due: pick.due, late: !!pick.late, stage: pick.stage } : asks.length ? { waiting: true } : null;
   const path = p.paths[0];

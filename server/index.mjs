@@ -21,11 +21,11 @@ import { certificatesFor } from './certs.mjs';
 import { passFor } from './quizgen.mjs';
 import { score as scoreQuiz, results as quizResults, signable, catalog as quizCatalog, startQuiz, customId, titleFor, reviewQueue, setMark, REVIEW } from './quiz.mjs';
 import { topicList, questionPool } from './quizgen.mjs';
-import { chapterBySlug, markRead } from './manual.mjs';
+import { chapterBySlug, markRead, programText } from './manual.mjs';
 import * as chat from './chat.mjs';
 import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErrorAllowed } from './ops.mjs';
 import { enterStore } from './variant.mjs';
-import { migrateAcks, ackLevel, ackFor, ackOf, signAck } from './acks.mjs';
+import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
 import * as prep from './prep.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -328,21 +328,30 @@ async function api(req, res, url) {
     else markRead(db, u.id, key);
     return sendJson(res, 200, { ok: true });
   }
-  // The Hospitality Program's acknowledgment (Nov 11): the person signs it themselves (typed name + "I agree").
-  if (p === '/api/program/ack' && m === 'POST') {
+  // The Training Acknowledgment (Nov 11; a Day 1 path step since Nov 12, server/acks.mjs): the words in this company's
+  // version, whether this person has signed it, and their trainer's sign-off.
+  if (p === '/api/path/ack' && m === 'GET') {
+    const u = needReader(c, req);
+    const text = programText('hosp').ack || {};
+    const so = db.prepare('SELECT s.at, u.name by_name FROM signoffs s LEFT JOIN users u ON u.id = s.by_user WHERE s.device = ? AND s.quiz = ? AND s.store_id = ?').get('u' + u.id, ACK_KEY, c.store);
+    return sendJson(res, 200, { level: ACK_LEVEL, script: text.script || null, title: text.title || 'Training Acknowledgment', statement: text.statement || '',
+      signed: ackOf(db, u.id, c.store), canSign: true, trainer: so ? { at: so.at, by: so.by_name || null } : null });
+  }
+  // The person signs it themselves (typed name + "I agree").
+  if ((p === '/api/path/ack' || p === '/api/program/ack') && m === 'POST') {
     const u = needReader(c, req);
     const b = await readJson(req);
-    const L = ackLevel(String(b.level || ''));
-    if (!L) fail(400, 'That acknowledgment wasn’t found. Reload and try again.');
+    // 'hosp-1' is what a page loaded before Nov 12 sends: it's the same acknowledgment
+    if (b.level !== undefined && ![ACK_LEVEL, 'hosp-1'].includes(String(b.level))) fail(400, 'That acknowledgment wasn’t found. Reload and try again.');
     const name = str(b.name, 80).replace(/\s+/g, ' ').trim();
     if (name.length < 2) fail(400, 'Type your full name to sign.');
     if (b.agree !== true) fail(400, 'Tick the box to say you’ve read it and agree.');
-    const ack = signAck(db, { userId: u.id, storeId: c.store, companyId: c.company, level: L.file, name });
+    const ack = signAck(db, { userId: u.id, storeId: c.store, companyId: c.company, name });
     // Signing asks the trainer for the sign-off: it shows in the manager's Sign-offs waiting (staff only, once, not if signed off)
     const me = db.prepare('SELECT * FROM users WHERE id = ? AND deleted_at IS NULL').get(u.id);
-    if (me?.role === 'staff' && me.store_id === c.store && !db.prepare('SELECT 1 FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').get('u' + u.id, L.practical, c.store))
-      db.prepare('INSERT OR IGNORE INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(u.id, c.store, c.company, L.practical, now());
-    audit(db, u.id, 'sign acknowledgment', `${L.title} · ${name}`, c.company);
+    if (me?.role === 'staff' && me.store_id === c.store && !db.prepare('SELECT 1 FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').get('u' + u.id, ACK_KEY, c.store))
+      db.prepare('INSERT OR IGNORE INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(u.id, c.store, c.company, ACK_KEY, now());
+    audit(db, u.id, 'sign acknowledgment', `Training Acknowledgment · ${name}`, c.company);
     return sendJson(res, 200, { ok: true, ack });
   }
   if (p === '/api/quiz/mark' && m === 'POST') {
@@ -521,8 +530,8 @@ async function api(req, res, url) {
       if (!isPathSignoff(x, key) && !signable(db, c.store, key) && !isInviteKey(key)) fail(400, 'That step can’t be signed off.');
       // Nov 12: inviting someone to a level by invitation (Master of the Bar). Managers and owners can already open it.
       if (isInviteKey(key) && x.role !== 'staff') fail(400, 'Managers and owners can already open that level.');
-      // Hospitality 101 (Nov 11): the trainer signs off after the person has signed the acknowledgment
-      if (m === 'POST' && ackFor(key) && !ackOf(db, x.id, c.store, ackFor(key).file)) fail(400, `${x.name.split(/\s+/)[0]} hasn’t signed the acknowledgment yet.`);
+      // The Training Acknowledgment (Nov 11, a path step since Nov 12): the trainer signs off after the person has signed it
+      if (m === 'POST' && key === ACK_KEY && !ackOf(db, x.id, c.store)) fail(400, `${x.name.split(/\s+/)[0]} hasn’t signed the acknowledgment yet.`);
       if (m === 'POST') {
         db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at,company_id,store_id) VALUES (?,?,?,?,?,?)').run('u' + x.id, key, u.id, now(), c.company, c.store);
         db.prepare('DELETE FROM signoff_requests WHERE user_id = ? AND store_id = ? AND key = ?').run(x.id, c.store, key); // asked and answered

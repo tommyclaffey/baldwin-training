@@ -785,15 +785,18 @@ test('job paths: a server’s path from the book, page reads, quiz passes and ma
   const path = (await me('/api/path')).data;
   assert.deepEqual(path.jobs, ['server']);
   const p = path.paths[0];
-  assert.equal(p.stages[0].state, 'done', 'before your first shift is done');
+  // Day 1 is done but for the Training Acknowledgment (Nov 12): she signed it and it waits on her trainer
+  assert.deepEqual(p.stages[0].steps.filter((s) => !s.done).map((s) => s.id), ['path:ack'], 'before your first shift: only the trainer’s sign-off left');
+  assert.equal(p.stages[0].steps.find((s) => s.id === 'path:ack').ack.signed.name, 'Marisol Vega');
+  const d0 = p.stages[0].done;
   assert.ok(p.stages[1].steps.some((s) => s.id === 't:course:Pasta' && s.done), 'a passed quiz ticks its step');
   assert.ok(p.stages.some((st) => st.steps.some((s) => s.kind === 'lesson' && s.program === 'Sommelier · Level 1')), 'a Sommelier lesson is part of the path');
   assert.ok(p.stages.every((st) => st.steps.every((s) => s.kind === 'signoff' || s.to)), 'every step opens a real page, quiz or lesson');
   // a page read
   await me('/api/path/read', 'POST', { slug: 'safety', done: false });
-  assert.equal((await me('/api/path')).data.paths[0].stages[0].state, 'now', 'unread, the stage reopens');
+  assert.equal((await me('/api/path')).data.paths[0].stages[0].done, d0 - 1, 'unread, the step reopens');
   await me('/api/path/read', 'POST', { slug: 'safety' });
-  assert.equal((await me('/api/path')).data.paths[0].stages[0].state, 'done');
+  assert.equal((await me('/api/path')).data.paths[0].stages[0].done, d0);
   // staff can't change their job once it's set, or reach the manager's view
   assert.equal((await me('/api/path/jobs', 'POST', { jobs: ['host'] })).status, 403);
   assert.equal((await me('/api/path/team')).status, 403);
@@ -833,13 +836,14 @@ test('manager home + People (Nov 11): sign-offs asked for, Not Yet, Give More Ti
   };
   const mgr = await start('manager');
   const home = (await mgr('/api/manager/home')).data;
-  // the demo is full: seven people, two behind, one new, four sign-offs waiting (Dorian's Hospitality 101 acknowledgment, Nov 11), certificates, quizzes, edits, the book
+  // the demo is full: seven people, two behind, one new, four sign-offs waiting (Marisol's Training Acknowledgment, Day 1 of her path, Nov 12), certificates, quizzes, edits, the book
   assert.deepEqual(home.people.map((p) => p.name).sort(), ['Dorian Pike', 'Hollis Grant', 'Marisol Vega', 'Odalys Ruiz', 'Quinn Abbott', 'Teddy Lam', 'Wynn Carver']);
   assert.equal(home.people.filter((p) => p.status === 'behind').length, 2);
   assert.equal(home.people.find((p) => p.name === 'Odalys Ruiz').status, 'new');
   assert.equal(home.signoffs.length, 4);
   assert.equal((await mgr('/api/manager/signoffs/count')).data.count, 4);
-  assert.ok(home.signoffs.some((a) => a.name === 'Dorian Pike' && a.key === 'program:hosp-1:practical'), 'the signed acknowledgment waits for the trainer');
+  assert.ok(home.signoffs.some((a) => a.name === 'Marisol Vega' && a.key === 'path:ack' && a.title === 'Training Acknowledgment'), 'the signed acknowledgment waits for the trainer');
+  assert.ok(!home.signoffs.some((a) => /hosp-1/.test(a.key)), 'nothing waits on Hospitality 101 any more');
   assert.ok(home.certificates.length >= 2);
   assert.ok(home.quizzes.taken > 0 && home.quizzes.missed && home.quizzes.missed.asked >= 3 && home.quizzes.missed.pct < 100 && /\?$/.test(home.quizzes.missed.q), 'the most-missed question is a real question from saved answers');
   assert.equal(home.edits.length, 3);
@@ -853,7 +857,7 @@ test('manager home + People (Nov 11): sign-offs asked for, Not Yet, Give More Ti
   const wynn = home.signoffs.find((a) => a.name === 'Wynn Carver');
   const signed = (await mgr('/api/path/signoff', 'POST', { userId: wynn.userId, key: wynn.key })).data;
   assert.ok(signed.paths[0].stages.some((st) => st.steps.some((x) => x.id === wynn.key && x.done)));
-  assert.equal((await mgr('/api/manager/signoffs/count')).data.count, 2, 'Quinn’s practical and Dorian’s acknowledgment are left');
+  assert.equal((await mgr('/api/manager/signoffs/count')).data.count, 2, 'Quinn’s practical and Marisol’s acknowledgment are left');
   // Give More Time: every late step to 3 days out, or one step to a picked date
   const hollis = home.people.find((p) => p.name === 'Hollis Grant');
   const before = (await mgr(`/api/path/person/${hollis.id}`)).data;
@@ -890,7 +894,7 @@ test('manager home + People (Nov 11): sign-offs asked for, Not Yet, Give More Ti
   assert.ok(mine.paths[0].stages.some((st) => st.steps.some((x) => x.id === 'path:server:table-talk' && x.ask && !x.ask.declinedAt)));
   assert.equal((await me('/api/path/ask', 'POST', { key: 'path:bartender:bar' })).status, 400, 'not on their path');
   assert.equal((await me('/api/path/ask', 'DELETE', { key: 'path:server:table-talk' })).status, 200);
-  assert.ok(!(await me('/api/path')).data.paths[0].stages.some((st) => st.steps.some((x) => x.ask)));
+  assert.deepEqual((await me('/api/path')).data.paths[0].stages.flatMap((st) => st.steps.filter((x) => x.ask).map((x) => x.id)), ['path:ack'], 'only her signed acknowledgment is still waiting');
   for (const [p, m] of [['/api/manager/home', 'GET'], ['/api/manager/team', 'GET'], ['/api/path/remind', 'POST'], ['/api/path/more-time', 'POST'], ['/api/path/not-yet', 'POST'], ['/api/path/congrats', 'POST']])
     assert.equal((await me(p, m, m === 'POST' ? { userId: 1 } : undefined)).status, 403, p);
   // another demo's people are out of reach (each demo is its own company)
@@ -1064,7 +1068,10 @@ test('demo: nothing of The Baldwin in the Mise demo (every page, the index, the 
   const hosp = idx.filter((e) => e.slug.startsWith('hospitality-program'));
   assert.ok(hosp.length >= 30, 'the Hospitality Program is in its book: ' + hosp.length);
   const hospL1 = await getAs(cookie, '/api/page/' + idx.find((e) => e.slug === 'hospitality-program/level-1').file);
-  assert.match(hospL1, /Wrenfield/, 'the acknowledgment names its own restaurant');
+  assert.ok(!hospL1.includes('"ack"'), 'Hospitality 101 has no acknowledgment any more (it’s on the path, Nov 12)');
+  const ackText = JSON.parse(await getAs(cookie, '/api/path/ack'));
+  assert.match(ackText.statement, /Wrenfield/, 'the acknowledgment names its own restaurant');
+  bodies.push(JSON.stringify(ackText));
   const hits = bodies.filter((b) => BALDWIN.test(b)).map((b) => b.match(new RegExp('.{0,40}(' + BALDWIN.source + ').{0,40}', 'i'))[0]);
   assert.deepEqual(hits, [], 'no Baldwin text in what the Mise demo is sent');
   const home = await getAs(cookie, '/api/page/4-2');
@@ -1127,12 +1134,15 @@ test('demo: both demos get the same Edit Mode (managers, not staff), Hospitality
     const home = JSON.parse(await getAs(mgr, '/api/manager/home'));
     const path = JSON.parse(await getAs(staff, '/api/path'));
     const hosp1 = path.programs.find((g) => /Hospitality/.test(g.title) && g.certKey === 'hosp-1');
-    return { fields, home: JSON.stringify(home), hosp1 };
+    const ack = path.paths[0].stages[0].steps.find((x) => x.id === 'path:ack');
+    return { fields, home: JSON.stringify(home), hosp1, ack };
   };
   const [b, m] = [await look('baldwin'), await look('mise')];
   assert.deepEqual(m.fields, b.fields, 'the same fields to edit');
   for (const x of [b, m]) {
-    assert.match(x.home, /Dorian Pike/); assert.match(x.home, /program:hosp-1:practical/, 'the acknowledgment waits for the trainer on the manager home');
+    assert.match(x.home, /Marisol Vega/); assert.match(x.home, /"key":"path:ack"/, 'the acknowledgment waits for the trainer on the manager home');
+    assert.ok(x.ack && !x.ack.done && x.ack.ack.signed?.name === 'Marisol Vega' && !x.ack.late, 'the demo employee signed it on Day 1 and waits on her trainer');
+    assert.ok(!x.hosp1.practical, 'Hospitality 101 has no practical');
     assert.ok(x.hosp1 && x.hosp1.done >= 3, 'the demo employee has read Hospitality 101’s first lesson');
   }
 });
