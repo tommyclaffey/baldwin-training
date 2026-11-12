@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { addRows } from './editinplace.mjs';
+import { bindEdits } from './editmode.mjs';
 import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, LEVELS, PROGRAMS, chaptersOf, programDef, isProgram, progLevel } from './manual.mjs';
 import { certificatesFor } from './certs.mjs';
 import { regionPage, regionData } from './region.mjs';
@@ -530,6 +531,10 @@ export function assemble(db, file) {
   }
   // Managers get an Add row after every list of dishes, cocktails, wines and bottles (staff never see them).
   if (page && !entry && canOpen(SCOPE.user, '/admin/pages/recipe/new')) addRows(page, baseIndex().find((x) => x.file === file)?.slug, db, SCOPE.store);
+  // Edit Mode (Nov 11): what this person can change in place on the page (nothing, for staff).
+  if (page && canOpen(SCOPE.user, '/admin')) bindEdits(db, page, { entry, slug: baseIndex().find((x) => x.file === file)?.slug, title: baseIndex().find((x) => x.file === file)?.title,
+    tpl: entry && COLLECTIONS[entry.collection]?.template ? basePage(COLLECTIONS[entry.collection].template) : null,
+    can: (col, id) => canOpen(SCOPE.user, `/admin/pages/${col}/${id || 'new'}`), lists: { beer: () => ordered(db, 'beer') } });
   if (page?.main && isSample(db)) sampleScrub(db, page);
   return balance(forViewer(page, SCOPE.user));
 }

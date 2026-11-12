@@ -11,6 +11,8 @@ import { clearPages } from './components/PageView';
 import { setQuizUser } from './quiz/store';
 import AdminApp from './admin/AdminApp';
 import { EditInPlaceProvider } from './components/EditSheet';
+import { EditModeProvider } from './edit/state';
+import { EditModeToggle } from './edit/EditModeBar';
 import { setFavicon } from './lib/favicon';
 import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
 import { MyPathPage, PathReadBar } from './path/MyPath';
@@ -61,6 +63,7 @@ function Book() {
   if (!user) return <BookSignIn />;
   return (
     <EditInPlaceProvider>
+    <EditModeProvider>
     <NavContext.Provider value={pathname === '/my-path' ? 'My Path' : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? 'Team Chat' : pathname.startsWith('/certificate/beer') ? 'Beer Program' : pathname.startsWith('/certificate/somm') ? 'Sommelier Program' : pathname.startsWith('/certificate/') ? 'Cocktail Program' : entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
@@ -72,12 +75,15 @@ function Book() {
               : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
           {user.demo && <button type="button" className="demo-pill" onClick={openWelcome}>DEMO</button>}
         </div>
+        <div className="mobile-tools">
+        <EditModeToggle />
         <button className="menu-btn" aria-expanded={menu} aria-controls="side" aria-label={(menu ? 'Close menu' : 'Open menu') + (unread ? `, ${unread} unread in Team Chat` : '')} onClick={() => setMenu((m) => !m)}>
           {unread > 0 && !menu && <span className="menu-count" aria-hidden="true">{unread > 99 ? '99+' : unread}</span>}
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
             {menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
           </svg>
         </button>
+        </div>
       </header>
       <div className={'shell' + (menu ? ' menu-open' : '')}>
         {menu && <button type="button" className="menu-backdrop" aria-label="Close menu" onClick={() => setMenu(false)} />}
@@ -91,6 +97,7 @@ function Book() {
         {user.demo && <DemoTour />}
       </div>
     </NavContext.Provider>
+    </EditModeProvider>
     </EditInPlaceProvider>
   );
 }
