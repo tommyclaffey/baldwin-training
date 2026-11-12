@@ -13,7 +13,7 @@ const PAGES = ['/', '/our-story', '/floor-plan', '/sommelier-program/about', '/f
   '/cocktail-program', '/cocktail-program/level-1', '/cocktail-program/level-1/bar-l1-whiskey', '/cocktail-program/level-1/bar-l1-basics', '/cocktail-program/level-2', '/beer-program', '/beer-program/level-1', '/sommelier-program', '/sommelier-program/level-1', '/sommelier-program/level-2',
   '/hospitality-program', '/hospitality-program/level-1', '/hospitality-program/level-1/hosp-welcome',
   '/cocktail-program/level-2/bar-vodka-gin/gin-styles', '/certificate/bar-1',
-  '/prep', '/prep/reports']; // Nov 12: the Prep tracker
+  '/prep', '/prep/count', '/prep/reports']; // Nov 12: the Prep tracker (+ the shift count, 31b)
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function browser() {
