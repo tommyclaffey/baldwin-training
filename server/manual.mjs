@@ -45,7 +45,9 @@ const words = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight
 export const countWord = (n) => words[n] || String(n);
 /** Every built level. A level's first page is the program's address for Level 1, then <program>/level-N. */
 export const LEVELS = [
-  { program: 'bar', level: 1, title: 'Certified Bar Server', file: 'bar-1', final: 'final:bar-1', len: 30, prefix: 'BAR1', head: 'Learn it, then prove it',
+  // Nov 12 (Tommy: "focusing on each spirit"): nine lessons, one per staple spirit, so the final went from 30 to 40 questions,
+  // drawn evenly from every lesson ("spread", server/quiz.mjs). Passes from the 30-question final still count.
+  { program: 'bar', level: 1, title: 'Certified Bar Server', file: 'bar-1', final: 'final:bar-1', len: 40, spread: true, prefix: 'BAR1', head: 'Learn it, then prove it',
     lead: (n, L) => `${countWord(n)} short lessons for everyone on the floor, then a final of ${L.len} questions.` },
   { program: 'bar', level: 2, title: 'Certified Bartender', file: 'bar-2', final: 'final:bar-2', len: 60, prefix: 'BAR2', head: 'Know every bottle',
     practical: 'program:bar-2:practical', practicalTitle: 'Build from our specs', practicalHow: 'Build drinks from our specs while a manager watches; they sign you off', practicalStep: 'Build our specs for a manager',
