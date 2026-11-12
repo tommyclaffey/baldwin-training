@@ -1,0 +1,35 @@
+[
+ {
+  "file": "content/bar/bar-dilution.json",
+  "slug": "bar-dilution",
+  "section": "Citrus timing",
+  "youtubeId": "RhMnZKQGkjg",
+  "title": "Juicing 101: The best way to keep juice fresh while at work",
+  "by": "Rob Stuart",
+  "length": "2:39",
+  "checked": "2026-11-12",
+  "why": "A working bartender on juicing for a shift and keeping it fresh while you work."
+ },
+ {
+  "file": "content/bar/bar-riffs.json",
+  "slug": "bar-riffs",
+  "section": "Write the spec",
+  "youtubeId": "4oFlIu-HxB0",
+  "title": "How to create your own Cocktail - Masterclass",
+  "by": "Behind the Bar",
+  "length": "9:01",
+  "checked": "2026-11-12",
+  "why": "Two bartenders build an original recipe from idea to finished drink."
+ },
+ {
+  "file": "content/bar/bar-batching.json",
+  "slug": "bar-batching",
+  "section": "What not to batch",
+  "youtubeId": "xqrq7LEznOo",
+  "title": "How To: Batch for Take Away Cocktails",
+  "by": "Bar Convent London",
+  "length": "15:31",
+  "checked": "2026-11-12",
+  "why": "Bar Convent London session on batching and its common mistakes (trade event channel)."
+ }
+]

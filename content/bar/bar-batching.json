@@ -98,7 +98,22 @@
      "bigIdea": "A batch is the spec, multiplied.",
      "where": "Multiply **every ingredient** by the **number of drinks**: 2 oz × 20 = 40 oz. Keep **one unit** for the whole batch. Bitters scale too: count dashes, then measure them. Write the batch recipe down, pour one **test drink** and taste it against the single spec.",
      "mixup": "Don’t round one line and not the others. The balance moves.",
-     "sayIt": ""
+     "sayIt": "It’s batched to our spec, so it pours the same every time.",
+     "stopsTitle": "Twenty drinks",
+     "stops": [
+      {
+       "name": "One drink",
+       "text": "**2 oz** spirit."
+      },
+      {
+       "name": "× 20",
+       "text": "**40 oz** in the batch."
+      },
+      {
+       "name": "Test",
+       "text": "Pour **one** and taste it against the spec."
+      }
+     ]
     },
     "check": [
      0,
@@ -132,7 +147,22 @@
      "bigIdea": "A batch has no ice, so the water goes in the bottle.",
      "where": "A stirred drink gets its water from the ice. A **pre-batched** stirred drink poured straight from the fridge doesn’t, so you **add the water** to the batch. Death & Co suggests about **20%** of the batch. The exact way: **weigh** one drink, stir it on ice, weigh it again; the difference is the water each drink needs. Drinks served **up** want a little more; drinks over **ice** a little less, since the ice keeps melting.",
      "mixup": "A batch that’s going to be stirred on ice again doesn’t get the water. It would end up double-diluted.",
-     "sayIt": ""
+     "sayIt": "",
+     "stopsTitle": "Find the water",
+     "stops": [
+      {
+       "name": "Weigh",
+       "text": "Weigh **one drink**."
+      },
+      {
+       "name": "Stir",
+       "text": "Stir it on **ice**."
+      },
+      {
+       "name": "Weigh again",
+       "text": "The **gain** is the water each drink needs."
+      }
+     ]
     },
     "check": [
      3,
@@ -142,7 +172,12 @@
    },
    {
     "name": "What not to batch",
-    "video": null,
+    "video": {
+     "youtubeId": "xqrq7LEznOo",
+     "title": "How To: Batch for Take Away Cocktails",
+     "by": "Bar Convent London",
+     "length": "15:31"
+    },
     "keyPoints": [
      {
       "big": "CITRUS",
@@ -161,7 +196,22 @@
      "bigIdea": "Batch the parts that keep.",
      "where": "Spirits, liqueurs, vermouth and bitters keep well together. **Citrus** doesn’t: it fades within the day (Dave Arnold’s test), so add it at service or batch it that day. **Bubbles** (soda, sparkling wine) go flat: top each drink in the glass. **Egg** and **cream** need a hard shake to order.",
      "mixup": "A batched Martini keeps. A batched Margarita with yesterday’s lime doesn’t.",
-     "sayIt": ""
+     "sayIt": "The base is made ahead; the citrus goes in fresh when we shake it.",
+     "stopsTitle": "In the bottle, or at service",
+     "stops": [
+      {
+       "name": "Batch",
+       "text": "**Spirits**, **liqueurs**, **vermouth**, **bitters**."
+      },
+      {
+       "name": "Same day",
+       "text": "**Citrus**."
+      },
+      {
+       "name": "To order",
+       "text": "**Bubbles**, **egg** and **cream**."
+      }
+     ]
     },
     "check": [
      6,
@@ -190,7 +240,22 @@
      "bigIdea": "A batch is only as good as its label.",
      "where": "Every batch bottle gets the **drink name**, the **date** and **who made it**. Keep stirred batches **cold** so they pour ready to serve. **Taste** a batch at the start of each shift before the first drink goes out.",
      "mixup": "An unlabeled bottle on the bar is a guess. If it isn’t labeled, don’t pour it.",
-     "sayIt": ""
+     "sayIt": "",
+     "stopsTitle": "Every batch bottle",
+     "stops": [
+      {
+       "name": "Name",
+       "text": "The **drink**."
+      },
+      {
+       "name": "Date",
+       "text": "The day it was **made**."
+      },
+      {
+       "name": "Who",
+       "text": "Who **made** it."
+      }
+     ]
     },
     "check": [
      9,

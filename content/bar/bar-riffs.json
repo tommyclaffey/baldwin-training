@@ -147,7 +147,22 @@
      "bigIdea": "Two spirits can share the core.",
      "where": "A **split base** uses two spirits where the root uses one. The **Vieux Carré** splits **rye and Cognac**, an ounce each, with sweet vermouth, Bénédictine and Peychaud’s. Keep the **total** spirit the same as the root, so the balance still works.",
      "mixup": "A split base isn’t more spirit. It’s the same amount, shared.",
-     "sayIt": ""
+     "sayIt": "It’s split between rye and Cognac, so it’s spicy and round at once.",
+     "stopsTitle": "The Vieux Carré",
+     "stops": [
+      {
+       "name": "Rye",
+       "text": "**1 oz**."
+      },
+      {
+       "name": "Cognac",
+       "text": "**1 oz**."
+      },
+      {
+       "name": "The rest",
+       "text": "Sweet vermouth, **Bénédictine**, Peychaud’s."
+      }
+     ]
     },
     "check": [
      3,
@@ -181,7 +196,22 @@
      "bigIdea": "The sweet part can carry flavor.",
      "where": "Plain syrup only sweetens. A flavored sweetener sweetens **and** adds taste. Our **Gold Rush** is bourbon, lemon and **honey syrup**: a Whiskey Sour with honey. In the **Sidecar** family, an **orange liqueur** does the sweetening. When the new sweetener is sweeter, use **less**, and taste.",
      "mixup": "Adding a liqueur on top of the syrup makes a drink sweeter. Take some syrup out.",
-     "sayIt": "It’s a whiskey sour sweetened with honey instead of sugar."
+     "sayIt": "It’s a whiskey sour sweetened with honey instead of sugar.",
+     "stopsTitle": "Same sour, new sweet",
+     "stops": [
+      {
+       "name": "Whiskey Sour",
+       "text": "Bourbon, lemon, **sugar**."
+      },
+      {
+       "name": "Gold Rush",
+       "text": "Bourbon, lemon, **honey syrup**."
+      },
+      {
+       "name": "Sidecar",
+       "text": "Cognac, lemon, **orange liqueur**."
+      }
+     ]
     },
     "check": [
      6,
@@ -191,7 +221,12 @@
    },
    {
     "name": "Write the spec",
-    "video": null,
+    "video": {
+     "youtubeId": "4oFlIu-HxB0",
+     "title": "How to create your own Cocktail - Masterclass",
+     "by": "Behind the Bar",
+     "length": "9:01"
+    },
     "keyPoints": [
      {
       "big": "SPEC",
@@ -210,7 +245,26 @@
      "bigIdea": "A drink isn’t real until anyone can build it.",
      "where": "Write the **spec** like ours: every **amount**, the **glass**, the **ice**, the **method** and the **garnish**. Build it **three times** the same way; if it tastes different each time, the spec isn’t finished. Give it a **name** a guest can say out loud, and one line that sells it.",
      "mixup": "“A splash” isn’t an amount. Write the measure.",
-     "sayIt": ""
+     "sayIt": "It’s our own: we built it here and it’s only on our menu.",
+     "stopsTitle": "What a spec holds",
+     "stops": [
+      {
+       "name": "Amounts",
+       "text": "Every line, **measured**."
+      },
+      {
+       "name": "Glass and ice",
+       "text": "Which **glass**, which **ice**."
+      },
+      {
+       "name": "Method",
+       "text": "Shake, stir or build."
+      },
+      {
+       "name": "Garnish",
+       "text": "What goes on, and how."
+      }
+     ]
     },
     "check": [
      9,

@@ -1,0 +1,389 @@
+{
+ "number": 4,
+ "barLevel": 4,
+ "slug": "bar-l4-hospitality",
+ "title": "Hospitality at the bar",
+ "script": "Lesson 4",
+ "lead": "Service is the delivery; hospitality is how it feels. Run a bar that gets both right.",
+ "minutes": 11,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Service vs hospitality",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Service is how it’s delivered. Hospitality is how it feels."
+    }
+   ],
+   "know": [
+    "Service how well the drink got to the guest.",
+    "Hospitality how the guest felt getting it.",
+    "Both it takes both to be great."
+   ],
+   "source": "Danny Meyer on NPR, 2006 (npr.org/transcripts/6162737); Setting the Table (HarperCollins, 2006)"
+  },
+  {
+   "name": "Reading the bar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "See the whole bar, not just the next ticket."
+    }
+   ],
+   "know": [
+    "Acknowledge every guest who sits, right away.",
+    "Pace each guest’s night, not yours.",
+    "Watch for signs someone needs something."
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Regulars",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Remember people, not just orders."
+    }
+   ],
+   "know": [
+    "Name use it once you know it.",
+    "Usual remember it, but still ask.",
+    "Note it so the whole team knows."
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "When it goes wrong",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Own it, fix it, follow up."
+    }
+   ],
+   "know": [
+    "Listen all the way through.",
+    "Fix it fast: remake, replace, or a manager.",
+    "Follow up before they leave."
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Service vs hospitality",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SERVICE",
+      "line": "how well the drink got to the guest."
+     },
+     {
+      "big": "HOSPITALITY",
+      "line": "how the guest felt getting it."
+     },
+     {
+      "big": "BOTH",
+      "line": "it takes both to be great."
+     }
+    ],
+    "read": {
+     "bigIdea": "Service is how it’s delivered. Hospitality is how it feels.",
+     "where": "Danny Meyer (Union Square Hospitality Group) puts it this way: **service** describes how well the product was **delivered**; **hospitality** describes how the person receiving it **feels**. A perfect drink, on time, is service. The guest feeling looked after while it happened is hospitality. Meyer’s point: it takes **both** to be great.",
+     "stopsTitle": "At the bar",
+     "stops": [
+      {
+       "name": "Service",
+       "text": "The right drink, to spec, **on time**."
+      },
+      {
+       "name": "Hospitality",
+       "text": "The guest feels **seen** and welcome."
+      }
+     ],
+     "mixup": "Fast isn’t the same as warm. A drink can be perfect and the guest can still feel **ignored**.",
+     "sayIt": "Welcome in. What are you in the mood for tonight?"
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Reading the bar",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ACKNOWLEDGE",
+      "line": "every guest who sits, right away."
+     },
+     {
+      "big": "PACE",
+      "line": "each guest’s night, not yours."
+     },
+     {
+      "big": "WATCH",
+      "line": "for signs someone needs something."
+     }
+    ],
+    "read": {
+     "bigIdea": "See the whole bar, not just the next ticket.",
+     "where": "A bar lead watches the **whole room**. Every guest who sits gets **acknowledged** right away, even if the drink is a minute off. Watch the **pace**: an empty glass, a menu closed, a check reached for. Watch the **mood**: celebrating, talking business, wanting quiet. Serve the night the guest came for.",
+     "stopsTitle": "Scan the bar",
+     "stops": [
+      {
+       "name": "New",
+       "text": "**Acknowledge** them now."
+      },
+      {
+       "name": "Empty",
+       "text": "Offer the **next** one, or water."
+      },
+      {
+       "name": "Mood",
+       "text": "Chatty, business, quiet: **match** it."
+      }
+     ],
+     "mixup": "Acknowledging a guest isn’t serving them. It’s telling them they’re **seen**: “I’ll be right with you.”",
+     "sayIt": "I see you: I’ll be right with you."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Regulars",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NAME",
+      "line": "use it once you know it."
+     },
+     {
+      "big": "USUAL",
+      "line": "remember it, but still ask."
+     },
+     {
+      "big": "NOTE",
+      "line": "it so the whole team knows."
+     }
+    ],
+    "read": {
+     "bigIdea": "Remember people, not just orders.",
+     "where": "Regulars are the bar’s steady business. Learn their **names** and use them. Remember the **usual**, but still **ask** (“The usual, or something new tonight?”). Share what you learn with the team, so a regular is recognized on any night, not just yours.",
+     "stopsTitle": "A regular walks in",
+     "stops": [
+      {
+       "name": "Greet",
+       "text": "By **name**."
+      },
+      {
+       "name": "Offer",
+       "text": "The **usual**, or something new."
+      },
+      {
+       "name": "Share",
+       "text": "Tell the **team** what they like."
+      }
+     ],
+     "mixup": "Pouring the usual before they ask can feel like being taken for granted. **Offer** it.",
+     "sayIt": "Good to see you again. The usual, or want to try the new fall drink?"
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "When it goes wrong",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LISTEN",
+      "line": "all the way through."
+     },
+     {
+      "big": "FIX",
+      "line": "it fast: remake, replace, or a manager."
+     },
+     {
+      "big": "FOLLOW UP",
+      "line": "before they leave."
+     }
+    ],
+    "read": {
+     "bigIdea": "Own it, fix it, follow up.",
+     "where": "When a guest isn’t happy, **listen** to the whole thing without arguing. **Own** it (“I’m sorry, let me fix that”), then **fix** it fast: remake the drink, offer another, or bring in a manager. Check back **before they leave**. Then tell the team what happened, so it doesn’t happen twice.",
+     "stopsTitle": "Recovering a guest",
+     "stops": [
+      {
+       "name": "Listen",
+       "text": "No **excuses**."
+      },
+      {
+       "name": "Fix",
+       "text": "Remake, replace, or a **manager**."
+      },
+      {
+       "name": "Check back",
+       "text": "Before they **leave**."
+      }
+     ],
+     "mixup": "Explaining why the drink is “supposed to taste like that” isn’t a fix. **Offer** something they’ll enjoy.",
+     "sayIt": "I’m sorry about that. Let me make you something you’ll like better."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Danny Meyer on NPR, 2006 (npr.org/transcripts/6162737); Setting the Table (HarperCollins, 2006); House practice (ours; GM to confirm). Written for Mise in our own words, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "In Danny Meyer’s terms, service is…",
+   "answer": "How well the product is delivered",
+   "wrong": [
+    "How the guest feels",
+    "The tip",
+    "The size of the menu"
+   ],
+   "source": "Danny Meyer on NPR, 2006 (npr.org/transcripts/6162737); Setting the Table (HarperCollins, 2006)"
+  },
+  {
+   "q": "In Meyer’s terms, hospitality is…",
+   "answer": "How the guest feels about how it was delivered",
+   "wrong": [
+    "How fast the drink came",
+    "The price of the drink",
+    "The garnish"
+   ],
+   "source": "Danny Meyer on NPR, 2006 (npr.org/transcripts/6162737); Setting the Table (HarperCollins, 2006)"
+  },
+  {
+   "q": "According to Meyer, a great place needs…",
+   "answer": "Both great service and great hospitality",
+   "wrong": [
+    "Service only",
+    "Hospitality only",
+    "Neither: just good drinks"
+   ],
+   "source": "Danny Meyer on NPR, 2006 (npr.org/transcripts/6162737); Setting the Table (HarperCollins, 2006)"
+  },
+  {
+   "q": "A guest sits at a busy bar. You should…",
+   "answer": "Acknowledge them right away, even before you can serve",
+   "wrong": [
+    "Wait until you’re free to say anything",
+    "Slide a menu without a word",
+    "Ask them to move"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Reading the bar means watching…",
+   "answer": "Every guest’s pace and mood",
+   "wrong": [
+    "Only the POS screen",
+    "Only your regulars",
+    "Only the clock"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A guest closes the menu and looks up. That usually means…",
+   "answer": "They’re ready to order",
+   "wrong": [
+    "They’re leaving",
+    "They want the check",
+    "Nothing"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A regular sits down. The best opener is…",
+   "answer": "Greet them by name and offer the usual or something new",
+   "wrong": [
+    "Pour the usual without asking",
+    "Hand them the full menu silently",
+    "Ask for their ID card number"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Why share what you know about regulars with the team?",
+   "answer": "So they’re recognized on any night",
+   "wrong": [
+    "To sell their information",
+    "To charge them more",
+    "It isn’t useful"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Remembering a regular’s usual means you…",
+   "answer": "Still ask before you make it",
+   "wrong": [
+    "Never ask again",
+    "Make it twice",
+    "Charge less"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A guest says their drink is too sour. You first…",
+   "answer": "Listen and apologize",
+   "wrong": [
+    "Explain the spec",
+    "Ignore it",
+    "Charge for a second drink"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "After fixing a problem, you should…",
+   "answer": "Check back before the guest leaves",
+   "wrong": [
+    "Avoid that guest",
+    "Remove the drink from the menu",
+    "Nothing else"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "After a guest problem, the team should…",
+   "answer": "Hear what happened so it doesn’t happen twice",
+   "wrong": [
+    "Never mention it",
+    "Blame the guest",
+    "Wait for a bad review"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "In Danny Meyer’s terms, service is… How well the product is delivered.",
+   "source": "Danny Meyer on NPR, 2006 (npr.org/transcripts/6162737); Setting the Table (HarperCollins, 2006)"
+  },
+  {
+   "fact": "In Meyer’s terms, hospitality is… How the guest feels about how it was delivered.",
+   "source": "Danny Meyer on NPR, 2006 (npr.org/transcripts/6162737); Setting the Table (HarperCollins, 2006)"
+  },
+  {
+   "fact": "According to Meyer, a great place needs… Both great service and great hospitality.",
+   "source": "Danny Meyer on NPR, 2006 (npr.org/transcripts/6162737); Setting the Table (HarperCollins, 2006)"
+  }
+ ],
+ "unverified": [
+  "Reading the bar, regulars and recovery steps are house practice, not from Meyer’s book."
+ ]
+}

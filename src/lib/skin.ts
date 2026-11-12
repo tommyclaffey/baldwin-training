@@ -70,8 +70,8 @@ const up = (s?: string) => (s || '').toUpperCase();
 const solid = (n: FNode) => n.f?.find((f) => f.c && (f.o ?? 1) > 0.5)?.c;
 
 const SMALL = new Set(['a', 'an', 'and', 'of', 'the', 'to', 'or', 'at', 'by', 'in', 'on', 'for', 'with']);
-// Nov 11: short names that stay in capitals ("USA" read "Usa" on the Wine page)
-const KEEP_CAPS = new Set(['usa', 'uk', 'ipa', 'vs', 'vsop', 'xo', 'xxo', 'abv', 'pos', 'na', 'ny', 'diy', 'tv', 'am', 'pm']);
+// Nov 11: short names that stay in capitals ("USA" read "Usa" on the Wine page; Nov 12: "ID", Level 4's Age and ID)
+const KEEP_CAPS = new Set(['usa', 'uk', 'id', 'ipa', 'vs', 'vsop', 'xo', 'xxo', 'abv', 'pos', 'na', 'ny', 'diy', 'tv', 'am', 'pm']);
 /** "OLD FASHIONED" → "Old Fashioned"; leaves mixed-case text alone. */
 export function titleCase(s: string) {
   if (!s || s !== s.toUpperCase() || !/[A-Z]{2}/.test(s)) return s;
