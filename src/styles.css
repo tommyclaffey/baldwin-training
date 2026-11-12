@@ -580,6 +580,15 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .scanner-pane { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .scanner-result { background: var(--tint-3); border-radius: 12px; min-height: 320px; max-height: 62vh; display: grid; place-items: center; padding: 12px; }
 .scanner-result img { max-width: 100%; max-height: calc(62vh - 24px); object-fit: contain; }
+/* Nov 12: the scanner in the demo (sample bottles, and a plain note that saved photos go with the demo) */
+.scanner-demo { margin: 0; padding: 8px 12px; border-radius: 10px; background: var(--tint-3); color: var(--ink); font-size: 13px; line-height: 1.45; }
+.scanner-samples { display: flex; flex-direction: column; gap: 6px; }
+.scanner-sample-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.scanner-sample { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); font: inherit; font-size: 13px; cursor: pointer; white-space: nowrap; }
+.scanner-sample img { width: 32px; height: 44px; object-fit: cover; border-radius: 6px; display: block; }
+.scanner-sample:hover { border-color: var(--copper); }
+.scanner-sample:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+.scanner-sample:disabled { opacity: .6; cursor: default; }
 .box-editor { position: relative; width: 100%; max-height: 62vh; border-radius: 12px; overflow: hidden; background: #111; touch-action: none; user-select: none; }
 .box-editor img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
 .box-shade { position: absolute; border: 2px solid var(--copper); box-shadow: 0 0 0 999px rgba(17,17,17,.45); cursor: move; border-radius: 6px; }
