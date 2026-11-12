@@ -1,0 +1,345 @@
+{
+ "number": 1,
+ "programLevel": 1,
+ "slug": "hosp-welcome",
+ "title": "Welcome and our philosophy",
+ "script": "Lesson 1",
+ "lead": "Who we are, the values we hold, and the difference between service and hospitality.",
+ "minutes": 10,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "Welcome to the team",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "You’re an ambassador of our brand."
+    }
+   ],
+   "know": [
+    "Ambassador of our brand: that’s you, not just an employee.",
+    "Relationships with our guests and community: what we build.",
+    "Beliefs standards and hospitality: what this covers."
+   ]
+  },
+  {
+   "name": "Our values and beliefs",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Eight things we hold to be true."
+    }
+   ],
+   "know": [
+    "Guests their satisfaction is our greatest responsibility.",
+    "Guest’s eyes see the restaurant through them, always.",
+    "Integrity honesty and integrity in everything we do.",
+    "Enlightened hospitality: the art we set out to master."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "What we hold to be true",
+     "rows": [
+      {
+       "name": "Quality",
+       "meta": "Provide the highest quality products at all times."
+      },
+      {
+       "name": "Guest satisfaction",
+       "meta": "Our greatest responsibility."
+      },
+      {
+       "name": "Respect and teamwork",
+       "meta": "An environment based on both."
+      },
+      {
+       "name": "Honesty and integrity",
+       "meta": "In everything we do."
+      },
+      {
+       "name": "Growth",
+       "meta": "Continuous growth, development and ongoing education."
+      },
+      {
+       "name": "Detail and cleanliness",
+       "meta": "Constant attention to both: always see the restaurant through the guest’s eyes."
+      },
+      {
+       "name": "Relationships",
+       "meta": "With our guests, neighbors and community: the foundation of our success."
+      },
+      {
+       "name": "Enlightened Hospitality",
+       "meta": "Master the art of it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Service vs hospitality",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Service is what you do. Hospitality is how it feels."
+    }
+   ],
+   "know": [
+    "Service is what you do: technical and transactional.",
+    "Hospitality is how that delivery makes the guest feel.",
+    "Monologue is service: we set our own standards.",
+    "Dialogue is hospitality: listen with every sense.",
+    "Both exceptional service and genuine hospitality."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "SERVICE",
+       "title": "What you do",
+       "text": "Technical, transactional, logical\nA monologue: we set the standard\nA clean plate, a fixed bill"
+      },
+      {
+       "label": "HOSPITALITY",
+       "title": "How it makes them feel",
+       "text": "Seen, welcome and valued\nA dialogue: it starts by listening\nA thoughtful, gracious response"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Welcome to the team",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AMBASSADOR",
+      "line": "of our brand: that’s you, not just an employee."
+     },
+     {
+      "big": "RELATIONSHIPS",
+      "line": "with our guests and community: what we build."
+     },
+     {
+      "big": "BELIEFS",
+      "line": "standards and hospitality: what this covers."
+     }
+    ],
+    "read": {
+     "bigIdea": "You’re an ambassador of our brand.",
+     "where": "Welcome to **{restaurant}**. This training introduces our **core beliefs**, our **standards** and the high-level **philosophy of hospitality** that sets us apart. As a member of our team, you are not just an employee: you are an **essential ambassador of our brand**, helping us build **lasting relationships** with our guests and community."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Our values and beliefs",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "GUESTS",
+      "line": "their satisfaction is our greatest responsibility."
+     },
+     {
+      "big": "GUEST’S EYES",
+      "line": "see the restaurant through them, always."
+     },
+     {
+      "big": "INTEGRITY",
+      "line": "honesty and integrity in everything we do."
+     },
+     {
+      "big": "ENLIGHTENED",
+      "line": "hospitality: the art we set out to master."
+     }
+    ],
+    "read": {
+     "bigIdea": "Eight things we hold to be true.",
+     "where": "Our values are things we **hold to be true**. Enforcing these beliefs determines **how we operate as a team** and how we succeed as an establishment.",
+     "visual": 0,
+     "visualIntro": "Our values and beliefs:"
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Service vs hospitality",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SERVICE",
+      "line": "is what you do: technical and transactional."
+     },
+     {
+      "big": "HOSPITALITY",
+      "line": "is how that delivery makes the guest feel."
+     },
+     {
+      "big": "MONOLOGUE",
+      "line": "is service: we set our own standards."
+     },
+     {
+      "big": "DIALOGUE",
+      "line": "is hospitality: listen with every sense."
+     },
+     {
+      "big": "BOTH",
+      "line": "exceptional service and genuine hospitality."
+     }
+    ],
+    "read": {
+     "bigIdea": "Service is what you do. Hospitality is how it feels.",
+     "where": "Understanding the difference between **service** and **hospitality** is the cornerstone of our success. To rise to the top, we must deliver **both**: exceptional service and genuine hospitality.",
+     "stopsTitle": "As Danny Meyer writes in Setting the Table",
+     "stops": [
+      {
+       "name": "Service",
+       "note": "what you do",
+       "text": "The **technical, transactional and logical** delivery of your product or task: handing someone a clean plate, pre-bussing, replacing silverware, fixing a billing error. Service is a **monologue**: we decide how we want to do things and set our own standards."
+      },
+      {
+       "name": "Hospitality",
+       "note": "how it makes them feel",
+       "text": "How the delivery of that product makes its recipient **feel**: the emotional connection formed when a guest feels truly **seen, welcome and valued**. Hospitality is a **dialogue**. It requires listening to the guest with every sense, then following up with a **thoughtful, gracious and appropriate** response."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Side by side:",
+     "mixup": "**Service** is a monologue: we set the standard. **Hospitality** is a dialogue: it starts with listening."
+    },
+    "check": [
+     7,
+     8,
+     9
+    ]
+   }
+  ]
+ },
+ "sources": "Hospitality 101 Training, page 1: Welcome and the core philosophy of hospitality.",
+ "cards": [
+  {
+   "q": "As a member of our team, the training says you are…",
+   "answer": "An essential ambassador of our brand",
+   "wrong": [
+    "A helper for the busy shifts",
+    "Someone who follows the posted rules",
+    "A salesperson first, a server second"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "What does Hospitality 101 introduce?",
+   "answer": "Our core beliefs, standards and philosophy of hospitality",
+   "wrong": [
+    "Our menu prices and recipes",
+    "How to use the point-of-sale system",
+    "Our scheduling and payroll rules"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Who do we build lasting relationships with?",
+   "answer": "Our guests and our community",
+   "wrong": [
+    "Only our regular guests",
+    "Our suppliers",
+    "Other restaurants nearby"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "According to our values, what is our greatest responsibility?",
+   "answer": "Guest satisfaction",
+   "wrong": [
+    "Table turnover",
+    "Check average",
+    "Speed of service"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Our values say to always see the restaurant through whose eyes?",
+   "answer": "The guest’s",
+   "wrong": [
+    "The owner’s",
+    "The health inspector’s",
+    "The kitchen’s"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Which art do our values say we must master?",
+   "answer": "Enlightened Hospitality",
+   "wrong": [
+    "Upselling",
+    "Tableside cooking",
+    "Fine-dining etiquette"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "What do our values call the foundation of our success?",
+   "answer": "Strong relationships with our guests, neighbors and community",
+   "wrong": [
+    "Low prices",
+    "A large menu",
+    "Fast table turns"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Service is…",
+   "answer": "What you do: the technical delivery of a product or task",
+   "wrong": [
+    "How the guest feels about the visit",
+    "The emotional connection with a guest",
+    "Listening to the guest with every sense"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Hospitality is a dialogue. What does it require?",
+   "answer": "Listening with every sense, then a thoughtful, gracious response",
+   "wrong": [
+    "Following the script word for word",
+    "Setting our own standards first",
+    "Working as fast as possible"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Which of these is service rather than hospitality?",
+   "answer": "Fixing a billing error",
+   "wrong": [
+    "A guest feeling truly seen",
+    "A guest feeling welcome",
+    "A guest feeling valued"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "The difference between service and hospitality comes from whose book, Setting the Table?",
+   "answer": "Danny Meyer",
+   "wrong": [
+    "Will Guidara",
+    "Thomas Keller",
+    "Anthony Bourdain"
+   ],
+   "source": "Hospitality 101 Training"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}

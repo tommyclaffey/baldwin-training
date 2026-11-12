@@ -67,11 +67,11 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   const index = (await call('/api/index')).data;
   // each Study Guide chapter: its whole-chapter page plus one lesson per section (Nov 1)
   // Level 1 (content/manual) and Level 2 (content/manual-l2, Nov 2) chapters
-  const readDir = (d) => (fs.existsSync(path.join(root, d)) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'))) : []);
+  const readDir = (d) => (fs.existsSync(path.join(root, d)) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json') && !f.startsWith('_')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'))) : []);
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
   // + the Cocktail Program (Nov 8): a course page per level (2) and one entry per lesson section (no whole-chapter pages)
-  const bar = [...readDir('content/bar'), ...readDir('content/beer')]; // + the Beer Program (Nov 8)
-  assert.equal(index.length, 656 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 6 + 2 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 39 house drinks (Nov 9: four off the list), the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  const bar = [...readDir('content/bar'), ...readDir('content/beer'), ...readDir('content/hospitality')]; // + the Beer Program (Nov 8), the Hospitality Program (Nov 11)
+  assert.equal(index.length, 656 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 8 + 3 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 39 house drinks (Nov 9: four off the list), the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));

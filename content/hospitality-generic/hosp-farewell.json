@@ -1,0 +1,197 @@
+{
+ "number": 6,
+ "programLevel": 2,
+ "slug": "hosp-farewell",
+ "title": "The check and the farewell",
+ "script": "Lesson 6",
+ "lead": "The final moments shape what guests carry home. Make them as intentional as the first.",
+ "minutes": 8,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "Closing the check",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Never rush the check."
+    }
+   ],
+   "know": [
+    "Never rush the check comes when asked, or when they signal.",
+    "Promptly process the payment.",
+    "As intentional as the first moments of the meal."
+   ]
+  },
+  {
+   "name": "The farewell",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Did every guest feel we were on their side?"
+    }
+   ],
+   "know": [
+    "By name thank them, and mention their occasion.",
+    "To the door walk them out whenever you can.",
+    "Notes add them to the profile for next time.",
+    "Their side the measure of our service."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Closing the check",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NEVER RUSH",
+      "line": "the check comes when asked, or when they signal."
+     },
+     {
+      "big": "PROMPTLY",
+      "line": "process the payment."
+     },
+     {
+      "big": "AS INTENTIONAL",
+      "line": "as the first moments of the meal."
+     }
+    ],
+    "read": {
+     "bigIdea": "Never rush the check.",
+     "where": "The final moments **shape what guests carry home**. Make them as **intentional as the first**.",
+     "stops": [
+      {
+       "name": "Never rush",
+       "text": "Present the check **when requested** or **when the table signals**. **Process payment promptly.**"
+      }
+     ],
+     "sayIt": "No rush at all, whenever you’re ready."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The farewell",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BY NAME",
+      "line": "thank them, and mention their occasion."
+     },
+     {
+      "big": "TO THE DOOR",
+      "line": "walk them out whenever you can."
+     },
+     {
+      "big": "NOTES",
+      "line": "add them to the profile for next time."
+     },
+     {
+      "big": "THEIR SIDE",
+      "line": "the measure of our service."
+     }
+    ],
+    "read": {
+     "bigIdea": "Did every guest feel we were on their side?",
+     "where": "**The measure of our service:** did every guest feel that we were **on their side**?",
+     "stops": [
+      {
+       "name": "Make it personal",
+       "text": "Thank them **by name**, and refer to something you learned, such as their **occasion** or a **favorite dish**."
+      },
+      {
+       "name": "Walk them out",
+       "text": "Whenever possible, **escort guests to the door** and **invite them back** warmly; **add notes to their profile** for next time."
+      }
+     ],
+     "sayIt": "It was a true pleasure having you tonight. Happy anniversary, and we can’t wait to welcome you back."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   }
+  ]
+ },
+ "sources": "The Art of Table Service: 13, Closing the Check and Heartfelt Farewell.",
+ "cards": [
+  {
+   "q": "When do you present the check?",
+   "answer": "When it’s requested, or when the table signals",
+   "wrong": [
+    "As soon as dessert is served",
+    "When the next reservation arrives",
+    "Right after the entrées are cleared"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "What do you say as you present the check?",
+   "answer": "“No rush at all, whenever you’re ready.”",
+   "wrong": [
+    "“We need the table back soon.”",
+    "“Here you go.”",
+    "“Ready to settle up?”"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Why make the final moments intentional?",
+   "answer": "They shape what guests carry home",
+   "wrong": [
+    "They’re the quickest part of service",
+    "They’re when the manager visits",
+    "They decide the next reservation"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How do you thank a guest at the farewell?",
+   "answer": "By name, referring to something you learned about them",
+   "wrong": [
+    "With a printed thank-you card",
+    "With an offer for next time",
+    "With the same line for every table"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Whenever possible, at the end of the meal you…",
+   "answer": "Escort guests to the door and invite them back",
+   "wrong": [
+    "Wave from the side stand",
+    "Reset the table while they put on coats",
+    "Hand them a survey"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "What is the measure of our service?",
+   "answer": "Whether every guest felt we were on their side",
+   "wrong": [
+    "How fast every table turned",
+    "The night’s total sales",
+    "How many desserts we sold"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  },
+  {
+   "q": "After the farewell, what goes in the guest’s profile?",
+   "answer": "Notes for next time",
+   "wrong": [
+    "Their tip",
+    "Only their check total",
+    "Nothing"
+   ],
+   "source": "The Art of Table Service (service training module)"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}
