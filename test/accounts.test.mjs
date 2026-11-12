@@ -5,6 +5,7 @@ import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { DatabaseSync } from 'node:sqlite';
 import { totpAt } from '../server/auth.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -105,6 +106,14 @@ test('companies are kept apart', async () => {
   assert.equal(idx2.status, 200);
   assert.ok(!/Short Rib|Cozy Blankets|The Baldwin/.test(JSON.stringify(idx2.data)), 'no Baldwin names in their search');
   assert.equal((await owner2('/api/media')).data.media.length, 0);
+});
+
+test('a join code says whose look the next screens wear (Nov 12: the Mise sign-in)', async () => {
+  assert.equal((await person()(`/api/join/${code1}`)).data.brand, 'baldwin', 'The Baldwin keeps its own look');
+  const db = new DatabaseSync(path.join(dir, 'baldwin.db'));
+  db.prepare("UPDATE companies SET brand = 'mise' WHERE id = ?").run(company2);
+  try { assert.equal((await person()(`/api/join/${code2}`)).data.brand, 'mise', 'a Mise-brand company says so'); }
+  finally { db.prepare("UPDATE companies SET brand = 'baldwin' WHERE id = ?").run(company2); db.close(); }
 });
 
 test('staff: read and take quizzes, never edit', async () => {
