@@ -1,6 +1,13 @@
 // The tab icon is always the restaurant's logo (Nov 5). Stores with a logo file in public/icons use it;
 // a store without one shows its initial on the dark brand square until its logo is added.
-const HAS_LOGO = new Set(['the-baldwin']);
+// Nov 11 (Tommy: "for the mise version can i get the garlic icon for the favicon"): anything drawn in the Mise look
+// (a Mise-brand company, the /demo/mise picker, any Mise-look signed-out screen) shows Mise's garlic + fig app icon
+// (Figma Brand assets/App icon 520:233), public/icons/mise-*.png. It follows the brand: skin.ts announces each change.
+import { currentBrand } from './skin';
+
+const HAS_LOGO = new Set(['the-baldwin', 'mise']);
+type Store = { slug: string; name: string } | null | undefined;
+let last: Store; // the signed-in store, once the session has loaded
 
 function initialIcon(name: string) {
   const ch = (name.replace(/^the\s+/i, '').trim()[0] || '?').toUpperCase().replace(/[<>&"']/g, '');
@@ -8,8 +15,9 @@ function initialIcon(name: string) {
   return 'data:image/svg+xml,' + encodeURIComponent(svg);
 }
 
-export function setFavicon(store: { slug: string; name: string } | null | undefined) {
-  const slug = store && HAS_LOGO.has(store.slug) ? store.slug : store ? null : 'the-baldwin';
+function draw() {
+  const store = last;
+  const slug = currentBrand() === 'mise' ? 'mise' : store && HAS_LOGO.has(store.slug) ? store.slug : store ? null : 'the-baldwin';
   const icons = document.querySelectorAll<HTMLLinkElement>('link[rel="icon"]');
   const touch = document.querySelector<HTMLLinkElement>('link[rel="apple-touch-icon"]');
   icons.forEach((l) => {
@@ -19,3 +27,7 @@ export function setFavicon(store: { slug: string; name: string } | null | undefi
   });
   if (touch && slug) touch.href = `/icons/${slug}-180.png`;
 }
+
+export function setFavicon(store: Store) { last = store; draw(); }
+
+if (typeof window !== 'undefined') { window.addEventListener('brandchange', draw); draw(); }

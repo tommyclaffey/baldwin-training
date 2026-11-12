@@ -25,7 +25,8 @@ function override(): Brand | null {
 export function currentBrand(): Brand {
   return override() || fromPage || fromSession;
 }
-const apply = () => document.documentElement.classList.toggle('brand-mise', currentBrand() === 'mise');
+// The look changed: the class on <html>, and a 'brandchange' event (favicon.ts swaps the tab icon on it).
+const apply = () => { document.documentElement.classList.toggle('brand-mise', currentBrand() === 'mise'); window.dispatchEvent(new Event('brandchange')); };
 /** The signed-in company's brand (session.tsx sets it on every /api/me). */
 export function setSessionBrand(b: string | null | undefined) { fromSession = b === 'mise' ? 'mise' : 'baldwin'; apply(); }
 /** A signed-out page with its own look (null = follow the session). */
