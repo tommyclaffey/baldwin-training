@@ -20,6 +20,8 @@ import { topicList, questionPool } from './quizgen.mjs';
 import { chapterBySlug, markRead } from './manual.mjs';
 import * as chat from './chat.mjs';
 import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErrorAllowed } from './ops.mjs';
+import { enterStore } from './variant.mjs';
+import { migrateAcks, ackLevel, ackFor, ackOf, signAck } from './acks.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -31,7 +33,7 @@ LoginLimiter.useDb(db); // Nov 10: lockouts survive a redeploy
 seed(db);
 seedWineVideos(db);
 bootAccounts(db);
-migrateDemo(db); purgeDemos(db);
+migrateDemo(db); purgeDemos(db); migrateAcks(db);
 setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
 const demoLimiter = new LoginLimiter(30, 60 * 60_000, 'demo-start'); // 30 demo starts an hour per address
 const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address
@@ -143,6 +145,7 @@ const imageUrl = (v) => { const s = str(v, 300); return s.startsWith('/media/') 
 const accounts = accountRoutes({ db, fail, sendJson, readJson, str, isSecure });
 async function api(req, res, url) {
   const c = ctx(req);
+  enterStore(db, c.storeRow); // Nov 11: BRG's companies read BRG's Hospitality Program, everyone else the generic one
   const m = req.method;
   const p = url.pathname;
   const parts = p.split('/').filter(Boolean); // ['api', ...]
@@ -260,6 +263,23 @@ async function api(req, res, url) {
     if (b.done === false) db.prepare('DELETE FROM manual_reads WHERE user_id = ? AND slug = ?').run(u.id, key);
     else markRead(db, u.id, key);
     return sendJson(res, 200, { ok: true });
+  }
+  // The Hospitality Program's acknowledgment (Nov 11): the person signs it themselves (typed name + "I agree").
+  if (p === '/api/program/ack' && m === 'POST') {
+    const u = needReader(c, req);
+    const b = await readJson(req);
+    const L = ackLevel(String(b.level || ''));
+    if (!L) fail(400, 'That acknowledgment wasn’t found. Reload and try again.');
+    const name = str(b.name, 80).replace(/\s+/g, ' ').trim();
+    if (name.length < 2) fail(400, 'Type your full name to sign.');
+    if (b.agree !== true) fail(400, 'Tick the box to say you’ve read it and agree.');
+    const ack = signAck(db, { userId: u.id, storeId: c.store, companyId: c.company, level: L.file, name });
+    // Signing asks the trainer for the sign-off: it shows in the manager's Sign-offs waiting (staff only, once, not if signed off)
+    const me = db.prepare('SELECT * FROM users WHERE id = ? AND deleted_at IS NULL').get(u.id);
+    if (me?.role === 'staff' && me.store_id === c.store && !db.prepare('SELECT 1 FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').get('u' + u.id, L.practical, c.store))
+      db.prepare('INSERT OR IGNORE INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(u.id, c.store, c.company, L.practical, now());
+    audit(db, u.id, 'sign acknowledgment', `${L.title} · ${name}`, c.company);
+    return sendJson(res, 200, { ok: true, ack });
   }
   if (p === '/api/quiz/mark' && m === 'POST') {
     const u = needReader(c, req);
@@ -435,6 +455,8 @@ async function api(req, res, url) {
       const u = needUser(c, req); const b = await readJson(req);
       const x = person(b.userId); const key = String(b.key || '');
       if (!isPathSignoff(x, key) && !signable(db, c.store, key)) fail(400, 'That step can’t be signed off.');
+      // Hospitality 101 (Nov 11): the trainer signs off after the person has signed the acknowledgment
+      if (m === 'POST' && ackFor(key) && !ackOf(db, x.id, c.store, ackFor(key).file)) fail(400, `${x.name.split(/\s+/)[0]} hasn’t signed the acknowledgment yet.`);
       if (m === 'POST') {
         db.prepare('INSERT OR REPLACE INTO signoffs(device,quiz,by_user,at,company_id,store_id) VALUES (?,?,?,?,?,?)').run('u' + x.id, key, u.id, now(), c.company, c.store);
         db.prepare('DELETE FROM signoff_requests WHERE user_id = ? AND store_id = ? AND key = ?').run(x.id, c.store, key); // asked and answered

@@ -4,7 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { addRows } from './editinplace.mjs';
 import { bindEdits } from './editmode.mjs';
-import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, LEVELS, PROGRAMS, chaptersOf, programDef, isProgram, progLevel } from './manual.mjs';
+import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, LEVELS, PROGRAMS, chaptersOf, programDef, isProgram, progLevel, programText } from './manual.mjs';
+import { ackOf } from './acks.mjs';
 import { certificatesFor } from './certs.mjs';
 import { regionPage, regionData } from './region.mjs';
 import { lessonPage, level1Page, level2Page, level2OnLevel1, hubPage, barPage, programHub, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
@@ -569,7 +570,9 @@ function assembleRaw(db, file) {
     const uid = SCOPE.user?.id;
     const passed = uid && db.prepare('SELECT score, total, at FROM quiz_attempts WHERE user_id = ? AND quiz = ? ORDER BY at').all(uid, 't:' + bl.final).find((r) => r.score >= passFor(r.total));
     const practical = uid && bl.practical ? db.prepare('SELECT s.at, u.name by_name FROM signoffs s LEFT JOIN users u ON u.id = s.by_user WHERE s.device = ? AND s.quiz = ? AND s.store_id = ?').get('u' + uid, bl.practical, SCOPE.store) : null;
-    return barPage({ ...tpl, name: `${programDef(bl.program).name} · Level ${bl.level}` }, { L: bl, level: bl.level, done: sectionsDone(db, uid), passedAt: passed?.at || null, practical: practical ? { at: practical.at, by: practical.by_name } : null });
+    // Hospitality 101 (Nov 11): the acknowledgment, in this company's version, and whether this person has signed it
+    const ack = bl.ack ? { ...(programText(bl.program).ack || {}), signed: ackOf(db, uid, SCOPE.store, bl.file), canSign: !!uid } : null;
+    return barPage({ ...tpl, name: `${programDef(bl.program).name} · Level ${bl.level}` }, { L: bl, level: bl.level, done: sectionsDone(db, uid), passedAt: passed?.at || null, practical: practical ? { at: practical.at, by: practical.by_name } : null, ack });
   }
   // v3 lessons (Nov 1): one per chapter section, drawn from Figma 403:45
   const lm = /^l-(.+)~(\d+)$/.exec(file);
@@ -728,13 +731,14 @@ export function fullIndex(db) {
   // The Cocktail Program (Nov 8): its course page, and its lessons below
   for (const P of PROGRAMS) {
     if (!chaptersOf(P.key).length) continue;
-    entries.push({ id: P.key + '-hub', file: P.key + '-hub', slug: P.slug, name: `The Bar · ${P.name}`, title: P.name, section: 'The Bar', nav: P.name,
+    const sec = P.section || 'The Bar'; // the Hospitality Program isn't the bar's
+    entries.push({ id: P.key + '-hub', file: P.key + '-hub', slug: P.slug, name: `${sec} · ${P.name}`, title: P.name, section: sec, nav: P.name,
       text: `${P.name} levels certificates ${P.ladder.join(' ')}`, blurb: `${P.name}: every level, its final and its certificate.` });
   }
   for (const L of LEVELS) {
     const P = programDef(L.program); const chs = chaptersOf(L.program, L.level); const n = chs.length;
     if (!n) continue;
-    entries.push({ id: L.file, file: L.file, slug: L.slug, name: `The Bar · ${P.name} · Level ${L.level}`, title: `${P.name} · Level ${L.level}`, section: 'The Bar', nav: P.name,
+    entries.push({ id: L.file, file: L.file, slug: L.slug, name: `${P.section || 'The Bar'} · ${P.name} · Level ${L.level}`, title: `${P.name} · Level ${L.level}`, section: P.section || 'The Bar', nav: P.name,
       text: `${P.name} Level ${L.level} ${L.title} lessons final exam ${chs.map((c) => c.title).join(' ')}`,
       blurb: `Level ${L.level}: ${L.title}. ${n} lessons, then a ${L.len}-question final${L.practical ? ' and a practical' : ''}.` });
   }

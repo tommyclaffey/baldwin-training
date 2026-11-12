@@ -505,14 +505,16 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
         <div>
           <Label>Programs</Label>
           {(() => {
-            const started = p.programs.filter((g) => g.done > 0 || g.final?.best || g.certified || g.practical?.ask);
+            const started = p.programs.filter((g) => g.done > 0 || g.final?.best || g.certified || g.practical?.ask || g.practical?.ack);
             if (!started.length) return <p className="muted small">No program started yet.</p>;
             return started.map((g) => (
               <div key={g.title} className="pp-prog">
                 <strong>{g.title}</strong>
                 <small>{g.done} of {g.total} lessons · {g.certified ? `${g.cert}` : g.final?.passedAt ? 'final passed' : g.final?.best ? `final best ${g.final.best}` : 'no final yet'}</small>
                 <Bar done={g.done} total={g.total} />
-                {g.practical && !g.practical.at && g.final?.passedAt && (
+                {/* Hospitality 101 (Nov 11): the person signs the acknowledgment first, then the trainer signs it off (no final needed first) */}
+                {g.practical && 'ack' in g.practical && !g.practical.at && <small>{g.practical.ack ? `Acknowledgment signed “${g.practical.ack.name}” ${whenWords(g.practical.ack.at)}` : 'Acknowledgment not signed yet'}</small>}
+                {g.practical && !g.practical.at && ('ack' in g.practical ? !!g.practical.ack : !!g.final?.passedAt) && (
                   <div className="pp-prog-row">
                     <small>Practical: {g.practical.title}{g.practical.ask && !g.practical.ask.declinedAt ? ` · asked ${whenWords(g.practical.ask.at)}` : ''}</small>
                     <button type="button" className="mg-btn copper small" disabled={!!busy} onClick={() => void act('s:' + g.practical!.key, '/api/path/signoff', { key: g.practical!.key }, `${first}’s practical is signed off.`)}>Sign Off</button>

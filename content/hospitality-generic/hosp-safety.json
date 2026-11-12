@@ -1,0 +1,209 @@
+{
+ "number": 5,
+ "programLevel": 1,
+ "slug": "hosp-safety",
+ "title": "Safety and emergencies",
+ "script": "Lesson 5",
+ "lead": "When a guest is hurt, sick or choking: stay calm, act quickly, get the manager.",
+ "minutes": 8,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "Accident or injury",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Remain calm. Act quickly."
+    }
+   ],
+   "know": [
+    "Stay calm act quickly and follow the procedure.",
+    "Manager on duty: inform them immediately.",
+    "Ambulance call for medical help if it’s needed.",
+    "Report form the manager fills out the Accident/Injury Report."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Customer accident or injury",
+     "items": [
+      {
+       "name": "Concern",
+       "text": "show concern for the customer"
+      },
+      {
+       "name": "Manager",
+       "text": "inform the manager on duty, now"
+      },
+      {
+       "name": "Assess",
+       "text": "find out exactly what’s wrong; offer help"
+      },
+      {
+       "name": "Call",
+       "text": "an ambulance or medical help, if needed"
+      },
+      {
+       "name": "Report",
+       "text": "the manager fills out the Accident/Injury Report Form"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Illness, foreign objects and choking",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Show concern. Get the manager."
+    }
+   ],
+   "know": [
+    "Distress call for medical help right away.",
+    "The object ask to keep it for the manager to review.",
+    "Heimlich every crew member must know it."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Accident or injury",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "STAY CALM",
+      "line": "act quickly and follow the procedure."
+     },
+     {
+      "big": "MANAGER",
+      "line": "on duty: inform them immediately."
+     },
+     {
+      "big": "AMBULANCE",
+      "line": "call for medical help if it’s needed."
+     },
+     {
+      "big": "REPORT FORM",
+      "line": "the manager fills out the Accident/Injury Report."
+     }
+    ],
+    "read": {
+     "bigIdea": "Remain calm. Act quickly.",
+     "where": "Occasionally an emergency will involve a customer: an **illness**, an **accident** or someone **choking**. You must **remain calm, act quickly** and follow these safety procedures, along with any **safety posters** in your restaurant.",
+     "visual": 0,
+     "visualIntro": "A customer accident or injury, in order:"
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Illness, foreign objects and choking",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DISTRESS",
+      "line": "call for medical help right away."
+     },
+     {
+      "big": "THE OBJECT",
+      "line": "ask to keep it for the manager to review."
+     },
+     {
+      "big": "HEIMLICH",
+      "line": "every crew member must know it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Show concern. Get the manager.",
+     "where": "Two more emergencies, with the same first steps: **show concern** and **get the manager on duty**.",
+     "stops": [
+      {
+       "name": "Foodborne illness or a foreign object",
+       "text": "Show concern for the customer, and **call for medical assistance** if they are experiencing distress. **Get the manager on duty immediately.** Ask whether they have the **suspicious object**, and request to keep it for the manager to review."
+      },
+      {
+       "name": "Choking",
+       "text": "Give the **Heimlich maneuver** according to your restaurant’s **posted safety directions**. **Every crew member must be familiar with the Heimlich maneuver.**"
+      }
+     ]
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   }
+  ]
+ },
+ "sources": "Hospitality 101 Training, page 5: Safety and emergencies.",
+ "cards": [
+  {
+   "q": "A guest is hurt. After showing concern, what comes next?",
+   "answer": "Inform the manager on duty immediately",
+   "wrong": [
+    "Fill out the report form yourself",
+    "Ask the guest to sign a waiver",
+    "Finish serving your other tables"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Who fills out the Accident/Injury Report Form?",
+   "answer": "The manager",
+   "wrong": [
+    "The guest",
+    "The server who saw it",
+    "The host"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "In any emergency involving a guest, you must…",
+   "answer": "Remain calm, act quickly and follow the safety procedures",
+   "wrong": [
+    "Wait for the guest to ask for help",
+    "Call the guest’s family first",
+    "Move the guest to the bar"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "A guest finds a foreign object in their food. What do you ask?",
+   "answer": "Whether they have the object, and if you can keep it for the manager",
+   "wrong": [
+    "Whether they want a discount",
+    "If they’ve eaten here before",
+    "Whether to throw the plate away"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "A guest is in distress after eating. You show concern and…",
+   "answer": "Call for medical assistance",
+   "wrong": [
+    "Bring water and wait",
+    "Ask them to step outside",
+    "Take the plate back to the kitchen"
+   ],
+   "source": "Hospitality 101 Training"
+  },
+  {
+   "q": "Who must be familiar with the Heimlich maneuver?",
+   "answer": "Every crew member",
+   "wrong": [
+    "Managers only",
+    "Kitchen staff only",
+    "Whoever is closest to the first-aid kit"
+   ],
+   "source": "Hospitality 101 Training"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}

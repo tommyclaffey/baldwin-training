@@ -1,0 +1,355 @@
+{
+ "number": 4,
+ "programLevel": 1,
+ "slug": "hosp-guest-conflict",
+ "title": "Guest conflict and L.E.A.R.N.",
+ "script": "Lesson 4",
+ "lead": "How to turn a complaint around, and what to do for the issues that come up most. Always notify a manager.",
+ "minutes": 12,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "The L.E.A.R.N. method",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Always notify a manager."
+    }
+   ],
+   "know": [
+    "Listen calm, composed, without interrupting.",
+    "Empathize validate how the guest feels.",
+    "Apologize sincerely and professionally.",
+    "Resolve with a plan the guest agrees to.",
+    "Note report it to your supervisor, even if it’s fixed."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "L.E.A.R.N.",
+     "items": [
+      {
+       "name": "Listen",
+       "text": "calm, without interrupting"
+      },
+      {
+       "name": "Empathize",
+       "text": "validate their feelings"
+      },
+      {
+       "name": "Apologize",
+       "text": "sincere and professional"
+      },
+      {
+       "name": "Resolve",
+       "text": "a plan the guest agrees to"
+      },
+      {
+       "name": "Note",
+       "text": "report it and follow up"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Waits, wrong orders and spoiled food",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Apologize, fix it, bring in a manager."
+    }
+   ],
+   "know": [
+    "Thank them for their patience when the wait runs long.",
+    "Replace a wrong order with the right one, right away.",
+    "Comp it spoiled or inedible food, and replace it.",
+    "The line managers inspect it after spoiled food."
+   ]
+  },
+  {
+   "name": "Spills, dirty tables and poor service",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Show genuine care, then get help."
+    }
+   ],
+   "know": [
+    "Towels dry and wet, right away, after a spill.",
+    "Thank them for pointing out a dirty table or restroom.",
+    "Support team takes the cleanup if you’re mid-service.",
+    "Manager steps in when a guest reports poor service."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "The L.E.A.R.N. method",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LISTEN",
+      "line": "calm, composed, without interrupting."
+     },
+     {
+      "big": "EMPATHIZE",
+      "line": "validate how the guest feels."
+     },
+     {
+      "big": "APOLOGIZE",
+      "line": "sincerely and professionally."
+     },
+     {
+      "big": "RESOLVE",
+      "line": "with a plan the guest agrees to."
+     },
+     {
+      "big": "NOTE",
+      "line": "report it to your supervisor, even if it’s fixed."
+     }
+    ],
+    "read": {
+     "bigIdea": "Always notify a manager.",
+     "where": "An unhappy guest can **significantly damage** a restaurant’s reputation, while a successfully resolved complaint can build **lifelong loyalty**. **Sincerity and urgency** are critical. With every complaint, **always notify a manager**.",
+     "stopsTitle": "The L.E.A.R.N. method",
+     "stops": [
+      {
+       "name": "Listen",
+       "text": "Stay **calm and composed**, and listen carefully to the complaint **without interrupting**. Avoid matching aggressive energy."
+      },
+      {
+       "name": "Empathize",
+       "text": "Show **sincere concern** and validate the guest’s feelings: “I understand how frustrating that must have been.”"
+      },
+      {
+       "name": "Apologize",
+       "text": "Offer a **sincere, professional apology** for the inconvenience caused."
+      },
+      {
+       "name": "Resolve",
+       "text": "Propose a way to resolve it, make sure the guest **agrees with the plan**, and offer immediate **service recovery**: a replacement item, a complimentary upgrade or loyalty points."
+      },
+      {
+       "name": "Note",
+       "text": "Note it and follow up. **Report it to your supervisor immediately**, even if you resolved it yourself, and complete any reporting paperwork."
+      }
+     ],
+     "sayIt": "I completely understand why you’d feel that way."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Waits, wrong orders and spoiled food",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "THANK THEM",
+      "line": "for their patience when the wait runs long."
+     },
+     {
+      "big": "REPLACE",
+      "line": "a wrong order with the right one, right away."
+     },
+     {
+      "big": "COMP IT",
+      "line": "spoiled or inedible food, and replace it."
+     },
+     {
+      "big": "THE LINE",
+      "line": "managers inspect it after spoiled food."
+     }
+    ],
+    "read": {
+     "bigIdea": "Apologize, fix it, bring in a manager.",
+     "where": "Resolutions for the issues that come up most. In every one, **a manager is part of the fix**.",
+     "stops": [
+      {
+       "name": "Extended wait time",
+       "text": "Sincerely **apologize**, **thank the guest for their patience**, and if applicable, coordinate with a manager to offer a **complimentary soup or salad, appetizer or beverage**."
+      },
+      {
+       "name": "Incorrectly filled order",
+       "text": "Apologize, **replace it with the correct order immediately**, and work with the manager to offer a complimentary soup or salad, appetizer or beverage."
+      },
+      {
+       "name": "Spoiled or inedible food",
+       "text": "Offer to **replace the item immediately** and **comp it**. **Notify managers immediately** so they can inspect the remaining food on the line and prevent further issues."
+      }
+     ]
+    },
+    "check": [
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "name": "Spills, dirty tables and poor service",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "TOWELS",
+      "line": "dry and wet, right away, after a spill."
+     },
+     {
+      "big": "THANK THEM",
+      "line": "for pointing out a dirty table or restroom."
+     },
+     {
+      "big": "SUPPORT TEAM",
+      "line": "takes the cleanup if you’re mid-service."
+     },
+     {
+      "big": "MANAGER",
+      "line": "steps in when a guest reports poor service."
+     }
+    ],
+    "read": {
+     "bigIdea": "Show genuine care, then get help.",
+     "where": "Three more, with the same rule: **notify your supervisor or manager**.",
+     "stops": [
+      {
+       "name": "Spilling food or drink on a guest",
+       "text": "Sincerely apologize, **immediately bring dry and wet towels** to limit the damage, show genuine care, and **notify your supervisor immediately** to help resolve it."
+      },
+      {
+       "name": "Dirty table or restroom",
+       "text": "Apologize, **thank the guest** for pointing it out, and **clean and sanitize** the area immediately, or **notify the support team** if you are in the middle of active service."
+      },
+      {
+       "name": "Poor service or an impolite server",
+       "text": "Promise to **get your manager involved immediately**, and report it so they can step in and make things right."
+      }
+     ]
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   }
+  ]
+ },
+ "sources": "Baldwin Restaurant Group, Hospitality 101 Training (2026), page 4: Guest conflict and problem resolution.",
+ "cards": [
+  {
+   "q": "What does the N in L.E.A.R.N. ask you to do?",
+   "answer": "Report it to your supervisor, even if you fixed it",
+   "wrong": [
+    "Negotiate a discount",
+    "Nothing more once the guest is happy",
+    "Notify the rest of the guest’s party"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "A guest is raising their voice. While you listen, you…",
+   "answer": "Stay calm and avoid matching their energy",
+   "wrong": [
+    "Match their energy so they know you care",
+    "Explain the kitchen’s side right away",
+    "Walk away until they calm down"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "In Resolve, before you act on a plan, you make sure…",
+   "answer": "The guest agrees with the plan",
+   "wrong": [
+    "The kitchen agrees it was their fault",
+    "The bill has been paid",
+    "The other guests didn’t notice"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "Who should hear about every guest complaint?",
+   "answer": "A manager, always",
+   "wrong": [
+    "Only the server who handled it",
+    "No one, if it was resolved",
+    "The host stand"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "What can a successfully resolved complaint build?",
+   "answer": "Lifelong loyalty",
+   "wrong": [
+    "A longer wait list",
+    "A lower check average",
+    "A free meal for every visit"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "A table has waited far too long. What do you do?",
+   "answer": "Apologize, thank them for their patience, and work with a manager on a complimentary item",
+   "wrong": [
+    "Explain the kitchen is busy tonight",
+    "Take something off the bill on your own",
+    "Avoid the table until the food is ready"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "A guest is served spoiled food. Why notify managers immediately?",
+   "answer": "So they can inspect the remaining food on the line",
+   "wrong": [
+    "So they can lower the bill",
+    "So they can call the supplier first",
+    "So they can write up the cook"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "What happens to a spoiled or inedible item?",
+   "answer": "It’s replaced right away and comped",
+   "wrong": [
+    "It’s replaced and charged as normal",
+    "It comes off the menu for the week",
+    "The guest picks a dessert instead"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "You spill a drink on a guest. What do you bring right away?",
+   "answer": "Dry and wet towels",
+   "wrong": [
+    "The check",
+    "A new menu",
+    "A manager’s business card"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "A guest says the restroom is dirty and you’re in the middle of service. You…",
+   "answer": "Apologize, thank them, and notify the support team",
+   "wrong": [
+    "Say someone will get to it later",
+    "Finish your tables first, then clean it",
+    "Ask them to use another restroom"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "A guest complains that their server was impolite. What do you promise?",
+   "answer": "To get your manager involved immediately",
+   "wrong": [
+    "To talk to the server yourself",
+    "To move them to another section",
+    "To take dessert off the bill"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}

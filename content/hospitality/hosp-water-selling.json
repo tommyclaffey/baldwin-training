@@ -1,0 +1,275 @@
+{
+ "number": 4,
+ "programLevel": 2,
+ "slug": "hosp-water-selling",
+ "title": "Water and suggestive selling",
+ "script": "Lesson 4",
+ "lead": "Water first, with no surprises on the check. Then suggestions that are simply help.",
+ "minutes": 10,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "Water service",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Water first, before anything else."
+    }
+   ],
+   "know": [
+    "Water first before anything else.",
+    "No surprises be transparent about the charge.",
+    "House still and sparkling are complimentary.",
+    "One third full: that’s when you refill."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Our water",
+     "rows": [
+      {
+       "name": "House Still",
+       "meta": "Complimentary · our everyday pour. Offer to every table."
+      },
+      {
+       "name": "House Sparkling",
+       "meta": "Complimentary · offer alongside still so guests can choose freely."
+      },
+      {
+       "name": "San Pellegrino Sparkling ($)",
+       "meta": "Additional charge · present the bottle label to the host, open and pour tableside."
+      },
+      {
+       "name": "Fiji Still ($)",
+       "meta": "Additional charge · present the label, open and pour tableside."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Suggestive selling",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A great suggestion is simply help."
+    }
+   ],
+   "know": [
+    "Help that’s all a great suggestion is.",
+    "Ask first light or rich, adventurous or classic?",
+    "Two, not ten a favorite, in sensory words.",
+    "Pairings each suggestion completes the one before.",
+    "Never pressure honor every “no” graciously."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Water service",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WATER FIRST",
+      "line": "before anything else."
+     },
+     {
+      "big": "NO SURPRISES",
+      "line": "be transparent about the charge."
+     },
+     {
+      "big": "HOUSE",
+      "line": "still and sparkling are complimentary."
+     },
+     {
+      "big": "ONE THIRD",
+      "line": "full: that’s when you refill."
+     }
+    ],
+    "read": {
+     "bigIdea": "Water first, before anything else.",
+     "where": "Offer **water first, before anything else**, and always be **transparent about the charge** so there are **no surprises on the check**.",
+     "stops": [
+      {
+       "name": "Hold the glass by the base",
+       "text": "Never by the rim."
+      },
+      {
+       "name": "Refill at one third",
+       "text": "Refill when a glass is **about one third full**, so **no glass is ever empty**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "What we offer:",
+     "sayIt": "May I offer you still or sparkling water? House is our pleasure, or I can bring San Pellegrino or Fiji, which carry an additional charge."
+    },
+    "check": [
+     0,
+     4,
+     2
+    ]
+   },
+   {
+    "name": "Suggestive selling",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "HELP",
+      "line": "that’s all a great suggestion is."
+     },
+     {
+      "big": "ASK FIRST",
+      "line": "light or rich, adventurous or classic?"
+     },
+     {
+      "big": "TWO, NOT TEN",
+      "line": "a favorite, in sensory words."
+     },
+     {
+      "big": "PAIRINGS",
+      "line": "each suggestion completes the one before."
+     },
+     {
+      "big": "NEVER PRESSURE",
+      "line": "honor every “no” graciously."
+     }
+    ],
+    "read": {
+     "bigIdea": "A great suggestion is simply help.",
+     "where": "Guiding the guest toward the **best possible meal**. **Revenue follows naturally from trust.**",
+     "stops": [
+      {
+       "name": "Ask first, then suggest",
+       "text": "Learn what they **lean toward** (light or rich, adventurous or classic) before you recommend."
+      },
+      {
+       "name": "Offer two, not ten",
+       "text": "Share a **personal favorite** and describe it in **sensory words**; a short, confident answer beats a long list."
+      },
+      {
+       "name": "Think in pairings",
+       "text": "Connect **cocktails, wine, courses and dessert** so each suggestion completes the one before it."
+      },
+      {
+       "name": "Read the table",
+       "text": "Celebrations welcome a **toast**; a quiet dinner may want a **lighter touch**. **Never pressure**, and honor every “no” graciously."
+      }
+     ],
+     "sayIt": "The crudo is what I’d begin with tonight, bright and delicate. It sets up the halibut beautifully, and a glass of the Chablis is lovely alongside both."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   }
+  ]
+ },
+ "sources": "Baldwin Restaurant Group, The Art of Table Service: 9, Water Service, and 10, Suggestive Selling.",
+ "cards": [
+  {
+   "q": "What do we offer a table first, before anything else?",
+   "answer": "Water",
+   "wrong": [
+    "A cocktail list",
+    "The specials",
+    "Bread"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Why are we transparent about the charge for water?",
+   "answer": "So there are no surprises on the check",
+   "wrong": [
+    "So guests pick the lower-priced one",
+    "So the table orders faster",
+    "Because the menu doesn’t list it"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How is a bottled water served?",
+   "answer": "Present the label to the host, open it and pour tableside",
+   "wrong": [
+    "Opened at the bar and poured into glasses",
+    "Set on the table, unopened",
+    "Poured at the side stand"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Which waters carry an additional charge?",
+   "answer": "San Pellegrino and Fiji",
+   "wrong": [
+    "House still and house sparkling",
+    "House sparkling only",
+    "None of them"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "When do you refill a water glass?",
+   "answer": "When it’s about one third full",
+   "wrong": [
+    "When it’s empty",
+    "Only when asked",
+    "After every course"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How do you hold a glass?",
+   "answer": "By the base, never the rim",
+   "wrong": [
+    "By the rim",
+    "From the inside",
+    "Any way, if your hands are clean"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "Before you recommend anything, you…",
+   "answer": "Ask what the guest leans toward",
+   "wrong": [
+    "Suggest the highest-priced item",
+    "List everything on the menu",
+    "Recommend the special, whatever they like"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "How many suggestions do we offer?",
+   "answer": "Two, not ten: a short, confident answer",
+   "wrong": [
+    "As many as the guest will hear",
+    "One, always the highest-priced item",
+    "None unless asked"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "A guest says no to your suggestion. You…",
+   "answer": "Honor it graciously",
+   "wrong": [
+    "Offer it again later",
+    "Suggest something cheaper right away",
+    "Explain what they’re missing"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  },
+  {
+   "q": "In suggestive selling, revenue…",
+   "answer": "Follows naturally from trust",
+   "wrong": [
+    "Comes from pushing the priciest items",
+    "Comes from a suggestion at every visit",
+    "Comes from long lists of options"
+   ],
+   "source": "Baldwin Restaurant Group, The Art of Table Service (service training module)"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}

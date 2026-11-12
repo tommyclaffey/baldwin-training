@@ -1,0 +1,247 @@
+{
+ "number": 3,
+ "programLevel": 1,
+ "slug": "hosp-soft-skills",
+ "title": "Soft skills and active listening",
+ "script": "Lesson 3",
+ "lead": "The people skills hospitality runs on, and how to make a guest feel heard.",
+ "minutes": 10,
+ "program": "hosp",
+ "sections": [
+  {
+   "name": "Core soft skills",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Hospitality is a people skill."
+    }
+   ],
+   "know": [
+    "Eq understand, respect and anticipate guest needs.",
+    "Clear communication prevents misunderstandings.",
+    "Calm and professional when plans change.",
+    "Teamwork keeps every day running smoothly."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Six soft skills",
+     "rows": [
+      {
+       "name": "Emotional intelligence (EQ) and empathy",
+       "meta": "Understand, respect and anticipate guest needs while keeping a welcoming environment."
+      },
+      {
+       "name": "Active listening and clear communication",
+       "meta": "Convey information clearly and make sure guests feel heard, which prevents misunderstandings."
+      },
+      {
+       "name": "Conflict resolution and troubleshooting",
+       "meta": "Manage difficult situations and complaints diplomatically, turning negative experiences into positive ones."
+      },
+      {
+       "name": "Adaptability and resilience",
+       "meta": "Thrive under pressure, calm and professional when schedules or circumstances change."
+      },
+      {
+       "name": "Teamwork",
+       "meta": "Work with diverse teams so day-to-day operations run smoothly."
+      },
+      {
+       "name": "Cultural awareness",
+       "meta": "Respect customs, dining and drinking etiquette, and gestures, for a local and global clientele."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Active listening",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Listen 80% of the time."
+    }
+   ],
+   "know": [
+    "80/20 listen 80% of the time, speak 20%.",
+    "Open body language: arms uncrossed, eye contact, a nod.",
+    "No interrupting let them finish before you answer.",
+    "Mirror repeat back the core of what they need."
+   ]
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Core soft skills",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "EQ",
+      "line": "understand, respect and anticipate guest needs."
+     },
+     {
+      "big": "CLEAR",
+      "line": "communication prevents misunderstandings."
+     },
+     {
+      "big": "CALM",
+      "line": "and professional when plans change."
+     },
+     {
+      "big": "TEAMWORK",
+      "line": "keeps every day running smoothly."
+     }
+    ],
+    "read": {
+     "bigIdea": "Hospitality is a people skill.",
+     "where": "Delivering exceptional hospitality takes a set of **emotional and interpersonal skills**.",
+     "visual": 0,
+     "visualIntro": "The six that matter most:"
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Active listening",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "80/20",
+      "line": "listen 80% of the time, speak 20%."
+     },
+     {
+      "big": "OPEN",
+      "line": "body language: arms uncrossed, eye contact, a nod."
+     },
+     {
+      "big": "NO INTERRUPTING",
+      "line": "let them finish before you answer."
+     },
+     {
+      "big": "MIRROR",
+      "line": "repeat back the core of what they need."
+     }
+    ],
+    "read": {
+     "bigIdea": "Listen 80% of the time.",
+     "where": "Active listening transforms standard service into a **memorable experience** by showing guests that we care about their **specific preferences**.",
+     "stops": [
+      {
+       "name": "The 80/20 rule",
+       "text": "**Listen 80%** of the time and **speak 20%**, to clarify or offer solutions."
+      },
+      {
+       "name": "Non-verbal cues",
+       "text": "Keep **open body language** (arms uncrossed), make **direct eye contact** and **nod** to show you’re engaged."
+      },
+      {
+       "name": "No interruptions",
+       "text": "Let the guest **fully finish speaking** before you offer a resolution or a response."
+      },
+      {
+       "name": "Mirror and paraphrase",
+       "text": "Repeat back the **core of the guest’s need**: “Just to confirm, you’d like your Old Fashioned to have 3 cherries?”"
+      }
+     ],
+     "sayIt": "Just to make sure we get this right, you would prefer the dressing on the side?"
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   }
+  ]
+ },
+ "sources": "Baldwin Restaurant Group, Hospitality 101 Training (2026), page 3: Core soft skills and active listening.",
+ "cards": [
+  {
+   "q": "Which soft skill means understanding, respecting and anticipating guest needs?",
+   "answer": "Emotional intelligence and empathy",
+   "wrong": [
+    "Teamwork",
+    "Cultural awareness",
+    "Adaptability"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "Clear communication makes guests feel heard. What does it prevent?",
+   "answer": "Misunderstandings",
+   "wrong": [
+    "Long wait times",
+    "Spills",
+    "Menu changes"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "Cultural awareness means respecting…",
+   "answer": "Customs, dining and drinking etiquette, and gestures",
+   "wrong": [
+    "The dress code",
+    "The kitchen’s prep schedule",
+    "Seating requests"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "Good conflict resolution turns a negative experience into…",
+   "answer": "A positive one",
+   "wrong": [
+    "A free meal",
+    "A shorter visit",
+    "A note for the manager only"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "The 80/20 rule means…",
+   "answer": "Listen 80% of the time, speak 20%",
+   "wrong": [
+    "Speak 80% of the time, listen 20%",
+    "Spend 80% of your time at your tables",
+    "Check back within 20 seconds"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "Which shows a guest you’re engaged, without words?",
+   "answer": "Arms uncrossed, direct eye contact and a nod",
+   "wrong": [
+    "Arms crossed and a slight lean",
+    "Writing without looking up",
+    "Glancing at your other tables"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "A guest wants the dressing on the side. Mirroring sounds like…",
+   "answer": "“Just to make sure we get this right, you would prefer the dressing on the side?”",
+   "wrong": [
+    "“Got it.”",
+    "“No problem.”",
+    "“Sure, anything else?”"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  },
+  {
+   "q": "When do you offer a resolution or a response?",
+   "answer": "After the guest has fully finished speaking",
+   "wrong": [
+    "As soon as you know the answer",
+    "Halfway through, to save time",
+    "Only once a manager arrives"
+   ],
+   "source": "Baldwin Restaurant Group, Hospitality 101 Training (2026)"
+  }
+ ],
+ "facts": [],
+ "unverified": []
+}
