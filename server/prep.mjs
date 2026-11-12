@@ -13,11 +13,14 @@
 //
 // The model:
 //   prep_items    a store's juices, syrups and garnishes: unit, batch size, a par for each weekday (Sun…Sat), shelf life
-//                 in days (0 = one shift: toss at close; null = not set, so batches have no use-by).
-//   prep_batches  every batch made: amount, what's left (remaining), the day it was made and its use-by day.
-//   prep_events   where it went: 'used', 'waste' (with a reason) and 'ranout'. Used and wasted point at their batch, so a
-//                 report can say, for the batches made in a period, how much was used, wasted and is still in use.
-// Clearing a batch (Used Up, or logging what's left as waste once it's past its use-by) closes it: what isn't wasted was used.
+//                 in days (0 = one shift; null = not set, so batches have no use-by). Shelf life is a guide only.
+//   prep_counts   the shift count (Nov 12, Figma 31b): what each item walked in with at the start of a shift. Used comes from
+//                 one count to the next (see recompute); the "Used Up" buttons are gone.
+//   prep_batches  every batch made: amount, what the app thinks is left (set by each count, newest batch first), the day it
+//                 was made and its use-by day.
+//   prep_events   'waste' (with a reason) and 'ranout'. ('used' rows are from before the count, Nov 12, and aren't read.)
+// Nothing is ever tossed for anyone: past its use-by at the count, the person chooses Keep or Toss (Tommy, Nov 12: "don't
+// worry about carry over, have the user make the decision").
 import { audit, now } from './db.mjs';
 import { listEntries } from './cms.mjs';
 import { chatCtx, resolveRoom, postMessage, ChatError, addCardSource } from './chat.mjs';
@@ -202,63 +205,206 @@ const useByWords = (useBy, today) => {
 const timeOf = (at) => new Date(at).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: TZ }).toLowerCase();
 const dayWord = (day, today) => (day === today ? 'today' : day === addDays(today, -1) ? 'last night' : SHORT[dowOf(day)]);
 
-/** Open batches with something left, by item. */
-function openBatches(db, store) {
-  const by = new Map();
-  for (const b of db.prepare(`SELECT b.*, u.name maker FROM prep_batches b LEFT JOIN users u ON u.id = b.made_by
-    WHERE b.store_id = ? AND b.closed_at IS NULL AND b.remaining > 0 ORDER BY b.made_at`).all(store)) {
-    if (!by.has(b.item_id)) by.set(b.item_id, []);
-    by.get(b.item_id).push(b);
-  }
-  return by;
+/* ------------------------------------------------------------------ the shift count (Figma 31b, 666:818) */
+// Per item, per shift: Walked in with = the count at the start of the shift. Prepped = the batches logged this shift.
+// Starting with = walked in with + prepped. Used (for the shift before) = its starting with − the waste logged since its
+// count − the new count. Everything a report needs is stored on prep_counts by recompute(), so reports read rows.
+const COUNT_COLS = 'c.*, u.name who';
+const countRow = (db, itemId, day) => db.prepare(`SELECT ${COUNT_COLS} FROM prep_counts c LEFT JOIN users u ON u.id = c.by_user
+  WHERE c.item_id = ? AND c.day = ? AND c.replaced_at IS NULL ORDER BY c.at DESC LIMIT 1`).get(itemId, day) || null;
+/** The latest count before a day (the shift that's still open until a count that day closes it). */
+const lastBefore = (db, itemId, day) => db.prepare(`SELECT ${COUNT_COLS} FROM prep_counts c LEFT JOIN users u ON u.id = c.by_user
+  WHERE c.item_id = ? AND c.day < ? AND c.replaced_at IS NULL ORDER BY c.day DESC, c.at DESC LIMIT 1`).get(itemId, day) || null;
+/** The store's count today: when it was last saved, by whom, how many items. */
+function countedOn(db, store, day) {
+  const r = db.prepare(`SELECT c.at, c.by_user, u.name who, (SELECT COUNT(*) FROM prep_counts x JOIN prep_items i ON i.id = x.item_id AND i.archived_at IS NULL
+      WHERE x.store_id = c.store_id AND x.day = c.day AND x.replaced_at IS NULL) n
+    FROM prep_counts c LEFT JOIN users u ON u.id = c.by_user WHERE c.store_id = ? AND c.day = ? AND c.replaced_at IS NULL ORDER BY c.at DESC LIMIT 1`).get(store, day);
+  return r ? { at: r.at, by: person(r.by_user, r.who), n: r.n } : null;
 }
-const onHandOf = (list, today) => r2((list || []).filter((b) => !b.use_by || b.use_by >= today).reduce((n, b) => n + b.remaining, 0));
-/** Batches made before today that are past their use-by, due tonight or due tomorrow: clear these first. */
-const isUseFirst = (b, today) => b.day < today && !!b.use_by && b.use_by <= addDays(today, 1);
+/** What the shift before should have left if nothing was used: its starting with − its waste. */
+const expectedFrom = (last) => (last ? r2(last.amount + last.prepped - last.wasted) : null);
 
-/** Today: the Use First card, the prep list, and this week so far. */
+/**
+ * Work out the stored numbers on an item's counts (prepped, wasted, used, expected, high), from the count before the one
+ * that covers `sinceDay` (waste tossed at a count belongs to the shift before it). No sinceDay: all of them.
+ */
+export function recompute(db, itemId, sinceDay = null) {
+  const rows = db.prepare('SELECT * FROM prep_counts WHERE item_id = ? AND replaced_at IS NULL ORDER BY day, at').all(itemId);
+  if (!rows.length) return;
+  let k = 0;
+  if (sinceDay) rows.forEach((r, i) => { if (r.day <= sinceDay) k = i; });
+  const start = sinceDay ? Math.max(0, k - 1) : 0;
+  const first = rows[start];
+  const batches = db.prepare('SELECT day, amount FROM prep_batches WHERE item_id = ? AND day >= ?').all(itemId, first.day);
+  const waste = db.prepare("SELECT at, amount FROM prep_events WHERE item_id = ? AND kind = 'waste' AND at >= ?").all(itemId, first.at);
+  const upd = db.prepare('UPDATE prep_counts SET prepped = ?, wasted = ?, used = ?, next_day = ?, shifts = ? WHERE id = ?');
+  const updNext = db.prepare('UPDATE prep_counts SET expected = ?, high = ?, kept = CASE WHEN ? THEN kept ELSE 0 END WHERE id = ?');
+  for (let i = start; i < rows.length; i++) {
+    const c = rows[i], n = rows[i + 1];
+    const prepped = r2(batches.filter((b) => b.day >= c.day && (!n || b.day < n.day)).reduce((s, b) => s + b.amount, 0));
+    const wasted = r2(waste.filter((w) => w.at >= c.at && (!n || w.at < n.at)).reduce((s, w) => s + w.amount, 0));
+    let used = null;
+    if (n) {
+      const expected = r2(c.amount + prepped - wasted);
+      // Higher than expected: Used shows "—", never a negative number.
+      const high = n.amount > expected + EPS;
+      used = high ? null : r2(expected - n.amount);
+      updNext.run(expected, high ? 1 : 0, high ? 1 : 0, n.id);
+    }
+    upd.run(prepped, wasted, used, n ? n.day : null, n ? daysBetween(c.day, n.day) : null, c.id);
+  }
+}
+
+/** An item's open batches, newest first: what's left on the shelf is the newest, since the oldest goes out first. */
+const openOf = (db, itemId) => db.prepare('SELECT * FROM prep_batches WHERE item_id = ? AND closed_at IS NULL AND remaining > 0 ORDER BY made_at DESC, id DESC').all(itemId);
+const pastUseBy = (b, day) => !!b.use_by && b.use_by < day;
+/** Batches made before today that are due tonight or tomorrow: use these first (past use-by is decided at the count). */
+const isUseFirst = (b, today) => b.day < today && !!b.use_by && b.use_by >= today && b.use_by <= addDays(today, 1);
+
+/** The Start of Shift Count page: every item with what it started last shift with and what's on the shelf to count. */
+export function countSheet(db, storeRow, user) {
+  ensureItems(db, storeRow);
+  const day = dayOf();
+  const items = itemsOf(db, storeRow.id).map((it) => {
+    const c = countRow(db, it.id, day), l = lastBefore(db, it.id, day);
+    const open = openOf(db, it.id).filter((b) => b.day < day);
+    const fresh = r2(open.filter((b) => !pastUseBy(b, day)).reduce((s, b) => s + b.remaining, 0));
+    const expired = open.filter((b) => pastUseBy(b, day)).map((b) => ({ id: b.id, day: b.day, amount: r2(b.remaining), useBy: b.use_by }));
+    return {
+      id: it.id, name: it.name, kind: it.kind, unit: it.unit, batch: it.batch, par: Number(parseJson(it.pars, [])[dowOf(day)]) || 0,
+      shelfDays: it.shelf_days, shelfWords: shelfWords(it.shelf_days),
+      last: l ? { day: l.day, at: l.at, by: person(l.by_user, l.who), walkedIn: l.amount, starting: r2(l.amount + l.prepped), wasted: r2(l.wasted), expected: c ? c.expected : expectedFrom(l) } : null,
+      today: c ? { amount: c.amount, tossed: c.tossed, kept: !!c.kept, high: !!c.high, at: c.at, by: person(c.by_user, c.who) } : null,
+      fresh, expired,
+    };
+  });
+  return { store: storeRow.name, day, weekday: WEEKDAYS[dowOf(day)], can: { log: canLog(user), edit: canManage(user) }, me: user ? person(user.id, user.name) : null,
+    counted: countedOn(db, storeRow.id, day), items };
+}
+
+/**
+ * Save the count (bartenders, managers, owners). items: [{ itemId, amount, toss?, keep? }]
+ *   amount  walked in with: what's on the shelf and being kept.
+ *   toss    what's past its use-by and the person chose Toss: logged as Expired waste just before the count, not counted.
+ *           Nothing is ever tossed for them: past its use-by and no choice = kept (Tommy, Nov 12: "have the user make the
+ *           decision").
+ *   keep    "Keep the count" when it's higher than expected.
+ * A second count today replaces the first (it stays in the history). Batches made before today keep what the count says is
+ * left, newest first; the older ones are closed.
+ */
+export function saveCount(db, x, u, b) {
+  const list = Array.isArray(b?.items) ? b.items : [];
+  if (!list.length || list.length > 200) bad(400, 'Count at least one item.');
+  const day = dayOf(), t = Date.now(), at = new Date(t).toISOString(), tossAt = new Date(t - 1000).toISOString();
+  const seen = new Set();
+  const plan = list.map((e) => {
+    const it = itemOr404(db, x.store, e?.itemId);
+    if (it.archived_at) bad(409, `${it.name} is archived.`);
+    if (seen.has(it.id)) bad(400, `${it.name} is on the count twice.`);
+    seen.add(it.id);
+    const amount = num(e.amount, { min: 0, max: 100000, name: 'count' });
+    const toss = e.toss == null || e.toss === '' ? 0 : num(e.toss, { min: 0, max: 100000, name: 'amount to toss' });
+    const expired = openOf(db, it.id).filter((bt) => bt.day < day && pastUseBy(bt, day));
+    const cap = r2(expired.reduce((s, bt) => s + bt.remaining, 0));
+    if (toss > cap + EPS) bad(400, `Only ${amt(cap, it.unit)} of ${it.name.toLowerCase()} is past its use-by.`);
+    return { it, amount, toss, keep: !!e.keep, expired };
+  });
+  const setB = db.prepare('UPDATE prep_batches SET remaining = ?, closed_at = ? WHERE id = ?');
+  db.exec('BEGIN');
+  try {
+    for (const p of plan) {
+      let left = p.toss;
+      for (const bt of p.expired) {
+        if (left <= EPS) break;
+        const take = r2(Math.min(left, bt.remaining));
+        addEvent(db, x, { item: p.it.id, batch: bt.id, kind: 'waste', amount: take, reason: 'expired', note: 'Tossed at the count', at: tossAt, by: u.id });
+        const rem = r2(bt.remaining - take);
+        setB.run(rem, rem <= EPS ? at : null, bt.id);
+        left = r2(left - take);
+      }
+      // A recount keeps what the earlier count today tossed (it's already logged as waste).
+      const before = db.prepare('SELECT IFNULL(SUM(tossed),0) n FROM prep_counts WHERE item_id = ? AND day = ? AND replaced_at IS NULL').get(p.it.id, day).n;
+      db.prepare('UPDATE prep_counts SET replaced_at = ? WHERE item_id = ? AND day = ? AND replaced_at IS NULL').run(at, p.it.id, day);
+      db.prepare('INSERT INTO prep_counts(company_id, store_id, item_id, day, amount, tossed, at, by_user, kept) VALUES (?,?,?,?,?,?,?,?,?)')
+        .run(x.company, x.store, p.it.id, day, p.amount, r2(before + p.toss), at, u.id, p.keep ? 1 : 0);
+      let have = p.amount;
+      for (const bt of openOf(db, p.it.id).filter((z) => z.day < day)) {
+        const keep = r2(Math.min(have, bt.remaining));
+        have = r2(have - keep);
+        setB.run(keep, keep <= EPS ? at : null, bt.id);
+      }
+      recompute(db, p.it.id, day);
+    }
+    db.exec('COMMIT');
+  } catch (e) { db.exec('ROLLBACK'); throw e; }
+  audit(db, u.id, 'prep count', `${plan.length} ${plan.length === 1 ? 'item' : 'items'}`, x.company);
+  return { day, at, counted: plan.length };
+}
+
+/** Today: the two steps (count, then prep to par), the Use First card, the prep list, and this week so far. */
 export function today(db, storeRow, user) {
   ensureItems(db, storeRow);
   const store = storeRow.id;
   const day = dayOf();
   const dow = dowOf(day);
   const items = itemsOf(db, store);
-  const open = openBatches(db, store);
+  const counted = countedOn(db, store, day);
   const made = db.prepare(`SELECT b.*, u.name maker FROM prep_batches b LEFT JOIN users u ON u.id = b.made_by WHERE b.store_id = ? AND b.day = ? ORDER BY b.made_at`).all(store, day);
   const usual = db.prepare(`SELECT b.made_by id, u.name, COUNT(*) n FROM prep_batches b JOIN users u ON u.id = b.made_by AND u.deleted_at IS NULL
     WHERE b.item_id = ? AND b.day >= ? AND b.day < ? AND CAST(strftime('%w', b.day) AS INT) = ? GROUP BY b.made_by ORDER BY n DESC, b.made_by LIMIT 1`);
+  const useFirst = [];
+  let lastCount = null;
   const rows = items.map((it) => {
     const pars = parseJson(it.pars, []);
     const par = Number(pars[dow]) || 0;
-    const list = open.get(it.id) || [];
-    const onHand = onHandOf(list, day);
+    const c = counted ? countRow(db, it.id, day) : null;
+    const l = lastBefore(db, it.id, day);
+    if (l && (!lastCount || l.day > lastCount.day || (l.day === lastCount.day && l.at > lastCount.at))) lastCount = { day: l.day, at: l.at, by: person(l.by_user, l.who) };
     const mine = made.filter((b) => b.item_id === it.id);
     const last = mine[mine.length - 1];
+    const prepped = r2(mine.reduce((n, b) => n + b.amount, 0));
+    const walkedIn = c ? c.amount : null;
+    const starting = c ? r2(c.amount + prepped) : null;
+    const need = c ? toMake(par, starting, it.batch) : null;
+    const atCount = c ? toMake(par, c.amount, it.batch) : null;
+    const open = c ? openOf(db, it.id).filter((b) => isUseFirst(b, day)) : [];
+    for (const b of open) {
+      const d = daysBetween(day, b.use_by);
+      const by = db.prepare('SELECT name FROM users WHERE id = ?').get(b.made_by)?.name;
+      useFirst.push({ batchId: b.id, itemId: it.id, name: it.name, kind: it.kind, unit: it.unit, amount: b.amount, remaining: r2(b.remaining),
+        day: b.day, madeAt: b.made_at, by: person(b.made_by, by), useBy: b.use_by, state: d === 0 ? 'today' : 'tomorrow',
+        line: `${amt(b.remaining, it.unit)} · made ${dayWord(b.day, day) === 'last night' ? 'yesterday' : dayWord(b.day, day)}${by ? ' by ' + by : ''} · ${useByWords(b.use_by, day)}` });
+    }
+    const check = !!(c && c.high && !c.kept);
     const u = !last ? usual.get(it.id, addDays(day, -28), day, dow) : null;
-    const need = toMake(par, onHand, it.batch);
-    const useFirst = list.some((b) => isUseFirst(b, day));
     return {
-      id: it.id, name: it.name, kind: it.kind, unit: it.unit, batch: it.batch, par, onHand, toMake: need, batches: need ? r2(need / it.batch) : 0,
-      made: last ? { amount: r2(mine.reduce((n, b) => n + b.amount, 0)), at: last.made_at, by: person(last.made_by, last.maker) } : null,
+      id: it.id, name: it.name, kind: it.kind, unit: it.unit, batch: it.batch, par, walkedIn, prepped, starting, onHand: starting ?? 0,
+      toMake: need ?? 0, toMakeAtCount: atCount ?? 0, batches: need ? r2(need / it.batch) : 0,
+      lastUsed: c && l ? l.used : null, tossed: c ? c.tossed : 0, check, kept: !!(c && c.high && c.kept),
+      lastStarting: l ? r2(l.amount + l.prepped) : null, lastDay: l?.day || null,
+      made: last ? { amount: prepped, at: last.made_at, by: person(last.made_by, last.maker) } : null,
       who: last ? person(last.made_by, last.maker) : u ? { ...person(u.id, u.name), usual: true } : null,
-      useFirst, ratio: it.ratio, hasRecipe: !!parseJson(it.recipe, []).length, lesson: it.recipe_lesson,
+      useFirst: open.length > 0, ratio: it.ratio, hasRecipe: !!parseJson(it.recipe, []).length, lesson: it.recipe_lesson,
       shelfDays: it.shelf_days, useByIfMadeNow: useByFor(it.shelf_days, day),
-      status: need > 0 ? 'make' : last ? 'made' : useFirst ? 'use-first' : 'at-par',
+      status: !c ? 'uncounted' : check ? 'check' : need > 0 ? 'make' : prepped > 0 ? 'made' : open.length ? 'use-first' : 'at-par',
     };
   });
-  const useFirst = [];
-  for (const it of items) for (const b of open.get(it.id) || []) {
-    if (!isUseFirst(b, day)) continue;
-    const d = daysBetween(day, b.use_by);
-    useFirst.push({ batchId: b.id, itemId: it.id, name: it.name, kind: it.kind, unit: it.unit, amount: b.amount, remaining: r2(b.remaining),
-      day: b.day, madeAt: b.made_at, by: person(b.made_by, b.maker), useBy: b.use_by, state: d < 0 ? 'expired' : d === 0 ? 'today' : 'tomorrow',
-      line: `${amt(b.remaining, it.unit)} left from ${dayWord(b.day, day)} · made ${timeOf(b.made_at)}${b.maker ? ' by ' + b.maker : ''} · ${useByWords(b.use_by, day)}` });
-  }
   useFirst.sort((a, b) => (a.useBy < b.useBy ? -1 : a.useBy > b.useBy ? 1 : a.madeAt < b.madeAt ? -1 : 1));
+  const needed = rows.filter((r) => r.toMakeAtCount > 0);
   return {
     store: storeRow.name, day, weekday: WEEKDAYS[dow], can: { log: canLog(user), edit: canManage(user) },
-    useFirst, items: rows, people: loggers(db, storeRow, user), week: weekSoFar(db, store, day), started: firstDay(db, store),
+    counted, lastCount, steps: { toMake: needed.length, made: needed.filter((r) => r.prepped > 0).length },
+    useFirst, items: rows, people: loggers(db, storeRow, user), week: weekSoFar(db, store, day), started: firstDay(db, store), example: exampleOf(db, items[0]),
   };
+}
+/** "Why count first": the first item's last closed shift, in real numbers (none until there are two counts). */
+function exampleOf(db, it) {
+  if (!it) return null;
+  const c = db.prepare('SELECT * FROM prep_counts WHERE item_id = ? AND replaced_at IS NULL AND used IS NOT NULL ORDER BY day DESC LIMIT 1').get(it.id);
+  if (!c) return null;
+  const n = db.prepare('SELECT amount FROM prep_counts WHERE item_id = ? AND replaced_at IS NULL AND day = ? ORDER BY at DESC LIMIT 1').get(it.id, c.next_day);
+  return { item: it.name, unit: it.unit, day: c.day, starting: r2(c.amount + c.prepped), wasted: c.wasted, nextDay: c.next_day, walkedIn: n?.amount ?? 0, used: c.used };
 }
 
 /** Everyone who can log at this store, for "Made by" (the person logging first). */
@@ -270,41 +416,38 @@ export function loggers(db, storeRow, me) {
   if (me && !out.some((p) => p.id === me.id)) out.unshift(person(me.id, me.name));
   return out.sort((a, b) => (a.id === me?.id ? -1 : b.id === me?.id ? 1 : 0));
 }
-const firstDay = (db, store) => db.prepare('SELECT MIN(day) d FROM prep_batches WHERE store_id = ?').get(store).d || null;
+const firstDay = (db, store) => db.prepare('SELECT MIN(d) d FROM (SELECT MIN(day) d FROM prep_batches WHERE store_id = ? UNION ALL SELECT MIN(day) d FROM prep_counts WHERE store_id = ?)').get(store, store).d || null;
 
 /** Monday to today: made and wasted per unit, and how many times something ran out. */
 function weekSoFar(db, store, day) {
   const from = weekStart(day);
   const made = db.prepare(`SELECT i.unit, SUM(b.amount) n FROM prep_batches b JOIN prep_items i ON i.id = b.item_id WHERE b.store_id = ? AND b.day BETWEEN ? AND ? GROUP BY i.unit`).all(store, from, day);
-  const wasted = db.prepare(`SELECT i.unit, SUM(e.amount) n FROM prep_events e JOIN prep_batches b ON b.id = e.batch_id JOIN prep_items i ON i.id = e.item_id
-    WHERE e.store_id = ? AND e.kind = 'waste' AND b.day BETWEEN ? AND ? GROUP BY i.unit`).all(store, from, day);
+  const wasted = db.prepare(`SELECT i.unit, SUM(e.amount) n FROM prep_events e JOIN prep_items i ON i.id = e.item_id
+    WHERE e.store_id = ? AND e.kind = 'waste' AND e.day BETWEEN ? AND ? GROUP BY i.unit`).all(store, from, day);
   const ran = db.prepare("SELECT COUNT(*) n FROM prep_events WHERE store_id = ? AND kind = 'ranout' AND day BETWEEN ? AND ?").get(store, from, day).n;
   const m = Object.fromEntries(made.map((r) => [r.unit, r2(r.n)])), w = Object.fromEntries(wasted.map((r) => [r.unit, r2(r.n)]));
   return { from, to: day, made: m, wasted: w, ranOut: ran };
 }
 
 /* ------------------------------------------------------------------ the item page */
-/** Per weekday over the last 4 weeks (not today): days with batches, average used and wasted (by the day the batch was
- *  made), and how many of those days it ran out. */
+/** Per weekday over the last 4 weeks (not today), from the counts: shifts counted, average used and wasted, and how many
+ *  of those days it ran out. A shift that spans a missed day isn't one weekday, so it's skipped. */
 export function weekdayStats(db, itemId, day) {
   const from = addDays(day, -28);
   const per = Array.from({ length: 7 }, () => ({ days: 0, used: 0, wasted: 0, ranOut: 0 }));
-  const rows = db.prepare(`SELECT b.day, SUM(b.amount) made,
-      (SELECT IFNULL(SUM(e.amount),0) FROM prep_events e WHERE e.batch_id IN (SELECT id FROM prep_batches x WHERE x.item_id = b.item_id AND x.day = b.day) AND e.kind = 'used') used,
-      (SELECT IFNULL(SUM(e.amount),0) FROM prep_events e WHERE e.batch_id IN (SELECT id FROM prep_batches x WHERE x.item_id = b.item_id AND x.day = b.day) AND e.kind = 'waste') wasted
-    FROM prep_batches b WHERE b.item_id = ? AND b.day >= ? AND b.day < ? GROUP BY b.day`).all(itemId, from, day);
+  const rows = db.prepare('SELECT day, used, wasted FROM prep_counts WHERE item_id = ? AND replaced_at IS NULL AND used IS NOT NULL AND shifts = 1 AND day >= ? AND day < ?').all(itemId, from, day);
   for (const r of rows) { const p = per[dowOf(r.day)]; p.days++; p.used += r.used; p.wasted += r.wasted; }
   for (const r of db.prepare("SELECT DISTINCT day FROM prep_events WHERE item_id = ? AND kind = 'ranout' AND day >= ? AND day < ?").all(itemId, from, day)) per[dowOf(r.day)].ranOut++;
   return per.map((p) => ({ days: p.days, used: p.days ? r2(p.used / p.days) : null, wasted: p.days ? r2(p.wasted / p.days) : null, ranOut: p.ranOut }));
 }
 
 /**
- * Suggested pars from the logs (Figma 632:894, "From your logs"). Never applied on their own: a manager taps to accept.
+ * Suggested pars from the counts (Figma 632:894, "From your counts"). Never applied on their own: a manager taps to accept.
  *   Runs short: it ran out on that weekday in the last 4 weeks, or average use is 95% of the par or more →
  *     raise to 110% of the average use, rounded up to the par step, and at least one step above today's par.
  *   Runs long: average waste is 20% of the par or more and average use is under 85% of it →
  *     lower to 110% of the average use, rounded up to the step (never below one step), if that's below today's par.
- *   Only weekdays with at least 2 days of logs. A weekday someone tapped Keep on stays quiet for 14 days.
+ *   Only weekdays with at least 2 counted shifts. A weekday someone tapped Keep on stays quiet for 14 days.
  */
 export function suggestions(item, stats, day = dayOf()) {
   const pars = parseJson(item.pars, []);
@@ -344,15 +487,34 @@ export function drinksFor(db, store, item) {
   return out.sort((a, b) => b.oz - a.oz || a.name.localeCompare(b.name)).map(({ oz, ...x }) => x);
 }
 
-/** A batch, with where it went. */
-function batchOut(db, b, unit, today) {
-  const ev = db.prepare('SELECT kind, amount, reason, at FROM prep_events WHERE batch_id = ? ORDER BY at').all(b.id);
-  const used = r2(ev.filter((e) => e.kind === 'used').reduce((n, e) => n + e.amount, 0));
-  const waste = ev.filter((e) => e.kind === 'waste');
-  const ran = db.prepare("SELECT at FROM prep_events WHERE item_id = ? AND kind = 'ranout' AND day = ? ORDER BY at LIMIT 1").get(b.item_id, b.day);
+/** An open batch (for Log Waste). */
+function batchOut(b, unit, today) {
   return { id: b.id, day: b.day, madeAt: b.made_at, by: person(b.made_by, b.maker), amount: b.amount, remaining: r2(b.remaining), useBy: b.use_by,
-    open: !b.closed_at && b.remaining > 0, expired: !b.closed_at && b.remaining > 0 && !!b.use_by && b.use_by < today,
-    used, wasted: waste.map((w) => ({ amount: r2(w.amount), reason: w.reason || 'other' })), ranOutAt: ran?.at || null, unit };
+    open: !b.closed_at && b.remaining > 0, expired: !b.closed_at && b.remaining > 0 && !!b.use_by && b.use_by < today, unit };
+}
+
+/** Shift by shift (Figma 666:2603): one row per counted shift, newest first. A missed day makes one row span the gap. */
+export function ledgerOf(db, itemId, limit = 60) {
+  const rows = db.prepare(`SELECT ${COUNT_COLS} FROM prep_counts c LEFT JOIN users u ON u.id = c.by_user WHERE c.item_id = ? AND c.replaced_at IS NULL ORDER BY c.day DESC, c.at DESC LIMIT ?`).all(itemId, limit);
+  if (!rows.length) return [];
+  const oldest = rows[rows.length - 1];
+  const earlier = db.prepare(`SELECT ${COUNT_COLS} FROM prep_counts c LEFT JOIN users u ON u.id = c.by_user WHERE c.item_id = ? AND c.replaced_at IS NOT NULL AND c.day >= ? ORDER BY c.at`).all(itemId, oldest.day);
+  const waste = db.prepare("SELECT amount, reason, at FROM prep_events WHERE item_id = ? AND kind = 'waste' AND at >= ? ORDER BY at").all(itemId, oldest.at);
+  const ran = db.prepare("SELECT at, day FROM prep_events WHERE item_id = ? AND kind = 'ranout' AND day >= ? ORDER BY at").all(itemId, oldest.day);
+  return rows.map((c, i) => {
+    const n = i > 0 ? rows[i - 1] : null;
+    const reasons = new Map();
+    for (const w of waste) if (w.at >= c.at && (!n || w.at < n.at)) reasons.set(w.reason || 'other', r2((reasons.get(w.reason || 'other') || 0) + w.amount));
+    const r = ran.find((e) => e.day >= c.day && (!c.next_day || e.day < c.next_day));
+    return {
+      id: c.id, day: c.day, lastDay: c.next_day ? addDays(c.next_day, -1) : c.day, shifts: c.shifts || 1, nextDay: c.next_day,
+      walkedIn: c.amount, tossed: c.tossed, prepped: c.prepped, starting: r2(c.amount + c.prepped), wasted: c.wasted,
+      waste: [...reasons].map(([reason, amount]) => ({ reason, amount })),
+      used: c.used, pending: !n, check: !!(n && n.high && !n.kept), kept: !!(n && n.high && n.kept), nextCount: n ? n.amount : null, expectedNext: n ? n.expected : null,
+      by: person(c.by_user, c.who), at: c.at, ranOutAt: r?.at || null,
+      recounts: earlier.filter((o) => o.day === c.day).map((o) => ({ amount: o.amount, at: o.at, by: person(o.by_user, o.who) })),
+    };
+  });
 }
 
 export function itemDetail(db, storeRow, user, id) {
@@ -362,24 +524,26 @@ export function itemDetail(db, storeRow, user, id) {
   const day = dayOf(), dow = dowOf(day);
   const pars = parseJson(it.pars, []);
   const stats = weekdayStats(db, it.id, day);
-  const list = openBatches(db, storeRow.id).get(it.id) || [];
-  const batches = db.prepare(`SELECT b.*, u.name maker FROM prep_batches b LEFT JOIN users u ON u.id = b.made_by WHERE b.item_id = ? ORDER BY b.made_at DESC LIMIT 60`).all(it.id);
+  const open = db.prepare(`SELECT b.*, u.name maker FROM prep_batches b LEFT JOIN users u ON u.id = b.made_by WHERE b.item_id = ? AND b.closed_at IS NULL AND b.remaining > 0 ORDER BY b.made_at DESC LIMIT 30`).all(it.id);
   const from = weekStart(day);
-  const wk = db.prepare(`SELECT IFNULL(SUM(amount),0) made, IFNULL(SUM(CASE WHEN closed_at IS NULL THEN remaining ELSE 0 END),0) inUse FROM prep_batches WHERE item_id = ? AND day BETWEEN ? AND ?`).get(it.id, from, day);
-  const wkEv = db.prepare(`SELECT e.kind, IFNULL(SUM(e.amount),0) n FROM prep_events e JOIN prep_batches b ON b.id = e.batch_id WHERE e.item_id = ? AND b.day BETWEEN ? AND ? GROUP BY e.kind`).all(it.id, from, day);
-  const ev = Object.fromEntries(wkEv.map((r) => [r.kind, r2(r.n)]));
+  const made = db.prepare('SELECT IFNULL(SUM(amount),0) n FROM prep_batches WHERE item_id = ? AND day BETWEEN ? AND ?').get(it.id, from, day).n;
+  const wk = db.prepare('SELECT IFNULL(SUM(used),0) used, IFNULL(SUM(wasted),0) wasted, COUNT(used) closed, COUNT(*) n FROM prep_counts WHERE item_id = ? AND replaced_at IS NULL AND day BETWEEN ? AND ?').get(it.id, from, day);
   const makers = db.prepare(`SELECT b.made_by id, u.name, GROUP_CONCAT(DISTINCT CAST(strftime('%w', b.day) AS INT)) dows, COUNT(*) n FROM prep_batches b JOIN users u ON u.id = b.made_by AND u.deleted_at IS NULL
     WHERE b.item_id = ? AND b.day >= ? GROUP BY b.made_by ORDER BY n DESC LIMIT 4`).all(it.id, addDays(day, -28))
     .map((r) => ({ ...person(r.id, r.name), days: String(r.dows || '').split(',').map(Number).sort((a, b) => ((a + 6) % 7) - ((b + 6) % 7)).map((d) => SHORT[d]) }));
+  const c = countRow(db, it.id, day);
+  const prepped = r2(db.prepare('SELECT IFNULL(SUM(amount),0) n FROM prep_batches WHERE item_id = ? AND day = ?').get(it.id, day).n);
   return {
     id: it.id, name: it.name, kind: it.kind, kindLabel: KIND_LABEL[it.kind], unit: it.unit, batch: it.batch, pars, today: dow, day,
-    parToday: Number(pars[dow]) || 0, onHand: onHandOf(list, day), step: stepFor(it.unit, it.batch),
+    parToday: Number(pars[dow]) || 0, onHand: c ? r2(c.amount + prepped) : 0, step: stepFor(it.unit, it.batch),
+    counted: c ? { walkedIn: c.amount, at: c.at, by: person(c.by_user, c.who), check: !!(c.high && !c.kept) } : null,
     stats, suggestions: suggestions(it, stats, day),
     shelf: { days: it.shelf_days, words: shelfWords(it.shelf_days), storage: it.storage || '', note: it.shelf_note || '', source: it.shelf_source || '', lesson: it.shelf_lesson || '', confirmed: !!it.shelf_source },
     recipe: { ratio: it.ratio || '', steps: parseJson(it.recipe, []), yield: it.yield_note || '', lesson: it.recipe_lesson || '' },
     drinks: drinksFor(db, storeRow.id, it),
-    batches: batches.map((b) => batchOut(db, b, it.unit, day)),
-    week: { from, made: r2(wk.made), used: ev.used || 0, wasted: ev.waste || 0, inUse: r2(wk.inUse) },
+    batches: open.map((b) => batchOut(b, it.unit, day)),
+    ledger: ledgerOf(db, it.id),
+    week: { from, made: r2(made), used: r2(wk.used), wasted: r2(wk.wasted), closed: wk.closed, shifts: wk.n },
     makers, archived: !!it.archived_at, can: { log: canLog(user), edit: canManage(user) },
   };
 }
@@ -390,7 +554,7 @@ export { PrepError };
 const bad = (status, message) => { throw new PrepError(status, message); };
 const num = (v, { min = 0, max = 100000, name = 'amount' } = {}) => {
   const n = Number(v);
-  if (!Number.isFinite(n) || n < min || n > max) bad(400, `That ${name} doesn’t look right.`);
+  if (v === null || v === '' || !Number.isFinite(n) || n < min || n > max) bad(400, `That ${name} doesn’t look right.`);
   return r2(n);
 };
 const cleanText = (s, max) => String(s ?? '').replace(/\s+/g, ' ').trim().slice(0, max);
@@ -401,7 +565,11 @@ function addEvent(db, x, { item, batch = null, kind, amount = 0, reason = null, 
     .run(x.company, x.store, item, batch, kind, r2(amount), reason, note, dayOf(at), at, by);
 }
 
-/** Log a batch. madeAt (optional) can be earlier today or yesterday, never the future. */
+/**
+ * Log a batch. Today's batches wait for today's count (the count gates the prep list). madeAt (optional) can be earlier
+ * today or yesterday, never the future. forShift 'last' = the batch nobody logged last shift (from a count's Check this):
+ * it goes on the shift before today's count, so that shift's numbers add up.
+ */
 export function logBatch(db, x, u, b) {
   const it = itemOr404(db, x.store, b.itemId);
   if (it.archived_at) bad(409, 'This item is archived. Restore it from Archived first.');
@@ -412,19 +580,26 @@ export function logBatch(db, x, u, b) {
     if (!ok) bad(400, 'Pick someone on this store’s team who preps.');
     madeBy = Number(b.madeBy);
   }
+  const today = dayOf();
   let at = now();
-  if (b.madeAt) {
+  if (b.forShift === 'last') {
+    const l = lastBefore(db, it.id, today) || bad(400, `There’s no count of ${it.name.toLowerCase()} before today.`);
+    const d = addDays(today, -1) > l.day ? addDays(today, -1) : l.day;
+    at = d === l.day ? new Date(Date.parse(l.at) + 60e3).toISOString() : detroitAt(d, 16, 0);
+  } else if (b.madeAt) {
     const t = Date.parse(b.madeAt);
     if (!Number.isFinite(t) || t > Date.now() + 5 * 60e3 || t < Date.now() - 36 * 3600e3) bad(400, 'Pick a time from today or yesterday.');
     at = new Date(t).toISOString();
   }
   const day = dayOf(at);
+  if (day === today && !countedOn(db, x.store, today)) bad(409, 'Count first. Start the shift count, then log what you make.');
   const useBy = useByFor(it.shelf_days, day);
   db.exec('BEGIN');
   try {
     if (b.ranOut) addEvent(db, x, { item: it.id, kind: 'ranout', at: new Date(Date.parse(at) - 60e3).toISOString(), note: cleanText(b.note, 200) || null, by: u.id });
     const id = Number(db.prepare('INSERT INTO prep_batches(company_id, store_id, item_id, amount, remaining, day, made_at, use_by, made_by, by_user) VALUES (?,?,?,?,?,?,?,?,?,?)')
       .run(x.company, x.store, it.id, amount, amount, day, at, useBy, madeBy, u.id).lastInsertRowid);
+    recompute(db, it.id, day);
     db.exec('COMMIT');
     return { id, useBy, day };
   } catch (e) { db.exec('ROLLBACK'); throw e; }
@@ -432,14 +607,9 @@ export function logBatch(db, x, u, b) {
 
 const REASONS = ['expired', 'spilled', 'quality', 'other'];
 const batchOr404 = (db, store, id) => db.prepare('SELECT * FROM prep_batches WHERE id = ? AND store_id = ?').get(Number(id), store) || bad(404, 'That batch isn’t here.');
-/** Close a batch: whatever's left (after the waste just logged) was used. */
-function close(db, x, bt, by) {
-  if (bt.remaining > EPS) addEvent(db, x, { item: bt.item_id, batch: bt.id, kind: 'used', amount: bt.remaining, by });
-  db.prepare('UPDATE prep_batches SET remaining = 0, closed_at = ? WHERE id = ?').run(now(), bt.id);
-}
 /**
- * Log waste from a batch. Past its use-by (or reason Expired), logging what's left clears the batch: the rest was used.
- * Otherwise (a spill, a bad batch) it only comes off what's left.
+ * Log waste from a batch. It's waste, never Used: it comes off the shift it was logged in. Reason Expired (or nothing left)
+ * closes the batch. Nothing is ever logged as waste on its own.
  */
 export function logWaste(db, x, u, b) {
   const bt = batchOr404(db, x.store, b.batchId);
@@ -451,43 +621,13 @@ export function logWaste(db, x, u, b) {
   if (reason === 'other' && !note) bad(400, 'Say what happened.');
   db.exec('BEGIN');
   try {
-    addEvent(db, x, { item: bt.item_id, batch: bt.id, kind: 'waste', amount, reason, note, by: u.id });
+    const at = now();
+    addEvent(db, x, { item: bt.item_id, batch: bt.id, kind: 'waste', amount, reason, note, at, by: u.id });
     const left = r2(bt.remaining - amount);
-    const past = !!bt.use_by && bt.use_by < dayOf();
-    if (past || reason === 'expired' || left <= EPS) close(db, x, { ...bt, remaining: left }, u.id);
-    else db.prepare('UPDATE prep_batches SET remaining = ? WHERE id = ?').run(left, bt.id);
+    db.prepare('UPDATE prep_batches SET remaining = ?, closed_at = ? WHERE id = ?').run(left, reason === 'expired' || left <= EPS ? at : null, bt.id);
+    recompute(db, bt.item_id, dayOf(at));
     db.exec('COMMIT');
   } catch (e) { db.exec('ROLLBACK'); throw e; }
-}
-/** Used Up: the whole of what's left was used. */
-export function usedUp(db, x, u, id) {
-  const bt = batchOr404(db, x.store, id);
-  if (bt.closed_at) bad(409, 'That batch is already cleared.');
-  db.exec('BEGIN');
-  try { close(db, x, bt, u.id); db.exec('COMMIT'); } catch (e) { db.exec('ROLLBACK'); throw e; }
-}
-/** A count of what's on hand: the drop since the last count was used, oldest batch first. */
-export function count(db, x, u, itemId, value) {
-  const it = itemOr404(db, x.store, itemId);
-  const day = dayOf();
-  const list = (openBatches(db, x.store).get(it.id) || []).filter((b) => !b.use_by || b.use_by >= day);
-  const have = onHandOf(list, day);
-  const v = num(value, { min: 0, max: 100000, name: 'count' });
-  if (v > have + EPS) bad(400, `That’s more than the ${amt(have, it.unit)} logged. Log a batch for the rest.`);
-  let drop = r2(have - v);
-  db.exec('BEGIN');
-  try {
-    for (const b of list) {
-      if (drop <= EPS) break;
-      const take = Math.min(drop, b.remaining);
-      addEvent(db, x, { item: it.id, batch: b.id, kind: 'used', amount: take, by: u.id });
-      const left = r2(b.remaining - take);
-      db.prepare('UPDATE prep_batches SET remaining = ?, closed_at = ? WHERE id = ?').run(left, left <= EPS ? now() : null, b.id);
-      drop = r2(drop - take);
-    }
-    db.exec('COMMIT');
-  } catch (e) { db.exec('ROLLBACK'); throw e; }
-  return { onHand: v };
 }
 export function ranOut(db, x, u, itemId, note) {
   const it = itemOr404(db, x.store, itemId);
@@ -590,25 +730,28 @@ export function periodFor(range, at = dayOf()) {
     buckets: Array.from({ length: 7 }, (_, i) => { const d = addDays(from, i); return { key: d, from: d, to: d, label: SHORT[dowOf(d)], sub: md(d), prevFrom: addDays(d, -7), prevTo: addDays(d, -7) }; }) };
 }
 
-/** Every batch made in [from, to] with what it went to. */
+/** Every batch made in [from, to]: what was made and how many batches, by the day it was made. */
 function batchesIn(db, store, from, to) {
-  return db.prepare(`SELECT b.id, b.item_id, b.amount, b.remaining, b.day, b.closed_at,
-      IFNULL((SELECT SUM(amount) FROM prep_events e WHERE e.batch_id = b.id AND e.kind = 'used'), 0) used,
-      IFNULL((SELECT SUM(amount) FROM prep_events e WHERE e.batch_id = b.id AND e.kind = 'waste'), 0) wasted
-    FROM prep_batches b WHERE b.store_id = ? AND b.day BETWEEN ? AND ?`).all(store, from, to);
+  return db.prepare('SELECT b.id, b.item_id, b.amount, b.day FROM prep_batches b WHERE b.store_id = ? AND b.day BETWEEN ? AND ?').all(store, from, to);
 }
-const sumBy = (rows) => {
-  const o = { made: 0, used: 0, wasted: 0, inUse: 0, batches: 0 };
-  for (const r of rows) { o.made += r.amount; o.used += r.used; o.wasted += r.wasted; if (!r.closed_at) o.inUse += r.remaining; o.batches++; }
-  for (const k of Object.keys(o)) o[k] = r2(o[k]);
+/** Every counted shift that started in [from, to]: its counted Used (null while pending or when it needs a check) and waste. */
+function countsIn(db, store, from, to) {
+  return db.prepare('SELECT c.item_id, c.day, c.used, c.wasted, c.shifts FROM prep_counts c WHERE c.store_id = ? AND c.replaced_at IS NULL AND c.day BETWEEN ? AND ?').all(store, from, to);
+}
+const sumBy = (bs, cs) => {
+  const o = { made: 0, used: 0, wasted: 0, batches: 0, shifts: 0, pending: 0 };
+  for (const b of bs) { o.made += b.amount; o.batches++; }
+  for (const c of cs) { if (c.used != null) o.used += c.used; else o.pending++; o.wasted += c.wasted; o.shifts++; }
+  for (const k of ['made', 'used', 'wasted']) o[k] = r2(o[k]);
   return o;
 };
-/** Waste as a whole percent of what was made (null when nothing was). */
-export const pct = (wasted, made) => (made > 0 ? Math.round((wasted / made) * 100) : null);
+/** Waste as a whole percent of what went out: wasted ÷ (used + wasted) (null when nothing did). */
+export const pct = (wasted, used) => (wasted + used > 0 ? Math.round((wasted / (wasted + used)) * 100) : null);
 
 /**
  * The report for a range (day | week | year) around `at`, for the chart's `series` (an item id, 'liquid' for juices and
- * syrups in quarts, or 'garnish' for garnishes in pieces). Every number is counted by the day a batch was made.
+ * syrups in quarts, or 'garnish' for garnishes in pieces). Made is counted by the day a batch was made; Used and Wasted by
+ * the shift they happened in, from the counts.
  */
 export function report(db, storeRow, { range = 'week', at = '', series = '' } = {}) {
   ensureItems(db, storeRow);
@@ -619,51 +762,60 @@ export function report(db, storeRow, { range = 'week', at = '', series = '' } = 
   const P = periodFor(range, at);
   const items = db.prepare(`SELECT * FROM prep_items WHERE store_id = ? ORDER BY ${KIND_ORDER}, sort, id`).all(store);
   const cur = batchesIn(db, store, P.from, P.to), prev = batchesIn(db, store, P.prevFrom, P.prevTo);
+  const ccur = countsIn(db, store, P.from, P.to), cprev = countsIn(db, store, P.prevFrom, P.prevTo);
   const ranCur = db.prepare(`SELECT e.*, i.name, u.name who FROM prep_events e JOIN prep_items i ON i.id = e.item_id LEFT JOIN users u ON u.id = e.by_user
     WHERE e.store_id = ? AND e.kind = 'ranout' AND e.day BETWEEN ? AND ? ORDER BY e.at DESC`).all(store, P.from, P.to);
   const ranPrev = db.prepare("SELECT COUNT(*) n FROM prep_events WHERE store_id = ? AND kind = 'ranout' AND day BETWEEN ? AND ?").get(store, P.prevFrom, P.prevTo).n;
-  const shown = items.filter((i) => !i.archived_at || cur.some((b) => b.item_id === i.id));
+  const of = (id) => (x) => x.item_id === id;
+  const shown = items.filter((i) => !i.archived_at || cur.some(of(i.id)) || ccur.some(of(i.id)));
   const rows = shown.map((i) => {
-    const c = sumBy(cur.filter((b) => b.item_id === i.id)), p = sumBy(prev.filter((b) => b.item_id === i.id));
-    const ran = ranCur.filter((e) => e.item_id === i.id);
-    const w = pct(c.wasted, c.made), pw = pct(p.wasted, p.made);
+    const c = sumBy(cur.filter(of(i.id)), ccur.filter(of(i.id))), p = sumBy(prev.filter(of(i.id)), cprev.filter(of(i.id)));
+    const ran = ranCur.filter(of(i.id));
+    const w = pct(c.wasted, c.used), pw = pct(p.wasted, p.used);
     return { id: i.id, name: i.name, kind: i.kind, unit: i.unit, archived: !!i.archived_at, ...c, wastePct: w, prevWastePct: pw,
       vsPrev: w == null || pw == null ? null : w - pw, ranOut: ran.length, ranOutDays: [...new Set(ran.map((e) => SHORT[dowOf(e.day)]))] };
   });
   // Tiles: juices + syrups in quarts, garnishes in pieces. Other units only show in the table (never added together).
   const group = (pred) => {
     const ids = new Set(items.filter(pred).map((i) => i.id));
-    const c = sumBy(cur.filter((b) => ids.has(b.item_id))), p = sumBy(prev.filter((b) => ids.has(b.item_id)));
-    return { made: c.made, wasted: c.wasted, pct: pct(c.wasted, c.made), prevPct: pct(p.wasted, p.made), items: ids.size };
+    const inG = (x) => ids.has(x.item_id);
+    const c = sumBy(cur.filter(inG), ccur.filter(inG)), p = sumBy(prev.filter(inG), cprev.filter(inG));
+    return { made: c.made, used: c.used, wasted: c.wasted, pct: pct(c.wasted, c.used), prevPct: pct(p.wasted, p.used), items: ids.size };
   };
-  const liquid = group((i) => i.kind !== 'garnish' && i.unit === 'qt');
-  const garnish = group((i) => i.kind === 'garnish' && i.unit === 'each');
+  const isLiquid = (i) => i.kind !== 'garnish' && i.unit === 'qt', isGarnish = (i) => i.kind === 'garnish' && i.unit === 'each';
+  const liquid = group(isLiquid);
+  const garnish = group(isGarnish);
   // The chart
   const pick = series === 'liquid' || series === 'garnish' ? series : items.find((i) => String(i.id) === String(series) && !i.archived_at) ? Number(series) : (items.find((i) => !i.archived_at)?.id ?? 'liquid');
-  const inSeries = typeof pick === 'number' ? (b) => b.item_id === pick
-    : pick === 'liquid' ? ((ids) => (b) => ids.has(b.item_id))(new Set(items.filter((i) => i.kind !== 'garnish' && i.unit === 'qt').map((i) => i.id)))
-      : ((ids) => (b) => ids.has(b.item_id))(new Set(items.filter((i) => i.kind === 'garnish' && i.unit === 'each').map((i) => i.id)));
+  const inSeries = typeof pick === 'number' ? (x) => x.item_id === pick
+    : ((ids) => (x) => ids.has(x.item_id))(new Set(items.filter(pick === 'liquid' ? isLiquid : isGarnish).map((i) => i.id)));
   const seriesUnit = typeof pick === 'number' ? items.find((i) => i.id === pick).unit : pick === 'liquid' ? 'qt' : 'each';
-  const wide = batchesIn(db, store, P.buckets[0].prevFrom < P.prevFrom ? P.buckets[0].prevFrom : P.prevFrom, P.buckets[P.buckets.length - 1].to).filter(inSeries);
-  const ranAll = db.prepare(`SELECT item_id, day, at FROM prep_events WHERE store_id = ? AND kind = 'ranout' AND day BETWEEN ? AND ? ORDER BY at`).all(store, P.buckets[0].from, P.buckets[P.buckets.length - 1].to);
+  const wFrom = P.buckets[0].prevFrom < P.prevFrom ? P.buckets[0].prevFrom : P.prevFrom, wTo = P.buckets[P.buckets.length - 1].to;
+  const wideB = batchesIn(db, store, wFrom, wTo).filter(inSeries), wideC = countsIn(db, store, wFrom, wTo).filter(inSeries);
+  const ranAll = db.prepare(`SELECT item_id, day, at FROM prep_events WHERE store_id = ? AND kind = 'ranout' AND day BETWEEN ? AND ? ORDER BY at`).all(store, P.buckets[0].from, wTo);
+  const inB = (f, t) => (x) => x.day >= f && x.day <= t;
   const chart = P.buckets.map((k) => {
-    const s = sumBy(wide.filter((b) => b.day >= k.from && b.day <= k.to));
-    const ps = sumBy(wide.filter((b) => b.day >= k.prevFrom && b.day <= k.prevTo));
-    const ro = ranAll.filter((e) => e.day >= k.from && e.day <= k.to && (typeof pick === 'number' ? e.item_id === pick : inSeries({ item_id: e.item_id })));
-    return { key: k.key, label: k.label, sub: k.sub, on: !!k.on, made: s.made, used: s.used, wasted: s.wasted, inUse: s.inUse, prevUsed: ps.batches ? ps.used : null,
-      ranOutAt: ro.length ? ro[0].at : null, ranOut: ro.length };
+    const s = sumBy(wideB.filter(inB(k.from, k.to)), wideC.filter(inB(k.from, k.to)));
+    const ps = sumBy(wideB.filter(inB(k.prevFrom, k.prevTo)), wideC.filter(inB(k.prevFrom, k.prevTo)));
+    const ro = ranAll.filter((e) => e.day >= k.from && e.day <= k.to && inSeries(e));
+    return { key: k.key, label: k.label, sub: k.sub, on: !!k.on, made: s.made, used: s.used, wasted: s.wasted, inUse: 0, pending: s.pending > 0 && s.used === 0,
+      prevUsed: ps.shifts ? ps.used : null, ranOutAt: ro.length ? ro[0].at : null, ranOut: ro.length };
   });
   // Busiest days: batches made per weekday, the 4 weeks to the end of this period (all items).
   const end = P.to > dayOf() ? dayOf() : P.to;
   const busy = Array(7).fill(0);
   for (const r of db.prepare('SELECT day, COUNT(*) n FROM prep_batches WHERE store_id = ? AND day > ? AND day <= ? GROUP BY day').all(store, addDays(end, -28), end)) busy[dowOf(r.day)] += r.n;
   const busiest = [1, 2, 3, 4, 5, 6, 0].map((d) => ({ dow: d, label: SHORT[d], batches: r2(busy[d] / 4) }));
+  // Counts kept above what was expected (the manager looks at these: a batch nobody logged, or a miscount).
+  const kept = db.prepare(`SELECT c.*, i.name, i.unit, u.name who FROM prep_counts c JOIN prep_items i ON i.id = c.item_id LEFT JOIN users u ON u.id = c.by_user
+    WHERE c.store_id = ? AND c.replaced_at IS NULL AND c.high = 1 AND c.day BETWEEN ? AND ? ORDER BY c.day DESC, c.at DESC`).all(store, P.from, P.to)
+    .map((c) => ({ itemId: c.item_id, item: c.name, unit: c.unit, day: c.day, amount: c.amount, expected: c.expected, kept: !!c.kept, by: c.who || null }));
   const first = firstDay(db, store);
   const out = {
     store: storeRow.name, range, at, today: dayOf(), period: { from: P.from, to: P.to, label: P.label, prevFrom: P.prevFrom, prevTo: P.prevTo, prevLabel: P.prevLabel },
     tiles: { liquid, garnish, ranOut: { count: ranCur.length, prev: ranPrev }, batches: { count: cur.length, prev: prev.length } },
     ranOut: ranCur.map((e) => ({ item: e.name, itemId: e.item_id, at: e.at, day: e.day, note: e.note || '', by: e.who || null })),
-    rows, series: { id: pick, unit: seriesUnit, options: [...items.filter((i) => !i.archived_at).map((i) => ({ id: i.id, label: i.name })), { id: 'liquid', label: 'All juices and syrups (qt)' }, { id: 'garnish', label: 'All garnishes (pieces)' }] },
+    kept, rows, series: { id: pick, unit: seriesUnit, options: [...items.filter((i) => !i.archived_at).map((i) => ({ id: i.id, label: i.name })), { id: 'liquid', label: 'All juices and syrups (qt)' }, { id: 'garnish', label: 'All garnishes (pieces)' }] },
     chart, busiest, started: first,
     // Year over year needs logs from a year before this period started (no made-up history).
     lastYear: !!first && first <= (range === 'year' ? P.prevTo : addDays(P.from, -364)),
@@ -720,6 +872,7 @@ addCardSource((db, storeRow, slug) => {
   const [p, q = ''] = slug.split('?');
   const qs = new URLSearchParams(q);
   if (p === 'prep') return { slug: 'prep', title: 'Bar Prep', kicker: 'Prep', kind: 'Prep list', thumb: null, line: 'Today’s prep list: what to make, what to use first.' };
+  if (p === 'prep/count') return { slug: 'prep/count', title: 'Shift Count', kicker: 'Prep', kind: 'Shift count', thumb: null, line: 'Count what the bar walked in with, then prep to par.' };
   if (p === 'prep/reports') {
     const r = report(db, storeRow, { range: qs.get('range') || 'week', at: qs.get('at') || undefined });
     const line = r.summary.replace(/^Prep, [^:]+: /, '');
@@ -737,9 +890,12 @@ addCardSource((db, storeRow, slug) => {
 function rng(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
 
 /**
- * Eight weeks of logs for a demo store (labelled demo data on screen). Bartenders make each item's batch in the
- * afternoon; the night uses most of it (Saturdays sometimes more than the par, so it runs out; Wednesdays less, so juice
- * gets tossed); yesterday's leftovers are cleared the next afternoon, as waste if past the use-by. A spill now and then.
+ * Eight weeks of shifts for a demo store (labelled demo data on screen), the way the bar runs it: the opener counts what
+ * they walked in with at 3 pm (deciding, for anything past its use-by, to keep it or toss it), preps to par, the night uses
+ * it (Saturdays run hot and sometimes run out, Wednesdays slow), and a spill now and then is logged as waste. The stock is
+ * simulated batch by batch, so every count is what was really on the shelf and every shift's Used follows from the rows.
+ * One Monday three weeks back nobody counted (one ledger row spans two shifts), and one garnish count came in higher than
+ * expected and was kept. Today hasn't been counted yet, so the visitor starts with the count.
  */
 export function seedDemoPrep(db, { company, storeRow, bartenders = [], lead = null, days = 56 }) {
   ensureItems(db, storeRow);
@@ -749,88 +905,90 @@ export function seedDemoPrep(db, { company, storeRow, bartenders = [], lead = nu
   if (!items.length || !makers.length) return;
   const rand = rng(store * 7919 + 17);
   const today = dayOf();
-  const hourNow = +new Date().toLocaleString('en-US', { timeZone: TZ, hour: 'numeric', hourCycle: 'h23' });
   const insB = db.prepare('INSERT INTO prep_batches(company_id, store_id, item_id, amount, remaining, day, made_at, use_by, made_by, by_user, closed_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
   const insE = db.prepare('INSERT INTO prep_events(company_id, store_id, item_id, batch_id, kind, amount, reason, note, day, at, by_user) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
+  const insC = db.prepare('INSERT INTO prep_counts(company_id, store_id, item_id, day, amount, tossed, at, by_user, kept) VALUES (?,?,?,?,?,?,?,?,?)');
   const setB = db.prepare('UPDATE prep_batches SET remaining = ?, closed_at = ? WHERE id = ?');
   const ev = (it, bid, kind, amount, at, by, reason = null, note = null) => insE.run(company, store, it.id, bid, kind, r2(amount), reason, note, dayOf(at), at, by);
   // The opener by weekday: two bartenders split the week (Mon · Thu · Sun and Tue · Wed · Fri · Sat); the manager covers
   // now and then.
   const opener = (dow) => makers[[0, 0, 1, 1, 0, 1, 1][dow] % Math.max(1, bartenders.length || makers.length)];
   const maker = (dow, n, i) => (lead && (n + i) % 9 === 4 ? lead : opener(dow));
-  // Amounts as people log them: whole pieces, quarter quarts.
+  // Amounts as people count them: whole pieces, quarter quarts.
   const real = (v, unit) => (unit === 'each' || unit === 'bottles' ? Math.round(v) : Math.round(v * 4) / 4);
-  const open = new Map(items.map((i) => [i.id, []]));
+  // The stock on the shelf, oldest first: { id (null = something nobody logged), day, useBy, left (what's really there),
+  // logged (what the app thinks is left: the count's share, less any waste logged since) }.
+  const shelf = new Map(items.map((i) => [i.id, []]));
   const notes = ['out for the last hour of service', 'a big party at the bar', 'cut more mid-shift'];
-  let keptOne = 0;
-  const stamp = (day, h, m) => { const t = detroitAt(day, h, m); return Date.parse(t) > Date.now() ? null : t; };
-  for (let i = days; i >= 0; i--) {
-    const day = addDays(today, -i), dow = dowOf(day), isToday = i === 0;
+  let missed = null;
+  for (let i = 26; i >= 18 && !missed; i--) if (dowOf(addDays(today, -i)) === 1) missed = addDays(today, -i);
+  const extraDay = addDays(today, -9);
+  const extraItem = [...items].reverse().find((i) => i.kind === 'garnish');
+  for (let i = days; i >= 1; i--) {
+    const day = addDays(today, -i), dow = dowOf(day);
     const by = opener(dow);
     items.forEach((it, n) => {
       const pars = parseJson(it.pars, []);
       const par = Number(pars[dow]) || 0;
-      const list = open.get(it.id);
-      // 1. Clear what's past its use-by (today: leave the first juice and one garnish for the Use First card).
-      const clearAt = stamp(day, 15, 5 + n * 2) || (isToday ? new Date(Date.now() - (75 - n) * 60e3).toISOString() : detroitAt(day, 15, 5));
-      for (const b of [...list]) {
-        if (b.use_by >= day) continue;
-        if (isToday && (n === 0 || (it.kind === 'garnish' && it.shelf_days === 0 && !keptOne++))) continue;
-        const at = clearAt;
-        if (b.remaining > EPS) {
-          ev(it, b.id, 'waste', b.remaining, at, by, 'expired');
-          setB.run(0, at, b.id);
-        } else setB.run(0, at, b.id);
-        list.splice(list.indexOf(b), 1);
+      let list = shelf.get(it.id);
+      const sync = (b, at) => { if (b.id) setB.run(r2(b.logged), b.logged <= EPS ? at : null, b.id); };
+      if (day !== missed) {
+        // 1. The count. Past its use-by is the opener's call: yesterday's leftovers are usually kept, older ones tossed.
+        const countAt = detroitAt(day, 15, n), tossAt = new Date(Date.parse(countAt) - 1000).toISOString();
+        let tossed = 0;
+        for (const b of list) {
+          if (!(b.useBy && b.useBy < day) || b.left <= EPS) continue;
+          if (daysBetween(b.useBy, day) >= 2 || rand() < 0.3) {
+            if (b.id) ev(it, b.id, 'waste', b.left, tossAt, by, 'expired', 'Tossed at the count');
+            tossed = r2(tossed + b.left); b.left = 0;
+          }
+        }
+        // Nine days ago: garnishes cut and never logged turn up in the count (more than the app expected), and the opener keeps it.
+        const extra = day === extraDay && it.id === extraItem?.id;
+        if (extra) {
+          const gap = r2(list.reduce((s, b) => s + b.logged - b.left, 0)); // what the app thinks was used
+          list.push({ id: null, day: addDays(day, -1), useBy: useByFor(it.shelf_days, addDays(day, -1)) ?? '9999-12-31', left: r2(gap + 2 * Math.max(1, stepFor(it.unit, it.batch))), logged: 0 });
+        }
+        const walked = r2(list.reduce((s, b) => s + b.left, 0));
+        insC.run(company, store, it.id, day, walked, tossed, countAt, by, extra ? 1 : 0);
+        for (const b of list) { b.logged = b.left; sync(b, countAt); }
+        list = list.filter((b) => b.left > EPS);
+        // 2. Prep to par: par minus what they walked in with, in whole batches.
+        const need = toMake(par, walked, it.batch);
+        if (need > 0) {
+          const who = maker(dow, n, i), madeAt = detroitAt(day, 15, 20 + n * 2), useBy = useByFor(it.shelf_days, day);
+          const id = Number(insB.run(company, store, it.id, need, need, day, madeAt, useBy, who, who, null).lastInsertRowid);
+          list.push({ id, day, useBy: useBy ?? '9999-12-31', left: need, logged: need });
+        }
       }
-      // 2. Make today's batch: par minus what's on hand, rounded up to whole batches.
-      const have = r2(list.filter((b) => b.use_by >= day).reduce((s, b) => s + b.remaining, 0));
-      const need = toMake(par, have, it.batch);
-      const madeAt = isToday ? (hourNow >= 15 ? stamp(day, 14, 40 + n) : (n === 1 || n === 3) && hourNow >= 1 ? new Date(Date.now() - (50 - n * 10) * 60e3).toISOString() : null) : detroitAt(day, 14, 30 + n * 3);
-      if (need > 0 && madeAt) {
-        const who = maker(dow, n, i);
-        const id = Number(insB.run(company, store, it.id, need, need, day, madeAt, useByFor(it.shelf_days, day), who, who, null).lastInsertRowid);
-        list.push({ id, amount: need, remaining: need, day, use_by: useByFor(it.shelf_days, day) ?? '9999-12-31', made_at: madeAt });
-      }
-      if (isToday && hourNow < 18) return; // tonight hasn't happened yet
-      // 3. The night: Saturdays run hot, Wednesdays slow.
-      const lean = dow === 6 ? 0.98 + rand() * 0.16 : dow === 3 ? 0.5 + rand() * 0.18 : 0.74 + rand() * 0.22;
-      const share = it.kind === 'syrup' ? 0.45 : 1; // a syrup batch lasts a few nights
-      let demand = real(par * lean * share, it.unit);
-      const usable = list.filter((b) => b.use_by >= day && b.remaining > EPS);
-      const onHand = usable.reduce((s, b) => s + b.remaining, 0);
-      // A spill now and then (2 in 100 batches), off the newest batch.
-      const fresh = usable[usable.length - 1];
+      // 3. A spill now and then, off the newest batch: waste, never Used.
+      const fresh = [...list].reverse().find((b) => b.id && b.left > EPS);
       const garn = it.kind === 'garnish';
       if (fresh && rand() < (garn ? 0.18 : 0.03)) {
-        const sp = r2(Math.min(fresh.remaining, garn ? 2 + Math.floor(rand() * 5) : 0.25));
-        ev(it, fresh.id, 'waste', sp, detroitAt(day, 19, 10), by, garn || rand() < 0.5 ? 'quality' : 'spilled', null);
-        fresh.remaining = r2(fresh.remaining - sp); setB.run(fresh.remaining, fresh.remaining <= EPS ? detroitAt(day, 19, 10) : null, fresh.id);
+        const sp = r2(Math.min(fresh.left, fresh.logged, garn ? 2 + Math.floor(rand() * 5) : 0.25));
+        if (sp > EPS) {
+          const at = detroitAt(day, 19, 10);
+          ev(it, fresh.id, 'waste', sp, at, by, garn || rand() < 0.5 ? 'quality' : 'spilled');
+          fresh.left = r2(fresh.left - sp); fresh.logged = r2(fresh.logged - sp); sync(fresh, at);
+        }
       }
+      // 4. The night: Saturdays run hot, Wednesdays slow; a syrup batch lasts a few nights. Oldest goes out first.
+      const lean = dow === 6 ? 0.98 + rand() * 0.16 : dow === 3 ? 0.5 + rand() * 0.18 : 0.74 + rand() * 0.22;
+      const share = it.kind === 'syrup' ? 0.45 : 1;
+      let demand = real(par * lean * share, it.unit);
+      const onHand = r2(list.reduce((s, b) => s + b.left, 0));
       if (demand > onHand + EPS && it.kind !== 'syrup' && par > 0) {
-        const late = dow === 6 || dow === 5;
-        if (late && rand() < 0.75) ev(it, null, 'ranout', 0, detroitAt(day, 20 + Math.floor(rand() * 2), Math.floor(rand() * 50)), by, null, notes[Math.floor(rand() * notes.length)]);
+        if ((dow === 6 || dow === 5) && rand() < 0.75) ev(it, null, 'ranout', 0, detroitAt(day, 20 + Math.floor(rand() * 2), Math.floor(rand() * 50)), by, null, notes[Math.floor(rand() * notes.length)]);
         demand = onHand;
       }
-      // Use it up oldest first. A batch that runs dry is closed as Used Up.
-      for (const b of usable) {
+      for (const b of list) {
         if (demand <= EPS) break;
-        const take = r2(Math.min(b.remaining, demand));
-        demand = r2(demand - take);
-        b.remaining = r2(b.remaining - take);
-        if (b.remaining <= EPS) {
-          const at = detroitAt(day, 22, 30);
-          ev(it, b.id, 'used', b.amount - sumWaste(db, b.id), at, by);
-          setB.run(0, at, b.id);
-          list.splice(list.indexOf(b), 1);
-        } else setB.run(b.remaining, null, b.id);
+        const take = r2(Math.min(b.left, demand));
+        demand = r2(demand - take); b.left = r2(b.left - take);
       }
+      shelf.set(it.id, list);
     });
   }
-  // Batches cleared as waste: the part that wasn't wasted was used.
-  for (const b of db.prepare(`SELECT b.* FROM prep_batches b WHERE b.store_id = ? AND b.closed_at IS NOT NULL AND NOT EXISTS (SELECT 1 FROM prep_events e WHERE e.batch_id = b.id AND e.kind = 'used')`).all(store)) {
-    const used = r2(b.amount - sumWaste(db, b.id));
-    if (used > EPS) insE.run(company, store, b.item_id, b.id, 'used', used, null, null, dayOf(b.closed_at), b.closed_at, b.made_by);
-  }
+  // Every count's numbers (prepped, wasted, used, expected) come from the rows above.
+  for (const it of items) recompute(db, it.id);
 }
-const sumWaste = (db, id) => db.prepare("SELECT IFNULL(SUM(amount),0) n FROM prep_events WHERE batch_id = ? AND kind = 'waste'").get(id).n;
