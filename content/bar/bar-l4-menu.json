@@ -75,7 +75,12 @@
   "sections": [
    {
     "name": "Shape of the menu",
-    "video": null,
+    "video": {
+     "youtubeId": "osK5afyvoBY",
+     "title": "Tips for Running Your First Cocktail Menu",
+     "by": "A Bar Above",
+     "length": "8:48"
+    },
     "keyPoints": [
      {
       "big": "SPIRITS",
@@ -119,7 +124,12 @@
    },
    {
     "name": "Price across the menu",
-    "video": null,
+    "video": {
+     "youtubeId": "sKRC4cBEob0",
+     "title": "Pricing For Success with Satan's Whiskers | World Class",
+     "by": "World Class",
+     "length": "1:03"
+    },
     "keyPoints": [
      {
       "big": "COST ÷ TARGET",
@@ -163,7 +173,12 @@
    },
    {
     "name": "Seasonal changes",
-    "video": null,
+    "video": {
+     "youtubeId": "wj_Vqxr5JlY",
+     "title": "Making A Cocktail Menu! - The Dead Rabbit New York",
+     "by": "The Dead Rabbit",
+     "length": "5:54"
+    },
     "keyPoints": [
      {
       "big": "KEEP",
@@ -207,7 +222,12 @@
    },
    {
     "name": "Menu engineering",
-    "video": null,
+    "video": {
+     "youtubeId": "WOA6hKjUCNo",
+     "title": "Menu Matrix Explained: Engineer Your Restaurant's Menu for Success",
+     "by": "Toast, Inc.",
+     "length": "4:43"
+    },
     "keyPoints": [
      {
       "big": "STAR",

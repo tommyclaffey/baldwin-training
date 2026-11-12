@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Service vs hospitality",
-    "video": null,
+    "video": {
+     "youtubeId": "bwcyXcOpWVs",
+     "title": "The Secret Ingredients of Great Hospitality | Will Guidara | TED",
+     "by": "TED",
+     "length": "13:54"
+    },
     "keyPoints": [
      {
       "big": "SERVICE",

@@ -103,7 +103,7 @@ export function CertificatePage() {
           <button type="button" className="cp-full-close" onClick={() => setFull(false)} autoFocus>Close</button>
         </div>
       )}
-      <p className="cp-note">To keep a copy, pick “Save as PDF” in the print window. Your manager can see it on Admin → Training. Retaking the final never takes it away.</p>
+      <p className="cp-note">To keep a copy, pick “Save as PDF” in the print window. Your manager can see it in People. Retaking the final never takes it away.</p>
     </main>
   );
 }

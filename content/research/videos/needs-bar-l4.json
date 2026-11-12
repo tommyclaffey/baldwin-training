@@ -1,0 +1,77 @@
+{
+ "note": "Nov 12: Level 4 sections left on their photo after the video search (YouTube search, picks in found-bar-l4.json chosen from title/description/channel, not watched).",
+ "kept": [
+  {
+   "file": "content/bar/bar-l4-team.json",
+   "slug": "bar-l4-team",
+   "level": 4,
+   "section": "Training bartenders",
+   "keep": "photo",
+   "why": "Only long, unknown or sales-pitch channels found."
+  },
+  {
+   "file": "content/bar/bar-l4-team.json",
+   "slug": "bar-l4-team",
+   "level": 4,
+   "section": "Standards",
+   "keep": "photo",
+   "why": "Nothing on \"the spec is the spec\" beyond basic jigger how-tos (Level 1 territory)."
+  },
+  {
+   "file": "content/bar/bar-l4-team.json",
+   "slug": "bar-l4-team",
+   "level": 4,
+   "section": "Tasting with the team",
+   "keep": "photo",
+   "why": "Only wine-tasting-room or unrelated results."
+  },
+  {
+   "file": "content/bar/bar-l4-hospitality.json",
+   "slug": "bar-l4-hospitality",
+   "level": 4,
+   "section": "Reading the bar",
+   "keep": "photo",
+   "why": "Only body-language clips from unknown or general channels."
+  },
+  {
+   "file": "content/bar/bar-l4-hospitality.json",
+   "slug": "bar-l4-hospitality",
+   "level": 4,
+   "section": "Regulars",
+   "keep": "photo",
+   "why": "Only guest-side or small unknown channels."
+  },
+  {
+   "file": "content/bar/bar-l4-hospitality.json",
+   "slug": "bar-l4-hospitality",
+   "level": 4,
+   "section": "When it goes wrong",
+   "keep": "photo",
+   "why": "Generic customer-service clips; the Danny Meyer clip found is about business failure, not service recovery."
+  },
+  {
+   "file": "content/bar/bar-l4-suppliers.json",
+   "slug": "bar-l4-suppliers",
+   "level": 4,
+   "section": "Allocations",
+   "keep": "photo",
+   "why": "Only consumer bourbon-hunting channels, nothing from the trade side."
+  },
+  {
+   "file": "content/bar/bar-l4-law.json",
+   "slug": "bar-l4-law",
+   "level": 4,
+   "section": "Liability",
+   "keep": "photo",
+   "why": "Only law-firm and insurance ads on dram shop law."
+  },
+  {
+   "file": "content/bar/bar-l4-law.json",
+   "slug": "bar-l4-law",
+   "level": 4,
+   "section": "Hours, records and training",
+   "keep": "photo",
+   "why": "Only course ads (TIPS, LIQUORexam); MLCC videos are about product registration."
+  }
+ ]
+}
