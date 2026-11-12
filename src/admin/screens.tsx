@@ -6,6 +6,7 @@ import { useSession } from '../lib/session';
 import { VideoEmbed } from '../components/VideoEmbed';
 import { Empty, ErrorNote, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 import { PRODUCT_NAME } from '../lib/brand';
+import { AuthCard } from '../components/AuthCard';
 
 function useLoad<T>(path: string) {
   const [data, setData] = useState<T | null>(null);
@@ -16,18 +17,9 @@ function useLoad<T>(path: string) {
 }
 
 /* ---------- signed out ---------- */
-export function AuthCard({ title, sub, children }: { title: string; sub?: ReactNode; children: ReactNode }) {
-  return (
-    <div className="auth">
-      <div className="auth-card">
-        <img src="/img/logo-white.png" alt="The Baldwin" className="auth-logo" />
-        <h1>{title}</h1>
-        {sub && <p className="muted">{sub}</p>}
-        {children}
-      </div>
-    </div>
-  );
-}
+// Nov 12: the signed-out screens wear Mise, the platform's front door (src/components/AuthCard.tsx; Figma section 28).
+export { AuthCard };
+const OWNERS = 'Owners and managers';
 
 export function SignIn() {
   const { setUser, setupNeeded, superSetupNeeded } = useSession();
@@ -56,7 +48,7 @@ export function SignIn() {
     setBusy(false);
   };
   if (ticket) return (
-    <AuthCard title="Two-step sign-in" sub="Open your authenticator app and type the 6-digit code for Mise.">
+    <AuthCard kicker={OWNERS} title="Two-Step Sign-In" sub="Open your authenticator app and type the 6-digit code for Mise.">
       <form className="stack" onSubmit={submitCode}>
         <label className="field"><span>Code</span><input inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} autoFocus /></label>
         {error && <ErrorNote error={error} />}
@@ -66,16 +58,19 @@ export function SignIn() {
     </AuthCard>
   );
   return (
-    <AuthCard title="Sign in" sub={<>Owners, managers and super admins. Staff sign in on <Link to="/">the book</Link> with the join code.</>}>
+    <AuthCard kicker={OWNERS} title="Sign In" sub="Use the email your invite was sent to.">
       <form className="stack" onSubmit={submit}>
-        <Text label="Email" value={email} onChange={setEmail} />
-        <label className="field"><span>Password</span><input type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
+        <label className="field"><span>Email</span>
+          <input inputMode="email" autoComplete="username" autoCapitalize="none" spellCheck={false} placeholder="you@yourrestaurant.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+        </label>
+        <label className="field"><span>Password</span><input type="password" autoComplete="current-password" placeholder="Your password" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
+        <button type="button" className="link-btn si-forgot" onClick={() => { setForgot(true); setError(''); }}>Forgot Password?</button>
         {error && <ErrorNote error={error} />}
         <button className="btn" disabled={busy || !email || !password}>{busy ? 'Signing In…' : 'Sign In'}</button>
-        <button type="button" className="link-btn" onClick={() => { setForgot(true); setError(''); }}>Forgot Password?</button>
-        <p className="muted small">No account? Ask your owner for an invite link.</p>
         {superSetupNeeded && <button type="button" className="link-btn" onClick={() => setSetup(true)}>Set up the super admin account</button>}
       </form>
+      <hr className="si-rule" />
+      <p className="si-alt">On staff? <Link to="/">Sign in with your join code.</Link></p>
     </AuthCard>
   );
 }
@@ -95,7 +90,7 @@ function ForgotPassword({ email: start, onBack }: { email: string; onBack: (emai
     setBusy(false);
   };
   if (sent) return (
-    <AuthCard title="Check your email" sub={sent}>
+    <AuthCard kicker={OWNERS} title="Check Your Email" sub={sent}>
       <div className="stack">
         <p className="muted small">The link works once and expires in 24 hours. Staff don’t need one: a manager can Reset PIN.</p>
         <button type="button" className="btn" onClick={() => onBack(email)}>Back to Sign In</button>
@@ -103,7 +98,7 @@ function ForgotPassword({ email: start, onBack }: { email: string; onBack: (emai
     </AuthCard>
   );
   return (
-    <AuthCard title="Forgot your password?" sub="Type the email you sign in with. If it has an account, we’ll email a link to pick a new password.">
+    <AuthCard kicker={OWNERS} title="Forgot Your Password?" sub="Type the email you sign in with. If it has an account, we’ll email a link to pick a new password.">
       <form className="stack" onSubmit={submit}>
         <label className="field"><span>Email</span><input type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus /></label>
         {error && <ErrorNote error={error} />}
@@ -127,9 +122,9 @@ export function ResetPassword() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   useEffect(() => { api<typeof info>(`/api/reset/${token}`).then(setInfo).catch(() => setInfo({ valid: false })); }, [token]);
-  if (!info) return <AuthCard title="Checking your link…"><Loading /></AuthCard>;
+  if (!info) return <AuthCard title="Checking Your Link…"><Loading /></AuthCard>;
   if (!info.valid) return (
-    <AuthCard title="This reset link doesn’t work" sub="It expired, was already used, or a newer link replaced it. Ask an owner for a new one, or use Forgot Password? on the sign-in page.">
+    <AuthCard title="This Reset Link Doesn’t Work" sub="It expired, was already used, or a newer link replaced it. Ask an owner for a new one, or use Forgot Password? on the sign-in page.">
       <Link className="btn" to="/admin">Go to Sign In</Link>
     </AuthCard>
   );
@@ -152,7 +147,7 @@ export function ResetPassword() {
     setBusy(false);
   };
   if (ticket) return (
-    <AuthCard title="Two-step sign-in" sub="Your new password is set. Open your authenticator app and type the 6-digit code for Mise.">
+    <AuthCard kicker={OWNERS} title="Two-Step Sign-In" sub="Your new password is set. Open your authenticator app and type the 6-digit code for Mise.">
       <form className="stack" onSubmit={submitCode}>
         <label className="field"><span>Code</span><input inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} autoFocus /></label>
         {error && <ErrorNote error={error} />}
@@ -161,7 +156,7 @@ export function ResetPassword() {
     </AuthCard>
   );
   return (
-    <AuthCard title="Pick a new password" sub={<>For <strong>{info.email}</strong>. The link works once{info.expiresAt ? ` and expires ${when(info.expiresAt)}` : ''}. You’ll be signed out everywhere else.</>}>
+    <AuthCard kicker={OWNERS} title="Pick a New Password" sub={<>For <strong>{info.email}</strong>. The link works once{info.expiresAt ? ` and expires ${when(info.expiresAt)}` : ''}. You’ll be signed out everywhere else.</>}>
       <form className="stack" onSubmit={submit}>
         <input type="email" autoComplete="username" value={info.email || ''} readOnly hidden />
         <label className="field"><span>New password</span><input type="password" autoComplete="new-password" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} autoFocus /><small>At least 10 characters.</small></label>
@@ -185,7 +180,7 @@ function Setup({ superAdmin }: { superAdmin: boolean }) {
     setBusy(false);
   };
   return (
-    <AuthCard title={superAdmin ? 'Create the super admin account' : 'Create the owner account'}
+    <AuthCard title={superAdmin ? 'Create the Super Admin Account' : 'Create the Owner Account'}
       sub={superAdmin ? 'This only works once, with the super admin email set on the server. You’ll turn on two-step sign-in next.' : 'This only works once, with the owner’s email. After this you invite everyone else.'}>
       <form className="stack" onSubmit={submit}>
         <Text label="Your name" value={f.name} onChange={(name) => setF({ ...f, name })} />
@@ -207,8 +202,8 @@ export function AcceptInvite() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   useEffect(() => { api<typeof inv>(`/api/invite/${token}`).then(setInv).catch(() => setInv({ valid: false })); }, [token]);
-  if (!inv) return <AuthCard title="Checking your invite…"><Loading /></AuthCard>;
-  if (!inv.valid) return <AuthCard title="This invite doesn’t work" sub="It expired or was already used. Ask for a new link."><Link className="btn" to="/">Go to the Book</Link></AuthCard>;
+  if (!inv) return <AuthCard title="Checking Your Invite…"><Loading /></AuthCard>;
+  if (!inv.valid) return <AuthCard title="This Invite Doesn’t Work" sub="It expired or was already used. Ask for a new link."><Link className="btn" to="/">Go to the Book</Link></AuthCard>;
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');
     try { setUser((await api<{ user: User }>(`/api/invite/${token}`, { method: 'POST', body: f })).user); nav(inv.role === 'superadmin' ? '/admin/account' : '/admin'); }
@@ -217,7 +212,7 @@ export function AcceptInvite() {
   };
   const what = inv.role === 'superadmin' ? 'a super admin' : `${inv.role === 'owner' ? 'an owner' : 'a manager'}${inv.company ? ` at ${inv.company}` : ''}`;
   return (
-    <AuthCard title="Join the training app" sub={<>You’re invited as <strong>{what}</strong>, with <strong>{inv.email}</strong>.</>}>
+    <AuthCard title="Join the Training App" sub={<>You’re invited as <strong>{what}</strong>, with <strong>{inv.email}</strong>.</>}>
       <form className="stack" onSubmit={submit}>
         <Text label="Your name" value={f.name} onChange={(name) => setF({ ...f, name })} />
         <label className="field"><span>Choose a password</span><input type="password" autoComplete="new-password" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} /><small>At least 10 characters.</small></label>

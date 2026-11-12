@@ -330,7 +330,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const co = staffByCode(parts[2]);
       if (!co) { codeLimiter.record(ip(req)); fail(404, 'That join code isn’t right. Ask a manager for it.'); }
       const staff = db.prepare("SELECT id, name, pin_hash, store_id FROM users WHERE company_id = ? AND role = 'staff' AND deleted_at IS NULL ORDER BY name COLLATE NOCASE").all(co.id);
-      return sendJson(res, 200, { company: co.name, stores: storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name })), staff: staff.map((s) => ({ id: s.id, name: s.name, storeId: s.store_id, needsPin: !s.pin_hash })) });
+      // Nov 12: the brand comes too, so the store, name and PIN screens wear the restaurant's own look (the join-code screen
+      // before it is Mise's, the platform's front door).
+      return sendJson(res, 200, { company: co.name, brand: co.brand === 'mise' ? 'mise' : 'baldwin', stores: storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name })), staff: staff.map((s) => ({ id: s.id, name: s.name, storeId: s.store_id, needsPin: !s.pin_hash })) });
     }
     if (p === '/api/join' && m === 'POST') {
       if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
