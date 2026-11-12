@@ -974,27 +974,56 @@ test('demo: The Baldwin demo stays brand baldwin; the Mise demo is Wrenfield, br
   assert.equal((await call('/api/me')).data.user.brand, 'baldwin');
 });
 
-test('demo: nothing of The Baldwin in the Mise demo (every page, the index, the lists), and its own menu fills the book', async () => {
+test('demo: nothing of The Baldwin in the Mise demo (every page, the index, the lists, Team Chat, the admin), and its own menu fills the book', async () => {
   const cookie = await startDemo('manager', 'mise');
   const idx = JSON.parse(await getAs(cookie, '/api/index'));
-  assert.ok(!idx.some((e) => e.slug === 'our-story' || e.slug === 'floor-plan'), 'Our Story and the Floor Plan are left out');
-  assert.equal((await fetch(BASE + '/api/page/' + idx.find((e) => e.slug === 'food-matrix').file.replace('13-2', '30-2'), { headers: { cookie } })).status, 404, 'the floor plan is not in its book');
-  const BALDWIN = /Baldwin|Testa Barra|Jeffrey(?! Ong)|\bBRG\b|logo-white/;
+  const BALDWIN = /Baldwin|Testa Barra|Jeffrey(?! Ong)|\bBRG\b|logo-white|Macomb|Shelby|Opening Menu|Paloma Verde|Pork Chop|Lobster Tagliatelle|Cacio e Pepe/i;
   const bodies = [JSON.stringify(idx)];
-  for (const p of ['/api/me', '/api/counts', '/api/quiz/catalog', '/api/path', '/api/collections', '/api/team', '/api/quiz/results', ...['recipe', 'house', 'wine', 'shelf', 'beer', 'classic'].map((c) => '/api/entries?collection=' + c)]) bodies.push(await getAs(cookie, p));
+  for (const p of ['/api/me', '/api/counts', '/api/quiz/catalog', '/api/path', '/api/collections', '/api/team', '/api/quiz/results', '/api/sections', '/api/certificates',
+    '/api/manager/home', '/api/manager/team', '/api/path/team', '/api/chat', '/api/chat/unread',
+    ...['recipe', 'house', 'wine', 'shelf', 'beer', 'classic'].map((c) => '/api/entries?collection=' + c)]) bodies.push(await getAs(cookie, p));
   for (const e of idx) bodies.push(await getAs(cookie, '/api/page/' + e.file));
-  const hits = bodies.filter((b) => BALDWIN.test(b)).map((b) => b.match(new RegExp('.{0,40}' + BALDWIN.source + '.{0,40}'))[0]);
+  // Team Chat (Nov 11): every conversation the manager has, with its messages, page cards and person cards
+  const rooms = JSON.parse(await getAs(cookie, '/api/chat')).rooms;
+  assert.ok(rooms.length >= 5, 'channels and direct messages are seeded');
+  for (const r of rooms) bodies.push(await getAs(cookie, '/api/chat/room/' + r.key));
+  const hits = bodies.filter((b) => BALDWIN.test(b)).map((b) => b.match(new RegExp('.{0,40}(' + BALDWIN.source + ').{0,40}', 'i'))[0]);
   assert.deepEqual(hits, [], 'no Baldwin text in what the Mise demo is sent');
   const home = await getAs(cookie, '/api/page/4-2');
   assert.match(home, /Wood-Grilled Half Chicken/);
   assert.ok(!JSON.parse(home).empty, 'Home is a full page, not an empty state');
   const fm = await getAs(cookie, '/api/page/13-2');
   for (const dish of ['Hanger Steak Frites', 'Charred Shishito Peppers', 'Chocolate Pot de Crème']) assert.match(fm, new RegExp(dish), dish);
-  for (const slug of ['the-bar/wine', 'the-bar/beer-and-draft', 'the-bar/back-bar', 'photo-library', 'video-library', 'quizzes']) {
+  // Same features for every brand (Nov 11): Our Story, the Floor Plan and the Sommelier "about" page are in its book, with its own words
+  for (const slug of ['our-story', 'floor-plan', 'sommelier-program/about', 'the-bar/wine', 'the-bar/beer-and-draft', 'the-bar/back-bar', 'photo-library', 'video-library', 'quizzes']) {
     const f = idx.find((e) => e.slug === slug)?.file;
     assert.ok(f, slug + ' is in the book');
     assert.ok(!JSON.parse(await getAs(cookie, '/api/page/' + f)).empty, slug + ' is full');
   }
+  const story = await getAs(cookie, '/api/page/' + idx.find((e) => e.slug === 'our-story').file);
+  for (const t of ['Gideon Ambrose', 'Rosalind Hart', 'Sample restaurant', 'Open the Floor Plan']) assert.match(story, new RegExp(t), t);
+  const plan = JSON.parse(await getAs(cookie, '/api/page/' + idx.find((e) => e.slug === 'floor-plan').file));
+  const flat = (n, out = []) => { out.push(n); (n.c || []).forEach((c) => flat(c, out)); return out; };
+  const nodes = flat(plan.main);
+  const img = nodes.find((n) => (n.n || '').startsWith('IMG/floorplan'));
+  assert.equal(img.f[0].img, '/img/demo-mise/floor-plan.png', 'its own room drawing');
+  assert.ok(img.meta.tables['404'] && img.meta.tables['12'] && !img.meta.tables['510'], 'Find a Table knows its tables and bar seats, not The Baldwin\'s');
+  assert.deepEqual(nodes.find((n) => n.meta?.finder).meta.list.length, 44);
+  assert.ok(nodes.some((n) => n.meta?.assign === 'Servers 1'), 'Tonight’s Sections can be assigned');
+  // its pre-shift note names its own dishes and drinks
+  const foh = await getAs(cookie, '/api/chat/room/foh');
+  for (const t of ['Wood-Grilled Half Chicken', 'Smoke Signal', 'Gideon Ambrose']) assert.match(foh, new RegExp(t), t);
+  // the manager home's last edits are its own
+  assert.match(await getAs(cookie, '/api/manager/home'), /Smoke Signal/);
+});
+
+// Nov 11, Tommy: "make sure both styles have all the same functions and features, only thing different should be the menu items and the style"
+test('demo: both demos have the same pages, apart from their menu items', async () => {
+  const MENU = /^(recipe|signature|wine-list|shelf|beer-list)\//;
+  const pages = async (demo) => new Set(JSON.parse(await getAs(await startDemo('manager', demo), '/api/index')).map((e) => e.slug).filter((s) => !MENU.test(s)));
+  const [b, m] = [await pages('baldwin'), await pages('mise')];
+  assert.deepEqual([...b].filter((s) => !m.has(s)), [], 'every page The Baldwin demo has, Wrenfield has');
+  assert.deepEqual([...m].filter((s) => !b.has(s)), [], 'and nothing extra');
 });
 
 test('demo: the Mise demo restarts as the Mise demo; The Baldwin keeps its own menu sections', async () => {

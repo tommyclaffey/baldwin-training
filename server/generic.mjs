@@ -102,10 +102,11 @@ export function snapshotShelves(page) {
 }
 
 /** After filling: Baldwin's cards, sections, names and lines come out; the scripts read for this store. */
-export function genericize(page, slug, { store, statics, terms, has }) {
+export function genericize(page, slug, { store, statics, terms, has, topBar = false }) {
   const m = page.main;
-  // Top bar: The Baldwin's menu status and its pre-shift quiz.
-  for (const n of findAll(m, (x) => x.n === 'Menu chip' || x.n === 'Button · Pre-Shift Quiz')) drop(m, n);
+  // Top bar: The Baldwin's menu status and its pre-shift quiz. The Mise demo (topBar) keeps both: its chip is renamed for
+  // its own menu and the Quick Quiz asks about its own dishes.
+  if (!topBar) for (const n of findAll(m, (x) => x.n === 'Menu chip' || x.n === 'Button · Pre-Shift Quiz')) drop(m, n);
   for (const [n, json] of statics) if (JSON.stringify(n) === json) drop(m, n);
   for (const n of findAll(m, (x) => STORE_CARDS.includes(x.n))) drop(m, n);
   for (const name of OWN_SECTIONS[slug] || []) { const n = m.c.find((c) => c.n === name); if (n) drop(m, n); }

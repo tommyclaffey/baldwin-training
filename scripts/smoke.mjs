@@ -9,7 +9,7 @@ import fs from 'node:fs';
 const BASE = (process.argv[2] || 'http://127.0.0.1:8091').replace(/\/$/, '');
 const CHROME = process.env.CHROME || ['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium', '/usr/bin/chromium-browser'].find((p) => fs.existsSync(p));
 if (!CHROME) { console.error('No Chrome found. Set CHROME=/path/to/chrome.'); process.exit(2); }
-const PAGES = ['/', '/food-matrix', '/the-bar/cocktails', '/the-bar/cocktail-specs', '/the-bar/wine', '/allergen-guide', '/quizzes', '/my-path', '/team-chat', '/team-chat/foh',
+const PAGES = ['/', '/our-story', '/floor-plan', '/sommelier-program/about', '/food-matrix', '/the-bar/cocktails', '/the-bar/cocktail-specs', '/the-bar/wine', '/allergen-guide', '/quizzes', '/my-path', '/team-chat', '/team-chat/foh',
   '/cocktail-program', '/cocktail-program/level-2', '/beer-program', '/beer-program/level-1', '/sommelier-program', '/sommelier-program/level-1', '/sommelier-program/level-2',
   '/cocktail-program/level-2/bar-vodka-gin/gin-styles', '/certificate/bar-1'];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

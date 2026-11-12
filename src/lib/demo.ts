@@ -7,9 +7,9 @@ export type DemoKind = 'baldwin' | 'mise';
 export const demoKindOf = (u: User | null | undefined): DemoKind => (u?.brand === 'mise' ? 'mise' : 'baldwin');
 export const demoHome = (k: DemoKind) => (k === 'mise' ? '/demo/mise' : '/demo');
 export const isDemoHome = (p: string) => p === '/demo' || p === '/demo/mise';
-/** Pages the Mise demo's book leaves out (The Baldwin's own story and floor plan). Kept in step with SAMPLE_HIDDEN in server/content.mjs. */
-export const SAMPLE_HIDDEN = ['/our-story', '/floor-plan', '/sommelier-program/about'];
 export const isSample = (u: User | null | undefined) => !!u?.demo && u.brand === 'mise';
+/** The menu the top bar's chip names: The Baldwin's opening menu, or the Mise demo's (SAMPLE_MENU in server/content.mjs). */
+export const menuName = (u: User | null | undefined) => (isSample(u) ? 'Fall Menu · 2026' : u?.store?.bookReady && u.store.slug === 'the-baldwin' ? 'Opening Menu · Fall 2026' : null);
 
 export async function exitDemo(refresh: () => Promise<unknown>) {
   await leaveDemo();

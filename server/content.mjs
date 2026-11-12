@@ -21,7 +21,7 @@ import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './wi
 import { wire } from './interact.mjs';
 import { libraryVideos } from './videos.mjs';
 import { fillHome } from './home.mjs';
-import { fillSample } from './sample.mjs';
+import { fillSample, sampleSommAbout } from './sample.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -101,11 +101,10 @@ const isGeneric = () => SCOPE.generic;
  * finished (no "goes here" pages). So for a Mise-brand demo company:
  *   • Home, the Video Library, the Photo Library and Quizzes are drawn like The Baldwin's, from its own menu, then
  *     The Baldwin's names are written out the same way as on the library pages (genericize);
- *   • Our Story and the Floor Plan are left out of its book (they're The Baldwin's own: its family, its room). */
-export const SAMPLE_HIDDEN = new Set(['our-story', 'floor-plan', 'sommelier-program/about']);
-/** Links to a left-out page go somewhere that's in the book, or (null) go. The old Sommelier "about" page is about booking
- *  The Baldwin group's own Court sittings; its links lead to the Sommelier hub. */
-const SAMPLE_REDIRECT = { 'sommelier-program/about': '/sommelier-program' };
+ *   • Our Story, the Floor Plan and the Sommelier "about" page get Wrenfield's own words (server/sample.mjs; Nov 11, Tommy:
+ *     "make sure both styles have all the same functions and features"), so its book has every page The Baldwin's has;
+ *   • the top bar keeps its menu chip (Wrenfield's own menu name) and the Quick Quiz. */
+export const SAMPLE_MENU = 'Fall Menu · 2026';
 /** The Baldwin group's own people and places, as they appear in the shared Sommelier pages ("with us at Testa Barra",
  *  "Ask Jeffrey Baldwin"). Jeffrey Ong (the Jungle Bird's creator) stays. */
 const GROUP = /\bBaldwin|Testa Barra|\bBRG\b|Macomb|Shelby Twp|Tell Jeffrey|Jeffrey(?! Ong)\b/i;
@@ -122,21 +121,16 @@ function sampleScrub(db, page) {
   const ours = [...ordered(db, 'recipe'), ...ordered(db, 'house')].map((e) => e.data.name);
   const terms = baldwinNames(db, ours);
   const any = (v) => THEIRS.test(v) || terms.test(v);
-  // The top bar's "Opening Menu · Fall 2026" (The Baldwin's menu) and its pre-shift quiz, as on the library pages; and the
-  // design's "+ Add our next cocktail" slot (a finished demo shows what's there, not a slot for more)
-  for (const n of findAll(m, (x) => x.n === 'Menu chip' || x.n === 'Button · Pre-Shift Quiz' || x.n === 'More coming')) { const p = parentOf(m, n); if (p) p.c = p.c.filter((x) => x !== n); }
+  // The design's "+ Add our next cocktail" slot (a finished demo shows what's there, not a slot for more)
+  for (const n of findAll(m, (x) => x.n === 'More coming')) { const p = parentOf(m, n); if (p) p.c = p.c.filter((x) => x !== n); }
+  // The top bar's menu chip names Wrenfield's menu, not The Baldwin's "Opening Menu · Fall 2026"
+  for (const chip of findAll(m, (x) => x.n === 'Menu chip')) for (const t of texts(chip)) { setText(t, SAMPLE_MENU); t.n = SAMPLE_MENU; }
   for (const t of findAll(m, (n) => n.t === 'T' && typeof n.s === 'string')) {
     if (/ with us at Testa Barra/.test(t.s)) setText(t, t.s.replace(/ with us at Testa Barra/, ''));
     // The Baldwin group hosts the Court's Levels 1 and 2 (real dates at Testa Barra); Wrenfield doesn't
     if (/^We host it\b/.test(t.s)) { setText(t, 'Through the Court'); t.n = 'Through the Court'; }
     // The Baldwin's flights ($22 wine flight, $30 sommelier flight) are its own offers
     if (GROUP.test(t.s) || /\bwine flight\b|\bsommelier flight\b/i.test(t.s) || HOSTED.test(t.s)) dropLine(m, t);
-  }
-  // links to the pages its book leaves out (Home's "Open the Floor Plan →") go
-  for (const n of findAll(m, (x) => typeof x.to === 'string' && SAMPLE_HIDDEN.has(x.to.replace(/^\//, '').replace(/[?#].*$/, '')))) {
-    const to = SAMPLE_REDIRECT[n.to.replace(/^\//, '').replace(/[?#].*$/, '')];
-    if (to) { n.to = to; continue; }
-    const p = parentOf(m, n); if (p) p.c = p.c.filter((x) => x !== n);
   }
   for (const n of findAll(m, (x) => typeof x.n === 'string' && any(x.n))) n.n = n.t === 'T' && n.s && !any(n.s) ? String(n.s).slice(0, 60) : n.n.replace(new RegExp(terms.source, 'g'), 'Dish').replace(new RegExp(THEIRS.source, 'gi'), '').replace(/^[\s·]+|[\s·]+$/g, '').trim() || 'Item';
   return page;
@@ -532,7 +526,7 @@ export function assemble(db, file) {
   if (page?.sampleOf) {
     const { slug, statics } = page.sampleOf; delete page.sampleOf;
     const recipes = ordered(db, 'recipe'), house = ordered(db, 'house');
-    genericize(page, slug, { store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: ordered(db, 'wine').length, beer: ordered(db, 'beer').length } });
+    genericize(page, slug, { topBar: true, store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: ordered(db, 'wine').length, beer: ordered(db, 'beer').length } });
   }
   // Managers get an Add row after every list of dishes, cocktails, wines and bottles (staff never see them).
   if (page && !entry && canOpen(SCOPE.user, '/admin/pages/recipe/new')) addRows(page, baseIndex().find((x) => x.file === file)?.slug, db, SCOPE.store);
@@ -602,8 +596,9 @@ function assembleRaw(db, file) {
     return p2 ? { ...level2OnLevel1(p2, old, { done, ...levelStatus(db, 'somm-2') }), name: page.name } : old;
   }
   if (isGeneric()) {
-    if (!isSample(db) || classify(slug) !== 'own') return genericPage(db, file, slug, page);
-    if (SAMPLE_HIDDEN.has(slug)) return null;
+    // The Sommelier "about" page gets its own words first, so the library pass that takes The Baldwin group's lines out
+    // leaves the new ones alone.
+    if (!isSample(db) || classify(slug) !== 'own') return genericPage(db, file, slug, isSample(db) && slug === 'sommelier-program/about' ? sampleSommAbout(page) : page);
     // Filled like The Baldwin's page; assemble() writes The Baldwin's names out after the videos and photos are in.
     const statics = snapshotShelves(page);
     const filled = fillSample(fullBook(db, file, page), slug, { recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
@@ -664,7 +659,7 @@ function genericPage(db, file, slug, page) {
   if (entry && entry.slug.startsWith('beer/') && beers.length) fillBeerStyle(page, entry.slug, baseIndex(), beers, basePage);
   if (file === '294-2' && shelf.length) fillBackBar(page, shelf, house);
   if (file === '430-17') fillSpecs(page, house, ordered(db, 'classic'));
-  return genericize(page, slug, { store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: wines.length, beer: beers.length } });
+  return genericize(page, slug, { topBar: isSample(db), store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: wines.length, beer: beers.length } });
 }
 /** Baldwin's own dish and drink names, so they're written out of the shared pages. */
 function baldwinNames(db, ours = []) {
@@ -707,7 +702,7 @@ export function fullIndex(db) {
   const extra = shelfSearchText(baseIndex(), ordered(db, 'shelf'), ordered(db, 'beer'));
   for (const [k, v] of wineSearchText(baseIndex(), ordered(db, 'wine'))) extra.set(k, ((extra.get(k) || '') + ' ' + v).trim());
   const sample = isSample(db);
-  const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p)) && !(sample && SAMPLE_HIDDEN.has(e.slug)))
+  const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p)))
     .map((e) => (sample && classify(e.slug) === 'own' ? sampleEntry(db, e) : isGeneric() ? libraryEntry(db, e) : e))
     .map((e) => (sample ? { ...e, text: (e.text || '').replace(new RegExp(THEIRS.source, 'gi'), ''), blurb: e.blurb && GROUP.test(e.blurb) ? undefined : e.blurb } : e))
     .map((e) => (extra.has(e.slug) ? { ...e, text: (extra.get(e.slug) + ' ' + (e.text || '')).slice(0, 2400) } : e));
