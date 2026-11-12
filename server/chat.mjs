@@ -350,7 +350,7 @@ export function kindFor(e) {
 export function pageCard(db, storeRow, slug, user = null) {
   const s = String(slug || '').replace(/^\//, '');
   if (!s) return null;
-  const e = withStore(storeRow, () => fullIndex(db), user).find((z) => z.slug === s);
+  const e = withStore(storeRow, () => fullIndex(db, { text: false }), user).find((z) => z.slug === s); // addresses and titles only
   if (!e) return null;
   // The card's one line: the page's blurb, or for a drink or dish without one, its taste or selling line.
   let extra = '';

@@ -9,7 +9,7 @@ import { ackOf } from './acks.mjs';
 import { certificatesFor } from './certs.mjs';
 import { regionPage, regionData } from './region.mjs';
 import { lessonPage, level1Page, level2Page, level2OnLevel1, hubPage, barPage, programHub, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
-import { passFor } from './quizgen.mjs';
+import { passFor, questionPool } from './quizgen.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
 import { COLLECTIONS, COURSES, SHARED, listEntries, getEntry, wineDescription } from './cms.mjs';
@@ -24,6 +24,8 @@ import { wire } from './interact.mjs';
 import { libraryVideos } from './videos.mjs';
 import { fillHome } from './home.mjs';
 import { fillSample, sampleSommAbout } from './sample.mjs';
+import { storeCache, cached, EVERY_STORE } from './cache.mjs';
+import { variant, asVariant, isBrgCompany } from './variant.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -673,8 +675,12 @@ function genericPage(db, file, slug, page) {
   if (file === '430-17') fillSpecs(page, house, ordered(db, 'classic'));
   return genericize(page, slug, { topBar: isSample(db), store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: wines.length, beer: beers.length } });
 }
-/** Baldwin's own dish and drink names, so they're written out of the shared pages. */
-function baldwinNames(db, ours = []) {
+/** Baldwin's own dish and drink names, so they're written out of the shared pages. Worked out once per menu (Nov 11: it
+ *  was read again for every page in the search index, 6 s of the Mise demo's start); The Baldwin's book or the shared
+ *  classics changing empties it (server/cache.mjs). */
+const namesCache = storeCache();
+const baldwinNames = (db, ours = []) => cached(namesCache, db, EVERY_STORE, ours.join('\u0001'), () => readBaldwinNames(db, ours));
+function readBaldwinNames(db, ours) {
   // A store that names a dish or drink the same as one of Baldwin's keeps its own.
   // Nov 11: …or one inside its own name (The Baldwin's "Steak Frites" was taking out Wrenfield's "Hanger Steak Frites").
   const mine = new Set(ours);
@@ -685,9 +691,12 @@ function baldwinNames(db, ours = []) {
 
 /** Search text for the shared library, read from the pages as other stores see them. Rebuilt when Baldwin's names change. */
 let lib = { key: null, text: null };
-function libraryEntry(db, e) {
+function libraryEntry(db, e, terms = baldwinNames(db)) {
   if (classify(e.slug) === 'own') return indexText(e);
-  const terms = baldwinNames(db);
+  libraryText(db, terms);
+  return { ...e, text: lib.text.get(e.slug) || '', blurb: terms.test(e.blurb || '') ? undefined : e.blurb };
+}
+function libraryText(db, terms) {
   if (lib.key !== terms.source) {
     const text = new Map();
     withStore({ id: -1, name: '', book_ready: 0 }, () => {
@@ -699,7 +708,13 @@ function libraryEntry(db, e) {
     });
     lib = { key: terms.source, text };
   }
-  return { ...e, text: lib.text.get(e.slug) || '', blurb: terms.test(e.blurb || '') ? undefined : e.blurb };
+}
+/** Once at server start (Nov 11, speed): the shared library's search text (every page read as another store sees it, about
+ *  a second of work) and The Baldwin's index and quiz pool, so the first sign-in or demo after a deploy doesn't wait. */
+export function warmContent(db) {
+  libraryText(db, baldwinNames(db));
+  const row = db.prepare('SELECT * FROM stores WHERE id = 1').get();
+  if (row) asVariant({ brg: isBrgCompany(db, row.company_id), restaurant: row.name }, () => { withStore(row, () => fullIndex(db, { text: false })); questionPool(db, row.id); });
 }
 
 /** Search text for the Mise demo's own pages, read from the pages as it sees them. */
@@ -708,16 +723,44 @@ function sampleEntry(db, e) {
   return { ...e, text: p?.main ? texts(p.main).map((t) => t.s).join(' ').replace(/\s+/g, ' ').slice(0, 1200) : '', thumb: undefined, blurb: undefined };
 }
 
-/* ---- index: designed pages, minus the ones the CMS now owns, plus every CMS page ---- */
+/* ---- index: designed pages, minus the ones the CMS now owns, plus every CMS page ----
+ * Nov 11 (speed): the index is worked out once per store (and program version) and kept until that store's book changes
+ * (server/cache.mjs). The one part that depends on who's reading is the Mise demo's own pages (Home greets you by name;
+ * managers see Upload Photos): their search text is read fresh, as this person sees them, on every /api/index.
+ * fullIndex(db, { text: false }) skips that for callers that only need the pages' addresses and titles. */
 const PREFIXES = [...Object.values(COLLECTIONS).map((c) => c.prefix), GUIDE + '/'];
-export function fullIndex(db) {
+const indexCache = storeCache();
+/** The program version this request reads (server/variant.mjs): the Hospitality Program's lessons differ by company. */
+const variantKey = () => { const v = variant(); return `${v.brg ? 1 : 0}:${v.restaurant ?? ''}`; };
+export function fullIndex(db, { text = true } = {}) {
+  const core = cached(indexCache, db, SCOPE.store, `${variantKey()}|${isGeneric() ? 1 : 0}|${isSample(db) ? 1 : 0}`, () => buildIndex(db));
+  if (!text || !core.own.length) return core.list;
+  const out = core.list.slice();
+  for (const [i, e, extra] of core.own) out[i] = ownEntry(db, e, extra);
+  return out;
+}
+/** Is this the cached index itself (the same list until the book changes), not one read for one person? */
+const cachedLists = new WeakSet();
+export const isCachedIndex = (list) => cachedLists.has(list);
+/** A Mise demo page of its own, as the index shows it: read from the page as this person sees it. */
+function ownEntry(db, e, extra) {
+  const x = sampleEntry(db, e);
+  const y = { ...x, text: (x.text || '').replace(new RegExp(THEIRS.source, 'gi'), ''), blurb: x.blurb && GROUP.test(x.blurb) ? undefined : x.blurb };
+  return extra != null ? { ...y, text: (extra + ' ' + (y.text || '')).slice(0, 2400) } : y;
+}
+function buildIndex(db) {
   const extra = shelfSearchText(baseIndex(), ordered(db, 'shelf'), ordered(db, 'beer'));
   for (const [k, v] of wineSearchText(baseIndex(), ordered(db, 'wine'))) extra.set(k, ((extra.get(k) || '') + ' ' + v).trim());
   const sample = isSample(db);
+  const terms = isGeneric() ? baldwinNames(db) : null;
+  const own = []; // [position, base entry, extra search text]: the Mise demo's own pages, read per person (fullIndex)
+  // The Video Library's search text is its videos (below), so it isn't read from the page.
+  const later = (e) => sample && classify(e.slug) === 'own' && e.slug !== 'video-library';
   const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p)))
-    .map((e) => (sample && classify(e.slug) === 'own' ? sampleEntry(db, e) : isGeneric() ? libraryEntry(db, e) : e))
+    .map((e) => (later(e) ? { ...e, text: '', thumb: undefined, blurb: undefined, later: e } : sample && classify(e.slug) === 'own' ? { ...e, text: '', thumb: undefined, blurb: undefined } : isGeneric() ? libraryEntry(db, e, terms) : e))
     .map((e) => (sample ? { ...e, text: (e.text || '').replace(new RegExp(THEIRS.source, 'gi'), ''), blurb: e.blurb && GROUP.test(e.blurb) ? undefined : e.blurb } : e))
     .map((e) => (extra.has(e.slug) ? { ...e, text: (extra.get(e.slug) + ' ' + (e.text || '')).slice(0, 2400) } : e));
+  base.forEach((e, i) => { if (e.later) { own.push([i, e.later, extra.has(e.slug) ? extra.get(e.slug) : null]); delete e.later; } });
   const entries = [];
   for (const [id, c] of Object.entries(COLLECTIONS)) {
     for (const e of ordered(db, id)) {
@@ -762,7 +805,9 @@ export function fullIndex(db) {
   const vids = libraryVideos({ recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), classics: ordered(db, 'classic'), db });
   const lib = base.find((e) => e.slug === 'video-library');
   if (lib) lib.text = ['Video Library', ...vids.map((v) => `${v.title} ${v.by}`)].join(' ').slice(0, 2400);
-  return [...base, ...entries];
+  const list = [...base, ...entries];
+  cachedLists.add(list);
+  return { list, own };
 }
 
 /** Sidebar badges, counted from the pages themselves (Food Matrix dishes, videos, photos). */

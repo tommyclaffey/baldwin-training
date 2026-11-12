@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
+import { watchContent } from './cache.mjs';
 
 export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'data'));
 export const MEDIA_DIR = path.join(DATA_DIR, 'media');
@@ -248,6 +249,7 @@ export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
   // can be seeded and dropped on any database (no migration number, like brand).
   db.exec(`CREATE TABLE IF NOT EXISTS program_acks(user_id INT NOT NULL, store_id INT NOT NULL, company_id INT, level TEXT NOT NULL,
     name TEXT NOT NULL, at TEXT NOT NULL, PRIMARY KEY(user_id, store_id, level))`);
+  watchContent(db); // Nov 11: cached indexes and quiz pools drop the moment the book changes (server/cache.mjs)
   return db;
 }
 

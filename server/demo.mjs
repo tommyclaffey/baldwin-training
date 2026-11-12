@@ -15,6 +15,7 @@ import { LEVELS, chapterBySlug } from './manual.mjs';
 import { pathCtxFor } from './team.mjs';
 import { questionPool } from './quizgen.mjs';
 import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
+import { forget } from './cache.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const now = () => new Date().toISOString();
@@ -183,7 +184,7 @@ export function startDemo(db, key, which = 'baldwin') {
       db.prepare('INSERT INTO media(kind,title,youtube_id,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?)').run('youtube', title, yt, me, t, co, st);
     db.exec('COMMIT');
     return { token: createSession(db, me, { days: 1 }), userId: me };
-  } catch (e) { db.exec('ROLLBACK'); throw e; }
+  } catch (e) { db.exec('ROLLBACK'); forget(null); throw e; } // nothing cached from the half-made copy survives
 }
 
 /** One demo copy goes: its people, sessions, records and entries. */

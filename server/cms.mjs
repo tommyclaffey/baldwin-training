@@ -376,9 +376,19 @@ function cleanPartial(collection, d) {
   for (const f of COLLECTIONS[collection].fields) if (f.key in d) out[f.key] = cleanField(f, d[f.key]);
   return out;
 }
+/** The reads every page makes, compiled once per connection (Nov 11, speed: compiling them again for every dish was a third
+ *  of the Mise demo's start). Only plain one-shot reads go here (.get/.all, never .iterate). */
+const stmts = new WeakMap();
+function stmt(db, sql) {
+  let m = stmts.get(db);
+  if (!m) stmts.set(db, (m = new Map()));
+  let st = m.get(sql);
+  if (!st) m.set(sql, (st = db.prepare(sql)));
+  return st;
+}
 function withLibrary(db, e) {
   if (!e || !e.data.libraryId) return e;
-  const lib = db.prepare('SELECT * FROM entries WHERE id = ?').get(e.data.libraryId);
+  const lib = stmt(db, 'SELECT * FROM entries WHERE id = ?').get(e.data.libraryId);
   if (!lib) return e;
   const { libraryId, ...own } = e.data;
   e.data = { ...JSON.parse(lib.data), ...own };
@@ -391,9 +401,9 @@ const readRow = (db, r) => withLibrary(db, rowOut(r));
 export function listEntries(db, collection, store = null) {
   const own = store != null && !SHARED.has(collection);
   const rows = collection
-    ? (own ? db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id = ? AND archived_at IS NULL ORDER BY sort, id').all(collection, store)
-      : db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id != 0 AND archived_at IS NULL ORDER BY sort, id').all(collection))
-    : db.prepare('SELECT * FROM entries WHERE store_id != 0 AND archived_at IS NULL ORDER BY collection, sort, id').all();
+    ? (own ? stmt(db, 'SELECT * FROM entries WHERE collection = ? AND store_id = ? AND archived_at IS NULL ORDER BY sort, id').all(collection, store)
+      : stmt(db, 'SELECT * FROM entries WHERE collection = ? AND store_id != 0 AND archived_at IS NULL ORDER BY sort, id').all(collection))
+    : stmt(db, 'SELECT * FROM entries WHERE store_id != 0 AND archived_at IS NULL ORDER BY collection, sort, id').all();
   return rows.map((r) => readRow(db, r)).filter((e) => !e.library?.archived);
 }
 /** The archive: entries taken out of the book, newest first, ready to restore. */
@@ -402,7 +412,7 @@ export function listArchived(db, collection, store = null) {
   return (own ? db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id = ? AND archived_at IS NOT NULL ORDER BY archived_at DESC').all(collection, store)
     : db.prepare('SELECT * FROM entries WHERE collection = ? AND store_id != 0 AND archived_at IS NOT NULL ORDER BY archived_at DESC').all(collection)).map((r) => readRow(db, r));
 }
-export const getEntry = (db, id) => readRow(db, db.prepare('SELECT * FROM entries WHERE id = ?').get(id));
+export const getEntry = (db, id) => readRow(db, stmt(db, 'SELECT * FROM entries WHERE id = ?').get(id));
 
 /** The group's dishes, with the stores that have each on their menu. */
 export function libraryList(db, collection, company, store) {

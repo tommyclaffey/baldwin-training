@@ -22,7 +22,7 @@ const jobLabel = (jobs) => jobs.map((j) => JOBS.find((x) => x.key === j)?.label 
 
 /** What a path needs from this store's book: its built-in quizzes and the pages it has. */
 export function pathCtxFor(db, storeRow, user = null) {
-  const idx = withStore(storeRow, () => fullIndex(db), user);
+  const idx = withStore(storeRow, () => fullIndex(db, { text: false }), user); // addresses and titles only
   return { quizzes: quizCatalog(db, storeRow?.id ?? 1).quizzes.filter((q) => q.kind === 'builtin'), slugs: new Set(idx.map((e) => e.slug)), titles: new Map(idx.map((e) => [e.slug, e.title])) };
 }
 
