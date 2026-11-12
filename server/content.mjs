@@ -207,6 +207,8 @@ export function withoutNotes(s) {
   if (out && /[.!?]$/.test(str.trim()) && !/[.!?]$/.test(out)) out += '.';
   return out === str ? null : out;
 }
+/** Frames in a node's layout flow (not its words). */
+const frameKids = (n) => (n.c || []).filter((c) => c.t !== 'T' && !c.abs).length;
 function forViewer(page, user) {
   if (!page?.main) return page;
   // Nov 10 (audit): demo managers don't see the team's working notes either; a prospect only sees the finished book.
@@ -214,18 +216,24 @@ function forViewer(page, user) {
   const words = (n) => (n.t === 'T' ? 1 : (n.c || []).reduce((k, c) => k + words(c), 0));
   const liveWords = (n) => (n.eo ? 0 : n.t === 'T' ? 1 : (n.c || []).reduce((k, c) => k + liveWords(c), 0));
   const hasEd = (n) => !!n.ed || (n.c || []).some(hasEd);
+  const hugged = new WeakSet();
   // Returns why the node goes, or false. A node that lost an admin link and is left as a bare label (a column heading, a tier
   // name) goes too. Notes: a label whose value was a note goes with it ("GLASS · To confirm"); a box left with no words goes
   // (the dashed "Confirm with chef" chip); a list that only lost a chip stays.
   const prune = (n) => {
     if (!n.c) return false;
-    const before = n.c.length;
+    const before = n.c.length, framesBefore = frameKids(n);
     n.c = n.c.filter((c) => !(c.to && c.to.startsWith('/admin') && !canOpen(user, c.to)));
     let lost = n.c.length < before, noteText = false, noteKid = false;
     // An Edit Mode field whose text is a note (a demo manager's "Bar lead to add" pour price) stays, blank, for Edit Mode
     // only (eo), so the field is still there to fill in (Nov 11 release: both demos get the same Edit Mode fields).
     if (staff) n.c = n.c.filter((c) => { if (c.t !== 'T') return true; const s = withoutNotes(c.s); if (s === null) return true; if (s) { setText(c, s); return true; } noteText = true; if (c.ed) { c.s = ''; delete c.segs; c.eo = 1; return true; } return false; });
     n.c = n.c.filter((c) => { const why = prune(c); if (why === 'admin') lost = true; if (why === 'note') noteKid = true; return !why; });
+    // A fixed-height card that lost a whole part (Spirits: "Our bottles", whose Add bottle chips only managers get) hugs
+    // what's left instead of keeping the empty space, and a wrapping grid of them makes each row one height.
+    // Nov 11, Tommy: "fix this" (the Spirits cards were twice as tall as their words).
+    if (n.wrap && n.lm === 'H' && n.c.some((c) => hugged.has(c))) n.ca = 'S';
+    if (n.lm === 'V' && n.sv === 'F' && frameKids(n) < framesBefore) { n.sv = 'H'; hugged.add(n); }
     if (n === page.main) return false;
     if (lost && words(n) <= 1) return 'admin';
     if (noteText && liveWords(n) <= 1) { if (hasEd(n)) { n.eo = 1; return false; } return 'note'; }
