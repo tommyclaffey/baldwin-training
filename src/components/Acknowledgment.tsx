@@ -1,6 +1,6 @@
 // The Hospitality 101 acknowledgment (Nov 11). BRG's paper form has a printed name, a signature, a date and the
 // trainer's signature. Here the person types their name and ticks that they've read and agree (the date is kept with it);
-// their trainer or a manager then signs it off on Admin → Training.
+// their trainer or a manager then signs it off in People (Admin → People since Nov 11).
 import { useState, type CSSProperties } from 'react';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';

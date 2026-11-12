@@ -11,11 +11,12 @@ export const shareable = (e: IndexEntry | undefined) => !!e && (SHAREABLE.has(e.
 export const slugOf = (href: string) => (href.startsWith('/') && !href.startsWith('//') ? decodeURIComponent(href.split(/[?#]/)[0]).replace(/^\/+|\/+$/g, '') : null);
 
 /** The part of a layout node this needs (see FNode in components/FigmaNode.tsx). */
-export type Box = { t: string; n?: string; w: number; h: number; x?: number; y?: number; abs?: 1; to?: string; skipTab?: 1; lm?: 'H' | 'V'; wrap?: 1; sh?: 'F' | 'H' | 'L'; pd?: number[]; c?: Box[]; f?: { img?: string }[]; s?: string; gut?: number };
+export type Box = { t: string; n?: string; w: number; h: number; x?: number; y?: number; abs?: 1; to?: string; skipTab?: 1; lm?: 'H' | 'V'; wrap?: 1; sh?: 'F' | 'H' | 'L'; pd?: number[]; c?: Box[]; f?: { img?: string }[]; s?: string; gut?: number; arc?: unknown };
 
 /** Links that move you around rather than show one thing: nav, breadcrumbs, buttons, chips, tabs, pills, "Part of …". */
 const NOT_ITEMS = /^(Nav|Crumb|Breadcrumb|Button|Chip|Pill|Tag|Step tab|Node|Back to parent|Sibling|Section|Open in the book|In the book|Learn link|Carousel|Brand|Head|Use|Add|Logo)\b/;
-const BTN = 32; // the chat button, in design px (the page's zoom scales it with everything else)
+export const BTN = 32; // the chat button, in design px (the page's zoom scales it with everything else)
+export const GAP = 6; // between the chat button and the Archive button beside it (Nov 12)
 const INSET = 8; // from the corner of a card or its photo
 const ROOM = 10; // between a row's content and the button
 
@@ -43,7 +44,8 @@ export function targetOf(n: Box, lookup: Lookup): (Target & { shape: Shape }) | 
 
 const hasPhoto = (c: Box) => !!c.f?.some((f) => f.img);
 const inFlowKids = (n: Box) => (n.c || []).filter((c) => !c.abs);
-const gutter = (pd: number[] | undefined) => { const p = pd || [0, 0, 0, 0]; const right = Math.max(p[1], INSET); return { pd: [p[0], right + BTN + ROOM, p[2], p[3]], gut: right }; };
+/** Room at a row's end for its buttons: the chat button, and a manager's Archive button beside it (n = 2). */
+const gutter = (pd: number[] | undefined, n = 1) => { const p = pd || [0, 0, 0, 0]; const right = Math.max(p[1], INSET); return { pd: [p[0], right + n * BTN + (n - 1) * GAP + ROOM, p[2], p[3]], gut: right }; };
 
 /** How a card carries its button: in the top-right corner of a leading photo; or, when it opens with a band (a coloured
  *  title strip, a name and price), centred at the end of that band, which gets a gutter like a row; or in the card's
@@ -75,9 +77,9 @@ export function placeOf(n: Box, shape: Shape): { top?: number; right: number } {
 }
 
 /** A card's children with its band's gutter in. */
-export function withBand<T extends Box>(kids: T[], plan: CardPlan): T[] {
+export function withBand<T extends Box>(kids: T[], plan: CardPlan, n = 1): T[] {
   if (!plan.band) return kids;
-  return kids.map((c) => (c === plan.band ? { ...c, ...gutter(c.pd) } : c));
+  return kids.map((c) => (c === plan.band ? { ...c, ...gutter(c.pd, n) } : c));
 }
 
 /** A card that isn't a link but is about one thing (Cocktail Specs: a spec card whose name links to the cocktail):
@@ -100,7 +102,7 @@ export function holderTarget(n: Box, lookup: Lookup): Target | null {
 /** Rows get a gutter at their end for the button, so it never sits on a price, an allergen pill or a name. Rows of the
  *  same table that don't link (the header, group titles) get the same gutter, so the columns stay lined up. In a row
  *  of hugging parts (a wine's name, then its prices), the parts before the last may shrink and wrap into the room left. */
-export function withGutters<T extends Box>(kids: T[], parent: Pick<Box, 'lm'>, isRow: (c: T) => boolean): T[] {
+export function withGutters<T extends Box>(kids: T[], parent: Pick<Box, 'lm'>, isRow: (c: T) => boolean, n = 1): T[] {
   const rows = kids.filter(isRow);
   if (!rows.length) return kids;
   const widths = rows.map((r) => r.w);
@@ -111,7 +113,7 @@ export function withGutters<T extends Box>(kids: T[], parent: Pick<Box, 'lm'>, i
     if (!rows.includes(c) && !sameTable(c)) return c;
     const flow = inFlowKids(c);
     const kidsOut = c.lm === 'H' && c.c ? c.c.map((k) => (!k.abs && k !== flow[flow.length - 1] && k.sh !== 'F' && k.sh !== 'L' && k.w >= 60 ? { ...k, sh: 'L' as const } : k)) : c.c;
-    return { ...c, ...gutter(c.pd), c: kidsOut };
+    return { ...c, ...gutter(c.pd, n), c: kidsOut };
   });
 }
 

@@ -117,7 +117,12 @@
    },
    {
     "name": "Pre-shift",
-    "video": null,
+    "video": {
+     "youtubeId": "V6iT14JxV5g",
+     "title": "Sullivision Lessons in Leadership: Pre Shift Meetings",
+     "by": "Jim Sullivan",
+     "length": "2:03"
+    },
     "keyPoints": [
      {
       "big": "86’D",

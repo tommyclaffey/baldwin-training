@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import { useSession } from '../lib/session';
 import { useEditInPlace } from '../components/EditSheet';
 import { changesLabel, needsScope, saveDrafts, useEditMode, type PageEdit } from './state';
+import { askArchive } from './archive';
 
 const Pen = ({ size = 16 }: { size?: number }) => <img src="/img/edit/pen.svg" width={size} height={size} alt="" aria-hidden="true" />;
 
@@ -44,6 +45,12 @@ export function EditModeBar({ page, hasAdd, floating, width, zoom }: { page: Pag
     open({ col: main.col, id: page.main, preset: {}, draft: Object.fromEntries(Object.entries(mine).map(([k, c]) => [k, c.v])) });
   };
 
+  // Archive (Nov 12): takes this item out of the book, then back to its list with Undo. A group dish only leaves this store.
+  const archive = () => {
+    if (!main || page?.main == null) return;
+    const sh = main.shared;
+    askArchive({ e: page.main, n: name, c: main.col, ...(sh ? { s: sh.store, o: sh.others } : {}) }, { back: true, changes: count, done: () => discard() });
+  };
   const status = saving ? 'Saving…' : error ? error : count ? `${changesLabel(count)} · staff see it when you save` : page ? 'Tap anything outlined · staff see it when you save'
     : hasAdd ? 'Open a dish, drink, wine or bottle to change it, or use an Add row' : 'Open a dish, drink, wine or bottle to change it';
   const bar = (
@@ -63,6 +70,7 @@ export function EditModeBar({ page, hasAdd, floating, width, zoom }: { page: Pag
         </div>
       ) : page ? (
         <div className="em-actions">
+          {main && <button type="button" className="em-btn quiet em-archive" onClick={archive} disabled={saving}>Archive</button>}
           {main && <button type="button" className="em-btn quiet" onClick={moreFields}>More Fields</button>}
           <button type="button" className="em-btn" disabled={!count || saving} onClick={() => discard(true)}>Discard</button>
           <button type="button" className="em-btn primary" disabled={!count || saving} onClick={() => void save()}>{saving ? 'Saving…' : 'Save Changes'}</button>

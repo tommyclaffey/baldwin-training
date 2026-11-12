@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Par levels",
-    "video": null,
+    "video": {
+     "youtubeId": "37GHDfi8zn0",
+     "title": "How to Set Your Pars & Re-Order Points [Bar Inventory]",
+     "by": "Dave Allred TheRealBarman (Bar Patrol)",
+     "length": "4:15"
+    },
     "keyPoints": [
      {
       "big": "PAR",
@@ -117,7 +122,12 @@
    },
    {
     "name": "Prep and the prep list",
-    "video": null,
+    "video": {
+     "youtubeId": "s4weXtuax8Q",
+     "title": "How to Set Up a Cocktail Bar - Bols Bartending Academy",
+     "by": "Bols Cocktails",
+     "length": "2:25"
+    },
     "keyPoints": [
      {
       "big": "LIST",
@@ -161,7 +171,12 @@
    },
    {
     "name": "Ordering",
-    "video": null,
+    "video": {
+     "youtubeId": "jqzoHG-H3Tc",
+     "title": "5 Tips for Bar Managers to Manage Inventory",
+     "by": "Backbar",
+     "length": "5:12"
+    },
     "keyPoints": [
      {
       "big": "COUNT",
@@ -204,7 +219,12 @@
    },
    {
     "name": "Inventory and variance",
-    "video": null,
+    "video": {
+     "youtubeId": "TO4KdY6KUoQ",
+     "title": "2-Minute Tuesdays: Taking Your First Bar Inventory",
+     "by": "BevSpot",
+     "length": "2:18"
+    },
     "keyPoints": [
      {
       "big": "USAGE",

@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { addRows } from './editinplace.mjs';
 import { bindEdits } from './editmode.mjs';
+import { markArchive } from './archive.mjs';
 import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, LEVELS, PROGRAMS, chaptersOf, programDef, isProgram, progLevel, programText } from './manual.mjs';
 import { ackOf } from './acks.mjs';
 import { certificatesFor } from './certs.mjs';
@@ -551,6 +552,8 @@ export function assemble(db, file) {
   if (page && canOpen(SCOPE.user, '/admin')) bindEdits(db, page, { entry, slug: baseIndex().find((x) => x.file === file)?.slug, title: baseIndex().find((x) => x.file === file)?.title,
     tpl: entry && COLLECTIONS[entry.collection]?.template ? basePage(COLLECTIONS[entry.collection].template) : null,
     can: (col, id) => canOpen(SCOPE.user, `/admin/pages/${col}/${id || 'new'}`), lists: { beer: () => ordered(db, 'beer') } });
+  // Archive where items live (Nov 12): rows and cards a manager can archive carry a small Archive button (staff: nothing).
+  if (page && canOpen(SCOPE.user, '/admin')) markArchive(db, page, { entry, can: (col) => canOpen(SCOPE.user, `/admin/pages/${col}/new`), list: (col) => ordered(db, col) });
   if (page?.main && isSample(db)) sampleScrub(db, page);
   return balance(forViewer(page, SCOPE.user));
 }
