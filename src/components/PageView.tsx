@@ -1,4 +1,4 @@
-import { currentBrand, miseSkin } from '../lib/skin';
+import { currentBrand, themePage, THEMES } from '../lib/theme';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { ChatItemsContext, CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
@@ -76,12 +76,14 @@ export function usePageEntry() {
 }
 
 /** The assembled page from the server (recipes, cocktails and edits included), for signed-in people only. */
-// Mise skin (Nov 10): a Mise-brand company (Nov 11: the brand comes with the session) sees each page in Mise; The Baldwin's
-// look is the default. Skinned pages are kept per page object, so re-renders don't redo the work.
-const skinCache = new WeakMap<object, Page>();
-function skinned(_file: string, p: Page): Page {
-  let s = skinCache.get(p);
-  if (!s) { s = miseSkin(p); skinCache.set(p, s); }
+// The theme layer (Nov 12, lib/theme.ts): every page is drawn in the company's brand (Nov 11: the brand comes with the
+// session), with the layouts every brand shares (the cinematic hero). Themed pages are kept per page object and brand, so
+// re-renders don't redo the work.
+const themeCache = { baldwin: new WeakMap<object, Page>(), mise: new WeakMap<object, Page>() };
+function themed(p: Page): Page {
+  const b = currentBrand(); const cache = themeCache[b];
+  let s = cache.get(p);
+  if (!s) { s = themePage(p, THEMES[b]); cache.set(p, s); }
   return s;
 }
 async function fetchPage(file: string): Promise<Page> {
@@ -246,7 +248,7 @@ export function PageView() {
     );
   }
   if (!shown) return <main ref={ref} className="page page-loading" aria-busy="true"><div className="loader" /></main>;
-  const page = currentBrand() === 'mise' && !shown.page.empty ? skinned(shown.file, shown.page) : shown.page;
+  const page = !shown.page.empty ? themed(shown.page) : shown.page;
   if (page.empty) return <EmptyPage e={page.empty} mainRef={ref} />;
 
   const isQuiz = page.id === QUIZ_PAGE;

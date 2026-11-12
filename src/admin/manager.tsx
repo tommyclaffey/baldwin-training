@@ -12,7 +12,7 @@ import { dayLabel, type Job, type MyPath, type Stage, type Step } from '../path/
 import { ItemChatButton, SendToTeamButton } from '../chat/SendToTeam';
 import { hasChat } from '../chat/unread';
 import { menuName } from '../lib/demo';
-import { currentBrand, titleCase } from '../lib/skin';
+import { currentBrand, titleCase } from '../lib/theme';
 
 /* ---------- data ---------- */
 type Status = 'behind' | 'new' | 'on-track' | 'done' | 'no-job';

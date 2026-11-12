@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
 import { exitDemo, markDemoTab, type DemoKind } from '../lib/demo';
-import { setPageBrand } from '../lib/skin';
+import { setPageBrand } from '../lib/theme';
 
 // Nov 4, Tommy: "one account for an employee and then one account that is a manager/admin."
 const ROLES = [
