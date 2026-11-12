@@ -8,6 +8,7 @@ import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapt
 import { ackOf } from './acks.mjs';
 import { certificatesFor } from './certs.mjs';
 import { regionPage, regionData } from './region.mjs';
+import { canTake, invitationOf, lockedLevelOf } from './invite.mjs';
 import { lessonPage, level1Page, level2Page, level2OnLevel1, hubPage, barPage, programHub, sectionsDone, lessonSlug, lessonFile, wholeChapterSlug, HUB, L1, L2 } from './study.mjs';
 import { passFor, questionPool } from './quizgen.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
@@ -576,7 +577,9 @@ function assembleRaw(db, file) {
   if (hubOf) {
     const tpl = basePage('391-32'); if (!tpl) return null;
     const certified = new Set(SCOPE.user ? certificatesFor(db, SCOPE.user, SCOPE.store, null).map((c) => c.key) : []);
-    return programHub({ ...tpl, name: hubOf.name }, { program: hubOf.key, done: sectionsDone(db, SCOPE.user?.id), certified });
+    // Nov 12: a level by invitation (Master of the Bar) this person can't open yet
+    const locked = new Set(LEVELS.filter((L) => L.program === hubOf.key && !canTake(db, SCOPE.user, SCOPE.store, L)).map((L) => L.file));
+    return programHub({ ...tpl, name: hubOf.name }, { program: hubOf.key, done: sectionsDone(db, SCOPE.user?.id), certified, locked });
   }
   const bl = LEVELS.find((x) => x.file === file && chaptersOf(x.program, x.level).length);
   if (bl) {
@@ -586,13 +589,18 @@ function assembleRaw(db, file) {
     const practical = uid && bl.practical ? db.prepare('SELECT s.at, u.name by_name FROM signoffs s LEFT JOIN users u ON u.id = s.by_user WHERE s.device = ? AND s.quiz = ? AND s.store_id = ?').get('u' + uid, bl.practical, SCOPE.store) : null;
     // Hospitality 101 (Nov 11): the acknowledgment, in this company's version, and whether this person has signed it
     const ack = bl.ack ? { ...(programText(bl.program).ack || {}), signed: ackOf(db, uid, SCOPE.store, bl.file), canSign: !!uid } : null;
-    return barPage({ ...tpl, name: `${programDef(bl.program).name} · Level ${bl.level}` }, { L: bl, level: bl.level, done: sectionsDone(db, uid), passedAt: passed?.at || null, practical: practical ? { at: practical.at, by: practical.by_name } : null, ack });
+    // Nov 12: Master of the Bar is by invitation (server/invite.mjs)
+    const invite = bl.invite ? { open: canTake(db, SCOPE.user, SCOPE.store, bl), staff: SCOPE.user?.role === 'staff', invited: invitationOf(db, SCOPE.user, SCOPE.store, bl) } : null;
+    return barPage({ ...tpl, name: `${programDef(bl.program).name} · Level ${bl.level}` }, { L: bl, level: bl.level, done: sectionsDone(db, uid), passedAt: passed?.at || null, practical: practical ? { at: practical.at, by: practical.by_name } : null, ack, invite });
   }
   // v3 lessons (Nov 1): one per chapter section, drawn from Figma 403:45
   const lm = /^l-(.+)~(\d+)$/.exec(file);
   if (lm) {
     const ch = chapterBySlug(lm[1]); const i = Number(lm[2]); const tpl = basePage('403-45'); const chTpl = basePage('362-2');
     if (!ch || !tpl || !chTpl || !ch.sections[i]) return null;
+    // Nov 12: a lesson in a level by invitation opens its level page (with "By invitation · ask your manager") until invited
+    const lockedL = lockedLevelOf(db, SCOPE.user, SCOPE.store, ch);
+    if (lockedL) return assembleRaw(db, lockedL.file);
     if (SCOPE.user) markRead(db, SCOPE.user.id, ch.slug);
     // Nov 12: Level 1's spirit lessons list this store's own house cocktails and bottles (study.mjs, withOurs)
     return lessonPage(tpl, chTpl, ch, i, { done: sectionsDone(db, SCOPE.user?.id), ours: () => ({ house: ordered(db, 'house'), shelf: ordered(db, 'shelf') }) });

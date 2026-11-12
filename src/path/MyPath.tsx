@@ -74,6 +74,7 @@ export function MyPathPage() {
 /** "✓ Certified Bartender", or what's left: the final, the practical. */
 function certLine(g: Program) {
   if (g.certified) return `✓ ${g.cert}`;
+  if (g.invite && !g.invite.at) return 'By invitation · ask your manager';
   const left = [!g.final?.passedAt && 'final exam', g.practical && !g.practical.at && 'practical'].filter(Boolean);
   return `${g.cert}: ${left.join(' and ')} to go`;
 }

@@ -1,0 +1,396 @@
+{
+ "number": 5,
+ "barLevel": 4,
+ "slug": "bar-l4-suppliers",
+ "title": "Spirits and suppliers",
+ "script": "Lesson 5",
+ "lead": "How liquor reaches the bar in Michigan, working with reps, allocations, and sourcing for the menu.",
+ "minutes": 12,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "How liquor gets to us",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "In Michigan, spirits come through the state."
+    }
+   ],
+   "know": [
+    "Mlcc buys and prices the spirits.",
+    "Ada warehouses and delivers them.",
+    "One price set by the state, the same statewide."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf)"
+  },
+  {
+   "name": "Reps and distributors",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A rep is a partner, not the buyer."
+    }
+   ],
+   "know": [
+    "Rep knows the brand: use them to learn.",
+    "Our list is ours: buy for the menu.",
+    "Write down what’s promised."
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Allocations",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Limited bottles are allocated, not ordered."
+    }
+   ],
+   "know": [
+    "Limited you get what’s released, not what you want.",
+    "Plan a menu never depends on one.",
+    "Sell them with care: a story, not a markup."
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Sourcing for the menu",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Spec only what you can always get."
+    }
+   ],
+   "know": [
+    "Check it’s in steady supply first.",
+    "Backup name one in the spec book.",
+    "Cost it before the menu prints."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf); House practice (ours; GM to confirm)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "How liquor gets to us",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "MLCC",
+      "line": "buys and prices the spirits."
+     },
+     {
+      "big": "ADA",
+      "line": "warehouses and delivers them."
+     },
+     {
+      "big": "ONE PRICE",
+      "line": "set by the state, the same statewide."
+     }
+    ],
+    "read": {
+     "bigIdea": "In Michigan, spirits come through the state.",
+     "where": "Michigan is a **control state** for spirits. The **Michigan Liquor Control Commission** sets a **uniform price** for each spirit, and on-premises licensees like us buy at a **discount** off that price. The Commission appoints **Authorized Distribution Agents (ADAs)** to warehouse and deliver spirits; an ADA never **owns** them. Beer and wine come through licensed **wholesalers**.",
+     "stopsTitle": "From the still to our shelf",
+     "stops": [
+      {
+       "name": "Supplier",
+       "text": "The brand or **distillery**."
+      },
+      {
+       "name": "The state",
+       "text": "The **MLCC** sets the price."
+      },
+      {
+       "name": "ADA",
+       "text": "**Warehouses** and **delivers**."
+      },
+      {
+       "name": "Our bar",
+       "text": "Orders and **receives**."
+      }
+     ],
+     "mixup": "An **ADA** delivers spirits but doesn’t set the price or own the bottle. The **state** sets the price."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Reps and distributors",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "REP",
+      "line": "knows the brand: use them to learn."
+     },
+     {
+      "big": "OUR LIST",
+      "line": "is ours: buy for the menu."
+     },
+     {
+      "big": "WRITE",
+      "line": "down what’s promised."
+     }
+    ],
+    "read": {
+     "bigIdea": "A rep is a partner, not the buyer.",
+     "where": "Brand **reps** and **wholesaler** reps bring samples, training and news of what’s coming. Use them: a good rep can **teach** the team a spirit. But the **list is ours**: buy what fits the menu and sells, not what’s pushed. Get anything promised (a staff training, a delivery date) **in writing**.",
+     "stopsTitle": "Working with a rep",
+     "stops": [
+      {
+       "name": "Learn",
+       "text": "Ask for **training** for the team."
+      },
+      {
+       "name": "Decide",
+       "text": "Against the **menu** and the numbers."
+      },
+      {
+       "name": "Record",
+       "text": "What’s **promised**, in writing."
+      }
+     ],
+     "mixup": "A free sample isn’t a reason to put a bottle on the list. **Sales** and the **menu** are."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Allocations",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LIMITED",
+      "line": "you get what’s released, not what you want."
+     },
+     {
+      "big": "PLAN",
+      "line": "a menu never depends on one."
+     },
+     {
+      "big": "SELL",
+      "line": "them with care: a story, not a markup."
+     }
+    ],
+    "read": {
+     "bigIdea": "Limited bottles are allocated, not ordered.",
+     "where": "Some bottles are **limited**. You don’t order them like the well: you get what’s **allocated** to the bar, often a few bottles, sometimes none. So **never** build a menu drink on an allocated bottle. Feature them as **specials** and pours, sell them with their **story**, and track every pour.",
+     "stopsTitle": "An allocated bottle",
+     "stops": [
+      {
+       "name": "Arrives",
+       "text": "A **few** bottles, if any."
+      },
+      {
+       "name": "Feature",
+       "text": "A **special** or a pour, not a menu staple."
+      },
+      {
+       "name": "Track",
+       "text": "**Every** pour."
+      }
+     ],
+     "mixup": "An allocated bottle on the cocktail menu is a drink you’ll **86** in a week."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Sourcing for the menu",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "CHECK",
+      "line": "it’s in steady supply first."
+     },
+     {
+      "big": "BACKUP",
+      "line": "name one in the spec book."
+     },
+     {
+      "big": "COST",
+      "line": "it before the menu prints."
+     }
+    ],
+    "read": {
+     "bigIdea": "Spec only what you can always get.",
+     "where": "Before a bottle goes into a menu spec, check it’s in **steady supply** through our suppliers (in Michigan, spirits through the state’s system). Note a **backup** bottle in the spec book in case it runs out. **Cost** the drink with the real bottle before the menu prints.",
+     "stopsTitle": "Before you spec a bottle",
+     "stops": [
+      {
+       "name": "Supply",
+       "text": "Can we **always** get it?"
+      },
+      {
+       "name": "Backup",
+       "text": "A **second** choice, written down."
+      },
+      {
+       "name": "Cost",
+       "text": "The **real** bottle’s cost."
+      }
+     ],
+     "mixup": "A bottle you found once isn’t a menu bottle. **Steady supply** is."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf); House practice (ours; GM to confirm). Written for Mise in our own words, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "In Michigan, who sets the price of a spirit?",
+   "answer": "The Michigan Liquor Control Commission, uniformly statewide",
+   "wrong": [
+    "The bar",
+    "The ADA",
+    "Each grocery store"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf)"
+  },
+  {
+   "q": "An Authorized Distribution Agent (ADA)…",
+   "answer": "Warehouses and delivers spirits without owning them",
+   "wrong": [
+    "Owns the spirits it sells",
+    "Sets the retail price",
+    "Makes the spirits"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf)"
+  },
+  {
+   "q": "Compared with the state’s uniform price, on-premises licensees buy spirits…",
+   "answer": "At a discount",
+   "wrong": [
+    "At double the price",
+    "At whatever the ADA charges",
+    "Only at auction"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf)"
+  },
+  {
+   "q": "A brand rep is most useful for…",
+   "answer": "Teaching the team about a spirit",
+   "wrong": [
+    "Deciding our whole list",
+    "Setting our prices",
+    "Running our inventory"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A bottle goes on our list because…",
+   "answer": "It fits the menu and sells",
+   "wrong": [
+    "The rep left a sample",
+    "It has the nicest label",
+    "It’s the newest release"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A rep promises a staff training next month. You…",
+   "answer": "Get it in writing",
+   "wrong": [
+    "Assume it will happen",
+    "Cancel pre-shift for it now",
+    "Tell guests it’s happening"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "An allocated bottle is…",
+   "answer": "Limited: the bar gets what’s released to it",
+   "wrong": [
+    "A bottle the bar can order any time",
+    "A house well spirit",
+    "A bottle the bar makes"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Should a menu cocktail depend on an allocated bottle?",
+   "answer": "No: it can run out with no more coming",
+   "wrong": [
+    "Yes, always",
+    "Only on weekends",
+    "Only if it’s cheap"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A good way to use an allocated bottle is…",
+   "answer": "As a special or a pour, sold with its story",
+   "wrong": [
+    "In the well",
+    "In every batch",
+    "Hidden from guests"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Before putting a bottle in a menu spec, check…",
+   "answer": "That it’s in steady supply",
+   "wrong": [
+    "Its label color",
+    "That a rep likes it",
+    "That it’s the most expensive"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A backup bottle in the spec book is for…",
+   "answer": "When the first choice runs out",
+   "wrong": [
+    "Staff drinks",
+    "Guests who complain",
+    "Doubling the pour"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "When is a new drink costed?",
+   "answer": "Before the menu prints, with the real bottle",
+   "wrong": [
+    "After a month on the menu",
+    "Never",
+    "Only if it sells badly"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "In Michigan, who sets the price of a spirit? The Michigan Liquor Control Commission, uniformly statewide.",
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf)"
+  },
+  {
+   "fact": "An Authorized Distribution Agent (ADA)… Warehouses and delivers spirits without owning them.",
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf)"
+  },
+  {
+   "fact": "Compared with the state’s uniform price, on-premises licensees buy spirits… At a discount.",
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf)"
+  }
+ ],
+ "unverified": [
+  "Beer and wine through licensed wholesalers (the three-tier system): general knowledge of the Code; no section cited here.",
+  "Allocations: how limited bottles are released varies by product, supplier and the state; ask our rep and the MLCC.",
+  "Working with reps and sourcing steps are house practice.",
+  "Other states: this lesson follows Michigan law. A store in another state swaps in its own rules."
+ ]
+}

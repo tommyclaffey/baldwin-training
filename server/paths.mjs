@@ -162,7 +162,7 @@ function progressFor(stages, done, startedOn) {
 }
 
 /** How far someone is in the Sommelier levels, counting lessons done anywhere (a path or the program). */
-function programsFor(done, paths) {
+function programsFor(done, paths, staff = true) {
   const inPath = new Set(paths.flatMap((p) => p.stages.flatMap((st) => st.steps.filter((s) => s.kind === 'lesson').map((s) => s.key))));
   const out = [];
   // The Cocktail and Beer Programs first: they're the ones most of the floor takes. Each level shows its final and practical.
@@ -173,6 +173,8 @@ function programsFor(done, paths) {
     out.push({ title: `${programDef(L.program).name} · Level ${L.level}`, cert: L.title, certKey: L.file, to: '/' + L.slug, total: bar.length, done: bar.filter((k) => done.reads.has(k)).length, inPath: bar.filter((k) => inPath.has(k)).length,
       final: { id: 't:' + L.final, passedAt: fin?.passedAt || null, best: fin ? `${Math.round((fin.best / fin.total) * 100)}%` : null },
       ...(L.practical ? { practical: { key: L.practical, title: L.practicalTitle, how: L.practicalHow, at: pr?.at || null, by: pr?.by || null, ask: (!pr && done.asks.get(L.practical)) || null, ...(L.ack ? { ack: done.acks.get(L.file) || null } : {}) } } : {}),
+      // Nov 12: Master of the Bar is by invitation; a manager invites the person on People (server/invite.mjs)
+      ...(L.invite && staff ? { invite: { key: L.invite, at: done.signs.get(L.invite)?.at || null, by: done.signs.get(L.invite)?.by || null } } : {}),
       certified: !!(fin?.passedAt && (!L.practical || pr)) });
   }
   for (const level of [1, 2]) {
@@ -200,7 +202,7 @@ export function personPath(db, store, user, ctx) {
   // Notes from a manager (a reminder, a congrats), newest first; My Path shows the unseen ones until they're closed.
   const notes = db.prepare('SELECT n.id, n.kind, n.body, n.at, n.seen_at, u.name by_name FROM notes n LEFT JOIN users u ON u.id = n.by_user WHERE n.user_id = ? AND n.store_id = ? ORDER BY n.id DESC LIMIT 5').all(user.id, store)
     .map((n) => ({ id: n.id, kind: n.kind, body: n.body, at: n.at, seenAt: n.seen_at || null, by: n.by_name || null }));
-  return { jobs, startedOn, paths, programs: programsFor(done, paths), allJobs: JOBS, notes };
+  return { jobs, startedOn, paths, programs: programsFor(done, paths, !user.role || user.role === 'staff'), allJobs: JOBS, notes };
 }
 /** One line per person for the manager's Training list. */
 export function personSummary(db, store, user, ctx) {

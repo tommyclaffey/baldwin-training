@@ -1,0 +1,408 @@
+{
+ "number": 2,
+ "barLevel": 4,
+ "slug": "bar-l4-running",
+ "title": "Running the bar",
+ "script": "Lesson 2",
+ "lead": "Pars, prep, ordering, and the count that tells you where the liquor went.",
+ "minutes": 14,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Par levels",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A par is what the shelf should hold."
+    }
+   ],
+   "know": [
+    "Par enough to get to the next delivery.",
+    "Usage sets it, plus a small buffer.",
+    "Busy seasons need higher pars."
+   ],
+   "source": "Toast, “How to Master Bar Inventory Management Basics” (pos.toasttab.com/blog/on-the-line/bar-inventory-basics); House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Prep and the prep list",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The prep list is the bar’s mise en place."
+    }
+   ],
+   "know": [
+    "List what to make, how much, by when.",
+    "Label name, date, who made it.",
+    "First in first out: old stock in front."
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Ordering",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Count, then order up to par."
+    }
+   ],
+   "know": [
+    "Count what’s on hand.",
+    "Par − on hand is the order.",
+    "Spirits in Michigan come through the state."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf); House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Inventory and variance",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Count, then compare what left with what was rung in."
+    }
+   ],
+   "know": [
+    "Usage beginning + purchases − ending.",
+    "Variance what should be gone vs what is.",
+    "Causes over-pours, spills, unrung comps, theft."
+   ],
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage); BinWise, “What Is a Variance Report” (home.binwise.com/blog/what-is-a-variance-report)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Par levels",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "PAR",
+      "line": "enough to get to the next delivery."
+     },
+     {
+      "big": "USAGE",
+      "line": "sets it, plus a small buffer."
+     },
+     {
+      "big": "BUSY",
+      "line": "seasons need higher pars."
+     }
+    ],
+    "read": {
+     "bigIdea": "A par is what the shelf should hold.",
+     "where": "A **par** is the amount of each product the bar should have on hand to meet normal demand until the **next delivery**. Set it from what you actually **use** between deliveries, plus a small **buffer**. Pars change: busy seasons and holidays need **higher** ones, and fewer deliveries means higher pars too.",
+     "stopsTitle": "Setting a par",
+     "stops": [
+      {
+       "name": "Usage",
+       "text": "What you go through **between deliveries**."
+      },
+      {
+       "name": "Buffer",
+       "text": "A little extra for a **busy night**."
+      },
+      {
+       "name": "Review",
+       "text": "Raise it for **busy seasons**, lower it after."
+      }
+     ],
+     "mixup": "A par isn’t what you order. It’s what you **order up to**."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Prep and the prep list",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LIST",
+      "line": "what to make, how much, by when."
+     },
+     {
+      "big": "LABEL",
+      "line": "name, date, who made it."
+     },
+     {
+      "big": "FIRST IN",
+      "line": "first out: old stock in front."
+     }
+    ],
+    "read": {
+     "bigIdea": "The prep list is the bar’s mise en place.",
+     "where": "Before service, the bar works from a **written prep list**: juice, syrups, garnish, batches, ice, with **how much** of each for the night. Everything made gets a **label** (name, date, who made it), like Level 3’s batches. Rotate **first in, first out**: the older container goes in front so it’s used first.",
+     "stopsTitle": "Opening the bar",
+     "stops": [
+      {
+       "name": "Read the list",
+       "text": "What the night **needs**."
+      },
+      {
+       "name": "Make and label",
+       "text": "**Name**, **date**, who made it."
+      },
+      {
+       "name": "Rotate",
+       "text": "**Older** in front."
+      }
+     ],
+     "mixup": "Prepping “enough” isn’t a number. The prep list says **how much**.",
+     "sayIt": "Give me two minutes: I’m setting up the bar so your drinks come out fast."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Ordering",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "COUNT",
+      "line": "what’s on hand."
+     },
+     {
+      "big": "PAR − ON HAND",
+      "line": "is the order."
+     },
+     {
+      "big": "SPIRITS",
+      "line": "in Michigan come through the state."
+     }
+    ],
+    "read": {
+     "bigIdea": "Count, then order up to par.",
+     "where": "On order day, **count** each product, then order the gap between what’s **on hand** and its **par**. Order on a **schedule** that matches deliveries. In Michigan, spirits are bought through the state: the Michigan Liquor Control Commission appoints **Authorized Distribution Agents** (ADAs) that warehouse and deliver them (Lesson 5 has more).",
+     "stopsTitle": "An order, step by step",
+     "stops": [
+      {
+       "name": "Count",
+       "text": "What’s **on hand**."
+      },
+      {
+       "name": "Subtract",
+       "text": "Par − on hand = the **order**."
+      },
+      {
+       "name": "Send",
+       "text": "On the **order day**, to the right supplier."
+      }
+     ],
+     "mixup": "Ordering by eye fills the shelf with what the bartender likes. Ordering to **par** fills it with what sells."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Inventory and variance",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "USAGE",
+      "line": "beginning + purchases − ending."
+     },
+     {
+      "big": "VARIANCE",
+      "line": "what should be gone vs what is."
+     },
+     {
+      "big": "CAUSES",
+      "line": "over-pours, spills, unrung comps, theft."
+     }
+    ],
+    "read": {
+     "bigIdea": "Count, then compare what left with what was rung in.",
+     "where": "Count on the same day each week. **Usage** = **beginning inventory + purchases − ending inventory**. Then compare usage with what the POS says was **sold**: that gap is the **variance**. Small gaps happen; big ones point to **over-pouring**, **spills**, **comps not rung in**, or **theft**.",
+     "stopsTitle": "Reading a count",
+     "stops": [
+      {
+       "name": "Usage",
+       "text": "Beginning **+** purchases **−** ending."
+      },
+      {
+       "name": "Sold",
+       "text": "What the **POS** recorded."
+      },
+      {
+       "name": "Gap",
+       "text": "The **variance**: find out why."
+      }
+     ],
+     "mixup": "Usage isn’t sales. **Usage** is what left the shelf; **sales** is what was rung in. The difference is the story."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf); BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage); BinWise, “What Is a Variance Report” (home.binwise.com/blog/what-is-a-variance-report); Toast, “How to Master Bar Inventory Management Basics” (pos.toasttab.com/blog/on-the-line/bar-inventory-basics); House practice (ours; GM to confirm). Written for Mise in our own words, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "A par level is…",
+   "answer": "What the bar should have on hand until the next delivery",
+   "wrong": [
+    "The price of a bottle",
+    "How much a bartender may pour",
+    "The number of bottles sold last year"
+   ],
+   "source": "Toast, “How to Master Bar Inventory Management Basics” (pos.toasttab.com/blog/on-the-line/bar-inventory-basics)"
+  },
+  {
+   "q": "A par is mostly set from…",
+   "answer": "What the bar uses between deliveries, plus a buffer",
+   "wrong": [
+    "The bottle’s price",
+    "The distributor’s suggestion only",
+    "How full the shelf looks"
+   ],
+   "source": "Toast, “How to Master Bar Inventory Management Basics” (pos.toasttab.com/blog/on-the-line/bar-inventory-basics)"
+  },
+  {
+   "q": "During a busy holiday season, pars usually…",
+   "answer": "Go up",
+   "wrong": [
+    "Go down",
+    "Stay fixed by law",
+    "Don’t matter"
+   ],
+   "source": "Toast, “How to Master Bar Inventory Management Basics” (pos.toasttab.com/blog/on-the-line/bar-inventory-basics)"
+  },
+  {
+   "q": "Every prepped item on the bar gets a label with…",
+   "answer": "Its name, the date and who made it",
+   "wrong": [
+    "Only a smiley face",
+    "The price",
+    "The guest’s name"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "First in, first out means…",
+   "answer": "The older container is used first",
+   "wrong": [
+    "The newest juice is used first",
+    "Whoever arrives first preps",
+    "Bottles are counted in order"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A prep list should say…",
+   "answer": "What to make and how much",
+   "wrong": [
+    "Only who is working",
+    "Only the specials",
+    "Nothing: prep by feel"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "The par for a gin is 6 bottles and 2 are on hand. The order is…",
+   "answer": "4 bottles",
+   "wrong": [
+    "6 bottles",
+    "8 bottles",
+    "2 bottles"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "In Michigan, who warehouses and delivers spirits to bars?",
+   "answer": "Authorized Distribution Agents appointed by the state",
+   "wrong": [
+    "The brand’s own sales rep",
+    "Any grocery store",
+    "The bar picks them up from the distillery"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf)"
+  },
+  {
+   "q": "Orders work best when they’re placed…",
+   "answer": "On a schedule that matches deliveries",
+   "wrong": [
+    "Whenever a bottle runs out",
+    "Once a year",
+    "Only by the owner, by eye"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Usage equals…",
+   "answer": "Beginning inventory + purchases − ending inventory",
+   "wrong": [
+    "Ending inventory − purchases",
+    "Sales × price",
+    "Purchases only"
+   ],
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage)"
+  },
+  {
+   "q": "A bar started with 10 bottles, bought 6, and ended with 9. Usage is…",
+   "answer": "7 bottles",
+   "wrong": [
+    "5 bottles",
+    "25 bottles",
+    "16 bottles"
+   ],
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage)"
+  },
+  {
+   "q": "A large variance usually points to…",
+   "answer": "Over-pours, spills, unrung comps or theft",
+   "wrong": [
+    "A good night",
+    "Too many spiritless drinks",
+    "The menu font"
+   ],
+   "source": "BinWise, “What Is a Variance Report” (home.binwise.com/blog/what-is-a-variance-report)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "A par level is… What the bar should have on hand until the next delivery.",
+   "source": "Toast, “How to Master Bar Inventory Management Basics” (pos.toasttab.com/blog/on-the-line/bar-inventory-basics)"
+  },
+  {
+   "fact": "A par is mostly set from… What the bar uses between deliveries, plus a buffer.",
+   "source": "Toast, “How to Master Bar Inventory Management Basics” (pos.toasttab.com/blog/on-the-line/bar-inventory-basics)"
+  },
+  {
+   "fact": "During a busy holiday season, pars usually… Go up.",
+   "source": "Toast, “How to Master Bar Inventory Management Basics” (pos.toasttab.com/blog/on-the-line/bar-inventory-basics)"
+  },
+  {
+   "fact": "In Michigan, who warehouses and delivers spirits to bars? Authorized Distribution Agents appointed by the state.",
+   "source": "Michigan Liquor Control Code, MCL 436.1205 and 436.1233 (legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf)"
+  },
+  {
+   "fact": "Usage equals… Beginning inventory + purchases − ending inventory.",
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage)"
+  },
+  {
+   "fact": "A bar started with 10 bottles, bought 6, and ended with 9. Usage is… 7 bottles.",
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage)"
+  },
+  {
+   "fact": "A large variance usually points to… Over-pours, spills, unrung comps or theft.",
+   "source": "BinWise, “What Is a Variance Report” (home.binwise.com/blog/what-is-a-variance-report)"
+  }
+ ],
+ "unverified": [
+  "Prep-list layout and labeling are house practice; the GM and chef set the house rules.",
+  "Par buffer size and order days depend on our deliveries; set with the GM.",
+  "Variance is defined two ways in the sources (BinWise: expected minus actual inventory; BevSpot: cost of goods sold minus usage); both compare what should be gone with what is."
+ ]
+}

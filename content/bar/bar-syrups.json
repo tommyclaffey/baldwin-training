@@ -98,7 +98,22 @@
      "bigIdea": "Same syrup, every batch.",
      "where": "**Simple syrup** is **1:1** sugar to water; **rich** is **2:1**. Difford’s Guide notes that measuring by **weight** gives a sweeter syrup than measuring by **volume**, so the recipe has to say which. Make it the same way every batch, or every drink changes.",
      "mixup": "A cup of sugar doesn’t weigh the same as a cup of water. That’s why weight and volume give different syrups.",
-     "sayIt": ""
+     "sayIt": "We make our syrups here, the same way every batch.",
+     "stopsTitle": "Two ratios",
+     "stops": [
+      {
+       "name": "Simple",
+       "text": "**1:1** sugar to water."
+      },
+      {
+       "name": "Rich",
+       "text": "**2:1** sugar to water."
+      },
+      {
+       "name": "Weight or volume",
+       "text": "The **recipe** says which. Weight gives a sweeter syrup."
+      }
+     ]
     },
     "check": [
      0,
@@ -132,7 +147,22 @@
      "bigIdea": "A syrup can carry flavor.",
      "where": "**Honey** straight from the jar seizes up in a cold drink, so it’s thinned with water into **honey syrup** (our Gold Rush and Bee’s Knees). **Demerara** syrup brings a caramel note. Ginger, spice or herb syrups bring theirs. Our **Penicillin** uses **honey-ginger syrup**. Every house syrup gets a **written recipe**, so any shift can make it.",
      "mixup": "Honey syrup and honey aren’t the same amount in a spec. Use the syrup the spec names.",
-     "sayIt": "It’s sweetened with a honey-ginger syrup we make here."
+     "sayIt": "It’s sweetened with a honey-ginger syrup we make here.",
+     "stopsTitle": "Our syrups",
+     "stops": [
+      {
+       "name": "Honey syrup",
+       "text": "Honey **thinned** so it mixes: Gold Rush, Bee’s Knees."
+      },
+      {
+       "name": "Demerara",
+       "text": "A **caramel** note."
+      },
+      {
+       "name": "Honey-ginger",
+       "text": "The **Penicillin**’s."
+      }
+     ]
     },
     "check": [
      3,
@@ -166,7 +196,22 @@
      "bigIdea": "Sugar pulls the oil out of citrus peel.",
      "where": "**Oleo saccharum** is a syrup made from **citrus peel and sugar**. Sugar draws water and the fragrant **oils** out of the peel. Peel the fruit with as little **white pith** as you can (pith is bitter), toss the peels with sugar, let it sit, then **strain**. It’s the base of classic **punch**. Difford’s Guide also describes a faster vacuum-bag method.",
      "mixup": "Oleo isn’t juice. It’s the peel’s oil; use the peeled fruit for juice.",
-     "sayIt": ""
+     "sayIt": "It’s sweetened with an oleo: sugar that’s pulled the oils out of citrus peel.",
+     "stopsTitle": "Making oleo",
+     "stops": [
+      {
+       "name": "Peel",
+       "text": "Little **white pith**: it’s bitter."
+      },
+      {
+       "name": "Sugar",
+       "text": "Toss the peels with **sugar** and let it sit."
+      },
+      {
+       "name": "Strain",
+       "text": "Strain off the **oil syrup**."
+      }
+     ]
     },
     "check": [
      6,
@@ -200,7 +245,22 @@
      "bigIdea": "Steep a flavor into the spirit.",
      "where": "An **infusion** steeps fruit, spice, tea or chili in a spirit, then strains it out. Strong flavors (**chili**, **tea**) can take minutes or hours, so **taste often**. **Fat-washing** infuses a fat, like bacon fat or butter, then chills it so the fat sets and **strains** it out; Difford’s credits PDT’s bacon Old Fashioned with making it popular. Label every bottle with **what’s in it** (allergens too) and the **date**.",
      "mixup": "A fat-washed spirit still carries that food. Butter-washed means dairy: tell the guest, and put it in the Allergen Guide.",
-     "sayIt": ""
+     "sayIt": "It’s washed with brown butter, so it has dairy in it. Is that okay for you?",
+     "stopsTitle": "Fat-washing, step by step",
+     "stops": [
+      {
+       "name": "Infuse",
+       "text": "Mix the **fat** into the spirit."
+      },
+      {
+       "name": "Chill",
+       "text": "The fat **sets**."
+      },
+      {
+       "name": "Strain",
+       "text": "Strain it **out**, then label it."
+      }
+     ]
     },
     "check": [
      9,

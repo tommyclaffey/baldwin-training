@@ -98,7 +98,22 @@
      "bigIdea": "Know what an ounce costs.",
      "where": "A **750 ml** bottle holds about **25.4 oz**. Divide the bottle’s cost by that: a **$30** bottle is about **$1.18 an ounce**. Then cost the whole drink: every **spirit**, the **syrup**, the **citrus**, the **bitters** and the **garnish**. The small things add up.",
      "mixup": "A liter isn’t a fifth. A **1 L** bottle holds about **33.8 oz**.",
-     "sayIt": ""
+     "sayIt": "",
+     "stopsTitle": "A $30 bottle",
+     "stops": [
+      {
+       "name": "750 ml",
+       "text": "About **25.4 oz**."
+      },
+      {
+       "name": "Per ounce",
+       "text": "$30 ÷ 25.4 ≈ **$1.18**."
+      },
+      {
+       "name": "1 liter",
+       "text": "About **33.8 oz**."
+      }
+     ]
     },
     "check": [
      0,
@@ -132,7 +147,22 @@
      "bigIdea": "Pour cost tells you if a drink earns its spot.",
      "where": "**Pour cost** is what a drink costs to make **divided by** what it sells for. A drink that costs **$2.40** and sells for **$12** has a **20%** pour cost. Bar guides put a common target at about **18–25%** for spirits and cocktails, though it varies by bar. **Over-pouring**, **spills** and **comped drinks** all raise it.",
      "mixup": "Pour cost isn’t profit. Rent, labor and glassware come out of the rest.",
-     "sayIt": ""
+     "sayIt": "",
+     "stopsTitle": "A $12 drink",
+     "stops": [
+      {
+       "name": "Cost",
+       "text": "**$2.40** to make."
+      },
+      {
+       "name": "Price",
+       "text": "**$12** on the menu."
+      },
+      {
+       "name": "Pour cost",
+       "text": "$2.40 ÷ $12 = **20%**."
+      }
+     ]
     },
     "check": [
      3,
@@ -166,7 +196,22 @@
      "bigIdea": "Work the price back from the cost.",
      "where": "Pick the **target** pour cost, then **price = cost ÷ target**. A drink costing **$2.40** at a **20%** target is **$12**. Round to a price that **fits the menu**: a new drink shouldn’t sit far above or below the drinks beside it unless there’s a reason a guest can see (a rare bottle, a bigger pour).",
      "mixup": "Dividing by 20, not 0.20, gives 12 cents. Use the percent as a decimal.",
-     "sayIt": ""
+     "sayIt": "",
+     "stopsTitle": "Price it",
+     "stops": [
+      {
+       "name": "Cost",
+       "text": "**$2.40**."
+      },
+      {
+       "name": "Target",
+       "text": "**20%** = 0.20."
+      },
+      {
+       "name": "Price",
+       "text": "$2.40 ÷ 0.20 = **$12**, then fit it to the menu."
+      }
+     ]
     },
     "check": [
      6,
@@ -200,7 +245,22 @@
      "bigIdea": "A menu works as a set.",
      "where": "A good list covers the **base spirits** guests ask for, a range of **styles** (bright and shaken, strong and stirred, tall and bubbly) and a **spiritless** option. Mix **easy sellers** with one or two drinks worth **talking about**. Every drink gets a **name** a guest can say and **one line** a server can sell it with, like our menu’s sections in Lesson 3 of Level 1.",
      "mixup": "Eight versions of the same sour isn’t a menu. It’s one drink.",
-     "sayIt": ""
+     "sayIt": "If you like something bright, start here; if you like it strong and stirred, this one.",
+     "stopsTitle": "A list that works",
+     "stops": [
+      {
+       "name": "Spirits",
+       "text": "The **base spirits** guests ask for."
+      },
+      {
+       "name": "Styles",
+       "text": "Bright and shaken, strong and stirred, **tall and bubbly**."
+      },
+      {
+       "name": "Spiritless",
+       "text": "At least **one** for guests who aren’t drinking."
+      }
+     ]
     },
     "check": [
      9,

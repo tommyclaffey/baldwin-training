@@ -644,6 +644,10 @@ export function barPage(page, ctx) {
     else if (ctx.passedAt) line = txt('✓ FINAL PASSED · PRACTICAL: ASK A MANAGER WHEN READY', { ls: '10%', c: '#7FCB93', z: 12.5 });
     else if (ctx.practical) line = txt(`✓ ${L.ack ? 'SIGNED OFF' : 'PRACTICAL SIGNED OFF'}${ctx.practical.by ? ' BY ' + ctx.practical.by.toUpperCase() : ''}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
     else if (ctx.ack?.signed) line = txt(`✓ ACKNOWLEDGMENT SIGNED · ${day(ctx.ack.signed.at)}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
+    // Nov 12: Master of the Bar is by invitation (server/invite.mjs). One line, like the others.
+    if (ctx.invite && !ctx.invite.open) line = txt('BY INVITATION · ASK YOUR MANAGER', { ls: '10%', c: '#C49A6C', z: 12.5 });
+    else if (!line && ctx.invite?.invited) line = txt(`✓ INVITED${ctx.invite.invited.by ? ' BY ' + ctx.invite.invited.by.toUpperCase() : ''} · ${day(ctx.invite.invited.at)}`, { ls: '10%', c: '#7FCB93', z: 12.5 });
+    else if (!line && ctx.invite && !ctx.invite.staff) line = txt('BY INVITATION · INVITE YOUR TEAM ON PEOPLE', { ls: '10%', c: '#C49A6C', z: 12.5 });
     if (line) { line.n = 'Status line'; line.ar = 'H'; line.sh = 'F'; line.w = 398; copy.c.splice(copy.c.findIndex((x) => x.n === 'Course progress') + 1, 0, line); }
   }
   const btns = find(hero, byName('Buttons'));
@@ -657,6 +661,12 @@ export function barPage(page, ctx) {
     const certified = ctx.passedAt && (!L.practical || ctx.practical);
     if (certified && cont) { cont.n = 'Button · View Certificate'; cont.to = `/certificate/${L.file}`; setText(texts(cont)[0], 'View Certificate'); }
     btns.c = [cont, exam].filter(Boolean); btns.wrap = 1; btns.cg = 8; btns.sh = 'L';
+    // Nov 12, by invitation: until a manager invites them, one dimmed button and no way into the lessons or the final
+    if (ctx.invite && !ctx.invite.open && cont) {
+      cont.n = 'Button · By Invitation'; delete cont.to; setText(texts(cont)[0], 'By Invitation');
+      cont.f = [{ c: '#3A3632' }]; for (const x of texts(cont)) x.f = [{ c: '#D9D1C5' }];
+      btns.c = [cont];
+    }
     delete btns.clip; delete btns.h; btns.sv = 'H';
     evenButtons(main);
   }
@@ -666,10 +676,14 @@ export function barPage(page, ctx) {
   const grid = find(course, byName('Lessons'));
   const finished = lessonsGrid(grid, all, ctx.done);
   if (head) { const ht = texts(head); setText(ht[0], L.head); setText(ht[1], `${all.length} LESSONS`); setText(ht[ht.length - 1], `${finished} of ${all.length} done`); }
+  // by invitation and not invited yet: the lessons show, but don't open (the server sends their addresses back here too)
+  if (ctx.invite && !ctx.invite.open && grid) for (const n of findAll(grid, (x) => !!x.to)) delete n.to;
   // how it works, then the four levels
   const how = find(main, byName('How it works'));
   if (how) {
-    const steps = L.practical
+    const steps = L.invite
+      ? ['Get invited by a manager', 'Watch or read the lessons', `Pass the ${L.len}-question final`, L.practicalStep]
+      : L.practical
       ? ['Watch or read the lesson', 'Answer 3 cards per section', `Pass the ${L.len}-question final`, L.practicalStep]
       : ['Watch or read the lesson', 'Swipe the key points', 'Answer 3 cards per section', `Pass the ${L.len}-question final`];
     how.c.forEach((st, i) => { const tt = texts(st); if (steps[i]) setText(tt[tt.length - 1], steps[i]); });
@@ -712,8 +726,8 @@ function ackBlock(a, L, W) {
 // start-here videos, a shelf of sources, and a dark band (the Sommelier's exam dates; here, each level's final).
 const HUB_COPY = {
   bar: {
-    script: 'Our bar training', lead: 'Learn it, practise it, then earn your certificate: three levels, from the floor to the bar lead.',
-    who: ['Everyone', 'Bartenders', 'Bar leads'], cards: ['/img/5e5d6ac14e27.jpg', '/img/9dafca12fbe5.jpg', '/img/classic-bees-knees.jpg', '/img/fe067d97b4ac.jpg'],
+    script: 'Our bar training', lead: 'Learn it, practise it, then earn your certificate: four levels, from the floor to running the bar.',
+    who: ['Everyone', 'Bartenders', 'Bar leads', 'By invitation'], cards: ['/img/5e5d6ac14e27.jpg', '/img/9dafca12fbe5.jpg', '/img/classic-bees-knees.jpg', '/img/fe067d97b4ac.jpg'],
     videosHead: ['A few minutes each', 'The six roots, from Anders Erickson'],
     shelf: ['Where our lessons come from', 'Laws, guides and books our lessons cite · open in a new tab', [
       ['THE RULES', false, [
@@ -725,6 +739,12 @@ const HUB_COPY = {
         ['Cocktail Codex', 'The six root recipes behind Levels 2 and 3.', 'BOOK', 'https://www.randomhousebooks.com/books/534533'],
         ['Rich vs simple syrup', 'Difford’s Guide on 2:1 and 1:1, and how to swap them.', 'GUIDE', 'https://www.diffordsguide.com/encyclopedia/3593/cocktails/2-to-1-rich-sugar-syrup-versus-1-to-1-simple-syrup'],
         ['Fresh lime juice', 'Dave Arnold’s 2010 blind test of lime juice by age.', 'ARTICLE', 'https://cookingissues.com/2010/10/01/fresh-lime-juice-wtf/'],
+      ]],
+      // Nov 12: Level 4, Master of the Bar
+      ['RUNNING THE BAR', false, [
+        ['Michigan Liquor Control Code', 'The state law behind Level 4: service, minors, hours, training.', 'LAW', 'https://legislature.michigan.gov/documents/mcl/pdf/mcl-Act-58-of-1998.pdf'],
+        ['Michigan’s dram shop law', 'MCL 436.1801: who can sue after an unlawful sale.', 'LAW', 'https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-436-1801'],
+        ['Service vs hospitality', 'Danny Meyer on NPR, 2006.', 'INTERVIEW', 'https://www.npr.org/transcripts/6162737'],
       ]],
     ]],
   },
@@ -879,6 +899,8 @@ export function programHub(page, ctx) {
       const b = find(d, (x) => (x.n || '').startsWith('Button · ')); const has = certified.has(L.file);
       b.n = has ? 'Button · View Certificate' : 'Button · Take the Final'; b.to = has ? `/certificate/${L.file}` : '/quizzes?quiz=' + encodeURIComponent('t:' + L.final);
       setText(texts(b)[0], has ? 'Certificate' : 'Take It');
+      // Nov 12: a level by invitation this person can't open yet
+      if (!has && ctx.locked?.has(L.file)) { b.n = 'Button · By Invitation'; delete b.to; setText(texts(b)[0], 'By Invitation'); b.f = [{ c: '#3A3632' }]; for (const x of texts(b)) x.f = [{ c: '#D9D1C5' }]; }
       return d;
     });
     const rest = book.c.filter((x) => !(x.n || '').startsWith('Date · '));
