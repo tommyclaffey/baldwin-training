@@ -74,7 +74,12 @@
   "sections": [
    {
     "name": "Age and ID",
-    "video": null,
+    "video": {
+     "youtubeId": "RPGtoMTcImQ",
+     "title": "Responsible Liquor Sales: Checking IDs",
+     "by": "Washington State Liquor & Cannabis Board",
+     "length": "3:18"
+    },
     "keyPoints": [
      {
       "big": "21+",
@@ -118,7 +123,12 @@
    },
    {
     "name": "Visible intoxication",
-    "video": null,
+    "video": {
+     "youtubeId": "0QvYhAmrvjw",
+     "title": "RSA training NSW: Identifying intoxication",
+     "by": "NSW Department of Customer Service",
+     "length": "2:30"
+    },
     "keyPoints": [
      {
       "big": "NO SALE",
