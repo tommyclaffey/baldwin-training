@@ -1,0 +1,73 @@
+{
+  "_about": "Sample bottles for the Bottle Scanner in the demos (Nov 12). Free Unsplash photos (Unsplash License), unbranded bottles with no label or a blank one. Stand-ins only: no wine or spirit brand is shown. `box` is where the bottle sits, as fractions of the photo [left, top, right, bottom].",
+  "samples": [
+    {
+      "file": "/img/scanner-samples/red.jpg",
+      "thumb": "/img/scanner-samples/red-thumb.jpg",
+      "label": "Red wine",
+      "box": [
+        0.46,
+        0.08,
+        0.77,
+        0.91
+      ],
+      "w": 1200,
+      "h": 1846,
+      "credit": "Subhajit Saha Photography · Unsplash",
+      "unsplashId": "qieV0U5E_ME",
+      "source": "https://unsplash.com/photos/an-empty-wine-glass-and-bottle-on-a-blue-background-qieV0U5E_ME",
+      "what": "Dark wine bottle, no label, beside a glass on blue"
+    },
+    {
+      "file": "/img/scanner-samples/rose.jpg",
+      "thumb": "/img/scanner-samples/rose-thumb.jpg",
+      "label": "Rosé",
+      "box": [
+        0.32,
+        0.14,
+        0.68,
+        0.95
+      ],
+      "w": 1200,
+      "h": 1800,
+      "credit": "Skyler Ewing · Unsplash",
+      "unsplashId": "4IrQobCYdBc",
+      "source": "https://unsplash.com/photos/a-bottle-of-red-liquid-4IrQobCYdBc",
+      "what": "Rosé-coloured bottle with a gold foil top, no label, on amber"
+    },
+    {
+      "file": "/img/scanner-samples/sparkling.jpg",
+      "thumb": "/img/scanner-samples/sparkling-thumb.jpg",
+      "label": "Sparkling",
+      "box": [
+        0.3,
+        0.04,
+        0.72,
+        0.92
+      ],
+      "w": 1200,
+      "h": 1679,
+      "credit": "Marco Palumbo · Unsplash",
+      "unsplashId": "t2Z5SMwIOyQ",
+      "source": "https://unsplash.com/photos/a-golden-champagne-bottle-shines-in-the-light-t2Z5SMwIOyQ",
+      "what": "Gold sparkling wine bottle, no label"
+    },
+    {
+      "file": "/img/scanner-samples/spirit.jpg",
+      "thumb": "/img/scanner-samples/spirit-thumb.jpg",
+      "label": "Spirit",
+      "box": [
+        0.25,
+        0.07,
+        0.68,
+        0.82
+      ],
+      "w": 1200,
+      "h": 1800,
+      "credit": "Annie Spratt · Unsplash",
+      "unsplashId": "uStPpZQgyqw",
+      "source": "https://unsplash.com/photos/brown-glass-bottle-on-wooden-surface-uStPpZQgyqw",
+      "what": "Brown glass bottle with a blank copper label, on wood"
+    }
+  ]
+}

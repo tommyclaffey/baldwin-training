@@ -16,6 +16,7 @@ import { pathCtxFor } from './team.mjs';
 import { questionPool } from './quizgen.mjs';
 import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
 import { forget } from './cache.mjs';
+import { MEDIA_DIR } from './db.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const now = () => new Date().toISOString();
@@ -187,8 +188,27 @@ export function startDemo(db, key, which = 'baldwin') {
   } catch (e) { db.exec('ROLLBACK'); forget(null); throw e; } // nothing cached from the half-made copy survives
 }
 
-/** One demo copy goes: its people, sessions, records and entries. */
+/* Bottle scanner in the demo (Nov 12, Tommy: "scanner sounds good"): every photo a demo saves lives in its own folder,
+ * media/demo/<company slug>/, served only to that demo's people, and the folder goes with the demo. The slug is random
+ * per copy, so a new demo never inherits an old one's files even if the company id is reused. */
+const DEMO_MEDIA = path.join(MEDIA_DIR, 'demo');
+const SLUG_OK = /^demo(-mise)?-[a-f0-9]{10}$/;
+/** The demo company's own media folder (relative to media/), or null if it isn't a demo. */
+export function demoMediaOf(db, companyId) {
+  const co = companyId && db.prepare('SELECT slug, demo FROM companies WHERE id = ?').get(companyId);
+  return co?.demo && SLUG_OK.test(co.slug) ? `demo/${co.slug}` : null;
+}
+export const demoMediaPath = (rel) => path.join(MEDIA_DIR, rel);
+/** Is `/media/demo/<slug>/<file>` this person's demo's own file? */
+export function demoMediaAllowed(db, user, slug) {
+  if (!user || !SLUG_OK.test(slug)) return false;
+  return db.prepare('SELECT slug FROM companies WHERE id = ? AND demo = 1').get(user.company_id)?.slug === slug;
+}
+const dropDemoMedia = (slug) => { if (SLUG_OK.test(String(slug))) fs.rmSync(path.join(DEMO_MEDIA, slug), { recursive: true, force: true }); };
+
+/** One demo copy goes: its people, sessions, records, entries and saved files. */
 export function dropDemo(db, id) {
+  const slug = db.prepare('SELECT slug FROM companies WHERE id = ? AND demo = 1').get(id)?.slug;
   const users = db.prepare('SELECT id FROM users WHERE company_id = ?').all(id).map((u) => u.id);
   for (const u of users) {
     db.prepare('DELETE FROM sessions WHERE user_id = ?').run(u);
@@ -204,17 +224,24 @@ export function dropDemo(db, id) {
   db.prepare('DELETE FROM users WHERE company_id = ?').run(id);
   db.prepare('DELETE FROM stores WHERE company_id = ?').run(id);
   db.prepare('DELETE FROM companies WHERE id = ?').run(id);
+  if (slug) dropDemoMedia(slug);
 }
 
 /** Throwaway demo copies older than a day go. */
 export function purgeDemos(db) {
   const old = db.prepare('SELECT id FROM companies WHERE demo = 1 AND created_at < ?').all(new Date(Date.now() - LIFETIME_MS).toISOString());
   for (const { id } of old) dropDemo(db, id);
+  // Any demo folder whose demo is gone (a crash between the two steps) goes too.
+  try {
+    const live = new Set(db.prepare('SELECT slug FROM companies WHERE demo = 1').all().map((r) => r.slug));
+    for (const f of fs.readdirSync(DEMO_MEDIA)) if (!live.has(f)) dropDemoMedia(f);
+  } catch { /* no demo has saved anything yet */ }
   return old.length;
 }
 
-/** What a demo visitor can't do: anything that leaves the sandbox or changes accounts. */
-const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/password\//, /^\/api\/reset\//, /^\/api\/pin$/, /^\/api\/team/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/scan/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/];
+/** What a demo visitor can't do: anything that leaves the sandbox or changes accounts. The bottle scanner is on (Nov 12),
+ *  with demo limits in server/index.mjs; other uploads stay off. */
+const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/password\//, /^\/api\/reset\//, /^\/api\/pin$/, /^\/api\/team/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/];
 export const demoBlocks = (p, m) => m !== 'GET' && BLOCKED.some((r) => r.test(p));
 
 export { sessionCookie };
