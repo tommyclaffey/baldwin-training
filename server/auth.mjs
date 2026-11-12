@@ -56,11 +56,22 @@ export function endSession(db, token) {
   if (token) db.prepare('DELETE FROM sessions WHERE token_hash = ?').run(sha256(token));
 }
 
-export function sessionCookie(token, { secure = false, clear = false, days = SESSION_DAYS } = {}) {
-  const parts = [`${SESSION_COOKIE}=${clear ? '' : encodeURIComponent(token)}`, 'Path=/', 'HttpOnly', 'SameSite=Lax',
+/** `embeddable` (demo sessions only, Nov 12): inside the portfolio's iframe a SameSite=Lax cookie is never sent, so the
+ *  demo would start and then lose its session. SameSite=None + Partitioned keeps it to that one embedding site. Real
+ *  accounts always stay SameSite=Lax. */
+export function sessionCookie(token, { secure = false, clear = false, days = SESSION_DAYS, embeddable = false } = {}) {
+  const site = embeddable && secure ? ['SameSite=None', 'Partitioned'] : ['SameSite=Lax'];
+  const parts = [`${SESSION_COOKIE}=${clear ? '' : encodeURIComponent(token)}`, 'Path=/', 'HttpOnly', ...site,
     clear ? 'Max-Age=0' : `Max-Age=${days * 86400}`];
   if (secure) parts.push('Secure');
   return parts.join('; ');
+}
+
+/** A real (non-demo) session cookie, plus an expired demo cookie on https so a demo started in this browser can't
+ *  leave a second session cookie of the same name behind (Nov 12). */
+export function sessionCookies(token, opts = {}) {
+  const c = sessionCookie(token, opts);
+  return opts.secure ? [c, sessionCookie('', { clear: true, secure: true, embeddable: true })] : c;
 }
 
 /** 8 tries per email+IP per 15 minutes. */
