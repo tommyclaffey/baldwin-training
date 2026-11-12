@@ -381,7 +381,11 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   const carousel = useContext(CarouselContext);
   const shrink = useContext(ScaleContext);
   const inLink = useContext(InLink);
-  const chatLookup = useContext(ChatItemsContext);
+  // Nothing inside a page's hero gets its own chat button: the hero is the page itself, and the page has Send to Team
+  // (Nov 11, Tommy: "fix this" on a stray button in the Glass box of a cocktail hero).
+  const isHero = /^Hero\b/.test(drawn.n || '');
+  const chatContext = useContext(ChatItemsContext);
+  const chatLookup = isHero ? null : chatContext;
   const live = useInteract();
   const [playing, setPlaying] = useState(false);
   // A control is drawn in its current state (ticked / empty, selected / plain).
@@ -496,6 +500,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
       ? <AssignName key={i} slot={m.assign} node={c} render={child} />
       : <FigmaNode key={c.n ? c.n + i : i} node={c} parentLm={node.lm} parentH={node.lm === 'H' ? node.h : undefined} />
   ));
+  if (isHero) kids = <ChatItemsContext.Provider value={null}>{kids}</ChatItemsContext.Provider>;
 
   // Videos: slots play inline; library cards open a player.
   const extras: ReactNode[] = [];
