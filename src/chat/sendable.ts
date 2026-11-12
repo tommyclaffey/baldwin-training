@@ -11,7 +11,7 @@ export const shareable = (e: IndexEntry | undefined) => !!e && (SHAREABLE.has(e.
 export const slugOf = (href: string) => (href.startsWith('/') && !href.startsWith('//') ? decodeURIComponent(href.split(/[?#]/)[0]).replace(/^\/+|\/+$/g, '') : null);
 
 /** The part of a layout node this needs (see FNode in components/FigmaNode.tsx). */
-export type Box = { t: string; n?: string; w: number; h: number; x?: number; y?: number; abs?: 1; to?: string; skipTab?: 1; lm?: 'H' | 'V'; sh?: 'F' | 'H' | 'L'; pd?: number[]; c?: Box[]; f?: { img?: string }[]; s?: string; gut?: number };
+export type Box = { t: string; n?: string; w: number; h: number; x?: number; y?: number; abs?: 1; to?: string; skipTab?: 1; lm?: 'H' | 'V'; wrap?: 1; sh?: 'F' | 'H' | 'L'; pd?: number[]; c?: Box[]; f?: { img?: string }[]; s?: string; gut?: number };
 
 /** Links that move you around rather than show one thing: nav, breadcrumbs, buttons, chips, tabs, pills, "Part of …". */
 const NOT_ITEMS = /^(Nav|Crumb|Breadcrumb|Button|Chip|Pill|Tag|Step tab|Node|Back to parent|Sibling|Section|Open in the book|In the book|Learn link|Carousel|Brand|Head|Use|Add|Logo)\b/;
@@ -104,7 +104,9 @@ export function withGutters<T extends Box>(kids: T[], parent: Pick<Box, 'lm'>, i
   const rows = kids.filter(isRow);
   if (!rows.length) return kids;
   const widths = rows.map((r) => r.w);
-  const sameTable = (c: T) => parent.lm === 'V' && c.t === 'F' && c.lm === 'H' && !c.abs && widths.some((w) => Math.abs(w - c.w) <= 6);
+  // A wrapping grid of cards isn't a table row, even at a row's width (Spirits: the band above its cards links, and the
+  // gutter took the grid from 3 cards a row to 2. Nov 11, Tommy: "fix this").
+  const sameTable = (c: T) => parent.lm === 'V' && c.t === 'F' && c.lm === 'H' && !c.wrap && !c.abs && widths.some((w) => Math.abs(w - c.w) <= 6);
   return kids.map((c) => {
     if (!rows.includes(c) && !sameTable(c)) return c;
     const flow = inFlowKids(c);

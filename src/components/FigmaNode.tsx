@@ -105,7 +105,7 @@ const FONT: Record<string, string> = {
 };
 const WEIGHT: Record<string, number> = { Regular: 400, Italic: 400, Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800 };
 const JUSTIFY: Record<string, string> = { C: 'center', M: 'flex-end', S: 'space-between' };
-const ALIGN: Record<string, string> = { C: 'center', M: 'flex-end', B: 'baseline' };
+const ALIGN: Record<string, string> = { C: 'center', M: 'flex-end', B: 'baseline', S: 'stretch' }; // S: the server evens out a grid's rows (content.mjs)
 
 function rgba(hex: string, a = 1) {
   if (a >= 1) return hex;

@@ -63,6 +63,14 @@ test('rows: a gutter at the end, and the same gutter on the rest of the table so
   assert.equal(bare.gut, 8);
 });
 
+test('a wrapping grid of cards at a row\'s width is not part of the table (Spirits: 3 cards a row, not 2)', () => {
+  const band = { t: 'F', n: 'Whiskey family band', w: 1080, h: 76, lm: 'H', pd: [20, 24, 20, 24], to: '/shelf/aperol' };
+  const grid = { t: 'F', n: 'Categories', w: 1080, h: 1706, lm: 'H', wrap: 1, gap: 20, c: [] };
+  const out = withGutters([band, grid], { lm: 'V' }, (c) => targetOf(c, lookup)?.shape === 'row');
+  assert.deepEqual(out[0].pd, [20, 66, 20, 24]); // the band keeps its gutter for the chat button
+  assert.equal(out[1], grid);
+});
+
 test('rows of hugging parts: the name may shrink and wrap, the last part (prices) keeps its size', () => {
   const pour = { t: 'F', n: 'Pour · Taub', w: 480, h: 55, lm: 'H', to: '/shelf/aperol', c: [{ t: 'F', n: 'Name', w: 148, h: 32, sh: 'H' }, { t: 'F', n: 'Prices', w: 156, h: 15, sh: 'H' }] };
   const [out] = withGutters([pour], { lm: 'V' }, () => true);
