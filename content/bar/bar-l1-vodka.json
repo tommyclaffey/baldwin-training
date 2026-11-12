@@ -1,0 +1,433 @@
+{
+ "number": 2,
+ "barLevel": 1,
+ "slug": "bar-l1-vodka",
+ "title": "Vodka",
+ "script": "Lesson 2",
+ "lead": "The clean slate of the back bar: what it’s made from, how bottles differ, and how guests order it.",
+ "minutes": 8,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "What vodka is",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Vodka is meant to taste clean."
+    }
+   ],
+   "know": [
+    "Any Base works: wheat, rye, corn, potatoes, even grapes.",
+    "High Proof off the still, then usually no aging: clean and clear.",
+    "37.5% is the EU minimum strength for vodka."
+   ],
+   "book": "spirit/vodka",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "How vodka tastes",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The base leaves a small mark."
+    }
+   ],
+   "know": [
+    "Wheat vodkas tend to be soft and a little sweet.",
+    "Rye is drier, with a peppery edge.",
+    "Potato is rounder and creamier.",
+    "Flavored vodkas add fruit, citrus or vanilla."
+   ],
+   "book": "spirit/vodka/wheat",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); Common bar practice"
+  },
+  {
+   "name": "How guests order it",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Usually with a mixer, sometimes up."
+    }
+   ],
+   "know": [
+    "Mixer soda, tonic or cranberry: ask which one.",
+    "Well is our house pour when no brand is named.",
+    "Call means they named the bottle. Ring in that one.",
+    "Up means chilled, strained, no ice, in a stemmed glass."
+   ],
+   "book": "spirit/vodka",
+   "source": "Common bar practice; Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "name": "Vodka cocktails",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Vodka lets the other ingredients lead."
+    }
+   ],
+   "know": [
+    "Moscow Mule is vodka, lime and ginger beer.",
+    "Espresso Martini is vodka, fresh espresso and coffee liqueur.",
+    "Cosmopolitan is citrus vodka, orange liqueur, lime and cranberry.",
+    "Bloody Mary is vodka and tomato juice, with lemon and spice."
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "v3": {
+  "video": {
+   "youtubeId": "hKtpqkSO2IU",
+   "title": "I blind tasted 12 VODKAS and this is what I learned",
+   "by": "Anders Erickson",
+   "length": "16:13"
+  },
+  "sections": [
+   {
+    "name": "What vodka is",
+    "video": {
+     "youtubeId": "hKtpqkSO2IU",
+     "title": "I blind tasted 12 VODKAS and this is what I learned",
+     "by": "Anders Erickson",
+     "length": "16:13"
+    },
+    "keyPoints": [
+     {
+      "big": "ANY BASE",
+      "line": "works: wheat, rye, corn, potatoes, even grapes."
+     },
+     {
+      "big": "HIGH PROOF",
+      "line": "off the still, then usually no aging: clean and clear."
+     },
+     {
+      "big": "37.5%",
+      "line": "is the EU minimum strength for vodka."
+     }
+    ],
+    "read": {
+     "bigIdea": "Vodka is meant to taste clean.",
+     "where": "Vodka can be made from **any farm base**: wheat, rye, corn, potatoes, even grapes. It’s distilled to a **high strength** and usually **not aged**, so it comes out clear and clean. In the EU it’s bottled at **37.5% or more**.",
+     "mixup": "Clear doesn’t always mean vodka. **Blanco tequila** and **white rum** are clear too, but they taste of **agave** and **cane**.",
+     "sayIt": "Vodka’s the cleanest spirit on the bar, so the other flavors lead."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "How vodka tastes",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WHEAT",
+      "line": "vodkas tend to be soft and a little sweet."
+     },
+     {
+      "big": "RYE",
+      "line": "is drier, with a peppery edge."
+     },
+     {
+      "big": "POTATO",
+      "line": "is rounder and creamier."
+     },
+     {
+      "big": "FLAVORED",
+      "line": "vodkas add fruit, citrus or vanilla."
+     }
+    ],
+    "read": {
+     "bigIdea": "The base leaves a small mark.",
+     "where": "Vodka is meant to be neutral, but what it’s made from still shows a little. Words a guest understands: **clean**, **smooth**, **crisp**, **soft**. **Flavored vodkas** add fruit, citrus or vanilla.",
+     "stopsTitle": "By what it’s made from",
+     "stops": [
+      {
+       "name": "Wheat",
+       "text": "**Soft** and a little sweet."
+      },
+      {
+       "name": "Rye",
+       "text": "**Drier**, with a peppery edge."
+      },
+      {
+       "name": "Potato",
+       "text": "**Rounder** and creamier."
+      },
+      {
+       "name": "Corn",
+       "text": "**Clean** and slightly sweet."
+      }
+     ],
+     "mixup": "A **citrus vodka** is still vodka. **Gin** is the one that has to taste of **juniper**.",
+     "sayIt": "This one’s made from rye, so it’s a little drier and spicier."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "How guests order it",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "MIXER",
+      "line": "soda, tonic or cranberry: ask which one."
+     },
+     {
+      "big": "WELL",
+      "line": "is our house pour when no brand is named."
+     },
+     {
+      "big": "CALL",
+      "line": "means they named the bottle. Ring in that one."
+     },
+     {
+      "big": "UP",
+      "line": "means chilled, strained, no ice, in a stemmed glass."
+     }
+    ],
+    "read": {
+     "bigIdea": "Usually with a mixer, sometimes up.",
+     "where": "Most vodka orders are **vodka and a mixer**: soda, tonic, cranberry or juice. “Vodka soda” with no brand gets the **well** vodka. If the guest names the bottle, it’s a **call**: get the **brand** right. A **vodka martini** is vodka and dry vermouth, served **up**, and guests order it **dry**, **dirty** or **with a twist**, like a gin one.",
+     "stopsTitle": "The usual calls",
+     "stops": [
+      {
+       "name": "Vodka soda",
+       "text": "Vodka and **soda water** over ice."
+      },
+      {
+       "name": "Vodka tonic",
+       "text": "With **tonic** instead of soda."
+      },
+      {
+       "name": "Vodka cranberry",
+       "text": "With **cranberry** juice."
+      },
+      {
+       "name": "Vodka martini",
+       "text": "With **dry vermouth**, served **up**."
+      }
+     ],
+     "mixup": "“**Vodka soda**” gets our well vodka. “**Tito’s and soda**” is a call: ring in the bottle they named.",
+     "sayIt": "Soda, tonic or cranberry with that?",
+     "ours": {
+      "shelf": [
+       "Vodka"
+      ]
+     }
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Vodka cocktails",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "MOSCOW MULE",
+      "line": "is vodka, lime and ginger beer."
+     },
+     {
+      "big": "ESPRESSO MARTINI",
+      "line": "is vodka, fresh espresso and coffee liqueur."
+     },
+     {
+      "big": "COSMOPOLITAN",
+      "line": "is citrus vodka, orange liqueur, lime and cranberry."
+     },
+     {
+      "big": "BLOODY MARY",
+      "line": "is vodka and tomato juice, with lemon and spice."
+     }
+    ],
+    "read": {
+     "bigIdea": "Vodka lets the other ingredients lead.",
+     "where": "Because vodka is clean, the **other ingredients** set the taste. The **Moscow Mule** is vodka, lime and ginger beer. The **Espresso Martini** is vodka, fresh espresso and coffee liqueur. The **Cosmopolitan** is citrus vodka, orange liqueur, lime and cranberry. The **Bloody Mary** is vodka and tomato juice with lemon and spice. The **White Russian** is vodka, coffee liqueur and cream.",
+     "stopsTitle": "Classics to know",
+     "stops": [
+      {
+       "name": "Moscow Mule",
+       "text": "Vodka, lime, **ginger beer**."
+      },
+      {
+       "name": "Espresso Martini",
+       "text": "Vodka, **espresso**, coffee liqueur."
+      },
+      {
+       "name": "Cosmopolitan",
+       "text": "Citrus vodka, orange liqueur, lime, **cranberry**."
+      },
+      {
+       "name": "Bloody Mary",
+       "text": "Vodka, **tomato**, lemon and spice."
+      }
+     ],
+     "mixup": "A **Moscow Mule** is vodka and ginger beer. With dark rum instead, it’s a **Dark ’n’ Stormy**.",
+     "sayIt": "It’s vodka, so it’s clean: the fruit does the talking.",
+     "ours": {
+      "house": [
+       "vodka"
+      ]
+     }
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); Common bar practice; Our book: the classic and house cocktail specs in this app. Facts taken from the Level 2 lessons, which cite them. Written for Mise, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "What can vodka be made from?",
+   "answer": "Any farm base: grain, potatoes, even grapes",
+   "wrong": [
+    "Only potatoes",
+    "Only rye",
+    "Only agave"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Why does vodka taste so clean?",
+   "answer": "It’s distilled to a high strength and usually not aged",
+   "wrong": [
+    "It’s aged in new charred oak",
+    "It’s filtered through peat",
+    "Juniper is added after distilling"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "In the EU, vodka is bottled at…",
+   "answer": "37.5% ABV or more",
+   "wrong": [
+    "20% ABV or more",
+    "25% ABV or more",
+    "60% ABV or more"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "A rye vodka usually tastes…",
+   "answer": "Drier, with a peppery edge",
+   "wrong": [
+    "Smoky",
+    "Sweet, like vanilla",
+    "Piney, like juniper"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Which base usually gives a rounder, creamier vodka?",
+   "answer": "Potato",
+   "wrong": [
+    "Rye",
+    "Juniper",
+    "Oak chips"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A flavored vodka…",
+   "answer": "Adds fruit, citrus or vanilla to vodka",
+   "wrong": [
+    "Has to be aged in oak",
+    "Is always under 15% ABV",
+    "Is made from agave"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "A guest orders a “vodka soda” and names no brand. What do they get?",
+   "answer": "Our well vodka",
+   "wrong": [
+    "Our most expensive vodka",
+    "A flavored vodka",
+    "Gin, since it’s close"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A guest names the vodka they want in their drink. You ring in…",
+   "answer": "The vodka they named",
+   "wrong": [
+    "Our well vodka",
+    "Whatever bottle is open",
+    "Our premium vodka, to be safe"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A vodka martini “up” comes…",
+   "answer": "Chilled and strained, with no ice in the glass",
+   "wrong": [
+    "Over crushed ice",
+    "Warm, straight from the bottle",
+    "Topped with soda"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Vodka, lime and ginger beer make a…",
+   "answer": "Moscow Mule",
+   "wrong": [
+    "Dark ’n’ Stormy",
+    "Paloma",
+    "Gimlet"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "What’s in an Espresso Martini besides vodka?",
+   "answer": "Fresh espresso and coffee liqueur",
+   "wrong": [
+    "Cream and cocoa",
+    "Dry vermouth and olive brine",
+    "Cold brew and soda"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "Which drink is vodka and tomato juice, with lemon and spice?",
+   "answer": "Bloody Mary",
+   "wrong": [
+    "Cosmopolitan",
+    "Lemon Drop",
+    "White Russian"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Vodka can be made from any farm base: wheat, rye, corn, potatoes, even grapes. It’s distilled to a high strength and usually not aged, so it comes out clear and clean. In the EU it’s bottled at 37.5% or more.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "Vodka is meant to be neutral, but what it’s made from still shows a little. Words a guest understands: clean, smooth, crisp, soft. Flavored vodkas add fruit, citrus or vanilla.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); Common bar practice"
+  },
+  {
+   "fact": "Most vodka orders are vodka and a mixer: soda, tonic, cranberry or juice. “Vodka soda” with no brand gets the well vodka. If the guest names the bottle, it’s a call: get the brand right. A vodka martini is vodka and dry vermouth, served up, and guests order it dry, dirty or with a twist, like a gin one.",
+   "source": "Common bar practice; Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "fact": "Because vodka is clean, the other ingredients set the taste. The Moscow Mule is vodka, lime and ginger beer. The Espresso Martini is vodka, fresh espresso and coffee liqueur. The Cosmopolitan is citrus vodka, orange liqueur, lime and cranberry. The Bloody Mary is vodka and tomato juice with lemon and spice. The White Russian is vodka, coffee liqueur and cream.",
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "unverified": [
+  "Taste words (“soft”, “peppery”, “grassy”) are general bar descriptions, not from a rule. Bar lead to check them against our bottles.",
+  "How guests order (mixers, neat or on the rocks, shots) is common US bar usage, not a rule; bar lead to confirm the house wording."
+ ]
+}

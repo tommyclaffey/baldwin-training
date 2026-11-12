@@ -154,9 +154,31 @@ export function courtCard(ch, si, lvl) {
 }
 
 /* ---------------- lesson ---------------- */
+/** Cocktail Program Level 1's spirit lessons (Nov 12, Tommy: "focusing on each spirit"): a section with "ours" shows this
+ *  store's own drinks and bottles. "house": base spirits whose house cocktails on the menu replace the generic classics in
+ *  the list (five at most, in menu order); "shelf": back bar spirits named at the end of the paragraph. A store with none keeps
+ *  the lesson as written. ctx.ours() returns { house, shelf } (this store's entries). */
+const ingredientsOf = (d) => (d.build || []).filter((b) => b && !b.spirit).map((b) => String(b.ingredient || '').replace(/\s*\(.*?\)/g, '').trim()).filter(Boolean).slice(0, 3).join(', ');
+const andList = (xs) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
+function withOurs(r, ctx) {
+  const o = r.ours; if (!o || !ctx.ours) return r;
+  const mine = ctx.ours(); let out = r;
+  if (o.house?.length) {
+    const re = new RegExp(`\\b(${o.house.join('|')})\\b`, 'i');
+    const drinks = (mine.house || []).filter((e) => e.data?.onMenu !== false && re.test(e.data?.base || '')).slice(0, 5); // on the menu now, in menu order
+    if (drinks.length) out = { ...out, stopsTitle: 'On our menu', stops: drinks.map((e) => ({ name: e.data.name, note: e.data.menuSection || '', text: e.data.tableLine || ingredientsOf(e.data) || e.data.tagline || '' })) };
+  }
+  if (o.shelf?.length) {
+    const want = new Set(o.shelf.map((x) => x.toLowerCase()));
+    const names = (mine.shelf || []).filter((e) => want.has(String(e.data?.spirit || '').toLowerCase())).map((e) => e.data.name).filter(Boolean);
+    if (names.length) { const shown = names.slice(0, 6); const more = names.length - shown.length; out = { ...out, where: `${out.where || ''} **On our back bar:** ${andList(more ? [...shown, `${more} more`] : shown)}.`.trim() }; }
+  }
+  return out;
+}
+
 export function lessonPage(tpl, chTpl, ch, si, ctx) {
   const main = clone(tpl.main);
-  const sec = ch.sections[si]; const v = v3Of(ch, si); const r = v.read || {};
+  const sec = ch.sections[si]; const v = v3Of(ch, si); const r = withOurs(v.read || {}, ctx);
   const n = ch.sections.length; const all = levelChapters(ch);
   const isBar = isProgram(ch); const lvl = isBar ? progLevel(ch) : ch.level === 2 ? 2 : 1; const BL = levelForChapter(ch); const home = isBar ? BL.slug : lvl === 2 ? L2 : L1;
   const href = (c, i) => '/' + lessonSlug(c, i);
@@ -376,7 +398,7 @@ function lessonsGrid(grid, all, done) {
     const t = T(c); setText(t[0], ch.title);
     if (s.state === 'done') { setText(t[1], `✓ Done · ${s.n} sections`); t[1].f = [{ c: GREEN }]; t[1].fs = 'Bold'; }
     const videos = ch.sections.filter((_, i) => v3Of(ch, i).video?.youtubeId).length;
-    if (s.state !== 'done') setText(t[1], s.state === 'half' ? `${s.k} of ${s.n} sections done · ${ch.cards.length} cards` : `${s.n} sections${videos ? ` · ${videos} videos` : ''} · ${ch.cards.length} cards`);
+    if (s.state !== 'done') setText(t[1], s.state === 'half' ? `${s.k} of ${s.n} sections done · ${ch.cards.length} cards` : `${s.n} sections${videos ? ` · ${videos} video${videos === 1 ? '' : 's'}` : ''} · ${ch.cards.length} cards`);
     return c;
   });
   return finished;

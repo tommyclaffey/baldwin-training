@@ -1,0 +1,674 @@
+{
+ "number": 6,
+ "barLevel": 1,
+ "slug": "bar-l1-whiskey",
+ "title": "Whiskey",
+ "script": "Lesson 6",
+ "lead": "Grain and oak: bourbon, rye, Scotch, Irish and Japanese, at the level a guest asks about.",
+ "minutes": 14,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "What whiskey is",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Whiskey is grain, aged in oak."
+    }
+   ],
+   "know": [
+    "Grain corn, rye, wheat or barley: every whiskey starts there.",
+    "Oak adds color, vanilla and spice, and softens it.",
+    "80 Proof or more: the US minimum for whiskey."
+   ],
+   "book": "spirit/whiskey",
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Named by the grain",
+     "rows": [
+      {
+       "name": "Bourbon",
+       "meta": "51%+ corn"
+      },
+      {
+       "name": "Rye whiskey",
+       "meta": "51%+ rye"
+      },
+      {
+       "name": "Wheat whiskey",
+       "meta": "51%+ wheat"
+      },
+      {
+       "name": "Malt whiskey",
+       "meta": "51%+ malted barley"
+      },
+      {
+       "name": "Corn whiskey",
+       "meta": "80%+ corn"
+      }
+     ],
+     "note": "US federal rules, 27 CFR 5.143"
+    }
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890)"
+  },
+  {
+   "name": "Bourbon and rye",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Corn is sweeter; rye is spicier."
+    }
+   ],
+   "know": [
+    "Bourbon is 51%+ corn, in new charred oak: sweet, vanilla.",
+    "Anywhere in the US can make bourbon, not only Kentucky.",
+    "Rye is 51%+ rye: drier and spicier.",
+    "Tennessee whiskey is filtered through maple charcoal first."
+   ],
+   "book": "spirit/bourbon",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Tennessee House Bill 1084 (2013)"
+  },
+  {
+   "name": "Scotch",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Made in Scotland, sometimes smoky."
+    }
+   ],
+   "know": [
+    "Scotland Scotch is made and aged there, at least three years.",
+    "Single Malt is malted barley from one distillery.",
+    "Blended mixes malt and grain whisky: most Scotch sold.",
+    "Islay many are peated, so they taste smoky."
+   ],
+   "book": "spirit/scotch",
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890)"
+  },
+  {
+   "name": "Irish, Japanese and Canadian",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Three more you’ll see on the back bar."
+    }
+   ],
+   "know": [
+    "Irish is made on the island of Ireland, three years in wood.",
+    "Pot Still malted and unmalted barley: unique to Ireland.",
+    "Japanese made, aged and bottled in Japan (a 2021 standard).",
+    "Canadian “rye” on the label can mean any Canadian whisky."
+   ],
+   "book": "spirit/irish-whiskey",
+   "source": "Irish Whiskey Technical File (2014); Japan Spirits & Liqueur Makers Association, Standards for Labeling Japanese Whisky (2021), as summarized by Nikka (nikka.com); Canada Food and Drug Regulations, Canadian whisky (as summarized on Wikipedia)"
+  },
+  {
+   "name": "How guests order it",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Neat, on the rocks, or with a mixer."
+    }
+   ],
+   "know": [
+    "Neat means the whiskey alone, no ice.",
+    "On The Rocks means over ice.",
+    "Water a few drops or a splash, if the guest asks.",
+    "Which One bourbon, rye or Scotch? Ask."
+   ],
+   "book": "spirit/whiskey",
+   "source": "Common bar practice"
+  },
+  {
+   "name": "Whiskey cocktails",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Stirred or sour, whiskey leads."
+    }
+   ],
+   "know": [
+    "Old Fashioned is whiskey, sugar and bitters, stirred.",
+    "Manhattan is rye, sweet vermouth and bitters.",
+    "Whiskey Sour is bourbon, lemon and sugar, maybe egg white.",
+    "Sazerac is rye, Peychaud’s bitters and an absinthe rinse."
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "v3": {
+  "video": {
+   "youtubeId": "TYIkr7MIfSM",
+   "title": "Whiskey: What you Need to Know, explaining various styles of Whiskey and tasting them | How to Drink",
+   "by": "How To Drink",
+   "length": "37:35"
+  },
+  "sections": [
+   {
+    "name": "What whiskey is",
+    "video": {
+     "youtubeId": "TYIkr7MIfSM",
+     "title": "Whiskey: What you Need to Know, explaining various styles of Whiskey and tasting them | How to Drink",
+     "by": "How To Drink",
+     "length": "37:35"
+    },
+    "keyPoints": [
+     {
+      "big": "GRAIN",
+      "line": "corn, rye, wheat or barley: every whiskey starts there."
+     },
+     {
+      "big": "OAK",
+      "line": "adds color, vanilla and spice, and softens it."
+     },
+     {
+      "big": "80 PROOF",
+      "line": "or more: the US minimum for whiskey."
+     }
+    ],
+    "read": {
+     "bigIdea": "Whiskey is grain, aged in oak.",
+     "where": "Whiskey is distilled from a **grain mash** and aged in **oak**. The grain sets the style: corn, rye, wheat or malted barley. Time in the barrel adds **color** and flavors like **vanilla** and spice, and softens the spirit. In the US, whiskey is bottled at **80 proof or more**.",
+     "visual": 0,
+     "visualIntro": "In the US, the grain names the whiskey:",
+     "mixup": "**Whiskey** is the family. **Bourbon**, **rye** and **Scotch** are kinds of whiskey.",
+     "sayIt": "Do you like it sweeter, like a bourbon, or spicier, like a rye?"
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Bourbon and rye",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "BOURBON",
+      "line": "is 51%+ corn, in new charred oak: sweet, vanilla."
+     },
+     {
+      "big": "ANYWHERE",
+      "line": "in the US can make bourbon, not only Kentucky."
+     },
+     {
+      "big": "RYE",
+      "line": "is 51%+ rye: drier and spicier."
+     },
+     {
+      "big": "TENNESSEE",
+      "line": "whiskey is filtered through maple charcoal first."
+     }
+    ],
+    "read": {
+     "bigIdea": "Corn is sweeter; rye is spicier.",
+     "where": "**Bourbon** is American whiskey of at least **51% corn**, aged in **new charred oak**. It can be made **anywhere in the US**, not only Kentucky. Corn makes it rounder and **sweeter**: vanilla and caramel. **Rye whiskey** is at least **51% rye**, so it’s **drier and spicier**. **Wheated** bourbons swap rye for wheat and taste softer. **Tennessee whiskey**, like Jack Daniel’s, follows the bourbon rules and is **filtered through maple charcoal** before it goes into the barrel.",
+     "stopsTitle": "The American family",
+     "stops": [
+      {
+       "name": "Bourbon",
+       "text": "**Corn**: sweet, vanilla, caramel."
+      },
+      {
+       "name": "Wheated bourbon",
+       "text": "Wheat instead of rye: **softer**."
+      },
+      {
+       "name": "Rye",
+       "text": "**Rye**: drier, peppery."
+      },
+      {
+       "name": "Tennessee",
+       "text": "Bourbon rules, plus **maple charcoal**."
+      }
+     ],
+     "mixup": "**Bourbon** and **rye** are both American. The grain is the difference: corn is sweeter, rye is spicier.",
+     "sayIt": "Bourbon is a little sweeter; rye is a little spicier."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Scotch",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SCOTLAND",
+      "line": "Scotch is made and aged there, at least three years."
+     },
+     {
+      "big": "SINGLE MALT",
+      "line": "is malted barley from one distillery."
+     },
+     {
+      "big": "BLENDED",
+      "line": "mixes malt and grain whisky: most Scotch sold."
+     },
+     {
+      "big": "ISLAY",
+      "line": "many are peated, so they taste smoky."
+     }
+    ],
+    "read": {
+     "bigIdea": "Made in Scotland, sometimes smoky.",
+     "where": "**Scotch** is whisky made in **Scotland** and aged there at least **three years** in oak. An age on the label is the **youngest** whisky in the bottle. **Single malt** is 100% malted barley from **one distillery**. **Blended Scotch** mixes malt and grain whiskies; it’s most of the Scotch sold. Many **Islay** whiskies are **peated**: the malt is dried over a peat fire, which makes them **smoky**.",
+     "stopsTitle": "What a guest might ask for",
+     "stops": [
+      {
+       "name": "Single malt",
+       "text": "Malted barley, **one distillery**."
+      },
+      {
+       "name": "Blended Scotch",
+       "text": "Malt and grain together: **most Scotch sold**."
+      },
+      {
+       "name": "Islay",
+       "text": "An island: many **peated**, smoky whiskies."
+      }
+     ],
+     "mixup": "**Single** means one distillery, not one barrel.",
+     "sayIt": "Do you like it smoky? Many Islay Scotches are."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Irish, Japanese and Canadian",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "IRISH",
+      "line": "is made on the island of Ireland, three years in wood."
+     },
+     {
+      "big": "POT STILL",
+      "line": "malted and unmalted barley: unique to Ireland."
+     },
+     {
+      "big": "JAPANESE",
+      "line": "made, aged and bottled in Japan (a 2021 standard)."
+     },
+     {
+      "big": "CANADIAN",
+      "line": "“rye” on the label can mean any Canadian whisky."
+     }
+    ],
+    "read": {
+     "bigIdea": "Three more you’ll see on the back bar.",
+     "where": "**Irish whiskey** is made on the island of **Ireland** and aged at least **three years** in wood. **Single pot still**, made from malted and unmalted barley, is unique to Ireland: creamy and spicy. Most Irish whiskey sold is **blended**. **Japanese whisky** has a makers’ standard from **2021**: made with Japanese water, aged at least three years and bottled, all in **Japan**. On a **Canadian** label, “rye” and “Canadian whisky” mean the same thing.",
+     "stopsTitle": "Three more countries",
+     "stops": [
+      {
+       "name": "Irish",
+       "text": "Often **smooth**; single pot still is **creamy and spicy**."
+      },
+      {
+       "name": "Japanese",
+       "text": "Made, aged and **bottled in Japan**."
+      },
+      {
+       "name": "Canadian",
+       "text": "“**Rye**” is a name, not a recipe."
+      }
+     ],
+     "mixup": "**Canadian “rye”** is a name, not a recipe. **US rye** must be at least 51% rye.",
+     "sayIt": "If you like it smooth, try an Irish whiskey."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "How guests order it",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NEAT",
+      "line": "means the whiskey alone, no ice."
+     },
+     {
+      "big": "ON THE ROCKS",
+      "line": "means over ice."
+     },
+     {
+      "big": "WATER",
+      "line": "a few drops or a splash, if the guest asks."
+     },
+     {
+      "big": "WHICH ONE",
+      "line": "bourbon, rye or Scotch? Ask."
+     }
+    ],
+    "read": {
+     "bigIdea": "Neat, on the rocks, or with a mixer.",
+     "where": "Many guests sip whiskey **neat** or **on the rocks**, and some like a **splash of water**. Mixed, the common calls are **whiskey and ginger ale**, **whiskey and soda** and **whiskey and cola**. Ask **which whiskey**: bourbon, rye and Scotch taste very different. If the guest names the bottle, it’s a **call**.",
+     "stopsTitle": "The usual calls",
+     "stops": [
+      {
+       "name": "Neat",
+       "text": "The whiskey alone, **no ice**."
+      },
+      {
+       "name": "On the rocks",
+       "text": "Over **ice**."
+      },
+      {
+       "name": "With water",
+       "text": "A **splash** of water, if they ask."
+      },
+      {
+       "name": "Whiskey ginger",
+       "text": "With **ginger ale** over ice."
+      }
+     ],
+     "mixup": "**Neat** never touches ice. **Up** is chilled on ice, but the ice stays in the tin.",
+     "sayIt": "Bourbon, rye or Scotch? And neat or on the rocks?",
+     "ours": {
+      "shelf": [
+       "Bourbon",
+       "Rye",
+       "Scotch",
+       "Irish whiskey",
+       "Japanese whisky",
+       "Canadian whisky"
+      ]
+     }
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "Whiskey cocktails",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "OLD FASHIONED",
+      "line": "is whiskey, sugar and bitters, stirred."
+     },
+     {
+      "big": "MANHATTAN",
+      "line": "is rye, sweet vermouth and bitters."
+     },
+     {
+      "big": "WHISKEY SOUR",
+      "line": "is bourbon, lemon and sugar, maybe egg white."
+     },
+     {
+      "big": "SAZERAC",
+      "line": "is rye, Peychaud’s bitters and an absinthe rinse."
+     }
+    ],
+    "read": {
+     "bigIdea": "Stirred or sour, whiskey leads.",
+     "where": "The **Old Fashioned** is bourbon or rye, sugar and bitters. The **Manhattan** is rye, sweet vermouth and bitters. The **Whiskey Sour** is bourbon, lemon and sugar, sometimes with **egg white**. The **Sazerac** is rye with Peychaud’s bitters and an absinthe rinse. The **Penicillin** is blended Scotch, lemon and honey-ginger, with Islay on top. **Irish Coffee** is Irish whiskey, hot coffee, sugar and cream.",
+     "stopsTitle": "Classics to know",
+     "stops": [
+      {
+       "name": "Old Fashioned",
+       "text": "Whiskey, sugar, **bitters**."
+      },
+      {
+       "name": "Manhattan",
+       "text": "Rye, **sweet vermouth**, bitters."
+      },
+      {
+       "name": "Whiskey Sour",
+       "text": "Bourbon, **lemon**, sugar, egg white."
+      },
+      {
+       "name": "Sazerac",
+       "text": "Rye, **Peychaud’s**, absinthe rinse."
+      }
+     ],
+     "mixup": "A **Manhattan** made with **Scotch** is a **Rob Roy**.",
+     "sayIt": "It’s whiskey-forward: rich, a little sweet, and strong.",
+     "ours": {
+      "house": [
+       "bourbon",
+       "rye",
+       "scotch",
+       "whiskey",
+       "whisky"
+      ]
+     }
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   }
+  ]
+ },
+ "sources": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890); Tennessee House Bill 1084 (2013); Irish Whiskey Technical File (2014); Japan Spirits & Liqueur Makers Association, Standards for Labeling Japanese Whisky (2021), as summarized by Nikka (nikka.com); Canada Food and Drug Regulations, Canadian whisky (as summarized on Wikipedia); Common bar practice; Our book: the classic and house cocktail specs in this app. Facts taken from the Level 2 lessons, which cite them. Written for Mise, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "Whiskey is distilled from…",
+   "answer": "Grain",
+   "wrong": [
+    "Grapes",
+    "Agave",
+    "Sugarcane"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "What does time in oak add to whiskey?",
+   "answer": "Color and flavors like vanilla and spice",
+   "wrong": [
+    "Juniper",
+    "Smoke from agave pits",
+    "Sugar and cream"
+   ],
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890)"
+  },
+  {
+   "q": "In the US, whiskey is bottled at least at…",
+   "answer": "80 proof (40% ABV)",
+   "wrong": [
+    "50 proof",
+    "60 proof",
+    "150 proof"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Bourbon has to be at least 51%…",
+   "answer": "Corn",
+   "wrong": [
+    "Rye",
+    "Malted barley",
+    "Wheat"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Does bourbon have to be made in Kentucky?",
+   "answer": "No, anywhere in the US",
+   "wrong": [
+    "Yes, only Kentucky",
+    "Only Kentucky and Tennessee",
+    "Anywhere in the world"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Compared with bourbon, rye whiskey tastes…",
+   "answer": "Drier and spicier",
+   "wrong": [
+    "Sweeter and softer",
+    "Smoky from peat",
+    "Piney, like juniper"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "Scotch has to age at least…",
+   "answer": "Three years",
+   "wrong": [
+    "One year",
+    "Ten years",
+    "Six months"
+   ],
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890)"
+  },
+  {
+   "q": "“Single malt” means…",
+   "answer": "Malted barley from one distillery",
+   "wrong": [
+    "Whisky from one barrel",
+    "Aged in one cask for 12 years",
+    "Any grain, from any country"
+   ],
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890)"
+  },
+  {
+   "q": "Why do many Islay whiskies taste smoky?",
+   "answer": "The malt is dried over a peat fire",
+   "wrong": [
+    "They’re aged in charred agave",
+    "Smoke is added after bottling",
+    "They’re filtered through maple charcoal"
+   ],
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890)"
+  },
+  {
+   "q": "Which style of whiskey is unique to Ireland?",
+   "answer": "Single pot still",
+   "wrong": [
+    "Bourbon",
+    "Tennessee",
+    "Corn whiskey"
+   ],
+   "source": "Irish Whiskey Technical File (2014)"
+  },
+  {
+   "q": "Under its 2021 standard, Japanese whisky must be…",
+   "answer": "Made, aged and bottled in Japan",
+   "wrong": [
+    "Aged in Scotland",
+    "Made from rice",
+    "Bottled at 30% or more"
+   ],
+   "source": "Japan Spirits & Liqueur Makers Association, Standards for Labeling Japanese Whisky (2021), as summarized by Nikka (nikka.com)"
+  },
+  {
+   "q": "On a Canadian label, “rye” means…",
+   "answer": "Canadian whisky, whatever its rye content",
+   "wrong": [
+    "At least 51% rye",
+    "100% rye",
+    "Aged in rye barrels"
+   ],
+   "source": "Canada Food and Drug Regulations, Canadian whisky (as summarized on Wikipedia)"
+  },
+  {
+   "q": "A guest orders a Scotch “on the rocks.” How is it served?",
+   "answer": "Over ice",
+   "wrong": [
+    "With no ice",
+    "Hot",
+    "Topped with soda"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A guest just says “a whiskey and ginger.” What do you ask?",
+   "answer": "Which whiskey, or if our well is fine",
+   "wrong": [
+    "Neat or up",
+    "Salt or no salt",
+    "Gin or vodka"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A guest asks for their bourbon with “a splash.” What do they want?",
+   "answer": "A little water or soda added",
+   "wrong": [
+    "A double pour",
+    "A full glass of soda",
+    "It shaken and strained"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Rye, sweet vermouth and bitters make a…",
+   "answer": "Manhattan",
+   "wrong": [
+    "Old Fashioned",
+    "Sazerac",
+    "Whiskey Sour"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "Which whiskey drink can have egg white?",
+   "answer": "Whiskey Sour",
+   "wrong": [
+    "Manhattan",
+    "Old Fashioned",
+    "Sazerac"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "The Sazerac is made with…",
+   "answer": "Rye, Peychaud’s bitters and an absinthe rinse",
+   "wrong": [
+    "Bourbon, mint and sugar",
+    "Scotch and Drambuie",
+    "Irish whiskey and coffee"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Whiskey is distilled from a grain mash and aged in oak. The grain sets the style: corn, rye, wheat or malted barley. Time in the barrel adds color and flavors like vanilla and spice, and softens the spirit. In the US, whiskey is bottled at 80 proof or more.",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890)"
+  },
+  {
+   "fact": "Bourbon is American whiskey of at least 51% corn, aged in new charred oak. It can be made anywhere in the US, not only Kentucky. Corn makes it rounder and sweeter: vanilla and caramel. Rye whiskey is at least 51% rye, so it’s drier and spicier. Wheated bourbons swap rye for wheat and taste softer. Tennessee whiskey, like Jack Daniel’s, follows the bourbon rules and is filtered through maple charcoal before it goes into the barrel.",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Tennessee House Bill 1084 (2013)"
+  },
+  {
+   "fact": "Scotch is whisky made in Scotland and aged there at least three years in oak. An age on the label is the youngest whisky in the bottle. Single malt is 100% malted barley from one distillery. Blended Scotch mixes malt and grain whiskies; it’s most of the Scotch sold. Many Islay whiskies are peated: the malt is dried over a peat fire, which makes them smoky.",
+   "source": "Scotch Whisky Regulations 2009 (legislation.gov.uk/uksi/2009/2890)"
+  },
+  {
+   "fact": "Irish whiskey is made on the island of Ireland and aged at least three years in wood. Single pot still, made from malted and unmalted barley, is unique to Ireland: creamy and spicy. Most Irish whiskey sold is blended. Japanese whisky has a makers’ standard from 2021: made with Japanese water, aged at least three years and bottled, all in Japan. On a Canadian label, “rye” and “Canadian whisky” mean the same thing.",
+   "source": "Irish Whiskey Technical File (2014); Japan Spirits & Liqueur Makers Association, Standards for Labeling Japanese Whisky (2021), as summarized by Nikka (nikka.com); Canada Food and Drug Regulations, Canadian whisky (as summarized on Wikipedia)"
+  },
+  {
+   "fact": "Many guests sip whiskey neat or on the rocks, and some like a splash of water. Mixed, the common calls are whiskey and ginger ale, whiskey and soda and whiskey and cola. Ask which whiskey: bourbon, rye and Scotch taste very different. If the guest names the bottle, it’s a call.",
+   "source": "Common bar practice"
+  },
+  {
+   "fact": "The Old Fashioned is bourbon or rye, sugar and bitters. The Manhattan is rye, sweet vermouth and bitters. The Whiskey Sour is bourbon, lemon and sugar, sometimes with egg white. The Sazerac is rye with Peychaud’s bitters and an absinthe rinse. The Penicillin is blended Scotch, lemon and honey-ginger, with Islay on top. Irish Coffee is Irish whiskey, hot coffee, sugar and cream.",
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "unverified": [
+  "Irish whiskey: the pot still mash bill is from the 2014 technical file; a proposed change may have loosened it (not confirmed).",
+  "Japanese standard summarized from Nikka’s English page, not the JSLMA PDF itself.",
+  "Canadian rules summarized from Wikipedia’s reading of the Food and Drug Regulations.",
+  "Taste words (“soft”, “peppery”, “grassy”) are general bar descriptions, not from a rule. Bar lead to check them against our bottles.",
+  "How guests order (mixers, neat or on the rocks, shots) is common US bar usage, not a rule; bar lead to confirm the house wording."
+ ]
+}

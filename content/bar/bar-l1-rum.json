@@ -1,0 +1,435 @@
+{
+ "number": 4,
+ "barLevel": 1,
+ "slug": "bar-l1-rum",
+ "title": "Rum",
+ "script": "Lesson 4",
+ "lead": "Sugarcane in a glass: white to dark, how guests order it, and the drinks it’s in.",
+ "minutes": 9,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "What rum is",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Rum starts with sugarcane."
+    }
+   ],
+   "know": [
+    "Sugarcane is where every rum starts: juice, syrup or molasses.",
+    "Molasses is what’s left after making sugar. Most rum uses it.",
+    "No Rulebook for the world: each country sets its own rules.",
+    "37.5% is the EU minimum strength for rum."
+   ],
+   "book": "spirit/rum",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Styles of rum",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Light to rich, with a few kinds apart."
+    }
+   ],
+   "know": [
+    "White is light: unaged, or filtered after aging.",
+    "Dark is richer, from longer aging or added caramel.",
+    "Spiced is flavored with spices like vanilla and cinnamon.",
+    "Agricole is made from fresh cane juice: grassy and bright."
+   ],
+   "book": "spirit/rum/dark",
+   "source": "Common bar practice; EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "How guests order it",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Ask which rum: they taste different."
+    }
+   ],
+   "know": [
+    "Rum And Cola is the most common rum call.",
+    "Ask Which white, gold, dark or spiced: they taste different.",
+    "Aged Rum is often sipped neat or on the rocks."
+   ],
+   "book": "spirit/rum",
+   "source": "Common bar practice"
+  },
+  {
+   "name": "Rum cocktails",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "From the Daiquiri to tiki."
+    }
+   ],
+   "know": [
+    "Daiquiri is rum, lime and sugar, shaken.",
+    "Mojito adds mint and soda.",
+    "Mai Tai is rum, lime, orange curaçao and orgeat.",
+    "Dark ’N’ Stormy is dark rum and ginger beer."
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "v3": {
+  "video": {
+   "youtubeId": "j_thSiHVJcI",
+   "title": "What is Rum? | Everything You Need to Know About Rum Explained",
+   "by": "Lui Fernandes",
+   "length": "10:40"
+  },
+  "sections": [
+   {
+    "name": "What rum is",
+    "video": {
+     "youtubeId": "j_thSiHVJcI",
+     "title": "What is Rum? | Everything You Need to Know About Rum Explained",
+     "by": "Lui Fernandes",
+     "length": "10:40"
+    },
+    "keyPoints": [
+     {
+      "big": "SUGARCANE",
+      "line": "is where every rum starts: juice, syrup or molasses."
+     },
+     {
+      "big": "MOLASSES",
+      "line": "is what’s left after making sugar. Most rum uses it."
+     },
+     {
+      "big": "NO RULEBOOK",
+      "line": "for the world: each country sets its own rules."
+     },
+     {
+      "big": "37.5%",
+      "line": "is the EU minimum strength for rum."
+     }
+    ],
+    "read": {
+     "bigIdea": "Rum starts with sugarcane.",
+     "where": "Rum is distilled from **sugarcane**: its fresh juice, its syrup, or **molasses**, what’s left after making sugar. Most rum is made from molasses. There’s **no single world rulebook**: each country sets its own rules. In the EU, rum is bottled at **37.5% or more**.",
+     "mixup": "**Rum** comes from **sugarcane**. **Tequila** comes from **agave**. Both can be clear and unaged.",
+     "sayIt": "Rum’s made from sugarcane, so it has a little natural sweetness."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Styles of rum",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WHITE",
+      "line": "is light: unaged, or filtered after aging."
+     },
+     {
+      "big": "DARK",
+      "line": "is richer, from longer aging or added caramel."
+     },
+     {
+      "big": "SPICED",
+      "line": "is flavored with spices like vanilla and cinnamon."
+     },
+     {
+      "big": "AGRICOLE",
+      "line": "is made from fresh cane juice: grassy and bright."
+     }
+    ],
+    "read": {
+     "bigIdea": "Light to rich, with a few kinds apart.",
+     "where": "**White** rum is unaged or filtered after aging, so it’s light. **Gold** rum has some time in wood. **Dark** rum is richer, from longer aging or added caramel. **Spiced** rum is flavored with spices like vanilla and cinnamon. **Rhum agricole** is made from **fresh cane juice**, so it tastes **grassy** and bright.",
+     "stopsTitle": "On the back bar",
+     "stops": [
+      {
+       "name": "White",
+       "text": "**Light**: unaged or filtered."
+      },
+      {
+       "name": "Gold",
+       "text": "Some **time in wood**."
+      },
+      {
+       "name": "Dark",
+       "text": "**Richer**: longer aging or caramel."
+      },
+      {
+       "name": "Spiced",
+       "text": "**Flavored** with spices."
+      },
+      {
+       "name": "Agricole",
+       "text": "**Fresh cane juice**: grassy."
+      }
+     ],
+     "mixup": "**Dark** doesn’t always mean older. Some dark rums get their color from **caramel**.",
+     "sayIt": "That’s a white rum, so it’s light. For something richer, try a dark one."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "How guests order it",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "RUM AND COLA",
+      "line": "is the most common rum call."
+     },
+     {
+      "big": "ASK WHICH",
+      "line": "white, gold, dark or spiced: they taste different."
+     },
+     {
+      "big": "AGED RUM",
+      "line": "is often sipped neat or on the rocks."
+     }
+    ],
+    "read": {
+     "bigIdea": "Ask which rum: they taste different.",
+     "where": "The most common rum order is **rum and cola**. Ask **which rum**: a light **white** rum, a richer **dark** one, or a **spiced** one all change the drink. Some guests sip **aged rum** **neat** or **on the rocks**, like whiskey. If they name the bottle, it’s a **call**.",
+     "stopsTitle": "The usual calls",
+     "stops": [
+      {
+       "name": "Rum and cola",
+       "text": "With **cola** over ice, often with lime."
+      },
+      {
+       "name": "Rum and pineapple",
+       "text": "With **pineapple** juice over ice."
+      },
+      {
+       "name": "Aged rum",
+       "text": "**Neat** or **on the rocks**."
+      }
+     ],
+     "mixup": "**Spiced** rum is flavored. **Dark** rum is richer from aging or caramel. They aren’t the same bottle.",
+     "sayIt": "Would you like a white rum, or something richer, like a dark rum?",
+     "ours": {
+      "shelf": [
+       "Rum"
+      ]
+     }
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Rum cocktails",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "DAIQUIRI",
+      "line": "is rum, lime and sugar, shaken."
+     },
+     {
+      "big": "MOJITO",
+      "line": "adds mint and soda."
+     },
+     {
+      "big": "MAI TAI",
+      "line": "is rum, lime, orange curaçao and orgeat."
+     },
+     {
+      "big": "DARK ’N’ STORMY",
+      "line": "is dark rum and ginger beer."
+     }
+    ],
+    "read": {
+     "bigIdea": "From the Daiquiri to tiki.",
+     "where": "The **Daiquiri** is rum, lime and sugar. The **Mojito** adds mint and soda. The **Mai Tai** is rum, lime, orange curaçao and **orgeat**, an almond syrup. The **Dark ’n’ Stormy** is dark rum and ginger beer. The **Piña Colada** is rum, pineapple and coconut.",
+     "stopsTitle": "Classics to know",
+     "stops": [
+      {
+       "name": "Daiquiri",
+       "text": "Rum, **lime**, sugar."
+      },
+      {
+       "name": "Mojito",
+       "text": "Rum, lime, sugar, **mint**, soda."
+      },
+      {
+       "name": "Mai Tai",
+       "text": "Rum, lime, curaçao, **orgeat**."
+      },
+      {
+       "name": "Piña Colada",
+       "text": "Rum, **pineapple**, coconut."
+      }
+     ],
+     "mixup": "The **Mai Tai** has **orgeat**, made from almonds. Mention it to any guest with a **nut allergy**.",
+     "sayIt": "It’s a rum drink: bright, tropical and easy to like.",
+     "ours": {
+      "house": [
+       "rum",
+       "cachaça"
+      ]
+     }
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); Common bar practice; Our book: the classic and house cocktail specs in this app. Facts taken from the Level 2 lessons, which cite them. Written for Mise, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "Rum is made from…",
+   "answer": "Sugarcane: its juice, syrup or molasses",
+   "wrong": [
+    "Blue agave",
+    "Grapes",
+    "Malted barley"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "What is molasses?",
+   "answer": "What’s left after making sugar",
+   "wrong": [
+    "A kind of agave",
+    "Malted barley",
+    "The char inside a barrel"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Who sets the rules for rum?",
+   "answer": "Each country sets its own",
+   "wrong": [
+    "One world rulebook",
+    "Only Jamaica",
+    "Only the United States"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "White rum is light because it’s…",
+   "answer": "Unaged, or filtered after aging",
+   "wrong": [
+    "Made from agave",
+    "Aged ten years",
+    "Mixed with vodka"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Spiced rum is…",
+   "answer": "Rum flavored with spices like vanilla and cinnamon",
+   "wrong": [
+    "Always over 60% ABV",
+    "Made from fresh cane juice",
+    "Aged in sherry casks by law"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Rhum agricole is made from…",
+   "answer": "Fresh cane juice",
+   "wrong": [
+    "Molasses",
+    "Agave",
+    "Malted barley"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "A guest orders a “rum and cola.” What should you ask?",
+   "answer": "Which rum they’d like, or if our well is fine",
+   "wrong": [
+    "Whether they want it up",
+    "Which gin they prefer",
+    "Salt or no salt"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Some guests sip an aged rum…",
+   "answer": "Neat or on the rocks",
+   "wrong": [
+    "Only as a shot with lime",
+    "Always frozen",
+    "Only with tonic"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A guest wants a rum that tastes richer. Which kind fits?",
+   "answer": "A dark rum",
+   "wrong": [
+    "A white rum",
+    "A blanco tequila",
+    "A London Dry gin"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Rum, lime and sugar, shaken, make a…",
+   "answer": "Daiquiri",
+   "wrong": [
+    "Mojito",
+    "Margarita",
+    "Gimlet"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "A Mojito is a Daiquiri plus…",
+   "answer": "Mint and soda",
+   "wrong": [
+    "Ginger beer",
+    "Coconut and pineapple",
+    "Champagne"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "Which rum drink has orgeat, an almond syrup?",
+   "answer": "Mai Tai",
+   "wrong": [
+    "Mojito",
+    "Daiquiri",
+    "Dark ’n’ Stormy"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Rum is distilled from sugarcane: its fresh juice, its syrup, or molasses, what’s left after making sugar. Most rum is made from molasses. There’s no single world rulebook: each country sets its own rules. In the EU, rum is bottled at 37.5% or more.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "White rum is unaged or filtered after aging, so it’s light. Gold rum has some time in wood. Dark rum is richer, from longer aging or added caramel. Spiced rum is flavored with spices like vanilla and cinnamon. Rhum agricole is made from fresh cane juice, so it tastes grassy and bright.",
+   "source": "Common bar practice; EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "The most common rum order is rum and cola. Ask which rum: a light white rum, a richer dark one, or a spiced one all change the drink. Some guests sip aged rum neat or on the rocks, like whiskey. If they name the bottle, it’s a call.",
+   "source": "Common bar practice"
+  },
+  {
+   "fact": "The Daiquiri is rum, lime and sugar. The Mojito adds mint and soda. The Mai Tai is rum, lime, orange curaçao and orgeat, an almond syrup. The Dark ’n’ Stormy is dark rum and ginger beer. The Piña Colada is rum, pineapple and coconut.",
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "unverified": [
+  "Rum style descriptions are general and vary by maker; bar lead to confirm against our bottles.",
+  "Taste words (“soft”, “peppery”, “grassy”) are general bar descriptions, not from a rule. Bar lead to check them against our bottles.",
+  "How guests order (mixers, neat or on the rocks, shots) is common US bar usage, not a rule; bar lead to confirm the house wording."
+ ]
+}

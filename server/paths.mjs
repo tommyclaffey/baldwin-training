@@ -32,12 +32,15 @@ const lessonAll = (slug) => ({ kind: 'lessons', slug }); // every section of a p
 const HOSP_WEEK1 = ['hosp-welcome', 'hosp-experience-creator', 'hosp-soft-skills', 'hosp-guest-conflict', 'hosp-safety'].map(lessonAll);
 const TABLE_SERVICE = ['hosp-mise-en-place', 'hosp-presence', 'hosp-greeting', 'hosp-water-selling', 'hosp-coursing', 'hosp-farewell'].map(lessonAll);
 
+// Cocktail Program Level 1, one lesson per staple spirit (Nov 12): a server's path borrows each one's "How guests order it".
+const SERVER_SPIRITS = ['bar-l1-vodka#2', 'bar-l1-gin#2', 'bar-l1-rum#2', 'bar-l1-tequila#3', 'bar-l1-whiskey#4'].map(lesson);
+
 /** Mise's starting path for each job. The steps name what's in the book; each store's menu fills in the quizzes. */
 const PATHS = {
   server: [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('steps-of-service'), read('safety'), read('cleanliness'), read('floor-plan'), read('allergen-guide'), quiz('t:allergens')] },
     { key: 'week-1', title: 'Week 1 · The menu', day: 7, steps: [...HOSP_WEEK1, group('food'), sign('table-talk', 'Talk through three dishes at a table', 'A manager listens and signs you off')] },
-    { key: 'week-2', title: 'Week 2 · The bar, beer and wine', day: 14, steps: [lesson('bar-serving#0'), lesson('bar-serving#2'), lesson('beer-glass-pour#2'), group('bar-menu'), group('wine'), lesson('on-the-floor#1'), lesson('on-the-floor#7')] },
+    { key: 'week-2', title: 'Week 2 · The bar, beer and wine', day: 14, steps: [lesson('bar-serving#0'), lesson('bar-serving#2'), ...SERVER_SPIRITS, lesson('beer-glass-pour#2'), group('bar-menu'), group('wine'), lesson('on-the-floor#1'), lesson('on-the-floor#7')] },
     { key: 'weeks-3-4', title: 'Weeks 3 and 4 · On the floor', day: 28, steps: [...TABLE_SERVICE, sign('shadow', 'Shadow a full shift', 'Work a shift beside a trainer'), sign('wine-at-table', 'Open and pour wine at a table', 'A manager watches the full service'), sign('floor', 'Floor sign-off', 'Your manager signs you off for the floor')] },
   ],
   bartender: [
