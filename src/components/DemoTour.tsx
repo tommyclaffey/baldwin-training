@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { markDemoTab, demoKindOf, demoHome } from '../lib/demo';
 import { useSession } from '../lib/session';
+import { CARD_W, placeCard, roomScroll, type Box } from './tourPlace';
 
 /** A stop on the walk. `path` is where it lives (a function when the address depends on the data); `manager` stops are for managers only. */
 type Stop = { path: string | (() => string | null); match?: RegExp; target: string; title: string; body: string; manager?: boolean; staff?: boolean };
@@ -68,6 +69,13 @@ function find(selector: string): HTMLElement | null {
     if (r.width > 0 && r.height > 0 && r.right > 0 && r.left < window.innerWidth && getComputedStyle(el).visibility !== 'hidden') return el;
   }
   return null;
+}
+
+/** The part of the page on screen, in fixed-position coordinates: the visual viewport, less any scrollbar. */
+function viewBox(): Box {
+  const vv = window.visualViewport, d = document.documentElement;
+  const w = Math.min(vv?.width ?? window.innerWidth, d.clientWidth || window.innerWidth), h = Math.min(vv?.height ?? window.innerHeight, d.clientHeight || window.innerHeight);
+  return { left: vv?.offsetLeft ?? 0, top: vv?.offsetTop ?? 0, width: w, height: h };
 }
 
 /** While the card is up the keyboard belongs to it: Tab cycles its buttons, Escape closes. */
@@ -230,6 +238,29 @@ function Tour({ manager }: { manager: boolean }) {
     return () => { cancelAnimationFrame(frame); ro.disconnect(); window.removeEventListener('scroll', measure, true); window.removeEventListener('resize', measure); };
   }, [el, stop]);
 
+  // What's actually on screen: the visual viewport (a pinch-zoomed laptop shows only part of the page), without the scrollbar.
+  // Its changes re-measure too, so the card follows a pinch or a pan.
+  const [view, setView] = useState(viewBox);
+  useEffect(() => {
+    if (!stop) return;
+    const vv = window.visualViewport;
+    const on = () => setView(viewBox());
+    on();
+    vv?.addEventListener('resize', on); vv?.addEventListener('scroll', on); window.addEventListener('resize', on);
+    return () => { vv?.removeEventListener('resize', on); vv?.removeEventListener('scroll', on); window.removeEventListener('resize', on); };
+  }, [stop]);
+  // The card's real height (it changes with the step's words), measured before paint.
+  const [cardH, setCardH] = useState(240);
+  useLayoutEffect(() => {
+    const c = card.current;
+    if (!c) return;
+    const m = () => { const h = c.offsetHeight; if (h && Math.abs(h - cardH) > 0.5) setCardH(h); };
+    m();
+    const ro = new ResizeObserver(m);
+    ro.observe(c);
+    return () => ro.disconnect();
+  });
+
   const shown = !!stop && !!rect;
   useEffect(() => { if (shown) nextRef.current?.focus({ preventScroll: true }); }, [shown, i]);
   useEffect(() => {
@@ -240,33 +271,50 @@ function Tour({ manager }: { manager: boolean }) {
     });
   }, [shown, end, move]);
 
+  // Geometry, in the page's fixed-position coordinates.
+  const pad = 8;
+  const vw = view.left + view.width, vh = view.top + view.height;
+  const geo = (() => {
+    if (!rect) return null;
+    const top = Math.max(rect.top - pad, view.top + 4);
+    // A full-height rail (the sidebar): the box matches its exact edge instead of spilling onto the page beside it (Nov 7).
+    const rail = rect.left <= 1 && rect.height >= window.innerHeight - 2;
+    const left = Math.max(rect.left - pad, view.left + 4);
+    const hl: CSSProperties & Box = rail
+      ? { top: 0, left: 0, width: rect.width, height: window.innerHeight, borderRadius: 0 }
+      : { top, left, width: Math.max(Math.min(rect.right + pad, vw - 4) - left, 0), height: Math.max(Math.min(rect.bottom + pad, vh - 4) - top, 0) };
+    const at = placeCard(hl, view, { width: CARD_W, height: cardH });
+    // Beside the rail, near its top, as it always sat (Nov 7), when there's room for it there.
+    if (rail && at.side === 'right') at.top = Math.min(96, Math.max(at.top, view.top + view.height - 12 - cardH));
+    return { hl, at };
+  })();
+
+  // A box that leaves no room for the card: move the page once so the box sits under the top bar with the card beneath it,
+  // when both fit on the screen.
+  // Keyed by the element too: a drawn page can swap its element after the scroll above, which scrolls it back to the centre.
+  const roomed = useRef<{ i: number | null; el: HTMLElement | null }>({ i: null, el: null });
+  useLayoutEffect(() => {
+    if (!geo || !el || geo.at.side !== 'over' || (roomed.current.i === i && roomed.current.el === el) || Math.abs((window.visualViewport?.scale ?? 1) - 1) > 0.01) return;
+    roomed.current = { i, el };
+    const r = el.getBoundingClientRect();
+    const by = roomScroll({ left: r.left - pad, top: r.top - pad, width: r.width + pad * 2, height: r.height + pad * 2 }, view, { width: CARD_W, height: cardH }, 64);
+    if (by) window.scrollBy({ top: by, behavior: 'instant' as ScrollBehavior });
+  });
+
   if (i === null || !stop) return null;
   // Between pages the screen stays dimmed, so it never flashes the page underneath.
-  if (!rect) return createPortal(<div className="tour"><div className="tour-block" /><div className="tour-dim" /></div>, document.body);
+  if (!rect || !geo) return createPortal(<div className="tour"><div className="tour-block" /><div className="tour-dim" /></div>, document.body);
 
-  const vw = window.innerWidth, vh = window.innerHeight, pad = 8;
-  const top = Math.max(rect.top - pad, 4);
-  // A full-height rail (the sidebar): the box matches its exact edge instead of spilling onto the page beside it (Nov 7).
-  const rail = rect.left <= 1 && rect.height >= vh - 2;
-  const hl: CSSProperties & { top: number; left: number; width: number; height: number } = rail
-    ? { top: 0, left: 0, width: rect.width, height: vh, borderRadius: 0 }
-    : { top, left: Math.max(rect.left - pad, 4), width: Math.min(rect.width + pad * 2, vw - 8), height: Math.max(Math.min(rect.bottom + pad, vh - 4) - top, 0) };
-  const narrow = vw < 640, cardW = 340;
-  const below = vh - (hl.top + hl.height) > 260;
-  const beside = !below && hl.top < 280; // a target that fills the screen: sit the card on top of it
-  const style: CSSProperties = narrow ? {} : rail
-    ? { top: 96, left: hl.width + 16, width: cardW } // beside the rail, so it doesn't cover what it's pointing at
-    : {
-      top: below ? hl.top + hl.height + 12 : beside ? vh - 24 : Math.max(12, hl.top - 12),
-      left: Math.min(Math.max(12, hl.left), vw - cardW - 12),
-      transform: below ? undefined : 'translateY(-100%)',
-      width: cardW,
-    };
+  const { hl, at } = geo;
+  const sheet = at.side === 'sheet';
+  const zoomed = Math.abs((window.visualViewport?.scale ?? 1) - 1) > 0.01;
+  // On a phone the sheet keeps its CSS dock (left, right, bottom); zoomed in, it docks to what's on screen instead.
+  const style: CSSProperties = sheet && !zoomed ? {} : { top: at.top, left: at.left, width: at.width, right: 'auto', bottom: 'auto' };
   return createPortal(
     <div className="tour">
       <div className="tour-block" />
       <div className="tour-hl" style={hl} aria-hidden="true" />
-      <div ref={card} className={'tour-card' + (narrow ? ' sheet' : '')} style={style} role="dialog" aria-modal="false" aria-labelledby={titleId}>
+      <div ref={card} className={'tour-card' + (sheet ? ' sheet' : '')} data-side={at.side} style={style} role="dialog" aria-modal="false" aria-labelledby={titleId}>
         <p className="tour-count">Step {i + 1} of {stops.length}</p>
         <h2 id={titleId}>{stop.title}</h2>
         <p className="tour-body">{stop.body}</p>
