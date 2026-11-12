@@ -72,3 +72,38 @@ test('every page can be reached from Home', () => {
   const orphans = [...slugs].filter((s) => !seen.has(s) && !s.startsWith('/wine-list/') && !s.startsWith('/shelf/') && s !== '/classic/glass-cards' && !s.startsWith('/sommelier-program/')); // the Sommelier Program's links are wired by the server (server/study.mjs, tested in api.test)
   assert.deepEqual(orphans, []);
 });
+
+// Nov 12 (Tommy: "can you all give the glass a top line"): every glass drawing in the app is closed at the top, a rim line
+// joining the top ends of its sides (stemmed glasses: across the bowl). The Figma export already draws it; this keeps a
+// re-export from losing it. Bottles and the bowl aren't glasses.
+test('every glass drawing has a rim line across its top', () => {
+  const svgs = JSON.parse(fs.readFileSync(path.join(root, 'src/content/svgs.json'), 'utf8'));
+  const glasses = new Map();
+  for (const p of pages) walk(p.main, (n) => { if (n.t === 'S' && /^Shape · /.test(n.n || '') && !/Bottle|Bowl/.test(n.n)) glasses.set(n.svg, n.n); });
+  assert.ok(glasses.size >= 22, 'every glass on the Glassware page, the glass cards and the menus: ' + glasses.size);
+  const open = [];
+  for (const [id, name] of glasses) {
+    const d = [...(svgs[id] || '').matchAll(/ d="([^"]+)"/g)].map((m) => m[1]).join(' ');
+    if (!d) continue; // an empty drawing slot in the design (filled in by the server)
+    // absolute path commands only (that's what the export writes): collect points and the horizontal segments
+    const tok = d.match(/[MLHVCZ]|-?\d*\.?\d+/g); let i = 0, cmd = '', x = 0, y = 0, sx = 0, sy = 0; const pts = [], flats = [];
+    const num = () => Number(tok[i++]);
+    while (i < tok.length) {
+      if (/[MLHVCZ]/.test(tok[i])) cmd = tok[i++];
+      if (cmd === 'Z') { if (sy === y && sx !== x) flats.push([y, Math.abs(sx - x)]); x = sx; y = sy; cmd = ''; continue; }
+      const px = x, py = y;
+      if (cmd === 'M') { x = num(); y = num(); sx = x; sy = y; cmd = 'L'; }
+      else if (cmd === 'L') { x = num(); y = num(); }
+      else if (cmd === 'H') x = num();
+      else if (cmd === 'V') y = num();
+      else if (cmd === 'C') { num(); num(); num(); num(); x = num(); y = num(); }
+      else { i++; continue; }
+      pts.push([x, y]);
+      if (py === y && px !== x && cmd !== 'M') flats.push([y, Math.abs(px - x)]);
+    }
+    const top = Math.min(...pts.map((q) => q[1]));
+    const width = Math.max(...pts.map((q) => q[0])) - Math.min(...pts.map((q) => q[0]));
+    if (!flats.some(([fy, len]) => Math.abs(fy - top) < 0.5 && len >= width * 0.2)) open.push(`${name} (${id})`);
+  }
+  assert.deepEqual(open, [], 'glasses open at the top');
+});

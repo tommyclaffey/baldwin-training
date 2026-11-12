@@ -9,7 +9,6 @@ import type { Video } from '../lib/api';
 import { AddRow } from './EditSheet';
 import { SpinViewer } from './SpinViewer';
 import { QuickCheck } from './QuickCheck';
-import { Acknowledgment, type Ack } from './Acknowledgment';
 import { AddVideoButton } from './AddVideo';
 import { CompleteToggle } from './CompleteToggle';
 import { AssignName, FindBox, TableFinder, TableMarker, controlProps, isActive, useInteract, visibleKids, type Meta } from './interact';
@@ -445,8 +444,6 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   if (m?.find) return <FindBox k={m.find} label={m.label || 'Find'} style={st} className={cls.join(' ')} />;
   // A bottle from the spin scanner: drag to turn it.
   if (m?.check?.items?.length) return <QuickCheck data={m.check} style={{ ...st, height: undefined, minHeight: undefined }} className={cls.join(' ')} />;
-  // Hospitality 101's acknowledgment (Nov 11): the live sign box
-  if ((m as { ack?: Ack } | undefined)?.ack) return <Acknowledgment data={(m as { ack: Ack }).ack} style={st} className={cls.join(' ')} />;
   if ((m as { complete?: { key: string; done: boolean } } | undefined)?.complete) return <CompleteToggle data={(m as { complete: { key: string; done: boolean } }).complete} />;
   if (m?.spin?.length) return <SpinViewer frames={m.spin} alt={(node.n || '').replace(/^IMG\//, '')} style={st} className={cls.join(' ')} />;
   // Edit in place: a manager's "+ Add" row or tile (staff never get these nodes).

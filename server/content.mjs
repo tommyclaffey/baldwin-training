@@ -5,8 +5,7 @@ import path from 'node:path';
 import { addRows } from './editinplace.mjs';
 import { bindEdits } from './editmode.mjs';
 import { markArchive } from './archive.mjs';
-import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, LEVELS, PROGRAMS, chaptersOf, programDef, isProgram, progLevel, programText } from './manual.mjs';
-import { ackOf } from './acks.mjs';
+import { chapters, allChapters, levelChapters, chapterBySlug, chapterSlug, chapterPage, guideIndex, progress, markRead, GUIDE, LEVELS, PROGRAMS, chaptersOf, programDef, isProgram, progLevel } from './manual.mjs';
 import { certificatesFor } from './certs.mjs';
 import { regionPage, regionData } from './region.mjs';
 import { canTake, invitationOf, lockedLevelOf } from './invite.mjs';
@@ -394,6 +393,9 @@ function glassFiller(proto, glass) {
       const sh = find(g, startsWith('Shape · '));
       if (sh) shapes.set(g.n.slice(8).toLowerCase(), sh.svg);
     }
+    // Nov 12: "Wine glass" on a menu is the Glassware page's white wine glass (the same drawing the glass cards use), so a
+    // spritz with no photo yet shows its glass instead of an empty panel
+    if (!shapes.has('wine glass') && shapes.has('white wine')) shapes.set('wine glass', shapes.get('white wine'));
   }
   const name = String(glass || '').split(/ · | or |\(|,/)[0].trim() || 'Coupe';
   const f = clone(proto);
@@ -590,11 +592,9 @@ function assembleRaw(db, file) {
     const uid = SCOPE.user?.id;
     const passed = uid && db.prepare('SELECT score, total, at FROM quiz_attempts WHERE user_id = ? AND quiz = ? ORDER BY at').all(uid, 't:' + bl.final).find((r) => r.score >= passFor(r.total));
     const practical = uid && bl.practical ? db.prepare('SELECT s.at, u.name by_name FROM signoffs s LEFT JOIN users u ON u.id = s.by_user WHERE s.device = ? AND s.quiz = ? AND s.store_id = ?').get('u' + uid, bl.practical, SCOPE.store) : null;
-    // Hospitality 101 (Nov 11): the acknowledgment, in this company's version, and whether this person has signed it
-    const ack = bl.ack ? { ...(programText(bl.program).ack || {}), signed: ackOf(db, uid, SCOPE.store, bl.file), canSign: !!uid } : null;
     // Nov 12: Master of the Bar is by invitation (server/invite.mjs)
     const invite = bl.invite ? { open: canTake(db, SCOPE.user, SCOPE.store, bl), staff: SCOPE.user?.role === 'staff', invited: invitationOf(db, SCOPE.user, SCOPE.store, bl) } : null;
-    return barPage({ ...tpl, name: `${programDef(bl.program).name} · Level ${bl.level}` }, { L: bl, level: bl.level, done: sectionsDone(db, uid), passedAt: passed?.at || null, practical: practical ? { at: practical.at, by: practical.by_name } : null, ack, invite });
+    return barPage({ ...tpl, name: `${programDef(bl.program).name} · Level ${bl.level}` }, { L: bl, level: bl.level, done: sectionsDone(db, uid), passedAt: passed?.at || null, practical: practical ? { at: practical.at, by: practical.by_name } : null, invite });
   }
   // v3 lessons (Nov 1): one per chapter section, drawn from Figma 403:45
   const lm = /^l-(.+)~(\d+)$/.exec(file);

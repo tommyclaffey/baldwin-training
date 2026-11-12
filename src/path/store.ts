@@ -8,6 +8,8 @@ export type Step = {
   done: boolean; at: string | null; result: string | null; by: string | null;
   /** Nov 11: each step's own due date (a manager can give more time on one step), and a sign-off the person asked for. */
   due: string; moved?: boolean; late?: boolean; ask?: Ask | null;
+  /** Nov 12: the Training Acknowledgment (Day 1): whether the person has signed it; the step is done when their trainer signs off. */
+  ack?: { signed: { name: string; at: string } | null };
 };
 export type Ask = { at: string; declinedAt: string | null; declinedBy: string | null; note: string | null };
 export type Note = { id: number; kind: 'reminder' | 'congrats'; body: string; at: string; seenAt: string | null; by: string | null };
@@ -19,7 +21,7 @@ export type JobPath = {
 export type Program = { title: string; to: string; total: number; done: number; inPath: number;
   /** Cocktail Program levels (Nov 8): the certificate, its final, and Level 2's practical a manager signs off. */
   cert?: string; certKey?: string; certified?: boolean; final?: { id: string; passedAt: string | null; best: string | null };
-  practical?: { key: string; title: string; how: string; at: string | null; by: string | null; ask?: Ask | null; ack?: { name: string; at: string } | null };
+  practical?: { key: string; title: string; how: string; at: string | null; by: string | null; ask?: Ask | null };
   /** Nov 12: a level by invitation (Master of the Bar): when a manager invited this person, and who. */
   invite?: { key: string; at: string | null; by: string | null } };
 export type Job = { key: string; label: string; note?: string };

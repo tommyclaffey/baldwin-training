@@ -16,6 +16,7 @@ import { EditModeToggle } from './edit/EditModeBar';
 import { setFavicon } from './lib/favicon';
 import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
 import { MyPathPage, PathReadBar } from './path/MyPath';
+import { AckPage } from './path/AckPage';
 import { currentBrand } from './lib/theme';
 
 // Mise skin (Nov 10): a Mise-brand company sees the app in Mise (Nov 11: the brand comes with the session, see lib/theme.ts);
@@ -65,7 +66,7 @@ function Book() {
   return (
     <EditInPlaceProvider>
     <EditModeProvider>
-    <NavContext.Provider value={pathname === '/prep' || pathname.startsWith('/prep/') ? 'Prep' : pathname === '/my-path' ? 'My Path' : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? 'Team Chat' : pathname.startsWith('/certificate/beer') ? 'Beer Program' : pathname.startsWith('/certificate/hosp') ? 'Hospitality Program' : pathname.startsWith('/certificate/somm') ? 'Sommelier Program' : pathname.startsWith('/certificate/') ? 'Cocktail Program' : entry?.nav ?? ''}>
+    <NavContext.Provider value={pathname === '/prep' || pathname.startsWith('/prep/') ? 'Prep' : pathname === '/my-path' || pathname.startsWith('/my-path/') ? 'My Path' : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? 'Team Chat' : pathname.startsWith('/certificate/beer') ? 'Beer Program' : pathname.startsWith('/certificate/hosp') ? 'Hospitality Program' : pathname.startsWith('/certificate/somm') ? 'Sommelier Program' : pathname.startsWith('/certificate/') ? 'Cocktail Program' : entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
         <div className={'mobile-brand' + (user.demo ? ' has-pill' : '')}>
@@ -93,7 +94,7 @@ function Book() {
         </aside>
         <div id="content" className="content">
           <DemoBar />
-          {pathname === '/prep' || pathname.startsWith('/prep/') ? <PrepPage /> : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? <TeamChatPage /> : pathname === '/my-path' ? <MyPathPage /> : pathname.startsWith('/certificate/') ? <CertificatePage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
+          {pathname === '/prep' || pathname.startsWith('/prep/') ? <PrepPage /> : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? <TeamChatPage /> : pathname === '/my-path' ? <MyPathPage /> : pathname === '/my-path/acknowledgment' ? <AckPage /> : pathname.startsWith('/certificate/') ? <CertificatePage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
         </div>
         {user.demo && <DemoTour />}
       </div>

@@ -82,7 +82,11 @@ function certLine(g: Program) {
 function StageCard({ stage, n, open: startOpen }: { stage: Stage; n: number; open: boolean }) {
   const [open, setOpen] = useState(startOpen);
   const late = stage.late > 0;
-  const dueLine = stage.state === 'done' ? `Due ${dayLabel(stage.due)} · done` : `Due ${dayLabel(stage.due)} · ${dueWords(stage.due)}`;
+  // Nov 12: a stage past its date with nothing late left (only a sign-off you've asked for, like a signed Training
+  // Acknowledgment) isn't "late" for you: it's waiting on your trainer
+  const words = dueWords(stage.due);
+  const dueLine = stage.state === 'done' ? `Due ${dayLabel(stage.due)} · done`
+    : !late && /late/.test(words) ? `Due ${dayLabel(stage.due)} · waiting on a sign\u2011off` : `Due ${dayLabel(stage.due)} · ${words}`;
   return (
     <div className={'mp-stage ' + stage.state + (late ? ' late' : '')}>
       <button type="button" className="mp-stage-head" aria-expanded={open} onClick={() => setOpen(!open)}>
@@ -98,6 +102,7 @@ function StageCard({ stage, n, open: startOpen }: { stage: Stage; n: number; ope
 }
 
 function StepRow({ step: s }: { step: Step }) {
+  if (s.ack) return <AckRow step={s} />;
   const label = s.kind === 'quiz' ? 'Start' : s.kind === 'lesson' ? 'Open' : 'Read';
   return (
     <li className={'mp-step' + (s.done ? ' done' : '')}>
@@ -116,6 +121,29 @@ function StepRow({ step: s }: { step: Step }) {
       {s.done
         ? <span className="mp-result">{s.result || 'Done'}</span>
         : s.to ? <Link className="mp-btn" to={s.to}>{label}</Link> : <AskButton step={s} />}
+    </li>
+  );
+}
+
+/** Nov 12: the Training Acknowledgment (Day 1). Read and sign it, then it waits for the trainer's sign-off. */
+function AckRow({ step: s }: { step: Step }) {
+  const signed = s.ack?.signed || null;
+  const day = (iso: string) => dayLabel(iso.slice(0, 10), { month: 'short', day: 'numeric' });
+  const line = s.done ? `Signed off${s.by ? ` by ${s.by}` : ''}`
+    : !signed ? s.meta
+      : s.ask?.declinedAt ? `Not yet${s.ask.declinedBy ? `, said ${s.ask.declinedBy}` : ''}${s.ask.note ? `: “${s.ask.note}”` : ''}. Ask again when you’re ready.`
+        : `You signed it ${day(signed.at)} · waiting on your trainer`;
+  return (
+    <li className={'mp-step' + (s.done ? ' done' : '')}>
+      <span className={'mp-tick' + (s.done ? ' on' : '')} aria-label={s.done ? 'Done' : 'Not done yet'}>{s.done ? '✓' : ''}</span>
+      <span className="mp-step-copy">
+        <span className="mp-step-title"><Link to={s.to || '/my-path/acknowledgment'}>{s.title}</Link><span className="mp-kind signoff">{KIND.signoff}</span></span>
+        <small>{line}</small>
+      </span>
+      {s.done ? <span className="mp-result">Done</span>
+        : !signed ? <Link className="mp-btn dark" to={s.to || '/my-path/acknowledgment'}>Read and Sign</Link>
+          : s.ask?.declinedAt ? <AskButton step={s} />
+            : <Link className="mp-btn" to={s.to || '/my-path/acknowledgment'}>View</Link>}
     </li>
   );
 }
@@ -171,7 +199,7 @@ function UpNext({ path: p }: { path: JobPath }) {
       <p className="mp-label">Up Next</p>
       <h2>{s.title}</h2>
       <p>{s.meta}</p>
-      {s.to && <Link className="mp-btn dark" to={s.to}>{s.kind === 'quiz' ? 'Start Quiz' : s.kind === 'lesson' ? 'Open Lesson' : 'Read It'}</Link>}
+      {s.to && <Link className="mp-btn dark" to={s.to}>{s.ack ? 'Read and Sign' : s.kind === 'quiz' ? 'Start Quiz' : s.kind === 'lesson' ? 'Open Lesson' : 'Read It'}</Link>}
     </section>
   );
 }
