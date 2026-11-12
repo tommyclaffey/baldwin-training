@@ -104,8 +104,8 @@ export function QuizModal() {
         <div className="qm-score">
           <div className="qm-ring" aria-hidden="true">
             <svg width="132" height="132" viewBox="0 0 132 132">
-              <circle cx="66" cy="66" r={r} fill="none" stroke="#E4DCCF" strokeWidth="14" />
-              <circle cx="66" cy="66" r={r} fill="none" stroke={passed || id === REVIEW ? '#4F7A4A' : '#8A5A3A'} strokeWidth="14" strokeLinecap="round"
+              <circle cx="66" cy="66" r={r} fill="none" style={{ stroke: 'var(--line)' }} strokeWidth="14" />
+              <circle cx="66" cy="66" r={r} fill="none" style={{ stroke: passed || id === REVIEW ? '#4F7A4A' : 'var(--copper-dk)' }} strokeWidth="14" strokeLinecap="round"
                 strokeDasharray={`${c * frac} ${c}`} transform="rotate(-90 66 66)" opacity={scoreN ? 1 : 0} />
             </svg>
             <strong>{scoreN}/{total}</strong>
@@ -260,8 +260,8 @@ export function ProgressCard({ style, className }: { style: CSSProperties; class
       <span className="quiz-kicker light">Your sign-offs</span>
       <div className="quiz-ring">
         <svg width="180" height="180" viewBox="0 0 180 180" aria-hidden="true">
-          <circle cx="90" cy="90" r={r} fill="none" stroke="#3A3632" strokeWidth="18" />
-          <circle cx="90" cy="90" r={r} fill="none" stroke="#C49A6C" strokeWidth="18" strokeLinecap={frac >= 0.12 ? 'round' : 'butt'}
+          <circle cx="90" cy="90" r={r} fill="none" style={{ stroke: 'var(--dark-line)' }} strokeWidth="18" />
+          <circle cx="90" cy="90" r={r} fill="none" style={{ stroke: 'var(--copper)' }} strokeWidth="18" strokeLinecap={frac >= 0.12 ? 'round' : 'butt'}
             strokeDasharray={`${c * frac} ${c}`} transform="rotate(-90 90 90)" opacity={passed ? 1 : 0} />
         </svg>
         <div className="quiz-ring-count"><strong>{passed} of {QUIZZES.length}</strong><span>passed</span></div>

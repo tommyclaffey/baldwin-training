@@ -229,7 +229,9 @@ const planTables = () => (PLAN ??= JSON.parse(fs.readFileSync(path.join(path.dir
 function floorPlan(page) {
   const finder = find(page.main, byName('Find a table'));
   if (!finder) return;
-  const tables = planTables();
+  // A store with its own room brings its own table list (Wrenfield, the Mise demo: server/sample.mjs).
+  const tables = page.planTables || planTables();
+  delete page.planTables;
   finder.meta = { finder: 1, list: Object.keys(tables) };
   const plan = find(page.main, (n) => (n.n || '').startsWith('IMG/floorplan'));
   if (plan) plan.meta = { tables };

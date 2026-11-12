@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { api } from '../lib/api';
+import { currentBrand } from '../lib/skin';
 import { useSession } from '../lib/session';
 
 export type Cert = {
@@ -73,7 +74,7 @@ export function CertificatePage() {
   if (!list) return <main className="page cp"><div className="loader" /></main>;
   if (!c) return (
     <main className="page cp" aria-labelledby="cp-title">
-      <h1 id="cp-title">NOT EARNED YET</h1>
+      <h1 id="cp-title">{currentBrand() === 'mise' ? 'Not Earned Yet' : 'NOT EARNED YET'}</h1>
       <p className="cp-note">This certificate shows here once its final is passed, and its practical is signed off where the level has one.</p>
       <Link className="mp-btn dark" to="/my-path">Back to My Path</Link>
     </main>
@@ -88,7 +89,7 @@ export function CertificatePage() {
       <header className="cp-head">
         <div>
           <p className="mp-script">{mine ? `Well earned, ${c.name.split(/\s+/)[0]}` : `${c.name}’s certificate`}</p>
-          <h1 id="cp-title">{mine ? 'YOUR CERTIFICATE' : 'CERTIFICATE'}</h1>
+          <h1 id="cp-title">{currentBrand() === 'mise' ? (mine ? 'Your Certificate' : 'Certificate') : mine ? 'YOUR CERTIFICATE' : 'CERTIFICATE'}</h1>
         </div>
         <div className="cp-actions">
           <button type="button" className="mp-btn dark" onClick={printCert}>Print or Save as PDF</button>

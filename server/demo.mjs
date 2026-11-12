@@ -13,7 +13,7 @@ import { createSession, sessionCookie } from './auth.mjs';
 import { pathFor } from './paths.mjs';
 import { pathCtxFor } from './team.mjs';
 import { questionPool } from './quizgen.mjs';
-import { seedChat, BALDWIN_DEMO_CHAT } from './chat.mjs';
+import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const now = () => new Date().toISOString();
@@ -36,8 +36,9 @@ const TEAM = [
   { name: 'Quinn Abbott', jobs: ['bartender'], started: 25, stages: 3, partial: 1, ask: ['program:bar-2:practical', 190], finals: [['t:final:bar-1', 28, 30, 2], ['t:final:bar-2', 54, 60, 2]] },
   { name: 'Wynn Carver', jobs: ['support'], started: 2, stages: 1, partial: 1, ask: ['path:support:run-food', 20 * 60] },
 ];
-// The book's last few changes, so "Your last edits" has something to open.
+// The book's last few changes, so "Your last edits" has something to open (each demo's own dishes and drinks).
 const EDITS = [['edit house', 'Paloma Verde', 0.1], ['add recipe', 'Lobster Tagliatelle', 1], ['edit recipe', 'Cacio e Pepe', 2]];
+const MISE_EDITS = [['edit house', 'Smoke Signal', 0.1], ['add recipe', 'Braised Lamb Shank', 1], ['edit recipe', 'Wild Mushroom Risotto', 2]];
 const COPY = ['wine', 'shelf', 'beer']; // The Baldwin's real lists (Tommy: "wine is fine")
 
 /* Two demos (Nov 11, Tommy: "a completely separate demo for Mise itself", so he can show both):
@@ -55,9 +56,6 @@ export const DEMOS = {
 };
 // Wrenfield's menu has no pasta or pizza: the same people's scores land on its own courses.
 const MISE_QUIZ = { 't:course:Pasta': 't:course:Dessert', 't:course:Pizza': 't:course:Salads' };
-// Pages Wrenfield's book doesn't have (they're The Baldwin's own design: its story, its floor plan). Kept in step with
-// SAMPLE_HIDDEN in server/content.mjs.
-const MISE_SKIP = new Set(['our-story', 'floor-plan']);
 /** Which demo a company is ('baldwin' or 'mise'), from its brand. */
 export const demoKind = (db, companyId) => (db.prepare('SELECT brand FROM companies WHERE id = ?').get(companyId)?.brand === 'mise' ? 'mise' : 'baldwin');
 
@@ -102,7 +100,7 @@ export function startDemo(db, key, which = 'baldwin') {
     // Marisol (the employee demo, and on the manager's team): her first week, and the Cocktail Program's Level 1 final yesterday.
     const marisol = (id) => {
       setJob(id, ['server'], 6);
-      for (const slug of ['our-story', 'steps-of-service', 'safety', 'cleanliness', 'floor-plan', 'allergen-guide'].filter((x) => !(mise && MISE_SKIP.has(x)))) read(id, 'page:' + slug, new Date(Date.now() - 6 * 864e5).toISOString());
+      for (const slug of ['our-story', 'steps-of-service', 'safety', 'cleanliness', 'floor-plan', 'allergen-guide']) read(id, 'page:' + slug, new Date(Date.now() - 6 * 864e5).toISOString());
       [['t:allergens', 10], ['t:course:Pasta', 10], ['t:course:Snacks & Small Plates', 9], ['t:course:Salads', 9]].forEach(([quiz, score], i) =>
         attempt(id, 'Marisol Vega', qz(quiz), score, 10, new Date(Date.now() - (5 - i) * 864e5).toISOString()));
       attempt(id, 'Marisol Vega', 't:final:bar-1', 27, 30, new Date(Date.now() - 864e5).toISOString());
@@ -167,8 +165,8 @@ export function startDemo(db, key, which = 'baldwin') {
     if (pick.role === 'staff') addUser(DEMO_ROLES.manager.name, 'manager', null);
     // The owner (Nov 11, Send to Team): a second manager in the store, so a manager's progress card has someone to go to.
     addUser(DEMO_OWNER, 'owner', null);
-    seedChat(db, { company: co, storeRow, script: BALDWIN_DEMO_CHAT });
-    if (pick.role !== 'staff') for (const [action, name, days] of EDITS) db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id) VALUES (?,?,?,?,?)').run(me, action, name, new Date(Date.now() - days * 864e5).toISOString(), co);
+    seedChat(db, { company: co, storeRow, script: mise ? WRENFIELD_DEMO_CHAT : BALDWIN_DEMO_CHAT });
+    if (pick.role !== 'staff') for (const [action, name, days] of (mise ? MISE_EDITS : EDITS)) db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id) VALUES (?,?,?,?,?)').run(me, action, name, new Date(Date.now() - days * 864e5).toISOString(), co);
     // Nov 10 (audit: "Videos and photos · 0" in the demo admin): a few videos already in the library
     for (const [title, yt] of [['How I Make an Old Fashioned · Anders Erickson', 'pdcrJ5V7YKM'], ['How to Make a Martini · Anders Erickson', 'izZsjqnADAA'], ['The Daiquiri · Anders Erickson', '71jQRf5UrpE'], ['How to Open a Bottle of Wine · Court of Master Sommeliers', '9R3JBuXcNjQ']])
       db.prepare('INSERT INTO media(kind,title,youtube_id,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?)').run('youtube', title, yt, me, t, co, st);

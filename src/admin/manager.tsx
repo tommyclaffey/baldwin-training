@@ -11,6 +11,8 @@ import { ErrorNote, Loading, Text } from './ui';
 import { dayLabel, type Job, type MyPath, type Stage, type Step } from '../path/store';
 import { ItemChatButton, SendToTeamButton } from '../chat/SendToTeam';
 import { hasChat } from '../chat/unread';
+import { menuName } from '../lib/demo';
+import { currentBrand, titleCase } from '../lib/skin';
 
 /* ---------- data ---------- */
 type Status = 'behind' | 'new' | 'on-track' | 'done' | 'no-job';
@@ -140,7 +142,7 @@ function PageHead({ script, title, people }: { script: string; title: string; pe
     <header className="mg-head">
       <div>
         <p className="mg-script">{script}</p>
-        <h1>{title}</h1>
+        <h1>{currentBrand() === 'mise' ? titleCase(title) : title}</h1>
       </div>
       <div className="mg-sum" aria-label="The team at a glance">
         <span className="mg-sum-pill">{people.length} on the team</span>
@@ -167,7 +169,7 @@ export function ManagerHome() {
     <div className="admin-page mg">
       <div className="mg-top">
         <SearchBox style={{ position: 'relative', flex: '1 1 320px', maxWidth: 520 }} />
-        {user?.store?.bookReady && user.store.slug === 'the-baldwin' && <Link className="mg-menu-chip" to="/food-matrix"><span aria-hidden="true" />Opening Menu · Fall 2026</Link>}
+        {menuName(user) && <Link className="mg-menu-chip" to="/food-matrix"><span aria-hidden="true" />{menuName(user)}</Link>}
       </div>
       <PageHead script={`${dayLabel(todayIso(), { weekday: 'long', month: 'short', day: 'numeric' })} · ${data.store}`} title={`${greet}, ${first}`.toUpperCase()} people={data.people} />
       {data.signoffs.length > 0 && <SignoffBand asks={data.signoffs} onDone={load} />}

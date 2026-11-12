@@ -663,3 +663,38 @@ export const BALDWIN_DEMO_CHAT = {
     ] },
   ],
 };
+
+/** Wrenfield's chat (the Mise demo, Nov 11, Tommy: "make sure both styles have all the same functions and features"): the
+ *  same conversation as The Baldwin's demo, told with Wrenfield's menu: its wood-grilled half chicken, the Smoke Signal
+ *  spec change and the Hibiscus Daiquiri, so every card opens a page Wrenfield's book has. Same cast, same times. */
+export const WRENFIELD_DEMO_CHAT = {
+  channels: {
+    everyone: [
+      { ref: 'sched', by: R, at: -26 * 60, body: 'Next week’s schedule is up by the host stand. Shift swaps go through me by Friday.', react: { '👍': [DP, TL, OR, WC] } },
+      { by: HG, at: -25 * 60, reply: 'sched', body: 'Got it, thank you.' },
+      { ref: 'walkin', by: R, at: -45, body: 'Deep clean of the walk-in is Sunday after brunch. Two people from front of house, please.', react: { '🙏': [TL] } },
+      { by: QA, at: 10, reply: 'walkin', body: 'I can stay Sunday.', unreadBy: [R, MV] },
+      { by: WC, at: 15, reply: 'walkin', body: 'Me too.', unreadBy: [R, MV] },
+    ],
+    foh: [
+      { by: R, at: -3 * 24 * 60 + 10, body: 'Two shellfish allergies on the books for the weekend. Know the guide before you go on the floor.', page: 'allergen-guide', react: { '👍': [TL, OR, MV] } },
+      { by: R, at: -24 * 60 + 15, body: 'Tomorrow’s focus dish, if you want a head start.', page: 'recipe/wood-grilled-half-chicken', react: { '🔥': [DP, MV] } },
+      { by: R, at: 0, pin: true, body: 'Focus dish: Wood-Grilled Half Chicken. We taste it at lineup, 4:15.\n86 tonight: seared scallops. Offer the braised lamb shank.\nBar: Smoke Signal spec changed. Read the page before your first one.\n7:30, The Nest: 12-top, two gluten allergies.',
+        gotIt: [DP, QA, TL, OR, WC] },
+      { by: R, at: 4, body: 'Chef’s plate for tonight. The chicken sits on the crispy potatoes, and the salsa verde goes on at the pass.', photo: '/img/demo-mise/wood-grilled-half-chicken.jpg',
+        react: { '🔥': [R, DP, QA, TL, OR], '👍': [HG, MV, WC] } },
+      { by: DP, at: 11, body: 'Smoke Signal spec changed today. Check the build before you make your first one. The page is updated.', page: 'signature/smoke-signal', react: { '✅': [QA, TL, MV, OR] } },
+      { by: TL, at: 22, body: 'Can anyone take my Friday close? Family thing. I can pick up Sunday brunch for you.' },
+      { by: R, at: 23, body: '@[Marisol Vega] you asked for more hours this week. Want Teddy’s Friday close?' },
+      { by: MV, at: 25, body: 'I’ve got Friday, Teddy.' },
+    ],
+    bar: [
+      { by: R, at: -50, body: 'Bar inventory is Sunday at 10. Dorian and Quinn, plan on an hour.' },
+      { by: QA, at: 6, body: '@[Rosalind Hart] we’re low on grapefruit for the Smoke Signal peels. Using the backup case from the walk-in.', unreadBy: [R] },
+      { by: DP, at: 14, body: 'Juice is batched: lime and lemon, two quarts each.', unreadBy: [R] },
+      { by: QA, at: 20, body: 'Hibiscus syrup for the Hibiscus Daiquiri is made fresh. Good until close.', page: 'signature/hibiscus-daiquiri', unreadBy: [R] },
+    ],
+  },
+  seen: { foh: [HG, DP, TL, WC, OR, QA] },
+  dms: BALDWIN_DEMO_CHAT.dms, // the direct messages don't name the menu, so both demos share them
+};

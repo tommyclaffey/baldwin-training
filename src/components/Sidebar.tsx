@@ -55,7 +55,7 @@ function withTeam(n: FNode, signoffs: number): FNode {
   return { ...n, c: [...n.c.slice(0, home + 1), ...team, ...n.c.slice(home + 1)] };
 }
 import { currentBrand, miseSidebar, MISE } from '../lib/skin';
-import { isSample, SAMPLE_HIDDEN } from '../lib/demo';
+import { isSample } from '../lib/demo';
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
 function forStore(n: FNode, name: string): FNode {
@@ -83,14 +83,6 @@ const NODES = sidebar as FNode[];
 // The drawn sidebar is the second node ("Sidebar"); the first is the dark rail behind it.
 const SIDEBAR = NODES.find((n) => n.n === 'Sidebar') as FNode;
 
-/** Pages a book leaves out (the Mise demo has no Our Story or Floor Plan): their menu items go. */
-function withoutNav(n: FNode, hidden: string[]): FNode {
-  if (!n.c) return n;
-  const kept = n.c.filter((c) => !(c.n?.startsWith('Nav · ') && c.to && hidden.includes(c.to)));
-  // a group heading left with nothing under it goes too ("Our Company" once Our Story is out)
-  const c = kept.filter((x, i) => !(x.n?.startsWith('Group · ') && !kept[i + 1]?.n?.startsWith('Nav · ')));
-  return { ...n, c: c.map((x) => withoutNav(x, hidden)) };
-}
 
 /** Home (and the logo) open the home page; the design leaves Home unlinked because it was the page drawn. */
 function linkHome(n: FNode): FNode {
@@ -124,7 +116,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     const live: Record<string, number> = { ...counts, 'Team Chat': unread, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
     const base = trainingCard([SIDEBAR], quiz)[0];
     const drawn = pathSidebar(linkHome(withCounts(chat ? withChat(base) : base, live)), mine);
-    const named = generic ? forStore(drawn, user!.store!.name) : sample ? withoutNav(drawn, SAMPLE_HIDDEN) : drawn;
+    const named = generic ? forStore(drawn, user!.store!.name) : drawn;
     const teamed = manager ? withTeam(named, signoffs) : named;
     const mise = currentBrand() === 'mise';
     const look: PillLook = mise && sample ? { label: user!.store?.name || ACADEMY_NAME, tint: MISE.fig, tintO: .42, ink: '#F6D3CE', muted: MISE.ash } : BALDWIN_PILL;
