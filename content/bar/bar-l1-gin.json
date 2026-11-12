@@ -1,0 +1,430 @@
+{
+ "number": 3,
+ "barLevel": 1,
+ "slug": "bar-l1-gin",
+ "title": "Gin",
+ "script": "Lesson 3",
+ "lead": "Juniper first: what makes gin gin, the styles on the back bar, and the classics built on it.",
+ "minutes": 9,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "What gin is",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Juniper has to lead."
+    }
+   ],
+   "know": [
+    "Juniper is the piney berry that has to lead every gin.",
+    "Botanicals like coriander and citrus peel build around it.",
+    "Not Vodka gin has to taste of juniper; vodka of almost nothing."
+   ],
+   "book": "spirit/gin",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "name": "Styles of gin",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "From crisp and dry to soft and malty."
+    }
+   ],
+   "know": [
+    "London Dry is crisp and juniper-forward. It can be made anywhere.",
+    "Old Tom is softer and a little sweeter.",
+    "Genever is made from malt wine, so it tastes malty.",
+    "Contemporary gins keep juniper but let other botanicals lead."
+   ],
+   "book": "spirit/gin/london-dry",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "How guests order it",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A G&T, or a martini their way."
+    }
+   ],
+   "know": [
+    "G&T gin and tonic: the most common gin call.",
+    "Martini ask gin or vodka; gin is the classic.",
+    "Dry vermouth goes in a martini, not sweet.",
+    "Call if they name the gin, ring in that one."
+   ],
+   "book": "spirit/gin",
+   "source": "Common bar practice; Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "name": "Gin cocktails",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Many classics start with gin."
+    }
+   ],
+   "know": [
+    "Negroni is gin, Campari and sweet vermouth, equal parts.",
+    "Gimlet is gin, lime and sugar.",
+    "Tom Collins is gin, lemon, sugar and soda.",
+    "French 75 is gin, lemon and sugar, topped with Champagne."
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "v3": {
+  "video": {
+   "youtubeId": "6SlljhQsjDY",
+   "title": "Beginner's guide to GIN! A history & tasting of various styles",
+   "by": "Anders Erickson",
+   "length": "18:38"
+  },
+  "sections": [
+   {
+    "name": "What gin is",
+    "video": {
+     "youtubeId": "6SlljhQsjDY",
+     "title": "Beginner's guide to GIN! A history & tasting of various styles",
+     "by": "Anders Erickson",
+     "length": "18:38"
+    },
+    "keyPoints": [
+     {
+      "big": "JUNIPER",
+      "line": "is the piney berry that has to lead every gin."
+     },
+     {
+      "big": "BOTANICALS",
+      "line": "like coriander and citrus peel build around it."
+     },
+     {
+      "big": "NOT VODKA",
+      "line": "gin has to taste of juniper; vodka of almost nothing."
+     }
+    ],
+    "read": {
+     "bigIdea": "Juniper has to lead.",
+     "where": "Gin is a spirit flavored with **juniper**, and juniper has to **lead** the taste. Other **botanicals** build around it: coriander, citrus peel, angelica root and more. That piney, herbal taste is what sets gin apart from vodka.",
+     "mixup": "**Gin** and **vodka** both start as clean spirit. Gin has to taste of **juniper**; vodka shouldn’t taste of much at all.",
+     "sayIt": "It’s gin-based: bright, piney and herbal."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Styles of gin",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "LONDON DRY",
+      "line": "is crisp and juniper-forward. It can be made anywhere."
+     },
+     {
+      "big": "OLD TOM",
+      "line": "is softer and a little sweeter."
+     },
+     {
+      "big": "GENEVER",
+      "line": "is made from malt wine, so it tastes malty."
+     },
+     {
+      "big": "CONTEMPORARY",
+      "line": "gins keep juniper but let other botanicals lead."
+     }
+    ],
+    "read": {
+     "bigIdea": "From crisp and dry to soft and malty.",
+     "where": "**London Dry** is crisp and juniper-forward. **Plymouth** comes from Plymouth, England. **Old Tom** is softer and a little sweeter. **Genever**, from the Netherlands and Belgium, is made from **malt wine**, so it tastes malty. **Contemporary** gins keep juniper but let other botanicals lead, like cucumber or citrus.",
+     "stopsTitle": "The styles",
+     "stops": [
+      {
+       "name": "London Dry",
+       "text": "Dry and **juniper-forward**."
+      },
+      {
+       "name": "Old Tom",
+       "text": "**Softer**, a little sweeter."
+      },
+      {
+       "name": "Genever",
+       "text": "**Malt wine** base: malty."
+      },
+      {
+       "name": "Contemporary",
+       "text": "Juniper is there, but **other botanicals** lead."
+      }
+     ],
+     "mixup": "**London Dry** is a method, not a place: it can be made anywhere.",
+     "sayIt": "This one’s a London Dry: crisp, with juniper up front."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "How guests order it",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "G&T",
+      "line": "gin and tonic: the most common gin call."
+     },
+     {
+      "big": "MARTINI",
+      "line": "ask gin or vodka; gin is the classic."
+     },
+     {
+      "big": "DRY",
+      "line": "vermouth goes in a martini, not sweet."
+     },
+     {
+      "big": "CALL",
+      "line": "if they name the gin, ring in that one."
+     }
+    ],
+    "read": {
+     "bigIdea": "A G&T, or a martini their way.",
+     "where": "The most common gin order is a **gin and tonic**. A **martini** is gin (or vodka) stirred with **dry vermouth** and served **up**, so when a guest just says “a martini,” ask **gin or vodka**. They may add **dry**, **dirty** or **with a twist**. If they name the gin, it’s a **call**.",
+     "stopsTitle": "The usual calls",
+     "stops": [
+      {
+       "name": "Gin and tonic",
+       "text": "Gin and **tonic** over ice, often with lime."
+      },
+      {
+       "name": "Gin martini",
+       "text": "Gin and **dry vermouth**, served **up**."
+      },
+      {
+       "name": "Gin and soda",
+       "text": "Gin and **soda water** over ice."
+      }
+     ],
+     "mixup": "A martini takes **dry** vermouth. **Sweet** vermouth is for the Manhattan and the Negroni.",
+     "sayIt": "Gin or vodka? And olives or a twist?",
+     "ours": {
+      "shelf": [
+       "Gin"
+      ]
+     }
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Gin cocktails",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NEGRONI",
+      "line": "is gin, Campari and sweet vermouth, equal parts."
+     },
+     {
+      "big": "GIMLET",
+      "line": "is gin, lime and sugar."
+     },
+     {
+      "big": "TOM COLLINS",
+      "line": "is gin, lemon, sugar and soda."
+     },
+     {
+      "big": "FRENCH 75",
+      "line": "is gin, lemon and sugar, topped with Champagne."
+     }
+    ],
+    "read": {
+     "bigIdea": "Many classics start with gin.",
+     "where": "Gin is the base of the **Martini**, the **Negroni** (gin, Campari and sweet vermouth), the **Gimlet** (gin, lime and sugar), the **Tom Collins** (gin, lemon, sugar and soda), the **French 75** (gin, lemon and sugar topped with Champagne) and the **Bee’s Knees** (gin, lemon and honey). A **dry** gin keeps a Martini crisp.",
+     "stopsTitle": "Classics to know",
+     "stops": [
+      {
+       "name": "Negroni",
+       "text": "Gin, **Campari**, sweet vermouth."
+      },
+      {
+       "name": "Gimlet",
+       "text": "Gin, **lime**, sugar."
+      },
+      {
+       "name": "Tom Collins",
+       "text": "Gin, lemon, sugar, **soda**."
+      },
+      {
+       "name": "French 75",
+       "text": "Gin, lemon, sugar, **Champagne**."
+      }
+     ],
+     "mixup": "A **Negroni** is gin. Made with bourbon instead, it’s a **Boulevardier**.",
+     "sayIt": "It’s gin-based: bright, botanical and dry.",
+     "ours": {
+      "house": [
+       "gin"
+      ]
+     }
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); Common bar practice; Our book: the classic and house cocktail specs in this app. Facts taken from the Level 2 lessons, which cite them. Written for Mise, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "Every gin has to taste mainly of…",
+   "answer": "Juniper",
+   "wrong": [
+    "Cucumber",
+    "Orange peel",
+    "Oak"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Which of these is a common gin botanical?",
+   "answer": "Coriander",
+   "wrong": [
+    "Agave",
+    "Molasses",
+    "Peat smoke"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "What sets gin apart from vodka?",
+   "answer": "Juniper and other botanicals",
+   "wrong": [
+    "Aging in new charred oak",
+    "Being made from potatoes",
+    "Added cream"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "London Dry gin…",
+   "answer": "Can be made anywhere: it’s a method, not a place",
+   "wrong": [
+    "Must be made in London",
+    "Must be aged a year",
+    "Has no juniper"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Which gin style is softer and a little sweeter?",
+   "answer": "Old Tom",
+   "wrong": [
+    "London Dry",
+    "Plymouth",
+    "Contemporary"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Genever tastes malty because it’s made from…",
+   "answer": "Malt wine",
+   "wrong": [
+    "Potatoes",
+    "Sugarcane",
+    "Agave"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "A guest just says “a martini.” What do you ask first?",
+   "answer": "Gin or vodka",
+   "wrong": [
+    "Neat or on the rocks",
+    "Salt or no salt",
+    "Bourbon or rye"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "A guest names the gin they want in their gin and tonic. You ring in…",
+   "answer": "The gin they named",
+   "wrong": [
+    "Our well gin",
+    "Any London Dry",
+    "Vodka, since it’s close"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A classic gin martini is gin and…",
+   "answer": "Dry vermouth",
+   "wrong": [
+    "Sweet vermouth",
+    "Tonic",
+    "Orange liqueur"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "Which drink is equal parts gin, Campari and sweet vermouth?",
+   "answer": "Negroni",
+   "wrong": [
+    "Boulevardier",
+    "Americano",
+    "Martini"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "A Tom Collins is gin, lemon, sugar and…",
+   "answer": "Soda water",
+   "wrong": [
+    "Tonic",
+    "Champagne",
+    "Ginger beer"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "q": "Which gin drink is topped with Champagne?",
+   "answer": "French 75",
+   "wrong": [
+    "Tom Collins",
+    "Gimlet",
+    "Negroni"
+   ],
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Gin is a spirit flavored with juniper, and juniper has to lead the taste. Other botanicals build around it: coriander, citrus peel, angelica root and more. That piney, herbal taste is what sets gin apart from vodka.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "fact": "London Dry is crisp and juniper-forward. Plymouth comes from Plymouth, England. Old Tom is softer and a little sweeter. Genever, from the Netherlands and Belgium, is made from malt wine, so it tastes malty. Contemporary gins keep juniper but let other botanicals lead, like cucumber or citrus.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "The most common gin order is a gin and tonic. A martini is gin (or vodka) stirred with dry vermouth and served up, so when a guest just says “a martini,” ask gin or vodka. They may add dry, dirty or with a twist. If they name the gin, it’s a call.",
+   "source": "Common bar practice; Our book: the classic and house cocktail specs in this app"
+  },
+  {
+   "fact": "Gin is the base of the Martini, the Negroni (gin, Campari and sweet vermouth), the Gimlet (gin, lime and sugar), the Tom Collins (gin, lemon, sugar and soda), the French 75 (gin, lemon and sugar topped with Champagne) and the Bee’s Knees (gin, lemon and honey). A dry gin keeps a Martini crisp.",
+   "source": "Our book: the classic and house cocktail specs in this app"
+  }
+ ],
+ "unverified": [
+  "Plymouth gin’s protected status has lapsed (per Wikipedia); we only say where it comes from.",
+  "Taste words (“soft”, “peppery”, “grassy”) are general bar descriptions, not from a rule. Bar lead to check them against our bottles.",
+  "How guests order (mixers, neat or on the rocks, shots) is common US bar usage, not a rule; bar lead to confirm the house wording."
+ ]
+}

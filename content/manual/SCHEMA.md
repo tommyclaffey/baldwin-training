@@ -84,3 +84,11 @@ Writing rules for "read":
 - Short paragraphs (2-3 sentences). Plain words a server would use. US spelling (color, liter), French/Italian terms as written.
 - Every sentence must be backed by a fact in "facts". If a new fact is needed, add it to "facts" with its source URL first.
 - "sayIt" lines are ours (not sourced); keep them modest and true.
+
+## Cocktail Program Level 1: the store's own drinks and bottles (Nov 12, 2026)
+
+A v3 section's `read` can carry `"ours"`. The lesson page then shows what this store has (study.mjs, `withOurs`):
+- `"ours": { "house": ["vodka"] }`: the store's house cocktails on the menu whose base spirit matches replace `stops`
+  (title "On our menu", five at most, in menu order). With none, the lesson's own stops (the classics) stay.
+- `"ours": { "shelf": ["Vodka"] }`: the store's back bar bottles of those spirits are named at the end of `where`
+  ("On our back bar: …", six names, then "and N more"). With none, nothing is added.

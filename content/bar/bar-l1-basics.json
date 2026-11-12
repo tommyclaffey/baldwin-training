@@ -1,0 +1,547 @@
+{
+ "number": 7,
+ "barLevel": 1,
+ "slug": "bar-l1-basics",
+ "title": "The basics",
+ "script": "Lesson 7",
+ "lead": "Short and useful: spirit or liqueur, amaro and vermouth, proof, the ordering words, and well, call and premium.",
+ "minutes": 8,
+ "program": "bar",
+ "sections": [
+  {
+   "name": "Spirit or liqueur",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A liqueur is a spirit, sweetened."
+    }
+   ],
+   "know": [
+    "Spirit is distilled: vodka, gin, rum, tequila, whiskey, brandy.",
+    "Liqueur is a spirit with sugar and flavor added.",
+    "15% is the EU minimum strength for a liqueur.",
+    "Orange liqueur, like triple sec or Cointreau, is in a Margarita."
+   ],
+   "book": "spirit/liqueurs",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Amaro, vermouth and bitters",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Bottles that finish a drink."
+    }
+   ],
+   "know": [
+    "Amaro means “bitter”: herbal, bitter and sweet at once.",
+    "Aperitivo Aperol and Campari: lighter, for before dinner.",
+    "Vermouth is wine, flavored and fortified. Fridge once open.",
+    "Bitters go in a dash at a time, like Angostura."
+   ],
+   "book": "spirit/amaro",
+   "source": "Common bar practice"
+  },
+  {
+   "name": "Proof and ABV",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Proof is twice the ABV."
+    }
+   ],
+   "know": [
+    "Abv is the share of alcohol in the bottle.",
+    "Proof in the US is twice the ABV.",
+    "80 Proof is 40% ABV.",
+    "Cask Strength is bottled near barrel strength, little water added."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Minimum strength, ABV",
+     "rows": [
+      {
+       "name": "Liqueur (EU)",
+       "value": "15%",
+       "pct": 0.375
+      },
+      {
+       "name": "Vodka, gin, rum (EU)",
+       "value": "37.5%",
+       "pct": 0.9375
+      },
+      {
+       "name": "Whiskey (US)",
+       "value": "40%",
+       "pct": 1
+      }
+     ],
+     "note": "EU 2019/787 and 27 CFR 5.143"
+    }
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "name": "Ordering words",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Neat, rocks, up, tall, a back."
+    }
+   ],
+   "know": [
+    "Neat the spirit alone, no ice.",
+    "Rocks over ice.",
+    "Tall a taller glass with more mixer.",
+    "A Back something on the side, like a water back."
+   ],
+   "book": "bar-basics/how-guests-order",
+   "source": "Common bar practice"
+  },
+  {
+   "name": "Well, call and premium",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Ring in what the guest asked for."
+    }
+   ],
+   "know": [
+    "Well is our house pour when no brand is named.",
+    "Call means the guest named the bottle.",
+    "Premium is the top shelf. It costs more.",
+    "Ring It In the way the guest ordered it."
+   ],
+   "book": "the-bar/back-bar",
+   "source": "Common bar practice"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Spirit or liqueur",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "SPIRIT",
+      "line": "is distilled: vodka, gin, rum, tequila, whiskey, brandy."
+     },
+     {
+      "big": "LIQUEUR",
+      "line": "is a spirit with sugar and flavor added."
+     },
+     {
+      "big": "15%",
+      "line": "is the EU minimum strength for a liqueur."
+     },
+     {
+      "big": "ORANGE",
+      "line": "liqueur, like triple sec or Cointreau, is in a Margarita."
+     }
+    ],
+    "read": {
+     "bigIdea": "A liqueur is a spirit, sweetened.",
+     "where": "A **spirit** is distilled: vodka, gin, rum, tequila, whiskey and brandy are the base spirits. A **liqueur** is a spirit with **sugar and flavor** added. In the EU a liqueur is at least **15% ABV**, and most have at least **100 grams of sugar per liter**. Families you’ll hear: **orange** (triple sec, Cointreau), **coffee**, **nut**, **herbal** and **fruit and floral**.",
+     "stopsTitle": "Liqueur families",
+     "stops": [
+      {
+       "name": "Orange",
+       "text": "Triple sec, **Cointreau**, Grand Marnier."
+      },
+      {
+       "name": "Coffee",
+       "text": "For the **Espresso Martini**."
+      },
+      {
+       "name": "Herbal",
+       "text": "**Chartreuse**, Bénédictine."
+      },
+      {
+       "name": "Fruit and floral",
+       "text": "Elderflower, cassis, **maraschino**."
+      }
+     ],
+     "mixup": "**Sloe gin** and **Grand Marnier** sound like spirits, but they’re **liqueurs**.",
+     "sayIt": "That’s a liqueur, so it’s sweeter and lower in alcohol than a spirit."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Amaro, vermouth and bitters",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "AMARO",
+      "line": "means “bitter”: herbal, bitter and sweet at once."
+     },
+     {
+      "big": "APERITIVO",
+      "line": "Aperol and Campari: lighter, for before dinner."
+     },
+     {
+      "big": "VERMOUTH",
+      "line": "is wine, flavored and fortified. Fridge once open."
+     },
+     {
+      "big": "BITTERS",
+      "line": "go in a dash at a time, like Angostura."
+     }
+    ],
+    "read": {
+     "bigIdea": "Bottles that finish a drink.",
+     "where": "**Amaro** means “bitter” in Italian: herbal liqueurs that are bitter and sweet at once. **Aperol** and **Campari** are lighter, brighter bitters for before dinner. **Vermouth** is **wine** flavored with herbs and fortified: **sweet** for a Manhattan or Negroni, **dry** for a Martini. It’s wine, so once open it goes in the **fridge**. **Bitters**, like Angostura, are strong infusions added a **dash** at a time.",
+     "stopsTitle": "Where you’ll see them",
+     "stops": [
+      {
+       "name": "Amaro",
+       "text": "**Bitter and sweet**, herbal."
+      },
+      {
+       "name": "Aperol and Campari",
+       "text": "The **Spritz** and the **Negroni**."
+      },
+      {
+       "name": "Vermouth",
+       "text": "**Sweet**: Manhattan. **Dry**: Martini."
+      },
+      {
+       "name": "Bitters",
+       "text": "**Angostura**: the Old Fashioned."
+      }
+     ],
+     "mixup": "**Vermouth** isn’t a spirit. It’s wine, so it spoils like wine.",
+     "sayIt": "Something after dinner? A Cognac, or an amaro?"
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Proof and ABV",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "ABV",
+      "line": "is the share of alcohol in the bottle."
+     },
+     {
+      "big": "PROOF",
+      "line": "in the US is twice the ABV."
+     },
+     {
+      "big": "80 PROOF",
+      "line": "is 40% ABV."
+     },
+     {
+      "big": "CASK STRENGTH",
+      "line": "is bottled near barrel strength, little water added."
+     }
+    ],
+    "read": {
+     "bigIdea": "Proof is twice the ABV.",
+     "where": "**ABV** (alcohol by volume) is the share of alcohol in the bottle. In the US, **proof** is **twice** the ABV: a 40% whiskey is 80 proof. Vodka, gin and rum are at least **37.5%** in the EU; US whiskey is at least **40%**; a liqueur can be as low as **15%**. **Cask strength** means bottled close to the strength it came out of the barrel, with little or no water added.",
+     "visual": 0,
+     "visualIntro": "Minimum strengths you’ll meet:",
+     "mixup": "**100 proof** is 50% ABV, not 100% alcohol.",
+     "sayIt": "That one’s cask strength, so it’s stronger than most."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Ordering words",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "NEAT",
+      "line": "the spirit alone, no ice."
+     },
+     {
+      "big": "ROCKS",
+      "line": "over ice."
+     },
+     {
+      "big": "TALL",
+      "line": "a taller glass with more mixer."
+     },
+     {
+      "big": "A BACK",
+      "line": "something on the side, like a water back."
+     }
+    ],
+    "read": {
+     "bigIdea": "Neat, rocks, up, tall, a back.",
+     "where": "**Neat** is the spirit alone, with no ice. **On the rocks** is over ice. **Up** means shaken or stirred with ice, then strained into a stemmed glass. **A splash** is a little of a mixer, like water or soda. **Tall** means a taller glass with more mixer. **A back** is something on the side, like a **water back**.",
+     "stopsTitle": "Say it back to the guest",
+     "stops": [
+      {
+       "name": "Neat",
+       "text": "No ice, **just the spirit**."
+      },
+      {
+       "name": "On the rocks",
+       "text": "Over **ice**."
+      },
+      {
+       "name": "Up",
+       "text": "Chilled, **strained**, no ice."
+      },
+      {
+       "name": "Tall",
+       "text": "Taller glass, **more mixer**."
+      },
+      {
+       "name": "A back",
+       "text": "A small glass **on the side**."
+      }
+     ],
+     "mixup": "A **water back** is water on the side. **With water** means water in the drink.",
+     "sayIt": "So that’s a bourbon on the rocks, with a water back."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Well, call and premium",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "WELL",
+      "line": "is our house pour when no brand is named."
+     },
+     {
+      "big": "CALL",
+      "line": "means the guest named the bottle."
+     },
+     {
+      "big": "PREMIUM",
+      "line": "is the top shelf. It costs more."
+     },
+     {
+      "big": "RING IT IN",
+      "line": "the way the guest ordered it."
+     }
+    ],
+    "read": {
+     "bigIdea": "Ring in what the guest asked for.",
+     "where": "The **well** is the house pour: what goes in when a guest doesn’t name a brand. A **call** is when the guest names the bottle. **Premium** bottles are the **top shelf** and cost more. Ring in exactly what the guest ordered, so they get, and pay for, what they asked for. The **Back Bar** shows our bottles.",
+     "stopsTitle": "Three tiers",
+     "stops": [
+      {
+       "name": "Well",
+       "text": "The **house pour**."
+      },
+      {
+       "name": "Call",
+       "text": "The guest **names the brand**."
+      },
+      {
+       "name": "Premium",
+       "text": "**Top shelf**, priced higher."
+      }
+     ],
+     "mixup": "A guest who asks for “**your house vodka**” wants the **well**. A guest who names a brand wants that **call**.",
+     "sayIt": "Any vodka you like, or our house vodka?"
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   }
+  ]
+ },
+ "sources": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu); Common bar practice; US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143). Facts taken from the Level 2 lessons, which cite them. Written for Mise, Nov 12, 2026.",
+ "cards": [
+  {
+   "q": "What is a liqueur?",
+   "answer": "A spirit with sugar and flavor added",
+   "wrong": [
+    "A spirit aged ten years",
+    "Beer mixed with spirit",
+    "Any spirit under 10% ABV"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "In the EU, a liqueur is at least…",
+   "answer": "15% ABV",
+   "wrong": [
+    "5% ABV",
+    "40% ABV",
+    "60% ABV"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Which of these is a liqueur?",
+   "answer": "Cointreau",
+   "wrong": [
+    "Bourbon",
+    "Blanco tequila",
+    "London Dry gin"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "Vermouth is…",
+   "answer": "Wine, flavored with herbs and fortified",
+   "wrong": [
+    "A kind of whiskey",
+    "A bitter spirit made from grain",
+    "A kind of gin"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Where does an open bottle of vermouth go?",
+   "answer": "In the fridge",
+   "wrong": [
+    "On the back bar at room temperature",
+    "In the freezer",
+    "Back in the case"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "“Amaro” means…",
+   "answer": "Bitter, in Italian",
+   "wrong": [
+    "Sweet, in Italian",
+    "Love, in Italian",
+    "Water, in Italian"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "In the US, a spirit at 45% ABV is…",
+   "answer": "90 proof",
+   "wrong": [
+    "45 proof",
+    "22.5 proof",
+    "100 proof"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "ABV means…",
+   "answer": "The share of alcohol in the bottle",
+   "wrong": [
+    "The age of the youngest spirit",
+    "The size of the barrel",
+    "How sweet it is"
+   ],
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143)"
+  },
+  {
+   "q": "“Cask strength” means…",
+   "answer": "Bottled near the strength it came out of the barrel",
+   "wrong": [
+    "Aged at least ten years",
+    "Bottled at exactly 100 proof",
+    "Filtered through charcoal"
+   ],
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "q": "A guest orders a bourbon “with a water back.” What do they want?",
+   "answer": "Bourbon, with a glass of water on the side",
+   "wrong": [
+    "Bourbon mixed with water",
+    "Bourbon over ice",
+    "Bourbon with a splash of soda"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "“Make it tall” means…",
+   "answer": "A taller glass with more mixer",
+   "wrong": [
+    "A double pour",
+    "No ice",
+    "Shaken and strained"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A “splash” of soda is…",
+   "answer": "A little soda added to the drink",
+   "wrong": [
+    "A full glass of soda",
+    "Soda on the side",
+    "Soda instead of the spirit"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A guest asks for “your house vodka.” That’s…",
+   "answer": "Our well vodka",
+   "wrong": [
+    "A call",
+    "Our premium vodka",
+    "A flavored vodka"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "A guest names the brand of gin they want. That makes it a…",
+   "answer": "Call drink",
+   "wrong": [
+    "Well drink",
+    "Back",
+    "Neat pour"
+   ],
+   "source": "Common bar practice"
+  },
+  {
+   "q": "Which tier usually costs the most?",
+   "answer": "Premium (top shelf)",
+   "wrong": [
+    "Well",
+    "House",
+    "A splash"
+   ],
+   "source": "Common bar practice"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "A spirit is distilled: vodka, gin, rum, tequila, whiskey and brandy are the base spirits. A liqueur is a spirit with sugar and flavor added. In the EU a liqueur is at least 15% ABV, and most have at least 100 grams of sugar per liter. Families you’ll hear: orange (triple sec, Cointreau), coffee, nut, herbal and fruit and floral.",
+   "source": "EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "Amaro means “bitter” in Italian: herbal liqueurs that are bitter and sweet at once. Aperol and Campari are lighter, brighter bitters for before dinner. Vermouth is wine flavored with herbs and fortified: sweet for a Manhattan or Negroni, dry for a Martini. It’s wine, so once open it goes in the fridge. Bitters, like Angostura, are strong infusions added a dash at a time.",
+   "source": "Common bar practice"
+  },
+  {
+   "fact": "ABV (alcohol by volume) is the share of alcohol in the bottle. In the US, proof is twice the ABV: a 40% whiskey is 80 proof. Vodka, gin and rum are at least 37.5% in the EU; US whiskey is at least 40%; a liqueur can be as low as 15%. Cask strength means bottled close to the strength it came out of the barrel, with little or no water added.",
+   "source": "US TTB standards of identity, 27 CFR 5.143 (law.cornell.edu/cfr/text/27/5.143); EU spirit drinks regulation 2019/787, Annex I (eur-lex.europa.eu)"
+  },
+  {
+   "fact": "Neat is the spirit alone, with no ice. On the rocks is over ice. Up means shaken or stirred with ice, then strained into a stemmed glass. A splash is a little of a mixer, like water or soda. Tall means a taller glass with more mixer. A back is something on the side, like a water back.",
+   "source": "Common bar practice"
+  },
+  {
+   "fact": "The well is the house pour: what goes in when a guest doesn’t name a brand. A call is when the guest names the bottle. Premium bottles are the top shelf and cost more. Ring in exactly what the guest ordered, so they get, and pay for, what they asked for. The Back Bar shows our bottles.",
+   "source": "Common bar practice"
+  }
+ ],
+ "unverified": [
+  "Amaro, vermouth and bitters descriptions are general bar knowledge; bar lead to confirm against our bottles.",
+  "Splash, tall and back are common US bar usage, not a rule; whether a tall pour costs more is the bar lead’s call."
+ ]
+}

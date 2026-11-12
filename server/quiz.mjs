@@ -15,7 +15,7 @@ export const REVIEW = 'review';
 export const MARKS = ['red', 'yellow', 'green'];
 const REVIEW_LEN = 20;
 const BUILT_IN_LEN = 10, PRE_SHIFT_LEN = 5, FINAL_LEN = 60; // a program level's final exam: 60 questions
-// Nov 8: Certified Bar Server's final is 30 questions (like WSET Spirits Level 1); Certified Bartender's is 60.
+// Nov 8: Certified Bar Server's final was 30 questions (like WSET Spirits Level 1), 40 since Nov 12; Certified Bartender's is 60.
 const finalLen = (key) => LEVELS.find((L) => L.final === key)?.len || FINAL_LEN;
 
 /** Team quizzes a manager saved: a name, its topics and its length. */
@@ -107,7 +107,8 @@ export function startQuiz(db, store, id, userId = null, { fresh = false } = {}) 
     qs = pick(qs, qs.length);
   } else {
     const list = forTopics(pool, def.topics);
-    qs = def.count >= list.length ? pick(list, list.length) : draw(list, def.count);
+    const even = def.topics.length === 1 && LEVELS.some((L) => L.final === def.topics[0] && L.spread);
+    qs = def.count >= list.length ? pick(list, list.length) : even ? spread(list, def.count, deck) : draw(list, def.count);
   }
   if (!qs.length) return null;
   if (deck) deck.add(qs.map((q) => q.ref));
@@ -115,6 +116,18 @@ export function startQuiz(db, store, id, userId = null, { fresh = false } = {}) 
 }
 
 /** The questions this person has had in this quiz this round. */
+/** A final drawn evenly (Nov 12, Cocktail Program Level 1): every lesson gets its share of the n questions, in turn, with
+ *  questions not yet seen this round first in each lesson; which lessons get the leftover few is random. */
+function spread(list, n, deck) {
+  if (deck && list.filter((q) => !deck.seen.has(q.ref)).length < n) deck.reset();
+  const by = new Map();
+  for (const q of list) { const k = q.topics[0]; if (!by.has(k)) by.set(k, []); by.get(k).push(q); }
+  const queues = pick([...by.values()], by.size).map((g) => { const s = pick(g, g.length); return deck ? [...s.filter((q) => !deck.seen.has(q.ref)), ...s.filter((q) => deck.seen.has(q.ref))] : s; });
+  const out = [];
+  for (let i = 0; out.length < n && queues.some((x) => x.length); i++) { const x = queues[i % queues.length]; if (x.length) out.push(x.shift()); }
+  return pick(out, out.length);
+}
+
 function rotation(db, store, userId, quiz, fresh) {
   const clear = () => db.prepare('DELETE FROM quiz_seen WHERE user_id = ? AND store_id = ? AND quiz = ?').run(userId, store, quiz);
   if (fresh) clear();
