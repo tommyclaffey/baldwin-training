@@ -14,8 +14,9 @@ export type PersonCard = {
 export type ChatItem = { type: 'page'; slug: string } | { type: 'person'; id: number };
 export type Staged = (ChatItem & { card: PageCard | PersonCard | null; error: string }) | null;
 
-type State = { open: boolean; room: string | null; staged: Staged };
-let state: State = { open: false, room: null, staged: null };
+// reply (v2, the toast's Reply): a message id the open conversation puts in the composer as "Replying to…".
+type State = { open: boolean; room: string | null; staged: Staged; reply: number | null };
+let state: State = { open: false, room: null, staged: null, reply: null };
 let opener: HTMLElement | null = null;
 const listeners = new Set<() => void>();
 const set = (patch: Partial<State>) => { state = { ...state, ...patch }; listeners.forEach((l) => l()); };
@@ -34,11 +35,13 @@ export const clearStaged = () => set({ staged: null });
 
 /** Opens the panel. With an item: it's staged, and the panel shows the conversations so you pick who gets it (unless
  *  a conversation is already open in the panel). Remembers what had focus, so closing puts you back there. */
-export function openChat(opts: { item?: ChatItem; room?: string } = {}) {
+export function openChat(opts: { item?: ChatItem; room?: string; reply?: number } = {}) {
   if (!state.open) opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   if (opts.item) stageItem(opts.item);
-  set({ open: true, room: opts.room ?? (state.open ? state.room : null) });
+  set({ open: true, room: opts.room ?? (state.open ? state.room : null), reply: opts.reply ?? null });
 }
+/** The conversation took the reply (or it wasn't there): clear it. */
+export const takeReply = () => { if (state.reply !== null) set({ reply: null }); };
 export function closeChat({ restoreFocus = true } = {}) {
   if (!state.open) return;
   set({ open: false });

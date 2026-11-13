@@ -13,6 +13,7 @@ import { ItemChatButton, SendToTeamButton } from '../chat/SendToTeam';
 import { hasChat } from '../chat/unread';
 import { menuName } from '../lib/demo';
 import { currentBrand, titleCase } from '../lib/theme';
+import { WaitingCard } from '../chat/Waiting';
 
 /* ---------- data ---------- */
 type Status = 'behind' | 'new' | 'on-track' | 'done' | 'no-job';
@@ -172,6 +173,8 @@ export function ManagerHome() {
         {menuName(user) && <Link className="mg-menu-chip" to="/food-matrix"><span aria-hidden="true" />{menuName(user)}</Link>}
       </div>
       <PageHead script={`${dayLabel(todayIso(), { weekday: 'long', month: 'short', day: 'numeric' })} · ${data.store}`} title={`${greet}, ${first}`.toUpperCase()} people={data.people} />
+      {/* Team Chat v2 (Nov 13, Figma 688:862): what's waiting in chat, first */}
+      <WaitingCard className="wc-admin" />
       {data.signoffs.length > 0 && <SignoffBand asks={data.signoffs} onDone={load} />}
       <div className="mh-cols">
         <TeamCard data={data} reload={load} />

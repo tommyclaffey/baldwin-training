@@ -549,11 +549,17 @@ async function api(req, res, url) {
     needReader(c, req);
     const x = chat.chatCtx(db, c);
     // The sidebar's number, polled lightly on every page. Someone who isn't on this store's team just gets 0.
-    if (p === '/api/chat/unread' && m === 'GET') return sendJson(res, 200, { count: x ? chat.unreadTotal(x) : 0, member: !!x });
+    // v2 (Nov 13): plus @mentions of you (the sidebar shows "@ N"), and the newest mention/DM/pre-shift note for the toast.
+    if (p === '/api/chat/unread' && m === 'GET') return sendJson(res, 200, x ? { ...chat.unreadCounts(x), member: true, latest: chat.latestForToast(x) } : { count: 0, mentions: 0, member: false, latest: null });
     if (!x) fail(403, 'Team Chat is for the people who work at this store.');
     try {
       if (p === '/api/chat' && m === 'GET') return sendJson(res, 200, chat.roomList(x));
       if (p === '/api/chat/search' && m === 'GET') return sendJson(res, 200, { results: chat.search(x, url.searchParams.get('q')) });
+      // v2 (Nov 13, Figma 27b): Home's "Waiting for you" card, the rail's Mentions and Pinned, Mark All Read.
+      if (p === '/api/chat/summary' && m === 'GET') return sendJson(res, 200, chat.summary(x));
+      if (p === '/api/chat/mentions' && m === 'GET') return sendJson(res, 200, { results: chat.mentionsList(x) });
+      if (p === '/api/chat/pinned' && m === 'GET') return sendJson(res, 200, { results: chat.pinnedList(x) });
+      if (p === '/api/chat/read-all' && m === 'POST') return sendJson(res, 200, chat.readAll(x));
       // Send to Team: the card a page (anyone) or a person (managers, this store's staff) makes, before it's sent.
       if (p === '/api/chat/card' && m === 'GET') {
         if (url.searchParams.get('person')) return sendJson(res, 200, { type: 'person', card: chat.personCard(x, url.searchParams.get('person')) });
@@ -574,12 +580,12 @@ async function api(req, res, url) {
         if (!buf.length) fail(400, 'That photo was empty.');
         return sendJson(res, 200, { url: await chat.savePhoto(buf) });
       }
-      const rm = /^\/api\/chat\/room\/([a-z0-9-]{2,40})(?:\/(messages|read))?$/.exec(p);
+      const rm = /^\/api\/chat\/room\/([a-z0-9-]{2,40})(?:\/(messages|read|typing|mute))?$/.exec(p);
       if (rm) {
         const room = chat.resolveRoom(x, rm[1], { create: true });
         if (!rm[2] && m === 'GET') {
           const before = url.searchParams.get('before');
-          if (!before && url.searchParams.get('rev') !== null && Number(url.searchParams.get('rev')) === room.rev) return sendJson(res, 200, { same: true, rev: room.rev });
+          if (!before && url.searchParams.get('rev') !== null && Number(url.searchParams.get('rev')) === room.rev) return sendJson(res, 200, { same: true, rev: room.rev, typing: chat.typingIn(x, room) });
           return sendJson(res, 200, chat.roomDetail(x, room, { before }));
         }
         if (rm[2] === 'messages' && m === 'POST') {
@@ -587,15 +593,32 @@ async function api(req, res, url) {
           return sendJson(res, 200, { id, ...chat.roomDetail(x, db.prepare('SELECT * FROM chat_rooms WHERE id = ?').get(room.id)) });
         }
         if (rm[2] === 'read' && m === 'POST') { chat.markRead(x, room, (await readJson(req, 2000)).last); return sendJson(res, 200, { unread: chat.unreadTotal(x) }); }
+        // "typing…" (v2): a ping every few seconds while someone types; it lapses after 5 s. Nothing is stored.
+        if (rm[2] === 'typing' && (m === 'POST' || m === 'DELETE')) { chat.setTyping(x, room, m === 'POST'); return sendJson(res, 200, { ok: true }); }
+        if (rm[2] === 'mute' && (m === 'POST' || m === 'DELETE')) { chat.setMute(x, room, m === 'POST'); return sendJson(res, 200, { muted: m === 'POST', ...chat.unreadCounts(x) }); }
       }
-      const mm = /^\/api\/chat\/message\/(\d+)(?:\/(react|pin|got-it))?$/.exec(p);
+      const mm = /^\/api\/chat\/message\/(\d+)(?:\/(react|pin|got-it|thread|unread))?$/.exec(p);
       if (mm) {
         let room;
+        // A thread (v2): the message, its replies, and (POST) a reply in it, which can go to the channel too.
+        if (mm[2] === 'thread' && m === 'GET') return sendJson(res, 200, chat.threadDetail(x, mm[1]));
+        if (mm[2] === 'thread' && m === 'POST') {
+          const b = await readJson(req, 20_000);
+          const t = chat.threadDetail(x, mm[1]);
+          const id = chat.postMessage(x, chat.resolveRoom(x, t.room.key, { create: false }), { ...b, threadId: t.parent.id });
+          return sendJson(res, 200, { id, ...chat.threadDetail(x, t.parent.id) });
+        }
+        if (mm[2] === 'unread' && m === 'POST') { chat.markUnread(x, mm[1]); return sendJson(res, 200, chat.unreadCounts(x)); }
         if (!mm[2] && m === 'DELETE') {
           const own = db.prepare('SELECT user_id FROM chat_messages WHERE id = ?').get(Number(mm[1]))?.user_id === x.me.id;
           room = chat.removeMessage(x, mm[1]);
           if (!own) audit(db, x.me.id, 'chat remove', `message ${mm[1]}`, c.company);
-        } else if (mm[2] === 'react' && m === 'POST') room = chat.react(x, mm[1], String((await readJson(req, 2000)).emoji || ''));
+        } else if (mm[2] === 'react' && m === 'POST') {
+          const b = await readJson(req, 2000);
+          room = chat.react(x, mm[1], String(b.emoji || ''));
+          // a reaction in a thread answers with the thread
+          if (b.thread) return sendJson(res, 200, chat.threadDetail(x, b.thread));
+        }
         else if (mm[2] === 'pin' && (m === 'POST' || m === 'DELETE')) room = chat.pin(x, mm[1], m === 'POST');
         else if (mm[2] === 'got-it' && (m === 'POST' || m === 'DELETE')) room = chat.gotIt(x, mm[1], m === 'POST');
         if (room) return sendJson(res, 200, chat.roomDetail(x, db.prepare('SELECT * FROM chat_rooms WHERE id = ?').get(room.id)));

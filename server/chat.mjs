@@ -17,6 +17,13 @@
 //     managers-only channel: Kitchen is managers-only today only because nobody has a kitchen job yet), and only managers
 //     ever see one.
 //   • @mentions, Growth's way: only the conversation's members; stored as <@id> in the body and a list of ids, never names.
+//   • Chat v2 (Nov 13, Figma 09 · Proposals → 27b, 681:833; Tommy: "love it, build all of it out"). Discord's structure:
+//     channels grouped Announcements (#everyone) / Floor (#front-of-house, #bar, #kitchen), DMs with online dots, a channel
+//     you can mute. Reactions in one tap from a set (src/chat/reactions.ts: emoji plus the service words 86'd, Heard…),
+//     per person per message. Threads: a reply can open a thread under a message (thread_id); a thread reply can also go
+//     to the channel. Each message counts once toward unread: a thread-only reply counts only if it mentions you or
+//     you're in that thread. Mark Unread, "typing…" (in memory, gone after 5 s), a Home summary (mentions, then pre-shift
+//     notes you haven't tapped Got It on, then DMs), and the newest mention/DM/pre-shift note for the toast.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -26,18 +33,27 @@ import { fullIndex, withStore } from './content.mjs';
 import { COLLECTIONS } from './cms.mjs';
 import { pathCtxFor, personRow } from './team.mjs';
 
-export const REACTIONS = ['👍', '❤️', '🔥', '✅', '😂', '🙏'];
+/** Reactions (v2): every emoji in the picker, plus the service words. The list lives in src/chat/reactions.ts (the app
+ *  draws the picker from it); test/chat2.test.mjs checks the two match. */
+export const QUICK = ['👍', '✅', '🔥', '👀'];
+const EMOJI = ['👍', '✅', '🔥', '👀', '🙏', '❤️', '😂', '🎉', '🍋', '🍊', '🌶️', '🧂', '🍸', '🍹', '🥃', '🍷', '🥩', '🐟', '🦞', '🍝', '🥗', '🍰', '☕', '🧊'];
+export const SERVICE_WORDS = ['86’d', 'Heard', 'Behind', 'Corner', 'Hands', 'Yes Chef'];
+export const REACTIONS = [...EMOJI, ...SERVICE_WORDS];
+const reactionOrder = (e) => { const i = REACTIONS.indexOf(e); return i < 0 ? 999 : i; };
 const FOH_JOBS = ['server', 'host', 'bartender', 'support'];
 /** Kitchen jobs aren't on the job list yet (Server, Bartender, Host, Support). Until they are, Kitchen is the managers. */
 export const KITCHEN_JOBS = ['kitchen', 'cook', 'line-cook', 'prep', 'dish'];
+// v2 (Figma 681:833): Discord's lower-case channel names, grouped; the topic sits beside the name in the header.
 export const CHANNELS = [
-  { key: 'everyone', name: (s) => `${s} · Everyone`, jobs: null, line: 'everyone at the store',
+  { key: 'everyone', name: () => 'everyone', group: 'Announcements', jobs: null, line: 'everyone at the store', topic: 'Everyone at the store',
     about: (s) => `Everyone at ${s}. Managers post here, and the whole team can react and reply.` },
-  { key: 'foh', name: () => 'Front of House', jobs: FOH_JOBS, line: 'servers, hosts, bar and support',
+  { key: 'foh', name: () => 'front-of-house', group: 'Floor', jobs: FOH_JOBS, line: 'servers, hosts, bar and support', topic: 'Servers, hosts, bar and support',
     about: (s) => `Servers, hosts, bar and support at ${s}. Pre-shift notes are pinned here every day.` },
-  { key: 'bar', name: () => 'Bar', jobs: ['bartender'], line: 'bartenders and managers', about: (s) => `The bar team at ${s}, and its managers.` },
-  { key: 'kitchen', name: () => 'Kitchen', jobs: KITCHEN_JOBS, line: 'cooks and managers', about: (s) => `The kitchen at ${s}, and its managers.` },
+  { key: 'bar', name: () => 'bar', group: 'Floor', jobs: ['bartender'], line: 'bartenders and managers', topic: 'Bartenders and managers', about: (s) => `The bar team at ${s}, and its managers.` },
+  { key: 'kitchen', name: () => 'kitchen', group: 'Floor', jobs: KITCHEN_JOBS, line: 'cooks and managers', topic: 'Cooks and managers', about: (s) => `The kitchen at ${s}, and its managers.` },
 ];
+/** Online: seen in the last 5 minutes (users.last_seen_at moves on every request), or held on by the demo (online_until). */
+export const ONLINE_MS = 5 * 60e3;
 const MAX_BODY = 2000;
 const PAGE_SIZE = 60;
 export const PHOTO_MAX = 15 * 1024 * 1024;
@@ -53,14 +69,18 @@ export { ChatError };
 
 /** Everyone in a store's chat: its staff, its managers (and the company's all-store managers) and the owners. */
 export function storeMembers(db, company, store) {
-  return db.prepare(`SELECT id, name, role, jobs, created_at FROM users WHERE company_id = ? AND deleted_at IS NULL AND (
+  const t = Date.now();
+  return db.prepare(`SELECT id, name, role, jobs, created_at, last_seen_at, online_until FROM users WHERE company_id = ? AND deleted_at IS NULL AND (
       (role = 'staff' AND store_id = ?) OR (role = 'manager' AND (store_id = ? OR store_id IS NULL)) OR role = 'owner')
     ORDER BY name COLLATE NOCASE`).all(company, store, store).map((u) => {
     const jobs = jobsOf(u.jobs); const manager = u.role !== 'staff';
-    return { id: u.id, name: u.name, initials: initials(u.name), manager, jobs, since: u.created_at,
+    const online = (!!u.last_seen_at && t - Date.parse(u.last_seen_at) < ONLINE_MS) || (!!u.online_until && Date.parse(u.online_until) > t);
+    return { id: u.id, name: u.name, initials: initials(u.name), manager, jobs, since: u.created_at, online,
       label: manager ? (u.role === 'owner' ? 'Owner' : 'Manager') : jobLabel(jobs) || 'Team' };
   });
 }
+/** A person as the app shows them: name, initials, job or role, and whether they're on now. */
+const personOut = (m) => ({ id: m.id, name: m.name, initials: m.initials, label: m.label, manager: m.manager, online: !!m.online });
 
 /** The chat for this request, or null if the person isn't on this store's team (a super admin looking around, say). */
 export function chatCtx(db, c) {
@@ -109,10 +129,23 @@ function ensureReads(x, rooms) {
   for (const r of rooms) ins.run(r.id, x.me.id, x.company, x.store, r.id, x.me.since || now(), now());
 }
 
+/** Which messages count toward someone's unread (v2, threads): channel messages and thread replies also sent to the
+ *  channel; a thread-only reply only if it mentions them or it's in a thread they started or replied in. One row, one
+ *  count, so a reply that's in a thread and the channel is never counted twice. (`me` is a user id, a number.) */
+const counts = (me) => `(m.thread_id IS NULL OR m.also_channel = 1
+  OR (m.mentions IS NOT NULL AND EXISTS (SELECT 1 FROM json_each(m.mentions) j WHERE j.value = ${Number(me)}))
+  OR EXISTS (SELECT 1 FROM chat_messages t WHERE (t.id = m.thread_id OR t.thread_id = m.thread_id) AND t.user_id = ${Number(me)}))`;
+/** Shown in the channel's timeline: everything but thread-only replies. */
+const IN_CHANNEL = '(thread_id IS NULL OR also_channel = 1)';
+
 function unreadByRoom(x) {
   const rows = x.db.prepare(`SELECT m.room_id, COUNT(*) n FROM chat_messages m JOIN chat_reads r ON r.room_id = m.room_id AND r.user_id = ?
-    WHERE m.store_id = ? AND m.user_id <> ? AND m.removed_at IS NULL AND m.id > r.last_read GROUP BY m.room_id`).all(x.me.id, x.store, x.me.id);
+    WHERE m.store_id = ? AND m.user_id <> ? AND m.removed_at IS NULL AND m.id > r.last_read AND ${counts(x.me.id)} GROUP BY m.room_id`).all(x.me.id, x.store, x.me.id);
   return new Map(rows.map((r) => [r.room_id, r.n]));
+}
+/** The rooms this person muted (v2): their unread doesn't count toward Team Chat's number, but @mentions still do. */
+function mutedRooms(x) {
+  return new Set(x.db.prepare('SELECT room_id FROM chat_mutes WHERE user_id = ? AND store_id = ?').all(x.me.id, x.store).map((r) => r.room_id));
 }
 /** Unread messages that @mention you, per room (they're in the unread count too; the list marks them with an @). */
 function mentionsByRoom(x) {
@@ -129,12 +162,16 @@ export const mentionIds = (body) => [...new Set([...String(body || '').matchAll(
 /** <@12> → "@Rosalind Hart", for previews, reply quotes and search results. */
 const plainBody = (body, who) => String(body || '').replace(MENTION_RE, (_, id) => '@' + who(Number(id)).name);
 
-/** The number beside Team Chat in the sidebar. */
-export function unreadTotal(x) {
+/** The number beside Team Chat in the sidebar: unread in rooms you haven't muted, plus @mentions of you anywhere. */
+export function unreadTotal(x) { return unreadCounts(x).count; }
+export function unreadCounts(x) {
   const rooms = myRooms(x);
   ensureReads(x, rooms);
-  const by = unreadByRoom(x);
-  return rooms.reduce((n, r) => n + (by.get(r.id) || 0), 0);
+  const by = unreadByRoom(x), at = mentionsByRoom(x), muted = mutedRooms(x);
+  return {
+    count: rooms.reduce((n, r) => n + (muted.has(r.id) ? at.get(r.id) || 0 : by.get(r.id) || 0), 0),
+    mentions: rooms.reduce((n, r) => n + (at.get(r.id) || 0), 0),
+  };
 }
 
 /** One line for the list, a reply quote or a search hit. A progress card names its person only to managers. */
@@ -147,25 +184,29 @@ export function roomList(x) {
   ensureReads(x, rooms);
   const unread = unreadByRoom(x);
   const mentioned = mentionsByRoom(x);
-  const last = new Map(x.db.prepare(`SELECT * FROM chat_messages WHERE id IN (SELECT MAX(id) FROM chat_messages WHERE store_id = ? GROUP BY room_id)`).all(x.store).map((m) => [m.room_id, m]));
+  const muted = mutedRooms(x);
+  const last = new Map(x.db.prepare(`SELECT * FROM chat_messages WHERE id IN (SELECT MAX(id) FROM chat_messages WHERE store_id = ? AND ${IN_CHANNEL} GROUP BY room_id)`).all(x.store).map((m) => [m.room_id, m]));
   const who = nameBook(x, [...last.values()].flatMap((m) => mentionIds(m.body)));
   const out = rooms.map((r) => {
     const l = last.get(r.id);
-    const base = { id: r.id, key: clientKey(r, x.me), kind: r.kind, unread: Math.min(unread.get(r.id) || 0, 99), mentions: mentioned.get(r.id) || 0,
+    const base = { id: r.id, key: clientKey(r, x.me), kind: r.kind, unread: Math.min(unread.get(r.id) || 0, 99), mentions: mentioned.get(r.id) || 0, muted: muted.has(r.id),
       last: l ? { at: l.created_at, text: preview(l, who, x.me), mine: l.user_id === x.me.id } : null };
     if (r.kind === 'dm') {
       const other = x.members.find((m) => m.id === dmIds(r.key).find((id) => id !== x.me.id));
-      return { ...base, name: other.name, other: { id: other.id, name: other.name, initials: other.initials, label: other.label, manager: other.manager } };
+      return { ...base, name: other.name, other: personOut(other) };
     }
     const ch = CHANNELS.find((c) => c.key === r.key);
-    return { ...base, name: ch.name(x.storeName), order: CHANNELS.indexOf(ch) };
+    return { ...base, name: ch.name(x.storeName), group: ch.group, order: CHANNELS.indexOf(ch) };
   });
   const channels = out.filter((r) => r.kind !== 'dm').sort((a, b) => a.order - b.order).map(({ order, ...r }) => r); // eslint-disable-line no-unused-vars
   const dms = out.filter((r) => r.kind === 'dm' && r.last).sort((a, b) => String(b.last.at).localeCompare(String(a.last.at)));
+  const all = [...channels, ...dms];
+  const pinsToTap = pinnedFor(x, rooms).filter((p) => p.gotIt.canTap && !p.gotIt.mine).length;
   return {
-    store: x.storeName, me: { id: x.me.id, name: x.me.name, manager: x.me.manager },
-    rooms: [...channels, ...dms], unread: [...channels, ...dms].reduce((n, r) => n + r.unread, 0),
-    people: x.members.filter((m) => m.id !== x.me.id).map((m) => ({ id: m.id, name: m.name, initials: m.initials, label: m.label, manager: m.manager })),
+    store: x.storeName, me: { ...personOut(x.me), online: true },
+    rooms: all, unread: all.reduce((n, r) => n + (r.muted ? r.mentions : r.unread), 0), mentions: all.reduce((n, r) => n + r.mentions, 0), pinsToTap,
+    people: x.members.filter((m) => m.id !== x.me.id).map(personOut),
+    total: x.members.length, online: x.members.filter((m) => m.online || m.id === x.me.id).length,
   };
 }
 
@@ -219,25 +260,47 @@ function reactionsFor(x, ids) {
   for (const r of x.db.prepare(`SELECT message_id, emoji, user_id FROM chat_reactions WHERE message_id IN (${ids.map(() => '?').join(',')}) ORDER BY at`).all(...ids)) {
     const list = out.get(r.message_id) || [];
     let e = list.find((z) => z.emoji === r.emoji);
-    if (!e) { e = { emoji: r.emoji, count: 0, mine: false, names: [] }; list.push(e); }
+    if (!e) { e = { emoji: r.emoji, word: SERVICE_WORDS.includes(r.emoji), count: 0, mine: false, names: [] }; list.push(e); }
     e.count++; if (r.user_id === x.me.id) e.mine = true; e.names.push(first(who(r.user_id).name));
     out.set(r.message_id, list);
   }
-  for (const list of out.values()) list.sort((a, b) => b.count - a.count || REACTIONS.indexOf(a.emoji) - REACTIONS.indexOf(b.emoji));
+  // First come stays first (a chip doesn't jump when someone taps it), like Discord.
+  for (const list of out.values()) list.sort((a, b) => b.count - a.count || reactionOrder(a.emoji) - reactionOrder(b.emoji));
   return out;
 }
 
-function msgOut(x, m, who, reactions, quotes) {
+/** Thread summaries for the messages shown: how many replies, the last one's writer and time, and who's in it. */
+function threadsFor(x, ids) {
+  const out = new Map();
+  if (!ids.length) return out;
+  const rows = x.db.prepare(`SELECT thread_id, id, user_id, created_at FROM chat_messages WHERE thread_id IN (${ids.map(() => '?').join(',')}) AND removed_at IS NULL ORDER BY id`).all(...ids);
+  const who = nameBook(x, rows.map((r) => r.user_id));
+  for (const r of rows) {
+    const t = out.get(r.thread_id) || { count: 0, last: null, people: [] };
+    t.count++;
+    const p = who(r.user_id);
+    t.last = { at: r.created_at, name: p.name };
+    if (!t.people.some((z) => z.id === p.id)) t.people.push({ id: p.id, initials: p.initials, manager: p.manager, name: p.name });
+    out.set(r.thread_id, t);
+  }
+  return out;
+}
+
+function msgOut(x, m, who, reactions, quotes, threads = new Map()) {
   const p = who(m.user_id);
-  const base = { id: m.id, at: m.created_at, user: { id: p.id, name: p.name, initials: p.initials, label: p.label, manager: p.manager }, mine: m.user_id === x.me.id };
-  if (m.removed_at) return { ...base, removed: true, reactions: [] };
+  const base = { id: m.id, at: m.created_at, user: personOut({ ...p, online: x.members.find((z) => z.id === p.id)?.online }), mine: m.user_id === x.me.id, threadId: m.thread_id || null };
+  if (m.removed_at) return { ...base, removed: true, reactions: [], thread: threads.get(m.id) || null };
   const q = m.reply_to ? quotes.get(m.reply_to) : null;
+  const parent = m.thread_id && m.also_channel ? quotes.get(m.thread_id) : null;
   const ids = m.mentions ? JSON.parse(m.mentions) : [];
   return { ...base, body: m.body || '', photo: m.photo || null, page: m.page ? JSON.parse(m.page) : null,
     // A progress card is for managers: anyone else (say, someone demoted since) sees that one was shared, not who or how they're doing.
     person: m.person && x.me.manager ? JSON.parse(m.person) : null, personHidden: !!m.person && !x.me.manager,
     mentions: ids.map((id) => ({ id, name: who(id).name })), mentionsMe: ids.includes(x.me.id),
     replyTo: q ? { id: q.id, name: who(q.user_id).name, text: q.removed_at ? 'Message removed' : preview(q, who, x.me) } : null,
+    // A thread reply also sent to the channel says which thread it answers.
+    inThread: parent ? { id: parent.id, name: who(parent.user_id).name, text: parent.removed_at ? 'Message removed' : preview(parent, who, x.me) } : null,
+    thread: threads.get(m.id) || null,
     reactions: reactions.get(m.id) || [], canRemove: m.user_id === x.me.id || x.me.manager };
 }
 
@@ -245,17 +308,17 @@ function msgOut(x, m, who, reactions, quotes) {
 export function roomDetail(x, room, { before } = {}) {
   const db = x.db;
   const members = membersOf(room, x.members);
-  const rows = db.prepare(`SELECT * FROM chat_messages WHERE room_id = ? AND pinned_at IS NULL ${before ? 'AND id < ?' : ''} ORDER BY id DESC LIMIT ?`)
+  const rows = db.prepare(`SELECT * FROM chat_messages WHERE room_id = ? AND pinned_at IS NULL AND ${IN_CHANNEL} ${before ? 'AND id < ?' : ''} ORDER BY id DESC LIMIT ?`)
     .all(...[room.id, ...(before ? [Number(before)] : []), PAGE_SIZE + 1]);
   const hasMore = rows.length > PAGE_SIZE;
   const list = rows.slice(0, PAGE_SIZE).reverse();
   const pinnedRows = db.prepare('SELECT * FROM chat_messages WHERE room_id = ? AND pinned_at IS NOT NULL AND removed_at IS NULL ORDER BY pinned_at DESC').all(room.id);
-  const replyIds = [...new Set(list.map((m) => m.reply_to).filter(Boolean))];
-  const quotes = new Map(replyIds.length ? db.prepare(`SELECT * FROM chat_messages WHERE room_id = ? AND id IN (${replyIds.map(() => '?').join(',')})`).all(room.id, ...replyIds).map((q) => [q.id, q]) : []);
+  const quotes = quotesFor(x, room, [...list, ...pinnedRows]);
   const shown = [...list, ...pinnedRows, ...quotes.values()];
   const who = nameBook(x, [...shown.map((m) => m.user_id), ...shown.flatMap((m) => mentionIds(m.body))]);
   const reactions = reactionsFor(x, [...list, ...pinnedRows].map((m) => m.id));
-  const messages = list.map((m) => msgOut(x, m, who, reactions, quotes));
+  const threads = threadsFor(x, [...list, ...pinnedRows].filter((m) => !m.thread_id).map((m) => m.id));
+  const messages = list.map((m) => msgOut(x, m, who, reactions, quotes, threads));
 
   // Pinned pre-shift notes. Managers see who tapped Got It and who hasn't yet; everyone else sees their own tap.
   const pins = pinnedRows.map((m) => {
@@ -267,7 +330,7 @@ export function roomDetail(x, room, { before } = {}) {
       people: tapped.map((t) => { const p = who(t.user_id); return { id: p.id, name: p.name, initials: p.initials, at: t.at }; }),
       waiting: audience.filter((z) => !tapped.some((t) => t.user_id === z.id)).map((z) => ({ id: z.id, name: z.name, initials: z.initials })),
     });
-    return { ...msgOut(x, m, who, reactions, quotes), title: m.pin_title || 'Pre-shift', pinnedAt: m.pinned_at, gotIt };
+    return { ...msgOut(x, m, who, reactions, quotes, threads), title: m.pin_title || 'Pre-shift', pinnedAt: m.pinned_at, gotIt };
   });
 
   // Pages linked in this room, newest first, each once.
@@ -278,7 +341,7 @@ export function roomDetail(x, room, { before } = {}) {
   }
 
   // "Seen by": under the newest message, everyone in the room (but its writer and you) who has read that far, latest first.
-  const lastMsg = db.prepare('SELECT id, user_id FROM chat_messages WHERE room_id = ? AND removed_at IS NULL ORDER BY id DESC LIMIT 1').get(room.id);
+  const lastMsg = db.prepare(`SELECT id, user_id FROM chat_messages WHERE room_id = ? AND removed_at IS NULL AND ${IN_CHANNEL} ORDER BY id DESC LIMIT 1`).get(room.id);
   let seen = null;
   if (lastMsg) {
     const reads = db.prepare('SELECT user_id, at FROM chat_reads WHERE room_id = ? AND last_read >= ? ORDER BY at DESC').all(room.id, lastMsg.id);
@@ -291,19 +354,164 @@ export function roomDetail(x, room, { before } = {}) {
   const other = room.kind === 'dm' ? members.find((m) => m.id !== x.me.id) || null : null;
   const lastId = db.prepare('SELECT MAX(id) id FROM chat_messages WHERE room_id = ?').get(room.id).id || 0;
   const read = db.prepare('SELECT last_read FROM chat_reads WHERE room_id = ? AND user_id = ?').get(room.id, x.me.id)?.last_read ?? 0;
+  const online = members.filter((m) => m.online || m.id === x.me.id).length;
   return {
     room: {
       id: room.id, key: clientKey(room, x.me), kind: room.kind, rev: room.rev,
       name: other ? other.name : ch.name(x.storeName),
       line: other ? other.label : `${members.length} ${members.length === 1 ? 'member' : 'members'} · ${ch.line}`,
+      topic: other ? other.label : ch.topic, group: ch?.group || null, online,
       about: other ? null : ch.about(x.storeName),
-      other: other && { id: other.id, name: other.name, initials: other.initials, label: other.label, manager: other.manager },
-      members: members.map((m) => ({ id: m.id, name: m.name, initials: m.initials, label: m.label, manager: m.manager })),
+      other: other && personOut(other),
+      members: members.map((m) => ({ ...personOut(m), online: m.online || m.id === x.me.id })),
       canStart: room.kind !== 'everyone' || x.me.manager, canPin: x.me.manager && room.kind !== 'dm', lastId, read,
-      canSendPerson: canSendPerson(x, room, members),
+      canSendPerson: canSendPerson(x, room, members), muted: isMuted(x, room),
     },
-    messages, hasMore, pins, shared, seen, reactions: REACTIONS,
+    messages, hasMore, pins, shared, seen, reactions: QUICK, typing: typingIn(x, room),
   };
+}
+
+/** The messages a list quotes: what each replies to, and the thread a channel copy of a thread reply belongs to. */
+function quotesFor(x, room, list) {
+  const ids = [...new Set(list.flatMap((m) => [m.reply_to, m.also_channel ? m.thread_id : null]).filter(Boolean))];
+  return new Map(ids.length ? x.db.prepare(`SELECT * FROM chat_messages WHERE room_id = ? AND id IN (${ids.map(() => '?').join(',')})`).all(room.id, ...ids).map((q) => [q.id, q]) : []);
+}
+
+/* ---------------------------------- threads (v2) ---------------------------------- */
+/** A thread: the message it hangs off and every reply, oldest first. Anyone in the room can read and reply. */
+export function threadDetail(x, id) {
+  const { m, room } = messageFor(x, id);
+  const parent = m.thread_id ? x.db.prepare('SELECT * FROM chat_messages WHERE id = ?').get(m.thread_id) : m;
+  const replies = x.db.prepare('SELECT * FROM chat_messages WHERE thread_id = ? ORDER BY id').all(parent.id);
+  const quotes = quotesFor(x, room, replies);
+  const shown = [parent, ...replies, ...quotes.values()];
+  const who = nameBook(x, [...shown.map((z) => z.user_id), ...shown.flatMap((z) => mentionIds(z.body))]);
+  const reactions = reactionsFor(x, [parent, ...replies].map((z) => z.id));
+  const ch = CHANNELS.find((c) => c.key === room.key);
+  const members = membersOf(room, x.members);
+  return {
+    room: { id: room.id, key: clientKey(room, x.me), kind: room.kind, rev: room.rev, name: ch ? ch.name(x.storeName) : members.find((z) => z.id !== x.me.id)?.name || '',
+      members: members.map(personOut), canStart: true, canPin: false, canSendPerson: canSendPerson(x, room, members), lastId: 0, read: 0 },
+    parent: msgOut(x, parent, who, reactions, quotes, threadsFor(x, [parent.id])),
+    replies: replies.map((z) => msgOut(x, z, who, reactions, quotes)),
+  };
+}
+
+/* ---------------------------------- mute, typing, mark unread (v2) ---------------------------------- */
+const isMuted = (x, room) => !!x.db.prepare('SELECT 1 FROM chat_mutes WHERE room_id = ? AND user_id = ?').get(room.id, x.me.id);
+/** Mute a room for yourself (its unread drops out of Team Chat's number; @mentions of you still count), or unmute it. */
+export function setMute(x, room, on) {
+  if (on) x.db.prepare('INSERT OR IGNORE INTO chat_mutes(room_id, user_id, company_id, store_id, at) VALUES (?,?,?,?,?)').run(room.id, x.me.id, x.company, x.store, now());
+  else x.db.prepare('DELETE FROM chat_mutes WHERE room_id = ? AND user_id = ?').run(room.id, x.me.id);
+  return isMuted(x, room);
+}
+
+/** "Rosalind is typing…": a ping from the composer, kept in memory, gone after 5 s (or when they send). */
+export const TYPING_MS = 5000;
+const typingNow = new Map(); // room id → Map(user id → until, ms)
+export function setTyping(x, room, on = true, at = Date.now()) {
+  const m = typingNow.get(room.id) || new Map();
+  if (on) m.set(x.me.id, at + TYPING_MS); else m.delete(x.me.id);
+  if (m.size) typingNow.set(room.id, m); else typingNow.delete(room.id);
+}
+/** First names of the people typing in this room now (never you), oldest ping first. */
+export function typingIn(x, room, at = Date.now()) {
+  const m = typingNow.get(room.id);
+  if (!m) return [];
+  for (const [id, until] of m) if (until <= at) m.delete(id);
+  if (!m.size) typingNow.delete(room.id);
+  const members = membersOf(room, x.members);
+  return [...m.keys()].filter((id) => id !== x.me.id).map((id) => members.find((z) => z.id === id)).filter(Boolean).map((z) => first(z.name));
+}
+
+/** Mark Unread: this message and everything after it count as unread again (yours aside). */
+export function markUnread(x, id) {
+  const { m, room } = messageFor(x, id);
+  const to = x.db.prepare('SELECT IFNULL(MAX(id), 0) id FROM chat_messages WHERE room_id = ? AND id < ?').get(room.id, m.id).id;
+  x.db.prepare(`INSERT INTO chat_reads(room_id, user_id, company_id, store_id, last_read, at) VALUES (?,?,?,?,?,?)
+    ON CONFLICT(room_id, user_id) DO UPDATE SET last_read = excluded.last_read, at = excluded.at`).run(room.id, x.me.id, x.company, x.store, to, now());
+  bump(x.db, room.id);
+  return room;
+}
+
+/** Mark All Read (Home's card): every conversation read up to its newest message. */
+export function readAll(x) {
+  const rooms = myRooms(x);
+  ensureReads(x, rooms);
+  for (const r of rooms) {
+    const max = x.db.prepare('SELECT MAX(id) id FROM chat_messages WHERE room_id = ?').get(r.id).id || 0;
+    const cur = x.db.prepare('SELECT last_read FROM chat_reads WHERE room_id = ? AND user_id = ?').get(r.id, x.me.id)?.last_read ?? 0;
+    if (max > cur) { x.db.prepare('UPDATE chat_reads SET last_read = ?, at = ? WHERE room_id = ? AND user_id = ?').run(max, now(), r.id, x.me.id); bump(x.db, r.id); }
+  }
+  return unreadCounts(x);
+}
+
+/* ---------------------------------- Home, the toast, the rail (v2) ---------------------------------- */
+const roomName = (x, room) => (room.kind === 'dm' ? x.members.find((m) => m.id === dmIds(room.key).find((id) => id !== x.me.id))?.name || 'Former teammate' : CHANNELS.find((c) => c.key === room.key).name(x.storeName));
+
+/** Pre-shift notes pinned in these rooms, with your Got It state, newest first. */
+function pinnedFor(x, rooms) {
+  if (!rooms.length) return [];
+  const rows = x.db.prepare(`SELECT * FROM chat_messages WHERE room_id IN (${rooms.map(() => '?').join(',')}) AND pinned_at IS NOT NULL AND removed_at IS NULL ORDER BY pinned_at DESC`).all(...rooms.map((r) => r.id));
+  const mine = new Set(rows.length ? x.db.prepare(`SELECT message_id FROM chat_gotit WHERE user_id = ? AND message_id IN (${rows.map(() => '?').join(',')})`).all(x.me.id, ...rows.map((m) => m.id)).map((r) => r.message_id) : []);
+  const who = nameBook(x, [...rows.map((m) => m.user_id), ...rows.flatMap((m) => mentionIds(m.body))]);
+  return rows.map((m) => {
+    const room = rooms.find((r) => r.id === m.room_id);
+    const p = who(m.user_id);
+    return { id: m.id, key: clientKey(room, x.me), kind: room.kind, roomName: roomName(x, room), title: m.pin_title || 'Pre-shift', at: m.created_at, pinnedAt: m.pinned_at,
+      user: personOut(p), text: preview(m, who, x.me), body: m.body ? plainBody(m.body, who) : '', gotIt: { mine: mine.has(m.id), canTap: m.user_id !== x.me.id } };
+  });
+}
+export const pinnedList = (x) => pinnedFor(x, myRooms(x));
+
+/** Messages that @mention you, newest first (the rail's Mentions). Unread ones are marked. */
+export function mentionsList(x, limit = 30) {
+  const rooms = myRooms(x);
+  if (!rooms.length) return [];
+  ensureReads(x, rooms);
+  const rows = x.db.prepare(`SELECT m.*, r.last_read FROM chat_messages m JOIN chat_reads r ON r.room_id = m.room_id AND r.user_id = ?
+    WHERE m.room_id IN (${rooms.map(() => '?').join(',')}) AND m.removed_at IS NULL AND m.user_id <> ? AND m.mentions IS NOT NULL
+    AND EXISTS (SELECT 1 FROM json_each(m.mentions) j WHERE j.value = ?) ORDER BY m.id DESC LIMIT ?`).all(x.me.id, ...rooms.map((r) => r.id), x.me.id, x.me.id, limit);
+  const who = nameBook(x, [...rows.map((m) => m.user_id), ...rows.flatMap((m) => mentionIds(m.body))]);
+  return rows.map((m) => {
+    const room = rooms.find((r) => r.id === m.room_id);
+    return { id: m.id, key: clientKey(room, x.me), kind: room.kind, roomName: roomName(x, room), user: personOut(who(m.user_id)), text: preview(m, who, x.me),
+      body: m.body ? plainBody(m.body, who) : '', at: m.created_at, unread: m.id > m.last_read, threadId: m.thread_id || null };
+  });
+}
+
+/** Home's "Waiting for you" card (Figma 688:862): what's most important first. @mentions of you (unread), then pre-shift
+ *  notes you haven't tapped Got It on, then direct messages (the newest unread in each). Plus the counts for its summary
+ *  line ("3 new in #front-of-house, plus 1 direct message"). Muted channels don't count, except a mention of you. */
+export function summary(x) {
+  const rooms = myRooms(x);
+  ensureReads(x, rooms);
+  const by = unreadByRoom(x), muted = mutedRooms(x), at = mentionsByRoom(x);
+  const items = [];
+  for (const m of mentionsList(x, 10).filter((z) => z.unread)) items.push({ type: 'mention', ...m });
+  for (const p of pinnedFor(x, rooms).filter((z) => z.gotIt.canTap && !z.gotIt.mine)) items.push({ type: 'preshift', ...p });
+  const dmRooms = rooms.filter((r) => r.kind === 'dm' && (by.get(r.id) || 0) > 0 && !muted.has(r.id));
+  for (const r of dmRooms) {
+    const m = x.db.prepare(`SELECT m.* FROM chat_messages m JOIN chat_reads rd ON rd.room_id = m.room_id AND rd.user_id = ? WHERE m.room_id = ? AND m.user_id <> ?
+      AND m.removed_at IS NULL AND m.id > rd.last_read AND ${counts(x.me.id)} ORDER BY m.id DESC LIMIT 1`).get(x.me.id, r.id, x.me.id);
+    if (!m || items.some((i) => i.type === 'mention' && i.id === m.id)) continue;
+    const who = nameBook(x, [m.user_id, ...mentionIds(m.body)]);
+    items.push({ type: 'dm', id: m.id, key: clientKey(r, x.me), kind: 'dm', roomName: roomName(x, r), user: personOut(who(m.user_id)), text: preview(m, who, x.me), at: m.created_at, count: by.get(r.id) });
+  }
+  const channels = rooms.filter((r) => r.kind !== 'dm').map((r) => ({ key: r.key, name: roomName(x, r), unread: muted.has(r.id) ? at.get(r.id) || 0 : by.get(r.id) || 0 }))
+    .filter((c) => c.unread > 0).sort((a, b) => b.unread - a.unread);
+  const dmCount = rooms.filter((r) => r.kind === 'dm').reduce((n, r) => n + (muted.has(r.id) ? at.get(r.id) || 0 : by.get(r.id) || 0), 0);
+  const { count, mentions } = unreadCounts(x);
+  return { count, mentions, channels, dms: dmCount, items };
+}
+
+/** The toast's message (v2): the newest unread @mention of you, direct message, or pre-shift note waiting on your Got It.
+ *  The app shows one when this changes, on pages other than the chat. Null when there's none. */
+export function latestForToast(x) {
+  const s = summary(x);
+  const when = (i) => (i.type === 'preshift' ? i.pinnedAt : i.at);
+  const top = [...s.items].sort((a, b) => String(when(b)).localeCompare(String(when(a))))[0];
+  return top ? { type: top.type, id: top.id, key: top.key, roomName: top.roomName, kind: top.kind, user: top.user, text: top.text, at: when(top) } : null;
 }
 
 /* ---------------------------------- changes ---------------------------------- */
@@ -416,14 +624,26 @@ export function postMessage(x, room, b) {
     if (!q || q.removed_at) fail(400, 'That message isn’t there anymore.');
     replyTo = q.id;
   }
+  // A thread reply (v2): under a message in this room that isn't itself in a thread. It can go to the channel too.
+  let threadId = null;
+  if (b.threadId) {
+    const t = db.prepare('SELECT * FROM chat_messages WHERE id = ? AND room_id = ?').get(Number(b.threadId), room.id);
+    if (!t || t.removed_at) fail(400, 'That message isn’t there anymore.');
+    threadId = t.thread_id || t.id;
+  }
+  const alsoChannel = threadId && b.alsoChannel ? 1 : 0;
   if (!body && !photo && !page && !person) fail(400, 'Write a message first.');
-  if (room.kind === 'everyone' && !x.me.manager && !replyTo) fail(403, 'Managers start posts in Everyone. Reply to a post to join in.');
+  if (room.kind === 'everyone' && !x.me.manager && !replyTo && !threadId) fail(403, 'Managers start posts in #everyone. Reply to a post to join in.');
   rateLimit(x.me.id);
   const t = now();
-  const id = Number(db.prepare('INSERT INTO chat_messages(room_id, company_id, store_id, user_id, body, photo, page, person, mentions, reply_to, created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)')
+  const id = Number(db.prepare('INSERT INTO chat_messages(room_id, company_id, store_id, user_id, body, photo, page, person, mentions, reply_to, created_at, thread_id, also_channel) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)')
     .run(room.id, x.company, x.store, x.me.id, body || null, photo, page ? JSON.stringify(page) : null, person ? JSON.stringify(person) : null,
-      mentions.length ? JSON.stringify(mentions) : null, replyTo, t).lastInsertRowid);
-  markRead(x, room, id, { quiet: true });
+      mentions.length ? JSON.stringify(mentions) : null, replyTo, t, threadId, alsoChannel).lastInsertRowid);
+  // Your own message is read; a thread reply only moves your place if everything before it was read already.
+  const cur = db.prepare('SELECT last_read FROM chat_reads WHERE room_id = ? AND user_id = ?').get(room.id, x.me.id)?.last_read ?? 0;
+  const gap = db.prepare(`SELECT COUNT(*) n FROM chat_messages m WHERE m.room_id = ? AND m.id > ? AND m.id < ? AND m.user_id <> ? AND m.removed_at IS NULL AND ${counts(x.me.id)}`).get(room.id, cur, id, x.me.id).n;
+  if (!threadId || alsoChannel || !gap) markRead(x, room, id, { quiet: true });
+  setTyping(x, room, false);
   bump(db, room.id);
   return id;
 }
@@ -456,7 +676,7 @@ export function react(x, id, emoji) {
   if (m.removed_at) fail(400, 'That message isn’t there anymore.');
   const has = x.db.prepare('SELECT 1 FROM chat_reactions WHERE message_id = ? AND user_id = ? AND emoji = ?').get(m.id, x.me.id, emoji);
   if (has) x.db.prepare('DELETE FROM chat_reactions WHERE message_id = ? AND user_id = ? AND emoji = ?').run(m.id, x.me.id, emoji);
-  else x.db.prepare('INSERT INTO chat_reactions(message_id, user_id, emoji, company_id, store_id, at) VALUES (?,?,?,?,?,?)').run(m.id, x.me.id, emoji, x.company, x.store, now());
+  else x.db.prepare('INSERT INTO chat_reactions(message_id, user_id, emoji, company_id, store_id, at, kind) VALUES (?,?,?,?,?,?,?)').run(m.id, x.me.id, emoji, x.company, x.store, now(), SERVICE_WORDS.includes(emoji) ? 'word' : 'emoji');
   bump(x.db, room.id);
   return room;
 }
@@ -542,7 +762,10 @@ export function demoAnchor(at = new Date()) {
  *              react?: { emoji: [names] }, unreadBy?: [names] }
  *   script.seen?: { roomKey: [names, oldest read first] } orders "seen by".
  */
-export function seedChat(db, { company, storeRow, script, anchor = demoAnchor() }) {
+//   v2 (Nov 13): message.thread? (a ref: a reply in that message's thread; also? sends it to the channel too),
+//   message.only? ('manager' | 'employee': in that demo only; the employee demo is Marisol's own view), react can use the
+//   service words ("Heard"), script.mute?: { roomKey: [names] }, script.online?: [names] shown on now for the demo's day.
+export function seedChat(db, { company, storeRow, script, anchor = demoAnchor(), role = 'manager', until = null }) {
   const store = storeRow.id;
   const members = storeMembers(db, company, store);
   const id = (name) => members.find((m) => m.name === name)?.id;
@@ -552,11 +775,11 @@ export function seedChat(db, { company, storeRow, script, anchor = demoAnchor() 
   const refs = new Map();
   const cards = new Map();
   const card = (slug) => { if (!cards.has(slug)) cards.set(slug, pageCard(db, storeRow, slug)); return cards.get(slug); };
-  const insMsg = db.prepare(`INSERT INTO chat_messages(room_id, company_id, store_id, user_id, body, photo, page, person, mentions, reply_to, created_at, pinned_at, pinned_by, pin_title)
-    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`);
+  const insMsg = db.prepare(`INSERT INTO chat_messages(room_id, company_id, store_id, user_id, body, photo, page, person, mentions, reply_to, created_at, pinned_at, pinned_by, pin_title, thread_id, also_channel)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`);
   // A person card in a script: a snapshot of a staff member's progress, by name (only between managers, as in the app).
   const personFor = (name) => { const u = db.prepare("SELECT * FROM users WHERE company_id = ? AND store_id = ? AND role = 'staff' AND name = ? AND deleted_at IS NULL").get(company, store, name); return u ? personSnapshot(db, storeRow, u) : null; };
-  const insReact = db.prepare('INSERT OR IGNORE INTO chat_reactions(message_id, user_id, emoji, company_id, store_id, at) VALUES (?,?,?,?,?,?)');
+  const insReact = db.prepare('INSERT OR IGNORE INTO chat_reactions(message_id, user_id, emoji, company_id, store_id, at, kind) VALUES (?,?,?,?,?,?,?)');
   const insGot = db.prepare('INSERT OR IGNORE INTO chat_gotit(message_id, user_id, company_id, store_id, at) VALUES (?,?,?,?,?)');
   const insRead = db.prepare('INSERT OR REPLACE INTO chat_reads(room_id, user_id, company_id, store_id, last_read, at) VALUES (?,?,?,?,?,?)');
 
@@ -564,7 +787,7 @@ export function seedChat(db, { company, storeRow, script, anchor = demoAnchor() 
     const done = []; // [message id, minutes, unreadBy]
     for (const s of [...messages].sort((a, b) => a.at - b.at)) {
       const by = id(s.by);
-      if (!by) continue;
+      if (!by || (s.only && s.only !== role)) continue;
       const pg = s.page ? card(s.page) : null;
       // "@[Marisol Vega]" in a script is a mention: <@her id> in the body (left as plain text if she isn't in the room).
       const inRoom = membersOf(room, members);
@@ -572,12 +795,17 @@ export function seedChat(db, { company, storeRow, script, anchor = demoAnchor() 
       if (!body && !s.photo && !pg) continue;
       const ments = mentionIds(body);
       const pc = s.person && room.kind === 'dm' && membersOf(room, members).every((m) => m.manager) ? personFor(s.person) : null;
+      const thread = s.thread ? refs.get(s.thread) ?? null : null;
       const mid = Number(insMsg.run(room.id, company, store, by, body, s.photo || null, pg ? JSON.stringify(pg) : null, pc ? JSON.stringify(pc) : null, ments.length ? JSON.stringify(ments) : null, s.reply ? refs.get(s.reply) ?? null : null, at(s.at),
-        s.pin ? at(s.at) : null, s.pin ? by : null, s.pin ? `${weekday(at(s.at))} pre-shift` : null).lastInsertRowid);
+        s.pin ? at(s.at) : null, s.pin ? by : null, s.pin ? `${weekday(at(s.at))} pre-shift` : null, thread, thread && s.also ? 1 : 0).lastInsertRowid);
       if (s.ref) refs.set(s.ref, mid);
-      for (const [emoji, names] of Object.entries(s.react || {})) names.forEach((n, i) => id(n) && insReact.run(mid, id(n), emoji, company, store, at(s.at + 1 + i)));
+      for (const [emoji, names] of Object.entries(s.react || {})) {
+        if (!REACTIONS.includes(emoji)) continue;
+        names.forEach((n, i) => id(n) && insReact.run(mid, id(n), emoji, company, store, at(s.at + 1 + i), SERVICE_WORDS.includes(emoji) ? 'word' : 'emoji'));
+      }
       (s.gotIt || []).forEach((n, i) => id(n) && insGot.run(mid, id(n), company, store, at(s.at + 2 + i)));
-      done.push([mid, s.at, s.unreadBy || []]);
+      // Thread-only replies don't move anyone's place (they're read with the channel), so they're left out of "unread from".
+      if (!thread || s.also) done.push([mid, s.at, s.unreadBy || []]);
     }
     // Reads: everyone in the room has read up to just before the first message flagged unread for them.
     const lastAt = done.length ? done[done.length - 1][1] : 0;
@@ -602,6 +830,15 @@ export function seedChat(db, { company, storeRow, script, anchor = demoAnchor() 
     db.prepare('INSERT OR IGNORE INTO chat_rooms(company_id, store_id, key, kind, created_at) VALUES (?,?,?,?,?)').run(company, store, key, 'dm', at(-3 * 24 * 60));
     play(db.prepare('SELECT * FROM chat_rooms WHERE store_id = ? AND key = ?').get(store, key), dm.messages);
   }
+  for (const [key, names] of Object.entries(script.mute || {})) {
+    const room = db.prepare('SELECT * FROM chat_rooms WHERE store_id = ? AND key = ?').get(store, key);
+    for (const n of names) if (room && id(n) && membersOf(room, members).some((m) => m.id === id(n))) db.prepare('INSERT OR IGNORE INTO chat_mutes(room_id, user_id, company_id, store_id, at) VALUES (?,?,?,?,?)').run(room.id, id(n), company, store, now());
+  }
+  if (until) {
+    for (const n of script.online || []) if (id(n)) db.prepare('UPDATE users SET online_until = ? WHERE id = ?').run(until, id(n));
+    // the rest were last in a few hours ago, so they show as off (and People says when they last opened the app)
+    members.filter((m) => !(script.online || []).includes(m.name)).forEach((m, i) => db.prepare('UPDATE users SET last_seen_at = ? WHERE id = ?').run(new Date(Date.now() - (2 + i) * 3600e3).toISOString(), m.id));
+  }
 }
 
 /** The Baldwin demo's chat (Figma 580:670), told with the demo's own menu: its pork chop and Paloma Verde stand in for the
@@ -613,9 +850,9 @@ export const BALDWIN_DEMO_CHAT = {
     everyone: [
       { ref: 'sched', by: R, at: -26 * 60, body: 'Next week’s schedule is up by the host stand. Shift swaps go through me by Friday.', react: { '👍': [DP, TL, OR, WC] } },
       { by: HG, at: -25 * 60, reply: 'sched', body: 'Got it, thank you.' },
-      { ref: 'walkin', by: R, at: -45, body: 'Deep clean of the walk-in is Sunday after brunch. Two people from front of house, please.', react: { '🙏': [TL] } },
-      { by: QA, at: 10, reply: 'walkin', body: 'I can stay Sunday.', unreadBy: [R, MV] },
-      { by: WC, at: 15, reply: 'walkin', body: 'Me too.', unreadBy: [R, MV] },
+      { ref: 'walkin', by: R, at: -45, body: 'Deep clean of the walk-in is Sunday after brunch. Two people from front of house, please.', react: { 'Heard': [DP, OR, MV], '🙏': [TL] } },
+      { by: QA, at: 10, reply: 'walkin', body: 'I can stay Sunday.', unreadBy: [R] },
+      { by: WC, at: 15, reply: 'walkin', body: 'Me too.', unreadBy: [R] },
     ],
     foh: [
       { by: R, at: -3 * 24 * 60 + 10, body: 'Two gluten allergies on the books for the weekend. Know the guide before you go on the floor.', page: 'allergen-guide', react: { '👍': [TL, OR, MV] } },
@@ -623,23 +860,35 @@ export const BALDWIN_DEMO_CHAT = {
       { by: R, at: 0, pin: true, body: 'Focus dish: Bone-In Pork Chop. We taste it at lineup, 4:15.\n86 tonight: seared salmon. Offer the lobster tagliatelle.\nBar: Paloma Verde spec changed. Read the page before your first one.\n7:30, back room: 12-top, two gluten allergies.',
         gotIt: [DP, QA, TL, OR, WC] },
       { by: R, at: 4, body: 'Chef’s plate for tonight. The chop sits on the polenta, and the mostarda goes on at the pass.', photo: '/img/demo/bone-in-pork-chop.jpg',
-        react: { '🔥': [R, DP, QA, TL, OR], '👍': [HG, MV, WC] } },
-      { by: DP, at: 11, body: 'Paloma Verde spec changed today. Check the build before you make your first one. The page is updated.', page: 'signature/paloma-verde', react: { '✅': [QA, TL, MV, OR] } },
-      { by: TL, at: 22, body: 'Can anyone take my Friday close? Family thing. I can pick up Sunday brunch for you.' },
-      { by: R, at: 23, body: '@[Marisol Vega] you asked for more hours this week. Want Teddy’s Friday close?' },
-      { by: MV, at: 25, body: 'I’ve got Friday, Teddy.' },
+        react: { '🔥': [R, DP, QA, TL, OR], 'Heard': [HG, MV, WC], 'Yes Chef': [DP, GA] } },
+      { ref: 'spec', by: DP, at: 11, body: 'Paloma Verde spec changed today. Check the build before you make your first one. The page is updated.', page: 'signature/paloma-verde', react: { '✅': [QA, TL, MV, OR], '👍': [R, HG] } },
+      // a thread under the spec change (v2): three replies, the last Quinn's at 3:48
+      { by: TL, at: 12, thread: 'spec', body: 'Does the salt rim stay?' },
+      { by: DP, at: 13, thread: 'spec', body: 'Half rim now, and the grapefruit wheel goes on top.', react: { '👍': [TL] } },
+      { by: QA, at: 18, thread: 'spec', body: 'Made two at the bar. Tastes right.', react: { '🔥': [DP, TL] } },
+      { ref: 'friday', by: TL, at: 22, body: 'Can anyone take my Friday close? Family thing.', unreadBy: [MV] },
+      { by: TL, at: 22.4, body: 'I can pick up Sunday brunch for you.', unreadBy: [MV] },
+      { by: R, at: 23, body: '@[Marisol Vega] you asked for more hours this week. Want Teddy’s Friday close?', react: { '👀': [TL] }, unreadBy: [MV] },
+      // the employee demo is Marisol's own view: she hasn't answered yet, so the @mention is waiting for her on Home
+      { by: MV, at: 25, reply: 'friday', only: 'manager', body: 'I’ve got Friday, Teddy.', react: { '🙏': [TL, OR], 'Hands': [DP] }, unreadBy: [R] },
     ],
     bar: [
-      { by: R, at: -50, body: 'Bar inventory is Sunday at 10. Dorian and Quinn, plan on an hour.' },
+      { by: R, at: -50, body: 'Bar inventory is Sunday at 10. Dorian and Quinn, plan on an hour.', react: { 'Heard': [DP, QA] } },
       { by: QA, at: 6, body: '@[Rosalind Hart] we’re low on grapefruit soda for the Paloma Verde. Using the backup case from dry storage.', unreadBy: [R] },
-      { by: DP, at: 14, body: 'Juice is batched: lime and lemon, two quarts each.', unreadBy: [R] },
+      { by: DP, at: 14, body: 'Juice is batched: lime and lemon, two quarts each.', react: { '✅': [QA] }, unreadBy: [R] },
       { by: QA, at: 20, body: 'Espresso for the Espresso Negroni is pulled fresh. Good until close.', page: 'signature/espresso-negroni', unreadBy: [R] },
+    ],
+    kitchen: [
+      { by: GA, at: -40, body: 'New allergen sheet is up on the pass. Every plate gets checked against it before it goes.' },
+      { by: GA, at: 9, body: 'Walk-in temperature log is done for today: 36°F.', unreadBy: [R] },
     ],
   },
   seen: { foh: [HG, DP, TL, WC, OR, QA] },
+  mute: { kitchen: [R] }, // Rosalind keeps #kitchen muted, so it shows quiet in her list
+  online: [GA, R, DP, MV, TL], // on now (the design's Members panel); Quinn, Hollis, Odalys and Wynn are off
   dms: [
     { between: [R, TL], messages: [
-      { by: R, at: 24, body: 'Saw Marisol took your Friday close. I’ll update the schedule.' },
+      { by: R, at: 24, body: 'I asked Marisol about your Friday close. I’ll update the schedule once it’s settled.' },
       { by: TL, at: 28, body: 'Thank you! Sunday brunch is mine.', unreadBy: [R] },
     ] },
     { between: [R, OR], messages: [
@@ -655,7 +904,7 @@ export const BALDWIN_DEMO_CHAT = {
       { by: R, at: -2 * 24 * 60 - 30, body: 'No problem. Let’s finish Steps of Service by Friday.' },
     ] },
     { between: [MV, TL], messages: [
-      { by: TL, at: 26, body: 'Thanks for taking Friday. I owe you one.', unreadBy: [MV] },
+      { by: TL, at: 26, body: 'If you can take Friday, I owe you one. Thank you!', unreadBy: [MV] },
     ] },
     { between: [GA, R], messages: [
       { by: GA, at: -24 * 60 - 150, body: 'How’s Hollis doing on the host path?' },
@@ -677,9 +926,9 @@ export const WRENFIELD_DEMO_CHAT = {
     everyone: [
       { ref: 'sched', by: R, at: -26 * 60, body: 'Next week’s schedule is up by the host stand. Shift swaps go through me by Friday.', react: { '👍': [DP, TL, OR, WC] } },
       { by: HG, at: -25 * 60, reply: 'sched', body: 'Got it, thank you.' },
-      { ref: 'walkin', by: R, at: -45, body: 'Deep clean of the walk-in is Sunday after brunch. Two people from front of house, please.', react: { '🙏': [TL] } },
-      { by: QA, at: 10, reply: 'walkin', body: 'I can stay Sunday.', unreadBy: [R, MV] },
-      { by: WC, at: 15, reply: 'walkin', body: 'Me too.', unreadBy: [R, MV] },
+      { ref: 'walkin', by: R, at: -45, body: 'Deep clean of the walk-in is Sunday after brunch. Two people from front of house, please.', react: { 'Heard': [DP, OR, MV], '🙏': [TL] } },
+      { by: QA, at: 10, reply: 'walkin', body: 'I can stay Sunday.', unreadBy: [R] },
+      { by: WC, at: 15, reply: 'walkin', body: 'Me too.', unreadBy: [R] },
     ],
     foh: [
       { by: R, at: -3 * 24 * 60 + 10, body: 'Two shellfish allergies on the books for the weekend. Know the guide before you go on the floor.', page: 'allergen-guide', react: { '👍': [TL, OR, MV] } },
@@ -687,19 +936,32 @@ export const WRENFIELD_DEMO_CHAT = {
       { by: R, at: 0, pin: true, body: 'Focus dish: Wood-Grilled Half Chicken. We taste it at lineup, 4:15.\n86 tonight: seared scallops. Offer the braised lamb shank.\nBar: Smoke Signal spec changed. Read the page before your first one.\n7:30, The Nest: 12-top, two gluten allergies.',
         gotIt: [DP, QA, TL, OR, WC] },
       { by: R, at: 4, body: 'Chef’s plate for tonight. The chicken sits on the crispy potatoes, and the salsa verde goes on at the pass.', photo: '/img/demo-mise/wood-grilled-half-chicken.jpg',
-        react: { '🔥': [R, DP, QA, TL, OR], '👍': [HG, MV, WC] } },
-      { by: DP, at: 11, body: 'Smoke Signal spec changed today. Check the build before you make your first one. The page is updated.', page: 'signature/smoke-signal', react: { '✅': [QA, TL, MV, OR] } },
-      { by: TL, at: 22, body: 'Can anyone take my Friday close? Family thing. I can pick up Sunday brunch for you.' },
-      { by: R, at: 23, body: '@[Marisol Vega] you asked for more hours this week. Want Teddy’s Friday close?' },
-      { by: MV, at: 25, body: 'I’ve got Friday, Teddy.' },
+        react: { '🔥': [R, DP, QA, TL, OR], 'Heard': [HG, MV, WC], 'Yes Chef': [DP, GA] } },
+      { ref: 'spec', by: DP, at: 11, body: 'Smoke Signal spec changed today. Check the build before you make your first one. The page is updated.', page: 'signature/smoke-signal', react: { '✅': [QA, TL, MV, OR], '👍': [R, HG] } },
+      // a thread under the spec change (v2): three replies, the last Quinn's at 3:48
+      { by: TL, at: 12, thread: 'spec', body: 'Does the smoked salt rim stay?' },
+      { by: DP, at: 13, thread: 'spec', body: 'Half rim now, and the grapefruit peel goes on top.', react: { '👍': [TL] } },
+      { by: QA, at: 18, thread: 'spec', body: 'Made two at the bar. Tastes right.', react: { '🔥': [DP, TL] } },
+      { ref: 'friday', by: TL, at: 22, body: 'Can anyone take my Friday close? Family thing.', unreadBy: [MV] },
+      { by: TL, at: 22.4, body: 'I can pick up Sunday brunch for you.', unreadBy: [MV] },
+      { by: R, at: 23, body: '@[Marisol Vega] you asked for more hours this week. Want Teddy’s Friday close?', react: { '👀': [TL] }, unreadBy: [MV] },
+      // the employee demo is Marisol's own view: she hasn't answered yet, so the @mention is waiting for her on Home
+      { by: MV, at: 25, reply: 'friday', only: 'manager', body: 'I’ve got Friday, Teddy.', react: { '🙏': [TL, OR], 'Hands': [DP] }, unreadBy: [R] },
     ],
     bar: [
-      { by: R, at: -50, body: 'Bar inventory is Sunday at 10. Dorian and Quinn, plan on an hour.' },
+      { by: R, at: -50, body: 'Bar inventory is Sunday at 10. Dorian and Quinn, plan on an hour.', react: { 'Heard': [DP, QA] } },
       { by: QA, at: 6, body: '@[Rosalind Hart] we’re low on grapefruit for the Smoke Signal peels. Using the backup case from the walk-in.', unreadBy: [R] },
-      { by: DP, at: 14, body: 'Juice is batched: lime and lemon, two quarts each.', unreadBy: [R] },
+      { by: DP, at: 14, body: 'Juice is batched: lime and lemon, two quarts each.', react: { '✅': [QA] }, unreadBy: [R] },
       { by: QA, at: 20, body: 'Hibiscus syrup for the Hibiscus Daiquiri is made fresh. Good until close.', page: 'signature/hibiscus-daiquiri', unreadBy: [R] },
+    ],
+    kitchen: [
+      { by: GA, at: -40, body: 'New allergen sheet is up on the pass. Every plate gets checked against it before it goes.' },
+      { by: GA, at: 9, body: 'Walk-in temperature log is done for today: 36°F.', unreadBy: [R] },
     ],
   },
   seen: { foh: [HG, DP, TL, WC, OR, QA] },
-  dms: BALDWIN_DEMO_CHAT.dms, // the direct messages don't name the menu, so both demos share them
+  mute: { kitchen: [R] }, // Rosalind keeps #kitchen muted, so it shows quiet in her list
+  online: [GA, R, DP, MV, TL], // on now (the design's Members panel); Quinn, Hollis, Odalys and Wynn are off
+  dms: BALDWIN_DEMO_CHAT.dms, // the direct messages don’t name the menu, so both demos share them
 };
+

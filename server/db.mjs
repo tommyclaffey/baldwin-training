@@ -273,6 +273,22 @@ export const MIGRATIONS = [
   CREATE INDEX prep_counts_item ON prep_counts(item_id, day);
   CREATE INDEX prep_counts_store ON prep_counts(store_id, day);
   `,
+  // 21 (Nov 13, Team Chat v2, Figma 09 · Proposals → 27b, 681:833; Tommy: "love it, build all of it out"; server/chat.mjs).
+  //   chat_messages.thread_id: a reply in the thread under that message; also_channel = 1 when it was sent to the channel too.
+  //   chat_reactions.kind: 'emoji' or 'word' (the service words: 86'd, Heard, Behind, Corner, Hands, Yes Chef). Still one
+  //     row per person per message per reaction.
+  //   chat_mutes: a room someone muted (its unread leaves Team Chat's number; @mentions of them still count).
+  //   users.online_until: holds someone "on now" in Team Chat until then (the demo's cast). Real people are on now when
+  //     they were seen in the last 5 minutes (users.last_seen_at), so this stays empty for them.
+  `
+  ALTER TABLE chat_messages ADD COLUMN thread_id INT;
+  ALTER TABLE chat_messages ADD COLUMN also_channel INT NOT NULL DEFAULT 0;
+  CREATE INDEX chat_messages_thread ON chat_messages(thread_id);
+  ALTER TABLE chat_reactions ADD COLUMN kind TEXT NOT NULL DEFAULT 'emoji';
+  CREATE TABLE chat_mutes(room_id INT NOT NULL, user_id INT NOT NULL, company_id INT NOT NULL, store_id INT NOT NULL, at TEXT,
+    PRIMARY KEY(room_id, user_id));
+  ALTER TABLE users ADD COLUMN online_until TEXT;
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

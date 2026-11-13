@@ -11,7 +11,7 @@ import { useSession } from '../lib/session';
 import { openWelcome } from './DemoTour';
 import { ACADEMY_NAME } from '../lib/brand';
 import svgs from '../content/svgs.json';
-import { hasChat, useChatUnread } from '../chat/unread';
+import { hasChat, useChatState } from '../chat/unread';
 import { openChat } from '../chat/panel';
 
 /** Team Chat (Nov 11, Figma 580:670): under Home, with the design's speech-bubble icon and an unread count. */
@@ -30,6 +30,11 @@ function withChat(n: FNode): FNode {
     return { ...n, c };
   }
   return n.c ? { ...n, c: n.c.map(withChat) } : n;
+}
+/** Chat v2 (Nov 13, Figma 688:862): when someone @mentions you, Team Chat's count turns red and reads "@ 2". */
+function withMentionBadge(n: FNode, mentions: number): FNode {
+  if (n.n === 'Nav · Team Chat') return { ...n, c: (n.c || []).map((c) => (c.n === 'Count' ? { ...c, n: 'Count · Mentions', c: (c.c || []).map((t) => (t.t === 'T' ? { ...t, s: `@ ${mentions}` } : t)) } : c)) };
+  return n.c ? { ...n, c: n.c.map((c) => withMentionBadge(c, mentions)) } : n;
 }
 import { useSignoffCount } from '../admin/manager';
 
@@ -130,7 +135,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const [counts, setCounts] = useState<Record<string, number>>((): Record<string, number> => (generic || sample ? { 'Food Matrix': 0, 'Video Library': 0, 'Photo Library': 0 } : {}));
   useEffect(() => { api<Record<string, number>>('/api/counts').then(setCounts).catch(() => { /* keep the drawn numbers */ }); }, []);
   const chat = hasChat(user);
-  const unread = useChatUnread(chat);
+  const { count: unread, mentions } = useChatState(chat);
   const node = useMemo(() => {
     // Badges: what's really on each page; Quizzes = quizzes still to pass on this phone.
     const live: Record<string, number> = { ...counts, 'Team Chat': unread, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
@@ -141,8 +146,8 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     const mise = currentBrand() === 'mise';
     const look: PillLook = mise && sample ? { label: user!.store?.name || ACADEMY_NAME, tint: MISE.fig, tintO: .42, ink: '#F6D3CE', muted: MISE.ash } : BALDWIN_PILL;
     const shown = user?.demo ? withDemoPill(teamed, look) : teamed;
-    return themeSidebar(shown);
-  }, [quiz, counts, generic, sample, user, mine, chat, unread, manager, signoffs]);
+    return themeSidebar(mentions > 0 && unread > 0 ? withMentionBadge(shown, mentions) : shown);
+  }, [quiz, counts, generic, sample, user, mine, chat, unread, mentions, manager, signoffs]);
   // The pill is drawn with the rest of the sidebar, so it's made a real control here: Tab reaches it, Enter opens the welcome card.
   const nav = useRef<HTMLElement>(null);
   useEffect(() => {
