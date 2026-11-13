@@ -264,7 +264,7 @@ export function ProgressCard({ style, className }: { style: CSSProperties; class
           <circle cx="90" cy="90" r={r} fill="none" style={{ stroke: 'var(--copper)' }} strokeWidth="18" strokeLinecap={frac >= 0.12 ? 'round' : 'butt'}
             strokeDasharray={`${c * frac} ${c}`} transform="rotate(-90 90 90)" opacity={passed ? 1 : 0} />
         </svg>
-        <div className="quiz-ring-count"><strong>{passed} of {QUIZZES.length}</strong><span>passed</span></div>
+        <div className="quiz-ring-count"><strong>{passed}</strong><span>of {QUIZZES.length} passed</span></div>
       </div>
       <span className="quiz-who">{s.name || 'Front of House · Week 1'}</span>
       <div className="quiz-pills">
