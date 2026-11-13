@@ -2903,7 +2903,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
    espresso, for light surfaces; Mise: bone, for dark ones). Each ring keeps its shape and offset; only the colours change
    and the band is added. Prep and the sign-in screens already draw ink / light rings by surface, so they keep theirs. ── */
 :focus-visible:not(.prp *, .prp-sheet *, .si *) { outline-color: var(--c-focus, var(--copper)) !important; }
-:is(a, button, input, select, textarea, summary, [tabindex], [role="button"], [role="checkbox"]):focus-visible:not(.flink:not(.ftext), [data-name^="Photo · "], .is-ctl, .carousel, .row-link, .prp *, .prp-sheet *, .si *, .tc-compose textarea) {
+:is(a, button, input, select, textarea, summary, [tabindex], [role="button"], [role="checkbox"]):focus-visible:not(.flink:not(.ftext), [data-name^="Photo · "], .is-ctl, .carousel, .row-link, .prp *, .prp-sheet *, .si *, .tc-compose textarea, :is(.search, .find-box, .mg-find, .tc-search, .table-finder) input) {
   box-shadow: 0 0 0 2px var(--c-focus-band, var(--ink)) !important;
 }
 /* rings drawn inside the edge (chips, carousels): the band on both sides of the accent */
@@ -2912,7 +2912,9 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .flink:not(.ftext):focus-visible::after, [data-name^="Photo · "].is-ctl:focus-visible::after { box-shadow: inset 0 0 0 3px var(--c-focus, var(--copper)), inset 0 0 0 5px var(--c-focus-band, var(--ink)); }
 /* a linked line of text: the band right at its edge, the accent around it */
 .flink.ftext:focus-visible { outline-offset: 2px; }
+/* search boxes: the box shows focus, not the bare input inside it */
 .search:focus-within, .find-box:focus-within { outline-color: var(--c-focus, var(--copper)); box-shadow: 0 0 0 4px var(--c-focus-band, var(--ink)); }
+.mg-find:focus-within, .tc-search:focus-within, .table-finder:focus-within { outline: 2px solid var(--c-focus, var(--copper)); outline-offset: 0; box-shadow: 0 0 0 4px var(--c-focus-band, var(--ink)); }
 
 /* Table rows that link (Food Matrix, Allergen Guide; Nov 12 accessibility): the row is a role="row" box, and its link is
    stretched over it from the row-header cell. The chat and Archive buttons sit in a cell of their own that draws no box. */

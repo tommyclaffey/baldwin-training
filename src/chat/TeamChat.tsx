@@ -126,6 +126,8 @@ export function TeamChatPage() {
   const showRoom = !!key && (!phone || !!key);
   return (
     <main className={'tc' + (phone ? (key ? ' tc-phone-room' : ' tc-phone-list') : '')} ref={shell} aria-label="Team Chat" id="tc">
+      {/* a phone shows one conversation without the list (and its "Team Chat" h1), so the page keeps a hidden one */}
+      {!showList && <h1 className="sr-only">Team Chat</h1>}
       {showList && <Conversations list={list} error={listErr} active={key} onOpen={(k) => nav('/team-chat/' + k)} />}
       {showRoom && <Conversation key={key} roomKey={key} phone={phone} details={details} setDetails={setDetails} onChanged={loadList} />}
       {!key && !phone && <section className="tc-room tc-empty-room"><p>{list && !list.rooms.length ? 'No conversations yet.' : ''}</p></section>}
@@ -324,7 +326,8 @@ export function Conversation({ roomKey, phone, details, setDetails, onChanged, o
             <p>{r.line}</p>
           </div>
           {r.kind !== 'dm' && !panel && (
-            <button type="button" className="tc-faces" onClick={() => setDetails(!details)} aria-label={`${r.members.length} members. Show details`}>
+            <button type="button" className="tc-faces" onClick={() => setDetails(!details)}>
+              <span className="sr-only">{r.members.length} members. Show details</span>{/* (the faces are initials: the name is in words, Nov 12 scan) */}
               {r.members.slice(0, 5).map((m) => <Avatar key={m.id} p={m} size={30} />)}
               {r.members.length > 5 && <span className="tc-av more" style={{ width: 30, height: 30 }} aria-hidden="true">+{r.members.length - 5}</span>}
             </button>
