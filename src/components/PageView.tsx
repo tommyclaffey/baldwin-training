@@ -2,6 +2,7 @@ import { currentBrand, themePage, THEMES } from '../lib/theme';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { ChatItemsContext, CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
+import { WaitingCard } from '../chat/Waiting';
 import { InteractProvider } from './interact';
 import { QuizModal, ReviewCard, ProgressCard } from '../quiz/QuizCard';
 import { QuizBuilder } from '../quiz/QuizBuilder';
@@ -11,6 +12,16 @@ import { useQuiz } from '../quiz/store';
 const QUIZ_PAGE = '18:2';
 const QUIZ_SLOTS: Record<string, Slot> = { 'Review queue': (p) => <ReviewCard {...p} />, 'Live quiz': (p) => <ReviewCard {...p} />, Progress: (p) => <ProgressCard {...p} />, Builder: (p) => <QuizBuilder {...p} /> };
 const NO_SLOTS: Record<string, Slot> = {};
+// Team Chat v2 (Nov 13, Figma 688:862): Home's "Waiting for you" card, between the greeting and the day's cards.
+const HOME_SLOTS: Record<string, Slot> = { 'Chat · Waiting': (p) => <WaitingCard {...p} /> };
+function withWaitingSlot(main: FNode): FNode {
+  const dash = main.c?.find((c) => c.n === 'Section · Dashboard');
+  if (!dash?.c || dash.c.some((c) => c.n === 'Chat · Waiting')) return main;
+  const at = dash.c.findIndex((c) => c.n === 'Greeting');
+  const slot = { t: 'F', n: 'Chat · Waiting', w: dash.w, sh: 'F', sv: 'H' } as FNode;
+  const c = [...dash.c.slice(0, at + 1), slot, ...dash.c.slice(at + 1)];
+  return { ...main, c: main.c!.map((x) => (x === dash ? { ...dash, c } : x)) };
+}
 import { PRODUCT_NAME } from '../lib/brand';
 import { api, canEdit } from '../lib/api';
 import { useSession } from '../lib/session';
@@ -253,7 +264,7 @@ export function PageView() {
 
   const isQuiz = page.id === QUIZ_PAGE;
   const isHome = page.id === '4:2';
-  const { x, y, ...drawnMain } = isQuiz ? quizPage(page.main, quiz) : isHome ? trainingCard([page.main], quiz)[0] : page.main;
+  const { x, y, ...drawnMain } = isQuiz ? quizPage(page.main, quiz) : isHome ? withWaitingSlot(trainingCard([page.main], quiz)[0]) : page.main;
   void x; void y;
   // Edit Mode: fields where the server marked them; off, the editing-only parts go.
   const main = editView(drawnMain as FNode, editing);
@@ -261,7 +272,7 @@ export function PageView() {
   return (
     <NavContext.Provider value={entry.nav}>
       <CompactContext.Provider value={compact}>
-          <SlotContext.Provider value={isQuiz ? QUIZ_SLOTS : NO_SLOTS}>
+          <SlotContext.Provider value={isQuiz ? QUIZ_SLOTS : isHome ? HOME_SLOTS : NO_SLOTS}>
           <ChatItemsContext.Provider value={chatLookup}>
           <InteractProvider key={shown.file}>
           <PageEditContext.Provider value={page.edit || null}>

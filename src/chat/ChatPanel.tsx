@@ -10,6 +10,7 @@ import { useSession } from '../lib/session';
 import { closeChat, setPanelRoom, useChatPanel } from './panel';
 import { Conversation, Conversations, I, StagedCard, useIsPhone, usePoll, type List } from './TeamChat';
 import { hasChat, setChatUnread } from './unread';
+import { ChatToast } from './Waiting';
 
 const onChatPage = (p: string) => p === '/team-chat' || p.startsWith('/team-chat/');
 
@@ -25,7 +26,8 @@ export function ChatPanelHost() {
     document.body.classList.toggle('tcp-open', shown);
     return () => document.body.classList.remove('tcp-open');
   }, [shown]);
-  return shown ? <ChatPanel /> : null;
+  // v2 (Nov 13): the toast for a new @mention, DM or pre-shift note lives here too, so every page (book and admin) has it.
+  return <>{shown ? <ChatPanel /> : null}{hasChat(user) && <ChatToast />}</>;
 }
 
 function ChatPanel() {
@@ -36,7 +38,7 @@ function ChatPanel() {
   const [list, setList] = useState<List | null>(null);
   const [err, setErr] = useState('');
   const loadList = useCallback(async () => {
-    try { const l = await api<List>('/api/chat'); setList(l); setChatUnread(l.unread); setErr(''); }
+    try { const l = await api<List>('/api/chat'); setList(l); setChatUnread(l.unread, l.mentions); setErr(''); }
     catch (e) { setErr(e instanceof ApiError ? e.message : 'Team Chat didn’t load. Try again.'); }
   }, []);
   useEffect(() => { void loadList(); }, [loadList]);
@@ -49,7 +51,8 @@ function ChatPanel() {
   useEffect(() => {
     const esc = (e: KeyboardEvent) => {
       if (e.key !== 'Escape' || e.defaultPrevented) return;
-      if (ref.current?.querySelector('.tc-pop')) return;
+      if (ref.current?.querySelector('.tc-pop, .tc-menu, .tc-side')) return;
+      if (document.querySelector('.tc-picker, .tc-sheet')) return;
       if (document.querySelector('.dw-scrim, .tour-card, .eip, .qm-scrim')) return; // the demo's cards and the edit sheet own Escape
       closeChat();
     };

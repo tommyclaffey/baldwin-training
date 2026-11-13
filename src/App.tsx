@@ -23,7 +23,8 @@ import { currentBrand } from './lib/theme';
 // The Baldwin's look is the default.
 import { CertificatePage } from './path/Certificate';
 import { TeamChatPage } from './chat/TeamChat';
-import { hasChat, useChatUnread } from './chat/unread';
+import { hasChat, useChatState } from './chat/unread';
+import { openChat } from './chat/panel';
 import { ChatPanelHost } from './chat/ChatPanel';
 import { PrepPage } from './prep/PrepPage';
 
@@ -60,7 +61,7 @@ function Book() {
   const strayDemo = !!user?.demo && !demoTab();
   useEffect(() => { if (strayDemo) void leaveDemo().then(refresh); }, [strayDemo]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const unread = useChatUnread(hasChat(user));
+  const { count: unread, mentions } = useChatState(hasChat(user));
   if (!loaded || strayDemo) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
   if (!user) return <BookSignIn />;
   return (
@@ -79,8 +80,15 @@ function Book() {
         </div>
         <div className="mobile-tools">
         <EditModeToggle />
-        <button className="menu-btn" aria-expanded={menu} aria-controls="side" aria-label={(menu ? 'Close menu' : 'Open menu') + (unread ? `, ${unread} unread in Team Chat` : '')} onClick={() => setMenu((m) => !m)}>
-          {unread > 0 && !menu && <span className="menu-count" aria-hidden="true">{unread > 99 ? '99+' : unread}</span>}
+        {/* Chat v2 (Nov 13, Figma 690:862): Team Chat on the phone bar, with its count (red "@ N" when you're mentioned). */}
+        {hasChat(user) && (
+          <button type="button" className="chat-btn" aria-haspopup="dialog" onClick={() => openChat()}
+            aria-label={'Team Chat' + (mentions && unread ? `, ${mentions} ${mentions === 1 ? 'mention' : 'mentions'} of you` : '') + (unread ? `, ${unread} unread` : '')}>
+            <svg width="24" height="24" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M14.52 8.15a5.67 5.67 0 0 1-8.29 5.03l-3.4.99.99-3.12A5.67 5.67 0 1 1 14.52 8.15Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" /></svg>
+            {unread > 0 && <span className={'menu-count' + (mentions ? ' at' : '')} aria-hidden="true">{mentions ? `@ ${mentions}` : unread > 99 ? '99+' : unread}</span>}
+          </button>
+        )}
+        <button className="menu-btn" aria-expanded={menu} aria-controls="side" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu((m) => !m)}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
             {menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
           </svg>

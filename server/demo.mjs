@@ -185,7 +185,10 @@ export function startDemo(db, key, which = 'baldwin') {
     if (pick.role === 'staff') addUser(DEMO_ROLES.manager.name, 'manager', null);
     // The owner (Nov 11, Send to Team): a second manager in the store, so a manager's progress card has someone to go to.
     addUser(DEMO_OWNER, 'owner', null);
-    seedChat(db, { company: co, storeRow, script: mise ? WRENFIELD_DEMO_CHAT : BALDWIN_DEMO_CHAT });
+    // Chat v2 (Nov 13): the employee demo is Marisol's own view (her answer to the @mention isn't there yet); the cast who are
+    // "on now" stay on for the demo's day.
+    seedChat(db, { company: co, storeRow, script: mise ? WRENFIELD_DEMO_CHAT : BALDWIN_DEMO_CHAT, role: pick.role === 'staff' ? 'employee' : 'manager',
+      until: new Date(Date.now() + LIFETIME_MS).toISOString() });
     // Prep tracker (Nov 12): eight weeks of batches, waste and run-outs by the two bartenders and the manager, so Today, the item pages and Reports are full. Shown as demo data on screen.
     const lead = db.prepare("SELECT id FROM users WHERE company_id = ? AND role = 'manager' ORDER BY id LIMIT 1").get(co)?.id;
     seedDemoPrep(db, { company: co, storeRow, bartenders, lead });
@@ -194,8 +197,28 @@ export function startDemo(db, key, which = 'baldwin') {
     for (const [title, yt] of [['How I Make an Old Fashioned · Anders Erickson', 'pdcrJ5V7YKM'], ['How to Make a Martini · Anders Erickson', 'izZsjqnADAA'], ['The Daiquiri · Anders Erickson', '71jQRf5UrpE'], ['How to Open a Bottle of Wine · Court of Master Sommeliers', '9R3JBuXcNjQ']])
       db.prepare('INSERT INTO media(kind,title,youtube_id,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?)').run('youtube', title, yt, me, t, co, st);
     db.exec('COMMIT');
+    liveMessage(db, co, me);
     return { token: createSession(db, me, { days: 1 }), userId: me };
   } catch (e) { db.exec('ROLLBACK'); forget(null); throw e; } // nothing cached from the half-made copy survives
+}
+
+/** Team Chat v2 (Nov 13): a direct message lands a little after the demo opens, so the visitor sees the toast that new
+ *  messages bring on any page. Teddy writes; it's skipped if the demo has gone (or been restarted) by then. */
+export const LIVE_DM_MS = 45_000;
+function liveMessage(db, co, me) {
+  const t = setTimeout(() => {
+    try {
+      const teddy = db.prepare("SELECT id, store_id FROM users WHERE company_id = ? AND name = 'Teddy Lam'").get(co);
+      if (!teddy || !db.prepare('SELECT 1 FROM users WHERE id = ? AND company_id = ?').get(me, co)) return;
+      const key = `dm:${Math.min(me, teddy.id)}:${Math.max(me, teddy.id)}`;
+      db.prepare('INSERT OR IGNORE INTO chat_rooms(company_id, store_id, key, kind, created_at) VALUES (?,?,?,?,?)').run(co, teddy.store_id, key, 'dm', now());
+      const room = db.prepare('SELECT id FROM chat_rooms WHERE store_id = ? AND key = ?').get(teddy.store_id, key);
+      db.prepare('INSERT INTO chat_messages(room_id, company_id, store_id, user_id, body, created_at) VALUES (?,?,?,?,?,?)')
+        .run(room.id, co, teddy.store_id, teddy.id, 'Running five minutes late for lineup. Save me a taste of the focus dish?', now());
+      db.prepare('UPDATE chat_rooms SET rev = rev + 1 WHERE id = ?').run(room.id);
+    } catch { /* the demo is gone, or the database closed: nothing to do */ }
+  }, LIVE_DM_MS);
+  t.unref?.();
 }
 
 /* Bottle scanner in the demo (Nov 12, Tommy: "scanner sounds good"): every photo a demo saves lives in its own folder,
@@ -225,7 +248,7 @@ export function dropDemo(db, id) {
     db.prepare('DELETE FROM manual_reads WHERE user_id = ?').run(u);
     db.prepare('DELETE FROM quiz_marks WHERE user_id = ?').run(u);
   }
-  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'program_acks', 'prep_items', 'prep_batches', 'prep_events', 'prep_counts']) {
+  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'chat_mutes', 'program_acks', 'prep_items', 'prep_batches', 'prep_events', 'prep_counts']) {
     const exists = db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(t);
     if (!exists) continue;
     const cols = db.prepare(`PRAGMA table_info(${t})`).all().map((c) => c.name);

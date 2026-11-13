@@ -55,7 +55,8 @@ test('channels by job: a server sees Everyone and Front of House; a bartender al
   assert.deepEqual(await keys(ben), ['everyone', 'foh', 'bar']);
   assert.deepEqual(await keys(cal), ['everyone'], 'no job yet: only Everyone');
   assert.deepEqual(await keys(owner), ['everyone', 'foh', 'bar', 'kitchen']);
-  assert.equal((await owner('/api/chat')).data.rooms[0].name, 'The Baldwin · Everyone');
+  assert.equal((await owner('/api/chat')).data.rooms[0].name, 'everyone', 'v2: Discord-style names (#everyone)');
+  assert.equal((await owner('/api/chat')).data.rooms[0].group, 'Announcements');
   assert.equal((await room(ana, 'bar')).status, 404, 'a server can’t open Bar');
   assert.equal((await say(ana, 'bar', { body: 'hi' })).status, 404, 'or post in it');
   assert.equal((await room(ana, 'kitchen')).status, 404);
@@ -117,7 +118,7 @@ test('unread counts per conversation and in total; reading clears them; "seen by
   assert.ok(m1 > 0);
   // polling: nothing new is a one-line answer
   const rev = (await room(ana, 'foh')).data.room.rev;
-  assert.deepEqual((await ana(`/api/chat/room/foh?rev=${rev}`)).data, { same: true, rev });
+  assert.deepEqual((await ana(`/api/chat/room/foh?rev=${rev}`)).data, { same: true, rev, typing: [] });
 });
 
 test('direct messages: anyone in the store; nobody else can read them; another store can’t be reached', async () => {
@@ -134,8 +135,8 @@ test('direct messages: anyone in the store; nobody else can read them; another s
   assert.equal((await ana('/api/chat/search?q=cover')).data.results.length, 1);
   // J.Baldwin's: its own Everyone, and The Baldwin's people and messages are out of reach
   const joList = (await jo('/api/chat')).data;
-  assert.equal(joList.rooms[0].name.endsWith('· Everyone'), true);
-  assert.ok(!joList.rooms[0].name.startsWith('The Baldwin'));
+  assert.equal(joList.rooms[0].key, 'everyone');
+  assert.notEqual(joList.store, 'The Baldwin', 'its own store');
   assert.ok(!joList.people.some((p) => p.name === 'Ana Server'), 'other stores’ people are invisible');
   assert.equal((await say(jo, `dm-${ids['Ana Server']}`, { body: 'hi' })).status, 404);
   assert.equal((await say(ana, `dm-${ids['Jo Jbs']}`, { body: 'hi' })).status, 404);
@@ -257,8 +258,11 @@ test('the demo opens on the design’s conversation, with uploads off; its chat 
   await mgr('/api/demo/start', { method: 'POST', body: { role: 'manager' } });
   const list = (await mgr('/api/chat')).data;
   const by = Object.fromEntries(list.rooms.map((r) => [r.kind === 'dm' ? r.name : r.key, r.unread]));
-  assert.deepEqual([by.everyone, by.foh, by.bar, by.kitchen, by['Teddy Lam'], by['Odalys Ruiz'], by['Quinn Abbott'], by['Hollis Grant']], [2, 0, 3, 0, 1, 1, 0, 0]);
-  assert.equal((await mgr('/api/chat/unread')).data.count, 7, 'Team Chat 7, as in the design');
+  assert.deepEqual([by.everyone, by.foh, by.bar, by.kitchen, by['Teddy Lam'], by['Odalys Ruiz'], by['Quinn Abbott'], by['Hollis Grant']], [2, 1, 3, 1, 1, 1, 0, 0]);
+  // v2: #kitchen is muted for Rosalind (its 1 doesn't count); Marisol's answer in #front-of-house is new for her
+  assert.equal(list.rooms.find((r) => r.key === 'kitchen').muted, true);
+  assert.equal((await mgr('/api/chat/unread')).data.count, 8, 'Team Chat 8: 2 + 1 + 3 + two DMs');
+  assert.equal((await mgr('/api/chat/unread')).data.mentions, 1, 'Quinn’s @Rosalind in #bar');
   const foh = (await room(mgr, 'foh')).data;
   assert.equal(foh.pins[0].user.name, 'Rosalind Hart');
   assert.match(foh.pins[0].body, /^Focus dish: /);
