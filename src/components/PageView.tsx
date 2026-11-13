@@ -1,4 +1,4 @@
-import { currentBrand, themePage, THEMES } from '../lib/theme';
+import { currentBrand, hasPageTitle, themePage, THEMES } from '../lib/theme';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { ChatItemsContext, CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
@@ -279,6 +279,8 @@ export function PageView() {
           {loading && <div className="nav-progress" role="progressbar" aria-label="Loading page" />}
           <main ref={ref} key={shown.file} aria-busy={loading || undefined} className={'page page-enter' + (compact ? ' compact' : '')} style={{ backgroundColor: page.bg }}>
             {editing && <EditModeBar page={page.edit || null} hasAdd={hasAdd} floating={compact} width={compact ? '100%' : DESIGN_W} zoom={zoom < 1 ? zoom : undefined} />}
+            {/* Every page has one h1: the drawn title (FigmaNode), or this hidden one when the design has none. */}
+            {!hasPageTitle(main) && <h1 className="sr-only">{entry.title}</h1>}
             <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
             {/* Send to Team and Edit Page: one row, the same spot on every page (phones: floating together, bottom right). */}
             {!editing && ((hasChat(session.user) && shareable(entry)) || (entry.file.startsWith('e') && COLLECTION_OF[entry.section])) && (

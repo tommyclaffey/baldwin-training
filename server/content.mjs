@@ -21,7 +21,7 @@ import { fillBackBar, bottlePage, SPIRIT_FILLER } from './backbar.mjs';
 import { fillSpecs, SPECS_PATH } from './specs.mjs';
 import { WINE_FILLER } from './winelist.mjs';
 import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './winelist.mjs';
-import { wire } from './interact.mjs';
+import { wire, tableRoles } from './interact.mjs';
 import { libraryVideos } from './videos.mjs';
 import { fillHome } from './home.mjs';
 import { fillSample, sampleSommAbout } from './sample.mjs';
@@ -549,7 +549,7 @@ export function assemble(db, file) {
     genericize(page, slug, { topBar: true, store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: ordered(db, 'wine').length, beer: ordered(db, 'beer').length } });
   }
   // Managers get an Add row after every list of dishes, cocktails, wines and bottles (staff never see them).
-  if (page && !entry && canOpen(SCOPE.user, '/admin/pages/recipe/new')) addRows(page, baseIndex().find((x) => x.file === file)?.slug, db, SCOPE.store);
+  if (page && !entry && canOpen(SCOPE.user, '/admin/pages/recipe/new')) { addRows(page, baseIndex().find((x) => x.file === file)?.slug, db, SCOPE.store); tableRoles(page); } // (the "+ Add" rows join their table)
   // Edit Mode (Nov 11): what this person can change in place on the page (nothing, for staff).
   if (page && canOpen(SCOPE.user, '/admin')) bindEdits(db, page, { entry, slug: baseIndex().find((x) => x.file === file)?.slug, title: baseIndex().find((x) => x.file === file)?.title,
     tpl: entry && COLLECTIONS[entry.collection]?.template ? basePage(COLLECTIONS[entry.collection].template) : null,

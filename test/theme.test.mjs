@@ -24,7 +24,11 @@ test('a drawn page comes out unchanged in The Baldwin, repainted in Mise', () =>
   const main = { t: 'F', n: 'Main', w: 1176, h: 800, lm: 'V', c: [
     { t: 'F', n: 'Card', w: 500, h: 200, r: 18, lm: 'V', f: [{ c: '#FBF9F5' }], st: '#E4DCCF', c: [txt('SECTION', { fs: 'ExtraBold', z: 26 }), txt('BODY COPY', { f: [{ c: '#5E574F' }] }), txt('LABEL', { fs: 'Bold', z: 11 })] },
   ] };
-  assert.deepEqual(T.themePage(page(main), T.THEMES.baldwin).main, main);
+  // (paint only: the heading level and a photo's spoken name are semantics, added for every brand; Nov 12 accessibility)
+  const paintOf = (n) => { const { hd, alt, ...rest } = n; void hd; void alt; return rest.c ? { ...rest, c: rest.c.map(paintOf) } : rest; };
+  const b = T.themePage(page(main), T.THEMES.baldwin).main;
+  assert.deepEqual(paintOf(b), main);
+  assert.equal(b.c[0].c[0].hd, 2, 'the section heading is an h2');
   const m = T.themePage(page(main), T.THEMES.mise).main.c[0];
   assert.equal(m.f[0].c, '#FBF8F2'); assert.equal(m.st, '#D9CFBF');
   assert.equal(m.c[0].s, 'Section'); assert.equal(m.c[0].fs, 'SemiBold');

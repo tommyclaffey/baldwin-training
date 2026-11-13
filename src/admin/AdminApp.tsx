@@ -66,7 +66,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
         <div className="admin-brand">
           {/* Nov 11: a Mise-brand company (the Mise demo) gets the Mise Academy lockup and its restaurant's name on the demo line */}
           <Link to="/" className="admin-logo">{user.brand === 'mise' ? <img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy" /> : <img src="/img/logo-white.png" alt="The Baldwin" />}</Link>
-          {user.demo && <button type="button" className="demo-line admin-demo" onClick={openWelcome} aria-label="Demo: open the welcome card"><span>{user.brand === 'mise' ? user.store?.name || ACADEMY_NAME : ACADEMY_NAME}</span><span className="demo-pill">DEMO</span></button>}
+          {user.demo && <button type="button" className="demo-line admin-demo" onClick={openWelcome} aria-haspopup="dialog"><span>{user.brand === 'mise' ? user.store?.name || ACADEMY_NAME : ACADEMY_NAME}</span>{' '}<span className="demo-pill">DEMO</span></button>}
         </div>
         <span className="admin-tag">{isSuper ? 'Super Admin' : 'Admin'}</span>
         {isSuper && <span className="admin-working">Working in <strong>{user.workingInName || '—'}</strong> · <NavLink to="/admin/super">Switch</NavLink></span>}

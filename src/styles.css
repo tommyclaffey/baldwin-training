@@ -48,6 +48,8 @@ img { max-width: 100%; }
 
 /* ---- rendered Figma nodes ---- */
 .fn { box-sizing: border-box; }
+/* Drawn headings are real h1–h3 (Nov 12, accessibility): they look exactly like the drawn text they replace. */
+.ftext:is(h1, h2, h3) { margin: 0; font-size: inherit; font-weight: inherit; }
 .fsvg svg { width: 100%; height: 100%; display: block; }
 .flink { cursor: pointer; transition: opacity .15s ease, transform .15s ease, box-shadow .15s ease; }
 .flink:hover { opacity: .86; }
@@ -164,7 +166,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, .flink:focus-visible
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; } /* (the toggle knob is an ::after; Nov 12 scan) */
+  * { scroll-behavior: auto !important; }
 }
 
 .demo-flag a { color: var(--copper-text); pointer-events: auto; font-weight: 700; }
@@ -533,7 +536,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   [data-name^="Task"] > .ftext, [data-name^="Option · "] > .ftext { flex: 1 1 auto !important; width: auto !important; min-width: 0; }
   [data-name^="Task"] [data-name="Checkbox"], [data-name^="Option · "] [data-name="Checkbox"] { flex: 0 0 auto !important; }
   /* A full-width photo in a column (e.g. the floor plan) scales with the width instead of collapsing. */
-  .fx-v > [role="img"].wide { flex: none !important; height: auto !important; }
+  .fx-v > .fphoto.wide { flex: none !important; height: auto !important; }
   /* Food Matrix filters: options sit side by side as chips, so the dishes start near the top. */
   [data-name="Filters"] > [data-name^="Filter · "] { flex-direction: row !important; flex-wrap: wrap !important; gap: 8px 16px !important; }
   [data-name="Filters"] > [data-name^="Filter · "] > .ftext { flex: 1 1 100% !important; }
@@ -786,7 +789,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   /* Photo strips: an even 2-up grid. */
   .fx-h:has(> [data-name^="Photo · "]) { display: grid !important; grid-template-columns: 1fr 1fr; width: 100% !important; align-self: stretch !important; } /* Nov 5: Home's strip shrank to 202px */
   .fx-h:has(> [data-name^="Photo · "]) > [data-name^="Photo · "] { width: auto !important; }
-  .fx-h:has(> [data-name^="Photo · "]) > [data-name^="Photo · "] [role="img"] { width: 100% !important; height: auto !important; }
+  .fx-h:has(> [data-name^="Photo · "]) > [data-name^="Photo · "] .fphoto { width: 100% !important; height: auto !important; }
   /* Beer taps: three across. */
   [data-name="Handles"] { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
 }
@@ -851,7 +854,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   .page > .fn { gap: 28px !important; }
   /* Signature cocktail cards: the photo spans the card. */
   [data-name^="Spec · "] { flex-direction: column !important; }
-  [data-name^="Spec · "] > [role="img"] { width: 100% !important; height: auto !important; aspect-ratio: 4 / 3 !important; flex: none !important; }
+  [data-name^="Spec · "] > .fphoto { width: 100% !important; height: auto !important; aspect-ratio: 4 / 3 !important; flex: none !important; }
   [data-name^="Spec · "] > [data-name="Spec"] { width: 100% !important; }
   /* Carousel head: the note on its own line, then the count and both arrows together on the right. */
   [data-name="Band head"] { flex-direction: column !important; align-items: stretch !important; gap: 10px !important; }
@@ -1369,7 +1372,7 @@ body.eip-lock { overflow: hidden; }
   .side .account { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 }
 /* Home hero (Nov 6, Tommy: "the pic not going vertical full width"): the photo fills the card however tall the copy makes it. */
-[data-name^="Hero · "] > [data-name="Photo"] > [role="img"], [data-name^="Hero · "] > [data-name="Photo"] > [data-name^="IMG/"] { top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; }
+[data-name^="Hero · "] > [data-name="Photo"] > .fphoto, [data-name^="Hero · "] > [data-name="Photo"] > [data-name^="IMG/"] { top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; }
 [data-name^="Hero · "] > [data-name="Copy"] > .ftext { text-wrap: balance; } /* "BRAISED / SHORT RIB", never one word alone on a line */
 
 /* ---- Photo focus (Nov 6): a zoomed photo sits on a layer behind the box's children, scaled around its focus point. ---- */
@@ -1674,7 +1677,7 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 }
 .mp-cert-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; margin: 2px 0 0; font: 600 13px 'Archivo', sans-serif; }
 .mp-cert-row .mp-cert.on { color: #2F6B45; }
-.mp-cert-row a { color: var(--copper-dk); font-weight: 700; text-decoration: none; }
+.mp-cert-row a { color: var(--copper-dk); font-weight: 700; text-decoration: none; padding-block: 2px; margin-block: -2px; } /* a 24 px tap target, nothing moves (Nov 12 scan) */
 .mp-cert-row a:hover { text-decoration: underline; }
 .mp-cert-row a:focus-visible { outline: 2px solid var(--copper-dk); outline-offset: 2px; }
 
@@ -1884,7 +1887,7 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .pp-section:last-child { border-bottom: 0; }
 .pp-path { padding-bottom: 0; }
 .pp-path-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding-bottom: 8px; }
-.pp-path-head h3 { margin: 4px 0 0; font-size: 19px; font-weight: 700; }
+.pp-path-head h2 { margin: 4px 0 0; font-size: 19px; font-weight: 700; } /* (was an h3 under no h2, Nov 12 scan) */
 .pp-stage-title { margin: 14px 0 4px; display: flex; justify-content: space-between; gap: 8px; font-size: 15px; }
 .pp-stage-title small { color: var(--muted); font-size: 13px; }
 .pp-step { display: grid; grid-template-columns: 22px auto minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 22px; margin: 0 -22px; border-top: 1px solid var(--hair); }
@@ -2578,7 +2581,7 @@ body.eip-lock .page-tools.floating, body.menu-lock .page-tools.floating { displa
 .tc-sheet-msg { position: relative; margin: 0 12px 12px; display: flex; gap: 10px; padding: 12px 14px; border-radius: 14px; background: var(--card); box-shadow: 0 10px 30px rgba(0,0,0,.25); font-size: 15px; color: var(--ink); }
 .tc-sheet-msg small { color: var(--muted); font-size: 12.5px; }
 .tc-sheet-text { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-top: 2px; }
-.tc-sheet:focus { outline: none; }
+
 .tc-sheet { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 10px 16px calc(16px + env(safe-area-inset-bottom, 0px)); border-radius: 22px 22px 0 0; background: var(--cream); box-shadow: 0 -10px 30px rgba(0,0,0,.18); max-height: 80dvh; overflow-y: auto; }
 .tc-sheet-grab { align-self: center; width: 40px; height: 5px; border-radius: 999px; background: var(--border-2); margin-bottom: 4px; }
 .tc-sheet-quick { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
@@ -2752,15 +2755,15 @@ body.tcp-open .chat-toast { display: none; }
   opacity: 0; pointer-events: none; transition: opacity .16s ease, background-color .12s ease, color .12s ease; }
 .item-chat svg { display: block; }
 .item-chat.row { top: 50%; transform: translateY(-50%); }
-.has-chat:hover > .item-chat, .has-chat:focus-within > .item-chat, .item-chat:focus-visible, .pp-row-wrap:hover > .item-chat, .pp-row-wrap:focus-within > .item-chat { opacity: 1; pointer-events: auto; }
+.has-chat:hover > .item-chat, .has-chat:focus-within > .item-chat, .has-chat:hover > .row-tools > .item-chat, .has-chat:focus-within > .row-tools > .item-chat, .item-chat:focus-visible, .pp-row-wrap:hover > .item-chat, .pp-row-wrap:focus-within > .item-chat { opacity: 1; pointer-events: auto; }
 .item-chat:hover { background: var(--ink); color: #FFFFFF; border-color: #FFFFFF; }
 .item-chat:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
 /* The link's own hover fade and press nudge don't reach the button. */
-.has-chat:hover:has(> .item-chat:hover) { opacity: 1; }
-.has-chat:active:has(> .item-chat:active) { transform: none; }
+.has-chat:hover:has(> .item-chat:hover, > .row-tools > .item-chat:hover) { opacity: 1; }
+.has-chat:active:has(> .item-chat:active, > .row-tools > .item-chat:active) { transform: none; }
 @media (hover: none) {
-  .has-chat > .item-chat.row, .has-chat > .item-chat.wide, .pp-row-wrap > .item-chat { opacity: 1; pointer-events: auto; }
-  .has-chat > .item-chat:not(.row):not(.wide) { display: none; }
+  .has-chat > .item-chat.row, .has-chat > .item-chat.wide, .has-chat > .row-tools > .item-chat.row, .has-chat > .row-tools > .item-chat.wide, .pp-row-wrap > .item-chat { opacity: 1; pointer-events: auto; }
+  .has-chat > .item-chat:not(.row):not(.wide), .has-chat > .row-tools > .item-chat:not(.row):not(.wide) { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .item-chat { transition: none; } }
 /* Phones reflow cards, so the corner is the card's own. */
@@ -2777,7 +2780,7 @@ body.tcp-open .chat-toast { display: none; }
 /* A row's name part that now shares the row with the gutter wraps rather than running under the button. */
 .has-chat.chat-row > .fill-h .ftext.nowrap { white-space: normal !important; }
 /* The phone table layouts (grid rows, stretched cells) never resize or re-place the button. */
-.has-chat > .item-chat, .pp-row-wrap > .item-chat { width: 32px !important; height: 32px !important; min-width: 0 !important; left: auto !important; bottom: auto !important; margin: 0 !important; flex: none !important; grid-column: auto !important; grid-row: auto !important; }
+.has-chat > .item-chat, .has-chat > .row-tools > .item-chat, .pp-row-wrap > .item-chat { width: 32px !important; height: 32px !important; min-width: 0 !important; left: auto !important; bottom: auto !important; margin: 0 !important; flex: none !important; grid-column: auto !important; grid-row: auto !important; }
 /* ── Mise skin (Nov 10, branch mise-skin): only when <html class="brand-mise"> (`?brand=mise`). The Baldwin is untouched. ── */
 .brand-mise body, .brand-mise .content { background: #EDE6DA; }
 .brand-mise .mobile-bar { background: #121110; }
@@ -3307,3 +3310,38 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   [data-name="Hero"] [data-name="At a glance"]:has(> [data-name^="Stat · "]) { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; width: 100% !important; height: auto !important; }
   [data-name="Hero"] [data-name="At a glance"] > [data-name^="Stat · "] { width: auto !important; max-width: none !important; }
 }
+
+/* ── One focus ring, 3:1 on every surface (Nov 12, accessibility scan: Mise's fig ring was 2.0–2.25:1 on the Char sidebar and
+   dark buttons; The Baldwin's copper on its own was 2.2–2.4:1 on light cards). Two tones from the theme roles `focus` and
+   `focusBand` (lib/theme.ts): the brand's accent, with a band beside it that passes where the accent can't (The Baldwin:
+   espresso, for light surfaces; Mise: bone, for dark ones). Each ring keeps its shape and offset; only the colours change
+   and the band is added. Prep and the sign-in screens already draw ink / light rings by surface, so they keep theirs. ── */
+:focus-visible:not(.prp *, .prp-sheet *, .si *) { outline-color: var(--c-focus, var(--copper)) !important; }
+:is(a, button, input, select, textarea, summary, [tabindex], [role="button"], [role="checkbox"]):focus-visible:not(.flink:not(.ftext), [data-name^="Photo · "], .is-ctl, .carousel, .row-link, .prp *, .prp-sheet *, .si *, .tc-compose textarea, :is(.search, .find-box, .mg-find, .tc-search, .table-finder) input) {
+  box-shadow: 0 0 0 2px var(--c-focus-band, var(--ink)) !important;
+}
+/* rings drawn inside the edge (chips, carousels): the band on both sides of the accent */
+.is-ctl:not([data-name^="Photo · "]):focus-visible, .carousel:focus-visible { box-shadow: inset 0 0 0 4px var(--c-focus-band, var(--ink)), 0 0 0 2px var(--c-focus-band, var(--ink)) !important; }
+/* cards (the ring on a layer above the photo): accent outside, band inside */
+.flink:not(.ftext):focus-visible::after, [data-name^="Photo · "].is-ctl:focus-visible::after { box-shadow: inset 0 0 0 3px var(--c-focus, var(--copper)), inset 0 0 0 5px var(--c-focus-band, var(--ink)); }
+/* a linked line of text: the band right at its edge, the accent around it */
+.flink.ftext:focus-visible { outline-offset: 2px; }
+/* search boxes: the box shows focus, not the bare input inside it */
+.search:focus-within, .find-box:focus-within { outline-color: var(--c-focus, var(--copper)); box-shadow: 0 0 0 4px var(--c-focus-band, var(--ink)); }
+.mg-find:focus-within, .tc-search:focus-within, .table-finder:focus-within { outline: 2px solid var(--c-focus, var(--copper)); outline-offset: 0; box-shadow: 0 0 0 4px var(--c-focus-band, var(--ink)); }
+
+/* Table rows that link (Food Matrix, Allergen Guide; Nov 12 accessibility): the row is a role="row" box, and its link is
+   stretched over it from the row-header cell. The chat and Archive buttons sit in a cell of their own that draws no box. */
+.row-tools { display: contents; }
+.row-link { position: absolute; inset: 0; z-index: 1; }
+.row-link:focus-visible { outline: none !important; box-shadow: inset 0 0 0 3px var(--c-focus, var(--copper)), inset 0 0 0 5px var(--c-focus-band, var(--ink)) !important; }
+/* the sidebar's DEMO tag: the app's ring, not the browser's blue one, kept clear of the sidebar's edge (Nov 12 scan #17) */
+[data-name="Demo pill"]:focus-visible { outline: 2px solid var(--c-focus, var(--copper)); outline-offset: 2px; border-radius: 6px; }
+
+/* Team Chat v2 and the one focus ring (Nov 13, after the accessibility merge): boxes that take focus only so Tab starts
+   inside them (the long-press sheet, the thread and members panels, the chat panel) don't draw the ring around the whole
+   box; the picker's search shows focus on its box, like the other search boxes, not on the bare input inside it. */
+.tc-sheet.tc-sheet.tc-sheet:focus-visible, .tc-side.tc-side.tc-side:focus-visible, .tcp.tcp.tcp:focus-visible { outline: none !important; box-shadow: none !important; }
+.tc-sheet.tc-sheet.tc-sheet:focus-visible { box-shadow: 0 -10px 30px rgba(0,0,0,.18) !important; }
+.tc-picker.tc-picker .tc-picker-search input:focus-visible { outline: none !important; box-shadow: none !important; }
+.tc-picker .tc-picker-search:focus-within { outline: 2px solid var(--c-focus, var(--copper)); outline-offset: 0; box-shadow: 0 0 0 4px var(--c-focus-band, var(--ink)); }

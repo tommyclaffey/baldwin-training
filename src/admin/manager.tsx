@@ -487,7 +487,7 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
         return (
           <div key={jp.job} className="pp-section pp-path">
             <div className="pp-path-head">
-              <div><Label>{jp.label} path</Label>{!whole && <h3>{now.title}</h3>}</div>
+              <div><Label>{jp.label} path</Label>{!whole && <h2>{now.title}</h2>}</div>
               <button type="button" className="mg-btn" onClick={() => setWhole(!whole)} aria-expanded={whole}>{whole ? 'Show This Week' : 'Show Whole Path'}</button>
             </div>
             {shownStages.map((st) => (
@@ -574,9 +574,9 @@ function StepRow({ s, first, busy, act }: { s: Step; first: string; busy: string
   const asked = s.ask && !s.ask.declinedAt;
   // Nov 12: the Training Acknowledgment (Day 1). The person signs it first; then a trainer or manager signs it off here.
   const ackSigned = s.ack ? s.ack.signed : undefined;
-  const icon = s.done ? <span className="pp-icon done" aria-label="Done">✓</span>
-    : s.late ? <span className="pp-icon late" aria-label="Late"><Icon d="M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" /></span>
-      : <span className="pp-icon" aria-label="Not done yet" />;
+  const icon = s.done ? <span className="pp-icon done" role="img" aria-label="Done">✓</span>
+    : s.late ? <span className="pp-icon late" role="img" aria-label="Late"><Icon d="M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" /></span>
+      : <span className="pp-icon" role="img" aria-label="Not done yet" />;
   const sub = s.done
     ? s.kind === 'signoff' ? `Signed off${s.by ? ` by ${s.by}` : ''}` : s.meta
     : s.late ? `Was due ${dayLabel(s.due)}`

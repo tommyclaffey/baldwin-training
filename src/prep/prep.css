@@ -576,3 +576,11 @@
   .prp-savebar .wide-only { display: none; }
 }
 @media print { .prp-savebar, .prp-tips { display: none !important; } }
+
+/* Tap targets at least 24 px tall (Nov 12 accessibility scan, WCAG 2.5.8). The small text links grow into the space around
+   them (padding, cancelled by an equal negative margin), so nothing moves on screen; only the tap area and the focus ring
+   grow. In a row the name grows up and the Recipe link grows down, so the two never overlap. */
+.prp-name > a, .prp-willcount li > a, .prp-table.items .c-name > a { display: inline-block; padding-block: 5px; margin-block: -5px; }
+.prp-tr .prp-name > a { display: block; padding: 8px 0 0; margin: -8px 0 0; }
+.prp-name .prp-link { padding-bottom: 11px; margin-bottom: -11px; }
+.prp-uf-name, .prp-ran a { display: inline-block; padding-block: 5px; margin-block: -5px; }
