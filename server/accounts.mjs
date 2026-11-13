@@ -13,7 +13,7 @@
 // Every query about people is scoped to the signed-in person's company, and store-level records to their store.
 import { audit, now } from './db.mjs';
 import {
-  hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionDays, LoginLimiter, publicUser,
+  hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionCookies, sessionDays, LoginLimiter, publicUser,
   sha256, newToken, newTotpSecret, verifyTotp, otpauthUrl, newJoinCode,
 } from './auth.mjs';
 import { APP_URL, mailConfigured, sendMail, resetEmail } from './mail.mjs';
@@ -115,7 +115,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     const days = sessionDays(user.role);
     const token = createSession(db, user.id, { days, ...opts });
     db.prepare('UPDATE users SET last_seen_at = ? WHERE id = ?').run(now(), user.id);
-    return sendJson(res, 200, { user: meOut({ ...byId(user.id), acting_company_id: opts.acting ?? null, impersonator_id: opts.impersonator ?? null }) }, { 'Set-Cookie': sessionCookie(token, { secure: isSecure(req), days }) });
+    return sendJson(res, 200, { user: meOut({ ...byId(user.id), acting_company_id: opts.acting ?? null, impersonator_id: opts.impersonator ?? null }) }, { 'Set-Cookie': sessionCookies(token, { secure: isSecure(req), days }) });
   };
   const need = (c, req) => {
     if (!c.user) fail(401, 'Sign in first.');
@@ -234,7 +234,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     }
     if (p === '/api/logout' && m === 'POST') {
       endSession(db, c.token);
-      return sendJson(res, 200, { ok: true }, { 'Set-Cookie': sessionCookie('', { clear: true, secure: isSecure(req) }) });
+      return sendJson(res, 200, { ok: true }, { 'Set-Cookie': sessionCookies('', { clear: true, secure: isSecure(req) }) });
     }
     if (p === '/api/password' && m === 'POST') {
       const u = need(c, req);
@@ -551,7 +551,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (!u.impersonator_id) fail(400, 'You’re signed in as yourself.');
       const sup = byId(u.impersonator_id);
       endSession(db, c.token);
-      if (!sup || sup.deleted_at || sup.role !== 'superadmin') return sendJson(res, 200, { ok: true }, { 'Set-Cookie': sessionCookie('', { clear: true, secure: isSecure(req) }) });
+      if (!sup || sup.deleted_at || sup.role !== 'superadmin') return sendJson(res, 200, { ok: true }, { 'Set-Cookie': sessionCookies('', { clear: true, secure: isSecure(req) }) });
       superLog(sup, 'back from signing in as', u.name, u.company_id);
       return signIn(res, req, sup, { acting: u.company_id });
     }
@@ -707,7 +707,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         superLog(s, 'sign in as', `${t.name} (${t.role})`, t.company_id);
         endSession(db, c.token);
         const token = createSession(db, t.id, { days: 1, impersonator: s.id });
-        return sendJson(res, 200, { user: publicUser({ ...t, impersonator_id: s.id }) }, { 'Set-Cookie': sessionCookie(token, { secure: isSecure(req), days: 1 }) });
+        return sendJson(res, 200, { user: publicUser({ ...t, impersonator_id: s.id }) }, { 'Set-Cookie': sessionCookies(token, { secure: isSecure(req), days: 1 }) });
       }
       if (m === 'DELETE') {
         if (t.id === s.id) fail(400, 'You can’t delete your own account.');
