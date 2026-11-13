@@ -326,7 +326,7 @@ export function Conversation({ roomKey, phone, details, setDetails, onChanged, o
           {r.kind !== 'dm' && !panel && (
             <button type="button" className="tc-faces" onClick={() => setDetails(!details)} aria-label={`${r.members.length} members. Show details`}>
               {r.members.slice(0, 5).map((m) => <Avatar key={m.id} p={m} size={30} />)}
-              {r.members.length > 5 && <span className="tc-av more" style={{ width: 30, height: 30 }}>+{r.members.length - 5}</span>}
+              {r.members.length > 5 && <span className="tc-av more" style={{ width: 30, height: 30 }} aria-hidden="true">+{r.members.length - 5}</span>}
             </button>
           )}
           {!panel && <button type="button" className="tc-info" aria-label={details ? 'Hide details' : 'Show details'} aria-expanded={details} onClick={() => setDetails(!details)}>{I.info}</button>}
@@ -673,7 +673,7 @@ function Composer({ room, demo, replyTo, clearReply, onSent, autoFocus = false, 
           <div className="tc-mention" role="listbox" id={`tc-mention-${room.id}`} aria-label="People in this conversation">
             <p className="tc-pop-title">Mention someone in {room.kind === 'dm' ? 'this conversation' : room.name}</p>
             {suggestions.map((p, i) => (
-              <button type="button" role="option" aria-selected={i === pick} key={p.id} className={i === pick ? 'on' : ''}
+              <button type="button" role="option" id={`tc-mention-${room.id}-${i}`} aria-selected={i === pick} key={p.id} className={i === pick ? 'on' : ''}
                 onMouseDown={(e) => e.preventDefault()} onMouseEnter={() => setPick(i)} onClick={() => choose(p)}>
                 <Avatar p={p} size={28} /><span><strong>{p.name}</strong><small>{p.label}</small></span>
               </button>
@@ -682,8 +682,10 @@ function Composer({ room, demo, replyTo, clearReply, onSent, autoFocus = false, 
         )}
         <textarea ref={area} rows={1} value={text} maxLength={2000}
           placeholder={staged ? 'Add a message (optional)' : replyTo ? `Reply to ${replyTo.user.name.split(' ')[0]}` : room.kind === 'dm' ? `Message ${room.name.split(' ')[0]}` : `Message ${room.name}`}
-          aria-label={`Message ${room.name}`} aria-autocomplete="list" aria-expanded={!!mention && suggestions.length > 0}
+          aria-label={`Message ${room.name}`} aria-autocomplete="list"
+          // (a text box can't carry aria-expanded or a combobox role, Nov 12 scan; the list and its picked option are linked instead)
           aria-controls={mention && suggestions.length ? `tc-mention-${room.id}` : undefined}
+          aria-activedescendant={mention && suggestions.length ? `tc-mention-${room.id}-${Math.min(pick, suggestions.length - 1)}` : undefined}
           onChange={(e) => { setText(e.target.value); watch(e.target); }}
           onSelect={(e) => watch(e.currentTarget)}
           onBlur={() => setMention(null)}

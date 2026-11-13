@@ -43,12 +43,22 @@ export function QuizModal() {
   }, [id, params.get('retake')]);
 
   // The page behind can't be scrolled, clicked or tabbed into while the quiz is open.
+  // Nov 12 (accessibility): when it closes, focus goes back to what opened it (the same button, found again by its words
+  // if the page re-drew it).
   useEffect(() => {
     if (!valid) return;
     const root = document.getElementById('root');
+    const opener = document.activeElement instanceof HTMLElement && document.activeElement !== document.body ? document.activeElement : null;
+    const words = opener?.textContent?.trim() || '';
     document.body.classList.add('quiz-lock');
     root?.setAttribute('inert', '');
-    return () => { document.body.classList.remove('quiz-lock'); root?.removeAttribute('inert'); };
+    return () => {
+      document.body.classList.remove('quiz-lock'); root?.removeAttribute('inert');
+      requestAnimationFrame(() => {
+        const again = opener?.isConnected ? opener : words ? [...document.querySelectorAll<HTMLElement>('#content button, #content a, #content [role="button"]')].find((b) => b.textContent?.trim() === words) : null;
+        again?.focus({ preventScroll: true });
+      });
+    };
   }, [valid]);
 
   const found = valid ? s.quizzes[id]?.current : undefined;
@@ -61,8 +71,9 @@ export function QuizModal() {
   const name = cur?.title || titleOf(id);
   const kicker = id === PRE_SHIFT ? 'Quick quiz' : id === REVIEW ? 'Review queue' : name;
   const leave = () => { nav('/quizzes'); window.scrollTo({ top: 0 }); };
-  // Keep Tab inside the box.
+  // Keep Tab inside the box; Escape is Save and Exit, like every other box in the app.
   const trap = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') { e.preventDefault(); leave(); return; }
     if (e.key !== 'Tab' || !box.current) return;
     const f = [...box.current.querySelectorAll<HTMLElement>('button:not(:disabled), [href], [tabindex="0"]')];
     if (!f.length) return;

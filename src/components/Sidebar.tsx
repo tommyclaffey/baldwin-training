@@ -149,7 +149,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     const pill = nav.current?.querySelector<HTMLElement>('[data-name="Demo pill"]');
     if (!pill) return;
     pill.setAttribute('role', 'button'); pill.tabIndex = 0;
-    pill.setAttribute('aria-label', 'Demo: open the welcome card');
+    // named by what it shows first ("Wrenfield DEMO"), so voice control can say it (WCAG 2.5.3)
+    const shown = [...pill.children].map((c) => (c.textContent || '').trim()).filter(Boolean).join(' ');
+    pill.setAttribute('aria-label', `${shown}: open the welcome card`);
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openWelcome(); } };
     pill.addEventListener('keydown', onKey);
     return () => pill.removeEventListener('keydown', onKey);
