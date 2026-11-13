@@ -287,10 +287,39 @@ function labelTables(page) {
   walk(page.main);
 }
 
+/** Nov 12 (accessibility scan): the Food Matrix and the Allergen Guide look like tables, so they're read as tables
+ *  (FigmaNode renders `tbl` as role table / row / columnheader / rowheader / cell). An allergen cell is a dot or a mark,
+ *  so it gets words for screen readers (`tblv`). The table's name is in `tblv` too. Nothing changes on screen. */
+export function tableRoles(page) {
+  for (const t of findAll(page.main, (n) => n.n === 'Matrix table' || n.n === 'Allergen grid')) {
+    const allergen = t.n === 'Allergen grid';
+    t.tbl = 'table'; t.tblv = allergen ? 'Allergens by dish' : 'Dishes';
+    const kids = t.c || [];
+    const head = kids.find((c) => /^(Column headers|Header)$/.test(c.n || ''));
+    if (head) { head.tbl = 'row'; for (const c of head.c || []) c.tbl = 'ch'; }
+    const cols = head?.c?.length || 0;
+    for (const r of kids) {
+      if (/^Row · /.test(r.n || '')) {
+        r.tbl = 'row';
+        (r.c || []).forEach((c, i) => {
+          c.tbl = i === 0 ? 'rh' : 'cell';
+          if (allergen && i > 0) c.tblv = find(c, byName('Contains')) ? 'Contains' : find(c, byName('None')) ? 'No' : undefined;
+        });
+      } else if (/^Group · /.test(r.n || '')) {
+        r.tbl = 'row';
+        const cells = r.c || [];
+        cells.forEach((c) => { c.tbl = 'cell'; });
+        if (cols > cells.length && cells.length) cells[0].tspan = cols - cells.length + 1; // the course name spans the row
+      } else if (r.to && /^Add\b/.test(r.n || '')) r.tbl = 'row'; // a manager's "+ Add" row (EditSheet's AddRow draws it as a row)
+    }
+  }
+}
+
 export function wire(page, ctx) {
   if (!page) return page;
   const m = page.main;
   labelTables(page);
+  tableRoles(page);
   for (const chip of findAll(m, byName('Menu chip'))) chip.to = '/food-matrix';
   for (const b of findAll(m, byName('Button · Print'))) b.meta = { act: 'print' };
   foodMatrix(page, ctx.icon);

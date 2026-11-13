@@ -27,10 +27,8 @@ export function PrepPage() {
   const { pathname } = useLocation();
   const m = /^\/prep\/item\/(\d+)/.exec(pathname);
   useEffect(() => { document.title = 'Prep · Mise Academy'; }, []);
-  if (m) return <ItemPage id={Number(m[1])} />;
-  if (pathname.startsWith('/prep/reports')) return <ReportsPage />;
-  if (pathname.startsWith('/prep/count')) return <CountPage />;
-  return <TodayPage />;
+  // Nov 12 (accessibility): the page's main area, like every book page (PageView)
+  return <main className="prp-main">{m ? <ItemPage id={Number(m[1])} /> : pathname.startsWith('/prep/reports') ? <ReportsPage /> : pathname.startsWith('/prep/count') ? <CountPage /> : <TodayPage />}</main>;
 }
 
 /* ------------------------------------------------------------------ Today (Figma 31b: waiting 666:1413, counted 666:2008) */

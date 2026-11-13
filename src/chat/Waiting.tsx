@@ -66,7 +66,7 @@ export function WaitingCard({ style, className = '' }: { style?: CSSProperties; 
   return (
     <section className={'wc ' + className} style={{ ...style, width: undefined, maxWidth: '100%' }} aria-labelledby="wc-title">
       <div className="wc-main">
-        <p className="wc-eyebrow" id="wc-title"><span className="wc-dot" aria-hidden="true" />Team Chat · Waiting for You</p>
+        <h2 className="wc-eyebrow" id="wc-title"><span className="wc-dot" aria-hidden="true" />Team Chat · Waiting for You</h2>
         {items.map((i) => i.type === 'preshift' ? (
           <div key={'p' + i.id} className="wc-row">
             <Link to={'/team-chat/' + i.key} className="wc-link">

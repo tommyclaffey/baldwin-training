@@ -213,6 +213,8 @@ export function TeamChatPage() {
   const showList = !phone || !key;
   return (
     <main className={'tc tc-page' + (phone ? (key ? ' tc-phone-room' : ' tc-phone-list') : '')} ref={shell} aria-label="Team Chat" id="tc">
+      {/* a phone shows one conversation without the list (and its h1), so the page keeps a hidden one */}
+      {!showList && <h1 className="sr-only">Team Chat</h1>}
       {!phone && list && <Rail list={list} view={view} setView={setView} onSearch={focusSearch} />}
       {showList && <Conversations list={list} error={listErr} active={key} onOpen={(k) => nav('/team-chat/' + k)} view={view} setView={setView} searchRef={search} onChanged={loadList} />}
       {key && <Conversation key={key} roomKey={key} phone={phone} details={members} setDetails={setMembers} onChanged={loadList} onSearch={focusSearch} />}

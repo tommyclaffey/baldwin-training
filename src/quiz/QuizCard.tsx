@@ -43,12 +43,32 @@ export function QuizModal() {
   }, [id, params.get('retake')]);
 
   // The page behind can't be scrolled, clicked or tabbed into while the quiz is open.
+  // Nov 12 (accessibility): when it closes, focus goes back to what opened it (the same button, found again by its words
+  // if the page re-drew it).
   useEffect(() => {
     if (!valid) return;
     const root = document.getElementById('root');
+    const opener = document.activeElement instanceof HTMLElement && document.activeElement !== document.body ? document.activeElement : null;
+    const words = opener?.textContent?.trim() || '';
     document.body.classList.add('quiz-lock');
     root?.setAttribute('inert', '');
-    return () => { document.body.classList.remove('quiz-lock'); root?.removeAttribute('inert'); };
+    // Escape is Save and Exit, like every other box in the app (wherever focus is while the box is open)
+    const onKey = (e: globalThis.KeyboardEvent) => { if (e.key === 'Escape' && !e.defaultPrevented) { e.preventDefault(); nav('/quizzes'); window.scrollTo({ top: 0 }); } };
+    document.addEventListener('keydown', onKey);
+    // focus starts in the box (the page behind is inert, but the button that opened it can keep focus)
+    const into = setTimeout(() => { if (!box.current?.contains(document.activeElement)) box.current?.querySelector<HTMLElement>('#qm-title')?.focus(); }, 0);
+    return () => {
+      clearTimeout(into);
+      document.removeEventListener('keydown', onKey);
+      document.body.classList.remove('quiz-lock'); root?.removeAttribute('inert');
+      // the Quizzes page may redraw the button just after, so focus is put back until it holds (up to ~1 s)
+      const back = () => {
+        if (document.activeElement && document.activeElement !== document.body) return;
+        const again = opener?.isConnected ? opener : words ? [...document.querySelectorAll<HTMLElement>('#content button, #content a, #content [role="button"]')].find((b) => b.textContent?.trim() === words) : null;
+        again?.focus({ preventScroll: true });
+      };
+      for (const ms of [0, 150, 400, 900]) setTimeout(back, ms);
+    };
   }, [valid]);
 
   const found = valid ? s.quizzes[id]?.current : undefined;
@@ -61,7 +81,7 @@ export function QuizModal() {
   const name = cur?.title || titleOf(id);
   const kicker = id === PRE_SHIFT ? 'Quick quiz' : id === REVIEW ? 'Review queue' : name;
   const leave = () => { nav('/quizzes'); window.scrollTo({ top: 0 }); };
-  // Keep Tab inside the box.
+  // Keep Tab inside the box (Escape: see the effect above).
   const trap = (e: KeyboardEvent) => {
     if (e.key !== 'Tab' || !box.current) return;
     const f = [...box.current.querySelectorAll<HTMLElement>('button:not(:disabled), [href], [tabindex="0"]')];

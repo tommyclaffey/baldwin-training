@@ -68,9 +68,11 @@ export function BookSignIn() {
     catch (err) { setError((err as Error).message); }
     setBusy(false);
   };
+  // A field with an error points at it (Nov 12 accessibility scan): marked invalid, and the message is its description.
+  const errorFor = error ? { 'aria-invalid': true, 'aria-describedby': 'si-error' } : {};
   const pinField = (label: string, value: string, set: (v: string) => void, auto: string) => (
     <label className="field"><span>{label}</span>
-      <input type="password" inputMode="numeric" pattern="[0-9]*" autoComplete={auto} maxLength={6} value={value}
+      <input type="password" inputMode="numeric" pattern="[0-9]*" autoComplete={auto} maxLength={6} value={value} {...errorFor}
         onChange={(e) => set(e.target.value.replace(/\D/g, '').slice(0, 6))} />
     </label>
   );
@@ -82,10 +84,10 @@ export function BookSignIn() {
       foot={<>Just looking? <Link to="/demo/mise">Try the Demo</Link></>}>
       <form className="stack" onSubmit={(e) => { e.preventDefault(); void lookUp(code); }}>
         <label className="field"><span>Join code</span>
-          <input value={code} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12))} autoCapitalize="characters" autoComplete="off" spellCheck={false} placeholder="8 letters and numbers" />
+          <input value={code} {...errorFor} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12))} autoCapitalize="characters" autoComplete="off" spellCheck={false} placeholder="8 letters and numbers" />
           <small><span className="si-wide">You only type it once on this device.</span><span className="si-narrow">You only type it once on this phone.</span></small>
         </label>
-        {error && <p className="error" role="alert">{error}</p>}
+        {error && <p className="error" id="si-error" role="alert">{error}</p>}
         <button className="btn" disabled={busy || code.length < 6}>{busy ? 'Checking…' : 'Continue'}</button>
       </form>
       {managers}
@@ -128,7 +130,7 @@ export function BookSignIn() {
       <form className="stack" onSubmit={signIn}>
         {pinField(who.needsPin ? 'New PIN' : 'PIN', pin, setPin, who.needsPin ? 'new-password' : 'current-password')}
         {who.needsPin && pinField('Type it again', pin2, setPin2, 'new-password')}
-        {error && <p className="error" role="alert">{error}</p>}
+        {error && <p className="error" id="si-error" role="alert">{error}</p>}
         <button className="btn" disabled={busy || pin.length < 4}>{busy ? 'Signing In…' : 'Sign In'}</button>
         <button type="button" className="link-btn" onClick={() => { setStep('who'); setPin(''); setError(''); }}>Not {who.name.split(' ')[0]}?</button>
         <p className="muted small">Forgot your PIN? A manager can reset it.</p>
@@ -139,10 +141,10 @@ export function BookSignIn() {
   return (
     <AuthCard {...card} title={`Join ${store?.name || company}`} sub="Your name is how managers find your quiz scores. Your PIN keeps your training yours.">
       <form className="stack" onSubmit={join}>
-        <label className="field"><span>First and last name</span><input value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" /></label>
+        <label className="field"><span>First and last name</span><input value={name} {...errorFor} onChange={(e) => setName(e.target.value)} autoComplete="name" /></label>
         {pinField('Pick a PIN (4 to 6 numbers)', pin, setPin, 'new-password')}
         {pinField('Type it again', pin2, setPin2, 'new-password')}
-        {error && <p className="error" role="alert">{error}</p>}
+        {error && <p className="error" id="si-error" role="alert">{error}</p>}
         <button className="btn" disabled={busy || name.trim().length < 2 || pin.length < 4}>{busy ? 'Joining…' : 'Join'}</button>
         {here.length > 0 && <button type="button" className="link-btn" onClick={() => { setStep('who'); setError(''); }}>Already joined? Pick your name</button>}
         {stores.length > 1 && <button type="button" className="link-btn" onClick={() => { setStep('store'); setError(''); }}>Different restaurant?</button>}
