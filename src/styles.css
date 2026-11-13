@@ -401,9 +401,11 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .quiz-progress { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; background: var(--ink); border-radius: 20px; padding: 26px; font-family: 'Archivo', sans-serif; box-sizing: border-box; }
 .quiz-ring { position: relative; width: 180px; height: 180px; }
 .quiz-ring svg { display: block; }
-.quiz-ring-count { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
-.quiz-ring-count strong { font-size: 34px; font-weight: 800; color: var(--cream); font-variant-numeric: tabular-nums; }
-.quiz-ring-count span { font-size: 13px; color: var(--on-dark-muted); }
+/* Nov 13 (Tommy: "fix spacing/padding"): "0 of 121" at 34 px was wider than the ring's 142 px inside. The count gets its own
+   line and "of N passed" sits under it, kept inside the ring with room to spare. */
+.quiz-ring-count { position: absolute; inset: 27px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; }
+.quiz-ring-count strong { font-size: 44px; line-height: 1; font-weight: 800; color: var(--cream); font-variant-numeric: tabular-nums; }
+.quiz-ring-count span { font-size: 13px; line-height: 1.3; color: var(--on-dark-muted); }
 .quiz-who { font-size: 16px; font-weight: 600; color: var(--cream); text-align: center; }
 /* Nov 5, Tommy: "fix the alignment with these pills": an even 2 × 2 grid, every pill the same width */
 .quiz-pills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; width: 100%; max-width: 340px; margin: 0 auto; }
