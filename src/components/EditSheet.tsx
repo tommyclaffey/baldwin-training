@@ -156,7 +156,7 @@ function EditSheet({ target, onClose, onSaved, onSwitch }: { target: Target; onC
   // Jump straight to a section (e.g. the video), and keep the chip on the section in view.
   const jumpTo = (name: string) => {
     const el = body.current?.querySelector<HTMLElement>(`[data-section="${CSS.escape(name)}"]`);
-    if (el && body.current) body.current.scrollTo({ top: el.offsetTop - 8, behavior: 'smooth' });
+    if (el && body.current) body.current.scrollTo({ top: el.offsetTop - 8, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     setActive(name);
   };
   useEffect(() => {
@@ -315,8 +315,15 @@ export function EditPageButton({ col, id, className = '', floating = false }: { 
 }
 
 /** The dashed "+ Add a Dish to Mains" row (or tile, in a row of cards). */
-export function AddRow({ href, label, tile, inset = 0, style, className = '' }: { href: string; label: string; tile?: boolean; inset?: number; style?: React.CSSProperties; className?: string }) {
+export function AddRow({ href, label, tile, inset = 0, style, className = '', row }: { href: string; label: string; tile?: boolean; inset?: number; style?: React.CSSProperties; className?: string; row?: boolean }) {
   const st: React.CSSProperties = tile ? { ...style } : { ...style, width: undefined, marginLeft: inset, marginRight: inset };
+  // Inside a table (the Food Matrix, Nov 12 accessibility): the same box as a row, its link stretched over it from a cell.
+  if (row) return (
+    <div role="row" className={(tile ? 'eip-add tile ' : 'eip-add ') + className} style={{ ...st, position: st.position || 'relative' }}>
+      <span className="plus" aria-hidden="true">+</span>
+      <span role="cell"><span aria-hidden="true">{label}</span><a href={href} className="row-link" aria-label={label} /></span>
+    </div>
+  );
   return (
     <a href={href} className={(tile ? 'eip-add tile ' : 'eip-add ') + className} style={st}>
       <span className="plus" aria-hidden="true">+</span>

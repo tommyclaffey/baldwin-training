@@ -126,11 +126,13 @@ export function controlProps(m: Meta | undefined, s: Store | null) {
     else s.set(m.k, !isActive(m, s), m.save);
   };
   const active = m.k ? isActive(m, s) : undefined;
-  const role = m.mode === 'toggle' ? 'checkbox' : m.mode === 'pick' ? 'tab' : 'button';
+  // A "pick" chip (All, Small Plates…, Cards / Table) is a toggle button that shows which one is on (Nov 12 scan: they
+  // claimed to be tabs with no tab list around them).
+  const role = m.mode === 'toggle' ? 'checkbox' : 'button';
   return {
     role, tabIndex: 0,
     'aria-checked': m.mode === 'toggle' ? active : undefined,
-    'aria-selected': m.mode === 'pick' ? active : undefined,
+    'aria-pressed': m.mode === 'pick' ? active : undefined,
     onClick: (e: { preventDefault: () => void; stopPropagation: () => void }) => { e.preventDefault(); e.stopPropagation(); run(); },
     onKeyDown: (e: KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); run(); } },
   };

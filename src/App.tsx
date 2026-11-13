@@ -89,7 +89,7 @@ function Book() {
       </header>
       <div className={'shell' + (menu ? ' menu-open' : '')}>
         {menu && <button type="button" className="menu-backdrop" aria-label="Close menu" onClick={() => setMenu(false)} />}
-        <aside id="side" className="side">
+        <aside id="side" className="side" aria-label="Sidebar">
           <Sidebar onNavigate={() => setMenu(false)} />
         </aside>
         <div id="content" className="content">

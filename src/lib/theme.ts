@@ -56,7 +56,8 @@ export type ColorRole =
   | 'edgeStrong' | 'edgeMuted' | 'edgeSoft' | 'outlineOnDark'            // outlines
   | 'button' | 'onButton' | 'buttonOnDark' | 'onButtonOnDark'            // the main button, on light and on a dark panel
   | 'new' | 'onNew' | 'tape' | 'onTape'                                  // "New" status, the taped note
-  | 'dataUsed' | 'dataWasted';                                           // chart marks (Nov 12, Prep reports): what got used, what got tossed
+  | 'dataUsed' | 'dataWasted'                                            // chart marks (Nov 12, Prep reports): what got used, what got tossed
+  | 'focus' | 'focusBand';                                              // the keyboard focus ring: the accent, and the band beside it
 export type Colors = Record<ColorRole, string | string[]>;
 
 /** Type roles. `z` set = the role has its own size; unset = the size the page was drawn at. */
@@ -99,6 +100,9 @@ export const THEMES: Record<Brand, Theme> = {
       // Prep reports (Nov 12): espresso-copper for used, a warm terracotta for wasted. Checked with the dataviz validator
       // on the card: ΔE 18.4 normal vision, 13.8 protan; 6.7:1 and 3.4:1 against the card.
       dataUsed: '#7A4E31', dataWasted: '#D06A4C',
+      // Focus ring (Nov 12, accessibility scan): copper with an espresso band. Copper alone is 2.2:1 on cream; the band is
+      // 14.7:1 on cream and 16.2:1 on the card, and copper is 6.6:1 on the espresso sidebar, so one tone passes 3:1 everywhere.
+      focus: '#C49A6C', focusBand: '#1E1C1A',
     },
     type: {
       pageTitle: { ff: ARCHIVO, fs: 'ExtraBold', case: 'upper' },
@@ -132,6 +136,9 @@ export const THEMES: Record<Brand, Theme> = {
       // Prep reports (Nov 12): char-grey for used, a lighter fig for wasted (fig is Mise's "needs attention").
       // ΔE 21.0 normal vision, 9.5 protan, both ≥ 3:1 against Paper.
       dataUsed: '#4A443E', dataWasted: '#B8463F',
+      // Focus ring (Nov 12): deep fig with a bone band. Fig is 6.8:1 on Bone and 7.9:1 on Paper but 2.3:1 on Char, where the
+      // bone band is 15.2:1, so one tone passes 3:1 on the sidebar, dark buttons and light cards alike.
+      focus: '#8E2A26', focusBand: '#EDE6DA',
     },
     type: {
       pageTitle: { ff: 'Instrument Serif', fs: 'Regular', z: 64, lh: '100%', ls: '-0.5%', case: 'title' },
@@ -253,7 +260,7 @@ export function brandTitle(s: string, t: Theme = theme()) { return t.type.pageTi
  *   a big title inside a card (program levels, hub tiles)        → cardTitle
  *   a small bold heading (a lesson's "01" badge)                 → smallHeading
  *   a section heading ("Your Path", "Start Here"), 26 px and up  → sectionHeading; smaller ones → cardHeading */
-type Ctx = { title: FNode | null; card: number | null };
+type Ctx = { title: FNode | null; card: number | null; outline?: boolean };
 /** The page's own title: the biggest ExtraBold text in the hero; with no hero, the first ExtraBold text of 40 px or more. */
 function pageTitle(main: FNode): FNode | null {
   const heavy = (t: FNode) => t.t === 'T' && t.ff === 'Archivo' && t.fs === 'ExtraBold';
@@ -279,6 +286,12 @@ function themeText(th: Theme, t: FNode, bg: string | undefined, drawnBg: string 
   const dark = isDark(bg) || bg === ON_PHOTO;
   const role = typeRole(t, bg, inPill, ctx);
   const spec = th.type[role];
+  // Accessibility (Nov 12 scan): the page's headings become real h1–h3 (FigmaNode). The level comes from the drawn type, so
+  // it's the same in every brand; `outlinePage` evens out the order afterwards.
+  if (ctx.outline && !inPill && !t.to && /\p{L}/u.test(t.s || '')) { // (a number on its own, a step's "01", is a badge, not a heading)
+    const want = role === 'pageTitle' ? 1 : role === 'sectionHeading' || (role === 'cardHeading' && (t.z || 14) >= 26) ? 2 : role === 'cardTitle' || role === 'cardHeading' ? 3 : 0;
+    if (want) t.hd = want;
+  }
   // Edit Mode: a field on a dark panel draws its outline light; a title typed in the brand's case, not forced to capitals
   if (t.ed) t.ed = { ...t.ed, ...(th.type.pageTitle.case === 'title' ? { u: undefined } : {}), ...(dark ? { dk: 1 as const } : {}) };
   // colour: what the drawn colour is, on what it sits
@@ -504,11 +517,43 @@ function videoCaptions(th: Theme, n: FNode) {
   (n.c || []).forEach((c) => videoCaptions(th, c));
 }
 
+/** The page's headings in reading order: one h1 (the page title), and no level skipped on the way down (an h3 with no h2
+ *  above it becomes an h2). A page with no drawn title gets a hidden h1 from PageView (`hasPageTitle`). */
+function outlinePage(main: FNode) {
+  let last = 1;
+  for (const t of all(main, (x) => x.t === 'T' && !!x.hd)) {
+    if (t.hd === 1) { last = 1; continue; }
+    t.hd = Math.min(t.hd!, last + 1) as 2 | 3;
+    last = t.hd;
+  }
+}
+/** Photos (Nov 12 scan): a photo is read out only when it shows the page's own subject, the dish, drink, wine, bottle or
+ *  beer the page is about, and then by that name (never the Figma layer name: "shortrib", "Hero photo"). Every other
+ *  photo has its caption or title beside it, or is mood, so screen readers skip it (FigmaNode: no `alt`, no role). */
+const SUBJECT_PAGES = /^(Recipe|Classic|Signature|Wine list|Wine|Back Bar|Bottle|Beer|Spirit) · /;
+function subjectPhoto(page: { name?: string }, main: FNode) {
+  if (!SUBJECT_PAGES.test(page.name || '')) return;
+  const path = (n: FNode, t: FNode, up: FNode[] = []): FNode[] | null => { if (n === t) return up; for (const c of n.c || []) { const r = path(c, t, [...up, n]); if (r) return r; } return null; };
+  const title = find(main, (x) => x.t === 'T' && x.hd === 1);
+  const up = title && path(main, title);
+  const box = up?.slice(1).reverse().find((a) => /^(Hero|Header)\b/.test(a.n || ''));
+  if (!title || !box) return;
+  const photos = all(box, (x) => (x.t !== 'T' && x.t !== 'F' && !!x.f?.some((f) => f.img) && !/\bdrawn\b/.test(x.n || '')) || !!(x.meta as { spin?: unknown[] } | undefined)?.spin?.length);
+  if (!photos.length || photos.length > 2) return;
+  const name = titleCase((title.s || '').replace(/\s+/g, ' ').trim());
+  for (const p of photos) p.alt = name;
+}
+
+/** True when the page draws its own h1 (else PageView adds a hidden one, so every page has exactly one). */
+export const hasPageTitle = (main: FNode) => !!find(main, (x) => x.t === 'T' && x.hd === 1);
+
 /** A page in the brand: the shared layouts first (in drawn colours), then the brand's paint and type. */
 export function themePage<P extends { main: FNode; bg?: string; name?: string }>(page: P, th: Theme = theme()): P {
   const main = structuredClone(page.main);
   cinematic(th, page, main);
-  const out = walk(th, main, drawn('page'), drawn('page'), false, { title: pageTitle(main), card: null }) || main;
+  const out = walk(th, main, drawn('page'), drawn('page'), false, { title: pageTitle(main), card: null, outline: true }) || main;
+  outlinePage(out);
+  subjectPhoto(page, out);
   if (th.quietVideoCaptions) videoCaptions(th, out);
   return { ...page, bg: paint(th, 'fill', page.bg) || page.bg || color(th, 'page'), main: out };
 }
@@ -518,7 +563,10 @@ export function themeSidebar(node: FNode, th: Theme = theme()): FNode {
   const n = structuredClone(node);
   const logo = th.logo;
   const swapLogo = (x: FNode): FNode => {
-    if (logo && x.n === 'Logo') return { ...x, pd: [0, 0, 0, 0], c: [{ t: 'R', n: 'IMG/' + logo.alt + ' lockup', w: logo.w, h: logo.h, sh: 'F', sv: 'F', f: [{ img: logo.src, m: 'FIT' }] } as FNode] };
+    if (logo && x.n === 'Logo') return { ...x, pd: [0, 0, 0, 0], c: [{ t: 'R', n: 'IMG/' + logo.alt + ' lockup', alt: logo.alt, w: logo.w, h: logo.h, sh: 'F', sv: 'F', f: [{ img: logo.src, m: 'FIT' }] } as FNode] };
+    // the drawn logo is The Baldwin's: read out by its name (photos without an `alt` are skipped, FigmaNode). The name is
+    // CLIENT_NAME in lib/brand.ts, written out so node's tests can load this file on its own.
+    if (x.n === 'Logo') return { ...x, c: x.c?.map((c) => (c.f?.some((f) => f.img) ? { ...c, alt: 'The Baldwin' } : c)) };
     return x.c ? { ...x, c: x.c.map(swapLogo) } : x;
   };
   const out = walk(th, swapLogo(n), drawn('inverse'), drawn('inverse'), false) || n;

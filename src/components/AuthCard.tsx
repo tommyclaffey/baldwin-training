@@ -41,7 +41,7 @@ export function AuthCard({ title, sub, kicker, foot, brand = 'mise', children }:
     : <img className="si-logo si-logo-mark" src="/img/logo-white.png" alt="The Baldwin" />;
   return (
     <div className={`si si-${brand}`} style={paint(t)}>
-      <div className="si-photo">
+      <div className="si-photo" role="banner">{/* (the logo and photo band is the screen's banner, so nothing sits outside a landmark; Nov 12 scan) */}
         <img className="si-photo-img" src="/img/signin-bartender-2400.jpg" srcSet="/img/signin-bartender-1200.jpg 1200w, /img/signin-bartender-2400.jpg 2400w"
           sizes="(min-width: 900px) 95vw, 100vw" alt="" />
         <div className="si-shade" />

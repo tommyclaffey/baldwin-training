@@ -106,7 +106,7 @@ function StepRow({ step: s }: { step: Step }) {
   const label = s.kind === 'quiz' ? 'Start' : s.kind === 'lesson' ? 'Open' : 'Read';
   return (
     <li className={'mp-step' + (s.done ? ' done' : '')}>
-      <span className={'mp-tick' + (s.done ? ' on' : '')} aria-label={s.done ? 'Done' : 'Not done yet'}>{s.done ? '✓' : ''}</span>
+      <span className={'mp-tick' + (s.done ? ' on' : '')} role="img" aria-label={s.done ? 'Done' : 'Not done yet'}>{s.done ? '✓' : ''}</span>
       <span className="mp-step-copy">
         {/* Nov 8, Tommy: a tag on every row was noise. Only lessons and sign-offs get one, next to the title. */}
         <span className="mp-step-title">
@@ -135,7 +135,7 @@ function AckRow({ step: s }: { step: Step }) {
         : `You signed it ${day(signed.at)} · waiting on your trainer`;
   return (
     <li className={'mp-step' + (s.done ? ' done' : '')}>
-      <span className={'mp-tick' + (s.done ? ' on' : '')} aria-label={s.done ? 'Done' : 'Not done yet'}>{s.done ? '✓' : ''}</span>
+      <span className={'mp-tick' + (s.done ? ' on' : '')} role="img" aria-label={s.done ? 'Done' : 'Not done yet'}>{s.done ? '✓' : ''}</span>
       <span className="mp-step-copy">
         <span className="mp-step-title"><Link to={s.to || '/my-path/acknowledgment'}>{s.title}</Link><span className="mp-kind signoff">{KIND.signoff}</span></span>
         <small>{line}</small>

@@ -25,6 +25,11 @@ export type FNode = {
   skipTab?: 1; // clickable, but Tab skips it: it repeats a link right beside it
   arc?: Arc; // a manager can archive this row or card (server/archive.mjs; staff never get it)
   lab?: string; empty?: 1; hdr?: 1; // table cells: column label, an empty allergen cell, the header row (phones stack rows)
+  alt?: string; // a photo's spoken name (lib/theme.ts subjectPhoto); a photo without one is decorative
+  hd?: 1 | 2 | 3;
+  /** Table parts (server/interact.mjs tableRoles): the Food Matrix and Allergen Guide are read as tables. `tblv`: the
+   *  table's name, or a cell's spoken value (an allergen mark); `tspan`: columns a cell spans. */
+  tbl?: 'table' | 'row' | 'ch' | 'rh' | 'cell'; tblv?: string; tspan?: number; // a heading: rendered as h1–h3 (set by the theme layer from the drawn type; see outlinePage in lib/theme.ts)
   sh?: 'F' | 'H' | 'L'; sv?: 'F' | 'H' | 'L';
   op?: number; rot?: number; to?: string; svg?: string;
   f?: { c?: string; o?: number; img?: string; m?: string; g?: [string, number, number][]; gt?: string; ga?: number }[];
@@ -44,6 +49,10 @@ export type FNode = {
   /** Edit Mode (server/editmode.mjs): a field on this node, a card holding fields, a part shown only while editing. */
   ed?: EdBind; edc?: 1; eo?: 1; edk?: 1;
 };
+
+const TBL_ROLE = { table: 'table', row: 'row', ch: 'columnheader', rh: 'rowheader', cell: 'cell' } as const;
+/** A table row that's a link: its row-header cell carries the link (a row can't be a link), stretched over the row. */
+const RowLinkContext = createContext<{ to: string; label: string; radius?: CSSProperties['borderRadius']; tab?: number } | null>(null);
 
 /** Which links can go to Team Chat (the page you're on provides it; nothing outside a book page gets chat buttons). */
 export const ChatItemsContext = createContext<Lookup | null>(null);
@@ -356,9 +365,11 @@ function CarouselGroup({ children }: { children: ReactNode }) {
     const down = (e: PointerEvent) => { if (e.pointerType !== 'mouse' || e.button !== 0) return; drag = { x: e.clientX, left: el.scrollLeft, moved: false }; el.style.scrollSnapType = 'none'; el.style.scrollBehavior = 'auto'; };
     const move = (e: PointerEvent) => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 4) { drag.moved = true; el.classList.add('dragging'); } el.scrollLeft = drag.left - dx; };
     const up = () => {
-      if (!drag) return; const moved = drag.moved; drag = null; el.classList.remove('dragging'); el.style.scrollBehavior = 'smooth';
+      if (!drag) return; const moved = drag.moved; drag = null; el.classList.remove('dragging');
+      const glide = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'; // (Nov 12 scan: honour reduce motion)
+      el.style.scrollBehavior = glide;
       const kids = [...el.children] as HTMLElement[]; const step = kids.length > 1 ? kids[1].offsetLeft - kids[0].offsetLeft : el.clientWidth;
-      el.scrollTo({ left: Math.round(el.scrollLeft / step) * step, behavior: 'smooth' });
+      el.scrollTo({ left: Math.round(el.scrollLeft / step) * step, behavior: glide });
       setTimeout(() => { el.style.scrollSnapType = ''; el.style.scrollBehavior = ''; }, 350);
       if (moved) { const stop = (ev: Event) => { ev.preventDefault(); ev.stopPropagation(); }; el.addEventListener('click', stop, { capture: true, once: true }); setTimeout(() => el.removeEventListener('click', stop, { capture: true }), 50); }
     };
@@ -394,6 +405,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   const chatContext = useContext(ChatItemsContext);
   const chatLookup = isHero ? null : chatContext;
   const live = useInteract();
+  const rowLink = useContext(RowLinkContext);
   const [playing, setPlaying] = useState(false);
   const editing = useEditing();
   const ef = useField(editing ? drawn.ed : undefined);
@@ -416,7 +428,8 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     const { st, cls, content: raw } = textNode(node, parentLm);
     if (shrink < 1 && node.z && node.z * shrink < 11) st.fontSize = 11 / shrink;
     const content = node.n === 'Carousel count' && carousel ? <span aria-live="polite">{carousel.label}</span> : raw;
-    return wrapLink(node, <div className={cls.join(' ')} style={st} data-label={node.lab} data-empty={node.empty}>{content}</div>, st, cls, inLink);
+    const Tag = node.hd && !node.to && !node.tbl ? (`h${node.hd}` as const) : 'div';
+    return wrapLink(node, <Tag className={cls.join(' ')} style={st} role={node.tbl ? TBL_ROLE[node.tbl] : undefined} aria-colspan={node.tspan} data-label={node.lab} data-empty={node.empty}>{content}</Tag>, st, cls, inLink);
   }
 
   const { st, cls } = boxStyle(node, parentLm, parentH);
@@ -445,9 +458,9 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   // A bottle from the spin scanner: drag to turn it.
   if (m?.check?.items?.length) return <QuickCheck data={m.check} style={{ ...st, height: undefined, minHeight: undefined }} className={cls.join(' ')} />;
   if ((m as { complete?: { key: string; done: boolean } } | undefined)?.complete) return <CompleteToggle data={(m as { complete: { key: string; done: boolean } }).complete} />;
-  if (m?.spin?.length) return <SpinViewer frames={m.spin} alt={(node.n || '').replace(/^IMG\//, '')} style={st} className={cls.join(' ')} />;
+  if (m?.spin?.length) return <SpinViewer frames={m.spin} alt={node.alt || 'Bottle'} style={st} className={cls.join(' ')} />;
   // Edit in place: a manager's "+ Add" row or tile (staff never get these nodes).
-  if (m?.add && node.to) return <AddRow href={node.to} label={m.add.label} tile={m.add.tile} inset={m.add.inset} style={st} className={cls.join(' ')} />;
+  if (m?.add && node.to) return <AddRow href={node.to} label={m.add.label} tile={m.add.tile} inset={m.add.inset} style={st} className={cls.join(' ')} row={node.tbl === 'row'} />;
   // Floor Plan: the real table finder replaces the drawn box.
   if (m?.finder) return <TableFinder style={st} className={cls.join(' ')} list={m.list || []} />;
 
@@ -490,10 +503,14 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   }
 
   const img = node.f?.find((f) => f.img);
-  const role = img && node.t !== 'F' && !(editing && node.ed?.t === 'photo') ? 'img' : undefined; // with Replace Photo inside, it's a group
-  // Photos keep their shape when a phone reflows them (see .fx-v > [role="img"].wide in styles.css).
-  if (role && node.w && node.h) st.aspectRatio = `${node.w} / ${node.h}`;
-  const label = role ? (node.n || '').replace(/^IMG\//, '').split(' · ')[0] : undefined;
+  const photo = !!img && node.t !== 'F' && !(editing && node.ed?.t === 'photo'); // with Replace Photo inside, it's a group
+  // Photos keep their shape when a phone reflows them (see .fx-v > .fphoto.wide in styles.css; a photo that's a link
+  // is drawn as the link, which never had the photo's class).
+  if (photo && node.w && node.h) st.aspectRatio = `${node.w} / ${node.h}`;
+  // Nov 12 (accessibility): a photo is read out by what it shows (`alt`, set by the theme layer), never its Figma layer
+  // name; without one it's decorative (its caption or title sits beside it) and screen readers skip it.
+  const role = photo && node.alt ? 'img' : undefined;
+  const label = role ? node.alt : undefined;
 
   if (m?.cls && live) { const c = m.cls[1][String(live.get(m.cls[0], ''))]; if (c) cls.push(c); }
   if (ctl) cls.push('is-ctl');
@@ -570,6 +587,10 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   }
   if (m?.tables && table && m.tables[table]) { extras.push(<TableMarker key="table" at={m.tables[table]} label={table} />); st.position = st.position || 'relative'; st.overflow = 'hidden'; }
   if (extras.length || playing) kids = <>{kids}{extras}{overlays}</>;
+  // Table cells: an allergen mark's words for screen readers; the row header carries its row's link (stretched over the
+  // row, so the cell must stay unpositioned).
+  if (node.tbl && node.tblv && node.tbl !== 'table') kids = <>{kids}<span className="sr-only">{node.tblv}</span></>;
+  if (node.tbl === 'rh' && rowLink) kids = <>{kids}<Link to={rowLink.to} className="row-link" aria-label={rowLink.label} tabIndex={rowLink.tab} style={{ borderRadius: rowLink.radius }} /></>;
   if (extras.length && !st.position) st.position = 'relative';
   if (compact && !node.lm && node.c && node.w > 200 && parentLm && !node.abs && !rootStyle) {
     const { flex, alignSelf, minWidth, flexShrink, ...inner } = st;
@@ -606,11 +627,11 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     return <div ref={carousel.setEl} className={cls.concat('carousel').join(' ')} style={{ ...st, overflowX: 'auto', overflowY: 'hidden' }} data-name={node.n} tabIndex={(node.c || []).some((c) => c.to) ? undefined : 0} aria-label={node.n!.split(' · ')[1]} role="region">{kids}</div>; // cards that link are stops already
   }
   const el = ctl && !node.to ? (
-    <div className={cls.join(' ')} style={st} data-name={node.n} data-label={node.lab} data-empty={node.empty} data-head={node.hdr} aria-label={node.n?.split(' · ').slice(1).join(' · ') || undefined} {...ctl}>
+    <div className={cls.join(' ')} style={st} data-name={node.n} data-label={node.lab} data-empty={node.empty} data-head={node.hdr} aria-label={hasWords(node) ? undefined : node.n?.split(' · ').slice(1).join(' · ') || undefined} {...ctl}>
       {kids}
     </div>
   ) : (
-    <div className={cls.join(' ')} style={st} role={role} aria-label={label} data-name={node.n} data-label={node.lab} data-empty={node.empty} data-head={node.hdr}>
+    <div className={cls.join(' ') + (photo ? ' fphoto' : '')} style={st} role={node.tbl ? TBL_ROLE[node.tbl] : role} aria-label={node.tbl === 'table' ? node.tblv : label} aria-colspan={node.tspan} data-name={node.n} data-label={node.lab} data-empty={node.empty} data-head={node.hdr}>
       {kids}
     </div>
   );
@@ -623,13 +644,40 @@ const linkColor = (node: FNode, st: CSSProperties) => (node.t === 'T' && st.colo
 // One card, one Tab stop (Nov 6, Tommy: "I have to press Tab twice to select the next card"). A link inside another link, or a photo
 // that repeats its card's button, stays clickable but Tab skips it.
 const InLink = createContext(false);
+/** True when a node shows words (a letter in any of its texts). */
+const hasWords = (n: FNode): boolean => (n.t === 'T' && /\p{L}/u.test(n.s || '')) || (n.c || []).some(hasWords);
 function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[], inLink = false, chat: ChatOn | null = null, arc: (Arc & { shape: Shape }) | null = null) {
   if (!node.to) return el;
   const skip = inLink || !!node.skipTab;
   const tabProps = skip ? { tabIndex: -1, ...(node.skipTab ? { 'aria-hidden': true } : {}) } : {};
   const av = (node.meta as { addVideo?: { key: string; title: string } } | undefined)?.addVideo;
+  // A table row (Food Matrix, Allergen Guide): the row stays a row, the same box and classes as the link it was drawn as;
+  // the link is stretched over it from its row-header cell, and the chat and Archive buttons sit in their own cell.
+  if (node.tbl === 'row' && !av && !/^https?:\/\//.test(node.to)) {
+    const shape = chat?.shape || arc?.shape;
+    const at = shape ? placeOf(node, shape) : null;
+    const size = shape ? shape + (node.w >= 480 ? ' wide' : '') : '';
+    const rowName = node.n?.includes(' · ') ? node.n.split(' · ').slice(1).join(' · ') : wordsOf(node);
+    const tools = !skip && (chat || arc) && at;
+    return (
+      <div role="row" className={cls.concat('flink', ...(tools ? ['has-chat', 'chat-' + shape] : [])).join(' ')} style={{ ...st, position: st.position || 'relative', display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }}
+        data-name={node.n} data-label={node.lab} data-head={node.hdr}>
+        <RowLinkContext.Provider value={{ to: node.to, label: rowName, radius: st.borderRadius, tab: skip ? -1 : undefined }}>
+          <InLink.Provider value={true}>{(el as { props: { children?: ReactNode } }).props.children}</InLink.Provider>
+        </RowLinkContext.Provider>
+        {tools && (
+          <span role="cell" className="row-tools">
+            {arc && <ItemArchiveButton arc={arc} className={size + (chat ? ' beside' : '')} style={{ top: at.top, right: at.right + (chat ? BTN + GAP : 0) }} />}
+            {chat && <ItemChatButton item={{ type: 'page', slug: chat.slug }} title={chat.title} className={size} style={{ top: at.top, right: at.right }} />}
+          </span>
+        )}
+      </div>
+    );
+  }
   if (av) return <AddVideoButton pageKey={av.key} title={av.title} style={st} className={cls.join(' ')}>{(el as { props: { children?: ReactNode } }).props.children}</AddVideoButton>;
-  const label = node.n?.includes(' · ') ? node.n.split(' · ').slice(1).join(' · ') : undefined;
+  // Nov 12 (accessibility, WCAG 2.5.3): a link with words on it is named by those words, so voice control can say what
+  // it sees ("Quizzes 101", not "Quizzes"); the layer name only names a link with no words (a photo, an icon).
+  const label = node.n?.includes(' · ') && !hasWords(node) ? node.n.split(' · ').slice(1).join(' · ') : undefined;
   // Outside sources (Wine Folly, Vivino, producer sites) open in a new tab.
   if (/^https?:\/\//.test(node.to)) {
     return (
@@ -646,7 +694,7 @@ function wrapLink(node: FNode, el: ReactNode, st: CSSProperties, cls: string[], 
     const size = shape + (node.w >= 480 ? ' wide' : '');
     return (
       <Link to={node.to} className={cls.concat('flink', 'has-chat', 'chat-' + shape).join(' ')} style={{ ...st, position: st.position || 'relative', display: st.display || 'block', color: linkColor(node, st), textDecoration: 'none' }}
-        aria-label={label || wordsOf(node) || chat?.title || arc?.n} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
+        aria-label={wordsOf(node) || label || chat?.title || arc?.n} data-name={node.n} data-label={node.lab} data-head={node.hdr}>
         <InLink.Provider value={true}>{(el as { props: { children?: ReactNode } }).props.children}</InLink.Provider>
         {arc && <ItemArchiveButton arc={arc} className={size + (chat ? ' beside' : '')} style={{ top: at.top, right: at.right + (chat ? BTN + GAP : 0) }} />}
         {chat && <ItemChatButton item={{ type: 'page', slug: chat.slug }} title={chat.title} className={size} style={{ top: at.top, right: at.right }} />}

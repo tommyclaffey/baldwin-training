@@ -19,7 +19,8 @@ export function SendToTeamButton({ item, className = 'eip-edit', label = 'Send t
 
 /** The page's tool row (Send to Team, Edit Page): over the design's breadcrumb row on the right; floating on phones. */
 export function PageTools({ floating, width, zoom, children }: { floating: boolean; width: number | string; zoom?: number; children: ReactNode }) {
-  if (floating) return createPortal(<div className="page-tools floating" role="group" aria-label="Page tools">{children}</div>, document.body);
+  // (floating, it sits outside the page's main area, so it's its own named region: Nov 12 scan, "content outside a landmark")
+  if (floating) return createPortal(<div className="page-tools floating" role="region" aria-label="Page tools">{children}</div>, document.body);
   return (
     <div className="eip-edit-wrap" style={{ width, zoom }}>
       <div className="page-tools" role="group" aria-label="Page tools">{children}</div>
