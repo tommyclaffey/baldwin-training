@@ -109,7 +109,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .flink:focus-visible
 .library-tiles a:hover, .library-tiles a:focus-visible { border-color: var(--copper); }
 .library-tiles span { color: var(--muted); font-size: 14px; }
 .mobile-name { color: var(--cream); font: 800 18px 'Archivo', sans-serif; }
-@media (max-width: 860px) { .page-message { padding: 40px 20px; } }
+@media screen and (max-width: 860px) { .page-message { padding: 40px 20px; } }
 .btn { background: var(--ink); color: var(--cream); border: 0; border-radius: 12px; padding: 12px 18px; font: 700 14px 'Archivo', sans-serif; text-decoration: none; cursor: pointer; }
 .page-loading { display: grid; place-items: center; }
 .loader { width: 34px; height: 34px; border-radius: 50%; border: 3px solid var(--line); border-top-color: var(--copper); animation: spin .8s linear infinite; }
@@ -123,7 +123,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .flink:focus-visible
 }
 
 /* ---- laptop and tablet: sidebar becomes a drawer, the page scales to fit ---- */
-@media (max-width: 1239px) {
+@media screen and (max-width: 1239px) {
   .mobile-bar {
     display: flex; align-items: center; justify-content: space-between;
     position: sticky; top: 0; z-index: 40; height: 56px; padding: 0 16px;
@@ -143,7 +143,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .flink:focus-visible
 }
 
 /* ---- phone: rows reflow ---- */
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .page > .fn { padding: 16px 14px 48px !important; gap: 20px !important; }
   .fx-h { flex-wrap: wrap; row-gap: 12px; }
   .fn { max-width: 100%; }
@@ -341,7 +341,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .auth-card p { margin: 0; }
 .auth-card a:not(.btn) { color: var(--copper-dk); }
 
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .admin { flex-direction: column; }
   .admin-side { position: static; height: auto; width: 100%; padding: 14px; }
   .admin-side nav { flex-direction: row; overflow-x: auto; }
@@ -418,7 +418,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .pill.green { background: #E3ECDD; color: #3F6A39; }
 .pill.copper { background: var(--tint); color: var(--copper-dk); }
 .pill.dark { background: var(--dark-line); color: var(--on-dark-3); }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .quiz-card { padding: 20px 18px; }
   .quiz-q { font-size: 22px; }
   .quiz-progress { min-height: 0 !important; }
@@ -451,7 +451,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%231E1C1A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 16px center; background-size: 12px 8px;
 }
-@media (max-width: 900px) { .form-grid { grid-template-columns: 1fr; } .nowrap-sm { display: none; } }
+@media screen and (max-width: 900px) { .form-grid { grid-template-columns: 1fr; } .nowrap-sm { display: none; } }
 .cms-row .link-btn { align-self: center; }
 
 /* Wine Videos (admin) */
@@ -481,7 +481,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .carousel-btn:hover:not(:disabled) { filter: brightness(1.25); }
 .carousel-btn:disabled { opacity: .35; cursor: default; }
 .carousel-btn:focus-visible, .carousel:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .carousel > * { width: 86vw !important; max-width: 520px; flex: 0 0 86vw !important; }
 }
 @media (prefers-reduced-motion: reduce) { .carousel { scroll-behavior: auto; } }
@@ -492,21 +492,21 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .carousel [data-name="Tasting note"] { margin-top: auto; }
 .carousel [data-name="Tasting note"] .ftext { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .carousel [data-name^="IMG/"], .carousel [data-name^="Glass filler"] { align-self: stretch !important; height: auto !important; min-height: 300px; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .carousel [data-name^="IMG/"], .carousel [data-name^="Glass filler"] { width: 100% !important; flex: 1 1 100% !important; height: 220px !important; min-height: 220px; align-self: auto !important; }
   .carousel [data-name^="Glass filler"] [data-name^="Shape · "] { width: 84px !important; height: 109px !important; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .carousel > * { flex-direction: column !important; flex-wrap: nowrap !important; align-items: stretch !important; }
   .carousel [data-name="Spec"] { width: 100% !important; flex: 1 1 auto !important; align-self: stretch !important; justify-content: flex-start !important; }
   .carousel [data-name="Spec"] > * { width: 100% !important; max-width: 100% !important; flex: 0 0 auto !important; }
   .carousel [data-name="Spec"] > [data-name="Tasting note"] { margin-top: auto; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .carousel > * { width: 100% !important; max-width: none !important; flex: 0 0 100% !important; }
   .carousel > * > [data-name^="IMG/"], .carousel > * > [data-name^="Glass filler"] { width: 100% !important; height: 220px !important; min-height: 220px !important; flex: 0 0 220px !important; align-self: stretch !important; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .carousel [data-name^="Line · "], .carousel [data-name="Details"] > *, .carousel [data-name="Top"] { flex-wrap: nowrap !important; }
   .carousel [data-name^="Line · "] > .fill-h, .carousel [data-name="Details"] > * > .fill-h { flex: 1 1 0 !important; min-width: 0; }
 }
@@ -535,7 +535,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .matrix-cards [data-name="Name"], .matrix-cards [data-name="Title row"] { width: 100% !important; flex: 1 1 auto !important; min-width: 0; }
 .matrix-cards [data-name="Title row"] > .ftext { width: auto !important; flex: 1 1 auto !important; min-width: 0; white-space: normal !important; }
 
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* Checklists and filter options: the box stays beside its label. */
   [data-name^="Task"], [data-name^="Option · "] { flex-wrap: nowrap !important; }
   [data-name^="Task"] > .ftext, [data-name^="Option · "] > .ftext { flex: 1 1 auto !important; width: auto !important; min-width: 0; }
@@ -550,16 +550,30 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   .matrix-cards { grid-template-columns: 1fr; }
 }
 
-/* Print (Food Matrix, Floor Plan, recipe spec): just the page. */
+/* Print (Nov 14, Tommy: "making these one sheet prints better"). Every page prints as its desktop design on portrait Letter,
+   scaled to fit the sheet (src/lib/print.ts works out the scale before the print window opens). Phones' reflow rules are
+   screen-only, so a print never gets the phone layout. Menus, buttons, videos, next/previous and long "all the others" strips
+   stay off paper. Colours print as drawn, so a dark hero keeps its photo and its cream title. */
+@page { size: letter portrait; margin: 0.4in; }
 @media print {
-  .side, .mobile-bar, .demo-flag, .skip, .nav-progress, [data-name="Top bar"], [data-name="Filters"], [data-name="Sub nav"],
-  [data-name="Button · Print"], [data-name="View toggle"], [data-name="Breadcrumb"] { display: none !important; }
-  .shell, .content { display: block !important; margin: 0 !important; }
-  body, .page { background: #fff !important; }
-  .page > .fn { width: 100% !important; padding: 0 !important; }
-  .modal-back { display: none !important; }
-  [data-name^="Row · "], [data-name^="Area · "] { break-inside: avoid; }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .side, .mobile-bar, .demo-flag, .demo-bar, .skip, .nav-progress, .page-tools, .eip-edit-wrap, .modal-back, .tour-tip, .dw-card,
+  [data-name="Top bar"], [data-name="Filters"], [data-name="Sub nav"], [data-name$=" nav"], [data-name^="Button · "], [data-name="View toggle"],
+  [data-name="Breadcrumb"], [data-name="Back to parent"], [data-name="The classics"], [data-name^="Video slot"], .page video, .page iframe { display: none !important; }
+  .shell, .content { display: block !important; margin: 0 !important; padding: 0 !important; }
+  body { background: #fff !important; }
+  .page { min-height: 0 !important; }
+  .page > .fn { width: 1176px !important; min-height: 0 !important; zoom: var(--print-zoom, 0.65) !important; margin: 0 !important; }
+  /* Figma frames clip their content, and a clipped box can't split across sheets: let the page's big columns split, keep each card whole. */
+  .page > .fn > *, .page > .fn [data-name="Body"], .page > .fn [data-name="Body"] > * { overflow: visible !important; }
+  .page > .fn [data-name="Body"] > [data-name="Matrix table"] { flex: 1 1 auto !important; width: auto !important; }
+  .page > .fn [data-name="Body"] > * > *, [data-name^="Row · "], [data-name^="Area · "] { break-inside: avoid; }
 }
+
+/* The same, measured on screen just before printing (src/lib/print.ts). */
+body.print-measure :is(.side, .mobile-bar, .demo-flag, .demo-bar, .skip, .nav-progress, .page-tools, .eip-edit-wrap, .modal-back, .tour-tip, .dw-card, [data-name="Top bar"], [data-name="Filters"], [data-name="Sub nav"], [data-name$=" nav"], [data-name^="Button · "], [data-name="View toggle"], [data-name="Breadcrumb"], [data-name="Back to parent"], [data-name="The classics"], [data-name^="Video slot"], .page video, .page iframe) { display: none !important; }
+body.print-measure .page > .fn { width: 1176px !important; min-height: 0 !important; zoom: 1 !important; }
+body.print-measure .page > .fn [data-name="Body"] > [data-name="Matrix table"] { flex: 1 1 auto !important; width: auto !important; }
 
 /* Floor Plan */
 .table-finder { display: flex; align-items: center; gap: 8px; position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 0 14px; }
@@ -615,7 +629,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .scan-src { font-size: 12px; }
 .scan-src.scanned { color: #3E7B4F; } .scan-src.none { color: #A4432B; }
 .chip-row { flex-wrap: wrap; gap: 8px; }
-@media (max-width: 720px) {
+@media screen and (max-width: 720px) {
   .scanner { padding: 12px; }
   .scanner-review { grid-template-columns: 1fr 1fr; gap: 8px; }
   .scanner-result { min-height: 220px; }
@@ -670,7 +684,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .matrix-cards [data-name="Station"] .ftext, .matrix-cards [data-name="Pairing"] .ftext { width: auto !important; white-space: normal !important; }
 .matrix-cards [data-name="Pairing"] .ftext { font-weight: 600 !important; color: var(--ink) !important; }
 .matrix-cards [data-name="Pairing"] .ftext::before { content: 'Pair with'; display: block; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--copper-dk); margin-bottom: 3px; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   [data-name="Matrix table"] [data-name="Station · none"], [data-name="Matrix table"] [data-name="Pairing · none"] { display: none !important; }
   [data-name="Matrix table"] [data-name="Station"] .ftext { font-size: 11px !important; font-weight: 600 !important; letter-spacing: .12em; text-transform: uppercase; color: var(--muted) !important; }
   [data-name="Matrix table"] [data-name="Station"] .ftext::before { content: 'Station · '; }
@@ -684,11 +698,11 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .fsvg svg * { vector-effect: non-scaling-stroke; }
 
 /* Home dashboard: cards size to their content; on desktop the row makes them one height. */
-@media (min-width: 860px) { [data-name="Section · Dashboard"] [data-name="Cards"] { align-items: stretch !important; } }
-@media (max-width: 859px) { [data-name="Section · Dashboard"] [data-name="Cards"] > * > * { flex: none !important; } }
+@media print, (min-width: 860px) { [data-name="Section · Dashboard"] [data-name="Cards"] { align-items: stretch !important; } }
+@media screen and (max-width: 859px) { [data-name="Section · Dashboard"] [data-name="Cards"] > * > * { flex: none !important; } }
 
 /* ---- phone pass (Oct 29, Tommy: "make sure that the mobile formatting is good too") ---- */
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* Tables: the header row hides; each value says which column it's from. */
   [data-head] { display: none !important; }
   [data-label]::before { content: attr(data-label); display: block; flex: 0 0 100%; font: 600 10.5px/1.3 'Archivo', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--copper-dk); margin-bottom: 3px; white-space: normal; }
@@ -723,7 +737,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   /* Wide diagrams swipe sideways. */
   .swipe-x { -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* Markers keep their own size (a number circle doesn't stretch into a pill). */
   .fx-h:has(> :not(.marker)) > .marker:not(.ftext) { flex: none !important; align-self: flex-start !important; }
   /* Stat boxes never squeeze below their content. */
@@ -742,20 +756,20 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   [data-name^="Wine · "]:has(> [data-name="Prices"]) > [data-name="Name"] .ftext { white-space: normal !important; width: auto !important; }
   [data-name^="Wine · "] > [data-name="Prices"] { flex: 0 0 auto !important; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* "Fill the row" helpers only mean width: inside a column they must not stretch the height. */
   .fx-v > .wide, .fx-v > .mid, .fx-v > .fill-h { flex-grow: 0 !important; flex-basis: auto !important; }
   [data-name^="Person · "].fx-h > * { flex: none !important; width: auto !important; }
   [data-name="People"] { min-height: 0 !important; justify-content: flex-start !important; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* A row of tiles takes the full width, so its tiles can pair up. */
   .fx-v > .fx-h:has(> .mid) { align-self: stretch !important; width: auto !important; }
   /* Home's Food Matrix preview: the media counts aren't needed on a phone. */
   [data-name="Section · Food Matrix"] [data-label="MEDIA"] { display: none !important; }
 }
 
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* Table rows on a phone: the first cell (name) takes the full width; an end arrow sits top-right. */
   [data-name^="Classic row · "], [data-name^="Row · "]:has(> [data-label]) { position: relative; }
   [data-name^="Classic row · "] > :first-child, [data-name^="Row · "]:has(> [data-label]) > :first-child { flex: 1 1 100% !important; width: auto !important; padding-right: 26px; }
@@ -784,12 +798,12 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   .hero-flow > div:last-child { background: linear-gradient(180deg, rgba(30,28,26,.72), rgba(30,28,26,.45)); }
 }
 
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* Header rows of stacked tables stay hidden whatever layout rule the row also matches. */
   [data-head][data-head][data-head][data-head] { display: none !important; }
 }
 
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .fx-h > .big { flex: 1 1 100% !important; width: auto !important; max-width: 100% !important; }
   /* Photo strips: an even 2-up grid. */
   .fx-h:has(> [data-name^="Photo · "]) { display: grid !important; grid-template-columns: 1fr 1fr; width: 100% !important; align-self: stretch !important; } /* Nov 5: Home's strip shrank to 202px */
@@ -798,10 +812,10 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   /* Beer taps: three across. */
   [data-name="Handles"] { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
 }
-@media (max-width: 859px) { .fx-h > .fsvg { flex-shrink: 0 !important; } }
+@media screen and (max-width: 859px) { .fx-h > .fsvg { flex-shrink: 0 !important; } }
 
 /* ---- phone and tablet menu (Oct 29: a working menu on phones) ---- */
-@media (max-width: 1239px) {
+@media screen and (max-width: 1239px) {
   .side { z-index: 70; height: auto !important; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding-bottom: 24px; }
   /* The bar above already shows the logo. */
   .side [data-name="Logo"] { display: none !important; }
@@ -810,11 +824,11 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   body.menu-lock .corner { display: none; }
   .mobile-bar a { display: flex; align-items: center; }
 }
-@media (max-width: 1239px) {
+@media screen and (max-width: 1239px) {
   .shell > .side.side { top: 56px !important; bottom: 0 !important; height: auto !important; max-height: calc(100dvh - 56px); }
   .shell .side [data-name="Logo"][data-name] { display: none !important; }
 }
-@media (max-width: 1239px) { .shell > .side.side { min-height: calc(100dvh - 56px); } }
+@media screen and (max-width: 1239px) { .shell > .side.side { min-height: calc(100dvh - 56px); } }
 
 /* ---- Build a quiz (Figma: Quizzes · Desktop → Section · Build a quiz) ---- */
 .qb { display: flex; flex-direction: column; gap: 22px; padding: 26px 28px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; width: 100% !important; box-sizing: border-box; font-family: 'Archivo', sans-serif; }
@@ -839,7 +853,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 /* Nov 5: with Full Quiz the row got long; the summary sits under the buttons so Start Quiz stays on the same line */
 .qb-length .qb-summary { flex-basis: 100%; }
 .qb-length { flex: 1 1 360px; }
-@media (max-width: 720px) { .qb-seg { width: 100%; justify-content: space-between; gap: 2px; } .qb-seg button { padding: 8px 9px; min-width: 0; } }
+@media screen and (max-width: 720px) { .qb-seg { width: 100%; justify-content: space-between; gap: 2px; } .qb-seg button { padding: 8px 9px; min-width: 0; } }
 .qb-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
 .qb-btn { border: 0; background: var(--ink); color: var(--cream); padding: 13px 22px; border-radius: 12px; font: 700 14px 'Archivo', sans-serif; cursor: pointer; min-height: 46px; }
 .qb-btn.ghost { background: var(--card); color: var(--ink); border: 1px solid #D8CDBD; }
@@ -848,14 +862,14 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .qb-name label { display: flex; flex-direction: column; gap: 6px; flex: 1 1 260px; }
 .qb-name input { font: 500 15px 'Archivo', sans-serif; padding: 12px 14px; border: 1px solid #D8CDBD; border-radius: 12px; background: #fff; min-height: 46px; }
 .qb-saved { margin: 0; color: #3F6A39; font-weight: 600; font-size: 14px; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .qb { padding: 18px 16px; }
   .qb-footer, .qb-buttons { flex-direction: column; align-items: stretch; }
   .qb-btn { width: 100%; }
 }
 
 /* ---- phone pass 4 (Oct 31, Tommy's screenshots) ---- */
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .page > .fn { gap: 28px !important; }
   /* Signature cocktail cards: the photo spans the card. */
   [data-name^="Spec · "] { flex-direction: column !important; }
@@ -880,7 +894,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   .ftext.display[style*="Pinyon"] { font-size: min(var(--z), 8.5vw) !important; }
   .hero-flow .ftext[style*="Pinyon"] { font-size: min(var(--z, 30px), 7.5vw) !important; line-height: 1.2 !important; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* Stacked table rows: a 2-column grid, so the labels on each line sit level. */
   .fx-h:has(> [data-label]):not([data-name^="Row · "][data-name] [data-name="Allergen grid"] *) { display: grid !important; grid-template-columns: 1fr 1fr; column-gap: 16px !important; row-gap: 12px !important; align-items: start !important; }
   .fx-h:has(> [data-label]) > :not([data-label]):not(.fsvg) { grid-column: 1 / -1; }
@@ -889,7 +903,7 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
   [data-name="Values"] > * { height: auto !important; min-height: 0 !important; }
   [data-name="Values"] > * > * { width: auto !important; max-width: 100%; align-self: stretch !important; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
 
 }
 
@@ -969,7 +983,7 @@ body.quiz-lock { overflow: hidden; }
 .qb-tile .qb-check { width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid #B8AB98; background: #fff; }
 .qb-tile.on .qb-check { background: var(--copper); border-color: var(--copper); }
 
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .qm-scrim { padding: 12px; place-items: start center; }
   .qm { padding: 20px 18px; gap: 16px; border-radius: 20px; }
   .qm-levels { grid-template-columns: 1fr; }
@@ -990,7 +1004,7 @@ body.quiz-lock { overflow: hidden; }
   .rq-next li em { flex-basis: 100%; padding-left: 22px; }
   .qb-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 }
-@media (min-width: 860px) and (max-width: 1180px) { .qb-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media screen and (min-width: 860px) and (max-width: 1180px) { .qb-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 /* The Back Bar: three bottles a row (one on a phone), and the real find box. */
 [data-name="Bottles"]:has(> [data-name^="Bottle · "] [data-name="Drawing"]) { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px !important; row-gap: 0 !important; height: auto !important; align-content: start; }
@@ -1001,15 +1015,15 @@ body.quiz-lock { overflow: hidden; }
 .find-box input::placeholder { color: #6B645B; }
 .find-box input::-webkit-search-cancel-button { display: none; }
 .find-clear { border: 0; background: var(--cream); width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; color: var(--muted); cursor: pointer; }
-@media (max-width: 1180px) { [data-name="Bottles"]:has(> [data-name^="Bottle · "] [data-name="Drawing"]) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 859px) { [data-name="Bottles"]:has(> [data-name^="Bottle · "] [data-name="Drawing"]) { grid-template-columns: 1fr; } }
-@media (max-width: 859px) {
+@media screen and (max-width: 1180px) { [data-name="Bottles"]:has(> [data-name^="Bottle · "] [data-name="Drawing"]) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media screen and (max-width: 859px) { [data-name="Bottles"]:has(> [data-name^="Bottle · "] [data-name="Drawing"]) { grid-template-columns: 1fr; } }
+@media screen and (max-width: 859px) {
   [data-name="Stats"]:has(> [data-name^="Stat · "]) { display: flex !important; flex-wrap: wrap; gap: 8px !important; height: auto !important; }
   [data-name="Stats"] > [data-name^="Stat · "] { flex: none !important; width: auto !important; height: auto !important; min-height: 0 !important; }
   [data-name^="Bottle · "]:has(> [data-name="Drawing"]) { align-items: center !important; }
 }
-@media (max-width: 859px) { [data-name^="Bottle · "]:has(> [data-name="Drawing"]) > .fsvg { align-self: center !important; margin-top: 0 !important; } }
-@media (max-width: 859px) { .fx-h[data-name^="Bottle · "]:has(> [data-name="Drawing"]) > .marker.fsvg { align-self: center !important; } }
+@media screen and (max-width: 859px) { [data-name^="Bottle · "]:has(> [data-name="Drawing"]) > .fsvg { align-self: center !important; margin-top: 0 !important; } }
+@media screen and (max-width: 859px) { .fx-h[data-name^="Bottle · "]:has(> [data-name="Drawing"]) > .marker.fsvg { align-self: center !important; } }
 /* While a quiz is open, the corner pills step aside too. */
 body.quiz-lock .corner { display: none; }
 
@@ -1034,17 +1048,17 @@ body.quiz-lock .corner { display: none; }
 .sidebar > [data-name="Sidebar"] > [data-name="Top"] { margin-bottom: 24px; }
 .sidebar > [data-name="Sidebar"] > [data-name="Your Training"] { margin-top: auto !important; }
 .account { margin-top: 0; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* Hero fact boxes (wine, bottle pages): two across, not one tall stack. */
   [data-name="Hero"] [data-name="Copy"] > [data-name="Stats"], [data-name="Hero"] [data-name="Copy"] > [data-name="Origin"] { display: grid !important; grid-template-columns: 1fr 1fr; height: auto !important; }
   [data-name="Hero"] [data-name="Copy"] > [data-name="Stats"] > *, [data-name="Hero"] [data-name="Copy"] > [data-name="Origin"] > * { width: auto !important; height: auto !important; min-height: 0 !important; min-width: 0; padding: 12px 14px !important; border-width: 0 !important; box-shadow: inset 0 0 0 .5px var(--dark-line); }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* "Where it sits": the regions in two even columns. */
   [data-name="Where it sits"] [data-name="Siblings"] { display: grid !important; grid-template-columns: 1fr 1fr; gap: 8px !important; height: auto !important; }
   [data-name="Where it sits"] [data-name="Siblings"] > * { width: auto !important; min-width: 0; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* Deep breadcrumbs (Wine / USA / California / Napa Valley / Oakville) wrap instead of running off the screen. */
   [data-name="Breadcrumb"] { flex-wrap: wrap !important; row-gap: 4px !important; width: auto !important; max-width: 100%; height: auto !important; }
   [data-name="Breadcrumb"] > * { flex: none !important; }
@@ -1102,7 +1116,7 @@ body.eip-lock { overflow: hidden; }
 @keyframes eip-in { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes eip-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes eip-up { from { transform: translate(-50%, 12px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
   .eip-panel { top: 56px; left: 0; width: 100vw; border-radius: 24px 24px 0 0; animation-name: eip-sheet; }
   .eip-handle { display: block; width: 40px; height: 5px; border-radius: 3px; background: #D9CDBB; margin: 10px auto 0; flex: none; }
   .eip-head { padding: 10px 20px 14px; gap: 14px; }
@@ -1146,7 +1160,7 @@ body.eip-lock { overflow: hidden; }
 .eip-share { width: 100%; font: 600 13px 'Archivo', sans-serif; }
 .eip-share small { font-weight: 400; color: var(--muted); margin-left: 4px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-@media (max-width: 700px) { .eip-lib { flex-wrap: wrap; } .eip-lib .btn { width: 100%; } .eip-scope { flex-wrap: wrap; } }
+@media screen and (max-width: 700px) { .eip-lib { flex-wrap: wrap; } .eip-lib .btn { width: 100%; } .eip-scope { flex-wrap: wrap; } }
 /* Spin (Oct 31): a bottle you drag to turn */
 .spin { position: relative; display: block; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; outline: none; }
 .spin:active { cursor: grabbing; }
@@ -1179,7 +1193,7 @@ body.eip-lock { overflow: hidden; }
 /* the section list stays in view while you read */
 [data-name="Player"] { align-items: flex-start !important; }
 [data-name="Playlist"] { position: sticky; top: 16px; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .qc-options { grid-template-columns: 1fr 1fr; }
   [data-name="Player"] > [data-name="Playlist"] { position: static; width: 100% !important; }
   [data-name="Key points"] > [data-name="Cards"] { flex-wrap: nowrap !important; }
@@ -1189,7 +1203,7 @@ body.eip-lock { overflow: hidden; }
 }
 /* photo cards (the four levels, the three Level 2 parts): the words sit on the bottom edge whatever their height */
 [data-name^="Level "] > [data-name="Copy"], [data-name^="Part "] > [data-name="Copy"] { top: auto !important; bottom: 22px; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* lesson stops: the number and its line stay beside the text */
   [data-name^="Stop "] { flex-direction: row !important; flex-wrap: nowrap !important; gap: 14px !important; }
   [data-name^="Stop "] > [data-name="Rail"] { flex: 0 0 34px !important; width: 34px !important; align-self: stretch !important; }
@@ -1209,11 +1223,11 @@ body.eip-lock { overflow: hidden; }
 [data-name="Grid · 3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 [data-name="Grid · 4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 [data-name^="Grid · "] > * { width: auto !important; min-width: 0; height: auto !important; }
-@media (max-width: 600px) { [data-name^="Grid · "] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+@media screen and (max-width: 600px) { [data-name^="Grid · "] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
 /* play buttons: the triangle's centre of mass sits in the middle of the circle (Nov 1, Tommy: "Play buttons are off") */
 [data-name="Play"] > [data-name="Play icon"] { left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; overflow: visible !important; }
 [data-name="Play"] > [data-name="Play icon"] > .fsvg { left: 50% !important; top: 50% !important; transform: translate(-33.3%, -50%); }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* Sommelier heroes: the lead stays body size (the wine-hero rule above is for wine names) */
   [data-name="Hero"] > [data-name="Copy"] > [data-name="Lead"] { font-size: 16px !important; overflow-wrap: normal; }
   /* video thumbnails keep their 16:9 shape when the layout reflows */
@@ -1223,10 +1237,10 @@ body.eip-lock { overflow: hidden; }
   /* level and part titles on photo cards fit their card */
   [data-name^="Level "] > [data-name="Copy"], [data-name^="Part "] > [data-name="Copy"] { left: 16px !important; right: 16px; width: auto !important; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   [data-name^="Level "] .ftext.fit, [data-name^="Part "] .ftext.fit { font-size: min(var(--z), calc((50vw - 64px) / (var(--lw) * 0.66))) !important; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* lesson tiles and section rows: thumbnails fill their tile, so the length badge stays in the corner */
   [data-name^="Lesson "], [data-name^="Video · "] { min-width: 0; }
   [data-name="IMG/Lesson thumbnail"], [data-name^="Video · "] > [data-name^="IMG/"] { width: 100% !important; max-width: 100% !important; }
@@ -1234,7 +1248,7 @@ body.eip-lock { overflow: hidden; }
 /* length badges size to their text and sit in the corner (they clipped to "17:5" on phones) */
 [data-name="Duration"] { width: auto !important; height: auto !important; overflow: visible !important; white-space: nowrap; }
 [data-name^="Video · "] > [data-name="Duration"] { top: auto !important; left: auto !important; right: 8px; bottom: 8px; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   [data-name="Levels"] > [data-name^="Level "], [data-name="Parts"] > [data-name^="Part "] { display: flex !important; flex-direction: column; justify-content: flex-end; }
   [data-name="Levels"] > [data-name^="Level "] > [data-name="Copy"], [data-name="Parts"] > [data-name^="Part "] > [data-name="Copy"] { position: relative !important; top: auto !important; bottom: auto !important; left: auto !important; padding: 0 16px 18px; z-index: 1; }
 }
@@ -1248,11 +1262,11 @@ body.eip-lock { overflow: hidden; }
 [data-name="Carousel · Key points"] > * { scroll-snap-align: start; flex-shrink: 0 !important; }
 .carousel.dragging { cursor: grabbing; user-select: none; }
 .carousel.dragging * { pointer-events: none; }
-@media (max-width: 859px) { [data-name="Carousel · Key points"] > * { width: 78vw !important; max-width: 320px; } }
+@media screen and (max-width: 859px) { [data-name="Carousel · Key points"] > * { width: 78vw !important; max-width: 320px; } }
 /* phones: the general "pair mid tiles into a grid" and "stack rows" rules must not reshape these (Nov 2: the key point
    carousel became a grid and cut off words like "TRADITIONAL"). The repeated [data-name] only raises specificity. */
 [data-name="Carousel · Key points"][data-name][data-name][data-name] { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   [data-name="Carousel · Key points"][data-name][data-name][data-name] > * { flex: 0 0 auto !important; width: 72vw !important; max-width: 300px !important; }
   [data-name="Key points"][data-name][data-name][data-name] > [data-name="Head"], [data-name="Key points"] > [data-name="Head"][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: nowrap !important; align-items: center !important; justify-content: space-between !important; gap: 8px !important; }
   [data-name="Carousel controls"][data-name][data-name][data-name] { display: flex !important; flex-direction: row !important; gap: 10px !important; flex-wrap: nowrap !important; align-items: center !important; width: auto !important; }
@@ -1269,7 +1283,7 @@ body.eip-lock { overflow: hidden; }
 [data-name="Court · What the Court expects"] [data-name^="Asks · "][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: nowrap !important; align-items: flex-start !important; }
 /* From the Court (Nov 2): the tag row stays a row; on phones each level swipes sideways instead of 12 cards in a stack */
 [data-name^="Doc · "] > [data-name="Top"][data-name][data-name][data-name] { flex-direction: row !important; flex-wrap: nowrap !important; align-items: center !important; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   [data-name="Docs"][data-name][data-name][data-name] { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 12px !important; }
   [data-name="Docs"]::-webkit-scrollbar { display: none; }
   [data-name="Docs"][data-name][data-name][data-name] > [data-name^="Doc · "] { width: 72vw !important; max-width: 300px !important; flex: 0 0 auto !important; scroll-snap-align: start; }
@@ -1284,12 +1298,12 @@ body.eip-lock { overflow: hidden; }
 .complete-toggle:hover:not(:disabled) { border-color: #8A8178; }
 [data-name="Button · Next section"] { box-shadow: 0 6px 18px rgb(var(--copper-rgb) / .35); }
 [data-name="Button · Next section"]:hover, a[data-name="Button · Next section"]:hover { filter: brightness(1.08); }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   [data-name="Up next"] { flex-direction: column !important; align-items: stretch !important; }
   [data-name="Up next"] > * { width: 100% !important; justify-content: center; }
   .complete-toggle { width: 100%; justify-content: center; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   [data-name="Up next actions"] { flex-direction: column !important; align-items: stretch !important; }
   [data-name="Up next buttons"] { flex-direction: column-reverse !important; width: 100% !important; }
   [data-name="Up next buttons"] > * { width: 100% !important; justify-content: center; }
@@ -1315,12 +1329,12 @@ body.eip-lock { overflow: hidden; }
 .demo-line { display: inline-flex; align-items: center; gap: 8px; border: 0; background: none; padding: 0; cursor: pointer; color: var(--on-dark-muted); font: 500 14px 'Archivo', sans-serif; }
 .demo-line:hover .demo-pill { background: rgb(var(--copper-rgb) / .34); }
 .demo-line:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; border-radius: 4px; }
-@media (max-width: 640px) { .demo-roles { grid-template-columns: 1fr; width: 100%; max-width: 360px; } .demo-pick { padding: 56px 20px; gap: 28px; } }
+@media screen and (max-width: 640px) { .demo-roles { grid-template-columns: 1fr; width: 100%; max-width: 360px; } .demo-pick { padding: 56px 20px; gap: 28px; } }
 
 /* ---- Cocktail Specs (Nov 5, Figma 430:17) ---- */
 /* Step numbers stay 20px circles next to long steps. */
 [data-name^="List · "] [data-name^="Spec · "] [data-name="Number"] { flex: none !important; align-self: flex-start !important; width: 20px !important; height: 20px !important; min-height: 20px !important; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   /* Phones: amount beside ingredient, label beside value, number beside step (the general "stack rows" rule must not apply). */
   [data-name^="List · "] [data-name^="Line · "][data-name][data-name][data-name],
   [data-name^="List · "] [data-name^="Meta · "][data-name][data-name][data-name],
@@ -1338,7 +1352,7 @@ body.eip-lock { overflow: hidden; }
 .account-who span { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.35; }
 .account-out { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 0 14px; border: 1px solid #7A7268; border-radius: 999px; color: var(--cream); text-decoration: none; } /* edge 3.5:1 on the sidebar */
 .account-out:hover { color: var(--cream); background: var(--dark-3); }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .side { padding-bottom: calc(24px + env(safe-area-inset-bottom)) !important; }
   .account { margin-bottom: 8px; }
   /* The review queue card: no tall empty space above its buttons on a phone (the desktop height came along). */
@@ -1350,7 +1364,7 @@ body.eip-lock { overflow: hidden; }
 .account-out { flex: 1 1 100%; min-height: 38px; border-radius: 10px; font-size: 13.5px; }
 /* Food Matrix on phones (Nov 5, Tommy: "fix layout and white space"): the filter groups use the full width, options in two
    even columns; Table/Cards and Print share the width under the title. */
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   [data-name="Filters"] > [data-name^="Filter · "][data-name][data-name] { width: 100% !important; display: grid !important; grid-template-columns: 1fr 1fr; gap: 12px 16px !important; }
   [data-name="Filters"] > [data-name^="Filter · "][data-name][data-name] > .ftext { grid-column: 1 / -1; }
   [data-name="Filters"] > [data-name^="Filter · "] [data-name^="Option · "][data-name] { width: auto !important; min-width: 0; }
@@ -1358,7 +1372,7 @@ body.eip-lock { overflow: hidden; }
   [data-name="Actions"] > [data-name="View toggle"] { width: 100% !important; }
   [data-name="Actions"] > [data-name="View toggle"] > * { flex: 1 1 0 !important; justify-content: center !important; }
 }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   [data-name="Actions"] > [data-name="View toggle"] > [data-name^="Option · "] { justify-content: center !important; }
   [data-name="Actions"] > [data-name="View toggle"] > [data-name^="Option · "] > .ftext { width: auto !important; flex: 0 0 auto !important; text-align: center; }
   [data-name="Filters"] [data-name="Button · Reset"] { width: 100% !important; align-self: stretch !important; justify-content: center !important; }
@@ -1373,7 +1387,7 @@ body.eip-lock { overflow: hidden; }
 .sidebar { height: auto !important; min-height: 100%; display: flex; flex-direction: column; }
 .sidebar > [data-name="Sidebar"] { flex: 1 0 auto; }
 .side .account { margin-bottom: 0 !important; padding-bottom: 28px; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .side .account { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 }
 /* Home hero (Nov 6, Tommy: "the pic not going vertical full width"): the photo fills the card however tall the copy makes it. */
@@ -1405,7 +1419,7 @@ body.eip-lock { overflow: hidden; }
 .adjust-preview { width: 100%; border-radius: 10px; background: var(--tint-3); }
 .adjust-shape.small .adjust-preview { width: 56px; }
 .adjust-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-@media (max-width: 720px) {
+@media screen and (max-width: 720px) {
   .adjust-back { padding: 8px; }
   .modal.adjust { padding: 16px; max-height: calc(100dvh - 16px); }
   .adjust-body { grid-template-columns: minmax(0, 1fr); }
@@ -1439,7 +1453,7 @@ body.eip-lock { overflow: hidden; }
 .tour-skip { border: 0; background: none; padding: 6px 2px; color: var(--muted); font: 500 14px 'Archivo', sans-serif; text-decoration: underline; cursor: pointer; }
 .tour-btn { min-height: 40px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--cream); font: 600 14px 'Archivo', sans-serif; cursor: pointer; }
 .tour-btn.ghost { background: transparent; color: var(--ink); border-color: #8A7A66; }
-@media (max-width: 859px) { .demo-bar { padding: 10px 14px; } .demo-bar-actions { width: 100%; } .demo-bar-actions button { flex: 1 1 auto; } }
+@media screen and (max-width: 859px) { .demo-bar { padding: 10px 14px; } .demo-bar-actions { width: 100%; } .demo-bar-actions button { flex: 1 1 auto; } }
 
 /* ---- Keyboard focus you can see (Nov 6, Tommy: "I'm not sure exactly what it's selecting"). The ring was drawn outside each card, and
    most cards sit inside a clipping parent, so it was cut off. Cards draw it inside their own edge, in two tones so it shows on light and dark. ---- */
@@ -1465,9 +1479,9 @@ body.eip-lock { overflow: hidden; }
 .demo-back { border: 0; background: none; padding: 8px 4px; color: #E8DCCB; font: 600 14px 'Archivo', sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .demo-back:hover { color: #fff; }
 .demo-back:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
-@media (max-width: 859px) { .demo-bar-actions a { flex: 1 1 auto; } }
+@media screen and (max-width: 859px) { .demo-bar-actions a { flex: 1 1 auto; } }
 /* Phones and tablets show the logo and pill in the top bar, and the menu drops its logo: no second pill in there. */
-@media (max-width: 1239px) { #side [data-name="Brand"] { display: none !important; } }
+@media screen and (max-width: 1239px) { #side [data-name="Brand"] { display: none !important; } }
 
 /* Demo welcome card and tour, Nov 7 (Growth's, in The Baldwin's colours). */
 button.demo-pill { cursor: pointer; }
@@ -1498,7 +1512,7 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .tour-dots span { width: 6px; height: 6px; border-radius: 999px; background: var(--border); }
 .tour-dots span.done { background: var(--copper); }
 .tour-dots span.on { width: 18px; background: var(--copper-dk); }
-@media (max-width: 639px) {
+@media screen and (max-width: 639px) {
   .dw-scrim { padding: 12px; place-items: start center; }
   .dw { padding: 20px 18px 18px; gap: 10px; border-radius: 20px; }
   .dw h2 { font-size: 24px; }
@@ -1590,8 +1604,8 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .mp-readbar-actions { display: flex; align-items: center; gap: 14px; }
 .mp-readbar-actions a:not(.mp-btn) { color: var(--cream); font-weight: 600; font-size: 14px; }
 .mp-readbar .mp-btn.dark { background: var(--copper); border-color: var(--copper); color: var(--on-copper); }
-@media (max-width: 1100px) { .mp-cols { grid-template-columns: minmax(0, 1fr); } .mp-side { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } }
-@media (max-width: 700px) {
+@media screen and (max-width: 1100px) { .mp-cols { grid-template-columns: minmax(0, 1fr); } .mp-side { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); } }
+@media screen and (max-width: 700px) {
   .mp { padding: 20px 16px 96px; }
   .mp-script { font-size: 24px; }
   .mp h1 { font-size: 34px; }
@@ -1624,7 +1638,7 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .tr-stage-head small { font-size: 13px; color: var(--muted); }
 .tr-stage-head small.late { color: #8E2F16; font-weight: 600; }
 .tr-kind { width: 80px; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-@media (max-width: 700px) { .tr-bar { display: none; } }
+@media screen and (max-width: 700px) { .tr-bar { display: none; } }
 
 /* ---- Certificates (Nov 8). Figma 09 · Proposals → 22 (468:46). Sizes are the design's px ÷ 10.56, in container units,
    so the certificate is the same at any width and prints edge to edge on Letter landscape. ---- */
@@ -1673,9 +1687,8 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .cert-seal i { font-style: normal; text-transform: uppercase; font-weight: 600; font-size: .947cqw; letter-spacing: .18em; color: var(--copper-text); }
 .cert-seal b { font-weight: 800; font-size: 3.79cqw; line-height: 1.05; color: var(--cream); }
 .cert-fine { box-sizing: border-box; flex: none; align-self: center; width: 76cqw; max-width: 100%; padding: 0 1cqw; font-size: 1.042cqw; line-height: 1.15; color: var(--muted); white-space: normal; overflow-wrap: break-word; text-wrap: balance; margin: 3.75cqw 0 5.87cqw !important; }
-@media (max-width: 859px) { .cp { padding: 20px 16px 56px; } .cp h1 { font-size: 28px; } }
+@media screen and (max-width: 859px) { .cp { padding: 20px 16px 56px; } .cp h1 { font-size: 28px; } }
 @media print {
-  @page { size: letter landscape; margin: 0; }
   body.printing-cert * { visibility: hidden !important; }
   body.printing-cert .cert, body.printing-cert .cert * { visibility: visible !important; }
   body.printing-cert .cert { position: fixed; left: 0; top: 0; width: 11in; height: 8.5in; aspect-ratio: auto; box-shadow: none; }
@@ -1688,7 +1701,7 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 
 /* Nov 10 (audit): phone fixes. Demo banner on one line; level-card labels don't wrap; admin menu strip shows it scrolls. */
 .demo-short { display: none; }
-@media (max-width: 640px) {
+@media screen and (max-width: 640px) {
   .demo-bar { flex-wrap: nowrap; gap: 8px; padding: 8px 12px; font-size: 13px; }
   .demo-bar p { white-space: nowrap; }
   .demo-long { display: none; }
@@ -1698,12 +1711,12 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
   [data-name="Your path"] [data-name="Pill"] { white-space: nowrap; }
   [data-name="Your path"] [data-name="Pill"] [data-name] { font-size: 10.5px !important; }
 }
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .admin-side nav { -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); padding-right: 32px; scroll-snap-type: x proximity; }
   .admin-side nav a { scroll-snap-align: start; }
 }
 .cp-full-btn { display: none; }
-@media (max-width: 640px) { .cp-full-btn { display: inline-flex; } }
+@media screen and (max-width: 640px) { .cp-full-btn { display: inline-flex; } }
 .cp-full { position: fixed; inset: 0; z-index: 300; background: #14120F; overflow: hidden; }
 .cp-full-rot { position: absolute; left: 50%; top: 50%; width: min(calc(100vh - 40px), calc((100vw - 24px) * 1056 / 816)); width: min(calc(100svh - 72px), calc((100vw - 24px) * 1056 / 816)); transform: translate(-50%, -50%) rotate(90deg); } /* svh: the height left under a phone browser's bars, so neither end is hidden */
 .cp-full-close { position: fixed; top: 12px; right: 12px; min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid #8A7A66; background: var(--ink); color: var(--cream); font: 600 14px 'Archivo', sans-serif; }
@@ -1952,13 +1965,13 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .so-row small { font-size: 13px; color: var(--muted); }
 .so-btns { display: flex; align-items: center; gap: 14px; flex: none; }
 
-@media (max-width: 1180px) {
+@media screen and (max-width: 1180px) {
   .mh-cols { grid-template-columns: minmax(0, 1fr); }
   .mh-side { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
   .mh-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .pp-cols { grid-template-columns: 300px minmax(0, 1fr); }
 }
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .admin-group { display: none; }
   .admin-side nav a { gap: 6px; }
   .admin-nav-icon { display: none; }
@@ -2198,17 +2211,17 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .tc a:focus-visible, .tc button:focus-visible, .tc textarea:focus-visible { outline: 2px solid var(--copper-dk); outline-offset: 2px; }
 
 /* laptop and tablet: the details open from the header */
-@media (max-width: 1239px) {
+@media screen and (max-width: 1239px) {
   .tc-info { display: grid; }
   .tc-details { position: absolute; top: 0; right: 0; bottom: 0; width: min(340px, 100%); z-index: 25; box-shadow: -10px 0 30px rgba(30,28,26,.18); transform: translateX(100%); visibility: hidden; transition: transform .2s ease, visibility .2s; }
   .tc-details.open { transform: none; visibility: visible; }
   .tc-details-close { display: grid; place-items: center; align-self: flex-end; width: 36px; height: 36px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--ink); cursor: pointer; flex: none; }
   .tc-faces { display: none; }
 }
-@media (max-width: 1100px) { .tc-list { flex-basis: 260px; } }
+@media screen and (max-width: 1100px) { .tc-list { flex-basis: 260px; } }
 
 /* phone (and the side panel): the list, then one conversation full screen */
-@media (max-width: 859px) { .tc { min-height: 0; } }
+@media screen and (max-width: 859px) { .tc { min-height: 0; } }
 @container tc (max-width: 859px) {
   .tc-list { flex: 1 1 auto; border-right: 0; padding: 18px 14px 24px; gap: 14px; }
   .tc-list-head h1 { font-size: 24px; }
@@ -2272,10 +2285,10 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 @media (min-width: 1560px) {
   body.tcp-open .shell { padding-right: 400px; }
 }
-@media (max-width: 1239px) and (min-width: 860px) { .tcp { top: 56px; } } /* under the book's top bar, so its menu button stays reachable */
-@media (max-width: 1559px) and (min-width: 860px) { body:not(:has(.admin)) .tcp { box-shadow: -12px 0 32px rgba(30,28,26,.18); } }
-@media (max-width: 1099px) and (min-width: 860px) { body:has(.admin) .tcp { box-shadow: -12px 0 32px rgba(30,28,26,.18); } }
-@media (max-width: 859px) { .tcp { top: 0; left: 0; width: auto; border-left: 0; z-index: 95; } }
+@media screen and (max-width: 1239px) and (min-width: 860px) { .tcp { top: 56px; } } /* under the book's top bar, so its menu button stays reachable */
+@media screen and (max-width: 1559px) and (min-width: 860px) { body:not(:has(.admin)) .tcp { box-shadow: -12px 0 32px rgba(30,28,26,.18); } }
+@media screen and (max-width: 1099px) and (min-width: 860px) { body:has(.admin) .tcp { box-shadow: -12px 0 32px rgba(30,28,26,.18); } }
+@media screen and (max-width: 859px) { .tcp { top: 0; left: 0; width: auto; border-left: 0; z-index: 95; } }
 body:has(.admin) .tcp { top: 0; } /* the admin has no top bar */
 
 /* the list in the panel: buttons that look like the page's links */
@@ -2329,7 +2342,7 @@ body.eip-lock .page-tools.floating, body.menu-lock .page-tools.floating { displa
 .mg-btn.send-team, .eip-edit.send-team { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
 .tc .tc-compose textarea:focus-visible { outline: none; } /* the composer's border shows focus (focus-within) */
 /* The admin beside the open chat panel: its content is 400 px narrower, so it takes the layout it has at that width. */
-@media (min-width: 1100px) and (max-width: 1579px) {
+@media screen and (min-width: 1100px) and (max-width: 1579px) {
   body.tcp-open .mh-cols { grid-template-columns: minmax(0, 1fr); }
   body.tcp-open .mh-side { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
   body.tcp-open .mh-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -2606,7 +2619,7 @@ body.eip-lock .page-tools.floating, body.menu-lock .page-tools.floating { displa
 .tc-sheet-confirm span { flex: 1; }
 
 /* laptops: the members panel and the thread sit over the conversation */
-@media (max-width: 1239px) {
+@media screen and (max-width: 1239px) {
   .tc-page .tc-side { position: absolute; top: 0; right: 0; bottom: 0; z-index: 25; width: min(340px, 100%); box-shadow: -10px 0 30px rgba(30,28,26,.18); }
   .tc-page .tc-side.tc-thread { width: min(400px, 100%); }
 }
@@ -2702,7 +2715,7 @@ body.eip-lock .page-tools.floating, body.menu-lock .page-tools.floating { displa
 .wc-all:hover { text-decoration: underline; text-underline-offset: 3px; }
 .wc-phone-line { margin: 0; font-size: 14px; font-weight: 700; }
 .wc-admin { margin: 0 0 24px; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .wc { flex-direction: column; gap: 14px; padding: 16px 14px 14px; }
   .wc-row { padding: 0 0 0 4px; }
   .wc-row.at { padding: 12px; }
@@ -2732,7 +2745,7 @@ body.eip-lock .page-tools.floating, body.menu-lock .page-tools.floating { displa
 .chat-toast-x:hover { background: rgba(255,255,255,.08); color: inherit; }
 .chat-toast button:focus-visible { outline: 2px solid var(--copper-text); outline-offset: 2px; }
 body.tcp-open .chat-toast { display: none; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .chat-toast { left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: auto; }
   .chat-toast-btns button { height: 44px; }
   .chat-toast-x { width: 44px; height: 44px; }
@@ -2744,7 +2757,7 @@ body.tcp-open .chat-toast { display: none; }
 .admin-count.at { background: var(--alert); color: #FFFFFF; padding: 0 8px; }
 /* the phone bar's Team Chat button (690:862) */
 .chat-btn { position: relative; width: 44px; height: 44px; border: 0; border-radius: 12px; background: none; color: var(--cream); display: none; place-items: center; cursor: pointer; padding: 0; }
-@media (max-width: 1239px) { .chat-btn { display: grid; } }
+@media screen and (max-width: 1239px) { .chat-btn { display: grid; } }
 .chat-btn { z-index: 1; }
 .chat-btn .menu-count { top: 0; left: 22px; right: auto; z-index: 1; }
 .menu-count.at { background: var(--alert); color: #FFFFFF; padding: 0 6px; white-space: nowrap; }
@@ -2862,7 +2875,7 @@ body.tcp-open .chat-toast { display: none; }
 .brand-mise .mp-label { font-family: 'DM Mono', monospace; font-weight: 500; letter-spacing: .12em; }
 .brand-mise .mp-stage:not(.now):not(.done) .mp-num { background: #F4EFE0; }
 .brand-mise .mp-tint { background: #F4EFE0; border-color: #D9CFBF; }
-@media (max-width: 640px) { .brand-mise .mp h1 { font-size: 44px; } }
+@media screen and (max-width: 640px) { .brand-mise .mp h1 { font-size: 44px; } }
 
 /* ── The Mise look beyond the drawn pages (Nov 11, Tommy: "make sure both styles have all the same functions and features —
    only thing different should be the menu items and the style"). A Mise-brand company gets <html class="brand-mise">: the
@@ -2887,14 +2900,14 @@ body.tcp-open .chat-toast { display: none; }
   .cert-band span, .cert-seal b) { font-weight: 600; letter-spacing: -.01em; }
 /* Page titles: Instrument Serif 64 (44 on phones) */
 .brand-mise :is(.admin-page.mg .mg-head h1, .cp h1) { font: 400 64px/1 'Instrument Serif', Georgia, serif; letter-spacing: -.005em; }
-@media (max-width: 859px) { .brand-mise :is(.admin-page.mg .mg-head h1, .cp h1) { font-size: 44px; } }
+@media screen and (max-width: 859px) { .brand-mise :is(.admin-page.mg .mg-head h1, .cp h1) { font-size: 44px; } }
 /* Small caps labels: DM Mono */
 .brand-mise :is(.admin-tag, .admin-group, .mg-label, .tc-group, .tc-pop-title, .tc-pinned-title, .tc-got-label, .tc-card-kicker, .tc-box-title,
   .mp-label, .mp-readbar p span, .search-section, .page-message .eyebrow, .quiz-kicker, .qb-label, .eip-eyebrow, .eip-section h3, .eip-pick-head,
   .tour-count, .dw-label, .cert-label, .cert-facts span, .cert-foot span, .cert-seal i, .table th, .tr-kind) { font-family: 'DM Mono', ui-monospace, monospace; font-weight: 500; letter-spacing: .12em; }
 /* The Baldwin's script lines → a DM Mono label */
 .brand-mise .mg-script { font: 500 13px/1.3 'DM Mono', ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-@media (max-width: 859px) { .brand-mise .mg-script { font-size: 12px; } }
+@media screen and (max-width: 859px) { .brand-mise .mg-script { font-size: 12px; } }
 /* Main buttons: Char on light, Bone on dark (the copper ones were The Baldwin's main buttons) */
 .brand-mise .mg-btn.copper { background: var(--ink); border-color: var(--ink); color: var(--cream); }
 .brand-mise :is(.mh-band, .tc-pinned) :is(.mg-btn.copper, .tc-got:not(.done)), .brand-mise .qc-btn, .brand-mise .mp-readbar .mp-btn.dark { background: var(--cream); border-color: var(--cream); color: var(--ink); }
@@ -2930,7 +2943,7 @@ body.tcp-open .chat-toast { display: none; }
 /* ---- Edit Mode (Nov 11, Figma 533:274): the edit bar, the sidebar card, and the page's fields ---- */
 .em-icon { display: block; flex: none; }
 .em-bar-wrap { position: sticky; top: 12px; z-index: 30; margin: 28px auto 0; padding: 0 48px; box-sizing: border-box; max-width: 100%; }
-@media (max-width: 1239px) { .em-bar-wrap { top: 68px; } }
+@media screen and (max-width: 1239px) { .em-bar-wrap { top: 68px; } }
 .em-bar { display: flex; align-items: center; gap: 12px; padding: 12px 14px 12px 18px; border-radius: 14px; background: #1E1C1A; color: #F2EEE7;
   font-family: 'Archivo', sans-serif; box-shadow: 0 10px 30px rgba(30,28,26,.18); }
 .em-pen { width: 30px; height: 30px; flex: none; border-radius: 999px; background: #C49A6C; display: grid; place-items: center; }
@@ -2957,7 +2970,7 @@ body.tcp-open .chat-toast { display: none; }
 .em-bar.floating .em-actions .em-btn, .em-bar.floating .em-scope .em-btn { flex: 1 1 auto; min-height: 44px; }
 .em-bar.floating .em-scope > span { flex: 1 1 100%; }
 body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none; }
-@media (max-width: 859px) { body.edit-on .page { padding-bottom: 150px; } }
+@media screen and (max-width: 859px) { body.edit-on .page { padding-bottom: 150px; } }
 
 .em-card { margin: 0 20px 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px; border-radius: 14px; background: #2A2724; border: 1px solid #3A3632; font-family: 'Archivo', sans-serif; }
 .em-card.on { border: 1.5px solid #C49A6C; }
@@ -2975,7 +2988,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   font: 700 14px 'Archivo', sans-serif; cursor: pointer; }
 .em-toggle img { width: 28px; height: 28px; padding: 6px; box-sizing: border-box; border-radius: 999px; background: #C49A6C; }
 .em-toggle.on { background: #C49A6C; color: #1E1C1A; }
-@media (max-width: 359px) { .em-toggle span { display: none; } .em-toggle { padding: 0 8px; } }
+@media screen and (max-width: 359px) { .em-toggle span { display: none; } .em-toggle { padding: 0 8px; } }
 
 /* Fields: the design's own type, a dashed copper box around anything that can change; a solid one while typing. */
 .ed-text { position: relative; cursor: text; outline: 1.5px dashed #C49A6C; outline-offset: 3px; border-radius: 3px; }
@@ -3061,7 +3074,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .ed-select select:focus { padding: 7px 31px 7px 11px; }
 .ed-select .em-icon { position: absolute; right: 10px; pointer-events: none; }
 .ed-spec input.ed-garnish { font-size: 14px; }
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .ed-spec-row { grid-template-columns: 16px 76px minmax(0, 1fr) 22px; row-gap: 4px; }
   .ed-spec-row .ed-was { grid-column: 2 / 4; grid-row: 2; }
   .ed-spec-row .ed-remove, .ed-spec-row:not(:has(.ed-was)) .ed-remove { grid-column: 4; grid-row: 1; }
@@ -3086,7 +3099,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .ack-line { margin: 0; display: flex; align-items: center; gap: 10px; font: 600 16px/1.35 'Archivo', sans-serif; }
 .ack-sub { font-weight: 500; font-size: 15px; color: #CFC6B9; }
 .ack-tick { width: 24px; height: 24px; border-radius: 12px; background: #2E7D45; color: #fff; display: grid; place-items: center; font: 800 13px 'Archivo', sans-serif; flex: none; }
-@media (max-width: 859px) { .ack-btn { width: 100%; } }
+@media screen and (max-width: 859px) { .ack-btn { width: 100%; } }
 /* Nov 12: the Training Acknowledgment's own page (a Day 1 step on My Path, src/path/AckPage.tsx): the statement and the sign
    box on the dark panel, as it was drawn on Hospitality 101 */
 .ack-page { max-width: 920px; }
@@ -3099,15 +3112,15 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .ack-kicker { margin: 0; font: 26px/1.2 'Pinyon Script', cursive; color: #C49A6C; }
 .ack-statement { margin: 0 0 4px; font: 500 17px/1.5 'Archivo', sans-serif; color: #F2EEE7; }
 .ack-how { margin-top: 18px; }
-@media (max-width: 640px) { .ack-card { padding: 24px 20px; } .ack-card h2 { font-size: 22px; } }
+@media screen and (max-width: 640px) { .ack-card { padding: 24px 20px; } .ack-card h2 { font-size: 22px; } }
 /* A program hub with two levels (Hospitality, Nov 11): on a wide screen the two cards share the row; phones keep two across */
-@media (min-width: 860px) {
+@media print, (min-width: 860px) {
   [data-name="Levels"]:has(> [data-name^="Level "]:nth-child(2):last-child) > [data-name^="Level "] { flex: 1 1 0 !important; width: auto !important; max-width: none !important; }
 }
 
 /* Mise card titles (Nov 11, Tommy: "the header sizing feels too big"): serif 40 on desktop, wrapping with even lines; on
    phones sized by the longest word (Instrument Serif runs about 0.46 em a letter), so a level name is never cut off. */
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   .brand-mise [data-name^="Level "] .ftext.fit, .brand-mise [data-name^="Part "] .ftext.fit { font-size: min(var(--z), calc((50vw - 64px) / (var(--lw) * 0.46))) !important; overflow-wrap: normal; }
 }
 
@@ -3178,7 +3191,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .brand-mise .ack-card h2 { font: 400 40px/1.05 'Instrument Serif', serif; text-transform: none; color: #EDE6DA; }
 .brand-mise .ack-kicker { font: 500 13px/1.3 'DM Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: #D9D4CB; }
 .brand-mise .ack-statement { color: #EDE6DA; }
-@media (max-width: 640px) { .brand-mise .ack-card h2 { font-size: 32px; } }
+@media screen and (max-width: 640px) { .brand-mise .ack-card h2 { font-size: 32px; } }
 .brand-mise .ack { color: #EDE6DA; border-top-color: #34302C; }
 .brand-mise .ack-field { font-family: 'DM Mono', monospace; font-weight: 500; color: #D9D4CB; }
 .brand-mise .ack-field input { border-radius: 10px; border-color: #4A443E; background: #1E1C1A; color: #EDE6DA; font-family: 'Archivo', sans-serif; }
@@ -3228,12 +3241,12 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .arc-row small { font-size: 13px; color: var(--muted, #5C554D); }
 .arc-store { display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; margin-top: 4px; padding: 2px 8px; border-radius: 6px; background: var(--tint, #F1EBDF); color: var(--ink); font: 600 12px 'Archivo', sans-serif; }
 .arc-empty { color: var(--muted, #5C554D); font-size: 14px; padding: 12px 0; margin: 0; }
-@media (max-width: 600px) { .arc-row { flex-wrap: wrap; } .arc-row .btn { width: 100%; } }
+@media screen and (max-width: 600px) { .arc-row { flex-wrap: wrap; } .arc-row .btn { width: 100%; } }
 /* The Undo toast keeps its words on one or two lines, and on phones in Edit Mode it sits under the top bar so the
    floating edit bar never covers it. */
 .arc-toast { width: max-content; max-width: calc(100vw - 32px); box-sizing: border-box; line-height: 1.35; }
 .arc-toast .dot, .arc-toast .arc-undo { flex: none; }
-@media (max-width: 800px) { body.edit-on .arc-toast { top: 76px; bottom: auto; } }
+@media screen and (max-width: 800px) { body.edit-on .arc-toast { top: 76px; bottom: auto; } }
 /* Edit Mode on the cinematic hero (every brand): allergen chips that aren't picked read on the dark panel */
 [data-name="Hero"] .ed-chip:not(.on) { color: var(--c-on-inverse-muted); border-color: var(--c-outline-on-dark); }
 
@@ -3289,8 +3302,8 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .si .name-btn:hover { border-color: var(--c-ink); box-shadow: none; }
 .si .btn:focus-visible, .si .link-btn:focus-visible, .si .name-btn:focus-visible, .si a:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; box-shadow: none; }
 .si-narrow { display: none; }
-@media (max-width: 1199px) { .si-card { padding: 40px; } }
-@media (max-width: 899px) {
+@media screen and (max-width: 1199px) { .si-card { padding: 40px; } }
+@media screen and (max-width: 899px) {
   .si { display: block; }
   .si-photo { position: relative; height: 288px; }
   .si-shade { background: linear-gradient(180deg, color-mix(in srgb, var(--c-inverse) 55%, transparent) 0%, color-mix(in srgb, var(--c-inverse) 35%, transparent) 25%,
@@ -3301,8 +3314,8 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   .si-side { position: relative; margin-top: -24px; border-radius: 20px 20px 0 0; background: var(--c-page); justify-content: flex-start; padding: 28px 20px 34px; }
   .si-title { font-size: var(--si-title-size-phone); line-height: 1.04; }
 }
-@media (min-width: 600px) and (max-width: 899px) { .si-photo { height: 360px; } .si-side { padding-top: 40px; } }
-@media (max-width: 599px) {
+@media screen and (min-width: 600px) and (max-width: 899px) { .si-photo { height: 360px; } .si-side { padding-top: 40px; } }
+@media screen and (max-width: 599px) {
   .si-side { align-items: stretch; }
   .si-card { width: 100%; background: none; border: 0; border-radius: 0; padding: 0; }
   .si-wide { display: none; }
@@ -3311,7 +3324,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 
 /* Nov 12 (Tommy: "make this sizing and padding better"): the program level heroes' four stat boxes go two to a row on
    phones and tablets, splitting the column evenly instead of leaving a gap on the right. */
-@media (max-width: 859px) {
+@media screen and (max-width: 859px) {
   [data-name="Hero"] [data-name="At a glance"]:has(> [data-name^="Stat · "]) { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; width: 100% !important; height: auto !important; }
   [data-name="Hero"] [data-name="At a glance"] > [data-name^="Stat · "] { width: auto !important; max-width: none !important; }
 }

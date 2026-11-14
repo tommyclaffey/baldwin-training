@@ -46,15 +46,26 @@ export function Certificate({ c }: { c: Cert }) {
 }
 
 /** Print only the certificate (the class hides the rest of the app while the print window is open). */
-function printCert() {
-  document.body.classList.add('printing-cert');
-  const done = () => { document.body.classList.remove('printing-cert'); window.removeEventListener('afterprint', done); };
-  window.addEventListener('afterprint', done);
-  window.print();
+function printCert() { window.print(); }
+
+/** While a certificate is on screen, any print (the button or Cmd+P) is the certificate alone, edge to edge on Letter landscape.
+ *  Nov 14: the landscape @page used to sit in styles.css, so every other page printed sideways too. */
+function useCertPrint() {
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = '@page { size: letter landscape; margin: 0; }';
+    document.head.appendChild(style);
+    const on = () => document.body.classList.add('printing-cert');
+    const off = () => document.body.classList.remove('printing-cert');
+    window.addEventListener('beforeprint', on);
+    window.addEventListener('afterprint', off);
+    return () => { style.remove(); off(); window.removeEventListener('beforeprint', on); window.removeEventListener('afterprint', off); };
+  }, []);
 }
 
 /** /certificate/<level> (e.g. bar-2): your own, or a staff member's for managers (?user=<id>). */
 export function CertificatePage() {
+  useCertPrint();
   const { pathname, search } = useLocation();
   const { user } = useSession();
   const key = pathname.split('/')[2] || '';

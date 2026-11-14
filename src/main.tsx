@@ -7,8 +7,10 @@ import './styles.css';
 import { overflowReport } from './debug';
 import { restartDemoIfRefreshed } from './lib/demo';
 import { reportErrors } from './lib/reportErrors';
+import { setupPrint } from './lib/print';
 overflowReport();
 reportErrors();
+setupPrint();
 
 const mount = () => createRoot(document.getElementById('root')!).render(
   <StrictMode>
