@@ -39,6 +39,8 @@ seed(db);
 seedWineVideos(db);
 bootAccounts(db);
 migrateAcks(db); migrateDemo(db); purgeDemos(db); // acks first: demo copies seed and drop them
+// Nov 14: last week's prep summary posts to each store's #Bar on Monday mornings (server/prep.mjs, postWeekly)
+prep.startWeekly(db, (e) => logError(db, 'server', 'weekly prep post', e));
 setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
 try { warmContent(db); } catch (e) { console.error('warm-up', e); } // before listening: the first visitor doesn't wait for it
 const demoLimiter = new LoginLimiter(30, 60 * 60_000, 'demo-start'); // 30 demo starts an hour per address
@@ -654,6 +656,7 @@ async function api(req, res, url) {
         return sendJson(res, 200, prep.report(db, c.storeRow, { range: q.get('range') || 'week', at: q.get('at') || undefined, series: q.get('series') || '' }));
       }
       if (p === '/api/prep/report/send' && m === 'POST') { manager(); return sendJson(res, 200, prep.sendSummary(db, c, u, await readJson(req, 20_000))); }
+      if (p === '/api/prep/weekly' && m === 'PUT') { manager(); return sendJson(res, 200, prep.setWeekly(db, x, u, !!(await readJson(req)).on)); }
     } catch (e) { if (e instanceof prep.PrepError) fail(e.status, e.message); throw e; }
     fail(404, 'Not found.');
   }

@@ -291,6 +291,15 @@
 .prp-send-card { padding: 14px 16px; border-radius: 12px; background: var(--c-inverse-raised); border: 1px solid var(--c-inverse-line); margin-bottom: 14px; }
 .prp-send-card p { margin: 0 0 12px; font-size: 14px; line-height: 1.5; color: var(--c-on-inverse-muted); }
 .prp-send-card textarea { margin-bottom: 12px; }
+.prp-weekly { display: flex; gap: 12px; align-items: center; width: 100%; min-height: 44px; margin-top: 16px; padding: 12px 0 0; border: 0; border-top: 1px solid var(--c-inverse-line); background: none; color: var(--c-on-inverse); text-align: left; font: inherit; cursor: pointer; }
+.prp-weekly > span:last-child { display: flex; flex-direction: column; gap: 2px; }
+.prp-weekly strong { font-size: 14px; }
+.prp-weekly small { font-size: 13px; line-height: 1.4; color: var(--c-on-inverse-muted); }
+.prp-weekly .prp-switch.on { background: var(--c-button-on-dark); }
+.prp-weekly .prp-switch.on::after { background: var(--c-inverse); }
+.prp-weekly .prp-switch.off { background: transparent; box-shadow: inset 0 0 0 1.5px var(--c-outline-on-dark); }
+.prp-weekly .prp-switch.off::after { left: 3px; background: var(--c-outline-on-dark); }
+.prp-weekly:focus-visible { outline: 2px solid var(--c-on-inverse); outline-offset: 4px; border-radius: 6px; }
 .prp-send-att { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 10px; background: var(--c-card); color: var(--c-ink); }
 .prp-send-att span { display: flex; flex-direction: column; }
 .prp-send-att small { color: var(--c-ink-muted); font-size: 12px; }

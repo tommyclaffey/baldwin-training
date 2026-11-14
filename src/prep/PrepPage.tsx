@@ -532,6 +532,7 @@ function ReportsPage() {
   const [msg, setMsg] = useState('');
   const [editMsg, setEditMsg] = useState(false);
   const [sending, setSending] = useState(false);
+  const [weeklyOn, setWeeklyOn] = useState<boolean | null>(null);
   useEffect(() => { if (data) setMsg(data.summary); }, [data]);
   const set = (k: string, v: string) => { const p = new URLSearchParams(params); if (v) p.set(k, v); else p.delete(k); if (k === 'range') p.delete('at'); setParams(p, { replace: true }); };
   const rows = useMemo(() => (data?.rows || []).filter((r) => kind === 'all' || r.kind === kind), [data, kind]);
@@ -549,6 +550,13 @@ function ReportsPage() {
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob); a.download = `prep-${data.range}-${data.period.from}${user?.demo ? '-demo' : ''}.csv`;
     document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  };
+  const weekly = weeklyOn ?? data.weekly?.on ?? true;
+  const flipWeekly = async () => {
+    const on = !weekly;
+    setWeeklyOn(on);
+    try { await api('/api/prep/weekly', { method: 'PUT', body: { on } }); setToast(on ? 'Last week’s summary will post to #Bar every Monday.' : 'The Monday post is off.'); }
+    catch (e) { setWeeklyOn(!on); setToast((e as Error).message); }
   };
   const send = async () => {
     setSending(true);
@@ -652,6 +660,12 @@ function ReportsPage() {
               <button type="button" className="prp-btn ghostdark" onClick={() => setEditMsg((v) => !v)} aria-pressed={editMsg}>{editMsg ? 'Done Editing' : 'Edit Message'}</button>
               <button type="button" className="prp-btn ondark" disabled={sending} onClick={() => void send()}>{sending ? 'Sending…' : 'Send Now'}</button>
             </div>
+            {/* Nov 14: the Monday post (server/prep.mjs, postWeekly). The whole row is the switch, so it's a big target. */}
+            <button type="button" role="switch" aria-checked={weekly} className="prp-weekly" onClick={() => void flipWeekly()}>
+              <span className={'prp-switch' + (weekly ? ' on' : ' off')} aria-hidden="true" />
+              <span><strong>Post Every Monday</strong>
+                <small>{weekly ? `Last week’s summary goes to #Bar at ${data.weekly?.hour ?? 9} am on Mondays${data.weekly?.lastWeek ? `. Last sent for the week of ${dayLabel(data.weekly.lastWeek, { month: 'short', day: 'numeric' })}` : ''}.` : 'Off. Send it by hand when you want.'}</small></span>
+            </button>
           </section>
         ) : <span />}
       </div>

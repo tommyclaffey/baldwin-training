@@ -10,7 +10,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { DatabaseSync } from 'node:sqlite';
-import { dayOf, addDays, useByFor, toMake, suggestions, parsFor, pct, periodFor, summaryText, canLog, canManage, detroitAt, recompute, ledgerOf, weekdayStats, saveCount, logWaste, report } from '../server/prep.mjs';
+import { dayOf, addDays, useByFor, toMake, suggestions, parsFor, pct, periodFor, summaryText, canLog, canManage, detroitAt, recompute, ledgerOf, weekdayStats, saveCount, logWaste, report, weeklyDue, postWeekly, setWeekly, weeklySetting, WEEKLY_NOTE } from '../server/prep.mjs';
 import { MIGRATIONS } from '../server/db.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -252,6 +252,77 @@ test('reports read counted Used: waste % = wasted ÷ (used + wasted); a missed d
   assert.deepEqual([wed.made, wed.used, wed.wasted, thu.used, thu.wasted], [2.5, 2, 0, 2, 0.5]);
 });
 
+/* ---------------- the Monday post to #Bar (Nov 14) ---------------- */
+test('the weekly post is due Monday from 9 am Detroit time (and Tuesday, to catch up), for last week', () => {
+  assert.equal(weeklyDue(detroitAt('2026-11-16', 8, 59)), null, 'Monday before 9');
+  assert.equal(weeklyDue(detroitAt('2026-11-16', 9, 0)), '2026-11-09', 'Monday 9 am: the week of Nov 9–15');
+  assert.equal(weeklyDue(detroitAt('2026-11-17', 23, 0)), '2026-11-09', 'Tuesday catches up');
+  assert.equal(weeklyDue(detroitAt('2026-11-18', 9, 0)), null, 'Wednesday: too late, wait for next Monday');
+  assert.equal(weeklyDue(detroitAt('2026-11-15', 23, 0)), null, 'Sunday');
+  assert.equal(weeklyDue('2026-11-16T13:30:00Z'), null, '8:30 am in Detroit is 13:30 UTC');
+});
+
+function weeklyDb() {
+  const db = memDb();
+  db.exec('ALTER TABLE companies ADD COLUMN demo INT NOT NULL DEFAULT 0');
+  db.exec("INSERT INTO users(id, company_id, name, role, email, jobs, store_id) VALUES (1002, 1, 'Bea Bar', 'staff', 'bea@prep.test', '[\"bartender\"]', 1)");
+  const lime = addItem(db, 'Lime juice');
+  addCount(db, lime, '2026-11-10', 1); addBatch(db, lime, '2026-11-10', 2);
+  addCount(db, lime, '2026-11-11', 1); addBatch(db, lime, '2026-11-11', 2);
+  addCount(db, lime, '2026-11-12', 1.5);
+  recompute(db, lime);
+  return db;
+}
+const barMessages = (db) => db.prepare("SELECT m.* FROM chat_messages m JOIN chat_rooms r ON r.id = m.room_id WHERE r.store_id = 1 AND r.key = 'bar' ORDER BY m.id").all();
+
+test('Monday: last week’s summary goes to #Bar once, the same words and card as Send Now; never twice after a restart', () => {
+  const db = weeklyDb();
+  const monday = detroitAt('2026-11-16', 9, 5);
+  const out = postWeekly(db, monday);
+  assert.deepEqual(out.map((o) => [o.store, o.week, !!o.id]), [[1, '2026-11-09', true]], 'only the store that keeps prep');
+  const msgs = barMessages(db);
+  assert.equal(msgs.length, 1);
+  const r = report(db, storeRow, { range: 'week', at: '2026-11-09' });
+  assert.equal(msgs[0].body, `${r.summary}\n${WEEKLY_NOTE}`);
+  assert.match(r.summary, /^Prep, Nov 9–15: juices and syrups/);
+  const card = JSON.parse(msgs[0].page);
+  assert.equal(card.slug, 'prep/reports?range=week&at=2026-11-09'); assert.equal(card.kind, 'Prep report');
+  assert.equal(msgs[0].user_id, 1001, 'from the store’s manager');
+  // Another tick, a "restart" (a new pass on the same database), and Tuesday: nothing more
+  assert.deepEqual(postWeekly(db, detroitAt('2026-11-16', 9, 20)), []);
+  assert.deepEqual(postWeekly(db, detroitAt('2026-11-17', 10, 0)), []);
+  assert.equal(barMessages(db).length, 1);
+  assert.equal(weeklySetting(db, storeRow).lastWeek, '2026-11-09');
+  // The next Monday posts the next week
+  const lime = db.prepare('SELECT id FROM prep_items').get().id;
+  addCount(db, lime, '2026-11-17', 1); addBatch(db, lime, '2026-11-17', 2); recompute(db, lime);
+  assert.equal(postWeekly(db, detroitAt('2026-11-23', 9, 0)).filter((o) => o.id).length, 1);
+  assert.equal(barMessages(db).length, 2);
+});
+
+test('the weekly post: a manager turns it off (and back on); demo companies and stores with nothing logged never get it', () => {
+  const db = weeklyDb();
+  const u = { id: 1001 };
+  assert.equal(weeklySetting(db, storeRow).on, true, 'on by default');
+  assert.equal(setWeekly(db, X, u, false).on, false);
+  assert.deepEqual(postWeekly(db, detroitAt('2026-11-16', 9, 0)), []);
+  assert.equal(barMessages(db).length, 0, 'off: nothing posted');
+  assert.equal(setWeekly(db, X, u, true).on, true);
+  assert.equal(postWeekly(db, detroitAt('2026-11-16', 10, 0)).length, 1, 'back on: posts');
+  // A demo company: never
+  const demo = weeklyDb();
+  demo.exec('UPDATE companies SET demo = 1 WHERE id = 1');
+  assert.deepEqual(postWeekly(demo, detroitAt('2026-11-16', 9, 0)), []);
+  assert.equal(barMessages(demo).length, 0);
+  // Nothing logged that week: no post, and the week is done (no hourly re-check)
+  const quiet = weeklyDb();
+  const r = postWeekly(quiet, detroitAt('2026-11-23', 9, 0));
+  assert.deepEqual(r.map((o) => o.skipped), ['nothing logged']);
+  assert.equal(barMessages(quiet).length, 0);
+  assert.deepEqual(postWeekly(quiet, detroitAt('2026-11-23', 10, 0)), []);
+  assert.equal(weeklySetting(quiet, storeRow).lastWeek, null, 'Reports doesn’t say it was sent');
+});
+
 test('migration 20 runs on a database that already has migration 19 prep rows', () => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-mig-'));
   const script = `
@@ -416,6 +487,17 @@ test('Send to Team Chat posts the summary to #Bar as a card that opens the repor
   assert.equal((await bar('/api/prep/report/send', { method: 'POST', body: { range: 'day' } })).status, 403, 'managers send it');
   const card = await bar(`/api/chat/card?page=${encodeURIComponent('prep/item/' + items[0].id)}`);
   assert.equal(card.data.card.title, 'Lime juice');
+});
+
+test('Reports carries the Monday post setting; managers turn it off, staff can’t', async () => {
+  const r = await manager('/api/prep/report?range=week');
+  assert.deepEqual([r.data.weekly.on, r.data.weekly.hour], [true, 9]);
+  assert.equal((await bar('/api/prep/weekly', { method: 'PUT', body: { on: false } })).status, 403, 'managers only');
+  const off = await manager('/api/prep/weekly', { method: 'PUT', body: { on: false } });
+  assert.equal(off.status, 200); assert.equal(off.data.on, false);
+  assert.equal((await manager('/api/prep/report?range=week')).data.weekly.on, false);
+  assert.equal((await testaGm('/api/prep/report?range=week')).data.weekly.on, true, 'per store');
+  assert.equal((await manager('/api/prep/weekly', { method: 'PUT', body: { on: true } })).data.on, true);
 });
 
 test('suggestions are only applied when a manager accepts one', async () => {

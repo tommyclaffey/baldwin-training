@@ -59,7 +59,10 @@ export type Report = {
   rows: ReportRow[]; series: { id: number | string; unit: string; options: { id: number | string; label: string }[] };
   chart: Bucket[]; busiest: { dow: number; label: string; batches: number }[]; started: string | null; lastYear: boolean;
   periods: { at: string; label: string }[]; summary: string;
+  weekly: Weekly;
 };
+/** The Monday post to #Bar (Nov 14): on unless a manager turned it off; the last week that went out. */
+export type Weekly = { on: boolean; lastWeek: string | null; lastAt: string | null; hour: number };
 
 export const KIND_LABEL: Record<Kind, string> = { juice: 'Juices', syrup: 'Syrups', garnish: 'Garnishes' };
 export const KIND_LINE: Record<Kind, string> = { juice: 'Juices · made every shift', syrup: 'Syrups', garnish: 'Garnishes · cut before open' };
