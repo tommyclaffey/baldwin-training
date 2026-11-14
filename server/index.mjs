@@ -27,6 +27,7 @@ import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErr
 import { enterStore } from './variant.mjs';
 import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
 import * as prep from './prep.mjs';
+import { initCompanyData, companyDataRoutes } from './companydata.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -34,6 +35,7 @@ const PORT = Number(process.env.PORT) || 8080;
 const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
 initOps(db);
+initCompanyData(db); // Nov 14: data export and delete (company_deletions)
 LoginLimiter.useDb(db); // Nov 10: lockouts survive a redeploy
 seed(db);
 seedWineVideos(db);
@@ -203,6 +205,7 @@ const SUPER_BEFORE_TWO_STEP = new Set(['/api/me', '/api/2fa/start', '/api/2fa/en
 
 /* ------------------------------ routes ------------------------------ */
 const accounts = accountRoutes({ db, fail, sendJson, readJson, str, isSecure });
+const companyData = companyDataRoutes({ db, fail, sendJson, readJson, isDemoCompany });
 async function api(req, res, url) {
   const c = ctx(req);
   enterStore(db, c.storeRow); // Nov 11: BRG's companies read BRG's Hospitality Program, everyone else the generic one
@@ -219,6 +222,12 @@ async function api(req, res, url) {
     const buf = encryptedBackup(db);
     res.writeHead(200, { 'Content-Type': 'application/octet-stream', 'Content-Length': buf.length, 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="mise-${new Date().toISOString().slice(0, 10)}.bk"` });
     return res.end(buf);
+  }
+  // Nov 14 (security review): which address the rate limits see, to check the proxy's headers after a deploy
+  // (curl -H "Authorization: Bearer $OPS_TOKEN" -H "X-Forwarded-For: 192.0.2.1" …/api/ops/ip: "used" should be your own address).
+  if (p === '/api/ops/ip' && m === 'GET') {
+    if (!opsAllowed(req)) fail(404, 'Not found.');
+    return sendJson(res, 200, { used: clientIp(req), xRealIp: req.headers['x-real-ip'] || null, xForwardedFor: req.headers['x-forwarded-for'] || null });
   }
   if (p === '/api/ops/errors' && m === 'GET') {
     if (!opsAllowed(req)) fail(404, 'Not found.');
@@ -288,6 +297,8 @@ async function api(req, res, url) {
   if (c.user?.role === 'superadmin' && !c.user.totp_on && !c.user.impersonator_id && !SUPER_BEFORE_TWO_STEP.has(p)) {
     fail(403, 'Turn on two-step sign-in on Your Account first. Super admins need it before they can open any company.');
   }
+  // Company data (Nov 14, server/companydata.mjs): an owner's export and deletion request; the super admin's confirm.
+  if ((p.startsWith('/api/company/') || p.startsWith('/api/super/deletions')) && (await companyData(req, res, url, c)) !== false) return;
   if ((await accounts(req, res, url, c)) !== false) return;
 
   /* quizzes: everyone signed in. A person's records are keyed 'u<id>' (older phone-only records keep their device id). */

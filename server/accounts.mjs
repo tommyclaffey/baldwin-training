@@ -18,6 +18,7 @@ import {
 } from './auth.mjs';
 import { APP_URL, mailConfigured, sendMail, resetEmail } from './mail.mjs';
 import { logError } from './ops.mjs';
+import { wipeCompany, PROTECTED } from './companydata.mjs';
 
 const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
 const SUPERADMIN_EMAIL = (process.env.SUPERADMIN_EMAIL || '').trim().toLowerCase();
@@ -86,12 +87,13 @@ const storeOut = (x) => x && { id: x.id, name: x.name, slug: x.slug, bookReady: 
 export function purgeDeleted(db) {
   const cutoff = new Date(Date.now() - 30 * 864e5).toISOString();
   for (const c of db.prepare('SELECT id FROM companies WHERE deleted_at IS NOT NULL AND deleted_at < ?').all(cutoff)) {
-    for (const t of ['quiz_attempts', 'signoffs', 'sections', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'chat_rooms']) db.prepare(`DELETE FROM ${t} WHERE company_id = ?`).run(c.id);
-    db.prepare('DELETE FROM sessions WHERE user_id IN (SELECT id FROM users WHERE company_id = ?)').run(c.id);
-    db.prepare('DELETE FROM users WHERE company_id = ?').run(c.id);
-    db.prepare('DELETE FROM invites WHERE company_id = ?').run(c.id);
-    db.prepare('DELETE FROM password_resets WHERE company_id = ?').run(c.id);
-    db.prepare('DELETE FROM companies WHERE id = ?').run(c.id);
+    // Nov 14 (security review): this used to delete a few tables and then the company row, which its stores still pointed
+    // at, so it failed on the database's foreign key rule: at startup (the server wouldn't start) and every 12 hours. It
+    // also left the company's pages, uploads, prep and reads behind. Now everything that's the company's goes, stores
+    // before the company (server/companydata.mjs). The Baldwin is never removed this way: it holds the shared library, so
+    // it stays deleted (and restorable) until it's handled by hand.
+    if (PROTECTED.has(c.id)) continue;
+    try { wipeCompany(db, c.id); } catch (e) { console.error('purge company', c.id, e); }
   }
   for (const u of db.prepare('SELECT id FROM users WHERE deleted_at IS NOT NULL AND deleted_at < ?').all(cutoff)) {
     db.prepare('DELETE FROM sessions WHERE user_id = ?').run(u.id);
