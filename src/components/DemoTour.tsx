@@ -34,6 +34,8 @@ const STOPS: Stop[] = [
   { ...DISH, target: '.send-team', title: 'Send it to the team', body: 'Send to Team drops this dish into Team Chat as a card. Pick who gets it, add a line, and Send.' },
   { ...DISH, target: '.eip-edit:not(.send-team)', title: 'Edit right here', body: 'Managers change a dish from its own page. Everyone sees the update on Save.', manager: true },
   { path: '/the-bar/cocktail-specs', target: '[data-name^="Spec · "]', title: 'Specs for bartenders', body: 'One card per drink: the amounts, glass, ice, method and garnish. The spec quizzes test these builds.' },
+  // Nov 14: Bar Prep (Figma 632:803). The demo's bar hasn't counted today, so the two steps show where a shift starts.
+  { path: '/prep', target: '.prp-steps2', title: 'Bar prep', body: 'Juices, syrups and garnishes. The opener counts what the bar walked in with, then preps to par. Reports show waste week over week, and last week’s summary posts to #Bar every Monday.', manager: true },
   { path: '/the-bar/wine', target: '[data-name="Section · By the glass"]', title: 'The wine list', body: 'Every wine has its own page: tasting notes, what to pair and what to say.' },
   { path: '/quizzes', target: '.qb', title: 'Build a quiz', body: 'Pick any subjects and a length. New Questions never repeats until you’ve seen them all.' },
   // Nov 10 (audit: the demo never showed the programs): the training programs, and a certificate earned
