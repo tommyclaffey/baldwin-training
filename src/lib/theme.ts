@@ -241,14 +241,14 @@ const find = (n: FNode, f: (x: FNode) => boolean): FNode | null => { if (f(n)) r
 const all = (n: FNode, f: (x: FNode) => boolean, out: FNode[] = []) => { if (f(n)) out.push(n); (n.c || []).forEach((c) => all(c, f, out)); return out; };
 
 const SMALL = new Set(['a', 'an', 'and', 'of', 'the', 'to', 'or', 'at', 'by', 'in', 'on', 'for', 'with']);
-// Nov 11: short names that stay in capitals ("USA" read "Usa" on the Wine page)
-const KEEP_CAPS = new Set(['usa', 'uk', 'ipa', 'vs', 'vsop', 'xo', 'xxo', 'abv', 'pos', 'na', 'ny', 'diy', 'tv', 'am', 'pm']);
+// Nov 11: short names that stay in capitals ("USA" read "Usa" on the Wine page). Nov 14: "ID" ("Check ID" read "Check Id").
+const KEEP_CAPS = new Set(['usa', 'uk', 'ipa', 'vs', 'vsop', 'xo', 'xxo', 'abv', 'pos', 'na', 'ny', 'diy', 'tv', 'am', 'pm', 'id']);
 /** "OLD FASHIONED" → "Old Fashioned"; leaves mixed-case text alone. */
 export function titleCase(s: string) {
   if (!s || s !== s.toUpperCase() || !/[A-Z]{2}/.test(s)) return s;
   // split on any space or line break and keep it ("SOMMELIER\nPROGRAM" → "Sommelier\nProgram")
   let i = -1;
-  return s.toLowerCase().split(/(\s+)/).map((w) => { if (/^\s*$/.test(w)) return w; i++; return KEEP_CAPS.has(w.replace(/[^a-z]/g, '')) ? w.toUpperCase() : i > 0 && SMALL.has(w) ? w : w.replace(/(^|-)([^a-z]*)([a-z])/g, (_m, h, p, c) => h + p + c.toUpperCase()); }).join('');
+  return s.toLowerCase().split(/(\s+)/).map((w) => { if (/^\s*$/.test(w)) return w; i++; return !/['’]/.test(w) && KEEP_CAPS.has(w.replace(/[^a-z]/g, '')) ? w.toUpperCase() : i > 0 && SMALL.has(w) ? w : w.replace(/(^|-)([^a-z]*)([a-z])/g, (_m, h, p, c) => h + p + c.toUpperCase()); }).join('');
 }
 /** A title in the brand's case: The Baldwin's capitals, Mise's Title Case. For coded screens ("MY PATH" / "My Path"). */
 export function brandTitle(s: string, t: Theme = theme()) { return t.type.pageTitle.case === 'title' ? titleCase(s) : s.toUpperCase(); }

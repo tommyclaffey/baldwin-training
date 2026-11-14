@@ -59,3 +59,13 @@ test('the cinematic hero is the same layout in every brand; only the paint and a
   const mise = T.themePage(page(cocktail(), 'Classic · Old Fashioned'), T.THEMES.mise).main.c[0].c[0].c;
   assert.equal(mise[1].n, 'Taped note'); assert.equal(mise[2].ff, 'Instrument Serif'); assert.equal(mise[2].s, 'Old Fashioned');
 });
+
+test('titleCase keeps short names in capitals: "ID", "USA", "ABV" (Nov 14: "Check ID" read "Check Id")', () => {
+  assert.equal(T.titleCase('CHECK ID'), 'Check ID');
+  assert.equal(T.titleCase('ID CHECK AT THE DOOR'), 'ID Check at the Door');
+  assert.equal(T.titleCase('ALWAYS CHECK ID.'), 'Always Check ID.');
+  assert.equal(T.titleCase('WINES OF THE USA'), 'Wines of the USA');
+  assert.equal(T.titleCase('ABV'), 'ABV');
+  assert.equal(T.titleCase('IDEA BOARD'), 'Idea Board', 'only the whole word "ID" stays in capitals');
+  assert.equal(T.titleCase("I'D RECOMMEND"), "I'd Recommend", 'a contraction is not a short name');
+});
