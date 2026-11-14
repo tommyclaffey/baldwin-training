@@ -733,7 +733,7 @@ const HUB_COPY = {
   },
   beer: {
     script: 'Built on Cicerone’s outline', lead: 'From the first pour to running the program, with a certificate at every level.',
-    who: ['Everyone', 'Bartenders', 'Beer leads'], cards: ['/img/cc320d4a67b8.jpg', '/img/bb23f11b90c9.jpg', '/img/cbff01f7a889.jpg', '/img/f63b1d92dbf9.jpg'],
+    who: ['Everyone', 'Bartenders', 'Beer leads', 'By invitation'], cards: ['/img/cc320d4a67b8.jpg', '/img/bb23f11b90c9.jpg', '/img/cbff01f7a889.jpg', '/img/f63b1d92dbf9.jpg'],
     videosHead: null,
     shelf: ['Straight from the source', 'Official guides from Cicerone, the Brewers Association and the BJCP · open in a new tab', [
       ['CICERONE', false, [
@@ -745,6 +745,12 @@ const HUB_COPY = {
         ['Draught Beer Quality Manual', 'The Brewers Association’s guide to draft systems.', 'PDF', 'https://cdn.brewersassociation.org/wp-content/uploads/2019/03/13094643/Draught-Beer-Quality-Manual-2019.pdf'],
         ['BJCP Style Guidelines', 'Every style, with its numbers (2021 edition).', 'PDF', 'https://www.bjcp.org/wp-content/uploads/2025/02/2021_Guidelines_Beer_1.25.pdf'],
         ['Beer and food', 'The Brewers Association’s pairing guide.', 'PDF', 'https://www.cicerone.org/sites/default/files/resources/Beer_and_Food_English.pdf'],
+      ]],
+      // Nov 14: Level 4, Master of Beer
+      ['LEADING THE PROGRAM', false, [
+        ['Judging beer', 'The BJCP on the 50-point scoresheet and how judges taste.', 'GUIDE', 'https://www.bjcp.org/exam-certification/program/studying/beer-evaluation/'],
+        ['Michigan’s supplier rule', 'MCL 436.1609: what brewers and distributors may give us.', 'LAW', 'https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-436-1609'],
+        ['The Master Cicerone exam', 'Cicerone’s top title: two days, 85% to pass.', 'FAQ', 'https://support.cicerone.org/en/support/solutions/articles/69000190354-about-the-master-cicerone-exam'],
       ]],
     ]],
   },

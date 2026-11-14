@@ -1,0 +1,441 @@
+{
+ "number": 3,
+ "programLevel": 4,
+ "slug": "beer-l4-faults",
+ "title": "Catching off-flavors",
+ "script": "Lesson 3",
+ "lead": "Tasting and testing the lines, what grows in them, tracing a fault, and the faults we make ourselves.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Taste, then test",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "By the time you can taste it, it’s late."
+    }
+   ],
+   "know": [
+    "Taste every line before service.",
+    "Bacteria start before you can taste them.",
+    "ATP and plating test what tasting can’t."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "What grows in a dirty line",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Butter, sour milk, vinegar."
+    }
+   ],
+   "know": [
+    "Diacetyl (butter): most often Pediococcus.",
+    "Lactic (sour milk): Lactobacillus.",
+    "Acetic (vinegar): Acetobacter, from faucets."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Line, keg or brewery?",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Compare before you blame."
+    }
+   ],
+   "know": [
+    "One line off: that line, faucet or keg.",
+    "Many lines off: the system or the clean.",
+    "The package tastes the same: age or the brewery."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Faults made at the bar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A dirty glass ruins a clean line."
+    }
+   ],
+   "know": [
+    "No fat- or oil-based detergent.",
+    "Air-dry on a wire rack; never towel-dry.",
+    "Bar machine for glasses only, not food."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Taste, then test",
+    "keyPoints": [
+     {
+      "big": "TASTE",
+      "line": "every line, every opening."
+     },
+     {
+      "big": "TOO LATE",
+      "line": "taste finds bacteria late."
+     },
+     {
+      "big": "PLATING",
+      "line": "the only way to name the bug."
+     }
+    ],
+    "read": {
+     "bigIdea": "By the time you can taste it, it’s late.",
+     "where": "A trained taster can catch an infected line, and the pre-shift check (Level 3) tastes every tap. But the Draught Beer Quality Manual warns that bacteria start growing **long before** anyone can taste them, so maintenance has to be **preventive**. Tests help: **ATP** swabs (a luminometer reading of rinse water) and **color-indicator** cleaners show how clean a line is, but can’t tell beer-spoilers from harmless yeast. **Plating** samples and growing them is the only way to **identify** the organism; it’s slow and costly, so it’s for a line that keeps going bad.",
+     "stopsTitle": "Three levels of checking",
+     "stops": [
+      {
+       "name": "Taste",
+       "text": "Every line, **every opening**."
+      },
+      {
+       "name": "ATP or color",
+       "text": "How **clean**, after a clean."
+      },
+      {
+       "name": "Plating",
+       "text": "**What** is growing, for a problem line."
+      }
+     ],
+     "mixup": "A line that tastes fine today isn’t proof it’s clean. Infections show up in taste last."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "What grows in a dirty line",
+    "video": {
+     "youtubeId": "J1KVVvBg_Sw",
+     "title": "Beer and Biofilms - Darla Goeres",
+     "by": "PechaKucha Bozeman",
+     "length": "7:09"
+    },
+    "keyPoints": [
+     {
+      "big": "DIACETYL",
+      "line": "butter: Pediococcus."
+     },
+     {
+      "big": "LACTIC",
+      "line": "sour milk: Lactobacillus."
+     },
+     {
+      "big": "ACETIC",
+      "line": "vinegar: Acetobacter."
+     }
+    ],
+    "read": {
+     "bigIdea": "Butter, sour milk, vinegar.",
+     "where": "Within days of a new system going in, **biofilm** starts building on everything beer touches. The manual’s table of draft faults: **diacetyl** (butter, butterscotch, a slick feel) is the **most common** off-flavor from dirty draft systems, most likely from **Pediococcus**; **lactic** sourness (sour milk) from **Lactobacillus**, though it takes a big infection to taste; **acetic** (vinegar) from **Acetobacter**, which starts in dirty **drains, spill trays, bar tops and rags** and spreads to the faucets, often because faucets weren’t taken apart every two weeks. Once a line is infected it’s hard, sometimes impossible, to clean: replace infected parts and lines, **replace any keg tapped into it**, and alternate caustic and acid cleans.",
+     "stopsTitle": "Read the flavor",
+     "stops": [
+      {
+       "name": "Butter",
+       "text": "**Diacetyl**: Pediococcus."
+      },
+      {
+       "name": "Sour milk",
+       "text": "**Lactic**: Lactobacillus."
+      },
+      {
+       "name": "Vinegar",
+       "text": "**Acetic**: Acetobacter."
+      }
+     ],
+     "mixup": "Not every diacetyl is the line. A little is allowed in some English and Czech beers; check the same beer from a fresh package before you blame the system."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Line, keg or brewery?",
+    "video": {
+     "youtubeId": "14aQ9lm0wmM",
+     "title": "Draught Works   Troubleshooting beer taste and appearance",
+     "by": "Lion Draught Quality - Beer Systems Management",
+     "length": "1:19"
+    },
+    "keyPoints": [
+     {
+      "big": "ONE LINE",
+      "line": "its faucet, coupler or keg."
+     },
+     {
+      "big": "EVERY LINE",
+      "line": "the cleaning or the system."
+     },
+     {
+      "big": "PACKAGE TOO",
+      "line": "age, heat or the brewery."
+     }
+    ],
+    "read": {
+     "bigIdea": "Compare before you blame.",
+     "where": "When a draft tastes wrong, find where the fault lives. Taste the **same beer** from a can, bottle or a fresh keg. If the package is fine, the problem is on **our side**: one bad line points to its **faucet, coupler or keg**; several lines with the same butter or vinegar note point to the **cleaning** or the whole system. If the package tastes the same, it’s the **beer**: age (past its date), **heat** (the manual says keep draft below **50°F**, and above **80°F** for any time it’s likely ruined), or the brewery. Then **pull it**, note the **date code** and keg, and call the distributor.",
+     "stopsTitle": "Tracing a fault",
+     "stops": [
+      {
+       "name": "Compare",
+       "text": "Same beer from a **fresh package**."
+      },
+      {
+       "name": "Count lines",
+       "text": "**One** line, or **many**?"
+      },
+      {
+       "name": "Act",
+       "text": "Pull it, note the **date code**, call."
+      }
+     ],
+     "mixup": "Changing the keg doesn’t fix an infected line. A fresh keg on a dirty line goes bad too."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Faults made at the bar",
+    "video": {
+     "youtubeId": "EJ21YM81rU0",
+     "title": "Clean glass? What your beer foam is telling you | The Curiosity Desk",
+     "by": "GBH News",
+     "length": "3:22"
+    },
+    "keyPoints": [
+     {
+      "big": "NO FAT",
+      "line": "detergent that kills the head."
+     },
+     {
+      "big": "AIR-DRY",
+      "line": "no towels, no rubber mats."
+     },
+     {
+      "big": "GLASSES ONLY",
+      "line": "in the bar machine."
+     }
+    ],
+    "read": {
+     "bigIdea": "A dirty glass ruins a clean line.",
+     "where": "Some faults never touch the line. A **beer-clean** glass has no film, foam-killing residue or **sanitizer** smell. In a three-tub sink, the manual says: **detergent** that isn’t fat- or oil-based, a running **cold rinse**, then sanitizer at the right strength (chlorine **100 ppm**, quats **200 ppm**, unless local rules differ): more isn’t better. **Air-dry** glasses on a wire rack; towels leave lint and odors, rubber mats and smooth surfaces trap smells. Keep the bar glass machine for **glasses only**, never food or dairy. Chill glasses at **36–40°F**, never frozen: ice in the glass makes foam.",
+     "stopsTitle": "The glass, step by step",
+     "stops": [
+      {
+       "name": "Wash",
+       "text": "Detergent with **no fat or oil**."
+      },
+      {
+       "name": "Rinse, sanitize",
+       "text": "Running rinse; **100 ppm** chlorine."
+      },
+      {
+       "name": "Dry",
+       "text": "**Air**, on a wire rack."
+      }
+     ],
+     "mixup": "Bubbles clinging to the side of the glass aren’t carbonation. They mean the glass isn’t beer-clean."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm). Written for Mise in our own words, Nov 14, 2026.",
+ "cards": [
+  {
+   "q": "According to the manual, bacterial contamination in a line usually starts…",
+   "answer": "Before anyone can taste it",
+   "wrong": [
+    "Only after a month",
+    "Only in warm weather",
+    "Only when the keg is empty"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "An ATP test can’t tell you…",
+   "answer": "Whether it found beer-spoilers or harmless yeast",
+   "wrong": [
+    "Whether the line was cleaned at all",
+    "Anything useful",
+    "The beer’s temperature"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The only way to identify exactly which microbe is in a line is…",
+   "answer": "Plating samples and growing them",
+   "wrong": [
+    "Tasting it",
+    "Looking at the faucet",
+    "Checking the gas gauge"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The most common off-flavor from a dirty draft system is…",
+   "answer": "Diacetyl (butter)",
+   "wrong": [
+    "Skunky (lightstruck)",
+    "Banana",
+    "Smoke"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A vinegar note on draft most likely points to…",
+   "answer": "Acetobacter, often from faucets not taken apart",
+   "wrong": [
+    "Too much nitrogen",
+    "Old hops",
+    "Cold glasses"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "After cleaning out an infected line, the kegs that were tapped into it should be…",
+   "answer": "Replaced",
+   "wrong": [
+    "Put back on the same line",
+    "Warmed up and re-chilled",
+    "Moved to the bottle cooler"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Three different beers on three lines all taste buttery. The most likely cause is…",
+   "answer": "The cleaning or the whole draft system",
+   "wrong": [
+    "Three bad batches from three breweries",
+    "The glassware alone",
+    "The beer is too cold"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "The same beer tastes stale from both the tap and a fresh can. The fault is most likely…",
+   "answer": "The beer itself: age, heat or the brewery",
+   "wrong": [
+    "The faucet",
+    "Our gas blend",
+    "The coupler washer"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "The manual says draft beer that rises above what temperature, for any time, is likely ruined?",
+   "answer": "80°F",
+   "wrong": [
+    "40°F",
+    "50°F",
+    "60°F"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "For beer glasses, detergent must not be…",
+   "answer": "Fat- or oil-based",
+   "wrong": [
+    "Unscented",
+    "Made for bars",
+    "Low-foaming"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Clean beer glasses should be dried…",
+   "answer": "In the air, on a wire rack",
+   "wrong": [
+    "With a clean bar towel",
+    "Upside down on a rubber mat",
+    "In the freezer"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The manual’s chlorine level for a glass sanitizing tub (unless local rules differ) is…",
+   "answer": "100 ppm",
+   "wrong": [
+    "10 ppm",
+    "1,000 ppm",
+    "As strong as possible"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "According to the manual, bacterial contamination in a line usually starts… Before anyone can taste it.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "An ATP test can’t tell you… Whether it found beer-spoilers or harmless yeast.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "The only way to identify exactly which microbe is in a line is… Plating samples and growing them.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "The most common off-flavor from a dirty draft system is… Diacetyl (butter).",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "A vinegar note on draft most likely points to… Acetobacter, often from faucets not taken apart.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "After cleaning out an infected line, the kegs that were tapped into it should be… Replaced.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "Three different beers on three lines all taste buttery. The most likely cause is… The cleaning or the whole draft system.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "The same beer tastes stale from both the tap and a fresh can. The fault is most likely… The beer itself: age, heat or the brewery.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "The manual says draft beer that rises above what temperature, for any time, is likely ruined? 80°F.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "For beer glasses, detergent must not be… Fat- or oil-based.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "Clean beer glasses should be dried… In the air, on a wire rack.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "The manual’s chlorine level for a glass sanitizing tub (unless local rules differ) is… 100 ppm.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "unverified": [
+  "The line-keg-brewery comparison is a working method (house practice), built on the manual’s list of causes; it isn’t a test the manual sets out step by step.",
+  "Who we call about a bad keg, and what credit we get, depends on our distributors: GM to confirm.",
+  "ATP and plating kits: none chosen for us; prices not checked."
+ ]
+}

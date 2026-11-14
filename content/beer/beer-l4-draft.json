@@ -1,0 +1,441 @@
+{
+ "number": 2,
+ "programLevel": 4,
+ "slug": "beer-l4-draft",
+ "title": "Draft quality",
+ "script": "Lesson 2",
+ "lead": "The three kinds of draft system, the gas, the maintenance calendar, and a monthly audit.",
+ "minutes": 15,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Three kinds of system",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Short, air-cooled or glycol."
+    }
+   ],
+   "know": [
+    "Direct draw: keg a few feet from the faucet.",
+    "Air-cooled: up to 15 ft (single duct) or 25 ft (double).",
+    "Glycol: longer than 25 ft, lines kept 29–32°F."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "Gas: purity and pressure",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The gas ends up in the beer."
+    }
+   ],
+   "know": [
+    "Beverage-grade CO2: at least 99.9% pure.",
+    "Never compressed air.",
+    "Leaks waste gas and make foam."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "The maintenance calendar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Every two weeks, every quarter, every six months."
+    }
+   ],
+   "know": [
+    "14 days: caustic clean, faucets apart, couplers scrubbed.",
+    "3 months: acid clean for beer stone.",
+    "6 months: FOBs and couplers taken apart."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "name": "The monthly draft audit",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Check the system the way a guest tastes it."
+    }
+   ],
+   "know": [
+    "Beer 36–38°F in the cooler, served 38–44°F.",
+    "Pours 2 oz a second.",
+    "Straw in the faucet: no vinegar, no butter."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Three kinds of system",
+    "video": {
+     "youtubeId": "bxwfy7tVhS0",
+     "title": "Draft Systems 101",
+     "by": "Craft Central",
+     "length": "2:41"
+    },
+    "keyPoints": [
+     {
+      "big": "DIRECT DRAW",
+      "line": "a cold box right under the tap."
+     },
+     {
+      "big": "AIR",
+      "line": "cold-air ducts, up to 25 ft."
+     },
+     {
+      "big": "GLYCOL",
+      "line": "chilled lines, past 25 ft."
+     }
+    ],
+    "read": {
+     "bigIdea": "Short, air-cooled or glycol.",
+     "where": "The Draught Beer Quality Manual names the designs. **Direct draw**: kegs in a refrigerated cabinet or walk-in right behind the faucets, the short trip kept cold by the box itself. **Air-cooled long draw**: a fan pushes cold air from the cooler through a duct around the lines, good for about **15 ft** with a **single** duct and **25 ft** with a **double** duct; it’s sensitive to hot rooms. **Glycol-cooled long draw**: for runs **longer than 25 ft**, a chiller pumps food-grade glycol along the beer lines, set to **29–32°F**. Glycol needs care: check the bath temperature **every two weeks**, motors, pumps and condenser **monthly**.",
+     "stopsTitle": "Which one do we have?",
+     "stops": [
+      {
+       "name": "Short run",
+       "text": "**Direct draw**."
+      },
+      {
+       "name": "Up to 25 ft",
+       "text": "**Air-cooled** ducts."
+      },
+      {
+       "name": "Past 25 ft",
+       "text": "**Glycol** chiller."
+      }
+     ],
+     "mixup": "Glycol cools the lines, not the kegs. The kegs still live in a walk-in at **34–38°F**."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Gas: purity and pressure",
+    "video": {
+     "youtubeId": "7US4FQf3T34",
+     "title": "Minute with a Master Cicerone - Primary and Secondary Regulators",
+     "by": "Cicerone Certification Program",
+     "length": "2:26"
+    },
+    "keyPoints": [
+     {
+      "big": "99.9%",
+      "line": "minimum CO2 purity (ISBT)."
+     },
+     {
+      "big": "NO AIR",
+      "line": "oxygen stales beer in hours."
+     },
+     {
+      "big": "LEAKS",
+      "line": "listen for the hiss."
+     }
+    ],
+    "read": {
+     "bigIdea": "The gas ends up in the beer.",
+     "where": "As a keg drains, the gas fills it, so impurities **go into the beer**. Use **beverage-grade** gas: the International Society of Beverage Technologists sets CO2 purity at **99.9%** minimum; nitrogen generators should make at least **99.7%**. A **gas filter** helps; change it on the maker’s schedule. **Never** use compressed air: its oxygen brings **stale, cardboard** flavors within hours. Leaks waste gas and drop pressure, which causes **foamy** beer; listen and feel for them at the connections. The manual’s general settings: direct draw on 100% CO2 **12–15 psi**; long draw on a rich blend (60–80% CO2) **22–25 psi**; nitro beer on 25/75 at **30–35 psi**.",
+     "stopsTitle": "Checking the gas",
+     "stops": [
+      {
+       "name": "Source",
+       "text": "**Beverage grade**, with a filter."
+      },
+      {
+       "name": "Gauges",
+       "text": "At the set **pressure**."
+      },
+      {
+       "name": "Leaks",
+       "text": "Listen for a **hiss**."
+      }
+     ],
+     "mixup": "Turning the gas up doesn’t fix a slow pour. It over-carbonates the beer; the balance is set once and held."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "The maintenance calendar",
+    "video": {
+     "youtubeId": "brndrxUlZ6M",
+     "title": "Draught Beer Quality Manual review",
+     "by": "Beer Scholar",
+     "length": "4:04"
+    },
+    "keyPoints": [
+     {
+      "big": "14 DAYS",
+      "line": "caustic, faucets, couplers, FOBs."
+     },
+     {
+      "big": "QUARTERLY",
+      "line": "acid, for beer stone."
+     },
+     {
+      "big": "6 MONTHS",
+      "line": "FOBs and couplers stripped."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every two weeks, every quarter, every six months.",
+     "where": "Level 3 taught how to clean; running the program means owning the **calendar**. The Draught Beer Quality Manual: every **two weeks**, a caustic line clean, every faucet **taken apart**, couplers **scrubbed**, FOBs cleaned in line. **Quarterly**, an **acid** clean to remove beer stone. **Every six months**, FOBs and couplers fully **disassembled**. Replace **vinyl jumper and direct-draw lines every one to two years**, or any time there’s an infection; replace long-draw **trunk line** at **10 years** or when flavors carry between lines. If a service cleans for us, we still check their work: the **log** should show a clean within the last two weeks.",
+     "stopsTitle": "The calendar",
+     "stops": [
+      {
+       "name": "Every 14 days",
+       "text": "Caustic, faucets, couplers."
+      },
+      {
+       "name": "Every 3 months",
+       "text": "**Acid** clean."
+      },
+      {
+       "name": "Every 1–2 years",
+       "text": "New **vinyl jumpers**."
+      }
+     ],
+     "mixup": "An acid clean is **in addition** to the caustic clean, never instead of it."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "The monthly draft audit",
+    "keyPoints": [
+     {
+      "big": "36–38°F",
+      "line": "in the walk-in, air and liquid."
+     },
+     {
+      "big": "2 OZ/SEC",
+      "line": "a balanced pour."
+     },
+     {
+      "big": "STRAW TEST",
+      "line": "vinegar or butter means trouble."
+     }
+    ],
+    "read": {
+     "bigIdea": "Check the system the way a guest tastes it.",
+     "where": "Once a month, walk the system with a checklist built from the Draught Beer Quality Manual. **Cooler**: air and a liquid thermometer at **36–38°F**; lines full, no kinks; gauges at their settings; no hiss. **Bar**: beer served at **38–44°F**, pouring about **2 oz a second**. **Hygiene**: the cleaning log shows the last clean within **two weeks**; scrape inside a faucet with a **straw** and smell the coupler and spill tray: **vinegar or butter** means bacteria; FOB sight glasses clear, jumper lines clear and **unstained**. Write it down and fix what fails.",
+     "stopsTitle": "Walking the system",
+     "stops": [
+      {
+       "name": "Cooler",
+       "text": "**Temperatures**, gauges, leaks."
+      },
+      {
+       "name": "Bar",
+       "text": "Serving **temperature**, pour **rate**."
+      },
+      {
+       "name": "Hygiene",
+       "text": "**Log**, straw test, lines."
+      }
+     ],
+     "mixup": "A clean-looking faucet can still be dirty inside. The straw test and the smell tell you; the outside doesn’t."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm). Written for Mise in our own words, Nov 14, 2026.",
+ "cards": [
+  {
+   "q": "A draft system whose kegs sit in a cold box right under the faucets is…",
+   "answer": "Direct draw",
+   "wrong": [
+    "Glycol-cooled long draw",
+    "Double-duct air-cooled",
+    "A cask engine"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Runs longer than about 25 feet are cooled with…",
+   "answer": "A glycol chiller",
+   "wrong": [
+    "A single cold-air duct",
+    "Ice packed around the lines",
+    "Nothing: the beer stays cold"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "How often does the manual say to check the glycol bath temperature?",
+   "answer": "Every two weeks",
+   "wrong": [
+    "Every day",
+    "Once a year",
+    "Only when beer pours warm"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The ISBT minimum purity for beverage-grade CO2 is…",
+   "answer": "99.9%",
+   "wrong": [
+    "90%",
+    "95%",
+    "75%"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Why must compressed air never push beer?",
+   "answer": "Its oxygen makes stale, cardboard flavors within hours",
+   "wrong": [
+    "It’s too cold",
+    "It makes the beer too fizzy",
+    "It’s only legal for cider"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A slow gas leak at a connection mostly causes…",
+   "answer": "Lost gas and pressure drops that make foamy beer",
+   "wrong": [
+    "Sweeter beer",
+    "Warmer beer in the keg",
+    "Nothing, as long as the tank is full"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "How often should FOBs and couplers be fully taken apart and hand-cleaned?",
+   "answer": "Every six months",
+   "wrong": [
+    "Every day",
+    "Every two weeks",
+    "Every five years"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Vinyl jumper and direct-draw lines should be replaced…",
+   "answer": "Every one to two years, or after an infection",
+   "wrong": [
+    "Every two weeks",
+    "Only when they burst",
+    "Every ten years"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Long-draw trunk line should be replaced when…",
+   "answer": "The system is 10+ years old or flavors carry between lines",
+   "wrong": [
+    "It turns cold",
+    "A keg is changed",
+    "The gas is switched to a blend"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The manual’s recommended serving temperature range for draft beer is…",
+   "answer": "38–44°F",
+   "wrong": [
+    "28–32°F",
+    "50–55°F",
+    "60–65°F"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A balanced draft system pours about…",
+   "answer": "2 oz a second",
+   "wrong": [
+    "½ oz a second",
+    "6 oz a second",
+    "1 pint a second"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "You scrape inside a faucet with a straw and smell butter. That points to…",
+   "answer": "Bacteria in the system",
+   "wrong": [
+    "A perfect clean",
+    "Too much CO2",
+    "A cold glass"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "A draft system whose kegs sit in a cold box right under the faucets is… Direct draw.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "Runs longer than about 25 feet are cooled with… A glycol chiller.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "How often does the manual say to check the glycol bath temperature? Every two weeks.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "The ISBT minimum purity for beverage-grade CO2 is… 99.9%.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "Why must compressed air never push beer? Its oxygen makes stale, cardboard flavors within hours.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "A slow gas leak at a connection mostly causes… Lost gas and pressure drops that make foamy beer.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "How often should FOBs and couplers be fully taken apart and hand-cleaned? Every six months.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "Vinyl jumper and direct-draw lines should be replaced… Every one to two years, or after an infection.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "Long-draw trunk line should be replaced when… The system is 10+ years old or flavors carry between lines.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "The manual’s recommended serving temperature range for draft beer is… 38–44°F.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "A balanced draft system pours about… 2 oz a second.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "You scrape inside a faucet with a straw and smell butter. That points to… Bacteria in the system.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  }
+ ],
+ "unverified": [
+  "The Draught Beer Quality Manual gives vinyl jumper lines two figures: “every one to two years” in its line-replacement guidelines and “every two years” in its inspection checklist. The page says one to two years.",
+  "Our own system (direct draw, air or glycol), gas supplier and pressure settings: GM to confirm with our draft service. Pressures on the page are the manual’s general ranges, not our settings.",
+  "Running the audit monthly is house practice; the manual’s checks are daily (pre-shift) and every cleaning."
+ ]
+}

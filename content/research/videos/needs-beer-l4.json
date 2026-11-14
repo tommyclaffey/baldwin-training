@@ -1,0 +1,29 @@
+{
+ "note": "Nov 14: Level 4 sections left on their photo after the video search (picks in found-beer-l4.json chosen from title/description/channel, not watched).",
+ "kept": [
+  {
+   "file": "content/beer/beer-l4-taps.json",
+   "slug": "beer-l4-taps",
+   "level": 4,
+   "section": "Core and rotating handles",
+   "keep": "photo",
+   "why": "Searches turned up only tap-list software demos, keezer builds and a franchise interview; nothing on splitting core and rotating handles."
+  },
+  {
+   "file": "content/beer/beer-l4-draft.json",
+   "slug": "beer-l4-draft",
+   "level": 4,
+   "section": "The monthly draft audit",
+   "keep": "photo",
+   "why": "Only general draft-quality promos (NYSBA program, Micro Matic overview already used in the app); nothing walking through an audit of temperature, pour and foam."
+  },
+  {
+   "file": "content/beer/beer-l4-faults.json",
+   "slug": "beer-l4-faults",
+   "level": 4,
+   "section": "Taste, then test",
+   "keep": "photo",
+   "why": "No video found on tasting each line before service; results were blind-taste games and general bartending POV videos."
+  }
+ ]
+}
