@@ -299,6 +299,11 @@ h2.sub { margin: 18px 0 0; font-size: 18px; font-weight: 800; }
 .media-meta { display: flex; flex-direction: column; gap: 2px; padding: 0 4px; min-width: 0; }
 .media-meta strong { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .media-card .link-btn { padding: 0 4px 4px; font-size: 13px; }
+/* Nov 14: captions on an uploaded video (Media library and the video picker) */
+.media-cc { display: flex; flex-wrap: wrap; gap: 0 14px; }
+.media-cc .link-btn { min-height: 32px; }
+.drop.sm { min-height: 96px; }
+.mp-done { margin: 0; }
 
 /* item editor */
 .editor { max-width: 980px; display: flex; flex-direction: column; gap: 16px; }

@@ -1,9 +1,9 @@
 // Admin screens: sign in, first-time setup, invites, lists, media, people, account, activity.
-import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { api, uploadFile, ROLE_LABEL, type MediaItem, type Role, type User } from '../lib/api';
+import { api, uploadCaptions, uploadFile, ROLE_LABEL, type MediaItem, type Role, type User } from '../lib/api';
 import { useSession } from '../lib/session';
-import { VideoEmbed } from '../components/VideoEmbed';
+import { VideoEmbed, forgetCaptions } from '../components/VideoEmbed';
 import { Empty, ErrorNote, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 import { PRODUCT_NAME } from '../lib/brand';
 import { AuthCard } from '../components/AuthCard';
@@ -253,6 +253,20 @@ export function MediaLibrary() {
     try { await api(`/api/media/${m.id}`, { method: 'DELETE' }); setData({ media: (data?.media || []).filter((x) => x.id !== m.id) }); archive.load(); }
     catch (e) { setErr((e as Error).message); }
   };
+  // Captions on an uploaded video (Nov 14): add or replace (.vtt or .srt), or remove.
+  const ccInput = useRef<HTMLInputElement>(null);
+  const [ccFor, setCcFor] = useState<MediaItem | null>(null);
+  const swap = (m: MediaItem) => { forgetCaptions(m.url || undefined); setData({ media: (data?.media || []).map((x) => (x.id === m.id ? m : x)) }); };
+  const addCaptions = async (f: File | undefined) => {
+    if (!f || !ccFor) return;
+    setErr('');
+    try { swap(await uploadCaptions(ccFor.id, f)); } catch (e) { setErr((e as Error).message); }
+    setCcFor(null);
+  };
+  const removeCaptions = async (m: MediaItem) => {
+    if (!confirm(`Take the captions off “${m.title}”?`)) return;
+    try { swap(await api<MediaItem>(`/api/media/${m.id}/captions`, { method: 'DELETE' })); } catch (e) { setErr((e as Error).message); }
+  };
   const restore = async (m: MediaItem) => {
     try { add(await api<MediaItem>(`/api/media/${m.id}/restore`, { method: 'POST' })); archive.load(); }
     catch (e) { setErr((e as Error).message); }
@@ -276,6 +290,7 @@ export function MediaLibrary() {
           <button className="btn" disabled={!link.trim()}>Add Link</button>
         </form>
       </div>
+      <input ref={ccInput} type="file" accept=".vtt,.srt,text/vtt" hidden onChange={(e) => { void addCaptions(e.target.files?.[0]); e.target.value = ''; }} />
       {(err || error) && <ErrorNote error={err || error} retry={error ? load : undefined} />}
       {!data && !error && <Loading />}
       {data && data.media.length === 0 && <Empty title="Nothing uploaded yet"><p className="muted">Upload a video or add a YouTube link to start.</p></Empty>}
@@ -288,8 +303,14 @@ export function MediaLibrary() {
               </button>
               <div className="media-meta">
                 <strong title={m.title}>{m.title}</strong>
-                <small className="muted">{m.kind === 'youtube' ? 'YouTube' : m.mime?.startsWith('video/') ? `Video · ${mb(m.size)}` : `Photo · ${mb(m.size)}`}</small>
+                <small className="muted">{m.kind === 'youtube' ? 'YouTube' : m.mime?.startsWith('video/') ? `Video · ${mb(m.size)}${m.captions ? ' · Captions' : ''}` : `Photo · ${mb(m.size)}`}</small>
               </div>
+              {m.kind === 'file' && m.mime?.startsWith('video/') && (
+                <div className="media-cc">
+                  <button type="button" className="link-btn" onClick={() => { setCcFor(m); ccInput.current?.click(); }}>{m.captions ? 'Replace Captions' : 'Add Captions'}</button>
+                  {m.captions && <button type="button" className="link-btn" onClick={() => void removeCaptions(m)}>Remove Captions</button>}
+                </div>
+              )}
               <button className="link-btn danger" onClick={() => remove(m)}>Archive</button>
             </div>
           ))}
