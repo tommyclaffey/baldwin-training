@@ -1,0 +1,447 @@
+{
+ "number": 5,
+ "programLevel": 4,
+ "slug": "beer-l4-numbers",
+ "title": "The beer numbers",
+ "script": "Lesson 5",
+ "lead": "What a keg should return, the blended pour cost, dollars versus percent, and what the count says should be gone.",
+ "minutes": 13,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Keg yield",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "What the keg should give, and what it did."
+    }
+   ],
+   "know": [
+    "A half barrel holds 1,984 oz.",
+    "Yield = ounces sold ÷ ounces in the keg.",
+    "1 oz lost per pint is 6.25% of the keg."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com); Backbar Academy (bar inventory software); Siebel Institute, “How much does wasting draught beer cost?”"
+  },
+  {
+   "name": "Blended pour cost",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The mix moves the number."
+    }
+   ],
+   "know": [
+    "Pour cost = cost ÷ sales.",
+    "Blended = all beer cost ÷ all beer sales.",
+    "Selling more bottles raises it, even with no price change."
+   ],
+   "source": "Backbar Academy (bar inventory software); House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Dollars, not just percent",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "You bank dollars, not percentages."
+    }
+   ],
+   "know": [
+    "Contribution margin = price − cost.",
+    "A higher pour cost can still earn more.",
+    "Judge a beer by percent and dollars."
+   ],
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com); House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Theoretical vs actual",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "What should be gone, and what is."
+    }
+   ],
+   "know": [
+    "Theoretical: what the POS says was poured.",
+    "Actual: beginning + purchases − ending.",
+    "The gap is variance: find out why."
+   ],
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage); BinWise, “What Is a Variance Report” (home.binwise.com/blog/what-is-a-variance-report); House practice (ours; GM to confirm)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Keg yield",
+    "video": {
+     "youtubeId": "XtXcPIsy_RY",
+     "title": "How to Count & Inventory Your Draft Beer Kegs",
+     "by": "Dave Allred TheRealBarman (Bar Patrol)",
+     "length": "5:55"
+    },
+    "keyPoints": [
+     {
+      "big": "1,984 OZ",
+      "line": "in a half barrel."
+     },
+     {
+      "big": "YIELD",
+      "line": "ounces sold ÷ ounces in."
+     },
+     {
+      "big": "6.25%",
+      "line": "lost at 1 oz a pint."
+     }
+    ],
+    "read": {
+     "bigIdea": "What the keg should give, and what it did.",
+     "where": "A half barrel holds **1,984 oz**. Poured as a 16 oz glass with about 1.5 oz of foam (14.5 oz of beer), that’s about **136** pours (Backbar’s method, Level 3). **Yield** is what you actually rang in, in ounces, ÷ what the keg held. If a half barrel rang in **120** of those pours (1,740 oz), yield is about **88%**. Losses add up: Siebel Institute figures **1 oz** lost per pint is **6.25%** of the keg, and every line clean dumps the beer in the line. Track yield **keg by keg**: weighing kegs (Level 3) is more accurate than lifting them.",
+     "stopsTitle": "Yield, step by step",
+     "stops": [
+      {
+       "name": "Expected",
+       "text": "Keg oz ÷ **oz per pour**."
+      },
+      {
+       "name": "Actual",
+       "text": "Pours **rung in**."
+      },
+      {
+       "name": "Yield",
+       "text": "Actual ÷ expected."
+      }
+     ],
+     "mixup": "A keg that “ran out early” didn’t shrink. The missing pours went to foam, spills, comps or pours not rung in."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Blended pour cost",
+    "video": {
+     "youtubeId": "IkIE0RJcxU4",
+     "title": "Are You Running the Right Pour Cost?",
+     "by": "Sculpture Hospitality",
+     "length": "2:05"
+    },
+    "keyPoints": [
+     {
+      "big": "COST ÷ SALES",
+      "line": "pour cost."
+     },
+     {
+      "big": "BLENDED",
+      "line": "draft and package together."
+     },
+     {
+      "big": "MIX",
+      "line": "moves it without a price change."
+     }
+    ],
+    "read": {
+     "bigIdea": "The mix moves the number.",
+     "where": "Each beer has its own pour cost (cost ÷ price), but the P&L shows one **blended** number: **all beer cost ÷ all beer sales**. Backbar’s rules of thumb: draft about **20%**, bottles about **25%**. Worked example: **$6,000** of draft at 20% costs **$1,200**; **$2,000** of bottles at 25% costs **$500**; together **$1,700 ÷ $8,000 = 21.25%**. If next month guests buy more bottles and less draft, the blended number **rises** even though no price or cost changed. So read the blend with the **sales mix** beside it.",
+     "stopsTitle": "Reading the blend",
+     "stops": [
+      {
+       "name": "Each category",
+       "text": "Its own **cost ÷ sales**."
+      },
+      {
+       "name": "Add them",
+       "text": "Total cost ÷ **total sales**."
+      },
+      {
+       "name": "Check the mix",
+       "text": "Did **draft vs package** shift?"
+      }
+     ],
+     "mixup": "A rising beer cost isn’t always waste. Check whether the mix shifted toward higher-cost beers first."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Dollars, not just percent",
+    "video": {
+     "youtubeId": "VkngI8X7QJs",
+     "title": "Pour Cost % is a Lie - Track This Instead",
+     "by": "Dave Allred TheRealBarman (Bar Patrol)",
+     "length": "12:19"
+    },
+    "keyPoints": [
+     {
+      "big": "PRICE − COST",
+      "line": "contribution margin."
+     },
+     {
+      "big": "$4.80 vs $6.30",
+      "line": "the dearer beer earns more."
+     },
+     {
+      "big": "BOTH",
+      "line": "percent and dollars."
+     }
+    ],
+    "read": {
+     "bigIdea": "You bank dollars, not percentages.",
+     "where": "Menu engineering (Kasavana and Smith, Michigan State University, 1982) judges an item by **contribution margin**: **price − cost**, in dollars, and how often it sells. Worked example: a **$6** lager costing **$1.20** is a 20% pour cost and earns **$4.80**; a **$9** Belgian ale costing **$2.70** is a **30%** pour cost and earns **$6.30**. The Belgian looks worse as a percentage but puts **$1.50 more** in the bank per glass. So don’t pull a beer just for its percentage: look at what it **earns** and how often it **sells**.",
+     "stopsTitle": "Two ways to read a beer",
+     "stops": [
+      {
+       "name": "Percent",
+       "text": "Cost ÷ **price**."
+      },
+      {
+       "name": "Dollars",
+       "text": "Price − **cost**."
+      },
+      {
+       "name": "Popularity",
+       "text": "How many **sell**."
+      }
+     ],
+     "mixup": "The lowest pour cost on the list isn’t automatically the best beer for the business."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Theoretical vs actual",
+    "video": {
+     "youtubeId": "hU2pzXp-J1U",
+     "title": "BevSpot's Variance Report",
+     "by": "BevSpot",
+     "length": "5:03"
+    },
+    "keyPoints": [
+     {
+      "big": "THEORETICAL",
+      "line": "what sales say left."
+     },
+     {
+      "big": "ACTUAL",
+      "line": "what the count says left."
+     },
+     {
+      "big": "GAP",
+      "line": "variance: over-pours, comps, theft."
+     }
+    ],
+    "read": {
+     "bigIdea": "What should be gone, and what is.",
+     "where": "**Theoretical** usage is what should have left the cooler for what the POS rang in: pours × ounces each. **Actual** usage is the count: **beginning inventory + purchases − ending inventory**. The gap between them is the **variance**. Level 3 taught the formula; here you run it **weekly**, **line by line**, so a gap points to one beer and one week. Small gaps happen; a big one points to over-pouring, foam, unrung comps, a line clean nobody logged, or theft. Write down what you found and what you changed.",
+     "stopsTitle": "The weekly check",
+     "stops": [
+      {
+       "name": "Theoretical",
+       "text": "Pours **rung in** × oz."
+      },
+      {
+       "name": "Actual",
+       "text": "Beginning **+** purchases **−** ending."
+      },
+      {
+       "name": "Gap",
+       "text": "Find the **why**, line by line."
+      }
+     ],
+     "mixup": "Variance isn’t a number to accept. Each week’s gap has a reason; finding it is the job."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com); Backbar Academy (bar inventory software); Siebel Institute, “How much does wasting draught beer cost?”; House practice (ours; GM to confirm); Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com); BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage); BinWise, “What Is a Variance Report” (home.binwise.com/blog/what-is-a-variance-report). Written for Mise in our own words, Nov 14, 2026.",
+ "cards": [
+  {
+   "q": "A half-barrel keg holds about…",
+   "answer": "1,984 oz",
+   "wrong": [
+    "1,240 oz",
+    "640 oz",
+    "3,000 oz"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com)"
+  },
+  {
+   "q": "Keg yield is…",
+   "answer": "The ounces sold ÷ the ounces the keg held",
+   "wrong": [
+    "The keg’s price ÷ its weight",
+    "The number of days it was on tap",
+    "The pressure ÷ the line length"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Siebel Institute says losing 1 oz on every pint wastes about what share of the keg?",
+   "answer": "6.25%",
+   "wrong": [
+    "1%",
+    "25%",
+    "50%"
+   ],
+   "source": "Siebel Institute, “How much does wasting draught beer cost?”"
+  },
+  {
+   "q": "$1,000 of beer cost against $5,000 of beer sales is a pour cost of…",
+   "answer": "20%",
+   "wrong": [
+    "5%",
+    "50%",
+    "80%"
+   ],
+   "source": "Backbar Academy (bar inventory software); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Draft runs 20% and bottles 25%. Guests switch toward bottles. The blended pour cost…",
+   "answer": "Goes up, with no price change",
+   "wrong": [
+    "Goes down",
+    "Stays exactly the same",
+    "Can’t be worked out"
+   ],
+   "source": "Backbar Academy (bar inventory software); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "$6,000 of draft at 20% plus $2,000 of bottles at 25% blends to…",
+   "answer": "21.25%",
+   "wrong": [
+    "22.5%",
+    "45%",
+    "20%"
+   ],
+   "source": "Backbar Academy (bar inventory software); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Contribution margin is…",
+   "answer": "Price minus cost, in dollars",
+   "wrong": [
+    "Cost divided by price",
+    "The tip on the drink",
+    "The tax on the drink"
+   ],
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A $9 beer costs $2.70. Its contribution margin is…",
+   "answer": "$6.30",
+   "wrong": [
+    "$2.70",
+    "$11.70",
+    "$3.00"
+   ],
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Beer A: 20% pour cost, earns $4.80. Beer B: 30%, earns $6.30. Each sells the same amount. Which adds more profit?",
+   "answer": "Beer B",
+   "wrong": [
+    "Beer A",
+    "They’re the same",
+    "Neither: only percent matters"
+   ],
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Actual usage is calculated as…",
+   "answer": "Beginning inventory + purchases − ending inventory",
+   "wrong": [
+    "Sales × price",
+    "Purchases − sales",
+    "Ending inventory + sales"
+   ],
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage)"
+  },
+  {
+   "q": "Theoretical usage is…",
+   "answer": "What should have been used for what the POS rang in",
+   "wrong": [
+    "What the distributor delivered",
+    "What’s left in the cooler",
+    "Last year’s usage"
+   ],
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage); BinWise, “What Is a Variance Report” (home.binwise.com/blog/what-is-a-variance-report); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "A bar started with 10 kegs, bought 6 and ended with 9. Actual usage is…",
+   "answer": "7 kegs",
+   "wrong": [
+    "5 kegs",
+    "25 kegs",
+    "1 keg"
+   ],
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "A half-barrel keg holds about… 1,984 oz.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com)"
+  },
+  {
+   "fact": "Keg yield is… The ounces sold ÷ the ounces the keg held.",
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "Siebel Institute says losing 1 oz on every pint wastes about what share of the keg? 6.25%.",
+   "source": "Siebel Institute, “How much does wasting draught beer cost?”"
+  },
+  {
+   "fact": "$1,000 of beer cost against $5,000 of beer sales is a pour cost of… 20%.",
+   "source": "Backbar Academy (bar inventory software); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "Draft runs 20% and bottles 25%. Guests switch toward bottles. The blended pour cost… Goes up, with no price change.",
+   "source": "Backbar Academy (bar inventory software); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "$6,000 of draft at 20% plus $2,000 of bottles at 25% blends to… 21.25%.",
+   "source": "Backbar Academy (bar inventory software); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "Contribution margin is… Price minus cost, in dollars.",
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "A $9 beer costs $2.70. Its contribution margin is… $6.30.",
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "Beer A: 20% pour cost, earns $4.80. Beer B: 30%, earns $6.30. Each sells the same amount. Which adds more profit? Beer B.",
+   "source": "Kasavana and Smith, Menu Engineering (1982), as summarized by AHLEI, “The Power of Menu Engineering” (ahlei.servsafebrands.com); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "Actual usage is calculated as… Beginning inventory + purchases − ending inventory.",
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage)"
+  },
+  {
+   "fact": "Theoretical usage is… What should have been used for what the POS rang in.",
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage); BinWise, “What Is a Variance Report” (home.binwise.com/blog/what-is-a-variance-report); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "A bar started with 10 kegs, bought 6 and ended with 9. Actual usage is… 7 kegs.",
+   "source": "BevSpot, “How to Calculate Inventory Usage” (bevspot.com/blog/bar-management-inventory-usage)"
+  }
+ ],
+ "unverified": [
+  "Every dollar figure on this page is a worked example, not our prices or costs; our keg costs and targets: GM to supply.",
+  "Pour-cost targets (draft about 20%, bottles about 25%) are bar-software rules of thumb from Level 3.",
+  "Keg scales and flow meters: none chosen for us; brands and prices not checked."
+ ]
+}

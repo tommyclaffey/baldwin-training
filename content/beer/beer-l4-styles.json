@@ -1,0 +1,448 @@
+{
+ "number": 4,
+ "programLevel": 4,
+ "slug": "beer-l4-styles",
+ "title": "Advanced styles and pairing",
+ "script": "Lesson 4",
+ "lead": "How the BJCP defines a style, the numbers behind it, judging on the scoresheet, and pairing our menu with the chef.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "The BJCP guidelines",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A style is a description, not a recipe."
+    }
+   ],
+   "know": [
+    "BJCP 2021: 34 categories.",
+    "Grouped by how they’re judged, not where they’re from.",
+    "Written for homebrew competitions."
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "name": "The numbers behind a style",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Five numbers sketch a beer."
+    }
+   ],
+   "know": [
+    "OG and FG: sugar before and after.",
+    "IBU: bitterness. SRM: color.",
+    "Guidelines, not hard limits."
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "name": "Judging with the scoresheet",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Fifty points, mostly aroma and flavor."
+    }
+   ],
+   "know": [
+    "Aroma 12, appearance 3, flavor 20.",
+    "Mouthfeel 5, overall impression 10.",
+    "45–50 is reserved for world-class beers."
+   ],
+   "source": "BJCP, “Beer Evaluation and the Judging Process” (bjcp.org/exam-certification/program/studying/beer-evaluation)"
+  },
+  {
+   "name": "Pairing the menu with the chef",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Taste the dish and the beer together."
+    }
+   ],
+   "know": [
+    "Match strength first.",
+    "Then complement, contrast or cut.",
+    "Taste them together before the menu prints."
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org); Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); Brewers Association / CraftBeer.com, Beer & Food Course; House practice (ours; GM to confirm)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "The BJCP guidelines",
+    "video": {
+     "youtubeId": "8VBLus2Y7IU",
+     "title": "BJCP Style Study Introduction",
+     "by": "Big Monster Brewing",
+     "length": "8:33"
+    },
+    "keyPoints": [
+     {
+      "big": "34",
+      "line": "categories in the 2021 guidelines."
+     },
+     {
+      "big": "JUDGING",
+      "line": "groups styles, not history."
+     },
+     {
+      "big": "GUIDE",
+      "line": "not a law for brewers."
+     }
+    ],
+    "read": {
+     "bigIdea": "A style is a description, not a recipe.",
+     "where": "The Beer Judge Certification Program’s **2021 guidelines** run from **1. Standard American Beer** to **34. Specialty Beer**. Categories group styles with **similar judging characteristics**, not a shared history, so a category can hold beers from different countries. Each style gives an **Overall Impression**, then **Aroma, Appearance, Flavor, Mouthfeel**, comments, history, characteristic ingredients, a **style comparison**, vital statistics and **commercial examples**. They’re written mainly for **homebrew competitions**, and commercial beers don’t have to fit them, so use the guidelines to **describe** and **compare**, not to police labels.",
+     "stopsTitle": "Reading a style page",
+     "stops": [
+      {
+       "name": "Overall impression",
+       "text": "The beer in **one line**."
+      },
+      {
+       "name": "Senses",
+       "text": "Aroma, appearance, flavor, **mouthfeel**."
+      },
+      {
+       "name": "Compare",
+       "text": "How it differs from its **neighbors**."
+      }
+     ],
+     "mixup": "A BJCP category isn’t a family tree. Styles share a category because they’re judged alike."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The numbers behind a style",
+    "video": {
+     "youtubeId": "FTp9cbLr9YY",
+     "title": "Beer Statistics Explained - ABV, ABW, IBU, SRM",
+     "by": "Genus Brewing",
+     "length": "4:01"
+    },
+    "keyPoints": [
+     {
+      "big": "OG → FG",
+      "line": "how much sugar became alcohol."
+     },
+     {
+      "big": "IBU",
+      "line": "bitterness units."
+     },
+     {
+      "big": "SRM",
+      "line": "color, pale to black."
+     }
+    ],
+    "read": {
+     "bigIdea": "Five numbers sketch a beer.",
+     "where": "Every BJCP style lists **vital statistics**: **Original Gravity** (how dense with sugar the wort was before fermenting), **Final Gravity** (after), **ABV**, **IBU** (International Bittering Units) and color in **SRM** (Standard Reference Method). The BJCP calls them **guidelines, not absolutes**: they help judges order a flight, not disqualify a beer. Example, **American IPA** (21A): OG **1.056–1.070**, FG **1.008–1.014**, IBU **40–70**, SRM **6–14**, ABV **5.5–7.5%**. Compare **Märzen**: IBU **18–24**, ABV **5.6–6.3%**: the numbers show the malt-forward beer before you taste it.",
+     "stopsTitle": "Reading the numbers",
+     "stops": [
+      {
+       "name": "OG − FG",
+       "text": "The gap became **alcohol**."
+      },
+      {
+       "name": "IBU",
+       "text": "Higher reads more **bitter**."
+      },
+      {
+       "name": "SRM",
+       "text": "Higher is **darker**."
+      }
+     ],
+     "mixup": "IBU isn’t the whole story. Malt sweetness balances bitterness, so two beers with the same IBUs can taste quite different."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Judging with the scoresheet",
+    "video": {
+     "youtubeId": "Yv9lZGFNPeU",
+     "title": "Intro to 2018 AHA/BJCP Scoresheets and Tips for Efficient Judging",
+     "by": "BJCP",
+     "length": "23:30"
+    },
+    "keyPoints": [
+     {
+      "big": "50",
+      "line": "points on the BJCP scoresheet."
+     },
+     {
+      "big": "FLAVOR 20",
+      "line": "the biggest share."
+     },
+     {
+      "big": "45–50",
+      "line": "world-class only."
+     }
+    ],
+    "read": {
+     "bigIdea": "Fifty points, mostly aroma and flavor.",
+     "where": "BJCP judges score a beer out of **50**: **Aroma 12**, **Appearance 3**, **Flavor 20**, **Mouthfeel 5**, **Overall Impression 10**. The order matters: smell it **as soon as it’s poured** (aroma fades as it warms), look at it, smell again, then taste. The BJCP’s bands: **Excellent 38–44**, **Very Good 30–37**, **Good 21–29**, **Drinkable 14–20**, **Problem 13 or lower**; **45–50** is kept for world-class beers. Judges at a table aim to land within **7 points** of each other. Use the same sheet with the team: it trains people to describe a beer in order, not just say “good”.",
+     "stopsTitle": "The order",
+     "stops": [
+      {
+       "name": "Smell",
+       "text": "Right after the **pour**."
+      },
+      {
+       "name": "Look",
+       "text": "**Color**, clarity, head."
+      },
+      {
+       "name": "Taste",
+       "text": "**Flavor**, then mouthfeel."
+      }
+     ],
+     "mixup": "Appearance is only 3 of 50 points. A pretty beer with a flawed aroma still scores low."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "Pairing the menu with the chef",
+    "video": {
+     "youtubeId": "xFfoa9W0HvE",
+     "title": "How Chefs Can Lead In Beer & Food Pairing",
+     "by": "Brewers Association",
+     "length": "1:23"
+    },
+    "keyPoints": [
+     {
+      "big": "STRENGTH",
+      "line": "delicate with delicate, big with big."
+     },
+     {
+      "big": "3 Cs",
+      "line": "complement, contrast, cut."
+     },
+     {
+      "big": "TOGETHER",
+      "line": "taste with the chef first."
+     }
+    ],
+    "read": {
+     "bigIdea": "Taste the dish and the beer together.",
+     "where": "At this level you pair the **whole menu**, with the chef. Start where Levels 1 and 2 did: match **strength** (delicate dishes with delicate beers, rich with bold), then pick the job: **complement** (shared flavors, like roast with chocolate), **contrast**, or **cut** (carbonation, bitterness and acid lift fat). Watch the traps: **bitterness** can turn metallic with oily fish. Then sit down with the chef and **taste each pair together**; adjust the beer or the garnish. For a **beer dinner**, the Brewers Association suggests **3–4 oz** per course, building intensity through the meal.",
+     "stopsTitle": "With the chef",
+     "stops": [
+      {
+       "name": "Strength",
+       "text": "Match the **intensity**."
+      },
+      {
+       "name": "Job",
+       "text": "Complement, contrast or **cut**."
+      },
+      {
+       "name": "Taste",
+       "text": "Every pair, **together**."
+      }
+     ],
+     "mixup": "A pairing on paper isn’t a pairing. Taste them together: the sauce and seasoning change the match.",
+     "sayIt": "With the short rib, try the porter: the roast picks up the char on the meat."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles); BJCP, “Beer Evaluation and the Judging Process” (bjcp.org/exam-certification/program/studying/beer-evaluation); Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org); Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org); Brewers Association / CraftBeer.com, Beer & Food Course; House practice (ours; GM to confirm). Written for Mise in our own words, Nov 14, 2026.",
+ "cards": [
+  {
+   "q": "How many categories are in the BJCP 2021 beer guidelines?",
+   "answer": "34",
+   "wrong": [
+    "12",
+    "100",
+    "8"
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "q": "BJCP categories group styles by…",
+   "answer": "Similar judging characteristics",
+   "wrong": [
+    "Country of origin only",
+    "Date the style was invented",
+    "Alcohol tax band"
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "q": "The BJCP guidelines are written mainly for…",
+   "answer": "Homebrew competitions",
+   "wrong": [
+    "Federal beer labels",
+    "Pricing a beer list",
+    "Brewery licensing"
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "q": "SRM measures a beer’s…",
+   "answer": "Color",
+   "wrong": [
+    "Bitterness",
+    "Alcohol",
+    "Carbonation"
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "q": "Original Gravity is a measure of…",
+   "answer": "How much sugar the wort held before fermentation",
+   "wrong": [
+    "The beer’s final alcohol",
+    "Its bitterness",
+    "How heavy the keg is"
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "q": "The BJCP lists American IPA’s IBU range as…",
+   "answer": "40–70",
+   "wrong": [
+    "5–15",
+    "18–24",
+    "100–150"
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "q": "On the BJCP scoresheet, flavor is worth…",
+   "answer": "20 of 50 points",
+   "wrong": [
+    "3 of 50 points",
+    "12 of 50 points",
+    "50 of 50 points"
+   ],
+   "source": "BJCP, “Beer Evaluation and the Judging Process” (bjcp.org/exam-certification/program/studying/beer-evaluation)"
+  },
+  {
+   "q": "Why smell a beer as soon as it’s poured?",
+   "answer": "Aroma fades as the beer warms and sits",
+   "wrong": [
+    "It gets stronger later",
+    "The rules forbid smelling later",
+    "To check its temperature"
+   ],
+   "source": "BJCP, “Beer Evaluation and the Judging Process” (bjcp.org/exam-certification/program/studying/beer-evaluation)"
+  },
+  {
+   "q": "The BJCP keeps which score range for truly world-class beers?",
+   "answer": "45–50",
+   "wrong": [
+    "30–37",
+    "21–29",
+    "38–44"
+   ],
+   "source": "BJCP, “Beer Evaluation and the Judging Process” (bjcp.org/exam-certification/program/studying/beer-evaluation)"
+  },
+  {
+   "q": "The first thing to match when pairing beer and food is…",
+   "answer": "Strength (intensity)",
+   "wrong": [
+    "Color",
+    "Country of origin",
+    "Price"
+   ],
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "q": "Which beer qualities “cut” through fat?",
+   "answer": "Carbonation, bitterness and acidity",
+   "wrong": [
+    "Color and clarity",
+    "Sweetness and body",
+    "Foam and lacing"
+   ],
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "q": "For a beer dinner, the Brewers Association suggests about how much beer per course?",
+   "answer": "3–4 oz",
+   "wrong": [
+    "12 oz",
+    "1 oz",
+    "A full pint"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "How many categories are in the BJCP 2021 beer guidelines? 34.",
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "fact": "BJCP categories group styles by… Similar judging characteristics.",
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "fact": "The BJCP guidelines are written mainly for… Homebrew competitions.",
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "fact": "SRM measures a beer’s… Color.",
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "fact": "Original Gravity is a measure of… How much sugar the wort held before fermentation.",
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "fact": "The BJCP lists American IPA’s IBU range as… 40–70.",
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles)"
+  },
+  {
+   "fact": "On the BJCP scoresheet, flavor is worth… 20 of 50 points.",
+   "source": "BJCP, “Beer Evaluation and the Judging Process” (bjcp.org/exam-certification/program/studying/beer-evaluation)"
+  },
+  {
+   "fact": "Why smell a beer as soon as it’s poured? Aroma fades as the beer warms and sits.",
+   "source": "BJCP, “Beer Evaluation and the Judging Process” (bjcp.org/exam-certification/program/studying/beer-evaluation)"
+  },
+  {
+   "fact": "The BJCP keeps which score range for truly world-class beers? 45–50.",
+   "source": "BJCP, “Beer Evaluation and the Judging Process” (bjcp.org/exam-certification/program/studying/beer-evaluation)"
+  },
+  {
+   "fact": "The first thing to match when pairing beer and food is… Strength (intensity).",
+   "source": "Brewers Association, American Craft Beer & Food: Perfect Companions (cicerone.org)"
+  },
+  {
+   "fact": "Which beer qualities “cut” through fat? Carbonation, bitterness and acidity.",
+   "source": "Cicerone, US Certified Cicerone Syllabus v6.0 (cicerone.org)"
+  },
+  {
+   "fact": "For a beer dinner, the Brewers Association suggests about how much beer per course? 3–4 oz.",
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course"
+  }
+ ],
+ "unverified": [
+  "BJCP score bands: the BJCP’s study page says Excellent 38–44, Very Good 30–37, Good 21–29, Drinkable 14–20, Problem 13 or lower, with 45–50 for world-class beers; some scoresheet versions word the bands differently (e.g. Fair, Problematic). The page uses the study page’s words.",
+  "The pairing workflow with the chef (taste together, adjust the dish or the beer) is house practice built on the Brewers Association’s principles.",
+  "BJCP guidelines are written for homebrew competitions; commercial beers don’t have to fit them."
+ ]
+}

@@ -83,6 +83,13 @@ export const LEVELS = [
   { program: 'beer', level: 3, title: 'Advanced Specialist', file: 'beer-3', final: 'final:beer-3', len: 60, prefix: 'BEER3', head: 'Run the beer program',
     practical: 'program:beer-3:practical', practicalTitle: 'Build our beer list', practicalHow: 'Build a beer list for our menu (styles, sizes, pour costs, glassware, a pairing per course) and present it to the GM; they sign you off', practicalStep: 'Build and cost a beer list',
     lead: (n, L) => `${countWord(n)} lessons on running the beer program, then a final and a practical.` },
+  // Beer Level 4 (Nov 14): Master of Beer, built like the Cocktail Program's Master of the Bar. By invitation (server/invite.mjs):
+  // everyone sees the level, staff open its lessons and final once a manager invites them in People.
+  { program: 'beer', level: 4, title: 'Master of Beer', file: 'beer-4', final: 'final:beer-4', len: 60, prefix: 'BEER4', head: 'Lead the beer program',
+    invite: 'program:beer-4:invite',
+    fine: 'It isn’t a Cicerone® certification. Only Cicerone awards the Master Cicerone® title.', // the program's line names the Beer Server exam
+    practical: 'program:beer-4:practical', practicalTitle: 'Audit the draft and present a tap plan', practicalHow: 'Audit our draft system (temperatures, pressures, pour, cleaning log, glassware) and present a season’s tap plan with its costs to the owner or GM; they sign you off', practicalStep: 'Audit and present a tap plan',
+    lead: (n, L) => `${countWord(n)} lessons on leading the beer program, then a final and a practical.` },
   // The Hospitality Program (Nov 11). Level 1 is BRG's Hospitality 101: its lessons and a final (Nov 12: the training
   // acknowledgment moved to every new hire's path, Day 1, server/acks.mjs). Level 2 is The Art of Table Service: a manager
   // watches a full table.
