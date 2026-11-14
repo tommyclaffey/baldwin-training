@@ -61,7 +61,7 @@ before(async () => {
   }).listen(0);
   await new Promise((r) => fake.once('listening', r));
   server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore', env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test',
-    SUPERADMIN_EMAIL: 'owner@example.test', ANTHROPIC_API_KEY: 'test-key', ANTHROPIC_BASE_URL: `http://127.0.0.1:${fake.address().port}`, MENU_IMPORT_DEMO_MS: '15' } });
+    SUPERADMIN_EMAIL: 'super@example.test', ANTHROPIC_API_KEY: 'test-key', ANTHROPIC_BASE_URL: `http://127.0.0.1:${fake.address().port}`, MENU_IMPORT_DEMO_MS: '15' } });
   for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); break; } catch { await new Promise((r) => setTimeout(r, 100)); } }
   const r = await fetch(BASE + '/api/setup', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ name: 'Owner', email: 'owner@example.test', password: 'long-enough-1' }) });
   assert.equal(r.status, 200);
