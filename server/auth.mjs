@@ -74,6 +74,16 @@ export function sessionCookies(token, opts = {}) {
   return opts.secure ? [c, sessionCookie('', { clear: true, secure: true, embeddable: true })] : c;
 }
 
+/** The visitor's address, for rate limits (Nov 14, security review). The first X-Forwarded-For entry is whatever the
+ *  browser sent, so changing it on every try got round every per-address limit. Railway's edge sets X-Real-IP and adds the
+ *  address it saw to the end of X-Forwarded-For, so those are used instead; without a proxy (local, tests), the socket. */
+export function clientIp(req) {
+  const real = String(req.headers['x-real-ip'] || '').trim();
+  if (real) return real;
+  const xff = String(req.headers['x-forwarded-for'] || '').split(',').map((s) => s.trim()).filter(Boolean);
+  return xff.length ? xff[xff.length - 1] : String(req.socket?.remoteAddress || '');
+}
+
 /** 8 tries per email+IP per 15 minutes. */
 /** Attempts per key in a time window. Nov 10 (audit): named limiters keep their count in the database once useDb() is
  *  called, so a redeploy doesn't clear a lockout (5 wrong PINs, too many sign-ins). Unnamed ones stay in memory. */

@@ -1,0 +1,443 @@
+{
+ "number": 1,
+ "programLevel": 4,
+ "slug": "beer-l4-taps",
+ "title": "The tap list",
+ "script": "Lesson 1",
+ "lead": "Core handles and rotators, how fast a keg should empty, the brewing seasons, and how beer gets to us.",
+ "minutes": 13,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "Core and rotating handles",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Every handle has a job."
+    }
+   ],
+   "know": [
+    "Core handles: the steady sellers.",
+    "Rotators: seasonal, local, new.",
+    "Cider and nitro need their own setup."
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course; Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Days on tap",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "A keg should empty before it fades."
+    }
+   ],
+   "know": [
+    "Keg flavor may change after 45 days on tap.",
+    "Days on tap = pints in the keg ÷ pints sold a day.",
+    "Slow seller? Buy a smaller keg."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com)"
+  },
+  {
+   "name": "The seasonal calendar",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "The brewing year has seasons."
+    }
+   ],
+   "know": [
+    "Maibock: spring, the month of May.",
+    "Märzen: brewed in March, poured at Oktoberfest.",
+    "Winter seasonals: darker, spiced, stronger."
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles); House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "How beer gets to us",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Brewer, wholesaler, then us."
+    }
+   ],
+   "know": [
+    "Brewer → wholesaler → retailer.",
+    "A wholesaler holds a brand’s rights in an area.",
+    "Small Michigan breweries may sell to us direct."
+   ],
+   "source": "Michigan Liquor Control Commission, “Self-Distribution Information” (michigan.gov/lara/bureau-list/lcc); MCL 436.1203a"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Core and rotating handles",
+    "keyPoints": [
+     {
+      "big": "CORE",
+      "line": "the beers guests come back for."
+     },
+     {
+      "big": "ROTATE",
+      "line": "seasonal, local, something new."
+     },
+     {
+      "big": "OWN LINE",
+      "line": "cider, root beer and nitro."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every handle has a job.",
+     "where": "Split the taps into **core** handles (the beers that sell every week) and **rotating** handles (seasonal, local, a brewery you’re featuring). Cover the **flavor families** the Brewers Association uses: **Clean & Crisp**, **Malty & Sweet**, **Fruity & Spicy**, **Sour & Funky**, **Hoppy & Bitter**, **Dark & Roasty**, so two handles don’t do the same job. Plan the hardware too: the Draught Beer Quality Manual warns that **cider, root beer and flavored beers** can permanently taint a line, and **nitro** beer needs its own **gas blend** and **restrictor faucet**.",
+     "stopsTitle": "Planning the wall",
+     "stops": [
+      {
+       "name": "Core",
+       "text": "What sells **every week**."
+      },
+      {
+       "name": "Families",
+       "text": "One handle per **flavor job**."
+      },
+      {
+       "name": "Hardware",
+       "text": "Cider and nitro on **their own lines**."
+      }
+     ],
+     "mixup": "A long list isn’t a good list. Two IPAs that taste alike take a handle from a beer that would sell.",
+     "sayIt": "Tonight’s rotating tap is new: crisp and light, if you like a pilsner."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Days on tap",
+    "video": {
+     "youtubeId": "gca5cW07FF8",
+     "title": "Beer distributors lose profit on expired kegs",
+     "by": "23ABC News | KERO",
+     "length": "2:48"
+    },
+    "keyPoints": [
+     {
+      "big": "45 DAYS",
+      "line": "on tap and flavor may change."
+     },
+     {
+      "big": "PINTS ÷ SALES",
+      "line": "= days to empty."
+     },
+     {
+      "big": "SIXTEL",
+      "line": "for the slow sellers."
+     }
+    ],
+    "read": {
+     "bigIdea": "A keg should empty before it fades.",
+     "where": "The Draught Beer Quality Manual says beer in kegs on tap **longer than 45 days** may no longer taste as the brewer intended, and each brewer has its own **freshness window**. So size the keg to the sales: **days on tap = pints in the keg ÷ pints sold a day**. A half barrel holds about **124 pints**, a quarter about **62**, a sixtel about **41**. A beer selling **3 pints a day** takes about **41 days** to empty a half barrel, right at the limit, but only about **14 days** for a sixtel.",
+     "stopsTitle": "Sizing a keg",
+     "stops": [
+      {
+       "name": "Sales",
+       "text": "Pints sold **a day**, from the POS."
+      },
+      {
+       "name": "Divide",
+       "text": "Pints in the keg ÷ **daily sales**."
+      },
+      {
+       "name": "Check",
+       "text": "Under **45 days**, or go smaller."
+      }
+     ],
+     "mixup": "A half barrel isn’t always cheaper. If it sits past its freshness window, the last third is waste."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "The seasonal calendar",
+    "video": {
+     "youtubeId": "Y203XmZXeKU",
+     "title": "Behind the Scenes: The Making of a Beverage Calendar",
+     "by": "Dogfish Head Craft Brewery",
+     "length": "2:41"
+    },
+    "keyPoints": [
+     {
+      "big": "MAY",
+      "line": "Maibock, a spring bock."
+     },
+     {
+      "big": "MARCH → FALL",
+      "line": "Märzen, the Oktoberfest lager."
+     },
+     {
+      "big": "WINTER",
+      "line": "darker, spiced, warming."
+     }
+    ],
+    "read": {
+     "bigIdea": "The brewing year has seasons.",
+     "where": "Some styles carry their season in their name. The BJCP says **Helles Bock** is also called **Maibock**, a seasonal beer tied to **spring** and the month of **May**. **Märzen** (“March beer”) was brewed in **March** and lagered over the summer; it was the amber lager served at **Oktoberfest** from **1872 to 1990**, when the golden **Festbier** took over. **Winter Seasonal Beers** suggest cold weather and the **Christmas holiday**: stronger, darker and often **spiced**. Plan rotators a season ahead, with the distributor’s release dates.",
+     "stopsTitle": "A year of rotators",
+     "stops": [
+      {
+       "name": "Spring",
+       "text": "**Maibock**, in May."
+      },
+      {
+       "name": "Fall",
+       "text": "**Märzen** and **Festbier**."
+      },
+      {
+       "name": "Winter",
+       "text": "**Winter seasonals**: dark, spiced, warming."
+      }
+     ],
+     "mixup": "Märzen and Festbier aren’t the same beer. Märzen is amber; Festbier is golden, and has been the festival beer since 1990."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "How beer gets to us",
+    "video": {
+     "youtubeId": "cHr-ndZK_Dk",
+     "title": "What is the Three-Tier System?",
+     "by": "NBWABeer",
+     "length": "3:00"
+    },
+    "keyPoints": [
+     {
+      "big": "3 TIERS",
+      "line": "brewer, wholesaler, retailer."
+     },
+     {
+      "big": "TERRITORY",
+      "line": "one wholesaler per brand, per area."
+     },
+     {
+      "big": "2,000 BBL",
+      "line": "small breweries may self-distribute."
+     }
+    ],
+    "read": {
+     "bigIdea": "Brewer, wholesaler, then us.",
+     "where": "In Michigan, beer moves through **three tiers**: the **brewer** sells to a licensed **wholesaler** (the distributor), and the wholesaler sells to **retailers** like us. A brewer gives a wholesaler the rights to its brands in a **sales territory**, so a brand usually comes from **one** distributor in our area. The exception: a Michigan **micro brewer** that sells no more than **2,000 barrels** a year may deliver to retailers itself, but not in a territory where it has given a wholesaler **exclusive rights**.",
+     "stopsTitle": "Ordering a new beer",
+     "stops": [
+      {
+       "name": "Find it",
+       "text": "Which **wholesaler** carries the brand here?"
+      },
+      {
+       "name": "Ask the rep",
+       "text": "Keg sizes, **date codes**, release dates."
+      },
+      {
+       "name": "Small brewery?",
+       "text": "It may **self-distribute** under 2,000 barrels."
+      }
+     ],
+     "mixup": "You can’t shop a brand around to the cheapest distributor: in our area it usually comes from the one wholesaler that holds its rights."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Brewers Association / CraftBeer.com, Beer & Food Course; Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm); KegWorks, Guide to Beer Keg Sizes (kegworks.com); BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles); Michigan Liquor Control Commission, “Self-Distribution Information” (michigan.gov/lara/bureau-list/lcc); MCL 436.1203a. Written for Mise in our own words, Nov 14, 2026.",
+ "cards": [
+  {
+   "q": "On a tap list, a “core” handle is…",
+   "answer": "A beer that sells steadily every week and stays on",
+   "wrong": [
+    "The handle closest to the register",
+    "The strongest beer on the list",
+    "Any beer from a local brewery"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course; Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Why give cider or root beer its own line?",
+   "answer": "They can permanently taint a beer line",
+   "wrong": [
+    "They need warmer lines",
+    "They pour faster than beer",
+    "Michigan law requires it"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "Two handles pour IPAs that taste almost the same. The best fix is usually to…",
+   "answer": "Swap one for a beer from a flavor family the wall is missing",
+   "wrong": [
+    "Raise the price of both",
+    "Pour both at a higher pressure",
+    "Put both on nitro"
+   ],
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course; Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Beer in a keg on tap longer than how many days may no longer taste as the brewer intended?",
+   "answer": "45",
+   "wrong": [
+    "7",
+    "120",
+    "365"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "A half barrel holds about 124 pints. A beer sells 4 pints a day. About how many days to empty it?",
+   "answer": "31",
+   "wrong": [
+    "12",
+    "62",
+    "124"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com)"
+  },
+  {
+   "q": "A slow seller would take 80 days to finish a half barrel. The best move is…",
+   "answer": "Buy it in a smaller keg, like a sixtel",
+   "wrong": [
+    "Raise the gas pressure",
+    "Keep it on and discount it at day 80",
+    "Move it to the warmest line"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com)"
+  },
+  {
+   "q": "Maibock is another name for…",
+   "answer": "Helles Bock",
+   "wrong": [
+    "Doppelbock",
+    "Märzen",
+    "Festbier"
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Märzen is named for the month it was traditionally…",
+   "answer": "Brewed: March",
+   "wrong": [
+    "Served: May",
+    "Served: October",
+    "Brewed: December"
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Since 1990 the standard beer at Oktoberfest has been…",
+   "answer": "The golden Festbier",
+   "wrong": [
+    "The amber Märzen",
+    "Maibock",
+    "Dunkel"
+   ],
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles); House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "In the three-tier system, a restaurant buys beer from…",
+   "answer": "A licensed wholesaler (distributor)",
+   "wrong": [
+    "Any brewery in the country",
+    "The state liquor stores",
+    "Another restaurant"
+   ],
+   "source": "Michigan Liquor Control Commission, “Self-Distribution Information” (michigan.gov/lara/bureau-list/lcc); MCL 436.1203a"
+  },
+  {
+   "q": "In Michigan, a micro brewer may self-distribute to retailers if it sells no more than about…",
+   "answer": "2,000 barrels a year",
+   "wrong": [
+    "200 barrels a year",
+    "60,000 barrels a year",
+    "Any amount, with no limit"
+   ],
+   "source": "Michigan Liquor Control Commission, “Self-Distribution Information” (michigan.gov/lara/bureau-list/lcc); MCL 436.1203a"
+  },
+  {
+   "q": "A small brewery has given a wholesaler exclusive rights in our area. Can it deliver to us itself?",
+   "answer": "No: in that territory it goes through the wholesaler",
+   "wrong": [
+    "Yes, always",
+    "Only on weekends",
+    "Only kegs, not bottles"
+   ],
+   "source": "Michigan Liquor Control Commission, “Self-Distribution Information” (michigan.gov/lara/bureau-list/lcc); MCL 436.1203a"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "On a tap list, a “core” handle is… A beer that sells steadily every week and stays on.",
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course; Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "Why give cider or root beer its own line? They can permanently taint a beer line.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "Two handles pour IPAs that taste almost the same. The best fix is usually to… Swap one for a beer from a flavor family the wall is missing.",
+   "source": "Brewers Association / CraftBeer.com, Beer & Food Course; Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "Beer in a keg on tap longer than how many days may no longer taste as the brewer intended? 45.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "A half barrel holds about 124 pints. A beer sells 4 pints a day. About how many days to empty it? 31.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com)"
+  },
+  {
+   "fact": "A slow seller would take 80 days to finish a half barrel. The best move is… Buy it in a smaller keg, like a sixtel.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); KegWorks, Guide to Beer Keg Sizes (kegworks.com)"
+  },
+  {
+   "fact": "Maibock is another name for… Helles Bock.",
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "Märzen is named for the month it was traditionally… Brewed: March.",
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "Since 1990 the standard beer at Oktoberfest has been… The golden Festbier.",
+   "source": "BJCP, 2021 Beer Style Guidelines, introduction and style pages (bjcp.org/beer-styles); House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "In the three-tier system, a restaurant buys beer from… A licensed wholesaler (distributor).",
+   "source": "Michigan Liquor Control Commission, “Self-Distribution Information” (michigan.gov/lara/bureau-list/lcc); MCL 436.1203a"
+  },
+  {
+   "fact": "In Michigan, a micro brewer may self-distribute to retailers if it sells no more than about… 2,000 barrels a year.",
+   "source": "Michigan Liquor Control Commission, “Self-Distribution Information” (michigan.gov/lara/bureau-list/lcc); MCL 436.1203a"
+  },
+  {
+   "fact": "A small brewery has given a wholesaler exclusive rights in our area. Can it deliver to us itself? No: in that territory it goes through the wholesaler.",
+   "source": "Michigan Liquor Control Commission, “Self-Distribution Information” (michigan.gov/lara/bureau-list/lcc); MCL 436.1203a"
+  }
+ ],
+ "unverified": [
+  "How many handles are core and how many rotate is house practice: the GM sets our split.",
+  "Michigan self-distribution: the 2,000-barrel limit and the exclusive-territory rule come from the Liquor Control Commission’s self-distribution page and summaries of MCL 436.1203a (2020); the statute text itself wasn’t read.",
+  "That a brand usually comes from one wholesaler in an area reflects Michigan’s exclusive beer sales territories (the franchise sections of the Liquor Control Code, not read for this lesson).",
+  "Keg pint counts are nominal (no foam, no loss); real yield is lower (Lesson 5)."
+ ]
+}
