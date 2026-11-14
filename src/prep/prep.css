@@ -593,3 +593,19 @@
 .prp-tr .prp-name > a { display: block; padding: 8px 0 0; margin: -8px 0 0; }
 .prp-name .prp-link { padding-bottom: 11px; margin-bottom: -11px; }
 .prp-uf-name, .prp-ran a { display: inline-block; padding-block: 5px; margin-block: -5px; }
+
+/* Nov 14 (accessibility scan, "left for later"): 44 px tap targets on Prep at phone widths. Buttons and chips grow to 44;
+   on Today a row's name and its Recipe / How to Cut link sit side by side, each a full 44 px target, so neither covers
+   the other. Use First names grow by padding cancelled with a negative margin, so that list doesn't move. Desktop is
+   unchanged (all of this is under 860 px). */
+@media (max-width: 859px) {
+  .prp-main .prp-btn, .prp-main .prp-btn.sm, .prp-main .prp-chip, .prp-main .prp-seg button, .prp-main .prp-state.asbtn { min-height: 44px; }
+  .prp-table.today .prp-name { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: 16px; }
+  .prp-table.today .prp-name > a { display: inline-flex; align-items: center; min-height: 44px; padding: 0; margin: 0; }
+  .prp-table.today .prp-name small { display: inline-flex; align-items: center; }
+  .prp-table.today .prp-name .prp-link { min-height: 44px; padding: 0; margin: 0; }
+  .prp-table.today .prp-tr { padding-block: 6px 14px; }
+  .prp-uf-name { padding-block: 13.5px; margin-block: -13.5px; }
+  .prp-willcount li { padding: 0; align-items: center; }
+  .prp-willcount li > a { display: inline-flex; align-items: center; min-height: 44px; padding: 0; margin: 0; }
+}
