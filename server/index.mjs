@@ -27,6 +27,7 @@ import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErr
 import { enterStore } from './variant.mjs';
 import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
 import * as prep from './prep.mjs';
+import * as captions from './captions.mjs';
 import { migrateImports, importRoutes } from './menuimport.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -36,10 +37,13 @@ const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
 initOps(db);
 LoginLimiter.useDb(db); // Nov 10: lockouts survive a redeploy
+captions.migrateCaptions(db); // Nov 14: media.captions (server/captions.mjs)
 seed(db);
 seedWineVideos(db);
 bootAccounts(db);
 migrateAcks(db); migrateImports(db); migrateDemo(db); purgeDemos(db); // acks and imports first: demo copies seed and drop them
+// Nov 14: last week's prep summary posts to each store's #Bar on Monday mornings (server/prep.mjs, postWeekly)
+prep.startWeekly(db, (e) => logError(db, 'server', 'weekly prep post', e));
 setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
 try { warmContent(db); } catch (e) { console.error('warm-up', e); } // before listening: the first visitor doesn't wait for it
 const demoLimiter = new LoginLimiter(30, 60 * 60_000, 'demo-start'); // 30 demo starts an hour per address
@@ -64,7 +68,7 @@ const CSP = ["default-src 'self'", "script-src 'self'", "style-src 'self' 'unsaf
   "frame-ancestors 'self' https://tommyclaffey.com https://www.tommyclaffey.com"].join('; ');
 const SECURITY = { 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin',
   'Content-Security-Policy': CSP, 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'Permissions-Policy': 'camera=(self), microphone=(), geolocation=()' };
-const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.mp4': 'video/mp4', '.mov': 'video/quicktime', '.webm': 'video/webm', '.m4v': 'video/mp4' };
+const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.mp4': 'video/mp4', '.mov': 'video/quicktime', '.webm': 'video/webm', '.m4v': 'video/mp4', '.vtt': 'text/vtt; charset=utf-8' };
 
 class HttpError extends Error { constructor(status, message) { super(message); this.status = status; } }
 const fail = (status, message) => { throw new HttpError(status, message); };
@@ -186,7 +190,8 @@ function saveScan(demoDir, name, jpg) {
   return rel;
 }
 const clientIp = (req) => String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
-const mediaOut = (m) => ({ id: m.id, kind: m.kind, title: m.title, url: m.file ? '/media/' + m.file : null, mime: m.mime, size: m.size, youtubeId: m.youtube_id, createdAt: m.created_at });
+const mediaOut = (m) => ({ id: m.id, kind: m.kind, title: m.title, url: m.file ? '/media/' + m.file : null, mime: m.mime, size: m.size, youtubeId: m.youtube_id, createdAt: m.created_at,
+  captions: m.captions ? '/media/' + m.captions : null });
 
 /* ------------------------------ item data ------------------------------ */
 const str = (v, max = 600) => clean(v, max).trim();
@@ -661,6 +666,7 @@ async function api(req, res, url) {
         return sendJson(res, 200, prep.report(db, c.storeRow, { range: q.get('range') || 'week', at: q.get('at') || undefined, series: q.get('series') || '' }));
       }
       if (p === '/api/prep/report/send' && m === 'POST') { manager(); return sendJson(res, 200, prep.sendSummary(db, c, u, await readJson(req, 20_000))); }
+      if (p === '/api/prep/weekly' && m === 'PUT') { manager(); return sendJson(res, 200, prep.setWeekly(db, x, u, !!(await readJson(req)).on)); }
     } catch (e) { if (e instanceof prep.PrepError) fail(e.status, e.message); throw e; }
     fail(404, 'Not found.');
   }
@@ -1000,6 +1006,28 @@ async function api(req, res, url) {
     const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)').run('file', original, file, mime, size, u.id, now(), c.company, c.store);
     audit(db, u.id, 'upload', file);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
+  }
+  // Captions on an uploaded video (Nov 14, server/captions.mjs): the player looks them up by the video's address;
+  // managers add (.vtt or .srt, sent as the request body), replace or remove them on their own store's videos.
+  if (p === '/api/media/captions' && m === 'GET') {
+    needReader(c, req);
+    return sendJson(res, 200, { captions: captions.captionsFor(db, c.company, url.searchParams.get('video')) });
+  }
+  if (parts[1] === 'media' && /^\d+$/.test(parts[2] || '') && parts[3] === 'captions' && (m === 'PUT' || m === 'DELETE')) {
+    const u = needUser(c, req);
+    if (u.demo) fail(403, 'Uploads are off in the demo.');
+    const x = { company: c.company, store: c.store };
+    try {
+      if (m === 'DELETE') { captions.removeCaptions(db, x, u, parts[2]); }
+      else {
+        if (Number(req.headers['content-length'] || 0) > captions.MAX_CAPTIONS) fail(413, 'That captions file is over 1 MB. Check it’s the right file.');
+        const chunks = []; let size = 0;
+        for await (const ch of req) { size += ch.length; if (size > captions.MAX_CAPTIONS) fail(413, 'That captions file is over 1 MB. Check it’s the right file.'); chunks.push(ch); }
+        const name = decodeURIComponent(String(req.headers['x-filename'] || '')).slice(0, 120);
+        captions.saveCaptions(db, x, u, parts[2], Buffer.concat(chunks).toString('utf8'), name);
+      }
+    } catch (e) { if (e instanceof captions.CaptionsError) fail(e.status, e.message); throw e; }
+    return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(Number(parts[2]))));
   }
   if (parts[1] === 'media' && parts[2] && m === 'DELETE') {
     const u = needUser(c, req);
