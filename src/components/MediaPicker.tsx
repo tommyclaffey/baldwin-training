@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { api, uploadFile, type MediaItem, type Video } from '../lib/api';
+import { api, uploadCaptions, uploadFile, type MediaItem, type Video } from '../lib/api';
+import { forgetCaptions } from './VideoEmbed';
 
 type Props = {
   kind: 'image' | 'video';
@@ -16,6 +17,9 @@ export function MediaPicker({ kind, title, onPick, onClose, onRemove }: Props) {
   const [error, setError] = useState('');
   const [link, setLink] = useState('');
   const [library, setLibrary] = useState<MediaItem[] | null>(null);
+  // Nov 14: an uploaded video waits here for its captions (optional) before it's used.
+  const [uploaded, setUploaded] = useState<MediaItem | null>(null);
+  const [ccBusy, setCcBusy] = useState(false);
   const dialog = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,8 +46,17 @@ export function MediaPicker({ kind, title, onPick, onClose, onRemove }: Props) {
     setError('');
     const ok = kind === 'image' ? f.type.startsWith('image/') : f.type.startsWith('video/');
     if (!ok) { setError(kind === 'image' ? 'Choose a photo (JPG, PNG or WebP).' : 'Choose a video (MP4, MOV or WebM).'); return; }
-    try { setProgress(0); pickItem(await uploadFile(f, setProgress)); }
-    catch (e) { setError((e as Error).message); setProgress(null); }
+    try {
+      setProgress(0);
+      const m = await uploadFile(f, setProgress);
+      if (kind === 'video') { setUploaded(m); setProgress(null); } else pickItem(m);
+    } catch (e) { setError((e as Error).message); setProgress(null); }
+  };
+  const onCaptions = async (f: File | undefined) => {
+    if (!f || !uploaded) return;
+    setError(''); setCcBusy(true);
+    try { const m = await uploadCaptions(uploaded.id, f); forgetCaptions(m.url || undefined); setUploaded(m); } catch (e) { setError((e as Error).message); }
+    setCcBusy(false);
   };
 
   const addYouTube = async () => {
@@ -66,7 +79,18 @@ export function MediaPicker({ kind, title, onPick, onClose, onRemove }: Props) {
           {kind === 'video' && <button role="tab" aria-selected={tab === 'youtube'} onClick={() => setTab('youtube')}>YouTube link</button>}
           <button role="tab" aria-selected={tab === 'library'} onClick={() => setTab('library')}>Already uploaded</button>
         </div>
-        {tab === 'upload' && (
+        {tab === 'upload' && uploaded && (
+          <div className="stack mp-captions">
+            <p className="mp-done"><strong>{uploaded.title}</strong> is uploaded.</p>
+            <label className="drop sm">
+              <input type="file" accept=".vtt,.srt,text/vtt" disabled={ccBusy} onChange={(e) => { void onCaptions(e.target.files?.[0]); e.target.value = ''; }} />
+              {ccBusy ? <strong>Adding captions…</strong> : uploaded.captions ? <><strong>✓ Captions Added</strong><span>Choose another file to replace them</span></>
+                : <><strong>Add Captions</strong><span>Optional · a .vtt or .srt file, shown as CC in the player</span></>}
+            </label>
+            <button className="btn" onClick={() => pickItem(uploaded)} disabled={ccBusy}>Use This Video</button>
+          </div>
+        )}
+        {tab === 'upload' && !uploaded && (
           <label className="drop">
             <input type="file" accept={kind === 'image' ? 'image/jpeg,image/png,image/webp' : 'video/mp4,video/quicktime,video/webm'} onChange={(e) => onFile(e.target.files?.[0])} />
             {progress === null ? (
