@@ -6,6 +6,7 @@ import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { turnOnTwoStep } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-edit-'));
@@ -45,6 +46,7 @@ function marks(page) {
 
 test('setup: owner, a manager, staff, and a manager at another store', async () => {
   assert.equal((await owner('/api/setup', { method: 'POST', body: { name: 'Olivia Owner', email: 'owner@edit.test', password: 'long-enough-1' } })).status, 200);
+  await turnOnTwoStep(owner); // the owner email is the super admin here
   const code = (await owner('/api/team')).data.company.joinCode;
   stores = (await person()(`/api/join/${code}`)).data.stores;
   const inv = await owner('/api/team/invite', { method: 'POST', body: { email: 'mia@edit.test', role: 'manager', storeId: stores[0].id } });

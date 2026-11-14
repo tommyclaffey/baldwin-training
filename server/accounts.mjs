@@ -14,7 +14,7 @@
 import { audit, now } from './db.mjs';
 import {
   hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionCookies, sessionDays, LoginLimiter, publicUser,
-  sha256, newToken, newTotpSecret, verifyTotp, otpauthUrl, newJoinCode,
+  sha256, newToken, newTotpSecret, verifyTotp, otpauthUrl, newJoinCode, clientIp,
 } from './auth.mjs';
 import { APP_URL, mailConfigured, sendMail, resetEmail } from './mail.mjs';
 import { logError } from './ops.mjs';
@@ -26,6 +26,12 @@ const STAFF_ROLES = new Set(['owner', 'manager', 'superadmin']);
 const loginLimiter = new LoginLimiter(8, 15 * 60_000, 'login');
 const codeLimiter = new LoginLimiter(30, 15 * 60_000, 'join-code'); // join-code lookups per address
 const pinLimiter = new LoginLimiter(5, 15 * 60_000, 'pin'); // wrong PINs per person
+// Nov 14 (security review): 5 every 15 minutes still let someone try 480 PINs a day, so a 4-digit PIN fell in about 10
+// days. 15 wrong a day at most; a manager's Reset PIN clears both counts.
+const pinDayLimiter = new LoginLimiter(15, 24 * 3600e3, 'pin-day');
+// Two-step codes: each sign-in allowed 5 tries, but a new sign-in (with the password) gave 5 more, without end.
+// 10 wrong codes per account per 15 minutes, across every sign-in.
+const twoStepLimiter = new LoginLimiter(10, 15 * 60_000, 'two-step');
 const tickets = new Map(); // two-step sign-in: ticket → { userId, at }
 // Password reset (Nov 11): one-time links, 24 hours. Forgot Password? is limited per address and per email.
 const RESET_HOURS = 24;
@@ -100,7 +106,7 @@ export const companyOf = (u) => (u ? u.company_id ?? u.acting_company_id ?? 1 : 
 export const canEdit = (u) => !!u && STAFF_ROLES.has(u.role);
 
 export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
-  const ip = (req) => String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
+  const ip = clientIp;
   const validEmail = (e) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(e || ''));
   const validPassword = (p) => String(p || '').length >= 10;
   const validPin = (p) => /^\d{4,6}$/.test(String(p || ''));
@@ -168,6 +174,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     if (t.id === actor.id) fail(400, 'Change your own password on Your Account.');
     if (t.company_id && !companyRow(t.company_id)) fail(400, 'Restore their company first.');
   };
+  /** A manager's Reset PIN also clears the wrong-PIN counts, so the person can pick a new one straight away. */
+  const clearPinLimits = (id) => { pinLimiter.reset('pin|' + id); pinDayLimiter.reset('pin|' + id); };
   const resetOut = (t, r) => ({ link: r.link, expiresAt: r.expiresAt, hours: r.hours, name: t.name, email: t.email });
 
   return async function route(req, res, url, c) {
@@ -224,10 +232,13 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const t = tickets.get(sha256(String(b.ticket || '')));
       if (!t || Date.now() - t.at > 5 * 60e3) fail(410, 'That sign-in timed out. Enter your email and password again.');
       const user = byId(t.userId);
+      if (!twoStepLimiter.check('u' + t.userId)) fail(429, 'Too many wrong codes. Wait 15 minutes, then try again.');
       if (!user || user.deleted_at || !verifyTotp(user.totp_secret, b.code)) {
+        twoStepLimiter.record('u' + t.userId);
         if (++t.tries >= 5) tickets.delete(sha256(String(b.ticket)));
         fail(401, 'That code isn’t right. Use the newest code in your authenticator app.');
       }
+      twoStepLimiter.reset('u' + t.userId);
       tickets.delete(sha256(String(b.ticket)));
       audit(db, user.id, 'login', 'two-step', user.company_id);
       return signIn(res, req, user);
@@ -354,22 +365,25 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     if (p === '/api/staff-login' && m === 'POST') {
       if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
       const b = await readJson(req);
+      // Nov 14 (security review): wrong join codes here count toward the same limit as the join screen's.
+      if (!codeLimiter.check(ip(req))) fail(429, 'Too many tries. Wait 15 minutes, then try again.');
       const co = staffByCode(b.code);
-      if (!co) fail(404, 'That join code isn’t right. Ask a manager for it.');
+      if (!co) { codeLimiter.record(ip(req)); fail(404, 'That join code isn’t right. Ask a manager for it.'); }
       const u = db.prepare("SELECT * FROM users WHERE id = ? AND company_id = ? AND role = 'staff' AND deleted_at IS NULL").get(Number(b.id), co.id);
       if (!u) fail(404, 'We couldn’t find you. Pick your name again.');
       const key = 'pin|' + u.id;
       if (!pinLimiter.check(key)) fail(429, 'Too many wrong PINs. Wait 15 minutes, or ask a manager to reset your PIN.');
+      if (!pinDayLimiter.check(key)) fail(429, 'Too many wrong PINs today. Ask a manager to reset your PIN.');
       if (!validPin(b.pin)) fail(400, 'Your PIN is 4 to 6 numbers.');
       if (!u.pin_hash) {
         // A manager reset this PIN: the person picks a new one now.
         db.prepare('UPDATE users SET pin_hash = ? WHERE id = ?').run(await hashPassword(b.pin), u.id);
         audit(db, u.id, 'set a new PIN', null, co.id);
       } else if (!(await verifyPassword(b.pin, u.pin_hash))) {
-        pinLimiter.record(key);
+        pinLimiter.record(key); pinDayLimiter.record(key);
         fail(401, 'That PIN isn’t right.');
       }
-      pinLimiter.reset(key);
+      pinLimiter.reset(key); pinDayLimiter.reset(key);
       return signIn(res, req, u);
     }
     if (p === '/api/pin' && m === 'POST') {
@@ -471,6 +485,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         if (t.role !== 'staff') fail(400, 'Only staff have a PIN.');
         db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id);
         db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
+        clearPinLimits(t.id);
         audit(db, u.id, 'reset PIN', t.name, cid);
         return sendJson(res, 200, { ok: true });
       }
@@ -700,7 +715,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         superLog(s, 'reset password link', `${t.name} (${t.role}) · ${t.email}`, t.company_id);
         return sendJson(res, 200, resetOut(t, r));
       }
-      if (parts[4] === 'reset-pin' && m === 'POST') { db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id); db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id); superLog(s, 'reset PIN', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
+      if (parts[4] === 'reset-pin' && m === 'POST') { db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id); db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id); clearPinLimits(t.id); superLog(s, 'reset PIN', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
       if (parts[4] === 'sign-in-as' && m === 'POST') {
         if (t.role === 'superadmin') fail(400, 'Super admins can’t sign in as each other.');
         if (t.deleted_at) fail(400, 'Restore this person first.');

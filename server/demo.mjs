@@ -272,9 +272,12 @@ export function purgeDemos(db) {
   return old.length;
 }
 
-/** What a demo visitor can't do: anything that leaves the sandbox or changes accounts. The bottle scanner is on (Nov 12),
+/** What a demo visitor can't do: anything that leaves the sandbox, changes accounts or changes something shared. The bottle scanner is on (Nov 12),
  *  with demo limits in server/index.mjs; other uploads stay off. */
-const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/password\//, /^\/api\/reset\//, /^\/api\/pin$/, /^\/api\/team/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/];
+const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/password\//, /^\/api\/reset\//, /^\/api\/pin$/, /^\/api\/team/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/,
+  // Nov 14 (security review): wine videos are one list for the whole app (wine_videos has no store), and the Baldwin demo
+  // reads The Baldwin's wine list, so a demo could change the real Baldwin's wine pages.
+  /^\/api\/wine-videos$/];
 export const demoBlocks = (p, m) => m !== 'GET' && BLOCKED.some((r) => r.test(p));
 
 export { sessionCookie };
