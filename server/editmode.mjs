@@ -9,6 +9,7 @@
 // Staff never get any of it: it's only added for people who can open that entry's admin form (canOpen).
 import { COLLECTIONS, ALLERGENS, LOCAL_KEYS, sharedWith } from './cms.mjs';
 import { find, findAll, byName, startsWith, texts, clone } from './templates.mjs';
+import { autoDrop } from './drop.mjs';
 
 const KIND = { recipe: 'Dish', house: 'House cocktail', classic: 'Classic cocktail', wine: 'Wine', shelf: 'Bottle', beer: 'Beer' };
 const options = (col, key) => COLLECTIONS[col]?.fields.find((f) => f.key === key)?.options || [];
@@ -155,11 +156,13 @@ function bindDish(page, e) {
   const drop = find(main, byName('Drop band'));
   if (drop) {
     card(drop);
-    for (const [n, k] of [['Drop · Main', 'dropMain'], ['Drop · Side', 'dropSide'], ['Drop · Sauce', 'dropSauce']]) {
+    // Empty fields show the worked-out drop (server/drop.mjs) as their placeholder: type over it to change it.
+    const auto = autoDrop({ ...e.data, name: e.data.name || e.title }) || {};
+    for (const [n, k, a] of [['Drop · Main', 'dropMain', auto.main], ['Drop · Side', 'dropSide', auto.side], ['Drop · Sauce', 'dropSauce', auto.sauce]]) {
       const tile = find(drop, byName(n));
-      if (tile) bind(texts(tile)[1], e, k, { ph: 'To come' });
+      if (tile) bind(texts(tile)[1], e, k, { ph: a || 'To come' });
     }
-    bind(find(drop, byName('Say it')), e, 'say', { m: 1, ph: 'The drop as one sentence' });
+    bind(find(drop, byName('Say it')), e, 'say', { m: 1, ph: auto.say || 'The drop as one sentence' });
   }
   const tp = find(main, byName('Talking points'));
   if (tp) {

@@ -1,6 +1,7 @@
 // Builds pages for recipes and cocktails added in the admin, from the designed templates:
 // the house cocktail page (Fuschia Satin) and the recipe page (Short Rib).
 // Nodes are found by their Figma layer names, so the templates can be restyled in Figma.
+import { autoDrop, dropSentence } from './drop.mjs';
 
 export const clone = (o) => structuredClone(o);
 
@@ -358,12 +359,18 @@ export function dishPage(template, item, links = {}) {
   const dropBand = find(main, byName('Drop band'));
   if (dropBand) {
     const tiles = find(dropBand, byName('Tiles'));
-    const lines = [['Drop · Main', d.dropMain], ['Drop · Side', d.dropSide], ['Drop · Sauce', d.dropSauce]];
+    // Nov 14: worked out from the dish's components or Food Book ingredients when a manager hasn't typed it in (server/drop.mjs).
+    const auto = autoDrop({ ...d, name: d.name || item.title }) || {};
+    const lines = [['Drop · Main', d.dropMain || auto.main], ['Drop · Side', d.dropSide || auto.side], ['Drop · Sauce', d.dropSauce || auto.sauce]];
     for (const [n, v] of lines) { const tile = find(tiles, byName(n)); if (!tile) continue; if (v) setText(texts(tile)[1], v); else soon(texts(tile)[1], 'To come', n === 'Drop · Main'); }
+    const sauceTile = find(tiles, byName('Drop · Sauce'));
+    if (sauceTile && !d.dropSauce && auto.sauce && auto.sauceLabel !== 'Sauce') setText(texts(sauceTile)[0], auto.sauceLabel);
     // "From the Food Book" / "From the Wine Book…" only when the dish came from the Food Book (not added or demo dishes).
     if (!item.seeded && !item.library?.seeded) for (const t of findAll(main, (x) => x.t === 'T' && /^From the (Food|Wine) Book/.test(x.s || ''))) t.s = '';
     const sayNode = find(dropBand, byName('Say it'));
-    if (d.say) setText(sayNode, d.say); else soon(sayNode, 'The drop line is to come.');
+    const typed = d.dropMain || d.dropSide || d.dropSauce;
+    const sayLine = d.say || (typed ? dropSentence(d.name || item.title, d.dropMain, d.dropSide, d.dropSauce, 'Sauce') : auto.say);
+    if (sayLine) setText(sayNode, sayLine); else soon(sayNode, 'The drop line is to come.');
   }
 
   // Talking points: up to three short lines a server can say.
