@@ -27,6 +27,7 @@ import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErr
 import { enterStore } from './variant.mjs';
 import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
 import * as prep from './prep.mjs';
+import { migrateImports, importRoutes } from './menuimport.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -38,7 +39,7 @@ LoginLimiter.useDb(db); // Nov 10: lockouts survive a redeploy
 seed(db);
 seedWineVideos(db);
 bootAccounts(db);
-migrateAcks(db); migrateDemo(db); purgeDemos(db); // acks first: demo copies seed and drop them
+migrateAcks(db); migrateImports(db); migrateDemo(db); purgeDemos(db); // acks and imports first: demo copies seed and drop them
 setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
 try { warmContent(db); } catch (e) { console.error('warm-up', e); } // before listening: the first visitor doesn't wait for it
 const demoLimiter = new LoginLimiter(30, 60 * 60_000, 'demo-start'); // 30 demo starts an hour per address
@@ -201,6 +202,11 @@ const imageUrl = (v) => { const s = str(v, 300); return s.startsWith('/media/') 
 
 /* ------------------------------ routes ------------------------------ */
 const accounts = accountRoutes({ db, fail, sendJson, readJson, str, isSecure });
+// AI menu import (Nov 14, server/menuimport.mjs): owners and managers. Reads per store a day (each read is one Claude API call);
+// a demo copy reads its sample menu (no API call) up to 20 times.
+const imports = importRoutes({ db, fail, sendJson, readJson, needEditor: (c, req) => needEditor(c, req),
+  isDemo: (co) => isDemoCompany(db, co), brandOf: (co) => db.prepare('SELECT brand FROM companies WHERE id = ?').get(co)?.brand || 'baldwin',
+  limiter: new LoginLimiter(12, 24 * 3600e3, 'menu-read'), demoLimiter: new LoginLimiter(20, 24 * 3600e3, 'menu-read-demo') });
 async function api(req, res, url) {
   const c = ctx(req);
   enterStore(db, c.storeRow); // Nov 11: BRG's companies read BRG's Hospitality Program, everyone else the generic one
@@ -277,6 +283,7 @@ async function api(req, res, url) {
   }
   if (c.user && isDemoCompany(db, c.user.company_id) && demoBlocks(p, m)) fail(403, 'That’s switched off in the demo.');
   if ((await accounts(req, res, url, c)) !== false) return;
+  if ((await imports(req, res, url, c)) !== false) return;
 
   /* quizzes: everyone signed in. A person's records are keyed 'u<id>' (older phone-only records keep their device id). */
   if (p === '/api/quiz/attempt' && m === 'POST') {
