@@ -32,7 +32,19 @@ export function uploadFile(file: File, onProgress?: (pct: number) => void): Prom
   });
 }
 
-export type MediaItem = { id: number; kind: 'file' | 'youtube'; title: string; url: string | null; mime: string | null; size: number | null; youtubeId: string | null; createdAt: string };
+/** Adds (or replaces) captions on an uploaded video: a .vtt as is, or an .srt the server turns into WebVTT (Nov 14). */
+export async function uploadCaptions(mediaId: number, file: File): Promise<MediaItem> {
+  if (!/\.(vtt|srt)$/i.test(file.name)) throw new ApiError(415, 'Choose a captions file: .vtt or .srt.');
+  const res = await fetch(`/api/media/${mediaId}/captions`, { method: 'PUT', credentials: 'same-origin', body: file,
+    headers: { 'Content-Type': 'text/plain; charset=utf-8', 'X-Filename': encodeURIComponent(file.name), 'X-BT': '1' } });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new ApiError(res.status, (data as { error?: string }).error || 'The captions didn’t upload. Try again.');
+  return data as MediaItem;
+}
+
+export type MediaItem = { id: number; kind: 'file' | 'youtube'; title: string; url: string | null; mime: string | null; size: number | null; youtubeId: string | null; createdAt: string;
+  /** The captions file (WebVTT) on an uploaded video, if it has one. */
+  captions?: string | null };
 export type Video = { kind: 'youtube'; youtubeId: string; title?: string } | { kind: 'file'; url: string; mime?: string; title?: string };
 export type Role = 'superadmin' | 'owner' | 'manager' | 'staff';
 export type User = { demo?: boolean; brand?: 'baldwin' | 'mise';

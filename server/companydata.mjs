@@ -73,6 +73,8 @@ function ownedFiles(db, companyId) {
     if (spin) for (let i = 1; i < 100; i++) files.add(`${spin[1]}${String(i).padStart(2, '0')}.jpg`);
   }
   for (const r of db.prepare('SELECT photo FROM chat_messages WHERE company_id = ? AND photo IS NOT NULL').all(companyId)) files.add(path.basename(r.photo));
+  // captions on uploaded videos (Nov 14, server/captions.mjs), when that column is there
+  if (colsOf(db, 'media').includes('captions')) for (const r of db.prepare('SELECT captions FROM media WHERE company_id = ? AND captions IS NOT NULL').all(companyId)) files.add(path.basename(r.captions));
   return [...files].filter((f) => f && fs.existsSync(path.join(MEDIA_DIR, f)));
 }
 

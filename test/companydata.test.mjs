@@ -56,7 +56,9 @@ async function company(name, slug) {
   assert.equal((await owner('/api/chat/room/everyone/messages', { method: 'POST', body: { body: `Lineup at 4 · ${name}` } })).status, 200);
   const up = await owner('/api/media/upload', { method: 'POST', body: new Uint8Array([0, 0, 0, 24, 102, 116, 121, 112]), headers: { 'Content-Type': 'video/mp4', 'X-Filename': `${slug}-lineup.mp4` } });
   assert.equal(up.status, 200);
-  return { id: add.data.id, name, owner, manager, staff, file: up.data.url.slice(7) };
+  const cap = await owner(`/api/media/${up.data.id}/captions`, { method: 'PUT', body: new TextEncoder().encode('WEBVTT\n\n00:00.000 --> 00:01.000\nLineup\n'), headers: { 'Content-Type': 'text/plain', 'X-Filename': 'lineup.vtt' } });
+  assert.equal(cap.status, 200);
+  return { id: add.data.id, name, owner, manager, staff, file: up.data.url.slice(7), captions: cap.data.captions.slice(7) };
 }
 let harbor, copper;
 
@@ -148,13 +150,14 @@ test('delete: the owner asks (typing the name), the super admin confirms after 7
   const done = await confirm({ confirm: 'Harbor Table', now: true, confirmNow: 'Delete now' });
   assert.equal(done.status, 200);
   assert.equal(done.data.removed.users, 3);
-  assert.equal(done.data.removed.files, 1);
+  assert.equal(done.data.removed.files, 2, 'the video and its captions');
   assert.equal((await confirm({ confirm: 'Harbor Table', now: true, confirmNow: 'delete now' })).status, 409, 'done once');
 
   // Harbor Table is gone: people signed out, no rows anywhere, its file removed
   assert.equal((await harbor.owner('/api/me')).data.user, null);
   assert.equal((await harbor.staff('/api/me')).data.user, null);
   assert.ok(!fs.existsSync(path.join(dir, 'media', harbor.file)));
+  assert.ok(!fs.existsSync(path.join(dir, 'media', harbor.captions)), 'its captions file too');
   const db = openDb();
   try {
     assert.equal(db.prepare('SELECT COUNT(*) n FROM companies WHERE id = ?').get(harbor.id).n, 0);
