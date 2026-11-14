@@ -822,6 +822,7 @@ export function report(db, storeRow, { range = 'week', at = '', series = '' } = 
     periods: periodList(range, at, first),
   };
   out.summary = summaryText(out);
+  out.weekly = weeklySetting(db, storeRow);
   return out;
 }
 /** The periods to pick from: back to the first log (at most 14 days, 12 weeks, every year). */
@@ -863,6 +864,97 @@ export function sendSummary(db, c, u, b) {
     audit(db, u.id, 'send prep report', r.period.label, c.company);
     return { id, room: 'bar' };
   } catch (e) { if (e instanceof ChatError) bad(e.status, e.message); throw e; }
+}
+
+/* ------------------------------------------------------------------ the weekly post to #Bar (Nov 14) */
+// Every Monday from 9 am (the store's Detroit time, like every prep day), last week's summary goes to the store's #Bar on
+// its own: the same words and the same report card as Send Now. On for every store that keeps prep; a manager turns it off
+// on Reports. prep_weekly remembers the last week posted, so a restart or a second tick never posts twice. Demo companies
+// never get it. Stores that haven't opened Prep, or logged nothing that week, are skipped (and that week is marked done).
+// Its own table, made here (CREATE IF NOT EXISTS, like program_acks), so it can't collide with a numbered migration.
+export const WEEKLY_HOUR = 9;
+export const WEEKLY_NOTE = 'Sent automatically every Monday. A manager can turn this off in Prep Reports.';
+export function initWeekly(db) {
+  db.exec(`CREATE TABLE IF NOT EXISTS prep_weekly(store_id INTEGER PRIMARY KEY, company_id INT NOT NULL, off INT NOT NULL DEFAULT 0,
+    by_user INT, at TEXT, last_week TEXT, last_at TEXT, message_id INT)`);
+}
+const weeklyRow = (db, store) => { initWeekly(db); return db.prepare('SELECT * FROM prep_weekly WHERE store_id = ?').get(store) || null; };
+/** What Reports shows: on or off, and the last week that went out. */
+export function weeklySetting(db, storeRow) {
+  const r = weeklyRow(db, storeRow.id);
+  return { on: !r?.off, lastWeek: r?.message_id ? r.last_week : null, lastAt: r?.message_id ? r.last_at : null, hour: WEEKLY_HOUR };
+}
+/** A manager turns the Monday post on or off. Whoever turns it on is who it posts as. */
+export function setWeekly(db, x, u, on) {
+  initWeekly(db);
+  db.prepare(`INSERT INTO prep_weekly(store_id, company_id, off, by_user, at) VALUES (?,?,?,?,?)
+    ON CONFLICT(store_id) DO UPDATE SET off = excluded.off, by_user = excluded.by_user, at = excluded.at`).run(x.store, x.company, on ? 0 : 1, u.id, now());
+  audit(db, u.id, on ? 'weekly prep post on' : 'weekly prep post off', x.storeRow?.name || null, x.company);
+  return weeklySetting(db, x.storeRow || { id: x.store });
+}
+/** The week due at `at`: last week's Monday, from Monday 9 am through Tuesday (a server that was down Monday morning
+ *  catches up); otherwise null. */
+export function weeklyDue(at = new Date()) {
+  const t = new Date(at), today = dayOf(t), dow = dowOf(today);
+  if (dow === 1 && t.getTime() < Date.parse(detroitAt(today, WEEKLY_HOUR))) return null;
+  if (dow !== 1 && dow !== 2) return null;
+  return addDays(weekStart(today), -7);
+}
+/** Who the post comes from: whoever turned it on, else the store's own manager, an all-store manager, then an owner
+ *  (the longest-standing first). Only someone who is on the store's chat. */
+function weeklyAuthor(db, storeRow, preferred) {
+  const rows = db.prepare(`SELECT * FROM users WHERE company_id = ? AND deleted_at IS NULL AND (
+      (role = 'manager' AND (store_id = ? OR store_id IS NULL)) OR role = 'owner')
+    ORDER BY id = ? DESC, CASE WHEN role = 'manager' AND store_id = ? THEN 0 WHEN role = 'manager' THEN 1 ELSE 2 END, created_at, id`)
+    .all(storeRow.company_id, storeRow.id, preferred ?? -1, storeRow.id);
+  for (const u of rows) {
+    const x = chatCtx(db, { user: u, storeRow, company: storeRow.company_id, store: storeRow.id });
+    if (x) return { u, x };
+  }
+  return null;
+}
+const companyCols = (db) => db.prepare('PRAGMA table_info(companies)').all().map((c) => c.name);
+/** One pass: post last week's summary to #Bar in every store that's due. Returns what it posted (and skipped). */
+export function postWeekly(db, at = new Date()) {
+  const week = weeklyDue(at);
+  if (!week) return [];
+  initWeekly(db);
+  const cols = companyCols(db);
+  const notDemo = cols.includes('demo') ? 'AND co.demo = 0' : '';
+  const notGone = cols.includes('deleted_at') ? 'AND co.deleted_at IS NULL' : '';
+  const stores = db.prepare(`SELECT s.* FROM stores s JOIN companies co ON co.id = s.company_id
+    WHERE s.deleted_at IS NULL ${notDemo} ${notGone} AND EXISTS (SELECT 1 FROM prep_items i WHERE i.store_id = s.id) ORDER BY s.id`).all();
+  const out = [];
+  for (const storeRow of stores) {
+    const row = weeklyRow(db, storeRow.id);
+    if (row?.off || (row?.last_week && row.last_week >= week)) continue;
+    // Claim the week first: only one pass (or one server) gets to post it.
+    db.prepare('INSERT OR IGNORE INTO prep_weekly(store_id, company_id) VALUES (?,?)').run(storeRow.id, storeRow.company_id);
+    const claimed = db.prepare('UPDATE prep_weekly SET last_week = ?, last_at = ?, message_id = NULL WHERE store_id = ? AND off = 0 AND (last_week IS NULL OR last_week < ?)')
+      .run(week, now(), storeRow.id, week).changes;
+    if (!claimed) continue;
+    const undo = () => db.prepare('UPDATE prep_weekly SET last_week = ?, last_at = ?, message_id = ? WHERE store_id = ?').run(row?.last_week ?? null, row?.last_at ?? null, row?.message_id ?? null, storeRow.id);
+    try {
+      const r = report(db, storeRow, { range: 'week', at: week });
+      if (!r.rows.some((x) => x.batches > 0 || x.shifts > 0)) { out.push({ store: storeRow.id, week, skipped: 'nothing logged' }); continue; }
+      const who = weeklyAuthor(db, storeRow, row?.by_user);
+      if (!who) { undo(); out.push({ store: storeRow.id, week, skipped: 'no manager on the chat' }); continue; }
+      const room = resolveRoom(who.x, 'bar', { create: true });
+      const id = postMessage(who.x, room, { body: `${r.summary}\n${WEEKLY_NOTE}`, page: `prep/reports?range=week&at=${r.period.from}` });
+      db.prepare('UPDATE prep_weekly SET message_id = ? WHERE store_id = ?').run(id, storeRow.id);
+      audit(db, null, 'weekly prep post', `${storeRow.name} · ${r.period.label}`, storeRow.company_id);
+      out.push({ store: storeRow.id, week, id });
+    } catch (e) { undo(); throw e; }
+  }
+  return out;
+}
+/** Check every 15 minutes (the first 90 s after start; PREP_WEEKLY=off turns it off), the way the nightly backup ticks (server/ops.mjs). */
+export function startWeekly(db, onError = (e) => console.error('weekly prep post', e)) {
+  initWeekly(db);
+  if (process.env.PREP_WEEKLY === 'off') return;
+  const tick = () => { try { postWeekly(db); } catch (e) { onError(e); } };
+  setTimeout(tick, 90_000).unref();
+  setInterval(tick, 15 * 60_000).unref();
 }
 
 /* Send to Team: prep pages as chat cards ("prep", "prep/reports?…", "prep/item/12"). */
