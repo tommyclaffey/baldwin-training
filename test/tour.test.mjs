@@ -73,3 +73,19 @@ test('making room: scroll the box up under the top bar when it and the card both
   assert.equal(roomScroll({ left: 40, top: 64, width: 944, height: 732 }, v, card, 64), 0, 'too tall: nothing to gain');
   assert.equal(roomScroll({ left: 34, top: 80, width: 956, height: 200 }, v, card, 64), 0, 'already room underneath');
 });
+
+// Nov 14: the manager's walk stops on Bar Prep, in both demos (the tour is shared; /prep is in both demos' menus).
+// DemoTour.tsx is React, so this reads its stop list as text.
+import fs from 'node:fs';
+test('the manager tour has a Prep stop that points at something Today really draws', () => {
+  const src = fs.readFileSync(new URL('../src/components/DemoTour.tsx', import.meta.url), 'utf8');
+  const stop = src.split('\n').find((l) => /path: '\/prep'/.test(l));
+  assert.ok(stop, 'a /prep stop');
+  assert.match(stop, /manager: true/, 'for the manager (the employee demo is a server, who doesn’t log prep)');
+  const cls = /target: '\.([a-z0-9-]+)'/.exec(stop)?.[1];
+  assert.ok(cls, 'targets a class');
+  const today = fs.readFileSync(new URL('../src/prep/PrepPage.tsx', import.meta.url), 'utf8');
+  assert.ok(today.includes(`className="${cls}"`), `Today draws .${cls}`);
+  // it comes before the manager home stops, so the walk ends on People as before
+  assert.ok(src.indexOf("path: '/prep'") < src.indexOf("path: '/admin', target"), 'before the manager home');
+});
