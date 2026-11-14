@@ -1,0 +1,448 @@
+{
+ "number": 6,
+ "programLevel": 4,
+ "slug": "beer-l4-leading",
+ "title": "Leading the beer program",
+ "script": "Lesson 6",
+ "lead": "The team’s ladder, the beer standard, the rules with reps and distributors, and the Master Cicerone.",
+ "minutes": 14,
+ "program": "beer",
+ "sections": [
+  {
+   "name": "The team’s ladder",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Everyone starts, a few go all the way."
+    }
+   ],
+   "know": [
+    "Level 1 everyone, 2 bartenders, 3 beer leads.",
+    "Level 4 by invitation.",
+    "Cicerone’s ladder runs the same way."
+   ],
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app; Cicerone Support, Certified Beer Server Exam FAQ and About the Certified Cicerone Exam (support.cicerone.org); Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  },
+  {
+   "name": "Writing the beer standard",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "One page everyone works from."
+    }
+   ],
+   "know": [
+    "Write the numbers down.",
+    "Temperatures, pour, glass, cleaning.",
+    "Train it, then check it."
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm)"
+  },
+  {
+   "name": "Reps, distributors and the rules",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Suppliers can’t give us things of value."
+    }
+   ],
+   "know": [
+    "MCL 436.1609: no gifts, loans or things of value.",
+    "Allowed: removable tap markers, lent couplers, menus.",
+    "Branded beer glasses: buy them from a barware retailer."
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1609 (legislature.mi.gov/documents/mcl/pdf/mcl-436-1609.pdf)"
+  },
+  {
+   "name": "The Master Cicerone",
+   "lines": [
+    {
+     "label": "In short",
+     "text": "Two days, 85% to pass."
+    }
+   ],
+   "know": [
+    "Needs a passed Advanced Cicerone.",
+    "Two days: written essays, orals, tasting.",
+    "85% to pass."
+   ],
+   "source": "Cicerone Support, “About the Master Cicerone Exam” (support.cicerone.org)"
+  }
+ ],
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "The team’s ladder",
+    "video": {
+     "youtubeId": "QARGlpzLV3U",
+     "title": "Cicerone - Ray Daniels Interview",
+     "by": "beeramerica",
+     "length": "11:11"
+    },
+    "keyPoints": [
+     {
+      "big": "LEVEL 1",
+      "line": "everyone who serves beer."
+     },
+     {
+      "big": "LEVEL 3",
+      "line": "the beer lead."
+     },
+     {
+      "big": "LEVEL 4",
+      "line": "by invitation."
+     }
+    ],
+    "read": {
+     "bigIdea": "Everyone starts, a few go all the way.",
+     "where": "Our Beer Program has four levels: **Beer Server** for everyone who serves beer, **Beer Specialist** for bartenders, **Advanced Specialist** for beer leads, and **Master of Beer**, by **invitation**: a manager invites the person in People. Cicerone’s outside ladder runs the same way: **Certified Beer Server** (60 questions, **75%** to pass), **Certified Cicerone** (80% overall, 70% on tasting), **Advanced Cicerone** (80%, 75% on tasting), **Master Cicerone**. As the program lead, you decide who’s ready for the next level and **coach** them through it.",
+     "stopsTitle": "Who takes what",
+     "stops": [
+      {
+       "name": "Everyone",
+       "text": "**Level 1**, Beer Server."
+      },
+      {
+       "name": "Bar and leads",
+       "text": "Levels **2 and 3**."
+      },
+      {
+       "name": "Invited",
+       "text": "**Level 4**, Master of Beer."
+      }
+     ],
+     "mixup": "Our certificates aren’t Cicerone’s. They prepare people for Cicerone’s exams; only Cicerone awards its titles."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Writing the beer standard",
+    "video": {
+     "youtubeId": "JOzibYHlNZg",
+     "title": "Happy Staff, Happy Guests: Standard Operating Procedures (SOPs) for Bars",
+     "by": "Toast, Inc.",
+     "length": "2:04"
+    },
+    "keyPoints": [
+     {
+      "big": "ONE PAGE",
+      "line": "the beer standard."
+     },
+     {
+      "big": "NUMBERS",
+      "line": "from the manual."
+     },
+     {
+      "big": "CHECK",
+      "line": "train it, then audit it."
+     }
+    ],
+    "read": {
+     "bigIdea": "One page everyone works from.",
+     "where": "A program runs on a written **standard**: one page at the bar and in the walk-in. Put the numbers on it, from the Draught Beer Quality Manual: store **34–38°F**, serve **38–44°F**, pour about **2 oz a second**, a **beer-clean** glass every pour (never refill a used glass), glasses **air-dried**, lines cleaned every **14 days** with the log signed. Add our own: the head we pour, the glass for each beer, who changes kegs. Then **train** it (Levels 1–3), and **check** it with the monthly audit (Lesson 2).",
+     "stopsTitle": "What goes on it",
+     "stops": [
+      {
+       "name": "Temperatures",
+       "text": "Store **34–38°F**, serve **38–44°F**."
+      },
+      {
+       "name": "Pour and glass",
+       "text": "**2 oz/sec**, beer-clean, fresh glass."
+      },
+      {
+       "name": "Cleaning",
+       "text": "Every **14 days**, logged."
+      }
+     ],
+     "mixup": "A standard nobody checks is a suggestion. The audit is what makes it a standard."
+    },
+    "check": [
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "name": "Reps, distributors and the rules",
+    "video": {
+     "youtubeId": "T3p1w_pt5RM",
+     "title": "Tied House",
+     "by": "USTTBgov",
+     "length": "14:27"
+    },
+    "keyPoints": [
+     {
+      "big": "NO GIFTS",
+      "line": "suppliers can’t aid a retailer."
+     },
+     {
+      "big": "TAP MARKERS",
+      "line": "and lent couplers are allowed."
+     },
+     {
+      "big": "GLASSES",
+      "line": "bought from a barware retailer."
+     }
+    ],
+    "read": {
+     "bigIdea": "Suppliers can’t give us things of value.",
+     "where": "Michigan’s Liquor Control Code (**MCL 436.1609**) says a brewer, wholesaler or other supplier **shall not aid or assist** a retailer by **gift, loan** of money or property, or any **other valuable thing**, and the retailer **shall not accept** it. The law lists what’s allowed, including **removable tap markers or signs**, table tents, drink menus and **keg couplers lent** to an on-premises retailer. **Beer-branded glassware** is different: a retailer may use it only if it was **bought from a barware retailer**, and keeps the receipts. Work with reps on **freshness, date codes, release dates and staff training**; anything that looks like a freebie, ask the GM first.",
+     "stopsTitle": "With a rep",
+     "stops": [
+      {
+       "name": "Ask for",
+       "text": "Date codes, **release dates**, training."
+      },
+      {
+       "name": "Allowed",
+       "text": "Tap markers, menus, **lent couplers**."
+      },
+      {
+       "name": "Ask first",
+       "text": "Anything **free**."
+      }
+     ],
+     "mixup": "A free case of branded pint glasses from the distributor isn’t a nice gesture. In Michigan we buy branded beer glassware from a barware retailer."
+    },
+    "check": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "name": "The Master Cicerone",
+    "video": {
+     "youtubeId": "oegclARUiWQ",
+     "title": "The Hardest Beer Exam In The World: What it takes to be a Master Cicerone",
+     "by": "BrewDog",
+     "length": "6:43"
+    },
+    "keyPoints": [
+     {
+      "big": "2 DAYS",
+      "line": "written, oral and tasting."
+     },
+     {
+      "big": "85%",
+      "line": "to pass."
+     },
+     {
+      "big": "ADVANCED",
+      "line": "Cicerone first."
+     }
+    ],
+    "read": {
+     "bigIdea": "Two days, 85% to pass.",
+     "where": "Cicerone’s top title is **Master Cicerone**. You must have passed the **Advanced Cicerone** and be of legal drinking age. It’s a **two-day** exam with **written** parts (essay questions), **oral** exams by industry experts, and **tasting** assessments covering a broad range of **off-flavors**. You need **85%** to pass. Very few people hold it. This level, Master of Beer, is ours, not Cicerone’s: it covers the running of one restaurant’s program, and the reading behind it is the same, from the Draught Beer Quality Manual to the BJCP guidelines.",
+     "stopsTitle": "Cicerone’s top step",
+     "stops": [
+      {
+       "name": "Before",
+       "text": "Pass the **Advanced Cicerone**."
+      },
+      {
+       "name": "The exam",
+       "text": "**Two days**: essays, orals, tasting."
+      },
+      {
+       "name": "Pass",
+       "text": "**85%**."
+      }
+     ],
+     "mixup": "Master of Beer isn’t Master Cicerone. Ours is the restaurant’s certificate; Cicerone’s is earned only from Cicerone."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   }
+  ]
+ },
+ "sources": "Our book: the training programs, Quick Quiz and Team Chat in this app; Cicerone Support, Certified Beer Server Exam FAQ and About the Certified Cicerone Exam (support.cicerone.org); Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org); Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org); House practice (ours; GM to confirm); Michigan Liquor Control Code, MCL 436.1609 (legislature.mi.gov/documents/mcl/pdf/mcl-436-1609.pdf); Cicerone Support, “About the Master Cicerone Exam” (support.cicerone.org). Written for Mise in our own words, Nov 14, 2026.",
+ "cards": [
+  {
+   "q": "In our Beer Program, how does someone open Level 4?",
+   "answer": "A manager invites them in People",
+   "wrong": [
+    "They pass Level 1 twice",
+    "They pay a fee",
+    "Anyone can open it any time"
+   ],
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app"
+  },
+  {
+   "q": "Cicerone’s Certified Beer Server exam needs what score to pass?",
+   "answer": "75%",
+   "wrong": [
+    "50%",
+    "60%",
+    "95%"
+   ],
+   "source": "Cicerone Support, Certified Beer Server Exam FAQ and About the Certified Cicerone Exam (support.cicerone.org); Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  },
+  {
+   "q": "Our Master of Beer certificate is awarded by…",
+   "answer": "Our restaurant, not Cicerone",
+   "wrong": [
+    "Cicerone",
+    "The BJCP",
+    "The State of Michigan"
+   ],
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app"
+  },
+  {
+   "q": "The manual recommends storing draft beer at…",
+   "answer": "34–38°F",
+   "wrong": [
+    "20–25°F",
+    "45–50°F",
+    "Room temperature"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "The manual says a guest asking for another beer should get…",
+   "answer": "A freshly cleaned glass",
+   "wrong": [
+    "The same glass, refilled",
+    "A rinsed glass from the bar sink",
+    "A frozen glass"
+   ],
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "q": "What turns a written standard into a real one?",
+   "answer": "Training it and checking it regularly",
+   "wrong": [
+    "Printing it in color",
+    "Posting it online",
+    "Writing it longer"
+   ],
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "q": "Under MCL 436.1609, a beer wholesaler giving a restaurant a gift or other valuable thing is…",
+   "answer": "Not allowed, and the restaurant can’t accept it",
+   "wrong": [
+    "Allowed under $500",
+    "Allowed if it’s beer",
+    "Allowed once a year"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1609 (legislature.mi.gov/documents/mcl/pdf/mcl-436-1609.pdf)"
+  },
+  {
+   "q": "Which of these may a supplier provide under MCL 436.1609?",
+   "answer": "Removable tap markers",
+   "wrong": [
+    "A free walk-in cooler",
+    "A cash loan",
+    "Free kegs of beer"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1609 (legislature.mi.gov/documents/mcl/pdf/mcl-436-1609.pdf)"
+  },
+  {
+   "q": "In Michigan, beer-branded glassware we use must be…",
+   "answer": "Bought from a barware retailer, with receipts kept",
+   "wrong": [
+    "A gift from the distributor",
+    "Made by the brewery for us free",
+    "Returned every month"
+   ],
+   "source": "Michigan Liquor Control Code, MCL 436.1609 (legislature.mi.gov/documents/mcl/pdf/mcl-436-1609.pdf)"
+  },
+  {
+   "q": "To sit the Master Cicerone exam you must first pass…",
+   "answer": "The Advanced Cicerone",
+   "wrong": [
+    "Only the Certified Beer Server",
+    "A BJCP judging exam",
+    "Nothing: it’s open to all"
+   ],
+   "source": "Cicerone Support, “About the Master Cicerone Exam” (support.cicerone.org)"
+  },
+  {
+   "q": "The Master Cicerone exam lasts…",
+   "answer": "Two days",
+   "wrong": [
+    "30 minutes",
+    "One hour",
+    "Two weeks"
+   ],
+   "source": "Cicerone Support, “About the Master Cicerone Exam” (support.cicerone.org)"
+  },
+  {
+   "q": "What score passes the Master Cicerone exam?",
+   "answer": "85%",
+   "wrong": [
+    "60%",
+    "75%",
+    "100%"
+   ],
+   "source": "Cicerone Support, “About the Master Cicerone Exam” (support.cicerone.org)"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "In our Beer Program, how does someone open Level 4? A manager invites them in People.",
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app"
+  },
+  {
+   "fact": "Cicerone’s Certified Beer Server exam needs what score to pass? 75%.",
+   "source": "Cicerone Support, Certified Beer Server Exam FAQ and About the Certified Cicerone Exam (support.cicerone.org); Cicerone, Advanced Cicerone Syllabus v6.0 and exam page (cicerone.org)"
+  },
+  {
+   "fact": "Our Master of Beer certificate is awarded by… Our restaurant, not Cicerone.",
+   "source": "Our book: the training programs, Quick Quiz and Team Chat in this app"
+  },
+  {
+   "fact": "The manual recommends storing draft beer at… 34–38°F.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "The manual says a guest asking for another beer should get… A freshly cleaned glass.",
+   "source": "Brewers Association, Draught Beer Quality Manual, 4th ed., 2019 (brewersassociation.org)"
+  },
+  {
+   "fact": "What turns a written standard into a real one? Training it and checking it regularly.",
+   "source": "House practice (ours; GM to confirm)"
+  },
+  {
+   "fact": "Under MCL 436.1609, a beer wholesaler giving a restaurant a gift or other valuable thing is… Not allowed, and the restaurant can’t accept it.",
+   "source": "Michigan Liquor Control Code, MCL 436.1609 (legislature.mi.gov/documents/mcl/pdf/mcl-436-1609.pdf)"
+  },
+  {
+   "fact": "Which of these may a supplier provide under MCL 436.1609? Removable tap markers.",
+   "source": "Michigan Liquor Control Code, MCL 436.1609 (legislature.mi.gov/documents/mcl/pdf/mcl-436-1609.pdf)"
+  },
+  {
+   "fact": "In Michigan, beer-branded glassware we use must be… Bought from a barware retailer, with receipts kept.",
+   "source": "Michigan Liquor Control Code, MCL 436.1609 (legislature.mi.gov/documents/mcl/pdf/mcl-436-1609.pdf)"
+  },
+  {
+   "fact": "To sit the Master Cicerone exam you must first pass… The Advanced Cicerone.",
+   "source": "Cicerone Support, “About the Master Cicerone Exam” (support.cicerone.org)"
+  },
+  {
+   "fact": "The Master Cicerone exam lasts… Two days.",
+   "source": "Cicerone Support, “About the Master Cicerone Exam” (support.cicerone.org)"
+  },
+  {
+   "fact": "What score passes the Master Cicerone exam? 85%.",
+   "source": "Cicerone Support, “About the Master Cicerone Exam” (support.cicerone.org)"
+  }
+ ],
+ "unverified": [
+  "How our four levels line up with Cicerone’s is our own comparison; our certificates are the restaurant’s, not Cicerone’s.",
+  "The Master Cicerone count is left out: Cicerone listed 16 at the end of 2017 and the number has grown since; no current official figure was found.",
+  "Supplier rules beyond MCL 436.1609 (federal tied-house rules in 27 CFR Part 6, Commission rules and orders) weren’t worked through: GM to check with the Liquor Control Commission before accepting anything from a supplier. Not legal advice.",
+  "The beer standard’s exact contents and who signs it are house practice."
+ ]
+}

@@ -24,7 +24,7 @@ export function certificatesFor(db, user, store, storeRow) {
       key: L.file, isA: L.isA !== false, program: L.program, programName: P.name, programSlug: L.slug, level: L.level, levelWord: countWord(L.level), title: L.title, seal: P.seal,
       name: user.name, final: { pct: Math.round((best.score / best.total) * 100), at: best.at, firstAt: passes[0].at },
       practical, number: `${L.prefix}-${String(user.id).padStart(4, '0')}`, earnedAt: earned,
-      store: storeRow?.name || null, logo: storeRow?.book_ready ? '/img/logo-white.png' : null, fine: P.fine, practicalLabel: L.practicalLabel || null,
+      store: storeRow?.name || null, logo: storeRow?.book_ready ? '/img/logo-white.png' : null, fine: L.fine || P.fine, practicalLabel: L.practicalLabel || null,
     });
   }
   return out.sort((a, b) => String(b.earnedAt).localeCompare(String(a.earnedAt)));

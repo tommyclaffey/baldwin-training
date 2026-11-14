@@ -71,7 +71,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
   // + the Cocktail Program (Nov 8): a course page per level (2) and one entry per lesson section (no whole-chapter pages)
   const bar = [...readDir('content/bar'), ...readDir('content/beer'), ...readDir('content/hospitality')]; // + the Beer Program (Nov 8), the Hospitality Program (Nov 11)
-  assert.equal(index.length, 656 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 9 + 3 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 39 house drinks (Nov 9: four off the list), the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  assert.equal(index.length, 656 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 10 + 3 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 39 house drinks (Nov 9: four off the list), the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -1218,6 +1218,89 @@ test('Cocktail Program Level 4: six lessons, a 60-question final, a practical an
   await call('/api/path/signoff', { method: 'POST', body: { userId: tid, key: 'program:bar-4:practical' } });
   const cert = (await tam('/api/certificates')).data.certificates.find((c) => c.key === 'bar-4');
   assert.ok(cert && cert.title === 'Master of the Bar' && cert.number.startsWith('BAR4-') && cert.practical, 'Master of the Bar, earned');
+});
+
+// Nov 14: Beer Program Level 4, Master of Beer, by invitation, built like Master of the Bar
+test('Beer Program Level 4: six lessons, a 60-question final, a practical and a certificate, by invitation', async () => {
+  const slugs = ['beer-l4-taps', 'beer-l4-draft', 'beer-l4-faults', 'beer-l4-styles', 'beer-l4-numbers', 'beer-l4-leading'];
+  const lessons = slugs.map((s) => JSON.parse(fs.readFileSync(path.join(root, 'content/beer', s + '.json'), 'utf8')));
+  assert.deepEqual(lessons.map((c) => [c.number, c.programLevel, c.program]), slugs.map((_, i) => [i + 1, 4, 'beer']), 'six lessons, in order, all Level 4');
+  const photos = JSON.parse(fs.readFileSync(path.join(root, 'content/research/study-photos.json'), 'utf8')).photos;
+  // every video in the app, so a Level 4 video is used nowhere else
+  const uses = new Map();
+  for (const d of ['content/bar', 'content/beer', 'content/manual', 'content/manual-l2', 'content/hospitality', 'content/hospitality-generic']) {
+    if (!fs.existsSync(path.join(root, d))) continue;
+    for (const f of fs.readdirSync(path.join(root, d)).filter((x) => x.endsWith('.json') && !x.startsWith('_')))
+      for (const s of JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8')).v3?.sections || []) if (s.video?.youtubeId) uses.set(s.video.youtubeId, [...(uses.get(s.video.youtubeId) || []), f]);
+  }
+  const other = ['content/cms/classic.json', 'content/wine-videos.json'].map((f) => fs.readFileSync(path.join(root, f), 'utf8')).join('\n');
+  let vids = 0;
+  for (const c of lessons) {
+    assert.ok(c.unverified.length && c.sources, c.slug + ': sources and what still needs checking');
+    assert.equal(c.cards.length, c.sections.length * 3, c.slug + ': three cards a section');
+    for (const s of c.sections) {
+      assert.ok(s.source && s.source.length > 10, `${c.slug} · ${s.name}: names its source`);
+      const v = c.v3.sections.find((x) => x.name === s.name);
+      assert.ok(photos.some((p) => p.chapter === c.slug && p.section === s.name), `${c.slug} · ${s.name}: a photo`);
+      assert.equal(v.check.length, 3); assert.ok(v.check.every((i) => c.cards[i]), `${c.slug} · ${s.name}: three check cards`);
+      assert.ok(v.keyPoints.length >= 3 && v.read.bigIdea && v.read.where && v.read.stops.length >= 2 && v.read.mixup, `${c.slug} · ${s.name}: the full reading flow`);
+      if (v.video) {
+        vids++;
+        assert.ok(v.video.youtubeId && v.video.title && v.video.by && v.video.length, `${c.slug} · ${s.name}: title, channel and length`);
+        assert.deepEqual(uses.get(v.video.youtubeId), [c.slug + '.json'], `${c.slug} · ${s.name}: its video is in no other lesson`);
+        assert.ok(!other.includes(v.video.youtubeId), `${c.slug} · ${s.name}: not on a classic or wine page`);
+      }
+    }
+    for (const k of c.cards) assert.ok(k.q && k.answer && k.wrong.length === 3 && !k.wrong.includes(k.answer) && k.source, `${c.slug}: a full card (${k.q})`);
+  }
+  assert.ok(vids >= 18, 'most Level 4 sections have a video');
+  assert.ok(lessons.reduce((k, c) => k + c.cards.length, 0) >= 60, 'enough cards for a 60-question final');
+  const index = (await call('/api/index')).data;
+  const l4 = index.find((e) => e.slug === 'beer-program/level-4');
+  assert.ok(l4, 'Level 4 is in the book');
+  for (const c of lessons) for (const [i] of c.sections.entries()) assert.ok(index.some((e) => e.file === `l-${c.slug}~${i}`), `${c.slug} lesson ${i} is in the book`);
+  // the owner can open it, and is told how invitations work
+  const op = JSON.stringify((await call('/api/page/' + l4.file)).data);
+  assert.ok(op.includes('MASTER OF BEER') && op.includes('t%3Afinal%3Abeer-4') && op.includes('practical') && op.includes('INVITE YOUR TEAM ON PEOPLE'));
+  assert.ok(!op.includes('· Coming'), 'nothing in the Beer Program says coming');
+  const hub = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'beer-program').file)).data);
+  assert.ok(hub.includes('/beer-program/level-4') && hub.includes('By invitation · 6 lessons') && hub.includes('t%3Afinal%3Abeer-4') && !/"Coming"/.test(hub), 'the hub: Level 4 card and its final');
+  assert.ok(hub.includes('LEADING THE PROGRAM') && hub.includes('mcl-436-1609'), 'the hub: Level 4 sources');
+  const cat = (await call('/api/quiz/catalog')).data;
+  assert.equal(cat.quizzes.find((q) => q.id === 't:final:beer-4').count, 60);
+  assert.equal(cat.quizzes.filter((q) => q.group === 'Beer Program · Level 4').length, 7, 'six lesson quizzes and the final');
+  // a member of staff sees the level but can't open it
+  const code = (await call('/api/team')).data.company.joinCode;
+  const ivo = person();
+  assert.equal((await ivo('/api/join', { method: 'POST', body: { code, name: 'Ivo Marchetti', pin: '7531', storeId: 1 } })).status, 200);
+  const sp = JSON.stringify((await ivo('/api/page/' + l4.file)).data);
+  assert.ok(sp.includes('BY INVITATION · ASK YOUR MANAGER') && !sp.includes('t%3Afinal%3Abeer-4') && !sp.includes('"/beer-program/level-4/beer-l4-'), 'locked: no final, lessons don’t open');
+  const lockedLesson = JSON.stringify((await ivo('/api/page/l-beer-l4-leading~2')).data);
+  assert.ok(lockedLesson.includes('ASK YOUR MANAGER') && !lockedLesson.includes('436.1609'), 'a lesson address shows the level page instead');
+  assert.equal((await ivo('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:beer-4' } })).status, 403);
+  assert.equal((await ivo('/api/quiz/start', { method: 'POST', body: { quiz: 't:study:beer-l4-draft' } })).status, 403);
+  assert.ok(!(await ivo('/api/quiz/catalog')).data.quizzes.some((q) => q.id === 't:final:beer-4'), 'not in the staff quiz list');
+  assert.ok(!(await ivo('/api/quiz/catalog')).data.topics.some((t) => t.key === 'study:beer-l4-draft'), 'not in Build a Quiz either');
+  // the owner invites him on People; Remove takes it back; invite again
+  const team = (await call('/api/path/team')).data;
+  const id = team.people.find((x) => x.name === 'Ivo Marchetti').id;
+  const inv = (await call('/api/path/signoff', { method: 'POST', body: { userId: id, key: 'program:beer-4:invite' } })).data;
+  assert.ok(inv.programs.find((g) => g.cert === 'Master of Beer').invite.at, 'invited');
+  await call('/api/path/signoff', { method: 'DELETE', body: { userId: id, key: 'program:beer-4:invite' } });
+  assert.equal((await ivo('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:beer-4' } })).status, 403, 'removed');
+  await call('/api/path/signoff', { method: 'POST', body: { userId: id, key: 'program:beer-4:invite' } });
+  assert.ok(JSON.stringify((await ivo('/api/page/' + l4.file)).data).includes('✓ INVITED'));
+  assert.ok(JSON.stringify((await ivo('/api/page/l-beer-l4-leading~2')).data).includes('436.1609'), 'the lessons open');
+  // the final (60 questions), then the practical a manager signs off = the certificate
+  const q = (await ivo('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:beer-4' } })).data;
+  assert.equal(q.items.length, 60);
+  const r = (await ivo('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: q.items.map((ref) => q.questions[ref].answer) } })).data;
+  assert.equal(r.score, 60);
+  assert.ok(!(await ivo('/api/certificates')).data.certificates.some((c) => c.key === 'beer-4'), 'no certificate before the practical');
+  await call('/api/path/signoff', { method: 'POST', body: { userId: id, key: 'program:beer-4:practical' } });
+  const cert = (await ivo('/api/certificates')).data.certificates.find((c) => c.key === 'beer-4');
+  assert.ok(cert && cert.title === 'Master of Beer' && cert.number.startsWith('BEER4-') && cert.practical, 'Master of Beer, earned');
+  assert.ok(/Master Cicerone/.test(cert.fine) && !/Beer Server exam/.test(cert.fine), 'its own fine print');
 });
 
 test('every Cocktail Program video is used once in the whole app, and every section names its source (Nov 12)', () => {
