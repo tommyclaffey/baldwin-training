@@ -5,6 +5,7 @@ import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { turnOnTwoStep } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-test-'));
@@ -47,6 +48,7 @@ test('setup only works for the owner email, once', async () => {
   assert.equal((await call('/api/setup', { method: 'POST', body: { name: 'A', email: 'someone@example.test', password: 'long-enough-1' }, auth: false })).status, 403);
   const ok = await call('/api/setup', { method: 'POST', body: { name: 'Owner', email: 'owner@example.test', password: 'long-enough-1' } });
   assert.equal(ok.status, 200);
+  await turnOnTwoStep(call); // the owner email is the super admin here
   assert.equal((await call('/api/setup', { method: 'POST', body: { name: 'B', email: 'owner@example.test', password: 'long-enough-1' }, auth: false })).status, 409);
 });
 
@@ -94,7 +96,7 @@ test('uploads take photos and videos only', async () => {
   assert.equal(bad.status, 415);
   const ok = await call('/api/media/upload', { method: 'POST', body: new Uint8Array([0, 0, 0, 24, 102, 116, 121, 112]), headers: { 'Content-Type': 'video/mp4', 'X-Filename': 'clip.mp4' } });
   assert.equal(ok.status, 200);
-  const file = await fetch(BASE + ok.data.url, { headers: { Range: 'bytes=0-3' } });
+  const file = await fetch(BASE + ok.data.url, { headers: { Range: 'bytes=0-3', Cookie: cookie } });
   assert.equal(file.status, 206);
 });
 

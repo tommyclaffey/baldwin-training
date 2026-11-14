@@ -5,6 +5,7 @@ import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { api, ROLE_LABEL, type Role } from '../lib/api';
 import { useSession } from '../lib/session';
 import { ErrorNote, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
+import { Deletions } from './companydata';
 
 type Company = { id: number; name: string; slug: string; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number }[] };
 type Person = { id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null; createdAt: string; lastSeenAt: string | null; deletedAt: string | null; hasPin: boolean; totpOn: boolean; superPrimary: boolean };
@@ -36,12 +37,14 @@ export function SuperAdmin() {
         <NavLink end to="/admin/super">Companies</NavLink>
         <NavLink to="/admin/super/people">People</NavLink>
         <NavLink to="/admin/super/admins">Super Admins</NavLink>
+        <NavLink to="/admin/super/deletions">Deletions</NavLink>
         <NavLink to="/admin/super/log">Log</NavLink>
       </nav>
       <Routes>
         <Route index element={<Companies />} />
         <Route path="people" element={<People />} />
         <Route path="admins" element={<Admins />} />
+        <Route path="deletions" element={<Deletions />} />
         <Route path="log" element={<Log />} />
       </Routes>
     </div>

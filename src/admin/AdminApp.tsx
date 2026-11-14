@@ -9,6 +9,7 @@ import { Loading } from './ui';
 import { WineVideos } from './wine';
 import { BottleScannerPage } from './scanner';
 import { SuperAdmin } from './super';
+import { CompanyData } from './companydata';
 import { ManagerHome, PeoplePage, SignoffsPage, useSignoffCount } from './manager';
 import { api } from '../lib/api';
 import { DemoBar, DemoTour, openWelcome } from '../components/DemoTour';
@@ -29,6 +30,8 @@ export default function AdminApp() {
 function Shell() {
   const { user, refresh } = useSession();
   if (user?.role === 'staff') return <StaffOnly />;
+  // Nov 14 (security review): a super admin works in companies only once two-step sign-in is on; until then, Your Account.
+  if (user?.role === 'superadmin' && !user.totpOn && !user.impersonatedBy) return <div className="admin"><main className="admin-main" id="content"><Account /></main></div>;
   return <ManagerShell user={user!} refresh={refresh} />;
 }
 
@@ -92,6 +95,8 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <NavLink to="/admin/archived">Archived</NavLink>
           <p className="admin-group">You</p>
           {owner && <NavLink to="/admin/activity">Activity</NavLink>}
+          {/* Nov 14: download or delete the company's data. Owners; in a demo, its manager (the demo has no owner). */}
+          {(user.role === 'owner' || (user.demo && user.role === 'manager')) && <NavLink to="/admin/company-data">Company Data</NavLink>}
           <NavLink to="/admin/account">Your Account</NavLink>
           {isSuper && <NavLink to="/admin/super" className="nav-super">Super Admin</NavLink>}
         </nav>
@@ -119,6 +124,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <Route path="team" element={<ToPeople />} />
           <Route path="super/*" element={<SuperAdmin />} />
           <Route path="activity" element={<Activity />} />
+          <Route path="company-data" element={<CompanyData />} />
           <Route path="account" element={<Account />} />
           <Route path="*" element={<div className="admin-page"><h1>Nothing here</h1><Link to="/admin">Go to the overview</Link></div>} />
         </Routes>

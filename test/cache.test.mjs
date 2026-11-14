@@ -11,6 +11,7 @@ import zlib from 'node:zlib';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { turnOnTwoStep } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-cache-'));
@@ -56,6 +57,7 @@ const questions = async (who, topic) => Object.values((await who('/api/quiz/star
 
 test('setup: owner, a manager and staff at The Baldwin, a manager at Testa Barra', async () => {
   assert.equal((await owner('/api/setup', { method: 'POST', body: { name: 'Olive Owner', email: 'owner@cache.test', password: 'long-enough-1' } })).status, 200);
+  await turnOnTwoStep(owner); // the owner email is the super admin here
   const code = (await owner('/api/team')).data.company.joinCode;
   stores = (await person()(`/api/join/${code}`)).data.stores;
   const inv = await owner('/api/team/invite', { method: 'POST', body: { email: 'mara@cache.test', role: 'manager', storeId: stores[0].id } });

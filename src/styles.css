@@ -3363,3 +3363,43 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .tc-sheet.tc-sheet.tc-sheet:focus-visible { box-shadow: 0 -10px 30px rgba(0,0,0,.18) !important; }
 .tc-picker.tc-picker .tc-picker-search input:focus-visible { outline: none !important; box-shadow: none !important; }
 .tc-picker .tc-picker-search:focus-within { outline: 2px solid var(--c-focus, var(--copper)); outline-offset: 0; box-shadow: 0 0 0 4px var(--c-focus-band, var(--ink)); }
+
+/* ---- Company Data (Nov 14): an owner downloads the company's data or asks for it to be deleted; the super admin's
+   Deletions tab confirms. Both looks: colours come from the theme's variables, the reds are checked on white (8.9:1). ---- */
+.admin-page.cd-page { max-width: 760px; }
+.cd-lead { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink); }
+.cd-counts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.cd-counts li { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.35; color: var(--ink); }
+.cd-counts strong { display: block; font-size: 20px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.cd-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.cd-steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 1.45; color: var(--ink); }
+.cd-delete { border-color: #F1C4BF; }
+.cd-delete h2 { color: #8C1D18; }
+.cd-note { margin: 0; padding: 10px 12px; border-radius: 10px; background: #F3F1EE; color: #2B2724; font-size: 14px; }
+.cd-pending { background: #FFF6E5; border: 1px solid #F0D9A8; border-radius: 12px; padding: 14px; }
+.cd-pending p { margin: 0; color: #3D2A00; font-size: 14px; line-height: 1.5; }
+.cd-check { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink); }
+.cd-check input { width: 18px; height: 18px; accent-color: #8C1D18; }
+.btn.danger { background: #8C1D18; color: #fff; }
+.btn.danger:hover:not(:disabled) { background: #6F1612; }
+.brand-mise .btn.danger { background: #8E2A26; }
+.cd-status { display: inline-flex; align-items: center; justify-content: center; padding: 3px 10px; border-radius: 999px; font-size: 12.5px; font-weight: 700; white-space: nowrap; }
+.cd-status.waiting { background: #FFF1D6; color: #6B4500; }
+.cd-status.ready { background: #FCECEA; color: #8C1D18; }
+.cd-status.done, .cd-status.cancelled { background: #EFEDEA; color: #4A4642; }
+.cd-row-actions { white-space: nowrap; }
+.cd-row-actions .link-btn { align-self: auto; margin-left: 8px; }
+@media (max-width: 700px) {
+  .cd-counts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cd-counts .cd-wide { grid-column: span 2; } /* nine tiles: the last one spans the row, so no lone tile */
+  /* the requests table becomes one card per request, so the buttons never sit off screen */
+  .cd-table, .cd-table tbody, .cd-table tr, .cd-table td { display: block; width: 100%; }
+  .cd-table thead { display: none; }
+  .cd-table tr { padding: 12px 14px; border-top: 1px solid var(--tint-2); }
+  .cd-table tr:first-child { border-top: 0; }
+  .cd-table td { border: 0; padding: 3px 0; }
+  .cd-table td.cd-co { font-weight: 700; font-size: 15px; }
+  .cd-table td[data-label]::before { content: attr(data-label) ': '; color: var(--muted); }
+  .cd-table td.cd-row-actions { white-space: normal; padding-top: 10px; }
+  .cd-table td.cd-row-actions:empty { display: none; }
+}

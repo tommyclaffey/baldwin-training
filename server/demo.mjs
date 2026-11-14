@@ -248,7 +248,7 @@ export function dropDemo(db, id) {
     db.prepare('DELETE FROM manual_reads WHERE user_id = ?').run(u);
     db.prepare('DELETE FROM quiz_marks WHERE user_id = ?').run(u);
   }
-  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'chat_mutes', 'program_acks', 'prep_items', 'prep_batches', 'prep_events', 'prep_counts']) {
+  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'chat_mutes', 'program_acks', 'prep_items', 'prep_batches', 'prep_events', 'prep_counts', 'menu_imports', 'menu_import_items']) {
     const exists = db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(t);
     if (!exists) continue;
     const cols = db.prepare(`PRAGMA table_info(${t})`).all().map((c) => c.name);
@@ -272,9 +272,12 @@ export function purgeDemos(db) {
   return old.length;
 }
 
-/** What a demo visitor can't do: anything that leaves the sandbox or changes accounts. The bottle scanner is on (Nov 12),
+/** What a demo visitor can't do: anything that leaves the sandbox, changes accounts or changes something shared. The bottle scanner is on (Nov 12),
  *  with demo limits in server/index.mjs; other uploads stay off. */
-const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/password\//, /^\/api\/reset\//, /^\/api\/pin$/, /^\/api\/team/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/];
+const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/password\//, /^\/api\/reset\//, /^\/api\/pin$/, /^\/api\/team/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/,
+  // Nov 14 (security review): wine videos are one list for the whole app (wine_videos has no store), and the Baldwin demo
+  // reads The Baldwin's wine list, so a demo could change the real Baldwin's wine pages.
+  /^\/api\/wine-videos$/];
 export const demoBlocks = (p, m) => m !== 'GET' && BLOCKED.some((r) => r.test(p));
 
 export { sessionCookie };

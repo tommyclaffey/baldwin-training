@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
-import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie, endSession } from './auth.mjs';
+import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie, endSession, clientIp } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
 import { assemble, fullIndex, isCachedIndex, warmContent, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore, canOpen } from './content.mjs';
 import { archivedList, ARCHIVE_GROUPS } from './archive.mjs';
@@ -27,7 +27,9 @@ import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErr
 import { enterStore } from './variant.mjs';
 import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
 import * as prep from './prep.mjs';
+import { initCompanyData, companyDataRoutes } from './companydata.mjs';
 import * as captions from './captions.mjs';
+import { migrateImports, importRoutes } from './menuimport.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -35,12 +37,13 @@ const PORT = Number(process.env.PORT) || 8080;
 const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
 initOps(db);
+initCompanyData(db); // Nov 14: data export and delete (company_deletions)
 LoginLimiter.useDb(db); // Nov 10: lockouts survive a redeploy
 captions.migrateCaptions(db); // Nov 14: media.captions (server/captions.mjs)
 seed(db);
 seedWineVideos(db);
 bootAccounts(db);
-migrateAcks(db); migrateDemo(db); purgeDemos(db); // acks first: demo copies seed and drop them
+migrateAcks(db); migrateImports(db); migrateDemo(db); purgeDemos(db); // acks and imports first: demo copies seed and drop them
 // Nov 14: last week's prep summary posts to each store's #Bar on Monday mornings (server/prep.mjs, postWeekly)
 prep.startWeekly(db, (e) => logError(db, 'server', 'weekly prep post', e));
 setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
@@ -188,7 +191,6 @@ function saveScan(demoDir, name, jpg) {
   fs.writeFileSync(path.join(MEDIA_DIR, rel), jpg);
   return rel;
 }
-const clientIp = (req) => String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
 const mediaOut = (m) => ({ id: m.id, kind: m.kind, title: m.title, url: m.file ? '/media/' + m.file : null, mime: m.mime, size: m.size, youtubeId: m.youtube_id, createdAt: m.created_at,
   captions: m.captions ? '/media/' + m.captions : null });
 
@@ -204,8 +206,17 @@ const media = (v) => {
 };
 const imageUrl = (v) => { const s = str(v, 300); return s.startsWith('/media/') || s.startsWith('/img/') ? s : ''; };
 
+/** What a super admin without two-step sign-in can still reach: their account, to turn it on. */
+const SUPER_BEFORE_TWO_STEP = new Set(['/api/me', '/api/2fa/start', '/api/2fa/enable', '/api/password', '/api/logout', '/api/chat/unread', '/api/super/overview']);
+
 /* ------------------------------ routes ------------------------------ */
 const accounts = accountRoutes({ db, fail, sendJson, readJson, str, isSecure });
+// AI menu import (Nov 14, server/menuimport.mjs): owners and managers. Reads per store a day (each read is one Claude API call);
+// a demo copy reads its sample menu (no API call) up to 20 times.
+const imports = importRoutes({ db, fail, sendJson, readJson, needEditor: (c, req) => needEditor(c, req),
+  isDemo: (co) => isDemoCompany(db, co), brandOf: (co) => db.prepare('SELECT brand FROM companies WHERE id = ?').get(co)?.brand || 'baldwin',
+  limiter: new LoginLimiter(12, 24 * 3600e3, 'menu-read'), demoLimiter: new LoginLimiter(20, 24 * 3600e3, 'menu-read-demo') });
+const companyData = companyDataRoutes({ db, fail, sendJson, readJson, isDemoCompany });
 async function api(req, res, url) {
   const c = ctx(req);
   enterStore(db, c.storeRow); // Nov 11: BRG's companies read BRG's Hospitality Program, everyone else the generic one
@@ -223,17 +234,27 @@ async function api(req, res, url) {
     res.writeHead(200, { 'Content-Type': 'application/octet-stream', 'Content-Length': buf.length, 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="mise-${new Date().toISOString().slice(0, 10)}.bk"` });
     return res.end(buf);
   }
+  // Nov 14 (security review): which address the rate limits see, to check the proxy's headers after a deploy
+  // (curl -H "Authorization: Bearer $OPS_TOKEN" -H "X-Forwarded-For: 192.0.2.1" …/api/ops/ip: "used" should be your own address).
+  if (p === '/api/ops/ip' && m === 'GET') {
+    if (!opsAllowed(req)) fail(404, 'Not found.');
+    return sendJson(res, 200, { used: clientIp(req), xRealIp: req.headers['x-real-ip'] || null, xForwardedFor: req.headers['x-forwarded-for'] || null });
+  }
   if (p === '/api/ops/errors' && m === 'GET') {
     if (!opsAllowed(req)) fail(404, 'Not found.');
     return sendJson(res, 200, { errors: recentErrors(db, Math.min(168, Number(url.searchParams.get('hours')) || 24)) });
   }
   if (p === '/api/client-error' && m === 'POST') {
-    const ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
+    const ip = clientIp(req);
     if (req.headers['x-bt'] !== '1' || !clientErrorAllowed(ip)) { res.writeHead(204); return res.end(); }
     const b = await readJson(req, 20_000).catch(() => ({}));
     logError(db, 'client', String(b.path || '').slice(0, 200), { message: String(b.message || 'Browser error'), stack: String(b.stack || '') }, c.user?.id ?? null);
     res.writeHead(204); return res.end();
   }
+
+  // Nov 14 (security review): every write carries X-BT, sign-in and sign-out included. A plain form on another site can't
+  // set the header, so it can't sign someone in to an account it chose, or out of theirs. (The app's own calls all send it.)
+  if (m !== 'GET' && m !== 'HEAD' && req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
 
   // The public demo (Nov 2): /demo starts a private copy; a demo visitor can't change accounts or upload.
   // Nov 4, Tommy: "I need the demo account to be a completely separate account, not changing the Baldwin account."
@@ -241,7 +262,7 @@ async function api(req, res, url) {
   // "Exit Demo" puts it back.
   if (p === '/api/demo/start' && m === 'POST') {
     if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
-    const ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
+    const ip = clientIp(req);
     if (!demoLimiter.check(ip)) fail(429, 'Too many demos from here. Try again in an hour.');
     const b = await readJson(req, 2000);
     // Nov 11: two demos. `demo: 'mise'` is Wrenfield in the Mise look (/demo/mise); anything else is The Baldwin's (/demo).
@@ -281,7 +302,16 @@ async function api(req, res, url) {
       ...(secure ? [sessionCookie('', { clear: true, secure, embeddable: true })] : [])] });
   }
   if (c.user && isDemoCompany(db, c.user.company_id) && demoBlocks(p, m)) fail(403, 'That’s switched off in the demo.');
+  // Nov 14 (security review): super admins need two-step sign-in before the super admin area opens, but without it they
+  // could still work in The Baldwin (every super admin's default company) and switch to any store. Until it's on, only
+  // their own account answers.
+  if (c.user?.role === 'superadmin' && !c.user.totp_on && !c.user.impersonator_id && !SUPER_BEFORE_TWO_STEP.has(p)) {
+    fail(403, 'Turn on two-step sign-in on Your Account first. Super admins need it before they can open any company.');
+  }
+  // Company data (Nov 14, server/companydata.mjs): an owner's export and deletion request; the super admin's confirm.
+  if ((p.startsWith('/api/company/') || p.startsWith('/api/super/deletions')) && (await companyData(req, res, url, c)) !== false) return;
   if ((await accounts(req, res, url, c)) !== false) return;
+  if ((await imports(req, res, url, c)) !== false) return;
 
   /* quizzes: everyone signed in. A person's records are keyed 'u<id>' (older phone-only records keep their device id). */
   if (p === '/api/quiz/attempt' && m === 'POST') {
@@ -816,7 +846,7 @@ async function api(req, res, url) {
       const b = await readJson(req);
       if (!str(b.data?.name, 120)) fail(400, 'Give it a name.');
       const out = updateEntry(db, e.id, b.data, u.id, b.scope === 'store' ? 'store' : 'group');
-      audit(db, u.id, 'edit ' + e.collection, out.data.name);
+      audit(db, u.id, 'edit ' + e.collection, out.data.name, c.company);
       return sendJson(res, 200, out);
     }
     // "Delete" archives: the page leaves the book and every list, and can be restored (Tommy, Oct 28).
@@ -874,7 +904,7 @@ async function api(req, res, url) {
     const video = b.video ? media(b.video) : null;
     if (b.video && !video) fail(400, 'That video can’t be used. Pick it again from the library.');
     setWineVideo(db, target.key, video, str(b.note, 400), u.id);
-    audit(db, u.id, video ? 'set wine video' : 'remove wine video', target.name);
+    audit(db, u.id, video ? 'set wine video' : 'remove wine video', target.name, c.company);
     return sendJson(res, 200, { ok: true, video, note: video ? str(b.note, 400) : '' });
   }
 
@@ -944,7 +974,7 @@ async function api(req, res, url) {
     const urls = frames.map((jpg, i) => '/media/' + saveScan(dm, `${stem}-${String(i).padStart(2, '0')}.jpg`, jpg));
     db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)')
       .run('file', `Bottle spin · ${name}`, urls[0].slice(7), 'image/jpeg', frames[0].length, u.id, now(), c.company, c.store);
-    audit(db, u.id, 'spin scan bottle', name);
+    audit(db, u.id, 'spin scan bottle', name, c.company);
     return sendJson(res, 200, { frames: urls });
   }
   if (p === '/api/scan/keep' && m === 'POST') {
@@ -957,7 +987,7 @@ async function api(req, res, url) {
     const name = str(b.name, 80) || 'Bottle';
     const file = saveScan(dm, `${Date.now().toString(36)}-bottle-${slugify(name).slice(0, 40) || 'scan'}.jpg`, jpg);
     const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)').run('file', `Bottle · ${name}`, file, 'image/jpeg', jpg.length, u.id, now(), c.company, c.store);
-    audit(db, u.id, 'scan bottle', name);
+    audit(db, u.id, 'scan bottle', name, c.company);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
   }
 
@@ -973,7 +1003,7 @@ async function api(req, res, url) {
     const id = youtubeId(b.url);
     if (!id) fail(400, 'That doesn’t look like a YouTube link. Copy the link from the Share button.');
     const r = db.prepare('INSERT INTO media(kind,title,youtube_id,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?)').run('youtube', str(b.title, 200) || 'YouTube video', id, u.id, now(), c.company, c.store);
-    audit(db, u.id, 'add youtube', id);
+    audit(db, u.id, 'add youtube', id, c.company);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
   }
   if (p === '/api/media/upload' && m === 'POST') {
@@ -997,7 +1027,7 @@ async function api(req, res, url) {
     });
     const size = fs.statSync(dest).size;
     const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)').run('file', original, file, mime, size, u.id, now(), c.company, c.store);
-    audit(db, u.id, 'upload', file);
+    audit(db, u.id, 'upload', file, c.company);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));
   }
   // Captions on an uploaded video (Nov 14, server/captions.mjs): the player looks them up by the video's address;
@@ -1040,9 +1070,12 @@ async function api(req, res, url) {
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(row.id)));
   }
 
+  // Nov 14 (security review): rows saved without a company used to count as The Baldwin's (IFNULL(company_id, 1)), so
+  // another company's or a demo's uploads, scans and edits showed in The Baldwin's Activity. Every row now carries its
+  // company; older rows without one count for the company of the person who did it.
   if (p === '/api/audit' && m === 'GET') {
     needOwner(c, req);
-    return sendJson(res, 200, { audit: db.prepare("SELECT a.*, u.name FROM audit a LEFT JOIN users u ON u.id = a.user_id WHERE IFNULL(a.company_id, 1) = ? AND a.action NOT LIKE 'super:%' ORDER BY a.id DESC LIMIT 200").all(c.company) });
+    return sendJson(res, 200, { audit: db.prepare("SELECT a.*, u.name FROM audit a LEFT JOIN users u ON u.id = a.user_id WHERE IFNULL(a.company_id, u.company_id) = ? AND a.action NOT LIKE 'super:%' ORDER BY a.id DESC LIMIT 200").all(c.company) });
   }
 
   fail(404, 'Not found.');
@@ -1076,10 +1109,12 @@ function staticFile(req, res, url) {
     if (!demoMediaAllowed(db, user, dm[1]) || !fs.existsSync(f)) { res.writeHead(404); return res.end('Not found'); }
     return sendFile(req, res, f, 'private, max-age=86400');
   }
+  // Nov 14 (security review): uploads and chat photos were public to anyone with the link (upload names are a time and
+  // the file's name). Now only signed-in people get them, and browsers keep them private (no shared caches).
   if (p.startsWith('/media/')) {
     const f = path.join(MEDIA_DIR, path.basename(p));
-    if (!fs.existsSync(f)) { res.writeHead(404); return res.end('Not found'); }
-    return sendFile(req, res, f, 'public, max-age=31536000, immutable');
+    if (!sessionUser(db, cookies(req)[SESSION_COOKIE]) || !fs.existsSync(f)) { res.writeHead(404); return res.end('Not found'); }
+    return sendFile(req, res, f, 'private, max-age=31536000, immutable');
   }
   // The book's page files are served through the API, to signed-in people only.
   if (p.startsWith('/content/')) { res.writeHead(404); return res.end('Not found'); }

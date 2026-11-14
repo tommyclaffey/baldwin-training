@@ -6,6 +6,7 @@ import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { turnOnTwoStep } from './helpers.mjs';
 import sharp from 'sharp';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -34,6 +35,8 @@ before(async () => {
   const r = await fetch(BASE + '/api/setup', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ name: 'Owner', email: 'owner@example.test', password: 'long-enough-1' }) });
   assert.equal(r.status, 200);
   owner = r.headers.get('set-cookie').split(';')[0];
+  // the owner email is the super admin here: two-step sign-in on before it works in a company (Nov 14)
+  await turnOnTwoStep(async (p, { method, body }) => { const x = await fetch(BASE + p, { method, headers: { cookie: owner, 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify(body || {}) }); return { status: x.status, data: await x.json() }; });
 });
 after(() => { server?.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 
@@ -159,7 +162,7 @@ test('demo: a refresh (restart) deletes the demo’s saved photos from disk, row
   assert.ok(!media.some((x) => /^\/media\/demo\//.test(x.url || '')), 'the new copy starts with none');
 });
 
-test('real companies: unchanged (no caps, files in media/, public by link)', async () => {
+test('real companies: unchanged (no caps, files in media/); files for signed-in people only', async () => {
   const ready = await (await json(owner, '/api/scan/ready', {})).json();
   assert.equal(ready.demo, undefined);
   for (let i = 0; i < 12; i++) assert.equal((await scan(owner, '10.7.0.1')).status, 200, 'photo ' + (i + 1));
@@ -168,7 +171,8 @@ test('real companies: unchanged (no caps, files in media/, public by link)', asy
   for (const m of saves) {
     assert.match(m.url, /^\/media\/[a-z0-9]+-bottle-house-red-\d\.jpg$/);
     assert.ok(fs.existsSync(path.join(MEDIA, m.url.slice(7))));
-    assert.equal((await get('', m.url)).status, 200);
+    assert.equal((await get(owner, m.url)).status, 200);
+    assert.equal((await get('', m.url)).status, 404, 'signed-in people only (Nov 14, security review)');
   }
   // a photo between 8 and 25 MB isn't refused for its size (it fails as a photo instead)
   assert.notEqual((await scan(owner, '10.7.0.1', Buffer.alloc(8.5e6, 1))).status, 413);
