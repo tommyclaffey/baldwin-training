@@ -608,4 +608,7 @@
   .prp-uf-name { padding-block: 13.5px; margin-block: -13.5px; }
   .prp-willcount li { padding: 0; align-items: center; }
   .prp-willcount li > a { display: inline-flex; align-items: center; min-height: 44px; padding: 0; margin: 0; }
+  /* the desktop column list for Reports' Every Item table (above, after the first phone block) won over the phone one, so
+     the table ran 281 px off a 390 screen: back to 4 columns */
+  .prp-table.items .prp-tr { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
