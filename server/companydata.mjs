@@ -261,7 +261,7 @@ export function companyDataRoutes({ db, fail, sendJson, readJson, isDemoCompany 
       const co = db.prepare('SELECT id, name FROM companies WHERE id = ?').get(company);
       const counts = countsFor(db, company);
       const last = db.prepare("SELECT * FROM company_deletions WHERE company_id = ? AND status = 'cancelled' ORDER BY id DESC LIMIT 1").get(company);
-      return sendJson(res, 200, { company: co, demo, counts, waitDays: WAIT_DAYS, request: requestOut(pendingFor(db, company)), lastCancelled: requestOut(last),
+      return sendJson(res, 200, { company: co, demo, counts, waitDays: WAIT_DAYS, byHand: PROTECTED.has(company), request: requestOut(pendingFor(db, company)), lastCancelled: requestOut(last),
         lastExport: db.prepare("SELECT a.at, u.name FROM audit a LEFT JOIN users u ON u.id = a.user_id WHERE a.company_id = ? AND a.action = 'export company data' ORDER BY a.id DESC LIMIT 1").get(company) || null });
     }
     if (p === '/api/company/export' && m === 'GET') {
