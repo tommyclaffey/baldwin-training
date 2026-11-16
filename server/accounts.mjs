@@ -13,6 +13,7 @@
 // Every query about people is scoped to the signed-in person's company, and store-level records to their store.
 import { audit, now } from './db.mjs';
 import { LOOKS, PLANS, DEFAULT_LOOK, DEFAULT_PLAN, lookOf, lookAllowed, looksFor } from './looks.mjs';
+import { hqId } from './hq.mjs';
 import {
   hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionCookies, sessionDays, LoginLimiter, publicUser,
   sha256, newToken, newTotpSecret, verifyTotp, otpauthUrl, newJoinCode, clientIp,
@@ -43,7 +44,9 @@ export const FORGOT_MESSAGE = 'If that email has an account, we’ve sent a rese
 
 /** Startup: Baldwin has a join code, the super admin email is a super admin, and 30-day-old deletions are gone for good. */
 export function bootAccounts(db) {
-  for (const c of db.prepare('SELECT id FROM companies WHERE join_code IS NULL').all()) setJoinCode(db, c.id);
+  // (not Mise Academy (HQ): nobody joins Mise's own company as staff; Nov 16)
+  for (const c of db.prepare('SELECT id FROM companies WHERE join_code IS NULL AND internal = 0').all()) setJoinCode(db, c.id);
+  db.prepare('UPDATE companies SET join_code = NULL WHERE internal = 1').run();
   // Every company has at least one store; staff and store-level records without a store go to the company's first store.
   for (const c of db.prepare('SELECT * FROM companies c WHERE NOT EXISTS (SELECT 1 FROM stores s WHERE s.company_id = c.id)').all()) addStore(db, c.id, c.name);
   for (const t of ['quiz_attempts', 'signoffs', 'media']) db.prepare(`UPDATE ${t} SET store_id = (SELECT id FROM stores s WHERE s.company_id = ${t}.company_id ORDER BY sort, id LIMIT 1) WHERE store_id IS NULL`).run();
@@ -104,8 +107,9 @@ export function purgeDeleted(db) {
   db.prepare('DELETE FROM password_resets WHERE expires_at < ?').run(new Date(Date.now() - 7 * 864e5).toISOString());
 }
 
-/** The company a request works in: the person's own, or for a super admin the one they picked (Baldwin by default). */
-export const companyOf = (u) => (u ? u.company_id ?? u.acting_company_id ?? 1 : null);
+/** The company a request works in: the person's own, or for a super admin the one they picked. Nov 16: a super admin who
+ *  hasn't picked one works in Mise Academy (HQ), never a customer's account (it used to be The Baldwin, company 1). */
+export const companyOf = (u) => (u ? u.company_id ?? u.acting_company_id ?? hqId() : null);
 export const canEdit = (u) => !!u && STAFF_ROLES.has(u.role);
 
 export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
@@ -149,7 +153,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   };
   const companyRow = (id) => db.prepare('SELECT * FROM companies WHERE id = ? AND deleted_at IS NULL').get(id);
   const staffByCode = (code) => {
-    const c = db.prepare('SELECT * FROM companies WHERE join_code = ? AND deleted_at IS NULL').get(String(code || '').trim().toUpperCase());
+    const c = db.prepare('SELECT * FROM companies WHERE join_code = ? AND deleted_at IS NULL AND internal = 0').get(String(code || '').trim().toUpperCase());
     return c || null;
   };
   const superLog = (u, action, detail, companyId = null) => audit(db, u.id, 'super: ' + action, detail, companyId);
@@ -582,11 +586,11 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
           (SELECT COUNT(*) FROM users u WHERE u.company_id = c.id AND u.deleted_at IS NULL AND u.role IN ('owner','manager')) leads,
           (SELECT COUNT(*) FROM users u WHERE u.company_id = c.id AND u.deleted_at IS NULL AND u.role = 'staff') staff,
           (SELECT MAX(last_seen_at) FROM users u WHERE u.company_id = c.id) last_seen
-        FROM companies c ORDER BY c.deleted_at IS NOT NULL, c.name`).all();
+        FROM companies c ORDER BY c.internal DESC, c.deleted_at IS NOT NULL, c.name`).all(); // HQ first (Nov 16)
       const admins = db.prepare("SELECT u.*, NULL company_name FROM users u WHERE role = 'superadmin' ORDER BY super_primary DESC, name").all();
       return sendJson(res, 200, {
         companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.leads, staff: x.staff, lastSeenAt: x.last_seen,
-          demo: !!x.demo, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x),
+          demo: !!x.demo, hq: !!x.internal, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x),
           stores: storesOf(db, x.id).map((st) => ({ ...storeOut(st), staff: db.prepare("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'staff' AND deleted_at IS NULL").get(st.id).n })) })),
         admins: admins.map(personOut), you: s.id, youPrimary: !!s.super_primary, workingIn: companyOf(s),
         plans: Object.values(PLANS).map((x) => ({ id: x.id, name: x.name, customLook: x.customLook })),
@@ -624,6 +628,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         // this company; moving back to Foundation puts the company in the Mise look.
         if (b.plan !== undefined || b.look !== undefined) {
           if (co.demo) fail(400, 'A demo copy keeps the look it was made with.');
+          if (co.internal) fail(400, 'Mise Academy (HQ) is Mise’s own company: it stays on Mise’s look.');
           const plan = b.plan === undefined ? (PLANS[co.plan] ? co.plan : DEFAULT_PLAN) : String(b.plan);
           if (!PLANS[plan]) fail(400, 'Pick a plan.');
           let look = b.look === undefined ? co.brand || DEFAULT_LOOK : String(b.look);
@@ -642,7 +647,12 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         superLog(s, 'rename company', `${co.name} → ${name}`, co.id);
         return sendJson(res, 200, { ok: true });
       }
-      if (parts[4] === 'join-code' && m === 'POST') { const code = setJoinCode(db, co.id); superLog(s, 'new join code', co.name, co.id); return sendJson(res, 200, { joinCode: code }); }
+      if (parts[4] === 'join-code' && m === 'POST') {
+        if (co.internal) fail(400, 'Nobody joins Mise Academy (HQ) as staff.');
+        const code = setJoinCode(db, co.id);
+        superLog(s, 'new join code', co.name, co.id);
+        return sendJson(res, 200, { joinCode: code });
+      }
       if (parts[4] === 'owner-invite' && m === 'POST') {
         const b = await readJson(req);
         const email = String(b.email || '').trim().toLowerCase();
@@ -662,6 +672,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       }
       if (parts[4] === 'restore' && m === 'POST') { db.prepare('UPDATE companies SET deleted_at = NULL WHERE id = ?').run(co.id); superLog(s, 'restore company', co.name, co.id); return sendJson(res, 200, { ok: true }); }
       if (m === 'DELETE') {
+        if (co.internal) fail(400, 'Mise Academy (HQ) is Mise’s own company and can’t be deleted.');
         const b = await readJson(req);
         if (str(b.confirm, 80) !== co.name) fail(400, `Type the company’s name (${co.name}) to delete it.`);
         db.prepare('UPDATE companies SET deleted_at = ? WHERE id = ?').run(now(), co.id);

@@ -10,7 +10,7 @@ import { Deletions } from './companydata';
 type Look = { id: string; name: string; custom: boolean };
 type Plan = { id: string; name: string; customLook: boolean };
 type Company = { id: number; name: string; slug: string; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number }[];
-  demo: boolean; plan: string; look: string; drawnIn: string; looks: Look[] };
+  demo: boolean; hq: boolean; plan: string; look: string; drawnIn: string; looks: Look[] };
 type Person = { id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null; createdAt: string; lastSeenAt: string | null; deletedAt: string | null; hasPin: boolean; totpOn: boolean; superPrimary: boolean };
 type Overview = { companies: Company[]; admins: Person[]; you: number; youPrimary: boolean; workingIn: number; plans: Plan[] };
 
@@ -84,7 +84,7 @@ function Companies() {
         <thead><tr><th>Company</th><th>Plan and Look</th><th>Owners and managers</th><th>Staff</th><th>Join code</th><th>Last active</th><th /></tr></thead>
         <tbody>{data.companies.map((c) => (
           <tr key={c.id} className={c.deletedAt ? 'is-deleted' : ''}>
-            <td><strong>{c.name}</strong>{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <small className="error"> · deleted, {daysLeft(c.deletedAt)} days to restore</small>}
+            <td><strong>{c.name}</strong>{c.hq && <small className="hq-tag">HQ</small>}{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <small className="error"> · deleted, {daysLeft(c.deletedAt)} days to restore</small>}
               <ul className="store-list">{c.stores.map((st) => (
                 <li key={st.id}>{st.name} <small className="muted">· {st.staff} staff · {st.bookReady ? 'designed book' : 'shared library'}</small>{' '}
                   {!c.deletedAt && <button className="link-btn" onClick={() => { const n = prompt('Store name', st.name); if (n && n !== st.name) void run(() => api(`/api/super/stores/${st.id}`, { method: 'PATCH', body: { name: n } })); }}>Rename</button>}</li>
@@ -97,10 +97,10 @@ function Companies() {
                 ? <button className="link-btn" onClick={() => void run(() => api(`/api/super/companies/${c.id}/restore`, { method: 'POST' }))}>Restore</button>
                 : <>
                   {c.id !== data.workingIn && <button className="link-btn" onClick={() => void workIn(c)}>Work Here</button>}
-                  <button className="link-btn" onClick={() => void invite(c)}>Invite Owner</button>
+                  {!c.hq && <button className="link-btn" onClick={() => void invite(c)}>Invite Owner</button>}
                   <button className="link-btn" onClick={() => { const n = prompt('New name', c.name); if (n && n !== c.name) void run(() => api(`/api/super/companies/${c.id}`, { method: 'PATCH', body: { name: n } })); }}>Rename</button>
-                  <button className="link-btn" onClick={() => { if (confirm(`New join code for ${c.name}? The old one stops working.`)) void run(() => api(`/api/super/companies/${c.id}/join-code`, { method: 'POST' })); }}>New Code</button>
-                  <button className="link-btn danger" onClick={() => { const t = prompt(`Delete ${c.name}? Everyone there is signed out. You have 30 days to restore it.\n\nType the company’s name to confirm.`); if (t) void run(() => api(`/api/super/companies/${c.id}`, { method: 'DELETE', body: { confirm: t } })); }}>Delete</button>
+                  {!c.hq && <button className="link-btn" onClick={() => { if (confirm(`New join code for ${c.name}? The old one stops working.`)) void run(() => api(`/api/super/companies/${c.id}/join-code`, { method: 'POST' })); }}>New Code</button>}
+                  {!c.hq && <button className="link-btn danger" onClick={() => { const t = prompt(`Delete ${c.name}? Everyone there is signed out. You have 30 days to restore it.\n\nType the company’s name to confirm.`); if (t) void run(() => api(`/api/super/companies/${c.id}`, { method: 'DELETE', body: { confirm: t } })); }}>Delete</button>}
                 </>}
             </td>
           </tr>
@@ -122,6 +122,7 @@ function Companies() {
 function PlanLook({ c, plans, onChange }: { c: Company; plans: Plan[]; onChange: (body: { plan?: string; look?: string }) => void }) {
   const lookName = (id: string) => c.looks.find((l) => l.id === id)?.name || 'Mise Academy';
   if (c.demo) return <small className="muted">Demo · {lookName(c.drawnIn)}</small>;
+  if (c.hq) return <small className="muted">Mise’s own · Mise Academy</small>;
   const plan = plans.find((p) => p.id === c.plan);
   const pickPlan = (id: string) => {
     const next = plans.find((p) => p.id === id);

@@ -20,6 +20,7 @@ import { zip } from './zip.mjs';
 import { titleFor } from './quiz.mjs';
 import { certificatesFor } from './certs.mjs';
 import { LoginLimiter } from './auth.mjs';
+import { isHq } from './hq.mjs';
 
 export const WAIT_DAYS = 7;
 export const PROTECTED = new Set([1]); // The Baldwin: holds the shared library
@@ -195,6 +196,7 @@ export function countsFor(db, companyId) {
 /** Remove every row and file that belongs to the company. Returns counts per table. Never The Baldwin. */
 export function wipeCompany(db, companyId) {
   if (PROTECTED.has(Number(companyId))) throw new Error('The Baldwin holds the shared library and can’t be wiped here.');
+  if (isHq(companyId)) throw new Error('Mise Academy (HQ) is Mise’s own company and can’t be wiped.');
   const users = idsOf(db, 'SELECT id FROM users WHERE company_id = ?', companyId);
   const stores = idsOf(db, 'SELECT id FROM stores WHERE company_id = ?', companyId);
   const slug = db.prepare('SELECT slug, demo FROM companies WHERE id = ?').get(companyId);
@@ -323,6 +325,7 @@ export function companyDataRoutes({ db, fail, sendJson, readJson, isDemoCompany 
       const co = db.prepare('SELECT * FROM companies WHERE id = ?').get(r.company_id);
       if (!co) fail(409, 'That company is already gone.');
       if (co.demo) fail(400, 'Demos remove themselves after a day.');
+      if (co.internal) fail(400, 'Mise Academy (HQ) is Mise’s own company and can’t be deleted.');
       if (!same(b.confirm, co.name)) fail(400, `Type the company’s name (${co.name}) to delete its data.`);
       const early = Date.parse(r.ends_at) > Date.now();
       if (early && !(b.now === true && same(b.confirmNow, 'delete now'))) fail(400, `This request waits until ${r.ends_at.slice(0, 10)}. To delete now, also type “delete now”.`);
