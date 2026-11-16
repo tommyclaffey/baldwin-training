@@ -1,0 +1,552 @@
+[
+ {
+  "key": "demo/shelf/Tito’s Handmade",
+  "slug": "shelf/titos-handmade",
+  "sort": 0,
+  "data": {
+   "name": "Tito’s Handmade",
+   "spirit": "Vodka",
+   "styles": [
+    "Corn"
+   ],
+   "limited": false,
+   "price": "9",
+   "tier": "Well"
+  }
+ },
+ {
+  "key": "demo/shelf/Ketel One",
+  "slug": "shelf/ketel-one",
+  "sort": 1,
+  "data": {
+   "name": "Ketel One",
+   "spirit": "Vodka",
+   "styles": [
+    "Wheat"
+   ],
+   "limited": false,
+   "price": "11",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Belvedere",
+  "slug": "shelf/belvedere",
+  "sort": 2,
+  "data": {
+   "name": "Belvedere",
+   "spirit": "Vodka",
+   "styles": [
+    "Rye"
+   ],
+   "limited": false,
+   "price": "13",
+   "tier": "Top shelf"
+  }
+ },
+ {
+  "key": "demo/shelf/Beefeater",
+  "slug": "shelf/beefeater",
+  "sort": 3,
+  "data": {
+   "name": "Beefeater",
+   "spirit": "Gin",
+   "styles": [
+    "London dry"
+   ],
+   "limited": false,
+   "price": "9",
+   "tier": "Well"
+  }
+ },
+ {
+  "key": "demo/shelf/Tanqueray No. Ten",
+  "slug": "shelf/tanqueray-no-ten",
+  "sort": 4,
+  "data": {
+   "name": "Tanqueray No. Ten",
+   "spirit": "Gin",
+   "styles": [
+    "London dry"
+   ],
+   "limited": false,
+   "price": "12",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Malfy Gin Rosa",
+  "slug": "shelf/malfy-gin-rosa",
+  "sort": 5,
+  "data": {
+   "name": "Malfy Gin Rosa",
+   "spirit": "Gin",
+   "styles": [
+    "Contemporary"
+   ],
+   "limited": false,
+   "price": "11",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/The Botanist",
+  "slug": "shelf/the-botanist",
+  "sort": 6,
+  "data": {
+   "name": "The Botanist",
+   "spirit": "Gin",
+   "styles": [
+    "Contemporary"
+   ],
+   "limited": false,
+   "price": "13",
+   "tier": "Top shelf"
+  }
+ },
+ {
+  "key": "demo/shelf/Espolòn Blanco",
+  "slug": "shelf/espolon-blanco",
+  "sort": 7,
+  "data": {
+   "name": "Espolòn Blanco",
+   "spirit": "Tequila",
+   "styles": [
+    "Blanco"
+   ],
+   "limited": false,
+   "price": "9",
+   "tier": "Well"
+  }
+ },
+ {
+  "key": "demo/shelf/Siete Leguas Reposado",
+  "slug": "shelf/siete-leguas-reposado",
+  "sort": 8,
+  "data": {
+   "name": "Siete Leguas Reposado",
+   "spirit": "Tequila",
+   "styles": [
+    "Reposado"
+   ],
+   "limited": false,
+   "price": "13",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Fortaleza Añejo",
+  "slug": "shelf/fortaleza-anejo",
+  "sort": 9,
+  "data": {
+   "name": "Fortaleza Añejo",
+   "spirit": "Tequila",
+   "styles": [
+    "Añejo"
+   ],
+   "limited": false,
+   "price": "19",
+   "tier": "Top shelf"
+  }
+ },
+ {
+  "key": "demo/shelf/Montelobos Espadín",
+  "slug": "shelf/montelobos-espadin",
+  "sort": 10,
+  "data": {
+   "name": "Montelobos Espadín",
+   "spirit": "Mezcal",
+   "styles": [],
+   "limited": false,
+   "price": "13",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Plantation 3 Stars",
+  "slug": "shelf/plantation-3-stars",
+  "sort": 11,
+  "data": {
+   "name": "Plantation 3 Stars",
+   "spirit": "Rum",
+   "styles": [
+    "White"
+   ],
+   "limited": false,
+   "price": "9",
+   "tier": "Well"
+  }
+ },
+ {
+  "key": "demo/shelf/Appleton Estate 12",
+  "slug": "shelf/appleton-estate-12",
+  "sort": 12,
+  "data": {
+   "name": "Appleton Estate 12",
+   "spirit": "Rum",
+   "styles": [
+    "Aged"
+   ],
+   "limited": false,
+   "price": "12",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Smith & Cross",
+  "slug": "shelf/smith-and-cross",
+  "sort": 13,
+  "data": {
+   "name": "Smith & Cross",
+   "spirit": "Rum",
+   "styles": [
+    "Aged"
+   ],
+   "limited": false,
+   "price": "11",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Old Forester 86",
+  "slug": "shelf/old-forester-86",
+  "sort": 14,
+  "data": {
+   "name": "Old Forester 86",
+   "spirit": "Bourbon",
+   "styles": [],
+   "limited": false,
+   "price": "9",
+   "tier": "Well"
+  }
+ },
+ {
+  "key": "demo/shelf/Buffalo Trace",
+  "slug": "shelf/buffalo-trace",
+  "sort": 15,
+  "data": {
+   "name": "Buffalo Trace",
+   "spirit": "Bourbon",
+   "styles": [],
+   "limited": false,
+   "price": "11",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Four Roses Small Batch",
+  "slug": "shelf/four-roses-small-batch",
+  "sort": 16,
+  "data": {
+   "name": "Four Roses Small Batch",
+   "spirit": "Bourbon",
+   "styles": [],
+   "limited": false,
+   "price": "12",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Blanton’s Single Barrel",
+  "slug": "shelf/blantons-single-barrel",
+  "sort": 17,
+  "data": {
+   "name": "Blanton’s Single Barrel",
+   "spirit": "Bourbon",
+   "styles": [],
+   "limited": false,
+   "price": "18",
+   "tier": "Top shelf"
+  }
+ },
+ {
+  "key": "demo/shelf/Old Overholt",
+  "slug": "shelf/old-overholt",
+  "sort": 18,
+  "data": {
+   "name": "Old Overholt",
+   "spirit": "Rye",
+   "styles": [],
+   "limited": false,
+   "price": "9",
+   "tier": "Well"
+  }
+ },
+ {
+  "key": "demo/shelf/Rittenhouse",
+  "slug": "shelf/rittenhouse",
+  "sort": 19,
+  "data": {
+   "name": "Rittenhouse",
+   "spirit": "Rye",
+   "styles": [],
+   "limited": false,
+   "price": "11",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/WhistlePig 10",
+  "slug": "shelf/whistlepig-10",
+  "sort": 20,
+  "data": {
+   "name": "WhistlePig 10",
+   "spirit": "Rye",
+   "styles": [],
+   "limited": false,
+   "price": "19",
+   "tier": "Top shelf"
+  }
+ },
+ {
+  "key": "demo/shelf/Monkey Shoulder",
+  "slug": "shelf/monkey-shoulder",
+  "sort": 21,
+  "data": {
+   "name": "Monkey Shoulder",
+   "spirit": "Scotch",
+   "styles": [],
+   "limited": false,
+   "price": "12",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Glenmorangie 10",
+  "slug": "shelf/glenmorangie-10",
+  "sort": 22,
+  "data": {
+   "name": "Glenmorangie 10",
+   "spirit": "Scotch",
+   "styles": [],
+   "limited": false,
+   "price": "14",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Lagavulin 16",
+  "slug": "shelf/lagavulin-16",
+  "sort": 23,
+  "data": {
+   "name": "Lagavulin 16",
+   "spirit": "Scotch",
+   "styles": [],
+   "limited": false,
+   "price": "20",
+   "tier": "Top shelf"
+  }
+ },
+ {
+  "key": "demo/shelf/Redbreast 12",
+  "slug": "shelf/redbreast-12",
+  "sort": 24,
+  "data": {
+   "name": "Redbreast 12",
+   "spirit": "Irish whiskey",
+   "styles": [],
+   "limited": false,
+   "price": "15",
+   "tier": "Top shelf"
+  }
+ },
+ {
+  "key": "demo/shelf/Jameson",
+  "slug": "shelf/jameson",
+  "sort": 25,
+  "data": {
+   "name": "Jameson",
+   "spirit": "Irish whiskey",
+   "styles": [],
+   "limited": false,
+   "price": "10",
+   "tier": "Well"
+  }
+ },
+ {
+  "key": "demo/shelf/Suntory Toki",
+  "slug": "shelf/suntory-toki",
+  "sort": 26,
+  "data": {
+   "name": "Suntory Toki",
+   "spirit": "Japanese whisky",
+   "styles": [],
+   "limited": false,
+   "price": "13",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Hennessy VS",
+  "slug": "shelf/hennessy-vs",
+  "sort": 27,
+  "data": {
+   "name": "Hennessy VS",
+   "spirit": "Cognac",
+   "styles": [],
+   "limited": false,
+   "price": "13",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Pierre Ferrand 1840",
+  "slug": "shelf/pierre-ferrand-1840",
+  "sort": 28,
+  "data": {
+   "name": "Pierre Ferrand 1840",
+   "spirit": "Cognac",
+   "styles": [],
+   "limited": false,
+   "price": "13",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Campari",
+  "slug": "shelf/campari",
+  "sort": 29,
+  "data": {
+   "name": "Campari",
+   "spirit": "Amaro",
+   "styles": [
+    "Aperitivo"
+   ],
+   "limited": false,
+   "price": "10",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Aperol",
+  "slug": "shelf/aperol",
+  "sort": 30,
+  "data": {
+   "name": "Aperol",
+   "spirit": "Amaro",
+   "styles": [
+    "Aperitivo"
+   ],
+   "limited": false,
+   "price": "10",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Amaro Nonino",
+  "slug": "shelf/amaro-nonino",
+  "sort": 31,
+  "data": {
+   "name": "Amaro Nonino",
+   "spirit": "Amaro",
+   "styles": [],
+   "limited": false,
+   "price": "13",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Fernet-Branca",
+  "slug": "shelf/fernet-branca",
+  "sort": 32,
+  "data": {
+   "name": "Fernet-Branca",
+   "spirit": "Amaro",
+   "styles": [],
+   "limited": false,
+   "price": "10",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Cynar",
+  "slug": "shelf/cynar",
+  "sort": 33,
+  "data": {
+   "name": "Cynar",
+   "spirit": "Amaro",
+   "styles": [],
+   "limited": false,
+   "price": "10",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Luxardo Maraschino",
+  "slug": "shelf/luxardo-maraschino",
+  "sort": 34,
+  "data": {
+   "name": "Luxardo Maraschino",
+   "spirit": "Liqueur",
+   "styles": [],
+   "limited": false,
+   "price": "10",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Disaronno",
+  "slug": "shelf/disaronno",
+  "sort": 35,
+  "data": {
+   "name": "Disaronno",
+   "spirit": "Liqueur",
+   "styles": [],
+   "limited": false,
+   "price": "10",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Limoncello di Capri",
+  "slug": "shelf/limoncello-di-capri",
+  "sort": 36,
+  "data": {
+   "name": "Limoncello di Capri",
+   "spirit": "Liqueur",
+   "styles": [],
+   "limited": false,
+   "price": "9",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Frangelico",
+  "slug": "shelf/frangelico",
+  "sort": 37,
+  "data": {
+   "name": "Frangelico",
+   "spirit": "Liqueur",
+   "styles": [],
+   "limited": false,
+   "price": "10",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/Cointreau",
+  "slug": "shelf/cointreau",
+  "sort": 38,
+  "data": {
+   "name": "Cointreau",
+   "spirit": "Liqueur",
+   "styles": [],
+   "limited": false,
+   "price": "11",
+   "tier": "Call"
+  }
+ },
+ {
+  "key": "demo/shelf/St-Germain",
+  "slug": "shelf/st-germain",
+  "sort": 39,
+  "data": {
+   "name": "St-Germain",
+   "spirit": "Liqueur",
+   "styles": [],
+   "limited": false,
+   "price": "11",
+   "tier": "Call"
+  }
+ }
+]

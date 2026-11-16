@@ -82,6 +82,9 @@ export type Theme = {
   accentLine: 'script' | 'tape';
   /** The sidebar and phone-bar logo (null = the logo drawn in the sidebar). */
   logo: { src: string; alt: string; w: number; h: number; phoneH: number } | null;
+  /** The file in the drawn sidebar's logo slot when `logo` is null (Nov 16): a custom look's own logo. The file is the
+   *  account's, on the volume (server/account.mjs), so the build's sidebar carries the slot with no image in it. */
+  drawnLogo?: { src: string; alt: string };
   /** The active sidebar item: the drawn highlight, or a quiet tint of the panel's ink. */
   activeNav: 'drawn' | 'tint';
   /** Brand rules that aren't a colour or a face. Mise: text on a shaded photo is always light ink; a video's channel
@@ -125,6 +128,7 @@ export const THEMES: Record<Brand, Theme> = {
     },
     accentLine: 'script',
     logo: null,
+    drawnLogo: { src: '/img/01f36254e089.png', alt: 'The Baldwin' }, // its official logo, white (Baldwin Restaurant Group's account files)
     activeNav: 'drawn',
     photoTextLight: false,
     quietVideoCaptions: false,
@@ -573,9 +577,8 @@ export function themeSidebar(node: FNode, th: Theme = theme()): FNode {
   const logo = th.logo;
   const swapLogo = (x: FNode): FNode => {
     if (logo && x.n === 'Logo') return { ...x, pd: [0, 0, 0, 0], c: [{ t: 'R', n: 'IMG/' + logo.alt + ' lockup', alt: logo.alt, w: logo.w, h: logo.h, sh: 'F', sv: 'F', f: [{ img: logo.src, m: 'FIT' }] } as FNode] };
-    // the drawn logo is The Baldwin's: read out by its name (photos without an `alt` are skipped, FigmaNode). The name is
-    // CLIENT_NAME in lib/brand.ts, written out so node's tests can load this file on its own.
-    if (x.n === 'Logo') return { ...x, c: x.c?.map((c) => (c.f?.some((f) => f.img) ? { ...c, alt: 'The Baldwin' } : c)) };
+    // the drawn slot holds the look's own logo, read out by its name (photos without an `alt` are skipped, FigmaNode)
+    if (x.n === 'Logo') return { ...x, c: x.c?.map((c) => (c.t === 'R' && th.drawnLogo ? { ...c, alt: th.drawnLogo.alt, f: [{ img: th.drawnLogo.src, m: 'FIT' }] } : c)) };
     return x.c ? { ...x, c: x.c.map(swapLogo) } : x;
   };
   const out = walk(th, swapLogo(n), drawn('inverse'), drawn('inverse'), false) || n;

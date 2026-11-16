@@ -1,6 +1,14 @@
 // Builds the app's content from the Figma export in content/raw/.
-// Input:  content/raw/layout0.json + layout40.json (full layout trees), content/raw/figma-content.json (nav section per page)
+// Input:  content/raw/layout0.json + layout40.json (full layout trees), content/raw/figma-content.json (nav section per page),
+//         content/templates/<file>.json (shared templates that replace a page of the export, below)
 // Output: public/content/pages/<file>.json (one per screen), src/content/{index,svgs,sidebar}.json
+//
+// Shared templates (Nov 16, Tommy: "the baldwin is supposed to [be] an account under the app"): the design was drawn as
+// The Baldwin's book. The pages that are a restaurant's own (Our Story, Floor Plan) or carry its own bookings and offers (the
+// Court sittings it hosts, its wine flights) are built from content/templates/ instead: the same layout with sample words
+// (Wrenfield's, the Mise demo's) and no restaurant's bookings. A customer's own version of one of those pages is its account
+// content on the volume (server/account.mjs), never this repo. A Figma re-export that brings one of these pages back is
+// ignored here (the template wins) and named in the build log, so it can be taken out of content/raw/.
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -13,6 +21,18 @@ const pages = [];
 for (const part of parts) for (const pg of part.pages) {
   const i = pages.findIndex((x) => x.id === pg.id);
   if (i >= 0) { if (!pg.side && pages[i].side) pg.side = pages[i].side; pages[i] = pg; } else pages.push(pg);
+}
+// Templates replace their page (already built: links are addresses and images are /img/ files, so they skip prep below).
+const TEMPLATES = path.join(root, 'content/templates');
+const templated = new Set();
+for (const f of fs.existsSync(TEMPLATES) ? fs.readdirSync(TEMPLATES).filter((x) => x.endsWith('.json')).sort() : []) {
+  const t = JSON.parse(fs.readFileSync(path.join(TEMPLATES, f), 'utf8'));
+  const pg = { id: t.id, name: t.name, f: t.bg ? [{ c: t.bg }] : undefined, main: t.main, built: true };
+  // content/raw keeps a stub for the page ({ id, name, template: true }), so it keeps its place in the book's order.
+  const i = pages.findIndex((x) => x.id === t.id);
+  if (i >= 0 && pages[i].main) console.warn(`content/raw has page ${t.id} (${t.name}) again; content/templates/${f} replaces it. Put the stub back in content/raw.`);
+  if (i >= 0) pages[i] = pg; else pages.push(pg);
+  templated.add(t.id);
 }
 const svgs = Object.assign({}, ...parts.map((p) => p.svgs));
 const navById = Object.fromEntries(raw('figma-content.json').pages.map((p) => [p.id, p.nav]));
@@ -80,9 +100,10 @@ function quizLinks(main, slug) {
 }
 
 const index = [];
+const textsOf = (n, out = []) => { if (n.t === 'T') out.push(n.s); (n.c || []).forEach((c) => textsOf(c, out)); return out; };
 for (const p of pages) {
   const texts = [];
-  prep(p.main, texts);
+  if (p.built) textsOf(p.main, texts); else prep(p.main, texts);
   quizLinks(p.main, slugById[p.id]);
 
   const { thumb, blurb } = preview(p.main);

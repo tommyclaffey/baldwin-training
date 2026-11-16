@@ -1,0 +1,162 @@
+[
+ {
+  "key": "demo/beer/Peroni Nastro Azzurro",
+  "slug": "beer-list/peroni-nastro-azzurro",
+  "sort": 0,
+  "data": {
+   "name": "Peroni Nastro Azzurro",
+   "serve": "Draft",
+   "style": "Pilsner",
+   "tap": "1",
+   "abv": "5.1%",
+   "glass": "Pilsner glass",
+   "pour": "16 oz",
+   "price": "8",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo/beer/Founders All Day IPA",
+  "slug": "beer-list/founders-all-day-ipa",
+  "sort": 1,
+  "data": {
+   "name": "Founders All Day IPA",
+   "serve": "Draft",
+   "style": "Session IPA",
+   "tap": "2",
+   "abv": "4.7%",
+   "glass": "Shaker pint",
+   "pour": "16 oz",
+   "price": "7",
+   "michigan": true
+  }
+ },
+ {
+  "key": "demo/beer/Bell’s Oberon",
+  "slug": "beer-list/bells-oberon",
+  "sort": 2,
+  "data": {
+   "name": "Bell’s Oberon",
+   "serve": "Draft",
+   "style": "Wheat Beer",
+   "tap": "3",
+   "abv": "5.8%",
+   "glass": "Weizen glass",
+   "pour": "16 oz",
+   "price": "8",
+   "michigan": true
+  }
+ },
+ {
+  "key": "demo/beer/Short’s Bellaire Brown",
+  "slug": "beer-list/shorts-bellaire-brown",
+  "sort": 3,
+  "data": {
+   "name": "Short’s Bellaire Brown",
+   "serve": "Draft",
+   "style": "Amber and Red Ale",
+   "tap": "4",
+   "abv": "7%",
+   "glass": "Shaker pint",
+   "pour": "16 oz",
+   "price": "8",
+   "michigan": true
+  }
+ },
+ {
+  "key": "demo/beer/Dark Horse Crooked Tree IPA",
+  "slug": "beer-list/dark-horse-crooked-tree-ipa",
+  "sort": 4,
+  "data": {
+   "name": "Dark Horse Crooked Tree IPA",
+   "serve": "Draft",
+   "style": "IPA",
+   "tap": "5",
+   "abv": "6.5%",
+   "glass": "Shaker pint",
+   "pour": "16 oz",
+   "price": "8",
+   "michigan": true
+  }
+ },
+ {
+  "key": "demo/beer/Left Hand Milk Stout Nitro",
+  "slug": "beer-list/left-hand-milk-stout-nitro",
+  "sort": 5,
+  "data": {
+   "name": "Left Hand Milk Stout Nitro",
+   "serve": "Draft",
+   "style": "Stout",
+   "tap": "6",
+   "abv": "6%",
+   "glass": "Tulip pint",
+   "pour": "16 oz",
+   "price": "8",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo/beer/Birra Moretti",
+  "slug": "beer-list/birra-moretti",
+  "sort": 6,
+  "data": {
+   "name": "Birra Moretti",
+   "serve": "Bottle",
+   "style": "Light Lager",
+   "tap": "",
+   "abv": "4.6%",
+   "glass": "Pilsner glass",
+   "pour": "12 oz",
+   "price": "6",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo/beer/Duvel",
+  "slug": "beer-list/duvel",
+  "sort": 7,
+  "data": {
+   "name": "Duvel",
+   "serve": "Bottle",
+   "style": "Belgian Ale",
+   "tap": "",
+   "abv": "8.5%",
+   "glass": "Tulip",
+   "pour": "11.2 oz",
+   "price": "10",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo/beer/Rodenbach Grand Cru",
+  "slug": "beer-list/rodenbach-grand-cru",
+  "sort": 8,
+  "data": {
+   "name": "Rodenbach Grand Cru",
+   "serve": "Bottle",
+   "style": "Sour",
+   "tap": "",
+   "abv": "6%",
+   "glass": "Tulip",
+   "pour": "11.2 oz",
+   "price": "11",
+   "michigan": false
+  }
+ },
+ {
+  "key": "demo/beer/Athletic Run Wild IPA",
+  "slug": "beer-list/athletic-run-wild-ipa",
+  "sort": 9,
+  "data": {
+   "name": "Athletic Run Wild IPA",
+   "serve": "Bottle",
+   "style": "Non-alcoholic",
+   "tap": "",
+   "abv": "<0.5%",
+   "glass": "Shaker pint",
+   "pour": "12 oz",
+   "price": "6",
+   "michigan": false
+  }
+ }
+]

@@ -24,16 +24,34 @@ import { fillWinePage, fillWineShelf, wineSearchText, wineEntryPage } from './wi
 import { wire, tableRoles, ORDER as ALLERGEN_ORDER } from './interact.mjs';
 import { libraryVideos } from './videos.mjs';
 import { fillHome } from './home.mjs';
-import { fillSample, sampleSommAbout } from './sample.mjs';
+import { fillSample } from './sample.mjs';
 import { storeCache, cached, EVERY_STORE } from './cache.mjs';
-import { variant, asVariant, isBrgCompany } from './variant.mjs';
+import { asVariant, isBrgCompany, variantKey, accountOf } from './variant.mjs';
 import { demoDish, demoMentions } from './demopairs.mjs';
+import { accountFor, accountPage, accountIndex } from './account.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
 
 const baseCache = new Map();
+/** A designed page, as this store's account has it (Nov 16, server/account.mjs): the account's own version when its folder
+ *  has one (a demo copy: only the restaurant's own pages, never its bookings or offers), the shared template otherwise. */
 export function basePage(file) {
+  if (!/^[0-9]+-[0-9]+$/.test(file)) return null;
+  const own = accountPageFor(file);
+  if (own) return clone(own);
+  return repoPage(file);
+}
+function accountPageFor(file) {
+  const a = SCOPE.account;
+  if (!a) return null;
+  const page = accountPage(a.account, file);
+  if (!page) return null;
+  if (a.demoCopy) { const slug = baseIndex().find((x) => x.file === file)?.slug; if (slug == null || classify(slug) !== 'own') return null; }
+  return page;
+}
+/** The shared template from the build (public/content/pages), whoever is reading. */
+function repoPage(file) {
   if (!/^[0-9]+-[0-9]+$/.test(file)) return null;
   if (!baseCache.has(file)) {
     const f = path.join(CONTENT, 'pages', file + '.json');
@@ -93,11 +111,12 @@ function classicProtos() {
 }
 
 /* ---- Which store a request is for. Assembly is synchronous, so the scope is set around each call. ---- */
-let SCOPE = { store: 1, row: null, user: null, generic: false };
-/** Run `fn` for one store: its own entries, and The Baldwin's full book or the shared library. */
+let SCOPE = { store: 1, row: null, user: null, generic: false, account: null };
+/** Run `fn` for one store: its own entries, and The Baldwin's full book or the shared library. `account`: the account
+ *  folder its company reads (server/account.mjs), for its own versions of designed pages. */
 export function withStore(row, fn, user = null) {
   const prev = SCOPE;
-  SCOPE = { store: row?.id ?? 1, row, user, generic: !!row && !row.book_ready };
+  SCOPE = { store: row?.id ?? 1, row, user, generic: !!row && !row.book_ready, account: row?.company_id ? accountFor(row.company_id) : null };
   try { return fn(); } finally { SCOPE = prev; }
 }
 const isGeneric = () => SCOPE.generic;
@@ -667,9 +686,7 @@ function assembleRaw(db, file) {
     return p2 ? { ...level2OnLevel1(p2, old, { done, ...levelStatus(db, 'somm-2') }), name: page.name } : old;
   }
   if (isGeneric()) {
-    // The Sommelier "about" page gets its own words first, so the library pass that takes The Baldwin group's lines out
-    // leaves the new ones alone.
-    if (!isSample(db) || classify(slug) !== 'own') return genericPage(db, file, slug, isSample(db) && slug === 'sommelier-program/about' ? sampleSommAbout(page) : page);
+    if (!isSample(db) || classify(slug) !== 'own') return genericPage(db, file, slug, page);
     // Filled like The Baldwin's page; assemble() writes The Baldwin's names out after the videos and photos are in.
     const statics = snapshotShelves(page);
     const filled = fillSample(fullBook(db, file, page), slug, { recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
@@ -785,16 +802,22 @@ function readBaldwinNames(db, ours) {
 }
 
 /** Search text for the shared library, read from the pages as other stores see them. Rebuilt when Baldwin's names change. */
-let lib = { key: null, text: null };
+/* Nov 16: read through the account's own pages when the store's account has a folder (a BRG store reads BRG's), so it's
+ * kept per account. */
+const libs = new Map();
 function libraryEntry(db, e, terms = baldwinNames(db)) {
   if (classify(e.slug) === 'own') return indexText(e);
-  libraryText(db, terms);
+  const lib = libraryText(db, terms);
   return { ...e, text: lib.text.get(e.slug) || '', blurb: terms.test(e.blurb || '') ? undefined : e.blurb };
 }
 function libraryText(db, terms) {
-  if (lib.key !== terms.source) {
+  // (a demo copy reads only its account's own pages, never shared ones, so it shares the templates' text)
+  const company = SCOPE.account && !SCOPE.account.demoCopy ? SCOPE.row?.company_id : undefined;
+  const k = company ? 'a' + SCOPE.account.account : '-';
+  let lib = libs.get(k);
+  if (!lib || lib.key !== terms.source) {
     const text = new Map();
-    withStore({ id: -1, name: '', book_ready: 0 }, () => {
+    withStore({ id: -1, name: '', book_ready: 0, company_id: company }, () => {
       for (const x of baseIndex()) {
         if (classify(x.slug) === 'own') continue;
         const p = assemble(db, x.file);
@@ -802,14 +825,16 @@ function libraryText(db, terms) {
       }
     });
     lib = { key: terms.source, text };
+    libs.set(k, lib);
   }
+  return lib;
 }
 /** Once at server start (Nov 11, speed): the shared library's search text (every page read as another store sees it, about
  *  a second of work) and The Baldwin's index and quiz pool, so the first sign-in or demo after a deploy doesn't wait. */
 export function warmContent(db) {
   libraryText(db, baldwinNames(db));
   const row = db.prepare('SELECT * FROM stores WHERE id = 1').get();
-  if (row) asVariant({ brg: isBrgCompany(db, row.company_id), restaurant: row.name }, () => { withStore(row, () => fullIndex(db, { text: false })); questionPool(db, row.id); });
+  if (row) asVariant({ brg: isBrgCompany(db, row.company_id), restaurant: row.name, account: accountOf(row) }, () => { withStore(row, () => fullIndex(db, { text: false })); questionPool(db, row.id); });
 }
 
 /** Search text for the Mise demo's own pages, read from the pages as it sees them. */
@@ -826,7 +851,7 @@ function sampleEntry(db, e) {
 const PREFIXES = [...Object.values(COLLECTIONS).map((c) => c.prefix), GUIDE + '/'];
 const indexCache = storeCache();
 /** The program version this request reads (server/variant.mjs): the Hospitality Program's lessons differ by company. */
-const variantKey = () => { const v = variant(); return `${v.brg ? 1 : 0}:${v.restaurant ?? ''}`; };
+
 export function fullIndex(db, { text = true } = {}) {
   const core = cached(indexCache, db, SCOPE.store, `${variantKey()}|${isGeneric() ? 1 : 0}|${isSample(db) ? 1 : 0}`, () => buildIndex(db));
   if (!text || !core.own.length) return core.list;
@@ -851,7 +876,10 @@ function buildIndex(db) {
   const own = []; // [position, base entry, extra search text]: the Mise demo's own pages, read per person (fullIndex)
   // The Video Library's search text is its videos (below), so it isn't read from the page.
   const later = (e) => sample && classify(e.slug) === 'own' && e.slug !== 'video-library';
-  const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p)))
+  // Nov 16: the account's own pages (server/account.mjs) are searched by their own words
+  const acct = SCOPE.account, acctIdx = acct ? accountIndex(acct.account) : null;
+  const fromAccount = (e) => { const a = acctIdx?.get(e.file); return a && !(acct.demoCopy && classify(e.slug) !== 'own') ? { ...e, text: a.text, thumb: a.thumb, blurb: a.blurb } : e; };
+  const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p))).map(fromAccount)
     .map((e) => (later(e) ? { ...e, text: '', thumb: undefined, blurb: undefined, later: e } : sample && classify(e.slug) === 'own' ? { ...e, text: '', thumb: undefined, blurb: undefined } : isGeneric() ? libraryEntry(db, e, terms) : e))
     .map((e) => (sample ? { ...e, text: (e.text || '').replace(new RegExp(THEIRS.source, 'gi'), ''), blurb: e.blurb && GROUP.test(e.blurb) ? undefined : e.blurb } : e))
     .map((e) => (extra.has(e.slug) ? { ...e, text: (extra.get(e.slug) + ' ' + (e.text || '')).slice(0, 2400) } : e));

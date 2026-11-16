@@ -1,8 +1,9 @@
 // Which version of a program's text a request reads (Nov 11, the Hospitality Program).
 //
-// The Hospitality Program is Baldwin Restaurant Group's own training: it names BRG and its water brands. BRG's companies
-// read that version; every other company reads a generic one with the same lessons, cards and certificate, written as its
-// own content set (content/hospitality-generic), with "{restaurant}" filled in with the store's name.
+// The Hospitality Program has a version every company reads (content/hospitality-generic), with "{restaurant}" filled in
+// with the store's name. Baldwin Restaurant Group wrote its own (it names BRG and its water brands); since Nov 16 that
+// version is BRG's account content (DATA_DIR/accounts/1/programs/hospitality, server/account.mjs), not part of this repo.
+// A request reads its account's own version when the account has one (`account` below), the shared one otherwise.
 //
 // BRG = company 1 (Baldwin Restaurant Group: The Baldwin, J.Baldwin's, Testa Barra), plus The Baldwin's demo copies
 // (companies.demo = 1, named "Baldwin Restaurant Group"). A company whose brand is 'mise' (the Wrenfield demo) never is.
@@ -10,6 +11,7 @@
 // The answer is kept per request (AsyncLocalStorage), so every part of the server that reads lessons (pages, search,
 // quizzes, paths, certificates) sees the same version without passing it around.
 import { AsyncLocalStorage } from 'node:async_hooks';
+import { accountFor } from './account.mjs';
 
 const als = new AsyncLocalStorage();
 export const BRG_NAME = 'Baldwin Restaurant Group';
@@ -26,11 +28,15 @@ export function isBrgCompany(db, companyId) {
 
 /** Called once at the start of each API request: this request reads its company's version. */
 export function enterStore(db, storeRow) {
-  als.enterWith({ brg: storeRow ? isBrgCompany(db, storeRow.company_id) : true, restaurant: storeRow?.name || null });
+  als.enterWith({ brg: storeRow ? isBrgCompany(db, storeRow.company_id) : true, restaurant: storeRow?.name || null, account: accountOf(storeRow) });
 }
+/** The account folder whose program text a store reads (server/account.mjs), or null. */
+export const accountOf = (storeRow) => (storeRow?.company_id ? accountFor(storeRow.company_id)?.account ?? null : null);
 
 /** Run `fn` as a given company would see it (tests, scripts). */
-export const asVariant = (v, fn) => als.run({ brg: true, restaurant: null, ...v }, fn);
+export const asVariant = (v, fn) => als.run({ brg: true, restaurant: null, account: null, ...v }, fn);
 
-/** This request's version: { brg, restaurant }. Outside a request: BRG. */
-export const variant = () => als.getStore() || { brg: true, restaurant: null };
+/** This request's version: { brg, restaurant, account }. Outside a request: BRG's group, no account folder. */
+export const variant = () => als.getStore() || { brg: true, restaurant: null, account: null };
+/** A cache key for this request's version (pages, indexes and quiz pools differ by it). */
+export const variantKey = () => { const v = variant(); return `${v.brg ? 1 : 0}:${v.account ?? ''}:${v.restaurant ?? ''}`; };

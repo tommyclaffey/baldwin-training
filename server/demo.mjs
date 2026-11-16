@@ -2,7 +2,8 @@
 // and cocktails, wine is fine"). App Buildout Standard, stage 9: /demo needs no sign-up; each visitor gets a private copy.
 //
 // A visit makes a throwaway company (companies.demo = 1) with one store, "The Baldwin", that has the full book. It gets
-// a copy of The Baldwin's wine list, back bar and beers, the made-up dishes and house cocktails in content/demo/, and a
+// the made-up dishes, house cocktails, wine list, back bar and beers in content/demo/ (Nov 16: it used to copy The Baldwin's
+// real wine list, back bar and beers; those are Baldwin Restaurant Group's account data, so the demo has its own), and a
 // small made-up team (fresh names) with quiz scores, sign-offs and tonight's sections. The visitor is signed in for a day
 // in the role they picked. Uploads, invites, passwords, PINs, two-step sign-in and store settings are switched off.
 // Copies older than a day are removed (they're throwaway demo data, not anyone's content).
@@ -21,7 +22,6 @@ import { forget } from './cache.mjs';
 import { MEDIA_DIR } from './db.mjs';
 import { wipeCompany } from './companydata.mjs';
 import { seedDemoPrep } from './prep.mjs';
-import { demoPairs, demoMentions } from './demopairs.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const now = () => new Date().toISOString();
@@ -49,18 +49,17 @@ const TEAM = [
 // The book's last few changes, so "Your last edits" has something to open (each demo's own dishes and drinks).
 const EDITS = [['edit house', 'Paloma Verde', 0.1], ['add recipe', 'Lobster Tagliatelle', 1], ['edit recipe', 'Cacio e Pepe', 2]];
 const MISE_EDITS = [['edit house', 'Smoke Signal', 0.1], ['add recipe', 'Braised Lamb Shank', 1], ['edit recipe', 'Wild Mushroom Risotto', 2]];
-const COPY = ['wine', 'shelf', 'beer']; // The Baldwin's real lists (Tommy: "wine is fine")
 
 /* Two demos (Nov 11, Tommy: "a completely separate demo for Mise itself", so he can show both):
- *   baldwin  /demo       a private copy of The Baldwin: its name, logo and look, its real wine list, back bar and beers,
- *                        made-up dishes and cocktails (content/demo/). Unchanged.
+ *   baldwin  /demo       The Baldwin's look on the Custom Brand plan (the upgrade's showcase): its name, logo and look,
+ *                        and a made-up menu, drinks, wine list, back bar and beers (content/demo/, labelled demo data).
  *   mise     /demo/mise  Wrenfield, a made-up restaurant in the Mise Academy look. Everything on its menu is made up
  *                        (content/demo-mise/), and it reads the shared library like any store that isn't The Baldwin
  *                        (book_ready 0), so none of The Baldwin's names, logo, story or floor plan show.
  * Same cast in both (same project, same people). */
 export const DEMOS = {
-  baldwin: { company: 'Baldwin Restaurant Group', store: 'The Baldwin', storeSlug: 'the-baldwin', brand: 'baldwin', plan: 'custom-brand', bookReady: 1, seeds: 'demo', copy: COPY },
-  mise: { company: 'Wrenfield', store: 'Wrenfield', storeSlug: 'wrenfield', brand: 'mise', plan: 'foundation', bookReady: 0, seeds: 'demo-mise', copy: [],
+  baldwin: { company: 'Baldwin Restaurant Group', store: 'The Baldwin', storeSlug: 'the-baldwin', brand: 'baldwin', plan: 'custom-brand', bookReady: 1, seeds: 'demo' },
+  mise: { company: 'Wrenfield', store: 'Wrenfield', storeSlug: 'wrenfield', brand: 'mise', plan: 'foundation', bookReady: 0, seeds: 'demo-mise',
     // Home's What's New: a dish, a drink and a wine (newest last), not whichever list was loaded last
     whatsNew: ['wine-list/by-the-glass-red-pinot-noir-elk-cove-willamette-valley', 'signature/smoke-signal', 'recipe/seared-scallops'] },
 };
@@ -91,19 +90,8 @@ export function startDemo(db, key, which = 'baldwin') {
     const co = Number(db.prepare('INSERT INTO companies(name, slug, created_at, demo, brand, plan) VALUES (?,?,?,1,?,?)').run(D.company, (mise ? 'demo-mise-' : 'demo-') + tag, t, D.brand, D.plan).lastInsertRowid);
     const st = Number(db.prepare('INSERT INTO stores(company_id, name, slug, book_ready, sort, created_at) VALUES (?,?,?,?,0,?)').run(co, D.store, D.storeSlug, D.bookReady, t).lastInsertRowid);
     const ins = db.prepare('INSERT INTO entries(collection,slug,data,sort,created_at,updated_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?)');
-    // Nov 15 (audit 23): the copied wine list pairs with the demo's own dishes (closest dish, or none), not The Baldwin's.
-    const menu = readSeed(D.seeds, 'recipe.json').map((x) => x.data.name);
-    const forDemo = (col, json) => {
-      if (col !== 'wine') return json;
-      const d = JSON.parse(json);
-      if (d.pairs) d.pairs = demoPairs(d.pairs, menu);
-      for (const k of ['say', 'notes']) if (d[k]) { const v = demoMentions(d[k], menu); if (v === null) delete d[k]; else d[k] = v; }
-      return JSON.stringify(d);
-    };
-    for (const col of D.copy) {
-      for (const r of db.prepare('SELECT slug, data, sort FROM entries WHERE collection = ? AND store_id = 1 AND archived_at IS NULL').all(col)) ins.run(col, r.slug, forDemo(col, r.data), r.sort, t, t, co, st);
-    }
-    const files = [['recipe', 'recipe.json'], ['house', 'house.json'], ...(mise ? [['wine', 'wine.json'], ['shelf', 'shelf.json'], ['beer', 'beer.json']] : [])];
+    // Everything on the demo's menu is its own made-up demo data; nothing is read from a real company's book.
+    const files = [['recipe', 'recipe.json'], ['house', 'house.json'], ['wine', 'wine.json'], ['shelf', 'shelf.json'], ['beer', 'beer.json']];
     for (const [col, file] of files) {
       for (const s of readSeed(D.seeds, file)) ins.run(col, s.slug, JSON.stringify(s.data), s.sort ?? 0, t, t, co, st);
     }

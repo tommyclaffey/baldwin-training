@@ -30,12 +30,15 @@ import * as prep from './prep.mjs';
 import { initCompanyData, companyDataRoutes } from './companydata.mjs';
 import * as captions from './captions.mjs';
 import { migrateImports, importRoutes } from './menuimport.mjs';
+import { initAccounts, accountIds, publicFile } from './account.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
 const PORT = Number(process.env.PORT) || 8080;
 const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
+initAccounts(db); // Nov 16: account content on the volume (server/account.mjs), read before the seeds
+{ const ids = accountIds(); console.log(ids.length ? `Account content: ${ids.map((id) => `company ${id}`).join(', ')}` : 'Account content: none on this volume (every company reads the shared templates)'); }
 initOps(db);
 initCompanyData(db); // Nov 14: data export and delete (company_deletions)
 LoginLimiter.useDb(db); // Nov 10: lockouts survive a redeploy
@@ -1133,7 +1136,10 @@ function staticFile(req, res, url) {
   let f = path.join(DIST, path.normalize(p).replace(/^(\.\.[/\\])+/, ''));
   if (!f.startsWith(DIST)) { res.writeHead(403); return res.end(); }
   if (!fs.existsSync(f) || fs.statSync(f).isDirectory()) {
-    if (/^\/(content|img|assets)\//.test(p)) { res.writeHead(404); return res.end('Not found'); }
+    // Nov 16: an account's own photos and logo (server/account.mjs) keep their /img/ and /icons/ addresses
+    const own = publicFile(p);
+    if (own) return sendFile(req, res, own, /^\/img\//.test(p) ? 'public, max-age=31536000, immutable' : 'no-cache'); // the same caching as the build's
+    if (/^\/(content|img|assets|icons)\//.test(p)) { res.writeHead(404); return res.end('Not found'); }
     f = path.join(DIST, 'index.html');
   }
   const cache = /^\/(assets|img)\//.test(p) ? 'public, max-age=31536000, immutable' : 'no-cache';

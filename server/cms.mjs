@@ -5,6 +5,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { now } from './db.mjs';
 import { slugify } from './templates.mjs';
+import { accountIds, manifest, seedFiles } from './account.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 
@@ -293,47 +294,76 @@ export function cleanEntry(collection, d = {}) {
 const hash = (o) => crypto.createHash('sha1').update(JSON.stringify(o)).digest('hex').slice(0, 16);
 const rowOut = (r) => r && { id: r.id, collection: r.collection, slug: r.slug, data: JSON.parse(r.data), sort: r.sort, seeded: !!r.seed_key, updated_at: r.updated_at, edited: r.updated_by != null, storeId: r.store_id, archivedAt: r.archived_at || null };
 
+/** One seed file into one store (`company`, `store`). Archiving and updates only touch entries this file seeded. */
+function seedCollection(db, id, file, { company, store, prefix }) {
+  if (!fs.existsSync(file)) return;
+  let seeds;
+  try { seeds = JSON.parse(fs.readFileSync(file, 'utf8')); } catch (e) { console.error(`seed file ${file} can't be read, skipped:`, e.message); return; }
+  if (!Array.isArray(seeds)) { console.error(`seed file ${file} isn't a list, skipped`); return; }
+  const lib = id === 'recipe'; // dishes: the seed is the group's dish; the store's menu entry holds its price, course, pairings
+  const home = lib ? LIBRARY_STORE : store; // where this file's seeded rows live
+  const keyOf = (s) => prefix + id + ':' + s.key;
+  const keys = new Set(seeds.map(keyOf));
+  // Gone from the seed file (e.g. dropped from the Food Book): archived, never deleted. Back in the file: back in the book,
+  // unless a person archived it (archived_by is set).
+  for (const row of db.prepare('SELECT id, seed_key, archived_at, archived_by FROM entries WHERE collection = ? AND seed_key IS NOT NULL AND updated_by IS NULL AND company_id = ? AND store_id = ?').all(id, company, home)) {
+    if (!keys.has(row.seed_key) && !row.archived_at) db.prepare('UPDATE entries SET archived_at = ?, archived_by = NULL WHERE id = ?').run(now(), row.id);
+    else if (keys.has(row.seed_key) && row.archived_at && row.archived_by == null) db.prepare('UPDATE entries SET archived_at = NULL WHERE id = ?').run(row.id);
+  }
+  for (const s of seeds) {
+    const data = cleanEntry(id, s.data);
+    const h = hash(data);
+    const row = db.prepare('SELECT * FROM entries WHERE seed_key = ?').get(keyOf(s));
+    const shared = lib ? pick(data, (k) => !isLocal(id, k)) : data;
+    const own = lib ? pick(data, (k) => isLocal(id, k)) : null;
+    if (!row) {
+      if (db.prepare('SELECT 1 FROM seed_removed WHERE seed_key = ?').get(keyOf(s))) continue;
+      if (db.prepare('SELECT 1 FROM entries WHERE slug = ? AND store_id = ?').get(s.slug, home)) continue;
+      const r = db.prepare('INSERT INTO entries(collection,slug,data,sort,seed_key,seed_hash,created_at,updated_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
+        .run(id, s.slug, JSON.stringify(shared), s.sort ?? 0, keyOf(s), h, now(), now(), company, home);
+      if (lib && !db.prepare('SELECT 1 FROM entries WHERE slug = ? AND store_id = ?').get(s.slug, store)) {
+        db.prepare('INSERT INTO entries(collection,slug,data,sort,created_at,updated_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?)')
+          .run(id, s.slug, JSON.stringify({ libraryId: Number(r.lastInsertRowid), ...own }), s.sort ?? 0, now(), now(), company, store);
+      }
+    } else if (row.updated_by == null && row.seed_hash !== h) {
+      db.prepare('UPDATE entries SET data = ?, seed_hash = ?, updated_at = ? WHERE id = ?').run(JSON.stringify(shared), h, now(), row.id);
+      if (lib) {
+        const mine = db.prepare("SELECT * FROM entries WHERE collection = ? AND store_id = ? AND json_extract(data, '$.libraryId') = ?").get(id, store, row.id);
+        if (mine && mine.updated_by == null) db.prepare('UPDATE entries SET data = ? WHERE id = ?').run(JSON.stringify({ ...JSON.parse(mine.data), ...own }), mine.id);
+      }
+    }
+  }
+}
+
 /**
- * Seeds each collection from content/cms/<id>.json. A seed entry is added once; later seed changes
- * update it only while nobody has edited it in the admin. Deleted seed entries stay deleted.
+ * Seeds the book from seed files. A seed entry is added once; later seed changes update it only while nobody has edited it
+ * in the admin. Deleted seed entries stay deleted. Gone from its seed file: archived, never deleted.
+ *   • The shared library (every company's): content/cms/<collection>.json in this repo, for the shared collections (the
+ *     classic cocktails). They live on store 1, where the library has always been kept.
+ *   • An account's own menu (Nov 16): DATA_DIR/accounts/<company>/cms/<collection>.json on the volume (server/account.mjs),
+ *     into the store its account.json names (seedStore). Its seed keys get the account's prefix (account.json seedKeyPrefix;
+ *     default "a<company>:") so two accounts can't share one. Baldwin Restaurant Group's prefix is "": its seeds came from
+ *     this repo before Nov 16 and keep their keys.
+ * A seed file that isn't there seeds nothing and archives nothing: its entries stay exactly as they are in the database.
  */
 export function seed(db) {
   moveDishesToLibrary(db);
   for (const id of Object.keys(COLLECTIONS)) {
-    const file = path.join(ROOT, 'content/cms', id + '.json');
-    if (!fs.existsSync(file)) continue;
-    const seeds = JSON.parse(fs.readFileSync(file, 'utf8'));
-    const keys = new Set(seeds.map((s) => id + ':' + s.key));
-    // Gone from the seed file (e.g. dropped from the Food Book): archived, never deleted. Back in the file: back in the book,
-    // unless a person archived it (archived_by is set).
-    for (const row of db.prepare('SELECT id, seed_key, archived_at, archived_by FROM entries WHERE collection = ? AND seed_key IS NOT NULL AND updated_by IS NULL').all(id)) {
-      if (!keys.has(row.seed_key) && !row.archived_at) db.prepare('UPDATE entries SET archived_at = ?, archived_by = NULL WHERE id = ?').run(now(), row.id);
-      else if (keys.has(row.seed_key) && row.archived_at && row.archived_by == null) db.prepare('UPDATE entries SET archived_at = NULL WHERE id = ?').run(row.id);
+    if (!SHARED.has(id)) continue; // a store's own menu never comes from the repo (Nov 16)
+    seedCollection(db, id, path.join(ROOT, 'content/cms', id + '.json'), { company: 1, store: 1, prefix: '' });
+  }
+  for (const acct of accountIds()) {
+    const m = manifest(acct) || {};
+    const store = Number(m.seedStore);
+    const own = Object.keys(COLLECTIONS).filter((c) => !SHARED.has(c));
+    const files = seedFiles(acct, own);
+    if (!files.length) continue;
+    if (!store || !db.prepare('SELECT 1 FROM stores WHERE id = ? AND company_id = ?').get(store, acct)) {
+      console.warn(`account ${acct}: account.json names no store of its own to seed (seedStore); its menu seeds were skipped`);
+      continue;
     }
-    for (const s of seeds) {
-      const data = cleanEntry(id, s.data);
-      const h = hash(data);
-      const row = db.prepare('SELECT * FROM entries WHERE seed_key = ?').get(id + ':' + s.key);
-      const lib = id === 'recipe'; // dishes: the seed is the group's dish; The Baldwin's menu entry holds its price, course, pairings
-      const shared = lib ? pick(data, (k) => !isLocal(id, k)) : data;
-      const own = lib ? pick(data, (k) => isLocal(id, k)) : null;
-      if (!row) {
-        if (db.prepare('SELECT 1 FROM seed_removed WHERE seed_key = ?').get(id + ':' + s.key)) continue;
-        if (db.prepare('SELECT 1 FROM entries WHERE slug = ? AND store_id = ?').get(s.slug, lib ? 0 : 1)) continue;
-        const r = db.prepare('INSERT INTO entries(collection,slug,data,sort,seed_key,seed_hash,created_at,updated_at,store_id) VALUES (?,?,?,?,?,?,?,?,?)')
-          .run(id, s.slug, JSON.stringify(shared), s.sort ?? 0, id + ':' + s.key, h, now(), now(), lib ? 0 : 1);
-        if (lib && !db.prepare('SELECT 1 FROM entries WHERE slug = ? AND store_id = 1').get(s.slug)) {
-          db.prepare('INSERT INTO entries(collection,slug,data,sort,created_at,updated_at,store_id) VALUES (?,?,?,?,?,?,1)')
-            .run(id, s.slug, JSON.stringify({ libraryId: Number(r.lastInsertRowid), ...own }), s.sort ?? 0, now(), now());
-        }
-      } else if (row.updated_by == null && row.seed_hash !== h) {
-        db.prepare('UPDATE entries SET data = ?, seed_hash = ?, updated_at = ? WHERE id = ?').run(JSON.stringify(shared), h, now(), row.id);
-        if (lib) {
-          const mine = db.prepare("SELECT * FROM entries WHERE collection = ? AND store_id = 1 AND json_extract(data, '$.libraryId') = ?").get(id, row.id);
-          if (mine && mine.updated_by == null) db.prepare('UPDATE entries SET data = ? WHERE id = ?').run(JSON.stringify({ ...JSON.parse(mine.data), ...own }), mine.id);
-        }
-      }
-    }
+    const prefix = typeof m.seedKeyPrefix === 'string' ? m.seedKeyPrefix : `a${acct}:`;
+    for (const { collection, file } of files) seedCollection(db, collection, file, { company: acct, store, prefix });
   }
   // Oct 28: the Wine Book's bottle photos came out (copyright: the photos are the wineries' and shops'). Scanned ones (/media/) stay.
   for (const r of db.prepare(`SELECT id, data FROM entries WHERE collection = 'wine' AND data LIKE '%"bottle_img":"/img/%'`).all()) {

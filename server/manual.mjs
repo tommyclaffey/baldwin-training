@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { clone, find, findAll, byName, startsWith, texts, setText, remove } from './templates.mjs';
 import { variant } from './variant.mjs';
+import { programDir } from './account.mjs';
 
 const DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/manual');
 // Level 2 (Certified) chapters, Nov 2: same format plus "level": 2 and "part", written from the Court's resource library
@@ -26,10 +27,11 @@ export const PROGRAMS = [
     ladder: ['Beer Server', 'Beer Specialist', 'Advanced Specialist', 'Master of Beer'],
     fine: 'It isn’t a Cicerone® certification. It prepares you for Cicerone’s Certified Beer Server exam.' },
   // The Hospitality Program (Nov 11, Tommy: "put these doc in the Hospitality Training folders … for the Hospitality
-  // Training program"). Built from BRG's own two documents (content/research/hospitality). BRG's companies read them as
-  // written (content/hospitality); everyone else reads the same lessons with no BRG names (content/hospitality-generic).
+  // Training program"). Every company reads the shared lessons (content/hospitality-generic, "{restaurant}" filled in).
+  // BRG's own version, written from its two documents, is its account's content since Nov 16 (accounts/1/programs/
+  // hospitality on the volume, server/account.mjs); a company whose account has its own version reads that one.
   // Which one a request gets: server/variant.mjs.
-  { key: 'hosp', name: 'Hospitality Program', short: 'Hospitality', slug: 'hospitality-program', dir: here('hospitality'), genericDir: here('hospitality-generic'), seal: 'SERVICE', section: 'Service',
+  { key: 'hosp', name: 'Hospitality Program', short: 'Hospitality', slug: 'hospitality-program', dir: here('hospitality-generic'), accountDir: 'hospitality', seal: 'SERVICE', section: 'Service',
     back: ['/steps-of-service', 'Service'], hero: '/img/study/on-the-floor--mise-en-place.jpg', heroName: 'IMG/Table set for service · Unsplash, Ronan (stand-in)',
     ladder: ['Hospitality 101', 'The Art of Table Service'],
     fine: 'It shows the level’s lessons were finished, its final passed and its sign-off given.' },
@@ -141,10 +143,11 @@ export function chapters2() {
 const progCache = {};
 /** A program with two versions (Hospitality): this request's folder, cache key and restaurant name. */
 function versionOf(P) {
-  if (!P.genericDir) return { dir: P.dir, key: P.key, name: null };
+  if (!P.accountDir) return { dir: P.dir, key: P.key, name: null };
   const v = variant();
-  const name = v.restaurant || (v.brg ? 'The Baldwin' : 'our restaurant');
-  return { dir: v.brg ? P.dir : P.genericDir, key: `${P.key}:${v.brg ? 'brg' : 'generic'}:${name}`, name };
+  const own = v.account ? programDir(v.account, P.accountDir) : null;
+  const name = v.restaurant || 'our restaurant';
+  return { dir: own || P.dir, key: `${P.key}:${own ? 'a' + v.account : 'shared'}:${name}`, name };
 }
 /** "{restaurant}" in a lesson's text becomes the store's name (both versions; the generic one never names BRG). */
 const fillName = (x, name) => (name ? JSON.parse(JSON.stringify(x).replaceAll('{restaurant}', JSON.stringify(name).slice(1, -1))) : x);

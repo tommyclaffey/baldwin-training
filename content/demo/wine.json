@@ -1,0 +1,592 @@
+[
+ {
+  "key": "demo/wine/Bisol ‘Crede’",
+  "slug": "wine-list/by-the-glass-bubbles-prosecco-bisol-crede-veneto",
+  "sort": 0,
+  "data": {
+   "name": "Bisol ‘Crede’",
+   "grape": "Prosecco",
+   "region": "Veneto",
+   "list": "By the glass",
+   "country": "Italy",
+   "color": "Bubbles",
+   "glass": "12",
+   "half": "",
+   "bottle": "46",
+   "size": "",
+   "pages": [
+    "Prosecco",
+    "Veneto"
+   ],
+   "style": "Crisp",
+   "notes": "Pear, white peach and acacia, with fine bubbles and a dry finish.",
+   "pairs": "Whipped Ricotta Toast, Crispy Calamari",
+   "say": "Dry, not sweet: a bright way to start.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Elena Walch",
+  "slug": "wine-list/by-the-glass-white-pinot-grigio-elena-walch-trentino-alto-adige",
+  "sort": 1,
+  "data": {
+   "name": "Elena Walch",
+   "grape": "Pinot Grigio",
+   "region": "Trentino-Alto Adige",
+   "list": "By the glass",
+   "country": "Italy",
+   "color": "White",
+   "glass": "12",
+   "half": "",
+   "bottle": "46",
+   "size": "",
+   "pages": [
+    "Pinot Grigio",
+    "Trentino-Alto Adige"
+   ],
+   "style": "Crisp",
+   "notes": "Green apple, lemon and a little almond; light and clean.",
+   "pairs": "Burrata & Heirloom Tomato, Little Gem Caesar",
+   "say": "Light and crisp, never heavy.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Pieropan ‘Soave Classico’",
+  "slug": "wine-list/by-the-glass-white-garganega-pieropan-soave-classico-veneto",
+  "sort": 2,
+  "data": {
+   "name": "Pieropan ‘Soave Classico’",
+   "grape": "Garganega",
+   "region": "Veneto",
+   "list": "By the glass",
+   "country": "Italy",
+   "color": "White",
+   "glass": "13",
+   "half": "",
+   "bottle": "50",
+   "size": "",
+   "pages": [
+    "Veneto"
+   ],
+   "style": "Mineral",
+   "notes": "Lemon peel, white flowers and a salty, stony finish.",
+   "pairs": "Lobster Tagliatelle, Seared Salmon",
+   "say": "Like Pinot Grigio with more to say.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Cloudy Bay",
+  "slug": "wine-list/by-the-glass-white-sauvignon-blanc-cloudy-bay-marlborough",
+  "sort": 3,
+  "data": {
+   "name": "Cloudy Bay",
+   "grape": "Sauvignon Blanc",
+   "region": "Marlborough",
+   "list": "By the glass",
+   "country": "Around the world",
+   "color": "White",
+   "glass": "15",
+   "half": "",
+   "bottle": "58",
+   "size": "",
+   "pages": [
+    "Sauvignon Blanc",
+    "Marlborough"
+   ],
+   "style": "Zesty",
+   "notes": "Grapefruit, passion fruit and cut grass.",
+   "pairs": "Farro & Arugula Salad, Crispy Calamari",
+   "say": "Zesty and green: great with anything fried.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Louis Jadot ‘Mâcon-Villages’",
+  "slug": "wine-list/by-the-glass-white-chardonnay-louis-jadot-macon-villages-burgundy",
+  "sort": 4,
+  "data": {
+   "name": "Louis Jadot ‘Mâcon-Villages’",
+   "grape": "Chardonnay",
+   "region": "Burgundy",
+   "list": "By the glass",
+   "country": "France",
+   "color": "White",
+   "glass": "14",
+   "half": "",
+   "bottle": "54",
+   "size": "",
+   "pages": [
+    "Chardonnay",
+    "Burgundy"
+   ],
+   "style": "Bright",
+   "notes": "Yellow apple, lemon curd and a little hazelnut; no heavy oak.",
+   "pairs": "Chicken Parmesan, Lobster Tagliatelle",
+   "say": "Chardonnay without the butter bomb.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Feudi di San Gregorio",
+  "slug": "wine-list/by-the-glass-white-falanghina-feudi-di-san-gregorio-campania",
+  "sort": 5,
+  "data": {
+   "name": "Feudi di San Gregorio",
+   "grape": "Falanghina",
+   "region": "Campania",
+   "list": "By the glass",
+   "country": "Italy",
+   "color": "White",
+   "glass": "13",
+   "half": "",
+   "bottle": "50",
+   "size": "",
+   "pages": [],
+   "style": "Bright",
+   "notes": "Lemon, pear and white flowers, with a salty, fresh finish.",
+   "pairs": "Burrata & Heirloom Tomato, Margherita",
+   "say": "A southern Italian white: fresh and a little salty.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Felsina ‘Berardenga’",
+  "slug": "wine-list/by-the-glass-red-chianti-classico-felsina-berardenga-tuscany",
+  "sort": 6,
+  "data": {
+   "name": "Felsina ‘Berardenga’",
+   "grape": "Chianti Classico",
+   "region": "Tuscany",
+   "list": "By the glass",
+   "country": "Italy",
+   "color": "Red",
+   "glass": "15",
+   "half": "",
+   "bottle": "58",
+   "size": "",
+   "pages": [
+    "Sangiovese",
+    "Tuscany"
+   ],
+   "style": "Savory",
+   "notes": "Sour cherry, dried herbs and tomato leaf; bright acid, firm tannin.",
+   "pairs": "Meatballs al Forno, Rigatoni alla Vodka, Margherita",
+   "say": "Made for red sauce.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "3",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Tormaresca ‘Neprica’",
+  "slug": "wine-list/by-the-glass-red-primitivo-blend-tormaresca-neprica-puglia",
+  "sort": 7,
+  "data": {
+   "name": "Tormaresca ‘Neprica’",
+   "grape": "Primitivo blend",
+   "region": "Puglia",
+   "list": "By the glass",
+   "country": "Italy",
+   "color": "Red",
+   "glass": "12",
+   "half": "",
+   "bottle": "46",
+   "size": "",
+   "pages": [
+    "Puglia"
+   ],
+   "style": "Plush",
+   "notes": "Blackberry, plum and a little spice; soft and round.",
+   "pairs": "Hot Honey Soppressata, Bone-In Pork Chop",
+   "say": "Soft, dark fruit: an easy red.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "2",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Domaine Drouhin",
+  "slug": "wine-list/by-the-glass-red-pinot-noir-domaine-drouhin-willamette-valley",
+  "sort": 8,
+  "data": {
+   "name": "Domaine Drouhin",
+   "grape": "Pinot Noir",
+   "region": "Willamette Valley",
+   "list": "By the glass",
+   "country": "USA",
+   "color": "Red",
+   "glass": "17",
+   "half": "",
+   "bottle": "66",
+   "size": "",
+   "pages": [
+    "Pinot Noir",
+    "Willamette Valley"
+   ],
+   "style": "Silky",
+   "notes": "Red cherry, raspberry and earth; light body, silky finish.",
+   "pairs": "Seared Salmon, Bone-In Pork Chop",
+   "say": "Light red that works with fish.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "2",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Achaval-Ferrer",
+  "slug": "wine-list/by-the-glass-red-malbec-achaval-ferrer-mendoza",
+  "sort": 9,
+  "data": {
+   "name": "Achaval-Ferrer",
+   "grape": "Malbec",
+   "region": "Mendoza",
+   "list": "By the glass",
+   "country": "Around the world",
+   "color": "Red",
+   "glass": "14",
+   "half": "",
+   "bottle": "54",
+   "size": "",
+   "pages": [
+    "Malbec",
+    "Mendoza"
+   ],
+   "style": "Plush",
+   "notes": "Blackberry, violet and cocoa; full and smooth.",
+   "pairs": "12 oz NY Strip, Bone-In Pork Chop",
+   "say": "Big, smooth and dark.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Produttori del Barbaresco",
+  "slug": "wine-list/sommelier-selection-red-barbaresco-produttori-del-barbaresco-piedmont",
+  "sort": 10,
+  "data": {
+   "name": "Produttori del Barbaresco",
+   "grape": "Barbaresco",
+   "region": "Piedmont",
+   "list": "Sommelier selection",
+   "country": "Italy",
+   "color": "Red",
+   "glass": "24",
+   "half": "",
+   "bottle": "96",
+   "size": "",
+   "pages": [
+    "Nebbiolo",
+    "Piedmont"
+   ],
+   "style": "Structured",
+   "notes": "Cherry, rose, tar and tea leaf; firm tannin, long finish.",
+   "pairs": "12 oz NY Strip, Cacio e Pepe",
+   "say": "Pale in the glass, powerful on the palate.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "5",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Pio Cesare ‘Barolo’",
+  "slug": "wine-list/by-the-bottle-red-barolo-pio-cesare-barolo-piedmont",
+  "sort": 11,
+  "data": {
+   "name": "Pio Cesare ‘Barolo’",
+   "grape": "Barolo",
+   "region": "Piedmont",
+   "list": "By the bottle",
+   "country": "Italy",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "140",
+   "size": "",
+   "pages": [
+    "Nebbiolo",
+    "Piedmont"
+   ],
+   "style": "Structured",
+   "notes": "Dried cherry, rose and leather; big tannin that softens with food.",
+   "pairs": "12 oz NY Strip",
+   "say": "The king of Piedmont: decant it.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "5",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Argiano ‘Brunello di Montalcino’",
+  "slug": "wine-list/by-the-bottle-red-brunello-argiano-brunello-di-montalcino-tuscany",
+  "sort": 12,
+  "data": {
+   "name": "Argiano ‘Brunello di Montalcino’",
+   "grape": "Brunello",
+   "region": "Tuscany",
+   "list": "By the bottle",
+   "country": "Italy",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "125",
+   "size": "",
+   "pages": [
+    "Sangiovese",
+    "Tuscany"
+   ],
+   "style": "Classic",
+   "notes": "Black cherry, leather and dried herbs; savory and long.",
+   "pairs": "Bone-In Pork Chop, Meatballs al Forno",
+   "say": "Sangiovese at its deepest.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "4",
+   "tannin": "4",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Masi ‘Costasera’ Amarone",
+  "slug": "wine-list/by-the-bottle-red-amarone-masi-costasera-amarone-veneto",
+  "sort": 13,
+  "data": {
+   "name": "Masi ‘Costasera’ Amarone",
+   "grape": "Amarone",
+   "region": "Veneto",
+   "list": "By the bottle",
+   "country": "Italy",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "110",
+   "size": "",
+   "pages": [
+    "Veneto"
+   ],
+   "style": "Rich",
+   "notes": "Raisin, black cherry and cocoa; rich and warm.",
+   "pairs": "12 oz NY Strip, Tiramisu",
+   "say": "Made from dried grapes: rich, not sweet.",
+   "body": "5",
+   "sweet": "2",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Ridge ‘Lytton Springs’",
+  "slug": "wine-list/by-the-bottle-red-zinfandel-blend-ridge-lytton-springs-sonoma",
+  "sort": 14,
+  "data": {
+   "name": "Ridge ‘Lytton Springs’",
+   "grape": "Zinfandel blend",
+   "region": "Sonoma",
+   "list": "By the bottle",
+   "country": "USA",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "78",
+   "size": "",
+   "pages": [
+    "Zinfandel",
+    "Sonoma"
+   ],
+   "style": "Juicy",
+   "notes": "Blackberry, pepper and sweet spice.",
+   "pairs": "Hot Honey Soppressata, Chicken Parmesan",
+   "say": "Juicy and peppery.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Stag’s Leap ‘Artemis’",
+  "slug": "wine-list/by-the-bottle-red-cabernet-sauvignon-stags-leap-artemis-napa-valley",
+  "sort": 15,
+  "data": {
+   "name": "Stag’s Leap ‘Artemis’",
+   "grape": "Cabernet Sauvignon",
+   "region": "Napa Valley",
+   "list": "By the bottle",
+   "country": "USA",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "130",
+   "size": "",
+   "pages": [
+    "Cabernet",
+    "Napa Valley"
+   ],
+   "style": "Classic",
+   "notes": "Blackcurrant, cedar and dark chocolate; firm and polished.",
+   "pairs": "12 oz NY Strip",
+   "say": "The steak wine.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "4",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Gaja ‘Ca’Marcanda Promis’",
+  "slug": "wine-list/by-the-bottle-red-red-blend-gaja-camarcanda-promis-tuscany",
+  "sort": 16,
+  "data": {
+   "name": "Gaja ‘Ca’Marcanda Promis’",
+   "grape": "Red blend",
+   "region": "Tuscany",
+   "list": "By the bottle",
+   "country": "Italy",
+   "color": "Red",
+   "glass": "",
+   "half": "",
+   "bottle": "98",
+   "size": "",
+   "pages": [
+    "Tuscany"
+   ],
+   "style": "Plush",
+   "notes": "Plum, cherry and herbs; Merlot-led and supple.",
+   "pairs": "Meatballs al Forno, Chicken Parmesan",
+   "say": "A Tuscan red with a soft side.",
+   "body": "4",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "3",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Vietti ‘Roero Arneis’",
+  "slug": "wine-list/by-the-bottle-white-arneis-vietti-roero-arneis-piedmont",
+  "sort": 17,
+  "data": {
+   "name": "Vietti ‘Roero Arneis’",
+   "grape": "Arneis",
+   "region": "Piedmont",
+   "list": "By the bottle",
+   "country": "Italy",
+   "color": "White",
+   "glass": "",
+   "half": "",
+   "bottle": "56",
+   "size": "",
+   "pages": [
+    "Piedmont"
+   ],
+   "style": "Bright",
+   "notes": "Pear, almond and white flowers; round and fresh.",
+   "pairs": "Lobster Tagliatelle, Burrata & Heirloom Tomato",
+   "say": "Piedmont’s white: round and fresh.",
+   "body": "3",
+   "sweet": "1",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Ruinart ‘Blanc de Blancs’",
+  "slug": "wine-list/bubbles-bubbles-champagne-ruinart-blanc-de-blancs-champagne",
+  "sort": 18,
+  "data": {
+   "name": "Ruinart ‘Blanc de Blancs’",
+   "grape": "Champagne",
+   "region": "Champagne",
+   "list": "Bubbles",
+   "country": "France",
+   "color": "Bubbles",
+   "glass": "",
+   "half": "",
+   "bottle": "150",
+   "size": "",
+   "pages": [
+    "Champagne"
+   ],
+   "style": "Elegant",
+   "notes": "Lemon, brioche and chalk; fine, lively bubbles.",
+   "pairs": "Crispy Calamari, Whipped Ricotta Toast",
+   "say": "All Chardonnay Champagne: for a celebration.",
+   "body": "2",
+   "sweet": "1",
+   "acid": "5",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ },
+ {
+  "key": "demo/wine/Saracco",
+  "slug": "wine-list/by-the-glass-bubbles-moscato-dasti-saracco-piedmont",
+  "sort": 19,
+  "data": {
+   "name": "Saracco",
+   "grape": "Moscato d’Asti",
+   "region": "Piedmont",
+   "list": "By the glass",
+   "country": "Italy",
+   "color": "Bubbles",
+   "glass": "11",
+   "half": "",
+   "bottle": "42",
+   "size": "",
+   "pages": [
+    "Piedmont"
+   ],
+   "style": "Sweet",
+   "notes": "Peach, orange blossom and honey; lightly fizzy, low alcohol.",
+   "pairs": "Tiramisu",
+   "say": "Sweet, light and fizzy.",
+   "body": "1",
+   "sweet": "4",
+   "acid": "3",
+   "tannin": "—",
+   "source": "Sample list"
+  }
+ }
+]

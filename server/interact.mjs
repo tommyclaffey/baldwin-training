@@ -9,8 +9,6 @@
 import { addHref } from './editinplace.mjs';
 import { clone, find, findAll, byName, startsWith, texts, setText } from './templates.mjs';
 import { fillVideoLibrary, fillHomeVideos, emptyVideoFrames } from './videos.mjs';
-import fs from 'node:fs';
-import path from 'node:path';
 import { ALLERGENS, COURSES } from './cms.mjs';
 
 const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
@@ -224,13 +222,12 @@ function homeMatrix(page) {
 }
 
 /* ---- Floor Plan: find a table, tonight's sections ---- */
-let PLAN;
-const planTables = () => (PLAN ??= JSON.parse(fs.readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'content', 'floorplan.json'), 'utf8')).tables);
 function floorPlan(page) {
   const finder = find(page.main, byName('Find a table'));
   if (!finder) return;
-  // A store with its own room brings its own table list (Wrenfield, the Mise demo: server/sample.mjs).
-  const tables = page.planTables || planTables();
+  // The table list comes with the page (Nov 16): the account's own floor plan carries its tables (server/account.mjs), and so
+  // does the shared template (Wrenfield's room, the Mise demo's). A page without one finds no table.
+  const tables = page.planTables || {};
   delete page.planTables;
   finder.meta = { finder: 1, list: Object.keys(tables) };
   const plan = find(page.main, (n) => (n.n || '').startsWith('IMG/floorplan'));

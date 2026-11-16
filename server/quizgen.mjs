@@ -4,7 +4,7 @@
 import { specHref, specLists } from './specs.mjs';
 import { listEntries, COURSES } from './cms.mjs';
 import { storeCache, cached } from './cache.mjs';
-import { variant } from './variant.mjs';
+import { variantKey } from './variant.mjs';
 import { allChapters, chapterSlug, shuffleSeeded, LEVELS, isProgram, progLevel, levelOfChapter, programDef, barLevelOf, chaptersOf, chaptersForLevel, levelForChapter } from './manual.mjs';
 
 export const PASS_PCT = 80;
@@ -110,8 +110,7 @@ export const BUILT_IN = (key) => key.startsWith('course:') || key.startsWith('st
  *  filter and map it, never change it. */
 const poolCache = storeCache();
 export function questionPool(db, store) {
-  const v = variant();
-  return cached(poolCache, db, store, `${v.brg ? 1 : 0}:${v.restaurant ?? ''}`, () => buildPool(db, store));
+  return cached(poolCache, db, store, variantKey(), () => buildPool(db, store));
 }
 function buildPool(db, store) {
   const recipes = listEntries(db, 'recipe', store);
