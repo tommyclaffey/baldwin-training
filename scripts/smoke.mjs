@@ -78,7 +78,7 @@ async function run(role, width, demo = 'baldwin') {
       if (r?.missing) fails.push(`${p}: page not found`);
       if (r?.wide && width < 800) fails.push(`${p}: scrolls sideways`);
       for (const v of r?.csp || []) fails.push(`${p}: CSP blocked ${v}`);
-      if (p === '/allergen-guide') for (const f of (await b.ev(ALLERGEN_CHECK.replace('PHONE', String(width < 860)))) || ['allergen check did not run']) fails.push(`${p}: ${f}`);
+      if (p === '/allergen-guide') for (const f of (await b.ev(ALLERGEN_CHECK.replaceAll('PHONE', String(width < 860)))) || ['allergen check did not run']) fails.push(`${p}: ${f}`);
     }
     fails.push(...b.problems);
     console.log(`${fails.length ? '✖' : '✔'} ${tag}: ${steps} tour steps, ${PAGES.length} pages`);
