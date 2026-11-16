@@ -36,10 +36,12 @@ const STOPS: Stop[] = [
   { path: '/the-bar/cocktail-specs', target: '[data-name^="Spec · "]', title: 'Specs for bartenders', body: 'One card per drink: the amounts, glass, ice, method and garnish. The spec quizzes test these builds.' },
   // Nov 14: Bar Prep (Figma 632:803). The demo's bar hasn't counted today, so the two steps show where a shift starts.
   { path: '/prep', target: '.prp-steps2', title: 'Bar prep', body: 'Juices, syrups and garnishes. The opener counts what the bar walked in with, then preps to par. Reports show waste week over week, and last week’s summary posts to #Bar every Monday.', manager: true },
+  // Nov 15 (audit 20): the menu import, for managers
+  { path: '/import/new', target: '.mi-upload', title: 'Import a menu', body: 'Upload a menu as a PDF or photos. The dishes come back as a list to review, allergens included, before anything goes in the book.', manager: true },
   { path: '/the-bar/wine', target: '[data-name="Section · By the glass"]', title: 'The wine list', body: 'Every wine has its own page: tasting notes, what to pair and what to say.' },
   { path: '/quizzes', target: '.qb', title: 'Build a quiz', body: 'Pick any subjects and a length. New Questions never repeats until you’ve seen them all.' },
   // Nov 10 (audit: the demo never showed the programs): the training programs, and a certificate earned
-  { path: '/cocktail-program', target: '[data-name="Your path"]', title: 'Training programs', body: 'Cocktail, Beer and Sommelier programs, each in levels with video lessons and practice cards.' },
+  { path: '/cocktail-program', target: '[data-name="Your path"]', title: 'Training programs', body: 'Cocktail, Beer, Sommelier and Hospitality programs, each in levels with video lessons, practice cards and a certificate.' },
   { path: '/cocktail-program/level-1', target: '[data-name="Hero"]', title: 'Every level ends in a final', body: 'Pass the final, and the practical where a level has one, and the level is yours.' },
   { path: '/certificate/bar-1', target: '.cert', title: 'A certificate to keep', body: 'You passed Level 1 of the Cocktail Program. Print it or save it as a PDF; your manager sees it too.', staff: true },
   { path: '/sommelier-program', target: '[data-name="Your path"]', title: 'The Sommelier lessons', body: 'Built on the Court of Master Sommeliers’ path, with videos and a practice exam at each level.' },
@@ -99,17 +101,19 @@ function trapKeys(card: () => HTMLElement | null, close: () => void, more?: (e: 
 export function DemoBar() {
   const { user, refresh } = useSession();
   const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
   if (!user?.demo) return null;
   const manager = user.role !== 'staff';
   const kind = demoKindOf(user); // Nov 11: The Baldwin's demo or the Mise demo (Wrenfield); switching role stays in the same one
+  // Nov 15 (audit 19): a refused switch says why and leaves you where you are (it used to drop you on the picker silently).
   const swap = async () => {
-    setBusy(true);
+    setBusy(true); setErr('');
     try { await api('/api/demo/start', { method: 'POST', body: { role: manager ? 'employee' : 'manager', demo: kind } }); markDemoTab(); await refresh(); location.assign(manager ? '/' : '/admin'); }
-    catch { location.assign(demoHome(kind)); }
+    catch (e) { setErr((e as Error).message || 'That didn’t switch. Try again.'); setBusy(false); }
   };
   return (
     <div className="demo-bar" role="region" aria-label="Demo">
-      <p><span className="demo-long">You’re in <strong>{user.store?.name || 'The Baldwin'}</strong>, a sample restaurant, as </span>{manager ? <><span className="demo-long">the </span><strong>Manager</strong></> : <><span className="demo-long">an </span><strong>Employee</strong></>}<span className="demo-short"> view</span><span className="demo-long">.</span></p>
+      {err ? <p className="demo-bar-err" role="alert">{err}</p> : <p><span className="demo-long">You’re in <strong>{user.store?.name || 'The Baldwin'}</strong>, a sample restaurant, as </span>{manager ? <><span className="demo-long">the </span><strong>Manager</strong></> : <><span className="demo-long">an </span><strong>Employee</strong></>}<span className="demo-short"> view</span><span className="demo-long">.</span></p>}
       <div className="demo-bar-actions">
         <button type="button" className="main" onClick={() => void swap()} disabled={busy}>{busy ? 'Switching…' : <><span className="demo-long">{manager ? 'See It as an Employee' : 'See It as a Manager'}</span><span className="demo-short">{manager ? 'As Employee' : 'As Manager'}</span></>}</button>
         <button type="button" onClick={() => setStep(0)}><span className="demo-long">Show Me Around</span><span className="demo-short">Tour</span></button>
@@ -120,17 +124,19 @@ export function DemoBar() {
 }
 
 const CHEVRON = <svg className="dw-chev" width="8" height="12" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1.5 6 6l-4.5 4.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+// Nov 15 (audit 20): the cards name what's really here (the programs, Team Chat, Prep, Import a Menu).
 const TRY_STAFF = [
   { title: 'Follow your path', body: 'What a server learns, week by week, and what’s next for you', to: '/my-path' },
   { title: 'Look up a dish', body: 'Allergens, what to say at the table and what to pair it with', to: '/food-matrix' },
-  { title: 'Find a cocktail spec', body: 'Every build in one place, for bartenders', to: '/the-bar/cocktail-specs' },
-  { title: 'Earn a certificate', body: 'Cocktail, Beer and Sommelier programs: video lessons, a final, a certificate', to: '/cocktail-program' },
+  { title: 'Earn a certificate', body: 'Cocktail, Beer, Sommelier and Hospitality programs, each with lessons and a final', to: '/cocktail-program' },
+  { title: 'Open Team Chat', body: 'Tonight’s pre-shift note and a message waiting for you', to: '/team-chat/foh' },
 ];
 const TRY_MANAGER = [
-  { title: 'Change the menu', body: 'Add a dish or edit one, and everyone sees it on Save', to: '/admin/pages/recipe' },
   { title: 'Sign people off', body: 'Your team asked you to watch them. Sign off or say not yet', to: '/admin' },
-  { title: 'See your team', body: 'Each person’s path, what’s late, their quizzes and programs', to: '/admin/people' },
-  { title: 'See the training programs', body: 'Cocktail, Beer and Sommelier, each level with a final and a certificate', to: '/cocktail-program' },
+  { title: 'See your team', body: 'Each person’s path, what’s late, their quizzes and certificates', to: '/admin/people' },
+  { title: 'Import a menu', body: 'Upload a menu and review the dishes before they go in the book', to: '/import/new' },
+  { title: 'Track bar prep', body: 'Juices, syrups and garnishes: what to make tonight and what got wasted', to: '/prep' },
+  { title: 'Pin the pre-shift note', body: 'Team Chat for the floor, the bar and the kitchen, with who read it', to: '/team-chat/foh' },
 ];
 
 function WelcomeCard({ manager, place }: { manager: boolean; place: string }) {
@@ -152,7 +158,7 @@ function WelcomeCard({ manager, place }: { manager: boolean; place: string }) {
       <div ref={card} className="dw" role="dialog" aria-modal="true" aria-labelledby={titleId} onClick={(e) => e.stopPropagation()}>
         <span className="dw-pill">Live Demo</span>
         <h2 id={titleId}>Welcome to Mise Academy</h2>
-        <p className="dw-lede">One training book for the whole restaurant, on every phone: the menu, the bar, the wine list, the lessons and the quizzes.</p>
+        <p className="dw-lede">One training book for the whole restaurant, on every phone: the menu, the bar, the wine list, training programs and team chat.</p>
         <p className="dw-persona">{manager ? `You’re Rosalind Hart, the manager of ${place}` : `You’re Marisol Vega, a server at ${place}`}. {place === 'The Baldwin' ? 'It’s a sample restaurant: the dishes, house cocktails and people are made up.' : 'It’s a sample restaurant: the menu, drinks, wine list and people are all made up.'} Refresh anytime to start over.</p>
         <p className="dw-label">Try These</p>
         <ol className="dw-steps">

@@ -27,6 +27,7 @@ import { fillHome } from './home.mjs';
 import { fillSample, sampleSommAbout } from './sample.mjs';
 import { storeCache, cached, EVERY_STORE } from './cache.mjs';
 import { variant, asVariant, isBrgCompany } from './variant.mjs';
+import { demoDish, demoMentions } from './demopairs.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -254,13 +255,15 @@ function forViewer(page, user) {
 const OLD_DISH = { 'Short Rib': 'Braised Short Rib', Cauliflower: 'Roasted Cauliflower', Agnolotti: 'Squash Agnolotti', 'Beet Confit': 'Beet Salad', 'Scallop Rockefeller': 'Scallops Rockefeller', 'Mike’s Vegas Pie': 'Mike’s Vegas Winner', "Mike's Vegas Pie": 'Mike’s Vegas Winner' };
 /** "Pairs with" cards on wine, beer and spirit pages: each dish opens its own page, under its menu name.
  *  A dish that's no longer on the menu (archived) leaves the card; an empty card goes. */
-function linkDishPairs(page, recipes) {
+function linkDishPairs(page, recipes, demo = false) {
   const byName = new Map(recipes.map((e) => [squash(e.data.name), e]));
+  const menu = recipes.map((e) => e.data.name);
   for (const card of findAll(page.main, (n) => n.n === 'Pairs with' && (n.c || []).some(startsWith('Pair · ')))) {
     card.c = card.c.filter((c) => {
       if (!startsWith('Pair · ')(c)) return true;
       const old = c.n.slice(7);
-      const e = byName.get(squash(OLD_DISH[old] || old));
+      // A demo copy (Nov 15, audit 23): The Baldwin's dish becomes the demo menu's closest one, or goes.
+      const e = byName.get(squash(OLD_DISH[old] || old)) || (demo ? byName.get(squash(demoDish(OLD_DISH[old] || old, menu))) : null);
       if (!e) return false;
       c.to = '/' + e.slug; c.n = 'Pair · ' + e.data.name;
       const t = texts(c)[0]; if (t && t.s === old) setText(t, e.data.name);
@@ -681,7 +684,7 @@ function fullBook(db, file, page) {
     const SITES = { 'Restaurant · J.Baldwin’s': 'https://www.jbaldwins.com', 'Restaurant · Testa Barra': 'https://www.testabarra.com', 'Restaurant · The Baldwin': 'https://thebaldwinshelby.com' };
     for (const [n, url] of Object.entries(SITES)) { const card = find(page.main, byName(n)); if (card) card.to = url; }
   }
-  linkDishPairs(page, ordered(db, 'recipe'));
+  linkDishPairs(page, ordered(db, 'recipe'), isDemoStore(db));
   linkClassicLists(page, ordered(db, 'classic'));
   if (file === '4-2') fillHome(db, page, { store: SCOPE.row, user: SCOPE.user, recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine'), bowl: bowlSvg() });
   if (file === '14-2') { classicTable(page, ordered(db, 'classic')); houseRows(page, ordered(db, 'house')); signatureCards(page, ordered(db, 'house')); }
@@ -692,12 +695,50 @@ function fullBook(db, file, page) {
   if (file === '25-2') wineCards(page, wineVideos(db));
   if (entry && entry.slug.startsWith('spirit/')) fillShelf(page, entry.slug, baseIndex(), ordered(db, 'shelf'), basePage);
   if (file === '25-2') fillWinePage(page, ordered(db, 'wine'), basePage);
+  if (file === '25-2') wineProgram(page, ordered(db, 'recipe'), isDemoStore(db));
   if (entry && wineKind(entry.slug)) fillWineShelf(page, entry.slug, entry.title, ordered(db, 'wine'), basePage);
   if (file === '26-2') fillBeerPage(page, baseIndex(), ordered(db, 'beer'), basePage);
   if (entry && entry.slug.startsWith('beer/')) fillBeerStyle(page, entry.slug, baseIndex(), ordered(db, 'beer'), basePage);
   if (file === '294-2') fillBackBar(page, ordered(db, 'shelf'), ordered(db, 'house'));
   if (file === '430-17') fillSpecs(page, ordered(db, 'house'), ordered(db, 'classic'));
   return page;
+}
+
+/** Is this store a demo copy (either demo)? */
+function isDemoStore(db) {
+  if (!SCOPE.row?.company_id) return false;
+  if (SCOPE.demo === undefined) SCOPE.demo = !!db.prepare('SELECT demo FROM companies WHERE id = ?').get(SCOPE.row.company_id)?.demo;
+  return SCOPE.demo;
+}
+
+/** The Wine page's "Wine program" cards (drawn in Figma, Nov 15 audit 23): a price box with no price ("$—") goes. In a demo
+ *  copy, the dishes they name become the demo menu's closest dish, or the line goes. */
+function wineProgram(page, recipes, demo) {
+  const sec = find(page.main, byName('Section · Wine program'));
+  if (!sec) return;
+  const menu = recipes.map((e) => e.data.name);
+  const cut = (n) => { const p = parentOf(page.main, n); if (p) p.c = p.c.filter((x) => x !== n); };
+  for (const card of findAll(sec, startsWith('Wine · '))) {
+    for (const det of findAll(card, byName('Details'))) {
+      for (const box of [...(det.c || [])]) if (texts(box).slice(1).every((t) => /^\$?\s*[—–-]?\s*$/.test(t.s || ''))) cut(box);
+      if (!(det.c || []).length) cut(det);
+    }
+    if (!demo) continue;
+    for (const pw of findAll(card, byName('Pairs with'))) {
+      const t = texts(pw).find((x) => /^Pairs with /.test(x.s || ''));
+      const e = t && recipes.find((r) => r.data.name === demoDish(t.s.slice(11).trim(), menu));
+      if (!e) { cut(pw); continue; }
+      setText(t, 'Pairs with ' + e.data.name); t.n = t.s;
+      pw.to = '/' + e.slug;
+      const img = find(pw, (n) => n.f?.some((f) => f.img));
+      if (img && e.data.photo) { img.f = [{ img: e.data.photo, m: 'FILL' }]; img.n = 'IMG/' + e.data.name; }
+    }
+    for (const t of texts(card)) {
+      if (/^Pairs with /.test(t.s || '')) continue;
+      const v = demoMentions(t.s, menu);
+      if (v === null) dropLine(card, t); else if (v !== t.s) setText(t, v);
+    }
+  }
 }
 
 /** A store without its own designed book: the shared library, its own lists, and empty states for its own pages. */

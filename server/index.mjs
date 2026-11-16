@@ -49,7 +49,11 @@ try { const n = cleanOrphans(db); if (n) console.log(`Removed ${n} quiz history 
 prep.startWeekly(db, (e) => logError(db, 'server', 'weekly prep post', e));
 setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
 try { warmContent(db); } catch (e) { console.error('warm-up', e); } // before listening: the first visitor doesn't wait for it
-const demoLimiter = new LoginLimiter(30, 60 * 60_000, 'demo-start'); // 30 demo starts an hour per address
+// Nov 15 (audit 19): fresh demo starts are limited per address; switching employee ↔ manager inside a demo isn't a new
+// start (it swaps the copy), so it has its own, much higher cap. A demo on shared event or office Wi-Fi used to lock
+// everyone out after 30 switches.
+const demoLimiter = new LoginLimiter(60, 60 * 60_000, 'demo-start'); // 60 fresh demo starts an hour per address
+const demoSwitchLimiter = new LoginLimiter(300, 60 * 60_000, 'demo-switch'); // role switches an hour per address
 const quizLimiter = new LoginLimiter(60, 60 * 60_000); // 60 quiz saves an hour per address
 // Bottle scanner in the demo (Nov 12, Tommy: "scanner sounds good"): the same scanner, with limits. Real companies have none.
 //   per demo copy: 10 photos read, 60 cuts, 5 saved photos (a spin counts as one) · per address: 30 photos and 150 cuts an hour
@@ -264,17 +268,21 @@ async function api(req, res, url) {
   if (p === '/api/demo/start' && m === 'POST') {
     if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
     const ip = clientIp(req);
-    if (!demoLimiter.check(ip)) fail(429, 'Too many demos from here. Try again in an hour.');
+    // Already in a demo: this is a switch (employee ↔ manager), not a new visitor.
+    const switching = !!(c.user && isDemoCompany(db, c.user.company_id));
+    const limiter = switching ? demoSwitchLimiter : demoLimiter;
+    if (!limiter.check(ip)) fail(429, switching ? 'That’s a lot of switching from here. Try again in a few minutes.' : 'Too many demos from here. Try again in an hour.');
     const b = await readJson(req, 2000);
     // Nov 11: two demos. `demo: 'mise'` is Wrenfield in the Mise look (/demo/mise); anything else is The Baldwin's (/demo).
     const which = Object.hasOwn(DEMOS, String(b.demo)) ? String(b.demo) : 'baldwin';
     const r = startDemo(db, String(b.role || ''), which);
     if (!r) fail(400, 'Pick a role to start.');
-    demoLimiter.record(ip);
+    limiter.record(ip);
     const secure = isSecure(req);
     const set = [sessionCookie(r.token, { secure, days: 1, embeddable: true })];
     if (c.user && !isDemoCompany(db, c.user.company_id)) set.push(returnCookie(c.token, { secure }));
-    else if (c.user) endSession(db, c.token); // switching demo roles: the old demo session goes
+    // switching demo roles: the old copy goes with its session (like a refresh), so switches never pile up copies
+    else if (switching) dropDemo(db, c.user.company_id);
     return sendJson(res, 200, { ok: true }, { 'Set-Cookie': set });
   }
   // Nov 7, Tommy: "have all my demo restart after a refresh". A refresh swaps this visitor's copy for a new one, same role.

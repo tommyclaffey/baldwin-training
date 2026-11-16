@@ -10,9 +10,10 @@ import { exitDemo, markDemoTab, type DemoKind } from '../lib/demo';
 import { setPageBrand } from '../lib/theme';
 
 // Nov 4, Tommy: "one account for an employee and then one account that is a manager/admin."
+// Nov 15 (audit 20): the lines name what's really in each view.
 const ROLES = [
-  { key: 'employee', name: 'Employee', line: 'The book on your phone: the menu, cocktails, wine, the Sommelier lessons and quizzes.' },
-  { key: 'manager', name: 'Manager / Admin', line: 'Everything employees see, plus adding dishes and cocktails, tonight’s sections and quiz results.', lead: true },
+  { key: 'employee', name: 'Employee', line: 'The menu, bar and wine list on your phone. Your training path, Team Chat, and the Cocktail, Beer, Sommelier and Hospitality programs with certificates.' },
+  { key: 'manager', name: 'Manager / Admin', line: 'Everything employees see, plus People and Sign-offs, Prep for the bar, Import a Menu, editing dishes and drinks, and quiz results.', lead: true },
 ];
 const COPY: Record<DemoKind, { sub: string; foot: string }> = {
   baldwin: {

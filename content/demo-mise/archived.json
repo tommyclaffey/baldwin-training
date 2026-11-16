@@ -1,0 +1,98 @@
+[
+ {
+  "_note": "Demo data (Nov 15 audit 24): taken off the menu at the end of summer, so the Archived page has something to show and restore. Made up, like the rest of the demo.",
+  "collection": "recipe",
+  "slug": "recipe/sweet-corn-chowder",
+  "daysAgo": 12,
+  "data": {
+   "name": "Sweet Corn Chowder",
+   "course": "Snacks & Small Plates",
+   "price": "11",
+   "station": "Sauté",
+   "description": "Sweet corn, potato and leek chowder with smoked bacon and chives.",
+   "photo": "",
+   "ingredients": [
+    "Sweet corn",
+    "Potato",
+    "Leek",
+    "Cream",
+    "Smoked bacon",
+    "Chives"
+   ],
+   "allergens": [
+    "Dairy",
+    "Pork",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Late-summer corn in a creamy chowder with a little smoke."
+  }
+ },
+ {
+  "_note": "Demo data (Nov 15 audit 24): taken off the menu at the end of summer, so the Archived page has something to show and restore. Made up, like the rest of the demo.",
+  "collection": "house",
+  "slug": "signature/cucumber-gimlet",
+  "daysAgo": 12,
+  "data": {
+   "name": "Cucumber Gimlet",
+   "menuSection": "Specialty Cocktails",
+   "price": "14",
+   "tagline": "",
+   "description": "",
+   "photo": "",
+   "glass": "Coupe",
+   "method": "Shake",
+   "ice": "None",
+   "garnish": "Cucumber ribbon",
+   "tableLine": "",
+   "tableIce": "",
+   "build": [
+    {
+     "amount": "2 oz",
+     "ingredient": "Gin",
+     "link": "",
+     "spirit": true
+    },
+    {
+     "amount": "0.75 oz",
+     "ingredient": "Lime juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "0.75 oz",
+     "ingredient": "Simple syrup",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "3 slices",
+     "ingredient": "Cucumber",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Shake.",
+    "Serve in a coupe.",
+    "Garnish: cucumber ribbon."
+   ],
+   "specNote": "",
+   "tags": [
+    "Fresh",
+    "Crisp"
+   ],
+   "tasteLine": "Cool cucumber and lime, crisp and dry.",
+   "pairs": "Charred Shishito Peppers",
+   "spiritName": "Gin",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "",
+   "spiritLinkLabel": "",
+   "say": "",
+   "story": "A summer drink, off the menu until next year.",
+   "video": null,
+   "photoCredit": ""
+  }
+ }
+]

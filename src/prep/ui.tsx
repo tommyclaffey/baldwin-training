@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
-import { api } from '../lib/api';
+import { api, isDenied } from '../lib/api';
 import { useSession } from '../lib/session';
 import { theme } from '../lib/theme';
 import { amt, dayLabel, KIND_LABEL, pageTitle, roleStyle, shelfWords, timeOf, UNIT_LABEL, useByWords, type Kind, type Person, type Today } from './data';
@@ -59,7 +59,7 @@ export function DemoPill() {
   return user?.demo ? <span className="prp-pill demo" title="This is a sample restaurant: every number here is made up.">Demo data</span> : null;
 }
 export function ErrorBox({ error, retry }: { error: string; retry?: () => void }) {
-  return <div className="prp-error" role="alert">{error}{retry && <button type="button" className="prp-btn sm" onClick={retry}>Try Again</button>}</div>;
+  return <div className="prp-error" role="alert">{error}{retry && !isDenied(error) && <button type="button" className="prp-btn sm" onClick={retry}>Try Again</button>}</div>;
 }
 export const Loading = () => <div className="prp-loading" aria-busy="true"><div className="loader" /></div>;
 export function Toast({ text, onDone }: { text: string; onDone: () => void }) {

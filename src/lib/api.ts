@@ -1,5 +1,9 @@
 // Small fetch wrapper. Writes carry X-BT so the server can block cross-site requests.
-export class ApiError extends Error { constructor(public status: number, message: string) { super(message); } }
+export class ApiError extends Error { constructor(public status: number, message: string) { super(message); if (status === 401 || status === 403) DENIED.add(message); } }
+// Nov 15 (audit 24): a "you can't do that" answer (401/403) isn't fixed by trying again. Screens keep errors as plain text,
+// so the messages of refusals are remembered here, and the shared error notes leave out Try Again for them.
+const DENIED = new Set<string>();
+export const isDenied = (message: string | null | undefined) => !!message && DENIED.has(message);
 
 export async function api<T = unknown>(path: string, opts: { method?: string; body?: unknown } = {}): Promise<T> {
   const res = await fetch(path, {
