@@ -19,7 +19,10 @@ export function initOps(db) {
   db.exec(`CREATE TABLE IF NOT EXISTS errors(id INTEGER PRIMARY KEY, kind TEXT NOT NULL, path TEXT, message TEXT NOT NULL,
     stack TEXT, user_id INT, count INT NOT NULL DEFAULT 1, first_at TEXT NOT NULL, last_at TEXT NOT NULL)`);
   db.exec('CREATE INDEX IF NOT EXISTS errors_last ON errors(last_at)');
-  const tick = () => { try { dailySnapshot(db); } catch (e) { logError(db, 'server', 'backup', e); } };
+  const tick = () => {
+    try { dailySnapshot(db); } catch (e) { logError(db, 'server', 'backup', e); }
+    try { pruneErrors(db); } catch (e) { console.error('prune errors', e); }
+  };
   setTimeout(tick, 60_000).unref();
   setInterval(tick, 3600_000).unref();
 }
@@ -36,6 +39,12 @@ export function dailySnapshot(db) {
     if (m && new Date(m[1] + 'T12:00:00Z').getTime() < cutoff) fs.rmSync(path.join(BACKUPS, f));
   }
   return file;
+}
+
+/** The error log keeps 90 days (Nov 15): older rows go, so it can't grow without end. */
+export const ERROR_DAYS = 90;
+export function pruneErrors(db, days = ERROR_DAYS) {
+  return Number(db.prepare('DELETE FROM errors WHERE last_at < ?').run(new Date(Date.now() - days * 864e5).toISOString()).changes);
 }
 
 /** A fresh snapshot, gzipped and encrypted (AES-256-GCM). Layout: "MISEBK1" · iv(12) · tag(16) · ciphertext. */

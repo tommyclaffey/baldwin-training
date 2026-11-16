@@ -85,3 +85,16 @@ test('a malformed address answers 400, not a server error', async () => {
   }
   assert.equal((await fetch(BASE + '/allergen-guide')).status, 200, 'normal addresses still load');
 });
+
+test('the error log keeps 90 days', async () => {
+  process.env.DATA_DIR = dir;
+  const { DatabaseSync } = await import('node:sqlite');
+  const { pruneErrors } = await import('../server/ops.mjs');
+  const db = new DatabaseSync(':memory:');
+  db.exec(`CREATE TABLE errors(id INTEGER PRIMARY KEY, kind TEXT NOT NULL, path TEXT, message TEXT NOT NULL,
+    stack TEXT, user_id INT, count INT NOT NULL DEFAULT 1, first_at TEXT NOT NULL, last_at TEXT NOT NULL)`);
+  const at = (days) => new Date(Date.now() - days * 864e5).toISOString();
+  for (const d of [1, 89, 91, 400]) db.prepare("INSERT INTO errors(kind, message, first_at, last_at) VALUES ('server', ?, ?, ?)").run('e' + d, at(d), at(d));
+  assert.equal(pruneErrors(db), 2);
+  assert.deepEqual(db.prepare('SELECT message FROM errors ORDER BY id').all().map((r) => r.message), ['e1', 'e89']);
+});
