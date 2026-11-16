@@ -99,6 +99,9 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           {(user.role === 'owner' || (user.demo && user.role === 'manager')) && <NavLink to="/admin/company-data">Company Data</NavLink>}
           <NavLink to="/admin/account">Your Account</NavLink>
           {isSuper && <NavLink to="/admin/super" className="nav-super">Super Admin</NavLink>}
+          {/* Phones (Nov 15, audit 16): the store line and the way back fold into the end of the menu strip (styles.css hides these on wider screens) */}
+          {!(user.canSwitchStore && (user.stores || []).length > 1) && user.store && <span className="admin-strip-only admin-strip-store">Store: <strong>{user.store.name}</strong></span>}
+          <Link to="/" className="admin-strip-only">← Back to the Book</Link>
         </nav>
         <Link to="/" className="admin-back">← Back to the Book</Link>
       </aside>

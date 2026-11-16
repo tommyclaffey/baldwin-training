@@ -3413,3 +3413,23 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   .cd-table td.cd-row-actions { white-space: normal; padding-top: 10px; }
   .cd-table td.cd-row-actions:empty { display: none; }
 }
+
+/* Admin on phones (Nov 15, audit 16): the header and demo bar took ~340 px before any content, and the Sign-offs badge was
+   cut off at the edge of the menu strip. The logo and DEMO line share one row; the store line and Back to the Book fold
+   into the end of the menu strip; the strip's items are tighter, so Home, Team Chat, People and Sign-offs (with their
+   counts) are all on screen at 375 and up, and only the last few px fade to show it scrolls. Desktop unchanged. */
+.admin-strip-only, .admin-side nav .admin-strip-only { display: none; }
+@media screen and (max-width: 900px) {
+  .admin-side { padding: 10px 12px 8px; gap: 8px; }
+  .admin-brand { flex-direction: row; align-items: center; gap: 12px; margin: 0; }
+  .admin-logo img { width: auto; height: 32px; margin: 0; }
+  .admin-side > .admin-back, .admin-side > .admin-working:not(:has(a)) { display: none; }
+  .admin-side > .admin-working { margin: 0; }
+  .admin-side nav { gap: 2px; padding-right: 20px; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 14px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 14px), transparent); }
+  .admin-side nav a, .admin-side nav .admin-strip-only { padding: 9px 8px; font-size: 14px; }
+  .admin-side nav .admin-count { min-width: 20px; height: 20px; padding: 0 5px; font-size: 11.5px; }
+  .admin-side nav .admin-count.at { padding: 0 6px; }
+  .admin-side nav .admin-strip-only { display: flex; align-items: center; white-space: nowrap; flex: none; }
+  .admin-strip-store { color: var(--on-dark-muted); gap: 4px; }
+  .admin-strip-store strong { color: var(--on-dark-2); font-weight: 600; }
+}
