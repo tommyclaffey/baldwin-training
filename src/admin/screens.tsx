@@ -518,10 +518,11 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
           {data.invites.length > 0 && (
             <>
               <h2 className="sub">Open invites</h2>
-              <table className="table">
+              {/* Nov 16: stacks on a phone (Cancel was cut off at 390) */}
+              <table className="table stack-table">
                 <thead><tr><th>Email</th><th>Role</th><th>Expires</th><th /></tr></thead>
                 <tbody>{data.invites.map((i) => (
-                  <tr key={i.id}><td>{i.email}</td><td>{ROLE_LABEL[i.role as Role] || i.role}{i.storeName ? ` · ${i.storeName}` : ''}</td><td>{when(i.expires_at)}</td><td><button className="link-btn danger" onClick={() => void run(() => api(`/api/team/invites/${i.id}`, { method: 'DELETE' }))}>Cancel</button></td></tr>
+                  <tr key={i.id}><td><strong>{i.email}</strong></td><td data-label="Role">{ROLE_LABEL[i.role as Role] || i.role}{i.storeName ? ` · ${i.storeName}` : ''}</td><td data-label="Expires">{when(i.expires_at)}</td><td className="stores-actions"><button className="link-btn danger" onClick={() => void run(() => api(`/api/team/invites/${i.id}`, { method: 'DELETE' }))}>Cancel</button></td></tr>
                 ))}</tbody>
               </table>
             </>

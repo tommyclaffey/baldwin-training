@@ -20,9 +20,10 @@ export function LegalLinks({ className = '' }: { className?: string }) {
   const { legal } = useSession();
   if (!legal.public) return null;
   return (
-    <nav className={'legal-links ' + className} aria-label="Privacy, terms and help">
+    // a div with the navigation role, not <nav>: the admin and book sidebars style every <nav> inside them as a menu
+    <div role="navigation" className={'legal-links ' + className} aria-label="Privacy, terms and help">
       <Link to="/privacy">Privacy</Link><span aria-hidden="true">·</span><Link to="/terms">Terms</Link><span aria-hidden="true">·</span><Link to="/help">Help</Link>
-    </nav>
+    </div>
   );
 }
 

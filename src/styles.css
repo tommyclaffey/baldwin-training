@@ -3511,6 +3511,9 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 /* An invite or promotion link: emailed or not, and Copy Link either way */
 .invite-sent { gap: 10px; }
 .invite-sent .row input { flex: 1; min-width: 200px; }
+.invite-sent p { margin: 0; }
+.invite-sent .row .link-btn { align-self: center; }
+.pp-add-invite[role="status"] p { margin: 0; }
 .pp-add .invite-sent { margin-top: 4px; }
 /* Privacy · Terms · Help links: only once the pages are public (src/components/Legal.tsx) */
 .legal-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font: 500 13px/1.4 var(--font-body, 'Archivo', sans-serif); }
