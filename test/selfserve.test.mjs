@@ -18,12 +18,12 @@ const dirB = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-self-b-'));
 const PORT_A = 7500 + Math.floor(Math.random() * 300), PORT_B = PORT_A + 800; // clear of the other files' ranges
 const servers = [];
 
-// The legal file: the repo's own words, blanks empty (A) or filled (B).
+// The legal file: the repo's own words, with three blanks emptied (A: a draft) or filled with test values (B).
 const LEGAL = fs.readFileSync(path.join(root, 'content/legal.md'), 'utf8');
 const fill = (src, v) => src.replace(/^company:.*$/m, `company: ${v.company}`).replace(/^state:.*$/m, `state: ${v.state}`)
   .replace(/^supportEmail:.*$/m, `supportEmail: ${v.supportEmail}`).replace(/^date:.*$/m, `date: ${v.date}`);
 const legalA = path.join(dirA, 'legal.md'), legalB = path.join(dirB, 'legal.md');
-fs.writeFileSync(legalA, LEGAL);
+fs.writeFileSync(legalA, fill(LEGAL, { company: '12 Tribes Media LLC', state: '', supportEmail: '', date: '' }));
 fs.writeFileSync(legalB, fill(LEGAL, { company: 'Testco LLC', state: 'Michigan', supportEmail: 'help@mise.test', date: 'November 20, 2026' }));
 
 // The fake Resend: records every email; an address with "bounce" in it gets a 500.
@@ -342,11 +342,11 @@ test('legal pages with every blank filled: public, blanks filled in, links on', 
   assert.equal((await anon('/api/legal/cookies')).status, 404);
 });
 
-test('legal: three of four blanks is still a draft; the repo’s file has the company and three blanks', async () => {
+test('legal: three of four blanks is still a draft; the repo’s file is filled in and public', async () => {
   const { parse } = await import('../server/legal.mjs');
   const repo = parse(LEGAL);
-  // Nov 16: the company is known (Mise Academy is a DBA of 12 Tribes Media LLC); state, support email and date aren't yet
-  assert.deepEqual(repo.values, { company: '12 Tribes Media LLC', state: '', supportEmail: '', date: '' }, 'content/legal.md ships with three blanks empty');
+  // Nov 16 (Tommy: "Fill it all in"): Mise Academy is a DBA of 12 Tribes Media LLC; Michigan law; support@miseacademy.app
+  assert.deepEqual(repo.values, { company: '12 Tribes Media LLC', state: 'Michigan', supportEmail: 'support@miseacademy.app', date: 'November 16, 2026' });
   assert.deepEqual(Object.keys(repo.pages).sort(), ['help', 'privacy', 'terms']);
   assert.match(repo.pages.privacy.join(' '), /run by \[Company\], doing business as Mise Academy/);
   assert.match(repo.pages.terms.join(' '), /between \[Company\], doing business as Mise Academy, and/);
@@ -360,4 +360,12 @@ test('legal: three of four blanks is still a draft; the repo’s file has the co
   fs.utimesSync(file, new Date(), new Date(Date.now() + 5000));
   assert.equal(legalState().filled, false, 'the support email has to be an email');
   delete process.env.LEGAL_FILE;
+  // the repo's own file: every blank filled, so the pages are public, with no bracketed placeholders left
+  assert.equal(legalState().filled, true);
+  for (const kind of ['privacy', 'terms', 'help']) {
+    const page = legalPage(kind);
+    assert.equal(page.draft, false, kind);
+    assert.ok(!/\[(Company|State|Support email|Date)\]/.test(JSON.stringify(page.blocks)), `${kind}: no placeholders`);
+  }
+  assert.ok(legalPage('terms').blocks.flatMap((b) => b.ol || []).flat().map((r) => r.t).join('').includes('Michigan law applies'));
 });

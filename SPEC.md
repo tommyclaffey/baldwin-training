@@ -23,7 +23,7 @@
 - Undo for a single page edit from the screen (the API supports it; no button yet).
 - Real videos and dish photos until each restaurant uploads its own (Unsplash stand-ins now).
 - Sign-up page and billing for new companies; prices for the plans.
-- Prices and billing. Privacy, Terms and Help are written (`content/legal.md`) but stay hidden until their blanks are filled (company done Nov 16: 12 Tribes Media LLC, doing business as Mise Academy; state, support email and date still empty).
+- Prices and billing. Privacy, Terms and Help are public since Nov 16 (`content/legal.md`: 12 Tribes Media LLC, doing business as Mise Academy; Michigan; support@miseacademy.app). A lawyer's read is still to come.
 
 ## Roles (Oct 28)
 - **Super admin:** Tommy (primary, set by `SUPERADMIN_EMAIL`) plus teammates he invites. Belongs to no company; sees and changes every company and person, signs in as someone for support (logged, banner shown), soft-deletes with 30 days to restore. Two-step sign-in (authenticator app) is required before the super admin opens. Only the primary adds or removes super admins. Hidden: everyone else gets “not found”.

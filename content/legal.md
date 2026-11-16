@@ -3,13 +3,13 @@
 # Fill in all four lines below and the pages go public at /privacy, /terms and /help, with their links on the sign-in
 # screens, the book's sidebar and the admin. While any line is empty, the public gets the normal "not found" and only a
 # super admin sees a preview marked "Draft · not public". Nothing else needs changing.
-# company: the legal name (Tommy, Nov 16). Mise Academy is a DBA of it; the words below say so. If the LLC is renamed
-# (Twelve Tribes), change this line.
-# supportEmail: an address that reaches a person, e.g. support@miseacademy.app. date: the day it goes public.
+# All four filled by Tommy, Nov 16 ("Fill it all in"): the pages went public with the Nov 16 release.
+# company: the legal name. Mise Academy is a DBA of it; the words below say so. If the LLC is renamed (Twelve Tribes),
+# change this line. date: the day the words took effect; change it whenever the words change.
 company: 12 Tribes Media LLC
-state:
-supportEmail:
-date:
+state: Michigan
+supportEmail: support@miseacademy.app
+date: November 16, 2026
 ---
 
 # Privacy Policy
