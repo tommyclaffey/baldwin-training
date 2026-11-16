@@ -454,7 +454,7 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
         <div className="pp-head-main">
           <p className="pp-title"><span id="pp-name">{p.name}</span><Pill status={p.status} /></p>
           <div className="pp-meta">
-            <JobChip jobs={jobs} current={p.jobs} onPick={setJob} busy={busy === 'job'} />
+            <JobChip jobs={jobs} current={p.jobs} onPick={setJob} busy={busy === 'job'} manager={{ onPromote: p.canPromote && !p.promotion ? () => setPromoting(true) : undefined, pending: !!p.promotion }} />
             {dateEdit
               ? <input type="date" className="pp-date" defaultValue={p.startedOn} autoFocus aria-label="Start date" onBlur={(e) => (e.target.value && e.target.value !== p.startedOn ? setStart(e.target.value) : setDateEdit(false))} onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') setDateEdit(false); }} />
               : <button type="button" className="pp-started" onClick={() => setDateEdit(true)} title="Change the start date">{daysFrom(p.startedOn) > 0 ? 'Starts' : 'Started'} {dayLabel(p.startedOn, { month: 'short', day: 'numeric' })}</button>}
@@ -695,7 +695,9 @@ function StepRow({ s, first, busy, act }: { s: Step; first: string; busy: string
 }
 
 /** The job chip: tap it, pick a job, the path swaps in place (532:919). */
-function JobChip({ jobs, current, onPick, busy }: { jobs: Job[]; current: string[]; onPick: (key: string) => void; busy: boolean }) {
+/** Nov 16 (Tommy: "this should say manager"): Manager sits at the bottom of the list. It isn't a training path, it's more
+ *  access, so picking it opens Promote to Manager (owners); others see who can do it. */
+function JobChip({ jobs, current, onPick, busy, manager }: { jobs: Job[]; current: string[]; onPick: (key: string) => void; busy: boolean; manager?: { onPromote?: () => void; pending?: boolean } }) {
   const [open, setOpen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -718,6 +720,15 @@ function JobChip({ jobs, current, onPick, busy }: { jobs: Job[]; current: string
               return <li key={j.key} role="option" aria-selected={on}><button type="button" onClick={() => { setOpen(false); if (!on) onPick(j.key); }}><span>{j.label}{j.note && <small> · {j.note}</small>}</span>{current.includes(j.key) && <span aria-hidden="true">✓</span>}</button></li>;
             })}
           </ul>
+          {manager && (
+            <ul role="listbox" aria-label="Role" className="pp-job-role">
+              <li role="option" aria-selected={false}>
+                <button type="button" disabled={!manager.onPromote || manager.pending} onClick={() => { setOpen(false); manager.onPromote?.(); }}>
+                  <span>Manager<small> · {manager.pending ? 'Promotion sent' : manager.onPromote ? 'Promote: signs people off, edits the book' : 'An owner can promote'}</small></span>
+                </button>
+              </li>
+            </ul>
+          )}
           <p>Changing the job swaps the path. Finished steps carry over.</p>
         </div>
       )}
