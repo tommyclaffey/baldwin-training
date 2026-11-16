@@ -111,7 +111,9 @@ export function fillHomeVideos(page, list) {
   for (const v of list) if (picks.length < 3 && !picks.includes(v)) picks.push(v);
   if (!picks.length) { remove(page.main, sec); return; }
   const proto = row.c.find(startsWith('Video · '));
-  row.c = picks.slice(0, 3).map((v) => fillCard(clone(proto), v, 'Video'));
+  // A card opens the page its video belongs to (the design's cards all linked to /recipe/short-rib, a dead page since the
+  // Food Book; Nov 15 audit #2). A video with no page of its own just plays.
+  row.c = picks.slice(0, 3).map((v) => { const card = fillCard(clone(proto), v, 'Video'); if (v.to) card.to = v.to; else delete card.to; return card; });
 }
 
 /** A video frame with no video in it goes. Where the band is only there for the video (a dish's Watch It Made, a wine's

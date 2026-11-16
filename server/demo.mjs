@@ -12,13 +12,16 @@ import crypto from 'node:crypto';
 import { createSession, sessionCookie } from './auth.mjs';
 import { pathFor } from './paths.mjs';
 import { ACK_KEY, ACK_LEVEL } from './acks.mjs';
-import { chapterBySlug } from './manual.mjs';
+import { chapterBySlug, LEVELS, chaptersForLevel } from './manual.mjs';
+import { doneKey } from './study.mjs';
 import { pathCtxFor } from './team.mjs';
 import { questionPool } from './quizgen.mjs';
 import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
 import { forget } from './cache.mjs';
 import { MEDIA_DIR } from './db.mjs';
+import { wipeCompany } from './companydata.mjs';
 import { seedDemoPrep } from './prep.mjs';
+import { demoPairs, demoMentions } from './demopairs.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const now = () => new Date().toISOString();
@@ -88,8 +91,17 @@ export function startDemo(db, key, which = 'baldwin') {
     const co = Number(db.prepare('INSERT INTO companies(name, slug, created_at, demo, brand) VALUES (?,?,?,1,?)').run(D.company, (mise ? 'demo-mise-' : 'demo-') + tag, t, D.brand).lastInsertRowid);
     const st = Number(db.prepare('INSERT INTO stores(company_id, name, slug, book_ready, sort, created_at) VALUES (?,?,?,?,0,?)').run(co, D.store, D.storeSlug, D.bookReady, t).lastInsertRowid);
     const ins = db.prepare('INSERT INTO entries(collection,slug,data,sort,created_at,updated_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?)');
+    // Nov 15 (audit 23): the copied wine list pairs with the demo's own dishes (closest dish, or none), not The Baldwin's.
+    const menu = readSeed(D.seeds, 'recipe.json').map((x) => x.data.name);
+    const forDemo = (col, json) => {
+      if (col !== 'wine') return json;
+      const d = JSON.parse(json);
+      if (d.pairs) d.pairs = demoPairs(d.pairs, menu);
+      for (const k of ['say', 'notes']) if (d[k]) { const v = demoMentions(d[k], menu); if (v === null) delete d[k]; else d[k] = v; }
+      return JSON.stringify(d);
+    };
     for (const col of D.copy) {
-      for (const r of db.prepare('SELECT slug, data, sort FROM entries WHERE collection = ? AND store_id = 1 AND archived_at IS NULL').all(col)) ins.run(col, r.slug, r.data, r.sort, t, t, co, st);
+      for (const r of db.prepare('SELECT slug, data, sort FROM entries WHERE collection = ? AND store_id = 1 AND archived_at IS NULL').all(col)) ins.run(col, r.slug, forDemo(col, r.data), r.sort, t, t, co, st);
     }
     const files = [['recipe', 'recipe.json'], ['house', 'house.json'], ...(mise ? [['wine', 'wine.json'], ['shelf', 'shelf.json'], ['beer', 'beer.json']] : [])];
     for (const [col, file] of files) {
@@ -104,13 +116,21 @@ export function startDemo(db, key, which = 'baldwin') {
     const attempt = (id, name, quiz, score, total, at, items = [], answers = []) => db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
       .run('u' + id, name, quiz, score, total, JSON.stringify({ items, answers }), at, co, id, st);
     const read = (id, key, at) => db.prepare('INSERT OR IGNORE INTO manual_reads(user_id, slug, at) VALUES (?,?,?)').run(id, key, at);
+    // Nov 15 (audit 22): a final seeded as passed means the level's lessons were done first. Every section of that level is
+    // marked read over the days before the final, so a certified level never shows "0 of 39 sections".
+    const passFinal = (id, name, quiz, score, total, at) => {
+      attempt(id, name, quiz, score, total, at);
+      const L = score / total >= 0.8 && LEVELS.find((x) => 't:' + x.final === quiz);
+      const keys = L ? chaptersForLevel(L).flatMap((c) => c.sections.map((_, i) => doneKey(c, i))) : [];
+      keys.forEach((k, i) => read(id, k, new Date(Date.parse(at) - (keys.length - i) * 3 * 3600e3 / Math.max(1, keys.length / 8)).toISOString()));
+    };
     // Marisol (the employee demo, and on the manager's team): her first week, and the Cocktail Program's Level 1 final yesterday.
     const marisol = (id) => {
       setJob(id, ['server'], 6);
       for (const slug of ['our-story', 'steps-of-service', 'safety', 'cleanliness', 'floor-plan', 'allergen-guide']) read(id, 'page:' + slug, new Date(Date.now() - 6 * 864e5).toISOString());
       [['t:allergens', 10], ['t:course:Pasta', 10], ['t:course:Snacks & Small Plates', 9], ['t:course:Salads', 9]].forEach(([quiz, score], i) =>
         attempt(id, 'Marisol Vega', qz(quiz), score, 10, new Date(Date.now() - (5 - i) * 864e5).toISOString()));
-      attempt(id, 'Marisol Vega', 't:final:bar-1', 27, 30, new Date(Date.now() - 864e5).toISOString());
+      passFinal(id, 'Marisol Vega', 't:final:bar-1', 27, 30, new Date(Date.now() - 864e5).toISOString());
       // the Hospitality Program (Nov 11): she's read its first lesson (Welcome), every section
       (chapterBySlug('hosp-welcome')?.sections || []).forEach((_, i) => read(id, `hosp-welcome#${i}`, new Date(Date.now() - (2 - i * 0.1) * 864e5).toISOString()));
       // the Training Acknowledgment (Nov 12, Day 1): she signed it on her first day and it's waiting on her trainer
@@ -174,7 +194,7 @@ export function startDemo(db, key, which = 'baldwin') {
           const a = open && answered(open.id.slice(2), 6, true);
           if (a) attempt(id, p.name, open.id, a.score, a.total, new Date(Date.now() - 1.2 * 864e5).toISOString(), a.items, a.answers);
         }
-        for (const [quiz, score, total, days] of p.finals || []) attempt(id, p.name, quiz, score, total, new Date(Date.now() - days * 864e5).toISOString());
+        for (const [quiz, score, total, days] of p.finals || []) passFinal(id, p.name, quiz, score, total, new Date(Date.now() - days * 864e5).toISOString());
         if (p.ask) db.prepare('INSERT INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(id, st, co, p.ask[0], new Date(Date.now() - p.ask[1] * 60e3).toISOString());
       }
       if (p.started > 0 && slot < slots.length) db.prepare('INSERT INTO sections(company_id,store_id,day,slot,name,by_user,at) VALUES (?,?,?,?,?,?,?)').run(co, st, day, slots[slot++], p.name, me, t);
@@ -192,6 +212,13 @@ export function startDemo(db, key, which = 'baldwin') {
     // Prep tracker (Nov 12): eight weeks of batches, waste and run-outs by the two bartenders and the manager, so Today, the item pages and Reports are full. Shown as demo data on screen.
     const lead = db.prepare("SELECT id FROM users WHERE company_id = ? AND role = 'manager' ORDER BY id LIMIT 1").get(co)?.id;
     seedDemoPrep(db, { company: co, storeRow, bartenders, lead });
+    // Nov 15 (audit 24): a dish and a drink the manager took off the menu at the end of summer (content/<demo>/archived.json,
+    // demo data), so the Archived page has something to show and Restore.
+    for (const a of readSeed(D.seeds, 'archived.json')) {
+      const at = new Date(Date.now() - (a.daysAgo ?? 12) * 864e5).toISOString();
+      db.prepare('INSERT INTO entries(collection,slug,data,sort,created_at,updated_at,company_id,store_id,archived_at,archived_by) VALUES (?,?,?,?,?,?,?,?,?,?)')
+        .run(a.collection, a.slug, JSON.stringify(a.data), 99, at, at, co, st, at, lead ?? null);
+    }
     if (pick.role !== 'staff') for (const [action, name, days] of (mise ? MISE_EDITS : EDITS)) db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id) VALUES (?,?,?,?,?)').run(me, action, name, new Date(Date.now() - days * 864e5).toISOString(), co);
     // Nov 10 (audit: "Videos and photos · 0" in the demo admin): a few videos already in the library
     for (const [title, yt] of [['How I Make an Old Fashioned · Anders Erickson', 'pdcrJ5V7YKM'], ['How to Make a Martini · Anders Erickson', 'izZsjqnADAA'], ['The Daiquiri · Anders Erickson', '71jQRf5UrpE'], ['How to Open a Bottle of Wine · Court of Master Sommeliers', '9R3JBuXcNjQ']])
@@ -239,25 +266,18 @@ export function demoMediaAllowed(db, user, slug) {
 }
 const dropDemoMedia = (slug) => { if (SLUG_OK.test(String(slug))) fs.rmSync(path.join(DEMO_MEDIA, slug), { recursive: true, force: true }); };
 
-/** One demo copy goes: its people, sessions, records, entries and saved files. */
+/** One demo copy goes: its people, sessions, records, entries and saved files. Nov 15 (audit #6): through the same
+ *  schema-driven delete as a real company (wipeCompany), so a table added later can't be missed. The hand-written table
+ *  list this replaced missed quiz_seen, and 30% of live quiz_seen rows belonged to demo people who were gone. */
 export function dropDemo(db, id) {
-  const slug = db.prepare('SELECT slug FROM companies WHERE id = ? AND demo = 1').get(id)?.slug;
-  const users = db.prepare('SELECT id FROM users WHERE company_id = ?').all(id).map((u) => u.id);
-  for (const u of users) {
-    db.prepare('DELETE FROM sessions WHERE user_id = ?').run(u);
-    db.prepare('DELETE FROM manual_reads WHERE user_id = ?').run(u);
-    db.prepare('DELETE FROM quiz_marks WHERE user_id = ?').run(u);
-  }
-  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'chat_mutes', 'program_acks', 'prep_items', 'prep_batches', 'prep_events', 'prep_counts', 'menu_imports', 'menu_import_items']) {
-    const exists = db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(t);
-    if (!exists) continue;
-    const cols = db.prepare(`PRAGMA table_info(${t})`).all().map((c) => c.name);
-    if (cols.includes('company_id')) db.prepare(`DELETE FROM ${t} WHERE company_id = ?`).run(id);
-  }
-  db.prepare('DELETE FROM users WHERE company_id = ?').run(id);
-  db.prepare('DELETE FROM stores WHERE company_id = ?').run(id);
-  db.prepare('DELETE FROM companies WHERE id = ?').run(id);
-  if (slug) dropDemoMedia(slug);
+  if (!db.prepare('SELECT 1 FROM companies WHERE id = ? AND demo = 1').get(id)) return; // only demo copies go this way
+  wipeCompany(db, id); // its demo media folder goes too
+}
+
+/** Rows left behind by demos removed before Nov 15: quiz history of people who no longer exist. Run at startup; once the
+ *  old rows are gone it finds nothing. (User ids can be reused, so a new person could otherwise inherit them.) */
+export function cleanOrphans(db) {
+  return Number(db.prepare('DELETE FROM quiz_seen WHERE user_id NOT IN (SELECT id FROM users)').run().changes);
 }
 
 /** Throwaway demo copies older than a day go. */

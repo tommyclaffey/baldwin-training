@@ -1,7 +1,8 @@
 // Browser smoke test (Nov 10, audit: "UI breaks are caught by eye only"). Opens the demo in headless Chrome as an
 // employee and a manager, on a laptop and a phone, takes the whole tour and visits the main pages. Fails on:
 // a tour step that doesn't find its target, a JavaScript error, a Content-Security-Policy violation, a page that
-// scrolls sideways on a phone, or a "We couldn't find that page".
+// scrolls sideways on a phone, a "We couldn't find that page", or an Allergen Guide that hides allergens on a phone or cuts
+// a dish name off on a laptop.
 // Usage: node scripts/smoke.mjs [baseUrl]   (default http://127.0.0.1:8091; CHROME=/path/to/chrome to choose a browser)
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
@@ -14,6 +15,17 @@ const PAGES = ['/', '/our-story', '/floor-plan', '/sommelier-program/about', '/f
   '/hospitality-program', '/hospitality-program/level-1', '/hospitality-program/level-1/hosp-welcome',
   '/cocktail-program/level-2/bar-vodka-gin/gin-styles', '/certificate/bar-1',
   '/prep', '/prep/count', '/prep/reports']; // Nov 12: the Prep tracker (+ the shift count, 31b)
+// Nov 15 audit (#1, #3): on a phone every dish with an allergen shows it as a visible chip with its name; on a laptop no
+// dish name or legend key is cut off. Returns a list of problems.
+const ALLERGEN_CHECK = `(()=>{const out=[];const g=document.querySelector('[data-name="Allergen grid"]');if(!g)return ['no allergen grid'];
+const rows=[...g.querySelectorAll('[data-name^="Row · "]')];if(rows.length<3)return ['only '+rows.length+' dish rows'];let chips=0;
+for(const r of rows){const name=r.getAttribute('data-name').slice(6);const marked=[...r.children].filter(c=>c.querySelector('[data-name="Contains"]'));
+ if(PHONE){const shown=marked.filter(c=>c.offsetWidth>0&&c.offsetHeight>0&&/[A-Z]/i.test(getComputedStyle(c,'::before').content||''));chips+=shown.length;
+  if(shown.length<marked.length)out.push(name+': '+(marked.length-shown.length)+' of '+marked.length+' allergens not shown');}
+ else{const t=r.firstElementChild&&r.firstElementChild.querySelector('.ftext');if(t&&t.scrollWidth>t.clientWidth+1)out.push(name+': name cut off');}}
+if(PHONE&&!chips)out.push('no allergen chips on a phone');
+if(!PHONE)for(const k of g.querySelectorAll('[data-name^="Key · "]'))if(k.scrollWidth>k.clientWidth+1)out.push('legend key cut off: '+k.getAttribute('data-name').slice(6));
+return out.slice(0,8);})()`;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function browser() {
@@ -66,6 +78,7 @@ async function run(role, width, demo = 'baldwin') {
       if (r?.missing) fails.push(`${p}: page not found`);
       if (r?.wide && width < 800) fails.push(`${p}: scrolls sideways`);
       for (const v of r?.csp || []) fails.push(`${p}: CSP blocked ${v}`);
+      if (p === '/allergen-guide') for (const f of (await b.ev(ALLERGEN_CHECK.replaceAll('PHONE', String(width < 860)))) || ['allergen check did not run']) fails.push(`${p}: ${f}`);
     }
     fails.push(...b.problems);
     console.log(`${fails.length ? '✖' : '✔'} ${tag}: ${steps} tour steps, ${PAGES.length} pages`);

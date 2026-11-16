@@ -84,7 +84,8 @@ export function fillHome(db, page, { store, user, recipes, house, wines, bowl })
     const watch = find(hero, byName('Button · Watch'));
     if (d.hasVideo && d.video) watch.to = '/' + focus.slug; else drop(hero, watch);
     const spec = find(hero, byName('Button · Spec')); if (spec) spec.to = '/' + focus.slug;
-    const phBox = find(hero, byName('Photo')); if (phBox?.to) phBox.skipTab = 1; // same place as Open Spec Sheet: one Tab stop
+    // The photo opens the same page as Open Spec Sheet (Nov 15 audit #2: it kept the design's /recipe/short-rib, a dead page)
+    const phBox = find(hero, byName('Photo')); if (phBox?.to) { phBox.to = '/' + focus.slug; phBox.skipTab = 1; } // one Tab stop
     const ph = find(find(hero, byName('Photo')) || hero, startsWith('IMG/'));
     if (ph) { if (d.photo) ph.f = img(d.photo); else photoToCome(ph, true, bowl); }
   }

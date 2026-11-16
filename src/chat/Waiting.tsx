@@ -108,6 +108,9 @@ export function WaitingCard({ style, className = '' }: { style?: CSSProperties; 
 
 /* ------------------------------ the toast ------------------------------ */
 const SEEN_KEY = 'bt-chat-toast';
+// Nov 15 (audit 17): in a demo the toast shows once per demo tab. A refresh starts a fresh copy whose messages are all
+// "new", so it used to pop up on every load.
+const DEMO_ONCE = 'bt-demo-toast-shown';
 export function ChatToast() {
   const { user } = useSession();
   const on = hasChat(user);
@@ -130,9 +133,13 @@ export function ChatToast() {
     if (seen === null) { mark(at || new Date(0).toISOString()); return; }
     if (latest && at > seen) {
       mark(at);
-      if (!onChat && !open) setShown(latest);
+      if (onChat || open) return;
+      if (user?.demo) {
+        try { if (sessionStorage.getItem(DEMO_ONCE)) return; sessionStorage.setItem(DEMO_ONCE, '1'); } catch { /* private mode */ }
+      }
+      setShown(latest);
     }
-  }, [on, latest, loaded, onChat, open]);
+  }, [on, latest, loaded, onChat, open, user?.demo]);
 
   const dismiss = useCallback(() => { setShown(null); }, []);
   useEffect(() => {
@@ -150,8 +157,11 @@ export function ChatToast() {
       onFocus={() => { hold.current = true; }} onBlur={() => { hold.current = false; }}>
       <Av p={shown.user} size={38} />
       <div className="chat-toast-copy">
-        <p className="chat-toast-head"><strong>{shown.user.name}</strong><span>{what} · now</span></p>
-        <p className="chat-toast-text">{shown.text}</p>
+        {/* On phones the buttons go and the message itself opens the chat (Nov 15: the toast covered a third of the screen). */}
+        <button type="button" className="chat-toast-open" onClick={() => { dismiss(); openChat({ room: shown.key, reply: shown.type === 'preshift' ? undefined : shown.id }); }}>
+          <span className="chat-toast-head"><strong>{shown.user.name}</strong><span>{what} · now</span></span>
+          <span className="chat-toast-text">{shown.text}</span>
+        </button>
         <div className="chat-toast-btns">
           <button type="button" className="main" onClick={() => { dismiss(); openChat({ room: shown.key, reply: shown.type === 'preshift' ? undefined : shown.id }); }}>{shown.type === 'preshift' ? 'Read It' : 'Reply'}</button>
           <button type="button" onClick={() => { dismiss(); nav('/team-chat/' + shown.key); }}>Open Chat</button>

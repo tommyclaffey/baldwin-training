@@ -841,8 +841,10 @@ export function seedChat(db, { company, storeRow, script, anchor = demoAnchor(),
   }
 }
 
-/** The Baldwin demo's chat (Figma 580:670), told with the demo's own menu: its pork chop and Paloma Verde stand in for the
- *  design's short rib and Paloma, so every card opens a page the demo really has. Times are minutes from 3:30 pm. */
+/** The Baldwin demo's chat (Figma 580:670), told with the demo's own menu: its rigatoni and Paloma Verde stand in for the
+ *  design's short rib and Paloma, so every card opens a page the demo really has. Times are minutes from 3:30 pm.
+ *  The focus dish is the one Home shows as Tonight's Pre-Shift Focus (the menu's signature dish; Nov 15 audit: the note
+ *  said Bone-In Pork Chop while Home said Rigatoni alla Vodka). */
 const R = 'Rosalind Hart', DP = 'Dorian Pike', QA = 'Quinn Abbott', TL = 'Teddy Lam', MV = 'Marisol Vega', HG = 'Hollis Grant', OR = 'Odalys Ruiz', WC = 'Wynn Carver';
 const GA = 'Gideon Ambrose'; // The Baldwin's owner (Nov 11): a second manager, so a progress card has somewhere to go
 export const BALDWIN_DEMO_CHAT = {
@@ -856,10 +858,10 @@ export const BALDWIN_DEMO_CHAT = {
     ],
     foh: [
       { by: R, at: -3 * 24 * 60 + 10, body: 'Two gluten allergies on the books for the weekend. Know the guide before you go on the floor.', page: 'allergen-guide', react: { '👍': [TL, OR, MV] } },
-      { by: R, at: -24 * 60 + 15, body: 'Tomorrow’s focus dish, if you want a head start.', page: 'recipe/bone-in-pork-chop', react: { '🔥': [DP, MV] } },
-      { by: R, at: 0, pin: true, body: 'Focus dish: Bone-In Pork Chop. We taste it at lineup, 4:15.\n86 tonight: seared salmon. Offer the lobster tagliatelle.\nBar: Paloma Verde spec changed. Read the page before your first one.\n7:30, back room: 12-top, two gluten allergies.',
+      { by: R, at: -24 * 60 + 15, body: 'Tomorrow’s focus dish, if you want a head start.', page: 'recipe/rigatoni-alla-vodka', react: { '🔥': [DP, MV] } },
+      { by: R, at: 0, pin: true, body: 'Focus dish: Rigatoni alla Vodka. We taste it at lineup, 4:15.\n86 tonight: seared salmon. Offer the lobster tagliatelle.\nBar: Paloma Verde spec changed. Read the page before your first one.\n7:30, back room: 12-top, two gluten allergies.',
         gotIt: [DP, QA, TL, OR, WC] },
-      { by: R, at: 4, body: 'Chef’s plate for tonight. The chop sits on the polenta, and the mostarda goes on at the pass.', photo: '/img/demo/bone-in-pork-chop.jpg',
+      { by: R, at: 4, body: 'Chef’s plate for tonight. The rigatoni goes in a warm bowl, and the parmesan and basil go on at the pass.', photo: '/img/demo/rigatoni-alla-vodka.jpg',
         react: { '🔥': [R, DP, QA, TL, OR], 'Heard': [HG, MV, WC], 'Yes Chef': [DP, GA] } },
       { ref: 'spec', by: DP, at: 11, body: 'Paloma Verde spec changed today. Check the build before you make your first one. The page is updated.', page: 'signature/paloma-verde', react: { '✅': [QA, TL, MV, OR], '👍': [R, HG] } },
       // a thread under the spec change (v2): three replies, the last Quinn's at 3:48

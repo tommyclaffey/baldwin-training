@@ -7,6 +7,7 @@ import { PhotoAdjust } from './PhotoAdjust';
 import { focusVars } from '../lib/focus';
 import { VideoEmbed } from '../components/VideoEmbed';
 import type { Video } from '../lib/api';
+import { isDenied } from '../lib/api';
 
 export function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {
   return (
@@ -131,7 +132,7 @@ export function Loading() {
 }
 
 export function ErrorNote({ error, retry }: { error: string; retry?: () => void }) {
-  return <p className="error" role="alert">{error} {retry && <button className="link-btn" onClick={retry}>Try Again</button>}</p>;
+  return <p className="error" role="alert">{error} {retry && !isDenied(error) && <button className="link-btn" onClick={retry}>Try Again</button>}</p>;
 }
 
 export const when = (iso?: string | null) => {
