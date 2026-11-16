@@ -12,7 +12,8 @@ import crypto from 'node:crypto';
 import { createSession, sessionCookie } from './auth.mjs';
 import { pathFor } from './paths.mjs';
 import { ACK_KEY, ACK_LEVEL } from './acks.mjs';
-import { chapterBySlug } from './manual.mjs';
+import { chapterBySlug, LEVELS, chaptersForLevel } from './manual.mjs';
+import { doneKey } from './study.mjs';
 import { pathCtxFor } from './team.mjs';
 import { questionPool } from './quizgen.mjs';
 import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
@@ -104,13 +105,21 @@ export function startDemo(db, key, which = 'baldwin') {
     const attempt = (id, name, quiz, score, total, at, items = [], answers = []) => db.prepare('INSERT INTO quiz_attempts(device,name,quiz,score,total,answers,at,company_id,user_id,store_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
       .run('u' + id, name, quiz, score, total, JSON.stringify({ items, answers }), at, co, id, st);
     const read = (id, key, at) => db.prepare('INSERT OR IGNORE INTO manual_reads(user_id, slug, at) VALUES (?,?,?)').run(id, key, at);
+    // Nov 15 (audit 22): a final seeded as passed means the level's lessons were done first. Every section of that level is
+    // marked read over the days before the final, so a certified level never shows "0 of 39 sections".
+    const passFinal = (id, name, quiz, score, total, at) => {
+      attempt(id, name, quiz, score, total, at);
+      const L = score / total >= 0.8 && LEVELS.find((x) => 't:' + x.final === quiz);
+      const keys = L ? chaptersForLevel(L).flatMap((c) => c.sections.map((_, i) => doneKey(c, i))) : [];
+      keys.forEach((k, i) => read(id, k, new Date(Date.parse(at) - (keys.length - i) * 3 * 3600e3 / Math.max(1, keys.length / 8)).toISOString()));
+    };
     // Marisol (the employee demo, and on the manager's team): her first week, and the Cocktail Program's Level 1 final yesterday.
     const marisol = (id) => {
       setJob(id, ['server'], 6);
       for (const slug of ['our-story', 'steps-of-service', 'safety', 'cleanliness', 'floor-plan', 'allergen-guide']) read(id, 'page:' + slug, new Date(Date.now() - 6 * 864e5).toISOString());
       [['t:allergens', 10], ['t:course:Pasta', 10], ['t:course:Snacks & Small Plates', 9], ['t:course:Salads', 9]].forEach(([quiz, score], i) =>
         attempt(id, 'Marisol Vega', qz(quiz), score, 10, new Date(Date.now() - (5 - i) * 864e5).toISOString()));
-      attempt(id, 'Marisol Vega', 't:final:bar-1', 27, 30, new Date(Date.now() - 864e5).toISOString());
+      passFinal(id, 'Marisol Vega', 't:final:bar-1', 27, 30, new Date(Date.now() - 864e5).toISOString());
       // the Hospitality Program (Nov 11): she's read its first lesson (Welcome), every section
       (chapterBySlug('hosp-welcome')?.sections || []).forEach((_, i) => read(id, `hosp-welcome#${i}`, new Date(Date.now() - (2 - i * 0.1) * 864e5).toISOString()));
       // the Training Acknowledgment (Nov 12, Day 1): she signed it on her first day and it's waiting on her trainer
@@ -174,7 +183,7 @@ export function startDemo(db, key, which = 'baldwin') {
           const a = open && answered(open.id.slice(2), 6, true);
           if (a) attempt(id, p.name, open.id, a.score, a.total, new Date(Date.now() - 1.2 * 864e5).toISOString(), a.items, a.answers);
         }
-        for (const [quiz, score, total, days] of p.finals || []) attempt(id, p.name, quiz, score, total, new Date(Date.now() - days * 864e5).toISOString());
+        for (const [quiz, score, total, days] of p.finals || []) passFinal(id, p.name, quiz, score, total, new Date(Date.now() - days * 864e5).toISOString());
         if (p.ask) db.prepare('INSERT INTO signoff_requests(user_id, store_id, company_id, key, at) VALUES (?,?,?,?,?)').run(id, st, co, p.ask[0], new Date(Date.now() - p.ask[1] * 60e3).toISOString());
       }
       if (p.started > 0 && slot < slots.length) db.prepare('INSERT INTO sections(company_id,store_id,day,slot,name,by_user,at) VALUES (?,?,?,?,?,?,?)').run(co, st, day, slots[slot++], p.name, me, t);

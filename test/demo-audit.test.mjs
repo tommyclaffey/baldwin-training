@@ -91,3 +91,20 @@ for (const which of ['baldwin', 'mise']) {
     assert.match(pin.body, new RegExp(`^Focus dish: ${focus.name}\\.`));
   });
 }
+
+test('22 · a level whose final is seeded as passed has every section read (Marisol Level 1, Quinn Levels 1 and 2)', async () => {
+  const { chaptersForLevel, LEVELS } = await import('../server/manual.mjs');
+  const keysOf = (file) => chaptersForLevel(LEVELS.find((L) => L.file === file)).flatMap((c) => c.sections.map((_, i) => `${c.slug}#${i}`));
+  for (const which of ['baldwin', 'mise']) {
+    const { company } = await demo('employee', which);
+    const d = db();
+    const readBy = (name) => new Set(d.prepare('SELECT r.slug FROM manual_reads r JOIN users u ON u.id = r.user_id WHERE u.company_id = ? AND u.name = ?').all(company, name).map((r) => r.slug));
+    const marisol = readBy('Marisol Vega'), quinn = readBy('Quinn Abbott');
+    d.close();
+    const bar1 = keysOf('bar-1'), bar2 = keysOf('bar-2');
+    assert.ok(bar1.length > 30);
+    assert.deepEqual(bar1.filter((k) => !marisol.has(k)), [], `${which}: Marisol read all of Level 1`);
+    assert.deepEqual([...bar1, ...bar2].filter((k) => !quinn.has(k)), [], `${which}: Quinn read Levels 1 and 2`);
+    assert.ok(!keysOf('bar-3').some((k) => quinn.has(k)), 'no final, no level 3 reads');
+  }
+});
