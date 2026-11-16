@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { needsTwoStep, TWO_STEP_HOME } from './lib/twostep';
 import { Sidebar } from './components/Sidebar';
 import { PageView, usePageEntry } from './components/PageView';
 import { NavContext } from './components/FigmaNode';
@@ -66,6 +67,7 @@ function Book() {
   const { count: unread, mentions } = useChatState(hasChat(user));
   if (!loaded || strayDemo) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
   if (!user) return <BookSignIn />;
+  if (needsTwoStep(user)) return <Navigate to={TWO_STEP_HOME} replace />; // the server won't open the book until it's on (Nov 16)
   return (
     <EditInPlaceProvider>
     <EditModeProvider>

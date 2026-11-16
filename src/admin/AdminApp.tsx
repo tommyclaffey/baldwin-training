@@ -15,6 +15,7 @@ import { api } from '../lib/api';
 import { DemoBar, DemoTour, openWelcome } from '../components/DemoTour';
 import { hasChat, useChatState } from '../chat/unread';
 import { openChat } from '../chat/panel';
+import { needsTwoStep, TWO_STEP_HOME } from '../lib/twostep';
 
 export default function AdminApp() {
   const { user, loaded } = useSession();
@@ -31,7 +32,8 @@ function Shell() {
   const { user, refresh } = useSession();
   if (user?.role === 'staff') return <StaffOnly />;
   // Nov 14 (security review): a super admin works in companies only once two-step sign-in is on; until then, Your Account.
-  if (user?.role === 'superadmin' && !user.totpOn && !user.impersonatedBy) return <div className="admin"><main className="admin-main" id="content"><Account /></main></div>;
+  // Nov 16: whatever admin address they opened, the address says where they are.
+  if (needsTwoStep(user)) return location.pathname === TWO_STEP_HOME ? <div className="admin"><main className="admin-main" id="content"><Account /></main></div> : <Navigate to={TWO_STEP_HOME} replace />;
   return <ManagerShell user={user!} refresh={refresh} />;
 }
 

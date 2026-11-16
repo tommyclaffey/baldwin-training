@@ -7,6 +7,7 @@ import { VideoEmbed, forgetCaptions } from '../components/VideoEmbed';
 import { Empty, ErrorNote, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 import { PRODUCT_NAME } from '../lib/brand';
 import { AuthCard } from '../components/AuthCard';
+import { landingFor, needsTwoStep, TWO_STEP_MSG } from '../lib/twostep';
 
 function useLoad<T>(path: string) {
   const [data, setData] = useState<T | null>(null);
@@ -128,7 +129,7 @@ export function ResetPassword() {
       <Link className="btn" to="/admin">Go to Sign In</Link>
     </AuthCard>
   );
-  const done = (u: User) => { setUser(u); nav('/admin'); };
+  const done = (u: User) => { setUser(u); nav(landingFor(u)); };
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setError('');
     if (user?.demo) { setError('That’s switched off in the demo.'); return; }
@@ -527,7 +528,7 @@ export function Account() {
       <p className="muted">{user?.name} · {user?.email} · {user ? ROLE_LABEL[user.role] : ''}{user?.companyName ? ` · ${user.companyName}` : ''}</p>
       <section className="card stack">
         <h2>Two-step sign-in</h2>
-        {isSuper && !user?.totpOn && <p className="error" role="alert">Super admins need two-step sign-in before the super admin opens.</p>}
+        {needsTwoStep(user) && <p className="error" role="alert">{TWO_STEP_MSG}</p>}
         <p className="muted small">After your password, you type a 6-digit code from an authenticator app on your phone (Google Authenticator, Microsoft Authenticator, 1Password or Authy).</p>
         {user?.totpOn && <p className="ok">On.{!isSuper && <> <button className="link-btn danger" onClick={() => void off2()}>Turn Off</button></>}</p>}
         {!user?.totpOn && !setup && <button className="btn" onClick={() => void start2()}>Turn On Two-Step Sign-In</button>}
