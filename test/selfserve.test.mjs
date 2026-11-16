@@ -15,7 +15,7 @@ import { totpAt } from '../server/auth.mjs';
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dirA = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-self-a-'));
 const dirB = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-self-b-'));
-const PORT_A = 6100 + Math.floor(Math.random() * 400), PORT_B = PORT_A + 400;
+const PORT_A = 7500 + Math.floor(Math.random() * 300), PORT_B = PORT_A + 800; // clear of the other files' ranges
 const servers = [];
 
 // The legal file: the repo's own words, blanks empty (A) or filled (B).

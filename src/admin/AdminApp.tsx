@@ -85,6 +85,8 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
                 {(user.stores || []).map((x) => <option key={x.id} value={x.id}>{x.name}{x.bookReady ? '' : ' · shared library'}</option>)}
               </select></label>
           : user.store && <span className="admin-working">Store: <strong>{user.store.name}</strong></span>}
+        {/* Nov 16: where an owner sees their stores, they can add one */}
+        {keepsStores && <Link to="/admin/stores" className="store-add-link">Add a Store</Link>}
         {/* Nov 11 (Figma 523:276): Home, then the team (a manager's daily job), then the book. */}
         <nav aria-label="Admin">
           <NavLink end to="/admin"><NavIcon d="M3 11 12 4l9 7M5 10v10h5v-6h4v6h5V10" />Home</NavLink>

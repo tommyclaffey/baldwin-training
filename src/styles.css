@@ -3504,6 +3504,8 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .stores-actions { text-align: right; white-space: nowrap; }
 @media screen and (max-width: 900px) { .stack-table td.stores-actions { text-align: left; padding-top: 8px; } .stack-table td.stores-actions:empty { display: none; } }
 .stores-add { max-width: 640px; }
+.store-add-link { display: inline-block; align-self: flex-start; margin: -8px 0 14px; font-size: 12.5px; font-weight: 600; color: var(--copper-text); text-underline-offset: 3px; }
+@media screen and (max-width: 900px) { .admin-side > .store-add-link { display: none; } }
 .stores-add .btn { align-self: flex-start; }
 .stores-add p { margin: 0; }
 /* An invite or promotion link: emailed or not, and Copy Link either way */
