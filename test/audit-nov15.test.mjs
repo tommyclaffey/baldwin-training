@@ -76,3 +76,12 @@ for (const kind of ['baldwin', 'mise']) {
     assert.ok(tagged > 10, 'dishes carry allergens: ' + tagged);
   });
 }
+
+// Code review, Nov 15: a malformed address answers 400 (it threw in decodeURIComponent: a 500 and a false-alarm error row).
+test('a malformed address answers 400, not a server error', async () => {
+  for (const p of ['/%E0%A4%A', '/media/%zz', '/img/%']) {
+    const r = await fetch(BASE + p);
+    assert.equal(r.status, 400, p);
+  }
+  assert.equal((await fetch(BASE + '/allergen-guide')).status, 200, 'normal addresses still load');
+});

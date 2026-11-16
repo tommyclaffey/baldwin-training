@@ -1101,7 +1101,9 @@ function sendFile(req, res, file, cache) {
 }
 
 function staticFile(req, res, url) {
-  const p = decodeURIComponent(url.pathname);
+  // A malformed address (a stray "%") is the visitor's mistake: answer 400, not a server error and a false alarm (Nov 15).
+  let p;
+  try { p = decodeURIComponent(url.pathname); } catch { res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8', ...SECURITY }); return res.end('Bad address'); }
   // A demo's scanned photos (Nov 12): only that demo's own people see them.
   const dm = /^\/media\/demo\/([a-z0-9-]+)\/([^/]+)$/.exec(p);
   if (dm) {
