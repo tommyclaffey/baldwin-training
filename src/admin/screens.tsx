@@ -1,7 +1,7 @@
 // Admin screens: sign in, first-time setup, invites, lists, media, people, account, activity.
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { api, uploadCaptions, uploadFile, ROLE_LABEL, type MediaItem, type Role, type User } from '../lib/api';
+import { api, uploadCaptions, uploadFile, ROLE_LABEL, type MediaItem, type Role, type TeamRole, type User } from '../lib/api';
 import { useSession } from '../lib/session';
 import { VideoEmbed, forgetCaptions } from '../components/VideoEmbed';
 import { Empty, ErrorNote, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
@@ -198,20 +198,37 @@ export function AcceptInvite() {
   const { token } = useParams();
   const { setUser } = useSession();
   const nav = useNavigate();
-  const [inv, setInv] = useState<{ valid: boolean; email?: string; role?: Role; company?: string | null } | null>(null);
+  const [inv, setInv] = useState<{ valid: boolean; email?: string; role?: Role; company?: string | null; store?: string | null; brand?: 'baldwin' | 'mise';
+    teamRole?: TeamRole | null; promotion?: boolean; name?: string | null } | null>(null);
   const [f, setF] = useState({ name: '', password: '' });
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   useEffect(() => { api<typeof inv>(`/api/invite/${token}`).then(setInv).catch(() => setInv({ valid: false })); }, [token]);
   if (!inv) return <AuthCard title="Checking Your Invite…"><Loading /></AuthCard>;
-  if (!inv.valid) return <AuthCard title="This Invite Doesn’t Work" sub="It expired or was already used. Ask for a new link."><Link className="btn" to="/">Go to the Book</Link></AuthCard>;
+  if (!inv.valid) return <AuthCard title="This Invite Doesn’t Work" sub="It expired, was already used, or a newer link replaced it. Ask for a new link."><Link className="btn" to="/">Go to the Book</Link></AuthCard>;
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');
     try { setUser((await api<{ user: User }>(`/api/invite/${token}`, { method: 'POST', body: f })).user); nav(inv.role === 'superadmin' ? '/admin/account' : '/admin'); }
     catch (err) { setError((err as Error).message); }
     setBusy(false);
   };
-  const what = inv.role === 'superadmin' ? 'a super admin' : `${inv.role === 'owner' ? 'an owner' : 'a manager'}${inv.company ? ` at ${inv.company}` : ''}`;
+  // Promote to Manager (Nov 16): the same person, so no name to type; just the password they'll sign in with.
+  if (inv.promotion) {
+    const first = (inv.name || '').split(' ')[0];
+    const place = inv.store || inv.company;
+    return (
+      <AuthCard brand={inv.brand} kicker={OWNERS} title="You’re a Manager Now"
+        sub={<>Congratulations{first ? `, ${first}` : ''}. You’re a manager{place ? <> at <strong>{place}</strong></> : ''}. Pick a password to sign in with <strong>{inv.email}</strong> from now on. Your training, quiz scores, certificates and chat stay with you.</>}>
+        <form className="stack" onSubmit={submit}>
+          <input type="email" autoComplete="username" value={inv.email || ''} readOnly hidden />
+          <label className="field"><span>Choose a password</span><input type="password" autoComplete="new-password" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} autoFocus /><small>At least 10 characters.</small></label>
+          {error && <ErrorNote error={error} />}
+          <button className="btn" disabled={busy || !f.password}>{busy ? 'Saving…' : 'Save and Sign In'}</button>
+        </form>
+      </AuthCard>
+    );
+  }
+  const what = inv.role === 'superadmin' ? `${inv.teamRole === 'support' ? 'Support' : 'a Manager'} on the Mise team` : `${inv.role === 'owner' ? 'an owner' : 'a manager'}${inv.company ? ` at ${inv.company}` : ''}`;
   return (
     <AuthCard title="Join the Training App" sub={<>You’re invited as <strong>{what}</strong>, with <strong>{inv.email}</strong>.</>}>
       <form className="stack" onSubmit={submit}>
@@ -351,10 +368,12 @@ export function MediaLibrary() {
 const mb = (n: number | null) => (n ? (n > 1e6 ? `${(n / 1e6).toFixed(1)} MB` : `${Math.round(n / 1e3)} KB`) : '');
 
 /* ---------- team ---------- */
-type Member = { id: number; name: string; email: string | null; role: Role; createdAt: string; lastSeenAt: string | null; hasPin: boolean; signedOff: number; storeId: number | null; storeName: string | null; canManage: boolean };
+type Member = { id: number; name: string; email: string | null; role: Role; createdAt: string; lastSeenAt: string | null; hasPin: boolean; signedOff: number; storeId: number | null; storeName: string | null; canManage: boolean;
+  /** Nov 16: Promote to Manager / Change to Staff */
+  canPromote?: boolean; canDemote?: boolean; promotion?: { email: string; storeName: string | null; createdAt: string; expiresAt: string } | null };
 type Invite = { id: string; email: string; role: string; created_at: string; expires_at: string; storeName: string | null };
 type StoreRow = { id: number; name: string; bookReady: boolean };
-type TeamData = { company: { id: number; name: string; joinCode: string }; stores: StoreRow[]; yourStore: number | null; people: Member[]; invites: Invite[]; you: number; youRole: Role };
+type TeamData = { company: { id: number; name: string; joinCode: string; demo?: boolean }; stores: StoreRow[]; yourStore: number | null; people: Member[]; invites: Invite[]; you: number; youRole: Role };
 export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
   const { user } = useSession();
   const { data, error, load } = useLoad<TeamData>('/api/team');
@@ -368,6 +387,12 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
   const [copied, setCopied] = useState('');
   const [reset, setReset] = useState<ResetLink | null>(null);
   const owner = data?.youRole === 'owner' || data?.youRole === 'superadmin';
+  // Nov 16: back to staff, same person. They sign in with their PIN again (or pick one with the join code and their name).
+  const demote = (p: Member) => {
+    const where = p.storeName || user?.store?.name || 'their store';
+    if (!confirm(`Change ${p.name} to staff at ${where}? They’re signed out and sign in with ${p.hasPin ? 'their old PIN' : 'the join code and a new PIN'}. Their training and history stay.`)) return;
+    void run(() => api(`/api/team/${p.id}/demote`, { method: 'POST', body: {} }), `${p.name} is staff at ${where} now.`);
+  };
   const makeReset = (p: Member) => {
     if (!confirm(`Make a password reset link for ${p.name}? Their password keeps working until they use the link.`)) return;
     void run(async () => { setReset(null); setReset(await api<ResetLink>(`/api/team/${p.id}/reset-password`, { method: 'POST' })); });
@@ -436,27 +461,41 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
       </>}
 
       <h2 className="sub">Owners and managers · {leads.length}</h2>
-      <table className="table">
+      <table className="table stack-table">
         <thead><tr><th>Name</th><th>Email</th><th>Role</th>{multi && <th>Store</th>}<th>Last seen</th><th /></tr></thead>
         <tbody>{leads.map((p) => (
           <tr key={p.id}>
-            <td>{p.name}{p.id === data.you && <small className="muted"> · you</small>}</td><td>{p.email}</td>
-            <td>{owner && p.id !== data.you
+            <td>{p.name}{p.id === data.you && <small className="muted"> · you</small>}</td><td data-label="Email">{p.email}</td>
+            <td data-label="Role">{owner && p.id !== data.you
               ? <select aria-label={`${p.name}’s role`} value={p.role} onChange={(e) => void run(() => api(`/api/team/${p.id}`, { method: 'PATCH', body: { role: e.target.value } }))}><option value="owner">Owner</option><option value="manager">Manager</option></select>
               : ROLE_LABEL[p.role]}</td>
-            {multi && <td>{p.role === 'owner' ? 'Every store'
+            {multi && <td data-label="Store">{p.role === 'owner' ? 'Every store'
               : owner && p.id !== data.you
                 ? <select aria-label={`${p.name}’s stores`} value={p.storeId ?? ''} onChange={(e) => move(p, e.target.value ? Number(e.target.value) : null)}><option value="">Every store</option>{data.stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select>
                 : p.storeName || 'Every store'}</td>}
-            <td>{when(p.lastSeenAt)}</td>
-            <td>{owner && p.id !== data.you && <div className="row-actions">
-              {p.email && <button className="link-btn" onClick={() => makeReset(p)}>Reset Password</button>}
-              <button className="link-btn danger" onClick={() => { if (confirm(`Remove ${p.name}? They’re signed out and can’t edit anymore.`)) void run(() => api(`/api/team/${p.id}`, { method: 'DELETE' })); }}>Remove</button>
-            </div>}</td>
+            <td data-label="Last seen">{when(p.lastSeenAt)}</td>
+            <td className="row-actions">{(owner || p.canDemote) && p.id !== data.you && <>
+              {owner && p.email && !data.company.demo && <button className="link-btn" onClick={() => makeReset(p)}>Reset Password</button>}
+              {p.canDemote && <button className="link-btn" onClick={() => demote(p)}>Change to Staff</button>}
+              {owner && !data.company.demo && <button className="link-btn danger" onClick={() => { if (confirm(`Remove ${p.name}? They’re signed out and can’t edit anymore.`)) void run(() => api(`/api/team/${p.id}`, { method: 'DELETE' })); }}>Remove</button>}
+            </>}</td>
           </tr>
         ))}</tbody>
       </table>
       {reset && <ResetLinkCard reset={reset} onClose={() => setReset(null)} />}
+      {owner && data.people.some((p) => p.promotion) && (
+        <>
+          <h2 className="sub">Promotions sent</h2>
+          <p className="muted small">Staff with a link to become a manager. They keep signing in with their PIN until they use it. Copy a new link from their People page.</p>
+          <table className="table stack-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Manages</th><th>Expires</th><th /></tr></thead>
+            <tbody>{data.people.filter((p) => p.promotion).map((p) => (
+              <tr key={p.id}><td>{p.name}</td><td data-label="Email">{p.promotion!.email}</td><td data-label="Manages">{p.promotion!.storeName || 'Every store'}</td><td data-label="Expires">{when(p.promotion!.expiresAt)}</td>
+                <td className="row-actions"><button className="link-btn danger" onClick={() => { if (confirm(`Cancel ${p.name}’s promotion? The link stops working.`)) void run(() => api(`/api/team/${p.id}/promote`, { method: 'DELETE' }), 'Promotion cancelled.'); }}>Cancel</button></td></tr>
+            ))}</tbody>
+          </table>
+        </>
+      )}
 
       {owner && (
         <>
@@ -562,7 +601,9 @@ export function Account() {
 
 /* ---------- activity ---------- */
 type Row = { id: number; name: string | null; action: string; detail: string | null; at: string };
-const ACTIONS: Record<string, string> = { 'joined with the code': 'Joined with the code:', 'reset PIN': 'Reset the PIN for', 'set a new PIN': 'Picked a new PIN', 'changed PIN': 'Changed their PIN', 'new join code': 'Made a new join code', 'change role': 'Changed a role:', 'remove person': 'Removed', rename: 'Renamed', 'two-step on': 'Turned on two-step sign-in', 'two-step off': 'Turned off two-step sign-in', 'set section': 'Set a section:', edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'archive media': 'Archived', 'restore media': 'Restored', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'sign off': 'Signed off', 'undo sign off': 'Undid a sign-off for', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail', 'reset link': 'Made a password reset link for', 'reset password': 'Reset their password', 'reset email': 'Was emailed a password reset link', 'reset asked': 'Asked for a password reset email:' };
+const ACTIONS: Record<string, string> = { 'joined with the code': 'Joined with the code:', 'reset PIN': 'Reset the PIN for', 'set a new PIN': 'Picked a new PIN', 'changed PIN': 'Changed their PIN', 'new join code': 'Made a new join code', 'change role': 'Changed a role:', 'remove person': 'Removed', rename: 'Renamed', 'two-step on': 'Turned on two-step sign-in', 'two-step off': 'Turned off two-step sign-in', 'set section': 'Set a section:', edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'archive media': 'Archived', 'restore media': 'Restored', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'sign off': 'Signed off', 'undo sign off': 'Undid a sign-off for', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail', 'reset link': 'Made a password reset link for', 'reset password': 'Reset their password', 'reset email': 'Was emailed a password reset link', 'reset asked': 'Asked for a password reset email:',
+  // Nov 16: Promote to Manager and Change to Staff
+  'promotion link': 'Sent a promotion link to', 'promoted to manager': 'Became a manager:', 'promote to manager': 'Promoted to manager:', 'change to staff': 'Changed to staff:', 'cancel promotion': 'Cancelled the promotion for' };
 export function Activity() {
   const { data, error, load } = useLoad<{ audit: Row[] }>('/api/audit');
   const { index } = useSession();

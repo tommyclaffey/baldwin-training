@@ -1972,6 +1972,35 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .pp-add-code { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
 .pp-add-invite { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--hair); padding-top: 16px; }
 .pp-add-invite .mg-btn { align-self: flex-start; }
+/* Promote to Manager (Nov 16) */
+.pp-promo { margin-top: 14px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--wash-2); }
+.pp-promo p { margin: 0; }
+.pp-promo p + p { margin-top: 4px; }
+.pp-promo .pp-btn-row { margin-top: 10px; }
+.pp-link-row { display: flex; gap: 10px; align-items: center; }
+.pp-link-row input { flex: 1; min-width: 0; height: 40px; box-sizing: border-box; border: 1px solid var(--border); border-radius: 10px; padding: 0 12px; font: 400 14px 'Archivo', sans-serif; color: var(--ink); background: #fff; }
+.pp-notice { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0 0 14px; }
+@media screen and (max-width: 520px) { .pp-link-row { flex-direction: column; align-items: stretch; } .pp-link-row input { flex: none; } .pp-link-row .mg-btn { align-self: flex-start; } }
+/* Mise Team (Nov 16) */
+.team-roles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.team-roles li { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: #fff; font-size: 14px; }
+.team-roles li span { color: var(--muted); }
+.team-role { display: inline-flex; align-items: center; justify-content: center; height: 24px; padding: 0 10px; border-radius: 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .02em; background: var(--wash-2); color: var(--ink); }
+@media screen and (max-width: 860px) { .team-roles { grid-template-columns: minmax(0, 1fr); } }
+/* Owners and managers, Promotions sent, Mise Team on a phone (Nov 16): one card per row, so Change to Staff, Cancel and
+   Remove never sit off screen (same as the deletion requests) */
+@media screen and (max-width: 700px) {
+  .stack-table, .stack-table tbody, .stack-table tr, .stack-table td { display: block; width: 100%; }
+  .stack-table thead { display: none; }
+  .stack-table tr { padding: 12px 14px; border-top: 1px solid var(--line); box-sizing: border-box; }
+  .stack-table tr:first-child { border-top: 0; }
+  .stack-table td { border: 0; padding: 3px 0; box-sizing: border-box; }
+  .stack-table td:first-child { font-weight: 700; font-size: 15px; }
+  .stack-table td[data-label]::before { content: attr(data-label) ': '; display: inline; font: inherit; letter-spacing: 0; text-transform: none; color: var(--muted); margin: 0; }
+  .stack-table td.row-actions { padding-top: 10px; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+  .stack-table td.row-actions:empty, .stack-table td:empty { display: none; }
+  .stack-table select { margin-top: 4px; }
+}
 .so-quizzes { padding: 20px; display: flex; flex-direction: column; gap: 8px; }
 .so-quizzes h2, .mh-empty-card h2 { margin: 0; font-size: 20px; }
 .mh-empty-card { padding: 20px; }

@@ -62,7 +62,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
   const switchStore = async (id: number) => { await api('/api/store', { method: 'POST', body: { storeId: id } }); location.reload(); };
   const hasBook = !!user.store?.bookReady;
   // The shared library (classics, grape and region videos) is kept by super admins; everything else is the store's own.
-  const library = user.role === 'superadmin';
+  const library = user.role === 'superadmin' && user.teamRole !== 'support'; // Nov 16: not Mise's Support (view only)
   const signoffs = useSignoffCount();
   const { count: chatUnread, mentions: chatMentions } = useChatState(hasChat(user));
   return (
@@ -108,7 +108,9 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
         <Link to="/" className="admin-back">← Back to the Book</Link>
       </aside>
       <main className="admin-main" id="content">
-        {user.impersonatedBy && <div className="support-bar" role="note">Support view: you’re signed in as <strong>{user.name}</strong>. <button className="link-btn" onClick={() => void back()}>Back to Your Account</button></div>}
+        {user.impersonatedBy && <div className="support-bar" role="note">Support view: you’re signed in as <strong>{user.name}</strong>{user.viewOnly ? ' (view only)' : ''}. <button className="link-btn" onClick={() => void back()}>Back to Your Account</button></div>}
+        {/* Nov 16: Mise Support looks around a company and changes nothing (the server refuses any change) */}
+        {isSuper && user.viewOnly && <div className="support-bar" role="note">View only: as Mise Support you can look at everything here, but not change it.</div>}
         <DemoBar />
         {user.demo && <DemoTour />}
         <PageOptions />

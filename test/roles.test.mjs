@@ -45,7 +45,7 @@ const owner = person(), tommy = person(), gm = person(), suki = person(), theo =
 let joinCode = '', storeId = 0, sukiId = 0, theoId = 0, ownerId = 0, gmId = 0, otherCompany = 0;
 
 test('setup: an owner, a store manager, two staff with PINs, a super admin (two-step), a second company', async () => {
-  assert.equal((await owner('/api/setup', { method: 'POST', body: { name: 'Odile Owner', email: 'owner@roles.test', password: 'owner-pass-1' } })).status, 200);
+  assert.equal((await owner('/api/setup', { method: 'POST', body: { name: 'Orla Owner', email: 'owner@roles.test', password: 'owner-pass-1' } })).status, 200);
   assert.equal((await tommy('/api/setup', { method: 'POST', body: { name: 'Tommy', email: 'tommy@roles.test', password: 'super-pass-1' } })).status, 200);
   await twoStep(tommy);
   const team = (await owner('/api/team')).data;
@@ -202,7 +202,7 @@ test('the Owner invites a Manager and a Support teammate; nothing opens until th
   const b = await tommy('/api/super/admins/invite', { method: 'POST', body: { email: 'sol@mise.test', teamRole: 'support' } });
   assert.equal((await tommy('/api/super/admins/invite', { method: 'POST', body: { email: 'x@mise.test', teamRole: 'owner' } })).status, 400, 'there’s one Owner');
   assert.equal((await person()(`/api/invite/${token(b.data.link)}`)).data.teamRole, 'support');
-  assert.equal((await mgr(`/api/invite/${token(a.data.link)}`, { method: 'POST', body: { name: 'Mia Manager', password: 'mia-pass-001' } })).status, 200);
+  assert.equal((await mgr(`/api/invite/${token(a.data.link)}`, { method: 'POST', body: { name: 'Maren Manager', password: 'mia-pass-001' } })).status, 200);
   assert.equal((await sup(`/api/invite/${token(b.data.link)}`, { method: 'POST', body: { name: 'Sol Support', password: 'sol-pass-001' } })).status, 200);
   for (const t of [mgr, sup]) {
     assert.equal((await t('/api/super/users')).status, 403, 'two-step first');
@@ -215,7 +215,7 @@ test('the Owner invites a Manager and a Support teammate; nothing opens until th
   assert.equal(me.workingInName, 'Mise Academy (HQ)');
   assert.equal((await mgr('/api/me')).data.user.workingInName, 'Mise Academy (HQ)');
   const team = (await tommy('/api/super/overview')).data.admins;
-  assert.deepEqual(team.map((x) => [x.name, x.teamRole]).sort(), [['Mia Manager', 'manager'], ['Sol Support', 'support'], ['Tommy', 'owner']]);
+  assert.deepEqual(team.map((x) => [x.name, x.teamRole]).sort(), [['Maren Manager', 'manager'], ['Sol Support', 'support'], ['Tommy', 'owner']]);
   // HQ's people are the team
   const hq = (await tommy('/api/super/overview')).data.companies.find((c) => c.hq);
   assert.equal(hq.leads, 3);
@@ -297,7 +297,7 @@ test('a Mise Manager signed in as someone acts as them; the log names who did it
   assert.equal((await mgr('/api/me')).data.user.viewOnly, false);
   assert.equal((await mgr('/api/super/return', { method: 'POST' })).status, 200);
   const log = (await tommy('/api/super/log')).data.log;
-  const pin = log.find((r) => r.action === 'reset PIN' && r.name === 'Mia Manager');
+  const pin = log.find((r) => r.action === 'reset PIN' && r.name === 'Maren Manager');
   assert.ok(pin, 'the Manager’s reset is logged');
   assert.equal(pin.teamRole, 'manager');
   const look = log.find((r) => r.action === 'sign in as' && r.name === 'Sol Support');

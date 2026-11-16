@@ -110,7 +110,7 @@ export function CompanyData() {
 }
 
 /* ---------- super admin: Deletions ---------- */
-type SuperList = { requests: Request[]; waitDays: number; protected: number[] };
+type SuperList = { requests: Request[]; waitDays: number; protected: number[]; canDecide?: boolean };
 
 export function Deletions() {
   const [data, setData] = useState<SuperList | null>(null);
@@ -142,7 +142,7 @@ export function Deletions() {
     : r.ready ? 'Ready to delete' : `Waiting · ${n(r.daysLeft, 'day')} left`);
   return (
     <div className="stack">
-      <p className="muted">An owner asks on Company Data, typing the company’s name. Confirm after {data.waitDays} days by typing the name again; sooner needs a second confirmation. Deleting removes every record and file the company owns, and can’t be undone.</p>
+      <p className="muted">An owner asks on Company Data, typing the company’s name. Confirm after {data.waitDays} days by typing the name again; sooner needs a second confirmation. Deleting removes every record and file the company owns, and can’t be undone.{data.canDecide ? '' : ' Only the Mise owner confirms or declines a request.'}</p>
       {msg && <p className="ok" role="status">{msg}</p>}
       {err && !open && <ErrorNote error={err} />}
       {data.requests.length === 0 ? <div className="empty"><h3>No deletion requests</h3></div> : (
@@ -152,7 +152,8 @@ export function Deletions() {
             <tr key={r.id}>
               <td className="cd-co">{r.companyName}</td><td data-label="Asked by">{r.requestedBy || '—'}</td><td data-label="Asked">{day(r.requestedAt)}</td>
               <td data-label="Status"><span className={`cd-status ${r.status === 'pending' ? (r.ready ? 'ready' : 'waiting') : r.status}`}>{status(r)}</span></td>
-              <td className="cd-row-actions">{r.status === 'pending' && (data.protected.includes(r.companyId)
+              {/* Nov 16: only the Mise owner confirms or declines; the rest of the team sees where each request is */}
+              <td className="cd-row-actions">{r.status === 'pending' && data.canDecide && (data.protected.includes(r.companyId)
                 ? <><span className="muted small">Holds the shared library: can’t be deleted here.</span> <button className="link-btn" onClick={() => void decline(r)}>Decline</button></>
                 : <><button className="btn small danger" onClick={() => pick(open === r.id ? null : r.id)} aria-expanded={open === r.id}>Confirm Deletion</button> <button className="link-btn" onClick={() => void decline(r)}>Decline</button></>)}</td>
             </tr>

@@ -54,9 +54,14 @@ export type Role = 'superadmin' | 'owner' | 'manager' | 'staff';
 export type User = { demo?: boolean; brand?: 'baldwin' | 'mise';
   id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null;
   totpOn: boolean; superPrimary: boolean; impersonatedBy: number | null; workingIn?: number; workingInName?: string | null;
+  /** Mise team role (super admins only, Nov 16) and view only (Support, also while signed in as someone). */
+  teamRole?: TeamRole | null; viewOnly?: boolean;
   storeId: number | null; store?: Store | null; canSwitchStore?: boolean; stores?: Store[];
 };
 export type Store = { id: number; name: string; slug: string; bookReady: boolean };
 export const ROLE_LABEL: Record<Role, string> = { superadmin: 'Super admin', owner: 'Owner', manager: 'Manager', staff: 'Staff' };
+/** The Mise team (Nov 16): Owner (Tommy), Manager, Support. */
+export type TeamRole = 'owner' | 'manager' | 'support';
+export const TEAM_ROLE_LABEL: Record<TeamRole, string> = { owner: 'Owner', manager: 'Manager', support: 'Support' };
 export const canEdit = (u: User | null | undefined) => !!u && u.role !== 'staff';
 export type IndexEntry = { id: string; file: string; slug: string; name: string; title: string; section: string; nav: string; text: string; thumb?: string; blurb?: string };
