@@ -72,7 +72,8 @@ function ownedFiles(db, companyId) {
     const spin = /^(.*-spin-.*-)00\.jpg$/.exec(path.basename(r.file));
     if (spin) for (let i = 1; i < 100; i++) files.add(`${spin[1]}${String(i).padStart(2, '0')}.jpg`);
   }
-  for (const r of db.prepare('SELECT photo FROM chat_messages WHERE company_id = ? AND photo IS NOT NULL').all(companyId)) files.add(path.basename(r.photo));
+  // (only uploads: a demo's seeded chat photos point at the app's own /img/ files, which are never removed)
+  for (const r of db.prepare("SELECT photo FROM chat_messages WHERE company_id = ? AND photo LIKE '/media/%' AND photo NOT LIKE '/media/demo/%'").all(companyId)) files.add(path.basename(r.photo));
   // captions on uploaded videos (Nov 14, server/captions.mjs), when that column is there
   if (colsOf(db, 'media').includes('captions')) for (const r of db.prepare('SELECT captions FROM media WHERE company_id = ? AND captions IS NOT NULL').all(companyId)) files.add(path.basename(r.captions));
   return [...files].filter((f) => f && fs.existsSync(path.join(MEDIA_DIR, f)));
@@ -209,8 +210,9 @@ export function wipeCompany(db, companyId) {
       if (cols.includes('user_id') && users.length) del(t, `DELETE FROM ${t} WHERE user_id IN ${inList(users)}`, users);
       if (cols.includes('store_id') && stores.length) del(t, `DELETE FROM ${t} WHERE store_id IN ${inList(stores)}`, stores);
     }
-    if (users.length) {
-      db.prepare(`UPDATE errors SET user_id = NULL WHERE user_id IN ${inList(users)}`).run(...users);
+    const have = new Set(tables(db)); // (a bare database, e.g. in a test, may not have the error log or the limits yet)
+    if (users.length && have.has('errors')) db.prepare(`UPDATE errors SET user_id = NULL WHERE user_id IN ${inList(users)}`).run(...users);
+    if (users.length && have.has('limits')) {
       db.prepare(`DELETE FROM limits WHERE key IN ${inList(users)}`).run(...users.map((id) => 'pin|' + id));
       db.prepare(`DELETE FROM limits WHERE key IN ${inList(users)}`).run(...users.map((id) => 'u' + id));
     }

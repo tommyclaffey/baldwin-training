@@ -18,6 +18,7 @@ import { questionPool } from './quizgen.mjs';
 import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
 import { forget } from './cache.mjs';
 import { MEDIA_DIR } from './db.mjs';
+import { wipeCompany } from './companydata.mjs';
 import { seedDemoPrep } from './prep.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -239,25 +240,18 @@ export function demoMediaAllowed(db, user, slug) {
 }
 const dropDemoMedia = (slug) => { if (SLUG_OK.test(String(slug))) fs.rmSync(path.join(DEMO_MEDIA, slug), { recursive: true, force: true }); };
 
-/** One demo copy goes: its people, sessions, records, entries and saved files. */
+/** One demo copy goes: its people, sessions, records, entries and saved files. Nov 15 (audit #6): through the same
+ *  schema-driven delete as a real company (wipeCompany), so a table added later can't be missed. The hand-written table
+ *  list this replaced missed quiz_seen, and 30% of live quiz_seen rows belonged to demo people who were gone. */
 export function dropDemo(db, id) {
-  const slug = db.prepare('SELECT slug FROM companies WHERE id = ? AND demo = 1').get(id)?.slug;
-  const users = db.prepare('SELECT id FROM users WHERE company_id = ?').all(id).map((u) => u.id);
-  for (const u of users) {
-    db.prepare('DELETE FROM sessions WHERE user_id = ?').run(u);
-    db.prepare('DELETE FROM manual_reads WHERE user_id = ?').run(u);
-    db.prepare('DELETE FROM quiz_marks WHERE user_id = ?').run(u);
-  }
-  for (const t of ['quiz_attempts', 'signoffs', 'sections', 'entries', 'quiz_sets', 'media', 'audit', 'signoff_requests', 'path_due', 'notes', 'chat_rooms', 'chat_messages', 'chat_reactions', 'chat_reads', 'chat_gotit', 'chat_mutes', 'program_acks', 'prep_items', 'prep_batches', 'prep_events', 'prep_counts', 'menu_imports', 'menu_import_items']) {
-    const exists = db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(t);
-    if (!exists) continue;
-    const cols = db.prepare(`PRAGMA table_info(${t})`).all().map((c) => c.name);
-    if (cols.includes('company_id')) db.prepare(`DELETE FROM ${t} WHERE company_id = ?`).run(id);
-  }
-  db.prepare('DELETE FROM users WHERE company_id = ?').run(id);
-  db.prepare('DELETE FROM stores WHERE company_id = ?').run(id);
-  db.prepare('DELETE FROM companies WHERE id = ?').run(id);
-  if (slug) dropDemoMedia(slug);
+  if (!db.prepare('SELECT 1 FROM companies WHERE id = ? AND demo = 1').get(id)) return; // only demo copies go this way
+  wipeCompany(db, id); // its demo media folder goes too
+}
+
+/** Rows left behind by demos removed before Nov 15: quiz history of people who no longer exist. Run at startup; once the
+ *  old rows are gone it finds nothing. (User ids can be reused, so a new person could otherwise inherit them.) */
+export function cleanOrphans(db) {
+  return Number(db.prepare('DELETE FROM quiz_seen WHERE user_id NOT IN (SELECT id FROM users)').run().changes);
 }
 
 /** Throwaway demo copies older than a day go. */

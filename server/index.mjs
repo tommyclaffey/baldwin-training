@@ -1,5 +1,5 @@
 // Mise server (The Baldwin's training app): the built app, the content API, sign-in and uploads. No dependencies.
-import { migrateDemo, purgeDemos, dropDemo, startDemo, demoBlocks, isDemoCompany, demoKind, DEMOS, demoMediaOf, demoMediaPath, demoMediaAllowed } from './demo.mjs';
+import { migrateDemo, purgeDemos, cleanOrphans, dropDemo, startDemo, demoBlocks, isDemoCompany, demoKind, DEMOS, demoMediaOf, demoMediaPath, demoMediaAllowed } from './demo.mjs';
 import http from 'node:http';
 import zlib from 'node:zlib';
 import fs from 'node:fs';
@@ -44,6 +44,7 @@ seed(db);
 seedWineVideos(db);
 bootAccounts(db);
 migrateAcks(db); migrateImports(db); migrateDemo(db); purgeDemos(db); // acks and imports first: demo copies seed and drop them
+try { const n = cleanOrphans(db); if (n) console.log(`Removed ${n} quiz history rows of people who no longer exist`); } catch (e) { console.error('orphan cleanup', e); }
 // Nov 14: last week's prep summary posts to each store's #Bar on Monday mornings (server/prep.mjs, postWeekly)
 prep.startWeekly(db, (e) => logError(db, 'server', 'weekly prep post', e));
 setInterval(() => { try { purgeDemos(db); } catch { /* next hour */ } }, 3600e3).unref();
