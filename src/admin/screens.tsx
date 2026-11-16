@@ -242,8 +242,10 @@ export function AcceptInvite() {
 }
 
 /* ---------- media ---------- */
+/** Storage line (Nov 16): 1,536 MB reads as 1.5 GB. */
+const mbOrGb = (b: number) => (b >= 1024 ** 3 ? `${(b / 1024 ** 3).toFixed(1)} GB` : `${Math.max(b > 0 ? 1 : 0, Math.round(b / 1024 ** 2))} MB`);
 export function MediaLibrary() {
-  const { data, error, load, setData } = useLoad<{ media: MediaItem[] }>('/api/media');
+  const { data, error, load, setData } = useLoad<{ media: MediaItem[]; storage?: { used: number; cap: number } }>('/api/media');
   const archive = useLoad<{ media: MediaItem[] }>('/api/media?archived=1');
   const [showArchive, setShowArchive] = useState(false);
   const [link, setLink] = useState('');
@@ -251,7 +253,7 @@ export function MediaLibrary() {
   const [progress, setProgress] = useState<number | null>(null);
   const [err, setErr] = useState('');
   const [play, setPlay] = useState<MediaItem | null>(null);
-  const add = (m: MediaItem) => setData({ media: [m, ...(data?.media || [])] });
+  const add = (m: MediaItem) => setData({ ...data, media: [m, ...(data?.media || [])] });
 
   const upload = async (files: FileList | null) => {
     setErr('');
@@ -259,6 +261,7 @@ export function MediaLibrary() {
       try { setProgress(0); add(await uploadFile(f, setProgress)); } catch (e) { setErr((e as Error).message); }
     }
     setProgress(null);
+    load(); // the storage line
   };
   const addLink = async (e: FormEvent) => {
     e.preventDefault(); setErr('');
@@ -294,6 +297,7 @@ export function MediaLibrary() {
     <div className="admin-page">
       <h1>Videos and photos</h1>
       <p className="muted">Everything here can be picked in any page’s form, wherever there’s a photo or video.</p>
+      {data?.storage && <p className="muted small">Uploads: {mbOrGb(data.storage.used)} of {mbOrGb(data.storage.cap)} used. Long videos fit better as YouTube links.</p>}
       <div className="grid2 media-add">
         <label className="drop">
           <input type="file" multiple accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,video/webm" onChange={(e) => upload(e.target.files)} />

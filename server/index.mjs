@@ -28,7 +28,8 @@ import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErr
 import { enterStore, isBrgCompany } from './variant.mjs';
 import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
 import * as prep from './prep.mjs';
-import { initCompanyData, companyDataRoutes } from './companydata.mjs';
+import { initCompanyData, companyDataRoutes, ownedFiles } from './companydata.mjs';
+import { writeFilesBackup, bytesOf, roomLeft, fullMessage, storageCapBytes } from './files.mjs';
 import * as captions from './captions.mjs';
 import { migrateImports, importRoutes } from './menuimport.mjs';
 import { initAccounts, accountIds, publicFile } from './account.mjs';
@@ -190,6 +191,13 @@ function youtubeId(url) {
   const m = s.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/) || s.match(/^([A-Za-z0-9_-]{11})$/);
   return m ? m[1] : null;
 }
+/** Storage cap (Nov 16, server/files.mjs): refuse a write that would take the company past its cap or the volume too low. */
+const usedBy = (company) => bytesOf(ownedFiles(db, company));
+function needRoom(company, adding) {
+  const used = usedBy(company);
+  if (adding > roomLeft(used)) fail(413, fullMessage(used));
+  return used;
+}
 /** A demo's saved scans so far (archived ones count: the file is still there). */
 const demoSaves = (companyId) => db.prepare("SELECT COUNT(*) n FROM media WHERE company_id = ? AND file LIKE 'demo/%'").get(companyId).n;
 const demoFull = `This demo has saved its ${DEMO_SCAN.saves} photos. Refresh the page for a fresh demo.`;
@@ -253,6 +261,17 @@ async function api(req, res, url) {
   if (p === '/api/ops/ip' && m === 'GET') {
     if (!opsAllowed(req)) fail(404, 'Not found.');
     return sendJson(res, 200, { used: clientIp(req), xRealIp: req.headers['x-real-ip'] || null, xForwardedFor: req.headers['x-forwarded-for'] || null });
+  }
+  // Nov 16 (audit 30, server/files.mjs): uploads and account folders, encrypted. ?since=<ISO> = only what changed.
+  if (p === '/api/ops/files' && m === 'GET') {
+    if (!opsAllowed(req)) fail(404, 'Not found.');
+    if (!process.env.BACKUP_KEY || process.env.BACKUP_KEY.length < 24) fail(503, 'BACKUP_KEY isn’t set.');
+    const sinceRaw = url.searchParams.get('since');
+    const since = sinceRaw ? Date.parse(sinceRaw) : null;
+    if (sinceRaw && !Number.isFinite(since)) fail(400, 'since must be a date.');
+    res.writeHead(200, { 'Content-Type': 'application/octet-stream', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="mise-files-${new Date().toISOString().slice(0, 10)}.bk"` });
+    try { await writeFilesBackup(res, { since }); } catch (e) { logError(db, 'server', '/api/ops/files', e); res.destroy(); return; }
+    return res.end();
   }
   if (p === '/api/ops/errors' && m === 'GET') {
     if (!opsAllowed(req)) fail(404, 'Not found.');
@@ -640,6 +659,7 @@ async function api(req, res, url) {
           req.on('end', () => resolve(Buffer.concat(parts))); req.on('error', reject);
         });
         if (!buf.length) fail(400, 'That photo was empty.');
+        needRoom(c.company, 2 * 1024 * 1024); // saved as a JPEG no bigger than 1600 px: well under 2 MB
         return sendJson(res, 200, { url: await chat.savePhoto(buf) });
       }
       const rm = /^\/api\/chat\/room\/([a-z0-9-]{2,40})(?:\/(messages|read|typing|mute))?$/.exec(p);
@@ -995,6 +1015,7 @@ async function api(req, res, url) {
     const b = await readJson(req);
     const frames = await spinFrames(String(b.token || ''), u.id);
     if (!frames) fail(410, 'That spin has expired. Record it again.');
+    if (!dm) needRoom(c.company, frames.reduce((n, f) => n + f.length, 0));
     if (dm && demoSaves(c.company) >= DEMO_SCAN.saves) fail(429, demoFull);
     const name = str(b.name, 80) || 'Bottle';
     const stem = `${Date.now().toString(36)}-spin-${slugify(name).slice(0, 40) || 'bottle'}`;
@@ -1010,6 +1031,7 @@ async function api(req, res, url) {
     const b = await readJson(req);
     const jpg = lastCut(String(b.token || ''), u.id);
     if (!jpg) fail(410, 'That photo has expired. Take it again.');
+    if (!dm) needRoom(c.company, jpg.length);
     if (dm && demoSaves(c.company) >= DEMO_SCAN.saves) fail(429, demoFull);
     const name = str(b.name, 80) || 'Bottle';
     const file = saveScan(dm, `${Date.now().toString(36)}-bottle-${slugify(name).slice(0, 40) || 'scan'}.jpg`, jpg);
@@ -1022,7 +1044,8 @@ async function api(req, res, url) {
   if (p === '/api/media' && m === 'GET') {
     needUser(c, req);
     const archived = url.searchParams.get('archived') ? 'IS NOT NULL' : 'IS NULL';
-    return sendJson(res, 200, { media: db.prepare(`SELECT * FROM media WHERE store_id = ? AND archived_at ${archived} ORDER BY id DESC`).all(c.store).map(mediaOut) });
+    return sendJson(res, 200, { media: db.prepare(`SELECT * FROM media WHERE store_id = ? AND archived_at ${archived} ORDER BY id DESC`).all(c.store).map(mediaOut),
+      storage: { used: usedBy(c.company), cap: storageCapBytes() } });
   }
   if (p === '/api/media/youtube' && m === 'POST') {
     const u = needUser(c, req);
@@ -1039,6 +1062,8 @@ async function api(req, res, url) {
     if (!/^(image\/(jpeg|png|webp|gif)|video\/(mp4|quicktime|webm|x-m4v))$/.test(mime)) fail(415, 'Upload a photo (JPG, PNG, WebP) or a video (MP4, MOV, WebM).');
     const declared = Number(req.headers['content-length'] || 0);
     if (declared > MAX_UPLOAD) fail(413, 'That file is over 600 MB. Trim it, or post it to YouTube and paste the link.');
+    const used = needRoom(c.company, declared);
+    const budget = Math.min(MAX_UPLOAD, roomLeft(used));
     const original = decodeURIComponent(String(req.headers['x-filename'] || 'upload')).slice(0, 120);
     const ext = { 'image/jpeg': '.jpg', 'image/png': '.png', 'image/webp': '.webp', 'image/gif': '.gif', 'video/mp4': '.mp4', 'video/quicktime': '.mov', 'video/webm': '.webm', 'video/x-m4v': '.m4v' }[mime];
     const file = `${Date.now().toString(36)}-${slugify(original.replace(/\.[a-z0-9]+$/i, '')).slice(0, 40)}${ext}`;
@@ -1046,7 +1071,10 @@ async function api(req, res, url) {
     await new Promise((resolve, reject) => {
       let size = 0;
       const out = fs.createWriteStream(dest);
-      req.on('data', (chunk) => { size += chunk.length; if (size > MAX_UPLOAD) { req.destroy(); out.destroy(); fs.rmSync(dest, { force: true }); reject(new HttpError(413, 'That file is over 600 MB.')); } });
+      req.on('data', (chunk) => {
+        size += chunk.length;
+        if (size > budget) { req.destroy(); out.destroy(); fs.rmSync(dest, { force: true }); reject(new HttpError(413, size > MAX_UPLOAD ? 'That file is over 600 MB.' : fullMessage(used))); }
+      });
       req.pipe(out);
       out.on('finish', resolve);
       out.on('error', reject);

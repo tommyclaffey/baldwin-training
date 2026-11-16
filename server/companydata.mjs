@@ -67,7 +67,7 @@ function ownedRows(db, companyId) {
 }
 
 /** Uploaded files that belong to the company (its media library, bottle scans with their spin frames, chat photos). */
-function ownedFiles(db, companyId) {
+export function ownedFiles(db, companyId) {
   const files = new Set();
   for (const r of db.prepare("SELECT file FROM media WHERE company_id = ? AND file IS NOT NULL AND file NOT LIKE 'demo/%'").all(companyId)) {
     files.add(path.basename(r.file));

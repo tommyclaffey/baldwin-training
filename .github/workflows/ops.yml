@@ -1,12 +1,14 @@
 # Behind the scenes (Nov 10, server/ops.mjs). Nightly: pull an encrypted backup of the live database and keep it here
 # for 30 days, off Railway; check the app's error log; then take the demo tour in a real browser (scripts/smoke.mjs).
-# Every 6 hours: is the app up?
+# Nov 16: also pulls the uploaded files and account folders (encrypted; everything on Sundays, the day's changes on other
+# nights; scripts/restore-files.mjs). Every hour: is the app up? (GitHub can run these late; the minute-by-minute
+# check is the outside monitor, see README "Behind the scenes".)
 # A failed run makes GitHub email the repo owner. Secrets: OPS_TOKEN (same as the Railway variable), APP_URL.
 name: Ops
 on:
   schedule:
     - cron: '15 8 * * *'    # nightly, about 3–4 am Detroit
-    - cron: '45 */6 * * *'  # health check every 6 hours
+    - cron: '45 * * * *'    # health check every hour
   workflow_dispatch:
 jobs:
   health:
@@ -29,7 +31,22 @@ jobs:
           name: mise-backup-${{ env.DAY }}
           path: mise.bk
           retention-days: 30
+      - name: Pull the uploaded files (everything on Sundays, the last 26 hours' changes other nights)
+        run: |
+          if [ "$(date -u +%u)" = "7" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then KIND=full; Q=""; else KIND=changes; Q="?since=$(date -u -d '26 hours ago' +%FT%TZ)"; fi
+          curl -fsS --retry 3 -H "Authorization: Bearer ${{ secrets.OPS_TOKEN }}" "${{ secrets.APP_URL }}/api/ops/files$Q" -o files.bk
+          head -c 7 files.bk | grep -q MISEFL1
+          [ "$(tail -c 8 files.bk)" = "MISEEND1" ]
+          ls -l files.bk
+          echo "FILES_KIND=$KIND" >> "$GITHUB_ENV"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mise-files-${{ env.FILES_KIND }}-${{ env.DAY }}
+          path: files.bk
+          retention-days: 35
+          compression-level: 0
       - name: Errors in the last day
+        if: always()
         run: |
           curl -fsS -H "Authorization: Bearer ${{ secrets.OPS_TOKEN }}" "${{ secrets.APP_URL }}/api/ops/errors?hours=24" -o errors.json
           node -e '

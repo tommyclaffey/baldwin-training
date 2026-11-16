@@ -10,9 +10,10 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { createCipheriv, createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { DATA_DIR } from './db.mjs';
+import { pruneOldCopies } from './files.mjs';
 
 const BACKUPS = path.join(DATA_DIR, 'backups');
-const KEEP_DAYS = 14;
+export const KEEP_DAYS = 14; // daily snapshots, and (Nov 16) the copies taken before a change
 const today = () => new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
 
 export function initOps(db) {
@@ -22,6 +23,7 @@ export function initOps(db) {
   const tick = () => {
     try { dailySnapshot(db); } catch (e) { logError(db, 'server', 'backup', e); }
     try { pruneErrors(db); } catch (e) { console.error('prune errors', e); }
+    try { pruneOldCopies(KEEP_DAYS); } catch (e) { logError(db, 'server', 'prune copies', e); }
   };
   setTimeout(tick, 60_000).unref();
   setInterval(tick, 3600_000).unref();
