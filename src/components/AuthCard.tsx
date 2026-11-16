@@ -10,6 +10,7 @@
 // Photo: Olena Bohovyk on Unsplash (https://unsplash.com/photos/HN2ukPUF_og), the same photo as Figma section 25.
 import { useLayoutEffect, type CSSProperties, type ReactNode } from 'react';
 import { THEMES, brandTitle, color, setPageBrand, themeVars, type Brand, type Theme, type TypeSpec } from '../lib/theme';
+import { LegalLinks } from './Legal';
 
 const WEIGHT: Record<string, number> = { Regular: 400, Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800 };
 const weight = (s: TypeSpec, fallback: number) => (s.fs && WEIGHT[s.fs]) || fallback;
@@ -63,6 +64,8 @@ export function AuthCard({ title, sub, kicker, foot, brand = 'mise', children }:
           {children}
         </div>
         {foot && <p className="si-foot">{foot}</p>}
+        {/* Nov 16: Privacy · Terms · Help, once they're public (content/legal.md) */}
+        <LegalLinks className="si-legal" />
       </main>
     </div>
   );

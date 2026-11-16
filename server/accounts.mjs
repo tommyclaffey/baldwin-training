@@ -20,7 +20,8 @@ import {
   hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionCookies, sessionDays, LoginLimiter, publicUser,
   sha256, newToken, newTotpSecret, verifyTotp, otpauthUrl, newJoinCode, clientIp,
 } from './auth.mjs';
-import { APP_URL, mailConfigured, sendMail, resetEmail, promoteEmail } from './mail.mjs';
+import { APP_URL, mailConfigured, sendMail, resetEmail, promoteEmail, inviteEmail } from './mail.mjs';
+import { legalState } from './legal.mjs';
 import { logError } from './ops.mjs';
 import { wipeCompany, PROTECTED } from './companydata.mjs';
 
@@ -42,6 +43,14 @@ const tickets = new Map(); // two-step sign-in: ticket → { userId, at }
 const RESET_HOURS = 24;
 const forgotIpLimiter = new LoginLimiter(10, 60 * 60_000, 'forgot-ip');
 const forgotEmailLimiter = new LoginLimiter(3, 60 * 60_000, 'forgot-email');
+// Invite and promotion emails (Nov 16): like Forgot Password?, a few an hour per address, and a cap per sender.
+const inviteEmailLimiter = new LoginLimiter(3, 60 * 60_000, 'invite-email');
+const inviteSenderLimiter = new LoginLimiter(30, 60 * 60_000, 'invite-sender');
+const INVITE_DAYS = 14;
+// Owners add their own stores (Nov 16). A cap per company (STORE_CAP, default 25; a super admin can add past it), and a
+// small one in a demo copy, where adding stores works so it can be shown (the stores go with the demo).
+const STORE_CAP = Math.max(1, Number(process.env.STORE_CAP) || 25);
+export const DEMO_STORE_CAP = 3;
 export const FORGOT_MESSAGE = 'If that email has an account, we’ve sent a reset link. No email? Ask an owner for a reset link.';
 
 /** Startup: Baldwin has a join code, the super admin email is a super admin, and 30-day-old deletions are gone for good. */
@@ -122,7 +131,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const byId = (id) => db.prepare('SELECT u.*, c.name company_name FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.id = ?').get(id);
   /** The signed-in person as the app sees them: role, company, and the store they're working in. */
   const meOut = (u) => ({
-    ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo,
+    ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo, hq: !!companyRow(companyOf(u))?.internal, // Nov 16: Mise Academy (HQ) keeps one store
     brand: lookOf(companyRow(companyOf(u))), // Nov 11: the look follows the company; Nov 16: its plan decides (server/looks.mjs)
     store: storeOut(storeOf(db, u)), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
   });
@@ -198,6 +207,30 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const clearPinLimits = (id) => { pinLimiter.reset('pin|' + id); pinDayLimiter.reset('pin|' + id); };
   const resetOut = (t, r) => ({ link: r.link, expiresAt: r.expiresAt, hours: r.hours, name: t.name, email: t.email });
 
+  /* Invite emails (Nov 16): every invite or promotion link also goes by email when email is set up. The link is still
+   * shown, to copy. Never in a demo; a few an hour per address (like Forgot Password?) and 30 an hour per sender; a failed
+   * send goes to the errors table. Answers { on, sent, reason } (reason: off · demo · limit · failed). */
+  const placeOf = (companyId, storeId) => (storeId && db.prepare('SELECT name FROM stores WHERE id = ?').get(storeId)?.name)
+    || (companyId && db.prepare('SELECT name FROM companies WHERE id = ?').get(companyId)?.name) || null;
+  const deliver = async (actor, to, mail, companyId, where) => {
+    const on = mailConfigured();
+    if (companyId && companyRow(companyId)?.demo) return { on, sent: false, reason: 'demo' };
+    if (!on) return { on, sent: false, reason: 'off' };
+    if (!inviteEmailLimiter.check(to) || !inviteSenderLimiter.check('u' + actor.id)) return { on, sent: false, reason: 'limit' };
+    inviteEmailLimiter.record(to); inviteSenderLimiter.record('u' + actor.id);
+    try { await sendMail({ to, ...mail }); return { on, sent: true, reason: null }; }
+    catch (e) { console.error('[mail] invite email failed', e.message); logError(db, 'server', where, e, actor.id); return { on, sent: false, reason: 'failed' }; }
+  };
+  const mailInvite = (actor, to, link, role, companyId, storeId, where) =>
+    deliver(actor, to, inviteEmail({ email: to, url: APP_URL + link, days: INVITE_DAYS, role, place: placeOf(companyId, storeId), by: actor.name }), companyId, where);
+  const sentNote = (m) => (m.sent ? ' · emailed' : '');
+
+  /* Stores (Nov 16): owners add and rename their own company's stores. Managers can't (a demo's manager can: a demo has
+   * no owner); the Mise team can, working in the company (not Support). */
+  const storeKeeper = (u) => u.role === 'owner' || (u.role === 'superadmin' && teamCan(u, 'editCompany')) || (u.role === 'manager' && !!companyRow(companyOf(u))?.demo);
+  const storeCap = (co) => (co.demo ? DEMO_STORE_CAP : STORE_CAP);
+  const sameName = (cid, name, except = 0) => db.prepare('SELECT 1 FROM stores WHERE company_id = ? AND deleted_at IS NULL AND name = ? COLLATE NOCASE AND id != ?').get(cid, name, except);
+
   return async function route(req, res, url, c) {
     const m = req.method, p = url.pathname, parts = p.split('/').filter(Boolean);
 
@@ -206,7 +239,11 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const users = db.prepare('SELECT COUNT(*) n FROM users').get().n;
       const superNeeded = !!SUPERADMIN_EMAIL && !db.prepare("SELECT 1 FROM users WHERE role = 'superadmin' AND deleted_at IS NULL").get();
       const me = c.user ? meOut(c.user) : null;
-      return sendJson(res, 200, { user: me, setupNeeded: users === 0, superSetupNeeded: superNeeded });
+      // Nov 16: Privacy, Terms and Help go public (and their links show) once content/legal.md's blanks are filled
+      const legal = legalState();
+      return sendJson(res, 200, { user: me, setupNeeded: users === 0, superSetupNeeded: superNeeded, legal: { public: legal.filled, supportEmail: legal.filled ? legal.values.supportEmail : null },
+        // Nov 16: invite buttons say Send Invite once email is set up (Create Invite Link until then). Never in a demo.
+        mailOn: mailConfigured() && !me?.demo });
     }
 
     /* ---- first accounts: the company owner (OWNER_EMAIL) and the primary super admin (SUPERADMIN_EMAIL) ---- */
@@ -473,7 +510,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     const makeInvite = (u, email, role, companyId, storeId = null, { superRole = null, userId = null } = {}) => {
       const token = newToken();
       db.prepare('INSERT INTO invites(token_hash,company_id,email,role,created_by,created_at,expires_at,store_id,super_role,user_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
-        .run(sha256(token), companyId, email, role, u.id, now(), new Date(Date.now() + 14 * 864e5).toISOString(), storeId, superRole, userId);
+        .run(sha256(token), companyId, email, role, u.id, now(), new Date(Date.now() + INVITE_DAYS * 864e5).toISOString(), storeId, superRole, userId);
       return `/admin/invite/${token}`;
     };
 
@@ -512,8 +549,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const store = role === 'manager' && b.storeId ? storesOf(db, companyOf(u)).find((x) => x.id === Number(b.storeId)) : null;
       if (role === 'manager' && b.storeId && !store) fail(404, 'We couldn’t find that store.');
       const link = makeInvite(u, email, role, companyOf(u), store?.id ?? null);
-      audit(db, u.id, 'invite', `${email} · ${role}`, companyOf(u));
-      return sendJson(res, 200, { link, email, role });
+      const mail = await mailInvite(u, email, link, role, companyOf(u), store?.id ?? null, '/api/team/invite');
+      audit(db, u.id, 'invite', `${email} · ${role}${sentNote(mail)}`, companyOf(u));
+      return sendJson(res, 200, { link, email, role, days: INVITE_DAYS, mail });
     }
     if (parts[1] === 'team' && parts[2] === 'invites' && parts[3] && m === 'DELETE') {
       const u = needOwner(c, req);
@@ -526,6 +564,50 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const code = setJoinCode(db, companyOf(u));
       audit(db, u.id, 'new join code', null, companyOf(u));
       return sendJson(res, 200, { joinCode: code });
+    }
+    /* ---- stores: owners add and rename their own (Nov 16) ---- */
+    if (parts[1] === 'team' && parts[2] === 'stores') {
+      const u = need(c, req);
+      if (!storeKeeper(u)) fail(403, 'Only an owner can add or rename stores.');
+      const cid = companyOf(u);
+      const co = companyRow(cid);
+      if (!co) fail(404, 'We couldn’t find that company.');
+      if (co.internal) fail(400, 'Mise Academy (HQ) is Mise’s own company: it keeps one store.');
+      const cap = storeCap(co);
+      if (!parts[3] && m === 'GET') {
+        const count = (sql, id) => db.prepare(sql).get(id).n;
+        const stores = storesOf(db, cid).map((x) => ({ ...storeOut(x), createdAt: x.created_at,
+          staff: count("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'staff' AND deleted_at IS NULL", x.id),
+          managers: count("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'manager' AND deleted_at IS NULL", x.id) }));
+        return sendJson(res, 200, { company: co.name, demo: !!co.demo, stores, cap, canAdd: stores.length < cap || u.role === 'superadmin' });
+      }
+      if (!parts[3] && m === 'POST') {
+        const b = await readJson(req);
+        const name = str(b.name, 80).replace(/\s+/g, ' ');
+        if (name.length < 2) fail(400, 'Add the store’s name.');
+        if (sameName(cid, name)) fail(409, `There’s already a store called ${name}.`);
+        const n = storesOf(db, cid).length;
+        // The Mise team can go past the cap for a customer who needs more (not in a demo)
+        if (n >= cap && !(u.role === 'superadmin' && !co.demo)) {
+          fail(400, co.demo ? `This demo can have up to ${cap} stores. A real account can have ${STORE_CAP}.` : `${co.name} has ${n} stores, the most one account can add. Contact Mise support for more.`);
+        }
+        const id = addStore(db, cid, name);
+        audit(db, u.id, 'add store', name, cid, teamRole(u));
+        return sendJson(res, 200, { store: storeOut(db.prepare('SELECT * FROM stores WHERE id = ?').get(id)) });
+      }
+      if (/^\d+$/.test(parts[3] || '') && !parts[4] && m === 'PATCH') {
+        const st = db.prepare('SELECT * FROM stores WHERE id = ? AND company_id = ? AND deleted_at IS NULL').get(Number(parts[3]), cid);
+        if (!st) fail(404, 'We couldn’t find that store.');
+        const b = await readJson(req);
+        const name = str(b.name, 80).replace(/\s+/g, ' ');
+        if (name.length < 2) fail(400, 'Add the store’s name.');
+        if (name === st.name) return sendJson(res, 200, { store: storeOut(st) });
+        if (sameName(cid, name, st.id)) fail(409, `There’s already a store called ${name}.`);
+        db.prepare('UPDATE stores SET name = ? WHERE id = ?').run(name, st.id);
+        audit(db, u.id, 'rename store', `${st.name} → ${name}`, cid, teamRole(u));
+        return sendJson(res, 200, { store: storeOut({ ...st, name }) });
+      }
+      fail(404, 'Not found.');
     }
     if (parts[1] === 'team' && /^\d+$/.test(parts[2] || '')) {
       const u = needManager(c, req);
@@ -571,15 +653,10 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(t.id); // a new link cancels the old one
         const link = makeInvite(u, email, 'manager', cid, st?.id ?? null, { userId: t.id });
         const inv = promotionOf(t.id);
-        let emailed = false;
-        if (mailConfigured()) {
-          emailed = true;
-          const company = companyRow(cid)?.name;
-          void sendMail({ to: email, ...promoteEmail({ name: t.name, email, url: APP_URL + link, days: PROMOTE_DAYS, place: st?.name || company, by: u.name }) })
-            .catch((e) => { console.error('[mail] promotion email failed', e.message); logError(db, 'server', '/api/team/promote', e, u.id); });
-        }
-        audit(db, u.id, 'promotion link', `${t.name} · ${email} · ${where}`, cid, teamRole(u));
-        return sendJson(res, 200, { link, name: t.name, email, storeName: st?.name ?? null, expiresAt: inv?.expires_at ?? null, days: PROMOTE_DAYS, emailed });
+        // Nov 16: sent the same way as invites (rate-limited, never in a demo, failures logged), and the answer says whether it went
+        const mail = await deliver(u, email, promoteEmail({ name: t.name, email, url: APP_URL + link, days: PROMOTE_DAYS, place: st?.name || companyRow(cid)?.name, by: u.name }), cid, '/api/team/promote');
+        audit(db, u.id, 'promotion link', `${t.name} · ${email} · ${where}${sentNote(mail)}`, cid, teamRole(u));
+        return sendJson(res, 200, { link, name: t.name, email, storeName: st?.name ?? null, expiresAt: inv?.expires_at ?? null, days: PROMOTE_DAYS, emailed: mail.sent, mail });
       }
       if (parts[3] === 'demote' && m === 'POST') {
         if (!promoter(u)) fail(403, 'Only an owner can change someone’s role.');
@@ -747,8 +824,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         if (db.prepare('SELECT 1 FROM users WHERE email = ? AND deleted_at IS NULL').get(email)) fail(409, 'That email already has an account.');
         link = makeInvite(s, email, 'owner', id);
       }
-      superLog(s, 'add company', name + (email ? ` · owner invite to ${email}` : ''), id);
-      return sendJson(res, 200, { id, link });
+      const mail = link ? await mailInvite(s, email, link, 'owner', id, null, '/api/super/companies') : null;
+      superLog(s, 'add company', name + (email ? ` · owner invite to ${email}${sentNote(mail)}` : ''), id);
+      return sendJson(res, 200, { id, link, email: email || null, days: INVITE_DAYS, mail });
     }
     if (parts[2] === 'companies' && /^\d+$/.test(parts[3] || '')) {
       const co = db.prepare('SELECT * FROM companies WHERE id = ?').get(Number(parts[3]));
@@ -794,9 +872,11 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         const email = String(b.email || '').trim().toLowerCase();
         if (!validEmail(email)) fail(400, 'Enter a valid email address.');
         if (db.prepare('SELECT 1 FROM users WHERE email = ? AND deleted_at IS NULL').get(email)) fail(409, 'That email already has an account.');
-        const link = makeInvite(s, email, b.role === 'manager' ? 'manager' : 'owner', co.id);
-        superLog(s, 'invite', `${email} → ${co.name}`, co.id);
-        return sendJson(res, 200, { link });
+        const role = b.role === 'manager' ? 'manager' : 'owner';
+        const link = makeInvite(s, email, role, co.id);
+        const mail = await mailInvite(s, email, link, role, co.id, null, '/api/super/owner-invite');
+        superLog(s, 'invite', `${email} → ${co.name}${sentNote(mail)}`, co.id);
+        return sendJson(res, 200, { link, email, days: INVITE_DAYS, mail });
       }
       if (parts[4] === 'stores' && m === 'POST') {
         may('editCompany');
@@ -935,8 +1015,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (!GIVABLE.includes(role)) fail(400, 'Pick Manager or Support.');
       if (db.prepare('SELECT 1 FROM users WHERE email = ? AND deleted_at IS NULL').get(email)) fail(409, 'That email already has an account.');
       const link = makeInvite(s, email, 'superadmin', null, null, { superRole: role });
-      superLog(s, 'invite to the Mise team', `${email} · ${TEAM_ROLES[role]}`);
-      return sendJson(res, 200, { link, email, teamRole: role });
+      const mail = await mailInvite(s, email, link, 'superadmin', null, null, '/api/super/admins/invite');
+      superLog(s, 'invite to the Mise team', `${email} · ${TEAM_ROLES[role]}${sentNote(mail)}`);
+      return sendJson(res, 200, { link, email, teamRole: role, days: INVITE_DAYS, mail });
     }
     if (parts[2] === 'admins' && parts[3] === 'invites' && parts[4] && m === 'DELETE') {
       may('team', 'Only the owner changes the Mise team.');

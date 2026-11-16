@@ -10,6 +10,8 @@ import { WineVideos } from './wine';
 import { BottleScannerPage } from './scanner';
 import { SuperAdmin } from './super';
 import { CompanyData } from './companydata';
+import { StoresPage } from './stores';
+import { LegalLinks } from '../components/Legal';
 import { ManagerHome, PeoplePage, SignoffsPage, useSignoffCount } from './manager';
 import { api } from '../lib/api';
 import { DemoBar, DemoTour, openWelcome } from '../components/DemoTour';
@@ -64,6 +66,8 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
   // The shared library (classics, grape and region videos) is kept by super admins; everything else is the store's own.
   const library = user.role === 'superadmin' && user.teamRole !== 'support'; // Nov 16: not Mise's Support (view only)
   const signoffs = useSignoffCount();
+  // Nov 16: owners add and rename their own stores (a demo's manager too: a demo has no owner; the Mise team, not Support)
+  const keepsStores = !user.hq && (user.role === 'owner' || (isSuper && user.teamRole !== 'support') || (!!user.demo && user.role === 'manager'));
   const { count: chatUnread, mentions: chatMentions } = useChatState(hasChat(user));
   return (
     <div className="admin">
@@ -89,6 +93,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <p className="admin-group">Team</p>
           <NavLink to="/admin/people"><NavIcon d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 10a7 7 0 0 1 14 0M17 3.5a4 4 0 0 1 0 7.5M22 21a7 7 0 0 0-4-6.3" />People</NavLink>
           <NavLink to="/admin/signoffs"><NavIcon d="M3 17c3-4 5-8 7-8s-1 8 1 8 3-5 5-5-1 5 1 5h4M3 21h18" />Sign-offs{signoffs > 0 && <span className="admin-count" aria-label={`${signoffs} waiting`}>{signoffs}</span>}</NavLink>
+          {keepsStores && <NavLink to="/admin/stores"><NavIcon d="M4 10v10h16V10M3 10l2-6h14l2 6M3 10h18M9 20v-6h6v6" />Stores</NavLink>}
           <p className="admin-group">The Book</p>
           {cols?.collections && Object.values(cols.collections).filter((c) => library || c.id !== 'classic').map((c) => <NavLink key={c.id} to={`/admin/pages/${c.id}`}>{c.label}</NavLink>)}
           {(hasBook || library) && <NavLink to="/admin/wine-videos">Wine Videos</NavLink>}
@@ -105,6 +110,8 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           {!(user.canSwitchStore && (user.stores || []).length > 1) && user.store && <span className="admin-strip-only admin-strip-store">Store: <strong>{user.store.name}</strong></span>}
           <Link to="/" className="admin-strip-only">← Back to the Book</Link>
         </nav>
+        {/* Nov 16: Privacy · Terms · Help, once they're public (phones: on Your Account) */}
+        <LegalLinks className="admin-legal" />
         <Link to="/" className="admin-back">← Back to the Book</Link>
       </aside>
       <main className="admin-main" id="content">
@@ -126,6 +133,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <Route path="people" element={<PeoplePage />} />
           <Route path="people/managers" element={<People leadsOnly />} />
           <Route path="signoffs" element={<SignoffsPage />} />
+          <Route path="stores" element={<StoresPage />} />
           <Route path="training" element={<ToPeople />} />
           <Route path="quizzes" element={<ToPeople />} />
           <Route path="team" element={<ToPeople />} />

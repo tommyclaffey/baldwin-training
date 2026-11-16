@@ -3,11 +3,11 @@
 // Server: server/team.mjs (+ the /api/path routes in server/index.mjs).
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { api, type Store } from '../lib/api';
+import { api, type MailStatus, type Store } from '../lib/api';
 import { useSession } from '../lib/session';
 import { SearchBox } from '../components/SearchBox';
 import { useCollections } from './cms';
-import { ErrorNote, Loading, Text } from './ui';
+import { ErrorNote, InviteSentCard, Loading, Text, mailLine } from './ui';
 import { dayLabel, type Job, type MyPath, type Stage, type Step } from '../path/store';
 import { ItemChatButton, SendToTeamButton } from '../chat/SendToTeam';
 import { hasChat } from '../chat/unread';
@@ -594,12 +594,12 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
 /** Promote to Manager (Nov 16, Tommy: "people get promoted from server to manager all the time"). Their email (and which
  *  store, or every store, like a manager invite) → a one-time link for the same person. A demo does it straight away. */
 function PromoteDialog({ p, onClose, onPromoted }: { p: Person; onClose: () => void; onPromoted: (name: string) => void }) {
-  const { user } = useSession();
+  const { user, mailOn } = useSession();
   const first = p.name.split(' ')[0];
   const stores = (user?.canSwitchStore ? user.stores || [] : []) as Store[];
   const [email, setEmail] = useState(p.promotion?.email || p.email || '');
   const [store, setStore] = useState(String(p.promotion ? p.promotion.storeId ?? '' : p.storeId ?? ''));
-  const [made, setMade] = useState<{ link: string; email: string; storeName: string | null; days: number; emailed: boolean } | null>(null);
+  const [made, setMade] = useState<{ link: string; email: string; storeName: string | null; days: number; emailed: boolean; mail?: MailStatus } | null>(null);
   const [copied, setCopied] = useState(false);
   const { busy, msg, run } = useAct();
   useEffect(() => { const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); }; document.addEventListener('keydown', k); return () => document.removeEventListener('keydown', k); }, [onClose]);
@@ -607,7 +607,7 @@ function PromoteDialog({ p, onClose, onPromoted }: { p: Person; onClose: () => v
   const submit = (e: FormEvent) => {
     e.preventDefault();
     void run('go', async () => {
-      const r = await api<{ instant?: boolean; link?: string; email: string; storeName: string | null; days: number; emailed: boolean }>(`/api/team/${p.id}/promote`, { method: 'POST', body: p.demo ? { storeId } : { email, storeId } });
+      const r = await api<{ instant?: boolean; link?: string; email: string; storeName: string | null; days: number; emailed: boolean; mail?: MailStatus }>(`/api/team/${p.id}/promote`, { method: 'POST', body: p.demo ? { storeId } : { email, storeId } });
       if (r.instant) { onPromoted(p.name); return; }
       const link = location.origin + r.link;
       setMade({ ...r, link }); setCopied(false);
@@ -631,14 +631,15 @@ function PromoteDialog({ p, onClose, onPromoted }: { p: Person; onClose: () => v
             </label>}
             {p.demo
               ? <p className="muted small">This is a demo, so it happens straight away. In a real account, {first} gets a one-time link to pick a password.</p>
-              : <p className="muted small">You get a one-time link to send them. It works for 14 days{p.promotion ? ' and replaces the link sent before' : ''}. Until they use it, they sign in with their PIN.</p>}
-            <button className="mg-btn dark" disabled={(!p.demo && !email.trim()) || !!busy}>{busy ? 'Working…' : p.demo ? 'Promote Now' : 'Create Promotion Link'}</button>
+              : <p className="muted small">{mailOn ? `We email ${first} a one-time link, and you get it to copy too.` : 'You get a one-time link to send them.'} It works for 14 days{p.promotion ? ' and replaces the link sent before' : ''}. Until they use it, they sign in with their PIN.</p>}
+            <button className="mg-btn dark" disabled={(!p.demo && !email.trim()) || !!busy}>{busy ? 'Working…' : p.demo ? 'Promote Now' : mailOn ? 'Send Promotion Link' : 'Create Promotion Link'}</button>
             <Feedback msg={msg} at="go" />
           </form>
         )}
         {made && (
           <div className="pp-add-invite" role="status">
-            <p>Send this link to <strong>{first}</strong> ({made.email}). It works once and expires in {made.days} days. They pick a password and they’re a manager{made.storeName ? ` at ${made.storeName}` : ' of every store'}.{made.emailed ? ` We emailed it to ${made.email} too.` : ''}</p>
+            <p><strong>{mailLine(made.email, made.mail)}</strong></p>
+            <p>{made.mail?.sent ? 'You can also copy the link and send it yourself.' : `Copy the link and send it to ${first}.`} It works once and expires in {made.days} days. They pick a password and they’re a manager{made.storeName ? ` at ${made.storeName}` : ' of every store'}.</p>
             <div className="pp-link-row">
               <input readOnly value={made.link} onFocus={(e) => e.target.select()} aria-label={`Promotion link for ${p.name}`} />
               <button type="button" className="mg-btn dark" onClick={() => { void navigator.clipboard?.writeText(made.link); setCopied(true); }}>{copied ? 'Copied' : 'Copy Link'}</button>
@@ -738,16 +739,16 @@ function JobChip({ jobs, current, onPick, busy, manager }: { jobs: Job[]; curren
 
 /** Add a Person: staff join with the code; owners also invite managers and owners by email. */
 function AddPerson({ joinCode, company, onClose, onCode }: { joinCode: string | null; company: string | null; onClose: () => void; onCode: () => Promise<unknown> }) {
-  const { user } = useSession();
+  const { user, mailOn } = useSession();
   const owner = user?.role === 'owner' || user?.role === 'superadmin';
   const [copied, setCopied] = useState(false);
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('manager');
-  const [link, setLink] = useState('');
+  const [made, setMade] = useState<{ link: string; email: string; days: number; mail: MailStatus } | null>(null);
   const { busy, msg, run } = useAct();
   const joinUrl = location.origin + '/';
   const copy = () => { void navigator.clipboard?.writeText(`Join the ${company || 'team'} training app on Mise Academy: ${joinUrl}  Join code: ${joinCode}`); setCopied(true); };
-  const invite = (e: FormEvent) => { e.preventDefault(); void run('inv', async () => { const r = await api<{ link: string }>('/api/team/invite', { method: 'POST', body: { email, role } }); setLink(location.origin + r.link); setEmail(''); }); };
+  const invite = (e: FormEvent) => { e.preventDefault(); void run('inv', async () => { setMade(null); const r = await api<{ link: string; email: string; days: number; mail: MailStatus }>('/api/team/invite', { method: 'POST', body: { email, role } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); }); };
   useEffect(() => { const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); }; document.addEventListener('keydown', k); return () => document.removeEventListener('keydown', k); }, [onClose]);
   return (
     <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
@@ -766,13 +767,13 @@ function AddPerson({ joinCode, company, onClose, onCode }: { joinCode: string | 
         {owner && (
           <form className="pp-add-invite" onSubmit={invite}>
             <Label>A manager or owner</Label>
-            <Text label="Their email" value={email} placeholder="manager@thebaldwinshelby.com" onChange={setEmail} />
+            <Text label="Their email" value={email} placeholder="manager@yourrestaurant.com" onChange={setEmail} />
             <label className="field"><span>Role</span>
               <select value={role} onChange={(e) => setRole(e.target.value)}><option value="manager">Manager: signs people off, edits the book</option><option value="owner">Owner: every store, plus owners and managers</option></select>
             </label>
-            <button className="mg-btn dark" disabled={!email.trim() || !!busy}>{busy === 'inv' ? 'Making…' : 'Create Invite Link'}</button>
+            <button className="mg-btn dark" disabled={!email.trim() || !!busy}>{busy === 'inv' ? (mailOn ? 'Sending…' : 'Making…') : mailOn ? 'Send Invite' : 'Create Invite Link'}</button>
             <Feedback msg={msg} at="inv" />
-            {link && <div className="ok-card card" role="status"><p>Send this link. It works once and expires in 14 days.</p><input readOnly value={link} onFocus={(e) => e.target.select()} aria-label="Invite link" /></div>}
+            {made && <InviteSentCard link={made.link} email={made.email} mail={made.mail} days={made.days} buttonClass="mg-btn" />}
           </form>
         )}
         {!owner && <p className="muted small">Managers and owners are invited by an owner.</p>}

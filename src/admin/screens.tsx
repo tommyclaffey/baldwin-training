@@ -1,12 +1,13 @@
 // Admin screens: sign in, first-time setup, invites, lists, media, people, account, activity.
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { api, uploadCaptions, uploadFile, ROLE_LABEL, type MediaItem, type Role, type TeamRole, type User } from '../lib/api';
+import { api, uploadCaptions, uploadFile, ROLE_LABEL, type MailStatus, type MediaItem, type Role, type TeamRole, type User } from '../lib/api';
 import { useSession } from '../lib/session';
 import { VideoEmbed, forgetCaptions } from '../components/VideoEmbed';
-import { Empty, ErrorNote, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
+import { Empty, ErrorNote, InviteSentCard, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 import { PRODUCT_NAME } from '../lib/brand';
 import { AuthCard } from '../components/AuthCard';
+import { LegalLinks, SupportLine } from '../components/Legal';
 import { landingFor, needsTwoStep, TWO_STEP_MSG } from '../lib/twostep';
 
 function useLoad<T>(path: string) {
@@ -379,13 +380,13 @@ type Invite = { id: string; email: string; role: string; created_at: string; exp
 type StoreRow = { id: number; name: string; bookReady: boolean };
 type TeamData = { company: { id: number; name: string; joinCode: string; demo?: boolean }; stores: StoreRow[]; yourStore: number | null; people: Member[]; invites: Invite[]; you: number; youRole: Role };
 export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
-  const { user } = useSession();
+  const { user, mailOn } = useSession();
   const { data, error, load } = useLoad<TeamData>('/api/team');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('manager');
   const [inviteStore, setInviteStore] = useState('');
   const [show, setShow] = useState<number | 'all'>('all');
-  const [made, setMade] = useState<{ link: string; email: string } | null>(null);
+  const [made, setMade] = useState<{ link: string; email: string; days?: number; mail?: MailStatus } | null>(null);
   const [err, setErr] = useState('');
   const [note, setNote] = useState('');
   const [copied, setCopied] = useState('');
@@ -406,7 +407,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
 
   const invite = async (e: FormEvent) => {
     e.preventDefault(); setErr(''); setCopied('');
-    try { const r = await api<{ link: string; email: string }>('/api/team/invite', { method: 'POST', body: { email, role, storeId: role === 'manager' && inviteStore ? Number(inviteStore) : null } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); load(); }
+    try { const r = await api<{ link: string; email: string; days: number; mail: MailStatus }>('/api/team/invite', { method: 'POST', body: { email, role, storeId: role === 'manager' && inviteStore ? Number(inviteStore) : null } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); load(); }
     catch (e2) { setErr((e2 as Error).message); }
   };
   if (error) return <div className="admin-page"><ErrorNote error={error} retry={load} /></div>;
@@ -504,21 +505,16 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
       {owner && (
         <>
           <form className="card invite-form" onSubmit={invite}>
-            <Text label="Invite an owner or manager by email" value={email} placeholder="manager@thebaldwinshelby.com" onChange={setEmail} />
+            <Text label="Invite an owner or manager by email" value={email} placeholder="manager@yourrestaurant.com" onChange={setEmail} />
             <label className="field"><span>Role</span>
               <select value={role} onChange={(e) => setRole(e.target.value)}><option value="manager">Manager: edits the book, signs people off, manages staff</option><option value="owner">Owner: every store, plus owners and managers</option></select>
             </label>
             {multi && role === 'manager' && <label className="field"><span>Store</span>
               <select value={inviteStore} onChange={(e) => setInviteStore(e.target.value)}><option value="">Every store</option>{data.stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select>
             </label>}
-            <button className="btn" disabled={!email.trim()}>Create Invite Link</button>
+            <button className="btn" disabled={!email.trim()}>{mailOn ? 'Send Invite' : 'Create Invite Link'}</button>
           </form>
-          {made && (
-            <div className="card ok-card" role="status">
-              <p>Send this link to <strong>{made.email}</strong>. It works once and expires in 14 days.</p>
-              <div className="row"><input readOnly value={made.link} onFocus={(e) => e.target.select()} aria-label="Invite link" /><button className="btn ghost" onClick={() => copy(made.link, 'link')}>{copied === 'link' ? 'Copied' : 'Copy'}</button></div>
-            </div>
-          )}
+          {made && <InviteSentCard link={made.link} email={made.email} mail={made.mail} days={made.days} onDone={() => setMade(null)} />}
           {data.invites.length > 0 && (
             <>
               <h2 className="sub">Open invites</h2>
@@ -598,6 +594,9 @@ export function Account() {
         {msg && <p className="ok" role="status">{msg}</p>}
         <button className="btn" disabled={!f.current || !f.next}>Change Password</button>
       </form>
+      {/* Nov 16: the support line, once Privacy, Terms and Help are public (content/legal.md) */}
+      <SupportLine className="card" />
+      <LegalLinks className="account-page-legal" />
       {!user?.demo && <button className="btn ghost" onClick={signOut}>Sign Out</button>}
     </div>
   );
@@ -607,7 +606,9 @@ export function Account() {
 type Row = { id: number; name: string | null; action: string; detail: string | null; at: string };
 const ACTIONS: Record<string, string> = { 'joined with the code': 'Joined with the code:', 'reset PIN': 'Reset the PIN for', 'set a new PIN': 'Picked a new PIN', 'changed PIN': 'Changed their PIN', 'new join code': 'Made a new join code', 'change role': 'Changed a role:', 'remove person': 'Removed', rename: 'Renamed', 'two-step on': 'Turned on two-step sign-in', 'two-step off': 'Turned off two-step sign-in', 'set section': 'Set a section:', edit: 'Edited', revert: 'Undid an edit on', setup: 'Created the owner account', login: 'Signed in', password: 'Changed their password', invite: 'Invited', joined: 'Joined', upload: 'Uploaded', 'add youtube': 'Added a YouTube video', 'delete media': 'Deleted a file', 'archive media': 'Archived', 'restore media': 'Restored', 'remove user': 'Removed a person', 'cancel invite': 'Cancelled an invite', 'add dish': 'Added recipe', 'edit dish': 'Edited recipe', 'delete dish': 'Deleted recipe', 'add cocktail': 'Added cocktail', 'sign off': 'Signed off', 'undo sign off': 'Undid a sign-off for', 'edit cocktail': 'Edited cocktail', 'delete cocktail': 'Deleted cocktail', 'reset link': 'Made a password reset link for', 'reset password': 'Reset their password', 'reset email': 'Was emailed a password reset link', 'reset asked': 'Asked for a password reset email:',
   // Nov 16: Promote to Manager and Change to Staff
-  'promotion link': 'Sent a promotion link to', 'promoted to manager': 'Became a manager:', 'promote to manager': 'Promoted to manager:', 'change to staff': 'Changed to staff:', 'cancel promotion': 'Cancelled the promotion for' };
+  'promotion link': 'Sent a promotion link to', 'promoted to manager': 'Became a manager:', 'promote to manager': 'Promoted to manager:', 'change to staff': 'Changed to staff:', 'cancel promotion': 'Cancelled the promotion for',
+  // Nov 16: owners add and rename stores
+  'add store': 'Added a store:', 'rename store': 'Renamed a store:' };
 export function Activity() {
   const { data, error, load } = useLoad<{ audit: Row[] }>('/api/audit');
   const { index } = useSession();

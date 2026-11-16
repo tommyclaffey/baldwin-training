@@ -6,7 +6,7 @@ import { MediaPicker } from '../components/MediaPicker';
 import { PhotoAdjust } from './PhotoAdjust';
 import { focusVars } from '../lib/focus';
 import { VideoEmbed } from '../components/VideoEmbed';
-import type { Video } from '../lib/api';
+import type { MailStatus, Video } from '../lib/api';
 import { isDenied } from '../lib/api';
 
 export function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {
@@ -153,6 +153,32 @@ export function ResetLinkCard({ reset, onClose }: { reset: ResetLink; onClose: (
         <input readOnly value={url} onFocus={(e) => e.target.select()} aria-label={`Reset link for ${reset.name}`} />
         <button type="button" className="btn ghost" onClick={() => { void navigator.clipboard?.writeText(url); setCopied(true); }}>{copied ? 'Copied' : 'Copy Link'}</button>
         <button type="button" className="link-btn" onClick={onClose}>Done</button>
+      </div>
+    </div>
+  );
+}
+
+/** What happened to the email (Nov 16): every invite and promotion link goes by email once email is set up. */
+export function mailLine(email: string, mail?: MailStatus | null) {
+  if (mail?.sent) return `Email sent to ${email}.`;
+  if (mail?.reason === 'limit') return `We didn’t email it: ${email} has had 3 emails from us in the last hour.`;
+  if (mail?.reason === 'failed') return `The email to ${email} didn’t go through.`;
+  if (mail?.reason === 'demo') return 'Emails are switched off in the demo.';
+  return 'Email isn’t set up yet, so it wasn’t emailed.';
+}
+/** An invite or promotion link (Nov 16): whether it was emailed, and the link with Copy Link either way. */
+export function InviteSentCard({ link, email, mail, days = 14, who, note, buttonClass = 'btn ghost', onDone }: {
+  link: string; email: string; mail?: MailStatus | null; days?: number; who?: string; note?: ReactNode; buttonClass?: string; onDone?: () => void;
+}) {
+  const [copied, setCopied] = useState(false);
+  return (
+    <div className="card ok-card invite-sent" role="status">
+      <p className="invite-sent-mail"><strong>{mailLine(email, mail)}</strong></p>
+      <p>{mail?.sent ? 'You can also copy the link and send it yourself.' : `Copy the link and send it to ${who || email}.`} It works once and expires in {days} days.{note ? <> {note}</> : null}</p>
+      <div className="row">
+        <input readOnly value={link} onFocus={(e) => e.target.select()} aria-label={`Invite link for ${email}`} />
+        <button type="button" className={buttonClass} onClick={() => { void navigator.clipboard?.writeText(link); setCopied(true); }}>{copied ? 'Copied' : 'Copy Link'}</button>
+        {onDone && <button type="button" className="link-btn" onClick={onDone}>Done</button>}
       </div>
     </div>
   );

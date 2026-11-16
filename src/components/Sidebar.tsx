@@ -37,6 +37,7 @@ function withMentionBadge(n: FNode, mentions: number): FNode {
   return n.c ? { ...n, c: n.c.map((c) => withMentionBadge(c, mentions)) } : n;
 }
 import { useSignoffCount } from '../admin/manager';
+import { LegalLinks } from './Legal';
 
 /** Prep (Nov 12, Figma 632:803): the juice, syrup and garnish tracker, under the menu pages after the Allergen Guide,
  *  with a citrus-slice icon. Every store and brand gets it (the one-foundation rule). */
@@ -222,6 +223,7 @@ function Account() {
           ? <button type="button" className="account-out" onClick={() => void back()}>Back</button>
           : !user.demo && <button type="button" className="account-out" onClick={() => void signOut()}>Sign Out</button>}
       </div>
+      <LegalLinks className="account-legal" />
     </div>
   );
 }

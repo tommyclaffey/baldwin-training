@@ -51,7 +51,7 @@ export type MediaItem = { id: number; kind: 'file' | 'youtube'; title: string; u
   captions?: string | null };
 export type Video = { kind: 'youtube'; youtubeId: string; title?: string } | { kind: 'file'; url: string; mime?: string; title?: string };
 export type Role = 'superadmin' | 'owner' | 'manager' | 'staff';
-export type User = { demo?: boolean; brand?: 'baldwin' | 'mise';
+export type User = { demo?: boolean; hq?: boolean; brand?: 'baldwin' | 'mise';
   id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null;
   totpOn: boolean; superPrimary: boolean; impersonatedBy: number | null; workingIn?: number; workingInName?: string | null;
   /** Mise team role (super admins only, Nov 16) and view only (Support, also while signed in as someone). */
@@ -59,6 +59,10 @@ export type User = { demo?: boolean; brand?: 'baldwin' | 'mise';
   storeId: number | null; store?: Store | null; canSwitchStore?: boolean; stores?: Store[];
 };
 export type Store = { id: number; name: string; slug: string; bookReady: boolean };
+/** Privacy, Terms and Help (Nov 16): public once content/legal.md's blanks are filled. */
+export type Legal = { public: boolean; supportEmail: string | null };
+/** Whether an invite or promotion link also went by email (Nov 16). reason: off (email isn't set up) · demo · limit · failed */
+export type MailStatus = { on: boolean; sent: boolean; reason: 'off' | 'demo' | 'limit' | 'failed' | null };
 export const ROLE_LABEL: Record<Role, string> = { superadmin: 'Super admin', owner: 'Owner', manager: 'Manager', staff: 'Staff' };
 /** The Mise team (Nov 16): Owner (Tommy), Manager, Support. */
 export type TeamRole = 'owner' | 'manager' | 'support';

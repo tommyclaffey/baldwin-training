@@ -1,10 +1,10 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
-import { api, type IndexEntry, type User } from './api';
+import { api, type IndexEntry, type Legal, type User } from './api';
 import { markDemo } from './demo';
 import { setSessionBrand } from './theme';
 
 type Session = {
-  user: User | null; setupNeeded: boolean; superSetupNeeded: boolean; loaded: boolean;
+  user: User | null; setupNeeded: boolean; superSetupNeeded: boolean; loaded: boolean; legal: Legal; mailOn: boolean;
   refresh: () => Promise<void>; setUser: (u: User | null) => void;
   index: IndexEntry[]; indexLoaded: boolean; reloadIndex: () => Promise<void>;
   version: number; bump: () => void;
@@ -17,6 +17,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [setupNeeded, setSetup] = useState(false);
   const [superSetupNeeded, setSuperSetup] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [legal, setLegal] = useState<Legal>({ public: false, supportEmail: null });
+  const [mailOn, setMailOn] = useState(false);
   // The page index comes from the server, to signed-in people only (it isn't in the public app bundle).
   const [index, setIndex] = useState<IndexEntry[]>([]);
   const [version, setVersion] = useState(0);
@@ -24,7 +26,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const refresh = useCallback(async () => {
     try {
-      const me = await api<{ user: User | null; setupNeeded: boolean; superSetupNeeded: boolean }>('/api/me');
+      const me = await api<{ user: User | null; setupNeeded: boolean; superSetupNeeded: boolean; legal?: Legal; mailOn?: boolean }>('/api/me');
+      setMailOn(!!me.mailOn);
+      setLegal(me.legal?.public ? me.legal : { public: false, supportEmail: null });
       markDemo(!!me.user?.demo);
       setSessionBrand(me.user?.brand); // Nov 11: the look follows the company
       setUser(me.user); setSetup(me.setupNeeded); setSuperSetup(me.superSetupNeeded);
@@ -40,7 +44,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   useEffect(() => { if (user) reloadIndex(); else { setIndex([]); setIndexLoaded(false); } }, [user?.id, user?.workingIn, reloadIndex]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <Ctx.Provider value={{ user, setupNeeded, superSetupNeeded, loaded, refresh, setUser, index, indexLoaded, reloadIndex, version, bump: () => setVersion((v) => v + 1) }}>
+    <Ctx.Provider value={{ user, setupNeeded, superSetupNeeded, loaded, legal, mailOn, refresh, setUser, index, indexLoaded, reloadIndex, version, bump: () => setVersion((v) => v + 1) }}>
       {children}
     </Ctx.Provider>
   );

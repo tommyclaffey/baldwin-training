@@ -4,9 +4,9 @@
 // these screens only show what your role can do (`can`, from /api/super/overview), so there are no dead buttons.
 import { useEffect, useState, type FormEvent } from 'react';
 import { Navigate, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
-import { api, ROLE_LABEL, TEAM_ROLE_LABEL, type Role, type TeamRole } from '../lib/api';
+import { api, ROLE_LABEL, TEAM_ROLE_LABEL, type MailStatus, type Role, type TeamRole } from '../lib/api';
 import { useSession } from '../lib/session';
-import { ErrorNote, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
+import { ErrorNote, InviteSentCard, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 import { Deletions } from './companydata';
 
 type Look = { id: string; name: string; custom: boolean };
@@ -36,7 +36,7 @@ function useOverview() {
 const daysLeft = (iso: string | null) => (iso ? Math.max(0, 30 - Math.floor((Date.now() - Date.parse(iso)) / 864e5)) : 0);
 
 export function SuperAdmin() {
-  const { user } = useSession();
+  const { user, legal } = useSession();
   if (user?.role !== 'superadmin' || user.impersonatedBy) return <div className="admin-page"><h1>Nothing here</h1></div>;
   if (!user.totpOn) return (
     <div className="admin-page narrow">
@@ -49,6 +49,8 @@ export function SuperAdmin() {
   return (
     <div className="admin-page">
       <div className="editor-head"><div><h1>Super admin</h1><p className="muted">Every company and person in the app. Every action here is logged. You’re <strong>{TEAM_ROLE_LABEL[role]}</strong> on the Mise team{role === 'support' ? ': you can look at everything and change nothing' : ''}.</p></div></div>
+      {/* Nov 16: Privacy, Terms and Help wait on four blanks in content/legal.md; only super admins can open the drafts */}
+      {!legal.public && <p className="muted small legal-draft-note">Privacy, Terms and Help are drafts, hidden from everyone else: preview <a href="/privacy">Privacy</a>, <a href="/terms">Terms</a> and <a href="/help">Help</a>. They go public, with their links, when the four blanks at the top of <code>content/legal.md</code> are filled.</p>}
       <nav className="tabs-row" aria-label="Super admin">
         <NavLink end to="/admin/super">Companies</NavLink>
         <NavLink to="/admin/super/people">People</NavLink>
@@ -74,19 +76,21 @@ function Companies() {
   const nav = useNavigate();
   const [name, setName] = useState('');
   const [ownerEmail, setOwnerEmail] = useState('');
-  const [link, setLink] = useState('');
+  const { mailOn } = useSession();
+  type Made = { link: string; email: string; days: number; mail: MailStatus | null };
+  const [link, setLink] = useState<Made | null>(null);
   const [err, setErr] = useState('');
   const run = async (fn: () => Promise<unknown>) => { setErr(''); try { await fn(); load(); } catch (e) { setErr((e as Error).message); } };
   const add = async (e: FormEvent) => {
-    e.preventDefault(); setErr(''); setLink('');
-    try { const r = await api<{ link: string | null }>('/api/super/companies', { method: 'POST', body: { name, ownerEmail } }); if (r.link) setLink(location.origin + r.link); setName(''); setOwnerEmail(''); load(); }
+    e.preventDefault(); setErr(''); setLink(null);
+    try { const r = await api<{ link: string | null; email: string | null; days: number; mail: MailStatus | null }>('/api/super/companies', { method: 'POST', body: { name, ownerEmail } }); if (r.link) setLink({ link: location.origin + r.link, email: r.email || ownerEmail, days: r.days, mail: r.mail }); setName(''); setOwnerEmail(''); load(); }
     catch (e2) { setErr((e2 as Error).message); }
   };
   const workIn = async (c: Company) => run(async () => { await api('/api/super/act', { method: 'POST', body: { companyId: c.id } }); await refresh(); nav('/admin'); });
   const invite = async (c: Company) => {
     const email = prompt(`Owner’s email for ${c.name}`);
     if (!email) return;
-    await run(async () => { const r = await api<{ link: string }>(`/api/super/companies/${c.id}/owner-invite`, { method: 'POST', body: { email } }); setLink(location.origin + r.link); });
+    await run(async () => { setLink(null); const r = await api<{ link: string; email: string; days: number; mail: MailStatus }>(`/api/super/companies/${c.id}/owner-invite`, { method: 'POST', body: { email } }); setLink({ link: location.origin + r.link, email: r.email, days: r.days, mail: r.mail }); });
   };
   if (error) return <ErrorNote error={error} retry={load} />;
   if (!data) return <Loading />;
@@ -94,7 +98,7 @@ function Companies() {
   return (
     <div className="stack">
       {err && <ErrorNote error={err} />}
-      {link && <div className="card ok-card" role="status"><p>Send this owner invite link. It works once and expires in 14 days.</p><div className="row"><input readOnly value={link} onFocus={(e) => e.target.select()} aria-label="Invite link" /><button className="btn ghost" onClick={() => void navigator.clipboard.writeText(link)}>Copy</button></div></div>}
+      {link && <InviteSentCard link={link.link} email={link.email} mail={link.mail} days={link.days} note="It’s an owner invite." onDone={() => setLink(null)} />}
       <table className="table">
         <thead><tr><th>Company</th><th>Plan and Look</th><th>Owners and managers</th><th>Staff</th><th>Join code</th><th>Last active</th><th /></tr></thead>
         <tbody>{data.companies.map((c) => (
@@ -124,7 +128,7 @@ function Companies() {
       {can.addCompany && <form className="card invite-form" onSubmit={add}>
         <Text label="Add a company" value={name} placeholder="Restaurant group name" onChange={setName} />
         <Text label="Owner’s email (optional)" value={ownerEmail} placeholder="owner@theirgroup.com" onChange={setOwnerEmail} />
-        <button className="btn" disabled={name.trim().length < 2}>Add Company</button>
+        <button className="btn" disabled={name.trim().length < 2}>{ownerEmail.trim() && mailOn ? 'Add Company and Send Invite' : 'Add Company'}</button>
       </form>}
       <p className="muted small">A new company gets its own team, join code and quiz records, on the Foundation plan in the Mise Academy look. Its book starts with the shared library (classics, spirits, wine, beer, service, safety), with nothing of The Baldwin’s in it. Its managers add their own menu, drinks and story. A restaurant’s own look comes with the Custom Brand plan, once that look is built for them.</p>
     </div>
@@ -256,14 +260,14 @@ function MiseTeam() {
   const { data, error, load } = useOverview();
   const [email, setEmail] = useState('');
   const [role, setRole] = useState<TeamRole>('support');
-  const [made, setMade] = useState<{ link: string; email: string; teamRole: TeamRole } | null>(null);
-  const [copied, setCopied] = useState(false);
+  const { mailOn } = useSession();
+  const [made, setMade] = useState<{ link: string; email: string; teamRole: TeamRole; days: number; mail: MailStatus } | null>(null);
   const [err, setErr] = useState('');
   const [note, setNote] = useState('');
   const run = async (fn: () => Promise<unknown>, ok?: string) => { setErr(''); setNote(''); try { await fn(); if (ok) setNote(ok); load(); } catch (e) { setErr((e as Error).message); } };
   const invite = async (e: FormEvent) => {
-    e.preventDefault(); setErr(''); setNote(''); setMade(null); setCopied(false);
-    try { const r = await api<{ link: string; email: string; teamRole: TeamRole }>('/api/super/admins/invite', { method: 'POST', body: { email, teamRole: role } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); load(); }
+    e.preventDefault(); setErr(''); setNote(''); setMade(null);
+    try { const r = await api<{ link: string; email: string; teamRole: TeamRole; days: number; mail: MailStatus }>('/api/super/admins/invite', { method: 'POST', body: { email, teamRole: role } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); load(); }
     catch (e2) { setErr((e2 as Error).message); }
   };
   if (error) return <ErrorNote error={error} retry={load} />;
@@ -307,14 +311,9 @@ function MiseTeam() {
                 {data.teamRoles.filter((r) => r.givable).map((r) => <option key={r.id} value={r.id}>{r.name}</option>)}
               </select>
             </label>
-            <button className="btn" disabled={!email.trim()}>Create Invite Link</button>
+            <button className="btn" disabled={!email.trim()}>{mailOn ? 'Send Invite' : 'Create Invite Link'}</button>
           </form>
-          {made && (
-            <div className="card ok-card" role="status">
-              <p>Send this link to <strong>{made.email}</strong> ({TEAM_ROLE_LABEL[made.teamRole]}). It works once and expires in 14 days. They turn on two-step sign-in before anything opens for them.</p>
-              <div className="row"><input readOnly value={made.link} onFocus={(e) => e.target.select()} aria-label="Invite link" /><button type="button" className="btn ghost" onClick={() => { void navigator.clipboard?.writeText(made.link); setCopied(true); }}>{copied ? 'Copied' : 'Copy Link'}</button></div>
-            </div>
-          )}
+          {made && <InviteSentCard link={made.link} email={made.email} mail={made.mail} days={made.days} note={`${TEAM_ROLE_LABEL[made.teamRole]} on the Mise team. They turn on two-step sign-in before anything opens for them.`} onDone={() => setMade(null)} />}
           {data.teamInvites.length > 0 && (
             <>
               <h2 className="sub">Open invites</h2>

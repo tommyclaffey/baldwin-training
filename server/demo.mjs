@@ -5,7 +5,7 @@
 // the made-up dishes, house cocktails, wine list, back bar and beers in content/demo/ (Nov 16: it used to copy The Baldwin's
 // real wine list, back bar and beers; those are Baldwin Restaurant Group's account data, so the demo has its own), and a
 // small made-up team (fresh names) with quiz scores, sign-offs and tonight's sections. The visitor is signed in for a day
-// in the role they picked. Uploads, invites, passwords, PINs, two-step sign-in and store settings are switched off.
+// in the role they picked. Uploads, invites, passwords, PINs and two-step sign-in are switched off; Add a Store works, up to 3.
 // Copies older than a day are removed (they're throwaway demo data, not anyone's content).
 import fs from 'node:fs';
 import path from 'node:path';
@@ -282,8 +282,9 @@ export function purgeDemos(db) {
 
 /** What a demo visitor can't do: anything that leaves the sandbox, changes accounts or changes something shared. The bottle scanner is on (Nov 12),
  *  with demo limits in server/index.mjs; other uploads stay off. */
-// Nov 16: Promote to Manager and Change to Staff work in a demo (straight away, no link), so they can be shown.
-const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/password\//, /^\/api\/reset\//, /^\/api\/pin$/, /^\/api\/team(?!\/\d+\/(promote|demote)$)/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/super/, /^\/api\/store$/, /^\/api\/setup$/, /^\/api\/join$/,
+// Nov 16: Promote to Manager and Change to Staff work in a demo (straight away, no link), so they can be shown. So do Add a
+// Store and Rename (up to 3 stores a demo; they're the demo's own and go with it), and switching between the demo's stores.
+const BLOCKED = [/^\/api\/2fa\//, /^\/api\/password$/, /^\/api\/password\//, /^\/api\/reset\//, /^\/api\/pin$/, /^\/api\/team(?!\/\d+\/(promote|demote)$|\/stores(\/\d+)?$)/, /^\/api\/media\/upload$/, /^\/api\/chat\/photo$/, /^\/api\/super/, /^\/api\/setup$/, /^\/api\/join$/,
   // Nov 14 (security review): wine videos are one list for the whole app (wine_videos has no store), and the Baldwin demo
   // reads The Baldwin's wine list, so a demo could change the real Baldwin's wine pages.
   /^\/api\/wine-videos$/];

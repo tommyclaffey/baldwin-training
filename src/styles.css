@@ -3493,3 +3493,63 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   .admin-strip-store { color: var(--on-dark-muted); gap: 4px; }
   .admin-strip-store strong { color: var(--on-dark-2); font-weight: 600; }
 }
+
+/* ---- Self-serve setup (Nov 16): Stores, invite emails, Privacy · Terms · Help ---- */
+/* Stores (owners add and rename their own) */
+.stores-table td:first-child { min-width: 220px; }
+.stores-rename { flex-wrap: nowrap; }
+.stores-rename input { flex: 1; min-width: 140px; height: 40px; }
+.stores-rename .btn { min-height: 40px; padding: 8px 14px; }
+.stores-rename .link-btn { align-self: center; }
+.stores-actions { text-align: right; white-space: nowrap; }
+@media screen and (max-width: 900px) { .stack-table td.stores-actions { text-align: left; padding-top: 8px; } .stack-table td.stores-actions:empty { display: none; } }
+.stores-add { max-width: 640px; }
+.stores-add .btn { align-self: flex-start; }
+.stores-add p { margin: 0; }
+/* An invite or promotion link: emailed or not, and Copy Link either way */
+.invite-sent { gap: 10px; }
+.invite-sent .row input { flex: 1; min-width: 200px; }
+.pp-add .invite-sent { margin-top: 4px; }
+/* Privacy · Terms · Help links: only once the pages are public (src/components/Legal.tsx) */
+.legal-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font: 500 13px/1.4 var(--font-body, 'Archivo', sans-serif); }
+.legal-links a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.legal-links a:hover { text-decoration-thickness: 2px; }
+.si-legal { justify-content: center; color: var(--c-ink-muted); }
+.account-legal { color: var(--on-dark-muted); }
+.admin-legal { color: var(--on-dark-muted); margin: 14px 12px 0; }
+.account-page-legal { color: var(--muted); }
+@media screen and (max-width: 900px) { .admin-side > .admin-legal { display: none; } }
+.support-line { margin: 0; font-size: 14px; line-height: 1.55; display: block; }
+.support-line a, .legal-draft-note a { color: var(--c-accent-text); }
+.legal-draft-note { margin: 0; }
+/* The pages themselves: one layout, painted by the brand's roles */
+.legal { min-height: 100vh; background: var(--c-page); color: var(--c-ink); font-family: var(--font-body); }
+.legal-bar { background: var(--c-inverse); display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 48px; }
+.legal-logo { display: block; line-height: 0; }
+.legal-logo img { height: 44px; width: auto; display: block; }
+.legal-back { color: var(--c-on-inverse); font: 600 14px var(--font-body); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.legal-main { max-width: 760px; margin: 0 auto; padding: 64px 24px 96px; font-size: 17px; line-height: 1.6; }
+.legal-main p { margin: 0 0 16px; }
+.legal-main ul, .legal-main ol { margin: 0 0 20px; padding-left: 24px; }
+.legal-main li { margin: 0 0 8px; padding-left: 2px; }
+.legal-main a { color: var(--c-accent-text); }
+.legal-title { margin: 0 0 28px; font-family: var(--font-page-title); font-weight: 800; font-size: 48px; line-height: 1.05; letter-spacing: -.01em; }
+.legal-main h2 { margin: 36px 0 12px; font: 800 18px/1.3 var(--font-section-heading); text-transform: uppercase; letter-spacing: .03em; }
+.brand-mise .legal-title { font-weight: 400; font-size: 64px; line-height: 1; letter-spacing: -.005em; }
+.brand-mise .legal-main h2 { font-weight: 600; font-size: 24px; line-height: 1.25; text-transform: none; letter-spacing: -.01em; }
+.legal-draft { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin: 0 0 32px; padding: 16px 20px; border-radius: 14px; background: var(--c-inverse); color: var(--c-on-inverse); }
+.legal-draft p { margin: 0; font-size: 15px; line-height: 1.5; }
+.legal-draft code { font-size: 14px; }
+.legal-draft-tag { display: inline-flex; align-items: center; justify-content: center; min-height: 28px; padding: 0 12px; border-radius: 999px; background: var(--c-tape); color: var(--c-on-tape); font: 700 12px/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.legal-blank { background: var(--c-tape); color: var(--c-on-tape); padding: 0 4px; border-radius: 4px; }
+.legal-foot { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--c-line); font-size: 15px; }
+.legal-foot a { color: var(--c-ink); text-underline-offset: 3px; }
+@media screen and (max-width: 700px) {
+  .legal-bar { padding: 12px 20px; }
+  .legal-logo img { height: 34px; }
+  .legal-main { padding: 36px 20px 64px; font-size: 16px; }
+  .legal-title { font-size: 36px; margin-bottom: 20px; }
+  .brand-mise .legal-title { font-size: 44px; }
+  .legal-main h2 { margin-top: 28px; }
+  .brand-mise .legal-main h2 { font-size: 21px; }
+}

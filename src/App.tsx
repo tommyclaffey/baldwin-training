@@ -30,6 +30,7 @@ import { openChat } from './chat/panel';
 import { ChatPanelHost } from './chat/ChatPanel';
 import { PrepPage } from './prep/PrepPage';
 import { ImportPage } from './import/ImportPage';
+import { LegalRoute, LEGAL_PATHS } from './components/Legal';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -37,6 +38,9 @@ export default function App() {
   // Nov 11: two demos, each with its own link. /demo = The Baldwin's, /demo/mise = Wrenfield in the Mise look.
   if (pathname === '/demo' || pathname === '/demo/brg') return <DemoPicker kind="baldwin" />;
   if (pathname === '/demo/mise') return <DemoPicker kind="mise" />;
+  // Nov 16: Privacy, Terms and Help. Until they're public the server says "not found", and the address shows what any
+  // unknown address does (the sign-in screen, or "We couldn't find that page").
+  if (LEGAL_PATHS[pathname]) return <LegalRoute kind={LEGAL_PATHS[pathname]} fallback={<><Book /><ChatPanelHost /></>} />;
   return <><Book /><ChatPanelHost /></>;
 }
 

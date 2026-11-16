@@ -9,6 +9,7 @@ import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie, endSession, clientIp } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
 import { teamCan, viewOnly, VIEW_ONLY_MESSAGE } from './miseteam.mjs';
+import { legalPage } from './legal.mjs';
 import { assemble, fullIndex, isCachedIndex, warmContent, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore, canOpen } from './content.mjs';
 import { archivedList, ARCHIVE_GROUPS } from './archive.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
@@ -350,6 +351,15 @@ async function api(req, res, url) {
   if (m !== 'GET' && m !== 'HEAD' && viewOnly(c.user) && !VIEW_ONLY_WRITES.has(p) && !p.startsWith('/api/super/')) fail(403, VIEW_ONLY_MESSAGE);
   // Company data (Nov 14, server/companydata.mjs): an owner's export and deletion request; the super admin's confirm.
   if ((p.startsWith('/api/company/') || p.startsWith('/api/super/deletions')) && (await companyData(req, res, url, c)) !== false) return;
+  // Privacy, Terms and Help (Nov 16, server/legal.mjs): public once content/legal.md's four blanks are filled. Until then
+  // they're "not found" for everyone but a super admin (signed in as themselves, two-step on), who gets the draft preview.
+  const lm = /^\/api\/legal\/([a-z]+)$/.exec(p);
+  if (lm && m === 'GET') {
+    const page = legalPage(lm[1]);
+    const previewer = c.user?.role === 'superadmin' && !c.user.impersonator_id && !!c.user.totp_on;
+    if (!page || (page.draft && !previewer)) fail(404, 'Not found.');
+    return sendJson(res, 200, page);
+  }
   if ((await accounts(req, res, url, c)) !== false) return;
   if ((await imports(req, res, url, c)) !== false) return;
 

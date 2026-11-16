@@ -1,4 +1,4 @@
-// Email (Nov 11): only the Forgot Password? link sends mail, through Resend's HTTP API (plain fetch, no package).
+// Email (Nov 11): Forgot Password? links, and since Nov 16 every invite and promotion link, sent through Resend’s HTTP API (plain fetch, no package).
 // Off until both Railway variables are set: RESEND_API_KEY (from resend.com → API Keys) and MAIL_FROM
 // (e.g. "Mise Academy <hello@miseacademy.app>", on a domain verified in Resend). See docs/email.md.
 // APP_URL is the address links point to (default https://www.miseacademy.app). Links never use the request's Host header,
@@ -66,6 +66,29 @@ export function promoteEmail({ name, email, url, days, place = null, by = null }
 <p style="margin:0 0 20px;font-size:16px;line-height:1.5">${esc(lead)}</p>
 <p style="margin:0 0 20px"><a href="${esc(url)}" style="display:inline-block;background:#1d1b18;color:#ffffff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:8px">Pick My Password</a></p>
 <p style="margin:0 0 12px;font-size:14px;line-height:1.5;color:#5c564d">The link works once and expires in ${days} days. Until you use it, you sign in with your PIN as before.</p>
+<p style="margin:0;font-size:12px;line-height:1.5;color:#5c564d;word-break:break-all">${esc(url)}</p>
+</div></body></html>`;
+  return { subject, text, html };
+}
+
+/** An invite (Nov 16): owners and managers to a restaurant, a company's first owner, or a Mise teammate. Same look as the
+ *  reset email. "You’re invited to The Baldwin on Mise Academy". `role` is 'owner', 'manager' or 'superadmin' (the Mise
+ *  team); `place` is the store or company (none for the Mise team); `by` is who sent it. */
+export function inviteEmail({ email, url, days, role, place = null, by = null }) {
+  const clean = (v) => String(v || '').replace(/[\r\n]+/g, ' ').trim().slice(0, 80);
+  const where = role === 'superadmin' ? '' : clean(place), who = clean(by);
+  const as = role === 'owner' ? 'an owner' : role === 'superadmin' ? 'a member of the Mise Academy team' : 'a manager';
+  const subject = role === 'superadmin' ? 'You’re invited to the Mise Academy team' : where ? `You’re invited to ${where} on Mise Academy` : 'You’re invited to Mise Academy';
+  const lead = `${who || 'Someone'} invited you to join ${where ? `${where} on Mise Academy` : 'Mise Academy'} as ${as}. Add your name and pick a password to sign in with ${email}.`;
+  const note = `The link works once and expires in ${days} days. If you weren’t expecting this, ignore this email.`;
+  const text = ['Hi,', '', lead, '', url, '', note, '', 'Mise Academy'].join('\n');
+  const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#f5f2ec;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1d1b18">
+<div style="max-width:480px;margin:0 auto;background:#ffffff;border-radius:12px;padding:28px">
+<p style="margin:0 0 20px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5c564d">${where ? esc(where) + ' · ' : ''}Mise Academy</p>
+<p style="margin:0 0 12px;font-size:16px;line-height:1.5">Hi,</p>
+<p style="margin:0 0 20px;font-size:16px;line-height:1.5">${esc(lead)}</p>
+<p style="margin:0 0 20px"><a href="${esc(url)}" style="display:inline-block;background:#1d1b18;color:#ffffff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:8px">Accept Invite</a></p>
+<p style="margin:0 0 12px;font-size:14px;line-height:1.5;color:#5c564d">${esc(note)}</p>
 <p style="margin:0;font-size:12px;line-height:1.5;color:#5c564d;word-break:break-all">${esc(url)}</p>
 </div></body></html>`;
   return { subject, text, html };

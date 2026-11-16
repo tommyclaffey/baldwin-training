@@ -23,7 +23,10 @@ npm run build && npm start   # production server on $PORT (default 8080)
 - `server/index.mjs`: no dependencies. Sign-in (scrypt, HttpOnly cookie), invites, page edits, recipes and cocktails, uploads (streamed, Range support for video).
 - `server/content.mjs` assembles each page: the design + added recipes/cocktails + saved edits. `server/templates.mjs` builds item pages from the Short Rib and Fuschia Satin layouts.
 - `server/looks.mjs`: plans (`foundation`, `custom-brand`) and looks (`mise`, plus custom looks made for one company). `server/hq.mjs`: Mise Academy (HQ), Mise's own company, where a super admin works until they pick a customer.
-- Env: `PORT`, `DATA_DIR` (database + uploads + account content), `OWNER_EMAIL` (the only email that can create the first company owner account), `SUPERADMIN_EMAIL` (that account becomes the primary super admin; on Railway it’s the same as `OWNER_EMAIL`). Email for Forgot Password? (optional): `RESEND_API_KEY` + `MAIL_FROM`, see `docs/email.md`.
+- Env: `PORT`, `DATA_DIR` (database + uploads + account content), `OWNER_EMAIL` (the only email that can create the first company owner account), `SUPERADMIN_EMAIL` (that account becomes the primary super admin; on Railway it’s the same as `OWNER_EMAIL`). Email for Forgot Password?, invites and promotions (optional): `RESEND_API_KEY` + `MAIL_FROM`, see `docs/email.md`. `STORE_CAP`: how many stores an owner can add (default 25; 3 in a demo).
+
+## Privacy, Terms and Help
+`/privacy`, `/terms` and `/help` come from one file, `content/legal.md`: the words, plus four blanks at the top (`company`, `state`, `supportEmail`, `date`). While any blank is empty the pages aren't public (the public gets the usual "not found"; a super admin sees a preview marked "Draft · not public") and no links show. Fill all four and they go public, with links on the sign-in screens, the book's sidebar, the admin and Your Account.
 
 ## Checks
 - `node scripts/shots.mjs` (with the app running) screenshots screens at set widths and reports sideways overflow. `SCREENS=/,/classic/old-fashioned WIDTHS=1440,1024,390`.
