@@ -25,7 +25,8 @@ import { score as scoreQuiz, results as quizResults, signable, catalog as quizCa
 import { topicList, questionPool } from './quizgen.mjs';
 import { chapterBySlug, markRead, programText } from './manual.mjs';
 import * as chat from './chat.mjs';
-import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErrorAllowed } from './ops.mjs';
+import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErrorAllowed, recordOps } from './ops.mjs';
+import { hqHomeRoutes } from './hqhome.mjs';
 import { enterStore, isBrgCompany } from './variant.mjs';
 import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
 import * as prep from './prep.mjs';
@@ -240,6 +241,7 @@ const imports = importRoutes({ db, fail, sendJson, readJson, needEditor: (c, req
   isDemo: (co) => isDemoCompany(db, co), brandOf: (co) => (isBrgCompany(db, co) ? 'baldwin' : 'mise'), // BRG's sections, or not (not the look)
   limiter: new LoginLimiter(12, 24 * 3600e3, 'menu-read'), demoLimiter: new LoginLimiter(20, 24 * 3600e3, 'menu-read-demo') });
 const companyData = companyDataRoutes({ db, fail, sendJson, readJson, isDemoCompany });
+const hqHome = hqHomeRoutes({ db, fail, sendJson });
 async function api(req, res, url) {
   const c = ctx(req);
   enterStore(db, c.storeRow); // Nov 11: BRG's companies read BRG's Hospitality Program, everyone else the generic one
@@ -249,13 +251,22 @@ async function api(req, res, url) {
 
   // Behind the scenes (Nov 10, server/ops.mjs): health, the nightly encrypted backup and the error report (OPS_TOKEN),
   // and browser errors from the app.
-  if (p === '/api/health' && m === 'GET') { db.prepare('SELECT 1').get(); return sendJson(res, 200, { ok: true, at: new Date().toISOString() }); }
+  if (p === '/api/health' && m === 'GET') {
+    db.prepare('SELECT 1').get();
+    // Nov 16 (HQ home → Health): the hourly Ops check sends OPS_TOKEN, so its visits are counted; anyone else's aren't.
+    if (req.headers.authorization && opsAllowed(req)) recordOps(db, 'health');
+    return sendJson(res, 200, { ok: true, at: new Date().toISOString() });
+  }
   if (p === '/api/ops/backup' && m === 'GET') {
     if (!opsAllowed(req)) fail(404, 'Not found.');
     if (!process.env.BACKUP_KEY || process.env.BACKUP_KEY.length < 24) fail(503, 'BACKUP_KEY isn’t set.');
-    const buf = encryptedBackup(db);
+    let buf;
+    try { buf = encryptedBackup(db); } catch (e) { recordOps(db, 'backup', { ok: false, detail: String(e.message || e).slice(0, 200) }); throw e; }
     res.writeHead(200, { 'Content-Type': 'application/octet-stream', 'Content-Length': buf.length, 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="mise-${new Date().toISOString().slice(0, 10)}.bk"` });
-    return res.end(buf);
+    // Nov 16 (HQ home → Health): the nightly off-site pull leaves a row once it's sent; a cut-off download is marked failed
+    let sent = false;
+    res.on('close', () => recordOps(db, 'backup', { ok: sent, bytes: buf.length, detail: sent ? null : 'cut off before the end' }));
+    return res.end(buf, () => { sent = true; });
   }
   // Nov 14 (security review): which address the rate limits see, to check the proxy's headers after a deploy
   // (curl -H "Authorization: Bearer $OPS_TOKEN" -H "X-Forwarded-For: 192.0.2.1" …/api/ops/ip: "used" should be your own address).
@@ -271,8 +282,11 @@ async function api(req, res, url) {
     const since = sinceRaw ? Date.parse(sinceRaw) : null;
     if (sinceRaw && !Number.isFinite(since)) fail(400, 'since must be a date.');
     res.writeHead(200, { 'Content-Type': 'application/octet-stream', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="mise-files-${new Date().toISOString().slice(0, 10)}.bk"` });
-    try { await writeFilesBackup(res, { since }); } catch (e) { logError(db, 'server', '/api/ops/files', e); res.destroy(); return; }
-    return res.end();
+    const kind = since == null ? 'full' : 'changes';
+    let out;
+    try { out = await writeFilesBackup(res, { since }); } catch (e) { logError(db, 'server', '/api/ops/files', e); recordOps(db, 'files', { ok: false, detail: `${kind} · ${String(e.message || e).slice(0, 160)}` }); res.destroy(); return; }
+    // Nov 16 (HQ home → Health): the nightly pull of uploads and account folders leaves a row
+    return res.end(() => recordOps(db, 'files', { bytes: out.bytes, detail: `${kind} · ${out.files} of ${out.of} files` }));
   }
   if (p === '/api/ops/errors' && m === 'GET') {
     if (!opsAllowed(req)) fail(404, 'Not found.');
@@ -351,6 +365,8 @@ async function api(req, res, url) {
   if (m !== 'GET' && m !== 'HEAD' && viewOnly(c.user) && !VIEW_ONLY_WRITES.has(p) && !p.startsWith('/api/super/')) fail(403, VIEW_ONLY_MESSAGE);
   // Company data (Nov 14, server/companydata.mjs): an owner's export and deletion request; the super admin's confirm.
   if ((p.startsWith('/api/company/') || p.startsWith('/api/super/deletions')) && (await companyData(req, res, url, c)) !== false) return;
+  // The Mise HQ home (Nov 16, server/hqhome.mjs): the home, the Sign In As picker's people, the error log, the sidebar's counts.
+  if (p.startsWith('/api/super/') && (await hqHome(req, res, url, c)) !== false) return;
   // Privacy, Terms and Help (Nov 16, server/legal.mjs): public once content/legal.md's four blanks are filled. Until then
   // they're "not found" for everyone but a super admin (signed in as themselves, two-step on), who gets the draft preview.
   const lm = /^\/api\/legal\/([a-z]+)$/.exec(p);

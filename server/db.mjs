@@ -292,6 +292,17 @@ export const MIGRATIONS = [
     PRIMARY KEY(room_id, user_id));
   ALTER TABLE users ADD COLUMN online_until TEXT;
   `,
+  // 22 (Nov 16, the Mise HQ home, Figma 09 · Proposals → 32, 699:880; server/ops.mjs). The Health card says when the backups
+  //   were last copied off Railway and when the hourly check last asked. The app only saw those requests go by; now each
+  //   one leaves a row. kind: 'backup' (GET /api/ops/backup, the database), 'files' (GET /api/ops/files; detail says
+  //   'full' or 'changes', and how many files), 'health' (GET /api/health from the hourly Ops Action, which sends
+  //   OPS_TOKEN; Railway's own deploy check doesn't, so it isn't counted). ok = 0 when the copy failed part way.
+  //   Kept 90 days, like the error log.
+  `
+  CREATE TABLE ops_runs(id INTEGER PRIMARY KEY, kind TEXT NOT NULL CHECK(kind IN ('backup','files','health')), at TEXT NOT NULL,
+    ok INT NOT NULL DEFAULT 1, bytes INT, detail TEXT);
+  CREATE INDEX ops_runs_kind ON ops_runs(kind, at);
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

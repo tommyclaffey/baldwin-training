@@ -23,6 +23,7 @@ export function initOps(db) {
   const tick = () => {
     try { dailySnapshot(db); } catch (e) { logError(db, 'server', 'backup', e); }
     try { pruneErrors(db); } catch (e) { console.error('prune errors', e); }
+    try { pruneOpsRuns(db); } catch (e) { console.error('prune ops runs', e); }
     try { pruneOldCopies(KEEP_DAYS); } catch (e) { logError(db, 'server', 'prune copies', e); }
   };
   setTimeout(tick, 60_000).unref();
@@ -47,6 +48,35 @@ export function dailySnapshot(db) {
 export const ERROR_DAYS = 90;
 export function pruneErrors(db, days = ERROR_DAYS) {
   return Number(db.prepare('DELETE FROM errors WHERE last_at < ?').run(new Date(Date.now() - days * 864e5).toISOString()).changes);
+}
+
+/* ---- What the HQ home's Health card reads (Nov 16, Figma 699:880) ---- */
+
+/** The newest daily snapshot on the volume: { file, day, at (its file time), bytes }, or null when there's none yet. */
+export function latestSnapshot(dir = BACKUPS) {
+  let names = [];
+  try { names = fs.readdirSync(dir).filter((f) => /^daily-\d{4}-\d{2}-\d{2}\.db$/.test(f)).sort(); } catch { return null; }
+  const f = names.at(-1);
+  if (!f) return null;
+  try { const st = fs.statSync(path.join(dir, f)); return { file: f, day: f.slice(6, 16), at: new Date(st.mtimeMs).toISOString(), bytes: st.size }; } catch { return null; }
+}
+/** One off-site copy or hourly check, as it happened (migration 22, ops_runs). */
+export function recordOps(db, kind, { ok = true, bytes = null, detail = null } = {}) {
+  try { db.prepare('INSERT INTO ops_runs(kind, at, ok, bytes, detail) VALUES (?,?,?,?,?)').run(kind, new Date().toISOString(), ok ? 1 : 0, bytes, detail); }
+  catch (e) { console.error('recordOps', e); }
+}
+/** The last time each kind ran: { backup, files, health } → { at, ok, bytes, detail } | null. Also the last one that worked. */
+export function lastOps(db) {
+  const out = {};
+  for (const kind of ['backup', 'files', 'health']) {
+    const last = db.prepare('SELECT at, ok, bytes, detail FROM ops_runs WHERE kind = ? ORDER BY at DESC, id DESC LIMIT 1').get(kind) || null;
+    const good = last && !last.ok ? db.prepare('SELECT at, ok, bytes, detail FROM ops_runs WHERE kind = ? AND ok = 1 ORDER BY at DESC, id DESC LIMIT 1').get(kind) || null : last;
+    out[kind] = last ? { at: last.at, ok: !!last.ok, bytes: last.bytes, detail: last.detail, lastGoodAt: good?.at ?? null } : null;
+  }
+  return out;
+}
+export function pruneOpsRuns(db, days = ERROR_DAYS) {
+  return Number(db.prepare('DELETE FROM ops_runs WHERE at < ?').run(new Date(Date.now() - days * 864e5).toISOString()).changes);
 }
 
 /** A fresh snapshot, gzipped and encrypted (AES-256-GCM). Layout: "MISEBK1" · iv(12) · tag(16) · ciphertext. */
