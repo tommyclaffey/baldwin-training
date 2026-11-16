@@ -16,7 +16,7 @@
 - Search across every page. Phone, tablet and desktop layouts.
 - **Admin (`/admin`, Oct 27):** invite-only sign-in (owner + editors). Videos are an uploaded file (MP4, MOV, WebM, up to 600 MB) or a YouTube link.
 - **CMS (Oct 27):** pages are created and edited from a template form in the admin, never on the page itself. Collections so far: Classic Cocktails (22), House Cocktails (2), Recipes (every Food Matrix dish; a full recipe page is a toggle). Lists fill themselves: the classic strip on every classic page, the Classic cocktails and house tables on Cocktails, and the Food Matrix. Seeded from the design (`content/cms/*.json`, made by `scripts/cms/extract.mjs`); edits in the admin win over later seed changes.
-- Videos and photos library, people (invites, remove), password change, activity log. Invites, promotions and Forgot Password? also go by email once Resend is set up (`docs/email.md`).
+- Videos and photos library, people (invites, remove), password change, activity log. Invites and Forgot Password? also go by email once Resend is set up (`docs/email.md`). Promote to Manager is instant (owners, and managers for their own store; Nov 16).
 
 ## v1 demo: Out
 - Spirits, wine, beer, service and library pages still come from the design; they move into the CMS one page type at a time.
@@ -28,7 +28,7 @@
 ## Roles (Oct 28)
 - **Super admin:** Tommy (primary, set by `SUPERADMIN_EMAIL`) plus teammates he invites. Belongs to no company; sees and changes every company and person, signs in as someone for support (logged, banner shown), soft-deletes with 30 days to restore. Two-step sign-in (authenticator app) is required before the super admin opens. Only the primary adds or removes super admins. Hidden: everyone else gets “not found”.
 - **Owner:** runs a company. Everything a manager does, plus inviting and removing owners and managers, and adding and renaming stores (Admin → Stores, Nov 16; up to 25).
-- **Manager:** edits the book (CMS, media, wine videos, bottle scanner), signs people off, manages staff (reset PIN, remove) and the join code.
+- **Manager:** edits the book (CMS, media, wine videos, bottle scanner), signs people off, manages staff (reset PIN, remove, Promote to Manager for their own store, Nov 16) and the join code. A manager promoted from staff keeps signing in with their PIN.
 - **Staff:** reads the book and takes quizzes. Joins with the company’s join code, their name and a 4–6 digit PIN (5 wrong PINs locks that name for 15 minutes; a manager reset lets them pick a new one). Signed in for 90 days on their phone.
 - **The book needs a sign-in.** Page files and the page index aren’t public anymore.
 - **Companies (accounts):** each restaurant group is one company with its stores. People, quiz scores, sign-offs, sections, media and the activity log are per company, and tests prove companies can’t see each other. A new company starts with the shared library (classics, spirits, wine, beer, service, safety) and an empty menu, and adds its own. Baldwin Restaurant Group is company 1; its menu, documents, photos and own pages are its account content on the volume (`DATA_DIR/accounts/1`), not in this repo, and a test sweeps another company's whole book for anything of BRG's.

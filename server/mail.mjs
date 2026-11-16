@@ -1,4 +1,4 @@
-// Email (Nov 11): Forgot Password? links, and since Nov 16 every invite and promotion link, sent through Resend’s HTTP API (plain fetch, no package).
+// Email (Nov 11): Forgot Password? links, and since Nov 16 every invite link (owners, managers, the Mise team), sent through Resend’s HTTP API (plain fetch, no package).
 // Off until both Railway variables are set: RESEND_API_KEY (from resend.com → API Keys) and MAIL_FROM
 // (e.g. "Mise Academy <hello@miseacademy.app>", on a domain verified in Resend). See docs/email.md.
 // APP_URL is the address links point to (default https://www.miseacademy.app). Links never use the request's Host header,
@@ -45,27 +45,6 @@ export function resetEmail({ name, email, url, hours, place = null }) {
 <p style="margin:0 0 20px;font-size:16px;line-height:1.5">${esc(asked)} (${esc(email)}). Pick a new one here:</p>
 <p style="margin:0 0 20px"><a href="${esc(url)}" style="display:inline-block;background:#1d1b18;color:#ffffff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:8px">Pick a New Password</a></p>
 <p style="margin:0 0 12px;font-size:14px;line-height:1.5;color:#5c564d">The link works once and expires in ${hours} hours. If you didn’t ask for this, ignore this email and your password stays the same.</p>
-<p style="margin:0;font-size:12px;line-height:1.5;color:#5c564d;word-break:break-all">${esc(url)}</p>
-</div></body></html>`;
-  return { subject, text, html };
-}
-
-/** Promote to Manager (Nov 16): the one-time link to the person's own email. "You're a manager at The Baldwin on Mise
- *  Academy". Same look as the reset email. */
-export function promoteEmail({ name, email, url, days, place = null, by = null }) {
-  const first = String(name || '').split(' ')[0] || 'there';
-  const clean = (v) => String(v || '').replace(/[\r\n]+/g, ' ').trim().slice(0, 80);
-  const where = clean(place), who = clean(by);
-  const subject = where ? `You’re a manager at ${where} on Mise Academy` : 'You’re a manager on Mise Academy';
-  const lead = `${who || 'Your owner'} made you a manager${where ? ` at ${where}` : ''}. Pick a password to sign in with ${email} from now on. Your training, quiz scores and certificates stay with you.`;
-  const text = [`Hi ${first},`, '', lead, '', url, '', `The link works once and expires in ${days} days. Until you use it, you sign in with your PIN as before.`, '', 'Mise Academy'].join('\n');
-  const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#f5f2ec;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1d1b18">
-<div style="max-width:480px;margin:0 auto;background:#ffffff;border-radius:12px;padding:28px">
-<p style="margin:0 0 20px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5c564d">${where ? esc(where) + ' · ' : ''}Mise Academy</p>
-<p style="margin:0 0 12px;font-size:16px;line-height:1.5">Hi ${esc(first)},</p>
-<p style="margin:0 0 20px;font-size:16px;line-height:1.5">${esc(lead)}</p>
-<p style="margin:0 0 20px"><a href="${esc(url)}" style="display:inline-block;background:#1d1b18;color:#ffffff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:8px">Pick My Password</a></p>
-<p style="margin:0 0 12px;font-size:14px;line-height:1.5;color:#5c564d">The link works once and expires in ${days} days. Until you use it, you sign in with your PIN as before.</p>
 <p style="margin:0;font-size:12px;line-height:1.5;color:#5c564d;word-break:break-all">${esc(url)}</p>
 </div></body></html>`;
   return { subject, text, html };

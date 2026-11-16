@@ -435,6 +435,8 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
   const setJob = (key: string) => act('job', `/api/path/person/${p.id}`, { jobs: [key] }, `${p.name.split(' ')[0]} is on the ${jobs.find((j) => j.key === key)?.label} path now.`, 'PATCH');
   const setStart = (date: string) => { setDateEdit(false); void act('date', `/api/path/person/${p.id}`, { startedOn: date }, 'Start date changed. Due dates follow it.', 'PATCH'); };
   const team = (key: string, path: string, method: string, ok: string, after?: () => void) => run(key, async () => { await api(path, { method }); after?.(); }, ok);
+  // Cancelling an old promotion link is an owner's call (a demo's manager stands in for the owner)
+  const isOwner = user?.role === 'owner' || (user?.role === 'superadmin' && user.teamRole !== 'support') || (!!user?.demo && user.role === 'manager');
   const cancelPromotion = () => { if (confirm(`Cancel ${p.name}’s promotion? The link stops working and they stay on staff.`)) void run('promo', async () => { await api(`/api/team/${p.id}/promote`, { method: 'DELETE' }); await reload(); }, 'Promotion cancelled.'); };
   const archive = () => { if (confirm(`Archive ${p.name}? They’re signed out right away and leave the team list. An owner or the Mise team can restore them.`)) void team('arch', `/api/team/${p.id}`, 'DELETE', `${p.name} is archived.`, onGone); };
   const resetPin = () => { if (confirm(`Reset ${p.name}’s PIN? They’re signed out and pick a new PIN next time.`)) void team('pin', `/api/team/${p.id}/reset-pin`, 'POST', `${p.name.split(' ')[0]} picks a new PIN next time they sign in.`); };
@@ -454,7 +456,7 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
         <div className="pp-head-main">
           <p className="pp-title"><span id="pp-name">{p.name}</span><Pill status={p.status} /></p>
           <div className="pp-meta">
-            <JobChip jobs={jobs} current={p.jobs} onPick={setJob} busy={busy === 'job'} manager={{ onPromote: p.canPromote && !p.promotion ? () => setPromoting(true) : undefined, pending: !!p.promotion }} />
+            <JobChip jobs={jobs} current={p.jobs} onPick={setJob} busy={busy === 'job'} manager={{ onPromote: p.canPromote ? () => setPromoting(true) : undefined }} />
             {dateEdit
               ? <input type="date" className="pp-date" defaultValue={p.startedOn} autoFocus aria-label="Start date" onBlur={(e) => (e.target.value && e.target.value !== p.startedOn ? setStart(e.target.value) : setDateEdit(false))} onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') setDateEdit(false); }} />
               : <button type="button" className="pp-started" onClick={() => setDateEdit(true)} title="Change the start date">{daysFrom(p.startedOn) > 0 ? 'Starts' : 'Started'} {dayLabel(p.startedOn, { month: 'short', day: 'numeric' })}</button>}
@@ -472,7 +474,7 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
                 <button type="button" role="menuitem" onClick={() => { setMoreOpen(false); setDateEdit(true); }}>Change Start Date</button>
                 {p.certificates.map((c) => <button key={c.key} type="button" role="menuitem" onClick={() => nav(`/certificate/${c.key}?user=${p.id}`)}>View {c.title} Certificate</button>)}
                 {stores.filter((s) => s.id !== user?.store?.id).map((s) => <button key={s.id} type="button" role="menuitem" onClick={() => move(s)}>Move to {s.name}</button>)}
-                {p.canPromote && !p.promotion && <button type="button" role="menuitem" onClick={() => { setMoreOpen(false); setPromoting(true); }}>Promote to Manager</button>}
+                {p.canPromote && <button type="button" role="menuitem" onClick={() => { setMoreOpen(false); setPromoting(true); }}>Promote to Manager</button>}
                 <button type="button" role="menuitem" className="danger" onClick={() => { setMoreOpen(false); archive(); }}>Archive</button>
               </div>
             )}
@@ -551,18 +553,16 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
           <div className="pp-btn-row">
             <button type="button" className="mg-btn" disabled={!!busy} onClick={resetPin}>Reset PIN</button>
             <button type="button" className="mg-btn" disabled={!!busy} onClick={archive}>Archive</button>
-            {p.canPromote && !p.promotion && <button type="button" className="mg-btn dark" disabled={!!busy} onClick={() => setPromoting(true)}>Promote to Manager</button>}
+            {p.canPromote && <button type="button" className="mg-btn dark" disabled={!!busy} onClick={() => setPromoting(true)}>Promote to Manager</button>}
           </div>
-          {/* Nov 16: a promotion link waiting to be used. Only its hash is kept, so a copy is always a new link. */}
+          {/* A promotion link made before Nov 16's change (promotions are instant now). It works until it expires; Promote to
+              Manager above does it straight away instead, and an owner can cancel the link. */}
           {p.promotion && (
             <div className="pp-promo" role="status">
-              <p><strong>Promotion sent</strong></p>
+              <p><strong>Promotion link sent</strong></p>
               <p className="small">To {p.promotion.email} · manages {p.promotion.storeName || 'every store'} · sent {whenWords(p.promotion.createdAt)}</p>
-              <p className="muted small">{first} keeps signing in with a PIN until they use the link. A new link replaces the one sent.</p>
-              <div className="pp-btn-row">
-                <button type="button" className="mg-btn" disabled={!!busy} onClick={() => setPromoting(true)}>Copy a New Link</button>
-                <button type="button" className="mg-btn" disabled={!!busy} onClick={cancelPromotion}>Cancel Promotion</button>
-              </div>
+              <p className="muted small">The link works until it expires. Promote to Manager does it now, without the link.</p>
+              {isOwner && <div className="pp-btn-row"><button type="button" className="mg-btn" disabled={!!busy} onClick={cancelPromotion}>Cancel Link</button></div>}
             </div>
           )}
         </div>
@@ -591,27 +591,22 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
   );
 }
 
-/** Promote to Manager (Nov 16, Tommy: "people get promoted from server to manager all the time"). Their email (and which
- *  store, or every store, like a manager invite) → a one-time link for the same person. A demo does it straight away. */
+/** Promote to Manager (Nov 16, Tommy: "Id just promote the level in the back end by a manager/owner and then their level
+ *  access changes"). Straight away: no link, no email. Owners pick a store or every store; a store manager promotes to
+ *  their own store (no picker). The person keeps signing in the way they do now. */
 function PromoteDialog({ p, onClose, onPromoted }: { p: Person; onClose: () => void; onPromoted: (name: string) => void }) {
-  const { user, mailOn } = useSession();
+  const { user } = useSession();
   const first = p.name.split(' ')[0];
   const stores = (user?.canSwitchStore ? user.stores || [] : []) as Store[];
-  const [email, setEmail] = useState(p.promotion?.email || p.email || '');
   const [store, setStore] = useState(String(p.promotion ? p.promotion.storeId ?? '' : p.storeId ?? ''));
-  const [made, setMade] = useState<{ link: string; email: string; storeName: string | null; days: number; emailed: boolean; mail?: MailStatus } | null>(null);
-  const [copied, setCopied] = useState(false);
   const { busy, msg, run } = useAct();
   useEffect(() => { const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); }; document.addEventListener('keydown', k); return () => document.removeEventListener('keydown', k); }, [onClose]);
   const storeId = store === '' ? null : Number(store);
   const submit = (e: FormEvent) => {
     e.preventDefault();
     void run('go', async () => {
-      const r = await api<{ instant?: boolean; link?: string; email: string; storeName: string | null; days: number; emailed: boolean; mail?: MailStatus }>(`/api/team/${p.id}/promote`, { method: 'POST', body: p.demo ? { storeId } : { email, storeId } });
-      if (r.instant) { onPromoted(p.name); return; }
-      const link = location.origin + r.link;
-      setMade({ ...r, link }); setCopied(false);
-      try { await navigator.clipboard?.writeText(link); setCopied(true); } catch { /* the Copy Link button is there */ }
+      await api(`/api/team/${p.id}/promote`, { method: 'POST', body: { storeId } });
+      onPromoted(p.name);
     });
   };
   return (
@@ -619,34 +614,17 @@ function PromoteDialog({ p, onClose, onPromoted }: { p: Person; onClose: () => v
       <div className="modal pp-add pp-promote" role="dialog" aria-modal="true" aria-labelledby="pp-promote-title">
         <button type="button" className="icon-btn" onClick={onClose} aria-label="Close">✕</button>
         <h2 id="pp-promote-title">Promote {first} to Manager</h2>
-        {!made && (
-          <form className="pp-add-invite" onSubmit={submit}>
-            <p>{first} stays the same person: their training, quiz scores, certificates and chat come with them. As a manager they sign in with an email and a password instead of a PIN.</p>
-            {!p.demo && <Text label={`${first}’s email`} value={email} placeholder="name@restaurant.com" onChange={setEmail} />}
-            {stores.length > 1 && <label className="field"><span>Manages</span>
-              <select value={store} onChange={(e) => setStore(e.target.value)}>
-                {stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}
-                <option value="">Every store</option>
-              </select>
-            </label>}
-            {p.demo
-              ? <p className="muted small">This is a demo, so it happens straight away. In a real account, {first} gets a one-time link to pick a password.</p>
-              : <p className="muted small">{mailOn ? `We email ${first} a one-time link, and you get it to copy too.` : 'You get a one-time link to send them.'} It works for 14 days{p.promotion ? ' and replaces the link sent before' : ''}. Until they use it, they sign in with their PIN.</p>}
-            <button className="mg-btn dark" disabled={(!p.demo && !email.trim()) || !!busy}>{busy ? 'Working…' : p.demo ? 'Promote Now' : mailOn ? 'Send Promotion Link' : 'Create Promotion Link'}</button>
-            <Feedback msg={msg} at="go" />
-          </form>
-        )}
-        {made && (
-          <div className="pp-add-invite" role="status">
-            <p><strong>{mailLine(made.email, made.mail)}</strong></p>
-            <p>{made.mail?.sent ? 'You can also copy the link and send it yourself.' : `Copy the link and send it to ${first}.`} It works once and expires in {made.days} days. They pick a password and they’re a manager{made.storeName ? ` at ${made.storeName}` : ' of every store'}.</p>
-            <div className="pp-link-row">
-              <input readOnly value={made.link} onFocus={(e) => e.target.select()} aria-label={`Promotion link for ${p.name}`} />
-              <button type="button" className="mg-btn dark" onClick={() => { void navigator.clipboard?.writeText(made.link); setCopied(true); }}>{copied ? 'Copied' : 'Copy Link'}</button>
-            </div>
-            <button type="button" className="mg-btn" onClick={onClose}>Done</button>
-          </div>
-        )}
+        <form className="pp-add-invite" onSubmit={submit}>
+          <p>{first} can sign people off and edit the book straight away. They keep their training, scores, certificates and chat.</p>
+          {stores.length > 1 && <label className="field"><span>Manages</span>
+            <select value={store} onChange={(e) => setStore(e.target.value)}>
+              {stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}
+              {(user?.role !== 'manager' || !user.storeId) && <option value="">Every store</option>}
+            </select>
+          </label>}
+          <button className="mg-btn dark" disabled={!!busy}>{busy ? 'Promoting…' : 'Promote to Manager'}</button>
+          <Feedback msg={msg} at="go" />
+        </form>
       </div>
     </div>
   );
@@ -698,7 +676,7 @@ function StepRow({ s, first, busy, act }: { s: Step; first: string; busy: string
 /** The job chip: tap it, pick a job, the path swaps in place (532:919). */
 /** Nov 16 (Tommy: "this should say manager"): Manager sits at the bottom of the list. It isn't a training path, it's more
  *  access, so picking it opens Promote to Manager (owners); others see who can do it. */
-function JobChip({ jobs, current, onPick, busy, manager }: { jobs: Job[]; current: string[]; onPick: (key: string) => void; busy: boolean; manager?: { onPromote?: () => void; pending?: boolean } }) {
+function JobChip({ jobs, current, onPick, busy, manager }: { jobs: Job[]; current: string[]; onPick: (key: string) => void; busy: boolean; manager?: { onPromote?: () => void } }) {
   const [open, setOpen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -724,8 +702,8 @@ function JobChip({ jobs, current, onPick, busy, manager }: { jobs: Job[]; curren
           {manager && (
             <ul role="listbox" aria-label="Role" className="pp-job-role">
               <li role="option" aria-selected={false}>
-                <button type="button" disabled={!manager.onPromote || manager.pending} onClick={() => { setOpen(false); manager.onPromote?.(); }}>
-                  <span>Manager<small> · {manager.pending ? 'Promotion sent' : manager.onPromote ? 'Promote: signs people off, edits the book' : 'An owner can promote'}</small></span>
+                <button type="button" disabled={!manager.onPromote} onClick={() => { setOpen(false); manager.onPromote?.(); }}>
+                  <span>Manager<small> · {manager.onPromote ? 'Promote: signs people off, edits the book' : 'Owners and managers can promote'}</small></span>
                 </button>
               </li>
             </ul>

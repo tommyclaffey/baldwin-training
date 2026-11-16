@@ -1,5 +1,5 @@
 // Promote to Manager / Change to Staff, and the Mise team's roles in Super Admin (Nov 16).
-// One server, one email-less setup (links are copied by hand, like invites). The database is read alongside it to check
+// One server, one email-less setup. Since Nov 16's second pass promotion is instant (no link); links made before then still work. The database is read alongside it to check
 // that a promoted person is the same row, with their history.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { totpAt } from '../server/auth.mjs';
+import { totpAt, sha256 } from '../server/auth.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-roles-'));
@@ -66,37 +66,44 @@ test('setup: an owner, a store manager, two staff with PINs, a super admin (two-
   d.close();
 });
 
-test('Promote to Manager: owners only; managers and staff are refused; other companies can’t reach the person', async () => {
-  assert.equal((await gm(`/api/team/${sukiId}/promote`, { method: 'POST', body: { email: 'suki@roles.test' } })).status, 403);
-  assert.equal((await suki(`/api/team/${theoId}/promote`, { method: 'POST', body: { email: 'theo@roles.test' } })).status, 403);
-  assert.equal((await owner2(`/api/team/${sukiId}/promote`, { method: 'POST', body: { email: 'suki@roles.test' } })).status, 404);
+test('Promote to Manager: staff are refused; other companies can’t reach the person; a store manager stays in their store', async () => {
+  assert.equal((await suki(`/api/team/${theoId}/promote`, { method: 'POST', body: {} })).status, 403, 'staff');
+  assert.equal((await owner2(`/api/team/${sukiId}/promote`, { method: 'POST', body: {} })).status, 404, 'another company');
   assert.equal((await owner2(`/api/team/${gmId}/demote`, { method: 'POST', body: {} })).status, 404);
-  // the email has to be free
-  const taken = await owner(`/api/team/${sukiId}/promote`, { method: 'POST', body: { email: 'gm@roles.test' } });
-  assert.equal(taken.status, 409);
-  assert.match(taken.data.error, /already uses that email/);
-  assert.equal((await owner(`/api/team/${sukiId}/promote`, { method: 'POST', body: { email: 'not an email' } })).status, 400);
-  assert.equal((await owner(`/api/team/${gmId}/promote`, { method: 'POST', body: { email: 'x@roles.test' } })).status, 400, 'already a manager');
+  assert.equal((await owner(`/api/team/${gmId}/promote`, { method: 'POST', body: {} })).status, 400, 'already a manager');
+  // Gale manages the first store: not every store, not another store
+  const stores = (await owner('/api/team')).data.stores;
+  const every = await gm(`/api/team/${sukiId}/promote`, { method: 'POST', body: { storeId: null } });
+  assert.equal(every.status, 403);
+  assert.match(every.data.error, /every store/);
+  assert.equal((await gm(`/api/team/${sukiId}/promote`, { method: 'POST', body: { storeId: stores[1].id } })).status, 403, 'another store');
+  // nor anyone outside their store
+  const pia = person();
+  assert.equal((await pia('/api/join', { method: 'POST', body: { code: joinCode, name: 'Pia Patio', pin: '1357', storeId: stores[1].id } })).status, 200);
+  const piaId = (await pia('/api/me')).data.user.id;
+  assert.equal((await gm(`/api/team/${piaId}/promote`, { method: 'POST', body: { storeId } })).status, 404);
+  assert.equal((await gm('/api/team')).data.people.find((p) => p.id === sukiId).canPromote, true, 'Gale sees the button for her own staff');
+  assert.equal((await suki('/api/me')).data.user.role, 'staff', 'nothing changed');
 });
 
-let link1 = '', link2 = '';
-test('a promotion link: a new one cancels the old; People shows it waiting; the person keeps signing in with their PIN until they accept', async () => {
-  const a = await owner(`/api/team/${sukiId}/promote`, { method: 'POST', body: { email: 'suki@roles.test' } });
-  assert.equal(a.status, 200);
-  assert.equal(a.data.emailed, false, 'email isn’t set up, so the link is copied by hand');
-  link1 = a.data.link;
-  const b = await owner(`/api/team/${sukiId}/promote`, { method: 'POST', body: { email: 'Suki@Roles.test', storeId } });
-  link2 = b.data.link;
-  assert.equal((await owner(`/api/invite/${token(link1)}`)).data.valid, false, 'the old link stops working');
+/** A promotion link the way the app made them before Nov 16's change (an invite row with the person's id). */
+const legacyLink = (userId, email, { expired = false } = {}) => {
+  const t = 'legacy' + Math.random().toString(36).slice(2) + Date.now();
+  const d = db();
+  d.prepare('INSERT INTO invites(token_hash,company_id,email,role,created_by,created_at,expires_at,store_id,super_role,user_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
+    .run(sha256(t), 1, email, 'manager', ownerId, new Date().toISOString(), new Date(Date.now() + (expired ? -1000 : 14 * 864e5)).toISOString(), storeId, null, userId);
+  d.close();
+  return `/admin/invite/${t}`;
+};
+let link2 = '';
+test('a promotion link made before the change still works; People shows it waiting; the person keeps their PIN until they use it', async () => {
+  link2 = legacyLink(sukiId, 'suki@roles.test');
   const g = (await owner(`/api/invite/${token(link2)}`)).data;
   assert.deepEqual([g.valid, g.promotion, g.name, g.email, g.role], [true, true, 'Suki Server', 'suki@roles.test', 'manager']);
   const row = (await owner('/api/team')).data.people.find((p) => p.id === sukiId);
   assert.equal(row.promotion.email, 'suki@roles.test');
-  assert.equal(row.canPromote, true);
   assert.ok(!(await owner('/api/team')).data.invites.some((i) => i.email === 'suki@roles.test'), 'not listed as an open invite');
-  const panel = (await owner(`/api/path/person/${sukiId}`)).data;
-  assert.equal(panel.promotion.email, 'suki@roles.test');
-  assert.equal((await gm(`/api/path/person/${sukiId}`)).data.canPromote, false, 'a manager doesn’t see the button');
+  assert.equal((await owner(`/api/path/person/${sukiId}`)).data.promotion.email, 'suki@roles.test');
   assert.equal((await suki('/api/me')).data.user.role, 'staff');
 });
 
@@ -119,17 +126,17 @@ test('accepting: same person (id, name, history), now a manager with that email;
   assert.equal(d.prepare('SELECT store_id FROM users WHERE id = ?').get(sukiId).store_id, storeId);
   d.close();
   const acts = (await owner('/api/audit')).data.audit.map((a) => a.action);
-  assert.ok(acts.includes('promotion link') && acts.includes('promoted to manager'), 'both in Activity');
+  assert.ok(acts.includes('promoted to manager'), 'in Activity');
 });
 
-test('expired and cancelled promotion links are refused', async () => {
-  const a = await owner(`/api/team/${theoId}/promote`, { method: 'POST', body: { email: 'theo@roles.test' } });
-  const d = db(); d.prepare('UPDATE invites SET expires_at = ? WHERE user_id = ?').run(new Date(Date.now() - 1000).toISOString(), theoId); d.close();
-  assert.equal((await person()(`/api/invite/${token(a.data.link)}`)).data.valid, false);
-  assert.equal((await person()(`/api/invite/${token(a.data.link)}`, { method: 'POST', body: { password: 'theo-manager-1' } })).status, 410);
-  const b = await owner(`/api/team/${theoId}/promote`, { method: 'POST', body: { email: 'theo@roles.test' } });
+test('expired and cancelled promotion links are refused; only an owner cancels one', async () => {
+  const a = legacyLink(theoId, 'theo@roles.test', { expired: true });
+  assert.equal((await person()(`/api/invite/${token(a)}`)).data.valid, false);
+  assert.equal((await person()(`/api/invite/${token(a)}`, { method: 'POST', body: { password: 'theo-manager-1' } })).status, 410);
+  const b = legacyLink(theoId, 'theo@roles.test');
+  assert.equal((await gm(`/api/team/${theoId}/promote`, { method: 'DELETE' })).status, 403, 'a manager can’t cancel it');
   assert.equal((await owner(`/api/team/${theoId}/promote`, { method: 'DELETE' })).status, 200);
-  assert.equal((await person()(`/api/invite/${token(b.data.link)}`)).data.valid, false);
+  assert.equal((await person()(`/api/invite/${token(b)}`)).data.valid, false);
   assert.equal((await owner(`/api/team/${theoId}/promote`, { method: 'DELETE' })).status, 404);
 });
 
@@ -159,9 +166,55 @@ test('Change to Staff: owners only; keeps the person and their PIN; signs them o
   const last = await t(`/api/team/${ownerId}/demote`, { method: 'POST', body: {} });
   assert.equal(last.status, 400);
   assert.match(last.data.error, /at least one owner/);
-  // …and the Mise owner can promote, like an owner
-  assert.equal((await t(`/api/team/${theoId}/promote`, { method: 'POST', body: { email: 'theo@roles.test' } })).status, 200);
-  assert.equal((await t(`/api/team/${theoId}/promote`, { method: 'DELETE' })).status, 200);
+  // …and the Mise owner can promote, like an owner (straight away), and change them back
+  const pr = await t(`/api/team/${theoId}/promote`, { method: 'POST', body: { storeId } });
+  assert.equal(pr.status, 200);
+  assert.equal(pr.data.instant, true);
+  assert.equal((await t(`/api/team/${theoId}/demote`, { method: 'POST', body: { storeId } })).status, 200);
+});
+
+test('Promote to Manager is instant: an owner or a store manager promotes; the person keeps their PIN and reaches the manager pages', async () => {
+  const nell = person(), ned = person();
+  assert.equal((await nell('/api/join', { method: 'POST', body: { code: joinCode, name: 'Nell Night', pin: '2580', storeId } })).status, 200);
+  assert.equal((await ned('/api/join', { method: 'POST', body: { code: joinCode, name: 'Ned Noon', pin: '3690', storeId } })).status, 200);
+  const nellId = (await nell('/api/me')).data.user.id, nedId = (await ned('/api/me')).data.user.id;
+  assert.equal((await nell('/api/team')).status, 403, 'staff can’t open the team yet');
+  // Gale (a store manager) promotes Nell to manager of her own store: no email, no link
+  const r = await gm(`/api/team/${nellId}/promote`, { method: 'POST', body: { storeId } });
+  assert.equal(r.status, 200);
+  assert.equal(r.data.instant, true);
+  assert.equal(r.data.link, undefined);
+  // Nell's phone session carries on, with the new access on her next request
+  const me = (await nell('/api/me')).data.user;
+  assert.deepEqual([me.id, me.role, me.storeId], [nellId, 'manager', storeId]);
+  assert.equal((await nell('/api/team')).status, 200, 'the manager pages open');
+  assert.equal((await nell('/api/audit')).status, 403, 'Activity stays an owner’s page');
+  // signed out, she signs back in with her PIN, as a manager
+  const back = person();
+  const list = (await back(`/api/join/${joinCode}`)).data.staff;
+  assert.ok(list.some((x) => x.id === nellId), 'her name is on the PIN list');
+  const pin = await back('/api/staff-login', { method: 'POST', body: { code: joinCode, id: nellId, pin: '2580' } });
+  assert.equal(pin.status, 200);
+  assert.equal(pin.data.user.role, 'manager');
+  assert.equal((await back('/api/team')).status, 200);
+  // a manager invited by email never signs in with a PIN
+  assert.ok(!list.some((x) => x.id === gmId));
+  assert.equal((await person()('/api/staff-login', { method: 'POST', body: { code: joinCode, id: gmId, pin: '0000' } })).status, 404);
+  // an owner promotes to every store
+  const o = await owner(`/api/team/${nedId}/promote`, { method: 'POST', body: { storeId: null } });
+  assert.equal(o.status, 200);
+  const d = db();
+  assert.deepEqual({ ...d.prepare('SELECT role, store_id FROM users WHERE id = ?').get(nedId) }, { role: 'manager', store_id: null });
+  assert.equal(d.prepare('SELECT COUNT(*) n FROM users WHERE name = ?').get('Nell Night').n, 1, 'the same account');
+  d.close();
+  assert.equal((await ned('/api/me')).data.user.canSwitchStore, true, 'an every-store manager switches stores');
+  const log = (await owner('/api/audit')).data.audit.filter((a) => a.action === 'promote to manager');
+  assert.ok(log.some((a) => a.name === 'Gale Manager' && /Nell Night/.test(a.detail)), 'logged with who did it');
+  assert.ok(log.some((a) => a.name === 'Orla Owner' && /Ned Noon · every store/.test(a.detail)));
+  // Change to Staff stays an owner's call
+  assert.equal((await gm(`/api/team/${nellId}/demote`, { method: 'POST', body: {} })).status, 403);
+  assert.equal((await owner(`/api/team/${nellId}/demote`, { method: 'POST', body: {} })).status, 200);
+  assert.equal((await owner(`/api/team/${nedId}/demote`, { method: 'POST', body: { storeId } })).status, 200);
 });
 
 test('a manager changed to staff without a PIN picks one with the join code and their name', async () => {
@@ -274,7 +327,7 @@ test('Mise Support: looks up accounts, Work Here, Sign In As and the log; change
   assert.equal((await sup('/api/super/act', { method: 'POST', body: { companyId: 1 } })).status, 200);
   assert.equal((await sup('/api/team')).status, 200);
   assert.equal((await sup('/api/audit')).status, 200);
-  for (const [p, method, body] of [[`/api/team/${theoId}/reset-pin`, 'POST'], ['/api/team/invite', 'POST', { email: 'w@x.test' }], [`/api/team/${theoId}/promote`, 'POST', { email: 'theo2@roles.test' }], [`/api/path/person/${theoId}`, 'PATCH', { startedOn: '2026-11-01' }]]) {
+  for (const [p, method, body] of [[`/api/team/${theoId}/reset-pin`, 'POST'], ['/api/team/invite', 'POST', { email: 'w@x.test' }], [`/api/team/${theoId}/promote`, 'POST', { storeId: null }], [`/api/path/person/${theoId}`, 'PATCH', { startedOn: '2026-11-01' }]]) {
     const r = await sup(p, { method, body });
     assert.equal(r.status, 403, `${method} ${p}`);
     assert.match(r.data.error, /Support can look/);

@@ -565,8 +565,10 @@ export function Account() {
   return (
     <div className="admin-page narrow">
       <h1>Your account</h1>
-      <p className="muted">{user?.name} · {user?.email} · {user ? ROLE_LABEL[user.role] : ''}{user?.companyName ? ` · ${user.companyName}` : ''}</p>
-      <section className="card stack">
+      <p className="muted">{[user?.name, user?.email, user ? ROLE_LABEL[user.role] : '', user?.companyName].filter(Boolean).join(' · ')}</p>
+      {/* Nov 16: a manager promoted from staff signs in with their PIN (no password yet), so there's no password to change */}
+      {user?.pinSignIn && <section className="card stack"><h2>Signing in</h2><p className="muted small">You sign in with your restaurant’s join code, your name and your PIN, the same as before you were a manager. Forgot it? Ask an owner.</p></section>}
+      {!user?.pinSignIn && <section className="card stack">
         <h2>Two-step sign-in</h2>
         {needsTwoStep(user) && <p className="error" role="alert">{TWO_STEP_MSG}</p>}
         <p className="muted small">After your password, you type a 6-digit code from an authenticator app on your phone (Google Authenticator, Microsoft Authenticator, 1Password or Authy).</p>
@@ -586,15 +588,15 @@ export function Account() {
         )}
         {twoErr && <ErrorNote error={twoErr} />}
         {twoMsg && <p className="ok" role="status">{twoMsg}</p>}
-      </section>
-      <form className="card stack" onSubmit={change}>
+      </section>}
+      {!user?.pinSignIn && <form className="card stack" onSubmit={change}>
         <h2>Change password</h2>
         <label className="field"><span>Current password</span><input type="password" autoComplete="current-password" value={f.current} onChange={(e) => setF({ ...f, current: e.target.value })} /></label>
         <label className="field"><span>New password</span><input type="password" autoComplete="new-password" value={f.next} onChange={(e) => setF({ ...f, next: e.target.value })} /><small>At least 10 characters.</small></label>
         {err && <ErrorNote error={err} />}
         {msg && <p className="ok" role="status">{msg}</p>}
         <button className="btn" disabled={!f.current || !f.next}>Change Password</button>
-      </form>
+      </form>}
       {/* Nov 16: the support line, once Privacy, Terms and Help are public (content/legal.md) */}
       <SupportLine className="card" />
       <LegalLinks className="account-page-legal" />

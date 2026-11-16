@@ -20,7 +20,7 @@ import {
   hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionCookies, sessionDays, LoginLimiter, publicUser,
   sha256, newToken, newTotpSecret, verifyTotp, otpauthUrl, newJoinCode, clientIp,
 } from './auth.mjs';
-import { APP_URL, mailConfigured, sendMail, resetEmail, promoteEmail, inviteEmail } from './mail.mjs';
+import { APP_URL, mailConfigured, sendMail, resetEmail, inviteEmail } from './mail.mjs';
 import { legalState } from './legal.mjs';
 import { logError } from './ops.mjs';
 import { wipeCompany, PROTECTED } from './companydata.mjs';
@@ -43,7 +43,7 @@ const tickets = new Map(); // two-step sign-in: ticket → { userId, at }
 const RESET_HOURS = 24;
 const forgotIpLimiter = new LoginLimiter(10, 60 * 60_000, 'forgot-ip');
 const forgotEmailLimiter = new LoginLimiter(3, 60 * 60_000, 'forgot-email');
-// Invite and promotion emails (Nov 16): like Forgot Password?, a few an hour per address, and a cap per sender.
+// Invite emails (Nov 16): like Forgot Password?, a few an hour per address, and a cap per sender.
 const inviteEmailLimiter = new LoginLimiter(3, 60 * 60_000, 'invite-email');
 const inviteSenderLimiter = new LoginLimiter(30, 60 * 60_000, 'invite-sender');
 const INVITE_DAYS = 14;
@@ -122,6 +122,9 @@ export function purgeDeleted(db) {
  *  hasn't picked one works in Mise Academy (HQ), never a customer's account (it used to be The Baldwin, company 1). */
 export const companyOf = (u) => (u ? u.company_id ?? u.acting_company_id ?? hqId() : null);
 export const canEdit = (u) => !!u && STAFF_ROLES.has(u.role);
+/** Who signs in with the join code, their name and a PIN: staff, and (Nov 16) managers promoted from staff who have a PIN
+ *  and no password. Owners and managers invited by email never do. */
+const PIN_SIGN_IN = "(role = 'staff' OR (role = 'manager' AND password_hash IS NULL AND pin_hash IS NOT NULL))";
 
 export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const ip = clientIp;
@@ -131,7 +134,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const byId = (id) => db.prepare('SELECT u.*, c.name company_name FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.id = ?').get(id);
   /** The signed-in person as the app sees them: role, company, and the store they're working in. */
   const meOut = (u) => ({
-    ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo, hq: !!companyRow(companyOf(u))?.internal, // Nov 16: Mise Academy (HQ) keeps one store
+    ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo, pinSignIn: u.role === 'manager' && !u.password_hash && !!u.pin_hash, hq: !!companyRow(companyOf(u))?.internal, // Nov 16: Mise Academy (HQ) keeps one store
     brand: lookOf(companyRow(companyOf(u))), // Nov 11: the look follows the company; Nov 16: its plan decides (server/looks.mjs)
     store: storeOut(storeOf(db, u)), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
   });
@@ -172,15 +175,17 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   // The Mise team belongs to Mise Academy (HQ) (Nov 16): no company row of their own, so HQ's name stands in.
   const personOut = (u) => ({ id: u.id, name: u.name, email: u.email, role: u.role, companyId: u.company_id, companyName: u.company_name ?? (u.role === 'superadmin' ? HQ_NAME : null),
     createdAt: u.created_at, lastSeenAt: u.last_seen_at, deletedAt: u.deleted_at, hasPin: !!u.pin_hash, totpOn: !!u.totp_on, superPrimary: !!u.super_primary, teamRole: teamRole(u) });
-  /* Promote to Manager (Nov 16, Tommy: "people get promoted from server to manager all the time"). A one-time link for a
-   * staff member who's already on the team: an invite row with their user id. They pick a password and become a manager
-   * with that email: the same person (id), so their name, path, quiz scores, certificates, chat and sign-offs stay.
-   * A new link cancels the old one; only the hash is kept. */
-  const PROMOTE_DAYS = 14;
+  /* Promote to Manager (Nov 16). It started as a one-time link (pick a password); since Nov 16's second pass it happens
+   * straight away (the route below). Links made before then still work until they expire: an invite row with the
+   * person's user id, accepted in /api/invite. */
   const promotionOf = (userId) => db.prepare('SELECT * FROM invites WHERE user_id = ? AND used_at IS NULL AND expires_at > ? ORDER BY created_at DESC LIMIT 1').get(userId, now());
   const promotionOut = (inv, storeName) => inv && { email: inv.email, storeId: inv.store_id ?? null, storeName: inv.store_id ? storeName(inv.store_id) : null, createdAt: inv.created_at, expiresAt: inv.expires_at };
-  /** Who can promote and change people's roles: owners, the Mise team except Support, and a demo's manager (a demo has no owner). */
-  const promoter = (u) => u.role === 'owner' || (u.role === 'superadmin' && teamCan(u, 'change')) || (u.role === 'manager' && !!companyRow(companyOf(u))?.demo);
+  /** Who changes people's roles (Change to Staff, cancelling an old promotion link): owners, the Mise team except Support,
+   *  and a demo's manager (a demo has no owner). */
+  const roleChanger = (u) => u.role === 'owner' || (u.role === 'superadmin' && teamCan(u, 'change')) || (u.role === 'manager' && !!companyRow(companyOf(u))?.demo);
+  /** Who promotes staff to manager (Nov 16, Tommy: "Id just promote the level in the back end by a manager/owner"): the
+   *  role changers, plus managers, for the staff in the store(s) they manage. */
+  const promoter = (u) => roleChanger(u) || u.role === 'manager';
 
   /* Password reset links (Nov 11). Only the hash is stored; a new link replaces the person's unused ones. */
   const makeReset = (t, by, via) => {
@@ -207,7 +212,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const clearPinLimits = (id) => { pinLimiter.reset('pin|' + id); pinDayLimiter.reset('pin|' + id); };
   const resetOut = (t, r) => ({ link: r.link, expiresAt: r.expiresAt, hours: r.hours, name: t.name, email: t.email });
 
-  /* Invite emails (Nov 16): every invite or promotion link also goes by email when email is set up. The link is still
+  /* Invite emails (Nov 16): every invite link also goes by email when email is set up. The link is still
    * shown, to copy. Never in a demo; a few an hour per address (like Forgot Password?) and 30 an hour per sender; a failed
    * send goes to the errors table. Answers { on, sent, reason } (reason: off · demo · limit · failed). */
   const placeOf = (companyId, storeId) => (storeId && db.prepare('SELECT name FROM stores WHERE id = ?').get(storeId)?.name)
@@ -397,7 +402,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (!codeLimiter.check(ip(req))) fail(429, 'Too many tries. Wait 15 minutes, then try again.');
       const co = staffByCode(parts[2]);
       if (!co) { codeLimiter.record(ip(req)); fail(404, 'That join code isn’t right. Ask a manager for it.'); }
-      const staff = db.prepare("SELECT id, name, pin_hash, store_id FROM users WHERE company_id = ? AND role = 'staff' AND deleted_at IS NULL ORDER BY name COLLATE NOCASE").all(co.id);
+      // Nov 16: a manager promoted from staff keeps signing in with their PIN (no password yet), so they're on the list too.
+      // Only with a PIN set: a PIN-less name on this list can be claimed by anyone with the code, and that's never a manager.
+      const staff = db.prepare(`SELECT id, name, pin_hash, store_id FROM users WHERE company_id = ? AND deleted_at IS NULL AND ${PIN_SIGN_IN} ORDER BY name COLLATE NOCASE`).all(co.id);
       // Nov 12: the brand comes too, so the store, name and PIN screens wear the restaurant's own look (the join-code screen
       // before it is Mise's, the platform's front door).
       return sendJson(res, 200, { company: co.name, brand: lookOf(co), stores: storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name })), staff: staff.map((s) => ({ id: s.id, name: s.name, storeId: s.store_id, needsPin: !s.pin_hash })) });
@@ -426,7 +433,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (!codeLimiter.check(ip(req))) fail(429, 'Too many tries. Wait 15 minutes, then try again.');
       const co = staffByCode(b.code);
       if (!co) { codeLimiter.record(ip(req)); fail(404, 'That join code isn’t right. Ask a manager for it.'); }
-      const u = db.prepare("SELECT * FROM users WHERE id = ? AND company_id = ? AND role = 'staff' AND deleted_at IS NULL").get(Number(b.id), co.id);
+      const u = db.prepare(`SELECT * FROM users WHERE id = ? AND company_id = ? AND deleted_at IS NULL AND ${PIN_SIGN_IN}`).get(Number(b.id), co.id);
       if (!u) fail(404, 'We couldn’t find you. Pick your name again.');
       const key = 'pin|' + u.id;
       if (!pinLimiter.check(key)) fail(429, 'Too many wrong PINs. Wait 15 minutes, or ask a manager to reset your PIN.');
@@ -529,14 +536,14 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const stores = storesOf(db, cid);
       const storeName = new Map(stores.map((x) => [x.id, x.name]));
       const owners = all.filter((x) => x.role === 'owner').length;
-      const changes = promoter(u);
+      const changes = roleChanger(u), promotes = promoter(u);
       return sendJson(res, 200, {
         company: { id: co.id, name: co.name, joinCode: co.join_code, demo: !!co.demo }, stores: stores.map(storeOut), yourStore: u.store_id ?? null,
         people: people.map((x) => ({ ...personOut(x), storeId: x.store_id ?? null, storeName: x.store_id ? storeName.get(x.store_id) || null : null, signedOff: passed.get('u' + x.id) || 0, canManage: x.id !== u.id && inScope(u, x) && (x.role === 'staff' || u.role === 'owner' || u.role === 'superadmin'),
           // Nov 16: Promote to Manager (staff) and Change to Staff (owners and managers; never yourself or the last owner)
-          canPromote: changes && x.role === 'staff', canDemote: changes && x.role !== 'staff' && x.id !== u.id && !(x.role === 'owner' && owners < 2),
+          canPromote: promotes && x.role === 'staff' && inScope(u, x), canDemote: changes && x.role !== 'staff' && x.id !== u.id && !(x.role === 'owner' && owners < 2),
           promotion: x.role === 'staff' ? promotionOut(promotionOf(x.id), (id) => storeName.get(id) || null) : null })),
-        invites: invites.map((i) => ({ ...i, storeName: i.store_id ? storeName.get(i.store_id) || null : null })), you: u.id, youRole: u.role, canChangeRoles: changes,
+        invites: invites.map((i) => ({ ...i, storeName: i.store_id ? storeName.get(i.store_id) || null : null })), you: u.id, youRole: u.role, canChangeRoles: changes, canPromote: promotes,
       });
     }
     if (p === '/api/team/invite' && m === 'POST') {
@@ -624,42 +631,42 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         return sendJson(res, 200, resetOut(t, r));
       }
       /* ---- Promote to Manager / Change to Staff (Nov 16) ---- */
-      if (parts[3] === 'promote' && (m === 'POST' || m === 'DELETE')) {
-        if (!promoter(u)) fail(403, 'Only an owner can promote someone to manager.');
-        if (m === 'DELETE') {
-          const n = db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(t.id).changes;
-          if (!n) fail(404, 'There’s no promotion waiting for them.');
-          audit(db, u.id, 'cancel promotion', t.name, cid, teamRole(u));
-          return sendJson(res, 200, { ok: true });
-        }
+      if (parts[3] === 'promote' && m === 'DELETE') {
+        // Promotion links made before Nov 16's change stay valid until they expire; an owner can still cancel one.
+        if (!roleChanger(u)) fail(403, 'Only an owner can cancel a promotion link.');
+        const n = db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(t.id).changes;
+        if (!n) fail(404, 'There’s no promotion waiting for them.');
+        audit(db, u.id, 'cancel promotion', t.name, cid, teamRole(u));
+        return sendJson(res, 200, { ok: true });
+      }
+      /* Promote to Manager (Nov 16, second pass). Straight away, no link and no email: the role changes on the person's own
+       * row, so they keep their training, scores, certificates and chat, keep signing in the way they do (their PIN), and
+       * their next request sees the new access. Owners promote anyone to any store or every store; a manager promotes the
+       * staff they manage, to manager of their own store (an all-store manager: any store or every store). */
+      if (parts[3] === 'promote' && m === 'POST') {
+        if (!promoter(u)) fail(403, 'Only an owner or a manager can promote someone to manager.');
         if (t.role !== 'staff') fail(400, `${t.name} is already ${t.role === 'owner' ? 'an owner' : 'a manager'}.`);
         const b = await readJson(req);
         const stores = storesOf(db, cid);
         // Which store they'll manage: one store, or every store (null), like a manager invite. Default: the one they work at.
         const st = b.storeId === null ? null : stores.find((x) => x.id === Number(b.storeId ?? t.store_id)) || null;
         if (b.storeId != null && !st) fail(404, 'We couldn’t find that store.');
-        const where = st ? st.name : 'every store';
-        if (companyRow(cid)?.demo) {
-          // A demo has no real emails: the promotion happens straight away, so it can be shown. Real accounts get a link.
-          db.prepare("UPDATE users SET role = 'manager', store_id = ? WHERE id = ?").run(st?.id ?? null, t.id);
-          db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
-          audit(db, u.id, 'promote to manager', `${t.name} · ${where} (demo: straight away)`, cid);
-          return sendJson(res, 200, { ok: true, instant: true, name: t.name, storeName: st?.name ?? null });
+        if (u.role === 'manager' && u.store_id && (!st || st.id !== u.store_id)) {
+          fail(403, st ? 'You can make them a manager of your own store only.' : 'Only an owner can make someone a manager of every store.');
         }
-        const email = String(b.email || '').trim().toLowerCase();
-        if (!validEmail(email)) fail(400, 'Enter a valid email address.');
-        if (db.prepare('SELECT 1 FROM users WHERE email = ? AND id != ? AND deleted_at IS NULL').get(email, t.id)) fail(409, 'Another account already uses that email. Use a different one.');
-        if (db.prepare('SELECT 1 FROM invites WHERE email = ? AND used_at IS NULL AND expires_at > ? AND (user_id IS NULL OR user_id != ?)').get(email, now(), t.id)) fail(409, 'That email already has an open invite. Cancel it first, or use a different email.');
-        db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(t.id); // a new link cancels the old one
-        const link = makeInvite(u, email, 'manager', cid, st?.id ?? null, { userId: t.id });
-        const inv = promotionOf(t.id);
-        // Nov 16: sent the same way as invites (rate-limited, never in a demo, failures logged), and the answer says whether it went
-        const mail = await deliver(u, email, promoteEmail({ name: t.name, email, url: APP_URL + link, days: PROMOTE_DAYS, place: st?.name || companyRow(cid)?.name, by: u.name }), cid, '/api/team/promote');
-        audit(db, u.id, 'promotion link', `${t.name} · ${email} · ${where}${sentNote(mail)}`, cid, teamRole(u));
-        return sendJson(res, 200, { link, name: t.name, email, storeName: st?.name ?? null, expiresAt: inv?.expires_at ?? null, days: PROMOTE_DAYS, emailed: mail.sent, mail });
+        const where = st ? st.name : 'every store';
+        db.exec('BEGIN');
+        try {
+          db.prepare("UPDATE users SET role = 'manager', store_id = ? WHERE id = ? AND role = 'staff'").run(st?.id ?? null, t.id);
+          db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(t.id); // an older promotion link is done with
+          if (companyRow(cid)?.demo) db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id); // (demo people are made up)
+          db.exec('COMMIT');
+        } catch (e) { db.exec('ROLLBACK'); throw e; }
+        audit(db, u.id, 'promote to manager', `${t.name} · ${where}${companyRow(cid)?.demo ? ' (demo)' : ''}`, cid, teamRole(u));
+        return sendJson(res, 200, { ok: true, instant: true, name: t.name, storeName: st?.name ?? null });
       }
       if (parts[3] === 'demote' && m === 'POST') {
-        if (!promoter(u)) fail(403, 'Only an owner can change someone’s role.');
+        if (!roleChanger(u)) fail(403, 'Only an owner can change someone’s role.');
         if (t.id === u.id) fail(400, 'Ask another owner to change your role.');
         if (t.role === 'staff') fail(400, `${t.name} is already staff.`);
         if (t.role === 'owner' && db.prepare("SELECT COUNT(*) n FROM users WHERE company_id = ? AND role = 'owner' AND deleted_at IS NULL").get(cid).n < 2) fail(400, 'Every company keeps at least one owner. Make someone else an owner first.');

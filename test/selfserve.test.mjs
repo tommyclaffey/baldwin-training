@@ -1,4 +1,4 @@
-// Self-serve setup (Nov 16): owners add and rename their own stores; every invite and promotion link also goes by email
+// Self-serve setup (Nov 16): owners add and rename their own stores; every invite link also goes by email
 // once email is set up; /privacy, /terms and /help stay hidden until content/legal.md's four blanks are filled.
 // Two servers: A has no email and the legal page's blanks empty (and a small store cap); B has RESEND_API_KEY + MAIL_FROM
 // pointed at a fake Resend in this process, and a filled-in legal file.
@@ -267,19 +267,17 @@ test('invite emails: the super admin’s owner invites and Mise team invites go 
   assert.ok(!c.text.includes('Harbor'), 'a team invite names no restaurant');
 });
 
-test('Promote to Manager: emailed through the same path; and on A, not emailed', async () => {
+test('Promote to Manager sends no email (Nov 16: it’s instant now), even with email set up', async () => {
   const sukiB = (await B.owner('/api/team')).data.people.find((p) => p.name === 'Suki Staff').id;
   const before = mails.length;
-  const r = await B.owner(`/api/team/${sukiB}/promote`, { method: 'POST', body: { email: 'suki@self.test' } });
+  const r = await B.owner(`/api/team/${sukiB}/promote`, { method: 'POST', body: {} });
   assert.equal(r.status, 200);
-  assert.equal(r.data.emailed, true);
-  assert.equal(r.data.mail.sent, true);
-  assert.equal(mails.length, before + 1);
-  assert.match(mails.at(-1).subject, /You’re a manager at The Baldwin on Mise Academy/);
-  const sukiA = (await A.owner('/api/team')).data.people.find((p) => p.name === 'Suki Staff').id;
-  const a = await A.owner(`/api/team/${sukiA}/promote`, { method: 'POST', body: { email: 'suki@self.test' } });
-  assert.equal(a.data.emailed, false);
-  assert.equal(a.data.mail.reason, 'off');
+  assert.equal(r.data.instant, true);
+  assert.equal(r.data.link, undefined);
+  assert.equal(r.data.mail, undefined);
+  await new Promise((res) => setTimeout(res, 200));
+  assert.equal(mails.length, before, 'nothing sent');
+  assert.equal((await B.staff('/api/me')).data.user.role, 'manager', 'her session carries on with the new access');
 });
 
 test('demos never send: promotion is instant, invites are switched off', async () => {

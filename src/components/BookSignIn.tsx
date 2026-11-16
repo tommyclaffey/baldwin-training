@@ -48,9 +48,9 @@ export function BookSignIn() {
 
   function choose(st: Store, list = staff) {
     setStore(st); localStorage.setItem(STORE_KEY, String(st.id)); setQ(''); setError('');
-    setStep(list.some((x) => x.storeId === st.id) ? 'who' : 'new');
+    setStep(list.some((x) => x.storeId === st.id || x.storeId === null) ? 'who' : 'new');
   }
-  const here = useMemo(() => staff.filter((s) => s.storeId === store?.id), [staff, store]);
+  const here = useMemo(() => staff.filter((s) => s.storeId === store?.id || s.storeId === null), [staff, store]);
   const shown = useMemo(() => here.filter((s) => s.name.toLowerCase().includes(q.trim().toLowerCase())), [here, q]);
   const finish = (u: User) => { setPin(''); setPin2(''); setUser(u); };
 

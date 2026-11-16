@@ -51,7 +51,7 @@ export type MediaItem = { id: number; kind: 'file' | 'youtube'; title: string; u
   captions?: string | null };
 export type Video = { kind: 'youtube'; youtubeId: string; title?: string } | { kind: 'file'; url: string; mime?: string; title?: string };
 export type Role = 'superadmin' | 'owner' | 'manager' | 'staff';
-export type User = { demo?: boolean; hq?: boolean; brand?: 'baldwin' | 'mise';
+export type User = { demo?: boolean; hq?: boolean; brand?: 'baldwin' | 'mise'; /** a manager promoted from staff, still on their PIN (Nov 16) */ pinSignIn?: boolean;
   id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null;
   totpOn: boolean; superPrimary: boolean; impersonatedBy: number | null; workingIn?: number; workingInName?: string | null;
   /** Mise team role (super admins only, Nov 16) and view only (Support, also while signed in as someone). */

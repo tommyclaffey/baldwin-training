@@ -531,9 +531,10 @@ async function api(req, res, url) {
         passed: q.best >= passFor(q.total), signedOff: mine.signoffs[id] || null, signable: signable(db, c.store, id) })) : [];
       const quizAverage = quizzes.length ? Math.round((quizzes.reduce((n, q) => n + q.best / q.total, 0) / quizzes.length) * 100) : null;
       const certificates = certificatesFor(db, x, c.store, c.storeRow).map((z) => ({ key: z.key, title: z.title, earnedAt: z.earnedAt }));
-      // Nov 16: Promote to Manager, on their People panel. Owners, the Mise team (not Support), a demo's manager.
+      // Nov 16: Promote to Manager, on their People panel: owners, the Mise team (not Support), and managers for the staff
+      // they manage (this panel only opens people in their scope). The server checks again in /api/team/:id/promote.
       const u = c.user;
-      const canPromote = u.role === 'owner' || (u.role === 'superadmin' && teamCan(u, 'change')) || (u.role === 'manager' && !!c.user.demo);
+      const canPromote = x.role === 'staff' && (u.role === 'owner' || u.role === 'manager' || (u.role === 'superadmin' && teamCan(u, 'change')));
       const inv = db.prepare('SELECT i.email, i.store_id, i.created_at, i.expires_at, s.name store_name FROM invites i LEFT JOIN stores s ON s.id = i.store_id WHERE i.user_id = ? AND i.used_at IS NULL AND i.expires_at > ? ORDER BY i.created_at DESC LIMIT 1').get(x.id, now());
       const promotion = inv ? { email: inv.email, storeId: inv.store_id ?? null, storeName: inv.store_name ?? null, createdAt: inv.created_at, expiresAt: inv.expires_at } : null;
       return { ...path, ...row, hasPin: !!x.pin_hash, createdAt: x.created_at, store: c.storeRow?.name || null, storeId: x.store_id ?? null, quizzes, quizAverage, certificates,
