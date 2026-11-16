@@ -156,3 +156,18 @@ test('24 · both demos have archived items to show and restore', async () => {
     assert.equal((await call('/api/archived/restore', { method: 'POST', body: { group: 'recipe' } })).data.restored, 1);
   }
 });
+
+test('20 · the picker, welcome card and tour name what the demo has', () => {
+  const read = (f) => fs.readFileSync(path.join(root, f), 'utf8');
+  const picker = read('src/components/DemoPicker.tsx'), tour = read('src/components/DemoTour.tsx');
+  for (const w of ['Cocktail', 'Beer', 'Sommelier', 'Hospitality', 'certificates', 'Team Chat']) assert.ok(picker.includes(w), `picker names ${w}`);
+  for (const w of ['People', 'Sign-offs', 'Prep', 'Import a Menu']) assert.ok(picker.includes(w), `manager line names ${w}`);
+  const tries = tour.slice(tour.indexOf('const TRY_STAFF'), tour.indexOf('function WelcomeCard'));
+  for (const w of ['Hospitality', '/team-chat/', '/prep', '/import/new']) assert.ok(tries.includes(w), `welcome card: ${w}`);
+  assert.match(tour.split('\n').find((l) => /title: 'Training programs'/.test(l)), /Hospitality/);
+  // the manager tour stops on Import a Menu, at something the page really draws
+  const stop = tour.split('\n').find((l) => /path: '\/import\/new'/.test(l));
+  assert.match(stop, /manager: true/);
+  const cls = /target: '\.([a-z0-9-]+)'/.exec(stop)[1];
+  assert.match(read('src/import/ImportPage.tsx'), new RegExp(`className="[^"]*\\b${cls}\\b`));
+});
