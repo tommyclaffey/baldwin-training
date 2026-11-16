@@ -211,6 +211,13 @@ export function startDemo(db, key, which = 'baldwin') {
     // Prep tracker (Nov 12): eight weeks of batches, waste and run-outs by the two bartenders and the manager, so Today, the item pages and Reports are full. Shown as demo data on screen.
     const lead = db.prepare("SELECT id FROM users WHERE company_id = ? AND role = 'manager' ORDER BY id LIMIT 1").get(co)?.id;
     seedDemoPrep(db, { company: co, storeRow, bartenders, lead });
+    // Nov 15 (audit 24): a dish and a drink the manager took off the menu at the end of summer (content/<demo>/archived.json,
+    // demo data), so the Archived page has something to show and Restore.
+    for (const a of readSeed(D.seeds, 'archived.json')) {
+      const at = new Date(Date.now() - (a.daysAgo ?? 12) * 864e5).toISOString();
+      db.prepare('INSERT INTO entries(collection,slug,data,sort,created_at,updated_at,company_id,store_id,archived_at,archived_by) VALUES (?,?,?,?,?,?,?,?,?,?)')
+        .run(a.collection, a.slug, JSON.stringify(a.data), 99, at, at, co, st, at, lead ?? null);
+    }
     if (pick.role !== 'staff') for (const [action, name, days] of (mise ? MISE_EDITS : EDITS)) db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id) VALUES (?,?,?,?,?)').run(me, action, name, new Date(Date.now() - days * 864e5).toISOString(), co);
     // Nov 10 (audit: "Videos and photos · 0" in the demo admin): a few videos already in the library
     for (const [title, yt] of [['How I Make an Old Fashioned · Anders Erickson', 'pdcrJ5V7YKM'], ['How to Make a Martini · Anders Erickson', 'izZsjqnADAA'], ['The Daiquiri · Anders Erickson', '71jQRf5UrpE'], ['How to Open a Bottle of Wine · Court of Master Sommeliers', '9R3JBuXcNjQ']])

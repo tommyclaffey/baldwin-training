@@ -1,0 +1,98 @@
+[
+ {
+  "_note": "Demo data (Nov 15 audit 24): taken off the menu at the end of summer, so the Archived page has something to show and restore. Made up, like the rest of the demo.",
+  "collection": "recipe",
+  "slug": "recipe/grilled-peach-panzanella",
+  "daysAgo": 12,
+  "data": {
+   "name": "Grilled Peach Panzanella",
+   "course": "Salads",
+   "price": "15",
+   "station": "Pantry",
+   "description": "Grilled peaches, torn sourdough, basil, red onion and burrata with a white balsamic dressing.",
+   "photo": "",
+   "ingredients": [
+    "Peaches",
+    "Sourdough",
+    "Basil",
+    "Red onion",
+    "Burrata",
+    "White balsamic"
+   ],
+   "allergens": [
+    "Gluten",
+    "Dairy",
+    "Allium"
+   ],
+   "confirm": false,
+   "signature": false,
+   "sellingLine": "Our summer salad: charred peaches and soft burrata on crunchy bread."
+  }
+ },
+ {
+  "_note": "Demo data (Nov 15 audit 24): taken off the menu at the end of summer, so the Archived page has something to show and restore. Made up, like the rest of the demo.",
+  "collection": "house",
+  "slug": "signature/watermelon-basil-smash",
+  "daysAgo": 12,
+  "data": {
+   "name": "Watermelon Basil Smash",
+   "menuSection": "Specialty Cocktails",
+   "price": "14",
+   "tagline": "",
+   "description": "",
+   "photo": "",
+   "glass": "Rocks",
+   "method": "Shake",
+   "ice": "Crushed",
+   "garnish": "Basil leaf",
+   "tableLine": "",
+   "tableIce": "",
+   "build": [
+    {
+     "amount": "1.5 oz",
+     "ingredient": "Gin",
+     "link": "",
+     "spirit": true
+    },
+    {
+     "amount": "2 oz",
+     "ingredient": "Watermelon juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "0.75 oz",
+     "ingredient": "Lime juice",
+     "link": "",
+     "spirit": false
+    },
+    {
+     "amount": "0.5 oz",
+     "ingredient": "Simple syrup",
+     "link": "",
+     "spirit": false
+    }
+   ],
+   "steps": [
+    "Shake.",
+    "Serve in a rocks.",
+    "Garnish: basil leaf."
+   ],
+   "specNote": "",
+   "tags": [
+    "Fresh",
+    "Fruity"
+   ],
+   "tasteLine": "Fresh watermelon and basil, light and summery.",
+   "pairs": "Burrata & Heirloom Tomato",
+   "spiritName": "Gin",
+   "spiritLine": "The base of the drink.",
+   "spiritLink": "",
+   "spiritLinkLabel": "",
+   "say": "",
+   "story": "A summer drink, off the menu until next year.",
+   "video": null,
+   "photoCredit": ""
+  }
+ }
+]

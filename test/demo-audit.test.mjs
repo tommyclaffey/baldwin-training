@@ -140,3 +140,19 @@ test('23 · Baldwin demo: wines pair with the demo menu, no empty prices, cockta
   const cocktails = await pageText(call, '14-2');
   assert.ok(!cocktails.includes('Ask the bar'), 'house cocktails name a dish');
 });
+
+test('24 · both demos have archived items to show and restore', async () => {
+  for (const which of ['baldwin', 'mise']) {
+    const { call } = await demo('manager', which);
+    const { groups } = (await call('/api/archived')).data;
+    const of = (id) => groups.find((g) => g.id === id)?.items || [];
+    assert.equal(of('recipe').length, 1, `${which}: one archived dish`);
+    assert.equal(of('house').length, 1, `${which}: one archived house cocktail`);
+    assert.equal(of('recipe')[0].by, 'Rosalind Hart', 'archived by the manager');
+    // archived means off the menu: the Food Matrix and Cocktails pages don't list it
+    const name = of('recipe')[0].name;
+    assert.ok(!(await pageText(call, '13-2')).includes(name), `${name} isn't on the Food Matrix`);
+    // and Restore puts it back
+    assert.equal((await call('/api/archived/restore', { method: 'POST', body: { group: 'recipe' } })).data.restored, 1);
+  }
+});
