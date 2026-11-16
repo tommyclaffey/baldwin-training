@@ -310,9 +310,11 @@ test('legal pages with blanks empty: not found for the public and customers; a d
   const draft = await A.tommy('/api/legal/privacy');
   assert.equal(draft.status, 200);
   assert.equal(draft.data.draft, true);
-  assert.deepEqual(draft.data.missing, ['company', 'state', 'supportEmail', 'date']);
+  assert.deepEqual(draft.data.missing, ['state', 'supportEmail', 'date']);
   const text = JSON.stringify(draft.data.blocks);
-  assert.ok(text.includes('"t":"[Company]","blank":true'), 'blanks show as blanks in the preview');
+  assert.ok(text.includes('"t":"[Support email]","blank":true'), 'blanks show as blanks in the preview');
+  const words = draft.data.blocks.flatMap((b) => b.p || []).map((r) => r.t).join('');
+  assert.ok(words.includes('run by 12 Tribes Media LLC, doing business as Mise Academy'), 'the company is filled in');
   // the address itself serves the app like any unknown address (which shows the sign-in screen or "not found")
   const page = await fetch(`http://127.0.0.1:${PORT_A}/privacy`).then((r) => r.text());
   const unknown = await fetch(`http://127.0.0.1:${PORT_A}/no-such-page`).then((r) => r.text());
@@ -340,11 +342,14 @@ test('legal pages with every blank filled: public, blanks filled in, links on', 
   assert.equal((await anon('/api/legal/cookies')).status, 404);
 });
 
-test('legal: three of four blanks is still a draft; the repo’s file starts empty', async () => {
+test('legal: three of four blanks is still a draft; the repo’s file has the company and three blanks', async () => {
   const { parse } = await import('../server/legal.mjs');
   const repo = parse(LEGAL);
-  assert.deepEqual(repo.values, { company: '', state: '', supportEmail: '', date: '' }, 'content/legal.md ships with its blanks empty');
+  // Nov 16: the company is known (Mise Academy is a DBA of 12 Tribes Media LLC); state, support email and date aren't yet
+  assert.deepEqual(repo.values, { company: '12 Tribes Media LLC', state: '', supportEmail: '', date: '' }, 'content/legal.md ships with three blanks empty');
   assert.deepEqual(Object.keys(repo.pages).sort(), ['help', 'privacy', 'terms']);
+  assert.match(repo.pages.privacy.join(' '), /run by \[Company\], doing business as Mise Academy/);
+  assert.match(repo.pages.terms.join(' '), /between \[Company\], doing business as Mise Academy, and/);
   const file = path.join(dirA, 'three.md');
   fs.writeFileSync(file, fill(LEGAL, { company: 'Testco LLC', state: 'Michigan', supportEmail: '', date: 'Today' }));
   process.env.LEGAL_FILE = file;

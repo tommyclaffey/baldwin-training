@@ -50,7 +50,7 @@ export function SuperAdmin() {
     <div className="admin-page">
       <div className="editor-head"><div><h1>Super admin</h1><p className="muted">Every company and person in the app. Every action here is logged. You’re <strong>{TEAM_ROLE_LABEL[role]}</strong> on the Mise team{role === 'support' ? ': you can look at everything and change nothing' : ''}.</p></div></div>
       {/* Nov 16: Privacy, Terms and Help wait on four blanks in content/legal.md; only super admins can open the drafts */}
-      {!legal.public && <p className="muted small legal-draft-note">Privacy, Terms and Help are drafts, hidden from everyone else: preview <a href="/privacy">Privacy</a>, <a href="/terms">Terms</a> and <a href="/help">Help</a>. They go public, with their links, when the four blanks at the top of <code>content/legal.md</code> are filled.</p>}
+      {!legal.public && <p className="muted small legal-draft-note">Privacy, Terms and Help are drafts, hidden from everyone else: preview <a href="/privacy">Privacy</a>, <a href="/terms">Terms</a> and <a href="/help">Help</a>. They go public, with their links, when the blanks at the top of <code>content/legal.md</code> are filled; each preview lists the ones still empty.</p>}
       <nav className="tabs-row" aria-label="Super admin">
         <NavLink end to="/admin/super">Companies</NavLink>
         <NavLink to="/admin/super/people">People</NavLink>

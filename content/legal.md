@@ -3,7 +3,10 @@
 # Fill in all four lines below and the pages go public at /privacy, /terms and /help, with their links on the sign-in
 # screens, the book's sidebar and the admin. While any line is empty, the public gets the normal "not found" and only a
 # super admin sees a preview marked "Draft · not public". Nothing else needs changing.
-company:
+# company: the legal name (Tommy, Nov 16). Mise Academy is a DBA of it; the words below say so. If the LLC is renamed
+# (Twelve Tribes), change this line.
+# supportEmail: an address that reaches a person, e.g. support@miseacademy.app. date: the day it goes public.
+company: 12 Tribes Media LLC
 state:
 supportEmail:
 date:
@@ -11,7 +14,7 @@ date:
 
 # Privacy Policy
 
-**Effective [Date].** Mise Academy is a training app for restaurant teams, run by [Company]. A restaurant group (the "company") signs up and invites its staff. This explains what we keep and why.
+**Effective [Date].** Mise Academy is a training app for restaurant teams, run by [Company], doing business as Mise Academy. A restaurant group (the "company") signs up and invites its staff. This explains what we keep and why.
 
 ## What we keep
 - **Your account:** name, role, store, jobs, start date, when you last used the app. Owners and managers also give an email address. Staff sign in with a join code and a PIN.
@@ -44,7 +47,7 @@ date:
 
 # Terms of Service
 
-**Effective [Date].** These are the terms between [Company] and the restaurant group using Mise Academy.
+**Effective [Date].** These are the terms between [Company], doing business as Mise Academy, and the restaurant group using Mise Academy.
 
 1. **The service.** We host the app, keep it running and back it up. We can change features; we'll tell owners before we remove anything they use.
 2. **Your content stays yours.** Menus, recipes, photos, videos and training you add belong to your company. You give us permission to store and show them to your team, nothing more.
