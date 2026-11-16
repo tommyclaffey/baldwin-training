@@ -9,7 +9,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { markDemoTab, demoKindOf, demoHome } from '../lib/demo';
 import { useSession } from '../lib/session';
-import { CARD_W, placeCard, roomScroll, type Box } from './tourPlace';
+import { CARD_W, SHEET_BELOW, placeCard, roomScroll, sheetScroll, type Box } from './tourPlace';
 
 /** A stop on the walk. `path` is where it lives (a function when the address depends on the data); `manager` stops are for managers only. */
 type Stop = { path: string | (() => string | null); match?: RegExp; target: string; title: string; body: string; manager?: boolean; staff?: boolean };
@@ -79,6 +79,10 @@ function viewBox(): Box {
   const w = Math.min(vv?.width ?? window.innerWidth, d.clientWidth || window.innerWidth), h = Math.min(vv?.height ?? window.innerHeight, d.clientHeight || window.innerHeight);
   return { left: vv?.offsetLeft ?? 0, top: vv?.offsetTop ?? 0, width: w, height: h };
 }
+
+/** Phones: the sticky top bar (56) and a little air. The highlight box is drawn 8 px round the target. */
+const PHONE_TOP = 64;
+const padded = (r: DOMRect): Box => ({ left: r.left - 8, top: r.top - 8, width: r.width + 16, height: r.height + 16 });
 
 /** While the card is up the keyboard belongs to it: Tab cycles its buttons, Escape closes. */
 function trapKeys(card: () => HTMLElement | null, close: () => void, more?: (e: KeyboardEvent) => void) {
@@ -188,6 +192,8 @@ function Tour({ manager }: { manager: boolean }) {
   const [el, setEl] = useState<HTMLElement | null>(null);
   const [rect, setRect] = useState<DOMRect | null>(null);
   const dir = useRef(1);
+  const sheetH = useRef(240);
+  const landed = useRef(0);
   const nextRef = useRef<HTMLButtonElement>(null);
   const card = useRef<HTMLDivElement>(null);
   const titleId = useId();
@@ -226,7 +232,10 @@ function Tour({ manager }: { manager: boolean }) {
     if (!el || !stop) return;
     el.style.scrollMarginTop = '72px';
     const tall = el.getBoundingClientRect().height > window.innerHeight * 0.6;
-    el.scrollIntoView({ block: tall ? 'start' : 'center', inline: 'nearest', behavior: 'instant' as ScrollBehavior });
+    // Phones: the card docks at the bottom, so the target goes in the part of the screen above it (Nov 15, audit 14).
+    landed.current = performance.now();
+    if (viewBox().width < SHEET_BELOW) window.scrollBy({ top: sheetScroll(padded(el.getBoundingClientRect()), viewBox(), { width: CARD_W, height: sheetH.current }, PHONE_TOP), behavior: 'instant' as ScrollBehavior });
+    else el.scrollIntoView({ block: tall ? 'start' : 'center', inline: 'nearest', behavior: 'instant' as ScrollBehavior });
     setRect(el.getBoundingClientRect());
     let frame = 0;
     const measure = () => {
@@ -262,6 +271,15 @@ function Tour({ manager }: { manager: boolean }) {
     ro.observe(c);
     return () => ro.disconnect();
   });
+  sheetH.current = cardH;
+  // Phones: once the card's real height is known (the step's words change it), and while the page is still settling (photos
+  // and cards above the target load in and push it down), keep the target clear of the card. After that, scrolling is yours.
+  useLayoutEffect(() => {
+    if (!el || !rect || viewBox().width >= SHEET_BELOW || Math.abs((window.visualViewport?.scale ?? 1) - 1) > 0.01) return;
+    if (performance.now() - landed.current > 1500) return;
+    const by = sheetScroll(padded(el.getBoundingClientRect()), viewBox(), { width: CARD_W, height: cardH }, PHONE_TOP);
+    if (by) window.scrollBy({ top: by, behavior: 'instant' as ScrollBehavior });
+  }, [el, cardH, rect]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const shown = !!stop && !!rect;
   useEffect(() => { if (shown) nextRef.current?.focus({ preventScroll: true }); }, [shown, i]);
@@ -311,7 +329,8 @@ function Tour({ manager }: { manager: boolean }) {
   const sheet = at.side === 'sheet';
   const zoomed = Math.abs((window.visualViewport?.scale ?? 1) - 1) > 0.01;
   // On a phone the sheet keeps its CSS dock (left, right, bottom); zoomed in, it docks to what's on screen instead.
-  const style: CSSProperties = sheet && !zoomed ? {} : { top: at.top, left: at.left, width: at.width, right: 'auto', bottom: 'auto' };
+  // Docked at the top (the target is down at the end of the page), it keeps the dock's left and right edges.
+  const style: CSSProperties = sheet && !zoomed ? (at.dock === 'top' ? { top: at.top, bottom: 'auto' } : {}) : { top: at.top, left: at.left, width: at.width, right: 'auto', bottom: 'auto' };
   return createPortal(
     <div className="tour">
       <div className="tour-block" />

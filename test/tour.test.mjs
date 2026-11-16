@@ -2,7 +2,7 @@
 // src/components/tourPlace.ts is plain TypeScript with no React, so Node runs it directly.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { CARD_W, MARGIN, overlap, placeCard, roomScroll } from '../src/components/tourPlace.ts';
+import { CARD_W, MARGIN, GAP, overlap, placeCard, roomScroll, sheetScroll, sheetTop } from '../src/components/tourPlace.ts';
 
 const card = { width: CARD_W, height: 227 };
 const screen = (width, height, left = 0, top = 0) => ({ left, top, width, height });
@@ -65,6 +65,49 @@ test('narrow screens dock the card at the bottom, full width', () => {
     assert.equal(p.left, MARGIN);
     assert.equal(p.width, w - MARGIN * 2);
   }
+});
+
+// Nov 15 (audit 14): on a phone the docked card sat on top of the thing it described ("What's waiting on you",
+// "One person, everything", the certificate). The page now scrolls the target above the card.
+test('phones: a target under the docked card scrolls up into the space above it', () => {
+  const v = screen(390, 844), c = { width: 366, height: 300 };
+  const room = { top: 64, end: sheetTop(v, c) - GAP };
+  // the sign-off band, sitting low on the screen at first view
+  const band = { left: 8, top: 520, width: 374, height: 220 };
+  const by = sheetScroll(band, v, c, 64);
+  assert.ok(by > 0, 'it scrolls');
+  const moved = { ...band, top: band.top - by };
+  assert.ok(moved.top >= room.top && moved.top + moved.height <= room.end + 0.5, JSON.stringify({ moved, room }));
+  // and, once moved, the card docks at the bottom without covering it
+  const p = placeCard(moved, v, c);
+  assert.equal(p.dock, 'bottom');
+  assert.equal(overlap({ ...p, height: c.height }, moved), 0);
+});
+
+test('phones: a target taller than the space above the card starts at the top, so its heading shows', () => {
+  const v = screen(390, 844), c = { width: 366, height: 300 };
+  const person = { left: 8, top: 700, width: 374, height: 900 };
+  assert.equal(sheetScroll(person, v, c, 64), 700 - 64);
+});
+
+test('phones: a target already clear of the card stays put', () => {
+  const v = screen(390, 844), c = { width: 366, height: 300 };
+  assert.equal(sheetScroll({ left: 8, top: 120, width: 374, height: 200 }, v, c, 64), 0);
+  assert.equal(sheetScroll({ left: 8, top: 600, width: 374, height: 200 }, screen(1024, 800), c, 64), 0, 'wide screens: not a sheet');
+});
+
+test('phones: a target the page can’t scroll up (the end of the page) gets the card docked at the top instead', () => {
+  const v = screen(390, 844), c = { width: 366, height: 300 };
+  const last = { left: 8, top: 560, width: 374, height: 240 };
+  const p = placeCard(last, v, c);
+  assert.equal(p.side, 'sheet');
+  assert.equal(p.dock, 'top');
+  assert.equal(p.top, MARGIN);
+  assert.equal(overlap({ ...p, height: c.height }, last), 0);
+  // a target that fills the whole screen: covered either way, so the card stays at the bottom where it always sat
+  assert.equal(placeCard({ left: 8, top: 0, width: 374, height: 844 }, v, c).dock, 'bottom');
+  // a tall target scrolled to the top (One person, everything): the card stays at the bottom, off its heading
+  assert.equal(placeCard({ left: 8, top: 56, width: 374, height: 1400 }, v, c).dock, 'bottom');
 });
 
 test('making room: scroll the box up under the top bar when it and the card both fit', () => {

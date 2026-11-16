@@ -5,13 +5,17 @@
 //   • It never covers what it points at when there's room: below, above, right, then left of the box. Only a box that leaves
 //     no room anywhere gets covered, and then the card sits in the bottom corner on the box's left edge (or wherever it
 //     covers far less of the box).
-//   • A screen too narrow for the card docks it at the bottom, full width, like on a phone.
+//   • A screen too narrow for the card docks it at the bottom, full width, like on a phone. Nov 15 (audit 14: the cards sat on
+//     top of "What's waiting on you", "One person, everything", the certificate): the page first scrolls the target into the
+//     part of the screen above the card (sheetScroll), and when the page can't scroll that far (the end of the page), the
+//     card docks at the top instead, if that covers less of the target.
 
 export type Box = { left: number; top: number; width: number; height: number };
 export type Size = { width: number; height: number };
 /** `over`: no room anywhere, so the card covers part of the box. */
 export type Side = 'below' | 'above' | 'right' | 'left' | 'over' | 'sheet';
-export type Place = { left: number; top: number; width: number; side: Side };
+/** `dock` (phones): the sheet sits at the bottom of the screen, or at the top when the target is down there. */
+export type Place = { left: number; top: number; width: number; side: Side; dock?: 'bottom' | 'top' };
 
 export const CARD_W = 340, MARGIN = 12, GAP = 12;
 /** Narrower than this (in CSS px of what you can see), the card docks at the bottom. */
@@ -30,7 +34,11 @@ export function placeCard(hl: Box, view: Box, card: Size): Place {
   if (view.width < SHEET_BELOW || vr - vl < CARD_W) {
     const width = Math.max(0, vr - vl);
     // 76 px clear of the bottom, as the phone sheet always sat (Safari's floating address bar); less if the screen is short.
-    return { side: 'sheet', width, left: vl, top: Math.max(vt, bottom(view) - Math.min(76, view.height * 0.1) - card.height) };
+    const low: Place = { side: 'sheet', dock: 'bottom', width, left: vl, top: sheetTop(view, card) };
+    const high: Place = { side: 'sheet', dock: 'top', width, left: vl, top: vt };
+    const cover = (p: Place) => overlap({ ...p, height: card.height }, hl);
+    // the top only when it covers well under half as much (a tall target scrolled to the top keeps its heading clear)
+    return cover(low) >= 1 && cover(high) < cover(low) * 0.5 ? high : low;
   }
   const w = CARD_W, h = card.height;
   const x = clamp(hl.left, vl, vr - w); // under or over the box: its left edge, kept on screen
@@ -60,4 +68,19 @@ export function roomScroll(target: Box, view: Box, card: Size, topInset: number)
   if (bottom(target) + GAP + h <= end && target.top >= top) return 0; // already room underneath
   // Put the box at the top and the card under it, or as close to that as moving the page allows.
   return target.top - top;
+}
+
+/** Where the phone sheet's top edge sits when it docks at the bottom. */
+export const sheetTop = (view: Box, card: Size) => Math.max(view.top + MARGIN, bottom(view) - Math.min(76, view.height * 0.1) - card.height);
+
+/** Phones (Nov 15): how far to scroll so the target sits in the part of the screen above the docked card, under the top bar.
+ *  A target that fits there is centred in it; a taller one starts at the top, so its heading shows. 0 when it's already
+ *  clear of the card, or on a screen wide enough not to use the sheet. */
+export function sheetScroll(target: Box, view: Box, card: Size, topInset: number): number {
+  if (view.width >= SHEET_BELOW && view.width - 2 * MARGIN >= CARD_W) return 0;
+  const top = view.top + topInset, end = sheetTop(view, card) - GAP;
+  if (target.top >= top - 0.5 && bottom(target) <= end + 0.5) return 0;
+  const room = end - top;
+  const want = target.height <= room ? top + (room - target.height) / 2 : top;
+  return Math.round(target.top - want);
 }
