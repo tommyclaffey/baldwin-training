@@ -15,8 +15,8 @@ import { ALLERGENS, COURSES } from './cms.mjs';
 
 const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
 const title = (s) => String(s || '').toLowerCase().replace(/\b\w/g, (m) => m.toUpperCase()).replace(/\bAnd\b/g, 'and');
-// Same order as the Allergen Guide's columns.
-const ORDER = ['Gluten', 'Dairy', 'Egg', 'Finfish', 'Shellfish', 'Tree Nut', 'Peanut', 'Soy', 'Sesame', 'Allium', 'Nightshade'];
+// Same order as the Allergen Guide's columns (Pork added Nov 15: dishes are tagged with it and the Food Matrix filters on it).
+export const ORDER = ['Gluten', 'Dairy', 'Egg', 'Finfish', 'Shellfish', 'Tree Nut', 'Peanut', 'Soy', 'Sesame', 'Allium', 'Nightshade'];
 const DARK = '#1E1C1A', PAPER = '#FBF9F5', RING = '#BFB5A8';
 
 /** A checkbox in its ticked and empty looks. `icon` is the tick drawn in Figma. */
