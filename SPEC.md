@@ -1,6 +1,6 @@
-# Lineup: spec (was The Baldwin Training Book)
+# Mise Academy: spec (was Lineup, and The Baldwin Training Book)
 
-**Version:** 💼 an app to sell · **Client zero:** Baldwin Restaurant Group (The Baldwin, J.Baldwin's, Testa Barra)
+**Version:** 💼 an app to sell · **First customer:** Baldwin Restaurant Group (The Baldwin, J.Baldwin's, Testa Barra), one account on the Custom Brand plan
 **Stage:** 9 · Public demo (a clickable build of the Figma design, with an admin for managers)
 
 ## Who it's for
@@ -21,8 +21,8 @@
 ## v1 demo: Out
 - Spirits, wine, beer, service and library pages still come from the design; they move into the CMS one page type at a time.
 - Undo for a single page edit from the screen (the API supports it; no button yet).
-- Real videos and dish photos until the Baldwin team uploads them (Unsplash stand-ins now).
-- Sign-up page for new companies, and per-company books (the account structure is ready).
+- Real videos and dish photos until each restaurant uploads its own (Unsplash stand-ins now).
+- Sign-up page and billing for new companies; prices for the plans.
 - Email sending: invite links are copied by hand; no forgot-password yet (an owner or super admin re-invites).
 
 ## Roles (Oct 28)
@@ -31,7 +31,9 @@
 - **Manager:** edits the book (CMS, media, wine videos, bottle scanner), signs people off, manages staff (reset PIN, remove) and the join code.
 - **Staff:** reads the book and takes quizzes. Joins with the company’s join code, their name and a 4–6 digit PIN (5 wrong PINs locks that name for 15 minutes; a manager reset lets them pick a new one). Signed in for 90 days on their phone.
 - **The book needs a sign-in.** Page files and the page index aren’t public anymore.
-- **Companies:** Baldwin is company 1. People, quiz scores, sign-offs, sections, media and the activity log are per company, and a test proves companies can’t see each other. The book’s content is Baldwin’s for now: another company’s people see “your book isn’t set up yet”. Opening to more companies later means: a sign-up page (Tommy chose open self-serve sign-up, Oct 28) and a decision on how a new company’s book starts.
+- **Companies (accounts):** each restaurant group is one company with its stores. People, quiz scores, sign-offs, sections, media and the activity log are per company, and tests prove companies can’t see each other. A new company starts with the shared library (classics, spirits, wine, beer, service, safety) and an empty menu, and adds its own. Baldwin Restaurant Group is company 1; its menu, documents, photos and own pages are its account content on the volume (`DATA_DIR/accounts/1`), not in this repo, and a test sweeps another company's whole book for anything of BRG's.
+- **Plans and looks (Nov 16):** every company is on the Foundation plan (every feature) in the Mise Academy look. A restaurant's own look (logo, colours, type) comes with the Custom Brand plan, set by a super admin in Super Admin → Companies. The Baldwin's look is the first custom look; The Baldwin's demo (`/demo/brg`) shows it off with a made-up menu.
+- **Mise Academy (HQ):** Mise's own company. A super admin works there until they pick a customer (Work Here), sees the book a new customer sees, and Mise's team will live there. Never shown to customers, never deleted.
 ## How the content gets here
 `content/raw/` holds a full export of the Figma layout (auto-layout, text, colours, icons) and `public/img/` the original images.
 `npm run content` turns it into one JSON file per screen; `src/components/FigmaNode.tsx` renders it.

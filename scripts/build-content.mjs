@@ -27,7 +27,7 @@ const TEMPLATES = path.join(root, 'content/templates');
 const templated = new Set();
 for (const f of fs.existsSync(TEMPLATES) ? fs.readdirSync(TEMPLATES).filter((x) => x.endsWith('.json')).sort() : []) {
   const t = JSON.parse(fs.readFileSync(path.join(TEMPLATES, f), 'utf8'));
-  const pg = { id: t.id, name: t.name, f: t.bg ? [{ c: t.bg }] : undefined, main: t.main, built: true };
+  const pg = { id: t.id, name: t.name, f: t.bg ? [{ c: t.bg }] : undefined, main: t.main, planTables: t.planTables, built: true };
   // content/raw keeps a stub for the page ({ id, name, template: true }), so it keeps its place in the book's order.
   const i = pages.findIndex((x) => x.id === t.id);
   if (i >= 0 && pages[i].main) console.warn(`content/raw has page ${t.id} (${t.name}) again; content/templates/${f} replaces it. Put the stub back in content/raw.`);
@@ -108,7 +108,8 @@ for (const p of pages) {
 
   const { thumb, blurb } = preview(p.main);
   const bg = p.f && p.f[0] && p.f[0].c;
-  fs.writeFileSync(path.join(outDir, fileOf(p.id) + '.json'), JSON.stringify({ id: p.id, name: p.name, bg, main: p.main }));
+  // (a floor plan's table positions travel with it: server/interact.mjs)
+  fs.writeFileSync(path.join(outDir, fileOf(p.id) + '.json'), JSON.stringify({ id: p.id, name: p.name, bg, main: p.main, ...(p.planTables ? { planTables: p.planTables } : {}) }));
   const parts = p.name.split(' · ');
   // the big display title on the page, for search results
   const title = parts[parts.length - 1];

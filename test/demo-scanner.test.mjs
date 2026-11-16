@@ -6,7 +6,7 @@ import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { turnOnTwoStep } from './helpers.mjs';
+import { turnOnTwoStep, giveAccount } from './helpers.mjs';
 import sharp from 'sharp';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -30,7 +30,7 @@ before(async () => {
     .composite([{ input: await sharp({ create: { width: 160, height: 640, channels: 3, background: '#2b3a22' } }).png().toBuffer(), left: 220, top: 140 }])
     .jpeg().withExif({ IFD0: { Copyright: 'SECRET-OWNER', Artist: 'SECRET-OWNER' } }).toBuffer();
   assert.match(photo.toString('latin1'), /SECRET-OWNER/, 'the test photo carries metadata');
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test', SUPERADMIN_EMAIL: 'owner@example.test', SCANNER_STUB: '1' }, stdio: 'ignore' });
+  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test', SUPERADMIN_EMAIL: 'owner@example.test', SCANNER_STUB: '1' }, stdio: 'ignore' });
   for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); break; } catch { await new Promise((r) => setTimeout(r, 100)); } }
   const r = await fetch(BASE + '/api/setup', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ name: 'Owner', email: 'owner@example.test', password: 'long-enough-1' }) });
   assert.equal(r.status, 200);

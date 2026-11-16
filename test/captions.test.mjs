@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { toVtt } from '../server/captions.mjs';
+import { giveAccount } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-cc-'));
@@ -27,7 +28,7 @@ function person() {
   return go;
 }
 before(async () => {
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@cc.test', SUPERADMIN_EMAIL: 'boss@cc.test', PREP_WEEKLY: 'off' }, stdio: 'ignore' });
+  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@cc.test', SUPERADMIN_EMAIL: 'boss@cc.test', PREP_WEEKLY: 'off' }, stdio: 'ignore' });
   for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
   throw new Error('test server did not start in 30 s');
 });

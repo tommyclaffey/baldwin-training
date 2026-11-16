@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
+import { giveAccount, PRIVATE_ACCOUNT } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-demoaudit-'));
@@ -28,7 +29,7 @@ function visitor(ip) {
 const companyOf = (call) => call('/api/me').then((r) => r.data?.user?.companyId);
 
 before(async () => {
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@demoaudit.test' }, stdio: 'ignore' });
+  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@demoaudit.test' }, stdio: 'ignore' });
   for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
   throw new Error('test server did not start in 30 s');
 });
@@ -117,21 +118,25 @@ async function pageText(call, file) {
   return out;
 }
 
-test('23 · Baldwin demo: wines pair with the demo menu, no empty prices, cocktails name a dish; the real list is untouched', async () => {
+test('23 · Baldwin demo: its own made-up wine list pairs with the demo menu, no empty prices, cocktails name a dish; the real list is untouched', async () => {
   const { call, store } = await demo('employee', 'baldwin');
   const d = db();
   const menu = new Set(d.prepare("SELECT data FROM entries WHERE collection = 'recipe' AND store_id = ?").all(store).map((r) => JSON.parse(r.data).name));
   const wines = d.prepare("SELECT data FROM entries WHERE collection = 'wine' AND store_id = ?").all(store).map((r) => JSON.parse(r.data));
-  assert.ok(wines.length > 50, 'the demo has The Baldwin’s wine list');
+  // Nov 16: the demo's own made-up list (content/demo/wine.json), never a copy of The Baldwin's
+  const own = JSON.parse(fs.readFileSync(path.join(root, 'content/demo/wine.json'), 'utf8')).map((w) => w.data.name).sort();
+  assert.deepEqual(wines.map((w) => w.name).sort(), own, 'the demo has its own made-up wine list');
   for (const w of wines) for (const p of String(w.pairs || '').split(/,| · /).map((s) => s.trim()).filter(Boolean)) {
     assert.ok(menu.has(p) || /^an?\s/i.test(p), `${w.name} pairs with ${p}, which isn't on the demo menu`);
   }
-  assert.ok(wines.filter((w) => w.pairs).length > 40, 'most wines keep a pairing');
+  assert.ok(wines.filter((w) => w.pairs).length >= wines.length - 1, 'every wine has a pairing');
   const house = d.prepare("SELECT data FROM entries WHERE collection = 'house' AND store_id = ? AND archived_at IS NULL").all(store).map((r) => JSON.parse(r.data));
   for (const h of house) assert.ok(menu.has(h.pairs), `${h.name} pairs with a demo dish`);
-  // The Baldwin's own list (store 1) still pairs with its own dishes
-  const real = d.prepare("SELECT data FROM entries WHERE collection = 'wine' AND store_id = 1 AND slug = 'wine-list/by-the-glass-red-pinot-noir-adelsheim-willamette'").get();
-  assert.match(JSON.parse(real.data).pairs, /Seasonal Veggie Pie/);
+  // The Baldwin's own list (store 1, its account content) still pairs with its own dishes
+  if (PRIVATE_ACCOUNT) {
+    const real = d.prepare("SELECT data FROM entries WHERE collection = 'wine' AND store_id = 1 AND slug = 'wine-list/by-the-glass-red-pinot-noir-adelsheim-willamette'").get();
+    assert.match(JSON.parse(real.data).pairs, /Seasonal Veggie Pie/);
+  }
   d.close();
   const wine = await pageText(call, '25-2');
   assert.ok(!wine.some((s) => /\$\s*—/.test(s)), 'no "$—" price boxes');

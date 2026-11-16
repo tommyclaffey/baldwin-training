@@ -5,7 +5,7 @@ import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { turnOnTwoStep } from './helpers.mjs';
+import { turnOnTwoStep, giveAccount, baldwinOnly } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-test-'));
@@ -37,7 +37,7 @@ function person() {
 }
 
 before(async () => {
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test', SUPERADMIN_EMAIL: 'owner@example.test' }, stdio: 'ignore' });
+  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test', SUPERADMIN_EMAIL: 'owner@example.test' }, stdio: 'ignore' });
   for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
   throw new Error('test server did not start in 30 s'); // Nov 10: was 5 s and carried on silently, so a slow start failed 11 tests at once
 });
@@ -59,7 +59,7 @@ test('writes need a session and the X-BT header', async () => {
   assert.equal(noHeader.status, 403);
 });
 
-test('the CMS starts with every classic, house cocktail and dish from the design', async () => {
+test('the CMS starts with every classic, house cocktail and dish from the design', baldwinOnly, async () => {
   const cols = (await call('/api/collections')).data;
   assert.equal(cols.counts.classic, 58);
   assert.equal(cols.counts.house, 39, 'the Cocktail Descriptions sheet (Nov 5), minus Pama-Tini and three mules (Nov 9 markup)');
@@ -72,7 +72,7 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   const readDir = (d) => (fs.existsSync(path.join(root, d)) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json') && !f.startsWith('_')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'))) : []);
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
   // + the Cocktail Program (Nov 8): a course page per level (2) and one entry per lesson section (no whole-chapter pages)
-  const bar = [...readDir('content/bar'), ...readDir('content/beer'), ...readDir('content/hospitality')]; // + the Beer Program (Nov 8), the Hospitality Program (Nov 11)
+  const bar = [...readDir('content/bar'), ...readDir('content/beer'), ...readDir('content/hospitality-generic')]; // + the Beer Program (Nov 8), the Hospitality Program (Nov 11; every version has the same sections)
   assert.equal(index.length, 656 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 10 + 3 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 39 house drinks (Nov 9: four off the list), the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
@@ -146,15 +146,7 @@ test('every dish shows in the Food Matrix and opens its own page; every dish pag
 });
 
 test('archive, never delete: pages and media leave the book and come back on restore', async () => {
-  // A dish that leaves the Food Book (the seed file) is archived, not deleted; back in the book, it's back.
-  const { openDb } = await import('../server/db.mjs');
-  const { seed, listEntries, listArchived } = await import('../server/cms.mjs');
-  const db = openDb(path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'bt-seed-')), 'seed.db'));
-  seed(db);
-  db.prepare("INSERT INTO entries(collection,slug,data,sort,seed_key,seed_hash) VALUES ('recipe','recipe/old-dish','{\"name\":\"Old Dish\"}',99,'recipe:recipe/old-dish','x')").run();
-  seed(db);
-  assert.ok(!listEntries(db, 'recipe', 1).some((e) => e.slug === 'recipe/old-dish'), 'out of the book');
-  assert.ok(listArchived(db, 'recipe', 1).some((e) => e.slug === 'recipe/old-dish'), 'in the Archive, not deleted');
+  // (A dish that leaves its seed file is archived, not deleted: test/account.test.mjs, Nov 16.)
   const r = await call('/api/entries', { method: 'POST', body: { collection: 'recipe', data: { name: 'Archive Me', course: 'Mains' } } });
   assert.equal((await call(`/api/entries/${r.data.id}`, { method: 'DELETE' })).data.archived, true);
   assert.equal((await call(`/api/page/e${r.data.id}`)).status, 404, 'archived: no page');
@@ -170,7 +162,7 @@ test('archive, never delete: pages and media leave the book and come back on res
   assert.ok((await call('/api/media')).data.media.some((m) => m.id === yt.data.id));
 });
 
-test('home: a dashboard with a greeting, tonight’s sections, what’s new; pairs-with dishes open their pages', async () => {
+test('home: a dashboard with a greeting, tonight’s sections, what’s new; pairs-with dishes open their pages', baldwinOnly, async () => {
   await call('/api/sections', { method: 'PUT', body: { slot: 'Servers 3', name: 'Odette' } });
   const home = JSON.stringify((await call('/api/page/4-2')).data);
   assert.match(home, /Good (morning|afternoon|evening)/);
@@ -196,7 +188,7 @@ test('invites: owners invite managers, links work once, managers can’t invite'
   assert.equal((await person()(`/api/invite/${token}`, { method: 'POST', body: { name: 'Ed', password: 'long-enough-2' } })).status, 410);
 });
 
-test('quizzes are written from the book, scored by the server; custom and team quizzes; a manager signs off', async () => {
+test('quizzes are written from the book, scored by the server; custom and team quizzes; a manager signs off', baldwinOnly, async () => {
   const code = (await call('/api/team')).data.company.joinCode;
   const sam = person();
   assert.equal((await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Server', pin: '4321', storeId: 1 } })).status, 200);
@@ -272,7 +264,7 @@ test('wine videos: every wine page has a Learn more section, and a video plays t
   assert.equal(find((await call('/api/page/25-2')).data.main, (n) => n.n === 'Wine · Bolgheri Rosso').vid, undefined);
 });
 
-test('the back bar and beer list fill the shelves, the tap wall and the style pages', async () => {
+test('the back bar and beer list fill the shelves, the tap wall and the style pages', baldwinOnly, async () => {
   const index = (await call('/api/index')).data;
   const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
   const bourbon = await page('spirit/bourbon');
@@ -299,7 +291,7 @@ test('the back bar and beer list fill the shelves, the tap wall and the style pa
   assert.ok(index.find((e) => e.slug === 'spirit/bourbon').text.includes("Maker's Mark"), 'bottles are searchable');
 });
 
-test('the Back Bar lists every bottle, and every bottle has its own page', async () => {
+test('the Back Bar lists every bottle, and every bottle has its own page', baldwinOnly, async () => {
   const index = (await call('/api/index')).data;
   const page = async (slug) => (await call('/api/page/' + index.find((e) => e.slug === slug).file)).data;
   const str = async (slug) => JSON.stringify(await page(slug));
@@ -342,7 +334,7 @@ test('review queue: mark each answer; red and yellow come back until they are gr
   assert.equal((await call('/api/quiz/review')).data.total, 0, 'each person has their own queue');
 });
 
-test('US wine by state: breadcrumbs, the regions inside, Wine Folly links and our wines', async () => {
+test('US wine by state: breadcrumbs, the regions inside, Wine Folly links and our wines', baldwinOnly, async () => {
   const index = (await call('/api/index')).data;
   const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
   const oak = await page('wine/usa/oakville');
@@ -356,7 +348,7 @@ test('US wine by state: breadcrumbs, the regions inside, Wine Folly links and ou
   assert.ok(usa.includes('Sub · California') && usa.includes('Sub · Snake River Valley') && !usa.includes('Sub · Napa Valley'), 'the USA page lists states');
 });
 
-test('wine around the world: 12 more countries, their regions, our wines on them', async () => {
+test('wine around the world: 12 more countries, their regions, our wines on them', baldwinOnly, async () => {
   const index = (await call('/api/index')).data;
   const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
   const spain = await page('wine/spain');
@@ -369,7 +361,7 @@ test('wine around the world: 12 more countries, their regions, our wines on them
   assert.ok(wine.includes('Wine country · South Africa') && wine.includes('Wine country · Georgia'));
 });
 
-test('the wine list fills the Wine page and every wine page it belongs on', async () => {
+test('the wine list fills the Wine page and every wine page it belongs on', baldwinOnly, async () => {
   const index = (await call('/api/index')).data;
   const page = async (slug) => JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === slug).file)).data);
   const wine = await page('the-bar/wine');
@@ -389,7 +381,7 @@ test('the wine list fills the Wine page and every wine page it belongs on', asyn
   assert.equal(cols.counts.wine, 106);
 });
 
-test('working controls: Food Matrix filters, photo chips, cleaning checklist, sidebar counts', async () => {
+test('working controls: Food Matrix filters, photo chips, cleaning checklist, sidebar counts', baldwinOnly, async () => {
   const index = (await call('/api/index')).data;
   const page = async (slug) => (await call('/api/page/' + index.find((e) => e.slug === slug).file)).data;
   const all = (n, f, out = []) => { if (f(n)) out.push(n); (n.c || []).forEach((c) => all(c, f, out)); return out; };
@@ -450,7 +442,7 @@ test('classic cocktails: 58 in six families, each with its own glass, plus the H
   assert.ok((await page('classic/old-fashioned')).includes('"/classic/oaxaca-old-fashioned"'), 'riffs link to the new pages');
 });
 
-test('edit in place: list pages get Add rows with the group filled in, for managers only', async () => {
+test('edit in place: list pages get Add rows with the group filled in, for managers only', baldwinOnly, async () => {
   const index = (await call('/api/index')).data;
   const file = (slug) => index.find((e) => e.slug === slug).file;
   const fm = JSON.stringify((await call('/api/page/' + file('food-matrix'))).data);
@@ -592,7 +584,7 @@ test('Spirits for staff: the cards lose "Our bottles" (managers only), so they h
   assert.equal(grid.ca, 'S', 'each row one height');
 });
 
-test('build your own quiz: any mix of topics makes a test on the spot; dish questions are for the floor, not the kitchen', async () => {
+test('build your own quiz: any mix of topics makes a test on the spot; dish questions are for the floor, not the kitchen', baldwinOnly, async () => {
   const q = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Entrees', 'allergens', 'study:france'], count: 10 } })).data;
   assert.equal(q.items.length, 10, 'a course, a chapter and allergens together (these used to come back "couldn’t find that quiz")');
   const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['course:Entrees'], count: 0 } })).data; // every Entrees question (20 random ones could miss the allergy kind)
@@ -643,7 +635,7 @@ test('demo: /demo starts a private copy with a sample menu; risky actions are of
   assert.equal((await fetch(BASE + '/api/demo/start', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: '{"role":"nope"}' })).status, 400);
 });
 
-test('quiz answers match the books in the Quiz Updates folder (Nov 5)', async () => {
+test('quiz answers match the books in the Quiz Updates folder (Nov 5)', baldwinOnly, async () => {
   const all = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['specialty', 'brg', 'mules', 'dessert', 'spiritless', 'house', 'classic-on', 'classic-off', 'wine-glass', 'wine-bottle', 'allergens', 'For the Table'.replace(/^/, 'course:')], count: 0 } })).data;
   const qs = Object.values(all.questions);
   const answer = (re) => qs.filter((x) => re.test(x.q)).map((x) => x.options[x.answer]);
@@ -660,7 +652,7 @@ test('quiz answers match the books in the Quiz Updates folder (Nov 5)', async ()
   assert.ok(pork.every((x) => !x.options.some((o, i) => i !== x.answer && /meatball|ragu|sunday sauce/i.test(o))), 'meatballs and ragu are never offered as pork-free');
 });
 
-test('cocktail specs live on their own page; the cocktail pages and the Cocktails page show none (Nov 5)', async () => {
+test('cocktail specs live on their own page; the cocktail pages and the Cocktails page show none (Nov 5)', baldwinOnly, async () => {
   const all = (n, f, out = []) => { if (f(n)) out.push(n); (n.c || []).forEach((c) => all(c, f, out)); return out; };
   const index = (await call('/api/index')).data;
   const specsEntry = index.find((e) => e.slug === 'the-bar/cocktail-specs');
@@ -698,7 +690,7 @@ test('the Cocktails page lists every classic by its own name (Nov 6: every row r
   for (const r of house) assert.equal(firstText(r), r.n.slice('Row · '.length), r.n + ' shows its own name');
 });
 
-test('pairing questions are wine only for now (Tommy, Nov 6: no cocktails)', async () => {
+test('pairing questions are wine only for now (Tommy, Nov 6: no cocktails)', baldwinOnly, async () => {
   const q = (await call('/api/quiz/start', { method: 'POST', body: { topics: ['pairings'], count: 0 } })).data;
   const all = Object.values(q.questions);
   assert.ok(all.length > 20, 'the Pairings quiz still has questions');
@@ -963,7 +955,7 @@ test('the Cocktail Program: its page, lessons that work like the Sommelier ones,
   assert.equal(cat.quizzes.filter((q) => q.group === 'Beer Program · Level 3').length, 9, 'eight lesson quizzes and the final');
 });
 
-test('Cocktail Program Level 1: one lesson per staple spirit, each store’s own drinks and bottles, a final across all nine (Nov 12)', async () => {
+test('Cocktail Program Level 1: one lesson per staple spirit, each store’s own drinks and bottles, a final across all nine (Nov 12)', baldwinOnly, async () => {
   const index = (await call('/api/index')).data;
   const slugs = ['bar-serving', 'bar-l1-vodka', 'bar-l1-gin', 'bar-l1-rum', 'bar-l1-tequila', 'bar-l1-whiskey', 'bar-l1-basics', 'bar-our-menu', 'bar-glass-ice-garnish'];
   const lessons = slugs.map((s) => JSON.parse(fs.readFileSync(path.join(root, 'content/bar', s + '.json'), 'utf8')));

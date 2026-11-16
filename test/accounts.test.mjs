@@ -7,6 +7,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { totpAt } from '../server/auth.mjs';
+import { giveAccount, PRIVATE_ACCOUNT } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-acct-'));
@@ -28,7 +29,7 @@ function person() {
 const code = (secret) => totpAt(secret, Math.floor(Date.now() / 30000));
 
 before(async () => {
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'tommy@super.test' }, stdio: 'ignore' });
+  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'tommy@super.test' }, stdio: 'ignore' });
   for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
   throw new Error('test server did not start in 30 s'); // Nov 10: was 5 s and carried on silently, so a slow start failed 11 tests at once
 });
@@ -95,7 +96,7 @@ test('companies are kept apart', async () => {
   assert.equal((await owner2(`/api/team/${bea.id}/reset-pin`, { method: 'POST' })).status, 404);
   // Quiz scores and sections stay in their company.
   const take = async (who, quiz) => { const q = (await who('/api/quiz/start', { method: 'POST', body: { quiz } })).data; return who('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: q.items.map((r) => q.questions[r].answer) } }); };
-  await take(staff1, 't:course:Entrees');
+  await take(staff1, PRIVATE_ACCOUNT ? 't:course:Entrees' : 't:course:Mains'); // (the made-up test menu has Mains, not Entrees)
   assert.ok((await owner('/api/quiz/results')).data.people.some((p) => p.name === 'Bea Baldwin'));
   assert.ok(!(await owner2('/api/quiz/results')).data.people.some((p) => p.name === 'Bea Baldwin'));
   await owner('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Bea' } });
@@ -104,7 +105,7 @@ test('companies are kept apart', async () => {
   assert.equal((await staff1('/api/index')).status, 200);
   const idx2 = await staff2('/api/index');
   assert.equal(idx2.status, 200);
-  assert.ok(!/Short Rib|Cozy Blankets|The Baldwin/.test(JSON.stringify(idx2.data)), 'no Baldwin names in their search');
+  { const m = /.{80}(Short Rib|Cozy Blankets|The Baldwin).{40}/.exec(JSON.stringify(idx2.data)); assert.ok(!m, 'no Baldwin names in their search: ' + (m && m[0])); }
   assert.equal((await owner2('/api/media')).data.media.length, 0);
 });
 

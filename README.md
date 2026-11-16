@@ -1,8 +1,8 @@
-# Mise
+# Mise Academy
 
-The training app for restaurant teams. First customer: The Baldwin (Baldwin Restaurant Group). Was “The Baldwin Training Book” until Oct 28, 2026.
+Menu, bar and service training for restaurant teams: a book of the menu, the bar, wine, beer and service, training programs with finals and certificates, job paths, team chat and a prep tracker, plus an admin at `/admin` where managers run their own book. Live at https://www.miseacademy.app. Was “The Baldwin Training Book” until Oct 28, 2026.
 
-Menu, bar and service training for Baldwin Restaurant Group. This repo is the **live demo**: a clickable build of the Figma design, with every screen, every link and search, plus an admin at `/admin` where managers edit pages, upload videos (or paste YouTube links) and add recipes and house cocktails.
+Every restaurant group is one account (a company with its stores). Every account gets the same app and the same features (the Foundation plan) in the Mise Academy look; a restaurant's own look is the Custom Brand plan. The first customer, Baldwin Restaurant Group, is one account on the Custom Brand plan. Its menu, documents, photos and its own pages are its account's content, kept on the server's volume, not in this repo (see *Account content*).
 
 ## Run it
 ```bash
@@ -22,11 +22,17 @@ npm run build && npm start   # production server on $PORT (default 8080)
 ## Server
 - `server/index.mjs`: no dependencies. Sign-in (scrypt, HttpOnly cookie), invites, page edits, recipes and cocktails, uploads (streamed, Range support for video).
 - `server/content.mjs` assembles each page: the design + added recipes/cocktails + saved edits. `server/templates.mjs` builds item pages from the Short Rib and Fuschia Satin layouts.
-- Env: `PORT`, `DATA_DIR` (database + uploads), `OWNER_EMAIL` (the only email that can create the first company owner account), `SUPERADMIN_EMAIL` (that account becomes the primary super admin; on Railway it’s the same as `OWNER_EMAIL`). Email for Forgot Password? (optional): `RESEND_API_KEY` + `MAIL_FROM`, see `docs/email.md`.
+- `server/looks.mjs`: plans (`foundation`, `custom-brand`) and looks (`mise`, plus custom looks made for one company). `server/hq.mjs`: Mise Academy (HQ), Mise's own company, where a super admin works until they pick a customer.
+- Env: `PORT`, `DATA_DIR` (database + uploads + account content), `OWNER_EMAIL` (the only email that can create the first company owner account), `SUPERADMIN_EMAIL` (that account becomes the primary super admin; on Railway it’s the same as `OWNER_EMAIL`). Email for Forgot Password? (optional): `RESEND_API_KEY` + `MAIL_FROM`, see `docs/email.md`.
 
 ## Checks
 - `node scripts/shots.mjs` (with the app running) screenshots screens at set widths and reports sideways overflow. `SCREENS=/,/classic/old-fashioned WIDTHS=1440,1024,390`.
 - Add `?overflow` to any URL to list elements wider than the screen.
 
+## Account content
+A customer's own material lives in `DATA_DIR/accounts/<company id>/` on the volume (`server/account.mjs`): its menu seeds (`cms/`), its own versions of designed pages (`pages/`, e.g. Our Story and Floor Plan), its own program text (`programs/`) and the photos and logo those point at (`public/`, served at their `/img/` and `/icons/` addresses). Without the folder the app still starts: the database serves the account's book and the shared templates (`content/templates/`) fill the designed pages. Nothing is archived or deleted when a folder or a seed file is missing.
+- Put a folder on the volume: `node scripts/account-content/copy-to-volume.mjs <folder> --company <id>` (makes a database snapshot first; `--local <DATA_DIR>` to try it).
+- Tests give company 1 a made-up account (the demo's menu). `MISE_PRIVATE_ACCOUNT=<folder> npm test` runs them against a real account folder too, including the checks of that account's own content.
+
 ## Content status
-Sample content is labelled on screen. Photos are Unsplash stand-ins; video slots are marked "to film". Recipes, pours, wine list and policies wait on the Baldwin team.
+Sample content is labelled on screen. Photos are Unsplash stand-ins (credited); video slots are marked "to film". Both demos (`/demo/brg`, `/demo/mise`) are made-up restaurants and say so.

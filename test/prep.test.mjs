@@ -12,6 +12,7 @@ import { spawnSync } from 'node:child_process';
 import { DatabaseSync } from 'node:sqlite';
 import { dayOf, addDays, useByFor, toMake, suggestions, parsFor, pct, periodFor, summaryText, canLog, canManage, detroitAt, recompute, ledgerOf, weekdayStats, saveCount, logWaste, report, weeklyDue, postWeekly, setWeekly, weeklySetting, WEEKLY_NOTE } from '../server/prep.mjs';
 import { MIGRATIONS } from '../server/db.mjs';
+import { giveAccount, PRIVATE_ACCOUNT } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-prep-'));
@@ -29,7 +30,7 @@ function person() {
   };
 }
 before(async () => {
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@prep.test', SUPERADMIN_EMAIL: 'boss@prep.test' }, stdio: 'ignore' });
+  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@prep.test', SUPERADMIN_EMAIL: 'boss@prep.test' }, stdio: 'ignore' });
   for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
   throw new Error('test server did not start in 30 s');
 });
@@ -380,7 +381,7 @@ test('The Baldwin starts with its 12 items from its house specs, with Level 3 sh
   assert.equal(lime.shelf.confirmed, true);
   assert.match(lime.shelf.source, /Level 3 · Water, ice and citrus.*Dave Arnold/);
   assert.equal(lime.shelf.lesson, '/cocktail-program/level-3/bar-dilution');
-  assert.ok(lime.drinks.length >= 10 && lime.drinks.every((d) => d.slug.startsWith('signature/')), 'the house drinks that list lime juice');
+  assert.ok(lime.drinks.length >= (PRIVATE_ACCOUNT ? 10 : 1) && lime.drinks.every((d) => d.slug.startsWith('signature/')), 'the house drinks that list lime juice');
   const simple = (await manager(`/api/prep/items/${items[4].id}`)).data;
   assert.equal(simple.shelf.confirmed, false, 'no lesson number for syrups: house standard, to confirm');
   assert.equal(simple.recipe.ratio, '1:1');

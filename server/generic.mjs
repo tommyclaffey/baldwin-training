@@ -37,12 +37,15 @@ export function emptyPage(file, slug, store) {
 /** Baldwin's names and places, from its own dishes and drinks plus the ones written into the design. */
 // Names that are also classics or plain words stay (the Sidecar's history mentions the Ritz Hotel, for one).
 const KEEP = new Set(['The Ritz', 'Espresso Martini', 'Perfect Martini', 'Proper Martini', 'Lemon Drop', 'Martini']);
-export function baldwinTerms(names, classics = []) {
+export function baldwinTerms(names, classics = [], ours = []) {
   // Plus the dish names written into the design before the Food Book renamed them (Oct 28).
+  // Nov 16: + the drinks and dishes the design's service scripts name, so the scrub never depends on The Baldwin's menu
+  // being in the database (its menu is its account's content now).
   const fixed = ['The Baldwin', 'Baldwin family', 'J.Baldwin', 'Testa Barra', 'Macomb', 'Shelby', 'Bolgheri Rosso', 'Tenuta Spinelli', 'G4 Tequila', 'DCD Rye',
-    'Short Rib', 'Scallop Rockefeller', 'Beet Confit', 'Mike’s Vegas Pie', "Mike's Vegas Pie", 'Agnolotti'];
+    'Short Rib', 'Scallop Rockefeller', 'Beet Confit', 'Mike’s Vegas Pie', "Mike's Vegas Pie", 'Agnolotti', 'Cozy Blankets', 'Fuschia Satin', 'Date Cake', 'Baldwin Burger'];
   const skip = new Set([...KEEP, ...classics]);
-  const all = [...new Set([...fixed, ...names.filter((n) => n && n.length > 3 && !skip.has(n))])].sort((a, b) => b.length - a.length);
+  const mine = new Set(ours); // a store that names its own drink the same keeps it
+  const all = [...new Set([...fixed.filter((n) => !mine.has(n)), ...names.filter((n) => n && n.length > 3 && !skip.has(n))])].sort((a, b) => b.length - a.length);
   return new RegExp('\\b(' + all.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/'/g, "['’]")).join('|') + ')');
 }
 

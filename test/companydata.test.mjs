@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { turnOnTwoStep } from './helpers.mjs';
+import { turnOnTwoStep, giveAccount } from './helpers.mjs';
 import { unzip, zip } from '../server/zip.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -33,7 +33,7 @@ const download = async (who) => { const r = await who('/api/company/export', { r
 const take = async (who, quiz) => { const q = (await who('/api/quiz/start', { method: 'POST', body: { quiz } })).data; return who('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: q.items.map((r) => q.questions[r].answer) } }); };
 
 before(async () => {
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@cd.test', SUPERADMIN_EMAIL: 'boss@cd.test' }, stdio: 'ignore' });
+  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@cd.test', SUPERADMIN_EMAIL: 'boss@cd.test' }, stdio: 'ignore' });
   for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
   throw new Error('test server did not start in 30 s');
 });

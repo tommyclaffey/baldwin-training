@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { totpAt } from '../server/auth.mjs';
+import { giveAccount, baldwinOnly, PRIVATE_ACCOUNT } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-hosp-'));
@@ -28,7 +29,7 @@ const code = (secret) => totpAt(secret, Math.floor(Date.now() / 30000));
 const readDir = (d) => fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json') && !f.startsWith('_')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8')));
 
 before(async () => {
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'super@mise.test' }, stdio: 'ignore' });
+  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'super@mise.test' }, stdio: 'ignore' });
   for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
   throw new Error('test server did not start in 30 s');
 });
@@ -37,8 +38,16 @@ after(() => { server.kill(); fs.rmSync(dir, { recursive: true, force: true }); }
 const owner = person(), sup = person(), owner2 = person(), staff2 = person();
 const BRG_WORDS = /Baldwin|\bBRG\b|Pellegrino|Fiji/;
 
-test('the two versions have the same lessons, sections, cards and checks; the generic one names no BRG', () => {
-  const brg = readDir('content/hospitality').sort((a, b) => a.slug.localeCompare(b.slug));
+test('the shared version names nothing of BRG’s (BRG’s own version is its account content, not in this repo)', () => {
+  assert.equal(readDir('content/hospitality-generic').length, 11, 'five Hospitality 101 lessons and six Art of Table Service lessons');
+  assert.ok(!fs.existsSync(path.join(root, 'content/hospitality')), 'BRG’s version isn’t in the repo');
+  for (const f of fs.readdirSync(path.join(root, 'content/hospitality-generic'))) assert.ok(!BRG_WORDS.test(fs.readFileSync(path.join(root, 'content/hospitality-generic', f), 'utf8')), f + ' names nothing of BRG’s');
+});
+
+test('the two versions have the same lessons, sections, cards and checks', baldwinOnly, () => {
+  const own = path.join(PRIVATE_ACCOUNT, 'programs/hospitality');
+  const read = (d) => fs.readdirSync(d).filter((f) => f.endsWith('.json') && !f.startsWith('_')).map((f) => JSON.parse(fs.readFileSync(path.join(d, f), 'utf8')));
+  const brg = read(own).sort((a, b) => a.slug.localeCompare(b.slug));
   const gen = readDir('content/hospitality-generic').sort((a, b) => a.slug.localeCompare(b.slug));
   assert.equal(brg.length, 11, 'five Hospitality 101 lessons and six Art of Table Service lessons');
   assert.deepEqual(gen.map((c) => c.slug), brg.map((c) => c.slug));
@@ -51,12 +60,14 @@ test('the two versions have the same lessons, sections, cards and checks; the ge
     for (const s of b.v3.sections) { assert.equal(s.check.length, 3); assert.ok(s.keyPoints.length >= 3 && s.keyPoints.length <= 5, b.slug + ' key points'); }
     for (const c of b.cards) assert.ok(c.wrong.length >= 3 && !c.wrong.includes(c.answer), c.q);
   });
-  for (const f of fs.readdirSync(path.join(root, 'content/hospitality-generic'))) assert.ok(!BRG_WORDS.test(fs.readFileSync(path.join(root, 'content/hospitality-generic', f), 'utf8')), f + ' names nothing of BRG’s');
-  assert.ok(fs.readFileSync(path.join(root, 'content/hospitality/hosp-water-selling.json'), 'utf8').includes('San Pellegrino'), 'BRG’s own water list stays in its version');
+  assert.ok(fs.readFileSync(path.join(own, 'hosp-water-selling.json'), 'utf8').includes('San Pellegrino'), 'BRG’s own water list stays in its version');
 });
 
-test('BRG reads its own version: hub, levels, lessons, finals', async () => {
+test('setup: The Baldwin’s owner', async () => {
   assert.equal((await owner('/api/setup', { method: 'POST', body: { name: 'Owner', email: 'owner@baldwin.test', password: 'long-enough-1' } })).status, 200);
+});
+
+test('BRG reads its own version: hub, levels, lessons, finals', baldwinOnly, async () => {
   const index = (await owner('/api/index')).data;
   const file = (slug) => index.find((e) => e.slug === slug)?.file;
   const page = async (slug) => JSON.stringify((await owner('/api/page/' + file(slug))).data);
@@ -212,7 +223,7 @@ test('old acknowledgments carry over to the path step: signatures, sign-offs and
   assert.ok(certs.some((c) => c.key === 'hosp-1'), 'Ada’s Hospitality 101 certificate stays earned');
 });
 
-test('The Baldwin’s demo reads BRG’s version', async () => {
+test('The Baldwin’s demo reads BRG’s version', baldwinOnly, async () => {
   const demo = person();
   assert.equal((await demo('/api/demo/start', { method: 'POST', body: { role: 'employee' } })).status, 200);
   const idx = (await demo('/api/index')).data;

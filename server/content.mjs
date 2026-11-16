@@ -798,7 +798,7 @@ function readBaldwinNames(db, ours) {
   const mine = new Set(ours);
   const inOurs = (n) => ours.some((o) => o && o !== n && new RegExp('\\b' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b').test(o));
   const names = ['recipe', 'house'].flatMap((col) => listEntries(db, col, 1).map((e) => e.data.name)).filter((n) => !mine.has(n) && !inOurs(n));
-  return baldwinTerms(names, listEntries(db, 'classic').map((e) => e.data.name));
+  return baldwinTerms(names, listEntries(db, 'classic').map((e) => e.data.name), ours);
 }
 
 /** Search text for the shared library, read from the pages as other stores see them. Rebuilt when Baldwin's names change. */
