@@ -1185,7 +1185,7 @@ test('Cocktail Program Level 4: six lessons, a 60-question final, a practical an
   assert.ok(op.includes('MASTER OF THE BAR') && op.includes('t%3Afinal%3Abar-4') && op.includes('practical') && op.includes('INVITE YOUR TEAM ON PEOPLE'));
   assert.ok(!op.includes('· Coming'), 'nothing in the Cocktail Program says coming');
   const hub = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'cocktail-program').file)).data);
-  assert.ok(hub.includes('/cocktail-program/level-4') && hub.includes('By invitation · 6 lessons') && hub.includes('t%3Afinal%3Abar-4') && !/"Coming"/.test(hub), 'the hub: Level 4 card and its final');
+  assert.ok(hub.includes('/cocktail-program/level-4') && hub.includes('"By invitation"') && hub.includes('"6 lessons"') && hub.includes('t%3Afinal%3Abar-4') && !/"Coming"/.test(hub), 'the hub: Level 4 card and its final');
   const cat = (await call('/api/quiz/catalog')).data;
   assert.equal(cat.quizzes.find((q) => q.id === 't:final:bar-4').count, 60);
   assert.equal(cat.quizzes.filter((q) => q.group === 'Cocktail Program · Level 4').length, 7, 'six lesson quizzes and the final');
@@ -1266,7 +1266,7 @@ test('Beer Program Level 4: six lessons, a 60-question final, a practical and a 
   assert.ok(op.includes('MASTER OF BEER') && op.includes('t%3Afinal%3Abeer-4') && op.includes('practical') && op.includes('INVITE YOUR TEAM ON PEOPLE'));
   assert.ok(!op.includes('· Coming'), 'nothing in the Beer Program says coming');
   const hub = JSON.stringify((await call('/api/page/' + index.find((e) => e.slug === 'beer-program').file)).data);
-  assert.ok(hub.includes('/beer-program/level-4') && hub.includes('By invitation · 6 lessons') && hub.includes('t%3Afinal%3Abeer-4') && !/"Coming"/.test(hub), 'the hub: Level 4 card and its final');
+  assert.ok(hub.includes('/beer-program/level-4') && hub.includes('"By invitation"') && hub.includes('"6 lessons"') && hub.includes('t%3Afinal%3Abeer-4') && !/"Coming"/.test(hub), 'the hub: Level 4 card and its final');
   assert.ok(hub.includes('LEADING THE PROGRAM') && hub.includes('mcl-436-1609'), 'the hub: Level 4 sources');
   const cat = (await call('/api/quiz/catalog')).data;
   assert.equal(cat.quizzes.find((q) => q.id === 't:final:beer-4').count, 60);

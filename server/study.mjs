@@ -525,6 +525,17 @@ export function hubPage(page, ctx) {
   } else if (cont) remove(main, cont);
   const levels = find(main, byName('Levels'));
   if (levels) { const [a, b] = levels.c; if (a) a.to = '/' + L1; if (b) b.to = '/' + L2; }
+  // Nov 15 (audit 15): "We host it · Feb 22–23, 2027" wrapped inside its pill on a 390 phone. Two pills in a row that wraps;
+  // the date one is named "Pill · Date", so the Mise demo's scrub (content.mjs, HOSTED) drops it with its pill.
+  for (const card of levels?.c || []) {
+    const cp = find(card, byName('Copy')); const pill = cp?.c?.find((x) => x.n === 'Pill'); const t = pill && texts(pill)[0];
+    const m = t && /^(.+?) · (.+)$/.exec(String(t.s));
+    if (!m) continue;
+    setText(t, m[1]);
+    const date = clone(pill); date.n = 'Pill · Date'; setText(texts(date)[0], m[2]);
+    for (const p of [pill, date]) { delete p.clip; delete p.w; p.sh = 'H'; for (const x of texts(p)) { x.ar = 'W'; delete x.w; } }
+    cp.c = cp.c.map((x) => (x === pill ? { t: 'F', n: 'Level labels', lm: 'H', wrap: 1, gap: 6, cg: 6, sh: 'H', sv: 'H', c: [pill, date] } : x));
+  }
   const book = find(main, byName('Book your seat'));
   // Nov 10 (audit): the Court's real dates at Testa Barra read oddly to a prospect, so the demo leaves them out
   if (book && ctx.demo) remove(main, book);
@@ -858,6 +869,14 @@ export function programHub(page, ctx) {
     // the design's copy box was sized for "Introductory": let it use the card's width so names and pills don't clip
     const cp = find(card, byName('Copy')); if (cp) { cp.w = Math.round((card.w || 260) - 40); delete cp.clip; cp.sh = 'F'; }
     const pill = find(card, byName('Pill')); if (pill) { delete pill.clip; pill.sh = 'H'; delete pill.w; for (const x of texts(pill)) { x.ar = 'W'; delete x.w; } }
+    // Nov 15 (audit 15): "Bartenders · 9 lessons" wrapped onto two lines inside the pill on a 390 phone. Who it's for and how
+    // many lessons are two pills in a row that wraps, so a label never breaks inside its pill (desktop: side by side).
+    if (pill && L && !certified.has(L.file) && cp?.c?.includes(pill)) {
+      setText(texts(pill)[0], H.who[i]); pill.n = 'Pill';
+      const count = clone(pill); count.n = 'Pill · Lessons'; setText(texts(count)[0], `${n} lessons`);
+      const row = { t: 'F', n: 'Level labels', lm: 'H', wrap: 1, gap: 6, cg: 6, sh: 'H', sv: 'H', c: [pill, count] };
+      cp.c = cp.c.map((x) => (x === pill ? row : x));
+    }
     tt[1].ar = 'H'; tt[1].sh = 'F'; tt[1].w = cp ? cp.w : tt[1].w;
   });
   // start here: videos (Cocktail: the six roots), or nothing

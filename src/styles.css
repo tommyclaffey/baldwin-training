@@ -1708,8 +1708,7 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
   .demo-short { display: inline; }
   .demo-bar-actions { width: auto; flex-wrap: nowrap; gap: 6px; margin-left: auto; }
   .demo-bar button, .demo-bar-actions a { min-height: 32px; padding: 0 10px; font-size: 12.5px; flex: none !important; }
-  [data-name="Your path"] [data-name="Pill"] { white-space: nowrap; }
-  [data-name="Your path"] [data-name="Pill"] [data-name] { font-size: 10.5px !important; }
+  [data-name="Your path"] [data-name^="Pill"], [data-name="Your path"] [data-name^="Pill"] .ftext { white-space: nowrap; }
 }
 @media screen and (max-width: 900px) {
   .admin-side nav { -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); padding-right: 32px; scroll-snap-type: x proximity; }
