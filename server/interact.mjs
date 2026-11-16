@@ -278,7 +278,9 @@ function labelTables(page) {
           // An empty cell gets no label (it hides on a phone).
           if (i > 0 && labels[i] && c.t !== 'S' && !texts(c).every((t) => !String(t.s || '').trim() || t.s.trim() === '—')) c.lab = labels[i];
           else if (i > 0 && labels[i] && c.t !== 'S') c.empty = 1;
-          if (n.n === 'Allergen grid' && i > 0 && find(c, byName('None'))) c.empty = 1;
+          // Allergen Guide (Nov 15 audit #1): a mark has no words, so the text test above marked every cell empty and phones
+          // showed dish names only. A cell with a mark is a chip on a phone (its column's name + the mark); "None" hides.
+          if (n.n === 'Allergen grid' && i > 0) { if (find(c, byName('Contains'))) { c.lab = labels[i] || c.n; delete c.empty; } else { c.empty = 1; delete c.lab; } }
         });
       }
     }

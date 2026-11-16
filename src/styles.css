@@ -747,6 +747,10 @@ body.print-measure .page > .fn [data-name="Body"] > [data-name="Matrix table"] {
   [data-name="Allergen grid"] [data-name^="Row · "] > :first-child { flex: 1 1 100% !important; width: auto !important; height: auto !important; }
   [data-name="Allergen grid"] [data-label] { flex: 0 0 auto !important; width: auto !important; height: auto !important; flex-direction: row !important; flex-wrap: nowrap !important; align-items: center !important; gap: 6px; padding: 3px 4px 3px 10px; border-radius: 999px; background: var(--wash); overflow: visible !important; }
   [data-name="Allergen grid"] [data-label]::before { flex: none; margin: 0; color: var(--ink); letter-spacing: .08em; }
+  /* Nov 15 audit #1: the chips used to be hidden (no cell had a label). Each chip is as tall as its words and its mark,
+     the mark centred beside the name; the row stays a wrapping line of chips (the stacked-table grid below is for other tables). */
+  [data-name="Allergen grid"] [data-label] { min-height: 0 !important; align-self: center !important; }
+  [data-name="Allergen grid"] [data-label] > .marker { align-self: center !important; }
   /* People rows (Our Story): name over description, rows grow with the text. */
   [data-name^="Person · "] { flex-direction: column !important; height: auto !important; gap: 2px !important; }
   [data-name^="Person · "] > * { width: auto !important; flex: none !important; height: auto !important; }
@@ -898,7 +902,7 @@ body.print-measure .page > .fn [data-name="Body"] > [data-name="Matrix table"] {
   /* Stacked table rows: a 2-column grid, so the labels on each line sit level. */
   .fx-h:has(> [data-label]):not([data-name^="Row · "][data-name] [data-name="Allergen grid"] *) { display: grid !important; grid-template-columns: 1fr 1fr; column-gap: 16px !important; row-gap: 12px !important; align-items: start !important; }
   .fx-h:has(> [data-label]) > :not([data-label]):not(.fsvg) { grid-column: 1 / -1; }
-  [data-name="Allergen grid"] .fx-h:has(> [data-label]) { display: flex !important; }
+  [data-name="Allergen grid"] [data-name^="Row · "].fx-h.fx-h.fx-h:has(> [data-label]) { display: flex !important; }
   /* Values (Our Story): every part of a card uses the card's width; cards size to their words. */
   [data-name="Values"] > * { height: auto !important; min-height: 0 !important; }
   [data-name="Values"] > * > * { width: auto !important; max-width: 100%; align-self: stretch !important; }
