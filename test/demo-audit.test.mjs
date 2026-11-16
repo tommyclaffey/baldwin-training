@@ -108,3 +108,35 @@ test('22 · a level whose final is seeded as passed has every section read (Mari
     assert.ok(!keysOf('bar-3').some((k) => quinn.has(k)), 'no final, no level 3 reads');
   }
 });
+
+/** Every text on a page, from the API. */
+async function pageText(call, file) {
+  const r = await call('/api/page/' + file);
+  assert.equal(r.status, 200, 'page ' + file);
+  const out = []; (function walk(n) { if (!n) return; if (n.t === 'T' && n.s) out.push(n.s); (n.c || []).forEach(walk); })(r.data.main);
+  return out;
+}
+
+test('23 · Baldwin demo: wines pair with the demo menu, no empty prices, cocktails name a dish; the real list is untouched', async () => {
+  const { call, store } = await demo('employee', 'baldwin');
+  const d = db();
+  const menu = new Set(d.prepare("SELECT data FROM entries WHERE collection = 'recipe' AND store_id = ?").all(store).map((r) => JSON.parse(r.data).name));
+  const wines = d.prepare("SELECT data FROM entries WHERE collection = 'wine' AND store_id = ?").all(store).map((r) => JSON.parse(r.data));
+  assert.ok(wines.length > 50, 'the demo has The Baldwin’s wine list');
+  for (const w of wines) for (const p of String(w.pairs || '').split(/,| · /).map((s) => s.trim()).filter(Boolean)) {
+    assert.ok(menu.has(p) || /^an?\s/i.test(p), `${w.name} pairs with ${p}, which isn't on the demo menu`);
+  }
+  assert.ok(wines.filter((w) => w.pairs).length > 40, 'most wines keep a pairing');
+  const house = d.prepare("SELECT data FROM entries WHERE collection = 'house' AND store_id = ? AND archived_at IS NULL").all(store).map((r) => JSON.parse(r.data));
+  for (const h of house) assert.ok(menu.has(h.pairs), `${h.name} pairs with a demo dish`);
+  // The Baldwin's own list (store 1) still pairs with its own dishes
+  const real = d.prepare("SELECT data FROM entries WHERE collection = 'wine' AND store_id = 1 AND slug = 'wine-list/by-the-glass-red-pinot-noir-adelsheim-willamette'").get();
+  assert.match(JSON.parse(real.data).pairs, /Seasonal Veggie Pie/);
+  d.close();
+  const wine = await pageText(call, '25-2');
+  assert.ok(!wine.some((s) => /\$\s*—/.test(s)), 'no "$—" price boxes');
+  assert.ok(!wine.some((s) => /Walleye|Short Rib\b/.test(s)), 'no dishes from The Baldwin’s menu');
+  assert.ok(wine.includes('Pairs with Seared Salmon'));
+  const cocktails = await pageText(call, '14-2');
+  assert.ok(!cocktails.includes('Ask the bar'), 'house cocktails name a dish');
+});

@@ -20,6 +20,7 @@ import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
 import { forget } from './cache.mjs';
 import { MEDIA_DIR } from './db.mjs';
 import { seedDemoPrep } from './prep.mjs';
+import { demoPairs, demoMentions } from './demopairs.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const now = () => new Date().toISOString();
@@ -89,8 +90,17 @@ export function startDemo(db, key, which = 'baldwin') {
     const co = Number(db.prepare('INSERT INTO companies(name, slug, created_at, demo, brand) VALUES (?,?,?,1,?)').run(D.company, (mise ? 'demo-mise-' : 'demo-') + tag, t, D.brand).lastInsertRowid);
     const st = Number(db.prepare('INSERT INTO stores(company_id, name, slug, book_ready, sort, created_at) VALUES (?,?,?,?,0,?)').run(co, D.store, D.storeSlug, D.bookReady, t).lastInsertRowid);
     const ins = db.prepare('INSERT INTO entries(collection,slug,data,sort,created_at,updated_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?)');
+    // Nov 15 (audit 23): the copied wine list pairs with the demo's own dishes (closest dish, or none), not The Baldwin's.
+    const menu = readSeed(D.seeds, 'recipe.json').map((x) => x.data.name);
+    const forDemo = (col, json) => {
+      if (col !== 'wine') return json;
+      const d = JSON.parse(json);
+      if (d.pairs) d.pairs = demoPairs(d.pairs, menu);
+      for (const k of ['say', 'notes']) if (d[k]) { const v = demoMentions(d[k], menu); if (v === null) delete d[k]; else d[k] = v; }
+      return JSON.stringify(d);
+    };
     for (const col of D.copy) {
-      for (const r of db.prepare('SELECT slug, data, sort FROM entries WHERE collection = ? AND store_id = 1 AND archived_at IS NULL').all(col)) ins.run(col, r.slug, r.data, r.sort, t, t, co, st);
+      for (const r of db.prepare('SELECT slug, data, sort FROM entries WHERE collection = ? AND store_id = 1 AND archived_at IS NULL').all(col)) ins.run(col, r.slug, forDemo(col, r.data), r.sort, t, t, co, st);
     }
     const files = [['recipe', 'recipe.json'], ['house', 'house.json'], ...(mise ? [['wine', 'wine.json'], ['shelf', 'shelf.json'], ['beer', 'beer.json']] : [])];
     for (const [col, file] of files) {
