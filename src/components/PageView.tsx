@@ -22,6 +22,29 @@ function withWaitingSlot(main: FNode): FNode {
   const c = [...dash.c.slice(0, at + 1), slot, ...dash.c.slice(at + 1)];
   return { ...main, c: main.c!.map((x) => (x === dash ? { ...dash, c } : x)) };
 }
+
+// Nov 15 (audit 13): on phones Send to Team and Edit Page floated over the page and covered body text on first view (the
+// Negroni's description, a lesson's key points). Now they sit in the breadcrumb row, as on desktop: beside the breadcrumb
+// when both fit, on their own line under it (right-aligned) when not. A page without a breadcrumb gets the row under its top bar.
+const CRUMB_ROW = 'Page tools · Breadcrumb row';
+function withToolsRow(main: FNode): { main: FNode; crumb: FNode | null } {
+  let crumb: FNode | null = null;
+  const swap = (n: FNode): FNode => {
+    if (crumb || !n.c) return n;
+    const at = n.c.findIndex((k) => k.n === 'Breadcrumb');
+    if (at >= 0) {
+      crumb = n.c[at];
+      return { ...n, c: n.c.map((k, i) => (i === at ? ({ t: 'F', n: CRUMB_ROW, w: k.w, h: k.h, sh: 'H', sv: 'H' } as FNode) : k)) };
+    }
+    const c = n.c.map(swap);
+    return crumb ? { ...n, c } : n;
+  };
+  const out = swap(main);
+  if (crumb || !main.c) return { main: out, crumb };
+  const at = main.c.findIndex((k) => k.n === 'Top bar') + 1;
+  const row = { t: 'F', n: CRUMB_ROW, w: main.w, h: 44, sh: 'H', sv: 'H' } as FNode;
+  return { main: { ...main, c: [...main.c.slice(0, at), row, ...main.c.slice(at)] }, crumb: null };
+}
 import { PRODUCT_NAME } from '../lib/brand';
 import { api, canEdit } from '../lib/api';
 import { useSession } from '../lib/session';
@@ -267,12 +290,30 @@ export function PageView() {
   const { x, y, ...drawnMain } = isQuiz ? quizPage(page.main, quiz) : isHome ? withWaitingSlot(trainingCard([page.main], quiz)[0]) : page.main;
   void x; void y;
   // Edit Mode: fields where the server marked them; off, the editing-only parts go.
-  const main = editView(drawnMain as FNode, editing);
+  const viewed = editView(drawnMain as FNode, editing);
   const hasAdd = editing && hasAddRow(page.main);
+  // Send to Team and Edit Page: one row, the same spot on every page (desktop: over the breadcrumb row; phones: in it).
+  const share = hasChat(session.user) && shareable(entry);
+  const editCol = entry.file.startsWith('e') ? COLLECTION_OF[entry.section] : undefined;
+  const tools = !editing && (share || editCol) ? (
+    <>
+      {share && <SendToTeamButton item={{ type: 'page', slug: entry.slug }} />}
+      {editCol && <EditPageButton col={editCol} id={Number(entry.file.slice(1))} />}
+    </>
+  ) : null;
+  const inRow = compact && tools ? withToolsRow(viewed) : null;
+  const main = inRow ? inRow.main : viewed;
+  const baseSlots = isQuiz ? QUIZ_SLOTS : isHome ? HOME_SLOTS : NO_SLOTS;
+  const slots: Record<string, Slot> = inRow ? { ...baseSlots, [CRUMB_ROW]: (p) => (
+    <div className={p.className + ' crumb-row'} style={{ ...p.style, width: undefined, height: undefined, minHeight: undefined }}>
+      {inRow.crumb && <FigmaNode node={inRow.crumb} parentLm="H" />}
+      <PageTools inline>{tools}</PageTools>
+    </div>
+  ) } : baseSlots;
   return (
     <NavContext.Provider value={entry.nav}>
       <CompactContext.Provider value={compact}>
-          <SlotContext.Provider value={isQuiz ? QUIZ_SLOTS : isHome ? HOME_SLOTS : NO_SLOTS}>
+          <SlotContext.Provider value={slots}>
           <ChatItemsContext.Provider value={chatLookup}>
           <InteractProvider key={shown.file}>
           <PageEditContext.Provider value={page.edit || null}>
@@ -282,13 +323,7 @@ export function PageView() {
             {/* Every page has one h1: the drawn title (FigmaNode), or this hidden one when the design has none. */}
             {!hasPageTitle(main) && <h1 className="sr-only">{entry.title}</h1>}
             <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
-            {/* Send to Team and Edit Page: one row, the same spot on every page (phones: floating together, bottom right). */}
-            {!editing && ((hasChat(session.user) && shareable(entry)) || (entry.file.startsWith('e') && COLLECTION_OF[entry.section])) && (
-              <PageTools floating={compact} width={compact ? '100%' : DESIGN_W} zoom={zoom < 1 ? zoom : undefined}>
-                {hasChat(session.user) && shareable(entry) && <SendToTeamButton item={{ type: 'page', slug: entry.slug }} />}
-                {entry.file.startsWith('e') && COLLECTION_OF[entry.section] && <EditPageButton col={COLLECTION_OF[entry.section]} id={Number(entry.file.slice(1))} />}
-              </PageTools>
-            )}
+            {tools && !compact && <PageTools width={DESIGN_W} zoom={zoom < 1 ? zoom : undefined}>{tools}</PageTools>}
           </main>
           {isQuiz && <QuizModal />}
           </PageEditContext.Provider>

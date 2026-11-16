@@ -2336,9 +2336,12 @@ body:has(.admin) .tcp { top: 0; } /* the admin has no top bar */
 /* Send to Team: the page's tool row (with Edit Page), over the right end of the design's breadcrumb row */
 .page-tools { position: absolute; top: 96px; right: 48px; display: flex; align-items: center; gap: 8px; pointer-events: auto; }
 .page-tools .eip-edit { position: static; }
-.page-tools.floating { position: fixed; top: auto; right: 16px; bottom: calc(20px + env(safe-area-inset-bottom)); z-index: 60; max-width: calc(100vw - 32px); flex-wrap: wrap-reverse; justify-content: flex-end; }
-.page-tools.floating .eip-edit { min-height: 44px; padding: 10px 16px; box-shadow: 0 6px 20px rgba(30,28,26,.25); }
-body.eip-lock .page-tools.floating, body.menu-lock .page-tools.floating { display: none; }
+/* Nov 15 (audit 13): phones put the tools in the breadcrumb row (PageView's withToolsRow) instead of floating them over the
+   page's text. Beside the breadcrumb when both fit; otherwise on their own line under it, on the right. */
+.crumb-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 12px; align-self: stretch; min-width: 0; }
+.crumb-row > [data-name="Breadcrumb"] { flex: 0 1 auto; min-width: 0; }
+.page-tools.inline { position: static; margin-left: auto; flex-wrap: wrap; justify-content: flex-end; }
+.page-tools.inline .eip-edit { min-height: 44px; padding: 10px 16px; white-space: nowrap; }
 .mg-btn.send-team, .eip-edit.send-team { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
 .tc .tc-compose textarea:focus-visible { outline: none; } /* the composer's border shows focus (focus-within) */
 /* The admin beside the open chat panel: its content is 400 px narrower, so it takes the layout it has at that width. */

@@ -1,7 +1,6 @@
 // Send to Team (Nov 11, Tommy: "make the chat similar to growth where you can select an item to populate in the chat").
-// One small button, in the same spot on every page you can share: the page's top row, beside Edit Page (phones: both
-// float together at the bottom right). It opens the Team Chat panel with the page staged as a card in the composer.
-import { createPortal } from 'react-dom';
+// One small button, in the same spot on every page you can share: the page's top row, beside Edit Page (phones: in the
+// breadcrumb row; they floated at the bottom right until Nov 15 and covered body text). It opens the Team Chat panel with the page staged as a card in the composer.
 import type { CSSProperties, ReactNode } from 'react';
 import { openChat, type ChatItem } from './panel';
 export { shareable } from './sendable';
@@ -17,10 +16,10 @@ export function SendToTeamButton({ item, className = 'eip-edit', label = 'Send t
   );
 }
 
-/** The page's tool row (Send to Team, Edit Page): over the design's breadcrumb row on the right; floating on phones. */
-export function PageTools({ floating, width, zoom, children }: { floating: boolean; width: number | string; zoom?: number; children: ReactNode }) {
-  // (floating, it sits outside the page's main area, so it's its own named region: Nov 12 scan, "content outside a landmark")
-  if (floating) return createPortal(<div className="page-tools floating" role="region" aria-label="Page tools">{children}</div>, document.body);
+/** The page's tool row (Send to Team, Edit Page): over the design's breadcrumb row on the right; `inline` on phones, where
+ *  PageView puts it inside the breadcrumb row itself (Nov 15). */
+export function PageTools({ inline, width, zoom, children }: { inline?: boolean; width?: number | string; zoom?: number; children: ReactNode }) {
+  if (inline) return <div className="page-tools inline" role="group" aria-label="Page tools">{children}</div>;
   return (
     <div className="eip-edit-wrap" style={{ width, zoom }}>
       <div className="page-tools" role="group" aria-label="Page tools">{children}</div>
