@@ -24,7 +24,7 @@ import { topicList, questionPool } from './quizgen.mjs';
 import { chapterBySlug, markRead, programText } from './manual.mjs';
 import * as chat from './chat.mjs';
 import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErrorAllowed } from './ops.mjs';
-import { enterStore } from './variant.mjs';
+import { enterStore, isBrgCompany } from './variant.mjs';
 import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
 import * as prep from './prep.mjs';
 import { initCompanyData, companyDataRoutes } from './companydata.mjs';
@@ -147,8 +147,9 @@ const ctx = (req) => {
   const store = user ? storeOf(db, user) : null;
   return { token, user, company: companyOf(user), store: store?.id ?? null, storeRow: store };
 };
-/** Is the company this request works in a Mise-brand one (Nov 11: the Mise demo)? */
-const miseBrand = (c) => !!c.company && db.prepare('SELECT brand FROM companies WHERE id = ?').get(c.company)?.brand === 'mise';
+/** Is the company this request works in outside Baldwin Restaurant Group (Nov 11: the Mise demo; Nov 16: any company that
+ *  isn't BRG's, whatever its look)? BRG's own menu sections and notes are its account's, not part of a look. */
+const notBrg = (c) => !!c.company && !isBrgCompany(db, c.company);
 /** The Baldwin group's own house-cocktail menu sections (the BRG Staples list, Testa Barra's cart). */
 const BALDWIN_SECTIONS = new Set(['BRG Staples', 'Barra Cart']);
 /** Tonight, in the restaurant's time zone (Metro Detroit). */
@@ -219,7 +220,7 @@ const accounts = accountRoutes({ db, fail, sendJson, readJson, str, isSecure });
 // AI menu import (Nov 14, server/menuimport.mjs): owners and managers. Reads per store a day (each read is one Claude API call);
 // a demo copy reads its sample menu (no API call) up to 20 times.
 const imports = importRoutes({ db, fail, sendJson, readJson, needEditor: (c, req) => needEditor(c, req),
-  isDemo: (co) => isDemoCompany(db, co), brandOf: (co) => db.prepare('SELECT brand FROM companies WHERE id = ?').get(co)?.brand || 'baldwin',
+  isDemo: (co) => isDemoCompany(db, co), brandOf: (co) => (isBrgCompany(db, co) ? 'baldwin' : 'mise'), // BRG's sections, or not (not the look)
   limiter: new LoginLimiter(12, 24 * 3600e3, 'menu-read'), demoLimiter: new LoginLimiter(20, 24 * 3600e3, 'menu-read-demo') });
 const companyData = companyDataRoutes({ db, fail, sendJson, readJson, isDemoCompany });
 async function api(req, res, url) {
@@ -757,8 +758,8 @@ async function api(req, res, url) {
     const schemas = publicSchemas();
     const gc = schemas.classic.fields.find((f) => f.key === 'glassCard');
     if (gc) gc.options = glassTitles();
-    // Nov 11: a Mise-brand company (the Mise demo) doesn't get The Baldwin group's own menu sections to pick from.
-    if (miseBrand(c)) {
+    // Nov 11: a company outside Baldwin Restaurant Group doesn't get the group's own menu sections to pick from.
+    if (notBrg(c)) {
       const keep = (list) => list.filter((o) => !BALDWIN_SECTIONS.has(o)); // copies: the schemas share their field objects
       schemas.house = { ...schemas.house, group: { ...schemas.house.group, values: keep(schemas.house.group.values) },
         fields: schemas.house.fields.map((f) => (f.key === 'menuSection' ? { ...f, options: keep(f.options) } : f)) };
@@ -771,8 +772,8 @@ async function api(req, res, url) {
     if (!COLLECTIONS[col]) fail(400, 'Unknown collection.');
     if (url.searchParams.get('archived')) return sendJson(res, 200, { entries: listArchived(db, col, SHARED.has(col) ? null : c.store) });
     const list = inStore(c, () => ordered(db, col));
-    // Shared classics carry The Baldwin's notes about its own builds; a Mise-brand company doesn't see them.
-    if (col === 'classic' && miseBrand(c)) return sendJson(res, 200, { entries: list.map((e) => (/Baldwin/.test(e.data.specNote || '') ? { ...e, data: { ...e.data, specNote: '' } } : e)) });
+    // Shared classics carry The Baldwin's notes about its own builds; a company outside the group doesn't see them.
+    if (col === 'classic' && notBrg(c)) return sendJson(res, 200, { entries: list.map((e) => (/Baldwin/.test(e.data.specNote || '') ? { ...e, data: { ...e.data, specNote: '' } } : e)) });
     return sendJson(res, 200, { entries: list });
   }
   // Archived (Nov 12): everything taken out of this store's book, by type, with who archived it, ready to restore.

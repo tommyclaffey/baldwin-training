@@ -7,9 +7,12 @@ import { useSession } from '../lib/session';
 import { ErrorNote, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 import { Deletions } from './companydata';
 
-type Company = { id: number; name: string; slug: string; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number }[] };
+type Look = { id: string; name: string; custom: boolean };
+type Plan = { id: string; name: string; customLook: boolean };
+type Company = { id: number; name: string; slug: string; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number }[];
+  demo: boolean; plan: string; look: string; drawnIn: string; looks: Look[] };
 type Person = { id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null; createdAt: string; lastSeenAt: string | null; deletedAt: string | null; hasPin: boolean; totpOn: boolean; superPrimary: boolean };
-type Overview = { companies: Company[]; admins: Person[]; you: number; youPrimary: boolean; workingIn: number };
+type Overview = { companies: Company[]; admins: Person[]; you: number; youPrimary: boolean; workingIn: number; plans: Plan[] };
 
 function useOverview() {
   const [data, setData] = useState<Overview | null>(null);
@@ -78,7 +81,7 @@ function Companies() {
       {err && <ErrorNote error={err} />}
       {link && <div className="card ok-card" role="status"><p>Send this owner invite link. It works once and expires in 14 days.</p><div className="row"><input readOnly value={link} onFocus={(e) => e.target.select()} aria-label="Invite link" /><button className="btn ghost" onClick={() => void navigator.clipboard.writeText(link)}>Copy</button></div></div>}
       <table className="table">
-        <thead><tr><th>Company</th><th>Owners and managers</th><th>Staff</th><th>Join code</th><th>Last active</th><th /></tr></thead>
+        <thead><tr><th>Company</th><th>Plan and Look</th><th>Owners and managers</th><th>Staff</th><th>Join code</th><th>Last active</th><th /></tr></thead>
         <tbody>{data.companies.map((c) => (
           <tr key={c.id} className={c.deletedAt ? 'is-deleted' : ''}>
             <td><strong>{c.name}</strong>{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <small className="error"> · deleted, {daysLeft(c.deletedAt)} days to restore</small>}
@@ -87,6 +90,7 @@ function Companies() {
                   {!c.deletedAt && <button className="link-btn" onClick={() => { const n = prompt('Store name', st.name); if (n && n !== st.name) void run(() => api(`/api/super/stores/${st.id}`, { method: 'PATCH', body: { name: n } })); }}>Rename</button>}</li>
               ))}
               {!c.deletedAt && <li><button className="link-btn" onClick={() => { const n = prompt(`New store for ${c.name}`); if (n) void run(() => api(`/api/super/companies/${c.id}/stores`, { method: 'POST', body: { name: n } })); }}>+ Add Store</button></li>}</ul></td>
+            <td><PlanLook c={c} plans={data.plans} onChange={(body) => run(() => api(`/api/super/companies/${c.id}`, { method: 'PATCH', body }))} /></td>
             <td>{c.leads}</td><td>{c.staff}</td><td><code>{c.joinCode}</code></td><td>{when(c.lastSeenAt)}</td>
             <td className="row-actions">
               {c.deletedAt
@@ -107,7 +111,33 @@ function Companies() {
         <Text label="Owner’s email (optional)" value={ownerEmail} placeholder="owner@theirgroup.com" onChange={setOwnerEmail} />
         <button className="btn" disabled={name.trim().length < 2}>Add Company</button>
       </form>
-      <p className="muted small">A new company gets its own team, join code and quiz records. Its book starts with the shared library (classics, spirits, wine, beer, service, safety), with nothing of The Baldwin’s in it. Its managers add their own menu, drinks and story.</p>
+      <p className="muted small">A new company gets its own team, join code and quiz records, on the Foundation plan in the Mise Academy look. Its book starts with the shared library (classics, spirits, wine, beer, service, safety), with nothing of The Baldwin’s in it. Its managers add their own menu, drinks and story. A restaurant’s own look comes with the Custom Brand plan, once that look is built for them.</p>
+    </div>
+  );
+}
+
+/** Plan and look for one company (Nov 16, Tommy: "custom brand is an upgraded tier"). The look list holds Mise Academy and
+ *  any custom look made for this company; a custom look needs the Custom Brand plan. Demo copies keep the look they were
+ *  made with. */
+function PlanLook({ c, plans, onChange }: { c: Company; plans: Plan[]; onChange: (body: { plan?: string; look?: string }) => void }) {
+  const lookName = (id: string) => c.looks.find((l) => l.id === id)?.name || 'Mise Academy';
+  if (c.demo) return <small className="muted">Demo · {lookName(c.drawnIn)}</small>;
+  const plan = plans.find((p) => p.id === c.plan);
+  const pickPlan = (id: string) => {
+    const next = plans.find((p) => p.id === id);
+    const custom = c.looks.find((l) => l.id === c.look)?.custom;
+    if (next && !next.customLook && custom && !confirm(`Move ${c.name} to ${next.name}? Everyone there sees the Mise Academy look from their next page.`)) return;
+    onChange({ plan: id });
+  };
+  return (
+    <div className="plan-look">
+      <select aria-label={`${c.name}’s plan`} value={c.plan} disabled={!!c.deletedAt} onChange={(e) => pickPlan(e.target.value)}>
+        {plans.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
+      </select>
+      <select aria-label={`${c.name}’s look`} value={c.look} disabled={!!c.deletedAt} onChange={(e) => onChange({ look: e.target.value })}>
+        {c.looks.map((l) => <option key={l.id} value={l.id} disabled={l.custom && !plan?.customLook}>{l.name}{l.custom && !plan?.customLook ? ' (Custom Brand)' : ''}</option>)}
+      </select>
+      {c.looks.length < 2 && <small className="muted">No custom look built yet</small>}
     </div>
   );
 }

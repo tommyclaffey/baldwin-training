@@ -23,6 +23,7 @@
 // worry about carry over, have the user make the decision").
 import { audit, now } from './db.mjs';
 import { listEntries } from './cms.mjs';
+import { isBrgCompany } from './variant.mjs';
 import { chatCtx, resolveRoom, postMessage, ChatError, addCardSource } from './chat.mjs';
 
 /* ------------------------------------------------------------------ days (the restaurant's date, Metro Detroit) */
@@ -168,7 +169,8 @@ export function deriveList(specs) {
 function startingKeys(db, storeRow) {
   const co = db.prepare('SELECT brand, demo FROM companies WHERE id = ?').get(storeRow.company_id) || {};
   if (co.brand === 'mise' && co.demo) return WRENFIELD_LIST;
-  if (storeRow.slug === 'the-baldwin' && co.brand !== 'mise') return BALDWIN_LIST;
+  // Nov 16: The Baldwin's list follows the account (Baldwin Restaurant Group and its demo copies), not the look
+  if (storeRow.slug === 'the-baldwin' && isBrgCompany(db, storeRow.company_id)) return BALDWIN_LIST;
   return deriveList(listEntries(db, 'house', storeRow.id).map((e) => e.data));
 }
 const matchOf = (c) => JSON.stringify({ ing: c.ing || null, garnish: c.garnish || null });

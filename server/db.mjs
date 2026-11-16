@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { watchContent } from './cache.mjs';
+import { migratePlan } from './looks.mjs';
 
 export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'data'));
 export const MEDIA_DIR = path.join(DATA_DIR, 'media');
@@ -305,6 +306,7 @@ export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
     v++;
   }
   migrateBrand(db);
+  migratePlan(db); // Nov 16: companies.plan, which decides whether a company can wear a custom look (server/looks.mjs)
   // The Hospitality Program's acknowledgments (Nov 11, server/acks.mjs): its own table, made here too, so a demo copy
   // can be seeded and dropped on any database (no migration number, like brand).
   db.exec(`CREATE TABLE IF NOT EXISTS program_acks(user_id INT NOT NULL, store_id INT NOT NULL, company_id INT, level TEXT NOT NULL,
@@ -313,13 +315,19 @@ export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
   return db;
 }
 
-/** Brand per company (Nov 11, Tommy: a Mise demo beside The Baldwin's). 'baldwin' = The Baldwin's look (every company so
- *  far, and the default); 'mise' = the Mise Academy look. The front end gets it with the session and switches the skin on.
- *  Added by a column check, not a numbered migration, so it can't collide with a migration added on another branch. */
-export const BRANDS = ['baldwin', 'mise'];
+/** Look per company (Nov 11, Tommy: a Mise demo beside The Baldwin's): the column is companies.brand. 'mise' = the Mise
+ *  Academy look; 'baldwin' = The Baldwin's own look. Since Nov 16 the look follows the company's plan (server/looks.mjs):
+ *  Mise is every company's look, and a custom look comes with the Custom Brand plan.
+ *  Added by a column check, not a numbered migration, so it can't collide with a migration added on another branch.
+ *  New databases: companies made from now on start in Mise; the ones already there when the column appears (before Nov 11
+ *  that was only Baldwin Restaurant Group) keep The Baldwin's look, as they always had. The live database added this
+ *  column on Nov 11 with 'baldwin' as its default, which a column can't change, so every insert names its look and
+ *  lookOf() only draws a custom look on the Custom Brand plan. */
 export function migrateBrand(db) {
   const cols = db.prepare('PRAGMA table_info(companies)').all().map((c) => c.name);
-  if (!cols.includes('brand')) db.exec("ALTER TABLE companies ADD COLUMN brand TEXT NOT NULL DEFAULT 'baldwin'");
+  if (cols.includes('brand')) return;
+  db.exec("ALTER TABLE companies ADD COLUMN brand TEXT NOT NULL DEFAULT 'mise'");
+  db.exec("UPDATE companies SET brand = 'baldwin'");
 }
 
 export function audit(db, userId, action, detail, companyId = null) {

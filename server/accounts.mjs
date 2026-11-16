@@ -12,6 +12,7 @@
 // or all of them; owners and super admins work in one store at a time and can switch.
 // Every query about people is scoped to the signed-in person's company, and store-level records to their store.
 import { audit, now } from './db.mjs';
+import { LOOKS, PLANS, DEFAULT_LOOK, DEFAULT_PLAN, lookOf, lookAllowed, looksFor } from './looks.mjs';
 import {
   hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionCookies, sessionDays, LoginLimiter, publicUser,
   sha256, newToken, newTotpSecret, verifyTotp, otpauthUrl, newJoinCode, clientIp,
@@ -116,7 +117,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   /** The signed-in person as the app sees them: role, company, and the store they're working in. */
   const meOut = (u) => ({
     ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo,
-    brand: companyRow(companyOf(u))?.brand === 'mise' ? 'mise' : 'baldwin', // Nov 11: the look follows the company
+    brand: lookOf(companyRow(companyOf(u))), // Nov 11: the look follows the company; Nov 16: its plan decides (server/looks.mjs)
     store: storeOut(storeOf(db, u)), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
   });
   const signIn = (res, req, user, opts = {}) => {
@@ -345,7 +346,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const staff = db.prepare("SELECT id, name, pin_hash, store_id FROM users WHERE company_id = ? AND role = 'staff' AND deleted_at IS NULL ORDER BY name COLLATE NOCASE").all(co.id);
       // Nov 12: the brand comes too, so the store, name and PIN screens wear the restaurant's own look (the join-code screen
       // before it is Mise's, the platform's front door).
-      return sendJson(res, 200, { company: co.name, brand: co.brand === 'mise' ? 'mise' : 'baldwin', stores: storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name })), staff: staff.map((s) => ({ id: s.id, name: s.name, storeId: s.store_id, needsPin: !s.pin_hash })) });
+      return sendJson(res, 200, { company: co.name, brand: lookOf(co), stores: storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name })), staff: staff.map((s) => ({ id: s.id, name: s.name, storeId: s.store_id, needsPin: !s.pin_hash })) });
     }
     if (p === '/api/join' && m === 'POST') {
       if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
@@ -585,8 +586,10 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const admins = db.prepare("SELECT u.*, NULL company_name FROM users u WHERE role = 'superadmin' ORDER BY super_primary DESC, name").all();
       return sendJson(res, 200, {
         companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.leads, staff: x.staff, lastSeenAt: x.last_seen,
+          demo: !!x.demo, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x),
           stores: storesOf(db, x.id).map((st) => ({ ...storeOut(st), staff: db.prepare("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'staff' AND deleted_at IS NULL").get(st.id).n })) })),
         admins: admins.map(personOut), you: s.id, youPrimary: !!s.super_primary, workingIn: companyOf(s),
+        plans: Object.values(PLANS).map((x) => ({ id: x.id, name: x.name, customLook: x.customLook })),
       });
     }
     if (p === '/api/super/companies' && m === 'POST') {
@@ -595,7 +598,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (name.length < 2) fail(400, 'Add the company’s name.');
       let slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'company';
       while (db.prepare('SELECT 1 FROM companies WHERE slug = ?').get(slug)) slug += '-2';
-      const r = db.prepare('INSERT INTO companies(name, slug, created_at) VALUES (?,?,?)').run(name, slug, now());
+      // Nov 16: every new company starts on the Foundation plan in the Mise look (the live table's own default look is
+      // still The Baldwin's, from Nov 11, so it's named here).
+      const r = db.prepare('INSERT INTO companies(name, slug, created_at, brand, plan) VALUES (?,?,?,?,?)').run(name, slug, now(), DEFAULT_LOOK, DEFAULT_PLAN);
       const id = Number(r.lastInsertRowid);
       setJoinCode(db, id);
       const storeNames = (Array.isArray(b.stores) ? b.stores : []).map((x) => str(x, 80)).filter((x) => x.length > 1).slice(0, 20);
@@ -615,6 +620,22 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (!co) fail(404, 'We couldn’t find that company.');
       if (m === 'PATCH') {
         const b = await readJson(req);
+        // Nov 16: plan and look (Super Admin → Companies). A custom look needs the Custom Brand plan and has to be made for
+        // this company; moving back to Foundation puts the company in the Mise look.
+        if (b.plan !== undefined || b.look !== undefined) {
+          if (co.demo) fail(400, 'A demo copy keeps the look it was made with.');
+          const plan = b.plan === undefined ? (PLANS[co.plan] ? co.plan : DEFAULT_PLAN) : String(b.plan);
+          if (!PLANS[plan]) fail(400, 'Pick a plan.');
+          let look = b.look === undefined ? co.brand || DEFAULT_LOOK : String(b.look);
+          if (!LOOKS[look] || !lookAllowed(co, look)) fail(400, 'That look isn’t made for this company.');
+          if (!PLANS[plan].customLook && LOOKS[look].custom) {
+            if (b.look !== undefined) fail(400, `A custom look comes with the ${PLANS['custom-brand'].name} plan.`);
+            look = DEFAULT_LOOK;
+          }
+          db.prepare('UPDATE companies SET plan = ?, brand = ? WHERE id = ?').run(plan, look, co.id);
+          superLog(s, 'plan and look', `${co.name} · ${PLANS[plan].name} · ${LOOKS[look].name}`, co.id);
+          return sendJson(res, 200, { ok: true, plan, look, drawnIn: lookOf({ ...co, plan, brand: look }) });
+        }
         const name = str(b.name, 80);
         if (name.length < 2) fail(400, 'Add the company’s name.');
         db.prepare('UPDATE companies SET name = ? WHERE id = ?').run(name, co.id);

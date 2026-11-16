@@ -59,8 +59,8 @@ const COPY = ['wine', 'shelf', 'beer']; // The Baldwin's real lists (Tommy: "win
  *                        (book_ready 0), so none of The Baldwin's names, logo, story or floor plan show.
  * Same cast in both (same project, same people). */
 export const DEMOS = {
-  baldwin: { company: 'Baldwin Restaurant Group', store: 'The Baldwin', storeSlug: 'the-baldwin', brand: 'baldwin', bookReady: 1, seeds: 'demo', copy: COPY },
-  mise: { company: 'Wrenfield', store: 'Wrenfield', storeSlug: 'wrenfield', brand: 'mise', bookReady: 0, seeds: 'demo-mise', copy: [],
+  baldwin: { company: 'Baldwin Restaurant Group', store: 'The Baldwin', storeSlug: 'the-baldwin', brand: 'baldwin', plan: 'custom-brand', bookReady: 1, seeds: 'demo', copy: COPY },
+  mise: { company: 'Wrenfield', store: 'Wrenfield', storeSlug: 'wrenfield', brand: 'mise', plan: 'foundation', bookReady: 0, seeds: 'demo-mise', copy: [],
     // Home's What's New: a dish, a drink and a wine (newest last), not whichever list was loaded last
     whatsNew: ['wine-list/by-the-glass-red-pinot-noir-elk-cove-willamette-valley', 'signature/smoke-signal', 'recipe/seared-scallops'] },
 };
@@ -88,7 +88,7 @@ export function startDemo(db, key, which = 'baldwin') {
   const t = now();
   db.exec('BEGIN');
   try {
-    const co = Number(db.prepare('INSERT INTO companies(name, slug, created_at, demo, brand) VALUES (?,?,?,1,?)').run(D.company, (mise ? 'demo-mise-' : 'demo-') + tag, t, D.brand).lastInsertRowid);
+    const co = Number(db.prepare('INSERT INTO companies(name, slug, created_at, demo, brand, plan) VALUES (?,?,?,1,?,?)').run(D.company, (mise ? 'demo-mise-' : 'demo-') + tag, t, D.brand, D.plan).lastInsertRowid);
     const st = Number(db.prepare('INSERT INTO stores(company_id, name, slug, book_ready, sort, created_at) VALUES (?,?,?,?,0,?)').run(co, D.store, D.storeSlug, D.bookReady, t).lastInsertRowid);
     const ins = db.prepare('INSERT INTO entries(collection,slug,data,sort,created_at,updated_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?)');
     // Nov 15 (audit 23): the copied wine list pairs with the demo's own dishes (closest dish, or none), not The Baldwin's.

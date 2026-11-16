@@ -17,7 +17,7 @@ function initialIcon(name: string) {
 
 function draw() {
   const store = last;
-  const slug = currentBrand() === 'mise' ? 'mise' : store && HAS_LOGO.has(store.slug) ? store.slug : store ? null : 'the-baldwin';
+  const slug = currentBrand() === 'mise' || !store ? 'mise' : HAS_LOGO.has(store.slug) ? store.slug : null; // signed out: Mise (Nov 16)
   const icons = document.querySelectorAll<HTMLLinkElement>('link[rel="icon"]');
   const touch = document.querySelector<HTMLLinkElement>('link[rel="apple-touch-icon"]');
   icons.forEach((l) => {

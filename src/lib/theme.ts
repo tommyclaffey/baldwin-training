@@ -19,11 +19,16 @@ import type { FNode } from '../components/FigmaNode';
 export type Brand = 'baldwin' | 'mise';
 
 /* ── Which brand is on screen ─────────────────────────────────────────────────────────────────────────────────────────
- * Nov 11: the brand is the company's (companies.brand), sent with the session: The Baldwin and its demo are 'baldwin', the
- * Mise demo (Wrenfield) is 'mise'. Signed out (the sign-in screen) it's The Baldwin's, as before. `?brand=mise|baldwin`
- * is kept as a dev override for this tab only (sessionStorage), so it can never stick to someone's real account. */
+ * Nov 11: the brand is the company's look, sent with the session. Nov 16 (Tommy: "custom brand is an upgraded tier"): Mise
+ * is every company's look; a custom look (The Baldwin's) comes with the Custom Brand plan, and the server decides which
+ * look a company is drawn in (server/looks.mjs). Signed out it's Mise, the platform's front door. The last signed-in look
+ * is remembered on the device, so a custom-look restaurant's loading screen doesn't flash Mise before the session loads.
+ * `?brand=mise|baldwin` is kept as a dev override for this tab only (sessionStorage), so it can never stick to someone's
+ * real account. */
 const OVERRIDE = 'brand-override';
-let fromSession: Brand = 'baldwin';
+const LAST = 'look';
+const asBrand = (b: unknown): Brand => (b === 'baldwin' ? 'baldwin' : 'mise');
+let fromSession: Brand = (() => { try { return asBrand(localStorage.getItem(LAST)); } catch { return 'mise'; } })();
 let fromPage: Brand | null = null; // a public page that has its own look (the Mise demo picker at /demo/mise)
 const inBrowser = typeof document !== 'undefined';
 try {
@@ -39,7 +44,11 @@ export function currentBrand(): Brand {
   return override() || fromPage || fromSession;
 }
 /** The signed-in company's brand (session.tsx sets it on every /api/me). */
-export function setSessionBrand(b: string | null | undefined) { fromSession = b === 'mise' ? 'mise' : 'baldwin'; apply(); }
+export function setSessionBrand(b: string | null | undefined) {
+  fromSession = asBrand(b);
+  try { if (b) localStorage.setItem(LAST, fromSession); else localStorage.removeItem(LAST); } catch { /* private mode */ }
+  apply();
+}
 /** A signed-out page with its own look (null = follow the session). */
 export function setPageBrand(b: Brand | null) { fromPage = b; apply(); }
 
