@@ -64,3 +64,30 @@ test('19 · fresh starts are limited per address, with a message', async () => {
   assert.equal(r.status, 429, 'the 61st is refused');
   assert.match(r.data.error, /Too many demos/);
 });
+
+/** Start a demo as a fresh visitor; returns { call, company, store }. */
+let ipN = 0;
+async function demo(role, which) {
+  const call = visitor(`10.30.${Math.floor(++ipN / 250)}.${ipN % 250}`);
+  const r = await call('/api/demo/start', { method: 'POST', body: { role, demo: which } });
+  assert.equal(r.status, 200);
+  const company = await companyOf(call);
+  const d = db();
+  const store = d.prepare('SELECT id FROM stores WHERE company_id = ?').get(company).id;
+  d.close();
+  return { call, company, store };
+}
+
+for (const which of ['baldwin', 'mise']) {
+  test(`21 · ${which} demo: the pinned pre-shift note names tonight's focus dish`, async () => {
+    const { company, store } = await demo('employee', which);
+    const d = db();
+    // Home's Tonight's Pre-Shift Focus: the signature dish (server/home.mjs)
+    const focus = d.prepare("SELECT data FROM entries WHERE collection = 'recipe' AND store_id = ? AND archived_at IS NULL").all(store)
+      .map((r) => JSON.parse(r.data)).find((x) => x.signature);
+    const pin = d.prepare('SELECT body FROM chat_messages WHERE company_id = ? AND pinned_at IS NOT NULL').get(company);
+    d.close();
+    assert.ok(focus, 'the demo menu has a signature dish');
+    assert.match(pin.body, new RegExp(`^Focus dish: ${focus.name}\\.`));
+  });
+}
