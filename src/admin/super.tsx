@@ -3,11 +3,12 @@
 // Nov 16: each teammate has a role (Owner · Manager · Support, server/miseteam.mjs). The server checks every action;
 // these screens only show what your role can do (`can`, from /api/super/overview), so there are no dead buttons.
 import { useEffect, useState, type FormEvent } from 'react';
-import { Navigate, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, NavLink, Route, Routes, useNavigate, useSearchParams } from 'react-router-dom';
 import { api, ROLE_LABEL, TEAM_ROLE_LABEL, type MailStatus, type Role, type TeamRole } from '../lib/api';
 import { useSession } from '../lib/session';
 import { ErrorNote, InviteSentCard, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 import { Deletions } from './companydata';
+import { ErrorLog } from './hq';
 
 type Look = { id: string; name: string; custom: boolean };
 type Plan = { id: string; name: string; customLook: boolean };
@@ -57,6 +58,7 @@ export function SuperAdmin() {
         <NavLink to="/admin/super/team">Mise Team</NavLink>
         <NavLink to="/admin/super/deletions">Deletions</NavLink>
         <NavLink to="/admin/super/log">Log</NavLink>
+        <NavLink to="/admin/super/errors">Error Log</NavLink>
       </nav>
       <Routes>
         <Route index element={<Companies />} />
@@ -65,6 +67,7 @@ export function SuperAdmin() {
         <Route path="admins" element={<Navigate to="/admin/super/team" replace />} />
         <Route path="deletions" element={<Deletions />} />
         <Route path="log" element={<Log />} />
+        <Route path="errors" element={<ErrorLog />} />
       </Routes>
     </div>
   );
@@ -92,6 +95,12 @@ function Companies() {
     if (!email) return;
     await run(async () => { setLink(null); const r = await api<{ link: string; email: string; days: number; mail: MailStatus }>(`/api/super/companies/${c.id}/owner-invite`, { method: 'POST', body: { email } }); setLink({ link: location.origin + r.link, email: r.email, days: r.days, mail: r.mail }); });
   };
+  // Nov 16: the HQ home's Add Company button lands on the form
+  useEffect(() => {
+    if (!data || location.hash !== '#add-company') return;
+    const f = document.getElementById('add-company');
+    f?.scrollIntoView({ block: 'center' }); f?.querySelector('input')?.focus();
+  }, [data]);
   if (error) return <ErrorNote error={error} retry={load} />;
   if (!data) return <Loading />;
   const can = data.can;
@@ -125,7 +134,7 @@ function Companies() {
           </tr>
         ))}</tbody>
       </table>
-      {can.addCompany && <form className="card invite-form" onSubmit={add}>
+      {can.addCompany && <form className="card invite-form" id="add-company" onSubmit={add}>
         <Text label="Add a company" value={name} placeholder="Restaurant group name" onChange={setName} />
         <Text label="Owner’s email (optional)" value={ownerEmail} placeholder="owner@theirgroup.com" onChange={setOwnerEmail} />
         <button className="btn" disabled={name.trim().length < 2}>{ownerEmail.trim() && mailOn ? 'Add Company and Send Invite' : 'Add Company'}</button>
@@ -165,7 +174,8 @@ function PlanLook({ c, plans, canChange, onChange }: { c: Company; plans: Plan[]
 
 function People() {
   const { data: ov } = useOverview();
-  const [q, setQ] = useState('');
+  const [params] = useSearchParams(); // Nov 16: the HQ home's search box lands here with ?q=
+  const [q, setQ] = useState(params.get('q') || '');
   const [company, setCompany] = useState('');
   const [rows, setRows] = useState<Person[] | null>(null);
   const [err, setErr] = useState('');

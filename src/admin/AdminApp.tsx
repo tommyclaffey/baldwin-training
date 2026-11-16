@@ -18,6 +18,7 @@ import { DemoBar, DemoTour, openWelcome } from '../components/DemoTour';
 import { hasChat, useChatState } from '../chat/unread';
 import { openChat } from '../chat/panel';
 import { needsTwoStep, TWO_STEP_HOME } from '../lib/twostep';
+import { HqHome, HqNav, HqPhoneBar, HqWorking, useSuperCounts } from './hq';
 
 export default function AdminApp() {
   const { user, loaded } = useSession();
@@ -69,8 +70,21 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
   // Nov 16: owners add and rename their own stores (a demo's manager too: a demo has no owner; the Mise team, not Support)
   const keepsStores = !user.hq && (user.role === 'owner' || (isSuper && user.teamRole !== 'support') || (!!user.demo && user.role === 'manager'));
   const { count: chatUnread, mentions: chatMentions } = useChatState(hasChat(user));
+  // Nov 16 (Figma 699:880): a super admin working in Mise Academy (HQ) gets HQ's own menu and the HQ home. Picking a
+  // customer (Work Here) brings back the company admin, as before.
+  const hqMode = isSuper && !!user.hq;
+  const counts = useSuperCounts(hqMode);
   return (
-    <div className="admin">
+    <div className={'admin' + (hqMode ? ' hq-mode' : '')}>
+      {hqMode && <HqPhoneBar user={user} counts={counts} />}
+      {hqMode ? (
+        <aside className="admin-side hq-side-bar">
+          <div className="admin-brand"><Link to="/admin" className="admin-logo"><img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy, HQ home" /></Link></div>
+          <HqNav user={user} counts={counts} />
+          <HqWorking user={user} />
+          <LegalLinks className="admin-legal" />
+        </aside>
+      ) : (
       <aside className="admin-side">
         <div className="admin-brand">
           {/* Nov 11: a Mise-brand company (the Mise demo) gets the Mise Academy lockup and its restaurant's name on the demo line */}
@@ -116,6 +130,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
         <LegalLinks className="admin-legal" />
         <Link to="/" className="admin-back">← Back to the Book</Link>
       </aside>
+      )}
       <main className="admin-main" id="content">
         {user.impersonatedBy && <div className="support-bar" role="note">Support view: you’re signed in as <strong>{user.name}</strong>{user.viewOnly ? ' (view only)' : ''}. <button className="link-btn" onClick={() => void back()}>Back to Your Account</button></div>}
         {/* Nov 16: Mise Support looks around a company and changes nothing (the server refuses any change) */}
@@ -124,7 +139,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
         {user.demo && <DemoTour />}
         <PageOptions />
         <Routes>
-          <Route index element={<ManagerHome />} />
+          <Route index element={hqMode ? <HqHome /> : <ManagerHome />} />
           <Route path="pages/:col" element={<CollectionList />} />
           <Route path="pages/:col/:id" element={<EntryEditor />} />
           <Route path="wine-videos" element={<WineVideos />} />
