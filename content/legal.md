@@ -29,6 +29,7 @@ date: November 16, 2026
 - Your company's data is separate from every other company's.
 
 ## Who else touches it
+- **Our support team** can sign in as you to help fix a problem. They see what you see, every visit is logged with who did it, and they use it only to help.
 - **Railway** hosts the app and its database (United States).
 - **Resend** sends password-reset and invite emails, if your company uses them.
 - **Anthropic (Claude)** reads a menu file when a manager uses Import a Menu. Only the menu file is sent.
