@@ -99,17 +99,19 @@ function trapKeys(card: () => HTMLElement | null, close: () => void, more?: (e: 
 export function DemoBar() {
   const { user, refresh } = useSession();
   const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
   if (!user?.demo) return null;
   const manager = user.role !== 'staff';
   const kind = demoKindOf(user); // Nov 11: The Baldwin's demo or the Mise demo (Wrenfield); switching role stays in the same one
+  // Nov 15 (audit 19): a refused switch says why and leaves you where you are (it used to drop you on the picker silently).
   const swap = async () => {
-    setBusy(true);
+    setBusy(true); setErr('');
     try { await api('/api/demo/start', { method: 'POST', body: { role: manager ? 'employee' : 'manager', demo: kind } }); markDemoTab(); await refresh(); location.assign(manager ? '/' : '/admin'); }
-    catch { location.assign(demoHome(kind)); }
+    catch (e) { setErr((e as Error).message || 'That didn’t switch. Try again.'); setBusy(false); }
   };
   return (
     <div className="demo-bar" role="region" aria-label="Demo">
-      <p><span className="demo-long">You’re in <strong>{user.store?.name || 'The Baldwin'}</strong>, a sample restaurant, as </span>{manager ? <><span className="demo-long">the </span><strong>Manager</strong></> : <><span className="demo-long">an </span><strong>Employee</strong></>}<span className="demo-short"> view</span><span className="demo-long">.</span></p>
+      {err ? <p className="demo-bar-err" role="alert">{err}</p> : <p><span className="demo-long">You’re in <strong>{user.store?.name || 'The Baldwin'}</strong>, a sample restaurant, as </span>{manager ? <><span className="demo-long">the </span><strong>Manager</strong></> : <><span className="demo-long">an </span><strong>Employee</strong></>}<span className="demo-short"> view</span><span className="demo-long">.</span></p>}
       <div className="demo-bar-actions">
         <button type="button" className="main" onClick={() => void swap()} disabled={busy}>{busy ? 'Switching…' : <><span className="demo-long">{manager ? 'See It as an Employee' : 'See It as a Manager'}</span><span className="demo-short">{manager ? 'As Employee' : 'As Manager'}</span></>}</button>
         <button type="button" onClick={() => setStep(0)}><span className="demo-long">Show Me Around</span><span className="demo-short">Tour</span></button>

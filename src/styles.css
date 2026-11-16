@@ -1434,6 +1434,7 @@ body.eip-lock { overflow: hidden; }
 .demo-role button { white-space: nowrap; }
 .demo-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px 20px; flex-wrap: wrap; padding: 10px 24px; background: var(--tint); color: var(--ink); font-family: 'Archivo', sans-serif; font-size: 14px; line-height: 1.4; }
 .demo-bar p { margin: 0; }
+.demo-bar p.demo-bar-err { color: #8E2A26; font-weight: 600; white-space: normal !important; min-width: 0; } /* a refused switch (Nov 15) */
 .demo-bar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .demo-bar button { min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #8A7A66; background: transparent; color: var(--ink); font: 600 13.5px 'Archivo', sans-serif; white-space: nowrap; cursor: pointer; }
 .demo-bar button.main { background: var(--ink); border-color: var(--ink); color: var(--cream); }
