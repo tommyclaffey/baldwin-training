@@ -251,7 +251,7 @@ export function dishPage(template, item, links = {}) {
   setText(descT, d.description || '');
   if (descT) { descT.sh = 'L'; descT.ar = 'H'; } // the Food Book's descriptions run longer than one line
 
-  // Ingredients as one line of text; allergens as dark-red pills; "confirm with chef" notes while the chef hasn't signed off.
+  // Ingredients as one line of text; allergens as dark-red pills.
   const ingRow = find(header, byName('Ingredients'));
   if (ingRow) {
     const list = (d.ingredients || []).filter(Boolean);
@@ -266,10 +266,11 @@ export function dishPage(template, item, links = {}) {
   const allergens = find(header, byName('Allergens'));
   repeat(allergens, startsWith('Allergen · '), d.allergens || [], (p, a) => { p.n = 'Allergen · ' + a; setText(texts(p)[0], a.toUpperCase()); });
   {
+    // Nov 15 (Tommy: "you can remove confirm with chef"): no "Confirm with chef" note on allergens, for anyone.
     const note = find(allergens, byName('Note · Confirm'));
     if (note) {
-      if (!(d.allergens || []).length) setText(texts(note)[0], d.confirm ? 'NONE LISTED · CONFIRM WITH CHEF' : 'NONE');
-      else if (!d.confirm) remove(allergens, note);
+      if (!(d.allergens || []).length) setText(texts(note)[0], 'NONE');
+      else remove(allergens, note);
     }
     // Pills and the confirm note wrap beside the label instead of running off the edge (Nov 5: longer allergen lists).
     const label = allergens.c.find((c) => c.t === 'T');

@@ -98,3 +98,9 @@ test('the error log keeps 90 days', async () => {
   assert.equal(pruneErrors(db), 2);
   assert.deepEqual(db.prepare('SELECT message FROM errors ORDER BY id').all().map((r) => r.message), ['e1', 'e89']);
 });
+
+// Nov 15 (Tommy: "you can remove confirm with chef"): dish pages never show "Confirm with chef" on allergens.
+test('no "Confirm with chef" note on a dish’s allergens', async () => {
+  const src = (await import('node:fs')).readFileSync(new URL('../server/templates.mjs', import.meta.url), 'utf8');
+  assert.doesNotMatch(src, /CONFIRM WITH CHEF/);
+});
