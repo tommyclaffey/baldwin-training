@@ -17,6 +17,9 @@ export const JOBS = [
   { key: 'bartender', label: 'Bartender' },
   { key: 'host', label: 'Host' },
   { key: 'support', label: 'Support', note: 'Bussers and runners' },
+  // Nov 16, Tommy: "add the Expo under support … needs to know everything that a runner would need to know, which is food,
+  // but they do not need to know the drink side". Food, table numbers, the three-line drops, Hospitality; no cocktails.
+  { key: 'expo', label: 'Expo', note: 'Support · runs the pass' },
 ];
 const JOB_KEYS = new Set(JOBS.map((j) => j.key));
 export const validJobs = (list) => [...new Set((Array.isArray(list) ? list : []).map(String))].filter((k) => JOB_KEYS.has(k));
@@ -62,6 +65,13 @@ const PATHS = {
   support: [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('safety'), read('cleanliness'), read('floor-plan'), read('step-4/fire-and-run'), read('step-6/clear'), read('allergen-guide'), quiz('t:allergens'), ACK] },
     { key: 'week-1', title: 'Week 1 · Every dish you run', day: 7, steps: [...HOSP_WEEK1, group('food'), sign('run-food', 'Run food for a shift', 'Name every dish at the table; a manager signs you off')] },
+  ],
+  // Expo (Nov 16): a runner's food knowledge plus the pass. Nothing from the bar, beer or wine side.
+  expo: [
+    { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('safety'), read('cleanliness'), read('floor-plan'), read('step-4/fire-and-run'), read('allergen-guide'), quiz('t:allergens'), ACK] },
+    { key: 'week-1', title: 'Week 1 · Every dish on the pass', day: 7, steps: [...HOSP_WEEK1, read('food-matrix'), group('food'), sign('table-numbers', 'Know every table and seat number', 'Point to any table or seat on the floor plan; a manager signs you off')] },
+    { key: 'week-2', title: 'Week 2 · Drops and the pass', day: 14, steps: [sign('drops', 'Give the three-line drop for three dishes', 'A manager listens at the pass and signs you off'), sign('expo', 'Run the pass for a shift', 'Call the tickets, check every plate and send it to the right seat; a manager signs you off')] },
+    { key: 'weeks-3-4', title: 'Weeks 3 and 4 · Hospitality', day: 28, steps: [...TABLE_SERVICE] },
   ],
 };
 

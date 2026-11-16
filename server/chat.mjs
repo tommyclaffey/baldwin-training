@@ -40,7 +40,7 @@ const EMOJI = ['👍', '✅', '🔥', '👀', '🙏', '❤️', '😂', '🎉', 
 export const SERVICE_WORDS = ['86’d', 'Heard', 'Behind', 'Corner', 'Hands', 'Yes Chef'];
 export const REACTIONS = [...EMOJI, ...SERVICE_WORDS];
 const reactionOrder = (e) => { const i = REACTIONS.indexOf(e); return i < 0 ? 999 : i; };
-const FOH_JOBS = ['server', 'host', 'bartender', 'support'];
+const FOH_JOBS = ['server', 'host', 'bartender', 'support', 'expo'];
 /** Kitchen jobs aren't on the job list yet (Server, Bartender, Host, Support). Until they are, Kitchen is the managers. */
 export const KITCHEN_JOBS = ['kitchen', 'cook', 'line-cook', 'prep', 'dish'];
 // v2 (Figma 681:833): Discord's lower-case channel names, grouped; the topic sits beside the name in the header.

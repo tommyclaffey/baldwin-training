@@ -129,7 +129,14 @@ test('the Training Acknowledgment is a Day 1 step on every job: the person signs
   const perrin = (await owner2('/api/team')).data.people.find((p) => p.name === 'Perrin Okafor');
   // on Day 1 (the first stage, due the day they start) of every job's path
   assert.equal((await staff2('/api/path/jobs', { method: 'POST', body: { jobs: ['server'] } })).status, 200, 'they pick their job');
-  for (const job of ['server', 'bartender', 'host', 'support']) {
+  { // Expo (Nov 16): food, table numbers, drops, Hospitality; nothing from the drink side
+    const ex = (await owner2(`/api/path/person/${perrin.id}`, { method: 'PATCH', body: { jobs: ['expo'] } })).data.paths[0];
+    assert.equal(ex.label, 'Expo');
+    const ids = ex.stages.flatMap((st) => st.steps.map((s) => `${s.id} ${s.title}`)).join('\n');
+    assert.ok(/table and seat number/.test(ids) && /three-line drop/.test(ids) && /Run the pass/.test(ids), ids);
+    assert.ok(!/bar-|beer|wine|cocktail|spec/i.test(ids), 'no drink steps:\n' + ids);
+  }
+  for (const job of ['server', 'bartender', 'host', 'support', 'expo']) {
     const p = (await owner2(`/api/path/person/${perrin.id}`, { method: 'PATCH', body: { jobs: [job] } })).data.paths[0];
     const first = p.stages[0];
     assert.equal(first.key, 'first', job); assert.equal(first.title, 'Before your first shift');
