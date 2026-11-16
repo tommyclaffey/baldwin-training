@@ -1,5 +1,6 @@
 // Assembles a page: either a CMS page (collection template + entry), or a designed page with its lists
 // (tables, strips) filled from the CMS.
+import { teamCan } from './miseteam.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { addRows } from './editinplace.mjs';
@@ -204,7 +205,7 @@ function entryPage(db, e) {
 const MANAGERS = new Set(['manager', 'owner', 'superadmin']);
 export function canOpen(user, to) {
   if (!user || !MANAGERS.has(user.role)) return false;
-  if (/^\/admin\/(wine-videos|pages\/classic)/.test(to)) return user.role === 'superadmin';
+  if (/^\/admin\/(wine-videos|pages\/classic)/.test(to)) return teamCan(user, 'library'); // Nov 16: not Mise's Support
   return true;
 }
 /* Notes to the team that fills the book in ("Bar lead to add our bottle", "confirm with chef", "Sample spec"). Managers see

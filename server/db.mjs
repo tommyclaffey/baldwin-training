@@ -5,6 +5,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { watchContent } from './cache.mjs';
 import { migratePlan } from './looks.mjs';
 import { migrateHq } from './hq.mjs';
+import { migrateTeam } from './miseteam.mjs';
 
 export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'data'));
 export const MEDIA_DIR = path.join(DATA_DIR, 'media');
@@ -309,6 +310,7 @@ export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
   migrateBrand(db);
   migratePlan(db); // Nov 16: companies.plan, which decides whether a company can wear a custom look (server/looks.mjs)
   migrateHq(db); // Nov 16: Mise Academy (HQ), Mise's own company, where super admins work by default (server/hq.mjs)
+  migrateTeam(db); // Nov 16: Mise team roles, Promote to Manager links, the log's team role (server/miseteam.mjs)
   // The Hospitality Program's acknowledgments (Nov 11, server/acks.mjs): its own table, made here too, so a demo copy
   // can be seeded and dropped on any database (no migration number, like brand).
   db.exec(`CREATE TABLE IF NOT EXISTS program_acks(user_id INT NOT NULL, store_id INT NOT NULL, company_id INT, level TEXT NOT NULL,
@@ -332,6 +334,9 @@ export function migrateBrand(db) {
   db.exec("UPDATE companies SET brand = 'baldwin'");
 }
 
-export function audit(db, userId, action, detail, companyId = null) {
-  db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id) VALUES (?,?,?,?,?)').run(userId ?? null, action, detail ? String(detail).slice(0, 500) : null, now(), companyId);
+/** One line in the log. teamRole (Nov 16): a Mise teammate's role when they did it (Super Admin → Log names it). */
+export function audit(db, userId, action, detail, companyId = null, teamRole = null) {
+  const d = detail ? String(detail).slice(0, 500) : null;
+  if (teamRole) db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id,team_role) VALUES (?,?,?,?,?,?)').run(userId ?? null, action, d, now(), companyId, teamRole);
+  else db.prepare('INSERT INTO audit(user_id,action,detail,at,company_id) VALUES (?,?,?,?,?)').run(userId ?? null, action, d, now(), companyId);
 }

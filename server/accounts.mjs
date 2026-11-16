@@ -1,8 +1,9 @@
 // Accounts: companies, people, sign-in, staff join codes, two-step sign-in, and the super admin.
 //
 // Roles
-//   superadmin  Tommy and the teammates he adds. Belongs to no company; sees and changes everything (/api/super/*).
-//               Two-step sign-in is required before the super admin area opens. Only the primary super admin adds or removes others.
+//   superadmin  Tommy and the teammates he adds: the Mise team. Belongs to no company (works in Mise Academy (HQ) unless they
+//               pick one). Each has a team role, Owner · Manager · Support (Nov 16, server/miseteam.mjs), checked on every
+//               /api/super/* route. Two-step sign-in is required before anything opens. Only the Owner (the primary) manages the team.
 //   owner       Runs a company: everything a manager can do, plus owners and managers.
 //   manager     Edits the book, signs people off, manages staff and the join code.
 //   staff       Reads the book and takes quizzes. Signs in with the company's join code, their name and a PIN.
@@ -13,12 +14,13 @@
 // Every query about people is scoped to the signed-in person's company, and store-level records to their store.
 import { audit, now } from './db.mjs';
 import { LOOKS, PLANS, DEFAULT_LOOK, DEFAULT_PLAN, lookOf, lookAllowed, looksFor } from './looks.mjs';
-import { hqId } from './hq.mjs';
+import { hqId, HQ_NAME } from './hq.mjs';
+import { teamRole, teamCan, teamCans, TEAM_ROLES, GIVABLE } from './miseteam.mjs';
 import {
   hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionCookies, sessionDays, LoginLimiter, publicUser,
   sha256, newToken, newTotpSecret, verifyTotp, otpauthUrl, newJoinCode, clientIp,
 } from './auth.mjs';
-import { APP_URL, mailConfigured, sendMail, resetEmail } from './mail.mjs';
+import { APP_URL, mailConfigured, sendMail, resetEmail, promoteEmail } from './mail.mjs';
 import { logError } from './ops.mjs';
 import { wipeCompany, PROTECTED } from './companydata.mjs';
 
@@ -55,7 +57,7 @@ export function bootAccounts(db) {
     const u = db.prepare('SELECT * FROM users WHERE email = ?').get(SUPERADMIN_EMAIL);
     const primary = db.prepare("SELECT 1 FROM users WHERE role = 'superadmin' AND super_primary = 1 AND deleted_at IS NULL").get();
     if (u && !primary) {
-      db.prepare("UPDATE users SET role = 'superadmin', company_id = NULL, super_primary = 1, deleted_at = NULL WHERE id = ?").run(u.id);
+      db.prepare("UPDATE users SET role = 'superadmin', company_id = NULL, super_primary = 1, super_role = 'owner', deleted_at = NULL WHERE id = ?").run(u.id);
       audit(db, u.id, 'super: became primary super admin', SUPERADMIN_EMAIL);
     }
   }
@@ -156,9 +158,20 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     const c = db.prepare('SELECT * FROM companies WHERE join_code = ? AND deleted_at IS NULL AND internal = 0').get(String(code || '').trim().toUpperCase());
     return c || null;
   };
-  const superLog = (u, action, detail, companyId = null) => audit(db, u.id, 'super: ' + action, detail, companyId);
-  const personOut = (u) => ({ id: u.id, name: u.name, email: u.email, role: u.role, companyId: u.company_id, companyName: u.company_name ?? null,
-    createdAt: u.created_at, lastSeenAt: u.last_seen_at, deletedAt: u.deleted_at, hasPin: !!u.pin_hash, totpOn: !!u.totp_on, superPrimary: !!u.super_primary });
+  // Every Super Admin line names who did it and their team role at the time (Nov 16).
+  const superLog = (u, action, detail, companyId = null) => audit(db, u.id, 'super: ' + action, detail, companyId, teamRole(u));
+  // The Mise team belongs to Mise Academy (HQ) (Nov 16): no company row of their own, so HQ's name stands in.
+  const personOut = (u) => ({ id: u.id, name: u.name, email: u.email, role: u.role, companyId: u.company_id, companyName: u.company_name ?? (u.role === 'superadmin' ? HQ_NAME : null),
+    createdAt: u.created_at, lastSeenAt: u.last_seen_at, deletedAt: u.deleted_at, hasPin: !!u.pin_hash, totpOn: !!u.totp_on, superPrimary: !!u.super_primary, teamRole: teamRole(u) });
+  /* Promote to Manager (Nov 16, Tommy: "people get promoted from server to manager all the time"). A one-time link for a
+   * staff member who's already on the team: an invite row with their user id. They pick a password and become a manager
+   * with that email: the same person (id), so their name, path, quiz scores, certificates, chat and sign-offs stay.
+   * A new link cancels the old one; only the hash is kept. */
+  const PROMOTE_DAYS = 14;
+  const promotionOf = (userId) => db.prepare('SELECT * FROM invites WHERE user_id = ? AND used_at IS NULL AND expires_at > ? ORDER BY created_at DESC LIMIT 1').get(userId, now());
+  const promotionOut = (inv, storeName) => inv && { email: inv.email, storeId: inv.store_id ?? null, storeName: inv.store_id ? storeName(inv.store_id) : null, createdAt: inv.created_at, expiresAt: inv.expires_at };
+  /** Who can promote and change people's roles: owners, the Mise team except Support, and a demo's manager (a demo has no owner). */
+  const promoter = (u) => u.role === 'owner' || (u.role === 'superadmin' && teamCan(u, 'change')) || (u.role === 'manager' && !!companyRow(companyOf(u))?.demo);
 
   /* Password reset links (Nov 11). Only the hash is stored; a new link replaces the person's unused ones. */
   const makeReset = (t, by, via) => {
@@ -204,7 +217,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (!validPassword(b.password)) fail(400, 'Use at least 10 characters for the password.');
       if (SUPERADMIN_EMAIL && email === SUPERADMIN_EMAIL && !db.prepare("SELECT 1 FROM users WHERE role = 'superadmin' AND deleted_at IS NULL").get()) {
         if (db.prepare('SELECT 1 FROM users WHERE email = ?').get(email)) fail(409, 'That email already has an account. Sign in instead.');
-        const r = db.prepare("INSERT INTO users(email,name,role,password_hash,super_primary,created_at) VALUES (?,?,'superadmin',?,1,?)").run(email, str(b.name, 80), await hashPassword(b.password), now());
+        const r = db.prepare("INSERT INTO users(email,name,role,password_hash,super_primary,super_role,created_at) VALUES (?,?,'superadmin',?,1,'owner',?)").run(email, str(b.name, 80), await hashPassword(b.password), now());
         audit(db, Number(r.lastInsertRowid), 'super: setup', email);
         return signIn(res, req, byId(Number(r.lastInsertRowid)));
       }
@@ -407,26 +420,60 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
 
     /* ---- invites (owners and managers for a company; super admins for super admins) ---- */
     if (parts[1] === 'invite' && parts[2]) {
-      const inv = db.prepare('SELECT i.*, c.name company_name FROM invites i LEFT JOIN companies c ON c.id = i.company_id WHERE token_hash = ? AND used_at IS NULL AND expires_at > ?').get(sha256(parts[2]), now());
-      if (m === 'GET') return sendJson(res, 200, inv ? { valid: true, email: inv.email, role: inv.role, company: inv.company_name, store: inv.store_id ? db.prepare('SELECT name FROM stores WHERE id = ?').get(inv.store_id)?.name : null } : { valid: false });
+      const inv = db.prepare('SELECT i.*, c.name company_name FROM invites i LEFT JOIN companies c ON c.id = i.company_id WHERE token_hash = ? AND used_at IS NULL AND expires_at > ? AND (i.company_id IS NULL OR c.deleted_at IS NULL)').get(sha256(parts[2]), now());
+      const storeName = inv?.store_id ? db.prepare('SELECT name FROM stores WHERE id = ?').get(inv.store_id)?.name : null;
+      // A promotion (Nov 16) still needs its person: on the team, still staff, in that company.
+      const who = inv?.user_id ? db.prepare("SELECT * FROM users WHERE id = ? AND company_id = ? AND role = 'staff' AND deleted_at IS NULL").get(inv.user_id, inv.company_id) : null;
+      const ok = inv && (!inv.user_id || who);
+      if (m === 'GET') {
+        if (!ok) return sendJson(res, 200, { valid: false });
+        const co = inv.company_id ? companyRow(inv.company_id) : null;
+        return sendJson(res, 200, { valid: true, email: inv.email, role: inv.role, company: inv.company_name, store: storeName, brand: co ? lookOf(co) : 'mise',
+          teamRole: inv.role === 'superadmin' ? (GIVABLE.includes(inv.super_role) ? inv.super_role : 'manager') : null, promotion: !!who, name: who?.name ?? null });
+      }
+      if (m === 'POST' && who) {
+        if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
+        const b = await readJson(req);
+        if (!validPassword(b.password)) fail(400, 'Use at least 10 characters for the password.');
+        if (db.prepare('SELECT 1 FROM users WHERE email = ? AND id != ? AND deleted_at IS NULL').get(inv.email, who.id)) fail(409, 'Another account uses that email now. Ask your owner for a new link with a different email.');
+        const hash = await hashPassword(b.password);
+        // Single use: whoever marks it used first wins.
+        if (db.prepare('UPDATE invites SET used_at = ? WHERE token_hash = ? AND used_at IS NULL AND expires_at > ?').run(now(), inv.token_hash, now()).changes !== 1) fail(410, 'This link has expired or was already used. Ask for a new one.');
+        db.exec('BEGIN');
+        try {
+          db.prepare('UPDATE users SET email = NULL WHERE email = ? AND deleted_at IS NOT NULL').run(inv.email); // an archived person's old email
+          // Their PIN stays (unused while they're a manager), so Change to Staff puts them back on it.
+          db.prepare("UPDATE users SET role = 'manager', email = ?, password_hash = ?, store_id = ? WHERE id = ?").run(inv.email, hash, inv.store_id ?? null, who.id);
+          db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(who.id);
+          db.prepare('DELETE FROM sessions WHERE user_id = ?').run(who.id); // their phone's PIN session ends
+          db.exec('COMMIT');
+        } catch (e) { db.exec('ROLLBACK'); throw e; }
+        clearPinLimits(who.id);
+        const by = db.prepare('SELECT name FROM users WHERE id = ?').get(inv.created_by)?.name;
+        audit(db, who.id, 'promoted to manager', `${who.name} · ${inv.email}${storeName ? ' · ' + storeName : ' · every store'}${by ? ` · link from ${by}` : ''}`, inv.company_id);
+        return signIn(res, req, byId(who.id));
+      }
       if (m === 'POST') {
-        if (!inv) fail(410, 'This invite has expired or was already used. Ask for a new one.');
+        if (!ok) fail(410, 'This invite has expired or was already used. Ask for a new one.');
         const b = await readJson(req);
         if (!str(b.name, 80)) fail(400, 'Add your name.');
         if (!validPassword(b.password)) fail(400, 'Use at least 10 characters for the password.');
         if (db.prepare('SELECT 1 FROM users WHERE email = ? AND deleted_at IS NULL').get(inv.email)) fail(409, 'That person already has an account.');
         db.prepare('DELETE FROM users WHERE email = ? AND deleted_at IS NOT NULL').run(inv.email);
-        const r = db.prepare('INSERT INTO users(company_id,store_id,email,name,role,password_hash,created_at) VALUES (?,?,?,?,?,?,?)')
-          .run(inv.role === 'superadmin' ? null : inv.company_id, inv.role === 'manager' ? inv.store_id ?? null : null, inv.email, str(b.name, 80), inv.role, await hashPassword(b.password), now());
+        // A Mise teammate joins with the role the Owner picked (an invite from before Nov 16 has none: Manager, as they were).
+        const superRole = inv.role === 'superadmin' ? (GIVABLE.includes(inv.super_role) ? inv.super_role : 'manager') : null;
+        const r = db.prepare('INSERT INTO users(company_id,store_id,email,name,role,password_hash,super_role,created_at) VALUES (?,?,?,?,?,?,?,?)')
+          .run(inv.role === 'superadmin' ? null : inv.company_id, inv.role === 'manager' ? inv.store_id ?? null : null, inv.email, str(b.name, 80), inv.role, await hashPassword(b.password), superRole, now());
         db.prepare('UPDATE invites SET used_at = ? WHERE token_hash = ?').run(now(), inv.token_hash);
-        audit(db, Number(r.lastInsertRowid), inv.role === 'superadmin' ? 'super: joined as super admin' : 'joined', inv.email, inv.company_id);
+        if (superRole) audit(db, Number(r.lastInsertRowid), 'super: joined the Mise team', `${inv.email} · ${TEAM_ROLES[superRole]}`, null, superRole);
+        else audit(db, Number(r.lastInsertRowid), 'joined', inv.email, inv.company_id);
         return signIn(res, req, byId(Number(r.lastInsertRowid)));
       }
     }
-    const makeInvite = (u, email, role, companyId, storeId = null) => {
+    const makeInvite = (u, email, role, companyId, storeId = null, { superRole = null, userId = null } = {}) => {
       const token = newToken();
-      db.prepare('INSERT INTO invites(token_hash,company_id,email,role,created_by,created_at,expires_at,store_id) VALUES (?,?,?,?,?,?,?,?)')
-        .run(sha256(token), companyId, email, role, u.id, now(), new Date(Date.now() + 14 * 864e5).toISOString(), storeId);
+      db.prepare('INSERT INTO invites(token_hash,company_id,email,role,created_by,created_at,expires_at,store_id,super_role,user_id) VALUES (?,?,?,?,?,?,?,?,?,?)')
+        .run(sha256(token), companyId, email, role, u.id, now(), new Date(Date.now() + 14 * 864e5).toISOString(), storeId, superRole, userId);
       return `/admin/invite/${token}`;
     };
 
@@ -440,13 +487,19 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       // A store manager sees their store's people (and the owners); everyone else sees the whole company.
       const people = all.filter((x) => inScope(u, x) || x.role === 'owner');
       const passed = new Map(db.prepare("SELECT device, COUNT(*) n FROM signoffs WHERE company_id = ? AND quiz NOT LIKE '%:invite' GROUP BY device").all(cid).map((r) => [r.device, r.n]));
-      const invites = db.prepare('SELECT substr(token_hash,1,16) id, email, role, store_id, created_at, expires_at FROM invites WHERE company_id = ? AND used_at IS NULL AND expires_at > ? ORDER BY created_at DESC').all(cid, now());
+      // (promotions are the person's own row, not an open invite: Nov 16)
+      const invites = db.prepare('SELECT substr(token_hash,1,16) id, email, role, store_id, created_at, expires_at FROM invites WHERE company_id = ? AND used_at IS NULL AND expires_at > ? AND user_id IS NULL ORDER BY created_at DESC').all(cid, now());
       const stores = storesOf(db, cid);
       const storeName = new Map(stores.map((x) => [x.id, x.name]));
+      const owners = all.filter((x) => x.role === 'owner').length;
+      const changes = promoter(u);
       return sendJson(res, 200, {
-        company: { id: co.id, name: co.name, joinCode: co.join_code }, stores: stores.map(storeOut), yourStore: u.store_id ?? null,
-        people: people.map((x) => ({ ...personOut(x), storeId: x.store_id ?? null, storeName: x.store_id ? storeName.get(x.store_id) || null : null, signedOff: passed.get('u' + x.id) || 0, canManage: x.id !== u.id && inScope(u, x) && (x.role === 'staff' || u.role === 'owner' || u.role === 'superadmin') })),
-        invites: invites.map((i) => ({ ...i, storeName: i.store_id ? storeName.get(i.store_id) || null : null })), you: u.id, youRole: u.role,
+        company: { id: co.id, name: co.name, joinCode: co.join_code, demo: !!co.demo }, stores: stores.map(storeOut), yourStore: u.store_id ?? null,
+        people: people.map((x) => ({ ...personOut(x), storeId: x.store_id ?? null, storeName: x.store_id ? storeName.get(x.store_id) || null : null, signedOff: passed.get('u' + x.id) || 0, canManage: x.id !== u.id && inScope(u, x) && (x.role === 'staff' || u.role === 'owner' || u.role === 'superadmin'),
+          // Nov 16: Promote to Manager (staff) and Change to Staff (owners and managers; never yourself or the last owner)
+          canPromote: changes && x.role === 'staff', canDemote: changes && x.role !== 'staff' && x.id !== u.id && !(x.role === 'owner' && owners < 2),
+          promotion: x.role === 'staff' ? promotionOut(promotionOf(x.id), (id) => storeName.get(id) || null) : null })),
+        invites: invites.map((i) => ({ ...i, storeName: i.store_id ? storeName.get(i.store_id) || null : null })), you: u.id, youRole: u.role, canChangeRoles: changes,
       });
     }
     if (p === '/api/team/invite' && m === 'POST') {
@@ -487,6 +540,73 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         const r = makeReset(t, u, u.role === 'superadmin' ? 'super' : 'owner');
         audit(db, u.id, 'reset link', `${t.name} · ${t.email}`, cid);
         return sendJson(res, 200, resetOut(t, r));
+      }
+      /* ---- Promote to Manager / Change to Staff (Nov 16) ---- */
+      if (parts[3] === 'promote' && (m === 'POST' || m === 'DELETE')) {
+        if (!promoter(u)) fail(403, 'Only an owner can promote someone to manager.');
+        if (m === 'DELETE') {
+          const n = db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(t.id).changes;
+          if (!n) fail(404, 'There’s no promotion waiting for them.');
+          audit(db, u.id, 'cancel promotion', t.name, cid, teamRole(u));
+          return sendJson(res, 200, { ok: true });
+        }
+        if (t.role !== 'staff') fail(400, `${t.name} is already ${t.role === 'owner' ? 'an owner' : 'a manager'}.`);
+        const b = await readJson(req);
+        const stores = storesOf(db, cid);
+        // Which store they'll manage: one store, or every store (null), like a manager invite. Default: the one they work at.
+        const st = b.storeId === null ? null : stores.find((x) => x.id === Number(b.storeId ?? t.store_id)) || null;
+        if (b.storeId != null && !st) fail(404, 'We couldn’t find that store.');
+        const where = st ? st.name : 'every store';
+        if (companyRow(cid)?.demo) {
+          // A demo has no real emails: the promotion happens straight away, so it can be shown. Real accounts get a link.
+          db.prepare("UPDATE users SET role = 'manager', store_id = ? WHERE id = ?").run(st?.id ?? null, t.id);
+          db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
+          audit(db, u.id, 'promote to manager', `${t.name} · ${where} (demo: straight away)`, cid);
+          return sendJson(res, 200, { ok: true, instant: true, name: t.name, storeName: st?.name ?? null });
+        }
+        const email = String(b.email || '').trim().toLowerCase();
+        if (!validEmail(email)) fail(400, 'Enter a valid email address.');
+        if (db.prepare('SELECT 1 FROM users WHERE email = ? AND id != ? AND deleted_at IS NULL').get(email, t.id)) fail(409, 'Another account already uses that email. Use a different one.');
+        if (db.prepare('SELECT 1 FROM invites WHERE email = ? AND used_at IS NULL AND expires_at > ? AND (user_id IS NULL OR user_id != ?)').get(email, now(), t.id)) fail(409, 'That email already has an open invite. Cancel it first, or use a different email.');
+        db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(t.id); // a new link cancels the old one
+        const link = makeInvite(u, email, 'manager', cid, st?.id ?? null, { userId: t.id });
+        const inv = promotionOf(t.id);
+        let emailed = false;
+        if (mailConfigured()) {
+          emailed = true;
+          const company = companyRow(cid)?.name;
+          void sendMail({ to: email, ...promoteEmail({ name: t.name, email, url: APP_URL + link, days: PROMOTE_DAYS, place: st?.name || company, by: u.name }) })
+            .catch((e) => { console.error('[mail] promotion email failed', e.message); logError(db, 'server', '/api/team/promote', e, u.id); });
+        }
+        audit(db, u.id, 'promotion link', `${t.name} · ${email} · ${where}`, cid, teamRole(u));
+        return sendJson(res, 200, { link, name: t.name, email, storeName: st?.name ?? null, expiresAt: inv?.expires_at ?? null, days: PROMOTE_DAYS, emailed });
+      }
+      if (parts[3] === 'demote' && m === 'POST') {
+        if (!promoter(u)) fail(403, 'Only an owner can change someone’s role.');
+        if (t.id === u.id) fail(400, 'Ask another owner to change your role.');
+        if (t.role === 'staff') fail(400, `${t.name} is already staff.`);
+        if (t.role === 'owner' && db.prepare("SELECT COUNT(*) n FROM users WHERE company_id = ? AND role = 'owner' AND deleted_at IS NULL").get(cid).n < 2) fail(400, 'Every company keeps at least one owner. Make someone else an owner first.');
+        const b = await readJson(req);
+        const stores = storesOf(db, cid);
+        // Staff work at one store: the one picked, else the one they managed, else the one you're working in.
+        const st = stores.find((x) => x.id === Number(b.storeId)) || stores.find((x) => x.id === t.store_id) || storeOf(db, u) || stores[0];
+        if (!st) fail(400, 'Add a store first.');
+        if (db.prepare("SELECT 1 FROM users WHERE company_id = ? AND role = 'staff' AND name = ? COLLATE NOCASE AND deleted_at IS NULL AND id != ?").get(cid, t.name, t.id)) {
+          fail(409, `Someone on the staff is already called ${t.name}. Rename one of them first.`);
+        }
+        db.exec('BEGIN');
+        try {
+          // They sign in with a PIN again: the one they had, else they pick one with the join code and their name.
+          // The email stays on their account (so Promote to Manager can use it again); it doesn't sign in as staff.
+          db.prepare("UPDATE users SET role = 'staff', store_id = ?, password_hash = NULL, totp_on = 0, totp_secret = NULL WHERE id = ?").run(st.id, t.id);
+          db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
+          db.prepare('DELETE FROM password_resets WHERE user_id = ? AND used_at IS NULL').run(t.id);
+          db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(t.id);
+          db.exec('COMMIT');
+        } catch (e) { db.exec('ROLLBACK'); throw e; }
+        clearPinLimits(t.id);
+        audit(db, u.id, 'change to staff', `${t.name} · ${st.name}${t.pin_hash ? '' : ' · picks a PIN next sign-in'}`, cid, teamRole(u));
+        return sendJson(res, 200, { ok: true, name: t.name, storeName: st.name, hasPin: !!t.pin_hash });
       }
       if (parts[3] === 'reset-pin' && m === 'POST') {
         if (t.role !== 'staff') fail(400, 'Only staff have a PIN.');
@@ -581,22 +701,33 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     /* ---- super admin ---- */
     if (parts[1] !== 'super') return false;
     const s = needSuper(c, req);
+    // Nov 16: every route checks the teammate's role (server/miseteam.mjs), not just the screens.
+    const may = (action, msg = `Your Mise team role (${TEAM_ROLES[teamRole(s)]}) can’t do that. Ask the owner.`) => { if (!teamCan(s, action)) fail(403, msg); };
+    may('view');
     if (p === '/api/super/overview' && m === 'GET') {
       const companies = db.prepare(`SELECT c.*,
           (SELECT COUNT(*) FROM users u WHERE u.company_id = c.id AND u.deleted_at IS NULL AND u.role IN ('owner','manager')) leads,
           (SELECT COUNT(*) FROM users u WHERE u.company_id = c.id AND u.deleted_at IS NULL AND u.role = 'staff') staff,
           (SELECT MAX(last_seen_at) FROM users u WHERE u.company_id = c.id) last_seen
         FROM companies c ORDER BY c.internal DESC, c.deleted_at IS NOT NULL, c.name`).all(); // HQ first (Nov 16)
-      const admins = db.prepare("SELECT u.*, NULL company_name FROM users u WHERE role = 'superadmin' ORDER BY super_primary DESC, name").all();
+      const admins = db.prepare("SELECT u.*, NULL company_name FROM users u WHERE role = 'superadmin' ORDER BY super_primary DESC, CASE super_role WHEN 'manager' THEN 0 ELSE 1 END, name").all();
+      const team = admins.filter((a) => !a.deleted_at);
+      // The Owner sees the team's open invites (and can cancel them).
+      const teamInvites = teamCan(s, 'team') ? db.prepare("SELECT substr(token_hash,1,16) id, email, super_role, created_at, expires_at FROM invites WHERE role = 'superadmin' AND used_at IS NULL AND expires_at > ? ORDER BY created_at DESC").all(now())
+        .map((i) => ({ id: i.id, email: i.email, teamRole: GIVABLE.includes(i.super_role) ? i.super_role : 'manager', createdAt: i.created_at, expiresAt: i.expires_at })) : [];
       return sendJson(res, 200, {
-        companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.leads, staff: x.staff, lastSeenAt: x.last_seen,
+        // Mise Academy (HQ)'s people are the Mise team (they have no company row of their own)
+        companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.internal ? team.length : x.leads, staff: x.staff,
+          lastSeenAt: x.internal ? team.reduce((a, t) => (t.last_seen_at && t.last_seen_at > (a || '') ? t.last_seen_at : a), null) : x.last_seen,
           demo: !!x.demo, hq: !!x.internal, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x),
           stores: storesOf(db, x.id).map((st) => ({ ...storeOut(st), staff: db.prepare("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'staff' AND deleted_at IS NULL").get(st.id).n })) })),
-        admins: admins.map(personOut), you: s.id, youPrimary: !!s.super_primary, workingIn: companyOf(s),
+        admins: admins.map(personOut), teamInvites, you: s.id, youPrimary: !!s.super_primary, youRole: teamRole(s), can: teamCans(s), workingIn: companyOf(s),
+        teamRoles: Object.entries(TEAM_ROLES).map(([id, name]) => ({ id, name, givable: GIVABLE.includes(id) })),
         plans: Object.values(PLANS).map((x) => ({ id: x.id, name: x.name, customLook: x.customLook })),
       });
     }
     if (p === '/api/super/companies' && m === 'POST') {
+      may('addCompany');
       const b = await readJson(req);
       const name = str(b.name, 80);
       if (name.length < 2) fail(400, 'Add the company’s name.');
@@ -624,6 +755,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (!co) fail(404, 'We couldn’t find that company.');
       if (m === 'PATCH') {
         const b = await readJson(req);
+        may(b.plan !== undefined || b.look !== undefined ? 'planLook' : 'editCompany');
         // Nov 16: plan and look (Super Admin → Companies). A custom look needs the Custom Brand plan and has to be made for
         // this company; moving back to Foundation puts the company in the Mise look.
         if (b.plan !== undefined || b.look !== undefined) {
@@ -648,12 +780,16 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         return sendJson(res, 200, { ok: true });
       }
       if (parts[4] === 'join-code' && m === 'POST') {
+        may('editCompany');
         if (co.internal) fail(400, 'Nobody joins Mise Academy (HQ) as staff.');
         const code = setJoinCode(db, co.id);
         superLog(s, 'new join code', co.name, co.id);
         return sendJson(res, 200, { joinCode: code });
       }
       if (parts[4] === 'owner-invite' && m === 'POST') {
+        may('inviteOwner');
+        if (co.internal) fail(400, 'Mise Academy (HQ) is Mise’s own company: add teammates on Mise Team.');
+        if (co.deleted_at) fail(400, 'Restore the company first.');
         const b = await readJson(req);
         const email = String(b.email || '').trim().toLowerCase();
         if (!validEmail(email)) fail(400, 'Enter a valid email address.');
@@ -663,6 +799,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         return sendJson(res, 200, { link });
       }
       if (parts[4] === 'stores' && m === 'POST') {
+        may('editCompany');
         const b = await readJson(req);
         const n = str(b.name, 80);
         if (n.length < 2) fail(400, 'Add the store’s name.');
@@ -670,8 +807,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         superLog(s, 'add store', `${co.name} · ${n}`, co.id);
         return sendJson(res, 200, { id: sid });
       }
-      if (parts[4] === 'restore' && m === 'POST') { db.prepare('UPDATE companies SET deleted_at = NULL WHERE id = ?').run(co.id); superLog(s, 'restore company', co.name, co.id); return sendJson(res, 200, { ok: true }); }
+      if (parts[4] === 'restore' && m === 'POST') { may('editCompany'); db.prepare('UPDATE companies SET deleted_at = NULL WHERE id = ?').run(co.id); superLog(s, 'restore company', co.name, co.id); return sendJson(res, 200, { ok: true }); }
       if (m === 'DELETE') {
+        may('deleteCompany', 'Only the owner deletes a company.');
         if (co.internal) fail(400, 'Mise Academy (HQ) is Mise’s own company and can’t be deleted.');
         const b = await readJson(req);
         if (str(b.confirm, 80) !== co.name) fail(400, `Type the company’s name (${co.name}) to delete it.`);
@@ -682,6 +820,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       }
     }
     if (parts[2] === 'stores' && /^\d+$/.test(parts[3] || '') && m === 'PATCH') {
+      may('editCompany');
       const st = db.prepare('SELECT * FROM stores WHERE id = ?').get(Number(parts[3]));
       if (!st) fail(404, 'We couldn’t find that store.');
       const b = await readJson(req);
@@ -691,6 +830,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       return sendJson(res, 200, { ok: true });
     }
     if (p === '/api/super/act' && m === 'POST') {
+      may('work');
       const b = await readJson(req);
       const co = companyRow(Number(b.companyId));
       if (!co) fail(404, 'We couldn’t find that company.');
@@ -701,19 +841,34 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     if (p === '/api/super/users' && m === 'GET') {
       const cid = url.searchParams.get('company');
       const q = `%${str(url.searchParams.get('q'), 60)}%`;
+      // Mise Academy (HQ)'s people are the Mise team (Nov 16)
+      const hq = cid && Number(cid) === hqId();
       const rows = db.prepare(`SELECT u.*, c.name company_name FROM users u LEFT JOIN companies c ON c.id = u.company_id
-        WHERE (? = '' OR u.company_id = ?) AND (u.name LIKE ? OR IFNULL(u.email,'') LIKE ?) ORDER BY u.deleted_at IS NOT NULL, c.name, u.name LIMIT 500`)
-        .all(cid || '', Number(cid) || 0, q, q);
+        WHERE (? = '' OR u.company_id = ? OR (? AND u.role = 'superadmin')) AND (u.name LIKE ? OR IFNULL(u.email,'') LIKE ?) ORDER BY u.deleted_at IS NOT NULL, c.name, u.name LIMIT 500`)
+        .all(cid || '', Number(cid) || 0, hq ? 1 : 0, q, q);
       return sendJson(res, 200, { users: rows.map(personOut) });
     }
     if (parts[2] === 'users' && /^\d+$/.test(parts[3] || '')) {
       const t = byId(Number(parts[3]));
       if (!t) fail(404, 'We couldn’t find that person.');
       const protectedSuper = t.role === 'superadmin' && (t.super_primary || !s.super_primary) && t.id !== s.id;
+      // Teammates are the Owner's (Nov 16); everyone else is an editPerson / removePerson action.
+      const mayPerson = (action) => (t.role === 'superadmin' && t.id !== s.id ? may('team', 'Only the owner changes the Mise team.') : may(action));
       if (m === 'PATCH') {
-        if (protectedSuper) fail(403, 'Only the primary super admin can change another super admin.');
+        if (protectedSuper) fail(403, 'Only the owner can change another teammate.');
         const b = await readJson(req);
         const changes = [];
+        // A teammate's role: Manager or Support (Nov 16). Only the Owner; never the Owner's own.
+        if (b.teamRole !== undefined) {
+          may('team', 'Only the owner changes the Mise team.');
+          if (t.role !== 'superadmin' || t.super_primary) fail(400, 'Only Mise teammates (not the owner) have a role to change.');
+          if (!GIVABLE.includes(b.teamRole)) fail(400, 'Pick Manager or Support.');
+          db.prepare('UPDATE users SET super_role = ? WHERE id = ?').run(b.teamRole, t.id);
+          db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
+          superLog(s, 'change team role', `${t.name}: ${TEAM_ROLES[teamRole(t)]} → ${TEAM_ROLES[b.teamRole]}`);
+          return sendJson(res, 200, { ok: true });
+        }
+        if (t.id !== s.id) mayPerson('editPerson');
         if (b.name !== undefined) { const n = str(b.name, 80); if (n.length < 2) fail(400, 'Add a name.'); db.prepare('UPDATE users SET name = ? WHERE id = ?').run(n, t.id); changes.push(`name → ${n}`); }
         if (b.email !== undefined && (t.role !== 'staff' || (b.role && b.role !== 'staff'))) {
           const e = String(b.email || '').trim().toLowerCase();
@@ -741,16 +896,18 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         superLog(s, 'edit person', `${t.name}: ${changes.join(', ') || 'no change'}`, t.company_id);
         return sendJson(res, 200, { ok: true });
       }
-      if (parts[4] === 'restore' && m === 'POST') { db.prepare('UPDATE users SET deleted_at = NULL WHERE id = ?').run(t.id); superLog(s, 'restore person', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
+      if (parts[4] === 'restore' && m === 'POST') { mayPerson('removePerson'); db.prepare('UPDATE users SET deleted_at = NULL WHERE id = ?').run(t.id); superLog(s, 'restore person', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
       if (parts[4] === 'reset-password' && m === 'POST') {
+        may('resetPassword');
         resettable(t, s);
         if (protectedSuper) fail(403, 'Only the primary super admin can reset another super admin’s password.');
         const r = makeReset(t, s, 'super');
         superLog(s, 'reset password link', `${t.name} (${t.role}) · ${t.email}`, t.company_id);
         return sendJson(res, 200, resetOut(t, r));
       }
-      if (parts[4] === 'reset-pin' && m === 'POST') { db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id); db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id); clearPinLimits(t.id); superLog(s, 'reset PIN', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
+      if (parts[4] === 'reset-pin' && m === 'POST') { may('resetPin'); if (t.role !== 'staff') fail(400, 'Only staff have a PIN.'); db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id); db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id); clearPinLimits(t.id); superLog(s, 'reset PIN', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
       if (parts[4] === 'sign-in-as' && m === 'POST') {
+        may('signInAs');
         if (t.role === 'superadmin') fail(400, 'Super admins can’t sign in as each other.');
         if (t.deleted_at) fail(400, 'Restore this person first.');
         superLog(s, 'sign in as', `${t.name} (${t.role})`, t.company_id);
@@ -760,27 +917,42 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       }
       if (m === 'DELETE') {
         if (t.id === s.id) fail(400, 'You can’t delete your own account.');
-        if (protectedSuper || (t.role === 'superadmin' && !s.super_primary)) fail(403, 'Only the primary super admin can remove a super admin.');
+        mayPerson('removePerson');
+        if (protectedSuper || (t.role === 'superadmin' && !s.super_primary)) fail(403, 'Only the owner can remove a teammate.');
         db.prepare('UPDATE users SET deleted_at = ? WHERE id = ?').run(now(), t.id);
         db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
         superLog(s, 'delete person (30 days to restore)', `${t.name} (${t.role})`, t.company_id);
         return sendJson(res, 200, { ok: true });
       }
     }
+    /* ---- the Mise team: only the Owner invites, changes roles and removes (Nov 16) ---- */
     if (p === '/api/super/admins/invite' && m === 'POST') {
-      if (!s.super_primary) fail(403, 'Only the primary super admin can add super admins.');
+      may('team', 'Only the owner adds people to the Mise team.');
       const b = await readJson(req);
       const email = String(b.email || '').trim().toLowerCase();
       if (!validEmail(email)) fail(400, 'Enter a valid email address.');
+      const role = b.teamRole === undefined ? 'manager' : String(b.teamRole);
+      if (!GIVABLE.includes(role)) fail(400, 'Pick Manager or Support.');
       if (db.prepare('SELECT 1 FROM users WHERE email = ? AND deleted_at IS NULL').get(email)) fail(409, 'That email already has an account.');
-      const link = makeInvite(s, email, 'superadmin', null);
-      superLog(s, 'invite super admin', email);
-      return sendJson(res, 200, { link });
+      const link = makeInvite(s, email, 'superadmin', null, null, { superRole: role });
+      superLog(s, 'invite to the Mise team', `${email} · ${TEAM_ROLES[role]}`);
+      return sendJson(res, 200, { link, email, teamRole: role });
+    }
+    if (parts[2] === 'admins' && parts[3] === 'invites' && parts[4] && m === 'DELETE') {
+      may('team', 'Only the owner changes the Mise team.');
+      const inv = db.prepare("SELECT email FROM invites WHERE substr(token_hash,1,16) = ? AND role = 'superadmin' AND used_at IS NULL").get(parts[4]);
+      if (!inv) fail(404, 'That invite is gone already.');
+      db.prepare("DELETE FROM invites WHERE substr(token_hash,1,16) = ? AND role = 'superadmin' AND used_at IS NULL").run(parts[4]);
+      superLog(s, 'cancel Mise team invite', inv.email);
+      return sendJson(res, 200, { ok: true });
     }
     if (p === '/api/super/log' && m === 'GET') {
-      const rows = db.prepare(`SELECT a.id, a.action, a.detail, a.at, u.name, c.name company FROM audit a LEFT JOIN users u ON u.id = a.user_id
+      may('log');
+      const rows = db.prepare(`SELECT a.id, a.action, a.detail, a.at, a.team_role, u.name, u.role, u.super_role, u.super_primary, c.name company FROM audit a LEFT JOIN users u ON u.id = a.user_id
         LEFT JOIN companies c ON c.id = a.company_id WHERE a.action LIKE 'super:%' ORDER BY a.id DESC LIMIT 300`).all();
-      return sendJson(res, 200, { log: rows.map((r) => ({ ...r, action: r.action.replace(/^super: /, '') })) });
+      // Who did it and their team role then (rows from before Nov 16: their role now)
+      return sendJson(res, 200, { log: rows.map((r) => ({ id: r.id, action: r.action.replace(/^super: /, ''), detail: r.detail, at: r.at, name: r.name, company: r.company,
+        teamRole: r.team_role || teamRole(r) })) });
     }
     fail(404, 'Not found.');
   };

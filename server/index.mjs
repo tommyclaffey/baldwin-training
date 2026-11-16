@@ -8,6 +8,7 @@ import crypto from 'node:crypto';
 import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie, endSession, clientIp } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
+import { teamCan, viewOnly, VIEW_ONLY_MESSAGE } from './miseteam.mjs';
 import { assemble, fullIndex, isCachedIndex, warmContent, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore, canOpen } from './content.mjs';
 import { archivedList, ARCHIVE_GROUPS } from './archive.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
@@ -177,7 +178,7 @@ const needBook = needReader;
 /** Editing a store's own content: a manager of that store. */
 const needEditor = needUser;
 /** The shared library (classics, wine videos) is every company's, so only a super admin changes it. */
-const needLibrary = (c, req) => { const u = needUser(c, req); if (u.role !== 'superadmin') fail(403, 'The shared library is kept by the app’s team. Ask us if something needs changing.'); return u; };
+const needLibrary = (c, req) => { const u = needUser(c, req); if (!teamCan(u, 'library')) fail(403, 'The shared library is kept by the app’s team. Ask us if something needs changing.'); return u; };
 const inStore = (c, fn) => withStore(c.storeRow, fn, c.user);
 
 const clean = (s, max = 4000) => String(s ?? '').slice(0, max);
@@ -217,6 +218,10 @@ const imageUrl = (v) => { const s = str(v, 300); return s.startsWith('/media/') 
 
 /** What a super admin without two-step sign-in can still reach: their account, to turn it on. */
 const SUPER_BEFORE_TWO_STEP = new Set(['/api/me', '/api/2fa/start', '/api/2fa/enable', '/api/password', '/api/logout', '/api/chat/unread', '/api/super/overview']);
+/** What a Support teammate can still send while they look around (Nov 16, server/miseteam.mjs): their own account, picking
+ *  a company or store to look at, the way back from Sign In As, and the app's own error reports. */
+const VIEW_ONLY_WRITES = new Set(['/api/logout', '/api/password', '/api/2fa/start', '/api/2fa/enable', '/api/store',
+  '/api/demo/exit', '/api/client-error', '/api/scan/ready']);
 
 /* ------------------------------ routes ------------------------------ */
 const accounts = accountRoutes({ db, fail, sendJson, readJson, str, isSecure });
@@ -321,6 +326,9 @@ async function api(req, res, url) {
   if (c.user?.role === 'superadmin' && !c.user.totp_on && !c.user.impersonator_id && !SUPER_BEFORE_TWO_STEP.has(p)) {
     fail(403, 'Turn on two-step sign-in on Your Account first. Super admins need it before they can open any company.');
   }
+  // Nov 16: Mise's Support teammates look and change nothing, in a company or signed in as someone (server/miseteam.mjs).
+  // (Super Admin's own routes check each role themselves, in server/accounts.mjs)
+  if (m !== 'GET' && m !== 'HEAD' && viewOnly(c.user) && !VIEW_ONLY_WRITES.has(p) && !p.startsWith('/api/super/')) fail(403, VIEW_ONLY_MESSAGE);
   // Company data (Nov 14, server/companydata.mjs): an owner's export and deletion request; the super admin's confirm.
   if ((p.startsWith('/api/company/') || p.startsWith('/api/super/deletions')) && (await companyData(req, res, url, c)) !== false) return;
   if ((await accounts(req, res, url, c)) !== false) return;
@@ -494,7 +502,13 @@ async function api(req, res, url) {
         passed: q.best >= passFor(q.total), signedOff: mine.signoffs[id] || null, signable: signable(db, c.store, id) })) : [];
       const quizAverage = quizzes.length ? Math.round((quizzes.reduce((n, q) => n + q.best / q.total, 0) / quizzes.length) * 100) : null;
       const certificates = certificatesFor(db, x, c.store, c.storeRow).map((z) => ({ key: z.key, title: z.title, earnedAt: z.earnedAt }));
-      return { ...path, ...row, hasPin: !!x.pin_hash, createdAt: x.created_at, store: c.storeRow?.name || null, quizzes, quizAverage, certificates };
+      // Nov 16: Promote to Manager, on their People panel. Owners, the Mise team (not Support), a demo's manager.
+      const u = c.user;
+      const canPromote = u.role === 'owner' || (u.role === 'superadmin' && teamCan(u, 'change')) || (u.role === 'manager' && !!c.user.demo);
+      const inv = db.prepare('SELECT i.email, i.store_id, i.created_at, i.expires_at, s.name store_name FROM invites i LEFT JOIN stores s ON s.id = i.store_id WHERE i.user_id = ? AND i.used_at IS NULL AND i.expires_at > ? ORDER BY i.created_at DESC LIMIT 1').get(x.id, now());
+      const promotion = inv ? { email: inv.email, storeId: inv.store_id ?? null, storeName: inv.store_name ?? null, createdAt: inv.created_at, expiresAt: inv.expires_at } : null;
+      return { ...path, ...row, hasPin: !!x.pin_hash, createdAt: x.created_at, store: c.storeRow?.name || null, storeId: x.store_id ?? null, quizzes, quizAverage, certificates,
+        email: canPromote ? x.email || null : null, canPromote, promotion: canPromote ? promotion : null, demo: !!c.user.demo };
     };
     const pm = /^\/api\/path\/person\/(\d+)$/.exec(p);
     if (pm && m === 'GET') { needUser(c, req); const x = person(pm[1]); return sendJson(res, 200, personFull(x)); }

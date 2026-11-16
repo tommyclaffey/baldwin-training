@@ -13,6 +13,7 @@
 // What belongs to a company is worked out from the schema, so a table added later is covered without a change here: any
 // table with company_id (that company), user_id (its people) or store_id (its stores). Only `errors` (the app's error log)
 // keeps its rows, with the person taken off.
+import { teamCan, teamRole } from './miseteam.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { MEDIA_DIR, audit, now } from './db.mjs';
@@ -254,10 +255,12 @@ export function companyDataRoutes({ db, fail, sendJson, readJson, isDemoCompany 
     if (!(u.role === 'owner' || (demo && u.role === 'manager'))) fail(403, 'Only an owner can do that.');
     return { u, company: u.company_id, demo };
   };
-  const needSuper = (c) => {
+  // Nov 16: the Mise team sees the requests; only the Owner confirms or cancels one (server/miseteam.mjs).
+  const needSuper = (c, action = 'view') => {
     const u = c.user;
     if (!u || u.role !== 'superadmin' || u.impersonator_id) fail(404, 'Not found.');
     if (!u.totp_on) fail(403, 'Turn on two-step sign-in (Your Account) to open the super admin.');
+    if (!teamCan(u, action)) fail(403, action === 'view' ? 'Not allowed.' : 'Only the owner confirms or cancels a company’s deletion.');
     return u;
   };
   return async function route(req, res, url, c) {
@@ -304,19 +307,19 @@ export function companyDataRoutes({ db, fail, sendJson, readJson, isDemoCompany 
       return sendJson(res, 200, { ok: true, request: requestOut(db.prepare('SELECT * FROM company_deletions WHERE id = ?').get(id)) });
     }
     if (p === '/api/super/deletions' && m === 'GET') {
-      needSuper(c);
+      const s = needSuper(c);
       const list = db.prepare("SELECT * FROM company_deletions ORDER BY CASE status WHEN 'pending' THEN 0 ELSE 1 END, id DESC LIMIT 100").all();
-      return sendJson(res, 200, { requests: list.map(requestOut), waitDays: WAIT_DAYS, protected: [...PROTECTED] });
+      return sendJson(res, 200, { requests: list.map(requestOut), waitDays: WAIT_DAYS, protected: [...PROTECTED], canDecide: teamCan(s, 'deletions') });
     }
     const dm = /^\/api\/super\/deletions\/(\d+)\/(confirm|cancel)$/.exec(p);
     if (dm && m === 'POST') {
-      const s = needSuper(c);
+      const s = needSuper(c, 'deletions');
       const r = db.prepare('SELECT * FROM company_deletions WHERE id = ?').get(Number(dm[1]));
       if (!r) fail(404, 'We couldn’t find that request.');
       if (r.status !== 'pending') fail(409, r.status === 'done' ? 'That company’s data is already deleted.' : 'That request was cancelled.');
       if (dm[2] === 'cancel') {
         db.prepare("UPDATE company_deletions SET status = 'cancelled', closed_by = ?, closed_name = ?, closed_at = ? WHERE id = ?").run(s.id, s.name, now(), r.id);
-        audit(db, s.id, 'super: cancel deletion request', r.company_name, r.company_id);
+        audit(db, s.id, 'super: cancel deletion request', r.company_name, r.company_id, teamRole(s));
         audit(db, s.id, 'cancel data deletion', `${r.company_name} (Mise team)`, r.company_id);
         return sendJson(res, 200, { ok: true });
       }
@@ -333,7 +336,7 @@ export function companyDataRoutes({ db, fail, sendJson, readJson, isDemoCompany 
       db.prepare("UPDATE company_deletions SET status = 'done', closed_by = ?, closed_name = ?, closed_at = ?, early = ?, removed = ? WHERE id = ?")
         .run(s.id, s.name, now(), early ? 1 : 0, JSON.stringify(removed), r.id);
       // The log line outlives the company: no company id on it, the name in the words.
-      audit(db, s.id, 'super: delete company data', `${co.name} (#${co.id})${early ? ' · before the 7 days, confirmed twice' : ''} · ${removed.users || 0} people, ${removed.files || 0} files`);
+      audit(db, s.id, 'super: delete company data', `${co.name} (#${co.id})${early ? ' · before the 7 days, confirmed twice' : ''} · ${removed.users || 0} people, ${removed.files || 0} files`, null, teamRole(s));
       return sendJson(res, 200, { ok: true, removed });
     }
     return false;

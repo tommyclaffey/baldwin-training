@@ -1,6 +1,7 @@
 // Passwords (scrypt), hash-only session tokens, login rate limiting.
 import { createHash, createHmac, randomBytes, scrypt, timingSafeEqual } from 'node:crypto';
 import { now } from './db.mjs';
+import { teamRole, viewOnly } from './miseteam.mjs';
 
 const N = 16384, R = 8, P = 1, KEYLEN = 64;
 export const SESSION_COOKIE = 'bt_session';
@@ -46,8 +47,10 @@ export function createSession(db, userId, { days = SESSION_DAYS, impersonator = 
 /** The signed-in person, with their session's support and acting-company details. Deleted people and companies are out. */
 export function sessionUser(db, token) {
   if (!token) return null;
-  return db.prepare(`SELECT u.*, s.impersonator_id, s.acting_company_id, s.acting_store_id, c.name company_name, c.demo demo
-      FROM sessions s JOIN users u ON u.id = s.user_id LEFT JOIN companies c ON c.id = u.company_id
+  // Nov 16: who's signing in as someone, and their Mise team role (Support is view only while signed in as someone).
+  return db.prepare(`SELECT u.*, s.impersonator_id, s.acting_company_id, s.acting_store_id, c.name company_name, c.demo demo,
+        i.role impersonator_role, i.super_role impersonator_super_role, i.super_primary impersonator_primary
+      FROM sessions s JOIN users u ON u.id = s.user_id LEFT JOIN companies c ON c.id = u.company_id LEFT JOIN users i ON i.id = s.impersonator_id
       WHERE s.token_hash = ? AND s.expires_at > ? AND u.deleted_at IS NULL AND (u.company_id IS NULL OR c.deleted_at IS NULL)`)
     .get(sha256(token), now()) || null;
 }
@@ -113,6 +116,7 @@ export class LoginLimiter {
 export const publicUser = (u) => u && {
   id: u.id, name: u.name, email: u.email, role: u.role, companyId: u.company_id ?? null, companyName: u.company_name ?? null,
   totpOn: !!u.totp_on, superPrimary: !!u.super_primary, impersonatedBy: u.impersonator_id ?? null, storeId: u.store_id ?? null,
+  teamRole: teamRole(u), viewOnly: viewOnly(u),
 };
 
 /* ---- Two-step sign-in (TOTP, RFC 6238: 6 digits, 30 s steps, SHA-1, the usual authenticator apps) ---- */
