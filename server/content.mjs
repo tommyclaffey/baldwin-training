@@ -687,13 +687,46 @@ function assembleRaw(db, file) {
     return p2 ? { ...level2OnLevel1(p2, old, { done, ...levelStatus(db, 'somm-2') }), name: page.name } : old;
   }
   if (isGeneric()) {
-    if (!isSample(db) || classify(slug) !== 'own') return genericPage(db, file, slug, page);
+    if (!isSample(db) || classify(slug) !== 'own') return linkPairings(db, genericPage(db, file, slug, page));
     // Filled like The Baldwin's page; assemble() writes The Baldwin's names out after the videos and photos are in.
     const statics = snapshotShelves(page);
-    const filled = fillSample(fullBook(db, file, page), slug, { recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
+    const filled = fillSample(linkPairings(db, fullBook(db, file, page)), slug, { recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine') });
     return Object.assign(filled, { sampleOf: { slug, statics } });
   }
-  return fullBook(db, file, page);
+  return linkPairings(db, fullBook(db, file, page));
+}
+
+/** Nov 16, Tommy: "any time you have a pair or suggestion to something else on the app make sure you make it a hyperlink."
+ *  Every pairing printed as words (Home's focus dish, the Food Matrix, the cocktail cards and table) links each name it
+ *  finds in the book to that page. `pl` holds [name, path] pairs; FigmaNode links the name wherever it sits in the text,
+ *  so a later rename of the words (the sample book, a generic store) just leaves it unlinked. Dish pages, wine pages and
+ *  spirit pages already link theirs (the Pairings band, linkDishPairs). */
+function linkPairings(db, page) {
+  if (!page?.main) return page;
+  const drinks = pairingLinks(db);
+  const recipes = ordered(db, 'recipe');
+  const dishes = new Map(recipes.map((e) => [squash(e.data.name), e]));
+  const dish = (nm) => dishes.get(squash(OLD_DISH[nm] || nm)) || null;
+  const drink = (nm) => drinks.wine(nm) || drinks.cocktail(nm);
+  const mark = (t, find1, many = false) => {
+    if (!t?.s || t.pl) return;
+    const names = many ? t.s.split(/,| · /).map((x) => x.trim()).filter(Boolean) : [t.s.trim()];
+    const pl = names.map((nm) => { const hit = find1(nm); return hit ? [nm, '/' + hit.slug] : null; }).filter(Boolean);
+    if (pl.length) t.pl = pl;
+  };
+  // Home: tonight's pre-shift focus ("Micheletti Bolgheri · the pairing to suggest")
+  const hero = find(page.main, (n) => (n.n || '').startsWith('Hero · '));
+  const stat = hero && find(hero, byName('Stat'));
+  if (stat) mark(texts(stat)[0], drink);
+  // Food Matrix cells and Home's Food Matrix preview: a cell holding just the wine
+  // (the Bar group's rows pair a drink with a dish, so a cell can name either)
+  for (const cell of findAll(page.main, (n) => n.n === 'Pairing' && !n.to && texts(n).length === 1)) mark(texts(cell)[0], (nm) => drink(nm) || dish(nm));
+  // Cocktail cards: Details › Pairs with (dishes, comma-separated)
+  for (const det of findAll(page.main, byName('Details'))) { const r = find(det, byName('Pairs with')); if (r) mark(texts(r)[1], dish, true); }
+  // The cocktail table: the last column is Pairs with
+  const matrix = find(page.main, byName('Cocktail matrix'));
+  for (const r of (matrix?.c || []).filter(startsWith('Row · '))) { const t = texts(r); if (t.length >= 6) mark(t[5], dish, true); }
+  return page;
 }
 
 /** A designed page filled from this store's own lists (The Baldwin's book, and the Mise demo's own pages). */

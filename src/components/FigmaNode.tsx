@@ -1,6 +1,6 @@
 import { focusVars, parseFocus, type Focus } from '../lib/focus';
 import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import svgs from '../content/svgs.json';
 import { SearchBox } from './SearchBox';
@@ -37,6 +37,8 @@ export type FNode = {
   r?: number; rs?: number[];
   s?: string; ff?: string; fs?: string; z?: number; lh?: string | number; ls?: string | number; ta?: string; ar?: string; lw?: number; tb?: 1;
   segs?: [number, number, string, string | null][];
+  /** Pairings in the words (server/content.mjs linkPairings): each [name, path] links that name to its page. */
+  pl?: [string, string][];
   clip?: 1; lm?: 'H' | 'V'; gap?: number; pd?: number[]; pa?: string; ca?: string; wrap?: 1; cg?: number;
   c?: FNode[];
   vid?: Video;
@@ -224,7 +226,32 @@ function textNode(node: FNode, parentLm: 'H' | 'V' | undefined, key?: number) {
       </span>
     ));
   }
+  else if (node.pl?.length && node.s) content = withPairLinks(node.s, node.pl);
   return { st, cls, content, key };
+}
+
+/** The words with each paired name as a link (Nov 16, Tommy: "any time you have a pair or suggestion … make it a hyperlink"). */
+function withPairLinks(s: string, pl: [string, string][]): ReactNode {
+  const out: ReactNode[] = [];
+  let at = 0;
+  for (const [name, to] of pl) {
+    const i = s.indexOf(name, at);
+    if (i < 0) continue;
+    if (i > at) out.push(s.slice(at, i));
+    out.push(<PairLink key={i} to={to}>{name}</PairLink>);
+    at = i + name.length;
+  }
+  if (at < s.length) out.push(s.slice(at));
+  return out;
+}
+/** A pairing link. Inside a card or row that's already a link it can't be an <a> (no links in links), so it's a
+ *  link-role span that goes to its own page and keeps its own Tab stop; it sits above a table row's stretched link. */
+function PairLink({ to, children }: { to: string; children: ReactNode }) {
+  const inLink = useContext(InLink);
+  const nav = useNavigate();
+  if (!inLink) return <Link to={to} className="pair-link">{children}</Link>;
+  const go = (e: { preventDefault(): void; stopPropagation(): void }) => { e.preventDefault(); e.stopPropagation(); nav(to); };
+  return <span role="link" tabIndex={0} className="pair-link" onClick={go} onKeyDown={(e) => { if (e.key === 'Enter') go(e); }}>{children}</span>;
 }
 
 const padX = (n: FNode) => (n.pd ? n.pd[1] + n.pd[3] : 0);

@@ -3880,3 +3880,8 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 }
 @media screen and (max-width: 860px) { .hq-errtable.stack-table td:first-child { font-weight: 500; } }
 @media screen and (max-width: 900px) { .hq-phone-menu .admin-group { display: block; } }
+/* Pairings in the words link to their page (Nov 16, Tommy: "any time you have a pair or suggestion … make it a hyperlink").
+   Underlined so it reads as a link in any colour; above a table row's stretched link so the row doesn't swallow the click. */
+.pair-link { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: color-mix(in srgb, currentColor 50%, transparent); cursor: pointer; position: relative; z-index: 2; border-radius: 2px; }
+.pair-link:hover { text-decoration-color: currentColor; }
+.pair-link:focus-visible { outline: 2px solid var(--c-focus, var(--copper)); outline-offset: 2px; }
