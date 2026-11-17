@@ -71,6 +71,7 @@ export type ColorRole =
   // Chartreuse and gold disappear on light (1.1:1, 2.1:1), so those looks use their deep accent there. The Baldwin and Mise
   // use their accent on light too, so for them these are the accent's own values and nothing changes.
   | 'accentOnLight' | 'onAccentOnLight'
+  | 'placeholder'                                                        // Nov 17: the beige "photo to come" panel
   | 'edgeStrong' | 'edgeMuted' | 'edgeSoft' | 'outlineOnDark'            // outlines
   | 'button' | 'onButton' | 'buttonOnDark' | 'onButtonOnDark'            // the main button, on light and on a dark panel
   | 'new' | 'onNew' | 'tape' | 'onTape'                                  // "New" status, the taped note
@@ -144,6 +145,7 @@ export const THEMES: Record<Brand, Theme> = {
       // 14.7:1 on cream and 16.2:1 on the card, and copper is 6.6:1 on the espresso sidebar, so one tone passes 3:1 everywhere.
       focus: '#C49A6C', focusBand: '#1E1C1A',
       accentOnLight: ['#C49A6C', '#8A5A3A'], onAccentOnLight: ['#1E1C1A', '#FFFFFF', '#F2EEE7'], // = accent, onAccent
+      placeholder: '#E7DECF',
     },
     type: {
       pageTitle: { ff: ARCHIVO, fs: 'ExtraBold', case: 'upper' },
@@ -185,6 +187,7 @@ export const THEMES: Record<Brand, Theme> = {
       // bone band is 15.2:1, so one tone passes 3:1 on the sidebar, dark buttons and light cards alike.
       focus: '#8E2A26', focusBand: '#EDE6DA',
       accentOnLight: '#8E2A26', onAccentOnLight: '#FFFFFF', // = accent, onAccent
+      placeholder: '#E7DECF', // (as drawn, as before)
     },
     type: {
       pageTitle: { ff: 'Instrument Serif', fs: 'Regular', z: 64, lh: '100%', ls: '-0.5%', case: 'title' },
@@ -218,7 +221,7 @@ export const THEMES: Record<Brand, Theme> = {
       inverse: '#1F2A44', inverseRaised: ['#283350', '#3C475F'], inverseChip: '#3C475F', inverseLine: ['#34405C', '#4A5570'],
       onInverse: ['#FFFFFF', '#F5E0DC', '#0E1525'], onInverseMuted: ['#E1E4EB', '#D6DAE3', '#C9CEDA'], onInverseLabel: '#B4BAC8', accentOnDark: ['#DFFF00', '#DFFF00'],
       accent: ['#DFFF00', '#DFFF00'], onAccent: ['#0E1525', '#0E1525', '#0E1525'], danger: '#B23A32', onDanger: '#FFFFFF',
-      accentOnLight: ['#B23A32', '#B23A32'], onAccentOnLight: ['#FFFFFF', '#FFFFFF', '#FFFFFF'],
+      accentOnLight: ['#B23A32', '#B23A32'], onAccentOnLight: ['#FFFFFF', '#FFFFFF', '#FFFFFF'], placeholder: '#F0DDD8',
       edgeStrong: ['#B23A32', '#0E1525'], edgeMuted: '#5A647C', edgeSoft: '#7D869A', outlineOnDark: '#8A93A6',
       button: '#1F2A44', onButton: '#FFFFFF', buttonOnDark: '#DFFF00', onButtonOnDark: '#0E1525',
       new: '#E7E2F0', onNew: '#4B3F6B', tape: '#DFFF00', onTape: '#0E1525',
@@ -259,7 +262,7 @@ export const THEMES: Record<Brand, Theme> = {
       inverse: '#0B0A08', inverseRaised: ['#1A1814', '#23211E'], inverseChip: '#3A352D', inverseLine: ['#2A2722', '#3A352D'],
       onInverse: ['#FBF1E3', '#F3E8D6', '#0B0A08'], onInverseMuted: ['#E6DDCD', '#D9D1C2', '#C2BAA8'], onInverseLabel: '#9A9282', accentOnDark: ['#C9A455', '#C9A455'],
       accent: ['#C9A455', '#C9A455'], onAccent: ['#0B0A08', '#0B0A08', '#0B0A08'], danger: '#860028', onDanger: '#FFFFFF',
-      accentOnLight: ['#860028', '#860028'], onAccentOnLight: ['#FFFFFF', '#FFFFFF', '#FFFFFF'],
+      accentOnLight: ['#860028', '#860028'], onAccentOnLight: ['#FFFFFF', '#FFFFFF', '#FFFFFF'], placeholder: '#EADFCB',
       edgeStrong: ['#860028', '#0B0A08'], edgeMuted: '#6B6457', edgeSoft: '#857D70', outlineOnDark: '#857D70',
       button: '#0B0A08', onButton: '#FBF1E3', buttonOnDark: '#C9A455', onButtonOnDark: '#0B0A08',
       new: '#E7E2F0', onNew: '#4B3F6B', tape: '#C9A455', onTape: '#0B0A08',
@@ -383,7 +386,7 @@ export const DRAWN: Record<'fill' | 'stroke' | 'textOnLight' | 'textOnDark' | 't
     '#F2EEE7': 'page', '#FBF9F5': 'card', '#F3EEE6': 'wash.0', '#EFE3D3': 'wash.1', '#F1EADF': 'wash.2', '#EEF0E6': 'wash.3',
     '#E4DCCF': 'line.0', '#DDD3C5': 'line.1', '#CFC5B6': 'line.2',
     '#1E1C1A': 'inverse', '#2A2724': 'inverseRaised.0', '#3F3A35': 'inverseRaised.1', '#3A3632': 'inverseLine.0',
-    '#C49A6C': 'accent.0', '#8A5A3A': 'accent.1', '#8E2F24': 'danger',
+    '#C49A6C': 'accent.0', '#8A5A3A': 'accent.1', '#8E2F24': 'danger', '#E7DECF': 'placeholder',
   },
   stroke: {
     '#E4DCCF': 'line.0', '#DDD3C5': 'line.1', '#B8AFA3': 'line.3', '#8A5A3A': 'edgeStrong.0', '#1E1C1A': 'edgeStrong.1',

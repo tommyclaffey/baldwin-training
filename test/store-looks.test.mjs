@@ -217,6 +217,12 @@ test('theme: Testa Barra’s headings are Bebas Neue 1.26× the drawn size; J.Ba
   assert.equal(bh.ff, 'Archivo'); assert.equal(bh.z, 30); assert.equal(ba.ff, 'Pinyon Script'); assert.equal(ba.z, 28); assert.equal(bb.ff, 'Archivo');
 });
 
+test('styles.css: every rule that sets Archivo has its look-body line (scripts/look-body-css.mjs), so J.Baldwin’s text is Montserrat everywhere', async () => {
+  const { build } = await import('../scripts/look-body-css.mjs');
+  const css = fs.readFileSync(path.join(root, 'src/styles.css'), 'utf8');
+  assert.ok(css.includes(build(css)), 'run: node scripts/look-body-css.mjs');
+});
+
 test('contrast: every text role the new looks paint passes (body 4.5:1, large and UI 3:1)', () => {
   const lum = (hex) => { const n = parseInt(hex.slice(1), 16); const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f((n >> 16) & 255) + 0.7152 * f((n >> 8) & 255) + 0.0722 * f(n & 255); };
   const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
@@ -233,6 +239,7 @@ test('contrast: every text role the new looks paint passes (body 4.5:1, large an
       ['button on light', c('onButton'), c('button'), 4.5], ['button on dark', c('onButtonOnDark'), c('buttonOnDark'), 4.5],
       ['deep accent bar on card (UI)', c('accentOnLight'), c('card'), 3], ['button edge on page (UI)', c('button'), c('page'), 3],
       ['outlined button on dark (UI)', c('outlineOnDark'), c('inverse'), 3], ['focus on page (UI)', c('focus'), c('page'), 3], ['focus band on dark (UI)', c('focusBand'), c('inverse'), 3],
+      ['photo-to-come label', c('accentText'), c('placeholder'), 4.5],
       ['used bar on card (UI)', c('dataUsed'), c('card'), 3], ['wasted bar on card (UI)', c('dataWasted'), c('card'), 3],
     ];
     for (const [what, fg, bg, need] of pairs) assert.ok(ratio(fg, bg) >= need, `${id}: ${what} ${fg} on ${bg} = ${ratio(fg, bg).toFixed(2)}`);
