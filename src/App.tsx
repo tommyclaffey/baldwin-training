@@ -17,6 +17,7 @@ import { EditModeProvider } from './edit/state';
 import { EditModeToggle } from './edit/EditModeBar';
 import { setFavicon } from './lib/favicon';
 import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
+import { TeamBar } from './components/TeamBar';
 import { MyPathPage, PathReadBar } from './path/MyPath';
 import { AckPage } from './path/AckPage';
 import { currentBrand } from './lib/theme';
@@ -110,6 +111,7 @@ function Book() {
         </aside>
         <div id="content" className="content">
           <DemoBar />
+          <TeamBar />
           {pathname === '/import' || pathname.startsWith('/import/') ? (canEdit(user) ? <ImportPage /> : <PageView />) : pathname === '/prep' || pathname.startsWith('/prep/') ? <PrepPage /> : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? <TeamChatPage /> : pathname === '/my-path' ? <MyPathPage /> : pathname === '/my-path/acknowledgment' ? <AckPage /> : pathname.startsWith('/certificate/') ? <CertificatePage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
         </div>
         {user.demo && <DemoTour />}

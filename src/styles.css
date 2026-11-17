@@ -1488,6 +1488,7 @@ body.eip-lock { overflow: hidden; }
 
 /* The demo pill sits under the logo on every demo page; there's no way out from inside (Nov 7, Tommy). */
 .demo-bar-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #8A7A66; color: var(--ink); font: 600 13.5px 'Archivo', sans-serif; text-decoration: none; white-space: nowrap; }
+.demo-bar-actions a.main { background: var(--ink); border-color: var(--ink); color: var(--cream); } /* Back to Mise HQ (Nov 17) */
 .demo-bar-actions a:focus-visible { outline: 2px solid var(--copper-dk); outline-offset: 2px; }
 .mobile-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .mobile-brand .demo-pill { height: 21px; padding: 0 7px; font-size: 11px; }
@@ -2906,6 +2907,7 @@ body.tcp-open .chat-toast { display: none; }
 .brand-mise .demo-bar { background: #FBF8F2; color: #121110; border-bottom: 1px solid #D9CFBF; }
 .brand-mise .demo-bar button, .brand-mise .demo-bar-actions a { border-color: #7F776F; color: #121110; border-radius: 10px; }
 .brand-mise .demo-bar button.main { background: #121110; border-color: #121110; color: #EDE6DA; }
+.brand-mise .demo-bar-actions a.main { background: #121110; border-color: #121110; color: #EDE6DA; } /* Back to Mise HQ (Nov 17) */
 .brand-mise .dw, .brand-mise .tour-card { background: #FBF8F2; color: #121110; }
 .brand-mise .dw h2 { font-weight: 600; letter-spacing: -.01em; }
 .brand-mise .dw-pill, .brand-mise .dw-num { background: rgba(142, 42, 38, .12); color: #8E2A26; }
