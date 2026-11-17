@@ -3715,6 +3715,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .hq-storage-cell { display: flex; flex-direction: column; gap: 6px; width: 84px; }
 .hq-row-btns { display: inline-flex; gap: 8px; justify-content: flex-end; align-items: center; flex-wrap: nowrap; }
 .hq-here { font-size: 13.5px; color: var(--muted); white-space: nowrap; }
+.hq-table td[data-label="Last Active"] { white-space: nowrap; }
 .hq-cos-msg { margin: 0 24px 12px; }
 .hq-cos-foot { display: flex; justify-content: flex-end; padding: 14px 24px; border-top: 1px solid var(--line); }
 
