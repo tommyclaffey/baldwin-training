@@ -920,10 +920,10 @@ export const BALDWIN_DEMO_CHAT = {
   ],
 };
 
-/** Wrenfield's chat (the Mise demo, Nov 11, Tommy: "make sure both styles have all the same functions and features"): the
- *  same conversation as The Baldwin's demo, told with Wrenfield's menu: its wood-grilled half chicken, the Smoke Signal
- *  spec change and the Hibiscus Daiquiri, so every card opens a page Wrenfield's book has. Same cast, same times. */
-export const WRENFIELD_DEMO_CHAT = {
+/** Fig & Fire's chat (the Mise demo, Nov 11, Tommy: "make sure both styles have all the same functions and features"): the
+ *  same conversation as The Baldwin's demo, told with Fig & Fire's menu: its wood-grilled half chicken, the Smoke Signal
+ *  spec change and the Hibiscus Daiquiri, so every card opens a page Fig & Fire's book has. Same cast, same times. */
+export const FIGANDFIRE_DEMO_CHAT = {
   channels: {
     everyone: [
       { ref: 'sched', by: R, at: -26 * 60, body: 'Next week’s schedule is up by the host stand. Shift swaps go through me by Friday.', react: { '👍': [DP, TL, OR, WC] } },

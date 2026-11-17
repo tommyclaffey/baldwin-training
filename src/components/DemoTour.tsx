@@ -108,7 +108,7 @@ export function DemoBar() {
   const [err, setErr] = useState('');
   if (!user?.demo) return null;
   const manager = user.role !== 'staff';
-  const kind = demoKindOf(user); // Nov 11: The Baldwin's demo or the Mise demo (Wrenfield); switching role stays in the same one
+  const kind = demoKindOf(user); // Nov 11: The Baldwin's demo or the Mise demo (Fig & Fire); switching role stays in the same one
   // Nov 15 (audit 19): a refused switch says why and leaves you where you are (it used to drop you on the picker silently).
   const swap = async () => {
     setBusy(true); setErr('');

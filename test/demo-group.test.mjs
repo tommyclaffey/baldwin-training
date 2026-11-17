@@ -38,7 +38,7 @@ function person(ip) {
 }
 const db = () => new DatabaseSync(path.join(dir, 'baldwin.db'));
 const owner = person('10.7.0.1'), tommy = person('10.7.0.2');
-const visitors = [0, 1, 2].map((i) => person('10.7.1.' + i)), wrenfield = person('10.7.2.1');
+const visitors = [0, 1, 2].map((i) => person('10.7.1.' + i)), figandfire = person('10.7.2.1');
 const realCompanies = () => { const d = db(); const r = d.prepare('SELECT id, name, deleted_at FROM companies WHERE demo = 0 ORDER BY id').all(); d.close(); return JSON.stringify(r); };
 let real = '';
 
@@ -48,7 +48,7 @@ test('setup: The Baldwin’s owner, the super admin, a second customer, and four
   await turnOnTwoStep(tommy, { workIn: null });
   assert.equal((await tommy('/api/super/companies', { method: 'POST', body: { name: 'Larkspur Tavern' } })).status, 200);
   for (const [i, v] of visitors.entries()) assert.equal((await v('/api/demo/start', { method: 'POST', body: { role: i ? 'employee' : 'manager', demo: 'baldwin' } })).status, 200);
-  assert.equal((await wrenfield('/api/demo/start', { method: 'POST', body: { role: 'manager', demo: 'mise' } })).status, 200);
+  assert.equal((await figandfire('/api/demo/start', { method: 'POST', body: { role: 'manager', demo: 'mise' } })).status, 200);
   const d = db();
   assert.equal(d.prepare("SELECT COUNT(*) n FROM companies WHERE demo = 1 AND name = 'Baldwin Restaurant Group'").get().n, 3, 'the copies share the real customer’s name');
   d.close();
@@ -60,7 +60,7 @@ test('Super Admin → Companies: real companies once each, then one row per demo
   assert.deepEqual(ov.companies.map((c) => c.name), ['Mise Academy (HQ)', 'Baldwin Restaurant Group', 'Larkspur Tavern']);
   assert.ok(ov.companies.every((c) => !c.demo));
   assert.equal(ov.companies.filter((c) => c.name === 'Baldwin Restaurant Group').length, 1, 'the real customer is never confusable with a demo copy');
-  assert.deepEqual(ov.demos.map((x) => [x.kind, x.name, x.path, x.open]), [['baldwin', 'The Baldwin (demo)', '/demo/brg', 3], ['mise', 'Wrenfield', '/demo/mise', 1]]);
+  assert.deepEqual(ov.demos.map((x) => [x.kind, x.name, x.path, x.open]), [['baldwin', 'The Baldwin (demo)', '/demo/brg', 3], ['mise', 'Fig & Fire', '/demo/mise', 1]]);
   assert.deepEqual(ov.demos.map((x) => x.lookName), ['The Baldwin', 'Mise Academy']);
   // the HQ home groups them the same way, and the sidebar's count is customers + HQ only
   const home = (await tommy('/api/super/home')).data;
@@ -106,7 +106,7 @@ test('Exit Demo removes only that visitor’s own copy; real companies are untou
 });
 
 test('the smoke test’s cleanup: each run that exits leaves no copies behind', async () => {
-  for (const v of [...visitors.slice(1), wrenfield]) assert.equal((await v('/api/demo/exit', { method: 'POST' })).status, 200);
+  for (const v of [...visitors.slice(1), figandfire]) assert.equal((await v('/api/demo/exit', { method: 'POST' })).status, 200);
   const d = db();
   assert.equal(d.prepare('SELECT COUNT(*) n FROM companies WHERE demo = 1').get().n, 0);
   assert.equal(d.prepare('SELECT COUNT(*) n FROM users WHERE company_id NOT IN (SELECT id FROM companies)').get().n, 0, 'no people left behind');

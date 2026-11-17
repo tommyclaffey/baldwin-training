@@ -38,4 +38,4 @@ A customer's own material lives in `DATA_DIR/accounts/<company id>/` on the volu
 - Tests give company 1 a made-up account (the demo's menu). `MISE_PRIVATE_ACCOUNT=<folder> npm test` runs them against a real account folder too, including the checks of that account's own content.
 
 ## Content status
-Sample content is labelled on screen. Photos are Unsplash stand-ins (credited); video slots are marked "to film". Both demos (`/demo/brg`, `/demo/mise`) are made-up restaurants and say so.
+Sample content is labelled on screen. Photos are Unsplash stand-ins (credited); video slots are marked "to film". Both demos are made-up restaurants and say so: `/demo/brg` is The Baldwin’s look on the Custom Brand plan, and `/demo/mise` is Fig & Fire, Mise’s demo account (renamed Nov 17). In Super Admin each demo is one row with its open copies counted; a visitor’s copy goes when they leave (Exit Demo) or after a day.

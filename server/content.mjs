@@ -122,19 +122,19 @@ export function withStore(row, fn, user = null) {
 }
 const isGeneric = () => SCOPE.generic;
 
-/* ---- Wrenfield, the Mise demo (Nov 11, Tommy: "a completely separate demo for Mise itself") ----
+/* ---- Fig & Fire, the Mise demo (Nov 11, Tommy: "a completely separate demo for Mise itself") ----
  * A made-up restaurant that reads the shared library like any store that isn't The Baldwin, but whose demo has to look
  * finished (no "goes here" pages). So for a Mise-brand demo company:
  *   • Home, the Video Library, the Photo Library and Quizzes are drawn like The Baldwin's, from its own menu, then
  *     The Baldwin's names are written out the same way as on the library pages (genericize);
- *   • Our Story, the Floor Plan and the Sommelier "about" page get Wrenfield's own words (server/sample.mjs; Nov 11, Tommy:
+ *   • Our Story, the Floor Plan and the Sommelier "about" page get Fig & Fire's own words (server/sample.mjs; Nov 11, Tommy:
  *     "make sure both styles have all the same functions and features"), so its book has every page The Baldwin's has;
- *   • the top bar keeps its menu chip (Wrenfield's own menu name) and the Quick Quiz. */
+ *   • the top bar keeps its menu chip (Fig & Fire's own menu name) and the Quick Quiz. */
 export const SAMPLE_MENU = 'Fall Menu · 2026';
 /** The Baldwin group's own people and places, as they appear in the shared Sommelier pages ("with us at Testa Barra",
  *  "Ask Jeffrey Baldwin"). Jeffrey Ong (the Jungle Bird's creator) stays. */
 const GROUP = /\bBaldwin|Testa Barra|\bBRG\b|Macomb|Shelby Twp|Tell Jeffrey|Jeffrey(?! Ong)\b/i;
-/** The Court sittings The Baldwin group books (its real dates and seats). Wrenfield doesn't host any. */
+/** The Court sittings The Baldwin group books (its real dates and seats). Fig & Fire doesn't host any. */
 const HOSTED = /\bWe host this\b|\bFeb 2[2-4](–23)?, 2027\b|^Book Feb 2/;
 /** Anything of theirs in a layer name or the search text: the group, its bookings, its menu's name. */
 const THEIRS = new RegExp([GROUP.source, HOSTED.source, 'We host', 'Opening Menu · Fall 2026', 'Book Feb 2[2-4](–23)?'].join('|'), 'i');
@@ -149,11 +149,11 @@ function sampleScrub(db, page) {
   const any = (v) => THEIRS.test(v) || terms.test(v);
   // The design's "+ Add our next cocktail" slot (a finished demo shows what's there, not a slot for more)
   for (const n of findAll(m, (x) => x.n === 'More coming')) { const p = parentOf(m, n); if (p) p.c = p.c.filter((x) => x !== n); }
-  // The top bar's menu chip names Wrenfield's menu, not The Baldwin's "Opening Menu · Fall 2026"
+  // The top bar's menu chip names Fig & Fire's menu, not The Baldwin's "Opening Menu · Fall 2026"
   for (const chip of findAll(m, (x) => x.n === 'Menu chip')) for (const t of texts(chip)) { setText(t, SAMPLE_MENU); t.n = SAMPLE_MENU; }
   for (const t of findAll(m, (n) => n.t === 'T' && typeof n.s === 'string')) {
     if (/ with us at Testa Barra/.test(t.s)) setText(t, t.s.replace(/ with us at Testa Barra/, ''));
-    // The Baldwin group hosts the Court's Levels 1 and 2 (real dates at Testa Barra); Wrenfield doesn't
+    // The Baldwin group hosts the Court's Levels 1 and 2 (real dates at Testa Barra); Fig & Fire doesn't
     if (/^We host it\b/.test(t.s)) { setText(t, 'Through the Court'); t.n = 'Through the Court'; }
     // The Baldwin's flights ($22 wine flight, $30 sommelier flight) are its own offers
     if (GROUP.test(t.s) || /\bwine flight\b|\bsommelier flight\b/i.test(t.s) || HOSTED.test(t.s)) dropLine(m, t);
@@ -828,7 +828,7 @@ const namesCache = storeCache();
 const baldwinNames = (db, ours = []) => cached(namesCache, db, EVERY_STORE, ours.join('\u0001'), () => readBaldwinNames(db, ours));
 function readBaldwinNames(db, ours) {
   // A store that names a dish or drink the same as one of Baldwin's keeps its own.
-  // Nov 11: …or one inside its own name (The Baldwin's "Steak Frites" was taking out Wrenfield's "Hanger Steak Frites").
+  // Nov 11: …or one inside its own name (The Baldwin's "Steak Frites" was taking out Fig & Fire's "Hanger Steak Frites").
   const mine = new Set(ours);
   const inOurs = (n) => ours.some((o) => o && o !== n && new RegExp('\\b' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b').test(o));
   const names = ['recipe', 'house'].flatMap((col) => listEntries(db, col, 1).map((e) => e.data.name)).filter((n) => !mine.has(n) && !inOurs(n));

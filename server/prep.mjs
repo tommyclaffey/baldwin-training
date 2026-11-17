@@ -133,11 +133,11 @@ const CATALOG = [
 const BY_KEY = new Map(CATALOG.map((c) => [c.key, c]));
 // The Baldwin's list (Figma 632:803), every item drawn from its house cocktail specs (content/cms/house.json).
 const BALDWIN_LIST = ['lime-juice', 'lemon-juice', 'grapefruit-juice', 'demerara-syrup', 'simple-syrup', 'ginger-honey-syrup', 'spiced-hibiscus-syrup', 'orange-oleo', 'orange-twists', 'lemon-twists', 'lime-wedges', 'rosemary-sprigs'];
-// Wrenfield's (the Mise demo), from its own house specs (content/demo-mise/house.json).
-const WRENFIELD_LIST = ['lime-juice', 'lemon-juice', 'grapefruit-juice', 'honey-ginger-syrup', 'hibiscus-syrup', 'rosemary-syrup', 'spiced-apple-syrup', 'cucumber-syrup', 'cucumber-ribbons', 'lime-wheels', 'lemon-twists', 'grapefruit-peels'];
+// Fig & Fire's (the Mise demo), from its own house specs (content/demo-mise/house.json).
+const FIGANDFIRE_LIST = ['lime-juice', 'lemon-juice', 'grapefruit-juice', 'honey-ginger-syrup', 'hibiscus-syrup', 'rosemary-syrup', 'spiced-apple-syrup', 'cucumber-syrup', 'cucumber-ribbons', 'lime-wheels', 'lemon-twists', 'grapefruit-peels'];
 BY_KEY.set('honey-ginger-syrup', { ...BY_KEY.get('ginger-honey-syrup'), key: 'honey-ginger-syrup', name: 'Honey-ginger syrup' });
 BY_KEY.set('lemon-peels', { ...BY_KEY.get('lemon-twists'), key: 'lemon-peels', name: 'Lemon peels' });
-WRENFIELD_LIST[10] = 'lemon-peels';
+FIGANDFIRE_LIST[10] = 'lemon-peels';
 
 // Busier at the weekend: the weekday's share of Thursday's par (Sun…Sat).
 const WEEK = [1, 0.67, 0.67, 0.83, 1, 1.33, 1.5];
@@ -164,11 +164,11 @@ export function deriveList(specs) {
   return out;
 }
 
-/** Which starting list a store gets: The Baldwin (and its demo copies) the drawn list, Wrenfield its own, any other
+/** Which starting list a store gets: The Baldwin (and its demo copies) the drawn list, Fig & Fire its own, any other
  *  store the items its own house specs use. */
 function startingKeys(db, storeRow) {
   const co = db.prepare('SELECT brand, demo FROM companies WHERE id = ?').get(storeRow.company_id) || {};
-  if (co.brand === 'mise' && co.demo) return WRENFIELD_LIST;
+  if (co.brand === 'mise' && co.demo) return FIGANDFIRE_LIST;
   // Nov 16: The Baldwin's list follows the account (Baldwin Restaurant Group and its demo copies), not the look
   if (storeRow.slug === 'the-baldwin' && isBrgCompany(db, storeRow.company_id)) return BALDWIN_LIST;
   return deriveList(listEntries(db, 'house', storeRow.id).map((e) => e.data));

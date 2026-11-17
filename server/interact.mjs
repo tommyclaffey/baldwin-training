@@ -226,7 +226,7 @@ function floorPlan(page) {
   const finder = find(page.main, byName('Find a table'));
   if (!finder) return;
   // The table list comes with the page (Nov 16): the account's own floor plan carries its tables (server/account.mjs), and so
-  // does the shared template (Wrenfield's room, the Mise demo's). A page without one finds no table.
+  // does the shared template (Fig & Fire's room, the Mise demo's). A page without one finds no table.
   const tables = page.planTables || {};
   delete page.planTables;
   finder.meta = { finder: 1, list: Object.keys(tables) };

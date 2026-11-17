@@ -158,7 +158,7 @@ test('Companies: real ones only (demo copies grouped), plan and look, stores, pe
   const b = h.companies.find((c) => c.id === 1);
   assert.deepEqual([b.planName, b.lookName], ['Custom Brand', 'The Baldwin']);
   assert.equal(h.companies.find((c) => c.id === quiet).lastActiveAt, null, 'never: nobody has signed in');
-  assert.deepEqual(h.demos.map((x) => [x.name, x.open]), [['The Baldwin (demo)', 0], ['Wrenfield', 1]]);
+  assert.deepEqual(h.demos.map((x) => [x.name, x.open]), [['The Baldwin (demo)', 0], ['Fig & Fire', 1]]);
   assert.deepEqual(h.newThisWeek.map((x) => x.name).sort(), h.companies.filter((c) => !c.hq && c.isNew).map((c) => c.name).sort());
   assert.ok(h.newThisWeek.some((x) => x.name === 'Harbor Hall' && x.stores === 2 && x.planName === 'Foundation'));
   // storage: per company against the cap, and the volume against its floor

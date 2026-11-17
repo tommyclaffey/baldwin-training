@@ -125,7 +125,7 @@ test('two demos (two brands) never get each other’s index, and a restart start
       const hit = JSON.stringify(await index(m)).match(new RegExp('.{0,40}(' + BALDWIN.source + ').{0,40}', 'i'));
       assert.equal(hit, null, 'no Baldwin text in the Mise demo’s index: ' + hit?.[0]);
     }
-    // a refresh makes a new copy; its index is Wrenfield's again
+    // a refresh makes a new copy; its index is Fig & Fire's again
     assert.equal((await m('/api/demo/restart', { method: 'POST' })).data.restarted, true);
     const again = JSON.stringify(await index(m));
     assert.doesNotMatch(again, BALDWIN);

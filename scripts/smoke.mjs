@@ -52,7 +52,7 @@ async function browser() {
   return { ev, size, go, close, problems };
 }
 
-// Nov 11: both demos, The Baldwin's (/demo) and the Mise demo (/demo/mise, Wrenfield). DEMOS=baldwin or DEMOS=mise runs one.
+// Nov 11: both demos, The Baldwin's (/demo) and the Mise demo (/demo/mise, Fig & Fire). DEMOS=baldwin or DEMOS=mise runs one.
 async function run(role, width, demo = 'baldwin') {
   const b = await browser(); const tag = `${demo} ${role} @${width}`; const fails = [];
   let started = false;

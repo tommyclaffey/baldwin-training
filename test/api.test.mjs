@@ -995,13 +995,13 @@ test('Cocktail Program Level 1: one lesson per staple spirit, each store’s own
   assert.ok(rum.includes('Classics to know') && rum.includes('Piña Colada'), 'no house rum drink on the menu: the classics');
   const order = await lessonPage('cocktail-program/level-1/bar-l1-vodka/how-guests-order-it');
   assert.ok(order.includes('On our back bar:') && order.includes('Absolut Blue') && order.includes('and 4 more'), 'its own back bar');
-  // Wrenfield (the Mise demo) sees its own
+  // Fig & Fire (the Mise demo) sees its own
   const cookie = await startDemo('employee', 'mise');
   const idx = JSON.parse(await getAs(cookie, '/api/index'));
   const mrum = await getAs(cookie, '/api/page/' + idx.find((e) => e.slug === 'cocktail-program/level-1/bar-l1-rum/rum-cocktails').file);
-  assert.ok(mrum.includes('Hibiscus Daiquiri') && !mrum.includes('Lavender Haze'), 'Wrenfield’s own rum drink');
+  assert.ok(mrum.includes('Hibiscus Daiquiri') && !mrum.includes('Lavender Haze'), 'Fig & Fire’s own rum drink');
   const mvodka = await getAs(cookie, '/api/page/' + idx.find((e) => e.slug === 'cocktail-program/level-1/bar-l1-vodka/how-guests-order-it').file);
-  assert.ok(mvodka.includes('Wheatley Vodka') && !mvodka.includes('Absolut Blue'), 'Wrenfield’s own vodkas');
+  assert.ok(mvodka.includes('Wheatley Vodka') && !mvodka.includes('Absolut Blue'), 'Fig & Fire’s own vodkas');
   // the final: 40 questions, every one of the nine lessons asked
   const start = (await call('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:bar-1', fresh: true } })).data;
   assert.equal(start.items.length, 40);
@@ -1023,7 +1023,7 @@ test('behind the scenes: health answers, ops endpoints are closed without the to
   assert.equal(r.status, 204);
 });
 
-// Nov 11: two demos. /demo is The Baldwin's (unchanged); /demo/mise is Wrenfield, a made-up restaurant in the Mise look.
+// Nov 11: two demos. /demo is The Baldwin's (unchanged); /demo/mise is Fig & Fire, a made-up restaurant in the Mise look.
 async function startDemo(role, demo) {
   const r = await fetch(BASE + '/api/demo/start', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify(demo ? { role, demo } : { role }) });
   assert.equal(r.status, 200);
@@ -1031,7 +1031,7 @@ async function startDemo(role, demo) {
 }
 const getAs = async (cookie, p) => { const r = await fetch(BASE + p, { headers: { cookie, 'x-bt': '1' } }); assert.equal(r.status, 200, p); return r.text(); };
 
-test('demo: The Baldwin demo stays brand baldwin; the Mise demo is Wrenfield, brand mise', async () => {
+test('demo: The Baldwin demo stays brand baldwin; the Mise demo is Fig & Fire, brand mise', async () => {
   const baldwin = JSON.parse(await getAs(await startDemo('employee'), '/api/me')).user;
   assert.equal(baldwin.brand, 'baldwin');
   assert.equal(baldwin.store.name, 'The Baldwin');
@@ -1039,8 +1039,8 @@ test('demo: The Baldwin demo stays brand baldwin; the Mise demo is Wrenfield, br
   const mise = JSON.parse(await getAs(await startDemo('employee', 'mise'), '/api/me')).user;
   assert.equal(mise.brand, 'mise');
   assert.equal(mise.demo, true);
-  assert.equal(mise.store.name, 'Wrenfield');
-  assert.equal(mise.companyName, 'Wrenfield');
+  assert.equal(mise.store.name, 'Fig & Fire');
+  assert.equal(mise.companyName, 'Fig & Fire');
   // the real company keeps The Baldwin's look
   assert.equal((await call('/api/me')).data.user.brand, 'baldwin');
 });
@@ -1064,7 +1064,7 @@ test('demo: nothing of The Baldwin in the Mise demo (every page, the index, the 
   const hospL1 = await getAs(cookie, '/api/page/' + idx.find((e) => e.slug === 'hospitality-program/level-1').file);
   assert.ok(!hospL1.includes('"ack"'), 'Hospitality 101 has no acknowledgment any more (it’s on the path, Nov 12)');
   const ackText = JSON.parse(await getAs(cookie, '/api/path/ack'));
-  assert.match(ackText.statement, /Wrenfield/, 'the acknowledgment names its own restaurant');
+  assert.match(ackText.statement, /Fig & Fire/, 'the acknowledgment names its own restaurant');
   bodies.push(JSON.stringify(ackText));
   const hits = bodies.filter((b) => BALDWIN.test(b)).map((b) => b.match(new RegExp('.{0,40}(' + BALDWIN.source + ').{0,40}', 'i'))[0]);
   assert.deepEqual(hits, [], 'no Baldwin text in what the Mise demo is sent');
@@ -1101,9 +1101,9 @@ test('demo: both demos have the same pages, apart from their menu items', async 
   const MENU = /^(recipe|signature|wine-list|shelf|beer-list)\//;
   const pages = async (demo) => new Set(JSON.parse(await getAs(await startDemo('manager', demo), '/api/index')).map((e) => e.slug).filter((s) => !MENU.test(s)));
   const [b, m] = [await pages('baldwin'), await pages('mise')];
-  assert.deepEqual([...b].filter((s) => !m.has(s)), [], 'every page The Baldwin demo has, Wrenfield has');
+  assert.deepEqual([...b].filter((s) => !m.has(s)), [], 'every page The Baldwin demo has, Fig & Fire has');
   assert.deepEqual([...m].filter((s) => !b.has(s)), [], 'and nothing extra');
-  // Nov 11 release: the Hospitality Program is the same in both (BRG's words in The Baldwin's, generic in Wrenfield's)
+  // Nov 11 release: the Hospitality Program is the same in both (BRG's words in The Baldwin's, generic in Fig & Fire's)
   const hosp = [...b].filter((s) => s.startsWith('hospitality-program'));
   assert.ok(hosp.length >= 30 && hosp.every((s) => m.has(s)), 'the same Hospitality pages in both demos');
 });
@@ -1146,7 +1146,7 @@ test('demo: the Mise demo restarts as the Mise demo; The Baldwin keeps its own m
   const r = await fetch(BASE + '/api/demo/restart', { method: 'POST', headers: { 'x-bt': '1', cookie } });
   const fresh = r.headers.getSetCookie().find((x) => x.startsWith('bt_session=')).split(';')[0];
   const me = JSON.parse(await getAs(fresh, '/api/me')).user;
-  assert.equal(me.brand, 'mise'); assert.equal(me.role, 'manager'); assert.equal(me.store.name, 'Wrenfield');
+  assert.equal(me.brand, 'mise'); assert.equal(me.role, 'manager'); assert.equal(me.store.name, 'Fig & Fire');
   // the Mise demo's section list leaves out The Baldwin group's own; the shared schema isn't changed for anyone else
   assert.doesNotMatch(await getAs(fresh, '/api/collections'), /BRG Staples/);
   assert.match(JSON.stringify((await call('/api/collections')).data), /BRG Staples/);

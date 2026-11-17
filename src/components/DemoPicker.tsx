@@ -1,6 +1,6 @@
 // /demo (Nov 2): pick a role, get your own private copy of The Baldwin with a sample menu. Figma: 09 · Proposals,
 // "18 · Demo account" → "Demo · Pick a role · Desktop".
-// /demo/mise (Nov 11, Tommy: "a completely separate demo for Mise itself"): the same picker for Wrenfield, a made-up
+// /demo/mise (Nov 11, Tommy: "a completely separate demo for Mise itself"): the same picker for Fig & Fire, a made-up
 // restaurant shown in the Mise Academy look. Each demo has its own link so both can be shown.
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -21,8 +21,8 @@ const COPY: Record<DemoKind, { sub: string; foot: string }> = {
     foot: 'Demo · sample dishes and cocktails, not a real menu. Uploads, invites and passwords are switched off.',
   },
   mise: {
-    sub: 'Pick a view and look around Wrenfield, a sample restaurant made up for this demo. Its menu, drinks, wine list and team are all made up. It resets after a day.',
-    foot: 'Demo · Wrenfield isn’t a real restaurant. Uploads, invites and passwords are switched off.',
+    sub: 'Pick a view and look around Fig & Fire, a sample restaurant made up for this demo. Its menu, drinks, wine list and team are all made up. It resets after a day.',
+    foot: 'Demo · Fig & Fire isn’t a real restaurant. Uploads, invites and passwords are switched off.',
   },
 };
 
@@ -50,7 +50,7 @@ export function DemoPicker({ kind }: { kind: DemoKind }) {
           ? <img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy" height="64" />
           : <img src="/img/logo-white.png" alt="The Baldwin" height="40" />}
         {/* The demo tag (Nov 9 rule): the workspace name in muted text, then the DEMO tag. */}
-        <span className="demo-line"><span>{mise ? 'Wrenfield' : 'Mise Academy'}</span><span className="demo-pill">DEMO</span></span>
+        <span className="demo-line"><span>{mise ? 'Fig & Fire' : 'Mise Academy'}</span><span className="demo-pill">DEMO</span></span>
       </div>
       <div className="demo-head">
         {mise ? <p className="demo-kicker">Try it yourself</p> : <p className="demo-script">Try it yourself</p>}

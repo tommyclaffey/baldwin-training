@@ -17,7 +17,7 @@ import { chapterBySlug, LEVELS, chaptersForLevel } from './manual.mjs';
 import { doneKey } from './study.mjs';
 import { pathCtxFor } from './team.mjs';
 import { questionPool } from './quizgen.mjs';
-import { seedChat, BALDWIN_DEMO_CHAT, WRENFIELD_DEMO_CHAT } from './chat.mjs';
+import { seedChat, BALDWIN_DEMO_CHAT, FIGANDFIRE_DEMO_CHAT } from './chat.mjs';
 import { forget } from './cache.mjs';
 import { MEDIA_DIR } from './db.mjs';
 import { wipeCompany } from './companydata.mjs';
@@ -53,20 +53,20 @@ const MISE_EDITS = [['edit house', 'Smoke Signal', 0.1], ['add recipe', 'Braised
 /* Two demos (Nov 11, Tommy: "a completely separate demo for Mise itself", so he can show both):
  *   baldwin  /demo       The Baldwin's look on the Custom Brand plan (the upgrade's showcase): its name, logo and look,
  *                        and a made-up menu, drinks, wine list, back bar and beers (content/demo/, labelled demo data).
- *   mise     /demo/mise  Wrenfield, a made-up restaurant in the Mise Academy look. Everything on its menu is made up
+ *   mise     /demo/mise  Fig & Fire, a made-up restaurant in the Mise Academy look. Everything on its menu is made up
  *                        (content/demo-mise/), and it reads the shared library like any store that isn't The Baldwin
  *                        (book_ready 0), so none of The Baldwin's names, logo, story or floor plan show.
  * Same cast in both (same project, same people). */
 // Nov 17: `name` is what the Mise team sees for each demo (Super Admin → Companies, the HQ home), from here only. The Mise
 // demo's restaurant is named once, so renaming it changes its company, its store and its name in the lists together.
-const MISE_DEMO = 'Wrenfield';
+const MISE_DEMO = 'Fig & Fire';
 export const DEMOS = {
   baldwin: { name: 'The Baldwin (demo)', path: '/demo/brg', company: 'Baldwin Restaurant Group', store: 'The Baldwin', storeSlug: 'the-baldwin', brand: 'baldwin', plan: 'custom-brand', bookReady: 1, seeds: 'demo' },
-  mise: { name: MISE_DEMO, path: '/demo/mise', company: MISE_DEMO, store: MISE_DEMO, storeSlug: 'wrenfield', brand: 'mise', plan: 'foundation', bookReady: 0, seeds: 'demo-mise',
+  mise: { name: MISE_DEMO, note: 'Mise’s demo account', path: '/demo/mise', company: MISE_DEMO, store: MISE_DEMO, storeSlug: 'figandfire', brand: 'mise', plan: 'foundation', bookReady: 0, seeds: 'demo-mise',
     // Home's What's New: a dish, a drink and a wine (newest last), not whichever list was loaded last
     whatsNew: ['wine-list/by-the-glass-red-pinot-noir-elk-cove-willamette-valley', 'signature/smoke-signal', 'recipe/seared-scallops'] },
 };
-// Wrenfield's menu has no pasta or pizza: the same people's scores land on its own courses.
+// Fig & Fire's menu has no pasta or pizza: the same people's scores land on its own courses.
 const MISE_QUIZ = { 't:course:Pasta': 't:course:Dessert', 't:course:Pizza': 't:course:Salads' };
 /** Which demo a company is ('baldwin' or 'mise'), from its brand. */
 export const demoKind = (db, companyId) => (db.prepare('SELECT brand FROM companies WHERE id = ?').get(companyId)?.brand === 'mise' ? 'mise' : 'baldwin');
@@ -198,7 +198,7 @@ export function startDemo(db, key, which = 'baldwin') {
     addUser(DEMO_OWNER, 'owner', null);
     // Chat v2 (Nov 13): the employee demo is Marisol's own view (her answer to the @mention isn't there yet); the cast who are
     // "on now" stay on for the demo's day.
-    seedChat(db, { company: co, storeRow, script: mise ? WRENFIELD_DEMO_CHAT : BALDWIN_DEMO_CHAT, role: pick.role === 'staff' ? 'employee' : 'manager',
+    seedChat(db, { company: co, storeRow, script: mise ? FIGANDFIRE_DEMO_CHAT : BALDWIN_DEMO_CHAT, role: pick.role === 'staff' ? 'employee' : 'manager',
       until: new Date(Date.now() + LIFETIME_MS).toISOString() });
     // Prep tracker (Nov 12): eight weeks of batches, waste and run-outs by the two bartenders and the manager, so Today, the item pages and Reports are full. Shown as demo data on screen.
     const lead = db.prepare("SELECT id FROM users WHERE company_id = ? AND role = 'manager' ORDER BY id LIMIT 1").get(co)?.id;
@@ -273,13 +273,13 @@ export function cleanOrphans(db) {
 
 /** The demos as the Mise team sees them (Nov 17, Tommy: "we have so many duplicate companies"): one group per demo, never
  *  one row per visitor's copy. Super Admin → Companies and the HQ home both read this, so they always agree.
- *  → [{ kind, name, path, brand, open (copies open now), lastActiveAt }] */
+ *  → [{ kind, name, note, path, brand, open (copies open now), lastActiveAt }] */
 export function demoGroups(db) {
   const rows = db.prepare(`SELECT c.brand = 'mise' mise, COUNT(*) n, MAX(c.created_at) made, MAX((SELECT MAX(last_seen_at) FROM users u WHERE u.company_id = c.id)) seen
     FROM companies c WHERE c.demo = 1 AND c.deleted_at IS NULL GROUP BY c.brand = 'mise'`).all();
   return Object.entries(DEMOS).map(([kind, d]) => {
     const r = rows.find((x) => !!x.mise === (kind === 'mise'));
-    return { kind, name: d.name, path: d.path, brand: d.brand, open: r?.n || 0, lastActiveAt: r?.seen || r?.made || null };
+    return { kind, name: d.name, note: d.note || null, path: d.path, brand: d.brand, open: r?.n || 0, lastActiveAt: r?.seen || r?.made || null };
   });
 }
 

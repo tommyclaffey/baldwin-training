@@ -809,7 +809,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
           lastSeenAt: x.internal ? team.reduce((a, t) => (t.last_seen_at && t.last_seen_at > (a || '') ? t.last_seen_at : a), null) : x.last_seen,
           demo: !!x.demo, hq: !!x.internal, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x),
           stores: storesOf(db, x.id).map((st) => ({ ...storeOut(st), staff: db.prepare("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'staff' AND deleted_at IS NULL").get(st.id).n })) })),
-        demos: demoGroups(db).map((d) => ({ kind: d.kind, name: d.name, path: d.path, lookName: (LOOKS[d.brand] || LOOKS[DEFAULT_LOOK]).name, open: d.open, lastActiveAt: d.lastActiveAt })),
+        demos: demoGroups(db).map((d) => ({ kind: d.kind, name: d.name, note: d.note, path: d.path, lookName: (LOOKS[d.brand] || LOOKS[DEFAULT_LOOK]).name, open: d.open, lastActiveAt: d.lastActiveAt })),
         admins: admins.map(personOut), teamInvites, you: s.id, youPrimary: !!s.super_primary, youRole: teamRole(s), can: teamCans(s), workingIn: companyOf(s),
         teamRoles: Object.entries(TEAM_ROLES).map(([id, name]) => ({ id, name, givable: GIVABLE.includes(id) })),
         plans: Object.values(PLANS).map((x) => ({ id: x.id, name: x.name, customLook: x.customLook })),

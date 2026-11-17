@@ -1,6 +1,6 @@
 {
  "image": "/img/demo-mise/floor-plan.png",
- "note": "Wrenfield (the Mise demo) floor plan, drawn by scripts/demo-mise-floorplan.mjs. Table and bar-seat centres as fractions of the image.",
+ "note": "Fig & Fire (the Mise demo) floor plan, drawn by scripts/demo-mise-floorplan.mjs. Table and bar-seat centres as fractions of the image.",
  "tables": {
   "1": [
    0.6482,

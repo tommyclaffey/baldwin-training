@@ -36,7 +36,7 @@ import { LegalRoute, LEGAL_PATHS } from './components/Legal';
 export default function App() {
   const { pathname } = useLocation();
   if (pathname === '/admin' || pathname.startsWith('/admin/')) return <><Routes><Route path="/admin/*" element={<AdminApp />} /></Routes><ChatPanelHost /></>;
-  // Nov 11: two demos, each with its own link. /demo = The Baldwin's, /demo/mise = Wrenfield in the Mise look.
+  // Nov 11: two demos, each with its own link. /demo = The Baldwin's, /demo/mise = Fig & Fire in the Mise look.
   if (pathname === '/demo' || pathname === '/demo/brg') return <DemoPicker kind="baldwin" />;
   if (pathname === '/demo/mise') return <DemoPicker kind="mise" />;
   // Nov 16: Privacy, Terms and Help. Until they're public the server says "not found", and the address shows what any

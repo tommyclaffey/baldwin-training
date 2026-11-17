@@ -316,7 +316,7 @@ async function api(req, res, url) {
     const limiter = switching ? demoSwitchLimiter : demoLimiter;
     if (!limiter.check(ip)) fail(429, switching ? 'That’s a lot of switching from here. Try again in a few minutes.' : 'Too many demos from here. Try again in an hour.');
     const b = await readJson(req, 2000);
-    // Nov 11: two demos. `demo: 'mise'` is Wrenfield in the Mise look (/demo/mise); anything else is The Baldwin's (/demo).
+    // Nov 11: two demos. `demo: 'mise'` is Fig & Fire in the Mise look (/demo/mise); anything else is The Baldwin's (/demo).
     const which = Object.hasOwn(DEMOS, String(b.demo)) ? String(b.demo) : 'baldwin';
     const r = startDemo(db, String(b.role || ''), which);
     if (!r) fail(400, 'Pick a role to start.');

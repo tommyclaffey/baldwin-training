@@ -5,7 +5,7 @@
 // One layout for every brand (Tommy, Nov 12: "it is the same app so it should feel the same"); only the paint changes, and
 // the paint comes from the theme layer (src/lib/theme.ts). The platform's front door (join code, email sign-in, forgot
 // password, two-step, reset and invite links) wears Mise. After a valid join code, the store, name and PIN screens wear
-// that restaurant's own look (The Baldwin stays The Baldwin; Wrenfield is Mise), so BookSignIn passes the company's brand.
+// that restaurant's own look (The Baldwin stays The Baldwin; Fig & Fire is Mise), so BookSignIn passes the company's brand.
 //
 // Photo: Olena Bohovyk on Unsplash (https://unsplash.com/photos/HN2ukPUF_og), the same photo as Figma section 25.
 import { useLayoutEffect, type CSSProperties, type ReactNode } from 'react';

@@ -19,7 +19,7 @@ type Person = { id: number; name: string; email: string | null; role: Role; comp
 type Can = Record<'view' | 'work' | 'signInAs' | 'log' | 'planLook' | 'resetPassword' | 'resetPin' | 'inviteOwner' | 'addCompany' | 'editCompany' | 'editPerson' | 'removePerson' | 'library' | 'change' | 'deleteCompany' | 'deletions' | 'team', boolean>;
 type TeamInvite = { id: string; email: string; teamRole: TeamRole; createdAt: string; expiresAt: string };
 /** One row per demo (Nov 17): each visitor's private copy is a throwaway company, so the list shows the demo, not the copies. */
-type Demo = { kind: string; name: string; path: string; lookName: string; open: number; lastActiveAt: string | null };
+type Demo = { kind: string; name: string; note: string | null; path: string; lookName: string; open: number; lastActiveAt: string | null };
 type Overview = { companies: Company[]; demos: Demo[]; admins: Person[]; teamInvites: TeamInvite[]; you: number; youPrimary: boolean; youRole: TeamRole; can: Can; workingIn: number; plans: Plan[];
   teamRoles: { id: TeamRole; name: string; givable: boolean }[] };
 /** What each Mise team role does, in one line (Mise Team tab and the invite form). */
@@ -154,7 +154,7 @@ function DemoRow({ d }: { d: Demo }) {
   return (
     <tr className="demo-row">
       <td><span className="demo-name"><strong>{d.name}</strong><span className="demo-tag">DEMO</span></span>
-        <span className="demo-copies">{copies}</span>
+        <span className="demo-copies">{d.note ? `${d.note} · ${copies.charAt(0).toLowerCase()}${copies.slice(1)}` : copies}</span>
         <small className="muted demo-note">A private copy for each visitor, removed when they leave or after a day.</small></td>
       <td><small className="muted">Demo · {d.lookName}</small></td>
       <td className="muted">—</td><td className="muted">—</td><td className="muted">—</td><td>{when(d.lastActiveAt)}</td>

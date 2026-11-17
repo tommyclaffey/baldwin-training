@@ -1,5 +1,5 @@
-// Wrenfield, the Mise demo restaurant (Nov 11): the parts of its own pages that The Baldwin's design drew with The Baldwin's
-// photos. Home's Browse the Book tiles and photo strip, and the Photo Library, are filled from Wrenfield's own dishes,
+// Fig & Fire, the Mise demo restaurant (Nov 11): the parts of its own pages that The Baldwin's design drew with The Baldwin's
+// photos. Home's Browse the Book tiles and photo strip, and the Photo Library, are filled from Fig & Fire's own dishes,
 // drinks and a few room and kitchen shots (all Unsplash stand-ins, credited in content/demo-mise/photos.json).
 import fs from 'node:fs';
 import path from 'node:path';
@@ -55,7 +55,7 @@ export function fillSample(page, slug, { recipes, house, wines }) {
   const m = page.main;
   const items = gallery(recipes, house);
   if (slug === '') {
-    // Browse the Book: Wrenfield's own courses, each tile with one of its dishes.
+    // Browse the Book: Fig & Fire's own courses, each tile with one of its dishes.
     const n = (...cs) => recipes.filter((e) => cs.includes(e.data.course)).length;
     const first = (...cs) => recipes.find((e) => cs.includes(e.data.course) && e.data.photo && !e.data.signature)?.data.photo;
     const TILES = {
@@ -72,7 +72,7 @@ export function fillSample(page, slug, { recipes, house, wines }) {
       const [a, b] = texts(t); if (a) { setText(a, name); a.n = name; } if (b) { setText(b, label); b.n = label; }
       const im = find(t, startsWith('IMG/')); if (im && file) fill(im, file, name);
     }
-    // The Food Matrix preview's chips name Wrenfield's own courses.
+    // The Food Matrix preview's chips name Fig & Fire's own courses.
     const course = new Map(recipes.map((e) => ['Row · ' + e.data.name, e.data.course]));
     for (const r of findAll(find(m, byName('Section · Food Matrix')) || { c: [] }, startsWith('Row · '))) if (course.has(r.n)) r.course = course.get(r.n);
     // The photo strip: the first six from the library.
@@ -100,6 +100,6 @@ export function fillSample(page, slug, { recipes, house, wines }) {
   return page;
 }
 
-/* ---- Our Story, Floor Plan and the Sommelier "about" page (Nov 16): Wrenfield's words are the shared templates themselves
+/* ---- Our Story, Floor Plan and the Sommelier "about" page (Nov 16): Fig & Fire's words are the shared templates themselves
  * (content/templates/23-2.json, 30-2.json, 353-2.json, with its room's tables), so there's nothing to fill in here. A
  * restaurant's own versions are its account content (server/account.mjs). ---- */

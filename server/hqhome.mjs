@@ -111,7 +111,7 @@ export function hqHomeRoutes({ db, fail, sendJson }) {
   }
   /** Demo copies, one group per demo: how many are open and when one was last used (server/demo.mjs, the same list as
    *  Super Admin → Companies). Each copy is gone within a day, or when its visitor leaves. */
-  const demoGroups = () => demoList(db).map((d) => ({ kind: d.kind, name: d.name, path: d.path, lookName: (LOOKS[d.brand] || LOOKS.mise).name, open: d.open, lastActiveAt: d.lastActiveAt }));
+  const demoGroups = () => demoList(db).map((d) => ({ kind: d.kind, name: d.name, note: d.note, path: d.path, lookName: (LOOKS[d.brand] || LOOKS.mise).name, open: d.open, lastActiveAt: d.lastActiveAt }));
   /** Errors in the last `hours`, one line per kind + path + message (the table keeps a row per day). */
   function errorGroups(hours = 24) {
     return db.prepare(`SELECT kind, path, message, SUM(count) count, MIN(first_at) first_at, MAX(last_at) last_at FROM errors WHERE last_at >= ?

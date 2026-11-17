@@ -1294,16 +1294,16 @@
   }
  },
  {
-  "key": "demo-mise/Wrenfield Burger",
-  "slug": "recipe/wrenfield-burger",
+  "key": "demo-mise/Fig & Fire Burger",
+  "slug": "recipe/figandfire-burger",
   "sort": 11,
   "data": {
-   "name": "Wrenfield Burger",
+   "name": "Fig & Fire Burger",
    "course": "Mains",
    "price": "21",
    "station": "Grill",
    "description": "Two smashed patties, aged cheddar, onion jam and house pickles on a toasted brioche bun, with fries.",
-   "photo": "/img/demo-mise/wrenfield-burger.jpg",
+   "photo": "/img/demo-mise/figandfire-burger.jpg",
    "ingredients": [
     "Beef patties",
     "Aged cheddar",
@@ -1403,7 +1403,7 @@
    ],
    "photos": [
     {
-     "img": "/img/demo-mise/wrenfield-burger.jpg",
+     "img": "/img/demo-mise/figandfire-burger.jpg",
      "caption": "Final plate"
     }
    ],

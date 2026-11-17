@@ -6,7 +6,7 @@
 // Shared templates (Nov 16, Tommy: "the baldwin is supposed to [be] an account under the app"): the design was drawn as
 // The Baldwin's book. The pages that are a restaurant's own (Our Story, Floor Plan) or carry its own bookings and offers (the
 // Court sittings it hosts, its wine flights) are built from content/templates/ instead: the same layout with sample words
-// (Wrenfield's, the Mise demo's) and no restaurant's bookings. A customer's own version of one of those pages is its account
+// (Fig & Fire's, the Mise demo's) and no restaurant's bookings. A customer's own version of one of those pages is its account
 // content on the volume (server/account.mjs), never this repo. A Figma re-export that brings one of these pages back is
 // ignored here (the template wins) and named in the build log, so it can be taken out of content/raw/.
 import fs from 'node:fs';

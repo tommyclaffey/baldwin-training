@@ -169,15 +169,15 @@ test('stores: in a demo the manager adds up to 3, switches between them, and the
   assert.equal(list.status, 200);
   assert.equal(list.data.demo, true);
   assert.equal(list.data.cap, 3);
-  const a = await demo('/api/team/stores', { method: 'POST', body: { name: 'Wrenfield Uptown' } });
+  const a = await demo('/api/team/stores', { method: 'POST', body: { name: 'Fig & Fire Uptown' } });
   assert.equal(a.status, 200);
-  assert.equal((await demo('/api/team/stores', { method: 'POST', body: { name: 'Wrenfield Lake' } })).status, 200);
-  const third = await demo('/api/team/stores', { method: 'POST', body: { name: 'Wrenfield Four' } });
+  assert.equal((await demo('/api/team/stores', { method: 'POST', body: { name: 'Fig & Fire Lake' } })).status, 200);
+  const third = await demo('/api/team/stores', { method: 'POST', body: { name: 'Fig & Fire Four' } });
   assert.equal(third.status, 400);
   assert.match(third.data.error, /demo can have up to 3/);
-  assert.equal((await demo(`/api/team/stores/${a.data.store.id}`, { method: 'PATCH', body: { name: 'Wrenfield Midtown' } })).status, 200, 'rename works too');
+  assert.equal((await demo(`/api/team/stores/${a.data.store.id}`, { method: 'PATCH', body: { name: 'Fig & Fire Midtown' } })).status, 200, 'rename works too');
   assert.equal((await demo('/api/store', { method: 'POST', body: { storeId: a.data.store.id } })).status, 200, 'switching stores works in a demo');
-  assert.equal((await demo('/api/me')).data.user.store.name, 'Wrenfield Midtown');
+  assert.equal((await demo('/api/me')).data.user.store.name, 'Fig & Fire Midtown');
   assert.equal((await demo('/api/store', { method: 'POST', body: { storeId: 1 } })).status, 404, 'but never to a real company’s store');
   // the employee demo can't
   const emp = person(PORT_A);

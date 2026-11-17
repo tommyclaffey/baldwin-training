@@ -1,7 +1,7 @@
 // Nov 4: leaving the demo puts your own sign-in back (the server kept it aside when the demo started).
 import { api, type User } from './api';
 
-/* Nov 11: two demos. /demo is The Baldwin's (its name, logo and look); /demo/mise is Wrenfield, a made-up restaurant in the
+/* Nov 11: two demos. /demo is The Baldwin's (its name, logo and look); /demo/mise is Fig & Fire, a made-up restaurant in the
  * Mise Academy look. Which one a demo account is in comes from its company's brand. */
 export type DemoKind = 'baldwin' | 'mise';
 export const demoKindOf = (u: User | null | undefined): DemoKind => (u?.brand === 'mise' ? 'mise' : 'baldwin');

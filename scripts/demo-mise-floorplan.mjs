@@ -1,4 +1,4 @@
-// Wrenfield's floor plan (Nov 11, Tommy: "make sure both styles have all the same functions and features"). Wrenfield is
+// Fig & Fire's floor plan (Nov 11, Tommy: "make sure both styles have all the same functions and features"). Fig & Fire is
 // the made-up restaurant in the Mise demo (/demo/mise), so its room is drawn here rather than exported from Figma.
 // Writes public/img/demo-mise/floor-plan.png (2x of the page's 1046 x 690 image box) and content/demo-mise/floorplan.json
 // (each table's and bar seat's centre as fractions of the image, the same shape as content/floorplan.json).
@@ -75,14 +75,14 @@ label(803, 330, 'BAR', 11, C.char);
 [501, 502, 503, 504].forEach((n, i) => roundTable(String(n), 520 + i * 86, 590, 22));
 // 400s: four rounds in The Nest
 [[401, 912, 80], [402, 984, 80], [403, 912, 172], [404, 984, 172]].forEach(([n, x, y]) => roundTable(String(n), x, y, 27));
-label(1026, 685, 'SAMPLE FLOOR PLAN · WRENFIELD IS A MADE-UP RESTAURANT', 9, C.muted, 'end');
+label(1026, 685, 'SAMPLE FLOOR PLAN · FIG &amp; FIRE IS A MADE-UP RESTAURANT', 9, C.muted, 'end');
 
 const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${W * 2}' height='${H * 2}' viewBox='0 0 ${W} ${H}'><defs><clipPath id='k'><rect x='870' y='330' width='156' height='340'/></clipPath></defs>${out.join('')}</svg>`;
 await sharp(Buffer.from(svg)).png({ compressionLevel: 9 }).toFile(path.join(ROOT, 'public/img/demo-mise/floor-plan.png'));
 const round = (v) => Math.round(v * 1e4) / 1e4;
 fs.writeFileSync(path.join(ROOT, 'content/demo-mise/floorplan.json'), JSON.stringify({
   image: '/img/demo-mise/floor-plan.png',
-  note: 'Wrenfield (the Mise demo) floor plan, drawn by scripts/demo-mise-floorplan.mjs. Table and bar-seat centres as fractions of the image.',
+  note: 'Fig & Fire (the Mise demo) floor plan, drawn by scripts/demo-mise-floorplan.mjs. Table and bar-seat centres as fractions of the image.',
   tables: Object.fromEntries(Object.entries(tables).map(([k, [x, y]]) => [k, [round(x), round(y)]])),
 }, null, 1) + '\n');
 console.log(Object.keys(tables).length, 'tables and seats');

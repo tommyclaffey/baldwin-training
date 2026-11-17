@@ -6,7 +6,7 @@
 // A request reads its account's own version when the account has one (`account` below), the shared one otherwise.
 //
 // BRG = company 1 (Baldwin Restaurant Group: The Baldwin, J.Baldwin's, Testa Barra), plus The Baldwin's demo copies
-// (companies.demo = 1, named "Baldwin Restaurant Group"). A company whose brand is 'mise' (the Wrenfield demo) never is.
+// (companies.demo = 1, named "Baldwin Restaurant Group"). A company whose brand is 'mise' (the Fig & Fire demo) never is.
 //
 // The answer is kept per request (AsyncLocalStorage), so every part of the server that reads lessons (pages, search,
 // quizzes, paths, certificates) sees the same version without passing it around.
