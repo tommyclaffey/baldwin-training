@@ -12,6 +12,7 @@ import { SuperAdmin } from './super';
 import { CompanyData } from './companydata';
 import { StoresPage } from './stores';
 import { LegalLinks } from '../components/Legal';
+import { LookLogo } from '../components/LookLogo';
 import { ManagerHome, PeoplePage, SignoffsPage, useSignoffCount } from './manager';
 import { api } from '../lib/api';
 import { DemoBar, DemoTour, openWelcome } from '../components/DemoTour';
@@ -45,7 +46,7 @@ function StaffOnly() {
   const { user, setUser } = useSession();
   return (
     <div className="auth"><div className="auth-card">
-      <img src="/img/logo-white.png" alt="The Baldwin" className="auth-logo" />
+      <LookLogo className="auth-logo" />
       <h1>This part is for managers</h1>
       <p className="muted">You’re signed in as {user?.name}. Your training is in the book.</p>
       <div className="stack">
@@ -88,7 +89,8 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
       <aside className="admin-side">
         <div className="admin-brand">
           {/* Nov 11: a Mise-brand company (the Mise demo) gets the Mise Academy lockup and its restaurant's name on the demo line */}
-          <Link to="/" className="admin-logo">{user.brand === 'mise' ? <img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy" /> : <img src="/img/logo-white.png" alt="The Baldwin" />}</Link>
+          {/* Nov 17: the look of the store being worked in (its own logo, or the company's) */}
+          <Link to="/" className="admin-logo"><LookLogo /></Link>
           {user.demo && <button type="button" className="demo-line admin-demo" onClick={openWelcome} aria-haspopup="dialog"><span>{user.brand === 'mise' ? user.store?.name || ACADEMY_NAME : ACADEMY_NAME}</span>{' '}<span className="demo-pill">DEMO</span></button>}
         </div>
         <span className="admin-tag">{isSuper ? 'Super Admin' : 'Admin'}</span>

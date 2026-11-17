@@ -98,10 +98,14 @@ function withTeam(n: FNode, signoffs: number): FNode {
   const team = [relabel({ ...label, n: 'Group · TEAM' }, 'TEAM'), navItem('People', '/admin/people', 'team-people', 0), navItem('Sign-offs', '/admin/signoffs', 'team-signoffs', signoffs)];
   return { ...n, c: [...n.c.slice(0, home + 1), ...team, ...n.c.slice(home + 1)] };
 }
-import { currentBrand, themeSidebar, MISE } from '../lib/theme';
+import { currentBrand, theme, themeSidebar } from '../lib/theme';
 import { isSample } from '../lib/demo';
 
 /** A store without its own designed book: its name where The Baldwin's logo is, and no Baldwin quiz card. */
+/** The same, keeping the logo: a store with its own look but no designed book yet (Nov 17). */
+function withoutBookCard(n: FNode): FNode {
+  return n.c ? { ...n, c: n.c.filter((c) => c.n !== 'Your Training').map(withoutBookCard) } : n;
+}
 function forStore(n: FNode, name: string): FNode {
   if (n.n === 'Logo') return { ...n, sh: 'F', c: [{ t: 'T', n: 'Store name', s: name, w: 164, h: 28, sh: 'F', sv: 'H', f: [{ c: '#F2EEE7' }], ff: 'Archivo', fs: 'ExtraBold', z: 22, ls: '-1%', ar: 'H' } as FNode] };
   return n.c ? { ...n, c: n.c.filter((c) => c.n !== 'Your Training').map((c) => forStore(c, name)) } : n;
@@ -111,9 +115,9 @@ function forStore(n: FNode, name: string): FNode {
  *  the product's name and a small tinted DEMO tag beside it. Same pattern in every app. */
 // Nov 11: in the Mise demo the logo is Mise Academy's own, so the line names the workspace (the restaurant), like Growth's
 // "Copperline · DEMO", and the tag is tinted in Mise's accent (deep fig) with light fig text: 10.5:1 on its tint.
+// Nov 17: the tag's paint is the look's (theme.ts demoPill), so any look that's demoed draws it in its own accent.
 type PillLook = { label: string; tint: string; tintO: number; ink: string; muted: string };
-const BALDWIN_PILL: PillLook = { label: ACADEMY_NAME, tint: '#C49A6C', tintO: .24, ink: '#EBD2B2', muted: '#B8AFA3' };
-function withDemoPill(n: FNode, look: PillLook = BALDWIN_PILL): FNode {
+function withDemoPill(n: FNode, look: PillLook): FNode {
   const tag: FNode = { t: 'F', n: 'Pill', lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 6, pd: [3, 7, 3, 7], f: [{ c: look.tint, o: look.tintO }], c: [{ t: 'T', n: 'DEMO', s: 'DEMO', ff: 'Archivo', fs: 'Bold', z: 11, ls: '8%', f: [{ c: look.ink }], ar: 'W', sh: 'H', sv: 'H' } as FNode] } as FNode;
   const pill: FNode = { t: 'F', n: 'Demo pill', lm: 'H', gap: 8, ca: 'C', sh: 'H', sv: 'H', c: [{ t: 'T', n: 'Product', s: look.label, ff: 'Archivo', fs: 'Medium', z: 14, f: [{ c: look.muted }], ar: 'W', sh: 'H', sv: 'H' } as FNode, tag] } as FNode;
   if (!n.c) return n;
@@ -161,10 +165,11 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     const base = trainingCard([SIDEBAR], quiz)[0];
     const prepped = withPrep(chat ? withChat(base) : base);
     const drawn = pathSidebar(linkHome(withCounts(manager ? withImport(prepped) : prepped, live)), mine);
-    const named = generic ? forStore(drawn, user!.store!.name) : drawn;
+    // Nov 17: a store wearing its own look shows that look's logo, even before its book is ready
+    const named = generic && !user!.store!.ownLook ? forStore(drawn, user!.store!.name) : generic ? withoutBookCard(drawn) : drawn;
     const teamed = manager ? withTeam(named, signoffs) : named;
     const mise = currentBrand() === 'mise';
-    const look: PillLook = mise && sample ? { label: user!.store?.name || ACADEMY_NAME, tint: MISE.fig, tintO: .42, ink: '#F6D3CE', muted: MISE.ash } : BALDWIN_PILL;
+    const look: PillLook = { ...theme().demoPill, label: mise && sample ? user!.store?.name || ACADEMY_NAME : ACADEMY_NAME };
     const shown = user?.demo ? withDemoPill(teamed, look) : teamed;
     return themeSidebar(mentions > 0 && unread > 0 ? withMentionBadge(shown, mentions) : shown);
   }, [quiz, counts, generic, sample, user, mine, chat, unread, mentions, manager, signoffs]);

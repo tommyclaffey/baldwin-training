@@ -3,7 +3,9 @@
 // Nov 11 (Tommy: "for the mise version can i get the garlic icon for the favicon"): anything drawn in the Mise look
 // (a Mise-brand company, the /demo/mise picker, any Mise-look signed-out screen) shows Mise's garlic + fig app icon
 // (Figma Brand assets/App icon 520:233), public/icons/mise-*.png. It follows the brand: skin.ts announces each change.
-import { currentBrand } from './theme';
+// Nov 17: a look with its own icon (Testa Barra's forks, J.Baldwin's J: theme.ts `icon`, public/icons) shows it, whatever
+// the store; Mise's is one of those. The Baldwin look keeps its way: its store's own icon, or the store's initial.
+import { theme } from './theme';
 
 const HAS_LOGO = new Set(['the-baldwin', 'mise']);
 type Store = { slug: string; name: string } | null | undefined;
@@ -17,7 +19,8 @@ function initialIcon(name: string) {
 
 function draw() {
   const store = last;
-  const slug = currentBrand() === 'mise' || !store ? 'mise' : HAS_LOGO.has(store.slug) ? store.slug : null; // signed out: Mise (Nov 16)
+  const t = theme();
+  const slug = t.icon ? t.icon : !store ? 'mise' : HAS_LOGO.has(store.slug) ? store.slug : null; // signed out in The Baldwin's look: Mise (Nov 16)
   const icons = document.querySelectorAll<HTMLLinkElement>('link[rel="icon"]');
   const touch = document.querySelector<HTMLLinkElement>('link[rel="apple-touch-icon"]');
   icons.forEach((l) => {

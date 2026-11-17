@@ -1,4 +1,5 @@
 // Small fetch wrapper. Writes carry X-BT so the server can block cross-site requests.
+import type { Brand } from './theme';
 export class ApiError extends Error { constructor(public status: number, message: string) { super(message); if (status === 401 || status === 403) DENIED.add(message); } }
 // Nov 15 (audit 24): a "you can't do that" answer (401/403) isn't fixed by trying again. Screens keep errors as plain text,
 // so the messages of refusals are remembered here, and the shared error notes leave out Try Again for them.
@@ -51,14 +52,14 @@ export type MediaItem = { id: number; kind: 'file' | 'youtube'; title: string; u
   captions?: string | null };
 export type Video = { kind: 'youtube'; youtubeId: string; title?: string } | { kind: 'file'; url: string; mime?: string; title?: string };
 export type Role = 'superadmin' | 'owner' | 'manager' | 'staff';
-export type User = { demo?: boolean; hq?: boolean; brand?: 'baldwin' | 'mise'; /** a manager promoted from staff, still on their PIN (Nov 16) */ pinSignIn?: boolean;
+export type User = { demo?: boolean; hq?: boolean; /** the look the store being worked in wears (server/looks.mjs; Nov 17: per store) */ brand?: Brand; /** a manager promoted from staff, still on their PIN (Nov 16) */ pinSignIn?: boolean;
   id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null;
   totpOn: boolean; superPrimary: boolean; impersonatedBy: number | null; workingIn?: number; workingInName?: string | null;
   /** Mise team role (super admins only, Nov 16) and view only (Support, also while signed in as someone). */
   teamRole?: TeamRole | null; viewOnly?: boolean;
   storeId: number | null; store?: Store | null; canSwitchStore?: boolean; stores?: Store[];
 };
-export type Store = { id: number; name: string; slug: string; bookReady: boolean };
+export type Store = { id: number; name: string; slug: string; bookReady: boolean; /** wears a look of its own (Nov 17) */ ownLook?: boolean };
 /** Privacy, Terms and Help (Nov 16): public once content/legal.md's blanks are filled. */
 export type Legal = { public: boolean; supportEmail: string | null };
 /** Whether an invite or promotion link also went by email (Nov 16). reason: off (email isn't set up) · demo · limit · failed */

@@ -7,7 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
 import { exitDemo, markDemoTab, type DemoKind } from '../lib/demo';
-import { setPageBrand } from '../lib/theme';
+import { setPageBrand, THEMES } from '../lib/theme';
+import { LookLogo } from './LookLogo';
 
 // Nov 4, Tommy: "one account for an employee and then one account that is a manager/admin."
 // Nov 15 (audit 20): the lines name what's really in each view.
@@ -48,7 +49,7 @@ export function DemoPicker({ kind }: { kind: DemoKind }) {
       <div className="demo-brand">
         {mise
           ? <img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy" height="64" />
-          : <img src="/img/logo-white.png" alt="The Baldwin" height="40" />}
+          : <LookLogo t={THEMES.baldwin} height={40} />}
         {/* The demo tag (Nov 9 rule): the workspace name in muted text, then the DEMO tag. */}
         <span className="demo-line"><span>{mise ? 'Fig & Fire' : 'Mise Academy'}</span><span className="demo-pill">DEMO</span></span>
       </div>

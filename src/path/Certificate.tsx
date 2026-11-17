@@ -4,13 +4,15 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { api } from '../lib/api';
-import { currentBrand } from '../lib/theme';
+import { asBrand, currentBrand, THEMES } from '../lib/theme';
+import { LookLogo } from '../components/LookLogo';
 import { useSession } from '../lib/session';
 
 export type Cert = {
   key: string; isA?: boolean; program: string; programName: string; programSlug: string; level: number; levelWord: string; title: string; seal: string;
   name: string; final: { pct: number; at: string; firstAt: string }; practical: { at: string; by: string | null } | null;
   number: string; earnedAt: string; store: string | null; logo: string | null; fine: string; practicalLabel?: string | null;
+  /** the store's own look (Nov 17): the band shows that look's logo */ look?: string | null;
 };
 
 const day = (iso: string, month: 'short' | 'long' = 'short') => new Date(iso).toLocaleDateString('en-US', { month, day: 'numeric', year: 'numeric', timeZone: 'America/Detroit' });
@@ -24,7 +26,7 @@ export function Certificate({ c }: { c: Cert }) {
   return (
     <div className="cert" role="img" aria-label={`Certificate: ${c.name}, ${c.title}, ${c.programName} Level ${c.level}, ${day(c.earnedAt, 'long')}`}>
       <div className="cert-in">
-        <div className="cert-band">{c.logo ? <img src={c.logo} alt={store} /> : <span>{store}</span>}</div>
+        <div className="cert-band">{c.look ? <LookLogo t={THEMES[asBrand(c.look)]} alt={store} /> : c.logo ? <img src={c.logo} alt={store} /> : <span>{store}</span>}</div>
         <p className="cert-script">Certificate of Completion</p>
         <p className="cert-label">This certifies that</p>
         <p className="cert-name">{c.name}</p>

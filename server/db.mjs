@@ -303,6 +303,14 @@ export const MIGRATIONS = [
     ok INT NOT NULL DEFAULT 1, bytes INT, detail TEXT);
   CREATE INDEX ops_runs_kind ON ops_runs(kind, at);
   `,
+  // 23 (Nov 17, looks per store; Figma 09 · Proposals → 33, 732:1085; server/looks.mjs). Tommy: "can we start building out
+  //   the branding for testa barra and j. baldwins?" A company's stores can each wear their own look.
+  //   stores.look: NULL = the company's look (companies.brand), which is every store today, so nobody's look changes; or a
+  //     look made for the company ('testabarra', 'jbaldwins'…). Only drawn on the Custom Brand plan (lookOfStore). Set by
+  //     a super admin in Super Admin → Companies. (stores.theme, from Oct 28, was never used and stays empty.)
+  `
+  ALTER TABLE stores ADD COLUMN look TEXT;
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

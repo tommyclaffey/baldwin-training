@@ -199,7 +199,7 @@ export function AcceptInvite() {
   const { token } = useParams();
   const { setUser } = useSession();
   const nav = useNavigate();
-  const [inv, setInv] = useState<{ valid: boolean; email?: string; role?: Role; company?: string | null; store?: string | null; brand?: 'baldwin' | 'mise';
+  const [inv, setInv] = useState<{ valid: boolean; email?: string; role?: Role; company?: string | null; store?: string | null; brand?: import('../lib/theme').Brand;
     teamRole?: TeamRole | null; promotion?: boolean; name?: string | null } | null>(null);
   const [f, setF] = useState({ name: '', password: '' });
   const [error, setError] = useState('');

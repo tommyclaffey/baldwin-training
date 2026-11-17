@@ -12,7 +12,7 @@ import { ErrorLog } from './hq';
 
 type Look = { id: string; name: string; custom: boolean };
 type Plan = { id: string; name: string; customLook: boolean };
-type Company = { id: number; name: string; slug: string; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number }[];
+type Company = { id: number; name: string; slug: string; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number; look: string | null; drawnIn: string }[]; storeLooks: boolean;
   demo: boolean; hq: boolean; plan: string; look: string; drawnIn: string; looks: Look[] };
 type Person = { id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null; createdAt: string; lastSeenAt: string | null; deletedAt: string | null; hasPin: boolean; totpOn: boolean; superPrimary: boolean;
   teamRole: TeamRole | null };
@@ -117,7 +117,8 @@ function Companies() {
             <td><strong>{c.name}</strong>{c.hq && <small className="hq-tag">HQ</small>}{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <small className="error"> · deleted, {daysLeft(c.deletedAt)} days to restore</small>}
               <ul className="store-list">{c.stores.map((st) => (
                 <li key={st.id}>{st.name} <small className="muted">· {st.staff} staff · {st.bookReady ? 'designed book' : 'shared library'}</small>{' '}
-                  {!c.deletedAt && can.editCompany && <button className="link-btn" onClick={() => { const n = prompt('Store name', st.name); if (n && n !== st.name) void run(() => api(`/api/super/stores/${st.id}`, { method: 'PATCH', body: { name: n } })); }}>Rename</button>}</li>
+                  {!c.deletedAt && can.editCompany && <button className="link-btn" onClick={() => { const n = prompt('Store name', st.name); if (n && n !== st.name) void run(() => api(`/api/super/stores/${st.id}`, { method: 'PATCH', body: { name: n } })); }}>Rename</button>}
+                  <StoreLook c={c} st={st} canChange={can.planLook} onChange={(look) => run(() => api(`/api/super/companies/${c.id}/stores/${st.id}`, { method: 'PATCH', body: { look } }))} /></li>
               ))}
               {!c.deletedAt && can.editCompany && <li><button className="link-btn" onClick={() => { const n = prompt(`New store for ${c.name}`); if (n) void run(() => api(`/api/super/companies/${c.id}/stores`, { method: 'POST', body: { name: n } })); }}>+ Add Store</button></li>}</ul></td>
             <td><PlanLook c={c} plans={data.plans} canChange={can.planLook} onChange={(body) => run(() => api(`/api/super/companies/${c.id}`, { method: 'PATCH', body }))} /></td>
@@ -188,6 +189,24 @@ function PlanLook({ c, plans, canChange, onChange }: { c: Company; plans: Plan[]
       </select>
       {c.looks.length < 2 && <small className="muted">No custom look built yet</small>}
     </div>
+  );
+}
+
+/** A store's own look (Nov 17, Tommy: "can we start building out the branding for testa barra and j. baldwins?"). Custom
+ *  Brand companies only: "Same as company" (the company's look, every store's start) or a look made for the company.
+ *  Super admins only for now (Tommy: "We need to figure out how we do this internally from the app but we can do that
+ *  after"). The server logs every change. */
+function StoreLook({ c, st, canChange, onChange }: { c: Company; st: Company['stores'][number]; canChange: boolean; onChange: (look: string | null) => void }) {
+  if (c.demo || c.hq || !c.storeLooks) return null;
+  const lookName = (id: string) => c.looks.find((l) => l.id === id)?.name || 'Mise Academy';
+  if (!canChange || c.deletedAt) return st.look ? <small className="muted store-look">· {lookName(st.drawnIn)} look</small> : null;
+  return (
+    <label className="store-look"><span className="sr-only">{st.name}’s look</span>
+      <select value={st.look || ''} onChange={(e) => onChange(e.target.value || null)}>
+        <option value="">Same as company ({lookName(c.drawnIn)})</option>
+        {c.looks.map((l) => <option key={l.id} value={l.id}>{l.name}</option>)}
+      </select>
+    </label>
   );
 }
 

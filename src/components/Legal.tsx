@@ -7,6 +7,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { useSession } from '../lib/session';
 import { brandTitle, currentBrand } from '../lib/theme';
+import { LookLogo } from './LookLogo';
 
 export type LegalKind = 'privacy' | 'terms' | 'help';
 type Run = { t: string; b?: boolean; i?: boolean; mail?: boolean; blank?: boolean };
@@ -77,7 +78,7 @@ function LegalPage({ page }: { page: Page }) {
     <div className="legal">
       <header className="legal-bar">
         <Link to="/" className="legal-logo" aria-label="Mise Academy home">
-          {mise ? <img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy" /> : <img src="/img/logo-white.png" alt="The Baldwin" />}
+          <LookLogo />
         </Link>
         <Link to="/" className="legal-back">{user ? 'Back to the Book' : 'Sign In'}</Link>
       </header>

@@ -20,7 +20,8 @@ import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
 import { TeamBar } from './components/TeamBar';
 import { MyPathPage, PathReadBar } from './path/MyPath';
 import { AckPage } from './path/AckPage';
-import { currentBrand } from './lib/theme';
+import { theme } from './lib/theme';
+import { LookLogo } from './components/LookLogo';
 
 // Mise skin (Nov 10): a Mise-brand company sees the app in Mise (Nov 11: the brand comes with the session, see lib/theme.ts);
 // The Baldwin's look is the default.
@@ -80,11 +81,10 @@ function Book() {
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
         <div className={'mobile-brand' + (user.demo ? ' has-pill' : '')}>
-          {user.store && !user.store.bookReady && !isSample(user)
+          {/* Nov 17: the look's own logo (the store's, when it wears its own look, even before its book is ready) */}
+          {user.store && !user.store.bookReady && !isSample(user) && !user.store.ownLook
             ? <strong className="mobile-name">{user.store.name}</strong>
-            : currentBrand() === 'mise'
-              ? <Link to="/" aria-label="Home"><img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy" height="34" /></Link>
-              : <Link to="/" aria-label="Home"><img src="/img/logo-white.png" alt="The Baldwin" height="28" /></Link>}
+            : <Link to="/" aria-label="Home"><LookLogo height={theme().mark.barH} /></Link>}
           {user.demo && <button type="button" className="demo-pill" onClick={openWelcome}>DEMO</button>}
         </div>
         <div className="mobile-tools">

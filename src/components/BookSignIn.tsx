@@ -2,15 +2,16 @@
 // Owners and managers sign in with email in the admin, which also opens the book.
 // Nov 12 (Figma section 28): the join-code screen wears Mise, the platform's front door. Once the code is right the app
 // knows the restaurant, so the store, name and PIN screens wear that restaurant's own look (the brand comes with the code).
+// Nov 17: once a store is picked, its own look (Testa Barra, J.Baldwin's); the store question itself wears the company's.
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { api, type User } from '../lib/api';
 import { useSession } from '../lib/session';
-import type { Brand } from '../lib/theme';
+import { asBrand, type Brand } from '../lib/theme';
 import { AuthCard } from './AuthCard';
 
 type Staff = { id: number; name: string; needsPin: boolean; storeId: number | null };
-type Store = { id: number; name: string };
+type Store = { id: number; name: string; brand?: string };
 const CODE_KEY = 'bt-join-code';
 const STORE_KEY = 'bt-join-store';
 
@@ -21,7 +22,7 @@ export function BookSignIn() {
   const [store, setStore] = useState<Store | null>(null);
   const [code, setCode] = useState(() => localStorage.getItem(CODE_KEY) || '');
   const [company, setCompany] = useState('');
-  const [brand, setBrand] = useState<Brand>('mise');
+  const [coBrand, setCoBrand] = useState<Brand>('mise');
   const [staff, setStaff] = useState<Staff[]>([]);
   const [who, setWho] = useState<Staff | null>(null);
   const [q, setQ] = useState('');
@@ -35,7 +36,7 @@ export function BookSignIn() {
     setBusy(true); setError('');
     try {
       const r = await api<{ company: string; brand?: string; stores: Store[]; staff: Staff[] }>(`/api/join/${encodeURIComponent(c.trim().toUpperCase())}`);
-      setCompany(r.company); setBrand(r.brand === 'mise' ? 'mise' : 'baldwin'); setStaff(r.staff); setStores(r.stores); localStorage.setItem(CODE_KEY, c.trim().toUpperCase());
+      setCompany(r.company); setCoBrand(asBrand(r.brand)); setStaff(r.staff); setStores(r.stores); localStorage.setItem(CODE_KEY, c.trim().toUpperCase());
       // One store: skip the question. Several: ask once, then remember it on this phone.
       const saved = r.stores.find((x) => String(x.id) === localStorage.getItem(STORE_KEY));
       const pick = r.stores.length === 1 ? r.stores[0] : saved || null;
@@ -77,7 +78,8 @@ export function BookSignIn() {
     </label>
   );
   const managers = <><hr className="si-rule" /><p className="si-alt">Owner or manager? <Link to="/admin">Sign in with your email.</Link></p></>;
-  const card = { kicker: 'Staff', brand }; // after the join code: the restaurant's own look
+  // after the join code: the restaurant's own look; after the store question, that store's (Nov 17)
+  const card = { kicker: 'Staff', brand: step !== 'store' && store?.brand ? asBrand(store.brand) : coBrand };
 
   if (step === 'code') return (
     <AuthCard kicker="Staff" title="Sign In" sub="Ask a manager for your restaurant’s join code."

@@ -65,7 +65,7 @@ test('Super Admin → Companies: HQ first, tagged, Mise’s own (no plan change,
   assert.deepEqual([ov.companies[0].plan, ov.companies[0].drawnIn], ['foundation', 'mise']);
   const b = ov.companies.find((c) => c.id === 1);
   assert.deepEqual([b.hq, b.plan, b.look, b.drawnIn], [false, 'custom-brand', 'baldwin', 'baldwin'], 'company 1 is untouched');
-  assert.deepEqual(b.looks.map((l) => l.id), ['mise', 'baldwin']);
+  assert.deepEqual(b.looks.map((l) => l.id), ['mise', 'baldwin', 'testabarra', 'jbaldwins']); // Nov 17: its other two restaurants' looks
   assert.deepEqual(ov.plans.map((p) => p.id), ['foundation', 'custom-brand']);
   assert.equal((await tommy(`/api/super/companies/${hq}`, { method: 'PATCH', body: { plan: 'custom-brand' } })).status, 400);
   assert.equal((await tommy(`/api/super/companies/${hq}`, { method: 'DELETE', body: { confirm: 'Mise Academy (HQ)' } })).status, 400);

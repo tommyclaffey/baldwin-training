@@ -1,4 +1,4 @@
-import { currentBrand, hasPageTitle, themePage, THEMES } from '../lib/theme';
+import { BRAND_IDS, currentBrand, hasPageTitle, themePage, THEMES, type Brand } from '../lib/theme';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { ChatItemsContext, CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
@@ -113,7 +113,7 @@ export function usePageEntry() {
 // The theme layer (Nov 12, lib/theme.ts): every page is drawn in the company's brand (Nov 11: the brand comes with the
 // session), with the layouts every brand shares (the cinematic hero). Themed pages are kept per page object and brand, so
 // re-renders don't redo the work.
-const themeCache = { baldwin: new WeakMap<object, Page>(), mise: new WeakMap<object, Page>() };
+const themeCache = Object.fromEntries(BRAND_IDS.map((b) => [b, new WeakMap<object, Page>()])) as Record<Brand, WeakMap<object, Page>>;
 function themed(p: Page): Page {
   const b = currentBrand(); const cache = themeCache[b];
   let s = cache.get(p);

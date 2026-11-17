@@ -11,6 +11,7 @@
 import { useLayoutEffect, type CSSProperties, type ReactNode } from 'react';
 import { THEMES, brandTitle, color, setPageBrand, themeVars, type Brand, type Theme, type TypeSpec } from '../lib/theme';
 import { LegalLinks } from './Legal';
+import { LookLogo } from './LookLogo';
 
 const WEIGHT: Record<string, number> = { Regular: 400, Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800 };
 const weight = (s: TypeSpec, fallback: number) => (s.fs && WEIGHT[s.fs]) || fallback;
@@ -39,7 +40,7 @@ export function AuthCard({ title, sub, kicker, foot, brand = 'mise', children }:
   useLayoutEffect(() => { setPageBrand(brand); return () => setPageBrand(null); }, [brand]);
   const logo = t.logo
     ? <img className="si-logo si-logo-lockup" src={t.logo.src} alt={t.logo.alt} />
-    : <img className="si-logo si-logo-mark" src="/img/logo-white.png" alt="The Baldwin" />;
+    : <LookLogo t={t} className="si-logo si-logo-mark" />;
   return (
     <div className={`si si-${brand}`} style={paint(t)}>
       <div className="si-photo" role="banner">{/* (the logo and photo band is the screen's banner, so nothing sits outside a landmark; Nov 12 scan) */}

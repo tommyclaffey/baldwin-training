@@ -13,7 +13,7 @@
 // or all of them; owners and super admins work in one store at a time and can switch.
 // Every query about people is scoped to the signed-in person's company, and store-level records to their store.
 import { audit, now } from './db.mjs';
-import { LOOKS, PLANS, DEFAULT_LOOK, DEFAULT_PLAN, lookOf, lookAllowed, looksFor } from './looks.mjs';
+import { LOOKS, PLANS, DEFAULT_LOOK, DEFAULT_PLAN, lookOf, lookAllowed, looksFor, lookOfStore, storeLooksAllowed } from './looks.mjs';
 import { hqId, HQ_NAME } from './hq.mjs';
 import { teamRole, teamCan, teamCans, TEAM_ROLES, GIVABLE } from './miseteam.mjs';
 import {
@@ -97,7 +97,8 @@ export function storeOf(db, u) {
 }
 /** Can this person switch between their company's stores? */
 export const switchesStores = (u) => !!u && (u.role === 'owner' || u.role === 'superadmin' || (u.role === 'manager' && !u.store_id));
-const storeOut = (x) => x && { id: x.id, name: x.name, slug: x.slug, bookReady: !!x.book_ready };
+// ownLook (Nov 17): the store wears a look of its own (stores.look), so its logo is that look's, even before its book is ready
+const storeOut = (x) => x && { id: x.id, name: x.name, slug: x.slug, bookReady: !!x.book_ready, ...(x.look ? { ownLook: true } : {}) };
 
 /** Soft deletes are kept 30 days, then removed. */
 export function purgeDeleted(db) {
@@ -136,7 +137,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   /** The signed-in person as the app sees them: role, company, and the store they're working in. */
   const meOut = (u) => ({
     ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo, pinSignIn: u.role === 'manager' && !u.password_hash && !!u.pin_hash, hq: !!companyRow(companyOf(u))?.internal, // Nov 16: Mise Academy (HQ) keeps one store
-    brand: lookOf(companyRow(companyOf(u))), // Nov 11: the look follows the company; Nov 16: its plan decides (server/looks.mjs)
+    // Nov 11: the look follows the company; Nov 16: its plan decides; Nov 17: the store being worked in can wear its own
+    brand: lookOfStore(companyRow(companyOf(u)), storeOf(db, u)),
     store: storeOut(storeOf(db, u)), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
   });
   const signIn = (res, req, user, opts = {}) => {
@@ -408,7 +410,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const staff = db.prepare(`SELECT id, name, pin_hash, store_id FROM users WHERE company_id = ? AND deleted_at IS NULL AND ${PIN_SIGN_IN} ORDER BY name COLLATE NOCASE`).all(co.id);
       // Nov 12: the brand comes too, so the store, name and PIN screens wear the restaurant's own look (the join-code screen
       // before it is Mise's, the platform's front door).
-      return sendJson(res, 200, { company: co.name, brand: lookOf(co), stores: storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name })), staff: staff.map((s) => ({ id: s.id, name: s.name, storeId: s.store_id, needsPin: !s.pin_hash })) });
+      // Nov 17: each store says its own look too, so the name and PIN screens wear the store picked (Testa Barra, J.Baldwin's).
+      return sendJson(res, 200, { company: co.name, brand: lookOf(co), stores: storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name, brand: lookOfStore(co, x) })), staff: staff.map((s) => ({ id: s.id, name: s.name, storeId: s.store_id, needsPin: !s.pin_hash })) });
     }
     if (p === '/api/join' && m === 'POST') {
       if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
@@ -473,7 +476,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (m === 'GET') {
         if (!ok) return sendJson(res, 200, { valid: false });
         const co = inv.company_id ? companyRow(inv.company_id) : null;
-        return sendJson(res, 200, { valid: true, email: inv.email, role: inv.role, company: inv.company_name, store: storeName, brand: co ? lookOf(co) : 'mise',
+        const invStore = inv.store_id ? db.prepare('SELECT * FROM stores WHERE id = ? AND deleted_at IS NULL').get(inv.store_id) : null;
+        return sendJson(res, 200, { valid: true, email: inv.email, role: inv.role, company: inv.company_name, store: storeName, brand: co ? lookOfStore(co, invStore) : 'mise',
           teamRole: inv.role === 'superadmin' ? (GIVABLE.includes(inv.super_role) ? inv.super_role : 'manager') : null, promotion: !!who, name: who?.name ?? null });
       }
       if (m === 'POST' && who) {
@@ -808,7 +812,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.internal ? team.length : x.leads, staff: x.staff,
           lastSeenAt: x.internal ? team.reduce((a, t) => (t.last_seen_at && t.last_seen_at > (a || '') ? t.last_seen_at : a), null) : x.last_seen,
           demo: !!x.demo, hq: !!x.internal, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x),
-          stores: storesOf(db, x.id).map((st) => ({ ...storeOut(st), staff: db.prepare("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'staff' AND deleted_at IS NULL").get(st.id).n })) })),
+          // Nov 17: each store's own look (null = the company's) and the look it's drawn in
+          storeLooks: storeLooksAllowed(x),
+          stores: storesOf(db, x.id).map((st) => ({ ...storeOut(st), look: st.look || null, drawnIn: lookOfStore(x, st), staff: db.prepare("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'staff' AND deleted_at IS NULL").get(st.id).n })) })),
         demos: demoGroups(db).map((d) => ({ kind: d.kind, name: d.name, note: d.note, path: d.path, lookName: (LOOKS[d.brand] || LOOKS[DEFAULT_LOOK]).name, open: d.open, lastActiveAt: d.lastActiveAt })),
         admins: admins.map(personOut), teamInvites, you: s.id, youPrimary: !!s.super_primary, youRole: teamRole(s), can: teamCans(s), workingIn: companyOf(s),
         teamRoles: Object.entries(TEAM_ROLES).map(([id, name]) => ({ id, name, givable: GIVABLE.includes(id) })),
@@ -843,7 +849,22 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     if (parts[2] === 'companies' && /^\d+$/.test(parts[3] || '')) {
       const co = db.prepare('SELECT * FROM companies WHERE id = ?').get(Number(parts[3]));
       if (!co) fail(404, 'We couldn’t find that company.');
-      if (m === 'PATCH') {
+      // Nov 17: a store's own look (Super Admin → Companies, each store's Look). Custom Brand only; null = the company's.
+      if (parts[4] === 'stores' && /^\d+$/.test(parts[5] || '') && m === 'PATCH') {
+        may('planLook');
+        const st = db.prepare('SELECT * FROM stores WHERE id = ? AND company_id = ? AND deleted_at IS NULL').get(Number(parts[5]), co.id);
+        if (!st) fail(404, 'We couldn’t find that store.');
+        if (co.demo) fail(400, 'A demo copy keeps the look it was made with.');
+        if (co.internal) fail(400, 'Mise Academy (HQ) is Mise’s own company: it stays on Mise’s look.');
+        if (!storeLooksAllowed(co)) fail(400, `A store’s own look comes with the ${PLANS['custom-brand'].name} plan.`);
+        const b = await readJson(req);
+        const look = b.look === null || b.look === '' || b.look === undefined ? null : String(b.look);
+        if (look && (!LOOKS[look] || !lookAllowed(co, look))) fail(400, 'That look isn’t made for this company.');
+        db.prepare('UPDATE stores SET look = ? WHERE id = ?').run(look, st.id);
+        superLog(s, 'store look', `${co.name} · ${st.name} · ${look ? LOOKS[look].name : 'Same as company (' + LOOKS[lookOf(co)].name + ')'}`, co.id);
+        return sendJson(res, 200, { ok: true, look, drawnIn: lookOfStore(co, { ...st, look }) });
+      }
+      if (m === 'PATCH' && !parts[4]) {
         const b = await readJson(req);
         may(b.plan !== undefined || b.look !== undefined ? 'planLook' : 'editCompany');
         // Nov 16: plan and look (Super Admin → Companies). A custom look needs the Custom Brand plan and has to be made for

@@ -1,4 +1,5 @@
 import { focusVars, parseFocus, type Focus } from '../lib/focus';
+import { fontCss } from '../lib/theme';
 import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
@@ -32,7 +33,7 @@ export type FNode = {
   tbl?: 'table' | 'row' | 'ch' | 'rh' | 'cell'; tblv?: string; tspan?: number; // a heading: rendered as h1–h3 (set by the theme layer from the drawn type; see outlinePage in lib/theme.ts)
   sh?: 'F' | 'H' | 'L'; sv?: 'F' | 'H' | 'L';
   op?: number; rot?: number; to?: string; svg?: string;
-  f?: { c?: string; o?: number; img?: string; m?: string; g?: [string, number, number][]; gt?: string; ga?: number }[];
+  f?: { c?: string; o?: number; img?: string; m?: string; g?: [string, number, number][]; gt?: string; ga?: number; bs?: string; bp?: string }[]; // bs/bp: a logo's artwork box (theme.ts cropFill)
   st?: string; sto?: number; sw?: number; sws?: number[]; dash?: 1; sa?: string;
   r?: number; rs?: number[];
   s?: string; ff?: string; fs?: string; z?: number; lh?: string | number; ls?: string | number; ta?: string; ar?: string; lw?: number; tb?: 1;
@@ -110,11 +111,7 @@ function Drawing({ svg, style, className }: { svg: string; style: CSSProperties;
   }, [svg]);
   return <span ref={ref} aria-hidden="true" className={className} style={{ ...style, alignItems: 'center', justifyContent: 'center' }} dangerouslySetInnerHTML={{ __html: svg }} />;
 }
-// The Mise skin's fonts (src/lib/theme.ts) sit beside The Baldwin's Archivo and Pinyon Script.
-const FONT: Record<string, string> = {
-  'Pinyon Script': "'Pinyon Script', cursive", 'Instrument Serif': "'Instrument Serif', Georgia, serif",
-  'DM Mono': "'DM Mono', ui-monospace, monospace", 'Reenie Beanie': "'Reenie Beanie', cursive",
-};
+// Every look's faces come from one list (src/lib/theme.ts FONTS; Nov 17: Testa Barra's and J.Baldwin's too).
 const WEIGHT: Record<string, number> = { Regular: 400, Italic: 400, Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800 };
 const JUSTIFY: Record<string, string> = { C: 'center', M: 'flex-end', S: 'space-between' };
 const ALIGN: Record<string, string> = { C: 'center', M: 'flex-end', B: 'baseline', S: 'stretch' }; // S: the server evens out a grid's rows (content.mjs)
@@ -130,12 +127,14 @@ function background(node: FNode, st: CSSProperties, cls?: string[]) {
   const images: string[] = [];
   const sizes: string[] = [];
   let focus: Focus | null = null;
+  let cropAt: string | null = null;
   for (const f of node.f) {
     if (f.img) {
       const p = parseFocus(f.img);
       if (p.x !== 50 || p.y !== 50 || p.z !== 1) focus = p;
       images.push(`url("${p.url}")`);
-      sizes.push(f.m === 'FIT' ? 'contain' : f.m === 'TILE' ? 'auto' : 'cover');
+      sizes.push(f.bs || (f.m === 'FIT' ? 'contain' : f.m === 'TILE' ? 'auto' : 'cover'));
+      if (f.bp) cropAt = f.bp;
     } else if (f.g) {
       const stops = f.g.map(([c, a, p]) => `${rgba(c, a)} ${Math.round(p * 100)}%`).join(', ');
       images.push(f.gt === 'GRADIENT_RADIAL' ? `radial-gradient(${stops})` : `linear-gradient(${f.ga ?? 180}deg, ${stops})`);
@@ -147,7 +146,7 @@ function background(node: FNode, st: CSSProperties, cls?: string[]) {
   if (images.length) {
     st.backgroundImage = images.reverse().join(', ');
     st.backgroundSize = sizes.reverse().join(', ');
-    st.backgroundPosition = focus ? `${focus.x}% ${focus.y}%` : 'center';
+    st.backgroundPosition = cropAt || (focus ? `${focus.x}% ${focus.y}%` : 'center');
     st.backgroundRepeat = 'no-repeat';
     // Zoomed in: the photo moves to a layer behind the children, so it can scale inside the box (see .f-zoom).
     if (focus && focus.z > 1 && images.length === 1 && cls) {
@@ -202,7 +201,7 @@ function boxStyle(node: FNode, parentLm: 'H' | 'V' | undefined, parentH?: number
 function textNode(node: FNode, parentLm: 'H' | 'V' | undefined, key?: number) {
   const { st, cls } = boxStyle(node, parentLm);
   cls.push('ftext');
-  st.fontFamily = FONT[node.ff || ''] || "'Archivo', system-ui, sans-serif";
+  st.fontFamily = fontCss(node.ff);
   st.fontWeight = WEIGHT[node.fs || 'Regular'] ?? 400;
   if ((node.fs || '').includes('Italic')) st.fontStyle = 'italic';
   st.fontSize = node.z;
