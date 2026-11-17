@@ -24,6 +24,7 @@ import { APP_URL, mailConfigured, sendMail, resetEmail, inviteEmail } from './ma
 import { legalState } from './legal.mjs';
 import { logError } from './ops.mjs';
 import { wipeCompany, PROTECTED } from './companydata.mjs';
+import { demoGroups } from './demo.mjs';
 
 const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
 const SUPERADMIN_EMAIL = (process.env.SUPERADMIN_EMAIL || '').trim().toLowerCase();
@@ -793,7 +794,10 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
           (SELECT COUNT(*) FROM users u WHERE u.company_id = c.id AND u.deleted_at IS NULL AND u.role IN ('owner','manager')) leads,
           (SELECT COUNT(*) FROM users u WHERE u.company_id = c.id AND u.deleted_at IS NULL AND u.role = 'staff') staff,
           (SELECT MAX(last_seen_at) FROM users u WHERE u.company_id = c.id) last_seen
-        FROM companies c ORDER BY c.internal DESC, c.deleted_at IS NOT NULL, c.name`).all(); // HQ first (Nov 16)
+        FROM companies c WHERE c.demo = 0 ORDER BY c.internal DESC, c.deleted_at IS NOT NULL, c.name`).all(); // HQ first (Nov 16)
+      // Nov 17 (Tommy: "we have so many duplicate companies"): real companies only. Each visitor's demo copy is a company
+      // too (a Baldwin demo copy is even called Baldwin Restaurant Group), so the demos come as one row each (`demos`,
+      // the same groups as the HQ home), never one per copy, and never counted as customers.
       const admins = db.prepare("SELECT u.*, NULL company_name FROM users u WHERE role = 'superadmin' ORDER BY super_primary DESC, CASE super_role WHEN 'manager' THEN 0 ELSE 1 END, name").all();
       const team = admins.filter((a) => !a.deleted_at);
       // The Owner sees the team's open invites (and can cancel them).
@@ -805,6 +809,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
           lastSeenAt: x.internal ? team.reduce((a, t) => (t.last_seen_at && t.last_seen_at > (a || '') ? t.last_seen_at : a), null) : x.last_seen,
           demo: !!x.demo, hq: !!x.internal, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x),
           stores: storesOf(db, x.id).map((st) => ({ ...storeOut(st), staff: db.prepare("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'staff' AND deleted_at IS NULL").get(st.id).n })) })),
+        demos: demoGroups(db).map((d) => ({ kind: d.kind, name: d.name, path: d.path, lookName: (LOOKS[d.brand] || LOOKS[DEFAULT_LOOK]).name, open: d.open, lastActiveAt: d.lastActiveAt })),
         admins: admins.map(personOut), teamInvites, you: s.id, youPrimary: !!s.super_primary, youRole: teamRole(s), can: teamCans(s), workingIn: companyOf(s),
         teamRoles: Object.entries(TEAM_ROLES).map(([id, name]) => ({ id, name, givable: GIVABLE.includes(id) })),
         plans: Object.values(PLANS).map((x) => ({ id: x.id, name: x.name, customLook: x.customLook })),
@@ -921,6 +926,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const b = await readJson(req);
       const co = companyRow(Number(b.companyId));
       if (!co) fail(404, 'We couldn’t find that company.');
+      if (co.demo) fail(400, 'That’s a demo copy. Open the demo instead.'); // Nov 17: demo copies aren't companies to work in
       db.prepare('UPDATE sessions SET acting_company_id = ?, acting_store_id = NULL WHERE token_hash = ?').run(co.id, sha256(c.token));
       superLog(s, 'work in company', co.name, co.id);
       return sendJson(res, 200, { ok: true, workingIn: co.id, workingInName: co.name });
@@ -928,10 +934,11 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     if (p === '/api/super/users' && m === 'GET') {
       const cid = url.searchParams.get('company');
       const q = `%${str(url.searchParams.get('q'), 60)}%`;
-      // Mise Academy (HQ)'s people are the Mise team (Nov 16)
+      // Mise Academy (HQ)'s people are the Mise team (Nov 16). Nov 17: never the made-up people in demo copies.
       const hq = cid && Number(cid) === hqId();
       const rows = db.prepare(`SELECT u.*, c.name company_name FROM users u LEFT JOIN companies c ON c.id = u.company_id
-        WHERE (? = '' OR u.company_id = ? OR (? AND u.role = 'superadmin')) AND (u.name LIKE ? OR IFNULL(u.email,'') LIKE ?) ORDER BY u.deleted_at IS NOT NULL, c.name, u.name LIMIT 500`)
+        WHERE (? = '' OR u.company_id = ? OR (? AND u.role = 'superadmin')) AND (u.name LIKE ? OR IFNULL(u.email,'') LIKE ?)
+          AND IFNULL(c.demo, 0) = 0 ORDER BY u.deleted_at IS NOT NULL, c.name, u.name LIMIT 500`)
         .all(cid || '', Number(cid) || 0, hq ? 1 : 0, q, q);
       return sendJson(res, 200, { users: rows.map(personOut) });
     }
@@ -971,6 +978,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         }
         if (b.companyId !== undefined && t.role !== 'superadmin') {
           const co = companyRow(Number(b.companyId)); if (!co) fail(404, 'We couldn’t find that company.');
+          if (co.demo) fail(400, 'That’s a demo copy. Pick a real company.');
           db.prepare('UPDATE users SET company_id = ? WHERE id = ?').run(co.id, t.id); changes.push(`company → ${co.name}`);
         }
         // Keep the store right for the new role or company: staff need one, owners have none.

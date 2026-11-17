@@ -3,6 +3,7 @@
 // a tour step that doesn't find its target, a JavaScript error, a Content-Security-Policy violation, a page that
 // scrolls sideways on a phone, a "We couldn't find that page", or an Allergen Guide that hides allergens on a phone or cuts
 // a dish name off on a laptop.
+// Each run ends the demo it started (Exit Demo), so nothing is left behind (Nov 17).
 // Usage: node scripts/smoke.mjs [baseUrl]   (default http://127.0.0.1:8091; CHROME=/path/to/chrome to choose a browser)
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
@@ -54,11 +55,13 @@ async function browser() {
 // Nov 11: both demos, The Baldwin's (/demo) and the Mise demo (/demo/mise, Wrenfield). DEMOS=baldwin or DEMOS=mise runs one.
 async function run(role, width, demo = 'baldwin') {
   const b = await browser(); const tag = `${demo} ${role} @${width}`; const fails = [];
+  let started = false;
   try {
     await b.size(width);
     await b.go(BASE + (demo === 'mise' ? '/demo/mise' : '/demo'), 1200);
     const ok = await b.ev(`fetch('/api/demo/start',{method:'POST',headers:{'Content-Type':'application/json','X-BT':'1'},body:JSON.stringify({role:'${role}',demo:'${demo}'})}).then(r=>{sessionStorage.setItem('bt-demo-tab','1');return r.ok})`);
     if (!ok) throw new Error('demo did not start');
+    started = true;
     await b.go(BASE + '/', 3000);
     if (!(await b.ev(`!!document.querySelector('.dw')`))) fails.push('welcome card did not open');
     await b.ev(`[...document.querySelectorAll('button')].find(b=>/Take the Tour/.test(b.textContent))?.click()`); await sleep(2200);
@@ -83,7 +86,15 @@ async function run(role, width, demo = 'baldwin') {
     fails.push(...b.problems);
     console.log(`${fails.length ? '✖' : '✔'} ${tag}: ${steps} tour steps, ${PAGES.length} pages`);
   } catch (e) { fails.push(String(e.message || e)); console.log(`✖ ${tag}: ${e.message}`); }
-  finally { b.close(); }
+  finally {
+    // Nov 17 (Tommy: "we have so many duplicate companies"): end the demo this run started, through Exit Demo, so the nightly
+    // run leaves no copies behind. Exit only ever removes the signed-in visitor's own demo copy (server/index.mjs).
+    if (started) {
+      const out = await Promise.race([b.ev(`fetch('/api/demo/exit',{method:'POST',headers:{'X-BT':'1'}}).then(r=>r.ok).catch(()=>false)`), sleep(15000).then(() => false)]).catch(() => false);
+      if (!out) fails.push('could not end its demo copy (it goes within a day anyway)');
+    }
+    b.close();
+  }
   return fails.map((f) => `${tag}: ${f}`);
 }
 

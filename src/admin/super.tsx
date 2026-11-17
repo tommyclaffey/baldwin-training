@@ -18,7 +18,9 @@ type Person = { id: number; name: string; email: string | null; role: Role; comp
   teamRole: TeamRole | null };
 type Can = Record<'view' | 'work' | 'signInAs' | 'log' | 'planLook' | 'resetPassword' | 'resetPin' | 'inviteOwner' | 'addCompany' | 'editCompany' | 'editPerson' | 'removePerson' | 'library' | 'change' | 'deleteCompany' | 'deletions' | 'team', boolean>;
 type TeamInvite = { id: string; email: string; teamRole: TeamRole; createdAt: string; expiresAt: string };
-type Overview = { companies: Company[]; admins: Person[]; teamInvites: TeamInvite[]; you: number; youPrimary: boolean; youRole: TeamRole; can: Can; workingIn: number; plans: Plan[];
+/** One row per demo (Nov 17): each visitor's private copy is a throwaway company, so the list shows the demo, not the copies. */
+type Demo = { kind: string; name: string; path: string; lookName: string; open: number; lastActiveAt: string | null };
+type Overview = { companies: Company[]; demos: Demo[]; admins: Person[]; teamInvites: TeamInvite[]; you: number; youPrimary: boolean; youRole: TeamRole; can: Can; workingIn: number; plans: Plan[];
   teamRoles: { id: TeamRole; name: string; givable: boolean }[] };
 /** What each Mise team role does, in one line (Mise Team tab and the invite form). */
 const ROLE_LINE: Record<TeamRole, string> = {
@@ -132,7 +134,8 @@ function Companies() {
                 </>}
             </td>
           </tr>
-        ))}</tbody>
+        ))}
+        {data.demos.map((d) => <DemoRow key={d.kind} d={d} />)}</tbody>
       </table>
       {can.addCompany && <form className="card invite-form" id="add-company" onSubmit={add}>
         <Text label="Add a company" value={name} placeholder="Restaurant group name" onChange={setName} />
@@ -141,6 +144,22 @@ function Companies() {
       </form>}
       <p className="muted small">A new company gets its own team, join code and quiz records, on the Foundation plan in the Mise Academy look. Its book starts with the shared library (classics, spirits, wine, beer, service, safety), with nothing of The Baldwin’s in it. Its managers add their own menu, drinks and story. A restaurant’s own look comes with the Custom Brand plan, once that look is built for them.</p>
     </div>
+  );
+}
+
+/** A demo, once (Nov 17, Tommy: "we have so many duplicate companies"). Every visitor gets a private copy that goes when they
+ *  leave or after a day; they're counted here, never listed, and never counted as customers. */
+function DemoRow({ d }: { d: Demo }) {
+  const copies = d.open ? `${d.open} open ${d.open === 1 ? 'copy' : 'copies'}` : 'No open copies';
+  return (
+    <tr className="demo-row">
+      <td><span className="demo-name"><strong>{d.name}</strong><span className="demo-tag">DEMO</span></span>
+        <span className="demo-copies">{copies}</span>
+        <small className="muted demo-note">A private copy for each visitor, removed when they leave or after a day.</small></td>
+      <td><small className="muted">Demo · {d.lookName}</small></td>
+      <td className="muted">—</td><td className="muted">—</td><td className="muted">—</td><td>{when(d.lastActiveAt)}</td>
+      <td className="row-actions"><a className="link-btn" href={d.path} target="_blank" rel="noopener">Open Demo<span className="sr-only"> (opens in a new tab)</span></a></td>
+    </tr>
   );
 }
 

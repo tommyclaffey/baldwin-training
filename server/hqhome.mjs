@@ -13,7 +13,7 @@
 import { teamRole, teamCan, teamCans } from './miseteam.mjs';
 import { hqId, HQ_NAME } from './hq.mjs';
 import { PLANS, LOOKS, DEFAULT_PLAN, lookOf } from './looks.mjs';
-import { DEMOS } from './demo.mjs';
+import { demoGroups as demoList } from './demo.mjs';
 import { ownedFiles, WAIT_DAYS } from './companydata.mjs';
 import { bytesOf, storageCapBytes, volumeFloorBytes, volumeFree } from './files.mjs';
 import { latestSnapshot, lastOps, KEEP_DAYS } from './ops.mjs';
@@ -109,16 +109,9 @@ export function hqHomeRoutes({ db, fail, sendJson }) {
     const inv = db.prepare("SELECT * FROM invites WHERE company_id = ? AND role = 'owner' AND user_id IS NULL ORDER BY created_at DESC LIMIT 1").get(companyId);
     return inv && !inv.used_at ? inv : null;
   }
-  /** Demo copies, one group per demo: how many are open and when one was last used. Each is gone within a day. */
-  function demoGroups() {
-    const rows = db.prepare(`SELECT c.brand, COUNT(*) n, MAX(c.created_at) made, MAX((SELECT MAX(last_seen_at) FROM users u WHERE u.company_id = c.id)) seen
-      FROM companies c WHERE c.demo = 1 AND c.deleted_at IS NULL GROUP BY c.brand = 'mise'`).all();
-    return Object.entries(DEMOS).map(([kind, d]) => {
-      const r = rows.find((x) => (x.brand === 'mise') === (kind === 'mise'));
-      return { kind, name: `${d.store} · Demo`, path: kind === 'mise' ? '/demo/mise' : '/demo', lookName: (LOOKS[d.brand] || LOOKS.mise).name,
-        open: r?.n || 0, lastActiveAt: r?.seen || r?.made || null };
-    });
-  }
+  /** Demo copies, one group per demo: how many are open and when one was last used (server/demo.mjs, the same list as
+   *  Super Admin → Companies). Each copy is gone within a day, or when its visitor leaves. */
+  const demoGroups = () => demoList(db).map((d) => ({ kind: d.kind, name: d.name, path: d.path, lookName: (LOOKS[d.brand] || LOOKS.mise).name, open: d.open, lastActiveAt: d.lastActiveAt }));
   /** Errors in the last `hours`, one line per kind + path + message (the table keeps a row per day). */
   function errorGroups(hours = 24) {
     return db.prepare(`SELECT kind, path, message, SUM(count) count, MIN(first_at) first_at, MAX(last_at) last_at FROM errors WHERE last_at >= ?

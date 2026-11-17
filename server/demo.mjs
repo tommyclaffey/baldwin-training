@@ -57,9 +57,12 @@ const MISE_EDITS = [['edit house', 'Smoke Signal', 0.1], ['add recipe', 'Braised
  *                        (content/demo-mise/), and it reads the shared library like any store that isn't The Baldwin
  *                        (book_ready 0), so none of The Baldwin's names, logo, story or floor plan show.
  * Same cast in both (same project, same people). */
+// Nov 17: `name` is what the Mise team sees for each demo (Super Admin → Companies, the HQ home), from here only. The Mise
+// demo's restaurant is named once, so renaming it changes its company, its store and its name in the lists together.
+const MISE_DEMO = 'Wrenfield';
 export const DEMOS = {
-  baldwin: { company: 'Baldwin Restaurant Group', store: 'The Baldwin', storeSlug: 'the-baldwin', brand: 'baldwin', plan: 'custom-brand', bookReady: 1, seeds: 'demo' },
-  mise: { company: 'Wrenfield', store: 'Wrenfield', storeSlug: 'wrenfield', brand: 'mise', plan: 'foundation', bookReady: 0, seeds: 'demo-mise',
+  baldwin: { name: 'The Baldwin (demo)', path: '/demo/brg', company: 'Baldwin Restaurant Group', store: 'The Baldwin', storeSlug: 'the-baldwin', brand: 'baldwin', plan: 'custom-brand', bookReady: 1, seeds: 'demo' },
+  mise: { name: MISE_DEMO, path: '/demo/mise', company: MISE_DEMO, store: MISE_DEMO, storeSlug: 'wrenfield', brand: 'mise', plan: 'foundation', bookReady: 0, seeds: 'demo-mise',
     // Home's What's New: a dish, a drink and a wine (newest last), not whichever list was loaded last
     whatsNew: ['wine-list/by-the-glass-red-pinot-noir-elk-cove-willamette-valley', 'signature/smoke-signal', 'recipe/seared-scallops'] },
 };
@@ -268,9 +271,29 @@ export function cleanOrphans(db) {
   return Number(db.prepare('DELETE FROM quiz_seen WHERE user_id NOT IN (SELECT id FROM users)').run().changes);
 }
 
-/** Throwaway demo copies older than a day go. */
+/** The demos as the Mise team sees them (Nov 17, Tommy: "we have so many duplicate companies"): one group per demo, never
+ *  one row per visitor's copy. Super Admin → Companies and the HQ home both read this, so they always agree.
+ *  → [{ kind, name, path, brand, open (copies open now), lastActiveAt }] */
+export function demoGroups(db) {
+  const rows = db.prepare(`SELECT c.brand = 'mise' mise, COUNT(*) n, MAX(c.created_at) made, MAX((SELECT MAX(last_seen_at) FROM users u WHERE u.company_id = c.id)) seen
+    FROM companies c WHERE c.demo = 1 AND c.deleted_at IS NULL GROUP BY c.brand = 'mise'`).all();
+  return Object.entries(DEMOS).map(([kind, d]) => {
+    const r = rows.find((x) => !!x.mise === (kind === 'mise'));
+    return { kind, name: d.name, path: d.path, brand: d.brand, open: r?.n || 0, lastActiveAt: r?.seen || r?.made || null };
+  });
+}
+
+/** Nov 17: a copy nobody can get back into (its sign-in ended or ran out) and nobody has used for this long goes at the next
+ *  hourly sweep, not a day later. Exit Demo removes its copy straight away (server/index.mjs). */
+export const IDLE_MS = 2 * 3600e3;
+
+/** Throwaway demo copies older than a day go, and (Nov 17) idle ones with no sign-in left. Both through dropDemo. */
 export function purgeDemos(db) {
-  const old = db.prepare('SELECT id FROM companies WHERE demo = 1 AND created_at < ?').all(new Date(Date.now() - LIFETIME_MS).toISOString());
+  const t = now(), idle = new Date(Date.now() - IDLE_MS).toISOString();
+  const old = db.prepare(`SELECT id FROM companies c WHERE demo = 1 AND (created_at < ? OR (created_at < ?
+      AND NOT EXISTS (SELECT 1 FROM sessions s JOIN users u ON u.id = s.user_id WHERE u.company_id = c.id AND s.expires_at > ?)
+      AND IFNULL((SELECT MAX(last_seen_at) FROM users u WHERE u.company_id = c.id), '') < ?))`)
+    .all(new Date(Date.now() - LIFETIME_MS).toISOString(), idle, t, idle);
   for (const { id } of old) dropDemo(db, id);
   // Any demo folder whose demo is gone (a crash between the two steps) goes too.
   try {

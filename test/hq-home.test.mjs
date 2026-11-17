@@ -93,7 +93,7 @@ test('nothing made up: a quiet app shows empty sections, honest health lines, an
   assert.equal(h.companies[0].hq, true);
   assert.equal(h.companies[0].workingHere, true);
   assert.equal(h.companies[0].team, 3);
-  assert.deepEqual(h.demos.map((d) => [d.path, d.open]), [['/demo', 0], ['/demo/mise', 0]]);
+  assert.deepEqual(h.demos.map((d) => [d.path, d.open]), [['/demo/brg', 0], ['/demo/mise', 0]]);
   assert.ok(h.newThisWeek.every((x) => h.companies.some((c) => c.id === x.id && !c.hq && c.isNew)), 'New This Week: companies made in the last 7 days, never HQ');
   assert.deepEqual(h.team.map((t) => [t.name, t.role, t.totpOn, t.you]), [['Tommy Claffey', 'owner', true, true], ['Maren Manager', 'manager', true, false], ['Sol Support', 'support', true, false]]);
   assert.ok(!JSON.stringify(h).includes('Example'), 'no Example rows');
@@ -158,7 +158,7 @@ test('Companies: real ones only (demo copies grouped), plan and look, stores, pe
   const b = h.companies.find((c) => c.id === 1);
   assert.deepEqual([b.planName, b.lookName], ['Custom Brand', 'The Baldwin']);
   assert.equal(h.companies.find((c) => c.id === quiet).lastActiveAt, null, 'never: nobody has signed in');
-  assert.deepEqual(h.demos.map((x) => [x.name, x.open]), [['The Baldwin · Demo', 0], ['Wrenfield · Demo', 1]]);
+  assert.deepEqual(h.demos.map((x) => [x.name, x.open]), [['The Baldwin (demo)', 0], ['Wrenfield', 1]]);
   assert.deepEqual(h.newThisWeek.map((x) => x.name).sort(), h.companies.filter((c) => !c.hq && c.isNew).map((c) => c.name).sort());
   assert.ok(h.newThisWeek.some((x) => x.name === 'Harbor Hall' && x.stores === 2 && x.planName === 'Foundation'));
   // storage: per company against the cap, and the volume against its floor

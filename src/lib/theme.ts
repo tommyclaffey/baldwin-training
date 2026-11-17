@@ -184,9 +184,14 @@ const FONT_CSS: Record<string, string> = {
   Archivo: "'Archivo', system-ui, sans-serif", 'Instrument Serif': "'Instrument Serif', Georgia, serif", 'DM Mono': "'DM Mono', ui-monospace, monospace",
   'Pinyon Script': "'Pinyon Script', cursive", 'Reenie Beanie': "'Reenie Beanie', cursive",
 };
+/** The admin's select chevron (Nov 17, Tommy: "fix the drop-down arrows in the pill"), drawn in one of the look's colours. */
+export const chevron = (hex: string) => `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23${hex.replace('#', '')}' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`;
 export function themeVars(t: Theme): Record<string, string> {
   const out: Record<string, string> = {};
   for (const r of Object.keys(t.colors) as ColorRole[]) out[cssName(r)] = color(t, r);
+  // every <select> in the admin: ink on light surfaces, the on-dark type colour in the dark sidebar (src/styles.css)
+  out['--select-chevron'] = chevron(color(t, 'ink'));
+  out['--select-chevron-on-dark'] = chevron(color(t, 'onInverse'));
   for (const r of Object.keys(t.type) as TypeRole[]) out['--font-' + r.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase())] = FONT_CSS[t.type[r].ff] || FONT_CSS.Archivo;
   return out;
 }

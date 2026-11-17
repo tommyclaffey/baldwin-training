@@ -346,7 +346,9 @@ async function api(req, res, url) {
   if (p === '/api/demo/exit' && m === 'POST') {
     if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
     const secure = isSecure(req);
-    if (c.user && isDemoCompany(db, c.user.company_id)) endSession(db, c.token);
+    // Nov 17 (Tommy: "we have so many duplicate companies"): leaving takes the visitor's copy with it, so a finished demo
+    // (and every nightly smoke run, scripts/smoke.mjs) leaves nothing behind. dropDemo only ever removes a demo copy.
+    if (c.user && isDemoCompany(db, c.user.company_id)) { endSession(db, c.token); dropDemo(db, c.user.company_id); }
     const back = cookies(req)[RETURN_COOKIE];
     const ok = back && sessionUser(db, back) && !isDemoCompany(db, sessionUser(db, back).company_id);
     return sendJson(res, 200, { ok: true, restored: !!ok }, { 'Set-Cookie': [
