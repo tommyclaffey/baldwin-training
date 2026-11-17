@@ -251,7 +251,7 @@ test('the rail: Mentions and Pinned list only this person’s rooms; other store
 
 test('migration 21 runs on a database that already has migrations 1–20 and chat in it', async () => {
   const { MIGRATIONS, openDb } = await import('../server/db.mjs');
-  assert.equal(MIGRATIONS.length, 21);
+  assert.ok(MIGRATIONS.length >= 21); // 22 (Nov 16): ops_runs, the HQ home's backup times
   const file = path.join(dir, 'old.db');
   const old = new DatabaseSync(file);
   for (let v = 0; v < 20; v++) { old.exec('BEGIN'); old.exec(MIGRATIONS[v]); old.exec(`PRAGMA user_version = ${v + 1}`); old.exec('COMMIT'); }
@@ -264,7 +264,7 @@ test('migration 21 runs on a database that already has migrations 1–20 and cha
   assert.equal(old.prepare('PRAGMA user_version').get().user_version, 20);
   old.close();
   const db = openDb(file);
-  assert.equal(db.prepare('PRAGMA user_version').get().user_version, 21);
+  assert.equal(db.prepare('PRAGMA user_version').get().user_version, MIGRATIONS.length);
   assert.deepEqual(db.prepare('SELECT id, body, thread_id, also_channel, reply_to FROM chat_messages ORDER BY id').all().map((r) => ({ ...r })),
     [{ id: 1, body: 'Hello', thread_id: null, also_channel: 0, reply_to: null }, { id: 2, body: 'Hi back', thread_id: null, also_channel: 0, reply_to: 1 }]);
   assert.equal(db.prepare('SELECT kind FROM chat_reactions').get().kind, 'emoji', 'old reactions are emoji');
@@ -272,8 +272,8 @@ test('migration 21 runs on a database that already has migrations 1–20 and cha
   assert.ok(db.prepare('PRAGMA table_info(users)').all().some((c) => c.name === 'online_until'));
   assert.equal(db.prepare('SELECT last_read FROM chat_reads').get().last_read, 2, 'reads kept');
   db.close();
-  // and again: nothing to do on a database that's already at 21
+  // and again: nothing to do on a database that's already up to date
   const again = openDb(file);
-  assert.equal(again.prepare('PRAGMA user_version').get().user_version, 21);
+  assert.equal(again.prepare('PRAGMA user_version').get().user_version, MIGRATIONS.length);
   again.close();
 });
