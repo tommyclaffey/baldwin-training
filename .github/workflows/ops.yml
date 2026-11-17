@@ -16,7 +16,8 @@ jobs:
     steps:
       # (Nov 16: with OPS_TOKEN, so the app counts this check; the HQ home's Health card shows when it last asked)
       - name: The app answers
-        run: curl -fsS --retry 3 --retry-delay 20 -H "Authorization: Bearer ${{ secrets.OPS_TOKEN }}" "${{ secrets.APP_URL }}/api/health"
+        run: |
+          curl -fsS --retry 3 --retry-delay 20 -H "Authorization: Bearer ${{ secrets.OPS_TOKEN }}" "${{ secrets.APP_URL }}/api/health"
   backup-and-errors:
     if: github.event.schedule == '15 8 * * *' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
