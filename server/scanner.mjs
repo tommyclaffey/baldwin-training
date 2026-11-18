@@ -363,9 +363,23 @@ export function spinAlign(token, owner = null) {
     return st.frames;
   });
 }
+/** Photos whose cut-out doesn't look like the others (a different shape: the scanner caught only the label, or a hand,
+ *  or two bottles). Compared on height ÷ width against the middle of the set; the review asks to retake them. */
+export function spinOdd(token, owner = null) {
+  const st = mySet(token, owner);
+  if (!st || st.cuts.some((c) => !c)) return [];
+  const r = st.cuts.map((c) => c.h / c.w), mid = [...r].sort((a, b) => a - b)[r.length >> 1];
+  return r.map((v, i) => (Math.abs(v / mid - 1) > 0.3 ? i : -1)).filter((i) => i >= 0);
+}
 /** One lined-up frame (for the review screen). */
 export const spinAligned = (token, i, owner = null) => mySet(token, owner)?.frames?.[i] || null;
 /** Done with a set (kept or started over). */
 export const dropSpinSet = (token, owner = null) => { if (mySet(token, owner)) sets.delete(token); };
 /** What a set holds (tests and the status line). */
 export const spinSetInfo = (token, owner = null) => { const st = mySet(token, owner); return st && { taken: st.cuts.filter(Boolean).length, aligned: !!st.frames }; };
+
+/** The bottle's mask in a photo (scripts only: scripts/scanner/spin-fixtures.mjs builds turned test photos from it). */
+export async function bottleMask(buffer, box) {
+  const sc = await prepare(buffer);
+  return { mask: await maskOf(sc, box), W: sc.W, H: sc.H, base: sc.base };
+}

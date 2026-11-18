@@ -15,7 +15,7 @@ import { archivedList, ARCHIVE_GROUPS } from './archive.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, SHARED, LOCAL_KEYS, BASE_COURSES, BASE_SECTIONS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
 import { slugify } from './templates.mjs';
-import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames, spinPhoto, spinAlign, spinAligned, dropSpinSet, SPIN_PHOTOS } from './scanner.mjs';
+import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames, spinPhoto, spinAlign, spinAligned, spinOdd, dropSpinSet, SPIN_PHOTOS } from './scanner.mjs';
 import { personPath, personSummary, isPathSignoff, validJobs, JOBS } from './paths.mjs';
 import { pathCtxFor, teamRows, signoffQueue, quizWeek, newCertificates, lastEdits, bookTiles, reminderText, addNote, pathSteps, personRow, todayIso, addDays } from './team.mjs';
 import { lockedTopics, isInviteKey } from './invite.mjs';
@@ -1103,7 +1103,7 @@ async function api(req, res, url) {
     const frames = await spinAlign(token, u.id).catch((e) => fail(e.status || 500, e.status ? e.message : 'The photos didn’t line up. Try again.'));
     if (!frames) fail(400, `Take all ${SPIN_PHOTOS} photos first.`);
     const v = crypto.randomBytes(3).toString('hex'); // a new lining-up, a new address (no stale frame from the cache)
-    return sendJson(res, 200, { frames: frames.map((_, i) => `/api/scan/photos/frame?token=${encodeURIComponent(token)}&i=${i}&v=${v}`) });
+    return sendJson(res, 200, { frames: frames.map((_, i) => `/api/scan/photos/frame?token=${encodeURIComponent(token)}&i=${i}&v=${v}`), odd: spinOdd(token, u.id) });
   }
   if (p === '/api/scan/photos/frame' && m === 'GET') {
     const u = needEditor(c, req);

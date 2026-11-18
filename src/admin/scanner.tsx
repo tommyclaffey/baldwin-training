@@ -379,6 +379,11 @@ const N = 12;
 const deg = (i: number) => `${i * 30}°`;
 const sideOf = (i: number) => (i === 0 ? 'Front label' : i === 6 ? 'Back label' : i === 3 || i === 9 ? 'Side' : '');
 type Shot = { blob: Blob; url: string; w: number; h: number; box: Box };
+const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
+/** The box a photo is cut with. From the camera: the guide with a little room (a hand-turned bottle drifts, and a cap
+ *  just over the line shouldn't be cut off). Uploaded: the guide's width with room, top to bottom of the photo. */
+const camBox = (w: number, h: number, kind: BottleKind): Box => { const [x0, y0, x1, y1] = guideFor(w, h, kind); return [clamp01(x0 - 0.03), clamp01(y0 - 0.05), clamp01(x1 + 0.03), clamp01(y1 + 0.04)]; };
+const fileBox = (w: number, h: number, kind: BottleKind): Box => { const [x0, , x1] = guideFor(w, h, kind); return [Math.max(0.03, x0 - 0.08), 0.02, Math.min(0.97, x1 + 0.08), 0.98]; };
 
 /** A top-down dial (760:1202): the bottle from above, you at the bottom, where the label should face for photo `at`. */
 function TurnDial({ at, taken }: { at: number; taken: boolean[] }) {
@@ -427,6 +432,7 @@ function PhotoByPhoto({ name, kind, uploaded, onSaved, onCut }: { name: string; 
   const [thumbs, setThumbs] = useState<(string | null)[]>(() => Array(N).fill(null));
   const [cutting, setCutting] = useState(-1);
   const [frames, setFrames] = useState<string[]>([]);
+  const [odd, setOdd] = useState<number[]>([]); // photos whose cut-out doesn't look like the rest
   const [sel, setSel] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [shown, setShown] = useState(0);
@@ -469,8 +475,9 @@ function PhotoByPhoto({ name, kind, uploaded, onSaved, onCut }: { name: string; 
     if (stopCut.current) return;
     setBusy('Lining them up…');
     try {
-      const r = await api<{ frames: string[] }>('/api/scan/photos/align', { method: 'POST', body: { token: token.current } });
-      setFrames(r.frames); setPlaying(true); setStep('review');
+      const r = await api<{ frames: string[]; odd?: number[] }>('/api/scan/photos/align', { method: 'POST', body: { token: token.current } });
+      setFrames(r.frames); setOdd(r.odd || []); setPlaying(true); setStep('review');
+      if (r.odd?.length) { setSel(r.odd[0]); setPlaying(false); }
     } catch (e) { setError((e as Error).message); setStep('camera'); }
     setBusy('');
   }, [onCut]);
@@ -489,7 +496,7 @@ function PhotoByPhoto({ name, kind, uploaded, onSaved, onCut }: { name: string; 
     const v = cam.video.current;
     if (!v || !v.videoWidth || at < 0) return;
     const g = await grabFrom(v, 1600, 0.9);
-    keepShot(at, { ...g, url: URL.createObjectURL(g.blob), box: guideFor(g.w, g.h, kind) });
+    keepShot(at, { ...g, url: URL.createObjectURL(g.blob), box: camBox(g.w, g.h, kind) });
   };
   const retakeLast = () => {
     const last = shots.map(Boolean).lastIndexOf(true);
@@ -506,7 +513,7 @@ function PhotoByPhoto({ name, kind, uploaded, onSaved, onCut }: { name: string; 
     void (async () => {
       setBusy('Reading the photos…');
       const list: Shot[] = [];
-      for (const f of files) { const g = await shrink(f); list.push({ ...g, url: URL.createObjectURL(g.blob), box: guideFor(g.w, g.h, kind) }); }
+      for (const f of files) { const g = await shrink(f); list.push({ ...g, url: URL.createObjectURL(g.blob), box: fileBox(g.w, g.h, kind) }); }
       setBusy('');
       setShots(list);
       void cutAll(list);
@@ -567,11 +574,13 @@ function PhotoByPhoto({ name, kind, uploaded, onSaved, onCut }: { name: string; 
         <div className="pbp-strip-head"><strong>Your {N} photos</strong><small className="muted">Tap one to retake it</small></div>
         <div className="pbp-strip" role="listbox" aria-label={`Your ${N} photos`}>
           {frames.map((f, i) => (
-            <button key={f} type="button" role="option" aria-selected={!playing && sel === i} className={'pbp-frame' + (!playing && sel === i ? ' on' : '')} onClick={() => { setSel(i); setPlaying(false); }}>
-              <img src={f} alt="" /><span>{deg(i)}</span>
+            <button key={f} type="button" role="option" aria-selected={!playing && sel === i} aria-label={`Photo ${i + 1}, ${deg(i)}${odd.includes(i) ? ', doesn’t look like the others' : ''}`}
+              className={'pbp-frame' + (!playing && sel === i ? ' on' : '') + (odd.includes(i) ? ' odd' : '')} onClick={() => { setSel(i); setPlaying(false); }}>
+              <img src={f} alt="" /><span>{deg(i)}</span>{odd.includes(i) && <i className="pbp-odd" aria-hidden="true">!</i>}
             </button>
           ))}
         </div>
+        {odd.length > 0 && <p className="pbp-warn" role="status">{odd.length === 1 ? `Photo ${odd[0] + 1} doesn’t look like the others. Retake it so the spin doesn’t jump.` : `Photos ${odd.map((i) => i + 1).join(', ')} don’t look like the others. Retake them so the spin doesn’t jump.`}</p>}
         <div className="pbp-picked">
           <div><strong>Photo {sel + 1} · {deg(sel)}</strong>{sideOf(sel) && <small className="muted">{sideOf(sel)}</small>}</div>
           <button className="btn ghost" disabled={!!busy} onClick={() => { setRetakeOf(sel); setError(''); setStep('camera'); }}>Retake This Photo</button>
@@ -626,7 +635,7 @@ function PhotoByPhoto({ name, kind, uploaded, onSaved, onCut }: { name: string; 
       </div>
       {cam.err && (
         <label className="btn ghost pbp-wide">Upload Photos Instead
-          <input type="file" hidden multiple accept="image/*" onChange={(e) => { const f = e.target.files; if (f?.length === N) { const list = [...f]; e.target.value = ''; void (async () => { const all: Shot[] = []; for (const x of list.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))) { const g = await shrink(x); all.push({ ...g, url: URL.createObjectURL(g.blob), box: guideFor(g.w, g.h, kind) }); } setShots(all); void cutAll(all); })(); } else if (f?.length) setError(`Pick ${N} photos: the front first, then one for each 30° turn. You picked ${f.length}.`); }} />
+          <input type="file" hidden multiple accept="image/*" onChange={(e) => { const f = e.target.files; if (f?.length === N) { const list = [...f]; e.target.value = ''; void (async () => { const all: Shot[] = []; for (const x of list.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))) { const g = await shrink(x); all.push({ ...g, url: URL.createObjectURL(g.blob), box: fileBox(g.w, g.h, kind) }); } setShots(all); void cutAll(all); })(); } else if (f?.length) setError(`Pick ${N} photos: the front first, then one for each 30° turn. You picked ${f.length}.`); }} />
         </label>
       )}
     </div>

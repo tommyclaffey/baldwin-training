@@ -152,6 +152,11 @@ test('Photo by Photo: retake one photo; only that frame changes and the spin sta
   const shapes = await Promise.all(now.map(bottleIn));
   const spread = (k) => Math.max(...shapes.map((s) => s[k])) - Math.min(...shapes.map((s) => s[k]));
   assert.ok(spread('height') <= 4 && spread('bottom') <= 4 && spread('cx') <= 4, 'still lined up');
+  assert.deepEqual((await (await json(owner, '/api/scan/photos/align', { token })).json()).odd, [], 'nothing looks off');
+  // a cut-out that isn't bottle-shaped (only the label came out, say) is flagged for a retake
+  const squat = await shot(owner, 2, await fixture(2, { scale: 0.55, wide: 2.6, dy: -150 }), token, '10.12.0.1');
+  assert.equal(squat.status, 200);
+  assert.deepEqual((await (await json(owner, '/api/scan/photos/align', { token })).json()).odd, [2], 'photo 3 flagged');
   // a photo with no bottle in the box is refused plainly, and the set keeps the old one
   const blank = await sharp({ create: { width: W, height: H, channels: 3, background: '#d6cfc4' } }).jpeg().toBuffer();
   const bad = await shot(owner, 3, blank, token, '10.12.0.1');
