@@ -1846,6 +1846,7 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .cert-foot strong, .cert-foot small, .cert-facts strong { overflow-wrap: anywhere; }
 .cert-seal { width: 10.6cqw; aspect-ratio: 1; border-radius: 50%; background: var(--ink-fill, var(--ink)); border: .284cqw solid var(--copper); box-shadow: inset 0 0 0 .66cqw var(--ink), inset 0 0 0 .76cqw rgb(var(--copper-rgb) / .6);
   display: grid; place-items: center; align-content: center; gap: 0; }
+.cert-seal { transform: translateY(-4.4cqw); } /* Nov 18, Tommy: "the badge at the bottom should be higher up": it sits in the gap under the exam facts, not level with Issued by / Date */
 .cert-seal i { font-style: normal; text-transform: uppercase; font-weight: 600; font-size: .947cqw; letter-spacing: .18em; color: var(--copper-text); }
 .cert-seal b { font-weight: 800; font-size: 3.79cqw; line-height: 1.05; color: var(--cream); }
 .cert-fine { box-sizing: border-box; flex: none; align-self: center; width: 76cqw; max-width: 100%; padding: 0 1cqw; font-size: 1.042cqw; line-height: 1.15; color: var(--muted); white-space: normal; overflow-wrap: break-word; text-wrap: balance; margin: 3.75cqw 0 5.87cqw !important; }
