@@ -15,7 +15,7 @@ import { turnOnTwoStep, giveAccount } from './helpers.mjs';
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-spinp-'));
 const MEDIA = path.join(dir, 'media');
-const PORT = 5010 + Math.floor(Math.random() * 40);
+const PORT = 8600 + Math.floor(Math.random() * 200); // clear of the other files' ranges
 const BASE = `http://127.0.0.1:${PORT}`;
 const W = 900, H = 1200;
 // The spirit guide the browser draws on a 900 × 1200 frame (src/admin/scanner.tsx guideFor, kind 'spirit').
