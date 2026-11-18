@@ -488,7 +488,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
     const panel = !!m.spinPanel;
     // Edit Mode (Nov 18): Replace Photo, Scan Bottle and Spin Again sit over the spin, as they do over a photo.
     if (editing && node.ed?.t === 'photo') return (
-      <div style={{ ...st, position: st.position || 'relative' }} className={cls.join(' ')}>
+      <div style={{ ...st, position: st.position || 'relative' }} className={[...cls, 'spin-edit'].join(' ')}>
         <SpinViewer frames={m.spin} alt={node.alt || 'Bottle'} panel={panel} style={{ width: '100%', height: '100%' }} />
         <PhotoTools ed={node.ed} />
       </div>

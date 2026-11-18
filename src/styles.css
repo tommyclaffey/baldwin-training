@@ -738,6 +738,7 @@ body.print-measure .page > .fn [data-name="Body"] > [data-name="Matrix table"] {
 @media (prefers-reduced-motion: reduce) { .spin .spin-fade { display: none; } }
 .spin-chip { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; justify-content: center; padding: 5px 9px; border-radius: 999px; background: #fff; color: #1E1C1A; font-size: 12px; font-weight: 700; line-height: 1; pointer-events: none; font-variant-numeric: tabular-nums; }
 .spin-panel .spin-hint { bottom: 16px; }
+.spin-edit .spin-hint { display: none; } /* Edit Mode's buttons sit where the hint goes */
 /* Admin → Bottle Scanner: Wine · Spirits */
 .scan-tabs { display: inline-flex; border: 1px solid var(--ink-fill, var(--ink)); border-radius: 12px; overflow: hidden; align-self: flex-start; }
 .scan-tab { min-width: 140px; min-height: 44px; padding: 0 20px; border: 0; background: #fff; color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; font-variant-numeric: tabular-nums; }
