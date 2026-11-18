@@ -13,7 +13,7 @@ import { legalPage } from './legal.mjs';
 import { assemble, fullIndex, isCachedIndex, warmContent, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore, canOpen } from './content.mjs';
 import { archivedList, ARCHIVE_GROUPS } from './archive.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
-import { COLLECTIONS, SHARED, LOCAL_KEYS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
+import { COLLECTIONS, SHARED, LOCAL_KEYS, BASE_COURSES, BASE_SECTIONS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames } from './scanner.mjs';
 import { personPath, personSummary, isPathSignoff, validJobs, JOBS } from './paths.mjs';
@@ -830,6 +830,14 @@ async function api(req, res, url) {
       schemas.house = { ...schemas.house, group: { ...schemas.house.group, values: keep(schemas.house.group.values) },
         fields: schemas.house.fields.map((f) => (f.key === 'menuSection' ? { ...f, options: keep(f.options) } : f)) };
     }
+    // Nov 17: a store's form offers The Baldwin's courses and cocktail sections plus the ones its own menu uses (Testa
+    // Barra's "Bone-Ins & Such" doesn't show up in The Baldwin's course list).
+    const narrow = (col, key, base) => {
+      const used = new Set(listEntries(db, col, c.store).map((e) => e.data[key]));
+      const keep = (list) => list.filter((o) => base.includes(o) || used.has(o));
+      schemas[col] = { ...schemas[col], group: { ...schemas[col].group, values: keep(schemas[col].group.values) }, fields: schemas[col].fields.map((f) => (f.key === key ? { ...f, options: keep(f.options) } : f)) };
+    };
+    narrow('recipe', 'course', BASE_COURSES); narrow('house', 'menuSection', BASE_SECTIONS);
     return sendJson(res, 200, { collections: schemas, counts });
   }
   if (p === '/api/entries' && m === 'GET') {

@@ -105,11 +105,17 @@ export function snapshotShelves(page) {
 }
 
 /** After filling: Baldwin's cards, sections, names and lines come out; the scripts read for this store. */
-export function genericize(page, slug, { store, statics, terms, has, topBar = false }) {
+export function genericize(page, slug, { store, statics, terms, has, topBar = false, ours = null }) {
   const m = page.main;
+  // Nov 17: a store's own words (its menu, ours) are never taken for The Baldwin's: "BBQ Short Rib – Round" isn't The
+  // Baldwin's Short Rib, and J.Baldwin's own lines name J.Baldwin's.
+  const theirs = (s) => terms.test(ours ? String(s || '').replace(ours, ' ') : String(s || ''));
+  const termsI = new RegExp(terms.source, 'i'); // layer names are often in capitals ("FUSCHIA SATIN")
   // Top bar: The Baldwin's menu status and its pre-shift quiz. The Mise demo (topBar) keeps both: its chip is renamed for
   // its own menu and the Quick Quiz asks about its own dishes.
-  if (!topBar) for (const n of findAll(m, (x) => x.n === 'Menu chip' || x.n === 'Button · Pre-Shift Quiz')) drop(m, n);
+  // Nov 17: topBar 'quiz' (a store with its own menu): its Quick Quiz asks about its own dishes, but the chip names The
+  // Baldwin's menu, so only the chip goes.
+  if (topBar !== true) for (const n of findAll(m, (x) => x.n === 'Menu chip' || (!topBar && x.n === 'Button · Pre-Shift Quiz'))) drop(m, n);
   for (const [n, json] of statics) if (JSON.stringify(n) === json) drop(m, n);
   for (const n of findAll(m, (x) => STORE_CARDS.includes(x.n))) drop(m, n);
   for (const name of OWN_SECTIONS[slug] || []) { const n = m.c.find((c) => c.n === name); if (n) drop(m, n); }
@@ -129,12 +135,17 @@ export function genericize(page, slug, { store, statics, terms, has, topBar = fa
       setText(t, text); t.n = text;
       continue;
     }
-    if (terms.test(t.s || '')) dropLine(m, t);
+    if (theirs(t.s)) { dropLine(m, t); continue; }
+    // A text kept for this store's words but still named for one of The Baldwin's (a template's layer name, "FUSCHIA SATIN"
+    // on every cocktail card) takes its own words as its name.
+    if (t.n && termsI.test(ours ? String(t.n).replace(ours, ' ') : t.n)) t.n = String(t.s || '').slice(0, 60) || 'Text';
+    // The Baldwin's flights ($22 wine flight, $30 sommelier flight), drawn on the Wine page, are its own offers.
+    if (topBar !== true && /\bwine flight\b|\bsommelier flight\b/i.test(t.s || '')) dropLine(m, t);
   }
   // Wine-list markers on the tasting scales are The Baldwin's bottles.
   if (slug === 'the-bar/wine') for (const n of findAll(m, startsWith('Marker · '))) drop(m, n);
   // Anything still named for one of Baldwin's dishes or drinks (a card whose words were taken out) goes too.
-  for (const n of findAll(m, (x) => x !== m && x.n && x.t !== 'T' && terms.test(x.n))) drop(m, n);
+  for (const n of findAll(m, (x) => x !== m && x.n && x.t !== 'T' && theirs(x.n))) drop(m, n);
   return page;
 }
 

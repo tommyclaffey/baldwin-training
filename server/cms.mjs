@@ -9,9 +9,15 @@ import { accountIds, manifest, seedFiles } from './account.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 
+/** Menu sections (Nov 17) that Testa Barra's and J.Baldwin's menus print, after the original lists. */
+export const STORE_SECTIONS = ['Proven Classics', 'BRG Classics', 'Classic Cocktails', 'Tequila Cocktails', 'Rum Cocktails', 'Whiskey Cocktails', 'Spirit-Free Cocktails & Bubbles', 'Spirit-Less Cocktails', 'Happy Hour', 'Brunch Cocktails', 'Secret Menu'];
+export const STORE_COURSES = ['Small Plates', 'Shareables', 'Soups & Salads', 'Pizzas', 'Fresh Pasta', 'Italian Vibes', 'Bone-Ins & Such', 'Meats', 'Fish', 'Seafood', 'Additions', 'Sides', 'Kids Menu', 'Kid’s Menu', 'Happy Hour', 'Brunch'];
 const GLASSES = ['Rocks', 'Double rocks', 'Coupe', 'Nick & Nora', 'Martini', 'Highball', 'Collins', 'Copper mug', 'Wine glass', 'Flute', 'Julep cup'];
 // Nov 5: the Drink Book's sections (Quiz Updates folder). The older names stay valid for the demo restaurant.
-const MENU_SECTIONS = ['Specialty Cocktails', 'Classics', 'Barra Cart', 'BRG Staples', 'House Cocktails', 'Mules', 'Dessert Cocktails', 'Spiritless Cocktails', 'Martinis', 'Spiritless & Bubbles'];
+const MENU_SECTIONS = ['Specialty Cocktails', 'Classics', 'Barra Cart', 'BRG Staples', 'House Cocktails', 'Mules', 'Dessert Cocktails', 'Spiritless Cocktails', 'Martinis', 'Spiritless & Bubbles',
+  // Nov 17: Testa Barra's and J.Baldwin's own sections, as their menus print them (a store's form only lists the original
+  // sections plus the ones it uses: /api/collections).
+  ...STORE_SECTIONS];
 /** Where a bottle shows: its spirit page (and that page's style pages). */
 export const SHELF = [
   { key: 'Vodka', page: 'spirit/vodka' }, { key: 'Gin', page: 'spirit/gin' }, { key: 'Tequila', page: 'spirit/tequila' },
@@ -19,10 +25,13 @@ export const SHELF = [
   { key: 'Bourbon', page: 'spirit/bourbon', whiskey: true }, { key: 'Rye', page: 'spirit/rye', whiskey: true },
   { key: 'Scotch', page: 'spirit/scotch', whiskey: true }, { key: 'Irish whiskey', page: 'spirit/irish-whiskey', sub: 'spirit/irish/', whiskey: true },
   { key: 'Japanese whisky', page: 'spirit/japanese-whisky', sub: 'spirit/japanese/', whiskey: true }, { key: 'Canadian whisky', page: null, whiskey: true },
+  // Nov 17: American malt, wheat and blended whiskeys on Testa Barra's and J.Baldwin's shelves (no page of its own, like Canadian)
+  { key: 'American whiskey', page: null, whiskey: true },
   { key: 'Cognac', page: 'spirit/cognac' }, { key: 'Pisco', page: 'spirit/pisco' }, { key: 'Amaro', page: 'spirit/amaro' },
   { key: 'Liqueur', page: 'spirit/liqueurs' },
 ];
-export const BEER_STYLES = ['Light Lager', 'Pilsner', 'Amber and Red Ale', 'Pale Ale', 'IPA', 'Session IPA', 'Hazy IPA', 'Wheat Beer', 'Belgian Ale', 'Sour', 'Stout', 'Porter', 'Non-alcoholic', 'Rotating'];
+export const BEER_STYLES = ['Light Lager', 'Pilsner', 'Amber and Red Ale', 'Pale Ale', 'IPA', 'Session IPA', 'Hazy IPA', 'Wheat Beer', 'Belgian Ale', 'Sour', 'Stout', 'Porter', 'Non-alcoholic', 'Rotating',
+  'Lager', 'Fruit Beer', 'Cider']; // Nov 17: + three the stores' lists print (no style page of their own)
 export const ALLERGENS = ['Dairy', 'Egg', 'Finfish', 'Shellfish', 'Tree Nut', 'Peanut', 'Gluten', 'Soy', 'Sesame', 'Allium', 'Nightshade', 'Pork'];
 /** Courses, in menu order (the Food Book, Oct 28). */
 /** A wine's description as one sentence: structure (from the profile ratings unless written), mouthfeel, then fruit. */
@@ -48,7 +57,11 @@ export function wineDescription(d) {
   return cap([s, feel].filter(Boolean).join('; ')) + '.';
 }
 // Nov 5: the Food Book's sections (Quiz Updates folder). The older names stay valid for the demo restaurant.
-export const COURSES = ['For the Table', 'From the Oven', 'Soups & Salads', 'Pasta', 'Entrees', 'Social Hour', 'Snacks & Small Plates', 'Salads', 'Pizza', 'Mains', 'Dessert'];
+export const BASE_COURSES = ['For the Table', 'From the Oven', 'Soups & Salads', 'Pasta', 'Entrees', 'Social Hour', 'Snacks & Small Plates', 'Salads', 'Pizza', 'Mains', 'Dessert'];
+// Nov 17: + the courses Testa Barra's and J.Baldwin's menus print, after The Baldwin's (its order and options don't move).
+export const COURSES = [...BASE_COURSES, ...STORE_COURSES.filter((c) => !BASE_COURSES.includes(c))];
+/** The sections and courses a store sees in its form before it uses any of the new ones (The Baldwin's lists). */
+export const BASE_SECTIONS = MENU_SECTIONS.filter((x) => !STORE_SECTIONS.includes(x));
 const PROFILE = ['—', '1', '2', '3', '4', '5'];
 
 /* Field types: text · textarea · photo · video · select · toggle · tags · chips · lines · list · link · color */

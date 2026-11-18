@@ -153,9 +153,10 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const path = usePath(user?.id);
   const mine = path?.paths[0] || null;
   const sample = isSample(user); // the Mise demo restaurant: a full book from its own menu, not empty "goes here" pages
-  const generic = !!user?.store && !user.store.bookReady && !sample;
+  // Nov 17: a store with its own menu loaded (Testa Barra, J.Baldwin's) reads a full book from it, like the sample
+  const generic = !!user?.store && !user.store.bookReady && !sample && !user.store.ownMenu;
   // Other stores start at zero (no drawn Baldwin numbers while the real ones load).
-  const [counts, setCounts] = useState<Record<string, number>>((): Record<string, number> => (generic || sample ? { 'Food Matrix': 0, 'Video Library': 0, 'Photo Library': 0 } : {}));
+  const [counts, setCounts] = useState<Record<string, number>>((): Record<string, number> => (generic || sample || user?.store?.ownMenu ? { 'Food Matrix': 0, 'Video Library': 0, 'Photo Library': 0 } : {}));
   useEffect(() => { api<Record<string, number>>('/api/counts').then(setCounts).catch(() => { /* keep the drawn numbers */ }); }, []);
   const chat = hasChat(user);
   const { count: unread, mentions } = useChatState(chat);

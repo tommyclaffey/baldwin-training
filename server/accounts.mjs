@@ -99,6 +99,9 @@ export function storeOf(db, u) {
 export const switchesStores = (u) => !!u && (u.role === 'owner' || u.role === 'superadmin' || (u.role === 'manager' && !u.store_id));
 // ownLook (Nov 17): the store wears a look of its own (stores.look), so its logo is that look's, even before its book is ready
 const storeOut = (x) => x && { id: x.id, name: x.name, slug: x.slug, bookReady: !!x.book_ready, ...(x.look ? { ownLook: true } : {}) };
+/** Nov 17: a store without The Baldwin's designed book that has its own menu loaded reads a full book from it
+ *  (server/content.mjs, menuBook), so the app shows it like one (the sidebar's training card, quiz counts). */
+const withMenu = (db, st) => (st && !st.bookReady && db.prepare("SELECT 1 FROM entries WHERE collection = 'recipe' AND store_id = ? AND archived_at IS NULL LIMIT 1").get(st.id) ? { ...st, ownMenu: true } : st);
 
 /** Soft deletes are kept 30 days, then removed. */
 export function purgeDeleted(db) {
@@ -139,7 +142,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo, pinSignIn: u.role === 'manager' && !u.password_hash && !!u.pin_hash, hq: !!companyRow(companyOf(u))?.internal, // Nov 16: Mise Academy (HQ) keeps one store
     // Nov 11: the look follows the company; Nov 16: its plan decides; Nov 17: the store being worked in can wear its own
     brand: lookOfStore(companyRow(companyOf(u)), storeOf(db, u)),
-    store: storeOut(storeOf(db, u)), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
+    store: withMenu(db, storeOut(storeOf(db, u))), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
   });
   const signIn = (res, req, user, opts = {}) => {
     const days = sessionDays(user.role);

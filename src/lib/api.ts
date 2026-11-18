@@ -59,7 +59,7 @@ export type User = { demo?: boolean; hq?: boolean; /** the look the store being 
   teamRole?: TeamRole | null; viewOnly?: boolean;
   storeId: number | null; store?: Store | null; canSwitchStore?: boolean; stores?: Store[];
 };
-export type Store = { id: number; name: string; slug: string; bookReady: boolean; /** wears a look of its own (Nov 17) */ ownLook?: boolean };
+export type Store = { id: number; name: string; slug: string; bookReady: boolean; /** wears a look of its own (Nov 17) */ ownLook?: boolean; /** reads a full book from its own menu (Nov 17) */ ownMenu?: boolean };
 /** Privacy, Terms and Help (Nov 16): public once content/legal.md's blanks are filled. */
 export type Legal = { public: boolean; supportEmail: string | null };
 /** Whether an invite or promotion link also went by email (Nov 16). reason: off (email isn't set up) · demo · limit · failed */

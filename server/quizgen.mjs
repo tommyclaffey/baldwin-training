@@ -195,7 +195,8 @@ function buildPool(db, store) {
   // Nov 5, Tommy: the Specialty Cocktails (the Baldwin's signatures on the menu) and the BRG favorites (the menu's BRG Staples)
   // are their own categories; the rest of the house list stays House Cocktails.
   // Tommy, Nov 5: organized by the Cocktail Descriptions sheet; anything on the menu that isn't a classic is a Specialty Cocktail.
-  const SECTION_TOPIC = { 'Specialty Cocktails': 'specialty', 'BRG Staples': 'brg', Classics: 'classic', Mules: 'mules', 'Dessert Cocktails': 'dessert', 'Spiritless Cocktails': 'spiritless' };
+  const SECTION_TOPIC = { 'Specialty Cocktails': 'specialty', 'BRG Staples': 'brg', Classics: 'classic', Mules: 'mules', 'Dessert Cocktails': 'dessert', 'Spiritless Cocktails': 'spiritless',
+    'Spirit-Free Cocktails & Bubbles': 'spiritless', 'Spirit-Less Cocktails': 'spiritless' }; // Nov 17: Testa Barra's and J.Baldwin's spiritless lists
   const topicOf = (x) => SECTION_TOPIC[x.data.menuSection] || 'house';
   const own = (k) => house.filter((x) => topicOf(x) === k);
   // Tommy, Nov 5: every classic in the app stays in the quizzes, as "on the menu" (our specs) and "off the menu"
@@ -279,6 +280,8 @@ function buildPool(db, store) {
       const d = e.data, n = d.name;
       const build = (d.build || []).filter((b) => b && b.ingredient);
       if (build.length < 2) continue;
+      // Nov 17: a spec is its amounts; a drink whose menu prints only its ingredients (Testa Barra's, J.Baldwin's) has none yet
+      if (!build.some((b) => measure(b.amount))) continue;
       const frac = build.some((b) => /[¼½¾⅓⅔⅛⅜⅙⅚]/.test(b.amount || ''));
       const right = build.map(lineText).join('\n');
       const r = rng('spec:' + e.id);

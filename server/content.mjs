@@ -170,6 +170,29 @@ function isSample(db) {
   }
   return SCOPE.sample;
 }
+/* ---- A store's own menu, loaded (Nov 17: Testa Barra and J.Baldwin's, from their websites) ----
+ * A real store that isn't The Baldwin's designed book, once its own dishes are in, reads a full book from its own menu, the
+ * way the Fig & Fire demo does: Home with tonight's focus, the Food Matrix, the Allergen Guide, Cocktails, Wine, Back Bar,
+ * Quizzes and the Video Library. Its pages that are The Baldwin's own designed content (Our Story, the Floor Plan, the
+ * Photo Library's photos) keep the starter "goes here" page until the store has its own. */
+const MENU_PAGES = new Set(['', 'quizzes', 'video-library']);
+function menuBook(db) {
+  if (!SCOPE.generic || isSample(db)) return false;
+  if (SCOPE.menu === undefined) SCOPE.menu = listEntries(db, 'recipe', SCOPE.store).length > 0;
+  return SCOPE.menu;
+}
+/** This store's own words (its dishes', drinks', wines', bottles' and beers' names and lines, and its name), so the shared
+ *  pages' scrub of The Baldwin's names never takes out one of them (Testa Barra's "BBQ Short Rib – Round", J.Baldwin's
+ *  "J.Baldwin's pizza crisps"). A regex of them, longest first; null when the store has none. */
+function ownWords(db) {
+  const out = new Set([SCOPE.row?.name].filter(Boolean));
+  const add = (v) => { for (const x of [].concat(v ?? [])) if (typeof x === 'string' && x.trim().length > 3) out.add(x.trim()); };
+  for (const col of ['recipe', 'house', 'wine', 'shelf', 'beer']) {
+    for (const e of ordered(db, col)) { const d = e.data; add([d.name, d.description, d.tagline, d.tableLine, d.notes, d.ingredients, (d.build || []).map((b) => b?.ingredient)]); }
+  }
+  if (out.size <= 1 && !listEntries(db, 'recipe', SCOPE.store).length) return null;
+  return new RegExp([...out].sort((a, b) => b.length - a.length).map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
+}
 
 export function ordered(db, col) {
   let list = listEntries(db, col, SHARED.has(col) ? null : SCOPE.store);
@@ -178,7 +201,10 @@ export function ordered(db, col) {
   if (col === 'classic') return classicOrder(list);
   const g = COLLECTIONS[col].group;
   if (!g) return list;
-  return [...g.values.flatMap((v) => list.filter((e) => e.data[g.key] === v)), ...list.filter((e) => !g.values.includes(e.data[g.key]))];
+  // Nov 17: a store reading its own menu keeps its menu's order of sections (the order they first come in its list), not
+  // The Baldwin's (Testa Barra's Small Plates come before its Soups & Salads). The Baldwin and the Fig & Fire demo unchanged.
+  const values = (col === 'recipe' || col === 'house') && isGeneric() && !isSample(db) ? [...new Set(list.map((e) => e.data[g.key]))] : g.values;
+  return [...values.flatMap((v) => list.filter((e) => e.data[g.key] === v)), ...list.filter((e) => !values.includes(e.data[g.key]))];
 }
 
 /** A CMS page, or null if it has no page (e.g. a dish that only lives in the Food Matrix). */
@@ -398,7 +424,7 @@ function allergenGrid(page, recipes, clear = false) {
 }
 
 /* ---- lists on designed pages ---- */
-function houseRows(page, house) {
+function houseRows(page, house, { menu = false } = {}) {
   const matrix = find(page.main, byName('Cocktail matrix'));
   if (!matrix) return;
   const proto = find(matrix, startsWith('Row · Fuschia')) || matrix.c.find(startsWith('Row · '));
@@ -413,21 +439,24 @@ function houseRows(page, house) {
       // No photo yet: a beige thumbnail with the drink's glass drawn in it.
       const g = glassShape(d.glass);
       photoToCome(im, false);
-      if (g.svg) im.c = [{ t: 'S', n: 'Shape · ' + g.name, w: Math.round(im.w * 0.5), h: Math.round(im.h * 0.62), sh: 'F', sv: 'F', svg: g.svg }];
+      // Nov 17: a store's own menu that doesn't print the glass draws none (no guessed coupe)
+      if (g.svg && !(menu && !d.glass)) im.c = [{ t: 'S', n: 'Shape · ' + g.name, w: Math.round(im.w * 0.5), h: Math.round(im.h * 0.62), sh: 'F', sv: 'F', svg: g.svg }];
     }
     const t = texts(r);
     const build = (d.build || []).filter((b) => b && b.ingredient);
     // The base is the spirit line, never just the first line (Nov 5: "the sugar cube cannot be a base spirit").
     const base = build.find((b) => b.spirit) || (d.base ? { ingredient: d.base } : null);
     const rest = build.filter((b) => b !== base).map((b) => b.ingredient).join(', ');
-    [d.name, d.tableLine || rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.garnish || 'To confirm', d.pairs || 'Ask the bar'] // no ice: Cocktail Specs (Nov 5)
+    // Nov 17: a store's own menu that doesn't print the garnish shows a dash (a "to confirm" note is cut for staff, and the
+    // empty cell let the next column slide over)
+    [d.name, d.tableLine || rest || d.tagline || '', base ? base.ingredient : '—', d.glass || '—', d.garnish || (menu ? '—' : 'To confirm'), d.pairs || 'Ask the bar'] // no ice: Cocktail Specs (Nov 5)
       .forEach((v, i) => t[i] && setText(t[i], v));
     // The design drew garnish as a grey placeholder ("To confirm"); real garnishes read like the other columns.
     if (d.garnish && t[4] && t[3]) t[4].f = t[3].f;
     return r;
   });
   // Our own spiritless drinks replace the zero-proof placeholder row.
-  const hasZero = house.some((it) => /^Spiritless/.test(it.data.menuSection || ''));
+  const hasZero = house.some((it) => /^Spirit(less|-Free|-Less)/i.test(it.data.menuSection || '')); // + the stores' own names (Nov 17)
   const rest = matrix.c.filter((c) => !(startsWith('Row · ')(c)) || (c === zero && !hasZero));
   const at = zero && !hasZero ? rest.indexOf(zero) : rest.length - 1;
   matrix.c = [...rest.slice(0, at), ...made, ...rest.slice(at)];
@@ -442,7 +471,7 @@ function glassShape(glass) {
   const low = name.toLowerCase().replace(/ and /g, ' & ').replace(/mule mug/, 'copper mug');
   return { name, svg: shapes.get(low) || [...shapes].filter(([k]) => low.includes(k)).sort((a, b) => b[0].length - a[0].length)[0]?.[1] || null };
 }
-function glassFiller(proto, glass) {
+function glassFiller(proto, glass, { guess = true } = {}) {
   if (!shapes) {
     shapes = new Map();
     const gw = baseIndex().find((e) => e.slug === 'bar-basics/glassware');
@@ -462,6 +491,8 @@ function glassFiller(proto, glass) {
   const svg = shapes.get(low) || [...shapes].filter(([k]) => low.includes(k)).sort((a, b) => b[0].length - a[0].length)[0]?.[1];
   if (shape && svg) { shape.svg = svg; shape.n = 'Shape · ' + name; }
   const cap = find(f, byName('Caption'));
+  // Nov 17: no glass printed on a store's own menu: no drawing, no glass name, just "photo to come"
+  if (!guess && !String(glass || '').trim()) { const p = shape && parentOf(f, shape); if (p) p.c = p.c.filter((x) => x !== shape); if (cap) { setText(cap, 'PHOTO TO COME'); cap.ar = 'H'; cap.ta = 'C'; cap.w = Math.max(120, f.w - 24); } f.n = 'Glass filler · none'; return f; }
   // Two short lines, centred, never wider than the panel.
   if (cap) { setText(cap, `${name.toUpperCase()}\nPHOTO TO COME`); cap.ar = 'H'; cap.ta = 'C'; cap.w = Math.max(120, f.w - 24); cap.lh = '160%'; }
   f.n = 'Glass filler · ' + name;
@@ -470,9 +501,12 @@ function glassFiller(proto, glass) {
 
 /** Our signatures (Cocktails page): one spec card per drink on our menu, in menu order, each linking to its page. */
 const SECTION_NAME = { 'Specialty Cocktails': 'Specialty', 'BRG Staples': 'BRG staple', Martinis: 'Martini', 'Spiritless & Bubbles': 'Spiritless' };
-function signatureCards(page, house) {
+function signatureCards(page, house, { menu = false } = {}) {
   const row = find(page.main, startsWith('Carousel · '));
   house = house.filter((e) => e.data.onMenu !== false); // off-menu drinks: in the table, not the carousel
+  // Nov 17: a store's own menu: the carousel shows the drinks whose ingredients it prints (a card for "Margarita · $12"
+  // alone is empty); they all stay in the table.
+  if (menu && house.some((e) => (e.data.build || []).some((b) => b?.ingredient))) house = house.filter((e) => (e.data.build || []).some((b) => b?.ingredient));
   if (!row || !house.length) return;
   // Nov 5: the amounts moved to Cocktail Specs; the head links there.
   const specLink = find(page.main, byName('Link · Cocktail Specs'));
@@ -488,13 +522,14 @@ function signatureCards(page, house) {
     card.n = 'Spec · ' + d.name; card.to = '/' + e.slug;
     const im = find(card, startsWith('IMG/'));
     if (im && d.photo) { im.f = img(d.photo); im.n = 'IMG/' + d.name; }
-    else if (im && filler) Object.assign(im, glassFiller(filler, d.glass), { sh: im.sh, sv: im.sv });
+    else if (im && filler) Object.assign(im, glassFiller(filler, d.glass, { guess: !menu }), { sh: im.sh, sv: im.sv });
     const pill = find(card, startsWith('Pill · '));
-    const pillText = [SECTION_NAME[d.menuSection] || 'On the menu', d.price && '$' + d.price].filter(Boolean).join(' · ');
+    // Nov 17: a store's own menu names its own section ("Tequila Cocktails · $15")
+    const pillText = [(menu && d.menuSection) || SECTION_NAME[d.menuSection] || 'On the menu', d.price && '$' + d.price].filter(Boolean).join(' · ');
     if (pill) { pill.n = 'Pill · ' + pillText; setText(texts(pill)[0], pillText); }
     const name = find(card, byName('Name'));
     const nt = texts(name);
-    setText(nt[0], d.tagline || (SECTION_NAME[d.menuSection] ? SECTION_NAME[d.menuSection] + (d.menuSection === 'Martinis' ? '' : ' cocktail') : 'Our signature'));
+    setText(nt[0], d.tagline || (menu ? 'On our menu' : null) || (SECTION_NAME[d.menuSection] ? SECTION_NAME[d.menuSection] + (d.menuSection === 'Martinis' ? '' : ' cocktail') : 'Our signature'));
     setText(nt[1], (d.name || '').toUpperCase());
     // Long names and ingredients wrap inside the card instead of being cut off.
     const spec = find(card, byName('Spec'));
@@ -525,7 +560,8 @@ const parentOf = (root, node) => (root.c || []).includes(node) ? root : (root.c 
 /** Group headers for the courses with dishes, cloned from the drawn one ("SNACKS & SMALL PLATES  12"). */
 function courseGroups(proto, dishes, fill) {
   const out = [];
-  for (const course of COURSES) {
+  // The courses in the order the dishes come (ordered() puts The Baldwin's in COURSES order, a store's own in its menu's)
+  for (const course of [...new Set(dishes.map((e) => e.data.course))].filter((c) => COURSES.includes(c))) {
     const list = dishes.filter((e) => e.data.course === course);
     if (!list.length) continue;
     const g = clone(proto);
@@ -601,10 +637,13 @@ export function assemble(db, file) {
   if (page) wire(page, { entry, file, slug: baseIndex().find((x) => x.file === file)?.slug, icon: tickIcon(), recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), wines: ordered(db, 'wine'),
     videos: () => libraryVideos({ recipes: ordered(db, 'recipe'), house: ordered(db, 'house'), classics: ordered(db, 'classic'), db }) });
   if (page?.sampleOf) {
-    const { slug, statics } = page.sampleOf; delete page.sampleOf;
+    const { slug, statics, menu } = page.sampleOf; delete page.sampleOf;
     const recipes = ordered(db, 'recipe'), house = ordered(db, 'house');
-    genericize(page, slug, { topBar: true, store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: ordered(db, 'wine').length, beer: ordered(db, 'beer').length } });
+    genericize(page, slug, { topBar: menu ? 'quiz' : true, store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), ours: menu ? ownWords(db) : null, has: { house: house.length, wine: ordered(db, 'wine').length, beer: ordered(db, 'beer').length } });
   }
+  // Nov 17: a real store that isn't The Baldwin's book never shows The Baldwin's menu name ("Opening Menu · Fall 2026") in
+  // the top bar, on any page (the Sommelier hub and levels are drawn from the account's pages without the scrub).
+  if (page?.main && isGeneric() && !isSample(db)) for (const n of findAll(page.main, (x) => x.n === 'Menu chip')) { const p = parentOf(page.main, n); if (p) p.c = p.c.filter((x) => x !== n); }
   // Managers get an Add row after every list of dishes, cocktails, wines and bottles (staff never see them).
   if (page && !entry && canOpen(SCOPE.user, '/admin/pages/recipe/new')) { addRows(page, baseIndex().find((x) => x.file === file)?.slug, db, SCOPE.store); tableRoles(page); } // (the "+ Add" rows join their table)
   // Edit Mode (Nov 11): what this person can change in place on the page (nothing, for staff).
@@ -613,6 +652,16 @@ export function assemble(db, file) {
     can: (col, id) => canOpen(SCOPE.user, `/admin/pages/${col}/${id || 'new'}`), lists: { beer: () => ordered(db, 'beer') } });
   // Archive where items live (Nov 12): rows and cards a manager can archive carry a small Archive button (staff: nothing).
   if (page && canOpen(SCOPE.user, '/admin')) markArchive(db, page, { entry, can: (col) => canOpen(SCOPE.user, `/admin/pages/${col}/new`), list: (col) => ordered(db, col) });
+  // Nov 17: a store's own pages are drawn from The Baldwin's templates (the Fuschia Satin, Short Rib, Caymus and Willett
+  // pages), whose text layers keep The Baldwin's names as their names. A text layer named for one of The Baldwin's dishes,
+  // drinks, wines or bottles takes its own words as its name (the Fig & Fire demo's sampleScrub does the same).
+  if (page?.main && isGeneric() && !isSample(db) && menuBook(db)) {
+    const theirs = baldwinLayers(db), ours = ownWords(db);
+    const hit = (v) => theirs.test(ours ? String(v).replace(ours, ' ') : String(v));
+    for (const t of findAll(page.main, (x) => x.t === 'T' && x.n && x.n !== x.s)) if (hit(t.n)) t.n = String(t.s || '').slice(0, 60) || 'Text';
+    // A hidden previous / next button (the first or last on a list) keeps the template's words: they go too.
+    for (const b of findAll(page.main, (x) => x.op === 0)) for (const t of texts(b)) if (t.s && hit(t.s)) { setText(t, ''); t.n = 'Text'; }
+  }
   if (page?.main && isSample(db)) sampleScrub(db, page);
   return balance(forViewer(page, SCOPE.user));
 }
@@ -687,6 +736,11 @@ function assembleRaw(db, file) {
     return p2 ? { ...level2OnLevel1(p2, old, { done, ...levelStatus(db, 'somm-2') }), name: page.name } : old;
   }
   if (isGeneric()) {
+    // Nov 17: a store with its own menu loaded gets Home, Quizzes and the Video Library from it (MENU_PAGES)
+    if (classify(slug) === 'own' && MENU_PAGES.has(slug) && menuBook(db)) {
+      const statics = snapshotShelves(page);
+      return Object.assign(menuHome(db, linkPairings(db, fullBook(db, file, page)), slug), { sampleOf: { slug, statics, menu: true } });
+    }
     if (!isSample(db) || classify(slug) !== 'own') return linkPairings(db, genericPage(db, file, slug, page));
     // Filled like The Baldwin's page; assemble() writes The Baldwin's names out after the videos and photos are in.
     const statics = snapshotShelves(page);
@@ -755,6 +809,46 @@ function fullBook(db, file, page) {
   return page;
 }
 
+/** A store's own Home, Quizzes and Video Library (Nov 17), after they're filled from its own menu like The Baldwin's. */
+function menuHome(db, page, slug) {
+  const m = page?.main;
+  if (slug !== '' || !m) return page;
+  const recipes = ordered(db, 'recipe');
+  const drop = (n) => { const p = n && parentOf(m, n); if (p) p.c = p.c.filter((x) => x !== n); };
+  // Browse the Book: the design's three food tiles, counted from this menu's own courses (Small Plates · Mains · Pizza &
+  // Pasta). A tile takes the course's own name when one course fills it; a tile no course fits goes.
+  const KINDS = { 'Small Plates': /small|share|table|bites|starter|appet|craveable/i, Mains: /bone-ins|meats?\b|mains?\b|entree|fish|seafood|vibes/i, 'Pizza & Pasta': /pizza|pasta/i };
+  const courses = [...new Set(recipes.map((e) => e.data.course))];
+  for (const [was, re] of Object.entries(KINDS)) {
+    const t = find(m, byName('Tile · ' + was));
+    if (!t) continue;
+    const mine = courses.filter((c) => re.test(c));
+    const n = recipes.filter((e) => mine.includes(e.data.course)).length;
+    if (!n) { drop(t); continue; }
+    const label = mine.length === 1 ? mine[0] : was;
+    t.n = 'Tile · ' + label;
+    const [a, b] = texts(t);
+    if (a) { setText(a, label); a.n = label; }
+    if (b) setText(b, `${n} ${n === 1 ? 'item' : 'items'}`);
+  }
+  // Stand-in photos keep a plain layer name (the design named them for The Baldwin's dishes and drinks).
+  for (const im of findAll(find(m, byName('Section · Browse')) || { c: [] }, startsWith('IMG/'))) im.n = 'IMG/Stand-in · ' + (im.n.split(' · ').slice(1).join(' · ') || 'Unsplash');
+  // Tonight's focus: the design's text layers are named for The Baldwin's Short Rib; and with no photo yet, the photo box
+  // takes the "photo to come" panel's colour, so on a phone (where the box keeps its height) it isn't a dark gap.
+  const hero = find(m, (n) => (n.n || '').startsWith('Hero · '));
+  if (hero) {
+    for (const t of findAll(hero, (x) => x.t === 'T' && x.s)) t.n = String(t.s).slice(0, 60);
+    const box = find(hero, byName('Photo')), im = box && find(box, startsWith('IMG/'));
+    if (im && !(im.f || []).some((f) => f.img)) { box.f = clone(im.f || []); im.n = 'IMG/Photo to come'; im.sv = 'F'; }
+  }
+  // The photo strip is The Baldwin's plates (its Photo Library); this store's own photos aren't in yet.
+  drop(find(m, byName('Section · Photo Library')));
+  // The Food Matrix preview's course chips: each row's own course (the chips read it from the rows).
+  const course = new Map(recipes.map((e) => ['Row · ' + e.data.name, e.data.course]));
+  for (const r of findAll(find(m, byName('Section · Food Matrix')) || { c: [] }, startsWith('Row · '))) if (course.has(r.n)) r.course = course.get(r.n);
+  return page;
+}
+
 /** Is this store a demo copy (either demo)? */
 function isDemoStore(db) {
   if (!SCOPE.row?.company_id) return false;
@@ -798,7 +892,7 @@ function genericPage(db, file, slug, page) {
   const recipes = ordered(db, 'recipe'), house = ordered(db, 'house'), wines = ordered(db, 'wine'), shelf = ordered(db, 'shelf'), beers = ordered(db, 'beer');
   if (kind === 'own' || (slug === 'food-matrix' && !recipes.length) || (slug === 'the-bar/back-bar' && !shelf.length)) return emptyPage(file, slug, SCOPE.row);
   const statics = snapshotShelves(page);
-  if (file === '14-2') { classicTable(page, ordered(db, 'classic')); if (house.length) { houseRows(page, house); signatureCards(page, house); } }
+  if (file === '14-2') { classicTable(page, ordered(db, 'classic')); if (house.length) { const own = { menu: !isSample(db) }; houseRows(page, house, own); signatureCards(page, house, own); } }
   linkClassicLists(page, ordered(db, 'classic'));
   if (file === '13-2') {
     foodMatrix(page, recipes);
@@ -819,7 +913,8 @@ function genericPage(db, file, slug, page) {
   if (entry && entry.slug.startsWith('beer/') && beers.length) fillBeerStyle(page, entry.slug, baseIndex(), beers, basePage);
   if (file === '294-2' && shelf.length) fillBackBar(page, shelf, house);
   if (file === '430-17') fillSpecs(page, house, ordered(db, 'classic'));
-  return genericize(page, slug, { topBar: isSample(db), store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), has: { house: house.length, wine: wines.length, beer: beers.length } });
+  const menu = menuBook(db);
+  return genericize(page, slug, { topBar: isSample(db) || (menu && 'quiz'), store: SCOPE.row, statics, terms: baldwinNames(db, [...recipes, ...house].map((e) => e.data.name)), ours: menu ? ownWords(db) : null, has: { house: house.length, wine: wines.length, beer: beers.length } });
 }
 /** Baldwin's own dish and drink names, so they're written out of the shared pages. Worked out once per menu (Nov 11: it
  *  was read again for every page in the search index, 6 s of the Mise demo's start); The Baldwin's book or the shared
@@ -835,6 +930,13 @@ function readBaldwinNames(db, ours) {
   return baldwinTerms(names, listEntries(db, 'classic').map((e) => e.data.name), ours);
 }
 
+/** The Baldwin's own dish, drink, wine and bottle names (and its template pages' names), for layer names (Nov 17). */
+const layersCache = storeCache();
+const baldwinLayers = (db) => cached(layersCache, db, EVERY_STORE, 'layers', () => {
+  const names = ['recipe', 'house', 'wine', 'shelf'].flatMap((col) => listEntries(db, col, 1).map((e) => e.data.name)).filter((n) => n && n.length > 3);
+  const fixed = ['The Baldwin', 'Short Rib', 'Fuschia Satin', 'Cozy Blankets', 'Caymus', 'Willett Family Estate Rye', 'Opening Menu'];
+  return new RegExp([...new Set([...fixed, ...names])].sort((a, b) => b.length - a.length).map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'i');
+});
 /** Search text for the shared library, read from the pages as other stores see them. Rebuilt when Baldwin's names change. */
 /* Nov 16: read through the account's own pages when the store's account has a folder (a BRG store reads BRG's), so it's
  * kept per account. */

@@ -14,11 +14,13 @@ const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toL
 const canon = (s) => { const k = String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '').replace(/^the/, ''); return { cosmopolitan: 'cosmo', lemondrop: 'lemondropmartini', martini: 'propermartini', aperolspritz: 'spritz' }[k] || k; };
 
 const SECTION_LABEL = { 'Specialty Cocktails': 'Specialty', 'BRG Staples': 'BRG Staple', Classics: 'Classic', Mules: 'Mule', 'Dessert Cocktails': 'Dessert', 'Spiritless Cocktails': 'Spiritless' };
+/** Nov 17: the spiritless lists as Testa Barra's and J.Baldwin's menus name them. */
+const SPIRITLESS = ['Spiritless Cocktails', 'Spirit-Free Cocktails & Bubbles', 'Spirit-Less Cocktails'];
 
 /** The lists, in page order. Each: { key, title, chip, note, items: [{ e, house }] }. */
 export function specLists(house, classics) {
   const sec = (s) => house.filter((x) => x.data.menuSection === s);
-  const known = new Set(Object.keys(SECTION_LABEL));
+  const known = new Set([...Object.keys(SECTION_LABEL), ...SPIRITLESS]);
   const ownClassics = sec('Classics');
   const ownNames = new Set(house.map((x) => canon(x.data.name)));
   const lib = classics.filter((x) => !ownNames.has(canon(x.data.name)));
@@ -34,7 +36,7 @@ export function specLists(house, classics) {
   lists.push(
     { key: 'mules', title: 'Mules', chip: 'Mules', note: 'On the menu', items: H(sec('Mules')) },
     { key: 'dessert', title: 'Dessert Cocktails', chip: 'Dessert', note: 'On the menu', items: H(sec('Dessert Cocktails')) },
-    { key: 'spiritless', title: 'Spiritless Cocktails', chip: 'Spiritless', note: 'No alcohol', items: H(sec('Spiritless Cocktails')) },
+    { key: 'spiritless', title: 'Spiritless Cocktails', chip: 'Spiritless', note: 'No alcohol', items: H(house.filter((x) => SPIRITLESS.includes(x.data.menuSection))) },
     { key: 'house', title: 'House Cocktails', chip: 'House', note: 'Our own', items: H(house.filter((x) => !known.has(x.data.menuSection))) },
   );
   if (ownClassics.length) {
