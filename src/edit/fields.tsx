@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type KeyboardEvent as RKeyboardEvent, type ReactNode } from 'react';
 import { MediaPicker } from '../components/MediaPicker';
 import { PhotoAdjust } from '../admin/PhotoAdjust';
+import { BottleScanner } from '../admin/scanner';
 import { useField, useEditMode, type EdBind } from './state';
 
 const ICON = '/img/edit/';
@@ -14,7 +15,7 @@ const LABEL: Record<string, string> = {
   tasteLine: 'How it tastes', spiritName: 'The spirit', spiritLine: 'Why this spirit', pour: 'Our pour', say: 'Say it at the table', story: 'The story',
   ingredients: 'Ingredients', sellingLine: 'Selling line', dropMain: 'Drop · main', dropSide: 'Drop · side', dropSauce: 'Drop · sauce',
   talkingPoints: 'Talking point', components: 'Component', steps: 'Step', inspiration: 'The story', sellingPoints: 'Selling point',
-  grape: 'Varietal', region: 'Region', half: 'Half bottle price', bottle: 'Bottle price', notes: 'Notes', tap: 'Tap', abv: 'ABV',
+  grape: 'Varietal', region: 'Region', bottle_img: 'Bottle photo', spin: 'Spin (360°)', half: 'Half bottle price', bottle: 'Bottle price', notes: 'Notes', tap: 'Tap', abv: 'ABV',
 };
 export function fieldLabel(k: string) {
   const [top, i, sub] = k.split('.');
@@ -102,18 +103,30 @@ export function ChipsEditor({ ed }: { ed: EdBind }) {
 
 /* ---------------------------------- photo ---------------------------------- */
 
-/** Replace Photo (and Adjust Photo) on a hero photo. The same picker and focus tool as the photo fields in the forms. */
+/** Replace Photo (and Adjust Photo) on a hero photo. The same picker and focus tool as the photo fields in the forms.
+ *  A bottle (wine or back bar, Nov 18) also gets Scan Bottle and Make a Spin, the same scanner as the Bottle Scanner page;
+ *  what they make waits in the draft like any other change until Save Changes. */
 export function PhotoTools({ ed }: { ed: EdBind }) {
   const f = useField(ed)!;
+  const { setTop, drafts } = useEditMode();
   const [pick, setPick] = useState(false);
   const [adjust, setAdjust] = useState(false);
+  const [scan, setScan] = useState<'' | 'photo' | 'spin'>('');
   const v = String(f.value || '');
+  const spinNow = (drafts[ed.e]?.spin?.v as string[] | undefined) ?? ed.spin ?? [];
   return (
-    <div className="ed-photo-tools" onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}>
-      <button type="button" className="ed-photo-btn" onClick={() => setPick(true)}><Icon name="camera" />{v ? 'Replace Photo' : 'Add Photo'}</button>
+    <div className="ed-photo-tools" onClick={(e) => { e.preventDefault(); e.stopPropagation(); }} onPointerDown={(e) => e.stopPropagation()}>
+      {ed.scan && <button type="button" className="ed-photo-btn" onClick={() => setScan('photo')}><Icon name="camera" />Scan Bottle</button>}
+      {ed.scan && <button type="button" className="ed-photo-btn" onClick={() => setScan('spin')}>{spinNow.length > 1 ? 'Spin Again' : 'Make a Spin'}</button>}
+      <button type="button" className="ed-photo-btn" onClick={() => setPick(true)}>{!ed.scan && <Icon name="camera" />}{v ? 'Replace Photo' : 'Add Photo'}</button>
       {v && <button type="button" className="ed-photo-btn" onClick={() => setAdjust(true)}>Adjust Photo</button>}
       {pick && <MediaPicker kind="image" title="Main photo" onClose={() => setPick(false)} onPick={(x) => { if ('img' in x) f.set(x.img); setPick(false); }} />}
       {adjust && v && <PhotoAdjust value={v} label="Main photo" onClose={() => setAdjust(false)} onSave={(x) => { f.set(x); setAdjust(false); }} />}
+      {scan && (
+        <BottleScanner name={ed.name || 'Bottle'} kind={ed.scan} spin={scan === 'spin'} onClose={() => setScan('')}
+          onDone={(url) => { f.set(url); setScan(''); }}
+          onSpin={(frames) => { setTop(ed.e, 'spin', frames, ed.spin || []); setScan(''); }} />
+      )}
     </div>
   );
 }

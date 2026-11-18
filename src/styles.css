@@ -601,9 +601,10 @@ body.print-measure .page > .fn [data-name="Body"] > [data-name="Matrix table"] {
 .scanner-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .scanner-head small { display: block; color: var(--muted); }
 .scanner-stage { background: #111; border-radius: 14px; overflow: hidden; display: grid; place-items: center; min-height: 260px; }
-.scanner-cam { position: relative; width: 100%; max-height: 68vh; aspect-ratio: auto; }
-.scanner-cam video { display: block; width: 100%; max-height: 68vh; object-fit: contain; background: #111; }
-.scanner-guide { position: absolute; border: 2px dashed rgba(242,238,231,.9); border-radius: 40% 40% 14px 14px / 12% 12% 14px 14px; box-shadow: 0 0 0 999px rgba(17,17,17,.45); pointer-events: none; }
+.scanner-cam { position: relative; width: 100%; margin: 0 auto; overflow: hidden; }
+.scanner-cam video { display: block; width: 100%; height: 100%; object-fit: cover; background: #111; }
+/* Nov 18: the guide is the bottle's own outline (wine tall and slim, a spirit stockier), drawn in the frame's pixels */
+.scanner-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .scanner-note { color: var(--cream); padding: 40px 24px; text-align: center; max-width: 420px; }
 .scanner-tip { margin: 0; font-size: 13px; }
 .scanner-actions { justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
@@ -627,6 +628,139 @@ body.print-measure .page > .fn [data-name="Body"] > [data-name="Matrix table"] {
 .box-handle { position: absolute; width: 22px; height: 22px; background: var(--cream); border: 2px solid var(--copper); border-radius: 50%; touch-action: none; }
 .box-handle.tl { left: -12px; top: -12px; cursor: nwse-resize; } .box-handle.br { right: -12px; bottom: -12px; cursor: nwse-resize; }
 .box-handle.tr { right: -12px; top: -12px; cursor: nesw-resize; } .box-handle.bl { left: -12px; bottom: -12px; cursor: nesw-resize; }
+/* ---- Nov 18 · Bottle spin · Photo by Photo (Figma 09 · Proposals → 34). Colours from the look's roles. ---- */
+.scanner .btn.ghost { border-color: #8F867C; } /* 3:1 edge on white (the drawn #CFC5B6 is 1.6:1) */
+.scanner-head strong { font-size: 20px; font-weight: 800; }
+.scanner-head small { font-size: 13px; }
+.scanner-close { width: 44px; height: 44px; border-radius: 12px; }
+.modal.scanner-pick, .modal.scanner-pbp { width: min(560px, 100%); }
+.scan-modes { display: flex; flex-direction: column; gap: 16px; }
+.scan-modes-title, .pbp-title { margin: 0; font-size: 22px; font-weight: 800; line-height: 1.2; }
+.scan-modes-line { margin: 4px 0 0; font-size: 14px; }
+.scan-mode-list { display: flex; flex-direction: column; gap: 12px; }
+.scan-mode { display: grid; grid-template-columns: 44px minmax(0, 1fr) 24px; gap: 14px; align-items: start; text-align: left; padding: 16px; border-radius: 14px; border: 1px solid var(--border-2); background: #fff; color: var(--ink); font: inherit; cursor: pointer; min-height: 44px; }
+.scan-mode.on { border: 2px solid var(--ink-fill, var(--ink)); padding: 15px; background: var(--wash-4); }
+.scan-mode:focus-visible { outline: 3px solid var(--copper); outline-offset: 2px; }
+.scan-mode-icon { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--tint-2); color: var(--ink); }
+.scan-mode.on .scan-mode-icon { background: var(--tint); }
+.scan-mode-copy { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.scan-mode-copy strong { display: inline-flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 700; }
+.scan-mode-copy > span { font-size: 14px; line-height: 1.45; color: var(--muted); }
+.scan-tag { display: inline-flex; align-items: center; justify-content: center; padding: 3px 7px; border-radius: 6px; background: var(--tint); color: var(--ink); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; line-height: 1; }
+.scan-radio { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; margin-top: 8px; box-sizing: border-box; }
+.scan-mode.on .scan-radio { border-color: var(--ink-fill, var(--ink)); }
+.scan-mode.on .scan-radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-fill, var(--ink)); }
+.scan-before { background: var(--wash); border-radius: 12px; padding: 14px 16px; }
+.scan-before strong { display: block; font-size: 14px; margin-bottom: 4px; }
+.scan-before p { margin: 0; font-size: 14.5px; line-height: 1.5; }
+.scan-modes-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.scan-modes-actions .btn { width: 100%; min-height: 50px; }
+/* the capture screen */
+.pbp { display: flex; flex-direction: column; gap: 14px; }
+.pbp-stage { background: #16130f; border-radius: 14px; overflow: hidden; display: grid; place-items: center; min-height: 260px; }
+.pbp-ghost { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .45; pointer-events: none; }
+.pbp-tag { position: absolute; left: 12px; display: inline-flex; align-items: center; justify-content: center; padding: 7px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; line-height: 1; white-space: nowrap; }
+.pbp-tag.dark { top: 12px; background: rgba(30,28,26,.86); color: #F2EEE7; }
+.pbp-tag.light { top: 50px; background: #F2EEE7; color: #1E1C1A; font-size: 12px; }
+.pbp-dial { position: absolute; top: 12px; right: 12px; width: 104px; padding: 8px 0 10px; border-radius: 12px; background: rgba(30,28,26,.88); display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.pbp-dial span { color: #F2EEE7; font-size: 12px; font-weight: 600; text-align: center; padding: 0 6px; }
+.dial-dot { fill: #7A7168; } .dial-dot.on { fill: var(--copper); }
+.dial-bottle { fill: #2A2724; stroke: #B8AFA3; } .dial-neck { stroke: #5E574F; }
+.dial-label { stroke: #F2EEE7; } .dial-label.was { stroke-opacity: .35; }
+.dial-turn { stroke: var(--copper); } .dial-turn-head { fill: var(--copper); }
+.dial-you { fill: #B8AFA3; }
+.pbp-copy .pbp-title { font-size: 18px; font-weight: 700; }
+.pbp-copy p { margin: 4px 0 0; font-size: 15px; line-height: 1.4; }
+.pbp-controls { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; }
+.pbp-side { display: flex; flex-direction: column; align-items: center; gap: 6px; justify-self: start; min-width: 112px; }
+.pbp-side.right { justify-self: end; }
+.pbp-side small { font-size: 11px; }
+.pbp-side .btn { min-width: 112px; padding: 10px 14px; }
+.pbp-taken { font-size: 13px; font-weight: 600; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pbp-shutter { width: 92px; height: 92px; padding: 0; border: 0; background: none; border-radius: 50%; cursor: pointer; display: grid; place-items: center; }
+.pbp-shutter:disabled { opacity: .5; cursor: default; }
+.pbp-shutter:focus-visible { outline: 3px solid var(--copper); outline-offset: 3px; }
+.pbp-shutter .seg { fill: var(--border); } .pbp-shutter .seg.done { fill: var(--copper-dk); } .pbp-shutter .seg.now { fill: var(--ink-fill, var(--ink)); }
+.pbp-shutter .shutter-body { fill: var(--ink-fill, var(--ink)); } .pbp-shutter .shutter-ring { stroke: var(--cream); }
+.pbp-shutter:active:not(:disabled) .shutter-body { opacity: .85; }
+.pbp-go { min-height: 50px; }
+.pbp-wide { width: 100%; min-height: 50px; }
+/* cutting out */
+.pbp-count { margin: 6px 0 8px; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.pbp-bar { height: 6px; border-radius: 999px; background: var(--border); overflow: hidden; }
+.pbp-bar span { display: block; height: 100%; background: var(--copper-dk); border-radius: 999px; transition: width .3s ease; }
+.pbp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.pbp-cell { position: relative; aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; background: var(--tint-3); display: grid; place-items: center; }
+.pbp-cell img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.pbp-cell.wait { background: #8A847D; } .pbp-cell.wait img { object-fit: cover; opacity: .45; filter: grayscale(.6); }
+.pbp-cell.now { background: #16130f; } .pbp-cell.now img { object-fit: cover; opacity: .35; }
+.pbp-check { position: absolute; top: 6px; right: 6px; width: 22px; height: 22px; border-radius: 50%; background: #3E7B4F; display: grid; place-items: center; }
+.pbp-spinner { position: absolute; width: 30px; height: 30px; border-radius: 50%; border: 3px solid rgba(242,238,231,.25); border-top-color: var(--copper); animation: pbp-spin .9s linear infinite; }
+@keyframes pbp-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .pbp-spinner { animation-duration: 3s; } .pbp-bar span { transition: none; } }
+/* review */
+.pbp-player { position: relative; background: var(--tint-3); border-radius: 16px; height: min(350px, 42vh); overflow: hidden; }
+.pbp-player .spin { position: absolute; inset: 0; }
+.pbp-player .spin img { padding: 6% 10% 4%; box-sizing: border-box; }
+.pbp-player .spin-hint { display: none; }
+.pbp-pill { position: absolute; top: 12px; left: 12px; display: inline-flex; align-items: center; justify-content: center; padding: 7px 12px; border-radius: 999px; background: rgba(30,28,26,.86); color: #F2EEE7; font-size: 13px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; pointer-events: none; }
+.pbp-pause { position: absolute; left: 12px; bottom: 12px; width: 44px; height: 44px; border-radius: 12px; border: 1px solid #8F867C; background: #fff; color: var(--ink); display: grid; place-items: center; cursor: pointer; }
+.pbp-pause:focus-visible { outline: 3px solid var(--copper); outline-offset: 2px; }
+.pbp-strip-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.pbp-strip-head strong { font-size: 15px; } .pbp-strip-head small { font-size: 13px; }
+.pbp-strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+.pbp-frame { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 2px 3px; min-height: 44px; border-radius: 10px; border: 2px solid transparent; background: var(--tint-3); color: var(--ink); font: inherit; cursor: pointer; }
+.pbp-frame img { width: 100%; height: 54px; object-fit: contain; display: block; }
+.pbp-frame span { font-size: 11px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pbp-frame.on { border-color: var(--ink-fill, var(--ink)); background: var(--tint); }
+.pbp-frame.on span { color: var(--ink); }
+.pbp-frame:focus-visible { outline: 3px solid var(--copper); outline-offset: 2px; }
+.pbp-picked { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pbp-picked strong { display: block; font-size: 15px; } .pbp-picked small { font-size: 12px; }
+.pbp-final { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: 10px; }
+.pbp-final .btn { min-height: 48px; }
+@media screen and (max-width: 700px) {
+  .modal.scanner-pick, .modal.scanner-pbp { width: 100%; }
+  .pbp-strip { gap: 5px; }
+  .pbp-side { min-width: 96px; } .pbp-side .btn { min-width: 100px; }
+}
+/* the spin on a page (762:1191, 772:1236): room round the bottle, a 360° chip, a light crossfade */
+.spin-panel img { padding: 9% 12% 13%; box-sizing: border-box; }
+.spin .spin-fade { position: absolute; inset: 0; animation: spin-fade .14s ease-out forwards; }
+@keyframes spin-fade { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .spin .spin-fade { display: none; } }
+.spin-chip { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; justify-content: center; padding: 5px 9px; border-radius: 999px; background: #fff; color: #1E1C1A; font-size: 12px; font-weight: 700; line-height: 1; pointer-events: none; font-variant-numeric: tabular-nums; }
+.spin-panel .spin-hint { bottom: 16px; }
+/* Admin → Bottle Scanner: Wine · Spirits */
+.scan-tabs { display: inline-flex; border: 1px solid var(--ink-fill, var(--ink)); border-radius: 12px; overflow: hidden; align-self: flex-start; }
+.scan-tab { min-width: 140px; min-height: 44px; padding: 0 20px; border: 0; background: #fff; color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; font-variant-numeric: tabular-nums; }
+.scan-tab.on { background: var(--ink-fill, var(--ink)); color: var(--cream); }
+.scan-tab:focus-visible { outline: 3px solid var(--copper); outline-offset: -3px; }
+.scan-page .chip { min-height: 40px; padding: 0 14px; }
+.scan-page .btn.ghost { border-color: #8F867C; }
+.scan-list { list-style: none; margin: 0; padding: 0 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+.scan-row { display: grid; grid-template-columns: 56px minmax(0, 1.3fr) minmax(0, 1fr) auto; grid-template-areas: 'thumb copy status actions'; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--hair); }
+.scan-row:last-child { border-bottom: 0; }
+.scan-row-thumb { grid-area: thumb; position: relative; width: 56px; height: 72px; border-radius: 8px; background: var(--tint-3); display: grid; place-items: center; overflow: hidden; }
+.scan-row-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 3px; box-sizing: border-box; }
+.scan-row-thumb.filler img { padding: 0; object-fit: cover; }
+.scan-360 { position: absolute; right: 3px; bottom: 3px; display: inline-flex; align-items: center; justify-content: center; padding: 2px 5px; border-radius: 999px; background: rgba(30,28,26,.9); color: #F2EEE7; font-size: 10px; font-weight: 700; line-height: 1.1; }
+.scan-row-copy { grid-area: copy; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.scan-row-copy strong { font-size: 15.5px; font-weight: 700; }
+.scan-row-copy small { font-size: 13px; }
+.scan-row-status { grid-area: status; font-size: 13px; font-weight: 600; }
+.scan-src.spin, .scan-src.scanned { color: #3E7B4F; }
+.scan-row-actions { grid-area: actions; display: grid; grid-template-columns: 124px 128px; gap: 12px; }
+.scan-row-actions .btn { padding: 10px 12px; white-space: nowrap; }
+@media screen and (max-width: 900px) {
+  .scan-tabs { display: grid; grid-template-columns: 1fr 1fr; align-self: stretch; }
+  .scan-tab { min-width: 0; }
+  .scan-list { padding: 0; background: transparent; border: 0; display: flex; flex-direction: column; gap: 10px; }
+  .scan-row { grid-template-columns: 56px minmax(0, 1fr); grid-template-areas: 'thumb copy' 'thumb status' 'actions actions'; row-gap: 2px; column-gap: 12px; padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+  .scan-row:last-child { border-bottom: 1px solid var(--line); }
+  .scan-row-status { align-self: start; }
+  .scan-row-actions { grid-template-columns: 1fr 1fr; margin-top: 10px; gap: 8px; }
+}
 .scan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
 .scan-card { display: flex; flex-direction: column; gap: 4px; text-align: left; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 10px; font: inherit; cursor: pointer; }
 .scan-card:hover { border-color: var(--copper); }

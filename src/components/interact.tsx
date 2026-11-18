@@ -10,7 +10,7 @@ export type Meta = {
   k?: string; mode?: 'toggle' | 'pick'; val?: string; def?: boolean | string;
   on?: FNode; off?: FNode; save?: 'day' | 'week';
   add?: { label: string; tile?: boolean; inset?: number };
-  spin?: string[];
+  spin?: string[]; spinPanel?: number;
   check?: import('./QuickCheck').Check;
   show?: { req?: string[]; forbid?: string[]; pick?: [string, string[], string]; text?: [string, string] };
   find?: string; label?: string;

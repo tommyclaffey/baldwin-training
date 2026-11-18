@@ -199,7 +199,8 @@ function bindDish(page, e) {
 function bindWine(page, e) {
   const main = page.main, d = e.data;
   const bottle = find(main, startsWith('IMG/Bottle'));
-  if (bottle && !bottle.meta?.spin) bottle.ed = { e: e.id, k: 'bottle_img', t: 'photo', v: d.bottle_img || '', fit: 1 };
+  // Replace Photo, Scan Bottle and Make a Spin (Nov 18: also on a bottle that already spins, over the spin).
+  if (bottle) bottle.ed = { e: e.id, k: 'bottle_img', t: 'photo', v: d.bottle_img || '', fit: 1, scan: 'wine', name: d.name || '', spin: d.spin || [] };
   bind(find(main, byName('Title')), e, 'name', { u: 1, req: 1 });
   const origin = find(main, byName('Origin'));
   for (const [n, k] of [['Varietal', 'grape'], ['Region', 'region']]) { const c = origin && find(origin, byName(n)); if (c) bind(texts(c)[1], e, k, { ph: n }); }
@@ -213,6 +214,9 @@ function bindWine(page, e) {
 
 function bindBottle(page, e) {
   const main = page.main, d = e.data;
+  // The bottle in the hero (Nov 18): the same photo, scan and spin tools as a wine's.
+  const art = find(main, (n) => /^IMG\/(Bottle|Spirit bottle)/.test(n.n || ''));
+  if (art) art.ed = { e: e.id, k: 'bottle_img', t: 'photo', v: d.bottle_img || '', fit: 1, scan: 'spirit', name: d.name || '', spin: d.spin || [] };
   const hero = find(main, byName('Hero'));
   const copy = hero && find(hero, byName('Copy'));
   const [, title, line] = kids(copy);
@@ -265,6 +269,7 @@ function trimData(page) {
       const s = (used[n.ed.e] ||= new Set(['name']));
       s.add(topKey(n.ed.k));
       if (n.ed.t === 'spec') for (const k of ['build', 'method', 'glass', 'garnish']) s.add(k);
+      if (n.ed.spin) s.add('spin'); // a bottle's Make a Spin (Nov 18)
     }
     (n.c || []).forEach(walk);
   })(page.main);

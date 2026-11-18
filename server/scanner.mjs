@@ -80,13 +80,17 @@ const expired = (msg = 'That photo has expired. Take it again.') => { const e = 
 
 /** Prepare a photo: upright, at most 2400 px tall, encoded once so each new box is quick.
  *  `maxPixels` (demos): a bigger photo is refused before it's decoded. */
-export async function startScan(buffer, { owner = null, demo = false, maxPixels } = {}) {
+async function prepare(buffer, { maxPixels } = {}) {
   const eng = await engine();
   const { sharp, ort } = libs;
   const input = maxPixels ? { limitInputPixels: maxPixels } : {};
   let base;
   try { base = await sharp(buffer, input).rotate().resize({ width: 2400, height: 2400, fit: 'inside', withoutEnlargement: true }).jpeg({ quality: 92 }).toBuffer(); }
-  catch (e) { if (/pixel limit/i.test(e.message)) { const err = new Error('That photo is too big. Take it again, or use a smaller one.'); err.status = 413; throw err; } throw e; }
+  catch (e) {
+    if (/pixel limit/i.test(e.message)) { const err = new Error('That photo is too big. Take it again, or use a smaller one.'); err.status = 413; throw err; }
+    if (/unsupported image format|Input buffer|corrupt|bad seek|VipsJpeg|heif/i.test(e.message)) { const err = new Error('That photo didn’t open. Try a JPG or PNG.'); err.status = 415; throw err; }
+    throw e;
+  }
   const { width: W, height: H } = await sharp(base).metadata();
   const portrait = H > W;
   // Portrait photos turn sideways, so the bottle gets the canvas's long side.
@@ -94,13 +98,20 @@ export async function startScan(buffer, { owner = null, demo = false, maxPixels 
   const ww = portrait ? H : W, wh = portrait ? W : H;
   const s = Math.min(CW / ww, CH / wh), sw = Math.round(ww * s), sh = Math.round(wh * s);
   const small = await sharp(work).resize(sw, sh).removeAlpha().raw().toBuffer();
-  const canvas = new Float32Array(CW * CH * 3);
-  for (let y = 0; y < sh; y++) for (let x = 0; x < sw * 3; x++) canvas[y * CW * 3 + x] = small[y * sw * 3 + x];
-  const image_embeddings = eng.stub ? null : (await eng.enc.run({ input_image: new ort.Tensor('float32', canvas, [CH, CW, 3]) })).image_embeddings;
+  let image_embeddings = null;
+  if (!eng.stub) {
+    const canvas = new Float32Array(CW * CH * 3);
+    for (let y = 0; y < sh; y++) for (let x = 0; x < sw * 3; x++) canvas[y * CW * 3 + x] = small[y * sw * 3 + x];
+    image_embeddings = (await eng.enc.run({ input_image: new ort.Tensor('float32', canvas, [CH, CW, 3]) })).image_embeddings;
+  }
+  return { at: Date.now(), base, W, H, portrait, ww, wh, s, sw, sh, emb: image_embeddings, small: eng.stub ? small : null };
+}
+export async function startScan(buffer, { owner = null, demo = false, maxPixels } = {}) {
+  const sc = await prepare(buffer, { maxPixels });
   prune();
   const token = crypto.randomBytes(12).toString('hex');
-  scans.set(token, { at: Date.now(), owner, demo, base, W, H, portrait, ww, wh, s, sw, sh, emb: image_embeddings });
-  return { token, width: W, height: H };
+  scans.set(token, { ...sc, owner, demo });
+  return { token, width: sc.W, height: sc.H };
 }
 
 const flood = (grid, w, h, seeds, val) => {
@@ -116,11 +127,10 @@ const flood = (grid, w, h, seeds, val) => {
   return seen;
 };
 
-/** Cut out the object inside `box` ([x0, y0, x1, y1] as fractions of the photo). Returns a JPEG. */
-export async function cutScan(token, box, owner = null) {
-  const sc = mine(token, owner);
-  if (!sc) throw expired();
-  sc.at = Date.now();
+/** The bottle inside `box` ([x0, y0, x1, y1] as fractions of the photo): a W × H mask (0–255) at the photo's own size.
+ *  `diff` (tests only, with the stub): the object is what inside the box differs from the box's edge colour, so each
+ *  test photo gets its own outline (the Photo by Photo alignment is checked on real shapes). */
+async function maskOf(sc, box, { diff = false } = {}) {
   const eng = await engine();
   const { dec } = eng;
   const { sharp, ort } = libs;
@@ -139,9 +149,19 @@ export async function cutScan(token, box, owner = null) {
   });
   // Tests only: the object is the box.
   const stubCut = () => { const r = new Uint8Array(sw * sh); for (let y = Math.max(0, b[1] | 0); y < Math.min(sh, Math.ceil(b[3])); y++) for (let x = Math.max(0, b[0] | 0); x < Math.min(sw, Math.ceil(b[2])); x++) r[y * sw + x] = 1; return r; };
+  // Tests only: what differs from the colour along the box's edge.
+  const diffCut = () => {
+    const px = sc.small, r = new Uint8Array(sw * sh), x0 = Math.max(0, b[0] | 0), y0 = Math.max(0, b[1] | 0), x1 = Math.min(sw - 1, Math.ceil(b[2])), y1 = Math.min(sh - 1, Math.ceil(b[3]));
+    const ref = [0, 0, 0]; let n = 0;
+    const add = (x, y) => { for (let c = 0; c < 3; c++) ref[c] += px[(y * sw + x) * 3 + c]; n++; };
+    for (let x = x0; x <= x1; x++) { add(x, y0); add(x, y1); } for (let y = y0; y <= y1; y++) { add(x0, y); add(x1, y); }
+    for (let c = 0; c < 3; c++) ref[c] /= n;
+    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) { const i = (y * sw + x) * 3; if (Math.abs(px[i] - ref[0]) + Math.abs(px[i + 1] - ref[1]) + Math.abs(px[i + 2] - ref[2]) > 60) r[y * sw + x] = 1; }
+    return r;
+  };
   const bestOf = (o) => { const iou = o.iou_predictions.data; let k = 0; for (let i = 1; i < o.masks.dims[1]; i++) if (iou[i] > iou[k]) k = i; return k; };
   let raw;
-  if (eng.stub) raw = stubCut();
+  if (eng.stub) raw = diff && sc.small ? diffCut() : stubCut();
   else {
     let out = await prompt();
     // A second pass, fed the first answer, tidies the edges and drops stray bits.
@@ -181,6 +201,16 @@ export async function cutScan(token, box, owner = null) {
   // Smooth edge, at the photo's own size and orientation.
   let mask = await sharp(m8, { raw: { width: sw, height: sh, channels: 1 } }).blur(0.7).resize(ww, wh, { kernel: 'cubic' }).extractChannel(0).raw().toBuffer();
   if (portrait) mask = await sharp(mask, { raw: { width: ww, height: wh, channels: 1 } }).rotate(-90).extractChannel(0).raw().toBuffer();
+  return mask;
+}
+
+/** Cut out the object inside `box` ([x0, y0, x1, y1] as fractions of the photo). Returns a JPEG. */
+export async function cutScan(token, box, owner = null) {
+  const sc = mine(token, owner);
+  if (!sc) throw expired();
+  sc.at = Date.now();
+  const mask = await maskOf(sc, box);
+  const { sharp } = libs;
   sc.mask = mask; sc.crop = null; // a new box, a new crop
   const jpg = await compose(sc, await sharp(sc.base).removeAlpha().raw().toBuffer(), 1400);
   sc.result = jpg;
@@ -233,3 +263,109 @@ export async function spinFrames(token, owner = null) {
 
 /** The last cut for this photo (to keep it). */
 export const lastCut = (token, owner = null) => mine(token, owner)?.result || null;
+
+/* ---- Photo by Photo (Nov 18, Figma 09 · Proposals → 34; Tommy: "i have to rotate take a photo rotate take a photo") ----
+ * No turntable: the bottle is turned by hand, 30° at a time, and photographed 12 times. A hand-turned bottle moves, so
+ * every photo gets its own cut-out (a model run each, about 0.65 s), never one shared outline. Then the 12 are lined
+ * up the same way: scaled to one bottle height, centred on the body, base on one line, so the spin doesn't wobble.
+ * One photo is cut at a time across the whole server (`inTurn`), so a few spins at once can't run the 314 MB server out of
+ * memory; each prepared photo is dropped as soon as its cut-out is made. A set keeps only the small cut-outs. */
+export const SPIN_PHOTOS = 12;
+const OUT_H = 900; // saved frame height, like the turntable spin's frames
+const sets = new Map(); // token → { owner, demo, at, cuts: [{ png, w, h, cx }], frames: [jpg] | null }
+const MAX_SETS = 8;
+const pruneSets = () => {
+  const old = Date.now() - 30 * 60e3;
+  for (const [k, v] of sets) if (v.at < old) sets.delete(k);
+  for (const demoFirst of [true, false]) for (const [k, v] of sets) if (sets.size >= MAX_SETS && (!demoFirst || v.demo)) sets.delete(k);
+};
+const mySet = (token, owner) => { const st = sets.get(token); return st && st.owner === owner ? st : null; };
+let queue = Promise.resolve();
+/** Runs `fn` after every earlier photo has finished (one at a time, server-wide). */
+const inTurn = (fn) => { const run = queue.then(fn, fn); queue = run.catch(() => {}); return run; };
+
+/** One photo of the set: cut it out on its own and keep the cut-out (RGBA, cropped tight) at index `i`.
+ *  A new set starts when `token` is empty or gone. Returns the token and a small preview on the beige. */
+export function spinPhoto(token, i, buffer, box, { owner = null, demo = false, maxPixels, diff = false } = {}) {
+  const idx = Number(i);
+  if (!Number.isInteger(idx) || idx < 0 || idx >= SPIN_PHOTOS) { const e = new Error('That photo number isn’t right.'); e.status = 400; return Promise.reject(e); }
+  return inTurn(async () => {
+    let st = token ? mySet(token, owner) : null;
+    if (token && !st) throw expired('Those photos have expired. Start the spin again.');
+    const sc = await prepare(buffer, { maxPixels });
+    const mask = await maskOf(sc, box, { diff });
+    const { sharp } = libs;
+    const { W, H } = sc;
+    let x0 = W, y0 = H, x1 = -1, y1 = -1;
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (mask[y * W + x] > 127) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    if (x1 < 0) { const e = new Error('We couldn’t find a bottle in that photo. Take it again with the bottle inside the guide.'); e.status = 422; throw e; }
+    const cw = x1 - x0 + 1, ch = y1 - y0 + 1;
+    // The body's centre: the middle of the mask across the lower half of the bottle (a neck or a stray edge can lean).
+    let sum = 0, n = 0;
+    for (let y = y0 + Math.round(ch * 0.45); y <= y1 - Math.round(ch * 0.05); y++) for (let x = x0; x <= x1; x++) { const a = mask[y * W + x]; if (a > 127) { sum += x - x0; n++; } }
+    const cx = n ? sum / n : cw / 2;
+    // The photo's own pixels with the mask as alpha, cropped to the bottle. Re-encoded, so no camera metadata survives.
+    const rgb = await sharp(sc.base).removeAlpha().extract({ left: x0, top: y0, width: cw, height: ch }).raw().toBuffer();
+    const rgba = Buffer.alloc(cw * ch * 4);
+    for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {
+      const si = (y * cw + x) * 3, di = (y * cw + x) * 4;
+      rgba[di] = rgb[si]; rgba[di + 1] = rgb[si + 1]; rgba[di + 2] = rgb[si + 2]; rgba[di + 3] = mask[(y0 + y) * W + x0 + x];
+    }
+    const k = Math.min(1, 1100 / ch);
+    const w = Math.max(1, Math.round(cw * k)), h = Math.max(1, Math.round(ch * k));
+    const png = await sharp(rgba, { raw: { width: cw, height: ch, channels: 4 } }).resize(w, h).png({ compressionLevel: 6 }).toBuffer();
+    if (!st) {
+      pruneSets();
+      token = crypto.randomBytes(12).toString('hex');
+      st = { owner, demo, at: Date.now(), cuts: Array(SPIN_PHOTOS).fill(null), frames: null };
+      sets.set(token, st);
+    }
+    st.at = Date.now();
+    st.cuts[idx] = { png, w, h, cx: cx * k };
+    st.frames = null; // lined up again after any change
+    const thumb = await onBeige(png, w, h, 260);
+    return { token, i: idx, thumb, taken: st.cuts.filter(Boolean).length };
+  });
+}
+
+/** A cut-out on the beige, `height` tall with a little room round it (the processing grid's previews). */
+async function onBeige(png, w, h, height) {
+  const { sharp } = libs;
+  const bh = Math.round(height * 0.86), k = bh / h, bw = Math.max(1, Math.round(w * k));
+  const cw = Math.max(bw + Math.round(height * 0.14), Math.round(height * 0.62));
+  const img = await sharp(png).resize(bw, bh).toBuffer();
+  return sharp({ create: { width: cw, height, channels: 3, background: { r: BEIGE[0], g: BEIGE[1], b: BEIGE[2] } } })
+    .composite([{ input: img, left: Math.round((cw - bw) / 2), top: Math.round(height * 0.07) }]).jpeg({ quality: 80 }).toBuffer();
+}
+
+/** Line the 12 cut-outs up: the same bottle height, centred on the body, base on one line, all on one canvas size.
+ *  Returns the 12 frames (JPEG on the beige), or null if a photo is missing. */
+export function spinAlign(token, owner = null) {
+  return inTurn(async () => {
+    const st = mySet(token, owner);
+    if (!st) throw expired('Those photos have expired. Start the spin again.');
+    if (st.cuts.some((c) => !c)) return null;
+    if (st.frames) return st.frames;
+    await engine();
+    const { sharp } = libs;
+    const pad = Math.round(OUT_H * 0.05), bh = OUT_H - pad * 2;
+    const placed = st.cuts.map((c) => { const k = bh / c.h; return { c, k, w: Math.max(1, Math.round(c.w * k)), cx: c.cx * k }; });
+    // Wide enough for every frame's reach either side of its centre line, plus the same margin.
+    const half = Math.ceil(Math.max(...placed.map((p) => Math.max(p.cx, p.w - p.cx))));
+    const width = half * 2 + pad * 2;
+    st.frames = [];
+    for (const p of placed) {
+      const img = await sharp(p.c.png).resize(p.w, bh).toBuffer();
+      st.frames.push(await sharp({ create: { width, height: OUT_H, channels: 3, background: { r: BEIGE[0], g: BEIGE[1], b: BEIGE[2] } } })
+        .composite([{ input: img, left: Math.round(width / 2 - p.cx), top: pad }]).jpeg({ quality: 86, mozjpeg: true }).toBuffer());
+    }
+    st.at = Date.now();
+    return st.frames;
+  });
+}
+/** One lined-up frame (for the review screen). */
+export const spinAligned = (token, i, owner = null) => mySet(token, owner)?.frames?.[i] || null;
+/** Done with a set (kept or started over). */
+export const dropSpinSet = (token, owner = null) => { if (mySet(token, owner)) sets.delete(token); };
+/** What a set holds (tests and the status line). */
+export const spinSetInfo = (token, owner = null) => { const st = mySet(token, owner); return st && { taken: st.cuts.filter(Boolean).length, aligned: !!st.frames }; };

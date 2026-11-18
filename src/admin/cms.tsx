@@ -8,7 +8,7 @@ import { Empty, ErrorNote, Field, Loading, PhotoField, Rows, SpinField, Text, Vi
 
 export type FieldDef = {
   key: string; label: string; type: string; max?: number; hint?: string; placeholder?: string; options?: string[];
-  required?: boolean; section?: string; fields?: FieldDef[]; scan?: boolean;
+  required?: boolean; section?: string; fields?: FieldDef[]; scan?: boolean | 'wine' | 'spirit';
 };
 export type Collection = { id: string; label: string; singular: string; prefix: string; group?: { key: string; values: string[] }; lists: string; fields: FieldDef[]; noPages?: boolean };
 export type Entry = { id: number; collection: string; slug: string; data: Record<string, unknown>; sort: number; seeded: boolean; updated_at: string; edited: boolean; archivedAt?: string | null };
@@ -243,9 +243,9 @@ export function renderField(f: FieldDef, value: unknown, onChange: (v: unknown) 
     case 'toggle':
       return <label className="check toggle-field"><input type="checkbox" checked={!!value} onChange={(e) => onChange(e.target.checked)} /> <span>{f.label}{f.hint && <small> · {f.hint}</small>}</span></label>;
     case 'photo':
-      return <PhotoField label={f.label} hint={f.hint} value={(value as string) || ''} onChange={onChange} scanName={f.scan ? ctx.name || '' : undefined} />;
+      return <PhotoField label={f.label} hint={f.hint} value={(value as string) || ''} onChange={onChange} scanName={f.scan ? ctx.name || '' : undefined} scanKind={f.scan === 'spirit' ? 'spirit' : 'wine'} />;
     case 'spin':
-      return <SpinField label={f.label} hint={f.hint} value={(value as string[]) || []} onChange={onChange} name={ctx.name || ''} />;
+      return <SpinField label={f.label} hint={f.hint} value={(value as string[]) || []} onChange={onChange} name={ctx.name || ''} kind={f.scan === 'spirit' ? 'spirit' : 'wine'} />;
     case 'video':
       return <VideoField label={f.label} hint={f.hint} value={(value as Video) || null} onChange={onChange} />;
     case 'tags':

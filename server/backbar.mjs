@@ -38,6 +38,8 @@ export function shelfGroups(shelf) {
 /** The drawn spirit bottle (Figma: Filler · Spirit bottle), shown for every bottle until there's a photo of our own. */
 export const SPIRIT_FILLER = '/img/spirit-bottle-filler.jpg';
 const art = (w, h) => ({ t: 'R', n: 'IMG/Spirit bottle · drawn', w, h, sh: 'L', sv: 'L', f: [{ img: SPIRIT_FILLER, m: 'FIT' }] });
+/** Our own picture of a bottle (Nov 18): its spin's first frame, else its scanned photo, else null (the drawing stays). */
+export const ownBottleImg = (d) => (d?.spin?.length > 1 ? d.spin[0] : d?.bottle_img || null);
 const label = (key) => (key === 'Liqueur' ? 'Liqueurs' : key);
 
 /** The Back Bar page. */
@@ -64,7 +66,12 @@ export function fillBackBar(page, shelf, house) {
       r.n = 'Bottle · ' + d.name;
       r.to = '/' + e.slug;
       const tile = find(r, byName('Drawing'));
-      if (tile) { tile.f = [{ c: '#E7DECF' }]; tile.c = [art(tile.w, tile.h)]; tile.clip = 1; }
+      if (tile) {
+        tile.f = [{ c: '#E7DECF' }]; tile.c = [art(tile.w, tile.h)]; tile.clip = 1;
+        // Scanned or spun: our own bottle in the tile, like the wine list's (Nov 18).
+        const own = ownBottleImg(d);
+        if (own) { const a = tile.c[0]; a.f = [{ img: own, m: 'FIT' }]; a.n = 'IMG/Bottle · ' + d.name; tile.pd = [3, 3, 3, 3]; }
+      }
       setText(find(r, byName('Name')), d.name + (d.limited ? '\u00a0*' : ''));
       const styles = (d.styles || []).join(', ');
       setText(find(r, byName('Style')), [styles || d.spirit, d.price ? `$${String(d.price).replace(/^\$/, '')}` : ''].filter(Boolean).join(' · '));
@@ -127,8 +134,11 @@ export function bottlePage(tpl, e, { shelf, house, index, basePage }) {
   const panel = find(hero, startsWith('Bottle art'));
   if (panel) {
     panel.f = [{ c: '#E7DECF' }]; panel.c = [art(panel.w, panel.h)];
-    // Our own bottle, spun on the spin scanner, replaces the drawing (Oct 31).
-    if (d.spin?.length > 1) { const a = panel.c[0]; a.f = [{ img: d.spin[0], m: 'FIT' }]; a.n = 'IMG/Bottle · ' + d.name; a.meta = { ...(a.meta || {}), spin: d.spin }; }
+    const a = panel.c[0];
+    // Our own bottle replaces the drawing (Nov 18, the same as a wine): a spin fills the panel (with its 360° chip and
+    // "Drag to spin"), a scanned photo sits in it with room round it. Neither: the drawn bottle stays.
+    if (d.spin?.length > 1) { a.f = [{ img: d.spin[0], m: 'FIT' }]; a.n = 'IMG/Bottle · ' + d.name; a.meta = { ...(a.meta || {}), spin: d.spin, spinPanel: 1 }; }
+    else if (d.bottle_img) { a.f = [{ img: d.bottle_img, m: 'FIT' }]; a.n = 'IMG/Bottle · ' + d.name; panel.pd = [36, 60, 36, 60]; }
   }
   const tags = find(copy, byName('Tags'));
   const pills = tags.c;

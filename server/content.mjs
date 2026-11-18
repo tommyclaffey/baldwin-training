@@ -1029,7 +1029,7 @@ function buildIndex(db) {
         id: 'e' + e.id, file: 'e' + e.id, slug: e.slug,
         name: `${c.section} · ${d.name}`, title: d.name, section: c.section, nav: c.nav,
         text: [d.tagline, d.description, ...(d.build || []).map((b) => b.ingredient), ...(d.flavors || []), ...(d.allergens || []), d.spiritName, d.story, d.grape, d.region, e.collection === 'wine' ? wineDescription(d) : d.notes, d.pairs].filter(Boolean).join(' ').slice(0, 1200),
-        thumb: d.photo || d.bottle_img || (e.collection === 'wine' ? WINE_FILLER : e.collection === 'shelf' ? SPIRIT_FILLER : undefined), blurb: d.description || d.tagline || (e.collection === 'wine' ? wineDescription(d) : d.notes) || undefined,
+        thumb: d.photo || (d.spin?.length > 1 ? d.spin[0] : '') || d.bottle_img || (e.collection === 'wine' ? WINE_FILLER : e.collection === 'shelf' ? SPIRIT_FILLER : undefined), blurb: d.description || d.tagline || (e.collection === 'wine' ? wineDescription(d) : d.notes) || undefined,
       });
     }
   }

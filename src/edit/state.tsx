@@ -14,6 +14,7 @@ export type EdBind = {
   e: number; k: string; v: unknown; t?: 'photo' | 'tags' | 'chips' | 'spec' | 'list';
   ph?: string; u?: 1; m?: 1; n?: 1; req?: 1; cell?: 1; pre?: string; suf?: string; sep?: string; fit?: 1;
   opts?: string[]; glasses?: string[]; past?: boolean;
+  scan?: 'wine' | 'spirit'; name?: string; spin?: string[]; // a bottle photo: Scan Bottle and Make a Spin (Nov 18)
   dk?: 1; // sits on a dark panel (set by the Mise skin): drawn with a light outline
 };
 export type EntryInfo = { col: string; name: string; kind: string; data: Record<string, unknown>; shared?: { others: number; store: string }; local?: string[] };

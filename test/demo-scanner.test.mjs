@@ -67,7 +67,7 @@ test('startup removes a demo folder whose demo is gone', () => {
 test('demo: a manager can scan, cut and save; the photo is the demo’s own and has no metadata', async () => {
   const me = await demo('manager', 'mise');
   const ready = await (await json(me, '/api/scan/ready', {})).json();
-  assert.deepEqual(ready.demo, { scans: 10, saves: 5, scansLeft: 10, savesLeft: 5 });
+  assert.deepEqual(ready.demo, { scans: 10, saves: 5, scansLeft: 10, savesLeft: 5, cuts: 60, cutsLeft: 60 });
   const { status, body: m } = await scanAndKeep(me, '10.1.0.1', 'Elk Cove Pinot Noir');
   assert.equal(status, 200);
   assert.match(m.url, /^\/media\/demo\/demo-mise-[a-f0-9]{10}\/[a-f0-9]{12}-[a-z0-9]+-bottle-elk-cove-pinot-noir\.jpg$/);

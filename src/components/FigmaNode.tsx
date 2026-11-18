@@ -484,7 +484,17 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   // A bottle from the spin scanner: drag to turn it.
   if (m?.check?.items?.length) return <QuickCheck data={m.check} style={{ ...st, height: undefined, minHeight: undefined }} className={cls.join(' ')} />;
   if ((m as { complete?: { key: string; done: boolean } } | undefined)?.complete) return <CompleteToggle data={(m as { complete: { key: string; done: boolean } }).complete} />;
-  if (m?.spin?.length) return <SpinViewer frames={m.spin} alt={node.alt || 'Bottle'} style={st} className={cls.join(' ')} />;
+  if (m?.spin?.length) {
+    const panel = !!m.spinPanel;
+    // Edit Mode (Nov 18): Replace Photo, Scan Bottle and Spin Again sit over the spin, as they do over a photo.
+    if (editing && node.ed?.t === 'photo') return (
+      <div style={{ ...st, position: st.position || 'relative' }} className={cls.join(' ')}>
+        <SpinViewer frames={m.spin} alt={node.alt || 'Bottle'} panel={panel} style={{ width: '100%', height: '100%' }} />
+        <PhotoTools ed={node.ed} />
+      </div>
+    );
+    return <SpinViewer frames={m.spin} alt={node.alt || 'Bottle'} panel={panel} style={st} className={cls.join(' ')} />;
+  }
   // Edit in place: a manager's "+ Add" row or tile (staff never get these nodes).
   if (m?.add && node.to) return <AddRow href={node.to} label={m.add.label} tile={m.add.tile} inset={m.add.inset} style={st} className={cls.join(' ')} row={node.tbl === 'row'} />;
   // Floor Plan: the real table finder replaces the drawn box.

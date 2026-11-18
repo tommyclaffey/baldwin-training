@@ -15,7 +15,7 @@ import { archivedList, ARCHIVE_GROUPS } from './archive.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, SHARED, LOCAL_KEYS, BASE_COURSES, BASE_SECTIONS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
 import { slugify } from './templates.mjs';
-import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames } from './scanner.mjs';
+import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames, spinPhoto, spinAlign, spinAligned, dropSpinSet, SPIN_PHOTOS } from './scanner.mjs';
 import { personPath, personSummary, isPathSignoff, validJobs, JOBS } from './paths.mjs';
 import { pathCtxFor, teamRows, signoffQueue, quizWeek, newCertificates, lastEdits, bookTiles, reminderText, addNote, pathSteps, personRow, todayIso, addDays } from './team.mjs';
 import { lockedTopics, isInviteKey } from './invite.mjs';
@@ -70,6 +70,11 @@ const demoScanIp = new LoginLimiter(30, 60 * 60_000, 'demo-scan-ip');
 const demoCutIp = new LoginLimiter(150, 60 * 60_000, 'demo-cut-ip');
 const demoScans = new LoginLimiter(DEMO_SCAN.scans, 48 * 3600e3, 'demo-scan'); // keyed by the demo's random slug
 const demoCuts = new LoginLimiter(DEMO_SCAN.cuts, 48 * 3600e3, 'demo-cut');
+// Photo by Photo (Nov 18): 12 photos, each cut out on its own. Each photo counts as one cut (not a photo read), so a demo's
+// 60 cuts cover a full spin with retakes; a demo copy also stops at 36 spin photos (three spins' worth). Everyone, demo or
+// not, is held to 240 spin photos an hour per person: about 20 spins, far more than a manager walking the back bar needs.
+const demoSpinPhotos = new LoginLimiter(36, 48 * 3600e3, 'demo-spin-photo');
+const spinPhotoUser = new LoginLimiter(240, 60 * 60_000, 'spin-photo-user');
 
 // Nov 10 (audit): a Content-Security-Policy, so an injected script can't run or send data anywhere. Only our own scripts;
 // styles inline (the design's layout is drawn with style attributes) plus Google Fonts; images from us, YouTube thumbnails,
@@ -1001,7 +1006,8 @@ async function api(req, res, url) {
     if (!dm) return sendJson(res, 200, { ok: true });
     const key = dm.slice(5);
     const left = (lim, n) => Math.max(0, n - db.prepare('SELECT COUNT(*) n FROM limits WHERE name = ? AND key = ? AND at > ?').get(lim.name, key, Date.now() - lim.windowMs).n);
-    return sendJson(res, 200, { ok: true, demo: { scans: DEMO_SCAN.scans, saves: DEMO_SCAN.saves, scansLeft: left(demoScans, DEMO_SCAN.scans), savesLeft: Math.max(0, DEMO_SCAN.saves - demoSaves(c.company)) } });
+    return sendJson(res, 200, { ok: true, demo: { scans: DEMO_SCAN.scans, saves: DEMO_SCAN.saves, scansLeft: left(demoScans, DEMO_SCAN.scans), savesLeft: Math.max(0, DEMO_SCAN.saves - demoSaves(c.company)),
+      cuts: DEMO_SCAN.cuts, cutsLeft: left(demoCuts, DEMO_SCAN.cuts) } });
   }
   if (p === '/api/scan' && m === 'POST') {
     const u = needEditor(c, req);
@@ -1060,6 +1066,74 @@ async function api(req, res, url) {
     db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)')
       .run('file', `Bottle spin · ${name}`, urls[0].slice(7), 'image/jpeg', frames[0].length, u.id, now(), c.company, c.store);
     audit(db, u.id, 'spin scan bottle', name, c.company);
+    return sendJson(res, 200, { frames: urls });
+  }
+  /* Photo by Photo (Nov 18): one photo at a time (`?i=0…11`, the box as fractions), each cut out on its own; then the 12
+   * are lined up (align), looked at (frame), and kept as one spin. Retaking a photo is the same call with its number. */
+  if (p === '/api/scan/photos' && m === 'POST') {
+    const u = needEditor(c, req);
+    const dm = demoMediaOf(db, u.company_id), ip = clientIp(req);
+    const mime = String(req.headers['content-type'] || '').split(';')[0].trim();
+    if (!/^image\/(jpeg|png|webp|heic|heif)$/.test(mime)) fail(415, 'Take a photo, or upload a JPG, PNG or WebP.');
+    const box = String(url.searchParams.get('box') || '').split(',').map(Number);
+    if (box.length !== 4 || box.some((v) => !Number.isFinite(v))) fail(400, 'Line the bottle up in the guide.');
+    if (!spinPhotoUser.check(u.id)) fail(429, 'That’s a lot of spin photos for one hour. Try again later.');
+    if (dm) {
+      const key = dm.slice(5);
+      if (!demoSpinPhotos.check(key) || !demoCuts.check(key)) fail(429, 'That’s all the spin photos for this demo. Refresh the page for a fresh demo.');
+      if (!demoCutIp.check(ip)) fail(429, 'Too many photos from here. Try again in an hour.');
+    }
+    const max = dm ? DEMO_SCAN.bytes : 25e6;
+    if (Number(req.headers['content-length'] || 0) > max) fail(413, `That photo is over ${max / 1e6} MB.`);
+    const chunks = []; let size = 0;
+    for await (const ch of req) { size += ch.length; if (size > max) fail(413, `That photo is over ${max / 1e6} MB.`); chunks.push(ch); }
+    try {
+      const r = await spinPhoto(url.searchParams.get('token') || '', url.searchParams.get('i'), Buffer.concat(chunks), box,
+        { owner: u.id, demo: !!dm, maxPixels: dm ? DEMO_SCAN.pixels : undefined, diff: process.env.SCANNER_STUB === '1' });
+      spinPhotoUser.record(u.id);
+      if (dm) { const key = dm.slice(5); demoSpinPhotos.record(key); demoCuts.record(key); demoCutIp.record(ip); }
+      return sendJson(res, 200, { token: r.token, i: r.i, taken: r.taken, thumb: 'data:image/jpeg;base64,' + r.thumb.toString('base64') });
+    }
+    catch (e) { if (!e.status) console.error('spin photo', e); fail(e.status || 500, e.status ? e.message : 'That photo didn’t cut out. Take it again.'); }
+  }
+  if (p === '/api/scan/photos/align' && m === 'POST') {
+    const u = needEditor(c, req);
+    const b = await readJson(req);
+    const token = String(b.token || '');
+    const frames = await spinAlign(token, u.id).catch((e) => fail(e.status || 500, e.status ? e.message : 'The photos didn’t line up. Try again.'));
+    if (!frames) fail(400, `Take all ${SPIN_PHOTOS} photos first.`);
+    const v = crypto.randomBytes(3).toString('hex'); // a new lining-up, a new address (no stale frame from the cache)
+    return sendJson(res, 200, { frames: frames.map((_, i) => `/api/scan/photos/frame?token=${encodeURIComponent(token)}&i=${i}&v=${v}`) });
+  }
+  if (p === '/api/scan/photos/frame' && m === 'GET') {
+    const u = needEditor(c, req);
+    const jpg = spinAligned(url.searchParams.get('token') || '', Number(url.searchParams.get('i')), u.id);
+    if (!jpg) fail(404, 'That photo has expired.');
+    res.writeHead(200, { 'Content-Type': 'image/jpeg', 'Content-Length': jpg.length, 'Cache-Control': 'private, max-age=1800' });
+    return res.end(jpg);
+  }
+  if (p === '/api/scan/photos/drop' && m === 'POST') {
+    const u = needEditor(c, req);
+    const b = await readJson(req);
+    dropSpinSet(String(b.token || ''), u.id);
+    return sendJson(res, 200, { ok: true });
+  }
+  if (p === '/api/scan/photos/keep' && m === 'POST') {
+    const u = needEditor(c, req);
+    const dm = demoMediaOf(db, u.company_id);
+    const b = await readJson(req);
+    const token = String(b.token || '');
+    const frames = await spinAlign(token, u.id).catch((e) => fail(e.status || 500, e.status ? e.message : 'The photos didn’t line up. Try again.'));
+    if (!frames) fail(400, `Take all ${SPIN_PHOTOS} photos first.`);
+    if (!dm) needRoom(c.company, frames.reduce((n, f) => n + f.length, 0));
+    if (dm && demoSaves(c.company) >= DEMO_SCAN.saves) fail(429, demoFull);
+    const name = str(b.name, 80) || 'Bottle';
+    const stem = `${Date.now().toString(36)}-spin-${slugify(name).slice(0, 40) || 'bottle'}`;
+    const urls = frames.map((jpg, i) => '/media/' + saveScan(dm, `${stem}-${String(i).padStart(2, '0')}.jpg`, jpg));
+    db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)')
+      .run('file', `Bottle spin · ${name}`, urls[0].slice(7), 'image/jpeg', frames[0].length, u.id, now(), c.company, c.store);
+    audit(db, u.id, 'photo spin bottle', name, c.company);
+    dropSpinSet(token, u.id);
     return sendJson(res, 200, { frames: urls });
   }
   if (p === '/api/scan/keep' && m === 'POST') {

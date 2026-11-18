@@ -209,7 +209,8 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
     else if (panel) { bottle.x = 0; bottle.y = 0; bottle.w = panel.w; bottle.h = panel.h; }
     bottle.n = 'IMG/Bottle · ' + d.name;
     // A spin from the spin scanner: the same place, but staff can drag it round (Oct 31).
-    if (d.spin?.length > 1) { bottle.f = [{ img: d.spin[0], m: 'FIT' }]; bottle.meta = { ...(bottle.meta || {}), spin: d.spin }; if (!d.bottle_img && panel) { bottle.w = 220; bottle.x = Math.round((panel.w - 220) / 2); } }
+    // Nov 18: the spin fills the bottle panel, so its 360° chip and "Drag to spin" sit in the panel's corners (Figma 762:1191).
+    if (d.spin?.length > 1) { bottle.f = [{ img: d.spin[0], m: 'FIT' }]; bottle.meta = { ...(bottle.meta || {}), spin: d.spin, spinPanel: 1 }; if (panel) { bottle.x = 0; bottle.y = 0; bottle.w = panel.w; bottle.h = panel.h; } }
   }
   if (panel) panel.c = panel.c.filter((c) => c.n !== 'Shape · Wine bottle' && c.n !== 'Source');
   const tags = find(main, byName('Tags'));
