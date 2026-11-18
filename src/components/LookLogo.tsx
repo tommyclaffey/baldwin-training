@@ -7,8 +7,10 @@
 // The outer span takes the place's own class (size, padding, background); the inner box does the cropping.
 import { theme, type Theme } from '../lib/theme';
 
-export function LookLogo({ t = theme(), className, height, alt }: { t?: Theme; className?: string; height?: number; alt?: string }) {
-  const m = t.mark;
+// Nov 18 (Mise rebrand): `big` = a big moment (the certificate band), where a look with a `hero` logo shows it (Mise: the
+// Mise Academy lockup); everywhere else, and every look without one, it's the look's mark.
+export function LookLogo({ t = theme(), className, height, alt, big }: { t?: Theme; className?: string; height?: number; alt?: string; big?: boolean }) {
+  const m = (big && t.hero) || t.mark;
   if (!m.crop) return <img src={m.src} alt={alt ?? m.alt} className={className} height={height} />;
   const [x, y, w, h, W] = m.crop;
   return (

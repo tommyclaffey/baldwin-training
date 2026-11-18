@@ -93,13 +93,16 @@ export type Theme = {
    *  lines: kept (script) or dropped, with an editable one shown as a label so Edit Mode still offers it (tape). */
   accentLine: 'script' | 'tape';
   /** The sidebar and phone-bar logo (null = the logo drawn in the sidebar). */
-  logo: { src: string; alt: string; w: number; h: number; phoneH: number } | null;
+  logo: { src: string; alt: string; w: number; h: number; phoneH: number; crop?: Crop } | null;
   /** The file in the drawn sidebar's logo slot when `logo` is null (Nov 16): a custom look's own logo. The file is the
    *  account's, on the volume (server/account.mjs), so the build's sidebar carries the slot with no image in it. */
   drawnLogo?: { src: string; alt: string; w?: number; h?: number; crop?: Crop };
   /** The look's logo everywhere else it shows (Nov 17): the phone bar, the admin, the sign-in screens, Privacy/Terms/Help
    *  and the certificate band. `barH`: its height on the phone bar. `crop`: the artwork inside the file (see Crop). */
   mark: { src: string; alt: string; barH: number; crop?: Crop };
+  /** Nov 18 (Mise rebrand): the logo for big moments only, the sign-in screens, the demo picker and the certificate band
+   *  (Mise: the Mise Academy lockup, "academy" on blue tape). Unset: `mark` everywhere (every custom look). */
+  hero?: { src: string; alt: string; crop: Crop };
   /** The tab and home-screen icon (Nov 17): /icons/<icon>-<size>.png. Unset: The Baldwin's way (its store's own icon, or
    *  the store's initial). */
   icon?: string;
@@ -123,6 +126,13 @@ export type Crop = [number, number, number, number, number, number];
 /* ── 2. The brands ─────────────────────────────────────────────────────────────────────────────────────────────────── */
 
 const ARCHIVO = 'Archivo';
+/** Mise's title face (Nov 18): DM Serif Display, Regular and Italic (Google Fonts, index.html). Was Instrument Serif. */
+const SERIF = 'DM Serif Display';
+/** The plain mise lockup for dark backgrounds (Figma Lockup/Mise, Theme=Dark) and its artwork box: the file keeps the
+ *  component's clear space above and below (255 × 148), the art is 240.7 × 65.3 inside it. */
+export const MISE_ON_DARK = '/img/mise-brand/mise-dark.svg';
+export const MISE_ON_LIGHT = '/img/mise-brand/mise-light.svg';
+export const MISE_CROP: Crop = [0, 41.3, 240.7, 65.4, 255, 148];
 /** Testa Barra's and J.Baldwin's accent-line face, a stand-in for TAN Grandeur (see FONTS). One place to swap it. */
 const ACCENT_FACE = 'Gilda Display';
 export const THEMES: Record<Brand, Theme> = {
@@ -168,7 +178,12 @@ export const THEMES: Record<Brand, Theme> = {
     quietVideoCaptions: false,
   },
   /* Mise: light first (Bone page, Paper cards, Char panels), one red (deep fig) used sparingly, olive for "new",
-   * Instrument Serif only from 40 px up, Archivo SemiBold headings, DM Mono labels, one taped note per screen. */
+   * DM Serif Display only from 40 px up (Nov 18 rebrand, Tommy: "Sold. This is our branding."): page titles and heroes in
+   * its italic (Figma Mise/Page title, 64, 100%, −0.5%), card titles upright; Archivo SemiBold headings, DM Mono labels,
+   * one taped note per screen. Logo: plain "mise" (Tommy's garlic + fig, Sauce TM outlined) in the nav and anywhere small;
+   * the Mise Academy lockup ("academy" on blue tape) for big moments only. Figma YEaa2NZIPbFqldCyUxrIEi, 02 · Design system:
+   * Lockup/Mise 508:31, Lockup/Mise Academy 508:52; the files are its exports, as they are (public/img/mise-brand/,
+   * "-dark" = Theme=Dark, cream for dark backgrounds). The crops show the artwork inside each file at uniform scale. */
   mise: {
     brand: 'mise',
     colors: {
@@ -190,8 +205,8 @@ export const THEMES: Record<Brand, Theme> = {
       placeholder: '#E7DECF', // (as drawn, as before)
     },
     type: {
-      pageTitle: { ff: 'Instrument Serif', fs: 'Regular', z: 64, lh: '100%', ls: '-0.5%', case: 'title' },
-      cardTitle: { ff: 'Instrument Serif', fs: 'Regular', z: 40, lh: '100%', ls: '-0.5%', case: 'title' },
+      pageTitle: { ff: SERIF, fs: 'Italic', z: 64, lh: '100%', ls: '-0.5%', case: 'title' },
+      cardTitle: { ff: SERIF, fs: 'Regular', z: 40, lh: '100%', ls: '-0.5%', case: 'title' },
       sectionHeading: { ff: ARCHIVO, fs: 'SemiBold', z: 26, lh: '125%', ls: '-1%', case: 'title' },
       cardHeading: { ff: ARCHIVO, fs: 'SemiBold', z: 20, lh: '125%', ls: '-1%', case: 'title' },
       smallHeading: { ff: ARCHIVO, fs: 'Bold', case: 'title' },
@@ -200,8 +215,9 @@ export const THEMES: Record<Brand, Theme> = {
       accent: { ff: 'Reenie Beanie', fs: 'Regular', z: 26, lh: '100%', case: 'as-is' },
     },
     accentLine: 'tape',
-    logo: { src: '/img/mise-academy-lockup-cream.png', alt: 'Mise Academy', w: 150, h: 72, phoneH: 34 },
-    mark: { src: '/img/mise-academy-lockup-cream.png', alt: 'Mise Academy', barH: 34 },
+    logo: { src: MISE_ON_DARK, alt: 'Mise', w: 136, h: 37, phoneH: 28, crop: MISE_CROP },
+    mark: { src: MISE_ON_DARK, alt: 'Mise', barH: 28, crop: MISE_CROP },
+    hero: { src: '/img/mise-brand/mise-academy-dark.svg', alt: 'Mise Academy', crop: [0, 25, 263.3, 81, 289, 150] },
     icon: 'mise',
     demoPill: { tint: '#8E2A26', tintO: .42, ink: '#F6D3CE', muted: '#9A928A' },
     coded: 'mise',
@@ -308,7 +324,7 @@ const cssName = (r: string) => '--c-' + r.replace(/[A-Z]/g, (m) => '-' + m.toLow
  *  Grandeur both sites use (Tommy: Bigelow Rules was "too cartoony"). Swapping in the real face is one place: point
  *  ACCENT_FACE at a new entry here (its stack, and a Google Fonts family or a self-hosted @font-face in styles.css). */
 export const FONTS: Record<string, { css: string; google?: string }> = {
-  Archivo: { css: "'Archivo', system-ui, sans-serif" }, 'Instrument Serif': { css: "'Instrument Serif', Georgia, serif" },
+  Archivo: { css: "'Archivo', system-ui, sans-serif" }, 'DM Serif Display': { css: "'DM Serif Display', Georgia, serif" },
   'DM Mono': { css: "'DM Mono', ui-monospace, monospace" }, 'Pinyon Script': { css: "'Pinyon Script', cursive" }, 'Reenie Beanie': { css: "'Reenie Beanie', cursive" },
   'Bebas Neue': { css: "'Bebas Neue', 'Archivo Narrow', sans-serif", google: 'Bebas+Neue' },
   Cinzel: { css: "'Cinzel', Georgia, serif", google: 'Cinzel:wght@400;600;700' },
@@ -518,7 +534,13 @@ function themeText(th: Theme, t: FNode, bg: string | undefined, drawnBg: string 
     if (spec.ls) t.ls = spec.ls;
     return;
   }
-  if (role === 'pageTitle') { Object.assign(t, { ff: spec.ff, fs: spec.fs, z: spec.z, lh: spec.lh, ls: spec.ls }); delete t.lw; }
+  if (role === 'pageTitle') {
+    // Nov 18: DM Serif Display is wider than Instrument Serif was, so a title whose longest word is known (the hero titles,
+    // wine and bottle names) comes down from the role's size just enough for that word to fit its box (about 0.5 em a
+    // letter in the italic; measured 0.47 on average, 0.54 at most). Never shortened, never cut.
+    const fit = t.lw && t.w ? Math.floor(t.w / (t.lw * 0.5)) : Infinity;
+    Object.assign(t, { ff: spec.ff, fs: spec.fs, z: Math.min(spec.z, Math.max(34, fit)), lh: spec.lh, ls: spec.ls }); delete t.lw;
+  }
   else if (role === 'cardTitle') {
     // a big title in a card: wrapping inside the card (never one long line that the card cuts off)
     Object.assign(t, { ff: spec.ff, fs: spec.fs, z: spec.z, lh: spec.lh, ls: spec.ls, tb: 1 });
@@ -607,13 +629,15 @@ function onDark(n: FNode) {
   if (solid(n)) return; // a filled pill or button keeps its own ink
   (n.c || []).forEach(onDark);
 }
-/** The one accent line above the title: The Baldwin's script line (copper on the dark panel), or Mise's taped note. */
+/** The one accent line above the title: The Baldwin's script line (copper on the dark panel), or Mise's taped note.
+ *  Nov 18 (brand guide 05 Type: "One short line, lowercase"; Figma Handwritten note, Style=Taped, 509:87): the note is
+ *  lowercase, on the torn tape (public/img/mise-tape.svg, the component's own vector), tilted −1.5° as drawn. */
 function accentLine(th: Theme, tag: FNode): FNode {
   if (th.accentLine === 'script') { tag.f = [{ c: drawn('accentOnDark') }]; return tag; }
-  const text = (tag.s || '').toLowerCase().replace(/^./, (c) => c.toUpperCase());
+  const text = (tag.s || '').toLowerCase();
   const a = th.type.accent;
   const note: FNode = {
-    t: 'F', n: 'Taped note', lm: 'H', sh: 'H', sv: 'H', pa: 'C', ca: 'C', pd: [9, 18, 7, 18], rot: 1.5,
+    t: 'F', n: 'Taped note', lm: 'H', sh: 'H', sv: 'H', pa: 'C', ca: 'C', pd: [9, 18, 7, 18], rot: -1.5,
     f: [{ img: '/img/mise-tape.svg', m: 'FILL' }], // torn painter's tape, stretched to the note
     c: [{ t: 'T', n: 'Note', s: text, ff: a.ff, fs: a.fs, z: a.z, lh: a.lh, f: [{ c: color(th, 'onTape') }], ar: 'W', sh: 'H', sv: 'H', w: 200, h: 26 } as FNode],
   } as FNode;
@@ -697,6 +721,9 @@ function lessonHero(th: Theme, main: FNode) {
   const inner = (media ? COPY_W : HERO_W) - COPY_PD[1] - COPY_PD[3];
   const copy: FNode = { t: 'F', n: 'Copy', w: COPY_W, h: 360, c: [] } as FNode;
   if (kicker) { kicker.f = [{ c: drawn('accentOnDark') }]; kicker.ar = 'H'; kicker.sh = 'F'; kicker.w = inner; copy.c!.push(kicker); }
+  // Nov 18 (Mise title moment: one label, one tape note, the italic title, one Archivo line): a look whose accent line is
+  // tape gets one note on the lesson opener too. A script look's lesson opener has no accent line, as before.
+  if (th.accentLine === 'tape') copy.c!.push(accentLine(th, { t: 'T', n: 'Note', s: LESSON_NOTE, w: 200, h: 26 } as FNode));
   if (title) { heroTitle(title, inner); copy.c!.push(title); }
   if (credit) { credit.f = [{ c: drawn('onInverseMuted') }]; credit.ar = 'H'; credit.sh = 'F'; credit.w = inner; copy.c!.push(credit); }
   if (media?.n === 'IMG/Section photo') heroPhoto(media);
@@ -705,8 +732,9 @@ function lessonHero(th: Theme, main: FNode) {
   // the slot's drawn play button and length go (the live player draws its own), so phones lay it out as a plain box
   if (media) { media.w = PHOTO_W; media.h = 360; delete media.c; }
   main.c!.splice(main.c!.indexOf(player), 0, hero);
-  void th;
 }
+/** The lesson opener's taped note (Mise): the page's own rule, watch the video, then read below it. */
+const LESSON_NOTE = 'watch, then read';
 
 /** Which pages get the cinematic hero. */
 function cinematic(th: Theme, page: { name?: string }, main: FNode) {
@@ -785,7 +813,8 @@ export function themeSidebar(node: FNode, th: Theme = theme()): FNode {
   const n = structuredClone(node);
   const logo = th.logo;
   const swapLogo = (x: FNode): FNode => {
-    if (logo && x.n === 'Logo') return { ...x, pd: [0, 0, 0, 0], c: [{ t: 'R', n: 'IMG/' + logo.alt + ' lockup', alt: logo.alt, w: logo.w, h: logo.h, sh: 'F', sv: 'F', f: [{ img: logo.src, m: 'FIT' }] } as FNode] };
+    // (the slot takes the logo's own size, so a cropped file keeps its artwork's proportions)
+    if (logo && x.n === 'Logo') return { ...x, pd: [0, 0, 0, 0], ...(logo.crop ? { w: logo.w, h: logo.h } : {}), c: [{ t: 'R', n: 'IMG/' + logo.alt + ' lockup', alt: logo.alt, w: logo.w, h: logo.h, sh: 'F', sv: 'F', f: [logo.crop ? { img: logo.src, m: 'FIT', ...cropFill(logo.crop) } : { img: logo.src, m: 'FIT' }] } as FNode] };
     // the drawn slot holds the look's own logo, read out by its name (photos without an `alt` are skipped, FigmaNode)
     if (x.n === 'Logo') return { ...x, c: x.c?.map((c) => (c.t === 'R' && th.drawnLogo ? drawnLogoNode(c, th.drawnLogo) : c)) };
     return x.c ? { ...x, c: x.c.map(swapLogo) } : x;

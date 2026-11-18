@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { api } from '../lib/api';
-import { asBrand, currentBrand, THEMES } from '../lib/theme';
+import { asBrand, currentBrand, theme, THEMES } from '../lib/theme';
 import { LookLogo } from '../components/LookLogo';
 import { useSession } from '../lib/session';
 
@@ -26,7 +26,9 @@ export function Certificate({ c }: { c: Cert }) {
   return (
     <div className="cert" role="img" aria-label={`Certificate: ${c.name}, ${c.title}, ${c.programName} Level ${c.level}, ${day(c.earnedAt, 'long')}`}>
       <div className="cert-in">
-        <div className="cert-band">{c.look ? <LookLogo t={THEMES[asBrand(c.look)]} alt={store} /> : c.logo ? <img src={c.logo} alt={store} /> : <span>{store}</span>}</div>
+        {/* Nov 18 (Mise rebrand): in a look with a big-moment logo (Mise), the band carries the Mise Academy lockup; the
+            restaurant's name stays in the line under the name and in Issued By. Custom looks: their own logo, as before. */}
+        <div className="cert-band">{c.look ? <LookLogo t={THEMES[asBrand(c.look)]} alt={store} big /> : theme().hero ? <LookLogo big /> : c.logo ? <img src={c.logo} alt={store} /> : <span>{store}</span>}</div>
         <p className="cert-script">Certificate of Completion</p>
         <p className="cert-label">This certifies that</p>
         <p className="cert-name">{c.name}</p>

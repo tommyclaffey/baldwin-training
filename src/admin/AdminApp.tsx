@@ -13,6 +13,7 @@ import { CompanyData } from './companydata';
 import { StoresPage } from './stores';
 import { LegalLinks } from '../components/Legal';
 import { LookLogo } from '../components/LookLogo';
+import { THEMES } from '../lib/theme';
 import { ManagerHome, PeoplePage, SignoffsPage, useSignoffCount } from './manager';
 import { api } from '../lib/api';
 import { DemoBar, DemoTour, openWelcome } from '../components/DemoTour';
@@ -80,7 +81,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
       {hqMode && <HqPhoneBar user={user} counts={counts} />}
       {hqMode ? (
         <aside className="admin-side hq-side-bar">
-          <div className="admin-brand"><Link to="/admin" className="admin-logo"><img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy, HQ home" /></Link></div>
+          <div className="admin-brand"><Link to="/admin" className="admin-logo"><LookLogo t={THEMES.mise} alt="Mise Academy, HQ home" /></Link></div>
           <HqNav user={user} counts={counts} />
           <HqWorking user={user} />
           <LegalLinks className="admin-legal" />

@@ -48,7 +48,7 @@ export function DemoPicker({ kind }: { kind: DemoKind }) {
     <main className={'demo-pick' + (mise ? ' mise' : '')}>
       <div className="demo-brand">
         {mise
-          ? <img src="/img/mise-academy-lockup-cream.png" alt="Mise Academy" height="64" />
+          ? <LookLogo t={THEMES.mise} height={64} big /> /* Nov 18: the Mise Academy lockup, a big moment */
           : <LookLogo t={THEMES.baldwin} height={40} />}
         {/* The demo tag (Nov 9 rule): the workspace name in muted text, then the DEMO tag. */}
         <span className="demo-line"><span>{mise ? 'Fig & Fire' : 'Mise Academy'}</span><span className="demo-pill">DEMO</span></span>

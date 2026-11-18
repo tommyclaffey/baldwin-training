@@ -57,7 +57,7 @@ test('the cinematic hero is the same layout in every brand; only the paint and a
   const bal = T.themePage(page(cocktail(), 'Classic · Old Fashioned'), T.THEMES.baldwin).main.c[0].c[0].c;
   assert.equal(bal[1].ff, 'Pinyon Script'); assert.equal(bal[2].ff, 'Archivo'); assert.equal(bal[2].s, 'OLD FASHIONED');
   const mise = T.themePage(page(cocktail(), 'Classic · Old Fashioned'), T.THEMES.mise).main.c[0].c[0].c;
-  assert.equal(mise[1].n, 'Taped note'); assert.equal(mise[2].ff, 'Instrument Serif'); assert.equal(mise[2].s, 'Old Fashioned');
+  assert.equal(mise[1].n, 'Taped note'); assert.equal(mise[2].ff, 'DM Serif Display'); assert.equal(mise[2].fs, 'Italic'); assert.equal(mise[2].s, 'Old Fashioned');
 });
 
 test('titleCase keeps short names in capitals: "ID", "USA", "ABV" (Nov 14: "Check ID" read "Check Id")', () => {

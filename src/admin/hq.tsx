@@ -10,6 +10,8 @@ import { api, TEAM_ROLE_LABEL, type MailStatus, type TeamRole, type User } from 
 import { useSession } from '../lib/session';
 import { ErrorNote, InviteSentCard, Loading } from './ui';
 import { LegalLinks } from '../components/Legal';
+import { LookLogo } from '../components/LookLogo';
+import { MISE_CROP, MISE_ON_LIGHT, THEMES } from '../lib/theme';
 
 /* ------------------------------------------------ types ------------------------------------------------ */
 type Can = Record<'view' | 'work' | 'signInAs' | 'log' | 'planLook' | 'resetPassword' | 'resetPin' | 'inviteOwner' | 'addCompany' | 'editCompany' | 'editPerson' | 'removePerson' | 'library' | 'change' | 'deleteCompany' | 'deletions' | 'team', boolean>;
@@ -173,16 +175,12 @@ export function HqPhoneBar({ user, counts }: { user: User; counts: Counts | null
     </div>
   );
 }
-/** The Mise Academy lockup in Char, for light backgrounds (Figma Lockup/Mise Academy, Theme=Light: the mark, the garlic and
- *  fig, the MISE wordmark, ACADEMY in DM Mono). Scale only. */
+/** The mise logo in Char, for the light phone bar (Nov 18 rebrand: Figma Lockup/Mise, Theme=Light, 508:26; plain mise in the
+ *  nav and anything small, the Mise Academy lockup only for big moments). The export as it is, its artwork shown at uniform
+ *  scale. */
+const ON_LIGHT = { ...THEMES.mise, mark: { src: MISE_ON_LIGHT, alt: '', barH: 28, crop: MISE_CROP } };
 function Lockup() {
-  return (
-    <span className="hq-lockup-art" aria-hidden="true">
-      <span className="hq-lockup-mark"><img src="/img/mise-lockup-char/mark-academy.svg" alt="" /><img className="hq-lockup-garlic" src="/img/mise-lockup-char/garlic-fig-black.png" alt="" /></span>
-      <img className="hq-lockup-word" src="/img/mise-lockup-char/wordmark.svg" alt="" />
-      <span className="hq-lockup-academy">ACADEMY</span>
-    </span>
-  );
+  return <span className="hq-lockup-art" aria-hidden="true"><LookLogo t={ON_LIGHT} height={28} alt="" /></span>;
 }
 
 /* ------------------------------------------------ the home ------------------------------------------------ */

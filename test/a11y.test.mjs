@@ -110,7 +110,7 @@ for (const [demo, brand] of [['baldwin', 'baldwin'], ['mise', 'mise']]) {
 
 test('the sidebar logo is read by its name in both brands', async () => {
   const sidebar = JSON.parse(fs.readFileSync(path.join(root, 'src/content/sidebar.json'), 'utf8')).find((n) => n.n === 'Sidebar');
-  for (const [b, name] of [['baldwin', 'The Baldwin'], ['mise', 'Mise Academy']]) {
+  for (const [b, name] of [['baldwin', 'The Baldwin'], ['mise', 'Mise']]) { // Nov 18: the nav logo is plain mise (Academy is a feature inside it)
     const logo = all(T.themeSidebar(sidebar, T.THEMES[b]), (n) => n.n === 'Logo')[0];
     assert.deepEqual(all(logo, isPhoto).map((p) => p.alt), [name], b);
   }

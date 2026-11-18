@@ -13,17 +13,18 @@ import { THEMES, brandTitle, color, setPageBrand, themeVars, type Brand, type Th
 import { LegalLinks } from './Legal';
 import { LookLogo } from './LookLogo';
 
-const WEIGHT: Record<string, number> = { Regular: 400, Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800 };
+const WEIGHT: Record<string, number> = { Regular: 400, Italic: 400, Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800 };
 const weight = (s: TypeSpec, fallback: number) => (s.fs && WEIGHT[s.fs]) || fallback;
 const tracking = (s: TypeSpec) => (s.ls ? `${parseFloat(s.ls) / 100}em` : '0');
 
 /** The brand's roles as CSS variables on this screen only, so the card never mixes two brands' paint. */
 function paint(t: Theme): CSSProperties {
   const title = t.type.pageTitle;
-  const size = title.z ?? 40; // Mise: 64 (Instrument Serif, only from 40 px up). The Baldwin: Archivo ExtraBold capitals.
+  const size = title.z ?? 40; // Mise: 64 (DM Serif Display Italic, only from 40 px up). The Baldwin: Archivo ExtraBold capitals.
   return {
     ...themeVars(t),
     '--si-title-weight': weight(title, 800),
+    '--si-title-style': (title.fs || '').includes('Italic') ? 'italic' : 'normal',
     '--si-title-tracking': tracking(title),
     '--si-title-size': `${size}px`,
     '--si-title-size-phone': `${Math.round(size * 0.69)}px`, // Mise: 44 (Figma "Mise/H2" on the phone sheet)
@@ -38,8 +39,10 @@ export function AuthCard({ title, sub, kicker, foot, brand = 'mise', children }:
   const t = THEMES[brand];
   // The rest of the page (tab icon, <html> colours) follows this screen while it's showing.
   useLayoutEffect(() => { setPageBrand(brand); return () => setPageBrand(null); }, [brand]);
-  const logo = t.logo
-    ? <img className="si-logo si-logo-lockup" src={t.logo.src} alt={t.logo.alt} />
+  // Nov 18 (Mise rebrand): a look with a big-moment logo shows that file as it is, at its own size (Mise: the Mise Academy
+  // lockup, placed as in Figma section 28 option B, 592:670: the export's top left at 47, 32). Every other look: its mark.
+  const logo = t.hero
+    ? <img className="si-logo si-logo-lockup" src={t.hero.src} alt={t.hero.alt} />
     : <LookLogo t={t} className="si-logo si-logo-mark" />;
   return (
     <div className={`si si-${brand}`} style={paint(t)}>
@@ -48,12 +51,17 @@ export function AuthCard({ title, sub, kicker, foot, brand = 'mise', children }:
           sizes="(min-width: 900px) 95vw, 100vw" alt="" />
         <div className="si-shade" />
         {logo}
-        <div className="si-words">
-          {t.accentLine === 'tape'
-            ? <p className="si-tape"><span>pre-shift starts here</span></p>
-            : <p className="si-script">pre-shift starts here</p>}
-          <p className="si-headline">{brandTitle('Know the menu cold.', t)}</p>
-        </div>
+        {t.accentLine === 'tape'
+          // The title moment (Nov 18, option B): one left edge, from the top the tape note, the handwritten line and the
+          // big italic punch word; one sentence for a screen reader.
+          ? <div className="si-words si-words-tape">
+              <p className="si-tape"><span>pre-shift starts here</span></p>
+              <p className="si-headline si-headline-tape"><span className="sr-only">Know the menu cold.</span><span className="si-hand" aria-hidden="true">know the menu</span><span className="si-punch" aria-hidden="true">cold.</span></p>
+            </div>
+          : <div className="si-words">
+              <p className="si-script">pre-shift starts here</p>
+              <p className="si-headline">{brandTitle('Know the menu cold.', t)}</p>
+            </div>}
       </div>
       <main className="si-side">
         <div className="si-card">
