@@ -165,3 +165,28 @@ export async function writeFilesBackup(out, { since = null, key = process.env.BA
   await write(Buffer.concat([c.getAuthTag(), Buffer.from(FILES_END)]));
   return { files: picked.length, of: all.length, bytes };
 }
+
+/* ------------------------------------------------ who may open a file ------------------------------------------------ */
+// Nov 19 (audit Nov 15, item 37; launch Gate A): any signed-in person could open another company's upload by its address,
+// and a public demo visitor counts as signed in. Now a file in /media/ opens for:
+//   • a super admin (support), or the company that uploaded it (media rows, their captions and spin frames, chat photos)
+//   • anyone signed in, when the file is in the shared library (a shared collection's entry names it, e.g. a classic's video)
+//   • anyone signed in, when no company owns it (menu-import scans and older files), as before
+// sharedCollections: cms.mjs's SHARED (passed in, so this file doesn't import the CMS).
+export function mediaVisible(db, u, company, file, sharedCollections = []) {
+  if (!u) return false;
+  if (u.role === 'superadmin') return true;
+  const names = [file];
+  const spin = /^(.*-spin-.*-)\d\d\.jpg$/.exec(file); // a spin's frames belong to the row that holds its first frame
+  if (spin) names.push(`${spin[1]}00.jpg`);
+  const owners = new Set();
+  for (const n of names) {
+    for (const r of db.prepare("SELECT company_id FROM media WHERE file = ?1 OR file LIKE '%/' || ?1 OR captions = ?1 OR captions LIKE '%/' || ?1").all(n)) owners.add(r.company_id);
+    for (const r of db.prepare('SELECT company_id FROM chat_messages WHERE photo = ?').all('/media/' + n)) owners.add(r.company_id);
+  }
+  if (!owners.size || owners.has(company)) return true;
+  const shared = [...sharedCollections];
+  if (!shared.length) return false;
+  return !!db.prepare(`SELECT 1 FROM entries WHERE collection IN (${shared.map(() => '?').join(',')}) AND instr(data, ?) > 0 LIMIT 1`)
+    .get(...shared, '/media/' + file);
+}

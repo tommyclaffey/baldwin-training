@@ -140,6 +140,27 @@ test('uploaded files need a sign-in', async () => {
   assert.match(mine.headers.get('cache-control'), /private/);
 });
 
+test('another company’s upload doesn’t open for a demo visitor, unless it’s in the shared library (Nov 19)', async () => {
+  const up = await owner('/api/media/upload', { method: 'POST', body: new Uint8Array([0, 0, 0, 24, 102, 116, 121, 112]), headers: { 'Content-Type': 'video/mp4', 'X-Filename': 'private-clip.mp4' } });
+  assert.equal(up.status, 200);
+  const demo = person('10.3.0.9');
+  assert.equal((await demo('/api/demo/start', { method: 'POST', body: { role: 'manager' } })).status, 200);
+  assert.equal((await fetch(BASE + up.data.url, { headers: { Cookie: demo.cookie() } })).status, 404, 'a demo can’t open The Baldwin’s upload');
+  assert.equal((await fetch(BASE + up.data.url, { headers: { Cookie: owner.cookie() } })).status, 200, 'the owner still can');
+  // The demo's own upload opens for the demo
+  const mine = await demo('/api/media/upload', { method: 'POST', body: new Uint8Array([0, 0, 0, 24, 102, 116, 121, 112]), headers: { 'Content-Type': 'video/mp4', 'X-Filename': 'demo-clip.mp4' } });
+  if (mine.status === 200) assert.equal((await fetch(BASE + mine.data.url, { headers: { Cookie: demo.cookie() } })).status, 200);
+  // Named by a shared collection's entry (a classic's video): every company sees it
+  const d = db();
+  const row = d.prepare("SELECT id, data FROM entries WHERE collection = 'classic' LIMIT 1").get();
+  if (row) {
+    const data = JSON.parse(row.data); data.leakTestVideo = up.data.url;
+    d.prepare('UPDATE entries SET data = ? WHERE id = ?').run(JSON.stringify(data), row.id);
+    d.close();
+    assert.equal((await fetch(BASE + up.data.url, { headers: { Cookie: demo.cookie() } })).status, 200, 'shared library files open for everyone signed in');
+  } else d.close();
+});
+
 test('a super admin without two-step can’t open any company’s data', async () => {
   const link = (await boss('/api/super/admins/invite', { method: 'POST', body: { email: 'mate@sec.test' } })).data.link;
   const mate = person('10.4.0.4');

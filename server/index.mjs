@@ -31,7 +31,7 @@ import { enterStore, isBrgCompany } from './variant.mjs';
 import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
 import * as prep from './prep.mjs';
 import { initCompanyData, companyDataRoutes, ownedFiles } from './companydata.mjs';
-import { writeFilesBackup, bytesOf, roomLeft, fullMessage, storageCapBytes } from './files.mjs';
+import { writeFilesBackup, bytesOf, roomLeft, fullMessage, storageCapBytes, mediaVisible } from './files.mjs';
 import * as captions from './captions.mjs';
 import { migrateImports, importRoutes } from './menuimport.mjs';
 import { initAccounts, accountIds, publicFile } from './account.mjs';
@@ -1281,7 +1281,9 @@ function staticFile(req, res, url) {
   // the file's name). Now only signed-in people get them, and browsers keep them private (no shared caches).
   if (p.startsWith('/media/')) {
     const f = path.join(MEDIA_DIR, path.basename(p));
-    if (!sessionUser(db, cookies(req)[SESSION_COOKIE]) || !fs.existsSync(f)) { res.writeHead(404); return res.end('Not found'); }
+    const u = sessionUser(db, cookies(req)[SESSION_COOKIE]);
+    // Nov 19: only the company that uploaded it, unless it's in the shared library (server/files.mjs, mediaVisible)
+    if (!u || !fs.existsSync(f) || !mediaVisible(db, u, companyOf(u), path.basename(p), SHARED)) { res.writeHead(404); return res.end('Not found'); }
     return sendFile(req, res, f, 'private, max-age=31536000, immutable');
   }
   // The book's page files are served through the API, to signed-in people only.
