@@ -6,6 +6,7 @@ import crypto from 'node:crypto';
 import { now } from './db.mjs';
 import { slugify } from './templates.mjs';
 import { accountIds, manifest, seedFiles } from './account.mjs';
+import { hqId, hqStoreId } from './hq.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 
@@ -354,7 +355,7 @@ function seedCollection(db, id, file, { company, store, prefix }) {
  * Seeds the book from seed files. A seed entry is added once; later seed changes update it only while nobody has edited it
  * in the admin. Deleted seed entries stay deleted. Gone from its seed file: archived, never deleted.
  *   • The shared library (every company's): content/cms/<collection>.json in this repo, for the shared collections (the
- *     classic cocktails). They live on store 1, where the library has always been kept.
+ *     classic cocktails). They live in Mise Academy (HQ)'s store since Nov 19 (sharedHome), not The Baldwin's.
  *   • An account's own menu (Nov 16): DATA_DIR/accounts/<company>/cms/<collection>.json on the volume (server/account.mjs),
  *     into the store its account.json names (seedStore). Its seed keys get the account's prefix (account.json seedKeyPrefix;
  *     default "a<company>:") so two accounts can't share one. Baldwin Restaurant Group's prefix is "": its seeds came from
@@ -363,9 +364,11 @@ function seedCollection(db, id, file, { company, store, prefix }) {
  */
 export function seed(db) {
   moveDishesToLibrary(db);
+  moveLibraryToHq(db); // Nov 19: the library is Mise's, not The Baldwin's
+  const home = sharedHome();
   for (const id of Object.keys(COLLECTIONS)) {
     if (!SHARED.has(id)) continue; // a store's own menu never comes from the repo (Nov 16)
-    seedCollection(db, id, path.join(ROOT, 'content/cms', id + '.json'), { company: 1, store: 1, prefix: '' });
+    seedCollection(db, id, path.join(ROOT, 'content/cms', id + '.json'), { company: home.company, store: home.store, prefix: '' });
   }
   for (const acct of accountIds()) {
     const m = manifest(acct) || {};
@@ -406,6 +409,41 @@ export function seed(db) {
 
 /** Collections every store shares (the library). Everything else belongs to one store. */
 export const SHARED = new Set(['classic']);
+/* ---- Where the shared library lives (Nov 19, Tommy: "make sure the Baldwin is an account. Not its own standing app") ----
+ * It used to be kept on store 1, The Baldwin's, so The Baldwin couldn't be deleted and the app's library hung off one
+ * customer. Now it lives with Mise Academy (HQ), the app company's own account (server/hq.mjs). moveLibraryToHq moves the
+ * rows over once; a database without HQ (none should exist) keeps store 1. */
+export function sharedHome() {
+  const store = hqStoreId(), company = hqId();
+  return store && company ? { store, company } : { store: 1, company: 1 };
+}
+/** The grape, region, style and country videos are the library's too (every company sees them); only "wine:<name>" rows
+ *  belong to the company whose list holds that wine. They all defaulted to company 1 (wine_videos.company_id DEFAULT 1),
+ *  so wiping The Baldwin would have taken them. */
+export function moveWineVideosToHq(db) {
+  const home = sharedHome();
+  if (home.store === 1) return 0;
+  return Number(db.prepare("UPDATE wine_videos SET company_id = ?, store_id = ? WHERE key NOT LIKE 'wine:%' AND (company_id != ? OR store_id != ?)")
+    .run(home.company, home.store, home.company, home.store).changes);
+}
+export function moveLibraryToHq(db) {
+  const home = sharedHome();
+  if (home.store === 1) return 0;
+  moveWineVideosToHq(db);
+  const cols = [...SHARED];
+  const marks = cols.map(() => '?').join(',');
+  const rows = db.prepare(`SELECT id, slug FROM entries WHERE collection IN (${marks}) AND store_id != ?`).all(...cols, home.store);
+  if (!rows.length) return 0;
+  const clash = db.prepare('SELECT 1 FROM entries WHERE store_id = ? AND slug = ? AND id != ?');
+  for (const r of rows) if (clash.get(home.store, r.slug, r.id)) { console.error(`shared library not moved: ${r.slug} is already used in HQ's store`); return 0; }
+  db.exec('BEGIN');
+  try {
+    const n = Number(db.prepare(`UPDATE entries SET store_id = ?, company_id = ? WHERE collection IN (${marks}) AND store_id != ?`).run(home.store, home.company, ...cols, home.store).changes);
+    db.exec('COMMIT');
+    console.log(`Shared library: ${n} entries moved to Mise Academy (HQ)`);
+    return n;
+  } catch (e) { db.exec('ROLLBACK'); throw e; }
+}
 
 /* ---- The group's kitchen (Oct 31, Tommy: "a database of dishes shared across the board at all the stores") ----
  * A dish lives once in the group library (store_id 0, the company's) and each store puts it on its menu with an entry that
@@ -494,18 +532,18 @@ function moveDishesToLibrary(db) {
   }
 }
 
-/** Addresses are unique within a store (shared collections live on store 1). */
+/** Addresses are unique within a store (shared collections live in HQ's store, sharedHome). */
 export function uniqueSlug(db, collection, name, exceptId, store = 1) {
   const base = COLLECTIONS[collection].prefix + slugify(name);
-  const st = SHARED.has(collection) ? 1 : store;
+  const st = SHARED.has(collection) ? sharedHome().store : store;
   let slug = base, n = 2;
   while (db.prepare('SELECT 1 FROM entries WHERE slug = ? AND store_id = ? AND id != ?').get(slug, st, exceptId ?? -1)) slug = `${base}-${n++}`;
   return slug;
 }
 
 export function createEntry(db, collection, data, userId, store = 1, company = 1, opts = {}) {
-  const st = SHARED.has(collection) ? 1 : store;
-  const insert = (slugName, d, at = st, co = SHARED.has(collection) ? 1 : company) => {
+  const st = SHARED.has(collection) ? sharedHome().store : store;
+  const insert = (slugName, d, at = st, co = SHARED.has(collection) ? sharedHome().company : company) => {
     const slug = uniqueSlug(db, collection, slugName, null, at);
     const max = db.prepare('SELECT MAX(sort) m FROM entries WHERE collection = ? AND store_id = ?').get(collection, at).m ?? 0;
     const r = db.prepare('INSERT INTO entries(collection,slug,data,sort,created_by,created_at,updated_by,updated_at,store_id,company_id) VALUES (?,?,?,?,?,?,?,?,?,?)')

@@ -173,7 +173,7 @@ test('delete: the owner asks (typing the name), the super admin confirms after 7
     // everyone else is untouched
     assert.equal(db.prepare("SELECT COUNT(*) n FROM users WHERE name LIKE 'Copper Pot%'").get().n, 3);
     assert.ok(db.prepare("SELECT COUNT(*) n FROM quiz_attempts WHERE name = 'Bea Baldwin'").get().n > 0);
-    assert.ok(db.prepare('SELECT COUNT(*) n FROM entries WHERE store_id = 1').get().n > 100, 'The Baldwin’s book');
+    assert.ok(db.prepare("SELECT COUNT(*) n FROM entries WHERE collection = 'classic'").get().n > 50, 'the shared library (HQ’s since Nov 19)');
   } finally { db.close(); }
   assert.ok(fs.existsSync(path.join(dir, 'media', copper.file)));
   assert.equal((await copper.staff('/api/me')).data.user.name, 'Copper Pot Server');
@@ -197,12 +197,13 @@ test('delete: after the 7 days, typing the name is enough; the super admin can a
   assert.equal((await copper.owner('/api/me')).data.user, null);
 });
 
-test('The Baldwin can’t be deleted from here, even with every confirmation', async () => {
+test('The Baldwin is a customer like any other (Nov 19): its deletion waits the 7 days, it isn’t blocked as the library', async () => {
   assert.equal((await baldwin('/api/company/delete-request', { method: 'POST', body: { confirm: 'Baldwin Restaurant Group' } })).status, 200);
   const req = (await boss('/api/super/deletions')).data.requests.find((x) => x.companyId === 1 && x.status === 'pending');
-  const r = await boss(`/api/super/deletions/${req.id}/confirm`, { method: 'POST', body: { confirm: 'Baldwin Restaurant Group', now: true, confirmNow: 'delete now' } });
-  assert.equal(r.status, 400);
-  assert.match(r.data.error, /shared library/);
+  assert.ok(!req.byHand, 'no longer "deleted by hand"');
+  const r = await boss(`/api/super/deletions/${req.id}/confirm`, { method: 'POST', body: { confirm: 'Baldwin Restaurant Group' } });
+  assert.notEqual(r.status, 200, 'not before the 7 days');
+  assert.doesNotMatch(r.data.error || '', /shared library/);
   assert.equal((await bea('/api/me')).data.user.name, 'Bea Baldwin');
   assert.equal((await baldwin('/api/company/delete-request', { method: 'DELETE' })).status, 200);
 });

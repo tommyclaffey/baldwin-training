@@ -21,10 +21,12 @@ import { zip } from './zip.mjs';
 import { titleFor } from './quiz.mjs';
 import { certificatesFor } from './certs.mjs';
 import { LoginLimiter } from './auth.mjs';
-import { isHq } from './hq.mjs';
+import { isHq, hqId } from './hq.mjs';
 
 export const WAIT_DAYS = 7;
-export const PROTECTED = new Set([1]); // The Baldwin: holds the shared library
+// Nov 19: the shared library moved from The Baldwin to Mise Academy (HQ) (server/cms.mjs, sharedHome), so The Baldwin is a
+// customer account like any other and HQ is the one company that can't be wiped. Set-like: has() and spreads to [hqId].
+export const PROTECTED = { has: (id) => isHq(id), *[Symbol.iterator]() { if (hqId() != null) yield hqId(); } };
 const DAY = 864e5;
 const exportLimiter = new LoginLimiter(20, 3600e3, 'export'); // 20 downloads an hour per company
 
@@ -196,7 +198,7 @@ export function countsFor(db, companyId) {
 /* ------------------------------------------------ delete ------------------------------------------------ */
 /** Remove every row and file that belongs to the company. Returns counts per table. Never The Baldwin. */
 export function wipeCompany(db, companyId) {
-  if (PROTECTED.has(Number(companyId))) throw new Error('The Baldwin holds the shared library and can’t be wiped here.');
+  if (PROTECTED.has(Number(companyId))) throw new Error('Mise Academy (HQ) holds the shared library and can’t be wiped.');
   if (isHq(companyId)) throw new Error('Mise Academy (HQ) is Mise’s own company and can’t be wiped.');
   const users = idsOf(db, 'SELECT id FROM users WHERE company_id = ?', companyId);
   const stores = idsOf(db, 'SELECT id FROM stores WHERE company_id = ?', companyId);

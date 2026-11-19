@@ -4,6 +4,7 @@ import { clone, find, byName, findAll, texts, setText, remove } from './template
 import fs from 'node:fs';
 import path from 'node:path';
 import { now } from './db.mjs';
+import { sharedHome } from './cms.mjs';
 
 const LINKS_FILE = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'content', 'wine-folly-links.json');
 const SEED_FILE = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'content', 'wine-videos.json');
@@ -33,6 +34,9 @@ const COPY = {
 };
 
 /* ---- storage ---- */
+// Nov 19: grape, region, style and country videos belong to the shared library (Mise Academy HQ); a "wine:<name>" row
+// belongs to the company and store that set it (older rows: company 1, the only list that took videos before).
+const homeOf = (key, owner) => (String(key).startsWith('wine:') ? owner || { company: 1, store: 1 } : sharedHome());
 export function wineVideos(db) {
   const out = new Map();
   for (const r of db.prepare('SELECT * FROM wine_videos').all()) out.set(r.key, { video: JSON.parse(r.video), note: r.note || '', updatedAt: r.updated_at });
@@ -46,17 +50,18 @@ export function seedWineVideos(db) {
   const gone = db.prepare('SELECT 1 FROM seed_removed WHERE seed_key = ?');
   for (const v of videos) {
     if (has.get(v.key) || gone.get('wine-video:' + v.key)) continue;
-    db.prepare('INSERT INTO wine_videos(key,video,note,updated_by,updated_at) VALUES (?,?,?,?,?)').run(v.key, JSON.stringify(v.video), v.note || null, null, now());
+    const h = homeOf(v.key);
+    db.prepare('INSERT INTO wine_videos(key,video,note,updated_by,updated_at,company_id,store_id) VALUES (?,?,?,?,?,?,?)').run(v.key, JSON.stringify(v.video), v.note || null, null, now(), h.company, h.store);
   }
 }
-export function setWineVideo(db, key, video, note, userId) {
+export function setWineVideo(db, key, video, note, userId, owner = null) {
   if (!video) {
     db.prepare('DELETE FROM wine_videos WHERE key = ?').run(key);
     db.prepare('INSERT OR IGNORE INTO seed_removed(seed_key) VALUES (?)').run('wine-video:' + key);
     return;
   }
-  db.prepare('INSERT INTO wine_videos(key,video,note,updated_by,updated_at) VALUES (?,?,?,?,?) ON CONFLICT(key) DO UPDATE SET video=excluded.video, note=excluded.note, updated_by=excluded.updated_by, updated_at=excluded.updated_at')
-    .run(key, JSON.stringify(video), note || null, userId ?? null, now());
+  db.prepare('INSERT INTO wine_videos(key,video,note,updated_by,updated_at,company_id,store_id) VALUES (?,?,?,?,?,?,?) ON CONFLICT(key) DO UPDATE SET video=excluded.video, note=excluded.note, updated_by=excluded.updated_by, updated_at=excluded.updated_at')
+    .run(key, JSON.stringify(video), note || null, userId ?? null, now(), homeOf(key, owner).company, homeOf(key, owner).store);
 }
 
 /** The wine cards with a photo (the tasting wines), not the rows of the wine list. */

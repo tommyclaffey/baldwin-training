@@ -25,8 +25,12 @@ export function migrateHq(db) {
     } catch (e) { db.exec('ROLLBACK'); throw e; }
   }
   HQ = row.id;
+  HQ_STORE_ID = db.prepare('SELECT id FROM stores WHERE company_id = ? ORDER BY id LIMIT 1').get(HQ)?.id ?? null;
   return HQ;
 }
+/** HQ's own store (made with it), where the shared library lives since Nov 19. */
+let HQ_STORE_ID = null;
+export const hqStoreId = () => HQ_STORE_ID;
 /** HQ's company id (null before migrateHq has run on this process's database). */
 export const hqId = () => HQ;
 export const isHq = (companyId) => HQ != null && Number(companyId) === HQ;

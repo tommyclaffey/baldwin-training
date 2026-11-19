@@ -984,7 +984,7 @@ async function api(req, res, url) {
   }
   if (p === '/api/wine-videos' && m === 'PUT') {
     const b = await readJson(req);
-    // Grape and region pages are the shared library; "Wines on our list" are The Baldwin's own.
+    // Grape and region pages are the shared library (Mise HQ); "Wines on our list" are the store's own.
     const own = String(b.key || '').startsWith('wine:');
     const u = own ? needEditor(c, req) : needLibrary(c, req);
     if (own && !c.storeRow?.book_ready) fail(400, 'We couldn’t find that wine page.');
@@ -992,7 +992,7 @@ async function api(req, res, url) {
     if (!target) fail(400, 'We couldn’t find that wine page.');
     const video = b.video ? media(b.video) : null;
     if (b.video && !video) fail(400, 'That video can’t be used. Pick it again from the library.');
-    setWineVideo(db, target.key, video, str(b.note, 400), u.id);
+    setWineVideo(db, target.key, video, str(b.note, 400), u.id, own ? { company: c.company, store: c.store } : null);
     audit(db, u.id, video ? 'set wine video' : 'remove wine video', target.name, c.company);
     return sendJson(res, 200, { ok: true, video, note: video ? str(b.note, 400) : '' });
   }

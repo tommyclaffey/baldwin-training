@@ -110,8 +110,8 @@ export function purgeDeleted(db) {
     // Nov 14 (security review): this used to delete a few tables and then the company row, which its stores still pointed
     // at, so it failed on the database's foreign key rule: at startup (the server wouldn't start) and every 12 hours. It
     // also left the company's pages, uploads, prep and reads behind. Now everything that's the company's goes, stores
-    // before the company (server/companydata.mjs). The Baldwin is never removed this way: it holds the shared library, so
-    // it stays deleted (and restorable) until it's handled by hand.
+    // before the company (server/companydata.mjs). Mise Academy (HQ) is never removed this way: it holds the shared library
+    // (The Baldwin did until Nov 19).
     if (PROTECTED.has(c.id)) continue;
     try { wipeCompany(db, c.id); } catch (e) { console.error('purge company', c.id, e); }
   }
