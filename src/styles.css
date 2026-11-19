@@ -3340,7 +3340,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
    phones sized by the longest word (DM Serif Display runs about 0.49 em a letter, 0.55 at most; Nov 18, was Instrument
    Serif at 0.46), so a level name is never cut off. */
 @media screen and (max-width: 859px) {
-  .brand-mise [data-name^="Level "] .ftext.fit, .brand-mise [data-name^="Part "] .ftext.fit { font-size: min(var(--z), calc((50vw - 64px) / (var(--lw) * 0.55))) !important; overflow-wrap: normal; }
+  .brand-mise [data-name^="Level "] .ftext.fit, .brand-mise [data-name^="Part "] .ftext.fit { font-size: min(var(--z), calc((50vw - 64px) / (max(var(--lw), 12) * 0.55))) !important; overflow-wrap: normal; } /* Nov 19: every level card title the same size (sized for the longest, "Introductory"), not each by its own word */
 }
 
 /* Edit Mode in the Mise look (Nov 11 release: same Edit Mode for both brands, each in its own look). Char edit bar with

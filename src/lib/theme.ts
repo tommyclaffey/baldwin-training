@@ -206,7 +206,7 @@ export const THEMES: Record<Brand, Theme> = {
     },
     type: {
       pageTitle: { ff: SERIF, fs: 'Italic', z: 64, lh: '100%', ls: '-0.5%', case: 'title' },
-      cardTitle: { ff: SERIF, fs: 'Regular', z: 40, lh: '100%', ls: '-0.5%', case: 'title' },
+      cardTitle: { ff: SERIF, fs: 'Regular', z: 32, lh: '100%', ls: '-0.5%', case: 'title' },
       sectionHeading: { ff: ARCHIVO, fs: 'SemiBold', z: 26, lh: '125%', ls: '-1%', case: 'title' },
       cardHeading: { ff: ARCHIVO, fs: 'SemiBold', z: 20, lh: '125%', ls: '-1%', case: 'title' },
       smallHeading: { ff: ARCHIVO, fs: 'Bold', case: 'title' },
