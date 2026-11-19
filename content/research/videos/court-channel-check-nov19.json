@@ -1,0 +1,228 @@
+{
+ "checked": "2026-11-19",
+ "question": "Is the YouTube channel \"Court of Master Sommeliers\" (@CourtofMasterSomm) an official Court of Master Sommeliers channel? An earlier pass said it was not the Court and looked AI-made, without checking the Europe Court.",
+ "verdict": "OFFICIAL: Court of Master Sommeliers, Europe. The Europe Court website links to the channel from its homepage, so the earlier claim was wrong. All videos kept; the channel label changed to \"Court of Master Sommeliers, Europe\" and titles updated to the current YouTube titles.",
+ "channel": {
+  "name": "Court of Master Sommeliers",
+  "handle": "@CourtofMasterSomm",
+  "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+  "url": "https://www.youtube.com/@CourtofMasterSomm/about",
+  "subscribers": "857",
+  "videos": "78",
+  "views": "10,311",
+  "joined": "Oct 27, 2026",
+  "description": "Court of Master Sommeliers study videos for the Introductory and Certified Sommelier exams ... straight from the Court's study book ... Read the full chapters and practise with quizzes for every region on the Court's study portal: https://courtofmastersommeliers.ai",
+  "links": [
+   {
+    "title": "CMS AI Portal",
+    "url": "https://courtofmastersommeliers.ai"
+   }
+  ]
+ },
+ "evidence": [
+  {
+   "what": "Court of Master Sommeliers, Europe homepage links to the channel",
+   "url": "https://www.courtofmastersommeliers.org/",
+   "detail": "Page title \"Welcome to the Court of Master Sommeliers Europe\". An image box headed \"Welcome to Introductory & Certified - Video\" (\"We've created a short video to help you prepare for the Introductory Course and Exam ... Watch it before the course\") links to https://www.youtube.com/@CourtofMasterSomm. It is the only YouTube channel link on the page.",
+   "supports": "official"
+  },
+  {
+   "what": "Same homepage links the portal the channel points to",
+   "url": "https://www.courtofmastersommeliers.org/",
+   "detail": "A \"Student Learning Portal\" image links to https://www.courtofmastersommeliers.ai. The embedded Court Instagram feed (instagram.com/court_of_master_sommeliers) posts \"test yourself on the Court of Master Sommeliers study portal: courtofmastersommeliers.ai\".",
+   "supports": "official"
+  },
+  {
+   "what": "Americas Court site links a different channel",
+   "url": "https://www.mastersommeliers.org/",
+   "detail": "Links https://www.youtube.com/@courtofmastersommeliers (\"Court of Master Sommeliers, Americas\", 4.33K subscribers, joined Feb 18, 2022, 182 videos). So @CourtofMasterSomm is not the Americas channel, which is what the earlier note got right; it is the Europe one.",
+   "supports": "context"
+  },
+  {
+   "what": "Signs that made it look unofficial",
+   "url": "https://www.youtube.com/@CourtofMasterSomm/about",
+   "detail": "New (joined Oct 27, 2026), 78 videos in about three weeks, short syllabus read-throughs with a \"Test yourself\" ending, links to a .ai domain (registered Jun 16, 2026, private registrant, behind a Vercel checkpoint so not readable here). No \"Altered or synthetic content\" label on any of the 9 watch pages checked. Whether the narration is synthetic could not be checked (audio not reviewed). None of these outweigh the direct link from the Court's own site.",
+   "supports": "caution only"
+  },
+  {
+   "what": "Titles changed since the videos were picked",
+   "url": "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=iAkZYBR_s88&format=json",
+   "detail": "oEmbed now returns new titles (e.g. \"Burgundy Part 1 | Introductory & Certified\" is now \"Burgundy Wine Region Explained (Burgundy 1/3) | Court of Master Sommeliers\"). Same video ids, channel and lengths (lengthSeconds from each watch page match the recorded lengths).",
+   "supports": "context"
+  }
+ ],
+ "videos": [
+  {
+   "file": "content/manual/france.json",
+   "section": "Burgundy",
+   "youtubeId": "iAkZYBR_s88",
+   "url": "https://www.youtube.com/watch?v=iAkZYBR_s88",
+   "oembed": {
+    "title": "Burgundy Wine Region Explained (Burgundy 1/3) | Court of Master Sommeliers",
+    "author_name": "Court of Master Sommeliers",
+    "author_url": "https://www.youtube.com/@CourtofMasterSomm"
+   },
+   "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+   "uploaded": "2026-10-29",
+   "length": "3:57",
+   "titleBefore": "Burgundy Part 1 | Introductory & Certified",
+   "decision": "keep",
+   "labelNow": "Court of Master Sommeliers, Europe"
+  },
+  {
+   "file": "content/manual/france.json",
+   "section": "Bordeaux",
+   "youtubeId": "nudSpMjKP4c",
+   "url": "https://www.youtube.com/watch?v=nudSpMjKP4c",
+   "oembed": {
+    "title": "Bordeaux Wine Explained (Bordeaux 1/3) | Court of Master Sommeliers",
+    "author_name": "Court of Master Sommeliers",
+    "author_url": "https://www.youtube.com/@CourtofMasterSomm"
+   },
+   "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+   "uploaded": "2026-10-28",
+   "length": "3:42",
+   "titleBefore": "Bordeaux Part 1 | Introductory",
+   "decision": "keep",
+   "labelNow": "Court of Master Sommeliers, Europe"
+  },
+  {
+   "file": "content/manual/france.json",
+   "section": "Alsace",
+   "youtubeId": "hRboM5eAUZk",
+   "url": "https://www.youtube.com/watch?v=hRboM5eAUZk",
+   "oembed": {
+    "title": "Alsace Wine Region Explained | Court of Master Sommeliers",
+    "author_name": "Court of Master Sommeliers",
+    "author_url": "https://www.youtube.com/@CourtofMasterSomm"
+   },
+   "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+   "uploaded": "2026-10-28",
+   "length": "3:08",
+   "titleBefore": "Alsace | Introductory & Certified",
+   "decision": "keep",
+   "labelNow": "Court of Master Sommeliers, Europe"
+  },
+  {
+   "file": "content/manual/italy.json",
+   "section": "Central and Southern Italy",
+   "youtubeId": "Q0ZUQeTAF3w",
+   "url": "https://www.youtube.com/watch?v=Q0ZUQeTAF3w",
+   "oembed": {
+    "title": "Central Italy Wine: Tuscany to Puglia (Italy 3/5) | Court of Master Sommeliers",
+    "author_name": "Court of Master Sommeliers",
+    "author_url": "https://www.youtube.com/@CourtofMasterSomm"
+   },
+   "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+   "uploaded": "2026-11-04",
+   "length": "6:52",
+   "titleBefore": "Italy Part 3 | Introductory & Certified | Court of Master Sommeliers",
+   "decision": "keep",
+   "labelNow": "Court of Master Sommeliers, Europe"
+  },
+  {
+   "file": "content/manual/wine-law-and-labels.json",
+   "section": "Italy: DOCG, DOC and IGT",
+   "youtubeId": "epdW2XdU3jQ",
+   "url": "https://www.youtube.com/watch?v=epdW2XdU3jQ",
+   "oembed": {
+    "title": "Italian Wine Regions Explained (Italy 1/5) | Court of Master Sommeliers",
+    "author_name": "Court of Master Sommeliers",
+    "author_url": "https://www.youtube.com/@CourtofMasterSomm"
+   },
+   "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+   "uploaded": "2026-11-04",
+   "length": "5:03",
+   "titleBefore": "Italy Part 1 | Introductory & Certified | Court of Master Sommeliers",
+   "decision": "keep",
+   "labelNow": "Court of Master Sommeliers, Europe"
+  },
+  {
+   "file": "content/manual/wine-law-and-labels.json",
+   "section": "Spain: DO, DOCa and Pago",
+   "youtubeId": "GvTNY46a7-g",
+   "url": "https://www.youtube.com/watch?v=GvTNY46a7-g",
+   "oembed": {
+    "title": "Spanish Wine Regions Explained (Spain 1/4) | Court of Master Sommeliers",
+    "author_name": "Court of Master Sommeliers",
+    "author_url": "https://www.youtube.com/@CourtofMasterSomm"
+   },
+   "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+   "uploaded": "2026-11-04",
+   "length": "5:54",
+   "titleBefore": "Spain Part 1 | Introductory & Certified | Court of Master Sommeliers",
+   "decision": "keep",
+   "labelNow": "Court of Master Sommeliers, Europe"
+  },
+  {
+   "file": "content/manual-l2/certified-old-world.json",
+   "section": "Bordeaux",
+   "youtubeId": "HzbX0eO1gFM",
+   "url": "https://www.youtube.com/watch?v=HzbX0eO1gFM",
+   "oembed": {
+    "title": "Bordeaux Classified Growths and Districts (Bordeaux 3/3) | Court of Master Sommeliers",
+    "author_name": "Court of Master Sommeliers",
+    "author_url": "https://www.youtube.com/@CourtofMasterSomm"
+   },
+   "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+   "uploaded": "2026-10-28",
+   "length": "4:49",
+   "titleBefore": "Bordeaux Part 3 | Certified",
+   "decision": "keep",
+   "labelNow": "Court of Master Sommeliers, Europe"
+  },
+  {
+   "file": "content/manual-l2/certified-old-world.json",
+   "section": "Burgundy and Beaujolais",
+   "youtubeId": "qjsdbokNe-4",
+   "url": "https://www.youtube.com/watch?v=qjsdbokNe-4",
+   "oembed": {
+    "title": "Chablis and Côte d'Or Grand Crus Explained (Burgundy 2/3) | Court of Master Sommeliers",
+    "author_name": "Court of Master Sommeliers",
+    "author_url": "https://www.youtube.com/@CourtofMasterSomm"
+   },
+   "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+   "uploaded": "2026-10-29",
+   "length": "4:14",
+   "titleBefore": "Burgundy Part 2 | Introductory & Certified",
+   "decision": "keep",
+   "labelNow": "Court of Master Sommeliers, Europe"
+  },
+  {
+   "file": "content/manual-l2/certified-old-world.json",
+   "section": "The Loire and Alsace",
+   "youtubeId": "hRboM5eAUZk",
+   "url": "https://www.youtube.com/watch?v=hRboM5eAUZk",
+   "oembed": {
+    "title": "Alsace Wine Region Explained | Court of Master Sommeliers",
+    "author_name": "Court of Master Sommeliers",
+    "author_url": "https://www.youtube.com/@CourtofMasterSomm"
+   },
+   "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+   "uploaded": "2026-10-28",
+   "length": "3:08",
+   "titleBefore": "Alsace | Introductory & Certified",
+   "decision": "keep",
+   "labelNow": "Court of Master Sommeliers, Europe"
+  },
+  {
+   "file": "content/manual-l2/certified-white-wines.json",
+   "section": "Chenin Blanc",
+   "youtubeId": "atHP95EWsks",
+   "url": "https://www.youtube.com/watch?v=atHP95EWsks",
+   "oembed": {
+    "title": "Loire Wine: Sancerre to Muscadet (Loire 3/4) | Court of Master Sommeliers",
+    "author_name": "Court of Master Sommeliers",
+    "author_url": "https://www.youtube.com/@CourtofMasterSomm"
+   },
+   "channelId": "UCgQV3dH-i-hpYc_rQhBT7Zw",
+   "uploaded": "2026-11-04",
+   "length": "4:23",
+   "titleBefore": "Loire Part 3 | Introductory & Certified | Court of Master Sommeliers",
+   "decision": "keep",
+   "labelNow": "Court of Master Sommeliers, Europe"
+  }
+ ],
+ "replaced": [],
+ "sectionsLeftWithPhoto": []
+}

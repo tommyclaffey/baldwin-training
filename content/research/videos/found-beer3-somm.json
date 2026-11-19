@@ -488,11 +488,11 @@
   "slug": "italy",
   "section": "Central and Southern Italy",
   "youtubeId": "Q0ZUQeTAF3w",
-  "title": "Italy Part 3 | Introductory & Certified | Court of Master Sommeliers",
-  "by": "Court of Master Sommeliers",
+  "title": "Central Italy Wine: Tuscany to Puglia (Italy 3/5) | Court of Master Sommeliers",
+  "by": "Court of Master Sommeliers, Europe",
   "length": "6:52",
   "checked": "2026-11-09",
-  "why": "Court of Master Sommeliers: Tuscany down to Sicily, region by region."
+  "why": "Court of Master Sommeliers, Europe: Tuscany down to Sicily, region by region."
  },
  {
   "file": "content/manual/north-america.json",
@@ -620,22 +620,22 @@
   "slug": "wine-law-and-labels",
   "section": "Italy: DOCG, DOC and IGT",
   "youtubeId": "epdW2XdU3jQ",
-  "title": "Italy Part 1 | Introductory & Certified | Court of Master Sommeliers",
-  "by": "Court of Master Sommeliers",
+  "title": "Italian Wine Regions Explained (Italy 1/5) | Court of Master Sommeliers",
+  "by": "Court of Master Sommeliers, Europe",
   "length": "5:03",
   "checked": "2026-11-09",
-  "why": "Court of Master Sommeliers: Italy’s IGT, DOC and DOCG tiers."
+  "why": "Court of Master Sommeliers, Europe: Italy’s IGT, DOC and DOCG tiers."
  },
  {
   "file": "content/manual/wine-law-and-labels.json",
   "slug": "wine-law-and-labels",
   "section": "Spain: DO, DOCa and Pago",
   "youtubeId": "GvTNY46a7-g",
-  "title": "Spain Part 1 | Introductory & Certified | Court of Master Sommeliers",
-  "by": "Court of Master Sommeliers",
+  "title": "Spanish Wine Regions Explained (Spain 1/4) | Court of Master Sommeliers",
+  "by": "Court of Master Sommeliers, Europe",
   "length": "5:54",
   "checked": "2026-11-09",
-  "why": "Court of Master Sommeliers: Spain’s quality structure, DO to Pago."
+  "why": "Court of Master Sommeliers, Europe: Spain’s quality structure, DO to Pago."
  },
  {
   "file": "content/manual/wine-law-and-labels.json",
@@ -785,8 +785,8 @@
   "slug": "certified-white-wines",
   "section": "Chenin Blanc",
   "youtubeId": "atHP95EWsks",
-  "title": "Loire Part 3 | Introductory & Certified | Court of Master Sommeliers",
-  "by": "Court of Master Sommeliers",
+  "title": "Loire Wine: Sancerre to Muscadet (Loire 3/4) | Court of Master Sommeliers",
+  "by": "Court of Master Sommeliers, Europe",
   "length": "4:23",
   "checked": "2026-11-09",
   "why": "Court of Master Sommeliers on Touraine and Vouvray’s Chenin Blanc."
