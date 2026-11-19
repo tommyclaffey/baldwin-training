@@ -1,0 +1,858 @@
+{
+  "program": "somm",
+  "programLevel": 4,
+  "number": 3,
+  "slug": "master-tasting",
+  "title": "Tasting at the Master level",
+  "script": "Chapter three",
+  "lead": "The same deductive grid as Advanced, held to a higher bar: six wines in 25 minutes with vintages, how to calibrate with a tasting group, reading age and producers, and what the Court means by a classic wine.",
+  "minutes": 25,
+  "intro": {
+    "script": "Start here",
+    "title": "SIX WINES, ONE SYSTEM",
+    "text": "The grid doesn't change at Master level. The wines get harder and the calls get finer.",
+    "tiers": [
+      {
+        "name": "Sight",
+        "note": "Clarity, color, rim, staining, tears, gas"
+      },
+      {
+        "name": "Nose and palate",
+        "note": "Fruit, non-fruit, earth, mineral, oak"
+      },
+      {
+        "name": "Structure",
+        "note": "Sugar, acid, alcohol, body, tannin"
+      },
+      {
+        "name": "Conclusions",
+        "note": "Initial, then final with one vintage"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "Same grid, higher bar",
+      "source": "Court of Master Sommeliers, Americas: Master Sommelier Diploma page; About Master Sommeliers page; 2024 Advanced and Master Deductive Tasting Format; MS Practical & Tasting feedback example; What Makes a Wine Classic",
+      "lines": [
+        {
+          "label": "The format",
+          "text": "Six wines in 25 minutes, spoken to a panel. Name the grape, country, district and appellation, and vintage where it applies."
+        },
+        {
+          "label": "The grid",
+          "text": "Advanced and Master share one format: Sight, Nose, Palate Structure, Palate, then Initial and Final Conclusions."
+        }
+      ],
+      "know": [
+        "The Court's About page says the flight is three whites and three reds.",
+        "The final conclusion takes one vintage, plus an official quality level and style category where they apply.",
+        "Tasting feedback is split into Sight, Nose and Palate, Structure and Conclusions, and counts grapes named correctly by color.",
+        "Master-level flights can include unpublished classics, newly established wines, aged whites and reds, sweet wines and subtler classics.",
+        "The Court's feedback: taste the wine in the glass, not your idea of it, and work the method before trusting recognition."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "The grid, in order",
+          "items": [
+            {
+              "name": "Sight",
+              "text": "Clarity, color, rim, staining, tearing, gas"
+            },
+            {
+              "name": "Nose",
+              "text": "Faults, intensity, age, fruit, non-fruit, earth, mineral, oak"
+            },
+            {
+              "name": "Palate structure",
+              "text": "Sweetness, acid, alcohol, body, bitterness or tannin, texture"
+            },
+            {
+              "name": "Palate",
+              "text": "Confirm the nose; balance, length, complexity"
+            },
+            {
+              "name": "Conclusions",
+              "text": "Initial ranges, then one final answer each"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "What a Master flight can hold",
+          "rows": [
+            {
+              "name": "Published and unpublished classics",
+              "meta": "beyond any list"
+            },
+            {
+              "name": "Newly established classics",
+              "meta": "recent arrivals"
+            },
+            {
+              "name": "Aged wines",
+              "meta": "white and red"
+            },
+            {
+              "name": "Sweet wines",
+              "meta": "table and fortified"
+            },
+            {
+              "name": "Subtler versions of old classics",
+              "meta": "quieter styles"
+            }
+          ],
+          "note": "From the Court's session on what makes a wine classic."
+        }
+      ]
+    },
+    {
+      "name": "Calibrating: groups and practice",
+      "source": "Court of Master Sommeliers, Americas: MS Practical & Tasting and MS Theory feedback examples; Candidate Mentoring Guidelines",
+      "lines": [
+        {
+          "label": "Practice",
+          "text": "The Court's feedback asks for the full grid on every wine, even one you recognize, and a reason behind every call."
+        },
+        {
+          "label": "Groups",
+          "text": "Group mentoring is encouraged. Timing each other and pointing out missed boxes is fine; staging a copy of the exam is not."
+        }
+      ],
+      "know": [
+        "For every box, ask what could have caused it, and what the wine could be given everything said so far.",
+        "Taste wines that share an aroma compound side by side, such as peppery rotundone in Syrah, Grenache and Grüner Veltliner.",
+        "Taste less obvious wines, blind and sighted, and drink across the range of any grape that trips you up.",
+        "Keep tasting aged, sweet and sparkling wines, beer, spirits and sake with the method, not only six-in-25 drills.",
+        "Court mentors may time you and note missed areas, but may not share point weights or a list of possible wines."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "The two-question drill, box by box",
+          "items": [
+            {
+              "name": "Describe",
+              "text": "Give the descriptor for the box"
+            },
+            {
+              "name": "Ask why",
+              "text": "What could have caused it? List every option"
+            },
+            {
+              "name": "Ask what",
+              "text": "With everything said so far, what could it be?"
+            },
+            {
+              "name": "Reveal",
+              "text": "Check your reasons, right or wrong"
+            }
+          ]
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "ENCOURAGED",
+              "title": "In a study group",
+              "text": "Group sessions\nTiming each other\nNoting missed grid areas\nExplaining why the system works"
+            },
+            {
+              "label": "OFF-LIMITS",
+              "title": "For Court mentors",
+              "text": "Mock exams that copy the real one\nSharing point weights\nSharing a list of possible wines\nCharging for exam prep"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vintage and producer knowledge",
+      "source": "Court of Master Sommeliers, Americas: Deductive Tasting Initial and Final Conclusions guide; 2024 tasting format; What Makes a Wine Classic; Theory Answer Guidelines; MS Theory Resource Guide; MS Theory feedback example; Wine Folly",
+      "lines": [
+        {
+          "label": "Age in the glass",
+          "text": "Color, fruit condition, fruit against savory notes, and sediment point to an age range. Élevage, wine law and vintage knowledge narrow it to one year."
+        },
+        {
+          "label": "Producers",
+          "text": "A classic region has many iconic producers that share core traits. Taste across producers, not just one."
+        }
+      ],
+      "know": [
+        "The Court's conclusions guide judges the age range from fruit condition, color, fruit versus savory notes, and sediment.",
+        "For the vintage, it applies typical élevage, wine law and regional vintage knowledge.",
+        "Wine Folly: red pigment fades from deep ruby and violet toward paler red and orange, and eventually brown.",
+        "With age, fruit turns from fresh to dried or stewed, and acidity and tannin fade (Wine Folly).",
+        "The Court's classic session: a warm vintage can give red Burgundy riper fruit, more alcohol and more forward oak."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "From the glass to a year",
+          "items": [
+            {
+              "name": "Color",
+              "text": "Depth, hue and rim"
+            },
+            {
+              "name": "Fruit",
+              "text": "Fresh, ripe, dried or stewed"
+            },
+            {
+              "name": "Savory",
+              "text": "Earth and non-fruit notes against fruit"
+            },
+            {
+              "name": "Law and élevage",
+              "text": "Aging rules and cellar practice narrow the year"
+            }
+          ]
+        },
+        {
+          "type": "tiles",
+          "title": "Vintage and producer homework",
+          "dark": true,
+          "items": [
+            {
+              "name": "Vintage guides",
+              "text": "The Court's resource guide lists vintage books among tableside study tools."
+            },
+            {
+              "name": "Media ratings",
+              "text": "Theory may ask how wine media rated a vintage, on a stated scale."
+            },
+            {
+              "name": "Five producers",
+              "text": "For any wine you taste, list five other classic producers."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "What classic means",
+      "source": "Court of Master Sommeliers, Americas: What Makes a Wine Classic (mentoring session slides); Advanced Sommelier Level Wines",
+      "lines": [
+        {
+          "label": "The idea",
+          "text": "A classic shows a distinct, repeatable set of traits from a renowned place: the benchmark other wines of that grape are judged against."
+        },
+        {
+          "label": "Your list",
+          "text": "The Court publishes a core wine list for Advanced. At Master level you build your own list of classics beyond it."
+        }
+      ],
+      "know": [
+        "Three tests: a unique, distinctive flavor profile; an established quality level; a global market presence.",
+        "The checklist asks whether the region shows its traits in all but the most unusual vintages.",
+        "It asks for a quorum of iconic producers whose wines share traits despite their house styles.",
+        "A wine must also fit the deductive exam fairly and consistently; one 'no' and it doesn't qualify for the exam.",
+        "Some regions keep an original style and add an equally valid modern one; others become classic within a few decades."
+      ],
+      "visuals": [
+        {
+          "type": "pyramid",
+          "title": "How a wine becomes classic",
+          "rows": [
+            {
+              "name": "Established",
+              "note": "long history, many producers, strong identity"
+            },
+            {
+              "name": "Original and modern",
+              "note": "a second, equally vital style emerges"
+            },
+            {
+              "name": "Newly established",
+              "note": "past the tipping point, like Etna Rosso"
+            },
+            {
+              "name": "On the radar",
+              "note": "nearing the tipping point, like Rueda Verdejo"
+            }
+          ]
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "ORIGINAL",
+              "title": "Classic-style Napa Cabernet",
+              "text": "Pyrazines show\nMedium plus alcohol, astringent tannin\nFruit just ripe\nOak in the background"
+            },
+            {
+              "label": "MODERN",
+              "title": "Riper Napa Cabernet",
+              "text": "Subtler pyrazines\nHigh alcohol, rounder tannin\nOverripe, liqueur-like fruit\nOak more forward"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "Age assessment",
+      "b": "Age range",
+      "why": "On the nose: youthful, developing or vinous. In the initial conclusion: 1–3, 3–5, 5–10 or 10+ years."
+    },
+    {
+      "a": "Initial conclusion",
+      "b": "Final conclusion",
+      "why": "Initial gives possibilities. Final commits to one grape, one place and one vintage."
+    },
+    {
+      "a": "Official quality level",
+      "b": "Official style category",
+      "why": "Quality: Village, Grand Cru, Riserva, Spätlese. Style: Trocken, Sec, Moelleux, SGN."
+    },
+    {
+      "a": "Newly established",
+      "b": "On the radar",
+      "why": "One has become classic. The other is approaching that point."
+    }
+  ],
+  "sources": "Court of Master Sommeliers, Americas: Master Sommelier Diploma page, About Master Sommeliers page, 2024 Advanced and Master Deductive Tasting Format, Initial and Final Conclusions guide, MS Practical & Tasting and MS Theory feedback examples, Candidate Mentoring Guidelines, What Makes a Wine Classic, Theory Answer Guidelines, MS Theory Resource Guide and Advanced Sommelier Level Wines; Wine Folly (how wines age). Checked Nov 19, 2026.",
+  "cards": [
+    {
+      "q": "Which Court document sets the grid for both the Advanced and Master tastings?",
+      "answer": "The 2024 Advanced and Master Sommelier Deductive Tasting Format",
+      "wrong": [
+        "The Certified Sommelier Deductive Tasting Grid",
+        "The Introductory Sommelier tasting worksheet",
+        "The Master of Wine tasting rubric"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "q": "Which age options does the initial conclusion offer?",
+      "answer": "1–3, 3–5, 5–10 and 10+ years",
+      "wrong": [
+        "1–2, 2–4, 4–8 and 8+ years",
+        "Under 5 and over 5 years",
+        "1–5, 5–10, 10–20 and 20+ years"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "q": "How many vintages may a candidate give in the final conclusion?",
+      "answer": "One",
+      "wrong": [
+        "A two-year range",
+        "A three-year range",
+        "A decade"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "q": "Which climate choices does the initial conclusion use?",
+      "answer": "Cool, moderate, warm",
+      "wrong": [
+        "Maritime, continental, Mediterranean",
+        "Cold, mild, hot",
+        "Alpine, coastal, inland"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "q": "The Court's feedback drill asks two questions for every grid box. Which is one of them?",
+      "answer": "What could have caused this descriptor?",
+      "wrong": [
+        "Which producer made this wine?",
+        "What would this wine cost on a list?",
+        "Which wine did the group taste last week?"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "q": "Which compound gives the peppery note the Court links to Syrah, Grenache and Grüner Veltliner?",
+      "answer": "Rotundone",
+      "wrong": [
+        "Pyrazine",
+        "TDN",
+        "Linalool"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "q": "Under the Court's mentoring guidelines, which practice is prohibited?",
+      "answer": "Mock exams that simulate Court exams",
+      "wrong": [
+        "Group tasting sessions",
+        "Timing a candidate",
+        "Noting missed grid areas"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Candidate-Mentoring-Guidelines.pdf"
+    },
+    {
+      "q": "Per the Court's feedback, what should you do with a wine you recognize right away?",
+      "answer": "Fill out the entire grid for it anyway",
+      "wrong": [
+        "Name it and move on",
+        "Skip to the final conclusion",
+        "Describe only the nose"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "q": "On the nose, which three terms does the grid use for age assessment?",
+      "answer": "Youthful, developing, vinous",
+      "wrong": [
+        "Young, mature, old",
+        "Primary, secondary, tertiary",
+        "Fresh, faded, tired"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "q": "Per the Court's conclusions guide, which three areas support the vintage call?",
+      "answer": "Typical élevage, wine law and regional vintage knowledge",
+      "wrong": [
+        "Label design, price and bottle shape",
+        "Glass shape, serving temperature and decanting",
+        "Cork type, fill level and capsule"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf"
+    },
+    {
+      "q": "In the Court's example, what can a warm vintage do to a red Burgundy?",
+      "answer": "Give riper fruit, more alcohol and more forward oak",
+      "wrong": [
+        "Raise acidity and lower alcohol",
+        "Add green pepper notes",
+        "Make it paler and browner"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    },
+    {
+      "q": "How does a red wine's color change with age, per Wine Folly?",
+      "answer": "From ruby and violet toward orange and brown",
+      "wrong": [
+        "From garnet toward purple",
+        "From pale toward deep and opaque",
+        "From brown toward ruby"
+      ],
+      "source": "https://winefolly.com/deep-dive/how-wines-age/"
+    },
+    {
+      "q": "Which three tests open the Court's checklist for a classic wine?",
+      "answer": "Unique flavor profile, established quality level, global market presence",
+      "wrong": [
+        "High price, high scores, old vines",
+        "Old World origin, oak aging, low yields",
+        "Single vineyard, estate bottling, organic farming"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    },
+    {
+      "q": "In the Court's session, how does a modern-style Napa Cabernet differ from the original style?",
+      "answer": "Riper fruit, higher alcohol, more forward oak",
+      "wrong": [
+        "More pyrazines and leaner fruit",
+        "Lower alcohol and harder tannin",
+        "No oak and higher acidity"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    },
+    {
+      "q": "What happens if a wine gets a 'no' on any box of the Court's classic checklist?",
+      "answer": "It doesn't qualify for the deductive tasting exam",
+      "wrong": [
+        "It is dropped from the theory exam too",
+        "It may never be served in a practical",
+        "It qualifies after five more vintages"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    },
+    {
+      "q": "The Court's session places Etna Rosso in which group?",
+      "answer": "Newly established",
+      "wrong": [
+        "On the radar",
+        "Stuck in the middle",
+        "Original versus modern"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "The tasting is scored on clearly and accurately describing six different wines within twenty-five minutes, identifying where appropriate grape varieties, country of origin, district and appellation of origin, and vintages.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "The About page describes the tasting as six wines tasted blind in 25 minutes, three red and three white, done verbally before a panel of Master Sommeliers.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/"
+    },
+    {
+      "fact": "The 2024 Advanced and Master Sommelier Deductive Tasting Format is one grid for both levels: Sight (clarity, color intensity, primary and secondary color, rim variation, staining, tearing, gas), Nose (faults, intensity, age assessment youthful/developing/vinous, fruit, fruit condition, non-fruit, earth, mineral, oak), Palate Structure (sweetness, acidity, alcohol, body, phenolic bitterness for whites, tannin for reds, texture), Palate (confirm from the nose; balance, length, complexity).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "fact": "Initial Conclusion: possible grape varieties; climate cool, moderate or warm; possible countries; age range 1–3, 3–5, 5–10, 10+ years. Final Conclusion: grape or blend, country, region and appellation, official quality level (e.g. Village, Premier Cru, Grand Cru, Reserva, Riserva, Kabinett, Spätlese) and official style category (e.g. Trocken, Sec, Moelleux, SGN) where appropriate, and one vintage.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+    },
+    {
+      "fact": "MS Tasting feedback reports Sight, Nose & Palate, Structure and Conclusions, and grapes correctly identified (white and red).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "fact": "MS Tasting feedback comments: use a consistent ordered method; rely on the full Deductive Tasting Method, not recognition; reserve instincts for wines you have trouble with; taste the wine, not your idea of wine; change a wine only with a clear reason.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "fact": "MS Tasting preparation suggestions: break down the grid box by box; if you recognize a grape, fill out the entire grid every time with full descriptors; drink a wide spectrum of troublesome varieties; give possible reasons for each sensory evaluation and confirm on reveal; taste wines with shared impact compounds (Syrah, Grenache and Grüner Veltliner share pepper from rotundone); for every box give the descriptor and ask what could have caused it and what the wine could be; keep tasting aged, dessert and sparkling wines, beer, spirits and sake; don't get mired in '6 in 25'.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "fact": "MS Theory feedback tasting suggestions: taste less obvious wines, blind and knowing what they are; for any wine, list 5 other classic or established producers.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-Theory-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "fact": "Master-level flight considerations: published and unpublished classics, newly established, aged wines (white and red), sweet wines (table and fortified), subtler versions of long-established wines.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    },
+    {
+      "fact": "Because the CMS does not re-certify, the deductive tasting demands that candidates make their own list of classic wines beyond what the Court has published.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    },
+    {
+      "fact": "Classic criteria: a unique and distinctive flavor profile (grape, specific to one region, sole combination of characteristics); an established quality level (within grape, category, gastronomy world); global market presence (consumers and professionals, history and lore, iconic producers).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    },
+    {
+      "fact": "Deductive tasting qualifications include: unique combination of visual, olfactory and structural traits; among the most renowned expressions; unique growing circumstances and established winemaking apparent in flavors; unique and similar traits in all but the most idiosyncratic vintages; history and connection to place; a quorum of iconic producers with similar traits regardless of style; established global presence; the wine can be shown fairly and consistently in the exam. A wine that doesn't check yes on all boxes doesn't qualify for the deductive exam, though it may have merit for service, theory or business.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    },
+    {
+      "fact": "The session quotes a definition of a classic wine as one with time-honored, exemplary traits (colors, aromas, flavors, textures) that set the standard against which other wines of the same variety are judged; and advises tasting a range of producers in every region, not just one.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    },
+    {
+      "fact": "Categories in the session: Established; Original vs Modern (e.g. original Napa Cabernet: pyrazines, moderate plus alcohol and astringent tannins, fruit just ripe, oak less forward; modern: subtler pyrazines, high alcohol and rounder tannins, overripe or liqueur-like fruit, oak more forward); Stuck in the Middle (e.g. a pumped-up red Burgundy from a warm vintage: riper fruit, medium plus alcohol, more oak, too youthful for earth); Newly Established (Etna Rosso DOC); On the Radar (Rueda Verdejo DO). Wines can become classic in a few decades.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+    },
+    {
+      "fact": "The Advanced Sommelier Level Wines list is the Court's published list of core grapes for the Advanced tasting.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+    },
+    {
+      "fact": "Conclusions guide: age range from fruit condition, color or lack of it, focus on fruit or savory elements, and any sediment; vintage from typical élevage, wine law knowledge and regional vintage knowledge; climate from fruit condition and structure such as acidity and alcohol.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf"
+    },
+    {
+      "fact": "Theory answer guidelines: vintage ratings by media may be asked on a specified scale (usually 1 poor to 5 excellent).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/08/CMS-A-Theory-Answer-Guidelines-082925.pdf"
+    },
+    {
+      "fact": "The MS resource guide lists vintage references (e.g. Oz Clarke's Vintage, Broadbent's Vintages) and top wine lists as resources supporting tableside theory.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/01/Master-Sommelier-Diploma-Theory-Exam-Resource-Guide.pdf"
+    },
+    {
+      "fact": "Wine Folly: red color changes from deeper ruby and violet to paler red and orange, eventually a dull translucent brown; fruit moves from fresh and tart to dried or stewed; acidity and tannin fade; heightened acidity and tannin act as a runway for aging.",
+      "source": "https://winefolly.com/deep-dive/how-wines-age/"
+    },
+    {
+      "fact": "Mentoring guidelines: group mentoring is encouraged; mock examinations simulating CMS-A exams are prohibited; tasting sessions should not mirror exam situations exactly; timing candidates, sharing methodologies and noting missed grid areas are encouraged; sharing point weighting or a specific list of possible wines is prohibited; fees for exam mentoring outside Court courses are prohibited; training wines and questions are tools, not an indication of exam content.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Candidate-Mentoring-Guidelines.pdf"
+    }
+  ],
+  "unverified": [
+    "The three whites and three reds split is stated on the Court's About page, not on the exam page; it is given with that attribution.",
+    "The classic-wine material comes from a Court mentoring-session slide deck (file dated 11-2022, session dated December 2024), not from an exam standard. Named producers and the speakers quoted in it are left out.",
+    "Wine Folly's notes on how color, fruit and structure change with age come from one article's tastings and are a general guide, not a rule for every wine.",
+    "The Court gives no fixed list of Master-level tasting wines; none is implied here."
+  ],
+  "court": {
+    "outcome": "The tasting examination is scored on the candidate’s verbal abilities to clearly and accurately describe six different wines.",
+    "outcomeSource": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/",
+    "coverage": [
+      {
+        "topic": "Describe six different wines clearly and accurately",
+        "guide": "The shared Advanced and Master grid, box by box, spoken.",
+        "where": "Same grid, higher bar"
+      },
+      {
+        "topic": "Within twenty-five minutes",
+        "guide": "Six wines, 25 minutes; three whites and three reds per the About page.",
+        "where": "Same grid, higher bar"
+      },
+      {
+        "topic": "Grape varieties, country, district and appellation of origin",
+        "guide": "Initial conclusion ranges, then one final answer each.",
+        "where": "Same grid, higher bar"
+      },
+      {
+        "topic": "Vintages of the wines tasted",
+        "guide": "Age range from the glass, then one vintage from élevage, law and vintage knowledge.",
+        "where": "Vintage and producer knowledge"
+      },
+      {
+        "topic": "Deductive Tasting Format: Initial and Final Conclusion",
+        "guide": "Climate, countries, age range; quality level, style category, one vintage.",
+        "where": "Same grid, higher bar; Vintage and producer knowledge"
+      },
+      {
+        "topic": "Tasting preparation suggestions (MS feedback)",
+        "guide": "Full grid every time, two questions per box, shared compounds, all beverages.",
+        "where": "Calibrating: groups and practice"
+      },
+      {
+        "topic": "Candidate mentoring: deductive tasting",
+        "guide": "Group work and timing encouraged; mock exams, point weights, wine lists not.",
+        "where": "Calibrating: groups and practice"
+      },
+      {
+        "topic": "Producer knowledge",
+        "guide": "Taste across producers; name five classic producers for any wine.",
+        "where": "Vintage and producer knowledge; What classic means"
+      },
+      {
+        "topic": "What makes a wine classic",
+        "guide": "Three tests, the deductive checklist, original vs modern, new classics.",
+        "where": "What classic means"
+      },
+      {
+        "topic": "Master-level flight considerations",
+        "guide": "Unpublished and new classics, aged, sweet and subtler wines.",
+        "where": "Same grid, higher bar; What classic means"
+      }
+    ]
+  },
+  "v3": {
+    "video": null,
+    "sections": [
+      {
+        "name": "Same grid, higher bar",
+        "video": {
+          "youtubeId": "4G0sCzNE5lU",
+          "title": "Tasting Examination Advice with Christopher Bates, MS: Court of Master Sommeliers, Americas",
+          "by": "Court of Master Sommeliers, Americas",
+          "length": "0:46"
+        },
+        "keyPoints": [
+          {
+            "big": "SAME GRID",
+            "line": "Advanced and Master share one deductive format."
+          },
+          {
+            "big": "ONE VINTAGE",
+            "line": "The final conclusion names a single year."
+          },
+          {
+            "big": "3 + 3",
+            "line": "Three whites and three reds, per the Court's About page."
+          },
+          {
+            "big": "WORK THE GRID",
+            "line": "before trusting recognition. Save instinct for hard wines."
+          }
+        ],
+        "read": {
+          "bigIdea": "Same grid as Advanced. Harder wines, finer calls.",
+          "where": "The Master tasting is **six wines in 25 minutes**, described aloud. The grid is the one you used at Advanced. What changes is the flight: aged, sweet, subtle and newer **classics**, and a **vintage** for each.",
+          "stopsTitle": "What the panel hears",
+          "stops": [
+            {
+              "name": "Description",
+              "text": "**Sight**, **Nose**, **Palate Structure** and **Palate**, in order. The score rests on describing each wine **clearly and accurately**."
+            },
+            {
+              "name": "Initial conclusion",
+              "text": "Possible grapes, **climate** (cool, moderate or warm), possible countries and an **age range**: 1–3, 3–5, 5–10 or 10+ years."
+            },
+            {
+              "name": "Final conclusion",
+              "text": "One grape or blend, the country, **region and appellation**, the official **quality level** and **style category** where they apply, and **one vintage**."
+            },
+            {
+              "name": "Feedback",
+              "text": "Results split into Sight, Nose and Palate, Structure and Conclusions, with grapes named correctly by color. The Court's advice: rely on the **method**, not recognition, and change a call only with a clear reason."
+            }
+          ],
+          "visual": 0,
+          "mixup": "The **initial conclusion** gives possibilities: grapes, countries, an age range. The **final conclusion** commits: one grape, one place, **one vintage**."
+        },
+        "check": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Calibrating: groups and practice",
+        "video": {
+          "youtubeId": "lQ5I7vORPBs",
+          "title": "Tasting Group Advice with Shayn Bjornholm, MS: Court of Master Sommeliers, Americas",
+          "by": "Court of Master Sommeliers, Americas",
+          "length": "2:32"
+        },
+        "keyPoints": [
+          {
+            "big": "EVERY BOX",
+            "line": "Fill the full grid, even for a wine you know."
+          },
+          {
+            "big": "TWO QUESTIONS",
+            "line": "per box: what caused it, and what could the wine be?"
+          },
+          {
+            "big": "SHARED MARKERS",
+            "line": "Taste wines that share a compound side by side."
+          },
+          {
+            "big": "NO MOCK EXAMS",
+            "line": "Court mentors may not run copies of the real exam."
+          }
+        ],
+        "read": {
+          "bigIdea": "Calibrate the method, not your memory.",
+          "where": "At Master level a tasting group keeps everyone honest. The Court's feedback examples and its **mentoring guidelines** show what good practice looks like, and where it stops.",
+          "stopsTitle": "How to practice",
+          "stops": [
+            {
+              "name": "Full grid, every time",
+              "text": "If you know the grape, fill out the **whole grid** anyway, with descriptors and where they come from. It ties what you taste to **theory**."
+            },
+            {
+              "name": "Two questions per box",
+              "text": "For each box: what could have caused this, and what could the wine be, given everything said so far? Then check your reasons at the reveal."
+            },
+            {
+              "name": "Taste across boundaries",
+              "text": "Line up wines that share a compound, like peppery **rotundone** in Syrah, Grenache and Grüner Veltliner. Drink the full range of any grape that trips you up, and keep tasting aged, sweet and sparkling wines, beer, spirits and sake."
+            },
+            {
+              "name": "Keep it fair",
+              "text": "**Group mentoring** is encouraged, and so are timing and noting missed boxes. Court mentors may not share **point weights** or a list of possible wines, or run **mock exams** that copy the real one."
+            }
+          ],
+          "visual": 0,
+          "mixup": "A **study group** times you and calls out missed boxes. A **mock exam** that copies the Court's setup is off-limits for Court mentors."
+        },
+        "check": [
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "name": "Vintage and producer knowledge",
+        "video": {
+          "youtubeId": "zO0gEGx-YAM",
+          "title": "The Secret to Wine Vintages",
+          "by": "Wine Folly",
+          "length": "5:22"
+        },
+        "keyPoints": [
+          {
+            "big": "AGE RANGE",
+            "line": "comes from color, fruit condition and savory notes."
+          },
+          {
+            "big": "ONE YEAR",
+            "line": "comes from élevage, wine law and vintage knowledge."
+          },
+          {
+            "big": "WARM VINTAGE",
+            "line": "Riper fruit and more alcohol can hide a classic."
+          },
+          {
+            "big": "MANY PRODUCERS",
+            "line": "Learn a region through many houses, not one."
+          }
+        ],
+        "read": {
+          "bigIdea": "Age is a range first, then one year.",
+          "where": "The Master tasting names **vintages**, so age has to be read, then pinned down. The Court's conclusions guide sets the order: describe, reason to an **age range**, then commit to **one vintage**.",
+          "stopsTitle": "Reading the year",
+          "stops": [
+            {
+              "name": "Read the age",
+              "text": "Use **fruit condition**, color, fruit against **savory** notes, and **sediment**. Wine Folly notes that red color fades toward orange and brown, fruit turns dried or stewed, and acid and tannin soften."
+            },
+            {
+              "name": "Pin the vintage",
+              "text": "Apply typical **élevage**, the region's **wine law** and **regional vintage knowledge**. Pick the year that fits everything you described."
+            },
+            {
+              "name": "Know the weather",
+              "text": "A warm year can push a classic off type. The Court's example is a red Burgundy with riper fruit, more alcohol and more oak, too young to show earth."
+            },
+            {
+              "name": "Know the producers",
+              "text": "A classic region has a quorum of **iconic producers** sharing core traits despite house styles. Taste many of them, or you learn one producer instead of the region. For every wine, name five classic producers."
+            }
+          ],
+          "visual": 0,
+          "mixup": "**Age assessment** on the nose is youthful, developing or vinous. **Age range** in the initial conclusion is in years: 1–3, 3–5, 5–10 or 10+."
+        },
+        "check": [
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "name": "What classic means",
+        "video": {
+          "youtubeId": "52XA0tjPumQ",
+          "title": "Learn to blind taste like a Master Sommelier:  Wine Study Hall from SOMM TV",
+          "by": "SOMM TV",
+          "length": "9:57"
+        },
+        "keyPoints": [
+          {
+            "big": "DISTINCTIVE",
+            "line": "A classic has a flavor profile no other place repeats."
+          },
+          {
+            "big": "QUALITY",
+            "line": "It holds an established level in its grape and category."
+          },
+          {
+            "big": "GLOBAL",
+            "line": "It has market presence, history and iconic producers."
+          },
+          {
+            "big": "YOUR OWN LIST",
+            "line": "Master candidates build classics past the published list."
+          }
+        ],
+        "read": {
+          "bigIdea": "A classic is a benchmark you can taste blind.",
+          "where": "The Court doesn't hand Master candidates a list. Its **classic** checklist gives you the questions instead, so you can judge any wine, now and as classics change.",
+          "stopsTitle": "Three tests, then the checklist",
+          "stops": [
+            {
+              "name": "Distinctive",
+              "text": "Is the **flavor profile unique**? Look at the grape, the one region and the combination of traits."
+            },
+            {
+              "name": "Established quality",
+              "text": "Does it hold an **established quality level** within its grape, its category and the world of food and wine?"
+            },
+            {
+              "name": "Global presence",
+              "text": "Do guests and professionals know it? Is there **history**, and a quorum of **iconic producers**?"
+            },
+            {
+              "name": "Fit for the exam",
+              "text": "It must show its traits in all but odd **vintages** and fit the deductive format fairly. One 'no' and it isn't an exam classic, though it may still matter for service and the list."
+            }
+          ],
+          "visual": 1,
+          "visualIntro": "One region, two valid styles, from the Court's session:",
+          "mixup": "**Newly established** classics, like Etna Rosso, are past the tipping point. Wines **on the radar**, like Rueda Verdejo, are nearing it."
+        },
+        "check": [
+          12,
+          13,
+          14
+        ]
+      }
+    ]
+  }
+}

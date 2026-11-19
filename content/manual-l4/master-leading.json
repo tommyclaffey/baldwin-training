@@ -1,0 +1,913 @@
+{
+  "program": "somm",
+  "programLevel": 4,
+  "number": 6,
+  "slug": "master-leading",
+  "title": "Leading the wine program and the team",
+  "script": "Chapter six",
+  "lead": "The program lead's job beyond the floor: training the team, mentoring sommeliers toward the Court's levels, closing the month's numbers, and dealing with suppliers cleanly under federal rules and the Court's code.",
+  "minutes": 25,
+  "intro": {
+    "script": "Start here",
+    "title": "THE PROGRAM LEAD'S MONTH",
+    "text": "Four jobs, every month. Money examples here are our own round numbers, and the law described is federal only: check your state's rules too.",
+    "tiers": [
+      {
+        "name": "Teach",
+        "note": "Pre-shift tastings, quizzes, pour tests"
+      },
+      {
+        "name": "Mentor",
+        "note": "To the Court's standards, never its exams"
+      },
+      {
+        "name": "Count",
+        "note": "COGS, cost %, variance, audits"
+      },
+      {
+        "name": "Buy clean",
+        "note": "Tied-house rules and the Court's code"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "Training the team",
+      "source": "Court of Master Sommeliers, Advanced Practical guide and example MS feedback report; SevenFifty Daily; BevSpot; Oregon State University",
+      "lines": [
+        {
+          "label": "The Court's view",
+          "text": "The Court counts staff management and training as part of running a beverage program, and its practical feedback asks what your staff's quiz would be and how you'd teach it."
+        },
+        {
+          "label": "Why it pays",
+          "text": "A study cited by Oregon State University found that the amount of wine training restaurants offered was related to how much wine they sold."
+        }
+      ],
+      "know": [
+        "Teach structure (acid, tannin) over and over in plain words, so servers can describe it to guests.",
+        "Basics first: new staff learn the inventory and the systems, and why each step matters.",
+        "Daily tastings and talk about viticulture and winemaking build servers' voices.",
+        "Compare an unfamiliar grape to one guests already know, so the server has a reference point.",
+        "A quick pour test with a graduated cylinder at the start of a shift keeps pours consistent."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "A training rhythm (example plan)",
+          "items": [
+            {
+              "name": "Pre-shift",
+              "text": "Taste one wine; name its structure; one line for guests",
+              "meta": "Every shift"
+            },
+            {
+              "name": "Staff tasting",
+              "text": "A flight with the vineyard and winery behind it",
+              "meta": "Regularly"
+            },
+            {
+              "name": "Quiz",
+              "text": "Questions written from your own list",
+              "meta": "After each tasting"
+            },
+            {
+              "name": "Pour test",
+              "text": "Graduated cylinder, common pour sizes",
+              "meta": "Start of shift"
+            }
+          ]
+        },
+        {
+          "type": "steps",
+          "title": "Handing off a job",
+          "items": [
+            {
+              "name": "Do it",
+              "text": "You run it while they watch",
+              "meta": "Step 1"
+            },
+            {
+              "name": "Micromanage",
+              "text": "They run it; you check every step",
+              "meta": "Step 2"
+            },
+            {
+              "name": "Macromanage",
+              "text": "You check the results",
+              "meta": "Step 3"
+            },
+            {
+              "name": "Be available",
+              "text": "They own it; you answer questions",
+              "meta": "Step 4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mentoring toward the Court's levels",
+      "source": "Court of Master Sommeliers, Certification Levels page, Candidate Mentoring Guidelines and Code of Ethics",
+      "lines": [
+        {
+          "label": "The ladder",
+          "text": "The Court's four levels run Introductory, Certified, Advanced, then the Master Sommelier Diploma; Certified can only follow a passed Introductory."
+        },
+        {
+          "label": "The rule",
+          "text": "The Court's mentoring guidelines say its mission is mentoring great beverage service, not how to pass an exam: teach to the published standards."
+        }
+      ],
+      "know": [
+        "Mentoring is voluntary; fees for exam-prep mentoring outside Court courses are prohibited, though paying back product is fine.",
+        "Never share exact theory questions, service situations, blind wines or point weights.",
+        "Group mentoring is encouraged, but mock exams that simulate a Court exam are prohibited.",
+        "Timing tastings, sharing your own method and pointing out missed parts of the grid are encouraged.",
+        "Tell every candidate that practice wines and questions are training tools, not a sign of what's on the exam."
+      ],
+      "visuals": [
+        {
+          "type": "pyramid",
+          "title": "The Court's four levels, top first",
+          "rows": [
+            {
+              "name": "Master Sommelier Diploma",
+              "note": "Oral theory, six-wine tasting, practical"
+            },
+            {
+              "name": "Advanced",
+              "note": "Course and exam held separately; written theory, verbal tasting, practical"
+            },
+            {
+              "name": "Certified",
+              "note": "Tasting, theory, service; in person, after Introductory"
+            },
+            {
+              "name": "Introductory",
+              "note": "Course and exam, in person or online"
+            }
+          ]
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "ENCOURAGED",
+              "title": "Teach to the standards",
+              "text": "The full published grid\nTimed tastings, your own method\nService critique, group study"
+            },
+            {
+              "label": "PROHIBITED",
+              "title": "Teach to the test",
+              "text": "Exact questions, situations, blind wines\nPoint weights\nMock exams; fees for exam prep"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "The numbers each month",
+      "source": "Court of Master Sommeliers, Certified Exam Guide and Advanced Practical guide; BevSpot",
+      "lines": [
+        {
+          "label": "From Level 2",
+          "text": "COGS = beginning inventory + purchases − ending inventory, and cost % = COGS ÷ wine sales. Count the same way every time."
+        },
+        {
+          "label": "Variance",
+          "text": "BevSpot defines variance as cost of product sold (from your POS sales) minus usage (from your counts). A negative number is product used but never sold."
+        }
+      ],
+      "know": [
+        "Cost of product sold = each item's quantity sold (the POS product mix report) × its pour cost.",
+        "In BevSpot's example, $8,000 sold against $10,000 used is a $2,000 loss: 20% of usage.",
+        "Check your own count and invoices first, then pours, and only then theft.",
+        "Record deliveries against orders, and have staff log what they pull from storage.",
+        "The Court lists audits and reading inventory sheets as part of program management."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "Closing the month (example numbers)",
+          "items": [
+            {
+              "name": "Beginning inventory",
+              "text": "Value on the first of the month",
+              "meta": "$20,000"
+            },
+            {
+              "name": "+ Purchases",
+              "text": "Invoices received this month",
+              "meta": "$8,000"
+            },
+            {
+              "name": "− Ending inventory",
+              "text": "Value at month's end",
+              "meta": "$18,000"
+            },
+            {
+              "name": "= COGS",
+              "text": "What the month used",
+              "meta": "$10,000"
+            },
+            {
+              "name": "÷ Wine sales",
+              "text": "$40,000 in sales",
+              "meta": "25% cost"
+            }
+          ]
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "EXAMPLE · SOLD",
+              "title": "$9,500",
+              "text": "POS product mix\n× each item's pour cost"
+            },
+            {
+              "label": "EXAMPLE · USED",
+              "title": "$10,000",
+              "text": "Start + received − end\nfrom your counts"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ethics with suppliers",
+      "source": "eCFR 27 CFR part 6 (tied-house) and part 10 (commercial bribery); Court of Master Sommeliers, Code of Ethics",
+      "lines": [
+        {
+          "label": "Federal",
+          "text": "The federal tied-house rules bar producers, importers and wholesalers from inducing a retailer to buy their products to the exclusion of others, with listed exceptions."
+        },
+        {
+          "label": "State",
+          "text": "Each state has its own alcohol laws, and the federal rules never exempt anyone from them. This lesson covers the federal rules only."
+        }
+      ],
+      "know": [
+        "Means to induce include giving a retailer money, equipment, signs, supplies or services, paying for advertising or display, and requiring quotas.",
+        "Samples: up to 3 liters of a wine brand per location, only if you haven't bought that brand from the supplier in the last 12 months.",
+        "A supplier may run educational seminars for your staff but may not pay their travel and lodging.",
+        "Commercial bribery: a supplier may not give a retailer's employee a bonus, prize or other thing of value to win orders.",
+        "The Court's Code of Ethics flags asking mentees to place wines you represent, in exchange for mentoring, as pay-to-play."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "Federal exceptions at a glance (27 CFR part 6)",
+          "rows": [
+            {
+              "name": "Samples",
+              "meta": "Up to 3 L per wine brand per location; not bought in 12 months"
+            },
+            {
+              "name": "Product displays",
+              "meta": "Up to $300 per brand per location"
+            },
+            {
+              "name": "Outside signs",
+              "meta": "Up to $400; no payment for displaying"
+            },
+            {
+              "name": "Glassware and supplies",
+              "meta": "Sold at cost or more, paid within 30 days"
+            },
+            {
+              "name": "Seminars",
+              "meta": "Staff training allowed; no paid travel or lodging"
+            }
+          ],
+          "note": "Federal rules only. State law still applies."
+        },
+        {
+          "type": "tiles",
+          "title": "The Court's code, for a buyer",
+          "dark": true,
+          "items": [
+            {
+              "name": "Integrity",
+              "text": "Never misstate a wine's quality or condition for gain."
+            },
+            {
+              "name": "No pay-to-play",
+              "text": "No placements traded for mentoring or favor."
+            },
+            {
+              "name": "Clean dealing",
+              "text": "Buy and sell in ways that never put the title in question."
+            },
+            {
+              "name": "Know your ties",
+              "text": "The code counts buyer-seller relationships as significant."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "Tied-house rules",
+      "b": "Commercial bribery rules",
+      "why": "Part 6 covers a supplier and the retail business; part 10 covers a supplier and that business's employees."
+    },
+    {
+      "a": "Training",
+      "b": "Mentoring",
+      "why": "Training teaches the whole team your list and service; mentoring grows one person toward the Court's levels."
+    },
+    {
+      "a": "Usage",
+      "b": "Cost of product sold",
+      "why": "Usage comes from your counts; cost of product sold comes from your sales. Variance is the gap."
+    },
+    {
+      "a": "Group study",
+      "b": "Mock exam",
+      "why": "The Court encourages group mentoring but prohibits mock exams that simulate its own."
+    }
+  ],
+  "sources": "Court of Master Sommeliers, Americas: Certification Levels page, Candidate Mentoring Guidelines, Code of Ethics and Professional Responsibility, Certified Exam Guide, Advanced Practical guide and the example MS feedback report; eCFR (27 CFR parts 6 and 10); BevSpot; SevenFifty Daily; Oregon State University PACE. Checked Nov 19, 2026.",
+  "cards": [
+    {
+      "q": "Which part of the Advanced practical lists staff management and training?",
+      "answer": "Business of the Sommelier",
+      "wrong": [
+        "Hospitality and Service",
+        "Deductive tasting",
+        "Theory"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+    },
+    {
+      "q": "What does BevSpot suggest for checking bartenders' pours at the start of a shift?",
+      "answer": "A pour test with a graduated cylinder",
+      "wrong": [
+        "A weekly blind tasting",
+        "A count of empty bottles",
+        "A POS void report"
+      ],
+      "source": "https://bevspot.com/blog/variance-and-how-to-manage-it/"
+    },
+    {
+      "q": "What did a study cited by Oregon State University link to more wine sold?",
+      "answer": "More wine training for staff",
+      "wrong": [
+        "Longer wine lists at fine dining",
+        "Higher by-the-glass prices",
+        "Larger wine glasses"
+      ],
+      "source": "https://blog.pace.oregonstate.edu/boost-wine-sales-at-your-restaurant-5-proven-tips-from-industry-pros"
+    },
+    {
+      "q": "What question about staff training does the Court's practical feedback ask?",
+      "answer": "What would their quiz be, and how would you teach them?",
+      "wrong": [
+        "How many staff hold a certificate?",
+        "Which wines does the staff like most?",
+        "How much does training cost per hour?"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "q": "According to the Court's mentoring guidelines, its mission is mentoring what?",
+      "answer": "Great beverage service, not how to pass an exam",
+      "wrong": [
+        "How to pass each exam on the first try",
+        "Members' sales to the trade",
+        "Candidates toward fine-dining jobs"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Candidate-Mentoring-Guidelines.pdf"
+    },
+    {
+      "q": "Which is prohibited under the Court's mentoring guidelines?",
+      "answer": "Running a mock exam that simulates a Court exam",
+      "wrong": [
+        "Timing a candidate's practice tasting",
+        "Group tasting sessions",
+        "Critiquing a candidate's decanting"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Candidate-Mentoring-Guidelines.pdf"
+    },
+    {
+      "q": "Under the guidelines, what may a mentor be paid back for?",
+      "answer": "The cost of product (the wines)",
+      "wrong": [
+        "An hourly mentoring fee",
+        "A share of exam fees",
+        "A bonus when the candidate passes"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Candidate-Mentoring-Guidelines.pdf"
+    },
+    {
+      "q": "Which Court exam must be passed before the Certified Sommelier Examination?",
+      "answer": "Introductory Sommelier",
+      "wrong": [
+        "Advanced Sommelier",
+        "Master Sommelier Diploma",
+        "Deductive Tasting Workshop"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/"
+    },
+    {
+      "q": "Example: beginning inventory $20,000, purchases $8,000, ending inventory $18,000. What is COGS?",
+      "answer": "$10,000",
+      "wrong": [
+        "$6,000",
+        "$26,000",
+        "$46,000"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+    },
+    {
+      "q": "Example: COGS of $10,000 on wine sales of $40,000. What is the cost %?",
+      "answer": "25%",
+      "wrong": [
+        "4%",
+        "20%",
+        "40%"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+    },
+    {
+      "q": "How does BevSpot define variance?",
+      "answer": "Cost of product sold minus usage",
+      "wrong": [
+        "Sales minus purchases",
+        "Ending minus beginning inventory",
+        "Purchases minus usage"
+      ],
+      "source": "https://bevspot.com/blog/calculating-variance/"
+    },
+    {
+      "q": "When variance runs high, what does BevSpot say to check first?",
+      "answer": "Your own count and invoices",
+      "wrong": [
+        "Staff, for theft",
+        "Bartenders' pour sizes",
+        "The distributor's prices"
+      ],
+      "source": "https://bevspot.com/blog/variance-and-how-to-manage-it/"
+    },
+    {
+      "q": "Federally, how much of one wine brand may a supplier give a retail location as a sample?",
+      "answer": "Up to 3 liters",
+      "wrong": [
+        "Up to 1 liter",
+        "Up to 6 liters",
+        "Up to 9 liters"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-6.91"
+    },
+    {
+      "q": "Which federal rules cover a supplier giving a prize to a restaurant employee to win orders?",
+      "answer": "Commercial bribery, 27 CFR part 10",
+      "wrong": [
+        "Wine labeling, 27 CFR part 4",
+        "Spirits labeling, 27 CFR part 5",
+        "Basic permits, 27 CFR part 1"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-10.21"
+    },
+    {
+      "q": "Under federal rules, may a supplier pay restaurant staff's travel and lodging for an educational seminar?",
+      "answer": "No; the seminar is allowed, paid travel and lodging aren't",
+      "wrong": [
+        "Yes, if the trip is under three days",
+        "Yes, for managers only",
+        "Yes, if every distributor offers the same"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-6.94"
+    },
+    {
+      "q": "Which practice does the Court's Code of Ethics flag as pay-to-play?",
+      "answer": "Asking mentees for wine list placements in exchange for mentoring",
+      "wrong": [
+        "Teaching a free group tasting",
+        "Buying a wine after tasting a sample",
+        "Recommending a producer to a guest"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Code-Ethics-and-Professional-Responsibility-May-2021r.pdf"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "The Advanced Business of the Sommelier exam covers beverage alcohol program management, including costing, audits, list management, inventory management, staff management and training; exercises include reading and evaluating inventory sheets.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+    },
+    {
+      "fact": "Practical preparation suggestions: continue Business of the Sommelier exercises which require staff training of theoretical understanding: what would their quiz be? How would you teach them?",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "fact": "Oregon State University PACE cites Gultek et al. (2006): the amount of wine training offered by restaurants was related to the quantity of wine sold.",
+      "source": "https://blog.pace.oregonstate.edu/boost-wine-sales-at-your-restaurant-5-proven-tips-from-industry-pros"
+    },
+    {
+      "fact": "Teach staff 'the trade before the tricks of the trade': new staff start with the basics and the inventory, learning why they do what they do, not just how. Handing off a job moves from doing it all, to micromanaging, to macromanaging, to being available when needed.",
+      "source": "https://daily.sevenfifty.com/building-a-world-class-beverage-staff"
+    },
+    {
+      "fact": "Beverage professionals taste with staff every day, spend time on viticulture and vinification, describe tannins and acid to staff over and over so they can describe them to guests, and draw comparisons from unfamiliar grapes to common ones.",
+      "source": "https://daily.sevenfifty.com/how-to-elevate-wine-service-in-a-casual-setting"
+    },
+    {
+      "fact": "A quick pour test at the start of each shift, using a graduated cylinder and an old bottle filled with water, keeps bartenders aware of pours; don't punish them for failing.",
+      "source": "https://bevspot.com/blog/variance-and-how-to-manage-it/"
+    },
+    {
+      "fact": "The Court of Master Sommeliers is a four-level program: Introductory Sommelier Course and Examination (in person and online), Certified Sommelier Examination (in person; only after passing the Introductory), Advanced Sommelier Course and Examination (held independently; theory written, tasting verbal, practical), Master Sommelier Diploma Examination (oral theory, deductive tasting of six wines, practical).",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/"
+    },
+    {
+      "fact": "Mentoring guidelines: the CMS-A mission is mentoring great beverage service, not how to pass an examination; teach officially endorsed principles. Mentoring is voluntary. Fees for mentoring CMS-A exam preparation outside CMS-A courses are prohibited; reimbursement for product is acceptable. Sharing exact theory questions, service situations, blind wines or grading point weights is prohibited. Teaching to published standards is encouraged. Mentors must tell candidates that training wines and questions are a training tool, not an indication of exam content. Group mentoring is encouraged but not to be branded as official; mock examinations simulating CMS-A exams are prohibited.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Candidate-Mentoring-Guidelines.pdf"
+    },
+    {
+      "fact": "Mentoring, deductive tasting: teach to the full published grid; timing candidates, sharing personal methods and noting missed areas on the grid are encouraged; sessions should not mirror exam situations exactly; sharing point weights or lists of possible wines is prohibited. Theory: asking questions from personal study and sharing study techniques is encouraged; sharing the exact curriculum examined is prohibited. Practical: critiquing service is encouraged; sharing point weights or exact service situations is prohibited.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Candidate-Mentoring-Guidelines.pdf"
+    },
+    {
+      "fact": "Code of Ethics, Candidates' Bill of Rights: candidates may request mentorship and engage in a mentor-mentee relationship without fear of any expectation of reciprocity or quid pro quo. Mentoring is described as a primary responsibility of Master Sommeliers.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Code-Ethics-and-Professional-Responsibility-May-2021r.pdf"
+    },
+    {
+      "fact": "COGS = (BI + P) - EI; cost % = COGS ÷ wine sales.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=25"
+    },
+    {
+      "fact": "Variance ($) = cost of product sold − usage. Usage = starting inventory − ending inventory, adding inventory received. Cost of product sold = quantity sold of each product (POS product mix report) × its pour cost. Example: usage $10,000 and cost of product sold $8,000 over a week means the bar lost 20% of its product.",
+      "source": "https://bevspot.com/blog/calculating-variance/"
+    },
+    {
+      "fact": "Track sitting inventory in one unit of measurement, used continuously.",
+      "source": "https://bevspot.com/blog/bar-inventory-101-how-to-keep-track-of-your-stock/"
+    },
+    {
+      "fact": "When variance creeps up, check in order: your own count and invoice processing first, then pour consistency (pour tests, jiggers), and theft last. Record deliveries against orders; have staff document what they remove from storage; discrepancies between pulls, par levels and on-hand stock point to problems.",
+      "source": "https://bevspot.com/blog/variance-and-how-to-manage-it/"
+    },
+    {
+      "fact": "27 CFR 6.21: it is unlawful for an industry member to induce a retailer to purchase its products to the exclusion of others by an interest in the retailer's license or property; by furnishing, giving, renting, lending or selling equipment, fixtures, signs, supplies, money, services or other things of value (subject to subpart D exceptions); by paying or crediting the retailer for advertising, display or distribution service; by guaranteeing loans; by credit beyond the usual period; or by requiring quotas.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.21"
+    },
+    {
+      "fact": "27 CFR 6.1: part 6 doesn't exempt any person from State law. 6.3: part 6 applies only to transactions between industry members and retailers. 6.4(b): for malt beverages it applies only where State law imposes similar requirements.",
+      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-6"
+    },
+    {
+      "fact": "27 CFR 6.11: industry member = producer, importer or wholesaler of distilled spirits, wine or malt beverages; retailer = anyone selling them to consumers.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.11"
+    },
+    {
+      "fact": "27 CFR 6.91: an industry member may give a sample to a retailer who has not purchased the brand from it within the last 12 months: no more than 3 liters of any brand of wine per retail establishment.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.91"
+    },
+    {
+      "fact": "27 CFR 6.83: product displays given or sold may not exceed $300 per brand at any one time in any one retail establishment.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.83"
+    },
+    {
+      "fact": "27 CFR 6.88: equipment and supplies, including glassware, may be sold to a retailer at not less than the industry member's cost, with the price collected within 30 days.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.88"
+    },
+    {
+      "fact": "27 CFR 6.94: industry members may give or sponsor educational seminars for retailers' employees, but may not pay a retailer's expenses such as travel and lodging; nominal hospitality during the event is allowed.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.94"
+    },
+    {
+      "fact": "27 CFR 6.102: outside signs may be given or sold if they carry substantial advertising, the retailer isn't paid for displaying them, and they cost no more than $400.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.102"
+    },
+    {
+      "fact": "27 CFR 6.152: purchasing or renting display, shelf, storage or warehouse space (slotting allowances) puts retailer independence at risk.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.152"
+    },
+    {
+      "fact": "27 CFR 10.21: it is unlawful for an industry member to induce a trade buyer to buy its products by offering or giving a bonus, premium, compensation or other thing of value to any officer, employee or representative of the trade buyer. 10.24: sales contests offering prizes to trade buyer employees are inducements. 10.1: nothing in part 10 exempts anyone from State law.",
+      "source": "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-10"
+    },
+    {
+      "fact": "Code of Ethics (Hospitality): a Master Sommelier asking mentees for placements of wines the MS represents in exchange for mentorship, and quid pro quo ('pay-to-play') behavior, are examples of problematic behavior. (Integrity): materially misrepresenting the quality, condition or salability of a wine for personal or professional gain is problematic; so is unethical leveraging of a business relationship to unfairly benefit a third party.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Code-Ethics-and-Professional-Responsibility-May-2021r.pdf"
+    },
+    {
+      "fact": "Code of Conduct: avoid compromising situations that may be seen as unacceptable business practices, and adhere to sales practices expected of a buyer or seller that do not bring the integrity of Court titles into question. A significant relationship includes a dependent professional relationship with a buyer-seller dynamic; members must recuse themselves from examining such candidates.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Code-Ethics-and-Professional-Responsibility-May-2021r.pdf"
+    }
+  ],
+  "unverified": [
+    "State alcohol laws on gifts, samples, seminars, credit and trade practices differ by state and may be stricter than federal rules; none is described, and no state's rule is presented as ours.",
+    "Whether a particular gift, dinner or trip is lawful depends on the facts and the state; the lesson states the federal rules only, not legal advice.",
+    "The Court's mentoring guidelines are written for Court members mentoring candidates; using them as a model for in-house mentoring is our recommendation, not a Court rule.",
+    "The Code of Ethics applies to Court members, candidates and those taking part in Court activities; how it bears on a non-member's buying is our reading.",
+    "The Gultek et al. (2006) training finding is cited through Oregon State University's page; the study itself was not read.",
+    "BevSpot's statement that industry shrinkage 'hovers around 20%' is not used; its 20% figure appears only as its own worked example.",
+    "The training-rhythm visual is our example plan, not a Court or trade standard."
+  ],
+  "court": {
+    "outcome": "Out of gratitude for the guidance that each Master Sommelier has received, some degree of mentorship is a primary responsibility that Master Sommeliers must continually endeavor to shoulder.",
+    "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Code-Ethics-and-Professional-Responsibility-May-2021r.pdf",
+    "coverage": [
+      {
+        "topic": "Staff management and training",
+        "guide": "Pre-shift tastings, staff tastings, structure in plain words, handing off jobs.",
+        "where": "Training the team"
+      },
+      {
+        "topic": "Staff training quiz ('what would their quiz be?')",
+        "guide": "Write quizzes from your own list; teach the why.",
+        "where": "Training the team"
+      },
+      {
+        "topic": "Certification levels",
+        "guide": "Introductory, Certified, Advanced, Master Sommelier Diploma.",
+        "where": "Mentoring toward the Court's levels"
+      },
+      {
+        "topic": "Candidate Mentoring Guidelines: general rules",
+        "guide": "Voluntary, no fees, no exam content, no mock exams.",
+        "where": "Mentoring toward the Court's levels"
+      },
+      {
+        "topic": "Mentoring: deductive tasting, theory and practical service",
+        "guide": "Encouraged and prohibited practices in each area.",
+        "where": "Mentoring toward the Court's levels"
+      },
+      {
+        "topic": "Candidates' Bill of Rights: mentoring without reciprocity",
+        "guide": "No quid pro quo in mentoring.",
+        "where": "Mentoring toward the Court's levels; Ethics with suppliers"
+      },
+      {
+        "topic": "Costing",
+        "guide": "COGS and cost % for the month.",
+        "where": "The numbers each month"
+      },
+      {
+        "topic": "Inventory sheets and audits",
+        "guide": "Variance, cause-finding order, delivery and pull logs.",
+        "where": "The numbers each month"
+      },
+      {
+        "topic": "Code of Ethics: Charter of Values (hospitality, integrity)",
+        "guide": "No pay-to-play; never misstate a wine's quality or condition.",
+        "where": "Ethics with suppliers"
+      },
+      {
+        "topic": "Code of Conduct: sales practices of a buyer or seller",
+        "guide": "Clean dealing; buyer-seller ties count as significant relationships.",
+        "where": "Ethics with suppliers"
+      }
+    ]
+  },
+  "v3": {
+    "video": null,
+    "sections": [
+      {
+        "name": "Training the team",
+        "video": {
+          "youtubeId": "Is8aO2HZWpQ",
+          "title": "What Is The Role Of a Head Sommelier?: Lindsey Young",
+          "by": "Beverage Trade Network",
+          "length": "5:38"
+        },
+        "keyPoints": [
+          {
+            "big": "TASTE DAILY",
+            "line": "short tastings build servers' confidence and vocabulary."
+          },
+          {
+            "big": "STRUCTURE",
+            "line": "teach acid and tannin in words guests understand."
+          },
+          {
+            "big": "QUIZ",
+            "line": "the Court asks what your staff's quiz would be."
+          },
+          {
+            "big": "POUR TEST",
+            "line": "a graduated cylinder check keeps pours consistent."
+          },
+          {
+            "big": "BASICS FIRST",
+            "line": "inventory and systems before the tricks."
+          }
+        ],
+        "read": {
+          "bigIdea": "Teach the team, and the team sells the wine.",
+          "where": "The Court counts **staff management and training** as part of the program, and its feedback asks what your team's **quiz** would be. It pays: one study tied more wine training to more wine sold.",
+          "stopsTitle": "Four tools",
+          "stops": [
+            {
+              "name": "Pre-shift",
+              "text": "Taste a wine, name its **structure** in plain words, give one line to say at the table. Short, and every day."
+            },
+            {
+              "name": "Staff tastings",
+              "text": "Put the **vineyard** and the **winery** behind each wine. Compare a new grape to one guests already know."
+            },
+            {
+              "name": "Quizzes",
+              "text": "Write the **quiz** from your own list and service. Teach why each step matters, not only how."
+            },
+            {
+              "name": "Pour tests",
+              "text": "A **graduated cylinder** and a water-filled bottle at the start of a shift. Coach, don't punish."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "One way to put it together:",
+          "mixup": "**Training** teaches the whole team your list and your service. **Mentoring** grows one person toward the Court's levels."
+        },
+        "check": [
+          0,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Mentoring toward the Court's levels",
+        "video": {
+          "youtubeId": "dKR7opYpdHc",
+          "title": "Getting Started With CMS-A With Robert Jones, MS: Court of Master Sommeliers, Americas",
+          "by": "Court of Master Sommeliers, Americas",
+          "length": "1:17"
+        },
+        "keyPoints": [
+          {
+            "big": "STANDARDS",
+            "line": "teach the Court's published standards, not the test."
+          },
+          {
+            "big": "NO FEES",
+            "line": "for exam-prep mentoring outside Court courses."
+          },
+          {
+            "big": "NO MOCK EXAMS",
+            "line": "group study yes; exam simulations no."
+          },
+          {
+            "big": "TRAINING TOOL",
+            "line": "say so: practice wines aren't exam content."
+          },
+          {
+            "big": "NO STRINGS",
+            "line": "mentoring never comes with an ask in return."
+          }
+        ],
+        "read": {
+          "bigIdea": "Mentor to the standard; the exam follows.",
+          "where": "The Court's **mentoring guidelines** are written for its members, and they make a good model for any program lead growing sommeliers. The mission is **great beverage service**, not how to pass.",
+          "stopsTitle": "Four stops",
+          "stops": [
+            {
+              "name": "The ladder",
+              "text": "**Introductory** (course and exam), **Certified** (in person, after Introductory), **Advanced** (course and exam held separately), then the **Master Sommelier Diploma**."
+            },
+            {
+              "name": "Tasting",
+              "text": "Teach the full published **grid**, time the flights, share your method, point out missed boxes. Don't recreate the exam room, and never share **point weights**."
+            },
+            {
+              "name": "Theory and service",
+              "text": "Ask questions from your own study, share how you study, critique service against the **published standards**. Never share exact **questions** or service situations."
+            },
+            {
+              "name": "Boundaries",
+              "text": "No **fees** for exam-prep mentoring outside Court courses; paying back product is fine. Under the Code of Ethics, mentees can ask for help with no expectation of **reciprocity**."
+            }
+          ],
+          "visual": 1,
+          "mixup": "**Group study** is encouraged. A **mock exam** that simulates the Court's is prohibited."
+        },
+        "check": [
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "name": "The numbers each month",
+        "video": {
+          "youtubeId": "CZBSIOg-yBg",
+          "title": "A New Online Course From The Court of Master Sommeliers, Americas: SommBIZ",
+          "by": "Court of Master Sommeliers, Americas",
+          "length": "1:42"
+        },
+        "keyPoints": [
+          {
+            "big": "COGS",
+            "line": "beginning + purchases − ending inventory."
+          },
+          {
+            "big": "COST %",
+            "line": "COGS ÷ wine sales for the same period."
+          },
+          {
+            "big": "VARIANCE",
+            "line": "cost of product sold minus usage."
+          },
+          {
+            "big": "COUNT FIRST",
+            "line": "check your count and invoices before blaming anyone."
+          },
+          {
+            "big": "AUDIT",
+            "line": "match deliveries to orders; log every pull."
+          }
+        ],
+        "read": {
+          "bigIdea": "Close the month the same way every time.",
+          "where": "Each month, counts and sales become three numbers: **COGS**, **cost %** and **variance**. The Court tests the same skills: costing, **inventory sheets** and **audits**.",
+          "stopsTitle": "Four steps to close",
+          "stops": [
+            {
+              "name": "COGS",
+              "text": "**Beginning + purchases − ending.** Example: $20,000 + $8,000 − $18,000 = **$10,000**. Divide by $40,000 in wine sales: **25%**."
+            },
+            {
+              "name": "Variance",
+              "text": "What the POS says you sold, at cost, minus what the counts say you used. Example: $9,500 − $10,000 = **−$500**, 5% of usage."
+            },
+            {
+              "name": "Find the cause",
+              "text": "In order: your own **count** and **invoices**, then **pours** (pour tests, jiggers), and only then **theft**."
+            },
+            {
+              "name": "Audit",
+              "text": "Match **deliveries** to orders and log what leaves storage. Gaps between pulls, par and what's on hand show you where to look."
+            }
+          ],
+          "visual": 0,
+          "mixup": "**Usage** is what your counts say you used. **Cost of product sold** is what your sales say you should have used. **Variance** is the gap."
+        },
+        "check": [
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "name": "Ethics with suppliers",
+        "video": null,
+        "keyPoints": [
+          {
+            "big": "TIED HOUSE",
+            "line": "suppliers can't buy a retailer's loyalty with things of value."
+          },
+          {
+            "big": "3 LITERS",
+            "line": "the federal sample limit per wine brand per location."
+          },
+          {
+            "big": "NO BRIBES",
+            "line": "no supplier prizes or payments to a retailer's staff."
+          },
+          {
+            "big": "STATE LAW",
+            "line": "always applies on top of the federal rules."
+          },
+          {
+            "big": "NO PAY-TO-PLAY",
+            "line": "the Court's code bars trading mentoring for placements."
+          }
+        ],
+        "read": {
+          "bigIdea": "Buy for the guest, never for the gift.",
+          "where": "Federal **tied-house** rules keep suppliers from buying a retailer's loyalty. **Commercial bribery** rules cover gifts to the people who work there. Each **state** has its own laws on top; check them before you accept anything.",
+          "stopsTitle": "Four lines not to cross",
+          "stops": [
+            {
+              "name": "What's barred",
+              "text": "Money, equipment, signs, services or paid **advertising** from a supplier, **quotas**, and slotting fees for shelf or display space put a retailer's **independence** at risk."
+            },
+            {
+              "name": "What's allowed",
+              "text": "Federally: **samples** (up to 3 L per wine brand, if not bought in 12 months), staff **seminars** without paid travel, displays up to **$300** per brand."
+            },
+            {
+              "name": "You personally",
+              "text": "A supplier can't give a retailer's **employee** a bonus or prize to win orders, and **sales contests** for retail staff count as inducements."
+            },
+            {
+              "name": "The Court's code",
+              "text": "No **pay-to-play**. Never misstate a wine's **quality or condition** for gain. Keep buying and selling clean enough that the title is never in question."
+            }
+          ],
+          "visual": 0,
+          "mixup": "**Tied-house** rules (part 6) cover a supplier and the **business**. **Commercial bribery** rules (part 10) cover a supplier and the business's **employees**."
+        },
+        "check": [
+          12,
+          13,
+          14
+        ]
+      }
+    ]
+  }
+}

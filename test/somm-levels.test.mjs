@@ -163,7 +163,7 @@ test('Sommelier Level 3: level page, lessons, hub, final, practical and certific
   assert.ok(hub2.includes('/certificate/somm-3'), 'the finals band shows the certificate');
 });
 
-test('Sommelier Level 3 is shared: another company reads it, with nothing of The Baldwin’s', async () => {
+test('Sommelier Levels 3 and 4 are shared: another company reads them, with nothing of The Baldwin’s', async () => {
   assert.equal((await sup('/api/setup', { method: 'POST', body: { name: 'Super', email: 'super@mise.test', password: 'long-enough-1' } })).status, 200);
   const secret = (await sup('/api/2fa/start', { method: 'POST' })).data.secret;
   assert.equal((await sup('/api/2fa/enable', { method: 'POST', body: { code: code(secret) } })).status, 200);
@@ -171,7 +171,7 @@ test('Sommelier Level 3 is shared: another company reads it, with nothing of The
   assert.equal(add.status, 200);
   assert.equal((await owner2(`/api/invite/${add.data.link.split('/').pop()}`, { method: 'POST', body: { name: 'Teodora Lisle', password: 'long-enough-2' } })).status, 200);
   const index = (await owner2('/api/index')).data;
-  const somm = index.filter((e) => /^sommelier-program\/level-3/.test(e.slug));
+  const somm = index.filter((e) => /^sommelier-program\/level-[34]/.test(e.slug));
   assert.ok(somm.length > 20, 'the level and its lessons');
   for (const e of [index.find((x) => x.slug === 'sommelier-program'), ...somm]) {
     const r = await owner2('/api/page/' + e.file);
@@ -179,4 +179,64 @@ test('Sommelier Level 3 is shared: another company reads it, with nothing of The
     assert.ok(!THEIRS.test(JSON.stringify(r.data)), e.slug + ' names nothing of The Baldwin’s');
   }
   assert.equal((await owner2('/api/quiz/catalog')).data.quizzes.find((q) => q.id === 't:final:somm-3').count, 60);
+});
+
+test('Sommelier Level 4 · Master Prep: the lessons, on the Court’s Master Sommelier Diploma', () => {
+  const lessons = checkLessons('content/manual-l4', 4, { minVideos: 12 });
+  assert.equal(lessons.length, 6, 'six lessons');
+  const all = JSON.stringify(lessons);
+  assert.ok(/75%/.test(all) && /60%/.test(all), 'the Master pass mark against the Advanced one, as the Court states them');
+  assert.ok(lessons.some((c) => c.slug === 'master-wine-list') && lessons.some((c) => c.slug === 'master-leading'), 'leading a wine program');
+});
+
+test('Sommelier Level 4: by invitation; final, practical and certificate once invited', async () => {
+  const lessons = readDir('content/manual-l4').sort((a, b) => a.number - b.number);
+  const index = (await owner('/api/index')).data;
+  const file = (slug) => index.find((e) => e.slug === slug)?.file;
+  const l4 = index.find((e) => e.slug === 'sommelier-program/level-4');
+  assert.ok(l4 && l4.title === 'Level 4', 'Level 4 is in the book');
+  for (const c of lessons) for (const [i] of c.sections.entries()) assert.ok(index.some((e) => e.file === `l-${c.slug}~${i}`), `${c.slug} lesson ${i} is in the book`);
+  // the owner can open it, and is told how invitations work
+  const op = JSON.stringify((await owner('/api/page/' + l4.file)).data);
+  assert.ok(op.includes('MASTER PREP') && op.includes('t%3Afinal%3Asomm-4') && op.includes('Present a wine list') && op.includes('INVITE YOUR TEAM ON PEOPLE') && op.includes('master-sommelier-diploma-examination'));
+  assert.ok(!op.includes('· Coming') && !op.includes('· coming'), 'every Sommelier level is built');
+  const hub = JSON.stringify((await owner('/api/page/' + file('sommelier-program'))).data);
+  assert.ok(hub.includes('"/sommelier-program/level-4"') && hub.includes('"By invitation"') && hub.includes(`${lessons.length} lessons`) && hub.includes('t%3Afinal%3Asomm-4'), 'the hub: Level 4 card and its final');
+  const cat = (await owner('/api/quiz/catalog')).data;
+  assert.equal(cat.quizzes.find((q) => q.id === 't:final:somm-4').count, 60);
+  assert.equal(cat.quizzes.filter((q) => q.group === 'Sommelier Level 4').length, lessons.length + 1, 'every lesson’s quiz and the final');
+  // a member of staff sees the level but can't open it (the server says no, not just the page)
+  const team = (await owner('/api/team')).data;
+  const ivo = person();
+  assert.equal((await ivo('/api/join', { method: 'POST', body: { code: team.company.joinCode, name: 'Bram Okafor', pin: '9753', storeId: 1 } })).status, 200);
+  const sp = JSON.stringify((await ivo('/api/page/' + l4.file)).data);
+  assert.ok(sp.includes('BY INVITATION · ASK YOUR MANAGER') && !sp.includes('t%3Afinal%3Asomm-4') && !sp.includes('"/sommelier-program/level-4/master-'), 'locked: no final, lessons don’t open');
+  const last = lessons[lessons.length - 1];
+  const lockedLesson = JSON.stringify((await ivo(`/api/page/l-${last.slug}~1`)).data);
+  assert.ok(lockedLesson.includes('ASK YOUR MANAGER') && !lockedLesson.includes('WHAT THE COURT EXPECTS'), 'a lesson address shows the level page instead');
+  assert.equal((await ivo('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:somm-4' } })).status, 403);
+  assert.equal((await ivo('/api/quiz/start', { method: 'POST', body: { quiz: 't:study:' + lessons[0].slug } })).status, 403);
+  assert.ok(!(await ivo('/api/quiz/catalog')).data.quizzes.some((q) => q.id === 't:final:somm-4'), 'not in the staff quiz list');
+  assert.ok(JSON.stringify((await ivo('/api/page/' + file('sommelier-program'))).data).includes('Button · By Invitation'), 'the hub’s finals band says by invitation');
+  // the owner invites him on People; Remove takes it back; invite again
+  const id = (await owner('/api/path/team')).data.people.find((x) => x.name === 'Bram Okafor').id;
+  const inv = (await owner('/api/path/signoff', { method: 'POST', body: { userId: id, key: 'program:somm-4:invite' } })).data;
+  assert.ok(inv.programs.find((g) => g.cert === 'Master Prep').invite.at, 'invited');
+  await owner('/api/path/signoff', { method: 'DELETE', body: { userId: id, key: 'program:somm-4:invite' } });
+  assert.equal((await ivo('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:somm-4' } })).status, 403, 'removed');
+  await owner('/api/path/signoff', { method: 'POST', body: { userId: id, key: 'program:somm-4:invite' } });
+  assert.ok(JSON.stringify((await ivo('/api/page/' + l4.file)).data).includes('✓ INVITED'));
+  assert.ok(JSON.stringify((await ivo(`/api/page/l-${last.slug}~1`)).data).includes('WHAT THE COURT EXPECTS'), 'the lessons open');
+  // the final (60 questions, all Level 4 cards), then the practical a manager signs off = the certificate
+  const q = (await ivo('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:somm-4' } })).data;
+  assert.equal(q.items.length, 60);
+  const cards = new Map(lessons.flatMap((c) => c.cards.map((k, i) => [`study:${c.slug}:${i}`, k])));
+  for (const ref of q.items) { const x = q.questions[ref]; assert.ok(cards.has(ref), 'a Level 4 card'); assert.equal(new Set(x.options).size, 4); assert.equal(x.options[x.answer], cards.get(ref).answer); }
+  const r = (await ivo('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: q.items.map((ref) => q.questions[ref].answer) } })).data;
+  assert.equal(r.score, 60);
+  assert.ok(!(await ivo('/api/certificates')).data.certificates.some((c) => c.key === 'somm-4'), 'no certificate before the practical');
+  await owner('/api/path/signoff', { method: 'POST', body: { userId: id, key: 'program:somm-4:practical' } });
+  const cert = (await ivo('/api/certificates')).data.certificates.find((c) => c.key === 'somm-4');
+  assert.ok(cert && cert.title === 'Master Prep' && cert.number.startsWith('SOMM4-') && cert.practical, 'Master Prep, earned');
+  assert.ok(/Only the Court awards the Master Sommelier title/.test(cert.fine), 'its own fine print');
 });

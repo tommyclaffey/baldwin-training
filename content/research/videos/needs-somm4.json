@@ -1,0 +1,13 @@
+{
+ "note": "Level 4 (Master Prep) sections from the somm4 video pass on content/manual-l4/, 2026-11-19. 23 of 24 sections got a video plus the hero; one is kept as a photo. Skipped: @CourtofMasterSomm (not the Court of Master Sommeliers, Americas; looks AI-made) videos on Madeira, liqueurs/aperitif wines, Cognac and service; general business-ethics videos on supplier gifts (not about wine or the Court).",
+ "kept": [
+  {
+   "file": "content/manual-l4/master-leading.json",
+   "slug": "master-leading",
+   "level": 4,
+   "section": "Ethics with suppliers",
+   "keep": "photo",
+   "why": "No video from the Court, trade media or an official body on sommelier ethics with suppliers (tied-house rules, gifts, the Court's code). Searches only turned up generic corporate gift-policy clips and consumer pieces on grocery-store wine."
+  }
+ ]
+}

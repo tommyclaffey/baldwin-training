@@ -1,0 +1,855 @@
+{
+  "program": "somm",
+  "programLevel": 4,
+  "number": 1,
+  "slug": "master-the-diploma",
+  "title": "The Master Sommelier Diploma",
+  "script": "Chapter one",
+  "lead": "What the Court's highest title asks of you: who can apply, the three parts and the 75% mark, how the oral theory works, the practical and six-wine tasting, and the clock that starts when you pass Theory.",
+  "minutes": 20,
+  "intro": {
+    "script": "Start here",
+    "title": "THREE PARTS, 75% EACH",
+    "text": "The Master Sommelier Diploma has the same three parts as the Advanced exam. The pass mark on each part rises from 60% to 75%.",
+    "tiers": [
+      {
+        "name": "Theory",
+        "note": "Oral, not written. Always taken first."
+      },
+      {
+        "name": "Practical",
+        "note": "Wine service, salesmanship and business"
+      },
+      {
+        "name": "Tasting",
+        "note": "Six wines in 25 minutes"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "The title and the way in",
+      "source": "Court of Master Sommeliers, Americas: Master Sommelier Diploma page; About Master Sommeliers page",
+      "lines": [
+        {
+          "label": "The title",
+          "text": "The Court calls Master Sommelier the highest honor in the field: mastery of wine knowledge, hospitality and service, deductive tasting and business."
+        },
+        {
+          "label": "The way in",
+          "text": "Only those who have passed the Advanced Sommelier exam may apply. The Introductory, Certified and Advanced levels all come first."
+        }
+      ],
+      "chips": {
+        "label": "Before you apply",
+        "items": [
+          "Introductory",
+          "Certified",
+          "Advanced (passed)",
+          "Application of Intent"
+        ]
+      },
+      "know": [
+        "Passing the Advanced Sommelier Examination makes you eligible to apply for the Master Sommelier Diploma.",
+        "You apply with the Court's Application of Intent. An email saying you intend to sit is not accepted.",
+        "There are two applications: Theory (first-timers and anyone who has reset) and Practical and Tasting (anyone holding at least Theory).",
+        "The examiners are Master Sommeliers chosen by the Examination Committee under the Court's Examiner Rotation Policy.",
+        "The Court's About page says the road often takes 5 to 10 years, or longer."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "The four levels, in order",
+          "items": [
+            {
+              "name": "Introductory",
+              "text": "Course and exam",
+              "meta": "required"
+            },
+            {
+              "name": "Certified",
+              "text": "Exam",
+              "meta": "required"
+            },
+            {
+              "name": "Advanced",
+              "text": "Course and exam",
+              "meta": "required"
+            },
+            {
+              "name": "Master Sommelier",
+              "text": "Diploma exam",
+              "meta": "the title"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Three parts, 75% on each",
+      "source": "Court of Master Sommeliers, Americas: Master Sommelier Diploma page; About Master Sommeliers page; MS Practical & Tasting feedback example",
+      "lines": [
+        {
+          "label": "The parts",
+          "text": "An oral theory exam, a practical exam in wine service and business, and a deductive tasting of six wines."
+        },
+        {
+          "label": "The bar",
+          "text": "Each part needs at least 75%. At Advanced the mark was 60%."
+        }
+      ],
+      "know": [
+        "The theory exam is oral, not written.",
+        "The practical covers restaurant wine service and salesmanship; the Court's About page adds business calculations.",
+        "The Court's practical feedback example reports on a Sparkling table, a Decanting table and Business of the Sommelier.",
+        "The tasting is six wines in 25 minutes; the Court's About page says three whites and three reds.",
+        "Candidates wear professional working attire and bring every tool of the sommelier trade."
+      ],
+      "visuals": [
+        {
+          "type": "tiles",
+          "title": "The three parts",
+          "dark": true,
+          "items": [
+            {
+              "name": "Theory",
+              "text": "Oral. Wine regions and law, fortified wines, spirits, beer, cider and storage."
+            },
+            {
+              "name": "Practical",
+              "text": "Service, salesmanship and business, with sparkling and decanting tables."
+            },
+            {
+              "name": "Tasting",
+              "text": "Six wines in 25 minutes, described aloud to a panel."
+            }
+          ]
+        },
+        {
+          "type": "scale",
+          "title": "Pass mark on each part",
+          "rows": [
+            {
+              "name": "Advanced",
+              "value": "60%",
+              "pct": 0.6
+            },
+            {
+              "name": "Master Sommelier",
+              "value": "75%",
+              "pct": 0.75
+            }
+          ],
+          "note": "Every part has to reach the mark on its own."
+        }
+      ]
+    },
+    {
+      "name": "The oral theory",
+      "source": "Court of Master Sommeliers, Americas: MS Theory Exam Resource Guide; MS Theory feedback example; Theory Answer Guidelines",
+      "lines": [
+        {
+          "label": "What it tests",
+          "text": "The world's wine areas and grapes, international wine law, fortified wines, distillation, spirits, liqueurs, beer and cider, and how to store every product."
+        },
+        {
+          "label": "How it asks",
+          "text": "The Court's feedback example sorts questions into four types, from a quick fact to a short reasoned explanation."
+        }
+      ],
+      "know": [
+        "Four question types: simple short answer, extrapolation short answer, complex structure with extrapolation, and logical reasoning.",
+        "The resource guide calls the Master exam a significant step up from Advanced, built on Introductory, Certified and Advanced knowledge.",
+        "Balance books with current sources (government regulation, marketing bodies, producer and importer sites); a book can be out of date when it's printed.",
+        "When sources conflict, the guide says to rely on the most established, academic and contemporary ones.",
+        "For structure questions, answer in deductive tasting terms; for numbers, use the units the question uses."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "Four kinds of question",
+          "rows": [
+            {
+              "name": "Simple short answer",
+              "meta": "one direct fact"
+            },
+            {
+              "name": "Extrapolation short answer",
+              "meta": "a term you must unpack first"
+            },
+            {
+              "name": "Complex structure",
+              "meta": "longer, with a qualifier"
+            },
+            {
+              "name": "Logical reasoning",
+              "meta": "a short why or how"
+            }
+          ],
+          "note": "From the Court's MS Theory feedback example."
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "CAUSE & EFFECT",
+              "title": "Why it tastes that way",
+              "text": "Climate and place\nGrape growing and winemaking\nWine law and production rules\nVintage climate and style"
+            },
+            {
+              "label": "TABLESIDE",
+              "title": "What a guest asks about",
+              "text": "Classification and hierarchy\nProducers and brands\nLabel terms and named vineyards\nPrice and vintage reputation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "The clock: Theory first, then three years",
+      "source": "Court of Master Sommeliers, Americas: Master Sommelier Diploma page (timing and Forced Wait Policy); MS Theory feedback example",
+      "lines": [
+        {
+          "label": "Order",
+          "text": "Theory comes first. Pass it, and you have three consecutive years to pass the Practical and the Tasting."
+        },
+        {
+          "label": "Reset",
+          "text": "If all three parts aren't passed in that window, the whole exam is retaken."
+        }
+      ],
+      "know": [
+        "A candidate who passes one or two parts may retake the failed ones inside the window.",
+        "Forced one-year wait on Theory: below 45% on a first try, below 55% on a second in a row, below 67% on a third in a row.",
+        "You may keep sitting Theory each year as long as you score 67% or higher, which the Court notes is within 10 points of 75%.",
+        "A year off, by choice or forced, resets the percentage clock.",
+        "The Court's feedback example advises only small changes in your preparation shortly before the Practical and Tasting."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "The forced-wait ladder (MS Theory)",
+          "items": [
+            {
+              "name": "First attempt",
+              "text": "Below 45% means a year off",
+              "meta": "try 1"
+            },
+            {
+              "name": "Second in a row",
+              "text": "Below 55% means a year off",
+              "meta": "try 2"
+            },
+            {
+              "name": "Third in a row",
+              "text": "Below 67% means a year off",
+              "meta": "try 3"
+            },
+            {
+              "name": "After that",
+              "text": "Keep 67% or more to sit each year",
+              "meta": "ongoing"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "3",
+          "title": "Consecutive years",
+          "text": "The window after a Theory pass to pass the Practical and the Tasting. Miss it and all three parts start over."
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "75%",
+      "b": "60%",
+      "why": "75% is the Master Sommelier pass mark on each part. 60% was the Advanced mark."
+    },
+    {
+      "a": "Theory application",
+      "b": "Practical and Tasting application",
+      "why": "Theory: first-timers and anyone who has reset. Practical and Tasting: anyone holding at least Theory."
+    },
+    {
+      "a": "Three-year window",
+      "b": "Forced wait",
+      "why": "The window follows a Theory pass. The forced wait follows a low Theory score."
+    },
+    {
+      "a": "Simple short answer",
+      "b": "Logical reasoning",
+      "why": "One asks for a fact. The other asks for a short explanation of why or how."
+    }
+  ],
+  "sources": "Court of Master Sommeliers, Americas: Master Sommelier Diploma Examination page, About Master Sommeliers page, Master Sommelier Diploma Theory Exam Resource Guide, MS Theory and MS Practical & Tasting feedback examples, and Theory Answer Guidelines. Checked Nov 19, 2026.",
+  "cards": [
+    {
+      "q": "Which exam must you pass to be eligible to apply for the Master Sommelier Diploma?",
+      "answer": "The Advanced Sommelier Examination",
+      "wrong": [
+        "The Certified Sommelier Examination",
+        "The Introductory Sommelier Examination",
+        "The WSET Level 4 Diploma"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "q": "How does a candidate tell the Court they intend to sit the Master Sommelier Diploma?",
+      "answer": "By completing the Application of Intent",
+      "wrong": [
+        "By emailing the Court",
+        "By sending a letter from a Master Sommelier",
+        "By booking a Pearson VUE testing center"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "q": "Who sits on the Master Sommelier Diploma examining panel?",
+      "answer": "Master Sommeliers chosen by the Examination Committee",
+      "wrong": [
+        "Advanced Sommeliers chosen by lottery",
+        "Masters of Wine from the Institute",
+        "Court staff educators"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "q": "A candidate holds only the Theory portion. Which application do they file next?",
+      "answer": "Practical and Tasting",
+      "wrong": [
+        "Theory",
+        "Theory and Practical",
+        "Theory and Tasting"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "q": "What is the minimum passing score on each part of the Master Sommelier Diploma?",
+      "answer": "75%",
+      "wrong": [
+        "60%",
+        "70%",
+        "80%"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "q": "In what form is the Master Sommelier theory exam given?",
+      "answer": "Oral, answered aloud to a panel",
+      "wrong": [
+        "Written, at a Pearson VUE center",
+        "Online, multiple choice",
+        "Written essays on paper"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "q": "How many wines, and in how long, make up the Master Sommelier tasting?",
+      "answer": "Six wines in 25 minutes",
+      "wrong": [
+        "Six wines in 30 minutes",
+        "Four wines in 25 minutes",
+        "Eight wines in 40 minutes"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "q": "Which three parts does the Court's Master Practical feedback example report on?",
+      "answer": "Sparkling table, Decanting table, Business of the Sommelier",
+      "wrong": [
+        "Sparkling table, Cocktail table, Sake service",
+        "Decanting table, Beer service, Cheese pairing",
+        "Aperitif table, Coffee service, Cigar service"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "q": "Which question type in the Court's MS Theory feedback asks for a short explanation of a concept?",
+      "answer": "Logical reasoning",
+      "wrong": [
+        "Simple short answer",
+        "Extrapolation short answer",
+        "Complex structure short answer"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-Theory-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "q": "When study sources conflict, which does the MS resource guide say to rely on?",
+      "answer": "The most established, academic and contemporary",
+      "wrong": [
+        "The most recent social media post",
+        "The oldest printed book",
+        "Whichever source a mentor prefers"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/01/Master-Sommelier-Diploma-Theory-Exam-Resource-Guide.pdf"
+    },
+    {
+      "q": "Which pair names the two families of topics in the MS Theory feedback example?",
+      "answer": "Cause & Effect and Tableside",
+      "wrong": [
+        "Old World and New World",
+        "Still and Sparkling",
+        "Red and White"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-Theory-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "q": "A theory question asks about a wine's acidity. Which kind of answer does the Court want?",
+      "answer": "Deductive tasting terms, such as medium plus or high",
+      "wrong": [
+        "Grams per liter of tartaric acid",
+        "A pH reading",
+        "Words such as zesty or bright"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/08/CMS-A-Theory-Answer-Guidelines-082925.pdf"
+    },
+    {
+      "q": "After passing Theory, how long does a candidate have to pass the Practical and the Tasting?",
+      "answer": "Three consecutive years",
+      "wrong": [
+        "One calendar year",
+        "Two consecutive years",
+        "Five consecutive years"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "q": "Below what score on a first Theory attempt is a one-year wait forced?",
+      "answer": "45%",
+      "wrong": [
+        "55%",
+        "60%",
+        "67%"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "q": "What happens if all three parts aren't passed inside the window?",
+      "answer": "The entire exam must be retaken",
+      "wrong": [
+        "Only the Tasting must be retaken",
+        "Theory is kept for life",
+        "The candidate returns to the Advanced exam"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "q": "What does a voluntary year off between Theory attempts do?",
+      "answer": "Resets the percentage requirement clock",
+      "wrong": [
+        "Raises the pass mark to 80%",
+        "Cancels the Advanced title",
+        "Bars the candidate for three years"
+      ],
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "The Master Sommelier title is the highest honor in the field, representing mastery of wine knowledge, hospitality and service, deductive tasting and business fundamentals.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "Students who pass the Advanced Sommelier Examination are eligible to apply for the Master Sommelier Diploma Examination.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "Before the Master Sommelier Diploma, candidates go through three mandatory prerequisite levels: Introductory Sommelier Course & Examination, Certified Sommelier Examination, Advanced Sommelier Course & Examination.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/"
+    },
+    {
+      "fact": "Becoming a Master Sommelier typically takes several years; on average 5 to 10 years or longer (About page).",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/"
+    },
+    {
+      "fact": "Candidates must complete the Application of Intent; emails stating intent are not accepted.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "Theory application: for those sitting the first time or who have reset and hold no portions. Hospitality & Service Practical and Tasting application: for those holding at least the Theory portion.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "Members of the examining panel are Master Sommeliers chosen by the Examination Committee according to the CMS-A Examiner Rotation Policy.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "The exam has three parts like the Advanced: a theory examination (oral, not written), a deductive tasting of six wines, and a practical wine service and business examination.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "Minimum passing score on each of the three sections is 75%, as opposed to 60% for the Advanced Sommelier Examination.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "Candidates wear professional working attire, provide all tools of the sommelier trade, show the highest technical skill and knowledge, the courtesy and hospitality of a Master Sommelier, and excellent salesmanship (described as essential).",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "Practical: aperitifs; glassware for all beverages in lounge, restaurant or private function room; menu and wine list recommendations with vintages; present, prepare (decanting when necessary) and serve wines; brandies, liqueurs and spirits with proper portions; questions and complaints with skill, elegance and diplomacy.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "The About page describes the Hospitality & Service portion as a restaurant-like scenario including presentation, decanting, glassware selection, pairing recommendations, business calculations and salesmanship.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/"
+    },
+    {
+      "fact": "The MS Practical feedback reports on the Sparkling Table, Decanting Table and Business of the Sommelier; Tasting feedback reports Sight, Nose & Palate, Structure and Conclusions.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "fact": "Tasting: candidates describe six different wines clearly and accurately within twenty-five minutes, identifying where appropriate grape varieties, country, district and appellation of origin, and vintages.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "The About page describes the tasting as 6 wines tasted blind in 25 minutes, 3 red and 3 white, done verbally before a panel of Master Sommeliers.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/"
+    },
+    {
+      "fact": "The About page describes the Theory as a one-hour verbal exam that also covers beer, sake, spirits and cocktails.",
+      "source": "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/"
+    },
+    {
+      "fact": "Theory topics: wine areas and products; principal grapes and where grown; international wine laws (EC, US, Australia, others); fortified wines, vinification, storage and handling; distillation, spirits and liqueurs; beers and ciders and why styles vary; storing products in optimum condition.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "MS Theory feedback: the goal is comprehension; four question types: simple short answer, extrapolation simple short answer, complex structure extrapolation simple short answer, and logical reasoning (short explanation of a concept).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-Theory-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "fact": "MS Theory feedback groups topics into Cause & Effect (climate, geography, grape growing, grape variety, non-wine base material, law and production, soil, style, vintage climate and style, wine law, winemaking) and Tableside (classification and hierarchy, general and label terms, history and lore, producers and brands, named vineyards, price, vintage price and reputation).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-Theory-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "fact": "The resource guide: the MS Diploma is a significant step up in difficulty from Advanced; the exam relies heavily on foundational knowledge from the Introductory, Certified and Advanced levels; master core principles rather than obscure details.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/01/Master-Sommelier-Diploma-Theory-Exam-Resource-Guide.pdf"
+    },
+    {
+      "fact": "The resource guide: even the best books can be outdated on publication; balance them with current sources such as government regulation and marketing bodies, importer and producer websites, and educational platforms. With conflicting sources, rely on the most established, academic and contemporary.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/01/Master-Sommelier-Diploma-Theory-Exam-Resource-Guide.pdf"
+    },
+    {
+      "fact": "Theory answer guidelines: sweetness, acidity, alcohol, body and tannin answers use Deductive Tasting Method terminology; volume, distance and other measurements use the units in the question.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/08/CMS-A-Theory-Answer-Guidelines-082925.pdf"
+    },
+    {
+      "fact": "Students must first pass Theory and then have three consecutive years to pass the remaining two parts; a student who passes one or two parts may retake the failed ones; if all three are not passed in three years the entire exam must be retaken.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "Forced Wait Policy: a forced one-year wait for under 45% on the first attempt, under 55% on the second attempt in consecutive years, under 67% on the third attempt in consecutive years; candidates may sit each year while they keep 67% or higher (within 10% of the 75% needed). The policy is meant to give time to reassess and prepare.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "A voluntary year off between attempts, or a forced wait, resets the percentage requirement clock.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "The MS Theory feedback example recommends that any changes made before sitting Practical & Tasting that year be small; foundational shifts so close to the exam are likely to lower confidence and performance.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-Theory-Results-Feedback-Report-Example.pdf"
+    }
+  ],
+  "unverified": [
+    "The window after a Theory pass: the Court's page says 'three consecutive years' and elsewhere 'two more attempts (one per calendar year)' after the first year. Both describe the same window; the lesson says three years, as the Court's page explains.",
+    "The one-hour length of the Theory, the 3 red and 3 white split of the tasting and the 5 to 10 year estimate appear only on the Court's About page, not on the exam page. They are stated with that attribution.",
+    "Pass rates, fees, dates, exam cities and the number of Master Sommeliers are left out on purpose. The feedback examples are templates with placeholder numbers.",
+    "The Court's illustrative theory questions and the example questions in the feedback report are not copied; the question-type list is described in our own words."
+  ],
+  "court": {
+    "outcome": "The Master Sommelier title is the highest honor in the field, representing mastery of wine knowledge, hospitality and service, deductive tasting, and business fundamentals.",
+    "outcomeSource": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/",
+    "coverage": [
+      {
+        "topic": "About the Master Sommelier Diploma Examination",
+        "guide": "What the title stands for and the four areas of mastery.",
+        "where": "The title and the way in"
+      },
+      {
+        "topic": "Who can take the Master Sommelier Diploma Examination?",
+        "guide": "Pass the Advanced exam; the three prerequisite levels.",
+        "where": "The title and the way in"
+      },
+      {
+        "topic": "Applying for the Master Sommelier Diploma Examination",
+        "guide": "Application of Intent only; Theory vs Practical and Tasting applications.",
+        "where": "The title and the way in"
+      },
+      {
+        "topic": "Examining panel",
+        "guide": "Master Sommeliers chosen by the Examination Committee on rotation.",
+        "where": "The title and the way in"
+      },
+      {
+        "topic": "Three parts and the 75% minimum",
+        "guide": "Oral theory, practical service and business, six-wine tasting; 75% each vs 60% at Advanced.",
+        "where": "Three parts, 75% on each"
+      },
+      {
+        "topic": "Attire, tools, courtesy and salesmanship",
+        "guide": "Working attire, your own tools, Master-level hospitality and selling.",
+        "where": "Three parts, 75% on each"
+      },
+      {
+        "topic": "Part 2. Practical Restaurant Wine Service and Salesmanship",
+        "guide": "Aperitifs, glassware, list and menu, decanting, spirits portions, complaints; feedback tables.",
+        "where": "Three parts, 75% on each"
+      },
+      {
+        "topic": "Part 3. Practical Tasting",
+        "guide": "Six wines in 25 minutes; grape, country, district, appellation, vintage.",
+        "where": "Three parts, 75% on each"
+      },
+      {
+        "topic": "Part 1. Theory",
+        "guide": "Oral exam; question types, topic families and how to study.",
+        "where": "The oral theory"
+      },
+      {
+        "topic": "Theory first; three consecutive years",
+        "guide": "Pass Theory, then three years for Practical and Tasting, or retake all.",
+        "where": "The clock: Theory first, then three years"
+      },
+      {
+        "topic": "Forced Wait Policy",
+        "guide": "45%, 55%, 67% thresholds; a year off resets the clock.",
+        "where": "The clock: Theory first, then three years"
+      }
+    ]
+  },
+  "v3": {
+    "video": null,
+    "sections": [
+      {
+        "name": "The title and the way in",
+        "video": {
+          "youtubeId": "patIQMWSWrA",
+          "title": "The Candidate Process with Sarafin Alvarado, MS: Court of Master Sommeliers, Americas",
+          "by": "Court of Master Sommeliers, Americas",
+          "length": "2:31"
+        },
+        "keyPoints": [
+          {
+            "big": "HIGHEST HONOR",
+            "line": "is how the Court describes the Master Sommelier title."
+          },
+          {
+            "big": "ADVANCED FIRST",
+            "line": "Only those who passed the Advanced exam may apply."
+          },
+          {
+            "big": "INTENT FORM",
+            "line": "is the only way to apply. An email doesn't count."
+          },
+          {
+            "big": "MS EXAMINERS",
+            "line": "are chosen by the Examination Committee, on rotation."
+          }
+        ],
+        "read": {
+          "bigIdea": "The top title, open only to Advanced Sommeliers.",
+          "where": "The Court calls the **Master Sommelier** title the highest honor in the field. It stands for mastery in four areas: wine knowledge, hospitality and service, deductive tasting and business. The door opens only after the **Advanced Sommelier Examination**.",
+          "stopsTitle": "Three steps to the exam room",
+          "stops": [
+            {
+              "name": "Pass Advanced",
+              "note": "the only route in",
+              "text": "Those who pass the **Advanced** exam are eligible to apply. The Introductory, Certified and Advanced levels are the required steps before it."
+            },
+            {
+              "name": "Apply with intent",
+              "note": "the Court's form",
+              "text": "Candidates file an **Application of Intent**; an email saying you plan to sit is not accepted. First-timers file the **Theory** application. Anyone already holding Theory files the **Practical and Tasting** application."
+            },
+            {
+              "name": "Meet the panel",
+              "note": "Master Sommeliers",
+              "text": "Every examiner is a Master Sommelier, chosen by the **Examination Committee** under the Court's examiner rotation policy."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "Where the diploma sits:",
+          "mixup": "The **Theory** application is for first-timers and anyone who has reset. The **Practical and Tasting** application is only for those holding at least Theory."
+        },
+        "check": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Three parts, 75% on each",
+        "video": {
+          "youtubeId": "-wfKzoHJJQg",
+          "title": "The Hardest Section On The Master Sommelier Diploma Examination",
+          "by": "Court of Master Sommeliers, Americas",
+          "length": "0:55"
+        },
+        "keyPoints": [
+          {
+            "big": "75%",
+            "line": "on each of the three parts. Advanced asked for 60%."
+          },
+          {
+            "big": "ORAL THEORY",
+            "line": "The theory exam is spoken, not written."
+          },
+          {
+            "big": "SIX WINES",
+            "line": "tasted and described aloud in 25 minutes."
+          },
+          {
+            "big": "SALESMANSHIP",
+            "line": "The Court calls excellent selling essential."
+          }
+        ],
+        "read": {
+          "bigIdea": "Same three parts as Advanced. A higher bar.",
+          "where": "The diploma mirrors the Advanced exam: **theory**, a **practical** in wine service and business, and a **deductive tasting**. What changes is the depth and the mark: **75%** on each part, against 60% at Advanced. Come in working attire, with your own tools.",
+          "stopsTitle": "The three parts",
+          "stops": [
+            {
+              "name": "Theory",
+              "note": "oral",
+              "text": "Spoken answers to a panel. The Court's About page describes a one-hour verbal exam that reaches past wine into beer, sake, spirits and cocktails."
+            },
+            {
+              "name": "Practical",
+              "note": "service and business",
+              "text": "Aperitifs, **glassware** for every beverage and room, wines with vintages for the menu, **decanting** when needed, spirits in proper **portions**, and **complaints** handled with diplomacy. Feedback covers a **Sparkling table**, a **Decanting table** and **Business of the Sommelier**."
+            },
+            {
+              "name": "Tasting",
+              "note": "six in 25",
+              "text": "Six wines in **25 minutes**, described aloud: grape, country, district and appellation, and **vintage** where it applies. The About page says three whites and three reds."
+            }
+          ],
+          "visual": 0,
+          "mixup": "**75%** is the Master Sommelier mark on each part. **60%** was the Advanced mark. A strong score on one part doesn't carry another."
+        },
+        "check": [
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "name": "The oral theory",
+        "video": {
+          "youtubeId": "brEeBvZ4owI",
+          "title": "Theory Examination: Master Sommelier Diploma Examination",
+          "by": "Court of Master Sommeliers, Americas",
+          "length": "8:32"
+        },
+        "keyPoints": [
+          {
+            "big": "FOUR TYPES",
+            "line": "of question: fact, extrapolation, complex, reasoning."
+          },
+          {
+            "big": "FOUNDATIONS",
+            "line": "The exam leans hard on Introductory to Advanced knowledge."
+          },
+          {
+            "big": "CURRENT SOURCES",
+            "line": "Books date fast. Add regulators and marketing bodies."
+          },
+          {
+            "big": "WHY AND HOW",
+            "line": "Logical reasoning asks you to explain a concept briefly."
+          }
+        ],
+        "read": {
+          "bigIdea": "Know the fact, then explain why it's true.",
+          "where": "The theory is oral, so every answer is spoken. The Court's feedback example says the goal is **comprehension**: quick facts plus reasoning. Topics split into **Cause & Effect** (why a drink tastes as it does) and **Tableside** (what a guest wants to know).",
+          "stopsTitle": "How to study for it",
+          "stops": [
+            {
+              "name": "Build on the base",
+              "text": "The resource guide calls the Master exam a **significant step up** from Advanced, yet it rests on the Introductory, Certified and Advanced levels. Master the core before chasing obscure details."
+            },
+            {
+              "name": "Mix your sources",
+              "text": "Pair books with **current sources**: government regulations, regional marketing bodies, producer and importer sites. Laws, maps and producers change faster than books."
+            },
+            {
+              "name": "Settle conflicts",
+              "text": "When two sources disagree, the guide says to trust the most **established, academic and contemporary** one."
+            },
+            {
+              "name": "Answer in the Court's terms",
+              "text": "For structure questions, use **deductive tasting** words: dry, off-dry, medium plus. For measurements, use the units the question uses."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "The four question types in the feedback example:",
+          "mixup": "A **simple short answer** asks for one fact. A **logical reasoning** question asks you to explain a concept in a few sentences."
+        },
+        "check": [
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "name": "The clock: Theory first, then three years",
+        "video": {
+          "youtubeId": "0ABl7DBqTpQ",
+          "title": "Biggest Challenges with Kathy Morgan, MS: Courts of Master Sommeliers, Americas",
+          "by": "Court of Master Sommeliers, Americas",
+          "length": "1:00"
+        },
+        "keyPoints": [
+          {
+            "big": "THEORY FIRST",
+            "line": "No one sits Practical or Tasting without passing Theory."
+          },
+          {
+            "big": "THREE YEARS",
+            "line": "to pass the other two parts, or start over."
+          },
+          {
+            "big": "67%",
+            "line": "Drop below it on Theory and you take a year off."
+          },
+          {
+            "big": "YEAR OFF",
+            "line": "by choice or forced, resets the percentage clock."
+          }
+        ],
+        "read": {
+          "bigIdea": "Pass Theory, then the three-year clock starts.",
+          "where": "The Court sets the order: **Theory** first. Passing it opens a **three-year window** for the **Practical** and the **Tasting**, as the Court's page explains. Miss the window and you retake everything.",
+          "stopsTitle": "The rules of the clock",
+          "stops": [
+            {
+              "name": "The window",
+              "text": "After Theory you have **three consecutive years** to pass the other two parts. Inside that window you retake only the part you failed."
+            },
+            {
+              "name": "The forced wait",
+              "text": "A low Theory score means a **one-year wait**: below **45%** on a first try, **55%** on a second in a row, **67%** on a third in a row. The Court says the point is time to rethink and prepare."
+            },
+            {
+              "name": "The reset",
+              "text": "Take a year off, by choice or by rule, and the **percentage clock resets**."
+            },
+            {
+              "name": "Close to the exam",
+              "text": "The Court's feedback example advises only **small changes** before the Practical and Tasting. Big shifts late tend to cost confidence."
+            }
+          ],
+          "visual": 0,
+          "mixup": "The **three-year window** starts after a Theory pass and covers Practical and Tasting. The **forced wait** follows a low Theory score: a year off before you sit Theory again."
+        },
+        "check": [
+          12,
+          13,
+          14
+        ]
+      }
+    ]
+  }
+}

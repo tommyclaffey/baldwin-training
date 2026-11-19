@@ -87,6 +87,15 @@ export const LEVELS = [
     details: 'https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/',
     practical: 'program:somm-3:practical', practicalTitle: 'Mock Advanced service', practicalHow: 'A manager runs a mock Advanced service: two tables with guest notes (sparkling, a decant, a pairing and a tricky guest), then a short costing and list-correction exercise; they sign you off', practicalStep: 'Mock Advanced service',
     lead: (n, L) => `${countWord(n)} lessons on the Court’s Advanced outline, then a final and a mock service.` },
+  // Sommelier Level 4 (Nov 19): Master Prep (content/manual-l4). By invitation, like Master of the Bar and Master of Beer
+  // (server/invite.mjs): everyone sees the level, staff open its lessons and final once a manager invites them in People.
+  { program: 'somm', level: 4, title: 'Master Prep', file: 'somm-4', final: 'final:somm-4', len: 60, prefix: 'SOMM4', isA: false, head: 'Lead the wine program',
+    finalLabel: 'Sommelier Level 4 · Final Exam', group: 'Sommelier Level 4', invite: 'program:somm-4:invite',
+    heroVideo: { youtubeId: 'bvT7-Lu_bps', title: 'Master Sommelier Exam Advice with John Ragan, MS', by: 'Court of Master Sommeliers, Americas', length: '1:11', thumb: 'sddefault' }, // oEmbed-checked Nov 19
+    details: 'https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/',
+    fine: 'It isn’t a Court of Master Sommeliers certification. Only the Court awards the Master Sommelier title.',
+    practical: 'program:somm-4:practical', practicalTitle: 'Present a wine list', practicalHow: 'Present a wine list for our restaurant to the owner or GM: its structure, what each wine costs and sells for, how it pairs with the menu, and how you’ll train the team on it; they sign you off', practicalStep: 'Present a wine list',
+    lead: (n, L) => `${countWord(n)} lessons on Master-level study and leading the wine program, then a final and a practical.` },
   // Beer Level 2 (Nov 8): deeper, on the Certified Cicerone outline. Shows once its lessons exist (content/beer, programLevel 2).
   { program: 'beer', level: 2, title: 'Beer Specialist', file: 'beer-2', final: 'final:beer-2', len: 60, prefix: 'BEER2', head: 'Know beer like a pro',
     practical: 'program:beer-2:practical', practicalTitle: 'Change a keg and fix a pour', practicalHow: 'Change a keg, talk a manager through fixing a foamy pour, and describe five beers on our list; they sign you off', practicalStep: 'Change a keg for a manager',

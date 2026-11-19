@@ -1,0 +1,981 @@
+{
+  "program": "somm",
+  "programLevel": 4,
+  "number": 4,
+  "slug": "master-service",
+  "title": "Service and salesmanship at the Master level",
+  "script": "Chapter four",
+  "lead": "The Master practical in the dining room: aperitifs and the start of the meal, glassware for every drink and room, spirits with proper portions, and handling questions and complaints with diplomacy.",
+  "minutes": 25,
+  "intro": {
+    "script": "Start here",
+    "title": "THE MASTER PRACTICAL",
+    "text": "The Master practical tests restaurant service and salesmanship at a 75% pass mark. The Court's example feedback report scores three parts:",
+    "tiers": [
+      {
+        "name": "Sparkling table",
+        "note": "Mechanics, table presence, pairing, selling"
+      },
+      {
+        "name": "Decanting table",
+        "note": "Sediment, mechanics, hospitality"
+      },
+      {
+        "name": "Business of the Sommelier",
+        "note": "The program side of the job"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "Aperitifs and the start of the meal",
+      "source": "Court of Master Sommeliers, MS Diploma page and 2025 Advanced and Master service standards; 27 CFR 4.21 (eCFR)",
+      "lines": [
+        {
+          "label": "The Court's ask",
+          "text": "The Master practical asks you to discuss, recommend and serve aperitifs, knowing their ingredients and how they're made."
+        },
+        {
+          "label": "Service",
+          "text": "Aperitifs and digestifs traditionally come from a tray or a gueridon. Confirm how the guest wants the drink before you pour."
+        }
+      ],
+      "know": [
+        "Under US federal rules, aperitif wine is grape wine with added brandy or alcohol, flavored with herbs and natural aromatics, at 15% alcohol or more.",
+        "Vermouth is a type of aperitif wine; any other is labeled 'aperitif wine'.",
+        "At the first approach, find the host: the guest leading the table, who may not be the one ordering.",
+        "If a guest isn't sure, offer a few choices with a short description of each.",
+        "Cocktails: never add carbonated ingredients before shaking, and never serve the shaker's 'dirty rocks'."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "The start of the meal, in order",
+          "items": [
+            {
+              "name": "Find the host",
+              "text": "The guest leading the table",
+              "meta": "First approach"
+            },
+            {
+              "name": "Offer",
+              "text": "A short choice, described simply",
+              "meta": "Aperitifs"
+            },
+            {
+              "name": "Confirm",
+              "text": "Repeat the order and how it's served",
+              "meta": "Neat, ice, water back"
+            },
+            {
+              "name": "Serve",
+              "text": "From the guest's right",
+              "meta": "Tray or gueridon"
+            }
+          ]
+        },
+        {
+          "type": "tiles",
+          "title": "Three ways to pour an aperitif",
+          "dark": true,
+          "items": [
+            {
+              "name": "Side station",
+              "text": "Poured with a jigger, carried out on a tray."
+            },
+            {
+              "name": "Tableside",
+              "text": "Bottle shown and order confirmed, then poured at the table."
+            },
+            {
+              "name": "Gueridon",
+              "text": "Prepared in full view of the guest, with ceremony."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Glassware for every drink and every room",
+      "source": "Court of Master Sommeliers, MS Diploma page and 2025 Advanced and Master service standards",
+      "lines": [
+        {
+          "label": "The Court's ask",
+          "text": "Select, prepare and position glassware for every drink, in the lounge, the dining room or a private function room."
+        },
+        {
+          "label": "Placement",
+          "text": "Carry glasses on a tray and set them with your right hand on the guest's right, in the same spot for everyone. Start with the host or the guest to the host's left, then go clockwise."
+        }
+      ],
+      "know": [
+        "Several glasses at one cover go in a line, a diagonal, a diamond or a cluster, depending on space.",
+        "A second bottle of the same wine gets a clean tasting glass for the host, set to the right of the first glass.",
+        "Sparkling goes in flutes or wine glasses, as the guest prefers.",
+        "An all-purpose wine glass suits many beer styles.",
+        "Modern sake service often uses AP or white wine glasses; traditional service pours into an ochoko set in a masu."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "Spirits and fortified wines: which glass",
+          "rows": [
+            {
+              "name": "Small tulip or copita",
+              "meta": "Fortified wine, grappa, eau de vie, neat liqueurs"
+            },
+            {
+              "name": "Rocks glass",
+              "meta": "Liqueurs or spirits over ice"
+            },
+            {
+              "name": "Snifter",
+              "meta": "Neat, oak-aged spirits: brandy, aged rum, Calvados"
+            }
+          ],
+          "note": "From the Court's 2025 Advanced and Master service standards."
+        },
+        {
+          "type": "list",
+          "title": "Beer: which glass",
+          "rows": [
+            {
+              "name": "Pilsner flute",
+              "meta": "Pilsner"
+            },
+            {
+              "name": "Weizen glass",
+              "meta": "Hefeweizen, dunkelweizen, wheat beers"
+            },
+            {
+              "name": "Goblet or snifter",
+              "meta": "Belgian strong ale, Trappist ale"
+            },
+            {
+              "name": "Tulip",
+              "meta": "IPA, barleywine, imperial stout, porter"
+            },
+            {
+              "name": "American pint",
+              "meta": "Most other styles"
+            }
+          ],
+          "note": "An all-purpose wine glass suits many beer styles too."
+        }
+      ]
+    },
+    {
+      "name": "Brandies, liqueurs and spirits",
+      "source": "Court of Master Sommeliers, MS Diploma page, 2025 service standards and Curriculum Guide; 27 CFR 5.145 and 5.150 (eCFR); NIAAA; BNIC",
+      "lines": [
+        {
+          "label": "The Court's ask",
+          "text": "Present and serve brandies, liqueurs and other spirits, and know the proper portion for each."
+        },
+        {
+          "label": "Portions",
+          "text": "The Court says to measure with a jigger when one is available, and its curriculum gives 2 oz as the usual glass of sweet or fortified wine. US standard-drink sizes are a useful check."
+        }
+      ],
+      "know": [
+        "US brandy is distilled from fruit juice, mash or wine and bottled at 40% alcohol or more.",
+        "Grape brandy stored under 2 years in oak must be labeled 'immature brandy'.",
+        "Cognac, Armagnac, Calvados, Pisco and Brandy de Jerez follow their home country's laws; grappa is grape pomace brandy.",
+        "A US liqueur or cordial holds at least 2.5% sugar by weight, and may say 'dry' under 10%.",
+        "From Level 2: Cognac VS is at least 2 years old, VSOP 4, XO 10."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "One US standard drink, by the glass",
+          "rows": [
+            {
+              "name": "Distilled spirits, about 40%",
+              "value": "1.5 oz",
+              "pct": 0.3
+            },
+            {
+              "name": "Liqueur, cordial or aperitif, about 24%",
+              "value": "2 to 3 oz",
+              "pct": 0.5
+            },
+            {
+              "name": "Fortified wine, about 17%",
+              "value": "3 to 4 oz",
+              "pct": 0.7
+            },
+            {
+              "name": "Table wine, about 12%",
+              "value": "5 oz",
+              "pct": 1
+            }
+          ],
+          "note": "NIAAA: each holds about 0.6 oz (14 g) of pure alcohol. A reference point, not a house pour."
+        },
+        {
+          "type": "list",
+          "title": "Gueridon mise en place for spirits",
+          "rows": [
+            {
+              "name": "Gueridon",
+              "meta": "Clean and linen-lined"
+            },
+            {
+              "name": "Serviette",
+              "meta": "One, folded"
+            },
+            {
+              "name": "Jigger",
+              "meta": "For every measured pour"
+            },
+            {
+              "name": "Glassware",
+              "meta": "To suit the drink"
+            },
+            {
+              "name": "Ice bucket and tongs",
+              "meta": "For guests who want ice"
+            },
+            {
+              "name": "Water",
+              "meta": "Distilled or mineral"
+            },
+            {
+              "name": "Service tray",
+              "meta": "To carry the drink to the guest"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Questions, complaints and diplomacy",
+      "source": "Court of Master Sommeliers, MS Diploma page, 2025 service standards, Demeanor of the Professional Sommelier, Code of Ethics and Advanced Practical guide",
+      "lines": [
+        {
+          "label": "The Court's ask",
+          "text": "Handle questions and complaints with skill, elegance and diplomacy, and recommend wines for a wide range of foods, vintages included."
+        },
+        {
+          "label": "Three steps",
+          "text": "The 2025 standards reduce problem resolution to three moves: acknowledge, apologize, and act quickly and kindly."
+        }
+      ],
+      "know": [
+        "If a guest rejects a wine, apologize, remove it and check it away from the table: flawed means another bottle of the same, sound means the list.",
+        "A wrong bottle or price on the check goes to upper management.",
+        "Suggesting a pricier bottle needs a clear reason it's worth more.",
+        "If you don't know an answer, offer to find out; never make one up.",
+        "The Court's Code of Ethics treats knowingly serving counterfeit wine, or swapping what's in a pre-opened bottle, as a breach of integrity."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "Three steps when something goes wrong",
+          "items": [
+            {
+              "name": "Acknowledge",
+              "text": "Name the problem; listen as the guest describes it",
+              "meta": "1"
+            },
+            {
+              "name": "Apologize",
+              "text": "For how it made the guest feel",
+              "meta": "2"
+            },
+            {
+              "name": "Act",
+              "text": "Resolve it quickly, kindly, professionally",
+              "meta": "3"
+            }
+          ]
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "FLAWED",
+              "title": "Same wine, new bottle",
+              "text": "Apologize and remove it\nCheck it away from the table\nOffer another bottle of the same"
+            },
+            {
+              "label": "SOUND",
+              "title": "Back to the list",
+              "text": "Apologize and remove it\nCheck it away from the table\nOffer the list for a new choice"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "Aperitif wine",
+      "b": "Vermouth",
+      "why": "Vermouth is one type of aperitif wine; any other is labeled 'aperitif wine' under US rules."
+    },
+    {
+      "a": "Snifter",
+      "b": "Copita",
+      "why": "Snifter: neat oak-aged spirits. Copita or small tulip: fortified wine, grappa, eau de vie."
+    },
+    {
+      "a": "Flawed wine sent back",
+      "b": "Sound wine sent back",
+      "why": "Flawed: another bottle of the same. Sound: offer the list for a new choice."
+    },
+    {
+      "a": "Grappa",
+      "b": "Brandy",
+      "why": "Grappa is pomace brandy. Plain 'brandy' on a US label is grape brandy with 2+ years in oak."
+    }
+  ],
+  "sources": "Court of Master Sommeliers, Americas: Master Sommelier Diploma Examination page, 2025 Advanced and Master Hospitality & Service Standards, Demeanor of the Professional Sommelier, Code of Ethics, Curriculum Guide, the example MS Practical & Tasting feedback report and the Advanced Practical guide; eCFR (27 CFR 4.21, 5.145, 5.150); NIAAA; BNIC (Cognac). Checked Nov 19, 2026.",
+  "cards": [
+    {
+      "q": "Under US federal rules, what is the minimum alcohol for an aperitif wine?",
+      "answer": "15% by volume",
+      "wrong": [
+        "12% by volume",
+        "18% by volume",
+        "20% by volume"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.21"
+    },
+    {
+      "q": "In the 2025 Advanced and Master standards, how are aperitifs and digestifs traditionally served?",
+      "answer": "From a tray or a gueridon",
+      "wrong": [
+        "Pre-poured at the bar and run by a server",
+        "From a decanter left on the table",
+        "From a cart of open bottles at the host stand"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=23"
+    },
+    {
+      "q": "When you first approach a table, who do the Court's standards say to identify?",
+      "answer": "The host, the guest leading the table",
+      "wrong": [
+        "The oldest guest at the table",
+        "The guest holding the wine list",
+        "The guest seated nearest the kitchen"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=5"
+    },
+    {
+      "q": "In cocktail service, what does the Court say never goes into the finished drink?",
+      "answer": "Ice used in the shaker (\"dirty rocks\")",
+      "wrong": [
+        "Fresh cubed ice",
+        "Crushed ice",
+        "A single large clear cube"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=25"
+    },
+    {
+      "q": "Which glass do the Court's 2025 standards give for a neat, oak-aged spirit such as Calvados?",
+      "answer": "Snifter",
+      "wrong": [
+        "Copita",
+        "Rocks glass",
+        "Champagne flute"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=23"
+    },
+    {
+      "q": "Which glass do the 2025 standards give for grappa or eau de vie served neat?",
+      "answer": "Small tulip or copita",
+      "wrong": [
+        "Snifter",
+        "Rocks glass",
+        "Weizen glass"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=23"
+    },
+    {
+      "q": "A table orders a second bottle of the same wine. What do the standards say to bring the host?",
+      "answer": "A clean glass to taste the new bottle",
+      "wrong": [
+        "New glasses for the whole table",
+        "A second decanter",
+        "The first bottle's cork for comparison"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=5"
+    },
+    {
+      "q": "Under the Court's beer standards, which style goes in a tulip glass?",
+      "answer": "IPA",
+      "wrong": [
+        "Pilsner",
+        "Hefeweizen",
+        "Trappist ale"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=18"
+    },
+    {
+      "q": "How many underliners does decanting for sediment need at the guest's table?",
+      "answer": "Three: cork, bottle and decanter",
+      "wrong": [
+        "One, for the decanter",
+        "Two: bottle and cork",
+        "Four: cork, bottle, decanter and candle"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=11"
+    },
+    {
+      "q": "Under US rules, what is the minimum bottling strength for brandy?",
+      "answer": "40% alcohol (80 proof)",
+      "wrong": [
+        "35% alcohol (70 proof)",
+        "37.5% alcohol (75 proof)",
+        "43% alcohol (86 proof)"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-5.145"
+    },
+    {
+      "q": "What must US grape brandy stored under 2 years in oak be called on the label?",
+      "answer": "Immature brandy",
+      "wrong": [
+        "Young brandy",
+        "Fine brandy",
+        "New brandy"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-5.145"
+    },
+    {
+      "q": "What is the minimum sugar content for a US cordial or liqueur?",
+      "answer": "2.5% by weight",
+      "wrong": [
+        "1% by weight",
+        "5% by weight",
+        "10% by weight"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-5.150"
+    },
+    {
+      "q": "What do the Court's standards say to pour aperitifs and digestifs with, when available?",
+      "answer": "A jigger",
+      "wrong": [
+        "A measured pour spout",
+        "The glass's fill line",
+        "A free-pour count"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=23"
+    },
+    {
+      "q": "One US standard drink of 40% distilled spirit is how much?",
+      "answer": "1.5 oz",
+      "wrong": [
+        "1 oz",
+        "2 oz",
+        "2.5 oz"
+      ],
+      "source": "https://www.niaaa.nih.gov/alcohols-effects-health/what-standard-drink"
+    },
+    {
+      "q": "What three steps for problem resolution do the 2025 Advanced and Master standards give?",
+      "answer": "Acknowledge, apologize, act",
+      "wrong": [
+        "Listen, explain, comp",
+        "Apologize, explain, move on",
+        "Acknowledge, call a manager, comp"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=3"
+    },
+    {
+      "q": "A guest rejects a bottle that you find is sound. What does the Court say to offer?",
+      "answer": "The wine list, to choose again",
+      "wrong": [
+        "Another bottle of the same wine",
+        "A discount on the same bottle",
+        "A taste of a second bottle to compare"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+    },
+    {
+      "q": "Who do the Court's demeanor notes say to bring in for a wrong bottle or price on the check?",
+      "answer": "Upper management",
+      "wrong": [
+        "The guest's server",
+        "The wine's distributor",
+        "The bartender"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+    },
+    {
+      "q": "Under the 2025 standards, what must come with a suggestion of a more expensive wine?",
+      "answer": "A clear explanation of its added value",
+      "wrong": [
+        "A free taste first",
+        "A matching lower-priced option",
+        "The manager's approval"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=3"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "The minimum passing score for each of the three sections of the Master Sommelier Diploma Examination is 75%.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "MS practical: discuss, recommend and serve aperitifs, with thorough knowledge of their ingredients and production methods and the ability to serve them correctly.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "MS practical: select, prepare and position glassware for all beverages in the lounge, restaurant or private function room.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "MS practical: discuss menu content and wine list, recommending wines for a wide range of foods, with sound knowledge of products, vintages and characteristics.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "MS practical: present, offer, prepare (decanting when necessary) and serve wines efficiently and proficiently.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "MS practical: present, offer, prepare and serve brandies, liqueurs and other spirits, including knowledge of the proper serving portions for each.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "MS practical: handle questions and complaints with skill, elegance and diplomacy.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "The example MS Practical & Tasting feedback report lists Practical results for a Sparkling table, a Decanting table and Business of the Sommelier, and an example comment says mixology was nicely done.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "fact": "Aperitif wine (27 CFR 4.21(g)): wine of not less than 15% alcohol by volume, compounded from grape wine containing added brandy or alcohol, flavored with herbs and other natural aromatic flavoring materials; designated 'aperitif wine' unless designated 'vermouth'. Vermouth is a type of aperitif wine.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.21"
+    },
+    {
+      "fact": "Aperitifs and digestifs are traditionally served from a tray or gueridon; service method, temperature and glassware should match the beverage and guest preference; confirm how the guest would like the drink served before pouring; if uncertain, offer options with brief descriptions.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=23"
+    },
+    {
+      "fact": "Side station pouring: pour with a jigger when available, add ice if requested, bring on a tray from the guest's right, confirm the order. Tableside: glassware and accompaniments (water back, side rocks) to the guest's right, present the bottle with the label facing the guest, pour on the tray or at the table.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=23"
+    },
+    {
+      "fact": "Gueridon service is used in fine dining; beverages are prepared and served tableside in full view of the guests. Mise en place: clean linen-lined gueridon, one folded serviette, jigger, glassware, ice bucket, tongs, distilled or mineral water, service tray.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=24"
+    },
+    {
+      "fact": "Taking the order: identify the host, the guest leading or overseeing the table, who may or may not place the order; stand to the right of the guest ordering; repeat the order back.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=5"
+    },
+    {
+      "fact": "Cocktail service: do not add carbonated ingredients before shaking; for drinks on the rocks, use fresh ice, never 'dirty rocks' used in the shaker; built cocktails go in the serving glass in recipe order.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=25"
+    },
+    {
+      "fact": "Glassware placement: bring glasses on a tray, place with the right hand on the guest's right, same position for every guest (usually by the knife), start with the host or the guest to the host's left, go clockwise regardless of gender; multiple glasses in a line, diagonal, diamond or cluster; a second bottle of the same wine gets a clean tasting glass for the host, placed to the right of the original glass.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=5"
+    },
+    {
+      "fact": "Sparkling service: flutes or wine glasses according to the guest's preference; two serviettes and two underliners (bottle and cork).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=7"
+    },
+    {
+      "fact": "Decanting for sediment: three serviettes; three underliners at the table for cork, bottle and decanter.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=11"
+    },
+    {
+      "fact": "Beer glassware: Pilsner flute for pilsner; weizen glass for hefeweizen, dunkelweizen and wheat beers; goblet or snifter for Belgian strong and Trappist ales; tulip for IPA, barleywine, imperial stout, porter; American pint for most other styles; AP wine glasses suit many beer styles.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=18"
+    },
+    {
+      "fact": "Modern sake service often uses all-purpose or white wine glasses; traditional mori koboshi service pours into an ochoko set in a masu.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=22"
+    },
+    {
+      "fact": "Aperitif and digestif glassware: small tulip or copita for fortified wines, grappa, eau de vie and neat liqueurs; rocks glass for liqueurs or spirits over ice; snifter for neat oak-aged spirits such as brandy, aged rum and Calvados.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=23"
+    },
+    {
+      "fact": "Brandy (27 CFR 5.145): distilled from the fermented juice, mash or wine of fruit, or its residue, at less than 95% ABV, bottled at not less than 40% ABV (80 proof). Grape brandy stored at least 2 years in oak is 'grape brandy' or 'brandy'; under 2 years, 'immature grape brandy' or 'immature brandy'. 'Brandy' without qualification is only for grape brandy.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.145"
+    },
+    {
+      "fact": "Cognac, Armagnac, Brandy de Jerez, Calvados and Pisco are defined by the laws of their country of manufacture; grape pomace brandy (from skins and pulp after the juice is withdrawn) may be called grappa.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.145"
+    },
+    {
+      "fact": "Cordials and liqueurs (27 CFR 5.150): flavored distilled spirits made with fruits, flowers, plants or other natural flavorings, with sugar of not less than 2.5% by weight; may be labeled 'dry' if sugar is under 10% by weight.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.150"
+    },
+    {
+      "fact": "A US standard drink holds about 0.6 fl oz (14 g) of pure alcohol: 1.5 oz of distilled spirits at about 40%; 2-3 oz of cordial, liqueur or aperitif at about 24%; 3-4 oz of fortified wine at about 17%; 5 oz of table wine at about 12%.",
+      "source": "https://www.niaaa.nih.gov/alcohols-effects-health/what-standard-drink"
+    },
+    {
+      "fact": "Sweet wines: a by-the-glass serving is usually 2 oz.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=80"
+    },
+    {
+      "fact": "Fortified wines: by-the-glass pours are typically 2 oz.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=82"
+    },
+    {
+      "fact": "Cognac age categories: at least 2 years (VS / Very Special), at least 4 years (VSOP), at least 10 years (XO); Cognac ages only in oak.",
+      "source": "https://www.cognac.fr/en/discover/a-unique-spirit/a-protected-origin/"
+    },
+    {
+      "fact": "Problem resolution, 2025 standards: acknowledge the issue and listen actively; apologize sincerely, focusing on how it made the guest feel; act quickly and kindly. Suggesting a more expensive option must come with a clear explanation of added value.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=3"
+    },
+    {
+      "fact": "Demeanor: don't make things up; offer to get the answer. Discreetly determine budget; offer several price points; when in doubt, undersell. Suggested steps include asking the guest how the issue can be made right.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+    },
+    {
+      "fact": "Rejected wine: apologize and remove glass and bottle; away from the table, determine the condition; flawed: offer another bottle of the same wine; sound: offer the list; never put the guest in the position of being wrong. Wrong bottle or price on the check: bring in upper management. Pricing complaints: acknowledge and tactfully state the restaurant's pricing policy.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+    },
+    {
+      "fact": "Food and beverage pairing: align with the guest's preferences first; if a guest prefers red wine with shellfish, the sommelier should honor that preference.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=26"
+    },
+    {
+      "fact": "At the Advanced practical, candidates must deal with uncomfortable situations; some MSs may portray confrontational guests, reading from a script.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+    },
+    {
+      "fact": "Code of Ethics (Integrity): knowingly and willfully serving counterfeit wines, or changing or replacing beverages served from preopened bottles, and materially misrepresenting the quality, condition or salability of a wine for gain are listed as problematic behavior.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Code-Ethics-and-Professional-Responsibility-May-2021r.pdf"
+    }
+  ],
+  "unverified": [
+    "The Court's MS page asks for 'proper serving portions' of spirits but publishes no figures. The NIAAA standard-drink sizes are shown as a reference only, not as Court or house portions.",
+    "The Curriculum Guide gives 2 oz as the usual sweet and fortified pour but prints two different metric conversions (59.1 ml and 51.9 ml); only the 2 oz figure is used.",
+    "The Court's 2-, 4- and 10-year Armagnac ages in the Curriculum Guide were not checked against Armagnac's own body; Armagnac ages are not stated here.",
+    "The 2025 standards say decanting can raise a wine's temperature by '1 to 3 degrees' without a unit; the figure is not used.",
+    "The Court's example MS feedback report is a template with placeholder names and scores; it is used only for the parts it lists, not as the exact structure of every exam."
+  ],
+  "court": {
+    "outcome": "Present, offer, prepare and serve brandies, liqueurs and other spirits, including knowledge of the proper serving portions for each. Handle questions and complaints with skill, elegance and diplomacy.",
+    "outcomeSource": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/",
+    "coverage": [
+      {
+        "topic": "Discuss, recommend and serve aperitifs",
+        "guide": "Aperitif wine and vermouth, offering simply, three ways to pour, cocktails.",
+        "where": "Aperitifs and the start of the meal"
+      },
+      {
+        "topic": "Select, prepare and position glassware (lounge, restaurant, private function room)",
+        "guide": "Placement order, glass by drink, beer and sake glasses.",
+        "where": "Glassware for every drink and every room"
+      },
+      {
+        "topic": "Present, offer, prepare (decanting when necessary) and serve wines",
+        "guide": "Sparkling and decanting setups; the second-bottle tasting glass.",
+        "where": "Glassware for every drink and every room"
+      },
+      {
+        "topic": "Present, offer, prepare and serve brandies, liqueurs and other spirits, with portions",
+        "guide": "US brandy and liqueur rules, jigger, 2 oz fortified, standard drinks.",
+        "where": "Brandies, liqueurs and spirits"
+      },
+      {
+        "topic": "Discuss menu content and wine list; recommend wines for a wide range of foods",
+        "guide": "Budget, price points, undersell, guest preference in pairing.",
+        "where": "Questions, complaints and diplomacy"
+      },
+      {
+        "topic": "Handle questions and complaints with skill, elegance and diplomacy",
+        "guide": "Acknowledge, apologize, act; rejected bottles; check errors; honesty.",
+        "where": "Questions, complaints and diplomacy"
+      },
+      {
+        "topic": "2025 standards: aperitif and digestif service",
+        "guide": "Tray, tableside or gueridon; glassware; accompaniments.",
+        "where": "Aperitifs and the start of the meal; Brandies, liqueurs and spirits"
+      },
+      {
+        "topic": "2025 standards: cocktail service",
+        "guide": "Shaken, stirred, built; fresh ice; no bubbles in the shaker.",
+        "where": "Aperitifs and the start of the meal"
+      },
+      {
+        "topic": "2025 standards: beer and sake service",
+        "guide": "Glass by beer style; AP glasses; ochoko and masu.",
+        "where": "Glassware for every drink and every room"
+      },
+      {
+        "topic": "2025 standards: general hospitality (price point, guest satisfaction)",
+        "guide": "Value explained, three-step resolution.",
+        "where": "Questions, complaints and diplomacy"
+      },
+      {
+        "topic": "2025 standards: food and beverage pairing",
+        "guide": "Guest's preference comes first.",
+        "where": "Questions, complaints and diplomacy"
+      }
+    ]
+  },
+  "v3": {
+    "video": null,
+    "sections": [
+      {
+        "name": "Aperitifs and the start of the meal",
+        "video": {
+          "youtubeId": "935yQlyxSQM",
+          "title": "Guide to Aperitifs | How to Drink",
+          "by": "How To Drink",
+          "length": "33:37"
+        },
+        "keyPoints": [
+          {
+            "big": "HOST FIRST",
+            "line": "find who leads the table; it may not be who orders."
+          },
+          {
+            "big": "15%",
+            "line": "alcohol or more makes a US aperitif wine: wine, spirit, herbs."
+          },
+          {
+            "big": "VERMOUTH",
+            "line": "is one type of aperitif wine under US federal rules."
+          },
+          {
+            "big": "TRAY OR GUERIDON",
+            "line": "is how aperitifs and digestifs are traditionally served."
+          },
+          {
+            "big": "CONFIRM",
+            "line": "how the guest wants it before you pour."
+          }
+        ],
+        "read": {
+          "bigIdea": "The aperitif sets the pace for the meal.",
+          "where": "At Master level you **recommend and serve aperitifs** and explain what's in them and how they're made. Cocktails count too: the Court's example **MS feedback report** comments on mixology.",
+          "stopsTitle": "Four moves at the start of the meal",
+          "stops": [
+            {
+              "name": "Find the host",
+              "text": "Before anything, find the **host**, the guest leading the table. Stand to the right of whoever orders and repeat the order back."
+            },
+            {
+              "name": "Know the product",
+              "text": "US **aperitif wine** is grape wine with added brandy or alcohol, flavored with herbs, at **15%** or more. **Vermouth** is one type. Be ready to say what's in it."
+            },
+            {
+              "name": "Choose the service",
+              "text": "Pour at the **side station** with a jigger, **tableside** from the bottle, or from a **gueridon** in full view. Ask first: neat, over ice, with a water back?"
+            },
+            {
+              "name": "Cocktails",
+              "text": "Shake, stir or build to the recipe. Strain over **fresh ice**, never the shaker's \"dirty rocks\", and add bubbles after shaking, never before."
+            }
+          ],
+          "visual": 1,
+          "visualIntro": "The Court allows three ways to pour:",
+          "mixup": "**Vermouth** is a kind of **aperitif wine**, but not every aperitif wine is vermouth. A US label says which one it is.",
+          "sayIt": "Something light to start while you look at the menu?"
+        },
+        "check": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Glassware for every drink and every room",
+        "video": {
+          "youtubeId": "DbKn0WqCelw",
+          "title": "Wine Glasses: Science or Scam? (The Riedel Story)",
+          "by": "Wine Folly",
+          "length": "8:07"
+        },
+        "keyPoints": [
+          {
+            "big": "RIGHT HAND",
+            "line": "places each glass on the guest's right, same spot every time."
+          },
+          {
+            "big": "CLOCKWISE",
+            "line": "from the host or the host's left, regardless of gender."
+          },
+          {
+            "big": "SNIFTER",
+            "line": "for neat, oak-aged spirits: brandy, aged rum, Calvados."
+          },
+          {
+            "big": "COPITA",
+            "line": "or small tulip for fortified wine, grappa and eau de vie."
+          },
+          {
+            "big": "CLEAN GLASS",
+            "line": "for the host when a second bottle of the same wine arrives."
+          }
+        ],
+        "read": {
+          "bigIdea": "Right glass, right spot, every guest.",
+          "where": "The Master practical asks you to **select, prepare and position glassware** for every drink, in the **lounge**, the **dining room** or a **private function room**. The rules hold everywhere: a tray, your right hand, the guest's right.",
+          "stopsTitle": "Five things to get right",
+          "stops": [
+            {
+              "name": "Placement",
+              "text": "Same position for every guest, usually by the **knife**. Start with the **host** or the guest to the host's left, then go **clockwise**. Several glasses sit in a **line, diagonal, diamond or cluster**."
+            },
+            {
+              "name": "Wine and sparkling",
+              "text": "Sparkling goes in **flutes or wine glasses**, as the guest prefers. A **second bottle** of the same wine gets a clean tasting glass for the host, to the right of the first."
+            },
+            {
+              "name": "Spirits and fortified",
+              "text": "**Copita** or small tulip for fortified wine, grappa, eau de vie and neat liqueurs. **Rocks** for anything over ice. **Snifter** for neat oak-aged spirits."
+            },
+            {
+              "name": "Beer and sake",
+              "text": "Match the beer glass to the style; an **AP wine glass** suits many. Modern sake service uses AP or white wine glasses; traditional service uses an **ochoko** in a **masu**."
+            },
+            {
+              "name": "The setup",
+              "text": "Sparkling needs **two serviettes** and **two underliners** (bottle, cork). Decanting for sediment needs **three serviettes** and **three underliners** (cork, bottle, decanter)."
+            }
+          ],
+          "visual": 0,
+          "mixup": "A **snifter** is for neat, oak-aged spirits. A **copita** is for fortified wine, grappa and eau de vie. Over ice, use a **rocks** glass.",
+          "sayIt": "I'll set a fresh glass so you can taste the new bottle first."
+        },
+        "check": [
+          4,
+          5,
+          8
+        ]
+      },
+      {
+        "name": "Brandies, liqueurs and spirits",
+        "video": {
+          "youtubeId": "KTKjf_yMP0c",
+          "title": "Inside Hennessy | How Cognac is Made?",
+          "by": "Julien Miquel",
+          "length": "14:21"
+        },
+        "keyPoints": [
+          {
+            "big": "JIGGER",
+            "line": "measures every aperitif and digestif pour when one is on hand."
+          },
+          {
+            "big": "1.5 OZ",
+            "line": "of 40% spirit is one US standard drink."
+          },
+          {
+            "big": "40%",
+            "line": "alcohol is the minimum for US brandy at bottling."
+          },
+          {
+            "big": "2.5% SUGAR",
+            "line": "by weight, at least, makes a US liqueur or cordial."
+          },
+          {
+            "big": "IMMATURE",
+            "line": "is the label for grape brandy under 2 years in oak."
+          }
+        ],
+        "read": {
+          "bigIdea": "Know the spirit, measure the pour.",
+          "where": "The Master practical asks you to serve **brandies, liqueurs and other spirits** and know the **proper portion** for each. The Court doesn't publish portion sizes; it says to pour with a **jigger** when you have one.",
+          "stopsTitle": "Four stops",
+          "stops": [
+            {
+              "name": "Brandy",
+              "text": "US rules: distilled from **fruit** juice, mash or wine, bottled at **40%** or more. Grape brandy under **2 years** in oak is \"immature brandy.\" **Cognac**, **Armagnac**, **Calvados** and **Pisco** follow their home country's law."
+            },
+            {
+              "name": "Liqueurs",
+              "text": "Spirits flavored with fruit, flowers or plants, with at least **2.5% sugar** by weight. Under **10%** sugar, the label may say \"dry.\""
+            },
+            {
+              "name": "Portions",
+              "text": "Measure with a **jigger**. The Court's curriculum gives **2 oz** as the usual glass of sweet or fortified wine. A US **standard drink** is 1.5 oz of 40% spirit, or 2 to 3 oz of liqueur."
+            },
+            {
+              "name": "The service",
+              "text": "From a side station, tableside or a **gueridon**. Offer a **water back** or side rocks, confirm the order, and set it down on the guest's right."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "The same amount of alcohol, four glass sizes:",
+          "mixup": "**Grappa** is grape **pomace** brandy, made from skins and pulp after the juice is drawn off. Plain **\"brandy\"** on a US label means grape brandy with 2 years or more in oak.",
+          "sayIt": "Would you like that neat, or with a little water on the side?"
+        },
+        "check": [
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "name": "Questions, complaints and diplomacy",
+        "video": {
+          "youtubeId": "0C5nIEdYaFI",
+          "title": "Wine Protips: How To Tell If Your Wine is Corked",
+          "by": "Serious Eats",
+          "length": "2:07"
+        },
+        "keyPoints": [
+          {
+            "big": "ACKNOWLEDGE",
+            "line": "the problem and listen as the guest describes it."
+          },
+          {
+            "big": "APOLOGIZE",
+            "line": "for how it made them feel, not just what happened."
+          },
+          {
+            "big": "ACT",
+            "line": "quickly and kindly; resolve it graciously."
+          },
+          {
+            "big": "UNDERSELL",
+            "line": "when in doubt; protect the guest's trust on price."
+          },
+          {
+            "big": "DON'T GUESS",
+            "line": "offer to find the answer instead of making one up."
+          }
+        ],
+        "read": {
+          "bigIdea": "The guest leaves feeling right, every time.",
+          "where": "At Master level, **questions and complaints** are handled with **skill, elegance and diplomacy**. At Advanced, the Court warns that examiners may play **confrontational guests** from a script.",
+          "stopsTitle": "Five situations",
+          "stops": [
+            {
+              "name": "Three steps",
+              "text": "**Acknowledge** and listen. **Apologize** for how it felt. **Act** quickly and kindly. From Level 2: the longer version also asks the guest how to make it right."
+            },
+            {
+              "name": "A rejected bottle",
+              "text": "Apologize, remove it and check it **away from the table**. Flawed: another bottle of the same. Sound: the list. Never put the guest in the position of being **wrong**."
+            },
+            {
+              "name": "Price and the check",
+              "text": "A **wrong bottle or price** on the check goes to upper management. A complaint about list prices: acknowledge it and tactfully explain the house **pricing policy**."
+            },
+            {
+              "name": "Selling with care",
+              "text": "Find the **budget** discreetly, offer several price points, and when in doubt **undersell**. A pricier suggestion needs a clear reason. Pairing starts with the guest: if they want red with shellfish, honor it."
+            },
+            {
+              "name": "Honesty",
+              "text": "Never guess; offer to find out. The Court's **Code of Ethics** treats knowingly serving counterfeit wine, swapping a pre-opened bottle or misstating a wine's condition as breaches of **integrity**."
+            }
+          ],
+          "visual": 1,
+          "mixup": "A **flawed** wine is replaced with another bottle of the **same** wine. A **sound** wine the guest doesn't like goes back for a new choice from the list.",
+          "sayIt": "I'm sorry about that. Let me take it away and look after it."
+        },
+        "check": [
+          14,
+          15,
+          17
+        ]
+      }
+    ]
+  }
+}

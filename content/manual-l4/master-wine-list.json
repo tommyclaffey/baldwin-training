@@ -1,0 +1,877 @@
+{
+  "program": "somm",
+  "programLevel": 4,
+  "number": 5,
+  "slug": "master-wine-list",
+  "title": "Building and costing the wine list",
+  "script": "Chapter five",
+  "lead": "Running the list as a business: what a great list does, pricing bottles and glasses, buying through the three tiers and allocations, and keeping the cellar counted and moving.",
+  "minutes": 25,
+  "intro": {
+    "script": "Start here",
+    "title": "THE LIST IS THE PROGRAM",
+    "text": "Four formulas run a wine program month to month. All money examples in this chapter are our own round numbers.",
+    "tiers": [
+      {
+        "name": "Cost %",
+        "note": "Bottle cost ÷ list price"
+      },
+      {
+        "name": "Sliding scale",
+        "note": "Bigger markup on cheaper bottles"
+      },
+      {
+        "name": "Par",
+        "note": "(Weekly usage + safety stock) ÷ deliveries"
+      },
+      {
+        "name": "Turnover",
+        "note": "COGS ÷ average inventory"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "What a great list does",
+      "source": "Court of Master Sommeliers, 2025 Advanced and Master standards and Advanced Practical guide; Wine Spectator Restaurant Awards criteria; Cornell School of Hotel Administration",
+      "lines": [
+        {
+          "label": "The standard",
+          "text": "The Court's 2025 standards start service with a beverage list that is clean, accurate, up to date and easy to read."
+        },
+        {
+          "label": "What judges want",
+          "text": "Wine Spectator's award judges want complete, accurate entries (vintages, appellations, full producer names) and a list that matches the menu in price and style."
+        }
+      ],
+      "know": [
+        "Wine Spectator's Award of Excellence starts at 75 selections; Best of Award of Excellence lists typically run 350+; Grand Award lists typically 1,000+.",
+        "Grand Award lists show depth in mature vintages and large formats, and every Grand Award winner is inspected.",
+        "A Cornell study of 270 restaurants linked four list traits to higher wine sales: the list on the food menu, prices without a dollar sign, well-regarded wineries and a reserve or special section.",
+        "The same study linked organizing the list by style (sweet, bold, dry) to lower sales.",
+        "The Advanced practical includes correcting a beverage list full of mistakes, big and small."
+      ],
+      "visuals": [
+        {
+          "type": "pyramid",
+          "title": "Wine Spectator's three award levels",
+          "rows": [
+            {
+              "name": "Grand Award",
+              "note": "Typically 1,000+ selections; mature vintages, large formats; inspected"
+            },
+            {
+              "name": "Best of Award of Excellence",
+              "note": "Typically 350+; breadth across regions or vertical depth"
+            },
+            {
+              "name": "Award of Excellence",
+              "note": "At least 75; quality producers; matches the menu"
+            }
+          ]
+        },
+        {
+          "type": "tiles",
+          "title": "Linked with higher sales (Cornell, 270 restaurants)",
+          "dark": true,
+          "items": [
+            {
+              "name": "On the menu",
+              "text": "The wine list printed on the food menu."
+            },
+            {
+              "name": "No $ sign",
+              "text": "Prices listed without a dollar sign."
+            },
+            {
+              "name": "Known names",
+              "text": "Wineries with a reputation for quality."
+            },
+            {
+              "name": "Reserve",
+              "text": "A reserve or other special section."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pricing the list",
+      "source": "Court of Master Sommeliers, Curriculum Guide (Business of the Sommelier); Restaurant Business; Provi; SevenFifty Daily",
+      "lines": [
+        {
+          "label": "From Level 2",
+          "text": "Cost % = bottle cost ÷ list price, and list price = cost ÷ target cost %. At Master level you set one policy across the whole list."
+        },
+        {
+          "label": "The scale",
+          "text": "Trade guides put bottle markups at about 2 to 4 times cost, and most operators use a sliding scale: cheaper bottles marked up more, expensive ones less."
+        }
+      ],
+      "know": [
+        "The simplest by-the-glass rule prices one glass at the wholesale cost of the whole bottle.",
+        "If a bottle sells only 3 or 4 glasses before it's past its best, price per pour on the glasses you really sell.",
+        "Gross profit is price minus cost: a pricier bottle at a higher cost % can still earn more dollars.",
+        "An allocated wine can be priced up to match its rarity, or left as a value find.",
+        "When a guest questions list prices, acknowledge it and explain the house pricing policy tactfully."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "An example sliding scale (our numbers)",
+          "rows": [
+            {
+              "name": "$10 bottle × 4",
+              "meta": "$40 · 25% cost · $30 profit"
+            },
+            {
+              "name": "$30 bottle × 3",
+              "meta": "$90 · 33% cost · $60 profit"
+            },
+            {
+              "name": "$100 bottle × 2",
+              "meta": "$200 · 50% cost · $100 profit"
+            }
+          ],
+          "note": "Our example numbers. The cost % rises, and so do the dollars."
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "EXAMPLE · 5 GLASSES SOLD",
+              "title": "$12 bottle, $12 a glass",
+              "text": "5 × $12 = $60\n$12 ÷ $60 = 20% cost"
+            },
+            {
+              "label": "EXAMPLE · 4 GLASSES SOLD",
+              "title": "One glass poured out",
+              "text": "4 × $12 = $48\n$12 ÷ $48 = 25% cost"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Buying: tiers, distributors and allocations",
+      "source": "TTB (importing); eCFR 27 CFR part 6; VinePair (three-tier explainer); SevenFifty Daily (allocations)",
+      "lines": [
+        {
+          "label": "Three tiers",
+          "text": "In the US, wine generally moves from producer or importer, to wholesaler (distributor), to retailer, and a restaurant is a retailer. Each state has its own laws on how that works."
+        },
+        {
+          "label": "Importers",
+          "text": "An importer needs a federal Basic Importer's Permit and an approved label (COLA) for each product, and must meet state and local rules too."
+        }
+      ],
+      "know": [
+        "Federal rules call producers, importers and wholesalers 'industry members'; anyone selling to consumers, restaurants included, is a 'retailer'.",
+        "An importer that wholesales wines it didn't import also needs a Wholesaler's Basic Permit.",
+        "Federally, supplier credit beyond 30 days from delivery is a means to induce, and state law still applies on top.",
+        "Allocated wines are those where demand outstrips supply; producers often split them by market and favor long-standing buyers.",
+        "Distributors and importers may ask for a by-the-glass placement or a long-term commitment for an allocation, and skipping an allocation can cost you the next one."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "The three tiers",
+          "items": [
+            {
+              "name": "Producer or importer",
+              "text": "Makes the wine or brings it into the US",
+              "meta": "Tier 1"
+            },
+            {
+              "name": "Wholesaler",
+              "text": "Stores, ships and sells to retailers",
+              "meta": "Tier 2"
+            },
+            {
+              "name": "Retailer",
+              "text": "Shops, bars and restaurants sell to guests",
+              "meta": "Tier 3"
+            }
+          ]
+        },
+        {
+          "type": "tiles",
+          "title": "Earning allocations",
+          "dark": true,
+          "items": [
+            {
+              "name": "Buy steadily",
+              "text": "Support suppliers through the year, not only when the rare bottle lands."
+            },
+            {
+              "name": "Be honest",
+              "text": "Tell reps your direction and how much you can really buy."
+            },
+            {
+              "name": "Ask the market",
+              "text": "Your distributor's team knows what reaches your area."
+            },
+            {
+              "name": "Know when to pass",
+              "text": "No allocation is worth buying wines you won't be proud to pour."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "The cellar: storage, inventory and turnover",
+      "source": "Court of Master Sommeliers, Hospitality & Service Standards (2023) and 2025 Advanced and Master standards; BevSpot; MarketMan",
+      "lines": [
+        {
+          "label": "From Level 2",
+          "text": "Store at a constant 50–60°F, corked table wines on their side, spirits and fortified wines upright, organized and away from light, odors and vibration."
+        },
+        {
+          "label": "Counting",
+          "text": "Usage = starting inventory + what came in − ending inventory. Every other number starts from an accurate count."
+        }
+      ],
+      "know": [
+        "Serve the oldest stock first (FIFO); the Court writes it into beer service.",
+        "Par level = (weekly usage + safety stock) ÷ deliveries per week.",
+        "One trade guide puts safety stock at about 20–30% of weekly usage.",
+        "Inventory turnover = COGS ÷ average inventory, where average inventory = (beginning + ending) ÷ 2.",
+        "The Court expects sommeliers to run, clean and maintain Coravin systems: gas canisters, needles and all."
+      ],
+      "visuals": [
+        {
+          "type": "steps",
+          "title": "An example par for one wine (our numbers)",
+          "items": [
+            {
+              "name": "Weekly usage",
+              "text": "What one week pours",
+              "meta": "12 bottles"
+            },
+            {
+              "name": "Safety stock",
+              "text": "About 25% of a week",
+              "meta": "3 bottles"
+            },
+            {
+              "name": "Deliveries",
+              "text": "Per week",
+              "meta": "1"
+            },
+            {
+              "name": "Par",
+              "text": "(12 + 3) ÷ 1",
+              "meta": "15 bottles"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "4",
+          "title": "Turns a year (example)",
+          "text": "Our example: $120,000 of wine COGS in a year ÷ $30,000 average inventory = 4 turns. Low turnover means stock is sitting."
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "Breadth",
+      "b": "Depth",
+      "why": "Breadth: how many regions and styles. Depth: verticals and mature vintages of top producers."
+    },
+    {
+      "a": "Markup",
+      "b": "Cost %",
+      "why": "3× markup and 33% cost describe the same price: one multiplies cost, the other divides it."
+    },
+    {
+      "a": "Importer",
+      "b": "Wholesaler",
+      "why": "An importer brings wine into the US; a wholesaler sells to retailers. Each needs its own federal permit."
+    },
+    {
+      "a": "Par",
+      "b": "Turnover",
+      "why": "Par is how much you keep on hand; turnover is how often stock sells through."
+    }
+  ],
+  "sources": "Court of Master Sommeliers, Americas: 2025 Advanced and Master Hospitality & Service Standards, Hospitality & Service Standards (2023), Curriculum Guide, Advanced Practical guide, Demeanor and the example MS feedback report; TTB and eCFR (27 CFR part 6); Wine Spectator Restaurant Awards criteria; Cornell School of Hotel Administration; Restaurant Business; Provi; SevenFifty Daily; VinePair; BevSpot; MarketMan; Corporate Finance Institute. Checked Nov 19, 2026.",
+  "cards": [
+    {
+      "q": "About how many selections does Wine Spectator's Award of Excellence start at?",
+      "answer": "At least 75",
+      "wrong": [
+        "At least 25",
+        "At least 150",
+        "At least 350"
+      ],
+      "source": "https://www.winespectator.com/articles/about-the-awards"
+    },
+    {
+      "q": "What does Wine Spectator say a Grand Award list typically includes?",
+      "answer": "1,000+ selections, mature vintages and large formats",
+      "wrong": [
+        "75+ selections matched to the menu",
+        "350+ selections from one region",
+        "500+ selections, all by the glass"
+      ],
+      "source": "https://www.winespectator.com/articles/about-the-awards"
+    },
+    {
+      "q": "In Cornell's study of 270 restaurants, which list practice was linked to LOWER wine sales?",
+      "answer": "Organizing wines by style (sweet, bold, dry)",
+      "wrong": [
+        "Printing prices without a dollar sign",
+        "Putting the wine list on the food menu",
+        "Adding a reserve section"
+      ],
+      "source": "https://www.news.cornell.edu/stories/2009/12/study-how-restaurants-reap-higher-wine-sales"
+    },
+    {
+      "q": "Which details does Wine Spectator require for every entry on a qualifying list?",
+      "answer": "Vintage, appellation and complete producer name",
+      "wrong": [
+        "Tasting notes and food pairings",
+        "Critic scores and bottle size",
+        "Grape variety and alcohol level"
+      ],
+      "source": "https://www.winespectator.com/articles/about-the-awards"
+    },
+    {
+      "q": "What range of bottle markups does one restaurant trade guide give?",
+      "answer": "2× to 4× cost",
+      "wrong": [
+        "1.2× to 1.5× cost",
+        "5× to 6× cost",
+        "8× to 10× cost"
+      ],
+      "source": "https://restaurantbusinessonline.com/wine-list-figuring-your-pricing-formula-1"
+    },
+    {
+      "q": "On a sliding scale, which bottles carry the highest markup?",
+      "answer": "The least expensive",
+      "wrong": [
+        "The most expensive",
+        "The oldest vintages",
+        "Large formats"
+      ],
+      "source": "https://restaurantbusinessonline.com/wine-list-figuring-your-pricing-formula-1"
+    },
+    {
+      "q": "Example: you pay $12 for a bottle and charge $12 a glass. You sell 5 glasses from it. What is the cost %?",
+      "answer": "20%",
+      "wrong": [
+        "12%",
+        "25%",
+        "40%"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+    },
+    {
+      "q": "Example: a $30 bottle is listed at $90. What is the cost %?",
+      "answer": "About 33%",
+      "wrong": [
+        "About 25%",
+        "About 30%",
+        "About 300%"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+    },
+    {
+      "q": "Under the three-tier system, which tier is a restaurant?",
+      "answer": "Retailer (tier 3)",
+      "wrong": [
+        "Wholesaler (tier 2)",
+        "Producer (tier 1)",
+        "Importer (tier 1)"
+      ],
+      "source": "https://vinepair.com/articles/three-tier-system-explainer/"
+    },
+    {
+      "q": "What must an importer hold for each wine label at the time of importation?",
+      "answer": "A TTB Certificate of Label Approval (COLA)",
+      "wrong": [
+        "A state wholesaler license",
+        "A distributor's purchase order",
+        "A retailer's placement letter"
+      ],
+      "source": "https://www.ttb.gov/import-export/itd/importing-bottled-alcohol-beverages-into-the-united-states"
+    },
+    {
+      "q": "Under federal tied-house rules, supplier credit beyond how many days from delivery is a means to induce?",
+      "answer": "30 days",
+      "wrong": [
+        "15 days",
+        "60 days",
+        "90 days"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-6.65"
+    },
+    {
+      "q": "What is an allocated wine?",
+      "answer": "A wine where demand outstrips supply, so buyers get set amounts",
+      "wrong": [
+        "A wine sold only by the glass",
+        "A wine reserved for export markets",
+        "A wine priced below cost to clear stock"
+      ],
+      "source": "https://daily.sevenfifty.com/how-to-navigate-the-tricky-world-of-wine-allocations"
+    },
+    {
+      "q": "What is the usage formula for a period?",
+      "answer": "Starting inventory + received − ending inventory",
+      "wrong": [
+        "Ending inventory − starting inventory",
+        "Sales ÷ starting inventory",
+        "Purchases − sales"
+      ],
+      "source": "https://bevspot.com/blog/bar-inventory-101-how-to-keep-track-of-your-stock/"
+    },
+    {
+      "q": "Example: weekly usage 12 bottles, safety stock 3, one delivery a week. What is the par?",
+      "answer": "15 bottles",
+      "wrong": [
+        "9 bottles",
+        "12 bottles",
+        "36 bottles"
+      ],
+      "source": "https://bevspot.com/blog/bar-inventory-101-how-to-keep-track-of-your-stock/"
+    },
+    {
+      "q": "How is inventory turnover calculated?",
+      "answer": "COGS ÷ average inventory",
+      "wrong": [
+        "Sales ÷ ending inventory",
+        "Average inventory ÷ COGS",
+        "Purchases ÷ sales"
+      ],
+      "source": "https://marketman.com/blog/how-much-inventory-should-restaurant-carry"
+    },
+    {
+      "q": "What long-term storage temperature range do the Court's standards give?",
+      "answer": "50–60°F (10–15°C)",
+      "wrong": [
+        "40–45°F (4–7°C)",
+        "62–68°F (17–20°C)",
+        "35–40°F (2–4°C)"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "Mise en place: beverage lists are clean, accurate, up-to-date and easy to read; beverages are stored in an organized manner and stored and served at the correct temperature.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=4"
+    },
+    {
+      "fact": "The Advanced Business of the Sommelier exam covers beverage alcohol program management: qualitative assessment for pricing, theme and style; marketing and sales techniques; purchasing; costing; audits; list management; inventory management; staff management and training; beverage equipment management. Exercises include costing, reading and evaluating inventory sheets, and correcting a beverage list with lots of mistakes, big and small.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+    },
+    {
+      "fact": "The example MS Practical & Tasting feedback report lists Business of the Sommelier as a Practical portion alongside the Sparkling and Decanting tables.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf"
+    },
+    {
+      "fact": "Wine Spectator: a wine list must present complete, accurate information, including vintages and appellations; complete producer names and correct spellings are mandatory; overall presentation is considered.",
+      "source": "https://www.winespectator.com/articles/about-the-awards"
+    },
+    {
+      "fact": "Award of Excellence: at least 75 selections, a well-chosen assortment of quality producers and a thematic match to the menu in price and style. Best of Award of Excellence: typically 350 or more selections, excellent breadth across multiple regions and/or significant vertical depth of top producers, superior presentation. Grand Award: typically 1,000 or more selections, outstanding depth in mature vintages, large-format bottles, excellent harmony with the menu, superior presentation; all Grand Award winners and many others are inspected.",
+      "source": "https://www.winespectator.com/articles/about-the-awards"
+    },
+    {
+      "fact": "Cornell (Lynn and Yang): tested 46 attributes of wine lists in 270 restaurants; four linked with higher sales: list on the food menu, prices without a dollar sign, wines from wineries known for quality, a reserve or special section. Organizing by wine style (sweet, bold, dry) was connected with lower sales. A longer list reaped more sales only at casual restaurants, up to about 150 wines. Price had no relationship with sales at fine dining. The research is correlation, not causation.",
+      "source": "https://www.news.cornell.edu/stories/2009/12/study-how-restaurants-reap-higher-wine-sales"
+    },
+    {
+      "fact": "Cost % = bottle cost ÷ list price; list price = bottle cost ÷ target cost %.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+    },
+    {
+      "fact": "Gross profit is revenue minus cost of goods sold.",
+      "source": "https://corporatefinanceinstitute.com/resources/accounting/profit/"
+    },
+    {
+      "fact": "Wine pricing multipliers can range from 2× cost to 4× cost; most operators supplement this with a sliding scale, with cheaper bottles marked up higher than expensive ones.",
+      "source": "https://restaurantbusinessonline.com/wine-list-figuring-your-pricing-formula-1"
+    },
+    {
+      "fact": "The most basic by-the-glass strategy prices a glass at the wholesale cost of the bottle; a per-pour approach divides the bottle price by the glasses; if only three or four pours are sold from a bottle instead of the full six, adjust the per-glass price.",
+      "source": "https://www.provi.com/blog/operations/pricing-wine-by-the-glass"
+    },
+    {
+      "fact": "Allocated (highly allocated) bottles are those for which demand outstrips supply. Some are allocated to regions based on percentage of business, and often go to the best, longest-standing customers. Relationships and steady buying through the year help. Distributors and importers often require a by-the-glass placement or long-term buying commitment for certain allocations. If you don't take an allocation you can lose it. Laws on allocations vary among states. An allocated wine can be marked up to match its rarity or kept as a hidden gem. No allocation is worth buying wines you won't be proud to offer.",
+      "source": "https://daily.sevenfifty.com/how-to-navigate-the-tricky-world-of-wine-allocations"
+    },
+    {
+      "fact": "Pricing complaints: acknowledge the guest's opinion and tactfully state the restaurant's pricing policies.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=2"
+    },
+    {
+      "fact": "The three-tier system: the manufacturer sells to a wholesaler, who sells to the retailer, who sells to the public. Tier 1 is producers and importers; tier 2 distributors/wholesalers handle storage, transportation and marketing; tier 3 retailers include bottle shops, restaurants and bars. Each state has its own laws on alcohol distribution under the 21st Amendment.",
+      "source": "https://vinepair.com/articles/three-tier-system-explainer/"
+    },
+    {
+      "fact": "27 CFR 6.11: 'industry member' means a producer, importer or wholesaler of distilled spirits, wine or malt beverages; 'retailer' means any person selling them to consumers.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.11"
+    },
+    {
+      "fact": "27 CFR 6.1: nothing in part 6 exempts any person from the requirements of any State law or regulation.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.1"
+    },
+    {
+      "fact": "Importers need a Federal Basic Importer's Permit (TTB F 5100.24) and must keep a US business office; to sell at wholesale beverages other than those they import, they also need a Wholesaler's Basic Permit; they must hold a TTB Certificate of Label Approval (COLA) for each unique product/label at the time of importation; they must also meet State and local requirements.",
+      "source": "https://www.ttb.gov/import-export/itd/importing-bottled-alcohol-beverages-into-the-united-states"
+    },
+    {
+      "fact": "27 CFR 6.65: extension of credit by an industry member to a retailer for more than 30 days from the date of delivery is a means to induce.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.65"
+    },
+    {
+      "fact": "27 CFR 6.72: requiring a retailer to purchase one product in order to obtain another ('tie-in' sales) is a means to induce.",
+      "source": "https://www.ecfr.gov/current/title-27/section-6.72"
+    },
+    {
+      "fact": "Storage (Court Hospitality & Service Standards): constant temperature, 50-60°F / 10-15°C ideal for long-term storage; organized; cork-finished table wines on their side; spirits and fortified wines upright; avoid light, vibration, heat and temperature swings; away from odors.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+    },
+    {
+      "fact": "Beer service: always follow FIFO (first in, first out), serving the oldest stock first.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=18"
+    },
+    {
+      "fact": "Coravin: sommeliers should know pouring, recharging (sparkling), cleaning, replacing gas canisters and changing the needle for the Timeless, Pivot and Sparkling systems.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=17"
+    },
+    {
+      "fact": "Continuously over- or under-ordering creates problems for bars and increases costs and customer dissatisfaction.",
+      "source": "https://bevspot.com/blog/bar-inventory-101-how-to-keep-track-of-your-stock/"
+    },
+    {
+      "fact": "Usage = starting inventory + inventory added − ending inventory. Track sitting inventory in one unit of measurement, used continuously. Par level = (weekly usage + safety stock) ÷ number of deliveries in a week; safety stock should generally be around 20-30% of weekly usage.",
+      "source": "https://bevspot.com/blog/bar-inventory-101-how-to-keep-track-of-your-stock/"
+    },
+    {
+      "fact": "Inventory turnover ratio = cost of goods sold ÷ average inventory; average inventory = (beginning + ending inventory) ÷ 2; a low ratio shows too much inventory or low sales.",
+      "source": "https://marketman.com/blog/how-much-inventory-should-restaurant-carry"
+    }
+  ],
+  "unverified": [
+    "Markup ranges vary by source: Restaurant Business gives 2× to 4× cost; a Provi article gives '200-300 percent over retail'; vendor pages give other ranges. Only the Restaurant Business range is stated, as one guide's figure; the sliding-scale table is our own example.",
+    "Wine Spectator's 350+ and 1,000+ counts are 'typical', not minimums; only the 75-selection figure is stated as a floor.",
+    "Cornell's findings are correlations from one 2009 study, not proof of cause.",
+    "The 20-30% safety stock figure is one vendor's (BevSpot) general guide, not an industry standard.",
+    "Whether a particular allocation deal ('buy X to get Y', a required by-the-glass placement) breaks federal tie-in rules depends on the facts and on state law; the lesson says to check, not that such deals are unlawful.",
+    "VinePair's figures for markups at each tier (about 50% at tier 1, 150% or more overall) were not confirmed elsewhere and are not used.",
+    "State rules on credit, samples and allocations differ by state and are not described; no state's rule is presented as ours."
+  ],
+  "court": {
+    "outcome": "Beverage lists are clean, accurate, up-to-date, and easy to read. Beverages are stored and served at the correct temperature.",
+    "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf#page=4",
+    "coverage": [
+      {
+        "topic": "Mise en place: beverage lists clean, accurate, up to date",
+        "guide": "Accuracy standards shared by the Court and award judges.",
+        "where": "What a great list does"
+      },
+      {
+        "topic": "List management; beverage list correction",
+        "guide": "Vintages, appellations, producer names; fixing a list's mistakes.",
+        "where": "What a great list does"
+      },
+      {
+        "topic": "Qualitative assessment for pricing, theme and style",
+        "guide": "Match to the menu in price and style; a pricing policy.",
+        "where": "What a great list does; Pricing the list"
+      },
+      {
+        "topic": "Marketing and sales techniques",
+        "guide": "Cornell's list traits linked to higher sales.",
+        "where": "What a great list does"
+      },
+      {
+        "topic": "Costing",
+        "guide": "Cost %, sliding-scale markups, glass pricing with waste.",
+        "where": "Pricing the list"
+      },
+      {
+        "topic": "Business of the Sommelier (MS practical portion)",
+        "guide": "Listed in the example MS feedback report beside the service tables.",
+        "where": "What a great list does; Pricing the list"
+      },
+      {
+        "topic": "Purchasing",
+        "guide": "Three tiers, importer permits and COLAs, credit terms, allocations.",
+        "where": "Buying: tiers, distributors and allocations"
+      },
+      {
+        "topic": "Inventory management; reading inventory sheets",
+        "guide": "Usage, par, safety stock, turnover.",
+        "where": "The cellar: storage, inventory and turnover"
+      },
+      {
+        "topic": "Storage at the correct temperature; FIFO",
+        "guide": "50-60°F, bottle position, oldest stock first.",
+        "where": "The cellar: storage, inventory and turnover"
+      },
+      {
+        "topic": "Beverage equipment management",
+        "guide": "Coravin use and upkeep, as the Court lists it.",
+        "where": "The cellar: storage, inventory and turnover"
+      }
+    ]
+  },
+  "v3": {
+    "video": null,
+    "sections": [
+      {
+        "name": "What a great list does",
+        "video": {
+          "youtubeId": "O1VhVwsIXIo",
+          "title": "Sommelier Profile: Eric Zillier l Wine Spectator",
+          "by": "Wine Spectator",
+          "length": "2:13"
+        },
+        "keyPoints": [
+          {
+            "big": "ACCURATE",
+            "line": "vintages, appellations and full producer names, spelled right."
+          },
+          {
+            "big": "MATCH THE MENU",
+            "line": "in price and in style."
+          },
+          {
+            "big": "75 SELECTIONS",
+            "line": "is where Wine Spectator's Award of Excellence starts."
+          },
+          {
+            "big": "RESERVE LIST",
+            "line": "was one of four traits Cornell linked to higher sales."
+          },
+          {
+            "big": "BY STYLE",
+            "line": "sorting by sweet, bold, dry was linked to lower sales."
+          }
+        ],
+        "read": {
+          "bigIdea": "Accurate, built for the food, and easy to buy from.",
+          "where": "The Court treats the list as **mise en place**: clean, accurate, up to date, easy to read. At Advanced it hands you a **beverage list full of mistakes** to correct. Award judges look for the same accuracy, plus fit with the **menu**.",
+          "stopsTitle": "Four tests of a list",
+          "stops": [
+            {
+              "name": "Accuracy",
+              "text": "Every entry carries **vintage**, **appellation** and the **full producer name**, spelled right. Wine Spectator calls complete names and correct spelling **mandatory**."
+            },
+            {
+              "name": "Range and depth",
+              "text": "**Breadth** means many regions. **Depth** means verticals of top producers and **mature vintages**. Wine Spectator's top two levels typically run **350+** and **1,000+** selections."
+            },
+            {
+              "name": "Fit",
+              "text": "The list matches the menu in **price** and **style**. In Cornell's study, a longer list lifted sales only at **casual** restaurants, up to about **150** wines."
+            },
+            {
+              "name": "Layout",
+              "text": "Cornell linked four traits to higher sales: list on the **food menu**, **no dollar signs**, well-known wineries, a **reserve** section. Sorting by **style** went with lower sales. It's correlation, not proof."
+            }
+          ],
+          "visual": 0,
+          "mixup": "**Breadth** is how many regions and styles the list covers. **Depth** is how far it goes into one producer or region: verticals and mature vintages.",
+          "sayIt": "The list follows the menu; I'm happy to point you to a few that fit your dishes."
+        },
+        "check": [
+          0,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "Pricing the list",
+        "video": {
+          "youtubeId": "Ep9kbpYlEWg",
+          "title": "Why Wine is So Expensive at Restaurants | World Of Wine | Bon Appétit",
+          "by": "Bon Appétit",
+          "length": "9:58"
+        },
+        "keyPoints": [
+          {
+            "big": "2× TO 4×",
+            "line": "cost is the range one trade guide gives for bottle markups."
+          },
+          {
+            "big": "SLIDING SCALE",
+            "line": "cheaper bottles marked up more, pricier ones less."
+          },
+          {
+            "big": "GLASS = BOTTLE",
+            "line": "simplest rule: one glass priced at the bottle's wholesale cost."
+          },
+          {
+            "big": "WASTE",
+            "line": "price on the glasses you really sell, not a perfect bottle."
+          },
+          {
+            "big": "DOLLARS",
+            "line": "a pricier bottle at a higher cost % can earn more profit."
+          }
+        ],
+        "read": {
+          "bigIdea": "Price for the dollars, not just the percent.",
+          "where": "From Level 2: **cost %** = cost ÷ price. A program lead sets one **pricing policy** for the whole list, then checks it against what sells.",
+          "stopsTitle": "Four pricing moves",
+          "stops": [
+            {
+              "name": "Bottles",
+              "text": "One trade guide gives **2× to 4× cost**. Most operators use a **sliding scale**: the cheapest bottles carry the biggest markup."
+            },
+            {
+              "name": "Why a scale",
+              "text": "Example: a $10 bottle at 4× is $40 (25% cost, $30 profit). A $100 bottle at 2× is $200 (50% cost, **$100 profit**). Higher cost %, more dollars."
+            },
+            {
+              "name": "By the glass",
+              "text": "Simplest rule: one glass costs the guest what the **whole bottle** cost you. If only **3 or 4 glasses** sell before the bottle fades, price on those."
+            },
+            {
+              "name": "Rare bottles",
+              "text": "An **allocated** wine can be priced up to its rarity or left as a value find."
+            }
+          ],
+          "visual": 0,
+          "mixup": "**Markup** multiplies cost: a $10 bottle at 3× is $30. **Cost %** divides it: $10 ÷ $30 = 33%. Same price, two ways to say it.",
+          "sayIt": "This one is one of the best values on the list right now."
+        },
+        "check": [
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "name": "Buying: tiers, distributors and allocations",
+        "video": {
+          "youtubeId": "6DcprQ6j3sg",
+          "title": "Three Tier System Of Alcohol Beverage Businesses",
+          "by": "Beverage Trade Network",
+          "length": "1:18"
+        },
+        "keyPoints": [
+          {
+            "big": "THREE TIERS",
+            "line": "producer or importer, then wholesaler, then retailer."
+          },
+          {
+            "big": "COLA",
+            "line": "an approved label for each imported product."
+          },
+          {
+            "big": "30 DAYS",
+            "line": "is the federal limit on supplier credit after delivery."
+          },
+          {
+            "big": "ALLOCATION",
+            "line": "demand beats supply; steady buyers get the bottles."
+          },
+          {
+            "big": "STATE LAW",
+            "line": "sets the details; federal rules never exempt you from it."
+          }
+        ],
+        "read": {
+          "bigIdea": "Every bottle comes through three tiers.",
+          "where": "In the US the **three-tier system** separates **producers and importers**, **wholesalers** and **retailers**. A restaurant is a retailer. Federal rules apply everywhere, and each **state** has its own laws on top.",
+          "stopsTitle": "Four stops on the way in",
+          "stops": [
+            {
+              "name": "Importers",
+              "text": "Foreign wine comes in under a **Basic Importer's Permit**, with a **COLA** for every label. An importer selling other companies' wines at wholesale needs a **Wholesaler's** permit too."
+            },
+            {
+              "name": "Distributors",
+              "text": "The wholesaler stores, ships and sells to you, and your rep knows what reaches your **market**. Federally, supplier credit can't run past **30 days** from delivery."
+            },
+            {
+              "name": "Allocations",
+              "text": "When **demand outstrips supply**, wines are split by market and tend to go to steady, **long-standing** buyers. Skip your allocation and you may lose it."
+            },
+            {
+              "name": "Strings attached",
+              "text": "Some suppliers want a **by-the-glass placement** or a long-term commitment. Federal rules list a **tie-in** (buy one product to get another) as a means to induce, so check deals against your state's rules."
+            }
+          ],
+          "visual": 0,
+          "mixup": "An **importer** brings wine into the US under a federal importer's permit. A **wholesaler** sells to retailers; an importer selling other people's wines needs that permit too."
+        },
+        "check": [
+          8,
+          9,
+          11
+        ]
+      },
+      {
+        "name": "The cellar: storage, inventory and turnover",
+        "video": {
+          "youtubeId": "6H7J7ZEGxq4",
+          "title": "A Sommelier Shows His Wine Inventory Room: Thomas Brenner",
+          "by": "Beverage Trade Network",
+          "length": "2:18"
+        },
+        "keyPoints": [
+          {
+            "big": "50–60°F",
+            "line": "constant, for long-term storage."
+          },
+          {
+            "big": "FIFO",
+            "line": "oldest stock goes out first."
+          },
+          {
+            "big": "USAGE",
+            "line": "start + received − end, for the same period."
+          },
+          {
+            "big": "PAR",
+            "line": "(weekly usage + safety stock) ÷ deliveries a week."
+          },
+          {
+            "big": "TURNOVER",
+            "line": "COGS ÷ average inventory; low means stock is sitting."
+          }
+        ],
+        "read": {
+          "bigIdea": "Count it, store it, keep it moving.",
+          "where": "A cellar is money on a shelf. Store it right, count it on a schedule and set a **par** for every wine you pour, so you neither run out nor over-order.",
+          "stopsTitle": "Four habits",
+          "stops": [
+            {
+              "name": "Storage",
+              "text": "From Level 2: a constant **50–60°F**, corked wines on their **side**, spirits and fortified wines **upright**. Rotate **FIFO**: oldest stock out first."
+            },
+            {
+              "name": "Count",
+              "text": "**Usage** = start + received − end. Pick one unit of measure and count the same way every time."
+            },
+            {
+              "name": "Par",
+              "text": "**Par** = (weekly usage + safety stock) ÷ deliveries a week. Example: 12 bottles a week plus 3 safety, one delivery: par is **15**."
+            },
+            {
+              "name": "Turnover",
+              "text": "**Turnover** = COGS ÷ average inventory. Example: $120,000 ÷ $30,000 = **4** turns a year. Low turnover means too much stock or slow sales."
+            }
+          ],
+          "visual": 0,
+          "mixup": "**Par** is how much you keep on hand. **Turnover** is how often your stock sells through. Too much stock shows up as low turnover."
+        },
+        "check": [
+          12,
+          13,
+          14
+        ]
+      }
+    ]
+  }
+}

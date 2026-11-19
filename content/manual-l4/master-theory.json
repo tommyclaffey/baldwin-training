@@ -1,0 +1,1010 @@
+{
+  "program": "somm",
+  "programLevel": 4,
+  "number": 2,
+  "slug": "master-theory",
+  "title": "Theory at the Master level",
+  "script": "Chapter two",
+  "lead": "The Court's Master theory list beyond the regions: wine law in the EU, the US and Australia; how Port, Sherry and Madeira are made and kept; distillation, spirits and liqueurs; beer and cider; and keeping every product in condition.",
+  "minutes": 30,
+  "intro": {
+    "script": "Start here",
+    "title": "HOW MUCH MUST COME FROM THERE",
+    "text": "Every wine law sets a minimum share of grapes from the place on the label. Know the number in each system.",
+    "tiers": [
+      {
+        "name": "EU PDO",
+        "note": "All grapes from the area"
+      },
+      {
+        "name": "EU PGI",
+        "note": "At least 85% from the area"
+      },
+      {
+        "name": "US AVA",
+        "note": "At least 85% from the AVA"
+      },
+      {
+        "name": "Australian GI",
+        "note": "At least 85% from the GI"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "Wine law: EU, US and Australia",
+      "source": "EU Regulation 1308/2013 (EUR-Lex) and the European Commission's quality-schemes page; 27 CFR parts 4 and 9 (eCFR); Wine Australia",
+      "lines": [
+        {
+          "label": "The idea",
+          "text": "Each system ties a place name on the label to a minimum share of grapes from that place, and sets its own rules for naming a grape or a year."
+        },
+        {
+          "label": "From Level 3",
+          "text": "You know the regions. At Master level you answer on the laws that frame them."
+        }
+      ],
+      "chips": {
+        "label": "Systems to know",
+        "items": [
+          "EU PDO",
+          "EU PGI",
+          "US AVA",
+          "Australian GI"
+        ]
+      },
+      "know": [
+        "EU PDO: grapes come only from the area, production happens there, and quality is essentially or exclusively due to the place.",
+        "EU PGI: at least 85% of the grapes from the area; the rest must come from the same member state or country.",
+        "US: a single grape name needs 75% of that grape (51% for a Vitis labrusca variety); an AVA needs 85% from inside its boundary.",
+        "US vintage: 95% from the named year with an AVA, 85% with a state, county or country.",
+        "Australia: at least 85% from a named vintage, variety or GI, with no tolerances."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "Minimum share from the named place",
+          "rows": [
+            {
+              "name": "EU PDO",
+              "value": "all of the grapes",
+              "pct": 1
+            },
+            {
+              "name": "US AVA",
+              "value": "85%",
+              "pct": 0.85
+            },
+            {
+              "name": "EU PGI",
+              "value": "85%",
+              "pct": 0.85
+            },
+            {
+              "name": "Australian GI",
+              "value": "85%",
+              "pct": 0.85
+            },
+            {
+              "name": "US state or county",
+              "value": "75%",
+              "pct": 0.75
+            }
+          ],
+          "note": "Single-place claims. Multi-region claims follow other rules."
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "US · 27 CFR PART 4",
+              "title": "Grape and year on the label",
+              "text": "Varietal: 75% (Vitis labrusca 51%)\nAVA: 85% from the AVA\nVintage with an AVA: 95%\nVintage with state or county: 85%"
+            },
+            {
+              "label": "AUSTRALIA",
+              "title": "The 85% rule",
+              "text": "Vintage: 85%\nVariety: 85%\nGI: 85%\nUp to three GIs: 95% combined"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fortified wines: Port, Sherry and Madeira",
+      "source": "IVDP (Port); Consejo Regulador, sherry.wine (Sherry); IVBAM and vinhomadeira.com (Madeira); Wine Folly (opened bottles)",
+      "lines": [
+        {
+          "label": "Making",
+          "text": "All three are fortified. When the spirit goes in, and how much, decides sweetness and whether the wine ages under flor, in wood or with heat."
+        },
+        {
+          "label": "Handling",
+          "text": "Vintage Port is the only Port that ages in bottle. Opened, fortified wines outlast table wines, and Madeira keeps longest."
+        }
+      ],
+      "chips": {
+        "label": "Madeira's main grapes",
+        "items": [
+          "Sercial",
+          "Verdelho",
+          "Boal",
+          "Malvasia",
+          "Terrantez",
+          "Tinta Negra"
+        ]
+      },
+      "know": [
+        "Port: grape brandy stops fermentation, and the wine usually ends at 19–22% ABV.",
+        "LBV is a single-year Ruby bottled after four to six years in wood; Vintage Port is bottled two to three years after the harvest.",
+        "Sherry: Fino and Manzanilla are fortified to about 15% so flor can grow; Oloroso goes to about 17%, where flor can't.",
+        "Madeira: fortified with 96% wine alcohol; estufagem heats it to 45–50°C for at least three months; canteiro ages it in cask for at least two years.",
+        "Frasqueira Madeira needs at least 20 years in wood by canteiro; a Port Colheita needs at least seven years in cask."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "SHERRY · UNDER FLOR",
+              "title": "Biological",
+              "text": "Fortified to about 15%\nA veil of flor yeast\nFino, Manzanilla\nAmontillado starts here"
+            },
+            {
+              "label": "SHERRY · WITH AIR",
+              "title": "Oxidative",
+              "text": "Fortified to about 17%\nNo flor can grow\nOloroso\nAmontillado finishes here"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Port categories and where they age",
+          "rows": [
+            {
+              "name": "Ruby, Reserve",
+              "meta": "Ruby style: color and fruit kept"
+            },
+            {
+              "name": "LBV",
+              "meta": "one year, 4–6 years in wood"
+            },
+            {
+              "name": "Vintage",
+              "meta": "bottled at 2–3 years, ages in bottle"
+            },
+            {
+              "name": "Tawny 10, 20, 30, 40",
+              "meta": "aged in wood"
+            },
+            {
+              "name": "Colheita",
+              "meta": "one year, 7+ years in cask"
+            }
+          ],
+          "note": "From the IVDP's Port categories."
+        }
+      ]
+    },
+    {
+      "name": "Distillation, spirits and liqueurs",
+      "source": "EU Regulation 2019/787 (EUR-Lex); 27 CFR part 5 (eCFR); Scotch Whisky Regulations 2009; BNIC (cognac.fr); BNIA (armagnac.fr); European Commission",
+      "lines": [
+        {
+          "label": "Two kinds of still",
+          "text": "Batch distillation repeats in a pot still; Cognac is distilled twice. A continuous still runs without stopping; most Armagnac needs one pass."
+        },
+        {
+          "label": "Two rulebooks",
+          "text": "The EU and the US define each spirit by its base, distillation strength, aging and bottling strength. The numbers often differ."
+        }
+      ],
+      "know": [
+        "Single Malt Scotch: malted barley only, one distillery, pot stills; all Scotch matures at least three years in oak casks of 700 liters or less.",
+        "Bourbon: at least 51% corn, distilled at 160 proof or less, into charred new oak at 125 proof or less, made only in the US.",
+        "EU brandy: at least one year in oak of 1,000 liters or more, or six months in smaller casks.",
+        "EU London gin: flavored only by distilling with its botanicals, not colored, and no more than 0.1 g/L of sweetening.",
+        "A liqueur needs at least 15% ABV and, in most cases, 100 g/L of sugar in the EU; in the US, at least 2.5% sugar by weight."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "BATCH",
+              "title": "Pot still",
+              "text": "One batch at a time\nCognac: distilled twice\nBrouillis, then the bonne chauffe\nSingle Malt Scotch"
+            },
+            {
+              "label": "CONTINUOUS",
+              "title": "Continuous still",
+              "text": "Runs without stopping\nMost Armagnac: one pass\nNo second distillation needed"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Minimum bottling strength",
+          "rows": [
+            {
+              "name": "Whisky, US and EU",
+              "meta": "40%"
+            },
+            {
+              "name": "Gin, rum, brandy, US",
+              "meta": "40%"
+            },
+            {
+              "name": "Gin, rum, EU",
+              "meta": "37.5%"
+            },
+            {
+              "name": "Brandy, EU",
+              "meta": "36%"
+            },
+            {
+              "name": "Liqueur, EU",
+              "meta": "15%"
+            }
+          ],
+          "note": "US standards of identity and the EU spirit-drink regulation."
+        }
+      ]
+    },
+    {
+      "name": "Beer, cider and keeping it all in condition",
+      "source": "American Homebrewers Association and Brewers Association; BJCP 2025 Cider Style Guidelines; 27 CFR part 7 (eCFR); Court of Master Sommeliers, Americas 2025 service standards; Wine Folly",
+      "lines": [
+        {
+          "label": "Beer",
+          "text": "Yeast and temperature split ales from lagers. Ales ferment warmer and can show esters; lagers ferment cold, then rest cold."
+        },
+        {
+          "label": "Cider",
+          "text": "The apples set the style: culinary apples give acid and little tannin; bittersweet and bittersharp apples bring tannin."
+        }
+      ],
+      "know": [
+        "Ale yeast is Saccharomyces cerevisiae; lager yeast, S. pastorianus, is a hybrid of ale yeast and a cold-tolerant species.",
+        "The Brewers Association groups its styles into ales, lagers and hybrids, each by origin, with gravity, ABV, IBU and color ranges.",
+        "Perry is the fermented juice of crushed pears, with pear as most of what ferments.",
+        "Ice cider comes from juice concentrated by freezing, and fermentation stops before it's dry.",
+        "The Court's standards: store beverages in order and at the correct temperature, and serve beer first in, first out."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "ALE",
+              "title": "Top-fermenting",
+              "text": "Saccharomyces cerevisiae\nAbout 60–78°F (16–26°C)\nCan show esters and phenols"
+            },
+            {
+              "label": "LAGER",
+              "title": "Bottom-fermenting",
+              "text": "Saccharomyces pastorianus\nAbout 48–58°F (9–14°C)\nThen weeks of cold lagering"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Opened bottles, per Wine Folly",
+          "rows": [
+            {
+              "name": "Sparkling",
+              "meta": "1–3 days, fridge, stopper"
+            },
+            {
+              "name": "Light white or rosé",
+              "meta": "5–7 days, fridge, corked"
+            },
+            {
+              "name": "Red",
+              "meta": "3–5 days, cool and dark"
+            },
+            {
+              "name": "Fortified",
+              "meta": "about 28 days, cool and dark"
+            },
+            {
+              "name": "Madeira, Marsala",
+              "meta": "keep when open"
+            }
+          ],
+          "note": "A guide, not a law. Taste before you pour."
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "PDO",
+      "b": "PGI",
+      "why": "PDO: all the grapes from the area. PGI: at least 85%, the rest from the same country."
+    },
+    {
+      "a": "AVA (85%)",
+      "b": "Vintage with an AVA (95%)",
+      "why": "One is the share from the place, the other the share from the year, on a US label."
+    },
+    {
+      "a": "Colheita Port",
+      "b": "Colheita Madeira",
+      "why": "Port: one year, at least seven in cask. Madeira: one year, at least five in wood."
+    },
+    {
+      "a": "Cognac",
+      "b": "Armagnac",
+      "why": "Cognac is distilled twice in batches. Most Armagnac is distilled once, continuously."
+    }
+  ],
+  "sources": "European Union (Regulations 1308/2013 and 2019/787 via EUR-Lex; European Commission quality-schemes page), US TTB regulations in 27 CFR parts 4, 5, 7 and 9 (eCFR), Wine Australia, IVDP (Port), the Sherry Consejo Regulador (sherry.wine), IVBAM (Madeira), the Scotch Whisky Regulations 2009, BNIC and BNIA (Cognac, Armagnac), the American Homebrewers Association and Brewers Association, the BJCP, the Court of Master Sommeliers, Americas, and Wine Folly. Checked Nov 19, 2026.",
+  "cards": [
+    {
+      "q": "Under EU law, what share of a PGI wine's grapes must come from its area?",
+      "answer": "At least 85%",
+      "wrong": [
+        "At least 75%",
+        "At least 95%",
+        "At least 51%"
+      ],
+      "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02013R1308-20231208"
+    },
+    {
+      "q": "What share of a US wine must come from an AVA for the AVA to appear on the label?",
+      "answer": "At least 85%",
+      "wrong": [
+        "At least 75%",
+        "At least 95%",
+        "At least 51%"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "q": "A US wine names an AVA and a vintage. How much must come from that year?",
+      "answer": "At least 95%",
+      "wrong": [
+        "At least 85%",
+        "At least 75%",
+        "At least 51%"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.27"
+    },
+    {
+      "q": "Under Australia's blending rules, what share is needed to name one variety on the label?",
+      "answer": "At least 85%",
+      "wrong": [
+        "At least 75%",
+        "At least 95%",
+        "At least 51%"
+      ],
+      "source": "https://www.wineaustralia.com/news/articles/the-blending-rules"
+    },
+    {
+      "q": "What minimum share lets a US label name a Vitis labrusca variety?",
+      "answer": "51%",
+      "wrong": [
+        "75%",
+        "85%",
+        "65%"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.23"
+    },
+    {
+      "q": "What stops fermentation in Port, per the IVDP?",
+      "answer": "Adding grape brandy",
+      "wrong": [
+        "Chilling the must",
+        "Adding sugar",
+        "Filtering out the yeast"
+      ],
+      "source": "https://www.ivdp.pt/en/wines/port-wines/introduction/"
+    },
+    {
+      "q": "Which Sherry is fortified to about 17%, too strong for flor to grow?",
+      "answer": "Oloroso",
+      "wrong": [
+        "Fino",
+        "Manzanilla",
+        "Pale Cream"
+      ],
+      "source": "https://www.sherry.wine/news/what-is-fortification-in-sherry-wine"
+    },
+    {
+      "q": "Which Madeira aging method heats the wine to 45–50°C for at least three months?",
+      "answer": "Estufagem",
+      "wrong": [
+        "Canteiro",
+        "Solera",
+        "Frasqueira"
+      ],
+      "source": "https://vinhomadeira.com/o-vinho-madeira/vinificacao-e-envelhecimento"
+    },
+    {
+      "q": "How long after the harvest is Vintage Port bottled, per the IVDP?",
+      "answer": "Two to three years",
+      "wrong": [
+        "Four to six years",
+        "At least seven years",
+        "At least ten years"
+      ],
+      "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
+    },
+    {
+      "q": "What is the minimum time in wood for a Frasqueira Madeira?",
+      "answer": "20 years",
+      "wrong": [
+        "5 years",
+        "10 years",
+        "3 years"
+      ],
+      "source": "https://vinhomadeira.com/o-vinho-madeira/tipos-categorias"
+    },
+    {
+      "q": "What share of corn must a bourbon mash contain under US rules?",
+      "answer": "At least 51%",
+      "wrong": [
+        "At least 75%",
+        "At least 80%",
+        "100%"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-5.143"
+    },
+    {
+      "q": "How is Cognac distilled?",
+      "answer": "Twice, in batches, in a pot still",
+      "wrong": [
+        "Once, in a continuous still",
+        "Three times, in a column still",
+        "Once, then freeze-concentrated"
+      ],
+      "source": "https://www.cognac.fr/en/discover/expertise/production/"
+    },
+    {
+      "q": "What is the minimum maturation for Scotch whisky?",
+      "answer": "Three years in oak casks of 700 liters or less",
+      "wrong": [
+        "Two years in charred new oak",
+        "One year in any wooden cask",
+        "Five years in casks of any size"
+      ],
+      "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/3"
+    },
+    {
+      "q": "What is the minimum sugar content for most liqueurs under EU rules?",
+      "answer": "100 grams per liter",
+      "wrong": [
+        "25 grams per liter",
+        "50 grams per liter",
+        "200 grams per liter"
+      ],
+      "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32019R0787"
+    },
+    {
+      "q": "Which EU gin may not be colored and may hold no more than 0.1 g/L of sweetening?",
+      "answer": "London gin",
+      "wrong": [
+        "Old Tom gin",
+        "Sloe gin",
+        "Genever"
+      ],
+      "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32019R0787"
+    },
+    {
+      "q": "Which yeast species ferments lager?",
+      "answer": "Saccharomyces pastorianus",
+      "wrong": [
+        "Saccharomyces cerevisiae",
+        "Brettanomyces bruxellensis",
+        "Zygosaccharomyces bailii"
+      ],
+      "source": "https://homebrewersassociation.org/how-to-brew/ale-v-lager-whats-the-difference/"
+    },
+    {
+      "q": "Which apples give English and French ciders their tannin?",
+      "answer": "Bittersweet and bittersharp apples",
+      "wrong": [
+        "Culinary (table) apples",
+        "Sweet dessert apples",
+        "Green cooking apples"
+      ],
+      "source": "https://www.bjcp.org/style/2025/cider"
+    },
+    {
+      "q": "What is perry?",
+      "answer": "Fermented pear juice",
+      "wrong": [
+        "Fermented apple juice",
+        "Pear brandy",
+        "Pear-flavored beer"
+      ],
+      "source": "https://www.bjcp.org/style/2025/cider"
+    },
+    {
+      "q": "Which stock rotation does the Court's beer standard call for?",
+      "answer": "FIFO: first in, first out",
+      "wrong": [
+        "LIFO: last in, first out",
+        "Newest stock first",
+        "Coldest bottle first"
+      ],
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+    },
+    {
+      "q": "About how long does Wine Folly say an opened fortified wine keeps, corked, cool and dark?",
+      "answer": "About 28 days",
+      "wrong": [
+        "1–3 days",
+        "3–5 days",
+        "About 6 months"
+      ],
+      "source": "https://winefolly.com/tips/how-long-does-an-open-bottle-of-wine-last/"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "MS Theory: answer questions on international wine laws, including the European Community, United States, Australia and other regions; fortified wines, vinification, storage and handling; methods of distillation, spirits and liqueurs; making beers and ciders and why styles vary; storing products in optimum condition; speaking with authority on wine areas and principal grapes.",
+      "source": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/"
+    },
+    {
+      "fact": "EU designation of origin (PDO): quality or characteristics essentially or exclusively due to a particular geographical environment with natural and human factors; grapes originate exclusively from the area; production takes place there; Vitis vinifera or a cross of Vitis vinifera and other Vitis species (consolidated text, Art. 93(1)(a)).",
+      "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02013R1308-20231208"
+    },
+    {
+      "fact": "EU geographical indication (PGI): specific quality, reputation or other characteristics attributable to origin; at least 85% of grapes exclusively from the area; production there; the maximum 15% from outside must come from the same member state or third country (Art. 93(1)(b), 93(5)).",
+      "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02013R1308-20231208"
+    },
+    {
+      "fact": "For wines, PDO grapes come exclusively from the area; for PGI at least 85% of the grapes come from the area. Spirit drink GIs need at least one stage of distillation or preparation in the region; raw materials need not come from there.",
+      "source": "https://agriculture.ec.europa.eu/farming/geographical-indications-and-quality-schemes/geographical-indications-and-quality-schemes-explained_en"
+    },
+    {
+      "fact": "EU traditional terms are protected against misuse, including with words such as 'style', 'type', 'method' or 'imitation' (Art. 113).",
+      "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02013R1308-20231208"
+    },
+    {
+      "fact": "US varietal labeling: a single grape name needs at least 75% of that variety, all grown in the labeled appellation; Vitis labrusca varieties need at least 51% (with a statement unless 75% or more).",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.23"
+    },
+    {
+      "fact": "US appellations: a state, county or country appellation needs at least 75% from the area; a viticultural area (AVA) needs at least 85% from grapes grown within its boundaries.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "fact": "US vintage: with a viticultural area appellation at least 95% from the labeled year; with any other appellation at least 85%.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.27"
+    },
+    {
+      "fact": "Estate bottled: the wine carries an AVA appellation; the winery is in the AVA; it grew all the grapes on land it owns or controls in the AVA; and it crushed, fermented, finished, aged and bottled the wine in a continuous process on its premises.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.26"
+    },
+    {
+      "fact": "An AVA petition must include name evidence, boundary evidence and distinguishing features.",
+      "source": "https://www.ecfr.gov/current/title-27/section-9.12"
+    },
+    {
+      "fact": "Wine Australia blending rules: at least 85% of the wine from the vintage, variety or region named; there are no tolerances or exemptions. Combined GI claims need 95%, each GI over 5%, listed in descending order, maximum three.",
+      "source": "https://www.wineaustralia.com/news/articles/the-blending-rules"
+    },
+    {
+      "fact": "The Australian GI register lists zones, regions and subregions; the textual description is the legal definition.",
+      "source": "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+    },
+    {
+      "fact": "Port: fermentation stopped by adding grape brandy; usually 19–22% vol.; very sweet to extra dry depending on when the brandy is added; made in the Demarcated Region of the Douro. Ruby style keeps deep red color and young fruit (Ruby, Reserve, LBV, Vintage); Tawny style ages in casks or vats (Tawny, Tawny Reserve, age-indicated 10, 20, 30, 40, Colheita).",
+      "source": "https://www.ivdp.pt/en/wines/port-wines/introduction/"
+    },
+    {
+      "fact": "LBV: a single-year Ruby bottled after four to six years in wood. Vintage: the only Port that ages in bottle, bottled two to three years after the vintage. Colheita: single-vintage Tawny aged in cask at least seven years. Tawny with an indication of age ages in wood.",
+      "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
+    },
+    {
+      "fact": "Sherry fortification adds wine alcohol (distilled from wine) after fermentation; the base wine is typically Palomino. Fino and Manzanilla are fortified to about 15% ABV; Oloroso to about 17%; the alcohol level decides whether flor can develop. Amontillado combines both kinds of ageing.",
+      "source": "https://www.sherry.wine/news/what-is-fortification-in-sherry-wine"
+    },
+    {
+      "fact": "Fino: aged entirely biologically under flor. Manzanilla: biological ageing in Sanlúcar de Barrameda. Amontillado: biological, then oxidative. Palo Cortado: starts under flor, refortified to 17%. Oloroso: exclusively oxidative. Pedro Ximénez: from sunned grapes, never below 250 g/l sugar.",
+      "source": "https://www.sherry.wine/sherry-cask/types-of-sherry-wine"
+    },
+    {
+      "fact": "Madeira is a liqueur wine (17–22% vol.) made only from grapes of the Madeira region; fermentation is stopped by adding neutral alcohol at 96% vol.",
+      "source": "https://ivbam.madeira.gov.pt/"
+    },
+    {
+      "fact": "Madeira fermentation is stopped with 96% wine alcohol; timing gives dry, medium dry, medium sweet or sweet. Estufagem: stainless tanks heated to 45–50°C for at least 3 months, then at least 90 days' rest. Canteiro: casks in the warmest upper floors, at least 2 years, oxidative ageing.",
+      "source": "https://vinhomadeira.com/o-vinho-madeira/vinificacao-e-envelhecimento"
+    },
+    {
+      "fact": "Most-used Madeira grapes: Sercial, Verdelho, Boal, Malvasia, Terrantez and Tinta Negra.",
+      "source": "https://vinhomadeira.com/o-vinho-madeira/castas"
+    },
+    {
+      "fact": "Madeira Colheita: a harvest year and at least 5 years continuously in wood. Frasqueira: harvest year and a recommended grape, canteiro, at least 20 years in wood. Age indications 5, 10, 15, 20, 30, 40, 50 and over 50 years.",
+      "source": "https://vinhomadeira.com/o-vinho-madeira/tipos-categorias"
+    },
+    {
+      "fact": "Opened wine (Wine Folly): sparkling 1–3 days refrigerated with a stopper; light white, sweet white and rosé 5–7 days refrigerated; full-bodied white 3–5 days; red 3–5 days cool and dark; fortified 28 days cool, dark, corked; Madeira and Marsala keep when open.",
+      "source": "https://winefolly.com/tips/how-long-does-an-open-bottle-of-wine-last/"
+    },
+    {
+      "fact": "Port: 3 oz (about 75 ml) pours at 55–68°F; ideal storage in a cellar (~53°F) or a refrigerator; most Port lasts about a month open.",
+      "source": "https://winefolly.com/tips/pro-tips-for-serving-port/"
+    },
+    {
+      "fact": "Scotch Whisky: distilled in Scotland below 94.8%, matured in Scotland in oak casks of 700 liters or less for at least three years, only water and plain caramel added, at least 40%. Single Malt Scotch: one distillery, water and malted barley only, distilled in batches in pot stills.",
+      "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/3"
+    },
+    {
+      "fact": "Cognac: a batch process of double distillation: wine to brouillis, then the bonne chauffe (repasse), with heads and tails removed; distillation finished by March 31 after the harvest.",
+      "source": "https://www.cognac.fr/en/discover/expertise/production/"
+    },
+    {
+      "fact": "Cognac is distilled twice in a pot still; Armagnac is mostly made in an Armagnac alambic by continuous distillation, without a second distillation.",
+      "source": "https://www.armagnac.fr/en/magazine/the-separated-brothers-a-taste-of-savoir-faire-3-3/383/0/4"
+    },
+    {
+      "fact": "US whisky: from grain mash, distilled below 95% ABV (190 proof), stored in oak (except corn whisky), bottled at not less than 40% ABV. Bourbon: at least 51% corn, distilled at 160 proof or less, stored in charred new oak at 125 proof or less; 'bourbon' only for whisky distilled and aged in the US. Straight whisky: at least 2 years in charred new oak.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.143"
+    },
+    {
+      "fact": "US gin: main flavor from juniper, bottled at not less than 40% ABV.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.144"
+    },
+    {
+      "fact": "US brandy: distilled from fruit wine, juice or mash below 95% ABV, bottled at not less than 40% ABV.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.145"
+    },
+    {
+      "fact": "US rum: from sugar cane juice, syrup, molasses or by-products, below 95% ABV, bottled at not less than 40% ABV.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.147"
+    },
+    {
+      "fact": "US agave spirits: at least 51% from Agave; Tequila and Mezcal are distinctive products of Mexico made under Mexican law.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.148"
+    },
+    {
+      "fact": "US cordials and liqueurs: flavored spirits containing at least 2.5% sugar by weight.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.150"
+    },
+    {
+      "fact": "EU whisky: malted cereal mash, distilled below 94.8%, matured at least three years in wooden casks of 700 liters or less, minimum 40%, only water and plain caramel added. EU rum: from cane sugar molasses, syrup or juice, below 96%, minimum 37.5%. EU brandy: matured at least one year in oak of 1,000 liters or more, or six months in casks under 1,000 liters; minimum 36%. EU gin: juniper predominant, minimum 37.5%. London gin: distilled with all natural botanicals, not coloured, no more than 0.1 g/L sweetening, minimum 37.5%. EU liqueur: minimum 15% and generally at least 100 g/L sweetening.",
+      "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32019R0787"
+    },
+    {
+      "fact": "Ales are fermented with Saccharomyces cerevisiae, top-fermenting, generally 60–78°F (16–26°C), and can show esters and phenols. Lagers use S. pastorianus, a hybrid of ale yeast and a cold-tolerant species; bottom-fermenting; about 48–58°F (9–14°C); then aged cold (lagering) for at least 2–3 weeks near 32°F.",
+      "source": "https://homebrewersassociation.org/how-to-brew/ale-v-lager-whats-the-difference/"
+    },
+    {
+      "fact": "The Brewers Association style guidelines group styles into ale, lager and hybrid/mixed families by origin, each with original gravity, final gravity, alcohol, bitterness (IBU) and color (SRM/EBC).",
+      "source": "https://www.brewersassociation.org/edu/brewers-association-beer-style-guidelines/"
+    },
+    {
+      "fact": "US malt beverage labels must state the class (such as beer, ale, porter, stout, lager or malt liquor).",
+      "source": "https://www.ecfr.gov/current/title-27/section-7.141"
+    },
+    {
+      "fact": "The Brewers Association recommends a visible draught line cleaning log showing the last cleaning within the last two weeks.",
+      "source": "https://www.brewersassociation.org/resource-hub/draught-beer/"
+    },
+    {
+      "fact": "BJCP 2025: traditional cider ferments apples without additional ingredients. Common cider: culinary apples, lower tannin and higher acidity. English and French: bittersweet and bittersharp apples; French often sweeter (Normandy and Brittany). Spanish: sharp and bittersharp apples. Perry: fermented juice of crushed pears, pear the majority of fermentables. Ice cider: juice concentrated by freezing; fermentation stops before dryness.",
+      "source": "https://www.bjcp.org/style/2025/cider"
+    },
+    {
+      "fact": "Court service standards: beverages are stored in an organized manner and stored and served at the correct temperature; beer is properly chilled and rotated first in, first out (FIFO).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+    }
+  ],
+  "unverified": [
+    "EUR-Lex pages returned a bot check. Regulation 1308/2013 was read in its consolidated text of Dec 8, 2023 and Regulation 2019/787 in its 2019 text, both through the EU Publications Office. Later changes (for example by Regulation 2024/1143) were not checked. Only the definitions and minimums quoted here are used.",
+    "Wine Australia's rules for claiming several varieties sit in a table image that couldn't be read; only single claims and combined GIs are stated.",
+    "Madeira's minimum age before bottling: IVBAM's categories page says not under 3 years, while its winemaking page gives a different release date for estufagem wines. No minimum bottling age is stated here.",
+    "How long opened wines keep: Wine Folly pages differ (28 days for fortified on one page, shorter elsewhere). The list is labeled as Wine Folly's guide, not as a rule.",
+    "The American Cider Association's style guide PDF couldn't be read (blocked or image text); cider styles come from the BJCP 2025 guidelines.",
+    "A common draught keg temperature (often given as 38°F) wasn't confirmed on a Brewers Association page, so no keg temperature is given.",
+    "Laws of countries beyond the EU, US and Australia (the Court's 'other global wine regions') aren't covered in this chapter."
+  ],
+  "court": {
+    "outcome": "Answer questions on international wine laws, including the European Community, United States, Australia and other global wine regions. Display knowledge of fortified wines, their vinification, storage and handling.",
+    "outcomeSource": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/",
+    "coverage": [
+      {
+        "topic": "Speak with authority on the wine areas of the world and their products",
+        "guide": "Regions were Level 3; here, the laws and products behind them.",
+        "where": "Wine law: EU, US and Australia; Fortified wines: Port, Sherry and Madeira"
+      },
+      {
+        "topic": "Principal grape varieties and where they are cultivated",
+        "guide": "Grape rules on labels; Palomino for Sherry; Madeira's six main grapes.",
+        "where": "Wine law: EU, US and Australia; Fortified wines: Port, Sherry and Madeira"
+      },
+      {
+        "topic": "International wine laws: European Community",
+        "guide": "PDO all grapes from the area, PGI 85%, traditional terms protected.",
+        "where": "Wine law: EU, US and Australia"
+      },
+      {
+        "topic": "International wine laws: United States",
+        "guide": "Varietal 75%, AVA 85%, vintage 95%/85%, estate bottled.",
+        "where": "Wine law: EU, US and Australia"
+      },
+      {
+        "topic": "International wine laws: Australia",
+        "guide": "85% for vintage, variety, GI; combined GIs 95%; zones, regions, subregions.",
+        "where": "Wine law: EU, US and Australia"
+      },
+      {
+        "topic": "Fortified wines: vinification, storage and handling",
+        "guide": "Port, Sherry, Madeira methods and categories; opened-bottle care.",
+        "where": "Fortified wines: Port, Sherry and Madeira"
+      },
+      {
+        "topic": "Methods of distillation; making spirits and liqueurs",
+        "guide": "Pot vs continuous; whisky, bourbon, brandy, rum, gin, liqueurs; EU vs US.",
+        "where": "Distillation, spirits and liqueurs"
+      },
+      {
+        "topic": "Making beers and ciders; why styles vary",
+        "guide": "Ale vs lager yeast and temperature; cider apples, perry, ice cider.",
+        "where": "Beer, cider and keeping it all in condition"
+      },
+      {
+        "topic": "Storing products in optimum condition",
+        "guide": "Order, temperature, FIFO, clean draft lines, opened bottles.",
+        "where": "Fortified wines: Port, Sherry and Madeira; Beer, cider and keeping it all in condition"
+      }
+    ]
+  },
+  "v3": {
+    "video": null,
+    "sections": [
+      {
+        "name": "Wine law: EU, US and Australia",
+        "video": {
+          "youtubeId": "GUt9w8NdHds",
+          "title": "TTB Boot Camp for Wineries: Labeling",
+          "by": "USTTBgov",
+          "length": "30:50"
+        },
+        "keyPoints": [
+          {
+            "big": "PDO",
+            "line": "All grapes from the area, made there, tied to the place."
+          },
+          {
+            "big": "PGI",
+            "line": "At least 85% of the grapes from the area."
+          },
+          {
+            "big": "AVA 85%",
+            "line": "of the grapes from inside the AVA's boundary."
+          },
+          {
+            "big": "VINTAGE 95%",
+            "line": "from the named year when a US label names an AVA."
+          },
+          {
+            "big": "AUSTRALIA 85%",
+            "line": "for a vintage, variety or GI. No tolerances."
+          }
+        ],
+        "read": {
+          "bigIdea": "Every place name on a label is a percentage.",
+          "where": "At Master level you answer on **international wine law**. Each system ties a place name to a **minimum share of grapes**, then adds rules for naming a grape or a year.",
+          "stopsTitle": "Three systems",
+          "stops": [
+            {
+              "name": "European Union",
+              "note": "Regulation 1308/2013",
+              "text": "A **PDO** wine's grapes come only from the area, and its character is essentially or exclusively due to that place. A **PGI** needs at least **85%** of its grapes from the area; the rest must come from the same country. Both are made in the area. **Traditional terms** are protected, even from use with words like \"style\" or \"type\"."
+            },
+            {
+              "name": "United States",
+              "note": "27 CFR parts 4 and 9",
+              "text": "A **varietal** label needs **75%** of the named grape (51% for Vitis labrusca). A state or county needs 75% from there; an **AVA** needs **85%**. A **vintage** needs 95% with an AVA, 85% otherwise. **Estate bottled** means an AVA on the label, a winery inside it, its own or controlled vineyards there, and one unbroken process to the bottle."
+            },
+            {
+              "name": "Australia",
+              "note": "Wine Australia",
+              "text": "One **vintage**, **variety** or **GI** on the label needs at least **85%**, with no tolerances. Up to three GIs can share a label if together they make **95%** and each is over 5%. The GI register lists **zones**, **regions** and **subregions**."
+            }
+          ],
+          "visual": 0,
+          "mixup": "On a US label, an **AVA** needs 85% of the grapes from that place, but a **vintage** next to an AVA needs 95% from that year.",
+          "sayIt": "It carries an AVA, so at least 85% of the grapes were grown there."
+        },
+        "check": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Fortified wines: Port, Sherry and Madeira",
+        "video": {
+          "youtubeId": "39MMK1vkrSc",
+          "title": "Master Class on 5 Fortified Wines (Port, Sherry, Madeira, Rutherglen Muscat & more)",
+          "by": "THE SOUL OF WINE 와인 소울 ",
+          "length": "16:31"
+        },
+        "keyPoints": [
+          {
+            "big": "19–22%",
+            "line": "is Port's usual strength once grape brandy stops fermentation."
+          },
+          {
+            "big": "FLOR AT 15%",
+            "line": "Fino and Manzanilla grow flor. Oloroso, at 17%, can't."
+          },
+          {
+            "big": "ESTUFAGEM",
+            "line": "heats Madeira to 45–50°C for at least three months."
+          },
+          {
+            "big": "CANTEIRO",
+            "line": "ages Madeira in cask in warm lofts, for two years or more."
+          },
+          {
+            "big": "VINTAGE PORT",
+            "line": "is the only Port that ages in the bottle."
+          }
+        ],
+        "read": {
+          "bigIdea": "When the spirit goes in decides the style.",
+          "where": "The Court asks how **fortified wines** are made, stored and handled. From Level 3 you know the names. At Master level, connect each step in the cellar to what's in the glass.",
+          "stopsTitle": "Three classics, three methods",
+          "stops": [
+            {
+              "name": "Port",
+              "note": "Douro",
+              "text": "**Grape brandy** stops fermentation, so sugar remains; Port usually ends at **19–22%**. **Ruby** styles keep color and fruit; **Tawny** styles age in wood. **LBV**: one year, 4–6 years in wood. **Vintage**: bottled at 2–3 years, the only Port that ages in bottle. **Colheita**: one year, at least seven in cask."
+            },
+            {
+              "name": "Sherry",
+              "note": "Jerez",
+              "text": "Mostly **Palomino**, fortified with wine alcohol after fermentation. At about **15%**, **flor** grows: **Fino** and **Manzanilla** age biologically. At about **17%** it can't: **Oloroso** ages oxidatively. **Amontillado** does both, in that order. **Pedro Ximénez** comes from sun-dried grapes, never below 250 g/l of sugar."
+            },
+            {
+              "name": "Madeira",
+              "note": "island DOP",
+              "text": "**96% wine alcohol** stops fermentation; the timing gives dry, medium dry, medium sweet or sweet, at 17–22%. Then heat: **estufagem** (45–50°C, at least three months) or **canteiro** (casks in warm lofts, at least two years). **Colheita**: one year, 5+ years in wood. **Frasqueira**: one year, a named grape, 20+ years by canteiro."
+            },
+            {
+              "name": "Storing and serving",
+              "note": "after opening",
+              "text": "Wine Folly gives fortified wines about **28 days** open, corked, cool and dark, and says Madeira and Marsala keep when open. For Port it suggests a cellar near 53°F or the fridge, and 3 oz pours at 55–68°F."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "Two Sherry paths, set by how far it's fortified:",
+          "mixup": "A **Colheita Port** is a single-year Tawny with at least **seven** years in cask. A **Colheita Madeira** needs at least **five** years in wood."
+        },
+        "check": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Distillation, spirits and liqueurs",
+        "video": {
+          "youtubeId": "tpLeoFxUoHs",
+          "title": "WSET 3 Minute Spirit School - Whisky, presented by Richard Paterson",
+          "by": "WSET",
+          "length": "4:45"
+        },
+        "keyPoints": [
+          {
+            "big": "POT STILL",
+            "line": "works batch by batch. Cognac is distilled twice."
+          },
+          {
+            "big": "CONTINUOUS",
+            "line": "Most Armagnac is distilled once, without stopping."
+          },
+          {
+            "big": "51% CORN",
+            "line": "charred new oak, made in the US: that's bourbon."
+          },
+          {
+            "big": "3 YEARS",
+            "line": "in oak of 700 L or less, before it can be Scotch."
+          },
+          {
+            "big": "100 G/L",
+            "line": "of sugar, at least, for most EU liqueurs."
+          }
+        ],
+        "read": {
+          "bigIdea": "Base, still, wood and strength define a spirit.",
+          "where": "The Court wants the **methods of distillation**, how **spirits and liqueurs** are made, and why styles differ. The laws draw the hard lines: the EU's spirit-drink regulation and the US standards of identity.",
+          "stopsTitle": "Four things to know for each spirit",
+          "stops": [
+            {
+              "name": "The still",
+              "text": "**Batch** distillation repeats in a pot still: Cognac runs twice, first to the **brouillis**, then the **bonne chauffe**, all done by March 31 after the harvest. **Continuous** distillation runs without stopping: most **Armagnac** needs only one pass."
+            },
+            {
+              "name": "The base",
+              "text": "Whisky starts from grain; **bourbon** needs **51% corn**. Rum comes from sugar cane juice, syrup or molasses. Brandy comes from wine or fruit. Gin's main flavor must be **juniper**. Tequila and Mezcal are agave spirits made in Mexico."
+            },
+            {
+              "name": "The wood",
+              "text": "**Scotch** and EU whisky: at least **three years** in oak of 700 L or less. US **straight** whisky: at least two years in **charred new oak**. EU **brandy**: one year in large oak or six months in smaller casks."
+            },
+            {
+              "name": "The strength",
+              "text": "US whisky, gin, brandy and rum bottle at **40%** or more. In the EU, rum and gin may bottle at **37.5%** and brandy at **36%**. An EU **liqueur** needs 15% ABV and usually **100 g/L** of sugar."
+            }
+          ],
+          "visual": 1,
+          "visualIntro": "Minimum bottling strengths to keep straight:",
+          "mixup": "**Cognac** is distilled twice in a pot still. Most **Armagnac** is distilled once in a continuous still."
+        },
+        "check": [
+          10,
+          11,
+          12
+        ]
+      },
+      {
+        "name": "Beer, cider and keeping it all in condition",
+        "video": {
+          "youtubeId": "Wo5s7TUkCJw",
+          "title": "Four Tips for Preserving Beer Quality At Retail",
+          "by": "Brewers Association",
+          "length": "2:02"
+        },
+        "keyPoints": [
+          {
+            "big": "ALE YEAST",
+            "line": "ferments warmer and can leave fruity esters."
+          },
+          {
+            "big": "LAGER YEAST",
+            "line": "ferments cold, then the beer rests cold for weeks."
+          },
+          {
+            "big": "BITTERSWEET",
+            "line": "and bittersharp apples give English and French cider tannin."
+          },
+          {
+            "big": "FIFO",
+            "line": "Serve the oldest beer first, at its freshest."
+          },
+          {
+            "big": "TWO WEEKS",
+            "line": "A draft-line log should show a clean in the last two."
+          }
+        ],
+        "read": {
+          "bigIdea": "Know how it's made, then keep it that way.",
+          "where": "The Court asks how **beers and ciders** are made, why their styles differ, and how every product is **stored** to stay in top condition.",
+          "stopsTitle": "Make, then keep",
+          "stops": [
+            {
+              "name": "Beer",
+              "text": "**Ale** yeast (S. cerevisiae) ferments around 60–78°F and can add **esters** and phenols. **Lager** yeast (S. pastorianus) works around 48–58°F, then the beer is **lagered** cold for weeks. US labels state a class: beer, ale, porter, stout, lager or malt liquor."
+            },
+            {
+              "name": "Cider and perry",
+              "text": "**Common cider** uses culinary apples: more acid, less tannin. **English** and **French** ciders use **bittersweet** and **bittersharp** apples; **Spanish** cider uses sharp and bittersharp. **Perry** is fermented pear juice. **Ice cider** starts from juice concentrated by freezing."
+            },
+            {
+              "name": "Keeping it right",
+              "text": "The Court's standards: beverages stored **in order** and at the **correct temperature**, beer served **first in, first out**. The Brewers Association wants the draft-line cleaning log to show a clean within the **last two weeks**. Opened wine has a short life, so plan by-the-glass pours around it."
+            }
+          ],
+          "visual": 1,
+          "mixup": "**Ale** yeast is top-fermenting and works warm. **Lager** yeast is bottom-fermenting and works cold, then the beer is lagered."
+        },
+        "check": [
+          15,
+          16,
+          18
+        ]
+      }
+    ]
+  }
+}
