@@ -1,0 +1,45 @@
+{
+  "checked": "2026-11-19",
+  "about": "Facts behind Sommelier Program Level 4 · Master Prep (content/manual-l4), from the Court of Master Sommeliers, Americas (CMS-A) website and resource-library PDFs, read Nov 19, 2026. Our lessons are in our own words; we link to the Court. Each chapter file carries its own facts list as well.",
+  "pages": {
+    "master": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/",
+    "aboutMasters": "https://www.mastersommeliers.org/about-sommeliers/about-master-sommeliers/",
+    "library": "https://www.mastersommeliers.org/resources/resource-library/"
+  },
+  "documents": {
+    "theoryResourceGuide": "https://www.mastersommeliers.org/wp-content/uploads/2025/01/Master-Sommelier-Diploma-Theory-Exam-Resource-Guide.pdf",
+    "tastingFormat": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf",
+    "serviceStandards": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf",
+    "theoryFeedbackExample": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-Theory-Results-Feedback-Report-Example.pdf",
+    "tastingFeedbackExample": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-PT-Results-Feedback-Report-Example.pdf",
+    "codeOfEthics": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Code-Ethics-and-Professional-Responsibility-May-2021r.pdf",
+    "mentoring": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Candidate-Mentoring-Guidelines.pdf",
+    "theoryAnswerGuidelines": "https://www.mastersommeliers.org/wp-content/uploads/2025/08/CMS-A-Theory-Answer-Guidelines-082925.pdf",
+    "verbalQuestionTemplates": "https://www.mastersommeliers.org/wp-content/uploads/2025/08/CMS-A-Theory-Common-Verbal-Question-Templates-082925.pdf"
+  },
+  "facts": [
+    { "fact": "The Master Sommelier title is the Court's highest honor, representing mastery of wine knowledge, hospitality and service, deductive tasting and business fundamentals.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "The Master Sommelier Diploma Examination has three parts, like the Advanced: a theory exam that is oral, not written; a deductive tasting of six wines; and a practical wine service and business exam.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "The minimum passing score for each of the three sections is 75%, against 60% at the Advanced exam.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "Students first pass the Theory, then have three consecutive years to pass the other two parts; if all three aren't passed in that period, the whole exam is retaken. The page also says candidates who pass Theory and don't sit Practical or Tasting that year have two more attempts, one per calendar year.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "Those who pass the Advanced Sommelier Examination are eligible to apply for the Master Sommelier Diploma Examination.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "Candidates submit an Application of Intent (emails stating intent aren't accepted); there is a Theory application for first-timers or those holding no portions, and a Practical and Tasting application for those holding at least the Theory.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "Examiners are Master Sommeliers chosen by the Examination Committee under the CMS-A Examiner Rotation Policy.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "Candidates wear professional working attire and bring all the tools of the trade; they show the highest technical skill and knowledge, the courtesy and hospitality of a Master Sommelier, and excellent salesmanship.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "Theory, what the sommelier needs to know: speak with authority on the world's wine areas and products; the principal grapes and where they grow; international wine laws (European Community, United States, Australia and others); fortified wines, their vinification, storage and handling; methods of distillation and making spirits and liqueurs, making beers and ciders and why styles differ; how products are stored to stay in optimum condition.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "Practical restaurant wine service and salesmanship: discuss, recommend and serve aperitifs; select, prepare and position glassware for all beverages in lounge, restaurant or private room; discuss the menu and wine list and recommend wines for a wide range of foods, with vintages; present, prepare (decanting when necessary) and serve wines efficiently; present and serve brandies, liqueurs and other spirits with proper portions; handle questions and complaints with skill, elegance and diplomacy.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "Practical tasting: scored on describing six different wines clearly and accurately, within twenty-five minutes, identifying where appropriate grape varieties, country, district and appellation of origin, and vintages.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "Forced wait for the MS Theory: below 45% on a first attempt, below 55% on a second consecutive attempt, below 67% on a third consecutive attempt means a year off; candidates may keep sitting each year while they score 67% or higher. A voluntary or forced year off resets the clock.", "url": "https://www.mastersommeliers.org/certification/certification-levels/master-sommelier-diploma-examination/", "verified": true },
+    { "fact": "The MS Theory resource guide: a significant step up from Advanced; the exam relies heavily on foundational knowledge from the Introductory, Certified and Advanced levels; balance books with current sources (government regulation, marketing bodies, producer and importer sites); when sources conflict, rely on the most established, academic and contemporary.", "url": "https://www.mastersommeliers.org/wp-content/uploads/2025/01/Master-Sommelier-Diploma-Theory-Exam-Resource-Guide.pdf", "verified": true },
+    { "fact": "The MS Theory feedback example describes four question types: simple short answer, extrapolation short answer, complex structure with extrapolation, and logical reasoning (a short explanation of a concept). Theory needs at least 75% to pass.", "url": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-MS-Theory-Results-Feedback-Report-Example.pdf", "verified": true },
+    { "fact": "The Advanced and Master Sommelier deductive tasting format (2024) is the same grid for both levels: Sight, Nose, Palate Structure, Palate, Initial Conclusion, Final Conclusion with one vintage.", "url": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf", "verified": true },
+    { "fact": "The 2025 Advanced and Master service standards cover general hospitality and service, sparkling, decanting, other wine service, beer, sake, aperitif and digestif, cocktail service and food and beverage pairing.", "url": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf", "verified": true }
+  ],
+  "disagreements": [
+    "The window after passing MS Theory: the page says 'three consecutive years' to pass the other two parts, and elsewhere 'two more attempts (one per calendar year)' after the first year. Both describe the same three-year window; lessons say 'three years, as the Court's page explains' and link it."
+  ],
+  "leftOut": [
+    "Pass rates (the page gives approximate Advanced and MS Theory rates; the feedback example is a template with placeholder numbers), fees, dates, exam cities and the number of Master Sommeliers.",
+    "The Court's illustrative example questions: not copied."
+  ]
+}

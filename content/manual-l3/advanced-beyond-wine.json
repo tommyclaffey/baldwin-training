@@ -1,0 +1,1595 @@
+{
+  "program": "somm",
+  "programLevel": 3,
+  "part": 1,
+  "number": 6,
+  "slug": "advanced-beyond-wine",
+  "title": "Sparkling, fortified, sweet, beer, sake and spirits",
+  "script": "Chapter six",
+  "lead": "Everything outside still wine, at Advanced depth: the laws that define each drink, the age ladders, and the production choices you can taste.",
+  "minutes": 45,
+  "intro": {
+    "script": "Start here",
+    "title": "WHERE THE LAW DRAWS THE LINE",
+    "text": "Most Advanced questions here are a number set by law. Learn which measure each drink is judged by.",
+    "tiers": [
+      {
+        "name": "Pressure",
+        "note": "Sparkling: 1-2.5, 3, 3.5 bar; Champagne about 6"
+      },
+      {
+        "name": "Strength",
+        "note": "Liqueur wine 15-22%; aromatized wine 14.5-22%"
+      },
+      {
+        "name": "Polish",
+        "note": "Sake: 70, 60, 50% of the grain left"
+      },
+      {
+        "name": "Wood and time",
+        "note": "Scotch 3 years; Cognac XO 10; Marsala Stravecchio 10"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "Sparkling methods and Champagne law",
+      "source": "Comité Champagne (making-process and label fact sheets; AOC cahier des charges); EU Regulation 1308/2013; eCFR 27 CFR 4.21 and 4.24; VQA Ontario",
+      "lines": [
+        {
+          "label": "Pressure sets the category",
+          "text": "EU law: semi-sparkling 1 to 2.5 bar, sparkling 3 bar or more, quality sparkling 3.5 bar or more, at 20 °C. Champagne sits at about 6 bar."
+        },
+        {
+          "label": "Champagne's rulebook",
+          "text": "Seven main grapes, 102 liters of juice per 160 kg, tirage only from January 1 after harvest, and 12 months on the lees before disgorging."
+        }
+      ],
+      "know": [
+        "A 4,000 kg press load (marc) gives 2,050 L of cuvée and 500 L of taille, kept apart.",
+        "Beyond Chardonnay, Meunier and Pinot Noir, the rules allow Arbane, Petit Meslier, Pinot Blanc and Pinot Gris; Voltis is capped at 10% of a blend.",
+        "Rosé Champagne may be a blend of white and red wine made before tirage, or made by maceration or saignée.",
+        "Label codes: RM grower, NM merchant house, CM cooperative, RC co-op member's own label, ND distributor, MA private label.",
+        "In U.S. law Champagne is semi-generic; a tank-fermented 'champagne' must add words like 'bulk process'."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "Pressure at 20 °C, by category",
+          "rows": [
+            {
+              "name": "Semi-sparkling",
+              "value": "1 to 2.5 bar",
+              "pct": 0.42
+            },
+            {
+              "name": "Sparkling",
+              "value": "3 bar or more",
+              "pct": 0.5
+            },
+            {
+              "name": "Quality sparkling",
+              "value": "3.5 bar or more",
+              "pct": 0.58
+            },
+            {
+              "name": "Champagne",
+              "value": "about 6 bar",
+              "pct": 1
+            }
+          ],
+          "note": "EU Regulation 1308/2013; Champagne figure from the Comité Champagne. VQA Ontario sparkling: 300 kPa (3 bar) or more."
+        },
+        {
+          "type": "tiles",
+          "title": "On the label: who made it",
+          "dark": true,
+          "items": [
+            {
+              "name": "RM",
+              "text": "Grower who makes and sells their own"
+            },
+            {
+              "name": "NM",
+              "text": "Merchant house, buys grapes or wine"
+            },
+            {
+              "name": "CM",
+              "text": "Cooperative making the wine"
+            },
+            {
+              "name": "RC",
+              "text": "Co-op member selling under their own label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sherry and Port",
+      "source": "Consejo Regulador Jerez-Xérès-Sherry (sherry.wine); Instituto dos Vinhos do Douro e do Porto (ivdp.pt)",
+      "lines": [
+        {
+          "label": "Sherry",
+          "text": "Ten towns hold DO vineyards, from Jerez to Lebrija in Seville province. Age-certified Sherry: VOS (20+ years) and VORS (30+), plus 12- and 15-year indications and sealed-cask añadas."
+        },
+        {
+          "label": "Port",
+          "text": "Usually one part grape spirit to four parts must-wine, landing at 19-22% ABV. LBV gets four to six years in wood; Vintage is bottled two to three years after harvest."
+        }
+      ],
+      "know": [
+        "VOS/VORS are certified lot by lot by an independent panel, and only for Amontillado, Oloroso, Palo Cortado or Pedro Ximénez.",
+        "For each liter of VOS sold, 20 must stay in the solera; for VORS, 30.",
+        "Flor weakens after about seven or eight years, so very old Sherries are mostly oxidative.",
+        "A pago name such as Macharnudo or Balbaína needs 85% of the grapes from that pago.",
+        "Crusted Port stays in bottle at least 3 years before sale; Colheita ages at least 7 years in cask."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "Sherry's age certifications",
+          "rows": [
+            {
+              "name": "VORS",
+              "meta": "over 30 years; 30 L stay for each liter sold"
+            },
+            {
+              "name": "VOS",
+              "meta": "over 20 years; 20 L stay for each liter sold"
+            },
+            {
+              "name": "15 Years",
+              "meta": "whole solera certified"
+            },
+            {
+              "name": "12 Years",
+              "meta": "whole solera certified"
+            },
+            {
+              "name": "Añada",
+              "meta": "single vintage, cask sealed by the Consejo"
+            }
+          ],
+          "note": "VOS and VORS were created in 2000."
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "LBV",
+              "title": "Late Bottled Vintage",
+              "text": "One year\nFour to six years in wood\nMost ready to drink on release"
+            },
+            {
+              "label": "VINTAGE",
+              "title": "Vintage Port",
+              "text": "One year\nBottled two to three years after harvest\nAges 10 to 50 years in bottle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Madeira, Marsala, VDN and VDL",
+      "source": "Wine Folly (Madeira); Marsala DOC disciplinare (Italian Ministry of Agriculture); INAO (AOP Maury); Pineau des Charentes cahier des charges; EU Regulation 1308/2013",
+      "lines": [
+        {
+          "label": "Madeira and Marsala",
+          "text": "Madeira climbs from Rainwater (3 years) to 5, 10, 15 and 20+ years, Colheita (5) and Frasqueira (20 in canteiro). Marsala: Fine 1, Superiore 2, Superiore Riserva 4, Vergine 5, Vergine Stravecchio 10."
+        },
+        {
+          "label": "VDN and VDL",
+          "text": "A vin doux naturel is muted partway through fermentation with 96% grape spirit, as in Maury. A vin de liqueur is must muted with spirit, as Pineau des Charentes is with Cognac."
+        }
+      ],
+      "know": [
+        "Marsala Oro and Ambra use Grillo, Catarratto, Inzolia and Damaschino; Rubino uses Perricone, Nero d'Avola and Nerello Mascalese.",
+        "Mosto cotto is banned in Marsala Vergine and in Oro and Rubino Fine and Superiore; Ambra may use it.",
+        "Marsala sweetness: secco under 40 g/L, semisecco 40-100 g/L, dolce over 100 g/L.",
+        "Maury: Grenache Noir is the base of grenat and tuilé; ambré and tuilé age oxidatively, sometimes for decades.",
+        "Pineau des Charentes: 16-22% ABV; white ages at least 18 months (12 in oak), red and rosé 12 (8 in oak)."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "Marsala's minimum aging",
+          "rows": [
+            {
+              "name": "Fine",
+              "value": "1 year",
+              "pct": 0.1
+            },
+            {
+              "name": "Superiore",
+              "value": "2 years",
+              "pct": 0.2
+            },
+            {
+              "name": "Superiore Riserva",
+              "value": "4 years",
+              "pct": 0.4
+            },
+            {
+              "name": "Vergine (Soleras)",
+              "value": "5 years",
+              "pct": 0.5
+            },
+            {
+              "name": "Vergine Stravecchio (Riserva)",
+              "value": "10 years",
+              "pct": 1
+            }
+          ],
+          "note": "Marsala DOC disciplinare. Color (Oro, Ambra, Rubino) and sweetness are labeled separately."
+        },
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "VDN",
+              "title": "Vin doux naturel",
+              "text": "Must ferments partway\nMuted with 96% grape spirit\nExample: Maury (Grenache Noir)"
+            },
+            {
+              "label": "VDL",
+              "title": "Vin de liqueur",
+              "text": "Must is muted with spirit\nPineau: AOC Cognac, 16-22% ABV\nAged at least 12-18 months"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweet and aromatized wines",
+      "source": "VQA Ontario; eCFR 27 CFR 4.21 and 4.24; Wines of South Africa; Sherry Council (Pedro Ximénez); EU Regulation 251/2014",
+      "lines": [
+        {
+          "label": "Sweet by method",
+          "text": "From Level 2: noble rot, drying, freezing and fortifying. Ontario's VQA law shows the ripeness ladder: Late Harvest 22° Brix, Select 26°, Special Select 30°, Icewine 35°."
+        },
+        {
+          "label": "Aromatized",
+          "text": "EU law: an aromatized wine is at least 75% wine, 14.5% to under 22% ABV. Vermouth tastes of Artemisia (wormwood); Quinquina of quinine; Americano of wormwood and gentian."
+        }
+      ],
+      "know": [
+        "VQA allows 'Appassimento' or 'Vin de Cure' for wines of at least 85% dried grapes.",
+        "Pedro Ximénez grapes are sun-dried (asoleo) before pressing; the wine is served at 12-14 °C.",
+        "Constantia's dessert wines were famous across Europe in the 18th century.",
+        "In U.S. law, dessert wine means over 14% and up to 24% ABV, and Vermouth is a generic name.",
+        "'Sangría' as a sales name is reserved for Spain and Portugal; egg-based aromatized wine needs at least 10 g of egg yolk per liter."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "Ontario's sweetness ladder (Brix at harvest)",
+          "rows": [
+            {
+              "name": "Late Harvest",
+              "value": "22°",
+              "pct": 0.63
+            },
+            {
+              "name": "Select Late Harvest",
+              "value": "26°",
+              "pct": 0.74
+            },
+            {
+              "name": "Special Select Late Harvest",
+              "value": "30°",
+              "pct": 0.86
+            },
+            {
+              "name": "Icewine",
+              "value": "35°",
+              "pct": 1
+            }
+          ],
+          "note": "VQA Ontario. Icewine grapes are also picked below -8 °C."
+        },
+        {
+          "type": "list",
+          "title": "Aromatized wine names in EU law",
+          "rows": [
+            {
+              "name": "Vermouth",
+              "meta": "Artemisia (wormwood), alcohol added"
+            },
+            {
+              "name": "Quinquina",
+              "meta": "natural quinine"
+            },
+            {
+              "name": "Bitter vino",
+              "meta": "natural gentian"
+            },
+            {
+              "name": "Americano",
+              "meta": "wormwood and gentian"
+            },
+            {
+              "name": "Egg-based",
+              "meta": "over 200 g sugar, 10 g+ egg yolk per liter"
+            }
+          ],
+          "note": "EU Regulation 251/2014, Annex II."
+        }
+      ]
+    },
+    {
+      "name": "Beer and sake",
+      "source": "BJCP 2021 Style Guidelines; International Trappist Association; National Tax Agency of Japan; National Research Institute of Brewing (NRIB)",
+      "lines": [
+        {
+          "label": "Classic beers",
+          "text": "Know each by place and method: Brussels-area lambic is spontaneously fermented in old oak; gueuze blends one-, two- and three-year-old lambic; Berliner Weisse sours with lactic bacteria."
+        },
+        {
+          "label": "Sake law",
+          "text": "Japan's National Tax Agency sets eight special designations by polishing ratio, koji share and added alcohol. Every one needs at least 15% koji rice."
+        }
+      ],
+      "know": [
+        "Weissbier: malted wheat is at least half the grist; banana-and-clove yeast; decoction mash is traditional.",
+        "Westmalle popularized the Tripel in 1931; an Authentic Trappist Product is made at the abbey, under the monks or nuns.",
+        "Junmai lost its 70% polishing rule in 2004; Honjozo is 70% or less, Ginjo 60%, Daiginjo 50%.",
+        "Added brewer's alcohol in Ginjo or Honjozo is capped at 10% of the white rice weight.",
+        "Kimoto and yamahai grow lactic bacteria for the seed mash; sokujo adds lactic acid and saves about two weeks."
+      ],
+      "visuals": [
+        {
+          "type": "list",
+          "title": "Sake's eight special designations",
+          "rows": [
+            {
+              "name": "Junmai Daiginjo",
+              "meta": "50% or less, no added alcohol"
+            },
+            {
+              "name": "Daiginjo",
+              "meta": "50% or less, alcohol added"
+            },
+            {
+              "name": "Junmai Ginjo",
+              "meta": "60% or less, no added alcohol"
+            },
+            {
+              "name": "Ginjo",
+              "meta": "60% or less, alcohol added"
+            },
+            {
+              "name": "Tokubetsu Junmai",
+              "meta": "60% or less, or a special method"
+            },
+            {
+              "name": "Tokubetsu Honjozo",
+              "meta": "60% or less, or a special method"
+            },
+            {
+              "name": "Honjozo",
+              "meta": "70% or less, alcohol added"
+            },
+            {
+              "name": "Junmai",
+              "meta": "no polishing minimum"
+            }
+          ],
+          "note": "Polishing ratio = rice left after milling. All need 15%+ koji rice."
+        },
+        {
+          "type": "steps",
+          "title": "Three-step mashing, over four days",
+          "items": [
+            {
+              "name": "Day 1",
+              "text": "One-sixth of the rice and koji, plus the seed mash",
+              "meta": "about 12 °C"
+            },
+            {
+              "name": "Day 2",
+              "text": "Nothing added; the yeast multiplies",
+              "meta": "rest"
+            },
+            {
+              "name": "Day 3",
+              "text": "Two-sixths more",
+              "meta": "about 10 °C"
+            },
+            {
+              "name": "Day 4",
+              "text": "The last three-sixths",
+              "meta": "about 8 °C"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spirits: distillation, aging laws, aperitifs and digestifs",
+      "source": "EU Regulation 2019/787; Scotch Whisky Regulations 2009; eCFR 27 CFR part 5; Bureau National Interprofessionnel du Cognac",
+      "lines": [
+        {
+          "label": "Distillation",
+          "text": "Distilling below a set strength keeps the raw material's taste: EU and Scotch whisky under 94.8% ABV, bourbon at 160 proof or less. Single Malt Scotch uses pot stills; Cognac is distilled twice in a Charentais still."
+        },
+        {
+          "label": "Aging laws",
+          "text": "Scotch: 3 years in Scotland, in oak casks of 700 L or less; EU brandy: 1 year in big oak or 6 months in casks under 1,000 L. Cognac: VS 2, VSOP 4, XO 10 years."
+        }
+      ],
+      "know": [
+        "Straight whiskey rests at least 2 years in charred new oak, entered at 125 proof or less.",
+        "Bottled in bond: one season, one distiller, one distillery, at least 4 years in wood, bottled at 100 proof.",
+        "Scotch protects two localities (Campbeltown, Islay) and three regions (Highland, Lowland, Speyside).",
+        "Base materials by law: rum from sugar cane, Scotch from malted barley (other whole grains allowed), brandy from wine spirit, agave spirits 51%+ agave.",
+        "EU aperitif and digestif rules: liqueur 100 g/L sugar and 15% ABV; crème de 250 g/L; bitter 15% ABV."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "Minimum aging set by law",
+          "rows": [
+            {
+              "name": "EU brandy (casks under 1,000 L)",
+              "value": "6 months",
+              "pct": 0.05
+            },
+            {
+              "name": "U.S. straight whiskey",
+              "value": "2 years",
+              "pct": 0.2
+            },
+            {
+              "name": "Cognac VS",
+              "value": "2 years",
+              "pct": 0.2
+            },
+            {
+              "name": "Scotch whisky",
+              "value": "3 years",
+              "pct": 0.3
+            },
+            {
+              "name": "U.S. bottled in bond",
+              "value": "4 years",
+              "pct": 0.4
+            },
+            {
+              "name": "Cognac XO",
+              "value": "10 years",
+              "pct": 1
+            }
+          ],
+          "note": "Age statements count the youngest spirit in the blend."
+        },
+        {
+          "type": "list",
+          "title": "Aperitif and digestif rules in EU law",
+          "rows": [
+            {
+              "name": "Vermouth",
+              "meta": "75%+ wine, 14.5% to under 22% ABV"
+            },
+            {
+              "name": "Bitter",
+              "meta": "at least 15% ABV"
+            },
+            {
+              "name": "Liqueur",
+              "meta": "at least 100 g/L sugar and 15% ABV"
+            },
+            {
+              "name": "Crème de",
+              "meta": "at least 250 g/L sugar"
+            },
+            {
+              "name": "London gin",
+              "meta": "flavored only by distillation, 0.1 g/L sugar at most"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "VOS",
+      "b": "VORS",
+      "why": "VOS certifies over 20 years; VORS over 30 years."
+    },
+    {
+      "a": "Vin doux naturel",
+      "b": "Vin de liqueur",
+      "why": "A VDN ferments partway before muting; a VDL is must muted with spirit, like Pineau with Cognac."
+    },
+    {
+      "a": "Vermouth",
+      "b": "Quinquina",
+      "why": "Vermouth's taste comes from Artemisia (wormwood); Quinquina's from quinine."
+    },
+    {
+      "a": "Namazake",
+      "b": "Nama-chozo-shu",
+      "why": "Namazake is never pasteurized; nama-chozo is pasteurized once, at bottling."
+    }
+  ],
+  "sources": "Court of Master Sommeliers, Americas (Advanced Theory Exam guide); Comité Champagne; EU Regulations 1308/2013, 251/2014 and 2019/787 (as adopted); eCFR 27 CFR parts 4 and 5; VQA Ontario; Sherry Council (Consejo Regulador Jerez-Xérès-Sherry); IVDP; Marsala DOC disciplinare; INAO; Pineau des Charentes specification; Wines of South Africa; BJCP 2021 Style Guidelines; International Trappist Association; National Tax Agency of Japan; NRIB; Scotch Whisky Regulations 2009; BNIC; Wine Folly (Madeira). Checked Nov 19, 2026.",
+  "cards": [
+    {
+      "q": "A 4,000 kg Champagne press load yields how many liters of cuvée, the first juice?",
+      "answer": "2,050 L",
+      "wrong": [
+        "500 L",
+        "1,600 L",
+        "2,550 L"
+      ],
+      "source": "https://www.champagne.fr/system/files/2022-10/The%20Champagne-making%20process.pdf"
+    },
+    {
+      "q": "Which of these is one of Champagne's seven main permitted grapes?",
+      "answer": "Petit Meslier",
+      "wrong": [
+        "Aligoté",
+        "Chenin Blanc",
+        "Melon"
+      ],
+      "source": "https://www.champagne.fr/system/files/2024-03/Cahier_des_charges_appellation.pdf"
+    },
+    {
+      "q": "Under EU law, quality sparkling wine needs at least what pressure at 20 °C?",
+      "answer": "3.5 bar",
+      "wrong": [
+        "1 bar",
+        "2.5 bar",
+        "6 bar"
+      ],
+      "source": "https://www.legislation.gov.uk/eur/2013/1308/annex/VII/adopted"
+    },
+    {
+      "q": "On a Champagne label, what does the code RC mean?",
+      "answer": "A cooperative member selling under their own label",
+      "wrong": [
+        "A grower who makes and bottles their own wine",
+        "A merchant house that buys grapes",
+        "A store's private label"
+      ],
+      "source": "https://www.champagne.fr/system/files/2022-10/How%20to%20read%20a%20Champagne%20label.pdf"
+    },
+    {
+      "q": "When is the earliest that Champagne may be bottled for its second fermentation?",
+      "answer": "January 1 after the harvest",
+      "wrong": [
+        "The day after pressing",
+        "March 1 after the harvest",
+        "Twelve months after the harvest"
+      ],
+      "source": "https://www.champagne.fr/system/files/2024-03/Cahier_des_charges_appellation.pdf"
+    },
+    {
+      "q": "VORS on a Sherry label certifies what minimum average age?",
+      "answer": "30 years",
+      "wrong": [
+        "12 years",
+        "15 years",
+        "20 years"
+      ],
+      "source": "https://www.sherry.wine/sherry-wine/special-categories"
+    },
+    {
+      "q": "For every liter of VOS Sherry sold, how many liters must stay in the aging system?",
+      "answer": "20",
+      "wrong": [
+        "3",
+        "12",
+        "30"
+      ],
+      "source": "https://www.sherry.wine/sherry-wine/special-categories"
+    },
+    {
+      "q": "LBV Port ages how long in wood before bottling?",
+      "answer": "Four to six years",
+      "wrong": [
+        "Two to three years",
+        "At least seven years",
+        "At least ten years"
+      ],
+      "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
+    },
+    {
+      "q": "In Port making, grape spirit is usually added to the must-wine in what proportion?",
+      "answer": "1 part to 4",
+      "wrong": [
+        "1 part to 1",
+        "1 part to 2",
+        "1 part to 10"
+      ],
+      "source": "https://www.ivdp.pt/en/wines/port-wines/the-winemaking/"
+    },
+    {
+      "q": "Which Sherry is sweetened with rectified concentrated must to keep its pale color?",
+      "answer": "Pale Cream",
+      "wrong": [
+        "Cream",
+        "Medium",
+        "Pedro Ximénez"
+      ],
+      "source": "https://www.sherry.wine/sherry-wine/sweet-sherry-wines/pale-cream"
+    },
+    {
+      "q": "Marsala Vergine Stravecchio needs at least how long of aging?",
+      "answer": "10 years",
+      "wrong": [
+        "4 years",
+        "5 years",
+        "7 years"
+      ],
+      "source": "https://aisitalia.it/Disciplinari/Sicilia/DOC/Marsala.pdf"
+    },
+    {
+      "q": "Which Marsala color is made from red grapes such as Perricone and Nero d'Avola?",
+      "answer": "Rubino",
+      "wrong": [
+        "Oro",
+        "Ambra",
+        "Tuilé"
+      ],
+      "source": "https://aisitalia.it/Disciplinari/Sicilia/DOC/Marsala.pdf"
+    },
+    {
+      "q": "Pineau des Charentes is muted with which spirit?",
+      "answer": "Cognac",
+      "wrong": [
+        "Armagnac",
+        "Calvados",
+        "Neutral grape spirit at 96%"
+      ],
+      "source": "https://sommelier-academy.de/wp-content/uploads/2019/09/AOC_CDC_Pineau_des_Charentes.pdf"
+    },
+    {
+      "q": "Frasqueira Madeira requires at least how long in canteiro?",
+      "answer": "20 years",
+      "wrong": [
+        "3 years",
+        "5 years",
+        "10 years"
+      ],
+      "source": "https://winefolly.com/wines/madeira/"
+    },
+    {
+      "q": "Under EU law, a liqueur wine's actual alcohol must fall in which range?",
+      "answer": "15% to 22%",
+      "wrong": [
+        "12% to 15%",
+        "14% to 24%",
+        "17.5% to 20%"
+      ],
+      "source": "https://www.legislation.gov.uk/eur/2013/1308/annex/VII/adopted"
+    },
+    {
+      "q": "Under EU law, which plant gives vermouth its characteristic taste?",
+      "answer": "Artemisia (wormwood)",
+      "wrong": [
+        "Gentian",
+        "Cinchona (quinine)",
+        "Juniper"
+      ],
+      "source": "https://www.legislation.gov.uk/eur/2014/251/annex/II/adopted"
+    },
+    {
+      "q": "At least what share of an EU aromatized wine must be wine?",
+      "answer": "75%",
+      "wrong": [
+        "51%",
+        "85%",
+        "95%"
+      ],
+      "source": "https://www.legislation.gov.uk/eur/2014/251/article/3/adopted"
+    },
+    {
+      "q": "VQA Special Select Late Harvest needs grapes of at least how many degrees Brix?",
+      "answer": "30",
+      "wrong": [
+        "22",
+        "26",
+        "35"
+      ],
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "q": "Which aromatized wine name is reserved for Spain and Portugal?",
+      "answer": "Sangría",
+      "wrong": [
+        "Vermouth",
+        "Glühwein",
+        "Americano"
+      ],
+      "source": "https://www.legislation.gov.uk/eur/2014/251/annex/II/adopted"
+    },
+    {
+      "q": "A Quinquina wine's main flavoring comes from what?",
+      "answer": "Quinine",
+      "wrong": [
+        "Gentian",
+        "Wormwood",
+        "Orange peel"
+      ],
+      "source": "https://www.legislation.gov.uk/eur/2014/251/annex/II/adopted"
+    },
+    {
+      "q": "Which sake designation has no polishing-ratio minimum?",
+      "answer": "Junmai",
+      "wrong": [
+        "Honjozo",
+        "Ginjo",
+        "Tokubetsu Junmai"
+      ],
+      "source": "https://www.nta.go.jp/taxes/sake/hyoji/seishu/gaiyo/02.htm"
+    },
+    {
+      "q": "Honjozo requires a polishing ratio of at most what?",
+      "answer": "70%",
+      "wrong": [
+        "50%",
+        "60%",
+        "75%"
+      ],
+      "source": "https://www.nta.go.jp/taxes/sake/hyoji/seishu/gaiyo/02.htm"
+    },
+    {
+      "q": "Gueuze is a blend of lambics of which ages?",
+      "answer": "One, two and three years",
+      "wrong": [
+        "Six months and one year",
+        "Two and five years",
+        "Three years only"
+      ],
+      "source": "https://www.bjcp.org/style/2021/23/23E/gueuze/"
+    },
+    {
+      "q": "Which seed-mash method adds lactic acid directly instead of growing it?",
+      "answer": "Sokujo",
+      "wrong": [
+        "Kimoto",
+        "Yamahai",
+        "Namazume"
+      ],
+      "source": "https://www.nrib.go.jp/English/sake/pdf/guidesse01.pdf"
+    },
+    {
+      "q": "Which monastery popularized the Tripel, first brewed in 1931?",
+      "answer": "Westmalle",
+      "wrong": [
+        "Chimay",
+        "Orval",
+        "Rochefort"
+      ],
+      "source": "https://www.bjcp.org/style/2021/26/26C/belgian-tripel/"
+    },
+    {
+      "q": "Scotch whisky must mature in oak casks no larger than what?",
+      "answer": "700 liters",
+      "wrong": [
+        "225 liters",
+        "500 liters",
+        "1,000 liters"
+      ],
+      "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/3"
+    },
+    {
+      "q": "Cognac XO requires its youngest eau-de-vie to be at least how old?",
+      "answer": "10 years",
+      "wrong": [
+        "4 years",
+        "6 years",
+        "14 years"
+      ],
+      "source": "https://www.cognac.fr/faq/"
+    },
+    {
+      "q": "A U.S. 'bottled in bond' spirit must be bottled at what strength?",
+      "answer": "100 proof (50% ABV)",
+      "wrong": [
+        "80 proof (40% ABV)",
+        "90 proof (45% ABV)",
+        "125 proof (62.5% ABV)"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-5.88"
+    },
+    {
+      "q": "Single Malt Scotch must be distilled in what kind of still?",
+      "answer": "Pot stills",
+      "wrong": [
+        "Column stills",
+        "Coffey stills",
+        "Hybrid stills"
+      ],
+      "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/3"
+    },
+    {
+      "q": "Under EU law, most liqueurs need at least how much sugar per liter?",
+      "answer": "100 g",
+      "wrong": [
+        "20 g",
+        "70 g",
+        "250 g"
+      ],
+      "source": "https://www.legislation.gov.uk/eur/2019/787/annex/I/adopted"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "EU Regulation 1308/2013 Annex VII Part II: sparkling wine has an excess pressure of not less than 3 bar at 20 °C; quality sparkling wine not less than 3.5 bar; semi-sparkling wine not less than 1 bar and not more than 2.5 bar; aerated versions get their CO2 wholly or partly added.",
+      "source": "https://www.legislation.gov.uk/eur/2013/1308/annex/VII/adopted"
+    },
+    {
+      "fact": "Comité Champagne fact sheet: pressing unit (marc) = 4,000 kg of grapes, pressed whole-bunch and slowly with separate fractions; cuvée 2,050 L; taille 500 L; second fermentation pressure 6 bar at 20 °C; non-vintage 15 months minimum, vintage 36 months minimum; 1.2 kg of grapes = 1 bottle.",
+      "source": "https://www.champagne.fr/system/files/2022-10/The%20Champagne-making%20process.pdf"
+    },
+    {
+      "fact": "Champagne cahier des charges: AOC Champagne is reserved for white or rosé sparkling wines; main varieties are Arbane, Chardonnay, Meunier, Petit Meslier, Pinot Blanc, Pinot Gris and Pinot Noir, plus Voltis as an adaptation variety (at most 5% of plantings and 10% of a blend; main varieties at least 90% of the blend).",
+      "source": "https://www.champagne.fr/system/files/2024-03/Cahier_des_charges_appellation.pdf"
+    },
+    {
+      "fact": "Champagne cahier des charges: at most 102 liters of settled must per 160 kg of grapes; rosé may be made by direct pressing, maceration or saignée, or by blending white and red wines before tirage; second fermentation only in glass bottles; tirage not before January 1 after the harvest; disgorgement not before twelve months after tirage.",
+      "source": "https://www.champagne.fr/system/files/2024-03/Cahier_des_charges_appellation.pdf"
+    },
+    {
+      "fact": "Comité Champagne label guide: professional registration codes RM (récoltant manipulant, grower producer), NM (négociant manipulant, merchant producer), CM (coopérative de manipulation), RC (récoltant coopérateur, cooperative members selling under their own label), ND (négociant distributeur), MA (marque d'acheteur, private label); Extra Brut < 6 g/L, Brut < 12 g/L.",
+      "source": "https://www.champagne.fr/system/files/2022-10/How%20to%20read%20a%20Champagne%20label.pdf"
+    },
+    {
+      "fact": "27 CFR 4.21(b): sparkling grape wine gets its CO2 solely from fermentation in a closed container; 'champagne' (as a TTB type) has its secondary fermentation in glass containers of not more than one gallon; other champagne-style wines must add terms such as 'bulk process' or 'fermented outside the bottle'; 'charmat method' may be added.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.21"
+    },
+    {
+      "fact": "27 CFR 4.24(b)(2): Champagne is listed as a semi-generic name in U.S. law, usable only with the true origin.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.24"
+    },
+    {
+      "fact": "VQA Ontario: sparkling wine has undergone secondary fermentation in tank or bottle with a pressure of not less than 300 kPa; artificial carbonation is prohibited.",
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "fact": "Sherry Council: in 2000 the Consejo Regulador created two certified-age categories: VOS (Vinum Optimum Signatum, Very Old Sherry, over 20 years) and VORS (Vinum Optimum Rare Signatum, Very Old Rare Sherry, over 30 years); certification is per saca (lot), judged by an independent tasting committee; certified-age wines must be Amontillado, Oloroso, Palo Cortado or Pedro Ximénez.",
+      "source": "https://www.sherry.wine/sherry-wine/special-categories"
+    },
+    {
+      "fact": "Sherry Council: for every liter of VOS sold at least 20 liters must remain in the aging system (30 for VORS); 12- and 15-year indications certify the whole solera, with sales quotas of one-twelfth and one-fifteenth; añadas (vintage Sherries) age statically in casks sealed by the Consejo.",
+      "source": "https://www.sherry.wine/sherry-wine/special-categories"
+    },
+    {
+      "fact": "Sherry Council: after an average of seven or eight years the flor weakens, so very old Sherries are mostly oxidatively aged.",
+      "source": "https://www.sherry.wine/sherry-wine/special-categories"
+    },
+    {
+      "fact": "Sherry Council: ten towns have DO vineyards, including Jerez de la Frontera, El Puerto de Santa María, Sanlúcar de Barrameda and Lebrija (in Seville province); Chipiona is home to Moscatel.",
+      "source": "https://www.sherry.wine/sherry-region/sherry-wine-region"
+    },
+    {
+      "fact": "Sherry Council: the official pago map was completed in 2015; a pago name (e.g. Macharnudo, Balbaína, Añina, Carrascal) may be used with at least 85 percent of the grapes from that pago.",
+      "source": "https://www.sherry.wine/sherry-wine/pagos"
+    },
+    {
+      "fact": "Sherry Council: Pedro Ximénez comes from sun-dried grapes (asoleo); fermentation is stopped by adding wine alcohol; aging is exclusively oxidative; serve at 12-14 °C.",
+      "source": "https://www.sherry.wine/sherry-wine/naturally-sweet-sherry-wine/pedro-ximenez"
+    },
+    {
+      "fact": "Sherry Council: Generoso Liqueur Wines are blends (cabeceo) of Generoso wines with naturally sweet wines or concentrated must, always over 5 g/L of sugar.",
+      "source": "https://www.sherry.wine/sherry-wine/sweet-sherry-wines"
+    },
+    {
+      "fact": "Sherry Council: Pale Cream is biologically aged wine (Fino or Manzanilla) sweetened with rectified concentrated must to keep its pale color; it entered the DO rules in the 1960s.",
+      "source": "https://www.sherry.wine/sherry-wine/sweet-sherry-wines/pale-cream"
+    },
+    {
+      "fact": "IVDP: the usual proportion is one part grape spirit to four parts must-wine, giving 19-22% ABV with residual sweetness; grapes are trodden in lagares or processed by modern methods; wines age in the Douro or in Vila Nova de Gaia lodges.",
+      "source": "https://www.ivdp.pt/en/wines/port-wines/the-winemaking/"
+    },
+    {
+      "fact": "IVDP: White Port sweetness styles run extra dry, dry, semi-sweet, sweet, very sweet and Lágrima.",
+      "source": "https://www.ivdp.pt/en/wines/port-wines/the-winemaking/"
+    },
+    {
+      "fact": "IVDP: Vintage Port is from a single year, bottled two to three years after the vintage, and develops 10 to 50 years in bottle; LBV is a single-year Ruby aged four to six years in wood; Crusted must be kept in bottle at least three years before sale; Colheita is a single-vintage Tawny aged at least seven years in cask; White Port may carry 10, 20, 30 or 40 Years.",
+      "source": "https://www.ivdp.pt/en/wines/port-wines/special-categories/"
+    },
+    {
+      "fact": "Wine Folly: Madeira categories: Rainwater (3-year aging requirement); 5 Years/Reserve; 10 Years/Special Reserve; 15 Years/Extra Reserve; 20, 30, 40, 50+ Years; Colheita (single vintage, at least 5 years before release); Frasqueira (single vintage, at least 20 years in canteiro).",
+      "source": "https://winefolly.com/wines/madeira/"
+    },
+    {
+      "fact": "Wine Folly: in the estufa method wine is heated in stainless steel tanks for about 3 months, up to 50 °C; canteiro casks age at least 2 years in warm lofts; Tinta Negra is used mostly in Rainwater; Sercial is driest and Malvasia (Malmsey) sweetest; an opened bottle keeps about 6 months.",
+      "source": "https://winefolly.com/wines/madeira/"
+    },
+    {
+      "fact": "Marsala DOC disciplinare: Fine 1 year minimum aging, 17.5% total alcohol; Superiore 2 years, 18%; Superiore Riserva 4 years; Vergine (Soleras) 5 years, 18%; Vergine Stravecchio (Riserva) 10 years; aging in wood.",
+      "source": "https://aisitalia.it/Disciplinari/Sicilia/DOC/Marsala.pdf"
+    },
+    {
+      "fact": "Marsala DOC disciplinare: Oro and Ambra from Grillo, Catarratto, Ansonica (Inzolia) and Damaschino; Rubino from Perricone (Pignatello), Calabrese (Nero d'Avola) and Nerello Mascalese; mosto cotto is banned in Vergine and in Fine and Superiore Oro and Rubino; sweetness: secco under 40 g/L, semisecco 40-100, dolce over 100.",
+      "source": "https://aisitalia.it/Disciplinari/Sicilia/DOC/Marsala.pdf"
+    },
+    {
+      "fact": "INAO, AOP Maury: a vin doux naturel made by stopping fermentation around mid-fermentation with 96° wine alcohol (mutage); Grenache Noir is the base of grenat and tuilé; ambré and tuilé are aged oxidatively, sometimes for decades; AOC for vins doux naturels since 1936, dry reds since 2011; black schist soils.",
+      "source": "https://www.inao.gouv.fr/node/2587/printable/pdf"
+    },
+    {
+      "fact": "Pineau des Charentes cahier des charges (decree 2011-1453): a vin de liqueur made by muting grape must with AOC Cognac (at least 60% ABV) to 16-22% ABV; must over 170 g/L sugar at mutage; rosé and red at least 12 months aging (8 in oak), white at least 18 months (12 in oak); 'vieux' at least 5 years in wood, 'très vieux' or 'extra vieux' at least 10.",
+      "source": "https://sommelier-academy.de/wp-content/uploads/2019/09/AOC_CDC_Pineau_des_Charentes.pdf"
+    },
+    {
+      "fact": "EU Regulation 1308/2013 Annex VII: liqueur wine has an actual alcoholic strength of 15-22% and a total of at least 17.5% (with exceptions), with added neutral grape alcohol (96%+) or wine distillate (52-86%).",
+      "source": "https://www.legislation.gov.uk/eur/2013/1308/annex/VII/adopted"
+    },
+    {
+      "fact": "VQA Ontario: Late Harvest at least 22° Brix, Select Late Harvest 26°, Special Select Late Harvest 30°, Icewine 35° (picked below -8 °C); Appassimento or Vin de Cure may be used for wines of at least 85% dried grapes.",
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "fact": "27 CFR 4.21: dessert wine is grape wine over 14 and not over 24 percent alcohol; 4.24(a)(2): Vermouth and Sake are examples of generic names.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.21"
+    },
+    {
+      "fact": "27 CFR 4.24(a)(2): Vermouth and Sake are generic names of geographic origin in U.S. law.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.24"
+    },
+    {
+      "fact": "WOSA: Constantia was the origin of the Constantia dessert wines that became famous throughout Europe in the 18th century.",
+      "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/"
+    },
+    {
+      "fact": "EU Regulation 251/2014 Art. 3(2): an aromatised wine is at least 75% grapevine products by volume, may have added alcohol, colour, must and sweetening, and has an actual strength of at least 14.5% and under 22%, total at least 17.5%.",
+      "source": "https://www.legislation.gov.uk/eur/2014/251/article/3/adopted"
+    },
+    {
+      "fact": "EU Regulation 251/2014 Annex II: vermouth is aromatised wine with added alcohol whose taste comes from Artemisia; bitter aromatised wine may be called Quinquina (quinine), Bitter vino (gentian) or Americano (wormwood and gentian); egg-based aromatised wine has over 200 g sugar and at least 10 g egg yolk per liter; 'Sangría' as a sales name only for Spain or Portugal; Glühwein is a named aromatised wine-based drink.",
+      "source": "https://www.legislation.gov.uk/eur/2014/251/annex/II/adopted"
+    },
+    {
+      "fact": "BJCP 2021 (Lambic): spontaneously fermented wild ale from in and around Brussels (Senne Valley, Pajottenland); Pilsner malt and unmalted wheat; aged hops (3+ years) used as a preservative; fermented in well-used neutral oak; traditionally served uncarbonated; Faro is lambic sweetened at service.",
+      "source": "https://www.bjcp.org/style/2021/23/23D/lambic/"
+    },
+    {
+      "fact": "BJCP 2021 (Gueuze): one-, two- and three-year-old lambics are blended and bottle-conditioned, giving a sparkling beer; 'oude' or 'vieille' marks the most traditional.",
+      "source": "https://www.bjcp.org/style/2021/23/23E/gueuze/"
+    },
+    {
+      "fact": "BJCP 2021 (Berliner Weisse): low-alcohol Berlin wheat beer with clean lactic sourness from co-fermentation with top-fermenting yeast and lactic acid bacteria; Napoleon's troops called it 'the Champagne of the North' in 1809.",
+      "source": "https://www.bjcp.org/style/2021/23/23A/berliner-weisse/"
+    },
+    {
+      "fact": "BJCP 2021 (Weissbier): malted wheat is at least half the grist; decoction mash traditional; banana-and-clove weizen yeast; modern Weissbier dates from 1872 when Schneider began its amber version.",
+      "source": "https://www.bjcp.org/style/2021/10/10A/weissbier/"
+    },
+    {
+      "fact": "BJCP 2021 (Belgian Tripel): popularized by the monastery at Westmalle, first brewed in 1931; most traditional versions have at least 30 IBUs and are very dry.",
+      "source": "https://www.bjcp.org/style/2021/26/26C/belgian-tripel/"
+    },
+    {
+      "fact": "BJCP 2021 (Irish Stout): Dublin-type stouts use roasted barley and are drier; Guinness began a 'stouter kind of porter' around 1810; Guinness Draught launched in 1959; draught is usually a nitro pour.",
+      "source": "https://www.bjcp.org/style/2021/15/15B/irish-stout/"
+    },
+    {
+      "fact": "BJCP 2021 (English IPA): the East India Company had Samuel Allsopp recreate the beer in 1823 using Burton's sulfate-rich water; the name India Pale Ale wasn't used until around 1830.",
+      "source": "https://www.bjcp.org/style/2021/12/12C/english-ipa/"
+    },
+    {
+      "fact": "BJCP 2021 (American IPA): the first modern American craft version is generally believed to be Anchor Liberty Ale, first brewed in 1975 with whole Cascade hops.",
+      "source": "https://www.bjcp.org/style/2021/21/21A/american-ipa/"
+    },
+    {
+      "fact": "International Trappist Association: an Authentic Trappist Product must be made within the immediate surroundings of the abbey, under the supervision of the monks or nuns, with profits going to the community, solidarity within the Order, or charity.",
+      "source": "https://www.trappist.be/en/about-ita/atp-label/"
+    },
+    {
+      "fact": "National Tax Agency labeling standard (Notice No. 8, 1989): eight special designations: Ginjo (≤60% polishing ratio, added brewer's alcohol), Daiginjo (≤50%, alcohol), Junmai (no ratio), Junmai Ginjo (≤60%), Junmai Daiginjo (≤50%), Tokubetsu Junmai (≤60% or special method), Honjozo (≤70%, alcohol), Tokubetsu Honjozo (≤60% or special method); all need koji rice of at least 15%.",
+      "source": "https://www.nta.go.jp/taxes/sake/hyoji/seishu/gaiyo/02.htm"
+    },
+    {
+      "fact": "National Tax Agency: the 2003 amendment (in force January 1, 2004) removed Junmai's 70% polishing requirement and added the 15% koji-rice minimum; brewer's alcohol for Ginjo and Honjozo is limited to 10% of the white rice weight; a 60% polishing ratio means 40% of the brown rice was removed; table rice is about 92%.",
+      "source": "https://www.nta.go.jp/taxes/sake/hyoji/seishu/gaiyo/02.htm"
+    },
+    {
+      "fact": "National Tax Agency: ginjo sake's fruity aroma comes from esters such as isoamyl acetate (banana-like) and ethyl caproate (apple-like); sake typically contains 15-16% alcohol.",
+      "source": "https://www.nta.go.jp/english/taxes/liquor_administration/data/01.pdf"
+    },
+    {
+      "fact": "NRIB guide: the seed mash (shubo or moto) must be highly acidic; kimoto and yamahaimoto grow lactic acid bacteria (about a month); sokujomoto adds brewing-grade lactic acid and saves about two weeks.",
+      "source": "https://www.nrib.go.jp/English/sake/pdf/guidesse01.pdf"
+    },
+    {
+      "fact": "NRIB guide: the main mash is built in three steps over four days (one-sixth on day 1 with the shubo, nothing on day 2, two-sixths on day 3, three-sixths on day 4); fermentation takes three to four weeks and reaches about 17-20% alcohol.",
+      "source": "https://www.nrib.go.jp/English/sake/pdf/guidesse01.pdf"
+    },
+    {
+      "fact": "NRIB guide: sake is usually pasteurized twice; namazake not at all; nama-chozo-shu once at bottling after maturation; namazume-shu once before maturation; koshu ages at least three years.",
+      "source": "https://www.nrib.go.jp/English/sake/pdf/guidesse01.pdf"
+    },
+    {
+      "fact": "EU Regulation 2019/787 Annex I: whisky is distilled at less than 94.8% vol so the distillate keeps the raw materials' aroma and taste, matured at least three years in wooden casks of no more than 700 liters, minimum 40% ABV, only water and plain caramel added; 'single malt' means only malted barley at a single distillery.",
+      "source": "https://www.legislation.gov.uk/eur/2019/787/annex/I/adopted"
+    },
+    {
+      "fact": "EU Regulation 2019/787 Annex I: rum is distilled from fermented cane-sugar molasses, syrup or cane juice at less than 96% vol, minimum 37.5%; brandy (Weinbrand) matures at least one year in oak of 1,000 liters or more, or six months in oak casks under 1,000 liters, minimum 36%.",
+      "source": "https://www.legislation.gov.uk/eur/2019/787/annex/I/adopted"
+    },
+    {
+      "fact": "EU Regulation 2019/787 Annex I: London gin is distilled gin flavoured only by distillation with all natural plant materials, distillate at least 70% ABV, not coloured, no more than 0.1 g/L sweetening, minimum 37.5%; may add 'dry'.",
+      "source": "https://www.legislation.gov.uk/eur/2019/787/annex/I/adopted"
+    },
+    {
+      "fact": "EU Regulation 2019/787 Annex I: liqueur needs at least 100 g/L sweetening (70 g/L for cherry spirit liqueurs, 80 g/L for gentian or wormwood liqueurs) and at least 15% ABV; crème de needs at least 250 g/L; bitter-tasting spirit drink (bitter) at least 15% ABV.",
+      "source": "https://www.legislation.gov.uk/eur/2019/787/annex/I/adopted"
+    },
+    {
+      "fact": "27 CFR 5.143: bourbon, rye, wheat and malt whisky are at least 51% of that grain, distilled at 160 proof or less and stored in charred new oak at 125 proof or less; straight whisky stores at least 2 years; corn whisky is at least 80% corn; whisky is bottled at least 80 proof; 'bourbon' may be used only for whisky distilled and aged in the United States.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.143"
+    },
+    {
+      "fact": "27 CFR 5.88: bottled in bond means one kind of spirit, from one distilling season, one distiller and one distillery, stored at least 4 years in wood, and bottled at 100 proof (50% ABV).",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.88"
+    },
+    {
+      "fact": "27 CFR 5.144: gin must take its main flavor from juniper and be bottled at least 80 proof; only gin made by original distillation or redistillation may be called 'distilled', 'Dry', 'London' or 'Old Tom'.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.144"
+    },
+    {
+      "fact": "27 CFR 5.148: agave spirits are at least 51% from Agave; Tequila and Mezcal are distinctive products of Mexico and must be made there under Mexican rules.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.148"
+    },
+    {
+      "fact": "27 CFR 5.147: rum is distilled from sugar cane juice, syrup, molasses or other cane by-products at less than 95% ABV and bottled at least 80 proof; Cachaça is rum that is a distinctive product of Brazil.",
+      "source": "https://www.ecfr.gov/current/title-27/section-5.147"
+    },
+    {
+      "fact": "Scotch Whisky Regulations 2009, reg. 3: Scotch is distilled in Scotland at less than 94.8% ABV, matured only in Scotland in oak casks of no more than 700 liters for at least three years, minimum 40%; Single Malt Scotch is malted barley only, at a single distillery, in pot stills; Blended Malt, Single Grain, Blended Grain and Blended Scotch are the other categories.",
+      "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/3"
+    },
+    {
+      "fact": "Scotch Whisky Regulations 2009, reg. 10: protected localities are Campbeltown and Islay; protected regions are Highland, Lowland and Speyside.",
+      "source": "https://www.legislation.gov.uk/uksi/2009/2890/regulation/10"
+    },
+    {
+      "fact": "BNIC: VS minimum 2 years, VSOP 4 years, XO 10 years; the mention gives the age of the youngest eau-de-vie in the blend; Cognac is distilled twice in a Charentais still and aged in oak; six crus; 40% minimum ABV.",
+      "source": "https://www.cognac.fr/faq/"
+    },
+    {
+      "fact": "BNIC: Cognac cannot be sold before at least two years of aging in oak; some terms are reserved for Cognacs aged 14 years or more; the GI specifications were recognized by French decree No. 2015-10 of 7 January 2015.",
+      "source": "https://www.cognac.fr/en/discover/a-unique-spirit/a-protected-origin/"
+    },
+    {
+      "fact": "Court theory guide, Areas of Study for non-wine subjects: distillation techniques (example: continuous or pot still), laws on distillation and number of distillations, aging requirements, label terms and types (example: types of sake or Scotch).",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=31"
+    }
+  ],
+  "unverified": [
+    "Madeira: the IVBAM site (vinhomadeira.com) could not be reached, so Madeira facts come from Wine Folly only. Secondary sources disagree on Frasqueira (19 vs 20 years in cask); the chapter follows Wine Folly's 20.",
+    "Sherry minimum age: the Sherry Council page says the 3:1 stock rule guarantees at least three years; this was not checked against the current DO regulations, so no general minimum is stated.",
+    "Marsala: the disciplinare was read from a copy hosted by AIS (Associazione Italiana Sommelier); its revision date is not shown. A search summary quoted an older text giving 5 years for Superiore Riserva; the copy read says 4.",
+    "Pineau des Charentes: the specification read is the 2011 decree version on a secondary host; INAO lists a modification adopted in February 2026 that was not read.",
+    "VDN rules for Banyuls, Rivesaltes, Rasteau and Muscat de Beaumes-de-Venise (spirit percentages, hors d'âge and rancio aging) were not read on INAO's site; only the Maury sheet was read.",
+    "Chambéry (named by the Court as an aromatized wine) was not found on an official page; left out.",
+    "EU regulations were read in their as-adopted text on legislation.gov.uk because EUR-Lex blocked automated reading; later EU amendments were not checked.",
+    "Cognac XO moving from 6 to 10 years in 2018 appears in BNIC press materials found by search but not read; only the current 10-year rule is stated.",
+    "Sake: the National Tax Agency's English page only summarizes Notice No. 8; the numbers come from the NTA's Japanese summary page."
+  ],
+  "court": {
+    "outcome": "Are there laws regarding how the beverage is made?\n\nAre there types and sub-types of the beverage?",
+    "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=31",
+    "coverage": [
+      {
+        "topic": "Sparkling Wine · Methods of production",
+        "guide": "Pressure categories, tank vs bottle on U.S. labels, VQA sparkling rules.",
+        "where": "Sparkling methods and Champagne law"
+      },
+      {
+        "topic": "Sparkling Wine · Champagne",
+        "guide": "Pressing limits, seven grapes, rosé by blending, tirage and disgorging dates, label codes.",
+        "where": "Sparkling methods and Champagne law"
+      },
+      {
+        "topic": "Sparkling Wine · World sparkling wines",
+        "guide": "EU sparkling and semi-sparkling, U.S. 'bulk process', Ontario sparkling.",
+        "where": "Sparkling methods and Champagne law"
+      },
+      {
+        "topic": "Fortified Wine · Sherry",
+        "guide": "VOS/VORS, 12/15 years, añadas, pagos, PX, Pale Cream, flor's lifespan.",
+        "where": "Sherry and Port"
+      },
+      {
+        "topic": "Fortified Wine · Port",
+        "guide": "1:4 mutage, LBV, Vintage, Crusted, Colheita, White Port styles and ages.",
+        "where": "Sherry and Port"
+      },
+      {
+        "topic": "Fortified Wine · Madeira",
+        "guide": "Age ladder from Rainwater to Frasqueira; estufa vs canteiro.",
+        "where": "Madeira, Marsala, VDN and VDL"
+      },
+      {
+        "topic": "Fortified Wine · Marsala",
+        "guide": "Five aging tiers, three colors, sweetness levels, mosto cotto rules.",
+        "where": "Madeira, Marsala, VDN and VDL"
+      },
+      {
+        "topic": "Fortified Wine · Vins Doux Naturels (VDN)",
+        "guide": "Mutage with 96% spirit; Maury grenat, ambré, tuilé.",
+        "where": "Madeira, Marsala, VDN and VDL"
+      },
+      {
+        "topic": "Fortified Wine · Vin de Liqueur (VDL)",
+        "guide": "Pineau des Charentes: must plus Cognac, aging minimums.",
+        "where": "Madeira, Marsala, VDN and VDL"
+      },
+      {
+        "topic": "Fortified Wine · Others",
+        "guide": "EU liqueur-wine definition (15-22% ABV); U.S. dessert wine 14-24%.",
+        "where": "Madeira, Marsala, VDN and VDL; Sweet and aromatized wines"
+      },
+      {
+        "topic": "Sweet Wines · Methods of production",
+        "guide": "Late harvest ladder, freezing, drying (Appassimento, asoleo), fortifying.",
+        "where": "Sweet and aromatized wines"
+      },
+      {
+        "topic": "Sweet Wines · Important sweet wines of the world",
+        "guide": "Icewine, Pedro Ximénez, Constantia; Level 2 adds Sauternes and Tokaji.",
+        "where": "Sweet and aromatized wines"
+      },
+      {
+        "topic": "Aromatized Wines · Vermouth, Chambéry, others",
+        "guide": "EU definitions: vermouth, quinquina, bitter vino, Americano, egg-based, Sangría. Chambéry not sourced.",
+        "where": "Sweet and aromatized wines"
+      },
+      {
+        "topic": "Beer · Ingredients, steps, production methods",
+        "guide": "Spontaneous fermentation, decoction, lactic souring, nitro; Level 2 covers the basics.",
+        "where": "Beer and sake"
+      },
+      {
+        "topic": "Beer · Common and classic styles",
+        "guide": "Lambic, gueuze, Berliner Weisse, Weissbier, Tripel, Irish stout, IPA; Trappist label.",
+        "where": "Beer and sake"
+      },
+      {
+        "topic": "Sake · Ingredients, styles, production",
+        "guide": "Koji, seed mash (kimoto, yamahai, sokujo), three-step mash, pasteurization styles.",
+        "where": "Beer and sake"
+      },
+      {
+        "topic": "Sake · Classification and polishing minimums",
+        "guide": "Eight special designations; 70/60/50% ratios; 15% koji; 10% alcohol cap.",
+        "where": "Beer and sake"
+      },
+      {
+        "topic": "Spirits · Basics of distillation",
+        "guide": "Distillation strength limits; pot stills for single malt; double distillation for Cognac.",
+        "where": "Spirits: distillation, aging laws, aperitifs and digestifs"
+      },
+      {
+        "topic": "Spirits · Base ingredients",
+        "guide": "Cane for rum, malted barley for Scotch, wine for brandy, 51% agave for agave spirits.",
+        "where": "Spirits: distillation, aging laws, aperitifs and digestifs"
+      },
+      {
+        "topic": "Spirits · Aging requirements and laws",
+        "guide": "Scotch, straight whiskey, bottled in bond, EU brandy, Cognac VS/VSOP/XO.",
+        "where": "Spirits: distillation, aging laws, aperitifs and digestifs"
+      },
+      {
+        "topic": "Spirits · Aperitifs and digestifs",
+        "guide": "EU rules for vermouth, bitters, liqueurs, crème de and London gin.",
+        "where": "Spirits: distillation, aging laws, aperitifs and digestifs"
+      }
+    ]
+  },
+  "v3": {
+    "video": null,
+    "sections": [
+      {
+        "name": "Sparkling methods and Champagne law",
+        "video": {
+          "youtubeId": "NHsw_vuAZFA",
+          "title": "Harvest and Pressing in Champagne",
+          "by": "Champagne",
+          "length": "4:00"
+        },
+        "keyPoints": [
+          {
+            "big": "4,000 KG",
+            "line": "press load gives 2,050 L of cuvée and 500 L of taille."
+          },
+          {
+            "big": "SEVEN GRAPES",
+            "line": "including Arbane, Petit Meslier, Pinot Blanc, Pinot Gris."
+          },
+          {
+            "big": "JANUARY 1",
+            "line": "after harvest is the earliest tirage."
+          },
+          {
+            "big": "3.5 BAR",
+            "line": "is the EU floor for quality sparkling wine."
+          },
+          {
+            "big": "RC",
+            "line": "a co-op member selling under their own label."
+          }
+        ],
+        "read": {
+          "bigIdea": "Sparkling law is pressure, presses and time.",
+          "where": "From Level 2 you know the **traditional method** and the 15- and 36-month rules. At Advanced, learn the numbers in Champagne's **cahier des charges** and how the law sorts sparkling wine by **pressure**.",
+          "stopsTitle": "Four stops, press to label",
+          "stops": [
+            {
+              "name": "The press",
+              "note": "4,000 kg",
+              "text": "Each **marc** gives **2,050 L** of **cuvée** and **500 L** of **taille**, kept apart. The legal ceiling is **102 liters per 160 kg**."
+            },
+            {
+              "name": "The grapes",
+              "note": "seven, plus one",
+              "text": "Chardonnay, Meunier and Pinot Noir, plus **Arbane**, **Petit Meslier**, **Pinot Blanc** and **Pinot Gris**. **Voltis**, an adaptation grape, is capped at 10% of a blend."
+            },
+            {
+              "name": "The bottle",
+              "note": "tirage",
+              "text": "Tirage starts no earlier than **January 1** after harvest; disgorging waits at least **12 months**. Rosé may be a **blend** of white and red wine."
+            },
+            {
+              "name": "The label",
+              "note": "who made it",
+              "text": "**RM** grower, **NM** merchant house, **CM** cooperative, **RC** co-op member's own label, **MA** private label. In the U.S., tank-made 'champagne' must say **bulk process**."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "The law sorts bubbles by pressure:",
+          "mixup": "**RM** grows and makes its own wine. **RC** is a cooperative member selling co-op wine under its own label.",
+          "sayIt": "This is a grower Champagne: the family grew the grapes and made the wine."
+        },
+        "check": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Sherry and Port",
+        "video": {
+          "youtubeId": "dlpYq4xwKYw",
+          "title": "The Wines of Sherry",
+          "by": "GuildSomm International",
+          "length": "11:01"
+        },
+        "keyPoints": [
+          {
+            "big": "VOS 20",
+            "line": "years and VORS 30, certified lot by lot since 2000."
+          },
+          {
+            "big": "20 TO 1",
+            "line": "liters kept in the solera for each liter of VOS sold."
+          },
+          {
+            "big": "PAGOS",
+            "line": "named on a label need 85% of the grapes from there."
+          },
+          {
+            "big": "1 TO 4",
+            "line": "grape spirit to must-wine is the usual Port mix."
+          },
+          {
+            "big": "LBV",
+            "line": "spends four to six years in wood before bottling."
+          }
+        ],
+        "read": {
+          "bigIdea": "Age is certified in Jerez and in Gaia alike.",
+          "where": "From Level 2 you know **flor**, the **solera** and the Port families. At Advanced, learn how age gets **certified**, and the rules for each special **category**.",
+          "stopsTitle": "Four stops, Jerez to Porto",
+          "stops": [
+            {
+              "name": "VOS and VORS",
+              "note": "since 2000",
+              "text": "Average age over **20** (VOS) or **30** (VORS) years, judged lot by lot. Only **Amontillado**, **Oloroso**, **Palo Cortado** or **Pedro Ximénez** qualify."
+            },
+            {
+              "name": "Pagos and añadas",
+              "note": "place and year",
+              "text": "Since the 2015 map, a **pago** such as **Macharnudo** needs **85%** of its grapes. **Añadas** age as one vintage in casks sealed by the Consejo."
+            },
+            {
+              "name": "Port's mutage",
+              "note": "IVDP",
+              "text": "About **one part** grape spirit to **four parts** must-wine stops fermentation, leaving sweetness and **19-22%** ABV."
+            },
+            {
+              "name": "Port's specials",
+              "note": "know the minimums",
+              "text": "**LBV**: four to six years in wood; **Vintage**: bottled after two to three years. **Crusted**: three years in bottle; **Colheita**: seven years in cask."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "Sherry's age certifications:",
+          "mixup": "**VOS** means over **20** years. **VORS** means over **30**.",
+          "sayIt": "This is a VORS Oloroso: more than thirty years old on average."
+        },
+        "check": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "Madeira, Marsala, VDN and VDL",
+        "video": {
+          "youtubeId": "eRXp74CFyCc",
+          "title": "MADEIRA WINE EXPLAINED - what it is, what it tastes like and how to drink it!",
+          "by": "Behind the Bar",
+          "length": "10:52"
+        },
+        "keyPoints": [
+          {
+            "big": "FRASQUEIRA",
+            "line": "single-vintage Madeira, 20 years in canteiro."
+          },
+          {
+            "big": "MARSALA 10",
+            "line": "years for Vergine Stravecchio."
+          },
+          {
+            "big": "RUBINO",
+            "line": "Marsala made from red grapes like Perricone."
+          },
+          {
+            "big": "VDN",
+            "line": "is muted partway through fermentation."
+          },
+          {
+            "big": "PINEAU",
+            "line": "is grape must muted with Cognac, 16-22% ABV."
+          }
+        ],
+        "read": {
+          "bigIdea": "Each fortified wine counts its years differently.",
+          "where": "Madeira, Marsala, **vins doux naturels** and **vins de liqueur** all add spirit, but at different moments. Learn each one's **age ladder** and **mutage**.",
+          "stopsTitle": "Four stops around the sea",
+          "stops": [
+            {
+              "name": "Madeira",
+              "note": "per Wine Folly",
+              "text": "**Rainwater** (3 years), then **5, 10, 15, 20+ years**. **Colheita** is one vintage, 5 years; **Frasqueira** is one vintage, **20 years** in **canteiro**."
+            },
+            {
+              "name": "Marsala",
+              "note": "the disciplinare",
+              "text": "**Fine** 1 year, **Superiore** 2, **Superiore Riserva** 4, **Vergine** 5, **Vergine Stravecchio** 10. **Oro** and **Ambra** are white grapes; **Rubino** is red. No **mosto cotto** in Vergine."
+            },
+            {
+              "name": "Vin doux naturel",
+              "note": "Maury",
+              "text": "Fermentation is stopped midway with **96%** grape spirit. **Grenache Noir** makes the **grenat** and **tuilé**; ambré and tuilé age oxidatively."
+            },
+            {
+              "name": "Vin de liqueur",
+              "note": "Pineau des Charentes",
+              "text": "Grape must muted with **Cognac** to **16-22%**. White ages 18 months (12 in oak); 'vieux' needs 5 years in wood."
+            }
+          ],
+          "visual": 1,
+          "visualIntro": "When the spirit goes in decides the name:",
+          "mixup": "A **VDN** starts fermenting before it is muted. A **VDL** like Pineau is must muted with spirit.",
+          "sayIt": "Pineau des Charentes: fresh grape juice and Cognac, aged in oak."
+        },
+        "check": [
+          10,
+          11,
+          12
+        ]
+      },
+      {
+        "name": "Sweet and aromatized wines",
+        "video": {
+          "youtubeId": "2kZWEt62r0k",
+          "title": "Introduction to Aromatized Wines",
+          "by": "Haus Alpenz",
+          "length": "9:56"
+        },
+        "keyPoints": [
+          {
+            "big": "22/26/30/35",
+            "line": "Brix for Ontario's late-harvest ladder to Icewine."
+          },
+          {
+            "big": "85% DRIED",
+            "line": "grapes to call an Ontario wine Appassimento."
+          },
+          {
+            "big": "75% WINE",
+            "line": "at least, in any EU aromatized wine."
+          },
+          {
+            "big": "ARTEMISIA",
+            "line": "gives vermouth its taste."
+          },
+          {
+            "big": "SANGRÍA",
+            "line": "as a sales name belongs to Spain and Portugal."
+          }
+        ],
+        "read": {
+          "bigIdea": "Sweet comes from ripeness, drying, or a spice box.",
+          "where": "Sweet wines get their sugar from the vine, from **drying**, from noble rot or from fortifying. **Aromatized wines** start as wine and add botanicals, sugar and often alcohol.",
+          "stopsTitle": "Four stops, vine to vermouth",
+          "stops": [
+            {
+              "name": "Left on the vine",
+              "note": "VQA ladder",
+              "text": "**Late Harvest** 22° Brix, **Select** 26°, **Special Select** 30°, **Icewine** 35° and picked below -8 °C."
+            },
+            {
+              "name": "Dried after picking",
+              "note": "passito style",
+              "text": "VQA's **Appassimento** needs 85% dried grapes. **Pedro Ximénez** is sun-dried (**asoleo**), then muted with wine alcohol."
+            },
+            {
+              "name": "Aromatized wine",
+              "note": "EU 251/2014",
+              "text": "At least **75% wine**, **14.5%** to under **22%** ABV. **Vermouth** gets its taste from **Artemisia**, with alcohol added."
+            },
+            {
+              "name": "The bitter family",
+              "note": "named by flavor",
+              "text": "**Quinquina** is quinine; **Bitter vino** is gentian; **Americano** is wormwood and gentian. **Sangría** belongs to Spain and Portugal."
+            }
+          ],
+          "visual": 1,
+          "visualIntro": "The EU names aromatized wines by their flavor:",
+          "mixup": "**Vermouth** tastes of **wormwood** (Artemisia). **Quinquina** tastes of **quinine**.",
+          "sayIt": "Vermouth is wine with botanicals and a little added spirit."
+        },
+        "check": [
+          15,
+          16,
+          17
+        ]
+      },
+      {
+        "name": "Beer and sake",
+        "video": {
+          "youtubeId": "9dVYS00TwfE",
+          "title": "Making Japanese Sake",
+          "by": "JapanSakeOfficial",
+          "length": "14:21"
+        },
+        "keyPoints": [
+          {
+            "big": "LAMBIC",
+            "line": "wild-fermented in old oak around Brussels."
+          },
+          {
+            "big": "GUEUZE",
+            "line": "blends one-, two- and three-year-old lambic."
+          },
+          {
+            "big": "15% KOJI",
+            "line": "rice minimum for every special designation."
+          },
+          {
+            "big": "JUNMAI",
+            "line": "has had no polishing minimum since 2004."
+          },
+          {
+            "big": "SOKUJO",
+            "line": "adds lactic acid to the seed mash, two weeks faster."
+          }
+        ],
+        "read": {
+          "bigIdea": "Beer is read by place; sake by polishing.",
+          "where": "From Level 2 you know malt, hops and yeast, and the basic sake grades. At Advanced, tie each **classic beer** to its place and method, and learn the **sake law** behind the label.",
+          "stopsTitle": "Four stops, Brussels to Japan",
+          "stops": [
+            {
+              "name": "Wild and sour",
+              "note": "Belgium and Berlin",
+              "text": "**Lambic** ferments spontaneously in well-used oak; **gueuze** blends one-, two- and three-year-old lambic. **Berliner Weisse** sours with **lactic bacteria**."
+            },
+            {
+              "name": "Monks and wheat",
+              "note": "Belgium and Bavaria",
+              "text": "**Westmalle** popularized the **Tripel** in 1931. **Weissbier** is at least half malted wheat, with banana-and-clove yeast."
+            },
+            {
+              "name": "Sake law",
+              "note": "eight designations",
+              "text": "**Honjozo** 70% or less, **Ginjo** 60%, **Daiginjo** 50%. **Junmai** has no polishing minimum since 2004. Added alcohol is capped at **10%** of the rice weight."
+            },
+            {
+              "name": "Sake making",
+              "note": "NRIB",
+              "text": "The seed mash is **kimoto**, **yamahai** or **sokujo**. The main mash goes in over **four days** in **three steps**. **Namazake** is never pasteurized."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "The eight special designations:",
+          "mixup": "**Namazake** is never pasteurized. **Nama-chozo** is pasteurized once, at bottling.",
+          "sayIt": "Junmai Daiginjo: rice milled to half or less, and no added alcohol."
+        },
+        "check": [
+          20,
+          21,
+          22
+        ]
+      },
+      {
+        "name": "Spirits: distillation, aging laws, aperitifs and digestifs",
+        "video": {
+          "youtubeId": "4k0b8McZuu4",
+          "title": "Pot Still vs Column Still: What's The Difference???",
+          "by": "Whiskey Tribe",
+          "length": "15:09"
+        },
+        "keyPoints": [
+          {
+            "big": "94.8%",
+            "line": "the ceiling for EU and Scotch whisky distillation."
+          },
+          {
+            "big": "700 L",
+            "line": "the largest cask allowed for Scotch."
+          },
+          {
+            "big": "POT STILLS",
+            "line": "only, for Single Malt Scotch."
+          },
+          {
+            "big": "XO 10",
+            "line": "years for the youngest eau-de-vie in Cognac XO."
+          },
+          {
+            "big": "100 PROOF",
+            "line": "and four years in wood for bottled in bond."
+          }
+        ],
+        "read": {
+          "bigIdea": "Distill low for flavor, then age by the law.",
+          "where": "The Court asks about **distillation** (pot or continuous, how many times), **aging laws** and **label terms**. The rules are written so the spirit keeps the taste of its **raw material**.",
+          "stopsTitle": "Four stops, still to snifter",
+          "stops": [
+            {
+              "name": "Distillation strength",
+              "note": "keeps flavor",
+              "text": "EU and Scotch whisky stay under **94.8%** ABV; bourbon under **160 proof**. **Single Malt Scotch** must use **pot stills**; **Cognac** is distilled **twice** in a Charentais still."
+            },
+            {
+              "name": "Whisky aging",
+              "note": "U.S. and Scotland",
+              "text": "**Scotch**: 3 years in oak of **700 L** or less. **Straight** whiskey: 2 years in charred new oak. **Bottled in bond**: 4 years, **100 proof**."
+            },
+            {
+              "name": "Brandy aging",
+              "note": "EU and Cognac",
+              "text": "EU **brandy**: 1 year in big oak or **6 months** in casks under 1,000 L. **Cognac**: **VS** 2, **VSOP** 4, **XO** 10 years, counting the youngest spirit."
+            },
+            {
+              "name": "Aperitifs and digestifs",
+              "note": "EU rules",
+              "text": "**Vermouth**: 75%+ wine; **bitter**: 15% ABV or more. **Liqueur**: 100 g/L sugar; **crème de**: 250 g/L. **London gin**: flavored only by distillation."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "Minimum aging, set by law:",
+          "mixup": "**Single Malt** Scotch is one distillery, malted barley, pot stills. **Blended Malt** mixes single malts from more than one distillery.",
+          "sayIt": "An XO Cognac: the youngest brandy in it is at least ten years old."
+        },
+        "check": [
+          25,
+          26,
+          27
+        ]
+      }
+    ]
+  }
+}

@@ -10,7 +10,7 @@ const files = new Map();
 const load = (f) => { const p = path.isAbsolute(f) ? f : path.join(ROOT, f); if (!files.has(p)) files.set(p, JSON.parse(fs.readFileSync(p, 'utf8'))); return [p, files.get(p)]; };
 let added = 0, skipped = []; const changed = new Set();
 const seen = new Map(); // youtubeId → lesson slug, so a video isn't reused across lessons
-for (const p0 of fs.readdirSync(path.join(ROOT, 'content')).filter((d) => ['bar', 'beer', 'manual', 'manual-l2'].includes(d)))
+for (const p0 of fs.readdirSync(path.join(ROOT, 'content')).filter((d) => ['bar', 'beer', 'manual', 'manual-l2', 'manual-l3', 'manual-l4'].includes(d)))
   for (const f of fs.readdirSync(path.join(ROOT, 'content', p0)).filter((x) => x.endsWith('.json'))) { const [, c] = load(path.join('content', p0, f)); for (const s of c.v3?.sections || []) if (s.video?.youtubeId) seen.set(s.video.youtubeId, c.slug); }
 for (const v of found) {
   if (!fs.existsSync(path.isAbsolute(v.file) ? v.file : path.join(ROOT, v.file))) { skipped.push(`${v.file}: file gone (archived)`); continue; }

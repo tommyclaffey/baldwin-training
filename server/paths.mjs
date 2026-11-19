@@ -7,7 +7,7 @@
 //   • Paths borrow from the programs (Tommy: "if they've completed it, it counts towards their regular [Sommelier] training"):
 //     a Sommelier lesson in a path is the same lesson, so finishing it in either place ticks it in both.
 //   • Steps are only ever things the book already has; a step whose page or quiz isn't in this store's book is left out.
-import { chapterBySlug, allChapters, chaptersOf, programOf, LEVELS, programDef, isProgram } from './manual.mjs';
+import { chapterBySlug, allChapters, chaptersOf, chaptersForLevel, programOf, LEVELS, programDef, isProgram } from './manual.mjs';
 import { lessonSlug, doneKey } from './study.mjs';
 import { passFor, PASS_PCT } from './quizgen.mjs';
 import { ACK_KEY, ACK_LEVEL } from './acks.mjs';
@@ -189,6 +189,7 @@ function programsFor(done, paths, staff = true) {
   const out = [];
   // The Cocktail and Beer Programs first: they're the ones most of the floor takes. Each level shows its final and practical.
   for (const L of LEVELS) {
+    if (L.program === 'somm') continue; // the Sommelier's four levels follow, together (Nov 19)
     const bar = chaptersOf(L.program, L.level).flatMap((c) => c.sections.map((_, i) => doneKey(c, i)));
     if (!bar.length) continue;
     const fin = done.quizzes.get('t:' + L.final); const pr = L.practical && done.signs.get(L.practical);
@@ -199,17 +200,19 @@ function programsFor(done, paths, staff = true) {
       ...(L.invite && staff ? { invite: { key: L.invite, at: done.signs.get(L.invite)?.at || null, by: done.signs.get(L.invite)?.by || null } } : {}),
       certified: !!(fin?.passedAt && (!L.practical || pr)) });
   }
-  for (const level of [1, 2]) {
-    const chs = allChapters().filter((c) => !isProgram(c) && (c.level || 1) === level);
+  for (const level of [1, 2, 3, 4]) {
+    // Nov 19: Levels 3 and 4 are program lessons (content/manual-l3, -l4); Levels 1 and 2 are the Study Guide's chapters
+    const L = LEVELS.find((x) => x.program === 'somm' && x.level === level);
+    const chs = level <= 2 ? allChapters().filter((c) => !isProgram(c) && (c.level || 1) === level) : L ? chaptersForLevel(L) : [];
     const keys = chs.flatMap((c) => c.sections.map((_, i) => doneKey(c, i)));
     if (!keys.length) continue;
     // Nov 8: the Sommelier levels have finals and certificates too
-    const L = LEVELS.find((x) => x.program === 'somm' && x.level === level);
     const fin = L && done.quizzes.get('t:' + L.final); const pr = L?.practical && done.signs.get(L.practical);
-    out.push({ title: `Sommelier · Level ${level}`, to: level === 1 ? '/sommelier-program/level-1' : '/sommelier-program/level-2', total: keys.length,
+    out.push({ title: `Sommelier · Level ${level}`, to: '/' + (L?.slug || `sommelier-program/level-${level}`), total: keys.length,
       done: keys.filter((k) => done.reads.has(k)).length, inPath: keys.filter((k) => inPath.has(k)).length,
       ...(L ? { cert: L.title, certKey: L.file, final: { id: 't:' + L.final, passedAt: fin?.passedAt || null, best: fin ? `${Math.round((fin.best / fin.total) * 100)}%` : null },
         ...(L.practical ? { practical: { key: L.practical, title: L.practicalTitle, how: L.practicalHow, at: pr?.at || null, by: pr?.by || null, ask: (!pr && done.asks.get(L.practical)) || null } } : {}),
+        ...(L.invite && staff ? { invite: { key: L.invite, at: done.signs.get(L.invite)?.at || null, by: done.signs.get(L.invite)?.by || null } } : {}),
         certified: !!(fin?.passedAt && (!L.practical || pr)) } : {}) });
   }
   return out;

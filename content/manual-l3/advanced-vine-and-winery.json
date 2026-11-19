@@ -1,0 +1,1289 @@
+{
+ "program": "somm",
+ "programLevel": 3,
+ "part": 1,
+ "number": 2,
+ "slug": "advanced-vine-and-winery",
+ "title": "Cause and effect: vineyard and winery",
+ "script": "Chapter two",
+ "lead": "How the vine's year, training, farming, fermentation and oak each leave a trace in the glass, and how to read that trace back to its cause.",
+ "minutes": 30,
+ "intro": {
+  "script": "Start here",
+  "title": "CAUSE, THEN EFFECT",
+  "text": "The Court keeps asking why a wine tastes the way it does. Every choice in the vineyard and the winery leaves a clue in the glass.",
+  "tiers": [
+   {
+    "name": "Vineyard",
+    "note": "The vine's year, training, canopy, farming"
+   },
+   {
+    "name": "Winery",
+    "note": "Whole clusters, carbonic, MLF, skin contact"
+   },
+   {
+    "name": "Oak",
+    "note": "Species, grain, toast, new or used"
+   },
+   {
+    "name": "Glass",
+    "note": "Read the clue, name the cause"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "The vine's year",
+   "source": "New Mexico State University Extension, Grapevine Phenology (Guide H-338)",
+   "lines": [
+    {
+     "label": "Two cycles",
+     "text": "Shoots grow in one season, but fruit takes two: buds formed this year carry next year's clusters."
+    },
+    {
+     "label": "Light and heat",
+     "text": "Day length sets dormancy, flowering and ripening; heat speeds them up. Heat is counted as growing degree days above 50°F."
+    }
+   ],
+   "know": [
+    "The modified E-L scale numbers the stages: budburst 4, flowering 23, fruit set 27, veraison 35, harvest 38.",
+    "Flowering usually starts when temperatures reach about 68°F.",
+    "Fruit set counts as good if about one flower in three becomes a berry.",
+    "At veraison berries soften, change color and start building sugar.",
+    "Sparkling-wine grapes are picked around 14–18° Brix; table-wine grapes usually at 21–24°."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "The vine's year, by E-L stage",
+     "items": [
+      {
+       "name": "Budburst",
+       "text": "Slow shoots in cool spring, then a fast spurt",
+       "meta": "E-L 4"
+      },
+      {
+       "name": "Flowering",
+       "text": "Around 68°F",
+       "meta": "E-L 23"
+      },
+      {
+       "name": "Fruit set",
+       "text": "About 1 flower in 3 becomes a berry",
+       "meta": "E-L 27"
+      },
+      {
+       "name": "Veraison",
+       "text": "Berries soften, color and gain sugar",
+       "meta": "E-L 35"
+      },
+      {
+       "name": "Harvest",
+       "text": "Picked to suit the style",
+       "meta": "E-L 38"
+      }
+     ]
+    },
+    {
+     "type": "scale",
+     "title": "Sugar at harvest, by style",
+     "rows": [
+      {
+       "name": "Sparkling base",
+       "value": "14–18° Brix",
+       "pct": 0.67
+      },
+      {
+       "name": "Table wine",
+       "value": "21–24° Brix",
+       "pct": 1
+      }
+     ],
+     "note": "Typical ranges given by New Mexico State University Extension. Low sugar, high acid for sparkling."
+    }
+   ]
+  },
+  {
+   "name": "Training and the canopy",
+   "source": "Wine Folly; University of Minnesota Extension; University of New Hampshire Extension; New Mexico State University Extension; Frontiers in Plant Science (2020)",
+   "lines": [
+    {
+     "label": "Cane or spur",
+     "text": "Cane pruning lays down one or two fresh canes each winter. Spur pruning keeps a permanent cordon and cuts last year's growth back to short spurs."
+    },
+    {
+     "label": "The canopy",
+     "text": "The canopy is the vine's leaves. Training and canopy work decide how much sun and air reach the fruit."
+    }
+   ],
+   "know": [
+    "Cane pruning (Guyot) is common in cooler places such as Burgundy, Sonoma and Oregon.",
+    "Spur pruning (cordon) is common in warmer places such as California, Washington and Spain.",
+    "A spur is a cane cut back to one to three buds.",
+    "VSP trains shoots upright with a low fruit zone, around 3.5–4 feet.",
+    "Scott Henry splits the canopy: upper shoots trained up, lower shoots down."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "CANE",
+       "title": "Guyot",
+       "text": "One or two new canes each year\nCooler regions\nBurgundy, Sonoma, Oregon\nLess winter injury in cold places"
+      },
+      {
+       "label": "SPUR",
+       "title": "Cordon",
+       "text": "Permanent cordon, 1–3 bud spurs\nWarmer regions\nCalifornia, Washington, Spain\nSimpler to prune"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Training systems to know",
+     "rows": [
+      {
+       "name": "Guyot",
+       "meta": "Cane pruned · cooler regions"
+      },
+      {
+       "name": "Cordon",
+       "meta": "Spur pruned · warmer regions"
+      },
+      {
+       "name": "Goblet",
+       "meta": "Suits drought-prone areas"
+      },
+      {
+       "name": "VSP",
+       "meta": "Shoots up · fruit zone low"
+      },
+      {
+       "name": "Scott Henry",
+       "meta": "Split canopy, up and down · tames vigor"
+      },
+      {
+       "name": "Geneva Double Curtain",
+       "meta": "Two cordons · tames vigor, raises yield"
+      }
+     ],
+     "note": "Wine Folly and University of Minnesota Extension."
+    }
+   ]
+  },
+  {
+   "name": "Organic and biodynamic",
+   "source": "USDA National Organic Program, Labeling Organic Wine (2014, on ttb.gov); Demeter Association, Biodynamic Farm Standard",
+   "lines": [
+    {
+     "label": "Organic in the US",
+     "text": "Two certified label categories: 'organic' and 'made with organic grapes'. The difference is mostly added sulfites and the USDA seal."
+    },
+    {
+     "label": "Biodynamic",
+     "text": "Demeter certification starts from organic, then treats the farm as one living, self-sustaining organism, with nine preparations numbered 500 to 508."
+    }
+   ],
+   "know": [
+    "'Organic' wine: certified organic grapes, no added sulfites, USDA organic seal allowed.",
+    "'Made with organic grapes': all grapes organic, sulfur dioxide up to 100 ppm, no USDA seal.",
+    "A wine mixing organic and non-organic grapes can only say 'organic' in its ingredient list.",
+    "Demeter farms must set aside at least 10% of their land as a biodiversity reserve.",
+    "Preparations 500 (horn manure) and 501 (horn silica) go on every harvested crop at least once a year."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "ORGANIC",
+       "title": "Organic wine",
+       "text": "All grapes certified organic\nNo added sulfites (natural, under 10 ppm)\nUSDA organic seal allowed\nOrganic yeast unless unavailable"
+      },
+      {
+       "label": "MADE WITH",
+       "title": "Made with organic grapes",
+       "text": "All grapes certified organic\nSulfur dioxide up to 100 ppm, declared\nNo USDA organic seal\nYeast needn't be organic"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Demeter's nine preparations",
+     "rows": [
+      {
+       "name": "500 · Horn manure",
+       "meta": "Cow manure buried in a horn over winter · sprayed on soil, late in the day"
+      },
+      {
+       "name": "501 · Horn silica",
+       "meta": "Ground quartz buried in a horn over summer · misted on leaves, early morning"
+      },
+      {
+       "name": "502–507 · Compost preparations",
+       "meta": "Yarrow, chamomile, nettle, oak bark, dandelion, valerian"
+      },
+      {
+       "name": "508 · Horsetail",
+       "meta": "Equisetum, made into a tea"
+      }
+     ],
+     "note": "From the Demeter Biodynamic Farm Standard, Appendix J."
+    }
+   ]
+  },
+  {
+   "name": "Fermentation choices",
+   "source": "Australian Wine Research Institute (carbonic maceration, whole-bunch, MLF and amber wine); OIV resolution OIV-ECO 647-2020",
+   "lines": [
+    {
+     "label": "Reds",
+     "text": "Whole clusters and carbonic maceration both keep bunches intact, but only carbonic seals them under carbon dioxide before any juice runs."
+    },
+    {
+     "label": "Whites",
+     "text": "MLF softens acid and can add butter. Long skin contact turns a white amber and gives it tannin."
+    }
+   ],
+   "know": [
+    "Whole-cluster: intact bunches go in the fermenter, usually under destemmed fruit, and get crushed as it goes.",
+    "Carbonic maceration: intact bunches, no free juice, in a closed vessel full of carbon dioxide.",
+    "Under carbonic, fermentation starts inside the whole berry, without yeast; yeast finishes the job after crushing.",
+    "MLF is done mainly by Oenococcus oeni, turning malic acid into lactic acid.",
+    "The OIV's 'white wine with maceration' needs white grapes and at least a month on the skins."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "WHOLE CLUSTER",
+       "title": "Bunches in the mix",
+       "text": "Intact bunches under destemmed fruit\nCrushed by plunging or treading\nStems: herbal notes, more tannin\nRisk: green, astringent"
+      },
+      {
+       "label": "CARBONIC",
+       "title": "Bunches under CO2",
+       "text": "100% intact bunches, no juice\nSealed under CO2 for about a week\nFruity, perfumed, light, bright\nRisk: spoilage"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Dialing butter up or down in MLF",
+     "rows": [
+      {
+       "name": "Longer MLF",
+       "meta": "More diacetyl (butter)"
+      },
+      {
+       "name": "More bacteria at the start",
+       "meta": "Less diacetyl"
+      },
+      {
+       "name": "MLF alongside the yeast",
+       "meta": "Less butter, more fruit"
+      },
+      {
+       "name": "Long contact with yeast lees",
+       "meta": "Less diacetyl"
+      }
+     ],
+     "note": "From the AWRI's fact sheet on using MLF to shape wine style."
+    }
+   ]
+  },
+  {
+   "name": "Oak",
+   "source": "Texas A&M AgriLife Extension, A Guide to Traditional Oak Barrels; Virginia Tech Enology, Barrels, Barrel Adjuncts and Alternatives",
+   "lines": [
+    {
+     "label": "Species",
+     "text": "French and Eastern European barrels use Quercus robur or Quercus petraea. American barrels use Quercus alba."
+    },
+    {
+     "label": "New or used",
+     "text": "New barrels give more flavor and more oxygen. After about four uses a toasted barrel is neutral: it holds wine but adds no flavor."
+    }
+   ],
+   "know": [
+    "French oak gives subtler aromas and a silky texture; American oak is more assertive, with sweet vanilla.",
+    "American oak has two to three times the methyl-octalactone (whisky lactone, coconut) of European oak.",
+    "European oak gives almost twice the ellagic tannins of American oak, so the wine is more tannic.",
+    "Eastern European oak is the same species as French and tastes much like it.",
+    "Tight grain releases more aroma; open grain gives more tannin."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Three oaks",
+     "dark": true,
+     "items": [
+      {
+       "name": "French",
+       "text": "Q. robur or petraea · subtle, silky, more tannin"
+      },
+      {
+       "name": "American",
+       "text": "Q. alba · vanilla and coconut, assertive"
+      },
+      {
+       "name": "Eastern European",
+       "text": "Same species as French · firm tannin, subtle aroma"
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "title": "From raw wood to heavy toast",
+     "items": [
+      {
+       "name": "Untoasted",
+       "text": "Whisky lactone: a coconut note"
+      },
+      {
+       "name": "Toasted",
+       "text": "Vanilla, toffee, sweetness"
+      },
+      {
+       "name": "Moderate toast",
+       "text": "Brings out spice"
+      },
+      {
+       "name": "Heavy toast",
+       "text": "Espresso notes, a richer palate"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "How it shows in the glass",
+   "source": "Court of Master Sommeliers, Americas: Advanced Theory and Tasting exam guides; AWRI; Virginia Tech Enology; Frontiers in Plant Science (2020); OIV",
+   "lines": [
+    {
+     "label": "Read back",
+     "text": "Each choice in this chapter leaves a clue. On the exam, work from the clue to its likely cause, then to the place and grape."
+    },
+    {
+     "label": "Say the smell",
+     "text": "At the Advanced tasting, describe what a compound smells like. Naming the compound alone isn't enough."
+    }
+   ],
+   "know": [
+    "Green bell pepper and herbal notes come from methoxypyrazines; canopy work that opens the fruit to sun lowers them.",
+    "Butter or butterscotch points to diacetyl from MLF.",
+    "Coconut and sweet vanilla point to American oak.",
+    "Kirsch, strawberry and a light, bright body can point to carbonic maceration.",
+    "An amber white with grip points to long skin contact."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Clue to cause",
+     "rows": [
+      {
+       "name": "Green bell pepper, herbal",
+       "meta": "Methoxypyrazines · shaded fruit"
+      },
+      {
+       "name": "Butter, butterscotch",
+       "meta": "Diacetyl · MLF"
+      },
+      {
+       "name": "Coconut, sweet vanilla",
+       "meta": "American oak"
+      },
+      {
+       "name": "Espresso",
+       "meta": "Heavy toast"
+      },
+      {
+       "name": "Kirsch, strawberry, light body",
+       "meta": "Carbonic maceration"
+      },
+      {
+       "name": "Herbal, firmer tannin",
+       "meta": "Whole clusters (stems)"
+      },
+      {
+       "name": "Orange-amber, tannic white",
+       "meta": "Long skin contact"
+      }
+     ],
+     "note": "Clues, not proof: several causes can give the same note."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "SAY",
+       "title": "Describe the smell",
+       "text": "Green pepper\nGreen pepper from pyrazines"
+      },
+      {
+       "label": "NOT",
+       "title": "Name the compound only",
+       "text": "Pyrazines"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Fruit set",
+   "b": "Veraison",
+   "why": "Fruit set is flowers becoming berries (E-L 27). Veraison is berries starting to ripen (E-L 35)."
+  },
+  {
+   "a": "Cane pruning (Guyot)",
+   "b": "Spur pruning (cordon)",
+   "why": "Cane pruning renews the fruiting wood each year. Spur pruning keeps a permanent cordon and cuts back to short spurs."
+  },
+  {
+   "a": "Organic wine",
+   "b": "Made with organic grapes",
+   "why": "'Organic' has no added sulfites and may carry the USDA seal. 'Made with' allows up to 100 ppm sulfur dioxide and no seal."
+  },
+  {
+   "a": "Whole-cluster fermentation",
+   "b": "Carbonic maceration",
+   "why": "Whole clusters ferment mixed with destemmed fruit. Carbonic seals 100% intact bunches under CO2 first."
+  }
+ ],
+ "sources": "New Mexico State University Extension (grapevine phenology), University of Minnesota and University of New Hampshire Extension (training), Wine Folly (training methods), Frontiers in Plant Science (methoxypyrazines), USDA National Organic Program (organic wine labeling), Demeter Association (Biodynamic Farm Standard), the Australian Wine Research Institute (carbonic, whole-bunch, MLF, amber wine), the OIV (white wine with maceration), Texas A&M AgriLife Extension and Virginia Tech Enology (oak), and the Court of Master Sommeliers, Americas (theory topics and tasting guide). Checked Nov 19, 2026.",
+ "cards": [
+  {
+   "q": "What happens to the grapes at veraison?",
+   "answer": "They soften, change color and start building sugar",
+   "wrong": [
+    "Flowers open and shed their caps",
+    "Buds swell and break open",
+    "Leaves yellow and fall"
+   ],
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "q": "On the modified E-L scale, which stage is number 35?",
+   "answer": "Veraison",
+   "wrong": [
+    "Flowering",
+    "Fruit set",
+    "Budburst"
+   ],
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "q": "At about what temperature does grape flowering usually begin?",
+   "answer": "About 68°F",
+   "wrong": [
+    "About 50°F",
+    "About 40°F",
+    "About 95°F"
+   ],
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "q": "What Brix range is typical for grapes picked for sparkling wine?",
+   "answer": "14–18°",
+   "wrong": [
+    "21–24°",
+    "25–28°",
+    "8–10°"
+   ],
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "q": "Which pruning style is Guyot?",
+   "answer": "Cane pruning",
+   "wrong": [
+    "Spur pruning",
+    "Goblet (bush vine) training",
+    "Geneva Double Curtain"
+   ],
+   "source": "https://winefolly.com/review/grape-vine-training-methods-illustration/"
+  },
+  {
+   "q": "How many buds does a spur usually keep?",
+   "answer": "One to three",
+   "wrong": [
+    "Four to six",
+    "Eight to ten",
+    "Twelve or more"
+   ],
+   "source": "https://extension.unh.edu/resource/pruning-and-training-grapes-home-vineyard-fact-sheet"
+  },
+  {
+   "q": "Which system splits the canopy, with upper shoots trained up and lower shoots down?",
+   "answer": "Scott Henry",
+   "wrong": [
+    "VSP",
+    "Guyot",
+    "Goblet"
+   ],
+   "source": "https://extension.umn.edu/commercial-fruit-production/training-systems-cold-climate-grapes"
+  },
+  {
+   "q": "Where is cane pruning (Guyot) most common?",
+   "answer": "Cooler regions such as Burgundy and Oregon",
+   "wrong": [
+    "Warmer regions such as California and Spain",
+    "Drought-prone bush-vine regions",
+    "Only in irrigated desert vineyards"
+   ],
+   "source": "https://winefolly.com/review/grape-vine-training-methods-illustration/"
+  },
+  {
+   "q": "What is the most sulfur dioxide a US wine labeled 'made with organic grapes' may contain?",
+   "answer": "100 ppm",
+   "wrong": [
+    "10 ppm",
+    "50 ppm",
+    "200 ppm"
+   ],
+   "source": "https://www.ttb.gov/system/files/images/pdfs/organic-wine.pdf"
+  },
+  {
+   "q": "Which US organic wine category may carry the USDA organic seal?",
+   "answer": "Organic",
+   "wrong": [
+    "Made with organic grapes",
+    "A wine listing organic grapes in its ingredients",
+    "A blend of organic and non-organic grapes"
+   ],
+   "source": "https://www.ttb.gov/system/files/images/pdfs/organic-wine.pdf"
+  },
+  {
+   "q": "What is Biodynamic preparation 501 made from?",
+   "answer": "Ground quartz (horn silica)",
+   "wrong": [
+    "Cow manure (horn manure)",
+    "Yarrow flowers",
+    "Horsetail"
+   ],
+   "source": "https://demeter-usa.org/wp-content/uploads/2026/02/Demeter-Farm-Standard-2026.pdf"
+  },
+  {
+   "q": "What share of a Demeter farm's land must be a biodiversity reserve?",
+   "answer": "At least 10%",
+   "wrong": [
+    "At least 5%",
+    "At least 25%",
+    "At least 50%"
+   ],
+   "source": "https://demeter-usa.org/wp-content/uploads/2026/02/Demeter-Farm-Standard-2026.pdf"
+  },
+  {
+   "q": "What sets carbonic maceration apart?",
+   "answer": "Intact bunches sealed in a vessel full of carbon dioxide",
+   "wrong": [
+    "Crushed grapes fermented in open vats",
+    "Juice pressed off the skins before fermenting",
+    "Grapes dried on mats before pressing"
+   ],
+   "source": "https://www.awri.com.au/industry_support/winemaking_resources/winemaking-practices/winemaking-treatment-carbonic-maceration/"
+  },
+  {
+   "q": "Which organism carries out most malolactic fermentation?",
+   "answer": "Oenococcus oeni",
+   "wrong": [
+    "Saccharomyces cerevisiae",
+    "Botrytis cinerea",
+    "Brettanomyces"
+   ],
+   "source": "https://www.awri.com.au/files/attachment/mlf_modulation_awri_fact_sheet"
+  },
+  {
+   "q": "Which compound made during MLF gives a buttery aroma?",
+   "answer": "Diacetyl",
+   "wrong": [
+    "Vanillin",
+    "Methoxypyrazine",
+    "Oak lactone"
+   ],
+   "source": "https://www.awri.com.au/files/attachment/mlf_modulation_awri_fact_sheet"
+  },
+  {
+   "q": "What is the minimum time on the skins for the OIV's 'white wine with maceration'?",
+   "answer": "One month",
+   "wrong": [
+    "Three days",
+    "One week",
+    "Six months"
+   ],
+   "source": "https://www.oiv.int/node/2760"
+  },
+  {
+   "q": "Which oak species is used for American oak barrels?",
+   "answer": "Quercus alba",
+   "wrong": [
+    "Quercus robur",
+    "Quercus petraea",
+    "Quercus suber"
+   ],
+   "source": "https://aggie-horticulture.tamu.edu/wp-content/uploads/sites/13/2020/08/Enology_OakBarrels_EHT-144.pdf"
+  },
+  {
+   "q": "American oak has two to three times more of which compound than European oak?",
+   "answer": "Methyl-octalactone (whisky lactone)",
+   "wrong": [
+    "Ellagitannins",
+    "Gallic acid",
+    "Diacetyl"
+   ],
+   "source": "https://enology.fst.vt.edu/downloads/wm_issues/Barrels/Barrels%20-%20Section%203.pdf"
+  },
+  {
+   "q": "Which note does heavy barrel toast tend to give?",
+   "answer": "Espresso",
+   "wrong": [
+    "Coconut",
+    "Green bell pepper",
+    "Butter"
+   ],
+   "source": "https://enology.fst.vt.edu/downloads/wm_issues/Barrels/Barrels%20-%20Section%203.pdf"
+  },
+  {
+   "q": "After about how many uses is a toasted barrel considered neutral?",
+   "answer": "About four",
+   "wrong": [
+    "One",
+    "About ten",
+    "About twenty"
+   ],
+   "source": "https://aggie-horticulture.tamu.edu/wp-content/uploads/sites/13/2020/08/Enology_OakBarrels_EHT-144.pdf"
+  },
+  {
+   "q": "Which vineyard work lowered methoxypyrazines (the green pepper note) in Cabernet Sauvignon berries?",
+   "answer": "Leaf removal and shoot thinning",
+   "wrong": [
+    "Leaving the canopy dense",
+    "Skipping shoot thinning",
+    "Letting extra lateral shoots shade the fruit"
+   ],
+   "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7344324"
+  },
+  {
+   "q": "A Chardonnay smells of butterscotch. Which winery step is the likely cause?",
+   "answer": "Malolactic fermentation",
+   "wrong": [
+    "Carbonic maceration",
+    "Whole-cluster fermentation",
+    "Long skin contact"
+   ],
+   "source": "https://www.awri.com.au/files/attachment/mlf_modulation_awri_fact_sheet"
+  },
+  {
+   "q": "Coconut and sweet vanilla in a red point to which oak?",
+   "answer": "American oak",
+   "wrong": [
+    "French oak",
+    "Eastern European oak",
+    "Neutral used barrels"
+   ],
+   "source": "https://enology.fst.vt.edu/downloads/wm_issues/Barrels/Barrels%20-%20Section%203.pdf"
+  },
+  {
+   "q": "At the Advanced tasting exam, how should you call a pyrazine note?",
+   "answer": "Describe the smell, such as green pepper",
+   "wrong": [
+    "Say 'pyrazines' and move on",
+    "Give its chemical formula",
+    "Leave it out as a fault"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf#page=2"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Advanced theory topics: Viticulture (vine cycle, factors of production, vine-training systems, cause and effect in the vineyard, types of viticulture: organic/biodynamic) and Vinification (techniques, cause and effect in the winery, all types of winemaking). Areas of Study list winery items including fermentation techniques, oak usage and type, malolactic fermentation and carbonic maceration.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=23"
+  },
+  {
+   "fact": "Grapevine phenology has a vegetative cycle (one season) and a reproductive cycle (two seasons): buds formed in year one give rise to shoots carrying fruit in year two.",
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "fact": "Bud dormancy, flowering, fruit ripening, leaf senescence and cold acclimation are set by day length; temperature drives and can accelerate growth. Growing degree days accumulate above a 50°F base.",
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "fact": "Modified E-L stages: E-L 1 dormancy, E-L 4 budburst, E-L 23 flowering, E-L 27 fruit set, E-L 35 veraison, E-L 38 harvest, E-L 43 beginning of leaf fall.",
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "fact": "Shoot growth is slow in cool early spring, then rapid (10-12 inches per week) in the grand period of growth.",
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "fact": "Bloom typically occurs when temperatures reach about 68°F. Up to 1,000 flowers per cluster; berry set is successful if one in three flowers becomes a berry. Cool, cloudy conditions at bloom can cut bud fruitfulness.",
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "fact": "Veraison (E-L 35) is berry softening, color change and increasing sugar. Sparkling-wine grapes are harvested around 14-18° Brix; table wines usually 21-24° Brix. After harvest, leaves keep building reserves before dormancy.",
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "fact": "Lateral shoot leaves can be 20-50% of total leaf area; excessive laterals shade the canopy and restrict airflow, which can raise disease pressure and lower berry quality. Leaf removal, hedging and shoot thinning/positioning are canopy management.",
+   "source": "https://pubs.nmsu.edu/_h/H338.pdf"
+  },
+  {
+   "fact": "Cane pruning (Guyot) is commonly used in cooler regions including Burgundy, Sonoma and Oregon; spur pruning (cordon) in warmer regions including California, Washington and Spain. Spurs are short stubs of one to three buds. Goblet training suits drought-prone areas.",
+   "source": "https://winefolly.com/review/grape-vine-training-methods-illustration/"
+  },
+  {
+   "fact": "A spur is a cane pruned to 1-3 buds; a cordon is a semi-permanent branch off the trunk. Cane-pruned systems are often better in cold areas because they are less susceptible to winter injury.",
+   "source": "https://extension.unh.edu/resource/pruning-and-training-grapes-home-vineyard-fact-sheet"
+  },
+  {
+   "fact": "VSP is an upright system with the fruiting zone around 3.5-4 feet. Scott Henry is a vertically split double canopy (upper canopy up, lower canopy down) that can decrease vine vigor. Geneva Double Curtain uses a bilateral cordon on each side and helps reduce vigor and increase yields.",
+   "source": "https://extension.umn.edu/commercial-fruit-production/training-systems-cold-climate-grapes"
+  },
+  {
+   "fact": "Methoxypyrazines contribute herbaceous characteristics; IBMP drives bell pepper character. In a Cabernet Sauvignon trial, leaf removal, shoot thinning and both together decreased IBMP from mid-ripening to harvest; prior work found IBMP decreased with greater solar exposure from canopy management.",
+   "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7344324"
+  },
+  {
+   "fact": "USDA organic wine labeling (Feb 2014): 'Organic' wine needs certified organic grapes, organic yeast unless unavailable, no added sulfites (only naturally occurring, under 10 ppm), and may use the USDA organic seal. 'Made with organic grapes': all grapes certified organic, sulfur dioxide up to 100 ppm declared on the label, no USDA seal, other agricultural ingredients such as yeast needn't be organic. Both are overseen by a certifier, and labels go through TTB's COLA approval. Wine with organic and non-organic grapes can only make organic claims in the ingredient statement.",
+   "source": "https://www.ttb.gov/system/files/images/pdfs/organic-wine.pdf"
+  },
+  {
+   "fact": "Biodynamics derives from Rudolf Steiner's 1924 Agricultural Course, which presented the farm as a living, self-contained, self-sustaining organism; Demeter was formed in 1928 to codify it.",
+   "source": "https://demeter-usa.org/wp-content/uploads/2026/02/Demeter-Farm-Standard-2026.pdf"
+  },
+  {
+   "fact": "To qualify for Demeter Biodynamic certification a farm must first meet NOP organic requirements; some NOP-permitted inputs are further restricted.",
+   "source": "https://demeter-usa.org/wp-content/uploads/2026/02/Demeter-Farm-Standard-2026.pdf"
+  },
+  {
+   "fact": "A Demeter farm must keep at least 10% of its total effective land base as a biodiversity reserve.",
+   "source": "https://demeter-usa.org/wp-content/uploads/2026/02/Demeter-Farm-Standard-2026.pdf"
+  },
+  {
+   "fact": "Nine preparations numbered 500-508, made from herbs, minerals and manures, used in field sprays and compost in tiny doses; their use is required. 500 and 501 must be applied at least annually to all harvested crops: 500 later in the day as droplets on the earth, 501 early morning as a fine mist on foliage.",
+   "source": "https://demeter-usa.org/wp-content/uploads/2026/02/Demeter-Farm-Standard-2026.pdf"
+  },
+  {
+   "fact": "Appendix J: 500 is cow manure packed in a cow horn, buried over winter; 501 is ground quartz/silica in a horn, buried over summer; 502 yarrow, 503 chamomile, 504 stinging nettle, 505 oak bark, 506 dandelion, 507 valerian; 508 is Equisetum (horsetail), made as a tea.",
+   "source": "https://demeter-usa.org/wp-content/uploads/2026/02/Demeter-Farm-Standard-2026.pdf"
+  },
+  {
+   "fact": "Whole-bunch fermentation places intact bunches in the fermenter, usually with destemmed/crushed berries on top, crushed by plunging or foot-treading as fermentation goes. Stems can add cut-grass and herbal aromas, possibly higher pH and lower acidity, and more tannin; overdone, it gives astringency and greenness. Effect on color is unclear.",
+   "source": "https://www.awri.com.au/s2008"
+  },
+  {
+   "fact": "Carbonic maceration: 100% intact bunches with no free juice in a closed vessel filled with CO2, for around a week, then destemmed, crushed and fermented with yeast. Intracellular fermentation inside the intact berry turns some sugar and malic acid into ethanol without yeast.",
+   "source": "https://www.awri.com.au/industry_support/winemaking_resources/winemaking-practices/winemaking-treatment-carbonic-maceration/"
+  },
+  {
+   "fact": "Carbonic maceration is common with Gamay, Pinot Noir and Shiraz for light-bodied, brightly colored, perfumed or fruity wines for early drinking, with strawberry/raspberry and cherry/kirsch notes. Spoilage risk (acetic bacteria, Brettanomyces) rises.",
+   "source": "https://www.awri.com.au/industry_support/winemaking_resources/winemaking-practices/winemaking-treatment-carbonic-maceration/"
+  },
+  {
+   "fact": "MLF converts L-malic acid to L-lactic acid, mainly by Oenococcus oeni; it is done in virtually all reds, numerous whites and sparkling bases. It reduces acidity, stabilizes wine and shapes aroma. Diacetyl from MLF gives buttery/butterscotch aroma. Longer MLF raises diacetyl; higher bacteria numbers and long lees contact lower it; co-inoculation with yeast gives fruitier, less buttery wines.",
+   "source": "https://www.awri.com.au/files/attachment/mlf_modulation_awri_fact_sheet"
+  },
+  {
+   "fact": "OIV 'white wine with maceration' (OIV-ECO 647-2020): only white grape varieties, fermented with prolonged contact with pomace, maceration of at least one month; can show an orange-amber color and a tannic taste.",
+   "source": "https://www.oiv.int/node/2760"
+  },
+  {
+   "fact": "Amber or orange wines are white grapes made with red-winemaking techniques; skin contact extracts aroma and phenolics, adding texture and savory complexity; the wine is typically orange at the end of fermentation; tannin is less retained than in reds.",
+   "source": "https://www.awri.com.au/?p=45289"
+  },
+  {
+   "fact": "French oak is Quercus robur or Q. petraea (forests include Allier, Limousin, Nevers, Tronçais, Vosges): subtler aromatics, silky texture, tighter grain. American oak is Quercus alba: more assertive, sweeter vanillin-based compounds, looser grain. Eastern European oak (Romania, Hungary, Slovenia) is the same species as French, with similar aromas and firm tannin.",
+   "source": "https://aggie-horticulture.tamu.edu/wp-content/uploads/sites/13/2020/08/Enology_OakBarrels_EHT-144.pdf"
+  },
+  {
+   "fact": "Super-fine grain releases more aromatics; open grain gives more tannin. Older trees and trees from cooler climates grow tighter grain. Staves are seasoned outdoors at least two years. Vanillin is released at all toast levels. Toasted barrels can be used about four times before they are considered neutral.",
+   "source": "https://aggie-horticulture.tamu.edu/wp-content/uploads/sites/13/2020/08/Enology_OakBarrels_EHT-144.pdf"
+  },
+  {
+   "fact": "American oak is more aggressive with more vanillin; French oak has more tannin with less obvious oaky flavor. Fermenting in oak and lees contact with stirring (bâtonnage) make woody character less pronounced and better integrated. Oak descriptors include coconut, vanilla, roasted, smoky and spicy.",
+   "source": "https://enology.fst.vt.edu/downloads/wm_issues/Barrels/Barrels%20-%20Section%201.pdf"
+  },
+  {
+   "fact": "European oak gives almost twice the ellagic tannins of American oak; American oak is two to three times richer in methyl-octalactone. New barrels give much more oxygen than used. Untoasted wood supplies whisky lactone (coconut); toasting increases vanilla, toffee and sweet elements; moderate toast brings out spice; heavy toast gives espresso notes and richness. MLF is believed to increase release of oak aroma compounds.",
+   "source": "https://enology.fst.vt.edu/downloads/wm_issues/Barrels/Barrels%20-%20Section%203.pdf"
+  },
+  {
+   "fact": "At the Advanced tasting exam, describe a compound's aroma or flavor (green pepper, or green pepper from pyrazines), not just its name.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf#page=2"
+  }
+ ],
+ "unverified": [
+  "Demeter's wine processing rules (native yeast, sulfite limits for 'Biodynamic wine' versus 'made with Biodynamic grapes') could not be read from Demeter's own standard; secondary sources disagree (100 ppm versus 70/90 mg/L). Left out.",
+  "Toasting and oak lactone: Virginia Tech says lactone levels rise with seasoning and toasting; a UC Davis lab page and a Cornell study (search summaries only) say heavier toast lowers them. The lesson only says untoasted wood supplies whisky lactone.",
+  "Barrel sizes (Bordeaux barrique 225 L, Burgundy pièce 228 L) were found only on secondary sites, not on an official or academic page I could read. Left out.",
+  "The USDA organic wine labeling guide read is dated February 2014; it was not checked against the current eCFR text.",
+  "The planting calendar often linked with biodynamics is not in the Demeter Farm Standard read. Left out.",
+  "The methoxypyrazine study is one Cabernet Sauvignon vineyard in one season; its authors tie the drop more to leaf-to-fruit balance than to sunlight alone. The lesson says canopy work lowered methoxypyrazines and that prior work linked this to sun exposure.",
+  "Wine Folly's regional examples for cane and spur pruning are generalizations; many regions use both.",
+  "The Demeter standard PDF is filed as 2026 but its cover reads March 2023.",
+  "The grapes.extension.org annual-cycle page could not be reached; the vine cycle follows NMSU Guide H-338 instead."
+ ],
+ "court": {
+  "outcome": "Cause and effect: what happens in the vineyard and how that translates to what we see in the final wine.\n\nCause and effect: what happens in the winery and how that translates to what we see in the final wine.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=23",
+  "coverage": [
+   {
+    "topic": "Viticulture: Vine cycle",
+    "guide": "E-L stages from budburst to harvest; buds this year carry next year's fruit.",
+    "where": "The vine's year"
+   },
+   {
+    "topic": "Viticulture: Factors of production",
+    "guide": "Day length, heat and growing degree days; light at bloom; canopy shade and airflow.",
+    "where": "The vine's year; Training and the canopy"
+   },
+   {
+    "topic": "Viticulture: Vine-Training Systems",
+    "guide": "Cane versus spur, Guyot, cordon, goblet, VSP, Scott Henry, Geneva Double Curtain.",
+    "where": "Training and the canopy"
+   },
+   {
+    "topic": "Viticulture: Cause and effect in the vineyard",
+    "guide": "Canopy work and methoxypyrazines; harvest sugar by style.",
+    "where": "Training and the canopy; How it shows in the glass"
+   },
+   {
+    "topic": "Viticulture: Types of viticulture (organic/biodynamic)",
+    "guide": "US organic label categories and sulfites; Demeter's farm organism, reserve and preparations.",
+    "where": "Organic and biodynamic"
+   },
+   {
+    "topic": "Vinification: Techniques",
+    "guide": "Whole clusters, carbonic maceration, MLF, extended skin contact.",
+    "where": "Fermentation choices"
+   },
+   {
+    "topic": "Vinification: Cause and effect in the winery",
+    "guide": "What each technique and each oak choice adds to aroma and structure.",
+    "where": "Fermentation choices; Oak"
+   },
+   {
+    "topic": "Vinification: All types of winemaking",
+    "guide": "Still red and white choices here; sparkling, fortified and aromatized in chapter six.",
+    "where": "Fermentation choices"
+   },
+   {
+    "topic": "Areas of Study: oak usage and type of oak",
+    "guide": "French, American, Eastern European; grain, toast, new versus neutral.",
+    "where": "Oak"
+   },
+   {
+    "topic": "Areas of Study: malolactic fermentation and carbonic maceration",
+    "guide": "MLF chemistry and diacetyl; how carbonic differs from whole clusters.",
+    "where": "Fermentation choices"
+   },
+   {
+    "topic": "Tasting: describe compounds by their aroma",
+    "guide": "Say what it smells like, not only the compound's name.",
+    "where": "How it shows in the glass"
+   }
+  ]
+ },
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "The vine's year",
+    "video": {
+     "youtubeId": "QEHKhCjT6Sk",
+     "title": "Grapevine Life Cycle Time Lapse Video | Bud Break Through Veraison",
+     "by": "Jordan Vineyard & Winery",
+     "length": "1:48"
+    },
+    "keyPoints": [
+     {
+      "big": "TWO SEASONS",
+      "line": "buds formed this year carry next year's grapes."
+     },
+     {
+      "big": "68°F",
+      "line": "is about when the vines flower."
+     },
+     {
+      "big": "1 IN 3",
+      "line": "flowers becoming berries counts as a good fruit set."
+     },
+     {
+      "big": "VERAISON",
+      "line": "berries soften, change color and start building sugar."
+     },
+     {
+      "big": "BRIX BY STYLE",
+      "line": "sparkling around 14–18°, table wine usually 21–24°."
+     }
+    ],
+    "read": {
+     "bigIdea": "This year's buds carry next year's crop.",
+     "where": "At Advanced you need the vine's **stages** in order and what each one means for the wine. Growers number them on the modified **E-L scale**.",
+     "stopsTitle": "Five stops through the year",
+     "stops": [
+      {
+       "name": "Budburst",
+       "note": "E-L 4",
+       "text": "Shoots start slowly in cool spring, then hit a **grand period of growth**, up to 10–12 inches a week."
+      },
+      {
+       "name": "Flowering",
+       "note": "E-L 23",
+       "text": "Usually around **68°F**. Cool, cloudy weather now can cut how fruitful next year's buds will be."
+      },
+      {
+       "name": "Fruit set",
+       "note": "E-L 27",
+       "text": "A cluster can carry up to 1,000 flowers. About **one in three** becoming a berry is a good set."
+      },
+      {
+       "name": "Veraison",
+       "note": "E-L 35",
+       "text": "Berries **soften**, **change color** and start building **sugar**. Shoots turn woody."
+      },
+      {
+       "name": "Harvest",
+       "note": "E-L 38",
+       "text": "Picked to suit the style: about **14–18° Brix** for sparkling, **21–24°** for most table wine. After harvest the leaves keep storing reserves for spring."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Fruit set** is flowers becoming berries. **Veraison** is berries starting to ripen."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Training and the canopy",
+    "video": {
+     "youtubeId": "E-ltkKSxEy8",
+     "title": "Vine Pruning",
+     "by": "GuildSomm International",
+     "length": "5:17"
+    },
+    "keyPoints": [
+     {
+      "big": "GUYOT",
+      "line": "is cane pruning, common in cooler places like Burgundy."
+     },
+     {
+      "big": "CORDON",
+      "line": "is spur pruning, common in warmer places like California."
+     },
+     {
+      "big": "1–3 BUDS",
+      "line": "is all a spur keeps."
+     },
+     {
+      "big": "VSP",
+      "line": "trains shoots straight up over a low fruit zone."
+     },
+     {
+      "big": "SCOTT HENRY",
+      "line": "splits the canopy: upper shoots up, lower shoots down."
+     }
+    ],
+    "read": {
+     "bigIdea": "Training decides how much sun the grapes get.",
+     "where": "Every winter the grower chooses how much wood to keep. The **canopy**, the vine's leaves, then shades or opens up the fruit. Too many side shoots crowd it, block airflow and invite disease.",
+     "stopsTitle": "The systems, one by one",
+     "stops": [
+      {
+       "name": "Cane pruning",
+       "note": "Guyot",
+       "text": "One or two fresh **canes** laid down each year. Common in cooler places: **Burgundy**, **Sonoma**, **Oregon**. Cane systems suffer less **winter injury**."
+      },
+      {
+       "name": "Spur pruning",
+       "note": "cordon",
+       "text": "A permanent **cordon** with short **spurs** of one to three buds. Common in warmer places: **California**, **Washington**, **Spain**."
+      },
+      {
+       "name": "Goblet",
+       "note": "dry places",
+       "text": "The **goblet** method suits **drought-prone** areas."
+      },
+      {
+       "name": "VSP",
+       "note": "upright",
+       "text": "**Vertical shoot positioning**: shoots trained up, fruit zone low, about 3.5–4 feet."
+      },
+      {
+       "name": "Split canopies",
+       "note": "for vigor",
+       "text": "**Scott Henry** trains upper shoots up and lower shoots down. **Geneva Double Curtain** runs two cordons. Both help tame **vigor**."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Cane pruning** renews the fruiting wood each year. **Spur pruning** keeps a permanent **cordon** and cuts back to short spurs."
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Organic and biodynamic",
+    "video": {
+     "youtubeId": "2WoPCnBGfMI",
+     "title": "ORGANIC, BIODYNAMIC and NATURAL Wine - The Wine Experience",
+     "by": "Konstantin Baum - Master of Wine",
+     "length": "8:38"
+    },
+    "keyPoints": [
+     {
+      "big": "ORGANIC",
+      "line": "no added sulfites, and the USDA seal is allowed."
+     },
+     {
+      "big": "MADE WITH",
+      "line": "organic grapes allows up to 100 ppm sulfur dioxide, no seal."
+     },
+     {
+      "big": "DEMETER",
+      "line": "starts from organic and treats the farm as one organism."
+     },
+     {
+      "big": "10%",
+      "line": "of a Demeter farm's land is set aside for biodiversity."
+     },
+     {
+      "big": "500 AND 501",
+      "line": "horn manure and horn silica, sprayed every year."
+     }
+    ],
+    "read": {
+     "bigIdea": "Organic is a label rule. Biodynamic is a farm system.",
+     "where": "In the US, an organic claim on wine needs a **certifier** and TTB label approval. **Biodynamic** certification comes from **Demeter**, and a farm must meet **organic** rules first.",
+     "stopsTitle": "Three labels, one farm idea",
+     "stops": [
+      {
+       "name": "Organic",
+       "note": "USDA seal",
+       "text": "All grapes **certified organic**, **no added sulfites** (only natural ones, under 10 ppm), organic yeast unless it isn't available. May carry the **USDA organic seal**."
+      },
+      {
+       "name": "Made with organic grapes",
+       "note": "no seal",
+       "text": "All grapes certified organic, **sulfur dioxide up to 100 ppm**, declared on the label. **No USDA seal**."
+      },
+      {
+       "name": "Biodynamic",
+       "note": "Demeter",
+       "text": "From **Rudolf Steiner**'s 1924 lectures: the farm as a **self-sustaining organism**. Demeter requires a **10% biodiversity reserve** and nine **preparations**, 500 to 508."
+      },
+      {
+       "name": "The preparations",
+       "text": "**500 horn manure** goes on the soil late in the day; **501 horn silica** is misted on the leaves early in the morning. **502–507** go into the compost."
+      }
+     ],
+     "visual": 1,
+     "mixup": "**Organic** wine has no added sulfites. **Made with organic grapes** allows up to 100 ppm sulfur dioxide.",
+     "sayIt": "The grapes are farmed organically, and the label says so."
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "Fermentation choices",
+    "video": {
+     "youtubeId": "TDWoaT80afA",
+     "title": "Carbonic Maceration: A Brief Overview",
+     "by": "GuildSomm International",
+     "length": "1:44"
+    },
+    "keyPoints": [
+     {
+      "big": "WHOLE CLUSTER",
+      "line": "stems in the vat add herbal notes and tannin."
+     },
+     {
+      "big": "CARBONIC",
+      "line": "intact bunches under CO2 ferment inside the berry first."
+     },
+     {
+      "big": "MLF",
+      "line": "turns sharp malic acid into softer lactic acid."
+     },
+     {
+      "big": "DIACETYL",
+      "line": "is the buttery note MLF can leave behind."
+     },
+     {
+      "big": "ONE MONTH",
+      "line": "on the skins at least for the OIV's white maceration wine."
+     }
+    ],
+    "read": {
+     "bigIdea": "Each winery choice leaves its own signature.",
+     "where": "From Level 1: MLF lowers acidity, and carbonic maceration ferments whole bunches under CO2. At Advanced you need how each one works and what it does to **aroma**, **acid** and **tannin**.",
+     "stopsTitle": "Four choices",
+     "stops": [
+      {
+       "name": "Whole cluster",
+       "text": "Intact bunches go in under destemmed fruit and get crushed as it ferments. **Stems** add **cut-grass** and **herbal** notes and more **tannin**; overdone, the wine turns green and astringent."
+      },
+      {
+       "name": "Carbonic maceration",
+       "text": "**100% intact bunches**, no free juice, sealed under **CO2** for about a week. Fermentation starts **inside the berry** without yeast. Wines are light, bright and perfumed, with **strawberry** and **kirsch**."
+      },
+      {
+       "name": "Malolactic fermentation",
+       "text": "Bacteria, mainly **Oenococcus oeni**, turn **malic** into **lactic** acid. Nearly all reds go through it, plus many whites. It can leave **diacetyl**: butter."
+      },
+      {
+       "name": "Skin contact",
+       "text": "White grapes made like a red. The OIV's **white wine with maceration** needs at least **one month** on the skins and can be **orange-amber** and **tannic**."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Whole clusters** ferment mixed with destemmed fruit. **Carbonic** seals 100% intact bunches under CO2 first."
+    },
+    "check": [
+     12,
+     13,
+     14
+    ]
+   },
+   {
+    "name": "Oak",
+    "video": {
+     "youtubeId": "I4mrbOxtPxk",
+     "title": "A Master Somm's Guide to Wine Barrels",
+     "by": "SOMM TV",
+     "length": "9:54"
+    },
+    "keyPoints": [
+     {
+      "big": "QUERCUS ALBA",
+      "line": "is American oak: vanilla and coconut, more assertive."
+     },
+     {
+      "big": "FRENCH OAK",
+      "line": "is robur or petraea: subtler aroma, silky, more tannin."
+     },
+     {
+      "big": "EASTERN EUROPE",
+      "line": "uses the same species as France and tastes much like it."
+     },
+     {
+      "big": "TOAST",
+      "line": "adds vanilla and spice; heavy toast gives espresso."
+     },
+     {
+      "big": "FOUR USES",
+      "line": "and a toasted barrel is about neutral."
+     }
+    ],
+    "read": {
+     "bigIdea": "Species, grain and toast set the oak's voice.",
+     "where": "From Level 1: American oak is **Quercus alba**, European oak **Quercus petraea**. Advanced adds **Quercus robur**, **Eastern European** oak, **grain**, **toast** and what a **new** barrel does that a used one can't.",
+     "stopsTitle": "Four things to read in a barrel",
+     "stops": [
+      {
+       "name": "Species",
+       "text": "**American** oak has two to three times the **methyl-octalactone** (whisky lactone: coconut, vanilla). **European** oak gives almost twice the **ellagic tannins**, so a firmer wine."
+      },
+      {
+       "name": "Grain",
+       "text": "**Tight grain** releases more aroma. **Open grain** gives more tannin. Old trees from cool forests give the tightest grain."
+      },
+      {
+       "name": "Toast",
+       "text": "Untoasted wood gives **coconut**. Toasting adds **vanilla** and **toffee**, moderate toast brings **spice**, heavy toast gives **espresso**."
+      },
+      {
+       "name": "New or used",
+       "text": "**New** barrels give more flavor and far more **oxygen**. After about **four uses** a toasted barrel is **neutral**. Fermenting in oak and stirring the **lees** fold the wood in more gently."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**American** oak is the coconut-and-vanilla one. **French** oak is subtler but more tannic.",
+     "sayIt": "French oak, so the wood is in the background and the fruit leads."
+    },
+    "check": [
+     16,
+     17,
+     18
+    ]
+   },
+   {
+    "name": "How it shows in the glass",
+    "video": {
+     "youtubeId": "2Jy8aVjIOQs",
+     "title": "Kit 171A: Cause & Effect - Learning The \"Why\" with Master Sommelier Tim Gaiser",
+     "by": "Master the World",
+     "length": "1:32:41"
+    },
+    "keyPoints": [
+     {
+      "big": "GREEN PEPPER",
+      "line": "methoxypyrazines, lowered when the fruit sees more sun."
+     },
+     {
+      "big": "BUTTERSCOTCH",
+      "line": "diacetyl from malolactic fermentation."
+     },
+     {
+      "big": "COCONUT",
+      "line": "and sweet vanilla point to American oak."
+     },
+     {
+      "big": "KIRSCH",
+      "line": "and a light, bright red can point to carbonic."
+     },
+     {
+      "big": "SAY THE SMELL",
+      "line": "not just the compound: 'green pepper', not 'pyrazines'."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every clue in the glass has a cause.",
+     "where": "The Court's theory guide keeps returning to **cause and effect**. Put this chapter to work by reading backward: from the **clue** to the **cause**, then to the likely grape and place.",
+     "stopsTitle": "Clue, then cause",
+     "stops": [
+      {
+       "name": "Green pepper",
+       "text": "**Methoxypyrazines** give herbal, bell pepper notes. Canopy work like **leaf removal** and **shoot thinning** lowered them in Cabernet Sauvignon berries."
+      },
+      {
+       "name": "Butter",
+       "text": "**Diacetyl** from **MLF**. A long, slow MLF tends to leave more of it."
+      },
+      {
+       "name": "Coconut and vanilla",
+       "text": "**American oak**. Espresso points to a **heavy toast**."
+      },
+      {
+       "name": "Kirsch and stems",
+       "text": "Bright **kirsch** and **strawberry** in a light red can mean **carbonic**. Herbal notes with firmer tannin can mean **whole clusters**."
+      },
+      {
+       "name": "On exam day",
+       "text": "Describe the smell first. **'Green pepper'** or **'green pepper from pyrazines'** works; **'pyrazines'** alone doesn't."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Diacetyl** (butter) comes from MLF. **Whisky lactone** (coconut) comes from oak.",
+     "sayIt": "That hint of butter comes from a second, softening fermentation."
+    },
+    "check": [
+     20,
+     21,
+     22
+    ]
+   }
+  ]
+ }
+}

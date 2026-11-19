@@ -1,0 +1,1124 @@
+{
+ "program": "somm",
+ "programLevel": 3,
+ "part": 1,
+ "number": 1,
+ "slug": "advanced-the-exam",
+ "title": "What Advanced asks of you",
+ "script": "Chapter one",
+ "lead": "What the Court expects of an Advanced Sommelier, how the course and the three exam sections work, how the theory exam is built, and a study system that covers it all.",
+ "minutes": 25,
+ "intro": {
+  "script": "Start here",
+  "title": "THE ADVANCED PATH",
+  "text": "Advanced is two separate steps: a course, then an exam in three sections. All three sections must be passed in the same calendar year.",
+  "tiers": [
+   {
+    "name": "Course",
+    "note": "Three days; the SKA gets you in"
+   },
+   {
+    "name": "Theory",
+    "note": "Written, at Pearson VUE, always first"
+   },
+   {
+    "name": "Practical",
+    "note": "Business, then Hospitality & Service"
+   },
+   {
+    "name": "Tasting",
+    "note": "Six wines in 25 minutes, out loud"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "The Advanced skill set",
+   "source": "Court of Master Sommeliers, Americas: Expected Skill Set of an Advanced Sommelier; Advanced Theory Exam guide",
+   "lines": [
+    {
+     "label": "What it is",
+     "text": "The Court's own list of what an Advanced Sommelier can do: deep theory, top-level formal service, deductive tasting and running a whole beverage program."
+    },
+    {
+     "label": "Who holds it",
+     "text": "Floor and head sommeliers, beverage directors of a single restaurant or hotel, and people in winery hospitality, retail, importing and distribution."
+    }
+   ],
+   "know": [
+    "The skill set has four parts: theory, formal service, deductive tasting and beverage program management.",
+    "Service at Advanced covers still and sparkling wine, decanting, beer, after-dinner drinks and by-the-glass pours.",
+    "Service also covers classic cocktails and spirits, food and wine pairing, and benchmark producers and vintages.",
+    "Program management means the list, cellar design, purchasing, inventory, staff training and cost control with spreadsheets.",
+    "Training includes mentoring staff toward the Court's Introductory and Certified levels."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Four parts of the skill set",
+     "dark": true,
+     "items": [
+      {
+       "name": "Theory",
+       "text": "In-depth knowledge of the major drinks"
+      },
+      {
+       "name": "Service",
+       "text": "Formal service, pairing, cocktails, producers, vintages"
+      },
+      {
+       "name": "Tasting",
+       "text": "The Deductive Tasting Method on classic reds and whites"
+      },
+      {
+       "name": "Program",
+       "text": "List, cellar, buying, inventory, training, costs"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Roles the Court names",
+     "rows": [
+      {
+       "name": "Floor sommelier",
+       "meta": "Restaurant"
+      },
+      {
+       "name": "Head sommelier",
+       "meta": "Restaurant"
+      },
+      {
+       "name": "Beverage director",
+       "meta": "Single-unit restaurant or hotel"
+      },
+      {
+       "name": "Winery hospitality manager",
+       "meta": "Other"
+      },
+      {
+       "name": "Retail manager or owner",
+       "meta": "Other"
+      },
+      {
+       "name": "Distributor or importer educator, senior salesperson",
+       "meta": "Other"
+      }
+     ],
+     "note": "The Court's list of likely jobs for someone at this level."
+    }
+   ]
+  },
+  {
+   "name": "The course and the SKA",
+   "source": "Court of Master Sommeliers, Americas: Advanced Sommelier Course and Examination page",
+   "lines": [
+    {
+     "label": "The course",
+     "text": "Three days of lectures that set the template for upper-level study, plus small tasting breakouts with personal feedback."
+    },
+    {
+     "label": "Before you apply",
+     "text": "Pass Certified first. The Court recommends at least one calendar year between passing Certified and taking the course."
+    }
+   ],
+   "know": [
+    "The Advanced course and exam are separate, and the course comes first.",
+    "Course applicants take the Sommelier Knowledge Assessment (SKA); exam applicants don't.",
+    "The SKA takes about 55 minutes, in person at a Pearson testing center.",
+    "SKA questions are randomized across Theory, Tasting and Practical (Hospitality & Service and Business).",
+    "In a given year you apply for the course or the exam, not both."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "From Certified to the Advanced exam",
+     "items": [
+      {
+       "name": "Pass Certified",
+       "text": "Then the Court suggests a calendar year to prepare",
+       "meta": "Step 1"
+      },
+      {
+       "name": "Apply, sit the SKA",
+       "text": "About 55 minutes at a Pearson center",
+       "meta": "Step 2"
+      },
+      {
+       "name": "The course",
+       "text": "Three days: lectures and tasting breakouts",
+       "meta": "Step 3"
+      },
+      {
+       "name": "Apply for the exam",
+       "text": "No SKA; Theory comes first",
+       "meta": "Step 4"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "COURSE",
+       "title": "Three days of teaching",
+       "text": "Lectures + small tasting groups\nSKA required to apply\nOnly if you haven't attended before\nComes before the exam"
+      },
+      {
+       "label": "EXAM",
+       "title": "Three tested sections",
+       "text": "Theory, Tasting, Practical\nNo SKA\nCourse must be done first\n60% on each, same calendar year"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Three sections, one year",
+   "source": "Court of Master Sommeliers, Americas: Advanced Course and Examination page; Advanced Practical and Tasting exam guides",
+   "lines": [
+    {
+     "label": "The sections",
+     "text": "Theory (written), Tasting (verbal) and the Practical, which is Business of the Sommelier followed by Hospitality & Service."
+    },
+    {
+     "label": "The clock",
+     "text": "Theory comes first, at a Pearson VUE center. Pass it and you're invited to the Practical and Tasting later that calendar year."
+    }
+   ],
+   "know": [
+    "You need at least 60% on each section, all within one calendar year.",
+    "Pass Theory but miss the Practical or Tasting, and you start again with Theory the next year.",
+    "A first Practical under 40%, or a second straight year under 50%, means waiting an extra year.",
+    "There is no minimum score on any Tasting attempt.",
+    "Tasting is six wines in 25 minutes, in front of three to four Master Sommeliers."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "The three sections",
+     "dark": true,
+     "items": [
+      {
+       "name": "Theory",
+       "text": "Written · 60 minutes · Pearson VUE"
+      },
+      {
+       "name": "Practical",
+       "text": "Business (50 min), then Hospitality & Service"
+      },
+      {
+       "name": "Tasting",
+       "text": "Verbal · six wines in 25 minutes"
+      }
+     ]
+    },
+    {
+     "type": "stat",
+     "number": "60%",
+     "title": "On every section",
+     "text": "The pass mark for Theory, Tasting and the Practical, all in the same calendar year."
+    }
+   ]
+  },
+  {
+   "name": "How the theory exam works",
+   "source": "Court of Master Sommeliers, Americas: Advanced Theory Exam guide; Theory Answer Guidelines; example Advanced theory feedback report",
+   "lines": [
+    {
+     "label": "Format",
+     "text": "60 minutes, about 115 questions, on a computer at a Pearson VUE center. No calculator: costing is tested in the Practical."
+    },
+    {
+     "label": "Scoring",
+     "text": "Wrong answers cost nothing, so answer everything. Master Sommeliers hand-grade, so exact spelling and accents aren't required."
+    }
+   ],
+   "know": [
+    "Question types include multiple choice, short answer, matching, maps, labels and ordering lists.",
+    "Ordering questions can ask for steps, ages, aging lengths or places from north to south.",
+    "No essays, no 'list them all' questions and no opinion questions.",
+    "Questions give US and metric units; answer in either.",
+    "Results, score and feedback arrive within four weeks."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "ASKED",
+       "title": "What you'll see",
+       "text": "Multiple choice, short answer\nMatching\nMap and label identification\nOrdering lists\nVintages and producers\nTasting and service applied to theory"
+      },
+      {
+       "label": "NOT ASKED",
+       "title": "What you won't",
+       "text": "Essays\n'List every…' questions\nOpinion questions\nCosting and math"
+      }
+     ]
+    },
+    {
+     "type": "scale",
+     "title": "How the feedback report reads a score",
+     "rows": [
+      {
+       "name": "Excellent",
+       "value": "75% and up",
+       "pct": 0.75
+      },
+      {
+       "name": "Strong",
+       "value": "60–74%",
+       "pct": 0.6
+      },
+      {
+       "name": "Fair",
+       "value": "50–59%",
+       "pct": 0.5
+      },
+      {
+       "name": "Developing",
+       "value": "49% and under",
+       "pct": 0.45
+      }
+     ],
+     "note": "Bands from the Court's example feedback report, used for each topic area."
+    }
+   ]
+  },
+  {
+   "name": "A study system",
+   "source": "Court of Master Sommeliers, Americas: Advanced Theory Exam guide (Study Strategies, Topics, Areas of Study); example Advanced theory feedback report",
+   "lines": [
+    {
+     "label": "Breadth and depth",
+     "text": "The Court's topic list gives breadth: every region and drink. Its Areas of Study give depth: one checklist you run on each of them."
+    },
+    {
+     "label": "Two questions",
+     "text": "For every subject ask: why does it taste the way it does, and what do I need to know to serve it at the table?"
+    }
+   ],
+   "know": [
+    "Areas of Study for wine: place, climate, grapes, vineyard, winery, soils, styles, law, vintages, terms, producers, history and service.",
+    "Vintage study is for major age-worthy regions: the last 15 years, how good each was and why.",
+    "Research about five iconic producers per region, at every level of quality and price.",
+    "Weight your time: Tuscany and Piedmont deserve more hours than Basilicata or Molise.",
+    "The Court's own Hospitality & Service standards are the only ones accepted on its exams."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "One region, one checklist",
+     "items": [
+      {
+       "name": "Place",
+       "text": "Map, rivers and mountains, aspect"
+      },
+      {
+       "name": "Cause",
+       "text": "Climate, grapes, vineyard, winery, soils"
+      },
+      {
+       "name": "Rules",
+       "text": "Law, styles, label terms"
+      },
+      {
+       "name": "Names",
+       "text": "Producers, vintages, history"
+      },
+      {
+       "name": "Table",
+       "text": "Temperature, glass, decanting, list, pairing"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "CAUSE & EFFECT",
+       "title": "Why it tastes that way",
+       "text": "Geography\nGrape growing\nLaw\nVintage (climate)\nStyle and type\nWinemaking"
+      },
+      {
+       "label": "TABLESIDE",
+       "title": "What the guest hears",
+       "text": "History and lore\nLabel terms\nProducers\nVintage (price and reputation)"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Advanced course",
+   "b": "Advanced exam",
+   "why": "The course is three days of teaching, with the SKA to get in. The exam is three tested sections, with no SKA."
+  },
+  {
+   "a": "60% pass mark",
+   "b": "40% and 50% marks",
+   "why": "60% passes a section. 40% and 50% only decide whether a Practical result forces you to sit out a year."
+  },
+  {
+   "a": "Theory exam",
+   "b": "Business of the Sommelier",
+   "why": "Theory has no math and no calculator. Costing lives in Business of the Sommelier, where a calculator is provided."
+  },
+  {
+   "a": "Skill set",
+   "b": "Exam sections",
+   "why": "The skill set describes the job. The three sections are how the Court tests it."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas: Advanced Sommelier Course and Examination page, Expected Skill Set of an Advanced Sommelier, Advanced Theory Exam guide (3.2025), Advanced Practical and Tasting exam guides, Theory Answer Guidelines (8.2025) and the example Advanced theory feedback report. Checked Nov 19, 2026.",
+ "cards": [
+  {
+   "q": "Which restaurant role does the Court list for an Advanced Sommelier?",
+   "answer": "Beverage director of a single-unit restaurant or hotel",
+   "wrong": [
+    "Beverage director of a national restaurant group",
+    "Master Sommelier examiner",
+    "Executive chef"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf"
+  },
+  {
+   "q": "Training at Advanced includes mentoring staff toward which Court levels?",
+   "answer": "Introductory and Certified",
+   "wrong": [
+    "Advanced and Master",
+    "Certified and Advanced",
+    "Master only"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf"
+  },
+  {
+   "q": "Which tasting ability is in the Advanced skill set?",
+   "answer": "Deductive tasting of a broad range of classic reds and whites",
+   "wrong": [
+    "Naming the producer of every wine blind",
+    "Scoring wines on a 100-point scale",
+    "Tasting sparkling wines only"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf"
+  },
+  {
+   "q": "Which money skill is part of Advanced program management?",
+   "answer": "Cost controls and building or reading spreadsheets",
+   "wrong": [
+    "Filing payroll taxes",
+    "Negotiating the restaurant's lease",
+    "Appraising restaurant real estate"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf"
+  },
+  {
+   "q": "How long is the Advanced Sommelier Course run by the Court in the Americas?",
+   "answer": "Three days",
+   "wrong": [
+    "One day",
+    "Five days",
+    "Two weeks"
+   ],
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "q": "Who takes the Sommelier Knowledge Assessment (SKA)?",
+   "answer": "Applicants for the Advanced course",
+   "wrong": [
+    "Applicants for the Advanced exam",
+    "Applicants for the Certified exam",
+    "Master Sommelier candidates only"
+   ],
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "q": "About how long is the SKA?",
+   "answer": "About 55 minutes",
+   "wrong": [
+    "About 25 minutes",
+    "About 2 hours",
+    "About 4 hours"
+   ],
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "q": "How long does the Court recommend waiting after passing Certified before the Advanced course?",
+   "answer": "At least one calendar year",
+   "wrong": [
+    "At least six months",
+    "At least three years",
+    "At least five years"
+   ],
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "q": "What score must you reach on each Advanced section?",
+   "answer": "60%",
+   "wrong": [
+    "50%",
+    "70%",
+    "75%"
+   ],
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "q": "Which Advanced section is always taken first?",
+   "answer": "Theory",
+   "wrong": [
+    "Tasting",
+    "Hospitality & Service",
+    "Business of the Sommelier"
+   ],
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "q": "How many wines are in the Advanced tasting, and in how much time?",
+   "answer": "Six wines in 25 minutes",
+   "wrong": [
+    "Six wines in 40 minutes",
+    "Four wines in 25 minutes",
+    "Eight wines in 30 minutes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "q": "How long is the Business of the Sommelier exam?",
+   "answer": "50 minutes",
+   "wrong": [
+    "25 minutes",
+    "60 minutes",
+    "90 minutes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf#page=2"
+  },
+  {
+   "q": "About how many questions are on the Advanced theory exam?",
+   "answer": "About 115",
+   "wrong": [
+    "About 60",
+    "About 75",
+    "About 200"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=9"
+  },
+  {
+   "q": "How long is the Advanced theory exam, not counting the NDA?",
+   "answer": "60 minutes",
+   "wrong": [
+    "45 minutes",
+    "90 minutes",
+    "2 hours"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=6"
+  },
+  {
+   "q": "What does a wrong answer cost you on the Advanced theory exam?",
+   "answer": "Nothing: there are no deductions",
+   "wrong": [
+    "A quarter point",
+    "A half point",
+    "A full point"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=11"
+  },
+  {
+   "q": "Which question type is NOT on the Advanced theory exam?",
+   "answer": "Essay questions",
+   "wrong": [
+    "Map identification",
+    "Ordering lists",
+    "Label identification"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=9"
+  },
+  {
+   "q": "In the Court's study system, what gives you depth?",
+   "answer": "The Areas of Study",
+   "wrong": [
+    "The General Theory Topics",
+    "The deductive tasting grid",
+    "The Court's wine list"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=17"
+  },
+  {
+   "q": "Which two questions does the Court want you to ask of every subject?",
+   "answer": "Why does it taste this way, and what do I need to serve it?",
+   "wrong": [
+    "Who made it, and what does it cost?",
+    "How old is it, and where is it from?",
+    "What did critics score it, and who imports it?"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=18"
+  },
+  {
+   "q": "How many years of vintages does the Court suggest studying for major age-worthy regions?",
+   "answer": "The last 15",
+   "wrong": [
+    "The last 5",
+    "The last 10",
+    "The last 30"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=29"
+  },
+  {
+   "q": "Whose service standards are accepted on Court exams?",
+   "answer": "The CMS-A Hospitality & Service standards",
+   "wrong": [
+    "Each restaurant's house standards",
+    "Each examiner's own standards",
+    "Any published hotel-school standards"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=13"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Expected skill set: in-depth theoretical knowledge of major beverage alcohol; world-class formal service (still, sparkling, red wine decanting, beer, after-dinner and glass pour service; global food and wine pairing salesmanship; classic cocktail production and spirits service; benchmark producers and vintages; hospitality and salesmanship); deductive tasting for a broad spectrum of classic reds and whites; complete beverage program management (list content, design and marketing; cellar design, purchasing and inventory; staff training including mentorship toward Introductory or Certified; financial management with cost controls and spreadsheets).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf"
+  },
+  {
+   "fact": "Potential roles: Floor Sommelier, Head Sommelier, Beverage Director of a single-unit restaurant or hotel; Winery Hospitality Management, Retail Manager/Owner, Distributor and/or Importer Educator or Senior Salesperson.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf"
+  },
+  {
+   "fact": "The Advanced course and exam are held independently; students must attend the course before applying for the exam.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "The Advanced Sommelier Course is a three-day program of classroom lectures giving a template for upper-level exam study, plus small breakout tasting sessions with individualized feedback.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "The Court recommends waiting at least one calendar year after passing the Certified exam before the Advanced course.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "Course eligibility: passed Certified; restaurant service/sales experience; current employment in restaurant, hospitality or beverage industry (retail, distribution, winery, education); not attended the three-day course before.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "The SKA is required for all course applicants: about 55 minutes, in person at a Pearson or Pearson-approved testing center, randomized questions across Theory, Tasting and Practical (Hospitality & Service and Business of the Sommelier). Exam applicants do not take the SKA.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "Applicants can apply for the course or the exam, not both. RALIANCE online training is a prerequisite for the course and exam.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "The exam has three sections: Theory (written), Tasting (verbal), Practical (Hospitality and Service; Business of the Sommelier).",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "Theory is taken first at a Pearson VUE testing center; passing it brings an invitation to the Practical and Tasting later in the year. Failing Theory means waiting until the next calendar year. All three must be passed in one calendar year; passing Theory but not Practical and/or Tasting means starting again with Theory the next year.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "Passing requirement: a minimum of 60% on each section within one calendar year.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "Forced wait: a first Practical below 40%, or a second consecutive year's Practical below 50%. No required minimum on any Tasting attempt.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "Exam eligibility includes at least three years in a restaurant service or sales job, having attended the three-day course, and current employment in the restaurant, hospitality or beverage industry.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "Business of the Sommelier is the first portion of the Practical: a timed 50-minute exam with tasting and evaluating beverages, costing wine, cocktails and flights, reading and evaluating inventory sheets, and correcting a beverage list. A calculator is provided; no negative points.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf#page=2"
+  },
+  {
+   "fact": "Hospitality & Service follows immediately: about 15-20 minutes of preparation with the situation, guest notes, menus, wine list and beverage list; two tables per panel with a maître d' who cannot answer content questions; besides cocktails, beverages are poured tableside.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf#page=4"
+  },
+  {
+   "fact": "Tasting exam: six wines, 25 minutes, three to four Master Sommelier adjudicators; time calls at halfway, five minutes and one minute.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "fact": "Theory exam: 60-minute timed exam with approximately 115 questions. Types: multiple choice, short answer, matching, map identification, label identification, ordering lists (lowest to highest, geography, age, aging, process steps), vintage knowledge, producer knowledge, applying tasting and service knowledge. US and metric units both given; either accepted.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=9"
+  },
+  {
+   "fact": "Not asked: essays, multiple-answer 'list all' questions, opinion questions, and Business of the Sommelier costing/math questions (no calculator needed at Theory).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=9"
+  },
+  {
+   "fact": "Five minutes to read and accept the NDA, not counted against exam time; the timer starts at the first question. Flag questions for review; plan time to return to them. No score deductions: answer every question. Spelling, grammar and accents not required; Master Sommeliers hand-grade.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=11"
+  },
+  {
+   "fact": "Theory exam timeline: arrive 15 minutes early; 5 minutes NDA; 60 minutes exam; 5-minute anonymous exit survey. No personal items in the testing room.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=6"
+  },
+  {
+   "fact": "At least 60% to pass Theory; results, scores and feedback within four weeks, including the overall percentage and performance in key areas.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=7"
+  },
+  {
+   "fact": "Theory answers on sweetness, acidity, alcohol, body and tannin use Deductive Tasting Method terminology; volumes, distances and aging use the units given in the question.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/08/CMS-A-Theory-Answer-Guidelines-082925.pdf"
+  },
+  {
+   "fact": "The example feedback report describes four question types: simple short answer; extrapolation simple short answer (complex terms); complex structure with a qualifier; logical reasoning (short explanation of a concept).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-ADV-Theory-Results-Feedback-Report-Example.pdf#page=4"
+  },
+  {
+   "fact": "Feedback bands: 75% and up Excellent; 60-74% Strong; 50-59% Fair; 49% and under Developing.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-ADV-Theory-Results-Feedback-Report-Example.pdf#page=5"
+  },
+  {
+   "fact": "Topics fall into Cause & Effect (geography, grape growing, law, vintage climate, style and type, winemaking) and Tableside (history and lore, label terms, producer, vintage price and reputation), with overlap.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-ADV-Theory-Results-Feedback-Report-Example.pdf#page=8"
+  },
+  {
+   "fact": "Systematic approach to study = General Theory Topics (breadth) + Areas of Study (depth). Holistic approach: taste what you study; don't wait to pass Theory before studying Tasting, Service and Business. Two questions for every subject: why does it taste the way it does, and what do I need to know to serve it tableside.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=17"
+  },
+  {
+   "fact": "Make a flexible timeline; prioritize buckets of major and minor regions (more time on Tuscany and Piedmont than Basilicata or Molise); go back to the basics, since many hard-looking questions draw on basic knowledge.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=19"
+  },
+  {
+   "fact": "Study ideas include flashcards, tracing maps, study groups, and teaching staff or colleagues how to explain information to a guest.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=21"
+  },
+  {
+   "fact": "Areas of Study for wine: location and geography, climate, grape varieties, grape growing, winemaking, soils, wine styles, wine law, vintage knowledge (major age-worthy regions, last 15 years), terminology, major producers (five most iconic per region at all ranges of quality and price), history and lore, and hospitality, service and business.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=28"
+  },
+  {
+   "fact": "The Hospitality & Service standards published by CMS-A are the only accepted service standards for any CMS-A examination.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=13"
+  }
+ ],
+ "unverified": [
+  "Exam experience window: the Court's web page says three years within the last seven; the Theory Exam guide PDF says three years within nine (extended from seven due to COVID-19). The lesson says only 'three years' and points to the Court's page.",
+  "Course experience: the web page reads 'at least two (2) of restaurant experience' within seven years; the unit is missing (likely years). The lesson doesn't state a number.",
+  "Third-attempt forced wait: the web page names a third consecutive Practical below 55%; the Theory guide PDF says a third consecutive Theory or Practical below 55%. Left out of the lesson.",
+  "The Theory guide says the course must be attended before October of the application year; the web page says only that the course must be attended before applying. Left out.",
+  "The skill set is worded slightly differently in the Skill Set PDF and the Theory guide (the guide adds assessing drinks for style, quality and thematic fit). The lesson uses wording both share.",
+  "The feedback score bands come from the Court's example report; the Court may change them."
+ ],
+ "court": {
+  "outcome": "In-depth theoretical knowledge of major beverage alcohol\n\nDeductive Tasting Method ability for a broad spectrum of classic red and white wines",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf",
+  "coverage": [
+   {
+    "topic": "Expected Skill Set of an Advanced Sommelier",
+    "guide": "Theory, formal service, deductive tasting and full beverage program management.",
+    "where": "The Advanced skill set"
+   },
+   {
+    "topic": "Potential Roles",
+    "guide": "Floor and head sommelier, single-unit beverage director, winery, retail and distribution roles.",
+    "where": "The Advanced skill set"
+   },
+   {
+    "topic": "Advanced Sommelier Course",
+    "guide": "Three days of lectures and tasting breakouts; recommended a year after Certified.",
+    "where": "The course and the SKA"
+   },
+   {
+    "topic": "Course eligibility",
+    "guide": "Certified passed, industry employment, restaurant experience, not attended before.",
+    "where": "The course and the SKA"
+   },
+   {
+    "topic": "Sommelier Knowledge Assessment (SKA)",
+    "guide": "About 55 minutes at Pearson; Theory, Tasting and Practical questions; course applicants only.",
+    "where": "The course and the SKA"
+   },
+   {
+    "topic": "Application process",
+    "guide": "Course or exam in one year, not both; RALIANCE training required.",
+    "where": "The course and the SKA"
+   },
+   {
+    "topic": "Examination sections",
+    "guide": "Theory, Tasting, and a Practical of Business plus Hospitality & Service.",
+    "where": "Three sections, one year"
+   },
+   {
+    "topic": "Theory first at Pearson VUE",
+    "guide": "Pass Theory to be invited to Practical and Tasting the same year.",
+    "where": "Three sections, one year"
+   },
+   {
+    "topic": "Passing requirement",
+    "guide": "60% on each section within one calendar year.",
+    "where": "Three sections, one year"
+   },
+   {
+    "topic": "Required wait rules",
+    "guide": "Practical below 40% first try, or 50% second year; no Tasting minimum.",
+    "where": "Three sections, one year"
+   },
+   {
+    "topic": "Practical: Business of the Sommelier and Hospitality & Service",
+    "guide": "50-minute business exam, then prepped table service with a maître d'.",
+    "where": "Three sections, one year"
+   },
+   {
+    "topic": "Tasting examination",
+    "guide": "Six wines in 25 minutes before three to four Master Sommeliers.",
+    "where": "Three sections, one year"
+   },
+   {
+    "topic": "Theory Exam Details",
+    "guide": "60 minutes, about 115 questions; types asked and not asked; US or metric.",
+    "where": "How the theory exam works"
+   },
+   {
+    "topic": "Exam Day Planning",
+    "guide": "NDA time, flagging for review, no deductions, spelling not graded.",
+    "where": "How the theory exam works"
+   },
+   {
+    "topic": "Results, Scores, and Feedback",
+    "guide": "Within four weeks; overall score and key-area performance bands.",
+    "where": "How the theory exam works"
+   },
+   {
+    "topic": "Theory Answer Guidelines",
+    "guide": "Deductive Tasting terms for structure; units as the question gives them.",
+    "where": "How the theory exam works"
+   },
+   {
+    "topic": "Study Strategies",
+    "guide": "Systematic and holistic study, buckets of importance, back to basics.",
+    "where": "A study system"
+   },
+   {
+    "topic": "General Theory Topics of Study",
+    "guide": "The breadth list; chapters two to six of this level work through it.",
+    "where": "A study system"
+   },
+   {
+    "topic": "Areas of Study",
+    "guide": "The depth checklist run on every region and drink.",
+    "where": "A study system"
+   },
+   {
+    "topic": "Resources for Study",
+    "guide": "Many current sources; CMS-A service standards are the only accepted ones.",
+    "where": "A study system"
+   }
+  ]
+ },
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "The Advanced skill set",
+    "video": {
+     "youtubeId": "ZFazxLyBBl8",
+     "title": "Your Day-To-Day Is Helping You Prepare! : CMS-A Advanced Sommelier Series",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "0:51"
+    },
+    "keyPoints": [
+     {
+      "big": "FOUR PARTS",
+      "line": "theory, formal service, deductive tasting and running a program."
+     },
+     {
+      "big": "SERVICE",
+      "line": "covers wine, decanting, beer, cocktails, spirits and pairing."
+     },
+     {
+      "big": "PROGRAM",
+      "line": "means list, cellar, buying, inventory, training and costs."
+     },
+     {
+      "big": "MENTORING",
+      "line": "staff toward Introductory and Certified is part of the job."
+     }
+    ],
+    "read": {
+     "bigIdea": "Advanced is the whole beverage program.",
+     "where": "From Level 2: Certified proved you can work the floor. The Court's **Advanced skill set** adds the rest of the job: **in-depth theory**, world-class **formal service**, **deductive tasting** of classic wines and **beverage program management**.",
+     "stopsTitle": "The four parts",
+     "stops": [
+      {
+       "name": "Theory",
+       "text": "**In-depth** theory of the major alcoholic drinks."
+      },
+      {
+       "name": "Service",
+       "text": "Still and sparkling wine, **decanting**, beer, after-dinner drinks and **by-the-glass** pours. Add classic **cocktails**, spirits, **pairing**, and **benchmark producers and vintages**."
+      },
+      {
+       "name": "Tasting",
+       "text": "The **Deductive Tasting Method** on a broad range of classic reds and whites."
+      },
+      {
+       "name": "Program",
+       "text": "The **list** and its design, **cellar** design, **purchasing** and **inventory**, staff **training**, and **cost control** with spreadsheets."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Where Advanced Sommeliers work:",
+     "mixup": "The **skill set** describes the job. The **three exam sections** are how the Court tests it.",
+     "sayIt": "I look after the whole drinks program, from the list to the cellar."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "The course and the SKA",
+    "video": null,
+    "keyPoints": [
+     {
+      "big": "COURSE FIRST",
+      "line": "the course and the exam are separate, and the course comes first."
+     },
+     {
+      "big": "THREE DAYS",
+      "line": "of lectures plus small tasting groups with personal feedback."
+     },
+     {
+      "big": "SKA",
+      "line": "is about 55 minutes at Pearson, for course applicants only."
+     },
+     {
+      "big": "ONE OR OTHER",
+      "line": "apply for the course or the exam in a year, not both."
+     }
+    ],
+    "read": {
+     "bigIdea": "The course comes before the exam.",
+     "where": "Advanced splits into a **course** and an **exam**, held separately. You must pass **Certified** first, and the Court recommends at least **one calendar year** between passing Certified and taking the course.",
+     "stopsTitle": "Getting in",
+     "stops": [
+      {
+       "name": "Eligibility",
+       "text": "Passed **Certified**, restaurant service or sales experience, current work in the **restaurant, hospitality or beverage** industry, and not attended the course before."
+      },
+      {
+       "name": "The SKA",
+       "text": "The **Sommelier Knowledge Assessment**: about **55 minutes** at a **Pearson** center, randomized questions across **Theory, Tasting and Practical**. Only course applicants take it."
+      },
+      {
+       "name": "The course",
+       "text": "**Three days**: lectures that set the template for upper-level study, and small **tasting breakouts** with individual feedback."
+      },
+      {
+       "name": "Then the exam",
+       "text": "Apply for the exam after the course. Exam applicants skip the SKA. Both need the Court's **RALIANCE** online training."
+      }
+     ],
+     "visual": 0,
+     "mixup": "The **SKA** is for **course** applicants. **Exam** applicants don't take it."
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Three sections, one year",
+    "video": {
+     "youtubeId": "X2f-xR6ILxY",
+     "title": "Examination Expectations with Shayn Bjornholm, MS: Court of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "1:34"
+    },
+    "keyPoints": [
+     {
+      "big": "60%",
+      "line": "on each of Theory, Tasting and Practical, in one calendar year."
+     },
+     {
+      "big": "THEORY FIRST",
+      "line": "at Pearson VUE. Pass it to be invited to the rest that year."
+     },
+     {
+      "big": "50 MINUTES",
+      "line": "for Business of the Sommelier, the first half of the Practical."
+     },
+     {
+      "big": "SIX IN 25",
+      "line": "six wines in 25 minutes in front of Master Sommeliers."
+     },
+     {
+      "big": "NO MINIMUM",
+      "line": "score on Tasting; Practical scores can force a year's wait."
+     }
+    ],
+    "read": {
+     "bigIdea": "Pass all three sections in one calendar year.",
+     "where": "The exam has three sections: **Theory**, **Tasting** and the **Practical**. You need at least **60%** on each, all in the **same calendar year**. Pass Theory but miss another section, and you start again with Theory the next year.",
+     "stopsTitle": "The year, in order",
+     "stops": [
+      {
+       "name": "Theory",
+       "note": "written",
+       "text": "Taken first at a **Pearson VUE** center. Pass it and you're invited to the Practical and Tasting later that year. Fail it and you wait for next year."
+      },
+      {
+       "name": "Business of the Sommelier",
+       "note": "Practical, part one",
+       "text": "A timed **50-minute** written exam with a calculator: tasting and evaluating drinks, **costing** wine, cocktails and flights, **inventory sheets** and correcting a **beverage list**."
+      },
+      {
+       "name": "Hospitality & Service",
+       "note": "Practical, part two",
+       "text": "About **15–20 minutes** to study the situation, guest notes, menus and lists. Then **two tables** per panel with a **maître d'**. Everything but cocktails is poured tableside."
+      },
+      {
+       "name": "Tasting",
+       "note": "verbal",
+       "text": "**Six wines** in **25 minutes** in front of three to four Master Sommeliers, with time calls at halfway, five minutes and one minute."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**60%** passes a section. The **40%** and **50%** marks only decide whether a Practical result means sitting out a year."
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "How the theory exam works",
+    "video": {
+     "youtubeId": "AkNEKgOXtQk",
+     "title": "Theory Examination Prep with David Yoshida, MS: Courts of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "0:51"
+    },
+    "keyPoints": [
+     {
+      "big": "115 IN 60",
+      "line": "about 115 questions in 60 minutes. Keep moving."
+     },
+     {
+      "big": "NO PENALTY",
+      "line": "wrong answers cost nothing, so answer every question."
+     },
+     {
+      "big": "FLAG IT",
+      "line": "mark questions for review and save time to go back."
+     },
+     {
+      "big": "NO MATH",
+      "line": "costing is in the Practical. No calculator at Theory."
+     },
+     {
+      "big": "4 WEEKS",
+      "line": "for results, score and feedback by topic area."
+     }
+    ],
+    "read": {
+     "bigIdea": "About two questions a minute. Keep moving.",
+     "where": "The Advanced theory is a **60-minute** computer exam at a **Pearson VUE** center with about **115 questions**. The clock starts at the first question, after five minutes to accept the **NDA**.",
+     "stopsTitle": "What to expect",
+     "stops": [
+      {
+       "name": "The formats",
+       "text": "**Multiple choice**, **short answer**, **matching**, **map** and **label** identification, **ordering lists**, vintages, producers, and tasting or service knowledge applied to theory."
+      },
+      {
+       "name": "How hard",
+       "text": "The Court's feedback sorts questions four ways: simple short answers, ones built on **complex terms**, longer ones with a **qualifier**, and **logical reasoning** that asks for a short why."
+      },
+      {
+       "name": "Not on it",
+       "text": "No **essays**, no 'list every…' questions, no **opinion** questions and no **costing math**."
+      },
+      {
+       "name": "Answering",
+       "text": "Use **Deductive Tasting** terms for sweetness, acidity, alcohol, body and tannin. Units come in US and metric; either works. Spelling and accents aren't graded."
+      },
+      {
+       "name": "Scoring",
+       "text": "**No deductions**: guess when unsure. Results and feedback come within **four weeks**, with a score for each topic area."
+      }
+     ],
+     "visual": 0,
+     "mixup": "The **Theory** exam has no math. Costing is in **Business of the Sommelier**, where you get a calculator."
+    },
+    "check": [
+     12,
+     13,
+     15
+    ]
+   },
+   {
+    "name": "A study system",
+    "video": {
+     "youtubeId": "QLyjEAhIXI0",
+     "title": "Master Sommelier Exam Study Organization- Serafin Alvarado, MS: Court of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "4:03"
+    },
+    "keyPoints": [
+     {
+      "big": "BREADTH",
+      "line": "is the Court's topic list: every region and every drink."
+     },
+     {
+      "big": "DEPTH",
+      "line": "is the Areas of Study: one checklist for each subject."
+     },
+     {
+      "big": "TWO QUESTIONS",
+      "line": "why does it taste this way, and how do I serve it?"
+     },
+     {
+      "big": "BUCKETS",
+      "line": "more hours for Tuscany and Piedmont than for Molise."
+     },
+     {
+      "big": "BASICS",
+      "line": "many hard-looking questions draw on what you already know."
+     }
+    ],
+    "read": {
+     "bigIdea": "Run the same checklist on every subject.",
+     "where": "The Court frames study like tasting: a system. The **General Theory Topics** give you **breadth**. The **Areas of Study** give you **depth**. Ask two things of every subject: **why does it taste the way it does**, and **what do I need to serve it tableside**?",
+     "stopsTitle": "How to run it",
+     "stops": [
+      {
+       "name": "Make a plan",
+       "text": "A timeline and personal syllabus, with cushion built in. Some subjects take longer than planned."
+      },
+      {
+       "name": "Buckets",
+       "text": "Sort regions into **major** and **minor** and spend time to match: more on **Tuscany** and **Piedmont** than on **Basilicata** or **Molise**."
+      },
+      {
+       "name": "Depth checklist",
+       "text": "Place, climate, grapes, vineyard, winery, soils, styles, law, **vintages** (last **15 years** for age-worthy regions), terms, about **five iconic producers** at every price, history, service."
+      },
+      {
+       "name": "Taste and teach",
+       "text": "Taste what you study and link it to the cause. Don't wait to pass Theory before working on the other sections. Teach a topic to your team."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The Court's feedback sorts topics two ways:",
+     "mixup": "**Breadth** is the topic list: every region. **Depth** is the Areas of Study: every question about one region.",
+     "sayIt": "Let me tell you why this one tastes the way it does."
+    },
+    "check": [
+     16,
+     17,
+     18
+    ]
+   }
+  ]
+ }
+}

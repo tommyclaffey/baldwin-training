@@ -3330,11 +3330,11 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 
 /* The finals band on a program hub (Nov 15, audit: at 1440 Level 4's card ran off the right edge, "By i…", with no sign
    it scrolled). The finals take their own row in even columns: two across (four levels = two rows), one on phones. */
-[data-name="Book your seat"] > [data-name="Finals"] { flex: 1 1 100% !important; display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px !important; min-width: 0; }
+[data-name="Book your seat"] > [data-name="Finals"], [data-name="The finals"] > [data-name="Finals"] { flex: 1 1 100% !important; display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px !important; min-width: 0; }
 [data-name="Finals"] > [data-name^="Final · "] { width: auto !important; min-width: 0; }
 [data-name="Finals"] > [data-name^="Final · "] > [data-name="Copy"] { flex: 1 1 auto !important; min-width: 0; width: auto !important; }
 [data-name="Finals"] > [data-name^="Final · "] > [data-name^="Button · "] { flex: none !important; white-space: nowrap; }
-@media screen and (max-width: 640px) { [data-name="Book your seat"] > [data-name="Finals"] { grid-template-columns: minmax(0, 1fr); } }
+@media screen and (max-width: 640px) { [data-name="Book your seat"] > [data-name="Finals"], [data-name="The finals"] > [data-name="Finals"] { grid-template-columns: minmax(0, 1fr); } }
 
 /* Mise card titles (Nov 11, Tommy: "the header sizing feels too big"): serif 40 on desktop, wrapping with even lines; on
    phones sized by the longest word (DM Serif Display runs about 0.49 em a letter, 0.55 at most; Nov 18, was Instrument

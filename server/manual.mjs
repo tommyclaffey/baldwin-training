@@ -37,7 +37,10 @@ export const PROGRAMS = [
     fine: 'It shows the level’s lessons were finished, its final passed and its sign-off given.' },
   // The Sommelier Program (Nov 8, Tommy: finals and certificates for every program). Its lessons live in content/manual and
   // content/manual-l2 with their own pages, so it has no folder here; chaptersForLevel() reads them.
-  { key: 'somm', name: 'Sommelier Program', short: 'Somm', slug: 'sommelier-program', dir: null, seal: 'WINE', external: true,
+  // Levels 3 and 4 (Nov 19, Tommy: "start working on level three and possibly level 4 of the wine program") are program lessons
+  // like the Cocktail and Beer levels: content/manual-l3 (Advanced Prep) and content/manual-l4 (Master Prep), "program": "somm".
+  { key: 'somm', name: 'Sommelier Program', short: 'Somm', slug: 'sommelier-program', dir: [here('manual-l3'), here('manual-l4')], seal: 'WINE', external: true,
+    back: ['/sommelier-program', 'Sommelier Program'], crumb: 'Court of Master Sommeliers', hero: '/img/study/how-wine-is-made--the-vineyard-year.jpg', heroName: 'IMG/Vineyard · Unsplash stand-in (the Study Guide photo)',
     ladder: ['Introductory', 'Certified', 'Advanced', 'Master'],
     fine: 'It isn’t a Court of Master Sommeliers certification. It prepares you for the Court’s exams.' },
 ];
@@ -76,6 +79,14 @@ export const LEVELS = [
   { program: 'somm', level: 2, title: 'Certified Prep', file: 'somm-2', final: 'final:somm-2', len: 45, prefix: 'SOMM2', isA: false,
     finalLabel: 'Sommelier Level 2 · Theory Exam', group: 'Sommelier Level 2',
     practical: 'program:somm-2:practical', practicalTitle: 'Mock service', practicalHow: 'A manager plays the guest and scores your wine service on the Court’s standards; they sign you off', practicalStep: 'Mock service for a manager' },
+  // Sommelier Level 3 (Nov 19): Advanced Prep, on the Court's Advanced Sommelier outline (content/manual-l3). Its final is the theory
+  // side; the practical is a mock Advanced service with a short business exercise, scored by a manager.
+  { program: 'somm', level: 3, title: 'Advanced Prep', file: 'somm-3', final: 'final:somm-3', len: 60, prefix: 'SOMM3', isA: false, head: 'Theory, tasting and the floor',
+    finalLabel: 'Sommelier Level 3 · Final Exam', group: 'Sommelier Level 3',
+    heroVideo: { youtubeId: 'MmBuPDSloz0', title: 'Introducing: CMS-A Advanced Sommelier Series', by: 'Court of Master Sommeliers, Americas', length: '0:42', thumb: 'sddefault' }, // oEmbed-checked Nov 19 (it has no maxres thumbnail)
+    details: 'https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/',
+    practical: 'program:somm-3:practical', practicalTitle: 'Mock Advanced service', practicalHow: 'A manager runs a mock Advanced service: two tables with guest notes (sparkling, a decant, a pairing and a tricky guest), then a short costing and list-correction exercise; they sign you off', practicalStep: 'Mock Advanced service',
+    lead: (n, L) => `${countWord(n)} lessons on the Court’s Advanced outline, then a final and a mock service.` },
   // Beer Level 2 (Nov 8): deeper, on the Certified Cicerone outline. Shows once its lessons exist (content/beer, programLevel 2).
   { program: 'beer', level: 2, title: 'Beer Specialist', file: 'beer-2', final: 'final:beer-2', len: 60, prefix: 'BEER2', head: 'Know beer like a pro',
     practical: 'program:beer-2:practical', practicalTitle: 'Change a keg and fix a pour', practicalHow: 'Change a keg, talk a manager through fixing a foamy pour, and describe five beers on our list; they sign you off', practicalStep: 'Change a keg for a manager',
@@ -111,7 +122,7 @@ export const levelOfChapter = (c) => levelFor(c.program, progLevel(c));
 export const barLevelOf = (n) => levelFor('bar', n);
 export const BAR_LEVELS = LEVELS.filter((x) => x.program === 'bar');
 /** A level's lessons, whatever program (the Sommelier's live in their own folders). */
-export const chaptersForLevel = (L) => (L.program === 'somm' ? (L.level === 1 ? chapters() : L.level === 2 ? chapters2() : []) : chaptersOf(L.program, L.level));
+export const chaptersForLevel = (L) => (L.program === 'somm' && L.level <= 2 ? (L.level === 1 ? chapters() : chapters2()) : chaptersOf(L.program, L.level));
 /** The level a lesson counts toward (Sommelier lessons included). */
 export const levelForChapter = (c) => (isProgram(c) ? levelOfChapter(c) : levelFor('somm', c?.level === 2 ? 2 : 1));
 export const L2_BASE = 'sommelier-program/level-2';
@@ -154,7 +165,8 @@ const fillName = (x, name) => (name ? JSON.parse(JSON.stringify(x).replaceAll('{
 /** A program's lessons, in order: one level, or every level (Level 1's first). */
 export function chaptersOf(program, level) {
   const V = versionOf(programDef(program));
-  if (!progCache[V.key]) progCache[V.key] = fillName(load(V.dir, 1), V.name).map((c) => ({ ...c, program, programLevel: c.programLevel || c.barLevel || 1 })).sort((a, b) => a.programLevel - b.programLevel || a.number - b.number);
+  if (!progCache[V.key]) progCache[V.key] = fillName([].concat(V.dir).flatMap((d) => load(d, 1)), V.name).map((c) => ({ ...c, program, programLevel: c.programLevel || c.barLevel || 1 }))
+    .filter((c) => levelFor(program, c.programLevel)) // a level's lessons show once the level itself is defined (LEVELS).sort((a, b) => a.programLevel - b.programLevel || a.number - b.number);
   return level ? progCache[V.key].filter((c) => c.programLevel === level) : progCache[V.key];
 }
 const textCache = {};
@@ -165,9 +177,12 @@ export function programText(program) {
   return textCache[V.key];
 }
 export const chaptersBar = (level) => chaptersOf('bar', level);
-export const allChapters = () => [...chapters(), ...chapters2(), ...PROGRAMS.flatMap((p) => chaptersOf(p.key))];
+// the Sommelier's Levels 3 and 4 follow its Levels 1 and 2 (Nov 19), so Build a Quiz lists the four together
+export const allChapters = () => [...chapters(), ...chapters2(), ...chaptersOf('somm'), ...PROGRAMS.filter((p) => p.key !== 'somm').flatMap((p) => chaptersOf(p.key))];
 /** "Sommelier · Level 1", "Cocktail Program · Level 1": the program a lesson belongs to. */
-export const programOf = (c) => (isProgram(c) ? `${programDef(c.program).name} · Level ${progLevel(c)}` : `Sommelier · Level ${c?.level || 1}`);
+export const programOf = (c) => (isProgram(c) && c.program !== 'somm' ? `${programDef(c.program).name} · Level ${progLevel(c)}` : `Sommelier · Level ${isProgram(c) ? progLevel(c) : c?.level || 1}`);
+/** A lesson's group in Build a Quiz and the sign-off list: "Sommelier Level 3", "Beer Program · Level 2". */
+export const groupOf = (c) => (isProgram(c) ? levelOfChapter(c)?.group || `${programDef(c.program).name} · Level ${progLevel(c)}` : c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1');
 /** The chapters in the same level as this one. */
 export const levelChapters = (c) => (isProgram(c) ? chaptersOf(c.program, progLevel(c)) : c?.level === 2 ? chapters2() : chapters());
 export const chapterBySlug = (slug) => allChapters().find((c) => c.slug === slug);

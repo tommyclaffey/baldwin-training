@@ -1,0 +1,1681 @@
+{
+ "program": "somm",
+ "programLevel": 3,
+ "part": 1,
+ "number": 3,
+ "slug": "advanced-france",
+ "title": "France, region by region",
+ "script": "Chapter three",
+ "lead": "Advanced France goes past the map: Champagne’s chalk and press rules, Burgundy village by village, Bordeaux’s newest rankings and grapes, the top Loire and Alsace names, every Rhône cru, and the South, Jura and Savoie.",
+ "minutes": 50,
+ "intro": {
+  "script": "Start here",
+  "title": "TEN REGIONS, TWO QUESTIONS",
+  "text": "The Court lists ten French regions. For each one, ask its two study questions: why does the wine taste this way, and what do I need to serve it well?",
+  "tiers": [
+   {
+    "name": "Place",
+    "note": "Soil, climate and the named plots"
+   },
+   {
+    "name": "Law",
+    "note": "Grapes, pressing, aging, classifications"
+   },
+   {
+    "name": "Table",
+    "note": "How to describe it and sell it"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Champagne",
+   "source": "Comité Champagne (champagne.fr); Union des Maisons de Champagne; INAO",
+   "lines": [
+    {
+     "label": "Terroir",
+     "text": "Reims sits at 49°5’ north, at the edge of quality grape growing. The chalk under the vines, built from coccolithophore plates and marked by belemnite fossils, stores 300–400 liters of water per cubic meter."
+    },
+    {
+     "label": "At the press",
+     "text": "Clusters go into the press whole, so picking is by hand. A 4,000 kg marc gives 2,050 liters of cuvée, then 500 liters of taille: 102 liters per 160 kg."
+    }
+   ],
+   "chips": {
+    "label": "Permitted grapes",
+    "items": [
+     "Pinot Noir",
+     "Chardonnay",
+     "Meunier",
+     "Arbane",
+     "Petit Meslier",
+     "Pinot Blanc",
+     "Pinot Gris",
+     "Chardonnay Rose"
+    ]
+   },
+   "know": [
+    "Pinot Noir covers 38% of the vineyard and leads in the Montagne de Reims and the Côte des Bar.",
+    "Five minor grapes are allowed, about 0.3% of plantings; Chardonnay Rose joined the list in 2025.",
+    "Four pruning methods: Chablis and Cordon de Royat anywhere; Guyot and Vallée de la Marne only in growths rated 80–89%.",
+    "Three AOCs: Champagne, Coteaux Champenois (still red, rosé or white) and Rosé des Riceys (still Pinot Noir rosé).",
+    "The Champagne Hillsides, Houses and Cellars joined UNESCO’s World Heritage list on July 4, 2015."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Sub-regions and their grape",
+     "rows": [
+      {
+       "name": "Montagne de Reims",
+       "meta": "Pinot Noir"
+      },
+      {
+       "name": "Vallée de la Marne",
+       "meta": "Pinot Noir near Épernay, Meunier to the west"
+      },
+      {
+       "name": "Côte des Blancs",
+       "meta": "Chardonnay on chalk"
+      },
+      {
+       "name": "Côte de Sézanne",
+       "meta": "Chardonnay"
+      },
+      {
+       "name": "Côte des Bar",
+       "meta": "Pinot Noir, 83% of vines"
+      }
+     ],
+     "note": "Meunier buds late, so it handles frost and the Marne Valley’s clay."
+    },
+    {
+     "type": "steps",
+     "title": "One marc at the press",
+     "items": [
+      {
+       "name": "Marc",
+       "text": "4,000 kg of whole grapes",
+       "meta": "loaded intact"
+      },
+      {
+       "name": "Cuvée",
+       "text": "the first 2,050 liters",
+       "meta": "clearest juice"
+      },
+      {
+       "name": "Taille",
+       "text": "the next 500 liters",
+       "meta": "pressed last"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Burgundy",
+   "source": "Bourgogne Wines (BIVB); INAO",
+   "lines": [
+    {
+     "label": "The Climats",
+     "text": "Bourgogne has more than 1,800 Climats, named plots made and labeled on their own. The first written Climat name was ‘Champt Bertin’ in 1584, and the Climats joined UNESCO’s list on July 4, 2015."
+    },
+    {
+     "label": "The pyramid",
+     "text": "84 AOCs: 7 Régionale, 44 Village and 33 Grand Cru, plus 666 Climats classified Premier Cru. Grand Cru is about 1% of the wine."
+    }
+   ],
+   "chips": {
+    "label": "Côte de Nuits villages",
+    "items": [
+     "Gevrey-Chambertin",
+     "Morey-Saint-Denis",
+     "Chambolle-Musigny",
+     "Vougeot",
+     "Flagey-Échezeaux",
+     "Vosne-Romanée",
+     "Nuits-Saint-Georges"
+    ]
+   },
+   "know": [
+    "Gevrey-Chambertin has nine Grands Crus; Charmes and Mazoyères share one area, and Charmes is the name normally used.",
+    "Morey-Saint-Denis has four: Clos de la Roche, Clos Saint-Denis, Clos des Lambrays and Clos de Tart.",
+    "Clos de Tart, founded by the Cistercians in 1141, is still held by a single owner.",
+    "Vosne-Romanée has six Grands Crus; La Grande Rue became one on July 2, 1992.",
+    "In 2020 Pouilly-Fuissé gained 22 Premier Cru Climats, the first in the Mâconnais."
+   ],
+   "visuals": [
+    {
+     "type": "pyramid",
+     "title": "Bourgogne’s 84 AOCs, top to bottom",
+     "rows": [
+      {
+       "name": "Grand Cru",
+       "note": "33 AOCs · about 1% of the wine"
+      },
+      {
+       "name": "Premier Cru",
+       "note": "666 Climats inside Village AOCs · about 10%"
+      },
+      {
+       "name": "Village",
+       "note": "44 AOCs · 46% with Premier Cru"
+      },
+      {
+       "name": "Régionale",
+       "note": "7 AOCs · 53%"
+      }
+     ]
+    },
+    {
+     "type": "names",
+     "items": [
+      {
+       "title": "GEVREY-CHAMBERTIN · 9",
+       "text": "Chambertin, Chambertin-Clos de Bèze, Chapelle-Chambertin, Griotte-Chambertin, Latricières-Chambertin, Mazis-Chambertin, Mazoyères-Chambertin, Ruchottes-Chambertin, Charmes-Chambertin"
+      },
+      {
+       "title": "VOSNE-ROMANÉE · 6",
+       "text": "Romanée-Conti, La Romanée, Romanée-Saint-Vivant, Richebourg, La Tâche, La Grande Rue"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Bordeaux",
+   "source": "Bordeaux Wine Council (bordeaux.com); Conseil des Vins de Saint-Émilion; Decanter",
+   "lines": [
+    {
+     "label": "Left Bank",
+     "text": "The Haut-Médoc holds six communal PDOs: Saint-Estèphe, Pauillac, Saint-Julien, Listrac-Médoc, Moulis and Margaux. ‘Haut’ means upstream, toward Bordeaux, so it lies south of the Médoc PDO."
+    },
+    {
+     "label": "Right Bank",
+     "text": "Pomerol is 813 ha, about 80% Merlot, on clay and gravel over an iron-rich subsoil called crasse de fer. It has never had an official classification."
+    }
+   ],
+   "chips": {
+    "label": "Classifications",
+    "items": [
+     "1855",
+     "Graves",
+     "Saint-Émilion",
+     "Crus Bourgeois",
+     "Crus Artisans"
+    ]
+   },
+   "know": [
+    "Pessac-Léognan, recognized September 9, 1987, is Bordeaux’s youngest appellation and holds all 14 Graves classed growths.",
+    "Saint-Émilion’s 2022 list names 14 Premiers Grands Crus Classés; Figeac and Pavie are the only ‘A’.",
+    "Cheval Blanc and Ausone left the 2022 process in July 2021, and Angélus withdrew after them.",
+    "In 2021 six grapes were approved for Bordeaux and Bordeaux Supérieur to help face climate change.",
+    "Sauternes spans five communes: Barsac, Bommes, Fargues, Preignac and Sauternes."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Six grapes for a warmer Bordeaux",
+     "rows": [
+      {
+       "name": "Arinarnoa",
+       "meta": "red"
+      },
+      {
+       "name": "Castets",
+       "meta": "red"
+      },
+      {
+       "name": "Marselan",
+       "meta": "red"
+      },
+      {
+       "name": "Touriga Nacional",
+       "meta": "red"
+      },
+      {
+       "name": "Alvarinho",
+       "meta": "white"
+      },
+      {
+       "name": "Liliorila",
+       "meta": "white"
+      }
+     ],
+     "note": "Together at most 5% of a vineyard and 10% of the final blend."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "SAUTERNES",
+       "title": "1,200 ha",
+       "text": "Five communes\n27 châteaux in the 1855 list\nYquem, the only Premier Cru Supérieur"
+      },
+      {
+       "label": "BARSAC",
+       "title": "400 ha",
+       "text": "30 growers\n10 Great Growths in 1855\nWhere the Ciron meets the Garonne"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Loire and Alsace",
+   "source": "InterLoire (vinsdeloire.fr); INAO; CIVA (vinsalsace.com)",
+   "lines": [
+    {
+     "label": "Loire",
+     "text": "Quarts de Chaume, about 40 ha above the Layon, is the Loire’s only Grand Cru, with the mention allowed since 2011. Savennières is Chenin on south-facing schist slopes, always picked by hand."
+    },
+    {
+     "label": "Alsace",
+     "text": "AOC Alsace (1962) is over 70% of the wine, Crémant d’Alsace (1976) about a quarter, and the 51 Grands Crus nearly 5%. Since 2011 each Grand Cru is its own appellation."
+    }
+   ],
+   "chips": {
+    "label": "Names to know",
+    "items": [
+     "Clisson",
+     "Gorges",
+     "Le Pallet",
+     "Savennières",
+     "Quarts de Chaume",
+     "Vendanges Tardives",
+     "Sélection de Grains Nobles"
+    ]
+   },
+   "know": [
+    "Muscadet’s nine crus communaux, Clisson, Gorges and Le Pallet among them, add longer lees aging and lower yields.",
+    "Quarts de Chaume is named for the quarter of the harvest tenants once paid as rent; it became an AOC in 1954.",
+    "Savennières (AOC 1952) is mostly dry but is hand-picked bunch by bunch, like Anjou’s sweet wines.",
+    "Alsace Grands Crus sit on the sub-Vosgian hills at 200–400 m, on soils from granite to marl.",
+    "Vendanges Tardives and Sélection de Grains Nobles have appeared on Alsace labels since 1984."
+   ],
+   "visuals": [
+    {
+     "type": "names",
+     "items": [
+      {
+       "title": "MUSCADET CRUS COMMUNAUX · 9",
+       "text": "Clisson, Gorges, Le Pallet, Château-Thébaud, Goulaine, Monnières-Saint-Fiacre, Mouzillon-Tillières, La Haye-Fouassière, Vallet"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Alsace, layer by layer",
+     "rows": [
+      {
+       "name": "AOC Alsace",
+       "meta": "1962 · over 70% of the wine"
+      },
+      {
+       "name": "Communales and lieux-dits",
+       "meta": "added to AOC Alsace in 2011"
+      },
+      {
+       "name": "Crémant d’Alsace",
+       "meta": "1976 · about a quarter"
+      },
+      {
+       "name": "Alsace Grand Cru",
+       "meta": "51 terroirs · nearly 5%"
+      },
+      {
+       "name": "VT and SGN",
+       "meta": "on labels since 1984"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Rhône",
+   "source": "Inter Rhône (vins-rhone.com)",
+   "lines": [
+    {
+     "label": "North",
+     "text": "Eight crus: Château-Grillet, Condrieu, Cornas, Côte-Rôtie, Crozes-Hermitage, Hermitage, Saint-Joseph and Saint-Péray. Cornas is Syrah only, on decomposed granite (‘gore’) held by terraces called chaillées."
+    },
+    {
+     "label": "South",
+     "text": "Ten crus, several promoted from Côtes du Rhône Villages: Beaumes de Venise (2005), Vinsobres (2006), Rasteau (2010), Cairanne (2016) and Laudun (2024). Tavel makes only rosé."
+    }
+   ],
+   "chips": {
+    "label": "Grapes",
+    "items": [
+     "Syrah",
+     "Viognier",
+     "Marsanne",
+     "Roussanne",
+     "Grenache",
+     "Mourvèdre",
+     "Clairette"
+    ]
+   },
+   "know": [
+    "Condrieu and Château-Grillet are Viognier only; Château-Grillet has a single owner.",
+    "Red Hermitage is Syrah with up to 15% Marsanne and/or Roussanne; some growers are reviving vin de paille.",
+    "Saint-Péray makes still and traditional-method sparkling whites; its first sparkling dates to 1829.",
+    "Châteauneuf-du-Pape was among the first AOCs, by decree on May 15, 1936, across five Vaucluse communes.",
+    "Rasteau’s Vin Doux Naturel has been an AOC since 1944; its dry red became a cru in 2010."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Southern crus, newest last",
+     "rows": [
+      {
+       "name": "Beaumes de Venise",
+       "meta": "red cru · June 9, 2005"
+      },
+      {
+       "name": "Vinsobres",
+       "meta": "2006 · vines at 200–450 m"
+      },
+      {
+       "name": "Rasteau",
+       "meta": "dry red cru · 2010"
+      },
+      {
+       "name": "Cairanne",
+       "meta": "June 29, 2016"
+      },
+      {
+       "name": "Laudun",
+       "meta": "2024 · about 30% white"
+      }
+     ],
+     "note": "Each was a named Côtes du Rhône Villages first."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "CONDRIEU",
+       "title": "About 200 ha",
+       "text": "Viognier only\nAOC since 1940\nReplanted from the 1980s"
+      },
+      {
+       "label": "CHÂTEAU-GRILLET",
+       "title": "One owner",
+       "text": "Viognier only\nAOC since 1936\nA south-facing granite amphitheater"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "The South and the mountains",
+   "source": "Vins de Provence; Languedoc Wines (CIVL); Wines of Roussillon (CIVR); Wines of Southwest France (IVSO); Vins du Jura; INAO; Wine Folly",
+   "lines": [
+    {
+     "label": "The South",
+     "text": "Côtes de Provence covers more than 20,000 ha in 84 communes, with four terroir names: Sainte-Victoire, Fréjus, La Londe and Pierrefeu. Roussillon has 14 AOPs, from dry Collioure to the Vins Doux Naturels of Banyuls, Maury and Rivesaltes."
+    },
+    {
+     "label": "The mountains",
+     "text": "Jura’s Vin Jaune is Savagnin aged at least six years and three months in oak, never topped up, under a veil of yeast. Savoie’s main white is Jacquère, about half the vines."
+    }
+   ],
+   "chips": {
+    "label": "Local grapes",
+    "items": [
+     "Tibouren",
+     "Rolle",
+     "Mauzac",
+     "Négrette",
+     "Mansois",
+     "Savagnin",
+     "Poulsard",
+     "Trousseau",
+     "Jacquère",
+     "Altesse",
+     "Mondeuse"
+    ]
+   },
+   "know": [
+    "Languedoc’s crus include La Livinière (1999), Boutenac (2005), La Clape (2015) and Pic Saint-Loup (2017).",
+    "Blanquette de Limoux and Limoux Méthode Ancestrale both date from 1938 and are made from Mauzac.",
+    "Southwest France has 29 PDOs and 13 PGIs; Fronton is Négrette and Marcillac is about 90% Mansois.",
+    "Château-Chalon (1936) makes only Vin Jaune, from Savagnin, on about 60 ha.",
+    "Roussette de Savoie is 100% Altesse; Mondeuse is Savoie’s red, at its best around Arbin."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Match the grape to the place",
+     "rows": [
+      {
+       "name": "Côtes de Provence",
+       "meta": "Tibouren, found in France only in the Var"
+      },
+      {
+       "name": "Limoux",
+       "meta": "Mauzac"
+      },
+      {
+       "name": "Fronton",
+       "meta": "Négrette"
+      },
+      {
+       "name": "Marcillac",
+       "meta": "Mansois, on red rougier soil"
+      },
+      {
+       "name": "Gaillac",
+       "meta": "Braucol, Duras, Len de l’El, Mauzac"
+      },
+      {
+       "name": "Château-Chalon",
+       "meta": "Savagnin"
+      },
+      {
+       "name": "Roussette de Savoie",
+       "meta": "Altesse"
+      },
+      {
+       "name": "Arbin (Savoie)",
+       "meta": "Mondeuse"
+      }
+     ]
+    },
+    {
+     "type": "stat",
+     "number": "62",
+     "title": "centiliters in a clavelin",
+     "text": "A liter of juice shrinks to about 62 cl over Vin Jaune’s years in cask, so its bottle holds exactly that."
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Coteaux Champenois",
+   "b": "Rosé des Riceys",
+   "why": "Coteaux Champenois is still wine from across Champagne. Rosé des Riceys is still Pinot Noir rosé from one Aube commune."
+  },
+  {
+   "a": "Charmes-Chambertin",
+   "b": "Mazoyères-Chambertin",
+   "why": "Same ground, two names. Charmes is the one normally used."
+  },
+  {
+   "a": "Haut-Médoc",
+   "b": "Médoc",
+   "why": "‘Haut’ means upstream: the Haut-Médoc is the southern part, nearer Bordeaux."
+  },
+  {
+   "a": "Vin Jaune",
+   "b": "Vin de Paille",
+   "why": "Vin Jaune is dry, aged under a veil of yeast. Vin de Paille is sweet, from dried grapes."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas, Advanced Sommelier Theory Exam guide; Comité Champagne; Union des Maisons de Champagne; INAO; Bourgogne Wines (BIVB); Bordeaux Wine Council; Conseil des Vins de Saint-Émilion; Decanter; InterLoire; CIVA; Inter Rhône; Vins de Provence; CIVL; CIVR; IVSO; Vins du Jura; Wine Folly. Checked Nov 19, 2026.",
+ "cards": [
+  {
+   "q": "In Champagne, the first 2,050 liters pressed from a 4,000 kg marc are called the:",
+   "answer": "Cuvée",
+   "wrong": [
+    "Taille",
+    "Rebêches",
+    "Liqueur de tirage"
+   ],
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/275"
+  },
+  {
+   "q": "Which Champagne pruning method is reserved for Meunier?",
+   "answer": "Vallée de la Marne",
+   "wrong": [
+    "Chablis",
+    "Cordon de Royat",
+    "Guyot"
+   ],
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/412"
+  },
+  {
+   "q": "Rosé des Riceys is:",
+   "answer": "A still Pinot Noir rosé from one Aube commune",
+   "wrong": [
+    "A sparkling rosé made by blending red and white wine",
+    "A sweet fortified rosé",
+    "A still rosé from anywhere in the Champagne area"
+   ],
+   "source": "https://www.inao.gouv.fr/produit/rose-des-riceys-21050"
+  },
+  {
+   "q": "Which grape joined Champagne’s permitted list in 2025?",
+   "answer": "Chardonnay Rose",
+   "wrong": [
+    "Arbane",
+    "Petit Meslier",
+    "Pinot Gris"
+   ],
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties"
+  },
+  {
+   "q": "Pinot Noir makes up what share of the vines in the Côte des Bar?",
+   "answer": "83%",
+   "wrong": [
+    "38%",
+    "50%",
+    "31%"
+   ],
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/the-champagne-region"
+  },
+  {
+   "q": "How many Grand Cru AOCs does Bourgogne have?",
+   "answer": "33",
+   "wrong": [
+    "17",
+    "51",
+    "44"
+   ],
+   "source": "https://www.bourgogne-wines.com/professional-access/gallery_files/site/81331/81335/81707.pdf"
+  },
+  {
+   "q": "Which Morey-Saint-Denis Grand Cru is a monopole founded by Cistercians in 1141?",
+   "answer": "Clos de Tart",
+   "wrong": [
+    "Clos de la Roche",
+    "Clos Saint-Denis",
+    "Clos des Lambrays"
+   ],
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/clos-de-tart,2458,9253.html?args=Y29tcF9pZD0yMjc4JmFjdGlvbj12aWV3RmljaGUmaWQ9MjgzJnw%3D"
+  },
+  {
+   "q": "In 2020, which Mâconnais appellation gained 22 Premier Cru Climats?",
+   "answer": "Pouilly-Fuissé",
+   "wrong": [
+    "Saint-Véran",
+    "Viré-Clessé",
+    "Mâcon-Villages"
+   ],
+   "source": "https://www.inao.gouv.fr/en/premier-cru-label-pouilly-fuisse-pdo-cp"
+  },
+  {
+   "q": "Grands-Échezeaux is produced in which commune?",
+   "answer": "Flagey-Échezeaux",
+   "wrong": [
+    "Vosne-Romanée",
+    "Vougeot",
+    "Chambolle-Musigny"
+   ],
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/grands-echezeaux,2458,9253.html?args=Y29tcF9pZD0yMjc4JmFjdGlvbj12aWV3RmljaGUmaWQ9MzE0Jnw%3D"
+  },
+  {
+   "q": "Which Vosne-Romanée Grand Cru became an AOC on July 2, 1992?",
+   "answer": "La Grande Rue",
+   "wrong": [
+    "La Tâche",
+    "Richebourg",
+    "Romanée-Saint-Vivant"
+   ],
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/grande-rue-la,2458,9253.html?args=Y29tcF9pZD0yMjc4JmFjdGlvbj12aWV3RmljaGUmaWQ9MzE5Jnw%3D"
+  },
+  {
+   "q": "Pomerol’s iron-rich subsoil is called:",
+   "answer": "Crasse de fer",
+   "wrong": [
+    "Galets roulés",
+    "Tuffeau",
+    "Llicorella"
+   ],
+   "source": "https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/pomerol/"
+  },
+  {
+   "q": "Which of these grapes was approved for Bordeaux and Bordeaux Supérieur in 2021?",
+   "answer": "Liliorila",
+   "wrong": [
+    "Petit Manseng",
+    "Tannat",
+    "Viognier"
+   ],
+   "source": "https://www.decanter.com/learn/new-bordeaux-grapes-wines-420290/"
+  },
+  {
+   "q": "Which river’s cool water brings Sauternes its morning fog?",
+   "answer": "The Ciron",
+   "wrong": [
+    "The Dordogne",
+    "The Isle",
+    "The Lot"
+   ],
+   "source": "https://www.bordeaux.com/en/designations/graves-sauternes/sauternes/"
+  },
+  {
+   "q": "Which three châteaux withdrew from Saint-Émilion’s 2022 classification?",
+   "answer": "Cheval Blanc, Ausone and Angélus",
+   "wrong": [
+    "Figeac, Pavie and Canon",
+    "Clos Fourtet, Larcis Ducasse and La Mondotte",
+    "Pavie Macquin, Valandraud and Trottevieille"
+   ],
+   "source": "https://www.decanter.com/wine-news/angelus-withdraws-from-the-next-st-emilion-classification-471835/"
+  },
+  {
+   "q": "Which Bordeaux appellation, recognized in 1987, holds all 14 Graves classed growths?",
+   "answer": "Pessac-Léognan",
+   "wrong": [
+    "Graves",
+    "Barsac",
+    "Moulis"
+   ],
+   "source": "https://www.bordeaux.com/en/designations/graves-sauternes/pessac-leognan/"
+  },
+  {
+   "q": "Which appellation is the Loire Valley’s only Grand Cru?",
+   "answer": "Quarts de Chaume",
+   "wrong": [
+    "Bonnezeaux",
+    "Coteaux du Layon",
+    "Savennières"
+   ],
+   "source": "https://www.inao.gouv.fr/produit/quarts-de-chaume-17035"
+  },
+  {
+   "q": "Since what year can Vendanges Tardives and SGN appear on Alsace labels?",
+   "answer": "1984",
+   "wrong": [
+    "1962",
+    "1976",
+    "2011"
+   ],
+   "source": "https://www.vinsalsace.com/en/tastes-and-colours/aoc/"
+  },
+  {
+   "q": "Which of these is a Muscadet cru communal?",
+   "answer": "Gorges",
+   "wrong": [
+    "Coteaux d’Ancenis",
+    "Côtes de Grandlieu",
+    "Gros Plant du Pays Nantais"
+   ],
+   "source": "https://vinsdeloire.fr/en/loire-valley-wine-styles/dry-white-wine-fresh-elegant"
+  },
+  {
+   "q": "Savennières vines grow on which rock?",
+   "answer": "Schist",
+   "wrong": [
+    "Tuffeau",
+    "Kimmeridgian marl",
+    "Chalk"
+   ],
+   "source": "https://www.inao.gouv.fr/produit/savennieres-18121"
+  },
+  {
+   "q": "How many Grands Crus does Alsace have?",
+   "answer": "51",
+   "wrong": [
+    "33",
+    "17",
+    "44"
+   ],
+   "source": "https://www.vinsalsace.com/en/grands-crus/"
+  },
+  {
+   "q": "Which Rhône appellation became a standalone cru in 2024?",
+   "answer": "Laudun",
+   "wrong": [
+    "Cairanne",
+    "Vinsobres",
+    "Rasteau"
+   ],
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-laudun"
+  },
+  {
+   "q": "Cornas may be made from:",
+   "answer": "Syrah only",
+   "wrong": [
+    "Syrah with up to 15% Marsanne or Roussanne",
+    "Syrah co-planted with Viognier",
+    "A Grenache-based blend"
+   ],
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-cornas"
+  },
+  {
+   "q": "Which northern Rhône cru makes traditional-method sparkling white?",
+   "answer": "Saint-Péray",
+   "wrong": [
+    "Condrieu",
+    "Château-Grillet",
+    "Crozes-Hermitage"
+   ],
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-saint-peray"
+  },
+  {
+   "q": "Rasteau’s Vin Doux Naturel became its own AOC in:",
+   "answer": "1944",
+   "wrong": [
+    "1936",
+    "1966",
+    "2010"
+   ],
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-rasteau"
+  },
+  {
+   "q": "Tavel makes:",
+   "answer": "Rosé only",
+   "wrong": [
+    "Red only",
+    "Red and white",
+    "Red, white and rosé"
+   ],
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-tavel"
+  },
+  {
+   "q": "Vin Jaune is sold in a clavelin that holds:",
+   "answer": "62 cl",
+   "wrong": [
+    "50 cl",
+    "75 cl",
+    "37.5 cl"
+   ],
+   "source": "https://www.jura-vins.com/le-mysterieux-vin-jaune.htm"
+  },
+  {
+   "q": "Château-Chalon is made only from:",
+   "answer": "Savagnin",
+   "wrong": [
+    "Chardonnay",
+    "Poulsard",
+    "Trousseau"
+   ],
+   "source": "https://www.jura-vins.com/aoc-chateau-chalon.htm"
+  },
+  {
+   "q": "Fronton’s star grape is:",
+   "answer": "Négrette",
+   "wrong": [
+    "Tannat",
+    "Mansois",
+    "Duras"
+   ],
+   "source": "https://www.vignobles-sudouest.fr/us/project/pdo-fronton/"
+  },
+  {
+   "q": "Roussette de Savoie is made from:",
+   "answer": "Altesse",
+   "wrong": [
+    "Jacquère",
+    "Chasselas",
+    "Mondeuse Blanche"
+   ],
+   "source": "https://winefolly.com/deep-dive/savoie-wine-guide/"
+  },
+  {
+   "q": "Which Languedoc appellation, founded in 2017, is the region’s most northerly?",
+   "answer": "Pic Saint-Loup",
+   "wrong": [
+    "La Clape",
+    "La Livinière",
+    "Boutenac"
+   ],
+   "source": "https://languedoc-wines.com/en/appellations/pdo-pic-saint-loup/"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Court topics for France at Advanced: Champagne, Burgundy, Bordeaux, Loire Valley, Alsace, Rhône Valley, Dordogne and Southwest France, Provence, Languedoc-Roussillon, Jura and Savoie.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf"
+  },
+  {
+   "fact": "Expected skills: in-depth theoretical knowledge of major beverage alcohol subjects; comprehensive understanding of benchmark producers and vintages in highly established wine regions.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf"
+  },
+  {
+   "fact": "The Court's two foundational study questions: why does a wine taste the way it does, and what do I need to know to serve it tableside.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf"
+  },
+  {
+   "fact": "Pinot Noir is 38% of the area under vine in Champagne, dominant in Montagne de Reims and Côte des Bar.",
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties"
+  },
+  {
+   "fact": "Five other varieties are authorised: Arbane, Petit Meslier, Chardonnay Rose, Pinot Blanc and Pinot Gris; together about 0.3% of the area. Chardonnay Rose was listed among authorized varieties in 2025.",
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties"
+  },
+  {
+   "fact": "Meunier buds later and is less susceptible to frost, so it suits clay soils such as the Marne Valley.",
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties"
+  },
+  {
+   "fact": "Champagne AOC wines may only come from third-leaf vines (two years after planting).",
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties"
+  },
+  {
+   "fact": "Sub-regions: Montagne de Reims (mostly Pinot Noir); Marne Valley (Pinot Noir near Épernay, Meunier dominant further west); Côte des Blancs (Chardonnay, chalk); Côte des Bar (Pinot Noir 83% of vines).",
+   "source": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/the-champagne-region"
+  },
+  {
+   "fact": "Chardonnay is grown mainly in the Côte des Blancs and Côte de Sézanne.",
+   "source": "https://www.champagne.fr/en/about-champagne/the-champagne-terroir/champagne-and-its-soil"
+  },
+  {
+   "fact": "Champagne chalk stores 300–400 liters of water per cubic meter and regulates water through capillary action.",
+   "source": "https://www.champagne.fr/en/about-champagne/the-champagne-terroir/champagne-and-its-soil"
+  },
+  {
+   "fact": "Champagne chalk mostly consists of calcite from coccolithophore plates.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/254"
+  },
+  {
+   "fact": "Champagne chalk is characterized by belemnite fossils.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/230"
+  },
+  {
+   "fact": "Crayères are old chalk quarries now used as cellars.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/271"
+  },
+  {
+   "fact": "Reims lies at 49°5' north; quality grapes are generally considered difficult beyond the 50th parallel.",
+   "source": "https://www.champagne.fr/en/about-champagne/the-champagne-terroir/champagne-and-its-climate"
+  },
+  {
+   "fact": "Champagne Hillsides, Houses and Cellars were added to the UNESCO World Heritage list on 4 July 2015.",
+   "source": "https://www.champagne.fr/en/visit-champagne/life-in-champagne/champagne-world-heritage"
+  },
+  {
+   "fact": "Champagne at a glance 2025: 34,200 ha across 319 villages; Pinot Noir 38%.",
+   "source": "https://www.champagne.fr/en/find-out-more/champagne-at-a-glance"
+  },
+  {
+   "fact": "Four approved pruning methods: Chablis and Cordon de Royat for all varieties and all growths; Guyot for all varieties but only growths rated 80–89%; Marne Valley only for Meunier and only growths rated 80–89%.",
+   "source": "https://maisons-champagne.com/en/appellation/stages-in-winemaking/from-grapevine-to-grapes-and-must/article/work-in-the-vineyard"
+  },
+  {
+   "fact": "Vallée de la Marne pruning is exclusively reserved for Meunier vines.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/412"
+  },
+  {
+   "fact": "The entire Champagne crop is picked by hand to deliver clusters intact; mechanical harvesters are ruled out.",
+   "source": "https://maisons-champagne.com/en/appellation/stages-in-winemaking/from-grapevine-to-grapes-and-must/article/harvests"
+  },
+  {
+   "fact": "Grape clusters must go whole into the press. Press yields are 102 liters of must per 160 kg; the cuvée is 20.5 hl and the taille 5 hl.",
+   "source": "https://maisons-champagne.com/en/appellation/stages-in-winemaking/from-grapevine-to-grapes-and-must/article/pressing"
+  },
+  {
+   "fact": "Cuvée: the first 2,050 liters of juice from a 4,000 kg marc; also a precise blend of base wines.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/275"
+  },
+  {
+   "fact": "Marc: the Champagne pressing unit of 4,000 kg of grapes.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/327"
+  },
+  {
+   "fact": "Taille: the 500 liters of must extracted after the cuvée.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/407"
+  },
+  {
+   "fact": "Grand Cru: a former designation that 17 crus retain. Premier Cru: a former designation that 42 crus retain.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/306"
+  },
+  {
+   "fact": "Premier Cru is a former designation that 42 crus in Champagne have kept.",
+   "source": "https://www.champagne.fr/en/custom/api/v1/glossary/modal/363"
+  },
+  {
+   "fact": "Champagne has three AOCs: Champagne; Coteaux champenois (still red, rosé or white from the same grapes); Rosé des Riceys (still rosé from the commune of Les Riceys in the Aube).",
+   "source": "https://maisons-champagne.com/fr/encyclopedies/histoire-du-champagne/deuxieme-partie-connaissance-du-champagne/chapitre-6-l-appellation-d-origine-controlee/article/la-definition-et-la-legislation-de-l-appellation"
+  },
+  {
+   "fact": "Rosé des Riceys is a still wine made from Pinot Noir from steep, well-exposed slopes in the single commune of Les Riceys.",
+   "source": "https://www.inao.gouv.fr/produit/rose-des-riceys-21050"
+  },
+  {
+   "fact": "Bourgogne has 84 AOCs: 7 Régionale, 44 Village and 33 Grand Cru; 666 Climats are classified Premier Cru.",
+   "source": "https://www.bourgogne-wines.com/professional-access/gallery_files/site/81331/81335/81707.pdf"
+  },
+  {
+   "fact": "By volume: Régionale 53%, Village (incl. Premier Cru) 46%, Grand Cru 1%; Premier Cru about 10%.",
+   "source": "https://www.bourgogne-wines.com/professional-access/gallery_files/site/81331/81335/81707.pdf"
+  },
+  {
+   "fact": "Bourgogne has more than 1,800 Climats; each is vinified separately and takes the Climat's name.",
+   "source": "https://www.bourgogne-wines.com/professional-access/gallery_files/site/81331/81335/81707.pdf"
+  },
+  {
+   "fact": "First mention of a Climat name in 1584 ('Champt Bertin'); the Climats were registered on the UNESCO World Heritage List on July 4, 2015.",
+   "source": "https://www.bourgogne-wines.com/professional-access/gallery_files/site/81331/81335/81707.pdf"
+  },
+  {
+   "fact": "Côte de Nuits Grands Crus include Chambertin, Chambertin-Clos de Bèze, Chapelle-, Griotte-, Latricières-, Mazis-, Mazoyères-, Ruchottes- and Charmes-Chambertin, the four Morey Clos, Clos de Vougeot, Échezeaux, Grands Échezeaux, Richebourg, Romanée-Conti, Romanée-Saint-Vivant, La Tâche, Musigny and Bonnes Mares.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-vineyards/cote-de-nuits-and-hautes-cotes-de-nuits/cote-de-nuits-and-hautes-cotes-de-nuits-purple-and-gold,2470,9313.html"
+  },
+  {
+   "fact": "The Côte de Nuits runs between Dijon and Corgoloin, about 20 km long and in parts 200 m wide; Pinot Noir makes most of Bourgogne's Grands Crus.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/our-vineyards/cote-de-nuits-and-hautes-cotes-de-nuits/cote-de-nuits-and-hautes-cotes-de-nuits-purple-and-gold,2470,9313.html"
+  },
+  {
+   "fact": "Gevrey-Chambertin Grands Crus: Charmes-Chambertin and Mazoyères-Chambertin share the same area and Charmes is normally used. Clos de Bèze appears as a monastic property in 640 AD.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/chambertin,2458,9253.html?args=Y29tcF9pZD0yMjc4JmFjdGlvbj12aWV3RmljaGUmaWQ9MjY0Jnw%3D"
+  },
+  {
+   "fact": "Morey-Saint-Denis Grands Crus: Clos Saint-Denis, Clos de la Roche, Clos des Lambrays, Clos de Tart. Clos de Tart, a solely held entity, was founded by the Cistercians of Tart in 1141.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/clos-de-tart,2458,9253.html?args=Y29tcF9pZD0yMjc4JmFjdGlvbj12aWV3RmljaGUmaWQ9MjgzJnw%3D"
+  },
+  {
+   "fact": "Grands-Échezeaux and Échezeaux: producing commune Flagey-Échezeaux; AOC Grands Crus since July 31, 1937; founded by the monks of Cîteaux.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/grands-echezeaux,2458,9253.html?args=Y29tcF9pZD0yMjc4JmFjdGlvbj12aWV3RmljaGUmaWQ9MzE0Jnw%3D"
+  },
+  {
+   "fact": "Vosne-Romanée has six Grands Crus, including Romanée-Conti, Romanée-Saint-Vivant, La Romanée, La Tâche, La Grande Rue and Richebourg. La Grande Rue AOC created 2 July 1992; 1.65 ha.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/grande-rue-la,2458,9253.html?args=Y29tcF9pZD0yMjc4JmFjdGlvbj12aWV3RmljaGUmaWQ9MzE5Jnw%3D"
+  },
+  {
+   "fact": "On the label, 'Grand Cru' must appear directly below the appellation name in letters of the same size.",
+   "source": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/grande-rue-la,2458,9253.html?args=Y29tcF9pZD0yMjc4JmFjdGlvbj12aWV3RmljaGUmaWQ9MzE5Jnw%3D"
+  },
+  {
+   "fact": "On September 3, 2020 INAO approved 22 Pouilly-Fuissé premier cru climats: 194 ha, 24% of the PDO, across Chaintré, Fuissé, Solutré-Pouilly and Vergisson; Mâconnais communal PDOs had no premier crus before.",
+   "source": "https://www.inao.gouv.fr/en/premier-cru-label-pouilly-fuisse-pdo-cp"
+  },
+  {
+   "fact": "The Haut-Médoc PDO encompasses six communal PDOs: Saint-Estèphe, Pauillac, Saint-Julien, Listrac-Médoc, Moulis and Margaux. 'Haut' refers to its upstream position toward Bordeaux; it lies below the Médoc on the map. The Gironde estuary moderates summer heat and winter.",
+   "source": "https://www.bordeaux.com/en/designations/medoc/haut-medoc/"
+  },
+  {
+   "fact": "Pessac-Léognan was recognized on 9 September 1987, the youngest Bordeaux appellation; the 14 Graves classed growths are within it, and Haut-Brion is among the 1855 Grands Crus Classés.",
+   "source": "https://www.bordeaux.com/en/designations/graves-sauternes/pessac-leognan/"
+  },
+  {
+   "fact": "Pomerol: 813 ha, Merlot about 80%, Cabernet Franc 15%; clay-gravel and sandy gravel over iron-oxide subsoil called 'crasse de fer'; never had an official classification, hierarchy inferred from reputation and price.",
+   "source": "https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/pomerol/"
+  },
+  {
+   "fact": "Sauternes: 1,200 ha, 27 châteaux in the 1855 classification, Yquem the only Premier Cru Supérieur; five communes: Barsac, Bommes, Fargues, Preignac, Sauternes; the cool Ciron brings morning fog and botrytis.",
+   "source": "https://www.bordeaux.com/en/designations/graves-sauternes/sauternes/"
+  },
+  {
+   "fact": "Barsac: 400 ha, 30 growers, 10 Great Growths in 1855; the Ciron meets the Garonne at the Port of Barsac; picked by hand in successive passes.",
+   "source": "https://www.bordeaux.com/en/designations/graves-sauternes/barsac/"
+  },
+  {
+   "fact": "Bordeaux's classifications include 1855, Graves, Saint-Émilion, Crus Bourgeois du Médoc and Crus Artisans.",
+   "source": "https://www.bordeaux.com/en/classifications/"
+  },
+  {
+   "fact": "Saint-Émilion 2022 classification lists 14 Premiers Grands Crus Classés, with Château Figeac (A) and Château Pavie (A).",
+   "source": "https://vins-saint-emilion.com/en/welcome-in-the-vineyard/the-2022-classification/"
+  },
+  {
+   "fact": "Cheval Blanc and Ausone announced leaving the 2022 St-Emilion ranking in July 2021; Angélus later withdrew its candidacy.",
+   "source": "https://www.decanter.com/wine-news/angelus-withdraws-from-the-next-st-emilion-classification-471835/"
+  },
+  {
+   "fact": "INAO approved six varieties for Bordeaux and Bordeaux Supérieur (announced January 2021): Touriga Nacional, Marselan, Castets, Arinarnoa (red); Alvarinho, Liliorila (white). Together at most 5% of vineyard area and 10% of the blend. Petit Manseng did not make the list.",
+   "source": "https://www.decanter.com/learn/new-bordeaux-grapes-wines-420290/"
+  },
+  {
+   "fact": "Quarts de Chaume: the only grand cru of the Loire, a sweet white from about 40 ha above the Layon, in Rochefort-sur-Loire; morning fog from the Layon favors noble rot; grapes picked by successive tries; AOC 1954, grand cru mention since 2011; the name comes from tenants paying a quarter of the harvest.",
+   "source": "https://www.inao.gouv.fr/produit/quarts-de-chaume-17035"
+  },
+  {
+   "fact": "Savennières: whites from Chenin only on schist slopes southwest of Angers, three communes on the right bank, south-facing; mostly dry; hand-picked by bunch selection; AOC 1952; King René called it 'goutte d'or'.",
+   "source": "https://www.inao.gouv.fr/produit/savennieres-18121"
+  },
+  {
+   "fact": "Muscadet crus communaux: Clisson, Gorges, Le Pallet, Château-Thébaud, Goulaine, Monnières-Saint-Fiacre, Mouzillon-Tillières, La Haye-Fouassière and Vallet, with extended lees aging and limited yields; notes of ripe fruit, gunflint, mild spice.",
+   "source": "https://vinsdeloire.fr/en/loire-valley-wine-styles/dry-white-wine-fresh-elegant"
+  },
+  {
+   "fact": "AOC Alsace recognized 1962, over 70% of production; Communales and lieux-dits added 2011; Crémant d'Alsace 1976, about a quarter; 51 Grands Crus, nearly 5%, distinct appellations since 2011; Vendanges Tardives and SGN since 1984.",
+   "source": "https://www.vinsalsace.com/en/tastes-and-colours/aoc/"
+  },
+  {
+   "fact": "Alsace Grands Crus lie on the sub-Vosgian hills at 200–400 m; 51 terroirs, about 5% of production.",
+   "source": "https://www.vinsalsace.com/en/grands-crus/"
+  },
+  {
+   "fact": "Alsace geology: four fracture fields; ten soil types including granite (expressive young wines, light structure), rare schist (Andlau, Villé), volcanic, sandstone, Muschelkalk limestone, and marl-limestone (power).",
+   "source": "https://www.vinsalsace.com/en/terroirs/remarkable-geology/"
+  },
+  {
+   "fact": "Inter Rhône's cru list: Beaumes de Venise, Cairanne, Château-Grillet, Châteauneuf-du-Pape, Condrieu, Cornas, Côte-Rôtie, Crozes-Hermitage, Gigondas, Hermitage, Laudun, Lirac, Rasteau, Saint-Joseph, Saint-Péray, Tavel, Vacqueyras, Vinsobres.",
+   "source": "https://www.vins-rhone.com/en/rhone-valley-vineyards/appellations/cotes-du-rhone-crus-aoc"
+  },
+  {
+   "fact": "Cornas: Syrah is the only authorised grape; terraces called chaillées; decomposed granite soils called gore.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-cornas"
+  },
+  {
+   "fact": "Hermitage reds: Syrah with up to 15% Roussanne and/or Marsanne; whites from Marsanne and Roussanne; Les Bessards is the granite 'red' terroir; vin de paille being revived.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-hermitage"
+  },
+  {
+   "fact": "Condrieu: Viognier only, about 200 ha, AOC born 1940, boundaries revised 1986, revival from the 1980s.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-condrieu"
+  },
+  {
+   "fact": "Château-Grillet: Viognier, AOC 1936, now one owner; south-facing amphitheater on granite.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-chateau-grillet"
+  },
+  {
+   "fact": "Saint-Péray: still or sparkling whites, sparkling by the Traditional Method; first sparkling 1829; cru December 8, 1936.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-saint-peray"
+  },
+  {
+   "fact": "Châteauneuf-du-Pape: recognized by decree May 15, 1936 with Baron Le Roy; five Vaucluse communes.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-chateauneuf-du-pape"
+  },
+  {
+   "fact": "Rasteau: Vin Doux Naturel AOC since 1944; dry red promoted to cru in 2010.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-rasteau"
+  },
+  {
+   "fact": "Beaumes de Venise red became a standalone cru on 9 June 2005; Villages status since 1978.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-beaumes-de-venise"
+  },
+  {
+   "fact": "Vinsobres: Villages AOC until 2006, then a cru; vineyards at 200–450 m.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-vinsobres"
+  },
+  {
+   "fact": "Cairanne became a Côtes du Rhône cru on 29 June 2016; Villages status since 1967.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-cairanne"
+  },
+  {
+   "fact": "Laudun: Villages status in 1967; recognized as a standalone cru in 2024; about 30% of production is white.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-laudun"
+  },
+  {
+   "fact": "Tavel wines are rosé only, based on Grenache noir.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-tavel"
+  },
+  {
+   "fact": "Lirac makes wines in all three colours.",
+   "source": "https://www.vins-rhone.com/en/cotes-du-rhone-cru-aoc-lirac"
+  },
+  {
+   "fact": "Côtes de Provence: more than 20,000 ha, 84 communes; four terroir designations: Sainte-Victoire, Fréjus, La Londe, Pierrefeu.",
+   "source": "https://www.vinsdeprovence.com/en/les-appellations/cotes-de-provence"
+  },
+  {
+   "fact": "Tibouren: in France found only in the Var department.",
+   "source": "https://www.vinsdeprovence.com/en/le-vignoble/presentation-generale-64804f9668e62"
+  },
+  {
+   "fact": "Pic Saint-Loup: Languedoc's most northerly appellation, founded 2017.",
+   "source": "https://languedoc-wines.com/en/appellations/pdo-pic-saint-loup/"
+  },
+  {
+   "fact": "La Livinière founded 1999; Boutenac 2005; La Clape 2015 (CIVL appellation fact boxes).",
+   "source": "https://languedoc-wines.com/en/appellations/la-liviniere-pdo/"
+  },
+  {
+   "fact": "Boutenac founded 2005, in the Corbières.",
+   "source": "https://languedoc-wines.com/en/appellations/boutenac-pdo/"
+  },
+  {
+   "fact": "La Clape founded 2015, between Narbonne and the sea.",
+   "source": "https://languedoc-wines.com/en/appellations/la-clape-pdo/"
+  },
+  {
+   "fact": "Blanquette de Limoux and Limoux Méthode Ancestrale: founded 1938, white, Mauzac.",
+   "source": "https://languedoc-wines.com/en/appellations/pdo-limoux-blanquette-de-limoux/"
+  },
+  {
+   "fact": "Limoux Méthode Ancestrale: founded 1938, Mauzac, light semi-sparkling wines.",
+   "source": "https://languedoc-wines.com/en/appellations/pdo-limoux-methode-ancestrale/"
+  },
+  {
+   "fact": "Roussillon has 14 AOPs and 2 IGPs; dry AOPs include Collioure and Côtes du Roussillon Villages with Latour de France, Lesquerde, Caramany, Tautavel and Les Aspres; VDN AOPs: Maury Doux, Banyuls, Banyuls Grand Cru (tawny), Rivesaltes, Muscat de Rivesaltes; sea-facing terraces at Collioure and Banyuls.",
+   "source": "https://uk.winesofroussillon.com/explore/"
+  },
+  {
+   "fact": "Southwest France: 42 protected appellations, 29 PDO and 13 PGI; Bergerac and Duras promoted by their own council (IVBD).",
+   "source": "https://www.vignobles-sudouest.fr/us/appellations/"
+  },
+  {
+   "fact": "Southwest: 300 grape varieties referenced, including 130 native.",
+   "source": "https://www.vignobles-sudouest.fr/us/grape-varieties/"
+  },
+  {
+   "fact": "Fronton: Négrette is the star grape; between Toulouse and Montauban.",
+   "source": "https://www.vignobles-sudouest.fr/us/project/pdo-fronton/"
+  },
+  {
+   "fact": "Marcillac: terraces on iron-oxide soils called rougiers; Mansois about 90%.",
+   "source": "https://www.vignobles-sudouest.fr/us/project/pdo-marcillac/"
+  },
+  {
+   "fact": "Gaillac: native grapes Braucol, Duras, Prunelard, Len de l'El, Ondenc; ancestral-method sparkling from Mauzac.",
+   "source": "https://www.vignobles-sudouest.fr/us/project/pdo-gaillac/"
+  },
+  {
+   "fact": "Vin Jaune: at least six years and three months in oak casks without racking or topping up, under a veil of yeasts; bottled in the 62 cl clavelin, the only bottle allowed; made in Château-Chalon, Arbois, L'Étoile and Côtes du Jura.",
+   "source": "https://www.jura-vins.com/le-mysterieux-vin-jaune.htm"
+  },
+  {
+   "fact": "Château-Chalon (decree of 29 May 1936) produces exclusively Vin Jaune from Savagnin, on 60 hectares.",
+   "source": "https://www.jura-vins.com/aoc-chateau-chalon.htm"
+  },
+  {
+   "fact": "Vin de Paille: grapes dried at least six weeks on straw, racks or hanging; 14.5–17% alcohol.",
+   "source": "https://www.jura-vins.com/le-voluptueux-vin-de-paille.htm"
+  },
+  {
+   "fact": "Jura reds include Poulsard (Ploussard), Trousseau and Pinot Noir.",
+   "source": "https://www.jura-vins.com/les-rouges.htm"
+  },
+  {
+   "fact": "Côtes du Jura: Vin Jaune aged more than 6 years in a cask not fully filled under a yeast veil; vin de paille from dried grapes; AOC 1937.",
+   "source": "https://www.inao.gouv.fr/produit/cotes-du-jura-vin-jaune-16910"
+  },
+  {
+   "fact": "Savoie: Jacquère is the most planted grape, about 50%; Roussette de Savoie is 100% Altesse; Mondeuse's best expression is in Arbin.",
+   "source": "https://winefolly.com/deep-dive/savoie-wine-guide/"
+  }
+ ],
+ "unverified": [
+  "Champagne's Chardonnay and Meunier shares differ by page: 32% and 30% (champagne.fr 2025 key figures), 31% each (champagne.fr grape page), 27% and 35% (UMC). Only Pinot Noir's 38% is stated here.",
+  "The UMC vineyard page says only three grapes are allowed in Champagne; champagne.fr lists five more. The current champagne.fr list is used.",
+  "When the Échelle des Crus ended is disputed: Taittinger says 2004, other sources 2010. Taittinger also gives 44 Premier Cru villages before 2003, against champagne.fr's 42. No date is given here.",
+  "Inter Rhône's glossary lists 17 crus and leaves out Cairanne; its appellation list has 18 including Cairanne. The appellation list is used.",
+  "Savoie cru counts differ (Wine Folly: 16 Vin de Savoie crus; others: about 20 geographic denominations), as do Crémant de Savoie blend rules. Neither is stated.",
+  "Muscadet crus communaux lees-aging minimums differ between Decanter and Vinous (e.g. Le Pallet 17 vs 18 months). No months are given.",
+  "Côtes du Roussillon Les Aspres: sources give 2004 or 2017 for its creation. No date is given.",
+  "Saint-Émilion's 2022 Grands Crus Classés total was not counted from the official page; only the 14 Premiers are stated.",
+  "Crus Bourgeois tiers and current dates: the official site could not be read, so none are restated beyond Level 2.",
+  "Vin Jaune aging: INAO says more than 6 years; the Jura wine council says at least 6 years and 3 months. The council's figure is used.",
+  "Languedoc years are the 'Foundation' dates in CIVL fact boxes, read as appellation dates.",
+  "The Wine Business International report listed seven new Bordeaux grapes voted locally (incl. Petit Manseng); Decanter says six were approved. Six are used."
+ ],
+ "court": {
+  "outcome": "In-depth theoretical knowledge of major beverage alcohol subjects … Comprehensive understanding of benchmark producers and vintages in highly established wine regions",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf",
+  "coverage": [
+   {
+    "topic": "France: Champagne",
+    "guide": "Chalk, sub-regions, pruning and pressing rules, the three AOCs, permitted grapes.",
+    "where": "Champagne"
+   },
+   {
+    "topic": "France: Burgundy",
+    "guide": "Climats, the 84-AOC pyramid, Côte de Nuits Grands Crus by village, Pouilly-Fuissé Premiers Crus.",
+    "where": "Burgundy"
+   },
+   {
+    "topic": "France: Bordeaux",
+    "guide": "Haut-Médoc communes, Pessac-Léognan, Saint-Émilion 2022, Pomerol soil, Sauternes and Barsac, new grapes.",
+    "where": "Bordeaux"
+   },
+   {
+    "topic": "France: Loire Valley",
+    "guide": "Muscadet crus communaux, Savennières, Quarts de Chaume Grand Cru.",
+    "where": "Loire and Alsace"
+   },
+   {
+    "topic": "France: Alsace",
+    "guide": "AOC layers, 51 Grands Crus, soils, Vendanges Tardives and SGN.",
+    "where": "Loire and Alsace"
+   },
+   {
+    "topic": "France: Rhône Valley",
+    "guide": "All 18 crus, their grape rules and promotion dates.",
+    "where": "Rhône"
+   },
+   {
+    "topic": "France: Dordogne and Southwest France",
+    "guide": "29 PDOs, native grapes, Fronton, Marcillac, Gaillac, Bergerac and Duras.",
+    "where": "The South and the mountains"
+   },
+   {
+    "topic": "France: Provence",
+    "guide": "Côtes de Provence size, four terroir names, Tibouren.",
+    "where": "The South and the mountains"
+   },
+   {
+    "topic": "France: Languedoc-Roussillon",
+    "guide": "Languedoc crus, Limoux, Roussillon's 14 AOPs and VDNs.",
+    "where": "The South and the mountains"
+   },
+   {
+    "topic": "France: Jura and Savoie",
+    "guide": "Vin Jaune, Château-Chalon, Vin de Paille; Jacquère, Altesse, Mondeuse.",
+    "where": "The South and the mountains"
+   },
+   {
+    "topic": "Areas of Study: soils, wine law and terminology",
+    "guide": "Named soils (crasse de fer, gore, rougier, schist), aging rules and label terms.",
+    "where": "Bordeaux; Rhône; Loire and Alsace; The South and the mountains"
+   },
+   {
+    "topic": "Areas of Study: producers, history and lore",
+    "guide": "Monopoles and single owners, the 2022 withdrawals, monks and the Climats.",
+    "where": "Burgundy; Bordeaux; Rhône"
+   }
+  ]
+ },
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Champagne",
+    "video": {
+     "youtubeId": "um10vnGXxw4",
+     "title": "The Wines of Champagne",
+     "by": "GuildSomm International",
+     "length": "10:25"
+    },
+    "keyPoints": [
+     {
+      "big": "CHALK",
+      "line": "stores 300–400 liters of water per cubic meter."
+     },
+     {
+      "big": "4,000 KG",
+      "line": "is one marc: 2,050 L of cuvée, then 500 L of taille."
+     },
+     {
+      "big": "MARNE PRUNING",
+      "line": "is for Meunier only, in growths rated 80–89%."
+     },
+     {
+      "big": "ROSÉ DES RICEYS",
+      "line": "is still Pinot Noir rosé from one Aube commune."
+     },
+     {
+      "big": "2025",
+      "line": "Chardonnay Rose joined Champagne’s permitted grapes."
+     }
+    ],
+    "read": {
+     "bigIdea": "Champagne is built on chalk and a strict press.",
+     "where": "From Level 2: 17 crus keep the **Grand Cru** name and 42 keep **Premier Cru**. Advanced asks why the place tastes the way it does: a cold northern site, **chalk** subsoil, and strict rules on pruning and pressing.",
+     "stopsTitle": "Four things that shape the wine",
+     "stops": [
+      {
+       "name": "The chalk",
+       "note": "subsoil",
+       "text": "Made of coccolithophore plates, with **belemnite** fossils. It soaks up water and feeds it back by capillary action, so vines get steady, gentle water stress. Old chalk quarries, the **crayères**, now serve as cellars."
+      },
+      {
+       "name": "The vines",
+       "note": "pruning",
+       "text": "**Chablis** and **Cordon de Royat** pruning work anywhere. **Guyot** and **Vallée de la Marne** are only for growths rated 80–89%, and Vallée de la Marne is for **Meunier** only. Only third-leaf vines count for the AOC."
+      },
+      {
+       "name": "The press",
+       "note": "whole clusters",
+       "text": "Grapes go in whole, so harvest is by hand. One **marc** of 4,000 kg gives 2,050 L of **cuvée** and then 500 L of **taille**."
+      },
+      {
+       "name": "The still wines",
+       "note": "two more AOCs",
+       "text": "**Coteaux Champenois** is still red, rosé or white. **Rosé des Riceys** is still rosé from Pinot Noir grown only in Les Riceys, in the Aube."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Each sub-region leans on one grape:",
+     "mixup": "**Cuvée** has two meanings: the first 2,050 L off the press, or a finished blend. **Taille** is the 500 L that follow.",
+     "sayIt": "Mostly Pinot Noir from the Montagne de Reims: fuller, with red fruit."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Burgundy",
+    "video": {
+     "youtubeId": "85tq1Rz2alc",
+     "title": "BURGUNDY'S COTE D'OR - WINE IN 10",
+     "by": "Konstantin Baum - Master of Wine",
+     "length": "10:13"
+    },
+    "keyPoints": [
+     {
+      "big": "1,800+ CLIMATS",
+      "line": "named plots, each made and labeled on its own."
+     },
+     {
+      "big": "33 GRANDS CRUS",
+      "line": "each its own AOC, about 1% of all Bourgogne."
+     },
+     {
+      "big": "666",
+      "line": "Climats are classified Premier Cru."
+     },
+     {
+      "big": "CLOS DE TART",
+      "line": "is a monopole, founded by Cistercian monks in 1141."
+     },
+     {
+      "big": "POUILLY-FUISSÉ",
+      "line": "gained 22 Premier Cru Climats in 2020, a Mâconnais first."
+     }
+    ],
+    "read": {
+     "bigIdea": "In Burgundy, the plot is the name.",
+     "where": "From Level 2: the **Chablis** and **Côte de Beaune** Grands Crus. Advanced goes village by village through the **Côte de Nuits**, a strip about 20 km long and in places just 200 m wide, home to most of Bourgogne’s red Grands Crus.",
+     "stopsTitle": "North to south, then down to the Mâconnais",
+     "stops": [
+      {
+       "name": "Gevrey-Chambertin",
+       "note": "nine Grands Crus",
+       "text": "**Chambertin** and **Chambertin-Clos de Bèze** lead. Clos de Bèze appears as a monastic vineyard in 640 AD. **Charmes** and **Mazoyères** share one area."
+      },
+      {
+       "name": "Morey-Saint-Denis",
+       "note": "four Grands Crus",
+       "text": "**Clos de la Roche**, **Clos Saint-Denis**, **Clos des Lambrays** and **Clos de Tart**. Clos de Tart is a **monopole**, founded by Cistercians in 1141."
+      },
+      {
+       "name": "Flagey and Vosne",
+       "note": "eight between them",
+       "text": "**Échezeaux** and **Grands-Échezeaux** belong to Flagey-Échezeaux and were founded by the monks of Cîteaux. Vosne-Romanée has six, from **Romanée-Conti** to **La Grande Rue**, a Grand Cru only since 1992."
+      },
+      {
+       "name": "Pouilly-Fuissé",
+       "note": "Mâconnais",
+       "text": "In 2020, 22 Climats became **Premier Cru**: 194 ha, 24% of the appellation, across Chaintré, Fuissé, Solutré-Pouilly and Vergisson."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The two villages with the most Grands Crus:",
+     "mixup": "**Charmes-Chambertin** and **Mazoyères-Chambertin** cover the same ground. Charmes is the name you usually see.",
+     "sayIt": "A Grand Cru from Gevrey: powerful Pinot Noir, lovely with game."
+    },
+    "check": [
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "name": "Bordeaux",
+    "video": {
+     "youtubeId": "jmd_VI1Y7v8",
+     "title": "The Wines of Bordeaux's Right Bank",
+     "by": "GuildSomm International",
+     "length": "10:29"
+    },
+    "keyPoints": [
+     {
+      "big": "HAUT-MÉDOC",
+      "line": "holds six communal PDOs, from Saint-Estèphe to Margaux."
+     },
+     {
+      "big": "PESSAC-LÉOGNAN",
+      "line": "dates from 1987 and holds all 14 Graves classed growths."
+     },
+     {
+      "big": "FIGEAC AND PAVIE",
+      "line": "are Saint-Émilion’s only ‘A’ châteaux in the 2022 list."
+     },
+     {
+      "big": "CRASSE DE FER",
+      "line": "is Pomerol’s iron-rich subsoil."
+     },
+     {
+      "big": "SIX NEW GRAPES",
+      "line": "approved in 2021, up to 10% of a Bordeaux blend."
+     }
+    ],
+    "read": {
+     "bigIdea": "Bordeaux keeps re-ranking itself.",
+     "where": "From Level 2: the **1855**, **Graves**, **Saint-Émilion** and **Crus Bourgeois** rankings. Advanced adds the map under them and what changed lately: who left the **2022** Saint-Émilion list and which grapes Bordeaux added for a warmer climate.",
+     "stopsTitle": "Five stops around the estuary",
+     "stops": [
+      {
+       "name": "Médoc",
+       "note": "Left Bank",
+       "text": "The **Haut-Médoc** holds six communal PDOs: **Saint-Estèphe**, **Pauillac**, **Saint-Julien**, **Listrac-Médoc**, **Moulis** and **Margaux**. The Gironde estuary softens summer heat and winter cold."
+      },
+      {
+       "name": "Pessac-Léognan",
+       "note": "since 1987",
+       "text": "Bordeaux’s youngest appellation, at the city’s edge. All 14 **Graves** classed growths sit here, and so does **Haut-Brion**, a First Growth of 1855."
+      },
+      {
+       "name": "Saint-Émilion",
+       "note": "2022 list",
+       "text": "14 **Premiers Grands Crus Classés**, with **Figeac** and **Pavie** as ‘A’. **Cheval Blanc**, **Ausone** and **Angélus** withdrew from the 2022 process."
+      },
+      {
+       "name": "Pomerol",
+       "note": "no ranking",
+       "text": "813 ha, about 80% **Merlot**, on clay-gravel over **crasse de fer**. Reputation and price set the order."
+      },
+      {
+       "name": "Sauternes and Barsac",
+       "note": "sweet",
+       "text": "The cool **Ciron** meets the warmer Garonne: morning fog, afternoon sun, **noble rot**. In Barsac, pickers go through the vines in several passes."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Sauternes and its neighbor, side by side:",
+     "mixup": "**Haut-Médoc** sounds northern but lies south of the **Médoc** PDO. ‘Haut’ means upstream, toward Bordeaux.",
+     "sayIt": "A Pauillac: structured Left Bank red, a classic with lamb."
+    },
+    "check": [
+     10,
+     11,
+     12
+    ]
+   },
+   {
+    "name": "Loire and Alsace",
+    "video": {
+     "youtubeId": "aD5zLAN8X9s",
+     "title": "The Wines of Alsace",
+     "by": "GuildSomm International",
+     "length": "9:41"
+    },
+    "keyPoints": [
+     {
+      "big": "QUARTS DE CHAUME",
+      "line": "is the Loire’s only Grand Cru, about 40 ha above the Layon."
+     },
+     {
+      "big": "SAVENNIÈRES",
+      "line": "is Chenin on schist, mostly dry, always hand-picked."
+     },
+     {
+      "big": "CRUS COMMUNAUX",
+      "line": "are nine Muscadet villages with longer lees aging."
+     },
+     {
+      "big": "51 GRANDS CRUS",
+      "line": "make nearly 5% of Alsace wine, at 200–400 m."
+     },
+     {
+      "big": "1984",
+      "line": "Vendanges Tardives and SGN first appear on labels."
+     }
+    ],
+    "read": {
+     "bigIdea": "Two cool regions, ranked plot by plot.",
+     "where": "From Level 2: **tuffeau** under Vouvray and the sheltered **Haut-Rhin**. Advanced adds the Loire’s top names and how Alsace stacks its appellations.",
+     "stopsTitle": "Five stops, west to east",
+     "stops": [
+      {
+       "name": "Muscadet crus",
+       "note": "Pays Nantais",
+       "text": "Nine **crus communaux**, from **Clisson** to **Vallet**, age longer on their lees with lower yields: riper fruit, gunflint, mild spice."
+      },
+      {
+       "name": "Savennières",
+       "note": "Anjou",
+       "text": "Chenin only, on **schist** slopes southwest of Angers, in three communes. Mostly dry, but picked by hand, bunch by bunch. King René called it ‘goutte d’or’."
+      },
+      {
+       "name": "Quarts de Chaume",
+       "note": "Grand Cru",
+       "text": "About 40 ha around Chaume, in Rochefort-sur-Loire. Morning fog from the **Layon** brings noble rot, and pickers work in **tries successives**. AOC in 1954, **Grand Cru** since 2011."
+      },
+      {
+       "name": "Alsace soils",
+       "note": "sub-Vosgian hills",
+       "text": "The Rhine rift broke the land into a patchwork: **granite**, rare **schist** (Andlau, Villé), volcanic rock, **sandstone**, **Muschelkalk** limestone and **marl**. Granite gives light, expressive young wines; marl gives power."
+      },
+      {
+       "name": "Alsace labels",
+       "note": "since 1984",
+       "text": "**Vendanges Tardives** (overripe, late-picked) and **Sélection de Grains Nobles** (hand-picked noble berries) can go on Alsace or Alsace Grand Cru."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Alsace, from the base up:",
+     "mixup": "**Savennières** is mostly dry Chenin. **Quarts de Chaume** is always sweet, from overripe, often noble-rotted grapes.",
+     "sayIt": "A dry Savennières: full and fresh, with a light bitter finish."
+    },
+    "check": [
+     15,
+     16,
+     17
+    ]
+   },
+   {
+    "name": "Rhône",
+    "video": {
+     "youtubeId": "6fVFKfa3ejE",
+     "title": "The Wines of Northern Rhône",
+     "by": "GuildSomm International",
+     "length": "10:13"
+    },
+    "keyPoints": [
+     {
+      "big": "CORNAS",
+      "line": "is Syrah only, on steep granite terraces called chaillées."
+     },
+     {
+      "big": "CHÂTEAU-GRILLET",
+      "line": "is Viognier from a single owner, AOC since 1936."
+     },
+     {
+      "big": "SAINT-PÉRAY",
+      "line": "makes still and sparkling whites; first bubbles in 1829."
+     },
+     {
+      "big": "LAUDUN",
+      "line": "became the newest Rhône cru in 2024."
+     },
+     {
+      "big": "TAVEL",
+      "line": "makes rosé only, built on Grenache."
+     }
+    ],
+    "read": {
+     "bigIdea": "Syrah in the north, blends in the south.",
+     "where": "From Level 2: **Côte-Rôtie** co-plants Viognier and **Châteauneuf-du-Pape** allows many grapes. Advanced adds all 18 crus, their grape rules and when each was promoted.",
+     "stopsTitle": "Five stops, north to south",
+     "stops": [
+      {
+       "name": "Cornas",
+       "note": "north",
+       "text": "**Syrah** only. Terraces called **chaillées** hold **gore**, decomposed granite, in a south-facing bowl sheltered from the Mistral."
+      },
+      {
+       "name": "Hermitage",
+       "note": "north",
+       "text": "Red is **Syrah** with up to 15% **Marsanne** or **Roussanne**; white is those two grapes. **Les Bessards** is the granite red-wine slope. Some growers are reviving **vin de paille**."
+      },
+      {
+       "name": "Condrieu and Château-Grillet",
+       "note": "north",
+       "text": "Both 100% **Viognier**. Condrieu is about 200 ha; **Château-Grillet** has one owner and a granite amphitheater."
+      },
+      {
+       "name": "Saint-Péray",
+       "note": "north",
+       "text": "Whites only, still or **traditional-method** sparkling. Its first sparkling wine was made in 1829."
+      },
+      {
+       "name": "The southern crus",
+       "note": "newest",
+       "text": "**Rasteau** (2010), **Cairanne** (2016) and **Laudun** (2024) are the latest promotions. **Tavel** is rosé only; **Lirac** makes all three colors."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Promoted from Villages, one by one:",
+     "mixup": "**Rasteau** means two wines: the dry red cru (2010) and the **Vin Doux Naturel**, an AOC since 1944.",
+     "sayIt": "A Cornas: pure Syrah, dark and firm, made for grilled meat."
+    },
+    "check": [
+     20,
+     21,
+     22
+    ]
+   },
+   {
+    "name": "The South and the mountains",
+    "video": {
+     "youtubeId": "YYCIVKVbbz8",
+     "title": "Jura Wine Explained: Vin Jaune, Savagnin & the Region’s Icons | Jacky Blisson MW",
+     "by": "Jacky Blisson MW",
+     "length": "16:25"
+    },
+    "keyPoints": [
+     {
+      "big": "SAINTE-VICTOIRE",
+      "line": "is one of four Côtes de Provence terroir names."
+     },
+     {
+      "big": "PIC SAINT-LOUP",
+      "line": "became an appellation in 2017, Languedoc’s most northerly."
+     },
+     {
+      "big": "NÉGRETTE",
+      "line": "is the star grape of Fronton, near Toulouse."
+     },
+     {
+      "big": "VIN JAUNE",
+      "line": "ages 6 years 3 months under yeast, then goes into a clavelin."
+     },
+     {
+      "big": "JACQUÈRE",
+      "line": "is Savoie’s most planted grape, about half the vines."
+     }
+    ],
+    "read": {
+     "bigIdea": "From Mediterranean sun to Alpine slopes.",
+     "where": "From Level 2: **Bandol**, **Cahors**, **Madiran**, **Jurançon** and the **VDNs**. Advanced fills in the smaller names, the local grapes and the two mountain regions, **Jura** and **Savoie**.",
+     "stopsTitle": "Five stops, coast to Alps",
+     "stops": [
+      {
+       "name": "Provence and Languedoc",
+       "note": "Mediterranean",
+       "text": "Côtes de Provence has four terroir names, led by **Sainte-Victoire**; **Tibouren** grows in France only in the Var. Languedoc’s crus include **La Livinière**, **Boutenac**, **La Clape** and **Pic Saint-Loup**, and **Limoux** makes Mauzac sparkling."
+      },
+      {
+       "name": "Roussillon",
+       "note": "14 AOPs",
+       "text": "**Collioure** is the dry-wine name on the sea-facing terraces. **Banyuls**, **Banyuls Grand Cru**, **Maury**, **Rivesaltes** and **Muscat de Rivesaltes** are VDNs. Five villages can add their name to **Côtes du Roussillon Villages**."
+      },
+      {
+       "name": "Southwest",
+       "note": "29 PDOs",
+       "text": "About 130 native grapes. **Fronton** is Négrette, **Marcillac** is Mansois on iron-red **rougier**, and **Gaillac** uses Braucol, Duras and Len de l’El, plus Mauzac for ancestral-method fizz. **Bergerac** and **Duras** have their own council."
+      },
+      {
+       "name": "Jura",
+       "note": "Savagnin country",
+       "text": "**Vin Jaune** ages at least 6 years 3 months in oak with no topping up, under a **voile** of yeast, then goes into the 62 cl **clavelin**. **Château-Chalon** makes only Vin Jaune. **Vin de Paille** comes from grapes dried at least six weeks."
+      },
+      {
+       "name": "Savoie",
+       "note": "Alps",
+       "text": "**Jacquère** is about half the vineyard. **Roussette de Savoie** is 100% **Altesse**, and **Mondeuse** is the red, at its best around **Arbin**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Match the grape to the place:",
+     "mixup": "**Vin Jaune** is dry and aged under a veil of yeast. **Vin de Paille** is sweet, from grapes dried on straw or racks.",
+     "sayIt": "A Vin Jaune: dry, nutty and long, made for aged cheese."
+    },
+    "check": [
+     25,
+     26,
+     27
+    ]
+   }
+  ]
+ }
+}

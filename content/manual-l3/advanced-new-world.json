@@ -1,0 +1,1527 @@
+{
+  "program": "somm",
+  "programLevel": 3,
+  "part": 1,
+  "number": 5,
+  "slug": "advanced-new-world",
+  "title": "The New World in depth",
+  "script": "Chapter five",
+  "lead": "The New World at Advanced depth: the label laws behind every number, the nested appellations, and the regions the Court lists from Missouri to Central Otago.",
+  "minutes": 40,
+  "intro": {
+    "script": "Start here",
+    "title": "EVERY COUNTRY'S LABEL MATH",
+    "text": "Advanced questions turn on the law. Learn each country's minimum for a place name, then the stricter extras.",
+    "tiers": [
+      {
+        "name": "U.S. federal",
+        "note": "75% state or county, 85% AVA, 100% for multi-county"
+      },
+      {
+        "name": "Oregon",
+        "note": "90% grape, 95% place, 100% Oregon"
+      },
+      {
+        "name": "Chile and Argentina",
+        "note": "Chile 75% (85% for Costa/Andes); Argentina IP 80%"
+      },
+      {
+        "name": "South Africa",
+        "note": "100% from any Wine of Origin place"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "U.S. law: AVAs and the TTB label",
+      "source": "eCFR 27 CFR parts 4 and 9; TTB established-AVA lists",
+      "lines": [
+        {
+          "label": "The AVA",
+          "text": "A grape-growing area with features that set it apart, a name and a mapped boundary, approved by TTB. There are 280; California has 154."
+        },
+        {
+          "label": "Label math",
+          "text": "From Level 2: 75% grape, 85% AVA, 95% vintage with an AVA. Advanced adds the state, county, multi-county and multi-state rules."
+        }
+      ],
+      "know": [
+        "An AVA petition must prove the name, the boundary and the distinguishing features: climate, geology, soils, physical features and elevation.",
+        "A state or county name needs 75% of the fruit; two or three counties, or two or three contiguous states, need 100%, with each share on the label.",
+        "An AVA wine must be fully finished in the state (or one of the states) where the AVA lies.",
+        "Estate bottled: the winery sits in the AVA, grows every grape on land it owns or controls (a lease of 3+ years) and never lets the wine leave.",
+        "Burgundy, Chablis, Champagne, Port and Sherry are semi-generic names in U.S. law: usable only with the true origin shown."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "How much fruit each place name needs",
+          "rows": [
+            {
+              "name": "Country, state or county",
+              "value": "75%",
+              "pct": 0.75
+            },
+            {
+              "name": "AVA (or the overlap of two AVAs)",
+              "value": "85%",
+              "pct": 0.85
+            },
+            {
+              "name": "2-3 counties or contiguous states",
+              "value": "100%, each share shown",
+              "pct": 1
+            }
+          ],
+          "note": "27 CFR 4.25. A vintage adds 95% with an AVA, 85% with any other appellation."
+        },
+        {
+          "type": "list",
+          "title": "What an AVA petition must prove",
+          "rows": [
+            {
+              "name": "Name",
+              "meta": "known locally or nationally, from independent sources"
+            },
+            {
+              "name": "Boundary",
+              "meta": "why the line sits where it does"
+            },
+            {
+              "name": "Distinguishing features",
+              "meta": "climate, geology, soils, physical features, elevation"
+            },
+            {
+              "name": "Maps",
+              "meta": "USGS maps and a written boundary"
+            }
+          ],
+          "note": "27 CFR 9.12. Anyone may petition TTB (9.11)."
+        }
+      ]
+    },
+    {
+      "name": "California, Oregon and Washington",
+      "source": "TTB AVA lists; California Business and Professions Code 25240; Wine Institute; Oregon Administrative Rules 845-010; Oregon Wine Board; Washington State Wine Commission",
+      "lines": [
+        {
+          "label": "California",
+          "text": "On average 81% of U.S. wine, and 154 AVAs. Since January 1, 1990, a Napa sub-AVA label must also say 'Napa Valley'."
+        },
+        {
+          "label": "Oregon and Washington",
+          "text": "Oregon goes past federal law: 90% for most grape names, 95% for a place, 100% Oregon fruit. Washington grows in the dry, irrigated Columbia Valley."
+        }
+      ],
+      "know": [
+        "Eleven Paso Robles district AVAs, such as Adelaida District and Templeton Gap District, were all established on October 9, 2014.",
+        "Oregon allows 75% for 18 listed grapes, including Cabernet Sauvignon, Syrah, Tempranillo and Zinfandel. Pinot Noir is not on the list.",
+        "Since 2023, an Oregon label naming a nested Willamette Valley AVA must also say 'Willamette Valley'.",
+        "Oregon bans semi-generic names such as 'Chablis'; 'Claret' survives only for 100% Bordeaux-grape brands approved in 2004-2006.",
+        "Washington: Cabernet Sauvignon, Chardonnay, Merlot, Riesling and Syrah are over 80% of production; the Columbia Valley gets 6-8 inches of rain."
+      ],
+      "visuals": [
+        {
+          "type": "compare",
+          "items": [
+            {
+              "label": "FEDERAL",
+              "title": "The floor",
+              "text": "Grape name: 75%\nAVA: 85%\nSemi-generic names allowed with true origin"
+            },
+            {
+              "label": "OREGON",
+              "title": "The stricter state",
+              "text": "Grape name: 90% (75% for 18 listed grapes)\nAVA or county: 95%, all fruit Oregon\nNested AVA must add 'Willamette Valley'\nSemi-generic names banned"
+            }
+          ]
+        },
+        {
+          "type": "steps",
+          "title": "Washington's soil, bottom to top",
+          "items": [
+            {
+              "name": "Basalt",
+              "text": "Volcanic bedrock, thousands of feet thick",
+              "meta": "fire"
+            },
+            {
+              "name": "Flood deposits",
+              "text": "Silt, sand and gravel from the Missoula Floods",
+              "meta": "ice"
+            },
+            {
+              "name": "Loess",
+              "text": "Wind-blown silt that holds little water",
+              "meta": "wind"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "New York, other states, Canada and Mexico",
+      "source": "TTB AVA lists; Missouri Secretary of State; Wines of Canada; VQA Ontario; Court of Master Sommeliers curriculum guide (Mexico)",
+      "lines": [
+        {
+          "label": "New York and beyond",
+          "text": "Finger Lakes (1982) holds Cayuga Lake and Seneca Lake; Long Island (2001) holds The Hamptons and North Fork. The first AVA of all was Augusta, Missouri, in 1980."
+        },
+        {
+          "label": "Canada and Mexico",
+          "text": "VQA runs Ontario and British Columbia. Mexico, the oldest wine industry outside Europe, has no appellation law, per the Court; Valle de Guadalupe is the focus."
+        }
+      ],
+      "know": [
+        "Augusta, Missouri became the first AVA on June 20, 1980, seven months ahead of Napa Valley.",
+        "Norton (Cynthiana), a Vitis aestivalis grape, is Missouri's state grape and North America's oldest variety still grown commercially.",
+        "Other states' AVAs: Monticello (VA), Texas High Plains and Texas Hill Country, Snake River Valley (ID, OR), Old Mission and Leelanau Peninsulas (MI).",
+        "VQA Icewine: frozen on the vine, picked below -8 °C, juice of 35° Brix or more. Hybrids are barred from Icewine except Vidal.",
+        "Spanish law banned winemaking in New Spain from 1595 until Mexico's independence in 1821."
+      ],
+      "visuals": [
+        {
+          "type": "scale",
+          "title": "Ontario's late-harvest ladder (Brix at harvest)",
+          "rows": [
+            {
+              "name": "Late Harvest",
+              "value": "22°",
+              "pct": 0.63
+            },
+            {
+              "name": "Select Late Harvest",
+              "value": "26°",
+              "pct": 0.74
+            },
+            {
+              "name": "Special Select Late Harvest",
+              "value": "30°",
+              "pct": 0.86
+            },
+            {
+              "name": "Icewine (picked below -8 °C)",
+              "value": "35°",
+              "pct": 1
+            }
+          ],
+          "note": "VQA Ontario. Every step here must carry a vintage date."
+        },
+        {
+          "type": "list",
+          "title": "Early AVAs beyond the West Coast",
+          "rows": [
+            {
+              "name": "Augusta",
+              "meta": "Missouri, 1980 (the first)"
+            },
+            {
+              "name": "Leelanau Peninsula",
+              "meta": "Michigan, 1982"
+            },
+            {
+              "name": "Hudson River Region",
+              "meta": "New York, 1982"
+            },
+            {
+              "name": "Finger Lakes",
+              "meta": "New York, 1982"
+            },
+            {
+              "name": "Lake Erie",
+              "meta": "New York, Ohio, Pennsylvania, 1983"
+            },
+            {
+              "name": "Monticello",
+              "meta": "Virginia, 1984"
+            }
+          ],
+          "note": "Dates are when TTB published the final rule."
+        }
+      ]
+    },
+    {
+      "name": "Argentina, Chile and Uruguay",
+      "source": "Chile Decree 464 (SAG); Wines of Chile; Instituto Nacional de Vitivinicultura (Argentina); Uruguay harvest statistics as reported by Montevideo Portal",
+      "lines": [
+        {
+          "label": "Chile",
+          "text": "Decree 464 maps six regions from Atacama to Austral, then subregions, zones and areas. A DO, grape or vintage needs 75%; Costa, Entre Cordilleras or Andes needs 85%."
+        },
+        {
+          "label": "Argentina and Uruguay",
+          "text": "Argentina has three tiers: IP (80%, table wine), IG and DOC. Uruguay's signature is Tannat: 1,610 of 5,991 ha in 2020, mostly in Canelones."
+        }
+      ],
+      "know": [
+        "Chile's six regions, north to south: Atacama, Coquimbo, Aconcagua, Valle Central, Sur and Austral.",
+        "Secano Interior is Chile's special DO for País and Cinsault from dry-farmed areas such as Cauquenes, Chillán and Coelemu.",
+        "Argentina has only two DOCs, both in Mendoza: Luján de Cuyo and San Rafael. An INV report counted 110 IGs.",
+        "Cuyo IG covers Mendoza, San Juan and San Luis; Valle de Uco IG covers San Carlos, Tunuyán and Tupungato.",
+        "Only 'Valle de Cafayate' may go on a label, because 'Cafayate' alone is a registered trademark."
+      ],
+      "visuals": [
+        {
+          "type": "pyramid",
+          "title": "Argentina's origin tiers, top first",
+          "rows": [
+            {
+              "name": "DOC",
+              "note": "Only two: Luján de Cuyo and San Rafael"
+            },
+            {
+              "name": "IG",
+              "note": "Quality wines; Valle de Uco is the most used"
+            },
+            {
+              "name": "IP",
+              "note": "Table and regional wines, 80% from the place"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Chile's regions in Decree 464, north to south",
+          "rows": [
+            {
+              "name": "Atacama",
+              "meta": "Copiapó, Huasco"
+            },
+            {
+              "name": "Coquimbo",
+              "meta": "Elqui, Limarí, Choapa"
+            },
+            {
+              "name": "Aconcagua",
+              "meta": "Aconcagua, Casablanca, San Antonio"
+            },
+            {
+              "name": "Valle Central",
+              "meta": "Maipo, Rapel, Curicó, Maule"
+            },
+            {
+              "name": "Sur",
+              "meta": "Itata, Bío Bío, Malleco"
+            },
+            {
+              "name": "Austral",
+              "meta": "Cautín, Osorno"
+            }
+          ],
+          "note": "The Court's list writes 'Astral'; the decree says Austral."
+        }
+      ]
+    },
+    {
+      "name": "Australia and New Zealand",
+      "source": "Wine Australia (GI register, blending rules, Label Integrity Program); New Zealand Winegrowers",
+      "lines": [
+        {
+          "label": "Australia",
+          "text": "GIs run zone, region, subregion; South Eastern Australia is a zone spanning all of NSW, Victoria and Tasmania. The Label Integrity Program makes every seller keep records that back the label."
+        },
+        {
+          "label": "New Zealand",
+          "text": "Vineyards stretch 1,600 km, none more than 130 km from the sea. Marlborough holds about two-thirds of the vines; Hawke's Bay is second."
+        }
+      ],
+      "know": [
+        "An Australian blend may name up to three GIs, each over 5% of the wine, in descending order.",
+        "Grapes picked from September 1 to December 31 count as the next year's vintage in Australia.",
+        "'Barossa style' or 'Champagne method' is banned on Australian labels, even with the true origin shown.",
+        "Central Otago subregions: Gibbston (highest), Bannockburn (warm, dry, earliest), Cromwell/Lowburn/Pisa, Bendigo, Wanaka, Alexandra.",
+        "Sustainable Winegrowing New Zealand began in 1995 and covers 98% of vineyard area."
+      ],
+      "visuals": [
+        {
+          "type": "names",
+          "items": [
+            {
+              "title": "SUBREGIONS TO KNOW · AUSTRALIA",
+              "text": "Hunter: Broke Fordwich, Pokolbin, Upper Hunter Valley; Great Southern: Albany, Denmark, Frankland River, Mount Barker, Porongurup; Eden Valley: High Eden; Adelaide Hills: Lenswood, Piccadilly Valley"
+            },
+            {
+              "title": "SUBREGIONS TO KNOW · NEW ZEALAND",
+              "text": "Marlborough: Wairau Valley, Southern Valleys, Awatere Valley; Central Otago: Gibbston, Bannockburn, Cromwell/Lowburn/Pisa, Bendigo, Wanaka, Alexandra; Hawke's Bay: Gimblett Gravels, Bridge Pa Triangle"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Central Otago, subregion by subregion",
+          "rows": [
+            {
+              "name": "Gibbston",
+              "meta": "highest, cooler, ripens later"
+            },
+            {
+              "name": "Bannockburn",
+              "meta": "warm and dry, picks up to a month early"
+            },
+            {
+              "name": "Cromwell, Lowburn, Pisa",
+              "meta": "terraces west of Lake Dunstan"
+            },
+            {
+              "name": "Bendigo",
+              "meta": "north-facing slopes, stony soils"
+            },
+            {
+              "name": "Wanaka",
+              "meta": "cooler and slightly wetter"
+            },
+            {
+              "name": "Alexandra",
+              "meta": "most southerly, extremes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "South Africa",
+      "source": "Wines of South Africa (Wine of Origin scheme; winegrowing areas); Court of Master Sommeliers, Advanced Theory Exam guide",
+      "lines": [
+        {
+          "label": "Wine of Origin",
+          "text": "Origin control became law in 1973, and a WO place name means 100% of the grapes come from there. Units nest from geographical unit down to a single vineyard."
+        },
+        {
+          "label": "The six units",
+          "text": "Western Cape, Northern Cape, Eastern Cape, KwaZulu-Natal, Limpopo and Free State. The Western Cape holds five regions: Breede River Valley, Cape South Coast, Coastal Region, Klein Karoo, Olifants River."
+        }
+      ],
+      "know": [
+        "A district is larger and less uniform than a ward but still has a distinctive climate; the Court names 'districts vs wards' as a topic.",
+        "Some wards, such as Cederberg and Bamboes Bay, sit outside any district.",
+        "Cape Coastal is an overarching region joining the Coastal Region and the Cape South Coast, so maritime wines can be blended under one name.",
+        "Estate wine is grown, made and bottled on one unit; a single vineyard may not exceed 6 hectares.",
+        "WOSA counts 32 districts and about 102 wards across some 86,525 ha of wine grapes."
+      ],
+      "visuals": [
+        {
+          "type": "pyramid",
+          "title": "Wine of Origin units, largest first",
+          "rows": [
+            {
+              "name": "Geographical unit",
+              "note": "e.g. Western Cape"
+            },
+            {
+              "name": "Region",
+              "note": "e.g. Coastal Region, Breede River Valley"
+            },
+            {
+              "name": "District",
+              "note": "e.g. Stellenbosch, Paarl, Robertson"
+            },
+            {
+              "name": "Ward",
+              "note": "e.g. Constantia, Voor-Paardeberg"
+            },
+            {
+              "name": "Single vineyard",
+              "note": "6 ha or less"
+            }
+          ]
+        },
+        {
+          "type": "stat",
+          "number": "100%",
+          "title": "WO place name",
+          "text": "When 'Wine of Origin' appears with a place, every grape comes from that demarcated area."
+        }
+      ]
+    }
+  ],
+  "mixups": [
+    {
+      "a": "Augusta",
+      "b": "Napa Valley",
+      "why": "Augusta, Missouri was the first AVA (1980). Napa Valley was the second (1981)."
+    },
+    {
+      "a": "Cuyo IG",
+      "b": "Luján de Cuyo DOC",
+      "why": "Cuyo IG covers three provinces. Luján de Cuyo is one of Argentina's only two DOCs, inside Mendoza."
+    },
+    {
+      "a": "Cape Coastal",
+      "b": "Coastal Region",
+      "why": "Cape Coastal is an overarching region that contains the Coastal Region and the Cape South Coast."
+    },
+    {
+      "a": "Gibbston",
+      "b": "Bannockburn",
+      "why": "Both are Central Otago. Gibbston is high and late; Bannockburn is warm, dry and early."
+    }
+  ],
+  "sources": "Court of Master Sommeliers, Americas (Advanced Theory Exam guide; curriculum guide for Mexico); eCFR 27 CFR parts 4 and 9; TTB AVA lists; California Business and Professions Code 25240; Wine Institute; Oregon Administrative Rules; Oregon Wine Board; Washington State Wine Commission; Missouri Secretary of State; Wines of Canada; VQA Ontario; Chile's Decree 464 (SAG); Wines of Chile; Argentina's Instituto Nacional de Vitivinicultura; Uruguay's harvest statistics as reported by Montevideo Portal; Wine Australia; New Zealand Winegrowers; Wines of South Africa. Checked Nov 19, 2026.",
+  "cards": [
+    {
+      "q": "How many established AVAs does TTB currently list for the United States?",
+      "answer": "280",
+      "wrong": [
+        "154",
+        "239",
+        "312"
+      ],
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"
+    },
+    {
+      "q": "A U.S. wine labeled with three contiguous states needs what share of its grapes from those states?",
+      "answer": "100%, with each state's share shown",
+      "wrong": [
+        "75%, from the first state named",
+        "85%, with the states listed by size",
+        "95%, with no shares shown"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "q": "For 'Estate bottled', a leased vineyard counts as 'controlled' only with a lease of at least how long?",
+      "answer": "3 years",
+      "wrong": [
+        "1 year",
+        "5 years",
+        "10 years"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.26"
+    },
+    {
+      "q": "A wine made from Concord, a labrusca grape, may carry the variety name at what minimum share?",
+      "answer": "51%",
+      "wrong": [
+        "75%",
+        "85%",
+        "90%"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.23"
+    },
+    {
+      "q": "For a wine over 14% ABV, how far may the real alcohol stray from the label?",
+      "answer": "1 percentage point",
+      "wrong": [
+        "0.5 percentage point",
+        "1.5 percentage points",
+        "2 percentage points"
+      ],
+      "source": "https://www.ecfr.gov/current/title-27/section-4.36"
+    },
+    {
+      "q": "Under Oregon's rules, a bottle labeled Pinot Noir must contain at least how much Pinot Noir?",
+      "answer": "90%",
+      "wrong": [
+        "75%",
+        "85%",
+        "95%"
+      ],
+      "source": "https://oregon.public.law/rules/oar_845-010-0915"
+    },
+    {
+      "q": "A California wine bottled since 1990 and labeled Rutherford must also show which name?",
+      "answer": "Napa Valley",
+      "wrong": [
+        "North Coast",
+        "California",
+        "Napa County"
+      ],
+      "source": "https://california.public.law/codes/ca_bus_and_prof_code_section_25240"
+    },
+    {
+      "q": "What bedrock lies under the loess and flood deposits of Washington's Columbia Valley?",
+      "answer": "Basalt",
+      "wrong": [
+        "Granite",
+        "Limestone",
+        "Schist"
+      ],
+      "source": "https://www.washingtonwine.org/grapes-soil-sun/"
+    },
+    {
+      "q": "Which name must an Oregon label add when it names the Dundee Hills AVA?",
+      "answer": "Willamette Valley",
+      "wrong": [
+        "Yamhill County",
+        "Chehalem Mountains",
+        "Columbia Valley"
+      ],
+      "source": "https://oregon.public.law/rules/oar_845-010-0923"
+    },
+    {
+      "q": "Which was the first AVA established in the United States?",
+      "answer": "Augusta",
+      "wrong": [
+        "Napa Valley",
+        "Finger Lakes",
+        "Santa Maria Valley"
+      ],
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/ava-establishment-dates"
+    },
+    {
+      "q": "Under VQA Ontario rules, Icewine juice must measure at least how many degrees Brix?",
+      "answer": "35",
+      "wrong": [
+        "22",
+        "26",
+        "30"
+      ],
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "q": "Which hybrid is the only one that may be labeled VQA Icewine in Ontario?",
+      "answer": "Vidal",
+      "wrong": [
+        "Baco Noir",
+        "Seyval Blanc",
+        "Marechal Foch"
+      ],
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "q": "Norton, Missouri's state grape, belongs to which species?",
+      "answer": "Vitis aestivalis",
+      "wrong": [
+        "Vitis labrusca",
+        "Vitis riparia",
+        "Vitis vinifera"
+      ],
+      "source": "https://www.sos.mo.gov/symbol/grape"
+    },
+    {
+      "q": "Under Chile's Decree 464, a wine naming a DO needs at least what share from that place?",
+      "answer": "75%",
+      "wrong": [
+        "85%",
+        "90%",
+        "100%"
+      ],
+      "source": "https://sag.cl/sites/default/files/decreto_ndeg_464.pdf"
+    },
+    {
+      "q": "Argentina's two DOCs are Luján de Cuyo and which other?",
+      "answer": "San Rafael",
+      "wrong": [
+        "Valle de Uco",
+        "Valle de Cafayate",
+        "Paraje Altamira"
+      ],
+      "source": "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina.pdf_.pdf.pdf_.pdf"
+    },
+    {
+      "q": "Argentina's IP tier requires at least what share of grapes from the named place?",
+      "answer": "80%",
+      "wrong": [
+        "75%",
+        "85%",
+        "100%"
+      ],
+      "source": "https://www.argentina.gob.ar/sites/default/files/2018/12/vinos_con_denominacion_de_origen_0.pdf"
+    },
+    {
+      "q": "Chile's special DO Secano Interior is reserved for which two grapes?",
+      "answer": "País and Cinsault",
+      "wrong": [
+        "Carignan and País",
+        "Cinsault and Carménère",
+        "Moscatel and País"
+      ],
+      "source": "https://sag.cl/sites/default/files/decreto_ndeg_464.pdf"
+    },
+    {
+      "q": "Tannat's home appellation in France, named as its cradle, is which?",
+      "answer": "Madiran",
+      "wrong": [
+        "Cahors",
+        "Jurançon",
+        "Bergerac"
+      ],
+      "source": "https://www.montevideo.com.uy/Archivo/La-tannat-llego-por-el-puerto-de-Montevideo-uc783622"
+    },
+    {
+      "q": "In Australia, grapes picked on November 15 count toward which vintage?",
+      "answer": "The following calendar year",
+      "wrong": [
+        "The same calendar year",
+        "The year the wine is bottled",
+        "Whichever year the winery chooses"
+      ],
+      "source": "https://www.wineaustralia.com/labelling/further-information/the-blending-rules"
+    },
+    {
+      "q": "What is the most GIs an Australian label may claim?",
+      "answer": "Three",
+      "wrong": [
+        "Two",
+        "Four",
+        "Five"
+      ],
+      "source": "https://www.wineaustralia.com/getmedia/fb571392-5d0c-4f9e-95fd-b7501076280a/REG_BlendingRules_v2.pdf"
+    },
+    {
+      "q": "Which Central Otago subregion is the highest and ripens later than its neighbors?",
+      "answer": "Gibbston",
+      "wrong": [
+        "Bannockburn",
+        "Bendigo",
+        "Alexandra"
+      ],
+      "source": "https://www.nzwine.com/en/regions/central-otago/"
+    },
+    {
+      "q": "Roughly what share of New Zealand's vines grow in Marlborough?",
+      "answer": "About two-thirds",
+      "wrong": [
+        "About one-third",
+        "About half",
+        "About 90%"
+      ],
+      "source": "https://www.nzwine.com/en/regions/marlborough/"
+    },
+    {
+      "q": "Australia's South Eastern Australia zone takes in the whole of which states?",
+      "answer": "New South Wales, Victoria and Tasmania",
+      "wrong": [
+        "Victoria, South Australia and Queensland",
+        "New South Wales, Queensland and Western Australia",
+        "South Australia, Victoria and Tasmania"
+      ],
+      "source": "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+    },
+    {
+      "q": "A single-vineyard unit in South Africa's Wine of Origin scheme may be no larger than what?",
+      "answer": "6 hectares",
+      "wrong": [
+        "2 hectares",
+        "10 hectares",
+        "25 hectares"
+      ],
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Wine-Of-Origin-scheme/"
+    },
+    {
+      "q": "Which overarching region joins South Africa's Coastal Region and Cape South Coast?",
+      "answer": "Cape Coastal",
+      "wrong": [
+        "Western Cape",
+        "Breede River Valley",
+        "Klein Karoo"
+      ],
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Wine-Of-Origin-scheme/"
+    },
+    {
+      "q": "In what year was origin control enforced by law in South Africa?",
+      "answer": "1973",
+      "wrong": [
+        "1925",
+        "1992",
+        "2002"
+      ],
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Wine-Of-Origin-scheme/"
+    },
+    {
+      "q": "Which ward stands outside any district?",
+      "answer": "Cederberg",
+      "wrong": [
+        "Constantia",
+        "Voor-Paardeberg",
+        "Groenekloof"
+      ],
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Wine-Of-Origin-scheme/"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "27 CFR 4.25(e)(1): an American viticultural area is a delimited grape-growing region with distinguishing features, a name and a delineated boundary established under part 9.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "fact": "27 CFR 4.25(e)(3): a viticultural area appellation needs at least 85 percent of the wine from grapes grown in the area, and American wine must be fully finished in the State (or one of the States) where the AVA lies.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "fact": "27 CFR 4.25(e)(4): overlapping viticultural areas may be used together if at least 85 percent of the wine comes from the overlapping area.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "fact": "27 CFR 4.25(b)(1): a country, State or county appellation for American wine needs at least 75 percent of the wine from fruit grown there; a State appellation must be fully finished in that State or an adjacent State; a county appellation in that county's State.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "fact": "27 CFR 4.25(c)-(d): two or three counties in one State, or two or three contiguous States, may be named only if all of the fruit was grown there and the percentage from each is shown on the label (plus or minus 2 percent).",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.25"
+    },
+    {
+      "fact": "27 CFR 4.23(c)(1): a Vitis labrusca variety may be named at 51 percent, with the statement 'contains not less than 51 percent (variety)' unless 75 percent or more is that variety.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.23"
+    },
+    {
+      "fact": "27 CFR 4.23(d): two or more varieties may be named only if all the grapes are of those varieties and each percentage is shown (plus or minus 2 percent).",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.23"
+    },
+    {
+      "fact": "27 CFR 4.26: Estate bottled requires a viticultural area appellation; the winery must be in the AVA, grow all grapes on land it owns or controls in the AVA, and crush, ferment, finish, age and bottle in a continuous process on its premises; 'controlled' means a lease or similar agreement of at least 3 years; no other term may indicate combined growing and bottling.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.26"
+    },
+    {
+      "fact": "27 CFR 4.27(a): vintage wine with a viticultural area appellation needs at least 95 percent from the labeled year; with another appellation, 85 percent.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.27"
+    },
+    {
+      "fact": "27 CFR 4.24(b)(2): semi-generic names include Burgundy, Claret, Chablis, Champagne, Chianti, Madeira, Marsala, Port, Sherry and Tokay; they may be used only with an appellation disclosing the true origin. 4.24(c)(2): Napa Valley and Lake Erie are examples of nongeneric names.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.24"
+    },
+    {
+      "fact": "27 CFR 4.36(b)(1): the alcohol tolerance is 1 percent for wine over 14 percent ABV and 1.5 percent for wine at 14 percent or less.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.36"
+    },
+    {
+      "fact": "27 CFR 4.21(a)(5)-(6): table wine is not over 14 percent alcohol; dessert wine is over 14 and not over 24 percent.",
+      "source": "https://www.ecfr.gov/current/title-27/section-4.21"
+    },
+    {
+      "fact": "27 CFR 9.11: any person may petition TTB to establish an AVA, or change an AVA's boundary or name.",
+      "source": "https://www.ecfr.gov/current/title-27/section-9.11"
+    },
+    {
+      "fact": "27 CFR 9.12(a): an AVA petition must include name evidence (from sources independent of the petitioner), boundary evidence, distinguishing features (climate, geology, soils, physical features, elevation) and USGS maps with a boundary description.",
+      "source": "https://www.ecfr.gov/current/title-27/section-9.12"
+    },
+    {
+      "fact": "TTB: 'Currently, there are 280 established AVAs in the United States.' California has the most AVAs, with 154.",
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"
+    },
+    {
+      "fact": "TTB establishment dates: Augusta (MO) 6/20/1980 is the first AVA; Napa Valley 1/28/1981; Santa Maria Valley 8/5/1981.",
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/ava-establishment-dates"
+    },
+    {
+      "fact": "Wine Institute: California produces an average of 81 percent of total U.S. wine production.",
+      "source": "https://wineinstitute.org/our-industry/statistics/california-us-wine-production/"
+    },
+    {
+      "fact": "California Business and Professions Code 25240: wine labeled with an AVA (other than Napa Valley) located entirely within a county of the 29th class must bear 'Napa Valley' in direct conjunction; applies to all wines bottled on or after January 1, 1990; not required when the AVA name already includes 'Napa Valley'.",
+      "source": "https://california.public.law/codes/ca_bus_and_prof_code_section_25240"
+    },
+    {
+      "fact": "TTB dates: eleven San Luis Obispo County AVAs, including Adelaida District, Creston District, El Pomar District, Paso Robles Estrella District, Paso Robles Geneseo District, Paso Robles Highlands District, Paso Robles Willow Creek District, San Juan Creek, San Miguel District, Santa Margarita Ranch and Templeton Gap District, were established 10/9/2014.",
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/ava-establishment-dates"
+    },
+    {
+      "fact": "TTB AVA table: Adelaida District lies within the Central Coast and Paso Robles AVAs; Rutherford (Napa County) lies within the Napa Valley and North Coast AVAs; Dundee Hills (Yamhill County) lies within the Willamette Valley AVA.",
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"
+    },
+    {
+      "fact": "TTB dates: Sta. Rita Hills 5/31/2001; Crystal Springs of Napa Valley 10/16/2024.",
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/ava-establishment-dates"
+    },
+    {
+      "fact": "OAR 845-010-0915: a single grape variety name requires at least 90 percent of that variety; 18 listed varieties need 75 percent: Cabernet franc, Cabernet Sauvignon, Carmenère, Durif (Petite Sirah), Grenache, Malbec, Marsanne, Merlot, Mourvèdre, Petit Verdot, Roussanne, Sangiovese, Sauvignon blanc, Sémillon, Syrah, Tannat, Tempranillo, Zinfandel.",
+      "source": "https://oregon.public.law/rules/oar_845-010-0915"
+    },
+    {
+      "fact": "OAR 845-010-0920: if the label names Oregon, an Oregon county, or an AVA wholly in Oregon, all grapes must be grown in Oregon and 95 percent within the named appellation.",
+      "source": "https://oregon.public.law/rules/oar_845-010-0920"
+    },
+    {
+      "fact": "OAR 845-010-0923: from January 1, 2023, a label naming a nested AVA wholly or partly within the Willamette Valley AVA must carry the phrase 'Willamette Valley' on the brand label.",
+      "source": "https://oregon.public.law/rules/oar_845-010-0923"
+    },
+    {
+      "fact": "OAR 845-010-0930: semi-generic names may not be used as a class or type on an Oregon wine label; 'Claret' is allowed only for 100 percent Bordeaux-variety blends whose federal label approval was issued between December 1, 2004 and March 10, 2006.",
+      "source": "https://oregon.public.law/rules/oar_845-010-0930"
+    },
+    {
+      "fact": "Oregon Wine Board: Oregon is home to 23 AVAs; eleven are nested inside the Willamette Valley AVA (Chehalem Mountains, Dundee Hills, Eola-Amity Hills, Laurelwood District, Lower Long Tom, McMinnville, Mount Pisgah Polk County, Ribbon Ridge, Tualatin Hills, Van Duzer Corridor, Yamhill-Carlton).",
+      "source": "https://www.oregonwine.org/regions/avas/"
+    },
+    {
+      "fact": "Washington State Wine Commission (stats as of August 2026): Washington is the 2nd largest wine-producing state, with 22 AVAs, 35,000 acres of wine grapes and 6-8 inches of annual rainfall in the Columbia Valley.",
+      "source": "https://www.washingtonwine.org/fast-facts/"
+    },
+    {
+      "fact": "Washington State Wine Commission: the Columbia Valley sits in the rain shadow of the Olympics and Cascades, so irrigation is required in most places; Cabernet Sauvignon, Chardonnay, Merlot, Riesling and Syrah make up over 80 percent of production.",
+      "source": "https://www.washingtonwine.org/grapes-soil-sun/"
+    },
+    {
+      "fact": "Washington State Wine Commission: Columbia Valley soils are wind-blown loess over Missoula Flood deposits and slackwater sediments, on basalt bedrock; Yakima Fold Belt anticlines give south-facing slopes (Rattlesnake Hills, Red Mountain, Candy Mountain, Royal Slope, Horse Heaven Hills, Columbia Gorge).",
+      "source": "https://www.washingtonwine.org/grapes-soil-sun/"
+    },
+    {
+      "fact": "TTB dates: Finger Lakes 9/1/1982; Cayuga Lake 3/25/1988; Seneca Lake 7/3/2003; The Hamptons, Long Island 5/16/1985; North Fork of Long Island 10/10/1986; Long Island 5/15/2001; Lake Erie (NY, OH, PA) 10/21/1983; Hudson River Region 6/4/1982; Niagara Escarpment 9/8/2005; Upper Hudson 12/6/2018.",
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/ava-establishment-dates"
+    },
+    {
+      "fact": "TTB AVA table: Cayuga Lake and Seneca Lake lie within the Finger Lakes AVA; North Fork of Long Island and The Hamptons, Long Island lie within the Long Island AVA.",
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas"
+    },
+    {
+      "fact": "TTB dates: Monticello (VA) 1/23/1984; Texas Hill Country 11/29/1991; Texas High Plains 3/2/1993; Snake River Valley (ID, OR) 3/9/2007; Old Mission Peninsula (MI) 6/8/1987; Leelanau Peninsula (MI) 3/30/1982; Middle Rio Grande Valley (NM) 2/2/1988; Hermann (MO) 8/18/1983.",
+      "source": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/ava-establishment-dates"
+    },
+    {
+      "fact": "Missouri Secretary of State: the Norton/Cynthiana grape, designated Vitis aestivalis, became Missouri's official state grape in 2003; it is called North America's oldest grape variety commercially grown today.",
+      "source": "https://www.sos.mo.gov/symbol/grape"
+    },
+    {
+      "fact": "Wines of Canada: primary regions are the Niagara Peninsula (Ontario) and the Okanagan Valley (British Columbia), with smaller areas in Québec and Nova Scotia; Ontario produces over 90 percent of Canada's Icewine, made primarily from Vidal, Riesling and Cabernet Franc.",
+      "source": "https://winesofcanada.ca/"
+    },
+    {
+      "fact": "Wines of Canada: Ontario appellations are Niagara Peninsula (+10 sub-appellations), Prince Edward County and Lake Erie North Shore (+1); BC lists Okanagan Valley (+4 sub-appellations), Similkameen Valley, Vancouver Island and others; VQA operates in Ontario and British Columbia.",
+      "source": "https://winesofcanada.ca/"
+    },
+    {
+      "fact": "Wines of Canada: Québec uses cold-hardy hybrids such as Frontenac Noir, Blanc and Gris, Vidal, Seyval Blanc and Marquette; Nova Scotia grows mainly hybrids (L'Acadie, Seyval Blanc, Marechal Foch and others) and is known for sparkling wine and aromatic white Tidal Bay.",
+      "source": "https://winesofcanada.ca/"
+    },
+    {
+      "fact": "VQA Ontario: VQA is 100% Ontario; most declarations need 85 percent (vintage 85 percent); 'VQA Niagara Peninsula' means at least 85 percent Niagara grapes, while a sub-appellation such as Four Mile Creek means 100 percent from there.",
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "fact": "VQA Ontario: Icewine grapes freeze naturally on the vine, are harvested below -8 °C and yield juice of at least 35° Brix; Special Select Late Harvest needs 30° Brix, Select Late Harvest 26°, Late Harvest 22°.",
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "fact": "VQA Ontario: wines with hybrid content may use only the Ontario appellation and cannot use terms such as estate bottled, vineyard designation, Traditional Method or Icewine, except Vidal Icewine.",
+      "source": "https://vqaontario.ca/vqa-wine-program/wine-categories-and-labelling/"
+    },
+    {
+      "fact": "Court curriculum guide (Mexico): Mexico is the oldest wine industry outside Europe; from 1595 winemaking in New Spain was prohibited by Spanish law until independence in 1821; the modern industry dates from the 1970s.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf"
+    },
+    {
+      "fact": "Court curriculum guide (Mexico, Certified column): 'No laws!'; Baja California's Valle de Guadalupe has a Mediterranean climate, with southwest-to-northeast valleys bringing Pacific fog and cooling breezes; sandy soils; irrigation essential; Italian, French and Spanish grapes in non-traditional blends.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf"
+    },
+    {
+      "fact": "Chile Decree 464: wine regions are Atacama (Copiapó, Huasco), Coquimbo (Elqui, Limarí, Choapa), Aconcagua (Aconcagua, Casablanca, San Antonio valleys and others), Valle Central (Maipo, Rapel, Curicó, Maule), Sur (Itata, Bío Bío, Malleco) and Austral (Cautín, Osorno).",
+      "source": "https://sag.cl/sites/default/files/decreto_ndeg_464.pdf"
+    },
+    {
+      "fact": "Chile Decree 464 Art. 3-5: a DO on the label needs at least 75 percent of the wine from that place; a named variety at least 75 percent; a vintage at least 75 percent.",
+      "source": "https://sag.cl/sites/default/files/decreto_ndeg_464.pdf"
+    },
+    {
+      "fact": "Chile Decree 464 Art. 5 bis: labels may add 'Andes', 'Entre Cordilleras' or 'Costa' (Andes, the intermediate depression, the Pacific) if at least 85 percent of the wine comes from areas declared as that type.",
+      "source": "https://sag.cl/sites/default/files/decreto_ndeg_464.pdf"
+    },
+    {
+      "fact": "Chile Decree 464 Art. 3 bis: the special DO 'Secano Interior' is for País and Cinsault from listed dry-farmed areas such as Cauquenes, Chillán, Coelemu and Yumbel.",
+      "source": "https://sag.cl/sites/default/files/decreto_ndeg_464.pdf"
+    },
+    {
+      "fact": "Wines of Chile: Limarí is recognized for calcareous soils and Chardonnay; its morning fog is called 'la camanchaca'; Casablanca is Chile's pioneering cool-climate region; Colchagua has the largest Carménère plantings; Maule has old dry-farmed, head-trained vines and Carignan.",
+      "source": "https://www.winesofchile.org/winegrowing-regions/"
+    },
+    {
+      "fact": "INV report: Law 25.163 sets three tiers: Indicación de Procedencia (IP) for table and regional wines, needing at least 80 percent from the named area; Indicación Geográfica (IG) for quality wines; Denominación de Origen Controlada (DOC), the strictest.",
+      "source": "https://www.argentina.gob.ar/sites/default/files/2018/12/vinos_con_denominacion_de_origen_0.pdf"
+    },
+    {
+      "fact": "INV report (2022 data): Argentina has 110 IGs and 2 DOCs; the most used IGs in 2022 were Valle de Uco (41 percent), Patagonia (13), Valles del Famatina (8), Valles Calchaquíes (7) and Mendoza (7); the most used DOC was Luján de Cuyo.",
+      "source": "https://www.argentina.gob.ar/sites/default/files/2018/12/vinos_con_denominacion_de_origen_0.pdf"
+    },
+    {
+      "fact": "INV list: the DOCs are Luján de Cuyo (Resolution C.15/2005) and San Rafael (C.31/2007), both in Mendoza; Cuyo IG covers Mendoza, San Juan and San Luis; Patagonia IG is interjurisdictional; Valle de Uco IG covers the San Carlos, Tunuyán and Tupungato departments; Paraje Altamira IG is in San Carlos.",
+      "source": "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina.pdf_.pdf.pdf_.pdf"
+    },
+    {
+      "fact": "INV list: IGs outside Cuyo and Patagonia include Valle de Cafayate and Cachi (Salta), Belén (Catamarca), Famatina and Chilecito (La Rioja), Colonia Caroya (Córdoba), and Balcarce and Chapadmalal (Buenos Aires); only 'Valle de Cafayate' may be used because Cafayate is a registered trademark.",
+      "source": "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina.pdf_.pdf.pdf_.pdf"
+    },
+    {
+      "fact": "Montevideo Portal, citing the Instituto Nacional de Vitivinicultura's 2020 harvest statistics: of Uruguay's 5,991 ha of vineyard, 1,610 ha are Tannat, grown mainly in Canelones in the south; Tannat's cradle is the Madiran appellation and Uruguay was the first country to cultivate it [outside France].",
+      "source": "https://www.montevideo.com.uy/Archivo/La-tannat-llego-por-el-puerto-de-Montevideo-uc783622"
+    },
+    {
+      "fact": "Wine Australia GI register: the South Eastern Australia zone incorporates the whole of NSW, Victoria and Tasmania and only part of Queensland and South Australia; the Hunter Valley zone holds the Hunter region with subregions Broke Fordwich, Pokolbin and Upper Hunter Valley; Great Southern's subregions are Albany, Denmark, Frankland River, Mount Barker and Porongurup; Eden Valley's subregion is High Eden; Adelaide Hills' subregions are Lenswood and Piccadilly Valley.",
+      "source": "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+    },
+    {
+      "fact": "Wine Australia blending rules: single vintage, variety and GI claims need at least 85 percent; up to three GIs may be claimed, each over 5 percent, listed in descending order; 83% Barossa Valley + 13% Heathcote + 4% Pemberton may be labeled 'Barossa Valley Heathcote' but not Pemberton.",
+      "source": "https://www.wineaustralia.com/getmedia/fb571392-5d0c-4f9e-95fd-b7501076280a/REG_BlendingRules_v2.pdf"
+    },
+    {
+      "fact": "Wine Australia: fruit harvested after 1 September and on or before 31 December takes the following calendar year as its vintage.",
+      "source": "https://www.wineaustralia.com/labelling/further-information/the-blending-rules"
+    },
+    {
+      "fact": "Wine Australia: descriptors such as 'Barossa style' or 'Champagne method' are not permitted, even when the true origin is shown.",
+      "source": "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms"
+    },
+    {
+      "fact": "Wine Australia: the Label Integrity Program (Part VIA, Wine Australia Act 2013) requires everyone in the supply chain to keep records backing vintage, variety and GI claims, made within three days of supply, receipt or processing.",
+      "source": "https://www.wineaustralia.com/labelling/label-integrity-program"
+    },
+    {
+      "fact": "New Zealand Winegrowers: regions extend 1,600 km from Northland to Central Otago; no vineyard is more than 130 km from the ocean; most regions are on the eastern coasts in the mountains' rain shadow.",
+      "source": "https://www.nzwine.com/en/regions/"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Marlborough has almost 31,000 ha of vines, around two-thirds of the national total; its subregions are the Wairau Valley, the Southern Valleys and the Awatere Valley (cooler, drier, windier).",
+      "source": "https://www.nzwine.com/en/regions/marlborough/"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Hawke's Bay is the second largest region; vines were first planted in 1851 by Marist missionaries; the plains include the Gimblett Gravels and Bridge Pa Triangle.",
+      "source": "https://www.nzwine.com/en/regions/hawkes-bay/"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Central Otago subregions are Gibbston (highest, ripens later), Bannockburn (warm, dry; harvest up to a month ahead), Cromwell/Lowburn/Pisa, Bendigo, Wanaka and Alexandra (most southerly).",
+      "source": "https://www.nzwine.com/en/regions/central-otago/"
+    },
+    {
+      "fact": "New Zealand Winegrowers: Sustainable Winegrowing New Zealand launched in 1995 and certifies 98 percent of vineyard area; 10 percent of wineries hold organic certification.",
+      "source": "https://www.nzwine.com/en/sustainability/"
+    },
+    {
+      "fact": "WOSA: origin control was enforced by law in 1973; 'Wine of Origin' with a production area means 100 percent of the grapes come from that area.",
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Wine-Of-Origin-scheme/"
+    },
+    {
+      "fact": "WOSA: units run geographical unit, region, district, ward, unit for estate wine, and single vineyard (no more than 6 hectares); six geographical units are Western Cape, Northern Cape, Eastern Cape, KwaZulu-Natal, Limpopo and Free State; geographical units were provided for on 2 April 1993.",
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Wine-Of-Origin-scheme/"
+    },
+    {
+      "fact": "WOSA: Cape Coastal is an overarching region including the Cape South Coast and the Coastal Region, for blending maritime wines; the Cederberg and Bamboes Bay wards are not part of a district; estate wine is grown, produced and bottled on that unit.",
+      "source": "https://www.wosa.co.za/The-Industry/Wines-Of-Origin/Wine-Of-Origin-scheme/"
+    },
+    {
+      "fact": "WOSA: the Western Cape has five regions: Breede River Valley, Cape South Coast, Coastal Region, Klein Karoo and Olifants River; there are 32 districts and some 102 wards; around 86,525 ha of wine grapes over some 800 km.",
+      "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/"
+    },
+    {
+      "fact": "WOSA: Constantia, in the Cape Town district, is the cradle of Cape winemaking, origin of Constantia dessert wines famous in 18th-century Europe; the Northern Cape's Orange River area stretches along 350 km of river; Sutherland, South Africa's coldest town, is the center of a high-altitude Northern Cape district.",
+      "source": "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/"
+    },
+    {
+      "fact": "Court theory guide: Areas of Study for wine law include 'Districts vs Wards in South Africa'.",
+      "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=29"
+    }
+  ],
+  "unverified": [
+    "Morocco: the Court lists it, but no official Moroccan source (ONSSA or similar) could be read. Secondary sources disagree on AOG/AOC counts and dates (Coteaux de l'Atlas 1998 vs 2001), so it is not taught.",
+    "Mexico's share of production from Baja California and Valle de Guadalupe differs by source (about 70%, 75% or 90%); the chapter gives no figure. Casa Madero's 1597 founding was not confirmed on the winery's own site.",
+    "Uruguay: the vineyard figures come from a news report citing the national institute's 2020 harvest statistics, not from INAVI's own pages (its site did not render). The story that Pascual Harriague brought Tannat is disputed by newer research (entry through Montevideo port), so neither version is stated.",
+    "South Africa: WOSA's Wine of Origin page lists six geographical units (Western, Northern, Eastern Cape, KwaZulu-Natal, Limpopo, Free State), matching the Court; WOSA's Winelands page lists the Western Cape plus six others including North West. The chapter uses the six on the WO page.",
+    "Australia: the blending-rules sheet suggests multiple GIs must total 95%, but the figure sits in a table whose layout did not extract cleanly; only the 'up to three GIs, each over 5%' rule is stated.",
+    "Oregon's AVA count (23) is from the Oregon Wine Board page, which may predate the newest AVAs. Washington's 22 AVAs are 'as of August 2026'; TTB established Columbia Hills on 8/17/2026 and it may not be counted.",
+    "Washington's day-night temperature swing appears as 30-40°F on one Commission page and 35-47°F on another; left out.",
+    "Argentina: the Court's 'Center Region' and 'North Region' are not IG names on the INV list; the chapter only names IGs from those provinces. The 110-IG count comes from an INV report on 2022 sales; newer IGs since then were not checked. Wines of Argentina's site is a JavaScript app and could not be read.",
+    "Chile: the Court writes 'Astral'; Decree 464 says 'Austral'. The decree PDF read on SAG's site may not include the latest amendments (e.g. Rapa Nui and Chiloé, reported in 2024).",
+    "Napa's conjunctive labeling statute was read on a public mirror (california.public.law); the official leginfo page did not render."
+  ],
+  "court": {
+    "outcome": "Laws regarding any of the areas of study above, such as grape growing, grape varieties planted, and wine-making techniques. Especially those that affect the taste of the resulting wine.",
+    "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf#page=29",
+    "coverage": [
+      {
+        "topic": "United States · Wine law and AVAs",
+        "guide": "AVA petitions, appellation percentages, estate, vintage, semi-generic names, alcohol tolerance.",
+        "where": "U.S. law: AVAs and the TTB label"
+      },
+      {
+        "topic": "United States · California",
+        "guide": "Share of U.S. wine, 154 AVAs, Napa conjunctive labeling, Paso Robles districts.",
+        "where": "California, Oregon and Washington"
+      },
+      {
+        "topic": "United States · Oregon",
+        "guide": "90/95/100 rules, 18 grapes at 75%, Willamette nesting, semi-generic ban.",
+        "where": "California, Oregon and Washington"
+      },
+      {
+        "topic": "United States · Washington",
+        "guide": "Rain shadow, irrigation, basalt, flood deposits and loess, main grapes.",
+        "where": "California, Oregon and Washington"
+      },
+      {
+        "topic": "United States · New York State",
+        "guide": "Finger Lakes with Cayuga and Seneca Lake; Long Island with North Fork and Hamptons.",
+        "where": "New York, other states, Canada and Mexico"
+      },
+      {
+        "topic": "United States · Other wine-producing states",
+        "guide": "Augusta first AVA; Norton; Virginia, Texas, Idaho, Michigan, New Mexico AVAs.",
+        "where": "New York, other states, Canada and Mexico"
+      },
+      {
+        "topic": "Canada · Ontario",
+        "guide": "VQA 85%/100% rules, Niagara sub-appellations, Icewine and late-harvest Brix.",
+        "where": "New York, other states, Canada and Mexico"
+      },
+      {
+        "topic": "Canada · British Columbia",
+        "guide": "Okanagan Valley and its 4 sub-appellations; VQA.",
+        "where": "New York, other states, Canada and Mexico"
+      },
+      {
+        "topic": "Canada · Nova Scotia and Québec",
+        "guide": "Cold-hardy hybrids; Tidal Bay and sparkling in Nova Scotia.",
+        "where": "New York, other states, Canada and Mexico"
+      },
+      {
+        "topic": "Mexico · Baja, Valle de Guadalupe",
+        "guide": "Oldest industry outside Europe; Pacific fog; sandy soils; no appellation law.",
+        "where": "New York, other states, Canada and Mexico"
+      },
+      {
+        "topic": "Argentina · Cuyo IG and Patagonia IG",
+        "guide": "IP/IG/DOC tiers; Cuyo = Mendoza, San Juan, San Luis; Patagonia spans provinces.",
+        "where": "Argentina, Chile and Uruguay"
+      },
+      {
+        "topic": "Argentina · North and Center regions",
+        "guide": "IGs in Salta, Catamarca, La Rioja, Córdoba and Buenos Aires; Valle de Cafayate.",
+        "where": "Argentina, Chile and Uruguay"
+      },
+      {
+        "topic": "Chile · Atacama, Coquimbo, Aconcagua, Valle Central, Sur, Austral",
+        "guide": "Decree 464 regions and subregions; 75% rule; Costa/Entre Cordilleras/Andes.",
+        "where": "Argentina, Chile and Uruguay"
+      },
+      {
+        "topic": "Uruguay · Important regions and grapes",
+        "guide": "Tannat, mostly in Canelones; Madiran origin.",
+        "where": "Argentina, Chile and Uruguay"
+      },
+      {
+        "topic": "Australia · Southeastern Australia, NSW, Victoria, SA, WA, Tasmania",
+        "guide": "Zone/region/subregion GIs, key subregions, blending rules, Label Integrity Program.",
+        "where": "Australia and New Zealand"
+      },
+      {
+        "topic": "New Zealand · North Island and South Island",
+        "guide": "Hawke's Bay, Marlborough subregions, Central Otago subregions, SWNZ.",
+        "where": "Australia and New Zealand"
+      },
+      {
+        "topic": "South Africa · Northern, Eastern, Western Cape, KwaZulu-Natal, Limpopo, Free State",
+        "guide": "Six geographical units; Western Cape's five regions; districts vs wards.",
+        "where": "South Africa"
+      },
+      {
+        "topic": "North Africa · Morocco",
+        "guide": "Listed by the Court. No official source could be read, so it is not taught here yet.",
+        "where": "South Africa"
+      }
+    ]
+  },
+  "v3": {
+    "video": null,
+    "sections": [
+      {
+        "name": "U.S. law: AVAs and the TTB label",
+        "video": {
+          "youtubeId": "gx7X0mcvnN0",
+          "title": "TTB Boot Camp for Wineries: Beyond the Basics-American Viticultural Areas (AVAs)",
+          "by": "USTTBgov",
+          "length": "29:31"
+        },
+        "keyPoints": [
+          {
+            "big": "280 AVAS",
+            "line": "approved by TTB; California alone has 154."
+          },
+          {
+            "big": "PETITION",
+            "line": "must prove name, boundary and distinguishing features."
+          },
+          {
+            "big": "100%",
+            "line": "for two or three counties or states, each share shown."
+          },
+          {
+            "big": "3-YEAR LEASE",
+            "line": "is the least that counts as 'controlled' for Estate bottled."
+          },
+          {
+            "big": "SEMI-GENERIC",
+            "line": "names like Chablis need the true origin beside them."
+          }
+        ],
+        "read": {
+          "bigIdea": "Every place on a U.S. label is a legal promise.",
+          "where": "From Level 2 you know **75% grape**, **85% AVA**, **95% vintage**. At Advanced, learn where those numbers come from: **27 CFR part 4** for labels and **part 9** for AVAs. TTB lists **280** AVAs today.",
+          "stopsTitle": "Five rules, one label at a time",
+          "stops": [
+            {
+              "name": "The AVA petition",
+              "note": "27 CFR 9.12",
+              "text": "Anyone may petition. The file must prove the **name**, the **boundary** and the **distinguishing features**: climate, geology, soils, physical features and elevation."
+            },
+            {
+              "name": "State, county and AVA",
+              "note": "27 CFR 4.25",
+              "text": "A state or county needs **75%**; an AVA **85%**, and the wine must be finished in the AVA's state. Overlapping AVAs share one name at 85% from the overlap."
+            },
+            {
+              "name": "Several counties or states",
+              "note": "multi-appellations",
+              "text": "Two or three counties, or two or three **contiguous** states, need **100%** of the fruit, with each share printed on the label."
+            },
+            {
+              "name": "Estate bottled",
+              "note": "27 CFR 4.26",
+              "text": "The winery is in the AVA, grows every grape on land it owns or **controls** (a lease of **3 years** or more) and keeps the wine on site from crush to bottle."
+            },
+            {
+              "name": "Old names, new rules",
+              "note": "27 CFR 4.24",
+              "text": "**Burgundy**, **Chablis**, **Champagne**, **Port** and **Sherry** are **semi-generic** in U.S. law: allowed only next to the true origin."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "How much fruit each place name needs:",
+          "mixup": "A single **county** needs **75%**. Two or three **counties** need **100%**, with each share shown.",
+          "sayIt": "That AVA on the label means at least 85% of the grapes grew there."
+        },
+        "check": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "name": "California, Oregon and Washington",
+        "video": {
+          "youtubeId": "mAJM8fFdsdM",
+          "title": "The Wines of Washington",
+          "by": "GuildSomm International",
+          "length": "10:51"
+        },
+        "keyPoints": [
+          {
+            "big": "81%",
+            "line": "of U.S. wine comes from California, on average."
+          },
+          {
+            "big": "NAPA VALLEY",
+            "line": "must appear beside any Napa sub-AVA since 1990."
+          },
+          {
+            "big": "OREGON 90%",
+            "line": "for most grape names; 75% for 18 listed grapes."
+          },
+          {
+            "big": "WILLAMETTE VALLEY",
+            "line": "must appear beside its nested AVAs since 2023."
+          },
+          {
+            "big": "BASALT",
+            "line": "under flood deposits and loess in the Columbia Valley."
+          }
+        ],
+        "read": {
+          "bigIdea": "The West Coast states write their own extra rules.",
+          "where": "California makes on average **81%** of U.S. wine and holds **154** AVAs. Napa, Oregon and Washington each add something federal law does not: a **conjunctive label**, stricter **percentages**, or a soil story you must tell.",
+          "stopsTitle": "Four stops up the coast",
+          "stops": [
+            {
+              "name": "Napa",
+              "note": "state law, 1990",
+              "text": "A wine labeled with a Napa sub-AVA such as Rutherford must also say **Napa Valley**. It applies to every wine bottled since **January 1, 1990**."
+            },
+            {
+              "name": "Paso Robles",
+              "note": "eleven at once",
+              "text": "Eleven district AVAs, including **Adelaida District** and **Templeton Gap District**, were all established on **October 9, 2014**."
+            },
+            {
+              "name": "Oregon",
+              "note": "OAR 845-010",
+              "text": "**90%** for a grape name (**75%** for 18 listed grapes, but not Pinot Noir), **95%** for the named place and **100%** Oregon fruit. Semi-generic names are banned. Since 2023, nested AVAs must add **Willamette Valley**."
+            },
+            {
+              "name": "Washington",
+              "note": "Columbia Valley",
+              "text": "Rain shadow, **6-8 inches** of rain, irrigation nearly everywhere. Wind-blown **loess** sits on **Missoula Flood** deposits over **basalt**. Five grapes make over 80% of the wine."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "Federal law is the floor. Oregon builds higher:",
+          "mixup": "Oregon's **90%** is for most grapes. **Cabernet Sauvignon** and **Syrah** sit on the **75%** list; **Pinot Noir** does not.",
+          "sayIt": "Oregon Pinot Noir has to be at least 90% Pinot by state law."
+        },
+        "check": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "name": "New York, other states, Canada and Mexico",
+        "video": {
+          "youtubeId": "LI35EEBCHH0",
+          "title": "New York Wines: Finger Lakes AVA",
+          "by": "New York Wines",
+          "length": "9:32"
+        },
+        "keyPoints": [
+          {
+            "big": "AUGUSTA",
+            "line": "Missouri, was the first AVA, in June 1980."
+          },
+          {
+            "big": "NORTON",
+            "line": "is Vitis aestivalis and Missouri's state grape."
+          },
+          {
+            "big": "35° BRIX",
+            "line": "and below -8 °C at picking for VQA Icewine."
+          },
+          {
+            "big": "VIDAL",
+            "line": "is the only hybrid allowed as VQA Icewine."
+          },
+          {
+            "big": "1595-1821",
+            "line": "Spanish law banned winemaking in New Spain."
+          }
+        ],
+        "read": {
+          "bigIdea": "The rest of North America: old roots, new rules.",
+          "where": "New York nests AVAs inside AVAs: **Cayuga Lake** and **Seneca Lake** sit in the **Finger Lakes**; **North Fork** and **The Hamptons** sit in **Long Island**. The first AVA, though, was **Augusta**, Missouri.",
+          "stopsTitle": "Four stops, east, north and south",
+          "stops": [
+            {
+              "name": "Other states",
+              "note": "know the AVA",
+              "text": "**Monticello** (Virginia), **Texas High Plains** and **Texas Hill Country**, **Snake River Valley** (Idaho and Oregon), **Old Mission** and **Leelanau** peninsulas (Michigan). Missouri's state grape is **Norton**, a Vitis aestivalis."
+            },
+            {
+              "name": "Ontario",
+              "note": "VQA",
+              "text": "**Niagara Peninsula** has 10 sub-appellations. The region name means **85%**; a sub-appellation such as Four Mile Creek means **100%**. Icewine: picked below **-8 °C**, juice at **35° Brix**."
+            },
+            {
+              "name": "B.C., Québec, Nova Scotia",
+              "note": "the other provinces",
+              "text": "The **Okanagan Valley** has 4 sub-appellations. **Québec** leans on hybrids like **Frontenac** and **Marquette**. **Nova Scotia** is known for sparkling and the white **Tidal Bay**."
+            },
+            {
+              "name": "México",
+              "note": "Baja California",
+              "text": "The Court calls Mexico the **oldest wine industry outside Europe**. **Valle de Guadalupe** is Mediterranean, cooled by Pacific fog, on sandy soils, with no appellation law."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "Ontario sorts sweet wine by sugar at harvest:",
+          "mixup": "**Augusta** (Missouri, 1980) was the **first** AVA. **Napa Valley** (1981) was the **second**.",
+          "sayIt": "This Icewine was picked frozen on the vine, so the sweetness is all natural."
+        },
+        "check": [
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "name": "Argentina, Chile and Uruguay",
+        "video": {
+          "youtubeId": "b7iYhOWC59w",
+          "title": "The Wines of Chile",
+          "by": "GuildSomm International",
+          "length": "16:00"
+        },
+        "keyPoints": [
+          {
+            "big": "SIX REGIONS",
+            "line": "Atacama, Coquimbo, Aconcagua, Valle Central, Sur, Austral."
+          },
+          {
+            "big": "COSTA",
+            "line": "or Entre Cordilleras or Andes on a label needs 85%."
+          },
+          {
+            "big": "SECANO INTERIOR",
+            "line": "is Chile's special DO for País and Cinsault."
+          },
+          {
+            "big": "TWO DOCS",
+            "line": "in Argentina: Luján de Cuyo and San Rafael."
+          },
+          {
+            "big": "TANNAT",
+            "line": "is Uruguay's signature, mostly from Canelones."
+          }
+        ],
+        "read": {
+          "bigIdea": "South America labels by valley, and by altitude.",
+          "where": "Chile's **Decree 464** draws the map: six **regions**, then **subregions**, **zones** and **areas**. Argentina's **Law 25.163** sets three tiers. Uruguay's story is one grape, **Tannat**.",
+          "stopsTitle": "Four stops, west to east",
+          "stops": [
+            {
+              "name": "Chile's map",
+              "note": "Decree 464",
+              "text": "**Atacama**, **Coquimbo**, **Aconcagua**, **Valle Central**, **Sur** and **Austral**. A DO, grape or vintage needs **75%**. **Limarí** is known for calcareous soils and Chardonnay."
+            },
+            {
+              "name": "Chile's new words",
+              "note": "east to west",
+              "text": "Labels may add **Andes**, **Entre Cordilleras** or **Costa** when **85%** comes from that kind of area. **Secano Interior** is a special DO for **País** and **Cinsault** from dry-farmed land."
+            },
+            {
+              "name": "Argentina",
+              "note": "Law 25.163",
+              "text": "**IP** (80%, table wine), **IG** and **DOC**. The only DOCs are **Luján de Cuyo** and **San Rafael**. **Cuyo IG** covers Mendoza, San Juan and San Luis; **Patagonia IG** spans several provinces."
+            },
+            {
+              "name": "Uruguay",
+              "note": "Tannat",
+              "text": "In 2020, **Tannat** covered 1,610 of 5,991 ha, mostly in **Canelones**. Its cradle is **Madiran** in France."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "Argentina's three tiers, strictest on top:",
+          "mixup": "**Cuyo IG** is a whole region (Mendoza, San Juan, San Luis). **Luján de Cuyo DOC** is one small district of Mendoza.",
+          "sayIt": "Uruguayan Tannat: dark and firm, made for grilled meat."
+        },
+        "check": [
+          13,
+          14,
+          15
+        ]
+      },
+      {
+        "name": "Australia and New Zealand",
+        "video": {
+          "youtubeId": "dt6BkhgyQ_Q",
+          "title": "Central Otago Wine Region",
+          "by": "New Zealand Wine",
+          "length": "4:58"
+        },
+        "keyPoints": [
+          {
+            "big": "THREE GIS",
+            "line": "at most on a label, each over 5% of the blend."
+          },
+          {
+            "big": "SEPT 1",
+            "line": "or later picks count as next year's vintage."
+          },
+          {
+            "big": "LIP",
+            "line": "every seller keeps records backing the label."
+          },
+          {
+            "big": "TWO-THIRDS",
+            "line": "of New Zealand's vines are in Marlborough."
+          },
+          {
+            "big": "GIBBSTON",
+            "line": "is Central Otago's highest, latest subregion."
+          }
+        ],
+        "read": {
+          "bigIdea": "Down Under, the label is backed by a paper trail.",
+          "where": "Australia's **GIs** run **zone**, **region**, **subregion**, and the **Label Integrity Program** makes everyone in the chain keep records. New Zealand's regions span **1,600 km**, none more than **130 km** from the sea.",
+          "stopsTitle": "Four stops across the Tasman",
+          "stops": [
+            {
+              "name": "Australian GIs",
+              "note": "the map",
+              "text": "**South Eastern Australia** is a zone covering all of NSW, Victoria and Tasmania. Know subregions: **Pokolbin** (Hunter), **Frankland River** (Great Southern), **High Eden** (Eden Valley)."
+            },
+            {
+              "name": "Blending rules",
+              "note": "Wine Australia",
+              "text": "One claim needs **85%**. A blend may name up to **three GIs**, each over **5%**, in descending order. Grapes picked after **September 1** count as next year's vintage."
+            },
+            {
+              "name": "Marlborough and Hawke's Bay",
+              "note": "the big two",
+              "text": "**Marlborough** holds about **two-thirds** of the vines: Wairau, Southern Valleys, Awatere. **Hawke's Bay**, planted from **1851**, has the **Gimblett Gravels**."
+            },
+            {
+              "name": "Central Otago",
+              "note": "the far south",
+              "text": "**Gibbston** is highest and ripens later. **Bannockburn** is warm and dry and can pick a month early. **Alexandra** is most southerly."
+            }
+          ],
+          "visual": 1,
+          "visualIntro": "Central Otago, subregion by subregion:",
+          "mixup": "**Gibbston** is the high, late-ripening subregion. **Bannockburn** is the warm, early one.",
+          "sayIt": "Bannockburn Pinot: from one of Central Otago's warmest, driest spots."
+        },
+        "check": [
+          18,
+          19,
+          20
+        ]
+      },
+      {
+        "name": "South Africa",
+        "video": {
+          "youtubeId": "21Vtcu5Sxbo",
+          "title": "Understanding South Africa Part 1 for WSET L3 - Intro to South Africa With Working Written Question",
+          "by": "Wine With Jimmy",
+          "length": "24:04"
+        },
+        "keyPoints": [
+          {
+            "big": "1973",
+            "line": "the year origin control became law in South Africa."
+          },
+          {
+            "big": "100%",
+            "line": "from the named place on any Wine of Origin label."
+          },
+          {
+            "big": "SIX UNITS",
+            "line": "Western, Northern, Eastern Cape, KZN, Limpopo, Free State."
+          },
+          {
+            "big": "CAPE COASTAL",
+            "line": "joins the Coastal Region and the Cape South Coast."
+          },
+          {
+            "big": "6 HECTARES",
+            "line": "is the most a single vineyard unit can cover."
+          }
+        ],
+        "read": {
+          "bigIdea": "Wine of Origin: from a whole unit to one vineyard.",
+          "where": "From Level 2 you know the WO ladder. At Advanced, name all **six geographical units** and the Western Cape's **five regions**, and explain **districts vs wards**.",
+          "stopsTitle": "Five steps down the ladder",
+          "stops": [
+            {
+              "name": "Geographical unit",
+              "note": "six of them",
+              "text": "**Western Cape**, **Northern Cape**, **Eastern Cape**, **KwaZulu-Natal**, **Limpopo** and **Free State**."
+            },
+            {
+              "name": "Region",
+              "note": "five in the Western Cape",
+              "text": "**Breede River Valley**, **Cape South Coast**, **Coastal Region**, **Klein Karoo**, **Olifants River**. **Cape Coastal** is an overarching region for blending maritime wines."
+            },
+            {
+              "name": "District",
+              "note": "32 of them",
+              "text": "Larger and less uniform than a ward but still with a **distinctive climate**, often drawn by mountains and rivers: **Stellenbosch**, **Paarl**, **Robertson**."
+            },
+            {
+              "name": "Ward",
+              "note": "about 102",
+              "text": "Small and fairly uniform, like **Constantia**. Some wards, such as **Cederberg** and **Bamboes Bay**, belong to no district."
+            },
+            {
+              "name": "Estate and single vineyard",
+              "note": "the smallest",
+              "text": "**Estate wine** is grown, made and bottled on one unit. A **single vineyard** may not exceed **6 hectares**."
+            }
+          ],
+          "visual": 0,
+          "visualIntro": "The units, largest first:",
+          "mixup": "**Cape Coastal** is an overarching region. **Coastal Region** is one of the Western Cape's five regions inside it.",
+          "sayIt": "Constantia: cool sea breezes, and the oldest wine story in the Cape."
+        },
+        "check": [
+          23,
+          24,
+          25
+        ]
+      }
+    ]
+  }
+}

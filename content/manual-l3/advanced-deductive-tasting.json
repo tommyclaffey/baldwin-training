@@ -1,0 +1,1483 @@
+{
+ "program": "somm",
+ "programLevel": 3,
+ "part": 2,
+ "number": 7,
+ "slug": "advanced-deductive-tasting",
+ "title": "The Advanced tasting: six wines in 25 minutes",
+ "script": "Chapter seven",
+ "lead": "How the Advanced verbal tasting runs, what each part of the Advanced and Master grid asks, how to build initial and final conclusions, the core grapes and regions, and what makes a wine classic.",
+ "minutes": 30,
+ "intro": {
+  "script": "Start here",
+  "title": "SIX WINES, OUT LOUD",
+  "text": "At Advanced you taste six wines in 25 minutes and speak every note to a panel of Master Sommeliers. They can only score what they hear.",
+  "tiers": [
+   {
+    "name": "Sight",
+    "note": "clarity to gas evidence"
+   },
+   {
+    "name": "Nose",
+    "note": "faults, age, fruit, non-fruit, earth, mineral, oak"
+   },
+   {
+    "name": "Palate",
+    "note": "structure, then confirm the nose"
+   },
+   {
+    "name": "Conclusions",
+    "note": "initial, then final"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Sight and nose",
+   "source": "Court of Master Sommeliers, Americas, Advanced and Master Deductive Tasting Format (2024)",
+   "lines": [
+    {
+     "label": "Sight",
+     "text": "Eight lines: clarity, color intensity, primary and secondary color, rim variation and staining (reds only), tearing and gas evidence. Intensity runs from translucent to opaque."
+    },
+    {
+     "label": "Nose",
+     "text": "Minor faults and an age call come first, then fruit, fruit condition, non-fruit, earth, mineral and oak."
+    }
+   ],
+   "know": [
+    "White secondary colors: silver, green, copper, gold, brown. Red: blue, magenta, ruby, orange, garnet, brown.",
+    "Aromatic intensity runs delicate, medium minus, medium, medium plus, powerful.",
+    "Fruit condition has twelve choices, from tart and ripe to jammy, liqueur and oxidized.",
+    "Non-fruit splits into notes from the grape (flowers, pepper, petrol) and from winemaking (yeast, butter, toast, bubblegum).",
+    "Oak asks four things: is new oak present, how intense, which descriptors, and which type."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "The nose, in grid order",
+     "items": [
+      {
+       "name": "Minor faults",
+       "text": "Barnyard, nail polish remover, struck match, balsamic vinegar",
+       "meta": "when apparent"
+      },
+      {
+       "name": "Intensity and age",
+       "text": "Delicate to powerful; youthful, developing or vinous",
+       "meta": "two lines"
+      },
+      {
+       "name": "Fruit",
+       "text": "Type, then condition: tart to liqueur or oxidized",
+       "meta": "two lines"
+      },
+      {
+       "name": "Non-fruit, earth, mineral",
+       "text": "From the grape or from winemaking; forest floor; wet stone, chalk, flint",
+       "meta": "three lines"
+      },
+      {
+       "name": "Oak",
+       "text": "New oak yes or no, intensity, descriptors, type",
+       "meta": "French, American, Eastern European"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "WHITE",
+       "title": "Water white to gold",
+       "text": "Primary: water white, straw, yellow, gold\nSecondary: silver, green, copper, gold, brown\nNo rim or staining lines"
+      },
+      {
+       "label": "RED",
+       "title": "Purple, ruby, garnet",
+       "text": "Secondary: blue, magenta, ruby, orange, garnet, brown\nRim variation: yes or no\nStaining: none to heavy"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Structure and palate",
+   "source": "Court of Master Sommeliers, Americas, Advanced and Master Deductive Tasting Format (2024); Initial and Final Conclusions guide (2024)",
+   "lines": [
+    {
+     "label": "Structure",
+     "text": "Sweetness has seven steps, from bone dry to lusciously sweet. Acidity, alcohol, body and tannin volume each run on five steps."
+    },
+    {
+     "label": "Palate",
+     "text": "Then confirm the nose: fruit, condition, non-fruit, earth, mineral and oak. Has anything changed? Finish with balance, length and complexity."
+    }
+   ],
+   "know": [
+    "Phenolic bitterness is a white-wine line; tannin volume and tannin texture are red-wine lines.",
+    "Tannin texture choices include silky, soft, gritty, coarse, rough, stalky and hard.",
+    "Texture is noted when apparent: lean, linear, crisp, soft, creamy, round, waxy, oily, viscous.",
+    "The palate asks: has the fruit condition turned tart? A change from nose to palate is a climate clue.",
+    "Balance is yes or no, and you say which element dominates."
+   ],
+   "visuals": [
+    {
+     "type": "scale",
+     "title": "Sweetness, seven steps",
+     "rows": [
+      {
+       "name": "Bone dry",
+       "value": "step 1",
+       "pct": 0.14
+      },
+      {
+       "name": "Dry",
+       "value": "step 2",
+       "pct": 0.29
+      },
+      {
+       "name": "Dry, slight residual sugar",
+       "value": "step 3",
+       "pct": 0.43
+      },
+      {
+       "name": "Off-dry",
+       "value": "step 4",
+       "pct": 0.57
+      },
+      {
+       "name": "Medium-sweet",
+       "value": "step 5",
+       "pct": 0.71
+      },
+      {
+       "name": "Sweet",
+       "value": "step 6",
+       "pct": 0.86
+      },
+      {
+       "name": "Lusciously sweet",
+       "value": "step 7",
+       "pct": 1
+      }
+     ],
+     "note": "The Certified grid has two: dry or off-dry."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "WHITE",
+       "title": "Bitterness, no tannin",
+       "text": "Sweetness, acidity, alcohol, body\nPhenolic bitterness: yes or no\nTexture when apparent"
+      },
+      {
+       "label": "RED",
+       "title": "Tannin, two ways",
+       "text": "Sweetness, acidity, alcohol, body\nTannin volume: low to high\nTannin texture: silky to hard"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Initial and final conclusions",
+   "source": "Court of Master Sommeliers, Americas, Deductive Tasting Format (2024); Initial and Final Conclusions guide (3.2024); Advanced Sommelier Level Wines",
+   "lines": [
+    {
+     "label": "Initial",
+     "text": "Possible grapes, climate (cool, moderate or warm), possible countries, and an age range: 1-3, 3-5, 5-10 or 10+ years."
+    },
+    {
+     "label": "Final",
+     "text": "One grape or blend, the country, the region and appellation, the official quality level and style where they apply, and one vintage."
+    }
+   ],
+   "know": [
+    "Each initial call needs reasons drawn from your own description.",
+    "Climate comes from fruit condition and structure, mainly acidity and alcohol.",
+    "Age comes from fruit condition, color, fruit versus savory notes, and any sediment.",
+    "Quality levels include Village, Premier Cru, Grand Cru, Reserva, Gran Reserva, Riserva, Classico, Gran Selezione, Kabinett, Spätlese.",
+    "Style categories include Trocken, Sec, Demi-Sec, Moelleux, Aszú, VT and SGN."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "The final conclusion, in order",
+     "items": [
+      {
+       "name": "Grape",
+       "text": "One grape, or the blend",
+       "meta": "markers + structure"
+      },
+      {
+       "name": "Country",
+       "text": "Where this grape is classic",
+       "meta": "always say it"
+      },
+      {
+       "name": "Region and appellation",
+       "text": "The place that grows it classically and fits your notes",
+       "meta": "both"
+      },
+      {
+       "name": "Quality level and style",
+       "text": "Premier Cru, Gran Reserva, Kabinett; Trocken, Demi-Sec",
+       "meta": "where they apply"
+      },
+      {
+       "name": "Vintage",
+       "text": "One year, from élevage, wine law and vintage knowledge",
+       "meta": "choose one"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "INITIAL",
+       "title": "Keep options open",
+       "text": "Possible grapes\nClimate: cool, moderate, warm\nPossible countries\nAge: 1-3, 3-5, 5-10, 10+ years"
+      },
+      {
+       "label": "FINAL",
+       "title": "Commit to one wine",
+       "text": "One grape or blend\nCountry, region and appellation\nQuality level and style\nOne vintage"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "The core whites",
+   "source": "Court of Master Sommeliers, Americas, Advanced Sommelier Level Wines (03.2025); Wine Folly grape profiles",
+   "lines": [
+    {
+     "label": "The list",
+     "text": "Ten white grapes, each tied to countries and sub-regions. A slash joins sub-regions you can treat as one; separately listed ones must be told apart."
+    },
+    {
+     "label": "Style notes",
+     "text": "The list adds study notes such as unoaked, skin contact, Demi-Sec or no new oak. They depend on the appellation."
+    }
+   ],
+   "know": [
+    "Chardonnay: Burgundy (Chablis, Côte de Beaune, Mâconnais), California and Australia.",
+    "Chenin Blanc: Montlouis/Vouvray Demi-Sec and Vouvray/Savennières Sec, both Loire.",
+    "Riesling: Germany (Trocken/GG, Kabinett, Spätlese), Alsace, and dry Clare or Eden Valley.",
+    "Sauvignon Blanc: Sancerre/Pouilly-Fumé, Pessac-Léognan/Graves Cru Classé, and Marlborough.",
+    "Pinot Grigio from Friuli or Trentino-Alto Adige is listed as skin contact."
+   ],
+   "visuals": [
+    {
+     "type": "names",
+     "items": [
+      {
+       "title": "CORE WHITES · 10",
+       "text": "Albariño, Chardonnay, Chenin Blanc, Gewurztraminer, Grüner Veltliner, Pinot Gris/Pinot Grigio, Riesling, Sauvignon Blanc and blends, Torrontés, Viognier"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Markers to hang each grape on",
+     "rows": [
+      {
+       "name": "Albariño",
+       "meta": "lemon zest, saline · high acid, light body"
+      },
+      {
+       "name": "Chenin Blanc",
+       "meta": "quince, honey · high acid in every style"
+      },
+      {
+       "name": "Gewurztraminer",
+       "meta": "lychee, rose · moderate to low acid"
+      },
+      {
+       "name": "Grüner Veltliner",
+       "meta": "white pepper (rotundone) · very high acid"
+      },
+      {
+       "name": "Riesling",
+       "meta": "lime, petroleum · high acid"
+      },
+      {
+       "name": "Torrontés",
+       "meta": "Meyer lemon, rose petal, geranium"
+      },
+      {
+       "name": "Viognier",
+       "meta": "peach, honeysuckle · full, oily, lower acid"
+      }
+     ],
+     "note": "Wine Folly grape profiles."
+    }
+   ]
+  },
+  {
+   "name": "The core reds and what classic means",
+   "source": "Court of Master Sommeliers, Americas, Advanced Sommelier Level Wines (03.2025) and What Makes a Wine Classic checklist; Wine Folly grape profiles",
+   "lines": [
+    {
+     "label": "The reds",
+     "text": "Fourteen red grapes, from Cabernet Sauvignon to Zinfandel. The list is most of what's poured; anything else must be classic."
+    },
+    {
+     "label": "Classic",
+     "text": "The Court's checklist asks three things: a unique, distinctive profile, an established quality level, and a global market presence."
+    }
+   ],
+   "know": [
+    "Sangiovese: Brunello di Montalcino and Chianti, listed with Eastern European oak.",
+    "Tempranillo: Rioja and Ribera del Duero, Crianza to Gran Reserva, with new American oak.",
+    "Pinot Noir: Côte d'Or, plus US and New Zealand regions from Willamette Valley to Central Otago.",
+    "A wine must answer yes to every qualification question to be used in deductive tasting.",
+    "Some classics have an original and a modern style, like Napa Valley Cabernet Sauvignon."
+   ],
+   "visuals": [
+    {
+     "type": "names",
+     "items": [
+      {
+       "title": "CORE REDS · 14",
+       "text": "Cabernet Sauvignon and blends, Cabernet Franc, Carménère, Corvina and blends, Gamay, Grenache and blends, Malbec, Merlot and blends, Nebbiolo, Pinot Noir, Sangiovese, Syrah, Tempranillo, Zinfandel"
+      }
+     ]
+    },
+    {
+     "type": "tiles",
+     "title": "How the checklist sorts wines",
+     "dark": true,
+     "items": [
+      {
+       "name": "Established",
+       "text": "Long-standing region, many producers, strong identity"
+      },
+      {
+       "name": "Original vs modern",
+       "text": "One region, two valid styles"
+      },
+      {
+       "name": "Newly established",
+       "text": "Hit the tipping point, e.g. Etna Rosso"
+      },
+      {
+       "name": "On the radar",
+       "text": "Close to classic, e.g. Rueda Verdejo"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Exam-day rules",
+   "source": "Court of Master Sommeliers, Americas, What to Expect at the Advanced Tasting Exam (9.2022), Advanced course and exam page, example Advanced tasting feedback report",
+   "lines": [
+    {
+     "label": "The room",
+     "text": "Check in 15 minutes early. Three to four Master Sommeliers sit across from you; your place has a tasting mat, six wines, water, a spit cup and a napkin."
+    },
+    {
+     "label": "The clock",
+     "text": "25 minutes, starting when you touch a glass or start smelling. Time calls at halfway, five minutes and, if needed, one minute."
+    }
+   ],
+   "know": [
+    "Taste in any order, but always say which wine you're on.",
+    "They can only grade what you say, so describe each wine completely.",
+    "Name a compound's smell: 'green pepper from pyrazines', not just 'pyrazines'.",
+    "Sit, stand or wear non-communicating earplugs; your own clock is fine if it can't record or transmit.",
+    "The pass mark is 60%, and the Tasting has no minimum score for the forced wait."
+   ],
+   "visuals": [
+    {
+     "type": "stat",
+     "number": "25",
+     "title": "minutes for six wines",
+     "text": "About four minutes a wine (25 ÷ 6, our math). The halfway call comes at twelve and a half minutes."
+    },
+    {
+     "type": "list",
+     "title": "How the Tasting comes back",
+     "rows": [
+      {
+       "name": "Sight",
+       "meta": "% score"
+      },
+      {
+       "name": "Nose & Palate",
+       "meta": "% score"
+      },
+      {
+       "name": "Structure",
+       "meta": "% score"
+      },
+      {
+       "name": "Conclusions",
+       "meta": "% score"
+      },
+      {
+       "name": "Grapes correctly identified",
+       "meta": "whites and reds"
+      }
+     ],
+     "note": "From the Court's example Advanced feedback report."
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Age assessment",
+   "b": "Age range",
+   "why": "Age assessment is a nose line: youthful, developing, vinous. Age range is the conclusion, in years."
+  },
+  {
+   "a": "Initial conclusion",
+   "b": "Final conclusion",
+   "why": "Initial keeps options open (grapes, climate, countries, age). Final commits to one grape, place, quality level and vintage."
+  },
+  {
+   "a": "Slash sub-regions",
+   "b": "Separately listed sub-regions",
+   "why": "Napa Valley / Sonoma Coast are interchangeable. Chablis, Côte de Beaune and Mâconnais must be told apart."
+  },
+  {
+   "a": "Brunello and Chianti oak",
+   "b": "Rioja and Ribera oak",
+   "why": "Sangiovese is listed with Eastern European oak. Tempranillo is listed with new American oak."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas: Advanced and Master Deductive Tasting Format (2024), Initial and Final Conclusions guide (3.2024), Advanced Sommelier Level Wines (03.2025), What Makes a Wine Classic checklist, What to Expect at the Advanced Tasting Exam (9.2022), Advanced expected skill set, example Advanced tasting feedback report and the Advanced course and exam page; Wine Folly grape profiles. Checked Nov 19, 2026.",
+ "cards": [
+  {
+   "q": "On the Advanced and Master grid, which sight lines are for red wines only?",
+   "answer": "Rim variation and staining",
+   "wrong": [
+    "Tearing and gas evidence",
+    "Clarity and primary color",
+    "Secondary color and intensity"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "What three choices does the age assessment line on the nose offer?",
+   "answer": "Youthful, developing, vinous",
+   "wrong": [
+    "Young, mature, old",
+    "1-3, 3-5, 5-10 years",
+    "Primary, secondary, tertiary"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "Which three oak types can you name on the Advanced grid?",
+   "answer": "French, American, Eastern European",
+   "wrong": [
+    "New, used, neutral",
+    "Light, medium, heavy toast",
+    "French, American, Australian"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "On the Advanced grid, 'bubblegum' sits in which non-fruit group?",
+   "answer": "From winemaking",
+   "wrong": [
+    "From the grape",
+    "Earth",
+    "Mineral"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "What is the top step of the Advanced grid's aromatic intensity scale?",
+   "answer": "Powerful",
+   "wrong": [
+    "High",
+    "Pronounced",
+    "Opaque"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "How many steps does the Advanced grid's sweetness scale have?",
+   "answer": "Seven",
+   "wrong": [
+    "Two",
+    "Five",
+    "Four"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "On the Advanced grid, phenolic bitterness is called for which wines?",
+   "answer": "White wines only",
+   "wrong": [
+    "Red wines only",
+    "Both colors",
+    "Sparkling wines only"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "What does the panel do if you give a range for acidity in the Advanced tasting?",
+   "answer": "Reminds you once to give one answer",
+   "wrong": [
+    "Takes a point off at once",
+    "Accepts the higher of the two",
+    "Stops your tasting"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "q": "Which of these is listed as a tannin texture on the Advanced grid?",
+   "answer": "Gritty",
+   "wrong": [
+    "Lean",
+    "Waxy",
+    "Linear"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "Which age ranges can the Advanced initial conclusion use?",
+   "answer": "1-3, 3-5, 5-10, 10+ years",
+   "wrong": [
+    "1-2, 3-4, 5+ years",
+    "1-3, 4-6, 7+ years",
+    "1-5, 5-10, 10-20 years"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "Which element is in the Advanced final conclusion but not the initial one?",
+   "answer": "Region and appellation",
+   "wrong": [
+    "Climate",
+    "Possible countries",
+    "Age range"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "Per the Court's conclusions guide, climate is read mainly from which clues?",
+   "answer": "Fruit condition, acidity and alcohol",
+   "wrong": [
+    "Color and tearing",
+    "Oak type and intensity",
+    "Tannin texture and length"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf"
+  },
+  {
+   "q": "'Demi-Sec' belongs on which line of the Advanced final conclusion?",
+   "answer": "Official style category",
+   "wrong": [
+    "Official quality level",
+    "Region and appellation",
+    "Vintage"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "q": "On the Advanced core list, which region is listed for Albariño?",
+   "answer": "Rías Baixas",
+   "wrong": [
+    "Rueda",
+    "Vinho Verde",
+    "Ribeiro"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "q": "Which grape on the Advanced core list is listed with a skin-contact style?",
+   "answer": "Pinot Grigio",
+   "wrong": [
+    "Gewurztraminer",
+    "Grüner Veltliner",
+    "Viognier"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "q": "Which Australian regions are listed for dry Riesling on the core list?",
+   "answer": "Clare Valley / Eden Valley",
+   "wrong": [
+    "Barossa Valley / McLaren Vale",
+    "Adelaide Hills / Margaret River",
+    "Yarra Valley / Coonawarra"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "q": "On the core list, Montlouis-sur-Loire / Vouvray Chenin Blanc is listed in which style?",
+   "answer": "Demi-Sec",
+   "wrong": [
+    "Sec",
+    "Moelleux",
+    "Brut"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "q": "Per Wine Folly, which compound is linked to Grüner Veltliner's peppery aroma?",
+   "answer": "Rotundone",
+   "wrong": [
+    "Pyrazines",
+    "Linalool",
+    "Geraniol"
+   ],
+   "source": "https://winefolly.com/grapes/gruner-veltliner/"
+  },
+  {
+   "q": "Which oak is noted for Brunello di Montalcino on the Advanced core list?",
+   "answer": "Eastern European oak",
+   "wrong": [
+    "New American oak",
+    "New French oak",
+    "No oak"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "q": "Which Chilean regions are listed for Carménère on the core list?",
+   "answer": "Curicó / Maipo / Maule / Rapel",
+   "wrong": [
+    "Casablanca / San Antonio / Leyda",
+    "Elqui / Limarí / Choapa",
+    "Itata / Bío-Bío / Malleco"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "q": "Per the Court's checklist, what happens if a wine can't answer yes to every qualification question?",
+   "answer": "It doesn't qualify for the deductive tasting exam",
+   "wrong": [
+    "It can only be poured as a Master-level wine",
+    "It is poured but scored as a bonus",
+    "It qualifies if the region is famous"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "q": "Which wine does the Court's checklist give as newly established?",
+   "answer": "Etna Rosso",
+   "wrong": [
+    "Rueda Verdejo",
+    "Napa Valley Cabernet Sauvignon",
+    "Red Burgundy"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "q": "Which grape is listed with Amarone della Valpolicella?",
+   "answer": "Corvina",
+   "wrong": [
+    "Nebbiolo",
+    "Sangiovese",
+    "Nerello Mascalese"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "q": "How long is the Advanced tasting exam for its six wines?",
+   "answer": "25 minutes",
+   "wrong": [
+    "45 minutes",
+    "30 minutes",
+    "20 minutes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "q": "When does the Advanced tasting clock start?",
+   "answer": "When you touch the first glass or start smelling",
+   "wrong": [
+    "When the panel chair finishes the instructions",
+    "When you sit down at the table",
+    "When you name the first wine"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "q": "Which line follows the Court's rule on chemical compounds?",
+   "answer": "'I smell green pepper from pyrazines'",
+   "wrong": [
+    "'I smell pyrazines'",
+    "'I smell methoxypyrazines'",
+    "'I smell IBMP'"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "q": "What minimum Tasting score triggers the Advanced forced wait?",
+   "answer": "There is none",
+   "wrong": [
+    "40%",
+    "50%",
+    "55%"
+   ],
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Advanced and Master grid, Sight: clarity/visible sediment (clear, hazy, cloudy); intensity of color (translucent, pale, medium minus, medium, medium plus, deep, opaque); primary color (white: water white, straw, yellow, gold; red: purple, ruby, garnet); secondary colors (white: silver, green, copper, gold, brown; red: blue, magenta, ruby, orange, garnet, brown); rim variation (reds only, yes/no); staining (reds only, none to heavy); tearing (light to heavy); gas evidence (yes/no).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "fact": "Nose: minor presence of faults noted when apparent (barnyard, nail polish remover, caramel, nuts, dried fruit, struck match, balsamic vinegar, other); aromatic intensity delicate, medium minus, medium, medium plus, powerful; age assessment youthful, developing (showing age), vinous (aged).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "fact": "Fruit: white tart citrus, sweet citrus, apple/pear, stone fruit, tropical, melon, other; red: red, blue, black, other. Fruit condition: tart, ripe, fresh, baked, stewed, dried/desiccated, bruised, jammy, juicy, candied, liqueur, oxidized.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "fact": "Non-fruit from grapes includes flowers, green bell pepper, asparagus, celery, grass, herbs, tobacco, black pepper, white pepper, ginger, honey, petrol, eucalyptus, chocolate, mocha; from winemaking includes bread dough, yeast, beer, cheese rind, cream, sour cream, butter, yogurt, peanut shell, toast, marzipan, stems, bubblegum, cigar box. Earth: forest floor, mushrooms/truffles, potting soil, compost. Mineral: mineral, wet stone, limestone, chalk, slate, flint.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "fact": "Oak: is new oak present (yes/no); intensity low, medium, high; descriptors toast, smoke, vanilla, cinnamon, clove, nutmeg, cardamom, coffee, chocolate, dill, coconut, caramel, cedar; type French, American, Eastern European.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "fact": "Palate structure: sweetness bone dry, dry, dry with slight residual sugar, off-dry, medium-sweet, sweet, lusciously sweet; acidity and alcohol low, medium minus, medium, medium plus, high; body light to full; phenolic bitterness white wines only (yes/no); tannin red wines only: volume low to high, texture silky, soft, gritty, coarse, rough, stalky, hard, other; texture noted when apparent: lean, linear, crisp, soft, creamy, round, waxy, oily, viscous, other.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "fact": "Palate: confirm fruit, fruit condition (has it turned tart on the palate?), non-fruit, earth, mineral and oak from the nose; balance yes/no and what dominates; length of finish short to long; complexity simple to high.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "fact": "Initial conclusion: possible grape varieties, climate (cool, moderate, warm), possible countries, age range 1-3, 3-5, 5-10, 10+ years. Final conclusion: grape variety or blend, country of origin, region and appellation, official quality level where appropriate (Village, Premier Cru, Grand Cru, Reserva, Gran Reserva, Normale, Riserva, Classico, Gran Selezione, Kabinett, Spätlese, Auslese, other), official style category where appropriate (Trocken, Sec, Demi-Sec, Moelleux, Aszú, VT, SGN, other), one vintage.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/2024-CMS-A-Advanced-and-Master-Sommelier-Deductive-Tasting-Format.pdf"
+  },
+  {
+   "fact": "Conclusions guide: give specific reasons for each initial choice from your description; grapes: what stands out and makes the wine unique, grape markers, structure, grape growing and winemaking; climate: fruit condition and structure such as acidity and alcohol, whether structure matches where the grape grows, and any change from nose to palate; countries: wine law and where grapes are grown; age: fruit condition, color, fruit or savory focus, sediment; vintage: élevage, wine law, regional vintage knowledge.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/03/2024-Deductive-Tasting-Initial-and-Final-Conclusions-KL.pdf"
+  },
+  {
+   "fact": "Certified grid age ranges: white 1-2, 3-4, 5+ years; red 1-3, 4-6, 7+ years. Certified white sweetness: dry or off-dry.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Certified-Sommelier-Deductive-Tasting-Grid.pdf#page=1"
+  },
+  {
+   "fact": "Certified tasting exam: four wines in 45 minutes, entered in Examplify.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=10"
+  },
+  {
+   "fact": "Level wines list: within a grape, countries must be studied individually and the country named in the final conclusion; sub-regions separated by a slash are interchangeable for study and credit; separately listed sub-regions must be differentiated; style notes (e.g. Dry, Oaked) are general guidelines dependent on appellation. The list is the majority of wines poured; others are classic; it is subject to change (03.2025).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "fact": "Level wines example: Chardonnay from France, Burgundy, Côte de Beaune, Chassagne-Montrachet, Premier Cru; Vouvray appears as Demi-Sec (with Montlouis) and Sec (with Savennières).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "fact": "Core whites: Albariño (Spain, Rías Baixas, unoaked); Chardonnay (Burgundy: Chablis, Côte de Beaune, Mâconnais; USA-California: Carneros/Napa Valley/Russian River Valley/Sonoma Coast/Sonoma Valley; Australia: Adelaide Hills/Margaret River/Yarra Valley, moderate plus to high new oak); Chenin Blanc (Loire: Montlouis-sur-Loire/Vouvray Demi-Sec; Vouvray/Savennières Sec); Gewurztraminer (Alsace, Vin d'Alsace and Grand Cru, dry to off-dry); Grüner Veltliner (Austria: Kamptal DAC/Ried, Kremstal DAC/Ried, Wachau Federspiel); Pinot Gris/Grigio (Alsace; Italy: Friuli/Trentino-Alto Adige, skin contact); Riesling (Germany: Mosel/Rheingau/Rheinhessen/Pfalz/Nahe, Trocken/GG, Kabinett/Spätlese; Alsace; Australia: Clare Valley/Eden Valley, dry); Sauvignon Blanc (Loire: Sancerre/Pouilly-Fumé, no new oak; Bordeaux: Pessac-Léognan/Graves Cru Classé, moderate to high new French oak; New Zealand: Marlborough, no oak); Torrontés (Argentina: Mendoza/Salta, no oak); Viognier (Rhône: Condrieu).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "fact": "Core reds: Cabernet Sauvignon (Bordeaux Graves/Haut-Médoc; Australia Barossa/Coonawarra/Margaret River/McLaren Vale; Chile Curicó/Maipo/Maule/Rapel; California Napa/Sonoma County/Central Coast); Cabernet Franc (Loire Bourgueil/Chinon/Saumur-Champigny, low to no new oak); Carménère (Chile Curicó/Maipo/Maule/Rapel); Corvina (Veneto Amarone della Valpolicella, dry to slight RS); Gamay (Beaujolais-Villages, Cru Beaujolais, moderate to no carbonic maceration); Grenache (Southern Rhône Châteauneuf-du-Pape/Gigondas/Vacqueyras); Malbec (Argentina Mendoza); Merlot (Pomerol/Saint-Émilion; Napa/Sonoma County/Columbia Valley); Nebbiolo (Barolo/Barbaresco); Pinot Noir (Côte d'Or; Anderson Valley/Carneros/Central Coast/Sonoma Coast/Sonoma Valley/Willamette Valley/Central Otago/Martinborough); Sangiovese (Brunello di Montalcino and Chianti Classico/Gran Selezione/Riserva/Rufina, Eastern European oak); Syrah (Northern Rhône village AOPs; South Australia/Victoria/Western Australia; Central Coast/Sonoma County/Columbia Valley); Tempranillo (Ribera del Duero/Rioja, Crianza, Reserva/Gran Reserva, new American oak); Zinfandel (Napa/Paso Robles/Sonoma County, dry to slight RS).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "fact": "Wine Folly Albariño: lemon zest, grapefruit, honeydew, nectarine, saline; high acidity, light body.",
+   "source": "https://winefolly.com/grapes/albarino/"
+  },
+  {
+   "fact": "Wine Folly Chenin Blanc: quince, yellow apple, pear, chamomile, honey; high acidity in every style.",
+   "source": "https://winefolly.com/grapes/chenin-blanc/"
+  },
+  {
+   "fact": "Wine Folly Gewurztraminer: lychee, rose, grapefruit, tangerine, ginger; moderate to low acidity.",
+   "source": "https://winefolly.com/grapes/gewurztraminer/"
+  },
+  {
+   "fact": "Wine Folly Grüner Veltliner: starfruit, gooseberry, green bean, white pepper, crushed gravel; peppery aroma linked to rotundone; very high acidity.",
+   "source": "https://winefolly.com/grapes/gruner-veltliner/"
+  },
+  {
+   "fact": "Wine Folly Riesling: lime, green apple, beeswax, jasmine, petroleum; high acidity.",
+   "source": "https://winefolly.com/grapes/riesling/"
+  },
+  {
+   "fact": "Wine Folly Torrontés: Meyer lemon, peach, rose petal, geranium, citrus zest; most expressive from high-elevation Salta.",
+   "source": "https://winefolly.com/grapes/torrontes/"
+  },
+  {
+   "fact": "Wine Folly Viognier: tangerine, peach, mango, honeysuckle, rose; medium-low acidity, full body, oily texture; Condrieu must be 100% Viognier.",
+   "source": "https://winefolly.com/grapes/viognier/"
+  },
+  {
+   "fact": "Wine Folly Carménère: high methoxypyrazines give bell pepper and green notes; more moderate tannins and acidity than Cabernet Sauvignon and Cabernet Franc.",
+   "source": "https://winefolly.com/grapes/carmenere/"
+  },
+  {
+   "fact": "Wine Folly: methoxypyrazines cause the herbaceous bell-pepper character of Cabernet Franc; Cabernet Sauvignon shares the trait.",
+   "source": "https://winefolly.com/grapes/cabernet-franc/"
+  },
+  {
+   "fact": "What Makes a Wine Classic: criteria are a unique and distinctive flavor profile, an established quality level, and global market presence; the deductive qualification questions must all be yes or the wine doesn't qualify; categories include established, original vs modern, stuck in the middle, newly established (Etna Rosso DOC, Nerello Mascalese) and on the radar (Rueda Verdejo). The Court wants candidates to make their own list of classic wines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "Original Napa Valley Cabernet Sauvignon: pyrazines, moderate plus alcohol and astringent tannins, fruit just ripe, oak not as forward. Modern: pyrazines more subtle, high alcohol and rounder tannins, fruit overripe/liqueur-like, oak more forward.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/23-What-Makes-A-Wine-Classic-Checklist-11-2022.pdf"
+  },
+  {
+   "fact": "Tasting exam: check in 15 minutes before; 3 to 4 Master Sommelier adjudicators; set-up tasting mat, six wines, water, spit cup, napkin; standing, sitting, non-communicating earplugs acceptable; 25 minutes for six wines; time calls at twelve and a half minutes, five minutes, one minute if needed; own clock allowed if it can't record or transmit; clock starts when you touch the first glass or start smelling; any order, say which wine; graded only on what you say; one answer for sweetness, acidity, alcohol and tannin, reminded once; describe compounds ('green pepper from pyrazines' fine, 'pyrazines' alone not), reminded once; six wines are six individual examinations.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "fact": "After the tasting: sequester room until the end of the day, no talking about the exam content until released.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "fact": "Tasting preparation: break down the grid box by box; fill out a complete grid for as many wines as possible, including easy ones; link sensory notes to theory; taste aged, sweet, sparkling wines, beer, spirits, sake in the deductive method; 'Don't get mired in 6 in 25'.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "fact": "Feedback report: Tasting results by Sight, Nose & Palate, Structure and Conclusions, plus grapes correctly identified (white, red). Preparation advice includes tasting wines with similar impact compounds, e.g. Syrah, Grenache and Grüner Veltliner for pepper spice from rotundone.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-ADV-Practical-Tasting-Results-Feedback-Report-Example.pdf"
+  },
+  {
+   "fact": "Passing requirement: at least 60% on each section within one calendar year; forced-wait rules apply to the Practical, with no minimum score on the Tasting.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  },
+  {
+   "fact": "Expected skill set: Deductive Tasting Method ability for a broad spectrum of classic red and white wines.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf"
+  }
+ ],
+ "unverified": [
+  "The level-wines PDF's text layout separates grape names from their regions; the grape-to-region pairs here were matched by the order on the page (e.g. Pinot Grigio with Friuli/Trentino-Alto Adige skin contact). Check against the PDF itself.",
+  "The PDF spells the Chianti sub-zone 'Ruffina'; this chapter uses the usual spelling, Rufina.",
+  "The level-wines list is dated 03.2025 and 'subject to change'; the tasting guide is dated 9.2022. Check the Court's resource library for newer versions.",
+  "Grape markers come from Wine Folly's general grape profiles, not from the Court; the Court publishes no marker list.",
+  "'About four minutes a wine' is our arithmetic (25 ÷ 6), not a Court figure.",
+  "The rotundone tasting advice appears in the feedback report's preparation section for the Master Sommelier Diploma; it is used here as general practice advice."
+ ],
+ "court": {
+  "outcome": "Deductive Tasting Method ability for a broad spectrum of classic red and white wines",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf",
+  "coverage": [
+   {
+    "topic": "Sight",
+    "guide": "Clarity, color intensity, primary and secondary color, rim variation, staining, tearing, gas evidence.",
+    "where": "Sight and nose"
+   },
+   {
+    "topic": "Nose: faults, intensity, age assessment",
+    "guide": "Minor faults when apparent; delicate to powerful; youthful, developing or vinous.",
+    "where": "Sight and nose"
+   },
+   {
+    "topic": "Fruit and fruit condition",
+    "guide": "Fruit families by color; twelve conditions; confirm on the palate and note changes.",
+    "where": "Sight and nose; Structure and palate"
+   },
+   {
+    "topic": "Non-fruit, earth, mineral, oak",
+    "guide": "From the grape or winemaking; earth and mineral notes; new oak, intensity, descriptors, type.",
+    "where": "Sight and nose"
+   },
+   {
+    "topic": "Palate structure",
+    "guide": "Seven-step sweetness; acidity, alcohol, body; phenolic bitterness; tannin volume and texture; texture.",
+    "where": "Structure and palate"
+   },
+   {
+    "topic": "Palate",
+    "guide": "Confirm nose lines; balance, length of finish, complexity.",
+    "where": "Structure and palate"
+   },
+   {
+    "topic": "Initial conclusion",
+    "guide": "Possible grapes, climate, possible countries, age range 1-3, 3-5, 5-10, 10+.",
+    "where": "Initial and final conclusions"
+   },
+   {
+    "topic": "Final conclusion",
+    "guide": "Grape or blend, country, region and appellation, quality level, style category, one vintage.",
+    "where": "Initial and final conclusions"
+   },
+   {
+    "topic": "Core white: Albariño",
+    "guide": "Spain: Rías Baixas, unoaked.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Core white: Chardonnay",
+    "guide": "Burgundy (Chablis, Côte de Beaune, Mâconnais), California, Australia; oak from none to high new.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Core white: Chenin Blanc",
+    "guide": "Loire: Montlouis/Vouvray Demi-Sec; Vouvray/Savennières Sec.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Core white: Gewurztraminer",
+    "guide": "Alsace: Vin d'Alsace and Grand Cru, dry to off-dry.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Core white: Grüner Veltliner",
+    "guide": "Austria: Kamptal and Kremstal (DAC, Ried), Wachau Federspiel.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Core white: Pinot Gris / Pinot Grigio",
+    "guide": "Alsace; Friuli / Trentino-Alto Adige with skin contact.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Core white: Riesling",
+    "guide": "Germany (Mosel, Rheingau, Rheinhessen, Pfalz, Nahe); Alsace; dry Clare / Eden Valley.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Core white: Sauvignon Blanc and blends",
+    "guide": "Sancerre/Pouilly-Fumé; Pessac-Léognan/Graves Cru Classé; Marlborough.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Core white: Torrontés",
+    "guide": "Argentina: Mendoza / Salta, no oak.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Core white: Viognier",
+    "guide": "Northern Rhône: Condrieu.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Core red: Cabernet Sauvignon and blends",
+    "guide": "Graves/Haut-Médoc; Barossa, Coonawarra, Margaret River, McLaren Vale; Chile; Napa, Sonoma, Central Coast.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Cabernet Franc",
+    "guide": "Loire: Bourgueil / Chinon / Saumur-Champigny, low to no new oak.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Carménère",
+    "guide": "Chile: Curicó / Maipo / Maule / Rapel.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Corvina and blends",
+    "guide": "Veneto: Amarone della Valpolicella, dry to slight residual sugar.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Gamay",
+    "guide": "Beaujolais-Villages and Cru Beaujolais; moderate to no carbonic maceration.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Grenache and blends",
+    "guide": "Southern Rhône: Châteauneuf-du-Pape / Gigondas / Vacqueyras.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Malbec",
+    "guide": "Argentina: Mendoza.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Merlot and blends",
+    "guide": "Pomerol / Saint-Émilion; Napa, Sonoma County, Columbia Valley.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Nebbiolo",
+    "guide": "Piedmont: Barolo / Barbaresco.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Pinot Noir",
+    "guide": "Côte d'Or; US regions from Anderson Valley to Willamette Valley; Central Otago, Martinborough.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Sangiovese",
+    "guide": "Brunello di Montalcino; Chianti (Classico, Gran Selezione, Riserva, Rufina); Eastern European oak.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Syrah",
+    "guide": "Northern Rhône; South Australia, Victoria, Western Australia; Central Coast, Sonoma County, Columbia Valley.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Tempranillo",
+    "guide": "Rioja / Ribera del Duero; Crianza, Reserva, Gran Reserva; new American oak.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "Core red: Zinfandel",
+    "guide": "Napa Valley / Paso Robles / Sonoma County; dry to slight residual sugar.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "What makes a wine classic",
+    "guide": "Distinctive profile, established quality, global presence; every qualification question must be yes.",
+    "where": "The core reds and what classic means"
+   },
+   {
+    "topic": "How to read the level-wines list",
+    "guide": "Always name the country; slash means interchangeable; separately listed sub-regions must be told apart.",
+    "where": "The core whites"
+   },
+   {
+    "topic": "Tasting exam: arrival, set-up and timing",
+    "guide": "Check in 15 minutes early; six wines, 25 minutes; calls at halfway, five and one minute.",
+    "where": "Exam-day rules"
+   },
+   {
+    "topic": "Tasting exam: one answer, describe compounds",
+    "guide": "One structure answer, not a range; describe a compound's aroma; one reminder each.",
+    "where": "Exam-day rules"
+   },
+   {
+    "topic": "Tasting preparation",
+    "guide": "Full grids for every wine, link to theory, taste shared compounds and all beverages.",
+    "where": "Exam-day rules"
+   },
+   {
+    "topic": "Results and feedback",
+    "guide": "60% to pass; feedback by sight, nose and palate, structure, conclusions, grapes identified.",
+    "where": "Exam-day rules"
+   }
+  ]
+ },
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Sight and nose",
+    "video": {
+     "youtubeId": "sPmKuICEIo0",
+     "title": "Learn to smell wine like a Master Sommelier in Study Hall: Wine Aromas",
+     "by": "SOMM TV",
+     "length": "7:59"
+    },
+    "keyPoints": [
+     {
+      "big": "8 LINES",
+      "line": "of sight, from clarity to gas evidence."
+     },
+     {
+      "big": "FAULTS FIRST",
+      "line": "Call barnyard, struck match or nail polish when it's there."
+     },
+     {
+      "big": "AGE CALL",
+      "line": "on the nose: youthful, developing or vinous."
+     },
+     {
+      "big": "12 CONDITIONS",
+      "line": "of fruit, from tart and fresh to jammy and oxidized."
+     },
+     {
+      "big": "OAK TYPE",
+      "line": "is its own line: French, American or Eastern European."
+     }
+    ],
+    "read": {
+     "bigIdea": "More lines, finer scales, said out loud.",
+     "where": "From Level 2: the Certified grid gives you a short list of choices. The **Advanced and Master format** adds lines and widens every scale, and you speak it instead of ticking boxes. Sight and nose come first.",
+     "stopsTitle": "Five stops before you sip",
+     "stops": [
+      {
+       "name": "Sight",
+       "note": "eight lines",
+       "text": "Clarity, **intensity of color**, primary and **secondary color**, then **rim variation** and **staining** for reds, **tearing** and **gas evidence**."
+      },
+      {
+       "name": "Faults and age",
+       "note": "first on the nose",
+       "text": "Call any **minor fault** when it's apparent: barnyard, nail polish remover, struck match, balsamic vinegar. Then the **age assessment**: youthful, developing or vinous."
+      },
+      {
+       "name": "Fruit",
+       "note": "type and condition",
+       "text": "Whites: tart citrus, sweet citrus, apple/pear, stone fruit, tropical, melon. Reds: red, blue, black. Then **fruit condition**, from tart and fresh to stewed, jammy or **liqueur**."
+      },
+      {
+       "name": "Non-fruit, earth, mineral",
+       "note": "say where it came from",
+       "text": "Notes **from the grape** (flowers, black pepper, petrol, eucalyptus) or **from winemaking** (yeast, butter, toast, stems, bubblegum). Then earth (forest floor, mushroom) and mineral (wet stone, chalk, flint)."
+      },
+      {
+       "name": "Oak",
+       "note": "four questions",
+       "text": "**New oak** yes or no, its intensity, the descriptors (vanilla, clove, dill, coconut, cedar) and the **type**: French, American or Eastern European."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The nose, in the order the grid asks:",
+     "mixup": "**Age assessment** on the nose is youthful, developing or vinous. The **age range** in your conclusion is in years.",
+     "sayIt": "Clear, medium-plus ruby, garnet at the rim, medium-plus tearing, no gas."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Structure and palate",
+    "video": {
+     "youtubeId": "4v_WmJGOhD8",
+     "title": "A Master Somm's Guide to Acidity",
+     "by": "SOMM TV",
+     "length": "3:57"
+    },
+    "keyPoints": [
+     {
+      "big": "7 STEPS",
+      "line": "of sweetness, from bone dry to lusciously sweet."
+     },
+     {
+      "big": "ONE ANSWER",
+      "line": "for sweetness, acidity, alcohol and tannin. Never a range."
+     },
+     {
+      "big": "TANNIN TEXTURE",
+      "line": "silky, soft, gritty, coarse, rough, stalky or hard."
+     },
+     {
+      "big": "CONFIRM",
+      "line": "the nose on the palate, and say what changed."
+     },
+     {
+      "big": "BALANCE",
+      "line": "is yes or no, plus the element that dominates."
+     }
+    ],
+    "read": {
+     "bigIdea": "Trust structure, then confirm the nose.",
+     "where": "Structure is where grape and climate show most clearly. At Advanced every structure call is **one answer**, not a range, and **sweetness** gets seven steps instead of two.",
+     "stopsTitle": "Four stops on the palate",
+     "stops": [
+      {
+       "name": "Sweetness",
+       "note": "seven steps",
+       "text": "**Bone dry**, dry, **dry with slight residual sugar**, off-dry, medium-sweet, sweet, **lusciously sweet**."
+      },
+      {
+       "name": "Acid, alcohol, body",
+       "note": "five steps each",
+       "text": "Low, medium minus, medium, medium plus, high (body runs light to full). Whites add **phenolic bitterness**, yes or no."
+      },
+      {
+       "name": "Tannin",
+       "note": "reds only",
+       "text": "Two lines: **tannin volume** (low to high) and **tannin texture**: silky, soft, gritty, coarse, rough, stalky, hard."
+      },
+      {
+       "name": "Palate",
+       "note": "confirm and judge",
+       "text": "Confirm each nose line. Has the **fruit condition** turned tart? Then **balance** (what dominates?), **length of finish** and **complexity**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The sweetness line, bottom to top:",
+     "mixup": "**Body** is the weight of the wine. **Texture** is how it feels: lean, creamy, waxy, oily."
+    },
+    "check": [
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "name": "Initial and final conclusions",
+    "video": {
+     "youtubeId": "BfiyuTiYby0",
+     "title": "Watch Master Sommelier Ian Cauble blind taste six wines",
+     "by": "SOMM TV",
+     "length": "24:22"
+    },
+    "keyPoints": [
+     {
+      "big": "WHY?",
+      "line": "Every initial call needs a reason from your description."
+     },
+     {
+      "big": "4 AGE RANGES",
+      "line": "1-3, 3-5, 5-10 and 10+ years."
+     },
+     {
+      "big": "CLIMATE",
+      "line": "comes from fruit condition, acidity and alcohol."
+     },
+     {
+      "big": "QUALITY LEVEL",
+      "line": "Premier Cru, Riserva, Spätlese: only where it applies."
+     },
+     {
+      "big": "ONE VINTAGE",
+      "line": "closes the final conclusion. Choose one year."
+     }
+    ],
+    "read": {
+     "bigIdea": "Open wide, then commit to one wine.",
+     "where": "The **initial conclusion** keeps options open: grapes, climate, countries, an age range. The **final conclusion** commits: one grape, one place, one quality level, one **vintage**. The Court's conclusions guide asks why at every step.",
+     "stopsTitle": "Four questions, in order",
+     "stops": [
+      {
+       "name": "Which grapes?",
+       "note": "what stands out",
+       "text": "What makes this wine unique? Match **grape markers** and structure, plus clues from growing and winemaking."
+      },
+      {
+       "name": "What climate?",
+       "note": "cool, moderate, warm",
+       "text": "Read **fruit condition** and structure, mainly acidity and alcohol. Does the structure fit where this grape grows? Did the fruit change from nose to palate?"
+      },
+      {
+       "name": "Which countries, how old?",
+       "note": "law and evidence",
+       "text": "Countries follow from grape and structure. The **age range** comes from fruit condition, color, fruit versus savory notes, and **sediment**."
+      },
+      {
+       "name": "Final answer",
+       "note": "one wine",
+       "text": "Name the **region and appellation** that grow this grape classically and fit your notes, then the **official quality level** (Premier Cru, Gran Reserva, Kabinett) and **style** (Trocken, Demi-Sec, SGN) where they apply, and one vintage."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Region** is the wider area (Burgundy, Côte de Beaune). **Appellation** is the named place (Chassagne-Montrachet). The final conclusion wants both.",
+     "sayIt": "This is Riesling, from Germany, from the Mosel, Kabinett."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "The core whites",
+    "video": {
+     "youtubeId": "y38fLc7kzj4",
+     "title": "Kit 174A - White Wine Conclusions",
+     "by": "Master the World",
+     "length": "1:28:01"
+    },
+    "keyPoints": [
+     {
+      "big": "10 WHITES",
+      "line": "on the core list, each with its countries and sub-regions."
+     },
+     {
+      "big": "THE SLASH",
+      "line": "joins sub-regions you can treat as one. Name any of them."
+     },
+     {
+      "big": "SEC, DEMI-SEC",
+      "line": "Vouvray is listed in both. Learn the difference."
+     },
+     {
+      "big": "ROTUNDONE",
+      "line": "gives Grüner Veltliner its white-pepper note."
+     },
+     {
+      "big": "SKIN CONTACT",
+      "line": "is the listed style for Friuli and Alto Adige Pinot Grigio."
+     }
+    ],
+    "read": {
+     "bigIdea": "Ten white grapes, each with its homes.",
+     "where": "The Court's **Advanced Sommelier Level Wines** list names the grapes and places behind most of the flight. Anything else poured must be **classic**. Learn each grape by country, then by sub-region and style, and always say the country.",
+     "stopsTitle": "Five stops through the whites",
+     "stops": [
+      {
+       "name": "Chardonnay",
+       "note": "three countries",
+       "text": "**Burgundy**: Chablis, Côte de Beaune and Mâconnais, each studied on its own. **California** (Carneros, Napa, Russian River and more, interchangeable) and **Australia** (Adelaide Hills, Margaret River, Yarra Valley), with moderate-plus to high new oak."
+      },
+      {
+       "name": "Chenin Blanc",
+       "note": "Loire only",
+       "text": "**Montlouis/Vouvray Demi-Sec** and **Vouvray/Savennières Sec**. Wine Folly: quince and honey, with high acidity in every style."
+      },
+      {
+       "name": "Riesling",
+       "note": "three homes",
+       "text": "**Germany** (Mosel, Rheingau, Rheinhessen, Pfalz, Nahe; Trocken/GG, Kabinett, Spätlese), **Alsace**, and dry **Clare/Eden Valley**. Lime and petroleum over high acid."
+      },
+      {
+       "name": "Sauvignon Blanc",
+       "note": "three styles",
+       "text": "**Sancerre/Pouilly-Fumé** with no new oak, **Pessac-Léognan/Graves** Cru Classé with moderate to high new French oak, and unoaked **Marlborough**."
+      },
+      {
+       "name": "The rest",
+       "note": "one or two homes",
+       "text": "Albariño (**Rías Baixas**, unoaked), Gewurztraminer (**Alsace**), Grüner Veltliner (**Kamptal, Kremstal, Wachau**), Pinot Gris (**Alsace**; **Friuli/Trentino-Alto Adige**, skin contact), Torrontés (**Mendoza/Salta**), Viognier (**Condrieu**)."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "Quick markers to hang each grape on:",
+     "mixup": "**Vouvray Demi-Sec** is grouped with Montlouis. **Vouvray Sec** is grouped with Savennières."
+    },
+    "check": [
+     13,
+     14,
+     15
+    ]
+   },
+   {
+    "name": "The core reds and what classic means",
+    "video": {
+     "youtubeId": "M1NW0WYlunY",
+     "title": "Kit 176A: Red Wine Conclusions with Master Sommelier Tim Gaiser",
+     "by": "Master the World",
+     "length": "1:05:23"
+    },
+    "keyPoints": [
+     {
+      "big": "14 REDS",
+      "line": "on the core list, Cabernet Sauvignon to Zinfandel."
+     },
+     {
+      "big": "EASTERN EUROPEAN",
+      "line": "oak is the oak listed for Brunello and Chianti."
+     },
+     {
+      "big": "AMERICAN OAK",
+      "line": "is the new oak listed for Rioja and Ribera del Duero."
+     },
+     {
+      "big": "ALL YES",
+      "line": "A wine must pass every checklist question to be poured."
+     },
+     {
+      "big": "ORIGINAL VS MODERN",
+      "line": "Napa Cabernet has both: just-ripe or liqueur-like fruit."
+     }
+    ],
+    "read": {
+     "bigIdea": "Know the list, then know why it's classic.",
+     "where": "The **core reds** are fourteen grapes, each tied to its classic places. Anything poured beyond the list must pass the Court's **What Makes a Wine Classic** test, and the Court wants you to build your own list of classics with it.",
+     "stopsTitle": "Five stops through the reds",
+     "stops": [
+      {
+       "name": "France",
+       "note": "six grapes",
+       "text": "Cabernet in **Graves/Haut-Médoc**, Merlot in **Pomerol/Saint-Émilion**, Cabernet Franc in **Bourgueil, Chinon, Saumur-Champigny**, Gamay in **Beaujolais**, Grenache in **Châteauneuf-du-Pape, Gigondas, Vacqueyras**, Syrah in the **Northern Rhône**, Pinot Noir in the **Côte d'Or**."
+      },
+      {
+       "name": "Italy and Spain",
+       "note": "four grapes",
+       "text": "Nebbiolo in **Barolo/Barbaresco**, Sangiovese in **Brunello** and **Chianti** (Eastern European oak), Corvina in **Amarone**, Tempranillo in **Rioja/Ribera del Duero** (new American oak)."
+      },
+      {
+       "name": "The New World",
+       "note": "classic and modern",
+       "text": "Malbec in **Mendoza**, Carménère in **Chile** (Curicó, Maipo, Maule, Rapel), Zinfandel in **Napa, Paso Robles, Sonoma County**, plus Cabernet, Merlot, Pinot Noir and Syrah from the US, Australia, Chile and New Zealand."
+      },
+      {
+       "name": "The classic test",
+       "note": "every box yes",
+       "text": "Is the profile **unique and distinctive**? Is there an **established quality level**? A **global market presence**? The checklist turns these into yes/no questions: one no and the wine doesn't qualify for the tasting."
+      },
+      {
+       "name": "Original vs modern",
+       "note": "Napa Cabernet",
+       "text": "Original: **pyrazines**, just-ripe fruit, astringent tannins, less forward oak. Modern: subtler pyrazines, high alcohol, rounder tannins, **liqueur-like** fruit, more oak."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The checklist sorts wines like this:",
+     "mixup": "**Carménère** shows bell pepper with more moderate tannin and acid. **Cabernet Sauvignon** shares the pyrazines with firmer structure."
+    },
+    "check": [
+     18,
+     19,
+     20
+    ]
+   },
+   {
+    "name": "Exam-day rules",
+    "video": {
+     "youtubeId": "xGezco5-JzU",
+     "title": "Tasting Examination Environment with Rob Bigelow, MS: Court of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "1:14"
+    },
+    "keyPoints": [
+     {
+      "big": "25 MINUTES",
+      "line": "for six wines, out loud, to three or four Master Sommeliers."
+     },
+     {
+      "big": "SAY THE NUMBER",
+      "line": "Any order is fine, but say which wine you're on."
+     },
+     {
+      "big": "DESCRIBE IT",
+      "line": "Name the smell, not just the compound."
+     },
+     {
+      "big": "SIX CHANCES",
+      "line": "Treat each wine as its own exam."
+     },
+     {
+      "big": "60%",
+      "line": "is the pass mark, as for Theory and the Practical."
+     }
+    ],
+    "read": {
+     "bigIdea": "Say it all, one answer per line.",
+     "where": "The **Tasting** is verbal: you talk, the panel scores. It runs **25 minutes** for **six wines**, and the clock starts the moment you touch a glass or smell a wine. Passing takes **60%**, with Theory and the Practical passed in the same calendar year.",
+     "stopsTitle": "Before, during, after",
+     "stops": [
+      {
+       "name": "Before",
+       "note": "15 minutes early",
+       "text": "Check in **15 minutes** before your time and don't discuss the exam. A Master Sommelier reads the instructions; ask your questions then."
+      },
+      {
+       "name": "During",
+       "note": "the time calls",
+       "text": "Calls come at **halfway (12½ minutes)**, **five minutes** and, if they think you need it, **one minute**. Take the wines in any order; say which one you're on. Each wine is its own chance."
+      },
+      {
+       "name": "The two reminders",
+       "note": "given once",
+       "text": "Give **one answer** for sweetness, acidity, alcohol and tannin. Describe compounds by their **aroma**. Break either rule and they remind you once."
+      },
+      {
+       "name": "After",
+       "note": "sequester",
+       "text": "You go to a **sequester room** until the end of the day and can't talk about the wines until you're released."
+      },
+      {
+       "name": "Practice",
+       "note": "the Court's advice",
+       "text": "Fill a **complete grid** for every wine, even easy ones. Taste wines that share a compound, like **rotundone** pepper in Syrah, Grenache and Grüner Veltliner. Don't get stuck only on '6 in 25'."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The feedback report scores you in these parts:",
+     "mixup": "**Certified** tasting: four wines in 45 minutes, entered in Examplify. **Advanced**: six wines in 25 minutes, spoken to the panel."
+    },
+    "check": [
+     23,
+     24,
+     25
+    ]
+   }
+  ]
+ }
+}

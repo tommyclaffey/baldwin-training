@@ -1,0 +1,57 @@
+[
+ {
+  "file": "content/manual-l3/advanced-europe.json",
+  "slug": "advanced-europe",
+  "section": "Italy",
+  "youtubeId": "l75eD2HHwM8",
+  "title": "The Wines of Barolo and Barbaresco",
+  "by": "GuildSomm International",
+  "length": "10:01",
+  "checked": "2026-11-19",
+  "why": "GuildSomm's guide to Piedmont's two Nebbiolo DOCGs, the lesson's deepest Italian stop: the communes, soils and aging rules behind Barolo and Barbaresco."
+ },
+ {
+  "file": "content/manual-l3/advanced-europe.json",
+  "slug": "advanced-europe",
+  "section": "Germany",
+  "youtubeId": "m6C4cMppZFo",
+  "title": "The Wines of Germany",
+  "by": "GuildSomm International",
+  "length": "10:50",
+  "checked": "2026-11-19",
+  "why": "GuildSomm's Germany guide, updated in 2021: the regions, the Prädikat ladder and the 2021 law that the VDP classification sits on top of."
+ },
+ {
+  "file": "content/manual-l3/advanced-europe.json",
+  "slug": "advanced-europe",
+  "section": "Spain and Portugal",
+  "youtubeId": "85hYwVVy_-Q",
+  "title": "Portugal Masterclass on Regions",
+  "by": "SOMM TV",
+  "length": "14:18",
+  "checked": "2026-11-19",
+  "why": "Elaine Chukan Brown walks through Portugal's main wine regions, the part of the Iberian map this section fills in (three of its four stops are Portuguese)."
+ },
+ {
+  "file": "content/manual-l3/advanced-europe.json",
+  "slug": "advanced-europe",
+  "section": "Austria, Greece and Eastern Europe",
+  "youtubeId": "25Ww9g5yAxw",
+  "title": "The Wines of Greece",
+  "by": "GuildSomm International",
+  "length": "14:51",
+  "checked": "2026-11-19",
+  "why": "GuildSomm's guide to Greece's regions and native grapes, including Mantinia and Moschofilero. Loose fit: covers the Greek stop only, not Burgenland, Eger, Bulgaria or Georgia."
+ },
+ {
+  "file": "content/manual-l3/advanced-europe.json",
+  "slug": "advanced-europe",
+  "section": "England, Switzerland, the Middle East and Asia",
+  "youtubeId": "KT60yKApUuE",
+  "title": "General Introduction to Swiss Wines | Swiss Wine UK",
+  "by": "Swiss Wine Promotion",
+  "length": "12:06",
+  "checked": "2026-11-19",
+  "why": "Switzerland's official wine body on its regions and main grapes, including Valais, Vaud and Chasselas. Loose fit: covers the Swiss stop only, not England, Cyprus or China."
+ }
+]

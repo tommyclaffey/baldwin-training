@@ -1,0 +1,1321 @@
+{
+ "program": "somm",
+ "programLevel": 3,
+ "part": 3,
+ "number": 8,
+ "slug": "advanced-service",
+ "title": "Hospitality and service at Advanced",
+ "script": "Chapter eight",
+ "lead": "The Court's 2025 Advanced and Master service standards: hospitality, price and problems, the general routine, sparkling and decanting, beer, sake, aperitifs, digestifs and cocktails, pairing and selling, and how the practical exam runs.",
+ "minutes": 30,
+ "intro": {
+  "script": "Start here",
+  "title": "THE 2025 STANDARDS",
+  "text": "The Court's Advanced and Master standards are the only service standards accepted at its exams. They are more formal than most restaurants on purpose.",
+  "tiers": [
+   {
+    "name": "Hospitality",
+    "note": "presence, price, guest satisfaction"
+   },
+   {
+    "name": "Mechanics",
+    "note": "still, sparkling, decanting, beer, sake, spirits"
+   },
+   {
+    "name": "Pairing",
+    "note": "guest first, then reasons"
+   },
+   {
+    "name": "The exam",
+    "note": "two tables, a busy night"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Hospitality, price and problems",
+   "source": "Court of Master Sommeliers, Americas, Advanced and Master Hospitality & Service Standards (2025); Demeanor of the Professional Sommelier; Advanced Practical Exam guide",
+   "lines": [
+    {
+     "label": "Presence",
+     "text": "Greet warmly and match your language to each guest's comfort and knowledge. Technical terms can confuse guests or push them away."
+    },
+    {
+     "label": "Price",
+     "text": "Recommend inside the guest's budget. A pricier suggestion needs a clear explanation of the added value, so the guest trusts it."
+    }
+   ],
+   "know": [
+    "Missing a guest's tastes risks discounts, comps, bad reviews and lost loyalty.",
+    "Watch verbal and nonverbal cues: tone, wording and body language, from arrival to departure.",
+    "Problem resolution in three steps: acknowledge, apologize sincerely, act quickly and kindly.",
+    "Find the host's budget discreetly; if there isn't one, offer several price points.",
+    "Expect confrontational guests at Advanced, played by Master Sommeliers from a script."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Three steps when something goes wrong",
+     "items": [
+      {
+       "name": "Acknowledge",
+       "text": "Recognize the problem and listen while the guest describes it",
+       "meta": "1"
+      },
+      {
+       "name": "Apologize",
+       "text": "Sincerely, focused on how it made the guest feel",
+       "meta": "2"
+      },
+      {
+       "name": "Act",
+       "text": "Resolve it quickly, graciously and professionally",
+       "meta": "3"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "PRICE POINT",
+       "title": "Higher only with value",
+       "text": "Work to the guest's budget\nExplain what the extra money buys\nBuild trust, not a bigger check"
+      },
+      {
+       "label": "WHEN IN DOUBT",
+       "title": "Undersell",
+       "text": "Honor the guest's trust on price\nOffer several price points\nGuest relationships take time"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "General service standards",
+   "source": "Court of Master Sommeliers, Americas, Advanced and Master Hospitality & Service Standards (2025); Advanced Theory Exam guide",
+   "lines": [
+    {
+     "label": "Setup",
+     "text": "Lists clean and accurate, glasses polished with linen and steam, tools organized. Only glass, plates, serviettes, silverware and underliners touch the cloth."
+    },
+    {
+     "label": "The order",
+     "text": "Identify the host, stand to the ordering guest's right, and repeat the order back: vintage, producer, cuvée, style or quality level, and who gets what."
+    }
+   ],
+   "know": [
+    "Serve from the guest's right when you can, and always move clockwise.",
+    "Bottles, decanters, ice buckets and corks sit on an underliner, never straight on the cloth.",
+    "Foil: two clean cuts just below the second lip, then into your pocket.",
+    "The taste pour is 1-1.5 oz (30-45 ml), label facing the ordering guest.",
+    "A guest of honor is served first; the ordering guest is always served last."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "One bottle, start to finish",
+     "items": [
+      {
+       "name": "Confirm",
+       "text": "Repeat vintage, producer, cuvée, style; say who gets what",
+       "meta": "the order"
+      },
+      {
+       "name": "Glasses",
+       "text": "On a tray, right hand, guest's right; host or host's left first, clockwise",
+       "meta": "same spot for all"
+      },
+      {
+       "name": "Present",
+       "text": "From the ordering guest's right, with the full details",
+       "meta": "the bottle"
+      },
+      {
+       "name": "Open",
+       "text": "Two cuts, wipe, quiet pull, wipe, cork on an underliner",
+       "meta": "the cork"
+      },
+      {
+       "name": "Pour",
+       "text": "1-1.5 oz taste; left of the ordering guest, clockwise, host last",
+       "meta": "one pass"
+      }
+     ]
+    },
+    {
+     "type": "stat",
+     "number": "1-1.5 oz",
+     "title": "the taste pour",
+     "text": "30-45 ml for the ordering guest's approval, for still wine, sparkling and wine from a decanter."
+    }
+   ]
+  },
+  {
+   "name": "Sparkling and decanting",
+   "source": "Court of Master Sommeliers, Americas, Advanced and Master Hospitality & Service Standards (2025); example Advanced Practical feedback report",
+   "lines": [
+    {
+     "label": "Sparkling",
+     "text": "Two serviettes, two underliners, the bucket on a stand to the host's right. Open in the air or in the bucket, cutting below the cage with the blade."
+    },
+    {
+     "label": "Decanting",
+     "text": "Three reasons: aeration, sediment, or raising the temperature 1 to 3 degrees. Confirm with the guest first; they make the final call."
+    }
+   ],
+   "know": [
+    "Loosen the cage but never remove it; cork and cage come out together.",
+    "Turn the bottle, not the cork, at 45 degrees if possible. The ideal sound is a soft hiss.",
+    "Fill each sparkling glass in no more than two pours.",
+    "Sediment decanting takes three serviettes and three underliners: cork, bottle, decanter.",
+    "Upright bottle: keep it upright, no cradle. Stored on its side: cradle it that way, label up or not."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "SPARKLING",
+       "title": "Two of everything",
+       "text": "Serviette 1: dry, present, open\nServiette 2: lip and drips\nUnderliners: bottle, cork"
+      },
+      {
+       "label": "SEDIMENT DECANT",
+       "title": "Three of everything",
+       "text": "Serviettes: cradle, bottle lip, pouring\nUnderliners: cork, bottle, decanter\nLight: candle or flashlight"
+      }
+     ]
+    },
+    {
+     "type": "tiles",
+     "title": "Four decanting jobs",
+     "dark": true,
+     "items": [
+      {
+       "name": "Sediment",
+       "text": "Slow, one smooth motion; stop when sediment reaches the shoulder"
+      },
+      {
+       "name": "Double",
+       "text": "Decant, rinse the bottle with wine, pour it back"
+      },
+      {
+       "name": "Splash",
+       "text": "Young, closed reds only; pour hard, invert if needed"
+      },
+      {
+       "name": "Large format",
+       "text": "Check the decanter's size; use several if needed"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Beer, sake, aperitifs, digestifs and cocktails",
+   "source": "Court of Master Sommeliers, Americas, Advanced and Master Hospitality & Service Standards (2025); Advanced expected skill set; Advanced Practical Exam guide",
+   "lines": [
+    {
+     "label": "Beer and sake",
+     "text": "Beer: repeat brewery, style and brand, open at the side station, leave about 1 inch (2-3 cm) of foam. Modern sake service follows white wine standards."
+    },
+    {
+     "label": "Spirits",
+     "text": "Aperitifs and digestifs come from a tray or gueridon. Cocktails are shaken, stirred or built, and never finished on 'dirty rocks'."
+    }
+   ],
+   "know": [
+    "Glass by beer style: pilsner flute, weizen glass, goblet/snifter, tulip, American pint, or an AP wine glass.",
+    "Hazy beers with sediment: ask whether the guest wants the sediment in the glass.",
+    "Mori koboshi: the ochoko overflows into the masu about halfway. Nigori: invert and swirl to mix the kasu.",
+    "Small tulip or copita for fortified wines and eaux de vie; rocks glass on ice; snifter for neat oak-aged spirits.",
+    "Never shake carbonated ingredients; stir with the mixing glass about three-quarters full of ice."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Beer glass by style",
+     "rows": [
+      {
+       "name": "Pilsner flute",
+       "meta": "Pilsner"
+      },
+      {
+       "name": "Weizen glass",
+       "meta": "Hefeweizen, dunkelweizen, wheat beers"
+      },
+      {
+       "name": "Goblet / snifter",
+       "meta": "Belgian strong ale, Trappist ale"
+      },
+      {
+       "name": "Tulip",
+       "meta": "IPA, barleywine, imperial stout, porter"
+      },
+      {
+       "name": "American pint",
+       "meta": "most other styles"
+      },
+      {
+       "name": "AP wine glass",
+       "meta": "suits many styles"
+      }
+     ],
+     "note": "From the Court's 2025 standards."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "SHAKEN",
+       "title": "In the shaker",
+       "text": "Muddle first if the recipe says\nDon't overfill with ice\nNo carbonated ingredients before shaking"
+      },
+      {
+       "label": "STIRRED",
+       "title": "In the mixing glass",
+       "text": "Measure with a jigger\nIce about three-quarters full\nStir to chill and dilute, then strain"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Pairing and selling",
+   "source": "Court of Master Sommeliers, Americas, Advanced and Master Hospitality & Service Standards (2025); Advanced Practical Exam guide; example Advanced Practical feedback report; Certified Exam Guide",
+   "lines": [
+    {
+     "label": "Guest first",
+     "text": "The best pairing matches what the guest likes. If they want red wine with shellfish, honor it."
+    },
+    {
+     "label": "Explain it",
+     "text": "Say why it works in appetizing, guest-friendly words, covering structure (acidity, tannin, body) and how the aromas and flavors fit."
+    }
+   ],
+   "know": [
+    "Exam tasks: propose a pairing, weigh its strengths and weaknesses, judge suitability, explain your reasoning.",
+    "Pair beer, sake, spirits and non-alcoholic drinks too, not just wine.",
+    "Know classic and modern pairings, cooking techniques, iconic dishes and the key flavors of world cuisines.",
+    "Name the wine fully: producer, vintage and full appellation.",
+    "Ask what a guest will want to know about a beverage, and be ready to answer."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Four pairing tasks the exam can set",
+     "items": [
+      {
+       "name": "Propose",
+       "text": "A beverage for a specific dish",
+       "meta": "1"
+      },
+      {
+       "name": "Evaluate",
+       "text": "A pairing's strengths and weaknesses",
+       "meta": "2"
+      },
+      {
+       "name": "Assess",
+       "text": "Whether several pairings suit",
+       "meta": "3"
+      },
+      {
+       "name": "Explain",
+       "text": "The reasoning behind your choice",
+       "meta": "4"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "The practical exam, start to finish",
+   "source": "Court of Master Sommeliers, Americas, What to Expect at the Advanced Practical Exam (10.2022); Advanced course and exam page; example Advanced Practical feedback report",
+   "lines": [
+    {
+     "label": "Order",
+     "text": "Business of the Sommelier comes first (a timed, written exam), then Hospitality & Service right after."
+    },
+    {
+     "label": "Prep",
+     "text": "About 15-20 minutes to study the situation, guest notes, menus, wine list and beverage list. Take notes on your pad, never on the menus."
+    }
+   ],
+   "know": [
+    "Two tables per panel, with a maître d' who can't answer content or service questions.",
+    "Treat it as a very busy but manageable evening: every movement must count.",
+    "Suspend disbelief: signs on the prep table show which beverages are being ordered.",
+    "Finish your first table early and you'll be asked to face a wall.",
+    "The Practical needs 60%; a first Practical below 40% means an extra year's wait."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Practical day, in order",
+     "items": [
+      {
+       "name": "Business of the Sommelier",
+       "text": "Timed written exam with a calculator",
+       "meta": "first"
+      },
+      {
+       "name": "Prep room",
+       "text": "Situation, guest notes, menus, lists",
+       "meta": "15-20 min"
+      },
+      {
+       "name": "First table",
+       "text": "The maître d' shows you where",
+       "meta": "table 1"
+      },
+      {
+       "name": "Second table",
+       "text": "Face the wall if you finish the first early",
+       "meta": "table 2"
+      },
+      {
+       "name": "Sequester room",
+       "text": "Until the end of the day",
+       "meta": "after"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "How the Practical comes back",
+     "rows": [
+      {
+       "name": "Sparkling Table",
+       "meta": "pass / no pass"
+      },
+      {
+       "name": "Decanting Table",
+       "meta": "pass / no pass"
+      },
+      {
+       "name": "Business of the Sommelier",
+       "meta": "pass / no pass"
+      }
+     ],
+     "note": "From the Court's example Advanced feedback report."
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Splash decanting",
+   "b": "Decanting for sediment",
+   "why": "Splash is fast and hard, for young closed reds. Sediment decanting is slow and smooth, for old or unfiltered wines."
+  },
+  {
+   "a": "Taste pour",
+   "b": "Priming",
+   "why": "The taste pour is 1-1.5 oz for approval. Priming uses 1-2 oz to coat the glass or decanter, only on request."
+  },
+  {
+   "a": "Mori koboshi",
+   "b": "Nigori",
+   "why": "Mori koboshi is a pouring style that overflows into the masu. Nigori is a cloudy sake with kasu."
+  },
+  {
+   "a": "Maître d'",
+   "b": "The guests",
+   "why": "The maître d' directs you and can't answer content questions. The guests are Master Sommeliers playing roles."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas: Advanced and Master Hospitality & Service Exam Standards and Guidelines (2025), What to Expect at the Advanced Practical Exam (10.2022), Advanced expected skill set, Advanced Theory Exam guide, Demeanor of the Professional Sommelier, Certified Sommelier Exam Guide, example Advanced Practical feedback report and the Advanced course and exam page. Checked Nov 19, 2026.",
+ "cards": [
+  {
+   "q": "What are the three suggested problem-resolution steps in the 2025 standards?",
+   "answer": "Acknowledge, apologize, act",
+   "wrong": [
+    "Apologize, replace, comp",
+    "Listen, explain, refund",
+    "Acknowledge, explain, escalate"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Per the 2025 standards, what must come with a suggestion of a more expensive wine?",
+   "answer": "A clear explanation of added value",
+   "wrong": [
+    "A smaller taste first",
+    "The manager's approval",
+    "A free glass to try"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Who plays confrontational guests at the Advanced Hospitality & Service exam?",
+   "answer": "Master Sommeliers reading from a script",
+   "wrong": [
+    "Advanced Sommelier volunteers",
+    "Actors hired by the Court",
+    "The maître d'"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  },
+  {
+   "q": "Per the Court's Demeanor guide, what do you do if the host has no budget in mind?",
+   "answer": "Offer several selections at different price points",
+   "wrong": [
+    "Recommend the list's best seller",
+    "Start with the most expensive bottle",
+    "Pick the cheapest bottle that fits the food"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "q": "Per the 2025 standards, how much is the host's taste pour?",
+   "answer": "1-1.5 oz / 30-45 ml",
+   "wrong": [
+    "0.5 oz / 15 ml",
+    "2-3 oz / 60-90 ml",
+    "3 oz / 90 ml"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Which of these may go directly on the tablecloth under the 2025 standards?",
+   "answer": "An underliner",
+   "wrong": [
+    "A cork",
+    "An ice bucket",
+    "A decanter"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "How do you cut the foil on a still wine under the 2025 standards?",
+   "answer": "Two clean cuts just below the second lip",
+   "wrong": [
+    "One cut above the first lip",
+    "Around the bottom of the capsule",
+    "Pull the tab and remove the whole foil"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "After the host approves, who do you pour for first if there's no guest of honor?",
+   "answer": "The guest to the left of the ordering guest",
+   "wrong": [
+    "The guest to the right of the ordering guest",
+    "The oldest guest at the table",
+    "The guest across from the host"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "How many serviettes does the 2025 standard call for in sparkling wine service?",
+   "answer": "Two",
+   "wrong": [
+    "One",
+    "Three",
+    "Four"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Per the 2025 standards, how do you remove the foil on sparkling wine?",
+   "answer": "Cut below the cage with the corkscrew blade",
+   "wrong": [
+    "Pull the tab around the cage",
+    "Cut at the second lip, like still wine",
+    "Lift off the foil and cage together by hand"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "What do you rinse the bottle with when double decanting?",
+   "answer": "A little of the wine, or a similar wine",
+   "wrong": [
+    "Cold water",
+    "Warm water",
+    "Sparkling water"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Splash decanting suits which wine?",
+   "answer": "A young, full-bodied red that seems closed",
+   "wrong": [
+    "An old red with heavy sediment",
+    "A delicate aged Pinot Noir",
+    "A vintage Port with a crust"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "A sediment-heavy bottle has been standing upright. What does the standard say?",
+   "answer": "Keep it upright; don't use a cradle",
+   "wrong": [
+    "Lay it in a cradle label up",
+    "Lay it on its side for a minute first",
+    "Turn it label up, then cradle it"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Per the 2025 standards, how much foam does a correct beer pour leave?",
+   "answer": "About 1 in. / 2-3 cm",
+   "wrong": [
+    "About 1/4 in. / 0.5 cm",
+    "About 2 in. / 5 cm",
+    "No foam at all"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Which glass does the Court's beer table give for Hefeweizen?",
+   "answer": "Weizen glass",
+   "wrong": [
+    "Pilsner flute",
+    "Tulip",
+    "Goblet"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "In mori koboshi service, how far does the sake overflow into the masu?",
+   "answer": "About halfway",
+   "wrong": [
+    "Just a few drops",
+    "Until the masu is full",
+    "About a quarter"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Which glass does the 2025 standard give for neat, oak-aged spirits like Calvados?",
+   "answer": "Snifter",
+   "wrong": [
+    "Copita",
+    "Rocks glass",
+    "Small tulip"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Which is a rule for shaken cocktails in the 2025 standards?",
+   "answer": "Don't add carbonated ingredients before shaking",
+   "wrong": [
+    "Fill the shaker to the top with ice",
+    "Strain over the ice from the shaker",
+    "Add the garnish before shaking"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Per the 2025 standards, a guest wants red wine with shellfish. What do you do?",
+   "answer": "Honor the guest's preference",
+   "wrong": [
+    "Steer them to a white wine",
+    "Offer a rosé instead",
+    "Explain why it's a mistake"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Which of these is a pairing task the 2025 standards say you may be asked?",
+   "answer": "Evaluate a pairing's strengths and weaknesses",
+   "wrong": [
+    "Plate the dish at the gueridon",
+    "Write the restaurant's seasonal menu",
+    "Rank the guest's favorite cuisines"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Which words should tableside pairing talk avoid?",
+   "answer": "Overly technical or intimidating terms",
+   "wrong": [
+    "Producer names",
+    "Grape names",
+    "Dish names"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "For full marks on a recommendation, what should you name besides the wine?",
+   "answer": "Producer, vintage and full appellation",
+   "wrong": [
+    "Price, bottle size and alcohol",
+    "Importer, distributor and case price",
+    "Grape, color and closure"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  },
+  {
+   "q": "How long is the Hospitality & Service preparation time?",
+   "answer": "About 15-20 minutes",
+   "wrong": [
+    "About 5 minutes",
+    "About 45 minutes",
+    "About 50 minutes"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  },
+  {
+   "q": "How many tables per panel are there in Advanced Hospitality & Service?",
+   "answer": "Two",
+   "wrong": [
+    "One",
+    "Three",
+    "Four"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  },
+  {
+   "q": "Which part of the Advanced Practical comes first?",
+   "answer": "Business of the Sommelier",
+   "wrong": [
+    "The sparkling table",
+    "The decanting table",
+    "The cocktail station"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  },
+  {
+   "q": "Besides cocktails, where are beverages poured in the Advanced H&S exam unless told otherwise?",
+   "answer": "Tableside",
+   "wrong": [
+    "At the side station",
+    "At the bar",
+    "In the prep room"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "2025 standards cover general hospitality, general service, sparkling, decanting, other wine service, beer, sake, aperitif and digestif, cocktail service and food and beverage pairing. They are more formal and exacting than many restaurants on purpose.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "The Hospitality & Service standards published by the CMS-A are the only accepted service standards for any CMS-A examination.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf"
+  },
+  {
+   "fact": "Hospitality is about making guests feel welcomed, valued and understood. Without attentiveness the experience risks guest dissatisfaction, revenue loss through discounts or comps, and long-term impact through negative reviews or lower loyalty.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Tableside presence: warm greeting; adjust language to each guest's comfort and knowledge; technical or overly complex terms can confuse or distance guests.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Price point: balance recommendations with salesmanship that fits the guest's budget; suggesting a more expensive option must come with a clear explanation showing added value and building trust.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Guest satisfaction: attend to verbal and nonverbal cues, check in when appropriate, listen to tone and wording, observe physical cues, stay present from arrival to departure. Problem resolution: acknowledge the issue (listen actively), apologize sincerely (focus on how it made the guest feel), act quickly and kindly.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Demeanor: discreetly determine if the host has a budget; if not, offer several selections at different price points; when in doubt, undersell. Problem resolution has six suggested steps, starting with recognizing the problem and engaging the guest.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMSProfessionalSommDemeanor.pdf#page=1"
+  },
+  {
+   "fact": "Advanced Sommeliers must handle uncomfortable situations at the table, which may include Master Sommeliers portraying confrontational guests while playing a role and reading from a script.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  },
+  {
+   "fact": "Mise en place: beverage lists clean, accurate, up to date, easy to read; glasses spotless, odor-free, polished with clean linen and steam; serviettes folded; underliners clean; only glassware, plates, serviettes, silverware and underliners placed directly on the tablecloth; bottles, decanters, ice buckets and corks on an underliner; a tray that isn't non-slip is lined with a serviette.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "General guidelines: serve from the guest's right whenever possible; move clockwise; serviette in hand or on forearm, never in a pocket or on the shoulder; steady pace.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Taking the order: identify the host; stand to the right of the ordering guest; repeat the order with vintage, producer, cuvée or proprietary name, type, style or quality level; indicate which beverage is for which guest.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Glassware: tray, right hand, guest's right; same position for every guest, usually by the knife; start with the host or the guest to the host's left, then clockwise. A second bottle of the same wine: a clean tasting glass for the host to the right of the original, removed after service.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Bottle opening: two clean cuts just below the second lip; foil into your pocket; wipe the cork; remove the cork quietly with minimal movement; wipe again; cork on an underliner to the ordering guest's right.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Pouring: label facing the ordering guest, 1-1.5 oz / 30-45 ml taste; start left of the ordering guest, clockwise; a guest of honor first; the ordering guest always last; pour each guest individually without going around twice.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Non-cork closures are not presented.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Sparkling: bucket with stand to the host's right; two serviettes (one to present, dry and open; one for the lip and drips); two underliners (bottle, cork); in-air or in-the-bucket opening; cut the foil below the cage with the corkscrew blade, not the pull tab; thumb on cork and cage; never remove the cage separately; turn the bottle, not the cork; 45-degree angle if possible; ideal sound a soft hiss; handshake or bottom grip, not the punt; each glass in no more than two pours.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Decanting: three purposes: aeration, removing sediment, raising temperature by 1 to 3 degrees. The sommelier confirms with the guest, who makes the final decision.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Decanting for sediment: three serviettes (cradle, bottle lip, pouring); three underliners (cork, bottle, decanter); a bottle stored on its side goes into the cradle on its side even if the label isn't up; an upright bottle stays upright with no cradle; cut the foil without moving the bottle; pour slowly in one smooth motion, avoiding glugging; never look away; stop when fine sediment reaches the shoulder; the bottle never touches the decanter.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Double decanting: decant, rinse the bottle with a small amount of the decanted wine or a similar wine (never water), return the wine to the bottle. Splash decanting: for young full-bodied reds that seem closed; not for older or delicate wines or for sediment; inverting the bottle is acceptable.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Large formats may go into several decanters. Priming glassware or decanters (1-2 oz / 30-60 ml) only if the guest asks. Coravin: know Timeless, Pivot and Sparkling; pouring, recharging, cleaning, replacing gas canisters, changing the needle.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Beer: FIFO; repeat brewery name, beer style and brand; open at the side station; glassware: pilsner flute (pilsner), weizen glass (hefeweizen, dunkelweizen, wheat beer), goblet/snifter (Belgian strong ale, Trappist ale), tulip (IPA, barleywine, imperial stout, porter), American pint (most others), AP wine glass (many styles); tilted-glass or steady-pour technique; about 1 in. / 2-3 cm of foam; the bottle never touches the glass; ask whether the guest wants sediment from hazy beers.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Sake: modern-style service follows white wine standards; mori koboshi: ochoko inside a masu, overflow about halfway, served clockwise finishing with the ordering guest, two-handed pouring customary; nigori: invert and swirl or shake to mix the kasu; neither style is for hot sake.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Aperitifs and digestifs: served from a tray or gueridon; small tulip or copita for fortified wines, grappa, eau de vie, neat liqueurs; rocks glass for liqueurs or spirits over ice; snifter for neat oak-aged spirits (brandy, aged rum, Calvados); jigger; approach from the guest's right.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Cocktails: repeat the order with ice and garnish preferences; rim the glass first; shaken: don't overfill the shaker, no carbonated ingredients before shaking, fresh ice, no dirty rocks; stirred: mixing glass about three-quarters full of ice; built: in the serving glass in recipe order, layers from the densest ingredient over a bar spoon.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Pairing: align with the guest's preferences (red wine with shellfish if they prefer it); exam tasks: propose a beverage for a dish, evaluate strengths and weaknesses, assess suitability, explain reasoning; know classic and modern pairings, cooking techniques, iconic dishes, key ingredients and sauces of world cuisines; explain structure (acidity, tannin, body) and aromas and flavors in guest-friendly language, not technical or intimidating terms; also pair beer, sake, spirits and non-alcoholic options.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "For full marks on a pairing, mention producer, vintage and full appellation, and say why the pairing works in a guest-friendly way.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Certified-Sommelier-Exam-Guide-What-to-Expect.pdf#page=30"
+  },
+  {
+   "fact": "Example feedback: listen to the guest for the best recommendations and sell with delicious-sounding reasoning; Practical results come by Sparkling Table, Decanting Table and Business of the Sommelier.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-ADV-Practical-Tasting-Results-Feedback-Report-Example.pdf"
+  },
+  {
+   "fact": "Expected skill set: world-class formal beverage service including still, sparkling, red wine decanting, beer, after dinner and glass pour service; global cuisine pairing salesmanship; classic cocktail production and spirits service; benchmark producers and vintages; hospitality and salesmanship.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf"
+  },
+  {
+   "fact": "Practical exam: Business of the Sommelier first, then Hospitality & Service immediately after; about 15-20 minutes of preparation with situations, guest notes, menus, wine list and beverage list; no writing on menus; besides cocktails, beverages poured tableside unless directed; two tables per panel; the maître d' cannot answer content questions or advise on standards; a very busy but manageable evening; suspend disbelief with signs on the prep table; face a wall if you finish your first table early; work side-on at a bar; 'Half time' and 'Two minutes' are for examiners; sequester room until the end of the day. Prepare by asking what a guest will want to know about a beverage.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  },
+  {
+   "fact": "Passing requires at least 60% on each section within one calendar year; a first Practical below 40% means waiting an extra year.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/advanced-sommelier-course-and-examination/"
+  }
+ ],
+ "unverified": [
+  "The 2025 standards say decanting can raise a wine's temperature '1 to 3 degrees' without naming Fahrenheit or Celsius; no unit is given here.",
+  "The Practical exam guide is dated 10.2022 and the service standards 2025; check the Court's resource library for newer versions before an exam.",
+  "The 2025 standards give no pour size for aperitifs and digestifs beyond using a jigger; none is stated here.",
+  "The Court's 2026 Upper-Level Hospitality & Service Illustrative Examples were read only to judge depth; none of their scenarios or data are used.",
+  "The forced-wait rule: the website names a third Practical below 55%; the theory guide PDF says a third Theory or Practical below 55%. Only the first-attempt 40% rule is stated here."
+ ],
+ "court": {
+  "outcome": "World-class proficiency in formal beverage service, including: Still, Sparkling, Red Wine decanting, beer, after dinner and glass pour service",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf",
+  "coverage": [
+   {
+    "topic": "General hospitality: philosophy and tableside presence",
+    "guide": "Welcome, value and understand guests; warm greeting; language fitted to each guest.",
+    "where": "Hospitality, price and problems"
+   },
+   {
+    "topic": "Price point",
+    "guide": "Recommend within budget; justify a higher price with clear added value.",
+    "where": "Hospitality, price and problems"
+   },
+   {
+    "topic": "Guest satisfaction and problem resolution",
+    "guide": "Read verbal and nonverbal cues; acknowledge, apologize, act.",
+    "where": "Hospitality, price and problems"
+   },
+   {
+    "topic": "Mise en place and general guidelines",
+    "guide": "Clean lists, polished glasses, underliners; serve from the right, clockwise, steady pace.",
+    "where": "General service standards"
+   },
+   {
+    "topic": "Taking and confirming the order",
+    "guide": "Identify the host; repeat vintage, producer, cuvée, style; track who ordered what.",
+    "where": "General service standards"
+   },
+   {
+    "topic": "Glassware placement, presentation, opening, pouring",
+    "guide": "Consistent placement; two foil cuts; 1-1.5 oz taste; ordering guest served last.",
+    "where": "General service standards"
+   },
+   {
+    "topic": "Sparkling wine service",
+    "guide": "Two serviettes and underliners; blade below the cage; turn the bottle; two pours maximum.",
+    "where": "Sparkling and decanting"
+   },
+   {
+    "topic": "Decanting: goals and sediment",
+    "guide": "Aeration, sediment, temperature; cradle or upright; one smooth pour; stop at the shoulder.",
+    "where": "Sparkling and decanting"
+   },
+   {
+    "topic": "Double and splash decanting",
+    "guide": "Rinse with wine, never water; splash only young, closed reds without sediment.",
+    "where": "Sparkling and decanting"
+   },
+   {
+    "topic": "Other wine service: closures, large formats, priming, Coravin",
+    "guide": "Screwcaps not presented; several decanters if needed; priming on request; Coravin care.",
+    "where": "Sparkling and decanting"
+   },
+   {
+    "topic": "Beer service",
+    "guide": "Repeat brewery, style, brand; glass by style; about 1 in. foam; sediment by preference; FIFO.",
+    "where": "Beer, sake, aperitifs, digestifs and cocktails"
+   },
+   {
+    "topic": "Sake service",
+    "guide": "Modern service as white wine; mori koboshi into the masu; mix nigori's kasu.",
+    "where": "Beer, sake, aperitifs, digestifs and cocktails"
+   },
+   {
+    "topic": "Aperitif and digestif service",
+    "guide": "Tray, tableside or gueridon; copita, rocks glass or snifter; jigger.",
+    "where": "Beer, sake, aperitifs, digestifs and cocktails"
+   },
+   {
+    "topic": "Cocktail service",
+    "guide": "Repeat the order; shaken, stirred or built; no dirty rocks; garnish and tray.",
+    "where": "Beer, sake, aperitifs, digestifs and cocktails"
+   },
+   {
+    "topic": "Food and beverage pairing",
+    "guide": "Guest preference first; propose, evaluate, assess, explain; world cuisines; beyond wine.",
+    "where": "Pairing and selling"
+   },
+   {
+    "topic": "Benchmark producers and vintages, salesmanship",
+    "guide": "Recommend with producer, vintage and appellation; sell with appetizing reasons.",
+    "where": "Pairing and selling"
+   },
+   {
+    "topic": "Hospitality & Service preparation area",
+    "guide": "About 15-20 minutes with situation, guest notes, menus and lists; no writing on menus.",
+    "where": "The practical exam, start to finish"
+   },
+   {
+    "topic": "The maître d' and exam rules",
+    "guide": "Two tables per panel; maître d' gives directions only; stay in your station.",
+    "where": "The practical exam, start to finish"
+   },
+   {
+    "topic": "Uncomfortable situations",
+    "guide": "Master Sommeliers may play confrontational guests from a script; stay gracious.",
+    "where": "Hospitality, price and problems; The practical exam, start to finish"
+   }
+  ]
+ },
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Hospitality, price and problems",
+    "video": {
+     "youtubeId": "SMyZCVPSdCg",
+     "title": "How Should A Sommelier Approach The Customers - Ronan Sayburn MS",
+     "by": "Beverage Trade Network",
+     "length": "5:08"
+    },
+    "keyPoints": [
+     {
+      "big": "ACKNOWLEDGE",
+      "line": "the problem and listen while the guest explains it."
+     },
+     {
+      "big": "APOLOGIZE",
+      "line": "sincerely, focused on how it made the guest feel."
+     },
+     {
+      "big": "ACT",
+      "line": "quickly and kindly to put it right."
+     },
+     {
+      "big": "BUDGET",
+      "line": "Find it discreetly; if there's none, offer several price points."
+     },
+     {
+      "big": "PLAIN WORDS",
+      "line": "Match your language to the guest's comfort and knowledge."
+     }
+    ],
+    "read": {
+     "bigIdea": "Make guests feel welcome, valued, understood.",
+     "where": "From Level 2: the Certified demeanor rules. The **2025 Advanced and Master standards** treat hospitality as what turns knowledge into a sale and a returning guest. Missing a guest's taste can cost **discounts, comps and reviews**.",
+     "stopsTitle": "Four habits at the table",
+     "stops": [
+      {
+       "name": "Tableside presence",
+       "note": "warm, then fitted",
+       "text": "A warm greeting, then language that fits the guest. Share expertise in a natural, friendly way, not in **technical terms** that distance people."
+      },
+      {
+       "name": "Price point",
+       "note": "value, then trust",
+       "text": "Recommend inside the guest's **budget**. A more expensive bottle needs a **clear explanation of added value**. When in doubt, undersell."
+      },
+      {
+       "name": "Guest satisfaction",
+       "note": "read the table",
+       "text": "Check in when it fits, listen to **tone and wording**, watch **physical cues**, and stay present from arrival to departure."
+      },
+      {
+       "name": "Problem resolution",
+       "note": "three steps",
+       "text": "**Acknowledge**, **apologize sincerely**, **act quickly and kindly**. In the exam, Master Sommeliers may play **confrontational guests** from a script. Stay gracious."
+      }
+     ],
+     "visual": 0,
+     "mixup": "The **2025 standards** give three steps: acknowledge, apologize, act. The older **Demeanor** sheet gives six, starting with recognizing the problem and engaging the guest.",
+     "sayIt": "I'm sorry about that. Let me take this away and find you something you'll enjoy."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "General service standards",
+    "video": {
+     "youtubeId": "MbyDgs-h_3E",
+     "title": "Learn about Service from a Master Sommelier in Study Hall with Jill Zimorski Ep10 Service",
+     "by": "SOMM TV",
+     "length": "8:20"
+    },
+    "keyPoints": [
+     {
+      "big": "REPEAT IT",
+      "line": "Vintage, producer, cuvée, style, and which guest gets what."
+     },
+     {
+      "big": "RIGHT SIDE",
+      "line": "Serve from the guest's right and move clockwise."
+     },
+     {
+      "big": "UNDERLINER",
+      "line": "Bottles, decanters, buckets and corks never touch the cloth."
+     },
+     {
+      "big": "1-1.5 OZ",
+      "line": "is the taste pour (30-45 ml), label to the ordering guest."
+     },
+     {
+      "big": "HOST LAST",
+      "line": "The ordering guest is always served last."
+     }
+    ],
+    "read": {
+     "bigIdea": "The same steps, every bottle, every guest.",
+     "where": "The **2025 standards** set one routine for every wine and service style, more formal than most restaurants on purpose. They are the **only service standards** accepted at any Court exam.",
+     "stopsTitle": "Four stops, side station to glass",
+     "stops": [
+      {
+       "name": "Mise en place",
+       "note": "before service",
+       "text": "Clean, accurate **beverage lists**; spotless glasses polished with **linen and steam**; serviettes folded; underliners polished; tools organized. A tray that isn't non-slip gets lined with a serviette."
+      },
+      {
+       "name": "The order",
+       "note": "repeat it back",
+       "text": "Identify the **host**. Stand to the ordering guest's right. **Repeat the order** with vintage, producer, cuvée and style or quality level, and say which drink is whose."
+      },
+      {
+       "name": "Glasses",
+       "note": "tray, right hand",
+       "text": "Set each glass at the guest's right, in the **same spot** for everyone, usually by the knife. Start with the host or the guest to the host's left, then go **clockwise**."
+      },
+      {
+       "name": "Open and pour",
+       "note": "one pass",
+       "text": "**Two cuts** below the second lip, foil in your pocket, wipe, pull quietly, wipe again, cork on an underliner. Pour a **1-1.5 oz** taste, then start left of the ordering guest and finish with them. No second lap."
+      }
+     ],
+     "visual": 0,
+     "mixup": "A **second bottle** of the same wine gets a fresh tasting glass for the host. A **screwcap** isn't presented at all."
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Sparkling and decanting",
+    "video": {
+     "youtubeId": "SGIl5iUF_Xo",
+     "title": "Service Tutorial: Decanting Service",
+     "by": "GuildSomm International",
+     "length": "3:54"
+    },
+    "keyPoints": [
+     {
+      "big": "NO PULL TAB",
+      "line": "Cut the sparkling foil below the cage with the blade."
+     },
+     {
+      "big": "TWO POURS",
+      "line": "at most for each sparkling glass."
+     },
+     {
+      "big": "3 REASONS",
+      "line": "to decant: aeration, sediment, or warming 1-3 degrees."
+     },
+     {
+      "big": "SPLASH",
+      "line": "is for young, closed reds. Never with sediment."
+     },
+     {
+      "big": "RINSE WITH WINE",
+      "line": "Double decanting never uses water."
+     }
+    ],
+    "read": {
+     "bigIdea": "Control the cork; control the sediment.",
+     "where": "From Level 2: the Certified sparkling and decanting routine. The **2025 standards** tighten the sparkling opening and add **double decanting**, **splash decanting**, large formats and **Coravin**. The Court's example feedback scores a **Sparkling Table** and a **Decanting Table**.",
+     "stopsTitle": "Five stops, cork to decanter",
+     "stops": [
+      {
+       "name": "Sparkling setup",
+       "note": "two and two",
+       "text": "**Two serviettes**: one to dry, present and open; one for the lip and drips. **Two underliners**: bottle and cork. Bucket on a stand to the host's right."
+      },
+      {
+       "name": "Sparkling open and pour",
+       "note": "a soft hiss",
+       "text": "Cut below the cage with the **blade**, not the pull tab. Thumb on cork and cage, loosen, never let go, **turn the bottle**. Pour with a handshake or bottom grip, never the punt, in **no more than two pours** a glass."
+      },
+      {
+       "name": "Decant for sediment",
+       "note": "stop at the shoulder",
+       "text": "The bottle stays as it was stored: upright means **no cradle**. Cut the foil without moving it, pour in **one smooth motion** without glugging, eyes on the bottle, and stop when fine sediment reaches the **shoulder**."
+      },
+      {
+       "name": "Double and splash",
+       "note": "two more methods",
+       "text": "**Double decanting**: decant, rinse the bottle with a little of the wine (never water), pour it back. **Splash decanting**: pour hard for young, closed reds; never for old wines or sediment."
+      },
+      {
+       "name": "Other wine service",
+       "note": "the extras",
+       "text": "Screwcaps aren't presented. **Priming** glasses or decanters (1-2 oz) only if the guest asks. Know how to pour, clean, re-gas and change the needle on each **Coravin** system."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Count your linen before you walk out:",
+     "mixup": "**Sparkling**: two serviettes, two underliners. **Decanting for sediment**: three serviettes, three underliners."
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "Beer, sake, aperitifs, digestifs and cocktails",
+    "video": {
+     "youtubeId": "Mf81gRClPDg",
+     "title": "Learn how to study cocktails from a Master Sommelier in Study Hall: Cocktails Part 1",
+     "by": "SOMM TV",
+     "length": "11:51"
+    },
+    "keyPoints": [
+     {
+      "big": "1 INCH",
+      "line": "of foam (2-3 cm) on a correct beer pour."
+     },
+     {
+      "big": "FIFO",
+      "line": "First in, first out: serve the oldest beer stock first."
+     },
+     {
+      "big": "HALFWAY",
+      "line": "Mori koboshi sake overflows into the masu about halfway."
+     },
+     {
+      "big": "SNIFTER",
+      "line": "for neat, oak-aged spirits like brandy, aged rum, Calvados."
+     },
+     {
+      "big": "NO DIRTY ROCKS",
+      "line": "Fresh ice in the glass, never the ice from the shaker."
+     }
+    ],
+    "read": {
+     "bigIdea": "Every drink gets the full ceremony.",
+     "where": "Advanced service goes beyond wine. The **2025 standards** set steps for **beer**, **sake**, **aperitifs and digestifs** and **cocktails**, and the skill set asks for classic cocktail production and spirits service. In the exam, everything but cocktails is poured **tableside** unless you're told otherwise.",
+     "stopsTitle": "Four drinks, four routines",
+     "stops": [
+      {
+       "name": "Beer",
+       "note": "foam matters",
+       "text": "Repeat **brewery, style and brand**. Open at the side station and choose the glass by style. Use the **tilted glass** or a **steady pour**, leaving about **1 in. / 2-3 cm** of foam. The bottle never touches the glass."
+      },
+      {
+       "name": "Sake",
+       "note": "two traditions",
+       "text": "Modern service follows **white wine standards** in wine glasses. **Mori koboshi**: ochoko inside a masu, poured to overflow about halfway, with both hands. **Nigori**: invert and swirl to mix the **kasu**. Neither is for hot sake."
+      },
+      {
+       "name": "Aperitifs and digestifs",
+       "note": "tray or gueridon",
+       "text": "Serve from the guest's right. Small tulip or **copita** for fortified wine, grappa and eau de vie; **rocks glass** over ice; **snifter** for neat oak-aged spirits. Pour with a jigger."
+      },
+      {
+       "name": "Cocktails",
+       "note": "shaken, stirred, built",
+       "text": "Repeat the order with ice and garnish wishes. Rim the glass first if needed. **Built** drinks go in the serving glass in recipe order; layers start with the **densest** ingredient, poured over a bar spoon."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Mori koboshi** is an overflowing pour into an ochoko set in a masu. **Nigori** is cloudy sake with kasu, mixed before pouring."
+    },
+    "check": [
+     13,
+     14,
+     15
+    ]
+   },
+   {
+    "name": "Pairing and selling",
+    "video": {
+     "youtubeId": "r9D1l9hdpzI",
+     "title": "Jancis Robinson -  Food And Wine Pairing - An Understanding of Wine - BBC Maestro",
+     "by": "BBC Maestro",
+     "length": "7:32"
+    },
+    "keyPoints": [
+     {
+      "big": "GUEST FIRST",
+      "line": "The guest's taste beats the textbook pairing."
+     },
+     {
+      "big": "4 TASKS",
+      "line": "Propose, evaluate, assess, explain."
+     },
+     {
+      "big": "WHY IT WORKS",
+      "line": "Structure and flavor, in appetizing words."
+     },
+     {
+      "big": "BEYOND WINE",
+      "line": "Pair beer, sake, spirits and non-alcoholic drinks too."
+     }
+    ],
+    "read": {
+     "bigIdea": "Delight the guest, then explain why.",
+     "where": "Pairing is a service only the sommelier offers. The **2025 standards** put the guest's preference ahead of classic rules, and the exam tests your **reasoning** as much as your pick. The Court's example feedback says to listen to the guest, then sell with reasons that sound delicious.",
+     "stopsTitle": "Four steps to a pairing",
+     "stops": [
+      {
+       "name": "Listen first",
+       "note": "guest, occasion, room",
+       "text": "Start with the **guest's preferences**, the occasion and the room. A guest who wants red with shellfish gets red with shellfish."
+      },
+      {
+       "name": "Know the food",
+       "note": "world cuisines",
+       "text": "Know classic and modern pairings, **cooking techniques**, **iconic dishes**, and the key ingredients and sauces of major cuisines, so you can describe any dish with confidence."
+      },
+      {
+       "name": "Explain it",
+       "note": "structure and flavor",
+       "text": "Cover **structure** (acidity, tannin, body) and how **aromas and flavors** fit together, in clear, inviting words, never intimidating ones."
+      },
+      {
+       "name": "Sell it",
+       "note": "full name, more options",
+       "text": "Name the wine with **producer, vintage and full appellation**, and offer options beyond wine: **beer, sake, spirits** and non-alcoholic drinks."
+      }
+     ],
+     "visual": 0,
+     "mixup": "A **classic pairing** is a reference point. The **guest's preference** decides the pairing.",
+     "sayIt": "The wine's bright acidity cuts the richness of the sauce and keeps each bite fresh."
+    },
+    "check": [
+     18,
+     19,
+     20
+    ]
+   },
+   {
+    "name": "The practical exam, start to finish",
+    "video": {
+     "youtubeId": "09u7KxSkHWY",
+     "title": "Service Examination Expectations with David Yoshida, MS: Court of Master Sommeliers, Americas",
+     "by": "Court of Master Sommeliers, Americas",
+     "length": "0:39"
+    },
+    "keyPoints": [
+     {
+      "big": "15-20 MIN",
+      "line": "to study the situation, guest notes, menus and lists."
+     },
+     {
+      "big": "2 TABLES",
+      "line": "per panel, each with its own situation."
+     },
+     {
+      "big": "MAÎTRE D'",
+      "line": "guides you but can't answer content or service questions."
+     },
+     {
+      "big": "BUSY NIGHT",
+      "line": "Plenty of time, but every movement must count."
+     },
+     {
+      "big": "TABLESIDE",
+      "line": "Everything but cocktails is poured at the table."
+     }
+    ],
+    "read": {
+     "bigIdea": "A busy night on the floor, two tables long.",
+     "where": "The **Practical** is two parts on one day: **Business of the Sommelier**, then **Hospitality & Service**. The Court's example feedback reports it as a **Sparkling Table**, a **Decanting Table** and Business of the Sommelier.",
+     "stopsTitle": "Four stops through the room",
+     "stops": [
+      {
+       "name": "Prep",
+       "note": "15-20 minutes",
+       "text": "Belongings go aside. At your review table you get about **15-20 minutes** with the situation, **guest notes**, menus, the **wine list** and the **beverage list**. Notes go on your pad, not the menus."
+      },
+      {
+       "name": "The maître d'",
+       "note": "support only",
+       "text": "Walks your panel in and shows you each table. Ask where tools are or for water. Write down any **new guest notes** they give you."
+      },
+      {
+       "name": "At the table",
+       "note": "your station only",
+       "text": "Wait for 'Candidates, approach your tables.' Stay in your station; at a bar on the end of the side station, work **side-on** to the guests. 'Half time' and 'two minutes' are for the examiners."
+      },
+      {
+       "name": "When time is called",
+       "note": "follow the table",
+       "text": "Your table tells you whether to keep going. Then the **sequester room** until the end of the day; no talking about the exam until you're released."
+      }
+     ],
+     "visual": 0,
+     "mixup": "The **maître d'** is your guide and can't advise on standards. The **guests** are Master Sommeliers, and some play difficult roles."
+    },
+    "check": [
+     22,
+     23,
+     24
+    ]
+   }
+  ]
+ }
+}

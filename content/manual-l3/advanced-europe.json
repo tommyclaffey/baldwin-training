@@ -1,0 +1,1240 @@
+{
+ "program": "somm",
+ "programLevel": 3,
+ "part": 1,
+ "number": 4,
+ "slug": "advanced-europe",
+ "title": "Europe beyond France",
+ "script": "Chapter four",
+ "lead": "Advanced Europe sorts the map into buckets: Piedmont and Tuscany in depth, Germany’s small regions and VDP rules, Portugal past the Douro, Austria and Greece, the East, and the newer countries on the Court’s list.",
+ "minutes": 45,
+ "intro": {
+  "script": "Start here",
+  "title": "BIG BUCKETS, SMALL BUCKETS",
+  "text": "The Court lists dozens of places in this chapter. Give the classic regions the most time, then learn one clear fact for each smaller one.",
+  "tiers": [
+   {
+    "name": "Deep",
+    "note": "Piedmont, Tuscany, the Riesling regions"
+   },
+   {
+    "name": "Solid",
+    "note": "Spain, Portugal, Austria, Greece"
+   },
+   {
+    "name": "One fact each",
+    "note": "The East, England, Switzerland, the Middle East, Asia"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Italy",
+   "source": "Court of Master Sommeliers, Advanced Theory Exam guide; Consorzio di Tutela Barolo Barbaresco Alba Langhe e Dogliani; Consorzio Vino Chianti Classico",
+   "lines": [
+    {
+     "label": "Twenty regions",
+     "text": "The Court lists all twenty Italian regions, from Valle d’Aosta to Sardinia. Its own study advice: give Piedmont and Tuscany far more time than Basilicata or Molise."
+    },
+    {
+     "label": "Names inside the zone",
+     "text": "Top Italian zones now name smaller places on the label. Barolo’s vineyard names (MGA) entered its rules in 2010. Chianti Classico has drawn eleven UGAs, used first only on Gran Selezione."
+    }
+   ],
+   "chips": {
+    "label": "Barolo communes wholly inside the zone",
+    "items": [
+     "Barolo",
+     "Serralunga d’Alba",
+     "Castiglione Falletto"
+    ]
+   },
+   "know": [
+    "Barolo comes from 11 communes; only Barolo, Serralunga d’Alba and Castiglione Falletto lie wholly inside the zone.",
+    "Barolo ages at least three years, a year and a half in wood; Riserva needs five.",
+    "Barbaresco comes from Barbaresco, Neive, Treiso and part of Alba; it ages two years, nine months in oak, and Riserva four.",
+    "Chianti Classico covers 71,800 ha between Florence and Siena, including all of Castellina, Gaiole, Greve and Radda.",
+    "The Chianti Classico consorzio was founded in Radda in Chianti on May 14, 1924, under the Black Rooster."
+   ],
+   "visuals": [
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "BAROLO",
+       "title": "11 communes",
+       "text": "100% Nebbiolo\n3 years, 18 months in wood\nRiserva after 5 years\nMGA names since 2010"
+      },
+      {
+       "label": "BARBARESCO",
+       "title": "4 communes",
+       "text": "100% Nebbiolo\n2 years, 9 months in oak\nRiserva after 4 years\nBarbaresco, Neive, Treiso, part of Alba"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Chianti Classico’s four whole communes",
+     "rows": [
+      {
+       "name": "Castellina in Chianti",
+       "meta": "Siena side"
+      },
+      {
+       "name": "Gaiole in Chianti",
+       "meta": "Siena side"
+      },
+      {
+       "name": "Greve in Chianti",
+       "meta": "Florence side"
+      },
+      {
+       "name": "Radda in Chianti",
+       "meta": "where the consorzio began, 1924"
+      }
+     ],
+     "note": "Parts of other communes are in too: 71,800 ha in all."
+    }
+   ]
+  },
+  {
+   "name": "Germany",
+   "source": "Wines of Germany (Deutsches Weininstitut); VDP.Die Prädikatsweingüter; Court of Master Sommeliers, Advanced Theory Exam guide",
+   "lines": [
+    {
+     "label": "Thirteen regions",
+     "text": "The Court lists all 13 German regions. Five have under 1,000 ha; the Mittelrhein, at 439 ha, is the smallest."
+    },
+    {
+     "label": "The 2021 law",
+     "text": "German law now ranks PDO wine by origin: wine region, then Region, then village, then single vineyard. The rules bind from the 2026 vintage, and the Prädikat levels stay the same."
+    }
+   ],
+   "chips": {
+    "label": "VDP, top to bottom",
+    "items": [
+     "VDP.Grosse Lage",
+     "VDP.Erste Lage",
+     "VDP.Ortswein",
+     "VDP.Gutswein"
+    ]
+   },
+   "know": [
+    "Sachsen is the easternmost region, 531 ha, with vines starting near Dresden at 51° north.",
+    "Saale-Unstrut is the northernmost quality region; Pinot Blanc and Müller-Thurgau lead its 868 ha.",
+    "Württemberg is 63% red: Lemberger (1,661 ha) just ahead of Trollinger (1,614 ha).",
+    "A VDP.Grosses Gewächs is a dry wine from a VDP.Grosse Lage, from at most 50 hl/ha, picked by hand.",
+    "GG whites go on sale September 1 the year after harvest; GG reds a year later, after 12 months or more in oak."
+   ],
+   "visuals": [
+    {
+     "type": "pyramid",
+     "title": "VDP classification, top first",
+     "rows": [
+      {
+       "name": "VDP.Grosse Lage",
+       "note": "max 50 hl/ha · dry wine = Grosses Gewächs"
+      },
+      {
+       "name": "VDP.Erste Lage",
+       "note": "max 60 hl/ha · first-class sites"
+      },
+      {
+       "name": "VDP.Ortswein",
+       "note": "max 75 hl/ha · one village"
+      },
+      {
+       "name": "VDP.Gutswein",
+       "note": "max 75 hl/ha · the estate’s own vineyards"
+      }
+     ]
+    },
+    {
+     "type": "scale",
+     "title": "Germany’s smallest regions · hectares",
+     "rows": [
+      {
+       "name": "Mittelrhein",
+       "value": "439 ha",
+       "pct": 0.51
+      },
+      {
+       "name": "Hessische Bergstraße",
+       "value": "440 ha",
+       "pct": 0.51
+      },
+      {
+       "name": "Sachsen",
+       "value": "531 ha",
+       "pct": 0.61
+      },
+      {
+       "name": "Saale-Unstrut",
+       "value": "868 ha",
+       "pct": 1
+      }
+     ],
+     "note": "Figures from Wines of Germany (2025)."
+    }
+   ]
+  },
+  {
+   "name": "Spain and Portugal",
+   "source": "Consejo Regulador DOCa Rioja; Spain’s Ministry of Agriculture (MAPA); Wines of Portugal; Court of Master Sommeliers curriculum guide",
+   "lines": [
+    {
+     "label": "Spain",
+     "text": "The Court asks for all of Spain’s major regions plus Vino de Pago. Rioja now has its own single-vineyard tier, Viñedo Singular, approved by the ministry vineyard by vineyard."
+    },
+    {
+     "label": "Portugal",
+     "text": "Wines of Portugal maps 14 regions and counts more than 250 native grapes. Advanced goes past the Douro to the south and the islands."
+    }
+   ],
+   "chips": {
+    "label": "Alentejo sub-regions",
+    "items": [
+     "Borba",
+     "Évora",
+     "Granja-Amareleja",
+     "Moura",
+     "Portalegre",
+     "Redondo",
+     "Reguengos",
+     "Vidigueira"
+    ]
+   },
+   "know": [
+    "Bairrada is clay-limestone and sand; its classic reds are Baga, and it was an early home of Portuguese sparkling.",
+    "Távora-Varosa was the first region demarcated for DOC sparkling wine, in 1989.",
+    "In Lisboa, Bucelas is Arinto, and Colares is Ramisco planted in loose sand by the sea.",
+    "Palmela reds are Castelão on warm sand; Moscatel de Setúbal is the region’s famous fortified wine.",
+    "The Azores have three appellations, Graciosa, Biscoitos and Pico, with vines in volcanic stone corrals."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Portugal beyond the Douro",
+     "rows": [
+      {
+       "name": "Bairrada",
+       "meta": "Baga · sparkling"
+      },
+      {
+       "name": "Dão",
+       "meta": "granite, 200–1,000 m, among pine forests"
+      },
+      {
+       "name": "Bucelas",
+       "meta": "Arinto whites"
+      },
+      {
+       "name": "Colares",
+       "meta": "Ramisco on sand by the sea"
+      },
+      {
+       "name": "Palmela",
+       "meta": "Castelão on sand"
+      },
+      {
+       "name": "Pico (Azores)",
+       "meta": "Verdelho in stone corrals"
+      }
+     ],
+     "note": "Bairrada calls Fernão Pires ‘Maria Gomes’."
+    }
+   ]
+  },
+  {
+   "name": "Austria, Greece and Eastern Europe",
+   "source": "Vinea Wachau; Weinviertel DAC; Wine Burgenland; Wine Styria; Wines of Greece; bor.hu; UNESCO; Wine Folly",
+   "lines": [
+    {
+     "label": "Austria",
+     "text": "The Court names four Austrian areas: Niederösterreich, Wien, Steiermark and Burgenland. The Wachau and Styria layer their DACs from region to village to single vineyard."
+    },
+    {
+     "label": "Greece and the East",
+     "text": "Greece’s classic PDOs date from 1971. Further east, the Court lists Slovenia, Hungary, Bulgaria, Romania, Georgia and Russia."
+    }
+   ],
+   "chips": {
+    "label": "Burgenland DACs",
+    "items": [
+     "Neusiedlersee",
+     "Leithaberg",
+     "Ruster Ausbruch",
+     "Rosalia",
+     "Mittelburgenland",
+     "Eisenberg"
+    ]
+   },
+   "know": [
+    "Wachau DAC has three levels, Gebietswein, Ortswein and Riedenwein, all hand-picked; a Riedenwein is only Grüner Veltliner or Riesling.",
+    "Leithaberg DAC wines grow on shell limestone; Mittelburgenland DAC is Blaufränkisch.",
+    "Mantinia PDO is at least 85% Moschofilero from a cold plateau about 660 m up; it can be still or sparkling.",
+    "Santorini’s Nykteri is dry, at least 13.5% alcohol, with at least 3 months in oak.",
+    "Georgia’s qvevri winemaking, in buried egg-shaped clay jars, joined UNESCO’s intangible heritage list in 2013."
+   ],
+   "visuals": [
+    {
+     "type": "tiles",
+     "title": "Greek PDOs to know",
+     "dark": true,
+     "items": [
+      {
+       "name": "Santorini",
+       "text": "Assyrtiko, ungrafted vines, kouloura baskets"
+      },
+      {
+       "name": "Naoussa",
+       "text": "100% Xinomavro, Mt Vermio slopes"
+      },
+      {
+       "name": "Nemea",
+       "text": "100% Agiorgitiko, 230–850 m"
+      },
+      {
+       "name": "Mantinia",
+       "text": "Moschofilero, one of the coldest PDOs"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "Bulgaria’s own red grapes",
+     "rows": [
+      {
+       "name": "Mavrud",
+       "meta": "native, crushed cherry, medium body"
+      },
+      {
+       "name": "Melnik 55",
+       "meta": "Broad-leafed Melnik × Valdiguié, Struma Valley"
+      },
+      {
+       "name": "Rubin",
+       "meta": "Nebbiolo × Syrah"
+      },
+      {
+       "name": "Gamza",
+       "meta": "the same grape as Kadarka"
+      }
+     ],
+     "note": "From Wine Folly."
+    }
+   ]
+  },
+  {
+   "name": "England, Switzerland, the Middle East and Asia",
+   "source": "WineGB; Swiss Wine Promotion; Cyprus Food Museum; China Daily; Wine Folly; Court of Master Sommeliers, Advanced Theory Exam guide",
+   "lines": [
+    {
+     "label": "England and Switzerland",
+     "text": "England’s vines run from Cornwall to Yorkshire; the five biggest counties are Sussex, Kent, Essex, Hampshire and Surrey. Switzerland groups 26 cantons and 62 AOCs into six regions."
+    },
+    {
+     "label": "Middle East and Asia",
+     "text": "The Court lists Israel, Lebanon and Cyprus, then China and India. Cyprus’s Commandaria and China’s Ningxia have the clearest rules and stories."
+    }
+   ],
+   "chips": {
+    "label": "Swiss regions",
+    "items": [
+     "Valais",
+     "Vaud",
+     "Geneva",
+     "Ticino",
+     "Three Lakes",
+     "German-speaking Switzerland"
+    ]
+   },
+   "know": [
+    "In England, eastern counties like Essex and Kent are warmer and give riper grapes.",
+    "Valais holds almost one-third of Swiss vineyards; Vaud calls itself the home of Chasselas.",
+    "Commandaria uses only Xynisteri and Mavro, from unirrigated vines at least four years old, sun-dried before pressing.",
+    "Commandaria must ferment inside the 14 designated villages.",
+    "Ningxia growers bury their vines before winter and dig them up in spring."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "Commandaria, step by step",
+     "items": [
+      {
+       "name": "Pick late",
+       "text": "grapes overripen on the vine",
+       "meta": "Xynisteri + Mavro"
+      },
+      {
+       "name": "Dry in the sun",
+       "text": "until the juice reaches 19–23 Baumé",
+       "meta": "more sugar"
+      },
+      {
+       "name": "Press and ferment",
+       "text": "only in the 14 villages",
+       "meta": "up to 15% alcohol"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "SHANDONG",
+       "title": "Wet coast",
+       "text": "Maritime, monsoon rain\nOver 40% of China’s wine\nCabernet Gernischt, Marselan"
+      },
+      {
+       "label": "NINGXIA",
+       "title": "Dry foothills",
+       "text": "Helan Mountains by the Gobi\n37–39° north\nVines buried every winter"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "VDP.Grosse Lage",
+   "b": "VDP.Grosses Gewächs",
+   "why": "Grosse Lage is the vineyard. Grosses Gewächs is the dry wine made from it."
+  },
+  {
+   "a": "MGA (Barolo)",
+   "b": "UGA (Chianti Classico)",
+   "why": "An MGA is a named vineyard area. A UGA is one of eleven village-level districts."
+  },
+  {
+   "a": "Egri Bikavér",
+   "b": "Egri Csillag",
+   "why": "Bikavér is Eger’s red blend. Csillag is its white sister."
+  },
+  {
+   "a": "Viñedo Singular",
+   "b": "Vino de Pago",
+   "why": "One is a single-vineyard category inside DOCa Rioja. The other is its own tier of Spanish DOP."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas (Advanced Theory Exam guide, Certified curriculum guide); Consorzio Barolo Barbaresco Alba Langhe e Dogliani; Consorzio Vino Chianti Classico; Wines of Germany; VDP; Spain’s Ministry of Agriculture; DOCa Rioja; Wines of Portugal; Vinea Wachau; Weinviertel DAC; Wine Burgenland; Wine Styria; Wines of Greece; bor.hu; UNESCO; WineGB; Swiss Wine Promotion; Cyprus Food Museum; China Daily; Wine Folly. Checked Nov 19, 2026.",
+ "cards": [
+  {
+   "q": "How many communes make up the Barolo DOCG zone?",
+   "answer": "11",
+   "wrong": [
+    "4",
+    "7",
+    "15"
+   ],
+   "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+  },
+  {
+   "q": "Barolo’s official vineyard names (MGA) entered its production rules in:",
+   "answer": "2010",
+   "wrong": [
+    "1980",
+    "1996",
+    "2021"
+   ],
+   "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+  },
+  {
+   "q": "In their first phase, Chianti Classico’s eleven UGAs may appear only on:",
+   "answer": "Gran Selezione",
+   "wrong": [
+    "Chianti Classico Annata",
+    "Chianti Classico Riserva",
+    "Vin Santo del Chianti Classico"
+   ],
+   "source": "https://www.chianticlassico.com/en/territory/uga/"
+  },
+  {
+   "q": "Which commune lies wholly inside the Barolo zone?",
+   "answer": "Serralunga d’Alba",
+   "wrong": [
+    "Neive",
+    "Treiso",
+    "Diano d’Alba"
+   ],
+   "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+  },
+  {
+   "q": "Germany’s easternmost wine region is:",
+   "answer": "Sachsen",
+   "wrong": [
+    "Saale-Unstrut",
+    "Franken",
+    "Württemberg"
+   ],
+   "source": "https://www.winesofgermany.com/our-regions/growing-area/75/sachsen"
+  },
+  {
+   "q": "A white VDP.Grosses Gewächs goes on sale on:",
+   "answer": "September 1 of the year after harvest",
+   "wrong": [
+    "May 1 of the year after harvest",
+    "January 1 of the year after harvest",
+    "September 1 of the second year after harvest"
+   ],
+   "source": "https://www.vdp.de/en/the-wines/classification"
+  },
+  {
+   "q": "The maximum yield for a VDP.Grosse Lage wine is:",
+   "answer": "50 hl/ha",
+   "wrong": [
+    "40 hl/ha",
+    "60 hl/ha",
+    "75 hl/ha"
+   ],
+   "source": "https://www.vdp.de/en/the-wines/classification"
+  },
+  {
+   "q": "Which red grape covers the most vineyard in Württemberg?",
+   "answer": "Lemberger",
+   "wrong": [
+    "Trollinger",
+    "Spätburgunder",
+    "Schwarzriesling"
+   ],
+   "source": "https://www.winesofgermany.com/our-regions/growing-area/76/wuerttemberg"
+  },
+  {
+   "q": "Rioja’s single-vineyard category is called:",
+   "answer": "Viñedo Singular",
+   "wrong": [
+    "Vino de Pago",
+    "Gran Selección",
+    "Vino de Zona"
+   ],
+   "source": "https://riojawine.com/en-us/the-designation/classification/vinedo-singular-wine/"
+  },
+  {
+   "q": "Colares vines grow in loose sand by the sea. Its red grape is:",
+   "answer": "Ramisco",
+   "wrong": [
+    "Baga",
+    "Castelão",
+    "Jaen"
+   ],
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/lisboa/"
+  },
+  {
+   "q": "Which region was the first demarcated in Portugal for DOC sparkling wine, in 1989?",
+   "answer": "Távora-Varosa",
+   "wrong": [
+    "Bairrada",
+    "Vinho Verde",
+    "Dão"
+   ],
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/"
+  },
+  {
+   "q": "In Bairrada, Fernão Pires is called:",
+   "answer": "Maria Gomes",
+   "wrong": [
+    "Arinto",
+    "Bical",
+    "Antão Vaz"
+   ],
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/bairrada/"
+  },
+  {
+   "q": "Mantinia PDO wines are at least 85%:",
+   "answer": "Moschofilero",
+   "wrong": [
+    "Assyrtiko",
+    "Malagousia",
+    "Roditis"
+   ],
+   "source": "https://winesofgreece.org/pdo/pdo-mantinia/"
+  },
+  {
+   "q": "Santorini Nykteri must spend at least how long in oak?",
+   "answer": "3 months",
+   "wrong": [
+    "1 month",
+    "6 months",
+    "12 months"
+   ],
+   "source": "https://winesofgreece.org/pdo/pdo-santorini/"
+  },
+  {
+   "q": "Leithaberg DAC wines grow on:",
+   "answer": "Shell limestone",
+   "wrong": [
+    "Slate",
+    "Granite",
+    "Volcanic basalt"
+   ],
+   "source": "https://www.weinburgenland.at/en/"
+  },
+  {
+   "q": "A qvevri is:",
+   "answer": "An egg-shaped earthenware jar, buried for winemaking",
+   "wrong": [
+    "A large oak cask",
+    "A concrete fermenting egg",
+    "A stainless-steel tank"
+   ],
+   "source": "https://ich.unesco.org/en/RL/ancient-georgian-traditional-qvevri-wine-making-method-00870"
+  },
+  {
+   "q": "Commandaria is made only from:",
+   "answer": "Xynisteri and Mavro",
+   "wrong": [
+    "Assyrtiko and Mandilaria",
+    "Moschofilero and Agiorgitiko",
+    "Xynisteri and Maratheftiko"
+   ],
+   "source": "https://www.cyprusfoodmuseum.com/en/sylloges/trofima/commandaria-koymandaria"
+  },
+  {
+   "q": "Before winter, Ningxia growers protect their vines by:",
+   "answer": "Burying them in soil",
+   "wrong": [
+    "Wrapping them in straw",
+    "Running wind machines",
+    "Spraying water to form ice"
+   ],
+   "source": "https://govt.chinadaily.com.cn/s/202204/01/WS6246950e498e6a12c1228c4e/wine-grape-season-begins-by-digging-up-vines.html"
+  },
+  {
+   "q": "Which Swiss region holds almost one-third of the country’s vineyards?",
+   "answer": "Valais",
+   "wrong": [
+    "Vaud",
+    "Geneva",
+    "Ticino"
+   ],
+   "source": "https://www.swisswine.com/en/swiss-wine-regions"
+  },
+  {
+   "q": "Which county is one of England’s five largest wine-producing counties?",
+   "answer": "Sussex",
+   "wrong": [
+    "Cornwall",
+    "Yorkshire",
+    "Devon"
+   ],
+   "source": "https://winegb.co.uk/wines/regions/"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Court Advanced topics: Italy (Piedmont, Valle d’Aosta, Liguria, Lombardy, Trentino-Alto Adige, Veneto, Friuli-Venezia-Giulia, Emilia-Romagna, Tuscany, Marche, Umbria, Lazio, Molise, Abruzzo, Campania, Basilicata, Puglia, Calabria, Sicily, Sardinia); Germany (13 regions); Spain (all major regions, Vino de Pago); Portugal (all major regions and styles); Greece (all major regions and styles); Other Europe (England, Switzerland); Austria (Niederösterreich, Wien, Steiermark, Burgenland); Eastern Europe & Caucasus/Russia (Slovenia, Hungary, Bulgaria, Romania, Georgia, Russia); Middle East (Israel, Lebanon, Cyprus); Asia (China, India).",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf"
+  },
+  {
+   "fact": "Court study strategy: when studying Italy, budget proportionately more time for Tuscany and Piedmont than for Basilicata or Molise.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf"
+  },
+  {
+   "fact": "Barolo DOCG: 100% Nebbiolo; 11 municipalities; Barolo, Serralunga d’Alba and Castiglione Falletto wholly included; La Morra, Monforte, Verduno, Novello, Grinzane Cavour, Diano d’Alba, Cherasco and Roddi partly included.",
+   "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+  },
+  {
+   "fact": "Barolo ages at least three years (beyond the two months after harvest), one and a half in oak; Riserva after five years.",
+   "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+  },
+  {
+   "fact": "Barolo’s Additional Geographical Mentions (MGA) were delimited and recognized in the production rules in 2010.",
+   "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/"
+  },
+  {
+   "fact": "Barbaresco DOCG: 100% Nebbiolo from Barbaresco, Neive, Treiso and part of Alba; at least two years of aging, nine months in oak; Riserva after four years.",
+   "source": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barbaresco-docg/"
+  },
+  {
+   "fact": "Chianti Classico zone: 71,800 ha between Florence and Siena; includes all of Castellina, Gaiole, Greve and Radda in Chianti and parts of other communes.",
+   "source": "https://www.chianticlassico.com/en/"
+  },
+  {
+   "fact": "The Chianti Classico consorzio began in Radda in Chianti on May 14, 1924, under the Black Rooster.",
+   "source": "https://www.chianticlassico.com/en/"
+  },
+  {
+   "fact": "Chianti Classico has eleven Additional Geographic Units (UGA) to be shown on labels, applicable in the first phase only to Gran Selezione.",
+   "source": "https://www.chianticlassico.com/en/territory/uga/"
+  },
+  {
+   "fact": "Sachsen: easternmost German region, 531 ha, vines begin near Dresden at 51° N; Riesling is now its most important grape.",
+   "source": "https://www.winesofgermany.com/our-regions/growing-area/75/sachsen"
+  },
+  {
+   "fact": "Saale-Unstrut: Germany’s northernmost quality region, 868 ha (2025), about 500 mm of rain; largest of the five regions under 1,000 ha; Pinot Blanc (116 ha) and Müller-Thurgau (110 ha) lead.",
+   "source": "https://www.winesofgermany.com/our-regions/growing-area/74/saale-unstrut"
+  },
+  {
+   "fact": "Mittelrhein: Germany’s smallest region (2025), 439 ha; clayish slate and greywacke; Riesling leads.",
+   "source": "https://www.winesofgermany.com/our-regions/growing-area/71/mittelrhein"
+  },
+  {
+   "fact": "Hessische Bergstraße: 440 ha; an independent region since 1971.",
+   "source": "https://www.winesofgermany.com/our-regions/growing-area/67/hessische-bergstrasse"
+  },
+  {
+   "fact": "Württemberg: 10,694 ha, 63% red; Lemberger 1,661 ha, Trollinger 1,614 ha; over 50 cooperatives market about 80% of its wine.",
+   "source": "https://www.winesofgermany.com/our-regions/growing-area/76/wuerttemberg"
+  },
+  {
+   "fact": "Nahe soils include slate, volcanic porphyry, loess and loam.",
+   "source": "https://www.winesofgermany.com/our-regions/growing-area/73/nahe"
+  },
+  {
+   "fact": "The 10th amendment to the German Wine Act took effect January 27, 2021; within PDO wines a four-level origin pyramid (wine-growing region, Region, municipality, single vineyard); binding from the 2026 vintage; Prädikat levels unchanged.",
+   "source": "https://www.winesofgermany.com/wine-industry/wine-law-and-regulations"
+  },
+  {
+   "fact": "VDP four-tier classification (Gutswein, Ortswein, Erste Lage, Grosse Lage) adopted in January 2012. Max yields: Grosse Lage 50 hl/ha, Erste Lage 60, Ortswein 75, Gutswein 75. Grosse Lage and Erste Lage are hand-harvested.",
+   "source": "https://www.vdp.de/en/the-wines/classification"
+  },
+  {
+   "fact": "Dry wines from VDP.Grosse Lage sites are VDP.Grosses Gewächs; sweet ones carry the Prädikat names. GG whites are released September 1 the year after harvest; GG reds September 1 of the second year after harvest, with at least 12 months in oak; sweet Grosse Lage wines May 1 the year after harvest.",
+   "source": "https://www.vdp.de/en/the-wines/classification"
+  },
+  {
+   "fact": "Rioja has a Viñedo Singular (single vineyard) category; Spain’s agriculture ministry recognizes new Viñedos Singulares in DOCa Rioja.",
+   "source": "https://www.mapa.gob.es/es/prensa/ultimas-noticias/detalle_noticias/el-ministerio-de-agricultura--pesca-y-alimentacion-reconoce-14-nuevos-vinedos-singulares-en-la-denominacion-de-origen-calificada-rioja-/a14322b5-f6df-41f7-a25b-7844586d178e"
+  },
+  {
+   "fact": "Spain’s DOP tiers include Vino de Pago, DOCa and DO; Rioja and Priorat are the only DOCa.",
+   "source": "https://winefolly.com/wine-regions/spain/"
+  },
+  {
+   "fact": "Wines of Portugal lists 14 wine regions: Vinho Verde, Trás-os-Montes, Porto e Douro, Távora-Varosa, Dão e Lafões, Bairrada, Beira Interior, Lisboa, Tejo, Península de Setúbal, Alentejo, Algarve, Madeira, Açores. Távora-Varosa was the first region demarcated for DOC sparkling wine, in 1989.",
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/"
+  },
+  {
+   "fact": "Portugal has more than 250 native grape varieties.",
+   "source": "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/"
+  },
+  {
+   "fact": "Alentejo: hot, dry Mediterranean climate with continental influence; eight sub-regions: Borba, Évora, Granja-Amareleja, Moura, Portalegre, Redondo, Reguengos, Vidigueira.",
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/alentejo/"
+  },
+  {
+   "fact": "Bairrada: clay-limestone and sandy soils; one of the first regions to make sparkling; classic wines from Baga; Fernão Pires is called Maria Gomes there; cool, humid climate.",
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/bairrada/"
+  },
+  {
+   "fact": "Dão: mountains on all sides, poor granite soils, vineyards among pine forests from 1,000 m in the Serra da Estrela down to 200 m.",
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/dao-e-lafoes/"
+  },
+  {
+   "fact": "Lisboa has nine sub-regions; Bucelas (Arinto whites), Colares (Ramisco planted by the sea on loose sand) and Carcavelos stand out.",
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/lisboa/"
+  },
+  {
+   "fact": "Península de Setúbal: birthplace of Moscatel de Setúbal; Palmela reds based on Castelão on warm sandy soils.",
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/peninsula-de-setubal/"
+  },
+  {
+   "fact": "Açores: three appellations, Graciosa, Biscoitos and Pico; vines planted inside volcanic stone corrals; Verdelho is the most famous grape.",
+   "source": "https://www.winesofportugal.com/en/discover/wine-regions/acores/"
+  },
+  {
+   "fact": "Certified curriculum (Spain) covers Rioja, Ribera, Priorat, Galicia and other DOs; Priorat bush vines on llicorella.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=43"
+  },
+  {
+   "fact": "Wachau DAC: Gebietswein, Ortswein, Riedenwein; 100% hand-harvested; Riedenwein only Grüner Veltliner or Riesling.",
+   "source": "https://www.vinea-wachau.at/en/the-wine-region/wachau-dac"
+  },
+  {
+   "fact": "Styria’s DAC pyramid runs from regional to village to single-vineyard wines; Schilcher and Sauvignon Blanc are named styles.",
+   "source": "https://steiermark.wine/en/"
+  },
+  {
+   "fact": "Burgenland DACs: Neusiedlersee, Leithaberg (shell limestone), Ruster Ausbruch, Rosalia (rosé), Mittelburgenland (Blaufränkisch), Eisenberg.",
+   "source": "https://www.weinburgenland.at/en/"
+  },
+  {
+   "fact": "PDO Santorini (1971): at least 85% Assyrtiko with Athiri and Aidani; self-rooted vines; kouloura basket training; Nykteri is dry, at least 13.5% alcohol and at least 3 months in oak.",
+   "source": "https://winesofgreece.org/pdo/pdo-santorini/"
+  },
+  {
+   "fact": "PDO Naoussa (1971): 100% Xinomavro on the south-eastern slopes of Mt Vermio.",
+   "source": "https://winesofgreece.org/pdo/pdo-naoussa/"
+  },
+  {
+   "fact": "PDO Nemea (1971): 100% Agiorgitiko, about 230–850 m; Greece’s largest PDO zone for red wine.",
+   "source": "https://winesofgreece.org/pdo/pdo-nemea/"
+  },
+  {
+   "fact": "PDO Mantinia (1971): plateau at about 660 m, vineyards up to 800 m; one of the coldest PDO zones in Greece; at least 85% Moschofilero with Asproudes; still or sparkling; pink-grey hue and rose-like aromas.",
+   "source": "https://winesofgreece.org/pdo/pdo-mantinia/"
+  },
+  {
+   "fact": "Retsina is Greece’s best-known traditional wine, flavored with pine resin.",
+   "source": "https://winesofgreece.org/retsina/"
+  },
+  {
+   "fact": "Since 2013, Tokaji Aszú needs at least 120 g/L of sugar and 18 months in wooden casks.",
+   "source": "https://bor.hu/en/magazine/tokaji-szamorodni-aszu-maslas-forditas-natureszencia-whats-what/"
+  },
+  {
+   "fact": "Egri Bikavér must be at least three grapes, at least 50% a native red, typically Kékfrankos (Kadarka also qualifies); Egri Csillag (‘Star of Eger’) is the white sister blend.",
+   "source": "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/"
+  },
+  {
+   "fact": "Bulgaria: Mavrud is native; Melnik 55 is Broad-leafed Melnik × Valdiguié from the Struma Valley; Rubin is Nebbiolo × Syrah; Gamza is Kadarka.",
+   "source": "https://winefolly.com/deep-dive/the-wines-of-bulgaria/"
+  },
+  {
+   "fact": "Qvevri wine-making was inscribed in 2013 on UNESCO’s Representative List of the Intangible Cultural Heritage of Humanity; the qvevri is an egg-shaped earthenware vessel used for making, ageing and storing wine.",
+   "source": "https://ich.unesco.org/en/RL/ancient-georgian-traditional-qvevri-wine-making-method-00870"
+  },
+  {
+   "fact": "English vineyards run from Cornwall to Yorkshire, Wales to the Isle of Wight, and recently Scotland; the five largest-producing counties are Sussex, Kent, Essex, Hampshire and Surrey; eastern counties like Essex and Kent are warmer and give higher sugar.",
+   "source": "https://winegb.co.uk/wines/regions/"
+  },
+  {
+   "fact": "WineGB manages the UK Wine Schemes (PDO/PGI) on behalf of Defra.",
+   "source": "https://winegb.co.uk/wines/pdo-pgi/"
+  },
+  {
+   "fact": "Switzerland: 26 cantons and 62 wine AOCs grouped into six regions (Valais, Vaud, German-speaking Switzerland, Geneva, Ticino, Three Lakes); Valais has almost one-third of Swiss vineyards.",
+   "source": "https://www.swisswine.com/en/swiss-wine-regions"
+  },
+  {
+   "fact": "Vaud presents itself as the home of Chasselas; its AOC areas include Chablais, Lavaux, La Côte, Bonvillars and Côte de l’Orbe.",
+   "source": "https://www.swisswine.com/en/swiss-wine-regions/vaud-wine-region"
+  },
+  {
+   "fact": "Commandaria: only Xynisteri and Mavro; vineyards at least four years old; irrigation prohibited; grapes overripen on the vine, then sun-dry until 19–23 Baumé; fermentation within the fourteen designated villages; alcohol up to 15%.",
+   "source": "https://www.cyprusfoodmuseum.com/en/sylloges/trofima/commandaria-koymandaria"
+  },
+  {
+   "fact": "Helan Mountain in Ningxia lies between 37 and 39° N and has the most wineries in China; vines are buried before winter and unearthed in spring.",
+   "source": "https://govt.chinadaily.com.cn/s/202204/01/WS6246950e498e6a12c1228c4e/wine-grape-season-begins-by-digging-up-vines.html"
+  },
+  {
+   "fact": "Shandong: maritime, monsoon rain, high disease pressure; over 40% of China’s wine; Cabernet Gernischt, Merlot and Cabernet Sauvignon. Ningxia: Helan Mountains by the Gobi, arid. Marselan (Cabernet Sauvignon × Grenache, bred 1961) resists powdery mildew, suiting Shandong.",
+   "source": "https://winefolly.com/deep-dive/a-primer-to-chinese-wine-regional-guide-with-maps/"
+  },
+  {
+   "fact": "Xinomavro is often compared to Nebbiolo; Malagousia makes aromatic whites.",
+   "source": "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+  }
+ ],
+ "unverified": [
+  "Vino de Pago count: a search summary gave 27 for 2024/25 from a MAPA report, while other pages give 19, 20 or 24. No number is stated.",
+  "Rioja Viñedo Singular rules (vines at least 35 years old, yield caps, number approved) were only seen in search summaries, not read on the page. Only the category’s existence is stated.",
+  "Wien (Wiener Gemischter Satz DAC), Steiermark’s individual DACs, Slovenia, Romania, Russia, Israel, Lebanon and India: no official page was read this pass, so they are only named as Court topics.",
+  "Lebanon’s Bekaa Valley altitude (about 1,000 m and up) came from search summaries of producer pages, not read directly. Not stated.",
+  "Commandaria: PDO year (1990) and drying times (a week to 12 days) come from secondary pages and disagree. Not stated.",
+  "Wine Folly calls Tokaj ‘the oldest classified wine region in the world’, while Level 1 calls the Douro (1756) the oldest demarcated region. Neither claim is repeated here.",
+  "Wine Folly’s China page dates Changyu’s start to 1982, which looks like a typo for an earlier year. Not stated.",
+  "Chianti Classico’s UGA page still reads as if approval were pending; the date the UGAs took effect was not confirmed. No date is stated.",
+  "The austrianwine.com pages refused automated access (HTTP 403), so Austrian DAC dates are not given."
+ ],
+ "court": {
+  "outcome": "An example of this would be when studying Italy, budgeting a proportionately more significant amount of time to study Tuscany and Piedmont than perhaps Basilicata or Molise.",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf",
+  "coverage": [
+   {
+    "topic": "Italy: Piedmont",
+    "guide": "Barolo and Barbaresco communes, aging and Riserva rules, MGA vineyard names.",
+    "where": "Italy"
+   },
+   {
+    "topic": "Italy: Tuscany",
+    "guide": "Chianti Classico’s size, its whole communes, the 1924 consorzio, the eleven UGAs.",
+    "where": "Italy"
+   },
+   {
+    "topic": "Italy: Veneto, Lombardy, Trentino-Alto Adige, Friuli-Venezia-Giulia",
+    "guide": "Built on Levels 1 and 2; sort into the major bucket.",
+    "where": "Italy"
+   },
+   {
+    "topic": "Italy: Valle d’Aosta, Liguria, Emilia-Romagna, Marche, Umbria, Lazio, Molise, Abruzzo, Campania, Basilicata, Puglia, Calabria, Sicily, Sardinia",
+    "guide": "The bucket rule: smaller regions get less time than Piedmont and Tuscany.",
+    "where": "Italy"
+   },
+   {
+    "topic": "Germany: Mosel, Rheingau, Pfalz, Nahe, Rheinhessen, Mittelrhein",
+    "guide": "Mittelrhein the smallest; Nahe soils; VDP tiers across the Rhine regions.",
+    "where": "Germany"
+   },
+   {
+    "topic": "Germany: Baden, Württemberg, Franken, Ahr",
+    "guide": "Württemberg’s red share, Lemberger and Trollinger, cooperatives.",
+    "where": "Germany"
+   },
+   {
+    "topic": "Germany: Hessische-Bergstrasse, Sachsen, Saale-Unstrut",
+    "guide": "The small eastern and northern regions, their size and grapes.",
+    "where": "Germany"
+   },
+   {
+    "topic": "Spain: all major regions; Vino de Pago",
+    "guide": "Rioja’s Viñedo Singular, set against Vino de Pago.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Portugal: all major regions and styles",
+    "guide": "14 regions, Bairrada, Dão, Lisboa’s sub-regions, Setúbal, the Azores.",
+    "where": "Spain and Portugal"
+   },
+   {
+    "topic": "Austria: Niederösterreich, Wien, Steiermark, Burgenland",
+    "guide": "Wachau DAC tiers, Styria’s DAC pyramid, Burgenland’s six DACs.",
+    "where": "Austria, Greece and Eastern Europe"
+   },
+   {
+    "topic": "Greece: all major regions and styles",
+    "guide": "Santorini, Naoussa, Nemea, Mantinia; Nykteri and Retsina.",
+    "where": "Austria, Greece and Eastern Europe"
+   },
+   {
+    "topic": "Eastern Europe & Caucasus/Russia: Slovenia, Hungary, Bulgaria, Romania, Georgia, Russia",
+    "guide": "Eger blends, Bulgarian native reds, Georgian qvevri.",
+    "where": "Austria, Greece and Eastern Europe"
+   },
+   {
+    "topic": "Other Europe: England, Switzerland",
+    "guide": "England’s counties and PDO scheme; Swiss regions, AOCs, Valais and Vaud.",
+    "where": "England, Switzerland, the Middle East and Asia"
+   },
+   {
+    "topic": "Middle East: Israel, Lebanon, Cyprus",
+    "guide": "Commandaria’s grapes, drying and village rules.",
+    "where": "England, Switzerland, the Middle East and Asia"
+   },
+   {
+    "topic": "Asia: China, India",
+    "guide": "Ningxia vine burial, Shandong’s climate, Marselan.",
+    "where": "England, Switzerland, the Middle East and Asia"
+   },
+   {
+    "topic": "Areas of Study: wine law and terminology",
+    "guide": "MGA, UGA, Grosses Gewächs, Riedenwein, Viñedo Singular, Nykteri.",
+    "where": "Italy; Germany; Spain and Portugal; Austria, Greece and Eastern Europe"
+   }
+  ]
+ },
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Italy",
+    "video": {
+     "youtubeId": "l75eD2HHwM8",
+     "title": "The Wines of Barolo and Barbaresco",
+     "by": "GuildSomm International",
+     "length": "10:01"
+    },
+    "keyPoints": [
+     {
+      "big": "20 REGIONS",
+      "line": "on the Court’s list, but Piedmont and Tuscany get the most time."
+     },
+     {
+      "big": "11 COMMUNES",
+      "line": "make Barolo; only three lie wholly inside the zone."
+     },
+     {
+      "big": "MGA",
+      "line": "Barolo’s official vineyard names, in its rules since 2010."
+     },
+     {
+      "big": "11 UGAS",
+      "line": "split Chianti Classico, first on Gran Selezione only."
+     }
+    ],
+    "read": {
+     "bigIdea": "Italy now names the village inside the DOCG.",
+     "where": "From Levels 1 and 2: the main grapes, DOCGs and aging rules of the Veneto, Lombardy, Friuli, Alto Adige, the center and the south. Advanced asks you to sort all **twenty regions** into buckets, then go deepest on **Piedmont** and **Tuscany**.",
+     "stopsTitle": "Three stops in the two big buckets",
+     "stops": [
+      {
+       "name": "Barolo",
+       "note": "Piedmont",
+       "text": "**100% Nebbiolo** from 11 communes. Only **Barolo**, **Serralunga d’Alba** and **Castiglione Falletto** are wholly inside. Its **MGA** vineyard names joined the rules in 2010."
+      },
+      {
+       "name": "Barbaresco",
+       "note": "Piedmont",
+       "text": "Barbaresco, **Neive**, **Treiso** and part of Alba. Two years of aging, nine months in oak; **Riserva** after four."
+      },
+      {
+       "name": "Chianti Classico",
+       "note": "Tuscany",
+       "text": "71,800 ha between Florence and Siena. Eleven **UGAs** (Additional Geographic Units) go on the label, first only for **Gran Selezione**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The two Nebbiolo DOCGs side by side:",
+     "mixup": "**MGA** is Barolo and Barbaresco’s vineyard name. **UGA** is Chianti Classico’s village-area name. One is a plot, the other a district.",
+     "sayIt": "A Barolo from Serralunga: firm tannin, built to age."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Germany",
+    "video": {
+     "youtubeId": "m6C4cMppZFo",
+     "title": "The Wines of Germany",
+     "by": "GuildSomm International",
+     "length": "10:50"
+    },
+    "keyPoints": [
+     {
+      "big": "13 REGIONS",
+      "line": "all on the Court’s list, down to Sachsen and Saale-Unstrut."
+     },
+     {
+      "big": "MITTELRHEIN",
+      "line": "is the smallest region, at 439 ha."
+     },
+     {
+      "big": "GROSSES GEWÄCHS",
+      "line": "is a dry wine from a VDP.Grosse Lage."
+     },
+     {
+      "big": "SEPTEMBER 1",
+      "line": "GG whites go on sale the year after harvest."
+     },
+     {
+      "big": "2026 VINTAGE",
+      "line": "is when the new origin rules become binding."
+     }
+    ],
+    "read": {
+     "bigIdea": "In Germany, the smaller the place, the higher the wine.",
+     "where": "From Level 1: the **Prädikat** ladder, Mosel slate, the Rheingau slope and the Pfalz’s warmth. Advanced adds the five small regions under 1,000 ha and the **VDP** rules that sit on top of the 2021 law.",
+     "stopsTitle": "Four stops, small regions to the top sites",
+     "stops": [
+      {
+       "name": "Sachsen",
+       "note": "the far east",
+       "text": "531 ha along the Elbe near **Dresden**, at 51° north. Riesling is now its most important grape."
+      },
+      {
+       "name": "Saale-Unstrut",
+       "note": "the far north",
+       "text": "Germany’s northernmost quality region, with about 500 mm of rain a year. **Pinot Blanc** and **Müller-Thurgau** lead."
+      },
+      {
+       "name": "Württemberg",
+       "note": "the red one",
+       "text": "63% red. **Lemberger** and **Trollinger** lead, and cooperatives sell about 80% of the wine."
+      },
+      {
+       "name": "VDP.Grosse Lage",
+       "note": "the top tier",
+       "text": "Hand-picked, at most 50 hl/ha. The dry wine is **Grosses Gewächs**; sweet wines keep the Prädikat names."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The VDP’s four levels, with their yield limits:",
+     "mixup": "**Grosse Lage** is the vineyard. **Grosses Gewächs** is the dry wine from it. A sweet Auslese can come from a Grosse Lage but is never a GG.",
+     "sayIt": "A Grosses Gewächs: dry Riesling from one of the estate’s best sites."
+    },
+    "check": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "name": "Spain and Portugal",
+    "video": {
+     "youtubeId": "85hYwVVy_-Q",
+     "title": "Portugal Masterclass on Regions",
+     "by": "SOMM TV",
+     "length": "14:18"
+    },
+    "keyPoints": [
+     {
+      "big": "VIÑEDO SINGULAR",
+      "line": "is Rioja’s single-vineyard tier, approved site by site."
+     },
+     {
+      "big": "250+",
+      "line": "native grapes grow in Portugal."
+     },
+     {
+      "big": "TÁVORA-VAROSA",
+      "line": "was first demarcated for DOC sparkling, in 1989."
+     },
+     {
+      "big": "COLARES",
+      "line": "is Ramisco planted in loose sand by the sea."
+     }
+    ],
+    "read": {
+     "bigIdea": "Iberia rewards the small, odd appellations.",
+     "where": "From Levels 1 and 2: Rioja and Ribera aging terms, Priorat, Rías Baixas, Cava, Vino de Pago and the Douro. The Court asks for **all major regions** of both countries, so Advanced fills in the map, especially Portugal’s south and islands.",
+     "stopsTitle": "Four stops, north to the islands",
+     "stops": [
+      {
+       "name": "Rioja",
+       "note": "Spain",
+       "text": "Above the three zones and the aging terms sits **Viñedo Singular**, single vineyards approved by Spain’s agriculture ministry."
+      },
+      {
+       "name": "Bairrada",
+       "note": "central coast",
+       "text": "Clay-limestone and sand, cool and wet. Classic reds are **Baga**; the white **Fernão Pires** is called **Maria Gomes** here."
+      },
+      {
+       "name": "Lisboa and Setúbal",
+       "note": "around the capital",
+       "text": "**Bucelas** is Arinto. **Colares** is Ramisco on sand. **Palmela** is Castelão, and **Moscatel de Setúbal** is fortified."
+      },
+      {
+       "name": "Azores",
+       "note": "mid-Atlantic",
+       "text": "**Graciosa**, **Biscoitos** and **Pico**. Vines grow inside volcanic stone corrals; **Verdelho** is the star."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Viñedo Singular** is a single-vineyard category inside DOCa Rioja. **Vino de Pago** is its own tier of Spanish DOP, beside DO and DOCa.",
+     "sayIt": "From Colares: Ramisco grown in sand right by the Atlantic."
+    },
+    "check": [
+     8,
+     9,
+     10
+    ]
+   },
+   {
+    "name": "Austria, Greece and Eastern Europe",
+    "video": {
+     "youtubeId": "25Ww9g5yAxw",
+     "title": "The Wines of Greece",
+     "by": "GuildSomm International",
+     "length": "14:51"
+    },
+    "keyPoints": [
+     {
+      "big": "RIEDENWEIN",
+      "line": "is the Wachau’s single-vineyard level: Grüner or Riesling only."
+     },
+     {
+      "big": "LEITHABERG",
+      "line": "is a Burgenland DAC on shell limestone."
+     },
+     {
+      "big": "MOSCHOFILERO",
+      "line": "makes at least 85% of Mantinia, still or sparkling."
+     },
+     {
+      "big": "NYKTERI",
+      "line": "is dry Santorini with at least 3 months in oak."
+     },
+     {
+      "big": "QVEVRI",
+      "line": "Georgia’s buried clay jars, on UNESCO’s list since 2013."
+     }
+    ],
+    "read": {
+     "bigIdea": "Old grapes, old vessels, newer laws.",
+     "where": "From Level 2: the Wachau styles, **Tokaji Aszú**, and Santorini, Naoussa and Nemea. The Court adds **Wien**, **Steiermark** and **Burgenland**, plus Slovenia, Romania and Russia, which are named here only as study targets.",
+     "stopsTitle": "Four stops, west to east",
+     "stops": [
+      {
+       "name": "Burgenland",
+       "note": "Austria",
+       "text": "Six DACs, among them **Leithaberg** (shell limestone), **Mittelburgenland** (Blaufränkisch) and **Ruster Ausbruch**."
+      },
+      {
+       "name": "Mantinia",
+       "note": "Greece",
+       "text": "A plateau about 660 m up, one of Greece’s coldest PDOs. At least 85% **Moschofilero**, a pink-skinned grape with rose-like aromas."
+      },
+      {
+       "name": "Eger and Bulgaria",
+       "note": "the East",
+       "text": "**Egri Bikavér** blends at least three grapes, half or more a native red, usually Kékfrankos. Bulgaria’s **Mavrud**, **Melnik 55** and **Rubin** are its own reds."
+      },
+      {
+       "name": "Georgia",
+       "note": "the Caucasus",
+       "text": "Wine is made, aged and stored in the **qvevri**, an egg-shaped clay jar buried in the ground."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "Four Greek PDOs, all created in 1971:",
+     "mixup": "**Egri Bikavér** is Eger’s red blend, “bull’s blood.” **Egri Csillag**, the “star of Eger,” is its white sister.",
+     "sayIt": "Mantinia: a floral, crisp white from the Greek mountains."
+    },
+    "check": [
+     12,
+     13,
+     15
+    ]
+   },
+   {
+    "name": "England, Switzerland, the Middle East and Asia",
+    "video": {
+     "youtubeId": "KT60yKApUuE",
+     "title": "General Introduction to Swiss Wines | Swiss Wine UK",
+     "by": "Swiss Wine Promotion",
+     "length": "12:06"
+    },
+    "keyPoints": [
+     {
+      "big": "SUSSEX",
+      "line": "is one of England’s five biggest wine counties."
+     },
+     {
+      "big": "VALAIS",
+      "line": "holds almost one-third of Swiss vineyards."
+     },
+     {
+      "big": "COMMANDARIA",
+      "line": "is sun-dried Xynisteri and Mavro from 14 villages."
+     },
+     {
+      "big": "NINGXIA",
+      "line": "buries its vines every winter, then digs them up."
+     }
+    ],
+    "read": {
+     "bigIdea": "Small producers, each with one story to know.",
+     "where": "The Court’s last European group is **England** and **Switzerland**. Then come the **Middle East** (Israel, Lebanon, Cyprus) and **Asia** (China, India). Israel, Lebanon and India are named here only as study targets.",
+     "stopsTitle": "Four stops, north to east",
+     "stops": [
+      {
+       "name": "England",
+       "note": "Cornwall to Yorkshire",
+       "text": "**WineGB** runs the UK’s PDO and PGI schemes. The east, like **Essex** and **Kent**, is warmer and gives riper grapes."
+      },
+      {
+       "name": "Switzerland",
+       "note": "six regions",
+       "text": "26 cantons and 62 **AOCs**. **Valais** has almost a third of the vines; **Vaud**, with **Lavaux** and **La Côte**, is the home of **Chasselas**."
+      },
+      {
+       "name": "Cyprus",
+       "note": "Commandaria",
+       "text": "Only **Xynisteri** and **Mavro**, unirrigated, sun-dried to 19–23 **Baumé**, fermented within the 14 villages."
+      },
+      {
+       "name": "China",
+       "note": "Ningxia and Shandong",
+       "text": "**Ningxia** sits under the **Helan Mountains**, dry, and vines are buried each winter. Wet coastal **Shandong** suits mildew-resistant **Marselan**."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Marselan** is Cabernet Sauvignon crossed with Grenache. **Cabernet Gernischt** is a different red planted in Shandong.",
+     "sayIt": "Commandaria: a sweet amber wine from sun-dried Cypriot grapes."
+    },
+    "check": [
+     16,
+     17,
+     18
+    ]
+   }
+  ]
+ }
+}

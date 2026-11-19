@@ -1,0 +1,13 @@
+{
+ "note": "Level 3 (Advanced Prep) sections from the somm3a video pass, 2026-11-19, left without a video. Videos from the @CourtofMasterSomm channel (joined Oct 2026, links to courtofmastersommeliers.ai, syllabus read-throughs) were not used: it is not the Court of Master Sommeliers, Americas and looks AI-made.",
+ "kept": [
+  {
+   "file": "content/manual-l3/advanced-the-exam.json",
+   "slug": "advanced-the-exam",
+   "level": 3,
+   "section": "The course and the SKA",
+   "keep": "photo",
+   "why": "No video covers the Advanced course, its eligibility rules or the Sommelier Knowledge Assessment; the Court's short clips are about study and exam advice, already used in the other sections of this chapter."
+  }
+ ]
+}

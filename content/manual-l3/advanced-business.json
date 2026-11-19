@@ -1,0 +1,1135 @@
+{
+ "program": "somm",
+ "programLevel": 3,
+ "part": 3,
+ "number": 9,
+ "slug": "advanced-business",
+ "title": "The business of the sommelier",
+ "script": "Chapter nine",
+ "lead": "The Advanced Business of the Sommelier exam: costing wine, cocktails and flights, reading inventory sheets and running audits, building and correcting a list, buying, storing and equipment, and training the team.",
+ "minutes": 30,
+ "intro": {
+  "script": "Start here",
+  "title": "THE MATH THAT RUNS A PROGRAM",
+  "text": "Business of the Sommelier opens the Practical: a 50-minute written exam with a calculator. These four formulas carry most of it. Every number in this chapter is our own example.",
+  "tiers": [
+   {
+    "name": "Cost per ounce",
+    "note": "Container cost ÷ ounces (25 oz a bottle)"
+   },
+   {
+    "name": "Price",
+    "note": "Total cost ÷ target cost %"
+   },
+   {
+    "name": "Usage",
+    "note": "Beginning + purchases - ending"
+   },
+   {
+    "name": "Variance",
+    "note": "Cost of product sold - usage"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "name": "Costing wine, cocktails and flights",
+   "source": "Court of Master Sommeliers, Americas, What to Expect at the Advanced Practical Exam and the Certified Curriculum Guide; Backbar; Provi",
+   "lines": [
+    {
+     "label": "The exam",
+     "text": "50 minutes, calculator provided, no negative points, short answers only. Time calls come at half time, ten minutes and two minutes."
+    },
+    {
+     "label": "The method",
+     "text": "Turn every ingredient into a cost per ounce, multiply by the ounces poured, add them up, then divide by your target cost %."
+    }
+   ],
+   "know": [
+    "From Level 2: list price = bottle cost ÷ target cost %.",
+    "Cost per ounce = container cost ÷ ounces in it; the Court's formulas use 25 oz for a 750 ml bottle.",
+    "A cocktail's cost is the sum of each ingredient's cost per ounce × ounces used.",
+    "A flight's cost is each wine's cost per ounce × its pour, added together.",
+    "A quarter barrel keg holds 29.3 liters, 992 oz."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Example: costing a stirred cocktail",
+     "rows": [
+      {
+       "name": "Gin, 2 oz",
+       "meta": "$25 bottle ÷ 25 = $1.00/oz → $2.00"
+      },
+      {
+       "name": "Vermouth, 1 oz",
+       "meta": "$10 bottle ÷ 25 = $0.40/oz → $0.40"
+      },
+      {
+       "name": "Total cost",
+       "meta": "$2.40"
+      },
+      {
+       "name": "Price at a 20% target",
+       "meta": "$2.40 ÷ 0.20 = $12.00"
+      }
+     ],
+     "note": "Our example numbers, using the Court's 25 oz bottle."
+    },
+    {
+     "type": "list",
+     "title": "Example: three wines, 2 oz each",
+     "rows": [
+      {
+       "name": "Wine A, $15 bottle",
+       "meta": "$0.60/oz → $1.20"
+      },
+      {
+       "name": "Wine B, $20 bottle",
+       "meta": "$0.80/oz → $1.60"
+      },
+      {
+       "name": "Wine C, $25 bottle",
+       "meta": "$1.00/oz → $2.00"
+      },
+      {
+       "name": "Flight cost",
+       "meta": "$4.80"
+      },
+      {
+       "name": "Price at a 25% target",
+       "meta": "$4.80 ÷ 0.25 = $19.20"
+      }
+     ],
+     "note": "Our example numbers."
+    }
+   ]
+  },
+  {
+   "name": "Inventory, COGS and audits",
+   "source": "Court of Master Sommeliers, Americas, What to Expect at the Advanced Practical Exam and expected skill set; BevSpot; Backbar",
+   "lines": [
+    {
+     "label": "Usage",
+     "text": "Usage = beginning inventory + purchases - ending inventory. It's what actually left the shelf."
+    },
+    {
+     "label": "Sold",
+     "text": "Cost of product sold = each item's pour cost × the pours your POS says you sold. The gap between the two is variance."
+    }
+   ],
+   "know": [
+    "Variance = cost of product sold - usage; % variance = variance ÷ usage.",
+    "A negative variance means product left without being sold: miscounts, overpouring or theft.",
+    "Count open bottles in tenths, in the same direction every time, with the bar closed.",
+    "Lay the sheet out in the same order the bottles sit on the shelf.",
+    "Inventory turnover = COGS ÷ average inventory value; days in inventory = days in the period ÷ turnover."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Example audit, one week",
+     "rows": [
+      {
+       "name": "Beginning inventory",
+       "meta": "$6,000"
+      },
+      {
+       "name": "+ Purchases",
+       "meta": "$2,000"
+      },
+      {
+       "name": "- Ending inventory",
+       "meta": "$5,500"
+      },
+      {
+       "name": "= Usage",
+       "meta": "$2,500"
+      },
+      {
+       "name": "Cost of product sold (POS)",
+       "meta": "$2,300"
+      },
+      {
+       "name": "Variance",
+       "meta": "-$200 · -8%"
+      }
+     ],
+     "note": "Our example numbers. Formulas from BevSpot."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "USAGE",
+       "title": "What left the shelf",
+       "text": "From your counts\nBeginning + purchases - ending\nIncludes spills, overpours, losses"
+      },
+      {
+       "label": "COST OF PRODUCT SOLD",
+       "title": "What the register says",
+       "text": "From your POS product mix\nPour cost × pours sold\nOnly what was rung in"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "The list: content, design and corrections",
+   "source": "Court of Master Sommeliers, Americas, What to Expect at the Advanced Practical Exam, expected skill set, 2025 service standards and example feedback report; Vinography",
+   "lines": [
+    {
+     "label": "Content",
+     "text": "A list fits the room's theme, style and price. Taste every beverage for quality, production, likely price and fit before it goes on."
+    },
+    {
+     "label": "Corrections",
+     "text": "The exam hands you a beverage list full of mistakes, big and small. Check every entry against what you know."
+    }
+   ],
+   "know": [
+    "Every entry needs a vintage, a consistent place of origin and a price, with the producer set apart from the wine's name.",
+    "Group wines in clear, consistent levels: country, grape or style, then subdivide the same way.",
+    "Give readers cues: section titles like 'Red Wines' and page numbers.",
+    "Avoid crowded pages and background images; use type and white space to guide the eye.",
+    "Beverage ID covers classic types not used in the Tasting: spirits, fortified, aromatized and sparkling wines, aperitifs, digestifs."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Checking a list entry, field by field",
+     "rows": [
+      {
+       "name": "Producer",
+       "meta": "spelled right, set apart from the wine"
+      },
+      {
+       "name": "Wine and appellation",
+       "meta": "in the right region and category"
+      },
+      {
+       "name": "Grape and style",
+       "meta": "fits the appellation"
+      },
+      {
+       "name": "Vintage",
+       "meta": "present and right"
+      },
+      {
+       "name": "Price",
+       "meta": "matches your formula"
+      }
+     ],
+     "note": "Our checklist, built from the Court's guides and Vinography."
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "WRONG PLACE",
+       "title": "Sancerre filed under Burgundy",
+       "text": "Sancerre is Loire Sauvignon Blanc\nMove it to the Loire"
+      },
+      {
+       "label": "WRONG PRICE",
+       "title": "$20 bottle listed at $60",
+       "text": "Target cost is 25%\n$20 ÷ 0.25 = $80\nFix the price"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Purchasing, cellar and equipment",
+   "source": "Court of Master Sommeliers, Americas, expected skill set, Practical Exam guide, Hospitality & Service Standards (2023 and 2025), Certified Curriculum Guide; BevSpot",
+   "lines": [
+    {
+     "label": "Buying",
+     "text": "Set pars from real usage: average weekly usage, adjusted for the season, times the weeks of stock you want on hand. Restock first in, first out."
+    },
+    {
+     "label": "Cellar",
+     "text": "A constant 50-60°F (10-15°C), away from light, vibration, damp, heat and odors, organized and easy to reach. Corked wine on its side; spirits and fortified wines standing."
+    }
+   ],
+   "know": [
+    "A par is the minimum you want on hand at all times.",
+    "BevSpot suggests a lean two-week target and updating pars at least twice a year.",
+    "Older bottles: ask about provenance and storage; check labels, leaks and ullage.",
+    "Side stations hold ice buckets and decanters to keep service temperatures.",
+    "Know every Coravin system: pour, re-gas sparkling, clean, change the canister and needle."
+   ],
+   "visuals": [
+    {
+     "type": "list",
+     "title": "Example: setting a par",
+     "rows": [
+      {
+       "name": "Usage over 12 weeks",
+       "meta": "120 bottles"
+      },
+      {
+       "name": "Average weekly usage",
+       "meta": "10 bottles"
+      },
+      {
+       "name": "Busy-season factor",
+       "meta": "× 1.5 = 15 bottles"
+      },
+      {
+       "name": "Weeks on hand",
+       "meta": "× 2"
+      },
+      {
+       "name": "Par",
+       "meta": "30 bottles"
+      }
+     ],
+     "note": "Our example; method from BevSpot."
+    },
+    {
+     "type": "tiles",
+     "title": "Equipment the program runs on",
+     "dark": true,
+     "items": [
+      {
+       "name": "Glassware",
+       "text": "Spotless, odor-free, polished with linen and steam"
+      },
+      {
+       "name": "Decanters and buckets",
+       "text": "Clean, polished, ready at the side station"
+      },
+      {
+       "name": "Coravin",
+       "text": "Timeless, Pivot and Sparkling systems"
+      },
+      {
+       "name": "Service tools",
+       "text": "Organized before service begins"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Training the staff",
+   "source": "Court of Master Sommeliers, Americas, expected skill set, What to Expect at the Advanced Practical and Tasting Exams, certification levels page",
+   "lines": [
+    {
+     "label": "The goal",
+     "text": "Build training for a single-unit operation and mentor staff toward the Court's Introductory and Certified levels."
+    },
+    {
+     "label": "The method",
+     "text": "Teach the why: how theory shows up in the glass, at the table and on the list. Then test it."
+    }
+   ],
+   "know": [
+    "Write the quiz: the Court asks how you'd teach the staff and what their quiz would be.",
+    "Give each wine a one-sentence description the staff can use.",
+    "Use a mechanics checklist for sparkling and decanting, and practice with others or on video.",
+    "Ask of every service standard: why does it exist?",
+    "Introductory covers the tasting method, service standards and a theory base; Certified tests tasting, theory and tableside service."
+   ],
+   "visuals": [
+    {
+     "type": "steps",
+     "title": "A training loop for the team",
+     "items": [
+      {
+       "name": "Taste",
+       "text": "Blind and open; link each wine to theory",
+       "meta": "1"
+      },
+      {
+       "name": "Describe",
+       "text": "One sentence per wine",
+       "meta": "2"
+      },
+      {
+       "name": "Practice",
+       "text": "Mock tables against a mechanics checklist",
+       "meta": "3"
+      },
+      {
+       "name": "Quiz",
+       "text": "What would their quiz be? Give it.",
+       "meta": "4"
+      }
+     ]
+    },
+    {
+     "type": "compare",
+     "items": [
+      {
+       "label": "INTRODUCTORY",
+       "title": "Course and exam together",
+       "text": "In person or online\nDeductive tasting method\nService standards, a base for theory"
+      },
+      {
+       "label": "CERTIFIED",
+       "title": "A one-day exam",
+       "text": "In person, after Introductory\nDeductive tasting, theory\nTableside service and salesmanship"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "mixups": [
+  {
+   "a": "Usage",
+   "b": "Cost of product sold",
+   "why": "Usage is what left the shelf (from counts). Cost of product sold is what the POS says you sold."
+  },
+  {
+   "a": "Cost %",
+   "b": "Markup",
+   "why": "Cost % is cost ÷ price. Markup is (price - cost) ÷ cost."
+  },
+  {
+   "a": "Variance in dollars",
+   "b": "Variance in percent",
+   "why": "Dollars: cost of product sold - usage. Percent: that variance ÷ usage."
+  },
+  {
+   "a": "Inventory turnover",
+   "b": "Days in inventory",
+   "why": "Turnover is COGS ÷ average inventory. Days in inventory is days in the period ÷ turnover."
+  }
+ ],
+ "sources": "Court of Master Sommeliers, Americas: What to Expect at the Advanced Practical Exam (10.2022), Advanced expected skill set, Advanced Theory and Tasting Exam guides, Advanced and Master Hospitality & Service Standards (2025), Hospitality & Service Standards (2023), Introductory and Certified Curriculum Guide (8.2023), example Advanced feedback report and certification levels page; BevSpot, Backbar, Provi and Untappd for Business (formulas); Vinography (list design). Checked Nov 19, 2026.",
+ "cards": [
+  {
+   "q": "A wine costs $18 a bottle. At a 30% target cost, what's the list price?",
+   "answer": "$60",
+   "wrong": [
+    "$54",
+    "$23.40",
+    "$48"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "Using the Court's 25 oz bottle, what's the cost per ounce of a $30 bottle of spirit?",
+   "answer": "$1.20",
+   "wrong": [
+    "$2.50",
+    "$0.83",
+    "$1.50"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "A cocktail uses 2 oz of spirit at $1.00/oz and 1 oz of liqueur at $1.20/oz. At a 20% target cost, what's the price?",
+   "answer": "$16.00",
+   "wrong": [
+    "$12.80",
+    "$15.00",
+    "$3.20"
+   ],
+   "source": "https://academy.getbackbar.com/the-most-important-liquor-cost-formulas"
+  },
+  {
+   "q": "A flight is three 2 oz pours from bottles costing $25, $25 and $50. Using 25 oz per bottle, what does it cost you?",
+   "answer": "$8.00",
+   "wrong": [
+    "$6.00",
+    "$10.00",
+    "$4.00"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "Per the Court, how many ounces does a quarter barrel keg hold?",
+   "answer": "992 oz",
+   "wrong": [
+    "1,984 oz",
+    "496 oz",
+    "1,240 oz"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf"
+  },
+  {
+   "q": "Beginning inventory $8,000, purchases $3,000, ending inventory $7,000. What is usage?",
+   "answer": "$4,000",
+   "wrong": [
+    "$2,000",
+    "$1,000",
+    "$18,000"
+   ],
+   "source": "https://bevspot.com/blog/calculating-variance/"
+  },
+  {
+   "q": "Usage is $4,000 and cost of product sold is $3,600. What is the % variance (BevSpot method)?",
+   "answer": "-10%",
+   "wrong": [
+    "+10%",
+    "-40%",
+    "-1%"
+   ],
+   "source": "https://bevspot.com/blog/calculating-variance/"
+  },
+  {
+   "q": "How does BevSpot suggest counting a partly full bottle?",
+   "answer": "Estimate it in tenths",
+   "wrong": [
+    "Count it as a full bottle",
+    "Count it as empty",
+    "Always count it as half"
+   ],
+   "source": "https://bevspot.com/how-to-do-bar-inventory-your-bars-step-by-step-guide"
+  },
+  {
+   "q": "Which formula gives inventory turnover?",
+   "answer": "COGS ÷ average inventory value",
+   "wrong": [
+    "Sales ÷ COGS",
+    "Ending inventory ÷ purchases",
+    "Usage ÷ ending inventory"
+   ],
+   "source": "https://academy.getbackbar.com/the-most-important-liquor-cost-formulas"
+  },
+  {
+   "q": "A list files Sancerre under Burgundy. Where does it belong?",
+   "answer": "Loire Valley",
+   "wrong": [
+    "Bordeaux",
+    "Rhône Valley",
+    "Alsace"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "q": "Per the 2025 standards' mise en place, a beverage list should be…",
+   "answer": "Clean, accurate, up to date and easy to read",
+   "wrong": [
+    "Sorted from lowest to highest price",
+    "Reprinted before every service",
+    "Limited to one page"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "A $25 bottle targets 25% cost but is listed at $75. What should it list at?",
+   "answer": "$100",
+   "wrong": [
+    "$31.25",
+    "$62.50",
+    "$125"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "q": "What does the Court's 'Beverage ID' feedback focus on?",
+   "answer": "Classic types not suited to the Tasting, like spirits and fortified wines",
+   "wrong": [
+    "Core red grapes from the Tasting list",
+    "Wines from the Theory map questions",
+    "Rare wines most lists never carry"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-ADV-Practical-Tasting-Results-Feedback-Report-Example.pdf"
+  },
+  {
+   "q": "Average weekly usage is 8 bottles, the season factor is 1.5 and you want 2 weeks on hand. What's the par?",
+   "answer": "24 bottles",
+   "wrong": [
+    "16 bottles",
+    "12 bottles",
+    "32 bottles"
+   ],
+   "source": "https://bevspot.com/blog/bar-management-setting-pars/"
+  },
+  {
+   "q": "At what temperature does the Court want long-term wine storage?",
+   "answer": "A constant 50-60°F / 10-15°C",
+   "wrong": [
+    "A constant 40-45°F / 4-7°C",
+    "A constant 65-70°F / 18-21°C",
+    "Anything under 75°F / 24°C"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+  },
+  {
+   "q": "How should spirits and fortified wines be stored, per the Court?",
+   "answer": "Standing up",
+   "wrong": [
+    "On their side",
+    "Upside down",
+    "Label down in racks"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+  },
+  {
+   "q": "Which Coravin systems does the 2025 standard name?",
+   "answer": "Timeless, Pivot and Sparkling",
+   "wrong": [
+    "Classic, Pro and Fizz",
+    "Standard, Plus and Brut",
+    "Vintage, Cellar and Mousse"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "q": "Toward which levels does the Court expect an Advanced Sommelier to mentor staff?",
+   "answer": "Introductory and Certified",
+   "wrong": [
+    "Certified and Advanced",
+    "Advanced and Master",
+    "Introductory only"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf"
+  },
+  {
+   "q": "Per the Court's tasting guide, how should you train staff to describe a wine?",
+   "answer": "In one sentence",
+   "wrong": [
+    "With a full deductive grid",
+    "In three paragraphs",
+    "With the producer's tech sheet"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "q": "What does the Court suggest using to check sparkling and decanting practice?",
+   "answer": "A mechanics grid (checklist)",
+   "wrong": [
+    "A timer alone",
+    "A blind tasting grid",
+    "The theory feedback report"
+   ],
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  },
+  {
+   "q": "How is the Certified Sommelier Exam held, per the Court's levels page?",
+   "answer": "A one-day, in-person program after passing Introductory",
+   "wrong": [
+    "An online course taken with the Introductory exam",
+    "A three-day course before the exam",
+    "An oral exam at a testing center"
+   ],
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/"
+  }
+ ],
+ "facts": [
+  {
+   "fact": "Business of the Sommelier is the first part of the Practical: a timed 50-minute exam; time markers 'Half Time', 'Ten Minutes', 'Two Minutes', 'Pens Down'; answer sheet, inventory sheet, beverage list and beverage list correction sheet provided with a calculator, tasting mat, water, spit cup and dump bucket; no negative points; none of the questions require long answers; the beverage list has lots of mistakes, big and small.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  },
+  {
+   "fact": "Business of the Sommelier covers program management: qualitative assessment for pricing, theme and style; marketing and sales techniques; purchasing; costing; audits; list management; inventory management; staff management and training; beverage equipment management. Exercises include tasting and evaluating beverage alcohol, costing wine, cocktails and flights, reading and evaluating inventory sheets, and correcting mistakes on a beverage list.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  },
+  {
+   "fact": "Costing math is not on the Theory exam; it is in the Business of the Sommelier exam.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Theory-Exam_0.pdf"
+  },
+  {
+   "fact": "Expected skill set: complete beverage program management: list content, design and basic marketing; cellar design, purchasing and inventory systems; staff training for a single unit and mentorship toward Introductory or Certified; financial management with cost controls and spreadsheet creation/comprehension.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf"
+  },
+  {
+   "fact": "Curriculum Guide (Certified): Cost % = bottle cost ÷ list price; list price = bottle cost ÷ target cost %; BTG = (bottle list price ÷ 25 oz) × pour; pour cost starting from case cost; bottles needed = (guests × oz per guest) ÷ 25.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf#page=93"
+  },
+  {
+   "fact": "Curriculum Guide (Beer, Certified): FIFO for restocking; a Quarter Barrel keg = 29.3 liters / 992 ounces; one pint = 16 ounces.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/Introductory-Sommelier-Course-and-Certified-Somm-Theory-Exam-Curriculum-Guide.pdf"
+  },
+  {
+   "fact": "Cost per ounce = container cost ÷ ounces per container; liquor cost % = COGS ÷ alcohol sales; inventory turnover = COGS ÷ average inventory value; average days in inventory = days in period ÷ inventory turnover.",
+   "source": "https://academy.getbackbar.com/the-most-important-liquor-cost-formulas"
+  },
+  {
+   "fact": "Markup = (sale price - cost) ÷ cost; profit margin = profit ÷ sale price.",
+   "source": "https://provi.com/resources/how-to-price-beer-wine-and-spirits-for-profitability"
+  },
+  {
+   "fact": "By-the-glass and flight pricing: calculate the cost per ounce or pour and apply a markup.",
+   "source": "https://lounge.untappd.com/how-to-price-wine/"
+  },
+  {
+   "fact": "Usage = starting inventory + received inventory - ending inventory. Cost of product sold = pour cost × pours sold, using the POS product mix (PMIX). $ variance = cost of product sold - usage; % variance = $ variance ÷ usage. Variance (loss or shrinkage) comes from miscounting, overpouring, theft or other drivers.",
+   "source": "https://bevspot.com/blog/calculating-variance/"
+  },
+  {
+   "fact": "Pars are the minimum a bar wants in stock at all times: historical usage over several months → average weekly usage → × seasonality factor → × target weeks of inventory (a lean 2-week target); update pars at least twice a year.",
+   "source": "https://bevspot.com/blog/bar-management-setting-pars/"
+  },
+  {
+   "fact": "Inventory counting: estimate partial bottles in tenths (half full = 0.5); always count in the same direction; front bar, back bar, walk-in, storage; arrange the sheet the way bottles are set out; count while the bar is closed; consistent periods (weekly, bi-weekly, monthly); record spillage and breakage; record received stock from invoices.",
+   "source": "https://bevspot.com/how-to-do-bar-inventory-your-bars-step-by-step-guide"
+  },
+  {
+   "fact": "Inventory tracking is continuous; use one unit of measurement consistently.",
+   "source": "https://bevspot.com/blog/bar-inventory-101-how-to-keep-track-of-your-stock/"
+  },
+  {
+   "fact": "2025 standards, mise en place: beverage lists are clean, accurate, up to date and easy to read; glasses spotless and odor-free, polished with linen and steam; trays, ice buckets, stands and decanters clean and ready; tools organized; side stations hold ice buckets and decanters to keep service temperatures. Coravin systems named: Timeless, Pivot, Sparkling; tasks: pouring, recharging, cleaning, replacing gas canisters, changing the needle.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2025/05/2025-ADV-MS-HS-Standards-and-Guidlines-FINAL.pdf"
+  },
+  {
+   "fact": "Example feedback: Beverage Assessment means tasting and assessing all beverage alcohol for quality level, production methods, probable pricing, stylistic differences and suitability to program theme. Beverage ID means identifying classic, straightforward types not suitable for the Tasting: spirits, fortified, aromatized and sparkling wines, aperitifs and digestifs.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2024/09/24-ADV-Practical-Tasting-Results-Feedback-Report-Example.pdf"
+  },
+  {
+   "fact": "Wine list design: show vintages, a consistent place of origin and prices; distinguish producer from wine name; readable fonts; don't crowd pages; no background images; hierarchical groups that are understandable and consistent (country, grape or style); navigation cues such as page numbers and section titles.",
+   "source": "https://www.vinography.com/2018/10/how_to_properly_design_a_wine_"
+  },
+  {
+   "fact": "Core list: Sancerre / Pouilly-Fumé are Loire Valley Sauvignon Blanc.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-Advanced-Sommelier-Level-Wine.pdf"
+  },
+  {
+   "fact": "Storage: constant temperature, 50-60°F / 10-15°C ideal for long term; organized and accessible; away from odors and pests; cork-finished table wines on their side; spirits and fortified standing up; avoid light, vibration, damp, upright storage over a few weeks, heat and temperature swings. Older wines: ask about provenance and storage; inspect for label damage, leakage and ullage.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-Hospitality-Service-Standards.pdf#page=5"
+  },
+  {
+   "fact": "Preparation: Business of the Sommelier exercises should include staff training: what would their quiz be, how would you teach them? Create a mechanics grid for sparkling and decanting and check it in mock sessions with others or self-recorded; ask why each standard exists; taste all beverages.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Practical-Exam.pdf"
+  },
+  {
+   "fact": "Tasting preparation: determine what a list with a certain COGS goal might charge for the wine; how you would train staff to describe the wine in one sentence; how you would serve it and what you'd pair with it.",
+   "source": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-at-the-Advanced-Sommelier-Tasting-Exam_1.pdf"
+  },
+  {
+   "fact": "Introductory: course and exam taken together, in person and online; introduces the deductive tasting method, service standards and a base for theory. Certified: one-day, in-person program after passing Introductory; tests deductive tasting, wine and beverage theory, and tableside service and salesmanship.",
+   "source": "https://www.mastersommeliers.org/certification/certification-levels/"
+  }
+ ],
+ "unverified": [
+  "All worked numbers ($20 bottle, $2.40 cocktail, $4.80 flight, $6,000 inventory, 30-bottle par and so on) and the 20% and 25% target cost percentages are our own examples, not Court figures or industry standards.",
+  "Variance sign: BevSpot uses cost of product sold minus usage (negative = loss); some other tools reverse it. This chapter uses BevSpot's convention.",
+  "'Pour cost' is defined differently across sources (per drink: cost ÷ price; per period: usage ÷ sales). This chapter avoids a single definition and uses cost per ounce and cost % instead.",
+  "The Court lists 'audits' without defining them; the audit taught here is the BevSpot variance check.",
+  "BevSpot gives two par methods: usage × season × weeks (pars article) and (weekly usage + safety stock) ÷ deliveries per week (Inventory 101). Only the first is taught.",
+  "Backbar uses 25.4 oz for a 750 ml bottle; the Court's formulas use 25 oz. This chapter uses 25.",
+  "Target cost and markup ranges vary widely between sources (e.g. Provi's 18-20% bar pour cost and 200-300% wine markup); none is stated as a standard.",
+  "Toast's wine-pricing and bar-inventory articles could not be loaded (blocked); they are not used."
+ ],
+ "court": {
+  "outcome": "Complete beverage program management ability, including: … Financial management of a beverage program, including cost controls and spreadsheet creation/comprehension",
+  "outcomeSource": "https://www.mastersommeliers.org/wp-content/uploads/2023/12/CMS-A-WHAT-TO-EXPECT-Advanced-Sommelier-Expected-Skill-Set.pdf",
+  "coverage": [
+   {
+    "topic": "Business of the Sommelier exam format",
+    "guide": "Timed 50-minute written exam; calculator; no negative points; short answers.",
+    "where": "Costing wine, cocktails and flights"
+   },
+   {
+    "topic": "Costing: wine",
+    "guide": "Bottle cost ÷ target cost %; case to bottle; glass and event bottle counts.",
+    "where": "Costing wine, cocktails and flights"
+   },
+   {
+    "topic": "Costing: cocktails",
+    "guide": "Cost per ounce of each ingredient × ounces used, summed, ÷ target cost %.",
+    "where": "Costing wine, cocktails and flights"
+   },
+   {
+    "topic": "Costing: flights",
+    "guide": "Each wine's cost per ounce × pour, added, ÷ target cost %.",
+    "where": "Costing wine, cocktails and flights"
+   },
+   {
+    "topic": "Inventory management: reading inventory sheets",
+    "guide": "Counts in tenths, shelf-order sheets; usage = beginning + purchases - ending.",
+    "where": "Inventory, COGS and audits"
+   },
+   {
+    "topic": "Audits",
+    "guide": "Compare cost of product sold with usage; variance in dollars and percent.",
+    "where": "Inventory, COGS and audits"
+   },
+   {
+    "topic": "Financial management: cost controls and spreadsheets",
+    "guide": "Cost %, variance, turnover and days in inventory, laid out sheet by sheet.",
+    "where": "Inventory, COGS and audits; Costing wine, cocktails and flights"
+   },
+   {
+    "topic": "Tasting and evaluating beverage alcohol",
+    "guide": "Assess quality, production, likely price, style and fit to the program's theme.",
+    "where": "The list: content, design and corrections"
+   },
+   {
+    "topic": "Qualitative assessment for pricing, theme and style",
+    "guide": "Choose for the room's theme, style and price range; know value in each category.",
+    "where": "The list: content, design and corrections"
+   },
+   {
+    "topic": "List management and beverage list correction",
+    "guide": "Clear hierarchy and entries; correct region, category, grape, vintage, spelling and price.",
+    "where": "The list: content, design and corrections"
+   },
+   {
+    "topic": "Marketing and sales techniques",
+    "guide": "A readable list that guides the guest; staff who can describe every wine in a sentence.",
+    "where": "The list: content, design and corrections; Training the staff"
+   },
+   {
+    "topic": "Purchasing",
+    "guide": "Pars from usage, season and weeks on hand; receive against invoices; FIFO; check older bottles.",
+    "where": "Purchasing, cellar and equipment"
+   },
+   {
+    "topic": "Cellar design",
+    "guide": "Constant 50-60°F, dark, still, organized; corked wine lying down, spirits and fortified standing.",
+    "where": "Purchasing, cellar and equipment"
+   },
+   {
+    "topic": "Beverage equipment management",
+    "guide": "Glassware, decanters, buckets, side stations and Coravin systems kept clean and ready.",
+    "where": "Purchasing, cellar and equipment"
+   },
+   {
+    "topic": "Staff management and training",
+    "guide": "Tasting with theory, one-sentence descriptions, mechanics checklists, quizzes.",
+    "where": "Training the staff"
+   },
+   {
+    "topic": "Mentorship toward Introductory and Certified",
+    "guide": "Guide staff to the Introductory course, then the Certified exam.",
+    "where": "Training the staff"
+   }
+  ]
+ },
+ "v3": {
+  "video": null,
+  "sections": [
+   {
+    "name": "Costing wine, cocktails and flights",
+    "video": {
+     "youtubeId": "VTOQdgO7nHY",
+     "title": "The Fastest Way to Figure Pour Cost %",
+     "by": "Dave Allred TheRealBarman (Bar Patrol)",
+     "length": "11:01"
+    },
+    "keyPoints": [
+     {
+      "big": "COST PER OZ",
+      "line": "Container cost ÷ ounces. The Court rounds a bottle to 25."
+     },
+     {
+      "big": "ADD IT UP",
+      "line": "A cocktail costs the sum of every ingredient poured."
+     },
+     {
+      "big": "÷ TARGET %",
+      "line": "Divide the total cost by your target cost % to price it."
+     },
+     {
+      "big": "992 OZ",
+      "line": "in a quarter barrel keg, by the Court's figure."
+     },
+     {
+      "big": "50 MINUTES",
+      "line": "for the whole written exam, calculator provided."
+     }
+    ],
+    "read": {
+     "bigIdea": "Get it to ounces, then divide by your target.",
+     "where": "From Level 2: cost %, list price and the glass formula. Advanced adds **cocktails** and **flights**, all inside one **50-minute** written exam with a **calculator** and **no negative points**. Every number below is our own example.",
+     "stopsTitle": "Four things you'll cost",
+     "stops": [
+      {
+       "name": "A bottle",
+       "note": "cost ÷ target",
+       "text": "Bottle cost ÷ **target cost %** = list price. Example: a $20 bottle at a 25% target lists at **$80**. Starting from a case: case cost ÷ bottles = bottle cost."
+      },
+      {
+       "name": "A cocktail",
+       "note": "ingredient by ingredient",
+       "text": "Each pour: **container cost ÷ ounces**, × ounces used. Example: gin from a $25 bottle is $1.00/oz, so 2 oz = $2.00; 1 oz of vermouth from a $10 bottle = $0.40. Total **$2.40**; at a 20% target the price is **$12**."
+      },
+      {
+       "name": "A flight",
+       "note": "one wine at a time",
+       "text": "Same method. Example: 2 oz each from $15, $20 and $25 bottles costs $1.20 + $1.60 + $2.00 = **$4.80**; at a 25% target that's **$19.20**."
+      },
+      {
+       "name": "An event",
+       "note": "bottles and kegs",
+       "text": "Bottles needed = (guests × ounces each) ÷ 25. A **quarter barrel** keg is **992 oz**. Example: 90 pints × 16 oz = 1,440 oz, so order **2 kegs**."
+      }
+     ],
+     "visual": 0,
+     "visualIntro": "The cocktail example, line by line:",
+     "mixup": "**Cost %** is cost ÷ price: $20 ÷ $80 = 25%. **Markup** is (price - cost) ÷ cost: $60 ÷ $20 = 300%."
+    },
+    "check": [
+     0,
+     1,
+     2
+    ]
+   },
+   {
+    "name": "Inventory, COGS and audits",
+    "video": {
+     "youtubeId": "nJVwZw6R6CU",
+     "title": "How to Master Variance in Your Bar [Free Training]",
+     "by": "Dave Allred TheRealBarman (Bar Patrol)",
+     "length": "15:03"
+    },
+    "keyPoints": [
+     {
+      "big": "USAGE",
+      "line": "Beginning + purchases - ending inventory."
+     },
+     {
+      "big": "SOLD",
+      "line": "Pour cost × pours sold, from the POS product mix."
+     },
+     {
+      "big": "VARIANCE",
+      "line": "Sold minus used. Negative means product went missing."
+     },
+     {
+      "big": "TENTHS",
+      "line": "Count open bottles to the nearest tenth, same route every time."
+     },
+     {
+      "big": "TURNOVER",
+      "line": "COGS ÷ average inventory value."
+     }
+    ],
+    "read": {
+     "bigIdea": "What you used versus what you sold.",
+     "where": "The exam asks you to **read and evaluate inventory sheets**, and the Court lists **audits** and **inventory management** among the skills. From Level 2: COGS = beginning + purchases - ending. At Advanced you compare that **usage** with what the register says you sold.",
+     "stopsTitle": "Five steps through an audit",
+     "stops": [
+      {
+       "name": "Count it right",
+       "note": "same way every time",
+       "text": "Count with the bar **closed**, in the **same direction** every time, front bar to storage. Open bottles in **tenths** (half full = 0.5). Keep the sheet in shelf order and log spills and broken bottles."
+      },
+      {
+       "name": "Usage",
+       "note": "from the counts",
+       "text": "**Beginning + purchases - ending**. Example: $6,000 + $2,000 - $5,500 = **$2,500** used this week."
+      },
+      {
+       "name": "Cost of product sold",
+       "note": "from the POS",
+       "text": "Pour cost × pours sold, from the POS **product mix**. Example: the week's sales add up to **$2,300** of product."
+      },
+      {
+       "name": "Variance",
+       "note": "the gap",
+       "text": "**Sold - used** = -$200. Divide by usage: **-8%**. A negative variance points to **miscounts, overpouring or theft**."
+      },
+      {
+       "name": "Turnover",
+       "note": "how fast stock moves",
+       "text": "**COGS ÷ average inventory value**. Days in the period ÷ turnover = **days in inventory**. Example: $6,000 ÷ $12,000 = 0.5, so a 30-day month holds 60 days of stock."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Usage** is what left the shelf. **Cost of product sold** is what the register says you sold. Variance is the gap between them."
+    },
+    "check": [
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "name": "The list: content, design and corrections",
+    "video": {
+     "youtubeId": "I7EqyDzQsAQ",
+     "title": "Jon McDaniel, America's Top Sommelier On Creating A Winning Wine List",
+     "by": "Beverage Trade Network",
+     "length": "8:54"
+    },
+    "keyPoints": [
+     {
+      "big": "THEME",
+      "line": "Every bottle should fit the room, the menu and the price."
+     },
+     {
+      "big": "5 FIELDS",
+      "line": "Producer, wine, grape, vintage, price: check each one."
+     },
+     {
+      "big": "HIERARCHY",
+      "line": "Group by country, grape or style, the same way throughout."
+     },
+     {
+      "big": "BIG AND SMALL",
+      "line": "The exam list hides both kinds of mistakes."
+     },
+     {
+      "big": "TASTE IT",
+      "line": "Judge quality, style, likely price and fit."
+     }
+    ],
+    "read": {
+     "bigIdea": "A list is a sales tool. Read it like an editor.",
+     "where": "The skill set asks for **list content, design and basic marketing**, and the exam includes **correcting a beverage list** full of errors. The Court's feedback also scores **beverage assessment**: tasting for quality, production, likely price, style and **fit to the program's theme**.",
+     "stopsTitle": "Four ways to look at a list",
+     "stops": [
+      {
+       "name": "Content",
+       "note": "fit the room",
+       "text": "Choose for the theme, style and **price range**, and know each wine's value in its category. Taste everything you list and know why it's there."
+      },
+      {
+       "name": "Design",
+       "note": "easy to read",
+       "text": "A clear **hierarchy** (country, grape or style, subdivided the same way), producer set apart from wine name, readable type, white space, no background images, section titles and page numbers."
+      },
+      {
+       "name": "Every entry",
+       "note": "three must-haves",
+       "text": "A **vintage**, a consistent **place of origin** and a **price**. The 2025 standards add that a list must be **clean, accurate and up to date**."
+      },
+      {
+       "name": "Correcting",
+       "note": "field by field",
+       "text": "Check spelling, **region and category**, grape and style, vintage, and **price against your formula**. Example: a Sancerre filed under Burgundy moves to the Loire."
+      }
+     ],
+     "visual": 0,
+     "mixup": "**Beverage assessment** judges a drink's quality, style, price and fit. **Beverage ID** names a classic type: a spirit, a fortified or aromatized wine, a sparkling wine."
+    },
+    "check": [
+     9,
+     10,
+     11
+    ]
+   },
+   {
+    "name": "Purchasing, cellar and equipment",
+    "video": {
+     "youtubeId": "c1JXNxIP4fA",
+     "title": "Managing the Wine Cellar at the Iconic Stafford Hotel | Inside The Drinks Business",
+     "by": "Beverage Trade Network",
+     "length": "37:03"
+    },
+    "keyPoints": [
+     {
+      "big": "PAR",
+      "line": "Average weekly usage × season × weeks on hand."
+     },
+     {
+      "big": "FIFO",
+      "line": "First in, first out: the oldest stock goes first."
+     },
+     {
+      "big": "50-60°F",
+      "line": "constant, for long-term wine storage."
+     },
+     {
+      "big": "ON ITS SIDE",
+      "line": "for corked wine. Spirits and fortified wines stand."
+     },
+     {
+      "big": "CORAVIN",
+      "line": "Pour, clean, re-gas, change the canister and needle."
+     }
+    ],
+    "read": {
+     "bigIdea": "Buy to a number, store for the long run.",
+     "where": "The skill set asks for **cellar design, purchasing and inventory systems**, and the exam lists **purchasing** and **beverage equipment management**. From Level 2: storage conditions and checking older bottles. Here's how they become a system.",
+     "stopsTitle": "Four parts of the system",
+     "stops": [
+      {
+       "name": "Pars",
+       "note": "from real usage",
+       "text": "Take several months of **usage**, find the weekly average, adjust for the **season**, multiply by the **weeks of stock** you want. Example: 10 a week × 1.5 × 2 weeks = **30 bottles**."
+      },
+      {
+       "name": "Receiving",
+       "note": "invoices in",
+       "text": "Record each delivery from its **invoice** so purchases match your counts. Restock **first in, first out**."
+      },
+      {
+       "name": "The cellar",
+       "note": "steady and dark",
+       "text": "A constant **50-60°F (10-15°C)**, away from light, vibration, damp, heat and odors, organized so a bottle is easy to find. Corked wines lie down; **spirits and fortified wines** stand."
+      },
+      {
+       "name": "Equipment",
+       "note": "ready before service",
+       "text": "Glasses spotless and odor-free; decanters, ice buckets and stands clean and ready at the **side station**; every **Coravin** system cleaned, gassed and fitted with a working needle."
+      }
+     ],
+     "visual": 0,
+     "mixup": "A **par** is the stock you want on hand. **Usage** is what you went through. Pars are built from usage."
+    },
+    "check": [
+     13,
+     14,
+     15
+    ]
+   },
+   {
+    "name": "Training the staff",
+    "video": {
+     "youtubeId": "pIy3mZ32_CU",
+     "title": "How A Sommelier Manages An On-Premise Establishment - Gary Russell",
+     "by": "Beverage Trade Network",
+     "length": "2:21"
+    },
+    "keyPoints": [
+     {
+      "big": "ONE SENTENCE",
+      "line": "Train staff to describe each wine in one line."
+     },
+     {
+      "big": "THE QUIZ",
+      "line": "If you teach it, write the test for it."
+     },
+     {
+      "big": "WHY?",
+      "line": "Ask why each service standard exists."
+     },
+     {
+      "big": "MENTOR",
+      "line": "Bring staff toward Introductory and Certified."
+     },
+     {
+      "big": "MOCK SERVICE",
+      "line": "Run sparkling and decanting against a checklist."
+     }
+    ],
+    "read": {
+     "bigIdea": "Teach it so the team can sell it.",
+     "where": "An Advanced Sommelier is expected to **create and run staff training** for one operation and **mentor** people toward the **Introductory** and **Certified** levels. The exam lists **staff management and training**, so expect to be asked how you'd teach.",
+     "stopsTitle": "Four habits of a good trainer",
+     "stops": [
+      {
+       "name": "Taste with purpose",
+       "note": "all of it",
+       "text": "Taste **every kind** of beverage, blind and open, and link each to theory. Ask how you'd serve it, what it pairs with, and what it should cost at your target."
+      },
+      {
+       "name": "One sentence",
+       "note": "for the floor",
+       "text": "Give every wine a **one-sentence** description a server can say at the table."
+      },
+      {
+       "name": "Practice the mechanics",
+       "note": "with a checklist",
+       "text": "Build a **mechanics checklist** for sparkling and decanting. Run mock tables with others or on video, and ask **why** each standard exists."
+      },
+      {
+       "name": "Quiz and mentor",
+       "note": "toward the Court",
+       "text": "Ask what the team's **quiz** would be, then give it. Point newer staff to the **Introductory** course, then the **Certified** exam."
+      }
+     ],
+     "visual": 1,
+     "visualIntro": "The two levels you'll mentor toward:",
+     "mixup": "**Introductory** is a course with its exam, in person or online. **Certified** is a one-day, in-person exam taken after passing Introductory.",
+     "sayIt": "Bright and dry, with lime and green apple. Great with oysters."
+    },
+    "check": [
+     17,
+     18,
+     19
+    ]
+   }
+  ]
+ }
+}

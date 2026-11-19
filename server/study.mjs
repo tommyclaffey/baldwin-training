@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { clone, find, findAll, byName, texts, setText, remove } from './templates.mjs';
-import { chapters, chapters2, chaptersOf, levelChapters, chapterBase, GUIDE, LEVELS, levelFor, isProgram, programDef, progLevel, levelOfChapter, levelForChapter, quizHref, shuffleSeeded, blockBuilder, countWord } from './manual.mjs';
+import { chapters, chapters2, chaptersOf, chaptersForLevel, levelChapters, chapterBase, GUIDE, LEVELS, levelFor, isProgram, programDef, progLevel, levelOfChapter, levelForChapter, quizHref, shuffleSeeded, blockBuilder, countWord } from './manual.mjs';
 
 export const HUB = 'sommelier-program';
 export const BAR_FINAL = 't:final:bar-1';
@@ -103,6 +103,8 @@ function outcomesFor(ch, si, rows) {
   const raw = String(ch.court?.outcome || '').trim(); if (!raw) return [];
   // split at each "After studying this section"; a "Subject:" just before it belongs to the next piece
   const MARK = 'After studying this section';
+  // Nov 19: the Advanced and Master lessons quote one or two lines (skill set, exam page), a blank line apart: one quote each
+  if (!raw.includes(MARK)) return raw.split(/\n\s*\n/).map((t) => ({ subject: '', text: t.replace(/\s*\n\s*/g, ' ').trim() })).filter((x) => x.text).slice(0, 2);
   const parts = raw.split(MARK);
   const pieces = []; let subject = parts[0].replace(/[|]/g, '').trim().replace(/:$/, '').trim();
   for (let i = 1; i < parts.length; i++) {
@@ -131,7 +133,11 @@ export function courtCard(ch, si, lvl) {
   const outs = outcomesFor(ch, si, rows);
   if (!outs.length && !rows.length) return null;
   const src = ct.outcomeSource || CURRICULUM;
-  const docName = /Curriculum-Guide/i.test(src) ? 'Curriculum Guide' : /Syllabus/i.test(src) ? 'Syllabus' : /Guide/i.test(src) ? 'Exam Guide' : 'Court PDF';
+  // Nov 19: Levels 3 and 4 quote the Court's Advanced and Master documents and pages
+  const docName = /Curriculum-Guide/i.test(src) ? 'Curriculum Guide' : /Syllabus/i.test(src) ? 'Syllabus' : /Skill-Set/i.test(src) ? 'Skill Set'
+    : /Theory-Exam-Resource-Guide/i.test(src) ? 'Theory Resource Guide' : /Theory-Exam/i.test(src) ? 'Theory Exam Guide' : /Practical-Exam/i.test(src) ? 'Practical Exam Guide'
+    : /Tasting-Exam/i.test(src) ? 'Tasting Exam Guide' : /Tasting-Format/i.test(src) ? 'Tasting Format' : /Level-Wine/i.test(src) ? 'Level Wines'
+    : /HS-Standards|Service-Standards/i.test(src) ? 'Service Standards' : /Code-Ethics/i.test(src) ? 'Code of Ethics' : /Guide/i.test(src) ? 'Exam Guide' : /\.pdf/i.test(src) ? 'Court PDF' : 'Court Page';
   const t = (x, o) => ({ ...txt(x, o), ar: 'H', sh: 'L' });
   const MAX = 6; const shown = rows.slice(0, MAX);
   const row = (r) => ({ t: 'F', n: 'Asks · ' + String(r.topic || '').slice(0, 30), lm: 'H', gap: 10, sh: 'L', sv: 'H', c: [
@@ -141,7 +147,7 @@ export function courtCard(ch, si, lvl) {
   const body = { t: 'F', n: 'Body', lm: 'V', gap: 16, pd: [22, 24, 22, 20], sh: 'L', sv: 'H', c: [
     { t: 'F', n: 'Head', lm: 'H', gap: 12, ca: 'C', sh: 'L', sv: 'H', c: [
       { t: 'F', n: 'Badge', w: 30, h: 30, r: 15, sh: 'F', sv: 'F', f: [{ c: '#1E1C1A' }], lm: 'H', pa: 'C', ca: 'C', c: [txt('C', { z: 14, c: '#F2EEE7', fs: 'ExtraBold' })] },
-      { t: 'F', n: 'Titles', lm: 'V', gap: 2, sh: 'L', sv: 'H', c: [txt('WHAT THE COURT EXPECTS', { z: 11, ls: '12%', c: '#8A5A3A' }), t(`${lvl === 2 ? 'Certified' : 'Introductory'} level${outs.length === 1 && outs[0].subject ? ' · ' + titleCase(outs[0].subject) : ''}`, { z: 15, c: '#1E1C1A', fs: 'ExtraBold' })] },
+      { t: 'F', n: 'Titles', lm: 'V', gap: 2, sh: 'L', sv: 'H', c: [txt('WHAT THE COURT EXPECTS', { z: 11, ls: '12%', c: '#8A5A3A' }), t(`${['', 'Introductory', 'Certified', 'Advanced', 'Master'][lvl] || 'Introductory'} level${outs.length === 1 && outs[0].subject ? ' · ' + titleCase(outs[0].subject) : ''}`, { z: 15, c: '#1E1C1A', fs: 'ExtraBold' })] },
       { t: 'F', n: 'Link · ' + docName, to: src, lm: 'H', pd: [8, 14, 8, 14], r: 17, st: '#1E1C1A', sw: 1, pa: 'C', ca: 'C', sh: 'H', sv: 'H', c: [txt(docName + ' ›', { z: 12.5, c: '#1E1C1A' })] },
     ] },
     ...outs.map((o, i) => ({ ...t(`“${o.text.replace(/^“|”$/g, '')}”`, { z: outs.length > 1 ? 16 : 18, c: '#1E1C1A', fs: 'Medium' }), n: 'Outcome · quoted' + (i ? ' ' + (i + 1) : ''), lh: '140%' })),
@@ -187,7 +193,8 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
 
   // breadcrumb: Level 1 / Lesson N · Chapter / Section
   const bc = find(main, byName('Breadcrumb'));
-  if (bc) { const t = texts(bc); setText(t[0], isBar ? `${programDef(ch.program).short} · Level ${lvl}` : `Level ${lvl}`); setText(t[2], `${lvl === 2 && ch.part ? `Part ${ch.part} · ` : ''}Lesson ${ch.number} · ${ch.title}`); setText(t[4], sec.name); const back = find(bc, byName('Back')); if (back) back.to = '/' + home; }
+  const somm = !isBar || ch.program === 'somm';
+  if (bc) { const t = texts(bc); setText(t[0], !somm ? `${programDef(ch.program).short} · Level ${lvl}` : `Level ${lvl}`); setText(t[2], `${somm && lvl >= 2 && ch.part ? `Part ${ch.part} · ` : ''}Lesson ${ch.number} · ${ch.title}`); setText(t[4], sec.name); const back = find(bc, byName('Back')); if (back) back.to = '/' + home; }
 
   // the video, or nothing when there isn't a good one
   const slot = find(main, byName('Video slot · Lesson'));
@@ -410,6 +417,7 @@ function lessonsGrid(grid, all, done) {
 export function level1Page(page, ctx) {
   const main = page.main; const all = chapters();
   unclipHero(main); evenButtons(main);
+  levelTabs(main, levelFor('somm', 1)); // Nov 19: the four Sommelier levels, like the other programs
   const nx = nextLesson(ctx.done);
   for (const b of findAll(main, (x) => (x.n || '').startsWith('Button · Continue'))) {
     if (nx) { b.to = '/' + lessonSlug(nx.ch, nx.i); setText(texts(b)[0], nx.started ? `Continue Lesson ${nx.ch.number}` : 'Start Lesson 1'); } else { b.to = '/' + lessonSlug(all[0], 0); setText(texts(b)[0], 'Watch Again'); }
@@ -525,6 +533,16 @@ export function hubPage(page, ctx) {
   } else if (cont) remove(main, cont);
   const levels = find(main, byName('Levels'));
   if (levels) { const [a, b] = levels.c; if (a) a.to = '/' + L1; if (b) b.to = '/' + L2; }
+  // Nov 19: Levels 3 (Advanced Prep) and 4 (Master Prep) are built in the app. Their cards open their level pages; the pill says
+  // how you get in and how many lessons (split into two pills below).
+  for (const [i, card] of (levels?.c || []).entries()) {
+    const L = i >= 2 && levelFor('somm', i + 1); const n = L ? chaptersForLevel(L).length : 0;
+    if (!n) continue;
+    card.to = '/' + L.slug;
+    const pill = find(card, byName('Pill')); const t = pill && texts(pill)[0];
+    if (t) setText(t, ctx.certified?.has(L.file) ? '✓ Certified' : `${L.invite ? 'By invitation' : 'Through the Court'} · ${n} lessons`);
+  }
+  { const lead = find(find(main, byName('Hero')), byName('Lead')); if (lead && /Levels 1 and 2/.test(lead.s || '')) setText(lead, 'Watch it, practise it, then sit the Court’s exams, level by level.'); }
   // Nov 15 (audit 15): "We host it · Feb 22–23, 2027" wrapped inside its pill on a 390 phone. Two pills in a row that wraps;
   // the date one is named "Pill · Date", so the Mise demo's scrub (content.mjs, HOSTED) drops it with its pill.
   for (const card of levels?.c || []) {
@@ -537,6 +555,9 @@ export function hubPage(page, ctx) {
     cp.c = cp.c.map((x) => (x === pill ? { t: 'F', n: 'Level labels', lm: 'H', wrap: 1, gap: 6, cg: 6, sh: 'H', sv: 'H', c: [pill, date] } : x));
   }
   const book = find(main, byName('Book your seat'));
+  // Nov 19: the finals band, like the Cocktail and Beer hubs: each level's final, or its certificate once earned
+  const fb = book && finalsBand(clone(book), LEVELS.filter((L) => L.program === 'somm' && chaptersForLevel(L).length), ctx);
+  if (fb) { fb.n = 'The finals'; const at = main.c.indexOf(find(main, byName('Your path'))); main.c.splice(at >= 0 ? at + 1 : main.c.length, 0, fb); }
   // Nov 10 (audit): the Court's real dates at Testa Barra read oddly to a prospect, so the demo leaves them out
   if (book && ctx.demo) remove(main, book);
   else if (book) {
@@ -599,6 +620,25 @@ export function level2Page(page, ctx = {}) {
   return page;
 }
 
+/** Level tabs under the breadcrumb (Nov 8): every level of the program. The current one is dark, built ones link, the rest are
+ *  dimmed with "Coming". Nov 19: the Sommelier's four levels get them too (Levels 1 and 2 have their own pages). */
+export function levelTabs(main, L) {
+  const P = programDef(L.program);
+  const bc = find(main, byName('Breadcrumb'));
+  if (!bc || find(main, byName('Level tabs'))) return;
+  const holder = main.c.includes(bc) ? main : find(main, (x) => (x.c || []).includes(bc));
+  const tab = (i) => {
+    const built = LEVELS.find((x) => x.program === L.program && x.level === i + 1 && chaptersForLevel(x).length);
+    const here = i + 1 === L.level;
+    const label = `Level ${i + 1} · ${P.ladder[i]}${built ? '' : ' · Coming'}`;
+    return { t: 'F', n: 'Level tab · ' + (i + 1), lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 999, pd: [9, 16, 9, 16],
+      ...(here ? { f: [{ c: '#1E1C1A' }] } : { st: built ? '#8A8178' : '#CFC6B8', sw: 1 }), ...(built && !here ? { to: '/' + built.slug } : {}),
+      c: [txt(label, { z: 14, c: here ? '#F2EEE7' : built ? '#1E1C1A' : '#5E574F', fs: here ? 'Bold' : built ? 'SemiBold' : 'Medium' })] };
+  };
+  const tabs = { t: 'F', n: 'Level tabs', lm: 'H', gap: 8, wrap: 1, cg: 8, sh: 'F', sv: 'H', c: P.ladder.map((_, i) => tab(i)) };
+  holder.c.splice(holder.c.indexOf(bc) + 1, 0, tabs);
+}
+
 /* ---------------- the Cocktail Program (Nov 8) ---------------- */
 // Tommy, Nov 8: "start building it in the app … we already have a skeleton with the wine program." Drawn from the
 // Sommelier Level 1 course page (Figma 392:31): Level 1, Certified Bar Server, five lessons, then a final exam.
@@ -615,25 +655,17 @@ export function barPage(page, ctx) {
   const day = (iso) => new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/Detroit' }).toUpperCase();
   // breadcrumb: The Bar / Cocktail Program / Level N
   const bc = find(main, byName('Breadcrumb'));
-  if (bc) { const t = texts(bc); const back = find(bc, byName('Back')); if (back) { back.to = P.back[0]; setText(T(back)[0], P.back[1]); } setText(t[2], P.name); t[2].n = P.name; t[2].to = '/' + P.slug; setText(t[4], `Level ${L.level}`); }
+  if (bc) { const t = texts(bc); const back = find(bc, byName('Back')); if (back) { back.to = P.back[0]; setText(T(back)[0], P.back[1]); } setText(t[2], P.crumb || P.name); t[2].n = P.crumb || P.name; t[2].to = '/' + P.slug; setText(t[4], `Level ${L.level}`); }
   // Level tabs (Nov 8, Tommy: "Only see level 1 … Do you have multiple levels?"): every level of the program, up top.
-  // The current one is dark, built ones link, the rest are dimmed with "Coming".
-  if (bc) {
-    const holder = main.c.includes(bc) ? main : find(main, (x) => (x.c || []).includes(bc));
-    const tab = (i) => {
-      const built = LEVELS.find((x) => x.program === L.program && x.level === i + 1 && chaptersOf(x.program, x.level).length);
-      const here = i + 1 === L.level;
-      const label = `Level ${i + 1} · ${P.ladder[i]}${built ? '' : ' · Coming'}`;
-      return { t: 'F', n: 'Level tab · ' + (i + 1), lm: 'H', pa: 'C', ca: 'C', sh: 'H', sv: 'H', r: 999, pd: [9, 16, 9, 16],
-        ...(here ? { f: [{ c: '#1E1C1A' }] } : { st: built ? '#8A8178' : '#CFC6B8', sw: 1 }), ...(built && !here ? { to: '/' + built.slug } : {}),
-        c: [txt(label, { z: 14, c: here ? '#F2EEE7' : built ? '#1E1C1A' : '#5E574F', fs: here ? 'Bold' : built ? 'SemiBold' : 'Medium' })] };
-    };
-    const tabs = { t: 'F', n: 'Level tabs', lm: 'H', gap: 8, wrap: 1, cg: 8, sh: 'F', sv: 'H', c: P.ladder.map((_, i) => tab(i)) };
-    holder.c.splice(holder.c.indexOf(bc) + 1, 0, tabs);
-  }
+  levelTabs(main, L);
   const hero = find(main, byName('Hero'));
   const hv = find(hero, (x) => !!x.vid || (x.n || '').includes('YouTube R6ESxHbDSrg'));
-  if (hv) { delete hv.vid; hv.n = P.heroName; hv.f = [{ img: P.hero, m: 'FILL' }]; hv.c = []; }
+  // Nov 19: a level can open on a video (the Sommelier's Levels 3 and 4: the Court's own), like Sommelier Level 2
+  if (hv && L.heroVideo) {
+    const v = L.heroVideo; hv.n = `IMG/Video · ${v.title} · ${v.by} (YouTube ${v.youtubeId})`; hv.f = [{ img: `https://i.ytimg.com/vi/${v.youtubeId}/${v.thumb || 'maxresdefault'}.jpg`, m: 'FILL' }];
+    hv.vid = { kind: 'youtube', youtubeId: v.youtubeId, title: `${v.title} · ${v.by}` };
+    const dur = find(hv, byName('Duration')); if (dur && v.length) setText(texts(dur)[0], v.length); else if (dur) hv.c = (hv.c || []).filter((x) => x !== dur);
+  } else if (hv) { delete hv.vid; hv.n = P.heroName; hv.f = [{ img: P.hero, m: 'FILL' }]; hv.c = []; }
   const copy = find(hero, byName('Copy'));
   const ct = T(copy);
   // script like the Sommelier's (Tommy, Nov 8: uniform with the som); the program is in the breadcrumb
@@ -680,6 +712,8 @@ export function barPage(page, ctx) {
     }
     delete btns.clip; delete btns.h; btns.sv = 'H';
     evenButtons(main);
+    // Nov 19: the Sommelier's Levels 3 and 4 link the Court's own page for the real exam, like Levels 1 and 2 ("Court exam details →")
+    if (L.details && copy) copy.c.splice(copy.c.indexOf(btns) + 1, 0, { ...txt('Court exam details  →', { z: 13.5, c: '#C49A6C', fs: 'SemiBold' }), n: 'Link · Exam Details', to: L.details });
   }
   // the lessons
   const course = find(main, byName('The course'));
@@ -702,7 +736,7 @@ export function barPage(page, ctx) {
     const names = P.ladder;
     if (levels.c.length > names.length) levels.c = levels.c.slice(0, names.length); // Hospitality has two
     levels.c.forEach((st, i) => {
-      const built = LEVELS.find((x) => x.program === L.program && x.level === i + 1 && chaptersOf(x.program, x.level).length); const tt = texts(st);
+      const built = LEVELS.find((x) => x.program === L.program && x.level === i + 1 && chaptersForLevel(x).length); const tt = texts(st);
       setText(tt[tt.length - 1], names[i] + (built ? '' : ' · coming'));
       st.n = 'Level · ' + names[i];
       if (!built) st.op = 0.55; else if (i + 1 !== L.level) st.to = '/' + built.slug;
@@ -898,24 +932,32 @@ export function programHub(page, ctx) {
   for (const n of findAll(main, (x) => x.t === 'T' && /Court|Testa Barra|Sommelier/.test(x.n || ''))) n.n = String(n.s).slice(0, 40);
   // the dark band: each level's final, or its certificate
   const book = find(main, byName('Book your seat'));
-  if (book) {
-    const bt = texts(find(book, byName('Copy'))); setText(bt[0], 'EARN YOUR CERTIFICATES'); setText(bt[1], 'The finals');
-    const tpl = book.c.find((x) => (x.n || '').startsWith('Date · '));
-    const cards = levels.map((L) => {
-      const d = clone(tpl); d.n = `Final · Level ${L.level}`;
-      const ct = texts(find(d, byName('Copy'))); setText(ct[0], `Level ${L.level} · ${L.len} questions`); setText(ct[1], L.title);
-      const b = find(d, (x) => (x.n || '').startsWith('Button · ')); const has = certified.has(L.file);
-      b.n = has ? 'Button · View Certificate' : 'Button · Take the Final'; b.to = has ? `/certificate/${L.file}` : '/quizzes?quiz=' + encodeURIComponent('t:' + L.final);
-      setText(texts(b)[0], has ? 'Certificate' : 'Take It');
-      // Nov 12: a level by invitation this person can't open yet
-      if (!has && ctx.locked?.has(L.file)) { b.n = 'Button · By Invitation'; delete b.to; setText(texts(b)[0], 'By Invitation'); b.f = [{ c: '#3A3632' }]; for (const x of texts(b)) x.f = [{ c: '#D9D1C5' }]; }
-      return d;
-    });
-    const rest = book.c.filter((x) => !(x.n || '').startsWith('Date · '));
-    book.c = [...rest, { t: 'F', n: 'Finals', lm: 'H', gap: 12, wrap: 1, cg: 12, sh: 'H', sv: 'H', c: cards }]; book.wrap = 1; book.cg = 16;
-    const copy = find(book, byName('Copy')); if (copy) delete copy.to;
-  }
+  if (book) finalsBand(book, levels, { certified, locked: ctx.locked });
   return page;
+}
+
+/** The dark "The finals" band (Nov 8; shared with the Sommelier hub Nov 19), made from the hub's "Book your seat" band: each
+ *  level's final, its certificate once earned, or "By Invitation" for a level this person can't open yet. */
+function finalsBand(book, levels, ctx = {}) {
+  const certified = ctx.certified || new Set();
+  const tpl = book.c.find((x) => (x.n || '').startsWith('Date · '));
+  if (!tpl || !levels.length) return null;
+  const bt = texts(find(book, byName('Copy'))); setText(bt[0], 'EARN YOUR CERTIFICATES'); setText(bt[1], 'The finals');
+  const cards = levels.map((L) => {
+    const d = clone(tpl); d.n = `Final · Level ${L.level}`;
+    const ct = texts(find(d, byName('Copy'))); setText(ct[0], `Level ${L.level} · ${L.len} questions`); setText(ct[1], L.title);
+    const b = find(d, (x) => (x.n || '').startsWith('Button · ')); const has = certified.has(L.file);
+    b.n = has ? 'Button · View Certificate' : 'Button · Take the Final'; b.to = has ? `/certificate/${L.file}` : '/quizzes?quiz=' + encodeURIComponent('t:' + L.final);
+    setText(texts(b)[0], has ? 'Certificate' : 'Take It');
+    // Nov 12: a level by invitation this person can't open yet
+    if (!has && ctx.locked?.has(L.file)) { b.n = 'Button · By Invitation'; delete b.to; setText(texts(b)[0], 'By Invitation'); b.f = [{ c: '#3A3632' }]; for (const x of texts(b)) x.f = [{ c: '#D9D1C5' }]; }
+    return d;
+  });
+  const rest = book.c.filter((x) => !(x.n || '').startsWith('Date · '));
+  book.c = [...rest, { t: 'F', n: 'Finals', lm: 'H', gap: 12, wrap: 1, cg: 12, sh: 'H', sv: 'H', c: cards }]; book.wrap = 1; book.cg = 16;
+  const copy = find(book, byName('Copy')); if (copy) delete copy.to;
+  for (const t of findAll(book, (x) => x.t === 'T' && x.s)) t.n = String(t.s).slice(0, 40); // no prices or dates left in layer names
+  return book;
 }
 
 /** Nov 8, Tommy's screenshot: the hero's outlined video button lost the bottom of its border to the row's clip. */
@@ -966,6 +1008,7 @@ export function level2OnLevel1(p1, old, ctx = {}) {
   const main = p1.main; const all = chapters2(); const done = ctx.done || new Set();
   unclipHero(main);
   const bc = find(main, byName('Breadcrumb')); if (bc) { const t = texts(bc); setText(t[t.length - 1], 'Level 2'); }
+  levelTabs(main, levelFor('somm', 2)); // Nov 19
   const hero = find(main, byName('Hero'));
   const hv = find(hero, (x) => (x.n || '').includes('YouTube R6ESxHbDSrg'));
   if (hv) {

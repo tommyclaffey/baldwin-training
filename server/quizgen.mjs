@@ -5,7 +5,7 @@ import { specHref, specLists } from './specs.mjs';
 import { listEntries, COURSES } from './cms.mjs';
 import { storeCache, cached } from './cache.mjs';
 import { variantKey } from './variant.mjs';
-import { allChapters, chapterSlug, shuffleSeeded, LEVELS, isProgram, progLevel, levelOfChapter, programDef, barLevelOf, chaptersOf, chaptersForLevel, levelForChapter } from './manual.mjs';
+import { allChapters, chapterSlug, shuffleSeeded, groupOf, LEVELS, isProgram, progLevel, levelOfChapter, programDef, barLevelOf, chaptersOf, chaptersForLevel, levelForChapter } from './manual.mjs';
 
 export const PASS_PCT = 80;
 export const passFor = (total) => Math.ceil((total * PASS_PCT) / 100);
@@ -96,7 +96,7 @@ export function topicList(pool) {
     { key: 'allergens', label: 'Allergens', group: 'Know It Cold' },
     { key: 'pairings', label: 'Pairings', group: 'Know It Cold' },
     ...SPEC_TOPICS.map(([key, label]) => ({ key, label, group: 'Cocktail Specs · For Bartenders' })),
-    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: isProgram(c) ? `${programDef(c.program).name} · Level ${progLevel(c)}` : c.level === 2 ? 'Sommelier Level 2' : 'Sommelier Level 1' })),
+    ...allChapters().map((c) => ({ key: 'study:' + c.slug, label: c.title, group: groupOf(c) })), // Nov 19: "Sommelier Level 3" like Levels 1 and 2
     ...LEVELS.filter((L) => chaptersForLevel(L).length).map((L) => ({ key: L.final, label: L.finalLabel || `${L.title} · Final Exam`, group: L.group || `${programDef(L.program).name} · Level ${L.level}` })),
   ];
   // A specs list can be short (two dessert cocktails): it still gets its quiz.

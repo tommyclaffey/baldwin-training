@@ -684,7 +684,7 @@ function assembleRaw(db, file) {
   }
   // The Cocktail Program (Nov 8): a course page per level, drawn from the Sommelier Level 1 page (Figma 392:31)
   // Program hubs (Nov 8): drawn from the Sommelier Program hub (Figma 391:32)
-  const hubOf = PROGRAMS.find((p) => file === p.key + '-hub' && chaptersOf(p.key).length);
+  const hubOf = PROGRAMS.find((p) => !p.external && file === p.key + '-hub' && chaptersOf(p.key).length); // the Sommelier's hub is its own page
   if (hubOf) {
     const tpl = basePage('391-32'); if (!tpl) return null;
     const certified = new Set(SCOPE.user ? certificatesFor(db, SCOPE.user, SCOPE.store, null).map((c) => c.key) : []);
@@ -725,7 +725,12 @@ function assembleRaw(db, file) {
   // REGION_V2: on (Nov 2, research in). REGION_V2=0 switches back to the old layout.
   if (process.env.REGION_V2 !== '0' && regionData(slug) && wineKind(slug)) { const v2 = regionPage(basePage(regionData(slug).isGrape ? '111-4' : '377-2'), page, slug, { video: wineVideos(db).get(slug) }); if (v2) page = v2; }
   // the Sommelier Program, video first (Nov 1): the Study Guide index is now the Level 1 course
-  if (slug === HUB) return hubPage(page, { done: sectionsDone(db, SCOPE.user?.id), demo: !!SCOPE.user?.demo });
+  if (slug === HUB) {
+    // Nov 19: the hub's finals band shows each level's certificate, and Level 4 (by invitation) stays locked until invited
+    const certified = new Set(SCOPE.user ? certificatesFor(db, SCOPE.user, SCOPE.store, null).map((c) => c.key) : []);
+    const locked = new Set(LEVELS.filter((L) => L.program === 'somm' && !canTake(db, SCOPE.user, SCOPE.store, L)).map((L) => L.file));
+    return hubPage(page, { done: sectionsDone(db, SCOPE.user?.id), demo: !!SCOPE.user?.demo, certified, locked });
+  }
   if (slug === L1) return level1Page(page, { done: sectionsDone(db, SCOPE.user?.id), ...levelStatus(db, 'somm-1') });
   if (slug === GUIDE) { const l1 = baseIndex().find((x) => x.slug === L1); const p1 = l1 && basePage(l1.file); if (p1) return level1Page(p1, { done: sectionsDone(db, SCOPE.user?.id), ...levelStatus(db, 'somm-1') }); return guideIndex(page, { prog: progress(db, SCOPE.user?.id, SCOPE.store) }); }
   if (slug === L2) {
@@ -1036,7 +1041,7 @@ function buildIndex(db) {
   // Study Guide chapters (content/manual), searchable like any page
   // The Cocktail Program (Nov 8): its course page, and its lessons below
   for (const P of PROGRAMS) {
-    if (!chaptersOf(P.key).length) continue;
+    if (P.external || !chaptersOf(P.key).length) continue; // the Sommelier hub is a designed page already in the index
     const sec = P.section || 'The Bar'; // the Hospitality Program isn't the bar's
     entries.push({ id: P.key + '-hub', file: P.key + '-hub', slug: P.slug, name: `${sec} · ${P.name}`, title: P.name, section: sec, nav: P.name,
       text: `${P.name} levels certificates ${P.ladder.join(' ')}`, blurb: `${P.name}: every level, its final and its certificate.` });
@@ -1044,18 +1049,19 @@ function buildIndex(db) {
   for (const L of LEVELS) {
     const P = programDef(L.program); const chs = chaptersOf(L.program, L.level); const n = chs.length;
     if (!n) continue;
-    entries.push({ id: L.file, file: L.file, slug: L.slug, name: `${P.section || 'The Bar'} · ${P.name} · Level ${L.level}`, title: `${P.name} · Level ${L.level}`, section: P.section || 'The Bar', nav: P.name,
+    const sec = P.external ? P.name : P.section || 'The Bar'; // Nov 19: Sommelier Levels 3 and 4 sit with Levels 1 and 2
+    entries.push({ id: L.file, file: L.file, slug: L.slug, name: `${P.external ? '' : sec + ' · '}${P.name} · Level ${L.level}`, title: P.external ? `Level ${L.level}` : `${P.name} · Level ${L.level}`, section: sec, nav: P.name,
       text: `${P.name} Level ${L.level} ${L.title} lessons final exam ${chs.map((c) => c.title).join(' ')}`,
       blurb: `Level ${L.level}: ${L.title}. ${n} lessons, then a ${L.len}-question final${L.practical ? ' and a practical' : ''}.` });
   }
   for (const ch of allChapters()) {
-    const bar = isProgram(ch); const PN = bar && programDef(ch.program).name;
+    const bar = isProgram(ch); const PN = bar && programDef(ch.program).name; const somm = bar && programDef(ch.program).external;
     if (!bar) entries.push({ id: 'm-' + ch.slug, file: 'm-' + ch.slug, slug: wholeChapterSlug(ch), name: (ch.level === 2 ? 'Level 2 · ' : 'Study Guide · ') + ch.title + ' · Whole Chapter', title: ch.title, section: ch.level === 2 ? 'Level 2' : 'Study Guide', nav: 'Sommelier Program',
       text: [ch.lead, ...ch.sections.flatMap((x) => [x.name, ...(x.know || []), ...(x.chips?.items || [])])].filter(Boolean).join(' ').slice(0, 1200), blurb: ch.lead });
     // one lesson per section (the first one is the chapter's own address)
     ch.sections.forEach((sec, i) => {
       const v = (ch.v3?.sections || []).find((x) => x.name === sec.name) || {};
-      entries.push({ id: lessonFile(ch, i), file: lessonFile(ch, i), slug: lessonSlug(ch, i), name: `${bar ? `${PN} L${progLevel(ch)}` : ch.level === 2 ? 'Level 2' : 'Study Guide'} · ${ch.title} · ${sec.name}`, title: i === 0 ? ch.title : sec.name, section: bar ? PN : ch.level === 2 ? 'Level 2' : 'Study Guide', nav: bar ? PN : 'Sommelier Program',
+      entries.push({ id: lessonFile(ch, i), file: lessonFile(ch, i), slug: lessonSlug(ch, i), name: `${somm ? `Level ${progLevel(ch)}` : bar ? `${PN} L${progLevel(ch)}` : ch.level === 2 ? 'Level 2' : 'Study Guide'} · ${ch.title} · ${sec.name}`, title: i === 0 ? ch.title : sec.name, section: somm ? `Level ${progLevel(ch)}` : bar ? PN : ch.level === 2 ? 'Level 2' : 'Study Guide', nav: bar ? PN : 'Sommelier Program',
         text: [sec.name, v.read?.bigIdea, v.read?.where, ...(v.read?.stops || []).map((x) => x.name + ' ' + x.text), ...(v.keyPoints || []).map((k) => k.big + ' ' + k.line)].filter(Boolean).join(' ').replace(/\*\*/g, '').slice(0, 1200),
         thumb: v.video?.youtubeId ? `https://i.ytimg.com/vi/${v.video.youtubeId}/mqdefault.jpg` : undefined, blurb: v.read?.bigIdea || ch.lead });
     });

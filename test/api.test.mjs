@@ -72,8 +72,9 @@ test('the CMS starts with every classic, house cocktail and dish from the design
   const readDir = (d) => (fs.existsSync(path.join(root, d)) ? fs.readdirSync(path.join(root, d)).filter((f) => f.endsWith('.json') && !f.startsWith('_')).map((f) => JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'))) : []);
   const manual = [...readDir('content/manual'), ...readDir('content/manual-l2')];
   // + the Cocktail Program (Nov 8): a course page per level (2) and one entry per lesson section (no whole-chapter pages)
-  const bar = [...readDir('content/bar'), ...readDir('content/beer'), ...readDir('content/hospitality-generic')]; // + the Beer Program (Nov 8), the Hospitality Program (Nov 11; every version has the same sections)
-  assert.equal(index.length, 656 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 10 + 3 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 39 house drinks (Nov 9: four off the list), the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
+  const somm34 = [...readDir('content/manual-l3'), ...readDir('content/manual-l4')]; // Nov 19: Sommelier Levels 3 and 4, program lessons (a level page each, one entry per section)
+  const bar = [...readDir('content/bar'), ...readDir('content/beer'), ...readDir('content/hospitality-generic'), ...somm34]; // + the Beer Program (Nov 8), the Hospitality Program (Nov 11; every version has the same sections)
+  assert.equal(index.length, 656 + manual.reduce((a, c) => a + 1 + c.sections.length, 0) + 10 + new Set(somm34.map((c) => c.programLevel)).size + 3 + bar.reduce((a, c) => a + c.sections.length, 0), 'the design (incl. 133 wine countries, regions and states), plus Cocktail Specs, the 39 house drinks (Nov 9: four off the list), the Lemon Drop, 106 wine pages, the Food Book’s 37 dishes and 92 bottle pages');
   const caymus = index.find((e) => e.slug === 'wine-list/sommelier-selection-red-cabernet-sauvignon-caymus-napa');
   const wp = (await call('/api/page/' + caymus.file)).data;
   const findN = (n, name) => (n.n === name ? n : (n.c || []).map((c) => findN(c, name)).find(Boolean));
@@ -966,8 +967,8 @@ test('Cocktail Program Level 1: one lesson per staple spirit, each store’s own
   for (const c of lessons) assert.ok(level1.includes(`"/cocktail-program/level-1/${c.slug}"`), c.slug + ' is on the Level 1 page');
   assert.ok(level1.includes('9 LESSONS') && level1.includes('Nine short lessons'), 'the Level 1 page counts nine');
   // every video in the app, so a spirit lesson's video is used nowhere else
-  const ids = (dir) => fs.readdirSync(path.join(root, dir)).filter((f) => f.endsWith('.json')).flatMap((f) => [...fs.readFileSync(path.join(root, dir, f), 'utf8').matchAll(/"youtubeId": ?"([\w-]{11})"/g)].map((m) => [f, m[1]]));
-  const all = [...ids('content/bar'), ...ids('content/beer'), ...ids('content/manual'), ...ids('content/manual-l2'), ...ids('content/cms')];
+  const ids = (dir) => !fs.existsSync(path.join(root, dir)) ? [] : fs.readdirSync(path.join(root, dir)).filter((f) => f.endsWith('.json')).flatMap((f) => [...fs.readFileSync(path.join(root, dir, f), 'utf8').matchAll(/"youtubeId": ?"([\w-]{11})"/g)].map((m) => [f, m[1]]));
+  const all = [...ids('content/bar'), ...ids('content/beer'), ...ids('content/manual'), ...ids('content/manual-l2'), ...ids('content/manual-l3'), ...ids('content/manual-l4'), ...ids('content/cms')];
   const photos = JSON.parse(fs.readFileSync(path.join(root, 'content/research/study-photos.json'), 'utf8')).photos;
   for (const c of lessons.slice(1, 6)) {
     const vids = c.v3.sections.map((s) => s.video).filter(Boolean);
@@ -1222,7 +1223,7 @@ test('Beer Program Level 4: six lessons, a 60-question final, a practical and a 
   const photos = JSON.parse(fs.readFileSync(path.join(root, 'content/research/study-photos.json'), 'utf8')).photos;
   // every video in the app, so a Level 4 video is used nowhere else
   const uses = new Map();
-  for (const d of ['content/bar', 'content/beer', 'content/manual', 'content/manual-l2', 'content/hospitality', 'content/hospitality-generic']) {
+  for (const d of ['content/bar', 'content/beer', 'content/manual', 'content/manual-l2', 'content/manual-l3', 'content/manual-l4', 'content/hospitality', 'content/hospitality-generic']) {
     if (!fs.existsSync(path.join(root, d))) continue;
     for (const f of fs.readdirSync(path.join(root, d)).filter((x) => x.endsWith('.json') && !x.startsWith('_')))
       for (const s of JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8')).v3?.sections || []) if (s.video?.youtubeId) uses.set(s.video.youtubeId, [...(uses.get(s.video.youtubeId) || []), f]);
@@ -1302,7 +1303,7 @@ test('every Cocktail Program video is used once in the whole app, and every sect
   // Program's don't repeat anywhere (the six roots are the classics' own how-to videos, by design).
   const uses = new Map();
   const add = (id, where) => uses.set(id, [...(uses.get(id) || []), where]);
-  for (const d of ['content/bar', 'content/beer', 'content/manual', 'content/manual-l2', 'content/hospitality', 'content/hospitality-generic']) {
+  for (const d of ['content/bar', 'content/beer', 'content/manual', 'content/manual-l2', 'content/manual-l3', 'content/manual-l4', 'content/hospitality', 'content/hospitality-generic']) {
     if (!fs.existsSync(path.join(root, d))) continue;
     for (const f of fs.readdirSync(path.join(root, d)).filter((x) => x.endsWith('.json') && !x.startsWith('_'))) {
       const c = JSON.parse(fs.readFileSync(path.join(root, d, f), 'utf8'));
