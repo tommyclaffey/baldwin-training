@@ -3,26 +3,31 @@
 // Nov 12 (Figma section 28): the join-code screen wears Mise, the platform's front door. Once the code is right the app
 // knows the restaurant, so the store, name and PIN screens wear that restaurant's own look (the brand comes with the code).
 // Nov 17: once a store is picked, its own look (Testa Barra, J.Baldwin's); the store question itself wears the company's.
+// Nov 19: from an account's own link (miseacademy.app/the-baldwin, src/lib/account.ts) every screen wears that account's
+// look from the start, the join code has to be that account's, and the email sign-in for owners and managers opens right
+// here in the same look. The code is still typed: a public link can't be the key to a restaurant's book.
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { api, type User } from '../lib/api';
 import { useSession } from '../lib/session';
 import { asBrand, type Brand } from '../lib/theme';
 import { AuthCard } from './AuthCard';
+import { SignIn } from '../admin/screens';
+import type { AccountLink } from '../lib/account';
 
 type Staff = { id: number; name: string; needsPin: boolean; storeId: number | null };
 type Store = { id: number; name: string; brand?: string };
 const CODE_KEY = 'bt-join-code';
 const STORE_KEY = 'bt-join-store';
 
-export function BookSignIn() {
+export function BookSignIn({ account = null }: { account?: AccountLink | null }) {
   const { setUser } = useSession();
-  const [step, setStep] = useState<'code' | 'store' | 'who' | 'pin' | 'new'>('code');
+  const [step, setStep] = useState<'code' | 'store' | 'who' | 'pin' | 'new' | 'email'>('code');
   const [stores, setStores] = useState<Store[]>([]);
   const [store, setStore] = useState<Store | null>(null);
   const [code, setCode] = useState(() => localStorage.getItem(CODE_KEY) || '');
   const [company, setCompany] = useState('');
-  const [coBrand, setCoBrand] = useState<Brand>('mise');
+  const [coBrand, setCoBrand] = useState<Brand>(account?.brand ?? 'mise');
   const [staff, setStaff] = useState<Staff[]>([]);
   const [who, setWho] = useState<Staff | null>(null);
   const [q, setQ] = useState('');
@@ -32,20 +37,25 @@ export function BookSignIn() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
-  const lookUp = async (c: string) => {
+  const lookUp = async (c: string, saved = false) => {
     setBusy(true); setError('');
     try {
-      const r = await api<{ company: string; brand?: string; stores: Store[]; staff: Staff[] }>(`/api/join/${encodeURIComponent(c.trim().toUpperCase())}`);
+      const via = account ? `?account=${encodeURIComponent(account.slug)}` : '';
+      const r = await api<{ company: string; brand?: string; stores: Store[]; staff: Staff[] }>(`/api/join/${encodeURIComponent(c.trim().toUpperCase())}${via}`);
       setCompany(r.company); setCoBrand(asBrand(r.brand)); setStaff(r.staff); setStores(r.stores); localStorage.setItem(CODE_KEY, c.trim().toUpperCase());
       // One store: skip the question. Several: ask once, then remember it on this phone.
       const saved = r.stores.find((x) => String(x.id) === localStorage.getItem(STORE_KEY));
       const pick = r.stores.length === 1 ? r.stores[0] : saved || null;
       if (pick) choose(pick, r.staff); else setStep('store');
-    } catch (e) { setError((e as Error).message); }
+    } catch (e) {
+      // A phone that joined another restaurant opens this account's link: its code for that one isn't this one's. Start
+      // fresh, quietly (the other restaurant's code stays on the phone until a new one is typed).
+      if (saved && account) setCode(''); else setError((e as Error).message);
+    }
     setBusy(false);
   };
   // Come straight to the name list on a phone that has joined before.
-  useEffect(() => { if (code) void lookUp(code); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (code) void lookUp(code, true); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function choose(st: Store, list = staff) {
     setStore(st); localStorage.setItem(STORE_KEY, String(st.id)); setQ(''); setError('');
@@ -77,13 +87,18 @@ export function BookSignIn() {
         onChange={(e) => set(e.target.value.replace(/\D/g, '').slice(0, 6))} />
     </label>
   );
-  const managers = <><hr className="si-rule" /><p className="si-alt">Owner or manager? <Link to="/admin">Sign in with your email.</Link></p></>;
+  const managers = <><hr className="si-rule" /><p className="si-alt">Owner or manager? {account
+    ? <button type="button" className="link-btn si-inline" onClick={() => { setStep('email'); setError(''); }}>Sign in with your email.</button>
+    : <Link to="/admin">Sign in with your email.</Link>}</p></>;
   // after the join code: the restaurant's own look; after the store question, that store's (Nov 17)
   const card = { kicker: 'Staff', brand: step !== 'store' && store?.brand ? asBrand(store.brand) : coBrand };
 
+  if (step === 'email' && account) return <SignIn brand={account.brand} onStaff={() => { setStep('code'); setError(''); }} />;
+
   if (step === 'code') return (
-    <AuthCard kicker="Staff" title="Sign In" sub="Ask a manager for your restaurant’s join code."
-      foot={<>Just looking? <Link to="/demo/mise">Try the Demo</Link></>}>
+    <AuthCard kicker={account ? `${account.name} · Staff` : 'Staff'} title="Sign In" brand={account?.brand}
+      sub={account ? 'Ask a manager for your join code.' : 'Ask a manager for your restaurant’s join code.'}
+      foot={account ? undefined : <>Just looking? <Link to="/demo/mise">Try the Demo</Link></>}>
       <form className="stack" onSubmit={(e) => { e.preventDefault(); void lookUp(code); }}>
         <label className="field"><span>Join code</span>
           <input value={code} {...errorFor} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12))} autoCapitalize="characters" autoComplete="off" spellCheck={false} placeholder="8 letters and numbers" />

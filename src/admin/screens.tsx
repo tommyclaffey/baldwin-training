@@ -7,6 +7,8 @@ import { VideoEmbed, forgetCaptions } from '../components/VideoEmbed';
 import { Empty, ErrorNote, InviteSentCard, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 import { PRODUCT_NAME } from '../lib/brand';
 import { AuthCard } from '../components/AuthCard';
+import type { Brand } from '../lib/theme';
+import { linkText } from '../lib/account';
 import { LegalLinks, SupportLine } from '../components/Legal';
 import { landingFor, needsTwoStep, TWO_STEP_MSG } from '../lib/twostep';
 
@@ -23,7 +25,9 @@ function useLoad<T>(path: string) {
 export { AuthCard };
 const OWNERS = 'Owners and managers';
 
-export function SignIn() {
+/** brand / onStaff (Nov 19): on an account's own link the email sign-in opens in place, in that account's look, and "On
+ *  staff?" goes back to its join code (src/components/BookSignIn.tsx). Elsewhere: Mise, and /admin as before. */
+export function SignIn({ brand, onStaff }: { brand?: Brand; onStaff?: () => void } = {}) {
   const { setUser, setupNeeded, superSetupNeeded } = useSession();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,7 +38,7 @@ export function SignIn() {
   const [setup, setSetup] = useState(false);
   const [forgot, setForgot] = useState(false);
   if (setupNeeded || setup) return <Setup superAdmin={!setupNeeded && superSetupNeeded} />;
-  if (forgot) return <ForgotPassword email={email} onBack={(e) => { setForgot(false); setEmail(e); setError(''); }} />;
+  if (forgot) return <ForgotPassword brand={brand} email={email} onBack={(e) => { setForgot(false); setEmail(e); setError(''); }} />;
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');
     try {
@@ -50,7 +54,7 @@ export function SignIn() {
     setBusy(false);
   };
   if (ticket) return (
-    <AuthCard kicker={OWNERS} title="Two-Step Sign-In" sub="Open your authenticator app and type the 6-digit code for Mise.">
+    <AuthCard kicker={OWNERS} brand={brand} title="Two-Step Sign-In" sub="Open your authenticator app and type the 6-digit code for Mise.">
       <form className="stack" onSubmit={submitCode}>
         <label className="field"><span>Code</span><input inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} autoFocus /></label>
         {error && <ErrorNote error={error} />}
@@ -60,7 +64,7 @@ export function SignIn() {
     </AuthCard>
   );
   return (
-    <AuthCard kicker={OWNERS} title="Sign In" sub="Use the email your invite was sent to.">
+    <AuthCard kicker={OWNERS} brand={brand} title="Sign In" sub="Use the email your invite was sent to.">
       <form className="stack" onSubmit={submit}>
         <label className="field"><span>Email</span>
           <input inputMode="email" autoComplete="username" autoCapitalize="none" spellCheck={false} placeholder="you@yourrestaurant.com" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -72,13 +76,15 @@ export function SignIn() {
         {superSetupNeeded && <button type="button" className="link-btn" onClick={() => setSetup(true)}>Set up the super admin account</button>}
       </form>
       <hr className="si-rule" />
-      <p className="si-alt">On staff? <Link to="/">Sign in with your join code.</Link></p>
+      <p className="si-alt">On staff? {onStaff
+        ? <button type="button" className="link-btn si-inline" onClick={onStaff}>Sign in with your join code.</button>
+        : <Link to="/">Sign in with your join code.</Link>}</p>
     </AuthCard>
   );
 }
 
 /** Forgot Password? (Nov 11): the same answer for every email. The link comes by email when Resend is set up. */
-function ForgotPassword({ email: start, onBack }: { email: string; onBack: (email: string) => void }) {
+function ForgotPassword({ email: start, onBack, brand }: { email: string; onBack: (email: string) => void; brand?: Brand }) {
   const { user } = useSession();
   const [email, setEmail] = useState(start);
   const [sent, setSent] = useState('');
@@ -92,7 +98,7 @@ function ForgotPassword({ email: start, onBack }: { email: string; onBack: (emai
     setBusy(false);
   };
   if (sent) return (
-    <AuthCard kicker={OWNERS} title="Check Your Email" sub={sent}>
+    <AuthCard kicker={OWNERS} brand={brand} title="Check Your Email" sub={sent}>
       <div className="stack">
         <p className="muted small">The link works once and expires in 24 hours. Staff don’t need one: a manager can Reset PIN.</p>
         <button type="button" className="btn" onClick={() => onBack(email)}>Back to Sign In</button>
@@ -100,7 +106,7 @@ function ForgotPassword({ email: start, onBack }: { email: string; onBack: (emai
     </AuthCard>
   );
   return (
-    <AuthCard kicker={OWNERS} title="Forgot Your Password?" sub="Type the email you sign in with. If it has an account, we’ll email a link to pick a new password.">
+    <AuthCard kicker={OWNERS} brand={brand} title="Forgot Your Password?" sub="Type the email you sign in with. If it has an account, we’ll email a link to pick a new password.">
       <form className="stack" onSubmit={submit}>
         <label className="field"><span>Email</span><input type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus /></label>
         {error && <ErrorNote error={error} />}
@@ -378,7 +384,7 @@ type Member = { id: number; name: string; email: string | null; role: Role; crea
   canPromote?: boolean; canDemote?: boolean; promotion?: { email: string; storeName: string | null; createdAt: string; expiresAt: string } | null };
 type Invite = { id: string; email: string; role: string; created_at: string; expires_at: string; storeName: string | null };
 type StoreRow = { id: number; name: string; bookReady: boolean };
-type TeamData = { company: { id: number; name: string; joinCode: string; demo?: boolean }; stores: StoreRow[]; yourStore: number | null; people: Member[]; invites: Invite[]; you: number; youRole: Role };
+type TeamData = { company: { id: number; name: string; joinCode: string; demo?: boolean; link?: string | null }; stores: StoreRow[]; yourStore: number | null; people: Member[]; invites: Invite[]; you: number; youRole: Role };
 export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
   const { user, mailOn } = useSession();
   const { data, error, load } = useLoad<TeamData>('/api/team');
@@ -417,7 +423,8 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
   const leads = data.people.filter((p) => p.role !== 'staff');
   const staff = data.people.filter((p) => p.role === 'staff' && (show === 'all' || p.storeId === show));
   const move = (p: Member, storeId: number | null) => void run(() => api(`/api/team/${p.id}`, { method: 'PATCH', body: { storeId } }), `${p.name} moved to ${storeId ? data.stores.find((x) => x.id === storeId)?.name : 'every store'}.`);
-  const joinUrl = location.origin + '/';
+  // Nov 19: staff open the company's own link (miseacademy.app/the-baldwin): its card when shared, its look at sign-in
+  const joinUrl = location.origin + (data.company.link || '/');
 
   return (
     <div className="admin-page">
@@ -434,6 +441,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
         <p className="muted small">Staff open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong>, type this code, {multi ? 'pick their restaurant, ' : ''}pick their name (or “I’m New Here”) and a PIN. One code for {multi ? 'every restaurant in the group' : 'the whole team'}. Share it at line-up or post it in the back of house.</p>
         <div className="row">
           <button className="btn ghost" onClick={() => copy(`Join the ${data.company.name} training app on Mise: ${joinUrl}  Join code: ${data.company.joinCode}`, 'code')}>{copied === 'code' ? 'Copied' : 'Copy Code and Link'}</button>
+          {data.company.link && <button className="btn ghost" onClick={() => copy(joinUrl, 'link')} aria-label={`Copy Link, ${linkText(data.company.link)}`}>{copied === 'link' ? 'Copied' : 'Copy Link'}</button>}
           <button className="link-btn danger" onClick={() => { if (confirm('Make a new join code? The old one stops working. People already signed in stay signed in.')) void run(() => api('/api/team/join-code', { method: 'POST' }), 'New join code made.'); }}>New Code</button>
         </div>
       </section>

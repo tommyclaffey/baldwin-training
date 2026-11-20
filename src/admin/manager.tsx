@@ -14,6 +14,7 @@ import { hasChat } from '../chat/unread';
 import { menuName } from '../lib/demo';
 import { currentBrand, titleCase } from '../lib/theme';
 import { WaitingCard } from '../chat/Waiting';
+import { linkText } from '../lib/account';
 
 /* ---------- data ---------- */
 type Status = 'behind' | 'new' | 'on-track' | 'done' | 'no-job';
@@ -21,7 +22,7 @@ type Next = { id: string; title: string; kind: Step['kind']; due: string; late: 
 type Row = { id: number; name: string; initials: string; jobs: string[]; jobLabel: string; startedOn: string; done: number; total: number; late: number;
   status: Status; next: Next; week: number | null; weeks: number | null; asks: number; lastSeenAt: string | null };
 type Ask = { userId: number; name: string; initials: string; jobLabel: string; key: string; title: string; at: string };
-type Team = { store: string; company: string | null; joinCode: string | null; you: string; jobs: Job[]; people: Row[]; signoffs: Ask[] };
+type Team = { store: string; company: string | null; joinCode: string | null; link?: string | null; you: string; jobs: Job[]; people: Row[]; signoffs: Ask[] };
 type Home = Team & {
   certificates: { userId: number; name: string; initials: string; title: string; key: string; earnedAt: string }[];
   quizzes: { taken: number; average: number | null; retakes: number; missed: { q: string; pct: number; asked: number; topic: string; topicLabel: string } | null; teamQuizzes: { id: string; title: string }[] };
@@ -399,7 +400,7 @@ export function PeoplePage() {
           ))}
           <div className="pp-foot">
             <button type="button" className="mg-btn" onClick={() => setAdding(true)}>Add a Person</button>
-            {data.joinCode && <p className="muted small">Or they join with code <span className="mg-code">{data.joinCode}</span></p>}
+            {data.joinCode && <p className="muted small">Or they join{data.link ? <> at <strong>{linkText(data.link)}</strong></> : ''} with code <span className="mg-code">{data.joinCode}</span></p>}
             <Link className="mg-link small" to="/admin/people/managers">{owner ? 'Owners, Managers and Invites →' : 'Owners and Managers →'}</Link>
           </div>
         </section>
@@ -408,7 +409,7 @@ export function PeoplePage() {
             : <section className="mg-card pp-detail"><p className="mh-empty">Pick someone on the left to see their path.</p></section>}
         </div>
       </div>
-      {adding && <AddPerson joinCode={data.joinCode} company={data.company} onClose={() => { setAdding(false); if (params.get('add')) setParams({}, { replace: true }); }} onCode={load} />}
+      {adding && <AddPerson joinCode={data.joinCode} link={data.link ?? null} company={data.company} onClose={() => { setAdding(false); if (params.get('add')) setParams({}, { replace: true }); }} onCode={load} />}
     </div>
   );
 }
@@ -716,16 +717,18 @@ function JobChip({ jobs, current, onPick, busy, manager }: { jobs: Job[]; curren
 }
 
 /** Add a Person: staff join with the code; owners also invite managers and owners by email. */
-function AddPerson({ joinCode, company, onClose, onCode }: { joinCode: string | null; company: string | null; onClose: () => void; onCode: () => Promise<unknown> }) {
+function AddPerson({ joinCode, link, company, onClose, onCode }: { joinCode: string | null; link: string | null; company: string | null; onClose: () => void; onCode: () => Promise<unknown> }) {
   const { user, mailOn } = useSession();
   const owner = user?.role === 'owner' || user?.role === 'superadmin';
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<'' | 'code' | 'link'>('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('manager');
   const [made, setMade] = useState<{ link: string; email: string; days: number; mail: MailStatus } | null>(null);
   const { busy, msg, run } = useAct();
-  const joinUrl = location.origin + '/';
-  const copy = () => { void navigator.clipboard?.writeText(`Join the ${company || 'team'} training app on Mise Academy: ${joinUrl}  Join code: ${joinCode}`); setCopied(true); };
+  // Nov 19: the company's own link (miseacademy.app/the-baldwin): its own card when it's shared, its look at sign-in
+  const joinUrl = location.origin + (link || '/');
+  const copy = () => { void navigator.clipboard?.writeText(`Join the ${company || 'team'} training app on Mise Academy: ${joinUrl}  Join code: ${joinCode}`); setCopied('code'); };
+  const copyLink = () => { void navigator.clipboard?.writeText(joinUrl); setCopied('link'); };
   const invite = (e: FormEvent) => { e.preventDefault(); void run('inv', async () => { setMade(null); const r = await api<{ link: string; email: string; days: number; mail: MailStatus }>('/api/team/invite', { method: 'POST', body: { email, role } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); }); };
   useEffect(() => { const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); }; document.addEventListener('keydown', k); return () => document.removeEventListener('keydown', k); }, [onClose]);
   return (
@@ -737,7 +740,8 @@ function AddPerson({ joinCode, company, onClose, onCode }: { joinCode: string | 
           <Label>Staff</Label>
           <p>They open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong> on their phone, type the code, pick their name (or “I’m New Here”) and a PIN. They show up here right away.</p>
           <div className="pp-add-code"><span className="mg-code big">{joinCode || '–'}</span>
-            <button type="button" className="mg-btn" onClick={copy}>{copied ? 'Copied' : 'Copy Code and Link'}</button>
+            <button type="button" className="mg-btn" onClick={copy}>{copied === 'code' ? 'Copied' : 'Copy Code and Link'}</button>
+            {link && <button type="button" className="mg-btn" onClick={copyLink}>{copied === 'link' ? 'Copied' : 'Copy Link'}</button>}
             <button type="button" className="link-btn danger" disabled={!!busy} onClick={() => { if (confirm('Make a new join code? The old one stops working. People already signed in stay signed in.')) void run('code', async () => { await api('/api/team/join-code', { method: 'POST' }); await onCode(); }, 'New join code made.'); }}>New Code</button>
           </div>
           <Feedback msg={msg} at="code" />

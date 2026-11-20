@@ -35,6 +35,7 @@ import { writeFilesBackup, bytesOf, roomLeft, fullMessage, storageCapBytes, medi
 import * as captions from './captions.mjs';
 import { migrateImports, importRoutes } from './menuimport.mjs';
 import { initAccounts, accountIds, publicFile } from './account.mjs';
+import { accountByLink, accountHtml, miseHtml, linkOf, isReserved, fixAccountSlugs, DEMO_LINKS, SLUG } from './links.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -51,6 +52,7 @@ seed(db);
 seedWineVideos(db);
 bootAccounts(db);
 migrateAcks(db); migrateImports(db); migrateDemo(db); purgeDemos(db); // acks and imports first: demo copies seed and drop them
+fixAccountSlugs(db); // Nov 19: an account's link can never be an app address (after migrateDemo: it reads companies.demo; server/links.mjs)
 try { const n = cleanOrphans(db); if (n) console.log(`Removed ${n} quiz history rows of people who no longer exist`); } catch (e) { console.error('orphan cleanup', e); }
 // Nov 14: last week's prep summary posts to each store's #Bar on Monday mornings (server/prep.mjs, postWeekly)
 prep.startWeekly(db, (e) => logError(db, 'server', 'weekly prep post', e));
@@ -788,8 +790,8 @@ async function api(req, res, url) {
     if (!c.storeRow) fail(400, 'Pick a store to work in first.');
     const ctx = pathCtxFor(db, c.storeRow, c.user);
     const rows = teamRows(db, c.company, c.storeRow, ctx);
-    const co = db.prepare('SELECT name, join_code FROM companies WHERE id = ?').get(c.company);
-    const out = { store: c.storeRow.name, company: co?.name || null, joinCode: co?.join_code || (c.user.demo ? 'DEMO' : null), you: u.name, jobs: JOBS,
+    const co = db.prepare('SELECT * FROM companies WHERE id = ?').get(c.company);
+    const out = { store: c.storeRow.name, company: co?.name || null, joinCode: co?.join_code || (c.user.demo ? 'DEMO' : null), link: linkOf(co), you: u.name, jobs: JOBS,
       people: rows.map((r) => r.row), signoffs: signoffQueue(rows) };
     if (p === '/api/manager/home') Object.assign(out, {
       certificates: newCertificates(db, rows, c.storeRow), quizzes: quizWeek(db, c.store), edits: lastEdits(db, c.company, c.store), book: bookTiles(db, c.storeRow, c.user),
@@ -1290,15 +1292,34 @@ function staticFile(req, res, url) {
   if (p.startsWith('/content/')) { res.writeHead(404); return res.end('Not found'); }
   let f = path.join(DIST, path.normalize(p).replace(/^(\.\.[/\\])+/, ''));
   if (!f.startsWith(DIST)) { res.writeHead(403); return res.end(); }
+  // Nov 19: the old share card (The Baldwin's, until the per-account cards) went; old previews that point at it get Mise's
+  if (p === '/share.jpg') { res.writeHead(301, { Location: '/img/mise-brand/share-card.jpg', 'Cache-Control': 'public, max-age=86400', ...SECURITY }); return res.end(); }
+  if (p === '/index.html') return sendPage(req, res, '/');
   if (!fs.existsSync(f) || fs.statSync(f).isDirectory()) {
     // Nov 16: an account's own photos and logo (server/account.mjs) keep their /img/ and /icons/ addresses
     const own = publicFile(p);
     if (own) return sendFile(req, res, own, /^\/img\//.test(p) ? 'public, max-age=31536000, immutable' : 'no-cache'); // the same caching as the build's
     if (/^\/(content|img|assets|icons)\//.test(p)) { res.writeHead(404); return res.end('Not found'); }
-    f = path.join(DIST, 'index.html');
+    return sendPage(req, res, p);
   }
   const cache = /^\/(assets|img)\//.test(p) ? 'public, max-age=31536000, immutable' : 'no-cache';
   sendFile(req, res, f, cache);
+}
+
+/** The app's page (dist/index.html) with the link-preview tags for this address (Nov 19, server/links.mjs).
+ *  /<account>: that account's card and its sign-in. One-segment addresses that are neither an account nor the app's get
+ *  the app's usual not-found page with a 404, so a mistyped link says so. Everything else: the Mise card. */
+function sendPage(req, res, p) {
+  const seg = /^\/([^/]+)\/?$/.exec(p)?.[1] ?? null;
+  const slug = seg?.toLowerCase() ?? null;
+  const go = (to, code = 302) => { res.writeHead(code, { Location: to, 'Cache-Control': 'no-cache', ...SECURITY }); res.end(); };
+  if (slug && Object.hasOwn(DEMO_LINKS, slug)) return go(DEMO_LINKS[slug]);
+  const co = slug && SLUG.test(slug) ? accountByLink(db, slug) : null;
+  if (co && p !== '/' + co.slug) return go('/' + co.slug, 301); // /The-Baldwin/ → /the-baldwin
+  const status = !co && slug && !isReserved(slug) ? 404 : 200;
+  const body = Buffer.from(co ? accountHtml(co) : miseHtml());
+  res.writeHead(status, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': body.length, 'Cache-Control': 'no-cache', ...SECURITY });
+  res.end(req.method === 'HEAD' ? undefined : body);
 }
 
 http.createServer(async (req, res) => {

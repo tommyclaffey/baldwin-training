@@ -311,6 +311,14 @@ export const MIGRATIONS = [
   `
   ALTER TABLE stores ADD COLUMN look TEXT;
   `,
+  // 24 (Nov 19, a link per account; Figma 09 · Idea Board → 43, 850:1360; server/links.mjs). Tommy: "for each account … its
+  //   own preview text". An account's link is miseacademy.app/<companies.slug>. Baldwin Restaurant Group's was "baldwin"
+  //   since Oct 28; the card Tommy approved shows miseacademy.app/the-baldwin, so its slug moves there (only if nobody has
+  //   it). Every other company keeps its slug; server/links.mjs (fixAccountSlugs) moves any that lands on an app address.
+  `
+  UPDATE companies SET slug = 'the-baldwin'
+    WHERE id = 1 AND slug = 'baldwin' AND name = 'Baldwin Restaurant Group' AND NOT EXISTS (SELECT 1 FROM companies WHERE slug = 'the-baldwin');
+  `,
 ];
 
 export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {

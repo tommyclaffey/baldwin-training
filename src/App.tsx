@@ -33,6 +33,7 @@ import { ChatPanelHost } from './chat/ChatPanel';
 import { PrepPage } from './prep/PrepPage';
 import { ImportPage } from './import/ImportPage';
 import { LegalRoute, LEGAL_PATHS } from './components/Legal';
+import { accountAt } from './lib/account';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -72,8 +73,11 @@ function Book() {
 
   const { count: unread, mentions } = useChatState(hasChat(user));
   if (!loaded || strayDemo) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
-  if (!user) return <BookSignIn />;
+  // Nov 19: an account's own link (miseacademy.app/the-baldwin) opens its sign-in in its look; signed in, it's just Home.
+  const account = accountAt(pathname);
+  if (!user) return <BookSignIn account={account} />;
   if (needsTwoStep(user)) return <Navigate to={TWO_STEP_HOME} replace />; // the server won't open the book until it's on (Nov 16)
+  if (account) return <Navigate to="/" replace />;
   return (
     <EditInPlaceProvider>
     <EditModeProvider>

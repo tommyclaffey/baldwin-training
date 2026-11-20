@@ -25,6 +25,7 @@ import { legalState } from './legal.mjs';
 import { logError } from './ops.mjs';
 import { wipeCompany, PROTECTED } from './companydata.mjs';
 import { demoGroups } from './demo.mjs';
+import { accountSlug, linkOf } from './links.mjs';
 
 const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
 const SUPERADMIN_EMAIL = (process.env.SUPERADMIN_EMAIL || '').trim().toLowerCase();
@@ -407,7 +408,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     if (parts[1] === 'join' && parts[2] && m === 'GET') {
       if (!codeLimiter.check(ip(req))) fail(429, 'Too many tries. Wait 15 minutes, then try again.');
       const co = staffByCode(parts[2]);
-      if (!co) { codeLimiter.record(ip(req)); fail(404, 'That join code isn’t right. Ask a manager for it.'); }
+      // Nov 19: from an account's link (miseacademy.app/<account>), the code has to be that account's (server/links.mjs)
+      const via = url.searchParams.get('account');
+      if (!co || (via && co.slug !== via)) { codeLimiter.record(ip(req)); fail(404, 'That join code isn’t right. Ask a manager for it.'); }
       // Nov 16: a manager promoted from staff keeps signing in with their PIN (no password yet), so they're on the list too.
       // Only with a PIN set: a PIN-less name on this list can be claimed by anyone with the code, and that's never a manager.
       const staff = db.prepare(`SELECT id, name, pin_hash, store_id FROM users WHERE company_id = ? AND deleted_at IS NULL AND ${PIN_SIGN_IN} ORDER BY name COLLATE NOCASE`).all(co.id);
@@ -546,7 +549,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const owners = all.filter((x) => x.role === 'owner').length;
       const changes = roleChanger(u), promotes = promoter(u);
       return sendJson(res, 200, {
-        company: { id: co.id, name: co.name, joinCode: co.join_code, demo: !!co.demo }, stores: stores.map(storeOut), yourStore: u.store_id ?? null,
+        company: { id: co.id, name: co.name, joinCode: co.join_code, demo: !!co.demo, link: linkOf(co) }, stores: stores.map(storeOut), yourStore: u.store_id ?? null,
         people: people.map((x) => ({ ...personOut(x), storeId: x.store_id ?? null, storeName: x.store_id ? storeName.get(x.store_id) || null : null, signedOff: passed.get('u' + x.id) || 0, canManage: x.id !== u.id && inScope(u, x) && (x.role === 'staff' || u.role === 'owner' || u.role === 'superadmin'),
           // Nov 16: Promote to Manager (staff) and Change to Staff (owners and managers; never yourself or the last owner)
           canPromote: promotes && x.role === 'staff' && inScope(u, x), canDemote: changes && x.role !== 'staff' && x.id !== u.id && !(x.role === 'owner' && owners < 2),
@@ -812,7 +815,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         .map((i) => ({ id: i.id, email: i.email, teamRole: GIVABLE.includes(i.super_role) ? i.super_role : 'manager', createdAt: i.created_at, expiresAt: i.expires_at })) : [];
       return sendJson(res, 200, {
         // Mise Academy (HQ)'s people are the Mise team (they have no company row of their own)
-        companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.internal ? team.length : x.leads, staff: x.staff,
+        companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, link: linkOf(x), joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.internal ? team.length : x.leads, staff: x.staff,
           lastSeenAt: x.internal ? team.reduce((a, t) => (t.last_seen_at && t.last_seen_at > (a || '') ? t.last_seen_at : a), null) : x.last_seen,
           demo: !!x.demo, hq: !!x.internal, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x),
           // Nov 17: each store's own look (null = the company's) and the look it's drawn in
@@ -829,8 +832,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const b = await readJson(req);
       const name = str(b.name, 80);
       if (name.length < 2) fail(400, 'Add the company’s name.');
-      let slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'company';
-      while (db.prepare('SELECT 1 FROM companies WHERE slug = ?').get(slug)) slug += '-2';
+      // Nov 19: the slug is the account's link (miseacademy.app/<slug>), so it can never be an app address (server/links.mjs)
+      const slug = accountSlug(db, name);
       // Nov 16: every new company starts on the Foundation plan in the Mise look (the live table's own default look is
       // still The Baldwin's, from Nov 11, so it's named here).
       const r = db.prepare('INSERT INTO companies(name, slug, created_at, brand, plan) VALUES (?,?,?,?,?)').run(name, slug, now(), DEFAULT_LOOK, DEFAULT_PLAN);

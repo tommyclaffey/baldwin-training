@@ -18,6 +18,7 @@ import { ownedFiles, WAIT_DAYS } from './companydata.mjs';
 import { bytesOf, storageCapBytes, volumeFloorBytes, volumeFree } from './files.mjs';
 import { latestSnapshot, lastOps, KEEP_DAYS } from './ops.mjs';
 import { JOBS } from './paths.mjs';
+import { linkOf } from './links.mjs';
 
 const DAY = 864e5;
 /** An error that came in this many times in the last 24 hours is "repeating" (Waiting on you). */
@@ -91,7 +92,7 @@ export function hqHomeRoutes({ db, fail, sendJson }) {
       const d = pend.get(co.id);
       const plan = PLANS[co.plan] ? co.plan : DEFAULT_PLAN;
       return {
-        id: co.id, name: co.name, hq, createdAt: co.created_at, isNew: !!co.created_at && Date.parse(co.created_at) > Date.now() - 7 * DAY,
+        id: co.id, name: co.name, hq, link: linkOf(co), createdAt: co.created_at, isNew: !!co.created_at && Date.parse(co.created_at) > Date.now() - 7 * DAY,
         plan, planName: PLANS[plan].name, lookName: (LOOKS[lookOf(co)] || LOOKS.mise).name,
         stores: stores.map((s) => s.name),
         owners: hq ? 0 : n.owners || 0, managers: hq ? 0 : n.managers || 0, staff: hq ? 0 : n.staff || 0, team: hq ? team.length : 0,

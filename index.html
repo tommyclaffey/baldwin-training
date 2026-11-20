@@ -4,27 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1E1C1A" />
-    <title>Mise Academy</title>
     <!-- Favicon: Mise's app icon until a store is known; src/lib/favicon.ts swaps in the store's own (Nov 5, Nov 16). -->
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/mise-32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/icons/mise-48.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icons/mise-192.png" />
     <link rel="apple-touch-icon" href="/icons/mise-180.png" />
-    <meta name="description" content="The menu, the bar, wine and service, all in one place. On Mise Academy." />
-    <!-- Link previews (Messages, Slack, Facebook, LinkedIn, X): title, description and the share card from Figma (240:2). -->
+    <!-- Link previews (Messages, Slack, Facebook, LinkedIn, X), Nov 19: the Mise Academy card (Figma 850:1377). The server
+         swaps this block for each address (server/links.mjs): an account's link (miseacademy.app/<account>) gets its own
+         card on Custom Brand, every other address this one. Keep the share:start / share:end markers. -->
+    <!-- share:start -->
+    <title>Mise Academy</title>
+    <meta name="description" content="The menu, the bar, wine and service, all in one place." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mise Academy" />
     <meta property="og:title" content="Mise Academy" />
-    <meta property="og:description" content="The menu, the bar, wine and service, all in one place. On Mise Academy." />
+    <meta property="og:description" content="The menu, the bar, wine and service, all in one place." />
     <meta property="og:url" content="https://www.miseacademy.app/" />
-    <meta property="og:image" content="https://www.miseacademy.app/share.jpg?v=4" />
+    <meta property="og:image" content="https://www.miseacademy.app/img/mise-brand/share-card.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="The Training App, the Mise app: the Baldwin logo and an Old Fashioned." />
+    <meta property="og:image:alt" content="Mise Academy: know the menu cold. A bartender pouring a cocktail." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Mise Academy" />
-    <meta name="twitter:description" content="The menu, the bar, wine and service, all in one place. On Mise Academy." />
-    <meta name="twitter:image" content="https://www.miseacademy.app/share.jpg?v=4" />
+    <meta name="twitter:description" content="The menu, the bar, wine and service, all in one place." />
+    <meta name="twitter:image" content="https://www.miseacademy.app/img/mise-brand/share-card.jpg" />
+    <meta name="twitter:image:alt" content="Mise Academy: know the menu cold. A bartender pouring a cocktail." />
+    <!-- share:end -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Pinyon+Script&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@500&family=Reenie+Beanie&display=swap" rel="stylesheet" />

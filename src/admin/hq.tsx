@@ -11,6 +11,7 @@ import { useSession } from '../lib/session';
 import { ErrorNote, InviteSentCard, Loading } from './ui';
 import { LegalLinks } from '../components/Legal';
 import { LookLogo } from '../components/LookLogo';
+import { CopyLink } from '../components/CopyLink';
 import { MISE_CROP, MISE_ON_LIGHT, THEMES } from '../lib/theme';
 
 /* ------------------------------------------------ types ------------------------------------------------ */
@@ -20,7 +21,7 @@ type Waiting =
   | { type: 'invite'; companyId: number; companyName: string; planName: string; createdAt: string; isNew: boolean; email: string; expiresAt: string; expired: boolean }
   | { type: 'error'; kind: string; path: string | null; message: string; count: number; firstAt: string; lastAt: string };
 type Line = { key: 'snapshot' | 'backup' | 'files' | 'health'; title: string; note: string; at: string | null; ok: boolean; failed?: boolean };
-type Company = { id: number; name: string; hq: boolean; createdAt: string | null; isNew: boolean; plan: string; planName: string; lookName: string; stores: string[];
+type Company = { id: number; name: string; hq: boolean; link: string | null; createdAt: string | null; isNew: boolean; plan: string; planName: string; lookName: string; stores: string[];
   owners: number; managers: number; staff: number; team: number; storage: number; lastActiveAt: string | null; workingHere: boolean;
   ownerInvite: { email: string; expiresAt: string; expired: boolean } | null; deletion: { id: number; ready: boolean; endsAt: string } | null };
 type Demo = { kind: string; name: string; path: string; lookName: string; open: number; lastActiveAt: string | null };
@@ -470,6 +471,7 @@ function CompaniesCard({ data, act, workHere, openPicker }: { data: Home; act: A
               <tr key={c.id} id={`company-${c.id}`}>
                 <td data-cell="name"><span className="hq-co-name"><strong>{c.name}</strong>{c.isNew && <span className="hq-pill olive">New</span>}</span>
                   <small>{c.stores.join(' · ')}</small>
+                  {c.link && <small><CopyLink link={c.link} name={c.name} /></small>}
                   {c.deletion && (c.deletion.ready ? <small className="hq-alert">Deletion ready · waiting on you</small> : <small className="hq-wait">Deletion asked · ready {shortDay(c.deletion.endsAt)}</small>)}</td>
                 <td data-label="Plan and Look"><span className={'hq-pill' + (c.plan === 'custom-brand' ? ' fig' : '')}>{c.planName}</span><small>{c.lookName} look</small></td>
                 <td data-label="Stores"><b>{c.stores.length}</b></td>
