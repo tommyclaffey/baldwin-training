@@ -30,8 +30,10 @@ const viewers = [];
 // staff member in stores 2 and 3. The extra people exist only in this temp copy.
 const staff1 = db.prepare("SELECT id FROM users WHERE company_id = 1 AND role = 'staff' AND store_id = 1 AND deleted_at IS NULL AND jobs IS NOT NULL ORDER BY id LIMIT 1").get()
   || db.prepare("SELECT id FROM users WHERE company_id = 1 AND role = 'staff' AND store_id = 1 AND deleted_at IS NULL ORDER BY id LIMIT 1").get();
-const mgr1 = db.prepare("SELECT id FROM users WHERE company_id = 1 AND role = 'manager' AND deleted_at IS NULL ORDER BY id LIMIT 1").get();
 const owner = addUser(1, 'Snapshot Owner', 'owner', null);
+// (Nov 20: BRG's only manager became its owner on Nov 16, so a test manager in store 1 stands in when there's none)
+const mgr1 = db.prepare("SELECT id FROM users WHERE company_id = 1 AND role = 'manager' AND deleted_at IS NULL ORDER BY id LIMIT 1").get()
+  || { id: addUser(1, 'Snapshot Manager', 'manager', 1) };
 const staff2 = addUser(1, 'Snapshot Staff Two', 'staff', 2, '["server"]');
 const staff3 = addUser(1, 'Snapshot Staff Three', 'staff', 3, '["bartender"]');
 sess(staff1.id, 'v-s1-staff'); viewers.push(['s1-staff', 'v-s1-staff']);
@@ -56,6 +58,15 @@ const server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: {
 let log = ''; server.stdout.on('data', (d) => (log += d)); server.stderr.on('data', (d) => (log += d));
 const base = `http://localhost:${PORT}`;
 for (let i = 0; i < 200; i++) { try { await fetch(base + '/api/health'); break; } catch { await new Promise((r) => setTimeout(r, 150)); } }
+// --demos (Nov 20): + both demos (The Baldwin's /demo/brg and Fig & Fire /demo/mise), as their staff and manager, started
+// the way a visitor starts one. A demo copy is made fresh each run, so its own ids and dates can differ between runs.
+if (process.argv.includes('--demos')) {
+  for (const [demo, role, name] of [['baldwin', 'employee', 'brg-demo-staff'], ['baldwin', 'manager', 'brg-demo-manager'], ['mise', 'employee', 'mise-demo-staff'], ['mise', 'manager', 'mise-demo-manager']]) {
+    const r = await fetch(base + '/api/demo/start', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ demo, role }) });
+    const tok = /bt_session=([^;]+)/.exec(r.headers.get('set-cookie') || '')?.[1];
+    if (tok) viewers.push([name, tok]); else console.error('demo start failed', demo, role, r.status);
+  }
+}
 const get = async (token, p) => { const r = await fetch(base + p, { headers: { cookie: `bt_session=${token}` } }); const txt = await r.text(); let j; try { j = JSON.parse(txt); } catch { j = txt; } return { status: r.status, body: j }; };
 fs.rmSync(outDir, { recursive: true, force: true });
 let pages = 0;

@@ -75,8 +75,47 @@ const LINES = new Map(Object.entries({
   '“Did you save room for dessert? The Date Cake is our favorite, and it comes with ice cream.”': '“Did you save room for dessert? Let me tell you what we have tonight.”',
   'Date Cake': 'Dessert',
   '“We’d love to see you again. If you haven’t been to J.Baldwin’s or Testa Barra, they’re part of our family too.”': null,
-  '“Ask about the Wine Club at Testa Barra. Members get hand-selected bottles and tastings.”': null,
+  // Nov 20 (Tommy: "Go for it", Figma 09 · Idea Board, section 45, notes card 888:4693): the neutral foundation book's new
+  // lines, word for word, where this list used to leave a line out or keep one only The Baldwin's group can say.
+  '“Ask about the Wine Club at Testa Barra. Members get hand-selected bottles and tastings.”': '“I’m so glad. It’s on our list, so I’ll write the name down for you to take home.”',
+  'Mention the sister restaurants': 'Mention our other locations, if your group has them',
+  'Mention the Wine Club or Supper Club when it fits': 'Mention anything coming up: events, specials or a club, if you have one',
+  'The family': 'Who we are',
+  'Tell guests about the family': 'Tell guests a little about the restaurant',
+  'From the Food Book': 'From the menu',
+  'From the Wine Book and Drink Book': 'From our wine and drink lists',
+  'From the Wine Book': 'From our wine list',
+  // The foundation book itself (content/templates) is drawn with Fig & Fire, the Mise demo, as its restaurant: its name
+  // becomes this store's.
+  '“Welcome to Fig & Fire. Have you been in with us before?”': '“Welcome to {store}. Have you been in with us before?”',
+  '“Good evening, welcome to Fig & Fire! I’m [your name], and I’ll be taking care of you tonight.”': '“Good evening, welcome to {store}! I’m [your name], and I’ll be taking care of you tonight.”',
 }));
+/** The foundation book's lines that name its sample restaurant, filled with this store's name (any store reading the
+ *  foundation book's own version of a page: a store without an account folder, or with one that doesn't have that page). */
+export function storeLines(page, store) {
+  for (const t of findAll(page.main || {}, (n) => n.t === 'T' && typeof n.s === 'string' && n.s.includes(SAMPLE_STORE) && LINES.has(n.s))) {
+    const text = LINES.get(t.s).replace('{store}', store?.name || 'our restaurant');
+    if (t.n === t.s) t.n = text;
+    setText(t, text);
+  }
+  // Slots that hold the sample restaurant's own drinks (the Rye page's house line) are its alone
+  if (store?.name !== SAMPLE_STORE) dropSamples(page.main);
+  return page;
+}
+export const SAMPLE_STORE = 'Fig & Fire';
+/** A line of the foundation book (a search blurb) as this store reads it: the sample restaurant's name becomes the store's,
+ *  and a line naming it that isn't one of the known lines is left out for any other store. */
+export function storeText(s, store) {
+  if (typeof s !== 'string' || !s.includes(SAMPLE_STORE)) return s;
+  if (LINES.has(s)) return LINES.get(s).replace('{store}', store?.name || 'our restaurant');
+  return store?.name === SAMPLE_STORE ? s : undefined;
+}
+/** Nodes marked `sample` in the foundation book hold Fig & Fire's own menu (Figma section 45: "Fig & Fire sample"). Only
+ *  Fig & Fire shows them; every other store has its own lists or nothing there. */
+function dropSamples(m) { if (m) for (const n of findAll(m, (x) => x !== m && x.sample)) drop(m, n); }
+// Nov 20 (section 45, notes card): the Cabernet page's Bottles to Know names two bottles on neither The Baldwin's list nor
+// Fig & Fire's, in place of Caymus and Silver Oak (both on The Baldwin's list).
+const BRANDS = { 'wine/red/cabernet': { Caymus: 'Chateau Montelena', 'Silver Oak': 'Heitz Cellar' } };
 
 const parentOf = (root, node) => (root.c || []).includes(node) ? root : (root.c || []).reduce((hit, c) => hit || parentOf(c, node), null);
 const drop = (root, node) => { const p = parentOf(root, node); if (p) p.c = p.c.filter((c) => c !== node); };
@@ -105,7 +144,7 @@ export function snapshotShelves(page) {
 }
 
 /** After filling: Baldwin's cards, sections, names and lines come out; the scripts read for this store. */
-export function genericize(page, slug, { store, statics, terms, has, topBar = false, ours = null }) {
+export function genericize(page, slug, { store, statics, terms, has, topBar = false, ours = null, sample = topBar === true }) {
   const m = page.main;
   // Nov 17: a store's own words (its menu, ours) are never taken for The Baldwin's: "BBQ Short Rib – Round" isn't The
   // Baldwin's Short Rib, and J.Baldwin's own lines name J.Baldwin's.
@@ -125,6 +164,15 @@ export function genericize(page, slug, { store, statics, terms, has, topBar = fa
     const key = find(m, (n) => n.n === 'Key' && (n.c || []).some(startsWith('Key · '))); if (key) drop(m, key);
   }
   if (slug === 'the-bar/beer-and-draft' && !has.beer) m.c = m.c.filter((c) => !['Tap wall', 'Section · Tap list', 'Section · In bottles'].includes(c.n));
+  if (!sample) dropSamples(m);
+  for (const box of BRANDS[slug] ? findAll(m, (n) => n.n === 'Brands to know') : []) {
+    for (const b of findAll(box, (n) => typeof n.n === 'string' && n.n.startsWith('Brand · ') && BRANDS[slug][n.n.slice(8)])) {
+      const to = BRANDS[slug][b.n.slice(8)]; b.n = 'Brand · ' + to;
+      for (const t of findAll(b, (n) => n.t === 'T')) { setText(t, to); t.n = to; }
+    }
+    // the other bottles are drawn from the first one, so their text layers keep its name
+    for (const t of findAll(box, (n) => n.t === 'T' && BRANDS[slug][n.n])) t.n = t.s;
+  }
   // Scripts and notes: rewrite the known lines, then take out any other mention of Baldwin's own names.
   for (const t of findAll(m, (n) => n.t === 'T')) {
     if (LINES.has(t.s)) {

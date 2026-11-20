@@ -15,7 +15,7 @@ import { passFor, questionPool } from './quizgen.mjs';
 import { clone, cocktailPage, dishPage, photoToCome, find, findAll, byName, startsWith, repeat, setText, texts } from './templates.mjs';
 import { classicPage, classicOrder, classicTable } from './classic.mjs';
 import { COLLECTIONS, COURSES, SHARED, ALLERGENS, listEntries, getEntry, wineDescription } from './cms.mjs';
-import { classify, emptyPage, baldwinTerms, snapshotShelves, genericize, indexText, dropLine } from './generic.mjs';
+import { classify, emptyPage, baldwinTerms, snapshotShelves, genericize, indexText, dropLine, storeLines, storeText } from './generic.mjs';
 import { wineKind, wineVideos, learnMore, wineCards, wineFollyLink } from './wine.mjs';
 import { fillShelf, fillBeerPage, fillBeerStyle, shelfSearchText } from './shelf.mjs';
 import { fillBackBar, bottlePage, SPIRIT_FILLER } from './backbar.mjs';
@@ -29,7 +29,7 @@ import { fillSample } from './sample.mjs';
 import { storeCache, cached, EVERY_STORE } from './cache.mjs';
 import { asVariant, isBrgCompany, variantKey, accountOf } from './variant.mjs';
 import { demoDish, demoMentions } from './demopairs.mjs';
-import { accountFor, accountPage, accountIndex } from './account.mjs';
+import { accountFor, accountPage, accountIndex, bookPages } from './account.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CONTENT = fs.existsSync(path.join(ROOT, 'dist/content/index.json')) ? path.join(ROOT, 'dist/content') : path.join(ROOT, 'public/content');
@@ -48,8 +48,15 @@ function accountPageFor(file) {
   if (!a) return null;
   const page = accountPage(a.account, file);
   if (!page) return null;
-  if (a.demoCopy) { const slug = baseIndex().find((x) => x.file === file)?.slug; if (slug == null || classify(slug) !== 'own') return null; }
+  if (a.demoCopy && !demoReads(a.account, file)) return null;
   return page;
+}
+/** A demo copy reads its account's own pages (Our Story, Floor Plan) and its versions of the foundation book's pages
+ *  (Nov 20: so The Baldwin's demo keeps The Baldwin's service scripts), never its bookings or offers. */
+function demoReads(account, file) {
+  if (bookPages(account).has(file)) return true;
+  const slug = baseIndex().find((x) => x.file === file)?.slug;
+  return slug != null && classify(slug) === 'own';
 }
 /** The shared template from the build (public/content/pages), whoever is reading. */
 function repoPage(file) {
@@ -721,6 +728,9 @@ function assembleRaw(db, file) {
   let page = basePage(file);
   if (!page) return null;
   const slug = baseIndex().find((x) => x.file === file)?.slug ?? '';
+  // Nov 20: the foundation book is drawn with Fig & Fire as its restaurant. A store reading it without the scrub (a designed
+  // book with no account version of the page: a fresh install, the tests) gets its own name in the scripts.
+  if (!isGeneric() && !accountPageFor(file)) storeLines(page, SCOPE.row);
   // wine regions and countries in the approved layout (Nov 1, Figma 377:2): photo, what they make, style dots, profile
   // REGION_V2: on (Nov 2, research in). REGION_V2=0 switches back to the old layout.
   if (process.env.REGION_V2 !== '0' && regionData(slug) && wineKind(slug)) { const v2 = regionPage(basePage(regionData(slug).isGrape ? '111-4' : '377-2'), page, slug, { video: wineVideos(db).get(slug) }); if (v2) page = v2; }
@@ -949,7 +959,7 @@ const libs = new Map();
 function libraryEntry(db, e, terms = baldwinNames(db)) {
   if (classify(e.slug) === 'own') return indexText(e);
   const lib = libraryText(db, terms);
-  return { ...e, text: lib.text.get(e.slug) || '', blurb: terms.test(e.blurb || '') ? undefined : e.blurb };
+  return { ...e, text: lib.text.get(e.slug) || '', blurb: terms.test(e.blurb || '') ? undefined : storeText(e.blurb, SCOPE.row) };
 }
 function libraryText(db, terms) {
   // (a demo copy reads only its account's own pages, never shared ones, so it shares the templates' text)
@@ -1019,7 +1029,7 @@ function buildIndex(db) {
   const later = (e) => sample && classify(e.slug) === 'own' && e.slug !== 'video-library';
   // Nov 16: the account's own pages (server/account.mjs) are searched by their own words
   const acct = SCOPE.account, acctIdx = acct ? accountIndex(acct.account) : null;
-  const fromAccount = (e) => { const a = acctIdx?.get(e.file); return a && !(acct.demoCopy && classify(e.slug) !== 'own') ? { ...e, text: a.text, thumb: a.thumb, blurb: a.blurb } : e; };
+  const fromAccount = (e) => { const a = acctIdx?.get(e.file); return a && !(acct.demoCopy && !demoReads(acct.account, e.file)) ? { ...e, text: a.text, thumb: a.thumb, blurb: a.blurb } : e; };
   const base = baseIndex().filter((e) => !PREFIXES.some((p) => e.slug.startsWith(p))).map(fromAccount)
     .map((e) => (later(e) ? { ...e, text: '', thumb: undefined, blurb: undefined, later: e } : sample && classify(e.slug) === 'own' ? { ...e, text: '', thumb: undefined, blurb: undefined } : isGeneric() ? libraryEntry(db, e, terms) : e))
     .map((e) => (sample ? { ...e, text: (e.text || '').replace(new RegExp(THEIRS.source, 'gi'), ''), blurb: e.blurb && GROUP.test(e.blurb) ? undefined : e.blurb } : e))

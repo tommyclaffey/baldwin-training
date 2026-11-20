@@ -1,4 +1,5 @@
-// Sweep a snapshot's fake-company viewers for anything of The Baldwin group's.
+// Sweep a snapshot's fake-company viewers (and, with book-snapshot --demos, the Fig & Fire demo's) for anything of The
+// Baldwin group's.
 import fs from 'node:fs';
 import path from 'node:path';
 const dir = process.argv[2];
@@ -9,7 +10,7 @@ const walk = (v, where, file) => {
   if (Array.isArray(v)) return v.forEach((x, i) => walk(x, where + '[' + i + ']', file));
   if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) walk(x, where + '.' + k, file);
 };
-for (const viewer of fs.readdirSync(dir).filter((v) => v.startsWith('fake'))) {
+for (const viewer of fs.readdirSync(dir).filter((v) => v.startsWith('fake') || v.startsWith('mise-demo'))) {
   const vd = path.join(dir, viewer);
   for (const f of ['me.json', 'index.json', 'counts.json']) walk(JSON.parse(fs.readFileSync(path.join(vd, f))), '', viewer + '/' + f);
   for (const f of fs.readdirSync(path.join(vd, 'page'))) walk(JSON.parse(fs.readFileSync(path.join(vd, 'page', f))), '', viewer + '/page/' + f);

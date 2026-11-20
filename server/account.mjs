@@ -8,6 +8,9 @@
 //     pages/<file>.json        the account's own version of a designed page (Our Story, Floor Plan, the Court sittings it
 //                              hosts…), same shape as public/content/pages/<file>.json; page.planTables for a floor plan
 //     pages/index.json         the search index entries for those pages (same shape as public/content/index.json)
+//                              account.json "book": [files]: its own versions of pages the foundation book draws neutral
+//                              (Nov 20: The Baldwin's service steps, Safety, templates, Cabernet, Rye), read by its demo
+//                              copies too
 //     programs/<key>/          the account's own version of a program's lessons (server/manual.mjs)
 //     public/img/…, public/icons/…   files its pages and look point at; served at /img/… and /icons/… (server/index.mjs)
 //
@@ -16,8 +19,8 @@
 // scripts/account-content/copy-to-volume.mjs before a deploy that needs it.
 //
 // Which account's folder a company reads: its own; a demo copy reads the account its demo shows off (The Baldwin's demo reads
-// Baldwin Restaurant Group's), and only for the pages that are the restaurant's own (Our Story, Floor Plan), never its
-// bookings or offers.
+// Baldwin Restaurant Group's), and only for the pages that are the restaurant's own (Our Story, Floor Plan) and its versions
+// of the foundation book's pages (account.json "book"), never its bookings or offers.
 import fs from 'node:fs';
 import path from 'node:path';
 import { DATA_DIR } from './db.mjs';
@@ -58,6 +61,9 @@ export function accountFor(companyId) {
   companyCache.set(k, out);
   return out;
 }
+
+/** The account's own versions of the foundation book's pages (account.json "book"), as a Set of files. */
+export const bookPages = (id) => new Set(Array.isArray(manifest(id)?.book) ? manifest(id).book.filter((f) => /^[0-9]+-[0-9]+$/.test(f)) : []);
 
 /* ---- designed pages and their search entries ---- */
 const pages = new Map();
