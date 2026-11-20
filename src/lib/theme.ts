@@ -809,12 +809,16 @@ export function cropFill([x, y, w, h, W, H]: Crop) {
   return { bs: `${(W / w) * 100}% ${(H / h) * 100}%`, bp: `${pos(x, w, W)}% ${pos(y, h, H)}%` };
 }
 /** The sidebar in the brand: its logo where the drawn one is, the same paint, and its active-item style. */
+const LOGO_INSET = 12; // = the nav items' icon inset
 export function themeSidebar(node: FNode, th: Theme = theme()): FNode {
   const n = structuredClone(node);
   const logo = th.logo;
   const swapLogo = (x: FNode): FNode => {
     // (the slot takes the logo's own size, so a cropped file keeps its artwork's proportions)
-    if (logo && x.n === 'Logo') return { ...x, pd: [0, 0, 0, 0], ...(logo.crop ? { w: logo.w, h: logo.h } : {}), c: [{ t: 'R', n: 'IMG/' + logo.alt + ' lockup', alt: logo.alt, w: logo.w, h: logo.h, sh: 'F', sv: 'F', f: [logo.crop ? { img: logo.src, m: 'FIT', ...cropFill(logo.crop) } : { img: logo.src, m: 'FIT' }] } as FNode] };
+    // Nov 20 (Tommy's screenshot): the mark's left edge lines up with the nav icons (12 px in from the nav items), as the brand guide draws it
+    if (logo && x.n === 'Logo') return { ...x, pd: [0, 0, 0, LOGO_INSET], ...(logo.crop ? { w: logo.w + LOGO_INSET, h: logo.h } : {}), c: [{ t: 'R', n: 'IMG/' + logo.alt + ' lockup', alt: logo.alt, w: logo.w, h: logo.h, sh: 'F', sv: 'F', f: [logo.crop ? { img: logo.src, m: 'FIT', ...cropFill(logo.crop) } : { img: logo.src, m: 'FIT' }] } as FNode] };
+    // and the demo line under it lines up with the mark, the nav icons and the section labels
+    if (logo && x.n === 'Demo pill') return { ...x, pd: [0, 0, 0, LOGO_INSET] };
     // the drawn slot holds the look's own logo, read out by its name (photos without an `alt` are skipped, FigmaNode)
     if (x.n === 'Logo') return { ...x, c: x.c?.map((c) => (c.t === 'R' && th.drawnLogo ? drawnLogoNode(c, th.drawnLogo) : c)) };
     return x.c ? { ...x, c: x.c.map(swapLogo) } : x;
