@@ -35,6 +35,7 @@ import { writeFilesBackup, bytesOf, roomLeft, fullMessage, storageCapBytes, medi
 import * as captions from './captions.mjs';
 import { migrateImports, importRoutes } from './menuimport.mjs';
 import { initAccounts, accountIds, publicFile } from './account.mjs';
+import { initLawState } from './lawstate.mjs';
 import { accountByLink, accountHtml, miseHtml, linkOf, isReserved, fixAccountSlugs, DEMO_LINKS, SLUG } from './links.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -46,6 +47,7 @@ initAccounts(db); // Nov 16: account content on the volume (server/account.mjs),
 { const ids = accountIds(); console.log(ids.length ? `Account content: ${ids.map((id) => `company ${id}`).join(', ')}` : 'Account content: none on this volume (every company reads the shared templates)'); }
 initOps(db);
 initCompanyData(db); // Nov 14: data export and delete (company_deletions)
+initLawState(db); // Nov 21: companies.state, for the Michigan-law note on law lessons (server/lawstate.mjs)
 LoginLimiter.useDb(db); // Nov 10: lockouts survive a redeploy
 captions.migrateCaptions(db); // Nov 14: media.captions (server/captions.mjs)
 seed(db);

@@ -5,6 +5,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { clone, find, findAll, byName, texts, setText, remove } from './templates.mjs';
+import { variant } from './variant.mjs';
+import { isMichiganLaw, lawNote } from './lawstate.mjs';
 import { chapters, chapters2, chaptersOf, chaptersForLevel, levelChapters, chapterBase, GUIDE, LEVELS, levelFor, isProgram, programDef, progLevel, levelOfChapter, levelForChapter, quizHref, shuffleSeeded, blockBuilder, countWord } from './manual.mjs';
 
 export const HUB = 'sommelier-program';
@@ -161,6 +163,19 @@ export function courtCard(ch, si, lvl) {
     { t: 'F', n: 'Rule', w: 4, h: 40, sh: 'F', sv: 'L', f: [{ c: '#C49A6C' }] }, body] };
 }
 
+/** The Michigan-law note (Nov 21): same card shape as the Court card, a copper rule and a dark "MI" badge. */
+export function lawCard(ln) {
+  const t = (x, o) => ({ ...txt(x, o), ar: 'H', sh: 'L' });
+  const body = { t: 'F', n: 'Body', lm: 'V', gap: 6, pd: [18, 24, 18, 20], sh: 'L', sv: 'H', c: [
+    { t: 'F', n: 'Head', lm: 'H', gap: 12, ca: 'C', sh: 'L', sv: 'H', c: [
+      { t: 'F', n: 'Badge', w: 30, h: 30, r: 15, sh: 'F', sv: 'F', f: [{ c: '#1E1C1A' }], lm: 'H', pa: 'C', ca: 'C', c: [txt('MI', { z: 11, c: '#F2EEE7', fs: 'ExtraBold' })] },
+      { t: 'F', n: 'Titles', lm: 'V', gap: 4, sh: 'L', sv: 'H', c: [txt(ln.head, { z: 11, ls: '12%', c: '#8A5A3A' }), { ...t(ln.text, { z: 15, c: '#1E1C1A', fs: 'Medium' }), n: 'Law note', lh: '140%' }] },
+    ] },
+  ] };
+  return { t: 'F', n: 'Law · Example: Michigan law', lm: 'H', r: 18, clip: 1, f: [{ c: '#EFE7DA' }], sh: 'L', sv: 'H', c: [
+    { t: 'F', n: 'Rule', w: 4, h: 40, sh: 'F', sv: 'L', f: [{ c: '#C49A6C' }] }, body] };
+}
+
 /* ---------------- lesson ---------------- */
 /** Cocktail Program Level 1's spirit lessons (Nov 12, Tommy: "focusing on each spirit"): a section with "ours" shows this
  *  store's own drinks and bottles. "house": base spirits whose house cocktails on the menu replace the generic classics in
@@ -219,6 +234,10 @@ export function lessonPage(tpl, chTpl, ch, si, ctx) {
   // outcome, quoted, and the parts of its outline this lesson covers. Figma 423:53.
   const cc = courtCard(ch, si, lvl);
   if (cc && under) { const host = find(main, byName('Lesson')) || main; const at = host.c.indexOf(under); if (at >= 0) host.c.splice(at + 1, 0, cc); }
+
+  // Nov 21 (launch step 5): a section written from Michigan law says so to every company outside Michigan (server/lawstate.mjs)
+  const ln = isMichiganLaw(ch, sec) ? lawNote(variant().state, variant().restaurant) : null;
+  if (ln && under) { const host = find(main, byName('Lesson')) || main; const at = host.c.indexOf(under); if (at >= 0) host.c.splice(at + 1 + (cc ? 1 : 0), 0, lawCard(ln)); }
 
   // key points: cards that scroll sideways
   const kp = find(main, byName('Key points'));
@@ -816,6 +835,13 @@ HUB_COPY.hosp = {
     ]],
   ]],
 };
+/** Nov 21: outside Michigan, a shelf's Michigan law docs say they're Michigan's (pill "MICHIGAN LAW", "Example: …" line). */
+function labelLaw([script, sub, groups]) {
+  const ln = lawNote(variant().state, variant().restaurant);
+  if (!ln) return [script, sub, groups];
+  return [script, sub, groups.map(([label, dark, docs]) => [label, dark, docs.map(([title, line, kind, url]) => (kind === 'LAW' && /Michigan/.test(title)
+    ? [title, `Example: Michigan law. ${line} Your state’s rules may differ.`, 'MICHIGAN LAW', url] : [title, line, kind, url]))])];
+}
 function sourceShelf([script, sub, groups]) {
   const W = 1080;
   // three to a row; a group of two (Hospitality) shares the row between them
@@ -927,7 +953,7 @@ export function programHub(page, ctx) {
     });
   } else if (sh) remove(main, sh);
   // our sources, after the videos (or the levels)
-  { const at = main.c.findIndex((x) => x.n === 'Start here · videos' || x.n === 'Your path'); const after = main.c.findIndex((x) => x.n === 'Start here · videos'); main.c.splice((after >= 0 ? after : at) + 1, 0, sourceShelf(H.shelf)); }
+  { const at = main.c.findIndex((x) => x.n === 'Start here · videos' || x.n === 'Your path'); const after = main.c.findIndex((x) => x.n === 'Start here · videos'); main.c.splice((after >= 0 ? after : at) + 1, 0, sourceShelf(labelLaw(H.shelf))); }
   // no Sommelier names left in layer names either
   for (const n of findAll(main, (x) => x.t === 'T' && /Court|Testa Barra|Sommelier/.test(x.n || ''))) n.n = String(n.s).slice(0, 40);
   // the dark band: each level's final, or its certificate
