@@ -226,7 +226,7 @@ function TeamCard({ data, reload }: { data: Home; reload: () => Promise<unknown>
             </button>
             {isOpen && (
               <div className="mh-actions">
-                <button type="button" className="mg-btn dark" disabled={!!busy} onClick={() => void remind(p)}>{busy === 'r' + p.id ? 'Sending…' : 'Send a Reminder'}</button>
+                <button type="button" className="mg-btn dark primary" disabled={!!busy} onClick={() => void remind(p)}>{busy === 'r' + p.id ? 'Sending…' : 'Send a Reminder'}</button>
                 {p.late > 0 && <button type="button" className="mg-btn" disabled={!!busy} onClick={() => void more(p)}>{busy === 'm' + p.id ? 'Saving…' : 'Give More Time'}</button>}
                 <Link className="mg-link" to={`/admin/people?id=${p.id}`}>Open Profile →</Link>
                 <Feedback msg={msg} at={'r' + p.id} /><Feedback msg={msg} at={'m' + p.id} />
@@ -465,7 +465,7 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
           </div>
         </div>
         <div className="pp-head-btns">
-          <button type="button" className="mg-btn dark" disabled={!!busy || !p.jobs.length} onClick={() => void act('remind', '/api/path/remind', {}, `Reminder sent. ${first} sees it on My Path next time they open the app.`)}>{busy === 'remind' ? 'Sending…' : 'Send a Reminder'}</button>
+          <button type="button" className="mg-btn dark primary" disabled={!!busy || !p.jobs.length} onClick={() => void act('remind', '/api/path/remind', {}, `Reminder sent. ${first} sees it on My Path next time they open the app.`)}>{busy === 'remind' ? 'Sending…' : 'Send a Reminder'}</button>
           {/* Send to Team: their progress as a card, to another manager (managers only; server/chat.mjs). */}
           {hasChat(user) && <SendToTeamButton item={{ type: 'person', id: p.id }} className="mg-btn" />}
           <div className="pp-more">

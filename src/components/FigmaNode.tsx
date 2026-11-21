@@ -51,6 +51,8 @@ export type FNode = {
   gut?: number;
   /** Edit Mode (server/editmode.mjs): a field on this node, a card holding fields, a part shown only while editing. */
   ed?: EdBind; edc?: 1; eo?: 1; edk?: 1;
+  /** Nov 21 (Mise A2): the screen's one main action, painted as the look's primary button (lib/theme.ts markPrimary). */
+  pri?: 1;
 };
 
 const TBL_ROLE = { table: 'table', row: 'row', ch: 'columnheader', rh: 'rowheader', cell: 'cell' } as const;
@@ -550,6 +552,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
 
   if (m?.cls && live) { const c = m.cls[1][String(live.get(m.cls[0], ''))]; if (c) cls.push(c); }
   if (ctl) cls.push('is-ctl');
+  if (node.pri) cls.push('is-primary');
   // Floor Plan: the area card holding the table someone looked up.
   const table = String(live?.get('table', '') || '');
   if (m?.range && table && Number(table) >= m.range[0] && Number(table) <= m.range[1] && (m.range[0] < 100) === (Number(table) < 100)) cls.push('area-hit');

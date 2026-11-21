@@ -2924,7 +2924,7 @@ body:has(.admin) .tcp { top: 0; } /* the admin has no top bar */
 /* ---- the toast (688:1469) ---- */
 .chat-toast { position: fixed; right: 24px; bottom: 24px; z-index: 96; width: 380px; max-width: calc(100vw - 24px); box-sizing: border-box; display: flex; gap: 12px; align-items: flex-start; padding: 14px 12px 14px 16px;
   border-radius: 16px; background: #1E1C1A; color: #F2EEE7; box-shadow: 0 14px 34px rgba(0,0,0,.28); font-family: 'Archivo', sans-serif; animation: chat-toast-in .22s ease-out; }
-.brand-mise .chat-toast { background: #121110; color: #EDE6DA; }
+.brand-mise .chat-toast { background: #2E2622; color: #EDE6DA; } /* Nov 21 (A2): the panel */
 @keyframes chat-toast-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .chat-toast { animation: none; } }
 .chat-toast .tc-av { flex: none; display: inline-grid; place-items: center; border-radius: 999px; background: var(--tint); color: var(--ink); font-weight: 700; }
@@ -3009,7 +3009,7 @@ body.tcp-open .chat-toast { display: none; }
 .has-chat > .item-chat, .has-chat > .row-tools > .item-chat, .pp-row-wrap > .item-chat { width: 32px !important; height: 32px !important; min-width: 0 !important; left: auto !important; bottom: auto !important; margin: 0 !important; flex: none !important; grid-column: auto !important; grid-row: auto !important; }
 /* ── Mise skin (Nov 10, branch mise-skin): only when <html class="brand-mise"> (`?brand=mise`). The Baldwin is untouched. ── */
 .brand-mise body, .brand-mise .content { background: #EDE6DA; }
-.brand-mise .mobile-bar { background: #121110; }
+.brand-mise .mobile-bar { background: #2E2622; } /* Nov 21 (A2): the phone bar is the panel, as the sidebar */
 .brand-mise .mobile-brand .demo-pill { background: rgba(237,230,218,.14); color: #EDE6DA; }
 /* ── The cinematic hero, every brand (Nov 12, src/lib/theme.ts; Figma 555:586, 555:388). Watch = dark, read = light: the photo
    bleeds in from the right and fades into the brand's dark panel (--c-inverse: The Baldwin's espresso, Mise's Char).
@@ -3034,11 +3034,11 @@ body.tcp-open .chat-toast { display: none; }
 /* ── The Mise demo (Nov 11, /demo/mise): the picker, demo bar, welcome card and tour in Mise's look. Light first, one red
    (deep fig #8E2A26), Char for main buttons, DM Serif Display only from 40 px up (titles in its italic, Nov 18), DM Mono labels.
    The Baldwin's demo is untouched. ── */
-.demo-pick.mise { background: #121110; color: #EDE6DA; }
+.demo-pick.mise { background: #2E2622; color: #EDE6DA; } /* Nov 21 (A2): the panel */
 .demo-pick.mise .demo-brand img { height: 64px; width: auto; }
-.demo-pick.mise .demo-line { color: #9A928A; }
+.demo-pick.mise .demo-line { color: #A8A097; }
 .demo-pick.mise .demo-pill, .brand-mise .mobile-brand .demo-pill, .brand-mise .admin-demo .demo-pill { background: rgba(142, 42, 38, .42); color: #F6D3CE; }
-.demo-pick.mise .demo-kicker { margin: 0; font: 500 13px 'DM Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: #9A928A; }
+.demo-pick.mise .demo-kicker { margin: 0; font: 500 13px 'DM Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: #A8A097; }
 .demo-pick.mise h1 { font: italic 400 clamp(44px, 7vw, 64px)/1 'DM Serif Display', Georgia, serif; letter-spacing: -.005em; }
 .demo-pick.mise .demo-sub { color: #D9D4CB; }
 .demo-pick.mise .demo-role { background: #FBF8F2; color: #121110; border-radius: 16px; }
@@ -3046,9 +3046,10 @@ body.tcp-open .chat-toast { display: none; }
 .demo-pick.mise .demo-role h2 { font: 600 22px/1.25 'Archivo', sans-serif; letter-spacing: -.01em; }
 .demo-pick.mise .demo-role p { color: #4A443E; }
 .demo-pick.mise .demo-role button { background: #121110; color: #EDE6DA; border-radius: 10px; }
-.demo-pick.mise .demo-role.lead button { background: #8E2A26; color: #FFFFFF; }
+.demo-pick.mise .demo-role.lead button { background: #8E2A26; color: #EDE6DA; } /* A2: the screen's one fig button, Bone label (6.7:1) */
+.demo-pick.mise .demo-role.lead button:active { background: #6E1F1C; }
 .demo-pick.mise .demo-role button:focus-visible, .demo-pick.mise .demo-back:focus-visible { outline: 2px solid #7BA5CB; outline-offset: 2px; }
-.demo-pick.mise .demo-foot { color: #9A928A; }
+.demo-pick.mise .demo-foot { color: #A8A097; }
 .demo-pick.mise .demo-back { color: #EDE6DA; }
 .brand-mise .demo-bar { background: #FBF8F2; color: #121110; border-bottom: 1px solid #D9CFBF; }
 .brand-mise .demo-bar button, .brand-mise .demo-bar-actions a { border-color: #7F776F; color: #121110; border-radius: 10px; }
@@ -3074,11 +3075,11 @@ body.tcp-open .chat-toast { display: none; }
    swapped in the "Mise look beyond the drawn pages" block at the end. */
 .brand-mise { --ink: #121110; --cream: #EDE6DA; --card: #FBF8F2; --line: #D9CFBF; --copper-dk: #8E2A26; --muted: #4A443E; }
 .brand-mise .mp-stage.now .mp-num { background: #8E2A26; color: #FFFFFF; }
-.brand-mise .mp-track span { background: #8E2A26; }
+.brand-mise .mp-track span { background: #3F6E99; } /* Nov 21 (A2): progress is the deep tape blue on light (5.1:1 on Paper) */
 .brand-mise .loader { border-top-color: #8E2A26; }
 .brand-mise .mp-script { font: 500 13px 'DM Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: #4A443E; margin-bottom: 6px; }
 .brand-mise .mp h1 { font: italic 400 64px/1 'DM Serif Display', Georgia, serif; letter-spacing: -.005em; }
-.brand-mise .mp-next { background: #121110; border-color: #121110; color: #EDE6DA; }
+.brand-mise .mp-next { background: #2E2622; border-color: #2E2622; color: #EDE6DA; } /* A2: the panel */
 .brand-mise .mp-next .mp-label, .brand-mise .mp-next p, .brand-mise .mp-next span { color: #D9D4CB !important; }
 .brand-mise .mp-next h2, .brand-mise .mp-next h3, .brand-mise .mp-next strong { color: #EDE6DA; }
 .brand-mise .mp-next .mp-btn.dark, .brand-mise .mp-next .mp-btn { background: #EDE6DA; color: #121110; border-color: #EDE6DA; }
@@ -3095,13 +3096,14 @@ body.tcp-open .chat-toast { display: none; }
    lines become DM Mono labels. Main buttons: Char on light, Bone on dark. Nothing here matches without the class, so The
    Baldwin's look is unchanged. ── */
 .brand-mise {
-  --copper: #8E2A26; --copper-rgb: 142 42 38; --copper-text: #B5ADA3; --on-copper: #FFFFFF;
+  --copper: #8E2A26; --copper-rgb: 142 42 38; --copper-text: #A8A097; --on-copper: #FFFFFF;
   --copper-lt: #D9CFBF; --copper-lt-2: #E4DACB;
   --tint: #F4EFE0; --tint-2: #F1EBDF; --tint-3: #E9E1D3;
   --border: #D9CFBF; --border-2: #CBBFAC; --hair: #E4DCCF;
   --wash: #F4EFE0; --wash-2: #F7F2E8; --wash-3: #F7F2E8; --wash-4: #FBF8F2;
-  --dark-2: #1E1C1A; --dark-3: #26231F; --dark-line: #34302C;
-  --on-dark-muted: #B5ADA3; --on-dark-2: #D9D4CB; --on-dark-3: #D9D4CB; --ink-2: #2A2622;
+  /* Nov 21 (A2): on the warm charcoal panel: raised #3A302B, chip #3D332E, line #4A3F39, muted type #A8A097 */
+  --dark-2: #3A302B; --dark-3: #3D332E; --dark-line: #4A3F39;
+  --on-dark-muted: #A8A097; --on-dark-2: #D9D4CB; --on-dark-3: #D9D4CB; --ink-2: #2A2622;
 }
 /* Headings: Archivo SemiBold below 40 px */
 .brand-mise :is(.modal h2, .admin-page h1, .editor h1, h2.sub, .card h2, .auth-card h1, .rows legend, .page-message h1, .store-home h2,
@@ -3124,16 +3126,16 @@ body.tcp-open .chat-toast { display: none; }
 .brand-mise .tc-got.done { color: var(--copper-text); }
 .brand-mise .mh-ask .mg-av { background: var(--cream); color: var(--ink); }
 /* New certificates: the moment that matters, so a Char card (watch = dark) with Bone type */
-.brand-mise .mh-certs { background: var(--ink-fill, var(--ink)) !important; border-color: var(--ink-fill, var(--ink)) !important; color: var(--cream); }
+.brand-mise .mh-certs { background: #2E2622 !important; border-color: #2E2622 !important; color: var(--cream); } /* A2: the panel */
 .brand-mise .mh-certs .mg-label { color: var(--copper-text); }
 .brand-mise .mh-certs p { color: var(--on-dark-2); }
-.brand-mise .mh-cert { background: var(--dark-3); color: var(--cream); }
+.brand-mise .mh-cert { background: var(--dark-2); color: var(--cream); } /* A2: raised on the panel */
 .brand-mise .mh-cert:hover { background: var(--dark-line); }
 .brand-mise .mh-cert small { color: var(--on-dark-2); }
 .brand-mise .mh-cert .mg-av { background: var(--cream); color: var(--ink); }
 .brand-mise .mh-certs .mg-btn { background: var(--cream); border-color: var(--cream); color: var(--ink); }
-/* "New": olive, white type (5.9:1) */
-.brand-mise .mg-status.new { background: #5B6B2E; color: #FFFFFF; }
+/* "New": the tape blue, ink type (7.3:1; Nov 21, A2: was olive) */
+.brand-mise .mg-status.new { background: #7BA5CB; color: #121110; }
 /* Team Chat: managers' faces in sand, not red */
 .brand-mise .tc-av.mgr { background: var(--copper-lt); color: var(--ink); }
 /* The certificate: serif name and title, a DM Mono line in place of the script */
@@ -3148,7 +3150,43 @@ body.tcp-open .chat-toast { display: none; }
 .brand-mise .cert-band img { width: 16cqw; }
 /* The book's sidebar: the active icon is Bone (Nov 10 rule), counts are white on deep fig */
 .brand-mise .nav-item.is-active .fsvg svg [stroke] { stroke: #EDE6DA; }
-.brand-mise .side [data-name="Nav · Team Chat"] [data-name="Count"] .ftext { color: #FFFFFF !important; }
+.brand-mise .side [data-name="Nav · Team Chat"] [data-name="Count"] { background-color: var(--c-unread) !important; }
+.brand-mise .side [data-name="Nav · Team Chat"] [data-name="Count"] .ftext { color: var(--c-on-unread) !important; }
+
+/* ── Mise colours A2 (Nov 21, Tommy: "A2"; Figma 09 · Idea Board 46, exact values on the "A2 · for code" card 940:1522).
+   The panel (sidebars, phone bar, dark heroes, bands and cards) is a warm charcoal #2E2622, softer than the ink; the
+   ink #121110 stays for type and for every filled button but one; the one main action per screen is solid fig with a
+   Bone label (pressed #6E1F1C); the active nav item is a soft fig tint with a 3 px fig bar flush left; progress and
+   "new" are tape blue. The drawn pages get the same from lib/theme.ts (mise: inverse, control, primary, progress). ── */
+.brand-mise :is(.side, .admin-side, .admin-back, .auth, .auth-logo, .quick-check, .quiz-progress, .mh-band, .tc-pinned, .cert-band, .ack-card) { background-color: var(--c-inverse); }
+.brand-mise .admin-back { box-shadow: 0 -12px 16px -6px var(--c-inverse); }
+/* The active nav item, in the book's sidebar, the admin and HQ: fig at 34% over the panel (#4F2723 solid), a 3 px fig bar
+   flush left, radius 2 left / 9 right; Bone label and icon (10.3:1). Tint 1.2:1 and bar 1.8:1 against the panel are
+   decoration only: the label carries the state. */
+.brand-mise .nav-item.is-active, .brand-mise .admin-side nav a.active, .brand-mise .hq-nav a.active {
+  background-color: var(--nav-active-tint) !important; box-shadow: inset 3px 0 0 var(--nav-active-bar); border-radius: 2px 9px 9px 2px; color: var(--cream); }
+/* The screen's one main action (the coded screens mark it .primary; the drawn ones are .is-primary from lib/theme.ts) */
+.brand-mise :is(.btn, .mg-btn, .mp-btn, .qb-btn, .hq-btn, .quiz-btn).primary:not(:disabled), .brand-mise .si .btn:not(.ghost):not(:disabled) {
+  background: var(--c-primary); border-color: var(--c-primary); color: var(--c-on-primary); }
+.brand-mise :is(.btn, .mg-btn, .mp-btn, .qb-btn, .hq-btn, .quiz-btn).primary:not(:disabled):active, .brand-mise .si .btn:not(.ghost):not(:disabled):active,
+  .brand-mise .is-primary:active { background-color: var(--c-primary-pressed) !important; border-color: var(--c-primary-pressed); }
+.brand-mise .is-primary .fsvg svg [stroke] { stroke: var(--c-on-primary) !important; }
+.brand-mise .is-primary .fsvg svg [fill]:not([fill="none"]) { fill: var(--c-on-primary) !important; }
+/* Progress is tape blue: the deep one on light (5.1:1 on Paper), the light one on the panel (5.7:1) */
+.brand-mise :is(.bar, .tr-bar, .mg-bar, .mp-track) span, .brand-mise .quiz-steps span.done { background: var(--c-progress); }
+/* The certificate: the rule under the name is the deep tape blue (A2 screen 649:2992) */
+.brand-mise .cert-rule { background: #3F6E99; }
+/* The phone bar's Team Chat count is on the tape, like the sidebar's (a mention stays the alert) */
+.brand-mise .menu-count:not(.at) { background: var(--c-unread); color: var(--c-on-unread); }
+/* Team Chat: the new-messages line is the deep tape blue, its NEW tag stays the alert (A2 screen 863:183) */
+.brand-mise .tc-new-line::before { background: #3F6E99; }
+/* Quizzes: the sign-offs ring is progress on the panel */
+.brand-mise .quiz-ring circle + circle { stroke: var(--c-progress-on-dark) !important; }
+/* Other filled buttons are Ink on light, Bone on the panel (Got It on Home's Team Chat card; the toast's main button) */
+.brand-mise .wc-got { background: var(--c-control); color: var(--cream); }
+.brand-mise .chat-toast-btns button.main { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+/* Quick Check on a lesson: its options are raised on the panel */
+.brand-mise .qc-option { background: var(--dark-2); border-color: var(--dark-line); }
 
 /* ---- Edit Mode (Nov 11, Figma 533:274): the edit bar, the sidebar card, and the page's fields ---- */
 .em-icon { display: block; flex: none; }
@@ -3345,10 +3383,10 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 
 /* Edit Mode in the Mise look (Nov 11 release: same Edit Mode for both brands, each in its own look). Char edit bar with
    Bone actions, deep fig for the dashed outlines and the hint, Mise's pills, inputs and labels. The Baldwin's is above. */
-.brand-mise .em-bar { background: #121110; color: #EDE6DA; border-radius: 12px; box-shadow: 0 10px 30px rgba(18,17,16,.22); }
+.brand-mise .em-bar { background: #2E2622; color: #EDE6DA; border-radius: 12px; box-shadow: 0 10px 30px rgba(18,17,16,.22); }
 .brand-mise .em-pen { background: #EDE6DA; }
 .brand-mise .em-copy strong { color: #EDE6DA; }
-.brand-mise .em-copy span, .brand-mise .em-scope > span { color: #A9A199; }
+.brand-mise .em-copy span, .brand-mise .em-scope > span { color: #A8A097; }
 .brand-mise .em-copy .em-error { color: #F6D3CE; }
 .brand-mise .em-btn { border-color: #7F776F; color: #EDE6DA; border-radius: 10px; }
 .brand-mise .em-btn:hover:not(:disabled) { border-color: #EDE6DA; }
@@ -3357,15 +3395,15 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .brand-mise .em-btn.quiet { border-color: transparent; color: #D9D4CB; }
 .brand-mise .em-btn.quiet:hover { border-color: #7F776F; }
 .brand-mise :is(.em-btn, .em-card-btn, .em-toggle):focus-visible { outline-color: #EDE6DA; }
-.brand-mise .em-card { background: #1E1C1A; border-color: #34302C; border-radius: 12px; }
+.brand-mise .em-card { background: #3A302B; border-color: #4A3F39; border-radius: 12px; }
 .brand-mise .em-card.on { border-color: #EDE6DA; }
-.brand-mise .em-card-eyebrow { font-family: 'DM Mono', monospace; font-weight: 500; letter-spacing: .12em; color: #A9A199; }
+.brand-mise .em-card-eyebrow { font-family: 'DM Mono', monospace; font-weight: 500; letter-spacing: .12em; color: #A8A097; }
 .brand-mise .em-card-title { color: #EDE6DA; }
-.brand-mise .em-card-body { color: #A9A199; }
+.brand-mise .em-card-body { color: #A8A097; }
 .brand-mise .em-card-btn { background: #EDE6DA; border-color: #EDE6DA; color: #121110; border-radius: 10px; }
 .brand-mise .em-card-btn:hover { background: #FFFFFF; }
 .brand-mise .em-card.on .em-card-btn { background: transparent; border-color: #7F776F; color: #EDE6DA; }
-.brand-mise .em-toggle { background: #26231F; color: #EDE6DA; }
+.brand-mise .em-toggle { background: #3D332E; color: #EDE6DA; }
 .brand-mise .em-toggle img { background: #EDE6DA; }
 .brand-mise .em-toggle.on { background: #EDE6DA; color: #121110; }
 .brand-mise .ed-text { outline-color: #8E2A26; }
@@ -3406,21 +3444,21 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .brand-mise img[src$="/img/edit/plus.svg"] { content: url(/img/edit/plus-mise.svg); }
 .brand-mise img[src$="/img/edit/chevron.svg"] { content: url(/img/edit/chevron-mise.svg); }
 /* The Training Acknowledgment in the Mise look: Bone on the Char band (fig on Char is too dark to read) */
-.brand-mise .ack-card { background: #121110; color: #EDE6DA; border-radius: 16px; }
+.brand-mise .ack-card { background: #2E2622; color: #EDE6DA; border-radius: 16px; }
 .brand-mise .ack-card h2 { font: 400 40px/1.05 'DM Serif Display', Georgia, serif; text-transform: none; color: #EDE6DA; }
 .brand-mise .ack-kicker { font: 500 13px/1.3 'DM Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: #D9D4CB; }
 .brand-mise .ack-statement { color: #EDE6DA; }
 @media screen and (max-width: 640px) { .brand-mise .ack-card h2 { font-size: 32px; } }
 .brand-mise .ack { color: #EDE6DA; border-top-color: #34302C; }
 .brand-mise .ack-field { font-family: 'DM Mono', monospace; font-weight: 500; color: #D9D4CB; }
-.brand-mise .ack-field input { border-radius: 10px; border-color: #4A443E; background: #1E1C1A; color: #EDE6DA; font-family: 'Archivo', sans-serif; }
+.brand-mise .ack-field input { border-radius: 10px; border-color: #8A8178; background: #3A302B; color: #EDE6DA; font-family: 'Archivo', sans-serif; }
 .brand-mise .ack-field input:focus { outline-color: #EDE6DA; border-color: #EDE6DA; }
 .brand-mise .ack-check input { accent-color: #EDE6DA; }
 .brand-mise .ack-btn { background: #EDE6DA; border-color: #EDE6DA; color: #121110; border-radius: 10px; }
-.brand-mise .ack-btn:disabled { background: #26231F; border-color: #34302C; color: #A9A199; }
+.brand-mise .ack-btn:disabled { background: #3A302B; border-color: #4A3F39; color: #A8A097; }
 .brand-mise :is(.ack-note, .ack-sub) { color: #D9D4CB; }
 /* Mise Edit Mode on a dark panel (the cocktail hero, The Spirit): ash outlines, Bone while typing (fig is too dark on Char) */
-.brand-mise .ed-text.ed-dark, .brand-mise .ed-card.ed-dark { outline-color: #A9A199; }
+.brand-mise .ed-text.ed-dark, .brand-mise .ed-card.ed-dark { outline-color: #A8A097; }
 .brand-mise .ed-text.ed-dark:hover { background-color: rgba(237,230,218,.08); }
 .brand-mise .ed-text.ed-dark:focus-within { outline-color: #EDE6DA; background-color: rgba(237,230,218,.06); }
 .brand-mise .ed-dark .ed-input, .brand-mise .ed-text.ed-dark .ed-input { caret-color: #EDE6DA; }

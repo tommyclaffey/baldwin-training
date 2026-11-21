@@ -85,7 +85,7 @@ export function QuizBuilder({ style, className }: { style: CSSProperties; classN
         </div>
         <div className="qb-buttons">
           {canEdit(user) && <button type="button" className="qb-btn ghost" disabled={!chosen.length || busy} onClick={() => setNaming((v) => !v)}>Save for the Team</button>}
-          <button type="button" className="qb-btn" disabled={!chosen.length || busy} onClick={() => void go()}>{busy ? 'Writing…' : 'Start Quiz'}</button>
+          <button type="button" className="qb-btn primary" disabled={!chosen.length || busy} onClick={() => void go()}>{busy ? 'Writing…' : 'Start Quiz'}</button>
         </div>
       </div>
       {naming && (

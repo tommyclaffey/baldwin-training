@@ -160,7 +160,7 @@ function AskButton({ step: s }: { step: Step }) {
   };
   return (
     <span className="mp-ask">
-      <button type="button" className={'mp-btn' + (asked ? '' : ' dark')} onClick={() => void flip()} disabled={busy} aria-pressed={asked}>
+      <button type="button" className={'mp-btn' + (asked ? '' : ' dark primary')} onClick={() => void flip()} disabled={busy} aria-pressed={asked}>
         {busy ? '…' : asked ? 'Take Back' : s.ask?.declinedAt ? 'Ask Again' : 'Ask for a Sign-Off'}
       </button>
       {err && <small role="alert" className="mp-err">{err}</small>}

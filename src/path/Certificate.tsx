@@ -107,7 +107,7 @@ export function CertificatePage() {
           <h1 id="cp-title">{currentBrand() === 'mise' ? (mine ? 'Your Certificate' : 'Certificate') : mine ? 'YOUR CERTIFICATE' : 'CERTIFICATE'}</h1>
         </div>
         <div className="cp-actions">
-          <button type="button" className="mp-btn dark" onClick={printCert}>Print or Save as PDF</button>
+          <button type="button" className="mp-btn dark primary" onClick={printCert}>Print or Save as PDF</button>
           <button type="button" className="mp-btn cp-full-btn" onClick={() => setFull(true)}>View Full Size</button>
         </div>
       </header>

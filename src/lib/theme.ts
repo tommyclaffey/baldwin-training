@@ -112,8 +112,24 @@ export type Theme = {
    *  overrides under .brand-mise. 'roles' = this look paints them from its roles instead (the `look-roles` class on <html>,
    *  styles.css, and the palette tokens from `legacyTokens`), so a new look needs no CSS of its own. */
   coded: 'baldwin' | 'mise' | 'roles';
-  /** The active sidebar item: the drawn highlight, or a quiet tint of the panel's ink. */
-  activeNav: 'drawn' | 'tint';
+  /** The active sidebar item: the drawn highlight, a quiet tint of the panel's ink, or (Nov 21, Mise A2) a soft accent
+   *  tint with a solid bar flush left (`navActive`). */
+  activeNav: 'drawn' | 'tint' | 'bar';
+  /** Nov 21 (Mise A2, Figma 940:1522): one solid accent button per screen, the screen's main action (`primaryOf`), with
+   *  its pressed shade; every other filled button stays the look's button. Unset: the drawn buttons (every other look). */
+  primary?: { fill: string; ink: string; pressed: string };
+  /** Nov 21 (Mise A2): the active nav item, a tint of `tint` at `tintO` over the panel and a `bar`-coloured 3 px bar. */
+  navActive?: { tint: string; tintO: number; bar: string };
+  /** Nov 21 (Mise A2): progress bars, on light surfaces and on the panel (drawn in the accent). Unset: as drawn. */
+  progress?: { onLight: string; onDark: string };
+  /** Nov 21 (Mise A2): a control drawn in the dark panel's colour on a light surface (a small button, a chip, a step
+   *  number) is filled with this instead, so the panel can be softer than the ink. Unset: the panel colour, as drawn. */
+  control?: string;
+  /** Nov 21 (Mise A2): the sidebar's counts on their chip, and the unread count (Team Chat) on the tape. Unset: as drawn. */
+  sidebarCounts?: { chip: string; unread: string; onUnread: string };
+  /** Nov 21 (Mise A2): "new" tags (Home's What's New: NEW DISH, UPDATED…) are filled in the look's `new` colour, not
+   *  outlined. Unset: as drawn. */
+  newTags?: boolean;
   /** Brand rules that aren't a colour or a face. Mise: text on a shaded photo is always light ink; a video's channel
    *  line is muted, not the accent (deep fig is for things that need attention). */
   photoTextLight: boolean;
@@ -189,17 +205,21 @@ export const THEMES: Record<Brand, Theme> = {
     colors: {
       page: '#EDE6DA', card: '#FBF8F2', wash: '#F4EFE0', line: '#D9CFBF',
       ink: '#121110', inkMuted: '#4A443E', accentText: '#8E2A26',
-      inverse: '#121110', inverseRaised: ['#1E1C1A', '#26231F'], inverseChip: '#34302C', inverseLine: '#34302C',
-      onInverse: '#EDE6DA', onInverseMuted: '#D9D4CB', onInverseLabel: '#9A928A', accentOnDark: '#9A928A',
+      // Nov 21 (A2, Tommy: "A2"; Figma 940:1522): the panel is a warm charcoal, softer than the ink; what sits on it is
+      // raised #3A302B, its chips #3D332E, its lines #4A3F39; labels on it #A8A097 (5.7:1 on the panel, 5.0:1 raised).
+      // The second raised step is the track a progress bar runs on, the panel itself (the A2 card: "on track #2E2622").
+      inverse: '#2E2622', inverseRaised: ['#3A302B', '#2E2622'], inverseChip: '#3D332E', inverseLine: '#4A3F39',
+      onInverse: '#EDE6DA', onInverseMuted: '#D9D4CB', onInverseLabel: '#A8A097', accentOnDark: '#A8A097',
       accent: '#8E2A26', onAccent: '#FFFFFF', danger: '#8E2A26', onDanger: '#FFFFFF',
       edgeStrong: '#121110', edgeMuted: '#4A443E', edgeSoft: '#9A928A', outlineOnDark: '#7F776F',
       button: '#121110', onButton: '#EDE6DA', buttonOnDark: '#EDE6DA', onButtonOnDark: '#121110',
-      new: '#5B6B2E', onNew: '#FFFFFF', tape: '#7BA5CB', onTape: '#121110',
+      // A2: "new" is the tape blue, with ink type (7.3:1); it was olive with white type
+      new: '#7BA5CB', onNew: '#121110', tape: '#7BA5CB', onTape: '#121110',
       // Prep reports (Nov 12): char-grey for used, a lighter fig for wasted (fig is Mise's "needs attention").
       // ΔE 21.0 normal vision, 9.5 protan, both ≥ 3:1 against Paper.
       dataUsed: '#4A443E', dataWasted: '#B8463F',
-      // Focus ring (Nov 12): deep fig with a bone band. Fig is 6.8:1 on Bone and 7.9:1 on Paper but 2.3:1 on Char, where the
-      // bone band is 15.2:1, so one tone passes 3:1 on the sidebar, dark buttons and light cards alike.
+      // Focus ring (Nov 12): deep fig with a bone band. Fig is 6.8:1 on Bone and 7.9:1 on Paper but 1.8:1 on the panel, where
+      // the bone band is 11.9:1 (A2; 15.2:1 on Char), so one tone passes 3:1 on the sidebar, dark buttons and light cards alike.
       focus: '#8E2A26', focusBand: '#EDE6DA',
       accentOnLight: '#8E2A26', onAccentOnLight: '#FFFFFF', // = accent, onAccent
       placeholder: '#E7DECF', // (as drawn, as before)
@@ -219,9 +239,18 @@ export const THEMES: Record<Brand, Theme> = {
     mark: { src: MISE_ON_DARK, alt: 'Mise', barH: 28, crop: MISE_CROP },
     hero: { src: '/img/mise-brand/mise-academy-dark.svg', alt: 'Mise Academy', crop: [0, 25, 263.3, 81, 289, 150] },
     icon: 'mise',
-    demoPill: { tint: '#8E2A26', tintO: .42, ink: '#F6D3CE', muted: '#9A928A' },
+    demoPill: { tint: '#8E2A26', tintO: .42, ink: '#F6D3CE', muted: '#A8A097' }, // A2: the product name #A8A097 (5.7:1)
     coded: 'mise',
-    activeNav: 'tint',
+    // A2: the active item is fig at 34% over the panel (#4F2723 solid; its Bone label 10.3:1) with a 3 px solid fig bar
+    // flush left. Tint 1.2:1 and bar 1.8:1 against the panel are decoration: the label and icon carry the state.
+    activeNav: 'bar',
+    navActive: { tint: '#8E2A26', tintO: .34, bar: '#8E2A26' },
+    // A2: one solid fig button per screen, Bone label (6.7:1), pressed #6E1F1C (9.0:1); other filled buttons stay Ink
+    primary: { fill: '#8E2A26', ink: '#EDE6DA', pressed: '#6E1F1C' },
+    progress: { onLight: '#3F6E99', onDark: '#7BA5CB' }, // 5.1:1 on Paper (track #D9CFBF), 5.7:1 on the panel
+    control: '#121110',
+    sidebarCounts: { chip: '#3D332E', unread: '#7BA5CB', onUnread: '#121110' },
+    newTags: true,
     photoTextLight: true,
     quietVideoCaptions: true,
   },
@@ -355,6 +384,12 @@ export function themeVars(t: Theme): Record<string, string> {
   out['--select-chevron-on-dark'] = chevron(color(t, 'onInverse'));
   for (const r of Object.keys(t.type) as TypeRole[]) out['--font-' + r.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase())] = FONT_CSS[t.type[r].ff] || FONT_CSS.Archivo;
   if (t.coded === 'roles') Object.assign(out, legacyTokens(t));
+  // Nov 21 (Mise A2): the primary button, the active nav item, progress and the unread count (styles.css .brand-mise)
+  if (t.primary) Object.assign(out, { '--c-primary': t.primary.fill, '--c-on-primary': t.primary.ink, '--c-primary-pressed': t.primary.pressed });
+  if (t.navActive) Object.assign(out, { '--nav-active-tint': `rgb(${hexRgb(t.navActive.tint)} / ${t.navActive.tintO})`, '--nav-active-bar': t.navActive.bar });
+  if (t.progress) Object.assign(out, { '--c-progress': t.progress.onLight, '--c-progress-on-dark': t.progress.onDark });
+  if (t.control) out['--c-control'] = t.control;
+  if (t.sidebarCounts) Object.assign(out, { '--c-count-chip': t.sidebarCounts.chip, '--c-unread': t.sidebarCounts.unread, '--c-on-unread': t.sidebarCounts.onUnread });
   return out;
 }
 const hexRgb = (hex: string) => { const n = parseInt(hex.slice(1, 7), 16); return `${(n >> 16) & 255} ${(n >> 8) & 255} ${n & 255}`; };
@@ -379,6 +414,7 @@ export function legacyTokens(t: Theme): Record<string, string> {
   };
 }
 const LEGACY_KEYS = Object.keys(legacyTokens(THEMES.testabarra));
+const A2_KEYS = Object.keys(themeVars(THEMES.mise)).filter((k) => !(k in themeVars(THEMES.baldwin)));
 // The look changed: the class on <html>, the role variables, and a 'brandchange' event (favicon.ts swaps the tab icon on it).
 function apply() {
   if (!inBrowser) return;
@@ -387,6 +423,7 @@ function apply() {
   root.classList.toggle('look-roles', t.coded === 'roles'); // Nov 17: the coded screens painted from the look's roles
   root.dataset.brand = b;
   if (t.coded !== 'roles') for (const k of LEGACY_KEYS) root.style.removeProperty(k); // back to :root (The Baldwin) or .brand-mise
+  for (const k of A2_KEYS) root.style.removeProperty(k); // (a look without them never keeps Mise's)
   for (const [k, v] of Object.entries(themeVars(t))) root.style.setProperty(k, v);
   loadFonts(t);
   window.dispatchEvent(new Event('brandchange'));
@@ -552,6 +589,27 @@ function themeText(th: Theme, t: FNode, bg: string | undefined, drawnBg: string 
   }
 }
 
+/** Nov 21 (Mise A2): a control, not a surface: a button, or something button-sized (a chip, a filter, a step number).
+ *  Cards, bands and heroes drawn in the same dark colour stay the panel. */
+const isControl = (n: FNode) => (n.n || '').startsWith('Button') || ((n.h || 0) <= 48 && (n.w || 0) <= 400);
+
+/** Nov 21 (Mise A2: "solid fig only on the one primary button per screen"): the drawn page's main action, as the A2
+ *  screens choose it (Figma 04 · Mise, 635:54 / 863:182): Home's Start Next Quiz (Your Training), a dish's Sign Off This
+ *  Dish, a cocktail's Open the Spec, a lesson's Next. One per page at most; every other button keeps the look's button. */
+function markPrimary(page: { name?: string }, main: FNode) {
+  const name = page.name || '';
+  const inside = (box: string | ((x: FNode) => boolean), btn: string) => {
+    const holder = find(main, (x) => (typeof box === 'string' ? x.n === box : box(x)) && x.t !== 'T');
+    return holder ? find(holder, (x) => x.n === btn) : null;
+  };
+  let hit: FNode | null = null;
+  if (/^Recipe · /.test(name)) hit = inside('Buttons', 'Button · Sign Off');
+  else if (/^(Classic|Signature) · /.test(name)) hit = find(main, (x) => x.n === 'Button · Open spec');
+  else if (main.c?.some((c) => c.n === 'Player' && c.c?.some((x) => x.n === 'Lesson'))) hit = inside('Player', 'Button · Next');
+  else hit = inside('Your Training', 'Button · Continue');
+  if (hit) hit.pri = 1;
+}
+
 /** Walks a page and paints it in the brand: every drawn colour by its role, every text by its type role. */
 function walk(th: Theme, n: FNode, bg: string | undefined, drawnBg: string | undefined, inPill: boolean, ctx: Ctx = { title: null, card: null }): FNode | null {
   if (n.t === 'T' && n.ff === 'Pinyon Script' && th.accentLine === 'tape') {
@@ -566,7 +624,30 @@ function walk(th: Theme, n: FNode, bg: string | undefined, drawnBg: string | und
   }
   const own = solid(n);
   const light = !isDark(bg) && bg !== ON_PHOTO; // what this node sits on
+  // Nov 21 (Mise A2): the screen's one main action (marked by `markPrimary`) is the solid primary button
+  if (n.pri && th.primary) {
+    const P = th.primary;
+    n.f = [{ c: P.fill }]; delete n.st;
+    const inkAll = (x: FNode) => { if (x.t === 'T') x.f = [{ c: P.ink }]; (x.c || []).forEach(inkAll); };
+    (n.c || []).forEach(inkAll);
+    return n;
+  }
+  // Nov 21 (Mise A2): a "new" tag is the tape, filled, with ink type (7.3:1)
+  if (th.newTags && n.n === 'Tag' && n.t !== 'T' && (n.c || []).some((c) => c.t === 'T' && /^(NEW|UPDATED)\b/.test(c.s || ''))) {
+    n.f = [{ c: color(th, 'new') }]; delete n.st; delete n.sw;
+    for (const c of n.c || []) if (c.t === 'T') { themeText(th, c, color(th, 'new'), drawnBg, true, ctx); c.f = [{ c: color(th, 'onNew') }]; }
+    return n;
+  }
+  // Nov 21 (Mise A2): a progress bar's fill (drawn in the accent) is the look's progress colour, on light or on the panel
+  if (th.progress && n.n === 'Progress' && n.t !== 'T') {
+    const bar = light ? th.progress.onLight : th.progress.onDark;
+    const isAccent = (c?: string) => roleOf('fill', c) === 'accent';
+    if (isAccent(own)) n.f = [{ c: bar }];
+    for (const c of n.c || []) if (c.t !== 'T' && isAccent(solid(c))) c.f = [{ c: bar }];
+  }
+  const control = !!th.control && light && n.t !== 'T' && roleOf('fill', own) === 'inverse' && isControl(n);
   if (n.f && n.t !== 'T') n.f = n.f.map((f) => { const p = f.c ? paint(th, 'fill', f.c, light) : undefined; return p ? { ...f, c: p } : f; });
+  if (control) n.f = n.f!.map((f) => (f.c === color(th, 'inverse') ? { ...f, c: th.control! } : f));
   if (n.st) n.st = paint(th, 'stroke', n.st, light) || n.st;
   const photoBg = n.t !== 'T' && !own && n.f?.some((f) => f.img) && (n.c || []).some((c) => c.n === 'Shade');
   const here = photoBg ? ON_PHOTO : n.t !== 'T' && own ? (n.f?.find((f) => f.c)?.c || bg) : bg;
@@ -788,6 +869,7 @@ export const hasPageTitle = (main: FNode) => !!find(main, (x) => x.t === 'T' && 
 export function themePage<P extends { main: FNode; bg?: string; name?: string }>(page: P, th: Theme = theme()): P {
   const main = structuredClone(page.main);
   cinematic(th, page, main);
+  if (th.primary) markPrimary(page, main);
   const out = walk(th, main, drawn('page'), drawn('page'), false, { title: pageTitle(main), card: null, outline: true }) || main;
   outlinePage(out);
   subjectPhoto(page, out);
@@ -832,6 +914,13 @@ export function themeSidebar(node: FNode, th: Theme = theme()): FNode {
       (x.c || []).forEach(active);
     };
     active(out);
+  }
+  // Nov 21 (Mise A2): the counts sit on the panel's chip (#3D332E, Bone type 9.9:1). Team Chat's unread count is on the
+  // tape (styles.css, with the active item's tint and bar: the item is chosen by the page, not drawn here).
+  if (th.sidebarCounts) {
+    const chip = th.sidebarCounts.chip;
+    const counts = (x: FNode) => { if (x.n === 'Count' && x.t !== 'T' && solid(x)) x.f = [{ c: chip }]; (x.c || []).forEach(counts); };
+    counts(out);
   }
   return out;
 }

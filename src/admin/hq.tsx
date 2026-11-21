@@ -227,7 +227,7 @@ export function HqHome() {
         </form>
         <div className="hq-top-right">
           <span className="hq-you"><span aria-hidden="true" />You’re {TEAM_ROLE_LABEL[data.you.role]} on the Mise team</span>
-          {data.can.addCompany && <Link className="hq-btn dark" to="/admin/super#add-company"><Icon d={I.plus} size={16} />Add Company</Link>}
+          {data.can.addCompany && <Link className="hq-btn dark primary" to="/admin/super#add-company"><Icon d={I.plus} size={16} />Add Company</Link>}
         </div>
       </div>
       {q.trim() && <CompanyMatches q={q} data={data} />}
