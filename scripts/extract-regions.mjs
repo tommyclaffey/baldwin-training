@@ -33,7 +33,7 @@ for (const e of idx.filter((x) => /^wine\//.test(x.slug) && x.slug.split('/').le
     glass: texts(find(hero, 'Liquid'))[0] || null, photo,
     siblingsTitle: texts(where)[0] || null, siblings: sibs,
     taste: { flavors: kids(find(taste, 'Flavors'), 'Pill · ').map((x) => texts(x)[0]), line: (taste?.c || []).filter((c) => c.t === 'T').map((c) => c.s).pop() || '' },
-    pairs, grapes, producers: brands, sayIt: texts(find(body, 'Say it'))[1] || '', goodToKnow: texts(find(find(body, 'Good to know'), 'Copy'))[1] || '',
+    grapes, producers: brands, /* Nov 21: no pairs: the dish pairings are a restaurant's own (its account's wine/pairs.json) */ sayIt: texts(find(body, 'Say it'))[1] || '', goodToKnow: texts(find(find(body, 'Good to know'), 'Copy'))[1] || '',
     partOf: part ? { name: texts(part)[1], to: find(part, 'Row')?.to || part.to || null } : null, nav,
   });
 }

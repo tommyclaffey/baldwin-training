@@ -97,18 +97,6 @@
     ],
     "line": "Big and bold. Built to age and to stand up to rich meat."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Bold tannin meets rich, braised beef.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Short Rib Arancini",
-     "why": "A smaller bite, the same match.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Bordeaux",
@@ -252,18 +240,6 @@
     ],
     "line": "Smooth and plush. A safe pick for most red drinkers."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Soft tannin, rich fruit.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "Plush enough for cheese and sauce.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Bordeaux",
@@ -397,18 +373,6 @@
     ],
     "line": "Elegant and food-friendly. Great for guests who want a lighter red."
    },
-   "pairs": [
-    {
-     "name": "Agnolotti",
-     "why": "Earthy and light enough for squash.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Beet Confit",
-     "why": "Red fruit with earthy beets.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Burgundy",
@@ -552,18 +516,6 @@
     ],
     "line": "Bright and savory. Made for tomato sauce and pizza."
    },
-   "pairs": [
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "Bright acid cuts through cheese.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Short Rib Arancini",
-     "why": "Savory and fried, with cherry fruit.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Tuscany",
@@ -690,18 +642,6 @@
     ],
     "line": "Looks light, drinks big. Best with rich food."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Big tannin for a big braise.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Agnolotti",
-     "why": "A classic Piedmont pairing with pasta.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Piedmont",
@@ -829,18 +769,6 @@
     ],
     "line": "Savory and spicy. Loves grilled and braised meat."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Peppery and meaty, like the braise.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "Bold enough for a hearty pie.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Rhône",
@@ -983,18 +911,6 @@
     ],
     "line": "Bold, fruity and a little sweet-seeming."
    },
-   "pairs": [
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "Jammy fruit with a hearty pie.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Short Rib",
-     "why": "Ripe fruit with rich braise.",
-     "to": "/recipe/short-rib"
-    }
-   ],
    "grapes": [
     {
      "name": "Sonoma",
@@ -1129,18 +1045,6 @@
     ],
     "line": "Smooth and full. Great value for a big red."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Plush fruit with rich beef.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Short Rib Arancini",
-     "why": "Dark fruit with a savory bite.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Argentina",
@@ -1258,18 +1162,6 @@
     ],
     "line": "Ask: crisp, or rich and buttery? Chardonnay can be either."
    },
-   "pairs": [
-    {
-     "name": "Scallop Rockefeller",
-     "why": "Rich wine with a rich, buttery topping.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Agnolotti",
-     "why": "Round enough for squash and sweet potato.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Burgundy",
@@ -1401,18 +1293,6 @@
     ],
     "line": "Bright and tangy. A great first glass."
    },
-   "pairs": [
-    {
-     "name": "Beet Confit",
-     "why": "Tangy wine with crème fraîche and orange.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "Zesty acid cuts the crispy crust.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Loire",
@@ -1543,18 +1423,6 @@
     ],
     "line": "Light and crisp. Goes with almost anything."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "Light fish, light wine.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Mini Lemon Ricotta Ravioli",
-     "why": "Lemon meets lemon.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Veneto",
@@ -1677,18 +1545,6 @@
     ],
     "line": "Bright and aromatic. Great with spice."
    },
-   "pairs": [
-    {
-     "name": "Cauliflower",
-     "why": "Bright acid lifts the roasted flavor.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Beet Confit",
-     "why": "Handles the hatch chili almonds.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Michigan",
@@ -1811,18 +1667,6 @@
     ],
     "line": "Crisp and savory."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "The pairing we suggest.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Mini Lemon Ricotta Ravioli",
-     "why": "Citrus and herbs with lemon and ricotta.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Abruzzo",
@@ -1940,18 +1784,6 @@
     ],
     "line": "Rich but bright. Sweet versions are great with dessert."
    },
-   "pairs": [
-    {
-     "name": "Scallop Rockefeller",
-     "why": "Bright acid with a rich topping.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Date Cake",
-     "why": "A sweet Chenin with dessert.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Loire",
@@ -2057,18 +1889,6 @@
     ],
     "line": "Dry, crisp and delicate. The style most guests picture."
    },
-   "pairs": [
-    {
-     "name": "Beet Confit",
-     "why": "Bright fruit with earthy beets.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "Light and crisp with fried fish.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Provence",
@@ -2171,18 +1991,6 @@
     ],
     "line": "Fruity, dry and food-friendly."
    },
-   "pairs": [
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "Enough fruit for cheese and sauce.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Short Rib Arancini",
-     "why": "Fresh with a fried bite.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Sicily",
@@ -2287,18 +2095,6 @@
     ],
     "line": "Light and refreshing. Great as a first glass."
    },
-   "pairs": [
-    {
-     "name": "Cauliflower",
-     "why": "Light enough to let it shine.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Scallop Rockefeller",
-     "why": "Bright acid with a rich topping.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Willamette Valley",
@@ -2404,18 +2200,6 @@
     ],
     "line": "Festive and food-friendly. Great for celebrations."
    },
-   "pairs": [
-    {
-     "name": "Date Cake",
-     "why": "Berry and bubbles with dessert.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Short Rib Arancini",
-     "why": "Bubbles love fried food.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Champagne",
@@ -2526,18 +2310,6 @@
     ],
     "line": "Bold and textured. The original orange wine."
    },
-   "pairs": [
-    {
-     "name": "Cauliflower",
-     "why": "Nutty wine for roasted, nutty food.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Agnolotti",
-     "why": "Earthy with squash.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Georgia",
@@ -2639,18 +2411,6 @@
     ],
     "line": "Savory and structured. A favorite of orange wine fans."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "Enough texture for the crust.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Cauliflower",
-     "why": "Savory with roasted veg.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Friuli",
@@ -2756,18 +2516,6 @@
     ],
     "line": "An easy first step into orange wine."
    },
-   "pairs": [
-    {
-     "name": "Beet Confit",
-     "why": "Fruity with sweet and earthy.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Mini Lemon Ricotta Ravioli",
-     "why": "Gentle enough for delicate pasta.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Friuli",
@@ -2872,18 +2620,6 @@
     ],
     "line": "Brighter and fruitier than the Old World styles."
    },
-   "pairs": [
-    {
-     "name": "Cauliflower",
-     "why": "Fruity and textured.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Beet Confit",
-     "why": "Bright with earthy and sweet.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Sonoma",
@@ -3001,18 +2737,6 @@
     ],
     "line": "The benchmark. Fine bubbles and toasty, bready notes."
    },
-   "pairs": [
-    {
-     "name": "Scallop Rockefeller",
-     "why": "A classic with shellfish.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Short Rib Arancini",
-     "why": "Bubbles cut fried food.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Champagne",
@@ -3128,18 +2852,6 @@
     ],
     "line": "Fresh and fun. The base of the Aperol Spritz."
    },
-   "pairs": [
-    {
-     "name": "Short Rib Arancini",
-     "why": "Light bubbles with a fried bite.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Mini Lemon Ricotta Ravioli",
-     "why": "Fresh fruit with lemon.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Veneto",
@@ -3254,18 +2966,6 @@
     ],
     "line": "Champagne-style bubbles at a friendlier price."
    },
-   "pairs": [
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "Salty and cheesy loves bubbles.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "Crisp with fried fish.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Spain",
@@ -3380,18 +3080,6 @@
     ],
     "line": "Champagne quality without the Champagne price."
    },
-   "pairs": [
-    {
-     "name": "Scallop Rockefeller",
-     "why": "Fine bubbles with shellfish.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Cauliflower",
-     "why": "Crisp with roasted veg.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Loire",
@@ -3513,18 +3201,6 @@
     ],
     "line": "Rich and elegant. A step up from Prosecco."
    },
-   "pairs": [
-    {
-     "name": "Agnolotti",
-     "why": "Creamy bubbles with pasta.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Short Rib Arancini",
-     "why": "Rich with fried rice balls.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Lombardy",
@@ -3639,18 +3315,6 @@
     ],
     "line": "Champagne style with sunny California fruit."
    },
-   "pairs": [
-    {
-     "name": "Scallop Rockefeller",
-     "why": "Bright bubbles with shellfish.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "Crisp with a crispy crust.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Napa Valley",

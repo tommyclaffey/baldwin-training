@@ -12,6 +12,7 @@
 //                              (Nov 20: The Baldwin's service steps, Safety, templates, Cabernet, Rye), read by its demo
 //                              copies too
 //     programs/<key>/          the account's own version of a program's lessons (server/manual.mjs)
+//     wine/pairs.json          its dish pairings (and Good to Know lines) on the wine region and grape pages (server/region.mjs)
 //     public/img/…, public/icons/…   files its pages and look point at; served at /img/… and /icons/… (server/index.mjs)
 //
 // Nothing here is required: with no folder (a fresh install, the tests), the account's database rows still serve, the shared
@@ -45,7 +46,7 @@ export const manifest = (id) => (hasAccount(id) ? readJson(path.join(accountDir(
 /* ---- which account a company reads ---- */
 let DB = null;
 /** The server's database, so a request's store can be matched to its account without passing it around. */
-export function initAccounts(db) { DB = db; listed = null; pages.clear(); indexes.clear(); }
+export function initAccounts(db) { DB = db; listed = null; pages.clear(); indexes.clear(); pairsCache.clear(); }
 const companyCache = new Map(); // company id → { account, demoCopy } (company rows don't change account; demo rows go away)
 /** { account, demoCopy } for a company: the account folder it reads, or null. */
 export function accountFor(companyId) {
@@ -88,6 +89,21 @@ export function programDir(id, key) {
   if (!hasAccount(id) || !/^[a-z0-9-]+$/.test(key)) return null;
   const d = path.join(accountDir(id), 'programs', key);
   return isDir(d) ? d : null;
+}
+
+/* ---- wine pairings ---- */
+const pairsCache = new Map();
+/** The account's own words on the wine region and grape pages (wine/pairs.json): { pairs: { "<page slug>": [{ name, why,
+ *  to }] }, goodToKnow: { "<page slug>": "…" } }. Nov 21: The Baldwin's pairings (and two Good to Know lines that name its
+ *  menu) moved here out of content/wine; every other company has none. */
+export function accountWine(id) {
+  if (!hasAccount(id)) return { pairs: {}, goodToKnow: {} };
+  if (!pairsCache.has(id)) {
+    const j = readJson(path.join(accountDir(id), 'wine', 'pairs.json')) || {};
+    const obj = (x) => (x && typeof x === 'object' && !Array.isArray(x) ? x : {});
+    pairsCache.set(id, { pairs: obj(j.pairs), goodToKnow: obj(j.goodToKnow) });
+  }
+  return pairsCache.get(id);
 }
 
 /* ---- menu seeds ---- */

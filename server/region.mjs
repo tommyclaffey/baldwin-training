@@ -5,6 +5,19 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { clone, find, findAll, byName, texts, setText, remove, fitTitle } from './templates.mjs';
+import { variant } from './variant.mjs';
+import { accountWine } from './account.mjs';
+import { LAW_STATE } from './lawstate.mjs';
+
+// Nov 21 (launch step 5): the dish pairings ("Pairs with") are a restaurant's own, so they live with its account
+// (DATA_DIR/accounts/<id>/wine/pairs.json, server/account.mjs), not in content/wine. A company without its own has none.
+// The same file holds the account's own Good to Know lines (The Baldwin's Piedmont and Sicily lines name its menu).
+const ownWine = () => { const a = variant().account; return a ? accountWine(a) : { pairs: {}, goodToKnow: {} }; };
+const pairsOf = (slug) => { const p = ownWine().pairs[slug]; return Array.isArray(p) ? p : []; };
+const goodOf = (slug, d) => { const g = ownWine().goodToKnow[slug]; return typeof g === 'string' && g ? g : d.goodToKnow; };
+// "Our home state" (Michigan's pill and its card in the US lists) is The Baldwin's home; elsewhere Michigan says what it makes.
+const HOME = 'Our home state', AWAY = 'Riesling by Lake Michigan';
+const homeOf = (d) => (variant().state === LAW_STATE ? d : { ...d, pills: (d.pills || []).filter((p) => p !== HOME), siblings: (d.siblings || []).map((s) => (s.note === HOME ? { ...s, note: AWAY } : s)) });
 
 const DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../content/wine');
 const readJson = (f, d) => { try { return JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8')); } catch { return d; } };
@@ -39,8 +52,9 @@ function profileFor(grapeName) {
 function slugOf(to) { return to && to.startsWith('/') ? to.slice(1) : null; }
 
 export function regionPage(tpl, base, slug, ctx) {
-  const d = regionData(slug);
-  if (!d || !tpl) return null;
+  const d0 = regionData(slug);
+  if (!d0 || !tpl) return null;
+  const d = { ...homeOf(d0), pairs: pairsOf(slug), goodToKnow: goodOf(slug, d0) };
   const rs = regionResearch(slug);
   const main = clone(tpl.main);
   // the page keeps its own top bar and breadcrumb
@@ -159,7 +173,7 @@ export function regionPage(tpl, base, slug, ctx) {
   const pairs = find(body, byName('Pairs with'));
   if (pairs && (d.pairs || []).length) {
     const protos = pairs.c.filter((x) => (x.n || '').startsWith('Pair · ')); const at = pairs.c.indexOf(protos[0]);
-    const built = d.pairs.map((p, i) => { const c = clone(protos[Math.min(i, protos.length - 1)]); c.n = 'Pair · ' + p.name; if (p.to) c.to = p.to; const t = texts(c); setText(t[0], p.name); setText(t[1], p.why || ''); return c; });
+    const built = d.pairs.map((p, i) => { const c = clone(protos[Math.min(i, protos.length - 1)]); c.n = 'Pair · ' + p.name; if (p.to) c.to = p.to; const t = texts(c); setText(t[0], p.name); setText(t[1], p.why || ''); t[0].n = String(p.name).slice(0, 40); if (t[1]) t[1].n = String(p.why || '').slice(0, 40) || 'Why'; return c; }); // layer names are its own words, never the template's sample
     pairs.c = [...pairs.c.slice(0, at).filter((x) => !protos.includes(x)), ...built, ...pairs.c.slice(at).filter((x) => !protos.includes(x))];
   } else if (pairs) remove(body, pairs);
   const gg = find(body, byName('Grapes grown here')) || find(body, byName('Where it grows'));

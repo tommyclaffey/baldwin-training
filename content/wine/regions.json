@@ -47,23 +47,6 @@
     ],
     "line": "Savory and food-friendly. Italian wine tastes best with a meal."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Bolgheri Rosso, from the Tuscan coast.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "Tenuta Spinelli Pecorino.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Mini Lemon Ricotta Ravioli",
-     "why": "A crisp Italian white.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Italian wines are made to go with food.”",
@@ -117,23 +100,6 @@
     ],
     "line": "Elegant and balanced, with less ripe fruit than American wine."
    },
-   "pairs": [
-    {
-     "name": "Scallop Rockefeller",
-     "why": "White Burgundy (Chardonnay).",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Short Rib",
-     "why": "A Bordeaux or Rhône red.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Date Cake",
-     "why": "Sauternes, a sweet white from Bordeaux.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“A French wine. It’s named for where it’s from, so let me tell you the grape.”",
@@ -187,23 +153,6 @@
     ],
     "line": "Riper and fruitier than Europe, often with more oak."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Napa Cabernet.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Agnolotti",
-     "why": "Oregon Pinot Noir.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Cauliflower",
-     "why": "Michigan Riesling, or an unoaked Chardonnay.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“A California wine. Ripe, smooth and a little bolder than European wines.”",
@@ -343,18 +292,6 @@
     ],
     "line": "Savory reds made for food."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Our Bolgheri Rosso, from the Tuscan coast.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "A Chianti with cheese and sauce.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Sangiovese",
@@ -526,18 +463,6 @@
     ],
     "line": "Perfumed, powerful reds. Barolo is called the “king of wines.”"
    },
-   "pairs": [
-    {
-     "name": "Agnolotti",
-     "why": "Agnolotti is a Piedmont pasta.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Short Rib",
-     "why": "Barolo with a rich braise.",
-     "to": "/recipe/short-rib"
-    }
-   ],
    "grapes": [
     {
      "name": "Nebbiolo",
@@ -558,7 +483,7 @@
     "Pio Cesare"
    ],
    "sayIt": "“A wine from Piedmont, Barolo country. Perfumed and powerful.”",
-   "goodToKnow": "Agnolotti, the pasta on our menu, is a Piedmont specialty.",
+   "goodToKnow": "Alba, in Piedmont, is famous for its white truffles.",
    "partOf": {
     "name": "Italy",
     "to": "/wine/italy"
@@ -708,18 +633,6 @@
     ],
     "line": "From light bubbles to one of Italy’s richest reds."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Amarone with a rich braise.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Short Rib Arancini",
-     "why": "Prosecco with a fried bite.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Grigio",
@@ -890,18 +803,6 @@
     ],
     "line": "Ripe reds and volcanic, mineral wines."
    },
-   "pairs": [
-    {
-     "name": "Short Rib Arancini",
-     "why": "Arancini come from Sicily.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "A ripe Nero d’Avola.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Nero d’Avola",
@@ -922,7 +823,7 @@
     "Tasca d’Almerita"
    ],
    "sayIt": "“A Sicilian wine. Ripe and sunny, from Italy’s biggest island.”",
-   "goodToKnow": "Arancini, like our Short Rib Arancini, come from Sicily.",
+   "goodToKnow": "Arancini, fried stuffed rice balls, come from Sicily.",
    "partOf": {
     "name": "Italy",
     "to": "/wine/italy"
@@ -1072,18 +973,6 @@
     ],
     "line": "Clean, aromatic whites."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "A crisp white with crispy fish.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Mini Lemon Ricotta Ravioli",
-     "why": "Light and fresh with lemon.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Grigio",
@@ -1240,18 +1129,6 @@
     ],
     "line": "Structured, elegant reds built to age."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "A structured red with a rich braise.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Date Cake",
-     "why": "Sauternes, Bordeaux’s sweet white.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -1404,18 +1281,6 @@
     ],
     "line": "The benchmark for both grapes."
    },
-   "pairs": [
-    {
-     "name": "Agnolotti",
-     "why": "Red Burgundy with earthy squash.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Scallop Rockefeller",
-     "why": "White Burgundy with a rich topping.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -1564,18 +1429,6 @@
     ],
     "line": "Fine bubbles and toasty notes."
    },
-   "pairs": [
-    {
-     "name": "Scallop Rockefeller",
-     "why": "A classic with shellfish.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Short Rib Arancini",
-     "why": "Bubbles cut fried food.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Chardonnay",
@@ -1728,18 +1581,6 @@
     ],
     "line": "Spicy, warming reds."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Peppery red with a rich braise.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "A Côtes du Rhône with a hearty pie.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Syrah",
@@ -1892,18 +1733,6 @@
     ],
     "line": "Bright, mineral whites."
    },
-   "pairs": [
-    {
-     "name": "Beet Confit",
-     "why": "Zesty with crème fraîche and orange.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Scallop Rockefeller",
-     "why": "A Vouvray with a rich topping.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Sauvignon Blanc",
@@ -2056,18 +1885,6 @@
     ],
     "line": "Pale, dry and crisp."
    },
-   "pairs": [
-    {
-     "name": "Beet Confit",
-     "why": "Bright fruit with earthy beets.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "Crisp with fried fish.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Rosé",
@@ -2188,18 +2005,6 @@
     ],
     "line": "Ripe, rich and polished."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Napa Cabernet with a rich braise.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Scallop Rockefeller",
-     "why": "Napa Chardonnay with a rich topping.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -2319,18 +2124,6 @@
     ],
     "line": "Lots of styles, all with ripe California fruit."
    },
-   "pairs": [
-    {
-     "name": "Agnolotti",
-     "why": "Russian River Pinot Noir.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "Dry Creek Zinfandel.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -2483,18 +2276,6 @@
     ],
     "line": "Big, ripe and generous."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Paso Cabernet or a Rhône-style blend.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Mike’s Vegas Pie",
-     "why": "A ripe Paso Zinfandel.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -2604,18 +2385,6 @@
     ],
     "line": "Bright and elegant, with California fruit."
    },
-   "pairs": [
-    {
-     "name": "Agnolotti",
-     "why": "A Sta. Rita Hills Pinot Noir.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Scallop Rockefeller",
-     "why": "Santa Barbara Chardonnay.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -2739,18 +2508,6 @@
     ],
     "line": "Elegant and earthy, closer to Burgundy than to California."
    },
-   "pairs": [
-    {
-     "name": "Agnolotti",
-     "why": "Earthy Pinot with squash.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "Crisp Pinot Gris with fish.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -2880,18 +2637,6 @@
     ],
     "line": "Ripe fruit with fresh acid."
    },
-   "pairs": [
-    {
-     "name": "Short Rib",
-     "why": "Washington Cabernet or Syrah.",
-     "to": "/recipe/short-rib"
-    },
-    {
-     "name": "Cauliflower",
-     "why": "Washington Riesling.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -2994,18 +2739,6 @@
     ],
     "line": "Crisp, bright and local. Guests love a Michigan wine."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "Great Lakes fish, Michigan wine.",
-     "to": "/food-matrix"
-    },
-    {
-     "name": "Cauliflower",
-     "why": "A crisp Riesling.",
-     "to": "/food-matrix"
-    }
-   ],
    "grapes": [
     {
      "name": "Riesling",
@@ -3185,18 +2918,6 @@
     ],
     "line": "Clean, crisp whites with mountain freshness."
    },
-   "pairs": [
-    {
-     "name": "Scallops Rockefeller",
-     "why": "A crisp Alpine white cuts the butter.",
-     "to": null
-    },
-    {
-     "name": "JB Calamari",
-     "why": "Pinot Grigio with anything fried.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Grigio",
@@ -3368,18 +3089,6 @@
     ],
     "line": "Fine, toasty bubbles, like a softer Champagne."
    },
-   "pairs": [
-    {
-     "name": "Prosciutto Fondue",
-     "why": "Bubbles cut through the cheese.",
-     "to": null
-    },
-    {
-     "name": "JB Calamari",
-     "why": "Franciacorta with anything crispy.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Franciacorta",
@@ -3551,18 +3260,6 @@
     ],
     "line": "Fizzy, fruity reds that cut rich food."
    },
-   "pairs": [
-    {
-     "name": "Prosciutto Fondue",
-     "why": "Lambrusco with ham and cheese, the classic.",
-     "to": null
-    },
-    {
-     "name": "Double Pepperoni Pizza",
-     "why": "A chilled fizzy red with pizza.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Lambrusco",
@@ -3734,18 +3431,6 @@
     ],
     "line": "Crisp, salty whites with a bitter-almond finish."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "A coastal white for fried fish.",
-     "to": null
-    },
-    {
-     "name": "Scallops Rockefeller",
-     "why": "Verdicchio with shellfish.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Verdicchio",
@@ -3917,18 +3602,6 @@
     ],
     "line": "Big, tannic reds and easygoing whites."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Sagrantino stands up to lamb.",
-     "to": null
-    },
-    {
-     "name": "Rigatoni Ragu",
-     "why": "Montefalco Rosso with a meat sauce.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Sangiovese",
@@ -4100,18 +3773,6 @@
     ],
     "line": "Juicy, everyday reds for pasta and pizza."
    },
-   "pairs": [
-    {
-     "name": "Sunday Sauce Pasta",
-     "why": "A juicy red with red sauce.",
-     "to": null
-    },
-    {
-     "name": "Double Pepperoni Pizza",
-     "why": "Montepulciano and pepperoni.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Montepulciano",
@@ -4283,18 +3944,6 @@
     ],
     "line": "Smoky, powerful reds and bright whites from volcanic soil."
    },
-   "pairs": [
-    {
-     "name": "Cali Margherita Pizza",
-     "why": "A Campanian white with the pizza Naples made famous.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "Aglianico with braised beef.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Aglianico",
@@ -4466,18 +4115,6 @@
     ],
     "line": "Ripe, plush reds with soft tannins."
    },
-   "pairs": [
-    {
-     "name": "Baldwin Burger",
-     "why": "Primitivo with a burger.",
-     "to": null
-    },
-    {
-     "name": "Rigatoni Ragu",
-     "why": "A ripe red with a rich ragu.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Primitivo",
@@ -4649,18 +4286,6 @@
     ],
     "line": "Sunny reds and salty, coastal whites."
    },
-   "pairs": [
-    {
-     "name": "Shrimp & Eggplant",
-     "why": "Vermentino with shrimp.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "Cannonau with roast chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cannonau",
@@ -4814,18 +4439,6 @@
     ],
     "line": "Aromatic, dry whites full of fruit."
    },
-   "pairs": [
-    {
-     "name": "Harissa Carrots",
-     "why": "An aromatic white with gentle spice.",
-     "to": null
-    },
-    {
-     "name": "Prosciutto Fondue",
-     "why": "An Alsace white with melted cheese.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Riesling",
@@ -4979,18 +4592,6 @@
     ],
     "line": "Light, juicy reds that like a slight chill."
    },
-   "pairs": [
-    {
-     "name": "Roasted Chicken",
-     "why": "A light red with roast chicken.",
-     "to": null
-    },
-    {
-     "name": "Mushroom Brie Soup",
-     "why": "Gamay with mushrooms and brie.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Gamay",
@@ -5140,18 +4741,6 @@
     ],
     "line": "Sun-soaked reds with wild herbs."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "A southern French red with lamb.",
-     "to": null
-    },
-    {
-     "name": "Baldwin Burger",
-     "why": "An easy red with a burger.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Syrah",
@@ -5305,18 +4894,6 @@
     ],
     "line": "Dark, firm reds with a rustic edge."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Cahors Malbec with steak.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "South West reds love duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Malbec",
@@ -5470,18 +5047,6 @@
     ],
     "line": "Nutty, savory wines unlike anything else."
    },
-   "pairs": [
-    {
-     "name": "Prosciutto Fondue",
-     "why": "Jura wine and melted cheese, a local pairing.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "A Jura white with roast chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Savagnin",
@@ -5587,18 +5152,6 @@
     ],
     "line": "Bright, crisp Rieslings, dry to off-dry."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "Great Lakes fish, Finger Lakes Riesling.",
-     "to": null
-    },
-    {
-     "name": "Hot Honey Eggplant",
-     "why": "An off-dry Riesling with sweet heat.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Riesling",
@@ -5752,18 +5305,6 @@
     ],
     "line": "Silky, cool-coast Pinot and fine sparkling."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Anderson Valley Pinot with duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -5917,18 +5458,6 @@
     ],
     "line": "Ripe, jammy reds with spice."
    },
-   "pairs": [
-    {
-     "name": "Baldwin Burger",
-     "why": "Zinfandel with a burger.",
-     "to": null
-    },
-    {
-     "name": "Double Pepperoni Pizza",
-     "why": "Zin and pepperoni.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Zinfandel",
@@ -6076,18 +5605,6 @@
     ],
     "line": "Herbal reds and floral, peachy whites."
    },
-   "pairs": [
-    {
-     "name": "Roasted Chicken",
-     "why": "Viognier with roast chicken.",
-     "to": null
-    },
-    {
-     "name": "Lamb Chops",
-     "why": "Cabernet Franc with lamb.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet Franc",
@@ -6235,18 +5752,6 @@
     ],
     "line": "Warm-climate reds from Spanish and Rhône grapes."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "A Texas red with steak.",
-     "to": null
-    },
-    {
-     "name": "Smash Burger",
-     "why": "Tempranillo with a burger.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Tempranillo",
@@ -6352,18 +5857,6 @@
     ],
     "line": "Riper, spicier reds than the Willamette."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Southern Oregon Syrah with lamb.",
-     "to": null
-    },
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Tempranillo with steak.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Syrah",
@@ -6469,18 +5962,6 @@
     ],
     "line": "Medium-bodied, Bordeaux-style reds and bright whites."
    },
-   "pairs": [
-    {
-     "name": "Roasted Chicken",
-     "why": "Long Island Merlot with roast chicken.",
-     "to": null
-    },
-    {
-     "name": "Scallops Rockefeller",
-     "why": "A crisp Long Island white with scallops.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Merlot",
@@ -6628,18 +6109,6 @@
     ],
     "line": "Sun-ripened reds kept fresh by cold nights."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "A high-desert red with lamb.",
-     "to": null
-    },
-    {
-     "name": "Harissa Carrots",
-     "why": "Arizona Grenache with gentle spice.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Syrah",
@@ -6757,18 +6226,6 @@
     ],
     "line": "Massive, age-worthy mountain Cabernet."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Big mountain Cab with lamb.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "Howell Mountain with braised beef.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -6886,18 +6343,6 @@
     ],
     "line": "Structured Pinot and crisp Chardonnay."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Carneros Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Lobster & Crab Tortellini",
-     "why": "Carneros Chardonnay with lobster.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -7009,18 +6454,6 @@
     ],
     "line": "Velvety Pinot with bright acidity."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Russian River Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "Pinot Noir with roast chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -7131,18 +6564,6 @@
     ],
     "line": "Elegant, cool-coast Pinot and Chardonnay."
    },
-   "pairs": [
-    {
-     "name": "Scallops Rockefeller",
-     "why": "Coastal Chardonnay with scallops.",
-     "to": null
-    },
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Sonoma Coast Pinot with salmon.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -7241,18 +6662,6 @@
     ],
     "line": "Rich, full-bodied reds."
    },
-   "pairs": [
-    {
-     "name": "Baldwin Burger",
-     "why": "Dry Creek Zin with a burger.",
-     "to": null
-    },
-    {
-     "name": "Double Pepperoni Pizza",
-     "why": "Zinfandel with pepperoni.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Zinfandel",
@@ -7397,18 +6806,6 @@
     ],
     "line": "Sunny, ripe and generous."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "California Cabernet with steak.",
-     "to": null
-    },
-    {
-     "name": "Lobster & Crab Tortellini",
-     "why": "California Chardonnay with lobster.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -7511,18 +6908,6 @@
     ],
     "line": "Rich reds and full Chardonnay."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Alexander Valley Cab with steak.",
-     "to": null
-    },
-    {
-     "name": "Lobster & Crab Tortellini",
-     "why": "A rich Chardonnay with lobster.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -7671,18 +7056,6 @@
     ],
     "line": "Bold, dusty reds from volcanic soil."
    },
-   "pairs": [
-    {
-     "name": "Braised Short Rib",
-     "why": "Lake County Cab with braised beef.",
-     "to": null
-    },
-    {
-     "name": "Baldwin Burger",
-     "why": "A bold red with a burger.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -7797,18 +7170,6 @@
     ],
     "line": "Rich, polished Napa Cabernet."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Oakville Cabernet with steak.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "Napa Cab with braised beef.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -7957,18 +7318,6 @@
     ],
     "line": "Mineral, complex wines built to age."
    },
-   "pairs": [
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Mountain Pinot with duck.",
-     "to": null
-    },
-    {
-     "name": "Lamb Chops",
-     "why": "Mountain Cabernet with lamb.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -8120,18 +7469,6 @@
     ],
     "line": "Lush, complex Pinot Noir."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Highlands Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Pinot Noir with duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -8284,18 +7621,6 @@
     ],
     "line": "Rich Chardonnay and Pinot from the cool coast."
    },
-   "pairs": [
-    {
-     "name": "Lobster & Crab Tortellini",
-     "why": "Edna Valley Chardonnay with lobster.",
-     "to": null
-    },
-    {
-     "name": "Scallops Rockefeller",
-     "why": "A coastal Chardonnay with scallops.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Chardonnay",
@@ -8440,18 +7765,6 @@
     ],
     "line": "Bold, spicy reds from Gold Country."
    },
-   "pairs": [
-    {
-     "name": "Baldwin Burger",
-     "why": "Foothills Zin with a burger.",
-     "to": null
-    },
-    {
-     "name": "Lamb Chops",
-     "why": "Amador Syrah with lamb.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Zinfandel",
@@ -8554,18 +7867,6 @@
     ],
     "line": "Elegant, structured Pinot and Chardonnay."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Sta. Rita Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Scallops Rockefeller",
-     "why": "A cool Chardonnay with scallops.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -8667,18 +7968,6 @@
     ],
     "line": "Bright Chardonnay and Pinot from a long, cool season."
    },
-   "pairs": [
-    {
-     "name": "Lobster & Crab Tortellini",
-     "why": "Santa Maria Chardonnay with lobster.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "Santa Maria Pinot with chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Chardonnay",
@@ -8779,18 +8068,6 @@
     ],
     "line": "Everything from cool Pinot to warm Syrah."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Santa Ynez Syrah with lamb.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "A cool-side Pinot with chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Syrah",
@@ -8903,18 +8180,6 @@
     ],
     "line": "Expressive, structured Cabernet."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Rutherford Cab with lamb.",
-     "to": null
-    },
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Napa Cabernet with steak.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -9025,18 +8290,6 @@
     ],
     "line": "Rich, lush, opulent Cabernet."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Stags Leap Cabernet with steak.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "Napa Cab with braised beef.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -9159,18 +8412,6 @@
     ],
     "line": "Fruit-forward Pinot with black cherry."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Oregon Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Pinot Noir with duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -9282,18 +8523,6 @@
     ],
     "line": "Earthy, classic Oregon Pinot."
    },
-   "pairs": [
-    {
-     "name": "Mushroom Brie Soup",
-     "why": "Earthy Pinot with mushrooms.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Pinot Noir with duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -9408,18 +8637,6 @@
     ],
     "line": "Dark-fruited Pinot with a rustic edge."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Oregon Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Pinot Noir with duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -9512,18 +8729,6 @@
     ],
     "line": "Tart-fruited, subtle and elegant."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Oregon Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Pinot Noir with duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -9624,18 +8829,6 @@
     ],
     "line": "Rhône-style reds and fresh whites."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Gorge Syrah with lamb.",
-     "to": null
-    },
-    {
-     "name": "Harissa Carrots",
-     "why": "A Rhône-style red with gentle spice.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Syrah",
@@ -9760,18 +8953,6 @@
     ],
     "line": "Bold, fruit-forward reds with sweet-tart acidity."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Columbia Valley Cab with steak.",
-     "to": null
-    },
-    {
-     "name": "Lamb Chops",
-     "why": "Washington Syrah with lamb.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -9901,18 +9082,6 @@
     ],
     "line": "Rich Syrah and Cabernet."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Walla Walla Syrah with lamb.",
-     "to": null
-    },
-    {
-     "name": "Baldwin Burger",
-     "why": "A rich red with a burger.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Syrah",
@@ -10042,18 +9211,6 @@
     ],
     "line": "A wide range of reds and whites."
    },
-   "pairs": [
-    {
-     "name": "Roasted Chicken",
-     "why": "A Yakima red with chicken.",
-     "to": null
-    },
-    {
-     "name": "Hot Honey Eggplant",
-     "why": "Yakima Riesling with sweet heat.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -10168,18 +9325,6 @@
     ],
     "line": "Pinot with raspberry and black tea."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Dundee Hills Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Mushroom Brie Soup",
-     "why": "Pinot Noir with mushrooms.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -10305,18 +9450,6 @@
     ],
     "line": "Dark, powerful, tannic reds."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Red Mountain Cab with steak.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "A powerful red with braised beef.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -10441,18 +9574,6 @@
     ],
     "line": "Structured reds with depth."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Horse Heaven Cab with steak.",
-     "to": null
-    },
-    {
-     "name": "Lamb Chops",
-     "why": "A structured red with lamb.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -10581,18 +9702,6 @@
     ],
     "line": "Consistent, ripe reds at fair prices."
    },
-   "pairs": [
-    {
-     "name": "Baldwin Burger",
-     "why": "A ripe red with a burger.",
-     "to": null
-    },
-    {
-     "name": "Rigatoni Ragu",
-     "why": "Wahluke Syrah with ragu.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -10717,18 +9826,6 @@
     ],
     "line": "Fresh, bright wines from a lakeside region."
    },
-   "pairs": [
-    {
-     "name": "Hot Honey Eggplant",
-     "why": "Gewürztraminer with sweet heat.",
-     "to": null
-    },
-    {
-     "name": "JB Calamari",
-     "why": "Lake Chelan sparkling with calamari.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Malbec",
@@ -10829,18 +9926,6 @@
     ],
     "line": "Crisp whites and fresh, lighter reds."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "New York Riesling with Great Lakes fish.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "Long Island Merlot with chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Riesling",
@@ -10944,18 +10029,6 @@
     ],
     "line": "Fresh, herbal reds and crisp whites."
    },
-   "pairs": [
-    {
-     "name": "Roasted Chicken",
-     "why": "Hudson Cabernet Franc with chicken.",
-     "to": null
-    },
-    {
-     "name": "Mushroom Brie Soup",
-     "why": "A fresh red with mushrooms.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet Franc",
@@ -11052,18 +10125,6 @@
     ],
     "line": "Riesling every way, dry to sweet."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "Michigan Riesling with Great Lakes fish.",
-     "to": null
-    },
-    {
-     "name": "Hot Honey Eggplant",
-     "why": "An off-dry Riesling with sweet heat.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Riesling",
@@ -11158,18 +10219,6 @@
     ],
     "line": "Vibrant whites and light reds."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "Leelanau Riesling with walleye.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "A light Pinot with chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Riesling",
@@ -11314,18 +10363,6 @@
     ],
     "line": "Ripe reds from high, sunny vineyards."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "A Texas red with steak.",
-     "to": null
-    },
-    {
-     "name": "Smash Burger",
-     "why": "A ripe red with a burger.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -11468,18 +10505,6 @@
     ],
     "line": "Ripe reds and fresh, elegant whites."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Idaho Syrah with lamb.",
-     "to": null
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "Idaho Riesling with walleye.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Riesling",
@@ -11596,18 +10621,6 @@
     ],
     "line": "Rich Pinot with plum and spice."
    },
-   "pairs": [
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Eola-Amity Pinot with duck.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "Pinot Noir with roast chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -11718,18 +10731,6 @@
     ],
     "line": "Bolder Pinot with cherry and spice."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Oregon Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Pinot Noir with duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -11803,18 +10804,6 @@
     ],
     "line": "Native grapes, made for food."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Agiorgitiko with lamb.",
-     "to": null
-    },
-    {
-     "name": "JB Calamari",
-     "why": "Assyrtiko with calamari.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Greece: some of the oldest wine on earth, made for food.”",
@@ -11860,18 +10849,6 @@
     ],
     "line": "Dry whites and legendary sweet wine."
    },
-   "pairs": [
-    {
-     "name": "Hot Honey Eggplant",
-     "why": "Tokaji with sweet heat.",
-     "to": null
-    },
-    {
-     "name": "Burrata & Artichoke",
-     "why": "A dry Furmint with burrata.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Hungary: home of Tokaji, the legendary sweet wine.”",
@@ -11917,18 +10894,6 @@
     ],
     "line": "Textured, savory amber wines."
    },
-   "pairs": [
-    {
-     "name": "Harissa Carrots",
-     "why": "An amber wine with spice.",
-     "to": null
-    },
-    {
-     "name": "Prosciutto Fondue",
-     "why": "Qvevri wine with cheese.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Georgia: 8,000 years of wine, made in clay.”",
@@ -11978,18 +10943,6 @@
     ],
     "line": "Plump, deep-coloured reds."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Malbec with steak.",
-     "to": null
-    },
-    {
-     "name": "Smash Burger",
-     "why": "Malbec with a burger.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Argentina: Malbec from the foot of the Andes.”",
@@ -12039,18 +10992,6 @@
     ],
     "line": "Bordeaux grapes with a Chilean accent."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Carménère with lamb.",
-     "to": null
-    },
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Chilean Cabernet with steak.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Chile: Bordeaux grapes between the Andes and the Pacific.”",
@@ -12100,18 +11041,6 @@
     ],
     "line": "Bold, ripe Shiraz and much more."
    },
-   "pairs": [
-    {
-     "name": "Braised Short Rib",
-     "why": "Barossa Shiraz with short rib.",
-     "to": null
-    },
-    {
-     "name": "Baldwin Burger",
-     "why": "Shiraz with a burger.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Australia: big Shiraz, and a lot more.”",
@@ -12161,18 +11090,6 @@
     ],
     "line": "Bold fruit with a dusty, old-world edge."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "A Rioja with lamb.",
-     "to": null
-    },
-    {
-     "name": "Prosciutto Fondue",
-     "why": "A dry Sherry with ham and cheese.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Spain: bold fruit with a dusty, old-world edge.”",
@@ -12222,18 +11139,6 @@
     ],
     "line": "Zesty Sauvignon Blanc and cool-climate Pinot."
    },
-   "pairs": [
-    {
-     "name": "Burrata & Artichoke",
-     "why": "NZ Sauvignon Blanc with artichoke.",
-     "to": null
-    },
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Central Otago Pinot with salmon.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“New Zealand: the Sauvignon Blanc capital of the world.”",
@@ -12283,18 +11188,6 @@
     ],
     "line": "Native grapes and great value."
    },
-   "pairs": [
-    {
-     "name": "JB Calamari",
-     "why": "Vinho Verde with calamari.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "A Douro red with braised beef.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Portugal: native grapes and great value, from Vinho Verde to Port.”",
@@ -12344,18 +11237,6 @@
     ],
     "line": "Bold, aromatic reds and whites."
    },
-   "pairs": [
-    {
-     "name": "Roasted Chicken",
-     "why": "Chenin Blanc with roast chicken.",
-     "to": null
-    },
-    {
-     "name": "Lamb Chops",
-     "why": "A South African Syrah with lamb.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“South Africa: Old World meets New, on ancient granite.”",
@@ -12405,18 +11286,6 @@
     ],
     "line": "Riesling, from bone dry to very sweet."
    },
-   "pairs": [
-    {
-     "name": "Hot Honey Eggplant",
-     "why": "An off-dry Riesling with sweet heat.",
-     "to": null
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "A dry Riesling with fried fish.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Germany: the home of Riesling, dry to sweet.”",
@@ -12466,18 +11335,6 @@
     ],
     "line": "Sharp, spicy whites."
    },
-   "pairs": [
-    {
-     "name": "Burrata & Artichoke",
-     "why": "Grüner Veltliner with artichoke.",
-     "to": null
-    },
-    {
-     "name": "Chicken Saltimbocca",
-     "why": "An Austrian white with saltimbocca.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [],
    "sayIt": "“Austria: Grüner Veltliner, sharp and spicy.”",
@@ -12577,18 +11434,6 @@
     ],
     "line": "Mostly dry, nutty and salty."
    },
-   "pairs": [
-    {
-     "name": "Spicy Bar Nutz",
-     "why": "Dry Sherry with spiced nuts.",
-     "to": null
-    },
-    {
-     "name": "Prosciutto Fondue",
-     "why": "Sherry with ham and cheese.",
-     "to": null
-    }
-   ],
    "grapes": [],
    "producers": [
     "González Byass",
@@ -12707,18 +11552,6 @@
     ],
     "line": "Lean, citrusy, savory bubbles."
    },
-   "pairs": [
-    {
-     "name": "JB Calamari",
-     "why": "Cava with calamari.",
-     "to": null
-    },
-    {
-     "name": "Prosciutto Fondue",
-     "why": "Bubbles with ham and cheese.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Macabeo",
@@ -12855,18 +11688,6 @@
     ],
     "line": "Fresh, herbal whites."
    },
-   "pairs": [
-    {
-     "name": "Burrata & Artichoke",
-     "why": "Verdejo with artichoke.",
-     "to": null
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "A crisp white with fried fish.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Verdejo",
@@ -12995,18 +11816,6 @@
     ],
     "line": "Savory reds with red fruit."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Rioja with lamb.",
-     "to": null
-    },
-    {
-     "name": "Rigatoni Ragu",
-     "why": "Tempranillo with ragu.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Tempranillo",
@@ -13131,18 +11940,6 @@
     ],
     "line": "Tannic, age-worthy Tempranillo."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Toro with lamb.",
-     "to": null
-    },
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "A big Tempranillo with steak.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Tempranillo",
@@ -13249,18 +12046,6 @@
     ],
     "line": "Rich reds and sweet Port."
    },
-   "pairs": [
-    {
-     "name": "Braised Short Rib",
-     "why": "A Douro red with short rib.",
-     "to": null
-    },
-    {
-     "name": "Prosciutto Fondue",
-     "why": "Port with cheese.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Touriga Nacional",
@@ -13379,18 +12164,6 @@
     ],
     "line": "Light, fresh, low-alcohol whites."
    },
-   "pairs": [
-    {
-     "name": "JB Calamari",
-     "why": "Vinho Verde with calamari.",
-     "to": null
-    },
-    {
-     "name": "Scallops Rockefeller",
-     "why": "A light white with scallops.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Alvarinho",
@@ -13517,18 +12290,6 @@
     ],
     "line": "Bold, structured Tempranillo."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Ribera with steak.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "Tempranillo with braised beef.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Tempranillo",
@@ -13642,18 +12403,6 @@
     ],
     "line": "Ripe, bold wines from native grapes."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "An Alentejo red with lamb.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "Antão Vaz with roast chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Antão Vaz",
@@ -13781,18 +12530,6 @@
     ],
     "line": "Elegant reds that age well."
    },
-   "pairs": [
-    {
-     "name": "Roasted Chicken",
-     "why": "A Dão red with roast chicken.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "An elegant red with duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Touriga Nacional",
@@ -13903,18 +12640,6 @@
     ],
     "line": "Nutty, caramel-rich and long-lived."
    },
-   "pairs": [
-    {
-     "name": "Spicy Bar Nutz",
-     "why": "Madeira with spiced nuts.",
-     "to": null
-    },
-    {
-     "name": "Mushroom Brie Soup",
-     "why": "Dry Madeira with mushroom soup.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Sercial",
@@ -14037,18 +12762,6 @@
     ],
     "line": "Firm reds and fresh sparkling."
    },
-   "pairs": [
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Baga with duck.",
-     "to": null
-    },
-    {
-     "name": "JB Calamari",
-     "why": "Bairrada sparkling with calamari.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Baga",
@@ -14137,18 +12850,6 @@
     ],
     "line": "Light, classic Riesling."
    },
-   "pairs": [
-    {
-     "name": "Hot Honey Eggplant",
-     "why": "An off-dry Mosel Riesling with sweet heat.",
-     "to": null
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "Riesling with fried fish.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Riesling",
@@ -14223,18 +12924,6 @@
     ],
     "line": "Spicy Grüner and precise Riesling."
    },
-   "pairs": [
-    {
-     "name": "Burrata & Artichoke",
-     "why": "Grüner with artichoke.",
-     "to": null
-    },
-    {
-     "name": "Chicken Saltimbocca",
-     "why": "Wachau Riesling with saltimbocca.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Grüner Veltliner",
@@ -14321,18 +13010,6 @@
     ],
     "line": "Lean, salty, mineral whites."
    },
-   "pairs": [
-    {
-     "name": "JB Calamari",
-     "why": "Assyrtiko with calamari.",
-     "to": null
-    },
-    {
-     "name": "Scallops Rockefeller",
-     "why": "Santorini white with scallops.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Assyrtiko",
@@ -14429,18 +13106,6 @@
     ],
     "line": "Structured reds, like a Greek Barolo."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Xinomavro with lamb.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "A structured red with duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Xinomavro",
@@ -14529,18 +13194,6 @@
     ],
     "line": "Fruity, smooth reds."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Agiorgitiko with lamb.",
-     "to": null
-    },
-    {
-     "name": "Rigatoni Ragu",
-     "why": "A smooth red with ragu.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Agiorgitiko",
@@ -14614,18 +13267,6 @@
     ],
     "line": "Sweet and dry wines with bright acidity."
    },
-   "pairs": [
-    {
-     "name": "Hot Honey Eggplant",
-     "why": "Tokaji with sweet heat.",
-     "to": null
-    },
-    {
-     "name": "Prosciutto Fondue",
-     "why": "Sweet Tokaji with salty cheese.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Furmint",
@@ -14750,18 +13391,6 @@
     ],
     "line": "Bold, powerful reds."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Priorat with lamb.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "A powerful red with short rib.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Garnacha",
@@ -14901,18 +13530,6 @@
     ],
     "line": "Fresh, salty whites for seafood."
    },
-   "pairs": [
-    {
-     "name": "Scallops Rockefeller",
-     "why": "Albariño with scallops.",
-     "to": null
-    },
-    {
-     "name": "JB Calamari",
-     "why": "Albariño with calamari.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Albariño",
@@ -15005,18 +13622,6 @@
     ],
     "line": "Full-bodied Cabernet blends."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Maipo Cabernet with steak.",
-     "to": null
-    },
-    {
-     "name": "Lamb Chops",
-     "why": "Chilean Cab with lamb.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -15110,18 +13715,6 @@
     ],
     "line": "Rich, age-worthy red blends."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Carménère with lamb.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "A Colchagua blend with short rib.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -15223,18 +13816,6 @@
     ],
     "line": "Structured reds with spice."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Aconcagua Cab with steak.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "A structured red with short rib.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -15333,18 +13914,6 @@
     ],
     "line": "Bold, plush Malbec."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Mendoza Malbec with steak.",
-     "to": null
-    },
-    {
-     "name": "Smash Burger",
-     "why": "Malbec with a burger.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Malbec",
@@ -15490,18 +14059,6 @@
     ],
     "line": "Ripe, powerful Shiraz."
    },
-   "pairs": [
-    {
-     "name": "Braised Short Rib",
-     "why": "Barossa Shiraz with short rib.",
-     "to": null
-    },
-    {
-     "name": "Baldwin Burger",
-     "why": "Shiraz with a burger.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Shiraz",
@@ -15642,18 +14199,6 @@
     ],
     "line": "Tart, high-acid wines that age."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "Eden Valley Riesling with walleye.",
-     "to": null
-    },
-    {
-     "name": "Hot Honey Eggplant",
-     "why": "Riesling with sweet heat.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Riesling",
@@ -15788,18 +14333,6 @@
     ],
     "line": "Dark, rich Shiraz."
    },
-   "pairs": [
-    {
-     "name": "Braised Short Rib",
-     "why": "McLaren Vale Shiraz with short rib.",
-     "to": null
-    },
-    {
-     "name": "Lamb Chops",
-     "why": "Shiraz with lamb.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Shiraz",
@@ -15932,18 +14465,6 @@
     ],
     "line": "Deep Cabernet with herbs."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Coonawarra Cab with steak.",
-     "to": null
-    },
-    {
-     "name": "Lamb Chops",
-     "why": "Cabernet with lamb.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -16030,18 +14551,6 @@
     ],
     "line": "Elegant, fresh, age-worthy reds."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Uco Malbec with lamb.",
-     "to": null
-    },
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "High-altitude Malbec with steak.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Malbec",
@@ -16187,18 +14696,6 @@
     ],
     "line": "Ripe fruit with ocean-driven elegance."
    },
-   "pairs": [
-    {
-     "name": "Lobster & Crab Tortellini",
-     "why": "Margaret River Chardonnay with lobster.",
-     "to": null
-    },
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Margaret River Cab with steak.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -16338,18 +14835,6 @@
     ],
     "line": "Lean, minerally Sémillon."
    },
-   "pairs": [
-    {
-     "name": "Scallops Rockefeller",
-     "why": "Hunter Sémillon with scallops.",
-     "to": null
-    },
-    {
-     "name": "Walleye Milanese",
-     "why": "A lean white with fried fish.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Sémillon",
@@ -16478,18 +14963,6 @@
     ],
     "line": "Delicate Chardonnay and Pinot."
    },
-   "pairs": [
-    {
-     "name": "Lobster & Crab Tortellini",
-     "why": "Yarra Chardonnay with lobster.",
-     "to": null
-    },
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Yarra Pinot with salmon.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Chardonnay",
@@ -16632,18 +15105,6 @@
     ],
     "line": "Dry, crisp Riesling."
    },
-   "pairs": [
-    {
-     "name": "Walleye Milanese",
-     "why": "Clare Riesling with walleye.",
-     "to": null
-    },
-    {
-     "name": "Hot Honey Eggplant",
-     "why": "Riesling with sweet heat.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Riesling",
@@ -16780,18 +15241,6 @@
     ],
     "line": "Lean, smoky cool-climate wines."
    },
-   "pairs": [
-    {
-     "name": "Mushroom Brie Soup",
-     "why": "Tasmanian Pinot with mushrooms.",
-     "to": null
-    },
-    {
-     "name": "JB Calamari",
-     "why": "Tasmanian sparkling with calamari.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -16900,18 +15349,6 @@
     ],
     "line": "Zesty Sauvignon Blanc and Pinot."
    },
-   "pairs": [
-    {
-     "name": "Burrata & Artichoke",
-     "why": "Marlborough Sauvignon Blanc with artichoke.",
-     "to": null
-    },
-    {
-     "name": "Scallops Rockefeller",
-     "why": "Sauvignon Blanc with scallops.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Sauvignon Blanc",
@@ -17027,18 +15464,6 @@
     ],
     "line": "Structured Pinot Noir."
    },
-   "pairs": [
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Central Otago Pinot with duck.",
-     "to": null
-    },
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Pinot with salmon.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
@@ -17149,18 +15574,6 @@
     ],
     "line": "Bordeaux blends, Syrah and Chardonnay."
    },
-   "pairs": [
-    {
-     "name": "Lamb Chops",
-     "why": "Hawke’s Bay Syrah with lamb.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "Merlot with roast chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Merlot",
@@ -17277,18 +15690,6 @@
     ],
     "line": "Textured Chardonnay and fine Pinot."
    },
-   "pairs": [
-    {
-     "name": "Lobster & Crab Tortellini",
-     "why": "Martinborough Chardonnay with lobster.",
-     "to": null
-    },
-    {
-     "name": "Duck Gnocchetti",
-     "why": "Pinot with duck.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Chardonnay",
@@ -17399,18 +15800,6 @@
     ],
     "line": "Clean, fresh Chardonnay."
    },
-   "pairs": [
-    {
-     "name": "Lobster & Crab Tortellini",
-     "why": "North Canterbury Chardonnay with lobster.",
-     "to": null
-    },
-    {
-     "name": "Scallops Rockefeller",
-     "why": "A fresh Chardonnay with scallops.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Chardonnay",
@@ -17495,18 +15884,6 @@
     ],
     "line": "Black-fruited, spicy Malbec."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Luján Malbec with steak.",
-     "to": null
-    },
-    {
-     "name": "Braised Short Rib",
-     "why": "Malbec with short rib.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Malbec",
@@ -17581,18 +15958,6 @@
     ],
     "line": "Bold Cabernet, Syrah and Chenin."
    },
-   "pairs": [
-    {
-     "name": "Espresso Encrusted Filet",
-     "why": "Stellenbosch Cab with steak.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "Chenin Blanc with roast chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Cabernet",
@@ -17681,18 +16046,6 @@
     ],
     "line": "Pinot with sweet red fruit and herbal notes."
    },
-   "pairs": [
-    {
-     "name": "Sun-Dried Tomato Salmon",
-     "why": "Patagonian Pinot with salmon.",
-     "to": null
-    },
-    {
-     "name": "Roasted Chicken",
-     "why": "Pinot with roast chicken.",
-     "to": null
-    }
-   ],
    "grapes": [
     {
      "name": "Pinot Noir",
