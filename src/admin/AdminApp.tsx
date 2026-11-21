@@ -78,6 +78,8 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
   const counts = useSuperCounts(hqMode);
   return (
     <div className={'admin' + (hqMode ? ' hq-mode' : '')}>
+      {/* Nov 21 (keyboard pass): the admin gets the book's Skip to content too */}
+      <a className="skip" href="#content">Skip to content</a>
       {hqMode && <HqPhoneBar user={user} counts={counts} />}
       {hqMode ? (
         <aside className="admin-side hq-side-bar">
@@ -91,7 +93,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
         <div className="admin-brand">
           {/* Nov 11: a Mise-brand company (the Mise demo) gets the Mise Academy lockup and its restaurant's name on the demo line */}
           {/* Nov 17: the look of the store being worked in (its own logo, or the company's) */}
-          <Link to="/" className="admin-logo"><LookLogo /></Link>
+          <Link to="/" className="admin-logo" aria-label="Back to the book"><LookLogo /></Link>
           {user.demo && <button type="button" className="demo-line admin-demo" onClick={openWelcome} aria-haspopup="dialog"><span>{user.brand === 'mise' ? user.store?.name || ACADEMY_NAME : ACADEMY_NAME}</span>{' '}<span className="demo-pill">DEMO</span></button>}
         </div>
         <span className="admin-tag">{isSuper ? 'Super Admin' : 'Admin'}</span>

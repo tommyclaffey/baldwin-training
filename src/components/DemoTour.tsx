@@ -86,13 +86,21 @@ function viewBox(): Box {
 const PHONE_TOP = 64;
 const padded = (r: DOMRect): Box => ({ left: r.left - 8, top: r.top - 8, width: r.width + 16, height: r.height + 16 });
 
+/** Where focus goes when the welcome card or the tour closes (Nov 21, keyboard pass): back to what had it before (Show Me
+ *  Around, the DEMO pill), or, when that's gone (a fresh page, the tour moved on), the DEMO pill that opens them again. */
+function focusBack(before: Element | null) {
+  const pill = [...document.querySelectorAll<HTMLElement>('.demo-pill')].find((x) => x.getClientRects().length > 0);
+  const to = before instanceof HTMLElement && before !== document.body && before.isConnected && before.getClientRects().length > 0 ? before : pill;
+  requestAnimationFrame(() => { if (!document.querySelector('.dw, .tour-card')) to?.focus({ preventScroll: true }); });
+}
+
 /** While the card is up the keyboard belongs to it: Tab cycles its buttons, Escape closes. */
 function trapKeys(card: () => HTMLElement | null, close: () => void, more?: (e: KeyboardEvent) => void) {
   const onKey = (e: KeyboardEvent) => {
     if (e.key === 'Escape') { close(); return; }
     more?.(e);
     if (e.key !== 'Tab') return;
-    const f = [...(card()?.querySelectorAll<HTMLElement>('button, a[href]') ?? [])];
+    const f = [...(card()?.querySelectorAll<HTMLElement>('button:not(:disabled), a[href]') ?? [])];
     if (!f.length) return;
     e.preventDefault();
     const at = f.indexOf(document.activeElement as HTMLElement);
@@ -151,10 +159,11 @@ function WelcomeCard({ manager, place }: { manager: boolean; place: string }) {
   const titleId = useId();
   useEffect(() => {
     if (!open) return;
+    const before = document.activeElement;
     start.current?.focus({ preventScroll: true });
     document.body.classList.add('menu-lock');
     const off = trapKeys(() => card.current, closeWelcome);
-    return () => { off(); document.body.classList.remove('menu-lock'); };
+    return () => { off(); document.body.classList.remove('menu-lock'); focusBack(before); };
   }, [open]);
   if (!open) return null;
   return createPortal(
@@ -289,6 +298,12 @@ function Tour({ manager }: { manager: boolean }) {
 
   const shown = !!stop && !!rect;
   useEffect(() => { if (shown) nextRef.current?.focus({ preventScroll: true }); }, [shown, i]);
+  // what had focus when the tour started gets it back when the tour ends
+  const opener = useRef<Element | null>(null);
+  useEffect(() => {
+    if (i !== null && !opener.current) opener.current = document.activeElement;
+    if (i === null && opener.current) { const was = opener.current; opener.current = null; focusBack(was); }
+  }, [i]);
   useEffect(() => {
     if (!shown) return;
     return trapKeys(() => card.current, end, (e) => {

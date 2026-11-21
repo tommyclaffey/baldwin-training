@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { focusVars, parseFocus, withFocus } from '../lib/focus';
+import { useModalKeys } from '../lib/modal';
 
 // The shapes a photo appears in across the app, so you can see nothing important gets cut off.
 const SHAPES = [
@@ -19,6 +20,7 @@ export function PhotoAdjust({ value, label, onSave, onClose }: { value: string; 
   const stage = useRef<HTMLDivElement>(null);
   const drag = useRef(false);
   const current = withFocus(start.url, x, y, z);
+  const box = useRef<HTMLDivElement>(null); useModalKeys(box, true); // Nov 21 (keyboard pass): focus in, Tab stays in, back after
 
   useEffect(() => {
     const esc = (e: globalThis.KeyboardEvent) => { if (e.key === 'Escape') { e.stopPropagation(); onClose(); } };
@@ -43,7 +45,7 @@ export function PhotoAdjust({ value, label, onSave, onClose }: { value: string; 
 
   return createPortal(
     <div className="modal-back adjust-back" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="modal adjust" role="dialog" aria-modal="true" aria-label={`Adjust ${label}`}>
+      <div ref={box} className="modal adjust" role="dialog" aria-modal="true" aria-label={`Adjust ${label}`}>
         <div className="adjust-head">
           <h2>Adjust Photo</h2>
           <p>Drag to the part that matters most. It stays in frame in every shape.</p>

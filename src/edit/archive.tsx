@@ -7,6 +7,7 @@ import { createPortal } from 'react-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
+import { useModalKeys } from '../lib/modal';
 
 /** An item someone can archive (node.arc, or the Edit Mode bar's page). s: a group dish (comes off this store only). */
 export type Arc = { e: number; n: string; c: string; s?: string; o?: number };
@@ -90,12 +91,13 @@ export function ArchiveHost() {
   };
 
   const copy = pending ? confirmCopy(pending.arc) : null;
+  const arcBox = useRef<HTMLDivElement>(null); useModalKeys(arcBox, !!(pending && copy), undefined, { own: true }); // Nov 21: Tab stays in
   return (
     <>
       {pending && copy && createPortal(
         <div className="modal-back arc-back" onMouseDown={(e) => { if (e.target === e.currentTarget && !busy) close(); }}
           onKeyDown={(e) => { if (e.key === 'Escape' && !busy) close(); }}>
-          <div className="modal arc-confirm" role="alertdialog" aria-modal="true" aria-labelledby="arc-title" aria-describedby="arc-body">
+          <div ref={arcBox} className="modal arc-confirm" role="alertdialog" aria-modal="true" aria-labelledby="arc-title" aria-describedby="arc-body">
             <h2 id="arc-title">{copy.title}</h2>
             <p id="arc-body">{copy.body}</p>
             {!!pending.changes && <p className="arc-note">Your {pending.changes === 1 ? '1 unsaved change' : `${pending.changes} unsaved changes`} won’t be saved.</p>}

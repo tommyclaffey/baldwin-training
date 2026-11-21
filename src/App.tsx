@@ -21,6 +21,7 @@ import { TeamBar } from './components/TeamBar';
 import { MyPathPage, PathReadBar } from './path/MyPath';
 import { AckPage } from './path/AckPage';
 import { theme } from './lib/theme';
+import { focusablesIn } from './lib/modal';
 import { LookLogo } from './components/LookLogo';
 
 // Mise skin (Nov 10): a Mise-brand company sees the app in Mise (Nov 11: the brand comes with the session, see lib/theme.ts);
@@ -56,7 +57,16 @@ function Book() {
   // Phone menu: Escape closes it, and the page behind doesn't scroll while it's open.
   useEffect(() => {
     if (!menu) return;
-    const esc = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenu(false); };
+    const esc = (e: KeyboardEvent) => {
+      const btn = document.querySelector<HTMLElement>('.menu-btn'), side = document.getElementById('side');
+      if (e.key === 'Escape') { setMenu(false); btn?.focus(); return; }
+      // Nov 21 (keyboard pass): while the menu covers the page, Tab goes round the menu button and the menu, not the page behind
+      if (e.key !== 'Tab' || !btn || !side || !btn.getClientRects().length) return;
+      const f = [btn, ...focusablesIn(side)];
+      // the backdrop (a Close Menu button for pointers) sits between the two, so every step is taken here
+      const at = f.indexOf(document.activeElement as HTMLElement);
+      e.preventDefault(); f[at < 0 ? 0 : (at + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    };
     document.addEventListener('keydown', esc);
     document.body.classList.add('menu-lock');
     return () => { document.removeEventListener('keydown', esc); document.body.classList.remove('menu-lock'); };

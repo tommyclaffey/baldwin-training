@@ -15,6 +15,7 @@ import { menuName } from '../lib/demo';
 import { currentBrand, titleCase } from '../lib/theme';
 import { WaitingCard } from '../chat/Waiting';
 import { linkText } from '../lib/account';
+import { useModalKeys } from '../lib/modal';
 
 /* ---------- data ---------- */
 type Status = 'behind' | 'new' | 'on-track' | 'done' | 'no-job';
@@ -602,6 +603,7 @@ function PromoteDialog({ p, onClose, onPromoted }: { p: Person; onClose: () => v
   const [store, setStore] = useState(String(p.promotion ? p.promotion.storeId ?? '' : p.storeId ?? ''));
   const { busy, msg, run } = useAct();
   useEffect(() => { const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); }; document.addEventListener('keydown', k); return () => document.removeEventListener('keydown', k); }, [onClose]);
+  const box = useRef<HTMLDivElement>(null); useModalKeys(box, true); // Nov 21: focus in, Tab stays in, focus back after
   const storeId = store === '' ? null : Number(store);
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -612,7 +614,7 @@ function PromoteDialog({ p, onClose, onPromoted }: { p: Person; onClose: () => v
   };
   return (
     <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="modal pp-add pp-promote" role="dialog" aria-modal="true" aria-labelledby="pp-promote-title">
+      <div ref={box} className="modal pp-add pp-promote" role="dialog" aria-modal="true" aria-labelledby="pp-promote-title">
         <button type="button" className="icon-btn" onClick={onClose} aria-label="Close">✕</button>
         <h2 id="pp-promote-title">Promote {first} to Manager</h2>
         <form className="pp-add-invite" onSubmit={submit}>
@@ -731,9 +733,10 @@ function AddPerson({ joinCode, link, company, onClose, onCode }: { joinCode: str
   const copyLink = () => { void navigator.clipboard?.writeText(joinUrl); setCopied('link'); };
   const invite = (e: FormEvent) => { e.preventDefault(); void run('inv', async () => { setMade(null); const r = await api<{ link: string; email: string; days: number; mail: MailStatus }>('/api/team/invite', { method: 'POST', body: { email, role } }); setMade({ ...r, link: location.origin + r.link }); setEmail(''); }); };
   useEffect(() => { const k = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); }; document.addEventListener('keydown', k); return () => document.removeEventListener('keydown', k); }, [onClose]);
+  const box = useRef<HTMLDivElement>(null); useModalKeys(box, true); // Nov 21: focus in, Tab stays in, focus back after
   return (
     <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="modal pp-add" role="dialog" aria-modal="true" aria-labelledby="pp-add-title">
+      <div ref={box} className="modal pp-add" role="dialog" aria-modal="true" aria-labelledby="pp-add-title">
         <button type="button" className="icon-btn" onClick={onClose} aria-label="Close">✕</button>
         <h2 id="pp-add-title">Add a Person</h2>
         <section>

@@ -11,6 +11,7 @@ import { closeChat, setPanelRoom, useChatPanel } from './panel';
 import { Conversation, Conversations, I, StagedCard, useIsPhone, usePoll, type List } from './TeamChat';
 import { hasChat, setChatUnread } from './unread';
 import { ChatToast } from './Waiting';
+import { useModalKeys } from '../lib/modal';
 
 const onChatPage = (p: string) => p === '/team-chat' || p.startsWith('/team-chat/');
 
@@ -44,6 +45,8 @@ function ChatPanel() {
   useEffect(() => { void loadList(); }, [loadList]);
   usePoll(loadList, 6000, !room);
 
+  // Nov 21 (keyboard pass): on a phone the panel is a sheet over the page (modal), so Tab stays inside it
+  useModalKeys(ref, phone, undefined, { own: true });
   // Focus moves into the panel when it opens, and back to the panel when you leave a conversation for the list.
   useEffect(() => { if (!room) ref.current?.focus({ preventScroll: true }); }, [room]);
   // Escape closes the panel, unless something inside it is open (the New Message or Link a Page lists close first;

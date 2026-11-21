@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { api, uploadCaptions, uploadFile, type MediaItem, type Video } from '../lib/api';
 import { forgetCaptions } from './VideoEmbed';
+import { useModalKeys } from '../lib/modal';
 
 type Props = {
   kind: 'image' | 'video';
@@ -21,6 +22,7 @@ export function MediaPicker({ kind, title, onPick, onClose, onRemove }: Props) {
   const [uploaded, setUploaded] = useState<MediaItem | null>(null);
   const [ccBusy, setCcBusy] = useState(false);
   const dialog = useRef<HTMLDivElement>(null);
+  useModalKeys(dialog, true, undefined, { own: true }); // Nov 21 (keyboard pass): Tab stays in (focus in and back: below)
 
   useEffect(() => {
     const prev = document.activeElement as HTMLElement | null;

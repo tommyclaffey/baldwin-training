@@ -2537,6 +2537,8 @@ body:has(.admin) .tcp { top: 0; } /* the admin has no top bar */
 .page-tools.inline .eip-edit { min-height: 44px; padding: 10px 16px; white-space: nowrap; }
 .mg-btn.send-team, .eip-edit.send-team { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
 .tc .tc-compose textarea:focus-visible { outline: none; } /* the composer's border shows focus (focus-within) */
+/* Nov 21 (keyboard pass): a border colour change alone was hard to see; the composer gets the app's focus ring while you type */
+.tc .tc-compose:has(textarea:focus-visible) { outline: 2px solid var(--c-focus, var(--copper)); outline-offset: 2px; }
 /* The admin beside the open chat panel: its content is 400 px narrower, so it takes the layout it has at that width. */
 @media screen and (min-width: 1100px) and (max-width: 1579px) {
   body.tcp-open .mh-cols { grid-template-columns: minmax(0, 1fr); }

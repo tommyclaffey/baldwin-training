@@ -1,12 +1,13 @@
 // Certificates (Nov 8, Tommy: "Let's do the cert"). Figma: 09 · Proposals → 22 · Certificates: the certificate (468:46,
 // Level 1 without a practical 468:89) and its page (469:80). Every size is in container units, so the certificate scales
 // with its box and prints edge to edge on US Letter, landscape. "Print or Save as PDF" uses the browser's own print window.
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { api } from '../lib/api';
 import { asBrand, currentBrand, theme, THEMES } from '../lib/theme';
 import { LookLogo } from '../components/LookLogo';
 import { useSession } from '../lib/session';
+import { useModalKeys } from '../lib/modal';
 
 export type Cert = {
   key: string; isA?: boolean; program: string; programName: string; programSlug: string; level: number; levelWord: string; title: string; seal: string;
@@ -85,6 +86,8 @@ export function CertificatePage() {
   const mine = !who || Number(who) === user?.id;
   const [full, setFull] = useState(false); // Nov 10 (audit): on a phone the certificate is tiny; this shows it sideways, as big as the screen allows
   useEffect(() => { if (!full) return; const k = (e: KeyboardEvent) => { if (e.key === 'Escape') setFull(false); }; window.addEventListener('keydown', k); return () => window.removeEventListener('keydown', k); }, [full]);
+  // Nov 21 (keyboard pass): Tab stays on the full-size view (its Close button), and focus goes back to View Full Size after
+  const fullBox = useRef<HTMLDivElement>(null); useModalKeys(fullBox, full);
   if (err) return <main className="page cp"><p role="alert" className="mp-err">{err}</p></main>;
   if (!list) return <main className="page cp"><div className="loader" /></main>;
   if (!c) return (
@@ -113,9 +116,9 @@ export function CertificatePage() {
       </header>
       <div className="cp-sheet"><Certificate c={c} /></div>
       {full && (
-        <div className="cp-full" role="dialog" aria-modal="true" aria-label="Certificate, full size" onClick={() => setFull(false)}>
+        <div ref={fullBox} className="cp-full" role="dialog" aria-modal="true" aria-label="Certificate, full size" onClick={() => setFull(false)}>
           <div className="cp-full-rot"><Certificate c={c} /></div>
-          <button type="button" className="cp-full-close" onClick={() => setFull(false)} autoFocus>Close</button>
+          <button type="button" className="cp-full-close" onClick={() => setFull(false)}>Close</button>
         </div>
       )}
       <p className="cp-note">To keep a copy, pick “Save as PDF” in the print window. Your manager can see it in People. Retaking the final never takes it away.</p>

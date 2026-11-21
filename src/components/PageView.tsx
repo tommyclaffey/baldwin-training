@@ -322,8 +322,10 @@ export function PageView() {
             {editing && <EditModeBar page={page.edit || null} hasAdd={hasAdd} floating={compact} width={compact ? '100%' : DESIGN_W} zoom={zoom < 1 ? zoom : undefined} />}
             {/* Every page has one h1: the drawn title (FigmaNode), or this hidden one when the design has none. */}
             {!hasPageTitle(main) && <h1 className="sr-only">{entry.title}</h1>}
-            <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
+            {/* Nov 21 (keyboard pass): the tools sit over the top row (absolute), so they come first in the Tab order too,
+                not after the whole page */}
             {tools && !compact && <PageTools width={DESIGN_W} zoom={zoom < 1 ? zoom : undefined}>{tools}</PageTools>}
+            <FigmaNode node={main} rootStyle={{ width: compact ? '100%' : DESIGN_W, height: 'auto', minHeight: '100vh', margin: '0 auto', position: 'relative', zoom: zoom < 1 ? zoom : undefined }} />
           </main>
           {isQuiz && <QuizModal />}
           </PageEditContext.Provider>

@@ -6,6 +6,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as RPointerEvent } from 'react';
 import { api, type MediaItem } from '../lib/api';
 import { useSession } from '../lib/session';
+import { useModalKeys } from '../lib/modal';
 import { SpinViewer } from '../components/SpinViewer';
 
 type Box = [number, number, number, number]; // x0, y0, x1, y1 as fractions of the photo
@@ -121,10 +122,13 @@ export function BottleScanner({ name, detail, kind = 'wine', onDone, onClose, sp
     return () => window.removeEventListener('keydown', esc);
   }, [onClose]);
   const [uploadNow, setUploadNow] = useState<File[] | null>(null);
+  // Nov 21 (keyboard pass): focus goes into the scanner and stays there; Escape (above) closes it; focus goes back after
+  const box = useRef<HTMLDivElement>(null);
+  useModalKeys(box, true);
   const title = spin || mode !== 'photo' ? 'Spin the Bottle' : 'Scan the Bottle';
   return (
     <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className={'modal scanner' + (!picked ? ' scanner-pick' : mode === 'photos' ? ' scanner-pbp' : '')} role="dialog" aria-modal="true" aria-label={`${title} · ${name}`}>
+      <div ref={box} className={'modal scanner' + (!picked ? ' scanner-pick' : mode === 'photos' ? ' scanner-pbp' : '')} role="dialog" aria-modal="true" aria-label={`${title} · ${name}`}>
         <header className="scanner-head">
           <div><strong>{title}</strong><small>{[name, detail].filter(Boolean).join(' · ')}</small></div>
           <button className="icon-btn scanner-close" onClick={onClose} aria-label="Close">

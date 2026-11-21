@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { inDemo } from '../lib/demo';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
+import { useModalKeys } from '../lib/modal';
 import type { FNode } from './FigmaNode';
 
 export type Meta = {
@@ -62,19 +63,17 @@ export function InteractProvider({ children }: { children: ReactNode }) {
     zoom: (img, caption) => setPhoto({ img, caption }),
   }), [state, set]);
 
-  useEffect(() => {
-    if (!photo) return;
-    const esc = (e: globalThis.KeyboardEvent) => { if (e.key === 'Escape') setPhoto(null); };
-    window.addEventListener('keydown', esc);
-    return () => window.removeEventListener('keydown', esc);
-  }, [photo]);
+  // Nov 21 (keyboard pass): focus goes into the photo box, stays in it, Escape closes it, and focus goes back to the photo
+  const box = useRef<HTMLElement>(null);
+  const closePhoto = useCallback(() => setPhoto(null), []);
+  useModalKeys(box, !!photo, closePhoto);
 
   return (
     <Ctx.Provider value={store}>
       {children}
       {photo && (
         <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) setPhoto(null); }}>
-          <figure className="modal photo-modal" role="dialog" aria-modal="true" aria-label={photo.caption || 'Photo'}>
+          <figure ref={box} className="modal photo-modal" role="dialog" aria-modal="true" aria-label={photo.caption || 'Photo'}>
             <button className="icon-btn" onClick={() => setPhoto(null)} aria-label="Close">✕</button>
             <img src={photo.img} alt={photo.caption || ''} />
             {photo.caption && <figcaption>{photo.caption}</figcaption>}

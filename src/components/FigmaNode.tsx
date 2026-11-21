@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom';
 import svgs from '../content/svgs.json';
 import { SearchBox } from './SearchBox';
 import { VideoEmbed } from './VideoEmbed';
+import { useModalKeys } from '../lib/modal';
 import type { Video } from '../lib/api';
 import { AddRow } from './EditSheet';
 import { SpinViewer } from './SpinViewer';
@@ -415,6 +416,23 @@ function CarouselGroup({ children }: { children: ReactNode }) {
   return <CarouselContext.Provider value={{ setEl, go, label, atStart: pos.atStart, atEnd: pos.atEnd }}>{children}</CarouselContext.Provider>;
 }
 
+
+/** A video, played in a box over the page (Nov 21, keyboard pass: focus goes into it, stays in it, Escape closes it, and
+ *  focus comes back to the play button). */
+function VideoModal({ video, onClose }: { video: Video; onClose: () => void }) {
+  const box = useRef<HTMLDivElement>(null);
+  useModalKeys(box, true, onClose);
+  return createPortal(
+    <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }} onClick={(e) => e.stopPropagation()}>
+      <div ref={box} className="modal video-modal" role="dialog" aria-modal="true" aria-label="Video">
+        <button className="icon-btn" onClick={onClose} aria-label="Close">✕</button>
+        <div className="video-frame"><VideoEmbed video={video} /></div>
+        {/* keys pressed inside the YouTube player never reach the page, so Tab out of it lands here and goes back to Close */}
+        <span className="sr-only" tabIndex={0} onFocus={() => box.current?.querySelector<HTMLElement>('.icon-btn')?.focus()} />
+      </div>
+    </div>, document.body);
+}
+
 export function FigmaNode({ node, parentLm, parentH, rootStyle }: { node: FNode; parentLm?: 'H' | 'V'; parentH?: number; rootStyle?: CSSProperties }) {
   if (node.bal && !rootStyle) return <Balanced node={node} parentLm={parentLm} parentH={parentH} />;
   return <Node node={node} parentLm={parentLm} parentH={parentH} rootStyle={rootStyle} />;
@@ -605,13 +623,7 @@ function Node({ node: drawn, parentLm, parentH, rootStyle }: { node: FNode; pare
   }
   const overlays = (
     <>
-      {playing && node.vid && createPortal(
-        <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) setPlaying(false); }} onClick={(e) => e.stopPropagation()}>
-          <div className="modal video-modal" role="dialog" aria-modal="true" aria-label="Video">
-            <button className="icon-btn" onClick={() => setPlaying(false)} aria-label="Close">✕</button>
-            <div className="video-frame"><VideoEmbed video={node.vid} /></div>
-          </div>
-        </div>, document.body)}
+      {playing && node.vid && <VideoModal video={node.vid} onClose={() => setPlaying(false)} />}
     </>
   );
   if (holder && plan) {
