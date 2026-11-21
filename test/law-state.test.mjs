@@ -108,3 +108,18 @@ test('the Mise demo (Fig & Fire, state not set) gets the note; the hubs’ sourc
   const mine = await page('mi', await hubFile('mi', 'cocktail-program'));
   assert.ok(mine.includes('The state law behind Level 4: service, minors, hours, training.') && !mine.includes('MICHIGAN LAW'), 'The Baldwin’s hub as before');
 });
+
+test('a demo copy that takes a removed copy’s id reads its own state (no per-id cache)', async () => {
+  // Nov 21: on the live site a Baldwin demo copy got the id a Fig & Fire copy had, and showed the note
+  const db = new DatabaseSync(path.join(dir, 'baldwin.db'));
+  const t = '2026-11-21T00:00:00.000Z', exp = '2027-11-21T00:00:00.000Z';
+  db.prepare("INSERT INTO companies(id, name, slug, created_at, demo, brand, plan) VALUES (900, 'Fig & Fire', 'demo-mise-reuse', ?, 1, 'mise', 'foundation')").run(t);
+  db.prepare("INSERT INTO stores(id, company_id, name, slug, book_ready, sort, created_at) VALUES (900, 900, 'Fig & Fire', 'fig-and-fire', 1, 0, ?)").run(t);
+  const uid = Number(db.prepare("INSERT INTO users(company_id, name, role, store_id, created_at) VALUES (900, 'Reuse Manager', 'manager', 900, ?)").run(t).lastInsertRowid);
+  db.prepare('INSERT INTO sessions(token_hash,user_id,created_at,expires_at) VALUES (?,?,?,?)').run(sha('reuse'), uid, t, exp);
+  assert.ok((await page('reuse', 'l-bar-l4-law~0')).some((s) => NOTE.test(s)), 'Fig & Fire copy: labelled');
+  db.prepare("UPDATE companies SET name = 'Baldwin Restaurant Group', brand = 'baldwin', plan = 'custom-brand' WHERE id = 900").run();
+  db.prepare("UPDATE stores SET name = 'The Baldwin' WHERE id = 900").run();
+  db.close();
+  assert.ok(!(await page('reuse', 'l-bar-l4-law~0')).some((s) => NOTE.test(s)), 'now a Baldwin copy on the same id: Michigan, as written');
+});

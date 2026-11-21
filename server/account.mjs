@@ -47,7 +47,7 @@ export const manifest = (id) => (hasAccount(id) ? readJson(path.join(accountDir(
 let DB = null;
 /** The server's database, so a request's store can be matched to its account without passing it around. */
 export function initAccounts(db) { DB = db; listed = null; pages.clear(); indexes.clear(); pairsCache.clear(); }
-const companyCache = new Map(); // company id → { account, demoCopy } (company rows don't change account; demo rows go away)
+const companyCache = new Map(); // company id → { account, demoCopy }, real companies only (demo copies are read each time)
 /** { account, demoCopy } for a company: the account folder it reads, or null. */
 export function accountFor(companyId) {
   if (!DB || !companyId || !accountIds().length) return null;
@@ -58,8 +58,9 @@ export function accountFor(companyId) {
   if (co && !co.demo && hasAccount(co.id)) out = { account: co.id, demoCopy: false };
   // A demo copy of The Baldwin (server/demo.mjs, DEMOS.baldwin) shows Baldwin Restaurant Group's account: company 1.
   else if (co?.demo && co.brand === 'baldwin' && co.name === BRG_NAME && hasAccount(1)) out = { account: 1, demoCopy: true };
-  if (companyCache.size > 500) companyCache.clear();
-  companyCache.set(k, out);
+  // Nov 21: only real companies are kept. Demo copies come and go, and a new copy can take a removed one's id (a Baldwin
+  // demo copy was read as the Fig & Fire copy that had the id before it).
+  if (co && !co.demo) { if (companyCache.size > 500) companyCache.clear(); companyCache.set(k, out); }
   return out;
 }
 

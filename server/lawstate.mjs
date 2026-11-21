@@ -35,27 +35,22 @@ export function initLawState(db) {
     // Baldwin Restaurant Group is in Michigan (the lessons' law is its own)
     db.prepare("UPDATE companies SET state = ? WHERE id = 1 AND name = ?").run(LAW_STATE, BRG_NAME);
   }
-  stateCache.clear();
 }
 
-const stateCache = new Map();
-/** A company's state: its own, or (a demo copy of The Baldwin) Baldwin Restaurant Group's. null when nobody has set it. */
+/** A company's state: its own, or (a demo copy of The Baldwin) Baldwin Restaurant Group's. null when nobody has set it.
+ *  Read every request, never cached: demo copies come and go, and a new one can take a removed one's id. */
 export function companyState(db, companyId) {
   const k = Number(companyId);
   if (!k) return null;
-  if (stateCache.has(k)) return stateCache.get(k);
-  let out = null;
   try {
-    const co = db.prepare('SELECT * FROM companies WHERE id = ?').get(k);
-    if (co?.state) out = stateName(co.state);
-    else if (co?.demo && (co.brand || 'baldwin') === 'baldwin' && co.name === BRG_NAME) out = stateName(db.prepare('SELECT state FROM companies WHERE id = 1').get()?.state);
-  } catch { out = null; } // no state column yet (a database the server hasn't opened)
-  if (stateCache.size > 500) stateCache.clear();
-  stateCache.set(k, out);
-  return out;
+    const co = db.prepare('SELECT id, name, demo, brand, state FROM companies WHERE id = ?').get(k);
+    if (co?.state) return stateName(co.state);
+    if (co?.demo && (co.brand || 'baldwin') === 'baldwin' && co.name === BRG_NAME) return stateName(db.prepare('SELECT state FROM companies WHERE id = 1').get()?.state);
+  } catch { /* no state column yet (a database the server hasn't opened) */ }
+  return null;
 }
-/** After a super admin changes a company's state. */
-export const forgetState = () => stateCache.clear();
+/** After a super admin changes a company's state (nothing is kept between requests; kept for the callers). */
+export const forgetState = () => {};
 
 const LAW = /\bMCL\s*436|Michigan Liquor Control (Code|Commission)/i;
 /** Is this lesson section written from Michigan law? */
