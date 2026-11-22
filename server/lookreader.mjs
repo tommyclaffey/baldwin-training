@@ -69,17 +69,20 @@ async function resolvePublic(host, { allowPrivate = false } = {}) {
 
 /**
  * GET one address, safely. → { url (after redirects), status, type, body: Buffer }.
- * `kinds`: content types to accept ('html', 'css', 'json', 'image'). `_allowPrivate` is for the test suite only (a local
+ * `kinds`: content types to accept ('html', 'css', 'json', 'image'). `_allow` is for the test suite only: the one local
  * test server); nothing in the app sets it.
  */
-export async function safeFetch(raw, { maxBytes = LIMITS.html, timeoutMs = LIMITS.perRequestMs, kinds = ['html'], signal, _allowPrivate = false, base } = {}) {
-  let url = _allowPrivate ? new URL(raw, base) : checkUrl(raw, base);
+export async function safeFetch(raw, { maxBytes = LIMITS.html, timeoutMs = LIMITS.perRequestMs, kinds = ['html'], signal, _allow = null, base } = {}) {
+  // (test only) `_allow`: 'host:port' of a local test server, let through as if it were public; every other address is checked
+  const allowed = (u) => !!_allow && u.host === _allow && u.protocol === 'http:';
+  const check = (r, b) => { const u = new URL(String(r).trim(), b); return allowed(u) ? u : checkUrl(r, b); };
+  let url = check(raw, base);
   const deadline = AbortSignal.timeout(timeoutMs);
   const stop = signal ? AbortSignal.any([signal, deadline]) : deadline;
   for (let hop = 0; hop <= LIMITS.redirects; hop++) {
     if (stop.aborted) throw new ReadError(signal?.aborted ? 'Stopped.' : 'That site took too long to answer.', signal?.aborted ? 'cancel' : 'timeout');
     const host = url.hostname.replace(/^\[|\]$/g, '');
-    const addr = await resolvePublic(host, { allowPrivate: _allowPrivate });
+    const addr = await resolvePublic(host, { allowPrivate: allowed(url) });
     const res = await new Promise((resolve, reject) => {
       const lib = url.protocol === 'https:' ? https : http;
       const req = lib.request(url, {
@@ -95,7 +98,7 @@ export async function safeFetch(raw, { maxBytes = LIMITS.html, timeoutMs = LIMIT
     if ([301, 302, 303, 307, 308].includes(res.statusCode) && res.headers.location) {
       res.resume();
       if (hop === LIMITS.redirects) throw new ReadError('That address redirects too many times.', 'redirects');
-      url = _allowPrivate ? new URL(res.headers.location, url) : checkUrl(res.headers.location, url);
+      url = check(res.headers.location, url);
       continue;
     }
     if (res.statusCode < 200 || res.statusCode >= 300) { res.resume(); throw new ReadError(`${host} answered ${res.statusCode}.`, 'status'); }
@@ -396,17 +399,17 @@ const BG_URL = /background(?:-image)?\s*:[^;}]*url\(\s*['"]?([^'")]+)['"]?\s*\)/
  * Reads a website. `step(i, state, detail)` reports progress (i = index in STEPS; state 'run' | 'done' | 'skip').
  * → { url, host, siteName, pages, logos: [{ buf, ext, a (analyzeImage), score, src, variant }], icon: { buf, ext } | null,
  *     colors: [{ hex, weight, from }], colorCount, logoColors, fonts (chooseFonts), photos: [{ buf, src, w, h }] }
- * `fetchImpl`/`_allowPrivate`: the test suite's local server. `isGoogle`: the Google Fonts check (tests pass a stub).
+ * `fetchImpl`/`_allow`: the test suite's local server. `isGoogle`: the Google Fonts check (tests pass a stub).
  */
-export async function readSite(raw, { signal, step = () => {}, fetchImpl = safeFetch, _allowPrivate = false, isGoogle } = {}) {
+export async function readSite(raw, { signal, step = () => {}, fetchImpl = safeFetch, _allow = null, isGoogle } = {}) {
   const total = AbortSignal.timeout(LIMITS.totalMs);
   const stop = signal ? AbortSignal.any([signal, total]) : total;
-  const get = (u, opts) => fetchImpl(u, { signal: stop, _allowPrivate, ...opts });
+  const get = (u, opts) => fetchImpl(u, { signal: stop, _allow, ...opts });
   const quiet = (p) => p.catch((e) => { if (signal?.aborted) throw new ReadError('Stopped.', 'cancel'); return null; });
   let input = String(raw || '').trim();
   if (!input) throw new ReadError('Paste your website’s address first.', 'url');
   if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(input)) input = 'https://' + input;
-  if (!_allowPrivate) checkUrl(input);
+  if (!_allow || new URL(input).host !== _allow) checkUrl(input);
   step(0, 'run', 'Opening ' + new URL(input).hostname);
   let home;
   try { home = await get(input, { kinds: ['html'], maxBytes: LIMITS.html }); }

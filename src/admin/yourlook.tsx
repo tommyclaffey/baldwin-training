@@ -74,7 +74,7 @@ type Ctx = { st: State; reload: () => Promise<void>; refresh: () => Promise<void
 
 /** The Mise look, A2, on this screen only (the store may wear another look). */
 function Shell({ children }: { children: ReactNode }) {
-  return <div className="yl">{children}</div>;
+  return <div className="yl" style={{ '--y-sans': "'Archivo', system-ui, sans-serif" } as CSSProperties}>{children}</div>;
 }
 function Head({ crumbs, title, sub, step, done = 0 }: { crumbs: string[]; title: string; sub?: ReactNode; step?: number; done?: number }) {
   return (

@@ -4405,11 +4405,12 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 /* ── Your Look (Nov 22; Figma 09 · Idea Board → 44, 877:1388; src/admin/yourlook.tsx) ──────────────────────────────────
    Admin chrome, so always the Mise look with the A2 colours, whatever look the store wears: Bone page, Paper cards, Ink
    type, the warm charcoal panel #2E2622 for dark cards, one solid fig button per screen (its main action), Ink for the
-   other filled buttons. DM Serif Display Italic titles, Archivo text, DM Mono labels. */
+   other filled buttons. DM Serif Display Italic titles, Mise's sans text (--y-sans, set on .yl in yourlook.tsx, so the
+   look-body block never swaps it for a store look's face), DM Mono labels. */
 .admin-main:has(> .yl) { background: #EDE6DA; }
 .yl { --y-bone: #EDE6DA; --y-paper: #FBF8F2; --y-ink: #121110; --y-muted: #4A443E; --y-line: #D9CFBF; --y-panel: #2E2622; --y-raised: #3A302B; --y-plabel: #A8A097;
   --y-fig: #8E2A26; --y-fig-dk: #6E1F1C; --y-ok: #2F5E2B; --y-ok-bg: #E1EADB; --y-warn: #5E4300; --y-warn-bg: #F3E3B4; --y-blue: #3F6E99;
-  color: var(--y-ink); font-family: 'Archivo', system-ui, sans-serif; max-width: 1160px; }
+  color: var(--y-ink); font-family: var(--y-sans); max-width: 1160px; }
 .yl-page { display: flex; flex-direction: column; gap: 22px; }
 .yl-head { display: flex; flex-direction: column; gap: 8px; }
 .yl-crumbs { margin: 0; font: 500 12px/1.2 'DM Mono', ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--y-ink); }
@@ -4425,8 +4426,8 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .yl-steps li.is-done { background: var(--y-ok-bg); border-color: transparent; color: var(--y-ok); }
 .yl-steps li.is-on { background: var(--y-ink); border-color: var(--y-ink); color: var(--y-bone); }
 .yl-card { background: var(--y-paper); border: 1px solid var(--y-line); border-radius: 22px; padding: 26px 28px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.yl-card h2 { margin: 0; font: 600 24px/1.2 'Archivo', sans-serif; letter-spacing: -.01em; }
-.yl-card h3, .yl-previews h3 { margin: 6px 0 0; font: 600 16px/1.3 'Archivo', sans-serif; }
+.yl-card h2 { margin: 0; font: 600 24px/1.2 var(--y-sans); letter-spacing: -.01em; }
+.yl-card h3, .yl-previews h3 { margin: 6px 0 0; font: 600 16px/1.3 var(--y-sans); }
 .yl-card p { margin: 0; line-height: 1.55; }
 .yl-dark { background: var(--y-panel); border-color: var(--y-panel); color: var(--y-bone); }
 .yl-dark .yl-label { color: var(--y-plabel); }
@@ -4442,7 +4443,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .yl-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .yl-foot { gap: 14px; }
 /* buttons: one fig per screen (primary), Ink, and outlined */
-.yl-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border-radius: 10px; border: 1px solid transparent; font: 600 15px/1 'Archivo', sans-serif; text-decoration: none; cursor: pointer; white-space: nowrap; }
+.yl-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border-radius: 10px; border: 1px solid transparent; font: 600 15px/1 var(--y-sans); text-decoration: none; cursor: pointer; white-space: nowrap; }
 .yl-btn.small { min-height: 38px; padding: 0 16px; font-size: 14px; }
 .yl-btn.primary { background: var(--y-fig); color: var(--y-bone); border-color: var(--y-fig); }
 .yl-btn.primary:hover:not(:disabled) { background: var(--y-fig-dk); }
@@ -4485,13 +4486,13 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .yl-url { flex: 1; display: flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 16px; border: 2px solid var(--y-ink); border-radius: 12px; background: #fff; }
 .yl-url:focus-within { outline: 3px solid var(--y-fig); outline-offset: 2px; }
 .yl-url-pre { color: var(--y-muted); font-size: 18px; }
-.yl-url-input { flex: 1; min-width: 0; border: 0; outline: 0; font: 500 18px/1 'Archivo', sans-serif; color: var(--y-ink); background: transparent; }
+.yl-url-input { flex: 1; min-width: 0; border: 0; outline: 0; font: 500 18px/1 var(--y-sans); color: var(--y-ink); background: transparent; }
 .yl-url-row > .yl-btn { min-height: 56px; }
-.yl-input { flex: 1; min-height: 52px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--y-line); background: #F4EFE0; font: 16px 'Archivo', sans-serif; color: var(--y-muted); }
+.yl-input { flex: 1; min-height: 52px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--y-line); background: #F4EFE0; font: 16px var(--y-sans); color: var(--y-muted); }
 .yl-explain { font-size: 15.5px; }
 .yl-use { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .yl-seg { display: inline-flex; background: #E7E0D2; border-radius: 12px; padding: 4px; gap: 4px; }
-.yl-seg button { min-height: 40px; padding: 0 16px; border: 0; border-radius: 9px; background: transparent; font: 600 14.5px 'Archivo', sans-serif; color: var(--y-ink); cursor: pointer; }
+.yl-seg button { min-height: 40px; padding: 0 16px; border: 0; border-radius: 9px; background: transparent; font: 600 14.5px var(--y-sans); color: var(--y-ink); cursor: pointer; }
 .yl-seg button.is-on { background: var(--y-ink); color: var(--y-bone); }
 .yl-narrow { display: none; }
 /* reading */
@@ -4615,16 +4616,16 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .yl-dots { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 12px; font-size: 16px; }
 .yl-dots li::marker { color: #8F867C; }
 .yl-locked .yl-url-row { opacity: 1; }
-@media (max-width: 1180px) {
+@media screen and (max-width: 1180px) {
   .yl-adjust { grid-template-columns: 1fr; }
   .yl-controls { position: static; }
   .yl-four { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .yl-three, .yl-two, .yl-reading, .yl-gate { grid-template-columns: 1fr; }
   .yl-title { font-size: 44px; }
 }
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
   .yl-title { font-size: 40px; line-height: 1.02; }
   .yl-card { padding: 20px 18px; border-radius: 18px; }
   .yl-url-row { flex-direction: column; }
