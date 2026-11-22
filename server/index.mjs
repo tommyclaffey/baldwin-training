@@ -15,7 +15,7 @@ import { archivedList, ARCHIVE_GROUPS } from './archive.mjs';
 import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mjs';
 import { COLLECTIONS, SHARED, LOCAL_KEYS, BASE_COURSES, BASE_SECTIONS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
 import { slugify } from './templates.mjs';
-import { startScan, cutScan, lastCut, warmScanner, warmOnStart, spinFrame, spinFrames, spinPhoto, spinAlign, spinAligned, spinOdd, dropSpinSet, SPIN_PHOTOS } from './scanner.mjs';
+import { startScan, cutScan, lastCut, lastCutPng, warmScanner, warmOnStart, spinFrame, spinFrames, spinPhoto, spinAlign, spinAligned, spinOdd, dropSpinSet, SPIN_PHOTOS } from './scanner.mjs';
 import { personPath, personSummary, isPathSignoff, validJobs, JOBS } from './paths.mjs';
 import { pathCtxFor, teamRows, signoffQueue, quizWeek, newCertificates, lastEdits, bookTiles, reminderText, addNote, pathSteps, personRow, todayIso, addDays } from './team.mjs';
 import { lockedTopics, isInviteKey } from './invite.mjs';
@@ -1157,7 +1157,11 @@ async function api(req, res, url) {
     if (!dm) needRoom(c.company, jpg.length);
     if (dm && demoSaves(c.company) >= DEMO_SCAN.saves) fail(429, demoFull);
     const name = str(b.name, 80) || 'Bottle';
-    const file = saveScan(dm, `${Date.now().toString(36)}-bottle-${slugify(name).slice(0, 40) || 'scan'}.jpg`, jpg);
+    const stem = `${Date.now().toString(36)}-bottle-${slugify(name).slice(0, 40) || 'scan'}`;
+    const file = saveScan(dm, `${stem}.jpg`, jpg);
+    // Nov 22: the transparent cut-out beside it (same folder, same name, .png), for later looks and print. Not a media row.
+    const master = lastCutPng(String(b.token || ''), u.id);
+    if (master) try { fs.writeFileSync(path.join(MEDIA_DIR, file.replace(/\.jpg$/, '.png')), master); } catch (e) { console.error('scan master', e.message); }
     const r = db.prepare('INSERT INTO media(kind,title,file,mime,size,created_by,created_at,company_id,store_id) VALUES (?,?,?,?,?,?,?,?,?)').run('file', `Bottle · ${name}`, file, 'image/jpeg', jpg.length, u.id, now(), c.company, c.store);
     audit(db, u.id, 'scan bottle', name, c.company);
     return sendJson(res, 200, mediaOut(db.prepare('SELECT * FROM media WHERE id = ?').get(r.lastInsertRowid)));

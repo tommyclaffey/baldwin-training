@@ -59,8 +59,26 @@ const grabFrom = (src: HTMLVideoElement, max = 1280, q = 0.9) => new Promise<{ b
   c.getContext('2d')!.drawImage(src, 0, 0, c.width, c.height);
   c.toBlob((b) => ok({ blob: b!, w: c.width, h: c.height }), 'image/jpeg', q);
 });
-/** A picked photo, made smaller in the browser when it can be read (an iPhone's 12 MP photo → about 1600 px). */
-async function shrink(f: File, max = 1600): Promise<{ blob: Blob; w: number; h: number }> {
+/** The camera's own full-resolution photo (ImageCapture), turned upright and kept only if it's framed like the preview
+ *  (same shape within 2%), at most 2400 px on its long side (what the server keeps). Null where it isn't available. */
+async function fullPhoto(v: HTMLVideoElement): Promise<{ blob: Blob; w: number; h: number } | null> {
+  const IC = (window as unknown as { ImageCapture?: new (t: MediaStreamTrack) => { takePhoto: () => Promise<Blob> } }).ImageCapture;
+  const track = (v.srcObject as MediaStream | null)?.getVideoTracks()[0];
+  if (!IC || !track) return null;
+  try {
+    const blob = await new IC(track).takePhoto();
+    const bmp = await createImageBitmap(blob, { imageOrientation: 'from-image' } as ImageBitmapOptions);
+    if (Math.abs(bmp.width / bmp.height - v.videoWidth / v.videoHeight) > 0.02 * (v.videoWidth / v.videoHeight)) return null;
+    const k = Math.min(1, 2400 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas'); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    c.getContext('2d')!.drawImage(bmp, 0, 0, c.width, c.height);
+    const out = await new Promise<Blob | null>((ok) => c.toBlob(ok, 'image/jpeg', 0.92));
+    return out ? { blob: out, w: c.width, h: c.height } : null;
+  } catch { return null; }
+}
+/** A picked photo, made smaller in the browser when it can be read (an iPhone's 12 MP photo → 2400 px, what the server
+ *  keeps; was 1600 before the Nov 22 cut-out, which uses the extra detail for the edge). */
+async function shrink(f: File, max = 2400): Promise<{ blob: Blob; w: number; h: number }> {
   try {
     const bmp = await createImageBitmap(f, { imageOrientation: 'from-image' } as ImageBitmapOptions);
     const k = Math.min(1, max / Math.max(bmp.width, bmp.height));
@@ -84,7 +102,7 @@ function useCamera(on: boolean) {
     let off = false;
     setErr('');
     if (!navigator.mediaDevices?.getUserMedia) { setErr('This browser can’t open the camera here. Upload photos instead.'); return; }
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' }, width: { ideal: 2560 }, height: { ideal: 1440 } }, audio: false })
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' }, width: { ideal: 3840 }, height: { ideal: 2160 } }, audio: false })
       .then((s) => {
         if (off) { s.getTracks().forEach((t) => t.stop()); return; }
         stream.current = s;
@@ -253,9 +271,13 @@ function ClassicScan({ name, kind, spin, demo, ready, initial, onDone, onSpin }:
     } catch (e) { setError((e as Error).message); }
     setSample('');
   };
-  const snap = () => {
+  const snap = async () => {
     const v = cam.video.current;
     if (!v || !v.videoWidth) return;
+    // Nov 22: a real photo (the camera's full resolution) where the browser can take one (ImageCapture: Chrome and
+    // Android), as long as it's framed like the preview, so the guide still lines up. Otherwise the preview frame.
+    const still = await fullPhoto(v);
+    if (still) { void use(still.blob, still.w, still.h, guideFor(still.w, still.h, kind)); return; }
     const c = document.createElement('canvas');
     c.width = v.videoWidth; c.height = v.videoHeight;
     c.getContext('2d')!.drawImage(v, 0, 0);
@@ -324,7 +346,7 @@ function ClassicScan({ name, kind, spin, demo, ready, initial, onDone, onSpin }:
       </div>
       {spin
         ? <p className="muted scanner-tip">Stand the bottle on a lazy Susan, fill the outline, then tap Record and turn it slowly all the way round (about five seconds). Keep the phone still.</p>
-        : <p className="muted scanner-tip">Stand the bottle up, label facing you, and fill the outline top to bottom. Plain background is best, but it works on the back bar too.</p>}
+        : <p className="muted scanner-tip">Stand the bottle up, label facing you, and fill the outline cap to base. A plain wall behind it is best. Keep windows and bright lights out from behind it: they reflect in the glass.</p>}
       {demo && !spin && samples.length > 0 && (
         <div className="scanner-samples" role="group" aria-label="Try a sample bottle">
           <small className="muted">Try a sample bottle</small>
@@ -346,7 +368,7 @@ function ClassicScan({ name, kind, spin, demo, ready, initial, onDone, onSpin }:
               <label className="btn ghost">{busy || 'Upload a Spin Video'}<input type="file" accept="video/*" hidden onChange={(e) => void uploadSpin(e.target.files?.[0])} /></label>
             </>
           : <>
-              {!cam.err && <button className="btn" onClick={snap}>Take Photo</button>}
+              {!cam.err && <button className="btn" onClick={() => void snap()}>Take Photo</button>}
               <label className="btn ghost">Upload a Photo<input type="file" accept="image/*" hidden onChange={(e) => upload(e.target.files?.[0])} /></label>
             </>}
       </div>
@@ -499,7 +521,7 @@ function PhotoByPhoto({ name, kind, uploaded, onSaved, onCut }: { name: string; 
   const snap = async () => {
     const v = cam.video.current;
     if (!v || !v.videoWidth || at < 0) return;
-    const g = await grabFrom(v, 1600, 0.9);
+    const g = (await fullPhoto(v)) || await grabFrom(v, 2400, 0.9); // Nov 22: the full photo where the browser gives one
     keepShot(at, { ...g, url: URL.createObjectURL(g.blob), box: camBox(g.w, g.h, kind) });
   };
   const retakeLast = () => {

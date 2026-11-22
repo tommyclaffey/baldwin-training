@@ -1,4 +1,6 @@
 // Bottle scanner: a photo in, just the bottle out, on the Wine Book's beige.
+// Nov 22: v2 cut-out (server/cutout.mjs) for single photos and Photo by Photo; side-by-side board and numbers in
+// Tommy's vault, Apps/The Baldwin Training Book/Assets/(C) Scanner v2 · side by side (Nov 22)/README.md.
 // MobileSAM (MIT; ONNX export by Acly on Hugging Face) finds the object inside the box the manager drew.
 // 1. start(photo)      → prepares the photo (orientation, encoder) and remembers it for 20 minutes
 // 2. cut(token, box)   → the bottle inside `box` (fractions of the photo), as a JPEG preview
@@ -9,12 +11,25 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { DATA_DIR } from './db.mjs';
+import { cutBottle, onBeige, png as pngOf, MATTES } from './cutout.mjs';
 
 const REV = '0d3b403339b4674a82493d5e97964dd78089ddc8'; // pinned Hugging Face revision
-const MODELS = {
-  encoder: { file: 'mobile_sam_image_encoder.onnx', sha256: '580f5fb648ea1062c0aabc26217aed56921985f03f0cbbd852bba81d760cc749' },
-  decoder: { file: 'sam_mask_decoder_multi.onnx', sha256: '8976b90a87ba50a6a72217a5ff994f7d25ce16f2229fcc1ed259e1294c622ffe' },
+const SAM_URL = (f) => `https://huggingface.co/Acly/MobileSAM/resolve/${REV}/${f}`;
+/* v2 (Nov 22, server/cutout.mjs): MobileSAM picks the bottle, a cut-out model made for product photos draws the edge.
+ * IS-Net general use (DIS, Apache-2.0, github.com/xuebinqin/DIS), the ONNX export rembg publishes (MIT). U²-Net (Apache-2.0,
+ * same source) is the lighter fallback: SCANNER_MATTE=u2net. SCANNER_ENGINE=v1 goes back to the Oct 28 engine. */
+export const ENGINE = process.env.SCANNER_ENGINE === 'v1' ? 'v1' : 'v2';
+const MATTE = process.env.SCANNER_MATTE === 'u2net' ? 'u2net' : 'isnet';
+const MATTE_FILES = {
+  isnet: { file: 'isnet-general-use.onnx', url: 'https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-general-use.onnx', sha256: '60920e99c45464f2ba57bee2ad08c919a52bbf852739e96947fbb4358c0d964a' },
+  u2net: { file: 'u2net.onnx', url: 'https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx', sha256: '8d10d2f3bb75ae3b6d527c77944fc5e7dcd94b29809d47a739a7a728a912b491' },
 };
+export const MODELS = {
+  encoder: { file: 'mobile_sam_image_encoder.onnx', url: SAM_URL('mobile_sam_image_encoder.onnx'), sha256: '580f5fb648ea1062c0aabc26217aed56921985f03f0cbbd852bba81d760cc749' },
+  decoder: { file: 'sam_mask_decoder_multi.onnx', url: SAM_URL('sam_mask_decoder_multi.onnx'), sha256: '8976b90a87ba50a6a72217a5ff994f7d25ce16f2229fcc1ed259e1294c622ffe' },
+  ...(ENGINE === 'v2' ? { matte: MATTE_FILES[MATTE] } : {}),
+};
+export { MATTE_FILES };
 const MODEL_DIR = path.join(DATA_DIR, 'models');
 const BEIGE = [231, 222, 207]; // the Wine Book's bottle panel
 const CW = 1024, CH = 684; // this export expects a landscape 1024 × 684 canvas, photo scaled in from the top-left
@@ -34,7 +49,7 @@ async function load() {
     for (const m of Object.values(MODELS)) {
       const dest = path.join(MODEL_DIR, m.file);
       if (!fs.existsSync(dest)) {
-        const res = await fetch(`https://huggingface.co/Acly/MobileSAM/resolve/${REV}/${m.file}`, { signal: AbortSignal.timeout(DOWNLOAD_MS) });
+        const res = await fetch(m.url, { signal: AbortSignal.timeout(m === MODELS.matte ? DOWNLOAD_MS * 3 : DOWNLOAD_MS) });
         if (!res.ok) throw new Error(`Model download failed (${res.status})`);
         const buf = Buffer.from(await res.arrayBuffer());
         const sum = crypto.createHash('sha256').update(buf).digest('hex');
@@ -42,10 +57,13 @@ async function load() {
         fs.writeFileSync(dest + '.part', buf); fs.renameSync(dest + '.part', dest);
       }
     }
-    const opt = { intraOpNumThreads: 2 };
+    // Threads per model run (Nov 22: SCANNER_THREADS, default 2 as before; IS-Net cuts ~2.3 s → ~1.3 s with 4 on a Mac).
+    const opt = { intraOpNumThreads: Math.max(1, Math.min(8, Number(process.env.SCANNER_THREADS) || 2)) };
     sessions = {
       enc: await libs.ort.InferenceSession.create(path.join(MODEL_DIR, MODELS.encoder.file), opt),
       dec: await libs.ort.InferenceSession.create(path.join(MODEL_DIR, MODELS.decoder.file), opt),
+      // No memory arena for the cut-out model: it would keep ~1 GB of its 1024 × 1024 working memory between cuts.
+      matte: MODELS.matte ? await libs.ort.InferenceSession.create(path.join(MODEL_DIR, MODELS.matte.file), { ...opt, enableCpuMemArena: false, enableMemPattern: false }) : null,
     };
     return sessions;
   })().catch((e) => { loading = null; throw e; });
@@ -80,8 +98,11 @@ const expired = (msg = 'That photo has expired. Take it again.') => { const e = 
 
 /** Prepare a photo: upright, at most 2400 px tall, encoded once so each new box is quick.
  *  `maxPixels` (demos): a bigger photo is refused before it's decoded. */
-async function prepare(buffer, { maxPixels } = {}) {
+/** The cut-out models for v2 (null in the test stub or on v1). */
+const v2Models = (eng) => (ENGINE === 'v2' && !eng.stub ? { sharp: libs.sharp, ort: libs.ort, sam: { enc: eng.enc, dec: eng.dec }, matte: eng.matte, matteKind: MATTE } : null);
+async function prepare(buffer, { maxPixels, encode } = {}) {
   const eng = await engine();
+  encode ??= !v2Models(eng); // v2 runs MobileSAM on the bottle's own crop, at cut time
   const { sharp, ort } = libs;
   const input = maxPixels ? { limitInputPixels: maxPixels } : {};
   let base;
@@ -92,6 +113,7 @@ async function prepare(buffer, { maxPixels } = {}) {
     throw e;
   }
   const { width: W, height: H } = await sharp(base).metadata();
+  if (!encode && !eng.stub) return { at: Date.now(), base, W, H, emb: null, small: null };
   const portrait = H > W;
   // Portrait photos turn sideways, so the bottle gets the canvas's long side.
   const work = portrait ? await sharp(base).rotate(90).toBuffer() : base;
@@ -209,6 +231,18 @@ export async function cutScan(token, box, owner = null) {
   const sc = mine(token, owner);
   if (!sc) throw expired();
   sc.at = Date.now();
+  const eng = await engine();
+  const models = v2Models(eng);
+  if (models) {
+    // v2: one cut at a time server-wide (the cut-out model's working memory), like Photo by Photo.
+    return inTurn(async () => {
+      const cut = await cutBottle(models, sc.base, sc.W, sc.H, box, { photoMask: true });
+      sc.mask = cut.photoMask; sc.crop = null; // the turntable spin reuses this outline on every frame
+      sc.result = await onBeige(models, cut, { height: 1800 });
+      sc.png = await pngOf(models, cut); // the transparent master, kept beside the JPG
+      return sc.result;
+    });
+  }
   const mask = await maskOf(sc, box);
   const { sharp } = libs;
   sc.mask = mask; sc.crop = null; // a new box, a new crop
@@ -263,6 +297,8 @@ export async function spinFrames(token, owner = null) {
 
 /** The last cut for this photo (to keep it). */
 export const lastCut = (token, owner = null) => mine(token, owner)?.result || null;
+/** Its transparent PNG master (v2 only). */
+export const lastCutPng = (token, owner = null) => mine(token, owner)?.png || null;
 
 /* ---- Photo by Photo (Nov 18, Figma 09 · Proposals → 34; Tommy: "i have to rotate take a photo rotate take a photo") ----
  * No turntable: the bottle is turned by hand, 30° at a time, and photographed 12 times. A hand-turned bottle moves, so
@@ -293,8 +329,30 @@ export function spinPhoto(token, i, buffer, box, { owner = null, demo = false, m
     let st = token ? mySet(token, owner) : null;
     if (token && !st) throw expired('Those photos have expired. Start the spin again.');
     const sc = await prepare(buffer, { maxPixels });
-    const mask = await maskOf(sc, box, { diff });
     const { sharp } = libs;
+    const models = v2Models(await engine());
+    let piece = null;
+    if (models) {
+      // v2: the cut-out comes back straightened and cropped to the bottle; only its size and centre line are needed here.
+      const cut = await cutBottle(models, sc.base, sc.W, sc.H, box);
+      const k = Math.min(1, 1100 / cut.h), w = Math.max(1, Math.round(cut.w * k)), h = Math.max(1, Math.round(cut.h * k));
+      const png = await sharp(cut.rgba, { raw: { width: cut.w, height: cut.h, channels: 4 } }).resize(w, h).png({ compressionLevel: 6 }).toBuffer();
+      piece = { png, w, h, cx: cut.cx * k };
+    }
+    if (piece) {
+      if (!st) {
+        pruneSets();
+        token = crypto.randomBytes(12).toString('hex');
+        st = { owner, demo, at: Date.now(), cuts: Array(SPIN_PHOTOS).fill(null), frames: null };
+        sets.set(token, st);
+      }
+      st.at = Date.now();
+      st.cuts[idx] = piece;
+      st.frames = null;
+      const thumb = await onBeigeThumb(piece.png, piece.w, piece.h, 260);
+      return { token, i: idx, thumb, taken: st.cuts.filter(Boolean).length };
+    }
+    const mask = await maskOf(sc, box, { diff });
     const { W, H } = sc;
     let x0 = W, y0 = H, x1 = -1, y1 = -1;
     for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (mask[y * W + x] > 127) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
@@ -323,13 +381,13 @@ export function spinPhoto(token, i, buffer, box, { owner = null, demo = false, m
     st.at = Date.now();
     st.cuts[idx] = { png, w, h, cx: cx * k };
     st.frames = null; // lined up again after any change
-    const thumb = await onBeige(png, w, h, 260);
+    const thumb = await onBeigeThumb(png, w, h, 260);
     return { token, i: idx, thumb, taken: st.cuts.filter(Boolean).length };
   });
 }
 
 /** A cut-out on the beige, `height` tall with a little room round it (the processing grid's previews). */
-async function onBeige(png, w, h, height) {
+async function onBeigeThumb(png, w, h, height) {
   const { sharp } = libs;
   const bh = Math.round(height * 0.86), k = bh / h, bw = Math.max(1, Math.round(w * k));
   const cw = Math.max(bw + Math.round(height * 0.14), Math.round(height * 0.62));
@@ -380,6 +438,6 @@ export const spinSetInfo = (token, owner = null) => { const st = mySet(token, ow
 
 /** The bottle's mask in a photo (scripts only: scripts/scanner/spin-fixtures.mjs builds turned test photos from it). */
 export async function bottleMask(buffer, box) {
-  const sc = await prepare(buffer);
+  const sc = await prepare(buffer, { encode: true }); // always the Oct 28 engine (the baseline the v2 board compares with)
   return { mask: await maskOf(sc, box), W: sc.W, H: sc.H, base: sc.base };
 }
