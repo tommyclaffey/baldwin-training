@@ -40,16 +40,16 @@ const EMOJI = ['👍', '✅', '🔥', '👀', '🙏', '❤️', '😂', '🎉', 
 export const SERVICE_WORDS = ['86’d', 'Heard', 'Behind', 'Corner', 'Hands', 'Yes Chef'];
 export const REACTIONS = [...EMOJI, ...SERVICE_WORDS];
 const reactionOrder = (e) => { const i = REACTIONS.indexOf(e); return i < 0 ? 999 : i; };
-const FOH_JOBS = ['server', 'host', 'bartender', 'support', 'expo'];
-/** Kitchen jobs aren't on the job list yet (Server, Bartender, Host, Support). Until they are, Kitchen is the managers. */
-export const KITCHEN_JOBS = ['kitchen', 'cook', 'line-cook', 'prep', 'dish'];
+const FOH_JOBS = ['server', 'host', 'bartender', 'support', 'expo', 'server-assistant', 'sommelier', 'barback', 'bar-lead'];
+/** Kitchen jobs (Nov 22 draft): Line Cook, Prep Cook, Dishwasher, Sous Chef. ('kitchen' and 'cook' were placeholders from before there were kitchen jobs.) */
+export const KITCHEN_JOBS = ['kitchen', 'cook', 'line-cook', 'prep', 'dish', 'sous-chef'];
 // v2 (Figma 681:833): Discord's lower-case channel names, grouped; the topic sits beside the name in the header.
 export const CHANNELS = [
   { key: 'everyone', name: () => 'everyone', group: 'Announcements', jobs: null, line: 'everyone at the store', topic: 'Everyone at the store',
     about: (s) => `Everyone at ${s}. Managers post here, and the whole team can react and reply.` },
   { key: 'foh', name: () => 'front-of-house', group: 'Floor', jobs: FOH_JOBS, line: 'servers, hosts, bar and support', topic: 'Servers, hosts, bar and support',
     about: (s) => `Servers, hosts, bar and support at ${s}. Pre-shift notes are pinned here every day.` },
-  { key: 'bar', name: () => 'bar', group: 'Floor', jobs: ['bartender'], line: 'bartenders and managers', topic: 'Bartenders and managers', about: (s) => `The bar team at ${s}, and its managers.` },
+  { key: 'bar', name: () => 'bar', group: 'Floor', jobs: ['bartender', 'barback', 'bar-lead'], line: 'bartenders and managers', topic: 'Bartenders and managers', about: (s) => `The bar team at ${s}, and its managers.` },
   { key: 'kitchen', name: () => 'kitchen', group: 'Floor', jobs: KITCHEN_JOBS, line: 'cooks and managers', topic: 'Cooks and managers', about: (s) => `The kitchen at ${s}, and its managers.` },
 ];
 /** Online: seen in the last 5 minutes (users.last_seen_at moves on every request), or held on by the demo (online_until). */
