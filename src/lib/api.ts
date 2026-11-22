@@ -52,7 +52,7 @@ export type MediaItem = { id: number; kind: 'file' | 'youtube'; title: string; u
   captions?: string | null };
 export type Video = { kind: 'youtube'; youtubeId: string; title?: string } | { kind: 'file'; url: string; mime?: string; title?: string };
 export type Role = 'superadmin' | 'owner' | 'manager' | 'staff';
-export type User = { demo?: boolean; hq?: boolean; /** the look the store being worked in wears (server/looks.mjs; Nov 17: per store) */ brand?: Brand; /** a look made in Your Look: its paint (Nov 22) */ lookSpec?: unknown; /** a manager promoted from staff, still on their PIN (Nov 16) */ pinSignIn?: boolean;
+export type User = { demo?: boolean; hq?: boolean; /** the look the store being worked in wears (server/looks.mjs; Nov 17: per store) */ brand?: Brand; /** a look made in Your Look: its paint (Nov 22) */ lookSpec?: unknown; /** Admin → Settings → Your Look (Nov 22) */ yourLook?: 'full' | 'try' | 'upgrade' | 'none'; /** a manager promoted from staff, still on their PIN (Nov 16) */ pinSignIn?: boolean;
   id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null;
   totpOn: boolean; superPrimary: boolean; impersonatedBy: number | null; workingIn?: number; workingInName?: string | null;
   /** Mise team role (super admins only, Nov 16) and view only (Support, also while signed in as someone). */

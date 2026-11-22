@@ -166,6 +166,14 @@ async function lookFromRead(found, companyId, { signal } = {}) {
   }
   const named = found.colors.filter((c) => c.from.includes('var')).map((c) => c.hex);
   const fixed = fixColors(mapped.colors, { logo: found.logoColors, named, other: found.colors.slice(0, 20).map((c) => c.hex) });
+  // what each fixed role now is, in words (the Check screen's "Colour roles")
+  for (const f of fixed.fixes) {
+    if (f.id === 'muted') mapped.why.muted = (mapped.why.muted || 'Your grey') + ', darkened';
+    if (f.id === 'accentLight') mapped.why.accentLight = /from your logo/.test(f.note) ? 'From your logo' : /other accent/.test(f.note) ? 'Your other accent, darkened' : /another colour/.test(f.note) ? 'Another colour from your site' : 'Your accent, darkened';
+    if (f.id === 'label') mapped.why.label = (mapped.why.label || 'Your grey') + ', lightened';
+    if (f.id === 'accentDark') mapped.why.accentDark = (mapped.why.accentDark || 'Your accent') + ', lightened';
+  }
+  if (mapped.why.accentDark && fixed.fixes.some((f) => f.id === 'accentLight')) mapped.why.accentDark = mapped.why.accentDark.replace('most-used accent', 'most-used accent (dark surfaces only)');
   const dark = logos.find((l) => l.variant === 'dark');
   const light = logos.find((l) => l.variant === 'light');
   const f = found.fonts;
@@ -233,11 +241,12 @@ export function yourLookRoutes({ db, fail, sendJson, readJson, isDemo, limiter, 
       const reading = db.prepare("SELECT id FROM look_reads WHERE company_id = ? AND status = 'reading' ORDER BY id DESC LIMIT 1").get(co.id);
       const lastBefore = last && J(last.before, {});
       return sendJson(res, 200, {
-        access, demo, plan: PLANS[co.plan] ? co.plan : DEFAULT_PLAN, company: co.name, store: st ? { id: st.id, name: st.name } : null, canGroup: groupAllowed(u) && stores.length > 1,
+        access, demo, plan: PLANS[co.plan] ? co.plan : DEFAULT_PLAN, company: co.name, link: !co.demo && !co.internal && co.slug ? '/' + co.slug : null, store: st ? { id: st.id, name: st.name } : null, canGroup: groupAllowed(u) && stores.length > 1,
         stores, current: st ? stores.find((s) => s.id === st.id) || null : null, companyLook: { id: lookOf(co), name: nameOf(db, co, lookOf(co)) },
         lastChange: last ? { id: last.id, scope: last.scope, at: last.at, look: last.look_id ? lookId(last.look_id) : null, lookName: last.look_id ? nameOf(db, co, lookId(last.look_id)) : null,
-          storeNames: Object.keys(J(last.after, {}).stores || {}).map((id) => stores.find((s) => s.id === Number(id))?.name).filter(Boolean),
-          before: lastBefore && st ? nameOf(db, co, lookOfStore({ ...co, brand: lastBefore.company }, { ...st, look: lastBefore.stores?.[st.id] ?? null })) : null } : null,
+          storeNames: Object.entries(J(last.after, {}).stores || {}).filter(([id, v]) => lastBefore?.stores?.[id] !== v).map(([id]) => stores.find((s) => s.id === Number(id))?.name).filter(Boolean),
+          before: lastBefore && st ? nameOf(db, co, lookOfStore({ ...co, brand: lastBefore.company }, { ...st, look: lastBefore.stores?.[st.id] ?? null })) : null,
+          beforeLook: lastBefore && st ? lookOfStore({ ...co, brand: lastBefore.company }, { ...st, look: lastBefore.stores?.[st.id] ?? null }) : null } : null,
         draft: draft ? { id: lookId(draft.id), name: draft.name, status: draft.status, source: draft.source_url, updatedAt: draft.updated_at } : null,
         reading: reading ? reading.id : null, aiOn: !!process.env.ANTHROPIC_API_KEY && process.env.LOOK_AI !== 'off',
       });
@@ -389,6 +398,24 @@ export function yourLookRoutes({ db, fail, sendJson, readJson, isDemo, limiter, 
         log('upload ' + rest, r.name);
         return sendJson(res, 200, lookOut(db, db.prepare('SELECT * FROM looks WHERE id = ?').get(r.id)));
       }
+      // The link card as the Adjust screen draws it (1200 × 630 JPEG, in the look's own fonts): used when the look goes on
+      // the whole group, so the card people get is the one the owner saw
+      if (rest === 'card' && m === 'POST') {
+        if (Number(req.headers['content-length'] || 0) > 2e6) fail(413, 'That card is too big.');
+        const chunks = []; let size = 0;
+        for await (const ch of req) { size += ch.length; if (size > 2e6) fail(413, 'That card is too big.'); chunks.push(ch); }
+        const sharp = (await import('sharp')).default;
+        let out;
+        try {
+          const mt = await sharp(Buffer.concat(chunks), { limitInputPixels: 2e6 }).metadata();
+          if (mt.width !== 1200 || mt.height !== 630) fail(400, 'A link card is 1200 × 630.');
+          out = await sharp(Buffer.concat(chunks)).jpeg({ quality: 86, mozjpeg: true }).toBuffer();
+        } catch (e) { if (e.status) throw e; fail(415, 'That card isn’t an image we can open.'); }
+        const src = saveFile(co.id, out, 'jpg');
+        const extra = J(r.extra, {});
+        db.prepare('UPDATE looks SET extra = ?, updated_at = ? WHERE id = ?').run(JSON.stringify({ ...extra, cardUpload: src }), now(), r.id);
+        return sendJson(res, 200, { ok: true, card: src });
+      }
       // 5 · Apply: this store, or every store in the group (and the company's own look, so new stores wear it too)
       if (rest === 'apply' && m === 'POST') {
         const b = await readJson(req, 2000);
@@ -456,6 +483,11 @@ export async function makeShareCard(db, n) {
   const r = db.prepare('SELECT * FROM looks WHERE id = ?').get(n);
   const spec = r && J(r.spec);
   if (!spec || !validSpec(spec)) return null;
+  const extra0 = J(r.extra, {});
+  if (extra0.cardUpload && LOOK_FILE.test(extra0.cardUpload) && fs.existsSync(path.join(LOOK_DIR, extra0.cardUpload.split('/')[2], extra0.cardUpload.split('/')[3]))) {
+    db.prepare('UPDATE looks SET extra = ? WHERE id = ?').run(JSON.stringify({ ...extra0, card: extra0.cardUpload }), r.id);
+    return extra0.cardUpload;
+  }
   const sharp = (await import('sharp')).default;
   const W = 1200, H = 630, c = spec.colors;
   const layers = [];

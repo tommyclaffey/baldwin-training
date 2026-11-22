@@ -87,7 +87,7 @@ const spinPhotoUser = new LoginLimiter(240, 60 * 60_000, 'spin-photo-user');
 // styles inline (the design's layout is drawn with style attributes) plus Google Fonts; images from us, YouTube thumbnails,
 // data: and blob: (the bottle scanner); video embeds from YouTube only. HSTS: .app is HTTPS-only in browsers already.
 const CSP = ["default-src 'self'", "script-src 'self'", "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com", "font-src 'self' https://fonts.gstatic.com data:",
-  "img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com", "media-src 'self' blob:", "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
+  "img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com", "media-src 'self' blob:", "frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com",
   "connect-src 'self'", "object-src 'none'", "base-uri 'self'", "form-action 'self'",
   // Nov 12, Tommy: the live demo opens in his portfolio's link viewer (an iframe on tommyclaffey.com), like Growth and
   // Queue. Only that site may frame the app; X-Frame-Options went, because SAMEORIGIN would still refuse it.

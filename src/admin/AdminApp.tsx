@@ -11,6 +11,7 @@ import { BottleScannerPage } from './scanner';
 import { SuperAdmin } from './super';
 import { CompanyData } from './companydata';
 import { StoresPage } from './stores';
+import { YourLookPage } from './yourlook';
 import { LegalLinks } from '../components/Legal';
 import { LookLogo } from '../components/LookLogo';
 import { THEMES } from '../lib/theme';
@@ -121,6 +122,12 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <NavLink to="/admin/bottle-scanner">Bottle Scanner</NavLink>
           <NavLink to="/admin/media">Videos and Photos</NavLink>
           <NavLink to="/admin/archived">Archived</NavLink>
+          {/* Nov 22 (Figma 877:1393): Settings → Your Look. Custom Brand owners and managers; a Foundation owner sees the
+              Custom Brand card; managers and staff on Foundation don't see it at all (server/yourlook.mjs accessFor). */}
+          {!hqMode && user.yourLook && user.yourLook !== 'none' && <>
+            <p className="admin-group">Settings</p>
+            <NavLink to="/admin/your-look"><NavIcon d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.8-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3ZM7.5 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm3-4a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm5 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />Your Look</NavLink>
+          </>}
           <p className="admin-group">You</p>
           {owner && <NavLink to="/admin/activity">Activity</NavLink>}
           {/* Nov 14: download or delete the company's data. Owners; in a demo, its manager (the demo has no owner). */}
@@ -156,6 +163,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <Route path="people/managers" element={<People leadsOnly />} />
           <Route path="signoffs" element={<SignoffsPage />} />
           <Route path="stores" element={<StoresPage />} />
+          <Route path="your-look/*" element={<YourLookPage />} />
           <Route path="training" element={<ToPeople />} />
           <Route path="quizzes" element={<ToPeople />} />
           <Route path="team" element={<ToPeople />} />

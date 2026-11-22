@@ -459,6 +459,7 @@ if (inBrowser) {
   try {
     const pv = new URLSearchParams(location.search).get('look-preview');
     if (isDataBrand(pv)) { fromPreview = pv; void ensureLook(pv); }
+    else if (isBuiltIn(pv)) fromPreview = pv; // the Before side of Your Look's before/after
     window.addEventListener('message', (e) => {
       if (e.origin !== location.origin || e.data?.type !== 'mise-look-preview' || !isDataBrand(e.data.id) || e.data.id !== fromPreview) return;
       registerLook(e.data.id, e.data.spec);

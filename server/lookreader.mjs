@@ -462,7 +462,8 @@ export async function readSite(raw, { signal, step = () => {}, fetchImpl = safeF
     else { const r = await quiet(get(c.src, { kinds: ['image'], maxBytes: LIMITS.image })); if (!r) return; buf = r.body; }
     const svg = !!c.svgText || /svg/.test(c.src.split('?')[0].split('.').pop() || '') || buf.subarray(0, 300).toString('utf8').includes('<svg');
     const a = await analyzeImage(buf, { svg }).catch(() => null);
-    if (!a || a.width < 40 || a.height < 16) return;
+    // a logo has some size to it (a 75 × 42 menu arrow in the header isn't one)
+    if (!a || a.width < 100 || a.height < 24 || a.crop[2] < 80) return;
     const [, , cw, ch] = a.crop;
     const aspect = cw / Math.max(1, ch);
     // white (or light) artwork on a see-through file is for dark backgrounds; coloured or dark artwork is for light ones;

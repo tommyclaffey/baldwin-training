@@ -241,7 +241,7 @@ export const PAID: Record<string, { heading?: string; accent?: string; body?: st
   trajan: { heading: 'Cinzel' }, 'trajan pro': { heading: 'Cinzel' }, copperplate: { heading: 'Cinzel' }, 'copperplate gothic': { heading: 'Cinzel' },
   'proxima nova': { heading: 'Montserrat', body: 'Montserrat' }, gotham: { heading: 'Montserrat', body: 'Montserrat' }, futura: { heading: 'Jost', body: 'Jost' }, 'futura pt': { heading: 'Jost', body: 'Jost' },
   avenir: { heading: 'Nunito Sans', body: 'Nunito Sans' }, 'avenir next': { heading: 'Nunito Sans', body: 'Nunito Sans' }, 'brandon grotesque': { heading: 'Josefin Sans', body: 'Josefin Sans' },
-  'helvetica neue': { heading: 'Inter', body: 'Inter' }, 'gill sans': { heading: 'Lato', body: 'Lato' }, 'din': { heading: 'Barlow', body: 'Barlow' }, 'din next': { heading: 'Barlow', body: 'Barlow' },
+  'gill sans': { heading: 'Lato', body: 'Lato' }, 'din': { heading: 'Barlow', body: 'Barlow' }, 'din next': { heading: 'Barlow', body: 'Barlow' },
   'freight display': { heading: 'Libre Caslon Display' }, 'freight text': { body: 'Libre Caslon Text' }, canela: { heading: 'Playfair Display' }, didot: { heading: 'Playfair Display' },
   bodoni: { heading: 'Bodoni Moda' }, baskerville: { heading: 'Libre Baskerville', body: 'Libre Baskerville' }, garamond: { heading: 'EB Garamond', body: 'EB Garamond' }, 'adobe garamond pro': { heading: 'EB Garamond', body: 'EB Garamond' },
   'brown': { heading: 'DM Sans', body: 'DM Sans' }, 'circular': { heading: 'DM Sans', body: 'DM Sans' }, 'sofia pro': { heading: 'Outfit', body: 'Outfit' }, 'museo sans': { heading: 'Nunito Sans', body: 'Nunito Sans' },
@@ -249,7 +249,7 @@ export const PAID: Record<string, { heading?: string; accent?: string; body?: st
 };
 /** System fonts (not paid, but not on every phone) and their Google stand-in. */
 export const SYSTEM: Record<string, string> = {
-  verdana: 'Open Sans', tahoma: 'Open Sans', arial: 'Inter', helvetica: 'Inter', 'segoe ui': 'Inter', 'system-ui': 'Inter', '-apple-system': 'Inter', 'sf pro': 'Inter',
+  verdana: 'Open Sans', tahoma: 'Open Sans', arial: 'Inter', helvetica: 'Inter', 'helvetica neue': 'Inter', 'segoe ui': 'Inter', 'system-ui': 'Inter', '-apple-system': 'Inter', 'sf pro': 'Inter',
   georgia: 'Lora', 'times new roman': 'Libre Baskerville', times: 'Libre Baskerville', 'trebuchet ms': 'Fira Sans', 'courier new': 'DM Mono', palatino: 'EB Garamond', 'palatino linotype': 'EB Garamond',
 };
 /** Faces that come with no meaning (icon fonts, framework defaults, plugin UIs). */

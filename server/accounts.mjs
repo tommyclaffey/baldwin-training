@@ -14,7 +14,7 @@
 // Every query about people is scoped to the signed-in person's company, and store-level records to their store.
 import { audit, now } from './db.mjs';
 import { LOOKS, PLANS, DEFAULT_LOOK, DEFAULT_PLAN, lookOf, lookAllowed, looksFor, lookOfStore, storeLooksAllowed, lookInfo, isDataLook } from './looks.mjs';
-import { lookPayload } from './yourlook.mjs';
+import { lookPayload, accessFor } from './yourlook.mjs';
 import { hqId, HQ_NAME } from './hq.mjs';
 import { teamRole, teamCan, teamCans, TEAM_ROLES, GIVABLE } from './miseteam.mjs';
 import {
@@ -145,6 +145,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo, pinSignIn: u.role === 'manager' && !u.password_hash && !!u.pin_hash, hq: !!companyRow(companyOf(u))?.internal, // Nov 16: Mise Academy (HQ) keeps one store
     // Nov 11: the look follows the company; Nov 16: its plan decides; Nov 17: the store being worked in can wear its own
     brand: lookOfStore(companyRow(companyOf(u)), storeOf(db, u)),
+    yourLook: accessFor(u, companyRow(companyOf(u))), // Nov 22: Admin → Settings → Your Look ('full' | 'try' | 'upgrade' | 'none')
     // Nov 22 (Your Look): a look made from a website is data; its paint comes with the session (src/lib/theme.ts)
     ...(() => { const b = lookOfStore(companyRow(companyOf(u)), storeOf(db, u)); const pl = isDataLook(b) ? lookPayload(db, b) : null; return pl ? { lookSpec: pl.spec } : {}; })(),
     store: withMenu(db, storeOut(storeOf(db, u))), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
