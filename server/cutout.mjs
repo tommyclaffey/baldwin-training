@@ -203,30 +203,60 @@ function rowEdges(a, w, h, axisX, reach = 0) {
   return { L, R };
 }
 /** The bottle's axis as x = m·y + k, fitted on the body rows (the widest part), outliers dropped once. */
-function fitAxis(L, R) {
+function fitAxis(L, R, share = 0.6) {
   const h = L.length, wd = [];
   for (let y = 0; y < h; y++) if (!Number.isNaN(L[y])) wd.push(R[y] - L[y]);
   if (wd.length < 20) return null;
   const maxW = [...wd].sort((p, q) => p - q)[Math.floor(wd.length * 0.95)];
   let rows = [];
-  for (let y = 0; y < h; y++) if (!Number.isNaN(L[y]) && R[y] - L[y] > 0.9 * maxW) rows.push(y);
+  // The body's rows (over 60% of the widest), the whole height of the body so the slope is well measured; rows a bite or a
+  // glass pushes off centre are dropped twice over (the 30% furthest from the line, then again).
+  for (let y = 0; y < h; y++) if (!Number.isNaN(L[y]) && R[y] - L[y] > share * maxW) rows.push(y);
   if (rows.length < 10) return null;
   const fit = (ys) => { let sy = 0, sc = 0, syy = 0, syc = 0; for (const y of ys) { const c = (L[y] + R[y]) / 2; sy += y; sc += c; syy += y * y; syc += y * c; } const n = ys.length, d = n * syy - sy * sy; const m = d ? (n * syc - sy * sc) / d : 0; return { m, k: (sc - m * sy) / n }; };
   let f = fit(rows);
-  const res = rows.map((y) => Math.abs((L[y] + R[y]) / 2 - (f.m * y + f.k)));
-  const cut = [...res].sort((p, q) => p - q)[Math.floor(res.length * 0.8)] + 0.5;
-  rows = rows.filter((_, i) => res[i] <= cut);
-  if (rows.length >= 10) f = fit(rows);
+  for (let pass = 0; pass < 2; pass++) {
+    const res = rows.map((y) => Math.abs((L[y] + R[y]) / 2 - (f.m * y + f.k)));
+    const cut = [...res].sort((p, q) => p - q)[Math.floor(res.length * 0.7)] + 0.5;
+    const keep = rows.filter((_, i) => res[i] <= cut);
+    if (keep.length < 10) break;
+    rows = keep; f = fit(rows);
+  }
   return { ...f, maxW };
 }
 
 /** Rebuild the outline as a symmetric bottle when it clearly is one. Returns the new alpha, or null (left as it was). */
-function bottleShape(a, w, h) {
+/** The bottle's axis: fitted on the whole body, or on its widest rows only (when a glass or a hand covers part of the
+ *  body, those rows pull the line), whichever leaves more rows mirroring each other. */
+function bestAxis(a, w, h) {
   const first = rowEdges(a, w, h, w / 2);
-  const ax = fitAxis(first.L, first.R);
+  let best = null, bestN = -1;
+  for (const share of [0.6, 0.9]) {
+    const ax = fitAxis(first.L, first.R, share);
+    if (!ax) continue;
+    const at = new Float64Array(h); for (let y = 0; y < h; y++) at[y] = ax.m * y + ax.k;
+    const { L, R } = rowEdges(a, w, h, at, ax.maxW * 0.75);
+    let n = 0; const tol = Math.max(1.5, ax.maxW * 0.02);
+    for (let y = 0; y < h; y++) if (!Number.isNaN(L[y]) && !Number.isNaN(R[y]) && Math.abs((at[y] - L[y]) - (R[y] - at[y])) <= tol) n++;
+    if (n > bestN) { best = ax; bestN = n; }
+  }
+  return best;
+}
+function bottleShape(a, w, h) {
+  const ax = bestAxis(a, w, h);
   if (!ax) return null;
   const axisAt = new Float64Array(h); for (let y = 0; y < h; y++) axisAt[y] = ax.m * y + ax.k;
-  const { L, R } = rowEdges(a, w, h, axisAt, ax.maxW * 0.75);
+  let { L, R } = rowEdges(a, w, h, axisAt, ax.maxW * 0.75);
+  // The neck and cap can sit a little off the body's line (a lean, the camera's angle): where the bottle is narrow
+  // (under 60% of the body), the axis follows that row's own middle, smoothed down the height.
+  {
+    const mids = new Float64Array(h).fill(NaN);
+    for (let y = 0; y < h; y++) if (!Number.isNaN(L[y]) && !Number.isNaN(R[y]) && R[y] - L[y] < ax.maxW * 0.6) mids[y] = (L[y] + R[y]) / 2;
+    const sm = median1(mids, Math.max(3, Math.round(h * 0.01)));
+    let moved = false;
+    for (let y = 0; y < h; y++) if (!Number.isNaN(sm[y]) && Math.abs(sm[y] - axisAt[y]) < ax.maxW * 0.15) { axisAt[y] = sm[y]; moved = true; }
+    if (moved) ({ L, R } = rowEdges(a, w, h, axisAt, ax.maxW * 0.75));
+  }
   let top = -1, bot = -1; for (let y = 0; y < h; y++) if (!Number.isNaN(L[y]) || !Number.isNaN(R[y])) { if (top < 0) top = y; bot = y; }
   if (top < 0) return null;
   const H = bot - top + 1, maxW = ax.maxW;
@@ -241,7 +271,7 @@ function bottleShape(a, w, h) {
     rowsN++;
     if (Math.abs(hl[y] - hr[y]) <= tol) { sym++; agree[y] = (hl[y] + hr[y]) / 2; }
   }
-  if (rowsN < 20 || sym / rowsN < 0.45) return null; // not symmetric enough to call it a bottle: leave the photo's outline
+  if (rowsN < 20 || sym / rowsN < 0.2) return null; // hardly any row mirrors: not a bottle standing up (leave the photo's outline)
   // Each row: the side that matches its agreeing neighbours (a bite is the side that falls short). Only up to a quarter of
   // the width can come from the mirror; past that the photo's own (narrower) side is kept.
   const ref0 = median1(agree, Math.max(3, Math.round(H * 0.03)), 0.4); // only where most rows round it agree
@@ -251,21 +281,26 @@ function bottleShape(a, w, h) {
     for (let d = 1; d < H; d++) { if (y - d >= top && !Number.isNaN(ref0[y - d])) { ref[y] = ref0[y - d]; break; } if (y + d <= bot && !Number.isNaN(ref0[y + d])) { ref[y] = ref0[y + d]; break; } }
   }
   const half = new Float64Array(h).fill(NaN);
+  let explained = 0; // rows that mirror, or whose one good side matches the bottle's width there
   for (let y = top; y <= bot; y++) {
     if (Number.isNaN(hl[y])) continue;
     const lo = Math.max(0, Math.min(hl[y], hr[y])), hi = Math.max(hl[y], hr[y]);
     const r = ref[y];
     // How close counts as "matches": scaled to the width here, so a neck is judged against a neck, not the body.
     const near = Math.max(1.5, 0.06 * (Number.isNaN(r) ? hi : r) + 0.015 * maxW);
-    if (hi - lo <= Math.min(tol, near)) { half[y] = (hl[y] + hr[y]) / 2; continue; }
+    if (hi - lo <= Math.min(tol, near)) { half[y] = (hl[y] + hr[y]) / 2; explained++; continue; }
     if (Number.isNaN(r)) { half[y] = lo; continue; }
     // A bite (one side short, the other matches the rows round it): mirror the good side.
-    if (Math.abs(hi - r) <= near) { half[y] = hi; continue; }
+    if (Math.abs(hi - r) <= near) { half[y] = hi; explained++; continue; }
     // Something stuck to one side (a glass, a hand), the other side matches: keep the bottle's own side.
-    if (Math.abs(lo - r) <= near) { half[y] = lo; continue; }
-    // Neither matches (a real change in shape, e.g. the shoulder): the photo's narrower side, never more.
+    if (Math.abs(lo - r) <= near) { half[y] = lo; explained++; continue; }
+    // Neither matches. One side short and the other long, with the bottle's own width between them (an off-line lean
+    // plus a bite): that width. Otherwise (a real change of shape, e.g. the shoulder) the photo's narrower side, never more.
+    if (lo > 0 && lo < r && r < hi) { half[y] = r; explained++; continue; }
     half[y] = lo > 0 ? lo : NaN;
   }
+  // Only a bottle if nearly every row is explained that way; otherwise the photo's own outline stays.
+  if (explained / rowsN < 0.6) return null;
   // Short gaps (rows the models missed between two good rows, under 6% of the height) take the rows either side.
   for (let y = top; y <= bot; y++) {
     if (!Number.isNaN(half[y]) && half[y] > 0) continue;
@@ -276,7 +311,7 @@ function bottleShape(a, w, h) {
     y = b0;
   }
   // Smooth down the height: a short median takes out single-row jaggies and keeps the shoulders' steps.
-  const sm = median1(half, Math.max(1, Math.round(H * 0.004)));
+  const sm = median1(half, Math.max(2, Math.round(H * 0.008)));
   // A light average on top (straight runs read straight); skipped across steep steps (shoulders, the lip under a cork).
   const k = Math.max(1, Math.round(H * 0.003)), fin = new Float64Array(h).fill(NaN);
   for (let y = top; y <= bot; y++) {
@@ -299,8 +334,7 @@ function bottleShape(a, w, h) {
 
 /** The tilt of the bottle's axis in degrees (clockwise positive), from the 0.5 outline. Null if it can't tell. */
 function tiltOf(a, w, h) {
-  const { L, R } = rowEdges(a, w, h, w / 2);
-  const ax = fitAxis(L, R);
+  const ax = bestAxis(a, w, h);
   return ax ? (Math.atan(ax.m) * 180) / Math.PI : null;
 }
 
