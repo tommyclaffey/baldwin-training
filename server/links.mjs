@@ -123,8 +123,15 @@ function versioned(urlPath) {
   return `${SITE}${urlPath}?v=${versions.get(k)}`;
 }
 
-/** The card an account's link shows. Custom Brand + its own card in account.json's "share" → that card; else Mise's. */
+/** Nov 22 (Your Look): a company wearing a look made from its website gets a card made from that look (server/yourlook.mjs
+ *  dataShareFor, set at startup). → { title, description, image, alt } or null. */
+let dataShare = () => null, dataSpec = () => null;
+export const setDataShare = (fn, spec) => { dataShare = fn; if (spec) dataSpec = spec; };
+/** The card an account's link shows. Custom Brand + its own card in account.json's "share" → that card; a look made in
+ *  Your Look → its card; else Mise's. */
 export function shareFor(co) {
+  const made = co && co.plan === 'custom-brand' && /^look-\d+$/.test(lookOf(co)) ? dataShare(co) : null;
+  if (made) return { ...made, custom: true };
   const own = co && co.plan === 'custom-brand' && lookOf(co) !== 'mise' ? manifest(co.id)?.share : null;
   const ok = own && typeof own.title === 'string' && typeof own.image === 'string' && /^\/img\/[A-Za-z0-9._-]+(\/[A-Za-z0-9._-]+)?$/.test(own.image) && publicFile(own.image);
   const card = ok ? { title: own.title, description: own.description || LINE, image: own.image, alt: own.alt || own.title } : MISE_SHARE;
@@ -172,7 +179,9 @@ export function pageHtml(tags) {
 /** The HTML for an account's link: its card, and what the sign-in needs (name and look; never its join code). */
 export function accountHtml(co) {
   const card = shareFor(co);
-  return pageHtml(headTags(card, { url: `${SITE}/${co.slug}`, account: { slug: co.slug, name: co.name, brand: lookOf(co) } }));
+  const brand = lookOf(co);
+  const spec = /^look-\d+$/.test(brand) ? dataSpec(brand) : null; // Nov 22: a look made in Your Look brings its paint
+  return pageHtml(headTags(card, { url: `${SITE}/${co.slug}`, account: { slug: co.slug, name: co.name, brand, ...(spec ? { lookSpec: spec } : {}) } }));
 }
 /** Every other page: the Mise card. */
 export const miseHtml = () => pageHtml(headTags(MISE_SHARE));

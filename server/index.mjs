@@ -36,7 +36,8 @@ import * as captions from './captions.mjs';
 import { migrateImports, importRoutes } from './menuimport.mjs';
 import { initAccounts, accountIds, publicFile } from './account.mjs';
 import { initLawState } from './lawstate.mjs';
-import { accountByLink, accountHtml, miseHtml, linkOf, isReserved, fixAccountSlugs, DEMO_LINKS, SLUG } from './links.mjs';
+import { accountByLink, accountHtml, miseHtml, linkOf, isReserved, fixAccountSlugs, DEMO_LINKS, SLUG, setDataShare } from './links.mjs';
+import { migrateLooks, yourLookRoutes, lookFileFor, dataShareFor, lookPayload } from './yourlook.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -53,6 +54,8 @@ captions.migrateCaptions(db); // Nov 14: media.captions (server/captions.mjs)
 seed(db);
 seedWineVideos(db);
 bootAccounts(db);
+migrateLooks(db); // Nov 22: Your Look (looks, look_reads, look_changes) before the demo sweep, which wipes demos' looks
+setDataShare((co) => dataShareFor(db, co), (id) => lookPayload(db, id)?.spec || null);
 migrateAcks(db); migrateImports(db); migrateDemo(db); purgeDemos(db); // acks and imports first: demo copies seed and drop them
 fixAccountSlugs(db); // Nov 19: an account's link can never be an app address (after migrateDemo: it reads companies.demo; server/links.mjs)
 try { const n = cleanOrphans(db); if (n) console.log(`Removed ${n} quiz history rows of people who no longer exist`); } catch (e) { console.error('orphan cleanup', e); }
@@ -250,6 +253,10 @@ const imports = importRoutes({ db, fail, sendJson, readJson, needEditor: (c, req
   isDemo: (co) => isDemoCompany(db, co), brandOf: (co) => (isBrgCompany(db, co) ? 'baldwin' : 'mise'), // BRG's sections, or not (not the look)
   limiter: new LoginLimiter(12, 24 * 3600e3, 'menu-read'), demoLimiter: new LoginLimiter(20, 24 * 3600e3, 'menu-read-demo') });
 const companyData = companyDataRoutes({ db, fail, sendJson, readJson, isDemoCompany });
+// Your Look from your website (Nov 22, server/yourlook.mjs): 10 website reads a day per company; a demo copy 5; 20 an hour
+// per address (a demo visitor can start many demos).
+const yourLook = yourLookRoutes({ db, fail, sendJson, readJson, isDemo: (co) => isDemoCompany(db, co), clientIp,
+  limiter: new LoginLimiter(10, 24 * 3600e3, 'look-read'), demoLimiter: new LoginLimiter(5, 48 * 3600e3, 'look-read-demo'), ipLimiter: new LoginLimiter(20, 60 * 60_000, 'look-read-ip') });
 const hqHome = hqHomeRoutes({ db, fail, sendJson });
 async function api(req, res, url) {
   const c = ctx(req);
@@ -389,6 +396,7 @@ async function api(req, res, url) {
   }
   if ((await accounts(req, res, url, c)) !== false) return;
   if ((await imports(req, res, url, c)) !== false) return;
+  if ((p.startsWith('/api/your-look') || p.startsWith('/api/looks/')) && (await yourLook(req, res, url, c)) !== false) return;
 
   /* quizzes: everyone signed in. A person's records are keyed 'u<id>' (older phone-only records keep their device id). */
   if (p === '/api/quiz/attempt' && m === 'POST') {
@@ -1289,6 +1297,14 @@ function staticFile(req, res, url) {
     // Nov 19: only the company that uploaded it, unless it's in the shared library (server/files.mjs, mediaVisible)
     if (!u || !fs.existsSync(f) || !mediaVisible(db, u, companyOf(u), path.basename(p), SHARED)) { res.writeHead(404); return res.end('Not found'); }
     return sendFile(req, res, f, 'private, max-age=31536000, immutable');
+  }
+  // Nov 22 (Your Look): a company's look files. Its own people and super admins; signed out, only what a worn look shows
+  // before sign-in (its logo, icon, photo and link card). server/yourlook.mjs lookFileFor.
+  if (p.startsWith('/look-files/')) {
+    const u = sessionUser(db, cookies(req)[SESSION_COOKIE]);
+    const hit = lookFileFor(db, u ? { ...u, company_id: companyOf(u) } : null, p);
+    if (!hit) { res.writeHead(404); return res.end('Not found'); }
+    return sendFile(req, res, hit.file, hit.cache);
   }
   // The book's page files are served through the API, to signed-in people only.
   if (p.startsWith('/content/')) { res.writeHead(404); return res.end('Not found'); }

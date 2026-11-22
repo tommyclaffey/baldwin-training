@@ -3,7 +3,8 @@
 // never takes a certificate away: the first passing attempt and the best passing score stay.
 import { LEVELS, programDef, chaptersForLevel, countWord } from './manual.mjs';
 import { passFor } from './quizgen.mjs';
-import { lookOfStore } from './looks.mjs';
+import { lookOfStore, isDataLook } from './looks.mjs';
+import { lookPayload } from './yourlook.mjs';
 
 /** The store's own look (Nov 17), when it wears one: the band shows that look's logo (src/path/Certificate.tsx). */
 function ownLook(db, storeRow) {
@@ -32,7 +33,7 @@ export function certificatesFor(db, user, store, storeRow) {
       key: L.file, isA: L.isA !== false, program: L.program, programName: P.name, programSlug: L.slug, level: L.level, levelWord: countWord(L.level), title: L.title, seal: P.seal,
       name: user.name, final: { pct: Math.round((best.score / best.total) * 100), at: best.at, firstAt: passes[0].at },
       practical, number: `${L.prefix}-${String(user.id).padStart(4, '0')}`, earnedAt: earned,
-      store: storeRow?.name || null, logo: storeRow?.book_ready ? '/img/logo-white.png' : null, look: ownLook(db, storeRow), fine: L.fine || P.fine, practicalLabel: L.practicalLabel || null,
+      store: storeRow?.name || null, logo: storeRow?.book_ready ? '/img/logo-white.png' : null, look: ownLook(db, storeRow), ...(isDataLook(ownLook(db, storeRow)) ? { lookSpec: lookPayload(db, ownLook(db, storeRow))?.spec } : {}), fine: L.fine || P.fine, practicalLabel: L.practicalLabel || null,
     });
   }
   return out.sort((a, b) => String(b.earnedAt).localeCompare(String(a.earnedAt)));

@@ -6,6 +6,7 @@ import { useSession } from '../lib/session';
 import { VideoEmbed, forgetCaptions } from '../components/VideoEmbed';
 import { Empty, ErrorNote, InviteSentCard, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
 import { PRODUCT_NAME } from '../lib/brand';
+import { registerLook } from '../lib/theme';
 import { AuthCard } from '../components/AuthCard';
 import type { Brand } from '../lib/theme';
 import { linkText } from '../lib/account';
@@ -210,7 +211,7 @@ export function AcceptInvite() {
   const [f, setF] = useState({ name: '', password: '' });
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
-  useEffect(() => { api<typeof inv>(`/api/invite/${token}`).then(setInv).catch(() => setInv({ valid: false })); }, [token]);
+  useEffect(() => { api<typeof inv & { lookSpec?: unknown }>(`/api/invite/${token}`).then((r) => { if (r?.brand && r.lookSpec) registerLook(r.brand, r.lookSpec, { quiet: true }); setInv(r); }).catch(() => setInv({ valid: false })); }, [token]);
   if (!inv) return <AuthCard title="Checking Your Invite…"><Loading /></AuthCard>;
   if (!inv.valid) return <AuthCard title="This Invite Doesn’t Work" sub="It expired, was already used, or a newer link replaced it. Ask for a new link."><Link className="btn" to="/">Go to the Book</Link></AuthCard>;
   const submit = async (e: FormEvent) => {

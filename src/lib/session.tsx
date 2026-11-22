@@ -30,7 +30,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setMailOn(!!me.mailOn);
       setLegal(me.legal?.public ? me.legal : { public: false, supportEmail: null });
       markDemo(!!me.user?.demo);
-      setSessionBrand(me.user?.brand); // Nov 11: the look follows the company
+      setSessionBrand(me.user?.brand, me.user?.lookSpec); // Nov 11: the look follows the company (Nov 22: a data look brings its paint)
       setUser(me.user); setSetup(me.setupNeeded); setSuperSetup(me.superSetupNeeded);
     } catch { setUser(null); setSessionBrand(null); }
     setLoaded(true);

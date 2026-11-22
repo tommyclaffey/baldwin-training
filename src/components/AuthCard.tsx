@@ -8,8 +8,8 @@
 // that restaurant's own look (The Baldwin stays The Baldwin; Fig & Fire is Mise), so BookSignIn passes the company's brand.
 //
 // Photo: Olena Bohovyk on Unsplash (https://unsplash.com/photos/HN2ukPUF_og), the same photo as Figma section 25.
-import { useLayoutEffect, type CSSProperties, type ReactNode } from 'react';
-import { THEMES, brandTitle, color, setPageBrand, themeVars, type Brand, type Theme, type TypeSpec } from '../lib/theme';
+import { useEffect, useLayoutEffect, useState, type CSSProperties, type ReactNode } from 'react';
+import { lookTheme, onLookChange, brandTitle, color, setPageBrand, themeVars, type Brand, type Theme, type TypeSpec } from '../lib/theme';
 import { LegalLinks } from './Legal';
 import { LookLogo } from './LookLogo';
 
@@ -36,7 +36,9 @@ function paint(t: Theme): CSSProperties {
 export function AuthCard({ title, sub, kicker, foot, brand = 'mise', children }: {
   title: string; sub?: ReactNode; kicker?: string; foot?: ReactNode; brand?: Brand; children: ReactNode;
 }) {
-  const t = THEMES[brand];
+  const [, redraw] = useState(0);
+  useEffect(() => onLookChange(() => redraw((n) => n + 1)), []); // a data look's paint arriving (Nov 22)
+  const t = lookTheme(brand);
   // The rest of the page (tab icon, <html> colours) follows this screen while it's showing.
   useLayoutEffect(() => { setPageBrand(brand); return () => setPageBrand(null); }, [brand]);
   // Nov 18 (Mise rebrand): a look with a big-moment logo shows that file as it is, at its own size (Mise: the Mise Academy
@@ -47,8 +49,10 @@ export function AuthCard({ title, sub, kicker, foot, brand = 'mise', children }:
   return (
     <div className={`si si-${brand}`} style={paint(t)}>
       <div className="si-photo" role="banner">{/* (the logo and photo band is the screen's banner, so nothing sits outside a landmark; Nov 12 scan) */}
-        <img className="si-photo-img" src="/img/signin-bartender-2400.jpg" srcSet="/img/signin-bartender-1200.jpg 1200w, /img/signin-bartender-2400.jpg 2400w"
-          sizes="(min-width: 900px) 95vw, 100vw" alt="" />
+        {/* Nov 22: a look made from a website brings its own photo; the hand-built looks keep the bartender */}
+        {t.photo ? <img className="si-photo-img" src={t.photo} alt="" />
+          : <img className="si-photo-img" src="/img/signin-bartender-2400.jpg" srcSet="/img/signin-bartender-1200.jpg 1200w, /img/signin-bartender-2400.jpg 2400w"
+          sizes="(min-width: 900px) 95vw, 100vw" alt="" />}
         <div className="si-shade" />
         {logo}
         {t.accentLine === 'tape'

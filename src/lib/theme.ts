@@ -15,11 +15,19 @@
 // The coded screens (admin, Team Chat, My Path, quizzes…) read the same roles as CSS variables (`--c-*`, `--font-*`), set
 // on <html> from these objects, alongside the older palette tokens in styles.css.
 import type { FNode } from '../components/FigmaNode';
+import { mix, ratio, bestOn, validSpec, HEADING_SCALE, type LookSpec } from './lookspec.ts';
 
 /** Every look (Nov 17: looks per store, Testa Barra and J.Baldwin's added). The same ids as server/looks.mjs LOOKS; a look's
- *  paint is its THEMES entry below. test/store-looks.test.mjs checks the two lists match. */
+ *  paint is its THEMES entry below. test/store-looks.test.mjs checks the two lists match.
+ *  Nov 22 (Your Look from your website): a look made from a restaurant's website is data, 'look-<id>', its paint built by
+ *  `themeFromSpec` from the spec the server sends (registerLook). The hand-built looks stay in THEMES, unchanged. */
 export const BRAND_IDS = ['baldwin', 'mise', 'testabarra', 'jbaldwins'] as const;
-export type Brand = typeof BRAND_IDS[number];
+export type BuiltIn = typeof BRAND_IDS[number];
+export type Brand = BuiltIn | `look-${number}`;
+export const isDataBrand = (b: unknown): b is `look-${number}` => typeof b === 'string' && /^look-\d{1,9}$/.test(b);
+/** Data looks' specs and their paint (see "Looks as data" below). */
+const DATA_SPECS = new Map<string, LookSpec>();
+const DATA_THEMES = new Map<string, Theme>();
 
 /* ── Which brand is on screen ─────────────────────────────────────────────────────────────────────────────────────────
  * Nov 11: the brand is the company's look, sent with the session. Nov 16 (Tommy: "custom brand is an upgraded tier"): Mise
@@ -30,10 +38,22 @@ export type Brand = typeof BRAND_IDS[number];
  * real account. Nov 17: the look is the store's (a store can wear its own look; server/looks.mjs lookOfStore). */
 const OVERRIDE = 'brand-override';
 const LAST = 'look';
-const isBrand = (b: unknown): b is Brand => (BRAND_IDS as readonly unknown[]).includes(b);
+const isBuiltIn = (b: unknown): b is BuiltIn => (BRAND_IDS as readonly unknown[]).includes(b);
+const isBrand = (b: unknown): b is Brand => isBuiltIn(b) || isDataBrand(b);
 /** A look id from the server (anything unknown is Mise, the platform's own look). */
 export const asBrand = (b: unknown): Brand => (isBrand(b) ? b : 'mise');
-let fromSession: Brand = (() => { try { return asBrand(localStorage.getItem(LAST)); } catch { return 'mise'; } })();
+const LAST_SPEC = 'look-spec'; // a data look's paint, kept with its id so the loading screen doesn't flash Mise
+let fromSession: Brand = (() => {
+  try {
+    const b = asBrand(localStorage.getItem(LAST));
+    if (!isDataBrand(b)) return b;
+    const spec = JSON.parse(localStorage.getItem(LAST_SPEC) || 'null');
+    return spec && validSpec(spec) ? (DATA_SPECS.set(b, spec), b) : 'mise';
+  } catch { return 'mise'; }
+})();
+/** Nov 22: Your Look's live preview (an iframe of Home at ?look-preview=<id>, src/admin/yourlook.tsx): that tab only, in
+ *  memory, never stored. */
+let fromPreview: Brand | null = null;
 let fromPage: Brand | null = null; // a public page that has its own look (the Mise demo picker at /demo/mise)
 const inBrowser = typeof document !== 'undefined';
 try {
@@ -42,16 +62,20 @@ try {
   if (isBrand(q)) sessionStorage.setItem(OVERRIDE, q);
 } catch { /* private mode, or not in a browser */ }
 function override(): Brand | null {
-  try { const v = sessionStorage.getItem(OVERRIDE); return isBrand(v) ? v : null; } catch { return null; }
+  try { const v = sessionStorage.getItem(OVERRIDE); return isBuiltIn(v) ? v : null; } catch { return null; }
 }
 /** The look to draw right now. Read it while rendering (it changes when someone signs in or a demo starts). */
 export function currentBrand(): Brand {
-  return override() || fromPage || fromSession;
+  return fromPreview || override() || fromPage || fromSession;
 }
-/** The signed-in company's brand (session.tsx sets it on every /api/me). */
-export function setSessionBrand(b: string | null | undefined) {
+/** The signed-in company's brand (session.tsx sets it on every /api/me). `spec`: a data look's paint (Nov 22). */
+export function setSessionBrand(b: string | null | undefined, spec?: unknown) {
   fromSession = asBrand(b);
-  try { if (b) localStorage.setItem(LAST, fromSession); else localStorage.removeItem(LAST); } catch { /* private mode */ }
+  if (isDataBrand(fromSession)) { if (spec) registerLook(fromSession, spec, { quiet: true }); else void ensureLook(fromSession); }
+  try {
+    if (b) localStorage.setItem(LAST, fromSession); else localStorage.removeItem(LAST);
+    if (isDataBrand(fromSession) && DATA_SPECS.has(fromSession)) localStorage.setItem(LAST_SPEC, JSON.stringify(DATA_SPECS.get(fromSession))); else localStorage.removeItem(LAST_SPEC);
+  } catch { /* private mode */ }
   apply();
 }
 /** A signed-out page with its own look (null = follow the session). */
@@ -96,10 +120,10 @@ export type Theme = {
   logo: { src: string; alt: string; w: number; h: number; phoneH: number; crop?: Crop } | null;
   /** The file in the drawn sidebar's logo slot when `logo` is null (Nov 16): a custom look's own logo. The file is the
    *  account's, on the volume (server/account.mjs), so the build's sidebar carries the slot with no image in it. */
-  drawnLogo?: { src: string; alt: string; w?: number; h?: number; crop?: Crop };
+  drawnLogo?: { src: string; alt: string; w?: number; h?: number; crop?: Crop; plate?: string };
   /** The look's logo everywhere else it shows (Nov 17): the phone bar, the admin, the sign-in screens, Privacy/Terms/Help
    *  and the certificate band. `barH`: its height on the phone bar. `crop`: the artwork inside the file (see Crop). */
-  mark: { src: string; alt: string; barH: number; crop?: Crop };
+  mark: { src: string; alt: string; barH: number; crop?: Crop; plate?: string }; // plate (Nov 22): a light logo's backing on dark
   /** Nov 18 (Mise rebrand): the logo for big moments only, the sign-in screens, the demo picker and the certificate band
    *  (Mise: the Mise Academy lockup, "academy" on blue tape). Unset: `mark` everywhere (every custom look). */
   hero?: { src: string; alt: string; crop: Crop };
@@ -130,6 +154,10 @@ export type Theme = {
   /** Nov 21 (Mise A2): "new" tags (Home's What's New: NEW DISH, UPDATED…) are filled in the look's `new` colour, not
    *  outlined. Unset: as drawn. */
   newTags?: boolean;
+  /** Nov 22 (looks as data): the tab and home-screen icon as one file (the site's own icon), and the photo on the sign-in
+   *  screens. Unset for the hand-built looks (their icons are /icons/<icon>-<size>.png; sign-in keeps the bartender). */
+  iconSrc?: string;
+  photo?: string;
   /** Brand rules that aren't a colour or a face. Mise: text on a shaded photo is always light ink; a video's channel
    *  line is muted, not the accent (deep fig is for things that need attention). */
   photoTextLight: boolean;
@@ -338,7 +366,107 @@ export const THEMES: Record<Brand, Theme> = {
   },
 };
 
-export function theme(b: Brand = currentBrand()): Theme { return THEMES[b]; }
+/* ── Looks as data (Nov 22, "Your Look from your website"; Figma 09 · Idea Board → 44) ─────────────────────────────────
+ * A look made from a website is a LookSpec (src/lib/lookspec.ts): a dozen colours, three faces, its logo files, its icon
+ * and its photo. `themeFromSpec` fills every role of a Theme from it, the same way Testa Barra's and J.Baldwin's looks were
+ * filled by hand on Nov 17 (their paint is the reference). The spec arrives with the session, the join screen, an
+ * account's link or a certificate; anything else asks the server once (`ensureLook`). */
+/** Every face a data look uses, loaded from Google Fonts on demand (the CSP allows fonts.googleapis.com). */
+const GENERIC: Record<string, string> = { serif: 'Georgia, serif', sans: "system-ui, sans-serif", script: 'cursive', mono: 'ui-monospace, monospace' };
+function registerFont(name: string) {
+  if (FONTS[name]) return;
+  const kind = /script|hand|vibes|pinyon|dancing|pacifico/i.test(name) ? 'script' : /mono/i.test(name) ? 'mono' : /serif|cinzel|playfair|garamond|baskerville|caslon|bodoni|lora|gilda|prata|cormorant|marcellus|italiana|merriweather|abril/i.test(name) && !/sans/i.test(name) ? 'serif' : 'sans';
+  FONTS[name] = { css: `'${name}', ${GENERIC[kind]}`, google: name.replace(/ /g, '+'), data: true };
+  FONT_CSS[name] = FONTS[name].css;
+}
+/** A data look's paint, from its spec. */
+export function themeFromSpec(id: Brand, spec: LookSpec): Theme {
+  const c = spec.colors, f = spec.fonts;
+  for (const face of [f.heading, f.accent, f.body]) registerFont(face);
+  const upper = f.headingCase === 'upper';
+  const scale = HEADING_SCALE[f.heading] ?? 1;
+  const head: TypeSpec = { ff: f.heading, fs: 'Bold', ...(scale !== 1 ? { scale } : {}), ...(upper ? { ls: '2%' } : {}), case: upper ? 'upper' : 'title' };
+  const onDarkMuted = (t: number) => mix(c.onPanel, c.panel, t);
+  const danger = bestOn('#FFFFFF', [c.accentLight], 4.5) === c.accentLight && /^#[89A-F]/.test(c.accentLight) && ratio(c.accentLight, '#FFFFFF') >= 4.5 ? c.accentLight : '#8E2F24';
+  const logo = spec.logo.dark || spec.logo.light;
+  const plate = !spec.logo.dark && spec.logo.light ? c.card : undefined; // a logo with no version for dark sits on a light plate
+  const W = 164, maxH = 64;
+  const box = logo ? (() => { const [, , w, h] = logo.crop; const k = Math.min(W / w, maxH / h); return { w: Math.round(w * k * 10) / 10, h: Math.round(h * k * 10) / 10 }; })() : null;
+  return {
+    brand: id,
+    colors: {
+      page: c.page, card: c.card, wash: [mix(c.card, c.page, 0.5), mix(c.page, c.ink, 0.04), c.page, mix(c.page, c.muted, 0.05)],
+      line: [mix(c.page, c.ink, 0.07), mix(c.page, c.ink, 0.11), mix(c.page, c.ink, 0.18), c.line],
+      ink: c.ink, inkMuted: [c.muted, c.muted, mix(c.ink, c.muted, 0.5), c.muted, mix(c.muted, c.page, 0.35)], accentText: [c.accentLight, c.accentLight],
+      inverse: c.panel, inverseRaised: [mix(c.panel, c.onPanel, 0.06), mix(c.panel, c.onPanel, 0.14)], inverseChip: mix(c.panel, c.onPanel, 0.16), inverseLine: [mix(c.panel, c.onPanel, 0.1), mix(c.panel, c.onPanel, 0.18)],
+      onInverse: [c.onPanel, mix(c.onPanel, c.panel, 0.04), c.ink], onInverseMuted: [onDarkMuted(0.1), onDarkMuted(0.15), onDarkMuted(0.22)], onInverseLabel: c.label, accentOnDark: [c.accentDark, c.accentDark],
+      accent: [c.accentDark, c.accentDark], onAccent: [c.onAccentDark, c.onAccentDark, c.onAccentDark], danger, onDanger: '#FFFFFF',
+      accentOnLight: [c.accentLight, c.accentLight], onAccentOnLight: [c.onAccentLight, c.onAccentLight, c.onAccentLight], placeholder: mix(c.page, c.muted, 0.12),
+      edgeStrong: [c.accentLight, c.ink], edgeMuted: c.muted, edgeSoft: mix(c.muted, c.page, 0.3), outlineOnDark: mix(c.panel, c.onPanel, 0.45),
+      button: c.panel, onButton: c.onPanel, buttonOnDark: c.accentDark, onButtonOnDark: c.onAccentDark,
+      new: '#E7E2F0', onNew: '#4B3F6B', tape: c.accentDark, onTape: c.onAccentDark,
+      dataUsed: c.panel, dataWasted: c.accentLight, focus: c.accentLight, focusBand: c.card,
+    },
+    type: {
+      pageTitle: head, cardTitle: head, sectionHeading: head, cardHeading: head, smallHeading: head,
+      label: { ff: f.body, ls: '12%', case: 'as-is' }, body: { ff: f.body, case: 'as-is' },
+      accent: { ff: f.accent, fs: 'Regular', lh: '115%', case: 'as-is' },
+    },
+    accentLine: 'script',
+    logo: null,
+    ...(logo && box ? {
+      drawnLogo: { src: logo.src, alt: spec.name, w: box.w, h: box.h, crop: logo.crop, ...(plate ? { plate } : {}) },
+      mark: { src: logo.src, alt: spec.name, barH: Math.min(32, Math.round(28 * Math.min(1.15, (box.w / box.h) / 2.8 + 0.6))), crop: logo.crop, ...(plate ? { plate } : {}) },
+    } : { mark: { src: MISE_ON_DARK, alt: spec.name, barH: 28, crop: MISE_CROP } }),
+    ...(spec.icon ? { iconSrc: spec.icon } : {}),
+    ...(spec.photo ? { photo: spec.photo } : {}),
+    demoPill: { tint: c.accentDark, tintO: 0.24, ink: mix(c.accentDark, '#FFFFFF', 0.55), muted: c.label },
+    coded: 'roles',
+    activeNav: 'drawn',
+    photoTextLight: false,
+    quietVideoCaptions: false,
+  };
+}
+/** A data look's spec arrived: its paint is ready to draw. `quiet`: don't announce (the caller applies). */
+export function registerLook(id: string, spec: unknown, { quiet = false } = {}): boolean {
+  if (!isDataBrand(id) || !validSpec(spec)) return false;
+  const same = JSON.stringify(DATA_SPECS.get(id)) === JSON.stringify(spec);
+  DATA_SPECS.set(id, spec);
+  if (!same || !DATA_THEMES.has(id)) DATA_THEMES.set(id, themeFromSpec(id, spec));
+  if (!quiet && !same) apply();
+  return true;
+}
+const asking = new Map<string, Promise<void>>();
+/** Ask the server for a data look's paint once (a worn look's is public; a draft only for its own company). */
+export function ensureLook(id: Brand): Promise<void> {
+  if (!isDataBrand(id) || DATA_THEMES.has(id) || !inBrowser) return Promise.resolve();
+  if (!asking.has(id)) asking.set(id, fetch(`/api/looks/${id}/spec`, { credentials: 'same-origin' }).then((r) => (r.ok ? r.json() : null))
+    .then((d) => { if (d?.spec) registerLook(id, d.spec); }).catch(() => {}));
+  return asking.get(id)!;
+}
+/** The paint for a look id: a hand-built look, a registered data look, else Mise (a data look not yet here asks for it). */
+export function lookTheme(b: Brand): Theme {
+  if (isBuiltIn(b)) return THEMES[b];
+  let t = DATA_THEMES.get(b);
+  if (!t && DATA_SPECS.has(b)) { t = themeFromSpec(b, DATA_SPECS.get(b)!); DATA_THEMES.set(b, t); }
+  if (t) return t;
+  void ensureLook(b);
+  return THEMES.mise;
+}
+/** Your Look's live preview (the iframe at ?look-preview=<id>): the draft's paint, and every change the Adjust screen
+ *  posts to it (same origin only). */
+if (inBrowser) {
+  try {
+    const pv = new URLSearchParams(location.search).get('look-preview');
+    if (isDataBrand(pv)) { fromPreview = pv; void ensureLook(pv); }
+    window.addEventListener('message', (e) => {
+      if (e.origin !== location.origin || e.data?.type !== 'mise-look-preview' || !isDataBrand(e.data.id) || e.data.id !== fromPreview) return;
+      registerLook(e.data.id, e.data.spec);
+    });
+  } catch { /* not in a browser */ }
+}
+
+export function theme(b: Brand = currentBrand()): Theme { return lookTheme(b); }
 /** A role's colour in a brand (tone step `i`, or the last step the brand has). */
 export function color(t: Theme, role: ColorRole, i = 0): string {
   const v = t.colors[role];
@@ -352,7 +480,7 @@ const cssName = (r: string) => '--c-' + r.replace(/[A-Z]/g, (m) => '-' + m.toLow
  *  ACCENT_FACE (Nov 17): Testa Barra's and J.Baldwin's accent line is Gilda Display, a free stand-in for the licensed TAN
  *  Grandeur both sites use (Tommy: Bigelow Rules was "too cartoony"). Swapping in the real face is one place: point
  *  ACCENT_FACE at a new entry here (its stack, and a Google Fonts family or a self-hosted @font-face in styles.css). */
-export const FONTS: Record<string, { css: string; google?: string }> = {
+export const FONTS: Record<string, { css: string; google?: string; data?: boolean }> = {
   Archivo: { css: "'Archivo', system-ui, sans-serif" }, 'DM Serif Display': { css: "'DM Serif Display', Georgia, serif" },
   'DM Mono': { css: "'DM Mono', ui-monospace, monospace" }, 'Pinyon Script': { css: "'Pinyon Script', cursive" }, 'Reenie Beanie': { css: "'Reenie Beanie', cursive" },
   'Bebas Neue': { css: "'Bebas Neue', 'Archivo Narrow', sans-serif", google: 'Bebas+Neue' },
@@ -365,15 +493,29 @@ const FONT_CSS: Record<string, string> = Object.fromEntries(Object.entries(FONTS
 export const fontCss = (ff: string | undefined) => (ff && FONT_CSS[ff]) || FONT_CSS.Archivo;
 /** A look's faces that load on demand: one Google Fonts stylesheet (inside the CSP's style-src). */
 export function fontsUrl(t: Theme): string | null {
-  const fams = [...new Set(Object.values(t.type).map((x) => FONTS[x.ff]?.google).filter(Boolean))];
+  const fams = [...new Set(Object.values(t.type).filter((x) => !FONTS[x.ff]?.data).map((x) => FONTS[x.ff]?.google).filter(Boolean))];
   return fams.length ? `https://fonts.googleapis.com/css2?${fams.map((f) => 'family=' + f).join('&')}&display=swap` : null;
 }
 function loadFonts(t: Theme) {
   const href = fontsUrl(t);
-  if (!href || document.querySelector(`link[data-look-fonts="${t.brand}"]`)) return;
-  const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; l.dataset.lookFonts = t.brand;
-  document.head.appendChild(l);
+  if (href && !document.querySelector(`link[data-look-fonts="${t.brand}"]`)) {
+    const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; l.dataset.lookFonts = t.brand;
+    document.head.appendChild(l);
+  }
+  // Nov 22: a data look's faces, one family each (a family that lacks a weight would fail a combined request): the regular
+  // face, then the weights the app uses (ignored by Google when the family doesn't have them)
+  for (const ff of new Set(Object.values(t.type).map((x) => x.ff))) {
+    const F = FONTS[ff];
+    if (!F?.data || document.querySelector(`link[data-look-face="${ff}"]`)) continue;
+    for (const q of ['', ':wght@400;500;600;700']) {
+      const l = document.createElement('link'); l.rel = 'stylesheet'; l.dataset.lookFace = ff;
+      l.href = `https://fonts.googleapis.com/css2?family=${F.google}${q}&display=swap`;
+      document.head.appendChild(l);
+    }
+  }
 }
+/** Re-render when the look changes (a data look's paint arrived, the preview changed): `useLookVersion()` in a component. */
+export function onLookChange(fn: () => void) { if (!inBrowser) return () => {}; window.addEventListener('brandchange', fn); return () => window.removeEventListener('brandchange', fn); }
 /** The admin's select chevron (Nov 17, Tommy: "fix the drop-down arrows in the pill"), drawn in one of the look's colours. */
 export const chevron = (hex: string) => `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23${hex.replace('#', '')}' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`;
 export function themeVars(t: Theme): Record<string, string> {
@@ -418,7 +560,7 @@ const A2_KEYS = Object.keys(themeVars(THEMES.mise)).filter((k) => !(k in themeVa
 // The look changed: the class on <html>, the role variables, and a 'brandchange' event (favicon.ts swaps the tab icon on it).
 function apply() {
   if (!inBrowser) return;
-  const b = currentBrand(); const root = document.documentElement; const t = THEMES[b];
+  const b = currentBrand(); const root = document.documentElement; const t = lookTheme(b);
   root.classList.toggle('brand-mise', b === 'mise');
   root.classList.toggle('look-roles', t.coded === 'roles'); // Nov 17: the coded screens painted from the look's roles
   root.dataset.brand = b;
@@ -880,7 +1022,7 @@ export function themePage<P extends { main: FNode; bg?: string; name?: string }>
 /** The look's logo in the drawn slot. Nov 17: a look can size the slot to its logo (Testa Barra's wordmark is wider and
  *  shorter than The Baldwin's) and show only the artwork of a file with transparent margins (cropFill). */
 function drawnLogoNode(c: FNode, L: NonNullable<Theme['drawnLogo']>): FNode {
-  const out: FNode = { ...c, alt: L.alt, f: [L.crop ? { img: L.src, m: 'FIT', ...cropFill(L.crop) } : { img: L.src, m: 'FIT' }] };
+  const out: FNode = { ...c, alt: L.alt, f: [...(L.plate ? [{ c: L.plate }] : []), L.crop ? { img: L.src, m: 'FIT', ...cropFill(L.crop) } : { img: L.src, m: 'FIT' }] };
   if (L.w) out.w = L.w;
   if (L.h) out.h = L.h;
   return out;

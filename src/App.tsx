@@ -20,7 +20,7 @@ import { DemoBar, DemoTour, openWelcome } from './components/DemoTour';
 import { TeamBar } from './components/TeamBar';
 import { MyPathPage, PathReadBar } from './path/MyPath';
 import { AckPage } from './path/AckPage';
-import { theme } from './lib/theme';
+import { theme, onLookChange } from './lib/theme';
 import { focusablesIn } from './lib/modal';
 import { LookLogo } from './components/LookLogo';
 
@@ -38,6 +38,9 @@ import { accountAt } from './lib/account';
 
 export default function App() {
   const { pathname } = useLocation();
+  // Nov 22: a look made in Your Look draws once its paint is here (and Your Look's live preview redraws as it changes)
+  const [, redraw] = useState(0);
+  useEffect(() => onLookChange(() => redraw((n) => n + 1)), []);
   if (pathname === '/admin' || pathname.startsWith('/admin/')) return <><Routes><Route path="/admin/*" element={<AdminApp />} /></Routes><ChatPanelHost /></>;
   // Nov 11: two demos, each with its own link. /demo = The Baldwin's, /demo/mise = Fig & Fire in the Mise look.
   if (pathname === '/demo' || pathname === '/demo/brg') return <DemoPicker kind="baldwin" />;

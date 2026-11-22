@@ -23,6 +23,13 @@ function draw() {
   const slug = t.icon ? t.icon : !store ? 'mise' : HAS_LOGO.has(store.slug) ? store.slug : null; // signed out in The Baldwin's look: Mise (Nov 16)
   const icons = document.querySelectorAll<HTMLLinkElement>('link[rel="icon"]');
   const touch = document.querySelector<HTMLLinkElement>('link[rel="apple-touch-icon"]');
+  // Nov 22: a look made from a website uses the site's own icon file, at every size
+  if (t.iconSrc) {
+    const type = t.iconSrc.endsWith('.webp') ? 'image/webp' : t.iconSrc.endsWith('.jpg') ? 'image/jpeg' : 'image/png';
+    icons.forEach((l) => { l.type = type; l.href = t.iconSrc!; });
+    if (touch) touch.href = t.iconSrc;
+    return;
+  }
   icons.forEach((l) => {
     const size = (l.getAttribute('sizes') || '32x32').split('x')[0];
     if (slug) { l.type = 'image/png'; l.href = `/icons/${slug}-${size}.png`; }

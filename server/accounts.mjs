@@ -13,7 +13,8 @@
 // or all of them; owners and super admins work in one store at a time and can switch.
 // Every query about people is scoped to the signed-in person's company, and store-level records to their store.
 import { audit, now } from './db.mjs';
-import { LOOKS, PLANS, DEFAULT_LOOK, DEFAULT_PLAN, lookOf, lookAllowed, looksFor, lookOfStore, storeLooksAllowed } from './looks.mjs';
+import { LOOKS, PLANS, DEFAULT_LOOK, DEFAULT_PLAN, lookOf, lookAllowed, looksFor, lookOfStore, storeLooksAllowed, lookInfo, isDataLook } from './looks.mjs';
+import { lookPayload } from './yourlook.mjs';
 import { hqId, HQ_NAME } from './hq.mjs';
 import { teamRole, teamCan, teamCans, TEAM_ROLES, GIVABLE } from './miseteam.mjs';
 import {
@@ -144,6 +145,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     ...publicUser(u), workingIn: companyOf(u), workingInName: companyRow(companyOf(u))?.name || null, demo: !!companyRow(u.company_id)?.demo, pinSignIn: u.role === 'manager' && !u.password_hash && !!u.pin_hash, hq: !!companyRow(companyOf(u))?.internal, // Nov 16: Mise Academy (HQ) keeps one store
     // Nov 11: the look follows the company; Nov 16: its plan decides; Nov 17: the store being worked in can wear its own
     brand: lookOfStore(companyRow(companyOf(u)), storeOf(db, u)),
+    // Nov 22 (Your Look): a look made from a website is data; its paint comes with the session (src/lib/theme.ts)
+    ...(() => { const b = lookOfStore(companyRow(companyOf(u)), storeOf(db, u)); const pl = isDataLook(b) ? lookPayload(db, b) : null; return pl ? { lookSpec: pl.spec } : {}; })(),
     store: withMenu(db, storeOut(storeOf(db, u))), canSwitchStore: switchesStores(u), stores: switchesStores(u) ? storesOf(db, companyOf(u)).map(storeOut) : [],
   });
   const signIn = (res, req, user, opts = {}) => {
@@ -174,6 +177,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
     return c.user;
   };
   const companyRow = (id) => db.prepare('SELECT * FROM companies WHERE id = ? AND deleted_at IS NULL').get(id);
+  /** A company's saved looks from Your Look (Nov 22), for the super admin's look pickers. */
+  const ownLooks = (id) => db.prepare("SELECT id, name FROM looks WHERE company_id = ? AND status = 'saved' ORDER BY id").all(id).map((r) => ({ id: 'look-' + r.id, name: r.name, custom: true }));
   const staffByCode = (code) => {
     const c = db.prepare('SELECT * FROM companies WHERE join_code = ? AND deleted_at IS NULL AND internal = 0').get(String(code || '').trim().toUpperCase());
     return c || null;
@@ -418,7 +423,10 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       // Nov 12: the brand comes too, so the store, name and PIN screens wear the restaurant's own look (the join-code screen
       // before it is Mise's, the platform's front door).
       // Nov 17: each store says its own look too, so the name and PIN screens wear the store picked (Testa Barra, J.Baldwin's).
-      return sendJson(res, 200, { company: co.name, brand: lookOf(co), stores: storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name, brand: lookOfStore(co, x) })), staff: staff.map((s) => ({ id: s.id, name: s.name, storeId: s.store_id, needsPin: !s.pin_hash })) });
+      const joinStores = storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name, brand: lookOfStore(co, x) }));
+      // Nov 22: the paint of any look made in Your Look, so those screens can wear it
+      const looks = Object.fromEntries([lookOf(co), ...joinStores.map((x) => x.brand)].filter(isDataLook).map((id) => [id, lookPayload(db, id)?.spec]).filter(([, v]) => v));
+      return sendJson(res, 200, { company: co.name, brand: lookOf(co), stores: joinStores, looks, staff: staff.map((s) => ({ id: s.id, name: s.name, storeId: s.store_id, needsPin: !s.pin_hash })) });
     }
     if (p === '/api/join' && m === 'POST') {
       if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
@@ -484,7 +492,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         if (!ok) return sendJson(res, 200, { valid: false });
         const co = inv.company_id ? companyRow(inv.company_id) : null;
         const invStore = inv.store_id ? db.prepare('SELECT * FROM stores WHERE id = ? AND deleted_at IS NULL').get(inv.store_id) : null;
-        return sendJson(res, 200, { valid: true, email: inv.email, role: inv.role, company: inv.company_name, store: storeName, brand: co ? lookOfStore(co, invStore) : 'mise',
+        const invBrand = co ? lookOfStore(co, invStore) : 'mise';
+        return sendJson(res, 200, { valid: true, email: inv.email, role: inv.role, company: inv.company_name, store: storeName, brand: invBrand, ...(isDataLook(invBrand) && lookPayload(db, invBrand) ? { lookSpec: lookPayload(db, invBrand).spec } : {}),
           teamRole: inv.role === 'superadmin' ? (GIVABLE.includes(inv.super_role) ? inv.super_role : 'manager') : null, promotion: !!who, name: who?.name ?? null });
       }
       if (m === 'POST' && who) {
@@ -818,11 +827,11 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         // Mise Academy (HQ)'s people are the Mise team (they have no company row of their own)
         companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, link: linkOf(x), joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.internal ? team.length : x.leads, staff: x.staff,
           lastSeenAt: x.internal ? team.reduce((a, t) => (t.last_seen_at && t.last_seen_at > (a || '') ? t.last_seen_at : a), null) : x.last_seen,
-          demo: !!x.demo, hq: !!x.internal, state: x.state || null, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x),
+          demo: !!x.demo, hq: !!x.internal, state: x.state || null, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x, ownLooks(x.id)),
           // Nov 17: each store's own look (null = the company's) and the look it's drawn in
           storeLooks: storeLooksAllowed(x),
           stores: storesOf(db, x.id).map((st) => ({ ...storeOut(st), look: st.look || null, drawnIn: lookOfStore(x, st), staff: db.prepare("SELECT COUNT(*) n FROM users WHERE store_id = ? AND role = 'staff' AND deleted_at IS NULL").get(st.id).n })) })),
-        demos: demoGroups(db).map((d) => ({ kind: d.kind, name: d.name, note: d.note, path: d.path, lookName: (LOOKS[d.brand] || LOOKS[DEFAULT_LOOK]).name, open: d.open, lastActiveAt: d.lastActiveAt })),
+        demos: demoGroups(db).map((d) => ({ kind: d.kind, name: d.name, note: d.note, path: d.path, lookName: (lookInfo(d.brand) || LOOKS[DEFAULT_LOOK]).name, open: d.open, lastActiveAt: d.lastActiveAt })),
         admins: admins.map(personOut), teamInvites, you: s.id, youPrimary: !!s.super_primary, youRole: teamRole(s), can: teamCans(s), workingIn: companyOf(s),
         teamRoles: Object.entries(TEAM_ROLES).map(([id, name]) => ({ id, name, givable: GIVABLE.includes(id) })),
         plans: Object.values(PLANS).map((x) => ({ id: x.id, name: x.name, customLook: x.customLook })),
@@ -866,9 +875,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         if (!storeLooksAllowed(co)) fail(400, `A store’s own look comes with the ${PLANS['custom-brand'].name} plan.`);
         const b = await readJson(req);
         const look = b.look === null || b.look === '' || b.look === undefined ? null : String(b.look);
-        if (look && (!LOOKS[look] || !lookAllowed(co, look))) fail(400, 'That look isn’t made for this company.');
+        if (look && (!lookInfo(look) || !lookAllowed(co, look))) fail(400, 'That look isn’t made for this company.');
         db.prepare('UPDATE stores SET look = ? WHERE id = ?').run(look, st.id);
-        superLog(s, 'store look', `${co.name} · ${st.name} · ${look ? LOOKS[look].name : 'Same as company (' + LOOKS[lookOf(co)].name + ')'}`, co.id);
+        superLog(s, 'store look', `${co.name} · ${st.name} · ${look ? lookInfo(look).name : 'Same as company (' + (lookInfo(lookOf(co)) || LOOKS.mise).name + ')'}`, co.id);
         return sendJson(res, 200, { ok: true, look, drawnIn: lookOfStore(co, { ...st, look }) });
       }
       if (m === 'PATCH' && !parts[4]) {
@@ -882,13 +891,13 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
           const plan = b.plan === undefined ? (PLANS[co.plan] ? co.plan : DEFAULT_PLAN) : String(b.plan);
           if (!PLANS[plan]) fail(400, 'Pick a plan.');
           let look = b.look === undefined ? co.brand || DEFAULT_LOOK : String(b.look);
-          if (!LOOKS[look] || !lookAllowed(co, look)) fail(400, 'That look isn’t made for this company.');
-          if (!PLANS[plan].customLook && LOOKS[look].custom) {
+          if (!lookInfo(look) || !lookAllowed(co, look)) fail(400, 'That look isn’t made for this company.');
+          if (!PLANS[plan].customLook && lookInfo(look).custom) {
             if (b.look !== undefined) fail(400, `A custom look comes with the ${PLANS['custom-brand'].name} plan.`);
             look = DEFAULT_LOOK;
           }
           db.prepare('UPDATE companies SET plan = ?, brand = ? WHERE id = ?').run(plan, look, co.id);
-          superLog(s, 'plan and look', `${co.name} · ${PLANS[plan].name} · ${LOOKS[look].name}`, co.id);
+          superLog(s, 'plan and look', `${co.name} · ${PLANS[plan].name} · ${lookInfo(look).name}`, co.id);
           return sendJson(res, 200, { ok: true, plan, look, drawnIn: lookOf({ ...co, plan, brand: look }) });
         }
         // Nov 21: the company's US state (the lessons written from Michigan law say "Example: Michigan law" outside Michigan)

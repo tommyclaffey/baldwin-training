@@ -15,6 +15,7 @@
 // keeps its rows, with the person taken off.
 import { teamCan, teamRole } from './miseteam.mjs';
 import fs from 'node:fs';
+import { dropLookFiles } from './yourlook.mjs';
 import path from 'node:path';
 import { MEDIA_DIR, audit, now } from './db.mjs';
 import { zip } from './zip.mjs';
@@ -228,6 +229,7 @@ export function wipeCompany(db, companyId) {
   } catch (e) { db.exec('ROLLBACK'); throw e; }
   for (const f of files) { try { fs.rmSync(path.join(MEDIA_DIR, f), { force: true }); removed.files = (removed.files || 0) + 1; } catch { /* already gone */ } }
   if (slug?.demo && /^demo(-mise)?-[a-f0-9]{10}$/.test(slug.slug)) fs.rmSync(path.join(MEDIA_DIR, 'demo', slug.slug), { recursive: true, force: true });
+  dropLookFiles(companyId); // Nov 22: its Your Look files (logos, photos, icons, link cards)
   return removed;
 }
 

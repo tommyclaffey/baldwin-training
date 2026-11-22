@@ -86,6 +86,7 @@ export function listFiles() {
   };
   walk(MEDIA_DIR, 'media/', (rel) => rel === 'media/demo' || rel.startsWith('media/demo/'));
   walk(ACCOUNTS_DIR, 'accounts/', () => false);
+  walk(path.join(DATA_DIR, 'looks'), 'looks/', () => false); // Nov 22: Your Look's logos, photos, icons and link cards
   return out.sort((a, b) => a.name.localeCompare(b.name));
 }
 

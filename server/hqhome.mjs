@@ -12,7 +12,7 @@
 // buttons their role can't use, and the server refuses them anyway (server/miseteam.mjs).
 import { teamRole, teamCan, teamCans } from './miseteam.mjs';
 import { hqId, HQ_NAME } from './hq.mjs';
-import { PLANS, LOOKS, DEFAULT_PLAN, lookOf } from './looks.mjs';
+import { PLANS, LOOKS, DEFAULT_PLAN, lookOf, lookInfo } from './looks.mjs';
 import { demoGroups as demoList } from './demo.mjs';
 import { ownedFiles, WAIT_DAYS } from './companydata.mjs';
 import { bytesOf, storageCapBytes, volumeFloorBytes, volumeFree } from './files.mjs';
@@ -93,7 +93,7 @@ export function hqHomeRoutes({ db, fail, sendJson }) {
       const plan = PLANS[co.plan] ? co.plan : DEFAULT_PLAN;
       return {
         id: co.id, name: co.name, hq, link: linkOf(co), createdAt: co.created_at, isNew: !!co.created_at && Date.parse(co.created_at) > Date.now() - 7 * DAY,
-        plan, planName: PLANS[plan].name, lookName: (LOOKS[lookOf(co)] || LOOKS.mise).name,
+        plan, planName: PLANS[plan].name, lookName: (lookInfo(lookOf(co)) || LOOKS.mise).name,
         stores: stores.map((s) => s.name),
         owners: hq ? 0 : n.owners || 0, managers: hq ? 0 : n.managers || 0, staff: hq ? 0 : n.staff || 0, team: hq ? team.length : 0,
         storage: used, lastActiveAt: hq ? team.reduce((a, t) => (t.last_seen_at && t.last_seen_at > (a || '') ? t.last_seen_at : a), null) : lastSeenOf.get(co.id).at,
@@ -112,7 +112,7 @@ export function hqHomeRoutes({ db, fail, sendJson }) {
   }
   /** Demo copies, one group per demo: how many are open and when one was last used (server/demo.mjs, the same list as
    *  Super Admin → Companies). Each copy is gone within a day, or when its visitor leaves. */
-  const demoGroups = () => demoList(db).map((d) => ({ kind: d.kind, name: d.name, note: d.note, path: d.path, lookName: (LOOKS[d.brand] || LOOKS.mise).name, open: d.open, lastActiveAt: d.lastActiveAt }));
+  const demoGroups = () => demoList(db).map((d) => ({ kind: d.kind, name: d.name, note: d.note, path: d.path, lookName: (lookInfo(d.brand) || LOOKS.mise).name, open: d.open, lastActiveAt: d.lastActiveAt }));
   /** Errors in the last `hours`, one line per kind + path + message (the table keeps a row per day). */
   function errorGroups(hours = 24) {
     return db.prepare(`SELECT kind, path, message, SUM(count) count, MIN(first_at) first_at, MAX(last_at) last_at FROM errors WHERE last_at >= ?

@@ -13,8 +13,10 @@ export function LookLogo({ t = theme(), className, height, alt, big }: { t?: The
   const m = (big && t.hero) || t.mark;
   if (!m.crop) return <img src={m.src} alt={alt ?? m.alt} className={className} height={height} />;
   const [x, y, w, h, W] = m.crop;
+  // Nov 22: a logo with no version for dark backgrounds sits on a light plate (the artwork itself is never changed)
+  const plate = 'plate' in m && m.plate ? { background: m.plate, padding: '4px 8px', borderRadius: 6 } : undefined;
   return (
-    <span className={(className ? className + ' ' : '') + 'look-logo'} role="img" aria-label={alt ?? m.alt}>
+    <span className={(className ? className + ' ' : '') + 'look-logo'} role="img" aria-label={alt ?? m.alt} style={plate}>
       <span className="look-logo-box" style={{ aspectRatio: `${w} / ${h}`, ...(height ? { height, width: 'auto' } : {}) }}>
         <img className="look-logo-art" src={m.src} alt="" style={{ width: `${(W / w) * 100}%`, left: `${(-x / w) * 100}%`, top: `${(-y / h) * 100}%` }} />
       </span>

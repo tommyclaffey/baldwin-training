@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { api } from '../lib/api';
-import { asBrand, currentBrand, theme, THEMES } from '../lib/theme';
+import { asBrand, currentBrand, theme, lookTheme, registerLook } from '../lib/theme';
 import { LookLogo } from '../components/LookLogo';
 import { useSession } from '../lib/session';
 import { useModalKeys } from '../lib/modal';
@@ -13,7 +13,7 @@ export type Cert = {
   key: string; isA?: boolean; program: string; programName: string; programSlug: string; level: number; levelWord: string; title: string; seal: string;
   name: string; final: { pct: number; at: string; firstAt: string }; practical: { at: string; by: string | null } | null;
   number: string; earnedAt: string; store: string | null; logo: string | null; fine: string; practicalLabel?: string | null;
-  /** the store's own look (Nov 17): the band shows that look's logo */ look?: string | null;
+  /** the store’s own look (Nov 17): the band shows that look’s logo */ look?: string | null; /** a look made in Your Look: its paint (Nov 22) */ lookSpec?: unknown;
 };
 
 const day = (iso: string, month: 'short' | 'long' = 'short') => new Date(iso).toLocaleDateString('en-US', { month, day: 'numeric', year: 'numeric', timeZone: 'America/Detroit' });
@@ -29,7 +29,7 @@ export function Certificate({ c }: { c: Cert }) {
       <div className="cert-in">
         {/* Nov 18 (Mise rebrand): in a look with a big-moment logo (Mise), the band carries the Mise Academy lockup; the
             restaurant's name stays in the line under the name and in Issued By. Custom looks: their own logo, as before. */}
-        <div className="cert-band">{c.look ? <LookLogo t={THEMES[asBrand(c.look)]} alt={store} big /> : theme().hero ? <LookLogo big /> : c.logo ? <img src={c.logo} alt={store} /> : <span>{store}</span>}</div>
+        <div className="cert-band">{c.look ? <LookLogo t={(c.lookSpec && registerLook(c.look, c.lookSpec, { quiet: true }), lookTheme(asBrand(c.look)))} alt={store} big /> : theme().hero ? <LookLogo big /> : c.logo ? <img src={c.logo} alt={store} /> : <span>{store}</span>}</div>
         <p className="cert-script">Certificate of Completion</p>
         <p className="cert-label">This certifies that</p>
         <p className="cert-name">{c.name}</p>

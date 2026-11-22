@@ -10,7 +10,7 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { api, type User } from '../lib/api';
 import { useSession } from '../lib/session';
-import { asBrand, type Brand } from '../lib/theme';
+import { asBrand, registerLook, type Brand } from '../lib/theme';
 import { AuthCard } from './AuthCard';
 import { SignIn } from '../admin/screens';
 import type { AccountLink } from '../lib/account';
@@ -41,7 +41,8 @@ export function BookSignIn({ account = null }: { account?: AccountLink | null })
     setBusy(true); setError('');
     try {
       const via = account ? `?account=${encodeURIComponent(account.slug)}` : '';
-      const r = await api<{ company: string; brand?: string; stores: Store[]; staff: Staff[] }>(`/api/join/${encodeURIComponent(c.trim().toUpperCase())}${via}`);
+      const r = await api<{ company: string; brand?: string; stores: Store[]; staff: Staff[]; looks?: Record<string, unknown> }>(`/api/join/${encodeURIComponent(c.trim().toUpperCase())}${via}`);
+      for (const [id, spec] of Object.entries(r.looks || {})) registerLook(id, spec, { quiet: true }); // Nov 22: looks made in Your Look
       setCompany(r.company); setCoBrand(asBrand(r.brand)); setStaff(r.staff); setStores(r.stores); localStorage.setItem(CODE_KEY, c.trim().toUpperCase());
       // One store: skip the question. Several: ask once, then remember it on this phone.
       const saved = r.stores.find((x) => String(x.id) === localStorage.getItem(STORE_KEY));

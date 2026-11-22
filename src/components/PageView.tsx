@@ -1,4 +1,4 @@
-import { BRAND_IDS, currentBrand, hasPageTitle, themePage, THEMES, type Brand } from '../lib/theme';
+import { currentBrand, hasPageTitle, themePage, lookTheme, type Theme } from '../lib/theme';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigationType, Link } from 'react-router-dom';
 import { ChatItemsContext, CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
@@ -113,11 +113,15 @@ export function usePageEntry() {
 // The theme layer (Nov 12, lib/theme.ts): every page is drawn in the company's brand (Nov 11: the brand comes with the
 // session), with the layouts every brand shares (the cinematic hero). Themed pages are kept per page object and brand, so
 // re-renders don't redo the work.
-const themeCache = Object.fromEntries(BRAND_IDS.map((b) => [b, new WeakMap<object, Page>()])) as Record<Brand, WeakMap<object, Page>>;
+// Nov 22: kept per paint (a Theme object), so a data look's new paint (Your Look's live preview) re-themes the page; the
+// hand-built looks' paint never changes, so for them it's as before.
+const themeCache = new WeakMap<Theme, WeakMap<object, Page>>();
 function themed(p: Page): Page {
-  const b = currentBrand(); const cache = themeCache[b];
+  const t = lookTheme(currentBrand());
+  let cache = themeCache.get(t);
+  if (!cache) { cache = new WeakMap(); themeCache.set(t, cache); }
   let s = cache.get(p);
-  if (!s) { s = themePage(p, THEMES[b]); cache.set(p, s); }
+  if (!s) { s = themePage(p, t); cache.set(p, s); }
   return s;
 }
 async function fetchPage(file: string): Promise<Page> {

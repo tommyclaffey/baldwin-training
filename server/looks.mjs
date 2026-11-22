@@ -28,6 +28,15 @@ export const LOOKS = {
   jbaldwins: { id: 'jbaldwins', name: 'J.Baldwin’s', custom: true, madeFor: [1] },
 };
 export const DEFAULT_LOOK = 'mise';
+
+// Looks as data (Nov 22, "Your Look from your website", server/yourlook.mjs): a look made from a restaurant's website is a
+// `looks` row, worn as 'look-<id>'. LOOKS above stays the hand-built ones; `lookInfo` answers for both. The data looks are
+// read through a function set at startup (server/yourlook.mjs migrateLooks), so this file needs no database.
+let dataLooks = () => null;
+export const setDataLooks = (fn) => { dataLooks = fn; };
+export const isDataLook = (id) => /^look-\d{1,9}$/.test(String(id || ''));
+/** A look by id: a hand-built one, or a data look ({ id, name, custom, data, madeFor: [company id], demo }), or null. */
+export const lookInfo = (id) => LOOKS[id] || (isDataLook(id) ? dataLooks(id) : null);
 export const PLANS = {
   foundation: { id: 'foundation', name: 'Foundation', customLook: false },
   'custom-brand': { id: 'custom-brand', name: 'Custom Brand', customLook: true },
@@ -51,31 +60,34 @@ export function migratePlan(db) {
 /** Can this company wear this look? Mise always; a custom look only for a company it's made for (or a demo copy that was
  *  made wearing it). */
 export function lookAllowed(co, look) {
-  const L = LOOKS[look];
+  const L = lookInfo(look);
   if (!L || !co) return false;
   if (!L.custom) return true;
+  if (L.data) return (L.madeFor || []).includes(Number(co.id)); // a data look: only its own company (a demo copy included)
   return !!co.demo || (L.madeFor || []).includes(Number(co.id));
 }
+/** A demo copy on Foundation can wear the throwaway look it made itself (Your Look's "See an Example"). */
+const demoTry = (co, look) => !!co?.demo && isDataLook(look) && lookAllowed(co, look);
 /** The look a company is drawn in: its own look when its plan includes a custom look and the look is made for it; Mise
  *  otherwise. `co` is a companies row (or null: signed out, no company yet → Mise). */
 export function lookOf(co) {
   if (!co) return DEFAULT_LOOK;
   const plan = PLANS[co.plan] || PLANS[DEFAULT_PLAN];
   const look = co.brand || DEFAULT_LOOK;
-  if (look === DEFAULT_LOOK || !plan.customLook || !lookAllowed(co, look)) return DEFAULT_LOOK;
+  if (look === DEFAULT_LOOK || !(plan.customLook || demoTry(co, look)) || !lookAllowed(co, look)) return DEFAULT_LOOK;
   return look;
 }
-/** The looks a super admin can pick for a company (Mise first). */
-export const looksFor = (co) => Object.values(LOOKS).filter((L) => lookAllowed(co, L.id)).map((L) => ({ id: L.id, name: L.name, custom: L.custom }));
+/** The looks a super admin can pick for a company (Mise first; then its own looks made in Your Look, `extra`). */
+export const looksFor = (co, extra = []) => [...Object.values(LOOKS), ...extra].filter((L) => lookAllowed(co, L.id)).map((L) => ({ id: L.id, name: L.name, custom: L.custom }));
 
 /** The look a store is drawn in (Nov 17): the store's own look when it has one that's allowed (Custom Brand plan, made for
  *  the company), else the company's look. `st` is a stores row (or null: no store yet → the company's look). */
 export function lookOfStore(co, st) {
   const base = lookOf(co);
   const own = st?.look;
-  if (!co || !own || !LOOKS[own]) return base;
+  if (!co || !own || !lookInfo(own)) return base;
   const plan = PLANS[co.plan] || PLANS[DEFAULT_PLAN];
-  if (!plan.customLook || !lookAllowed(co, own)) return base;
+  if (!(plan.customLook || demoTry(co, own)) || !lookAllowed(co, own)) return base;
   return own;
 }
 /** Can this company give its stores their own looks? Custom Brand only; never a demo copy or Mise Academy (HQ). */
