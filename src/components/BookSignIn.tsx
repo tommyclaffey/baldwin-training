@@ -6,14 +6,17 @@
 // Nov 19: from an account's own link (miseacademy.app/the-baldwin, src/lib/account.ts) every screen wears that account's
 // look from the start, the join code has to be that account's, and the email sign-in for owners and managers opens right
 // here in the same look. The code is still typed: a public link can't be the key to a restaurant's book.
+// Nov 23 (real addresses, src/lib/authroute.ts): this is Join with a Code, at /join, /<account>/join and the site's root.
+// Sign In (email + password) is its own address, /sign-in or the account's own link; no role labels on any of these screens
+// (Tommy: "There should be a 'Join with a Code,' and there should be 'Sign In.' Doesn't matter what position you are in.").
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { api, type User } from '../lib/api';
 import { useSession } from '../lib/session';
 import { asBrand, registerLook, type Brand } from '../lib/theme';
 import { AuthCard } from './AuthCard';
-import { SignIn } from '../admin/screens';
 import type { AccountLink } from '../lib/account';
+import { AUTH_TITLE, signInPath, type AuthKind } from '../lib/authroute';
 
 type Staff = { id: number; name: string; needsPin: boolean; storeId: number | null };
 type Store = { id: number; name: string; brand?: string };
@@ -22,7 +25,7 @@ const STORE_KEY = 'bt-join-store';
 
 export function BookSignIn({ account = null }: { account?: AccountLink | null }) {
   const { setUser } = useSession();
-  const [step, setStep] = useState<'code' | 'store' | 'who' | 'pin' | 'new' | 'email'>('code');
+  const [step, setStep] = useState<'code' | 'store' | 'who' | 'pin' | 'new'>('code');
   const [stores, setStores] = useState<Store[]>([]);
   const [store, setStore] = useState<Store | null>(null);
   const [code, setCode] = useState(() => localStorage.getItem(CODE_KEY) || '');
@@ -88,16 +91,13 @@ export function BookSignIn({ account = null }: { account?: AccountLink | null })
         onChange={(e) => set(e.target.value.replace(/\D/g, '').slice(0, 6))} />
     </label>
   );
-  const managers = <><hr className="si-rule" /><p className="si-alt">Owner or manager? {account
-    ? <button type="button" className="link-btn si-inline" onClick={() => { setStep('email'); setError(''); }}>Sign in with your email.</button>
-    : <Link to="/admin">Sign in with your email.</Link>}</p></>;
+  // Nov 23: the way to Sign In (email + password), on every step; the account's own sign-in from its link
+  const managers = <><hr className="si-rule" /><p className="si-alt">Have a password? <Link to={signInPath(account)}>Sign In</Link></p></>;
   // after the join code: the restaurant's own look; after the store question, that store's (Nov 17)
-  const card = { kicker: 'Staff', brand: step !== 'store' && store?.brand ? asBrand(store.brand) : coBrand };
-
-  if (step === 'email' && account) return <SignIn brand={account.brand} onStaff={() => { setStep('code'); setError(''); }} />;
+  const card = { brand: step !== 'store' && store?.brand ? asBrand(store.brand) : coBrand };
 
   if (step === 'code') return (
-    <AuthCard kicker={account ? `${account.name} · Staff` : 'Staff'} title="Sign In" brand={account?.brand}
+    <AuthCard kicker={account?.name} title={AUTH_TITLE.join} brand={account?.brand}
       sub={account ? 'Ask a manager for your join code.' : 'Ask a manager for your restaurant’s join code.'}
       foot={account ? undefined : <>Just looking? <Link to="/demo/mise">Try the Demo</Link></>}>
       <form className="stack" onSubmit={(e) => { e.preventDefault(); void lookUp(code); }}>
@@ -168,6 +168,23 @@ export function BookSignIn({ account = null }: { account?: AccountLink | null })
         {stores.length > 1 && <button type="button" className="link-btn" onClick={() => { setStep('store'); setError(''); }}>Different restaurant?</button>}
         {managers}
       </form>
+    </AuthCard>
+  );
+}
+
+/** Nov 23: /sign-in, /join, /<account>/sign-in or /<account>/join opened by someone already signed in. Never "We couldn't find
+ *  that page" (Tommy opened miseacademy.app/join on his phone and got it): who's signed in, Go to Home and Sign Out. */
+export function SignedInCard({ kind, account = null }: { kind: AuthKind; account?: AccountLink | null }) {
+  const { user, setUser } = useSession();
+  const nav = useNavigate();
+  const [busy, setBusy] = useState(false);
+  const signOut = async () => { setBusy(true); await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); setBusy(false); };
+  return (
+    <AuthCard kicker={account?.name} brand={account?.brand} title={AUTH_TITLE[kind]} sub={<>You’re signed in as <strong>{user?.name}</strong>.</>}>
+      <div className="stack">
+        <button type="button" className="btn" onClick={() => nav('/', { replace: true })}>Go to Home</button>
+        <button type="button" className="btn ghost" disabled={busy} onClick={() => void signOut()}>{busy ? 'Signing Out…' : 'Sign Out'}</button>
+      </div>
     </AuthCard>
   );
 }

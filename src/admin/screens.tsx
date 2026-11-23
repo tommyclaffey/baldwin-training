@@ -10,6 +10,7 @@ import { registerLook } from '../lib/theme';
 import { AuthCard } from '../components/AuthCard';
 import type { Brand } from '../lib/theme';
 import { linkText } from '../lib/account';
+import { joinPath } from '../lib/authroute';
 import { LegalLinks, SupportLine } from '../components/Legal';
 import { landingFor, needsTwoStep, TWO_STEP_MSG } from '../lib/twostep';
 
@@ -24,12 +25,17 @@ function useLoad<T>(path: string) {
 /* ---------- signed out ---------- */
 // Nov 12: the signed-out screens wear Mise, the platform's front door (src/components/AuthCard.tsx; Figma section 28).
 export { AuthCard };
-const OWNERS = 'Owners and managers';
+// Nov 23 (Tommy: "There should be a 'Join with a Code,' and there should be 'Sign In.' Doesn't matter what position you are
+// in."): no role label over any of these screens (it said "Owners and managers").
 
-/** brand / onStaff (Nov 19): on an account's own link the email sign-in opens in place, in that account's look, and "On
- *  staff?" goes back to its join code (src/components/BookSignIn.tsx). Elsewhere: Mise, and /admin as before. */
-export function SignIn({ brand, onStaff }: { brand?: Brand; onStaff?: () => void } = {}) {
+/** Sign In: email + password, for everyone with an account (Nov 23: at /sign-in, /admin, and an account's own link).
+ *  brand / kicker / account (Nov 19, Nov 23): on an account's link (/the-baldwin) it wears that account's look with its name
+ *  over the title, and Join with a Code goes to that account's /the-baldwin/join. Elsewhere: Mise, and /join. Staff who
+ *  sign in with a PIN use "Use Your PIN Instead" (the join code → name → PIN screens) until they set up an email. */
+export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicker?: string; account?: { slug: string } | null } = {}) {
   const { setUser, setupNeeded, superSetupNeeded } = useSession();
+  const nav = useNavigate();
+  const join = joinPath(account);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [ticket, setTicket] = useState('');
@@ -55,7 +61,7 @@ export function SignIn({ brand, onStaff }: { brand?: Brand; onStaff?: () => void
     setBusy(false);
   };
   if (ticket) return (
-    <AuthCard kicker={OWNERS} brand={brand} title="Two-Step Sign-In" sub="Open your authenticator app and type the 6-digit code for Mise.">
+    <AuthCard kicker={kicker} brand={brand} title="Two-Step Sign-In" sub="Open your authenticator app and type the 6-digit code for Mise.">
       <form className="stack" onSubmit={submitCode}>
         <label className="field"><span>Code</span><input inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} autoFocus /></label>
         {error && <ErrorNote error={error} />}
@@ -65,7 +71,7 @@ export function SignIn({ brand, onStaff }: { brand?: Brand; onStaff?: () => void
     </AuthCard>
   );
   return (
-    <AuthCard kicker={OWNERS} brand={brand} title="Sign In" sub="Use the email your invite was sent to.">
+    <AuthCard kicker={kicker} brand={brand} title="Sign In" sub="Use the email your invite was sent to.">
       <form className="stack" onSubmit={submit}>
         <label className="field"><span>Email</span>
           <input inputMode="email" autoComplete="username" autoCapitalize="none" spellCheck={false} placeholder="you@yourrestaurant.com" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -74,12 +80,11 @@ export function SignIn({ brand, onStaff }: { brand?: Brand; onStaff?: () => void
         <button type="button" className="link-btn si-forgot" onClick={() => { setForgot(true); setError(''); }}>Forgot Password?</button>
         {error && <ErrorNote error={error} />}
         <button className="btn" disabled={busy || !email || !password}>{busy ? 'Signing In…' : 'Sign In'}</button>
+        <button type="button" className="link-btn" onClick={() => nav(join)}>Use Your PIN Instead</button>
         {superSetupNeeded && <button type="button" className="link-btn" onClick={() => setSetup(true)}>Set up the super admin account</button>}
       </form>
       <hr className="si-rule" />
-      <p className="si-alt">On staff? {onStaff
-        ? <button type="button" className="link-btn si-inline" onClick={onStaff}>Sign in with your join code.</button>
-        : <Link to="/">Sign in with your join code.</Link>}</p>
+      <p className="si-alt">New here? <Link to={join}>Join with a Code</Link></p>
     </AuthCard>
   );
 }
@@ -99,7 +104,7 @@ function ForgotPassword({ email: start, onBack, brand }: { email: string; onBack
     setBusy(false);
   };
   if (sent) return (
-    <AuthCard kicker={OWNERS} brand={brand} title="Check Your Email" sub={sent}>
+    <AuthCard brand={brand} title="Check Your Email" sub={sent}>
       <div className="stack">
         <p className="muted small">The link works once and expires in 24 hours. Staff don’t need one: a manager can Reset PIN.</p>
         <button type="button" className="btn" onClick={() => onBack(email)}>Back to Sign In</button>
@@ -107,7 +112,7 @@ function ForgotPassword({ email: start, onBack, brand }: { email: string; onBack
     </AuthCard>
   );
   return (
-    <AuthCard kicker={OWNERS} brand={brand} title="Forgot Your Password?" sub="Type the email you sign in with. If it has an account, we’ll email a link to pick a new password.">
+    <AuthCard brand={brand} title="Forgot Your Password?" sub="Type the email you sign in with. If it has an account, we’ll email a link to pick a new password.">
       <form className="stack" onSubmit={submit}>
         <label className="field"><span>Email</span><input type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus /></label>
         {error && <ErrorNote error={error} />}
@@ -156,7 +161,7 @@ export function ResetPassword() {
     setBusy(false);
   };
   if (ticket) return (
-    <AuthCard kicker={OWNERS} title="Two-Step Sign-In" sub="Your new password is set. Open your authenticator app and type the 6-digit code for Mise.">
+    <AuthCard title="Two-Step Sign-In" sub="Your new password is set. Open your authenticator app and type the 6-digit code for Mise.">
       <form className="stack" onSubmit={submitCode}>
         <label className="field"><span>Code</span><input inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} autoFocus /></label>
         {error && <ErrorNote error={error} />}
@@ -165,7 +170,7 @@ export function ResetPassword() {
     </AuthCard>
   );
   return (
-    <AuthCard kicker={OWNERS} title="Pick a New Password" sub={<>For <strong>{info.email}</strong>. The link works once{info.expiresAt ? ` and expires ${when(info.expiresAt)}` : ''}. You’ll be signed out everywhere else.</>}>
+    <AuthCard title="Pick a New Password" sub={<>For <strong>{info.email}</strong>. The link works once{info.expiresAt ? ` and expires ${when(info.expiresAt)}` : ''}. You’ll be signed out everywhere else.</>}>
       <form className="stack" onSubmit={submit}>
         <input type="email" autoComplete="username" value={info.email || ''} readOnly hidden />
         <label className="field"><span>New password</span><input type="password" autoComplete="new-password" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} autoFocus /><small>At least 10 characters.</small></label>
@@ -225,7 +230,7 @@ export function AcceptInvite() {
     const first = (inv.name || '').split(' ')[0];
     const place = inv.store || inv.company;
     return (
-      <AuthCard brand={inv.brand} kicker={OWNERS} title="You’re a Manager Now"
+      <AuthCard brand={inv.brand} title="You’re a Manager Now"
         sub={<>Congratulations{first ? `, ${first}` : ''}. You’re a manager{place ? <> at <strong>{place}</strong></> : ''}. Pick a password to sign in with <strong>{inv.email}</strong> from now on. Your training, quiz scores, certificates and chat stay with you.</>}>
         <form className="stack" onSubmit={submit}>
           <input type="email" autoComplete="username" value={inv.email || ''} readOnly hidden />

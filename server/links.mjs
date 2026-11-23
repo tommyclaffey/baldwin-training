@@ -2,6 +2,8 @@
 // Tommy: "for each account … its own preview text, like the social preview … if it has custom branding … If it's generic,
 // just doing the Mise."
 //
+//   /sign-in, /join            Nov 23: Sign In and Join with a Code (src/lib/authroute.ts); both reserved below.
+//   /<account>/join             that account's Join with a Code in its look (its code only); /<account>/sign-in = /<account>.
 //   miseacademy.app/<account>   companies.slug, e.g. /the-baldwin. Opens that account's sign-in in its own look (the
 //                               join code is still asked for: a public address can't be the key to a company's book).
 //                               Demo copies and Mise Academy (HQ) have no link.
@@ -52,6 +54,7 @@ export function reserved() {
   if (reservedSet) return reservedSet;
   const out = new Set(APP);
   for (const k of Object.keys(DEMO_LINKS)) out.add(k);
+  for (const k of AUTH_PAGES) out.add(k); // Nov 23: Sign In and Join with a Code (also in APP, kept explicit)
   for (const e of baseIndex()) out.add(first(e.slug));
   for (const P of PROGRAMS) out.add(first(P.slug));
   for (const L of LEVELS) out.add(first(L.slug));
@@ -177,11 +180,13 @@ export function pageHtml(tags) {
 }
 
 /** The HTML for an account's link: its card, and what the sign-in needs (name and look; never its join code). */
-export function accountHtml(co) {
+/** Nov 23: `sub` is 'join' or 'sign-in' for /<account>/join and /<account>/sign-in (the same card, that address). */
+export function accountHtml(co, sub = null) {
   const card = shareFor(co);
   const brand = lookOf(co);
   const spec = /^look-\d+$/.test(brand) ? dataSpec(brand) : null; // Nov 22: a look made in Your Look brings its paint
-  return pageHtml(headTags(card, { url: `${SITE}/${co.slug}`, account: { slug: co.slug, name: co.name, brand, ...(spec ? { lookSpec: spec } : {}) } }));
+  return pageHtml(headTags(card, { url: `${SITE}/${co.slug}${sub ? '/' + sub : ''}`, account: { slug: co.slug, name: co.name, brand, ...(spec ? { lookSpec: spec } : {}) } }));
 }
-/** Every other page: the Mise card. */
-export const miseHtml = () => pageHtml(headTags(MISE_SHARE));
+/** Every other page: the Mise card. Nov 23: /sign-in and /join say their own address. */
+export const AUTH_PAGES = ['sign-in', 'join'];
+export const miseHtml = (p = '/') => pageHtml(headTags(MISE_SHARE, { url: SITE + (AUTH_PAGES.includes(String(p).replace(/^\/+|\/+$/g, '')) ? '/' + String(p).replace(/^\/+|\/+$/g, '') : '/') }));

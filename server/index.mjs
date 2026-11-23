@@ -1335,16 +1335,33 @@ function sendPage(req, res, p) {
   const seg = /^\/([^/]+)\/?$/.exec(p)?.[1] ?? null;
   const slug = seg?.toLowerCase() ?? null;
   const go = (to, code = 302) => { res.writeHead(code, { Location: to, 'Cache-Control': 'no-cache', ...SECURITY }); res.end(); };
+  // Nov 23: /<account>/join (its Join with a Code) and /<account>/sign-in (= /<account>), in its look, with its card
+  const sub = /^\/([^/]+)\/(join|sign-in)\/?$/i.exec(p);
+  if (sub && !isReserved(sub[1].toLowerCase())) {
+    const [s1, s2] = [sub[1].toLowerCase(), sub[2].toLowerCase()];
+    const sco = SLUG.test(s1) ? accountByLink(db, s1) : null;
+    if (sco && p !== `/${sco.slug}/${s2}`) return go(`/${sco.slug}/${s2}`, 301); // /The-Baldwin/Join/ → /the-baldwin/join
+    const html = Buffer.from(sco ? accountHtml(sco, s2) : miseHtml());
+    res.writeHead(sco ? 200 : 404, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': html.length, 'Cache-Control': 'no-cache', ...SECURITY });
+    return res.end(req.method === 'HEAD' ? undefined : html);
+  }
   if (slug && Object.hasOwn(DEMO_LINKS, slug)) return go(DEMO_LINKS[slug]);
   const co = slug && SLUG.test(slug) ? accountByLink(db, slug) : null;
   if (co && p !== '/' + co.slug) return go('/' + co.slug, 301); // /The-Baldwin/ → /the-baldwin
   const status = !co && slug && !isReserved(slug) ? 404 : 200;
-  const body = Buffer.from(co ? accountHtml(co) : miseHtml());
+  const body = Buffer.from(co ? accountHtml(co) : miseHtml(p));
   res.writeHead(status, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': body.length, 'Cache-Control': 'no-cache', ...SECURITY });
   res.end(req.method === 'HEAD' ? undefined : body);
 }
 
 http.createServer(async (req, res) => {
+  // Nov 23 (Tommy typed miseacademy.app//the-baldwin and got the Mise page): repeated slashes go to the one clean address,
+  // query kept. GET and HEAD only, so a POST is never turned into a GET. ("//x" would otherwise read as a host name.)
+  const raw = req.url || '/', qAt = raw.indexOf('?'), rawPath = qAt < 0 ? raw : raw.slice(0, qAt);
+  if (/\/{2,}/.test(rawPath) && (req.method === 'GET' || req.method === 'HEAD')) {
+    res.writeHead(301, { Location: rawPath.replace(/\/{2,}/g, '/') + (qAt < 0 ? '' : raw.slice(qAt)), 'Cache-Control': 'no-cache', ...SECURITY });
+    return res.end();
+  }
   const url = new URL(req.url || '/', 'http://x');
   res.acceptEncoding = req.headers['accept-encoding']; // sendJson compresses for it
   try {

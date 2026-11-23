@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { needsTwoStep, TWO_STEP_HOME } from './lib/twostep';
 import { Sidebar } from './components/Sidebar';
@@ -7,7 +7,8 @@ import { NavContext } from './components/FigmaNode';
 import { useSession } from './lib/session';
 import { canEdit } from './lib/api';
 import { demoTab, leaveDemo, isSample } from './lib/demo';
-import { BookSignIn } from './components/BookSignIn';
+import { BookSignIn, SignedInCard } from './components/BookSignIn';
+import { SignIn } from './admin/screens';
 import { DemoPicker } from './components/DemoPicker';
 import { clearPages } from './components/PageView';
 import { setQuizUser } from './quiz/store';
@@ -34,7 +35,7 @@ import { ChatPanelHost } from './chat/ChatPanel';
 import { PrepPage } from './prep/PrepPage';
 import { ImportPage } from './import/ImportPage';
 import { LegalRoute, LEGAL_PATHS } from './components/Legal';
-import { accountAt } from './lib/account';
+import { authRouteAt } from './lib/account';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -85,12 +86,23 @@ function Book() {
   useEffect(() => { if (strayDemo) void leaveDemo().then(refresh); }, [strayDemo]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const { count: unread, mentions } = useChatState(hasChat(user));
+  // Nov 23: was this tab signed out a moment ago? Signing in on /sign-in or /join goes Home; arriving signed in shows who.
+  const seen = useRef<'none' | 'out' | 'in'>('none');
+  useEffect(() => { if (loaded) seen.current = user ? 'in' : 'out'; }, [loaded, user]);
   if (!loaded || strayDemo) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
   // Nov 19: an account's own link (miseacademy.app/the-baldwin) opens its sign-in in its look; signed in, it's just Home.
-  const account = accountAt(pathname);
-  if (!user) return <BookSignIn account={account} />;
+  // Nov 23 (src/lib/authroute.ts): /sign-in and /<account>(/sign-in) = Sign In (email + password); /join and /<account>/join
+  // = Join with a Code. Every other address, signed out, is Join with a Code as before (the root too).
+  const route = authRouteAt(pathname);
+  if (!user) return route?.kind === 'sign-in'
+    ? <SignIn brand={route.account?.brand} kicker={route.account?.name} account={route.account} />
+    : <BookSignIn account={route?.account ?? null} />;
   if (needsTwoStep(user)) return <Navigate to={TWO_STEP_HOME} replace />; // the server won't open the book until it's on (Nov 16)
-  if (account) return <Navigate to="/" replace />;
+  if (route) {
+    // just signed in here, or the account's own link: Home. Arrived already signed in: who, Go to Home, Sign Out.
+    if (seen.current === 'out' || (route.account && pathname === '/' + route.account.slug)) return <Navigate to="/" replace />;
+    return <SignedInCard kind={route.kind} account={route.account} />;
+  }
   return (
     <EditInPlaceProvider>
     <EditModeProvider>

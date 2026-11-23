@@ -74,14 +74,14 @@ test('every app address is reserved: the book’s pages, programs, levels, admin
   for (const s of firsts) assert.ok(R.has(s), `book page /${s}`);
   for (const P of PROGRAMS) assert.ok(R.has(P.slug.split('/')[0]), `program /${P.slug}`);
   for (const L of LEVELS) assert.ok(R.has(L.slug.split('/')[0]), `level /${L.slug}`);
-  for (const s of ['admin', 'api', 'demo', 'privacy', 'terms', 'help', 'img', 'icons', 'assets', 'media', 'content', 'import', 'prep', 'my-path', 'team-chat', 'certificate', 'share.jpg', 'favicon.ico', 'classic', 'signature', 'recipe', 'shelf', 'wine-list', 'beer-list', 'sommelier-program', 'cocktail-program', 'beer-program', 'hospitality-program'])
+  for (const s of ['admin', 'api', 'demo', 'privacy', 'terms', 'help', 'img', 'icons', 'assets', 'media', 'content', 'import', 'prep', 'my-path', 'team-chat', 'certificate', 'share.jpg', 'favicon.ico', 'classic', 'signature', 'recipe', 'shelf', 'wine-list', 'beer-list', 'sommelier-program', 'cocktail-program', 'beer-program', 'hospitality-program', 'sign-in', 'join'])
     assert.ok(R.has(s), `/${s}`);
   for (const f of fs.readdirSync(path.join(root, 'public'))) assert.ok(R.has(f.toLowerCase()), `public/${f}`);
   if (fs.existsSync(path.join(root, 'dist'))) for (const f of fs.readdirSync(path.join(root, 'dist'))) assert.ok(R.has(f.toLowerCase()), `dist/${f}`);
   assert.ok(isReserved('demo-ab12cd34ef') && isReserved('demo-mise-ab12cd34ef'), 'a demo copy’s slug');
   for (const k of Object.keys(DEMO_LINKS)) assert.ok(isReserved(k));
   // the client's own routes (src/App.tsx and friends) are all in the list
-  const src = ['src/App.tsx', 'src/components/Legal.tsx', 'src/lib/twostep.ts'].map((f) => fs.readFileSync(path.join(root, f), 'utf8')).join('\n');
+  const src = ['src/App.tsx', 'src/components/Legal.tsx', 'src/lib/twostep.ts', 'src/lib/authroute.ts'].map((f) => fs.readFileSync(path.join(root, f), 'utf8')).join('\n');
   for (const m of src.matchAll(/['"`]\/([a-z][a-z0-9-]*)/g)) assert.ok(R.has(m[1]), `client route /${m[1]}`);
 });
 
@@ -102,7 +102,7 @@ test('a new company can never take an app address: Add Company picks the next fr
 });
 
 test('walking every known one-segment app address: 200, the Mise card, never an account', async () => {
-  const firsts = [...new Set([...baseIndex().map((e) => e.slug.split('/')[0]).filter(Boolean), ...PROGRAMS.map((P) => P.slug), 'admin', 'demo', 'privacy', 'terms', 'help', 'import', 'prep', 'my-path', 'team-chat', 'certificate'])];
+  const firsts = [...new Set([...baseIndex().map((e) => e.slug.split('/')[0]).filter(Boolean), ...PROGRAMS.map((P) => P.slug), 'admin', 'demo', 'privacy', 'terms', 'help', 'import', 'prep', 'my-path', 'team-chat', 'certificate', 'sign-in', 'join'])];
   for (const s of firsts) {
     const r = await bot('/' + s);
     assert.equal(r.status, 200, '/' + s);

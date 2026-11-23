@@ -614,13 +614,12 @@ function SignInPreview({ t, spec }: { t: Theme; spec: LookSpec }) {
         </div>
         <div className="yl-si-side">
           <div className="yl-si-card" style={{ background: color(t, 'card'), borderColor: color(t, 'line', 1) }}>
-            <p className="yl-si-kicker" style={{ color: color(t, 'inkMuted') }}>STAFF</p>
-            <p className="yl-si-title" style={{ ...hf, color: color(t, 'ink') }}>{brandTitle('Sign In', t)}</p>
+            <p className="yl-si-title" style={{ ...hf, color: color(t, 'ink') }}>{brandTitle('Join with a Code', t)}</p>
             <p style={{ color: color(t, 'inkMuted') }}>Ask a manager for your restaurant’s join code.</p>
             <p className="yl-si-kicker" style={{ color: color(t, 'inkMuted') }}>JOIN CODE</p>
             <div className="yl-si-input" style={{ borderColor: color(t, 'edgeMuted'), color: color(t, 'inkMuted'), background: '#fff' }}>8 letters and numbers</div>
             <div className="yl-si-btn" style={{ background: color(t, 'button'), color: color(t, 'onButton') }}>Continue</div>
-            <p style={{ color: color(t, 'inkMuted') }}>Owner or manager? <u style={{ color: color(t, 'accentText') }}>Sign in with your email.</u></p>
+            <p style={{ color: color(t, 'inkMuted') }}>Have a password? <u style={{ color: color(t, 'accentText') }}>Sign In</u></p>
           </div>
           <p className="yl-si-foot" style={{ color: color(t, 'inkMuted') }}>Training on Mise Academy</p>
         </div>
