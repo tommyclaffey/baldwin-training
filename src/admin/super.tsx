@@ -2,11 +2,12 @@
 // Only super admins with two-step sign-in reach this; the server answers "not found" to everyone else.
 // Nov 16: each teammate has a role (Owner · Manager · Support, server/miseteam.mjs). The server checks every action;
 // these screens only show what your role can do (`can`, from /api/super/overview), so there are no dead buttons.
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { useModalKeys } from '../lib/modal';
 import { Navigate, NavLink, Route, Routes, useNavigate, useSearchParams } from 'react-router-dom';
 import { api, ROLE_LABEL, TEAM_ROLE_LABEL, type MailStatus, type Role, type TeamRole } from '../lib/api';
 import { useSession } from '../lib/session';
-import { ErrorNote, InviteSentCard, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
+import { DoneNote, ErrorNote, InviteSentCard, Loading, ResetLinkCard, Text, useAsk, when, type ResetLink } from './ui';
 import { Deletions } from './companydata';
 import { ErrorLog } from './hq';
 import { CopyLink } from '../components/CopyLink';
@@ -224,20 +225,37 @@ function People() {
   const [reset, setReset] = useState<ResetLink | null>(null);
   const load = () => { setErr(''); api<{ users: Person[] }>(`/api/super/users?q=${encodeURIComponent(q)}&company=${company}`).then((r) => setRows(r.users)).catch((e) => setErr(e.message)); };
   useEffect(load, [q, company]); // eslint-disable-line react-hooks/exhaustive-deps
-  const run = async (fn: () => Promise<unknown>) => { setErr(''); try { await fn(); load(); } catch (e) { setErr((e as Error).message); } };
+  // Nov 23 (Tommy: "links dont work"): every action asks inside the page (useAsk, never the browser's confirm()), is
+  // pressed once (busy), and says what happened (done). Reset PIN used to fire with no question and no answer.
+  const { ask, asking } = useAsk();
+  const [busy, setBusy] = useState('');
+  const [done, setDone] = useState('');
+  const run = async (key: string, fn: () => Promise<unknown>, ok?: string) => {
+    setErr(''); setDone(''); setBusy(key);
+    try { await fn(); if (ok) setDone(ok); load(); } catch (e) { setErr((e as Error).message); } finally { setBusy(''); }
+  };
   // Reset Password (Nov 11): a one-time link for anyone who signs in with email. Another super admin's only from the primary.
   const can = ov?.can;
   const canReset = (p: Person) => !!can?.resetPassword && !!p.email && p.role !== 'staff' && p.id !== ov?.you && (p.role !== 'superadmin' || (!!ov?.youPrimary && !p.superPrimary));
   // Teammates are the Owner's to change; everyone else follows your role.
   const mayEdit = (p: Person) => (p.role === 'superadmin' && p.id !== ov?.you ? !!can?.team : !!can?.editPerson || p.id === ov?.you);
   const mayRemove = (p: Person) => (p.role === 'superadmin' ? !!can?.team : !!can?.removePerson);
-  const makeReset = (p: Person) => {
-    if (!confirm(`Make a password reset link for ${p.name}? Their password keeps working until they use the link. This is logged.`)) return;
-    void run(async () => { setReset(null); setReset(await api<ResetLink>(`/api/super/users/${p.id}/reset-password`, { method: 'POST' })); });
+  const first = (p: Person) => p.name.split(' ')[0];
+  const makeReset = async (p: Person) => {
+    if (!(await ask({ title: `Make a Password Reset Link for ${p.name}?`, body: 'Their password keeps working until they use the link. This is logged.', go: 'Make Link' }))) return;
+    void run('pw' + p.id, async () => { setReset(null); setReset(await api<ResetLink>(`/api/super/users/${p.id}/reset-password`, { method: 'POST' })); });
   };
   const signInAs = async (p: Person) => {
-    if (!confirm(`Sign in as ${p.name} to see exactly what they see? This is logged. Use “Back to Your Account” at the bottom of the screen to return.`)) return;
-    await run(async () => { await api(`/api/super/users/${p.id}/sign-in-as`, { method: 'POST' }); location.assign(p.role === 'staff' ? '/' : '/admin'); });
+    if (!(await ask({ title: `Sign In As ${p.name}?`, body: `You’ll see exactly what ${first(p)} sees. It’s logged under your name. Use “Back to Your Account” at the bottom of the screen to come back.`, go: 'Sign In As' }))) return;
+    void run('as' + p.id, async () => { await api(`/api/super/users/${p.id}/sign-in-as`, { method: 'POST' }); location.assign(p.role === 'staff' ? '/' : '/admin'); });
+  };
+  const resetPin = async (p: Person) => {
+    if (!(await ask({ title: `Reset ${p.name}’s PIN?`, body: `${first(p)} is signed out on every phone and picks a new PIN the next time they open the book. Their training and scores stay.`, go: 'Reset PIN' }))) return;
+    void run('pin' + p.id, () => api(`/api/super/users/${p.id}/reset-pin`, { method: 'POST' }), `${p.name}’s PIN is reset. ${first(p)} picks a new one the next time they sign in.`);
+  };
+  const remove = async (p: Person) => {
+    if (!(await ask({ title: `Delete ${p.name}?`, body: 'They’re signed out right away. You have 30 days to restore them from this list.', go: 'Delete', danger: true }))) return;
+    void run('del' + p.id, () => api(`/api/super/users/${p.id}`, { method: 'DELETE' }), `${p.name} is deleted. Restore them here within 30 days.`);
   };
   return (
     <div className="stack">
@@ -246,31 +264,34 @@ function People() {
         <label className="field"><span>Company</span><select value={company} onChange={(e) => setCompany(e.target.value)}><option value="">All</option>{ov?.companies.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}</select></label>
       </div>
       {err && <ErrorNote error={err} />}
+      {done && <DoneNote text={done} onClose={() => setDone('')} />}
       {reset && <ResetLinkCard reset={reset} onClose={() => setReset(null)} />}
       {!rows && <Loading />}
       {rows && (
-        <table className="table">
+        <div className="people-wrap"><table className="table people-table">
           <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Company</th><th>Last seen</th><th /></tr></thead>
           <tbody>{rows.map((p) => (
             <tr key={p.id} className={p.deletedAt ? 'is-deleted' : ''}>
               <td>{p.name}{p.deletedAt && <small className="error"> · deleted, {daysLeft(p.deletedAt)} days to restore</small>}</td>
-              <td>{p.email || <span className="muted">PIN</span>}</td><td>{p.teamRole ? `Mise ${TEAM_ROLE_LABEL[p.teamRole]}` : ROLE_LABEL[p.role]}</td><td>{p.companyName || '—'}</td><td>{when(p.lastSeenAt)}</td>
-              <td className="row-actions">
+              <td data-label="Email" className="email">{p.email || <span className="muted">PIN</span>}</td><td data-label="Role">{p.teamRole ? `Mise ${TEAM_ROLE_LABEL[p.teamRole]}` : ROLE_LABEL[p.role]}</td>
+              <td data-label="Company">{p.companyName || '—'}</td><td data-label="Last seen" className="when">{when(p.lastSeenAt)}</td>
+              <td className="row-actions"><div className="acts">
                 {p.deletedAt
-                  ? mayRemove(p) && <button className="link-btn" onClick={() => void run(() => api(`/api/super/users/${p.id}/restore`, { method: 'POST' }))}>Restore</button>
+                  ? mayRemove(p) && <button type="button" className="link-btn" disabled={!!busy} onClick={() => void run('re' + p.id, () => api(`/api/super/users/${p.id}/restore`, { method: 'POST' }), `${p.name} is restored.`)}>Restore</button>
                   : <>
-                    {p.role !== 'superadmin' && can?.signInAs && <button className="link-btn" onClick={() => void signInAs(p)}>Sign In As</button>}
-                    {mayEdit(p) && <button className="link-btn" onClick={() => setEdit(p)}>Edit</button>}
-                    {p.role === 'staff' && can?.resetPin && <button className="link-btn" onClick={() => void run(() => api(`/api/super/users/${p.id}/reset-pin`, { method: 'POST' }))}>Reset PIN</button>}
-                    {canReset(p) && <button className="link-btn" onClick={() => makeReset(p)}>Reset Password</button>}
-                    {!p.superPrimary && ov?.you !== p.id && mayRemove(p) && <button className="link-btn danger" onClick={() => { if (confirm(`Delete ${p.name}? They’re signed out. You have 30 days to restore them.`)) void run(() => api(`/api/super/users/${p.id}`, { method: 'DELETE' })); }}>Delete</button>}
+                    {p.role !== 'superadmin' && can?.signInAs && <button type="button" className="link-btn" disabled={!!busy} onClick={() => void signInAs(p)}>{busy === 'as' + p.id ? 'Signing In…' : 'Sign In As'}</button>}
+                    {mayEdit(p) && <button type="button" className="link-btn" disabled={!!busy} onClick={() => setEdit(p)}>Edit</button>}
+                    {p.role === 'staff' && can?.resetPin && <button type="button" className="link-btn" disabled={!!busy} onClick={() => void resetPin(p)}>{busy === 'pin' + p.id ? 'Resetting…' : 'Reset PIN'}</button>}
+                    {canReset(p) && <button type="button" className="link-btn" disabled={!!busy} onClick={() => void makeReset(p)}>Reset Password</button>}
+                    {!p.superPrimary && ov?.you !== p.id && mayRemove(p) && <button type="button" className="link-btn danger" disabled={!!busy} onClick={() => void remove(p)}>{busy === 'del' + p.id ? 'Deleting…' : 'Delete'}</button>}
                   </>}
-              </td>
+              </div></td>
             </tr>
           ))}</tbody>
-        </table>
+        </table></div>
       )}
-      {edit && ov && <EditPerson person={edit} companies={ov.companies.filter((c) => !c.deletedAt)} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); load(); }} />}
+      {edit && ov && <EditPerson person={edit} companies={ov.companies.filter((c) => !c.deletedAt)} onClose={() => setEdit(null)} onSaved={() => { setDone(`${edit.name} is saved.`); setEdit(null); load(); }} />}
+      {asking}
     </div>
   );
 }
@@ -288,9 +309,11 @@ function EditPerson({ person, companies, onClose, onSaved }: { person: Person; c
     try { await api(`/api/super/users/${person.id}`, { method: 'PATCH', body }); onSaved(); } catch (e2) { setErr((e2 as Error).message); }
   };
   const isSuper = person.role === 'superadmin';
+  const box = useRef<HTMLFormElement>(null);
+  useModalKeys(box, true, onClose); // Nov 23: focus in, Tab stays in, Escape closes (it was left out of the Nov 21 keyboard pass)
   return (
     <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <form className="modal stack" role="dialog" aria-modal="true" aria-label={`Edit ${person.name}`} onSubmit={save}>
+      <form ref={box} className="modal stack" role="dialog" aria-modal="true" aria-label={`Edit ${person.name}`} onSubmit={save}>
         <h2>Edit {person.name}</h2>
         <Text label="Name" value={f.name} onChange={(name) => setF({ ...f, name })} />
         {(f.role !== 'staff' || person.email) && <Text label="Email" value={f.email} onChange={(email) => setF({ ...f, email })} />}

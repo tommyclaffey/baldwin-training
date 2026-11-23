@@ -4646,3 +4646,31 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 }
 .yl a:not(.yl-btn) { color: var(--y-fig); font-weight: 600; text-underline-offset: 3px; }
 .yl:not(:first-child) { padding-top: 14px; } /* below the demo bar */
+
+/* Super Admin → People (Nov 23; Tommy: "links dont work", and the row wrapped: the date over two lines, Delete on a line of
+   its own). The date stays on one line and the actions sit in one row, each a 44 px target. When the list is narrow, each
+   person becomes a card with the actions in a row underneath. A container query, so it follows the list's own width,
+   sidebar or not. */
+.people-wrap { container-type: inline-size; }
+.people-table td.when { white-space: nowrap; }
+.people-table td.email { overflow-wrap: anywhere; }
+.people-table td.row-actions { width: 1%; padding-top: 4px; padding-bottom: 4px; }
+.people-table .acts { display: flex; flex-wrap: nowrap; justify-content: flex-end; gap: 0 18px; }
+.people-table .acts .link-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0; white-space: nowrap; align-self: auto; }
+.link-btn:disabled { opacity: .55; cursor: default; }
+@container (max-width: 860px) {
+  .people-table, .people-table tbody, .people-table tr, .people-table td { display: block; width: 100%; box-sizing: border-box; }
+  .people-table thead { display: none; }
+  .people-table tr { padding: 12px 16px; border-top: 1px solid var(--line); }
+  .people-table tr:first-child { border-top: 0; }
+  .people-table td { border: 0; padding: 2px 0; }
+  .people-table td:first-child { font-weight: 700; font-size: 15px; }
+  .people-table td[data-label]::before { content: attr(data-label) ': '; color: var(--muted); }
+  .people-table td.row-actions { width: 100%; padding: 4px 0 0; }
+  .people-table .acts { flex-wrap: wrap; justify-content: flex-start; }
+}
+/* The in-app "are you sure?" (useAsk) and what-just-happened note (DoneNote), Nov 23 */
+.ask-box h2 { margin: 0; font-size: 20px; }
+.btn.ask-danger { background: #A1271F; color: #FFFFFF; } /* white on #A1271F 6.9:1 */
+.done-note { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.done-note .link-btn { min-height: 44px; display: inline-flex; align-items: center; padding: 0; align-self: auto; }

@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api, uploadCaptions, uploadFile, ROLE_LABEL, type MailStatus, type MediaItem, type Role, type TeamRole, type User } from '../lib/api';
 import { useSession } from '../lib/session';
 import { VideoEmbed, forgetCaptions } from '../components/VideoEmbed';
-import { Empty, ErrorNote, InviteSentCard, Loading, ResetLinkCard, Text, when, type ResetLink } from './ui';
+import { Empty, ErrorNote, InviteSentCard, Loading, ResetLinkCard, Text, useAsk, when, type ResetLink } from './ui';
 import { PRODUCT_NAME } from '../lib/brand';
 import { registerLook } from '../lib/theme';
 import { AuthCard } from '../components/AuthCard';
@@ -404,15 +404,14 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
   const [copied, setCopied] = useState('');
   const [reset, setReset] = useState<ResetLink | null>(null);
   const owner = data?.youRole === 'owner' || data?.youRole === 'superadmin';
+  const { askThen, asking } = useAsk(); // Nov 23: asks inside the page, never the browser's confirm() (see useAsk)
   // Nov 16: back to staff, same person. They sign in with their PIN again (or pick one with the join code and their name).
   const demote = (p: Member) => {
     const where = p.storeName || user?.store?.name || 'their store';
-    if (!confirm(`Change ${p.name} to staff at ${where}? They’re signed out and sign in with ${p.hasPin ? 'their old PIN' : 'the join code and a new PIN'}. Their training and history stay.`)) return;
-    void run(() => api(`/api/team/${p.id}/demote`, { method: 'POST', body: {} }), `${p.name} is staff at ${where} now.`);
+    void askThen({ title: `Change ${p.name} to Staff?`, body: `${p.name} becomes staff at ${where}. They’re signed out and sign in with ${p.hasPin ? 'their old PIN' : 'the join code and a new PIN'}. Their training and history stay.`, go: 'Change to Staff' }, () => run(() => api(`/api/team/${p.id}/demote`, { method: 'POST', body: {} }), `${p.name} is staff at ${where} now.`));
   };
   const makeReset = (p: Member) => {
-    if (!confirm(`Make a password reset link for ${p.name}? Their password keeps working until they use the link.`)) return;
-    void run(async () => { setReset(null); setReset(await api<ResetLink>(`/api/team/${p.id}/reset-password`, { method: 'POST' })); });
+    void askThen({ title: `Make a Password Reset Link for ${p.name}?`, body: 'Their password keeps working until they use the link.', go: 'Make Link' }, () => run(async () => { setReset(null); setReset(await api<ResetLink>(`/api/team/${p.id}/reset-password`, { method: 'POST' })); }));
   };
   const run = async (fn: () => Promise<unknown>, ok?: string) => { setErr(''); setNote(''); try { await fn(); if (ok) setNote(ok); load(); } catch (e) { setErr((e as Error).message); } };
   const copy = (text: string, what: string) => { void navigator.clipboard.writeText(text); setCopied(what); };
@@ -448,7 +447,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
         <div className="row">
           <button className="btn ghost" onClick={() => copy(`Join the ${data.company.name} training app on Mise: ${joinUrl}  Join code: ${data.company.joinCode}`, 'code')}>{copied === 'code' ? 'Copied' : 'Copy Code and Link'}</button>
           {data.company.link && <button className="btn ghost" onClick={() => copy(joinUrl, 'link')} aria-label={`Copy Link, ${linkText(data.company.link)}`}>{copied === 'link' ? 'Copied' : 'Copy Link'}</button>}
-          <button className="link-btn danger" onClick={() => { if (confirm('Make a new join code? The old one stops working. People already signed in stay signed in.')) void run(() => api('/api/team/join-code', { method: 'POST' }), 'New join code made.'); }}>New Code</button>
+          <button className="link-btn danger" onClick={() => void askThen({ title: 'Make a New Join Code?', body: 'The old one stops working. People already signed in stay signed in.', go: 'New Code' }, () => run(() => api('/api/team/join-code', { method: 'POST' }), 'New join code made.'))}>New Code</button>
         </div>
       </section>
 
@@ -470,8 +469,8 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
                 : p.storeName}</td>}
               <td>{p.signedOff}</td><td>{when(p.createdAt)}</td><td>{when(p.lastSeenAt)}</td>
               <td className="row-actions">{p.canManage && <>
-                <button className="link-btn" onClick={() => { if (confirm(`Reset ${p.name}’s PIN? They’re signed out and pick a new PIN next time.`)) void run(() => api(`/api/team/${p.id}/reset-pin`, { method: 'POST' }), `${p.name} picks a new PIN next time they sign in.`); }}>Reset PIN</button>
-                <button className="link-btn danger" onClick={() => { if (confirm(`Remove ${p.name}? They’re signed out right away.`)) void run(() => api(`/api/team/${p.id}`, { method: 'DELETE' })); }}>Remove</button>
+                <button className="link-btn" onClick={() => void askThen({ title: `Reset ${p.name}’s PIN?`, body: 'They’re signed out and pick a new PIN next time they sign in.', go: 'Reset PIN' }, () => run(() => api(`/api/team/${p.id}/reset-pin`, { method: 'POST' }), `${p.name} picks a new PIN next time they sign in.`))}>Reset PIN</button>
+                <button className="link-btn danger" onClick={() => void askThen({ title: `Remove ${p.name}?`, body: 'They’re signed out right away.', go: 'Remove', danger: true }, () => run(() => api(`/api/team/${p.id}`, { method: 'DELETE' }), `${p.name} is removed.`))}>Remove</button>
               </>}</td>
             </tr>
           ))}</tbody>
@@ -496,7 +495,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
             <td className="row-actions">{(owner || p.canDemote) && p.id !== data.you && <>
               {owner && p.email && !data.company.demo && <button className="link-btn" onClick={() => makeReset(p)}>Reset Password</button>}
               {p.canDemote && <button className="link-btn" onClick={() => demote(p)}>Change to Staff</button>}
-              {owner && !data.company.demo && <button className="link-btn danger" onClick={() => { if (confirm(`Remove ${p.name}? They’re signed out and can’t edit anymore.`)) void run(() => api(`/api/team/${p.id}`, { method: 'DELETE' })); }}>Remove</button>}
+              {owner && !data.company.demo && <button className="link-btn danger" onClick={() => void askThen({ title: `Remove ${p.name}?`, body: 'They’re signed out and can’t edit anymore.', go: 'Remove', danger: true }, () => run(() => api(`/api/team/${p.id}`, { method: 'DELETE' }), `${p.name} is removed.`))}>Remove</button>}
             </>}</td>
           </tr>
         ))}</tbody>
@@ -510,7 +509,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
             <thead><tr><th>Name</th><th>Email</th><th>Manages</th><th>Expires</th><th /></tr></thead>
             <tbody>{data.people.filter((p) => p.promotion).map((p) => (
               <tr key={p.id}><td>{p.name}</td><td data-label="Email">{p.promotion!.email}</td><td data-label="Manages">{p.promotion!.storeName || 'Every store'}</td><td data-label="Expires">{when(p.promotion!.expiresAt)}</td>
-                <td className="row-actions"><button className="link-btn danger" onClick={() => { if (confirm(`Cancel ${p.name}’s promotion? The link stops working.`)) void run(() => api(`/api/team/${p.id}/promote`, { method: 'DELETE' }), 'Promotion cancelled.'); }}>Cancel</button></td></tr>
+                <td className="row-actions"><button className="link-btn danger" onClick={() => void askThen({ title: `Cancel ${p.name}’s Promotion?`, body: 'The link stops working and they stay on staff.', go: 'Cancel Promotion', danger: true }, () => run(() => api(`/api/team/${p.id}/promote`, { method: 'DELETE' }), 'Promotion cancelled.'))}>Cancel</button></td></tr>
             ))}</tbody>
           </table>
         </>
@@ -543,6 +542,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
           )}
         </>
       )}
+      {asking}
     </div>
   );
 }

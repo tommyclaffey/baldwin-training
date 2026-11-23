@@ -1,7 +1,9 @@
 import { BottleScanner, type BottleKind } from './scanner';
 import { SpinViewer } from '../components/SpinViewer';
 // Small form pieces shared by the admin screens.
-import { useState, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
+import { useModalKeys } from '../lib/modal';
 import { MediaPicker } from '../components/MediaPicker';
 import { PhotoAdjust } from './PhotoAdjust';
 import { focusVars } from '../lib/focus';
@@ -140,6 +142,44 @@ export const when = (iso?: string | null) => {
   const d = new Date(iso);
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) + ', ' + d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
 };
+
+/** "Are you sure?" inside the app (Nov 23). Tommy: "links dont work" on Super Admin → People. The row's actions asked with the
+ *  browser's own confirm(), or (Reset PIN) didn't ask or answer at all. A browser can switch its popups off without a sign
+ *  (Chrome's "don't let this site prompt you", in-app and embedded browsers), and then confirm() says no and the button
+ *  does nothing. This asks in the page, so it always shows; Cancel has the focus, Escape cancels.
+ *  `const { ask, asking } = useAsk();` render `{asking}`, then `if (await ask({ … })) doIt();` */
+export type AskCopy = { title: string; body: ReactNode; go: string; danger?: boolean };
+export function useAsk() {
+  const [open, setOpen] = useState<(AskCopy & { done: (ok: boolean) => void }) | null>(null);
+  const box = useRef<HTMLDivElement>(null);
+  const answer = (ok: boolean) => { if (!open) return; open.done(ok); setOpen(null); };
+  useModalKeys(box, !!open, () => answer(false));
+  const ask = (copy: AskCopy) => new Promise<boolean>((done) => setOpen({ ...copy, done }));
+  const asking = open && createPortal(
+    <div className="modal-back" onMouseDown={(e) => { if (e.target === e.currentTarget) answer(false); }}>
+      <div ref={box} className="modal arc-confirm ask-box" role="alertdialog" aria-modal="true" aria-labelledby="ask-title" aria-describedby="ask-body">
+        <h2 id="ask-title">{open.title}</h2>
+        <p id="ask-body">{open.body}</p>
+        <div className="arc-actions">
+          <button type="button" className="btn ghost" onClick={() => answer(false)}>Cancel</button>
+          <button type="button" className={'btn' + (open.danger ? ' ask-danger' : '')} onClick={() => answer(true)}>{open.go}</button>
+        </div>
+      </div>
+    </div>, document.body);
+  /** Ask, then run `fn` only on a yes. */
+  const askThen = async (copy: AskCopy, fn: () => unknown) => { if (await ask(copy)) await fn(); };
+  return { ask, askThen, asking };
+}
+
+/** What just happened, under the page's heading (Nov 23): every action says so, so nothing looks like it did nothing. */
+export function DoneNote({ text, onClose }: { text: string; onClose: () => void }) {
+  return (
+    <div className="card ok-card done-note" role="status">
+      <p>{text}</p>
+      <button type="button" className="link-btn" onClick={onClose}>Done</button>
+    </div>
+  );
+}
 
 /** A password reset link to send by hand (Nov 11): like an invite link, with Copy Link and when it stops working. */
 export type ResetLink = { link: string; expiresAt: string; hours: number; name: string; email: string };
