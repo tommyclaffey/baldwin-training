@@ -12,7 +12,9 @@ export default defineRailway(() => {
     replicas: { "sfo": 1 },
     domains: ["app.miseacademy.app", "www.miseacademy.app"],
     volumeMounts: { "/data": webVolume },
-    env: { ANTHROPIC_API_KEY: preserve(), BACKUP_KEY: preserve(), DATA_DIR: preserve(), OPS_TOKEN: preserve(), OWNER_EMAIL: preserve(), SUPERADMIN_EMAIL: preserve() },
+    env: { ANTHROPIC_API_KEY: preserve(), BACKUP_KEY: preserve(), DATA_DIR: preserve(), OPS_TOKEN: preserve(), OWNER_EMAIL: preserve(), SUPERADMIN_EMAIL: preserve(),
+      // Nov 23: bottle scanner v2, 4 threads per model run (plan: 8 vCPU, 8 GB). SCANNER_ENGINE=v1 = the old engine.
+      SCANNER_THREADS: preserve() },
   });
 
   return project("baldwin-training", {
