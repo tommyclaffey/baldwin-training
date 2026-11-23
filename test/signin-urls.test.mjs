@@ -17,7 +17,7 @@ import { authRouteFor, signInPath, joinPath, AUTH_TITLE } from '../src/lib/authr
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-signin-urls-'));
-const PORT = 6600 + Math.floor(Math.random() * 300);
+const PORT = 4300 + Math.floor(Math.random() * 300); // its own range (was 6600, shared with captions: both timed out in CI)
 const BASE = `http://127.0.0.1:${PORT}`;
 const BOT = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 const CHROME = process.env.CHROME || ['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium', '/usr/bin/chromium-browser'].find((p) => fs.existsSync(p));
