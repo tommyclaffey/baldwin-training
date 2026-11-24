@@ -29,3 +29,10 @@ export const signInPath = (account: { slug: string } | null) => (account ? '/' +
 export const joinPath = (account: { slug: string } | null) => (account ? `/${account.slug}/join` : '/join');
 /** The screens' titles, the same two words everywhere. */
 export const AUTH_TITLE: Record<AuthKind, string> = { 'sign-in': 'Sign In', join: 'Join with a Code' };
+
+/** Nov 24: set the moment someone signs in on the signed-out screen. If the address they were on isn't a page (an old
+ *  bookmark or link), PageView sends them Home rather than "We couldn't find that page". */
+export const JUST_SIGNED_IN = 'bt-just-signed-in';
+export function justSignedIn(): boolean {
+  try { const at = Number(sessionStorage.getItem(JUST_SIGNED_IN) || 0); return at > 0 && Date.now() - at < 60_000; } catch { return false; }
+}

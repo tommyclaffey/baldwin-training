@@ -16,7 +16,7 @@ import { useSession } from '../lib/session';
 import { asBrand, registerLook, type Brand } from '../lib/theme';
 import { AuthCard } from './AuthCard';
 import type { AccountLink } from '../lib/account';
-import { AUTH_TITLE, signInPath, type AuthKind } from '../lib/authroute';
+import { AUTH_TITLE, JUST_SIGNED_IN, signInPath, type AuthKind } from '../lib/authroute';
 
 type Staff = { id: number; name: string; needsPin: boolean; storeId: number | null };
 type Store = { id: number; name: string; brand?: string };
@@ -68,7 +68,10 @@ export function BookSignIn({ account = null }: { account?: AccountLink | null })
   }
   const here = useMemo(() => staff.filter((s) => s.storeId === store?.id || s.storeId === null), [staff, store]);
   const shown = useMemo(() => here.filter((s) => s.name.toLowerCase().includes(q.trim().toLowerCase())), [here, q]);
-  const finish = (u: User) => { setPin(''); setPin2(''); setUser(u); };
+  // Nov 24 (Tommy: someone signing in with their PIN kept landing on "We couldn't find that page"): the sign-in shows on
+  // any signed-out address, so an old bookmark or link signs them in onto a page that isn't there. Note the moment, and
+  // PageView sends a just-signed-in person Home instead.
+  const finish = (u: User) => { setPin(''); setPin2(''); try { sessionStorage.setItem(JUST_SIGNED_IN, String(Date.now())); } catch { /* private mode */ } setUser(u); };
 
   const signIn = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');

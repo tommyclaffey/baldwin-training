@@ -1,6 +1,7 @@
 import { currentBrand, hasPageTitle, themePage, lookTheme, type Theme } from '../lib/theme';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { useLocation, useNavigationType, Link } from 'react-router-dom';
+import { useLocation, useNavigationType, Link, Navigate } from 'react-router-dom';
+import { JUST_SIGNED_IN, justSignedIn } from '../lib/authroute';
 import { ChatItemsContext, CompactContext, FigmaNode, NavContext, SlotContext, type FNode, type Slot } from './FigmaNode';
 import { WaitingCard } from '../chat/Waiting';
 import { InteractProvider } from './interact';
@@ -268,6 +269,8 @@ export function PageView() {
     if (!session.indexLoaded && !session.index.some((e) => e.file.startsWith('i'))) {
       return <main ref={ref} className="page page-loading" aria-busy="true"><div className="loader" /></main>;
     }
+    // just signed in on an old address (Nov 24): Home, not "couldn't find"
+    if (justSignedIn()) { try { sessionStorage.removeItem(JUST_SIGNED_IN); } catch { /* */ } return <Navigate to="/" replace />; }
     return (
       <main ref={ref} className="page page-message">
         <h1>We couldn’t find that page</h1>
