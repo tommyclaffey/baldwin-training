@@ -13,6 +13,8 @@ import { linkText } from '../lib/account';
 import { joinPath } from '../lib/authroute';
 import { LegalLinks, SupportLine } from '../components/Legal';
 import { landingFor, needsTwoStep, TWO_STEP_MSG } from '../lib/twostep';
+import { TempTag, useTemp, type Temporary } from './temppass';
+import { ChooseOwn, type MustChoose } from '../components/ChooseOwn';
 
 function useLoad<T>(path: string) {
   const [data, setData] = useState<T | null>(null);
@@ -44,20 +46,26 @@ export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicke
   const [busy, setBusy] = useState(false);
   const [setup, setSetup] = useState(false);
   const [forgot, setForgot] = useState(false);
+  // Nov 24: signed in with a temporary password (after the two-step code, if that's on): Choose Your Own Password first
+  const [choose, setChoose] = useState<MustChoose | null>(null);
   if (setupNeeded || setup) return <Setup superAdmin={!setupNeeded && superSetupNeeded} />;
+  if (choose) return <ChooseOwn need={choose} temp={password} brand={brand} kicker={kicker} onDone={setUser}
+    onBack={() => { setChoose(null); setTicket(''); setCode(''); setPassword(''); setError(''); }} />;
   if (forgot) return <ForgotPassword brand={brand} email={email} onBack={(e) => { setForgot(false); setEmail(e); setError(''); }} />;
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');
     try {
-      const r = await api<{ user?: User; needCode?: boolean; ticket?: string }>('/api/login', { method: 'POST', body: { email, password } });
-      if (r.needCode) setTicket(r.ticket!); else setUser(r.user!);
+      const r = await api<{ user?: User; needCode?: boolean; ticket?: string } & Partial<MustChoose>>('/api/login', { method: 'POST', body: { email, password } });
+      if (r.mustChoose) setChoose(r as MustChoose); else if (r.needCode) setTicket(r.ticket!); else setUser(r.user!);
     } catch (err) { setError((err as Error).message); }
     setBusy(false);
   };
   const submitCode = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');
-    try { setUser((await api<{ user: User }>('/api/login/code', { method: 'POST', body: { ticket, code } })).user); }
-    catch (err) { setError((err as Error).message); if (/timed out/.test((err as Error).message)) { setTicket(''); setCode(''); } }
+    try {
+      const r = await api<{ user?: User } & Partial<MustChoose>>('/api/login/code', { method: 'POST', body: { ticket, code } });
+      if (r.mustChoose) setChoose(r as MustChoose); else setUser(r.user!);
+    } catch (err) { setError((err as Error).message); if (/timed out|stopped working/.test((err as Error).message)) { setTicket(''); setCode(''); } }
     setBusy(false);
   };
   if (ticket) return (
@@ -387,7 +395,8 @@ const mb = (n: number | null) => (n ? (n > 1e6 ? `${(n / 1e6).toFixed(1)} MB` : 
 /* ---------- team ---------- */
 type Member = { id: number; name: string; email: string | null; role: Role; createdAt: string; lastSeenAt: string | null; hasPin: boolean; signedOff: number; storeId: number | null; storeName: string | null; canManage: boolean;
   /** Nov 16: Promote to Manager / Change to Staff */
-  canPromote?: boolean; canDemote?: boolean; promotion?: { email: string; storeName: string | null; createdAt: string; expiresAt: string } | null };
+  canPromote?: boolean; canDemote?: boolean; promotion?: { email: string; storeName: string | null; createdAt: string; expiresAt: string } | null;
+  /** Nov 24: a temporary password waiting to be used */ temporary?: Temporary; totpOn?: boolean };
 type Invite = { id: string; email: string; role: string; created_at: string; expires_at: string; storeName: string | null };
 type StoreRow = { id: number; name: string; bookReady: boolean };
 type TeamData = { company: { id: number; name: string; joinCode: string; demo?: boolean; link?: string | null }; stores: StoreRow[]; yourStore: number | null; people: Member[]; invites: Invite[]; you: number; youRole: Role };
@@ -404,7 +413,14 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
   const [copied, setCopied] = useState('');
   const [reset, setReset] = useState<ResetLink | null>(null);
   const owner = data?.youRole === 'owner' || data?.youRole === 'superadmin';
-  const { askThen, asking } = useAsk(); // Nov 23: asks inside the page, never the browser's confirm() (see useAsk)
+  const { ask, askThen, asking } = useAsk(); // Nov 23: asks inside the page, never the browser's confirm() (see useAsk)
+  // Nov 24: Set Temporary Password beside the resets (owners for owners and managers; managers for their staff, who give
+  // an email in the dialog).
+  const { openTemp, cancelTemp, tempDialog } = useTemp({ ask, done: (t) => { setErr(''); setNote(t); }, fail: setErr, reload: load });
+  const tempPath = (p: Member) => `/api/team/${p.id}/temporary`;
+  const tempButton = (p: Member) => (p.temporary
+    ? <button className="link-btn" onClick={() => void cancelTemp(p, tempPath(p))}>Cancel Temporary</button>
+    : <button className="link-btn" onClick={() => { setErr(''); setNote(''); openTemp({ person: p, path: tempPath(p), roleLabel: ROLE_LABEL[p.role], twoStep: p.totpOn }); }}>Set Temporary Password</button>);
   // Nov 16: back to staff, same person. They sign in with their PIN again (or pick one with the join code and their name).
   const demote = (p: Member) => {
     const where = p.storeName || user?.store?.name || 'their store';
@@ -463,12 +479,13 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
           <thead><tr><th>Name</th>{multi && <th>Store</th>}<th>Signed off</th><th>Joined</th><th>Last seen</th><th /></tr></thead>
           <tbody>{staff.map((p) => (
             <tr key={p.id}>
-              <td>{p.name}{!p.hasPin && <small className="muted"> · picking a new PIN</small>}</td>
+              <td>{p.name}{!p.hasPin && <small className="muted"> · picking a new PIN</small>}<TempTag temp={p.temporary} /></td>
               {multi && <td>{switcher && p.canManage
                 ? <select aria-label={`${p.name}’s store`} value={p.storeId ?? ''} onChange={(e) => move(p, Number(e.target.value))}>{data.stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select>
                 : p.storeName}</td>}
               <td>{p.signedOff}</td><td>{when(p.createdAt)}</td><td>{when(p.lastSeenAt)}</td>
               <td className="row-actions">{p.canManage && <>
+                {!data.company.demo && tempButton(p)}
                 <button className="link-btn" onClick={() => void askThen({ title: `Reset ${p.name}’s PIN?`, body: 'They’re signed out and pick a new PIN next time they sign in.', go: 'Reset PIN' }, () => run(() => api(`/api/team/${p.id}/reset-pin`, { method: 'POST' }), `${p.name} picks a new PIN next time they sign in.`))}>Reset PIN</button>
                 <button className="link-btn danger" onClick={() => void askThen({ title: `Remove ${p.name}?`, body: 'They’re signed out right away.', go: 'Remove', danger: true }, () => run(() => api(`/api/team/${p.id}`, { method: 'DELETE' }), `${p.name} is removed.`))}>Remove</button>
               </>}</td>
@@ -483,7 +500,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
         <thead><tr><th>Name</th><th>Email</th><th>Role</th>{multi && <th>Store</th>}<th>Last seen</th><th /></tr></thead>
         <tbody>{leads.map((p) => (
           <tr key={p.id}>
-            <td>{p.name}{p.id === data.you && <small className="muted"> · you</small>}</td><td data-label="Email">{p.email}</td>
+            <td>{p.name}{p.id === data.you && <small className="muted"> · you</small>}<TempTag temp={p.temporary} /></td><td data-label="Email">{p.email}</td>
             <td data-label="Role">{owner && p.id !== data.you
               ? <select aria-label={`${p.name}’s role`} value={p.role} onChange={(e) => void run(() => api(`/api/team/${p.id}`, { method: 'PATCH', body: { role: e.target.value } }))}><option value="owner">Owner</option><option value="manager">Manager</option></select>
               : ROLE_LABEL[p.role]}</td>
@@ -493,6 +510,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
                 : p.storeName || 'Every store'}</td>}
             <td data-label="Last seen">{when(p.lastSeenAt)}</td>
             <td className="row-actions">{(owner || p.canDemote) && p.id !== data.you && <>
+              {owner && p.email && !data.company.demo && tempButton(p)}
               {owner && p.email && !data.company.demo && <button className="link-btn" onClick={() => makeReset(p)}>Reset Password</button>}
               {p.canDemote && <button className="link-btn" onClick={() => demote(p)}>Change to Staff</button>}
               {owner && !data.company.demo && <button className="link-btn danger" onClick={() => void askThen({ title: `Remove ${p.name}?`, body: 'They’re signed out and can’t edit anymore.', go: 'Remove', danger: true }, () => run(() => api(`/api/team/${p.id}`, { method: 'DELETE' }), `${p.name} is removed.`))}>Remove</button>}
@@ -501,6 +519,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
         ))}</tbody>
       </table>
       {reset && <ResetLinkCard reset={reset} onClose={() => setReset(null)} />}
+      {tempDialog}
       {owner && data.people.some((p) => p.promotion) && (
         <>
           <h2 className="sub">Promotions sent</h2>

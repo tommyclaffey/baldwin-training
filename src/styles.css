@@ -4301,6 +4301,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .look-roles .hq-picker { font-family: var(--look-body); }
 @media screen and (max-width: 900px) { .look-roles .hq-switch { font-family: var(--look-body); } }
 .look-roles .demo-tag { font-family: var(--look-body); }
+.look-roles .temp-seg button { font-family: var(--look-body); }
 /* ── end look-body ── */
 
 /* ── Looks painted from their roles (Nov 17: Testa Barra, J.Baldwin's; theme.ts `coded: 'roles'`). The coded screens were
@@ -4679,3 +4680,54 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .btn.ask-danger { background: #A1271F; color: #FFFFFF; } /* white on #A1271F 6.9:1 */
 .done-note { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .done-note .link-btn { min-height: 44px; display: inline-flex; align-items: center; padding: 0; align-self: auto; }
+
+/* Temporary password / PIN (Nov 24; Figma 09 · Idea Board → 49, 1002:194). The row's tag, Super Admin → People's person
+   cell (the email under the name, so five actions fit one row at 1440), the dialog and Choose Your Own. */
+.temp-tag { display: inline-flex; align-items: center; justify-content: center; margin-top: 4px; padding: 3px 8px; border-radius: 6px;
+  background: #F5E6E2; color: #7E2420; font: 500 11px/1.3 'DM Mono', ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; } /* 8.0:1 */
+td > .temp-tag { display: flex; width: max-content; }
+.people-table td.person { min-width: 0; }
+.people-table .person-name { display: block; font-weight: 600; }
+.people-table .person-sub { display: block; font-size: 13px; color: var(--muted); overflow-wrap: normal; } /* whole emails at desktop */
+@container (max-width: 860px) { .people-table .person-name { font-size: 15px; font-weight: 700; } .people-table td.person .person-sub { font-weight: 400; overflow-wrap: anywhere; } }
+
+.modal.temp-box { width: min(564px, 100%); padding: 28px 32px; gap: 14px; }
+.temp-kicker { margin: 0; font: 500 12px 'DM Mono', ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.modal.temp-box h2 { margin: 0; font-size: 26px; line-height: 1.15; }
+.brand-mise .modal.temp-box h2 { font: italic 400 34px/1.1 'DM Serif Display', Georgia, serif; }
+.temp-lead { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink); }
+.temp-seg { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 12px; background: var(--tint, #EFE3D3); }
+.temp-seg button { min-height: 44px; border: 0; border-radius: 9px; background: transparent; color: var(--ink); font: 600 14px 'Archivo', sans-serif; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; }
+.temp-seg button.on { background: var(--ink-fill, #2E2622); color: #FFFFFF; } /* white on the panel 14.6:1 */
+.temp-seg button:focus-visible { outline: 2px solid var(--copper-dk); outline-offset: 2px; }
+.temp-label, .temp-field > span:first-child, .temp-days > span:first-child { font: 500 12px 'DM Mono', ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.temp-field { display: flex; flex-direction: column; gap: 8px; }
+.temp-made-row { display: flex; gap: 10px; align-items: stretch; }
+.temp-made { flex: 1; min-width: 0; display: flex; align-items: center; min-height: 52px; padding: 0 16px; border: 1px solid var(--border-2); border-radius: 10px;
+  background: var(--wash, #F3EEE6); font: 500 20px 'DM Mono', ui-monospace, monospace; color: var(--ink); overflow-wrap: anywhere; user-select: all; }
+.temp-copy { min-width: 92px; }
+.temp-made-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.temp-made-foot small, .temp-field small { font-size: 13px; color: var(--muted); }
+.temp-made-foot .link-btn, .temp-show { min-height: 44px; display: inline-flex; align-items: center; padding: 0; align-self: auto; }
+.temp-type-row { position: relative; display: flex; }
+.temp-type-row input { flex: 1; padding-right: 64px; }
+.temp-show { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
+.temp-days select { max-width: 280px; }
+.temp-facts { list-style: none; margin: 0; padding: 14px 16px; display: grid; gap: 10px; border-radius: 12px; background: var(--wash-4, #FBF8F3); border: 1px solid var(--hair, #E8E0D4); }
+.temp-facts li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; font-size: 14px; line-height: 1.45; color: var(--ink); }
+.temp-ico { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.temp-dot { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 700; background: #E3EADF; color: #2F5D3A; } /* 6.2:1 */
+.temp-actions { display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
+.temp-actions .btn { min-height: 48px; padding: 12px 22px; }
+.brand-mise .temp-go { background: #8E2A26; color: #FFFFFF; } /* white on fig 8.4:1: the one fig button on the dialog */
+@media screen and (max-width: 520px) { .modal.temp-box { padding: 22px 18px; } .temp-actions .btn { flex: 1; } }
+
+/* Choose Your Own Password */
+.co-match { font-size: 13px; color: var(--muted); margin-top: -6px; }
+.co-match.co-yes { color: #2F5D3A; } /* 7.0:1 on the card */
+.co-checks { list-style: none; margin: 0; padding: 12px 14px; display: grid; gap: 8px; border-radius: 12px; background: rgba(255,255,255,.55); border: 1px solid var(--hair, #E8E0D4); }
+.co-checks li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink); }
+.co-dot { width: 20px; height: 20px; flex: 0 0 20px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 700; background: #ECE6DC; color: #5E574F; }
+.co-checks li.co-yes .co-dot { background: #E3EADF; color: #2F5D3A; }
+.co-checks li.co-no .co-dot { background: #F5E0DD; color: #A1271F; }

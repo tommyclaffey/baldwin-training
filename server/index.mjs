@@ -9,6 +9,7 @@ import { openDb, audit, now, MEDIA_DIR } from './db.mjs';
 import { sessionUser, SESSION_COOKIE, LoginLimiter, sessionCookie, endSession, clientIp } from './auth.mjs';
 import { accountRoutes, bootAccounts, companyOf, canEdit, storeOf } from './accounts.mjs';
 import { teamCan, viewOnly, VIEW_ONLY_MESSAGE } from './miseteam.mjs';
+import { activeTemp, tempOut } from './temppass.mjs';
 import { legalPage } from './legal.mjs';
 import { assemble, fullIndex, isCachedIndex, warmContent, ordered, glassTitles, basePage, baseIndex, sidebarCounts, withStore, canOpen } from './content.mjs';
 import { archivedList, ARCHIVE_GROUPS } from './archive.mjs';
@@ -573,7 +574,9 @@ async function api(req, res, url) {
       const inv = db.prepare('SELECT i.email, i.store_id, i.created_at, i.expires_at, s.name store_name FROM invites i LEFT JOIN stores s ON s.id = i.store_id WHERE i.user_id = ? AND i.used_at IS NULL AND i.expires_at > ? ORDER BY i.created_at DESC LIMIT 1').get(x.id, now());
       const promotion = inv ? { email: inv.email, storeId: inv.store_id ?? null, storeName: inv.store_name ?? null, createdAt: inv.created_at, expiresAt: inv.expires_at } : null;
       return { ...path, ...row, hasPin: !!x.pin_hash, createdAt: x.created_at, store: c.storeRow?.name || null, storeId: x.store_id ?? null, quizzes, quizAverage, certificates,
-        email: canPromote ? x.email || null : null, canPromote, promotion: canPromote ? promotion : null, demo: !!c.user.demo };
+        email: canPromote ? x.email || null : null, canPromote, promotion: canPromote ? promotion : null, demo: !!c.user.demo,
+        // Nov 24: a temporary password waiting (server/temppass.mjs)
+        temporary: tempOut(activeTemp(db, x.id)) };
     };
     const pm = /^\/api\/path\/person\/(\d+)$/.exec(p);
     if (pm && m === 'GET') { needUser(c, req); const x = person(pm[1]); return sendJson(res, 200, personFull(x)); }

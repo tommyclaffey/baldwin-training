@@ -7,7 +7,8 @@ import { api, type MailStatus, type Store } from '../lib/api';
 import { useSession } from '../lib/session';
 import { SearchBox } from '../components/SearchBox';
 import { useCollections } from './cms';
-import { ErrorNote, InviteSentCard, Loading, Text, mailLine } from './ui';
+import { ErrorNote, InviteSentCard, Loading, Text, mailLine, useAsk } from './ui';
+import { TempDialog, TempTag, cancelTempCopy, tempDoneText, type Temporary } from './temppass';
 import { dayLabel, type Job, type MyPath, type Stage, type Step } from '../path/store';
 import { ItemChatButton, SendToTeamButton } from '../chat/SendToTeam';
 import { hasChat } from '../chat/unread';
@@ -34,7 +35,8 @@ type QuizRow = { id: string; title: string; best: number; total: number; attempt
 type Promotion = { email: string; storeId: number | null; storeName: string | null; createdAt: string; expiresAt: string };
 type Person = MyPath & Row & { hasPin: boolean; createdAt: string; store: string | null; storeId: number | null; quizzes: QuizRow[]; quizAverage: number | null; certificates: { key: string; title: string; earnedAt: string }[];
   /** Promote to Manager (Nov 16): owners see it; `promotion` is a link waiting to be used. */
-  canPromote?: boolean; promotion?: Promotion | null; email?: string | null; demo?: boolean };
+  canPromote?: boolean; promotion?: Promotion | null; email?: string | null; demo?: boolean;
+  /** Nov 24: a temporary password waiting to be used */ temporary?: Temporary };
 
 function useLoad<T>(path: string) {
   const [data, setData] = useState<T | null>(null);
@@ -426,6 +428,9 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
   const [showQuizzes, setShowQuizzes] = useState(false);
   const [promoting, setPromoting] = useState(false);
   const { busy, msg, run } = useAct();
+  // Nov 24: Set Temporary Password (Figma section 49; staff sign in with email and password) beside Reset PIN. Asks in the page.
+  const [tempOpen, setTempOpen] = useState(false);
+  const { ask, asking } = useAsk();
   const reload = () => api<Person>(`/api/path/person/${id}`).then(setP).catch((e) => setErr((e as Error).message));
   useEffect(() => { void reload(); }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
   if (err && !p) return <section className="mg-card pp-detail"><ErrorNote error={err} /></section>;
@@ -551,8 +556,15 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
         <div>
           <Label>Sign-in</Label>
           <p>{p.hasPin ? 'Signs in with a PIN' : 'No PIN yet: they pick one the next time they sign in'}</p>
+          {p.temporary && <p><TempTag temp={p.temporary} /></p>}
+          {tempOpen && <TempDialog person={{ id: p.id, name: p.name, email: p.email, role: 'staff' }} path={`/api/team/${p.id}/temporary`} roleLabel="Staff" onClose={() => setTempOpen(false)}
+            onSet={(r) => { setTempOpen(false); void run('temp', () => reload(), tempDoneText(r)); }} />}
+          {asking}
           <p className="muted small">{p.lastSeenAt ? `Last opened the app ${whenWords(p.lastSeenAt)}` : 'Hasn’t opened the app yet'}</p>
           <div className="pp-btn-row">
+            {!p.demo && (p.temporary
+              ? <button type="button" className="mg-btn" disabled={!!busy} onClick={() => void ask(cancelTempCopy({ ...p, role: 'staff' })).then((yes) => { if (yes) void run('temp', async () => { await api(`/api/team/${p.id}/temporary`, { method: 'DELETE' }); await reload(); }, `${first}’s temporary password is cancelled.`); })}>Cancel Temporary</button>
+              : <button type="button" className="mg-btn" disabled={!!busy} onClick={() => setTempOpen(true)}>Set Temporary Password</button>)}
             <button type="button" className="mg-btn" disabled={!!busy} onClick={resetPin}>Reset PIN</button>
             <button type="button" className="mg-btn" disabled={!!busy} onClick={archive}>Archive</button>
             {p.canPromote && <button type="button" className="mg-btn dark" disabled={!!busy} onClick={() => setPromoting(true)}>Promote to Manager</button>}

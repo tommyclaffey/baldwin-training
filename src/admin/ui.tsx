@@ -148,7 +148,7 @@ export const when = (iso?: string | null) => {
  *  (Chrome's "don't let this site prompt you", in-app and embedded browsers), and then confirm() says no and the button
  *  does nothing. This asks in the page, so it always shows; Cancel has the focus, Escape cancels.
  *  `const { ask, asking } = useAsk();` render `{asking}`, then `if (await ask({ … })) doIt();` */
-export type AskCopy = { title: string; body: ReactNode; go: string; danger?: boolean };
+export type AskCopy = { title: string; body: ReactNode; go: string; danger?: boolean; /** the stay button (Nov 24: "Keep It" beside "Cancel Temporary"); Cancel by default */ no?: string };
 export function useAsk() {
   const [open, setOpen] = useState<(AskCopy & { done: (ok: boolean) => void }) | null>(null);
   const box = useRef<HTMLDivElement>(null);
@@ -161,7 +161,7 @@ export function useAsk() {
         <h2 id="ask-title">{open.title}</h2>
         <p id="ask-body">{open.body}</p>
         <div className="arc-actions">
-          <button type="button" className="btn ghost" onClick={() => answer(false)}>Cancel</button>
+          <button type="button" className="btn ghost" onClick={() => answer(false)}>{open.no || 'Cancel'}</button>
           <button type="button" className={'btn' + (open.danger ? ' ask-danger' : '')} onClick={() => answer(true)}>{open.go}</button>
         </div>
       </div>

@@ -119,7 +119,7 @@ test('browser: with popups switched off, each action opens its dialog in the pag
     await send('Page.navigate', { url: `${BASE}/admin/super/people?q=Wren` });
     for (let i = 0; i < 50 && !(await ev(`!!document.querySelector('tbody tr .acts button')`)); i++) await sleep(200);
     const row = await ev(`(()=>{const tr=document.querySelector('tbody tr');const b=[...tr.querySelectorAll('.acts button')];return {names:b.map(x=>x.textContent),lines:new Set(b.map(x=>Math.round(x.getBoundingClientRect().top))).size,minH:Math.min(...b.map(x=>x.getBoundingClientRect().height)),when:getComputedStyle(tr.querySelector('td.when')).whiteSpace}})()`);
-    assert.deepEqual(row.names, ['Sign In As', 'Edit', 'Reset PIN', 'Delete']);
+    assert.deepEqual(row.names, ['Sign In As', 'Edit', 'Set Temporary Password', 'Reset PIN', 'Delete']); // (Nov 24: Set Temporary Password)
     assert.equal(row.lines, 1, 'the actions sit in one row'); assert.ok(row.minH >= 44, '44 px targets'); assert.equal(row.when, 'nowrap', 'the date stays on one line');
     // Nov 23 (Tommy's screenshot): at desktop width the table is a real table and the buttons never sit on top of the
     // other columns. The shared .row-actions rule made the cell a flex box, so it shrank and the buttons spilled left.

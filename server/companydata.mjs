@@ -51,7 +51,7 @@ function ownedRows(db, companyId) {
   const stores = idsOf(db, 'SELECT id FROM stores WHERE company_id = ?', companyId);
   const out = {};
   for (const t of tables(db)) {
-    if (KEEP.has(t) || t === 'sessions' || t === 'password_resets') continue;
+    if (KEEP.has(t) || t === 'sessions' || t === 'password_resets' || t === 'temp_credentials') continue; // (secrets: never exported)
     const cols = colsOf(db, t);
     const where = [], args = [];
     if (cols.includes('company_id')) { where.push('company_id = ?'); args.push(companyId); }

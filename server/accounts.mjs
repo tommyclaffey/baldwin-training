@@ -28,6 +28,7 @@ import { wipeCompany, PROTECTED } from './companydata.mjs';
 import { demoGroups } from './demo.mjs';
 import { accountSlug, linkOf } from './links.mjs';
 import { stateName, forgetState } from './lawstate.mjs';
+import { activeTemp, activeTemps, spentTemp, tempOut, dayOf, purgeTemps, isUnusable, UNUSABLE, TEMP_DAYS, DEFAULT_TEMP_DAYS } from './temppass.mjs';
 
 const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
 const SUPERADMIN_EMAIL = (process.env.SUPERADMIN_EMAIL || '').trim().toLowerCase();
@@ -42,7 +43,11 @@ const pinDayLimiter = new LoginLimiter(15, 24 * 3600e3, 'pin-day');
 // Two-step codes: each sign-in allowed 5 tries, but a new sign-in (with the password) gave 5 more, without end.
 // 10 wrong codes per account per 15 minutes, across every sign-in.
 const twoStepLimiter = new LoginLimiter(10, 15 * 60_000, 'two-step');
-const tickets = new Map(); // two-step sign-in: ticket → { userId, at }
+const tickets = new Map(); // two-step sign-in: ticket → { userId, at, tries, temp? } (temp: signed in with a temporary password)
+// Temporary passwords (Nov 24, server/temppass.mjs): signing in with one gives a ticket for "Choose Your Own Password" only,
+// never a session. 15 minutes; a new sign-in with the temporary one makes a new ticket.
+const chooseTickets = new Map(); // ticket hash → { userId, tempId, at }
+const CHOOSE_MS = 15 * 60e3;
 // Password reset (Nov 11): one-time links, 24 hours. Forgot Password? is limited per address and per email.
 const RESET_HOURS = 24;
 const forgotIpLimiter = new LoginLimiter(10, 60 * 60_000, 'forgot-ip');
@@ -121,9 +126,11 @@ export function purgeDeleted(db) {
   for (const u of db.prepare('SELECT id FROM users WHERE deleted_at IS NOT NULL AND deleted_at < ?').all(cutoff)) {
     db.prepare('DELETE FROM sessions WHERE user_id = ?').run(u.id);
     db.prepare('DELETE FROM password_resets WHERE user_id = ?').run(u.id);
+    db.prepare('DELETE FROM temp_credentials WHERE user_id = ?').run(u.id);
     db.prepare('DELETE FROM users WHERE id = ?').run(u.id);
   }
   db.prepare('DELETE FROM password_resets WHERE expires_at < ?').run(new Date(Date.now() - 7 * 864e5).toISOString());
+  purgeTemps(db);
 }
 
 /** The company a request works in: the person's own, or for a super admin the one they picked. Nov 16: a super admin who
@@ -226,6 +233,107 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const clearPinLimits = (id) => { pinLimiter.reset('pin|' + id); pinDayLimiter.reset('pin|' + id); };
   const resetOut = (t, r) => ({ link: r.link, expiresAt: r.expiresAt, hours: r.hours, name: t.name, email: t.email });
 
+  /* ---- Temporary passwords (Nov 24, server/temppass.mjs) ---- */
+  /** Set one: checked and permitted by the route. Staff without an email give one here (they'll sign in with it). The old
+   *  password stops working (kept in prev_hash only so Cancel can put it back), they're signed out everywhere, two-step is
+   *  left as it is. Never returns the value. */
+  const setTemp = async (t, actor, b) => {
+    const value = String(b.value ?? '');
+    let email = t.email ? String(t.email).toLowerCase() : null;
+    if (t.role === 'staff') {
+      const e = String(b.email ?? t.email ?? '').trim().toLowerCase();
+      if (!validEmail(e)) fail(400, `Add ${t.name.split(' ')[0]}’s email. They’ll sign in with it.`);
+      if (db.prepare('SELECT 1 FROM users WHERE email = ? AND id != ? AND deleted_at IS NULL').get(e, t.id)) fail(409, 'Another account uses that email.');
+      email = e;
+    }
+    if (!validPassword(value)) fail(400, 'Use at least 10 characters for the temporary password.');
+    if (email && value.trim().toLowerCase() === email) fail(400, 'Don’t use their email as the temporary password.');
+    const days = TEMP_DAYS.includes(Number(b.days)) ? Number(b.days) : DEFAULT_TEMP_DAYS;
+    const expiresAt = new Date(Date.now() + days * 864e5).toISOString();
+    const hash = await hashPassword(value);
+    const fresh = byId(t.id);
+    const open = activeTemp(db, t.id);
+    // A second temporary one replaces the first; the old password Cancel would put back is still the one from before both.
+    const prev = isUnusable(fresh.password_hash) && open ? open.prev_hash : fresh.password_hash;
+    db.exec('BEGIN');
+    try {
+      if (email !== (fresh.email ? String(fresh.email).toLowerCase() : null)) {
+        db.prepare('UPDATE users SET email = NULL WHERE email = ? AND deleted_at IS NOT NULL AND id != ?').run(email, t.id); // an archived person's old email
+        db.prepare('UPDATE users SET email = ? WHERE id = ?').run(email, t.id);
+      }
+      db.prepare('UPDATE temp_credentials SET cancelled_at = ?, cancelled_by = ?, prev_hash = NULL WHERE user_id = ? AND used_at IS NULL AND cancelled_at IS NULL').run(now(), actor.id, t.id);
+      db.prepare('INSERT INTO temp_credentials(user_id, company_id, kind, hash, prev_hash, created_by, created_at, expires_at) VALUES (?,?,?,?,?,?,?,?)')
+        .run(t.id, t.company_id ?? null, 'password', hash, prev ?? null, actor.id, now(), expiresAt);
+      db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(UNUSABLE, t.id);
+      db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
+      db.prepare('DELETE FROM password_resets WHERE user_id = ? AND used_at IS NULL').run(t.id);
+      db.exec('COMMIT');
+    } catch (e) { db.exec('ROLLBACK'); throw e; }
+    for (const [k, v] of chooseTickets) if (v.userId === t.id) chooseTickets.delete(k);
+    return { ok: true, name: t.name, email, days, expiresAt, until: dayOf(expiresAt) };
+  };
+  /** Cancel Temporary: it stops working and their old password (if they had one) works again. */
+  const cancelTemp = (t, actor) => {
+    const open = activeTemp(db, t.id);
+    if (!open) fail(404, `${t.name} has no temporary password waiting.`);
+    db.exec('BEGIN');
+    try {
+      if (db.prepare('UPDATE temp_credentials SET cancelled_at = ?, cancelled_by = ?, prev_hash = NULL WHERE id = ? AND used_at IS NULL AND cancelled_at IS NULL').run(now(), actor.id, open.id).changes !== 1) fail(409, 'It was just used or cancelled. Reload the page.');
+      if (isUnusable(byId(t.id).password_hash)) db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(open.prev_hash ?? null, t.id);
+      db.exec('COMMIT');
+    } catch (e) { db.exec('ROLLBACK'); throw e; }
+    for (const [k, v] of chooseTickets) if (v.userId === t.id) chooseTickets.delete(k);
+    return { ok: true, name: t.name };
+  };
+  /** Something else replaced it (a reset link used, a role change, removal): it just stops, nothing is put back. */
+  const dropTemps = (userId, by = null) => {
+    db.prepare('UPDATE temp_credentials SET cancelled_at = ?, cancelled_by = ?, prev_hash = NULL WHERE user_id = ? AND used_at IS NULL AND cancelled_at IS NULL').run(now(), by, userId);
+    for (const [k, v] of chooseTickets) if (v.userId === userId) chooseTickets.delete(k);
+  };
+  /** Signed in with a temporary password: a ticket for Choose Your Own Password, nothing else. */
+  const chooseTicket = (res, user, temp) => {
+    const ticket = newToken();
+    chooseTickets.set(sha256(ticket), { userId: user.id, tempId: temp.id, at: Date.now() });
+    return sendJson(res, 200, { mustChoose: 'password', ticket, name: user.name, email: user.email });
+  };
+  const spentMessage = (old) => (old.used_at
+    ? 'That temporary password was already used. Sign in with the one you chose, or tap Forgot Password?'
+    : `That temporary password expired on ${dayOf(old.expires_at)}. Ask whoever gave it to you for a new one.`);
+  /** The person saves their own: the temporary one is used up (first save wins), they're signed out everywhere else, in. */
+  const choose = async (req, res) => {
+    if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
+    const b = await readJson(req);
+    const key = sha256(String(b.ticket || ''));
+    const tk = chooseTickets.get(key);
+    if (!tk || Date.now() - tk.at > CHOOSE_MS) { chooseTickets.delete(key); fail(410, 'That took too long. Sign in again with your temporary password.'); }
+    const temp = db.prepare('SELECT t.*, b.name by_name, b.role by_role FROM temp_credentials t LEFT JOIN users b ON b.id = t.created_by WHERE t.id = ?').get(tk.tempId);
+    const user = byId(tk.userId);
+    if (!temp || !user || user.deleted_at || temp.cancelled_at) { chooseTickets.delete(key); fail(410, 'That temporary password was cancelled. Ask for a new one.'); }
+    if (temp.used_at || temp.expires_at <= now()) { chooseTickets.delete(key); fail(410, spentMessage(temp)); }
+    const value = String(b.password ?? '');
+    if (!validPassword(value)) fail(400, 'Use at least 10 characters for your new password.');
+    if (await verifyPassword(value, temp.hash)) fail(400, 'That’s the temporary password. Choose a new one only you know.');
+    if (user.email && value.trim().toLowerCase() === user.email.toLowerCase()) fail(400, 'Don’t use your email as your password. Choose something only you know.');
+    if (temp.prev_hash && !isUnusable(temp.prev_hash) && (await verifyPassword(value, temp.prev_hash))) fail(400, 'That’s your old password. Choose a new one.');
+    const hash = await hashPassword(value);
+    db.exec('BEGIN');
+    try {
+      // Works once: whoever marks it used first wins (a second save in flight gets "already used").
+      if (db.prepare('UPDATE temp_credentials SET used_at = ?, prev_hash = NULL WHERE id = ? AND used_at IS NULL AND cancelled_at IS NULL AND expires_at > ?').run(now(), temp.id, now()).changes !== 1) {
+        db.exec('ROLLBACK'); chooseTickets.delete(key); fail(410, spentMessage({ ...temp, used_at: now() }));
+      }
+      db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(hash, user.id);
+      db.prepare('DELETE FROM sessions WHERE user_id = ?').run(user.id);
+      db.prepare('DELETE FROM password_resets WHERE user_id = ? AND used_at IS NULL').run(user.id);
+      db.exec('COMMIT');
+    } catch (e) { if (db.isTransaction) db.exec('ROLLBACK'); throw e; }
+    chooseTickets.delete(key);
+    const how = `after a temporary password from ${temp.by_name || 'an admin'}`;
+    audit(db, user.id, 'chose own password', how, user.company_id);
+    if (temp.by_role === 'superadmin' || user.role === 'superadmin') audit(db, user.id, 'super: chose own password', how, user.company_id);
+    return signIn(res, req, byId(user.id));
+  };
+
   /* Invite emails (Nov 16): every invite link also goes by email when email is set up. The link is still
    * shown, to copy. Never in a demo; a few an hour per address (like Forgot Password?) and 30 an hour per sender; a failed
    * send goes to the errors table. Answers { on, sent, reason } (reason: off · demo · limit · failed). */
@@ -291,9 +399,28 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const email = String(b.email || '').trim().toLowerCase();
       const key = email + '|' + ip(req);
       if (!loginLimiter.check(key)) fail(429, 'Too many tries. Wait 15 minutes, then try again.');
-      const user = db.prepare("SELECT u.* FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.email = ? AND u.deleted_at IS NULL AND u.role != 'staff' AND (u.company_id IS NULL OR c.deleted_at IS NULL)").get(email);
-      const ok = user && user.password_hash ? await verifyPassword(b.password, user.password_hash) : (await burnPasswordCheck(b.password), false);
-      if (!ok) { loginLimiter.record(key); fail(401, 'That email and password don’t match.'); }
+      // Nov 24 (Tommy: "you sign in with email and password"): staff too, once they have an email and a password (a
+      // temporary password is how they get one today). Staff without a password still can't: there's nothing to match.
+      const user = db.prepare("SELECT u.* FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.email = ? AND u.deleted_at IS NULL AND (u.company_id IS NULL OR c.deleted_at IS NULL)").get(email);
+      // Nov 24: a temporary password opens Choose Your Own Password (after the two-step code, if that's on), never the app.
+      const temp = user && activeTemp(db, user.id);
+      if (temp && (await verifyPassword(b.password, temp.hash))) {
+        loginLimiter.reset(key);
+        if (user.totp_on) {
+          const ticket = newToken();
+          tickets.set(sha256(ticket), { userId: user.id, at: Date.now(), tries: 0, temp: temp.id });
+          return sendJson(res, 200, { needCode: true, ticket });
+        }
+        return chooseTicket(res, user, temp);
+      }
+      const ok = user && user.password_hash && !isUnusable(user.password_hash) ? await verifyPassword(b.password, user.password_hash) : (await burnPasswordCheck(b.password), false);
+      if (!ok) {
+        loginLimiter.record(key);
+        // A temporary password typed again after it was used or expired says so (only someone who knows it learns anything)
+        const old = user && spentTemp(db, user.id);
+        if (old && (await verifyPassword(b.password, old.hash))) fail(401, spentMessage(old));
+        fail(401, 'That email and password don’t match.');
+      }
       loginLimiter.reset(key);
       if (user.totp_on) {
         const ticket = newToken();
@@ -316,9 +443,16 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       }
       twoStepLimiter.reset('u' + t.userId);
       tickets.delete(sha256(String(b.ticket)));
+      if (t.temp) {
+        // Two-step stays on with a temporary password: the code first, then Choose Your Own Password.
+        const temp = activeTemp(db, user.id);
+        if (!temp || temp.id !== t.temp) fail(410, 'That temporary password stopped working. Ask for a new one.');
+        return chooseTicket(res, user, temp);
+      }
       audit(db, user.id, 'login', 'two-step', user.company_id);
       return signIn(res, req, user);
     }
+    if (p === '/api/login/choose' && m === 'POST') return choose(req, res);
     if (p === '/api/logout' && m === 'POST') {
       endSession(db, c.token);
       return sendJson(res, 200, { ok: true }, { 'Set-Cookie': sessionCookies('', { clear: true, secure: isSecure(req) }) });
@@ -385,6 +519,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(hash, r.user_id);
         db.prepare('DELETE FROM sessions WHERE user_id = ?').run(r.user_id); // signed out everywhere else
         db.prepare('DELETE FROM password_resets WHERE user_id = ? AND used_at IS NULL').run(r.user_id);
+        dropTemps(r.user_id); // their own password now: a temporary one waiting is done with
         loginLimiter.reset(r.email + '|' + ip(req));
         const how = r.via === 'email' ? 'from an email link' : `with a link from ${r.by_name || 'an owner'}`;
         audit(db, r.user_id, 'reset password', how, r.company_id);
@@ -559,12 +694,13 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       const storeName = new Map(stores.map((x) => [x.id, x.name]));
       const owners = all.filter((x) => x.role === 'owner').length;
       const changes = roleChanger(u), promotes = promoter(u);
+      const temps = activeTemps(db, people.map((x) => x.id)); // Nov 24: "Temporary · until Nov 30" on the row
       return sendJson(res, 200, {
         company: { id: co.id, name: co.name, joinCode: co.join_code, demo: !!co.demo, link: linkOf(co) }, stores: stores.map(storeOut), yourStore: u.store_id ?? null,
         people: people.map((x) => ({ ...personOut(x), storeId: x.store_id ?? null, storeName: x.store_id ? storeName.get(x.store_id) || null : null, signedOff: passed.get('u' + x.id) || 0, canManage: x.id !== u.id && inScope(u, x) && (x.role === 'staff' || u.role === 'owner' || u.role === 'superadmin'),
           // Nov 16: Promote to Manager (staff) and Change to Staff (owners and managers; never yourself or the last owner)
           canPromote: promotes && x.role === 'staff' && inScope(u, x), canDemote: changes && x.role !== 'staff' && x.id !== u.id && !(x.role === 'owner' && owners < 2),
-          promotion: x.role === 'staff' ? promotionOut(promotionOf(x.id), (id) => storeName.get(id) || null) : null })),
+          promotion: x.role === 'staff' ? promotionOut(promotionOf(x.id), (id) => storeName.get(id) || null) : null, temporary: tempOut(temps.get(x.id)) })),
         invites: invites.map((i) => ({ ...i, storeName: i.store_id ? storeName.get(i.store_id) || null : null })), you: u.id, youRole: u.role, canChangeRoles: changes, canPromote: promotes,
       });
     }
@@ -652,6 +788,20 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         audit(db, u.id, 'reset link', `${t.name} · ${t.email}`, cid);
         return sendJson(res, 200, resetOut(t, r));
       }
+      /* ---- Set Temporary Password, Cancel Temporary (Nov 24). The same people who can reset that person: an owner's
+       * (or the Mise team's, working in the company) for owners and managers, like Reset Password; any manager's for the
+       * staff they manage, like Reset PIN. ---- */
+      if (parts[3] === 'temporary' && (m === 'POST' || m === 'DELETE')) {
+        if (t.role !== 'staff') { if (u.role !== 'owner' && u.role !== 'superadmin') fail(403, 'Only an owner can set a temporary password for an owner or manager.'); resettable(t, u); }
+        if (m === 'DELETE') {
+          cancelTemp(t, u);
+          audit(db, u.id, 'cancel temporary password', t.name, cid, teamRole(u));
+          return sendJson(res, 200, { ok: true, name: t.name });
+        }
+        const r = await setTemp(t, u, await readJson(req));
+        audit(db, u.id, 'set temporary password', `${t.name} · ${r.email} · until ${r.until}`, cid, teamRole(u));
+        return sendJson(res, 200, r);
+      }
       /* ---- Promote to Manager / Change to Staff (Nov 16) ---- */
       if (parts[3] === 'promote' && m === 'DELETE') {
         // Promotion links made before Nov 16's change stay valid until they expire; an owner can still cancel one.
@@ -705,6 +855,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
           // They sign in with a PIN again: the one they had, else they pick one with the join code and their name.
           // The email stays on their account (so Promote to Manager can use it again); it doesn't sign in as staff.
           db.prepare("UPDATE users SET role = 'staff', store_id = ?, password_hash = NULL, totp_on = 0, totp_secret = NULL WHERE id = ?").run(st.id, t.id);
+          dropTemps(t.id, u.id); // their password was just cleared
           db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
           db.prepare('DELETE FROM password_resets WHERE user_id = ? AND used_at IS NULL').run(t.id);
           db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(t.id);
@@ -756,6 +907,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         if (t.role === 'owner' && db.prepare("SELECT COUNT(*) n FROM users WHERE company_id = ? AND role = 'owner' AND deleted_at IS NULL").get(cid).n < 2) fail(400, 'Every company keeps at least one owner. Make someone else an owner first.');
         db.prepare('UPDATE users SET deleted_at = ? WHERE id = ?').run(now(), t.id);
         db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
+        dropTemps(t.id, u.id);
         audit(db, u.id, 'remove person', t.name, cid);
         return sendJson(res, 200, { ok: true });
       }
@@ -987,7 +1139,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         WHERE (? = '' OR u.company_id = ? OR (? AND u.role = 'superadmin')) AND (u.name LIKE ? OR IFNULL(u.email,'') LIKE ?)
           AND IFNULL(c.demo, 0) = 0 ORDER BY u.deleted_at IS NOT NULL, c.name, u.name LIMIT 500`)
         .all(cid || '', Number(cid) || 0, hq ? 1 : 0, q, q);
-      return sendJson(res, 200, { users: rows.map(personOut) });
+      const temps = activeTemps(db, rows.map((x) => x.id)); // Nov 24: "Temporary · until Nov 30"
+      return sendJson(res, 200, { users: rows.map((x) => ({ ...personOut(x), temporary: tempOut(temps.get(x.id)) })) });
     }
     if (parts[2] === 'users' && /^\d+$/.test(parts[3] || '')) {
       const t = byId(Number(parts[3]));
@@ -1021,6 +1174,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
           if (!['owner', 'manager', 'staff'].includes(b.role)) fail(400, 'Pick owner, manager or staff.');
           if (b.role !== 'staff' && !t.email && !b.email) fail(400, 'Owners and managers need an email to sign in.');
           if (b.role === 'staff' && t.role !== 'staff') db.prepare('UPDATE users SET password_hash = NULL WHERE id = ?').run(t.id);
+          if (b.role === 'staff' && t.role !== 'staff') dropTemps(t.id, s.id); // their password was just cleared
           db.prepare('UPDATE users SET role = ? WHERE id = ?').run(b.role, t.id); changes.push(`role → ${b.role}`);
         }
         if (b.companyId !== undefined && t.role !== 'superadmin') {
@@ -1048,6 +1202,27 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         return sendJson(res, 200, resetOut(t, r));
       }
       if (parts[4] === 'reset-pin' && m === 'POST') { may('resetPin'); if (t.role !== 'staff') fail(400, 'Only staff have a PIN.'); db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id); db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id); clearPinLimits(t.id); superLog(s, 'reset PIN', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
+      /* Set Temporary Password and Cancel Temporary (Nov 24): the Mise team roles that reset passwords and PINs (Owner,
+       * Manager; never Support). Owners and managers follow Reset Password's rules; staff, Reset PIN's. */
+      if (parts[4] === 'temporary' && (m === 'POST' || m === 'DELETE')) {
+        if (t.role === 'staff') {
+          may('resetPin');
+          if (t.deleted_at) fail(400, 'Restore this person first.');
+          if (t.company_id && !companyRow(t.company_id)) fail(400, 'Restore their company first.');
+        } else {
+          may('resetPassword');
+          resettable(t, s);
+          if (protectedSuper) fail(403, 'Only the primary super admin can set another super admin’s password.');
+        }
+        if (m === 'DELETE') {
+          cancelTemp(t, s);
+          superLog(s, 'cancel temporary password', `${t.name} (${t.role})`, t.company_id);
+          return sendJson(res, 200, { ok: true, name: t.name });
+        }
+        const r = await setTemp(t, s, await readJson(req));
+        superLog(s, 'set temporary password', `${t.name} (${t.role}) · ${r.email} · until ${r.until}`, t.company_id);
+        return sendJson(res, 200, r);
+      }
       if (parts[4] === 'sign-in-as' && m === 'POST') {
         may('signInAs');
         if (t.role === 'superadmin') fail(400, 'Super admins can’t sign in as each other.');
@@ -1063,6 +1238,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         if (protectedSuper || (t.role === 'superadmin' && !s.super_primary)) fail(403, 'Only the owner can remove a teammate.');
         db.prepare('UPDATE users SET deleted_at = ? WHERE id = ?').run(now(), t.id);
         db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
+        dropTemps(t.id, s.id);
         superLog(s, 'delete person (30 days to restore)', `${t.name} (${t.role})`, t.company_id);
         return sendJson(res, 200, { ok: true });
       }

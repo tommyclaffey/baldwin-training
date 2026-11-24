@@ -11,13 +11,14 @@ import { DoneNote, ErrorNote, InviteSentCard, Loading, ResetLinkCard, Text, useA
 import { Deletions } from './companydata';
 import { ErrorLog } from './hq';
 import { CopyLink } from '../components/CopyLink';
+import { TempTag, useTemp, type Temporary } from './temppass';
 
 type Look = { id: string; name: string; custom: boolean };
 type Plan = { id: string; name: string; customLook: boolean };
 type Company = { id: number; name: string; slug: string; state: string | null; link: string | null; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number; look: string | null; drawnIn: string }[]; storeLooks: boolean;
   demo: boolean; hq: boolean; plan: string; look: string; drawnIn: string; looks: Look[] };
 type Person = { id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null; createdAt: string; lastSeenAt: string | null; deletedAt: string | null; hasPin: boolean; totpOn: boolean; superPrimary: boolean;
-  teamRole: TeamRole | null };
+  teamRole: TeamRole | null; /** Nov 24: a temporary password or PIN waiting to be used */ temporary?: Temporary };
 type Can = Record<'view' | 'work' | 'signInAs' | 'log' | 'planLook' | 'resetPassword' | 'resetPin' | 'inviteOwner' | 'addCompany' | 'editCompany' | 'editPerson' | 'removePerson' | 'library' | 'change' | 'deleteCompany' | 'deletions' | 'team', boolean>;
 type TeamInvite = { id: string; email: string; teamRole: TeamRole; createdAt: string; expiresAt: string };
 /** One row per demo (Nov 17): each visitor's private copy is a throwaway company, so the list shows the demo, not the copies. */
@@ -249,6 +250,13 @@ function People() {
     if (!(await ask({ title: `Sign In As ${p.name}?`, body: `You’ll see exactly what ${first(p)} sees. It’s logged under your name. Use “Back to Your Account” at the bottom of the screen to come back.`, go: 'Sign In As' }))) return;
     void run('as' + p.id, async () => { await api(`/api/super/users/${p.id}/sign-in-as`, { method: 'POST' }); location.assign(p.role === 'staff' ? '/' : '/admin'); });
   };
+  // Nov 24 (Tommy: "i need a assign temporary password vs a reset pin"; Figma section 49): beside Reset Password and Reset
+  // PIN, for whoever can already reset that person (staff too: they give an email in the dialog; everyone signs in with
+  // email and password). While one is waiting the row says so and offers Cancel Temporary.
+  const { openTemp, cancelTemp, tempDialog } = useTemp({ ask, done: (t) => { setErr(''); setDone(t); }, fail: setErr, reload: load, logged: 'It’s in the Log.' });
+  const canTemp = (p: Person) => (p.role === 'staff' ? !!can?.resetPin : canReset(p));
+  const tempPath = (p: Person) => `/api/super/users/${p.id}/temporary`;
+  const setTemp = (p: Person) => { setErr(''); setDone(''); openTemp({ person: p, path: tempPath(p), roleLabel: p.teamRole ? `Mise ${TEAM_ROLE_LABEL[p.teamRole]}` : ROLE_LABEL[p.role], twoStep: p.totpOn }); };
   const resetPin = async (p: Person) => {
     if (!(await ask({ title: `Reset ${p.name}’s PIN?`, body: `${first(p)} is signed out on every phone and picks a new PIN the next time they open the book. Their training and scores stay.`, go: 'Reset PIN' }))) return;
     void run('pin' + p.id, () => api(`/api/super/users/${p.id}/reset-pin`, { method: 'POST' }), `${p.name}’s PIN is reset. ${first(p)} picks a new one the next time they sign in.`);
@@ -269,11 +277,15 @@ function People() {
       {!rows && <Loading />}
       {rows && (
         <div className="people-wrap"><table className="table people-table">
-          <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Company</th><th>Last seen</th><th /></tr></thead>
+          {/* Nov 24: the email sits under the name (Figma 1002:195), so five actions fit one row at 1440 */}
+          <thead><tr><th>Person</th><th>Role</th><th>Company</th><th>Last seen</th><th /></tr></thead>
           <tbody>{rows.map((p) => (
             <tr key={p.id} className={p.deletedAt ? 'is-deleted' : ''}>
-              <td>{p.name}{p.deletedAt && <span className="deleted-note">Deleted · {daysLeft(p.deletedAt)} days left to restore</span>}</td>
-              <td data-label="Email" className="email">{p.email || <span className="muted">PIN</span>}</td><td data-label="Role">{p.teamRole ? `Mise ${TEAM_ROLE_LABEL[p.teamRole]}` : ROLE_LABEL[p.role]}</td>
+              <td className="person"><span className="person-name">{p.name}</span>
+                <small className="person-sub email">{p.email || 'Signs in with a PIN'}</small>
+                {p.deletedAt && <span className="deleted-note">Deleted · {daysLeft(p.deletedAt)} days left to restore</span>}
+                {!p.deletedAt && <TempTag temp={p.temporary} />}</td>
+              <td data-label="Role">{p.teamRole ? `Mise ${TEAM_ROLE_LABEL[p.teamRole]}` : ROLE_LABEL[p.role]}</td>
               <td data-label="Company">{p.companyName || '—'}</td><td data-label="Last seen" className="when">{when(p.lastSeenAt)}</td>
               <td className="row-actions"><div className="acts">
                 {p.deletedAt
@@ -281,6 +293,9 @@ function People() {
                   : <>
                     {p.role !== 'superadmin' && can?.signInAs && <button type="button" className="link-btn" disabled={!!busy} onClick={() => void signInAs(p)}>{busy === 'as' + p.id ? 'Signing In…' : 'Sign In As'}</button>}
                     {mayEdit(p) && <button type="button" className="link-btn" disabled={!!busy} onClick={() => setEdit(p)}>Edit</button>}
+                    {canTemp(p) && (p.temporary
+                      ? <button type="button" className="link-btn" disabled={!!busy} onClick={() => void cancelTemp(p, tempPath(p))}>Cancel Temporary</button>
+                      : <button type="button" className="link-btn" disabled={!!busy} onClick={() => setTemp(p)}>Set Temporary Password</button>)}
                     {p.role === 'staff' && can?.resetPin && <button type="button" className="link-btn" disabled={!!busy} onClick={() => void resetPin(p)}>{busy === 'pin' + p.id ? 'Resetting…' : 'Reset PIN'}</button>}
                     {canReset(p) && <button type="button" className="link-btn" disabled={!!busy} onClick={() => void makeReset(p)}>Reset Password</button>}
                     {!p.superPrimary && ov?.you !== p.id && mayRemove(p) && <button type="button" className="link-btn danger" disabled={!!busy} onClick={() => void remove(p)}>{busy === 'del' + p.id ? 'Deleting…' : 'Delete'}</button>}
@@ -290,6 +305,7 @@ function People() {
           ))}</tbody>
         </table></div>
       )}
+      {tempDialog}
       {edit && ov && <EditPerson person={edit} companies={ov.companies.filter((c) => !c.deletedAt)} onClose={() => setEdit(null)} onSaved={() => { setDone(`${edit.name} is saved.`); setEdit(null); load(); }} />}
       {asking}
     </div>
