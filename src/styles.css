@@ -3518,18 +3518,17 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .si { min-height: 100vh; min-height: 100dvh; display: grid; grid-template-columns: 1fr 1fr; background: var(--c-page); color: var(--c-ink); font-family: var(--font-body); }
 .si-photo { position: sticky; top: 0; height: 100vh; height: 100dvh; overflow: hidden; background: var(--c-inverse); color: var(--c-on-inverse); }
 .si-photo-img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
-/* Fade to the brand's dark panel: darker behind the logo and the words, lighter over the pour (Figma 592:673). */
-.si-shade { position: absolute; inset: 0; background: linear-gradient(180deg,
-  color-mix(in srgb, var(--c-inverse) 72%, transparent) 0%, color-mix(in srgb, var(--c-inverse) 58%, transparent) 16%,
-  color-mix(in srgb, var(--c-inverse) 20%, transparent) 34%, color-mix(in srgb, var(--c-inverse) 35%, transparent) 50%,
-  color-mix(in srgb, var(--c-inverse) 88%, transparent) 74%, var(--c-inverse) 100%); }
+.si-shade { position: absolute; inset: 0; }
 .si-logo { position: absolute; display: block; height: auto; }
 .si-logo-mark { left: 64px; top: 64px; width: 200px; }
-.si-words { position: absolute; left: 64px; right: 64px; bottom: 96px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
-.si-words p { margin: 0; }
+/* Nov 24 (H8 on every look): a tall logo (a square website mark) never runs into the title card: at most 160 px tall here,
+   96 on phones; a cropped logo narrows by its own proportions (--logo-ar), a plain one by height (uniform scale either way). */
+.si-photo-ready .si-logo-mark { width: min(200px, calc(160px * var(--logo-ar, 99))); }
+.si-photo-ready img.si-logo-mark { width: 200px; max-height: 160px; object-fit: contain; object-position: left top; }
 /* Nov 24 · H8 "Ready for service." (Figma 09 · Idea Board, section 51; desktop 1025:4310, phone 1027:4434; Tommy picked it).
-   The Mise look only (Theme.signIn); every custom look keeps the photo side above. The mise lockup export (mise-dark.svg,
-   Lockup/Mise Theme=Dark, 255 × 148 with the wordmark's overhang) as it is, at the component's spot (47, 32). Figma's
+   Every look (Tommy, same day: "update this for our custom ones as well. Same language, different style"): its own photo
+   and logo (Mise: the mise lockup export, mise-dark.svg, Lockup/Mise Theme=Dark, 255 × 148 with the wordmark's overhang,
+   as it is at the component's spot, 47, 32; other looks: their mark, 64 px in), the same words and gradient. Figma's
    black gradient over the photo, Char #121110: a vignette (clear to half way, 55% at the edges) over a vertical fade, 64% at
    the top behind the logo, 10% over the pour, solid from 256 px above the bottom. Figma draws it on a 1024-tall side; here
    the top stops are px from the top and the bottom ones px from the bottom, so the title card (bottom 104, as in Figma)
@@ -3541,17 +3540,23 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
     rgba(18, 17, 16, .343) 79.17%, rgba(18, 17, 16, .407) 83.33%, rgba(18, 17, 16, .464) 87.5%, rgba(18, 17, 16, .509) 91.67%,
     rgba(18, 17, 16, .539) 95.83%, rgba(18, 17, 16, .55) 100%),
   linear-gradient(180deg, rgba(18, 17, 16, .6) 0, rgba(18, 17, 16, .559) 42.7px, rgba(18, 17, 16, .454) 85.3px, rgba(18, 17, 16, .318) 128px, rgba(18, 17, 16, .177) 170.7px, rgba(18, 17, 16, .061) 213.3px, rgba(18, 17, 16, 0) 256px),
-  linear-gradient(180deg, rgba(18, 17, 16, 0) calc(100% - 640px), rgba(18, 17, 16, .06) calc(100% - 597.3px), rgba(18, 17, 16, .167) calc(100% - 554.7px), rgba(18, 17, 16, .307) calc(100% - 512px), rgba(18, 17, 16, .467) calc(100% - 469.3px), rgba(18, 17, 16, .63) calc(100% - 426.7px), rgba(18, 17, 16, .781) calc(100% - 384px), rgba(18, 17, 16, .902) calc(100% - 341.3px), rgba(18, 17, 16, .98) calc(100% - 298.7px), #121110 calc(100% - 256px), #121110 100%),
+  linear-gradient(180deg, rgba(18, 17, 16, 0) calc(100% - 640px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .06) calc(100% - 597.3px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .167) calc(100% - 554.7px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .307) calc(100% - 512px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .467) calc(100% - 469.3px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .63) calc(100% - 426.7px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .781) calc(100% - 384px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .902) calc(100% - 341.3px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .98) calc(100% - 298.7px - var(--si-ready-lift, 0px)), #121110 calc(100% - 256px - var(--si-ready-lift, 0px)), #121110 100%),
   linear-gradient(rgba(18, 17, 16, .1), rgba(18, 17, 16, .1)); }
-/* The title card: centred on the photo side, 104 px off the bottom. Label DM Mono Medium 13/16 at .2em in #CFC6B8, 28 px,
-   "Ready for / service." DM Serif Display Italic 84/84 (−1 px) in white, 24 px, the line Archivo 18/28 in Bone, 440 wide. */
+/* The title card: centred on the photo side, 104 px off the bottom: label, 28 px, the two-line title, 24 px, the line
+   (440 wide). Mise exactly as Figma: DM Mono Medium 13/16 at .2em in #CFC6B8, DM Serif Display Italic 84/84 (−1 px) in
+   white, Archivo 18/28 in Bone. Every other look: the same sizes in its own faces, weights, tracking and on-dark colours,
+   its title 84 px times its own scale, set tight (1.04; Mise 84/84), smaller only when the photo side is too narrow for it.
+   Same gaps on every look: 28 and 24 (phones 12). */
+.si-photo-ready { container-type: inline-size; }
 .si-ready { position: absolute; left: 24px; right: 24px; bottom: 104px; display: flex; flex-direction: column; align-items: center; text-align: center; }
 :where(.si-ready) p { margin: 0; }
-.si-ready-label { font: 500 13px/16px var(--font-label); letter-spacing: .2em; text-transform: uppercase; color: #CFC6B8; }
-.si-ready-title { margin-top: 28px; font: italic 400 84px/84px var(--font-page-title); letter-spacing: -1px; color: #FFFFFF; white-space: nowrap; }
-.si-ready-line { margin-top: 24px; max-width: 440px; font: 400 18px/28px var(--font-body); color: #EDE6DA; }
-.si-script { font: 400 34px/1.1 var(--font-accent); color: var(--si-accent-on-dark); }
-.si-headline { font-family: var(--font-page-title); font-style: var(--si-title-style, normal); font-weight: var(--si-title-weight); font-size: min(var(--si-title-size), 5vw); line-height: 1; letter-spacing: var(--si-title-tracking); color: var(--c-on-inverse); }
+.si-ready-label { font: var(--si-label-weight) 13px/16px var(--font-label); letter-spacing: var(--si-label-tracking); text-transform: uppercase; color: var(--si-ready-label); }
+.si-ready-title { margin-top: 28px; font-family: var(--font-page-title); font-style: var(--si-title-style, normal); font-weight: var(--si-title-weight);
+  font-size: min(var(--si-ready-size), var(--si-ready-fit, 100cqw)); line-height: 1.04; letter-spacing: var(--si-title-tracking); color: var(--si-ready-title); white-space: nowrap; }
+.si-ready-line { margin-top: 24px; max-width: 440px; font: 400 18px/28px var(--font-body); color: var(--si-ready-line); }
+.si-ready-mise .si-ready-label { font-weight: 500; letter-spacing: .2em; color: #CFC6B8; }
+.si-ready-mise .si-ready-title { line-height: 1; letter-spacing: -1px; color: #FFFFFF; }
+.si-ready-mise .si-ready-line { color: #EDE6DA; }
 .si-side { min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 48px 24px; }
 .si-card { width: min(480px, 100%); background: var(--c-card); border: 1px solid var(--c-line); border-radius: 20px; padding: 48px; display: flex; flex-direction: column; gap: 24px; }
 .si-head { display: flex; flex-direction: column; gap: 10px; }
@@ -3588,10 +3593,9 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 @media screen and (max-width: 899px) {
   .si { display: block; }
   .si-photo { position: relative; height: 288px; }
-  .si-shade { background: linear-gradient(180deg, color-mix(in srgb, var(--c-inverse) 55%, transparent) 0%, color-mix(in srgb, var(--c-inverse) 35%, transparent) 25%,
-    color-mix(in srgb, var(--c-inverse) 64%, transparent) 55%, color-mix(in srgb, var(--c-inverse) 94%, transparent) 85%, var(--c-inverse) 100%); }
-  .si-words { display: none; }
-  .si-logo-mark { left: 20px; top: auto; bottom: 48px; width: 160px; }
+  .si-logo-mark { left: 20px; top: 16px; width: 160px; } /* Nov 24: up top, clear of the title card */
+  .si .si-photo-ready .si-logo-mark { width: min(160px, calc(96px * var(--logo-ar, 99))); }
+  .si .si-photo-ready img.si-logo-mark { width: 160px; max-height: 96px; }
   .si-side { position: relative; margin-top: -24px; border-radius: 20px 20px 0 0; background: var(--c-page); justify-content: flex-start; padding: 28px 20px 34px; }
   .si-title { font-size: var(--si-title-size-phone); line-height: 1.04; }
 }
@@ -3604,19 +3608,20 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
    (at Figma's ramp it measured 3.1–3.3 : 1). */
 @media screen and (max-width: 899px) {
   .si .si-photo-ready { height: 306px; }
-  .si-photo-ready .si-logo-file { left: 8px; top: 6px; width: 128px; }
-  .si-photo-ready .si-shade { background:
-    radial-gradient(50% 180px at 50% calc(100% - 180px), rgba(18, 17, 16, 0) 50%, rgba(18, 17, 16, .01) 54.17%, rgba(18, 17, 16, .037) 58.33%,
+  .si .si-photo-ready .si-logo-file { left: 8px; top: 6px; width: 128px; }
+  .si .si-photo-ready .si-shade { background:
+    radial-gradient(50% 180px at 50% calc(100% - 180px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, 0) 50%, rgba(18, 17, 16, .01) 54.17%, rgba(18, 17, 16, .037) 58.33%,
       rgba(18, 17, 16, .078) 62.5%, rgba(18, 17, 16, .13) 66.67%, rgba(18, 17, 16, .188) 70.83%, rgba(18, 17, 16, .25) 75%,
       rgba(18, 17, 16, .312) 79.17%, rgba(18, 17, 16, .37) 83.33%, rgba(18, 17, 16, .422) 87.5%, rgba(18, 17, 16, .463) 91.67%,
       rgba(18, 17, 16, .49) 95.83%, rgba(18, 17, 16, .5) 100%),
     linear-gradient(180deg, rgba(18, 17, 16, .31) 0, rgba(18, 17, 16, .259) 6px, rgba(18, 17, 16, .138) 21px, rgba(18, 17, 16, .046) 36px, rgba(18, 17, 16, 0) 51px),
-    linear-gradient(180deg, rgba(18, 17, 16, 0) calc(100% - 264px), rgba(18, 17, 16, .061) calc(100% - 249px), rgba(18, 17, 16, .138) calc(100% - 234px), rgba(18, 17, 16, .238) calc(100% - 219px), rgba(18, 17, 16, .352) calc(100% - 204px), rgba(18, 17, 16, .476) calc(100% - 189px), rgba(18, 17, 16, .599) calc(100% - 174px), rgba(18, 17, 16, .718) calc(100% - 159px), rgba(18, 17, 16, .824) calc(100% - 144px), rgba(18, 17, 16, .911) calc(100% - 129px), rgba(18, 17, 16, .972) calc(100% - 114px), rgba(18, 17, 16, .999) calc(100% - 99px), #121110 calc(100% - 84px), #121110 100%),
+    linear-gradient(180deg, rgba(18, 17, 16, 0) calc(100% - 264px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .061) calc(100% - 249px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .138) calc(100% - 234px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .238) calc(100% - 219px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .352) calc(100% - 204px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .476) calc(100% - 189px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .599) calc(100% - 174px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .718) calc(100% - 159px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .824) calc(100% - 144px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .911) calc(100% - 129px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .972) calc(100% - 114px - var(--si-ready-lift, 0px)), rgba(18, 17, 16, .999) calc(100% - 99px - var(--si-ready-lift, 0px)), #121110 calc(100% - 84px - var(--si-ready-lift, 0px)), #121110 100%),
     linear-gradient(rgba(18, 17, 16, .1), rgba(18, 17, 16, .1)); }
-  .si-ready { left: 20px; right: 20px; bottom: 56px; }
-  .si-ready-label { font-size: 11px; line-height: 14px; }
-  .si-ready-title { margin-top: 12px; font-size: 44px; line-height: 44px; letter-spacing: -.5px; }
-  .si-ready-line { display: none; }
+  .si .si-ready { left: 20px; right: 20px; bottom: 56px; }
+  .si .si-ready-label { font-size: 11px; line-height: 14px; }
+  .si .si-ready-title { margin-top: 12px; font-size: min(var(--si-ready-size-phone), var(--si-ready-fit, 100cqw)); }
+  .si .si-ready-mise .si-ready-title { letter-spacing: -.5px; }
+  .si .si-ready-line { display: none; }
 }
 @media screen and (min-width: 600px) and (max-width: 899px) { .si .si-photo-ready { height: 360px; } }
 @media screen and (max-width: 599px) {
@@ -4612,10 +4617,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .yl-si { display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%; }
 .yl-si-photo { position: relative; overflow: hidden; }
 .yl-si-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.yl-si-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.15) 40%, rgba(0,0,0,.65)); }
-.yl-si-logo { position: absolute; left: 44px; top: 40px; width: 220px; }
-.yl-si-script { position: absolute; left: 48px; bottom: 120px; margin: 0; font-size: 40px; }
-.yl-si-punch { position: absolute; left: 44px; bottom: 30px; margin: 0; font-size: 92px; line-height: 1; }
+.yl-si-logo { position: absolute; left: 64px; top: 64px; width: 220px; }
 .yl-si-side { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
 .yl-si-card { width: 400px; border: 1px solid; border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 12px; font-size: 15px; }
 .yl-si-card p { margin: 0; }

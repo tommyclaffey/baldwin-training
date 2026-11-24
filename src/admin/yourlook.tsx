@@ -16,6 +16,7 @@ import { useSession } from '../lib/session';
 import { brandTitle, color, fontCss, registerLook, lookTheme, themeFromSpec, cropFill, type Brand, type Theme } from '../lib/theme';
 import { COLOR_ROLES, type LookSpec, type LookColors, type PairResult, type Fix } from '../lib/lookspec.ts';
 import { ErrorNote, Loading } from './ui';
+import { paint, ReadyWords } from '../components/AuthCard';
 
 /* ── Data from the server ──────────────────────────────────────────────────────────────────────────────────────────── */
 type Access = 'full' | 'try' | 'upgrade' | 'none';
@@ -605,12 +606,12 @@ function SignInPreview({ t, spec }: { t: Theme; spec: LookSpec }) {
   return (
     <Scaled w={1200} h={720} className="yl-frame">
       <div className="yl-si" style={{ background: color(t, 'page'), fontFamily: fontCss(t.type.body.ff) }}>
-        <div className="yl-si-photo" style={{ background: color(t, 'inverse') }}>
+        {/* Nov 24: the real sign-in's photo side, H8 "Ready for service.", in this look (src/components/AuthCard.tsx) */}
+        <div className="yl-si-photo si-photo-ready" style={{ ...paint(t), background: color(t, 'inverse') }}>
           {spec.photo ? <img src={spec.photo} alt="" /> : <img src="/img/signin-bartender-1200.jpg" alt="" />}
-          <div className="yl-si-shade" />
+          <div className="si-shade" />
           {L && <div className="yl-si-logo" style={!spec.logo.dark ? { background: spec.colors.card, padding: 8, borderRadius: 8 } : undefined}><Art l={L} h={84} /></div>}
-          <p className="yl-si-script" style={{ fontFamily: fontCss(t.type.accent.ff), color: color(t, 'accentOnDark') }}>know the menu</p>
-          <p className="yl-si-punch" style={{ ...hf, color: '#FFFFFF' }}>{brandTitle('Cold.', t)}</p>
+          <ReadyWords t={t} />
         </div>
         <div className="yl-si-side">
           <div className="yl-si-card" style={{ background: color(t, 'card'), borderColor: color(t, 'line', 1) }}>
