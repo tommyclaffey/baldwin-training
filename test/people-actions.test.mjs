@@ -121,6 +121,16 @@ test('browser: with popups switched off, each action opens its dialog in the pag
     const row = await ev(`(()=>{const tr=document.querySelector('tbody tr');const b=[...tr.querySelectorAll('.acts button')];return {names:b.map(x=>x.textContent),lines:new Set(b.map(x=>Math.round(x.getBoundingClientRect().top))).size,minH:Math.min(...b.map(x=>x.getBoundingClientRect().height)),when:getComputedStyle(tr.querySelector('td.when')).whiteSpace}})()`);
     assert.deepEqual(row.names, ['Sign In As', 'Edit', 'Reset PIN', 'Delete']);
     assert.equal(row.lines, 1, 'the actions sit in one row'); assert.ok(row.minH >= 44, '44 px targets'); assert.equal(row.when, 'nowrap', 'the date stays on one line');
+    // Nov 23 (Tommy's screenshot): at desktop width the table is a real table and the buttons never sit on top of the
+    // other columns. The shared .row-actions rule made the cell a flex box, so it shrank and the buttons spilled left.
+    await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
+    await send('Page.navigate', { url: `${BASE}/admin/super/people` });
+    for (let i = 0; i < 50 && !(await ev(`!!document.querySelector('tbody tr .acts button')`)); i++) await sleep(200);
+    const wide = await ev(`(()=>{const t=document.querySelector('.people-table');let bad=0;for(const tr of t.querySelectorAll('tbody tr')){const a=tr.querySelector('td.row-actions');const prev=a.previousElementSibling.getBoundingClientRect();const acts=[...a.querySelectorAll('button')].map(b=>b.getBoundingClientRect());if(acts.some(r=>r.left<prev.right-1))bad++;}return {display:getComputedStyle(t).display,cell:getComputedStyle(t.querySelector('td.row-actions')).display,bad}})()`);
+    assert.equal(wide.display, 'table'); assert.equal(wide.cell, 'table-cell'); assert.equal(wide.bad, 0, 'no button sits over Last Seen or Company');
+    await send('Emulation.setDeviceMetricsOverride', { width: 1180, height: 900, deviceScaleFactor: 1, mobile: false });
+    await send('Page.navigate', { url: `${BASE}/admin/super/people?q=Wren` });
+    for (let i = 0; i < 50 && !(await ev(`!!document.querySelector('tbody tr .acts button')`)); i++) await sleep(200);
     for (const name of row.names) {
       posts.length = 0;
       await ev(`[...document.querySelectorAll('tbody tr:first-child .acts button')].find(x=>x.textContent===${JSON.stringify(name)}).click()`); await sleep(300);

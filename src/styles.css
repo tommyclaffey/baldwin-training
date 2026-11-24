@@ -4654,8 +4654,10 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .people-wrap { container-type: inline-size; }
 .people-table td.when { white-space: nowrap; }
 .people-table td.email { overflow-wrap: anywhere; }
-.people-table td.row-actions { width: 1%; padding-top: 4px; padding-bottom: 4px; }
-.people-table .acts { display: flex; flex-wrap: nowrap; justify-content: flex-end; gap: 0 18px; }
+/* display: table-cell — the shared .row-actions rule (line ~797) makes it a flex box, which pulls the cell out of the
+   table: it shrank to nothing and the buttons spilled left over Company and Last Seen (Tommy's screenshot, Nov 23). */
+.people-table td.row-actions { display: table-cell; width: 1%; white-space: nowrap; padding-top: 4px; padding-bottom: 4px; }
+.people-table .acts { display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 0 18px; }
 .people-table .acts .link-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0; white-space: nowrap; align-self: auto; }
 .link-btn:disabled { opacity: .55; cursor: default; }
 @container (max-width: 860px) {
@@ -4666,7 +4668,7 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   .people-table td { border: 0; padding: 2px 0; }
   .people-table td:first-child { font-weight: 700; font-size: 15px; }
   .people-table td[data-label]::before { content: attr(data-label) ': '; color: var(--muted); }
-  .people-table td.row-actions { width: 100%; padding: 4px 0 0; }
+  .people-table td.row-actions { display: block; width: 100%; white-space: normal; padding: 4px 0 0; }
   .people-table .acts { flex-wrap: wrap; justify-content: flex-start; }
 }
 /* The in-app "are you sure?" (useAsk) and what-just-happened note (DoneNote), Nov 23 */
