@@ -10,7 +10,7 @@
 // Sign In (email + password) is its own address, /sign-in or the account's own link; no role labels on any of these screens
 // (Tommy: "There should be a 'Join with a Code,' and there should be 'Sign In.' Doesn't matter what position you are in.").
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { api, type User } from '../lib/api';
 import { useSession } from '../lib/session';
 import { asBrand, registerLook, type Brand } from '../lib/theme';
@@ -26,6 +26,7 @@ const STORE_KEY = 'bt-join-store';
 export function BookSignIn({ account = null }: { account?: AccountLink | null }) {
   const { setUser } = useSession();
   const [step, setStep] = useState<'code' | 'store' | 'who' | 'pin' | 'new'>('code');
+  const pinSignIn = useSearchParams()[0].get('pin') === '1';
   const [stores, setStores] = useState<Store[]>([]);
   const [store, setStore] = useState<Store | null>(null);
   const [code, setCode] = useState(() => localStorage.getItem(CODE_KEY) || '');
@@ -96,9 +97,10 @@ export function BookSignIn({ account = null }: { account?: AccountLink | null })
   // after the join code: the restaurant's own look; after the store question, that store's (Nov 17)
   const card = { brand: step !== 'store' && store?.brand ? asBrand(store.brand) : coBrand };
 
+  // Nov 24: from Sign In's "Sign In with Your PIN" (?pin=1) the same code screen is titled as a sign-in
   if (step === 'code') return (
-    <AuthCard kicker={account?.name} title={AUTH_TITLE.join} brand={account?.brand}
-      sub={account ? 'Ask a manager for your join code.' : 'Ask a manager for your restaurant’s join code.'}
+    <AuthCard kicker={account?.name} title={pinSignIn ? 'Sign In with Your PIN' : AUTH_TITLE.join} brand={account?.brand}
+      sub={pinSignIn ? 'Type your restaurant’s join code, then tap your name and enter your PIN.' : account ? 'Ask a manager for your join code.' : 'Ask a manager for your restaurant’s join code.'}
       foot={account ? undefined : <>Just looking? <Link to="/demo/mise">Try the Demo</Link></>}>
       <form className="stack" onSubmit={(e) => { e.preventDefault(); void lookUp(code); }}>
         <label className="field"><span>Join code</span>

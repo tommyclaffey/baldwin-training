@@ -204,7 +204,9 @@ test('the screens, signed out and signed in (headless Chrome)', BROWSER, async (
     assert.equal(s.h1, 'sign in'); assert.equal(s.kicker, null); assert.equal(s.look, 'si-mise');
     assert.ok(await b.ev(`!!document.querySelector('input[type=password]')`), 'the password field');
     assert.deepEqual(s.links.find((l) => l[0] === 'Join with a Code'), ['Join with a Code', '/join']);
-    assert.ok(!s.buttons.includes('Use Your PIN Instead') && s.buttons.includes('Forgot Password?'), 'no PIN link on Sign In');
+    assert.ok(!s.buttons.includes('Use Your PIN Instead') && s.buttons.includes('Forgot Password?'), 'no old PIN link on Sign In');
+    // Nov 24: staff who joined with a PIN have a plain way in: "Joined with a PIN? Sign In with Your PIN"
+    assert.deepEqual(s.links.find((l) => l[0] === 'Sign In with Your PIN'), ['Sign In with Your PIN', '/join?pin=1']);
     noRoleLabels(s, '/sign-in');
     await snap('01 sign-in');
 

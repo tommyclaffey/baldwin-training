@@ -32,9 +32,8 @@ export { AuthCard };
 
 /** Sign In: email + password, for everyone with an account (Nov 23: at /sign-in, /admin, and an account's own link).
  *  brand / kicker / account (Nov 19, Nov 23): on an account's link (/the-baldwin) it wears that account's look with its name
- *  over the title, and Join with a Code goes to that account's /the-baldwin/join. Elsewhere: Mise, and /join. Nov 24 (Tommy:
- *  "please remove this its confusing"): no "Use Your PIN Instead" here. Staff still on a PIN go through Join with a Code →
- *  their name → PIN until they move to email + password (Idea Board section 50). */
+ *  over the title, and Join with a Code goes to that account's /the-baldwin/join. Elsewhere: Mise, and /join. Nov 24: staff
+ *  on a PIN use "Joined with a PIN? Sign In with Your PIN" (the code → name → PIN screens, titled as a sign-in). */
 export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicker?: string; account?: { slug: string } | null } = {}) {
   const { setUser, setupNeeded, superSetupNeeded } = useSession();
   const join = joinPath(account);
@@ -92,6 +91,9 @@ export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicke
       </form>
       <hr className="si-rule" />
       <p className="si-alt">New here? <Link to={join}>Join with a Code</Link></p>
+      {/* Nov 24 (Tommy: "they have to give them the pin option … I don't have everyone's email"): staff who joined with a
+          PIN sign in here, said plainly (the old "Use Your PIN Instead" was confusing). Same code → name → PIN screens. */}
+      <p className="si-alt">Joined with a PIN? <Link to={`${join}?pin=1`}>Sign In with Your PIN</Link></p>
     </AuthCard>
   );
 }
