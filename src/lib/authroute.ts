@@ -1,7 +1,7 @@
 // Real addresses for signing in and joining (Nov 23; Tommy: "It should be miseacademy.app/join, and the other one should be
 // sign in"). Two choices, no role labels (vault note "One sign-in, no role labels"; Idea Board section 50 is the redesign):
 //
-//   /sign-in                 email + password (everyone with an account; "Use Your PIN Instead" for staff on a PIN)
+//   /sign-in                 email + password (everyone with an account; staff still on a PIN use /join → their name → PIN)
 //   /join                    Join with a Code: the join code → restaurant → name → PIN screens
 //   /<account>               that account's Sign In, in its look (server/links.mjs fills in the account)
 //   /<account>/sign-in       the same (an alias)

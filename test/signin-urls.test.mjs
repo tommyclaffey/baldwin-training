@@ -198,17 +198,15 @@ test('the screens, signed out and signed in (headless Chrome)', BROWSER, async (
   const snap = async (name) => { if (SHOTS) for (const w of [390, 1440]) { await b.size(w); await sleep(400); await b.shot(path.join(SHOTS, `${name} · ${w}.png`)); } await b.size(1440); };
   try {
     await b.size(1440);
-    // /sign-in: email + password, no role label, Join with a Code and Use Your PIN Instead
+    // /sign-in: email + password, no role label, Join with a Code; no "Use Your PIN Instead" (Nov 24)
     await b.go(BASE + '/sign-in');
     let s = await b.ev(SCREEN);
     assert.equal(s.h1, 'sign in'); assert.equal(s.kicker, null); assert.equal(s.look, 'si-mise');
     assert.ok(await b.ev(`!!document.querySelector('input[type=password]')`), 'the password field');
     assert.deepEqual(s.links.find((l) => l[0] === 'Join with a Code'), ['Join with a Code', '/join']);
-    assert.ok(s.buttons.includes('Use Your PIN Instead') && s.buttons.includes('Forgot Password?'));
+    assert.ok(!s.buttons.includes('Use Your PIN Instead') && s.buttons.includes('Forgot Password?'), 'no PIN link on Sign In');
     noRoleLabels(s, '/sign-in');
     await snap('01 sign-in');
-    await b.ev(click('Use Your PIN Instead')); await sleep(400);
-    assert.equal((await b.ev(SCREEN)).path, '/join', 'Use Your PIN Instead → the code screens');
 
     // /join and the root: Join with a Code, with Sign In
     for (const p of ['/join', '/']) {

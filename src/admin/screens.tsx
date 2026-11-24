@@ -32,11 +32,11 @@ export { AuthCard };
 
 /** Sign In: email + password, for everyone with an account (Nov 23: at /sign-in, /admin, and an account's own link).
  *  brand / kicker / account (Nov 19, Nov 23): on an account's link (/the-baldwin) it wears that account's look with its name
- *  over the title, and Join with a Code goes to that account's /the-baldwin/join. Elsewhere: Mise, and /join. Staff who
- *  sign in with a PIN use "Use Your PIN Instead" (the join code → name → PIN screens) until they set up an email. */
+ *  over the title, and Join with a Code goes to that account's /the-baldwin/join. Elsewhere: Mise, and /join. Nov 24 (Tommy:
+ *  "please remove this its confusing"): no "Use Your PIN Instead" here. Staff still on a PIN go through Join with a Code →
+ *  their name → PIN until they move to email + password (Idea Board section 50). */
 export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicker?: string; account?: { slug: string } | null } = {}) {
   const { setUser, setupNeeded, superSetupNeeded } = useSession();
-  const nav = useNavigate();
   const join = joinPath(account);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -88,7 +88,6 @@ export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicke
         <button type="button" className="link-btn si-forgot" onClick={() => { setForgot(true); setError(''); }}>Forgot Password?</button>
         {error && <ErrorNote error={error} />}
         <button className="btn" disabled={busy || !email || !password}>{busy ? 'Signing In…' : 'Sign In'}</button>
-        <button type="button" className="link-btn" onClick={() => nav(join)}>Use Your PIN Instead</button>
         {superSetupNeeded && <button type="button" className="link-btn" onClick={() => setSetup(true)}>Set up the super admin account</button>}
       </form>
       <hr className="si-rule" />
