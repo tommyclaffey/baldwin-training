@@ -800,7 +800,10 @@ body.print-measure .page > .fn [data-name="Body"] > [data-name="Matrix table"] {
 .tabs-row a { padding: 10px 14px; font: 600 14px 'Archivo', sans-serif; color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
 .tabs-row a.active { color: var(--ink); border-bottom-color: var(--copper); }
 .filters-row { gap: 12px; align-items: flex-end; flex-wrap: wrap; }
-.is-deleted td { color: #8F877C; }
+.is-deleted td { color: #6B6359; } /* 5.9:1 on white (was #8F877C, 3.6:1) */
+/* Nov 24 (Tommy: "im not sure what this is"): a deleted person's row said so in a red alert box squeezed into the name
+   cell, covering the name. Now one plain line under the name. #8C1D18 on white 9.2:1. */
+.deleted-note { display: block; margin-top: 2px; font-size: 13px; font-weight: 600; color: #8C1D18; }
 .support-bar { background: #FBEDE7; border: 1px solid #E8B9A8; color: #7A2E1C; padding: 10px 14px; border-radius: 12px; margin-bottom: 14px; }
 .admin-working { display: block; color: var(--on-dark-2); font-size: 12.5px; margin: -4px 0 12px; }
 .admin-working a { color: var(--copper-text); }

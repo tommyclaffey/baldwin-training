@@ -116,7 +116,7 @@ function Companies() {
         <thead><tr><th>Company</th><th>Plan and Look</th><th>Owners and managers</th><th>Staff</th><th>Join code</th><th>Last active</th><th /></tr></thead>
         <tbody>{data.companies.map((c) => (
           <tr key={c.id} className={c.deletedAt ? 'is-deleted' : ''}>
-            <td><strong>{c.name}</strong>{c.hq && <small className="hq-tag">HQ</small>}{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <small className="error"> · deleted, {daysLeft(c.deletedAt)} days to restore</small>}
+            <td><strong>{c.name}</strong>{c.hq && <small className="hq-tag">HQ</small>}{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <span className="deleted-note">Deleted · {daysLeft(c.deletedAt)} days left to restore</span>}
               {c.link && <div className="small"><CopyLink link={c.link} name={c.name} /></div>}
               {!c.hq && !c.demo && <div className="small muted">State: {c.state || 'not set'}{!c.deletedAt && can.editCompany && <>{' '}<button className="link-btn" onClick={() => { const n = prompt(`${c.name}’s US state (leave empty for not set). Lessons written from Michigan law say so outside Michigan.`, c.state || ''); if (n !== null && n !== (c.state || '')) void run(() => api(`/api/super/companies/${c.id}`, { method: 'PATCH', body: { state: n.trim() || null } })); }}>Set State</button></>}</div>}
               <ul className="store-list">{c.stores.map((st) => (
@@ -272,7 +272,7 @@ function People() {
           <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Company</th><th>Last seen</th><th /></tr></thead>
           <tbody>{rows.map((p) => (
             <tr key={p.id} className={p.deletedAt ? 'is-deleted' : ''}>
-              <td>{p.name}{p.deletedAt && <small className="error"> · deleted, {daysLeft(p.deletedAt)} days to restore</small>}</td>
+              <td>{p.name}{p.deletedAt && <span className="deleted-note">Deleted · {daysLeft(p.deletedAt)} days left to restore</span>}</td>
               <td data-label="Email" className="email">{p.email || <span className="muted">PIN</span>}</td><td data-label="Role">{p.teamRole ? `Mise ${TEAM_ROLE_LABEL[p.teamRole]}` : ROLE_LABEL[p.role]}</td>
               <td data-label="Company">{p.companyName || '—'}</td><td data-label="Last seen" className="when">{when(p.lastSeenAt)}</td>
               <td className="row-actions"><div className="acts">
