@@ -52,6 +52,17 @@ test('the Mise look serves the new logo files: mise in the nav, Mise Academy for
   assert.match(tape, /fill="#7BA5CB"/); assert.doesNotMatch(tape, /stroke/);
 });
 
+test('the Mise sign-in photo side is H8 “Ready for service.” with the plain mise lockup; custom looks keep theirs (Nov 24)', () => {
+  const m = T.THEMES.mise;
+  assert.equal(m.signIn.logo.src, '/img/mise-brand/mise-dark.svg', 'mise, not Mise Academy (Tommy: "Academy is a feature")');
+  assert.equal(m.signIn.logo.alt, 'Mise');
+  for (const id of CUSTOM) assert.equal(T.THEMES[id].signIn, undefined, `${id} keeps its own sign-in photo side`);
+  const card = fs.readFileSync(path.join(root, 'src/components/AuthCard.tsx'), 'utf8');
+  for (const w of ['Front and back of house', 'Ready for service.', 'Training, inventory, prep and team chat', 'for every position, front and back of house.']) assert.ok(card.includes(w), w);
+  assert.doesNotMatch(card, /si-tape|si-hand|si-punch|know the menu</, 'the tape note, "know the menu" and "cold." are gone from the Mise look');
+  assert.match(card, /Know the menu cold\./, 'custom looks keep their line');
+});
+
 test('the Mise look’s type: DM Serif Display, italic for page titles and heroes, upright for card titles; Instrument Serif is gone', async () => {
   const ty = T.THEMES.mise.type;
   assert.deepEqual([ty.pageTitle.ff, ty.pageTitle.fs, ty.pageTitle.z], ['DM Serif Display', 'Italic', 64]);

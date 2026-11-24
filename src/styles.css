@@ -3524,22 +3524,32 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   color-mix(in srgb, var(--c-inverse) 20%, transparent) 34%, color-mix(in srgb, var(--c-inverse) 35%, transparent) 50%,
   color-mix(in srgb, var(--c-inverse) 88%, transparent) 74%, var(--c-inverse) 100%); }
 .si-logo { position: absolute; display: block; height: auto; }
-.si-logo-lockup { left: 47px; top: 32px; width: 289px; } /* Nov 18: the Mise Academy export (289 × 150) as it is, where Figma
-   592:670 places it; the tape's position is in the file, never rebuilt here */
 .si-logo-mark { left: 64px; top: 64px; width: 200px; }
 .si-words { position: absolute; left: 64px; right: 64px; bottom: 96px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
 .si-words p { margin: 0; }
-/* Mise's title moment on the photo (Nov 18, Figma section 28 option B, 592:670 / 592:708): one left edge 64 px in, 72 px from
-   the bottom. From the top: the taped note at 85% (−1.5° in Figma = 1.5° clockwise here), 22 px, "know the menu" in
-   handwriting (46 px, 2° clockwise), then the italic punch word "cold." (108 px, 92%) tucked 6 px under it. Rotations
-   turn on each piece's top left, as Figma does. */
-.si-words-tape { bottom: 72px; gap: 0; }
-.si-tape { display: inline-flex; align-items: center; padding: 10.6px 17.9px 10.2px 17.6px; transform: rotate(1.5deg); transform-origin: top left;
-  background: url('/img/mise-tape.svg') center / 100% 100% no-repeat; filter: drop-shadow(0 1.3px 1.3px rgba(0, 0, 0, .14)); }
-.si-tape span { font: 400 23.8px/1 var(--font-accent); color: var(--c-on-tape); white-space: nowrap; -webkit-text-stroke: .5px currentColor; }
-.si-headline-tape { display: flex; flex-direction: column; align-items: flex-start; }
-.si-hand { display: block; margin: 22px 0 0 2px; font: 400 46px/1 var(--font-accent); color: #FDFBEF; white-space: nowrap; transform: rotate(2deg); transform-origin: top left; }
-.si-punch { display: block; margin-top: -6px; font: italic 400 108px/.92 var(--font-page-title); letter-spacing: -.005em; color: #FFFFFF; white-space: nowrap; }
+/* Nov 24 · H8 "Ready for service." (Figma 09 · Idea Board, section 51; desktop 1025:4310, phone 1027:4434; Tommy picked it).
+   The Mise look only (Theme.signIn); every custom look keeps the photo side above. The mise lockup export (mise-dark.svg,
+   Lockup/Mise Theme=Dark, 255 × 148 with the wordmark's overhang) as it is, at the component's spot (47, 32). Figma's
+   black gradient over the photo, Char #121110: a vignette (clear to half way, 55% at the edges) over a vertical fade, 64% at
+   the top behind the logo, 10% over the pour, solid from 256 px above the bottom. Figma draws it on a 1024-tall side; here
+   the top stops are px from the top and the bottom ones px from the bottom, so the title card (bottom 104, as in Figma)
+   always sits on the same near-black at any window height. */
+.si-logo-file { left: 47px; top: 32px; width: 255px; }
+.si-photo-ready .si-shade { background:
+  radial-gradient(ellipse farthest-side at 50% 50%, rgba(18, 17, 16, 0) 50%, rgba(18, 17, 16, .011) 54.17%, rgba(18, 17, 16, .041) 58.33%,
+    rgba(18, 17, 16, .086) 62.5%, rgba(18, 17, 16, .143) 66.67%, rgba(18, 17, 16, .207) 70.83%, rgba(18, 17, 16, .275) 75%,
+    rgba(18, 17, 16, .343) 79.17%, rgba(18, 17, 16, .407) 83.33%, rgba(18, 17, 16, .464) 87.5%, rgba(18, 17, 16, .509) 91.67%,
+    rgba(18, 17, 16, .539) 95.83%, rgba(18, 17, 16, .55) 100%),
+  linear-gradient(180deg, rgba(18, 17, 16, .6) 0, rgba(18, 17, 16, .559) 42.7px, rgba(18, 17, 16, .454) 85.3px, rgba(18, 17, 16, .318) 128px, rgba(18, 17, 16, .177) 170.7px, rgba(18, 17, 16, .061) 213.3px, rgba(18, 17, 16, 0) 256px),
+  linear-gradient(180deg, rgba(18, 17, 16, 0) calc(100% - 640px), rgba(18, 17, 16, .06) calc(100% - 597.3px), rgba(18, 17, 16, .167) calc(100% - 554.7px), rgba(18, 17, 16, .307) calc(100% - 512px), rgba(18, 17, 16, .467) calc(100% - 469.3px), rgba(18, 17, 16, .63) calc(100% - 426.7px), rgba(18, 17, 16, .781) calc(100% - 384px), rgba(18, 17, 16, .902) calc(100% - 341.3px), rgba(18, 17, 16, .98) calc(100% - 298.7px), #121110 calc(100% - 256px), #121110 100%),
+  linear-gradient(rgba(18, 17, 16, .1), rgba(18, 17, 16, .1)); }
+/* The title card: centred on the photo side, 104 px off the bottom. Label DM Mono Medium 13/16 at .2em in #CFC6B8, 28 px,
+   "Ready for / service." DM Serif Display Italic 84/84 (−1 px) in white, 24 px, the line Archivo 18/28 in Bone, 440 wide. */
+.si-ready { position: absolute; left: 24px; right: 24px; bottom: 104px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+:where(.si-ready) p { margin: 0; }
+.si-ready-label { font: 500 13px/16px var(--font-label); letter-spacing: .2em; text-transform: uppercase; color: #CFC6B8; }
+.si-ready-title { margin-top: 28px; font: italic 400 84px/84px var(--font-page-title); letter-spacing: -1px; color: #FFFFFF; white-space: nowrap; }
+.si-ready-line { margin-top: 24px; max-width: 440px; font: 400 18px/28px var(--font-body); color: #EDE6DA; }
 .si-script { font: 400 34px/1.1 var(--font-accent); color: var(--si-accent-on-dark); }
 .si-headline { font-family: var(--font-page-title); font-style: var(--si-title-style, normal); font-weight: var(--si-title-weight); font-size: min(var(--si-title-size), 5vw); line-height: 1; letter-spacing: var(--si-title-tracking); color: var(--c-on-inverse); }
 .si-side { min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 48px 24px; }
@@ -3581,12 +3591,34 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   .si-shade { background: linear-gradient(180deg, color-mix(in srgb, var(--c-inverse) 55%, transparent) 0%, color-mix(in srgb, var(--c-inverse) 35%, transparent) 25%,
     color-mix(in srgb, var(--c-inverse) 64%, transparent) 55%, color-mix(in srgb, var(--c-inverse) 94%, transparent) 85%, var(--c-inverse) 100%); }
   .si-words { display: none; }
-  .si-logo-lockup { left: 6px; top: auto; bottom: 16px; width: 231.2px; } /* Figma 592:754: the lockup at 80%, 27 px of art above the sheet */
   .si-logo-mark { left: 20px; top: auto; bottom: 48px; width: 160px; }
   .si-side { position: relative; margin-top: -24px; border-radius: 20px 20px 0 0; background: var(--c-page); justify-content: flex-start; padding: 28px 20px 34px; }
   .si-title { font-size: var(--si-title-size-phone); line-height: 1.04; }
 }
 @media screen and (min-width: 600px) and (max-width: 899px) { .si-photo { height: 360px; } .si-side { padding-top: 40px; } }
+/* H8 on phones (Figma 1027:4434; its 54 pt status bar is the phone's, so the web band starts under it): a 306 px band, the
+   mise lockup at 50% (Lockup/Mise at 120.7 wide) 8 px in and 6 px down, and the label (11/14, .2em) and title (44/44,
+   −0.5 px) centred, 12 px apart, 32 px above the sheet (56 px off the band's bottom; the sheet overlaps it by 24). No line.
+   The gradient: Figma's, in the same three layers as desktop (tablets keep the 360 px band), with one change: the bottom
+   ramp starts 24 px higher, so the small label sits on ≥ 64% black and passes 4.5 : 1 over the bright glass in the web crop
+   (at Figma's ramp it measured 3.1–3.3 : 1). */
+@media screen and (max-width: 899px) {
+  .si .si-photo-ready { height: 306px; }
+  .si-photo-ready .si-logo-file { left: 8px; top: 6px; width: 128px; }
+  .si-photo-ready .si-shade { background:
+    radial-gradient(50% 180px at 50% calc(100% - 180px), rgba(18, 17, 16, 0) 50%, rgba(18, 17, 16, .01) 54.17%, rgba(18, 17, 16, .037) 58.33%,
+      rgba(18, 17, 16, .078) 62.5%, rgba(18, 17, 16, .13) 66.67%, rgba(18, 17, 16, .188) 70.83%, rgba(18, 17, 16, .25) 75%,
+      rgba(18, 17, 16, .312) 79.17%, rgba(18, 17, 16, .37) 83.33%, rgba(18, 17, 16, .422) 87.5%, rgba(18, 17, 16, .463) 91.67%,
+      rgba(18, 17, 16, .49) 95.83%, rgba(18, 17, 16, .5) 100%),
+    linear-gradient(180deg, rgba(18, 17, 16, .31) 0, rgba(18, 17, 16, .259) 6px, rgba(18, 17, 16, .138) 21px, rgba(18, 17, 16, .046) 36px, rgba(18, 17, 16, 0) 51px),
+    linear-gradient(180deg, rgba(18, 17, 16, 0) calc(100% - 264px), rgba(18, 17, 16, .061) calc(100% - 249px), rgba(18, 17, 16, .138) calc(100% - 234px), rgba(18, 17, 16, .238) calc(100% - 219px), rgba(18, 17, 16, .352) calc(100% - 204px), rgba(18, 17, 16, .476) calc(100% - 189px), rgba(18, 17, 16, .599) calc(100% - 174px), rgba(18, 17, 16, .718) calc(100% - 159px), rgba(18, 17, 16, .824) calc(100% - 144px), rgba(18, 17, 16, .911) calc(100% - 129px), rgba(18, 17, 16, .972) calc(100% - 114px), rgba(18, 17, 16, .999) calc(100% - 99px), #121110 calc(100% - 84px), #121110 100%),
+    linear-gradient(rgba(18, 17, 16, .1), rgba(18, 17, 16, .1)); }
+  .si-ready { left: 20px; right: 20px; bottom: 56px; }
+  .si-ready-label { font-size: 11px; line-height: 14px; }
+  .si-ready-title { margin-top: 12px; font-size: 44px; line-height: 44px; letter-spacing: -.5px; }
+  .si-ready-line { display: none; }
+}
+@media screen and (min-width: 600px) and (max-width: 899px) { .si .si-photo-ready { height: 360px; } }
 @media screen and (max-width: 599px) {
   .si-side { align-items: stretch; }
   .si-card { width: 100%; background: none; border: 0; border-radius: 0; padding: 0; }

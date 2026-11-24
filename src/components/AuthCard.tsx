@@ -1,6 +1,8 @@
 // The signed-out screens (Nov 12; Figma 09 · Proposals, section 28 "Mise sign-in", 592:669: desktop 592:670 / 592:708,
 // phone 592:754 / 592:802). Watch = dark, read = light: a photo side with the logo, the brand's accent line and "Know the
 // menu cold.", and a light card with the form. Phones: the photo is a band on top and the form a light sheet below it.
+// Nov 24: the Mise look's photo side is "H8 · Ready for service." (Figma 09 · Idea Board, section 51: desktop 1025:4310,
+// phone 1027:4434): the mise lockup and a centred title card on a deep black gradient. Custom looks are unchanged.
 //
 // One layout for every brand (Tommy, Nov 12: "it is the same app so it should feel the same"); only the paint changes, and
 // the paint comes from the theme layer (src/lib/theme.ts). The platform's front door (join code, email sign-in, forgot
@@ -41,26 +43,28 @@ export function AuthCard({ title, sub, kicker, foot, brand = 'mise', children }:
   const t = lookTheme(brand);
   // The rest of the page (tab icon, <html> colours) follows this screen while it's showing.
   useLayoutEffect(() => { setPageBrand(brand); return () => setPageBrand(null); }, [brand]);
-  // Nov 18 (Mise rebrand): a look with a big-moment logo shows that file as it is, at its own size (Mise: the Mise Academy
-  // lockup, placed as in Figma section 28 option B, 592:670: the export's top left at 47, 32). Every other look: its mark.
-  const logo = t.hero
-    ? <img className="si-logo si-logo-lockup" src={t.hero.src} alt={t.hero.alt} />
+  // Nov 24 (H8 · Ready for service.): a look with its own sign-in logo (Mise: the plain mise lockup, Figma Lockup/Mise
+  // Theme=Dark 508:21) shows that file as it is, at its own size, where Figma 1025:4310 puts the component (47, 32).
+  // Every other look: its mark, as before.
+  const logo = t.signIn
+    ? <img className="si-logo si-logo-file" src={t.signIn.logo.src} alt={t.signIn.logo.alt} />
     : <LookLogo t={t} className="si-logo si-logo-mark" />;
   return (
     <div className={`si si-${brand}`} style={paint(t)}>
-      <div className="si-photo" role="banner">{/* (the logo and photo band is the screen's banner, so nothing sits outside a landmark; Nov 12 scan) */}
+      <div className={t.signIn ? 'si-photo si-photo-ready' : 'si-photo'} role="banner">{/* (the logo and photo band is the screen's banner, so nothing sits outside a landmark; Nov 12 scan) */}
         {/* Nov 22: a look made from a website brings its own photo; the hand-built looks keep the bartender */}
         {t.photo ? <img className="si-photo-img" src={t.photo} alt="" />
           : <img className="si-photo-img" src="/img/signin-bartender-2400.jpg" srcSet="/img/signin-bartender-1200.jpg 1200w, /img/signin-bartender-2400.jpg 2400w"
           sizes="(min-width: 900px) 95vw, 100vw" alt="" />}
         <div className="si-shade" />
         {logo}
-        {t.accentLine === 'tape'
-          // The title moment (Nov 18, option B): one left edge, from the top the tape note, the handwritten line and the
-          // big italic punch word; one sentence for a screen reader.
-          ? <div className="si-words si-words-tape">
-              <p className="si-tape"><span>pre-shift starts here</span></p>
-              <p className="si-headline si-headline-tape"><span className="sr-only">Know the menu cold.</span><span className="si-hand" aria-hidden="true">know the menu</span><span className="si-punch" aria-hidden="true">cold.</span></p>
+        {t.signIn
+          // The title card (Nov 24, Figma section 51, H8): centred low on the photo, on the black gradient. The phone band
+          // shows the label and the title only. One sentence for a screen reader.
+          ? <div className="si-ready">
+              <p className="si-ready-label">Front and back of house</p>
+              <p className="si-ready-title"><span className="sr-only">Ready for service.</span><span aria-hidden="true">Ready for<br />service.</span></p>
+              <p className="si-ready-line">Training, inventory, prep and team chat <br />for every position, front and back of house.</p>
             </div>
           : <div className="si-words">
               <p className="si-script">pre-shift starts here</p>

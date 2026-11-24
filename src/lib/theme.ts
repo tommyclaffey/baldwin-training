@@ -124,9 +124,13 @@ export type Theme = {
   /** The look's logo everywhere else it shows (Nov 17): the phone bar, the admin, the sign-in screens, Privacy/Terms/Help
    *  and the certificate band. `barH`: its height on the phone bar. `crop`: the artwork inside the file (see Crop). */
   mark: { src: string; alt: string; barH: number; crop?: Crop; plate?: string }; // plate (Nov 22): a light logo's backing on dark
-  /** Nov 18 (Mise rebrand): the logo for big moments only, the sign-in screens, the demo picker and the certificate band
-   *  (Mise: the Mise Academy lockup, "academy" on blue tape). Unset: `mark` everywhere (every custom look). */
+  /** Nov 18 (Mise rebrand): the logo for big moments only, the certificate band (and the sign-in screens until Nov 24,
+   *  now `signIn` below) (Mise: the Mise Academy lockup, "academy" on blue tape). Unset: `mark` everywhere (every custom look). */
   hero?: { src: string; alt: string; crop: Crop };
+  /** Nov 24 (Figma 09 · Idea Board, section 51, "H8 · Ready for service.", 1025:4310 / 1027:4434; Tommy picked it): the
+   *  sign-in photo side's title card and the plain logo above it (Mise: the mise lockup, not Mise Academy; Tommy: "Academy
+   *  is a feature"). Unset: the brand's accent line and "Know the menu cold." (every custom look, unchanged). */
+  signIn?: { logo: { src: string; alt: string } };
   /** The tab and home-screen icon (Nov 17): /icons/<icon>-<size>.png. Unset: The Baldwin's way (its store's own icon, or
    *  the store's initial). */
   icon?: string;
@@ -266,6 +270,7 @@ export const THEMES: Record<Brand, Theme> = {
     logo: { src: MISE_ON_DARK, alt: 'Mise', w: 136, h: 37, phoneH: 28, crop: MISE_CROP },
     mark: { src: MISE_ON_DARK, alt: 'Mise', barH: 28, crop: MISE_CROP },
     hero: { src: '/img/mise-brand/mise-academy-dark.svg', alt: 'Mise Academy', crop: [0, 25, 263.3, 81, 289, 150] },
+    signIn: { logo: { src: MISE_ON_DARK, alt: 'Mise' } },
     icon: 'mise',
     demoPill: { tint: '#8E2A26', tintO: .42, ink: '#F6D3CE', muted: '#A8A097' }, // A2: the product name #A8A097 (5.7:1)
     coded: 'mise',
