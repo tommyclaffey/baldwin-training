@@ -218,7 +218,10 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
     const [p1, p2] = tags.c;
     setText(texts(p1)[0], LIST_LABEL[d.list] || 'On our list'); p1.n = 'Pill · ' + (d.list || '');
     const style = d.style || d.color;
+    const second = p2 && JSON.parse(JSON.stringify(p2));
     if (style && p2) { setText(texts(p2)[0], style); p2.n = 'Pill · ' + style; } else tags.c = [p1];
+    // Nov 25 (Add a Bottle): the vintage as its own pill, when there is one (wines without one are unchanged)
+    if (d.vintage && second) { setText(texts(second)[0], String(d.vintage)); second.n = 'Pill · Vintage'; tags.c = [...tags.c, second]; }
   }
   { const title = find(main, byName('Title')); const copy = find(main, byName('Copy')); fitTitle(title, d.name.toUpperCase(), copy ? copy.w - (copy.pd ? copy.pd[1] + copy.pd[3] : 0) : 648); }
   // Varietal and region in their own labelled boxes (Tommy, Oct 31); the line under the name keeps only a size note.
@@ -232,7 +235,7 @@ export function wineEntryPage(tpl, e, { all, index, recipes }) {
   }
   const lineNode = find(main, byName('Line'));
   if (origin && lineNode) { if (d.size) setText(lineNode, /bottle|split/i.test(d.size) ? d.size : `${d.size} bottle`); else remove(main, lineNode); }
-  else if (lineNode) setText(lineNode, line(d.grape, d.region, d.size));
+  else if (lineNode) setText(lineNode, line(d.grape, d.region, d.vintage, d.size)); // Nov 25: + the vintage (designs with a line)
   const stats = find(main, byName('Stats'));
   if (stats) {
     const serve = serveAt(d);

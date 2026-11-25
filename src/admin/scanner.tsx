@@ -8,6 +8,7 @@ import { api, type MediaItem } from '../lib/api';
 import { useSession } from '../lib/session';
 import { useModalKeys } from '../lib/modal';
 import { SpinViewer } from '../components/SpinViewer';
+import { AddBottleButton } from '../components/AddBottle';
 
 type Box = [number, number, number, number]; // x0, y0, x1, y1 as fractions of the photo
 export type BottleKind = 'wine' | 'spirit';
@@ -118,8 +119,10 @@ function useCamera(on: boolean) {
 
 type Mode = 'video' | 'photos' | 'photo';
 
-export function BottleScanner({ name, detail, kind = 'wine', onDone, onClose, spin = false, onSpin }: {
+export function BottleScanner({ name, detail, kind = 'wine', onDone, onClose, spin = false, onSpin, file }: {
   name: string; detail?: string; kind?: BottleKind;
+  /** Nov 25 (Add a Bottle): start from a photo already picked (Upload a Photo Instead), straight to the cut-out. */
+  file?: File;
   /** One photo kept (Scan Bottle, or One Photo from the picker). */
   onDone?: (url: string) => void;
   onClose: () => void;
@@ -139,7 +142,7 @@ export function BottleScanner({ name, detail, kind = 'wine', onDone, onClose, sp
     window.addEventListener('keydown', esc);
     return () => window.removeEventListener('keydown', esc);
   }, [onClose]);
-  const [uploadNow, setUploadNow] = useState<File[] | null>(null);
+  const [uploadNow, setUploadNow] = useState<File[] | null>(file ? [file] : null);
   // Nov 21 (keyboard pass): focus goes into the scanner and stays there; Escape (above) closes it; focus goes back after
   const box = useRef<HTMLDivElement>(null);
   useModalKeys(box, true);
@@ -757,7 +760,11 @@ export function BottleScannerPage() {
           <h1>Bottle Scanner</h1>
           <p className="muted">Take a photo of a bottle, or 12 photos for a spin, and the scanner cuts out just the bottle on the Wine Book beige. It goes straight onto that bottle’s page. Works for wine and spirits.</p>
         </div>
-        {items && <span className="admin-pill">{withPhoto} of {items.length} have a photo</span>}
+        <span className="scan-head-side">
+          {items && <span className="admin-pill">{withPhoto} of {items.length} have a photo</span>}
+          {/* Nov 25 (Figma 47 · 963:2443): Add a Bottle, for one we don't have on the list yet */}
+          <AddBottleButton kind={tab === 'wine' ? 'wine' : 'spirit'} className="btn primary add-bottle-btn" />
+        </span>
       </div>
       {error && <p className="error" role="alert">{error}</p>}
       <div className="scan-tabs" role="tablist" aria-label="Bottles">

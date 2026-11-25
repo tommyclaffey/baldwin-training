@@ -174,6 +174,9 @@ const notBrg = (c) => !!c.company && !isBrgCompany(db, c.company);
 /** The Baldwin group's own house-cocktail menu sections (the BRG Staples list, Testa Barra's cart). */
 const BALDWIN_SECTIONS = new Set(['BRG Staples', 'Barra Cart']);
 /** Tonight, in the restaurant's time zone (Metro Detroit). */
+/** Nov 25 · Add a Bottle: Scan on My Phone handoffs (token → the desktop's request and the phone's photo), in memory. */
+const handoffs = new Map();
+const HANDOFF_MS = 20 * 60e3;
 const restaurantDay = () => new Date().toLocaleDateString('en-CA', { timeZone: 'America/Detroit' });
 
 /** Anyone signed in (staff included): reading the book, taking quizzes. */
@@ -1189,6 +1192,42 @@ async function api(req, res, url) {
     audit(db, u.id, 'photo spin bottle', name, c.company);
     dropSpinSet(token, u.id);
     return sendJson(res, 200, { frames: urls });
+  }
+  /* Nov 25 · Add a Bottle (Figma Idea Board 47, approved Nov 25): Scan on My Phone from a desktop = a QR code (Tommy's
+   * pick; no texting). The desktop makes a short-lived handoff; the phone (signed in to the same store as a manager) opens
+   * /admin/bottle-scanner/phone/<token>, scans with the same scanner, and sends the kept photo back; the desktop polls for it.
+   * Kept in memory only (20 minutes): nothing to migrate, and a deploy just means scanning again. */
+  if (p === '/api/scan/handoff' && m === 'POST') {
+    const u = needEditor(c, req);
+    const b = await readJson(req, 4000);
+    const kind = b.kind === 'spirit' ? 'spirit' : 'wine';
+    for (const [k, v] of handoffs) if (v.until < Date.now()) handoffs.delete(k);
+    if ([...handoffs.values()].filter((v) => v.owner === u.id).length >= 5) fail(429, 'That’s a lot of phone scans at once. Finish one, or wait a few minutes.');
+    if (handoffs.size >= 500) fail(503, 'Too many phone scans right now. Try again in a few minutes.');
+    const token = crypto.randomBytes(18).toString('base64url');
+    handoffs.set(token, { owner: u.id, company: c.company, store: c.store, kind, name: str(b.name, 80) || '', until: Date.now() + HANDOFF_MS, photo: null, spin: null, opened: false });
+    const link = `${isSecure(req) ? 'https' : 'http'}://${String(req.headers.host || 'www.miseacademy.app').replace(/[^\w.:-]/g, '')}/admin/bottle-scanner/phone/${token}`;
+    const qr = (await import('qrcode')).default;
+    const svg = await qr.toString(link, { type: 'svg', margin: 1, errorCorrectionLevel: 'M' });
+    return sendJson(res, 200, { token, link, qr: svg, until: new Date(Date.now() + HANDOFF_MS).toISOString() });
+  }
+  const hm = /^\/api\/scan\/handoff\/([\w-]{20,40})(?:\/(photo|open))?$/.exec(p);
+  if (hm) {
+    const u = needEditor(c, req);
+    const h = handoffs.get(hm[1]);
+    if (!h || h.until < Date.now() || h.company !== c.company || h.store !== c.store) fail(404, 'That phone scan has expired. Make a new code on your computer.');
+    if (!hm[2] && m === 'GET') return sendJson(res, 200, { kind: h.kind, name: h.name, opened: h.opened, photo: h.photo, spin: h.spin, mine: h.owner === u.id });
+    if (hm[2] === 'open' && m === 'POST') { h.opened = true; return sendJson(res, 200, { kind: h.kind, name: h.name }); }
+    if (hm[2] === 'photo' && m === 'POST') {
+      const b = await readJson(req, 8000);
+      // only this store's own scans: the media rows the scanner just saved
+      const ok = (url) => typeof url === 'string' && /^\/media\/[\w./-]+\.jpg$/.test(url) && !!db.prepare('SELECT 1 FROM media WHERE file = ? AND store_id = ?').get(url.slice(7), c.store);
+      if (Array.isArray(b.spin)) { if (!b.spin.length || b.spin.length > 40 || !ok(b.spin[0])) fail(400, 'That spin wasn’t saved. Take it again.'); h.spin = b.spin.map(String); h.photo = null; }
+      else { if (!ok(b.photo)) fail(400, 'That photo wasn’t saved. Take it again.'); h.photo = String(b.photo); h.spin = null; }
+      audit(db, u.id, 'phone scan sent', h.name || h.kind, c.company);
+      return sendJson(res, 200, { ok: true });
+    }
+    fail(405, 'Not allowed.');
   }
   if (p === '/api/scan/keep' && m === 'POST') {
     const u = needEditor(c, req);

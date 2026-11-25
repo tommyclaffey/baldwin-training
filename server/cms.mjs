@@ -175,6 +175,8 @@ export const COLLECTIONS = {
       { key: 'name', label: 'Producer and label', type: 'text', max: 80, required: true, section: 'The wine', placeholder: "Orin Swift 'Mercury Head'" },
       { key: 'grape', label: 'Grape or style (as on the menu)', type: 'text', max: 60, section: 'The wine', placeholder: 'Cabernet Sauvignon' },
       { key: 'region', label: 'Region', type: 'text', max: 60, section: 'The wine', placeholder: 'Napa' },
+      // Nov 25 (Add a Bottle): the vintage, shown on the wine's page after the region. Empty = not shown.
+      { key: 'vintage', label: 'Vintage', type: 'text', max: 8, section: 'The wine', placeholder: '2019 or NV' },
       { key: 'list', label: 'Where it sits on the menu', type: 'select', options: ['By the glass', 'Sommelier selection', 'By the bottle', 'Bubbles'], section: 'The wine' },
       { key: 'country', label: 'Country column', type: 'select', options: ['USA', 'Italy', 'France', 'Around the world'], section: 'The wine' },
       { key: 'color', label: 'Colour', type: 'select', options: ['White', 'Red', 'Bubbles', 'Sake'], section: 'The wine' },

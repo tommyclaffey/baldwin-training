@@ -34,6 +34,7 @@ import { openChat } from './chat/panel';
 import { ChatPanelHost } from './chat/ChatPanel';
 import { PrepPage } from './prep/PrepPage';
 import { ImportPage } from './import/ImportPage';
+import { AddedToast } from './components/AddBottle';
 import { LegalRoute, LEGAL_PATHS } from './components/Legal';
 import { authRouteAt } from './lib/account';
 import { SetUpSignIn } from './components/SetUpSignIn';
@@ -156,6 +157,7 @@ function Book() {
           {pathname === '/import' || pathname.startsWith('/import/') ? (canEdit(user) ? <ImportPage /> : <PageView />) : pathname === '/prep' || pathname.startsWith('/prep/') ? <PrepPage /> : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? <TeamChatPage /> : pathname === '/my-path' ? <MyPathPage /> : pathname === '/my-path/acknowledgment' ? <AckPage /> : pathname.startsWith('/certificate/') ? <CertificatePage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
         </div>
         {user.demo && <DemoTour />}
+        <AddedToast />
       </div>
     </NavContext.Provider>
     </EditModeProvider>

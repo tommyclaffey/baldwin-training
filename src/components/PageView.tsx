@@ -48,6 +48,7 @@ function withToolsRow(main: FNode): { main: FNode; crumb: FNode | null } {
 }
 import { PRODUCT_NAME } from '../lib/brand';
 import { api, canEdit } from '../lib/api';
+import { AddBottleButton, ScanThisBottleButton } from './AddBottle';
 import { reportProblem } from '../lib/problems';
 import { useSession } from '../lib/session';
 import { EditPageButton } from './EditSheet';
@@ -311,10 +312,16 @@ export function PageView() {
   // Send to Team and Edit Page: one row, the same spot on every page (desktop: over the breadcrumb row; phones: in it).
   const share = hasChat(session.user) && shareable(entry);
   const editCol = entry.file.startsWith('e') ? COLLECTION_OF[entry.section] : undefined;
-  const tools = !editing && (share || editCol) ? (
+  // Nov 25 (Add a Bottle, Figma 47): + Add a Bottle on the Wine page and the Back Bar (managers), and Scan This Bottle on a
+  // wine's or bottle's own page while it has no photo.
+  const addKind = canEdit(session.user) ? (entry.slug === 'the-bar/wine' ? 'wine' : entry.slug === 'the-bar/back-bar' || entry.slug === 'the-bar/spirits' ? 'spirit' : null) : null;
+  const scanCol = canEdit(session.user) && (editCol === 'wine' || editCol === 'shelf') ? editCol : null;
+  const tools = !editing && (share || editCol || addKind) ? (
     <>
       {share && <SendToTeamButton item={{ type: 'page', slug: entry.slug }} />}
+      {scanCol && <ScanThisBottleButton col={scanCol} id={Number(entry.file.slice(1))} />}
       {editCol && <EditPageButton col={editCol} id={Number(entry.file.slice(1))} />}
+      {addKind && <AddBottleButton kind={addKind} />}
     </>
   ) : null;
   const inRow = compact && tools ? withToolsRow(viewed) : null;

@@ -8,6 +8,7 @@ import { CollectionList, EntryEditor, PageOptions, useCollections } from './cms'
 import { Loading } from './ui';
 import { WineVideos } from './wine';
 import { BottleScannerPage } from './scanner';
+import { PhoneScanPage } from '../components/AddBottle';
 import { SuperAdmin } from './super';
 import { CompanyData } from './companydata';
 import { StoresPage } from './stores';
@@ -156,6 +157,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <Route path="pages/:col/:id" element={<EntryEditor />} />
           <Route path="wine-videos" element={<WineVideos />} />
           <Route path="bottle-scanner" element={<BottleScannerPage />} />
+          <Route path="bottle-scanner/phone/:token" element={<PhoneScanPage />} />
           <Route path="media" element={<MediaLibrary />} />
           <Route path="archived" element={<ArchivedPage />} />
           {/* Nov 11: Training, Quiz Results and Team are one People screen now. The old addresses land there. */}
