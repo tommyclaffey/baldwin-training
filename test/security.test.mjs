@@ -7,7 +7,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { totpAt } from '../server/auth.mjs';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, addPinStaff } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-sec-'));
@@ -71,10 +71,10 @@ test('per-address limits use the address the proxy saw, not one the browser made
   assert.equal(tries[8], 429, 'the 9th try from the same real address is stopped');
 });
 
-test('staff sign-in counts wrong join codes like the join screen does', async () => {
+test('Set Up Your Sign-In counts wrong join codes like the join screen does', async () => {
   const s = [];
   for (let i = 0; i < 31; i++) {
-    const r = await fetch(BASE + '/api/staff-login', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-BT': '1', 'X-Forwarded-For': '198.51.100.9' },
+    const r = await fetch(BASE + '/api/set-up/check', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-BT': '1', 'X-Forwarded-For': '198.51.100.9' },
       body: JSON.stringify({ code: 'ZZZZ' + String(i).padStart(4, '2'), id: 1, pin: '1234' }) });
     s.push(r.status);
   }
@@ -82,21 +82,19 @@ test('staff sign-in counts wrong join codes like the join screen does', async ()
   assert.equal(s[30], 429, 'guessing join codes is limited');
 });
 
-test('staff PINs: no more than 15 wrong a day, even spread out', async () => {
+test('staff PINs (Set Up Your Sign-In): no more than 15 wrong a day, even spread out', async () => {
   const joinCode = (await owner('/api/team')).data.company.joinCode;
-  const pat = person('10.2.0.2');
-  assert.equal((await pat('/api/join', { method: 'POST', body: { code: joinCode, name: 'Pat Pinero', pin: '4321', storeId: 1 } })).status, 200);
-  const id = (await owner('/api/team')).data.people.find((p) => p.name === 'Pat Pinero').id;
+  const id = await addPinStaff(dir, { name: 'Pat Pinero', pin: '4321' }); // joined with a PIN, before Nov 25
   // 15 wrong PINs over the last day, none in the last 15 minutes
   const d = db();
   const ins = d.prepare('INSERT INTO limits(name, key, at) VALUES (?,?,?)');
   for (let i = 0; i < 15; i++) ins.run('pin-day', 'pin|' + id, Date.now() - (2 + i) * 3600e3);
   d.close();
-  const r = await person('10.2.0.3')('/api/staff-login', { method: 'POST', body: { code: joinCode, id, pin: '4321' } });
+  const r = await person('10.2.0.3')('/api/set-up/check', { method: 'POST', body: { code: joinCode, id, pin: '4321' } });
   assert.equal(r.status, 429, 'locked for the day');
-  // a manager's PIN reset clears it, and the person picks a new PIN
+  // a manager's PIN reset clears it, and the person goes on to their email and password without one
   assert.equal((await owner(`/api/team/${id}/reset-pin`, { method: 'POST' })).status, 200);
-  assert.equal((await person('10.2.0.3')('/api/staff-login', { method: 'POST', body: { code: joinCode, id, pin: '5678' } })).status, 200);
+  assert.equal((await person('10.2.0.3')('/api/set-up/check', { method: 'POST', body: { code: joinCode, id } })).status, 200);
 });
 
 test('a demo can’t change the real book’s wine videos', async () => {

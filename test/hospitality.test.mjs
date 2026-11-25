@@ -125,7 +125,7 @@ test('another company reads the generic version, with the same structure and no 
 
 test('the Training Acknowledgment is a Day 1 step on every job: the person signs, then their trainer signs off', async () => {
   const join = (await owner2('/api/team')).data.company.joinCode;
-  assert.equal((await staff2('/api/join', { method: 'POST', body: { code: join, name: 'Perrin Okafor', pin: '4826' } })).status, 200);
+  assert.equal((await staff2('/api/join', { method: 'POST', body: { code: join, name: 'Perrin Okafor', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4826-x' } })).status, 200);
   const perrin = (await owner2('/api/team')).data.people.find((p) => p.name === 'Perrin Okafor');
   // on Day 1 (the first stage, due the day they start) of every job's path
   assert.equal((await staff2('/api/path/jobs', { method: 'POST', body: { jobs: ['server'] } })).status, 200, 'they pick their job');

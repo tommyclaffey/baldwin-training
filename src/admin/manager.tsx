@@ -33,7 +33,7 @@ type Home = Team & {
 };
 type QuizRow = { id: string; title: string; best: number; total: number; attempts: number; lastAt: string; passed: boolean; signedOff: { at: string; by: string | null } | null; signable: boolean };
 type Promotion = { email: string; storeId: number | null; storeName: string | null; createdAt: string; expiresAt: string };
-type Person = MyPath & Row & { hasPin: boolean; createdAt: string; store: string | null; storeId: number | null; quizzes: QuizRow[]; quizAverage: number | null; certificates: { key: string; title: string; earnedAt: string }[];
+type Person = MyPath & Row & { hasPin: boolean; emailSignIn?: boolean; createdAt: string; store: string | null; storeId: number | null; quizzes: QuizRow[]; quizAverage: number | null; certificates: { key: string; title: string; earnedAt: string }[];
   /** Promote to Manager (Nov 16): owners see it; `promotion` is a link waiting to be used. */
   canPromote?: boolean; promotion?: Promotion | null; email?: string | null; demo?: boolean;
   /** Nov 24: a temporary password waiting to be used */ temporary?: Temporary };
@@ -446,7 +446,7 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
   const isOwner = user?.role === 'owner' || (user?.role === 'superadmin' && user.teamRole !== 'support') || (!!user?.demo && user.role === 'manager');
   const cancelPromotion = () => { if (confirm(`Cancel ${p.name}’s promotion? The link stops working and they stay on staff.`)) void run('promo', async () => { await api(`/api/team/${p.id}/promote`, { method: 'DELETE' }); await reload(); }, 'Promotion cancelled.'); };
   const archive = () => { if (confirm(`Archive ${p.name}? They’re signed out right away and leave the team list. An owner or the Mise team can restore them.`)) void team('arch', `/api/team/${p.id}`, 'DELETE', `${p.name} is archived.`, onGone); };
-  const resetPin = () => { if (confirm(`Reset ${p.name}’s PIN? They’re signed out and pick a new PIN next time.`)) void team('pin', `/api/team/${p.id}/reset-pin`, 'POST', `${p.name.split(' ')[0]} picks a new PIN next time they sign in.`); };
+  const resetPin = () => { if (confirm(`Reset ${p.name}’s PIN? They’re signed out. Next time, Set Up Your Sign-In skips the PIN and asks for their email and a password.`)) void team('pin', `/api/team/${p.id}/reset-pin`, 'POST', `${p.name.split(' ')[0]} sets up email and a password next time they sign in.`); };
   const stores = (user?.canSwitchStore && (user.stores || []).length > 1 ? user.stores : []) as Store[];
   const move = (s: Store) => {
     setMoreOpen(false);
@@ -555,7 +555,7 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
         </div>
         <div>
           <Label>Sign-in</Label>
-          <p>{p.hasPin ? 'Signs in with a PIN' : 'No PIN yet: they pick one the next time they sign in'}</p>
+          <p>{p.emailSignIn ? `Signs in with ${p.email || 'email'}` : p.hasPin ? 'Joined with a PIN: sets up email and a password the next time they sign in' : 'PIN reset: sets up email and a password the next time they sign in'}</p>
           {p.temporary && <p><TempTag temp={p.temporary} /></p>}
           {tempOpen && <TempDialog person={{ id: p.id, name: p.name, email: p.email, role: 'staff' }} path={`/api/team/${p.id}/temporary`} roleLabel="Staff" onClose={() => setTempOpen(false)}
             onSet={(r) => { setTempOpen(false); void run('temp', () => reload(), tempDoneText(r)); }} />}
@@ -565,7 +565,7 @@ function PersonPanel({ id, jobs, onChange, onGone }: { id: number; jobs: Job[]; 
             {!p.demo && (p.temporary
               ? <button type="button" className="mg-btn" disabled={!!busy} onClick={() => void ask(cancelTempCopy({ ...p, role: 'staff' })).then((yes) => { if (yes) void run('temp', async () => { await api(`/api/team/${p.id}/temporary`, { method: 'DELETE' }); await reload(); }, `${first}’s temporary password is cancelled.`); })}>Cancel Temporary</button>
               : <button type="button" className="mg-btn" disabled={!!busy} onClick={() => setTempOpen(true)}>Set Temporary Password</button>)}
-            <button type="button" className="mg-btn" disabled={!!busy} onClick={resetPin}>Reset PIN</button>
+            {!p.emailSignIn && <button type="button" className="mg-btn" disabled={!!busy} onClick={resetPin}>Reset PIN</button>}
             <button type="button" className="mg-btn" disabled={!!busy} onClick={archive}>Archive</button>
             {p.canPromote && <button type="button" className="mg-btn dark" disabled={!!busy} onClick={() => setPromoting(true)}>Promote to Manager</button>}
           </div>
@@ -759,7 +759,7 @@ function AddPerson({ joinCode, link, company, onClose, onCode }: { joinCode: str
         <h2 id="pp-add-title">Add a Person</h2>
         <section>
           <Label>Staff</Label>
-          <p>They open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong> on their phone, type the code, pick their name (or “I’m New Here”) and a PIN. They show up here right away.</p>
+          <p>They open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong> on their phone, type the code and add their name, email and a password. They show up here right away.</p>
           <div className="pp-add-code"><span className="mg-code big">{joinCode || '–'}</span>
             <button type="button" className="mg-btn" onClick={copy}>{copied === 'code' ? 'Copied' : 'Copy Code and Link'}</button>
             {link && <button type="button" className="mg-btn" onClick={copyLink}>{copied === 'link' ? 'Copied' : 'Copy Link'}</button>}

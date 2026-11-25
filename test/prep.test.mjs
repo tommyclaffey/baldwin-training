@@ -362,9 +362,9 @@ test('setup: owner, a manager, a server and a bartender at The Baldwin, a manage
   stores = (await person()(`/api/join/${code}`)).data.stores;
   const inv = await owner('/api/team/invite', { method: 'POST', body: { email: 'max@prep.test', role: 'manager', storeId: stores[0].id } });
   assert.equal((await manager(`/api/invite/${inv.data.link.split('/').pop()}`, { method: 'POST', body: { name: 'Max Manager', password: 'long-enough-2' } })).status, 200);
-  assert.equal((await server_('/api/join', { method: 'POST', body: { code, name: 'Sera Server', pin: '4321', storeId: stores[0].id } })).status, 200);
+  assert.equal((await server_('/api/join', { method: 'POST', body: { code, name: 'Sera Server', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4321-x', storeId: stores[0].id } })).status, 200);
   assert.equal((await server_('/api/path/jobs', { method: 'POST', body: { jobs: ['server'] } })).status, 200);
-  assert.equal((await bar('/api/join', { method: 'POST', body: { code, name: 'Bo Bartender', pin: '8765', storeId: stores[0].id } })).status, 200);
+  assert.equal((await bar('/api/join', { method: 'POST', body: { code, name: 'Bo Bartender', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-8765-x', storeId: stores[0].id } })).status, 200);
   assert.equal((await bar('/api/path/jobs', { method: 'POST', body: { jobs: ['bartender'] } })).status, 200);
   const inv2 = await owner('/api/team/invite', { method: 'POST', body: { email: 'tia@prep.test', role: 'manager', storeId: stores[2].id } });
   assert.equal((await testaGm(`/api/invite/${inv2.data.link.split('/').pop()}`, { method: 'POST', body: { name: 'Tia Testa', password: 'long-enough-3' } })).status, 200);

@@ -13,7 +13,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { totpAt } from '../server/auth.mjs';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, addPinStaff, sessionCookieFor } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-temp-'));
@@ -59,7 +59,8 @@ test('setup: a super admin, an owner, two managers (one with two-step), a store 
   }
   sorenSecret = (await soren.call('/api/2fa/start', { method: 'POST' })).data.secret;
   assert.equal((await soren.call('/api/2fa/enable', { method: 'POST', body: { code: code(sorenSecret) } })).status, 200);
-  assert.equal((await tobias.call('/api/join', { method: 'POST', body: { code: joinCode, name: 'Tobias Quill', pin: '4826', storeId: team.stores[0].id } })).status, 200);
+  // Nov 25: a staff member who joined with a PIN (before section 50), signed in on their phone
+  tobias.jar = sessionCookieFor(dir, await addPinStaff(dir, { name: 'Tobias Quill', pin: '4826', storeId: team.stores[0].id }));
   ownerId = (await owner.call('/api/me')).data.user.id; imogenId = (await imogen.call('/api/me')).data.user.id;
   sorenId = (await soren.call('/api/me')).data.user.id; tobiasId = (await tobias.call('/api/me')).data.user.id; smId = (await sm.call('/api/me')).data.user.id;
 });
@@ -143,7 +144,7 @@ test('expired: it stops working and says when; Cancel puts the old password back
   d2.close();
 });
 
-test('staff: a temporary password with their email; they sign in with it and choose their own; their PIN is untouched', async () => {
+test('staff: a temporary password with their email; they sign in with it and choose their own; it moves them off their PIN', async () => {
   // A store manager sets it for staff in their store (the same people who can Reset PIN); staff need an email for it
   const noEmail = await sm.call(`/api/team/${tobiasId}/temporary`, { method: 'POST', body: { value: 'kettle-otter-2048' } });
   assert.equal(noEmail.status, 400); assert.match(noEmail.data.error, /Add Tobias’s email/);
@@ -151,9 +152,9 @@ test('staff: a temporary password with their email; they sign in with it and cho
   const r = await sm.call(`/api/team/${tobiasId}/temporary`, { method: 'POST', body: { value: 'kettle-otter-2048', email: 'Tobias@Temp.test', days: 3 } });
   assert.equal(r.status, 200, JSON.stringify(r.data)); assert.equal(r.data.email, 'tobias@temp.test'); assert.equal(r.data.days, 3);
   assert.equal((await tobias.call('/api/me')).data.user, null, 'signed out');
-  // Nothing new on PINs: the join list and their PIN are as they were
-  assert.equal((await person().call(`/api/join/${joinCode}`)).data.staff.find((s) => s.id === tobiasId).needsPin, false);
-  assert.equal((await person().call('/api/staff-login', { method: 'POST', body: { code: joinCode, id: tobiasId, pin: '4826' } })).status, 200, 'PIN untouched');
+  // Nov 25 (section 50): with an email and a (temporary) password they're off the Set Up Your Sign-In list, and the PIN is done
+  assert.equal((await person().call(`/api/join/${joinCode}`)).data.staff.find((s) => s.id === tobiasId), undefined, 'off the Set Up list');
+  assert.equal((await person().call('/api/set-up/check', { method: 'POST', body: { code: joinCode, id: tobiasId, pin: '4826' } })).status, 404, 'the PIN no longer opens anything');
   const p = person();
   const r2 = await p.call('/api/login', { method: 'POST', body: { email: 'tobias@temp.test', password: 'kettle-otter-2048' } });
   assert.equal(r2.data.mustChoose, 'password'); assert.equal(r2.cookie, false);
@@ -246,7 +247,7 @@ test('browser: People at 1440, the dialog, Cancel sends nothing, Set shows the t
     const rows = await ev(`(()=>{const t=document.querySelector('.people-table');return [...t.querySelectorAll('tbody tr')].map(tr=>{const b=[...tr.querySelectorAll('.acts button')];const prev=tr.querySelector('td.row-actions').previousElementSibling.getBoundingClientRect();
       return {name:tr.querySelector('.person-name')?.textContent,names:b.map(x=>x.textContent),lines:new Set(b.map(x=>Math.round(x.getBoundingClientRect().top))).size,minH:Math.min(...b.map(x=>x.getBoundingClientRect().height)),over:b.some(x=>x.getBoundingClientRect().left<prev.right-1),sub:tr.querySelector('.person-sub')?.textContent}})})()`);
     const toby = rows.find((r) => r.name === 'Tobias Quill'), imo = rows.find((r) => r.name === 'Imogen Pell'), own = rows.find((r) => r.name === 'Odile Owner');
-    assert.deepEqual(toby.names, ['Sign In As', 'Edit', 'Set Temporary Password', 'Reset PIN', 'Delete']);
+    assert.deepEqual(toby.names, ['Sign In As', 'Edit', 'Set Temporary Password', 'Delete']); // (Nov 25: he signs in with email now, so no Reset PIN)
     assert.deepEqual(own.names, ['Sign In As', 'Edit', 'Set Temporary Password', 'Reset Password', 'Delete']);
     assert.equal(toby.sub, 'tobias@temp.test'); assert.equal(imo.sub, 'imogen@temp.test');
     for (const r of rows) { assert.equal(r.lines, 1, `${r.name}: one row`); assert.ok(r.minH >= 44, `${r.name}: 44 px`); assert.equal(r.over, false, `${r.name}: nothing over Last Seen`); }
@@ -284,7 +285,7 @@ test('browser: People at 1440, the dialog, Cancel sends nothing, Set shows the t
     assert.deepEqual(JSON.parse(posts[0].body), { value: made, days: 7, email: 'tobias@temp.test' });
     assert.ok(await waitFor(`[...document.querySelectorAll('tbody tr')].some(tr=>/Temporary · until/i.test(tr.querySelector('.temp-tag')?.textContent||''))`), 'the tag');
     const after = await ev(`(()=>{const tr=[...document.querySelectorAll('tbody tr')].find(tr=>tr.querySelector('.person-name').textContent==='Tobias Quill');const b=[...tr.querySelectorAll('.acts button')];const prev=tr.querySelector('td.row-actions').previousElementSibling.getBoundingClientRect();return {names:b.map(x=>x.textContent),lines:new Set(b.map(x=>Math.round(x.getBoundingClientRect().top))).size,over:b.some(x=>x.getBoundingClientRect().left<prev.right-1)}})()`);
-    assert.deepEqual(after.names, ['Sign In As', 'Edit', 'Cancel Temporary', 'Reset PIN', 'Delete']); assert.equal(after.lines, 1); assert.equal(after.over, false);
+    assert.deepEqual(after.names, ['Sign In As', 'Edit', 'Cancel Temporary', 'Delete']); // (Nov 25: email sign-in now, so no Reset PIN) assert.equal(after.lines, 1); assert.equal(after.over, false);
     // Cancel Temporary asks in the page; Keep It sends nothing
     posts.length = 0;
     await click('tbody tr .acts button', 'Cancel Temporary');

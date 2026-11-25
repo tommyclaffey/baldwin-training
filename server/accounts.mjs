@@ -6,7 +6,10 @@
 //               /api/super/* route. Two-step sign-in is required before anything opens. Only the Owner (the primary) manages the team.
 //   owner       Runs a company: everything a manager can do, plus owners and managers.
 //   manager     Edits the book, signs people off, manages staff and the join code.
-//   staff       Reads the book and takes quizzes. Signs in with the company's join code, their name and a PIN.
+//   staff       Reads the book and takes quizzes. Joins with the company's join code (sign-up only) and signs in with email
+//               and password like everyone else (Nov 25, Figma 09 · Idea Board section 50). Staff who joined before then
+//               with a PIN move over once: Set Up Your Sign-In (find your name → the old PIN one last time → email and a
+//               password); after that their PIN stops working.
 //
 // Stores: a company oversees one or more stores (Baldwin Restaurant Group: The Baldwin, J.Baldwin's, Testa Barra).
 // Each store has its own book, staff, quiz records, sign-offs and sections. Staff belong to one store; a manager to one store
@@ -40,6 +43,11 @@ const pinLimiter = new LoginLimiter(5, 15 * 60_000, 'pin'); // wrong PINs per pe
 // Nov 14 (security review): 5 every 15 minutes still let someone try 480 PINs a day, so a 4-digit PIN fell in about 10
 // days. 15 wrong a day at most; a manager's Reset PIN clears both counts.
 const pinDayLimiter = new LoginLimiter(15, 24 * 3600e3, 'pin-day');
+// Nov 25 (section 50): accounts made with a join code, per address. The code check itself is codeLimiter.
+const joinLimiter = new LoginLimiter(20, 60 * 60_000, 'join-new');
+// Set Up Your Sign-In (Nov 25): the old PIN, checked once, gives a ticket for the email + password step only. 15 minutes.
+const setUpTickets = new Map(); // ticket hash → { userId, at }
+const SETUP_MS = 15 * 60e3;
 // Two-step codes: each sign-in allowed 5 tries, but a new sign-in (with the password) gave 5 more, without end.
 // 10 wrong codes per account per 15 minutes, across every sign-in.
 const twoStepLimiter = new LoginLimiter(10, 15 * 60_000, 'two-step');
@@ -137,9 +145,11 @@ export function purgeDeleted(db) {
  *  hasn't picked one works in Mise Academy (HQ), never a customer's account (it used to be The Baldwin, company 1). */
 export const companyOf = (u) => (u ? u.company_id ?? u.acting_company_id ?? hqId() : null);
 export const canEdit = (u) => !!u && STAFF_ROLES.has(u.role);
-/** Who signs in with the join code, their name and a PIN: staff, and (Nov 16) managers promoted from staff who have a PIN
- *  and no password. Owners and managers invited by email never do. */
-const PIN_SIGN_IN = "(role = 'staff' OR (role = 'manager' AND password_hash IS NULL AND pin_hash IS NOT NULL))";
+/** Who still has to move from a PIN to email + password (Nov 25, section 50; was "who signs in with a PIN"): staff with no
+ *  password yet (a PIN, or a PIN a manager reset), and (Nov 16) managers promoted from staff who have a PIN and no password.
+ *  Anyone with a password (their own, or a temporary one waiting: '!temporary') signs in with email. Owners and managers
+ *  invited by email never do. */
+const PIN_SIGN_IN = "((role = 'staff' AND password_hash IS NULL) OR (role = 'manager' AND password_hash IS NULL AND pin_hash IS NOT NULL))";
 
 export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const ip = clientIp;
@@ -195,7 +205,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const superLog = (u, action, detail, companyId = null) => audit(db, u.id, 'super: ' + action, detail, companyId, teamRole(u));
   // The Mise team belongs to Mise Academy (HQ) (Nov 16): no company row of their own, so HQ's name stands in.
   const personOut = (u) => ({ id: u.id, name: u.name, email: u.email, role: u.role, companyId: u.company_id, companyName: u.company_name ?? (u.role === 'superadmin' ? HQ_NAME : null),
-    createdAt: u.created_at, lastSeenAt: u.last_seen_at, deletedAt: u.deleted_at, hasPin: !!u.pin_hash, totpOn: !!u.totp_on, superPrimary: !!u.super_primary, teamRole: teamRole(u) });
+    createdAt: u.created_at, lastSeenAt: u.last_seen_at, deletedAt: u.deleted_at, hasPin: !!u.pin_hash, emailSignIn: !!u.password_hash, totpOn: !!u.totp_on, superPrimary: !!u.super_primary, teamRole: teamRole(u) });
   /* Promote to Manager (Nov 16). It started as a one-time link (pick a password); since Nov 16's second pass it happens
    * straight away (the route below). Links made before then still work until they expire: an invite row with the
    * person's user id, accepted in /api/invite. */
@@ -220,7 +230,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   /** A link that still works: not used, not expired, for someone who still signs in with email. */
   const resetRow = (token) => db.prepare(`SELECT r.*, u.name, u.email, u.role, u.totp_on, b.name by_name FROM password_resets r
       JOIN users u ON u.id = r.user_id LEFT JOIN companies c ON c.id = u.company_id LEFT JOIN users b ON b.id = r.created_by
-      WHERE r.token_hash = ? AND r.used_at IS NULL AND r.expires_at > ? AND u.deleted_at IS NULL AND u.role != 'staff' AND u.email IS NOT NULL
+      WHERE r.token_hash = ? AND r.used_at IS NULL AND r.expires_at > ? AND u.deleted_at IS NULL AND u.email IS NOT NULL
         AND (u.company_id IS NULL OR c.deleted_at IS NULL)`).get(sha256(String(token || '')), now());
   /** Can this person get a reset link at all? Owners, managers and super admins sign in with email; staff use a PIN. */
   const resettable = (t, actor) => {
@@ -419,7 +429,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         // A temporary password typed again after it was used or expired says so (only someone who knows it learns anything)
         const old = user && spentTemp(db, user.id);
         if (old && (await verifyPassword(b.password, old.hash))) fail(401, spentMessage(old));
-        fail(401, 'That email and password don’t match.');
+        fail(401, 'That email and password don’t match. Try again, or reset it below.');
       }
       loginLimiter.reset(key);
       if (user.totp_on) {
@@ -481,8 +491,9 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       // A few emails an hour per address at most; past that, the same answer and nothing sent.
       if (!forgotEmailLimiter.check(email)) return reply();
       forgotEmailLimiter.record(email);
+      // Nov 25 (section 50): staff sign in with email too, so they can reset it the same way
       const t = db.prepare(`SELECT u.* FROM users u LEFT JOIN companies c ON c.id = u.company_id WHERE u.email = ? AND u.deleted_at IS NULL
-        AND u.role != 'staff' AND (u.company_id IS NULL OR (c.deleted_at IS NULL AND IFNULL(c.demo, 0) = 0))`).get(email);
+        AND (u.company_id IS NULL OR (c.deleted_at IS NULL AND IFNULL(c.demo, 0) = 0))`).get(email);
       const tag = t?.role === 'superadmin' ? 'super: ' : '';
       if (!mailConfigured()) {
         console.log('[mail] Forgot Password asked for, but email isn’t set up (RESEND_API_KEY and MAIL_FROM). Nothing sent.');
@@ -546,19 +557,20 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       return sendJson(res, 200, { store: storeOut(st) });
     }
 
-    /* ---- staff: join code → store → name → PIN ---- */
+    /* ---- Join with a Code (sign-up): code → restaurant → name, email, password. Nov 25 (section 50): no PIN. The same
+     *      lookup lists the people who still have to move from a PIN (Set Up Your Sign-In), never anyone with a password. ---- */
     if (parts[1] === 'join' && parts[2] && m === 'GET') {
       if (!codeLimiter.check(ip(req))) fail(429, 'Too many tries. Wait 15 minutes, then try again.');
       const co = staffByCode(parts[2]);
       // Nov 19: from an account's link (miseacademy.app/<account>), the code has to be that account's (server/links.mjs)
       const via = url.searchParams.get('account');
-      if (!co || (via && co.slug !== via)) { codeLimiter.record(ip(req)); fail(404, 'That join code isn’t right. Ask a manager for it.'); }
-      // Nov 16: a manager promoted from staff keeps signing in with their PIN (no password yet), so they're on the list too.
-      // Only with a PIN set: a PIN-less name on this list can be claimed by anyone with the code, and that's never a manager.
+      if (!co || (via && co.slug !== via)) { codeLimiter.record(ip(req)); fail(404, 'We don’t know that code. Check it with your manager.'); }
+      // Nov 16: a manager promoted from staff who's still on a PIN (no password yet) is on the list too. Only with a PIN
+      // set: a PIN-less name on this list can be claimed by anyone with the code, and that's never a manager.
       const staff = db.prepare(`SELECT id, name, pin_hash, store_id FROM users WHERE company_id = ? AND deleted_at IS NULL AND ${PIN_SIGN_IN} ORDER BY name COLLATE NOCASE`).all(co.id);
-      // Nov 12: the brand comes too, so the store, name and PIN screens wear the restaurant's own look (the join-code screen
+      // Nov 12: the brand comes too, so the store and name screens wear the restaurant's own look (the join-code screen
       // before it is Mise's, the platform's front door).
-      // Nov 17: each store says its own look too, so the name and PIN screens wear the store picked (Testa Barra, J.Baldwin's).
+      // Nov 17: each store says its own look too, so the screens after it wear the store picked (Testa Barra, J.Baldwin's).
       const joinStores = storesOf(db, co.id).map((x) => ({ id: x.id, name: x.name, brand: lookOfStore(co, x) }));
       // Nov 22: the paint of any look made in Your Look, so those screens can wear it
       const looks = Object.fromEntries([lookOf(co), ...joinStores.map((x) => x.brand)].filter(isDataLook).map((id) => [id, lookPayload(db, id)?.spec]).filter(([, v]) => v));
@@ -569,41 +581,89 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
       if (!codeLimiter.check(ip(req))) fail(429, 'Too many tries. Wait 15 minutes, then try again.');
       const b = await readJson(req);
       const co = staffByCode(b.code);
-      if (!co) { codeLimiter.record(ip(req)); fail(404, 'That join code isn’t right. Ask a manager for it.'); }
+      if (!co) { codeLimiter.record(ip(req)); fail(404, 'We don’t know that code. Check it with your manager.'); }
       const name = str(b.name, 60).replace(/\s+/g, ' ');
       if (name.length < 2) fail(400, 'Add your first and last name.');
-      if (!validPin(b.pin)) fail(400, 'Pick a PIN of 4 to 6 numbers.');
+      const email = String(b.email || '').trim().toLowerCase();
+      if (!validEmail(email)) fail(400, 'Enter a valid email address.');
+      if (!validPassword(b.password)) fail(400, 'Use at least 10 characters for the password.');
+      if (String(b.password).trim().toLowerCase() === email) fail(400, 'Don’t use your email as your password. Choose something only you know.');
       const stores = storesOf(db, co.id);
       const store = stores.length === 1 ? stores[0] : stores.find((x) => x.id === Number(b.storeId));
       if (!store) fail(400, 'Pick the restaurant you work at.');
-      if (db.prepare("SELECT 1 FROM users WHERE company_id = ? AND role = 'staff' AND name = ? COLLATE NOCASE AND deleted_at IS NULL").get(co.id, name)) fail(409, 'Someone with that name already joined. Pick your name from the list, or add your last initial.');
-      const r = db.prepare("INSERT INTO users(company_id,store_id,name,role,pin_hash,created_at) VALUES (?,?,?,'staff',?,?)").run(co.id, store.id, name, await hashPassword(b.pin), now());
-      audit(db, Number(r.lastInsertRowid), 'joined with the code', `${name} · ${store.name}`, co.id);
+      if (db.prepare('SELECT 1 FROM users WHERE email = ? AND deleted_at IS NULL').get(email)) fail(409, 'That email already has an account. Sign in with it instead.');
+      // Someone who joined with a PIN joining again would start over and lose their training: send them to move over instead.
+      if (db.prepare(`SELECT 1 FROM users WHERE company_id = ? AND name = ? COLLATE NOCASE AND deleted_at IS NULL AND ${PIN_SIGN_IN}`).get(co.id, name)) {
+        fail(409, `${name} already joined with a PIN. If that’s you, use Set Up Your Sign-In to keep your training.`);
+      }
+      // Staff names are one per company (users_staff_name), so managers can tell people apart
+      if (db.prepare("SELECT 1 FROM users WHERE company_id = ? AND role = 'staff' AND name = ? COLLATE NOCASE AND deleted_at IS NULL").get(co.id, name)) {
+        fail(409, 'Someone with that name already joined. If it’s you, sign in. If not, add your last initial.');
+      }
+      if (!joinLimiter.check(ip(req))) fail(429, 'Too many new accounts from here. Try again in an hour.');
+      joinLimiter.record(ip(req));
+      const hash = await hashPassword(b.password);
+      db.prepare('UPDATE users SET email = NULL WHERE email = ? AND deleted_at IS NOT NULL').run(email); // an archived person's old email
+      const r = db.prepare("INSERT INTO users(company_id,store_id,email,name,role,password_hash,created_at) VALUES (?,?,?,?,'staff',?,?)").run(co.id, store.id, email, name, hash, now());
+      audit(db, Number(r.lastInsertRowid), 'joined with the code', `${name} · ${store.name} · ${email}`, co.id);
       return signIn(res, req, byId(Number(r.lastInsertRowid)));
     }
-    if (p === '/api/staff-login' && m === 'POST') {
+    // Nov 25 (section 50): nobody signs in with a PIN. An old page that still asks gets told where to go.
+    if (p === '/api/staff-login' && m === 'POST') fail(410, 'Signing in with a PIN has moved. Use Set Up Your Sign-In once, then sign in with your email and password.');
+
+    /* ---- Set Up Your Sign-In (Nov 25, section 50 row 3): today's PIN people move to email + password, once. ---- */
+    // 1. The code and their name (from the list above) and the old PIN one last time. A PIN a manager reset (none set) needs
+    //    no PIN: as before, whoever has the code picks it up (a manager's Reset PIN is how someone who forgot it gets back).
+    if (p === '/api/set-up/check' && m === 'POST') {
       if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
       const b = await readJson(req);
-      // Nov 14 (security review): wrong join codes here count toward the same limit as the join screen's.
       if (!codeLimiter.check(ip(req))) fail(429, 'Too many tries. Wait 15 minutes, then try again.');
       const co = staffByCode(b.code);
-      if (!co) { codeLimiter.record(ip(req)); fail(404, 'That join code isn’t right. Ask a manager for it.'); }
+      if (!co) { codeLimiter.record(ip(req)); fail(404, 'We don’t know that code. Check it with your manager.'); }
       const u = db.prepare(`SELECT * FROM users WHERE id = ? AND company_id = ? AND deleted_at IS NULL AND ${PIN_SIGN_IN}`).get(Number(b.id), co.id);
-      if (!u) fail(404, 'We couldn’t find you. Pick your name again.');
+      if (!u) fail(404, 'We couldn’t find you. Pick your name again, or sign in if you’ve already set up.');
       const key = 'pin|' + u.id;
-      if (!pinLimiter.check(key)) fail(429, 'Too many wrong PINs. Wait 15 minutes, or ask a manager to reset your PIN.');
-      if (!pinDayLimiter.check(key)) fail(429, 'Too many wrong PINs today. Ask a manager to reset your PIN.');
-      if (!validPin(b.pin)) fail(400, 'Your PIN is 4 to 6 numbers.');
-      if (!u.pin_hash) {
-        // A manager reset this PIN: the person picks a new one now.
-        db.prepare('UPDATE users SET pin_hash = ? WHERE id = ?').run(await hashPassword(b.pin), u.id);
-        audit(db, u.id, 'set a new PIN', null, co.id);
-      } else if (!(await verifyPassword(b.pin, u.pin_hash))) {
-        pinLimiter.record(key); pinDayLimiter.record(key);
-        fail(401, 'That PIN isn’t right.');
+      if (u.pin_hash) {
+        if (!pinLimiter.check(key)) fail(429, 'Too many wrong PINs. Wait 15 minutes, or ask a manager to set you up.');
+        if (!pinDayLimiter.check(key)) fail(429, 'Too many wrong PINs today. Ask a manager to set you up.');
+        if (!validPin(b.pin)) fail(400, 'Your PIN is 4 to 6 numbers.');
+        if (!(await verifyPassword(b.pin, u.pin_hash))) { pinLimiter.record(key); pinDayLimiter.record(key); fail(401, 'That PIN isn’t right.'); }
+        pinLimiter.reset(key); pinDayLimiter.reset(key);
       }
-      pinLimiter.reset(key); pinDayLimiter.reset(key);
-      return signIn(res, req, u);
+      const ticket = newToken();
+      for (const [k, v] of setUpTickets) if (v.userId === u.id || Date.now() - v.at > SETUP_MS) setUpTickets.delete(k);
+      setUpTickets.set(sha256(ticket), { userId: u.id, at: Date.now() });
+      return sendJson(res, 200, { ticket, name: u.name, email: u.email || null });
+    }
+    // 2. Their email and a password. Then the PIN stops working and they're in.
+    if (p === '/api/set-up/save' && m === 'POST') {
+      if (req.headers['x-bt'] !== '1') fail(403, 'Request blocked.');
+      const b = await readJson(req);
+      const key = sha256(String(b.ticket || ''));
+      const tk = setUpTickets.get(key);
+      if (!tk || Date.now() - tk.at > SETUP_MS) { setUpTickets.delete(key); fail(410, 'That took too long. Pick your name and type your PIN again.'); }
+      const u = db.prepare(`SELECT * FROM users WHERE id = ? AND deleted_at IS NULL AND ${PIN_SIGN_IN}`).get(tk.userId);
+      if (!u) { setUpTickets.delete(key); fail(410, 'You’re already set up. Sign in with your email and password.'); }
+      const email = String(b.email || '').trim().toLowerCase();
+      if (!validEmail(email)) fail(400, 'Enter a valid email address.');
+      if (db.prepare('SELECT 1 FROM users WHERE email = ? AND id != ? AND deleted_at IS NULL').get(email, u.id)) fail(409, 'That email already has an account. Use a different one, or ask a manager.');
+      if (!validPassword(b.password)) fail(400, 'Use at least 10 characters for the password.');
+      if (String(b.password).trim().toLowerCase() === email) fail(400, 'Don’t use your email as your password. Choose something only you know.');
+      const hash = await hashPassword(b.password);
+      db.exec('BEGIN');
+      try {
+        db.prepare('UPDATE users SET email = NULL WHERE email = ? AND deleted_at IS NOT NULL AND id != ?').run(email, u.id); // an archived person's old email
+        // First save wins (a second in flight finds a password already there). The PIN goes: it stops working.
+        if (db.prepare('UPDATE users SET email = ?, password_hash = ?, pin_hash = NULL WHERE id = ? AND password_hash IS NULL').run(email, hash, u.id).changes !== 1) {
+          db.exec('ROLLBACK'); setUpTickets.delete(key); fail(410, 'You’re already set up. Sign in with your email and password.');
+        }
+        db.prepare('DELETE FROM sessions WHERE user_id = ?').run(u.id); // signed in on their phone with the PIN: that ends
+        db.exec('COMMIT');
+      } catch (e) { if (db.isTransaction) db.exec('ROLLBACK'); throw e; }
+      setUpTickets.delete(key);
+      clearPinLimits(u.id);
+      audit(db, u.id, 'moved to email sign-in', `${u.name} · ${email}`, u.company_id);
+      return signIn(res, req, byId(u.id));
     }
     if (p === '/api/pin' && m === 'POST') {
       const u = need(c, req);
@@ -852,21 +912,22 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         }
         db.exec('BEGIN');
         try {
-          // They sign in with a PIN again: the one they had, else they pick one with the join code and their name.
-          // The email stays on their account (so Promote to Manager can use it again); it doesn't sign in as staff.
-          db.prepare("UPDATE users SET role = 'staff', store_id = ?, password_hash = NULL, totp_on = 0, totp_secret = NULL WHERE id = ?").run(st.id, t.id);
-          dropTemps(t.id, u.id); // their password was just cleared
+          // Nov 25 (section 50): everyone signs in with email and password, staff too, so they keep theirs (and two-step,
+          // if it's on). Until then they went back to a PIN. A manager still on a PIN (promoted from staff) stays on it, and
+          // moves over with Set Up Your Sign-In like any PIN person.
+          db.prepare("UPDATE users SET role = 'staff', store_id = ? WHERE id = ?").run(st.id, t.id);
           db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
           db.prepare('DELETE FROM password_resets WHERE user_id = ? AND used_at IS NULL').run(t.id);
           db.prepare('DELETE FROM invites WHERE user_id = ? AND used_at IS NULL').run(t.id);
           db.exec('COMMIT');
         } catch (e) { db.exec('ROLLBACK'); throw e; }
         clearPinLimits(t.id);
-        audit(db, u.id, 'change to staff', `${t.name} · ${st.name}${t.pin_hash ? '' : ' · picks a PIN next sign-in'}`, cid, teamRole(u));
-        return sendJson(res, 200, { ok: true, name: t.name, storeName: st.name, hasPin: !!t.pin_hash });
+        audit(db, u.id, 'change to staff', `${t.name} · ${st.name}${t.password_hash ? '' : ' · sets up email sign-in next time'}`, cid, teamRole(u));
+        return sendJson(res, 200, { ok: true, name: t.name, storeName: st.name, hasPin: !!t.pin_hash, emailSignIn: !!t.password_hash });
       }
       if (parts[3] === 'reset-pin' && m === 'POST') {
         if (t.role !== 'staff') fail(400, 'Only staff have a PIN.');
+        if (t.password_hash) fail(400, `${t.name.split(' ')[0]} signs in with email now. Use Set Temporary Password instead.`); // Nov 25
         db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id);
         db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id);
         clearPinLimits(t.id);
@@ -1164,7 +1225,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         }
         if (t.id !== s.id) mayPerson('editPerson');
         if (b.name !== undefined) { const n = str(b.name, 80); if (n.length < 2) fail(400, 'Add a name.'); db.prepare('UPDATE users SET name = ? WHERE id = ?').run(n, t.id); changes.push(`name → ${n}`); }
-        if (b.email !== undefined && (t.role !== 'staff' || (b.role && b.role !== 'staff'))) {
+        if (b.email !== undefined && (b.email || t.role !== 'staff')) { // Nov 25: staff sign in with email too
           const e = String(b.email || '').trim().toLowerCase();
           if (!validEmail(e)) fail(400, 'Enter a valid email address.');
           if (db.prepare('SELECT 1 FROM users WHERE email = ? AND id != ?').get(e, t.id)) fail(409, 'Another account uses that email.');
@@ -1173,8 +1234,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         if (b.role !== undefined && t.role !== 'superadmin') {
           if (!['owner', 'manager', 'staff'].includes(b.role)) fail(400, 'Pick owner, manager or staff.');
           if (b.role !== 'staff' && !t.email && !b.email) fail(400, 'Owners and managers need an email to sign in.');
-          if (b.role === 'staff' && t.role !== 'staff') db.prepare('UPDATE users SET password_hash = NULL WHERE id = ?').run(t.id);
-          if (b.role === 'staff' && t.role !== 'staff') dropTemps(t.id, s.id); // their password was just cleared
+          // Nov 25 (section 50): changed to staff, they keep their email and password (staff sign in with email too)
           db.prepare('UPDATE users SET role = ? WHERE id = ?').run(b.role, t.id); changes.push(`role → ${b.role}`);
         }
         if (b.companyId !== undefined && t.role !== 'superadmin') {
@@ -1201,7 +1261,7 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         superLog(s, 'reset password link', `${t.name} (${t.role}) · ${t.email}`, t.company_id);
         return sendJson(res, 200, resetOut(t, r));
       }
-      if (parts[4] === 'reset-pin' && m === 'POST') { may('resetPin'); if (t.role !== 'staff') fail(400, 'Only staff have a PIN.'); db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id); db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id); clearPinLimits(t.id); superLog(s, 'reset PIN', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
+      if (parts[4] === 'reset-pin' && m === 'POST') { may('resetPin'); if (t.role !== 'staff') fail(400, 'Only staff have a PIN.'); if (t.password_hash) fail(400, `${t.name.split(' ')[0]} signs in with email now. Use Set Temporary Password instead.`); db.prepare('UPDATE users SET pin_hash = NULL WHERE id = ?').run(t.id); db.prepare('DELETE FROM sessions WHERE user_id = ?').run(t.id); clearPinLimits(t.id); superLog(s, 'reset PIN', t.name, t.company_id); return sendJson(res, 200, { ok: true }); }
       /* Set Temporary Password and Cancel Temporary (Nov 24): the Mise team roles that reset passwords and PINs (Owner,
        * Manager; never Support). Owners and managers follow Reset Password's rules; staff, Reset PIN's. */
       if (parts[4] === 'temporary' && (m === 'POST' || m === 'DELETE')) {

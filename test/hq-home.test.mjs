@@ -110,7 +110,7 @@ test('Waiting on you: an owner invite nobody used, a deletion request past its 7
   harborStores = (await harborOwner('/api/me')).data.user.stores;
   const tm = await harborOwner('/api/team'); harborCode = tm.data?.company?.joinCode; assert.ok(harborCode, JSON.stringify(tm).slice(0, 300));
   for (const [i, n] of ['Zed Zimmer', 'Amy Abbot', 'Cal Cole'].entries()) {
-    assert.equal((await staff[i]('/api/join', { method: 'POST', body: { code: harborCode, name: n, pin: '4321', storeId: harborStores[i === 2 ? 1 : 0].id } })).status, 200);
+    assert.equal((await staff[i]('/api/join', { method: 'POST', body: { code: harborCode, name: n, email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4321-x', storeId: harborStores[i === 2 ? 1 : 0].id } })).status, 200);
   }
   for (const [i, [n, e]] of [['Wes Market', 'wes@harbor.test'], ['Ann Dock', 'ann@harbor.test']].entries()) {
     const inv = await harborOwner('/api/team/invite', { method: 'POST', body: { email: e, role: 'manager', storeId: harborStores[i === 0 ? 1 : 0].id } });

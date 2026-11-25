@@ -3600,6 +3600,16 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .si .name-list { gap: 8px; }
 .si .name-btn { background: #FFFFFF; border: 1px solid var(--c-edge-muted); border-radius: 10px; color: var(--c-ink); font: 600 16px var(--font-body); }
 .si .name-btn:hover { border-color: var(--c-ink); box-shadow: none; }
+/* Nov 25 (section 50): the Choice row (Figma 993:1955): a name or a restaurant with a chevron, 56 px; Join with a Code as the
+   card's second (ghost) button, a link that looks like one; the name list scrolls inside the card on a long team. */
+.si .si-choice { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; padding: 0 16px 0 18px; text-align: left; }
+.si .si-choice svg { flex: none; }
+.si .si-btn-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.si .si-names { max-height: min(50vh, 420px); }
+/* 44 px targets (Nov 25): the link buttons on these screens, and the links inside a line of text, which grow their tap area
+   without moving the text around them. */
+.si .link-btn { min-height: 44px; }
+.si .si-alt a, .si .si-alt .si-inline, .si-foot a { display: inline-block; padding: 12px 0; margin: -12px 0; }
 .si .btn:focus-visible, .si .link-btn:focus-visible, .si .name-btn:focus-visible, .si a:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; box-shadow: none; }
 .si-narrow { display: none; }
 @media screen and (max-width: 1199px) { .si-card { padding: 40px; } }

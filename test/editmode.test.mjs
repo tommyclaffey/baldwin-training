@@ -51,7 +51,7 @@ test('setup: owner, a manager, staff, and a manager at another store', async () 
   stores = (await person()(`/api/join/${code}`)).data.stores;
   const inv = await owner('/api/team/invite', { method: 'POST', body: { email: 'mia@edit.test', role: 'manager', storeId: stores[0].id } });
   assert.equal((await manager(`/api/invite/${inv.data.link.split('/').pop()}`, { method: 'POST', body: { name: 'Mia Manager', password: 'long-enough-2' } })).status, 200);
-  assert.equal((await staff('/api/join', { method: 'POST', body: { code, name: 'Sam Staff', pin: '4321', storeId: stores[0].id } })).status, 200);
+  assert.equal((await staff('/api/join', { method: 'POST', body: { code, name: 'Sam Staff', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4321-x', storeId: stores[0].id } })).status, 200);
   const inv2 = await owner('/api/team/invite', { method: 'POST', body: { email: 'tess@edit.test', role: 'manager', storeId: stores[2].id } });
   assert.equal((await testaGm(`/api/invite/${inv2.data.link.split('/').pop()}`, { method: 'POST', body: { name: 'Tess Testa', password: 'long-enough-3' } })).status, 200);
   index = (await owner('/api/index')).data;

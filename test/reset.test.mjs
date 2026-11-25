@@ -72,7 +72,7 @@ test('setup: an owner, a super admin with two-step, a store manager, an all-stor
   assert.equal((await gm(`/api/invite/${token(i1.data.link)}`, { method: 'POST', body: { name: 'Greer Manager', password: 'gm-pass-001' } })).status, 200);
   const i2 = await owner('/api/team/invite', { method: 'POST', body: { email: 'boss@reset.test', role: 'manager' } });
   assert.equal((await boss(`/api/invite/${token(i2.data.link)}`, { method: 'POST', body: { name: 'Bram Allstores', password: 'boss-pass-01' } })).status, 200);
-  assert.equal((await staff('/api/join', { method: 'POST', body: { code: team.company.joinCode, name: 'Suki Staff', pin: '4321', storeId: store } })).status, 200);
+  assert.equal((await staff('/api/join', { method: 'POST', body: { code: team.company.joinCode, name: 'Suki Staff', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4321-x', storeId: store } })).status, 200);
   gmId = (await gm('/api/me')).data.user.id; bossId = (await boss('/api/me')).data.user.id; staffId = (await staff('/api/me')).data.user.id;
   const co = await tommy('/api/super/companies', { method: 'POST', body: { name: 'Other Group', ownerEmail: 'owner@other.test' } });
   assert.equal((await owner2(`/api/invite/${token(co.data.link)}`, { method: 'POST', body: { name: 'Otto Other', password: 'other-pass-1' } })).status, 200);

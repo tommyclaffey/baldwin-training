@@ -17,7 +17,7 @@ type Look = { id: string; name: string; custom: boolean };
 type Plan = { id: string; name: string; customLook: boolean };
 type Company = { id: number; name: string; slug: string; state: string | null; link: string | null; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number; look: string | null; drawnIn: string }[]; storeLooks: boolean;
   demo: boolean; hq: boolean; plan: string; look: string; drawnIn: string; looks: Look[] };
-type Person = { id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null; createdAt: string; lastSeenAt: string | null; deletedAt: string | null; hasPin: boolean; totpOn: boolean; superPrimary: boolean;
+type Person = { id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null; createdAt: string; lastSeenAt: string | null; deletedAt: string | null; hasPin: boolean; emailSignIn?: boolean; totpOn: boolean; superPrimary: boolean;
   teamRole: TeamRole | null; /** Nov 24: a temporary password or PIN waiting to be used */ temporary?: Temporary };
 type Can = Record<'view' | 'work' | 'signInAs' | 'log' | 'planLook' | 'resetPassword' | 'resetPin' | 'inviteOwner' | 'addCompany' | 'editCompany' | 'editPerson' | 'removePerson' | 'library' | 'change' | 'deleteCompany' | 'deletions' | 'team', boolean>;
 type TeamInvite = { id: string; email: string; teamRole: TeamRole; createdAt: string; expiresAt: string };
@@ -258,8 +258,8 @@ function People() {
   const tempPath = (p: Person) => `/api/super/users/${p.id}/temporary`;
   const setTemp = (p: Person) => { setErr(''); setDone(''); openTemp({ person: p, path: tempPath(p), roleLabel: p.teamRole ? `Mise ${TEAM_ROLE_LABEL[p.teamRole]}` : ROLE_LABEL[p.role], twoStep: p.totpOn }); };
   const resetPin = async (p: Person) => {
-    if (!(await ask({ title: `Reset ${p.name}’s PIN?`, body: `${first(p)} is signed out on every phone and picks a new PIN the next time they open the book. Their training and scores stay.`, go: 'Reset PIN' }))) return;
-    void run('pin' + p.id, () => api(`/api/super/users/${p.id}/reset-pin`, { method: 'POST' }), `${p.name}’s PIN is reset. ${first(p)} picks a new one the next time they sign in.`);
+    if (!(await ask({ title: `Reset ${p.name}’s PIN?`, body: `${first(p)} is signed out on every phone. Next time, Set Up Your Sign-In skips the PIN and asks for their email and a password. Their training and scores stay.`, go: 'Reset PIN' }))) return;
+    void run('pin' + p.id, () => api(`/api/super/users/${p.id}/reset-pin`, { method: 'POST' }), `${p.name}’s PIN is reset. ${first(p)} sets up email and a password the next time they sign in.`);
   };
   const remove = async (p: Person) => {
     if (!(await ask({ title: `Delete ${p.name}?`, body: 'They’re signed out right away. You have 30 days to restore them from this list.', go: 'Delete', danger: true }))) return;
@@ -282,7 +282,7 @@ function People() {
           <tbody>{rows.map((p) => (
             <tr key={p.id} className={p.deletedAt ? 'is-deleted' : ''}>
               <td className="person"><span className="person-name">{p.name}</span>
-                <small className="person-sub email">{p.email || 'Signs in with a PIN'}</small>
+                <small className="person-sub email">{p.email || 'On a PIN until they set up email'}</small>
                 {p.deletedAt && <span className="deleted-note">Deleted · {daysLeft(p.deletedAt)} days left to restore</span>}
                 {!p.deletedAt && <TempTag temp={p.temporary} />}</td>
               <td data-label="Role">{p.teamRole ? `Mise ${TEAM_ROLE_LABEL[p.teamRole]}` : ROLE_LABEL[p.role]}</td>
@@ -296,7 +296,7 @@ function People() {
                     {canTemp(p) && (p.temporary
                       ? <button type="button" className="link-btn" disabled={!!busy} onClick={() => void cancelTemp(p, tempPath(p))}>Cancel Temporary</button>
                       : <button type="button" className="link-btn" disabled={!!busy} onClick={() => setTemp(p)}>Set Temporary Password</button>)}
-                    {p.role === 'staff' && can?.resetPin && <button type="button" className="link-btn" disabled={!!busy} onClick={() => void resetPin(p)}>{busy === 'pin' + p.id ? 'Resetting…' : 'Reset PIN'}</button>}
+                    {p.role === 'staff' && !p.emailSignIn && can?.resetPin && <button type="button" className="link-btn" disabled={!!busy} onClick={() => void resetPin(p)}>{busy === 'pin' + p.id ? 'Resetting…' : 'Reset PIN'}</button>}
                     {canReset(p) && <button type="button" className="link-btn" disabled={!!busy} onClick={() => void makeReset(p)}>Reset Password</button>}
                     {!p.superPrimary && ov?.you !== p.id && mayRemove(p) && <button type="button" className="link-btn danger" disabled={!!busy} onClick={() => void remove(p)}>{busy === 'del' + p.id ? 'Deleting…' : 'Delete'}</button>}
                   </>}
@@ -334,8 +334,8 @@ function EditPerson({ person, companies, onClose, onSaved }: { person: Person; c
         <Text label="Name" value={f.name} onChange={(name) => setF({ ...f, name })} />
         {(f.role !== 'staff' || person.email) && <Text label="Email" value={f.email} onChange={(email) => setF({ ...f, email })} />}
         {!isSuper && person.role !== 'staff' && <label className="field"><span>Role</span><select value={f.role} onChange={(e) => setF({ ...f, role: e.target.value as Role })}><option value="owner">Owner</option><option value="manager">Manager</option><option value="staff">Staff</option></select>
-          {f.role === 'staff' && <small>As staff they sign in with the join code and pick a new PIN; their password stops working.</small>}</label>}
-        {person.role === 'staff' && <p className="muted small">Staff sign in with a PIN. To make them a manager, use Promote to Manager on their People page (Companies → Work Here, then People). They keep their training and history.</p>}
+          {f.role === 'staff' && <small>As staff they keep signing in with their email and password.</small>}</label>}
+        {person.role === 'staff' && <p className="muted small">{person.emailSignIn ? 'Staff sign in with their email and password.' : 'They joined with a PIN: next time they sign in, Set Up Your Sign-In asks for their email and a password, once.'} To make them a manager, use Promote to Manager on their People page (Companies → Work Here, then People). They keep their training and history.</p>}
         {!isSuper && <label className="field"><span>Company</span><select value={String(f.companyId)} onChange={(e) => setF({ ...f, companyId: e.target.value })}>{companies.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}</select></label>}
         <p className="muted small">Saving signs them out everywhere, so the change takes effect right away.</p>
         {err && <ErrorNote error={err} />}

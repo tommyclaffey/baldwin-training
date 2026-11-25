@@ -10,7 +10,7 @@ import { registerLook } from '../lib/theme';
 import { AuthCard } from '../components/AuthCard';
 import type { Brand } from '../lib/theme';
 import { linkText } from '../lib/account';
-import { joinPath } from '../lib/authroute';
+import { joinPath, markMoved, setUpPath } from '../lib/authroute';
 import { LegalLinks, SupportLine } from '../components/Legal';
 import { landingFor, needsTwoStep, TWO_STEP_MSG } from '../lib/twostep';
 import { TempTag, useTemp, type Temporary } from './temppass';
@@ -33,10 +33,15 @@ export { AuthCard };
 /** Sign In: email + password, for everyone with an account (Nov 23: at /sign-in, /admin, and an account's own link).
  *  brand / kicker / account (Nov 19, Nov 23): on an account's link (/the-baldwin) it wears that account's look with its name
  *  over the title, and Join with a Code goes to that account's /the-baldwin/join. Elsewhere: Mise, and /join. Nov 24: staff
- *  on a PIN use "Joined with a PIN? Sign In with Your PIN" (the code → name → PIN screens, titled as a sign-in). */
+ *  on a PIN use "Joined with a PIN? Sign In with Your PIN" (the code → name → PIN screens, titled as a sign-in).
+ *  Nov 25 (section 50, approved): nobody signs in with a PIN. That line is now "Joined with a PIN? Set Up Your Sign-In",
+ *  the one-time move to email + password (src/components/SetUpSignIn.tsx). Join with a Code is the card's second button,
+ *  and Try the Demo sits under the card (not on an account's link). */
 export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicker?: string; account?: { slug: string } | null } = {}) {
   const { setUser, setupNeeded, superSetupNeeded } = useSession();
   const join = joinPath(account);
+  // signed in with email here: this phone opens Sign In from now on, not Set Up Your Sign-In (src/lib/authroute.ts)
+  const done = (u: User) => { markMoved(); setUser(u); };
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [ticket, setTicket] = useState('');
@@ -48,14 +53,14 @@ export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicke
   // Nov 24: signed in with a temporary password (after the two-step code, if that's on): Choose Your Own Password first
   const [choose, setChoose] = useState<MustChoose | null>(null);
   if (setupNeeded || setup) return <Setup superAdmin={!setupNeeded && superSetupNeeded} />;
-  if (choose) return <ChooseOwn need={choose} temp={password} brand={brand} kicker={kicker} onDone={setUser}
+  if (choose) return <ChooseOwn need={choose} temp={password} brand={brand} kicker={kicker} onDone={done}
     onBack={() => { setChoose(null); setTicket(''); setCode(''); setPassword(''); setError(''); }} />;
   if (forgot) return <ForgotPassword brand={brand} email={email} onBack={(e) => { setForgot(false); setEmail(e); setError(''); }} />;
   const submit = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');
     try {
       const r = await api<{ user?: User; needCode?: boolean; ticket?: string } & Partial<MustChoose>>('/api/login', { method: 'POST', body: { email, password } });
-      if (r.mustChoose) setChoose(r as MustChoose); else if (r.needCode) setTicket(r.ticket!); else setUser(r.user!);
+      if (r.mustChoose) setChoose(r as MustChoose); else if (r.needCode) setTicket(r.ticket!); else done(r.user!);
     } catch (err) { setError((err as Error).message); }
     setBusy(false);
   };
@@ -63,7 +68,7 @@ export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicke
     e.preventDefault(); setBusy(true); setError('');
     try {
       const r = await api<{ user?: User } & Partial<MustChoose>>('/api/login/code', { method: 'POST', body: { ticket, code } });
-      if (r.mustChoose) setChoose(r as MustChoose); else setUser(r.user!);
+      if (r.mustChoose) setChoose(r as MustChoose); else done(r.user!);
     } catch (err) { setError((err as Error).message); if (/timed out|stopped working/.test((err as Error).message)) { setTicket(''); setCode(''); } }
     setBusy(false);
   };
@@ -78,10 +83,11 @@ export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicke
     </AuthCard>
   );
   return (
-    <AuthCard kicker={kicker} brand={brand} title="Sign In" sub="Use the email your invite was sent to.">
+    <AuthCard kicker={kicker} brand={brand} title="Sign In" sub="Use your email and password."
+      foot={account ? undefined : <>Just looking? <Link to="/demo/mise">Try the Demo</Link></>}>
       <form className="stack" onSubmit={submit}>
         <label className="field"><span>Email</span>
-          <input inputMode="email" autoComplete="username" autoCapitalize="none" spellCheck={false} placeholder="you@yourrestaurant.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input inputMode="email" autoComplete="username" autoCapitalize="none" spellCheck={false} placeholder="you@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
         <label className="field"><span>Password</span><input type="password" autoComplete="current-password" placeholder="Your password" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
         <button type="button" className="link-btn si-forgot" onClick={() => { setForgot(true); setError(''); }}>Forgot Password?</button>
@@ -90,10 +96,11 @@ export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicke
         {superSetupNeeded && <button type="button" className="link-btn" onClick={() => setSetup(true)}>Set up the super admin account</button>}
       </form>
       <hr className="si-rule" />
-      <p className="si-alt">New here? <Link to={join}>Join with a Code</Link></p>
+      <p className="si-alt">New here? Your manager has the code.</p>
+      <Link className="btn ghost si-btn-link" to={join}>Join with a Code</Link>
       {/* Nov 24 (Tommy: "they have to give them the pin option … I don't have everyone's email"): staff who joined with a
-          PIN sign in here, said plainly (the old "Use Your PIN Instead" was confusing). Same code → name → PIN screens. */}
-      <p className="si-alt">Joined with a PIN? <Link to={`${join}?pin=1`}>Sign In with Your PIN</Link></p>
+          PIN always have a way in. Nov 25 (section 50): it's the one-time move to email + password. */}
+      <p className="si-alt">Joined with a PIN? <Link to={setUpPath(account)}>Set Up Your Sign-In</Link></p>
     </AuthCard>
   );
 }
@@ -115,7 +122,7 @@ function ForgotPassword({ email: start, onBack, brand }: { email: string; onBack
   if (sent) return (
     <AuthCard brand={brand} title="Check Your Email" sub={sent}>
       <div className="stack">
-        <p className="muted small">The link works once and expires in 24 hours. Staff don’t need one: a manager can Reset PIN.</p>
+        <p className="muted small">The link works once and expires in 24 hours.</p>
         <button type="button" className="btn" onClick={() => onBack(email)}>Back to Sign In</button>
       </div>
     </AuthCard>
@@ -127,7 +134,7 @@ function ForgotPassword({ email: start, onBack, brand }: { email: string; onBack
         {error && <ErrorNote error={error} />}
         <button className="btn" disabled={busy || !email.trim()}>{busy ? 'Sending…' : 'Send Reset Link'}</button>
         <button type="button" className="link-btn" onClick={() => onBack(email)}>Back to Sign In</button>
-        <p className="muted small">Staff sign in with a PIN. Forgot it? Ask a manager to reset it.</p>
+        <p className="muted small">Joined with a PIN and haven’t set up email yet? Use Set Up Your Sign-In on the sign-in page.</p>
       </form>
     </AuthCard>
   );
@@ -394,7 +401,7 @@ export function MediaLibrary() {
 const mb = (n: number | null) => (n ? (n > 1e6 ? `${(n / 1e6).toFixed(1)} MB` : `${Math.round(n / 1e3)} KB`) : '');
 
 /* ---------- team ---------- */
-type Member = { id: number; name: string; email: string | null; role: Role; createdAt: string; lastSeenAt: string | null; hasPin: boolean; signedOff: number; storeId: number | null; storeName: string | null; canManage: boolean;
+type Member = { id: number; name: string; email: string | null; role: Role; createdAt: string; lastSeenAt: string | null; hasPin: boolean; /** Nov 25: signs in with email + password (a staff member who moved over, or joined after Nov 25) */ emailSignIn?: boolean; signedOff: number; storeId: number | null; storeName: string | null; canManage: boolean;
   /** Nov 16: Promote to Manager / Change to Staff */
   canPromote?: boolean; canDemote?: boolean; promotion?: { email: string; storeName: string | null; createdAt: string; expiresAt: string } | null;
   /** Nov 24: a temporary password waiting to be used */ temporary?: Temporary; totpOn?: boolean };
@@ -425,7 +432,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
   // Nov 16: back to staff, same person. They sign in with their PIN again (or pick one with the join code and their name).
   const demote = (p: Member) => {
     const where = p.storeName || user?.store?.name || 'their store';
-    void askThen({ title: `Change ${p.name} to Staff?`, body: `${p.name} becomes staff at ${where}. They’re signed out and sign in with ${p.hasPin ? 'their old PIN' : 'the join code and a new PIN'}. Their training and history stay.`, go: 'Change to Staff' }, () => run(() => api(`/api/team/${p.id}/demote`, { method: 'POST', body: {} }), `${p.name} is staff at ${where} now.`));
+    void askThen({ title: `Change ${p.name} to Staff?`, body: `${p.name} becomes staff at ${where}. They’re signed out and sign in with their email and password, as before. Their training and history stay.`, go: 'Change to Staff' }, () => run(() => api(`/api/team/${p.id}/demote`, { method: 'POST', body: {} }), `${p.name} is staff at ${where} now.`));
   };
   const makeReset = (p: Member) => {
     void askThen({ title: `Make a Password Reset Link for ${p.name}?`, body: 'Their password keeps working until they use the link.', go: 'Make Link' }, () => run(async () => { setReset(null); setReset(await api<ResetLink>(`/api/team/${p.id}/reset-password`, { method: 'POST' })); }));
@@ -460,7 +467,7 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
       <section className="card stack">
         <h2>Staff join code</h2>
         <div className="join-code" aria-label="Join code">{data.company.joinCode || (user?.demo ? 'DEMO' : '–')}</div>
-        <p className="muted small">Staff open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong>, type this code, {multi ? 'pick their restaurant, ' : ''}pick their name (or “I’m New Here”) and a PIN. One code for {multi ? 'every restaurant in the group' : 'the whole team'}. Share it at line-up or post it in the back of house.</p>
+        <p className="muted small">Staff open <strong>{joinUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</strong>, type this code, {multi ? 'pick their restaurant, ' : ''}and add their name, email and a password. One code for {multi ? 'every restaurant in the group' : 'the whole team'}. Share it at line-up or post it in the back of house.</p>
         <div className="row">
           <button className="btn ghost" onClick={() => copy(`Join the ${data.company.name} training app on Mise: ${joinUrl}  Join code: ${data.company.joinCode}`, 'code')}>{copied === 'code' ? 'Copied' : 'Copy Code and Link'}</button>
           {data.company.link && <button className="btn ghost" onClick={() => copy(joinUrl, 'link')} aria-label={`Copy Link, ${linkText(data.company.link)}`}>{copied === 'link' ? 'Copied' : 'Copy Link'}</button>}
@@ -480,14 +487,14 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
           <thead><tr><th>Name</th>{multi && <th>Store</th>}<th>Signed off</th><th>Joined</th><th>Last seen</th><th /></tr></thead>
           <tbody>{staff.map((p) => (
             <tr key={p.id}>
-              <td>{p.name}{!p.hasPin && <small className="muted"> · picking a new PIN</small>}<TempTag temp={p.temporary} /></td>
+              <td>{p.name}{p.emailSignIn ? <small className="muted"> · {p.email}</small> : <small className="muted"> · {p.hasPin ? 'on a PIN until they set up email' : 'PIN reset: sets up email next'}</small>}<TempTag temp={p.temporary} /></td>
               {multi && <td>{switcher && p.canManage
                 ? <select aria-label={`${p.name}’s store`} value={p.storeId ?? ''} onChange={(e) => move(p, Number(e.target.value))}>{data.stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select>
                 : p.storeName}</td>}
               <td>{p.signedOff}</td><td>{when(p.createdAt)}</td><td>{when(p.lastSeenAt)}</td>
               <td className="row-actions">{p.canManage && <>
                 {!data.company.demo && tempButton(p)}
-                <button className="link-btn" onClick={() => void askThen({ title: `Reset ${p.name}’s PIN?`, body: 'They’re signed out and pick a new PIN next time they sign in.', go: 'Reset PIN' }, () => run(() => api(`/api/team/${p.id}/reset-pin`, { method: 'POST' }), `${p.name} picks a new PIN next time they sign in.`))}>Reset PIN</button>
+                {!p.emailSignIn && <button className="link-btn" onClick={() => void askThen({ title: `Reset ${p.name}’s PIN?`, body: 'They’re signed out. Next time, Set Up Your Sign-In skips the PIN and asks for their email and a password.', go: 'Reset PIN' }, () => run(() => api(`/api/team/${p.id}/reset-pin`, { method: 'POST' }), `${p.name}’s PIN is reset. They set up email and a password next time.`))}>Reset PIN</button>}
                 <button className="link-btn danger" onClick={() => void askThen({ title: `Remove ${p.name}?`, body: 'They’re signed out right away.', go: 'Remove', danger: true }, () => run(() => api(`/api/team/${p.id}`, { method: 'DELETE' }), `${p.name} is removed.`))}>Remove</button>
               </>}</td>
             </tr>
@@ -605,7 +612,7 @@ export function Account() {
       <h1>Your account</h1>
       <p className="muted">{[user?.name, user?.email, user ? ROLE_LABEL[user.role] : '', user?.companyName].filter(Boolean).join(' · ')}</p>
       {/* Nov 16: a manager promoted from staff signs in with their PIN (no password yet), so there's no password to change */}
-      {user?.pinSignIn && <section className="card stack"><h2>Signing in</h2><p className="muted small">You sign in with your restaurant’s join code, your name and your PIN, the same as before you were a manager. Forgot it? Ask an owner.</p></section>}
+      {user?.pinSignIn && <section className="card stack"><h2>Signing in</h2><p className="muted small">You joined with a PIN. Everyone signs in with email and a password now: next time you sign in, use Set Up Your Sign-In (once) to add yours. Forgot your PIN? Ask an owner.</p></section>}
       {!user?.pinSignIn && <section className="card stack">
         <h2>Two-step sign-in</h2>
         {needsTwoStep(user) && <p className="error" role="alert">{TWO_STEP_MSG}</p>}

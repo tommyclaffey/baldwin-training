@@ -12,7 +12,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { totpAt } from '../server/auth.mjs';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, addPinStaff, sessionCookieFor } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-people-'));
@@ -46,7 +46,10 @@ test('setup: a super admin with two-step, an owner, a staff member with a PIN', 
   secret = (await tommy.call('/api/2fa/start', { method: 'POST' })).data.secret;
   assert.equal((await tommy.call('/api/2fa/enable', { method: 'POST', body: { code: totpAt(secret, Math.floor(Date.now() / 30000)) } })).status, 200);
   const code = (await owner.call('/api/team')).data.company.joinCode;
-  assert.equal((await staff.call('/api/join', { method: 'POST', body: { code, name: 'Wren Ashby', pin: '4826', storeId: 1 } })).status, 200);
+  assert.ok(code);
+  // Nov 25: a staff member who joined with a PIN (before section 50), signed in on their phone
+  staff.jar = sessionCookieFor(dir, await addPinStaff(dir, { name: 'Wren Ashby', pin: '4826' }));
+  assert.equal((await staff.call('/api/me')).data.user.name, 'Wren Ashby');
   const people = (await tommy.call('/api/super/users?q=&company=')).data.users;
   autumnId = people.find((p) => p.name === 'Wren Ashby').id;
   ownerId = people.find((p) => p.email === 'owner@people.test').id;

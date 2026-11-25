@@ -97,7 +97,7 @@ test('a new company starts on Foundation in the Mise look; a custom look needs t
   assert.equal((await harborOwner('/api/me')).data.user.brand, 'mise');
   harborCode = (await harborOwner('/api/team')).data.company.joinCode;
   assert.equal((await person()(`/api/join/${harborCode}`)).data.brand, 'mise');
-  assert.equal((await harborStaff('/api/join', { method: 'POST', body: { code: harborCode, name: 'Pia Server', pin: '4321' } })).status, 200);
+  assert.equal((await harborStaff('/api/join', { method: 'POST', body: { code: harborCode, name: 'Pia Server', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4321-x' } })).status, 200);
 });
 
 test('The Baldwin moves to Foundation → Mise look; back on Custom Brand with its look → its look again', async () => {

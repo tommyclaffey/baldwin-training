@@ -80,7 +80,7 @@ async function cast(port) {
   const team = (await owner('/api/team')).data;
   const i = await owner('/api/team/invite', { method: 'POST', body: { email: 'gm@self.test', role: 'manager', storeId: team.stores[0].id } });
   assert.equal((await gm(`/api/invite/${token(i.data.link)}`, { method: 'POST', body: { name: 'Greer Manager', password: 'gm-pass-001' } })).status, 200);
-  assert.equal((await staff('/api/join', { method: 'POST', body: { code: team.company.joinCode, name: 'Suki Staff', pin: '4321', storeId: team.stores[0].id } })).status, 200);
+  assert.equal((await staff('/api/join', { method: 'POST', body: { code: team.company.joinCode, name: 'Suki Staff', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4321-x', storeId: team.stores[0].id } })).status, 200);
   const co = await tommy('/api/super/companies', { method: 'POST', body: { name: 'Other Group', ownerEmail: 'owner@other.test' } });
   assert.equal((await owner2(`/api/invite/${token(co.data.link)}`, { method: 'POST', body: { name: 'Otto Other', password: 'other-pass-1' } })).status, 200);
   return { owner, tommy, gm, staff, owner2, joinCode: team.company.joinCode };

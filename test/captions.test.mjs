@@ -59,7 +59,7 @@ test('setup: an owner uploads a video and a photo; a manager at Testa Barra; a s
   const stores = (await person()(`/api/join/${code}`)).data.stores;
   const inv = await owner('/api/team/invite', { method: 'POST', body: { email: 'gm@cc.test', role: 'manager', storeId: stores[2].id } });
   assert.equal((await testaGm(`/api/invite/${inv.data.link.split('/').pop()}`, { method: 'POST', body: { name: 'Gale Testa', password: 'long-enough-2' } })).status, 200);
-  assert.equal((await staff('/api/join', { method: 'POST', body: { code, name: 'Sol Staff', pin: '2468', storeId: stores[0].id } })).status, 200);
+  assert.equal((await staff('/api/join', { method: 'POST', body: { code, name: 'Sol Staff', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-2468-x', storeId: stores[0].id } })).status, 200);
   const v = await owner('/api/media/upload', { method: 'POST', raw: Buffer.from('not really a video'), headers: { 'Content-Type': 'video/mp4', 'X-Filename': 'old-fashioned.mp4' } });
   assert.equal(v.status, 200); video = v.data;
   assert.equal(video.captions, null);

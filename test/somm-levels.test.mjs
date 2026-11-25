@@ -139,7 +139,7 @@ test('Sommelier Level 3: level page, lessons, hub, final, practical and certific
   // a member of staff takes the final, then a manager signs the practical: the certificate
   const team = (await owner('/api/team')).data;
   const ana = person();
-  assert.equal((await ana('/api/join', { method: 'POST', body: { code: team.company.joinCode, name: 'Odile Varga', pin: '8642', storeId: 1 } })).status, 200);
+  assert.equal((await ana('/api/join', { method: 'POST', body: { code: team.company.joinCode, name: 'Odile Varga', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-8642-x', storeId: 1 } })).status, 200);
   const q = (await ana('/api/quiz/start', { method: 'POST', body: { quiz: 't:final:somm-3' } })).data;
   assert.equal(q.items.length, 60);
   const cards = new Map(lessons.flatMap((c) => c.cards.map((k, i) => [`study:${c.slug}:${i}`, k])));
@@ -208,7 +208,7 @@ test('Sommelier Level 4: by invitation; final, practical and certificate once in
   // a member of staff sees the level but can't open it (the server says no, not just the page)
   const team = (await owner('/api/team')).data;
   const ivo = person();
-  assert.equal((await ivo('/api/join', { method: 'POST', body: { code: team.company.joinCode, name: 'Bram Okafor', pin: '9753', storeId: 1 } })).status, 200);
+  assert.equal((await ivo('/api/join', { method: 'POST', body: { code: team.company.joinCode, name: 'Bram Okafor', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-9753-x', storeId: 1 } })).status, 200);
   const sp = JSON.stringify((await ivo('/api/page/' + l4.file)).data);
   assert.ok(sp.includes('BY INVITATION · ASK YOUR MANAGER') && !sp.includes('t%3Afinal%3Asomm-4') && !sp.includes('"/sommelier-program/level-4/master-'), 'locked: no final, lessons don’t open');
   const last = lessons[lessons.length - 1];

@@ -576,7 +576,7 @@ async function api(req, res, url) {
       const canPromote = x.role === 'staff' && (u.role === 'owner' || u.role === 'manager' || (u.role === 'superadmin' && teamCan(u, 'change')));
       const inv = db.prepare('SELECT i.email, i.store_id, i.created_at, i.expires_at, s.name store_name FROM invites i LEFT JOIN stores s ON s.id = i.store_id WHERE i.user_id = ? AND i.used_at IS NULL AND i.expires_at > ? ORDER BY i.created_at DESC LIMIT 1').get(x.id, now());
       const promotion = inv ? { email: inv.email, storeId: inv.store_id ?? null, storeName: inv.store_name ?? null, createdAt: inv.created_at, expiresAt: inv.expires_at } : null;
-      return { ...path, ...row, hasPin: !!x.pin_hash, createdAt: x.created_at, store: c.storeRow?.name || null, storeId: x.store_id ?? null, quizzes, quizAverage, certificates,
+      return { ...path, ...row, hasPin: !!x.pin_hash, emailSignIn: !!x.password_hash, createdAt: x.created_at, store: c.storeRow?.name || null, storeId: x.store_id ?? null, quizzes, quizAverage, certificates,
         email: canPromote ? x.email || null : null, canPromote, promotion: canPromote ? promotion : null, demo: !!c.user.demo,
         // Nov 24: a temporary password waiting (server/temppass.mjs)
         temporary: tempOut(activeTemp(db, x.id)) };
@@ -1375,7 +1375,7 @@ function sendPage(req, res, p) {
   const slug = seg?.toLowerCase() ?? null;
   const go = (to, code = 302) => { res.writeHead(code, { Location: to, 'Cache-Control': 'no-cache', ...SECURITY }); res.end(); };
   // Nov 23: /<account>/join (its Join with a Code) and /<account>/sign-in (= /<account>), in its look, with its card
-  const sub = /^\/([^/]+)\/(join|sign-in)\/?$/i.exec(p);
+  const sub = /^\/([^/]+)\/(join|sign-in|set-up-sign-in)\/?$/i.exec(p); // Nov 25: + Set Up Your Sign-In
   if (sub && !isReserved(sub[1].toLowerCase())) {
     const [s1, s2] = [sub[1].toLowerCase(), sub[2].toLowerCase()];
     const sco = SLUG.test(s1) ? accountByLink(db, s1) : null;

@@ -36,6 +36,8 @@ import { PrepPage } from './prep/PrepPage';
 import { ImportPage } from './import/ImportPage';
 import { LegalRoute, LEGAL_PATHS } from './components/Legal';
 import { authRouteAt } from './lib/account';
+import { SetUpSignIn } from './components/SetUpSignIn';
+import { phoneOnPin, setUpPath } from './lib/authroute';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -54,6 +56,7 @@ export default function App() {
 
 function Book() {
   const entry = usePageEntry();
+  const { search } = useLocation();
   const { user, loaded, refresh } = useSession();
   const [menu, setMenu] = useState(false);
   const { pathname } = useLocation();
@@ -92,11 +95,18 @@ function Book() {
   if (!loaded || strayDemo) return <main className="page page-loading" aria-busy="true"><div className="loader" /></main>;
   // Nov 19: an account's own link (miseacademy.app/the-baldwin) opens its sign-in in its look; signed in, it's just Home.
   // Nov 23 (src/lib/authroute.ts): /sign-in and /<account>(/sign-in) = Sign In (email + password); /join and /<account>/join
-  // = Join with a Code. Every other address, signed out, is Join with a Code as before (the root too).
+  // = Join with a Code. Nov 25 (section 50): every other address, signed out, is Sign In (the root too), and
+  // /set-up-sign-in is the one-time move for people who joined with a PIN. A phone that joined with a PIN opens that by
+  // itself (the root, any page, or its account's own link; /sign-in typed out is always Sign In). The old PIN link
+  // (/join?pin=1) goes there too.
   const route = authRouteAt(pathname);
-  if (!user) return route?.kind === 'sign-in'
-    ? <SignIn brand={route.account?.brand} kicker={route.account?.name} account={route.account} />
-    : <BookSignIn account={route?.account ?? null} />;
+  if (!user) {
+    const account = route?.account ?? null;
+    if (route?.kind === 'join' && new URLSearchParams(search).get('pin') === '1') return <Navigate to={setUpPath(account)} replace />;
+    if (route?.kind === 'join') return <BookSignIn account={account} />;
+    if (route?.kind === 'set-up' || ((!route || (account && pathname === '/' + account.slug)) && phoneOnPin())) return <SetUpSignIn account={account} />;
+    return <SignIn brand={account?.brand} kicker={account?.name} account={account} />;
+  }
   if (needsTwoStep(user)) return <Navigate to={TWO_STEP_HOME} replace />; // the server won't open the book until it's on (Nov 16)
   if (route) {
     // just signed in here, or the account's own link: Home. Arrived already signed in: who, Go to Home, Sign Out.

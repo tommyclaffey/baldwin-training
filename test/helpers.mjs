@@ -37,3 +37,24 @@ export function giveAccount(dataDir) {
   }
   return to;
 }
+
+/* ---- People who joined with a PIN (Nov 25) ----
+ * Since section 50 nobody joins with a PIN (Join with a Code asks for an email and a password), but the people who joined
+ * before still have one until they use Set Up Your Sign-In. Tests make them straight in the database, as they are on live:
+ * staff with a PIN, no email, no password. → their user id. */
+import { DatabaseSync } from 'node:sqlite';
+import { hashPassword } from '../server/auth.mjs';
+export async function addPinStaff(dataDir, { name, pin = '4321', companyId = 1, storeId = null, role = 'staff' }) {
+  const db = new DatabaseSync(path.join(dataDir, 'baldwin.db'));
+  try {
+    const store = storeId ?? db.prepare('SELECT id FROM stores WHERE company_id = ? ORDER BY sort, id LIMIT 1').get(companyId)?.id ?? null;
+    return Number(db.prepare('INSERT INTO users(company_id, store_id, name, role, pin_hash, created_at) VALUES (?,?,?,?,?,?)')
+      .run(companyId, store, name, role, await hashPassword(pin), new Date().toISOString()).lastInsertRowid);
+  } finally { db.close(); }
+}
+/** A phone already signed in (a session from before Nov 25, when PIN people signed in with their PIN): → its cookie. */
+import { createSession, SESSION_COOKIE } from '../server/auth.mjs';
+export function sessionCookieFor(dataDir, userId, days = 90) {
+  const db = new DatabaseSync(path.join(dataDir, 'baldwin.db'));
+  try { return `${SESSION_COOKIE}=${createSession(db, userId, { days })}`; } finally { db.close(); }
+}

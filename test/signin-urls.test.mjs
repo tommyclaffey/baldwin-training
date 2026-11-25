@@ -13,7 +13,7 @@ import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { giveAccount, turnOnTwoStep } from './helpers.mjs';
 import { reserved, isReserved, accountSlug } from '../server/links.mjs';
-import { authRouteFor, signInPath, joinPath, AUTH_TITLE } from '../src/lib/authroute.ts';
+import { authRouteFor, signInPath, joinPath, setUpPath, AUTH_TITLE } from '../src/lib/authroute.ts';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-signin-urls-'));
@@ -74,11 +74,15 @@ test('which screen each address is (src/lib/authroute.ts)', () => {
   assert.equal(authRouteFor('/the-baldwin/join', null), null, 'without the server naming the account');
   assert.equal(authRouteFor('/harbor-lane/join', tb), null, 'another account’s address');
   assert.deepEqual([signInPath(null), joinPath(null), signInPath(tb), joinPath(tb)], ['/sign-in', '/join', '/the-baldwin', '/the-baldwin/join']);
-  assert.deepEqual(AUTH_TITLE, { 'sign-in': 'Sign In', join: 'Join with a Code' });
+  // Nov 25 (section 50): Set Up Your Sign-In, the one-time move for people who joined with a PIN
+  assert.deepEqual(authRouteFor('/set-up-sign-in', null), { kind: 'set-up', account: null });
+  assert.deepEqual(authRouteFor('/the-baldwin/set-up-sign-in', tb), { kind: 'set-up', account: tb });
+  assert.deepEqual([setUpPath(null), setUpPath(tb)], ['/set-up-sign-in', '/the-baldwin/set-up-sign-in']);
+  assert.deepEqual(AUTH_TITLE, { 'sign-in': 'Sign In', join: 'Join with a Code', 'set-up': 'Set Up Your Sign-In' });
 });
 
 test('/sign-in and /join: 200, the Mise card at their own address, no account', async () => {
-  for (const p of ['/sign-in', '/join']) {
+  for (const p of ['/sign-in', '/join', '/set-up-sign-in']) { // (Nov 25: + Set Up Your Sign-In)
     const r = await bot(p);
     assert.equal(r.status, 200, p);
     assert.equal(account(r.html), null, p);
@@ -90,7 +94,7 @@ test('/sign-in and /join: 200, the Mise card at their own address, no account', 
 });
 
 test('/the-baldwin/join and /the-baldwin/sign-in: the account (name and look) and its card, never its join code', async () => {
-  for (const sub of ['join', 'sign-in']) {
+  for (const sub of ['join', 'sign-in', 'set-up-sign-in']) {
     const r = await bot('/the-baldwin/' + sub);
     assert.equal(r.status, 200, sub);
     assert.deepEqual(account(r.html), { slug: 'the-baldwin', name: 'Baldwin Restaurant Group', brand: 'baldwin' }, sub);
@@ -205,25 +209,32 @@ test('the screens, signed out and signed in (headless Chrome)', BROWSER, async (
     assert.ok(await b.ev(`!!document.querySelector('input[type=password]')`), 'the password field');
     assert.deepEqual(s.links.find((l) => l[0] === 'Join with a Code'), ['Join with a Code', '/join']);
     assert.ok(!s.buttons.includes('Use Your PIN Instead') && s.buttons.includes('Forgot Password?'), 'no old PIN link on Sign In');
-    // Nov 24: staff who joined with a PIN have a plain way in: "Joined with a PIN? Sign In with Your PIN"
-    assert.deepEqual(s.links.find((l) => l[0] === 'Sign In with Your PIN'), ['Sign In with Your PIN', '/join?pin=1']);
+    // Nov 24: staff who joined with a PIN always have a way in. Nov 25 (section 50): "Joined with a PIN? Set Up Your Sign-In"
+    assert.deepEqual(s.links.find((l) => l[0] === 'Set Up Your Sign-In'), ['Set Up Your Sign-In', '/set-up-sign-in']);
+    assert.deepEqual(s.links.find((l) => l[0] === 'Try the Demo'), ['Try the Demo', '/demo/mise']);
     noRoleLabels(s, '/sign-in');
     await snap('01 sign-in');
 
-    // /join and the root: Join with a Code, with Sign In
-    for (const p of ['/join', '/']) {
-      await b.go(BASE + p);
-      s = await b.ev(SCREEN);
-      assert.equal(s.h1, 'join with a code', p); assert.equal(s.kicker, null, p); assert.equal(s.look, 'si-mise', p);
-      assert.deepEqual(s.links.find((l) => l[0] === 'Sign In'), ['Sign In', '/sign-in'], p);
-      noRoleLabels(s, p);
-      if (p === '/join') await snap('02 join');
-    }
+    // Nov 25: the root (and any other address, signed out) is Sign In too
+    await b.go(BASE + '/');
+    s = await b.ev(SCREEN);
+    assert.equal(s.h1, 'sign in', '/'); assert.equal(s.look, 'si-mise');
+
+    // /join: Join with a Code, with Sign In
+    await b.go(BASE + '/join');
+    s = await b.ev(SCREEN);
+    assert.equal(s.h1, 'join with a code'); assert.equal(s.kicker, 'Step 1 of 3'); assert.equal(s.look, 'si-mise');
+    assert.deepEqual(s.links.find((l) => l[0] === 'Sign In'), ['Sign In', '/sign-in']);
+    noRoleLabels(s, '/join');
+    await snap('02 join');
+    // the old PIN link goes to Set Up Your Sign-In
+    await b.go(BASE + '/join?pin=1');
+    assert.ok(await b.until(`location.pathname==='/set-up-sign-in'`), '/join?pin=1 → /set-up-sign-in');
 
     // /the-baldwin/join: The Baldwin's look and name, its code only
     await b.go(BASE + '/the-baldwin/join');
     s = await b.ev(SCREEN);
-    assert.equal(s.h1, 'join with a code'); assert.equal(s.kicker, 'Baldwin Restaurant Group'); assert.equal(s.look, 'si-baldwin');
+    assert.equal(s.h1, 'join with a code'); assert.equal(s.kicker, 'Baldwin Restaurant Group · Step 1 of 3'); assert.equal(s.look, 'si-baldwin');
     assert.deepEqual(s.links.find((l) => l[0] === 'Sign In'), ['Sign In', '/the-baldwin']);
     noRoleLabels(s, '/the-baldwin/join');
     await snap('03 the-baldwin join');
@@ -237,7 +248,7 @@ test('the screens, signed out and signed in (headless Chrome)', BROWSER, async (
     // a Foundation account's join: Mise look, its name over the title
     await b.go(BASE + '/harbor-lane/join');
     s = await b.ev(SCREEN);
-    assert.equal(s.h1, 'join with a code'); assert.equal(s.kicker, 'Harbor Lane'); assert.equal(s.look, 'si-mise');
+    assert.equal(s.h1, 'join with a code'); assert.equal(s.kicker, 'Harbor Lane · Step 1 of 3'); assert.equal(s.look, 'si-mise');
     assert.deepEqual(s.links.find((l) => l[0] === 'Sign In'), ['Sign In', '/harbor-lane']);
 
     // /the-baldwin and /the-baldwin/sign-in: its Sign In in its look
@@ -260,10 +271,10 @@ test('the screens, signed out and signed in (headless Chrome)', BROWSER, async (
     for (const p of ['/sign-in', '/join', '/the-baldwin/join', '/the-baldwin/sign-in']) {
       await b.go(BASE + p);
       s = await b.ev(SCREEN);
-      assert.equal(s.sub, 'You’re signed in as Bram Owner.', p);
+      assert.match(s.sub, /^You’re signed in as Bram Owner \(owner@baldwin\.test\)( at .+)?\.$/, p);
       assert.deepEqual(s.buttons, ['Go to Home', 'Sign Out'], p);
       assert.doesNotMatch(s.text, /couldn.t find that page/i, p);
-      assert.equal(s.h1, p.endsWith('join') ? 'join with a code' : 'sign in', p);
+      assert.equal(s.h1, 'you’re signed in', p); // Nov 25 (section 50, frame 6)
       if (p === '/join') await snap('04 signed in · join');
       if (p.startsWith('/the-baldwin')) assert.equal(s.look, 'si-baldwin', p + ': Custom Brand look');
     }

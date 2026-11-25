@@ -43,7 +43,7 @@ test('setup: an owner, a server and a bartender at The Baldwin, a server at J.Ba
   const stores = (await person()(`/api/join/${code}`)).data.stores;
   const jb = stores.find((s) => s.name === 'J.Baldwin’s' || s.name === "J.Baldwin's").id;
   for (const [who, name, pin, store, job] of [[ana, 'Ana Server', '1111', 1, 'server'], [ben, 'Ben Bar', '2222', 1, 'bartender'], [cal, 'Cal Host', '3333', 1, null], [jo, 'Jo Jbs', '4444', jb, 'server']]) {
-    assert.equal((await who('/api/join', { method: 'POST', body: { code, name, pin, storeId: store } })).status, 200, name);
+    assert.equal((await who('/api/join', { method: 'POST', body: { code, name, email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-' + pin + '-x', storeId: store } })).status, 200, name);
     if (job) assert.equal((await who('/api/path/jobs', { method: 'POST', body: { jobs: [job] } })).status, 200);
     ids[name] = (await who('/api/me')).data.user.id;
   }

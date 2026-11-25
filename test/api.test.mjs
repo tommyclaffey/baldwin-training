@@ -192,7 +192,7 @@ test('invites: owners invite managers, links work once, managers can’t invite'
 test('quizzes are written from the book, scored by the server; custom and team quizzes; a manager signs off', baldwinOnly, async () => {
   const code = (await call('/api/team')).data.company.joinCode;
   const sam = person();
-  assert.equal((await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Server', pin: '4321', storeId: 1 } })).status, 200);
+  assert.equal((await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Server', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4321-x', storeId: 1 } })).status, 200);
   const cat = (await sam('/api/quiz/catalog')).data;
   assert.ok(cat.topics.some((t) => t.key === 'course:Entrees') && cat.topics.some((t) => t.key === 'specialty'), 'topics come from the menu');
   assert.ok(cat.quizzes.some((q) => q.id === 't:course:Entrees'), 'a built-in quiz per course');
@@ -314,7 +314,7 @@ test('the Back Bar lists every bottle, and every bottle has its own page', baldw
 test('review queue: mark each answer; red and yellow come back until they are green', async () => {
   const code = (await call('/api/team')).data.company.joinCode;
   const kit = person();
-  assert.equal((await kit('/api/join', { method: 'POST', body: { code, name: 'Odette Vale', pin: '2468', storeId: 1 } })).status, 200);
+  assert.equal((await kit('/api/join', { method: 'POST', body: { code, name: 'Odette Vale', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-2468-x', storeId: 1 } })).status, 200);
   assert.equal((await kit('/api/quiz/start', { method: 'POST', body: { quiz: 'review' } })).status, 404, 'empty queue');
   const q = (await kit('/api/quiz/start', { method: 'POST', body: { quiz: 't:specialty' } })).data;
   const [a, b, c] = q.items;
@@ -405,7 +405,7 @@ test('working controls: Food Matrix filters, photo chips, cleaning checklist, si
 test('tonight’s sections: the team reads them, only a manager sets them', async () => {
   const code = (await call('/api/team')).data.company.joinCode;
   const ana = person();
-  await ana('/api/join', { method: 'POST', body: { code, name: 'Ana Host', pin: '2468', storeId: 1 } });
+  await ana('/api/join', { method: 'POST', body: { code, name: 'Ana Host', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-2468-x', storeId: 1 } });
   assert.equal((await call('/api/sections', { auth: false })).status, 401);
   assert.equal((await ana('/api/sections', { method: 'PUT', body: { slot: 'Servers 1', name: 'Ana' } })).status, 403, 'staff can’t set sections');
   assert.equal((await call('/api/sections', { method: 'PUT', body: { slot: 'Kitchen 9', name: 'Ana' } })).status, 400);
@@ -458,7 +458,7 @@ test('edit in place: list pages get Add rows with the group filled in, for manag
   // Staff see the same pages with none of it.
   const code = (await call('/api/team')).data.company.joinCode;
   const sam = person();
-  await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Runner', pin: '1357', storeId: 1 } });
+  await sam('/api/join', { method: 'POST', body: { code, name: 'Sam Runner', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-1357-x', storeId: 1 } });
   for (const slug of ['food-matrix', 'the-bar/wine', 'the-bar/cocktails', 'the-bar/beer-and-draft']) {
     const s = JSON.stringify((await sam('/api/page/' + file(slug))).data);
     assert.ok(!s.includes('/admin/') && !s.includes('"add":'), 'no admin links for staff on ' + slug);
@@ -1185,7 +1185,7 @@ test('Cocktail Program Level 4: six lessons, a 60-question final, a practical an
   // a member of staff sees the level but can't open it
   const code = (await call('/api/team')).data.company.joinCode;
   const tam = person();
-  assert.equal((await tam('/api/join', { method: 'POST', body: { code, name: 'Tamsin Rook', pin: '8642', storeId: 1 } })).status, 200);
+  assert.equal((await tam('/api/join', { method: 'POST', body: { code, name: 'Tamsin Rook', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-8642-x', storeId: 1 } })).status, 200);
   const sp = JSON.stringify((await tam('/api/page/' + l4.file)).data);
   assert.ok(sp.includes('BY INVITATION · ASK YOUR MANAGER') && !sp.includes('t%3Afinal%3Abar-4') && !sp.includes('"/cocktail-program/level-4/bar-l4-'), 'locked: no final, lessons don’t open');
   const lockedLesson = JSON.stringify((await tam('/api/page/l-bar-l4-law~0')).data);
@@ -1267,7 +1267,7 @@ test('Beer Program Level 4: six lessons, a 60-question final, a practical and a 
   // a member of staff sees the level but can't open it
   const code = (await call('/api/team')).data.company.joinCode;
   const ivo = person();
-  assert.equal((await ivo('/api/join', { method: 'POST', body: { code, name: 'Ivo Marchetti', pin: '7531', storeId: 1 } })).status, 200);
+  assert.equal((await ivo('/api/join', { method: 'POST', body: { code, name: 'Ivo Marchetti', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-7531-x', storeId: 1 } })).status, 200);
   const sp = JSON.stringify((await ivo('/api/page/' + l4.file)).data);
   assert.ok(sp.includes('BY INVITATION · ASK YOUR MANAGER') && !sp.includes('t%3Afinal%3Abeer-4') && !sp.includes('"/beer-program/level-4/beer-l4-'), 'locked: no final, lessons don’t open');
   const lockedLesson = JSON.stringify((await ivo('/api/page/l-beer-l4-leading~2')).data);

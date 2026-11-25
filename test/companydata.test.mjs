@@ -49,7 +49,7 @@ async function company(name, slug) {
   const inv = await owner('/api/team/invite', { method: 'POST', body: { email: `gm@${slug}.test`, role: 'manager' } });
   assert.equal((await manager(`/api/invite/${inv.data.link.split('/').pop()}`, { method: 'POST', body: { name: `${name} Manager`, password: 'long-enough-3' } })).status, 200);
   const code = (await owner('/api/team')).data.company.joinCode;
-  assert.equal((await staff('/api/join', { method: 'POST', body: { code, name: `${name} Server`, pin: '2468' } })).status, 200);
+  assert.equal((await staff('/api/join', { method: 'POST', body: { code, name: `${name} Server`, email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-2468-x' } })).status, 200);
   const topic = (await staff('/api/quiz/catalog')).data.topics[0].key;
   const q = (await staff('/api/quiz/start', { method: 'POST', body: { topics: [topic], count: 5 } })).data;
   assert.equal((await staff('/api/quiz/attempt', { method: 'POST', body: { quiz: q.id, items: q.items, answers: q.items.map((r) => q.questions[r].answer) } })).status, 200);
@@ -67,7 +67,7 @@ test('setup: The Baldwin, the super admin, two more companies', async () => {
   assert.equal((await boss('/api/setup', { method: 'POST', body: { name: 'Boss', email: 'boss@cd.test', password: 'long-enough-1' } })).status, 200);
   await turnOnTwoStep(boss);
   const code = (await baldwin('/api/team')).data.company.joinCode;
-  assert.equal((await bea('/api/join', { method: 'POST', body: { code, name: 'Bea Baldwin', pin: '1111', storeId: 1 } })).status, 200);
+  assert.equal((await bea('/api/join', { method: 'POST', body: { code, name: 'Bea Baldwin', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-1111-x', storeId: 1 } })).status, 200);
   assert.equal((await take(bea, 't:allergens')).status, 200);
   harbor = await company('Harbor Table', 'harbor');
   copper = await company('Copper Pot', 'copper');

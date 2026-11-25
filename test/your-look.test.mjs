@@ -169,7 +169,7 @@ test('setup: The Baldwin’s owner, staff at J.Baldwin’s, the super admin, and
   assert.equal((await tommy('/api/setup', { method: 'POST', body: { name: 'Tommy', email: 'tommy@mise.test', password: 'long-enough-2' } })).status, 200);
   await turnOnTwoStep(tommy, { workIn: null });
   code = db().prepare('SELECT join_code FROM companies WHERE id = 1').get().join_code;
-  assert.equal((await staff('/api/join', { method: 'POST', body: { code, name: 'Jo Jaybee', pin: '4321', storeId: 2 } })).status, 200);
+  assert.equal((await staff('/api/join', { method: 'POST', body: { code, name: 'Jo Jaybee', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4321-x', storeId: 2 } })).status, 200);
   const add = await tommy('/api/super/companies', { method: 'POST', body: { name: 'Harbor Hall', stores: ['Dockside'], ownerEmail: 'owner@harbor.test' } });
   assert.equal(add.status, 200, JSON.stringify(add.data));
   const token = add.data.link.split('/').pop();

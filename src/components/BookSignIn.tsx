@@ -1,5 +1,7 @@
-// Signing in to read the book. Staff: the group's join code → your restaurant → your name → your PIN.
-// Owners and managers sign in with email in the admin, which also opens the book.
+// Join with a Code (sign-up). Nov 25 (Figma 09 · Idea Board section 50, approved): the group's join code → your restaurant
+// (only if the group has several) → your name, email and password → You're In. Nobody picks a PIN any more, and everyone
+// signs in with email and password (src/admin/screens.tsx SignIn). People who joined with a PIN move over once:
+// SetUpSignIn.tsx. Earlier notes, kept for the history:
 // Nov 12 (Figma section 28): the join-code screen wears Mise, the platform's front door. Once the code is right the app
 // knows the restaurant, so the store, name and PIN screens wear that restaurant's own look (the brand comes with the code).
 // Nov 17: once a store is picked, its own look (Testa Barra, J.Baldwin's); the store question itself wears the company's.
@@ -9,186 +11,163 @@
 // Nov 23 (real addresses, src/lib/authroute.ts): this is Join with a Code, at /join, /<account>/join and the site's root.
 // Sign In (email + password) is its own address, /sign-in or the account's own link; no role labels on any of these screens
 // (Tommy: "There should be a 'Join with a Code,' and there should be 'Sign In.' Doesn't matter what position you are in.").
-import { useEffect, useMemo, useState, type FormEvent } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { useState, type FormEvent, type ReactNode } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { api, type User } from '../lib/api';
 import { useSession } from '../lib/session';
 import { asBrand, registerLook, type Brand } from '../lib/theme';
 import { AuthCard } from './AuthCard';
 import type { AccountLink } from '../lib/account';
-import { AUTH_TITLE, JUST_SIGNED_IN, signInPath, type AuthKind } from '../lib/authroute';
+import { CODE_KEY, JUST_SIGNED_IN, markMoved, setUpPath, signInPath, type AuthKind } from '../lib/authroute';
 
-type Staff = { id: number; name: string; needsPin: boolean; storeId: number | null };
-type Store = { id: number; name: string; brand?: string };
-const CODE_KEY = 'bt-join-code';
-const STORE_KEY = 'bt-join-store';
+export type JoinStore = { id: number; name: string; brand?: string };
+export type JoinStaff = { id: number; name: string; needsPin: boolean; storeId: number | null };
+export type JoinInfo = { company: string; brand?: string; stores: JoinStore[]; staff: JoinStaff[]; looks?: Record<string, unknown> };
+export const STORE_KEY = 'bt-join-store';
+
+/** The group behind a join code (its stores, and the people who still have to move from a PIN). From an account's link the
+ *  code has to be that account's. Registers any look made in Your Look (Nov 22) so the next screens can wear it. */
+export async function lookUpCode(code: string, account: AccountLink | null): Promise<JoinInfo> {
+  const via = account ? `?account=${encodeURIComponent(account.slug)}` : '';
+  const r = await api<JoinInfo>(`/api/join/${encodeURIComponent(code.trim().toUpperCase())}${via}`);
+  for (const [id, spec] of Object.entries(r.looks || {})) registerLook(id, spec, { quiet: true });
+  return r;
+}
+/** Signed in on the signed-out screen: note the moment (PageView sends a just-signed-in person Home, Nov 24), and mark this
+ *  phone as on email sign-in (it opens Sign In from now on, not Set Up Your Sign-In). */
+export function noteSignedIn() {
+  try { sessionStorage.setItem(JUST_SIGNED_IN, String(Date.now())); } catch { /* private mode */ }
+  markMoved();
+}
+/** "Step 2 of 3 · Fig & Fire": the account's or group's name and the step, as one line over the title. */
+export const kickerOf = (...parts: (string | null | undefined | false)[]) => parts.filter(Boolean).join(' · ') || undefined;
+
+/** A tappable row with a name or a restaurant and a chevron (Figma 993:1955, "Choice row"). 56 px tall. */
+export function ChoiceRow({ children, onClick }: { children: ReactNode; onClick: () => void }) {
+  return (
+    <button type="button" role="listitem" className="name-btn si-choice" onClick={onClick}>
+      <span>{children}</span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7.5 4.5 5.5 5.5-5.5 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+    </button>
+  );
+}
 
 export function BookSignIn({ account = null }: { account?: AccountLink | null }) {
   const { setUser } = useSession();
-  const [step, setStep] = useState<'code' | 'store' | 'who' | 'pin' | 'new'>('code');
-  const pinSignIn = useSearchParams()[0].get('pin') === '1';
-  const [stores, setStores] = useState<Store[]>([]);
-  const [store, setStore] = useState<Store | null>(null);
-  const [code, setCode] = useState(() => localStorage.getItem(CODE_KEY) || '');
+  const [step, setStep] = useState<'code' | 'store' | 'about' | 'done'>('code');
+  const [stores, setStores] = useState<JoinStore[]>([]);
+  const [store, setStore] = useState<JoinStore | null>(null);
+  const [code, setCode] = useState(() => { try { return localStorage.getItem(CODE_KEY) || ''; } catch { return ''; } });
   const [company, setCompany] = useState('');
   const [coBrand, setCoBrand] = useState<Brand>(account?.brand ?? 'mise');
-  const [staff, setStaff] = useState<Staff[]>([]);
-  const [who, setWho] = useState<Staff | null>(null);
-  const [q, setQ] = useState('');
-  const [pin, setPin] = useState('');
-  const [pin2, setPin2] = useState('');
-  const [name, setName] = useState('');
+  const [f, setF] = useState({ name: '', email: '', password: '' });
+  const [joined, setJoined] = useState<User | null>(null);
   const [error, setError] = useState('');
+  const [errorAt, setErrorAt] = useState<'name' | 'email' | 'password' | 'form'>('form');
   const [busy, setBusy] = useState(false);
 
-  const lookUp = async (c: string, saved = false) => {
+  // Steps: the code, the restaurant (only when the group has several), about you. Before the code is in, it's "of 3".
+  const total = stores.length === 1 ? 2 : 3;
+  const lookUp = async () => {
     setBusy(true); setError('');
     try {
-      const via = account ? `?account=${encodeURIComponent(account.slug)}` : '';
-      const r = await api<{ company: string; brand?: string; stores: Store[]; staff: Staff[]; looks?: Record<string, unknown> }>(`/api/join/${encodeURIComponent(c.trim().toUpperCase())}${via}`);
-      for (const [id, spec] of Object.entries(r.looks || {})) registerLook(id, spec, { quiet: true }); // Nov 22: looks made in Your Look
-      setCompany(r.company); setCoBrand(asBrand(r.brand)); setStaff(r.staff); setStores(r.stores); localStorage.setItem(CODE_KEY, c.trim().toUpperCase());
-      // One store: skip the question. Several: ask once, then remember it on this phone.
-      const saved = r.stores.find((x) => String(x.id) === localStorage.getItem(STORE_KEY));
-      const pick = r.stores.length === 1 ? r.stores[0] : saved || null;
-      if (pick) choose(pick, r.staff); else setStep('store');
-    } catch (e) {
-      // A phone that joined another restaurant opens this account's link: its code for that one isn't this one's. Start
-      // fresh, quietly (the other restaurant's code stays on the phone until a new one is typed).
-      if (saved && account) setCode(''); else setError((e as Error).message);
+      const r = await lookUpCode(code, account);
+      setCompany(r.company); setCoBrand(asBrand(r.brand)); setStores(r.stores);
+      try { localStorage.setItem(CODE_KEY, code.trim().toUpperCase()); } catch { /* private mode */ }
+      if (r.stores.length === 1) { setStore(r.stores[0]); setStep('about'); } else setStep('store');
+    } catch (e) { setError((e as Error).message); }
+    setBusy(false);
+  };
+  const choose = (st: JoinStore) => { setStore(st); try { localStorage.setItem(STORE_KEY, String(st.id)); } catch { /* private mode */ } setError(''); setStep('about'); };
+  const join = async (e: FormEvent) => {
+    e.preventDefault(); setBusy(true); setError('');
+    try {
+      const r = await api<{ user: User }>('/api/join', { method: 'POST', body: { code, name: f.name, email: f.email, password: f.password, storeId: store?.id } });
+      setF((x) => ({ ...x, password: '' })); setJoined(r.user); setStep('done');
+    } catch (err) {
+      const m = (err as Error).message;
+      setError(m); setErrorAt(/email/i.test(m) && !/password/i.test(m) ? 'email' : /password|characters/i.test(m) ? 'password' : /name/i.test(m) && !/PIN/.test(m) ? 'name' : 'form');
     }
     setBusy(false);
   };
-  // Come straight to the name list on a phone that has joined before.
-  useEffect(() => { if (code) void lookUp(code, true); }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  function choose(st: Store, list = staff) {
-    setStore(st); localStorage.setItem(STORE_KEY, String(st.id)); setQ(''); setError('');
-    setStep(list.some((x) => x.storeId === st.id || x.storeId === null) ? 'who' : 'new');
-  }
-  const here = useMemo(() => staff.filter((s) => s.storeId === store?.id || s.storeId === null), [staff, store]);
-  const shown = useMemo(() => here.filter((s) => s.name.toLowerCase().includes(q.trim().toLowerCase())), [here, q]);
-  // Nov 24 (Tommy: someone signing in with their PIN kept landing on "We couldn't find that page"): the sign-in shows on
-  // any signed-out address, so an old bookmark or link signs them in onto a page that isn't there. Note the moment, and
-  // PageView sends a just-signed-in person Home instead.
-  const finish = (u: User) => { setPin(''); setPin2(''); try { sessionStorage.setItem(JUST_SIGNED_IN, String(Date.now())); } catch { /* private mode */ } setUser(u); };
-
-  const signIn = async (e: FormEvent) => {
-    e.preventDefault(); setBusy(true); setError('');
-    if (who?.needsPin && pin !== pin2) { setError('Those PINs don’t match. Type the same one twice.'); setBusy(false); return; }
-    try { finish((await api<{ user: User }>('/api/staff-login', { method: 'POST', body: { code, id: who!.id, pin } })).user); }
-    catch (err) { setError((err as Error).message); setPin(''); }
-    setBusy(false);
-  };
-  const join = async (e: FormEvent) => {
-    e.preventDefault(); setBusy(true); setError('');
-    if (pin !== pin2) { setError('Those PINs don’t match. Type the same one twice.'); setBusy(false); return; }
-    try { finish((await api<{ user: User }>('/api/join', { method: 'POST', body: { code, name, pin, storeId: store?.id } })).user); }
-    catch (err) { setError((err as Error).message); }
-    setBusy(false);
-  };
   // A field with an error points at it (Nov 12 accessibility scan): marked invalid, and the message is its description.
-  const errorFor = error ? { 'aria-invalid': true, 'aria-describedby': 'si-error' } : {};
-  const pinField = (label: string, value: string, set: (v: string) => void, auto: string) => (
-    <label className="field"><span>{label}</span>
-      <input type="password" inputMode="numeric" pattern="[0-9]*" autoComplete={auto} maxLength={6} value={value} {...errorFor}
-        onChange={(e) => set(e.target.value.replace(/\D/g, '').slice(0, 6))} />
-    </label>
-  );
-  // Nov 23: the way to Sign In (email + password), on every step; the account's own sign-in from its link
-  const managers = <><hr className="si-rule" /><p className="si-alt">Have a password? <Link to={signInPath(account)}>Sign In</Link></p></>;
+  const invalid = (at: typeof errorAt) => (error && errorAt === at ? { 'aria-invalid': true, 'aria-describedby': 'si-error' } : {});
+  const errorNote = (at: typeof errorAt) => error && errorAt === at ? <p className="error" id="si-error" role="alert">{error}</p> : null;
+  const toSignIn = (q: string) => <><hr className="si-rule" /><p className="si-alt">{q} <Link to={signInPath(account)}>Sign In</Link></p></>;
   // after the join code: the restaurant's own look; after the store question, that store's (Nov 17)
-  const card = { brand: step !== 'store' && store?.brand ? asBrand(store.brand) : coBrand };
+  const brand = step !== 'store' && store?.brand ? asBrand(store.brand) : coBrand;
 
-  // Nov 24: from Sign In's "Sign In with Your PIN" (?pin=1) the same code screen is titled as a sign-in
   if (step === 'code') return (
-    <AuthCard kicker={account?.name} title={pinSignIn ? 'Sign In with Your PIN' : AUTH_TITLE.join} brand={account?.brand}
-      sub={pinSignIn ? 'Type your restaurant’s join code, then tap your name and enter your PIN.' : account ? 'Ask a manager for your join code.' : 'Ask a manager for your restaurant’s join code.'}
-      foot={account ? undefined : <>Just looking? <Link to="/demo/mise">Try the Demo</Link></>}>
-      <form className="stack" onSubmit={(e) => { e.preventDefault(); void lookUp(code); }}>
+    <AuthCard kicker={kickerOf(account?.name, 'Step 1 of 3')} title="Join with a Code" brand={account?.brand}
+      sub={account ? 'Ask a manager for your join code.' : 'Your manager has it: 8 letters and numbers.'}>
+      <form className="stack" onSubmit={(e) => { e.preventDefault(); void lookUp(); }}>
         <label className="field"><span>Join code</span>
-          <input value={code} {...errorFor} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12))} autoCapitalize="characters" autoComplete="off" spellCheck={false} placeholder="8 letters and numbers" />
+          <input value={code} {...(error ? { 'aria-invalid': true, 'aria-describedby': 'si-error' } : {})} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12))} autoCapitalize="characters" autoComplete="off" spellCheck={false} placeholder="8 letters and numbers" />
           <small><span className="si-wide">You only type it once on this device.</span><span className="si-narrow">You only type it once on this phone.</span></small>
         </label>
         {error && <p className="error" id="si-error" role="alert">{error}</p>}
         <button className="btn" disabled={busy || code.length < 6}>{busy ? 'Checking…' : 'Continue'}</button>
       </form>
-      {managers}
+      {toSignIn('Already have an account?')}
     </AuthCard>
   );
 
-  const otherPlace = stores.length > 1
-    ? <button className="link-btn" onClick={() => { setStep('store'); setError(''); }}>Different restaurant?</button>
-    : <button className="link-btn" onClick={() => { localStorage.removeItem(CODE_KEY); setCode(''); setStep('code'); }}>Different restaurant?</button>;
-
+  const retype = <button type="button" className="link-btn" onClick={() => { setStep('code'); setStore(null); setError(''); }}>Wrong restaurant group? Type the code again</button>;
   if (step === 'store') return (
-    <AuthCard {...card} title={company} sub="Which restaurant do you work at?">
+    <AuthCard brand={brand} kicker={kickerOf(`Step 2 of ${total}`, company)} title="Where Do You Work?" sub={`${company} has ${stores.length} restaurants. Tap yours.`}>
       <div className="stack">
         <div className="name-list" role="list">
-          {stores.map((st) => <button key={st.id} role="listitem" className="name-btn" onClick={() => choose(st)}>{st.name}</button>)}
+          {stores.map((st) => <ChoiceRow key={st.id} onClick={() => choose(st)}>{st.name}</ChoiceRow>)}
         </div>
-        <button className="link-btn" onClick={() => { localStorage.removeItem(CODE_KEY); localStorage.removeItem(STORE_KEY); setCode(''); setStep('code'); }}>Different join code?</button>
-        {managers}
+        {retype}
       </div>
     </AuthCard>
   );
 
-  if (step === 'who') return (
-    <AuthCard {...card} title={store?.name || company} sub={stores.length > 1 ? `${company} · tap your name.` : 'Tap your name.'}>
-      <div className="stack">
-        {here.length > 8 && <label className="field"><span className="sr-only">Find your name</span><input type="search" placeholder="Find your name" value={q} onChange={(e) => setQ(e.target.value)} /></label>}
-        <div className="name-list" role="list">
-          {shown.map((s) => <button key={s.id} role="listitem" className="name-btn" onClick={() => { setWho(s); setError(''); setStep('pin'); }}>{s.name}</button>)}
-          {!shown.length && <p className="muted small">No one by that name yet.</p>}
-        </div>
-        <button className="btn ghost" onClick={() => { setStep('new'); setError(''); }}>I’m New Here</button>
-        {otherPlace}
-        {managers}
-      </div>
+  if (step === 'done' && joined) return (
+    <AuthCard brand={brand} kicker={store?.name || company} title={`You’re In, ${joined.name.split(' ')[0]}`}
+      sub={<>Next time, sign in with <strong>{joined.email || f.email}</strong> and your password, on any phone or computer.</>}>
+      <button type="button" className="btn" autoFocus onClick={() => { noteSignedIn(); setUser(joined); }}>Start Training</button>
     </AuthCard>
   );
 
-  if (step === 'pin' && who) return (
-    <AuthCard {...card} title={`Hi, ${who.name.split(' ')[0]}`} sub={who.needsPin ? 'Your PIN was reset. Pick a new one: 4 to 6 numbers.' : 'Enter your PIN.'}>
-      <form className="stack" onSubmit={signIn}>
-        {pinField(who.needsPin ? 'New PIN' : 'PIN', pin, setPin, who.needsPin ? 'new-password' : 'current-password')}
-        {who.needsPin && pinField('Type it again', pin2, setPin2, 'new-password')}
-        {error && <p className="error" id="si-error" role="alert">{error}</p>}
-        <button className="btn" disabled={busy || pin.length < 4}>{busy ? 'Signing In…' : 'Sign In'}</button>
-        <button type="button" className="link-btn" onClick={() => { setStep('who'); setPin(''); setError(''); }}>Not {who.name.split(' ')[0]}?</button>
-        <p className="muted small">Forgot your PIN? A manager can reset it.</p>
-      </form>
-    </AuthCard>
-  );
-
+  // Someone who joined with a PIN typing their name again: send them to move over, so their training comes with them.
+  const pinPerson = /already joined with a PIN/.test(error);
   return (
-    <AuthCard {...card} title={`Join ${store?.name || company}`} sub="Your name is how managers find your quiz scores. Your PIN keeps your training yours.">
+    <AuthCard brand={brand} kicker={kickerOf(`Step ${total} of ${total}`, store?.name || company)} title="About You" sub="You’ll sign in with this email and password from now on.">
       <form className="stack" onSubmit={join}>
-        <label className="field"><span>First and last name</span><input value={name} {...errorFor} onChange={(e) => setName(e.target.value)} autoComplete="name" /></label>
-        {pinField('Pick a PIN (4 to 6 numbers)', pin, setPin, 'new-password')}
-        {pinField('Type it again', pin2, setPin2, 'new-password')}
-        {error && <p className="error" id="si-error" role="alert">{error}</p>}
-        <button className="btn" disabled={busy || name.trim().length < 2 || pin.length < 4}>{busy ? 'Joining…' : 'Join'}</button>
-        {here.length > 0 && <button type="button" className="link-btn" onClick={() => { setStep('who'); setError(''); }}>Already joined? Pick your name</button>}
+        <label className="field"><span>First and last name</span><input value={f.name} {...invalid('name')} onChange={(e) => setF({ ...f, name: e.target.value })} autoComplete="name" /></label>
+        {errorNote('name')}
+        <label className="field"><span>Email</span><input type="email" inputMode="email" autoCapitalize="none" spellCheck={false} value={f.email} {...invalid('email')} onChange={(e) => setF({ ...f, email: e.target.value })} autoComplete="email" /></label>
+        {errorNote('email')}
+        <label className="field"><span>Choose a password</span><input type="password" value={f.password} {...invalid('password')} onChange={(e) => setF({ ...f, password: e.target.value })} autoComplete="new-password" /><small>At least 10 characters.</small></label>
+        {errorNote('password')}
+        {errorNote('form')}
+        {pinPerson && <Link className="btn ghost" to={setUpPath(account)}>Set Up Your Sign-In</Link>}
+        <button className="btn" disabled={busy || f.name.trim().length < 2 || !f.email.trim() || f.password.length < 10}>{busy ? 'Joining…' : `Join ${company}`}</button>
         {stores.length > 1 && <button type="button" className="link-btn" onClick={() => { setStep('store'); setError(''); }}>Different restaurant?</button>}
-        {managers}
       </form>
+      {toSignIn('Already joined?')}
     </AuthCard>
   );
 }
 
 /** Nov 23: /sign-in, /join, /<account>/sign-in or /<account>/join opened by someone already signed in. Never "We couldn't find
- *  that page" (Tommy opened miseacademy.app/join on his phone and got it): who's signed in, Go to Home and Sign Out. */
+ *  that page" (Tommy opened miseacademy.app/join on his phone and got it): who's signed in, Go to Home and Sign Out.
+ *  Nov 25 (section 50, frame 6): "You're Signed In", with their email and where. */
 export function SignedInCard({ kind, account = null }: { kind: AuthKind; account?: AccountLink | null }) {
   const { user, setUser } = useSession();
   const nav = useNavigate();
   const [busy, setBusy] = useState(false);
+  const where = user?.store?.name || user?.workingInName || null;
+  void kind; // the same card on every one of these addresses
   const signOut = async () => { setBusy(true); await api('/api/logout', { method: 'POST' }).catch(() => {}); setUser(null); setBusy(false); };
   return (
-    <AuthCard kicker={account?.name} brand={account?.brand} title={AUTH_TITLE[kind]} sub={<>You’re signed in as <strong>{user?.name}</strong>.</>}>
+    <AuthCard kicker={account?.name} brand={account?.brand} title="You’re Signed In" sub={<>You’re signed in as <strong>{user?.name}</strong>{user?.email ? <> ({user.email})</> : null}{where ? <> at {where}</> : null}.</>}>
       <div className="stack">
         <button type="button" className="btn" onClick={() => nav('/', { replace: true })}>Go to Home</button>
         <button type="button" className="btn ghost" disabled={busy} onClick={() => void signOut()}>{busy ? 'Signing Out…' : 'Sign Out'}</button>
+        <p className="muted small">Want a different account? Sign out first, then sign in or join.</p>
       </div>
     </AuthCard>
   );

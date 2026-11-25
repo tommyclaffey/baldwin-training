@@ -9,6 +9,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { totpAt, sha256 } from '../server/auth.mjs';
+import { addPinStaff, sessionCookieFor } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-roles-'));
@@ -24,8 +25,8 @@ before(async () => {
 after(() => { server?.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 
 /** A person with their own cookie jar. `call(path, { method, body })` → { status, data }. */
-function person(ip = '127.0.0.1') {
-  let jar = '';
+function person(ip = '127.0.0.1', start = '') {
+  let jar = start;
   return async (p, { method = 'GET', body } = {}) => {
     const res = await fetch(`http://127.0.0.1:${PORT}${p}`, { method, headers: { 'Content-Type': 'application/json', 'X-BT': '1', 'X-Forwarded-For': ip, ...(jar ? { Cookie: jar } : {}) }, body: body === undefined ? undefined : JSON.stringify(body) });
     const set = res.headers.get('set-cookie');
@@ -41,7 +42,8 @@ const twoStep = async (call) => {
   assert.equal((await call('/api/2fa/enable', { method: 'POST', body: { code: code(secret) } })).status, 200);
 };
 
-const owner = person(), tommy = person(), gm = person(), suki = person(), theo = person(), owner2 = person();
+const owner = person(), tommy = person(), gm = person(), owner2 = person();
+let suki = person(), theo = person();
 let joinCode = '', storeId = 0, sukiId = 0, theoId = 0, ownerId = 0, gmId = 0, otherCompany = 0;
 
 test('setup: an owner, a store manager, two staff with PINs, a super admin (two-step), a second company', async () => {
@@ -53,9 +55,10 @@ test('setup: an owner, a store manager, two staff with PINs, a super admin (two-
   const i = await owner('/api/team/invite', { method: 'POST', body: { email: 'gm@roles.test', role: 'manager', storeId } });
   assert.equal((await gm(`/api/invite/${token(i.data.link)}`, { method: 'POST', body: { name: 'Gale Manager', password: 'gm-pass-001' } })).status, 200);
   gmId = (await gm('/api/me')).data.user.id;
-  assert.equal((await suki('/api/join', { method: 'POST', body: { code: joinCode, name: 'Suki Server', pin: '4321', storeId } })).status, 200);
-  assert.equal((await theo('/api/join', { method: 'POST', body: { code: joinCode, name: 'Theo Tables', pin: '8765', storeId } })).status, 200);
-  sukiId = (await suki('/api/me')).data.user.id; theoId = (await theo('/api/me')).data.user.id;
+  // Nov 25: two staff who joined with a PIN (before section 50), signed in on their phones
+  sukiId = await addPinStaff(dir, { name: 'Suki Server', pin: '4321', storeId }); suki = person('127.0.0.1', sessionCookieFor(dir, sukiId));
+  theoId = await addPinStaff(dir, { name: 'Theo Tables', pin: '8765', storeId }); theo = person('127.0.0.1', sessionCookieFor(dir, theoId));
+  assert.equal((await suki('/api/me')).data.user.id, sukiId);
   const co = await tommy('/api/super/companies', { method: 'POST', body: { name: 'Other Group', ownerEmail: 'owner@other.test' } });
   otherCompany = co.data.id;
   assert.equal((await owner2(`/api/invite/${token(co.data.link)}`, { method: 'POST', body: { name: 'Otto Other', password: 'other-pass-1' } })).status, 200);
@@ -79,7 +82,7 @@ test('Promote to Manager: staff are refused; other companies can’t reach the p
   assert.equal((await gm(`/api/team/${sukiId}/promote`, { method: 'POST', body: { storeId: stores[1].id } })).status, 403, 'another store');
   // nor anyone outside their store
   const pia = person();
-  assert.equal((await pia('/api/join', { method: 'POST', body: { code: joinCode, name: 'Pia Patio', pin: '1357', storeId: stores[1].id } })).status, 200);
+  assert.equal((await pia('/api/join', { method: 'POST', body: { code: joinCode, name: 'Pia Patio', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-1357-x', storeId: stores[1].id } })).status, 200);
   const piaId = (await pia('/api/me')).data.user.id;
   assert.equal((await gm(`/api/team/${piaId}/promote`, { method: 'POST', body: { storeId } })).status, 404);
   assert.equal((await gm('/api/team')).data.people.find((p) => p.id === sukiId).canPromote, true, 'Gale sees the button for her own staff');
@@ -151,11 +154,11 @@ test('Change to Staff: owners only; keeps the person and their PIN; signs them o
   assert.equal(r.status, 200);
   assert.equal(r.data.hasPin, true);
   assert.equal((await sukiMgr('/api/me')).data.user, null, 'signed out');
-  assert.equal((await person()('/api/login', { method: 'POST', body: { email: 'suki@roles.test', password: 'suki-manager-1' } })).status, 401, 'no more email sign-in');
-  const back = person();
-  const pin = await back('/api/staff-login', { method: 'POST', body: { code: joinCode, id: sukiId, pin: '4321' } });
-  assert.equal(pin.status, 200);
-  assert.deepEqual([pin.data.user.id, pin.data.user.role], [sukiId, 'staff']);
+  assert.equal(r.data.emailSignIn, true);
+  // Nov 25 (section 50): staff sign in with email too, so she keeps her email and password
+  const back = await person()('/api/login', { method: 'POST', body: { email: 'suki@roles.test', password: 'suki-manager-1' } });
+  assert.equal(back.status, 200, 'still signs in with email');
+  assert.deepEqual([back.data.user.id, back.data.user.role], [sukiId, 'staff']);
   assert.ok((await owner('/api/audit')).data.audit.some((a) => a.action === 'change to staff' && /Suki Server/.test(a.detail)));
   // The last owner: a super admin working in the company can't change the only owner to staff.
   const t = person();
@@ -174,9 +177,10 @@ test('Change to Staff: owners only; keeps the person and their PIN; signs them o
 });
 
 test('Promote to Manager is instant: an owner or a store manager promotes; the person keeps their PIN and reaches the manager pages', async () => {
-  const nell = person(), ned = person();
-  assert.equal((await nell('/api/join', { method: 'POST', body: { code: joinCode, name: 'Nell Night', pin: '2580', storeId } })).status, 200);
-  assert.equal((await ned('/api/join', { method: 'POST', body: { code: joinCode, name: 'Ned Noon', pin: '3690', storeId } })).status, 200);
+  const ned = person();
+  const nellId0 = await addPinStaff(dir, { name: 'Nell Night', pin: '2580', storeId }); // joined with a PIN, before Nov 25
+  const nell = person('127.0.0.1', sessionCookieFor(dir, nellId0));
+  assert.equal((await ned('/api/join', { method: 'POST', body: { code: joinCode, name: 'Ned Noon', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-3690-x', storeId } })).status, 200);
   const nellId = (await nell('/api/me')).data.user.id, nedId = (await ned('/api/me')).data.user.id;
   assert.equal((await nell('/api/team')).status, 403, 'staff can’t open the team yet');
   // Gale (a store manager) promotes Nell to manager of her own store: no email, no link
@@ -189,17 +193,20 @@ test('Promote to Manager is instant: an owner or a store manager promotes; the p
   assert.deepEqual([me.id, me.role, me.storeId], [nellId, 'manager', storeId]);
   assert.equal((await nell('/api/team')).status, 200, 'the manager pages open');
   assert.equal((await nell('/api/audit')).status, 403, 'Activity stays an owner’s page');
-  // signed out, she signs back in with her PIN, as a manager
+  // signed out, she moves over with Set Up Your Sign-In (her PIN once, then email and a password), still a manager
   const back = person();
   const list = (await back(`/api/join/${joinCode}`)).data.staff;
-  assert.ok(list.some((x) => x.id === nellId), 'her name is on the PIN list');
-  const pin = await back('/api/staff-login', { method: 'POST', body: { code: joinCode, id: nellId, pin: '2580' } });
+  assert.ok(list.some((x) => x.id === nellId), 'her name is on the Set Up list');
+  const chk = await back('/api/set-up/check', { method: 'POST', body: { code: joinCode, id: nellId, pin: '2580' } });
+  assert.equal(chk.status, 200);
+  const pin = await back('/api/set-up/save', { method: 'POST', body: { ticket: chk.data.ticket, email: 'nell@roles.test', password: 'nell-night-01' } });
   assert.equal(pin.status, 200);
   assert.equal(pin.data.user.role, 'manager');
   assert.equal((await back('/api/team')).status, 200);
-  // a manager invited by email never signs in with a PIN
+  assert.equal((await person()('/api/login', { method: 'POST', body: { email: 'nell@roles.test', password: 'nell-night-01' } })).status, 200);
+  // a manager invited by email is never on it
   assert.ok(!list.some((x) => x.id === gmId));
-  assert.equal((await person()('/api/staff-login', { method: 'POST', body: { code: joinCode, id: gmId, pin: '0000' } })).status, 404);
+  assert.equal((await person()('/api/set-up/check', { method: 'POST', body: { code: joinCode, id: gmId, pin: '0000' } })).status, 404);
   // an owner promotes to every store
   const o = await owner(`/api/team/${nedId}/promote`, { method: 'POST', body: { storeId: null } });
   assert.equal(o.status, 200);
@@ -217,14 +224,14 @@ test('Promote to Manager is instant: an owner or a store manager promotes; the p
   assert.equal((await owner(`/api/team/${nedId}/demote`, { method: 'POST', body: { storeId } })).status, 200);
 });
 
-test('a manager changed to staff without a PIN picks one with the join code and their name', async () => {
+test('a manager changed to staff keeps signing in with their email and password (Nov 25)', async () => {
   const r = await owner(`/api/team/${gmId}/demote`, { method: 'POST', body: {} });
   assert.equal(r.status, 200);
-  assert.equal(r.data.hasPin, false);
-  const p = person();
-  const s = await p('/api/staff-login', { method: 'POST', body: { code: joinCode, id: gmId, pin: '2468' } });
+  assert.deepEqual([r.data.hasPin, r.data.emailSignIn], [false, true]);
+  const s = await person()('/api/login', { method: 'POST', body: { email: 'gm@roles.test', password: 'gm-pass-001' } });
   assert.equal(s.status, 200);
-  assert.equal(s.data.user.id, gmId);
+  assert.deepEqual([s.data.user.id, s.data.user.role], [gmId, 'staff']);
+  assert.ok(!(await person()(`/api/join/${joinCode}`)).data.staff.some((x) => x.id === gmId), 'never on the Set Up list');
 });
 
 test('the demo: promotion and Change to Staff happen straight away, no link', async () => {

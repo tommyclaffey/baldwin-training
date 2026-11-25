@@ -56,7 +56,7 @@ test('setup: The Baldwin’s owner and staff at The Baldwin and Testa Barra; a m
   maxId = d.prepare('SELECT MAX(id) m FROM entries').get().m;
   d.close();
   for (const [p, name, storeId] of [[baldwinStaff, 'Ada Baldwin', 1], [testaStaff, 'Tess Testa', 3]])
-    assert.equal((await p('/api/join', { method: 'POST', body: { code, name, pin: '4321', storeId } })).status, 200);
+    assert.equal((await p('/api/join', { method: 'POST', body: { code, name, email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4321-x', storeId } })).status, 200);
   const dish = (name, course, price, description, extra = {}) => ({ data: { name, course, price, description, ingredients: description.split(', '), allergens: [], confirm: true, ...extra } });
   menuFile = path.join(dir, 'menu.json');
   fs.writeFileSync(menuFile, JSON.stringify({

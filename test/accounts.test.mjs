@@ -7,7 +7,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { totpAt } from '../server/auth.mjs';
-import { giveAccount, PRIVATE_ACCOUNT } from './helpers.mjs';
+import { giveAccount, PRIVATE_ACCOUNT, addPinStaff } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-acct-'));
@@ -83,13 +83,17 @@ test('companies are kept apart', async () => {
   code1 = (await owner('/api/team')).data.company.joinCode;
   code2 = (await owner2('/api/team')).data.company.joinCode;
   assert.notEqual(code1, code2);
-  await staff1('/api/join', { method: 'POST', body: { code: code1, name: 'Bea Baldwin', pin: '1111', storeId: 1 } });
-  await staff2('/api/join', { method: 'POST', body: { code: code2, name: 'Sid Second', pin: '2222' } });
+  await staff1('/api/join', { method: 'POST', body: { code: code1, name: 'Bea Baldwin', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-1111-x', storeId: 1 } });
+  await staff2('/api/join', { method: 'POST', body: { code: code2, name: 'Sid Second', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-2222-x' } });
   const t1 = (await owner('/api/team')).data.people.map((p) => p.name);
   const t2 = (await owner2('/api/team')).data.people.map((p) => p.name);
   assert.ok(t1.includes('Bea Baldwin') && !t1.includes('Sid Second') && !t1.includes('Olive'));
   assert.ok(t2.includes('Sid Second') && !t2.includes('Bea Baldwin') && !t2.includes('Jeff'));
-  assert.deepEqual((await person()(`/api/join/${code2}`)).data.staff.map((s) => s.name), ['Sid Second'], 'a join code lists only its own staff');
+  // Nov 25: the list is only the people still on a PIN (Set Up Your Sign-In); someone who joined with email is never on it
+  assert.deepEqual((await person()(`/api/join/${code2}`)).data.staff.map((s) => s.name), [], 'no one with a password is listed');
+  await addPinStaff(dir, { name: 'Pia Pinned', companyId: company2 });
+  assert.deepEqual((await person()(`/api/join/${code2}`)).data.staff.map((s) => s.name), ['Pia Pinned'], 'a join code lists only its own PIN people');
+  assert.ok(!(await person()(`/api/join/${code1}`)).data.staff.some((s) => s.name === 'Pia Pinned'));
   // Another company's people can't be touched by id.
   const bea = (await owner('/api/team')).data.people.find((p) => p.name === 'Bea Baldwin');
   assert.equal((await owner2(`/api/team/${bea.id}`, { method: 'DELETE' })).status, 404);
@@ -123,7 +127,7 @@ test('staff: read and take quizzes, never edit', async () => {
   assert.equal((await staff1('/api/media')).status, 403);
   assert.equal((await staff1('/api/collections')).status, 403);
   assert.equal((await staff1('/api/login', { method: 'POST', body: { email: '', password: '1111' } })).status, 401);
-  assert.equal((await person()('/api/join', { method: 'POST', body: { code: code1, name: 'bea baldwin', pin: '9999', storeId: 1 } })).status, 409, 'names are unique in a company');
+  assert.equal((await person()('/api/join', { method: 'POST', body: { code: code1, name: 'bea baldwin', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-9999-x', storeId: 1 } })).status, 409, 'names are unique in a company');
   // Nothing to add or edit is even shown to staff; managers don't see the shared library's admin screens.
   const index = (await staff1('/api/index')).data;
   const links = async (who, slug) => { const p = (await who('/api/page/' + index.find((e) => e.slug === slug).file)).data; const out = []; const w = (n) => { if (n.to && n.to.startsWith('/admin')) out.push(n.to); (n.c || []).forEach(w); }; w(p.main); return out; };
@@ -132,15 +136,17 @@ test('staff: read and take quizzes, never edit', async () => {
   assert.ok(!(await links(owner, 'classic/sidecar')).some((t) => t.includes('classic')) && !(await links(owner, 'wine/red/cabernet')).some((t) => t.includes('wine-videos')), 'shared library screens are super-admin only');
 });
 
-test('PINs: wrong ones lock for 15 minutes, a manager reset lets the person pick a new one', async () => {
-  const bea = (await person()(`/api/join/${code1}`)).data.staff.find((s) => s.name === 'Bea Baldwin');
-  const phone = person();
-  assert.equal((await phone('/api/staff-login', { method: 'POST', body: { code: code1, id: bea.id, pin: '1111' } })).status, 200);
-  for (let i = 0; i < 5; i++) assert.equal((await person()('/api/staff-login', { method: 'POST', body: { code: code1, id: bea.id, pin: '0000' } })).status, 401);
-  assert.equal((await person()('/api/staff-login', { method: 'POST', body: { code: code1, id: bea.id, pin: '1111' } })).status, 429, 'locked, even with the right PIN');
-  assert.equal((await owner(`/api/team/${bea.id}/reset-pin`, { method: 'POST' })).status, 200);
-  assert.equal((await phone('/api/me')).data.user, null, 'a reset signs them out');
-  assert.equal((await person()(`/api/join/${code1}`)).data.staff.find((s) => s.id === bea.id).needsPin, true);
+test('PINs (Set Up Your Sign-In): wrong ones lock for 15 minutes, a manager reset lets the person skip the PIN', async () => {
+  const pipId = await addPinStaff(dir, { name: 'Pip Pinned', pin: '1111' });
+  const pip = (await person()(`/api/join/${code1}`)).data.staff.find((s) => s.name === 'Pip Pinned');
+  assert.deepEqual([pip.id, pip.needsPin], [pipId, false]);
+  assert.equal((await person()('/api/set-up/check', { method: 'POST', body: { code: code1, id: pip.id, pin: '1111' } })).status, 200);
+  for (let i = 0; i < 5; i++) assert.equal((await person()('/api/set-up/check', { method: 'POST', body: { code: code1, id: pip.id, pin: '0000' } })).status, 401);
+  assert.equal((await person()('/api/set-up/check', { method: 'POST', body: { code: code1, id: pip.id, pin: '1111' } })).status, 429, 'locked, even with the right PIN');
+  assert.equal((await owner(`/api/team/${pip.id}/reset-pin`, { method: 'POST' })).status, 200);
+  assert.equal((await person()(`/api/join/${code1}`)).data.staff.find((s) => s.id === pip.id).needsPin, true);
+  assert.equal((await person()('/api/set-up/check', { method: 'POST', body: { code: code1, id: pip.id } })).status, 200, 'after a reset: no PIN to type');
+  assert.equal((await person()('/api/staff-login', { method: 'POST', body: { code: code1, id: pip.id, pin: '1111' } })).status, 410, 'nobody signs in with a PIN');
 });
 
 test('sign in as: logged, no super admin while in it, and back again', async () => {
@@ -187,10 +193,10 @@ test('only the primary super admin adds or removes super admins', async () => {
 test('stores: staff pick their store; each store has its own book, records and sections', async () => {
   const j = (await person()(`/api/join/${code1}`)).data;
   assert.deepEqual(j.stores.map((s) => s.name), ['The Baldwin', 'J.Baldwin’s'.replace('’', "'"), 'Testa Barra']);
-  assert.equal((await person()('/api/join', { method: 'POST', body: { code: code1, name: 'No Store', pin: '1234' } })).status, 400, 'a store is required');
+  assert.equal((await person()('/api/join', { method: 'POST', body: { code: code1, name: 'No Store', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-1234-x' } })).status, 400, 'a store is required');
   const jb = j.stores[1].id;
   const jay = person();
-  assert.equal((await jay('/api/join', { method: 'POST', body: { code: code1, name: 'Jay Jbs', pin: '5555', storeId: jb } })).status, 200);
+  assert.equal((await jay('/api/join', { method: 'POST', body: { code: code1, name: 'Jay Jbs', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-5555-x', storeId: jb } })).status, 200);
   const me = (await jay('/api/me')).data.user;
   assert.equal(me.store.name, "J.Baldwin's");
   assert.equal(me.canSwitchStore, false);
@@ -238,7 +244,7 @@ test('stores: staff pick their store; each store has its own book, records and s
   await owner('/api/sections', { method: 'PUT', body: { slot: 'Bar 1', name: 'Jay' } });
   assert.equal((await jay('/api/sections')).data.names['Bar 1'], 'Jay');
   const bo = person();
-  await bo('/api/join', { method: 'POST', body: { code: code1, name: 'Bo Baldwin', pin: '7777', storeId: 1 } });
+  await bo('/api/join', { method: 'POST', body: { code: code1, name: 'Bo Baldwin', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-7777-x', storeId: 1 } });
   assert.equal((await bo('/api/sections')).data.names['Bar 1'], undefined, 'The Baldwin has its own sections');
   assert.equal((await jay('/api/store', { method: 'POST', body: { storeId: 1 } })).status, 403, 'staff can’t switch stores');
   await owner('/api/store', { method: 'POST', body: { storeId: 1 } });
@@ -266,8 +272,8 @@ test('manager home + People (Nov 11): a store manager sees and acts on their own
   const gm = person();
   assert.equal((await gm(`/api/invite/${inv.data.link.split('/').pop()}`, { method: 'POST', body: { name: 'Tess GM', password: 'long-enough-6' } })).status, 200);
   const tia = person(), rob = person();
-  assert.equal((await tia('/api/join', { method: 'POST', body: { code: code1, name: 'Tia Testa', pin: '2468', storeId: tb } })).status, 200);
-  assert.equal((await rob('/api/join', { method: 'POST', body: { code: code1, name: 'Rob Baldwin', pin: '1357', storeId: 1 } })).status, 200);
+  assert.equal((await tia('/api/join', { method: 'POST', body: { code: code1, name: 'Tia Testa', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-2468-x', storeId: tb } })).status, 200);
+  assert.equal((await rob('/api/join', { method: 'POST', body: { code: code1, name: 'Rob Baldwin', email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-1357-x', storeId: 1 } })).status, 200);
   await tia('/api/path/jobs', { method: 'POST', body: { jobs: ['server'] } });
   await rob('/api/path/jobs', { method: 'POST', body: { jobs: ['server'] } });
   const tiaId = (await tia('/api/me')).data.user.id, robId = (await rob('/api/me')).data.user.id;

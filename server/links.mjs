@@ -4,6 +4,7 @@
 //
 //   /sign-in, /join            Nov 23: Sign In and Join with a Code (src/lib/authroute.ts); both reserved below.
 //   /<account>/join             that account's Join with a Code in its look (its code only); /<account>/sign-in = /<account>.
+//   /set-up-sign-in             Nov 25: Set Up Your Sign-In (the one-time PIN → email move), and /<account>/set-up-sign-in.
 //   miseacademy.app/<account>   companies.slug, e.g. /the-baldwin. Opens that account's sign-in in its own look (the
 //                               join code is still asked for: a public address can't be the key to a company's book).
 //                               Demo copies and Mise Academy (HQ) have no link.
@@ -188,5 +189,5 @@ export function accountHtml(co, sub = null) {
   return pageHtml(headTags(card, { url: `${SITE}/${co.slug}${sub ? '/' + sub : ''}`, account: { slug: co.slug, name: co.name, brand, ...(spec ? { lookSpec: spec } : {}) } }));
 }
 /** Every other page: the Mise card. Nov 23: /sign-in and /join say their own address. */
-export const AUTH_PAGES = ['sign-in', 'join'];
+export const AUTH_PAGES = ['sign-in', 'join', 'set-up-sign-in']; // Nov 25: Set Up Your Sign-In (section 50)
 export const miseHtml = (p = '/') => pageHtml(headTags(MISE_SHARE, { url: SITE + (AUTH_PAGES.includes(String(p).replace(/^\/+|\/+$/g, '')) ? '/' + String(p).replace(/^\/+|\/+$/g, '') : '/') }));

@@ -48,7 +48,7 @@ test('setup: The Baldwin’s owner, the super admin (two-step on), and staff at 
   await turnOnTwoStep(tommy, { workIn: null });
   code = db().prepare('SELECT join_code FROM companies WHERE id = 1').get().join_code;
   for (const [p, name, storeId] of [[baldwinStaff, 'Ada Baldwin', 1], [jbStaff, 'Jo Jaybee', 2], [testaStaff, 'Tess Testa', 3]])
-    assert.equal((await p('/api/join', { method: 'POST', body: { code, name, pin: '4321', storeId } })).status, 200);
+    assert.equal((await p('/api/join', { method: 'POST', body: { code, name, email: `j${Math.random().toString(36).slice(2, 10)}@join.test`, password: 'join-pass-4321-x', storeId } })).status, 200);
 });
 
 test('the migration adds stores.look, empty for every store, so every store wears its company’s look', async () => {
