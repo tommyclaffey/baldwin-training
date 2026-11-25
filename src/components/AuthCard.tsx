@@ -24,7 +24,16 @@ const tracking = (s: TypeSpec) => (s.ls ? `${parseFloat(s.ls) / 100}em` : '0');
 /** The first of a look's on-dark colours with at least `min`:1 on Char (#121110, the gradient's black), else white. */
 const lightest = (t: Theme, roles: ColorRole[], min: number) => roles.map((r) => color(t, r)).find((c) => ratio(c, '#121110') >= min) ?? '#FFFFFF';
 /** H8's title in the look's casing: capitals for a look whose titles are capitals, else as written ("Ready for service."). */
-const readyCase = (s: string, t: Theme) => (t.type.pageTitle.case === 'upper' ? s.toUpperCase() : s);
+export const readyCase = (s: string, t: Theme) => (t.type.pageTitle.case === 'upper' ? s.toUpperCase() : s);
+/** The sign-in's line under the title (also the link card's, Nov 25). */
+export const READY_LINE = ['Training, inventory, prep and team chat', 'for every position, front and back of house.'] as const;
+/** Nov 25: the link card's words (Your Look's card) in the look's own on-dark colours, light enough on its dark card
+ *  colour (the card's photo fades in behind the words' right end, so the same margins as the sign-in's title card). */
+export function cardInk(t: Theme) {
+  const bg = color(t, 'inverse');
+  const pick = (roles: ColorRole[], min: number) => roles.map((r) => color(t, r)).find((c) => ratio(c, bg) >= min) ?? '#FFFFFF';
+  return { label: pick(['onInverseMuted', 'onInverse'], 7), title: pick(['onInverse'], 7), line: pick(['onInverseMuted', 'onInverse'], 7) };
+}
 
 /** The brand's roles as CSS variables on this screen only, so the card never mixes two brands' paint. */
 export function paint(t: Theme): CSSProperties {
@@ -86,7 +95,7 @@ export function ReadyWords({ t }: { t: Theme }) {
     <div className={t.signIn ? 'si-ready si-ready-mise' : 'si-ready'}>
       <p className="si-ready-label">Front and back of house</p>
       <p className="si-ready-title" ref={ref}><span className="sr-only">Ready for service.</span><span aria-hidden="true">{readyCase('Ready for', t)}<br />{readyCase('service.', t)}</span></p>
-      <p className="si-ready-line">Training, inventory, prep and team chat <br />for every position, front and back of house.</p>
+      <p className="si-ready-line">{READY_LINE[0]} <br />{READY_LINE[1]}</p>
     </div>
   );
 }

@@ -4632,9 +4632,10 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .yl-lc-fade { position: absolute; inset: 0; }
 .yl-lc-copy { position: absolute; left: 80px; top: 84px; width: 560px; display: flex; flex-direction: column; gap: 14px; }
 .yl-lc-copy .yl-art { width: 300px; }
-.yl-lc-script { margin: 24px 0 0; font-size: 40px; }
-.yl-lc-head { margin: 0; font-size: 64px; line-height: 1.05; font-weight: 700; }
-.yl-lc-line { margin: 0; font-size: 22px; }
+/* Nov 25: the sign-in's words (H8) on the card: label, two-line title, the line */
+.yl-lc-label { margin: 0; font-size: 15px; line-height: 18px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.yl-lc-head { margin: 0; font-size: 64px; line-height: 1.05; white-space: nowrap; }
+.yl-lc-line { margin: 0; font-size: 22px; line-height: 30px; }
 .yl-lc-mise { margin: 18px 0 0; font-size: 16px; font-weight: 600; letter-spacing: .16em; display: flex; align-items: center; gap: 10px; }
 .yl-lc-mise img { height: 22px; }
 .yl-ba { margin: 0; display: flex; flex-direction: column; gap: 8px; }

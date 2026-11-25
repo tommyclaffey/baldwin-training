@@ -129,7 +129,7 @@ export type Theme = {
   hero?: { src: string; alt: string; crop: Crop };
   /** Nov 24 (Figma 09 · Idea Board, section 51, "H8 · Ready for service.", 1025:4310 / 1027:4434; Tommy picked it): the
    *  sign-in photo side's title card and the plain logo above it (Mise: the mise lockup, not Mise Academy; Tommy: "Academy
-   *  is a feature"). Unset: the brand's accent line and "Know the menu cold." (every custom look, unchanged). */
+   *  is a feature"). Unset: its mark, with the same H8 words (every custom look). */
   signIn?: { logo: { src: string; alt: string } };
   /** The tab and home-screen icon (Nov 17): /icons/<icon>-<size>.png. Unset: The Baldwin's way (its store's own icon, or
    *  the store's initial). */

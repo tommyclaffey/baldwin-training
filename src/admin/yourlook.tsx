@@ -16,7 +16,7 @@ import { useSession } from '../lib/session';
 import { brandTitle, color, fontCss, registerLook, lookTheme, themeFromSpec, cropFill, type Brand, type Theme } from '../lib/theme';
 import { COLOR_ROLES, type LookSpec, type LookColors, type PairResult, type Fix } from '../lib/lookspec.ts';
 import { ErrorNote, Loading } from './ui';
-import { paint, ReadyWords } from '../components/AuthCard';
+import { cardInk, paint, READY_LINE, readyCase, ReadyWords } from '../components/AuthCard';
 
 /* ── Data from the server ──────────────────────────────────────────────────────────────────────────────────────────── */
 type Access = 'full' | 'try' | 'upgrade' | 'none';
@@ -632,8 +632,11 @@ function CardPreview({ t, spec }: { t: Theme; spec: LookSpec }) {
   return <Scaled w={1200} h={630} className="yl-frame"><CardArt t={t} spec={spec} /></Scaled>;
 }
 /** The link card, 1200 × 630: the same drawing the canvas makes for the real card (uploadCard). */
+/** The title's weight in the link card: the look's own (Mise's DM Serif Display has one weight), else bold. */
+const titleWeight = (t: Theme) => ({ Regular: 400, Italic: 400, Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800 } as Record<string, number>)[t.type.pageTitle.fs || ''] || 700;
 function CardArt({ t, spec }: { t: Theme; spec: LookSpec }) {
   const head = t.type.pageTitle;
+  const ink = cardInk(t);
   const L = spec.logo.dark || spec.logo.light;
   return (
     <div className="yl-lc" style={{ background: color(t, 'inverse'), fontFamily: fontCss(t.type.body.ff) }}>
@@ -641,9 +644,11 @@ function CardArt({ t, spec }: { t: Theme; spec: LookSpec }) {
       <div className="yl-lc-fade" style={{ background: `linear-gradient(90deg, ${color(t, 'inverse')} 0%, ${color(t, 'inverse')} 42%, transparent 75%)` }} />
       <div className="yl-lc-copy">
         {L && <div style={!spec.logo.dark ? { background: spec.colors.card, padding: 8, borderRadius: 8, display: 'inline-block' } : undefined}><Art l={L} h={96} /></div>}
-        <p className="yl-lc-script" style={{ fontFamily: fontCss(t.type.accent.ff), color: color(t, 'accentOnDark') }}>the training app</p>
-        <p className="yl-lc-head" style={{ fontFamily: fontCss(head.ff), color: color(t, 'onInverse'), textTransform: head.case === 'upper' ? 'uppercase' : undefined, letterSpacing: head.ls ? `${parseFloat(head.ls) / 100}em` : undefined }}>{brandTitle('Know the menu cold.', t)}</p>
-        <p className="yl-lc-line" style={{ color: color(t, 'onInverseMuted') }}>The menu, the bar, wine and service, all in one place.</p>
+        {/* Nov 25: the sign-in's words (H8, Tommy Nov 24), in this look's label, title and body faces */}
+        <p className="yl-lc-label" style={{ fontFamily: fontCss(t.type.label.ff), color: ink.label }}>Front and back of house</p>
+        <p className="yl-lc-head" style={{ fontFamily: fontCss(head.ff), fontStyle: (head.fs || '').includes('Italic') ? 'italic' : undefined, fontWeight: titleWeight(t), color: ink.title, letterSpacing: head.ls ? `${parseFloat(head.ls) / 100}em` : undefined }}>
+          <span className="sr-only">Ready for service.</span><span aria-hidden="true">{readyCase('Ready for', t)}<br />{readyCase('service.', t)}</span></p>
+        <p className="yl-lc-line" style={{ color: ink.line }}>{READY_LINE[0]}<br />{READY_LINE[1]}</p>
         <p className="yl-lc-mise" style={{ color: color(t, 'accentOnDark') }}>TRAINING ON <img src="/img/mise-brand/mise-dark.svg" alt="Mise" /></p>
       </div>
     </div>
@@ -656,7 +661,9 @@ async function uploadCard(id: string, t: Theme, spec: LookSpec) {
   const g = cv.getContext('2d')!;
   const img = (src: string) => new Promise<HTMLImageElement>((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; });
   const head = t.type.pageTitle;
-  await Promise.all([`700 64px ${fontCss(head.ff)}`, `400 40px ${fontCss(t.type.accent.ff)}`, `400 22px ${fontCss(t.type.body.ff)}`].map((f) => document.fonts.load(f).catch(() => {})));
+  const ink = cardInk(t);
+  const titleFont = (px: number) => `${(head.fs || '').includes('Italic') ? 'italic ' : ''}${titleWeight(t)} ${px}px ${fontCss(head.ff)}`;
+  await Promise.all([titleFont(64), `700 15px ${fontCss(t.type.label.ff)}`, `400 22px ${fontCss(t.type.body.ff)}`].map((f) => document.fonts.load(f).catch(() => {})));
   g.fillStyle = color(t, 'inverse'); g.fillRect(0, 0, W, H);
   if (spec.photo) {
     const p = await img(spec.photo);
@@ -675,12 +682,20 @@ async function uploadCard(id: string, t: Theme, spec: LookSpec) {
     g.drawImage(i, x0, y0, w0, h0, 80, y, w0 * k, h0 * k);
     y += h0 * k + 70;
   }
-  g.fillStyle = color(t, 'accentOnDark'); g.font = `400 40px ${fontCss(t.type.accent.ff)}`; g.fillText('the training app', 80, y); y += 70;
-  g.fillStyle = color(t, 'onInverse'); g.font = `700 64px ${fontCss(head.ff)}`;
-  const words = brandTitle('Know the menu cold.', t);
-  const lines = head.case === 'upper' ? ['KNOW THE', 'MENU COLD.'] : ['Know the', 'menu cold.'];
-  if (g.measureText(words).width < 560) { g.fillText(words, 80, y); y += 72; } else for (const l of lines) { g.fillText(l, 80, y); y += 70; }
-  g.fillStyle = color(t, 'onInverseMuted', 0); g.font = `400 22px ${fontCss(t.type.body.ff)}`; g.fillText('The menu, the bar, wine and service, all in one place.', 80, y + 10);
+  // Nov 25: the sign-in's words (H8, Tommy Nov 24: "Same language, different style"): label, two-line title, the line
+  const spaced = g as CanvasRenderingContext2D & { letterSpacing?: string };
+  y -= 24;
+  g.fillStyle = ink.label; g.font = `700 15px ${fontCss(t.type.label.ff)}`; spaced.letterSpacing = '2.4px';
+  g.fillText('FRONT AND BACK OF HOUSE', 80, y); spaced.letterSpacing = '0px'; y += 22;
+  const lines = [readyCase('Ready for', t), readyCase('service.', t)];
+  let px = 64; g.font = titleFont(px);
+  const widest = Math.max(...lines.map((l) => g.measureText(l).width));
+  if (widest > 560) { px = Math.floor(px * 560 / widest); g.font = titleFont(px); } // a wide face steps down to fit
+  g.fillStyle = ink.title;
+  for (const l of lines) { y += Math.round(px * 1.05); g.fillText(l, 80, y); }
+  g.fillStyle = ink.line; g.font = `400 22px ${fontCss(t.type.body.ff)}`;
+  y += 22;
+  for (const l of READY_LINE) { y += 30; g.fillText(l, 80, y); }
   g.fillStyle = color(t, 'accentOnDark'); g.font = `600 16px ${fontCss(t.type.body.ff)}`; g.fillText('TRAINING ON MISE ACADEMY', 80, H - 64);
   const blob = await new Promise<Blob | null>((r) => cv.toBlob(r, 'image/jpeg', 0.9));
   if (!blob) return;

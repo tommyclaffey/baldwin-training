@@ -112,9 +112,9 @@ export const linkOf = (co) => (co && !co.demo && !co.internal && !co.deleted_at 
 /* ---------------------------- link previews ---------------------------- */
 const MISE_IMAGE = '/img/mise-brand/share-card.jpg';
 const LINE = 'The menu, the bar, wine and service, all in one place.';
-/** The Mise Academy card (Figma 850:1377): the site's root, every Foundation account and every other address. */
+/** The Mise Academy card (Figma 850:1377; Nov 25 the sign-in's H8 words, scripts/share-card/render.mjs): the site's root, every Foundation account and every other address. */
 export const MISE_SHARE = { title: 'Mise Academy', description: LINE, image: MISE_IMAGE,
-  alt: 'Mise Academy: know the menu cold. A bartender pouring a cocktail.' };
+  alt: 'Mise: ready for service, front and back of house. A bartender pouring a cocktail.' };
 
 const versions = new Map();
 /** ?v= from the file's own bytes, so a new card is a new address and cached previews refresh. */
