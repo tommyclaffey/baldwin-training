@@ -4364,6 +4364,14 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
 .look-roles .temp-seg button { font-family: var(--look-body); }
 .look-roles .gr-num { font-family: var(--look-body); }
 .look-roles .gr-tag, .look-roles .gr-done, .look-roles .gr-opt { font-family: var(--look-body); }
+.look-roles .ab { font-family: var(--look-body); }
+.look-roles .ab-head h2 { font-family: var(--look-body); }
+.look-roles .ab-sec h3, .look-roles .ab-step, .look-roles .ab-chips-label, .look-roles .ab-check dt { font-family: var(--look-body); }
+.look-roles .ab-link { font-family: var(--look-body); }
+.look-roles .ab-phone .ab-head h2 { font-family: var(--look-body); }
+.look-roles .ab-ask { font-family: var(--look-body); }
+.look-roles .ab-toast { font-family: var(--look-body); }
+.look-roles .ab-new { font-family: var(--look-body); }
 /* ── end look-body ── */
 
 /* ── Looks painted from their roles (Nov 17: Testa Barra, J.Baldwin's; theme.ts `coded: 'roles'`). The coded screens were
