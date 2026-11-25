@@ -35,8 +35,14 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     } catch { setUser(null); setSessionBrand(null); }
     setLoaded(true);
   }, []);
+  // Nov 25 (Autumn's screenshot: signed in, "We couldn't find that page" on Home): if the page list didn't arrive (a
+  // dropped connection, or the server restarting for an update) it was kept empty, so every page, Home included, looked
+  // missing. Now it tries again a few times before giving up.
   const reloadIndex = useCallback(async () => {
-    try { setIndex(await api<IndexEntry[]>('/api/index')); } catch { /* keep the built-in index */ }
+    for (let i = 0; i < 4; i++) {
+      try { setIndex(await api<IndexEntry[]>('/api/index')); break; }
+      catch { if (i < 3) await new Promise((r) => setTimeout(r, 800 * 2 ** i)); }
+    }
     setIndexLoaded(true);
   }, []);
   useEffect(() => { refresh(); }, [refresh]);

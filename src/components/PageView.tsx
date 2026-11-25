@@ -270,7 +270,15 @@ export function PageView() {
       return <main ref={ref} className="page page-loading" aria-busy="true"><div className="loader" /></main>;
     }
     // just signed in on an old address (Nov 24): Home, not "couldn't find"
-    if (justSignedIn()) { try { sessionStorage.removeItem(JUST_SIGNED_IN); } catch { /* */ } return <Navigate to="/" replace />; }
+    if (justSignedIn() && location.pathname !== '/') { try { sessionStorage.removeItem(JUST_SIGNED_IN); } catch { /* */ } return <Navigate to="/" replace />; }
+    // Nov 25: no page list at all means it didn't load (not that the page is gone): say so, and offer to try again
+    if (!session.index.length) return (
+      <main ref={ref} className="page page-message">
+        <h1>This page didn’t load</h1>
+        <p>Check your connection, then try again.</p>
+        <button className="btn" onClick={() => window.location.reload()}>Try Again</button>
+      </main>
+    );
     return (
       <main ref={ref} className="page page-message">
         <h1>We couldn’t find that page</h1>
