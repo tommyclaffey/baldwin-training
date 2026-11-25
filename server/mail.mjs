@@ -72,3 +72,31 @@ export function inviteEmail({ email, url, days, role, place = null, by = null })
 </div></body></html>`;
   return { subject, text, html };
 }
+
+/** Nov 25 (Figma section 48, edge state 4): Start Your Restaurant's "Check Your Email". Only sent once email is set up
+ *  (RESEND_API_KEY + MAIL_FROM); until then sign-up goes straight on to Your Restaurant. */
+export function signUpEmail({ name, email, url, hours }) {
+  const first = String(name || '').split(' ')[0] || 'there';
+  const subject = 'Finish setting up your restaurant on Mise Academy';
+  const text = [
+    `Hi ${first},`,
+    '',
+    `Open this link to finish setting up your restaurant on Mise Academy (${email}):`,
+    '',
+    url,
+    '',
+    `The link works once and expires in ${hours} hours. If you didn’t start this, ignore this email: nothing is set up without it.`,
+    '',
+    'Mise Academy',
+  ].join('\n');
+  const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#f5f2ec;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#1d1b18">
+<div style="max-width:480px;margin:0 auto;background:#ffffff;border-radius:12px;padding:28px">
+<p style="margin:0 0 20px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5c564d">Mise Academy</p>
+<p style="margin:0 0 12px;font-size:16px;line-height:1.5">Hi ${esc(first)},</p>
+<p style="margin:0 0 20px;font-size:16px;line-height:1.5">Open this link to finish setting up your restaurant on Mise Academy (${esc(email)}):</p>
+<p style="margin:0 0 20px"><a href="${esc(url)}" style="display:inline-block;background:#1d1b18;color:#ffffff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:8px">Finish Setting Up</a></p>
+<p style="margin:0 0 12px;font-size:14px;line-height:1.5;color:#5c564d">The link works once and expires in ${hours} hours. If you didn’t start this, ignore this email: nothing is set up without it.</p>
+<p style="margin:0;font-size:12px;line-height:1.5;color:#5c564d;word-break:break-all">${esc(url)}</p>
+</div></body></html>`;
+  return { subject, text, html };
+}

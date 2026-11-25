@@ -24,7 +24,11 @@ import {
   hashPassword, verifyPassword, burnPasswordCheck, createSession, endSession, sessionCookie, sessionCookies, sessionDays, LoginLimiter, publicUser,
   sha256, newToken, newTotpSecret, verifyTotp, otpauthUrl, newJoinCode, clientIp,
 } from './auth.mjs';
-import { APP_URL, mailConfigured, sendMail, resetEmail, inviteEmail } from './mail.mjs';
+import { APP_URL, mailConfigured, sendMail, resetEmail, inviteEmail, signUpEmail } from './mail.mjs';
+import { signupRoutes, getReady } from './signup.mjs';
+import { STATES } from './lawstate.mjs';
+import { toSlug, isReserved, SLUG } from './links.mjs';
+import { sharedHome } from './cms.mjs';
 import { legalState } from './legal.mjs';
 import { logError } from './ops.mjs';
 import { wipeCompany, PROTECTED } from './companydata.mjs';
@@ -368,8 +372,16 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
   const storeCap = (co) => (co.demo ? DEMO_STORE_CAP : STORE_CAP);
   const sameName = (cid, name, except = 0) => db.prepare('SELECT 1 FROM stores WHERE company_id = ? AND deleted_at IS NULL AND name = ? COLLATE NOCASE AND id != ?').get(cid, name, except);
 
+  // Start Your Restaurant (Nov 25, server/signup.mjs)
+  const signup = signupRoutes({ db, fail, sendJson, readJson, str, ip, validEmail, validPassword, hashPassword, verifyPassword, sha256, newToken, signIn, LoginLimiter,
+    accountSlug, toSlug, isReserved, SLUG, STATES, stateName, setJoinCode, addStore, audit, DEFAULT_LOOK, PLANS, STORE_CAP, mailConfigured, sendMail, signUpEmail, APP_URL, logError,
+    libraryCounts: () => { const h = sharedHome(); return {
+      classics: db.prepare("SELECT COUNT(*) n FROM entries WHERE collection = 'classic' AND store_id = ? AND archived_at IS NULL").get(h.store).n,
+      videos: db.prepare("SELECT COUNT(*) n FROM wine_videos WHERE store_id = ? AND key NOT LIKE 'wine:%'").get(h.store).n } } });
+
   return async function route(req, res, url, c) {
     const m = req.method, p = url.pathname, parts = p.split('/').filter(Boolean);
+    if ((p === '/api/sign-up' || p.startsWith('/api/sign-up/')) && (await signup(req, res, url, c)) !== false) return;
 
     /* ---- who's signed in ---- */
     if (p === '/api/me' && m === 'GET') {
@@ -1039,7 +1051,8 @@ export function accountRoutes({ db, fail, sendJson, readJson, str, isSecure }) {
         .map((i) => ({ id: i.id, email: i.email, teamRole: GIVABLE.includes(i.super_role) ? i.super_role : 'manager', createdAt: i.created_at, expiresAt: i.expires_at })) : [];
       return sendJson(res, 200, {
         // Mise Academy (HQ)'s people are the Mise team (they have no company row of their own)
-        companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, link: linkOf(x), joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, leads: x.internal ? team.length : x.leads, staff: x.staff,
+        companies: companies.map((x) => ({ id: x.id, name: x.name, slug: x.slug, link: linkOf(x), joinCode: x.join_code, createdAt: x.created_at, deletedAt: x.deleted_at, signedUpAt: x.signed_up_at || null, // Nov 25: Start Your Restaurant
+           leads: x.internal ? team.length : x.leads, staff: x.staff,
           lastSeenAt: x.internal ? team.reduce((a, t) => (t.last_seen_at && t.last_seen_at > (a || '') ? t.last_seen_at : a), null) : x.last_seen,
           demo: !!x.demo, hq: !!x.internal, state: x.state || null, plan: PLANS[x.plan] ? x.plan : DEFAULT_PLAN, look: x.brand || DEFAULT_LOOK, drawnIn: lookOf(x), looks: looksFor(x, ownLooks(x.id)),
           // Nov 17: each store's own look (null = the company's) and the look it's drawn in

@@ -78,7 +78,8 @@ test('which screen each address is (src/lib/authroute.ts)', () => {
   assert.deepEqual(authRouteFor('/set-up-sign-in', null), { kind: 'set-up', account: null });
   assert.deepEqual(authRouteFor('/the-baldwin/set-up-sign-in', tb), { kind: 'set-up', account: tb });
   assert.deepEqual([setUpPath(null), setUpPath(tb)], ['/set-up-sign-in', '/the-baldwin/set-up-sign-in']);
-  assert.deepEqual(AUTH_TITLE, { 'sign-in': 'Sign In', join: 'Join with a Code', 'set-up': 'Set Up Your Sign-In' });
+  assert.deepEqual(AUTH_TITLE, { 'sign-in': 'Sign In', join: 'Join with a Code', 'set-up': 'Set Up Your Sign-In', 'sign-up': 'Start Your Restaurant' });
+  assert.deepEqual(authRouteFor('/sign-up', null), { kind: 'sign-up', account: null }); // Nov 25: Start Your Restaurant (section 48)
 });
 
 test('/sign-in and /join: 200, the Mise card at their own address, no account', async () => {

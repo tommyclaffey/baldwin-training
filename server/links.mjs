@@ -74,7 +74,7 @@ export function reserved() {
 /** Can't be an account's address: reserved, or a demo copy's (demo-…). */
 export const isReserved = (slug) => reserved().has(slug) || slug === 'demo' || slug.startsWith('demo-');
 
-const toSlug = (name) => String(name || '').toLowerCase().replace(/&/g, ' and ').normalize('NFKD').replace(/[̀-ͯ]/g, '')
+export const toSlug = (name) => String(name || '').toLowerCase().replace(/&/g, ' and ').normalize('NFKD').replace(/[̀-ͯ]/g, '')
   .replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 36).replace(/-+$/, '');
 
 /** A new company's address: from its name, never reserved, never taken (adds -2, -3…). */

@@ -30,6 +30,8 @@ type Home = Team & {
   quizzes: { taken: number; average: number | null; retakes: number; missed: { q: string; pct: number; asked: number; topic: string; topicLabel: string } | null; teamQuizzes: { id: string; title: string }[] };
   edits: { name: string; what: string; by: string; at: string; to: string | null }[];
   book: { key: string; label: string; count: number; unit: string; to: string }[];
+  /** Nov 25 (section 48): a company that signed itself up, until it's ready (server/signup.mjs getReady) */
+  getReady?: GetReadyData | null;
 };
 type QuizRow = { id: string; title: string; best: number; total: number; attempts: number; lastAt: string; passed: boolean; signedOff: { at: string; by: string | null } | null; signable: boolean };
 type Promotion = { email: string; storeId: number | null; storeName: string | null; createdAt: string; expiresAt: string };
@@ -181,6 +183,7 @@ export function ManagerHome() {
       </div>
       <PageHead script={`${dayLabel(todayIso(), { weekday: 'long', month: 'short', day: 'numeric' })} · ${data.store}`} title={`${greet}, ${first}`.toUpperCase()} people={data.people} />
       {/* Team Chat v2 (Nov 13, Figma 688:862): what's waiting in chat, first */}
+      {data.getReady && <GetReady data={data.getReady} store={data.store} joinCode={data.joinCode} link={data.link ?? null} />}
       <WaitingCard className="wc-admin" />
       {data.signoffs.length > 0 && <SignoffBand asks={data.signoffs} onDone={load} />}
       <div className="mh-cols">
@@ -193,6 +196,34 @@ export function ManagerHome() {
       </div>
       <Book tiles={data.book} />
     </div>
+  );
+}
+
+type GetReadyData = { done: number; total: number; items: { key: string; title: string; done: boolean; detail: string | null; tag?: string; optional?: boolean; action?: { label: string; to: string } }[] };
+/** Get Ready (Nov 25; Figma 09 · Idea Board section 48, 968:1904): a signed-up company's first-run checklist on Home. Every
+ *  line is worked out from what's really there; it leaves once the counted lines are done. Your Look counts only on the
+ *  Custom Brand plan. */
+function GetReady({ data, store, joinCode, link }: { data: GetReadyData; store: string; joinCode: string | null; link: string | null }) {
+  return (
+    <section className="mg-card gr-card" aria-labelledby="gr-title">
+      <div className="gr-head">
+        <p className="mg-label">Get ready · {data.done} of {data.total} done</p>
+        <h2 id="gr-title">Get {store} ready for your team</h2>
+        <p className="muted">Do them in any order. This card leaves once everything’s done.</p>
+        <div className="gr-bar" role="progressbar" aria-label="Get ready" aria-valuemin={0} aria-valuemax={data.total} aria-valuenow={data.done}><span style={{ width: `${Math.round((data.done / data.total) * 100)}%` }} /></div>
+      </div>
+      <ol className="gr-list">
+        {data.items.map((it, i) => (
+          <li key={it.key} className={it.done ? 'done' : ''}>
+            <span className="gr-num" aria-hidden="true">{it.done ? '✓' : i + 1}</span>
+            <span className="gr-text"><strong>{it.title}{it.tag && <small className="gr-tag">{it.tag}</small>}{it.done && <small className="gr-done">Done</small>}{it.optional && !it.done && <small className="gr-opt">Optional</small>}</strong>
+              {it.detail && <span>{it.detail}</span>}
+              {it.key === 'team' && !it.done && joinCode && <span className="gr-code">Join code <span className="mg-code">{joinCode}</span>{link ? ` · ${linkText(link)}` : ''}</span>}</span>
+            {!it.done && it.action && <Link className="mg-btn" to={it.action.to}>{it.action.label}</Link>}
+          </li>
+        ))}
+      </ol>
+    </section>
   );
 }
 

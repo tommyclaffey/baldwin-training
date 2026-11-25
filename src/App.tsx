@@ -37,6 +37,7 @@ import { ImportPage } from './import/ImportPage';
 import { LegalRoute, LEGAL_PATHS } from './components/Legal';
 import { authRouteAt } from './lib/account';
 import { SetUpSignIn } from './components/SetUpSignIn';
+import { SignUp } from './components/SignUp';
 import { phoneOnPin, setUpPath } from './lib/authroute';
 
 export default function App() {
@@ -104,6 +105,7 @@ function Book() {
     const account = route?.account ?? null;
     if (route?.kind === 'join' && new URLSearchParams(search).get('pin') === '1') return <Navigate to={setUpPath(account)} replace />;
     if (route?.kind === 'join') return <BookSignIn account={account} />;
+    if (route?.kind === 'sign-up') return <SignUp />; // Nov 25: Start Your Restaurant (section 48)
     if (route?.kind === 'set-up' || ((!route || (account && pathname === '/' + account.slug)) && phoneOnPin())) return <SetUpSignIn account={account} />;
     return <SignIn brand={account?.brand} kicker={account?.name} account={account} />;
   }

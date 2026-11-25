@@ -84,7 +84,7 @@ export function SignIn({ brand, kicker, account = null }: { brand?: Brand; kicke
   );
   return (
     <AuthCard kicker={kicker} brand={brand} title="Sign In" sub="Use your email and password."
-      foot={account ? undefined : <>Just looking? <Link to="/demo/mise">Try the Demo</Link></>}>
+      foot={account ? undefined : <>{/* Nov 25 (sections 48 + 50): under the card, like Try the Demo */}<span className="si-foot-line">New restaurant? <Link to="/sign-up">Start Your Restaurant</Link></span><span className="si-foot-line">Just looking? <Link to="/demo/mise">Try the Demo</Link></span></>}>
       <form className="stack" onSubmit={submit}>
         <label className="field"><span>Email</span>
           <input inputMode="email" autoComplete="username" autoCapitalize="none" spellCheck={false} placeholder="you@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />

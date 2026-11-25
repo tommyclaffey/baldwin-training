@@ -100,8 +100,9 @@ export function ReadyWords({ t }: { t: Theme }) {
   );
 }
 
-export function AuthCard({ title, sub, kicker, foot, brand = 'mise', children }: {
+export function AuthCard({ title, sub, kicker, foot, brand = 'mise', top, children }: {
   title: string; sub?: ReactNode; kicker?: string; foot?: ReactNode; brand?: Brand; children: ReactNode;
+  /** Nov 25: something over the kicker (Start Your Restaurant's four-step progress) */ top?: ReactNode;
 }) {
   const [, redraw] = useState(0);
   useEffect(() => onLookChange(() => redraw((n) => n + 1)), []); // a data look's paint arriving (Nov 22)
@@ -131,6 +132,7 @@ export function AuthCard({ title, sub, kicker, foot, brand = 'mise', children }:
       </div>
       <main className="si-side">
         <div className="si-card">
+          {top}
           <div className="si-head">
             {kicker && <p className="si-kicker">{kicker}</p>}
             <h1 className="si-title">{brandTitle(title, t)}</h1>

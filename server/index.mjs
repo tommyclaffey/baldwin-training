@@ -37,6 +37,7 @@ import * as captions from './captions.mjs';
 import { migrateImports, importRoutes } from './menuimport.mjs';
 import { initAccounts, accountIds, publicFile } from './account.mjs';
 import { initLawState } from './lawstate.mjs';
+import { getReady } from './signup.mjs';
 import { accountByLink, accountHtml, miseHtml, linkOf, isReserved, fixAccountSlugs, DEMO_LINKS, SLUG, setDataShare } from './links.mjs';
 import { migrateLooks, yourLookRoutes, lookFileFor, dataShareFor, lookPayload } from './yourlook.mjs';
 
@@ -844,6 +845,8 @@ async function api(req, res, url) {
       people: rows.map((r) => r.row), signoffs: signoffQueue(rows) };
     if (p === '/api/manager/home') Object.assign(out, {
       certificates: newCertificates(db, rows, c.storeRow), quizzes: quizWeek(db, c.store), edits: lastEdits(db, c.company, c.store), book: bookTiles(db, c.storeRow, c.user),
+      // Nov 25 (section 48): a company that signed itself up gets the Get Ready checklist until it's done (server/signup.mjs)
+      getReady: getReady(db, { co, store: c.storeRow, link: linkOf(co) }),
     });
     return sendJson(res, 200, out);
   }

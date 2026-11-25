@@ -131,7 +131,7 @@ export const SEEN_MESSAGES = {
 const SIGNIN_STEPS = {
   login: 'Sign In with email and password', code: 'Two-step code', choose: 'Choosing their own password', 'staff-login': 'Sign In with a PIN',
   'join-check': 'Checking a join code', join: 'Joining with a code', reset: 'Resetting a password', invite: 'Accepting an invite', forgot: 'Forgot Password',
-  'set-up-check': 'Set Up Your Sign-In: the old PIN', 'set-up-save': 'Set Up Your Sign-In: email and password', // Nov 25
+  'set-up-check': 'Set Up Your Sign-In: the old PIN', 'set-up-save': 'Set Up Your Sign-In: email and password', 'sign-up': 'Start Your Restaurant', // Nov 25
 };
 /** An address with nothing secret in it: invite and reset tokens and join codes taken out, odd characters dropped. */
 export function safeClientPath(p) {

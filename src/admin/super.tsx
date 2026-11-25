@@ -15,7 +15,7 @@ import { TempTag, useTemp, type Temporary } from './temppass';
 
 type Look = { id: string; name: string; custom: boolean };
 type Plan = { id: string; name: string; customLook: boolean };
-type Company = { id: number; name: string; slug: string; state: string | null; link: string | null; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number; look: string | null; drawnIn: string }[]; storeLooks: boolean;
+type Company = { id: number; name: string; slug: string; /** Nov 25: made by Start Your Restaurant */ signedUpAt?: string | null; state: string | null; link: string | null; joinCode: string; createdAt: string; deletedAt: string | null; leads: number; staff: number; lastSeenAt: string | null; stores: { id: number; name: string; bookReady: boolean; staff: number; look: string | null; drawnIn: string }[]; storeLooks: boolean;
   demo: boolean; hq: boolean; plan: string; look: string; drawnIn: string; looks: Look[] };
 type Person = { id: number; name: string; email: string | null; role: Role; companyId: number | null; companyName: string | null; createdAt: string; lastSeenAt: string | null; deletedAt: string | null; hasPin: boolean; emailSignIn?: boolean; totpOn: boolean; superPrimary: boolean;
   teamRole: TeamRole | null; /** Nov 24: a temporary password or PIN waiting to be used */ temporary?: Temporary };
@@ -117,7 +117,7 @@ function Companies() {
         <thead><tr><th>Company</th><th>Plan and Look</th><th>Owners and managers</th><th>Staff</th><th>Join code</th><th>Last active</th><th /></tr></thead>
         <tbody>{data.companies.map((c) => (
           <tr key={c.id} className={c.deletedAt ? 'is-deleted' : ''}>
-            <td><strong>{c.name}</strong>{c.hq && <small className="hq-tag">HQ</small>}{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <span className="deleted-note">Deleted · {daysLeft(c.deletedAt)} days left to restore</span>}
+            <td><strong>{c.name}</strong>{c.hq && <small className="hq-tag">HQ</small>}{c.signedUpAt && <small className="hq-tag signed-up-tag">Signed Up {new Date(c.signedUpAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</small>}{c.id === data.workingIn && <small className="muted"> · you’re working here</small>}{c.deletedAt && <span className="deleted-note">Deleted · {daysLeft(c.deletedAt)} days left to restore</span>}
               {c.link && <div className="small"><CopyLink link={c.link} name={c.name} /></div>}
               {!c.hq && !c.demo && <div className="small muted">State: {c.state || 'not set'}{!c.deletedAt && can.editCompany && <>{' '}<button className="link-btn" onClick={() => { const n = prompt(`${c.name}’s US state (leave empty for not set). Lessons written from Michigan law say so outside Michigan.`, c.state || ''); if (n !== null && n !== (c.state || '')) void run(() => api(`/api/super/companies/${c.id}`, { method: 'PATCH', body: { state: n.trim() || null } })); }}>Set State</button></>}</div>}
               <ul className="store-list">{c.stores.map((st) => (

@@ -4,6 +4,7 @@
 //   /sign-in                 email + password (everyone with an account). Nov 25 (section 50): also the site's root and any
 //                            other address someone opens signed out
 //   /join                    Join with a Code (sign-up only): the join code → restaurant → name, email and password
+//   /sign-up                 Nov 25: Start Your Restaurant, company sign-up (Figma section 48; src/components/SignUp.tsx)
 //   /set-up-sign-in          Nov 25: Set Up Your Sign-In, the one-time move for people who joined with a PIN (find your
 //                            name → the old PIN once → email and password). Opens by itself on a phone that joined with one.
 //   /<account>               that account's Sign In, in its look (server/links.mjs fills in the account)
@@ -12,7 +13,7 @@
 //   /<account>/set-up-sign-in  that account's Set Up Your Sign-In, in its look
 //
 // No imports, so the tests can load it as it is.
-export type AuthKind = 'sign-in' | 'join' | 'set-up';
+export type AuthKind = 'sign-in' | 'join' | 'set-up' | 'sign-up';
 export type AuthRoute<A> = { kind: AuthKind; account: A | null };
 
 /** Which sign-in screen this address is, or null for any other address. `account` is the account this page was served for
@@ -22,6 +23,7 @@ export function authRouteFor<A extends { slug: string }>(pathname: string, accou
   if (p === '/sign-in') return { kind: 'sign-in', account: null };
   if (p === '/join') return { kind: 'join', account: null };
   if (p === '/' + SET_UP) return { kind: 'set-up', account: null };
+  if (p === '/sign-up') return { kind: 'sign-up', account: null }; // Nov 25: Start Your Restaurant (section 48)
   if (!account) return null;
   const base = '/' + account.slug;
   if (p === base || p === base + '/sign-in') return { kind: 'sign-in', account };
@@ -38,7 +40,7 @@ export const joinPath = (account: { slug: string } | null) => (account ? `/${acc
 /** Where Set Up Your Sign-In is: /<account>/set-up-sign-in, or /set-up-sign-in. */
 export const setUpPath = (account: { slug: string } | null) => (account ? `/${account.slug}/${SET_UP}` : '/' + SET_UP);
 /** The screens' titles, the same words everywhere. */
-export const AUTH_TITLE: Record<AuthKind, string> = { 'sign-in': 'Sign In', join: 'Join with a Code', 'set-up': 'Set Up Your Sign-In' };
+export const AUTH_TITLE: Record<AuthKind, string> = { 'sign-in': 'Sign In', join: 'Join with a Code', 'set-up': 'Set Up Your Sign-In', 'sign-up': 'Start Your Restaurant' };
 
 /* Nov 25 (section 50): a phone that joined with a PIN remembers the join code (bt-join-code). Signed out, that phone opens
  * Set Up Your Sign-In by itself, once: after it moves over (or anyone signs in on it with email) it's marked, and it opens
