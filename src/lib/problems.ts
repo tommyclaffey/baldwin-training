@@ -10,7 +10,7 @@
 
 export type ProblemEvent = 'index' | 'page' | 'signin';
 /** Which sign-in request it was (the server turns these into words). */
-export type SignInStep = 'login' | 'code' | 'choose' | 'staff-login' | 'join-check' | 'join' | 'reset' | 'invite' | 'forgot';
+export type SignInStep = 'login' | 'code' | 'choose' | 'staff-login' | 'join-check' | 'join' | 'reset' | 'invite' | 'forgot' | 'set-up-check' | 'set-up-save';
 type Report = { event: ProblemEvent; status: number; attempts?: number; path: string; page?: string; step?: SignInStep; at: number };
 
 const QUEUE = 'mise-problems';
@@ -79,6 +79,8 @@ export function signInStep(method: string, path: string): SignInStep | null {
     if (p === '/api/login/choose') return 'choose';
     if (p === '/api/staff-login') return 'staff-login';
     if (p === '/api/join') return 'join';
+    if (p === '/api/set-up/check') return 'set-up-check'; // Nov 25: Set Up Your Sign-In (section 50)
+    if (p === '/api/set-up/save') return 'set-up-save';
     if (p === '/api/password/forgot') return 'forgot';
     if (/^\/api\/reset\/[^/]+$/.test(p)) return 'reset';
     if (/^\/api\/invite\/[^/]+$/.test(p)) return 'invite';
