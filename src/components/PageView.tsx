@@ -48,6 +48,7 @@ function withToolsRow(main: FNode): { main: FNode; crumb: FNode | null } {
 }
 import { PRODUCT_NAME } from '../lib/brand';
 import { api, canEdit } from '../lib/api';
+import { reportProblem } from '../lib/problems';
 import { useSession } from '../lib/session';
 import { EditPageButton } from './EditSheet';
 import { COLLECTION_OF } from './EditBar';
@@ -227,7 +228,7 @@ export function PageView() {
     // Always ask the server too, so edits show; a cached page stays up meanwhile.
     (hit ? fetchPage(file).then((p) => { cache.set(file, p); return p; }) : loadPage(file))
       .then((p) => { if (live) setShown({ file, page: p, key: location.key }); })
-      .catch(() => { if (live && !hit) setError(true); })
+      .catch((e) => { if (live && !hit) { setError(true); reportProblem('page', e, { page: file, path: '/' + (entry?.slug || '') }); } })
       .finally(() => { if (live) setLoading(false); });
     return () => { live = false; };
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -239,7 +239,7 @@ test('Error Log: newest first, filter by kind, words and days, the person when t
   assert.ok(r.errors[0].lastAt >= r.errors[1].lastAt, 'newest first');
   r = (await tommy('/api/super/errors?days=7')).data;
   assert.equal(r.errors.length, 3);
-  assert.deepEqual(r.totals, { server: 2, client: 1 });
+  assert.deepEqual(r.totals, { server: 2, client: 1, seen: 0 }); // Nov 25: + seen (test/seen-problems.test.mjs)
   r = (await tommy('/api/super/errors?days=7&kind=client')).data;
   assert.deepEqual(r.errors.map((e) => [e.kind, e.message, e.user?.name, e.user?.company]), [['client', 'Failed to fetch', 'Hana Harbor', 'Harbor Hall']]);
   r = (await tommy('/api/super/errors?days=90&q=prep')).data;

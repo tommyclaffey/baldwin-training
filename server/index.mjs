@@ -26,7 +26,7 @@ import { score as scoreQuiz, results as quizResults, signable, catalog as quizCa
 import { topicList, questionPool } from './quizgen.mjs';
 import { chapterBySlug, markRead, programText } from './manual.mjs';
 import * as chat from './chat.mjs';
-import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErrorAllowed, recordOps } from './ops.mjs';
+import { initOps, encryptedBackup, logError, recentErrors, opsAllowed, clientErrorAllowed, recordOps, seenProblem, safeClientPath } from './ops.mjs';
 import { hqHomeRoutes } from './hqhome.mjs';
 import { enterStore, isBrgCompany } from './variant.mjs';
 import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
@@ -313,7 +313,10 @@ async function api(req, res, url) {
     const ip = clientIp(req);
     if (req.headers['x-bt'] !== '1' || !clientErrorAllowed(ip)) { res.writeHead(204); return res.end(); }
     const b = await readJson(req, 20_000).catch(() => ({}));
-    logError(db, 'client', String(b.path || '').slice(0, 200), { message: String(b.message || 'Browser error'), stack: String(b.stack || '') }, c.user?.id ?? null);
+    // Nov 25: a problem someone saw (page list, a page, sign-in) gets its own kind and plain words (server/ops.mjs)
+    const seen = b && typeof b.event === 'string' ? seenProblem(b) : null;
+    if (seen) logError(db, 'seen', seen.path, { message: seen.message, stack: seen.detail }, c.user?.id ?? null);
+    else if (!b?.event) logError(db, 'client', safeClientPath(b.path), { message: String(b.message || 'Browser error'), stack: String(b.stack || '') }, c.user?.id ?? null);
     res.writeHead(204); return res.end();
   }
 

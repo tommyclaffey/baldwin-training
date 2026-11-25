@@ -1,5 +1,6 @@
 // Small fetch wrapper. Writes carry X-BT so the server can block cross-site requests.
 import type { Brand } from './theme';
+import { reportProblem, signInStep } from './problems';
 export class ApiError extends Error { constructor(public status: number, message: string) { super(message); if (status === 401 || status === 403) DENIED.add(message); } }
 // Nov 15 (audit 24): a "you can't do that" answer (401/403) isn't fixed by trying again. Screens keep errors as plain text,
 // so the messages of refusals are remembered here, and the shared error notes leave out Try Again for them.
@@ -7,14 +8,24 @@ const DENIED = new Set<string>();
 export const isDenied = (message: string | null | undefined) => !!message && DENIED.has(message);
 
 export async function api<T = unknown>(path: string, opts: { method?: string; body?: unknown } = {}): Promise<T> {
-  const res = await fetch(path, {
-    method: opts.method || 'GET',
-    headers: { 'Content-Type': 'application/json', 'X-BT': '1' },
-    credentials: 'same-origin',
-    body: opts.body === undefined ? undefined : JSON.stringify(opts.body),
-  });
+  const method = opts.method || 'GET';
+  // Nov 25: a sign-in request that gets a server error or never reaches the server goes to the error log (src/lib/problems.ts)
+  const step = signInStep(method, path);
+  let res: Response;
+  try {
+    res = await fetch(path, {
+      method,
+      headers: { 'Content-Type': 'application/json', 'X-BT': '1' },
+      credentials: 'same-origin',
+      body: opts.body === undefined ? undefined : JSON.stringify(opts.body),
+    });
+  } catch (e) { if (step) reportProblem('signin', e, { step }); throw e; }
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new ApiError(res.status, (data as { error?: string }).error || 'Something went wrong. Try again.');
+  if (!res.ok) {
+    const err = new ApiError(res.status, (data as { error?: string }).error || 'Something went wrong. Try again.');
+    if (step) reportProblem('signin', err, { step });
+    throw err;
+  }
   return data as T;
 }
 

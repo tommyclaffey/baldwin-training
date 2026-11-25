@@ -102,7 +102,8 @@ export function logError(db, kind, where, err, userId = null) {
     const stack = String(err?.stack || '').slice(0, 4000) || null;
     const at = new Date().toISOString();
     const row = db.prepare("SELECT id FROM errors WHERE kind = ? AND path IS ? AND message = ? AND substr(last_at,1,10) = substr(?,1,10)").get(kind, where || null, message, at);
-    if (row) db.prepare('UPDATE errors SET count = count + 1, last_at = ? WHERE id = ?').run(at, row.id);
+    // Nov 25: a problem someone saw keeps its latest detail (status, tries), so the log says what happened last time
+    if (row) db.prepare(`UPDATE errors SET count = count + 1, last_at = ?${kind === 'seen' ? ', stack = ?' : ''} WHERE id = ?`).run(...(kind === 'seen' ? [at, stack, row.id] : [at, row.id]));
     else db.prepare('INSERT INTO errors(kind, path, message, stack, user_id, first_at, last_at) VALUES (?,?,?,?,?,?,?)').run(kind, where || null, message, stack, userId, at, at);
   } catch (e) { console.error('logError', e); }
 }
@@ -117,6 +118,45 @@ export function opsAllowed(req) {
   const got = String(req.headers.authorization || '').replace(/^Bearer\s+/i, '');
   if (!want || want.length < 24 || got.length !== want.length) return false;
   return timingSafeEqual(Buffer.from(got), Buffer.from(want));
+}
+
+/** Nov 25 (Tommy: "get warned before staff do"): what someone was left looking at, reported by the app
+ *  (src/lib/problems.ts). The words come from here, not from the browser; only fixed fields are read (never a PIN,
+ *  password, email, code or token). Kind "seen" in the errors table. Returns { path, message, detail } or null. */
+export const SEEN_MESSAGES = {
+  index: 'Page list didn’t load',
+  page: 'A page didn’t load',
+  signin: 'Sign-in didn’t go through',
+};
+const SIGNIN_STEPS = {
+  login: 'Sign In with email and password', code: 'Two-step code', choose: 'Choosing their own password', 'staff-login': 'Sign In with a PIN',
+  'join-check': 'Checking a join code', join: 'Joining with a code', reset: 'Resetting a password', invite: 'Accepting an invite', forgot: 'Forgot Password',
+};
+/** An address with nothing secret in it: invite and reset tokens and join codes taken out, odd characters dropped. */
+export function safeClientPath(p) {
+  return String(p || '').split(/[?#]/)[0]
+    .replace(/\/(invite|reset)\/[^/]+/g, '/$1/:token')
+    .replace(/\/api\/join\/[^/]+/g, '/api/join/:code')
+    .replace(/[^\w\-/.:~]/g, '')
+    .slice(0, 200) || null;
+}
+export function seenProblem(b) {
+  const message = Object.hasOwn(SEEN_MESSAGES, b?.event) ? SEEN_MESSAGES[b.event] : null;
+  if (!message) return null;
+  const status = Number.isInteger(b.status) && b.status >= 0 && b.status < 600 ? b.status : 0;
+  if (b.event === 'signin' && status !== 0 && status < 500) return null; // a wrong PIN or password is not Mise breaking
+  if (status === 401 || status === 403) return null;
+  const bits = [];
+  if (b.event === 'signin' && Object.hasOwn(SIGNIN_STEPS, b.step)) bits.push(SIGNIN_STEPS[b.step]);
+  if (b.event === 'page' && typeof b.page === 'string' && /^[\w:.-]{1,40}$/.test(b.page)) bits.push(`Page ${b.page}`);
+  bits.push(status === 0 ? 'No answer from Mise (no connection, or the server was restarting)'
+    : status >= 500 ? `Mise answered ${status} (a server error)` : `Mise answered ${status}`);
+  if (Number.isInteger(b.attempts) && b.attempts > 1 && b.attempts <= 10) bits.push(`after ${b.attempts} tries`);
+  if (Number.isFinite(b.late) && b.late > 60_000) {
+    const min = Math.round(Math.min(b.late, 7 * 864e5) / 60_000);
+    bits.push(`sent ${min < 120 ? `${min} min` : `${Math.round(min / 60)} h`} later, once the device was back online`);
+  }
+  return { path: safeClientPath(b.path), message, detail: bits.join(' · ') };
 }
 
 /** Browser errors: 20 an hour per address, so a broken page can't flood the table. */

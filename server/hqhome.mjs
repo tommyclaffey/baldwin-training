@@ -6,7 +6,7 @@
 //   GET /api/super/home                    the whole page
 //   GET /api/super/counts                  the HQ sidebar's numbers (companies, team, deletion requests waiting)
 //   GET /api/super/companies/:id/people    Sign In As picker: owners, then managers, then staff by store
-//   GET /api/super/errors                  the Error Log (?kind=server|client, ?days=1|7|90, ?q=), read only
+//   GET /api/super/errors                  the Error Log (?kind=server|client|seen, ?days=1|7|90, ?q=), read only
 // Read only, all of it: the buttons on the page call the routes that already exist (Work Here, Sign In As, New Invite Link,
 // the deletion requests), which check the teammate's role themselves. Support sees the page and the picker; `can` hides the
 // buttons their role can't use, and the server refuses them anyway (server/miseteam.mjs).
@@ -213,7 +213,7 @@ export function hqHomeRoutes({ db, fail, sendJson }) {
     if (p === '/api/super/errors' && m === 'GET') {
       needSuper(c, 'log');
       const days = [1, 7, 90].includes(Number(url.searchParams.get('days'))) ? Number(url.searchParams.get('days')) : 7;
-      const kind = ['server', 'client'].includes(url.searchParams.get('kind')) ? url.searchParams.get('kind') : '';
+      const kind = ['server', 'client', 'seen'].includes(url.searchParams.get('kind')) ? url.searchParams.get('kind') : '';
       const q = String(url.searchParams.get('q') || '').trim().slice(0, 80);
       const like = `%${q}%`;
       const rows = db.prepare(`SELECT e.id, e.kind, e.path, e.message, e.stack, e.count, e.first_at, e.last_at, u.name user_name, u.role user_role, co.name company
@@ -223,7 +223,7 @@ export function hqHomeRoutes({ db, fail, sendJson }) {
       const all = db.prepare('SELECT kind, COUNT(*) n, SUM(count) hits FROM errors WHERE last_at >= ? GROUP BY kind').all(isoAgo(days * DAY));
       return sendJson(res, 200, {
         days, kind: kind || 'all', q,
-        totals: { server: all.find((r) => r.kind === 'server')?.n || 0, client: all.find((r) => r.kind === 'client')?.n || 0 },
+        totals: { server: all.find((r) => r.kind === 'server')?.n || 0, client: all.find((r) => r.kind === 'client')?.n || 0, seen: all.find((r) => r.kind === 'seen')?.n || 0 },
         errors: rows.map((r) => ({ id: r.id, kind: r.kind, path: r.path, message: r.message, stack: r.stack, count: r.count, firstAt: r.first_at, lastAt: r.last_at,
           user: r.user_name ? { name: r.user_name, role: r.user_role, company: r.company || (r.user_role === 'superadmin' ? HQ_NAME : null) } : null })),
       });

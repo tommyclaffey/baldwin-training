@@ -374,7 +374,7 @@ function ErrorRow({ w }: { w: Extract<Waiting, { type: 'error' }> }) {
   return (
     <div className="hq-ask">
       <span className="hq-ask-icon"><Icon d={I.alert} /></span>
-      <span className="hq-ask-who"><strong>{w.kind === 'client' ? 'Browser error' : 'Server error'}, repeating</strong><small>{w.path || 'No address'}</small></span>
+      <span className="hq-ask-who"><strong>{w.kind === 'seen' ? 'Seen on screen' : w.kind === 'client' ? 'Browser error' : 'Server error'}, repeating</strong><small>{w.path || 'No address'}</small></span>
       <span className="hq-ask-what">
         <span>“{w.message}” came in {w.count} times in the last 24 hours. The nightly check emails you too.</span>
         <small>First seen {stamp(w.firstAt)} · last {stamp(w.lastAt)}</small>
@@ -395,7 +395,7 @@ function ErrorsCard({ e }: { e: Home['health']['errors'] }) {
       <p className="hq-big"><strong>{e.total}</strong><span>{e.total === 1 ? 'error' : 'errors'}{e.total ? ` · ${plural(e.kinds, 'kind')}` : ''}</span></p>
       {e.top.length === 0 ? <p className="hq-quiet">Nothing has gone wrong in the last day.</p> : (
         <ul className="hq-errs">{e.top.map((x, i) => (
-          <li key={i}><span className="hq-chip">{x.kind === 'client' ? 'Browser' : 'Server'}</span>
+          <li key={i}><span className="hq-chip">{kindLabel(x.kind)}</span>
             <span className="hq-err-text"><strong>{x.path || 'No address'}</strong><small>{x.message}</small></span>
             <span className={'hq-times' + (x.count >= 3 ? ' hot' : '')}>×{x.count}</span></li>
         ))}</ul>
@@ -656,31 +656,35 @@ export function SignInAsPicker({ company, anchor, onClose }: { company: { id: nu
 }
 
 /* ------------------------------------------------ Error Log (Super Admin → Error Log) ------------------------------------------------ */
-type ErrRow = { id: number; kind: 'server' | 'client'; path: string | null; message: string; stack: string | null; count: number; firstAt: string; lastAt: string;
+type ErrKind = 'server' | 'client' | 'seen';
+/** Nov 25: "seen" = a problem someone was left looking at (page list, a page, sign-in; src/lib/problems.ts). */
+const KIND_LABEL: Record<string, string> = { server: 'Server', client: 'Browser', seen: 'Seen on Screen' };
+const kindLabel = (k: string) => KIND_LABEL[k] || 'Browser';
+type ErrRow = { id: number; kind: ErrKind; path: string | null; message: string; stack: string | null; count: number; firstAt: string; lastAt: string;
   user: { name: string; role: string; company: string | null } | null };
 export function ErrorLog() {
   const [params, setParams] = useSearchParams();
-  const kind = params.get('kind') === 'server' || params.get('kind') === 'client' ? params.get('kind')! : 'all';
+  const kind = ['server', 'client', 'seen'].includes(params.get('kind') || '') ? params.get('kind')! : 'all';
   const days = ['1', '7', '90'].includes(params.get('days') || '') ? params.get('days')! : '7';
   const [q, setQ] = useState(params.get('q') || '');
-  const [data, setData] = useState<{ errors: ErrRow[]; totals: { server: number; client: number } } | null>(null);
+  const [data, setData] = useState<{ errors: ErrRow[]; totals: { server: number; client: number; seen?: number } } | null>(null);
   const [error, setError] = useState('');
   const set = (k: string, v: string) => { const n = new URLSearchParams(params); if (v) n.set(k, v); else n.delete(k); setParams(n, { replace: true }); };
   useEffect(() => {
     const t = setTimeout(() => {
-      api<{ errors: ErrRow[]; totals: { server: number; client: number } }>(`/api/super/errors?days=${days}&kind=${kind === 'all' ? '' : kind}&q=${encodeURIComponent(q.trim())}`)
+      api<{ errors: ErrRow[]; totals: { server: number; client: number; seen?: number } }>(`/api/super/errors?days=${days}&kind=${kind === 'all' ? '' : kind}&q=${encodeURIComponent(q.trim())}`)
         .then((d) => { setData(d); setError(''); }).catch((e) => setError((e as Error).message));
     }, 200);
     return () => clearTimeout(t);
   }, [kind, days, q]);
   useEffect(() => { document.title = 'Error Log · Mise Academy'; }, []);
-  const all = data ? data.totals.server + data.totals.client : 0;
+  const all = data ? data.totals.server + data.totals.client + (data.totals.seen || 0) : 0;
   return (
     <div className="stack hq-errlog">
-      <p className="muted">Every server error and browser error the app has caught, newest first. The same message on the same address counts up once a day. Read only: the nightly check emails the owner when any come in. Kept 90 days.</p>
+      <p className="muted">Every server error and browser error the app has caught, and every time someone was left looking at a problem (Seen on Screen: a page or the page list that didn’t load, a sign-in that didn’t go through), newest first. The same message on the same address counts up once a day. Read only: the nightly check emails the owner when any come in. Kept 90 days.</p>
       <div className="hq-errlog-filters">
         <div className="mg-chips" role="group" aria-label="Kind">
-          {([['all', `All · ${all}`], ['server', `Server · ${data?.totals.server ?? 0}`], ['client', `Browser · ${data?.totals.client ?? 0}`]] as const).map(([k, l]) => (
+          {([['all', `All · ${all}`], ['server', `Server · ${data?.totals.server ?? 0}`], ['client', `Browser · ${data?.totals.client ?? 0}`], ['seen', `Seen on Screen · ${data?.totals.seen ?? 0}`]] as const).map(([k, l]) => (
             <button key={k} type="button" className={'mg-chip' + (kind === k ? ' on' : '')} aria-pressed={kind === k} onClick={() => set('kind', k === 'all' ? '' : k)}>{l}</button>
           ))}
         </div>
@@ -697,9 +701,14 @@ export function ErrorLog() {
           <tbody>{data.errors.map((e) => (
             <tr key={e.id}>
               <td data-label="Last seen">{fullStamp(e.lastAt)}<small className="muted">First {fullStamp(e.firstAt)}</small></td>
-              <td data-label="Kind"><span className="hq-chip">{e.kind === 'client' ? 'Browser' : 'Server'}</span></td>
-              <td className="hq-err-cell"><strong>{e.path || 'No address'}</strong><span>{e.message}</span>
-                {e.stack && <details><summary>Stack</summary><pre>{e.stack}</pre></details>}</td>
+              <td data-label="Kind"><span className="hq-chip">{kindLabel(e.kind)}</span></td>
+              {e.kind === 'seen' ? (
+                <td className="hq-err-cell"><strong>{e.message}</strong><span>{e.path || 'No address'}</span>
+                  {e.stack && <small className="muted">{e.stack}</small>}</td>
+              ) : (
+                <td className="hq-err-cell"><strong>{e.path || 'No address'}</strong><span>{e.message}</span>
+                  {e.stack && <details><summary>Stack</summary><pre>{e.stack}</pre></details>}</td>
+              )}
               <td data-label="Times"><span className={'hq-times' + (e.count >= 3 ? ' hot' : '')}>×{e.count}</span></td>
               <td data-label="Person">{e.user ? <>{e.user.name}<small className="muted">{e.user.company || ''}</small></> : <span className="muted">—</span>}</td>
             </tr>

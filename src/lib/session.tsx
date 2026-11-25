@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { api, type IndexEntry, type Legal, type User } from './api';
 import { markDemo } from './demo';
+import { reportProblem } from './problems';
 import { setSessionBrand } from './theme';
 
 type Session = {
@@ -41,7 +42,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const reloadIndex = useCallback(async () => {
     for (let i = 0; i < 4; i++) {
       try { setIndex(await api<IndexEntry[]>('/api/index')); break; }
-      catch { if (i < 3) await new Promise((r) => setTimeout(r, 800 * 2 ** i)); }
+      catch (e) {
+        if (i < 3) await new Promise((r) => setTimeout(r, 800 * 2 ** i));
+        else reportProblem('index', e, { attempts: 4 }); // Nov 25: still nothing after 4 tries: tell the error log
+      }
     }
     setIndexLoaded(true);
   }, []);
