@@ -58,6 +58,26 @@ function withPrep(n: FNode): FNode {
   return n.c ? { ...n, c: n.c.map(withPrep) } : n;
 }
 
+/** Tips (Nov 25, Figma 52, phone menu 1046:5235): the private tip tracker, right under Team Chat (or Home), for everyone
+ *  on a restaurant's team. Not for super admins, and not while signed in as someone (their tips are private). */
+const TIPS_ICON = 'mise_tips';
+(svgs as Record<string, string>)[TIPS_ICON] = '<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="8.5" cy="4.6" rx="5.4" ry="2.2" stroke="#B8AFA3" stroke-width="1.4"/><path d="M3.1 4.6v3.9c0 1.2 2.4 2.2 5.4 2.2s5.4-1 5.4-2.2V4.6M3.1 8.5v3.9c0 1.2 2.4 2.2 5.4 2.2s5.4-1 5.4-2.2V8.5" stroke="#B8AFA3" stroke-width="1.4"/></svg>';
+export const hasTips = (u: { role: string; companyId: number | null; impersonatedBy: number | null } | null | undefined) => !!u && u.role !== 'superadmin' && !!u.companyId && !u.impersonatedBy;
+function withTips(n: FNode): FNode {
+  if (n.n === 'Nav' && n.c && !n.c.some((c) => c.n === 'Nav · Tips')) {
+    const after = n.c.find((c) => c.n === 'Nav · Team Chat') || n.c.find((c) => c.n === 'Nav · Home');
+    const model = n.c.find((c) => c.n === 'Nav · Food Matrix');
+    if (!after || !model) return n;
+    const item: FNode = JSON.parse(JSON.stringify(model));
+    item.n = 'Nav · Tips'; item.to = '/tips';
+    item.c = (item.c || []).filter((c) => c.n !== 'Count').map((c) => (c.n === 'icon' ? { ...c, svg: TIPS_ICON } : c.t === 'T' ? { ...c, s: 'Tips', n: 'Tips', segs: undefined, w: 171 } : c));
+    const c = [...n.c];
+    c.splice(c.indexOf(after) + 1, 0, item);
+    return { ...n, c };
+  }
+  return n.c ? { ...n, c: n.c.map(withTips) } : n;
+}
+
 /** Import a Menu (Nov 14, Figma 30 · 607:812): managers only, in the book's group after Prep (or the Allergen Guide). */
 const IMPORT_ICON = 'mise_import';
 (svgs as Record<string, string>)[IMPORT_ICON] = '<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 10.6V2.6M5.3 5.6l3.2-3.2 3.2 3.2M2.8 10.4v2.4c0 .8.6 1.4 1.4 1.4h8.6c.8 0 1.4-.6 1.4-1.4v-2.4" stroke="#B8AFA3" stroke-width="1.49" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -80,12 +100,13 @@ function withImport(n: FNode): FNode {
 const ICON = (d: string) => `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="${d}" stroke="#B8AFA3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 (svgs as Record<string, string>)['team-people'] = ICON('M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 10a7 7 0 0 1 14 0M17 3.5a4 4 0 0 1 0 7.5M22 21a7 7 0 0 0-4-6.3');
 (svgs as Record<string, string>)['team-signoffs'] = ICON('M3 17c3-4 5-8 7-8s-1 8 1 8 3-5 5-5-1 5 1 5h4M3 21h18');
+(svgs as Record<string, string>)['team-owed'] = ICON('M12 3c4.5 0 8 1.3 8 3s-3.5 3-8 3-8-1.3-8-3 3.5-3 8-3ZM4 6v6c0 1.7 3.5 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.5 3 8 3s8-1.3 8-3v-6');
 /** Puts a TEAM group (People, Sign-offs with its count) under Home, built from the drawn group label and nav items. */
-function withTeam(n: FNode, signoffs: number): FNode {
-  if (n.n !== 'Nav' || !n.c) return n.c ? { ...n, c: n.c.map((c) => withTeam(c, signoffs)) } : n;
+function withTeam(n: FNode, signoffs: number, owed = false): FNode {
+  if (n.n !== 'Nav' || !n.c) return n.c ? { ...n, c: n.c.map((c) => withTeam(c, signoffs, owed)) } : n;
   const label = n.c.find((c) => c.n?.startsWith('Group · '));
   const item = n.c.find((c) => c.c?.some((k) => k.n === 'Count'));
-  const chatAt = n.c.findIndex((c) => c.n === 'Nav · Team Chat');
+  const chatAt = Math.max(n.c.findIndex((c) => c.n === 'Nav · Team Chat'), n.c.findIndex((c) => c.n === 'Nav · Tips'));
   const home = chatAt >= 0 ? chatAt : n.c.findIndex((c) => c.n === 'Nav · Home');
   if (!label || !item || home < 0) return n;
   const relabel = (x: FNode, text: string): FNode => ({ ...x, c: x.c?.map((k) => (k.t === 'T' ? { ...k, s: text, n: text } : k)) });
@@ -95,7 +116,9 @@ function withTeam(n: FNode, signoffs: number): FNode {
       : k.n === 'Count' ? (count ? [{ ...k, c: (k.c || []).map((t) => (t.t === 'T' ? { ...t, s: String(count) } : t)) }] : [])
       : k.t === 'T' ? [{ ...k, s: name, n: name }] : [k]),
   });
-  const team = [relabel({ ...label, n: 'Group · TEAM' }, 'TEAM'), navItem('People', '/admin/people', 'team-people', 0), navItem('Sign-offs', '/admin/signoffs', 'team-signoffs', signoffs)];
+  const team = [relabel({ ...label, n: 'Group · TEAM' }, 'TEAM'), navItem('People', '/admin/people', 'team-people', 0), navItem('Sign-offs', '/admin/signoffs', 'team-signoffs', signoffs),
+    // Nov 25 (Figma 52, Desktop 4): Owed to Staff, for a store's managers and owners (owed items only, never tips)
+    ...(owed ? [navItem('Owed to Staff', '/admin/owed', 'team-owed', 0)] : [])];
   return { ...n, c: [...n.c.slice(0, home + 1), ...team, ...n.c.slice(home + 1)] };
 }
 import { currentBrand, theme, themeSidebar } from '../lib/theme';
@@ -164,11 +187,12 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     // Badges: what's really on each page; Quizzes = quizzes still to pass on this phone.
     const live: Record<string, number> = { ...counts, 'Team Chat': unread, Quizzes: generic ? 0 : QUIZZES.filter((q) => !['signed', 'passed'].includes(statusOf(quiz, q.id))).length };
     const base = trainingCard([SIDEBAR], quiz)[0];
-    const prepped = withPrep(chat ? withChat(base) : base);
+    const chatted = chat ? withChat(base) : base;
+    const prepped = withPrep(hasTips(user) ? withTips(chatted) : chatted);
     const drawn = pathSidebar(linkHome(withCounts(manager ? withImport(prepped) : prepped, live)), mine);
     // Nov 17: a store wearing its own look shows that look's logo, even before its book is ready
     const named = generic && !user!.store!.ownLook ? forStore(drawn, user!.store!.name) : generic ? withoutBookCard(drawn) : drawn;
-    const teamed = manager ? withTeam(named, signoffs) : named;
+    const teamed = manager ? withTeam(named, signoffs, (user!.role === 'owner' || user!.role === 'manager') && !user!.impersonatedBy) : named;
     const mise = currentBrand() === 'mise';
     const look: PillLook = { ...theme().demoPill, label: mise && sample ? user!.store?.name || ACADEMY_NAME : ACADEMY_NAME };
     const shown = user?.demo ? withDemoPill(teamed, look) : teamed;

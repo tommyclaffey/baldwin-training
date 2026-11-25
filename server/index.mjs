@@ -31,6 +31,7 @@ import { hqHomeRoutes } from './hqhome.mjs';
 import { enterStore, isBrgCompany } from './variant.mjs';
 import { migrateAcks, ackOf, signAck, ACK_KEY, ACK_LEVEL } from './acks.mjs';
 import * as prep from './prep.mjs';
+import * as tips from './tips.mjs';
 import { initCompanyData, companyDataRoutes, ownedFiles } from './companydata.mjs';
 import { writeFilesBackup, bytesOf, roomLeft, fullMessage, storageCapBytes, mediaVisible } from './files.mjs';
 import * as captions from './captions.mjs';
@@ -797,6 +798,38 @@ async function api(req, res, url) {
     } catch (e) { if (e instanceof chat.ChatError) fail(e.status, e.message); throw e; }
     fail(404, 'Not found.');
   }
+  /* ---- Tip Tracker (Nov 25, server/tips.mjs, Figma 09 · Idea Board → 52): private to each person ---- */
+  // /api/tips…       the signed-in person's own shifts, tips and owed items. Only ever theirs (WHERE user_id = them).
+  // /api/tips/team…  Owed to Staff: that store's managers and owners see and settle owed items, never tips.
+  // Closed while a super admin is signed in as someone (server/tips.mjs needOwnTips, needManagerView).
+  if (p === '/api/tips' || p.startsWith('/api/tips/')) {
+    try {
+      if (p === '/api/tips/team' || p.startsWith('/api/tips/team/')) {
+        const u = tips.needManagerView(c.user, c.storeRow);
+        if (p === '/api/tips/team' && m === 'GET') return sendJson(res, 200, tips.teamOwed(db, u, c.storeRow));
+        const tm = /^\/api\/tips\/team\/(\d+)\/settle$/.exec(p);
+        if (tm && m === 'POST') { tips.settleForTeam(db, u, c.storeRow, tm[1], await readJson(req, 4000)); return sendJson(res, 200, tips.teamOwed(db, u, c.storeRow)); }
+        fail(404, 'Not found.');
+      }
+      const u = tips.needOwnTips(c.user);
+      const q = url.searchParams;
+      if (p === '/api/tips' && m === 'GET') return sendJson(res, 200, tips.tipsPage(db, u, { view: q.get('view'), at: q.get('at') }));
+      if (p === '/api/tips/shifts' && m === 'POST') return sendJson(res, 200, tips.logShift(db, u, c.store, await readJson(req, 8000)));
+      const sm = /^\/api\/tips\/shifts\/(\d+)$/.exec(p);
+      if (sm && m === 'GET') return sendJson(res, 200, tips.shiftDetail(db, u, sm[1]));
+      if (sm && m === 'PATCH') { tips.editShift(db, u, sm[1], await readJson(req, 8000)); return sendJson(res, 200, tips.shiftDetail(db, u, sm[1])); }
+      if (sm && m === 'DELETE') { tips.deleteShift(db, u, sm[1]); return sendJson(res, 200, { ok: true }); }
+      if (p === '/api/tips/owed' && m === 'GET') return sendJson(res, 200, tips.myOwed(db, u));
+      if (p === '/api/tips/owed' && m === 'POST') return sendJson(res, 200, { id: tips.addOwed(db, u, c.store, await readJson(req, 8000)) });
+      const om = /^\/api\/tips\/owed\/(\d+)(\/settle)?$/.exec(p);
+      if (om && !om[2] && m === 'GET') return sendJson(res, 200, tips.owedDetail(db, u, om[1]));
+      if (om && !om[2] && m === 'PATCH') { tips.editOwed(db, u, om[1], await readJson(req, 8000)); return sendJson(res, 200, tips.owedDetail(db, u, om[1])); }
+      if (om && !om[2] && m === 'DELETE') { tips.deleteOwed(db, u, om[1]); return sendJson(res, 200, { ok: true }); }
+      if (om?.[2] && m === 'POST') { tips.settleOwn(db, u, om[1], await readJson(req, 4000)); return sendJson(res, 200, tips.owedDetail(db, u, om[1])); }
+    } catch (e) { if (e instanceof tips.TipError) fail(e.status, e.message); throw e; }
+    fail(404, 'Not found.');
+  }
+
   /* ---- Prep tracker (Nov 12, server/prep.mjs, Figma 09 · Proposals → 31): juices, syrups and garnishes ---- */
   // Everyone at the store reads Today. Bartenders, managers and owners count and log (prep.canLog); managers and owners edit.
   // Nov 12 (31b): POST /api/prep/count saves the shift count; the Used Up route is gone (Used comes from the count).

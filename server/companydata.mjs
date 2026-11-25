@@ -52,6 +52,10 @@ function ownedRows(db, companyId) {
   const out = {};
   for (const t of tables(db)) {
     if (KEEP.has(t) || t === 'sessions' || t === 'password_resets' || t === 'temp_credentials') continue; // (secrets: never exported)
+    // Nov 25 (Tip Tracker): each person's shifts and tips are private to them ("Only you can see this. Not your manager, not
+    // the owner."), so the owner's export never holds them. What the store owes its people is in it (managers and owners
+    // see that in Owed to Staff already), without the person's own notes.
+    if (t === 'tip_shifts') continue;
     const cols = colsOf(db, t);
     const where = [], args = [];
     if (cols.includes('company_id')) { where.push('company_id = ?'); args.push(companyId); }
@@ -60,6 +64,7 @@ function ownedRows(db, companyId) {
     if (!where.length) continue;
     let rows = db.prepare(`SELECT * FROM ${t} WHERE ${where.join(' OR ')}`).all(...args);
     if (t === 'invites') rows = rows.map(({ token_hash, ...r }) => r); // eslint-disable-line no-unused-vars
+    if (t === 'tip_owed') rows = rows.map(({ note, shift_id, ...r }) => r); // eslint-disable-line no-unused-vars
     if (rows.length) out[t] = rows;
   }
   out.company = [db.prepare('SELECT id, name, slug, brand, demo, created_at FROM companies WHERE id = ?').get(companyId)].filter(Boolean);
@@ -140,6 +145,18 @@ export function exportFiles(db, companyId) {
     rows('prep_batches').map((r) => [st(r.store_id), itemName(r.item_id), r.day, r.amount, r.remaining, r.use_by, nameOf(r.made_by), nameOf(r.by_user), r.made_at])));
   add('prep_waste_and_runouts.csv', csv(['store', 'item', 'kind', 'amount', 'reason', 'note', 'day', 'by', 'at'],
     rows('prep_events').map((r) => [st(r.store_id), itemName(r.item_id), r.kind, r.amount, r.reason, r.note, r.day, nameOf(r.by_user), r.at])));
+  // Nov 25 (Tip Tracker): money the store owed its people, and each payment (who marked it, when). Never anyone's tips.
+  const owedPaid = new Map();
+  for (const p of rows('tip_payments')) owedPaid.set(p.owed_id, [...(owedPaid.get(p.owed_id) || []), p]);
+  const dollars = (c) => (c / 100).toFixed(2);
+  add('tips_owed.csv', csv(['id', 'person', 'store', 'reason', 'from day', 'shift', 'amount owed', 'paid', 'still owed', 'status', 'added at'],
+    rows('tip_owed').map((r) => {
+      const paid = (owedPaid.get(r.id) || []).reduce((s, p) => s + p.amount_cents, 0);
+      return [r.id, nameOf(r.user_id), st(r.store_id), r.label, r.day, r.part || '', dollars(r.amount_cents), dollars(paid), dollars(Math.max(0, r.amount_cents - paid)),
+        paid <= 0 ? 'Owed' : paid >= r.amount_cents ? 'Settled' : 'Part Settled', r.created_at];
+    })));
+  add('tips_owed_payments.csv', csv(['owed id', 'person', 'store', 'amount paid', 'paid on', 'marked by', 'at'],
+    rows('tip_payments').map((p) => [p.owed_id, nameOf(p.user_id), st(p.store_id), dollars(p.amount_cents), p.paid_on, p.by_name || nameOf(p.by_user), p.at])));
   add('content.csv', csv(['id', 'type', 'name', 'address', 'store', 'updated at', 'archived at'],
     rows('entries').map((r) => [r.id, r.collection, parse(r.data, {})?.name || '', r.slug, st(r.store_id), r.updated_at, r.archived_at])));
   add('team_quizzes.csv', csv(['id', 'store', 'name', 'topics', 'questions', 'made by', 'made at', 'archived at'],
@@ -169,6 +186,8 @@ export function exportFiles(db, companyId) {
     '  signoff_requests.csv    sign-offs people asked for',
     '  chat_messages.csv       Team Chat messages (removed ones are blank)',
     '  prep_*.csv              the prep tracker: items, counts, batches, waste and run-outs',
+    '  tips_owed*.csv          Tip Tracker: money the restaurant owed its people, and each payment. Each person’s own',
+    '                          shifts and tips are private to them and are never in this export.',
     '  content.csv             your own pages (dishes, drinks, wines, bottles…)',
     '  team_quizzes.csv        quizzes your managers made',
     '  sections.csv            nightly floor sections',

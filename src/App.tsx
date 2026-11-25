@@ -33,6 +33,7 @@ import { hasChat, useChatState } from './chat/unread';
 import { openChat } from './chat/panel';
 import { ChatPanelHost } from './chat/ChatPanel';
 import { PrepPage } from './prep/PrepPage';
+import { TipsPage } from './tips/TipsPage';
 import { ImportPage } from './import/ImportPage';
 import { AddedToast } from './components/AddBottle';
 import { LegalRoute, LEGAL_PATHS } from './components/Legal';
@@ -119,7 +120,7 @@ function Book() {
   return (
     <EditInPlaceProvider>
     <EditModeProvider>
-    <NavContext.Provider value={pathname === '/import' || pathname.startsWith('/import/') ? 'Import a Menu' : pathname === '/prep' || pathname.startsWith('/prep/') ? 'Prep' : pathname === '/my-path' || pathname.startsWith('/my-path/') ? 'My Path' : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? 'Team Chat' : pathname.startsWith('/certificate/beer') ? 'Beer Program' : pathname.startsWith('/certificate/hosp') ? 'Hospitality Program' : pathname.startsWith('/certificate/somm') ? 'Sommelier Program' : pathname.startsWith('/certificate/') ? 'Cocktail Program' : entry?.nav ?? ''}>
+    <NavContext.Provider value={pathname === '/tips' || pathname.startsWith('/tips/') ? 'Tips' : pathname === '/import' || pathname.startsWith('/import/') ? 'Import a Menu' : pathname === '/prep' || pathname.startsWith('/prep/') ? 'Prep' : pathname === '/my-path' || pathname.startsWith('/my-path/') ? 'My Path' : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? 'Team Chat' : pathname.startsWith('/certificate/beer') ? 'Beer Program' : pathname.startsWith('/certificate/hosp') ? 'Hospitality Program' : pathname.startsWith('/certificate/somm') ? 'Sommelier Program' : pathname.startsWith('/certificate/') ? 'Cocktail Program' : entry?.nav ?? ''}>
       <a className="skip" href="#content">Skip to content</a>
       <header className="mobile-bar">
         <div className={'mobile-brand' + (user.demo ? ' has-pill' : '')}>
@@ -154,7 +155,7 @@ function Book() {
         <div id="content" className="content">
           <DemoBar />
           <TeamBar />
-          {pathname === '/import' || pathname.startsWith('/import/') ? (canEdit(user) ? <ImportPage /> : <PageView />) : pathname === '/prep' || pathname.startsWith('/prep/') ? <PrepPage /> : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? <TeamChatPage /> : pathname === '/my-path' ? <MyPathPage /> : pathname === '/my-path/acknowledgment' ? <AckPage /> : pathname.startsWith('/certificate/') ? <CertificatePage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
+          {pathname === '/import' || pathname.startsWith('/import/') ? (canEdit(user) ? <ImportPage /> : <PageView />) : pathname === '/prep' || pathname.startsWith('/prep/') ? <PrepPage /> : pathname === '/tips' || pathname.startsWith('/tips/') ? <TipsPage /> : pathname === '/team-chat' || pathname.startsWith('/team-chat/') ? <TeamChatPage /> : pathname === '/my-path' ? <MyPathPage /> : pathname === '/my-path/acknowledgment' ? <AckPage /> : pathname.startsWith('/certificate/') ? <CertificatePage /> : <><PageView /><PathReadBar slug={entry?.slug} /></>}
         </div>
         {user.demo && <DemoTour />}
         <AddedToast />

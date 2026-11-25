@@ -35,6 +35,7 @@ import { wipeCompany, PROTECTED } from './companydata.mjs';
 import { demoGroups } from './demo.mjs';
 import { accountSlug, linkOf } from './links.mjs';
 import { stateName, forgetState } from './lawstate.mjs';
+import { dropTipsOf } from './tips.mjs';
 import { activeTemp, activeTemps, spentTemp, tempOut, dayOf, purgeTemps, isUnusable, UNUSABLE, TEMP_DAYS, DEFAULT_TEMP_DAYS } from './temppass.mjs';
 
 const OWNER_EMAIL = (process.env.OWNER_EMAIL || '').trim().toLowerCase();
@@ -139,6 +140,7 @@ export function purgeDeleted(db) {
     db.prepare('DELETE FROM sessions WHERE user_id = ?').run(u.id);
     db.prepare('DELETE FROM password_resets WHERE user_id = ?').run(u.id);
     db.prepare('DELETE FROM temp_credentials WHERE user_id = ?').run(u.id);
+    dropTipsOf(db, u.id); // Nov 25: their Tip Tracker records (private to them) go with them
     db.prepare('DELETE FROM users WHERE id = ?').run(u.id);
   }
   db.prepare('DELETE FROM password_resets WHERE expires_at < ?').run(new Date(Date.now() - 7 * 864e5).toISOString());

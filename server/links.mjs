@@ -40,7 +40,7 @@ export const DEMO_LINKS = { 'fig-and-fire': '/demo/mise' };
 
 /* The app's own first path segments that aren't pages of the book. */
 const APP = [
-  'admin', 'api', 'demo', 'privacy', 'terms', 'help', 'img', 'icons', 'assets', 'media', 'content', 'import', 'prep',
+  'admin', 'api', 'demo', 'privacy', 'terms', 'help', 'img', 'icons', 'assets', 'media', 'content', 'import', 'prep', 'tips',
   'my-path', 'team-chat', 'certificate', 'share.jpg', 'favicon.ico', 'index.html', 'robots.txt', 'sitemap.xml',
   // words a link should never take, so a later page or a support link can use them
   'mise', 'mise-academy', 'mise-hq', 'hq', 'app', 'www', 'join', 'login', 'logout', 'signin', 'sign-in', 'signup', 'sign-up',

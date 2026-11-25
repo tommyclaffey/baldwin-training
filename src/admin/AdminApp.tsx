@@ -23,6 +23,7 @@ import { hasChat, useChatState } from '../chat/unread';
 import { openChat } from '../chat/panel';
 import { needsTwoStep, TWO_STEP_HOME } from '../lib/twostep';
 import { HqHome, HqNav, HqPhoneBar, HqWorking, useSuperCounts } from './hq';
+import { OwedToStaffPage } from '../tips/OwedToStaff';
 
 export default function AdminApp() {
   const { user, loaded } = useSession();
@@ -116,6 +117,8 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <p className="admin-group">Team</p>
           <NavLink to="/admin/people"><NavIcon d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 10a7 7 0 0 1 14 0M17 3.5a4 4 0 0 1 0 7.5M22 21a7 7 0 0 0-4-6.3" />People</NavLink>
           <NavLink to="/admin/signoffs"><NavIcon d="M3 17c3-4 5-8 7-8s-1 8 1 8 3-5 5-5-1 5 1 5h4M3 21h18" />Sign-offs{signoffs > 0 && <span className="admin-count" aria-label={`${signoffs} waiting`}>{signoffs}</span>}</NavLink>
+          {/* Nov 25 (Tip Tracker, Figma 52 · 1051:4879): what the store owes its people. Its managers and owners, as themselves. */}
+          {(user.role === 'owner' || user.role === 'manager') && !user.impersonatedBy && <NavLink to="/admin/owed"><NavIcon d="M12 3c4.5 0 8 1.3 8 3s-3.5 3-8 3-8-1.3-8-3 3.5-3 8-3ZM4 6v6c0 1.7 3.5 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.5 3 8 3s8-1.3 8-3v-6" />Owed to Staff</NavLink>}
           {keepsStores && <NavLink to="/admin/stores"><NavIcon d="M4 10v10h16V10M3 10l2-6h14l2 6M3 10h18M9 20v-6h6v6" />Stores</NavLink>}
           <p className="admin-group">The Book</p>
           {cols?.collections && Object.values(cols.collections).filter((c) => library || c.id !== 'classic').map((c) => <NavLink key={c.id} to={`/admin/pages/${c.id}`}>{c.label}</NavLink>)}
@@ -164,6 +167,7 @@ function ManagerShell({ user, refresh }: { user: NonNullable<ReturnType<typeof u
           <Route path="people" element={<PeoplePage />} />
           <Route path="people/managers" element={<People leadsOnly />} />
           <Route path="signoffs" element={<SignoffsPage />} />
+          <Route path="owed" element={<OwedToStaffPage />} />
           <Route path="stores" element={<StoresPage />} />
           <Route path="your-look/*" element={<YourLookPage />} />
           <Route path="training" element={<ToPeople />} />

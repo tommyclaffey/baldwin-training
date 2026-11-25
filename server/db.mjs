@@ -8,6 +8,7 @@ import { migrateHq } from './hq.mjs';
 import { migrateTeam } from './miseteam.mjs';
 import { migrateTemp } from './temppass.mjs';
 import { migrateSignup } from './signup.mjs';
+import { migrateTips } from './tipsdb.mjs';
 
 export const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'data'));
 export const MEDIA_DIR = path.join(DATA_DIR, 'media');
@@ -342,6 +343,7 @@ export function openDb(file = path.join(DATA_DIR, 'baldwin.db')) {
   migrateTeam(db); // Nov 16: Mise team roles, Promote to Manager links, the log's team role (server/miseteam.mjs)
   migrateTemp(db); // Nov 24: temporary passwords and PINs (server/temppass.mjs)
   migrateSignup(db); // Nov 25: Start Your Restaurant (server/signup.mjs): companies.signed_up_at, signup_pending
+  migrateTips(db); // Nov 25: Tip Tracker (server/tips.mjs): tip_shifts, tip_owed, tip_payments
   // The Hospitality Program's acknowledgments (Nov 11, server/acks.mjs): its own table, made here too, so a demo copy
   // can be seeded and dropped on any database (no migration number, like brand).
   db.exec(`CREATE TABLE IF NOT EXISTS program_acks(user_id INT NOT NULL, store_id INT NOT NULL, company_id INT, level TEXT NOT NULL,

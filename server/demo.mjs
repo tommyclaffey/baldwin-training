@@ -22,6 +22,7 @@ import { forget } from './cache.mjs';
 import { MEDIA_DIR } from './db.mjs';
 import { wipeCompany } from './companydata.mjs';
 import { seedDemoPrep } from './prep.mjs';
+import { seedDemoTips } from './tips.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const now = () => new Date().toISOString();
@@ -196,6 +197,8 @@ export function startDemo(db, key, which = 'baldwin') {
     if (pick.role === 'staff') addUser(DEMO_ROLES.manager.name, 'manager', null);
     // The owner (Nov 11, Send to Team): a second manager in the store, so a manager's progress card has someone to go to.
     addUser(DEMO_OWNER, 'owner', null);
+    // Tip Tracker (Nov 25, Figma 52): Marisol's last two pay periods and the team's owed items, as on the approved screens
+    seedDemoTips(db, { company: co, store: st, employeeDemo: pick.role === 'staff' });
     // Chat v2 (Nov 13): the employee demo is Marisol's own view (her answer to the @mention isn't there yet); the cast who are
     // "on now" stay on for the demo's day.
     seedChat(db, { company: co, storeRow, script: mise ? FIGANDFIRE_DEMO_CHAT : BALDWIN_DEMO_CHAT, role: pick.role === 'staff' ? 'employee' : 'manager',
