@@ -4723,6 +4723,37 @@ body.eip-lock .em-bar.floating, body.menu-lock .em-bar.floating { display: none;
   .people-table td.row-actions { display: block; width: 100%; white-space: normal; padding: 4px 0 0; }
   .people-table .acts { flex-wrap: wrap; justify-content: flex-start; }
 }
+/* People → Owners and managers (Nov 25). The row holds its layout, as Super Admin → People did (b45c335): the shared
+   .row-actions rule (a flex box) had pulled the actions cell out of the table, so four actions stacked or wrapped and ran
+   off the side at 1025. Each person is one grid row: name with the email under it, role, store, last seen; the actions
+   run in one line across the bottom of the row, under the name. Under 640 px of room (phones) each person is a card. */
+.leads-wrap { container-type: inline-size; }
+.leads-table thead, .leads-table tbody { display: block; }
+.leads-table tr { display: grid; grid-template-columns: minmax(0, 1fr) 140px 150px; align-items: center; }
+.leads-table.multi tr { grid-template-columns: minmax(0, 1fr) 140px 170px 150px; }
+.leads-table tbody tr { border-top: 1px solid var(--tint-2); }
+.leads-table td { border-top: 0; min-width: 0; }
+.leads-table td.person { padding-bottom: 6px; }
+.leads-table .person-name { display: block; font-weight: 600; }
+.leads-table .person-sub { display: block; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.leads-table td.when { white-space: nowrap; }
+.leads-table select { max-width: 100%; }
+.leads-table td.row-actions { grid-column: 1 / -1; display: block; padding-top: 0; padding-bottom: 4px; }
+.leads-table td.row-actions.none { display: none; }
+.leads-table .acts { display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 0 20px; }
+.leads-table .acts .link-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0; white-space: nowrap; align-self: auto; }
+@container (max-width: 640px) {
+  .leads-table thead { display: none; }
+  .leads-table tr, .leads-table.multi tr { grid-template-columns: minmax(0, 1fr); padding: 12px 16px 8px; }
+  .leads-table td { padding: 2px 0; }
+  .leads-table td.person { padding-bottom: 6px; }
+  .leads-table .person-name { font-size: 15px; font-weight: 700; }
+  .leads-table td[data-label] { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-height: 36px; }
+  .leads-table td[data-label]::before { content: attr(data-label) ':'; display: inline; flex: none; width: auto; white-space: nowrap; font: inherit; letter-spacing: 0; text-transform: none; margin: 0; color: var(--muted); }
+  .leads-table td.when { white-space: normal; }
+  .leads-table td.row-actions { padding: 2px 0 0; }
+  .leads-table .acts { flex-wrap: wrap; gap: 0 20px; }
+}
 /* The in-app "are you sure?" (useAsk) and what-just-happened note (DoneNote), Nov 23 */
 .ask-box h2 { margin: 0; font-size: 20px; }
 .btn.ask-danger { background: #A1271F; color: #FFFFFF; } /* white on #A1271F 6.9:1 */

@@ -497,11 +497,15 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
       </>}
 
       <h2 className="sub">Owners and managers · {leads.length}</h2>
-      <table className="table stack-table">
-        <thead><tr><th>Name</th><th>Email</th><th>Role</th>{multi && <th>Store</th>}<th>Last seen</th><th /></tr></thead>
+      {/* Nov 25: the row holds its layout (as Super Admin → People did, b45c335). The shared .row-actions rule made the actions
+          cell a flex box, out of the table, and four actions stacked or wrapped. Now the email sits under the name and the
+          actions run in one line across the bottom of the person's row; under 640 px of room each person is a card. */}
+      <div className="leads-wrap"><table className={'table leads-table' + (multi ? ' multi' : '')}>
+        <thead><tr><th>Name</th><th>Role</th>{multi && <th>Store</th>}<th>Last seen</th><th className="sr-only">Actions</th></tr></thead>
         <tbody>{leads.map((p) => (
           <tr key={p.id}>
-            <td>{p.name}{p.id === data.you && <small className="muted"> · you</small>}<TempTag temp={p.temporary} /></td><td data-label="Email">{p.email}</td>
+            <td className="person"><span className="person-name">{p.name}{p.id === data.you && <small className="muted"> · you</small>}</span>
+              <small className="person-sub email">{p.email}</small><TempTag temp={p.temporary} /></td>
             <td data-label="Role">{owner && p.id !== data.you
               ? <select aria-label={`${p.name}’s role`} value={p.role} onChange={(e) => void run(() => api(`/api/team/${p.id}`, { method: 'PATCH', body: { role: e.target.value } }))}><option value="owner">Owner</option><option value="manager">Manager</option></select>
               : ROLE_LABEL[p.role]}</td>
@@ -509,16 +513,16 @@ export function People({ leadsOnly = false }: { leadsOnly?: boolean }) {
               : owner && p.id !== data.you
                 ? <select aria-label={`${p.name}’s stores`} value={p.storeId ?? ''} onChange={(e) => move(p, e.target.value ? Number(e.target.value) : null)}><option value="">Every store</option>{data.stores.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select>
                 : p.storeName || 'Every store'}</td>}
-            <td data-label="Last seen">{when(p.lastSeenAt)}</td>
-            <td className="row-actions">{(owner || p.canDemote) && p.id !== data.you && <>
+            <td data-label="Last seen" className="when">{when(p.lastSeenAt)}</td>
+            {(owner || p.canDemote) && p.id !== data.you ? <td className="row-actions"><div className="acts">
               {owner && p.email && !data.company.demo && tempButton(p)}
               {owner && p.email && !data.company.demo && <button className="link-btn" onClick={() => makeReset(p)}>Reset Password</button>}
               {p.canDemote && <button className="link-btn" onClick={() => demote(p)}>Change to Staff</button>}
               {owner && !data.company.demo && <button className="link-btn danger" onClick={() => void askThen({ title: `Remove ${p.name}?`, body: 'They’re signed out and can’t edit anymore.', go: 'Remove', danger: true }, () => run(() => api(`/api/team/${p.id}`, { method: 'DELETE' }), `${p.name} is removed.`))}>Remove</button>}
-            </>}</td>
+            </div></td> : <td className="row-actions none" />}
           </tr>
         ))}</tbody>
-      </table>
+      </table></div>
       {reset && <ResetLinkCard reset={reset} onClose={() => setReset(null)} />}
       {tempDialog}
       {owner && data.people.some((p) => p.promotion) && (
