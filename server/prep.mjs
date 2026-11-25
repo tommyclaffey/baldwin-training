@@ -2,7 +2,7 @@
 // year over year and can give you clear reports"). Figma 09 · Proposals → 31 (632:802): Today / Prep list (632:803),
 // Item detail (632:894), Reports (632:985). Tommy, Nov 12, before bed: "You can do whatever you think you need to", so the
 // open questions on the note (641:1348) were answered with these defaults:
-//   • Who logs: bartenders, managers and owners (Tommy, Nov 12: "actually just bar … for right now"). Everyone else at the
+//   • Who logs: bartenders, managers and owners (Tommy, Nov 12: "actually just bar … for right now"; Nov 25: bar leads and barbacks too). Everyone else at the
 //     store reads Today. LOG_JOBS below is the one place to add a kitchen job later.
 //   • Who edits: managers and owners (items, pars, shelf life, accepting a suggested par).
 //   • Units: each item has one unit (qt, pt, oz, each, bottles); batches are logged in it; "to make" rounds up to whole
@@ -79,9 +79,10 @@ export const useByFor = (shelfDays, day) => (shelfDays == null ? null : addDays(
 /* ------------------------------------------------------------------ who can do what */
 const MANAGERS = new Set(['owner', 'manager', 'superadmin']);
 const jobsOf = (j) => { try { const a = JSON.parse(j || '[]'); return Array.isArray(a) ? a.map(String) : []; } catch { return []; } };
-/** The jobs that log prep, besides managers and owners. The only place this is decided: add a kitchen job here later. */
-export const LOG_JOBS = ['bartender'];
-/** Logs batches, waste, counts: bartenders, managers and owners. */
+/** The jobs that log prep, besides managers and owners. The only place this is decided: add a kitchen job here later.
+ *  Nov 25 (paths plan, decided): Bar Lead and Barback log prep too. Prep Cook joins once Prep handles kitchen items. */
+export const LOG_JOBS = ['bartender', 'bar-lead', 'barback'];
+/** Logs batches, waste, counts: the bar team (LOG_JOBS), managers and owners. */
 export const canLog = (u) => !!u && (MANAGERS.has(u.role) || jobsOf(u.jobs).some((j) => LOG_JOBS.includes(j)));
 /** Edits items, pars and shelf life, accepts suggestions: managers and owners. */
 export const canManage = (u) => !!u && MANAGERS.has(u.role);

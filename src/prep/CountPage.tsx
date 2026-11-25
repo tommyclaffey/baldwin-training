@@ -100,7 +100,7 @@ export function CountPage() {
   if (!data.can.log) return (
     <div className="prp prp-count">
       <Head line={`${longDay} · Start of shift`} title="Shift Count" pills={<DemoPill />} crumbs={<nav className="prp-crumbs" aria-label="Breadcrumb"><Link to="/prep">Bar Prep</Link><span aria-hidden="true">/</span><span aria-current="page">Shift Count</span></nav>} />
-      <p className="prp-card prp-pad prp-note">Bartenders and managers count the bar at the start of the shift. {data.counted ? `Today’s count was saved at ${timeOf(data.counted.at)}${data.counted.by ? ' by ' + data.counted.by.name : ''}.` : 'Nobody has counted yet today.'} <Link to="/prep" className="prp-link">Back to Bar Prep {Ico.arrow}</Link></p>
+      <p className="prp-card prp-pad prp-note">The bar team and managers count the bar at the start of the shift. {data.counted ? `Today’s count was saved at ${timeOf(data.counted.at)}${data.counted.by ? ' by ' + data.counted.by.name : ''}.` : 'Nobody has counted yet today.'} <Link to="/prep" className="prp-link">Back to Bar Prep {Ico.arrow}</Link></p>
     </div>
   );
   const kinds = (['juice', 'syrup', 'garnish'] as Kind[]).filter((k) => items.some((i) => i.kind === k));

@@ -100,7 +100,7 @@ function TodayPage() {
             <div className="prp-stepbody">
               <p className="prp-kicker">Step 1 · Start here</p><h2 id="s1-title">Count what you walked in with</h2>
               <p className="prp-sub">Not counted yet.{data.lastCount ? ` Last count: ${lastWord} ${timeOf(data.lastCount.at)}${data.lastCount.by ? ' by ' + data.lastCount.by.name : ''}.` : ''} Anything past its use-by: keep it or toss it as you go.</p>
-              {data.can.log ? startBtn('ondark') : <p className="prp-sub">A bartender or manager counts first.</p>}
+              {data.can.log ? startBtn('ondark') : <p className="prp-sub">The bar team or a manager counts first.</p>}
             </div>
           </section>
         )}
@@ -200,7 +200,7 @@ function TodayPage() {
           {data.can.log ? <>
             {counted && <section className="prp-card prp-pad prp-desk" aria-labelledby="lb-title"><p className="prp-kicker">Log a batch</p><h2 id="lb-title" className="prp-h3">Made something? Log it here.</h2><BatchForm key={'b' + data.items.length} data={data} inline onDone={done} /></section>}
             <section className="prp-card prp-pad prp-desk" aria-labelledby="lw-title"><p className="prp-kicker">Log waste</p><h2 id="lw-title" className="prp-h3">Tossed, spilled or not right?</h2><WasteForm key={open.map((o) => o.batchId).join()} batches={open} onDone={done} /></section>
-          </> : <p className="prp-card prp-pad prp-note">Bartenders and managers count and log prep. You can see what’s made and what to use first.</p>}
+          </> : <p className="prp-card prp-pad prp-note">The bar team and managers count and log prep. You can see what’s made and what to use first.</p>}
           <section className="prp-card prp-pad prp-week" aria-labelledby="wk-title">
             <p className="prp-kicker" id="wk-title">This week so far</p>
             <div className="prp-stats">

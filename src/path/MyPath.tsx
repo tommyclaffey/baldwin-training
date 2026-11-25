@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useSession } from '../lib/session';
 import { currentBrand } from '../lib/theme';
-import { dayLabel, dueWords, setPath, usePath, reloadPath, type JobPath, type Note, type Program, type Stage, type Step } from './store';
+import { dayLabel, dueWords, jobsByArea, setPath, usePath, reloadPath, type Area, type Job, type JobPath, type Note, type Program, type Stage, type Step } from './store';
 
 const KIND: Record<Step['kind'], string> = { read: 'Read', quiz: 'Quiz', lesson: 'Lesson', signoff: 'Sign-Off' };
 const STATUS = { 'on-track': 'On Track', behind: 'Behind', done: 'Done' } as const;
@@ -16,7 +16,7 @@ export function MyPathPage() {
   const [tab, setTab] = useState(0);
   useEffect(() => { document.title = 'My Path · Mise Academy'; void reloadPath(); }, []);
   if (!path) return <main className="page mp"><div className="loader" /></main>;
-  if (!path.paths.length) return <PickJob jobs={path.allJobs} />;
+  if (!path.paths.length) return <PickJob jobs={path.allJobs} areas={path.areas} />;
   const p = path.paths[Math.min(tab, path.paths.length - 1)];
   return (
     <main className="page mp" aria-labelledby="mp-title">
@@ -43,6 +43,8 @@ export function MyPathPage() {
         </section>
         <aside className="mp-side">
           <UpNext path={p} />
+          {/* Nov 25: a sous chef's line cooks, right under Up Next so it's found on shift */}
+          {!!path.leads?.length && <CrewCard />}
           {path.programs.length > 0 && (
             <section className="mp-card mp-programs" aria-labelledby="mp-prog">
               <p className="mp-label" id="mp-prog">Your Programs</p>
@@ -204,8 +206,54 @@ function UpNext({ path: p }: { path: JobPath }) {
   );
 }
 
+type Crew = { jobs: string[]; people: { id: number; name: string; steps: { id: string; title: string; stage: string; done: boolean; at: string | null; by: string | null; mine: boolean; ask: string | null }[] }[] };
+/** Nov 25: a sous chef signs off their line cooks' kitchen steps (server/paths.mjs, leadCanSign). Managers see every one. */
+function CrewCard() {
+  const [crew, setCrew] = useState<Crew | null>(null);
+  const [busy, setBusy] = useState('');
+  const [err, setErr] = useState('');
+  useEffect(() => { api<Crew>('/api/path/crew').then(setCrew).catch((e) => setErr((e as Error).message)); }, []);
+  const act = async (userId: number, key: string, undo: boolean) => {
+    setBusy(userId + key); setErr('');
+    try { setCrew(await api<Crew>('/api/path/signoff', { method: undo ? 'DELETE' : 'POST', body: { userId, key } })); } catch (e) { setErr((e as Error).message); }
+    setBusy('');
+  };
+  if (!crew) return err ? <section className="mp-card"><p className="mp-label">Your Line Cooks</p><p role="alert" className="mp-err">{err}</p></section> : null;
+  return (
+    <section className="mp-card mp-crew" aria-labelledby="mp-crew">
+      <p className="mp-label" id="mp-crew">Your Line Cooks</p>
+      <p className="mp-note">As a sous chef, you sign off your line cooks’ kitchen steps. Your managers see every sign-off.</p>
+      {!crew.people.length && <p>No line cooks at this store yet.</p>}
+      {crew.people.map((x) => {
+        const open = x.steps.filter((s) => !s.done);
+        const mine = x.steps.filter((s) => s.done && s.mine);
+        return (
+          <div key={x.id} className="mp-crew-person">
+            <p className="mp-crew-name"><strong>{x.name}</strong> · {x.steps.length - open.length} of {x.steps.length} signed off</p>
+            <ul className="mp-crew-steps">
+              {open.map((s) => (
+                <li key={s.id}>
+                  <span><strong>{s.title}</strong><small>{s.ask ? 'Asked for it' : s.stage}</small></span>
+                  <button type="button" className={'mp-btn' + (s.ask ? ' dark primary' : '')} disabled={!!busy} onClick={() => void act(x.id, s.id, false)}>{busy === x.id + s.id ? '…' : 'Sign Off'}</button>
+                </li>
+              ))}
+              {mine.map((s) => (
+                <li key={s.id} className="done">
+                  <span><strong>{s.title}</strong><small>Signed off by you</small></span>
+                  <button type="button" className="mp-btn" disabled={!!busy} onClick={() => void act(x.id, s.id, true)}>{busy === x.id + s.id ? '…' : 'Undo'}</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+      {err && <p role="alert" className="mp-err">{err}</p>}
+    </section>
+  );
+}
+
 /** No job yet: pick one (a manager can change it later). */
-function PickJob({ jobs }: { jobs: { key: string; label: string; note?: string }[] }) {
+function PickJob({ jobs, areas }: { jobs: Job[]; areas?: Area[] }) {
   const [busy, setBusy] = useState('');
   const [err, setErr] = useState('');
   const pick = async (key: string) => {
@@ -219,13 +267,19 @@ function PickJob({ jobs }: { jobs: { key: string; label: string; note?: string }
       <section className="mp-card mp-pick">
         <h2>What’s Your Job?</h2>
         <p>Your path is what your job needs to learn, in order, with a due date for each stage. A manager can change it later.</p>
-        <div className="mp-pick-row">
-          {jobs.map((j) => (
-            <button key={j.key} type="button" className="mp-pick-btn" onClick={() => void pick(j.key)} disabled={!!busy}>
-              <strong>{busy === j.key ? 'Setting…' : j.label}</strong>{j.note && <small>{j.note}</small>}
-            </button>
-          ))}
-        </div>
+        {/* Nov 25: the jobs under three headings, Front of House · Bar · Kitchen */}
+        {jobsByArea(jobs, areas).map((g) => (
+          <div key={g.key} className="mp-pick-group" role="group" aria-labelledby={'mp-area-' + g.key}>
+            <h3 className="mp-label" id={'mp-area-' + g.key}>{g.label}</h3>
+            <div className="mp-pick-row">
+              {g.jobs.map((j) => (
+                <button key={j.key} type="button" className="mp-pick-btn" onClick={() => void pick(j.key)} disabled={!!busy}>
+                  <strong>{busy === j.key ? 'Setting…' : j.label}</strong>{j.note && <small>{j.note}</small>}
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
         {err && <p role="alert" className="mp-err">{err}</p>}
       </section>
     </main>

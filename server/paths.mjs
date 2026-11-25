@@ -13,17 +13,19 @@ import { passFor, PASS_PCT } from './quizgen.mjs';
 import { ACK_KEY, ACK_LEVEL } from './acks.mjs';
 
 export const JOBS = [
-  { key: 'server', label: 'Server' },
-  { key: 'bartender', label: 'Bartender' },
-  { key: 'host', label: 'Host' },
-  { key: 'support', label: 'Support', note: 'Bussers and runners' },
+  { key: 'server', label: 'Server', area: 'foh' },
+  { key: 'bartender', label: 'Bartender', area: 'bar' },
+  { key: 'host', label: 'Host', area: 'foh' },
+  { key: 'support', label: 'Support', note: 'Bussers and runners', area: 'foh' },
   // Nov 16, Tommy: "add the Expo under support … needs to know everything that a runner would need to know, which is food,
   // but they do not need to know the drink side". Food, table numbers, the three-line drops, Hospitality; no cocktails.
-  { key: 'expo', label: 'Expo', note: 'Support · runs the pass' },
-  // Nov 22 draft (Tommy, Nov 16: "make paths for each position and training material for each position"). Plan: vault ›
-  // Apps/The Baldwin Training Book/(C) Mise — Paths for Every Position (Nov 22 2026). NOT LIVE until Tommy approves it.
-  // `area` groups the job menu later (front of house / bar / kitchen). `starter: true` = a short path of what the book has
-  // today plus a manager's sign-offs, waiting on training material that doesn't exist yet (kitchen lessons, a store's recipes).
+  { key: 'expo', label: 'Expo', note: 'Support · runs the pass', area: 'foh' },
+  // Nov 25 (Tommy approved the plan Nov 25: "go with your choice"; Tommy, Nov 16: "make paths for each position and training
+  // material for each position"). Plan + the six decisions: vault › Apps/The Baldwin Training Book/(C) Mise — Paths for
+  // Every Position (Nov 22 2026). `area` groups the job menu (AREAS). `starter: true` = a short path of what the book has
+  // today plus sign-offs, waiting on training material that doesn't exist yet (kitchen lessons, a store's recipes).
+  // Leadership paths (Floor Manager, Kitchen Manager, GM) aren't here: managers don't have paths in the app yet (People,
+  // sign-offs and asks are for staff), so giving them one is a bigger change than a job on this list.
   { key: 'server-assistant', label: 'Server Assistant', note: 'Support · water, bread, clears and resets', area: 'foh' },
   { key: 'sommelier', label: 'Sommelier', note: 'Wine steward · wine service on the floor', area: 'foh' },
   { key: 'barback', label: 'Barback', note: 'Bar · stocks, ice, kegs and glassware', area: 'bar' },
@@ -33,6 +35,8 @@ export const JOBS = [
   { key: 'dish', label: 'Dishwasher', note: 'Kitchen · the dish pit', area: 'kitchen', starter: true },
   { key: 'sous-chef', label: 'Sous Chef', note: 'Kitchen · runs the line', area: 'kitchen', starter: true },
 ];
+/** The job menu's headings, in order (Nov 25: "Front of House · Bar · Kitchen"). */
+export const AREAS = [{ key: 'foh', label: 'Front of House' }, { key: 'bar', label: 'Bar' }, { key: 'kitchen', label: 'Kitchen' }];
 const JOB_KEYS = new Set(JOBS.map((j) => j.key));
 export const validJobs = (list) => [...new Set((Array.isArray(list) ? list : []).map(String))].filter((k) => JOB_KEYS.has(k));
 
@@ -51,9 +55,7 @@ export const ACK_STEP = { title: 'Training Acknowledgment', how: 'Read and sign 
 // every path. (Week 1, not "Before your first shift", so people already past their first shift aren't sent back.)
 // The Art of Table Service is the floor's later weeks.
 const HOSP_WEEK1 = ['hosp-welcome', 'hosp-experience-creator', 'hosp-soft-skills', 'hosp-guest-conflict', 'hosp-safety'].map(lessonAll);
-// Kitchen jobs (Nov 22 draft): Hospitality 101's welcome and its safety lesson (accidents, illness, choking). The other three
-// are about guests at the table. Decision for Tommy: all five, like the floor?
-const KITCHEN_HOSP = ['hosp-welcome', 'hosp-safety'].map(lessonAll);
+// Kitchen jobs take all five Hospitality 101 lessons too, the same as the floor (decided Nov 25).
 const TABLE_SERVICE = ['hosp-mise-en-place', 'hosp-presence', 'hosp-greeting', 'hosp-water-selling', 'hosp-coursing', 'hosp-farewell'].map(lessonAll);
 
 // Cocktail Program Level 1, one lesson per staple spirit (Nov 12): a server's path borrows each one's "How guests order it".
@@ -89,7 +91,7 @@ const PATHS = {
     { key: 'weeks-3-4', title: 'Weeks 3 and 4 · Hospitality', day: 28, steps: [...TABLE_SERVICE] },
   ],
 
-  // ---- Nov 22 draft: every other position (NOT LIVE; Tommy reviews the plan first) ----
+  // ---- Nov 25: every other position (plan approved Nov 25) ----
   // Server Assistant: a runner's food knowledge plus water, bread, clears and resets. Food side only, like Expo.
   'server-assistant': [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('steps-of-service'), read('safety'), read('cleanliness'), read('floor-plan'), read('step-4/fire-and-run'), read('step-6/clear'), read('allergen-guide'), quiz('t:allergens'), ACK] },
@@ -107,8 +109,8 @@ const PATHS = {
   // Barback: stock, ice, glassware, kegs and the bar's cleaning. Lessons from Cocktail Level 1 and the Beer Program.
   barback: [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('safety'), read('cleanliness'), read('floor-plan'), read('allergen-guide'), quiz('t:allergens'), ACK] },
-    { key: 'week-1', title: 'Week 1 · Stocking the bar', day: 7, steps: [...HOSP_WEEK1, lesson('bar-glass-ice-garnish#0'), lesson('bar-glass-ice-garnish#1'), lesson('bar-glass-ice-garnish#2'), lesson('beer-glass-pour#0'), lesson('beer-glass-pour#1'), sign('stock', 'Stock the bar for open', 'A bartender or manager checks the wells, ice, garnish and glassware')] },
-    { key: 'week-2', title: 'Week 2 · Kegs and the cooler', day: 14, steps: [lesson('beer-draft#0'), lesson('beer-draft#3'), lessonAll('beer-keeping'), lesson('beer-kegs-cooler#0'), lesson('beer-kegs-cooler#2'), lesson('bar-batching#3'), sign('keg', 'Change a keg', 'A bartender or manager watches and signs you off')] },
+    { key: 'week-1', title: 'Week 1 · Stocking the bar', day: 7, steps: [...HOSP_WEEK1, lesson('bar-glass-ice-garnish#0'), lesson('bar-glass-ice-garnish#1'), lesson('bar-glass-ice-garnish#2'), lesson('beer-glass-pour#0'), lesson('beer-glass-pour#1'), sign('stock', 'Stock the bar for open', 'A manager checks the wells, ice, garnish and glassware')] },
+    { key: 'week-2', title: 'Week 2 · Kegs and the cooler', day: 14, steps: [lesson('beer-draft#0'), lesson('beer-draft#3'), lessonAll('beer-keeping'), lesson('beer-kegs-cooler#0'), lesson('beer-kegs-cooler#2'), lesson('bar-batching#3'), sign('keg', 'Change a keg', 'A manager watches and signs you off')] },
     { key: 'weeks-3-4', title: 'Weeks 3 and 4 · Behind the bar', day: 28, steps: [sign('close', 'Close the bar', 'The bar’s jobs on the Cleaning page: ice well, rails and mats, drains; a manager checks'), sign('shadow', 'Back a bartender for a full shift', 'Work a shift beside a bartender'), sign('bar', 'Barback sign-off', 'Your manager signs you off')] },
   ],
   // Bar Lead: for a bartender stepping up. The Cocktail Program's Level 3 (balance, batching, costing) and the beer lines.
@@ -123,27 +125,29 @@ const PATHS = {
   // The book has the kitchen basics (Safety: the danger zone, handwashing, gloves, allergy plates, labels, knives and burns;
   // Cleanliness: sanitizer and the cleaning board; each dish's spec sheet: station, components, steps, plating) but no kitchen
   // lessons or quizzes yet. Until there are, a cook's path is those pages, the menu quizzes and a manager's sign-offs.
-  // Hospitality 101: its welcome and its safety lesson only (a decision for Tommy: all five, like the floor?). No drink steps.
+  // Hospitality 101: all five lessons, like the floor (Nov 25). No drink steps. A sous chef can sign off a line cook's steps
+// (LEAD_SIGNS below); managers still see every sign-off.
   'line-cook': [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('safety'), read('cleanliness'), read('allergen-guide'), quiz('t:allergens'), ACK] },
-    { key: 'week-1', title: 'Week 1 · Your station', day: 7, steps: [...KITCHEN_HOSP, read('food-matrix'), group('food'), sign('knife', 'Knife skills check', 'Show the cuts your station uses; the chef or sous chef signs you off'), sign('station-setup', 'Set up your station', 'Set it up from the dish spec sheets before service; the chef checks it')] },
-    { key: 'week-2', title: 'Week 2 · Cooking the menu', day: 14, steps: [sign('allergy-plate', 'Make an allergy plate', 'Clean board and knife, fresh gloves, new pan, as on the Safety page; the chef watches'), sign('station-dishes', 'Cook every dish on your station', 'Each one to its spec sheet and plating; the chef tastes and signs you off')] },
-    { key: 'weeks-3-4', title: 'Weeks 3 and 4 · On the line', day: 28, steps: [sign('service', 'Work a full service on your station', 'Call back every ticket and keep up with the rail'), sign('close', 'Close your station', 'Label, date and store, then the line’s jobs on the Cleaning page; the chef checks'), sign('line', 'Line sign-off', 'The chef signs you off for your station')] },
+    { key: 'week-1', title: 'Week 1 · Your station', day: 7, steps: [...HOSP_WEEK1, read('food-matrix'), group('food'), sign('knife', 'Knife skills check', 'Show the cuts your station uses; the chef or a sous chef signs you off'), sign('station-setup', 'Set up your station', 'Set it up from the dish spec sheets before service; the chef or a sous chef checks it')] },
+    { key: 'week-2', title: 'Week 2 · Cooking the menu', day: 14, steps: [sign('allergy-plate', 'Make an allergy plate', 'Clean board and knife, fresh gloves, new pan, as on the Safety page; the chef or a sous chef watches'), sign('station-dishes', 'Cook every dish on your station', 'Each one to its spec sheet and plating; the chef or a sous chef tastes and signs you off')] },
+    { key: 'weeks-3-4', title: 'Weeks 3 and 4 · On the line', day: 28, steps: [sign('service', 'Work a full service on your station', 'Call back every ticket and keep up with the rail; the chef or a sous chef signs you off'), sign('close', 'Close your station', 'Label, date and store, then the line’s jobs on the Cleaning page; the chef or a sous chef checks'), sign('line', 'Line sign-off', 'The chef or a sous chef signs you off for your station')] },
   ],
   prep: [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('safety'), read('cleanliness'), read('allergen-guide'), quiz('t:allergens'), ACK] },
-    { key: 'week-1', title: 'Week 1 · The walk-in and the prep list', day: 7, steps: [...KITCHEN_HOSP, read('food-matrix'), group('food'), sign('knife', 'Knife skills check', 'Show the cuts on the prep list; the chef signs you off'), sign('labels', 'Label, date and rotate the walk-in', 'First in, first out, as on the Safety page; the chef checks')] },
+    { key: 'week-1', title: 'Week 1 · The walk-in and the prep list', day: 7, steps: [...HOSP_WEEK1, read('food-matrix'), group('food'), sign('knife', 'Knife skills check', 'Show the cuts on the prep list; the chef signs you off'), sign('labels', 'Label, date and rotate the walk-in', 'First in, first out, as on the Safety page; the chef checks')] },
     { key: 'week-2', title: 'Week 2 · Batches', day: 14, steps: [sign('cooling', 'Cool a batch and log it', 'Follow the cooling steps on the Safety page and write the times down; the chef checks the log'), sign('prep-list', 'Work the prep list for a shift', 'Everything made to the recipe, labelled and put away; the chef signs you off')] },
   ],
+  // Dishwasher: the allergen guide and quiz too (Nov 25: the dish crew handles cross-contact).
   dish: [
-    { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('safety'), read('cleanliness'), ACK] },
-    { key: 'week-1', title: 'Week 1 · The dish pit', day: 7, steps: [...KITCHEN_HOSP, sign('machine', 'Run the dish machine and check its temperatures', 'As on the Cleaning page; a manager watches and signs you off'), sign('sanitizer', 'Mix and test sanitizer', 'Mix it to the label and check it with a test strip; a manager watches'), sign('chemicals', 'Know our chemicals', 'Show where the chemicals and their safety data sheets are kept; a manager signs you off')] },
+    { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('safety'), read('cleanliness'), read('allergen-guide'), quiz('t:allergens'), ACK] },
+    { key: 'week-1', title: 'Week 1 · The dish pit', day: 7, steps: [...HOSP_WEEK1, sign('machine', 'Run the dish machine and check its temperatures', 'As on the Cleaning page; a manager watches and signs you off'), sign('sanitizer', 'Mix and test sanitizer', 'Mix it to the label and check it with a test strip; a manager watches'), sign('chemicals', 'Know our chemicals', 'Show where the chemicals and their safety data sheets are kept; a manager signs you off')] },
     { key: 'week-2', title: 'Week 2 · Closing', day: 14, steps: [sign('close', 'Close the dish pit', 'The dish jobs on the Cleaning page: empty the traps, clean the machine, mop and squeegee; a manager checks'), sign('dish', 'Dish sign-off', 'Your manager signs you off')] },
   ],
   // Sous Chef: a cook's path plus running the line and the pass. Kitchen leadership lessons don't exist yet.
   'sous-chef': [
     { key: 'first', title: 'Before your first shift', day: 0, steps: [read('our-story'), read('safety'), read('cleanliness'), read('allergen-guide'), quiz('t:allergens'), read('floor-plan'), ACK] },
-    { key: 'week-1', title: 'Week 1 · Every station', day: 7, steps: [...KITCHEN_HOSP, read('food-matrix'), group('food'), read('step-4/fire-and-run'), sign('stations', 'Cook every station’s dishes', 'Each one to its spec sheet and plating; the chef tastes and signs you off')] },
+    { key: 'week-1', title: 'Week 1 · Every station', day: 7, steps: [...HOSP_WEEK1, read('food-matrix'), group('food'), read('step-4/fire-and-run'), sign('stations', 'Cook every station’s dishes', 'Each one to its spec sheet and plating; the chef tastes and signs you off')] },
     { key: 'week-2', title: 'Week 2 · Running the line', day: 14, steps: [sign('expo', 'Run the pass for a service', 'Call the tickets, check every plate against its spec sheet; the chef signs you off'), sign('open-close', 'Open and close the kitchen', 'The kitchen’s jobs on the Cleaning page, labels and the walk-in; the chef checks')] },
     { key: 'weeks-3-4', title: 'Weeks 3 and 4 · Leading the kitchen', day: 28, steps: [sign('train', 'Train a new cook for a shift', 'The chef checks in with you and the new cook'), sign('sous', 'Sous Chef sign-off', 'The chef or GM signs you off')] },
   ],
@@ -304,7 +308,7 @@ export function personPath(db, store, user, ctx) {
   // Notes from a manager (a reminder, a congrats), newest first; My Path shows the unseen ones until they're closed.
   const notes = db.prepare('SELECT n.id, n.kind, n.body, n.at, n.seen_at, u.name by_name FROM notes n LEFT JOIN users u ON u.id = n.by_user WHERE n.user_id = ? AND n.store_id = ? ORDER BY n.id DESC LIMIT 5').all(user.id, store)
     .map((n) => ({ id: n.id, kind: n.kind, body: n.body, at: n.at, seenAt: n.seen_at || null, by: n.by_name || null }));
-  return { jobs, startedOn, paths, programs: programsFor(done, paths, !user.role || user.role === 'staff'), allJobs: JOBS, notes };
+  return { jobs, startedOn, paths, programs: programsFor(done, paths, !user.role || user.role === 'staff'), allJobs: JOBS, areas: AREAS, notes, leads: leadJobsOf(user) };
 }
 /** One line per person for the manager's Training list. */
 export function personSummary(db, store, user, ctx) {
@@ -316,4 +320,20 @@ export function personSummary(db, store, user, ctx) {
 }
 /** Is this a sign-off step in one of this person's paths, or a program's practical (Cocktail Program Level 2)? */
 export const isPathSignoff = (user, key) => LEVELS.some((L) => L.practical === key) || (key === ACK_KEY && validJobs(safeJson(user.jobs)).length > 0) || validJobs(safeJson(user.jobs)).some((job) => (PATHS[job] || []).some((st) => st.steps.some((s) => s.kind === 'signoff' && `path:${job}:${s.key}` === key)));
+/**
+ * Nov 25 (Tommy: "a sous chef can sign off a line cook's steps. Managers still see every sign-off."). The narrowest rule:
+ * a staff member whose jobs include Sous Chef may sign off (or undo their own sign-off of) another staff member's Line Cook
+ * sign-off steps, in the same company and store. Not the acknowledgment, not quizzes, not any other job's steps. The
+ * sign-off is saved like a manager's (by_user = the sous chef), so People and the log show who signed.
+ */
+export const LEAD_SIGNS = { 'sous-chef': ['line-cook'] };
+export function leadCanSign(signer, person, key) {
+  if (!signer || !person || signer.role !== 'staff' || person.role !== 'staff' || signer.id === person.id) return false;
+  if (signer.company_id == null || signer.company_id !== person.company_id || signer.store_id == null || signer.store_id !== person.store_id) return false;
+  const mine = validJobs(safeJson(signer.jobs));
+  return Object.entries(LEAD_SIGNS).some(([lead, jobs]) => mine.includes(lead) && jobs.some((job) => String(key).startsWith(`path:${job}:`)))
+    && isPathSignoff(person, String(key)) && String(key) !== ACK_KEY;
+}
+/** The jobs this person signs off as a lead (a sous chef: ['line-cook']), or none. */
+export const leadJobsOf = (user) => (user?.role === 'staff' ? [...new Set(validJobs(safeJson(user.jobs)).flatMap((j) => LEAD_SIGNS[j] || []))] : []);
 const safeJson = (s) => { try { return JSON.parse(s || '[]'); } catch { return []; } };

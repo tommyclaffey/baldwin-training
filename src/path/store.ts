@@ -24,8 +24,19 @@ export type Program = { title: string; to: string; total: number; done: number; 
   practical?: { key: string; title: string; how: string; at: string | null; by: string | null; ask?: Ask | null };
   /** Nov 12: a level by invitation (Master of the Bar): when a manager invited this person, and who. */
   invite?: { key: string; at: string | null; by: string | null } };
-export type Job = { key: string; label: string; note?: string };
-export type MyPath = { jobs: string[]; startedOn: string; paths: JobPath[]; programs: Program[]; allJobs: Job[]; notes?: Note[] };
+export type Job = { key: string; label: string; note?: string; area?: string };
+/** Nov 25: the job menu's headings (Front of House · Bar · Kitchen). */
+export type Area = { key: string; label: string };
+export const AREAS: Area[] = [{ key: 'foh', label: 'Front of House' }, { key: 'bar', label: 'Bar' }, { key: 'kitchen', label: 'Kitchen' }];
+/** The jobs under each heading, in the list's order; a job without a heading goes last, under none. */
+export function jobsByArea(jobs: Job[], areas: Area[] = AREAS) {
+  const out = areas.map((a) => ({ ...a, jobs: jobs.filter((j) => j.area === a.key) })).filter((g) => g.jobs.length);
+  const rest = jobs.filter((j) => !areas.some((a) => a.key === j.area));
+  return rest.length ? [...out, { key: 'other', label: 'Other', jobs: rest }] : out;
+}
+export type MyPath = { jobs: string[]; startedOn: string; paths: JobPath[]; programs: Program[]; allJobs: Job[]; areas?: Area[]; notes?: Note[];
+  /** Nov 25: the jobs this person signs off as a lead (a sous chef: ['line-cook']). */
+  leads?: string[] };
 
 let data: MyPath | null = null;
 let loading: Promise<void> | null = null;

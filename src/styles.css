@@ -1761,6 +1761,16 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .mp-pick-btn strong { font-size: 16px; }
 .mp-pick-btn small { font-size: 12px; color: var(--muted); }
 .mp-pick-btn:hover { border-color: var(--copper-dk); background: var(--wash-3); }
+/* Nov 25: the job menu under Front of House · Bar · Kitchen, and a sous chef's line cooks */
+.mp-pick-group { margin-top: 10px; }
+.mp-pick-group h3 { margin: 6px 0 0; }
+.mp-crew-person { display: flex; flex-direction: column; gap: 6px; padding-top: 10px; border-top: 1px solid var(--hair); }
+.mp-crew-name { color: var(--ink) !important; }
+.mp-crew-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.mp-crew-steps li { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.mp-crew-steps li > span { display: flex; flex-direction: column; min-width: 0; font-size: 14px; color: var(--ink); }
+.mp-crew-steps li small { font-size: 12.5px; color: var(--muted); }
+.mp-crew-steps .mp-btn { min-height: 44px; }
 .mp-err { color: #8E2F16 !important; }
 .mp-readbar { box-sizing: border-box; max-width: 1080px; display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; margin: 0 auto 48px; padding: 16px 20px; border-radius: 18px; background: var(--ink-fill, var(--ink)); color: var(--cream); font-family: 'Archivo', sans-serif; }
 .mp-readbar p { margin: 0; display: flex; flex-direction: column; gap: 2px; }
@@ -2110,6 +2120,9 @@ button.demo-pill:focus-visible { outline: 2px solid var(--copper); outline-offse
 .pp-job-btn { display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; border-radius: 999px; border: 1.5px solid var(--copper); background: #fff; font: 700 13.5px 'Archivo', sans-serif; color: var(--ink); cursor: pointer; }
 .pp-job-menu { position: absolute; left: 0; top: calc(100% + 6px); z-index: 20; width: 256px; background: #fff; border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 12px 32px rgba(30,28,26,.16); padding: 6px; }
 .pp-job-menu ul { list-style: none; margin: 0; padding: 0; }
+.pp-job-area { padding: 10px 12px 2px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--copper-dk); }
+.pp-job-list ul + ul { border-top: 1px solid var(--hair); margin-top: 4px; }
+.pp-job-list li button { min-height: 44px; }
 .pp-job-menu li button { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 9px 12px; border: 0; border-radius: 10px; background: none; font: 500 15px 'Archivo', sans-serif; color: var(--ink); cursor: pointer; text-align: left; }
 .pp-job-menu li[aria-selected="true"] button { background: var(--wash-2); font-weight: 700; }
 .pp-job-menu li button:hover { background: var(--wash-2); }

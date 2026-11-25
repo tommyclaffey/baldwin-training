@@ -9,7 +9,7 @@ import { SearchBox } from '../components/SearchBox';
 import { useCollections } from './cms';
 import { ErrorNote, InviteSentCard, Loading, Text, mailLine, useAsk } from './ui';
 import { TempDialog, TempTag, cancelTempCopy, tempDoneText, type Temporary } from './temppass';
-import { dayLabel, type Job, type MyPath, type Stage, type Step } from '../path/store';
+import { dayLabel, jobsByArea, type Job, type MyPath, type Stage, type Step } from '../path/store';
 import { ItemChatButton, SendToTeamButton } from '../chat/SendToTeam';
 import { hasChat } from '../chat/unread';
 import { menuName } from '../lib/demo';
@@ -708,12 +708,18 @@ function JobChip({ jobs, current, onPick, busy, manager }: { jobs: Job[]; curren
       </button>
       {open && (
         <div className="pp-job-menu">
-          <ul role="listbox" aria-label="Job">
-            {jobs.map((j) => {
-              const on = current.length === 1 && current[0] === j.key;
-              return <li key={j.key} role="option" aria-selected={on}><button type="button" onClick={() => { setOpen(false); if (!on) onPick(j.key); }}><span>{j.label}{j.note && <small> · {j.note}</small>}</span>{current.includes(j.key) && <span aria-hidden="true">✓</span>}</button></li>;
-            })}
-          </ul>
+          {/* Nov 25: grouped under Front of House · Bar · Kitchen */}
+          <div className="pp-job-list">
+            {jobsByArea(jobs).map((g) => (
+              <ul key={g.key} role="listbox" aria-label={g.label + ' jobs'}>
+                <li role="presentation" className="pp-job-area" aria-hidden="true">{g.label}</li>
+                {g.jobs.map((j) => {
+                  const on = current.length === 1 && current[0] === j.key;
+                  return <li key={j.key} role="option" aria-selected={on}><button type="button" onClick={() => { setOpen(false); if (!on) onPick(j.key); }}><span>{j.label}{j.note && <small> · {j.note}</small>}</span>{current.includes(j.key) && <span aria-hidden="true">✓</span>}</button></li>;
+                })}
+              </ul>
+            ))}
+          </div>
           {manager && (
             <ul role="listbox" aria-label="Role" className="pp-job-role">
               <li role="option" aria-selected={false}>

@@ -17,7 +17,7 @@ import { wineTargets, wineVideos, setWineVideo, seedWineVideos } from './wine.mj
 import { COLLECTIONS, SHARED, LOCAL_KEYS, BASE_COURSES, BASE_SECTIONS, publicSchemas, seed, listEntries, listArchived, getEntry, createEntry, updateEntry, archiveEntry, restoreEntry, moveEntry, libraryList, sharedWith } from './cms.mjs';
 import { slugify } from './templates.mjs';
 import { startScan, cutScan, lastCut, lastCutPng, warmScanner, warmOnStart, spinFrame, spinFrames, spinPhoto, spinAlign, spinAligned, spinOdd, dropSpinSet, SPIN_PHOTOS } from './scanner.mjs';
-import { personPath, personSummary, isPathSignoff, validJobs, JOBS } from './paths.mjs';
+import { personPath, personSummary, isPathSignoff, validJobs, JOBS, leadCanSign, leadJobsOf } from './paths.mjs';
 import { pathCtxFor, teamRows, signoffQueue, quizWeek, newCertificates, lastEdits, bookTiles, reminderText, addNote, pathSteps, personRow, todayIso, addDays } from './team.mjs';
 import { lockedTopics, isInviteKey } from './invite.mjs';
 import { certificatesFor } from './certs.mjs';
@@ -609,6 +609,20 @@ async function api(req, res, url) {
       } else db.prepare('DELETE FROM signoff_requests WHERE user_id = ? AND store_id = ? AND key = ?').run(u.id, c.store, key);
       return sendJson(res, 200, personPath(db, c.store, userRow(u.id), pathCtx()));
     }
+    // Nov 25: a sous chef's line cooks and their open kitchen sign-offs (My Path → Sign Off Your Line Cooks).
+    const crewFor = (me) => {
+      const jobs = leadJobsOf(me); const ctx = pathCtx();
+      const people = !jobs.length ? [] : staffOf().filter((x) => x.id !== me.id && validJobs(JSON.parse(x.jobs || '[]')).some((j) => jobs.includes(j))).map((x) => {
+        const pp = personPath(db, c.store, x, ctx);
+        const steps = pp.paths.filter((q) => jobs.includes(q.job)).flatMap((q) => q.stages.flatMap((st) => st.steps.filter((s) => s.kind === 'signoff' && !s.ack)
+          .map((s) => ({ id: s.id, title: s.title, stage: st.title, done: s.done, at: s.at, by: s.by, mine: false, ask: s.ask && !s.ask.declinedAt ? s.ask.at : null }))));
+        const mine = new Set(db.prepare('SELECT quiz FROM signoffs WHERE device = ? AND store_id = ? AND by_user = ?').all('u' + x.id, c.store, me.id).map((r) => r.quiz));
+        for (const s of steps) s.mine = mine.has(s.id);
+        return { id: x.id, name: x.name, steps };
+      });
+      return { jobs, people };
+    };
+    if (p === '/api/path/crew' && m === 'GET') { const u = needReader(c, req); return sendJson(res, 200, crewFor(userRow(u.id) || u)); }
     // Close a note from a manager on My Path.
     if (p === '/api/path/notes/seen' && m === 'POST') {
       const u = needReader(c, req); const id = Number((await readJson(req)).id);
@@ -661,9 +675,28 @@ async function api(req, res, url) {
       return sendJson(res, 200, personFull(x, ctx));
     }
     // A manager signs off a path step (a sign-off, or a quiz they've watched someone know cold).
+    // Nov 25: a sous chef (staff) signs off a line cook's steps too (leadCanSign in server/paths.mjs, the only rule for it).
     if (p === '/api/path/signoff' && (m === 'POST' || m === 'DELETE')) {
-      const u = needUser(c, req); const b = await readJson(req);
-      const x = person(b.userId); const key = String(b.key || '');
+      const u = needReader(c, req); const b = await readJson(req);
+      const key = String(b.key || '');
+      if (!canEdit(u)) {
+        const me = userRow(u.id); const x = userRow(Number(b.userId));
+        if (!x || !leadCanSign(me, x, key) || x.company_id !== c.company || x.store_id !== c.store) fail(403, 'Only managers can do that.');
+        const had = db.prepare('SELECT by_user FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').get('u' + x.id, key, c.store);
+        if (m === 'POST') {
+          if (had) fail(409, 'That’s already signed off.');
+          db.prepare('INSERT INTO signoffs(device,quiz,by_user,at,company_id,store_id) VALUES (?,?,?,?,?,?)').run('u' + x.id, key, u.id, now(), c.company, c.store);
+          db.prepare('DELETE FROM signoff_requests WHERE user_id = ? AND store_id = ? AND key = ?').run(x.id, c.store, key);
+        } else {
+          // a sous chef takes back only their own sign-off; a manager's stays
+          if (!had || had.by_user !== u.id) fail(403, 'Only the person who signed it off, or a manager, can undo it.');
+          db.prepare('DELETE FROM signoffs WHERE device = ? AND quiz = ? AND store_id = ?').run('u' + x.id, key, c.store);
+        }
+        audit(db, u.id, m === 'POST' ? 'sign off' : 'undo sign off', `${x.name} · ${key} (as sous chef)`, c.company);
+        return sendJson(res, 200, crewFor(me));
+      }
+      needUser(c, req);
+      const x = person(b.userId);
       if (!isPathSignoff(x, key) && !signable(db, c.store, key) && !isInviteKey(key)) fail(400, 'That step can’t be signed off.');
       // Nov 12: inviting someone to a level by invitation (Master of the Bar). Managers and owners can already open it.
       if (isInviteKey(key) && x.role !== 'staff') fail(400, 'Managers and owners can already open that level.');
@@ -767,7 +800,7 @@ async function api(req, res, url) {
     const u = needReader(c, req);
     if (!c.storeRow) fail(400, 'Pick a store to work in first.');
     const x = { company: c.company, store: c.store, storeRow: c.storeRow };
-    const logger = () => { if (!prep.canLog(u)) fail(403, 'Bartenders and managers log prep. Ask your manager if that should be you.'); };
+    const logger = () => { if (!prep.canLog(u)) fail(403, 'The bar team and managers log prep. Ask your manager if that should be you.'); };
     const manager = () => { if (!prep.canManage(u)) fail(403, 'Only managers can change prep items and pars.'); };
     try {
       if (p === '/api/prep' && m === 'GET') return sendJson(res, 200, prep.today(db, c.storeRow, u));
