@@ -144,7 +144,7 @@ test('a line cook’s path through the API: acknowledgment on Day 1, the kitchen
   const owner = person(), staff = person();
   assert.equal((await owner('/api/setup', { method: 'POST', body: { name: 'Owner', email: 'owner@paths.test', password: 'long-enough-1' } })).status, 200);
   const join = (await owner('/api/team')).data.company.joinCode;
-  assert.equal((await staff('/api/join', { method: 'POST', body: { code: join, name: 'Ilse Varnum', pin: '5917', storeId: 1 } })).status, 200);
+  assert.equal((await staff('/api/join', { method: 'POST', body: { code: join, name: 'Ilse Varnum', email: 'ilse.varnum@join.test', password: 'join-pass-5917-x', storeId: 1 } })).status, 200);
   const ilse = (await owner('/api/team')).data.people.find((p) => p.name === 'Ilse Varnum');
   // the job menu lists the new jobs
   assert.ok((await staff('/api/path')).data.allJobs.some((j) => j.key === 'line-cook' && j.label === 'Line Cook'));
@@ -164,7 +164,7 @@ test('a line cook’s path through the API: acknowledgment on Day 1, the kitchen
   assert.ok(after.stages.flatMap((st) => st.steps).find((s) => s.id === 'path:line-cook:knife').done);
   // Nov 25: a sous chef signs off a line cook's kitchen steps; the manager sees who signed it
   const sous = person();
-  assert.equal((await sous('/api/join', { method: 'POST', body: { code: join, name: 'Teodor Brandvik', pin: '6284', storeId: 1 } })).status, 200);
+  assert.equal((await sous('/api/join', { method: 'POST', body: { code: join, name: 'Teodor Brandvik', email: 'teodor.brandvik@join.test', password: 'join-pass-6284-x', storeId: 1 } })).status, 200);
   assert.equal((await sous('/api/path/jobs', { method: 'POST', body: { jobs: ['sous-chef'] } })).status, 200);
   assert.deepEqual((await sous('/api/path')).data.leads, ['line-cook']);
   assert.deepEqual((await staff('/api/path')).data.leads, [], 'a line cook isn’t a lead');
