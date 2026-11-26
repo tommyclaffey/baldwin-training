@@ -4,18 +4,18 @@
 // pointed at a fake Resend in this process, and a filled-in legal file.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import http from 'node:http';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { totpAt } from '../server/auth.mjs';
+import { startServer } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dirA = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-self-a-'));
 const dirB = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-self-b-'));
-const PORT_A = 7500 + Math.floor(Math.random() * 300), PORT_B = PORT_A + 800; // clear of the other files' ranges
+let PORT_A, PORT_B; // set when the servers start: each listens on a port the OS picks (startServer, Nov 26)
 const servers = [];
 
 // The legal file: the repo's own words, with three blanks emptied (A: a draft) or filled with test values (B).
@@ -38,26 +38,24 @@ const resend = http.createServer((req, res) => {
   });
 });
 
-async function start(port, dir, extra) {
-  const s = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore',
-    env: { ...process.env, PORT: String(port), DATA_DIR: dir, OWNER_EMAIL: 'owner@self.test', SUPERADMIN_EMAIL: 'tommy@self.test',
-      RESEND_API_KEY: '', MAIL_FROM: '', ...extra } });
-  servers.push(s);
-  for (let i = 0; i < 300; i++) { try { await fetch(`http://127.0.0.1:${port}/api/me`); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+async function start(dir, extra) { // → its port
+  const { server, port } = await startServer({ DATA_DIR: dir, OWNER_EMAIL: 'owner@self.test', SUPERADMIN_EMAIL: 'tommy@self.test',
+    RESEND_API_KEY: '', MAIL_FROM: '', ...extra });
+  servers.push(server);
+  return port;
 }
 before(async () => {
   await new Promise((r) => resend.listen(0, '127.0.0.1', r));
   const url = `http://127.0.0.1:${resend.address().port}/emails`;
-  await start(PORT_A, dirA, { LEGAL_FILE: legalA, STORE_CAP: '5', RESEND_API_URL: url });
-  await start(PORT_B, dirB, { LEGAL_FILE: legalB, RESEND_API_URL: url, RESEND_API_KEY: 're_test_key', MAIL_FROM: 'Mise Academy <hello@mise.test>', APP_URL: 'https://app.mise.test' });
+  PORT_A = await start(dirA, { LEGAL_FILE: legalA, STORE_CAP: '5', RESEND_API_URL: url });
+  PORT_B = await start(dirB, { LEGAL_FILE: legalB, RESEND_API_URL: url, RESEND_API_KEY: 're_test_key', MAIL_FROM: 'Mise Academy <hello@mise.test>', APP_URL: 'https://app.mise.test' });
 });
 after(() => { for (const s of servers) s.kill(); resend.close(); for (const d of [dirA, dirB]) fs.rmSync(d, { recursive: true, force: true }); });
 
-function person(port = PORT_A) {
+function person(port) { // port: server A unless given (read when it asks, so people made before the start work)
   let jar = '';
   const call = async (p, { method = 'GET', body } = {}) => {
-    const res = await fetch(`http://127.0.0.1:${port}${p}`, { method, headers: { 'Content-Type': 'application/json', 'X-BT': '1', ...(jar ? { Cookie: jar } : {}) }, body: body === undefined ? undefined : JSON.stringify(body) });
+    const res = await fetch(`http://127.0.0.1:${port ?? PORT_A}${p}`, { method, headers: { 'Content-Type': 'application/json', 'X-BT': '1', ...(jar ? { Cookie: jar } : {}) }, body: body === undefined ? undefined : JSON.stringify(body) });
     const set = res.headers.get('set-cookie');
     if (set) jar = set.split(';')[0];
     return { status: res.status, data: await res.json().catch(() => null) };

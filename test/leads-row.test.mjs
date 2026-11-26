@@ -6,9 +6,8 @@
 // desktop, nothing overlaps, nothing runs off the side, 44 px targets. (Needs Chrome and a built dist/; skipped otherwise.)
 import { test, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import fs from 'node:fs'; import os from 'node:os'; import path from 'node:path';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, startServer, startChrome } from './helpers.mjs';
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const CHROME = process.env.CHROME || ['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium'].find((p) => fs.existsSync(p));
 const browserOk = CHROME && fs.existsSync(path.join(root, 'dist', 'index.html')) ? {} : { skip: 'needs Chrome and a built dist/' };
@@ -30,10 +29,8 @@ test('the Owners and managers table: email under the name, actions in their own 
 
 test('browser: long names and emails at 1440, 1025 and 390: one line of actions on desktop, nothing overlaps or runs off', browserOk, async () => {
   giveAccount(dir);
-  const PORT = 10900 + Math.floor(Math.random() * 90), BASE = `http://127.0.0.1:${PORT}`;
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore', env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@leads.test', SUPERADMIN_EMAIL: 'x@leads.test', RESEND_API_KEY: '', MAIL_FROM: '', PREP_WEEKLY: 'off' } });
+  let BASE; ({ server, base: BASE } = await startServer({ DATA_DIR: dir, OWNER_EMAIL: 'owner@leads.test', SUPERADMIN_EMAIL: 'x@leads.test', RESEND_API_KEY: '', MAIL_FROM: '', PREP_WEEKLY: 'off' }));
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); break; } catch { await sleep(100); } }
   let ip = 0;
   const person = () => { const p = { jar: '' }; const me = `10.6.${++ip}.1`; p.call = async (u, { method = 'GET', body } = {}) => { const r = await fetch(BASE + u, { method, headers: { 'Content-Type': 'application/json', 'X-BT': '1', 'X-Forwarded-For': me, ...(p.jar ? { Cookie: p.jar } : {}) }, body: body === undefined ? undefined : JSON.stringify(body) }); const s = r.headers.get('set-cookie'); if (s) p.jar = s.split(';')[0]; return { status: r.status, data: await r.json().catch(() => null) }; }; return p; };
   const owner = person();
@@ -48,8 +45,7 @@ test('browser: long names and emails at 1440, 1025 and 390: one line of actions 
     assert.equal(inv.status, 200, JSON.stringify(inv.data));
     assert.equal((await person().call(`/api/invite/${inv.data.link.split('/').pop()}`, { method: 'POST', body: { name, password: 'long-enough-1' } })).status, 200);
   }
-  const port = 11000 + Math.floor(Math.random() * 90); const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-leads-chrome-'));
-  const proc = spawn(CHROME, ['--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
+  const { proc, port, profile } = await startChrome(CHROME, { profilePrefix: 'bt-leads-chrome-' }); // Chrome picks a free debugging port (Nov 26)
   let ws;
   try {
     for (let i = 0; i < 100 && !ws; i++) { try { const t = (await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()).find((x) => x.type === 'page'); if (t) ws = new WebSocket(t.webSocketDebuggerUrl); } catch {} await sleep(200); }

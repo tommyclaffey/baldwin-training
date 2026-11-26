@@ -4,19 +4,17 @@
 // checked on real shapes. Limits, saving, privacy and the pages all run for real.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import sharp from 'sharp';
-import { turnOnTwoStep, giveAccount } from './helpers.mjs';
+import { turnOnTwoStep, giveAccount, startServer } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-spinp-'));
 const MEDIA = path.join(dir, 'media');
-const PORT = 8600 + Math.floor(Math.random() * 200); // clear of the other files' ranges
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 const W = 900, H = 1200;
 // The spirit guide the browser draws on a 900 × 1200 frame (src/admin/scanner.tsx guideFor, kind 'spirit').
 const GW = Math.min(0.9, (0.76 * H * 0.44) / W);
@@ -47,8 +45,7 @@ const MOVES = Array.from({ length: 12 }, (_, i) => ({ dx: [0, 18, -22, 30, -10, 
 
 before(async () => {
   giveAccount(dir);
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test', SUPERADMIN_EMAIL: 'owner@example.test', SCANNER_STUB: '1' }, stdio: 'ignore' });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); break; } catch { await new Promise((r) => setTimeout(r, 100)); } }
+  ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test', SUPERADMIN_EMAIL: 'owner@example.test', SCANNER_STUB: '1' }));
   const r = await fetch(BASE + '/api/setup', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ name: 'Owner', email: 'owner@example.test', password: 'long-enough-1' }) });
   assert.equal(r.status, 200);
   owner = r.headers.get('set-cookie').split(';')[0];

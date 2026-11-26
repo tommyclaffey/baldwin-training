@@ -3,23 +3,19 @@
 // on a temp database, then the theme layer (src/lib/theme.ts) on each page the way the browser does.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, startServer } from './helpers.mjs';
 
 const T = await import('../src/lib/theme.ts');
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-a11y-'));
-const PORT = 4900 + Math.floor(Math.random() * 200);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 let server;
 
 before(async () => {
-  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir }, stdio: 'ignore' });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  giveAccount(dir); ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir }));
 });
 after(() => { server.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 

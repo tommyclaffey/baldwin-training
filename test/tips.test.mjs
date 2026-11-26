@@ -6,30 +6,25 @@
 // dist/; skipped otherwise): the demo's Tips, Log a Shift, Owed to You, Mark Settled and Owed to Staff at 390 and 1440.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn, spawnSync } from 'node:child_process';
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { totpAt } from '../server/auth.mjs';
 import { unzip } from '../server/zip.mjs';
+import { startServer, startChrome } from './helpers.mjs';
 import { toCents, toMinutes, hourly, totalsOf, periodStart, rangeOf, addDays, dayOf } from '../server/tips.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-tips-'));
-const PORT = 9700 + Math.floor(Math.random() * 150); // a range no other test file uses
-const BASE = `http://127.0.0.1:${PORT}`;
+let BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 const CHROME = process.env.CHROME || ['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium', '/usr/bin/chromium-browser'].find((p) => fs.existsSync(p));
 const BROWSER = CHROME && fs.existsSync(path.join(root, 'dist/index.html')) ? {} : { skip: 'needs a build (npm run build) and Chrome' };
 const SHOTS = process.env.TIPS_SHOTS || null; // a folder: the browser test saves its screens there
 let server;
-const start = async () => {
-  let err = '';
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: ['ignore', 'ignore', 'pipe'],
-    env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@tips.test', SUPERADMIN_EMAIL: 'tommy@tips.test', RESEND_API_KEY: '', MAIL_FROM: '', PREP_WEEKLY: 'off' } });
-  server.stderr.on('data', (d) => { err += d; });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s\n' + err.slice(-2000));
+const start = async () => { // (startServer's error carries the server's last error output)
+  ({ server, base: BASE } = await startServer({ DATA_DIR: dir, OWNER_EMAIL: 'owner@tips.test', SUPERADMIN_EMAIL: 'tommy@tips.test', RESEND_API_KEY: '', MAIL_FROM: '', PREP_WEEKLY: 'off' }));
 };
 before(start);
 after(() => { server?.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
@@ -321,8 +316,7 @@ test('deleting: a shift goes, what’s owed from it stays; a removed person’s 
 /* ---------------- in a browser ---------------- */
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function browser() {
-  const port = 9860 + Math.floor(Math.random() * 120); const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-tips-chrome-'));
-  const proc = spawn(CHROME, ['--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
+  const { proc, port, profile } = await startChrome(CHROME, { profilePrefix: 'bt-tips-chrome-' }); // Chrome picks a free debugging port (Nov 26)
   let ws;
   for (let i = 0; i < 100 && !ws; i++) { try { const t = (await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()).find((x) => x.type === 'page'); if (t) ws = new WebSocket(t.webSocketDebuggerUrl); } catch { /* starting */ } await sleep(200); }
   if (!ws) throw new Error('Chrome did not start');

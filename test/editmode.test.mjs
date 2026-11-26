@@ -2,16 +2,14 @@
 // and "all restaurants or only this one" for the group's shared dishes.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { turnOnTwoStep, giveAccount } from './helpers.mjs';
+import { turnOnTwoStep, giveAccount, startServer } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-edit-'));
-const PORT = 5400 + Math.floor(Math.random() * 300);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 let server;
 
 /** A person with their own cookie jar. */
@@ -27,9 +25,7 @@ function person() {
 
 before(async () => {
   // The owner is also the super admin here (like production), so classics can be edited by someone.
-  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@edit.test', SUPERADMIN_EMAIL: 'owner@edit.test' }, stdio: 'ignore' });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  giveAccount(dir); ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@edit.test', SUPERADMIN_EMAIL: 'owner@edit.test' }));
 });
 after(() => { server.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 

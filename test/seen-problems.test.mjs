@@ -7,26 +7,21 @@
 // purpose, ends up in the log; a wrong password doesn't; a report that couldn't be sent goes once the device is back online.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import { DatabaseSync } from 'node:sqlite';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { totpAt } from '../server/auth.mjs';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, startServer, startChrome } from './helpers.mjs';
 import { seenProblem, safeClientPath } from '../server/ops.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-seen-'));
-const PORT = 10400 + Math.floor(Math.random() * 200); // a range no other test file uses
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 let server;
 before(async () => {
   giveAccount(dir);
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore',
-    env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@seen.test', SUPERADMIN_EMAIL: 'tommy@seen.test', RESEND_API_KEY: '', MAIL_FROM: '', PREP_WEEKLY: 'off' } });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@seen.test', SUPERADMIN_EMAIL: 'tommy@seen.test', RESEND_API_KEY: '', MAIL_FROM: '', PREP_WEEKLY: 'off' }));
 });
 after(() => { server?.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 
@@ -127,8 +122,7 @@ const browserOk = CHROME && fs.existsSync(path.join(root, 'dist', 'index.html'))
 
 test('browser: the page list, a page and a sign-in, each made to fail, reach the log; a wrong password does not', browserOk, async () => {
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const port = 10700 + Math.floor(Math.random() * 200); const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-seen-chrome-'));
-  const proc = spawn(CHROME, ['--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
+  const { proc, port, profile } = await startChrome(CHROME, { profilePrefix: 'bt-seen-chrome-' }); // Chrome picks a free debugging port (Nov 26)
   let ws;
   try {
     for (let i = 0; i < 100 && !ws; i++) { try { const t = (await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()).find((x) => x.type === 'page'); if (t) ws = new WebSocket(t.webSocketDebuggerUrl); } catch {} await sleep(200); }

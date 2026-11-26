@@ -6,19 +6,17 @@
 // SIGNIN_SHOTS=<folder> saves screenshots of each at 390 and 1440.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { giveAccount, turnOnTwoStep } from './helpers.mjs';
+import { giveAccount, turnOnTwoStep, startServer, startChrome } from './helpers.mjs';
 import { reserved, isReserved, accountSlug } from '../server/links.mjs';
 import { authRouteFor, signInPath, joinPath, setUpPath, AUTH_TITLE } from '../src/lib/authroute.ts';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-signin-urls-'));
-const PORT = 4300 + Math.floor(Math.random() * 300); // its own range (was 6600, shared with captions: both timed out in CI)
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 const BOT = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 const CHROME = process.env.CHROME || ['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium', '/usr/bin/chromium-browser'].find((p) => fs.existsSync(p));
 const BROWSER = CHROME && fs.existsSync(path.join(root, 'dist/index.html')) ? {} : { skip: 'needs a build (npm run build) and Chrome' };
@@ -40,9 +38,7 @@ const account = (html) => { const raw = meta(html, 'mise-account'); return raw ?
 
 before(async () => {
   giveAccount(dir);
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'tommy@mise.test' }, stdio: 'ignore' });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'tommy@mise.test' }));
 });
 after(() => { server.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 
@@ -164,8 +160,7 @@ test('sign-in and join are reserved: no company can take them', async () => {
 /* ---------------- the screens, in a browser ---------------- */
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function browser() {
-  const port = 9100 + Math.floor(Math.random() * 400); const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-signin-chrome-'));
-  const proc = spawn(CHROME, ['--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
+  const { proc, port, profile } = await startChrome(CHROME, { profilePrefix: 'bt-signin-chrome-' }); // Chrome picks a free debugging port (Nov 26)
   let ws;
   for (let i = 0; i < 100 && !ws; i++) { try { const t = (await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()).find((x) => x.type === 'page'); if (t) ws = new WebSocket(t.webSocketDebuggerUrl); } catch { /* starting */ } await sleep(200); }
   if (!ws) throw new Error('Chrome did not start');

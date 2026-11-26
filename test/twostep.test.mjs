@@ -2,11 +2,10 @@
 // "We couldn't find that page" everywhere). The server keeps the book closed; the app sends them to Your Account.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, startServer } from './helpers.mjs';
 
 const T = await import('../src/lib/twostep.ts');
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -32,13 +31,11 @@ test('every book route and the sign-in send them there (the book, the admin, the
 });
 
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-2step-'));
-const PORT = 5900 + Math.floor(Math.random() * 90);
+let PORT; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 let server;
 before(async () => {
   giveAccount(dir);
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: '', SUPERADMIN_EMAIL: 'tommy@two.test' }, stdio: 'ignore' });
-  for (let i = 0; i < 300; i++) { try { await fetch(`http://127.0.0.1:${PORT}/api/me`); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: '', SUPERADMIN_EMAIL: 'tommy@two.test' }));
 });
 after(() => { server.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 

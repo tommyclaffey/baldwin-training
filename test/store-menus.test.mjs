@@ -6,21 +6,20 @@
 // The menu here is made up (fresh names); the real ones are the account's content, not in this repo.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn, spawnSync } from 'node:child_process';
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { DatabaseSync } from 'node:sqlite';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, startServer } from './helpers.mjs';
 import { BASE_COURSES } from '../server/cms.mjs';
 import { FINGERPRINT_SQL } from '../scripts/account-content/load-store-menu.mjs';
 import { classify } from '../server/generic.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-menus-'));
-const PORT = 6200 + Math.floor(Math.random() * 300);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 let server;
 function person() {
   let jar = '';
@@ -33,9 +32,7 @@ function person() {
 }
 before(async () => {
   giveAccount(dir);
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'tommy@mise.test' }, stdio: 'ignore' });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'tommy@mise.test' }));
 });
 after(() => { server.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 

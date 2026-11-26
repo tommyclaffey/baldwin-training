@@ -4,13 +4,12 @@
 // Michigan is The Baldwin's alone.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { giveAccount, PRIVATE_ACCOUNT } from './helpers.mjs';
+import { giveAccount, PRIVATE_ACCOUNT, startServer } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const readJson = (f) => JSON.parse(fs.readFileSync(path.join(root, f), 'utf8'));
@@ -36,16 +35,13 @@ test('content/wine holds no pairings, and the grape and region templates are neu
 
 /* ---- served ---- */
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-wine-pairs-'));
-const PORT = 3600 + Math.floor(Math.random() * 200);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 // dishes on the made-up account's menu (content/demo/recipe.json): a pairing whose dish isn't on the menu leaves the card
 const MADE_UP = { name: 'Whipped Ricotta Toast', why: 'A made-up pairing for the test.', to: '/food-matrix' };
 let server;
-const env = { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@pairs.test', PREP_WEEKLY: 'off', SCANNER_WARM: '0' };
+const env = { ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@pairs.test', PREP_WEEKLY: 'off', SCANNER_WARM: '0' };
 async function start() {
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore', env });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT, base: BASE } = await startServer(env));
 }
 const sha = (v) => crypto.createHash('sha256').update(String(v)).digest('hex');
 

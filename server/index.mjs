@@ -44,7 +44,7 @@ import { migrateLooks, yourLookRoutes, lookFileFor, dataShareFor, lookPayload } 
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DIST = path.join(ROOT, 'dist');
-const PORT = Number(process.env.PORT) || 8080;
+const PORT = process.env.PORT === undefined || process.env.PORT === '' ? 8080 : Number(process.env.PORT); // 0 = any free port (the tests use it)
 const MAX_UPLOAD = 600 * 1024 * 1024;
 const db = openDb();
 initAccounts(db); // Nov 16: account content on the volume (server/account.mjs), read before the seeds
@@ -1488,4 +1488,9 @@ http.createServer(async (req, res) => {
     if (!res.headersSent) sendJson(res, status, { error: status === 500 ? 'Something went wrong on our side. Try again.' : e.message });
     else res.end();
   }
-}).listen(PORT, () => { console.log(`Mise on http://localhost:${PORT}`); if (process.env.RAILWAY_VOLUME_MOUNT_PATH || process.env.SCANNER_WARM === '1') warmOnStart(); });
+}).listen(PORT, function () {
+  // KEEP_ALIVE_MS: the tests set 0, so the server never drops an idle connection itself. A test busy for a few seconds
+  // can't time its own idle connections out, and would send its next request on one the server had just closed (ECONNRESET).
+  if (process.env.KEEP_ALIVE_MS) this.keepAliveTimeout = Number(process.env.KEEP_ALIVE_MS);
+  console.log(`Mise on http://localhost:${this.address().port}`); // the tests read the port from this line
+  if (process.env.RAILWAY_VOLUME_MOUNT_PATH || process.env.SCANNER_WARM === '1') warmOnStart(); });

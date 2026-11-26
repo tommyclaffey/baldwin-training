@@ -5,21 +5,19 @@
 // never shows. An account address can never shadow an app address. The Baldwin's card stays out of this repo.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { giveAccount, turnOnTwoStep, PRIVATE_ACCOUNT } from './helpers.mjs';
+import { giveAccount, turnOnTwoStep, PRIVATE_ACCOUNT, startServer } from './helpers.mjs';
 import { reserved, isReserved, accountSlug, SLUG, DEMO_LINKS } from '../server/links.mjs';
 import { baseIndex } from '../server/content.mjs';
 import { PROGRAMS, LEVELS } from '../server/manual.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-links-'));
-const PORT = 6200 + Math.floor(Math.random() * 300);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 const BOT = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 let server, acct;
 function person() {
@@ -38,9 +36,7 @@ const account = (html) => { const raw = meta(html, 'mise-account'); return raw ?
 
 before(async () => {
   acct = giveAccount(dir);
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'tommy@mise.test' }, stdio: 'ignore' });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'tommy@mise.test' }));
 });
 after(() => { server.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 

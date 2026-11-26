@@ -2,18 +2,16 @@
 // SCANNER_STUB=1 (no model download; the "cut" is the box itself). Limits, saving, privacy and cleanup all run for real.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { turnOnTwoStep, giveAccount } from './helpers.mjs';
+import { turnOnTwoStep, giveAccount, startServer } from './helpers.mjs';
 import sharp from 'sharp';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-scan-'));
 const MEDIA = path.join(dir, 'media');
-const PORT = 4950 + Math.floor(Math.random() * 40);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 const BOX = [0.3, 0.1, 0.7, 0.9];
 let server, owner = '', photo;
 let ipN = 0;
@@ -30,8 +28,7 @@ before(async () => {
     .composite([{ input: await sharp({ create: { width: 160, height: 640, channels: 3, background: '#2b3a22' } }).png().toBuffer(), left: 220, top: 140 }])
     .jpeg().withExif({ IFD0: { Copyright: 'SECRET-OWNER', Artist: 'SECRET-OWNER' } }).toBuffer();
   assert.match(photo.toString('latin1'), /SECRET-OWNER/, 'the test photo carries metadata');
-  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test', SUPERADMIN_EMAIL: 'owner@example.test', SCANNER_STUB: '1' }, stdio: 'ignore' });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); break; } catch { await new Promise((r) => setTimeout(r, 100)); } }
+  giveAccount(dir); ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test', SUPERADMIN_EMAIL: 'owner@example.test', SCANNER_STUB: '1' }));
   const r = await fetch(BASE + '/api/setup', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ name: 'Owner', email: 'owner@example.test', password: 'long-enough-1' }) });
   assert.equal(r.status, 200);
   owner = r.headers.get('set-cookie').split(';')[0];

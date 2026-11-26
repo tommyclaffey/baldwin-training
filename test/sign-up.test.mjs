@@ -6,43 +6,39 @@
 // card, 44 px targets, Title Case buttons, nothing wider than the screen). SIGN_UP_SHOTS=<folder> saves screenshots.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { giveAccount, turnOnTwoStep } from './helpers.mjs';
+import { giveAccount, turnOnTwoStep, startServer, startChrome } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-signup-')), dirMail = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-signup-mail-'));
-const PORT = 2200 + Math.floor(Math.random() * 100), PORT_MAIL = 2300 + Math.floor(Math.random() * 90), PORT_RESEND = 2395 + Math.floor(Math.random() * 4);
-const BASE = `http://127.0.0.1:${PORT}`, BASE_MAIL = `http://127.0.0.1:${PORT_MAIL}`;
+let BASE, BASE_MAIL; // set when the servers start: each listens on a port the OS picks (startServer, Nov 26)
 const CHROME = process.env.CHROME || ['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium', '/usr/bin/chromium-browser'].find((p) => fs.existsSync(p));
 const BROWSER = CHROME && fs.existsSync(path.join(root, 'dist/index.html')) ? {} : { skip: 'needs a build (npm run build) and Chrome' };
 const SHOTS = process.env.SIGN_UP_SHOTS || null;
 const servers = []; const mails = []; let resend;
-async function start(port, data, extra = {}) {
+async function start(data, extra = {}) { // → its base address
   giveAccount(data);
-  const s = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore',
-    env: { ...process.env, PORT: String(port), DATA_DIR: data, OWNER_EMAIL: 'owner@signup.test', SUPERADMIN_EMAIL: 'tommy@signup.test', RESEND_API_KEY: '', MAIL_FROM: '', PREP_WEEKLY: 'off', ...extra } });
-  servers.push(s);
-  for (let i = 0; i < 300; i++) { try { await fetch(`http://127.0.0.1:${port}/api/me`); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  const { server, base } = await startServer({ DATA_DIR: data, OWNER_EMAIL: 'owner@signup.test', SUPERADMIN_EMAIL: 'tommy@signup.test', RESEND_API_KEY: '', MAIL_FROM: '', PREP_WEEKLY: 'off', ...extra });
+  servers.push(server);
+  return base;
 }
 before(async () => {
   resend = http.createServer((req, res) => { let b = ''; req.on('data', (d) => { b += d; }); req.on('end', () => { mails.push(JSON.parse(b)); res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"id":"x"}'); }); });
-  await new Promise((r) => resend.listen(PORT_RESEND, '127.0.0.1', r));
-  await Promise.all([start(PORT, dir), start(PORT_MAIL, dirMail, { RESEND_API_KEY: 're_test', MAIL_FROM: 'Mise <hi@mise.test>', RESEND_API_URL: `http://127.0.0.1:${PORT_RESEND}/emails`, APP_URL: 'https://app.mise.test' })]);
+  await new Promise((r) => resend.listen(0, '127.0.0.1', r));
+  [BASE, BASE_MAIL] = await Promise.all([start(dir), start(dirMail, { RESEND_API_KEY: 're_test', MAIL_FROM: 'Mise <hi@mise.test>', RESEND_API_URL: `http://127.0.0.1:${resend.address().port}/emails`, APP_URL: 'https://app.mise.test' })]);
 });
 after(() => { for (const s of servers) s.kill(); resend?.close(); fs.rmSync(dir, { recursive: true, force: true }); fs.rmSync(dirMail, { recursive: true, force: true }); });
 
 let ipN = 10;
-function person(base = BASE) {
+function person(base) { // base: the main server unless given (read when it asks, so people made before the start work)
   const ip = `10.31.${Math.floor(ipN / 250)}.${(ipN++ % 250) + 1}`;
   const p = { jar: '', ip };
   p.call = async (u, { method = 'GET', body } = {}) => {
-    const res = await fetch(base + u, { method, headers: { 'Content-Type': 'application/json', 'X-BT': '1', 'X-Forwarded-For': ip, ...(p.jar ? { Cookie: p.jar } : {}) }, body: body === undefined ? undefined : JSON.stringify(body) });
+    const res = await fetch((base ?? BASE) + u, { method, headers: { 'Content-Type': 'application/json', 'X-BT': '1', 'X-Forwarded-For': ip, ...(p.jar ? { Cookie: p.jar } : {}) }, body: body === undefined ? undefined : JSON.stringify(body) });
     const set = res.headers.get('set-cookie'); if (set) p.jar = set.split(';')[0];
     return { status: res.status, data: await res.json().catch(() => null) };
   };
@@ -166,8 +162,7 @@ test('email on: Check Your Email, the link opens step 2, works once; nothing mad
 /* ---------------- in a browser ---------------- */
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function browser() {
-  const port = 2500 + Math.floor(Math.random() * 150); const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-signup-chrome-'));
-  const proc = spawn(CHROME, ['--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
+  const { proc, port, profile } = await startChrome(CHROME, { profilePrefix: 'bt-signup-chrome-' }); // Chrome picks a free debugging port (Nov 26)
   let ws;
   for (let i = 0; i < 100 && !ws; i++) { try { const t = (await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()).find((x) => x.type === 'page'); if (t) ws = new WebSocket(t.webSocketDebuggerUrl); } catch { /* starting */ } await sleep(200); }
   if (!ws) throw new Error('Chrome did not start');

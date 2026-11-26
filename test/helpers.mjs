@@ -58,3 +58,52 @@ export function sessionCookieFor(dataDir, userId, days = 90) {
   const db = new DatabaseSync(path.join(dataDir, 'baldwin.db'));
   try { return `${SESSION_COOKIE}=${createSession(db, userId, { days })}`; } finally { db.close(); }
 }
+
+/* ---- Starting the test server and headless Chrome (Nov 26) ----
+ * Every test file used to pick a random port from its own range, and some ranges overlapped (prep and roles; earlier
+ * signin-urls and captions, seen-problems), so a full run under load failed one random test: two servers on one port.
+ * Now nobody picks a port. The server listens on PORT=0, the OS hands it a free one, and the server prints it
+ * ("Mise on http://localhost:<port>"); Chrome gets --remote-debugging-port=0 and writes its port to DevToolsActivePort.
+ * No ranges to keep apart, and a busy machine only makes the start slower, never a clash.
+ * KEEP_ALIVE_MS=0: the server never closes an idle connection itself. A test that keeps its process busy for a few
+ * seconds (the a11y page walks) used to send its next request on a connection the server had just closed: ECONNRESET. */
+import { spawn } from 'node:child_process';
+import os from 'node:os';
+const START_MS = Number(process.env.TEST_SERVER_START_MS) || 180_000; // a loaded machine (a full run next to other work) can take well over 30 s
+
+/** Starts server/index.mjs with `env` (merged over process.env) on a free port. Resolves once it is listening:
+ *  → { server, port, base }. Rejects with the server's last error output if it exits or doesn't start in time. */
+export function startServer(env = {}, { cwd = ROOT, timeoutMs = START_MS } = {}) {
+  const server = spawn(process.execPath, ['server/index.mjs'], { cwd, env: { ...process.env, KEEP_ALIVE_MS: '0', ...env, PORT: '0' }, stdio: ['ignore', 'pipe', 'pipe'] });
+  let out = '', err = '';
+  return new Promise((resolve, reject) => {
+    let done = false;
+    const finish = (fn, v) => { if (done) return; done = true; clearTimeout(timer); fn(v); };
+    const fail = (why) => { server.kill(); finish(reject, new Error(`test server ${why}${err ? '\n' + err.slice(-2000) : ''}`)); };
+    const timer = setTimeout(() => fail(`did not start in ${Math.round(timeoutMs / 1000)} s`), timeoutMs);
+    server.stdout.on('data', (d) => { // keeps reading after the start too, so a chatty server never blocks on a full pipe
+      if (done) return;
+      out = (out + d).slice(-4000);
+      const m = /Mise on http:\/\/localhost:(\d+)/.exec(out);
+      if (m) { const port = Number(m[1]); finish(resolve, { server, port, base: `http://127.0.0.1:${port}` }); }
+    });
+    server.stderr.on('data', (d) => { err = (err + d).slice(-4000); });
+    server.once('error', (e) => fail(`could not be spawned: ${e.message}`));
+    server.once('exit', (code, signal) => fail(`exited before it started (code ${code}${signal ? ', ' + signal : ''})`));
+  });
+}
+
+/** Headless Chrome with remote debugging on a free port. → { proc, port, profile }; `port` is null if Chrome never
+ *  reported one (the caller's own "Chrome did not start" check then fails). */
+export async function startChrome(chrome, { profilePrefix = 'bt-chrome-', args = [], timeoutMs = 60_000 } = {}) {
+  const profile = fs.mkdtempSync(path.join(os.tmpdir(), profilePrefix));
+  const proc = spawn(chrome, ['--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars', '--remote-debugging-port=0', `--user-data-dir=${profile}`, ...args, 'about:blank'], { stdio: 'ignore' });
+  let exited = false; proc.once('exit', () => { exited = true; });
+  const file = path.join(profile, 'DevToolsActivePort');
+  let port = null;
+  for (const t0 = Date.now(); !port && !exited && Date.now() - t0 < timeoutMs;) {
+    try { const t = fs.readFileSync(file, 'utf8'); if (t.includes('\n')) port = Number(t.split('\n')[0]) || null; } catch { /* not written yet */ }
+    if (!port) await new Promise((r) => setTimeout(r, 100));
+  }
+  return { proc, port, profile };
+}

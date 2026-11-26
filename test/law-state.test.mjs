@@ -3,13 +3,12 @@
 // and the hubs' source lists say the law is Michigan's; The Baldwin (Michigan) and its demo read them exactly as before.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, startServer } from './helpers.mjs';
 import { isMichiganLaw, lawNote, stateName } from '../server/lawstate.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -30,14 +29,11 @@ test('which sections are Michigan law, and the note each company gets', () => {
 
 /* ---- served ---- */
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-law-state-'));
-const PORT = 3300 + Math.floor(Math.random() * 200);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 let server;
-const env = { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@law.test', PREP_WEEKLY: 'off', SCANNER_WARM: '0' };
+const env = { ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@law.test', PREP_WEEKLY: 'off', SCANNER_WARM: '0' };
 async function start() {
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore', env });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT, base: BASE } = await startServer(env));
 }
 const sha = (v) => crypto.createHash('sha256').update(String(v)).digest('hex');
 

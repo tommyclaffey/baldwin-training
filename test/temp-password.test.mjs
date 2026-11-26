@@ -7,25 +7,20 @@
 // Set shows the tag, and the email sign-in goes to Choose Your Own Password.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { totpAt } from '../server/auth.mjs';
-import { giveAccount, addPinStaff, sessionCookieFor } from './helpers.mjs';
+import { giveAccount, addPinStaff, sessionCookieFor, startServer, startChrome } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-temp-'));
-const PORT = 9500 + Math.floor(Math.random() * 150); // a range no other test file uses
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 let server;
 before(async () => {
   giveAccount(dir);
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore',
-    env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@temp.test', SUPERADMIN_EMAIL: 'tommy@temp.test', RESEND_API_KEY: '', MAIL_FROM: '', PREP_WEEKLY: 'off' } });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@temp.test', SUPERADMIN_EMAIL: 'tommy@temp.test', RESEND_API_KEY: '', MAIL_FROM: '', PREP_WEEKLY: 'off' }));
 });
 after(() => { server?.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 
@@ -218,8 +213,7 @@ const browserOk = CHROME && fs.existsSync(path.join(root, 'dist', 'index.html'))
 
 test('browser: People at 1440, the dialog, Cancel sends nothing, Set shows the tag; sign-in goes to Choose Your Own', browserOk, async () => {
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const port = 9700 + Math.floor(Math.random() * 150); const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-temp-chrome-'));
-  const proc = spawn(CHROME, ['--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
+  const { proc, port, profile } = await startChrome(CHROME, { profilePrefix: 'bt-temp-chrome-' }); // Chrome picks a free debugging port (Nov 26)
   let ws;
   try {
     for (let i = 0; i < 100 && !ws; i++) { try { const t = (await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()).find((x) => x.type === 'page'); if (t) ws = new WebSocket(t.webSocketDebuggerUrl); } catch {} await sleep(200); }

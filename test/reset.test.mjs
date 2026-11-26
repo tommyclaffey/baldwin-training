@@ -2,18 +2,18 @@
 // Two servers: A has no email set up, B has RESEND_API_KEY + MAIL_FROM pointed at a fake Resend in this process.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import http from 'node:http';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { totpAt, sha256 } from '../server/auth.mjs';
+import { startServer } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dirA = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-reset-a-'));
 const dirB = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-reset-b-'));
-const PORT_A = 5400 + Math.floor(Math.random() * 300), PORT_B = PORT_A + 300;
+let PORT_A, PORT_B; // set when the servers start: each listens on a port the OS picks (startServer, Nov 26)
 const servers = [];
 
 // The fake Resend: records every email the app tries to send.
@@ -25,35 +25,33 @@ const resend = http.createServer((req, res) => {
 });
 let RESEND_URL = '';
 
-async function start(port, dir, extra) {
-  const s = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore',
-    env: { ...process.env, PORT: String(port), DATA_DIR: dir, OWNER_EMAIL: 'owner@reset.test', SUPERADMIN_EMAIL: 'tommy@reset.test', RESEND_API_URL: RESEND_URL,
-      RESEND_API_KEY: '', MAIL_FROM: '', ...extra } });
-  servers.push(s);
-  for (let i = 0; i < 300; i++) { try { await fetch(`http://127.0.0.1:${port}/api/me`); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+async function start(dir, extra) { // → its port
+  const { server, port } = await startServer({ DATA_DIR: dir, OWNER_EMAIL: 'owner@reset.test', SUPERADMIN_EMAIL: 'tommy@reset.test', RESEND_API_URL: RESEND_URL,
+    RESEND_API_KEY: '', MAIL_FROM: '', ...extra });
+  servers.push(server);
+  return port;
 }
 
 before(async () => {
   await new Promise((r) => resend.listen(0, '127.0.0.1', r));
   RESEND_URL = `http://127.0.0.1:${resend.address().port}/emails`;
-  await start(PORT_A, dirA, {});
-  await start(PORT_B, dirB, { RESEND_API_KEY: 're_test_key', MAIL_FROM: 'Mise Academy <hello@mise.test>', APP_URL: 'https://app.mise.test' });
+  PORT_A = await start(dirA, {});
+  PORT_B = await start(dirB, { RESEND_API_KEY: 're_test_key', MAIL_FROM: 'Mise Academy <hello@mise.test>', APP_URL: 'https://app.mise.test' });
 });
 after(() => { for (const s of servers) s.kill(); resend.close(); for (const d of [dirA, dirB]) fs.rmSync(d, { recursive: true, force: true }); });
 
 /** A person with their own cookie jar, on server A or B, from an address of their own. */
-function person(port = PORT_A, ip = '127.0.0.1') {
+function person(port, ip = '127.0.0.1') { // port: server A unless given (read when it asks, so people made before the start work)
   let jar = '';
   return async (p, { method = 'GET', body } = {}) => {
-    const res = await fetch(`http://127.0.0.1:${port}${p}`, { method, headers: { 'Content-Type': 'application/json', 'X-BT': '1', 'X-Forwarded-For': ip, ...(jar ? { Cookie: jar } : {}) }, body: body === undefined ? undefined : JSON.stringify(body) });
+    const res = await fetch(`http://127.0.0.1:${port ?? PORT_A}${p}`, { method, headers: { 'Content-Type': 'application/json', 'X-BT': '1', 'X-Forwarded-For': ip, ...(jar ? { Cookie: jar } : {}) }, body: body === undefined ? undefined : JSON.stringify(body) });
     const set = res.headers.get('set-cookie');
     if (set) jar = set.split(';')[0];
     return { status: res.status, data: await res.json().catch(() => null) };
   };
 }
 const token = (link) => link.split('/').pop();
-const login = (email, password, port = PORT_A) => person(port)('/api/login', { method: 'POST', body: { email, password } });
+const login = (email, password, port) => person(port)('/api/login', { method: 'POST', body: { email, password } });
 const code = (secret) => totpAt(secret, Math.floor(Date.now() / 30000));
 const waitFor = async (fn, ms = 3000) => { for (let t = 0; t < ms; t += 50) { if (fn()) return true; await new Promise((r) => setTimeout(r, 50)); } return fn(); };
 

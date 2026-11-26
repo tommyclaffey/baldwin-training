@@ -3,17 +3,15 @@
 // The demos read their sample menu with no API call at all.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import http from 'node:http';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, startServer } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-import-'));
-const PORT = 5010 + Math.floor(Math.random() * 40);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 let server, fake, owner = '';
 let ipN = 0;
 const freshIp = () => `10.8.${Math.floor(++ipN / 250)}.${ipN % 250}`;
@@ -61,9 +59,7 @@ before(async () => {
     });
   }).listen(0);
   await new Promise((r) => fake.once('listening', r));
-  giveAccount(dir); server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore', env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test',
-    SUPERADMIN_EMAIL: 'super@example.test', ANTHROPIC_API_KEY: 'test-key', ANTHROPIC_BASE_URL: `http://127.0.0.1:${fake.address().port}`, MENU_IMPORT_DEMO_MS: '15' } });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); break; } catch { await new Promise((r) => setTimeout(r, 100)); } }
+  giveAccount(dir); ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@example.test', SUPERADMIN_EMAIL: 'super@example.test', ANTHROPIC_API_KEY: 'test-key', ANTHROPIC_BASE_URL: `http://127.0.0.1:${fake.address().port}`, MENU_IMPORT_DEMO_MS: '15' }));
   const r = await fetch(BASE + '/api/setup', { method: 'POST', headers: { 'content-type': 'application/json', 'x-bt': '1' }, body: JSON.stringify({ name: 'Owner', email: 'owner@example.test', password: 'long-enough-1' }) });
   assert.equal(r.status, 200);
   owner = r.headers.get('set-cookie').split(';')[0];

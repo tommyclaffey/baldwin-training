@@ -22,13 +22,22 @@ d.setAuthTag(tag);
 fs.mkdirSync(outDir, { recursive: true });
 const tar = spawn('tar', ['-xf', '-', '-C', outDir], { stdio: ['pipe', 'inherit', 'inherit'] });
 const body = fs.createReadStream(inFile, { start: 19, end: total - 25 });
-body.on('data', (c) => { if (!tar.stdin.write(d.update(c))) body.pause(); });
+// tar can finish (it has read the archive's end mark) before the last bytes, the zero padding, reach it: that write fails
+// with EPIPE. Harmless: the rest is still read and checked against the key (Nov 26; it used to crash the restore).
+let piped = true, checked = false, tarCode = null;
+body.on('data', (c) => { const out = d.update(c); if (piped && !tar.stdin.write(out)) body.pause(); });
 tar.stdin.on('drain', () => body.resume());
+tar.stdin.on('error', (e) => { if (e.code !== 'EPIPE') throw e; piped = false; body.resume(); });
 body.on('end', () => {
-  try { tar.stdin.end(d.final()); } catch { console.error('Wrong BACKUP_KEY, or the file was changed.'); tar.kill(); process.exit(1); }
+  let last;
+  try { last = d.final(); } catch { console.error('Wrong BACKUP_KEY, or the file was changed.'); tar.kill(); process.exit(1); }
+  checked = true;
+  if (piped) tar.stdin.end(last);
+  if (tarCode != null) done(tarCode);
 });
-tar.on('close', (code) => {
+tar.on('close', (code) => { tarCode = code; if (code || checked) done(code); });
+function done(code) {
   if (code) { console.error(`tar stopped (${code}).`); process.exit(1); }
   const m = JSON.parse(fs.readFileSync(`${outDir}/MANIFEST.json`, 'utf8'));
   console.log(`Restored into ${outDir}. Backup taken ${m.at}${m.since ? `, changes since ${m.since}` : ', everything'}; ${m.files.length} files existed then.`);
-});
+}

@@ -6,13 +6,12 @@
 //   • leak sweep: a Foundation company sees nothing of The Baldwin's and nothing of Fig & Fire's; Fig & Fire sees its own
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { giveAccount, PRIVATE_ACCOUNT } from './helpers.mjs';
+import { giveAccount, PRIVATE_ACCOUNT, startServer } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const BOOK = ['28-2', '31-2', '40-2', '40-515', '40-1023', '40-1531', '40-2026', '40-2526', '40-3012', '40-3507', '40-4002', '9-2', '87-12', '176-50', '68-2', '49-3318'];
@@ -66,15 +65,12 @@ test('generic.mjs reads the old lines the way the neutral book says them (for st
 
 /* ---- served: The Baldwin, its demo, a Foundation company and Fig & Fire ---- */
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-neutral-book-'));
-const PORT = 8600 + Math.floor(Math.random() * 300);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 const MARK = '“Welcome to the account’s own version of this page.”';
 let server;
-const env = { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@neutral.test', PREP_WEEKLY: 'off', SCANNER_WARM: '0' };
+const env = { ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@neutral.test', PREP_WEEKLY: 'off', SCANNER_WARM: '0' };
 async function start() {
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore', env });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT, base: BASE } = await startServer(env));
 }
 const sha = (v) => crypto.createHash('sha256').update(String(v)).digest('hex');
 

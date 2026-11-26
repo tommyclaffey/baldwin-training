@@ -5,7 +5,6 @@
 // company's own, and the hand-built looks (The Baldwin, Testa Barra, J.Baldwin's) don't change.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
 import http from 'node:http';
 import zlib from 'node:zlib';
 import fs from 'node:fs';
@@ -13,7 +12,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import sharp from 'sharp';
-import { giveAccount, turnOnTwoStep } from './helpers.mjs';
+import { giveAccount, turnOnTwoStep, startServer } from './helpers.mjs';
 import { isPrivateIp, checkUrl, safeFetch, readSite, ReadError } from '../server/lookreader.mjs';
 import { fixColors, checkPairs, rolesFromColors, ratio, hsl, validSpec } from '../src/lib/lookspec.ts';
 import { lookOf, lookOfStore } from '../server/looks.mjs';
@@ -140,8 +139,7 @@ test('a look as data fills every role of a theme; the hand-built looks are untou
 /* ── 3. The app: gating, data, Apply, Undo, files ─────────────────────────────────────────────────────────────────── */
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-yourlook-'));
-const PORT = 6300 + Math.floor(Math.random() * 300);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 let server;
 function person() {
   let jar = '';
@@ -158,9 +156,7 @@ const owner = person(), tommy = person(), staff = person(), harborOwner = person
 let code = '';
 before(async () => {
   giveAccount(dir);
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'tommy@mise.test', ANTHROPIC_API_KEY: '' }, stdio: 'ignore' });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OWNER_EMAIL: 'owner@baldwin.test', SUPERADMIN_EMAIL: 'tommy@mise.test', ANTHROPIC_API_KEY: '' }));
 });
 after(() => { server?.kill(); fs.rmSync(dir, { recursive: true, force: true }); });
 

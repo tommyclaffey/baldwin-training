@@ -3,17 +3,16 @@
 // byte for byte; a company can't upload past its storage cap; old "before-…" database copies go after 14 days.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { spawn, execFileSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { giveAccount } from './helpers.mjs';
+import { giveAccount, startServer } from './helpers.mjs';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-files-'));
 const out = fs.mkdtempSync(path.join(os.tmpdir(), 'bt-files-out-'));
-const PORT = 7100 + Math.floor(Math.random() * 300);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT, BASE; // set when the server starts: it listens on a port the OS picks (startServer, Nov 26)
 const OPS_TOKEN = 'ops-token-for-the-files-test-1234';
 const BACKUP_KEY = 'backup-key-for-the-files-test-5678';
 let server;
@@ -29,10 +28,7 @@ before(async () => {
   fs.writeFileSync(path.join(media, longName), 'long name');
   const past = new Date(Date.now() - 3 * 864e5);
   for (const f of ['old-clip.mp4', longName]) fs.utimesSync(path.join(media, f), past, past);
-  server = spawn(process.execPath, ['server/index.mjs'], { cwd: root, stdio: 'ignore',
-    env: { ...process.env, PORT: String(PORT), DATA_DIR: dir, OPS_TOKEN, BACKUP_KEY, STORAGE_CAP_MB: '1', OWNER_EMAIL: 'owner@files.test', SUPERADMIN_EMAIL: 'boss@files.test', PREP_WEEKLY: 'off' } });
-  for (let i = 0; i < 300; i++) { try { await fetch(BASE + '/api/me'); return; } catch { await new Promise((r) => setTimeout(r, 100)); } }
-  throw new Error('test server did not start in 30 s');
+  ({ server, port: PORT, base: BASE } = await startServer({ ...process.env, DATA_DIR: dir, OPS_TOKEN, BACKUP_KEY, STORAGE_CAP_MB: '1', OWNER_EMAIL: 'owner@files.test', SUPERADMIN_EMAIL: 'boss@files.test', PREP_WEEKLY: 'off' }));
 });
 after(() => { server.kill(); fs.rmSync(dir, { recursive: true, force: true }); fs.rmSync(out, { recursive: true, force: true }); });
 
