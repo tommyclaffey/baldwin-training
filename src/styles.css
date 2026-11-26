@@ -744,7 +744,7 @@ body.print-measure .page > .fn [data-name="Body"] > [data-name="Matrix table"] {
 .scan-tab { min-width: 140px; min-height: 44px; padding: 0 20px; border: 0; background: #fff; color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; font-variant-numeric: tabular-nums; }
 .scan-tab.on { background: var(--ink-fill, var(--ink)); color: var(--cream); }
 .scan-tab:focus-visible { outline: 3px solid var(--copper); outline-offset: -3px; }
-.scan-page .chip { min-height: 40px; padding: 0 14px; }
+.scan-page .chip { min-height: 44px; padding: 0 14px; } /* 44 px touch target, like the phone size below (Nov 26) */
 .scan-page .btn.ghost { border-color: #8F867C; }
 .scan-list { list-style: none; margin: 0; padding: 0 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
 .scan-row { display: grid; grid-template-columns: 56px minmax(0, 1.3fr) minmax(0, 1fr) auto; grid-template-areas: 'thumb copy status actions'; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--hair); }
